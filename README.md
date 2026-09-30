@@ -156,9 +156,11 @@ published organization or artifact in the catalog.
 Lineups: add an entry to `content/local-corner.yml`
 (`lineups: [{ month: "2026-11", people: [slug, …] }]`, up to five). A month
 without an entry rotates automatically and deterministically through the
-published pool, five places per month. The month shown is the build month, so
-the deploy workflows rebuild on the 1st of each month (`USASI_MONTH=YYYY-MM`
-overrides it for previews).
+published pool, five places per month. Selection runs in the visitor's browser
+from the current month (`lib/local-corner.ts`), so the lineup changes on the 1st
+of each month **without a rebuild or deploy**; the static HTML (and no-JavaScript
+visitors) get the build month's lineup. `USASI_MONTH=YYYY-MM` overrides the build
+month for previews.
 
 ### Changelog and homepage selection
 
@@ -241,6 +243,11 @@ requests are served from Cloudflare's static asset storage.
   `/companies/` (307).
 - Cloudflare compresses responses (Brotli) automatically.
 
+Current setup: the site is live at https://unitedstatesofamericasuperintelligence.com
+(apex and www attached as Workers custom domains; the account's workers.dev
+address and preview URLs are disabled). Deploys are done with Wrangler from a
+machine signed in with `npx wrangler login`.
+
 Manual deploy from your machine:
 
 ```bash
@@ -249,10 +256,11 @@ npx wrangler login      # opens Cloudflare in your browser
 npm run deploy:cloudflare
 ```
 
-CI deploy: `.github/workflows/deploy-cloudflare.yml` deploys `main` and uploads
-a preview version for each same-repository pull request, once you set the
-repository variable `CLOUDFLARE_DEPLOY=true` and the secrets
-`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Alternatively, connect the
+Optional CI deploy: `.github/workflows/deploy-cloudflare.yml` deploys `main`
+(and monthly) once the repository variable `CLOUDFLARE_DEPLOY=true` and the
+secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are set. It is
+currently paused (`CLOUDFLARE_DEPLOY=false`, no API token stored); the account ID
+secret is already set. Alternatively, connect the
 repository in the Cloudflare dashboard (Workers Builds) with build command
 `npm run build` and deploy command `npx wrangler deploy`.
 

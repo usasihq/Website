@@ -10,6 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { DEFAULT_CONTENT_DIR, readRawContent, todayIso } from "./content-loader";
 import { entryTypeFor, type EntryType } from "./labels";
+import { lineupSlugs } from "./local-corner";
 import { checklistFor, computeTier } from "./openness";
 import {
   HOSTED_MODEL_PRODUCT_KINDS,
@@ -177,17 +178,8 @@ export class Catalog {
    * the published pool (sorted by slug), advancing five places each month.
    */
   localCornerLineup(month: string): { month: string; people: Person[]; source: "schedule" | "rotation" } {
-    const scheduled = this.localCorner?.lineups.find((l) => l.month === month);
-    if (scheduled) {
-      const people = scheduled.people.map((s) => this.people.find((p) => p.slug === s)).filter((p): p is Person => Boolean(p));
-      return { month, people, source: "schedule" };
-    }
-    const pool = [...this.people].sort((a, b) => a.slug.localeCompare(b.slug));
-    if (pool.length <= 5) return { month, people: pool, source: "rotation" };
-    const [y, m] = month.split("-").map(Number);
-    const offset = ((y * 12 + (m - 1)) * 5) % pool.length;
-    const people = Array.from({ length: 5 }, (_, i) => pool[(offset + i) % pool.length]);
-    return { month, people, source: "rotation" };
+    const { slugs, source } = lineupSlugs(month, this.people.map((p) => p.slug), this.localCorner);
+    return { month, people: slugs.map((s) => this.people.find((p) => p.slug === s)!), source };
   }
 
   /** The month shown on the site: USASI_MONTH (YYYY-MM) for testing, else the build month. */

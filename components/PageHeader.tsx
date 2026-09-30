@@ -35,7 +35,7 @@ export function PageHeader({
   crumbs,
   children,
 }: {
-  eyebrow?: string;
+  eyebrow?: React.ReactNode;
   title: string;
   description?: React.ReactNode;
   crumbs?: Crumb[];

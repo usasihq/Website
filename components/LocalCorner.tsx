@@ -1,13 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import type { LineupSchedule } from "@/lib/local-corner";
 import type { Person } from "@/lib/schema";
-
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-export function monthLabel(month: string): string {
-  const [y, m] = month.split("-").map(Number);
-  return `${MONTHS[m - 1]} ${y}`;
-}
+import { MonthLabel, MonthlyLineup } from "./MonthlyLineup";
 
 export function InitialsTile({ initials, size = "md" }: { initials: string; size?: "md" | "lg" }) {
   return (
@@ -22,16 +17,37 @@ export function InitialsTile({ initials, size = "md" }: { initials: string; size
 
 /**
  * A quiet homepage strip for the month's Local corner. Intentionally small:
- * it sits after the editorial sections and links to the full profiles.
+ * it sits after the editorial sections and links to the full profiles. The
+ * browser shows the current month's five, so it rotates without a rebuild.
  */
-export function LocalCornerStrip({ month, people }: { month: string; people: Person[] }) {
+export function LocalCornerStrip({ buildMonth, people, schedule }: { buildMonth: string; people: Person[]; schedule: LineupSchedule | null }) {
   if (people.length === 0) return null;
+  const items = Object.fromEntries(
+    people.map((p) => [
+      p.slug,
+      <li key={p.slug}>
+        <Link
+          prefetch={false}
+          href={`/local/#${p.slug}`}
+          className="flex h-full items-start gap-3 rounded-xl border border-line bg-[rgba(8,14,30,0.6)] p-3 hover:border-line-strong"
+        >
+          <InitialsTile initials={p.initials} />
+          <span className="min-w-0">
+            <span className="block font-medium leading-snug text-text">{p.name}</span>
+            <span className="mt-0.5 line-clamp-2 block text-sm text-muted">{p.headline}</span>
+          </span>
+        </Link>
+      </li>,
+    ]),
+  );
   return (
     <section aria-labelledby="local-corner-heading" className="border-t border-line py-12">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="eyebrow">Local corner · {monthLabel(month)}</p>
+            <p className="eyebrow">
+              <MonthLabel buildMonth={buildMonth} prefix="Local corner · " />
+            </p>
             <h2 id="local-corner-heading" className="mt-1 text-xl font-semibold text-text">
               People behind local AI
             </h2>
@@ -43,23 +59,13 @@ export function LocalCornerStrip({ month, people }: { month: string; people: Per
             Read their profiles <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
         </div>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {people.map((p) => (
-            <li key={p.slug}>
-              <Link
-                prefetch={false}
-                href={`/local/#${p.slug}`}
-                className="flex h-full items-start gap-3 rounded-xl border border-line bg-[rgba(8,14,30,0.6)] p-3 hover:border-line-strong"
-              >
-                <InitialsTile initials={p.initials} />
-                <span className="min-w-0">
-                  <span className="block font-medium leading-snug text-text">{p.name}</span>
-                  <span className="mt-0.5 line-clamp-2 block text-sm text-muted">{p.headline}</span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <MonthlyLineup
+          buildMonth={buildMonth}
+          poolSlugs={people.map((p) => p.slug)}
+          schedule={schedule}
+          items={items}
+          className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"
+        />
       </div>
     </section>
   );

@@ -341,7 +341,7 @@ export default function HomePage() {
       </section>
 
       {/* Local corner (monthly, deliberately quiet) */}
-      <LocalCornerStrip {...catalog.localCornerLineup(catalog.currentMonth())} />
+      <LocalCornerStrip buildMonth={catalog.currentMonth()} people={catalog.people} schedule={catalog.localCorner} />
 
       {/* 7. Support Us */}
       <SupportPanel variant="home" />

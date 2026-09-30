@@ -294,3 +294,28 @@ test.describe("Local corner", () => {
     await expect(page.getByRole("heading", { name: "People behind local AI" })).toBeVisible();
   });
 });
+
+test.describe("Local corner rotation in the browser", () => {
+  test("shows the scheduled October lineup when the visitor's clock says October 2026", async ({ page }) => {
+    const people = readRecordsFrom("people").filter((p) => p.publication_status === "published");
+    test.skip(people.length < 5, "needs a full pool");
+    await page.clock.setFixedTime(new Date("2026-10-15T12:00:00Z"));
+    await page.goto("/local/");
+    await expect(page.locator("[data-lineup-month]")).toHaveAttribute("data-lineup-month", "2026-10");
+    await expect(page.locator("main article[id]")).toHaveCount(5);
+    await expect(page.locator("main article#stella-biderman")).toHaveCount(1);
+    await expect(page.getByText("Local corner · October 2026")).toBeVisible();
+  });
+
+  test("rotates to a different five the next month without a rebuild", async ({ page }) => {
+    await page.clock.setFixedTime(new Date("2026-10-15T12:00:00Z"));
+    await page.goto("/local/");
+    const october = await page.locator("main article[id]").evaluateAll((els) => els.map((e) => e.id));
+    await page.clock.setFixedTime(new Date("2026-11-15T12:00:00Z"));
+    await page.goto("/local/");
+    await expect(page.locator("[data-lineup-month]")).toHaveAttribute("data-lineup-month", "2026-11");
+    const november = await page.locator("main article[id]").evaluateAll((els) => els.map((e) => e.id));
+    expect(november).toHaveLength(5);
+    expect(november).not.toEqual(october);
+  });
+});

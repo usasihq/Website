@@ -41,37 +41,26 @@ because Buy Me a Coffee amount parameters have not been verified.
 
 ## 3. Cloudflare hosting and the domain
 
-The site is configured as an assets-only Cloudflare Worker (`wrangler.jsonc`)
-and was tested locally in Cloudflare's runtime (`wrangler dev`). To go live:
+Done: the site is live at **https://unitedstatesofamericasuperintelligence.com**
+(and `www.`), served by the `usasi` Worker (static assets only) with valid
+certificates, the security headers from `public/_headers`, and Brotli
+compression. The account's `workers.dev` address and preview URLs are disabled.
+Deploys are run with Wrangler (`npm run build && npm run deploy:cloudflare`)
+from a machine signed in with `npx wrangler login`.
 
-- [ ] Add `unitedstatesofamericasuperintelligence.com` to your Cloudflare
-      account (if the registrar is elsewhere, change its nameservers to
-      Cloudflare's — this is a DNS change only you should make).
-- [ ] `npx wrangler login`, then `npm run build && npm run deploy:cloudflare`
-      for a first deploy to `usasi.<your-subdomain>.workers.dev`. Check it.
-- [ ] Uncomment the `routes` block in `wrangler.jsonc` (custom domain on the apex)
-      and deploy again, or attach the domain in the dashboard under
-      Workers & Pages → usasi → Settings → Domains & Routes.
-- [ ] Redirect `www` to the apex: add a proxied DNS record for `www` and a
-      Redirect Rule (Rules → Redirect Rules → "Redirect from WWW to root"
-      template, 301, preserve path and query). `_redirects` cannot do
-      domain-level redirects.
-- [ ] Zone settings that keep the site working as built:
-  - SSL/TLS mode **Full (strict)**; **Always Use HTTPS** on.
-  - Keep **Rocket Loader**, **Email Address Obfuscation**, and **Web Analytics
-    automatic setup** off: they inject scripts, which the per-page CSP blocks,
-    and analytics would contradict the Privacy page.
-  - Bot Fight Mode is optional; it may set a security cookie (the Privacy page
-    already says the host may do this).
-- [ ] Optional: after HTTPS is confirmed on the apex and every subdomain you
-      use, consider HSTS preload. `public/_headers` sends
-      `max-age=31536000; includeSubDomains` without `preload` on purpose.
-- [ ] Optional CI deploys: in GitHub, set repository variable
-      `CLOUDFLARE_DEPLOY=true` and secrets `CLOUDFLARE_API_TOKEN`
-      (Workers Scripts: Edit) and `CLOUDFLARE_ACCOUNT_ID`.
+Remaining owner steps in the Cloudflare dashboard:
 
-Alternative hosts (Vercel, GitHub Pages) are documented in the README; both use
-the same build.
+- [ ] **Always Use HTTPS**: your domain → SSL/TLS → Edge Certificates → On. Until
+      then, `http://` pages load without upgrading to HTTPS (HSTS only takes
+      effect after a visitor's first HTTPS visit).
+- [ ] Optional: Rules → Redirect Rules → "Redirect from WWW to root" (301). Both
+      addresses already serve the site; canonical URLs point to the apex.
+- [ ] Keep **Rocket Loader**, **Email Address Obfuscation**, and **Web Analytics
+      automatic setup** off (verified off at launch): they inject scripts, which
+      the per-page CSP blocks, and analytics would contradict the Privacy page.
+- [ ] Optional: automatic deploys from GitHub (see README). Not needed for the
+      Local corner, which rotates in the browser.
+- [ ] Optional, later: HSTS preload once HTTPS is enforced everywhere.
 
 ## 4. Ownership and contact details
 
@@ -99,8 +88,8 @@ homepage's structured data:
       delete it, then rebuild).
 - [ ] Recommended: let featured people know before or when they appear, and
       invite corrections. Opt-in is kinder than surprise.
-- [ ] Monthly rotation needs a monthly rebuild: enable one of the deploy
-      workflows (they run on the 1st of each month) or rebuild manually.
+- [ ] Nothing needed for rotation: the lineup changes in visitors' browsers on
+      the 1st of each month. Rebuild only when profiles or lineups change.
 - [ ] Optional: set explicit lineups per month in `content/local-corner.yml`.
 
 ## 6. Artwork rights
