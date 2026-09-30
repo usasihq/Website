@@ -252,9 +252,9 @@ test.describe("contact and profiles", () => {
   test("entry pages link corrections and edits to the configured repository", async ({ page }) => {
     await page.goto(`/companies/${activeOrg.slug}/`);
     const report = page.getByRole("link", { name: /Report a correction/ });
-    await expect(report).toHaveAttribute("href", /^https:\/\/github\.com\/usasihq\/usasi\/issues\/new\?template=correction\.yml/);
+    await expect(report).toHaveAttribute("href", /^https:\/\/github\.com\/usasihq\/Website\/issues\/new\?template=correction\.yml/);
     const edit = page.getByRole("link", { name: /Edit this entry/ });
-    await expect(edit).toHaveAttribute("href", `https://github.com/usasihq/usasi/edit/main/content/organizations/${activeOrg.slug}.yml`);
+    await expect(edit).toHaveAttribute("href", `https://github.com/usasihq/Website/edit/main/content/organizations/${activeOrg.slug}.yml`);
   });
 
   test("security.txt and structured data are published", async ({ request, page }) => {

@@ -9,7 +9,7 @@ created.
 
 ## 1. Source repository
 
-Configured: `https://github.com/usasihq/usasi` (public). "Edit this entry",
+Configured: `https://github.com/usasihq/Website` (public). "Edit this entry",
 "Report a correction", and entry-request links point there. Commits in this
 repository use the USASI identity
 (`USASI <335780783+usasihq@users.noreply.github.com>`, set in the repository's
