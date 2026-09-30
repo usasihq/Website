@@ -4,13 +4,13 @@
  *
  * Generates responsive derivatives of the supplied artwork. The original in
  * assets/original/ is never modified. Derivatives are only ever downscaled —
- * the largest output equals the original's native width (1672 px); nothing is
+ * the largest output equals the branding source's native width (1672 px); nothing is
  * upscaled, because upscaling cannot add real detail.
  *
  * Outputs (committed to the repository):
- *   public/hero.png                     byte-identical copy of the original
+ *   public/hero.png                     copy of the approved-wording branding derivative
  *   public/images/hero/hero-<w>.{avif,webp,jpg}
- *   public/og.png                       1200×630 social card (cropped from the bottom)
+ *   public/og.png                       1200×630 social card (top-aligned crop)
  *   app/apple-icon.png                  180×180 touch icon rendered from app/icon.svg
  */
 import { createHash } from "node:crypto";
@@ -23,18 +23,21 @@ const ORIGINAL = path.join(root, "assets/original/USA SUPER LOGO.png");
 const EXPECTED_SHA256 = "92dade47de878d42fcccf4e78f22dfa1f3ac0815300387be73e348745dc51736";
 const WIDTHS = [640, 960, 1280, 1672];
 
-const buffer = fs.readFileSync(ORIGINAL);
-const sha = createHash("sha256").update(buffer).digest("hex");
+const originalBuffer = fs.readFileSync(ORIGINAL);
+const sha = createHash("sha256").update(originalBuffer).digest("hex");
 if (sha !== EXPECTED_SHA256) {
   console.warn(`warning: original artwork hash changed (${sha}). Update EXPECTED_SHA256 and THIRD_PARTY_NOTICES.md if this is intentional.`);
 }
 
+// Owner-requested tagline edit; keep the archival source byte-for-byte.
+const BRANDING = path.join(root, "assets/branding/usasi-hero.png");
+const buffer = fs.readFileSync(BRANDING);
 const meta = await sharp(buffer).metadata();
-console.log(`original: ${meta.width}×${meta.height} ${meta.format}`);
+console.log(`branding derivative: ${meta.width}×${meta.height} ${meta.format}`);
 
 const outDir = path.join(root, "public/images/hero");
 fs.mkdirSync(outDir, { recursive: true });
-fs.copyFileSync(ORIGINAL, path.join(root, "public/hero.png"));
+fs.copyFileSync(BRANDING, path.join(root, "public/hero.png"));
 
 for (const width of WIDTHS) {
   if (width > meta.width) {

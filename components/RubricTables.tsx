@@ -95,8 +95,7 @@ export function TierTable() {
         </tbody>
       </table>
       <p className="mt-3 text-[0.9375rem] text-muted">
-        Licenses the rubric treats as OSI-approved: {[...OSI_APPROVED_SPDX].join(", ")}. Any other license — including custom model licenses — does not
-        satisfy the fully open requirement until the rubric is revised.
+        Software licenses on the rubric’s OSI-approved list: {[...OSI_APPROVED_SPDX].join(", ")}. Data and documentation rights are assessed separately. License identifiers alone do not establish system openness; the highest tier requires a sourced review of permissions and completeness.
       </p>
     </div>
   );

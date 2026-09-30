@@ -20,25 +20,24 @@ export default function CompaniesPage() {
   return (
     <>
       <PageHeader
+        compact
         eyebrow="Directory"
         title="Companies & Labs"
         description={
           <p>
-            U.S. AI organizations covering both closed and open offerings: frontier-model developers, chip and cloud providers, enterprise and
-            data platforms, nonprofit labs, robotics companies, and open-source foundations.
+            Search U.S. AI companies, labs, research units, and foundations, covering both closed and open offerings.
           </p>
         }
       >
-        <p className="meta mt-4">
-          {counts.organizations} organization records: {counts.independentOrganizations} top-level organizations and {counts.organizationUnits} research
-          units or subsidiaries listed separately.{" "}
+        <p className="meta mt-2">
+          {counts.organizations} records · {counts.independentOrganizations} top-level organizations · {counts.organizationUnits} units or subsidiaries.{" "}
           <Link href="/methodology/#counts" className="link">
             How counts work
           </Link>
         </p>
-        <OrgQuickViews items={items} />
+        <details className="mt-3"><summary className="cursor-pointer text-sm text-ice">Browse quick views</summary><OrgQuickViews items={items} /></details>
       </PageHeader>
-      <div className="container-page py-10">
+      <div className="container-page py-6">
         <OrgDirectory items={items} />
       </div>
       <SupportPanel variant="compact" />

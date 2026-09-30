@@ -56,6 +56,8 @@ export function SourcesList({ sources, idPrefix = "" }: { sources: Source[]; idP
               {source.publisher}
               {source.kind ? ` · ${KIND_LABELS[source.kind]}` : ""}
               {source.published_at ? ` · published ${formatDate(source.published_at)}` : ""} · accessed {formatDate(source.accessed_at)}
+              {source.fetched_at ? ` · fetched ${formatDate(source.fetched_at)}` : ""}
+              {source.reviewed_at ? ` · evidence reviewed ${formatDate(source.reviewed_at)}` : ""}
             </p>
           </div>
         </li>

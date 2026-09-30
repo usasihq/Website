@@ -22,7 +22,7 @@ import {
   SECTORS,
 } from "./enums";
 
-export const SCHEMA_VERSION = "0.1.0";
+export const SCHEMA_VERSION = "0.2.0";
 
 /* ------------------------------------------------------------------ */
 /* Primitives                                                          */
@@ -108,6 +108,8 @@ export const Source = z
     kind: SourceKind.optional(),
     published_at: DocumentedDate.nullable().optional(),
     accessed_at: IsoDate,
+    fetched_at: IsoDate.optional(),
+    reviewed_at: IsoDate.optional(),
   })
   .strict();
 export type Source = z.infer<typeof Source>;
@@ -116,6 +118,8 @@ export type Source = z.infer<typeof Source>;
 export const Claim = z
   .object({
     text: z.string().trim().min(1),
+    reviewed_at: IsoDate.optional(),
+    effective_at: DocumentedDate.optional(),
     source_ids: z.array(SourceId).min(1, "Every claim needs at least one source ID"),
   })
   .strict();
@@ -206,6 +210,14 @@ export const Organization = z
     summary: Claim,
     organization_roles: z.array(OrganizationRole).min(1),
     ownership_category: OwnershipCategory,
+    ownership_evidence: Claim.optional(),
+    parent_evidence: Claim.optional(),
+    profile: z.object({
+      intended_users: Claim,
+      access_overview: Claim,
+      limitations: Claim,
+      resources: z.array(z.object({ label: z.string().min(1), url: HttpsUrl, kind: z.enum(["documentation", "pricing", "model-hub", "repository"]), source_ids: z.array(SourceId).min(1), reviewed_at: IsoDate }).strict()),
+    }).strict().optional(),
     legal_form: Claim.nullable().default(null),
     parent_org_slug: Slug.nullable().default(null),
     parent_relationship: ParentRelationship.nullable().default(null),
@@ -293,6 +305,8 @@ export const LicenseRecord = z
     spdx: z.string().min(2).nullable().default(null),
     url: HttpsUrl.nullable().default(null),
     applies_to: LicenseAppliesTo,
+    reviewed_at: IsoDate.optional(),
+    effective_at: DocumentedDate.optional(),
     source_ids: z.array(SourceId).min(1),
   })
   .strict();
@@ -301,6 +315,8 @@ export type LicenseRecord = z.infer<typeof LicenseRecord>;
 export const ChecklistItem = z
   .object({
     status: AvailabilityStatus,
+    reviewed_at: IsoDate.optional(),
+    effective_at: DocumentedDate.optional(),
     note: z.string().trim().min(1).nullable().default(null),
     source_ids: z.array(SourceId).default([]),
   })
@@ -343,6 +359,7 @@ export const Artifact = z
     kind: ArtifactKind,
     record_level: RecordLevel,
     family_slug: Slug.nullable().default(null),
+    system_openness_review: z.object({ status: z.enum(["verified", "restricted", "unknown"]), permissions: z.object({ parameters: z.enum(["qualifying", "restricted", "unknown"]), code: z.enum(["qualifying", "restricted", "unknown"]), data_information: z.enum(["qualifying", "restricted", "unknown"]) }).strict(), rationale: z.string().min(30), source_ids: z.array(SourceId).min(1), reviewed_at: IsoDate }).strict().optional(),
     version: z.string().min(1).nullable().default(null),
     maintainers: z.array(Maintainer).min(1),
     organization_slugs: z.array(Slug).default([]),
@@ -353,6 +370,8 @@ export const Artifact = z
     availability: z
       .object({
         status: AvailabilityStatus,
+        reviewed_at: IsoDate.optional(),
+        effective_at: DocumentedDate.optional(),
         access_conditions: z.string().trim().min(1).nullable().default(null),
         source_ids: z.array(SourceId).default([]),
       })

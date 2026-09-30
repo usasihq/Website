@@ -27,15 +27,21 @@ Openness is described per artifact with a checklist suited to what the artifact 
 
 Availability is kept separate from permission. "Publicly downloadable" does not by itself mean unrestricted, open source, commercially usable, or redistributable. Each release lists its actual licenses and what they apply to.
 
-<h3 id="tiers">Model-disclosure tiers (USASI rubric v0.1)</h3>
+<h3 id="tiers">Model-disclosure tiers (USASI rubric v0.2)</h3>
 
-For **model releases only**, the checklist and licenses determine a disclosure tier. The tiers are USASI's own editorial categories, versioned as rubric v0.1. They are not an external certification, and they are not the Open Source Initiative's Open Source AI Definition or any other outside standard. The tier is computed automatically from the recorded checklist, so it cannot be typed in by hand or inherited from a family or an organization.
+For **model releases only**, the checklist determines a disclosure tier; the highest tier additionally requires a sourced, dated system-rights review. The tiers are USASI's own editorial categories, versioned as rubric v0.2. They are not an external certification, and they are not the Open Source Initiative's Open Source AI Definition or any other outside standard. The tier is computed from the recorded evidence and review; it is never inherited from a family or organization.
 
 <TierTable />
 
-Tiers are cumulative: every fully open release also counts as open-stack, and every open-stack release also counts as open-weight. When tiers appear as columns, the columns overlap and must not be added together.
+Training-data information completeness, actual data access, and reuse permission are assessed separately. v0.1 data statuses mixed access and disclosure; those historical notes remain visible as legacy evidence but are excluded from v0.2 tier calculations. New assessments remain unknown until checked. This may lower a computed label without claiming the underlying model changed.
 
-**Closed product/API** is a separate label used on organization pages. It describes how a documented product is delivered, such as a hosted API or assistant app. It is not an artifact tier, and it says nothing about other releases from the same organization. An organization is never labeled "open" because it has released one open-weight model.
+The [Open Source AI Definition 1.0](https://opensource.org/ai/open-source-ai-definition) does not require every original training datum to be downloadable. It requires sufficiently detailed data information, complete training/run/preprocessing code and parameters under qualifying terms. The catalog does not claim OSI certification. A fine-tuning script or inference SDK alone is not complete training code; downloadable data without provenance does not establish complete information.
+
+Component license filters apply the selected license to the selected component in the same license record. An MIT documentation license does not make custom-licensed weights MIT. Multiple distinct license records are not assumed to be alternatives or cumulative terms without review.
+
+Tiers are cumulative: every reviewed open-system release also counts as open-stack, and every open-stack release also counts as open-weight. When tiers appear as columns, the columns overlap and must not be added together.
+
+**Hosted product/API** is a separate label used on organization pages. It describes how a documented product is delivered, such as a hosted API or assistant app. It is not an artifact tier, and it says nothing about other releases from the same organization. An organization is never labeled "open" because it has released one open-weight model.
 
 <h2 id="sources">Source standards</h2>
 
@@ -54,9 +60,11 @@ Software, datasets, and evaluation tools are **project** records.
 - **Released** — the documented release date of an artifact, at the precision the evidence gives (a year, a month, or a day). Unknown if not documented.
 - **Entry updated** — the date the record was last substantively edited.
 - **Last reviewed** — the date an editor last checked the record's evidence.
+- **Fact reviewed / effective** — optional dates attached to a specific claim, license or availability assessment. An absent date is unknown; the record-wide review is not substituted.
+- **Source accessed / fetched** — retrieval dates; an automated fetch is not an editorial review.
 - **Site generated** — the date the website was built, shown in the footer.
 
-A build never changes the first three. "Recently reviewed" on the homepage means recently checked, not newly released.
+A build never changes editorial, fact, or source dates. "Recently reviewed" on the homepage means recently checked, not newly released.
 
 <h2 id="uncertainty">Uncertainty</h2>
 

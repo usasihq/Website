@@ -4,9 +4,9 @@ import { asset } from "@/lib/paths";
 const WIDTHS = [640, 960, 1280, 1672];
 const WIDTH = 1672;
 const HEIGHT = 941;
-// On desktop the artwork is capped at 46% of the viewport height (see .hero-figure),
-// i.e. about 82vh wide; on smaller screens it spans the full width.
-const SIZES = "(min-width: 1024px) 82vh, 100vw";
+// On desktop the artwork is capped at 30% of the viewport height (see .hero-figure),
+// i.e. about 54vh wide; on smaller screens it spans the full width.
+const SIZES = "(min-width: 1024px) 54vh, 100vw";
 
 const srcSet = (ext: string) => WIDTHS.map((w) => `${asset(`/images/hero/hero-${w}.${ext}`)} ${w}w`).join(", ");
 
@@ -38,7 +38,7 @@ export function Hero() {
           sizes={SIZES}
           width={WIDTH}
           height={HEIGHT}
-          alt="Artwork with the words “United States of America Superintelligence” and “American AI, infrastructure, and innovation.” It shows Earth’s curvature at night, the Washington Monument and U.S. Capitol across the water, and a glowing network of lights and arcs over a map of the United States."
+          alt="Artwork with the words “United States of America Superintelligence” and “American Super Intelligence, infrastructure, and innovation.” It shows Earth’s curvature at night, the Washington Monument and U.S. Capitol across the water, and a glowing network of lights and arcs over a map of the United States."
           fetchPriority="high"
           decoding="async"
           className="block h-auto w-full"

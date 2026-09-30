@@ -100,6 +100,18 @@ function matchesTokens(haystack: string, tokens: string[]): boolean {
   return tokens.every((t) => text.includes(t));
 }
 
+/** Exact names, then name prefixes; description-only matches come afterwards. */
+export function nameRelevance(name: string, query: string): number {
+  const phrase = tokenize(query).join(" ");
+  if (!phrase) return 0;
+  const normalized = normalize(name);
+  return normalized === phrase ? 2 : normalized.startsWith(phrase) ? 1 : 0;
+}
+
+function compareNames(a: { name: string; slug: string }, b: { name: string; slug: string }): number {
+  return a.name.localeCompare(b.name, "en", { sensitivity: "base" }) || a.slug.localeCompare(b.slug, "en");
+}
+
 /** Relevance score for the cross-directory search. 0 means no match. */
 export function scoreEntry(entry: SearchEntry, tokens: string[]): number {
   if (tokens.length === 0) return 0;
@@ -125,7 +137,7 @@ export function searchEntries(entries: SearchEntry[], query: string, limit = 12)
   return entries
     .map((entry) => ({ entry, score: scoreEntry(entry, tokens) }))
     .filter((r) => r.score > 0)
-    .sort((a, b) => b.score - a.score || a.entry.name.localeCompare(b.entry.name))
+    .sort((a, b) => nameRelevance(b.entry.name, query) - nameRelevance(a.entry.name, query) || b.score - a.score || compareNames(a.entry, b.entry))
     .slice(0, limit)
     .map((r) => r.entry);
 }
@@ -198,19 +210,19 @@ export function orgMatches(item: OrgListItem, f: OrgFilters): boolean {
   return matchesTokens(haystack, tokenize(f.q));
 }
 
-export function sortOrganizations(items: OrgListItem[], sort: OrgSort): OrgListItem[] {
+export function sortOrganizations(items: OrgListItem[], sort: OrgSort, query = ""): OrgListItem[] {
   const copy = [...items];
-  const byName = (a: OrgListItem, b: OrgListItem) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+  const byName = (a: OrgListItem, b: OrgListItem) => compareNames(a, b);
   copy.sort((a, b) => {
     if (sort === "reviewed") return b.lastReviewed.localeCompare(a.lastReviewed) || byName(a, b);
     if (sort === "artifacts") return b.artifactCount - a.artifactCount || byName(a, b);
-    return byName(a, b);
+    return nameRelevance(b.name, query) - nameRelevance(a.name, query) || byName(a, b);
   });
   return copy;
 }
 
 export function filterOrganizations(items: OrgListItem[], f: OrgFilters): OrgListItem[] {
-  return sortOrganizations(items.filter((i) => orgMatches(i, f)), f.sort);
+  return sortOrganizations(items.filter((i) => orgMatches(i, f)), f.sort, f.q);
 }
 
 /* ------------------------------------------------------------------ */
@@ -223,12 +235,24 @@ export type ArtifactSort = (typeof ARTIFACT_SORTS)[number];
 export const CHECK_MODES = ["public", "documented", "unknown"] as const;
 export type CheckMode = (typeof CHECK_MODES)[number];
 
+export const LICENSE_COMPONENTS = ["weights", "code", "data", "documentation"] as const;
+export type LicenseComponent = (typeof LICENSE_COMPONENTS)[number];
+
+export function licenseCovers(appliesTo: string, component: LicenseComponent | ""): boolean {
+  return !component || appliesTo === "all" || appliesTo === component || (appliesTo === "weights-and-code" && (component === "weights" || component === "code"));
+}
+
+export function matchedLicenses(item: ArtifactListItem, f: Pick<ArtifactFilters, "license" | "licenseComponent">) {
+  return item.licenses.filter(l => (!f.license || l.key === f.license) && licenseCovers(l.appliesTo, f.licenseComponent));
+}
+
 export interface ArtifactFilters {
   q: string;
   kind: ArtifactKind | "";
   level: RecordLevel | "";
   availability: AvailabilityStatus | "";
   license: string;
+  licenseComponent: LicenseComponent | "";
   tier: TierFilter | "";
   org: string;
   /** `<checklist key>:<public|documented|unknown>`; documented = public or partial. */
@@ -242,6 +266,7 @@ export const DEFAULT_ARTIFACT_FILTERS: ArtifactFilters = {
   level: "",
   availability: "",
   license: "",
+  licenseComponent: "",
   tier: "",
   org: "",
   check: "",
@@ -263,6 +288,7 @@ export function parseArtifactFilters(params: URLSearchParams): ArtifactFilters {
     level: pick(params.get("level"), RECORD_LEVELS),
     availability: pick(params.get("availability"), AVAILABILITY_STATUSES),
     license: (params.get("license") ?? "").slice(0, 80),
+    licenseComponent: pick(params.get("licenseComponent"), LICENSE_COMPONENTS),
     tier: pick(params.get("tier"), TIER_FILTERS),
     org: /^[a-z0-9-]{1,80}$/.test(params.get("org") ?? "") ? params.get("org")! : "",
     check: parseCheck(params.get("check")),
@@ -277,6 +303,7 @@ export function serializeArtifactFilters(f: Partial<ArtifactFilters>): string {
   if (f.level) p.set("level", f.level);
   if (f.availability) p.set("availability", f.availability);
   if (f.license) p.set("license", f.license);
+  if (f.licenseComponent) p.set("licenseComponent", f.licenseComponent);
   if (f.tier) p.set("tier", f.tier);
   if (f.org) p.set("org", f.org);
   if (f.check) p.set("check", f.check);
@@ -288,7 +315,7 @@ export function artifactMatches(item: ArtifactListItem, f: ArtifactFilters): boo
   if (f.kind && item.kind !== f.kind) return false;
   if (f.level && item.level !== f.level) return false;
   if (f.availability && item.availability !== f.availability) return false;
-  if (f.license && !item.licenses.some((l) => l.key === f.license)) return false;
+  if ((f.license || f.licenseComponent) && matchedLicenses(item, f).length === 0) return false;
   if (f.tier && !tierSatisfies(item.tier, f.tier)) return false;
   if (f.org && !item.organizations.some((o) => o.slug === f.org)) return false;
   if (f.check) {
@@ -316,9 +343,9 @@ export function artifactMatches(item: ArtifactListItem, f: ArtifactFilters): boo
   return matchesTokens(haystack, tokenize(f.q));
 }
 
-export function sortArtifacts(items: ArtifactListItem[], sort: ArtifactSort): ArtifactListItem[] {
+export function sortArtifacts(items: ArtifactListItem[], sort: ArtifactSort, query = ""): ArtifactListItem[] {
   const copy = [...items];
-  const byName = (a: ArtifactListItem, b: ArtifactListItem) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+  const byName = (a: ArtifactListItem, b: ArtifactListItem) => compareNames(a, b);
   copy.sort((a, b) => {
     if (sort === "reviewed") return b.lastReviewed.localeCompare(a.lastReviewed) || byName(a, b);
     if (sort === "released") {
@@ -327,13 +354,13 @@ export function sortArtifacts(items: ArtifactListItem[], sort: ArtifactSort): Ar
       if (b.releasedAt) return 1;
       return byName(a, b);
     }
-    return byName(a, b);
+    return nameRelevance(b.name, query) - nameRelevance(a.name, query) || byName(a, b);
   });
   return copy;
 }
 
 export function filterArtifacts(items: ArtifactListItem[], f: ArtifactFilters): ArtifactListItem[] {
-  return sortArtifacts(items.filter((i) => artifactMatches(i, f)), f.sort);
+  return sortArtifacts(items.filter((i) => artifactMatches(i, f)), f.sort, f.q);
 }
 
 export function activeFilterCount(f: ArtifactFilters | OrgFilters): number {

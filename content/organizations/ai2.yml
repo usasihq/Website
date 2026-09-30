@@ -2,89 +2,91 @@ slug: ai2
 name: Ai2 (Allen Institute for AI)
 legal_name:
   text: The Allen Institute for Artificial Intelligence
-  source_ids: [irs-eo-bmf-wa]
+  source_ids: [ irs-eo-bmf-wa ]
 website: https://allenai.org
 logo_text: Ai2
 summary:
   text: >-
-    Ai2 is a non-profit AI research institute in Seattle, founded in 2014 by Paul Allen. Its
-    work covers open models and training data, as well as robotics, conservation, and other
-    applied research.
-  source_ids: [ai2-about]
-organization_roles: [model-developer, research-lab, nonprofit-research]
+    Ai2 is a non-profit AI research institute in Seattle, founded in 2014 by
+    Paul Allen. Its work covers open models and training data, as well as
+    robotics, conservation, and other applied research.
+  source_ids: [ ai2-about ]
+organization_roles: [ model-developer, research-lab, nonprofit-research ]
 ownership_category: nonprofit
 legal_form:
   text: >-
-    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
-    classifies it as a private operating foundation.
-  source_ids: [irs-eo-bmf-wa, irs-eo-info]
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3); the
+    IRS extract classifies it as a private operating foundation.
+  source_ids: [ irs-eo-bmf-wa, irs-eo-info ]
 parent_org_slug: null
 parent_relationship: null
 headquarters:
   label: Seattle, Washington
   country: US
-  source_ids: [ai2-about, ai2-contact]
+  source_ids: [ ai2-about, ai2-contact ]
 other_locations: []
 founded:
   year: 2014
-  source_ids: [ai2-about]
-sectors: [open-models, research, data]
+  source_ids: [ ai2-about ]
+sectors: [ open-models, research, data ]
 status_note: null
 products:
   - id: ai2-playground
     name: Ai2 Playground
     kind: assistant-app
     access: >-
-      Web chat interface for trying Ai2 models such as Olmo 3, including the OlmoTrace tool
-      for tracing parts of a response back to training data.
+      Web chat interface for trying Ai2 models such as Olmo 3, including the
+      OlmoTrace tool for tracing parts of a response back to training data.
     url: https://playground.allenai.org
-    source_ids: [ai2-olmo-page, ai2-olmo3-blog]
+    source_ids: [ ai2-olmo-page, ai2-olmo3-blog ]
     last_reviewed: 2026-09-29
   - id: asta
     name: Asta
     kind: assistant-app
     access: >-
-      Agentic research assistant for scholarly tasks, used on the web at asta.allen.ai; the
-      Asta page also covers the AstaBench benchmark suite and developer resources and invites
-      users to sign up for a preview.
+      Agentic research assistant for scholarly tasks, used on the web at
+      asta.allen.ai; the Asta page also covers the AstaBench benchmark suite and
+      developer resources and invites users to sign up for a preview.
     url: https://asta.allen.ai
-    source_ids: [ai2-asta]
+    source_ids: [ ai2-asta ]
     last_reviewed: 2026-09-29
   - id: semantic-scholar
     name: Semantic Scholar
     kind: other
     access: >-
-      Free AI-assisted search and discovery service for research literature, with the
-      Semantic Scholar Academic Graph datasets and APIs for developers.
+      Free AI-assisted search and discovery service for research literature,
+      with the Semantic Scholar Academic Graph datasets and APIs for developers.
     url: https://www.semanticscholar.org
-    source_ids: [s2-about]
+    source_ids: [ s2-about ]
     last_reviewed: 2026-09-29
 notable_facts:
   - text: >-
-      Ai2's developer documentation directs users who want hosted API access to Olmo models to
-      OpenRouter and to Ai2's inference providers Cirrascale and Parasail.
-    source_ids: [ai2-docs-apis]
+      Ai2's developer documentation directs users who want hosted API access to
+      Olmo models to OpenRouter and to Ai2's inference providers Cirrascale and
+      Parasail.
+    source_ids: [ ai2-docs-apis ]
 eligibility:
   status: eligible
   basis: us-nonprofit-or-lab
   explanation: >-
-    Ai2 describes itself as a Seattle-based non-profit AI research institute, and its contact
-    page lists a Seattle, Washington address. The IRS exempt-organization extract for
-    Washington lists The Allen Institute for Artificial Intelligence in Seattle as a
-    501(c)(3) organization.
-  source_ids: [ai2-about, ai2-contact, irs-eo-bmf-wa]
+    Ai2 describes itself as a Seattle-based non-profit AI research institute,
+    and its contact page lists a Seattle, Washington address. The IRS
+    exempt-organization extract for Washington lists The Allen Institute for
+    Artificial Intelligence in Seattle as a 501(c)(3) organization.
+  source_ids: [ ai2-about, ai2-contact, irs-eo-bmf-wa ]
   assessed_at: 2026-09-29
 openness_summary:
   text: >-
-    Ai2's developer documentation states that it releases training code, training data, model
-    weights, and recipes for its flagship models. This catalog assesses openness release by
-    release (see the OLMo release records), not for the organization as a whole; Asta and
-    Semantic Scholar are hosted services.
-  source_ids: [ai2-docs-intro, ai2-asta, s2-about]
+    Ai2's developer documentation states that it releases training code,
+    training data, model weights, and recipes for its flagship models. This
+    catalog assesses openness release by release (see the OLMo release records),
+    not for the organization as a whole; Asta and Semantic Scholar are hosted
+    services.
+  source_ids: [ ai2-docs-intro, ai2-asta, s2-about ]
 hiring_url: https://allenai.org/careers
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-09-30
 last_reviewed: 2026-09-29
 sources:
   - id: ai2-about
@@ -157,3 +159,64 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-about
+    title: About Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    accessed_at: 2026-09-30
+    reviewed_at: 2026-09-30
+  - id: review-olmo
+    title: Olmo models and model flow
+    url: https://allenai.org/olmo
+    publisher: Ai2
+    kind: official-page
+    accessed_at: 2026-09-30
+    reviewed_at: 2026-09-30
+  - id: review-docs
+    title: Ai2 documentation
+    url: https://docs.allenai.org/
+    publisher: Ai2
+    kind: documentation
+    accessed_at: 2026-09-30
+    reviewed_at: 2026-09-30
+ownership_evidence:
+  text: Ai2 describes itself as a nonprofit AI research institute. This
+    organizational status is independent of the terms of each released artifact.
+  source_ids:
+    - review-about
+  reviewed_at: 2026-09-30
+profile:
+  intended_users:
+    text: Olmo is presented for research and development, with model-flow resources
+      for studying and building language models.
+    source_ids:
+      - review-olmo
+    reviewed_at: 2026-09-30
+  access_overview:
+    text: The Olmo page links model and training-data downloads, OlmoCore training
+      tools, preprocessing tools and evaluation resources. Inspect the specific
+      version linked in the catalog for its actual coverage.
+    source_ids:
+      - review-olmo
+    reviewed_at: 2026-09-30
+  limitations:
+    text: Availability across the project is not proof that every release has
+      complete information or the same license. This profile links primary
+      resources; a release-level rights and completeness audit remains separate.
+    source_ids:
+      - review-olmo
+    reviewed_at: 2026-09-30
+  resources:
+    - label: Olmo models, data and training resources
+      url: https://allenai.org/olmo
+      kind: documentation
+      source_ids:
+        - review-olmo
+      reviewed_at: 2026-09-30
+    - label: Ai2 documentation
+      url: https://docs.allenai.org/
+      kind: documentation
+      source_ids:
+        - review-docs
+      reviewed_at: 2026-09-30

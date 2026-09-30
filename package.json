@@ -25,7 +25,8 @@
     "report:reviews": "tsx scripts/report-reviews.ts",
     "preview:static": "node scripts/serve-static.mjs",
     "preview:cloudflare": "wrangler dev --port 8787",
-    "deploy:cloudflare": "wrangler deploy"
+    "deploy:cloudflare": "wrangler deploy",
+    "review:sources": "tsx scripts/source-review-queue.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",

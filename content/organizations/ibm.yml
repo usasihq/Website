@@ -2,82 +2,86 @@ slug: ibm
 name: IBM
 legal_name:
   text: International Business Machines Corporation
-  source_ids: [ibm-10k-2025]
+  source_ids: [ ibm-10k-2025 ]
 website: https://www.ibm.com
 logo_text: IBM
 summary:
   text: >-
-    IBM is a publicly traded technology company. In AI, it develops the Granite family of models
-    and sells the watsonx products for building, running, and governing AI models and agents.
-  source_ids: [ibm-10k-2025, ibm-granite-page, ibm-watsonx-ai]
-organization_roles: [model-developer, enterprise-software]
+    IBM is a publicly traded technology company. In AI, it develops the Granite
+    family of models and sells the watsonx products for building, running, and
+    governing AI models and agents.
+  source_ids: [ ibm-10k-2025, ibm-granite-page, ibm-watsonx-ai ]
+organization_roles: [ model-developer, enterprise-software ]
 ownership_category: publicly-traded
 legal_form:
   text: New York corporation
-  source_ids: [ibm-10k-2025]
+  source_ids: [ ibm-10k-2025 ]
 parent_org_slug: null
 parent_relationship: null
 headquarters:
   label: Armonk, New York
   country: US
-  source_ids: [ibm-10k-2025]
+  source_ids: [ ibm-10k-2025 ]
 other_locations: []
 founded:
   year: 1911
-  source_ids: [ibm-10k-2025]
-sectors: [enterprise, open-models]
+  source_ids: [ ibm-10k-2025 ]
+sectors: [ enterprise, open-models ]
 status_note: null
 products:
   - id: watsonx-ai
     name: IBM watsonx.ai
     kind: hosted-model-api
     access: >-
-      Cloud service with trial, Essentials, and Standard plans that offers IBM Granite and
-      third-party foundation models for inferencing, including chat and tool-calling APIs, and
-      supports imported custom models.
+      Cloud service with trial, Essentials, and Standard plans that offers IBM
+      Granite and third-party foundation models for inferencing, including chat
+      and tool-calling APIs, and supports imported custom models.
     url: https://www.ibm.com/products/watsonx-ai
-    source_ids: [ibm-watsonx-ai, ibm-watsonx-choosing-model]
+    source_ids: [ ibm-watsonx-ai, ibm-watsonx-choosing-model ]
     last_reviewed: 2026-09-29
   - id: watsonx-orchestrate
     name: IBM watsonx Orchestrate
     kind: enterprise-software
     access: >-
-      Platform for building and managing AI agents, deployable on IBM Cloud, AWS, and other
-      clouds or on premises; 30-day trial and paid plans.
+      Platform for building and managing AI agents, deployable on IBM Cloud,
+      AWS, and other clouds or on premises; 30-day trial and paid plans.
     url: https://www.ibm.com/products/watsonx-orchestrate
-    source_ids: [ibm-watsonx-orchestrate]
+    source_ids: [ ibm-watsonx-orchestrate ]
     last_reviewed: 2026-09-29
   - id: watsonx-governance
     name: IBM watsonx.governance
     kind: enterprise-software
     access: >-
-      AI governance and risk-management software for cloud and on-premises environments;
-      14-day trial and paid purchase options.
+      AI governance and risk-management software for cloud and on-premises
+      environments; 14-day trial and paid purchase options.
     url: https://www.ibm.com/products/watsonx-governance
-    source_ids: [ibm-watsonx-governance]
+    source_ids: [ ibm-watsonx-governance ]
     last_reviewed: 2026-09-29
 notable_facts:
   - text: >-
-      IBM's Granite page lists language, speech, vision, guardian, embedding, and time-series
-      model lines, available through Hugging Face, watsonx.ai, and other platforms.
-    source_ids: [ibm-granite-page]
+      IBM's Granite page lists language, speech, vision, guardian, embedding,
+      and time-series model lines, available through Hugging Face, watsonx.ai,
+      and other platforms.
+    source_ids: [ ibm-granite-page ]
 eligibility:
   status: eligible
   basis: us-headquarters
   explanation: >-
-    IBM's Form 10-K for fiscal 2025 lists its principal executive offices at One New Orchard
-    Road, Armonk, New York, and its state of incorporation as New York.
-  source_ids: [ibm-10k-2025]
+    IBM's Form 10-K for fiscal 2025 lists its principal executive offices at One
+    New Orchard Road, Armonk, New York, and its state of incorporation as New
+    York.
+  source_ids: [ ibm-10k-2025 ]
   assessed_at: 2026-09-29
 openness_summary:
   text: >-
-    IBM publishes Granite model weights on Hugging Face. The Granite 4.2 8B model card states
-    the Apache License 2.0. IBM's watsonx products are commercial services.
-  source_ids: [granite-4-2-8b-card, ibm-granite-page, ibm-watsonx-ai]
+    IBM publishes Granite model weights on Hugging Face. The Granite 4.2 8B
+    model card states the Apache License 2.0. IBM's watsonx products are
+    commercial services.
+  source_ids: [ granite-4-2-8b-card, ibm-granite-page, ibm-watsonx-ai ]
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-09-30
 last_reviewed: 2026-09-29
 sources:
   - id: ibm-10k-2025
@@ -129,3 +133,81 @@ sources:
     kind: model-card
     published_at: 2026-08-25
     accessed_at: 2026-09-29
+  - id: review-granite
+    title: IBM Granite
+    url: https://www.ibm.com/granite
+    publisher: IBM
+    kind: official-page
+    accessed_at: 2026-09-30
+    reviewed_at: 2026-09-30
+  - id: review-watsonx
+    title: IBM watsonx.ai
+    url: https://www.ibm.com/products/watsonx-ai
+    publisher: IBM
+    kind: official-page
+    accessed_at: 2026-09-30
+    reviewed_at: 2026-09-30
+  - id: review-investor
+    title: IBM investor relations
+    url: https://www.ibm.com/investor
+    publisher: IBM
+    kind: official-page
+    accessed_at: 2026-09-30
+    reviewed_at: 2026-09-30
+  - id: review-pricing-details
+    title: watsonx.ai pricing
+    url: https://www.ibm.com/products/watsonx-ai/pricing
+    publisher: IBM
+    kind: documentation
+    accessed_at: 2026-09-30
+    reviewed_at: 2026-09-30
+ownership_evidence:
+  text: IBM publishes investor information for its publicly traded common stock.
+    Stock ownership and model licensing are separate questions.
+  source_ids:
+    - review-investor
+  reviewed_at: 2026-09-30
+profile:
+  intended_users:
+    text: IBM presents Granite for enterprise workloads and watsonx.ai for
+      organizations building and deploying AI applications.
+    source_ids:
+      - review-granite
+      - review-watsonx
+    reviewed_at: 2026-09-30
+  access_overview:
+    text: Granite offers downloadable model releases, while watsonx.ai supplies a
+      hosted platform. A hosted deployment of a downloadable model does not make
+      that model closed.
+    source_ids:
+      - review-granite
+      - review-watsonx
+    reviewed_at: 2026-09-30
+  limitations:
+    text: IBM describes Granite models as Apache 2.0 licensed; review each release
+      card and license before reuse. watsonx.ai plans and third-party models
+      have their own terms. No family-wide training-data rights conclusion is
+      implied.
+    source_ids:
+      - review-granite
+      - review-watsonx
+    reviewed_at: 2026-09-30
+  resources:
+    - label: watsonx.ai documentation and pricing options
+      url: https://www.ibm.com/products/watsonx-ai
+      kind: pricing
+      source_ids:
+        - review-watsonx
+      reviewed_at: 2026-09-30
+    - label: Granite model downloads and resources
+      url: https://www.ibm.com/granite
+      kind: model-hub
+      source_ids:
+        - review-granite
+      reviewed_at: 2026-09-30
+    - label: watsonx.ai pricing
+      url: https://www.ibm.com/products/watsonx-ai/pricing
+      kind: pricing
+      source_ids:
+        - review-pricing-details
+      reviewed_at: 2026-09-30

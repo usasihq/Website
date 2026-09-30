@@ -9,6 +9,7 @@ export function ClaimText({ claim, sources, className = "" }: { claim: Claim; so
     <p className={className}>
       {claim.text}
       <SourceRefs ids={claim.source_ids} sources={sources} />
+      {claim.reviewed_at ? <span className="meta ml-2 text-xs">Fact reviewed {formatDate(claim.reviewed_at)}{claim.effective_at ? ` · effective ${formatDate(claim.effective_at)}` : ""}</span> : null}
     </p>
   );
 }

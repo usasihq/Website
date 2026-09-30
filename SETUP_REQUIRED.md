@@ -4,8 +4,8 @@ Everything below needs a decision, an account, or access that only the site
 owner has. The site builds and works without any of it; each missing item is
 shown honestly on the site rather than faked.
 
-Nothing has been deployed, no DNS has been changed, and no accounts have been
-created.
+The site is deployed on its existing Cloudflare account. This checklist records
+remaining owner-managed settings; local builds do not create accounts or alter DNS.
 
 ## 1. Source repository
 
@@ -55,9 +55,17 @@ Remaining owner steps in the Cloudflare dashboard:
       effect after a visitor's first HTTPS visit).
 - [ ] Optional: Rules → Redirect Rules → "Redirect from WWW to root" (301). Both
       addresses already serve the site; canonical URLs point to the apex.
-- [ ] Keep **Rocket Loader**, **Email Address Obfuscation**, and **Web Analytics
-      automatic setup** off (verified off at launch): they inject scripts, which
-      the per-page CSP blocks, and analytics would contradict the Privacy page.
+- [ ] Keep **Rocket Loader** and **Email Address Obfuscation** off: their injected
+      scripts are not allowed by the per-page CSP.
+- [ ] Web Analytics: publish this analytics-only CSP/privacy update first. Then
+      open Cloudflare → Web Analytics and check for the existing USASI site.
+      Use Manage site if present; add the proxied hostname only if absent.
+      Selecting Done for a new proxied site enables injection immediately.
+      Use free automatic setup, with no manual beacon as well (avoid duplicates).
+      If Exclude Bots is available, select it and verify its state; do not enable
+      bot blocking or a paid plan. Confirm the beacon loads without CSP violations
+      and sends measurement requests before relying on dashboard statistics.
+      Never create or paste an account API key for this step.
 - [ ] Optional: automatic deploys from GitHub (see README). Not needed for the
       Local corner, which rotates in the browser.
 - [ ] Optional, later: HSTS preload once HTTPS is enforced everywhere.

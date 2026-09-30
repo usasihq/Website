@@ -4,7 +4,8 @@
  *
  * 1. Adds a per-page Content-Security-Policy <meta> whose script-src lists the
  *    SHA-256 hash of every inline script on that page. Combined with the
- *    header CSP from public/_headers, only the site's own inline scripts run.
+ *    header CSP from public/_headers, only matching inline scripts run. The
+ *    Cloudflare beacon host is permitted; collection remains same-origin.
  * 2. Verifies the export: required files exist, and no draft / non-published
  *    record leaked into routes, data exports, or the sitemap.
  *
@@ -52,7 +53,7 @@ for (const file of htmlFiles) {
   }
   const policy = [
     "default-src 'self'",
-    `script-src 'self' ${[...hashes].join(" ")}`.trim(),
+    `script-src 'self' https://static.cloudflareinsights.com ${[...hashes].join(" ")}`.trim(),
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data:",
     "font-src 'self'",

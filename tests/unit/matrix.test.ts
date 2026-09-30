@@ -23,7 +23,7 @@ function resolve(href: string, data: ReturnType<typeof setup>) {
 
 for (const [label, catalog] of [
   ["fixtures", new Catalog(validateContent(fixtureContent(), { today: TODAY }))],
-  ["real content", loadCatalog(path.join(process.cwd(), "content"), { today: TODAY })],
+  ["real content", loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10) })],
 ] as const) {
   describe(`matrix (${label})`, () => {
     const data = setup(catalog);

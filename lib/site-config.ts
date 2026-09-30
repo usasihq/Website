@@ -20,6 +20,9 @@
  *                         https://buttondown.com/<username>. Null shows an
  *                         honest "coming soon" state. The site never collects
  *                         email addresses itself.
+ *  homepageSponsor       Null until an actual sponsor is agreed. Configure one
+ *                        factual message, a local raster logo in /images/sponsors/,
+ *                        and a query-free https destination. No embeds or trackers.
  *  contact.email          Public contact address (corrections, questions).
  *  socials                Official USASI profiles, shown as plain outbound
  *                         links (no embeds, widgets, or tracking scripts).
@@ -32,7 +35,7 @@ import { z } from "zod";
 const RAW_CONFIG = {
   name: "United States of America Superintelligence",
   shortName: "USASI",
-  tagline: "American AI, infrastructure, and innovation.",
+  tagline: "American Super Intelligence, infrastructure, and innovation.",
   domain: "unitedstatesofamericasuperintelligence.com",
   disclaimer: "Independent project. Not a United States government website.",
   support: {
@@ -52,6 +55,7 @@ const RAW_CONFIG = {
     provider: "Buttondown" as string | null,
     url: null as string | null,
   },
+  homepageSponsor: null as HomepageSponsorConfig | null,
   contact: {
     email: "usasihq@gmail.com" as string | null,
   },
@@ -144,6 +148,16 @@ const NewsletterSchema = z
   .strict();
 export type NewsletterConfig = z.infer<typeof NewsletterSchema>;
 
+/** One owner-reviewed advertisement. Null means no markup or reserved space. */
+export const HomepageSponsorSchema = z.object({
+  name: z.string().trim().min(1).max(80),
+  description: z.string().trim().min(1).max(220),
+  url: HttpsLink.refine((value) => safeHttpsUrl(value) && !new URL(value).search, "Sponsor links must not contain query parameters or tracking identifiers"),
+  linkLabel: z.string().trim().min(1).max(60),
+  logo: z.string().regex(/^\/images\/sponsors\/[A-Za-z0-9][A-Za-z0-9_-]*\.(png|jpe?g|webp|avif)$/, "Use a local raster logo in /images/sponsors/"),
+}).strict();
+export type HomepageSponsorConfig = z.infer<typeof HomepageSponsorSchema>;
+
 const ContactSchema = z
   .object({
     email: z
@@ -171,6 +185,7 @@ const SiteConfigSchema = z
     disclaimer: z.string(),
     support: SupportConfigSchema,
     newsletter: NewsletterSchema,
+    homepageSponsor: HomepageSponsorSchema.nullable(),
     contact: ContactSchema,
     socials: z.array(SocialSchema).max(10),
     repository: RepositoryConfigSchema,

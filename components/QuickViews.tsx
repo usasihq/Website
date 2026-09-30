@@ -32,7 +32,7 @@ const ORG_VIEWS: Array<{ label: string; filters: Partial<OrgFilters> }> = [
 const ARTIFACT_VIEWS: Array<{ label: string; filters: Partial<ArtifactFilters> }> = [
   { label: "Model releases", filters: { kind: "model", level: "release" } },
   { label: "Open-weight releases", filters: { kind: "model", level: "release", tier: "open-weight" } },
-  { label: "Open-stack and fully open", filters: { kind: "model", level: "release", tier: "open-stack" } },
+  { label: "Open-stack and open system (reviewed)", filters: { kind: "model", level: "release", tier: "open-stack" } },
   { label: "Frameworks", filters: { kind: "framework" } },
   { label: "Runtimes", filters: { kind: "runtime" } },
   { label: "Datasets", filters: { kind: "dataset" } },

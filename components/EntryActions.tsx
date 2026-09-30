@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FilePen, MessageSquareWarning } from "lucide-react";
-import { editUrl, issueUrl } from "@/lib/paths";
+import { absoluteUrl, editUrl, issueUrl } from "@/lib/paths";
 import { mailtoHref, siteConfig } from "@/lib/site-config";
 
 /**
@@ -9,6 +9,9 @@ import { mailtoHref, siteConfig } from "@/lib/site-config";
  * no fake links.
  */
 export function EntryActions({ contentPath, title }: { contentPath: string; title: string }) {
+  const slug = contentPath.split("/").pop()!.replace(/\.yml$/, "");
+  const section = contentPath.includes("organizations/") ? "companies" : contentPath.includes("artifacts/") ? "open" : contentPath.includes("people/") ? "local" : "news";
+  const correction = siteConfig.contact.email ? mailtoHref(siteConfig.contact.email, `Correction: ${title}`, `Entry URL: ${absoluteUrl(`/${section}/${slug}/`)}\nEntry file: ${contentPath}\n\nDisputed field:\n\nProposed correction:\n\nSupporting primary source (URL):\n\nEffective date (if known):\n`) : null;
   const edit = editUrl(contentPath);
   const report = issueUrl("correction.yml", `Correction: ${title}`, { entry: contentPath });
 
@@ -47,6 +50,7 @@ export function EntryActions({ contentPath, title }: { contentPath: string; titl
 
   return (
     <div className="flex flex-wrap gap-3">
+      {correction ? <a href={correction} className="btn btn-primary">Email a correction<span className="sr-only"> (opens your email app; no account on USASI needed)</span></a> : null}
       <a href={report} className="btn btn-secondary" rel="noopener noreferrer">
         <MessageSquareWarning aria-hidden="true" className="h-4 w-4" />
         Report a correction

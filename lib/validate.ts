@@ -170,6 +170,17 @@ function checkRecordCommon(record: AnyRecord, today: string, issues: ValidationI
     }
   });
 
+  // Fact-level dates never inherit a build timestamp or a record-wide review.
+  function validateFactDates(value: unknown, path = "") {
+    if (!value || typeof value !== "object") return;
+    for (const [key, child] of Object.entries(value)) {
+      const next = path ? `${path}.${key}` : key;
+      if (["reviewed_at", "fetched_at", "effective_at"].includes(key) && typeof child === "string" && datePrefixAfter(child, today)) push("error", `${key} is in the future`, next);
+      if (child && typeof child === "object") validateFactDates(child, next);
+    }
+  }
+  validateFactDates(record);
+
   // Editorial dates.
   if (record.updated_at > today) push("error", "updated_at is in the future", "updated_at");
   if (record.last_reviewed && record.last_reviewed > today) push("error", "last_reviewed is in the future", "last_reviewed");

@@ -113,3 +113,28 @@ describe("organization sort by catalog contributions", () => {
     expect(parseOrgFilters(new URLSearchParams(serializeOrgFilters({ ...DEFAULT_ORG_FILTERS, sort: "artifacts" }))).sort).toBe("artifacts");
   });
 });
+
+describe("directory name relevance", () => {
+  const names = ["Arcee", "OpenAI Research", "OpenAI", "Zeta"];
+  const orgItems = names.map((name, i) => ({ ...orgs[0], name, slug: `org-${i}`, summary: "OpenAI tools", artifactCount: i, lastReviewed: `2026-09-0${i + 1}` }));
+  const artifactItems = names.map((name, i) => ({ ...artifacts[0], name, slug: `artifact-${i}`, summary: "OpenAI tools" }));
+
+  it("ranks exact names, prefixes, then alphabetical description matches in both directories", () => {
+    for (const query of ["OpenAI", "  OPENAI  ", "OpénAI"]) {
+      expect(filterOrganizations(orgItems, { ...DEFAULT_ORG_FILTERS, q: query }).map((o) => o.name)).toEqual(["OpenAI", "OpenAI Research", "Arcee", "Zeta"]);
+      expect(filterArtifacts(artifactItems, { ...DEFAULT_ARTIFACT_FILTERS, q: query }).map((o) => o.name)).toEqual(["OpenAI", "OpenAI Research", "Arcee", "Zeta"]);
+    }
+  });
+
+  it("preserves explicit sorting and AND filters, and restores alphabetical order when empty", () => {
+    expect(filterOrganizations(orgItems, { ...DEFAULT_ORG_FILTERS, q: "OpenAI", sort: "artifacts" })[0].name).toBe("Zeta");
+    expect(filterOrganizations(orgItems, { ...DEFAULT_ORG_FILTERS, q: "OpenAI", sector: "robotics" })).toEqual([]);
+    expect(filterOrganizations(orgItems, DEFAULT_ORG_FILTERS).map((o) => o.name)).toEqual(["Arcee", "OpenAI", "OpenAI Research", "Zeta"]);
+    expect(filterArtifacts(artifactItems, { ...DEFAULT_ARTIFACT_FILTERS, q: "!!!" }).map((o) => o.name)).toEqual(["Arcee", "OpenAI", "OpenAI Research", "Zeta"]);
+  });
+
+  it("breaks equal-name ties by stable slug regardless of input order", () => {
+    const items = ["b", "a"].map((slug) => ({ ...orgItems[0], name: "OpenAI", slug }));
+    expect(filterOrganizations(items, { ...DEFAULT_ORG_FILTERS, q: "OpenAI" }).map((o) => o.slug)).toEqual(["a", "b"]);
+  });
+});

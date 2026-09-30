@@ -1,5 +1,5 @@
 /**
- * USASI openness rubric v0.1.
+ * USASI openness rubric v0.2.
  *
  * Type-specific public-materials checklists and the model-disclosure tiers.
  * These are USASI editorial categories, not an external certification.
@@ -10,7 +10,7 @@
  */
 import type { Artifact, ArtifactKind, AvailabilityStatus, ChecklistItem } from "./schema";
 
-export const RUBRIC_VERSION = "0.1";
+export const RUBRIC_VERSION = "0.2";
 export const RUBRIC_LABEL = `USASI rubric v${RUBRIC_VERSION}`;
 
 export interface ChecklistDefinition {
@@ -27,8 +27,11 @@ const MODEL_CHECKLIST: ChecklistDefinition[] = [
     key: "training_data_information",
     label: "Training-data information",
     question:
-      "Public = the training data itself can be obtained. Partial = composition or sources are documented without full access.",
+      "Does the information cover provenance, scope, acquisition, selection, labeling, processing, and where data or alternatives can be obtained? Access alone does not establish completeness.",
   },
+  { key: "training_data_access", label: "Training-data access", question: "Can the training data be obtained? This is independent of information completeness and reuse rights; original unshareable data need not be downloadable." },
+  { key: "training_pipeline", label: "Complete training pipeline", question: "Is the complete base-training and preprocessing pipeline published, including configuration? Fine-tuning code or an inference SDK alone is insufficient." },
+  { key: "legacy_training_data_information", label: "Legacy data assessment (v0.1)", question: "Historical assessment combining download access and disclosure. Preserved for traceability; excluded from the v0.2 tier calculation. See the new separate assessments above." },
   { key: "training_recipe", label: "Training recipe", question: "Are the training configuration and procedure documented in enough detail to follow?" },
   {
     key: "evaluation_materials",
@@ -139,7 +142,7 @@ export const CUMULATIVE_TIERS = ["open-weight", "open-stack", "fully-open"] as c
 export type CumulativeTier = (typeof CUMULATIVE_TIERS)[number];
 
 export const TIER_LABELS: Record<ModelTier, string> = {
-  "fully-open": "Fully open",
+  "fully-open": "Open system (reviewed)",
   "open-stack": "Open-stack",
   "open-weight": "Open-weight",
   "restricted-weights": "Restricted weights",
@@ -153,14 +156,14 @@ export const TIER_DESCRIPTIONS: Record<ModelTier, string> = {
   "open-stack":
     "Open-weight, plus published inference code, training code, and training recipe, and at least documented training-data composition.",
   "fully-open":
-    "Every item in the model checklist is public, including the training data itself, and the weights and code are under OSI-approved licenses.",
+    "Open-stack with complete data information and training pipeline, plus an explicit sourced review of parameter, code, and data-information reuse rights. A USASI assessment, not OSI certification; original training data need not all be downloadable.",
   "restricted-weights":
     "The weights can be obtained only by request, with approval, or by some users — for example a gated download that the publisher reviews. Not counted as open-weight.",
   "weights-not-public": "The weights for this release are documented as not publicly available.",
   unknown: "The availability of the weights has not been assessed, or the evidence is insufficient.",
 };
 
-type TierInput = Pick<Artifact, "kind" | "record_level" | "checklist" | "licenses">;
+type TierInput = Pick<Artifact, "kind" | "record_level" | "checklist" | "licenses"> & Partial<Pick<Artifact, "system_openness_review">>;
 
 function licensesFor(artifact: TierInput, target: "weights" | "code") {
   return artifact.licenses.filter(
@@ -184,15 +187,11 @@ export function computeTier(artifact: TierInput): ModelTier | null {
     (s("training_data_information") === "public" || s("training_data_information") === "partial");
   if (!openStack) return "open-weight";
 
-  const allPublic = CHECKLISTS.model.every((d) => s(d.key) === "public");
-  const weightLicenses = licensesFor(artifact, "weights");
-  const codeLicenses = licensesFor(artifact, "code");
-  const osi =
-    weightLicenses.length > 0 &&
-    codeLicenses.length > 0 &&
-    [...weightLicenses, ...codeLicenses].every((l) => isOsiApproved(l.spdx));
-
-  return allPublic && osi ? "fully-open" : "open-stack";
+  // Availability and software-license identifiers alone cannot establish an
+  // open AI system. A release-specific rights/completeness review is mandatory.
+  const review = artifact.system_openness_review;
+  const complete = s("training_data_information") === "public" && s("training_pipeline") === "public";
+  return complete && review?.status === "verified" && Object.values(review.permissions).every(value => value === "qualifying") ? "fully-open" : "open-stack";
 }
 
 /** Whether a release satisfies a cumulative tier (fully open ⊂ open-stack ⊂ open-weight). */
@@ -223,4 +222,14 @@ export function licenseCaveats(artifact: TierInput): string[] {
     caveats.push("The weights are under a license that is not on the rubric's OSI-approved list. Read its terms before use.");
   }
   return caveats;
+}
+
+/** Open data/content licenses are not called OSI-approved software licenses. */
+export const OPEN_DATA_SPDX = new Set(["CC0-1.0", "CC-BY-4.0", "CC-BY-SA-4.0", "ODC-By-1.0", "ODbL-1.0", "PDDL-1.0"]);
+export function componentRights(licenses: Artifact["licenses"], component: "weights" | "code" | "data" | "documentation"): "qualifying-license" | "review-required" | "unknown" {
+  const relevant = licenses.filter(l => l.applies_to === component || l.applies_to === "all" || (l.applies_to === "weights-and-code" && (component === "weights" || component === "code")));
+  if (!relevant.length || relevant.some(l => !l.spdx || !l.reviewed_at)) return "unknown";
+  // Multiple records may be cumulative or alternatives; do not guess which.
+  if (new Set(relevant.map(l => l.spdx)).size > 1) return "review-required";
+  return relevant.every(l => isOsiApproved(l.spdx) || ((component === "data" || component === "documentation") && OPEN_DATA_SPDX.has(l.spdx!))) ? "qualifying-license" : "review-required";
 }

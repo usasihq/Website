@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpenCheck, Building2, Boxes, Landmark, Scale } from "lucide-react";
 import { EntryTypeBadge, Monogram } from "@/components/Badges";
 import { CoverageTable } from "@/components/CoverageTable";
+import { HomepageSponsor } from "@/components/HomepageSponsor";
 import { Hero } from "@/components/Hero";
 import { HomeSearch } from "@/components/HomeSearch";
 import { LocalCornerStrip } from "@/components/LocalCorner";
@@ -107,13 +108,13 @@ export default function HomePage() {
       {/* 1–2. Introduction, search, and the two directory actions, all on the first screen. Phones: heading, actions,
           then description (DOM order). Desktop: heading and description on the left, actions on the right. */}
       <section aria-labelledby="intro-heading" className="relative">
-        <div className="container-page pb-12 pt-4 sm:pt-8 lg:pb-14 lg:pt-5">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-x-14 lg:gap-y-4">
+        <div className="container-page pb-7 pt-3 sm:pt-4 lg:pb-8">
+          <div className="grid gap-4 sm:gap-5 lg:grid-cols-[1.1fr_1fr] lg:gap-x-14 lg:gap-y-4">
             <h1
               id="intro-heading"
-              className="text-center text-3xl font-semibold leading-tight text-text sm:text-4xl lg:col-start-1 lg:row-start-1 lg:self-end lg:text-left lg:text-[2.25rem]"
+              className="text-center text-2xl font-semibold leading-tight text-text sm:text-3xl lg:col-start-1 lg:row-start-1 lg:self-end lg:text-left lg:text-[2.25rem]"
             >
-              Explore the companies, models, and tools behind American AI.
+              Explore the companies, models, and tools behind American Super Intelligence.
             </h1>
             <div className="mx-auto w-full max-w-3xl lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:self-center">
               <HomeSearch indexUrl={asset("/data/search-index.json")} />
@@ -134,17 +135,27 @@ export default function HomePage() {
               </div>
             </div>
             <div className="text-center lg:col-start-1 lg:row-start-2 lg:self-start lg:text-left">
-              <p className="mx-auto max-w-2xl text-lg text-muted lg:mx-0">
+              <p className="mx-auto max-w-2xl text-base text-muted lg:mx-0">
                 An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is
                 available, and where to find the original sources.
               </p>
-              <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-[0.9375rem] text-text" data-testid="intro-disclaimer">
-                <Landmark aria-hidden="true" className="h-4 w-4 text-muted" />
+              <p className="mt-3 inline-flex items-center gap-2 rounded-xl border border-line px-4 py-1.5 text-[0.9375rem] text-text" data-testid="intro-disclaimer">
+                <Landmark aria-hidden="true" className="h-4 w-4 shrink-0 text-muted" />
                 {siteConfig.disclaimer}
               </p>
             </div>
           </div>
         </div>
+      </section>
+
+      <section aria-labelledby="project-heading" className="container-page pb-7">
+        <h2 id="project-heading" className="text-lg font-semibold text-text">About this project</h2>
+        <p className="mt-2 max-w-3xl text-sm text-muted">
+          USASI is an independent, unofficial catalog. Entries link claims to sources and record when the evidence was reviewed.
+          Missing evidence stays Unknown; unverified candidates stay out of the published catalog.{" "}
+          <Link href="/about/" className="link">About USASI</Link>{" · "}
+          <Link href="/methodology/" className="link">Review process and methodology</Link>
+        </p>
       </section>
 
       {/* 3. Two equally weighted directory previews */}
@@ -219,6 +230,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <HomepageSponsor />
 
       {/* Latest news and the weekly email: a reason to come back */}
       {catalog.news.length > 0 ? (
