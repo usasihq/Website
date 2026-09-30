@@ -20,6 +20,7 @@ const PAGES: Array<[string, string]> = [
   ["artifact", `/open/${release.slug}/`],
   ["matrix", "/matrix/"],
   ["support", "/support/"],
+  ["local", "/local/"],
   ["not-found", "/this-page-does-not-exist/"],
 ];
 
