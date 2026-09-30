@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { OrganizationJobs } from "@/components/OrganizationJobs";
+import { readJobs } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
 import { Monogram, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
 import { ArchivedNotice, ClaimText, EligibilityBlock, FactList, ReviewDates } from "@/components/DetailParts";
@@ -84,6 +86,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
   const org = catalog.organization(slug);
   if (!org) notFound();
 
+  const jobData = readJobs(catalog.organizations);
   const s = org.sources;
   const parent = catalog.parentOrganization(org);
   const children = catalog.childOrganizations(org.slug);
@@ -311,6 +314,11 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
               </ol>
             </Section>
           ) : null}
+
+          {catalog.isActiveOrganization(org.slug) ? <OrganizationJobs slug={org.slug} name={org.name} url={org.careers?.url ?? org.hiring_url}
+            enabled={Boolean(org.careers?.enabled)} asOf={catalog.buildAt}
+            jobCount={jobData.jobs.filter(j => j.organization_slug === org.slug && j.status === "open").length}
+            feed={jobData.feeds.find(f => f.organization_slug === org.slug) ?? null} /> : null}
 
           <Section id="eligibility" title="U.S. eligibility" description="How this record meets the catalog’s published eligibility policy.">
             <EligibilityBlock eligibility={org.eligibility} sources={s} />

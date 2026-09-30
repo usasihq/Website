@@ -9,6 +9,7 @@ import { BrandMark } from "./BrandMark";
 const NAV = [
   { href: "/companies/", label: "Companies & Labs" },
   { href: "/open/", label: "Open Models & Tools" },
+  { href: "/jobs/", label: "Jobs" },
   { href: "/matrix/", label: "Compare" },
   { href: "/news/", label: "News" },
   { href: "/methodology/", label: "Methodology" },
@@ -50,8 +51,8 @@ export function SiteHeader({ siteName, shortName }: { siteName: string; shortNam
         <Link href="/" prefetch={false} className="group flex min-w-0 items-center gap-3 rounded-md" aria-label={`${shortName} — ${siteName}, home`}>
           <BrandMark className="h-7 w-7 shrink-0" />
           <span className="text-[1.0625rem] font-semibold tracking-[0.06em] text-text">{shortName}</span>
-          <span aria-hidden="true" className="hidden h-5 w-px bg-line-strong xl:block" />
-          <span className="hidden truncate text-[0.9375rem] font-normal text-muted xl:block">{siteName}</span>
+          <span aria-hidden="true" className="hidden h-5 w-px bg-line-strong 2xl:block" />
+          <span className="hidden truncate text-[0.9375rem] font-normal text-muted 2xl:block">{siteName}</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden lg:block">

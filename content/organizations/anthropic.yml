@@ -80,6 +80,15 @@ openness_summary:
     has no record of public Claude model weights.
   source_ids: [hf-anthropic, claude-platform-docs]
 hiring_url: https://www.anthropic.com/careers
+careers:
+  url: https://www.anthropic.com/careers/jobs
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: anthropic
+  posting_hosts: []
+  source_ids: [anthropic-careers-jobs]
+  reviewed_at: 2026-09-30
 publication_status: published
 archive_note: null
 updated_at: 2026-09-29
@@ -155,3 +164,10 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+  - id: anthropic-careers-jobs
+    title: Official careers directory and application links
+    url: https://www.anthropic.com/careers/jobs
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-30

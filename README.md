@@ -313,3 +313,11 @@ and `index.html` for directory URLs; `_headers` is ignored there.
 - Original catalog prose: CC BY 4.0 ([CONTENT_LICENSE.md](CONTENT_LICENSE.md)).
 - Artwork: owner's, not licensed for reuse; fonts: SIL OFL 1.1; third-party names
   and marks belong to their owners ([THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
+
+## Jobs
+
+The `/jobs/` catalog uses first-party employer/official ATS sources configured on
+published organizations. See [Jobs architecture, source policy and operations](docs/JOBS.md)
+for setup, refresh scheduling, validation, reconciliation, supported adapters and limits.
+Run `npm run jobs:refresh` to fetch and reconcile supported feeds; ordinary builds are
+offline and use the validated snapshot. Applications remain on the employer's site.

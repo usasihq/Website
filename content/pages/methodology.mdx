@@ -92,3 +92,20 @@ Latest news items are short, dated updates about organizations and artifacts in 
 <h2 id="badges">Reading the badges</h2>
 
 Status badges always pair an icon with a text label, so no information depends on color. Numbered markers after a statement link to the source list at the bottom of the entry. Links marked with an arrow lead to external sites; everything else stays on USASI.
+
+
+<h2 id="jobs">Jobs: employer sources and freshness</h2>
+
+Jobs are machine-collected, transient records, separate from editorial catalog entries. Only published, eligible organizations already in Companies & Labs can supply jobs. Official employer career pages establish which ATS board belongs to each organization. Initial automated adapters support the public Greenhouse and Ashby job-board APIs; other organizations retain their official careers links without fabricated counts.
+
+USASI does not employ, represent, recruit for, or endorse listed organizations. Applications take place on the employer's official destination. No applicant profiles, resumes, accounts, or application tracking are collected.
+
+A recently confirmed position must still be open in the latest accepted source response, with a successful source check in the previous 48 hours. Cards show when the posting was last present in the feed. An employer can change a posting between checks. Older listings and sources needing attention are separated from the default current view. Dates are shown in UTC. Without JavaScript, the static snapshot is as of the site's generation time.
+
+A failed, malformed, redirected, oversized, or rate-limited response preserves previous job state. An unexpected empty response, or a drop greater than half from a feed of at least ten jobs, must be confirmed by an identical successful response at least six hours later. A job absent from an accepted response immediately leaves the current directory; closure requires another successful check at least 24 hours after the first absence. Reappearing jobs reopen. Closed records are retained privately in the generated dataset for at most 30 days after closure and have no individual public pages.
+
+Identity combines organization, source provider, source board, and source posting ID. Matching titles do not merge distinct requisitions. Exact duplicate records collapse; conflicting duplicate IDs reject a response. Multiple source-supplied locations on one posting stay together. Jobs do not create relationships to specific models or tools.
+
+Unknown fields stay unknown. Remote status and employment type require structured employer data; headquarters are never used as job locations. Departments are supplied by the source, not inferred categories. Publication dates retain the source's meaning: Ashby reports the latest publication, while Greenhouse can supply first publication. Salary ranges retain employer-supplied currency and period, are not guaranteed offers, and are never annualized, converted, or ranked across currencies. Salary minimum filtering requires a currency and period and compares the minimum of a disclosed range. Compensation hidden by the employer is not published.
+
+USASI publishes concise factual fields and links, not full job descriptions. Employer text is untrusted plain text; job destinations must use HTTPS on the approved ATS tenant or an explicitly reviewed employer host. The browser never contacts ATS APIs. The scheduled refresh fetches each supported feed serially, at most every six hours, without credentials, bypasses, or retries after access controls. Source health is visible in Jobs. Use each card's correction link to report a disputed field with an official supporting source.

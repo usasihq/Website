@@ -8,6 +8,7 @@
  * Enum values live in lib/enums.ts so client code can use them without Zod.
  */
 import { z } from "zod";
+import { Careers } from "./jobs/schema";
 import {
   ARTIFACT_KINDS,
   AVAILABILITY_STATUSES,
@@ -235,6 +236,7 @@ export const Organization = z
     eligibility: Eligibility,
     openness_summary: Claim.nullable().default(null),
     hiring_url: HttpsUrl.nullable().default(null),
+    careers: Careers.nullable().default(null),
     publication_status: PublicationStatus,
     archive_note: z.string().trim().min(10).nullable().default(null),
     updated_at: IsoDate,

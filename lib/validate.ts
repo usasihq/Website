@@ -248,6 +248,14 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     const push = (level: ValidationIssue["level"], message: string, path?: string) =>
       issues.push({ level, file: org.__file, path, message });
 
+    if (org.careers && org.careers.reviewed_at > today) push("error", "Career source review date is in the future", "careers.reviewed_at");
+    if (org.careers?.enabled) {
+      const source = org.careers.source;
+      if ("identifier" in source && organizations.some(other => other.slug !== org.slug && other.careers?.enabled && other.careers.source.type === source.type && "identifier" in other.careers.source && other.careers.source.identifier === source.identifier)) {
+        push("error", "An ATS board may belong to only one catalog organization; do not duplicate parent/unit jobs", "careers.source");
+      }
+    }
+
     const productIds = new Set<string>();
     org.products.forEach((p, i) => {
       if (productIds.has(p.id)) push("error", `Duplicate product id "${p.id}"`, `products[${i}].id`);

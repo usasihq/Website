@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "npm run prepare:data && next dev",
-    "validate": "tsx scripts/validate.ts",
+    "validate": "tsx scripts/validate.ts && npm run jobs:validate",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
@@ -26,7 +26,9 @@
     "preview:static": "node scripts/serve-static.mjs",
     "preview:cloudflare": "wrangler dev --port 8787",
     "deploy:cloudflare": "wrangler deploy",
-    "review:sources": "tsx scripts/source-review-queue.ts"
+    "review:sources": "tsx scripts/source-review-queue.ts",
+    "jobs:refresh": "tsx scripts/refresh-jobs.ts",
+    "jobs:validate": "tsx scripts/validate-jobs.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",

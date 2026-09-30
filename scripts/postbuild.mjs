@@ -89,6 +89,7 @@ const required = [
   "data/search-index.json",
   "companies/index.html",
   "open/index.html",
+  "jobs/index.html",
   "matrix/index.html",
   "compact/index.html",
   "methodology/index.html",
