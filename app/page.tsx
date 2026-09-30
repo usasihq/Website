@@ -5,6 +5,8 @@ import { CoverageTable } from "@/components/CoverageTable";
 import { Hero } from "@/components/Hero";
 import { HomeSearch } from "@/components/HomeSearch";
 import { LocalCornerStrip } from "@/components/LocalCorner";
+import { NewsCard } from "@/components/NewsList";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -102,34 +104,35 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Hero />
 
-      {/* 1–2. Introduction, search, and the two directory actions */}
+      {/* 1–2. Introduction, search, and the two directory actions (side by side on desktop, above the fold) */}
       <section aria-labelledby="intro-heading" className="relative">
-        <div className="container-page pb-14 pt-6 sm:pt-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 id="intro-heading" className="text-3xl font-semibold leading-tight text-text sm:text-4xl lg:text-[2.75rem]">
-              Explore the companies, models, and tools behind American AI.
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
-              An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is
-              available, and where to find the original sources.
-            </p>
-            <p className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-[0.9375rem] text-text" data-testid="intro-disclaimer">
-              <Landmark aria-hidden="true" className="h-4 w-4 text-muted" />
-              {siteConfig.disclaimer}
-            </p>
-          </div>
-
-          <div className="mx-auto mt-10 max-w-3xl">
-            <HomeSearch indexUrl={asset("/data/search-index.json")} />
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <Link href="/companies/" className="btn btn-primary min-h-14 text-base">
-                <Building2 aria-hidden="true" className="h-5 w-5" />
-                Explore Companies &amp; Labs
-              </Link>
-              <Link href="/open/" className="btn btn-primary min-h-14 text-base">
-                <Boxes aria-hidden="true" className="h-5 w-5" />
-                Explore Open Models &amp; Tools
-              </Link>
+        <div className="container-page pb-12 pt-6 sm:pt-8 lg:pb-14 lg:pt-5">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
+            <div className="text-center lg:text-left">
+              <h1 id="intro-heading" className="text-3xl font-semibold leading-tight text-text sm:text-4xl lg:text-[2.25rem]">
+                Explore the companies, models, and tools behind American AI.
+              </h1>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted lg:mx-0">
+                An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is
+                available, and where to find the original sources.
+              </p>
+              <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-[0.9375rem] text-text" data-testid="intro-disclaimer">
+                <Landmark aria-hidden="true" className="h-4 w-4 text-muted" />
+                {siteConfig.disclaimer}
+              </p>
+            </div>
+            <div className="mx-auto w-full max-w-3xl lg:mx-0">
+              <HomeSearch indexUrl={asset("/data/search-index.json")} />
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <Link href="/companies/" className="btn btn-primary min-h-13 text-base">
+                  <Building2 aria-hidden="true" className="h-5 w-5" />
+                  Explore Companies &amp; Labs
+                </Link>
+                <Link href="/open/" className="btn btn-primary min-h-13 text-base">
+                  <Boxes aria-hidden="true" className="h-5 w-5" />
+                  Explore Open Models &amp; Tools
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -207,6 +210,33 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Latest news and the weekly email: a reason to come back */}
+      {catalog.news.length > 0 ? (
+        <section aria-labelledby="latest-heading" className="border-t border-line py-14">
+          <div className="container-page grid gap-8 lg:grid-cols-[1fr_22rem] lg:gap-12">
+            <div>
+              <p className="eyebrow">Latest news</p>
+              <h2 id="latest-heading" className="mt-1 text-2xl font-semibold text-text">
+                What changed in the catalog
+              </h2>
+              <ol className="mt-4 border-t border-line">
+                {catalog.news.slice(0, 3).map((item) => (
+                  <li key={item.slug}>
+                    <NewsCard item={item} catalog={catalog} />
+                  </li>
+                ))}
+              </ol>
+              <Link prefetch={false} href="/news/" className="link mt-4 inline-flex items-center gap-1">
+                All news <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="lg:pt-10">
+              <NewsletterSignup />
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 4. Comparison preview */}
       <section aria-labelledby="coverage-heading" className="border-t border-line py-14">

@@ -137,6 +137,19 @@
     }
   }
 
+  /* Homepage artwork: full width on small screens; on desktop capped at 46% of
+     the viewport height (aspect ratio 1672:941) so the introduction, search,
+     and both directory actions are visible without scrolling. */
+  .hero-figure {
+    max-width: 1672px;
+  }
+  @media (min-width: 1024px) {
+    .hero-figure {
+      max-width: min(1672px, calc(46vh * 1.7768));
+      max-width: min(1672px, calc(46svh * 1.7768));
+    }
+  }
+
   .skip-link {
     position: absolute;
     left: 1rem;

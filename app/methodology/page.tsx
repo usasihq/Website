@@ -21,6 +21,7 @@ const TOC = [
   ["uncertainty", "Uncertainty"],
   ["counts", "How counts work"],
   ["representation", "Equal representation"],
+  ["news", "News"],
   ["badges", "Reading the badges"],
 ];
 

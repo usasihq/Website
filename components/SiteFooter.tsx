@@ -14,6 +14,7 @@ const COLUMNS = [
       { href: "/companies/", label: "Companies & Labs" },
       { href: "/open/", label: "Open Models & Tools" },
       { href: "/matrix/", label: "Compare" },
+      { href: "/news/", label: "Latest news" },
     ],
   },
   {

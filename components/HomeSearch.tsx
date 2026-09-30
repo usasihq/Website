@@ -52,7 +52,7 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
           <input
             id={inputId}
             type="search"
-            className="field min-h-14 pl-12 text-lg"
+            className="field min-h-13 pl-12 text-lg"
             placeholder="Name, maintainer, license, or tag"
             value={query}
             onFocus={ensureIndex}

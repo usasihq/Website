@@ -38,6 +38,7 @@ export function readRawContent(root: string = DEFAULT_CONTENT_DIR): RawContent {
     featured: fs.existsSync(featuredPath) ? readYamlFile(root, "featured.yml") : null,
     people: readYamlDir(root, "people"),
     localCorner: fs.existsSync(cornerPath) ? readYamlFile(root, "local-corner.yml") : null,
+    news: readYamlDir(root, "news"),
   };
 }
 

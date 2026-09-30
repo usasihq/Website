@@ -18,6 +18,7 @@ import {
   type ChangelogEntry,
   type FeaturedSelection,
   type LocalCornerSchedule,
+  type NewsItem,
   type Organization,
   type Person,
 } from "./schema";
@@ -63,13 +64,15 @@ export class Catalog {
   readonly featured: FeaturedSelection | null;
   readonly people: Person[];
   readonly localCorner: LocalCornerSchedule | null;
+  readonly news: NewsItem[];
   readonly buildAt: string;
 
   private orgMap: Map<string, Organization>;
   private artifactMap: Map<string, Artifact>;
 
   constructor(
-    content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> & Partial<Pick<ValidatedContent, "people" | "localCorner">>,
+    content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> &
+      Partial<Pick<ValidatedContent, "people" | "localCorner" | "news">>,
     buildAt = new Date().toISOString(),
   ) {
     this.organizations = content.organizations.filter(isActive).sort(byName);
@@ -80,6 +83,9 @@ export class Catalog {
     this.featured = content.featured;
     this.people = (content.people ?? []).filter((p) => p.publication_status === "published").sort(byName);
     this.localCorner = content.localCorner ?? null;
+    this.news = (content.news ?? [])
+      .filter((n) => n.publication_status === "published")
+      .sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date) || a.title.localeCompare(b.title));
     this.buildAt = buildAt;
     this.orgMap = new Map([...this.organizations, ...this.archivedOrganizations].map((o) => [o.slug, o]));
     this.artifactMap = new Map([...this.artifacts, ...this.archivedArtifacts].map((a) => [a.slug, a]));
@@ -168,6 +174,20 @@ export class Catalog {
           }
         : null,
     };
+  }
+
+  /* ---- News ---- */
+
+  newsItem(slug: string): NewsItem | undefined {
+    return this.news.find((n) => n.slug === slug);
+  }
+
+  newsForOrganization(slug: string): NewsItem[] {
+    return this.news.filter((n) => n.related_organizations.includes(slug));
+  }
+
+  newsForArtifact(slug: string): NewsItem[] {
+    return this.news.filter((n) => n.related_artifacts.includes(slug));
   }
 
   /* ---- Local corner ---- */

@@ -10,6 +10,7 @@ const NAV = [
   { href: "/companies/", label: "Companies & Labs" },
   { href: "/open/", label: "Open Models & Tools" },
   { href: "/matrix/", label: "Compare" },
+  { href: "/news/", label: "News" },
   { href: "/methodology/", label: "Methodology" },
   { href: "/about/", label: "About" },
 ];

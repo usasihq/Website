@@ -6,6 +6,7 @@ import { EntryActions } from "@/components/EntryActions";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Breadcrumbs, Section } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
+import { NewsCard } from "@/components/NewsList";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -284,6 +285,18 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                   </li>
                 ))}
               </ul>
+            </Section>
+          ) : null}
+
+          {catalog.newsForOrganization(org.slug).length > 0 ? (
+            <Section id="news" title="In the news" description="Dated, sourced updates in this catalog's news that mention this entry.">
+              <ol className="border-t border-line">
+                {catalog.newsForOrganization(org.slug).slice(0, 5).map((item) => (
+                  <li key={item.slug}>
+                    <NewsCard item={item} catalog={catalog} />
+                  </li>
+                ))}
+              </ol>
             </Section>
           ) : null}
 

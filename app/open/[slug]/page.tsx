@@ -7,6 +7,7 @@ import { EntryActions } from "@/components/EntryActions";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Breadcrumbs, Section } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
+import { NewsCard } from "@/components/NewsList";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -390,6 +391,18 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                   {family.name} family overview
                 </Link>
               </p>
+            </Section>
+          ) : null}
+
+          {catalog.newsForArtifact(a.slug).length > 0 ? (
+            <Section id="news" title="In the news" description="Dated, sourced updates in this catalog's news that mention this entry.">
+              <ol className="border-t border-line">
+                {catalog.newsForArtifact(a.slug).slice(0, 5).map((item) => (
+                  <li key={item.slug}>
+                    <NewsCard item={item} catalog={catalog} />
+                  </li>
+                ))}
+              </ol>
             </Section>
           ) : null}
 

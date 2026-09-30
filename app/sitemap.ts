@@ -19,6 +19,7 @@ const STATIC_ROUTES = [
   "/support/",
   "/privacy/",
   "/local/",
+  "/news/",
 ];
 
 /**
@@ -32,5 +33,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...STATIC_ROUTES.map((path) => ({ url: absoluteUrl(path) })),
     ...catalog.organizations.map((o) => ({ url: absoluteUrl(orgHref(o.slug)), lastModified: o.updated_at })),
     ...catalog.artifacts.map((a) => ({ url: absoluteUrl(artifactHref(a.slug)), lastModified: a.updated_at })),
+    ...catalog.news.map((n) => ({ url: absoluteUrl(`/news/${n.slug}/`), lastModified: n.updated_at })),
   ];
 }

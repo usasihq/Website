@@ -31,6 +31,7 @@ const exportData = {
   counts: catalog.counts(),
   organizations: catalog.organizations.map((o) => catalog.publicOrganization(o)),
   artifacts: catalog.artifacts.map((a) => ({ ...catalog.publicArtifact(a), computed_tier: computeTier(a) })),
+  news: catalog.news,
   local_corner: {
     month: catalog.currentMonth(),
     lineup: catalog.localCornerLineup(catalog.currentMonth()).people.map((p) => p.slug),

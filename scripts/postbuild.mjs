@@ -98,6 +98,8 @@ const required = [
   "support/index.html",
   "privacy/index.html",
   "local/index.html",
+  "news/index.html",
+  "news/feed.xml",
 ];
 for (const rel of required) {
   if (!fs.existsSync(path.join(out, rel))) failures.push(`missing ${rel}`);

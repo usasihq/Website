@@ -10,12 +10,14 @@ import {
   ChangelogEntry,
   FeaturedSelection,
   LocalCornerSchedule,
+  NewsItem,
   Organization,
   Person,
   type Artifact as ArtifactT,
   type ChangelogEntry as ChangelogEntryT,
   type FeaturedSelection as FeaturedSelectionT,
   type LocalCornerSchedule as LocalCornerScheduleT,
+  type NewsItem as NewsItemT,
   type Organization as OrganizationT,
   type Person as PersonT,
 } from "./schema";
@@ -34,6 +36,7 @@ export interface RawContent {
   featured: RawDocument | null;
   people?: RawDocument[];
   localCorner?: RawDocument | null;
+  news?: RawDocument[];
 }
 
 export interface ValidationIssue {
@@ -50,8 +53,12 @@ export interface ValidatedContent {
   featured: FeaturedSelectionT | null;
   people: PersonT[];
   localCorner: LocalCornerScheduleT | null;
+  news: NewsItemT[];
   issues: ValidationIssue[];
 }
+
+/** Claims the catalog does not publish, in news either. */
+const NEWS_FORBIDDEN = /(\$\s?\d|\bvaluation|\bvalued at|\bfunding round|\braised\b|\bseries [a-h]\b|\bemployees\b|\bheadcount|\bmonthly active|\busers\b|\bbenchmark score|\bstate-of-the-art|\bbest-in-class|\bleading\b)/i;
 
 /** Wording that would add personal (non-professional) details to a profile. */
 const PERSONAL_DETAIL_PATTERN =
@@ -421,6 +428,42 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     });
   }
 
+  /* ---- News ---- */
+  const newsDocs = parseDocs(raw.news ?? [], NewsItem, issues);
+  const newsSlugs = new Set<string>();
+  for (const { file, value: item } of newsDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    if (basename(file) !== item.slug) push("error", `File name must match slug "${item.slug}"`, "slug");
+    if (newsSlugs.has(item.slug)) push("error", `Duplicate news slug "${item.slug}"`, "slug");
+    newsSlugs.add(item.slug);
+    const ids = new Set(item.sources.map((s) => s.id));
+    if (ids.size !== item.sources.length) push("error", "Duplicate source id", "sources");
+    for (const id of item.summary.source_ids) if (!ids.has(id)) push("error", `Unknown source id "${id}"`, "summary.source_ids");
+    item.sources.forEach((s, i) => {
+      if (!item.summary.source_ids.includes(s.id)) push("warning", `Source "${s.id}" is not cited`, `sources[${i}]`);
+      if (s.accessed_at > today) push("error", "accessed_at is in the future", `sources[${i}].accessed_at`);
+    });
+    if (datePrefixAfter(item.event_date, today)) push("error", "event_date is in the future", "event_date");
+    if (item.published_at > today) push("error", "published_at is in the future", "published_at");
+    if (item.event_date > item.published_at.slice(0, item.event_date.length)) push("error", "event_date is after published_at", "event_date");
+    const published = item.publication_status === "published";
+    if (item.related_organizations.length + item.related_artifacts.length === 0) {
+      push("error", "News items must relate to at least one catalog record", "related_organizations");
+    }
+    item.related_organizations.forEach((slug, i) => {
+      if (!orgBySlug.has(slug)) push("error", `Unknown organization slug "${slug}"`, `related_organizations[${i}]`);
+      else if (published && !publishedOrgs.has(slug)) push("error", `Related organization "${slug}" is not published`, `related_organizations[${i}]`);
+    });
+    item.related_artifacts.forEach((slug, i) => {
+      if (!artifactBySlug.has(slug)) push("error", `Unknown artifact slug "${slug}"`, `related_artifacts[${i}]`);
+      else if (published && !publishedArtifacts.has(slug)) push("error", `Related artifact "${slug}" is not published`, `related_artifacts[${i}]`);
+    });
+    for (const [path, text] of [["title", item.title], ["summary.text", item.summary.text]] as const) {
+      if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(published ? "error" : "warning", `Placeholder text in ${path}`, path);
+      if (NEWS_FORBIDDEN.test(text)) push(published ? "error" : "warning", `News may not include funding, valuations, staffing, user counts, or superlatives: "${text.slice(0, 60)}"`, path);
+    }
+  }
+
   const strip = <T extends { __file?: string }>(r: T) => {
     const { __file: _omit, ...rest } = r;
     void _omit;
@@ -434,6 +477,7 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     featured: featuredDoc?.value ?? null,
     people: peopleDocs.map((d) => d.value),
     localCorner: scheduleDoc?.value ?? null,
+    news: newsDocs.map((d) => d.value).sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date)),
     issues,
   };
 }

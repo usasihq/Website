@@ -319,3 +319,59 @@ test.describe("Local corner rotation in the browser", () => {
     expect(november).not.toEqual(october);
   });
 });
+
+test.describe("first screen on desktop", () => {
+  for (const [width, height] of [
+    [1280, 720],
+    [1366, 768],
+    [1440, 900],
+  ]) {
+    test(`heading, search, and both directory actions are visible without scrolling at ${width}x${height}`, async ({ page, isMobile }) => {
+      test.skip(isMobile, "desktop only");
+      await page.setViewportSize({ width, height });
+      await page.goto("/", { waitUntil: "load" });
+      await page.evaluate(() => document.fonts.ready.then(() => undefined));
+      for (const locator of [
+        page.locator("h1"),
+        page.getByLabel("Search both directories"),
+        page.getByRole("link", { name: "Explore Companies & Labs" }),
+        page.getByRole("link", { name: "Explore Open Models & Tools" }),
+      ]) {
+        const box = await locator.boundingBox();
+        expect(box && box.y + box.height).toBeLessThanOrEqual(height);
+      }
+    });
+  }
+});
+
+test.describe("latest news", () => {
+  const items = readRecordsFrom("news").filter((n) => n.publication_status === "published");
+
+  test("news page, item pages, homepage strip, and RSS feed agree", async ({ page, request }) => {
+    test.skip(items.length === 0, "no published news yet");
+    await page.goto("/news/");
+    await expect(page.locator("main article[data-news]")).toHaveCount(items.length);
+    const first = page.locator("main article[data-news] h2 a").first();
+    await first.click();
+    await expect(page.getByRole("heading", { name: "Sources" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Related catalog entries" })).toBeVisible();
+
+    await page.goto("/");
+    const strip = page.locator("section[aria-labelledby='latest-heading'] article[data-news]");
+    expect(await strip.count()).toBe(Math.min(3, items.length));
+
+    const feed = await request.get("/news/feed.xml");
+    expect(feed.status()).toBe(200);
+    const xml = await feed.text();
+    expect(xml).toContain("<rss version=\"2.0\"");
+    expect((xml.match(/<item>/g) ?? []).length).toBe(Math.min(50, items.length));
+  });
+
+  test("the weekly email block is honest about its state", async ({ page }) => {
+    await page.goto("/news/");
+    const block = page.locator("[data-newsletter]");
+    const state = await block.getAttribute("data-newsletter");
+    if (state === "active") await expect(block.getByRole("link", { name: /Subscribe/ })).toHaveAttribute("href", /^https:\/\//);
+    else await expect(page.getByTestId("newsletter-unavailable")).toHaveText("The weekly email is coming soon.");
+  });
+});

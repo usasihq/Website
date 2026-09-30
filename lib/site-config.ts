@@ -16,6 +16,10 @@
  *  repository.url         https://github.com/<owner>/<repo> once the code is
  *                         pushed. Enables "Edit this entry" and GitHub issue
  *                         links (corrections go to contact.email until then).
+ *  newsletter.url         Your hosted newsletter signup page (https only), e.g.
+ *                         https://buttondown.com/<username>. Null shows an
+ *                         honest "coming soon" state. The site never collects
+ *                         email addresses itself.
  *  contact.email          Public contact address (corrections, questions).
  *  socials                Official USASI profiles, shown as plain outbound
  *                         links (no embeds, widgets, or tracking scripts).
@@ -40,6 +44,13 @@ const RAW_CONFIG = {
     providerLabel: "Buy Me a Coffee" as string | null,
     amountLinks: [] as Array<{ label: string; url: string }>,
     contactUrl: "mailto:usasihq@gmail.com" as string | null,
+  },
+  newsletter: {
+    enabled: true,
+    heading: "The USASI weekly",
+    description: "New catalog entries, releases, license changes, and corrections, once a week.",
+    provider: "Buttondown" as string | null,
+    url: null as string | null,
   },
   contact: {
     email: "usasihq@gmail.com" as string | null,
@@ -122,6 +133,17 @@ const RepositoryConfigSchema = z
 
 export type RepositoryConfig = z.infer<typeof RepositoryConfigSchema>;
 
+const NewsletterSchema = z
+  .object({
+    enabled: z.boolean(),
+    heading: z.string().min(1),
+    description: z.string().min(1),
+    provider: z.string().trim().min(1).max(40).nullable(),
+    url: HttpsLink.nullable(),
+  })
+  .strict();
+export type NewsletterConfig = z.infer<typeof NewsletterSchema>;
+
 const ContactSchema = z
   .object({
     email: z
@@ -148,6 +170,7 @@ const SiteConfigSchema = z
     domain: z.string(),
     disclaimer: z.string(),
     support: SupportConfigSchema,
+    newsletter: NewsletterSchema,
     contact: ContactSchema,
     socials: z.array(SocialSchema).max(10),
     repository: RepositoryConfigSchema,
