@@ -53,7 +53,7 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
             id={inputId}
             type="search"
             className="field min-h-13 pl-12 text-lg"
-            placeholder="Name, maintainer, license, or tag"
+            placeholder="Name, license, or tag"
             value={query}
             onFocus={ensureIndex}
             onChange={(e) => {
@@ -65,7 +65,8 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
             spellCheck={false}
           />
         </div>
-        <p id={hintId} className="mt-2 text-sm text-muted">
+        {/* Visible from 640px; on phones it stays available to screen readers so the first screen fits. */}
+        <p id={hintId} className="text-sm text-muted max-sm:sr-only sm:mt-2">
           Searches names, summaries, maintainers, licenses, and tags across organizations and open artifacts.
         </p>
         <noscript>

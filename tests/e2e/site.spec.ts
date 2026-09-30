@@ -320,14 +320,19 @@ test.describe("Local corner rotation in the browser", () => {
   });
 });
 
-test.describe("first screen on desktop", () => {
+test.describe("first screen", () => {
   for (const [width, height] of [
+    // Phone viewports as reported with browser toolbars (iPhone SE, iPhone 13, Galaxy S24, Pixel 7).
+    [375, 667],
+    [390, 664],
+    [360, 780],
+    [412, 839],
     [1280, 720],
     [1366, 768],
     [1440, 900],
   ]) {
     test(`heading, search, and both directory actions are visible without scrolling at ${width}x${height}`, async ({ page, isMobile }) => {
-      test.skip(isMobile, "desktop only");
+      test.skip(isMobile !== width < 768, "each size runs in the matching project");
       await page.setViewportSize({ width, height });
       await page.goto("/", { waitUntil: "load" });
       await page.evaluate(() => document.fonts.ready.then(() => undefined));

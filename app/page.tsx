@@ -104,15 +104,37 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Hero />
 
-      {/* 1–2. Introduction, search, and the two directory actions (side by side on desktop, above the fold) */}
+      {/* 1–2. Introduction, search, and the two directory actions, all on the first screen. Phones: heading, actions,
+          then description (DOM order). Desktop: heading and description on the left, actions on the right. */}
       <section aria-labelledby="intro-heading" className="relative">
-        <div className="container-page pb-12 pt-6 sm:pt-8 lg:pb-14 lg:pt-5">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14">
-            <div className="text-center lg:text-left">
-              <h1 id="intro-heading" className="text-3xl font-semibold leading-tight text-text sm:text-4xl lg:text-[2.25rem]">
-                Explore the companies, models, and tools behind American AI.
-              </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted lg:mx-0">
+        <div className="container-page pb-12 pt-4 sm:pt-8 lg:pb-14 lg:pt-5">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-x-14 lg:gap-y-4">
+            <h1
+              id="intro-heading"
+              className="text-center text-3xl font-semibold leading-tight text-text sm:text-4xl lg:col-start-1 lg:row-start-1 lg:self-end lg:text-left lg:text-[2.25rem]"
+            >
+              Explore the companies, models, and tools behind American AI.
+            </h1>
+            <div className="mx-auto w-full max-w-3xl lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:self-center">
+              <HomeSearch indexUrl={asset("/data/search-index.json")} />
+              {/* Two-up on phones too, so both fit on the first screen; "Explore" stays in the accessible name. */}
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                <Link href="/companies/" className="btn btn-primary min-h-13 px-3 text-center text-[0.9375rem] leading-snug sm:px-[1.125rem] sm:text-base">
+                  <Building2 aria-hidden="true" className="h-5 w-5 shrink-0" />
+                  <span>
+                    <span className="max-sm:sr-only">Explore </span>Companies &amp; Labs
+                  </span>
+                </Link>
+                <Link href="/open/" className="btn btn-primary min-h-13 px-3 text-center text-[0.9375rem] leading-snug sm:px-[1.125rem] sm:text-base">
+                  <Boxes aria-hidden="true" className="h-5 w-5 shrink-0" />
+                  <span>
+                    <span className="max-sm:sr-only">Explore </span>Open Models &amp; Tools
+                  </span>
+                </Link>
+              </div>
+            </div>
+            <div className="text-center lg:col-start-1 lg:row-start-2 lg:self-start lg:text-left">
+              <p className="mx-auto max-w-2xl text-lg text-muted lg:mx-0">
                 An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is
                 available, and where to find the original sources.
               </p>
@@ -120,19 +142,6 @@ export default function HomePage() {
                 <Landmark aria-hidden="true" className="h-4 w-4 text-muted" />
                 {siteConfig.disclaimer}
               </p>
-            </div>
-            <div className="mx-auto w-full max-w-3xl lg:mx-0">
-              <HomeSearch indexUrl={asset("/data/search-index.json")} />
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <Link href="/companies/" className="btn btn-primary min-h-13 text-base">
-                  <Building2 aria-hidden="true" className="h-5 w-5" />
-                  Explore Companies &amp; Labs
-                </Link>
-                <Link href="/open/" className="btn btn-primary min-h-13 text-base">
-                  <Boxes aria-hidden="true" className="h-5 w-5" />
-                  Explore Open Models &amp; Tools
-                </Link>
-              </div>
             </div>
           </div>
         </div>
