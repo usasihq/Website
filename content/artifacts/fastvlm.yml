@@ -1,0 +1,118 @@
+slug: fastvlm
+name: FastVLM
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Apple
+    organization_slug: apple
+    source_ids: [fastvlm-license, apple-ml-fastvlm, fastvlm-paper]
+organization_slugs: [apple]
+links:
+  - label: ml-fastvlm repository
+    url: https://github.com/apple/ml-fastvlm
+    kind: repository
+  - label: FastVLM 7B on Hugging Face
+    url: https://huggingface.co/apple/FastVLM-7B
+    kind: model-hub
+  - label: "FastVLM: Efficient Vision Encoding for Vision Language Models (arXiv 2412.13303)"
+    url: https://arxiv.org/abs/2412.13303
+    kind: paper
+  - label: Apple Machine Learning Research article
+    url: https://machinelearning.apple.com/research/fast-vision-language-models
+    kind: website
+summary:
+  text: >-
+    FastVLM is a family of vision-language models from Apple, described in a CVPR 2025 paper,
+    built around FastViTHD, a hybrid convolutional-transformer vision encoder that outputs
+    fewer visual tokens to reduce encoding time for high-resolution images. Apple released
+    0.5B, 1.5B, and 7B variants that pair the encoder with Qwen2 language models, with
+    PyTorch checkpoints and versions exported for Apple silicon.
+  source_ids: [fastvlm-readme, fastvlm-paper, apple-ml-fastvlm]
+useful_for:
+  text: >-
+    Apple describes the models for image understanding with low time-to-first-token and for
+    on-device use; the repository includes an iOS and macOS demo app.
+  source_ids: [apple-ml-fastvlm, fastvlm-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model license states the models are developed and released by Apple Inc., and the
+    paper lists Apple as the authors' affiliation. Apple Inc. has its principal executive
+    offices in Cupertino, California, per its Form 10-K for fiscal year 2025. The language
+    model components are third-party Qwen2 models from the Qwen Team at Alibaba Group,
+    recorded on the release record; they are not U.S.-developed.
+  source_ids: [fastvlm-license, fastvlm-paper, aapl-10k-2025, qwen2-report]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    The repository applies an Apple software license to its code and the Apple Machine
+    Learning Research Model License, which limits use to non-commercial research, to the
+    released models.
+  source_ids: [fastvlm-readme, fastvlm-repo-license, fastvlm-license]
+checklist: {}
+run_notes: []
+provenance: null
+tags: [vision-language, multimodal]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: fastvlm-readme
+    title: apple/ml-fastvlm README
+    url: https://raw.githubusercontent.com/apple/ml-fastvlm/main/README.md
+    publisher: Apple (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-repo-license
+    title: apple/ml-fastvlm LICENSE (code)
+    url: https://raw.githubusercontent.com/apple/ml-fastvlm/main/LICENSE
+    publisher: Apple Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-license
+    title: FastVLM LICENSE (Apple Machine Learning Research Model License Agreement)
+    url: https://huggingface.co/apple/FastVLM-7B/raw/main/LICENSE
+    publisher: Apple Inc. (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-paper
+    title: "FastVLM: Efficient Vision Encoding for Vision Language Models (arXiv 2412.13303v2, HTML)"
+    url: https://arxiv.org/html/2412.13303v2
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-15
+    accessed_at: 2026-09-29
+  - id: apple-ml-fastvlm
+    title: "FastVLM: Efficient Vision Encoding for Vision Language Models"
+    url: https://machinelearning.apple.com/research/fast-vision-language-models
+    publisher: Apple Machine Learning Research
+    kind: announcement
+    published_at: 2025-07-23
+    accessed_at: 2026-09-29
+  - id: qwen2-report
+    title: "Qwen2 Technical Report (arXiv 2407.10671, HTML)"
+    url: https://arxiv.org/html/2407.10671
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-07-15
+    accessed_at: 2026-09-29
+  - id: aapl-10k-2025
+    title: Apple Inc. Form 10-K for the fiscal year ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+    publisher: Apple Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

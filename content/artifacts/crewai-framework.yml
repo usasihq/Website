@@ -1,0 +1,150 @@
+slug: crewai-framework
+name: CrewAI (framework)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: CrewAI, Inc.
+    organization_slug: crewai
+    source_ids: [crewai-license, crewai-readme]
+organization_slugs: [crewai]
+links:
+  - label: Repository
+    url: https://github.com/crewAIInc/crewAI
+    kind: repository
+  - label: Documentation
+    url: https://docs.crewai.com/en/installation
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/crewAIInc/crewAI/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/crewAIInc/crewAI/releases
+    kind: release-notes
+summary:
+  text: >-
+    CrewAI is an open-source Python framework for multi-agent workflows. It offers Crews, where
+    role-based agents work together autonomously, and Flows, which give event-driven control over
+    workflow steps. The README describes it as a standalone Python framework with its own
+    primitives for agents, tasks, crews, flows, tools, and orchestration.
+  source_ids: [crewai-readme]
+useful_for:
+  text: >-
+    Building multi-agent automations in Python in which agents with defined roles, goals, and
+    tools handle tasks together, combined where needed with explicit, event-driven workflow logic.
+  source_ids: [crewai-readme]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The LICENSE file assigns copyright to crewAI, Inc., and the repository is under the crewAIInc
+    GitHub organization, so the maintaining entity is the company. CrewAI's terms of use identify
+    CrewAI, Inc. as a Delaware corporation, and its 2025 and 2026 press releases are datelined San
+    Francisco, but no official page, terms document, or regulatory filing found states the
+    company's headquarters or principal office. Whether the maintaining entity is U.S.-based
+    therefore follows the unresolved assessment in the CrewAI organization record. No foundation
+    or multi-organization governance body is documented.
+  source_ids: [crewai-license, crewai-repo, crewai-tos, crewai-pr-2026-02]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [crewai-repo, crewai-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/crewAIInc/crewAI/blob/main/LICENSE
+    applies_to: code
+    source_ids: [crewai-license, crewai-readme]
+license_notes:
+  text: >-
+    The MIT license covers the framework. CrewAI AMP, the company's commercial control plane for
+    deployment, observability, and governance, is a separate product.
+  source_ids: [crewai-license, crewai-readme]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [crewai-repo]
+  documentation:
+    status: public
+    note: null
+    source_ids: [crewai-install]
+  installation:
+    status: public
+    note: The CLI is installed with the uv package manager (uv tool install crewai).
+    source_ids: [crewai-install, crewai-readme]
+  supported_platforms:
+    status: public
+    note: >-
+      Requires Python 3.10 or newer and older than 3.14. The install guide covers macOS, Linux,
+      and Windows; on Windows, some dependencies may need Visual Studio Build Tools.
+    source_ids: [crewai-install]
+  release_status:
+    status: public
+    note: Versioned releases (the 1.15.x series as of September 2026) are published on GitHub.
+    source_ids: [crewai-releases]
+run_notes:
+  - text: >-
+      The README says CrewAI collects anonymous usage telemetry by default. Setting
+      OTEL_SDK_DISABLED=true turns it off. A separate opt-in setting, share_crew, sends detailed
+      crew and task data.
+    source_ids: [crewai-readme]
+provenance: null
+tags: [agents, multi-agent]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: crewai-repo
+    title: crewAIInc/crewAI
+    url: https://github.com/crewAIInc/crewAI
+    publisher: CrewAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: crewai-readme
+    title: CrewAI README
+    url: https://github.com/crewAIInc/crewAI/blob/main/README.md
+    publisher: CrewAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: crewai-license
+    title: CrewAI LICENSE
+    url: https://github.com/crewAIInc/crewAI/blob/main/LICENSE
+    publisher: CrewAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: crewai-releases
+    title: CrewAI releases
+    url: https://github.com/crewAIInc/crewAI/releases
+    publisher: CrewAI
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: crewai-install
+    title: Installation - CrewAI
+    url: https://docs.crewai.com/en/installation
+    publisher: CrewAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: crewai-tos
+    title: Terms of use | CrewAI
+    url: https://crewai.com/terms-of-use
+    publisher: CrewAI
+    kind: official-page
+    published_at: 2025-09-24
+    accessed_at: 2026-09-29
+  - id: crewai-pr-2026-02
+    title: "Agentic AI Reaches Tipping Point: 100% of Enterprises Plan to Expand Adoption in 2026, New CrewAI Survey Finds"
+    url: https://finance.yahoo.com/news/agentic-ai-reaches-tipping-point-140000054.html
+    publisher: CrewAI (via Business Wire)
+    kind: announcement
+    published_at: 2026-02-11
+    accessed_at: 2026-09-29

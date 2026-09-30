@@ -1,0 +1,125 @@
+slug: evo-2
+name: Evo 2
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Arc Institute
+    organization_slug: arc-institute
+    source_ids: [evo2-repo, arc-evo2-one-year]
+organization_slugs: [arc-institute, nvidia]
+links:
+  - label: Evo 2 page (Arc Institute)
+    url: https://arcinstitute.org/tools/evo
+    kind: website
+  - label: GitHub repository
+    url: https://github.com/ArcInstitute/evo2
+    kind: repository
+  - label: Evo 2 checkpoints (Hugging Face)
+    url: https://huggingface.co/arcinstitute
+    kind: model-hub
+  - label: OpenGenome2 training dataset
+    url: https://huggingface.co/datasets/arcinstitute/opengenome2
+    kind: dataset-hub
+  - label: Nature paper (doi:10.1038/s41586-026-10176-5)
+    url: https://doi.org/10.1038/s41586-026-10176-5
+    kind: paper
+summary:
+  text: >-
+    Evo 2 is a family of DNA language models from Arc Institute, developed with NVIDIA and
+    collaborators at institutions including Stanford University, UCSF, UC Berkeley, Goodfire,
+    and the University of Washington. The models use the StripedHyena 2 architecture, work at
+    single-nucleotide resolution with context of up to 1 million base pairs, and were trained on
+    the OpenGenome2 dataset. Checkpoints range from 1B to 40B parameters; a 20B checkpoint
+    derived from the 40B model was added in February 2026.
+  source_ids: [evo2-repo, arc-evo2-one-year, evo2-v050-release]
+useful_for:
+  text: >-
+    The repository documents scoring the likelihood of DNA sequences (for example zero-shot
+    BRCA1 variant effect prediction), extracting embeddings for downstream classifiers, and
+    generating DNA sequences from prompts.
+  source_ids: [evo2-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Evo 2 is published and maintained by Arc Institute in its GitHub and Hugging Face
+    organizations. Arc Institute describes itself as an independent nonprofit research
+    organization in Palo Alto, California, and the IRS lists Arc Research Institute at its Palo
+    Alto address as a 501(c)(3) organization. Eligibility of each release is assessed on the
+    release record.
+  source_ids: [evo2-repo, arc-about, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Evo 2 40B and Evo 2 20B release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes:
+  - text: >-
+      Evo 2 is also offered through an NVIDIA-hosted API and as an NVIDIA NIM container, and
+      NVIDIA BioNeMo provides an Evo 2 fine-tuning tutorial, per the repository README.
+    source_ids: [evo2-repo]
+provenance:
+  text: >-
+    Pretrained by Arc Institute and collaborators on OpenGenome2, a dataset of about 8.8 trillion
+    base pairs assembled from public genome and sequence databases, using the Savanna training
+    framework.
+  derived_from:
+    - name: OpenGenome2
+      artifact_slug: null
+      url: https://huggingface.co/datasets/arcinstitute/opengenome2
+      note: Pretraining dataset published by Arc Institute.
+  source_ids: [evo2-repo, opengenome2-card]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2025-02
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: evo2-repo
+    title: ArcInstitute/evo2 README
+    url: https://github.com/ArcInstitute/evo2
+    publisher: Arc Institute
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evo2-v050-release
+    title: Release v0.5.0 · ArcInstitute/evo2
+    url: https://github.com/ArcInstitute/evo2/releases/tag/v0.5.0
+    publisher: Arc Institute
+    kind: release-notes
+    published_at: 2026-02-28
+    accessed_at: 2026-09-29
+  - id: arc-evo2-one-year
+    title: "Evo 2: One Year Later"
+    url: https://arcinstitute.org/news/evo-2-one-year-later
+    publisher: Arc Institute
+    kind: announcement
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: opengenome2-card
+    title: arcinstitute/opengenome2 dataset card
+    url: https://huggingface.co/datasets/arcinstitute/opengenome2
+    publisher: Arc Institute
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-about
+    title: About | Arc Institute
+    url: https://arcinstitute.org/about
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

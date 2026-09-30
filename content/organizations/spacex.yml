@@ -1,0 +1,98 @@
+slug: spacex
+name: SpaceX
+legal_name:
+  text: Space Exploration Technologies Corp.
+  source_ids: [spacex-10q-2026q2]
+website: https://www.spacex.com
+logo_text: SX
+summary:
+  text: >-
+    SpaceX reports three business segments: Space (reusable launch vehicles), Connectivity
+    (the Starlink satellite network), and AI. SpaceX acquired xAI in February 2026, and its AI
+    segment covers the Grok models, AI products for consumers and businesses, the X platform,
+    and AI computing infrastructure.
+  source_ids: [spacex-10q-2026q2]
+organization_roles: [model-developer, compute-infrastructure, consumer-products]
+ownership_category: publicly-traded
+legal_form:
+  text: Texas corporation
+  source_ids: [spacex-10q-2026q2, spacex-8k-2026-08-14]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Starbase, Texas
+  country: US
+  source_ids: [spacex-10q-2026q2, spacex-8k-2026-08-14]
+other_locations: []
+founded:
+  year: 2002
+  source_ids: [spacex-q2-2026-release]
+sectors: [frontier-models]
+status_note:
+  text: >-
+    SpaceX completed its initial public offering in June 2026, and its Class A common stock
+    trades on Nasdaq under the symbol SPCX. It completed its acquisition of X.AI Holdings
+    Corp. (xAI) on February 2, 2026, and of Anysphere, Inc. (Cursor) on August 14, 2026;
+    both became wholly owned subsidiaries.
+  source_ids: [spacex-10q-2026q2, spacex-8k-2026-08-14]
+products: []
+notable_facts:
+  - text: >-
+      Grok, the xAI API, and other Grok products are recorded on the xAI (SpaceXAI) record,
+      which is a subsidiary of SpaceX.
+    source_ids: [spacex-10q-2026q2]
+  - text: >-
+      SpaceX's second-quarter 2026 results release says that in that quarter it entered into
+      cloud services agreements to give customers access to compute capacity, and that it was
+      continuing to build out its Colossus II compute capacity.
+    source_ids: [spacex-q2-2026-release]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Space Exploration Technologies Corp. is a Texas corporation. Its Form 10-Q for the quarter
+    ended June 30, 2026 and its Form 8-K of August 14, 2026 both list its principal executive
+    offices at 1 Rocket Road, Starbase, Texas.
+  source_ids: [spacex-10q-2026q2, spacex-8k-2026-08-14]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    SpaceX's AI work is carried out mainly through its xAI subsidiary. The Grok models are
+    offered as hosted services, and xAI has published weights for two earlier models (Grok-1
+    and Grok 2); see the xAI record. This catalog has no record of model weights published
+    under SpaceX's own name.
+  source_ids: [spacex-10q-2026q2, hf-xai-org]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: spacex-10q-2026q2
+    title: Space Exploration Technologies Corp. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-08-04
+    accessed_at: 2026-09-29
+  - id: spacex-8k-2026-08-14
+    title: Space Exploration Technologies Corp. Form 8-K (Items 2.01, 3.02, and 9.01), August 14, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026056945/spcx-20260814.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-08-14
+    accessed_at: 2026-09-29
+  - id: hf-xai-org
+    title: xAI on Hugging Face
+    url: https://huggingface.co/xai-org
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: spacex-q2-2026-release
+    title: SpaceX Reports Second Quarter 2026 Results (Exhibit 99.1)
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/earningsreleaseq22608042.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-08-04
+    accessed_at: 2026-09-29

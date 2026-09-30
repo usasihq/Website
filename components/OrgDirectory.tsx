@@ -16,7 +16,11 @@ import { OrgCard } from "./Cards";
 import { FilterChip, ResultSummary, SearchField, SelectField } from "./FilterControls";
 import { useDebounced, useQueryState } from "./useQueryState";
 
-const SORT_LABELS: Record<OrgSort, string> = { name: "Name (A–Z)", reviewed: "Recently reviewed" };
+const SORT_LABELS: Record<OrgSort, string> = {
+  name: "Name (A–Z)",
+  reviewed: "Recently reviewed",
+  artifacts: "Most open-artifact records in this catalog",
+};
 
 export function OrgDirectory({ items }: { items: OrgListItem[] }) {
   const { state: f, update } = useQueryState<OrgFilters>(parseOrgFilters, serializeOrgFilters);
@@ -70,7 +74,10 @@ export function OrgDirectory({ items }: { items: OrgListItem[] }) {
           <SelectField
             label="Sort"
             value={f.sort === "name" ? "" : f.sort}
-            options={[{ value: "reviewed" as OrgSort, label: SORT_LABELS.reviewed }]}
+            options={[
+              { value: "reviewed" as OrgSort, label: SORT_LABELS.reviewed },
+              { value: "artifacts" as OrgSort, label: SORT_LABELS.artifacts },
+            ]}
             onChange={(sort) => set({ sort: (sort || "name") as OrgSort })}
             allLabel={SORT_LABELS.name}
           />

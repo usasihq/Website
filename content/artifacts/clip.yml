@@ -1,0 +1,108 @@
+slug: clip
+name: CLIP
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [clip-model-card, clip-readme]
+organization_slugs: [openai]
+links:
+  - label: openai/CLIP repository
+    url: https://github.com/openai/CLIP
+    kind: repository
+  - label: Model card (repository)
+    url: https://github.com/openai/CLIP/blob/main/model-card.md
+    kind: documentation
+  - label: CLIP ViT-L/14 on Hugging Face
+    url: https://huggingface.co/openai/clip-vit-large-patch14
+    kind: model-hub
+  - label: "Learning Transferable Visual Models From Natural Language Supervision (arXiv 2103.00020)"
+    url: https://arxiv.org/abs/2103.00020
+    kind: paper
+summary:
+  text: >-
+    CLIP (Contrastive Language-Image Pre-Training) is an OpenAI family of paired image and text
+    encoders trained with a contrastive objective on 400 million image-text pairs, which lets the
+    model classify images zero-shot from natural-language labels. OpenAI released the models in
+    stages from January 2021 to April 2022, from ResNet-50 and ViT-B/32 up to ViT-L/14 and
+    ViT-L/14 at 336-pixel resolution.
+  source_ids: [clip-model-card, clip-readme, clip-paper]
+useful_for:
+  text: >-
+    The model card describes CLIP as a research output for studying zero-shot image
+    classification, robustness, and bias. It states that any deployed use, commercial or not, is
+    currently out of scope, that surveillance and facial recognition uses are always out of
+    scope, and that use should be limited to English.
+  source_ids: [clip-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card states that CLIP was developed by researchers at OpenAI, and the models are
+    published in OpenAI's openai/CLIP repository. OpenAI Group PBC lists its address as 1455 3rd
+    Street, San Francisco, California, in a February 2026 agreement filed with the SEC.
+  source_ids: [clip-model-card, clip-readme, sec-openai-amazon-ecl]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Checkpoints are downloaded by the repository's clip.load() function and several are on
+    Hugging Face without gating; see the release record for license terms.
+  source_ids: [clip-code, hf-api-clip-vit-large-patch14]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [multimodal, vision-language, embedding]
+publication_status: published
+archive_note: null
+released_at: 2021-01
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: clip-model-card
+    title: "Model Card: CLIP"
+    url: https://github.com/openai/CLIP/blob/main/model-card.md
+    publisher: OpenAI (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-readme
+    title: openai/CLIP README
+    url: https://github.com/openai/CLIP/blob/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-code
+    title: openai/CLIP clip/clip.py (checkpoint download URLs)
+    url: https://github.com/openai/CLIP/blob/main/clip/clip.py
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-paper
+    title: Learning Transferable Visual Models From Natural Language Supervision (arXiv 2103.00020)
+    url: https://arxiv.org/abs/2103.00020
+    publisher: arXiv (OpenAI authors)
+    kind: paper
+    published_at: 2021-02-26
+    accessed_at: 2026-09-29
+  - id: hf-api-clip-vit-large-patch14
+    title: openai/clip-vit-large-patch14 (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/openai/clip-vit-large-patch14
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29

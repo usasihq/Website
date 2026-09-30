@@ -1,0 +1,130 @@
+slug: segment-anything
+name: Segment Anything (SAM)
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Meta
+    organization_slug: meta
+    source_ids: [sam1-readme, sam2-readme, sam3-readme]
+organization_slugs: [meta]
+links:
+  - label: SAM 3 repository
+    url: https://github.com/facebookresearch/sam3
+    kind: repository
+  - label: SAM 2 repository
+    url: https://github.com/facebookresearch/sam2
+    kind: repository
+  - label: Original Segment Anything repository
+    url: https://github.com/facebookresearch/segment-anything
+    kind: repository
+  - label: "SAM 3: Segment Anything with Concepts (arXiv 2511.16719)"
+    url: https://arxiv.org/abs/2511.16719
+    kind: paper
+summary:
+  text: >-
+    Segment Anything is Meta's family of promptable segmentation models. The original SAM (April
+    2023) produces object masks in images from prompts such as points or boxes; SAM 2 (July 2024, updated as SAM 2.1 in
+    September 2024) extends this to video with streaming memory; SAM 3 (November 2025, updated as
+    SAM 3.1 in March 2026) adds detection, segmentation, and tracking of every instance of a
+    concept named by a short text phrase or image exemplar. Licenses differ by generation:
+    Apache 2.0 for SAM and SAM 2, and Meta's custom SAM License for SAM 3.
+  source_ids: [sam1-readme, sam1-paper, sam2-readme, sam2-release-notes, sam3-readme, sam3p1-release-notes, sam3-license]
+useful_for:
+  text: >-
+    Interactive and automatic segmentation of objects in images and videos; SAM 3 also accepts
+    open-vocabulary text prompts to find all matching instances.
+  source_ids: [sam2-readme, sam3-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The models are published by Meta in the facebookresearch GitHub organization and the facebook
+    Hugging Face account (SAM and SAM 2 by Meta FAIR; SAM 3 by Meta Superintelligence Labs).
+    Meta Platforms, Inc. has its principal executive offices in Menlo Park, California, per its
+    Form 10-K.
+  source_ids: [sam1-readme, sam2-readme, sam3-readme, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    Terms differ by generation. SAM 2.1 checkpoints download directly without gating; SAM 3 and
+    SAM 3.1 checkpoints require an access request on Hugging Face that must be approved. See the
+    release records.
+  source_ids: [sam2-readme, hf-api-sam3p1]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [computer-vision, segmentation]
+publication_status: published
+archive_note: null
+released_at: 2023-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: sam1-readme
+    title: facebookresearch/segment-anything README
+    url: https://github.com/facebookresearch/segment-anything/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam1-paper
+    title: Segment Anything (arXiv 2304.02643)
+    url: https://arxiv.org/abs/2304.02643
+    publisher: arXiv (Meta AI Research authors)
+    kind: paper
+    published_at: 2023-04-05
+    accessed_at: 2026-09-29
+  - id: sam2-readme
+    title: facebookresearch/sam2 README
+    url: https://github.com/facebookresearch/sam2/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-release-notes
+    title: SAM 2 release notes
+    url: https://github.com/facebookresearch/sam2/blob/main/RELEASE_NOTES.md
+    publisher: Meta (GitHub)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam3-readme
+    title: facebookresearch/sam3 README
+    url: https://github.com/facebookresearch/sam3/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam3p1-release-notes
+    title: SAM 3.1 release notes (RELEASE_SAM3p1.md)
+    url: https://github.com/facebookresearch/sam3/blob/main/RELEASE_SAM3p1.md
+    publisher: Meta (GitHub)
+    kind: release-notes
+    published_at: 2026-03-27
+    accessed_at: 2026-09-29
+  - id: sam3-license
+    title: SAM License (facebookresearch/sam3 LICENSE)
+    url: https://github.com/facebookresearch/sam3/blob/main/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: 2025-11-19
+    accessed_at: 2026-09-29
+  - id: hf-api-sam3p1
+    title: facebook/sam3.1 (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/facebook/sam3.1
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

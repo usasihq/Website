@@ -1,0 +1,221 @@
+slug: nemotron-cc
+name: Nemotron-CC
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [ncc-paper, ncc-research-page, ncc-v2-card, ncc-v21-card]
+organization_slugs: [nvidia]
+links:
+  - label: Nemotron-CC (original release, hosted by Common Crawl)
+    url: https://data.commoncrawl.org/contrib/Nemotron/Nemotron-CC/index.html
+    kind: dataset-hub
+  - label: Nemotron-CC-v2 (Hugging Face)
+    url: https://huggingface.co/datasets/nvidia/Nemotron-CC-v2
+    kind: dataset-hub
+  - label: Nemotron-CC-v2.1 (Hugging Face)
+    url: https://huggingface.co/datasets/nvidia/Nemotron-CC-v2.1
+    kind: dataset-hub
+  - label: "Paper: Nemotron-CC (arXiv 2412.02595)"
+    url: https://arxiv.org/abs/2412.02595
+    kind: paper
+  - label: NVIDIA research page
+    url: https://research.nvidia.com/labs/adlr/Nemotron-CC/
+    kind: website
+  - label: NVIDIA Data Agreement for Model Training
+    url: https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Dataset-sample/raw/main/LICENSE.md
+    kind: license
+summary:
+  text: >-
+    Nemotron-CC is NVIDIA's English pretraining dataset built from Common Crawl. The original
+    release (December 2024) has 6.3T tokens, 4.4T globally deduplicated original tokens and
+    1.9T synthetic tokens, drawn from 99 Common Crawl snapshots (CC-MAIN-2013-20 through
+    CC-MAIN-2024-30) and split into five quality buckets. Nemotron-CC-v2 (August 2025) and
+    Nemotron-CC-v2.1 (December 2025), published on Hugging Face, add newer snapshots, further
+    synthetic rephrasings, translated question-answer data, and other subsets.
+  source_ids: [ncc-cc-page, ncc-paper, ncc-research-page, ncc-v2-card, ncc-v21-card]
+useful_for:
+  text: >-
+    Documented for pretraining language models, including over long token horizons. The v2
+    card describes it as intended for training foundation language models and for community
+    work on open models.
+  source_ids: [ncc-paper, ncc-v2-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The dataset is created and published by NVIDIA: the paper's authors are listed with an
+    NVIDIA affiliation, the v2 card names NVIDIA as data developer, and the v2.1 card names NVIDIA
+    Corporation as dataset owner. NVIDIA
+    Corporation's principal executive offices are in Santa Clara, California, per its Form
+    10-Q for the quarter ended July 26, 2026.
+  source_ids: [ncc-paper, ncc-v2-card, ncc-v21-card, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    The original release is downloadable from Common Crawl's data site as partitioned
+    .jsonl.zstd files (about 10.4 TiB). Nemotron-CC-v2 and v2.1 are gated on Hugging Face:
+    users must share contact information (including company and institutional email) and agree
+    to the NVIDIA Data Agreement for Model Training, confirming that they intend to use the data
+    for model training only. The Hugging Face API reports both gates as manual, meaning the
+    dataset authors approve each access request.
+  source_ids: [ncc-cc-page, ncc-v2-card, ncc-v21-card, ncc-v2-hub-api, ncc-v21-hub-api, hf-gated-docs]
+licenses:
+  - name: Common Crawl Terms of Use (original Nemotron-CC release)
+    spdx: null
+    url: https://commoncrawl.org/terms-of-use
+    applies_to: data
+    source_ids: [ncc-paper, cc-terms]
+  - name: NVIDIA Data Agreement for Model Training (Nemotron-CC-v2 and v2.1)
+    spdx: null
+    url: https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Dataset-sample/raw/main/LICENSE.md
+    applies_to: data
+    source_ids: [ncc-v2-card, ncc-v21-card, nv-data-agreement]
+license_notes:
+  text: >-
+    The paper states the original release is under the Common Crawl Terms of Use, which grant
+    a limited, non-transferable license and note that crawled content may carry its owners'
+    terms. The NVIDIA Data Agreement for Model Training (version of August 15, 2025) makes the
+    data available solely for internal training of the user's AI models; it prohibits
+    redistributing or sublicensing the datasets, grants no rights in copyrighted material
+    contained in them, lets either party terminate on 30 days' notice (after which copies must
+    be deleted), and is governed by U.S. and Delaware law. The v2 card lists the models used to
+    generate synthetic data across its dataset collection and states that models trained on the
+    data may be subject to the Qwen and DeepSeek license agreements; the v2.1 card also names
+    the Phi-4 license agreement.
+  source_ids: [ncc-paper, cc-terms, nv-data-agreement, ncc-v2-card, ncc-v21-card]
+checklist:
+  access:
+    status: partial
+    note: >-
+      Original release downloadable from Common Crawl. v2 and v2.1 require sharing contact
+      information and accepting NVIDIA's agreement on Hugging Face, and the Hub reports manual
+      approval of access requests for both.
+    source_ids: [ncc-cc-page, ncc-v2-card, ncc-v21-card, ncc-v2-hub-api, ncc-v21-hub-api, hf-gated-docs]
+  provenance:
+    status: public
+    note: >-
+      The Common Crawl page lists the crawls included and the quality and synthetic-type
+      partitions; each record keeps its source URL and WARC record ID. The v2 and v2.1 cards
+      name the added snapshots and the models used to generate synthetic data.
+    source_ids: [ncc-cc-page, ncc-v2-card, ncc-v21-card]
+  documentation:
+    status: public
+    note: >-
+      The construction pipeline (extraction, classifier ensembling, quality bucketing, synthetic
+      rephrasing, with prompt templates in an appendix) is described in the paper; v2 and v2.1
+      have dataset cards.
+    source_ids: [ncc-paper, ncc-v2-card, ncc-v21-card]
+  licensing:
+    status: public
+    note: Terms documented for each release; neither set of terms is an open data license.
+    source_ids: [ncc-paper, cc-terms, nv-data-agreement]
+  stated_limitations:
+    status: public
+    note: >-
+      The paper's Limitations section says the rephrased data was not checked for factual
+      accuracy or fidelity, the methods were tried only on English text, not every pipeline
+      step was ablated, and the dataset was not decontaminated against benchmarks.
+    source_ids: [ncc-paper]
+run_notes: []
+provenance:
+  text: >-
+    Built by NVIDIA from Common Crawl web archives. For the original release, synthetic
+    rephrasings were generated with the instruct version of Mistral NeMo 12B. The v2 card's
+    per-dataset table lists Mistral-Nemo-12B-Instruct and Qwen3-30B-A3B for Nemotron-CC-v2. The
+    v2.1 card lists Qwen3-30B-A3B for its synthetic and translated subsets, and says its STEM
+    question-answer subset was built from documents in Essential-Web.
+  derived_from:
+    - name: Common Crawl
+      artifact_slug: common-crawl-corpus
+      url: https://commoncrawl.org
+      note: Source web archive; the original release covers crawls CC-MAIN-2013-20 through CC-MAIN-2024-30.
+  source_ids: [ncc-paper, ncc-cc-page, ncc-v2-card, ncc-v21-card]
+tags: [pretraining-data]
+publication_status: published
+archive_note: null
+released_at: 2024-12-03
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ncc-cc-page
+    title: Nemotron-CC (Common Crawl contrib page)
+    url: https://data.commoncrawl.org/contrib/Nemotron/Nemotron-CC/index.html
+    publisher: Common Crawl Foundation
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ncc-research-page
+    title: "Nemotron-CC: Transforming Common Crawl into a Refined Long-Horizon Pretraining Dataset"
+    url: https://research.nvidia.com/labs/adlr/Nemotron-CC/
+    publisher: NVIDIA Research
+    kind: official-page
+    published_at: 2024-12-03
+    accessed_at: 2026-09-29
+  - id: ncc-paper
+    title: "Nemotron-CC: Transforming Common Crawl into a Refined Long-Horizon Pretraining Dataset (arXiv 2412.02595v2)"
+    url: https://arxiv.org/html/2412.02595v2
+    publisher: NVIDIA (Su et al.)
+    kind: paper
+    published_at: 2025-05-30
+    accessed_at: 2026-09-29
+  - id: ncc-v2-card
+    title: nvidia/Nemotron-CC-v2 dataset card
+    url: https://huggingface.co/datasets/nvidia/Nemotron-CC-v2
+    publisher: NVIDIA
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ncc-v21-card
+    title: nvidia/Nemotron-CC-v2.1 dataset card
+    url: https://huggingface.co/datasets/nvidia/Nemotron-CC-v2.1
+    publisher: NVIDIA
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ncc-v2-hub-api
+    title: Hugging Face Hub API metadata for nvidia/Nemotron-CC-v2
+    url: https://huggingface.co/api/datasets/nvidia/Nemotron-CC-v2
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ncc-v21-hub-api
+    title: Hugging Face Hub API metadata for nvidia/Nemotron-CC-v2.1
+    url: https://huggingface.co/api/datasets/nvidia/Nemotron-CC-v2.1
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gated-docs
+    title: Gated datasets (Hugging Face Hub documentation)
+    url: https://huggingface.co/docs/hub/datasets-gated
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nv-data-agreement
+    title: NVIDIA Data Agreement for Model Training (LICENSE.md, v. August 15, 2025)
+    url: https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Dataset-sample/raw/main/LICENSE.md
+    publisher: NVIDIA
+    kind: license
+    published_at: 2025-08-15
+    accessed_at: 2026-09-29
+  - id: cc-terms
+    title: Common Crawl Terms of Use
+    url: https://commoncrawl.org/terms-of-use
+    publisher: Common Crawl Foundation
+    kind: license
+    published_at: 2024-03-07
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

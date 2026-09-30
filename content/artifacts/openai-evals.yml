@@ -1,0 +1,173 @@
+slug: openai-evals
+name: OpenAI Evals
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [evals-repo, evals-license]
+organization_slugs: [openai]
+links:
+  - label: GitHub repository
+    url: https://github.com/openai/evals
+    kind: repository
+  - label: How to run evals (docs/run-evals.md)
+    url: https://github.com/openai/evals/blob/main/docs/run-evals.md
+    kind: documentation
+  - label: Eval templates (docs/eval-templates.md)
+    url: https://github.com/openai/evals/blob/main/docs/eval-templates.md
+    kind: documentation
+  - label: License (MIT, with per-dataset licenses)
+    url: https://raw.githubusercontent.com/openai/evals/main/LICENSE.md
+    kind: license
+summary:
+  text: >-
+    OpenAI Evals is an open-source framework from OpenAI for evaluating language models and
+    systems built on them, together with a registry of existing evals. Evals are defined in
+    YAML and run from the oaieval and oaievalset command-line tools against "completion
+    functions", which by default call models through the OpenAI API. The repository is not
+    archived, but activity since mid-2024 has been limited to maintenance, and its README now
+    points users to OpenAI's hosted Evals in the OpenAI dashboard.
+  source_ids: [evals-readme, evals-run-docs, evals-commits, evals-pypi]
+useful_for:
+  text: >-
+    Writing evals from templates (exact, includes, fuzzy, and JSON match, or model-graded
+    classification) without custom code, running them against OpenAI API models or other
+    completion functions, and logging results locally.
+  source_ids: [evals-templates-docs, evals-run-docs, evals-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The project is published in OpenAI's GitHub organization, and its MIT license names OpenAI
+    as copyright holder. OpenAI Group PBC lists its address as 1455 3rd Street, San Francisco,
+    California, in a February 2026 agreement filed with the SEC.
+  source_ids: [evals-repo, evals-license, sec-openai-amazon-ecl]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the MIT License and installable from PyPI as evals. The eval
+    registry data is stored with Git LFS and must be fetched separately. Running evals against
+    OpenAI models requires an OpenAI API key and incurs API costs.
+  source_ids: [evals-readme, evals-license, evals-pypi]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/openai/evals/main/LICENSE.md
+    applies_to: code
+    source_ids: [evals-license]
+license_notes:
+  text: >-
+    The license file states that MIT applies to everything except the datasets it lists
+    separately, which keep their own licenses (for example ODC-By, CC0, CC BY, CC BY-SA, and,
+    for some components of the steganography and theory-of-mind evals, CC BY-NC 4.0). The
+    README states that contributors agree to license their eval logic and data under MIT and
+    that OpenAI may use contributed data in future service improvements.
+  source_ids: [evals-license, evals-readme]
+checklist:
+  code:
+    status: public
+    note: Published on GitHub under the MIT License.
+    source_ids: [evals-repo, evals-license]
+  tasks_data:
+    status: public
+    note: >-
+      Eval definitions are YAML files under evals/registry/evals; the data files under
+      evals/registry/data are stored with Git LFS. Some datasets carry their own licenses.
+    source_ids: [evals-readme, evals-run-docs, evals-license]
+  methodology:
+    status: public
+    note: >-
+      docs/eval-templates.md specifies the matching rules of the basic templates and the
+      parameters of the model-graded classification template.
+    source_ids: [evals-templates-docs]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      docs/run-evals.md documents the oaieval and oaievalset commands, threading and timeout
+      settings, and local JSONL logging.
+    source_ids: [evals-run-docs]
+  limitations:
+    status: partial
+    note: >-
+      The documentation notes operational limits (a single eval cannot be resumed mid-run; runs
+      sometimes hang after the final report), and the README says evals with custom code are
+      not being accepted. A general discussion of eval validity was not found in the pages read.
+    source_ids: [evals-run-docs, evals-readme]
+run_notes:
+  - text: >-
+      The README gives Python 3.9 as the minimum version. The latest release on PyPI is
+      3.0.1.post1, published May 1, 2024.
+    source_ids: [evals-readme, evals-pypi]
+  - text: >-
+      Recent commits are maintenance: a December 2024 README change linking to the hosted Evals
+      product, removal of an eval suite with defunct dependencies in November 2025, and pinning
+      of CI and pre-commit references in April 2026.
+    source_ids: [evals-commits]
+provenance: null
+tags: [evaluation, benchmark]
+publication_status: published
+archive_note: null
+released_at: 2023-03
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: evals-repo
+    title: openai/evals
+    url: https://github.com/openai/evals
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evals-readme
+    title: openai/evals README.md
+    url: https://raw.githubusercontent.com/openai/evals/main/README.md
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evals-license
+    title: openai/evals LICENSE.md
+    url: https://raw.githubusercontent.com/openai/evals/main/LICENSE.md
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evals-run-docs
+    title: How to run evals (docs/run-evals.md)
+    url: https://raw.githubusercontent.com/openai/evals/main/docs/run-evals.md
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evals-templates-docs
+    title: Existing templates for evals (docs/eval-templates.md)
+    url: https://raw.githubusercontent.com/openai/evals/main/docs/eval-templates.md
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evals-commits
+    title: Commits · openai/evals
+    url: https://github.com/openai/evals/commits/main
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evals-pypi
+    title: evals on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/evals/json
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2024-05-01
+    accessed_at: 2026-09-29
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29

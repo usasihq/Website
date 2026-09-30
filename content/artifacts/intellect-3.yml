@@ -1,0 +1,198 @@
+slug: intellect-3
+name: INTELLECT-3
+kind: model
+record_level: release
+family_slug: intellect
+version: "INTELLECT-3"
+maintainers:
+  - name: Prime Intellect
+    organization_slug: prime-intellect
+    source_ids: [mc-intellect-3, i3-report-pdf]
+organization_slugs: [prime-intellect]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-3
+    kind: model-hub
+  - label: INTELLECT-3 technical report (arXiv 2512.16144)
+    url: https://arxiv.org/abs/2512.16144
+    kind: paper
+  - label: Release post
+    url: https://www.primeintellect.ai/blog/intellect-3
+    kind: release-notes
+  - label: prime-rl (training framework)
+    url: https://github.com/PrimeIntellect-ai/prime-rl
+    kind: repository
+summary:
+  text: >-
+    A 106B-parameter mixture-of-experts reasoning model with 12B active parameters, post-trained
+    by Prime Intellect from Z.ai's GLM-4.5-Air-Base. Training used two supervised fine-tuning
+    stages (general reasoning, then agentic) followed by large-scale reinforcement learning on
+    math, code, science, logic, deep-research, and software-engineering environments, run with
+    prime-rl on a 512-GPU H200 cluster over about two months.
+  source_ids: [mc-intellect-3, i3-report-pdf, i3-blog]
+useful_for:
+  text: >-
+    Prime Intellect presents it as a reasoning model for math, code, science, and agentic tasks
+    with tool calling; it always reasons before answering.
+  source_ids: [i3-blog, i3-report-pdf]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Post-trained and published by Prime Intellect, Inc., a Delaware corporation with U.S.
+    locations (see the prime-intellect record). Eligibility covers Prime Intellect's
+    post-training only; the GLM-4.5-Air-Base model it starts from was released by Z.ai and is
+    not treated as a U.S.-developed model.
+  source_ids: [mc-intellect-3, sec-formd-prime-2026-07, glm-45-air-base-card]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; an FP8 version is published
+    separately. The release post also points to a chat interface and to hosting by third-party
+    providers.
+  source_ids: [mc-intellect-3, i3-blog]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-3
+    applies_to: weights
+    source_ids: [mc-intellect-3]
+  - name: Apache License 2.0 (prime-rl)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/prime-rl/main/LICENSE
+    applies_to: code
+    source_ids: [prime-rl-license]
+  - name: MIT License (verifiers)
+    spdx: MIT
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/verifiers/main/LICENSE
+    applies_to: code
+    source_ids: [verifiers-license]
+license_notes:
+  text: >-
+    The MIT license for the weights is declared in the model card metadata; the repository has
+    no separate LICENSE file. The card says the model, training frameworks, and environments are
+    released under MIT and Apache 2.0 licenses. The base model, GLM-4.5-Air-Base, is also tagged
+    MIT on its model card.
+  source_ids: [mc-intellect-3, i3-repo-files, glm-45-air-base-card]
+checklist:
+  weights:
+    status: public
+    note: BF16 safetensors in an ungated Hugging Face repository; an FP8 repository is also published.
+    source_ids: [mc-intellect-3]
+  inference_code:
+    status: public
+    note: The model card gives vLLM serving commands with the qwen3_coder tool-call parser and deepseek_r1 reasoning parser.
+    source_ids: [mc-intellect-3]
+  training_code:
+    status: partial
+    note: >-
+      The SFT and RL stages were run with prime-rl (Apache 2.0) using environments built with the
+      verifiers library (MIT), both open source. This covers Prime Intellect's post-training only;
+      the code used to pretrain the GLM-4.5-Air base is not part of this release.
+    source_ids: [i3-report-pdf, prime-rl-license, verifiers-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The report lists the SFT sources with sample and token counts (splits of NVIDIA's
+      Nemotron-Post-Training-Dataset-v1, AM-DeepSeek-R1-0528-Distilled, SWE-Swiss, Toucan Tool,
+      and synthetic data from Environments Hub environments) and the datasets behind each RL
+      environment. The pretraining data of the base model is not described in this release.
+    source_ids: [i3-report-pdf]
+  training_recipe:
+    status: partial
+    note: >-
+      For the post-training, the report gives SFT settings (Muon optimizer, learning rates,
+      context lengths of 65K and 98K, FSDP and context parallelism) and RL settings (256 prompts
+      with 16 rollouts each, 65,536-token context, learning rate 1e-6, 60 nodes split between
+      training and inference, masked importance sampling). The base model's pretraining recipe is
+      Z.ai's and is not part of this release.
+    source_ids: [i3-report-pdf]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The model card and report give benchmark results, and the report's appendix documents the
+      evaluation setup and names the Environments Hub environments used. The hub pages opened
+      only as a sign-in dashboard during review, so public access to the evaluation code was not
+      confirmed.
+    source_ids: [mc-intellect-3, i3-report-pdf]
+run_notes:
+  - text: >-
+      The model card states that the BF16 version can be served with vLLM on 2x H200 GPUs
+      (tensor parallel size 2) and the FP8 version on a single H200.
+    source_ids: [mc-intellect-3]
+provenance:
+  text: >-
+    Post-trained by Prime Intellect from GLM-4.5-Air-Base, a 106B-total, 12B-active base model
+    released by Z.ai (zai-org) under the MIT License. The base model is not a catalog member and
+    is not treated as U.S.-developed; Prime Intellect's contribution is the SFT and RL training,
+    the environments, and the training framework.
+  derived_from:
+    - name: GLM-4.5-Air-Base (Z.ai)
+      artifact_slug: null
+      url: https://huggingface.co/zai-org/GLM-4.5-Air-Base
+      note: Third-party base model; not a catalog member.
+  source_ids: [mc-intellect-3, i3-report-pdf, glm-45-air-base-card]
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2025-11-26
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-intellect-3
+    title: PrimeIntellect/INTELLECT-3 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-3
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: i3-repo-files
+    title: INTELLECT-3 repository file listing
+    url: https://huggingface.co/api/models/PrimeIntellect/INTELLECT-3/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: i3-report-pdf
+    title: "INTELLECT-3: Technical Report (PDF)"
+    url: https://storage.googleapis.com/intellect-3-paper/INTELLECT_3_Technical_Report.pdf
+    publisher: Prime Intellect
+    kind: paper
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: i3-blog
+    title: "INTELLECT-3: A 100B+ MoE trained with large-scale RL"
+    url: https://www.primeintellect.ai/blog/intellect-3
+    publisher: Prime Intellect
+    kind: announcement
+    published_at: 2025-11-26
+    accessed_at: 2026-09-29
+  - id: prime-rl-license
+    title: prime-rl LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/prime-rl/main/LICENSE
+    publisher: Prime Intellect
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: verifiers-license
+    title: verifiers LICENSE (MIT)
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/verifiers/main/LICENSE
+    publisher: Prime Intellect
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: glm-45-air-base-card
+    title: zai-org/GLM-4.5-Air-Base model card
+    url: https://huggingface.co/zai-org/GLM-4.5-Air-Base
+    publisher: Z.ai
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-formd-prime-2026-07
+    title: Prime Intellect, Inc. Form D (accession 0001231919-26-000720)
+    url: https://www.sec.gov/Archives/edgar/data/2103990/000123191926000720/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: 2026-07-01
+    accessed_at: 2026-09-29

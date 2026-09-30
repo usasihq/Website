@@ -1,0 +1,232 @@
+slug: hermes-4-70b
+name: Hermes 4 70B
+kind: model
+record_level: release
+family_slug: hermes
+version: "Hermes-4-70B"
+maintainers:
+  - name: Nous Research
+    organization_slug: nous-research
+    source_ids: [mc-hermes-4-70b, hermes4-report-pdf]
+organization_slugs: [nous-research]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/NousResearch/Hermes-4-70B
+    kind: model-hub
+  - label: Hermes 4 technical report (arXiv 2508.18255)
+    url: https://arxiv.org/abs/2508.18255
+    kind: paper
+  - label: Evaluation samples (Hugging Face dataset, reasoning mode)
+    url: https://huggingface.co/datasets/NousResearch/eval-Hermes-4-70B-reasoning
+    kind: dataset-hub
+  - label: TorchTitan fork used for training
+    url: https://github.com/NousResearch/torchtitan/tree/856a0ecabeb8a882c150641f73f8c1c235720622
+    kind: repository
+  - label: Atropos environments
+    url: https://github.com/NousResearch/atropos/tree/main/environments
+    kind: repository
+summary:
+  text: >-
+    A 70B-parameter hybrid reasoning model that Nous Research post-trained from Meta's Llama 3.1
+    70B base model, released in August 2025 with Hermes 4 405B and 14B. Nous trained it on a
+    newly synthesized dataset of about 5 million reasoning and non-reasoning samples, and it can
+    either answer directly or reason inside think tags first.
+  source_ids: [mc-hermes-4-70b, hermes4-report-pdf, nous-releases]
+useful_for:
+  text: >-
+    Nous presents it as a general assistant for math, code, STEM, and creative tasks with
+    function calling and tool use and schema-following JSON output, and describes it as trained
+    to be easier to steer, with reduced refusal rates.
+  source_ids: [mc-hermes-4-70b]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    This fine-tune was made and published by Nous Research, Inc., a Delaware corporation with
+    U.S. addresses (see the nous-research record). The Llama 3.1 70B base model is Meta's; this
+    record's eligibility rests on Nous Research's post-training and does not re-attribute the
+    base model.
+  source_ids: [mc-hermes-4-70b, nous-portal-terms, hermes4-report-pdf]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; an FP8 version is published
+    separately. The model card lists Nous Portal, Chutes, Nebius, and Luminal as inference
+    providers. Use is subject to Meta's Llama license terms.
+  source_ids: [mc-hermes-4-70b, hermes-4-70b-api]
+licenses:
+  - name: Meta Llama 3 Community License (card license field "llama3")
+    spdx: null
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3/LICENSE
+    applies_to: weights
+    source_ids: [mc-hermes-4-70b, llama3-license]
+license_notes:
+  text: >-
+    The model card's license field is "llama3" and the repository has no LICENSE file. The base
+    model, Llama 3.1 70B, is distributed under the Llama 3.1 Community License Agreement, which
+    applies to derivative works: it requires including the agreement, displaying "Built with
+    Llama", and beginning the names of distributed derived models with "Llama"; requires
+    following Meta's acceptable use policy; requires licensees whose products had more than 700
+    million monthly active users in the month before the Llama 3.1 release to request a license
+    from Meta; and ends the license for anyone who sues Meta or any other entity alleging that
+    the Llama materials or their outputs infringe their IP. California law governs.
+  source_ids: [mc-hermes-4-70b, hermes-4-70b-repo-files, llama31-license, llama31-70b-api]
+checklist:
+  weights:
+    status: public
+    note: BF16 safetensors in an ungated Hugging Face repository; an FP8 repository is also published.
+    source_ids: [mc-hermes-4-70b, hermes-4-70b-api]
+  inference_code:
+    status: public
+    note: The model card gives a Transformers example and says vLLM and SGLang include tool-call parsers for the Hermes format; the repository's config declares the standard LlamaForCausalLM architecture.
+    source_ids: [mc-hermes-4-70b, hermes-4-70b-config]
+  training_code:
+    status: partial
+    note: >-
+      The technical report links the specific commit of Nous's TorchTitan fork (BSD-3-Clause)
+      used for Hermes 4 training and says all Atropos environments used for rejection sampling
+      are open source. This covers Nous's post-training only; Meta has not published the code
+      used to pretrain the Llama 3.1 base.
+    source_ids: [hermes4-report-pdf, nous-torchtitan-license, atropos-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The report describes the roughly 5-million-sample, 19-billion-token post-training dataset:
+      DataForge synthetic data seeded from DCLM and FineWeb, rejection-sampled trajectories from
+      Atropos environments, and a retained portion of the public Hermes 3 dataset. The Hermes 4
+      dataset itself is not linked as a release, and the base model's pretraining data is not
+      public.
+    source_ids: [hermes4-report-pdf]
+  training_recipe:
+    status: partial
+    note: >-
+      For Nous's post-training, the report gives the parallelism, 56B training tokens, learning
+      rate 1e-5, 12,864 B200 hours, 9,000 steps with 300 warmup steps, a global batch of 384
+      samples at 16,384-token context, packing, and loss masking. The base model's pretraining
+      recipe is Meta's and is not part of this release.
+    source_ids: [hermes4-report-pdf]
+  evaluation_materials:
+    status: public
+    note: >-
+      Nous released the samples generated during evaluation as Hugging Face datasets (reasoning
+      and non-reasoning modes), and the report describes the harness (lighteval, including a
+      published Nous branch, EQBench, and Atropos) and sampling settings.
+    source_ids: [hermes4-report-pdf, eval-hermes-4-70b-dataset]
+run_notes:
+  - text: >-
+      The model card recommends temperature 0.6, top_p 0.95, and top_k 20 and uses the Llama 3
+      chat format, with reasoning switched on through a thinking flag in the chat template or a
+      system prompt.
+    source_ids: [mc-hermes-4-70b]
+provenance:
+  text: >-
+    Fine-tuned by Nous Research from Meta's Llama 3.1 70B base model. Nous Research's
+    contribution is the synthesized post-training data and the supervised fine-tuning run; the
+    base model was pretrained by Meta.
+  derived_from:
+    - name: Llama 3.1 70B (meta-llama/Llama-3.1-70B)
+      artifact_slug: llama
+      url: https://huggingface.co/meta-llama/Llama-3.1-70B
+      note: >-
+        Meta base model; see the Llama family record. The card's base_model field gives the
+        earlier repository name meta-llama/Meta-Llama-3.1-70B, which now redirects here.
+  source_ids: [mc-hermes-4-70b, hermes4-report-pdf, llama31-70b-api]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2025-08-26
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-hermes-4-70b
+    title: NousResearch/Hermes-4-70B model card
+    url: https://huggingface.co/NousResearch/Hermes-4-70B
+    publisher: Nous Research
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes-4-70b-api
+    title: NousResearch/Hermes-4-70B repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/NousResearch/Hermes-4-70B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes-4-70b-config
+    title: Hermes-4-70B config.json
+    url: https://huggingface.co/NousResearch/Hermes-4-70B/raw/main/config.json
+    publisher: Nous Research
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes-4-70b-repo-files
+    title: Hermes-4-70B repository file listing
+    url: https://huggingface.co/api/models/NousResearch/Hermes-4-70B/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes4-report-pdf
+    title: Hermes 4 Technical Report (arXiv 2508.18255v2)
+    url: https://arxiv.org/pdf/2508.18255v2
+    publisher: Nous Research
+    kind: paper
+    published_at: 2025-09-02
+    accessed_at: 2026-09-29
+  - id: nous-releases
+    title: Releases | Nous Research
+    url: https://nousresearch.com/releases
+    publisher: Nous Research
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: eval-hermes-4-70b-dataset
+    title: NousResearch/eval-Hermes-4-70B-reasoning dataset
+    url: https://huggingface.co/datasets/NousResearch/eval-Hermes-4-70B-reasoning
+    publisher: Nous Research
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nous-torchtitan-license
+    title: NousResearch/torchtitan LICENSE at commit 856a0ec (BSD 3-Clause)
+    url: https://raw.githubusercontent.com/NousResearch/torchtitan/856a0ecabeb8a882c150641f73f8c1c235720622/LICENSE
+    publisher: Nous Research (fork of pytorch/torchtitan)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: atropos-license
+    title: atropos LICENSE (MIT)
+    url: https://raw.githubusercontent.com/NousResearch/atropos/main/LICENSE
+    publisher: Nous Research
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama3-license
+    title: Meta Llama 3 Community License Agreement
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3/LICENSE
+    publisher: Meta
+    kind: license
+    published_at: 2024-04-18
+    accessed_at: 2026-09-29
+  - id: llama31-license
+    title: Llama 3.1 Community License Agreement
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/LICENSE
+    publisher: Meta
+    kind: license
+    published_at: 2024-07-23
+    accessed_at: 2026-09-29
+  - id: llama31-70b-api
+    title: meta-llama/Llama-3.1-70B repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/meta-llama/Llama-3.1-70B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nous-portal-terms
+    title: Terms of Service - Nous Portal
+    url: https://portal.nousresearch.com/terms
+    publisher: Nous Research
+    kind: official-page
+    published_at: 2026-09-28
+    accessed_at: 2026-09-29

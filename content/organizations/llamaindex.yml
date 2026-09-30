@@ -1,0 +1,120 @@
+slug: llamaindex
+name: LlamaIndex
+legal_name:
+  text: LlamaIndex, Inc.
+  source_ids: [llamaindex-tos, llamaindex-privacy]
+website: https://www.llamaindex.ai
+logo_text: LI
+summary:
+  text: >-
+    LlamaIndex develops the open-source LlamaIndex framework for building LLM agents and workflows
+    over private data. It also sells LlamaParse, a hosted platform for document parsing,
+    extraction, and indexing, which the company now describes as its main focus.
+  source_ids: [llamaindex-readme, llamaparse-page]
+organization_roles: [developer-platform, enterprise-software]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [llamaindex-pr-2025, llamaindex-careers]
+other_locations: []
+founded:
+  year: 2023
+  source_ids: [llamaindex-pr-2025]
+sectors: [agents, data, enterprise]
+status_note: null
+products:
+  - id: llamaparse
+    name: LlamaParse
+    kind: developer-tool
+    access: >-
+      Hosted document-processing platform for agentic OCR, parsing, extraction, and indexing. It
+      is used through a web UI, an API, and Python and TypeScript SDKs. The product page offers
+      Global and EU sign-in regions and free sign-up, and larger customers can arrange enterprise
+      deployments through sales.
+    url: https://www.llamaindex.ai/llamaparse
+    source_ids: [llamaparse-page, llamaindex-readme]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      The LlamaIndex framework README says the company's main focus has moved to LlamaParse, the
+      free LiteParse text parser, and parsing and extraction benchmarks (ParseBench and
+      ExtractBench). It adds that the open-source framework is still available.
+    source_ids: [llamaindex-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    LlamaIndex's terms of service name LlamaIndex, Inc. as the provider, under Delaware law. The
+    company's March 2025 press release is datelined San Francisco,
+    and its boilerplate says LlamaIndex is based there. The careers page lists open roles in San
+    Francisco and mentions an office there. The privacy notice appoints a representative for the
+    European Union, which suggests the controlling entity is outside the EU. No foreign parent or
+    headquarters was found. Gap: no current official page uses the word "headquarters"; the
+    clearest location statement is the 2025 press release.
+  source_ids: [llamaindex-tos, llamaindex-pr-2025, llamaindex-careers, llamaindex-privacy]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    The LlamaIndex framework is published as open source (see its record). LlamaParse is a
+    commercial hosted service. This catalog assesses openness project by project, not for the
+    company as a whole.
+  source_ids: [llamaindex-oss-page, llamaparse-page]
+hiring_url: https://www.llamaindex.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: llamaindex-tos
+    title: Terms of Service
+    url: https://www.llamaindex.ai/legal/terms-of-service
+    publisher: LlamaIndex
+    kind: official-page
+    published_at: 2024-06-07
+    accessed_at: 2026-09-29
+  - id: llamaindex-privacy
+    title: Privacy Notice
+    url: https://www.llamaindex.ai/legal/privacy-notice
+    publisher: LlamaIndex
+    kind: official-page
+    published_at: 2026-08-24
+    accessed_at: 2026-09-29
+  - id: llamaindex-careers
+    title: Open Roles and Careers at LlamaIndex
+    url: https://www.llamaindex.ai/careers
+    publisher: LlamaIndex
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-pr-2025
+    title: LlamaIndex Secures $19 Million Series A to Power Enterprise-Grade Knowledge Agents
+    url: https://www.prnewswire.com/news-releases/llamaindex-secures-19-million-series-a-to-power-enterprise-grade-knowledge-agents-302390936.html
+    publisher: LlamaIndex (via PR Newswire)
+    kind: announcement
+    published_at: 2025-03-04
+    accessed_at: 2026-09-29
+  - id: llamaparse-page
+    title: "AI Document Parsing Software: AI-Ready Data at Scale | LlamaIndex"
+    url: https://www.llamaindex.ai/llamaparse
+    publisher: LlamaIndex
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-oss-page
+    title: AI Agent Framework For Context-Aware Apps | LlamaIndex OSS Frameworks
+    url: https://www.llamaindex.ai/llamaindex
+    publisher: LlamaIndex
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-readme
+    title: LlamaIndex README
+    url: https://github.com/run-llama/llama_index/blob/main/README.md
+    publisher: LlamaIndex
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

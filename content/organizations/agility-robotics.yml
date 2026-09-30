@@ -1,0 +1,160 @@
+slug: agility-robotics
+name: Agility Robotics
+legal_name:
+  text: Agility Robotics, Inc.
+  source_ids: [sec-agility-company, agility-home]
+website: https://www.agilityrobotics.com
+logo_text: AR
+summary:
+  text: >-
+    Agility Robotics builds Digit, a humanoid robot deployed commercially for warehouse,
+    manufacturing, and distribution tasks such as tote handling, and Agility Arc, a cloud
+    platform for managing Digit fleets. In September 2026 it announced Digit 5, a version
+    designed to work close to people with less reliance on protective barriers.
+  source_ids: [agility-solutions, agility-digit5-pr]
+organization_roles: [robotics, hardware-manufacturer]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation, per its SEC EDGAR filer record.
+  source_ids: [sec-agility-company]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Salem, Oregon
+  country: US
+  source_ids: [agility-digit5-pr, sec-agility-s4-index]
+other_locations:
+  - label: Pittsburgh, Pennsylvania
+    country: US
+    source_ids: [agility-digit5-pr]
+  - label: Fremont, California
+    country: US
+    source_ids: [agility-digit5-pr]
+founded: null
+sectors: [robotics]
+status_note:
+  text: >-
+    In June 2026 Agility Robotics agreed to a proposed business combination with Churchill
+    Capital Corp XI, a Nasdaq-listed blank check company, under which the combined company
+    would trade as "AGLT". A Form S-4 registration statement was filed with the SEC on
+    September 4, 2026. As of Agility's September 15, 2026 release the transaction was still
+    pending, subject to shareholder, SEC, regulatory, and exchange approvals.
+  source_ids: [agility-churchill-pr, sec-agility-s4-index, agility-digit5-pr, agility-investors]
+products:
+  - id: digit
+    name: Digit
+    kind: robot
+    access: >-
+      Humanoid robot deployed at customer sites for tasks such as tote handling,
+      palletizing, machine tending, and kitting; deployments are arranged through Agility's sales team. Digit 5
+      was announced in September 2026, with early access expected in the first half of 2027
+      and general availability by the end of 2027.
+    url: https://www.agilityrobotics.com/solutions
+    source_ids: [agility-solutions, agility-digit5-pr, agility-digit5-page]
+    last_reviewed: 2026-09-29
+  - id: agility-arc
+    name: Agility Arc
+    kind: enterprise-software
+    access: >-
+      Cloud platform for deploying and managing Digit fleets, reporting fleet metrics and
+      connecting Digit to customers' warehouse and manufacturing execution systems.
+    url: https://www.agilityrobotics.com/solutions
+    source_ids: [agility-solutions, agility-digit5-pr]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Agility assembles Digit at RoboFab, a 70,000-square-foot facility in Salem, Oregon. Its
+      Pittsburgh office handles engineering testing, validation, and skills development, and a
+      Fremont, California facility opened in July 2026 for hardware and physical AI
+      development.
+    source_ids: [agility-digit5-pr]
+  - text: >-
+      Agility says Digit 5 uses AI-based human detection and an independent safety controller
+      so that it can stop, avoid people, or sit down when someone comes too close.
+    source_ids: [agility-digit5-pr]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Agility's September 2026 press release states that it is headquartered in Salem, Oregon,
+    and its SEC filer record and September 2026 Form S-4 filing list Agility Robotics, Inc.,
+    a Delaware corporation, at 4698 Truax Drive SE, Salem, Oregon. The pending merger with
+    Churchill Capital Corp XI does not change this assessment.
+  source_ids: [agility-digit5-pr, sec-agility-company, sec-agility-s4-index]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Agility offers Digit and the Agility Arc platform as commercial products. Its public
+    GitHub organization mainly holds infrastructure and build-tooling repositories, plus a
+    documentation and software repository for its earlier Cassie robot. This catalog has no record of public AI model
+    weights from Agility Robotics.
+  source_ids: [agility-solutions, agility-github]
+hiring_url: https://www.agilityrobotics.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: agility-home
+    title: Industrial Humanoid Automation | Agility
+    url: https://www.agilityrobotics.com/
+    publisher: Agility Robotics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: agility-solutions
+    title: Humanoid Solutions | Agility
+    url: https://www.agilityrobotics.com/solutions
+    publisher: Agility Robotics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: agility-digit5-page
+    title: Digit 5 | Agility
+    url: https://www.agilityrobotics.com/solutions/digit-5
+    publisher: Agility Robotics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: agility-digit5-pr
+    title: Agility Unveils Digit 5 Humanoid Robot Built for Cooperatively Safe Work at Scale
+    url: https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale
+    publisher: Agility Robotics
+    kind: announcement
+    published_at: 2026-09-15
+    accessed_at: 2026-09-29
+  - id: agility-churchill-pr
+    title: Agility Robotics to Go Public Through Merger with Churchill Capital Corp XI
+    url: https://www.agilityrobotics.com/content/agility-robotics-to-go-public-through-merger-with-churchill-capital-corp-xi
+    publisher: Agility Robotics
+    kind: announcement
+    published_at: 2026-06-24
+    accessed_at: 2026-09-29
+  - id: agility-investors
+    title: Investor Relations | Agility
+    url: https://www.agilityrobotics.com/investors
+    publisher: Agility Robotics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-agility-company
+    title: EDGAR company filings for Agility Robotics, Inc. (CIK 0001727116)
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001727116&type=&dateb=&owner=include&count=40
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-agility-s4-index
+    title: Form S-4 filing index, Agility Robotics, Inc. and Churchill Capital Corp XI (accession 0001213900-26-097764)
+    url: https://www.sec.gov/Archives/edgar/data/1727116/000121390026097764/0001213900-26-097764-index.htm
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: 2026-09-04
+    accessed_at: 2026-09-29
+  - id: agility-github
+    title: Agility Robotics GitHub repositories (agilityrobotics)
+    url: https://github.com/orgs/agilityrobotics/repositories
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

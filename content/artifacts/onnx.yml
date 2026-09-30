@@ -1,0 +1,179 @@
+slug: onnx
+name: ONNX (Open Neural Network Exchange)
+kind: framework
+record_level: project
+family_slug: null
+version: "1.23.1"
+maintainers:
+  - name: ONNX project (hosted by the LF AI & Data Foundation)
+    organization_slug: lf-ai-data
+    source_ids: [lfai-onnx-page, onnx-governance, onnx-pypi]
+organization_slugs: [lf-ai-data, linux-foundation, microsoft, meta]
+links:
+  - label: Website
+    url: https://onnx.ai/
+    kind: website
+  - label: GitHub repository
+    url: https://github.com/onnx/onnx
+    kind: repository
+  - label: Python package documentation
+    url: https://onnx.ai/onnx/
+    kind: documentation
+  - label: Open governance
+    url: https://github.com/onnx/onnx/blob/main/community/readme.md
+    kind: documentation
+  - label: License (Apache 2.0)
+    url: https://raw.githubusercontent.com/onnx/onnx/main/LICENSE
+    kind: license
+  - label: PyPI package
+    url: https://pypi.org/project/onnx/
+    kind: release-notes
+summary:
+  text: >-
+    ONNX is an open format for representing machine learning models, covering both deep learning
+    and traditional ML. It defines an extensible computation graph model, built-in operators,
+    and standard data types, with a current focus on inference. Facebook and Microsoft started
+    the ONNX community in 2017, and LF AI announced it as a graduate-level project in November
+    2019.
+  source_ids: [onnx-repo, lfai-onnx-announcement]
+useful_for:
+  text: >-
+    Exchanging trained models between frameworks, tools, and hardware runtimes; the repository
+    also provides a Python package with shape and type inference, opset version conversion, and
+    a reference implementation.
+  source_ids: [onnx-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    ONNX is a hosted project of the LF AI & Data Foundation, a directed fund of The Linux
+    Foundation; its PyPI contact list is on the LF AI & Data mailing-list domain and its README
+    points to Linux Foundation trademark rules. The Linux Foundation is a 501(c)(6) nonprofit
+    whose legal postal address is in San Francisco, California. Under the project's open
+    governance, a five-member Steering Committee elected by community vote sets project
+    direction, governance policy, and releases, with no more than one representative from any
+    single member company; Special Interest Groups are responsible for specific parts of the
+    project.
+  source_ids: [lfai-onnx-page, lfai-charter, onnx-pypi, onnx-repo, lf-about, lf-privacy, onnx-governance]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [onnx-repo, onnx-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/onnx/onnx/main/LICENSE
+    applies_to: code
+    source_ids: [onnx-license, onnx-repo]
+license_notes:
+  text: >-
+    Source files carry the SPDX identifier Apache-2.0 with copyright attributed to the ONNX
+    Project Contributors. The README points to the Linux Foundation's trademark usage rules for
+    the ONNX mark.
+  source_ids: [onnx-repo]
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public onnx/onnx GitHub repository.
+    source_ids: [onnx-repo]
+  documentation:
+    status: public
+    note: >-
+      The repository links the IR specification, operator documentation, versioning principles,
+      and Python API documentation.
+    source_ids: [onnx-repo]
+  installation:
+    status: public
+    note: Installable from PyPI with pip install onnx; weekly builds are published as onnx-weekly.
+    source_ids: [onnx-repo, onnx-pypi]
+  supported_platforms:
+    status: public
+    note: >-
+      Version 1.23.1 requires Python 3.10 or later and ships wheels for Linux (x86_64 and
+      aarch64), macOS (universal2), and Windows (x86, x64, and ARM64), plus a WebAssembly
+      (Emscripten) wheel and a source distribution.
+    source_ids: [onnx-pypi, onnx-pypi-json]
+  release_status:
+    status: public
+    note: Version 1.23.1 was released on PyPI on September 29, 2026.
+    source_ids: [onnx-pypi]
+run_notes: []
+provenance: null
+tags: [inference, compiler]
+publication_status: published
+archive_note: null
+released_at: 2026-09-29
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: onnx-repo
+    title: onnx/onnx README
+    url: https://github.com/onnx/onnx
+    publisher: ONNX Project Contributors
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: onnx-license
+    title: onnx/onnx LICENSE
+    url: https://raw.githubusercontent.com/onnx/onnx/main/LICENSE
+    publisher: ONNX Project Contributors
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: onnx-governance
+    title: ONNX Open Governance (community/readme.md)
+    url: https://github.com/onnx/onnx/blob/main/community/readme.md
+    publisher: ONNX Project Contributors
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: onnx-pypi
+    title: onnx on PyPI
+    url: https://pypi.org/project/onnx/
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-09-29
+    accessed_at: 2026-09-29
+  - id: onnx-pypi-json
+    title: onnx 1.23.1 release files (PyPI JSON API)
+    url: https://pypi.org/pypi/onnx/1.23.1/json
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-09-29
+    accessed_at: 2026-09-29
+  - id: lfai-onnx-page
+    title: ONNX | LF AI & Data
+    url: https://lfaidata.foundation/projects/onnx/
+    publisher: LF AI & Data Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lfai-onnx-announcement
+    title: LF AI Welcomes ONNX, Ecosystem for Interoperable AI Models, as Graduate Project
+    url: https://lfaidata.foundation/blog/2019/11/14/lf-ai-welcomes-onnx/
+    publisher: LF AI Foundation
+    kind: announcement
+    published_at: 2019-11-14
+    accessed_at: 2026-09-29
+  - id: lfai-charter
+    title: The LF AI & Data Foundation Charter (Participation Agreement and Charter, June 2024 file)
+    url: https://lfaidata.foundation/wp-content/uploads/sites/3/2026/04/LF-AI-Data-Foundation-Participation-Agreement-Charter-JUNE-2024.docx.pdf
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lf-about
+    title: About the Linux Foundation
+    url: https://www.linuxfoundation.org/about
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lf-privacy
+    title: Privacy Policy | Linux Foundation
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

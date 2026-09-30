@@ -1,0 +1,193 @@
+slug: apriel-1-6-15b-thinker
+name: Apriel-1.6-15B-Thinker
+kind: model
+record_level: release
+family_slug: apriel
+version: "Apriel-1.6-15b-Thinker"
+maintainers:
+  - name: ServiceNow (SLAM lab)
+    organization_slug: servicenow
+    source_ids: [apriel-1-6-card, apriel-1-6-blog]
+organization_slugs: [servicenow]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/ServiceNow-AI/Apriel-1.6-15b-Thinker
+    kind: model-hub
+  - label: Release blog post
+    url: https://huggingface.co/blog/ServiceNow-AI/apriel-1p6-15b-thinker
+    kind: release-notes
+  - label: Apriel-1.5-15b-Thinker technical report (arXiv 2510.01141)
+    url: https://arxiv.org/abs/2510.01141
+    kind: paper
+  - label: Fast-LLM training library
+    url: https://github.com/ServiceNow/Fast-LLM
+    kind: repository
+summary:
+  text: >-
+    A multimodal reasoning model of about 15B parameters that accepts text and images and
+    writes its reasoning steps before a marked final answer. ServiceNow released it in
+    December 2025 as an update to Apriel-1.5-15b-Thinker, with further continual pretraining,
+    supervised fine-tuning, and reinforcement learning aimed partly at shorter reasoning.
+  source_ids: [apriel-1-6-card, apriel-1-6-blog, hf-api-apriel-1-6]
+useful_for:
+  text: >-
+    The card lists code assistance and generation, logical and multi-step reasoning, question
+    answering and information retrieval, function calling, complex instruction following, and
+    agent use cases. It says the model is not intended for safety-critical applications
+    without human oversight.
+  source_ids: [apriel-1-6-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The model is published by ServiceNow's ServiceNow-AI organization on Hugging Face and
+    described as part of ServiceNow's Apriel series. ServiceNow, Inc. is a Delaware
+    corporation headquartered in Santa Clara, California, per its 2025 Form 10-K. The
+    Apriel 1.5 line it builds on started from Pixtral-12B-Base-2409, published by Mistral AI;
+    that base model is recorded under provenance and is not treated as U.S.-developed.
+  source_ids: [apriel-1-6-card, now-10k-2025, apriel-1-5-paper]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [apriel-1-6-card, hf-api-apriel-1-6]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://huggingface.co/ServiceNow-AI/Apriel-1.6-15b-Thinker
+    applies_to: weights
+    source_ids: [apriel-1-6-card]
+license_notes:
+  text: >-
+    The license is stated as MIT in the model card's metadata and License section; the
+    Hugging Face repository does not contain a separate LICENSE file.
+  source_ids: [apriel-1-6-card, hf-api-apriel-1-6]
+checklist:
+  weights:
+    status: public
+    note: Safetensors weights are downloadable from Hugging Face; a GGUF conversion is published in a separate repository.
+    source_ids: [apriel-1-6-card, hf-api-apriel-1-6, hf-servicenow-ai]
+  inference_code:
+    status: public
+    note: >-
+      The model card gives inference code for Hugging Face Transformers and a vLLM server
+      command with Apriel tool-call and reasoning parsers.
+    source_ids: [apriel-1-6-card]
+  training_code:
+    status: partial
+    note: >-
+      The card names Fast-LLM and VERL as the training stack. Fast-LLM is ServiceNow's public
+      training library (Apache 2.0), but this catalog did not find the Apriel-1.6 training
+      configurations published.
+    source_ids: [apriel-1-6-card, fast-llm-repo]
+  training_data_information:
+    status: partial
+    note: >-
+      The card and blog describe data categories (math, code, science, logical reasoning,
+      multimodal image-text data, 2.4M SFT samples, synthetic data, and a share of NVIDIA
+      Nemotron datasets in the upscaling mix). The training datasets themselves are not
+      documented as released.
+    source_ids: [apriel-1-6-card, apriel-1-6-blog]
+  training_recipe:
+    status: partial
+    note: >-
+      The card and blog outline the stages (depth-upscaling and continual pretraining, text
+      then multimodal SFT, and multi-stage RL with GSPO) at a high level.
+    source_ids: [apriel-1-6-card, apriel-1-6-blog]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card publishes a results table; some text benchmark scores are taken from
+      Artificial Analysis and the rest were evaluated internally. No evaluation code for this
+      release was found.
+    source_ids: [apriel-1-6-card]
+run_notes:
+  - text: >-
+      The model card documents inference with Hugging Face Transformers in bfloat16 and a
+      vLLM OpenAI-compatible server with a 131,072-token maximum model length, and
+      recommends a temperature of 0.6. It says the vLLM parsers were not yet merged upstream
+      at the time and points to a custom Docker image.
+    source_ids: [apriel-1-6-card]
+  - text: >-
+      The card lists Together AI for hosted inference and Ollama for local use as additional
+      options.
+    source_ids: [apriel-1-6-card]
+provenance:
+  text: >-
+    Apriel-1.6-15b-Thinker builds on ServiceNow's Apriel-1.5-15b-Thinker. The Apriel 1.5
+    report says that model started from Mistral AI's Pixtral-12B-Base-2409 (using a copy
+    hosted by Unsloth), which ServiceNow depth-upscaled from 40 to 48 decoder layers before
+    continued pretraining. The base weights were therefore not developed by ServiceNow.
+  derived_from:
+    - name: Apriel-1.5-15b-Thinker
+      artifact_slug: null
+      url: https://huggingface.co/ServiceNow-AI/Apriel-1.5-15b-Thinker
+      note: Direct predecessor; no separate catalog record.
+    - name: Pixtral-12B-Base-2409 (Mistral AI)
+      artifact_slug: null
+      url: https://huggingface.co/mistralai/Pixtral-12B-Base-2409
+      note: Starting checkpoint of the Apriel 1.5 line; Apache 2.0.
+  source_ids: [apriel-1-6-card, apriel-1-6-blog, apriel-1-5-paper, pixtral-card]
+tags: [language-model, reasoning, multimodal, vision-language]
+publication_status: published
+archive_note: null
+released_at: 2025-12-09
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: apriel-1-6-card
+    title: ServiceNow-AI/Apriel-1.6-15b-Thinker model card
+    url: https://huggingface.co/ServiceNow-AI/Apriel-1.6-15b-Thinker
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-apriel-1-6
+    title: Hugging Face model API metadata for ServiceNow-AI/Apriel-1.6-15b-Thinker
+    url: https://huggingface.co/api/models/ServiceNow-AI/Apriel-1.6-15b-Thinker
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-1-6-blog
+    title: "Apriel-1.6-15b-Thinker: Cost-efficient Frontier Multimodal Performance"
+    url: https://huggingface.co/blog/ServiceNow-AI/apriel-1p6-15b-thinker
+    publisher: ServiceNow (Hugging Face blog)
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-09-29
+  - id: apriel-1-5-paper
+    title: Apriel-1.5-15b-Thinker (arXiv 2510.01141)
+    url: https://arxiv.org/html/2510.01141
+    publisher: ServiceNow (SLAM Lab)
+    kind: paper
+    published_at: 2025-10-01
+    accessed_at: 2026-09-29
+  - id: pixtral-card
+    title: mistralai/Pixtral-12B-Base-2409 model card
+    url: https://huggingface.co/mistralai/Pixtral-12B-Base-2409
+    publisher: Mistral AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-servicenow-ai
+    title: ServiceNow-AI on Hugging Face
+    url: https://huggingface.co/ServiceNow-AI
+    publisher: ServiceNow (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fast-llm-repo
+    title: ServiceNow/Fast-LLM (GitHub repository)
+    url: https://github.com/ServiceNow/Fast-LLM
+    publisher: ServiceNow
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: now-10k-2025
+    title: ServiceNow, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (ServiceNow filing)
+    kind: filing
+    published_at: 2026-01-28
+    accessed_at: 2026-09-29

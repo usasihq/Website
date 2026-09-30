@@ -1,0 +1,161 @@
+slug: cognition
+name: Cognition
+legal_name:
+  text: Cognition AI, Inc.
+  source_ids: [cognition-platform-terms]
+website: https://cognition.com
+logo_text: C
+summary:
+  text: >-
+    Cognition makes Devin, an AI software engineering agent that runs in the cloud or on a
+    developer's machine, together with Devin Desktop (formerly Windsurf) and Devin CLI. It
+    also develops SWE-series coding models that are offered in these products.
+  source_ids: [devin-home, devin-desktop, cognition-swe-2]
+organization_roles: [developer-platform, model-developer]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [cognition-platform-terms, cognition-careers]
+other_locations: []
+founded: null
+sectors: [agents]
+status_note:
+  text: >-
+    In July 2025 Cognition signed a definitive agreement to acquire Windsurf's IP, product,
+    trademark and brand, and team. In June 2026 it introduced Devin Desktop as the next
+    generation of Windsurf; the Devin Desktop page calls it the new name for Windsurf, and
+    Cognition's platform terms refer to "Devin Desktop (fka Windsurf)" and say that for users
+    who enrolled under Exafunction, Inc., the provider is Exafunction, Inc. unless they have
+    been notified that their license was assigned to Cognition AI, Inc.
+  source_ids: [cognition-windsurf, cognition-devin-desktop, devin-desktop, cognition-platform-terms]
+products:
+  - id: devin
+    name: Devin
+    kind: developer-tool
+    access: >-
+      Autonomous software engineering agent used through a web app after sign-up, which runs
+      in the cloud or on the user's machine and works toward mergeable pull requests.
+    url: https://devin.ai/
+    source_ids: [devin-home]
+    last_reviewed: 2026-09-29
+  - id: devin-desktop
+    name: Devin Desktop (formerly Windsurf)
+    kind: developer-tool
+    access: >-
+      Downloadable IDE for managing local and cloud coding agents; it replaced Windsurf through
+      an automatic update that keeps existing plans, settings, and extensions.
+    url: https://devin.ai/desktop
+    source_ids: [devin-desktop, cognition-devin-desktop]
+    last_reviewed: 2026-09-29
+  - id: devin-cli
+    name: Devin CLI
+    kind: developer-tool
+    access: >-
+      Local command-line coding agent installed with a shell script, which can hand a session
+      off to a cloud agent.
+    url: https://cognition.com/blog/devin-for-terminal
+    source_ids: [cognition-devin-cli]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Cognition says its SWE-2 coding model (September 2026) is post-trained from Kimi K3, a
+      2.8-trillion-parameter model that had already been trained for agentic coding. SWE-2
+      launched in Devin Desktop and Devin CLI, with a rollout to Devin on the web.
+    source_ids: [cognition-swe-2]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Cognition's platform terms of service (updated June 30, 2026) name Cognition AI, Inc. with
+    an address at 550 Third Street, San Francisco, California, and its careers page describes a
+    San Francisco office where most roles are listed. No official page reviewed uses the word
+    headquarters.
+  source_ids: [cognition-platform-terms, cognition-careers]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Devin, Devin Desktop, and Devin CLI are commercial products, and Cognition's SWE models are
+    offered inside them; the SWE-2 announcement does not mention a weights release. Cognition's
+    verified Hugging Face account lists one public model, Kevin-32B, a CUDA-kernel-writing
+    model fine-tuned from Qwen's QwQ-32B; its license was not confirmed for this record.
+  source_ids: [devin-home, cognition-swe-2, cognition-hf, kevin-32b-card]
+hiring_url: https://cognition.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: cognition-platform-terms
+    title: Platform Terms of Service | Cognition
+    url: https://cognition.com/legal/platform-terms-of-service
+    publisher: Cognition AI, Inc.
+    kind: official-page
+    published_at: 2026-06-30
+    accessed_at: 2026-09-29
+  - id: cognition-careers
+    title: Careers | Cognition
+    url: https://cognition.com/careers
+    publisher: Cognition AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: devin-home
+    title: Devin
+    url: https://devin.ai/
+    publisher: Cognition AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: devin-desktop
+    title: Devin Desktop
+    url: https://devin.ai/desktop
+    publisher: Cognition AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cognition-windsurf
+    title: Cognition’s acquisition of Windsurf | Cognition
+    url: https://cognition.com/blog/windsurf
+    publisher: Cognition AI, Inc.
+    kind: announcement
+    published_at: 2025-07-14
+    accessed_at: 2026-09-29
+  - id: cognition-devin-desktop
+    title: Introducing Devin Desktop | Cognition
+    url: https://cognition.com/blog/introducing-devin-desktop
+    publisher: Cognition AI, Inc.
+    kind: announcement
+    published_at: 2026-06-02
+    accessed_at: 2026-09-29
+  - id: cognition-devin-cli
+    title: "Devin CLI: Start Local, Hand Off to the Cloud | Cognition"
+    url: https://cognition.com/blog/devin-for-terminal
+    publisher: Cognition AI, Inc.
+    kind: announcement
+    published_at: 2026-04-27
+    accessed_at: 2026-09-29
+  - id: cognition-swe-2
+    title: "Introducing SWE-2: Pushing the Pareto Frontier | Cognition"
+    url: https://cognition.com/blog/swe-2
+    publisher: Cognition AI, Inc.
+    kind: announcement
+    published_at: 2026-09-10
+    accessed_at: 2026-09-29
+  - id: cognition-hf
+    title: cognition-ai (Cognition AI)
+    url: https://huggingface.co/cognition-ai
+    publisher: Cognition AI, Inc. (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: kevin-32b-card
+    title: cognition-ai/Kevin-32B · Hugging Face
+    url: https://huggingface.co/cognition-ai/Kevin-32B
+    publisher: Cognition AI, Inc. (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29

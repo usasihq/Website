@@ -1,0 +1,163 @@
+slug: anysphere
+name: Anysphere (Cursor)
+legal_name:
+  text: Anysphere, Inc.
+  source_ids: [cursor-terms, spacex-8k-2026-08-14]
+website: https://cursor.com
+logo_text: A
+summary:
+  text: >-
+    Anysphere makes Cursor, an AI coding product with a desktop editor, coding agents, a
+    command-line tool, and an automated code reviewer. Cursor offers models from several
+    providers alongside its own Composer models. Since August 2026 Anysphere has been a wholly
+    owned subsidiary of SpaceX.
+  source_ids: [cursor-terms, cursor-home, cursor-models, spacex-8k-2026-08-14]
+organization_roles: [developer-platform, model-developer]
+ownership_category: unit-of-another-organization
+legal_form: null
+parent_org_slug: spacex
+parent_relationship: subsidiary
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [cursor-terms, cursor-msa]
+other_locations: []
+founded: null
+sectors: [agents]
+status_note:
+  text: >-
+    On August 14, 2026 SpaceX completed its acquisition of Anysphere, Inc. through a merger in
+    which a SpaceX subsidiary merged into Anysphere and Anysphere survived as a wholly owned
+    subsidiary of Space Exploration Technologies Corp., per SpaceX's Form 8-K. Cursor announced
+    the same day that it is now part of SpaceX. SpaceX is a Texas corporation with principal
+    executive offices in Starbase, Texas.
+  source_ids: [spacex-8k-2026-08-14, cursor-joining-spacex]
+products:
+  - id: cursor
+    name: Cursor
+    kind: developer-tool
+    access: >-
+      AI coding product with a desktop editor and coding agents, including cloud agents that
+      work in parallel; it gives access to models from several providers and to Cursor's own
+      models.
+    url: https://cursor.com
+    source_ids: [cursor-home, cursor-docs, cursor-models]
+    last_reviewed: 2026-09-29
+  - id: cursor-cli
+    name: Cursor CLI
+    kind: developer-tool
+    access: >-
+      Command-line tool, installed with a shell script, for running Cursor's coding agents in a
+      terminal, in scripts, and in GitHub Actions.
+    url: https://cursor.com/cli
+    source_ids: [cursor-cli]
+    last_reviewed: 2026-09-29
+  - id: bugbot
+    name: Bugbot
+    kind: developer-tool
+    access: >-
+      AI code review tool that reviews pull requests through a GitHub integration; the product
+      page offers a 14-day free trial on all plans and does not list prices.
+    url: https://cursor.com/bugbot
+    source_ids: [cursor-bugbot]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Cursor's models page lists Composer as Cursor's own model line and lists Grok models
+      that it describes as jointly trained by Cursor and SpaceXAI. It says models are hosted
+      by the model provider, a trusted partner, or Cursor.
+    source_ids: [cursor-models]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Cursor's terms of service and master services agreement (both updated in 2026) name
+    Anysphere, Inc. with an address at 2261 Market Street, San Francisco, California, and
+    Cursor's careers page lists many roles in San Francisco and New York. Since August 14,
+    2026 Anysphere has been a wholly owned subsidiary of Space Exploration Technologies Corp.,
+    a Texas corporation with principal executive offices in Starbase, Texas, per SpaceX's
+    Form 8-K, so both the company and its parent are U.S.-based.
+  source_ids: [cursor-terms, cursor-msa, cursor-careers, spacex-8k-2026-08-14]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Cursor and its related tools are commercial products, and Cursor's own models are offered
+    inside Cursor. The pages reviewed do not describe public weights for these models, and
+    this catalog has no record of an open model release from Anysphere.
+  source_ids: [cursor-home, cursor-models]
+hiring_url: https://cursor.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: cursor-terms
+    title: Cursor · Terms of Service
+    url: https://cursor.com/terms-of-service
+    publisher: Anysphere, Inc. (Cursor)
+    kind: official-page
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29
+  - id: cursor-msa
+    title: Cursor · Master Services Agreement
+    url: https://cursor.com/terms/msa
+    publisher: Anysphere, Inc. (Cursor)
+    kind: official-page
+    published_at: 2026-08-13
+    accessed_at: 2026-09-29
+  - id: cursor-home
+    title: AI Coding Agent for Building Ambitious Software | Cursor
+    url: https://cursor.com/
+    publisher: Anysphere, Inc. (Cursor)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cursor-docs
+    title: Cursor Docs — Agent, Rules, MCP, Skills & CLI
+    url: https://cursor.com/docs
+    publisher: Anysphere, Inc. (Cursor)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cursor-models
+    title: Models & Pricing | Cursor Docs
+    url: https://cursor.com/docs/models
+    publisher: Anysphere, Inc. (Cursor)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cursor-cli
+    title: Cursor CLI — Run Agents in Terminal, GitHub Actions and Automations & Scripts
+    url: https://cursor.com/cli
+    publisher: Anysphere, Inc. (Cursor)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cursor-bugbot
+    title: AI Code Review Built for Production | Bugbot by Cursor
+    url: https://cursor.com/bugbot
+    publisher: Anysphere, Inc. (Cursor)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cursor-careers
+    title: Cursor · Careers
+    url: https://cursor.com/careers
+    publisher: Anysphere, Inc. (Cursor)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cursor-joining-spacex
+    title: Cursor is now a part of SpaceX · Cursor
+    url: https://cursor.com/blog/joining-spacex
+    publisher: Anysphere, Inc. (Cursor)
+    kind: announcement
+    published_at: 2026-08-14
+    accessed_at: 2026-09-29
+  - id: spacex-8k-2026-08-14
+    title: Space Exploration Technologies Corp. Form 8-K (event date August 14, 2026), completion of the Anysphere merger
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026056945/spcx-20260814.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

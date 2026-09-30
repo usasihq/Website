@@ -1,0 +1,142 @@
+slug: mlcommons
+name: MLCommons
+legal_name:
+  text: MLCommons Association
+  source_ids: [mlc-about, irs-eo-bmf-de]
+website: https://mlcommons.org
+logo_text: MLC
+summary:
+  text: >-
+    MLCommons is an AI engineering consortium whose members include companies, academics, and
+    nonprofits. It develops benchmarks, including the MLPerf performance suites and the
+    AILuminate safety and security benchmarks, as well as open datasets and tools such as
+    Croissant and MLCube. It launched in December 2020.
+  source_ids: [mlc-about, mlc-benchmarks]
+organization_roles: [standards-body, open-source-steward]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(6), classified as a
+    business league.
+  source_ids: [irs-eo-bmf-de, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Dover, Delaware (address listed on the About page)
+  country: US
+  source_ids: [mlc-about, irs-eo-bmf-de]
+other_locations: []
+founded:
+  year: 2020
+  source_ids: [mlc-about]
+sectors: [data]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      MLPerf is a registered trademark of MLCommons, and submitting benchmark results requires a
+      signed Contributor License Agreement.
+    source_ids: [mlc-benchmarks]
+  - text: >-
+      Under the MLPerf submission rules, submitting organizations review one another's results
+      during a confidential review period before MLCommons publishes all results at once; after
+      publication, code and results are free to use under the MLPerf Terms of Use.
+    source_ids: [mlperf-submission-rules]
+  - text: >-
+      The AILuminate benchmarks are developed by the MLCommons AI Risk & Reliability working
+      group, which at the v1.0 release included researchers from universities, civil society
+      representatives, and engineers from technology companies.
+    source_ids: [ailuminate-v1-release]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    MLCommons Association lists a Dover, Delaware address on its About page, and the IRS
+    exempt-organization extract for Delaware lists MLCommons Association at that address as a
+    501(c)(6) organization. Its members come from many countries; this assessment concerns the
+    association itself.
+  source_ids: [mlc-about, irs-eo-bmf-de]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Publishes MLPerf reference implementations and the ModelBench benchmarking framework in
+    public GitHub repositories under Apache 2.0, plus 1,200-prompt AILuminate demo sets in
+    English and French under CC BY 4.0. AILuminate's official test prompts are kept hidden, and
+    its full practice prompt sets are offered to MLCommons members.
+  source_ids: [mlperf-inference-repo, mlperf-inference-license, modelbench-repo, ailuminate-repo]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mlc-about
+    title: About MLCommons
+    url: https://mlcommons.org/about-us/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlc-benchmarks
+    title: Benchmarks - MLCommons
+    url: https://mlcommons.org/benchmarks/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-submission-rules
+    title: MLPerf submission rules (mlcommons/policies, submission_rules.adoc)
+    url: https://raw.githubusercontent.com/mlcommons/policies/master/submission_rules.adoc
+    publisher: MLCommons
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ailuminate-v1-release
+    title: MLCommons Launches AILuminate, First-of-its-Kind Benchmark to Measure the Safety of Large Language Models
+    url: https://mlcommons.org/2024/12/mlcommons-ailuminate-v1-0-release/
+    publisher: MLCommons
+    kind: announcement
+    published_at: 2024-12-04
+    accessed_at: 2026-09-29
+  - id: mlperf-inference-repo
+    title: mlcommons/inference (MLPerf Inference Benchmark Suite)
+    url: https://github.com/mlcommons/inference
+    publisher: MLCommons
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-inference-license
+    title: mlcommons/inference LICENSE.md
+    url: https://raw.githubusercontent.com/mlcommons/inference/master/LICENSE.md
+    publisher: MLCommons
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modelbench-repo
+    title: mlcommons/modelbench
+    url: https://github.com/mlcommons/modelbench
+    publisher: MLCommons
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ailuminate-repo
+    title: mlcommons/ailuminate (AILuminate v1.0 DEMO prompt set)
+    url: https://github.com/mlcommons/ailuminate
+    publisher: MLCommons
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-de
+    title: Exempt Organizations Business Master File Extract - Delaware (eo_de.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_de.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organizations Business Master File Extract (EO BMF)
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: 2026-01
+    accessed_at: 2026-09-29

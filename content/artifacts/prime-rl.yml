@@ -1,0 +1,153 @@
+slug: prime-rl
+name: prime-rl
+kind: research-stack
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Prime Intellect
+    organization_slug: prime-intellect
+    source_ids: [prime-rl-readme, prime-rl-license]
+organization_slugs: [prime-intellect]
+links:
+  - label: GitHub repository
+    url: https://github.com/PrimeIntellect-ai/prime-rl
+    kind: repository
+  - label: License (Apache 2.0)
+    url: https://github.com/PrimeIntellect-ai/prime-rl/blob/main/LICENSE
+    kind: license
+  - label: INTELLECT-3 technical report (arXiv 2512.16144)
+    url: https://arxiv.org/abs/2512.16144
+    kind: paper
+summary:
+  text: >-
+    prime-rl is Prime Intellect's open-source framework for large-scale, asynchronous
+    reinforcement learning and supervised fine-tuning of language models. It separates an
+    FSDP2-based trainer, a vLLM inference service, and an orchestrator that gathers rollouts from
+    verifiers environments, and it supports multi-node deployment on Slurm and Kubernetes.
+  source_ids: [prime-rl-readme, i3-report-pdf]
+useful_for:
+  text: >-
+    Post-training language models, including large mixture-of-experts models, with SFT, RL, and
+    evaluations, from a single GPU up to large clusters. Prime Intellect used it to train
+    INTELLECT-2 and INTELLECT-3.
+  source_ids: [prime-rl-readme, mc-intellect-2, i3-report-pdf]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is maintained in Prime Intellect's GitHub organization, its README cites
+    Prime Intellect as author, and the INTELLECT-3 report introduces it as Prime Intellect's
+    framework. Prime Intellect, Inc. is a Delaware corporation with U.S. locations (see the
+    prime-intellect record).
+  source_ids: [prime-rl-readme, i3-report-pdf, sec-formd-prime-2026-07]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [prime-rl-readme, prime-rl-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/prime-rl/main/LICENSE
+    applies_to: code
+    source_ids: [prime-rl-license, prime-rl-readme]
+license_notes:
+  text: >-
+    The Apache 2.0 license covers the prime-rl repository. The verifiers library it integrates
+    with is a separate Prime Intellect repository under the MIT License. This record does not
+    assess the licenses of models or environments trained or used with prime-rl.
+  source_ids: [prime-rl-license, verifiers-license]
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under the Apache License 2.0.
+    source_ids: [prime-rl-readme, prime-rl-license]
+  documentation:
+    status: public
+    note: >-
+      The repository's docs directory covers architecture, configuration, training, evaluation,
+      scaling, algorithms, and development, and Prime Intellect's documentation site has a
+      prime-rl section.
+    source_ids: [prime-rl-readme, prime-docs]
+  training_code:
+    status: public
+    note: Includes trainers for SFT and RL plus evaluation tooling, with optimized training code for selected model families.
+    source_ids: [prime-rl-readme]
+  data_information:
+    status: public
+    note: >-
+      The README describes training on verifiers environments, installed from the Environments
+      Hub or as opt-in workspace packages, and walks through example tasks such as text
+      reversal, Wordle, and Wikipedia search.
+    source_ids: [prime-rl-readme]
+  reproducibility_instructions:
+    status: partial
+    note: >-
+      The README gives setup checks and end-to-end example runs, from small single-GPU tasks to
+      Slurm-based training of larger models. A step-by-step reproduction of the INTELLECT-3 run
+      was not found in the repository.
+    source_ids: [prime-rl-readme]
+run_notes:
+  - text: >-
+      The README states that at least one NVIDIA GPU is required, that the project is developed
+      and tested on NVIDIA RTX 3090/4090/5090, A100, H100, H200, and B200 GPUs, and that setup
+      uses uv with Python 3.12.
+    source_ids: [prime-rl-readme]
+provenance: null
+tags: [training, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: prime-rl-readme
+    title: "prime-rl: Async RL Training at Scale (README)"
+    url: https://github.com/PrimeIntellect-ai/prime-rl
+    publisher: Prime Intellect
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-rl-license
+    title: prime-rl LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/prime-rl/main/LICENSE
+    publisher: Prime Intellect
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: verifiers-license
+    title: verifiers LICENSE (MIT)
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/verifiers/main/LICENSE
+    publisher: Prime Intellect
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-docs
+    title: Prime Intellect documentation
+    url: https://docs.primeintellect.ai/
+    publisher: Prime Intellect
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: i3-report-pdf
+    title: "INTELLECT-3: Technical Report (PDF)"
+    url: https://storage.googleapis.com/intellect-3-paper/INTELLECT_3_Technical_Report.pdf
+    publisher: Prime Intellect
+    kind: paper
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-intellect-2
+    title: PrimeIntellect/INTELLECT-2 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-2
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-formd-prime-2026-07
+    title: Prime Intellect, Inc. Form D (accession 0001231919-26-000720)
+    url: https://www.sec.gov/Archives/edgar/data/2103990/000123191926000720/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: 2026-07-01
+    accessed_at: 2026-09-29

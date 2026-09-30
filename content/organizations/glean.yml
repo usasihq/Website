@@ -1,0 +1,134 @@
+slug: glean
+name: Glean
+legal_name:
+  text: Glean Technologies, Inc.
+  source_ids: [glean-tos-2026, glean-about]
+website: https://www.glean.com
+logo_text: G
+summary:
+  text: >-
+    Glean sells an enterprise AI platform that connects to a company's business applications
+    and data sources to provide permission-aware search, an AI assistant, and AI agents. Its
+    terms describe support for multiple third-party large language models.
+  source_ids: [glean-about, glean-tos-2026]
+organization_roles: [enterprise-software, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [glean-tos-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [glean-tos-2026, glean-about]
+other_locations: []
+founded:
+  year: 2019
+  source_ids: [glean-about]
+sectors: [enterprise, agents]
+status_note: null
+products:
+  - id: glean-assistant
+    name: Glean Assistant
+    kind: assistant-app
+    access: >-
+      Enterprise AI assistant that answers questions, analyzes data, and drafts content using a
+      company's connected data and web knowledge; sold to organizations as part of Glean's
+      platform, with demos by request.
+    url: https://www.glean.com/ai-assistant
+    source_ids: [glean-assistant, glean-tos-2026]
+    last_reviewed: 2026-09-29
+  - id: glean-agents
+    name: Glean Agents
+    kind: enterprise-software
+    access: >-
+      Tools on Glean's platform for building, deploying, and managing AI agents that automate
+      work across enterprise applications; sold to organizations, with demos by request.
+    url: https://www.glean.com/ai-agents
+    source_ids: [glean-agents]
+    last_reviewed: 2026-09-29
+  - id: glean-developer-platform
+    name: Glean Developer Platform
+    kind: developer-tool
+    access: >-
+      Client and Indexing APIs, Platform APIs in experimental preview, and an MCP server for
+      Glean customers, authenticated with OAuth or Glean-issued tokens, with official client
+      libraries for Python, TypeScript, Java, and Go.
+    url: https://developers.glean.com/
+    source_ids: [glean-developers, glean-python-sdk]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Glean's current terms of service (dated June 5, 2026) describe Glean Technologies, Inc. as
+    a Delaware corporation headquartered at 634 2nd Street, San Francisco, California, and the
+    same address appears in the footer of its about page. The about page's structured data
+    still lists an address at 260 Sheridan Ave, Palo Alto, California; either way the company
+    is based in California.
+  source_ids: [glean-tos-2026, glean-about]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Glean's platform is a commercial hosted service that its terms say supports multiple
+    third-party large language models. Glean publishes developer tooling as open source, such
+    as its MIT-licensed API client libraries. This catalog has no record of public model
+    weights from Glean.
+  source_ids: [glean-tos-2026, glean-python-sdk, glean-python-sdk-license]
+hiring_url: https://www.glean.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: glean-tos-2026
+    title: Glean Technologies, Inc. Terms of Service (June 5, 2026)
+    url: https://assets.glean.com/marketing/Legal/Glean%20Technologies-%20Inc.%20Terms%20of%20Service%20Jun%205%202026.pdf
+    publisher: Glean Technologies, Inc.
+    kind: official-page
+    published_at: 2026-06-05
+    accessed_at: 2026-09-29
+  - id: glean-about
+    title: About Glean | Enterprise AI Platform for Work
+    url: https://www.glean.com/about
+    publisher: Glean Technologies, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: glean-assistant
+    title: Enterprise AI Assistant for Work | Glean
+    url: https://www.glean.com/ai-assistant
+    publisher: Glean Technologies, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: glean-agents
+    title: "Enterprise AI agents: Build, deploy & orchestrate | Glean"
+    url: https://www.glean.com/ai-agents
+    publisher: Glean Technologies, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: glean-developers
+    title: Glean Developer Platform | Glean Developer
+    url: https://developers.glean.com/
+    publisher: Glean Technologies, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: glean-python-sdk
+    title: "GitHub - gleanwork/api-client-python: The official Python library for the Glean API"
+    url: https://github.com/gleanwork/api-client-python
+    publisher: Glean Technologies, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: glean-python-sdk-license
+    title: gleanwork/api-client-python LICENSE
+    url: https://raw.githubusercontent.com/gleanwork/api-client-python/main/LICENSE
+    publisher: Glean Technologies, Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,143 @@
+slug: molmo
+name: Molmo
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [ai2-molmo-blog, ai2-molmo2-blog, mc-molmo2-o-7b]
+organization_slugs: [ai2]
+links:
+  - label: Molmo 2 announcement
+    url: https://allenai.org/blog/molmo2
+    kind: release-notes
+  - label: Molmo 2 paper (arXiv 2601.10611)
+    url: https://arxiv.org/abs/2601.10611
+    kind: paper
+  - label: Molmo 2 code (allenai/molmo2)
+    url: https://github.com/allenai/molmo2
+    kind: repository
+  - label: Original Molmo announcement
+    url: https://allenai.org/blog/molmo
+    kind: release-notes
+summary:
+  text: >-
+    Molmo is Ai2's family of open vision-language models. The first release (September 2024)
+    comprised MolmoE-1B, Molmo-7B-O, Molmo-7B-D, and Molmo-72B, trained with Ai2's PixMo data.
+    Molmo 2 (December 2025) added video and multi-image understanding and grounding in 4B and 8B
+    models built on Qwen3 and a 7B model (Molmo2-O-7B) built on Ai2's own Olmo 3. Ai2 has since
+    built specialized variants on the line, including MolmoAct 2 for robot manipulation (May
+    2026).
+  source_ids: [ai2-molmo-blog, ai2-molmo2-blog, molmo2-paper, ai2-molmoact2-blog]
+useful_for:
+  text: >-
+    Image, multi-image, and video question answering, captioning, counting, and pointing or
+    tracking objects in images and video.
+  source_ids: [mc-molmo2-o-7b, ai2-molmo2-blog]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The Molmo models are developed by Ai2 (Allen Institute for AI), which describes itself as a
+    Seattle-based non-profit AI research institute. Eligibility of each release is assessed on
+    the release record; some releases build on third-party language models, recorded as
+    provenance.
+  source_ids: [mc-molmo2-o-7b, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Molmo2-O-7B release record.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    Molmo models pair a pretrained vision encoder with a pretrained language model and are
+    trained on Ai2's own image and video datasets (PixMo for the first release, the Molmo2
+    datasets for Molmo 2). Molmo2-4B and Molmo2-8B use the Qwen team's Qwen3 language models;
+    Molmo2-O-7B uses Ai2's Olmo 3 7B Instruct; the Molmo 2 cards name SigLIP 2 (published under
+    Google's Hugging Face organization) as the vision backbone.
+  derived_from:
+    - name: Olmo 3 7B Instruct
+      artifact_slug: olmo-3-7b-instruct
+      url: https://huggingface.co/allenai/Olmo-3-7B-Instruct
+      note: Language model for Molmo2-O-7B.
+    - name: Qwen3-8B
+      artifact_slug: null
+      url: https://huggingface.co/Qwen/Qwen3-8B
+      note: Language model for Molmo2-8B, from the Qwen team; not developed by Ai2.
+  source_ids: [mc-molmo2-o-7b, mc-molmo2-8b, mc-qwen3-8b, ai2-molmo-blog, molmo2-repo-readme]
+tags: [vision-language, multimodal]
+publication_status: published
+archive_note: null
+released_at: 2024-09-25
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ai2-molmo-blog
+    title: Molmo | Ai2
+    url: https://allenai.org/blog/molmo
+    publisher: Ai2
+    kind: announcement
+    published_at: 2024-09-25
+    accessed_at: 2026-09-29
+  - id: ai2-molmo2-blog
+    title: "Molmo 2: State-of-the-art video understanding, pointing, and tracking"
+    url: https://allenai.org/blog/molmo2
+    publisher: Ai2
+    kind: announcement
+    published_at: 2025-12
+    accessed_at: 2026-09-29
+  - id: molmo2-paper
+    title: "Molmo2: Open Weights and Data for Vision-Language Models with Video Understanding and Grounding (arXiv 2601.10611)"
+    url: https://arxiv.org/abs/2601.10611
+    publisher: Ai2 (arXiv)
+    kind: paper
+    published_at: 2026-01-15
+    accessed_at: 2026-09-29
+  - id: molmo2-repo-readme
+    title: allenai/molmo2 README
+    url: https://raw.githubusercontent.com/allenai/molmo2/main/README.md
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-molmoact2-blog
+    title: "MolmoAct 2: An open foundation for robots that work in the real world"
+    url: https://allenai.org/blog/molmoact2
+    publisher: Ai2
+    kind: announcement
+    published_at: 2026-05-05
+    accessed_at: 2026-09-29
+  - id: mc-molmo2-o-7b
+    title: allenai/Molmo2-O-7B model card
+    url: https://huggingface.co/allenai/Molmo2-O-7B
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-molmo2-8b
+    title: allenai/Molmo2-8B model card
+    url: https://huggingface.co/allenai/Molmo2-8B
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-qwen3-8b
+    title: Qwen/Qwen3-8B model card
+    url: https://huggingface.co/Qwen/Qwen3-8B
+    publisher: Qwen Team
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

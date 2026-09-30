@@ -1,0 +1,216 @@
+slug: medgemma-1-5-4b-it
+name: MedGemma 1.5 4B
+kind: model
+record_level: release
+family_slug: medgemma
+version: "1.5.0 (4B multimodal, instruction-tuned)"
+maintainers:
+  - name: Google (Health AI Developer Foundations)
+    organization_slug: google
+    source_ids: [mg15-model-card]
+organization_slugs: [google]
+links:
+  - label: Model card (Health AI Developer Foundations)
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card
+    kind: documentation
+  - label: Hugging Face repository
+    url: https://huggingface.co/google/medgemma-1.5-4b-it
+    kind: model-hub
+  - label: MedGemma 1.5 Technical Report (arXiv 2604.05081)
+    url: https://arxiv.org/abs/2604.05081
+    kind: paper
+  - label: Health AI Developer Foundations terms of use
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    kind: license
+summary:
+  text: >-
+    MedGemma 1.5 4B is a multimodal, instruction-tuned update to MedGemma 1 4B, released by
+    Google on January 13, 2026. It accepts text and images and produces text, adding support
+    for CT and MRI volumes, whole-slide histopathology, longitudinal chest X-rays, anatomical
+    localization, lab-report extraction, and text-based EHR interpretation.
+  source_ids: [mg15-model-card, gemma-releases, mg15-blog]
+useful_for:
+  text: >-
+    The card positions the model as a foundation for healthcare and life-sciences developers,
+    who are expected to validate and adapt it; it states the outputs are not intended to
+    directly inform clinical diagnosis or treatment decisions.
+  source_ids: [mg15-hf-page, mg15-model-card]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The model card lists Google as author, and the governing terms are issued by Google LLC.
+    Alphabet Inc.'s fiscal 2025 Form 10-K lists its principal executive offices in Mountain
+    View, California, and Exhibit 21.01 lists Google LLC as a Delaware subsidiary of Alphabet.
+  source_ids: [mg15-model-card, haidef-terms, alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face after logging in and acknowledging the Health AI Developer
+    Foundations terms of use; the gate states that requests are processed immediately. Also
+    offered through Google Cloud Model Garden.
+  source_ids: [mg15-hf-api, mg15-hf-page, mg15-model-card]
+licenses:
+  - name: Health AI Developer Foundations Terms of Use
+    spdx: null
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    applies_to: weights
+    source_ids: [mg15-hf-api, mg15-model-card, haidef-terms]
+  - name: Apache License 2.0 (google-health/medgemma notebooks and serving code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/google-health/medgemma/main/LICENSE
+    applies_to: code
+    source_ids: [medgemma-repo-readme, medgemma-repo-license]
+license_notes:
+  text: >-
+    The HAI-DEF terms (licensor Google LLC) permit use, modification, and distribution,
+    including hosted services, subject to use restrictions: no uses listed in the HAI-DEF
+    Prohibited Use Policy, no use that could lead a health regulator to deem Google a medical
+    device manufacturer, and compliance with law. Redistributors must pass on the terms and
+    the use restrictions, include a specified notice file, and seek health regulatory
+    authorization where applicable. The terms define Model Derivatives to include models
+    distilled from outputs, require indemnification of Google, allow Google to terminate for
+    breach or regulatory risk, and are governed by California law.
+  source_ids: [haidef-terms]
+checklist:
+  weights:
+    status: public
+    note: Weights are on Hugging Face behind a click-through acknowledgment of the HAI-DEF terms that is processed automatically.
+    source_ids: [mg15-hf-api, mg15-hf-page]
+  inference_code:
+    status: public
+    note: >-
+      The card documents inference with Hugging Face Transformers (4.50.0 or later); the
+      Hugging Face page also shows vLLM and SGLang serving. The google-health/medgemma
+      repository publishes notebooks and serving-container code under Apache 2.0.
+    source_ids: [mg15-model-card, mg15-hf-page, medgemma-repo-readme]
+  training_code:
+    status: unknown
+    note: >-
+      The card states training was done with JAX; fine-tuning notebooks are published, but
+      the code used to train the model was not found.
+    source_ids: [mg15-model-card, medgemma-repo-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The card lists public datasets used (for example MIMIC-CXR, SLAKE, PAD-UFES-20, TCGA,
+      CAMELYON, and PMC-OA) along with licensed or internally collected de-identified
+      datasets that are not public.
+    source_ids: [mg15-model-card]
+  training_recipe:
+    status: partial
+    note: >-
+      The MedGemma 1.5 technical report describes the new training data, 3D volume slicing,
+      and whole-slide sampling approaches at a summary level.
+    source_ids: [mg15-report]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card publishes evaluation results on public and internal benchmarks; several
+      evaluation datasets are internal.
+    source_ids: [mg15-model-card]
+run_notes:
+  - text: >-
+      The card documents a context of at least 128K input tokens and up to 8,192 output
+      tokens, with images normalized to 896 x 896 and encoded to 256 tokens each; CT, MRI,
+      and whole-slide images need pre-processing shown in the repository notebooks.
+    source_ids: [mg15-model-card, mg15-hf-page]
+provenance:
+  text: >-
+    An updated version of MedGemma 1 4B, built on Gemma 3 and its decoder-only architecture,
+    with a SigLIP image encoder pre-trained on de-identified medical data.
+  derived_from:
+    - name: MedGemma 1 4B
+      artifact_slug: null
+      url: null
+      note: Previous MedGemma 4B release; no separate catalog record.
+    - name: Gemma 3
+      artifact_slug: gemma
+      url: null
+      note: Base model family; see the Gemma family record.
+  source_ids: [mg15-model-card]
+tags: [multimodal, vision-language, medical]
+publication_status: published
+archive_note: null
+released_at: 2026-01-13
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mg15-model-card
+    title: MedGemma 1.5 model card
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card
+    publisher: Google for Developers (Health AI Developer Foundations)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg15-hf-page
+    title: google/medgemma-1.5-4b-it (Hugging Face)
+    url: https://huggingface.co/google/medgemma-1.5-4b-it
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg15-hf-api
+    title: Hugging Face model metadata for google/medgemma-1.5-4b-it
+    url: https://huggingface.co/api/models/google/medgemma-1.5-4b-it
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: haidef-terms
+    title: Health AI Developer Foundations Terms of Use
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    publisher: Google LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: medgemma-repo-readme
+    title: google-health/medgemma README
+    url: https://raw.githubusercontent.com/google-health/medgemma/main/README.md
+    publisher: Google Health
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: medgemma-repo-license
+    title: google-health/medgemma LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/google-health/medgemma/main/LICENSE
+    publisher: Google Health
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg15-report
+    title: MedGemma 1.5 Technical Report (arXiv 2604.05081)
+    url: https://arxiv.org/abs/2604.05081
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-04-06
+    accessed_at: 2026-09-29
+  - id: gemma-releases
+    title: Gemma releases
+    url: https://ai.google.dev/gemma/docs/releases
+    publisher: Google AI for Developers
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg15-blog
+    title: Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR
+    url: https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/
+    publisher: Google Research
+    kind: announcement
+    published_at: 2026-01-13
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Alphabet Inc. Form 10-K fiscal 2025, Exhibit 21.01 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

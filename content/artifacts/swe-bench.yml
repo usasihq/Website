@@ -1,0 +1,196 @@
+slug: swe-bench
+name: SWE-bench
+kind: eval
+record_level: project
+family_slug: null
+version: "5.0.2"
+maintainers:
+  - name: Princeton University (original authors; Princeton NLP group account hosts the original datasets)
+    organization_slug: princeton-university
+    source_ids: [swe-bench-paper, princeton-nlp-hf, swe-bench-hf]
+  - name: SWE-bench team (SWE-bench GitHub organization)
+    organization_slug: null
+    source_ids: [swe-bench-repo, swe-bench-pypi]
+organization_slugs: [princeton-university]
+links:
+  - label: GitHub repository
+    url: https://github.com/SWE-bench/SWE-bench
+    kind: repository
+  - label: Documentation
+    url: https://www.swebench.com/SWE-bench/
+    kind: documentation
+  - label: SWE-bench dataset (Hugging Face)
+    url: https://huggingface.co/datasets/princeton-nlp/SWE-bench
+    kind: dataset-hub
+  - label: SWE-bench Verified dataset (Hugging Face)
+    url: https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified
+    kind: dataset-hub
+  - label: SWE-bench paper (ICLR 2024)
+    url: https://arxiv.org/pdf/2310.06770
+    kind: paper
+  - label: License (MIT)
+    url: https://raw.githubusercontent.com/SWE-bench/SWE-bench/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    SWE-bench is a benchmark for evaluating language models on real software issues collected
+    from GitHub. Given a codebase and an issue description, a model must produce a patch that
+    resolves the issue, and the patch is checked by running the repository's tests. The original
+    set has 2,294 task instances from 12 Python repositories; later variants include SWE-bench
+    Lite, SWE-bench Verified (500 human-validated instances), SWE-bench Multimodal, and SWE-bench
+    Multilingual.
+  source_ids: [swe-bench-paper, swe-bench-readme, swe-bench-verified-hf]
+useful_for:
+  text: >-
+    Measuring how well models or agent systems resolve repository-level software issues with a
+    Docker-based evaluation harness, and creating new task instances from other repositories
+    with the included data-collection procedure.
+  source_ids: [swe-bench-readme]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The ICLR 2024 paper that introduced SWE-bench lists Princeton University and Princeton
+    Language and Intelligence as its authors' affiliations, with one co-author at the University
+    of Chicago, and the Princeton NLP group's Hugging Face account still hosts the original
+    datasets. The project is now maintained from a standalone SWE-bench GitHub organization,
+    which gives no location; the README links current dataset copies under a separate SWE-bench
+    Hugging Face organization, the PyPI package lists "SWE-bench team" as author, and the MIT
+    license names the individual authors as copyright holders. No page read documents Princeton
+    or another institution as the current maintainer, or a legal entity for the SWE-bench
+    organization. The Princeton origin is documented, but no current U.S. maintaining entity is,
+    so eligibility is left for editorial review.
+  source_ids: [swe-bench-paper, princeton-nlp-hf, swe-bench-hf, swe-bench-repo, swe-bench-readme, swe-bench-pypi, swe-bench-license]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Code on GitHub under the MIT License and installable from PyPI as swebench. The datasets
+    are downloadable from Hugging Face.
+  source_ids: [swe-bench-repo, swe-bench-license, swe-bench-pypi, swe-bench-hf, swe-bench-verified-hf]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/SWE-bench/SWE-bench/main/LICENSE
+    applies_to: code
+    source_ids: [swe-bench-license, swe-bench-readme]
+license_notes:
+  text: >-
+    The README describes the repository as MIT-licensed. The Hugging Face dataset cards read for
+    SWE-bench and SWE-bench Verified do not state a license. Task instances are drawn from
+    issues and pull requests in public GitHub repositories.
+  source_ids: [swe-bench-readme, swe-bench-hf, swe-bench-verified-hf, swe-bench-paper]
+checklist:
+  code:
+    status: public
+    note: The evaluation harness, inference, and data-collection code are published on GitHub.
+    source_ids: [swe-bench-repo, swe-bench-readme, swe-bench-license]
+  tasks_data:
+    status: public
+    note: >-
+      SWE-bench, Lite, Verified, and Multimodal are published on Hugging Face. Each instance
+      includes the issue text, the base commit, the reference patch, and the tests used for
+      checking.
+    source_ids: [swe-bench-readme, swe-bench-hf, swe-bench-verified-hf]
+  methodology:
+    status: public
+    note: >-
+      The paper describes how issue and pull-request pairs were collected and how patches are
+      evaluated by running tests. The Verified card states that its 500 instances were
+      human-validated.
+    source_ids: [swe-bench-paper, swe-bench-verified-hf]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README and documentation cover Docker setup, the swebench command-line interface for
+      evaluation and report generation, image building, and cloud evaluation options.
+    source_ids: [swe-bench-readme, swe-bench-docs]
+  limitations:
+    status: partial
+    note: >-
+      The paper notes that all original task instances are in Python and that execution-based
+      testing alone cannot guarantee the quality of generated code. The README warns that
+      evaluation is resource-intensive and that arm64 support is experimental.
+    source_ids: [swe-bench-paper, swe-bench-readme]
+run_notes:
+  - text: >-
+      For running the Docker-based evaluation harness locally, the README recommends an x86_64
+      machine with at least 120 GB of free storage, 16 GB of RAM, and 8 CPU cores, and describes
+      arm64 support as experimental. These figures assume local evaluation of patches in Docker
+      containers and do not cover running the model that generates the patches.
+    source_ids: [swe-bench-readme]
+  - text: >-
+      The harness caches results by run ID and instance ID, so re-evaluating a different patch
+      for the same instance requires a new run ID, according to the README.
+    source_ids: [swe-bench-readme]
+provenance: null
+tags: [evaluation, benchmark]
+publication_status: draft
+archive_note: null
+released_at: 2026-08-18
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: swe-bench-repo
+    title: SWE-bench/SWE-bench
+    url: https://github.com/SWE-bench/SWE-bench
+    publisher: SWE-bench
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-readme
+    title: SWE-bench README
+    url: https://raw.githubusercontent.com/SWE-bench/SWE-bench/main/README.md
+    publisher: SWE-bench
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-license
+    title: SWE-bench LICENSE
+    url: https://raw.githubusercontent.com/SWE-bench/SWE-bench/main/LICENSE
+    publisher: SWE-bench
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-docs
+    title: SWE-bench documentation
+    url: https://www.swebench.com/SWE-bench/
+    publisher: SWE-bench
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-pypi
+    title: swebench on PyPI
+    url: https://pypi.org/project/swebench/
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-08-18
+    accessed_at: 2026-09-29
+  - id: swe-bench-paper
+    title: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (arXiv:2310.06770v3)"
+    url: https://arxiv.org/pdf/2310.06770
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-11-11
+    accessed_at: 2026-09-29
+  - id: swe-bench-hf
+    title: princeton-nlp/SWE-bench dataset card
+    url: https://huggingface.co/datasets/princeton-nlp/SWE-bench
+    publisher: Princeton NLP group
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-verified-hf
+    title: SWE-bench/SWE-bench_Verified dataset card
+    url: https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified
+    publisher: SWE-bench
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: princeton-nlp-hf
+    title: princeton-nlp (Princeton NLP group) on Hugging Face
+    url: https://huggingface.co/princeton-nlp
+    publisher: Princeton NLP group
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

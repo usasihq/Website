@@ -1,0 +1,187 @@
+slug: deepspeed
+name: DeepSpeed
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: PyTorch Foundation (hosted project)
+    organization_slug: pytorch-foundation
+    source_ids: [ptf-deepspeed, ptf-foundation-page]
+  - name: DeepSpeed Technical Steering Committee (project committers)
+    organization_slug: null
+    source_ids: [deepspeed-governance]
+organization_slugs: [pytorch-foundation, linux-foundation, microsoft]
+links:
+  - label: Repository
+    url: https://github.com/deepspeedai/DeepSpeed
+    kind: repository
+  - label: Website and documentation
+    url: https://www.deepspeed.ai/
+    kind: documentation
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/deepspeedai/DeepSpeed/blob/master/LICENSE
+    kind: license
+  - label: PyPI releases
+    url: https://pypi.org/project/deepspeed/
+    kind: release-notes
+summary:
+  text: >-
+    DeepSpeed is an open-source PyTorch library for distributed training and inference of large
+    models; its features include the ZeRO memory optimizations, 3D parallelism, Ulysses sequence
+    parallelism, and mixture-of-experts support. Microsoft contributed it to LF AI & Data as an incubation project
+    in February 2025, and in May 2025 it became a hosted project of the PyTorch Foundation, which
+    names Microsoft as the contributor.
+  source_ids: [deepspeed-readme, lfaidata-deepspeed, ptf-deepspeed, ptf-expansion]
+useful_for:
+  text: >-
+    Scaling training of dense and sparse mixture-of-experts models across many GPUs, training and
+    inference on systems with limited GPU memory, and compressing models; it integrates with
+    Hugging Face Transformers, Accelerate, and PyTorch Lightning.
+  source_ids: [ptf-deepspeed, deepspeed-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    DeepSpeed is a PyTorch Foundation-hosted project; per the Foundation, hosted projects are
+    governed and administered under its governance model. The PyTorch Foundation is hosted by the
+    Linux Foundation, whose privacy policy gives a legal mailing address in San Francisco,
+    California. The project was contributed by Microsoft, whose Form 10-K lists Redmond,
+    Washington. The project's charter places technical oversight with a Technical Steering
+    Committee of committers under LF Projects policies.
+  source_ids: [ptf-deepspeed, ptf-foundation-page, lf-privacy, deepspeed-governance, msft-10k-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [deepspeed-readme, deepspeed-pypi]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/deepspeedai/DeepSpeed/blob/master/LICENSE
+    applies_to: code
+    source_ids: [deepspeed-license, deepspeed-governance]
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+    applies_to: documentation
+    source_ids: [deepspeed-governance]
+license_notes:
+  text: >-
+    The project charter requires inbound and outbound code under Apache 2.0 with a Developer
+    Certificate of Origin sign-off, and makes documentation available under CC BY 4.0. The
+    charter still names LF AI & Data as the directed fund the Technical Steering Committee
+    communicates with, although the project is now listed by the PyTorch Foundation.
+  source_ids: [deepspeed-governance, ptf-foundation-page]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [deepspeed-readme]
+  documentation:
+    status: public
+    note: Documentation and tutorials are on deepspeed.ai and Read the Docs.
+    source_ids: [deepspeed-getting-started, deepspeed-readme]
+  installation:
+    status: public
+    note: >-
+      Installed with pip after PyTorch; C++/CUDA extensions are compiled just-in-time by
+      default or can be prebuilt.
+    source_ids: [deepspeed-readme, deepspeed-getting-started]
+  supported_platforms:
+    status: public
+    note: >-
+      Developed and tested mainly on NVIDIA (Pascal through Hopper) and AMD (MI100, MI200) GPUs;
+      contributed accelerator support covers Intel Gaudi 2, Xeon CPUs, and Data Center GPU Max,
+      Huawei Ascend NPUs, and others. Many features also run on Windows.
+    source_ids: [deepspeed-readme]
+  release_status:
+    status: public
+    note: Versioned releases are published on PyPI; version 0.19.7 was released on September 16, 2026.
+    source_ids: [deepspeed-pypi]
+run_notes: []
+provenance: null
+tags: [training, distributed-computing, inference]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: deepspeed-readme
+    title: deepspeedai/DeepSpeed README
+    url: https://github.com/deepspeedai/DeepSpeed/blob/master/README.md
+    publisher: DeepSpeed project (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: deepspeed-license
+    title: deepspeedai/DeepSpeed LICENSE
+    url: https://github.com/deepspeedai/DeepSpeed/blob/master/LICENSE
+    publisher: DeepSpeed project (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: deepspeed-governance
+    title: DeepSpeed Project Charter and Governance (GOVERNANCE.md)
+    url: https://github.com/deepspeedai/DeepSpeed/blob/master/GOVERNANCE.md
+    publisher: DeepSpeed project (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: deepspeed-getting-started
+    title: DeepSpeed Getting Started
+    url: https://www.deepspeed.ai/getting-started/
+    publisher: DeepSpeed project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: deepspeed-pypi
+    title: deepspeed on PyPI
+    url: https://pypi.org/project/deepspeed/
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: 2026-09-16
+    accessed_at: 2026-09-29
+  - id: ptf-deepspeed
+    title: PyTorch Foundation Welcomes DeepSpeed as a Hosted Project
+    url: https://pytorch.org/blog/pytorch-foundation-welcomes-deepspeed-as-a-hosted-project/
+    publisher: PyTorch Foundation
+    kind: announcement
+    published_at: 2025-05-07
+    accessed_at: 2026-09-29
+  - id: ptf-expansion
+    title: PyTorch Foundation Expands to Umbrella Foundation and Welcomes vLLM and DeepSpeed Projects
+    url: https://pytorch.org/blog/press-release-pytorch-foundation-expands-welcomes-projects-vllm-deepspeed/
+    publisher: PyTorch Foundation
+    kind: announcement
+    published_at: 2025-05-07
+    accessed_at: 2026-09-29
+  - id: ptf-foundation-page
+    title: PyTorch Foundation
+    url: https://pytorch.org/foundation/
+    publisher: PyTorch Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lfaidata-deepspeed
+    title: "LF AI & Data Welcomes DeepSpeed: Advancing Deep Learning Optimization"
+    url: https://lfaidata.foundation/blog/2025/02/03/lf-ai-data-welcomes-deepspeed-advancing-deep-learning-optimization/
+    publisher: LF AI & Data Foundation
+    kind: announcement
+    published_at: 2025-02-03
+    accessed_at: 2026-09-29
+  - id: lf-privacy
+    title: Linux Foundation Privacy Policy
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: 2024-09-11
+    accessed_at: 2026-09-29
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

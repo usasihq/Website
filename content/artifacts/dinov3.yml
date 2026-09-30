@@ -1,0 +1,101 @@
+slug: dinov3
+name: DINOv3
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Meta (FAIR)
+    organization_slug: meta
+    source_ids: [dinov3-readme, hf-dinov3-vit7b16]
+organization_slugs: [meta]
+links:
+  - label: DINOv3 repository
+    url: https://github.com/facebookresearch/dinov3
+    kind: repository
+  - label: DINOv3 collection on Hugging Face
+    url: https://huggingface.co/collections/facebook/dinov3-68924841bd6b561778e31009
+    kind: model-hub
+  - label: DINOv3 paper (arXiv 2508.10104)
+    url: https://arxiv.org/abs/2508.10104
+    kind: paper
+  - label: DINOv3 License
+    url: https://github.com/facebookresearch/dinov3/blob/main/LICENSE.md
+    kind: license
+summary:
+  text: >-
+    DINOv3 is Meta's third generation of self-supervised vision backbones, announced in August
+    2025. The suite includes a 6.7B-parameter ViT-7B/16, distilled Vision Transformers from
+    21M to 840M parameters, ConvNeXt models, and two backbones trained on satellite
+    imagery, plus task heads for classification, depth, detection, and segmentation. The
+    web-image models were trained on LVD-1689M, a curated set of about 1.7 billion images.
+  source_ids: [dinov3-readme, meta-dinov3-blog, hf-dinov3-vit7b16]
+useful_for:
+  text: >-
+    Frozen image features for downstream tasks such as classification, retrieval, depth
+    estimation, semantic segmentation, and video tracking; the model card recommends fine-tuning
+    only as a last resort.
+  source_ids: [hf-dinov3-vit7b16]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Meta AI as the developer, and the repository is published by Meta's
+    FAIR group. Meta Platforms, Inc. has its principal executive offices in Menlo Park,
+    California, per its Form 10-K.
+  source_ids: [hf-dinov3-vit7b16, dinov3-readme, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    Weights require accepting the DINOv3 License through an access request, either on Meta's
+    download page (download URLs are then emailed) or on approval-gated Hugging Face
+    repositories. See the release record.
+  source_ids: [dinov3-readme, hf-api-dinov3-vit7b16]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [computer-vision, self-supervised]
+publication_status: published
+archive_note: null
+released_at: 2025-08-14
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: dinov3-readme
+    title: facebookresearch/dinov3 README
+    url: https://github.com/facebookresearch/dinov3/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-dinov3-vit7b16
+    title: facebook/dinov3-vit7b16-pretrain-lvd1689m model card
+    url: https://huggingface.co/facebook/dinov3-vit7b16-pretrain-lvd1689m
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-dinov3-vit7b16
+    title: facebook/dinov3-vit7b16-pretrain-lvd1689m (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/facebook/dinov3-vit7b16-pretrain-lvd1689m
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: meta-dinov3-blog
+    title: DINOv3 announcement (Meta AI blog)
+    url: https://ai.meta.com/blog/dinov3-self-supervised-vision-model/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-08-14
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

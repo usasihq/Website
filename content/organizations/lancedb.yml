@@ -1,0 +1,155 @@
+slug: lancedb
+name: LanceDB
+legal_name: null
+website: https://www.lancedb.com
+logo_text: LDB
+summary:
+  text: >-
+    LanceDB builds data infrastructure for multimodal AI on the Lance columnar format: the
+    open-source LanceDB embedded retrieval library and LanceDB Enterprise, a distributed
+    multimodal lakehouse platform. In November 2025 LanceDB moved the Lance projects into a
+    separate, community-governed lance-format GitHub organization.
+  source_ids: [lancedb-docs, lancedb-home, lance-governance-blog]
+organization_roles: [data-platform]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [yc-lancedb, lancedb-intern-blog]
+other_locations: []
+founded:
+  year: 2022
+  source_ids: [yc-lancedb]
+sectors: [data]
+status_note: null
+products:
+  - id: lancedb-enterprise
+    name: LanceDB Enterprise
+    kind: data-platform
+    access: >-
+      Distributed multimodal lakehouse platform for search, feature engineering, and training
+      data, reached through db:// connections; set up by contacting LanceDB.
+    url: https://docs.lancedb.com/
+    source_ids: [lancedb-docs, lancedb-home]
+    last_reviewed: 2026-09-29
+  - id: lancedb-oss
+    name: LanceDB OSS
+    kind: developer-tool
+    access: >-
+      Open-source embedded retrieval library with client SDKs for Python, TypeScript, and Rust,
+      published under the Apache License 2.0.
+    url: https://github.com/lancedb/lancedb
+    source_ids: [lancedb-docs, lancedb-oss-license]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      LanceDB's November 2025 governance announcement separated the Lance format from its own
+      products: Lance now has its own website (lance.org), GitHub organization (lance-format), and
+      a project management committee drawn from several companies, while LanceDB keeps its own
+      website and lancedb GitHub organization. The post says most contributions to the LanceDB
+      open-source project still come from LanceDB Inc.
+    source_ids: [lance-governance-blog, lance-community]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    LanceDB's Y Combinator directory listing gives its location as San Francisco, an undated
+    internship post on LanceDB's own blog describes the company as an early-stage startup based in
+    San Francisco, its customer terms are
+    governed by California law, and its GitHub organization lists the United States as its
+    location. No address-bearing legal page or regulatory filing was found, and the entity name
+    differs between the website footer (LanceDB Inc.) and the privacy policy (LanceDB Systems,
+    Inc.), so no legal name is recorded.
+  source_ids: [yc-lancedb, lancedb-intern-blog, lancedb-terms, lancedb-github, lancedb-home, lancedb-privacy]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    The LanceDB embedded library and the Lance format are published under the Apache License 2.0;
+    LanceDB Enterprise is a commercial platform.
+  source_ids: [lancedb-oss-license, lance-license, lancedb-docs]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: lancedb-home
+    title: LanceDB | Multimodal Lakehouse for AI
+    url: https://www.lancedb.com/
+    publisher: LanceDB
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lancedb-docs
+    title: LanceDB - LanceDB
+    url: https://docs.lancedb.com/
+    publisher: LanceDB
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lancedb-terms
+    title: LanceDB Terms and Conditions (PDF)
+    url: https://242023405.fs1.hubspotusercontent-na2.net/hubfs/242023405/Website%20Documentation/terms.pdf
+    publisher: LanceDB
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lancedb-privacy
+    title: LanceDB Privacy Policy (PDF)
+    url: https://242023405.fs1.hubspotusercontent-na2.net/hubfs/242023405/Website%20Documentation/privacy.pdf
+    publisher: LanceDB
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lancedb-intern-blog
+    title: My Summer Internship Experience at LanceDB
+    url: https://www.lancedb.com/blog/my-summer-internship-experience-at-lancedb-2
+    publisher: LanceDB
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: yc-lancedb
+    title: "LanceDB: Open-source, serverless vectordb for production-scale generative AI | Y Combinator"
+    url: https://www.ycombinator.com/companies/lancedb
+    publisher: Y Combinator
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lancedb-github
+    title: LanceDB on GitHub
+    url: https://github.com/lancedb
+    publisher: LanceDB
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lancedb-oss-license
+    title: lancedb/lancedb LICENSE
+    url: https://github.com/lancedb/lancedb/blob/main/LICENSE
+    publisher: LanceDB
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-license
+    title: lance-format/lance LICENSE
+    url: https://github.com/lance-format/lance/blob/main/LICENSE
+    publisher: Lance community
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-governance-blog
+    title: "Building the Future Together: Introducing Lance Community Governance"
+    url: https://www.lancedb.com/blog/lance-community-governance
+    publisher: LanceDB
+    kind: announcement
+    published_at: 2025-11-18
+    accessed_at: 2026-09-29
+  - id: lance-community
+    title: Lance Community Governance — Lance
+    url: https://lance.org/community/
+    publisher: Lance community
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29

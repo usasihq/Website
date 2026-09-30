@@ -4,6 +4,7 @@ import { EntryTypeBadge, Monogram } from "@/components/Badges";
 import { CoverageTable } from "@/components/CoverageTable";
 import { Hero } from "@/components/Hero";
 import { HomeSearch } from "@/components/HomeSearch";
+import { LocalCornerStrip } from "@/components/LocalCorner";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -11,6 +12,7 @@ import { ENTRY_TYPE_LABELS, entryTypeFor, ROLE_LABELS } from "@/lib/labels";
 import { buildCoverage } from "@/lib/matrix";
 import { pageMetadata } from "@/lib/metadata";
 import { RUBRIC_LABEL } from "@/lib/openness";
+import { absoluteUrl, asset } from "@/lib/paths";
 import { artifactHref, orgHref } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
@@ -49,9 +51,55 @@ export default function HomePage() {
   const orgItems = catalog.organizations.map((o) => catalog.toOrgListItem(o));
   const artifactItems = catalog.artifacts.map((a) => catalog.toArtifactListItem(a));
   const coverage = buildCoverage(orgItems, artifactItems);
+  const mostRecords = [...orgItems]
+    .filter((o) => o.artifactCount > 0)
+    .sort((a, b) => b.artifactCount - a.artifactCount || a.name.localeCompare(b.name))
+    .slice(0, 8);
+  const lastUpdated = [...catalog.organizations, ...catalog.artifacts].map((r) => r.updated_at).sort().at(-1);
+
+  // Structured data for search engines. Serialized with "<" escaped so content can never close the script element.
+  const orgId = `${absoluteUrl("/")}#organization`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": orgId,
+        name: siteConfig.name,
+        alternateName: siteConfig.shortName,
+        url: absoluteUrl("/"),
+        logo: absoluteUrl("/apple-icon.png"),
+        description: "Independent, unofficial catalog of U.S. AI organizations and U.S.-led open models, software, and research.",
+        ...(siteConfig.contact.email ? { email: siteConfig.contact.email } : {}),
+        sameAs: siteConfig.socials.map((s) => s.url),
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${absoluteUrl("/")}#website`,
+        url: absoluteUrl("/"),
+        name: siteConfig.name,
+        alternateName: siteConfig.shortName,
+        inLanguage: "en-US",
+        publisher: { "@id": orgId },
+      },
+      {
+        "@type": "Dataset",
+        name: "USASI catalog",
+        description:
+          "Published USASI records of U.S. AI organizations and U.S.-led open models, software, datasets, and evaluation tools, with sources for every claim.",
+        url: absoluteUrl("/open/"),
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        isAccessibleForFree: true,
+        creator: { "@id": orgId },
+        ...(lastUpdated ? { dateModified: lastUpdated } : {}),
+        distribution: [{ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: absoluteUrl("/data/catalog.json") }],
+      },
+    ],
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Hero />
 
       {/* 1–2. Introduction, search, and the two directory actions */}
@@ -72,7 +120,7 @@ export default function HomePage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl">
-            <HomeSearch entries={catalog.searchEntries()} />
+            <HomeSearch indexUrl={asset("/data/search-index.json")} />
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <Link href="/companies/" className="btn btn-primary min-h-14 text-base">
                 <Building2 aria-hidden="true" className="h-5 w-5" />
@@ -176,7 +224,38 @@ export default function HomePage() {
               Open the comparison workspace <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
           </div>
-          <CoverageTable rows={coverage} caption="Catalog coverage: published records by type. Each number links to the records it counts." />
+          <div className="grid gap-8">
+            <CoverageTable rows={coverage} caption="Catalog coverage: published records by type. Each number links to the records it counts." />
+            {mostRecords.length > 0 ? (
+              <div>
+                <h3 className="text-lg font-semibold text-text">Who maintains the open artifacts in this catalog</h3>
+                <p className="mt-1 text-[0.9375rem] text-muted">
+                  Organizations with the most open-artifact records here. This counts catalog records, not importance, quality, or total output.
+                </p>
+                <ol className="mt-4 grid gap-x-6 sm:grid-cols-2">
+                  {mostRecords.map((o) => (
+                    <li key={o.slug} className="flex items-center justify-between gap-3 border-b border-line py-2.5">
+                      <Link prefetch={false} href={orgHref(o.slug)} className="flex min-w-0 items-center gap-3 hover:text-text">
+                        <Monogram text={o.logoText} size="sm" />
+                        <span className="truncate font-medium text-text">{o.name}</span>
+                      </Link>
+                      <Link
+                        prefetch={false}
+                        href={`/open/?org=${o.slug}`}
+                        className="link shrink-0 font-mono text-[0.875rem]"
+                        aria-label={`${o.artifactCount} open-artifact records for ${o.name}`}
+                      >
+                        {o.artifactCount}
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+                <Link prefetch={false} href="/companies/?open=1&sort=artifacts" className="link mt-3 inline-flex items-center gap-1 text-[0.9375rem]">
+                  All organizations with open artifacts <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </Link>
+              </div>
+            ) : null}
+          </div>
         </div>
       </section>
 
@@ -260,6 +339,9 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      {/* Local corner (monthly, deliberately quiet) */}
+      <LocalCornerStrip {...catalog.localCornerLineup(catalog.currentMonth())} />
 
       {/* 7. Support Us */}
       <SupportPanel variant="home" />

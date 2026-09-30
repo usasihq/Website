@@ -1,0 +1,143 @@
+slug: modal
+name: Modal
+legal_name:
+  text: Modal Labs, Inc.
+  source_ids: [modal-terms, modal-form-d-2026]
+website: https://modal.com
+logo_text: MO
+summary:
+  text: >-
+    Modal operates a cloud platform for AI and data workloads, including model
+    inference, training and fine-tuning, batch jobs, and sandboxes for running untrusted code.
+    Developers define workloads and hardware in Python code, and usage is billed per second.
+  source_ids: [modal-home, modal-company, modal-sandboxes, modal-pricing]
+organization_roles: [cloud-provider, inference-provider, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [modal-terms, modal-form-d-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: New York, New York
+  country: US
+  source_ids: [modal-form-d-2026, modal-company]
+other_locations:
+  - label: San Francisco, California
+    country: US
+    source_ids: [modal-company]
+  - label: Stockholm, Sweden
+    country: SE
+    source_ids: [modal-company]
+  - label: London, United Kingdom
+    country: GB
+    source_ids: [modal-company]
+founded: null
+sectors: [cloud]
+status_note: null
+products:
+  - id: modal-inference
+    name: Modal Inference
+    kind: inference-service
+    access: >-
+      Serverless deployment of open-source or custom models on GPUs through the Modal Python SDK
+      and CLI, with autoscaling to zero and pay-per-use billing; new accounts receive a monthly
+      free compute allowance.
+    url: https://modal.com/products/inference
+    source_ids: [modal-inference, modal-pricing]
+    last_reviewed: 2026-09-29
+  - id: modal-sandboxes
+    name: Modal Sandboxes
+    kind: compute-service
+    access: >-
+      Isolated containers created programmatically through the Modal SDK for running AI-generated
+      code and reinforcement-learning rollouts, billed per second for CPU, memory, and GPU use.
+    url: https://modal.com/products/sandboxes
+    source_ids: [modal-sandboxes]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Modal Labs, Inc. is a Delaware corporation per its customer agreement. Its Form D filed with
+    the SEC on August 31, 2026 gives a principal place of business in New York, New York, and its
+    company page lists New York City first among offices in New York, Stockholm, San Francisco, and
+    London.
+  source_ids: [modal-terms, modal-form-d-2026, modal-company]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Modal is a commercial hosted platform. It publishes its Python client library under the Apache
+    License 2.0 and its example code under the MIT License. This catalog found no Modal-maintained
+    open model or standalone open-source AI framework.
+  source_ids: [modal-client-license, modal-examples-license, modal-inference]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: modal-home
+    title: "Modal: The platform for production AI"
+    url: https://modal.com/
+    publisher: Modal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modal-company
+    title: Company | Modal
+    url: https://modal.com/company
+    publisher: Modal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modal-terms
+    title: Terms of Service | Modal
+    url: https://modal.com/legal/terms
+    publisher: Modal
+    kind: official-page
+    published_at: 2026-05
+    accessed_at: 2026-09-29
+  - id: modal-form-d-2026
+    title: Modal Labs, Inc. Form D (Notice of Exempt Offering of Securities)
+    url: https://www.sec.gov/Archives/edgar/data/2088132/000208813226000003/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (filed by Modal Labs, Inc.)
+    kind: filing
+    published_at: 2026-08-31
+    accessed_at: 2026-09-29
+  - id: modal-inference
+    title: "Inference: Serve, scale, and optimize any model | Modal"
+    url: https://modal.com/products/inference
+    publisher: Modal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modal-sandboxes
+    title: "Sandboxes: Isolated environments for reinforcement learning and AI agents | Modal"
+    url: https://modal.com/products/sandboxes
+    publisher: Modal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modal-pricing
+    title: "Pricing: Pay per second for GPUs and CPUs | Modal"
+    url: https://modal.com/pricing
+    publisher: Modal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modal-client-license
+    title: modal-labs/modal-client LICENSE
+    url: https://github.com/modal-labs/modal-client/blob/main/LICENSE
+    publisher: Modal
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modal-examples-license
+    title: modal-labs/modal-examples LICENSE
+    url: https://github.com/modal-labs/modal-examples/blob/main/LICENSE
+    publisher: Modal
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

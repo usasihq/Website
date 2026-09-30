@@ -1,0 +1,207 @@
+slug: gr00t-n1-7-3b
+name: NVIDIA Isaac GR00T N1.7 3B
+kind: model
+record_level: release
+family_slug: gr00t
+version: "N1.7 (GR00T-N1.7-3B)"
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [gr00t-n17-card]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/nvidia/GR00T-N1.7-3B
+    kind: model-hub
+  - label: Isaac-GR00T repository
+    url: https://github.com/NVIDIA/Isaac-GR00T
+    kind: repository
+  - label: NVIDIA Open Model License
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+    kind: license
+  - label: GR00T N1.7 announcement (Hugging Face blog)
+    url: https://huggingface.co/blog/nvidia/gr00t-n1-7
+    kind: release-notes
+summary:
+  text: >-
+    GR00T N1.7 is a 3B-parameter vision-language-action model from NVIDIA that maps camera
+    images, language instructions, and robot proprioception to continuous robot actions. It
+    replaces the earlier Eagle backbone with Cosmos-Reason2-2B and uses a flow-matching
+    diffusion transformer as its action head. NVIDIA first released it in early access in
+    April 2026; the repository now describes it as a general availability release.
+  source_ids: [gr00t-n17-card, gr00t-readme, gr00t-n17-blog]
+useful_for:
+  text: >-
+    The card and README describe post-training the model for a specific humanoid or other
+    robot embodiment and task, then deploying it through a policy server, optionally with
+    TensorRT acceleration.
+  source_ids: [gr00t-n17-card, gr00t-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names NVIDIA as the model developer. NVIDIA's principal executive offices
+    are in Santa Clara, California, per its Form 10-Q for the quarter ended July 26, 2026. Its
+    vision-language backbone derives from Qwen3-VL-2B-Instruct, recorded under provenance;
+    that base is not U.S.-developed.
+  source_ids: [gr00t-n17-card, nvidia-10q-q2fy2027, reason2-2b-hf-api, qwen3-vl-github]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights are downloadable from Hugging Face without an access gate under the NVIDIA Open
+    Model License; the card states the model is ready for commercial and non-commercial use.
+  source_ids: [gr00t-n17-hf-api, gr00t-n17-card]
+licenses:
+  - name: NVIDIA Open Model License Agreement
+    spdx: null
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+    applies_to: weights
+    source_ids: [gr00t-n17-card, gr00t-readme, nvidia-open-model-license]
+  - name: Apache License 2.0 (Isaac-GR00T code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA/Isaac-GR00T/main/LICENSE
+    applies_to: code
+    source_ids: [gr00t-license, gr00t-readme]
+license_notes:
+  text: >-
+    The NVIDIA Open Model License allows commercial use, modification, and distribution of the
+    model and derivatives, with NVIDIA claiming no ownership of outputs. It requires use
+    consistent with NVIDIA's Trustworthy AI terms, a notice file with a specified NVIDIA
+    attribution on redistribution, and indemnification of NVIDIA; rights terminate for
+    bypassing safety guardrails or for bringing infringement litigation over the model. It is
+    governed by U.S. and Delaware law. The README's overview also says N1.7 is licensable
+    under Apache 2.0, but its license section and the model card assign Apache 2.0 to the code
+    and the NVIDIA Open Model License to the weights.
+  source_ids: [nvidia-open-model-license, gr00t-readme, gr00t-n17-card]
+checklist:
+  weights:
+    status: public
+    note: Base weights and several post-trained benchmark checkpoints are published on Hugging Face without an access gate.
+    source_ids: [gr00t-n17-hf-api, gr00t-n17-card]
+  inference_code:
+    status: public
+    note: >-
+      The Apache-2.0 Isaac-GR00T repository provides zero-shot and fine-tuned inference, a
+      policy server, and ONNX/TensorRT export.
+    source_ids: [gr00t-readme, gr00t-license]
+  training_code:
+    status: unknown
+    note: >-
+      The repository publishes fine-tuning code (launch_finetune.py) for new embodiments;
+      pre-training code for the base model was not found.
+    source_ids: [gr00t-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The card describes the pre-training mixture at a high level (13 datasets, 21.6 million
+      data points, human, robot, and simulated data), and NVIDIA's announcement names 20,854
+      hours of EgoScale human egocentric video. The full pre-training data is not documented
+      as released.
+    source_ids: [gr00t-n17-card, gr00t-n17-blog]
+  training_recipe:
+    status: partial
+    note: >-
+      The card points to the GR00T N1 white paper for the N1.x architecture, and the README
+      summarizes the N1.7 changes (new backbone, relative end-effector action space, human
+      video pre-training); a full N1.7 training configuration was not found.
+    source_ids: [gr00t-n17-card, gr00t-readme]
+  evaluation_materials:
+    status: public
+    note: >-
+      The README links per-benchmark guides with dataset download, fine-tuning, and evaluation
+      commands for reproducing results on LIBERO, SimplerEnv, and SO100, plus open-loop and
+      closed-loop evaluation tools.
+    source_ids: [gr00t-readme]
+run_notes:
+  - text: >-
+      The card lists PyTorch as the runtime and NVIDIA Ampere, Hopper, Lovelace, Blackwell,
+      and Jetson hardware on Linux, and reports inference latency with PyTorch eager mode,
+      torch.compile, and TensorRT on several GPUs, DGX Spark, and Jetson AGX Thor and Orin.
+    source_ids: [gr00t-n17-card]
+provenance:
+  text: >-
+    Trained by NVIDIA. The card and README state that N1.7 uses Cosmos-Reason2-2B, an NVIDIA
+    model with the Qwen3-VL architecture, as its vision-language backbone; Hugging Face
+    metadata lists Qwen/Qwen3-VL-2B-Instruct (developed by the Qwen team at Alibaba Cloud) as
+    the base model of Cosmos-Reason2-2B.
+  derived_from:
+    - name: Cosmos-Reason2-2B
+      artifact_slug: null
+      url: https://huggingface.co/api/models/nvidia/Cosmos-Reason2-2B
+      note: NVIDIA vision-language backbone; no separate catalog record.
+    - name: Qwen3-VL-2B-Instruct
+      artifact_slug: null
+      url: https://github.com/QwenLM/Qwen3-VL
+      note: Base model of Cosmos-Reason2-2B per Hugging Face metadata.
+  source_ids: [gr00t-n17-card, gr00t-readme, reason2-2b-hf-api, qwen3-vl-github]
+tags: [robotics, vision-language-action]
+publication_status: published
+archive_note: null
+released_at: 2026-04-17
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: gr00t-n17-card
+    title: nvidia/GR00T-N1.7-3B model card
+    url: https://huggingface.co/nvidia/GR00T-N1.7-3B/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gr00t-n17-hf-api
+    title: Hugging Face model metadata for nvidia/GR00T-N1.7-3B
+    url: https://huggingface.co/api/models/nvidia/GR00T-N1.7-3B
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gr00t-readme
+    title: NVIDIA/Isaac-GR00T README
+    url: https://raw.githubusercontent.com/NVIDIA/Isaac-GR00T/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gr00t-license
+    title: NVIDIA/Isaac-GR00T LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA/Isaac-GR00T/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gr00t-n17-blog
+    title: "NVIDIA Isaac GR00T N1.7: Open Reasoning VLA Model for Humanoid Robots"
+    url: https://huggingface.co/blog/nvidia/gr00t-n1-7
+    publisher: NVIDIA (Hugging Face blog)
+    kind: announcement
+    published_at: 2026-04-17
+    accessed_at: 2026-09-29
+  - id: nvidia-open-model-license
+    title: NVIDIA Open Model License Agreement
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+    publisher: NVIDIA
+    kind: license
+    published_at: 2025-10-24
+    accessed_at: 2026-09-29
+  - id: reason2-2b-hf-api
+    title: Hugging Face model metadata for nvidia/Cosmos-Reason2-2B
+    url: https://huggingface.co/api/models/nvidia/Cosmos-Reason2-2B
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qwen3-vl-github
+    title: QwenLM/Qwen3-VL (GitHub)
+    url: https://github.com/QwenLM/Qwen3-VL
+    publisher: Qwen team (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

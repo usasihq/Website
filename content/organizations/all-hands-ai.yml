@@ -1,0 +1,150 @@
+slug: all-hands-ai
+name: All Hands AI (OpenHands)
+legal_name: null
+website: https://www.openhands.dev
+logo_text: OH
+summary:
+  text: >-
+    All Hands AI develops OpenHands, an open-source platform for building and running AI coding
+    agents. It also offers a hosted service (OpenHands Cloud) and a commercial enterprise edition.
+    The company now presents itself and its products under the OpenHands name.
+  source_ids: [oh-tos, oh-about, oh-docs-home]
+organization_roles: [developer-platform, enterprise-software]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Massachusetts
+  country: US
+  source_ids: [oh-tos, oh-privacy]
+other_locations: []
+founded: null
+sectors: [agents]
+status_note:
+  text: >-
+    The company now presents itself and its products under the OpenHands name. The old
+    all-hands.dev site now redirects to openhands.dev, the GitHub repository has moved from
+    All-Hands-AI/OpenHands to OpenHands/OpenHands, and press releases since November 2025 use the
+    OpenHands name. The terms of service (revised November
+    25, 2025) and the privacy policy still name the provider as All Hands AI.
+  source_ids: [oh-tos, oh-privacy, oh-press, oh-repo-redirect]
+products:
+  - id: openhands-cloud
+    name: OpenHands Cloud
+    kind: developer-tool
+    access: >-
+      Hosted version of OpenHands at app.all-hands.dev. Users sign in with GitHub, GitLab, or
+      Bitbucket and can connect Slack. An individual tier is free, with bring-your-own-key or
+      pay-as-you-go model access.
+    url: https://docs.openhands.dev/openhands/usage/cloud/openhands-cloud
+    source_ids: [oh-cloud-docs, oh-pricing]
+    last_reviewed: 2026-09-29
+  - id: openhands-enterprise
+    name: OpenHands Enterprise
+    kind: enterprise-software
+    access: >-
+      Paid enterprise edition built around an Agent Control Plane (access controls, guardrails,
+      reporting, observability, an LLM gateway, and budgeting). The enterprise page describes it as
+      self-hosted in the customer's VPC via Kubernetes and source-available; the pricing page also
+      lists a SaaS option.
+    url: https://www.openhands.dev/enterprise
+    source_ids: [oh-enterprise, oh-pricing, oh-pr-2026-05]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    OpenHands' terms of service (revised November 25, 2025) say All Hands AI is headquartered in
+    the United States, give a notice address for disputes in Somerville, Massachusetts, and choose
+    Delaware law and Delaware courts. The privacy policy (September 2025) gives a mailing address
+    for All Hands AI in Cambridge, Massachusetts. The company's May 2026 Business Wire release is
+    datelined Boston. The two documents give different Massachusetts addresses and neither calls
+    its address the headquarters, so only the state is recorded. No foreign parent or headquarters was found. Gap: the exact
+    legal entity name (for example, whether it is an "Inc.") is not stated on the pages reviewed.
+  source_ids: [oh-tos, oh-privacy, oh-pr-2026-05]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    The core OpenHands software, including Agent Canvas and the Software Agent SDK, is published
+    under the MIT license (see the OpenHands record). OpenHands Cloud is a hosted commercial
+    service, and OpenHands Enterprise is described as source-available rather than open source.
+    This catalog assesses openness project by project, not for the company as a whole.
+  source_ids: [oh-docs-home, oh-enterprise]
+hiring_url: https://jobs.ashbyhq.com/OpenHands
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: oh-tos
+    title: Terms of Service
+    url: https://www.openhands.dev/tos
+    publisher: All Hands AI
+    kind: official-page
+    published_at: 2025-11-25
+    accessed_at: 2026-09-29
+  - id: oh-privacy
+    title: Privacy Policy
+    url: https://www.openhands.dev/privacy
+    publisher: All Hands AI
+    kind: official-page
+    published_at: 2025-09-03
+    accessed_at: 2026-09-29
+  - id: oh-about
+    title: About OpenHands | Our Mission, Team, and Community
+    url: https://www.openhands.dev/about
+    publisher: All Hands AI (OpenHands)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-press
+    title: OpenHands Newsroom | Press, Media, and Brand Resources
+    url: https://www.openhands.dev/press
+    publisher: All Hands AI (OpenHands)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-repo-redirect
+    title: All-Hands-AI/OpenHands (redirects to OpenHands/OpenHands)
+    url: https://github.com/All-Hands-AI/OpenHands
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-pr-2026-05
+    title: OpenHands Launches an Agent Control Plane to Manage Software Agents
+    url: https://finance.yahoo.com/sectors/technology/articles/openhands-launches-agent-control-plane-135500983.html
+    publisher: OpenHands (via Business Wire)
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-09-29
+  - id: oh-docs-home
+    title: Introduction - OpenHands Docs
+    url: https://docs.openhands.dev/
+    publisher: All Hands AI (OpenHands)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-cloud-docs
+    title: Getting Started - OpenHands Docs
+    url: https://docs.openhands.dev/openhands/usage/cloud/openhands-cloud
+    publisher: All Hands AI (OpenHands)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-pricing
+    title: OpenHands Pricing | Start Building for Free
+    url: https://www.openhands.dev/pricing
+    publisher: All Hands AI (OpenHands)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-enterprise
+    title: OpenHands for Enterprise | Secure, Scalable Agentic Software Development
+    url: https://www.openhands.dev/enterprise
+    publisher: All Hands AI (OpenHands)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

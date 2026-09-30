@@ -1,0 +1,129 @@
+slug: arc-institute
+name: Arc Institute
+legal_name:
+  text: Arc Research Institute
+  source_ids: [irs-eo-bmf-ca, arc-contact]
+website: https://arcinstitute.org
+logo_text: Arc
+summary:
+  text: >-
+    Arc Institute is an independent nonprofit research organization in Palo Alto, California,
+    founded in 2021, that works in partnership with Stanford University, UC Berkeley, and UCSF.
+    Its research spans experimental biology and computational models, including the Evo 2 DNA
+    language model and virtual cell models.
+  source_ids: [arc-about, arc-evo-tool, arc-evo2-one-year]
+organization_roles: [research-lab, nonprofit-research, model-developer]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    classifies it as a hospital or medical research organization (170(b)(1)(A)(iii)).
+  source_ids: [irs-eo-bmf-ca, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Palo Alto, California
+  country: US
+  source_ids: [arc-about, arc-contact]
+other_locations: []
+founded:
+  year: 2021
+  source_ids: [arc-about]
+sectors: [science, research, open-models]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      Arc describes Evo 2 as developed by Arc and NVIDIA scientists together with collaborators
+      at Stanford University, UCSF, UC Berkeley, Goodfire, and the University of Washington. It
+      was released as a preprint in February 2025 and published in Nature on March 4, 2026.
+    source_ids: [arc-evo2-one-year]
+  - text: >-
+      Arc publishes Evo 2 code on GitHub and Evo 2 checkpoints and the OpenGenome2 training
+      dataset on Hugging Face under the Apache License 2.0.
+    source_ids: [evo2-repo, hf-api-arc-models, opengenome2-card]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    Arc Institute describes itself as an independent nonprofit research organization based in
+    Palo Alto, California, and its contact page gives a Palo Alto address. The IRS
+    exempt-organization extract for California lists Arc Research Institute at that address as
+    a 501(c)(3) organization.
+  source_ids: [arc-about, arc-contact, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Evo 2 model weights, inference code, and training data are published under Apache 2.0 (see
+    the Evo 2 records). This catalog assesses openness release by release, not for Arc as a
+    whole.
+  source_ids: [evo2-repo, hf-api-arc-models, opengenome2-card]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: arc-about
+    title: About | Arc Institute
+    url: https://arcinstitute.org/about
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-contact
+    title: Contact | Arc Institute
+    url: https://arcinstitute.org/contact
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-evo-tool
+    title: "Evo 2: DNA Foundation Model | Arc Institute"
+    url: https://arcinstitute.org/tools/evo
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-evo2-one-year
+    title: "Evo 2: One Year Later"
+    url: https://arcinstitute.org/news/evo-2-one-year-later
+    publisher: Arc Institute
+    kind: announcement
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: evo2-repo
+    title: ArcInstitute/evo2
+    url: https://github.com/ArcInstitute/evo2
+    publisher: Arc Institute
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: opengenome2-card
+    title: arcinstitute/opengenome2 dataset card
+    url: https://huggingface.co/datasets/arcinstitute/opengenome2
+    publisher: Arc Institute
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-arc-models
+    title: Arc Institute models on Hugging Face (model list API)
+    url: https://huggingface.co/api/models?author=arcinstitute&limit=100
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: 2026-01
+    accessed_at: 2026-09-29

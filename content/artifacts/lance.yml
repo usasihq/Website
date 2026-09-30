@@ -1,0 +1,172 @@
+slug: lance
+name: Lance (open lakehouse format)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Lance community (Project Management Committee)
+    organization_slug: null
+    source_ids: [lance-community, lance-pmc]
+organization_slugs: [lancedb]
+links:
+  - label: Website and documentation
+    url: https://lance.org/
+    kind: documentation
+  - label: Repository
+    url: https://github.com/lance-format/lance
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/lance-format/lance/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/lance-format/lance/releases
+    kind: release-notes
+summary:
+  text: >-
+    Lance is an open lakehouse format for multimodal AI data, made up of a file format, a table
+    format, and a catalog specification for building a lakehouse on object storage. The core
+    project provides a Rust SDK with Python and Java bindings and supports vector and full-text
+    search, random access, data versioning, and adding columns without rewriting tables.
+  source_ids: [lance-readme, lance-community]
+useful_for:
+  text: >-
+    Storing and querying images, video, audio, text, and embeddings for search engines, feature
+    stores, and large-scale training pipelines that need fast random access.
+  source_ids: [lance-readme]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    In November 2025 LanceDB, a San Francisco company whose products build on Lance, announced
+    that all Lance-related projects had moved to a separate lance-format GitHub organization under
+    community governance modeled on the Apache Software Foundation. Lance is not hosted by a
+    foundation or other legal entity, and the announcement leaves joining one to the community. A
+    Project Management Committee votes on releases, governance, and specification changes, and any
+    PMC member can veto a proposal. On the PMC roster, 9 of 19 members give LanceDB as their
+    self-reported affiliation and the rest list eight other companies. Because no single documented
+    governing or maintaining entity exists, the us-governed-project basis cannot be established
+    under the current policy; an editor should decide how multi-company community governance of
+    this kind is treated.
+  source_ids: [lance-governance-blog, lance-community, lance-pmc, lance-voting, yc-lancedb]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [lance-readme, lance-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/lance-format/lance/blob/main/LICENSE
+    applies_to: code
+    source_ids: [lance-license]
+license_notes:
+  text: >-
+    LanceDB's governance announcement says a unilateral license change cannot happen under the
+    new model because any PMC member can block it.
+  source_ids: [lance-governance-blog]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [lance-readme]
+  documentation:
+    status: public
+    note: User guide, format specification, and community governance documents on lance.org.
+    source_ids: [lance-home, lance-community]
+  installation:
+    status: public
+    note: >-
+      The Python package is installed with pip install pylance; preview releases come from a
+      separate package index, and a Rust crate is published on crates.io.
+    source_ids: [lance-readme]
+  supported_platforms:
+    status: unknown
+    note: null
+    source_ids: []
+  release_status:
+    status: public
+    note: >-
+      Releases, including frequent beta previews, are published on GitHub; pylance 12.0.0 was
+      uploaded to PyPI on September 17, 2026. The README says stable file-format versions remain
+      readable by later releases.
+    source_ids: [lance-releases, pypi-pylance, lance-readme]
+run_notes: []
+provenance: null
+tags: [data-format, vector-search, training]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: lance-home
+    title: Lance — The open lakehouse format for multimodal AI
+    url: https://lance.org/
+    publisher: Lance community
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-readme
+    title: lance-format/lance
+    url: https://github.com/lance-format/lance
+    publisher: Lance community
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-license
+    title: lance-format/lance LICENSE
+    url: https://github.com/lance-format/lance/blob/main/LICENSE
+    publisher: Lance community
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-releases
+    title: lance-format/lance releases
+    url: https://github.com/lance-format/lance/releases
+    publisher: Lance community
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pypi-pylance
+    title: pylance package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/pylance/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-community
+    title: Lance Community Governance — Lance
+    url: https://lance.org/community/
+    publisher: Lance community
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-pmc
+    title: PMC — Lance
+    url: https://lance.org/community/pmc/
+    publisher: Lance community
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-voting
+    title: Voting — Lance
+    url: https://lance.org/community/voting/
+    publisher: Lance community
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lance-governance-blog
+    title: "Building the Future Together: Introducing Lance Community Governance"
+    url: https://www.lancedb.com/blog/lance-community-governance
+    publisher: LanceDB
+    kind: announcement
+    published_at: 2025-11-18
+    accessed_at: 2026-09-29
+  - id: yc-lancedb
+    title: "LanceDB: Open-source, serverless vectordb for production-scale generative AI | Y Combinator"
+    url: https://www.ycombinator.com/companies/lancedb
+    publisher: Y Combinator
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29

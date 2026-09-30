@@ -1,0 +1,169 @@
+slug: skild-ai
+name: Skild AI
+legal_name: null
+website: https://www.skild.ai
+logo_text: SK
+summary:
+  text: >-
+    Skild AI develops the Skild Brain, a robotics foundation model that it describes as able to
+    control many kinds of robots, including quadrupeds, humanoids, tabletop arms, and mobile
+    manipulators. In August 2026 it introduced S1, a manipulation model that learns tasks from
+    video demonstrations.
+  source_ids: [skild-series-c, skild-s1, skild-brain-blog]
+organization_roles: [robotics, model-developer]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Pittsburgh, Pennsylvania
+  country: US
+  source_ids: [skild-bw-2025, zebra-skild-pr, technically-skild-2026]
+other_locations:
+  - label: San Francisco Bay Area (San Mateo), California
+    country: US
+    source_ids: [skild-bw-2025, technically-skild-2026]
+  - label: Bengaluru
+    country: IN
+    source_ids: [skild-bengaluru]
+founded:
+  year: 2023
+  source_ids: [skild-series-c, skild-bw-2025]
+sectors: [robotics]
+status_note: null
+products:
+  - id: skild-brain
+    name: Skild Brain
+    kind: other
+    access: >-
+      General-purpose robot control model. Skild's website says the company is building robot
+      applications with it, such as security and inspection, mobile manipulation, and packing,
+      and that mobile-manipulation skills are exposed through an API call; it does not describe
+      public access to the model itself.
+    url: https://www.skild.ai/
+    source_ids: [skild-home, skild-brain-blog]
+    last_reviewed: 2026-09-29
+  - id: s1
+    name: S1
+    kind: other
+    access: >-
+      Manipulation model announced in August 2026 that takes a video demonstration of a task
+      as input. Skild says S1 is in use with commercial partners and offers a sign-up form for
+      early access; no public weights or code are announced.
+    url: https://www.skild.ai/blogs/s1
+    source_ids: [skild-s1]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      In April 2026 Skild AI acquired Zebra Technologies' Robotics Automation business,
+      including the Symmetry Fulfillment orchestration platform; Zebra received cash and an
+      equity stake in Skild AI.
+    source_ids: [zebra-skild-pr, skild-zebra]
+  - text: >-
+      Skild describes training the Skild Brain on large-scale simulation and internet video
+      for pre-training, followed by targeted real-world data for post-training, with a
+      high-level policy feeding a low-level action policy.
+    source_ids: [skild-brain-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Skild AI's July 2025 press release is datelined Pittsburgh, and its boilerplate says the
+    company has offices in Pittsburgh and the San Francisco Bay Area; the April 2026 Zebra
+    acquisition release is datelined Pittsburgh and Lincolnshire, Illinois. Technical.ly
+    describes Skild AI as Pittsburgh-based and East Liberty-based, with offices in San Mateo,
+    California, and Bengaluru. No official page reviewed uses the word "headquarters", and
+    many current listings on its job board are in San Mateo, California, but both main offices
+    are in the United States. Skild describes its February 2026 Bengaluru office as its first
+    expansion beyond the U.S.
+  source_ids: [skild-bw-2025, zebra-skild-pr, technically-skild-2026, skild-jobs, skild-bengaluru]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Skild AI's announcements for the Skild Brain and S1 describe no public release of model
+    weights or code, and its GitHub organization had no public repositories when reviewed.
+    This catalog has no record of public model weights from Skild AI.
+  source_ids: [skild-brain-blog, skild-s1, skild-github]
+hiring_url: https://www.skild.ai/career
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: skild-home
+    title: Skild AI — General Purpose Robotic Intelligence
+    url: https://www.skild.ai/
+    publisher: Skild AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: skild-brain-blog
+    title: Building the general-purpose robotic brain
+    url: https://www.skild.ai/blogs/building-the-general-purpose-robotic-brain
+    publisher: Skild AI
+    kind: announcement
+    published_at: 2025-07-29
+    accessed_at: 2026-09-29
+  - id: skild-series-c
+    title: Announcing Series C
+    url: https://www.skild.ai/blogs/series-c
+    publisher: Skild AI
+    kind: announcement
+    published_at: 2026-01-14
+    accessed_at: 2026-09-29
+  - id: skild-s1
+    title: "Introducing S1: In-Context Learning for Robotics"
+    url: https://www.skild.ai/blogs/s1
+    publisher: Skild AI
+    kind: announcement
+    published_at: 2026-08-18
+    accessed_at: 2026-09-29
+  - id: skild-bengaluru
+    title: Skild AI Expands Global Footprint To Bengaluru
+    url: https://www.skild.ai/blogs/bengaluru
+    publisher: Skild AI
+    kind: announcement
+    published_at: 2026-02-19
+    accessed_at: 2026-09-29
+  - id: skild-zebra
+    title: Skild AI Acquires Zebra Technologies' Robotics Arm to Bring Omni-Bodied Intelligence to Warehouses
+    url: https://www.skild.ai/blogs/skild-zebra
+    publisher: Skild AI
+    kind: announcement
+    published_at: 2026-04-15
+    accessed_at: 2026-09-29
+  - id: skild-bw-2025
+    title: Skild AI Provides First Look at Its General-Purpose Robotic Brain (Business Wire release, syndicated)
+    url: https://finance.yahoo.com/news/skild-ai-provides-first-look-161500324.html
+    publisher: Skild AI (via Business Wire)
+    kind: announcement
+    published_at: 2025-07-29
+    accessed_at: 2026-09-29
+  - id: zebra-skild-pr
+    title: Skild AI Acquires Zebra Technologies' Robotics Automation Business
+    url: https://www.zebra.com/us/en/about-zebra/newsroom/press-releases/2026/skild-ai-acquires-zebra-technologies--robotics-automation-busine.html
+    publisher: Zebra Technologies
+    kind: announcement
+    published_at: 2026-04-15
+    accessed_at: 2026-09-29
+  - id: technically-skild-2026
+    title: Robotics startup Skild AI raises $1.4B led by SoftBank Group
+    url: https://technical.ly/entrepreneurship/skild-ai-1-4-billion-raise/
+    publisher: Technical.ly
+    kind: news
+    published_at: 2026-01-14
+    accessed_at: 2026-09-29
+  - id: skild-jobs
+    title: Jobs at Skild AI
+    url: https://job-boards.greenhouse.io/skildai-careers
+    publisher: Skild AI (via Greenhouse)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: skild-github
+    title: Skild AI GitHub organization (skild-ai)
+    url: https://github.com/skild-ai
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

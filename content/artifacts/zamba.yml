@@ -1,0 +1,157 @@
+slug: zamba
+name: Zamba
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Zyphra
+    organization_slug: zyphra
+    source_ids: [zyphra-research-index, hf-docs-zamba2]
+organization_slugs: [zyphra]
+links:
+  - label: Zyphra research index
+    url: https://www.zyphra.com/post
+    kind: website
+  - label: Zyphra on Hugging Face
+    url: https://huggingface.co/Zyphra
+    kind: model-hub
+  - label: Zamba2 standalone PyTorch implementation
+    url: https://github.com/Zyphra/Zamba2
+    kind: repository
+  - label: Zamba2 in Hugging Face Transformers
+    url: https://huggingface.co/docs/transformers/main/model_doc/zamba2
+    kind: documentation
+  - label: Zamba2-VL technical report (arXiv 2606.00390)
+    url: https://arxiv.org/abs/2606.00390
+    kind: paper
+summary:
+  text: >-
+    Zamba is Zyphra's series of hybrid models that combine Mamba state-space layers with
+    shared transformer attention blocks. Releases include Zamba-7B (April 2024); Zamba2 at
+    1.2B, 2.7B, and 7B parameters (July to October 2024), with instruction-tuned versions; and
+    Zamba2-VL vision-language models at the same three sizes (June 2026).
+  source_ids: [zyphra-research-index, zamba-blog, zamba2-7b-blog, zamba2-vl-blog]
+useful_for:
+  text: >-
+    Zyphra presents the Zamba2 models as general-purpose models designed for fast inference
+    and a small memory footprint, including on consumer hardware and on-device; Zamba2-VL adds
+    image understanding, OCR, and document tasks.
+  source_ids: [zamba2-7b-card, zamba2-vl-7b-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Zamba models are developed and published by Zyphra, whose terms of use name Zyphra
+    Technologies, Inc. at a San Francisco address; the Zamba2-VL report lists the authors'
+    affiliation as Zyphra, San Francisco, CA. Eligibility of each release is assessed on the
+    release record.
+  source_ids: [zyphra-terms, zamba2-vl-report]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Zamba2-7B and Zamba2-VL-7B records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    The Zamba language models were pretrained by Zyphra on open web text and code, including
+    its own Zyda dataset; the Zamba2 models use the Mistral v0.1 tokenizer. Zamba2-VL builds on the Zamba2
+    language models and uses the vision encoder from Alibaba Cloud's Qwen2.5-VL.
+  derived_from:
+    - name: Zyda
+      artifact_slug: null
+      url: https://huggingface.co/datasets/Zyphra/Zyda
+      note: Zyphra's open pretraining dataset (ODC-BY), assembled from seven open datasets.
+    - name: Qwen2.5-VL vision encoder
+      artifact_slug: null
+      url: https://huggingface.co/Qwen
+      note: Vision backbone for Zamba2-VL only; Qwen is Alibaba Cloud's model family.
+  source_ids: [hf-docs-zamba2, zamba2-7b-card, zyda-card, zamba2-vl-7b-card, qwen-hf-org]
+tags: [language-model, multimodal]
+publication_status: published
+archive_note: null
+released_at: 2024-04-16
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: zyphra-research-index
+    title: Zyphra Research
+    url: https://www.zyphra.com/post
+    publisher: Zyphra
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba-blog
+    title: Zamba-7B
+    url: https://www.zyphra.com/post/zamba
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2024-04-16
+    accessed_at: 2026-09-29
+  - id: zamba2-7b-blog
+    title: Zamba2-7B
+    url: https://www.zyphra.com/our-work/zamba2-7b
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2024-10-14
+    accessed_at: 2026-09-29
+  - id: zamba2-vl-blog
+    title: "Zamba2-VL: Hybrid SSM Vision-Language Models"
+    url: https://www.zyphra.com/our-work/zamba2-vl
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2026-06-02
+    accessed_at: 2026-09-29
+  - id: zamba2-vl-report
+    title: Zamba2-VL Technical Report (arXiv 2606.00390v1)
+    url: https://arxiv.org/html/2606.00390v1
+    publisher: Zyphra
+    kind: paper
+    published_at: 2026-05-29
+    accessed_at: 2026-09-29
+  - id: zamba2-7b-card
+    title: Zyphra/Zamba2-7B model card
+    url: https://huggingface.co/Zyphra/Zamba2-7B
+    publisher: Zyphra
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba2-vl-7b-card
+    title: Zyphra/Zamba2-VL-7B model card
+    url: https://huggingface.co/Zyphra/Zamba2-VL-7B
+    publisher: Zyphra
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-docs-zamba2
+    title: Zamba2 | Hugging Face Transformers documentation
+    url: https://huggingface.co/docs/transformers/main/model_doc/zamba2
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyda-card
+    title: Zyphra/Zyda dataset card
+    url: https://huggingface.co/datasets/Zyphra/Zyda
+    publisher: Zyphra
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-terms
+    title: Terms of Use | Zyphra
+    url: https://www.zyphra.com/legal/terms-of-use
+    publisher: Zyphra Technologies, Inc.
+    kind: official-page
+    published_at: 2026-05-04
+    accessed_at: 2026-09-29
+  - id: qwen-hf-org
+    title: Qwen on Hugging Face
+    url: https://huggingface.co/Qwen
+    publisher: Qwen (Alibaba Cloud)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

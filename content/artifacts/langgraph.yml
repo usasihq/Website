@@ -1,0 +1,159 @@
+slug: langgraph
+name: LangGraph
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: LangChain Inc.
+    organization_slug: langchain
+    source_ids: [langgraph-readme, langgraph-license]
+organization_slugs: [langchain]
+links:
+  - label: Repository
+    url: https://github.com/langchain-ai/langgraph
+    kind: repository
+  - label: Documentation
+    url: https://docs.langchain.com/oss/python/langgraph/overview
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/langchain-ai/langgraph/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/langchain-ai/langgraph/releases
+    kind: release-notes
+summary:
+  text: >-
+    LangGraph is an open-source, low-level orchestration framework and runtime for long-running,
+    stateful agents. It is built by LangChain Inc. but can be used without the LangChain
+    library, and a JavaScript/TypeScript version, LangGraph.js, lives in a separate repository.
+    The README credits Pregel and Apache Beam as inspirations.
+  source_ids: [langgraph-readme, langgraph-docs-overview]
+useful_for:
+  text: >-
+    Agent workflows that must survive failures and resume from where they stopped, that let
+    humans inspect or change agent state mid-run, and that need short-term and long-term memory.
+  source_ids: [langgraph-docs-overview, langgraph-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The README says LangGraph is built by LangChain Inc., and the LICENSE file assigns copyright
+    to LangChain, Inc. LangChain's about page says the company is headquartered in San Francisco,
+    and its terms of service identify LangChain Inc. as a Delaware corporation. No foundation or
+    multi-organization governance body is documented.
+  source_ids: [langgraph-readme, langgraph-license, langchain-about, langchain-tos]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [langgraph-repo, langgraph-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/langchain-ai/langgraph/blob/main/LICENSE
+    applies_to: code
+    source_ids: [langgraph-license]
+license_notes:
+  text: >-
+    The MIT license covers the open-source library. For production deployment the README points
+    to LangSmith Deployment, a separate LangChain product that runs in LangChain's cloud, in a
+    hybrid setup, or self-hosted.
+  source_ids: [langgraph-license, langgraph-readme, langsmith-deployment-docs]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [langgraph-repo]
+  documentation:
+    status: public
+    note: null
+    source_ids: [langgraph-docs-overview]
+  installation:
+    status: public
+    note: Installed from PyPI with pip or uv. LLM provider packages are installed separately.
+    source_ids: [langgraph-install]
+  supported_platforms:
+    status: public
+    note: >-
+      The install guide lists Python 3.10 or newer (the requirement shown is for LangChain, which
+      the guide recommends installing alongside). It does not list operating-system restrictions.
+    source_ids: [langgraph-install]
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub for the library and related packages, such as
+      the CLI, SDK, and checkpointers.
+    source_ids: [langgraph-releases]
+run_notes: []
+provenance: null
+tags: [agents, orchestration]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: langgraph-repo
+    title: langchain-ai/langgraph
+    url: https://github.com/langchain-ai/langgraph
+    publisher: LangChain
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langgraph-readme
+    title: LangGraph README
+    url: https://github.com/langchain-ai/langgraph/blob/main/README.md
+    publisher: LangChain
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langgraph-license
+    title: LangGraph LICENSE
+    url: https://github.com/langchain-ai/langgraph/blob/main/LICENSE
+    publisher: LangChain
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langgraph-releases
+    title: LangGraph releases
+    url: https://github.com/langchain-ai/langgraph/releases
+    publisher: LangChain
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langgraph-docs-overview
+    title: LangGraph overview - Docs by LangChain
+    url: https://docs.langchain.com/oss/python/langgraph/overview
+    publisher: LangChain
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langgraph-install
+    title: Install LangGraph - Docs by LangChain
+    url: https://docs.langchain.com/oss/python/langgraph/install
+    publisher: LangChain
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langsmith-deployment-docs
+    title: LangSmith Deployment - Docs by LangChain
+    url: https://docs.langchain.com/langsmith/deployments
+    publisher: LangChain
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-about
+    title: "About LangChain: an open platform to own your intelligence"
+    url: https://www.langchain.com/about
+    publisher: LangChain
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-tos
+    title: Terms of Service
+    url: https://www.langchain.com/terms-of-service
+    publisher: LangChain
+    kind: official-page
+    published_at: 2026-06-02
+    accessed_at: 2026-09-29

@@ -426,3 +426,69 @@ export const FeaturedSelection = z
   })
   .strict();
 export type FeaturedSelection = z.infer<typeof FeaturedSelection>;
+
+/* ------------------------------------------------------------------ */
+/* Local corner: people (professional information only)                */
+/* ------------------------------------------------------------------ */
+
+/**
+ * A person featured in the Local corner. Deliberately has no fields for
+ * location, nationality, age, photos, or any personal detail: only public,
+ * sourced professional information, tied to records in this catalog.
+ */
+export const PersonAffiliation = z
+  .object({
+    name: z.string().min(1),
+    organization_slug: Slug.nullable().default(null),
+    role: z.string().trim().min(2),
+    current: z.boolean(),
+    source_ids: z.array(SourceId).min(1),
+  })
+  .strict();
+
+export const PersonWork = z
+  .object({
+    name: z.string().min(1),
+    artifact_slug: Slug.nullable().default(null),
+    url: HttpsUrl.nullable().default(null),
+    contribution: z.string().trim().min(10),
+    source_ids: z.array(SourceId).min(1),
+  })
+  .strict();
+
+export const Person = z
+  .object({
+    slug: Slug,
+    name: z.string().min(1),
+    initials: z.string().regex(/^[A-Za-z]{1,3}$/, "1–3 letters for the initials tile"),
+    headline: z.string().trim().min(10).max(110),
+    bio: Claim,
+    affiliations: z.array(PersonAffiliation).min(1),
+    work: z.array(PersonWork).min(1),
+    links: z
+      .array(z.object({ label: z.string().min(1).max(40), url: HttpsUrl }).strict())
+      .max(4)
+      .default([]),
+    publication_status: PublicationStatus,
+    updated_at: IsoDate,
+    last_reviewed: IsoDate.nullable(),
+    sources: z.array(Source).min(1),
+  })
+  .strict();
+export type Person = z.infer<typeof Person>;
+
+export const LocalCornerSchedule = z
+  .object({
+    lineups: z
+      .array(
+        z
+          .object({
+            month: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, "YYYY-MM"),
+            people: z.array(Slug).min(1).max(5),
+          })
+          .strict(),
+      )
+      .default([]),
+  })
+  .strict();
+export type LocalCornerSchedule = z.infer<typeof LocalCornerSchedule>;

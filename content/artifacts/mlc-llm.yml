@@ -1,0 +1,161 @@
+slug: mlc-llm
+name: MLC LLM
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: MLC team (MLC open community)
+    organization_slug: null
+    source_ids: [mlc-readme, mlc-home]
+  - name: CMU Catalyst (lists MLC LLM among its research projects)
+    organization_slug: carnegie-mellon-university
+    source_ids: [cmu-catalyst]
+organization_slugs: [carnegie-mellon-university]
+links:
+  - label: GitHub repository
+    url: https://github.com/mlc-ai/mlc-llm
+    kind: repository
+  - label: Documentation
+    url: https://llm.mlc.ai/docs/
+    kind: documentation
+  - label: Installation
+    url: https://llm.mlc.ai/docs/install/mlc_llm.html
+    kind: documentation
+  - label: License (Apache 2.0)
+    url: https://raw.githubusercontent.com/mlc-ai/mlc-llm/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    MLC LLM is an open-source machine learning compiler and deployment engine for large language
+    models. Compiled models run on MLCEngine, which offers an OpenAI-compatible API through a
+    REST server and Python, JavaScript, iOS, and Android interfaces, with GPU backends including
+    CUDA, ROCm, Vulkan, Metal, WebGPU, and OpenCL.
+  source_ids: [mlc-readme]
+useful_for:
+  text: >-
+    Deploying language models natively on desktop and server GPUs, mobile devices, and in web
+    browsers from a shared engine and compiler.
+  source_ids: [mlc-readme]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The project credits the "MLC team", and the MLC site describes MLC as an open community;
+    neither documents a legal entity or location. CMU Catalyst lists MLC LLM among its research
+    projects. The MLC site lists NSF, CMU, Catalyst, Purdue, NVIDIA, Amazon, and Google as
+    supporting and contributing organizations. MLC's 2023 announcement says the project was
+    initiated by members of CMU Catalyst, UW SAMPL, Shanghai Jiao Tong University, OctoML, and
+    the MLC community. The governing entity is therefore a multi-institution community that
+    cannot be documented as U.S.-based, so eligibility is left for editorial review.
+  source_ids: [mlc-readme, mlc-home, cmu-catalyst, mlc-blog-2023]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the Apache License 2.0. The installation guide distributes
+    nightly pre-release pip wheels, recommends installing them into a conda environment, and
+    also documents building from source.
+  source_ids: [mlc-readme, mlc-license, mlc-install]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/mlc-ai/mlc-llm/main/LICENSE
+    applies_to: code
+    source_ids: [mlc-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Published on GitHub under the Apache License 2.0.
+    source_ids: [mlc-readme, mlc-license]
+  documentation:
+    status: public
+    note: >-
+      Documentation covers installation, a quick start, and deployment to the web, iOS,
+      Android, REST, Python, and the command line.
+    source_ids: [mlc-docs]
+  installation:
+    status: public
+    note: >-
+      Nightly-built pip wheels from the MLC wheel index or building from source; the guide
+      recommends installing into a conda environment.
+    source_ids: [mlc-install]
+  supported_platforms:
+    status: public
+    note: >-
+      The README gives a support matrix covering Linux, Windows, macOS, web browsers (WebGPU and
+      WASM), iOS/iPadOS, and Android, with AMD, NVIDIA, Apple, Intel, Adreno, and Mali GPUs.
+    source_ids: [mlc-readme, mlc-install]
+  release_status:
+    status: partial
+    note: >-
+      The installation guide distributes nightly pre-release builds. The repository's tags
+      include v0.20.0 (July 7, 2026), whose commit message describes it as a stable release; the
+      installation guide does not document a packaged stable release.
+    source_ids: [mlc-install, mlc-tags]
+run_notes: []
+provenance: null
+tags: [inference, compiler, local-inference]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mlc-readme
+    title: MLC LLM README
+    url: https://raw.githubusercontent.com/mlc-ai/mlc-llm/main/README.md
+    publisher: MLC community
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlc-license
+    title: MLC LLM LICENSE
+    url: https://raw.githubusercontent.com/mlc-ai/mlc-llm/main/LICENSE
+    publisher: MLC community
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlc-docs
+    title: MLC LLM documentation
+    url: https://llm.mlc.ai/docs/
+    publisher: MLC community
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlc-install
+    title: Install MLC LLM Python Package
+    url: https://llm.mlc.ai/docs/install/mlc_llm.html
+    publisher: MLC community
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlc-tags
+    title: "Tags: mlc-ai/mlc-llm"
+    url: https://github.com/mlc-ai/mlc-llm/tags
+    publisher: MLC community
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlc-home
+    title: MLC - A Community of Machine Learning Compilers
+    url: https://mlc.ai/
+    publisher: MLC community
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlc-blog-2023
+    title: Bringing Hardware Accelerated Language Models to Android Devices
+    url: https://blog.mlc.ai/2023/05/08/bringing-hardware-accelerated-language-models-to-android-devices
+    publisher: MLC community
+    kind: announcement
+    published_at: 2023-05-08
+    accessed_at: 2026-09-29
+  - id: cmu-catalyst
+    title: CMU Catalyst
+    url: https://catalyst.cs.cmu.edu/
+    publisher: Carnegie Mellon University (Catalyst group)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

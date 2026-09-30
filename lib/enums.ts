@@ -29,6 +29,8 @@ export const ORGANIZATION_ROLES = [
   "open-source-steward",
   "nonprofit-research",
   "data-services",
+  "university-lab",
+  "standards-body",
 ] as const;
 
 export const OWNERSHIP_CATEGORIES = [
@@ -37,6 +39,7 @@ export const OWNERSHIP_CATEGORIES = [
   "nonprofit",
   "unit-of-another-organization",
   "foundation-hosted",
+  "public-institution",
   "unknown",
 ] as const;
 
@@ -53,6 +56,7 @@ export const SECTORS = [
   "robotics",
   "defense",
   "research",
+  "science",
 ] as const;
 
 export const PRODUCT_KINDS = [

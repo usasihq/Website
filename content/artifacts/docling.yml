@@ -1,0 +1,177 @@
+slug: docling
+name: Docling
+kind: framework
+record_level: project
+family_slug: null
+version: "2.131.0"
+maintainers:
+  - name: LF AI & Data Foundation (hosted project)
+    organization_slug: lf-ai-data
+    source_ids: [docling-readme, lfaidata-docling-blog, lfaidata-docling-page]
+  - name: IBM Research (originating team)
+    organization_slug: ibm
+    source_ids: [docling-readme, docling-tech-report]
+organization_slugs: [lf-ai-data, linux-foundation, ibm]
+links:
+  - label: Repository
+    url: https://github.com/docling-project/docling
+    kind: repository
+  - label: Documentation
+    url: https://docling-project.github.io/docling/
+    kind: documentation
+  - label: LICENSE
+    url: https://raw.githubusercontent.com/docling-project/docling/main/LICENSE
+    kind: license
+  - label: Docling Technical Report (arXiv 2408.09869)
+    url: https://arxiv.org/abs/2408.09869
+    kind: paper
+  - label: Release v2.131.0
+    url: https://github.com/docling-project/docling/releases/tag/v2.131.0
+    kind: release-notes
+summary:
+  text: >-
+    Docling is an open-source Python toolkit that converts documents such as PDF, DOCX, PPTX,
+    XLSX, HTML, images, audio, and other formats into a structured DoclingDocument that can be
+    exported as Markdown, HTML, or JSON for generative AI applications. It includes PDF layout,
+    reading-order, and table-structure analysis, OCR, and optional vision-language model
+    pipelines. The project began at IBM Research in Zurich and has been hosted by the LF AI &
+    Data Foundation since 2025.
+  source_ids: [docling-readme, docling-tech-report, lfaidata-docling-blog, lfaidata-docling-page]
+useful_for:
+  text: >-
+    Preparing documents for retrieval-augmented generation and agent workflows, with local
+    execution for sensitive or air-gapped data, integrations with frameworks such as
+    LangChain, LlamaIndex, CrewAI, and Haystack, a command-line tool, an MCP server, and an API
+    server (docling-serve).
+  source_ids: [docling-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Docling is hosted as a project of the LF AI & Data Foundation, which describes itself as an
+    umbrella foundation of the Linux Foundation. The foundation's project page states that IBM
+    donated Docling as an Incubation-stage project in March 2025 (its induction was announced
+    in April 2025) and that it became a Graduate-tier project in August 2026. The Linux Foundation's privacy policy gives a mailing address in San Francisco,
+    California. The project was started by IBM Research's Zurich team; IBM is recorded as the
+    originating organization, and eligibility rests on the U.S.-based foundation hosting the
+    project, not on where its developers work.
+  source_ids: [docling-readme, lfaidata-docling-blog, lfaidata-docling-page, lf-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the MIT License; installable from PyPI with pip or uv, with
+    optional extras for OCR engines, ASR, and VLM pipelines.
+  source_ids: [docling-repo, docling-license, docling-install]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/docling-project/docling/main/LICENSE
+    applies_to: code
+    source_ids: [docling-license]
+license_notes:
+  text: >-
+    The README states the codebase is MIT-licensed and that individual models used by Docling
+    carry the licenses of their original packages.
+  source_ids: [docling-readme]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [docling-repo]
+  documentation:
+    status: public
+    note: >-
+      Documentation covers installation, usage, concepts, examples, and integrations; a
+      technical report describes the architecture and models.
+    source_ids: [docling-readme, docling-tech-report]
+  installation:
+    status: public
+    note: Documented installation with pip or uv, with optional extras such as easyocr, rapidocr, tesserocr, asr, and vlm.
+    source_ids: [docling-install]
+  supported_platforms:
+    status: public
+    note: >-
+      Documented as working on macOS, Linux, and Windows on x86_64 and arm64; the README states
+      Python 3.10 or higher is required since version 2.70.0.
+    source_ids: [docling-install, docling-readme]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub; v2.131.0 was published on 2026-09-29.
+    source_ids: [docling-release]
+run_notes:
+  - text: >-
+      The installation guide documents a CPU-only PyTorch install on Linux via the PyTorch CPU
+      wheel index, and a mac_intel extra for Intel Macs.
+    source_ids: [docling-install]
+provenance: null
+tags: [document-processing, retrieval-augmented-generation]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: docling-repo
+    title: docling-project/docling
+    url: https://github.com/docling-project/docling
+    publisher: Docling Project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: docling-readme
+    title: Docling README
+    url: https://raw.githubusercontent.com/docling-project/docling/main/README.md
+    publisher: Docling Project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: docling-license
+    title: Docling LICENSE
+    url: https://raw.githubusercontent.com/docling-project/docling/main/LICENSE
+    publisher: Docling Project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: docling-install
+    title: Installation (Docling documentation)
+    url: https://docling-project.github.io/docling/getting_started/installation/
+    publisher: Docling Project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: docling-release
+    title: Release v2.131.0 · docling-project/docling
+    url: https://github.com/docling-project/docling/releases/tag/v2.131.0
+    publisher: Docling Project
+    kind: release-notes
+    published_at: 2026-09-29
+    accessed_at: 2026-09-29
+  - id: docling-tech-report
+    title: Docling Technical Report (arXiv 2408.09869)
+    url: https://arxiv.org/abs/2408.09869
+    publisher: IBM Research (arXiv)
+    kind: paper
+    published_at: 2024-08-19
+    accessed_at: 2026-09-29
+  - id: lfaidata-docling-blog
+    title: "AI Workflows Get New Open Source Tools to Advance Document Intelligence, Data Quality, and Decentralized AI with IBM's Contribution of 3 Projects to Linux Foundation AI and Data"
+    url: https://lfaidata.foundation/blog/2025/04/29/ai-workflows-get-new-open-source-tools-to-advance-document-intelligence-data-quality-and-decentralized-ai-with-ibms-contribution-of-3-projects-to-linux-foundation-ai-and-data/
+    publisher: LF AI & Data Foundation
+    kind: announcement
+    published_at: 2025-04-29
+    accessed_at: 2026-09-29
+  - id: lfaidata-docling-page
+    title: Docling (LF AI & Data project page)
+    url: https://lfaidata.foundation/projects/docling/
+    publisher: LF AI & Data Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lf-privacy
+    title: Linux Foundation Privacy Policy
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: 2024-09-11
+    accessed_at: 2026-09-29

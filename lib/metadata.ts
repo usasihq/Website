@@ -35,6 +35,7 @@ export function pageMetadata({ title, description, path, noindex }: PageMeta): M
     },
     twitter: {
       card: "summary_large_image",
+      site: "@usasihq",
       title: fullTitle,
       description,
       images: [absoluteUrl("/og.png")],

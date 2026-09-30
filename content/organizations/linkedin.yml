@@ -1,0 +1,134 @@
+slug: linkedin
+name: LinkedIn
+legal_name:
+  text: LinkedIn Corporation
+  source_ids: [msft-ex21-2026, li-privacy]
+website: https://www.linkedin.com
+logo_text: in
+summary:
+  text: >-
+    LinkedIn is a professional networking service owned by Microsoft, which reports it within
+    its Productivity and Business Processes segment. Its engineering team develops and
+    maintains Liger Kernel, an open-source library of Triton GPU kernels for training large
+    language models.
+  source_ids: [msft-10k-2026, li-acquisition-2016, liger-repo, li-liger-blog]
+organization_roles: [consumer-products, enterprise-software]
+ownership_category: unit-of-another-organization
+legal_form: null
+parent_org_slug: microsoft
+parent_relationship: subsidiary
+headquarters:
+  label: Sunnyvale, California
+  country: US
+  source_ids: [li-careers-sunnyvale-hq, li-mailing-address, li-about]
+other_locations: []
+founded: null
+sectors: []
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      Microsoft's Form 10-K for fiscal 2026 describes LinkedIn's paid offerings as Talent
+      Solutions, Marketing Solutions, Premium Subscriptions, and Sales Solutions. This catalog
+      has not reviewed the AI features within those products.
+    source_ids: [msft-10k-2026]
+  - text: >-
+      LinkedIn Engineering's December 2024 post on Liger Kernel says LinkedIn uses the kernels
+      in its own LLM training infrastructure alongside FlashAttention, with Flyte scheduling
+      jobs on Kubernetes.
+    source_ids: [li-liger-blog]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    Microsoft completed its acquisition of LinkedIn on December 8, 2016, and Exhibit 21 to
+    Microsoft's Form 10-K for fiscal 2026 lists LinkedIn Corporation (United States) as a
+    subsidiary. Microsoft Corporation is a Washington corporation headquartered in Redmond,
+    Washington. LinkedIn's careers site describes its global headquarters campus as being in
+    Sunnyvale, California, and LinkedIn Corporation's legal-notice mailing address is there;
+    its privacy policy names LinkedIn Ireland Unlimited Company as the controller for members
+    in the EU, EEA, and Switzerland.
+  source_ids: [li-acquisition-2016, msft-ex21-2026, msft-10k-2026, li-careers-sunnyvale-hq, li-mailing-address, li-privacy]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    This catalog records LinkedIn's open-source Liger Kernel library, published by LinkedIn
+    on GitHub under the BSD 2-Clause license. LinkedIn's consumer and business products are
+    hosted services and are not assessed here.
+  source_ids: [liger-repo, liger-license]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (Microsoft filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29
+  - id: msft-ex21-2026
+    title: Microsoft Corporation Form 10-K fiscal 2026, Exhibit 21 (Subsidiaries of Registrant)
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-ex21.htm
+    publisher: U.S. Securities and Exchange Commission (Microsoft filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29
+  - id: li-acquisition-2016
+    title: Microsoft completes acquisition of LinkedIn
+    url: https://news.linkedin.com/2017/microsoft-completes-acquisition-of-linkedin
+    publisher: LinkedIn
+    kind: announcement
+    published_at: 2016-12-08
+    accessed_at: 2026-09-29
+  - id: li-careers-sunnyvale-hq
+    title: Sunnyvale HQ | LinkedIn Careers
+    url: https://careers.linkedin.com/Locations/SunnyvaleHQ1
+    publisher: LinkedIn
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: li-mailing-address
+    title: User Agreement and Privacy Policy mailing address
+    url: https://www.linkedin.com/help/linkedin/answer/a1338533
+    publisher: LinkedIn
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: li-privacy
+    title: LinkedIn Privacy Policy
+    url: https://www.linkedin.com/legal/privacy-policy
+    publisher: LinkedIn
+    kind: official-page
+    published_at: 2025-11-03
+    accessed_at: 2026-09-29
+  - id: li-about
+    title: About Us | LinkedIn Pressroom
+    url: https://news.linkedin.com/about-us
+    publisher: LinkedIn
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liger-repo
+    title: linkedin/Liger-Kernel (GitHub repository)
+    url: https://github.com/linkedin/Liger-Kernel
+    publisher: LinkedIn
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liger-license
+    title: Liger-Kernel LICENSE
+    url: https://raw.githubusercontent.com/linkedin/Liger-Kernel/main/LICENSE
+    publisher: LinkedIn
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: li-liger-blog
+    title: "Liger-Kernel: Empowering an open source ecosystem of Triton Kernels for Efficient LLM Training"
+    url: https://www.linkedin.com/blog/engineering/open-source/liger-kernel-open-source-ecosystem-for-efficient-llm-training
+    publisher: LinkedIn Engineering
+    kind: announcement
+    published_at: 2024-12-05
+    accessed_at: 2026-09-29

@@ -1,0 +1,236 @@
+slug: cosmos3-nano
+name: NVIDIA Cosmos3-Nano
+kind: model
+record_level: release
+family_slug: cosmos
+version: "Cosmos3-Nano (16B)"
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [nano-card]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/nvidia/Cosmos3-Nano
+    kind: model-hub
+  - label: OpenMDW License 1.1
+    url: https://openmdw.ai/license/1-1/
+    kind: license
+  - label: Cosmos-Framework repository
+    url: https://github.com/nvidia/cosmos-framework
+    kind: repository
+  - label: Cosmos 3 technical report
+    url: https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf
+    kind: paper
+summary:
+  text: >-
+    Cosmos3-Nano is the 16B-parameter model in NVIDIA's Cosmos 3 family, released on May 31,
+    2026. It shares the family's mixture-of-transformers design, generating text
+    autoregressively and images, video, audio, and robot actions by diffusion, from
+    combinations of text, image, video, audio, and action-trajectory inputs.
+  source_ids: [nano-card, cosmos3-report]
+useful_for:
+  text: >-
+    The card lists physical AI uses in robotics, autonomous vehicles, and industrial and smart
+    spaces; NVIDIA positions Nano for fast video and action reasoning and as a balance of speed
+    and quality across deployments.
+  source_ids: [nano-card, cosmos3-press, cosmos-github]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names NVIDIA as the model developer. NVIDIA's principal executive offices
+    are in Santa Clara, California, per its Form 10-Q for the quarter ended July 26, 2026. The
+    model is initialized from third-party Qwen3-VL weights, recorded under provenance; that
+    base is not U.S.-developed.
+  source_ids: [nano-card, nvidia-10q-q2fy2027, cosmos3-report, qwen3-vl-github]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights are downloadable from Hugging Face without an access gate under OpenMDW-1.1; the
+    card states the model is ready for commercial and non-commercial use and lists global
+    deployment geography.
+  source_ids: [nano-hf-api, nano-card]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1 (OpenMDW-1.1)
+    spdx: null
+    url: https://openmdw.ai/license/1-1/
+    applies_to: weights
+    source_ids: [nano-card, nano-hf-api, openmdw-1-1]
+  - name: OpenMDW License Agreement, version 1.1 (Cosmos-Framework code)
+    spdx: null
+    url: https://raw.githubusercontent.com/NVIDIA/cosmos-framework/main/LICENSE
+    applies_to: code
+    source_ids: [cosmos-framework-license]
+license_notes:
+  text: >-
+    OpenMDW-1.1 grants permission to deal in the model, its parameters, and related data,
+    documentation, and software without restriction under copyright, patent, database, and
+    trade secret rights. Distributors must keep a copy of the agreement and applicable
+    notices, and rights end for anyone who sues claiming the materials infringe a patent or
+    copyright, unless responding to a suit brought first. It places no restrictions on
+    outputs. It is not on this catalog's OSI-approved list.
+  source_ids: [openmdw-1-1, cosmos-license]
+checklist:
+  weights:
+    status: public
+    note: Weights are published on Hugging Face without an access gate.
+    source_ids: [nano-hf-api, nano-card]
+  inference_code:
+    status: public
+    note: >-
+      The card documents inference with vLLM-Omni, vLLM (through a Cosmos-Framework plugin
+      package), Hugging Face Diffusers, and SGLang Diffusion.
+    source_ids: [nano-card, cosmos-framework-readme]
+  training_code:
+    status: partial
+    note: >-
+      Cosmos-Framework publishes a distributed trainer whose documented recipes cover
+      supervised fine-tuning (including a Nano vision SFT recipe). The report describes the
+      internal training infrastructure used for both towers but does not identify it as
+      Cosmos-Framework, and pre-training configurations were not found.
+    source_ids: [cosmos-framework-readme, cosmos-framework-training, cosmos3-report]
+  training_data_information:
+    status: partial
+    note: >-
+      The card summarizes the corpus (about 1.3B data points from 393 dataset entries, drawn
+      from NVIDIA-owned data and public datasets, plus synthetic data) and links a public
+      summary of training content. The report lists five synthetic datasets released on
+      Hugging Face; most training data is not released.
+    source_ids: [nano-card, cosmos3-report]
+  training_recipe:
+    status: public
+    note: >-
+      The technical report describes the training stages, data mixtures, optimizer settings,
+      learning-rate schedules, and the token and GPU counts used for Nano.
+    source_ids: [cosmos3-report]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card and report publish benchmark results, and the report releases one human
+      evaluation benchmark (Cosmos-HUE); code to re-run all reported evaluations was not
+      verified.
+    source_ids: [nano-card, cosmos3-report]
+run_notes:
+  - text: >-
+      The card lists PyTorch, vLLM-Omni, Diffusers, and SGLang as runtimes; NVIDIA Ampere,
+      Hopper, and Blackwell GPUs; and Linux as the tested operating system. It states that
+      only BF16 precision is tested and gives a recommended vLLM-Omni serving command for an
+      H200 GPU.
+    source_ids: [nano-card]
+provenance:
+  text: >-
+    Trained by NVIDIA. The technical report states that Cosmos3-Nano adapts the Qwen3-VL 8B
+    architecture and is initialized from pre-trained Qwen3-VL-8B weights (developed by the
+    Qwen team at Alibaba Cloud), and that visual generation uses the video VAE encoder from
+    Wan2.2-TI2V-5B (published on Hugging Face by Wan-AI). The card lists synthetic training
+    data generated with HiDream-I1, Qwen-Image-2512, and Qwen3-VL.
+  derived_from:
+    - name: Qwen3-VL-8B
+      artifact_slug: null
+      url: https://github.com/QwenLM/Qwen3-VL
+      note: Initialization weights for the language and vision backbone.
+    - name: Wan2.2-TI2V-5B video VAE
+      artifact_slug: null
+      url: https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B
+      note: Video VAE encoder used for visual generation; published by Wan-AI under Apache 2.0.
+  source_ids: [cosmos3-report, nano-card, qwen3-vl-github, wan22-card]
+tags: [world-model, multimodal, robotics, video-generation]
+publication_status: published
+archive_note: null
+released_at: 2026-05-31
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nano-card
+    title: nvidia/Cosmos3-Nano model card
+    url: https://huggingface.co/nvidia/Cosmos3-Nano/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nano-hf-api
+    title: Hugging Face model metadata for nvidia/Cosmos3-Nano
+    url: https://huggingface.co/api/models/nvidia/Cosmos3-Nano
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openmdw-1-1
+    title: OpenMDW License 1.1
+    url: https://openmdw.ai/license/1-1/
+    publisher: OpenMDW
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos-license
+    title: NVIDIA/Cosmos LICENSE (OpenMDW License Agreement, version 1.1)
+    url: https://raw.githubusercontent.com/NVIDIA/cosmos/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos-framework-license
+    title: NVIDIA/cosmos-framework LICENSE
+    url: https://raw.githubusercontent.com/NVIDIA/cosmos-framework/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos-framework-readme
+    title: NVIDIA/cosmos-framework README
+    url: https://raw.githubusercontent.com/NVIDIA/cosmos-framework/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos-framework-training
+    title: Cosmos-Framework docs/training.md (Post-Training, Supervised Fine-Tuning)
+    url: https://raw.githubusercontent.com/NVIDIA/cosmos-framework/main/docs/training.md
+    publisher: NVIDIA (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos-github
+    title: NVIDIA/Cosmos (GitHub)
+    url: https://github.com/nvidia/cosmos
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos3-report
+    title: "Cosmos 3: Omnimodal World Models for Physical AI (technical report)"
+    url: https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf
+    publisher: NVIDIA
+    kind: paper
+    published_at: 2026-06-22
+    accessed_at: 2026-09-29
+  - id: cosmos3-press
+    title: NVIDIA Launches Cosmos 3, the Open Frontier Foundation Model for Physical AI
+    url: https://nvidianews.nvidia.com/news/nvidia-launches-cosmos-3-the-open-frontier-foundation-model-for-physical-ai
+    publisher: NVIDIA Newsroom
+    kind: announcement
+    published_at: 2026-05-31
+    accessed_at: 2026-09-29
+  - id: wan22-card
+    title: Wan-AI/Wan2.2-TI2V-5B model card
+    url: https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B/raw/main/README.md
+    publisher: Wan-AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qwen3-vl-github
+    title: QwenLM/Qwen3-VL (GitHub)
+    url: https://github.com/QwenLM/Qwen3-VL
+    publisher: Qwen team (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArtifactDirectory } from "@/components/ArtifactDirectory";
 import { PageHeader } from "@/components/PageHeader";
+import { ArtifactQuickViews } from "@/components/QuickViews";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
@@ -37,6 +38,7 @@ export default function OpenPage() {
             What the labels mean
           </Link>
         </p>
+        <ArtifactQuickViews items={items} />
       </PageHeader>
       <div className="container-page py-10">
         <ArtifactDirectory items={items} />

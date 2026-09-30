@@ -1,0 +1,202 @@
+slug: zamba2-7b
+name: Zamba2-7B
+kind: model
+record_level: release
+family_slug: zamba
+version: "Zamba2-7B"
+maintainers:
+  - name: Zyphra
+    organization_slug: zyphra
+    source_ids: [zamba2-7b-card, zamba2-7b-blog]
+organization_slugs: [zyphra]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/Zyphra/Zamba2-7B
+    kind: model-hub
+  - label: Zamba2-7B announcement
+    url: https://www.zyphra.com/our-work/zamba2-7b
+    kind: release-notes
+  - label: Zamba2 standalone PyTorch implementation
+    url: https://github.com/Zyphra/Zamba2
+    kind: repository
+  - label: Zamba2 in Hugging Face Transformers
+    url: https://huggingface.co/docs/transformers/main/model_doc/zamba2
+    kind: documentation
+summary:
+  text: >-
+    The 7B base model in Zyphra's Zamba2 series, announced in October 2024. It interleaves
+    Mamba2 blocks with two shared attention blocks in an alternating pattern and adds LoRA
+    projectors to the shared MLP blocks so that each shared block can specialize by depth.
+  source_ids: [zamba2-7b-blog, zamba2-7b-card]
+useful_for:
+  text: >-
+    The model card presents it as a general-purpose base model for efficient inference with
+    low memory use on consumer hardware. It is not tuned for instruction following or chat
+    and has no moderation; Zyphra released a separate instruction-tuned Zamba2-7B-Instruct.
+  source_ids: [zamba2-7b-card, zamba2-7b-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Zyphra, whose terms of use name Zyphra Technologies, Inc. at
+    415 Mission Street, San Francisco, and whose May 2026 announcement describes it as
+    headquartered in San Francisco.
+  source_ids: [zamba2-7b-card, zyphra-terms, zyphra-zaya1-8b-post]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    The Hugging Face repository is gated: users must agree to share their contact
+    information before they can access the files. The Hugging Face metadata lists the gating
+    mode as automatic approval, under which access is granted as soon as the request is sent.
+  source_ids: [zamba2-7b-card, zamba2-7b-hf-api, hf-gated-docs]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/Zyphra/Zamba2-7B
+    applies_to: weights
+    source_ids: [zamba2-7b-card, hf-docs-zamba2]
+  - name: Apache License 2.0 (Zamba2 PyTorch implementation)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/Zyphra/Zamba2/main/LICENSE
+    applies_to: code
+    source_ids: [zamba2-repo-license]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: >-
+      Downloadable from Hugging Face after agreeing to share contact information; access is
+      approved automatically.
+    source_ids: [zamba2-7b-card, zamba2-7b-hf-api, hf-gated-docs]
+  inference_code:
+    status: public
+    note: >-
+      Supported in Hugging Face Transformers from version 4.48.0; Zyphra also publishes a
+      standalone PyTorch implementation of the Zamba2 models on GitHub.
+    source_ids: [hf-docs-zamba2, zamba2-repo, zamba2-7b-blog]
+  training_code:
+    status: unknown
+    note: >-
+      Zyphra's announcement says training used an internal framework built on Megatron-LM;
+      this catalog found no public release of that framework.
+    source_ids: [zamba2-7b-blog]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card says pretraining used text and code from open web datasets, including
+      Zyphra's Zyda (which is downloadable), followed by an annealing phase on a smaller
+      high-quality mixture. No complete list of the mixture was found.
+    source_ids: [zamba2-7b-card, zyda-card]
+  training_recipe:
+    status: partial
+    note: >-
+      Two-phase pretraining (main pretraining, then annealing) and the architecture are
+      described at a high level in the model card and announcement.
+    source_ids: [zamba2-7b-card, zamba2-7b-blog]
+  evaluation_materials:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      The model card's quick start installs mamba-ssm (v2.1.0) and causal-conv1d for the
+      optimized Mamba2 kernels and loads the model with Transformers on a CUDA device in
+      bfloat16. It says running without those kernels is not recommended because latency and
+      memory use are significantly higher.
+    source_ids: [zamba2-7b-card]
+provenance:
+  text: >-
+    A Zyphra base model pretrained on open web text and code, including Zyphra's Zyda
+    dataset, using the Mistral v0.1 tokenizer. It serves as the language backbone of
+    Zamba2-VL-7B.
+  derived_from:
+    - name: Zyda
+      artifact_slug: null
+      url: https://huggingface.co/datasets/Zyphra/Zyda
+      note: Zyphra pretraining dataset named in the model card.
+  source_ids: [zamba2-7b-card, hf-docs-zamba2, zyda-card, zamba2-vl-7b-card]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2024-10-14
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: zamba2-7b-card
+    title: Zyphra/Zamba2-7B model card
+    url: https://huggingface.co/Zyphra/Zamba2-7B
+    publisher: Zyphra
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba2-7b-blog
+    title: Zamba2-7B
+    url: https://www.zyphra.com/our-work/zamba2-7b
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2024-10-14
+    accessed_at: 2026-09-29
+  - id: hf-docs-zamba2
+    title: Zamba2 | Hugging Face Transformers documentation
+    url: https://huggingface.co/docs/transformers/main/model_doc/zamba2
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba2-repo
+    title: Zyphra/Zamba2 README
+    url: https://github.com/Zyphra/Zamba2
+    publisher: Zyphra
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba2-repo-license
+    title: Zyphra/Zamba2 LICENSE
+    url: https://raw.githubusercontent.com/Zyphra/Zamba2/main/LICENSE
+    publisher: Zyphra
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyda-card
+    title: Zyphra/Zyda dataset card
+    url: https://huggingface.co/datasets/Zyphra/Zyda
+    publisher: Zyphra
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba2-vl-7b-card
+    title: Zyphra/Zamba2-VL-7B model card
+    url: https://huggingface.co/Zyphra/Zamba2-VL-7B
+    publisher: Zyphra
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba2-7b-hf-api
+    title: Zyphra/Zamba2-7B (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/Zyphra/Zamba2-7B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gated-docs
+    title: Gated models | Hugging Face Hub documentation
+    url: https://huggingface.co/docs/hub/models-gated
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-terms
+    title: Terms of Use | Zyphra
+    url: https://www.zyphra.com/legal/terms-of-use
+    publisher: Zyphra Technologies, Inc.
+    kind: official-page
+    published_at: 2026-05-04
+    accessed_at: 2026-09-29
+  - id: zyphra-zaya1-8b-post
+    title: Zyphra Releases ZAYA1-8B, a Reasoning Model trained on AMD and Optimized for Maximum Intelligence Density per Parameter
+    url: https://www.zyphra.com/our-work/zyphra-releases-zaya1-8b-a-reasoning-model-trained-on-amd-and-optimized-for-maximum-intelligence-density-per-parameter
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-09-29

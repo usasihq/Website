@@ -1,0 +1,150 @@
+slug: mmlu
+name: MMLU (Measuring Massive Multitask Language Understanding)
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Original paper authors (individual researchers; no maintaining organization documented)
+    organization_slug: null
+    source_ids: [mmlu-repo, mmlu-license, mmlu-arxiv]
+  - name: Center for AI Safety (hosts the cais/mmlu copy on Hugging Face)
+    organization_slug: center-for-ai-safety
+    source_ids: [mmlu-hf-card, mmlu-hf-api, hf-cais-org]
+organization_slugs: [center-for-ai-safety]
+links:
+  - label: GitHub repository (hendrycks/test)
+    url: https://github.com/hendrycks/test
+    kind: repository
+  - label: Dataset (Hugging Face, cais/mmlu)
+    url: https://huggingface.co/datasets/cais/mmlu
+    kind: dataset-hub
+  - label: Paper (arXiv 2009.03300)
+    url: https://arxiv.org/abs/2009.03300
+    kind: paper
+summary:
+  text: >-
+    A multiple-choice benchmark of 57 tasks spanning the humanities, social sciences, STEM, and
+    other areas, from elementary mathematics to US history, computer science, and law. It was
+    introduced in a paper presented at ICLR 2021, and the Hugging Face copy provides dev
+    (few-shot), validation, test, and auxiliary training splits.
+  source_ids: [mmlu-arxiv, mmlu-hf-card, mmlu-repo]
+useful_for:
+  text: >-
+    Measuring the breadth of a language model's world knowledge and problem solving across many
+    academic and professional subjects, including in few-shot settings using the dev split.
+  source_ids: [mmlu-hf-card, mmlu-arxiv]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The original repository is hosted under a personal GitHub account, its MIT license names an
+    individual as copyright holder, and the test data is linked from a personal university web
+    page. A copy is published under the Hugging Face organization named Center for AI Safety,
+    but that card lists no curators and no statement was found that CAIS maintains the
+    benchmark; CAIS's research page does not list MMLU. No maintaining institution is
+    documented, so eligibility is left for review.
+  source_ids: [mmlu-repo, mmlu-license, mmlu-hf-card, hf-cais-org, cais-research]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    The test is downloadable from the repository's linked archive and from Hugging Face without
+    gating, under the MIT license.
+  source_ids: [mmlu-repo, mmlu-hf-card, mmlu-hf-api]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/hendrycks/test/master/LICENSE
+    applies_to: all
+    source_ids: [mmlu-license, mmlu-hf-card]
+license_notes:
+  text: >-
+    The Hugging Face card points to the repository's MIT license. The card's citation section
+    also asks users to cite the ETHICS dataset, which the test draws on.
+  source_ids: [mmlu-hf-card]
+checklist:
+  code:
+    status: public
+    note: The repository contains evaluation code for the OpenAI API under the MIT license.
+    source_ids: [mmlu-repo, mmlu-license]
+  tasks_data:
+    status: public
+    note: >-
+      All 57 tasks, each with dev, validation, and test splits, are downloadable from Hugging Face
+      without gating.
+    source_ids: [mmlu-hf-card, mmlu-hf-api]
+  methodology:
+    status: public
+    note: The ICLR 2021 paper describes the benchmark design and evaluation.
+    source_ids: [mmlu-arxiv]
+  reproducibility_instructions:
+    status: partial
+    note: >-
+      Evaluation code is published, but the repository README gives no step-by-step run
+      instructions.
+    source_ids: [mmlu-repo]
+  limitations:
+    status: unknown
+    note: >-
+      The Hugging Face card leaves its bias and limitations sections as "More Information
+      Needed".
+    source_ids: [mmlu-hf-card]
+run_notes: []
+provenance: null
+tags: [benchmark, evaluation]
+publication_status: draft
+archive_note: null
+released_at: 2020-09-07
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mmlu-repo
+    title: hendrycks/test README
+    url: https://github.com/hendrycks/test
+    publisher: GitHub (personal repository of an MMLU author)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mmlu-license
+    title: hendrycks/test LICENSE
+    url: https://raw.githubusercontent.com/hendrycks/test/master/LICENSE
+    publisher: GitHub (personal repository of an MMLU author)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mmlu-arxiv
+    title: Measuring Massive Multitask Language Understanding (arXiv 2009.03300)
+    url: https://arxiv.org/abs/2009.03300
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-01-12
+    accessed_at: 2026-09-29
+  - id: mmlu-hf-card
+    title: cais/mmlu dataset card
+    url: https://huggingface.co/datasets/cais/mmlu
+    publisher: Hugging Face (cais organization)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mmlu-hf-api
+    title: cais/mmlu (Hugging Face dataset API metadata)
+    url: https://huggingface.co/api/datasets/cais/mmlu
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-cais-org
+    title: cais organization overview (Hugging Face API)
+    url: https://huggingface.co/api/organizations/cais/overview
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cais-research
+    title: Research | CAIS
+    url: https://safe.ai/work/research
+    publisher: Center for AI Safety
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

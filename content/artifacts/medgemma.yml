@@ -1,0 +1,128 @@
+slug: medgemma
+name: MedGemma
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Google (Health AI Developer Foundations)
+    organization_slug: google
+    source_ids: [mg15-model-card, mg1-model-card]
+organization_slugs: [google]
+links:
+  - label: MedGemma 1.5 model card (Health AI Developer Foundations)
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card
+    kind: documentation
+  - label: MedGemma 1 model card
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card-v1
+    kind: documentation
+  - label: google-health/medgemma repository
+    url: https://github.com/google-health/medgemma
+    kind: repository
+  - label: Health AI Developer Foundations terms of use
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    kind: license
+summary:
+  text: >-
+    MedGemma is a collection of Gemma 3 variants trained by Google on medical text and images,
+    published as part of Health AI Developer Foundations (HAI-DEF). MedGemma 1 was released in
+    May 2025 (4B multimodal and 27B text-only) with a 27B multimodal variant in July 2025, and
+    MedGemma 1.5 4B followed in January 2026.
+  source_ids: [mg15-model-card, mg1-model-card, gemma-releases]
+useful_for:
+  text: >-
+    Google describes MedGemma as a starting point for developers building healthcare AI
+    applications that involve text generation, and states that developers are expected to
+    validate and adapt it for their use case; it is not intended to directly inform clinical
+    decisions.
+  source_ids: [mg15-model-card, mg15-blog]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The MedGemma model cards list Google as author, and the governing terms are issued by
+    Google LLC. Alphabet Inc.'s fiscal 2025 Form 10-K lists its principal executive offices in
+    Mountain View, California, and Exhibit 21.01 lists Google LLC as a Delaware subsidiary of
+    Alphabet.
+  source_ids: [mg15-model-card, haidef-terms, alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    The model cards state that use of MedGemma is governed by the Health AI Developer
+    Foundations (HAI-DEF) Terms of Use. The HAI-DEF terms incorporate a prohibited use
+    policy and restrict uses that could cause a health regulator to treat Google as a medical
+    device manufacturer; HAI-DEF source code deliverables are licensed under Apache 2.0.
+  source_ids: [haidef-terms, mg15-model-card]
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    MedGemma models are built on Gemma 3 and use a SigLIP image encoder pre-trained on
+    de-identified medical data for the multimodal variants.
+  derived_from:
+    - name: Gemma 3
+      artifact_slug: gemma
+      url: null
+      note: Base architecture and weights; see the Gemma family record.
+  source_ids: [mg15-model-card, mg1-model-card]
+tags: [multimodal, vision-language, language-model, medical]
+publication_status: published
+archive_note: null
+released_at: 2025-05-20
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mg15-model-card
+    title: MedGemma 1.5 model card
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card
+    publisher: Google for Developers (Health AI Developer Foundations)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg1-model-card
+    title: MedGemma 1 model card
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card-v1
+    publisher: Google for Developers (Health AI Developer Foundations)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: haidef-terms
+    title: Health AI Developer Foundations Terms of Use
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    publisher: Google LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemma-releases
+    title: Gemma releases
+    url: https://ai.google.dev/gemma/docs/releases
+    publisher: Google AI for Developers
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg15-blog
+    title: Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR
+    url: https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/
+    publisher: Google Research
+    kind: announcement
+    published_at: 2026-01-13
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Alphabet Inc. Form 10-K fiscal 2025, Exhibit 21.01 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

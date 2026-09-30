@@ -1,0 +1,203 @@
+slug: mlperf
+name: MLPerf
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: MLCommons
+    organization_slug: mlcommons
+    source_ids: [mlc-benchmarks, mlperf-inference-repo, mlperf-training-repo]
+organization_slugs: [mlcommons]
+links:
+  - label: MLCommons benchmarks overview
+    url: https://mlcommons.org/benchmarks/
+    kind: website
+  - label: MLPerf Inference reference implementations
+    url: https://github.com/mlcommons/inference
+    kind: repository
+  - label: MLPerf Training reference implementations
+    url: https://github.com/mlcommons/training
+    kind: repository
+  - label: MLPerf Inference rules
+    url: https://github.com/mlcommons/inference_policies/blob/master/inference_rules.adoc
+    kind: documentation
+  - label: MLPerf Training rules
+    url: https://github.com/mlcommons/training_policies/blob/master/training_rules.adoc
+    kind: documentation
+  - label: MLPerf Inference benchmark paper (arXiv 1911.02549)
+    url: https://arxiv.org/abs/1911.02549
+    kind: paper
+summary:
+  text: >-
+    MLPerf is MLCommons' family of system performance benchmarks. Its suites cover training
+    (time to train a model to a target quality), inference in datacenter, edge, mobile, and tiny
+    settings, and also client PCs, storage, automotive, HPC training, and inference endpoints.
+    Results are submitted in rounds, reviewed by the submitting organizations, and published
+    together by MLCommons.
+  source_ids: [mlc-benchmarks, mlperf-training-page, mlperf-inference-dc-page, mlperf-submission-rules]
+useful_for:
+  text: >-
+    Comparing how quickly hardware and software systems train or run reference models under
+    common rules. The closed division fixes the reference model for like-for-like comparison,
+    while the open division allows different models or retraining.
+  source_ids: [mlperf-training-page, mlperf-inference-dc-page]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    MLPerf is developed and published by MLCommons, which holds the MLPerf trademark and hosts
+    the reference implementations and rules in its GitHub organization. MLCommons Association
+    is listed by the IRS as a 501(c)(6) organization with a Dover, Delaware address.
+  source_ids: [mlc-benchmarks, mlperf-inference-repo, irs-eo-bmf-de]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Reference implementations and rules are public on GitHub under Apache 2.0, and published
+    results can be browsed on the MLCommons site. Submitting results requires a signed
+    Contributor License Agreement, and use of results with the MLPerf trademark must follow
+    MLCommons' results messaging guidelines.
+  source_ids: [mlperf-inference-license, mlperf-training-license, mlperf-policies-license, mlc-benchmarks, mlperf-submission-rules]
+licenses:
+  - name: Apache License 2.0 (MLPerf Inference reference implementations)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/mlcommons/inference/master/LICENSE.md
+    applies_to: code
+    source_ids: [mlperf-inference-license]
+  - name: Apache License 2.0 (MLPerf Training reference implementations)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/mlcommons/training/master/LICENSE.md
+    applies_to: code
+    source_ids: [mlperf-training-license]
+  - name: Apache License 2.0 (MLPerf policies)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/mlcommons/policies/master/LICENSE.md
+    applies_to: documentation
+    source_ids: [mlperf-policies-license]
+license_notes:
+  text: >-
+    MLPerf is a registered trademark of MLCommons. The submission rules state that, after
+    publication, code and results are public and free for use under the MLPerf Terms of Use.
+    Benchmark datasets come from separate sources, and their terms were not reviewed for this
+    record.
+  source_ids: [mlc-benchmarks, mlperf-submission-rules]
+checklist:
+  code:
+    status: public
+    note: >-
+      Reference implementations for the Inference and Training suites are on GitHub under Apache
+      2.0; the Training README says they are starting points and not fully optimized.
+    source_ids: [mlperf-inference-repo, mlperf-training-repo, mlperf-inference-license, mlperf-training-license]
+  tasks_data:
+    status: public
+    note: >-
+      Each reference implementation includes instructions for downloading its dataset; the
+      Training README points to MLCommons storage for downloads. Terms vary by dataset and were
+      not reviewed individually.
+    source_ids: [mlperf-training-repo, mlperf-inference-repo]
+  methodology:
+    status: public
+    note: >-
+      Rules for Inference and Training are published, along with general submission rules
+      covering divisions, availability categories, peer review, and publication.
+    source_ids: [mlperf-inference-dc-page, mlperf-training-page, mlperf-submission-rules]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      Reference implementations include Dockerfiles and run scripts, and submissions must
+      include READMEs and software information so results can be replicated.
+    source_ids: [mlperf-training-repo, mlperf-submission-rules]
+  limitations:
+    status: partial
+    note: >-
+      The Training README warns that reference implementations are not intended for real
+      performance measurement, and results pages note that published results are sometimes
+      modified or invalidated, with a change log. No broader discussion of benchmark validity was
+      reviewed.
+    source_ids: [mlperf-training-repo, mlperf-inference-dc-page]
+run_notes:
+  - text: >-
+      At review, the Inference README's most recent round is MLPerf Inference v6.1 (submission
+      deadline July 31, 2026), and the Inference: Datacenter page links to v6.1 results. The
+      Training README lists MLPerf Training v6.1 (submission deadline October 16, 2026), while the
+      Training results page shows v6.0 results.
+    source_ids: [mlperf-inference-repo, mlperf-inference-dc-page, mlperf-training-repo, mlperf-training-page]
+provenance: null
+tags: [benchmark, evaluation, training, inference]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mlc-benchmarks
+    title: Benchmarks - MLCommons
+    url: https://mlcommons.org/benchmarks/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-inference-dc-page
+    title: "MLPerf Inference: Datacenter - MLCommons"
+    url: https://mlcommons.org/benchmarks/inference-datacenter/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-training-page
+    title: MLPerf Training - MLCommons
+    url: https://mlcommons.org/benchmarks/training/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-inference-repo
+    title: mlcommons/inference (MLPerf Inference Benchmark Suite)
+    url: https://github.com/mlcommons/inference
+    publisher: MLCommons
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-training-repo
+    title: mlcommons/training (MLPerf Training Reference Implementations)
+    url: https://github.com/mlcommons/training
+    publisher: MLCommons
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-inference-license
+    title: mlcommons/inference LICENSE.md
+    url: https://raw.githubusercontent.com/mlcommons/inference/master/LICENSE.md
+    publisher: MLCommons
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-training-license
+    title: mlcommons/training LICENSE.md
+    url: https://raw.githubusercontent.com/mlcommons/training/master/LICENSE.md
+    publisher: MLCommons
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-policies-license
+    title: mlcommons/policies LICENSE.md
+    url: https://raw.githubusercontent.com/mlcommons/policies/master/LICENSE.md
+    publisher: MLCommons
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlperf-submission-rules
+    title: MLPerf submission rules (mlcommons/policies, submission_rules.adoc)
+    url: https://raw.githubusercontent.com/mlcommons/policies/master/submission_rules.adoc
+    publisher: MLCommons
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-de
+    title: Exempt Organizations Business Master File Extract - Delaware (eo_de.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_de.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

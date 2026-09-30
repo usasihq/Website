@@ -1,0 +1,184 @@
+slug: evo-2-20b
+name: Evo 2 20B
+kind: model
+record_level: release
+family_slug: evo-2
+version: "evo2_20b"
+maintainers:
+  - name: Arc Institute
+    organization_slug: arc-institute
+    source_ids: [mc-evo2-20b, evo2-v050-release]
+organization_slugs: [arc-institute, nvidia]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/arcinstitute/evo2_20b
+    kind: model-hub
+  - label: Release v0.5.0 notes
+    url: https://github.com/ArcInstitute/evo2/releases/tag/v0.5.0
+    kind: release-notes
+  - label: GitHub repository
+    url: https://github.com/ArcInstitute/evo2
+    kind: repository
+summary:
+  text: >-
+    A 20-billion-parameter Evo 2 checkpoint with 1 million base-pair context, released in
+    February 2026. Arc created it from Evo 2 40B without additional training by removing layers
+    that logit-lens analysis showed could be dropped with little effect on loss, while keeping
+    the unembedding layer.
+  source_ids: [mc-evo2-20b, evo2-v050-release]
+useful_for:
+  text: >-
+    The same tasks as Evo 2 40B (likelihood scoring, embeddings, and generation of DNA
+    sequences) on less hardware; the release notes describe it as running on a single H100 GPU
+    instead of two.
+  source_ids: [evo2-v050-release, evo2-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The checkpoint is published in Arc Institute's Hugging Face organization and announced in
+    Arc's GitHub release notes. Arc Institute is a Palo Alto, California nonprofit research
+    organization listed by the IRS as a 501(c)(3).
+  source_ids: [mc-evo2-20b, evo2-v050-release, arc-about, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [mc-evo2-20b, hf-api-evo2-20b]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/arcinstitute/evo2_20b
+    applies_to: weights
+    source_ids: [mc-evo2-20b]
+  - name: Apache License 2.0 (evo2 inference code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/ArcInstitute/evo2/main/LICENSE
+    applies_to: code
+    source_ids: [evo2-license]
+license_notes:
+  text: >-
+    The evo2 LICENSE file also carries the notices for bundled third-party code, including a
+    BSD-style NVIDIA license and the MIT license for Fairseq code.
+  source_ids: [evo2-license]
+checklist:
+  weights:
+    status: public
+    note: >-
+      Weights are on Hugging Face without gating; a Savanna-format checkpoint
+      (savanna_evo2_20b) is also published.
+    source_ids: [mc-evo2-20b, hf-api-evo2-20b, hf-api-arc-models]
+  inference_code:
+    status: public
+    note: The evo2 package on GitHub supports evo2_20b under Apache 2.0.
+    source_ids: [evo2-repo, evo2-license]
+  training_code:
+    status: partial
+    note: >-
+      No further training was done; the weights come from Evo 2 40B, which the README says was
+      trained with the open-source Savanna framework. Code for the layer-removal step was not
+      identified.
+    source_ids: [evo2-v050-release, evo2-repo]
+  training_data_information:
+    status: public
+    note: >-
+      The card lists OpenGenome2, the Evo 2 pretraining dataset, which is downloadable from
+      Hugging Face.
+    source_ids: [mc-evo2-20b, opengenome2-card]
+  training_recipe:
+    status: partial
+    note: >-
+      The release notes describe the layer-removal method at a high level; the exact layers
+      removed were not found in the pages reviewed.
+    source_ids: [evo2-v050-release]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The release notes compare the 20B and 40B checkpoints on variant effect prediction and
+      gene completion; evaluation scripts for those comparisons were not identified.
+    source_ids: [evo2-v050-release]
+run_notes:
+  - text: >-
+      The README states that evo2_20b needs FP8 through NVIDIA Transformer Engine and an NVIDIA
+      Hopper GPU for numerical accuracy; the release notes say it runs on a single H100.
+    source_ids: [evo2-repo, evo2-v050-release]
+provenance:
+  text: >-
+    Derived by Arc Institute from its own Evo 2 40B checkpoint through layer removal, without
+    additional training.
+  derived_from:
+    - name: Evo 2 40B (evo2_40b)
+      artifact_slug: evo-2-40b
+      url: https://huggingface.co/arcinstitute/evo2_40b
+      note: Source checkpoint.
+  source_ids: [evo2-v050-release]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2026-02-28
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-evo2-20b
+    title: arcinstitute/evo2_20b model card
+    url: https://huggingface.co/arcinstitute/evo2_20b
+    publisher: Arc Institute
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-evo2-20b
+    title: arcinstitute/evo2_20b (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/arcinstitute/evo2_20b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-arc-models
+    title: Arc Institute models on Hugging Face (model list API)
+    url: https://huggingface.co/api/models?author=arcinstitute&limit=100
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evo2-v050-release
+    title: Release v0.5.0 · ArcInstitute/evo2
+    url: https://github.com/ArcInstitute/evo2/releases/tag/v0.5.0
+    publisher: Arc Institute
+    kind: release-notes
+    published_at: 2026-02-28
+    accessed_at: 2026-09-29
+  - id: evo2-repo
+    title: ArcInstitute/evo2 README
+    url: https://github.com/ArcInstitute/evo2
+    publisher: Arc Institute
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evo2-license
+    title: ArcInstitute/evo2 LICENSE
+    url: https://raw.githubusercontent.com/ArcInstitute/evo2/main/LICENSE
+    publisher: Arc Institute
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: opengenome2-card
+    title: arcinstitute/opengenome2 dataset card
+    url: https://huggingface.co/datasets/arcinstitute/opengenome2
+    publisher: Arc Institute
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-about
+    title: About | Arc Institute
+    url: https://arcinstitute.org/about
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

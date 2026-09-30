@@ -1,0 +1,160 @@
+slug: esm
+name: ESM (EvolutionaryScale and Biohub protein models)
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Biohub (Chan Zuckerberg Biohub, Inc.)
+    organization_slug: biohub
+    source_ids: [biohub-esm-repo, biohub-esm-license]
+  - name: EvolutionaryScale (original developer; now part of Biohub)
+    organization_slug: evolutionaryscale
+    source_ids: [es-esm3-blog, es-esmc-blog, es-home]
+organization_slugs: [biohub, evolutionaryscale]
+links:
+  - label: GitHub repository (Biohub/esm)
+    url: https://github.com/Biohub/esm
+    kind: repository
+  - label: ESM3 model family (Hugging Face)
+    url: https://huggingface.co/collections/biohub/esm3-model-family
+    kind: model-hub
+  - label: ESMC model family (Hugging Face)
+    url: https://huggingface.co/collections/biohub/esmc-model-family
+    kind: model-hub
+  - label: ESM3 paper (Science, doi:10.1126/science.ads0018)
+    url: https://www.science.org/doi/10.1126/science.ads0018
+    kind: paper
+  - label: ESMC and ESMFold2 preprint (bioRxiv)
+    url: https://www.biorxiv.org/content/10.64898/2026.06.03.729735
+    kind: paper
+summary:
+  text: >-
+    Protein language models developed by EvolutionaryScale and, since its team joined Biohub in
+    November 2025, released by Biohub. The line includes ESM3 (June 2024), a generative model
+    that reasons over protein sequence, structure, and function, with a largest version of 98B
+    parameters and a small open model; ESM C (ESM Cambrian, December 2024), representation
+    models at 300M, 600M, and 6B parameters; and, from May 2026, ESMFold2 structure prediction
+    models and sparse autoencoders built on ESM C.
+  source_ids: [es-esm3-blog, es-esmc-blog, esm3-readme, biohub-esm-repo, biohub-world-model, biohub-announcement]
+useful_for:
+  text: >-
+    Protein representation learning and fine-tuning (ESM C), protein generation from partial
+    sequence, structure, and function prompts (ESM3), and structure prediction for proteins and
+    other biomolecules (ESMFold2).
+  source_ids: [esm3-readme, biohub-esm-repo, mc-esmfold2]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The models were developed by EvolutionaryScale, PBC, whose former terms of use (effective
+    January 15, 2025) gave a New York address, and are now published by Biohub; the repository license names Chan
+    Zuckerberg Biohub, Inc. as copyright holder. The IRS lists Chan Zuckerberg Biohub Inc in
+    Redwood City, California as a 501(c)(3) organization. Eligibility of each release is
+    assessed on the release record.
+  source_ids: [es-terms-legacy, biohub-esm-license, biohub-esm-repo, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the ESM3 open small and ESMC 6B release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes:
+  - text: >-
+      The ESM3 README lists medium (7B) and large (98B) ESM3 models that are accessed through
+      Biohub, with only the esm3-sm-open-v1 weights on Hugging Face; the hosted API moved from
+      forge.evolutionaryscale.ai to biohub.ai, and the esm SDK still uses Forge class names.
+    source_ids: [esm3-readme, biohub-esm-repo]
+provenance:
+  text: >-
+    ESM3 was trained on 2.78 billion natural proteins (771 billion unique tokens at its largest
+    scale); ESM C was trained on protein sequences from UniRef, MGnify, and the Joint Genome
+    Institute. ESMFold2 is built on ESMC 6B language model embeddings.
+  derived_from: []
+  source_ids: [esm3-readme, es-esmc-blog, biohub-esm-repo]
+tags: [language-model, multimodal]
+publication_status: published
+archive_note: null
+released_at: 2024-06-25
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: biohub-esm-repo
+    title: Biohub/esm README (formerly evolutionaryscale/esm)
+    url: https://github.com/Biohub/esm
+    publisher: Biohub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: biohub-esm-license
+    title: Biohub/esm LICENSE.md
+    url: https://raw.githubusercontent.com/Biohub/esm/main/LICENSE.md
+    publisher: Chan Zuckerberg Biohub, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: esm3-readme
+    title: ESM3 README (Biohub/esm, _assets/ESM3_README.md)
+    url: https://raw.githubusercontent.com/Biohub/esm/main/_assets/ESM3_README.md
+    publisher: Biohub
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-esmfold2
+    title: biohub/ESMFold2 model card
+    url: https://huggingface.co/biohub/ESMFold2
+    publisher: Biohub
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-esm3-blog
+    title: "ESM3: Simulating 500 million years of evolution with a language model"
+    url: https://www.evolutionaryscale.ai/blog/esm3-release
+    publisher: EvolutionaryScale
+    kind: announcement
+    published_at: 2024-06-25
+    accessed_at: 2026-09-29
+  - id: es-esmc-blog
+    title: "ESM Cambrian: Revealing the mysteries of proteins with unsupervised learning"
+    url: https://www.evolutionaryscale.ai/blog/esm-cambrian
+    publisher: EvolutionaryScale
+    kind: announcement
+    published_at: 2024-12-04
+    accessed_at: 2026-09-29
+  - id: es-home
+    title: EvolutionaryScale (home page)
+    url: https://www.evolutionaryscale.ai/
+    publisher: EvolutionaryScale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-terms-legacy
+    title: Terms of Use (historical) | EvolutionaryScale
+    url: https://www.evolutionaryscale.ai/policies/terms-of-use
+    publisher: EvolutionaryScale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: biohub-announcement
+    title: Biohub launches first large-scale scientific initiative combining frontier AI with frontier biology to cure or prevent disease
+    url: https://biohub.org/news/ai-biology-cure-disease/
+    publisher: Biohub
+    kind: announcement
+    published_at: 2025-11-06
+    accessed_at: 2026-09-29
+  - id: biohub-world-model
+    title: Biohub releases a world model of protein biology
+    url: https://biohub.org/news/world-model-of-protein-biology/
+    publisher: Biohub
+    kind: announcement
+    published_at: 2026-05-27
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

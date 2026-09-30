@@ -143,6 +143,23 @@ is never typed by hand.
 
 `npm run report:reviews` lists records due for re-review.
 
+### Local corner (monthly profiles)
+
+`/local/` and a quiet homepage strip show five people each month whose public
+work helps others run AI models locally. Profiles live in
+`content/people/<slug>.yml` (schema `Person` in `lib/schema.ts`; research rules in
+`research/PEOPLE_BRIEF.md`). They hold only sourced professional information —
+the schema has no fields for location, nationality, age, or photos, and the
+validator rejects personal-detail wording. Each published profile must link to a
+published organization or artifact in the catalog.
+
+Lineups: add an entry to `content/local-corner.yml`
+(`lineups: [{ month: "2026-11", people: [slug, …] }]`, up to five). A month
+without an entry rotates automatically and deterministically through the
+published pool, five places per month. The month shown is the build month, so
+the deploy workflows rebuild on the 1st of each month (`USASI_MONTH=YYYY-MM`
+overrides it for previews).
+
 ### Changelog and homepage selection
 
 Add a file under `content/changelog/` for each genuine catalog or policy change.

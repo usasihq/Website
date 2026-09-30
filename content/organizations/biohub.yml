@@ -1,0 +1,151 @@
+slug: biohub
+name: Biohub (Chan Zuckerberg Biohub)
+legal_name:
+  text: Chan Zuckerberg Biohub, Inc.
+  source_ids: [biohub-terms, irs-eo-bmf-ca]
+website: https://biohub.org
+logo_text: BH
+summary:
+  text: >-
+    Biohub is a biomedical research organization, founded in 2016 and supported by the Chan
+    Zuckerberg Initiative, that builds AI models of biology alongside data-generation, imaging,
+    and laboratory technologies. After announcing in November 2025 that the EvolutionaryScale
+    team would join it, Biohub now publishes the ESM protein models and runs the Biohub
+    Platform for using them.
+  source_ids: [biohub-announcement, biohub-ai-models, biohub-world-model, biohub-esm-repo]
+organization_roles: [research-lab, nonprofit-research]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    classifies it as a hospital or medical research organization under section
+    170(b)(1)(A)(iii).
+  source_ids: [irs-eo-bmf-ca, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Redwood City, California
+  country: US
+  source_ids: [biohub-terms, biohub-announcement, irs-eo-bmf-ca]
+other_locations: []
+founded:
+  year: 2016
+  source_ids: [biohub-announcement]
+sectors: [science, research]
+status_note: null
+products:
+  - id: biohub-platform
+    name: Biohub Platform
+    kind: hosted-model-api
+    access: >-
+      Web tools and an API at biohub.ai for running ESMC, ESMFold2, and ESM3 and for browsing
+      the ESM Atlas; API tokens are created in a developer console. Biohub describes the
+      platform as freely accessible, with guardrails that restrict keywords and sequences
+      associated with controlled pathogens and toxins.
+    url: https://biohub.ai
+    source_ids: [biohub-ai, biohub-esm-repo, biohub-world-model]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      On November 6, 2025, Biohub announced that the team at EvolutionaryScale, a public benefit
+      company that developed the ESM3 and ESM C protein models, would join Biohub.
+      EvolutionaryScale's website now states that it is part of Biohub, and the ESM GitHub
+      repository and model repositories are published under Biohub accounts.
+    source_ids: [biohub-announcement, es-home, biohub-esm-repo]
+  - text: >-
+      In the same November 2025 announcement, Biohub said it was making three models
+      (VariantFormer, CryoLens, and scLDM) freely available on its virtual cells platform.
+    source_ids: [biohub-announcement]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    Biohub describes itself as a 501(c)(3) biomedical research organization, and its terms of
+    use give a mailing address for Chan Zuckerberg Biohub, Inc. in Redwood City, California.
+    The IRS exempt-organization extract for California lists Chan Zuckerberg Biohub Inc in
+    Redwood City as a 501(c)(3) organization.
+  source_ids: [biohub-world-model, biohub-terms, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Biohub publishes the esm code and the weights of ESMC, ESMFold2, and the ESM3 open small
+    model under the MIT license, and also offers models through the hosted Biohub Platform.
+    This catalog assesses openness release by release (see the ESM release records), not for
+    the organization as a whole.
+  source_ids: [biohub-esm-repo, biohub-esm-license, biohub-ai]
+hiring_url: https://biohub.org/careers/
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: biohub-announcement
+    title: Biohub launches first large-scale scientific initiative combining frontier AI with frontier biology to cure or prevent disease
+    url: https://biohub.org/news/ai-biology-cure-disease/
+    publisher: Biohub
+    kind: announcement
+    published_at: 2025-11-06
+    accessed_at: 2026-09-29
+  - id: biohub-world-model
+    title: Biohub releases a world model of protein biology
+    url: https://biohub.org/news/world-model-of-protein-biology/
+    publisher: Biohub
+    kind: announcement
+    published_at: 2026-05-27
+    accessed_at: 2026-09-29
+  - id: biohub-ai-models
+    title: Frontier AI models and datasets from Biohub
+    url: https://biohub.org/ai-models/
+    publisher: Biohub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: biohub-terms
+    title: Terms of Use | Biohub
+    url: https://biohub.org/terms-of-use/
+    publisher: Biohub
+    kind: official-page
+    published_at: 2026-05-27
+    accessed_at: 2026-09-29
+  - id: biohub-ai
+    title: ESM Protein Models, Atlas, and API (Biohub Platform)
+    url: https://biohub.ai
+    publisher: Biohub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: biohub-esm-repo
+    title: Biohub/esm README (formerly evolutionaryscale/esm)
+    url: https://github.com/Biohub/esm
+    publisher: Biohub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: biohub-esm-license
+    title: Biohub/esm LICENSE.md
+    url: https://raw.githubusercontent.com/Biohub/esm/main/LICENSE.md
+    publisher: Chan Zuckerberg Biohub, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-home
+    title: EvolutionaryScale (home page)
+    url: https://www.evolutionaryscale.ai/
+    publisher: EvolutionaryScale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29

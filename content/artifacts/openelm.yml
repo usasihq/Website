@@ -1,0 +1,115 @@
+slug: openelm
+name: OpenELM
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Apple
+    organization_slug: apple
+    source_ids: [openelm-license, openelm-arxiv]
+organization_slugs: [apple]
+links:
+  - label: OpenELM project in CoreNet
+    url: https://github.com/apple/corenet/tree/main/projects/openelm
+    kind: repository
+  - label: OpenELM 3B Instruct on Hugging Face
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct
+    kind: model-hub
+  - label: OpenELM paper (arXiv 2404.14619)
+    url: https://arxiv.org/abs/2404.14619
+    kind: paper
+summary:
+  text: >-
+    OpenELM is a family of small language models released by Apple in April 2024 in 270M,
+    450M, 1.1B, and 3B parameter sizes, each as a pretrained and an instruction-tuned model.
+    The models use layer-wise scaling to allocate parameters across transformer layers, and
+    Apple published them together with its CoreNet training library, pre-training
+    configurations, training logs, and evaluation instructions.
+  source_ids: [openelm-card, openelm-arxiv, corenet-openelm-readme]
+useful_for:
+  text: >-
+    The model card presents the release as a resource for open research on language models and
+    notes that the models are provided without safety guarantees.
+  source_ids: [openelm-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model license states the models are developed and released by Apple Inc. Apple Inc.
+    has its principal executive offices in Cupertino, California, per its Form 10-K for fiscal
+    year 2025.
+  source_ids: [openelm-license, aapl-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    The LICENSE file now distributed with the OpenELM weights on Hugging Face (copyright 2025)
+    is the Apple Machine Learning Research Model License Agreement, which limits use and
+    derivatives to non-commercial research. The model card's metadata uses the license tag
+    "apple-amlr" but still gives "apple-sample-code-license" as the license name. The CoreNet
+    training code is under a separate Apple software license.
+  source_ids: [openelm-license, openelm-hf-api, corenet-license]
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2024-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: openelm-card
+    title: apple/OpenELM-3B-Instruct model card
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct/raw/main/README.md
+    publisher: Apple (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openelm-hf-api
+    title: Hugging Face model metadata for apple/OpenELM-3B-Instruct
+    url: https://huggingface.co/api/models/apple/OpenELM-3B-Instruct
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openelm-license
+    title: OpenELM LICENSE (Apple Machine Learning Research Model License Agreement)
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct/raw/main/LICENSE
+    publisher: Apple Inc. (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: corenet-license
+    title: apple/corenet LICENSE
+    url: https://raw.githubusercontent.com/apple/corenet/main/LICENSE
+    publisher: Apple Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: corenet-openelm-readme
+    title: CoreNet projects/openelm README
+    url: https://raw.githubusercontent.com/apple/corenet/main/projects/openelm/README.md
+    publisher: Apple (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openelm-arxiv
+    title: "OpenELM: An Efficient Language Model Family with Open Training and Inference Framework (arXiv 2404.14619)"
+    url: https://arxiv.org/abs/2404.14619
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-04-22
+    accessed_at: 2026-09-29
+  - id: aapl-10k-2025
+    title: Apple Inc. Form 10-K for the fiscal year ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+    publisher: Apple Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

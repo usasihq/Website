@@ -1,0 +1,223 @@
+slug: ailuminate
+name: AILuminate
+kind: eval
+record_level: project
+family_slug: null
+version: "Safety v1.0 and v1.1; Jailbreak v0.5"
+maintainers:
+  - name: MLCommons (AI Risk & Reliability working group)
+    organization_slug: mlcommons
+    source_ids: [ailuminate-page, ailuminate-v1-release, ailuminate-repo]
+organization_slugs: [mlcommons]
+links:
+  - label: AILuminate overview
+    url: https://mlcommons.org/ailuminate/
+    kind: website
+  - label: Safety methodology
+    url: https://mlcommons.org/ailuminate/safety-methodology/
+    kind: documentation
+  - label: AILuminate v1.0 demo prompt set
+    url: https://github.com/mlcommons/ailuminate
+    kind: repository
+  - label: ModelBench benchmarking framework
+    url: https://github.com/mlcommons/modelbench
+    kind: repository
+  - label: AILuminate v1.0 paper (arXiv 2503.05731)
+    url: https://arxiv.org/abs/2503.05731
+    kind: paper
+summary:
+  text: >-
+    AILuminate is MLCommons' family of safety and security benchmarks for generative AI
+    systems, organized around 12 hazard categories. The v1.0 safety benchmark (December 2024)
+    tests general-purpose chat systems with more than 24,000 human-written prompts and grades
+    responses with an ensemble of evaluator models; a jailbreak benchmark measures how safety
+    degrades under attack.
+  source_ids: [ailuminate-page, ailuminate-v1-release, ailuminate-repo, ailuminate-paper]
+useful_for:
+  text: >-
+    Assessing how often a chat system gives responses that violate AILuminate's hazard
+    guidelines, using practice prompts for development and a hidden official test for
+    benchmarking.
+  source_ids: [ailuminate-methodology, ailuminate-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    AILuminate is developed by the MLCommons AI Risk & Reliability working group and published
+    by MLCommons, which licenses the demo prompt data and hosts the ModelBench code. MLCommons
+    Association is listed by the IRS as a 501(c)(6) organization with a Dover, Delaware address.
+  source_ids: [ailuminate-v1-release, ailuminate-repo, modelbench-repo, irs-eo-bmf-de]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    1,200-prompt demo sets in English and French (each a 10% sample of the corresponding
+    12,000-prompt practice set) are public under CC BY 4.0, and the ModelBench code is public
+    under Apache 2.0. The full English and French practice prompt sets are offered to MLCommons
+    members on request. The official test prompts are hidden, and official grading uses
+    MLCommons' evaluator ensemble.
+  source_ids: [ailuminate-repo, ailuminate-fr-datasets, modelbench-repo, ailuminate-methodology, ailuminate-v1-release]
+licenses:
+  - name: Creative Commons Attribution 4.0 International (demo prompt sets)
+    spdx: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/deed.en
+    applies_to: data
+    source_ids: [ailuminate-repo]
+  - name: Apache License 2.0 (ModelBench)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/mlcommons/modelbench/main/LICENSE.md
+    applies_to: code
+    source_ids: [modelbench-license, modelbench-repo]
+license_notes:
+  text: >-
+    The ailuminate repository's README licenses the demo prompt data under CC BY 4.0, while the
+    repository's LICENSE.md file contains the Apache License 2.0. The README warns that the
+    prompts were written to elicit hazardous responses and may be offensive or disturbing.
+  source_ids: [ailuminate-repo, ailuminate-repo-license]
+checklist:
+  code:
+    status: public
+    note: >-
+      ModelBench (which now includes ModelGauge) runs tests against systems under test and
+      aggregates hazard scores; Apache 2.0.
+    source_ids: [modelbench-repo, modelbench-license]
+  tasks_data:
+    status: partial
+    note: >-
+      Only the 1,200-prompt English and French demo sets are public; full practice sets go to
+      MLCommons members and the official test prompts are hidden to limit overfitting.
+    source_ids: [ailuminate-repo, ailuminate-fr-datasets, ailuminate-methodology]
+  methodology:
+    status: public
+    note: >-
+      The safety methodology page and the v1.0 paper describe the hazard taxonomy, personas,
+      practice and official prompt splits, the evaluator ensemble, and grading against
+      reference models on a five-tier scale.
+    source_ids: [ailuminate-methodology, ailuminate-paper]
+  reproducibility_instructions:
+    status: partial
+    note: >-
+      ModelBench documents how to run a practice benchmark (using a Llama Guard evaluator via
+      Together AI); official results depend on the private prompt set and official evaluator
+      ensemble.
+    source_ids: [modelbench-repo, ailuminate-methodology]
+  limitations:
+    status: public
+    note: >-
+      The v1.0 paper names evaluator uncertainty and the single-turn format as limitations and
+      lists multi-turn, multimodal, additional-language, and new-hazard coverage as needed work.
+    source_ids: [ailuminate-paper]
+run_notes:
+  - text: >-
+      The AILuminate page lists safety benchmarks for text in English, French, and Chinese, and
+      jailbreak benchmarks for text and text-plus-image inputs in English; an agentic workstream
+      is in development.
+    source_ids: [ailuminate-page]
+  - text: >-
+      In February 2026 MLCommons published a jailbreak taxonomy methodology paper, which it
+      described as groundwork rather than a new benchmark release.
+    source_ids: [jailbreak-0-7]
+  - text: >-
+      MLCommons announced AILuminate v1.1 in February 2025, adding French; the announcement calls
+      the English benchmark v1.0 and the French one v1.1. The Safety page still labels both the
+      English and French official results as v1.0.
+    source_ids: [ailuminate-v1-1-release, ailuminate-safety-page]
+provenance: null
+tags: [benchmark, evaluation]
+publication_status: published
+archive_note: null
+released_at: 2024-12-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ailuminate-page
+    title: AILuminate - MLCommons
+    url: https://mlcommons.org/ailuminate/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ailuminate-methodology
+    title: Safety Methodology - AILuminate
+    url: https://mlcommons.org/ailuminate/safety-methodology/
+    publisher: MLCommons
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ailuminate-v1-release
+    title: MLCommons Launches AILuminate, First-of-its-Kind Benchmark to Measure the Safety of Large Language Models
+    url: https://mlcommons.org/2024/12/mlcommons-ailuminate-v1-0-release/
+    publisher: MLCommons
+    kind: announcement
+    published_at: 2024-12-04
+    accessed_at: 2026-09-29
+  - id: ailuminate-safety-page
+    title: AILuminate Safety - MLCommons
+    url: https://mlcommons.org/ailuminate/safety/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ailuminate-v1-1-release
+    title: MLCommons Releases AILuminate LLM v1.1, Adding French Language Capabilities to Industry-Leading AI Safety Benchmark
+    url: https://mlcommons.org/2025/02/ailumiate-v1-1-fr/
+    publisher: MLCommons
+    kind: announcement
+    published_at: 2025-02-11
+    accessed_at: 2026-09-29
+  - id: ailuminate-fr-datasets
+    title: MLCommons Releases French AILuminate Benchmark Demo Prompt Dataset to Github
+    url: https://mlcommons.org/2025/04/ailuminate-french-datasets/
+    publisher: MLCommons
+    kind: announcement
+    published_at: 2025-04-16
+    accessed_at: 2026-09-29
+  - id: ailuminate-paper
+    title: "AILuminate: Introducing v1.0 of the AI Risk and Reliability Benchmark from MLCommons (arXiv 2503.05731)"
+    url: https://arxiv.org/abs/2503.05731
+    publisher: MLCommons AI Risk & Reliability working group
+    kind: paper
+    published_at: 2025-04-18
+    accessed_at: 2026-09-29
+  - id: ailuminate-repo
+    title: mlcommons/ailuminate (AILuminate v1.0 DEMO prompt set)
+    url: https://github.com/mlcommons/ailuminate
+    publisher: MLCommons
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ailuminate-repo-license
+    title: mlcommons/ailuminate LICENSE.md
+    url: https://raw.githubusercontent.com/mlcommons/ailuminate/main/LICENSE.md
+    publisher: MLCommons
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modelbench-repo
+    title: mlcommons/modelbench
+    url: https://github.com/mlcommons/modelbench
+    publisher: MLCommons
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modelbench-license
+    title: mlcommons/modelbench LICENSE.md
+    url: https://raw.githubusercontent.com/mlcommons/modelbench/main/LICENSE.md
+    publisher: MLCommons
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: jailbreak-0-7
+    title: MLCommons Lays the Foundation for Defensible Jailbreak Benchmarking
+    url: https://mlcommons.org/2026/02/jailbreak-0-7/
+    publisher: MLCommons
+    kind: announcement
+    published_at: 2026-02-16
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-de
+    title: Exempt Organizations Business Master File Extract - Delaware (eo_de.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_de.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,137 @@
+slug: onnx-runtime
+name: ONNX Runtime
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Microsoft
+    organization_slug: microsoft
+    source_ids: [ort-license, ort-readme, ort-pypi]
+organization_slugs: [microsoft]
+links:
+  - label: Repository
+    url: https://github.com/microsoft/onnxruntime
+    kind: repository
+  - label: Documentation
+    url: https://onnxruntime.ai/docs/
+    kind: documentation
+  - label: LICENSE (MIT)
+    url: https://github.com/microsoft/onnxruntime/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/microsoft/onnxruntime/releases
+    kind: release-notes
+summary:
+  text: >-
+    ONNX Runtime is Microsoft's open-source, cross-platform engine for running and accelerating
+    machine-learning models in the ONNX format. It runs models exported from frameworks such as
+    PyTorch and TensorFlow/Keras and from classical libraries such as scikit-learn, LightGBM, and
+    XGBoost, applying graph optimizations and hardware-specific execution providers; it also
+    offers accelerated training for transformer models on NVIDIA GPUs.
+  source_ids: [ort-readme, ort-pypi]
+useful_for:
+  text: >-
+    Deploying trained models for inference on servers, desktops, mobile devices, and in web
+    browsers, with bindings for Python, C#, C/C++, Java, JavaScript, Objective-C, and Kotlin.
+  source_ids: [ort-install]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Microsoft Corporation holds the copyright, publishes the project in its microsoft GitHub
+    organization, and is listed as the package author on PyPI. Microsoft Corporation lists
+    Redmond, Washington as its address on the cover page of its Form 10-K for fiscal year 2026.
+  source_ids: [ort-license, ort-readme, ort-pypi, msft-10k-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [ort-readme, ort-install]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/microsoft/onnxruntime/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ort-license, ort-readme]
+license_notes:
+  text: >-
+    The README states that the project may collect usage data and send it to Microsoft, and
+    refers to the repository's privacy statement for details.
+  source_ids: [ort-readme]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [ort-readme]
+  documentation:
+    status: public
+    note: Usage documentation and tutorials are published at onnxruntime.ai/docs.
+    source_ids: [ort-readme, ort-install]
+  installation:
+    status: public
+    note: >-
+      Packages are published for pip, NuGet, npm, Maven Central, and CocoaPods, with separate
+      GPU builds (CUDA, DirectML) where applicable.
+    source_ids: [ort-install]
+  supported_platforms:
+    status: public
+    note: >-
+      Windows, Linux, macOS, Android, iOS, and web browsers; execution providers cover NVIDIA CUDA
+      and TensorRT, Intel OpenVINO and oneDNN, DirectML, Qualcomm QNN, Apple Core ML, and WebGPU.
+    source_ids: [ort-install, ort-compat]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub and PyPI; version 1.30.0 was released on PyPI on September 10, 2026.
+    source_ids: [ort-readme, ort-pypi]
+run_notes: []
+provenance: null
+tags: [inference, local-inference]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ort-readme
+    title: microsoft/onnxruntime README
+    url: https://github.com/microsoft/onnxruntime/blob/main/README.md
+    publisher: Microsoft (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ort-license
+    title: microsoft/onnxruntime LICENSE
+    url: https://github.com/microsoft/onnxruntime/blob/main/LICENSE
+    publisher: Microsoft (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ort-install
+    title: Install ONNX Runtime
+    url: https://onnxruntime.ai/docs/install/
+    publisher: Microsoft (ONNX Runtime documentation)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ort-compat
+    title: ONNX Runtime compatibility
+    url: https://onnxruntime.ai/docs/reference/compatibility.html
+    publisher: Microsoft (ONNX Runtime documentation)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ort-pypi
+    title: onnxruntime on PyPI
+    url: https://pypi.org/project/onnxruntime/
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: 2026-09-10
+    accessed_at: 2026-09-29
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

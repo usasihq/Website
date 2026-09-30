@@ -1,0 +1,236 @@
+slug: smollm3-3b
+name: SmolLM3 3B
+kind: model
+record_level: release
+family_slug: smollm
+version: "SmolLM3-3B"
+maintainers:
+  - name: Hugging Face (Smol Models Research, HuggingFaceTB)
+    organization_slug: hugging-face
+    source_ids: [mc-smollm3-3b, hftb-org]
+organization_slugs: [hugging-face]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/HuggingFaceTB/SmolLM3-3B
+    kind: model-hub
+  - label: SmolLM3 blog post
+    url: https://huggingface.co/blog/smollm3
+    kind: release-notes
+  - label: Pretraining configs (huggingface/smollm)
+    url: https://github.com/huggingface/smollm/tree/main/text/pretraining/smollm3
+    kind: repository
+  - label: Post-training recipe (alignment-handbook)
+    url: https://github.com/huggingface/alignment-handbook/tree/main/recipes/smollm3
+    kind: repository
+  - label: Intermediate checkpoints
+    url: https://huggingface.co/HuggingFaceTB/SmolLM3-3B-checkpoints
+    kind: model-hub
+summary:
+  text: >-
+    SmolLM3-3B is the instruct model of Hugging Face's SmolLM3 release (July 2025), a 3B-parameter
+    decoder-only transformer pretrained on about 11 trillion tokens of web, code, math, and
+    reasoning data in stages, then mid-trained on reasoning data and aligned with supervised
+    fine-tuning and Anchored Preference Optimization. It can answer with or without an extended
+    reasoning trace, supports tool calling, and natively covers six European languages.
+  source_ids: [mc-smollm3-3b, smollm3-blog]
+useful_for:
+  text: >-
+    The model card documents chat with switchable extended thinking (/think and /no_think),
+    tool calling with XML- or Python-style tool definitions, and long inputs; the SmolLM
+    repository describes the family as small enough for on-device use.
+  source_ids: [mc-smollm3-3b, smollm-repo-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Hugging Face's HuggingFaceTB organization ("Hugging Face Smol
+    Models Research"). Hugging Face's terms of service identify Hugging Face, Inc., a Delaware
+    corporation, as the provider of its services, and its privacy policy states that the company
+    is located in the United States. See the hugging-face organization record for the
+    dual-country assessment.
+  source_ids: [mc-smollm3-3b, hftb-org, hf-tos, hf-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [mc-smollm3-3b]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/HuggingFaceTB/SmolLM3-3B
+    applies_to: weights
+    source_ids: [mc-smollm3-3b]
+  - name: Apache License 2.0 (huggingface/smollm)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/huggingface/smollm/main/LICENSE
+    applies_to: code
+    source_ids: [smollm-license]
+  - name: Apache License 2.0 (alignment-handbook)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/huggingface/alignment-handbook/main/LICENSE
+    applies_to: code
+    source_ids: [alignment-handbook-license]
+license_notes:
+  text: >-
+    The post-training dataset SmolTalk2 states that its newly created subsets are Apache 2.0 and
+    that the existing public datasets it includes keep their original licenses.
+  source_ids: [smoltalk2-card]
+checklist:
+  weights:
+    status: public
+    note: >-
+      Final weights are on Hugging Face without gating; intermediate checkpoints, including
+      mid-training and SFT checkpoints, are published separately.
+    source_ids: [mc-smollm3-3b]
+  inference_code:
+    status: public
+    note: >-
+      The card documents inference with Transformers v4.53.0 or later and with vLLM and SGLang,
+      and lists quantized options for llama.cpp, ONNX, MLX, MLC, and ExecuTorch.
+    source_ids: [mc-smollm3-3b]
+  training_code:
+    status: public
+    note: >-
+      Nanotron pretraining configs for the three stages and long-context extension are in the
+      huggingface/smollm repository; the mid-training, SFT, and APO configs are in the
+      alignment-handbook SmolLM3 recipe.
+    source_ids: [mc-smollm3-3b, smollm-text-readme, alignment-handbook-smollm3]
+  training_data_information:
+    status: public
+    note: >-
+      The pretraining datasets are listed in a public Hugging Face collection, and the
+      mid-training, SFT, and preference data are published as SmolTalk2. Several listed
+      datasets are published by third parties (for example DCLM and The Stack v2) under their
+      own terms.
+    source_ids: [mc-smollm3-3b, smollm3-pretraining-collection, smoltalk2-card]
+  training_recipe:
+    status: public
+    note: >-
+      The blog post gives the web, code, and math proportions for each pretraining stage, the
+      long-context extension, and the post-training stages; the configs include exact data
+      weights.
+    source_ids: [smollm3-blog]
+  evaluation_materials:
+    status: public
+    note: >-
+      The card reports base and instruct evaluation results run with Hugging Face's lighteval
+      and states that evaluation configs and code are in the huggingface/smollm repository.
+    source_ids: [mc-smollm3-3b]
+run_notes:
+  - text: >-
+      The card states the shipped config supports 65,536-token context and describes enabling
+      YaRN rope scaling (factor 2.0) for inputs up to about 128k tokens; it recommends
+      temperature 0.6 and top_p 0.95.
+    source_ids: [mc-smollm3-3b]
+provenance:
+  text: >-
+    Post-trained by Hugging Face from its own SmolLM3-3B-Base, which was pretrained from scratch
+    on public datasets. The mid-training data (NVIDIA's Llama-Nemotron post-training dataset and
+    OpenThoughts3) contains reasoning traces, and several SmolTalk2 SFT subsets were generated
+    with Qwen3-32B or DeepSeek-V3, so the post-training data includes outputs of third-party
+    models.
+  derived_from:
+    - name: SmolLM3-3B-Base
+      artifact_slug: null
+      url: https://huggingface.co/HuggingFaceTB/SmolLM3-3B-Base
+      note: Hugging Face base model; no separate catalog record.
+    - name: FineWeb-Edu (subset of FineWeb)
+      artifact_slug: fineweb
+      url: https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu
+      note: One of the web pretraining datasets.
+    - name: SmolTalk2
+      artifact_slug: null
+      url: https://huggingface.co/datasets/HuggingFaceTB/smoltalk2
+      note: Mid-training, SFT, and preference data.
+  source_ids: [mc-smollm3-3b, smollm3-blog, smollm3-pretraining-collection, smoltalk2-card]
+tags: [language-model, reasoning, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2025-07-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-smollm3-3b
+    title: HuggingFaceTB/SmolLM3-3B model card
+    url: https://huggingface.co/HuggingFaceTB/SmolLM3-3B
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: smollm3-blog
+    title: "SmolLM3: smol, multilingual, long-context reasoner"
+    url: https://huggingface.co/blog/smollm3
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2025-07-08
+    accessed_at: 2026-09-29
+  - id: smollm-repo-readme
+    title: huggingface/smollm README (Smol Models)
+    url: https://raw.githubusercontent.com/huggingface/smollm/main/README.md
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: smollm-text-readme
+    title: SmolLM family README (text/)
+    url: https://raw.githubusercontent.com/huggingface/smollm/main/text/README.md
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: smollm-license
+    title: huggingface/smollm LICENSE
+    url: https://raw.githubusercontent.com/huggingface/smollm/main/LICENSE
+    publisher: Hugging Face
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alignment-handbook-smollm3
+    title: Instructions to train SmolLM3-3B (alignment-handbook recipe)
+    url: https://raw.githubusercontent.com/huggingface/alignment-handbook/main/recipes/smollm3/README.md
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alignment-handbook-license
+    title: huggingface/alignment-handbook LICENSE
+    url: https://raw.githubusercontent.com/huggingface/alignment-handbook/main/LICENSE
+    publisher: Hugging Face
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: smollm3-pretraining-collection
+    title: SmolLM3 pretraining datasets (Hugging Face collection)
+    url: https://huggingface.co/collections/HuggingFaceTB/smollm3-pretraining-datasets-685a7353fdc01aecde51b1d9
+    publisher: Hugging Face
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: smoltalk2-card
+    title: HuggingFaceTB/smoltalk2 dataset card
+    url: https://huggingface.co/datasets/HuggingFaceTB/smoltalk2
+    publisher: Hugging Face
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hftb-org
+    title: HuggingFaceTB (Hugging Face Smol Models Research)
+    url: https://huggingface.co/HuggingFaceTB
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-tos
+    title: Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,159 @@
+slug: diffusers
+name: Diffusers
+kind: framework
+record_level: project
+family_slug: null
+version: "0.40.0"
+maintainers:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    source_ids: [diffusers-repo, diffusers-readme]
+organization_slugs: [hugging-face]
+links:
+  - label: Repository
+    url: https://github.com/huggingface/diffusers
+    kind: repository
+  - label: Documentation
+    url: https://huggingface.co/docs/diffusers/index
+    kind: documentation
+  - label: LICENSE
+    url: https://raw.githubusercontent.com/huggingface/diffusers/main/LICENSE
+    kind: license
+  - label: Release v0.40.0
+    url: https://github.com/huggingface/diffusers/releases/tag/v0.40.0
+    kind: release-notes
+summary:
+  text: >-
+    Diffusers is Hugging Face's open-source PyTorch library for pretrained diffusion models that
+    generate images, video, and audio. It is organized around the DiffusionPipeline API, with
+    interchangeable noise schedulers and model components, and supports adapters such as LoRA.
+    Version 0.40.0 (August 2026) removed JAX/Flax support.
+  source_ids: [diffusers-repo, diffusers-docs, diffusers-readme, diffusers-release]
+useful_for:
+  text: >-
+    Running inference with diffusion pipelines in a few lines of code, assembling custom
+    diffusion systems from models and schedulers, and training or fine-tuning diffusion models.
+    The documentation also describes memory-saving options such as offloading and quantization.
+  source_ids: [diffusers-readme, diffusers-docs]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Diffusers is developed in Hugging Face's GitHub organization, and its README carries a
+    HuggingFace Team copyright notice. Hugging Face's terms of service identify Hugging Face,
+    Inc., a Delaware corporation, as the provider of its services, under New York law and courts,
+    and its privacy policy states that the company and its servers are located in the United
+    States (the French entity is named as its EU main establishment). See the hugging-face
+    organization record for the full dual-country assessment.
+  source_ids: [diffusers-repo, diffusers-readme, hf-tos, hf-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the Apache License 2.0; installable from PyPI with pip or uv, or
+    from the community-maintained conda-forge package.
+  source_ids: [diffusers-repo, diffusers-license, diffusers-install]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/huggingface/diffusers/main/LICENSE
+    applies_to: code
+    source_ids: [diffusers-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [diffusers-repo]
+  documentation:
+    status: public
+    note: null
+    source_ids: [diffusers-docs, diffusers-install]
+  installation:
+    status: public
+    note: >-
+      Documented installation with pip or uv (diffusers[torch] extra), from conda-forge, from
+      source, and as an editable install.
+    source_ids: [diffusers-install, diffusers-readme]
+  supported_platforms:
+    status: public
+    note: >-
+      The installation guide states Diffusers is tested with PyTorch 2.6+ and documents a setup
+      for NVIDIA ARM64 devices; the README links a guide for Apple silicon. The v0.40.0 release
+      notes describe tensor-parallel support for CUDA and AWS Neuron.
+    source_ids: [diffusers-install, diffusers-readme, diffusers-release]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub; v0.40.0 was published on 2026-08-20.
+    source_ids: [diffusers-release]
+run_notes:
+  - text: >-
+      The installation guide states that Diffusers sends telemetry (library versions, the
+      requested model or pipeline class, and the Hub checkpoint path) when loading from the Hub,
+      not for local files, and that it can be turned off with HF_HUB_DISABLE_TELEMETRY=1. Offline
+      use is possible with HF_HUB_OFFLINE=1 once files are cached.
+    source_ids: [diffusers-install]
+provenance: null
+tags: [inference, training]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: diffusers-repo
+    title: huggingface/diffusers
+    url: https://github.com/huggingface/diffusers
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: diffusers-readme
+    title: Diffusers README
+    url: https://raw.githubusercontent.com/huggingface/diffusers/main/README.md
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: diffusers-license
+    title: Diffusers LICENSE
+    url: https://raw.githubusercontent.com/huggingface/diffusers/main/LICENSE
+    publisher: Hugging Face
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: diffusers-docs
+    title: Diffusers documentation
+    url: https://huggingface.co/docs/diffusers/index
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: diffusers-install
+    title: Installation (Diffusers documentation)
+    url: https://huggingface.co/docs/diffusers/installation
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: diffusers-release
+    title: "Diffusers 0.40.0: New pipelines, tensor-parallel support, improved CLI, and more"
+    url: https://github.com/huggingface/diffusers/releases/tag/v0.40.0
+    publisher: Hugging Face
+    kind: release-notes
+    published_at: 2026-08-20
+    accessed_at: 2026-09-29
+  - id: hf-tos
+    title: Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

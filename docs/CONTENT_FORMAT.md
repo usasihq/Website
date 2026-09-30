@@ -75,10 +75,11 @@ organization_roles: [model-developer, research-lab]
   # model-developer | research-lab | cloud-provider | compute-infrastructure |
   # chip-designer | hardware-manufacturer | inference-provider | data-platform |
   # enterprise-software | developer-platform | consumer-products | robotics |
-  # open-source-steward | nonprofit-research | data-services
+  # open-source-steward | nonprofit-research | data-services | university-lab |
+  # standards-body
 ownership_category: privately-held
   # publicly-traded | privately-held | nonprofit | unit-of-another-organization |
-  # foundation-hosted | unknown
+  # foundation-hosted | public-institution (e.g. a state university) | unknown
 legal_form: null                   # or {text: "Delaware public benefit corporation", source_ids}
 parent_org_slug: null              # set together with parent_relationship
 parent_relationship: null          # subsidiary | division | research-unit | hosted-project
@@ -90,7 +91,7 @@ other_locations: []                # [{label, country, source_ids}] — document
 founded: null                      # or {year: 2019, source_ids}
 sectors: [frontier-models, research]
   # frontier-models | cloud | chips | open-models | agents | data | enterprise |
-  # robotics | defense | research — apply only what the record's evidence supports
+  # robotics | defense | research | science — apply only what the record's evidence supports
 status_note: null                  # or {text, source_ids} for material status (e.g. acquired)
 products:
   - id: example-api                # unique within the file
@@ -214,6 +215,15 @@ Suggested tags: `language-model`, `code-model`, `reasoning`, `multimodal`,
 `vision-language`, `embedding`, `speech`, `robotics`, `mixture-of-experts`,
 `inference`, `serving`, `training`, `compiler`, `distributed-computing`,
 `numerical-computing`, `evaluation`, `benchmark`, `pretraining-data`, `local-inference`.
+
+## Local corner profile
+
+`content/people/<slug>.yml` — see `research/PEOPLE_BRIEF.md` for the full rules
+and an annotated example. Only professional, sourced information: `name`,
+`initials`, `headline`, `bio {text, source_ids}`, `affiliations[]` (name,
+organization_slug, role, current, source_ids), `work[]` (name, artifact_slug,
+url, contribution, source_ids), up to four `links` the person publishes, dates,
+and `sources`. No location, nationality, age, family, or photos.
 
 ## Changelog entry
 

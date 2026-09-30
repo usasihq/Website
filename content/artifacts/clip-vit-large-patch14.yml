@@ -1,0 +1,185 @@
+slug: clip-vit-large-patch14
+name: CLIP ViT-L/14
+kind: model
+record_level: release
+family_slug: clip
+version: "ViT-L/14"
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [clip-model-card, hf-clip-vit-large-patch14]
+organization_slugs: [openai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/openai/clip-vit-large-patch14
+    kind: model-hub
+  - label: openai/CLIP repository
+    url: https://github.com/openai/CLIP
+    kind: repository
+  - label: LICENSE (MIT, code)
+    url: https://github.com/openai/CLIP/blob/main/LICENSE
+    kind: license
+  - label: CLIP paper (arXiv 2103.00020)
+    url: https://arxiv.org/abs/2103.00020
+    kind: paper
+summary:
+  text: >-
+    CLIP ViT-L/14 pairs a ViT-L/14 Vision Transformer image encoder with a masked self-attention
+    Transformer text encoder, trained contrastively to match images with their captions. OpenAI
+    released it in January 2022; a variant further trained at 336-pixel resolution
+    (ViT-L/14@336px) followed in April 2022.
+  source_ids: [hf-clip-vit-large-patch14, clip-model-card, clip-paper-pdf]
+useful_for:
+  text: >-
+    Zero-shot image classification and image-text similarity for research. The model card says
+    any deployed use case, commercial or not, is currently out of scope, surveillance and facial
+    recognition are always out of scope, and use should be limited to English.
+  source_ids: [hf-clip-vit-large-patch14, clip-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card states that CLIP was developed by researchers at OpenAI, and the checkpoint is
+    published by OpenAI in its openai/CLIP repository and Hugging Face account. OpenAI Group PBC
+    lists its address as 1455 3rd Street, San Francisco, California, in a February 2026
+    agreement filed with the SEC.
+  source_ids: [clip-model-card, clip-code, sec-openai-amazon-ecl]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable without gating from Hugging Face, and fetched by the openai/CLIP package's
+    clip.load("ViT-L/14"). No license for the weights is stated (see license notes).
+  source_ids: [hf-api-clip-vit-large-patch14, clip-code]
+licenses:
+  - name: MIT License (openai/CLIP code)
+    spdx: MIT
+    url: https://github.com/openai/CLIP/blob/main/LICENSE
+    applies_to: code
+    source_ids: [clip-license]
+license_notes:
+  text: >-
+    The repository's MIT license covers "the Software" (the code). This review found no license
+    statement for the model weights in the repository README, the model card, or the Hugging
+    Face card, whose metadata carries no license field. Separately from licensing, the model card
+    places all deployed uses out of scope.
+  source_ids: [clip-license, clip-readme, clip-model-card, hf-api-clip-vit-large-patch14]
+checklist:
+  weights:
+    status: public
+    note: Published on Hugging Face without gating and downloadable through clip.load().
+    source_ids: [hf-api-clip-vit-large-patch14, clip-code]
+  inference_code:
+    status: public
+    note: >-
+      The openai/CLIP package loads the model and encodes images and text; the Hugging Face card
+      documents use with Transformers.
+    source_ids: [clip-readme, hf-clip-vit-large-patch14]
+  training_code:
+    status: unknown
+    note: The repository provides loading, inference, and evaluation examples; this review found no published training code.
+    source_ids: [clip-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The paper describes a dataset of 400 million image-text pairs gathered from public internet
+      sources using 500,000 search queries. The model card says OpenAI will not release the
+      dataset; only a list identifying a YFCC100M subset used in an ablation is published.
+    source_ids: [clip-paper-pdf, clip-model-card, clip-yfcc-subset]
+  training_recipe:
+    status: partial
+    note: >-
+      The paper describes training for 32 epochs with Adam, decoupled weight decay, a cosine
+      schedule, and a 32,768 minibatch, and says the largest Vision Transformer took 12 days on
+      256 V100 GPUs. No training configuration files are published.
+    source_ids: [clip-paper-pdf]
+  evaluation_materials:
+    status: public
+    note: >-
+      The repository publishes the class names and prompt templates used for the paper's
+      zero-shot results, an ImageNet prompt-engineering notebook, and a linear-probe example.
+    source_ids: [clip-prompts, clip-readme]
+run_notes:
+  - text: >-
+      The README documents installation with PyTorch 1.7.1 or later and torchvision, then loading
+      a model by name with clip.load(); the Hugging Face card documents use through Transformers'
+      CLIPModel and CLIPProcessor.
+    source_ids: [clip-readme, hf-clip-vit-large-patch14]
+provenance: null
+tags: [multimodal, vision-language, embedding]
+publication_status: published
+archive_note: null
+released_at: 2022-01
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-clip-vit-large-patch14
+    title: openai/clip-vit-large-patch14 model card
+    url: https://huggingface.co/openai/clip-vit-large-patch14
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-clip-vit-large-patch14
+    title: openai/clip-vit-large-patch14 (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/openai/clip-vit-large-patch14
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-model-card
+    title: "Model Card: CLIP"
+    url: https://github.com/openai/CLIP/blob/main/model-card.md
+    publisher: OpenAI (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-readme
+    title: openai/CLIP README
+    url: https://github.com/openai/CLIP/blob/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-license
+    title: openai/CLIP LICENSE
+    url: https://github.com/openai/CLIP/blob/main/LICENSE
+    publisher: OpenAI (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-code
+    title: openai/CLIP clip/clip.py (checkpoint download URLs)
+    url: https://github.com/openai/CLIP/blob/main/clip/clip.py
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-prompts
+    title: openai/CLIP data/prompts.md (zero-shot class names and templates)
+    url: https://github.com/openai/CLIP/blob/main/data/prompts.md
+    publisher: OpenAI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-yfcc-subset
+    title: openai/CLIP data/yfcc100m.md (YFCC100M subset)
+    url: https://github.com/openai/CLIP/blob/main/data/yfcc100m.md
+    publisher: OpenAI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: clip-paper-pdf
+    title: Learning Transferable Visual Models From Natural Language Supervision (arXiv 2103.00020, PDF)
+    url: https://arxiv.org/pdf/2103.00020
+    publisher: arXiv (OpenAI authors)
+    kind: paper
+    published_at: 2021-02-26
+    accessed_at: 2026-09-29
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29

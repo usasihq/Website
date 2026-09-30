@@ -1,0 +1,173 @@
+slug: cogito-v2-preview-llama-405b
+name: Cogito v2 Preview Llama 405B
+kind: model
+record_level: release
+family_slug: cogito
+version: "cogito-v2-preview-llama-405B"
+maintainers:
+  - name: Deep Cogito
+    organization_slug: deep-cogito
+    source_ids: [mc-cogito-v2-405b, cogito-v2-blog]
+organization_slugs: [deep-cogito]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/deepcogito/cogito-v2-preview-llama-405B
+    kind: model-hub
+  - label: Cogito v2 Preview announcement
+    url: https://www.deepcogito.com/research/cogito-v2-preview
+    kind: release-notes
+  - label: Cogito v2 and v2.1 repository
+    url: https://github.com/DeepCogito/cogito-v2
+    kind: repository
+summary:
+  text: >-
+    A 405B-parameter dense hybrid reasoning model that Deep Cogito post-trained from Meta's Llama
+    3.1 405B, released in July 2025 as one of four Cogito v2 Preview models. It can answer
+    directly or reason first, supports a 128k-token context, and was trained in over 30
+    languages using Deep Cogito's Iterated Distillation and Amplification approach.
+  source_ids: [mc-cogito-v2-405b, cogito-v2-blog, cogito-github-readme]
+useful_for:
+  text: >-
+    The model card describes it as optimized for coding, STEM, instruction following, and
+    general helpfulness, with multilingual, coding, and tool-calling abilities.
+  source_ids: [mc-cogito-v2-405b]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Post-trained and published by Deep Cogito Inc., headquartered in San Francisco (see the
+    deep-cogito record). The Llama 3.1 405B base model is Meta's; this record's eligibility rests
+    on Deep Cogito's post-training and does not re-attribute the base model.
+  source_ids: [mc-cogito-v2-405b, cogito-home, sec-formd-cogito-2026-04]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; use is subject to the Llama 3.1
+    Community License. Deep Cogito's repository also lists hosted access through OpenRouter and
+    Together AI.
+  source_ids: [mc-cogito-v2-405b, cogito-v2-405b-api, cogito-github-readme]
+licenses:
+  - name: Llama 3.1 Community License Agreement
+    spdx: null
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/LICENSE
+    applies_to: weights
+    source_ids: [mc-cogito-v2-405b, llama31-license]
+license_notes:
+  text: >-
+    The model card's license field is "llama3.1" and its license section says the repository and
+    weights are under the Llama 3.1 Community License Agreement. That agreement requires
+    including it and displaying "Built with Llama" when redistributing, beginning the names of
+    distributed derived models with "Llama", and following Meta's acceptable use policy; it
+    requires licensees whose products had more than 700 million monthly active users in the
+    month before the Llama 3.1 release to request a license from Meta, and ends for anyone who sues
+    Meta or any other entity alleging that the Llama materials or outputs infringe their IP.
+    California law governs.
+  source_ids: [mc-cogito-v2-405b, llama31-license]
+checklist:
+  weights:
+    status: public
+    note: BF16 weights in an ungated Hugging Face repository.
+    source_ids: [mc-cogito-v2-405b, cogito-v2-405b-api]
+  inference_code:
+    status: public
+    note: The model card gives Transformers examples for standard and reasoning modes and for tool calling; the repository's config declares the LlamaForCausalLM architecture.
+    source_ids: [mc-cogito-v2-405b, cogito-v2-405b-config]
+  training_code:
+    status: unknown
+    note: No training code was found in the model card, announcement, or GitHub repository.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: The model card and announcement do not describe the post-training data; Meta's pretraining data for the base model is not public.
+    source_ids: []
+  training_recipe:
+    status: partial
+    note: >-
+      The announcement describes Iterated Distillation and Amplification (distilling the results
+      of inference-time reasoning back into the model's parameters) at a conceptual level without
+      configurations or data details.
+    source_ids: [cogito-v2-blog, mc-cogito-v2-405b]
+  evaluation_materials:
+    status: partial
+    note: The model card shows a benchmark chart and refers to the announcement for more results; evaluation code is not linked.
+    source_ids: [mc-cogito-v2-405b, cogito-v2-blog]
+run_notes:
+  - text: >-
+      The model card shows Transformers usage in bfloat16 and explains that reasoning is enabled
+      by passing enable_thinking=True to the chat template or by a specific system prompt with
+      the response prefilled with a think tag.
+    source_ids: [mc-cogito-v2-405b]
+provenance:
+  text: >-
+    Post-trained by Deep Cogito from Meta's Llama 3.1 405B base model. Deep Cogito's contribution
+    is the post-training; the base model was pretrained by Meta.
+  derived_from:
+    - name: Llama 3.1 405B (meta-llama/Llama-3.1-405B)
+      artifact_slug: llama
+      url: https://huggingface.co/meta-llama/Llama-3.1-405B
+      note: Meta base model; see the Llama family record.
+  source_ids: [mc-cogito-v2-405b, cogito-github-readme]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2025-07-31
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-cogito-v2-405b
+    title: deepcogito/cogito-v2-preview-llama-405B model card
+    url: https://huggingface.co/deepcogito/cogito-v2-preview-llama-405B
+    publisher: Deep Cogito
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-v2-405b-api
+    title: deepcogito/cogito-v2-preview-llama-405B repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/deepcogito/cogito-v2-preview-llama-405B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-v2-405b-config
+    title: cogito-v2-preview-llama-405B config.json
+    url: https://huggingface.co/deepcogito/cogito-v2-preview-llama-405B/raw/main/config.json
+    publisher: Deep Cogito
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-v2-blog
+    title: "Cogito v2 Preview: From Inference-time Search to Self-Improvement"
+    url: https://www.deepcogito.com/research/cogito-v2-preview
+    publisher: Deep Cogito
+    kind: announcement
+    published_at: 2025-07-31
+    accessed_at: 2026-09-29
+  - id: cogito-github-readme
+    title: DeepCogito/cogito-v2 README
+    url: https://github.com/DeepCogito/cogito-v2
+    publisher: Deep Cogito
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama31-license
+    title: Llama 3.1 Community License Agreement
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/LICENSE
+    publisher: Meta
+    kind: license
+    published_at: 2024-07-23
+    accessed_at: 2026-09-29
+  - id: cogito-home
+    title: Deep Cogito
+    url: https://www.deepcogito.com/
+    publisher: Deep Cogito
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-formd-cogito-2026-04
+    title: Deep Cogito Inc. Form D/A (accession 0002128259-26-000002)
+    url: https://www.sec.gov/Archives/edgar/data/2128259/000212825926000002/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: 2026-04-24
+    accessed_at: 2026-09-29

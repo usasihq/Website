@@ -1,0 +1,189 @@
+slug: llama-3-1-tulu-3-1-8b
+name: Llama 3.1 Tülu 3.1 8B
+kind: model
+record_level: release
+family_slug: tulu
+version: "Llama-3.1-Tulu-3.1-8B"
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [mc-tulu31-8b]
+organization_slugs: [ai2]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B
+    kind: model-hub
+  - label: open-instruct (training code)
+    url: https://github.com/allenai/open-instruct
+    kind: repository
+  - label: OLMES (evaluation code)
+    url: https://github.com/allenai/olmes
+    kind: repository
+  - label: Tülu 3 technical report (arXiv 2411.15124)
+    url: https://arxiv.org/abs/2411.15124
+    kind: paper
+summary:
+  text: >-
+    An 8B instruction-following model from Ai2's Tülu 3 line, post-trained from Meta's Llama 3.1
+    8B base model through supervised fine-tuning and DPO, then reinforcement learning with
+    verifiable rewards. Version 3.1 differs from the original Tülu 3 8B only in the final RL
+    stage, which switched from PPO to GRPO (without a reward model) with further hyperparameter
+    tuning.
+  source_ids: [mc-tulu31-8b, mc-tulu3-8b-sft, tulu3-paper]
+useful_for:
+  text: >-
+    The card describes the Tülu 3 models as aimed at chat as well as tasks such as math (MATH,
+    GSM8K) and precise instruction following (IFEval). It notes the models have limited safety
+    training and no built-in response filtering.
+  source_ids: [mc-tulu31-8b]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    Post-trained and released by Ai2 (Allen Institute for AI), which describes itself as a
+    Seattle-based non-profit AI research institute. The base model, Llama 3.1 8B, was developed
+    by Meta and is recorded as provenance; Ai2's post-training does not make the base model an
+    Ai2 model.
+  source_ids: [mc-tulu31-8b, mc-tulu3-8b-sft, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating, under the Llama 3.1 Community License
+    Agreement.
+  source_ids: [mc-tulu31-8b]
+licenses:
+  - name: Llama 3.1 Community License Agreement
+    spdx: null
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/LICENSE
+    applies_to: weights
+    source_ids: [mc-tulu31-8b, llama31-license]
+  - name: Apache License 2.0 (open-instruct)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/allenai/open-instruct/main/LICENSE
+    applies_to: code
+    source_ids: [open-instruct-license]
+license_notes:
+  text: >-
+    The weights inherit Meta's Llama 3.1 Community License, a custom license that requires
+    displaying "Built with Llama", starting derived model names with "Llama", following Meta's
+    Acceptable Use Policy, and a separate license from Meta for licensees whose products had
+    more than 700 million monthly active users on the Llama 3.1 release date. The Tülu 3 SFT
+    mixture is ODC-BY but includes subsets under
+    other licenses, some non-commercial, and outputs of third-party models.
+  source_ids: [llama31-license, mc-tulu3-8b-sft, tulu3-sft-mixture]
+checklist:
+  weights:
+    status: public
+    note: Final weights and the preceding SFT and DPO checkpoints are on Hugging Face.
+    source_ids: [mc-tulu31-8b, mc-tulu3-8b-sft]
+  inference_code:
+    status: public
+    note: The card documents loading with Hugging Face Transformers and serving with vLLM.
+    source_ids: [mc-tulu31-8b]
+  training_code:
+    status: public
+    note: >-
+      Training code is in allenai/open-instruct; the card gives the exact commit and command
+      used for the 3.1 GRPO run.
+    source_ids: [mc-tulu31-8b, open-instruct-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The post-training data (SFT mixture, 8B preference mixture, and RLVR prompts) is public
+      on Hugging Face, but the card states that the size and composition of the Llama 3.1
+      pretraining corpus is unknown.
+    source_ids: [mc-tulu31-8b, mc-tulu3-8b-sft, tulu3-sft-mixture, tulu3-paper]
+  training_recipe:
+    status: public
+    note: >-
+      The technical report documents the SFT, DPO, and RLVR recipe; the card lists the GRPO
+      hyperparameters and the final checkpoint step for version 3.1.
+    source_ids: [tulu3-paper, mc-tulu31-8b]
+  evaluation_materials:
+    status: public
+    note: >-
+      The card links Ai2's OLMES evaluation repository and shows evaluation scores over
+      training steps; the report describes the Tülu 3 evaluation suite and decontamination.
+    source_ids: [mc-tulu31-8b, tulu3-paper]
+run_notes:
+  - text: >-
+      The card documents serving with vllm serve allenai/Llama-3.1-Tulu-3.1-8B and suggests
+      --max_model_len=8192 because of the long Llama chat template.
+    source_ids: [mc-tulu31-8b]
+provenance:
+  text: >-
+    Fine-tuned by Ai2 from Meta's Llama 3.1 8B base model: first to Llama-3.1-Tulu-3-8B-SFT on
+    the Tülu 3 SFT mixture, then to Llama-3.1-Tulu-3-8B-DPO on the 8B preference mixture, then
+    GRPO on the RLVR-GSM-MATH-IF-Mixed-Constraints prompts. Llama 3.1 was developed by Meta, not
+    by Ai2.
+  derived_from:
+    - name: Llama 3.1 8B (meta-llama/Llama-3.1-8B)
+      artifact_slug: llama
+      url: https://huggingface.co/meta-llama/Llama-3.1-8B
+      note: Base model from Meta; catalog link is to the Llama family record.
+    - name: Llama-3.1-Tulu-3-8B-DPO
+      artifact_slug: null
+      url: https://huggingface.co/allenai/Llama-3.1-Tulu-3-8B-DPO
+      note: Immediate parent checkpoint.
+    - name: Tülu 3 SFT mixture
+      artifact_slug: null
+      url: https://huggingface.co/datasets/allenai/tulu-3-sft-mixture
+      note: Supervised fine-tuning data (ODC-BY).
+  source_ids: [mc-tulu31-8b, mc-tulu3-8b-sft, tulu3-paper]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-tulu31-8b
+    title: allenai/Llama-3.1-Tulu-3.1-8B model card
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-tulu3-8b-sft
+    title: allenai/Llama-3.1-Tulu-3-8B-SFT model card
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3-8B-SFT
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tulu3-sft-mixture
+    title: allenai/tulu-3-sft-mixture dataset card
+    url: https://huggingface.co/datasets/allenai/tulu-3-sft-mixture
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tulu3-paper
+    title: "Tulu 3: Pushing Frontiers in Open Language Model Post-Training (arXiv 2411.15124)"
+    url: https://arxiv.org/abs/2411.15124
+    publisher: Ai2 (arXiv)
+    kind: paper
+    published_at: 2024-11-22
+    accessed_at: 2026-09-29
+  - id: open-instruct-license
+    title: open-instruct LICENSE
+    url: https://raw.githubusercontent.com/allenai/open-instruct/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama31-license
+    title: Llama 3.1 Community License Agreement
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/LICENSE
+    publisher: Meta
+    kind: license
+    published_at: 2024-07-23
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

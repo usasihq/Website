@@ -1,0 +1,177 @@
+slug: gpt4all
+name: GPT4All
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Nomic AI
+    organization_slug: nomic-ai
+    source_ids: [gpt4all-repo, gpt4all-license, nomic-gpt4all]
+organization_slugs: [nomic-ai]
+links:
+  - label: Website
+    url: https://www.nomic.ai/gpt4all
+    kind: website
+  - label: Repository
+    url: https://github.com/nomic-ai/gpt4all
+    kind: repository
+  - label: Documentation
+    url: https://docs.gpt4all.io/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/nomic-ai/gpt4all/blob/main/LICENSE.txt
+    kind: license
+  - label: Releases
+    url: https://github.com/nomic-ai/gpt4all/releases
+    kind: release-notes
+summary:
+  text: >-
+    GPT4All is Nomic's open-source desktop application for running large language models
+    locally on Windows, macOS, and Linux. It includes LocalDocs for chatting with local files,
+    a Python SDK, and an API server, and its Python client wraps llama.cpp.
+  source_ids: [gpt4all-readme, nomic-gpt4all, gpt4all-docs]
+useful_for:
+  text: >-
+    Running open models privately on ordinary desktops and laptops without calling a hosted
+    API; the README says no GPU is required.
+  source_ids: [gpt4all-readme, nomic-gpt4all]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    GPT4All is published in Nomic's GitHub organization, and its license names Nomic, Inc. as
+    copyright holder. Nomic's careers page places its headquarters in New York City, and its
+    terms describe Nomic, Inc. as a Delaware corporation.
+  source_ids: [gpt4all-repo, gpt4all-license, nomic-careers, nomic-terms]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [gpt4all-repo, gpt4all-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/nomic-ai/gpt4all/blob/main/LICENSE.txt
+    applies_to: code
+    source_ids: [gpt4all-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [gpt4all-repo]
+  documentation:
+    status: public
+    note: Documentation covers the desktop app, LocalDocs, the Python SDK, and the API server.
+    source_ids: [gpt4all-docs]
+  installation:
+    status: public
+    note: >-
+      Installers for Windows (x64 and ARM), macOS, and Ubuntu; the Python package installs
+      with pip. A Flathub build is community maintained.
+    source_ids: [gpt4all-readme, nomic-gpt4all]
+  supported_platforms:
+    status: public
+    note: >-
+      Builds for Windows (x64, plus an ARM build for Qualcomm Snapdragon and Microsoft SQ1/SQ2
+      processors), macOS 12.6 or newer (best on Apple Silicon), and x86-64 Linux; the README
+      says the Linux build does not support ARM. A system requirements page lists minimum and
+      recommended hardware; it also says Windows and Linux PCs with ARM CPUs are not currently
+      supported, which conflicts with the README's Windows ARM build.
+    source_ids: [gpt4all-readme, gpt4all-sysreq]
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub. The latest is v3.10.0 (February 25, 2025),
+      and the most recent commit to the main branch is from May 27, 2025.
+    source_ids: [gpt4all-releases, gpt4all-commits]
+run_notes: []
+provenance:
+  text: >-
+    The GPT4All Python client wraps llama.cpp implementations, and the README says Nomic
+    contributes to llama.cpp. The repository's citation entry refers to a 2023 report on
+    training an assistant-style chatbot with data distilled from GPT-3.5-Turbo.
+  derived_from:
+    - name: llama.cpp
+      artifact_slug: llama-cpp
+      url: https://github.com/ggml-org/llama.cpp
+      note: Inference backend wrapped by the Python client.
+  source_ids: [gpt4all-readme]
+tags: [inference, local-inference]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: gpt4all-repo
+    title: nomic-ai/gpt4all
+    url: https://github.com/nomic-ai/gpt4all
+    publisher: Nomic
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-readme
+    title: GPT4All README
+    url: https://raw.githubusercontent.com/nomic-ai/gpt4all/main/README.md
+    publisher: Nomic
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-license
+    title: GPT4All LICENSE.txt
+    url: https://github.com/nomic-ai/gpt4all/blob/main/LICENSE.txt
+    publisher: Nomic, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-sysreq
+    title: GPT4All system requirements
+    url: https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-chat/system_requirements.md
+    publisher: Nomic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-releases
+    title: GPT4All releases
+    url: https://github.com/nomic-ai/gpt4all/releases
+    publisher: Nomic
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-commits
+    title: GPT4All commit history (main)
+    url: https://github.com/nomic-ai/gpt4all/commits/main
+    publisher: Nomic
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-docs
+    title: GPT4All documentation
+    url: https://docs.gpt4all.io/
+    publisher: Nomic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-gpt4all
+    title: GPT4All | Nomic
+    url: https://www.nomic.ai/gpt4all
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-careers
+    title: Careers | Nomic
+    url: https://www.nomic.ai/careers
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-terms
+    title: Terms of Service | Nomic
+    url: https://www.nomic.ai/terms-of-service
+    publisher: Nomic, Inc.
+    kind: official-page
+    published_at: 2026-04-20
+    accessed_at: 2026-09-29

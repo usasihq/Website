@@ -21,7 +21,7 @@ const KIND_LABELS: Record<string, string> = {
  * Inline citation markers for a claim. Numbers follow the record's source
  * list order and link to the full entry in the Sources section.
  */
-export function SourceRefs({ ids, sources }: { ids: string[]; sources: Source[] }) {
+export function SourceRefs({ ids, sources, idPrefix = "" }: { ids: string[]; sources: Source[]; idPrefix?: string }) {
   if (ids.length === 0) return null;
   return (
     <span className="ml-1 inline-flex flex-wrap gap-0.5 align-baseline">
@@ -32,7 +32,7 @@ export function SourceRefs({ ids, sources }: { ids: string[]; sources: Source[] 
         return (
           <a
             key={id}
-            href={`#src-${id}`}
+            href={`#src-${idPrefix}${id}`}
             className="inline-flex min-h-6 min-w-6 items-center justify-center rounded border border-line px-1 font-mono text-[0.75rem] leading-none text-ice no-underline hover:border-cyan hover:text-text"
             aria-label={`Source ${index + 1}: ${source.title}`}
           >
@@ -44,11 +44,11 @@ export function SourceRefs({ ids, sources }: { ids: string[]; sources: Source[] 
   );
 }
 
-export function SourcesList({ sources }: { sources: Source[] }) {
+export function SourcesList({ sources, idPrefix = "" }: { sources: Source[]; idPrefix?: string }) {
   return (
     <ol className="space-y-3">
       {sources.map((source, i) => (
-        <li key={source.id} id={`src-${source.id}`} className="grid scroll-mt-24 grid-cols-[2rem_1fr] gap-2 target:rounded-md target:bg-[rgba(76,201,255,0.07)]">
+        <li key={source.id} id={`src-${idPrefix}${source.id}`} className="grid scroll-mt-24 grid-cols-[2rem_1fr] gap-2 target:rounded-md target:bg-[rgba(76,201,255,0.07)]">
           <span className="meta pt-0.5 text-right">{i + 1}.</span>
           <div className="min-w-0">
             <ExternalLink href={source.url}>{source.title}</ExternalLink>

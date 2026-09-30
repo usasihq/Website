@@ -1,0 +1,105 @@
+slug: pythia
+name: Pythia
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: EleutherAI
+    organization_slug: eleutherai
+    source_ids: [pythia-repo, mc-pythia-12b]
+organization_slugs: [eleutherai]
+links:
+  - label: Pythia repository
+    url: https://github.com/EleutherAI/pythia
+    kind: repository
+  - label: Pythia paper (arXiv 2304.01373)
+    url: https://arxiv.org/abs/2304.01373
+    kind: paper
+  - label: EleutherAI on Hugging Face
+    url: https://huggingface.co/EleutherAI
+    kind: model-hub
+summary:
+  text: >-
+    Pythia is EleutherAI's suite of language models built for research on how models learn
+    during training and change with scale. The main suite has eight sizes from 70M to 12B
+    parameters, each trained once on the Pile and once on a deduplicated Pile, on the same data
+    in the same order, with 154 checkpoints per model. The current suite was retrained and
+    re-released in April 2023; 14M and 31M models and additional random-seed runs were added
+    later.
+  source_ids: [pythia-repo, mc-pythia-12b, pythia-paper]
+useful_for:
+  text: >-
+    EleutherAI states the suite is intended for research on the behavior and limitations of
+    language models, including interpretability and learning dynamics, and not for deployment.
+  source_ids: [mc-pythia-12b, pythia-repo]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The models are developed and released by EleutherAI, which states it incorporated as a
+    non-profit research institute in early 2023; the IRS exempt-organization extract for the
+    District of Columbia lists EleutherAI Institute in Washington, D.C., as a 501(c)(3)
+    organization. Eligibility of each release is assessed on the release record.
+  source_ids: [mc-pythia-12b, eleuther-about, irs-eo-bmf-dc]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Pythia 12B release record.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    Trained from scratch by EleutherAI with its GPT-NeoX library on the Pile (standard models)
+    or the globally deduplicated Pile (deduped models), about 300 billion tokens per model.
+  derived_from:
+    - name: The Pile
+      artifact_slug: the-pile
+      url: https://pile.eleuther.ai/
+      note: Pretraining data for all Pythia models.
+  source_ids: [pythia-repo, mc-pythia-12b]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2023-04-03
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: pythia-repo
+    title: "EleutherAI/pythia: Interpreting Transformers Across Time and Scale"
+    url: https://github.com/EleutherAI/pythia
+    publisher: EleutherAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-pythia-12b
+    title: EleutherAI/pythia-12b model card
+    url: https://huggingface.co/EleutherAI/pythia-12b
+    publisher: EleutherAI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pythia-paper
+    title: "Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling (arXiv 2304.01373)"
+    url: https://arxiv.org/abs/2304.01373
+    publisher: EleutherAI (arXiv)
+    kind: paper
+    published_at: 2023-04-03
+    accessed_at: 2026-09-29
+  - id: eleuther-about
+    title: About | EleutherAI
+    url: https://www.eleuther.ai/about
+    publisher: EleutherAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-dc
+    title: IRS Exempt Organizations Business Master File Extract (District of Columbia)
+    url: https://www.irs.gov/pub/irs-soi/eo_dc.csv
+    publisher: U.S. Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

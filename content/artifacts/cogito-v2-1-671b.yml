@@ -1,0 +1,180 @@
+slug: cogito-v2-1-671b
+name: Cogito v2.1 671B
+kind: model
+record_level: release
+family_slug: cogito
+version: "cogito-671b-v2.1"
+maintainers:
+  - name: Deep Cogito
+    organization_slug: deep-cogito
+    source_ids: [mc-cogito-v2-1, cogito-v2-1-blog]
+organization_slugs: [deep-cogito]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/deepcogito/cogito-671b-v2.1
+    kind: model-hub
+  - label: Cogito v2.1 announcement
+    url: https://www.deepcogito.com/research/cogito-v2-1
+    kind: release-notes
+  - label: Cogito v2 and v2.1 repository
+    url: https://github.com/DeepCogito/cogito-v2
+    kind: repository
+summary:
+  text: >-
+    A 671B-parameter mixture-of-experts model with 37B active parameters that Deep Cogito
+    post-trained in-house from the DeepSeek-V3 base model. It is a hybrid reasoning model that can
+    answer directly or reason first, supports a 128k-token context, and was trained in over 30
+    languages; Deep Cogito says process supervision of reasoning chains lets it reach answers
+    with shorter reasoning.
+  source_ids: [mc-cogito-v2-1, cogito-v2-1-blog, cogito-github-readme]
+useful_for:
+  text: >-
+    The model card describes it as optimized for coding, STEM, instruction following, general
+    helpfulness, and tool calling.
+  source_ids: [mc-cogito-v2-1]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Post-trained and published by Deep Cogito Inc., headquartered in San Francisco (see the
+    deep-cogito record). Eligibility covers Deep Cogito's post-training only; the DeepSeek-V3
+    base model it starts from was developed by DeepSeek and is not treated as a U.S.-developed
+    model.
+  source_ids: [cogito-v2-1-blog, cogito-home, sec-formd-cogito-2026-04, deepseek-v3-base-card]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; an FP8 version is published
+    separately. The announcement also lists API access through third-party platforms and a free
+    web chat.
+  source_ids: [mc-cogito-v2-1, cogito-v2-1-api, cogito-v2-1-blog]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://huggingface.co/deepcogito/cogito-671b-v2.1
+    applies_to: weights
+    source_ids: [mc-cogito-v2-1]
+license_notes:
+  text: >-
+    The model card states that the repository and the model weights are licensed under the MIT
+    License, and the companion GitHub repository carries an MIT LICENSE file; the Hugging Face
+    repository has no separate LICENSE file. Deep Cogito calls its DeepSeek starting point an
+    open-licensed base model; the DeepSeek-V3-Base model card says its code is MIT-licensed and
+    that use of the DeepSeek-V3 Base and Chat models is subject to DeepSeek's Model License.
+  source_ids: [mc-cogito-v2-1, cogito-v2-1-repo-files, cogito-github-license, cogito-v2-1-blog, deepseek-v3-base-card]
+checklist:
+  weights:
+    status: public
+    note: BF16 safetensors in an ungated Hugging Face repository; an FP8 repository is also published.
+    source_ids: [mc-cogito-v2-1, cogito-v2-1-api]
+  inference_code:
+    status: public
+    note: The repository includes DeepSeek modeling code, and the model card gives Transformers and vLLM examples, including tool calling.
+    source_ids: [mc-cogito-v2-1, cogito-v2-1-repo-files]
+  training_code:
+    status: unknown
+    note: No training code was found in the model card, announcement, or GitHub repository, which contains usage examples.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: The model card and announcement do not describe the post-training data; the DeepSeek-V3 base model's pretraining data is described only in DeepSeek's materials.
+    source_ids: []
+  training_recipe:
+    status: partial
+    note: >-
+      The announcement describes the approach only at a high level (forking the DeepSeek base
+      model, in-house post-training, process supervision of reasoning chains); the model card
+      names Iterated Distillation and Amplification. No configurations are given.
+    source_ids: [cogito-v2-1-blog, mc-cogito-v2-1]
+  evaluation_materials:
+    status: partial
+    note: The model card and announcement show benchmark charts and list repeats per example for each benchmark; evaluation code is not linked.
+    source_ids: [mc-cogito-v2-1, cogito-v2-1-blog]
+run_notes:
+  - text: >-
+      The model card states that the BF16 checkpoint takes about 1.3 TB for parameters and needs
+      at least 8 B200 GPUs (one node) or 16 H200 GPUs (two nodes), and points users with 8 H200
+      GPUs to the FP8 checkpoint. Its vLLM example uses tensor parallel size 8.
+    source_ids: [mc-cogito-v2-1]
+provenance:
+  text: >-
+    Post-trained in-house by Deep Cogito from DeepSeek's DeepSeek-V3-Base, which Deep Cogito
+    describes as the open-licensed DeepSeek base model from November 2024. The base model is not a
+    catalog member and is not treated as U.S.-developed.
+  derived_from:
+    - name: DeepSeek-V3-Base (DeepSeek)
+      artifact_slug: null
+      url: https://huggingface.co/deepseek-ai/DeepSeek-V3-Base
+      note: Third-party base model; not a catalog member.
+  source_ids: [mc-cogito-v2-1, cogito-v2-1-blog, deepseek-v3-base-card]
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2025-11-19
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-cogito-v2-1
+    title: deepcogito/cogito-671b-v2.1 model card
+    url: https://huggingface.co/deepcogito/cogito-671b-v2.1
+    publisher: Deep Cogito
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-v2-1-api
+    title: deepcogito/cogito-671b-v2.1 repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/deepcogito/cogito-671b-v2.1
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-v2-1-repo-files
+    title: cogito-671b-v2.1 repository file listing
+    url: https://huggingface.co/api/models/deepcogito/cogito-671b-v2.1/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-v2-1-blog
+    title: Cogito v2.1
+    url: https://www.deepcogito.com/research/cogito-v2-1
+    publisher: Deep Cogito
+    kind: announcement
+    published_at: 2025-11-19
+    accessed_at: 2026-09-29
+  - id: cogito-github-readme
+    title: DeepCogito/cogito-v2 README
+    url: https://github.com/DeepCogito/cogito-v2
+    publisher: Deep Cogito
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-github-license
+    title: DeepCogito/cogito-v2 LICENSE (MIT)
+    url: https://raw.githubusercontent.com/DeepCogito/cogito-v2/main/LICENSE
+    publisher: Deep Cogito
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: deepseek-v3-base-card
+    title: deepseek-ai/DeepSeek-V3-Base model card
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V3-Base
+    publisher: DeepSeek
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cogito-home
+    title: Deep Cogito
+    url: https://www.deepcogito.com/
+    publisher: Deep Cogito
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-formd-cogito-2026-04
+    title: Deep Cogito Inc. Form D/A (accession 0002128259-26-000002)
+    url: https://www.sec.gov/Archives/edgar/data/2128259/000212825926000002/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: 2026-04-24
+    accessed_at: 2026-09-29

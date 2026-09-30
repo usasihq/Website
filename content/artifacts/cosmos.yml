@@ -1,0 +1,142 @@
+slug: cosmos
+name: NVIDIA Cosmos
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [cosmos-github, cosmos3-press]
+organization_slugs: [nvidia]
+links:
+  - label: NVIDIA Cosmos repository
+    url: https://github.com/nvidia/cosmos
+    kind: repository
+  - label: Cosmos 3 collection on Hugging Face
+    url: https://huggingface.co/collections/nvidia/cosmos3
+    kind: model-hub
+  - label: "Cosmos 3: Omnimodal World Models for Physical AI (technical report)"
+    url: https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf
+    kind: paper
+  - label: Cosmos-Framework (training and serving code)
+    url: https://github.com/nvidia/cosmos-framework
+    kind: repository
+summary:
+  text: >-
+    Cosmos is NVIDIA's family of world foundation models, datasets, and tools for physical AI
+    such as robots, autonomous vehicles, and smart infrastructure. Earlier generations were
+    released as separate Predict, Transfer, and Reason models (for example Cosmos-Predict2.5
+    and Cosmos-Reason2). Cosmos 3 merges understanding and generation of text, images, video,
+    audio, and actions in one mixture-of-transformers model family; its Super (64B) and Nano
+    (16B) models were released on May 31, 2026, and the Edge (4B) model followed in July 2026.
+  source_ids: [cosmos-github, cosmos3-press, cosmos3-report, predict25-hf-api, transfer25-hf-api, reason2-8b-hf-api]
+useful_for:
+  text: >-
+    NVIDIA describes Cosmos 3 for world understanding and generation, simulation, synthetic
+    data generation, and robot policy learning in robotics, autonomous driving, and
+    industrial settings.
+  source_ids: [cosmos3-press, cosmos-github]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Cosmos models are developed and published by NVIDIA Corporation, which has its
+    principal executive offices in Santa Clara, California, per its Form 10-Q for the quarter
+    ended July 26, 2026. Cosmos 3 Nano and Super are initialized from Qwen3-VL weights
+    developed by the Qwen team at Alibaba Cloud; that provenance is recorded on the release
+    records.
+  source_ids: [cosmos-github, cosmos3-report, qwen3-vl-github, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    Licensing differs by generation. Cosmos 3 code and models are released under the
+    OpenMDW License 1.1 (OpenMDW-1.1). Earlier Cosmos models such as Cosmos-Predict2.5 and
+    Cosmos-Reason2 are distributed under the NVIDIA Open Model License, which requires a
+    "Built on NVIDIA Cosmos" notice when distributing Cosmos-based models. Check each release.
+  source_ids: [cosmos-github, cosmos-license, predict25-hf-api, reason2-8b-hf-api, nvidia-open-model-license]
+checklist: {}
+run_notes: []
+provenance: null
+tags: [world-model, multimodal, robotics, video-generation]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: cosmos-github
+    title: NVIDIA/Cosmos (GitHub)
+    url: https://github.com/nvidia/cosmos
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos-license
+    title: NVIDIA/Cosmos LICENSE (OpenMDW License Agreement, version 1.1)
+    url: https://raw.githubusercontent.com/NVIDIA/cosmos/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cosmos3-press
+    title: NVIDIA Launches Cosmos 3, the Open Frontier Foundation Model for Physical AI
+    url: https://nvidianews.nvidia.com/news/nvidia-launches-cosmos-3-the-open-frontier-foundation-model-for-physical-ai
+    publisher: NVIDIA Newsroom
+    kind: announcement
+    published_at: 2026-05-31
+    accessed_at: 2026-09-29
+  - id: cosmos3-report
+    title: "Cosmos 3: Omnimodal World Models for Physical AI (technical report)"
+    url: https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf
+    publisher: NVIDIA
+    kind: paper
+    published_at: 2026-06-22
+    accessed_at: 2026-09-29
+  - id: predict25-hf-api
+    title: Hugging Face model metadata for nvidia/Cosmos-Predict2.5-2B
+    url: https://huggingface.co/api/models/nvidia/Cosmos-Predict2.5-2B
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: transfer25-hf-api
+    title: Hugging Face model metadata for nvidia/Cosmos-Transfer2.5-2B
+    url: https://huggingface.co/api/models/nvidia/Cosmos-Transfer2.5-2B
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: reason2-8b-hf-api
+    title: Hugging Face model metadata for nvidia/Cosmos-Reason2-8B
+    url: https://huggingface.co/api/models/nvidia/Cosmos-Reason2-8B
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-open-model-license
+    title: NVIDIA Open Model License Agreement
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+    publisher: NVIDIA
+    kind: license
+    published_at: 2025-10-24
+    accessed_at: 2026-09-29
+  - id: qwen3-vl-github
+    title: QwenLM/Qwen3-VL (GitHub)
+    url: https://github.com/QwenLM/Qwen3-VL
+    publisher: Qwen team (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

@@ -4,6 +4,7 @@ import { formatDate } from "@/lib/dates";
 import { asset, repositoryUrl } from "@/lib/paths";
 import { siteConfig } from "@/lib/site-config";
 import { BrandMark } from "./BrandMark";
+import { ContactLinks } from "./ContactLinks";
 import { ExternalLink } from "./ExternalLink";
 
 const COLUMNS = [
@@ -21,6 +22,7 @@ const COLUMNS = [
       { href: "/methodology/", label: "Methodology" },
       { href: "/compact/", label: "USASI Compact v0.1" },
       { href: "/about/", label: "About" },
+      { href: "/local/", label: "Local corner" },
       { href: "/changelog/", label: "Changelog" },
       { href: "/contribute/", label: "Contribute" },
     ],
@@ -66,6 +68,11 @@ export function SiteFooter() {
               </ul>
             </nav>
           ))}
+        </div>
+
+        <div className="mt-10 flex flex-col gap-2 md:flex-row md:items-center md:gap-6">
+          <h2 className="eyebrow shrink-0">Contact &amp; follow</h2>
+          <ContactLinks variant="inline" />
         </div>
 
         <hr className="rule my-8" />

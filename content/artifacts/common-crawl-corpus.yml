@@ -1,0 +1,180 @@
+slug: common-crawl-corpus
+name: Common Crawl corpus
+kind: dataset
+record_level: project
+family_slug: null
+version: "CC-MAIN-2026-39 (latest crawl at review)"
+maintainers:
+  - name: Common Crawl Foundation
+    organization_slug: common-crawl
+    source_ids: [cc-about, cc-terms]
+organization_slugs: [common-crawl]
+links:
+  - label: Get started (data access)
+    url: https://commoncrawl.org/get-started
+    kind: documentation
+  - label: Terms of Use
+    url: https://commoncrawl.org/terms-of-use
+    kind: license
+  - label: FAQ
+    url: https://commoncrawl.org/faq
+    kind: documentation
+  - label: Crawl index collections (collinfo.json)
+    url: https://index.commoncrawl.org/collinfo.json
+    kind: dataset-hub
+summary:
+  text: >-
+    An archive of web crawl data collected by Common Crawl's crawlers since 2008, released as
+    periodic crawls. Each crawl is published as WARC files (raw HTTP responses, requests, and
+    metadata), WAT files (computed metadata as JSON), and WET files (extracted plain text),
+    together with URL indexes.
+  source_ids: [cc-about, cc-get-started, cc-collinfo]
+useful_for:
+  text: >-
+    A freely available source of raw and extracted web pages for research and for building
+    web-scale text datasets; for example, Ai2's Dolma pretraining corpus lists Common Crawl as a
+    source.
+  source_ids: [cc-about, cc-terms, dolma-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The corpus is collected and published by The Common Crawl Foundation, which names itself in
+    the Terms of Use with a Beverly Hills, California address. The IRS lists Commoncrawl
+    Foundation at that address as a 501(c)(3) organization.
+  source_ids: [cc-terms, cc-about, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable over HTTPS from data.commoncrawl.org without an AWS account; access to the
+    s3://commoncrawl bucket (AWS us-east-1) through the S3 API is limited to authenticated AWS
+    users. Use is subject to Common Crawl's Terms of Use, and the crawled content may be subject
+    to its original publishers' terms and copyrights.
+  source_ids: [cc-get-started, cc-cloudfront-blog, cc-terms]
+licenses:
+  - name: Common Crawl Terms of Use (limited, non-exclusive license)
+    spdx: null
+    url: https://commoncrawl.org/terms-of-use
+    applies_to: data
+    source_ids: [cc-terms]
+license_notes:
+  text: >-
+    The Terms of Use (last updated March 7, 2024) grant a limited, non-transferable,
+    non-sublicensable license to the service, which is defined to include the crawled content.
+    They state that crawled content is the responsibility of the party it originated from, that
+    it may be subject to separate terms, and that users must respect third parties' copyrights.
+    Users must indemnify Common Crawl against third-party claims arising from their use of the
+    service or crawled content, expressly including use in connection with AI and machine
+    learning systems such as large language models. Disputes go to binding arbitration under
+    California law.
+  source_ids: [cc-terms]
+checklist:
+  access:
+    status: public
+    note: >-
+      Downloadable over HTTPS without an AWS account; S3 API access requires an authenticated
+      AWS account.
+    source_ids: [cc-get-started, cc-cloudfront-blog]
+  provenance:
+    status: public
+    note: >-
+      WARC files keep the HTTP request, response, and crawl metadata for each captured page, and
+      the crawler identifies itself as CCBot and checks robots.txt before fetching.
+    source_ids: [cc-get-started, cc-ccbot, cc-faq]
+  documentation:
+    status: public
+    note: The Get Started page and FAQ document the formats, indexes, and access methods.
+    source_ids: [cc-get-started, cc-faq]
+  licensing:
+    status: partial
+    note: >-
+      The Terms of Use are published, but no open data license covers the crawled content
+      itself; the Terms say that content may be subject to its owners' separate terms and require
+      users to respect third parties' copyrights.
+    source_ids: [cc-terms]
+  stated_limitations:
+    status: public
+    note: >-
+      The FAQ describes the dataset as a sample of the web that generally archives a randomly
+      selected subset of a site rather than the whole site, and the Terms of Use state that
+      Common Crawl cannot guarantee the accuracy, quality, or lawfulness of the crawled content.
+    source_ids: [cc-faq, cc-terms]
+run_notes: []
+provenance:
+  text: >-
+    Collected from web pages by Common Crawl's own crawlers: a custom Hadoop-based crawler from
+    2008, replaced in 2013 by the Apache Nutch-based CCBot, which checks robots.txt before
+    fetching. The earliest collection in the index covers 2008 to 2009 (ARC files).
+  derived_from: []
+  source_ids: [cc-about, cc-ccbot, cc-faq, cc-collinfo]
+tags: [pretraining-data]
+publication_status: published
+archive_note: null
+released_at: 2026-09
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: cc-about
+    title: About Common Crawl
+    url: https://commoncrawl.org/about
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-terms
+    title: Terms of Use | Common Crawl
+    url: https://commoncrawl.org/terms-of-use
+    publisher: Common Crawl Foundation
+    kind: license
+    published_at: 2024-03-07
+    accessed_at: 2026-09-29
+  - id: cc-get-started
+    title: Get Started | Common Crawl
+    url: https://commoncrawl.org/get-started
+    publisher: Common Crawl Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-cloudfront-blog
+    title: Introducing CloudFront as a new way to access Common Crawl data as part of Amazon Web Services' registry of open data
+    url: https://commoncrawl.org/blog/introducing-cloudfront-access-to-common-crawl-data
+    publisher: Common Crawl Foundation
+    kind: announcement
+    published_at: 2022-03-01
+    accessed_at: 2026-09-29
+  - id: cc-ccbot
+    title: CCBot | Common Crawl
+    url: https://commoncrawl.org/ccbot
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-faq
+    title: FAQ | Common Crawl
+    url: https://commoncrawl.org/faq
+    publisher: Common Crawl Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-collinfo
+    title: Common Crawl index collections (collinfo.json)
+    url: https://index.commoncrawl.org/collinfo.json
+    publisher: Common Crawl Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma-card
+    title: allenai/dolma dataset card
+    url: https://huggingface.co/datasets/allenai/dolma
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

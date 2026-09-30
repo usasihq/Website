@@ -1,0 +1,150 @@
+slug: transformers
+name: Transformers
+kind: framework
+record_level: project
+family_slug: null
+version: "5.17.0"
+maintainers:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    source_ids: [transformers-repo, transformers-license]
+organization_slugs: [hugging-face]
+links:
+  - label: Repository
+    url: https://github.com/huggingface/transformers
+    kind: repository
+  - label: Documentation
+    url: https://huggingface.co/docs/transformers/installation
+    kind: documentation
+  - label: LICENSE
+    url: https://raw.githubusercontent.com/huggingface/transformers/main/LICENSE
+    kind: license
+  - label: Release v5.17.0
+    url: https://github.com/huggingface/transformers/releases/tag/v5.17.0
+    kind: release-notes
+summary:
+  text: >-
+    Transformers is Hugging Face's open-source Python library of model definitions for text,
+    vision, audio, video, and multimodal models, used for both inference and training. Its
+    README presents it as a shared model-definition layer that other training frameworks and
+    inference engines build on, and it loads pretrained checkpoints from the Hugging Face Hub.
+  source_ids: [transformers-repo, transformers-readme]
+useful_for:
+  text: >-
+    Loading and running pretrained models through the high-level Pipeline API or model classes,
+    fine-tuning them, and serving or chatting with a model from the command line.
+  source_ids: [transformers-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Transformers is developed in Hugging Face's GitHub organization and its LICENSE names the
+    Hugging Face team as copyright holder. Hugging Face's terms of service identify Hugging Face,
+    Inc., a Delaware corporation, as the provider of its services, under New York law and courts,
+    and its privacy policy states that the company and its servers are located in the United
+    States (the French entity is named as its EU main establishment). See the hugging-face
+    organization record for the full dual-country assessment.
+  source_ids: [transformers-repo, transformers-license, hf-tos, hf-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the Apache License 2.0; installable with pip or uv, or from
+    conda-forge.
+  source_ids: [transformers-repo, transformers-license, transformers-install]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/huggingface/transformers/main/LICENSE
+    applies_to: code
+    source_ids: [transformers-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [transformers-repo]
+  documentation:
+    status: public
+    note: Installation, quickstart, and API documentation are published on the Hugging Face docs site.
+    source_ids: [transformers-install, transformers-readme]
+  installation:
+    status: public
+    note: >-
+      Documented installation with pip or uv (for example the transformers[torch] extra), from
+      source, as an editable install, and from conda-forge.
+    source_ids: [transformers-install]
+  supported_platforms:
+    status: public
+    note: >-
+      The installation guide states the library works with PyTorch and is tested on Python 3.10+
+      and PyTorch 2.5+, and documents setups for NVIDIA GPUs (CUDA), Intel GPUs (XPU), CPU-only
+      use, and NVIDIA ARM64 devices.
+    source_ids: [transformers-install]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub; v5.17.0 was published on 2026-09-09.
+    source_ids: [transformers-release]
+run_notes:
+  - text: >-
+      The installation guide documents offline use: download a model repository in advance and
+      set HF_HUB_OFFLINE=1 (or pass local_files_only=True) so that loading does not contact the
+      Hub.
+    source_ids: [transformers-install]
+provenance: null
+tags: [training, inference]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: transformers-repo
+    title: huggingface/transformers
+    url: https://github.com/huggingface/transformers
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: transformers-readme
+    title: Transformers README
+    url: https://raw.githubusercontent.com/huggingface/transformers/main/README.md
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: transformers-license
+    title: Transformers LICENSE
+    url: https://raw.githubusercontent.com/huggingface/transformers/main/LICENSE
+    publisher: Hugging Face
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: transformers-install
+    title: Installation (Transformers documentation)
+    url: https://huggingface.co/docs/transformers/installation
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: transformers-release
+    title: Release v5.17.0 · huggingface/transformers
+    url: https://github.com/huggingface/transformers/releases/tag/v5.17.0
+    publisher: Hugging Face
+    kind: release-notes
+    published_at: 2026-09-09
+    accessed_at: 2026-09-29
+  - id: hf-tos
+    title: Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

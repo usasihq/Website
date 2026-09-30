@@ -1,0 +1,183 @@
+slug: chronos-2
+name: Chronos-2
+kind: model
+record_level: release
+family_slug: chronos
+version: "Chronos-2 (amazon/chronos-2, 120M)"
+maintainers:
+  - name: Amazon (Amazon Web Services)
+    organization_slug: amazon
+    source_ids: [chronos2-card, amazon-science-chronos2, chronos2-report-html]
+organization_slugs: [amazon]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/amazon/chronos-2
+    kind: model-hub
+  - label: chronos-forecasting repository
+    url: https://github.com/amazon-science/chronos-forecasting
+    kind: repository
+  - label: "Chronos-2: From Univariate to Universal Forecasting (arXiv 2510.15821)"
+    url: https://arxiv.org/abs/2510.15821
+    kind: paper
+  - label: Amazon Science blog post
+    url: https://www.amazon.science/blog/introducing-chronos-2-from-univariate-to-universal-forecasting
+    kind: release-notes
+summary:
+  text: >-
+    Chronos-2 is a 120M-parameter, encoder-only time-series foundation model from Amazon,
+    released on October 20, 2025. Inspired by the T5 encoder, it produces multi-step quantile
+    forecasts and uses group attention to learn in context across related series and
+    covariates, supporting univariate, multivariate, and covariate-informed forecasting with
+    contexts up to 8,192 steps and horizons up to 1,024 steps.
+  source_ids: [chronos2-card, chronos-readme]
+useful_for:
+  text: >-
+    Amazon describes Chronos-2 for zero-shot forecasting without task-specific training, with
+    local inference through the chronos-forecasting package and production deployment through
+    Amazon SageMaker (AutoGluon-Cloud or SageMaker JumpStart); the card states it supports
+    both GPU and CPU inference.
+  source_ids: [chronos2-card, amazon-science-chronos2]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The model is published by Amazon on Hugging Face and GitHub, and the Chronos-2 report and
+    Amazon's science blog attribute it to Amazon Web Services, a segment of Amazon.com, Inc.
+    Amazon.com, Inc. has its principal executive offices in Seattle, Washington, per its fiscal
+    2025 Form 10-K.
+  source_ids: [chronos2-card, chronos2-report-html, amazon-science-chronos2, amzn-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [chronos2-hf-api, chronos2-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/amazon/chronos-2
+    applies_to: weights
+    source_ids: [chronos2-card, chronos2-hf-api]
+  - name: Apache License 2.0 (chronos-forecasting code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/amazon-science/chronos-forecasting/main/LICENSE
+    applies_to: code
+    source_ids: [chronos-license, chronos-readme]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: Weights (safetensors) are published on Hugging Face without an access gate.
+    source_ids: [chronos2-hf-api]
+  inference_code:
+    status: public
+    note: >-
+      The Apache-2.0 chronos-forecasting package (version 2.0 or later) provides the
+      Chronos2Pipeline used in the card's examples.
+    source_ids: [chronos2-card, chronos-readme, chronos-pypi]
+  training_code:
+    status: unknown
+    note: >-
+      The repository's training scripts are documented for the original Chronos models of
+      March 2024; training code for Chronos-2 was not found.
+    source_ids: [chronos-scripts]
+  training_data_information:
+    status: partial
+    note: >-
+      The card lists subsets of the public Chronos Datasets and GIFT-Eval Pretrain collections
+      plus synthetic univariate and multivariate data; the report describes how the synthetic
+      data was generated, but the synthetic data itself is not documented as released.
+    source_ids: [chronos2-card, chronos2-report-html]
+  training_recipe:
+    status: partial
+    note: The technical report describes the architecture, training, and training data at a summary level.
+    source_ids: [chronos2-report-html]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The report and card give results on fev-bench, GIFT-Eval, and Chronos Benchmark II;
+      the repository announces the separately released fev benchmarking package, but
+      instructions to re-run all reported Chronos-2 evaluations were not verified.
+    source_ids: [chronos2-report-html, chronos2-card, chronos-readme]
+run_notes:
+  - text: >-
+      The card documents local installation with pip ("chronos-forecasting>=2.0") and a
+      pandas-based prediction API, and deployment to SageMaker with AutoGluon-Cloud or
+      SageMaker JumpStart.
+    source_ids: [chronos2-card]
+provenance:
+  text: >-
+    Trained by Amazon Web Services on subsets of the Chronos Datasets and GIFT-Eval Pretrain
+    collections and on synthetic data. The architecture is described as inspired by the T5
+    encoder; no pretrained base model is named.
+  derived_from: []
+  source_ids: [chronos2-card, chronos2-report-html]
+tags: [time-series, forecasting]
+publication_status: published
+archive_note: null
+released_at: 2025-10-20
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: chronos2-card
+    title: amazon/chronos-2 model card
+    url: https://huggingface.co/amazon/chronos-2/raw/main/README.md
+    publisher: Amazon (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chronos2-hf-api
+    title: Hugging Face model metadata for amazon/chronos-2
+    url: https://huggingface.co/api/models/amazon/chronos-2
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chronos-readme
+    title: amazon-science/chronos-forecasting README
+    url: https://raw.githubusercontent.com/amazon-science/chronos-forecasting/main/README.md
+    publisher: Amazon Science (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chronos-license
+    title: amazon-science/chronos-forecasting LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/amazon-science/chronos-forecasting/main/LICENSE
+    publisher: Amazon Science (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chronos-scripts
+    title: chronos-forecasting scripts directory (training and evaluation)
+    url: https://github.com/amazon-science/chronos-forecasting/tree/main/scripts
+    publisher: Amazon Science (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chronos-pypi
+    title: chronos-forecasting on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/chronos-forecasting/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chronos2-report-html
+    title: "Chronos-2: From Univariate to Universal Forecasting (arXiv 2510.15821, HTML)"
+    url: https://arxiv.org/html/2510.15821
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-10-17
+    accessed_at: 2026-09-29
+  - id: amazon-science-chronos2
+    title: "Introducing Chronos-2: From univariate to universal forecasting"
+    url: https://www.amazon.science/blog/introducing-chronos-2-from-univariate-to-universal-forecasting
+    publisher: Amazon Science
+    kind: announcement
+    published_at: 2025-10-20
+    accessed_at: 2026-09-29
+  - id: amzn-10k-2025
+    title: Amazon.com, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm
+    publisher: Amazon.com, Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,116 @@
+slug: common-crawl
+name: Common Crawl
+legal_name:
+  text: The Common Crawl Foundation (listed by the IRS as Commoncrawl Foundation)
+  source_ids: [cc-terms, irs-eo-bmf-ca]
+website: https://commoncrawl.org
+logo_text: CC
+summary:
+  text: >-
+    Common Crawl is a nonprofit that crawls the web and makes its archives and derived datasets
+    freely available. It has collected crawl data since 2008 and hosts it on Amazon Web Services
+    through an AWS open data sponsorship program.
+  source_ids: [cc-about, cc-get-started]
+organization_roles: [data-services]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    classifies it as a private operating foundation.
+  source_ids: [irs-eo-bmf-ca, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Beverly Hills, California (address given in the Terms of Use and the IRS listing)
+  country: US
+  source_ids: [cc-terms, irs-eo-bmf-ca]
+other_locations: []
+founded:
+  year: 2007
+  source_ids: [cc-about]
+sectors: [data]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      Common Crawl's crawler, CCBot, checks robots.txt before fetching pages and honors the
+      Crawl-delay parameter and nofollow attributes; site owners can block it through robots.txt,
+      and Common Crawl also refers site owners to an opt-out registry.
+    source_ids: [cc-ccbot, cc-faq]
+  - text: >-
+      The Terms of Use (last updated March 7, 2024) require users to indemnify Common Crawl against
+      third-party claims arising from their use of the service or crawled content, expressly
+      including use in connection with artificial intelligence and machine learning systems such
+      as large language models.
+    source_ids: [cc-terms]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    Common Crawl describes itself as a 501(c)(3) nonprofit. Its Terms of Use name The Common
+    Crawl Foundation with a Beverly Hills, California address, and the IRS exempt-organization
+    extract for California lists Commoncrawl Foundation at the same address as a 501(c)(3)
+    organization.
+  source_ids: [cc-about, cc-terms, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Publishes its crawl archives (WARC, WAT, and WET files) and indexes for download over HTTPS
+    without an AWS account. Use is governed by Common Crawl's Terms of Use rather than a named open data
+    license, and the crawled content remains subject to the rights of its original publishers.
+  source_ids: [cc-get-started, cc-terms]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: cc-about
+    title: About Common Crawl
+    url: https://commoncrawl.org/about
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-terms
+    title: Terms of Use | Common Crawl
+    url: https://commoncrawl.org/terms-of-use
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: 2024-03-07
+    accessed_at: 2026-09-29
+  - id: cc-get-started
+    title: Get Started | Common Crawl
+    url: https://commoncrawl.org/get-started
+    publisher: Common Crawl Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-ccbot
+    title: CCBot | Common Crawl
+    url: https://commoncrawl.org/ccbot
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-faq
+    title: FAQ | Common Crawl
+    url: https://commoncrawl.org/faq
+    publisher: Common Crawl Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organizations Business Master File Extract (EO BMF)
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: 2026-01
+    accessed_at: 2026-09-29

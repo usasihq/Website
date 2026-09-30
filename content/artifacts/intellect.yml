@@ -1,0 +1,133 @@
+slug: intellect
+name: INTELLECT
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Prime Intellect
+    organization_slug: prime-intellect
+    source_ids: [mc-intellect-3, i3-report-arxiv]
+organization_slugs: [prime-intellect]
+links:
+  - label: INTELLECT-3 announcement
+    url: https://www.primeintellect.ai/blog/intellect-3
+    kind: release-notes
+  - label: INTELLECT-3 technical report (arXiv 2512.16144)
+    url: https://arxiv.org/abs/2512.16144
+    kind: paper
+  - label: prime-rl repository
+    url: https://github.com/PrimeIntellect-ai/prime-rl
+    kind: repository
+summary:
+  text: >-
+    INTELLECT is Prime Intellect's series of open-weight models. INTELLECT-1 is a 10B model
+    trained from scratch on 1 trillion tokens with compute from distributed community
+    contributors; INTELLECT-2 is a 32B model produced by a distributed reinforcement-learning run
+    on QwQ-32B; INTELLECT-3 (November 2025) is a 106B mixture-of-experts model (12B active)
+    post-trained from GLM-4.5-Air-Base with supervised fine-tuning and large-scale RL; and
+    INTELLECT-3.1 continues INTELLECT-3 with further RL.
+  source_ids: [mc-intellect-1, mc-intellect-2, mc-intellect-3, mc-intellect-3-1, i3-blog]
+useful_for:
+  text: >-
+    The recent INTELLECT models are reasoning models aimed at math, code, science, and agentic
+    tasks such as tool use and software engineering, and Prime Intellect uses them to
+    demonstrate its open training stack (prime-rl, verifiers, and the Environments Hub).
+  source_ids: [i3-blog, i3-report-arxiv, mc-intellect-3-1]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The INTELLECT models are trained and published by Prime Intellect, Inc., a Delaware
+    corporation with U.S. locations (see the prime-intellect record). For releases built on
+    third-party base models, eligibility rests on Prime Intellect's own training and does not
+    extend to the base models. Each release is assessed on its own record.
+  source_ids: [mc-intellect-3, sec-formd-prime-2026-07]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the INTELLECT-3 and INTELLECT-3.1 release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    INTELLECT-1 was trained from scratch by Prime Intellect. INTELLECT-2 was trained from Qwen's
+    QwQ-32B, and INTELLECT-3 and INTELLECT-3.1 from GLM-4.5-Air-Base, a base model released by
+    Z.ai (zai-org). Those base models are not catalog members and are not
+    treated as U.S.-developed.
+  derived_from:
+    - name: QwQ-32B
+      artifact_slug: null
+      url: https://huggingface.co/Qwen/QwQ-32B
+      note: Base model for INTELLECT-2; not a catalog member.
+    - name: GLM-4.5-Air-Base
+      artifact_slug: null
+      url: https://huggingface.co/zai-org/GLM-4.5-Air-Base
+      note: Base model for INTELLECT-3 and INTELLECT-3.1; not a catalog member.
+  source_ids: [mc-intellect-1, mc-intellect-2, mc-intellect-3, glm-45-air-base-card]
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-intellect-1
+    title: PrimeIntellect/INTELLECT-1 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-1
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-intellect-2
+    title: PrimeIntellect/INTELLECT-2 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-2
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-intellect-3
+    title: PrimeIntellect/INTELLECT-3 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-3
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-intellect-3-1
+    title: PrimeIntellect/INTELLECT-3.1 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-3.1
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: i3-blog
+    title: "INTELLECT-3: A 100B+ MoE trained with large-scale RL"
+    url: https://www.primeintellect.ai/blog/intellect-3
+    publisher: Prime Intellect
+    kind: announcement
+    published_at: 2025-11-26
+    accessed_at: 2026-09-29
+  - id: i3-report-arxiv
+    title: "INTELLECT-3: Technical Report (arXiv 2512.16144)"
+    url: https://arxiv.org/abs/2512.16144
+    publisher: Prime Intellect
+    kind: paper
+    published_at: 2025-12-18
+    accessed_at: 2026-09-29
+  - id: glm-45-air-base-card
+    title: zai-org/GLM-4.5-Air-Base model card
+    url: https://huggingface.co/zai-org/GLM-4.5-Air-Base
+    publisher: Z.ai
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-formd-prime-2026-07
+    title: Prime Intellect, Inc. Form D (accession 0001231919-26-000720)
+    url: https://www.sec.gov/Archives/edgar/data/2103990/000123191926000720/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: 2026-07-01
+    accessed_at: 2026-09-29

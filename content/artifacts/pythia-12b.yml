@@ -1,0 +1,185 @@
+slug: pythia-12b
+name: Pythia 12B
+kind: model
+record_level: release
+family_slug: pythia
+version: "pythia-12b"
+maintainers:
+  - name: EleutherAI
+    organization_slug: eleutherai
+    source_ids: [mc-pythia-12b]
+organization_slugs: [eleutherai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/EleutherAI/pythia-12b
+    kind: model-hub
+  - label: Pythia repository
+    url: https://github.com/EleutherAI/pythia
+    kind: repository
+  - label: Pythia paper (arXiv 2304.01373)
+    url: https://arxiv.org/abs/2304.01373
+    kind: paper
+  - label: Pre-shuffled, pre-tokenized Pile used for Pythia
+    url: https://huggingface.co/datasets/EleutherAI/pile-standard-pythia-preshuffled
+    kind: dataset-hub
+summary:
+  text: >-
+    The largest model in EleutherAI's Pythia suite: an English decoder-only language model with
+    about 11.8 billion total parameters, trained on the Pile (not deduplicated) for about 300
+    billion tokens. EleutherAI publishes 154 checkpoints from initialization to the end of
+    training as Hugging Face branches.
+  source_ids: [mc-pythia-12b, pythia-repo]
+useful_for:
+  text: >-
+    Research on the behavior, functionality, and limitations of large language models, such as
+    interpretability, memorization, and learning dynamics. The card states it is not intended
+    for deployment or human-facing use and has not been instruction-tuned.
+  source_ids: [mc-pythia-12b, pythia-repo]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The model card states the model was developed by EleutherAI, which states it incorporated as
+    a non-profit research institute in early 2023; the IRS exempt-organization extract for the
+    District of Columbia lists EleutherAI Institute in Washington, D.C., as a 501(c)(3)
+    organization.
+  source_ids: [mc-pythia-12b, eleuther-about, irs-eo-bmf-dc]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [mc-pythia-12b]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/EleutherAI/pythia/main/LICENSE
+    applies_to: weights-and-code
+    source_ids: [mc-pythia-12b, pythia-license, pythia-repo]
+  - name: Apache License 2.0 (GPT-NeoX)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/EleutherAI/gpt-neox/main/LICENSE
+    applies_to: code
+    source_ids: [gpt-neox-license]
+license_notes:
+  text: >-
+    The Pythia repository states its Apache 2.0 license applies to the code and to the Pythia
+    models. The Pile training data has no single license; its components carry their own terms
+    (see the Pile record).
+  source_ids: [pythia-repo, pile-hf-card]
+checklist:
+  weights:
+    status: public
+    note: >-
+      Final weights plus 154 intermediate checkpoints (step 0, ten log-spaced early steps, and
+      every 1,000 steps to 143,000) are published as Hugging Face branches.
+    source_ids: [mc-pythia-12b]
+  inference_code:
+    status: public
+    note: The card documents loading the model with Hugging Face Transformers (GPTNeoXForCausalLM).
+    source_ids: [mc-pythia-12b]
+  training_code:
+    status: public
+    note: >-
+      Trained with EleutherAI's GPT-NeoX library; the Pythia repository publishes the GPT-NeoX
+      config files and step-by-step instructions for reproducing training.
+    source_ids: [pythia-repo, mc-pythia-12b]
+  training_data_information:
+    status: public
+    note: >-
+      EleutherAI hosts the pre-tokenized training data on Hugging Face in the order the models
+      saw it, with a script to reconstruct the dataloader. The Pile itself is documented in a
+      paper and datasheet; its original download channel is discussed on the Pile record.
+    source_ids: [pythia-repo, pythia-paper]
+  training_recipe:
+    status: public
+    note: >-
+      The card and repository give architecture, batch size (about 2M tokens), learning rate,
+      step count, and precision, and the paper's appendix documents the changes from the
+      earlier v0 runs.
+    source_ids: [mc-pythia-12b, pythia-repo]
+  evaluation_materials:
+    status: public
+    note: >-
+      All Pythia models were evaluated with EleutherAI's LM Evaluation Harness; results by model
+      and step are in the repository's results/json directory.
+    source_ids: [mc-pythia-12b]
+run_notes:
+  - text: >-
+      The card notes that Pythia uses the same tokenizer as GPT-NeoX-20B and that branch
+      step143000 is identical to the main branch.
+    source_ids: [mc-pythia-12b]
+provenance:
+  text: >-
+    Trained from scratch by EleutherAI on the Pile, without deduplication, using the GPT-NeoX
+    library. The current weights come from the April 2023 retraining of the suite; the earlier
+    v0 models remain available separately. The repository notes that the 6.9B and 12B models
+    used a different initialization than intended because the value was not set in the config.
+  derived_from:
+    - name: The Pile
+      artifact_slug: the-pile
+      url: https://pile.eleuther.ai/
+      note: Pretraining data (standard, non-deduplicated version).
+  source_ids: [mc-pythia-12b, pythia-repo]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2023-04-03
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-pythia-12b
+    title: EleutherAI/pythia-12b model card
+    url: https://huggingface.co/EleutherAI/pythia-12b
+    publisher: EleutherAI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pythia-repo
+    title: "EleutherAI/pythia: Interpreting Transformers Across Time and Scale"
+    url: https://github.com/EleutherAI/pythia
+    publisher: EleutherAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pythia-license
+    title: EleutherAI/pythia LICENSE
+    url: https://raw.githubusercontent.com/EleutherAI/pythia/main/LICENSE
+    publisher: EleutherAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt-neox-license
+    title: EleutherAI/gpt-neox LICENSE
+    url: https://raw.githubusercontent.com/EleutherAI/gpt-neox/main/LICENSE
+    publisher: EleutherAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pythia-paper
+    title: "Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling (arXiv 2304.01373)"
+    url: https://arxiv.org/abs/2304.01373
+    publisher: EleutherAI (arXiv)
+    kind: paper
+    published_at: 2023-04-03
+    accessed_at: 2026-09-29
+  - id: pile-hf-card
+    title: EleutherAI/pile dataset card
+    url: https://huggingface.co/datasets/EleutherAI/pile
+    publisher: EleutherAI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: eleuther-about
+    title: About | EleutherAI
+    url: https://www.eleuther.ai/about
+    publisher: EleutherAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-dc
+    title: IRS Exempt Organizations Business Master File Extract (District of Columbia)
+    url: https://www.irs.gov/pub/irs-soi/eo_dc.csv
+    publisher: U.S. Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

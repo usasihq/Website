@@ -14,8 +14,11 @@
  *                         amount. Never guess URL parameters.
  *  support.contactUrl     Optional https:// or mailto: contact for questions.
  *  repository.url         https://github.com/<owner>/<repo> once the code is
- *                         pushed. Enables "Edit this entry", "Report a
- *                         correction", and contribution links.
+ *                         pushed. Enables "Edit this entry" and GitHub issue
+ *                         links (corrections go to contact.email until then).
+ *  contact.email          Public contact address (corrections, questions).
+ *  socials                Official USASI profiles, shown as plain outbound
+ *                         links (no embeds, widgets, or tracking scripts).
  * ─────────────────────────────────────────────────────────────────────────
  *
  * Client-safe: plain data plus validation.
@@ -36,8 +39,19 @@ const RAW_CONFIG = {
     tipUrl: null as string | null,
     providerLabel: null as string | null,
     amountLinks: [] as Array<{ label: string; url: string }>,
-    contactUrl: null as string | null,
+    contactUrl: "mailto:usasihq@gmail.com" as string | null,
   },
+  contact: {
+    email: "usasihq@gmail.com" as string | null,
+  },
+  socials: [
+    { label: "GitHub", handle: "usasihq", url: "https://github.com/usasihq" },
+    { label: "Hugging Face", handle: "usasihq", url: "https://huggingface.co/usasihq" },
+    { label: "X", handle: "@usasihq", url: "https://x.com/usasihq" },
+    { label: "YouTube", handle: "@USASIHQ", url: "https://www.youtube.com/@USASIHQ" },
+    { label: "Bluesky", handle: "@usasihq.bsky.social", url: "https://bsky.app/profile/usasihq.bsky.social" },
+    { label: "Truth Social", handle: "@Usasihq", url: "https://truthsocial.com/@Usasihq" },
+  ] as Array<{ label: string; handle: string; url: string }>,
   repository: {
     url: null as string | null,
     branch: "main",
@@ -108,6 +122,24 @@ const RepositoryConfigSchema = z
 
 export type RepositoryConfig = z.infer<typeof RepositoryConfigSchema>;
 
+const ContactSchema = z
+  .object({
+    email: z
+      .string()
+      .trim()
+      .regex(/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/, "Must be an email address")
+      .nullable(),
+  })
+  .strict();
+
+const SocialSchema = z
+  .object({
+    label: z.string().trim().min(1).max(30),
+    handle: z.string().trim().min(1).max(60),
+    url: HttpsLink,
+  })
+  .strict();
+
 const SiteConfigSchema = z
   .object({
     name: z.string(),
@@ -116,11 +148,22 @@ const SiteConfigSchema = z
     domain: z.string(),
     disclaimer: z.string(),
     support: SupportConfigSchema,
+    contact: ContactSchema,
+    socials: z.array(SocialSchema).max(10),
     repository: RepositoryConfigSchema,
   })
   .strict();
 
 export type SiteConfig = z.infer<typeof SiteConfigSchema>;
+export type Social = z.infer<typeof SocialSchema>;
+
+export function mailtoHref(email: string, subject?: string, body?: string): string {
+  const params = new URLSearchParams();
+  if (subject) params.set("subject", subject);
+  if (body) params.set("body", body);
+  const query = params.toString().replace(/\+/g, "%20");
+  return `mailto:${email}${query ? `?${query}` : ""}`;
+}
 
 export function parseSupportConfig(input: unknown): SupportConfig {
   return SupportConfigSchema.parse(input);

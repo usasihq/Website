@@ -1,0 +1,124 @@
+slug: tulu
+name: Tülu
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [ai2-tulu-page, mc-tulu31-8b]
+organization_slugs: [ai2]
+links:
+  - label: Tülu project page
+    url: https://allenai.org/tulu
+    kind: website
+  - label: Tülu 3 technical report (arXiv 2411.15124)
+    url: https://arxiv.org/abs/2411.15124
+    kind: paper
+  - label: open-instruct post-training code
+    url: https://github.com/allenai/open-instruct
+    kind: repository
+  - label: Tülu 3 announcement
+    url: https://allenai.org/blog/tulu-3-technical
+    kind: release-notes
+summary:
+  text: >-
+    Tülu is Ai2's line of instruction-following models together with the open post-training
+    recipe used to produce them. Tülu 3 (November 2024) applied supervised fine-tuning, Direct
+    Preference Optimization, and reinforcement learning with verifiable rewards (RLVR) to Meta's
+    Llama 3.1 base models at 8B and 70B, followed by a 405B model in January 2025 and by Tülu
+    3.1 8B, which changed only the final RL stage (from PPO to GRPO).
+  source_ids: [ai2-tulu-page, tulu3-paper, ai2-tulu3-blog, ai2-tulu3-405b-blog, mc-tulu31-8b]
+useful_for:
+  text: >-
+    Ai2 presents Tülu 3 as a documented, reproducible post-training package, releasing the
+    models together with training data, code, and evaluation tools. The model card notes it
+    is one step in the process of training fully open models such as OLMo.
+  source_ids: [ai2-tulu-page, tulu3-paper, mc-tulu31-8b]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The Tülu models and recipe are developed and released by Ai2 (Allen Institute for AI),
+    which describes itself as a Seattle-based non-profit AI research institute. The Tülu 3
+    models are fine-tunes of Meta's Llama 3.1 base models; the base models are recorded as
+    provenance. Eligibility of each release is assessed on the release record.
+  source_ids: [ai2-tulu-page, mc-tulu31-8b, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Llama 3.1 Tülu 3.1 8B release record.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    The Tülu 3 models are post-trained from Meta's Llama 3.1 base models (8B, 70B, and 405B);
+    the Tülu cards state that the size and composition of the Llama 3.1 pretraining corpus is
+    unknown. Ai2 supplies the post-training data (the Tülu 3 SFT mixture, preference mixtures,
+    and RLVR prompts), code, and recipe.
+  derived_from:
+    - name: Llama 3.1 base models (Meta)
+      artifact_slug: llama
+      url: https://huggingface.co/meta-llama/Llama-3.1-8B
+      note: Base models for Tülu 3 at 8B, 70B, and 405B.
+  source_ids: [tulu3-paper, mc-tulu3-8b-sft, mc-tulu31-8b]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2024-11-21
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ai2-tulu-page
+    title: Tulu | Ai2
+    url: https://allenai.org/tulu
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tulu3-paper
+    title: "Tulu 3: Pushing Frontiers in Open Language Model Post-Training (arXiv 2411.15124)"
+    url: https://arxiv.org/abs/2411.15124
+    publisher: Ai2 (arXiv)
+    kind: paper
+    published_at: 2024-11-22
+    accessed_at: 2026-09-29
+  - id: ai2-tulu3-blog
+    title: "Tülu 3: The next era in open post-training"
+    url: https://allenai.org/blog/tulu-3-technical
+    publisher: Ai2
+    kind: announcement
+    published_at: 2024-11-21
+    accessed_at: 2026-09-29
+  - id: ai2-tulu3-405b-blog
+    title: Scaling the Tülu 3 post-training recipes to surpass the performance of DeepSeek V3
+    url: https://allenai.org/blog/tulu-3-405b
+    publisher: Ai2
+    kind: announcement
+    published_at: 2025-01-30
+    accessed_at: 2026-09-29
+  - id: mc-tulu31-8b
+    title: allenai/Llama-3.1-Tulu-3.1-8B model card
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-tulu3-8b-sft
+    title: allenai/Llama-3.1-Tulu-3-8B-SFT model card
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3-8B-SFT
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

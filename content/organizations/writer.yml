@@ -1,0 +1,168 @@
+slug: writer
+name: Writer
+legal_name:
+  text: Writer, Inc.
+  source_ids: [writer-psa, writer-oml]
+website: https://writer.com
+logo_text: W
+summary:
+  text: >-
+    Writer is a San Francisco enterprise AI company, founded in 2020, whose platform includes
+    the WRITER Agent, AI Studio, and related tools for business teams. The platform uses
+    Writer's own Palmyra X models by default, and Writer has also published some Palmyra
+    models as downloadable weights on Hugging Face.
+  source_ids: [writer-company, writer-home, writer-models, writer-hf]
+organization_roles: [model-developer, enterprise-software]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [writer-company, writer-psa]
+other_locations:
+  - label: New York, New York
+    country: US
+    source_ids: [writer-company]
+  - label: Chicago, Illinois
+    country: US
+    source_ids: [writer-company]
+  - label: Austin, Texas
+    country: US
+    source_ids: [writer-company]
+  - label: London, United Kingdom
+    country: GB
+    source_ids: [writer-company]
+founded:
+  year: 2020
+  source_ids: [writer-company]
+sectors: [enterprise, agents, open-models]
+status_note: null
+products:
+  - id: palmyra-api
+    name: Palmyra models via the Writer API
+    kind: hosted-model-api
+    access: >-
+      API access to Writer's Palmyra X6, X5, and X4 models, authenticated with a Writer API
+      key; the developer documentation suggests signing up for a free account to start.
+    url: https://dev.writer.com/home/models
+    source_ids: [writer-dev-models]
+    last_reviewed: 2026-09-29
+  - id: writer-agent
+    name: WRITER Agent
+    kind: enterprise-software
+    access: >-
+      Enterprise agent that plans and carries out multi-step work across a company's data and
+      tools. Offered with a free trial sign-up, subscription plans, and demos through
+      Writer's sales team.
+    url: https://writer.com/product/writer-agent/
+    source_ids: [writer-agent]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Writer's models page lists Palmyra X6 as the default model on its platform and says
+      administrators can also enable models from other providers, such as Anthropic and
+      Google.
+    source_ids: [writer-models]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Writer's company page lists its headquarters at 111 Maiden Lane in San Francisco, with
+    other offices in New York, Chicago, Austin, and London. Its platform services agreement
+    (August 2026) names Writer, Inc. at the same San Francisco address and applies California
+    law. The London office is one of several; no foreign parent or headquarters was found.
+  source_ids: [writer-company, writer-psa]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Writer's newest Palmyra X5 and X6 models are offered through its platform and API; this
+    catalog found no downloadable weights for them. On Hugging Face, Writer has published
+    Palmyra-X-4.3-73B and domain models such as Palmyra-Med-70B-32K under the Writer Open
+    Model License, which permits only non-commercial use unless a separate license is
+    obtained, and the Palmyra-mini models (September 2025) under Apache 2.0.
+  source_ids: [writer-dev-models, writer-models, writer-hf, palmyra-x43-card, palmyra-med-32k-card, writer-oml, palmyra-mini-card]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: writer-company
+    title: Company | WRITER
+    url: https://writer.com/company/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-psa
+    title: Writer platform services agreement
+    url: https://writer.com/legal/platform-services/
+    publisher: Writer, Inc.
+    kind: official-page
+    published_at: 2026-08-05
+    accessed_at: 2026-09-29
+  - id: writer-home
+    title: WRITER
+    url: https://writer.com/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-agent
+    title: WRITER Agent
+    url: https://writer.com/product/writer-agent/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-models
+    title: Models | WRITER
+    url: https://writer.com/models/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-dev-models
+    title: Models | WRITER developer documentation
+    url: https://dev.writer.com/home/models
+    publisher: Writer
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-hf
+    title: Writer on Hugging Face
+    url: https://huggingface.co/Writer
+    publisher: Writer
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-oml
+    title: Writer Open Model License
+    url: https://writer.com/legal/open-model-license/
+    publisher: Writer, Inc.
+    kind: license
+    published_at: 2024-05-31
+    accessed_at: 2026-09-29
+  - id: palmyra-mini-card
+    title: Writer/palmyra-mini model card
+    url: https://huggingface.co/Writer/palmyra-mini
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-x43-card
+    title: Writer/Palmyra-X-4.3-73B model card
+    url: https://huggingface.co/Writer/Palmyra-X-4.3-73B
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-med-32k-card
+    title: Writer/Palmyra-Med-70B-32K model card
+    url: https://huggingface.co/Writer/Palmyra-Med-70B-32K
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29

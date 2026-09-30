@@ -1,0 +1,187 @@
+slug: esm3-sm-open-v1
+name: ESM3 open small (esm3-sm-open-v1)
+kind: model
+record_level: release
+family_slug: esm
+version: "esm3-sm-open-v1"
+maintainers:
+  - name: Biohub (Chan Zuckerberg Biohub, Inc.)
+    organization_slug: biohub
+    source_ids: [mc-esm3-open, biohub-esm-license]
+  - name: EvolutionaryScale (original developer; now part of Biohub)
+    organization_slug: evolutionaryscale
+    source_ids: [es-esm3-blog, es-home]
+organization_slugs: [biohub, evolutionaryscale]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/biohub/esm3-sm-open-v1
+    kind: model-hub
+  - label: GitHub repository (Biohub/esm)
+    url: https://github.com/Biohub/esm
+    kind: repository
+  - label: ESM3 README
+    url: https://github.com/Biohub/esm/blob/main/_assets/ESM3_README.md
+    kind: documentation
+  - label: ESM3 paper (Science, doi:10.1126/science.ads0018)
+    url: https://www.science.org/doi/10.1126/science.ads0018
+    kind: paper
+summary:
+  text: >-
+    The openly released small ESM3 model, which EvolutionaryScale describes as a 1.4B-parameter
+    open model. ESM3 is a generative masked language model that takes partial prompts across
+    protein sequence, structure, and function tracks and predicts all three. EvolutionaryScale
+    released it in June 2024; Biohub now distributes it under the MIT license.
+  source_ids: [es-esm3-blog, esm3-readme, mc-esm3-open]
+useful_for:
+  text: >-
+    Designing or completing proteins from partial sequence, structure, and function prompts,
+    run locally on a GPU or CPU with the esm package.
+  source_ids: [mc-esm3-open, esm3-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Developed by EvolutionaryScale, PBC (New York address in its former terms of use, effective
+    January 15, 2025) and now
+    published by Biohub, whose repository license names Chan Zuckerberg Biohub, Inc. The IRS
+    lists Chan Zuckerberg Biohub Inc in Redwood City, California as a 501(c)(3) organization.
+  source_ids: [es-terms-legacy, es-esm3-blog, biohub-esm-license, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. Biohub's README asks users to follow the
+    Biohub Acceptable Use Policy.
+  source_ids: [mc-esm3-open, hf-api-esm3-open, esm3-readme]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/Biohub/esm/main/LICENSE.md
+    applies_to: weights-and-code
+    source_ids: [mc-esm3-open, biohub-esm-license, esm3-readme]
+license_notes:
+  text: >-
+    The model card's text (its metadata has no license field) and the ESM3 README place the
+    model under the MIT license, and the LICENSE file names Chan Zuckerberg Biohub, Inc. as
+    copyright holder (2026). The EvolutionaryScale site still hosts an EvolutionaryScale, PBC
+    Community License Agreement covering the ESM-3 open model code and weights that limits use
+    to non-commercial purposes; the current Biohub materials state MIT, and the sources
+    reviewed do not say when the terms changed. Biohub's README also asks users to follow its
+    Acceptable Use Policy.
+  source_ids: [mc-esm3-open, hf-api-esm3-open, esm3-readme, biohub-esm-license, es-community-license]
+checklist:
+  weights:
+    status: public
+    note: Downloadable from Hugging Face without gating.
+    source_ids: [mc-esm3-open, hf-api-esm3-open]
+  inference_code:
+    status: public
+    note: >-
+      The esm package (pip install esm) loads the model locally; the ESM3 README gives an
+      example.
+    source_ids: [esm3-readme, mc-esm3-open]
+  training_code:
+    status: unknown
+    note: >-
+      The public repository covers local inference and API clients; no ESM3 training code was
+      identified in the pages reviewed.
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The card describes training on 2.78 billion natural proteins, augmented to 3.15 billion
+      sequences, 236 million structures, and 539 million function-annotated proteins (771
+      billion tokens), with viral proteins and some USDA Select Agent proteins removed. The
+      training set itself was not found as a download.
+    source_ids: [mc-esm3-open]
+  training_recipe:
+    status: unknown
+    note: >-
+      The ESM3 paper in Science describes the model; it was not reviewed for this record.
+    source_ids: []
+  evaluation_materials:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      The ESM3 README loads the model with ESM3.from_pretrained("esm3-sm-open-v1") and runs it on
+      "cuda" or "cpu".
+    source_ids: [esm3-readme]
+provenance:
+  text: >-
+    Trained by EvolutionaryScale on natural protein sequences with synthetic augmentation;
+    viral data and some proteins from organisms on the USDA Select Agents and Toxins list were
+    removed, and the function decoder was filtered for potentially harmful keywords.
+  derived_from: []
+  source_ids: [mc-esm3-open, es-esm3-blog]
+tags: [language-model, multimodal]
+publication_status: published
+archive_note: null
+released_at: 2024-06-25
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-esm3-open
+    title: biohub/esm3-sm-open-v1 model card
+    url: https://huggingface.co/biohub/esm3-sm-open-v1
+    publisher: Biohub
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-esm3-open
+    title: biohub/esm3-sm-open-v1 (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/biohub/esm3-sm-open-v1
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: esm3-readme
+    title: ESM3 README (Biohub/esm, _assets/ESM3_README.md)
+    url: https://raw.githubusercontent.com/Biohub/esm/main/_assets/ESM3_README.md
+    publisher: Biohub
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: biohub-esm-license
+    title: Biohub/esm LICENSE.md
+    url: https://raw.githubusercontent.com/Biohub/esm/main/LICENSE.md
+    publisher: Chan Zuckerberg Biohub, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-esm3-blog
+    title: "ESM3: Simulating 500 million years of evolution with a language model"
+    url: https://www.evolutionaryscale.ai/blog/esm3-release
+    publisher: EvolutionaryScale
+    kind: announcement
+    published_at: 2024-06-25
+    accessed_at: 2026-09-29
+  - id: es-community-license
+    title: Community License Agreement | EvolutionaryScale
+    url: https://www.evolutionaryscale.ai/policies/community-license-agreement
+    publisher: EvolutionaryScale
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-home
+    title: EvolutionaryScale (home page)
+    url: https://www.evolutionaryscale.ai/
+    publisher: EvolutionaryScale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-terms-legacy
+    title: Terms of Use (historical) | EvolutionaryScale
+    url: https://www.evolutionaryscale.ai/policies/terms-of-use
+    publisher: EvolutionaryScale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

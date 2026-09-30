@@ -1,0 +1,146 @@
+slug: cloudflare
+name: Cloudflare
+legal_name:
+  text: Cloudflare, Inc.
+  source_ids: [cf-10k-2025, cf-10q-2026q2]
+website: https://www.cloudflare.com
+logo_text: CF
+summary:
+  text: >-
+    Cloudflare describes itself as a connectivity cloud company. Its AI offerings include
+    Workers AI, which runs machine learning models on serverless GPUs across Cloudflare's
+    global network, and AI Gateway, for monitoring and controlling an application's requests
+    to AI model providers. It acquired the model-hosting platform Replicate in December 2025.
+  source_ids: [cf-replicate-press, cf-10k-2025, cf-workers-ai-docs, cf-ai-gateway-docs, cf-10k-2025-bc-note]
+organization_roles: [cloud-provider, inference-provider, developer-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation, incorporated in July 2009
+  source_ids: [cf-10k-2025]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [cf-10q-2026q2, cf-10k-2025]
+other_locations: []
+founded:
+  year: 2009
+  source_ids: [cf-10k-2025]
+sectors: [cloud]
+status_note: null
+products:
+  - id: workers-ai
+    name: Workers AI
+    kind: inference-service
+    access: >-
+      Serverless inference on GPUs in Cloudflare's network, called from Workers, Pages, or the
+      Cloudflare REST API against a catalog of open-source models; usage-based pricing on
+      Free and Paid plans.
+    url: https://developers.cloudflare.com/workers-ai/
+    source_ids: [cf-workers-ai-docs]
+    last_reviewed: 2026-09-29
+  - id: ai-gateway
+    name: AI Gateway
+    kind: developer-tool
+    access: >-
+      Proxy placed between an application and AI providers such as Workers AI, OpenAI,
+      Anthropic, Google, and Replicate, adding analytics, logging, caching, rate limiting,
+      retries, and model fallback; available on all plans.
+    url: https://developers.cloudflare.com/ai-gateway/
+    source_ids: [cf-ai-gateway-docs]
+    last_reviewed: 2026-09-29
+  - id: replicate
+    name: Replicate
+    kind: inference-service
+    access: >-
+      Cloud API for running, fine-tuning, and deploying machine learning models, including
+      community-contributed models packaged with the open-source Cog tool; billed by compute
+      time.
+    url: https://replicate.com/
+    source_ids: [replicate-home, cf-10k-2025-bc-note]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Cloudflare announced its agreement to acquire Replicate on November 17, 2025. Its 2025
+      Form 10-K states that it acquired all outstanding shares of Replicate on December 1,
+      2025. Replicate's announcement said its API would continue unchanged.
+    source_ids: [cf-replicate-press, cf-10k-2025-bc-note, replicate-blog-joining]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Cloudflare, Inc. is a Delaware corporation. The cover pages of its Form 10-K for fiscal
+    2025 and its Form 10-Q for the quarter ended June 30, 2026 list its principal executive
+    offices at 101 Townsend Street, San Francisco, California.
+  source_ids: [cf-10k-2025, cf-10q-2026q2]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    The AI offerings reviewed here are hosted services. Workers AI serves models from a catalog
+    that Cloudflare describes as open-source models, Replicate hosts community-contributed
+    models, and AI Gateway routes requests to model providers. This catalog has not assessed
+    any model weights published by Cloudflare.
+  source_ids: [cf-workers-ai-docs, cf-ai-gateway-docs, replicate-home]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: cf-10k-2025
+    title: Cloudflare, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/cloud-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (Cloudflare filing)
+    kind: filing
+    published_at: 2026-02-26
+    accessed_at: 2026-09-29
+  - id: cf-10k-2025-bc-note
+    title: Cloudflare, Inc. Form 10-K for fiscal 2025, Business Combinations note (XBRL viewer page R21)
+    url: https://www.sec.gov/Archives/edgar/data/1477333/000147733326000016/R21.htm
+    publisher: U.S. Securities and Exchange Commission (Cloudflare filing)
+    kind: filing
+    published_at: 2026-02-26
+    accessed_at: 2026-09-29
+  - id: cf-10q-2026q2
+    title: Cloudflare, Inc. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/0001477333/000147733326000054/cloud-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (Cloudflare filing)
+    kind: filing
+    published_at: 2026-08-06
+    accessed_at: 2026-09-29
+  - id: cf-replicate-press
+    title: Cloudflare to Acquire Replicate to Build the Most Seamless AI Cloud for Developers
+    url: https://www.cloudflare.com/press/press-releases/2025/cloudflare-to-acquire-replicate-to-build-the-most-seamless-ai-cloud-for-developers/
+    publisher: Cloudflare
+    kind: announcement
+    published_at: 2025-11-17
+    accessed_at: 2026-09-29
+  - id: replicate-blog-joining
+    title: Replicate is joining Cloudflare
+    url: https://replicate.com/blog/replicate-cloudflare
+    publisher: Replicate
+    kind: announcement
+    published_at: 2025-11-17
+    accessed_at: 2026-09-29
+  - id: replicate-home
+    title: Replicate
+    url: https://replicate.com/
+    publisher: Replicate
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cf-workers-ai-docs
+    title: Workers AI · Cloudflare Workers AI docs
+    url: https://developers.cloudflare.com/workers-ai/
+    publisher: Cloudflare
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cf-ai-gateway-docs
+    title: AI Gateway · Cloudflare AI Gateway docs
+    url: https://developers.cloudflare.com/ai-gateway/
+    publisher: Cloudflare
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29

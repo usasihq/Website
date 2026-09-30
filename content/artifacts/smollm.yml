@@ -1,0 +1,147 @@
+slug: smollm
+name: SmolLM
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Hugging Face (Smol Models Research, HuggingFaceTB)
+    organization_slug: hugging-face
+    source_ids: [smollm-repo-readme, hftb-org]
+organization_slugs: [hugging-face]
+links:
+  - label: huggingface/smollm repository
+    url: https://github.com/huggingface/smollm
+    kind: repository
+  - label: SmolLM3 blog post
+    url: https://huggingface.co/blog/smollm3
+    kind: release-notes
+  - label: SmolLM2 paper (arXiv 2502.02737)
+    url: https://arxiv.org/abs/2502.02737
+    kind: paper
+  - label: HuggingFaceTB on Hugging Face
+    url: https://huggingface.co/HuggingFaceTB
+    kind: model-hub
+summary:
+  text: >-
+    SmolLM is Hugging Face's series of small language models. The first SmolLM release (July
+    2024) came in 135M, 360M, and 1.7B sizes; SmolLM2 kept those three sizes, with the 1.7B model
+    trained on about 11 trillion tokens (paper February 2025); and SmolLM3 (July 2025) is a 3B
+    model released as base and instruct checkpoints, with a dual-mode reasoning instruct model.
+    The SmolVLM vision-language models are maintained in the same repository.
+  source_ids: [smollm-blog, smollm2-paper, smollm-text-readme, smollm3-blog, smollm-repo-readme]
+useful_for:
+  text: >-
+    Hugging Face describes the models as compact enough to run on-device, and publishes the
+    training data mixtures, configurations, and code alongside the weights.
+  source_ids: [smollm-repo-readme, smollm-text-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The models are published by Hugging Face's HuggingFaceTB organization ("Hugging Face Smol
+    Models Research") and documented in Hugging Face's GitHub repository. Hugging Face's terms of
+    service identify Hugging Face, Inc., a Delaware corporation, as the provider of its services,
+    and its privacy policy states that the company is located in the United States. See the
+    hugging-face organization record for the dual-country assessment. Eligibility of each release
+    is assessed on the release record.
+  source_ids: [hftb-org, smollm-repo-readme, hf-tos, hf-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the SmolLM3 3B release record.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    Trained from scratch by Hugging Face on public datasets. SmolLM used the SmolLM-Corpus
+    (Cosmopedia v2, synthetic textbooks and stories generated with Mixtral; FineWeb-Edu; and
+    Python-Edu, filtered from The Stack); SmolLM2 added the FineMath,
+    Stack-Edu, and SmolTalk datasets; SmolLM3's pretraining mix includes FineWeb-Edu, DCLM,
+    FineWeb-2, FineMath, and Stack-Edu among other public datasets.
+  derived_from:
+    - name: FineWeb-Edu (subset of FineWeb)
+      artifact_slug: fineweb
+      url: https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu
+      note: Educational web subset filtered from FineWeb; used across SmolLM generations.
+  source_ids: [smollm-blog, smollm2-paper, smollm3-pretraining-collection, fineweb-paper]
+tags: [language-model, reasoning, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2024-07-16
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: smollm-repo-readme
+    title: huggingface/smollm README (Smol Models)
+    url: https://raw.githubusercontent.com/huggingface/smollm/main/README.md
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: smollm-text-readme
+    title: SmolLM family README (text/)
+    url: https://raw.githubusercontent.com/huggingface/smollm/main/text/README.md
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hftb-org
+    title: HuggingFaceTB (Hugging Face Smol Models Research)
+    url: https://huggingface.co/HuggingFaceTB
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: smollm-blog
+    title: SmolLM - blazingly fast and remarkably powerful
+    url: https://huggingface.co/blog/smollm
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2024-07-16
+    accessed_at: 2026-09-29
+  - id: smollm2-paper
+    title: "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model (arXiv 2502.02737)"
+    url: https://arxiv.org/abs/2502.02737
+    publisher: Hugging Face (arXiv)
+    kind: paper
+    published_at: 2025-02-04
+    accessed_at: 2026-09-29
+  - id: smollm3-blog
+    title: "SmolLM3: smol, multilingual, long-context reasoner"
+    url: https://huggingface.co/blog/smollm3
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2025-07-08
+    accessed_at: 2026-09-29
+  - id: smollm3-pretraining-collection
+    title: SmolLM3 pretraining datasets (Hugging Face collection)
+    url: https://huggingface.co/collections/HuggingFaceTB/smollm3-pretraining-datasets-685a7353fdc01aecde51b1d9
+    publisher: Hugging Face
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fineweb-paper
+    title: "The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale (arXiv 2406.17557)"
+    url: https://arxiv.org/abs/2406.17557
+    publisher: Hugging Face (arXiv)
+    kind: paper
+    published_at: 2024-06-25
+    accessed_at: 2026-09-29
+  - id: hf-tos
+    title: Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,101 @@
+slug: chronos
+name: Chronos (time series models)
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Amazon (Amazon Web Services)
+    organization_slug: amazon
+    source_ids: [chronos-readme, amazon-science-chronos2, chronos2-report-html]
+organization_slugs: [amazon]
+links:
+  - label: chronos-forecasting repository
+    url: https://github.com/amazon-science/chronos-forecasting
+    kind: repository
+  - label: Chronos models on Hugging Face
+    url: https://huggingface.co/collections/amazon/chronos-models-65f1791d630a8d57cb718444
+    kind: model-hub
+  - label: "Chronos-2: From Univariate to Universal Forecasting (arXiv 2510.15821)"
+    url: https://arxiv.org/abs/2510.15821
+    kind: paper
+  - label: Original Chronos paper (arXiv 2403.07815)
+    url: https://arxiv.org/abs/2403.07815
+    kind: paper
+summary:
+  text: >-
+    Chronos is Amazon's family of pretrained time-series forecasting models. It includes the
+    original T5-based Chronos models (March 2024, 8M to 710M parameters), the patch-based
+    Chronos-Bolt models (November 2024), and Chronos-2 (October 2025), a 120M-parameter
+    encoder-only model that adds multivariate and covariate-informed forecasting.
+  source_ids: [chronos-readme, chronos2-card]
+useful_for:
+  text: >-
+    The repository describes zero-shot probabilistic forecasting, with local inference through
+    the chronos-forecasting package and production deployment on Amazon SageMaker.
+  source_ids: [chronos-readme, chronos2-card]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The models are published by Amazon under the amazon-science GitHub organization and the
+    amazon Hugging Face organization, and Amazon's science blog and the Chronos-2 report
+    attribute the work to Amazon Web Services, a segment of Amazon.com, Inc. Amazon.com, Inc.
+    has its principal executive offices in Seattle, Washington, per its fiscal 2025 Form 10-K.
+  source_ids: [chronos-readme, amazon-science-chronos2, chronos2-report-html, amzn-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    The chronos-forecasting repository is licensed under Apache 2.0, and the Chronos-2 model
+    card also lists Apache 2.0. Check the model card for each checkpoint.
+  source_ids: [chronos-readme, chronos2-card]
+checklist: {}
+run_notes: []
+provenance: null
+tags: [time-series, forecasting]
+publication_status: published
+archive_note: null
+released_at: 2024-03-13
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: chronos-readme
+    title: amazon-science/chronos-forecasting README
+    url: https://raw.githubusercontent.com/amazon-science/chronos-forecasting/main/README.md
+    publisher: Amazon Science (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chronos2-card
+    title: amazon/chronos-2 model card
+    url: https://huggingface.co/amazon/chronos-2/raw/main/README.md
+    publisher: Amazon (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: amazon-science-chronos2
+    title: "Introducing Chronos-2: From univariate to universal forecasting"
+    url: https://www.amazon.science/blog/introducing-chronos-2-from-univariate-to-universal-forecasting
+    publisher: Amazon Science
+    kind: announcement
+    published_at: 2025-10-20
+    accessed_at: 2026-09-29
+  - id: chronos2-report-html
+    title: "Chronos-2: From Univariate to Universal Forecasting (arXiv 2510.15821, HTML)"
+    url: https://arxiv.org/html/2510.15821
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-10-17
+    accessed_at: 2026-09-29
+  - id: amzn-10k-2025
+    title: Amazon.com, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm
+    publisher: Amazon.com, Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

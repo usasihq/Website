@@ -1,0 +1,201 @@
+slug: palmyra
+name: Palmyra
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Writer
+    organization_slug: writer
+    source_ids: [writer-models, writer-hf]
+organization_slugs: [writer]
+links:
+  - label: Writer models page
+    url: https://writer.com/models/
+    kind: website
+  - label: Writer developer documentation (models)
+    url: https://dev.writer.com/home/models
+    kind: documentation
+  - label: Writer on Hugging Face
+    url: https://huggingface.co/Writer
+    kind: model-hub
+  - label: Palmyra-mini announcement (Hugging Face blog)
+    url: https://huggingface.co/blog/Writer/announcing-palmyra-mini
+    kind: release-notes
+summary:
+  text: >-
+    Palmyra is Writer's family of language models. The Palmyra X models (currently X4, X5, and
+    X6) are offered through Writer's platform and API. Writer has also published Palmyra
+    models on Hugging Face: Palmyra-X-4.3-73B and domain models for medicine and finance under
+    its non-commercial open model license, and the small Palmyra-mini models (September 2025)
+    under Apache 2.0.
+  source_ids: [writer-dev-models, writer-models, writer-hf, palmyra-x43-card, palmyra-med-32k-card, palmyra-fin-card, writer-oml, palmyra-mini-blog]
+useful_for:
+  text: >-
+    Writer positions Palmyra X6 as the default model for agentic work on its enterprise
+    platform. The open Palmyra-mini models are described for research and development,
+    particularly on tasks that need mathematical and logical reasoning.
+  source_ids: [writer-models, palmyra-mini-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Palmyra models are developed by Writer, Inc., whose company page and platform
+    services agreement place its headquarters at 111 Maiden Lane, San Francisco. Eligibility
+    of each release is assessed on the release record.
+  source_ids: [writer-company, writer-psa]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: >-
+    Assessed per release; see the Palmyra-mini records. Palmyra-X-4.3-73B can be downloaded
+    only after requesting access on Hugging Face, agreeing to the Writer Open Model License,
+    and sharing contact information; the repository is set to manual approval, so Writer
+    reviews each request.
+  source_ids: [palmyra-x43-card, palmyra-x43-hf-api, hf-gated-docs]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    The open Palmyra-mini models are fine-tunes of other developers' models: palmyra-mini
+    and palmyra-mini-thinking-a are fine-tuned from Qwen2.5-1.5B (Alibaba Cloud's Qwen
+    family), and palmyra-mini-thinking-b from NVIDIA's OpenReasoning-Nemotron-1.5B. The model
+    card for Palmyra-Med-70B-32K says it builds on Writer's Palmyra-Med-70B.
+  derived_from:
+    - name: Qwen2.5-1.5B
+      artifact_slug: null
+      url: https://huggingface.co/Qwen/Qwen2.5-1.5B
+      note: Base of palmyra-mini and palmyra-mini-thinking-a.
+    - name: OpenReasoning-Nemotron-1.5B
+      artifact_slug: null
+      url: https://huggingface.co/nvidia/OpenReasoning-Nemotron-1.5B
+      note: Base of palmyra-mini-thinking-b; NVIDIA's card says it derives from Qwen2.5-1.5B.
+  source_ids: [palmyra-mini-card, palmyra-mini-thinking-a-card, palmyra-mini-thinking-b-card, nvidia-orn-card, palmyra-med-32k-card, qwen-hf-org]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: writer-models
+    title: Models | WRITER
+    url: https://writer.com/models/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-dev-models
+    title: Models | WRITER developer documentation
+    url: https://dev.writer.com/home/models
+    publisher: Writer
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-hf
+    title: Writer on Hugging Face
+    url: https://huggingface.co/Writer
+    publisher: Writer
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-company
+    title: Company | WRITER
+    url: https://writer.com/company/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: writer-psa
+    title: Writer platform services agreement
+    url: https://writer.com/legal/platform-services/
+    publisher: Writer, Inc.
+    kind: official-page
+    published_at: 2026-08-05
+    accessed_at: 2026-09-29
+  - id: writer-oml
+    title: Writer Open Model License
+    url: https://writer.com/legal/open-model-license/
+    publisher: Writer, Inc.
+    kind: license
+    published_at: 2024-05-31
+    accessed_at: 2026-09-29
+  - id: palmyra-mini-blog
+    title: "Introducing the Palmyra-mini family: Powerful, lightweight, and ready to reason!"
+    url: https://huggingface.co/blog/Writer/announcing-palmyra-mini
+    publisher: Writer
+    kind: announcement
+    published_at: 2025-09-11
+    accessed_at: 2026-09-29
+  - id: palmyra-mini-card
+    title: Writer/palmyra-mini model card
+    url: https://huggingface.co/Writer/palmyra-mini
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-mini-thinking-a-card
+    title: Writer/palmyra-mini-thinking-a model card
+    url: https://huggingface.co/Writer/palmyra-mini-thinking-a
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-mini-thinking-b-card
+    title: Writer/palmyra-mini-thinking-b model card
+    url: https://huggingface.co/Writer/palmyra-mini-thinking-b
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-orn-card
+    title: nvidia/OpenReasoning-Nemotron-1.5B model card
+    url: https://huggingface.co/nvidia/OpenReasoning-Nemotron-1.5B
+    publisher: NVIDIA
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-x43-card
+    title: Writer/Palmyra-X-4.3-73B model card
+    url: https://huggingface.co/Writer/Palmyra-X-4.3-73B
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-x43-hf-api
+    title: Writer/Palmyra-X-4.3-73B (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/Writer/Palmyra-X-4.3-73B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gated-docs
+    title: Gated models | Hugging Face Hub documentation
+    url: https://huggingface.co/docs/hub/models-gated
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-fin-card
+    title: Writer/Palmyra-Fin-70B-32K model card
+    url: https://huggingface.co/Writer/Palmyra-Fin-70B-32K
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: palmyra-med-32k-card
+    title: Writer/Palmyra-Med-70B-32K model card
+    url: https://huggingface.co/Writer/Palmyra-Med-70B-32K
+    publisher: Writer
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qwen-hf-org
+    title: Qwen on Hugging Face
+    url: https://huggingface.co/Qwen
+    publisher: Qwen (Alibaba Cloud)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,200 @@
+slug: helm
+name: HELM (Holistic Evaluation of Language Models)
+kind: eval
+record_level: project
+family_slug: null
+version: "0.5.16"
+maintainers:
+  - name: Stanford Center for Research on Foundation Models (CRFM)
+    organization_slug: stanford-university
+    source_ids: [helm-readme, helm-pypi, crfm-home]
+organization_slugs: [stanford-university]
+links:
+  - label: GitHub repository
+    url: https://github.com/stanford-crfm/helm
+    kind: repository
+  - label: Documentation
+    url: https://crfm-helm.readthedocs.io/en/latest/
+    kind: documentation
+  - label: Maintenance mode policy
+    url: https://crfm-helm.readthedocs.io/en/latest/maintenance_mode/
+    kind: documentation
+  - label: HELM paper (arXiv)
+    url: https://arxiv.org/abs/2211.09110
+    kind: paper
+  - label: License (Apache 2.0)
+    url: https://raw.githubusercontent.com/stanford-crfm/helm/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    HELM is an open-source Python framework from Stanford's Center for Research on Foundation
+    Models for evaluating foundation models, including language and multimodal models. It
+    provides benchmarks in a standardized format, one interface to models from several
+    providers, metrics beyond accuracy such as efficiency, bias, and toxicity, and a web UI and
+    leaderboards for inspecting results. HELM entered maintenance mode on June 1, 2026.
+  source_ids: [helm-readme, helm-maintenance]
+useful_for:
+  text: >-
+    Running standardized benchmark evaluations of foundation models, reproducing HELM leaderboard
+    results from the published run configurations, and inspecting individual prompts and model
+    responses.
+  source_ids: [helm-readme, helm-reproducing]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The README states that HELM was created by the Center for Research on Foundation Models
+    (CRFM) at Stanford, and the repository sits in the stanford-crfm GitHub organization. The
+    PyPI package lists Stanford CRFM as its author, and CRFM describes itself as an initiative at
+    Stanford HAI. The IRS extract lists Stanford's trustees in Stanford, California, as a
+    501(c)(3) organization.
+  source_ids: [helm-readme, helm-pypi, crfm-home, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the Apache License 2.0; installable from PyPI as crfm-helm. Raw
+    leaderboard results are in a public Google Cloud Storage bucket that needs no
+    authentication.
+  source_ids: [helm-readme, helm-license, helm-pypi, helm-raw-results]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/stanford-crfm/helm/main/LICENSE
+    applies_to: code
+    source_ids: [helm-license]
+license_notes:
+  text: >-
+    Benchmark data is not bundled with the Apache-licensed code. HELM scenarios download data
+    from its original sources, such as URLs or Hugging Face datasets, and cache it locally.
+  source_ids: [helm-adding-scenarios]
+checklist:
+  code:
+    status: public
+    note: Published on GitHub under the Apache License 2.0.
+    source_ids: [helm-readme, helm-license]
+  tasks_data:
+    status: partial
+    note: >-
+      Scenario code fetches each benchmark's data from its original source. Raw results for
+      the HELM leaderboards (Capabilities, Safety, MedHELM, VHELM, and others) can be
+      downloaded from a public storage bucket. The reproduction guide divides MedHELM
+      benchmarks into public, gated (credentials or approval required), and private ones.
+    source_ids: [helm-adding-scenarios, helm-raw-results, helm-reproducing]
+  methodology:
+    status: public
+    note: >-
+      The HELM paper (TMLR 2023) describes the taxonomy of scenarios and metrics, the seven
+      metrics measured, and the standardized evaluation conditions.
+    source_ids: [helm-paper]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The documentation covers installation and a step-by-step procedure for reproducing
+      leaderboards from the run-entry and schema files in the repository.
+    source_ids: [helm-install, helm-reproducing]
+  limitations:
+    status: partial
+    note: >-
+      The HELM paper names areas the benchmark does not yet cover. The maintenance-mode policy
+      sets out what is no longer supported and warns that scenarios and models that depend on
+      external APIs may break without active support.
+    source_ids: [helm-paper, helm-maintenance]
+run_notes:
+  - text: >-
+      The installation guide requires Python 3.10 or later and recommends installing into a
+      virtualenv or conda environment. Text-to-image (HEIM) and vision-language (VHELM)
+      evaluations need extra dependencies.
+    source_ids: [helm-install]
+  - text: >-
+      Under the maintenance-mode policy, HELM is maintained by volunteers on a best-effort
+      basis, and significant issues may be addressed when maintainer bandwidth is available. No
+      new features or leaderboard evaluations will be added. Users for whom the lack of active
+      support is a problem are pointed to alternative frameworks: Evalchemy, Inspect AI Evals,
+      Lighteval, EleutherAI's LM Evaluation Harness, and Unitxt.
+    source_ids: [helm-maintenance]
+provenance: null
+tags: [evaluation, benchmark]
+publication_status: published
+archive_note: null
+released_at: 2026-04-30
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: helm-readme
+    title: HELM README
+    url: https://raw.githubusercontent.com/stanford-crfm/helm/main/README.md
+    publisher: Stanford CRFM
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: helm-license
+    title: HELM LICENSE
+    url: https://raw.githubusercontent.com/stanford-crfm/helm/main/LICENSE
+    publisher: Stanford CRFM
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: helm-pypi
+    title: crfm-helm on PyPI
+    url: https://pypi.org/project/crfm-helm/
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-04-30
+    accessed_at: 2026-09-29
+  - id: helm-maintenance
+    title: Maintenance Mode Policy - HELM documentation
+    url: https://crfm-helm.readthedocs.io/en/latest/maintenance_mode/
+    publisher: Stanford CRFM
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: helm-install
+    title: Installation - HELM documentation
+    url: https://crfm-helm.readthedocs.io/en/latest/installation/
+    publisher: Stanford CRFM
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: helm-reproducing
+    title: Reproducing Leaderboards - HELM documentation
+    url: https://crfm-helm.readthedocs.io/en/latest/reproducing_leaderboards/
+    publisher: Stanford CRFM
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: helm-raw-results
+    title: Downloading Raw Results - HELM documentation
+    url: https://crfm-helm.readthedocs.io/en/latest/downloading_raw_results/
+    publisher: Stanford CRFM
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: helm-adding-scenarios
+    title: Adding New Scenarios - HELM documentation
+    url: https://crfm-helm.readthedocs.io/en/latest/adding_new_scenarios/
+    publisher: Stanford CRFM
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: helm-paper
+    title: Holistic Evaluation of Language Models (arXiv:2211.09110)
+    url: https://arxiv.org/abs/2211.09110
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-16
+    accessed_at: 2026-09-29
+  - id: crfm-home
+    title: Stanford Center for Research on Foundation Models (CRFM)
+    url: https://crfm.stanford.edu/
+    publisher: Stanford CRFM
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

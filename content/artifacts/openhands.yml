@@ -1,0 +1,192 @@
+slug: openhands
+name: OpenHands
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: All Hands AI (OpenHands)
+    organization_slug: all-hands-ai
+    source_ids: [oh-tos, oh-readme]
+organization_slugs: [all-hands-ai]
+links:
+  - label: Repository (Agent Canvas)
+    url: https://github.com/OpenHands/OpenHands
+    kind: repository
+  - label: Repository (Software Agent SDK)
+    url: https://github.com/OpenHands/software-agent-sdk
+    kind: repository
+  - label: Documentation
+    url: https://docs.openhands.dev/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/OpenHands/OpenHands/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/OpenHands/OpenHands/releases
+    kind: release-notes
+summary:
+  text: >-
+    OpenHands is an open-source platform for building and running AI coding agents. Its main
+    repository now holds Agent Canvas, a self-hosted browser control center. Agent Canvas runs the
+    OpenHands agent, or other agents that support the Agent Client Protocol, on local, remote, or
+    cloud backends. The agent itself, the Python SDK, and the Agent Server are developed in the
+    separate Software Agent SDK repository.
+  source_ids: [oh-readme, oh-sdk-readme, oh-docs-home]
+useful_for:
+  text: >-
+    Running coding agents for tasks such as dependency updates, refactors, and code review, and
+    setting up automations triggered on a schedule or by events from services like GitHub and
+    Slack. Agents can run on a laptop, in Docker containers, on VMs, or on hosted backends.
+  source_ids: [oh-readme, oh-sdk-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    OpenHands' terms of service describe the service as built on All Hands AI's own open-source
+    software and point to the OpenHands GitHub repository for its license terms. They also say
+    All Hands AI is headquartered in the United States, and the privacy policy gives a Cambridge,
+    Massachusetts mailing address. The README calls OpenHands Cloud "our
+    commercial offering". The LICENSE files assign copyright to "OpenHands contributors" rather than
+    to a company. No foundation or multi-organization governance body is documented.
+  source_ids: [oh-tos, oh-privacy, oh-readme, oh-license, oh-sdk-license]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [oh-repo, oh-license, oh-sdk-license]
+licenses:
+  - name: MIT License (OpenHands/OpenHands, Agent Canvas)
+    spdx: MIT
+    url: https://github.com/OpenHands/OpenHands/blob/main/LICENSE
+    applies_to: code
+    source_ids: [oh-license]
+  - name: MIT License (OpenHands/software-agent-sdk)
+    spdx: MIT
+    url: https://github.com/OpenHands/software-agent-sdk/blob/main/LICENSE
+    applies_to: code
+    source_ids: [oh-sdk-license]
+license_notes:
+  text: >-
+    The MIT licenses cover the Agent Canvas and Software Agent SDK repositories. OpenHands Cloud
+    is a managed commercial service. The enterprise edition is described as source-available and
+    commercially licensed for self-hosting, not MIT-licensed. The documentation says each public
+    OpenHands repository carries its own license.
+  source_ids: [oh-license, oh-sdk-license, oh-docs-home, oh-enterprise]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [oh-repo, oh-sdk-readme]
+  documentation:
+    status: public
+    note: null
+    source_ids: [oh-docs-home]
+  installation:
+    status: public
+    note: >-
+      Documented installs via npm or npx, Docker, a VM or self-hosted backend, or from source. The
+      npm and source installs need Node.js 24 or later and uv; the Docker install needs Docker.
+    source_ids: [oh-canvas-setup, oh-readme]
+  supported_platforms:
+    status: public
+    note: >-
+      The docs recommend macOS, Linux, or Windows (PowerShell or WSL2) for the most reliable local
+      setup and say mobile Linux environments are not a primary supported target. An early preview
+      desktop app is available for all three operating systems.
+    source_ids: [oh-canvas-setup]
+  release_status:
+    status: public
+    note: Versioned releases (v1.x) are published on GitHub. The README labels Agent Canvas as beta.
+    source_ids: [oh-releases, oh-readme]
+run_notes:
+  - text: >-
+      The README warns that running without a sandbox gives the agent full access to the host
+      filesystem. The Docker options run agents in containers, and the self-hosting guide covers
+      security hardening for internet-facing installs.
+    source_ids: [oh-readme]
+provenance: null
+tags: [agents, coding-agent]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: oh-repo
+    title: OpenHands/OpenHands
+    url: https://github.com/OpenHands/OpenHands
+    publisher: All Hands AI (OpenHands)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-readme
+    title: OpenHands Agent Canvas README
+    url: https://github.com/OpenHands/OpenHands/blob/main/README.md
+    publisher: All Hands AI (OpenHands)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-license
+    title: OpenHands LICENSE
+    url: https://github.com/OpenHands/OpenHands/blob/main/LICENSE
+    publisher: All Hands AI (OpenHands)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-releases
+    title: OpenHands releases
+    url: https://github.com/OpenHands/OpenHands/releases
+    publisher: All Hands AI (OpenHands)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-sdk-readme
+    title: OpenHands Software Agent SDK
+    url: https://github.com/OpenHands/software-agent-sdk
+    publisher: All Hands AI (OpenHands)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-sdk-license
+    title: OpenHands Software Agent SDK LICENSE
+    url: https://github.com/OpenHands/software-agent-sdk/blob/main/LICENSE
+    publisher: All Hands AI (OpenHands)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-docs-home
+    title: Introduction - OpenHands Docs
+    url: https://docs.openhands.dev/
+    publisher: All Hands AI (OpenHands)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-canvas-setup
+    title: Install Agent Canvas - OpenHands Docs
+    url: https://docs.openhands.dev/openhands/usage/agent-canvas/setup
+    publisher: All Hands AI (OpenHands)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-enterprise
+    title: OpenHands for Enterprise | Secure, Scalable Agentic Software Development
+    url: https://www.openhands.dev/enterprise
+    publisher: All Hands AI (OpenHands)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oh-tos
+    title: Terms of Service
+    url: https://www.openhands.dev/tos
+    publisher: All Hands AI
+    kind: official-page
+    published_at: 2025-11-25
+    accessed_at: 2026-09-29
+  - id: oh-privacy
+    title: Privacy Policy
+    url: https://www.openhands.dev/privacy
+    publisher: All Hands AI
+    kind: official-page
+    published_at: 2025-09-03
+    accessed_at: 2026-09-29

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
-import { useId, useMemo, useState } from "react";
+import { useCallback, useId, useMemo, useRef, useState } from "react";
 import { ENTRY_TYPE_LABELS } from "@/lib/labels";
 import { companiesHref, openHref } from "@/lib/routes";
 import { searchEntries, type SearchEntry } from "@/lib/search";
@@ -11,13 +11,29 @@ import { useDebounced } from "./useQueryState";
 /**
  * Search across both directories. Results are plain links (no custom
  * combobox), labeled by entry type, with hand-offs to each directory's full
- * filtered view.
+ * filtered view. The index (generated at build time from the same published
+ * records as the pages) is fetched from the site itself on first use, so the
+ * homepage stays light; nothing is sent anywhere else.
  */
-export function HomeSearch({ entries }: { entries: SearchEntry[] }) {
+export function HomeSearch({ indexUrl }: { indexUrl: string }) {
   const [query, setQuery] = useState("");
+  const [entries, setEntries] = useState<SearchEntry[] | null>(null);
+  const [loadError, setLoadError] = useState(false);
+  const loading = useRef(false);
+  const ensureIndex = useCallback(() => {
+    if (loading.current) return;
+    loading.current = true;
+    fetch(indexUrl)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((data: { entries: SearchEntry[] }) => setEntries(data.entries))
+      .catch(() => {
+        loading.current = false;
+        setLoadError(true);
+      });
+  }, [indexUrl]);
   const inputId = useId();
   const hintId = useId();
-  const all = useMemo(() => searchEntries(entries, query, 200), [entries, query]);
+  const all = useMemo(() => (entries ? searchEntries(entries, query, 500) : []), [entries, query]);
   const results = all.slice(0, 8);
   const orgCount = all.filter((r) => r.type === "organization").length;
   const artifactCount = all.length - orgCount;
@@ -39,7 +55,11 @@ export function HomeSearch({ entries }: { entries: SearchEntry[] }) {
             className="field min-h-14 pl-12 text-lg"
             placeholder="Name, maintainer, license, or tag"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onFocus={ensureIndex}
+            onChange={(e) => {
+              ensureIndex();
+              setQuery(e.target.value);
+            }}
             aria-describedby={hintId}
             autoComplete="off"
             spellCheck={false}
@@ -57,7 +77,12 @@ export function HomeSearch({ entries }: { entries: SearchEntry[] }) {
         {announce}
       </p>
 
-      {trimmed ? (
+      {trimmed && !entries ? (
+        <p className="mt-4 text-sm text-muted" role="status">
+          {loadError ? "Search could not load. You can browse both directories with the links below." : "Loading search…"}
+        </p>
+      ) : null}
+      {trimmed && entries ? (
         <div className="mt-4 rounded-xl border border-line bg-[rgba(5,8,22,0.85)]">
           {results.length > 0 ? (
             <ul className="divide-y divide-[rgba(120,180,255,0.12)]" aria-label="Search results">

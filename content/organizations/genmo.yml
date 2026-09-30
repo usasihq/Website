@@ -1,0 +1,134 @@
+slug: genmo
+name: Genmo
+legal_name:
+  text: Genmo Inc.
+  source_ids: [genmo-terms]
+website: https://www.genmo.ai
+logo_text: G
+summary:
+  text: >-
+    Genmo is a San Francisco research company that builds video generation models, which it
+    describes as world models. Its open release is Mochi 1, a text-to-video model published as
+    a research preview in October 2024, and it runs a hosted playground for generating videos.
+  source_ids: [genmo-home, genmo-about, genmo-terms, genmo-mochi-blog, genmo-play]
+organization_roles: [model-developer, research-lab]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [genmo-terms, genmo-jobs]
+other_locations: []
+founded: null
+sectors: [open-models, research]
+status_note: null
+products:
+  - id: genmo-playground
+    name: Genmo Playground
+    kind: other
+    access: >-
+      Web app for generating videos from text prompts, labeled on the page as the Mochi 1.1
+      Playground. It requires logging in or signing up; the page does not state pricing.
+    url: https://www.genmo.ai/play
+    source_ids: [genmo-play]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Genmo's playground page refers to a Mochi 1.1 model. This catalog found no open-weight
+      release of Mochi 1.1; mochi-1-preview is the only model in Genmo's Hugging Face
+      organization, and the Mochi 1 announcement is the only post on Genmo's blog.
+    source_ids: [genmo-play, genmo-hf, genmo-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Genmo's terms of service name Genmo Inc. with a San Francisco, California address and
+    apply California law, with San Francisco County courts as the venue where arbitration
+    does not apply. Its job board lists every open role at
+    "San Francisco HQ". No foreign parent or headquarters was found.
+  source_ids: [genmo-terms, genmo-jobs]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Genmo released the Mochi 1 preview weights, its video VAE, and inference code under
+    Apache 2.0, and later added a LoRA fine-tuning trainer to the repository. Its announcement
+    and model card do not describe the training data. The playground is a hosted service.
+  source_ids: [genmo-mochi-blog, mochi-card, mochi-repo]
+hiring_url: https://jobs.ashbyhq.com/genmo
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: genmo-home
+    title: Genmo
+    url: https://www.genmo.ai/
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-about
+    title: About | Genmo
+    url: https://www.genmo.ai/about
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-terms
+    title: Terms of Service | Genmo
+    url: https://www.genmo.ai/terms-of-service
+    publisher: Genmo Inc.
+    kind: official-page
+    published_at: 2024-09-16
+    accessed_at: 2026-09-29
+  - id: genmo-jobs
+    title: Genmo job board (Ashby posting API)
+    url: https://api.ashbyhq.com/posting-api/job-board/genmo
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-play
+    title: Genmo Playground
+    url: https://www.genmo.ai/play
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-blog
+    title: Genmo blog
+    url: https://www.genmo.ai/blog
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-mochi-blog
+    title: "Mochi 1: A new SOTA in open text-to-video"
+    url: https://www.genmo.ai/blog/mochi-1-a-new-sota-in-open-text-to-video
+    publisher: Genmo
+    kind: announcement
+    published_at: 2024-10-22
+    accessed_at: 2026-09-29
+  - id: genmo-hf
+    title: Genmo on Hugging Face
+    url: https://huggingface.co/genmo
+    publisher: Genmo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mochi-card
+    title: genmo/mochi-1-preview model card
+    url: https://huggingface.co/genmo/mochi-1-preview
+    publisher: Genmo
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mochi-repo
+    title: genmoai/mochi README
+    url: https://github.com/genmoai/mochi
+    publisher: Genmo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

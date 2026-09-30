@@ -1,0 +1,150 @@
+slug: langchain-framework
+name: LangChain (framework)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: LangChain Inc.
+    organization_slug: langchain
+    source_ids: [langchain-license, langchain-about]
+organization_slugs: [langchain]
+links:
+  - label: Repository
+    url: https://github.com/langchain-ai/langchain
+    kind: repository
+  - label: Documentation
+    url: https://docs.langchain.com/oss/python/langchain/overview
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/langchain-ai/langchain/blob/master/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/langchain-ai/langchain/releases
+    kind: release-notes
+summary:
+  text: >-
+    LangChain is an open-source Python framework for building agents and LLM applications. It
+    gives a standard interface across model providers and many third-party integrations. Its agent
+    API is built on LangGraph, and a JavaScript/TypeScript version, LangChain.js, lives in a
+    separate repository.
+  source_ids: [langchain-readme, langchain-docs-overview]
+useful_for:
+  text: >-
+    Building tool-using agents; switching between model providers through one interface; and
+    connecting models to data sources, vector stores, and retrievers through integration packages.
+  source_ids: [langchain-readme, langchain-docs-overview]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository sits in the langchain-ai GitHub organization, and its LICENSE file assigns
+    copyright to LangChain, Inc. LangChain's about page lists LangChain among the open-source
+    frameworks the company develops and says the company is headquartered in San Francisco. Its
+    terms of service identify LangChain Inc. as a Delaware corporation. No foundation or
+    multi-organization governance body is documented.
+  source_ids: [langchain-license, langchain-about, langchain-tos]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [langchain-repo, langchain-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/langchain-ai/langchain/blob/master/LICENSE
+    applies_to: code
+    source_ids: [langchain-license]
+license_notes:
+  text: >-
+    The MIT license covers the open-source library. The README points to LangSmith, a separate
+    LangChain product, for debugging, evaluating, and deploying agents.
+  source_ids: [langchain-license, langchain-readme]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [langchain-repo]
+  documentation:
+    status: public
+    note: Conceptual docs are at docs.langchain.com, and the API reference is at reference.langchain.com.
+    source_ids: [langchain-docs-overview, langchain-readme]
+  installation:
+    status: public
+    note: Installed from PyPI with pip or uv. Model providers are added as separate integration packages.
+    source_ids: [langchain-install]
+  supported_platforms:
+    status: public
+    note: The install guide lists Python 3.10 or newer as a requirement. It does not list operating-system restrictions.
+    source_ids: [langchain-install]
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub for each package, including langchain,
+      langchain-core, and the provider integrations.
+    source_ids: [langchain-releases]
+run_notes: []
+provenance: null
+tags: [agents, llm-applications]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: langchain-repo
+    title: langchain-ai/langchain
+    url: https://github.com/langchain-ai/langchain
+    publisher: LangChain
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-readme
+    title: LangChain README
+    url: https://github.com/langchain-ai/langchain/blob/master/README.md
+    publisher: LangChain
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-license
+    title: LangChain LICENSE
+    url: https://github.com/langchain-ai/langchain/blob/master/LICENSE
+    publisher: LangChain
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-releases
+    title: LangChain releases
+    url: https://github.com/langchain-ai/langchain/releases
+    publisher: LangChain
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-docs-overview
+    title: LangChain overview - Docs by LangChain
+    url: https://docs.langchain.com/oss/python/langchain/overview
+    publisher: LangChain
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-install
+    title: Install LangChain - Docs by LangChain
+    url: https://docs.langchain.com/oss/python/langchain/install
+    publisher: LangChain
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-about
+    title: "About LangChain: an open platform to own your intelligence"
+    url: https://www.langchain.com/about
+    publisher: LangChain
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: langchain-tos
+    title: Terms of Service
+    url: https://www.langchain.com/terms-of-service
+    publisher: LangChain
+    kind: official-page
+    published_at: 2026-06-02
+    accessed_at: 2026-09-29

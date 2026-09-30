@@ -1,0 +1,178 @@
+slug: redpajama
+name: RedPajama
+kind: dataset
+record_level: project
+family_slug: null
+version: "V2"
+maintainers:
+  - name: Together AI (Together Computer, Inc.)
+    organization_slug: together-ai
+    source_ids: [rpv2-card, rp-repo-readme, together-tos]
+organization_slugs: [together-ai]
+links:
+  - label: RedPajama-Data-V2 (Hugging Face)
+    url: https://huggingface.co/datasets/togethercomputer/RedPajama-Data-V2
+    kind: dataset-hub
+  - label: RedPajama-Data-1T (Hugging Face)
+    url: https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T
+    kind: dataset-hub
+  - label: RedPajama-Data code repository
+    url: https://github.com/togethercomputer/RedPajama-Data
+    kind: repository
+  - label: RedPajama paper (arXiv 2411.12372)
+    url: https://arxiv.org/abs/2411.12372
+    kind: paper
+  - label: RedPajama-Data-v2 announcement
+    url: https://www.together.ai/blog/redpajama-data-v2
+    kind: release-notes
+summary:
+  text: >-
+    RedPajama is Together AI's open pretraining dataset project. RedPajama-V1 (RedPajama-Data-1T,
+    2023) is a 1.2-trillion-token reproduction of the LLaMA training-data recipe drawn from
+    Common Crawl, C4, GitHub, arXiv, Wikipedia, and Stack Exchange. The current version,
+    RedPajama-V2 (October 2023), contains over 100 billion documents from 84 Common Crawl
+    snapshots in English, German, French, Spanish, and Italian, with more than 40 precomputed
+    quality signals and duplicate markers; its deduplicated, annotated portion is about 30
+    trillion tokens.
+  source_ids: [rpv1-card, rpv2-card, rp-repo-readme, rpv2-blog, rp-paper]
+useful_for:
+  text: >-
+    Building filtered pretraining mixes for large language models: users select documents by
+    snapshot, language, and partition and apply the provided quality signals and duplicate IDs
+    to create their own subsets.
+  source_ids: [rpv2-card, rp-paper]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The datasets are published under Together's Hugging Face and GitHub organizations, and the
+    dataset card's software citation names Together Computer as author. Together's terms of
+    service identify Together Computer, Inc., a Delaware corporation, and give a San Francisco,
+    California address for copyright notices. The V2 card also thanks the RedPajama-V1 partners (including
+    Stanford research groups, Mila, Université de Montréal, ETH DS3Lab, LAION, and Ontocord.ai);
+    Together remains the publishing and maintaining entity.
+  source_ids: [rpv2-card, rp-repo-readme, together-tos]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Both versions are downloadable from Hugging Face without gating. The V2 card directs users
+    to the Common Crawl Foundation Terms of Use for the data. In V1 the 'book' configuration is
+    marked defunct and no longer accessible because of reported copyright infringement in its
+    Books3 content.
+  source_ids: [rpv2-card, rpv1-card]
+licenses:
+  - name: Apache License 2.0 (dataset loading and processing code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/togethercomputer/RedPajama-Data/main/LICENSE
+    applies_to: code
+    source_ids: [rp-license, rpv2-card]
+license_notes:
+  text: >-
+    Neither version grants a single license for the data. The V2 card refers users to the Common
+    Crawl Foundation Terms of Use for the data and applies Apache 2.0 to the code; the V1 card
+    asks users to follow the license of each subset (for example, the GitHub subset was limited
+    to MIT, BSD, and Apache-licensed projects).
+  source_ids: [rpv2-card, rpv1-card]
+checklist:
+  access:
+    status: public
+    note: >-
+      V2 and V1 are downloadable without gating; V1's book subset is no longer accessible.
+    source_ids: [rpv2-card, rpv1-card]
+  provenance:
+    status: public
+    note: >-
+      V2 documents carry their source URL, domain, and Common Crawl snapshot ID, and the card
+      describes the CCNet processing; the V1 card lists each source with its token count and
+      processing steps.
+    source_ids: [rpv2-card, rpv1-card]
+  documentation:
+    status: public
+    note: >-
+      Dataset cards, an announcement post, a NeurIPS 2024 Datasets and Benchmarks paper, and the
+      full pipeline code for recreating V2 (including quality signals) are published.
+    source_ids: [rpv2-card, rpv2-blog, rp-paper, rp-repo-readme]
+  licensing:
+    status: partial
+    note: Code is Apache 2.0; data terms defer to Common Crawl's terms (V2) or to each subset's license (V1).
+    source_ids: [rpv2-card, rpv1-card]
+  stated_limitations:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      The V2 card notes that downloading a full snapshot for a given partition and language
+      requires about 1 TB of disk space per snapshot, and provides a small 'sample'
+      configuration for exploration.
+    source_ids: [rpv2-card]
+provenance:
+  text: >-
+    V2 was built from 84 Common Crawl snapshots processed with the CCNet pipeline into head,
+    middle, and tail perplexity buckets; head and middle documents were annotated with quality
+    signals and duplicates were marked with a Bloom filter rather than removed. V1 followed the
+    LLaMA paper's data recipe using Common Crawl dumps processed with CCNet, C4, permissively
+    licensed GitHub code, arXiv, Wikipedia, and Stack Exchange.
+  derived_from:
+    - name: Common Crawl
+      artifact_slug: common-crawl-corpus
+      url: https://commoncrawl.org/
+      note: Sole source for V2 and the largest source for V1.
+  source_ids: [rpv2-card, rpv1-card]
+tags: [pretraining-data]
+publication_status: published
+archive_note: null
+released_at: 2023-10-30
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: rpv2-card
+    title: togethercomputer/RedPajama-Data-V2 dataset card
+    url: https://huggingface.co/datasets/togethercomputer/RedPajama-Data-V2
+    publisher: Together AI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: rpv1-card
+    title: togethercomputer/RedPajama-Data-1T dataset card
+    url: https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T
+    publisher: Together AI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: rp-repo-readme
+    title: "RedPajama-Data-v2: an Open Dataset with 30 Trillion Tokens for Training Large Language Models (repository README)"
+    url: https://raw.githubusercontent.com/togethercomputer/RedPajama-Data/main/README.md
+    publisher: Together AI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: rp-license
+    title: togethercomputer/RedPajama-Data LICENSE
+    url: https://raw.githubusercontent.com/togethercomputer/RedPajama-Data/main/LICENSE
+    publisher: Together AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: rpv2-blog
+    title: "RedPajama-Data-v2: An open dataset with 30 trillion tokens for training large language models"
+    url: https://www.together.ai/blog/redpajama-data-v2
+    publisher: Together AI
+    kind: announcement
+    published_at: 2023-10-30
+    accessed_at: 2026-09-29
+  - id: rp-paper
+    title: "RedPajama: an Open Dataset for Training Large Language Models (arXiv 2411.12372)"
+    url: https://arxiv.org/abs/2411.12372
+    publisher: Together AI and collaborators (arXiv)
+    kind: paper
+    published_at: 2024-11-19
+    accessed_at: 2026-09-29
+  - id: together-tos
+    title: Terms of Service | Together AI
+    url: https://www.together.ai/terms-of-service
+    publisher: Together AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

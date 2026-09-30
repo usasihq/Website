@@ -1,0 +1,136 @@
+slug: runway
+name: Runway
+legal_name:
+  text: Runway AI, Inc.
+  source_ids: [runway-terms, runway-about]
+website: https://runway.com
+logo_text: R
+summary:
+  text: >-
+    Runway develops generative AI models, including the Gen-4.5 video model and world models
+    such as GWM-1. It offers its own and some third-party models for video, image, and audio
+    work through a creative web and mobile app and through a developer API.
+  source_ids: [runway-home, runway-product, runway-gen45, runway-api-docs]
+organization_roles: [model-developer, consumer-products, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation, incorporated in 2018, per its 2022 SEC Form D notice.
+  source_ids: [runway-form-d-2022]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: New York, New York
+  country: US
+  source_ids: [runway-form-d-2022, runway-about]
+other_locations: []
+founded: null
+sectors: []
+status_note: null
+products:
+  - id: runway-app
+    name: Runway
+    kind: other
+    access: >-
+      Creative app for generating and editing video, images, and audio with Runway's models
+      (such as Gen-4.5 and Aleph 2.0) and some third-party models; used on the web and on iOS
+      and Android, with a free plan of one-time credits and paid subscription plans.
+    url: https://runway.com/product
+    source_ids: [runway-product, runway-gen45, runway-pricing]
+    last_reviewed: 2026-09-29
+  - id: runway-api
+    name: Runway API (Runway Dev)
+    kind: hosted-model-api
+    access: >-
+      Developer API and SDKs for adding Runway's generative models, and some third-party
+      models, to other applications; documented at docs.dev.runwayml.com.
+    url: https://docs.dev.runwayml.com/
+    source_ids: [runway-api-docs, runway-dev, runway-home]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Runway AI Inc.'s 2022 SEC Form D notice lists it as a Delaware corporation with its
+    principal place of business in New York, New York. Its current about page lists offices in
+    New York, San Francisco, Seattle, London, Paris, Tel Aviv, and Tokyo without naming a
+    headquarters, and its terms of use (updated September 2026) apply New York law and name
+    state or federal courts in New York County as the exclusive venue for claims litigated in
+    court.
+  source_ids: [runway-form-d-2022, runway-about, runway-terms]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Runway's models are offered through its hosted app and API. The Gen-4.5 announcement does
+    not mention a weights release, and this catalog has no record of current public model
+    weights from Runway.
+  source_ids: [runway-product, runway-api-docs, runway-gen45]
+hiring_url: https://runway.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: runway-form-d-2022
+    title: Runway AI Inc. Form D notice of exempt offering of securities
+    url: https://www.sec.gov/Archives/edgar/data/1957455/000123191922000071/xslFormDX01/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2022-12-15
+    accessed_at: 2026-09-29
+  - id: runway-about
+    title: About Runway AI Video Platform | Runway AI
+    url: https://runway.com/about
+    publisher: Runway AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: runway-terms
+    title: Terms of Use | Runway
+    url: https://runway.com/terms-of-use
+    publisher: Runway AI, Inc.
+    kind: official-page
+    published_at: 2026-09-15
+    accessed_at: 2026-09-29
+  - id: runway-home
+    title: Runway | Building Real-World Intelligence
+    url: https://runway.com/
+    publisher: Runway AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: runway-product
+    title: Runway | AI Image and Video Generator
+    url: https://runway.com/product
+    publisher: Runway AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: runway-pricing
+    title: AI Image and Video Pricing from $12/month | Runway AI
+    url: https://runway.com/pricing
+    publisher: Runway AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: runway-gen45
+    title: "Runway Gen-4.5: State-of-the-Art AI Video Generation"
+    url: https://runway.com/research/introducing-runway-gen-4.5
+    publisher: Runway AI, Inc.
+    kind: announcement
+    published_at: 2025-12-01
+    accessed_at: 2026-09-29
+  - id: runway-api-docs
+    title: API Documentation | Runway Dev
+    url: https://docs.dev.runwayml.com/
+    publisher: Runway AI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: runway-dev
+    title: One API for AI Video, Image and Audio | Runway Dev
+    url: https://dev.runwayml.com/
+    publisher: Runway AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,160 @@
+slug: v-jepa-2-1-vit-gigantic-384
+name: V-JEPA 2.1 ViT-G/16 (384 px)
+kind: model
+record_level: release
+family_slug: v-jepa-2
+version: "2.1 ViT-G/16, 384 resolution (vjepa2_1_vit_gigantic_384)"
+maintainers:
+  - name: Meta (FAIR)
+    organization_slug: meta
+    source_ids: [vjepa2-readme, vjepa21-paper-html]
+organization_slugs: [meta]
+links:
+  - label: vjepa2 repository (V-JEPA 2.1 checkpoints and code)
+    url: https://github.com/facebookresearch/vjepa2
+    kind: repository
+  - label: V-JEPA 2.1 paper (arXiv 2603.14482)
+    url: https://arxiv.org/abs/2603.14482
+    kind: paper
+  - label: LICENSE (MIT, repository)
+    url: https://github.com/facebookresearch/vjepa2/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    The largest V-JEPA 2.1 model, a 2-billion-parameter ViT-G/16 video and image encoder released
+    by Meta in March 2026. V-JEPA 2.1 changes the V-JEPA 2 recipe to learn dense, temporally
+    consistent features, using a dense predictive loss over all tokens, self-supervision at
+    several intermediate layers, and separate tokenizers for images and videos. Meta distilled
+    this model into smaller ViT-B and ViT-L variants.
+  source_ids: [vjepa2-readme, vjepa21-paper-html]
+useful_for:
+  text: >-
+    Dense and global visual features for tasks the paper evaluates, including depth estimation,
+    action recognition and anticipation, robot grasping, and navigation.
+  source_ids: [vjepa21-paper, vjepa21-paper-html]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The paper lists all authors as affiliated with FAIR at Meta (the first author also lists
+    Universidad de Zaragoza, with the work done at Meta), and the checkpoint and code are
+    published by Meta in the facebookresearch vjepa2 repository under a Meta Platforms
+    copyright. Meta Platforms, Inc. has its principal executive offices in Menlo Park,
+    California, per its Form 10-K.
+  source_ids: [vjepa21-paper-html, vjepa2-readme, vjepa2-license, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Direct checkpoint download linked from the repository README, or loaded through PyTorch Hub
+    as vjepa2_1_vit_gigantic_384. This review found no Hugging Face repository for V-JEPA 2.1.
+  source_ids: [vjepa2-readme]
+licenses:
+  - name: MIT License (vjepa2 repository)
+    spdx: MIT
+    url: https://github.com/facebookresearch/vjepa2/blob/main/LICENSE
+    applies_to: code
+    source_ids: [vjepa2-license, vjepa2-readme]
+license_notes:
+  text: >-
+    The repository README says most of the project is licensed under MIT, with three
+    data-augmentation and worker-initialization files under Apache 2.0. It does not name a
+    separate license for the V-JEPA 2.1 checkpoints, so no weights license is recorded here.
+  source_ids: [vjepa2-readme]
+checklist:
+  weights:
+    status: public
+    note: Direct download link in the README; no gating.
+    source_ids: [vjepa2-readme]
+  inference_code:
+    status: public
+    note: The repository provides PyTorch Hub loaders for the V-JEPA 2.1 models.
+    source_ids: [vjepa2-readme]
+  training_code:
+    status: public
+    note: >-
+      The repository includes a V-JEPA 2.1 pretraining loop (app/vjepa_2_1) and pretraining and
+      cooldown configurations for ViT-G/16.
+    source_ids: [vjepa2-readme, vjepa21-configs-vitgg16]
+  training_data_information:
+    status: partial
+    note: >-
+      The paper describes VisionMix-163M, which replaces V-JEPA 2's ImageNet images with LVD-142M
+      and rebalances the video sources (SSv2, Kinetics, HowTo100M, YT-Temporal-1B). LVD-142M is a
+      curated image set from Meta's earlier work that this review did not find released.
+    source_ids: [vjepa21-paper-html]
+  training_recipe:
+    status: partial
+    note: >-
+      The paper describes the training phases (135,000 pretraining iterations, then a 12,000-
+      iteration cooldown at higher resolution and more frames), and configs are published. The
+      published ViT-G/16 cooldown config is named for 256-pixel input, while the checkpoint is a
+      384-pixel model; this review did not confirm that the configs reproduce the released
+      checkpoint.
+    source_ids: [vjepa21-paper-html, vjepa21-configs-vitgg16, vjepa2-readme]
+  evaluation_materials:
+    status: public
+    note: >-
+      The repository publishes frozen-evaluation code and a V-JEPA 2.1 evaluation config set for
+      this model (configs/eval_2_1/vitG-384), covering SSv2, Diving48, EPIC-KITCHENS-100,
+      Kinetics-400, ImageNet-1k, COIN, and Jester. This review did not confirm configs for every
+      task reported in the paper, such as depth estimation or robot grasping.
+    source_ids: [vjepa2-readme, vjepa21-configs-eval-vitgg384]
+run_notes: []
+provenance: null
+tags: [computer-vision, video, self-supervised]
+publication_status: published
+archive_note: null
+released_at: 2026-03-16
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: vjepa2-readme
+    title: facebookresearch/vjepa2 README
+    url: https://github.com/facebookresearch/vjepa2/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-license
+    title: facebookresearch/vjepa2 LICENSE (MIT)
+    url: https://github.com/facebookresearch/vjepa2/blob/main/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa21-configs-vitgg16
+    title: vjepa2 configs/train_2_1/vitG16
+    url: https://github.com/facebookresearch/vjepa2/tree/main/configs/train_2_1/vitG16
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa21-configs-eval-vitgg384
+    title: vjepa2 configs/eval_2_1/vitG-384
+    url: https://github.com/facebookresearch/vjepa2/tree/main/configs/eval_2_1/vitG-384
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa21-paper
+    title: "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning (arXiv 2603.14482)"
+    url: https://arxiv.org/abs/2603.14482
+    publisher: arXiv (Meta FAIR authors)
+    kind: paper
+    published_at: 2026-03-15
+    accessed_at: 2026-09-29
+  - id: vjepa21-paper-html
+    title: "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning (arXiv 2603.14482v3, HTML)"
+    url: https://arxiv.org/html/2603.14482v3
+    publisher: arXiv (Meta FAIR authors)
+    kind: paper
+    published_at: 2026-06-11
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

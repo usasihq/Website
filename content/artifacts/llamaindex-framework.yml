@@ -1,0 +1,167 @@
+slug: llamaindex-framework
+name: LlamaIndex (framework)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: LlamaIndex, Inc.
+    organization_slug: llamaindex
+    source_ids: [llamaindex-readme, llamaindex-docs-overview]
+organization_slugs: [llamaindex]
+links:
+  - label: Repository
+    url: https://github.com/run-llama/llama_index
+    kind: repository
+  - label: Documentation
+    url: https://developers.llamaindex.ai/python/framework/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/run-llama/llama_index/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/run-llama/llama_index/releases
+    kind: release-notes
+summary:
+  text: >-
+    LlamaIndex is an open-source Python framework for building LLM agents, event-driven
+    workflows, and retrieval-augmented generation (RAG) over private data. It is split into a
+    core package and hundreds of integration packages for models, embeddings, and vector stores;
+    the company also offers a TypeScript SDK. The README says the company now focuses mainly on
+    its LlamaParse platform but keeps the framework available as an open toolkit.
+  source_ids: [llamaindex-readme, llamaindex-docs-overview, llamaindex-oss-page]
+useful_for:
+  text: >-
+    Building agents that use tools over a user's documents and data, multi-step workflows with
+    branching, retries, and human review, and RAG pipelines that ingest data through connectors,
+    index it, and query it.
+  source_ids: [llamaindex-docs-overview, llamaindex-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The README attributes the framework to LlamaIndex, "the company behind LlamaParse", and the
+    repository is under the company's run-llama GitHub organization. The developer docs describe
+    it as built by the makers of LlamaParse. LlamaIndex, Inc. provides the company's services
+    under Delaware law, and its 2025 press release boilerplate says it is based in San Francisco.
+    The LICENSE file's copyright line names an individual rather than the company, and this
+    assessment does not rely on it. No foundation or multi-organization governance body is
+    documented.
+  source_ids: [llamaindex-readme, llamaindex-docs-overview, llamaindex-tos, llamaindex-pr-2025, llamaindex-license]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [llamaindex-repo, llamaindex-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/run-llama/llama_index/blob/main/LICENSE
+    applies_to: code
+    source_ids: [llamaindex-license]
+license_notes:
+  text: >-
+    The MIT license covers the framework. LlamaParse, which can be used with the framework, is a
+    separate commercial hosted service with its own terms of service.
+  source_ids: [llamaindex-license, llamaindex-readme, llamaindex-tos]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [llamaindex-repo]
+  documentation:
+    status: public
+    note: null
+    source_ids: [llamaindex-docs-overview]
+  installation:
+    status: public
+    note: >-
+      pip install llama-index installs a starter bundle. Alternatively, llama-index-core can be
+      installed with selected integration packages, including ones for local models through
+      Ollama and Hugging Face embeddings.
+    source_ids: [llamaindex-install]
+  supported_platforms:
+    status: unknown
+    note: The installation guide does not state supported Python versions or operating systems.
+    source_ids: []
+  release_status:
+    status: public
+    note: Versioned releases (the 0.14.x series as of September 2026) are published on GitHub.
+    source_ids: [llamaindex-releases]
+run_notes:
+  - text: >-
+      The installation guide says the default setup uses OpenAI models for text generation and
+      embeddings and needs an OPENAI_API_KEY. Other providers, including local models, need
+      their own integration packages.
+    source_ids: [llamaindex-install]
+provenance: null
+tags: [agents, rag, llm-applications]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: llamaindex-repo
+    title: run-llama/llama_index
+    url: https://github.com/run-llama/llama_index
+    publisher: LlamaIndex
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-readme
+    title: LlamaIndex README
+    url: https://github.com/run-llama/llama_index/blob/main/README.md
+    publisher: LlamaIndex
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-license
+    title: LlamaIndex LICENSE
+    url: https://github.com/run-llama/llama_index/blob/main/LICENSE
+    publisher: LlamaIndex
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-releases
+    title: LlamaIndex releases
+    url: https://github.com/run-llama/llama_index/releases
+    publisher: LlamaIndex
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-docs-overview
+    title: LlamaIndex Framework, by the makers of LlamaParse | Developer Documentation
+    url: https://developers.llamaindex.ai/python/framework/
+    publisher: LlamaIndex
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-install
+    title: Installation and Setup | Developer Documentation
+    url: https://developers.llamaindex.ai/python/framework/getting_started/installation/
+    publisher: LlamaIndex
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-oss-page
+    title: AI Agent Framework For Context-Aware Apps | LlamaIndex OSS Frameworks
+    url: https://www.llamaindex.ai/llamaindex
+    publisher: LlamaIndex
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamaindex-tos
+    title: Terms of Service
+    url: https://www.llamaindex.ai/legal/terms-of-service
+    publisher: LlamaIndex
+    kind: official-page
+    published_at: 2024-06-07
+    accessed_at: 2026-09-29
+  - id: llamaindex-pr-2025
+    title: LlamaIndex Secures $19 Million Series A to Power Enterprise-Grade Knowledge Agents
+    url: https://www.prnewswire.com/news-releases/llamaindex-secures-19-million-series-a-to-power-enterprise-grade-knowledge-agents-302390936.html
+    publisher: LlamaIndex (via PR Newswire)
+    kind: announcement
+    published_at: 2025-03-04
+    accessed_at: 2026-09-29

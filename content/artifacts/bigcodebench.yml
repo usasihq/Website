@@ -1,0 +1,169 @@
+slug: bigcodebench
+name: BigCodeBench
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: BigCode project (open scientific collaboration)
+    organization_slug: null
+    source_ids: [bcb-hf-card, bcb-repo, bigcode-mission]
+organization_slugs: []
+links:
+  - label: GitHub repository (archived July 2026)
+    url: https://github.com/bigcode-project/bigcodebench
+    kind: repository
+  - label: Dataset on Hugging Face (bigcode/bigcodebench)
+    url: https://huggingface.co/datasets/bigcode/bigcodebench
+    kind: dataset-hub
+  - label: "Paper: BigCodeBench (arXiv 2406.15877)"
+    url: https://arxiv.org/abs/2406.15877
+    kind: paper
+  - label: License (Apache 2.0)
+    url: https://raw.githubusercontent.com/bigcode-project/bigcodebench/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    BigCodeBench is a Python code-generation benchmark from the BigCode project with 1,140
+    function-level tasks that require calls to 139 libraries across 7 domains. It has two
+    variants, Complete (prompts with structured docstrings) and Instruct (natural-language
+    instructions for chat models), plus a 148-task Hard subset, and it is scored by executing
+    unit tests. The GitHub repository was archived and made read-only on July 20, 2026.
+  source_ids: [bcb-paper, bcb-readme, bcb-hf-card, bcb-repo]
+useful_for:
+  text: >-
+    Evaluating code completion and instruction-following code generation that involves
+    multiple library calls, with local, E2B-sandbox, or remote execution of the generated code.
+  source_ids: [bcb-readme]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    BigCodeBench is published under the BigCode project's GitHub and Hugging Face
+    organizations, and its dataset card names a primary contact at Monash University and
+    CSIRO's Data61. BigCode describes itself as an open scientific collaboration whose
+    technical governance takes place in community working groups and task forces, with
+    corporate support from ServiceNow and Hugging Face for hosting and training compute. That
+    support does not make either company the documented maintainer of this benchmark, and no
+    U.S. maintaining institution is documented for BigCodeBench, so eligibility is unresolved.
+  source_ids: [bcb-hf-card, bcb-repo, bigcode-mission]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Tasks are on the Hugging Face Hub without gating, and the evaluation package is on PyPI as
+    bigcodebench (latest version 0.2.5). The GitHub repository was archived on July 20, 2026 and
+    is read-only.
+  source_ids: [bcb-hf-card, bcb-pypi, bcb-repo]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/bigcode-project/bigcodebench/main/LICENSE
+    applies_to: code
+    source_ids: [bcb-license, bcb-pypi]
+  - name: Apache License 2.0 (dataset)
+    spdx: Apache-2.0
+    url: https://huggingface.co/datasets/bigcode/bigcodebench
+    applies_to: data
+    source_ids: [bcb-hf-card]
+license_notes: null
+checklist:
+  code:
+    status: public
+    note: >-
+      Evaluation code on GitHub (archived, read-only) under Apache 2.0 and on PyPI; the last
+      GitHub release is v0.2.5 (April 2025, marked as a pre-release).
+    source_ids: [bcb-repo, bcb-license, bcb-pypi, bcb-releases]
+  tasks_data:
+    status: public
+    note: >-
+      The Hugging Face dataset holds the tasks with prompts, reference solutions, unit tests,
+      and library lists, published in versions v0.1.0 through v0.1.4.
+    source_ids: [bcb-hf-card]
+  methodology:
+    status: public
+    note: The paper describes task construction and evaluation by unit-test execution; the README explains the Complete and Instruct splits and the separate prompting of base and chat models.
+    source_ids: [bcb-paper, bcb-readme]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README documents installation and the bigcodebench.evaluate command, warns that batch
+      inference can change greedy-decoding results, and links pre-generated model samples
+      attached to release v0.2.4.
+    source_ids: [bcb-readme]
+  limitations:
+    status: public
+    note: >-
+      The dataset card notes that tasks cover only English and Python, lists limitation areas
+      (multilingualism, saturation, reliability, efficiency, rigorousness, generalization,
+      evolution, and interaction), and refers to Appendix D of the technical report for details.
+    source_ids: [bcb-hf-card]
+run_notes:
+  - text: >-
+      The README states that evaluation uses a remote execution API by default (a Hugging Face
+      Space) and also supports local or E2B-sandbox execution, the latter requiring an E2B API key.
+    source_ids: [bcb-readme]
+provenance: null
+tags: [evaluation, benchmark, code-model]
+publication_status: draft
+archive_note: null
+released_at: 2024-06-18
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: bcb-repo
+    title: bigcode-project/bigcodebench
+    url: https://github.com/bigcode-project/bigcodebench
+    publisher: BigCode project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bcb-readme
+    title: bigcodebench README.md
+    url: https://raw.githubusercontent.com/bigcode-project/bigcodebench/main/README.md
+    publisher: BigCode project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bcb-license
+    title: bigcodebench LICENSE
+    url: https://raw.githubusercontent.com/bigcode-project/bigcodebench/main/LICENSE
+    publisher: BigCode project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bcb-hf-card
+    title: bigcode/bigcodebench dataset card
+    url: https://huggingface.co/datasets/bigcode/bigcodebench
+    publisher: BigCode project
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bcb-paper
+    title: "BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions"
+    url: https://arxiv.org/abs/2406.15877
+    publisher: arXiv (Zhuo et al.)
+    kind: paper
+    published_at: 2024-06-22
+    accessed_at: 2026-09-29
+  - id: bcb-pypi
+    title: bigcodebench on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/bigcodebench/json
+    publisher: Python Package Index
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bcb-releases
+    title: Releases · bigcode-project/bigcodebench
+    url: https://github.com/bigcode-project/bigcodebench/releases
+    publisher: BigCode project
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bigcode-mission
+    title: BigCode mission
+    url: https://www.bigcode-project.org/docs/about/mission/
+    publisher: BigCode project
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

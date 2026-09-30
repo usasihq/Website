@@ -1,0 +1,174 @@
+slug: mochi-1-preview
+name: Mochi 1 preview
+kind: model
+record_level: release
+family_slug: mochi
+version: "mochi-1-preview"
+maintainers:
+  - name: Genmo
+    organization_slug: genmo
+    source_ids: [mochi-card, genmo-mochi-blog]
+organization_slugs: [genmo]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/genmo/mochi-1-preview
+    kind: model-hub
+  - label: genmoai/mochi repository
+    url: https://github.com/genmoai/mochi
+    kind: repository
+  - label: Mochi 1 announcement
+    url: https://www.genmo.ai/blog/mochi-1-a-new-sota-in-open-text-to-video
+    kind: release-notes
+  - label: Mochi in Hugging Face Diffusers
+    url: https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+    kind: documentation
+summary:
+  text: >-
+    A 10B-parameter text-to-video diffusion model built on Genmo's Asymmetric Diffusion
+    Transformer (AsymmDiT) and released as a research preview in October 2024. It is paired
+    with AsymmVAE, a 362M-parameter video autoencoder released alongside it, and encodes
+    prompts with a single T5-XXL model. The initial release generates 480p video.
+  source_ids: [mochi-repo, mochi-card, genmo-mochi-blog]
+useful_for:
+  text: >-
+    Text-to-video generation for research and development. Genmo notes that the model is
+    optimized for photorealistic styles and does poorly on animated content, and that minor
+    warping can occur with extreme motion. The repository includes a LoRA trainer for
+    fine-tuning on one's own videos.
+  source_ids: [mochi-repo]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Genmo, whose terms of service name Genmo Inc. at a San
+    Francisco, California address under California law, and whose job board lists roles at
+    "San Francisco HQ".
+  source_ids: [mochi-card, genmo-terms, genmo-jobs]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating; the repository also gives a magnet link
+    and a download script.
+  source_ids: [mochi-card, mochi-repo]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/genmo/mochi-1-preview
+    applies_to: weights
+    source_ids: [mochi-card, genmo-mochi-blog]
+  - name: Apache License 2.0 (genmoai/mochi)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/genmoai/mochi/main/LICENSE
+    applies_to: code
+    source_ids: [mochi-license]
+license_notes:
+  text: >-
+    Genmo's announcement says the Apache 2.0 license permits personal and commercial use. The
+    README notes that NSFW filtering is limited and advises organizations to add their own
+    safety measures before deploying the weights in commercial services or products.
+  source_ids: [genmo-mochi-blog, mochi-repo]
+checklist:
+  weights:
+    status: public
+    note: The DiT and the AsymmVAE weights are both published.
+    source_ids: [mochi-card, genmo-mochi-blog]
+  inference_code:
+    status: public
+    note: >-
+      Genmo's repository provides a Gradio UI, a CLI, and a Python API, and Hugging Face
+      Diffusers includes a MochiPipeline.
+    source_ids: [mochi-repo, diffusers-mochi]
+  training_code:
+    status: partial
+    note: >-
+      The repository includes a LoRA fine-tuning trainer (added November 2024); this catalog
+      found no release of the pretraining code.
+    source_ids: [mochi-repo]
+  training_data_information:
+    status: unknown
+    note: Genmo's announcement, README, and model card do not describe the training data.
+    source_ids: [genmo-mochi-blog, mochi-card]
+  training_recipe:
+    status: unknown
+    note: null
+    source_ids: []
+  evaluation_materials:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      Genmo's README says single-GPU use of its own implementation needs about 60GB of VRAM
+      and recommends at least one H100. Per the Diffusers documentation, that implementation
+      runs the text encoder and VAE at float32 precision and the DiT in BF16.
+    source_ids: [mochi-repo, diffusers-mochi]
+  - text: >-
+      The Diffusers documentation says the full-precision weights need at least 42GB of VRAM
+      and the bfloat16 variant 22GB (with a slight quality drop), both with model CPU offload
+      and VAE tiling enabled; it also shows 8-bit loading with bitsandbytes and splitting the
+      transformer across two 24GB GPUs.
+    source_ids: [diffusers-mochi]
+provenance:
+  text: >-
+    Genmo states that Mochi 1 was trained entirely from scratch. Prompts are encoded with a
+    single T5-XXL model; the Diffusers pipeline documents the google/t5-v1_1-xxl variant as
+    the text encoder.
+  derived_from: []
+  source_ids: [mochi-repo, diffusers-mochi]
+tags: [multimodal]
+publication_status: published
+archive_note: null
+released_at: 2024-10-22
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mochi-card
+    title: genmo/mochi-1-preview model card
+    url: https://huggingface.co/genmo/mochi-1-preview
+    publisher: Genmo
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mochi-repo
+    title: genmoai/mochi README
+    url: https://github.com/genmoai/mochi
+    publisher: Genmo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mochi-license
+    title: genmoai/mochi LICENSE
+    url: https://raw.githubusercontent.com/genmoai/mochi/main/LICENSE
+    publisher: Genmo
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-mochi-blog
+    title: "Mochi 1: A new SOTA in open text-to-video"
+    url: https://www.genmo.ai/blog/mochi-1-a-new-sota-in-open-text-to-video
+    publisher: Genmo
+    kind: announcement
+    published_at: 2024-10-22
+    accessed_at: 2026-09-29
+  - id: diffusers-mochi
+    title: Mochi 1 Preview | Hugging Face Diffusers documentation
+    url: https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-terms
+    title: Terms of Service | Genmo
+    url: https://www.genmo.ai/terms-of-service
+    publisher: Genmo Inc.
+    kind: official-page
+    published_at: 2024-09-16
+    accessed_at: 2026-09-29
+  - id: genmo-jobs
+    title: Genmo job board (Ashby posting API)
+    url: https://api.ashbyhq.com/posting-api/job-board/genmo
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -97,6 +97,7 @@ const required = [
   "contribute/index.html",
   "support/index.html",
   "privacy/index.html",
+  "local/index.html",
 ];
 for (const rel of required) {
   if (!fs.existsSync(path.join(out, rel))) failures.push(`missing ${rel}`);
@@ -162,6 +163,14 @@ for (const file of htmlFiles) {
       failures.push(`${path.relative(out, file)} links to unpublished ${route}`);
     }
   }
+}
+
+// Draft profiles must not appear anywhere in the export.
+for (const person of readDir("people")) {
+  if (!person?.slug || person.publication_status === "published") continue;
+  if (catalogJson && JSON.stringify(catalogJson).includes(`"${person.slug}"`)) failures.push(`draft profile ${person.slug} leaked into catalog.json`);
+  const local = path.join(out, "local", "index.html");
+  if (fs.existsSync(local) && fs.readFileSync(local, "utf8").includes(`id="${person.slug}"`)) failures.push(`draft profile ${person.slug} leaked into /local/`);
 }
 
 // Private material must never be exported.

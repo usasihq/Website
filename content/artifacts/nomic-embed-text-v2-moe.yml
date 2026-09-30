@@ -1,0 +1,182 @@
+slug: nomic-embed-text-v2-moe
+name: nomic-embed-text-v2-moe
+kind: model
+record_level: release
+family_slug: nomic-embed
+version: "nomic-embed-text-v2-moe"
+maintainers:
+  - name: Nomic AI
+    organization_slug: nomic-ai
+    source_ids: [nomic-embed-v2-card]
+organization_slugs: [nomic-ai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
+    kind: model-hub
+  - label: GGUF build
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe-GGUF
+    kind: model-hub
+  - label: Technical report (arXiv 2502.07972)
+    url: https://arxiv.org/abs/2502.07972
+    kind: paper
+  - label: contrastors training code
+    url: https://github.com/nomic-ai/contrastors
+    kind: repository
+summary:
+  text: >-
+    A multilingual text embedding model that uses a mixture-of-experts design (8 experts,
+    top-2 routing), with 475M total and 305M active parameters. It covers about 100 languages,
+    produces 768-dimensional embeddings that can be truncated to 256 through Matryoshka
+    training, and accepts inputs of up to 512 tokens. Nomic released it in February 2025.
+  source_ids: [nomic-embed-v2-card, nomic-embed-v2-paper, willison-v2]
+useful_for:
+  text: >-
+    Multilingual retrieval, including retrieval-augmented generation. Queries and documents
+    must carry the task prefixes search_query and search_document.
+  source_ids: [nomic-embed-v2-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Nomic, Inc., which states that its headquarters is in New
+    York City. The model starts from nomic-xlm-2048, Nomic's modified XLM-RoBERTa Base.
+  source_ids: [nomic-embed-v2-card, nomic-careers, nomic-xlm-2048-card]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [nomic-embed-v2-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
+    applies_to: weights
+    source_ids: [nomic-embed-v2-card]
+  - name: Apache License 2.0 (contrastors)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/nomic-ai/contrastors/main/LICENSE
+    applies_to: code
+    source_ids: [contrastors-license]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: null
+    source_ids: [nomic-embed-v2-card]
+  inference_code:
+    status: public
+    note: >-
+      The card documents use with Sentence Transformers and Transformers (with
+      trust_remote_code for the custom architecture) and recommends Nomic's megablocks fork
+      for GPU performance.
+    source_ids: [nomic-embed-v2-card]
+  training_code:
+    status: public
+    note: The card and technical report point to the contrastors repository.
+    source_ids: [nomic-embed-v2-card, nomic-embed-v2-paper, contrastors-repo]
+  training_data_information:
+    status: partial
+    note: >-
+      The card says training used 1.6 billion multilingual pairs and that the training data
+      is released, pointing to the contrastors repository. That README documents access (with
+      a Nomic Atlas account) to the nomic-embed-text-v1 dataset but does not separately
+      describe the v2 multilingual data.
+    source_ids: [nomic-embed-v2-card, contrastors-repo]
+  training_recipe:
+    status: partial
+    note: >-
+      The card summarizes the recipe: weakly supervised contrastive pretraining, then
+      supervised fine-tuning, with consistency filtering and Matryoshka representation
+      learning; the technical report gives details.
+    source_ids: [nomic-embed-v2-card, nomic-embed-v2-paper]
+  evaluation_materials:
+    status: public
+    note: >-
+      The technical report's abstract says code, models, and evaluation data are open
+      sourced; the card shows BEIR and MIRACL results.
+    source_ids: [nomic-embed-v2-paper, nomic-embed-v2-card]
+run_notes:
+  - text: >-
+      The card recommends the 256-dimension embeddings when storage or compute is a concern
+      and notes that the mixture-of-experts architecture may need more resources than
+      comparable dense models.
+    source_ids: [nomic-embed-v2-card]
+provenance:
+  text: >-
+    Trained by Nomic from nomic-xlm-2048, which Nomic made by swapping XLM-RoBERTa Base's
+    learned position embeddings for rotary embeddings and training further on CC100. The
+    released model is fine-tuned from the contrastively pretrained checkpoint
+    nomic-embed-text-v2-moe-unsupervised.
+  derived_from:
+    - name: nomic-embed-text-v2-moe-unsupervised
+      artifact_slug: null
+      url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe-unsupervised
+      note: Contrastive-pretraining checkpoint from Nomic.
+    - name: nomic-xlm-2048
+      artifact_slug: null
+      url: https://huggingface.co/nomic-ai/nomic-xlm-2048
+      note: Nomic's RoPE variant of FacebookAI/xlm-roberta-base.
+  source_ids: [nomic-embed-v2-card, nomic-embed-v2-unsup-card, nomic-xlm-2048-card]
+tags: [embedding, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2025-02
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nomic-embed-v2-card
+    title: nomic-ai/nomic-embed-text-v2-moe model card
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
+    publisher: Nomic
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-embed-v2-paper
+    title: Training Sparse Mixture Of Experts Text Embedding Models (arXiv 2502.07972)
+    url: https://arxiv.org/abs/2502.07972
+    publisher: Nomic
+    kind: paper
+    published_at: 2025-02-11
+    accessed_at: 2026-09-29
+  - id: willison-v2
+    title: "Nomic Embed Text V2: An Open Source, Multilingual, Mixture-of-Experts Embedding Model"
+    url: https://simonwillison.net/2025/Feb/12/nomic-embed-text-v2/
+    publisher: Simon Willison
+    kind: news
+    published_at: 2025-02-12
+    accessed_at: 2026-09-29
+  - id: nomic-embed-v2-unsup-card
+    title: nomic-ai/nomic-embed-text-v2-moe-unsupervised model card
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe-unsupervised
+    publisher: Nomic
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-xlm-2048-card
+    title: nomic-ai/nomic-xlm-2048 model card
+    url: https://huggingface.co/nomic-ai/nomic-xlm-2048
+    publisher: Nomic
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: contrastors-repo
+    title: nomic-ai/contrastors
+    url: https://github.com/nomic-ai/contrastors
+    publisher: Nomic
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: contrastors-license
+    title: contrastors LICENSE
+    url: https://raw.githubusercontent.com/nomic-ai/contrastors/main/LICENSE
+    publisher: Nomic
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-careers
+    title: Careers | Nomic
+    url: https://www.nomic.ai/careers
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

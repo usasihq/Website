@@ -1,0 +1,129 @@
+slug: new-york-university
+name: New York University
+legal_name:
+  text: New York University
+  source_ids: [irs-eo-bmf-ny]
+website: https://www.nyu.edu
+logo_text: NYU
+summary:
+  text: >-
+    New York University is a private research university founded in 1831. It is anchored in New
+    York City and has degree-granting campuses in Abu Dhabi and Shanghai.
+  source_ids: [nyu-bulletin]
+organization_roles: [university-lab, research-lab]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Organization recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    classifies it as an association with school public-charity status (170(b)(1)(A)(ii)).
+  source_ids: [irs-eo-bmf-ny, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: New York, New York
+  country: US
+  source_ids: [nyu-bulletin, irs-eo-bmf-ny]
+other_locations:
+  - label: Abu Dhabi, United Arab Emirates (NYU Abu Dhabi campus)
+    country: AE
+    source_ids: [nyu-bulletin]
+  - label: Shanghai, China (NYU Shanghai campus)
+    country: CN
+    source_ids: [nyu-bulletin]
+founded:
+  year: 1831
+  source_ids: [nyu-bulletin]
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      The GPQA benchmark paper (2023) lists New York University as the affiliation of its authors,
+      two of whom also list Cohere or Anthropic. The benchmark's code and dataset are published
+      from individual researcher accounts on GitHub and Hugging Face rather than from an NYU
+      organization account.
+    source_ids: [gpqa-paper, gpqa-repo, gpqa-hf]
+  - text: >-
+      The NYU Alignment Research Group does empirical work with language models aimed at
+      longer-term concerns about deploying highly capable AI systems. It lists Machine Learning
+      for Language (ML2), CILVR, the Center for Data Science, and the Department of Linguistics
+      among related NYU groups.
+    source_ids: [nyu-arg]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The IRS exempt-organization extract for New York lists New York University, in New York,
+    New York, as a 501(c)(3) organization with school status. NYU describes itself as a private
+    research university anchored in New York City; its degree-granting campuses in Abu Dhabi and
+    Shanghai do not change the location of the U.S. institution.
+  source_ids: [irs-eo-bmf-ny, irs-eo-info, nyu-bulletin]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact, not for the university as a whole. GPQA's code
+    is published under the MIT License, and its dataset is available on Hugging Face under
+    CC BY 4.0 after accepting access terms.
+  source_ids: [gpqa-license, gpqa-hf]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nyu-bulletin
+    title: New York University | NYU Bulletins
+    url: https://bulletins.nyu.edu/nyu/
+    publisher: New York University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ny
+    title: Exempt Organizations Business Master File Extract - New York (eo_ny.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ny.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpqa-paper
+    title: "GPQA: A Graduate-Level Google-Proof Q&A Benchmark (arXiv:2311.12022v1)"
+    url: https://arxiv.org/pdf/2311.12022
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-20
+    accessed_at: 2026-09-29
+  - id: gpqa-repo
+    title: GPQA repository README
+    url: https://raw.githubusercontent.com/idavidrein/gpqa/main/README.md
+    publisher: GPQA authors
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpqa-license
+    title: GPQA LICENSE
+    url: https://raw.githubusercontent.com/idavidrein/gpqa/main/LICENSE
+    publisher: GPQA authors
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpqa-hf
+    title: Idavidrein/gpqa dataset card
+    url: https://huggingface.co/datasets/Idavidrein/gpqa
+    publisher: GPQA authors (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nyu-arg
+    title: NYU Alignment Research Group
+    url: https://wp.nyu.edu/arg/
+    publisher: New York University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

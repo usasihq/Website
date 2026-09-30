@@ -1,0 +1,154 @@
+slug: apriel
+name: Apriel
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: ServiceNow (SLAM lab)
+    organization_slug: servicenow
+    source_ids: [hf-servicenow-ai, apriel-1-6-card]
+organization_slugs: [servicenow]
+links:
+  - label: ServiceNow-AI on Hugging Face
+    url: https://huggingface.co/ServiceNow-AI
+    kind: model-hub
+  - label: Apriel-1.5-15b-Thinker technical report (arXiv 2510.01141)
+    url: https://arxiv.org/abs/2510.01141
+    kind: paper
+  - label: "Super Apriel: One Checkpoint, Many Speeds (arXiv 2604.19877)"
+    url: https://arxiv.org/abs/2604.19877
+    kind: paper
+  - label: Fast-LLM training library
+    url: https://github.com/ServiceNow/Fast-LLM
+    kind: repository
+summary:
+  text: >-
+    Apriel is ServiceNow's series of small open-weight language models, built by its SLAM
+    (ServiceNow Language Models) lab. Apriel-5B was the first release. It was followed by
+    15B-parameter reasoning models: Apriel-Nemotron-15b-Thinker, the multimodal
+    Apriel-1.5-15b-Thinker, and Apriel-1.6-15b-Thinker (December 2025). In
+    April 2026 ServiceNow released Super Apriel, a 15B model derived from Apriel 1.6 whose
+    layers can switch between attention and linear-time mixers at inference time.
+  source_ids: [apriel-5b-card, apriel-nemotron-card, apriel-1-5-card, apriel-1-6-blog, superapriel-paper, hf-servicenow-ai]
+useful_for:
+  text: >-
+    ServiceNow describes the Apriel models as general-purpose instruction models for code
+    assistance, multi-step reasoning, question answering, function calling, and agent use
+    cases, and says they are not meant for safety-critical use without human oversight.
+  source_ids: [apriel-1-6-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The Apriel models are developed and published by ServiceNow, Inc., a Delaware
+    corporation headquartered in Santa Clara, California. Apriel 1.5 and later releases
+    build on Pixtral-12B-Base-2409, a base model published by Mistral AI, so that base is not
+    treated as ServiceNow-developed. Eligibility of each release is assessed on the release
+    record.
+  source_ids: [hf-servicenow-ai, now-10k-2025, apriel-1-5-paper]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Apriel release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    The Apriel-1.5-15b-Thinker report says the model started from Mistral AI's
+    Pixtral-12B-Base-2409 (using a copy hosted by Unsloth) and was depth-upscaled from 40 to
+    48 decoder layers before continued pretraining. Apriel-1.6-15b-Thinker builds on Apriel 1.5, and Super Apriel is
+    distilled from Apriel 1.6.
+  derived_from:
+    - name: Pixtral-12B-Base-2409 (Mistral AI)
+      artifact_slug: null
+      url: https://huggingface.co/mistralai/Pixtral-12B-Base-2409
+      note: Starting checkpoint for Apriel 1.5; published by Mistral AI under Apache 2.0.
+  source_ids: [apriel-1-5-paper, apriel-1-6-card, superapriel-card, pixtral-card]
+tags: [language-model, reasoning, multimodal]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-servicenow-ai
+    title: ServiceNow-AI on Hugging Face
+    url: https://huggingface.co/ServiceNow-AI
+    publisher: ServiceNow (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-5b-card
+    title: ServiceNow-AI/Apriel-5B-Instruct model card
+    url: https://huggingface.co/ServiceNow-AI/Apriel-5B-Instruct
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-nemotron-card
+    title: ServiceNow-AI/Apriel-Nemotron-15b-Thinker model card
+    url: https://huggingface.co/ServiceNow-AI/Apriel-Nemotron-15b-Thinker
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-1-5-card
+    title: ServiceNow-AI/Apriel-1.5-15b-Thinker model card
+    url: https://huggingface.co/ServiceNow-AI/Apriel-1.5-15b-Thinker
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-1-5-paper
+    title: Apriel-1.5-15b-Thinker (arXiv 2510.01141)
+    url: https://arxiv.org/html/2510.01141
+    publisher: ServiceNow (SLAM Lab)
+    kind: paper
+    published_at: 2025-10-01
+    accessed_at: 2026-09-29
+  - id: apriel-1-6-card
+    title: ServiceNow-AI/Apriel-1.6-15b-Thinker model card
+    url: https://huggingface.co/ServiceNow-AI/Apriel-1.6-15b-Thinker
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-1-6-blog
+    title: "Apriel-1.6-15b-Thinker: Cost-efficient Frontier Multimodal Performance"
+    url: https://huggingface.co/blog/ServiceNow-AI/apriel-1p6-15b-thinker
+    publisher: ServiceNow (Hugging Face blog)
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-09-29
+  - id: superapriel-paper
+    title: "Super Apriel: One Checkpoint, Many Speeds (arXiv 2604.19877)"
+    url: https://arxiv.org/abs/2604.19877
+    publisher: ServiceNow (SLAM Labs)
+    kind: paper
+    published_at: 2026-04-21
+    accessed_at: 2026-09-29
+  - id: superapriel-card
+    title: ServiceNow-AI/SuperApriel-15B-Instruct model card
+    url: https://huggingface.co/ServiceNow-AI/SuperApriel-15B-Instruct
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pixtral-card
+    title: mistralai/Pixtral-12B-Base-2409 model card
+    url: https://huggingface.co/mistralai/Pixtral-12B-Base-2409
+    publisher: Mistral AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: now-10k-2025
+    title: ServiceNow, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (ServiceNow filing)
+    kind: filing
+    published_at: 2026-01-28
+    accessed_at: 2026-09-29

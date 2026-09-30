@@ -18,6 +18,7 @@ const STATIC_ROUTES = [
   "/contribute/",
   "/support/",
   "/privacy/",
+  "/local/",
 ];
 
 /**

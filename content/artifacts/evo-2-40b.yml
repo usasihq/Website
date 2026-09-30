@@ -1,0 +1,244 @@
+slug: evo-2-40b
+name: Evo 2 40B
+kind: model
+record_level: release
+family_slug: evo-2
+version: "evo2_40b"
+maintainers:
+  - name: Arc Institute
+    organization_slug: arc-institute
+    source_ids: [mc-evo2-40b, evo2-repo]
+organization_slugs: [arc-institute, nvidia]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/arcinstitute/evo2_40b
+    kind: model-hub
+  - label: GitHub repository
+    url: https://github.com/ArcInstitute/evo2
+    kind: repository
+  - label: Savanna training framework
+    url: https://github.com/Zymrael/savanna
+    kind: repository
+  - label: OpenGenome2 dataset
+    url: https://huggingface.co/datasets/arcinstitute/opengenome2
+    kind: dataset-hub
+  - label: Nature paper (doi:10.1038/s41586-026-10176-5)
+    url: https://doi.org/10.1038/s41586-026-10176-5
+    kind: paper
+summary:
+  text: >-
+    The 40-billion-parameter Evo 2 checkpoint, with 50 layers and a context length of up to 1
+    million base pairs. It was trained autoregressively on OpenGenome2 on 2,048 GPUs, per the
+    Savanna README; a separate evo2_40b_base checkpoint trained at 8,192-token context is also
+    published.
+  source_ids: [mc-evo2-40b, evo2-repo, savanna-readme]
+useful_for:
+  text: >-
+    Likelihood scoring of DNA sequences (such as zero-shot variant effect prediction),
+    embeddings for downstream models, and DNA sequence generation.
+  source_ids: [evo2-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The checkpoint is published in Arc Institute's Hugging Face organization and documented in
+    Arc's GitHub repository. Arc Institute is a Palo Alto, California nonprofit research
+    organization listed by the IRS as a 501(c)(3). Arc describes Evo 2 as developed by Arc and
+    NVIDIA scientists with collaborators at several universities and at Goodfire.
+  source_ids: [mc-evo2-40b, evo2-repo, arc-about, irs-eo-bmf-ca, arc-evo2-one-year]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [mc-evo2-40b, hf-api-evo2-40b]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/arcinstitute/evo2_40b
+    applies_to: weights
+    source_ids: [mc-evo2-40b]
+  - name: Apache License 2.0 (evo2 inference code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/ArcInstitute/evo2/main/LICENSE
+    applies_to: code
+    source_ids: [evo2-license]
+  - name: Apache License 2.0 (Savanna training code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/Zymrael/savanna/main/LICENSE
+    applies_to: code
+    source_ids: [savanna-license]
+license_notes:
+  text: >-
+    The OpenGenome2 training dataset is also published under Apache 2.0 on Hugging Face. The
+    evo2 and Savanna LICENSE files also carry the notices for bundled third-party code, including
+    a BSD-style NVIDIA license and the MIT license for Fairseq code. The Savanna training
+    framework is hosted in a personal GitHub account and describes itself as maintained by a
+    small team and not production-ready.
+  source_ids: [opengenome2-card, evo2-license, savanna-license, savanna-readme]
+checklist:
+  weights:
+    status: public
+    note: >-
+      Weights are on Hugging Face without gating; Savanna-format checkpoints
+      (savanna_evo2_40b) are also published.
+    source_ids: [mc-evo2-40b, hf-api-evo2-40b, hf-api-arc-models]
+  inference_code:
+    status: public
+    note: >-
+      The evo2 package (built on the Vortex inference code) is on GitHub and PyPI under Apache
+      2.0.
+    source_ids: [evo2-repo, evo2-license]
+  training_code:
+    status: public
+    note: >-
+      The README states Evo 2 was trained with Savanna, an Apache-2.0 pretraining framework
+      whose README lists Evo 2 40B among the models trained with it.
+    source_ids: [evo2-repo, savanna-readme, savanna-license]
+  training_data_information:
+    status: public
+    note: >-
+      OpenGenome2 is downloadable from Hugging Face, both as raw FASTA files and as the
+      preprocessed JSONL sequences used for pretraining.
+    source_ids: [opengenome2-card, evo2-repo]
+  training_recipe:
+    status: public
+    note: >-
+      The Nature paper's Supplementary Information documents the two training phases
+      (pretraining at 1,024 and then 8,192 tokens, then multi-stage context extension to 1
+      million tokens) with learning rates, batch sizes, iteration and token counts, optimizer
+      settings, and the context-extension schedule. Savanna publishes 40B pretraining,
+      context-extension, and data configuration files, and the OpenGenome2 card lists per-source
+      data weights for each phase.
+    source_ids: [nature-evo2, nature-evo2-si, savanna-configs-40b, opengenome2-card]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The repository includes notebooks for zero-shot BRCA1 variant effect prediction and an
+      exon classifier, but it was not confirmed that all reported evaluations can be re-run.
+    source_ids: [evo2-repo]
+run_notes:
+  - text: >-
+      The README states that the 40B model needs FP8 through NVIDIA Transformer Engine and an
+      NVIDIA Hopper GPU for numerical accuracy, and that it needs multiple H100 GPUs; Vortex
+      splits the model across the available CUDA devices.
+    source_ids: [evo2-repo]
+  - text: >-
+      Documented requirements are Linux (WSL2 with limited support), CUDA 12.1 or later, cuDNN
+      9.3 or later, and Python 3.11 or 3.12.
+    source_ids: [evo2-repo]
+provenance:
+  text: >-
+    Trained from scratch by Arc Institute and collaborators on OpenGenome2 using Savanna.
+    OpenGenome2 draws on public sources including GTDB, IMG/PR, IMG/VR, metagenomic data, NCBI,
+    Ensembl, EPDnew, RNAcentral, and Rfam.
+  derived_from:
+    - name: OpenGenome2
+      artifact_slug: null
+      url: https://huggingface.co/datasets/arcinstitute/opengenome2
+      note: Pretraining dataset published by Arc Institute.
+  source_ids: [evo2-repo, opengenome2-card]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2025-02
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-evo2-40b
+    title: arcinstitute/evo2_40b model card
+    url: https://huggingface.co/arcinstitute/evo2_40b
+    publisher: Arc Institute
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-evo2-40b
+    title: arcinstitute/evo2_40b (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/arcinstitute/evo2_40b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-arc-models
+    title: Arc Institute models on Hugging Face (model list API)
+    url: https://huggingface.co/api/models?author=arcinstitute&limit=100
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evo2-repo
+    title: ArcInstitute/evo2 README
+    url: https://github.com/ArcInstitute/evo2
+    publisher: Arc Institute
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evo2-license
+    title: ArcInstitute/evo2 LICENSE
+    url: https://raw.githubusercontent.com/ArcInstitute/evo2/main/LICENSE
+    publisher: Arc Institute
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: savanna-readme
+    title: Zymrael/savanna README
+    url: https://github.com/Zymrael/savanna
+    publisher: Savanna maintainers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: savanna-license
+    title: Zymrael/savanna LICENSE
+    url: https://raw.githubusercontent.com/Zymrael/savanna/main/LICENSE
+    publisher: Savanna maintainers (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: savanna-configs-40b
+    title: Savanna configs/40b directory
+    url: https://github.com/Zymrael/savanna/tree/main/configs/40b
+    publisher: Savanna maintainers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nature-evo2
+    title: Genome modelling and design across all domains of life with Evo 2
+    url: https://www.nature.com/articles/s41586-026-10176-5
+    publisher: Nature
+    kind: paper
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: nature-evo2-si
+    title: "Supplementary Information (Methods): Genome modelling and design across all domains of life with Evo 2"
+    url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10176-5/MediaObjects/41586_2026_10176_MOESM1_ESM.pdf
+    publisher: Nature
+    kind: paper
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: opengenome2-card
+    title: arcinstitute/opengenome2 dataset card
+    url: https://huggingface.co/datasets/arcinstitute/opengenome2
+    publisher: Arc Institute
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-evo2-one-year
+    title: "Evo 2: One Year Later"
+    url: https://arcinstitute.org/news/evo-2-one-year-later
+    publisher: Arc Institute
+    kind: announcement
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: arc-about
+    title: About | Arc Institute
+    url: https://arcinstitute.org/about
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

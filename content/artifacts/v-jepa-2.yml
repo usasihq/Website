@@ -1,0 +1,121 @@
+slug: v-jepa-2
+name: V-JEPA 2
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Meta (FAIR)
+    organization_slug: meta
+    source_ids: [vjepa2-readme, vjepa2-blog]
+organization_slugs: [meta]
+links:
+  - label: vjepa2 repository
+    url: https://github.com/facebookresearch/vjepa2
+    kind: repository
+  - label: V-JEPA 2 collection on Hugging Face
+    url: https://huggingface.co/collections/facebook/v-jepa-2-6841bad8413014e185b497a6
+    kind: model-hub
+  - label: V-JEPA 2 paper (arXiv 2506.09985)
+    url: https://arxiv.org/abs/2506.09985
+    kind: paper
+  - label: V-JEPA 2.1 paper (arXiv 2603.14482)
+    url: https://arxiv.org/abs/2603.14482
+    kind: paper
+summary:
+  text: >-
+    V-JEPA 2 is Meta's family of self-supervised video encoders, pretrained on video with a
+    masked latent-feature prediction objective. Meta released it in June
+    2025 with ViT-L, ViT-H, and ViT-g encoders and an action-conditioned world model (V-JEPA
+    2-AC) post-trained on robot video, and in March 2026 added V-JEPA 2.1, a retrained family
+    (ViT-B to a 2B-parameter ViT-G) aimed at dense, temporally consistent features.
+  source_ids: [vjepa2-readme, vjepa2-blog, vjepa2-paper, vjepa21-paper]
+useful_for:
+  text: >-
+    Video and image representations for classification, action anticipation, and retrieval, and
+    as a video encoder for vision-language models; V-JEPA 2-AC is documented for planning robot
+    manipulation from image goals.
+  source_ids: [vjepa2-readme, hf-vjepa2-vitg-384]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by Meta FAIR and published in the facebookresearch GitHub organization under a Meta
+    Platforms copyright. Meta Platforms, Inc. has its principal executive offices in Menlo Park,
+    California, per its Form 10-K.
+  source_ids: [vjepa2-readme, vjepa2-license, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Checkpoints download directly from Meta's servers and, for V-JEPA 2, from Hugging Face without
+    gating; see the release records for license terms.
+  source_ids: [vjepa2-readme, hf-api-vjepa2-vitg-384]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [computer-vision, video, self-supervised, robotics]
+publication_status: published
+archive_note: null
+released_at: 2025-06-11
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: vjepa2-readme
+    title: facebookresearch/vjepa2 README
+    url: https://github.com/facebookresearch/vjepa2/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-license
+    title: facebookresearch/vjepa2 LICENSE (MIT)
+    url: https://github.com/facebookresearch/vjepa2/blob/main/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-blog
+    title: V-JEPA 2 announcement (Meta AI blog)
+    url: https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-06-11
+    accessed_at: 2026-09-29
+  - id: vjepa2-paper
+    title: "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning (arXiv 2506.09985)"
+    url: https://arxiv.org/abs/2506.09985
+    publisher: arXiv (Meta FAIR authors)
+    kind: paper
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa21-paper
+    title: "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning (arXiv 2603.14482)"
+    url: https://arxiv.org/abs/2603.14482
+    publisher: arXiv (Meta FAIR authors)
+    kind: paper
+    published_at: 2026-03-15
+    accessed_at: 2026-09-29
+  - id: hf-vjepa2-vitg-384
+    title: facebook/vjepa2-vitg-fpc64-384 model card
+    url: https://huggingface.co/facebook/vjepa2-vitg-fpc64-384
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-vjepa2-vitg-384
+    title: facebook/vjepa2-vitg-fpc64-384 (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/facebook/vjepa2-vitg-fpc64-384
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

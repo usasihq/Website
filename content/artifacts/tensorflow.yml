@@ -1,0 +1,154 @@
+slug: tensorflow
+name: TensorFlow
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Google (TensorFlow team)
+    organization_slug: google
+    source_ids: [tf-pypi, tf-contributing, tf-221-blog]
+organization_slugs: [google]
+links:
+  - label: GitHub repository
+    url: https://github.com/tensorflow/tensorflow
+    kind: repository
+  - label: Website and documentation
+    url: https://www.tensorflow.org/
+    kind: documentation
+  - label: Install with pip
+    url: https://www.tensorflow.org/install/pip
+    kind: documentation
+  - label: License
+    url: https://raw.githubusercontent.com/tensorflow/tensorflow/master/LICENSE
+    kind: license
+  - label: What's new in TensorFlow 2.21
+    url: https://developers.googleblog.com/whats-new-in-tensorflow-221/
+    kind: release-notes
+summary:
+  text: >-
+    TensorFlow is an open-source, end-to-end machine learning platform with stable Python and
+    C++ APIs, originally developed within Google Brain. With the 2.21 release in March 2026,
+    Google said it would limit TensorFlow work to security and bug fixes, dependency updates,
+    and community contributions, and pointed new generative AI work to Keras 3, JAX, and
+    PyTorch.
+  source_ids: [tf-repo-api, tf-readme, tf-221-blog]
+useful_for:
+  text: >-
+    The project describes TensorFlow as a platform and ecosystem of tools and libraries for
+    building and deploying machine learning applications. Google's 2.21 announcement says the
+    TensorFlow Lite project has been renamed LiteRT and is developed separately.
+  source_ids: [tf-readme, tf-221-blog]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The PyPI package lists Google Inc. as author. TensorFlow's contributing guide requires
+    Google's Contributor License Agreement and describes copying accepted pull requests into
+    Google's internal codebase for testing. Google's developer blog announced, with the 2.21
+    release, the work TensorFlow would focus on going forward. Google's parent Alphabet Inc. has its principal executive offices
+    in Mountain View, California, per its fiscal 2025 Form 10-K.
+  source_ids: [tf-pypi, tf-contributing, tf-221-blog, alphabet-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [tf-repo-api, tf-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/tensorflow/tensorflow/master/LICENSE
+    applies_to: code
+    source_ids: [tf-license, tf-repo-api]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Developed on GitHub at tensorflow/tensorflow.
+    source_ids: [tf-repo-api]
+  documentation:
+    status: public
+    note: Installation guides and other documentation are published at tensorflow.org.
+    source_ids: [tf-install-pip, tf-readme]
+  installation:
+    status: public
+    note: >-
+      Installed with pip ("tensorflow", or "tensorflow[and-cuda]" for NVIDIA GPU support on
+      Linux and WSL2); a CPU-only package is also published.
+    source_ids: [tf-install-pip, tf-readme]
+  supported_platforms:
+    status: public
+    note: >-
+      The install guide lists Ubuntu 16.04 or later, macOS 12 or later (CPU only), Windows
+      native (GPU support ended after TensorFlow 2.10), and Windows WSL2 with GPU support,
+      with Python 3.10 to 3.13.
+    source_ids: [tf-install-pip]
+  release_status:
+    status: public
+    note: Versioned releases are published on PyPI; version 2.21.0 was uploaded on March 6, 2026.
+    source_ids: [tf-pypi]
+run_notes: []
+provenance: null
+tags: [training, numerical-computing, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: tf-repo-api
+    title: GitHub repository metadata for tensorflow/tensorflow
+    url: https://api.github.com/repos/tensorflow/tensorflow
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tf-readme
+    title: tensorflow/tensorflow README
+    url: https://raw.githubusercontent.com/tensorflow/tensorflow/master/README.md
+    publisher: TensorFlow project (Google)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tf-license
+    title: TensorFlow LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/tensorflow/tensorflow/master/LICENSE
+    publisher: TensorFlow project (Google)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tf-contributing
+    title: TensorFlow CONTRIBUTING.md
+    url: https://raw.githubusercontent.com/tensorflow/tensorflow/master/CONTRIBUTING.md
+    publisher: TensorFlow project (Google)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tf-install-pip
+    title: Install TensorFlow with pip
+    url: https://www.tensorflow.org/install/pip
+    publisher: TensorFlow (Google)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tf-pypi
+    title: tensorflow on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/tensorflow/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tf-221-blog
+    title: What's new in TensorFlow 2.21
+    url: https://developers.googleblog.com/whats-new-in-tensorflow-221/
+    publisher: Google for Developers Blog
+    kind: announcement
+    published_at: 2026-03-06
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

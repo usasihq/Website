@@ -1,0 +1,154 @@
+slug: rnj-1-instruct
+name: Rnj-1 Instruct
+kind: model
+record_level: release
+family_slug: rnj
+version: "rnj-1-instruct"
+maintainers:
+  - name: Essential AI
+    organization_slug: essential-ai
+    source_ids: [rnj-1-instruct-card]
+organization_slugs: [essential-ai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct
+    kind: model-hub
+  - label: Rnj-1 base model card
+    url: https://huggingface.co/EssentialAI/rnj-1
+    kind: model-hub
+  - label: GGUF build for llama.cpp
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct-GGUF
+    kind: model-hub
+  - label: Rnj-1 announcement
+    url: https://www.essential.ai/research/rnj-1
+    kind: release-notes
+  - label: LICENSE
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    The instruction-tuned version of Essential AI's Rnj-1, an 8.3B-parameter dense model
+    trained from scratch. The base model was pretrained on 8.4T tokens at an 8K context,
+    extended to a 32K context in a 380B-token mid-training stage, and then given a 150B-token
+    supervised fine-tuning stage to produce this model.
+  source_ids: [rnj-1-instruct-card]
+useful_for:
+  text: >-
+    The model card describes it for code generation across programming languages, agentic
+    coding in frameworks such as mini-SWE-agent and Cline, tool calling, fill-in-the-middle
+    code infilling, and math and science questions. It notes the model is mainly a coding and
+    STEM model rather than one tuned for factual recall.
+  source_ids: [rnj-1-instruct-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Trained from scratch and published by Essential AI, which gives its location as San
+    Francisco, CA; the Essential-Web paper lists the same affiliation.
+  source_ids: [rnj-1-instruct-card, eai-about, essential-web-paper]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [rnj-1-instruct-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [rnj-1-instruct-card, rnj-1-instruct-license]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: Base and instruction-tuned weights are both published, plus an official GGUF build.
+    source_ids: [rnj-1-instruct-card]
+  inference_code:
+    status: public
+    note: >-
+      The card documents use with Transformers 4.51.2 or later, vLLM (with the hermes
+      tool-call parser), SGLang, and llama.cpp via the GGUF build.
+    source_ids: [rnj-1-instruct-card]
+  training_code:
+    status: unknown
+    note: null
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: >-
+      The card says the model was trained on online web data and gives token counts per
+      stage, but does not name the datasets.
+    source_ids: [rnj-1-instruct-card]
+  training_recipe:
+    status: partial
+    note: >-
+      The card lists the stage token budgets, context lengths, the Muon optimizer, the
+      learning-rate schedule, and batch sizes; the fine-tuning data is not described.
+    source_ids: [rnj-1-instruct-card]
+  evaluation_materials:
+    status: public
+    note: >-
+      The card reports evaluation results, and Essential AI publishes the model's generations
+      for its evaluations as Hugging Face datasets (for example rnj-1-instruct-evals).
+    source_ids: [rnj-1-instruct-card, rnj-1-instruct-evals]
+run_notes:
+  - text: >-
+      The card recommends always using a system prompt and temperatures from 0 to 0.2, and
+      warns that without them the model can truncate outputs or write code for non-code
+      tasks. It documents extending the context to 128K with YaRN RoPE scaling by editing
+      config.json and reports some regressions at that length, particularly on some science
+      and performance evaluations.
+    source_ids: [rnj-1-instruct-card]
+provenance:
+  text: >-
+    Fine-tuned by Essential AI from its own Rnj-1 base model, which it trained from scratch.
+    The card says the architecture is similar to Gemma 3 but uses only global attention, with
+    YaRN for long-context extension.
+  derived_from:
+    - name: Rnj-1 (base)
+      artifact_slug: null
+      url: https://huggingface.co/EssentialAI/rnj-1
+      note: Essential AI base model; no separate catalog record.
+  source_ids: [rnj-1-instruct-card]
+tags: [language-model, code-model]
+publication_status: published
+archive_note: null
+released_at: 2025-12
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: rnj-1-instruct-card
+    title: EssentialAI/rnj-1-instruct model card
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct
+    publisher: Essential AI
+    kind: model-card
+    published_at: 2025-12-08
+    accessed_at: 2026-09-29
+  - id: rnj-1-instruct-license
+    title: EssentialAI/rnj-1-instruct LICENSE
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct/blob/main/LICENSE
+    publisher: Essential AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: rnj-1-instruct-evals
+    title: EssentialAI/rnj-1-instruct-evals dataset
+    url: https://huggingface.co/datasets/EssentialAI/rnj-1-instruct-evals
+    publisher: Essential AI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: eai-about
+    title: About | Essential AI
+    url: https://www.essential.ai/about
+    publisher: Essential AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: essential-web-paper
+    title: "Essential-Web v1.0: 24T tokens of organized web data (arXiv 2506.14111v2)"
+    url: https://arxiv.org/html/2506.14111v2
+    publisher: Essential AI
+    kind: paper
+    published_at: 2025-06-19
+    accessed_at: 2026-09-29

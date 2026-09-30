@@ -1,0 +1,245 @@
+slug: arc-prize-foundation
+name: ARC Prize Foundation
+legal_name:
+  text: >-
+    ARC Prize Foundation (the name on its Form 990 for 2024); the website's terms of service
+    and privacy policy name ARC Prize, Inc. at the same San Francisco address
+  source_ids: [irs-990-batch-2025-11c, irs-990-index-2025, arc-terms, arc-privacy]
+website: https://arcprize.org
+logo_text: ARC
+summary:
+  text: >-
+    ARC Prize Foundation is a nonprofit that develops the ARC-AGI benchmarks, built from tasks
+    that are simple for people but difficult for AI systems, and runs public competitions and
+    model testing around them. It launched ARC-AGI-2 in March 2025 and the interactive
+    ARC-AGI-3 in March 2026.
+  source_ids: [arc-about, arc-home, arc-policy, arc-agi2-announcement, arc-agi3-launch]
+organization_roles: [nonprofit-research, open-source-steward]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation with legal domicile in Delaware, formed in 2024, per its Form 990 for the short
+    tax year April 26 to December 31, 2024 (e-filed November 2025). The return checks Section
+    501(c)(3). Its Schedule A checks the publicly supported organization category (section
+    170(b)(1)(A)(vi)) in Part I, but in the Part II support test it checks neither the
+    first-five-years box nor a public-support-test box and instead checks line 18, "Private
+    foundation". The organization was not listed in the IRS exempt-organization extract for
+    California or in the IRS Publication 78 data checked on 2026-09-29, and ProPublica's
+    Nonprofit Explorer says it is not on the IRS's most recent list of tax-exempt organizations.
+  source_ids: [irs-990-batch-2025-11c, irs-990-index-2025, irs-f990-schedule-a-2024, irs-eo-bmf-ca, irs-pub78-data, propublica-arc]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [arc-terms, arc-privacy, irs-990-batch-2025-11c]
+other_locations: []
+founded:
+  year: 2024
+  source_ids: [irs-990-batch-2025-11c]
+sectors: [research]
+status_note: null
+products:
+  - id: arc-agi-toolkit
+    name: ARC-AGI Toolkit (arc-agi Python package)
+    kind: developer-tool
+    access: >-
+      MIT-licensed Python interface for running agents in ARC-AGI-3 environments, locally or
+      through ARC Prize's API; installable with pip, and an API key is optional but gives
+      access to more games.
+    url: https://github.com/arcprize/ARC-AGI
+    source_ids: [arc-toolkit-repo, arc-toolkit-license]
+    last_reviewed: 2026-09-29
+  - id: arc-prize-2026
+    name: ARC Prize 2026 (ARC-AGI-3 competition)
+    kind: other
+    access: >-
+      Public competition with submissions through Kaggle; to qualify for prizes, participants
+      must open-source their code and methods, and agents have no internet access during
+      evaluation.
+    url: https://arcprize.org/competitions/2026/arc-agi-3
+    source_ids: [arc-competition-2026]
+    last_reviewed: 2026-09-29
+  - id: arc-prize-verified
+    name: ARC Prize Verified testing
+    kind: other
+    access: >-
+      Testing of models from open-source and commercial providers selected at ARC Prize's
+      discretion on the semi-private evaluation sets, with results published on a verified
+      leaderboard; tested providers must agree to zero data retention.
+    url: https://arcprize.org/policy
+    source_ids: [arc-policy]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      The foundation's website states that ARC Prize is a provider of AI benchmarks to NIST's
+      Center for AI Standards and Innovation (CAISI).
+    source_ids: [arc-home]
+  - text: >-
+      The website's terms (last updated June 3, 2024) describe ARC Prize, Inc. as a company
+      registered in California, while the foundation's Form 990 gives Delaware as its legal
+      domicile; both list the same San Francisco mailing address. How the two names relate is
+      not documented in the pages reviewed.
+    source_ids: [arc-terms, irs-990-batch-2025-11c]
+  - text: >-
+      The ARC-AGI-3 technical report (arXiv, March 2026) is credited to ARC Prize Foundation as
+      its author.
+    source_ids: [arc-agi3-report]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    ARC Prize Foundation describes itself as a nonprofit and says donations are tax-deductible.
+    Its Form 990 for 2024, published in the IRS e-file data, reports a Delaware corporation
+    formed in 2024 with a San Francisco, California address and checks 501(c)(3) status, and
+    the site's terms name ARC Prize, Inc., registered in California at the same address. The
+    organization did not appear in the IRS exempt-organization extract or Publication 78 data
+    checked on 2026-09-29, so its exempt status rests on its own statements and Form 990
+    rather than an IRS listing; its U.S. location is documented either way.
+  source_ids: [arc-about, arc-donate, irs-990-batch-2025-11c, irs-990-index-2025, arc-terms, irs-eo-bmf-ca, irs-pub78-data]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Publishes the public ARC-AGI-2 training and evaluation tasks on GitHub under Apache 2.0 and
+    an MIT-licensed toolkit for ARC-AGI-3. The semi-private and private evaluation sets are not
+    published; they are used for verified testing and competitions.
+  source_ids: [arc-agi2-repo, arc-toolkit-license, arc-policy]
+hiring_url: https://arcprize.org/jobs
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: arc-home
+    title: ARC Prize
+    url: https://arcprize.org/
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-about
+    title: ARC Prize - Mission
+    url: https://arcprize.org/about
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-donate
+    title: ARC Prize Foundation - Support Our Mission
+    url: https://arcprize.org/donate
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-terms
+    title: ARC Prize Terms and Conditions
+    url: https://arcprize.org/terms
+    publisher: ARC Prize, Inc.
+    kind: official-page
+    published_at: 2024-06-03
+    accessed_at: 2026-09-29
+  - id: arc-privacy
+    title: Privacy Policy for ARC Prize, Inc.
+    url: https://arcprize.org/privacy
+    publisher: ARC Prize, Inc.
+    kind: official-page
+    published_at: 2024-06-11
+    accessed_at: 2026-09-29
+  - id: arc-policy
+    title: ARC Prize Verified Testing Policy
+    url: https://arcprize.org/policy
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-competition-2026
+    title: ARC Prize 2026 - ARC-AGI-3 Competition
+    url: https://arcprize.org/competitions/2026/arc-agi-3
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi2-announcement
+    title: Announcing ARC-AGI-2 and ARC Prize 2025
+    url: https://arcprize.org/blog/announcing-arc-agi-2-and-arc-prize-2025
+    publisher: ARC Prize Foundation
+    kind: announcement
+    published_at: 2025-03-24
+    accessed_at: 2026-09-29
+  - id: arc-agi3-launch
+    title: Announcing ARC-AGI-3
+    url: https://arcprize.org/blog/arc-agi-3-launch
+    publisher: ARC Prize Foundation
+    kind: announcement
+    published_at: 2026-03-25
+    accessed_at: 2026-09-29
+  - id: arc-agi3-report
+    title: "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence (arXiv 2603.24621)"
+    url: https://arxiv.org/abs/2603.24621
+    publisher: arXiv (ARC Prize Foundation)
+    kind: paper
+    published_at: 2026-03-24
+    accessed_at: 2026-09-29
+  - id: arc-agi2-repo
+    title: arcprize/ARC-AGI-2
+    url: https://github.com/arcprize/ARC-AGI-2
+    publisher: ARC Prize Foundation
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-toolkit-repo
+    title: arcprize/ARC-AGI (ARC-AGI Toolkit) README
+    url: https://raw.githubusercontent.com/arcprize/ARC-AGI/main/README.md
+    publisher: ARC Prize Foundation
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-toolkit-license
+    title: arcprize/ARC-AGI LICENSE
+    url: https://raw.githubusercontent.com/arcprize/ARC-AGI/main/LICENSE
+    publisher: ARC Prize Foundation
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-990-index-2025
+    title: IRS Form 990 e-file index for 2025 (index_2025.csv; ARC PRIZE FOUNDATION, tax period 202412, object ID 202523119349301902)
+    url: https://apps.irs.gov/pub/epostcard/990/xml/2025/index_2025.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-990-batch-2025-11c
+    title: IRS Form 990 e-file XML batch 2025_TEOS_XML_11C (ARC Prize Foundation Form 990 for tax year 2024)
+    url: https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_11C.zip
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-f990-schedule-a-2024
+    title: "Schedule A (Form 990) 2024: Public Charity Status and Public Support"
+    url: https://www.irs.gov/pub/irs-prior/f990sa--2024.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: "2024"
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-pub78-data
+    title: Tax Exempt Organization Search - Publication 78 data download
+    url: https://apps.irs.gov/pub/epostcard/data-download-pub78.zip
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: propublica-arc
+    title: Arc Prize Foundation - Nonprofit Explorer
+    url: https://projects.propublica.org/nonprofits/organizations/992781492
+    publisher: ProPublica
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29

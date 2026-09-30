@@ -1,0 +1,196 @@
+slug: max
+name: MAX (Modular)
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Modular
+    organization_slug: modular
+    source_ids: [modular-repo-readme, max-home]
+organization_slugs: [modular]
+links:
+  - label: Documentation
+    url: https://max.modular.com/
+    kind: documentation
+  - label: Repository
+    url: https://github.com/modular/modular
+    kind: repository
+  - label: Repository LICENSE (open-source components)
+    url: https://github.com/modular/modular/blob/main/LICENSE
+    kind: license
+  - label: Modular Community License
+    url: https://www.modular.com/legal/community
+    kind: license
+  - label: Releases
+    url: https://github.com/modular/modular/releases
+    kind: release-notes
+summary:
+  text: >-
+    MAX is Modular's framework for serving and building AI models. It serves models through an
+    OpenAI-compatible API, offers PyTorch-like Python APIs for writing model pipelines, and includes
+    a GPU kernel library for NVIDIA, AMD, and Apple hardware. Its Python API, model pipelines, and
+    GPU kernels are open source; the MAX package as a whole is distributed under the Modular
+    Community License.
+  source_ids: [max-home, max-get-started, modular-repo-readme, modular-community-license]
+useful_for:
+  text: >-
+    Deploying open models behind an OpenAI-compatible endpoint on NVIDIA or AMD data-center GPUs,
+    and writing custom model pipelines and kernels that target several hardware vendors.
+  source_ids: [max-home, max-get-started]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    MAX is developed and distributed by Modular Inc, whose terms of service give offices in Los
+    Altos, California, and whose open-source MAX components are published in Modular's modular
+    GitHub repository. Modular has been owned by Qualcomm Incorporated, a Delaware corporation
+    with principal executive offices in San Diego, California, since July 2026.
+  source_ids: [modular-repo-readme, modular-terms, modular-community-license, qualcomm-10q-q3-fy2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    The MAX package is free to download and use, including commercially, under the Modular
+    Community License. The license requires attribution in derivative works, sets trademark
+    requirements for commercial hosted inference services, and bars using MAX as training input
+    for AI systems that would reimplement or substitute for it.
+  source_ids: [modular-community-license, max-get-started]
+licenses:
+  - name: Apache License 2.0 with LLVM Exceptions (open-source MAX components in the modular repository)
+    spdx: Apache-2.0 WITH LLVM-exception
+    url: https://github.com/modular/modular/blob/main/LICENSE
+    applies_to: code
+    source_ids: [modular-repo-license, modular-repo-readme]
+  - name: Modular Community License (MAX package usage and distribution)
+    spdx: null
+    url: https://www.modular.com/legal/community
+    applies_to: code
+    source_ids: [modular-community-license, modular-repo-readme]
+license_notes:
+  text: >-
+    The repository README says MAX usage and distribution fall under the Modular Community
+    License, while the code in the repository is Apache 2.0 with LLVM exceptions. The Community
+    License page (last modified August 18, 2026) says portions of MAX are available under Apache
+    2.0 with LLVM exceptions and that Modular is making the remaining MAX source, including the
+    compiler, runtime, and device APIs, available under the Community License. Modular's ModCon
+    post (August 18, 2026) says the MAX license no longer contains device usage restrictions. The
+    PyPI metadata for the max 26.6.0 package declares LicenseRef-MAX-Platform-Software-License.
+  source_ids: [modular-repo-readme, modular-community-license, modcon-2026, pypi-max]
+checklist:
+  source_code:
+    status: partial
+    note: >-
+      The MAX Python API, serving code, model pipelines, and GPU kernels are published in the
+      modular repository. Modular's September 2026 release post says it remains committed to
+      making the rest of the MAX source available, without giving a date.
+    source_ids: [modular-repo-readme, max-home, modular-26-6]
+  documentation:
+    status: public
+    note: Quickstart, serving, modeling, and GPU programming documentation on max.modular.com.
+    source_ids: [max-home, max-get-started]
+  installation:
+    status: public
+    note: Documented installs with pixi (max-all) and uv (max[all]); Docker is referenced as an alternative.
+    source_ids: [max-get-started, modular-26-6]
+  supported_platforms:
+    status: public
+    note: >-
+      The quickstart lists Linux and WSL, recommends data-center NVIDIA (B200, H200, H100) or AMD
+      (MI355X, MI325X, MI300X) GPUs, and says consumer systems run fewer models more slowly. The
+      MAX homepage says the same package runs on NVIDIA, AMD, and Apple silicon.
+    source_ids: [max-get-started, max-home]
+  release_status:
+    status: public
+    note: MAX 26.6 was released on September 17, 2026; releases are published on GitHub.
+    source_ids: [modular-26-6, modular-releases]
+run_notes:
+  - text: >-
+      MAX serves models through an OpenAI-compatible endpoint, by default on a local server at
+      localhost port 8000, and includes a max benchmark command.
+    source_ids: [max-get-started]
+provenance: null
+tags: [inference, serving, compiler]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: max-home
+    title: "MAX: A high-performance AI serving and modeling framework"
+    url: https://max.modular.com/
+    publisher: Modular
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: max-get-started
+    title: Quickstart | MAX
+    url: https://max.modular.com/get-started
+    publisher: Modular
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-repo-readme
+    title: modular/modular README
+    url: https://github.com/modular/modular
+    publisher: Modular
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-repo-license
+    title: modular/modular LICENSE
+    url: https://github.com/modular/modular/blob/main/LICENSE
+    publisher: Modular
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-releases
+    title: modular/modular releases
+    url: https://github.com/modular/modular/releases
+    publisher: Modular
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-community-license
+    title: "Modular: Community License"
+    url: https://www.modular.com/legal/community
+    publisher: Modular
+    kind: license
+    published_at: 2026-08-18
+    accessed_at: 2026-09-29
+  - id: modular-26-6
+    title: "Modular 26.6: Open compiler contributions, audio generation, and expanded model support"
+    url: https://www.modular.com/blog/modular-26-6-open-compiler-contributions-audio-generation-and-expanded-model-support
+    publisher: Modular
+    kind: release-notes
+    published_at: 2026-09-17
+    accessed_at: 2026-09-29
+  - id: modcon-2026
+    title: "ModCon 2026: Open source, open cloud, open silicon"
+    url: https://www.modular.com/blog/modcon-announcements
+    publisher: Modular
+    kind: announcement
+    published_at: 2026-08-18
+    accessed_at: 2026-09-29
+  - id: pypi-max
+    title: max package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/max/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-terms
+    title: "Modular: Terms of Service"
+    url: https://www.modular.com/legal/terms
+    publisher: Modular
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qualcomm-10q-q3-fy2026
+    title: QUALCOMM Incorporated Form 10-Q for the quarterly period ended June 28, 2026
+    url: https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm
+    publisher: U.S. Securities and Exchange Commission (filed by QUALCOMM Incorporated)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

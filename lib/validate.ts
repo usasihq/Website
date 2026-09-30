@@ -9,11 +9,15 @@ import {
   Artifact,
   ChangelogEntry,
   FeaturedSelection,
+  LocalCornerSchedule,
   Organization,
+  Person,
   type Artifact as ArtifactT,
   type ChangelogEntry as ChangelogEntryT,
   type FeaturedSelection as FeaturedSelectionT,
+  type LocalCornerSchedule as LocalCornerScheduleT,
   type Organization as OrganizationT,
+  type Person as PersonT,
 } from "./schema";
 import { CHECKLISTS } from "./openness";
 
@@ -28,6 +32,8 @@ export interface RawContent {
   artifacts: RawDocument[];
   changelog: RawDocument[];
   featured: RawDocument | null;
+  people?: RawDocument[];
+  localCorner?: RawDocument | null;
 }
 
 export interface ValidationIssue {
@@ -42,8 +48,14 @@ export interface ValidatedContent {
   artifacts: ArtifactT[];
   changelog: ChangelogEntryT[];
   featured: FeaturedSelectionT | null;
+  people: PersonT[];
+  localCorner: LocalCornerScheduleT | null;
   issues: ValidationIssue[];
 }
+
+/** Wording that would add personal (non-professional) details to a profile. */
+const PERSONAL_DETAIL_PATTERN =
+  /\b(born|birthplace|hometown|grew up|age[ds]?\s+\d|years old|nationality|citizen(ship)?|immigra\w*|married|spouse|wife|husband|children|live[sd]?\s+in|living\s+in|based\s+in|resid\w*|relocat\w*|moved\s+to|home address|religio\w*|ethnic\w*)\b/i;
 
 /** Text that must never appear in public records. */
 const PLACEHOLDER_PATTERN = /\b(TODO|TBD|FIXME|lorem ipsum|XXX+|insert here)\b|\[(placeholder|tbd|todo)\]/i;
@@ -344,6 +356,71 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     });
   }
 
+  /* ---- Local corner people ---- */
+  const peopleDocs = parseDocs(raw.people ?? [], Person, issues);
+  const scheduleDoc = raw.localCorner ? parseDocs([raw.localCorner], LocalCornerSchedule, issues)[0] ?? null : null;
+  const personSlugs = new Map<string, string>();
+  for (const { file, value: person } of peopleDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    if (basename(file) !== person.slug) push("error", `File name must match slug "${person.slug}"`, "slug");
+    if (personSlugs.has(person.slug)) push("error", `Duplicate person slug "${person.slug}"`, "slug");
+    personSlugs.set(person.slug, file);
+
+    const ids = new Set<string>();
+    person.sources.forEach((s, i) => {
+      if (ids.has(s.id)) push("error", `Duplicate source id "${s.id}"`, `sources[${i}].id`);
+      ids.add(s.id);
+      if (s.accessed_at > today) push("error", "accessed_at is in the future", `sources[${i}].accessed_at`);
+    });
+    const refs: Array<{ id: string; path: string }> = [];
+    collectSourceRefs(person, "", refs);
+    const used = new Set(refs.map((r) => r.id));
+    for (const r of refs) if (!ids.has(r.id)) push("error", `Unknown source id "${r.id}"`, r.path);
+    person.sources.forEach((s, i) => {
+      if (!used.has(s.id)) push("warning", `Source "${s.id}" is not cited by any claim`, `sources[${i}]`);
+    });
+    if (person.updated_at > today) push("error", "updated_at is in the future", "updated_at");
+    if (person.last_reviewed && person.last_reviewed > today) push("error", "last_reviewed is in the future", "last_reviewed");
+
+    person.affiliations.forEach((a, i) => {
+      if (a.organization_slug && !orgBySlug.has(a.organization_slug)) push("error", `Unknown organization slug "${a.organization_slug}"`, `affiliations[${i}]`);
+    });
+    person.work.forEach((w, i) => {
+      if (w.artifact_slug && !artifactBySlug.has(w.artifact_slug)) push("error", `Unknown artifact slug "${w.artifact_slug}"`, `work[${i}]`);
+    });
+
+    const strings: Array<{ text: string; path: string }> = [];
+    collectStrings(person, "", strings);
+    for (const { text, path } of strings) {
+      if (isUrlLike(text)) continue;
+      if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(person.publication_status === "draft" ? "warning" : "error", `Placeholder text found: "${text.slice(0, 60)}"`, path);
+      if (!path.startsWith("sources") && PERSONAL_DETAIL_PATTERN.test(text)) {
+        push("error", `Personal detail not allowed in profiles: "${text.slice(0, 60)}"`, path);
+      }
+    }
+
+    if (person.publication_status === "published") {
+      if (!person.last_reviewed) push("error", "Published profiles need a last_reviewed date", "last_reviewed");
+      const tied =
+        person.affiliations.some((a) => a.organization_slug && publishedOrgs.has(a.organization_slug)) ||
+        person.work.some((w) => w.artifact_slug && publishedArtifacts.has(w.artifact_slug));
+      if (!tied) push("error", "A published profile must link to at least one published catalog organization or artifact", "affiliations");
+    }
+  }
+  if (scheduleDoc) {
+    const months = new Set<string>();
+    scheduleDoc.value.lineups.forEach((lineup, i) => {
+      if (months.has(lineup.month)) issues.push({ level: "error", file: scheduleDoc.file, path: `lineups[${i}].month`, message: `Duplicate month ${lineup.month}` });
+      months.add(lineup.month);
+      lineup.people.forEach((slug, j) => {
+        const doc = peopleDocs.find((d) => d.value.slug === slug);
+        if (!doc || doc.value.publication_status !== "published") {
+          issues.push({ level: "error", file: scheduleDoc.file, path: `lineups[${i}].people[${j}]`, message: `"${slug}" is not a published profile` });
+        }
+      });
+    });
+  }
+
   const strip = <T extends { __file?: string }>(r: T) => {
     const { __file: _omit, ...rest } = r;
     void _omit;
@@ -355,6 +432,8 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     artifacts: artifacts.map(strip) as ArtifactT[],
     changelog: changelogDocs.map((d) => d.value).sort((a, b) => b.date.localeCompare(a.date)),
     featured: featuredDoc?.value ?? null,
+    people: peopleDocs.map((d) => d.value),
+    localCorner: scheduleDoc?.value ?? null,
     issues,
   };
 }

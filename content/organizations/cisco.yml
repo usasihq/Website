@@ -1,0 +1,124 @@
+slug: cisco
+name: Cisco
+legal_name:
+  text: Cisco Systems, Inc.
+  source_ids: [csco-10k-fy2026]
+website: https://www.cisco.com
+logo_text: CS
+summary:
+  text: >-
+    Cisco designs and sells networking, security, collaboration, and observability hardware and
+    software. Its AI-related offerings include Silicon One networking silicon for AI data center
+    networks, the Cisco Secure AI Factory with NVIDIA reference design, and Cisco AI Defense for
+    securing AI applications and models.
+  source_ids: [csco-10k-fy2026, cisco-silicon-one-page, cisco-secure-ai-factory-page, cisco-ai-defense-page]
+organization_roles: [chip-designer, enterprise-software]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation (incorporated in California in 1984 and reincorporated in Delaware in 2021)
+  source_ids: [csco-10k-fy2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Jose, California
+  country: US
+  source_ids: [csco-10k-fy2026]
+other_locations: []
+founded:
+  year: 1984
+  source_ids: [csco-10k-fy2026]
+sectors: [enterprise, chips]
+status_note: null
+products:
+  - id: silicon-one
+    name: Cisco Silicon One
+    kind: hardware
+    access: >-
+      Programmable routing and switching silicon architecture used in Cisco routers and switches
+      for AI scale-out networks in data centers and between sites, for hyperscalers, service
+      providers, and enterprises.
+    url: https://www.cisco.com/site/us/en/products/networking/silicon-one/index.html
+    source_ids: [cisco-silicon-one-page, csco-10k-fy2026, cisco-secure-ai-factory-page]
+    last_reviewed: 2026-09-29
+  - id: secure-ai-factory
+    name: Cisco Secure AI Factory with NVIDIA
+    kind: hardware
+    access: >-
+      Modular reference design built from Cisco AI PODs, NVIDIA-based GPU servers, Cisco or
+      NVIDIA Spectrum-X data center switching, Cisco security products, and Splunk
+      Observability; offered as pre-validated PODs with Cisco Validated Designs or as
+      build-your-own configurations.
+    url: https://www.cisco.com/site/us/en/solutions/artificial-intelligence/secure-ai-factory/index.html
+    source_ids: [cisco-secure-ai-factory-page]
+    last_reviewed: 2026-09-29
+  - id: ai-defense
+    name: Cisco AI Defense
+    kind: enterprise-software
+    access: >-
+      Security product for AI applications and models that discovers AI assets in use, red-teams
+      AI models, manages AI supply chain risk for models and files, and applies runtime
+      guardrails to production AI applications.
+    url: https://www.cisco.com/site/us/en/products/security/ai-defense/index.html
+    source_ids: [cisco-ai-defense-page, csco-10k-fy2026]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Foundation AI at Cisco published Foundation-Sec-8B, an open-weight language model for
+      cybersecurity, on Hugging Face on April 28, 2025. The model card says it was built by
+      continued pretraining of Meta's Llama-3.1-8B on cybersecurity text and lists the Apache 2.0
+      license.
+    source_ids: [foundation-sec-8b-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Cisco Systems, Inc. is a Delaware corporation with principal executive offices in San Jose,
+    California, per the cover page of its Form 10-K for the fiscal year ended July 25, 2026.
+  source_ids: [csco-10k-fy2026]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Cisco's Foundation AI team has released open-weight models such as Foundation-Sec-8B, which
+    is derived from Meta's Llama-3.1-8B. This catalog has not assessed those releases.
+  source_ids: [foundation-sec-8b-card]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: csco-10k-fy2026
+    title: Cisco Systems, Inc. Form 10-K for the fiscal year ended July 25, 2026
+    url: https://www.sec.gov/Archives/edgar/data/858877/000085887726000132/csco-20260725.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-09-02
+    accessed_at: 2026-09-29
+  - id: cisco-silicon-one-page
+    title: Cisco Silicon One - Processors for Unified Network Architecture - Cisco
+    url: https://www.cisco.com/site/us/en/products/networking/silicon-one/index.html
+    publisher: Cisco
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cisco-secure-ai-factory-page
+    title: Cisco Secure AI Factory with NVIDIA - Cisco
+    url: https://www.cisco.com/site/us/en/solutions/artificial-intelligence/secure-ai-factory/index.html
+    publisher: Cisco
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cisco-ai-defense-page
+    title: Cisco AI Defense and Advanced Threat Prevention - Cisco
+    url: https://www.cisco.com/site/us/en/products/security/ai-defense/index.html
+    publisher: Cisco
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: foundation-sec-8b-card
+    title: fdtn-ai/Foundation-Sec-8B model card
+    url: https://huggingface.co/fdtn-ai/Foundation-Sec-8B
+    publisher: Foundation AI at Cisco (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29

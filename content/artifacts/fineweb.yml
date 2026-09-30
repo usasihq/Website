@@ -1,0 +1,174 @@
+slug: fineweb
+name: FineWeb
+kind: dataset
+record_level: project
+family_slug: null
+version: "v1.4.0"
+maintainers:
+  - name: Hugging Face (FineData, HuggingFaceFW)
+    organization_slug: hugging-face
+    source_ids: [fineweb-card, hffw-org]
+organization_slugs: [hugging-face]
+links:
+  - label: Dataset card (Hugging Face)
+    url: https://huggingface.co/datasets/HuggingFaceFW/fineweb
+    kind: dataset-hub
+  - label: FineWeb paper (arXiv 2406.17557)
+    url: https://arxiv.org/abs/2406.17557
+    kind: paper
+  - label: Processing script (datatrove examples/fineweb.py)
+    url: https://github.com/huggingface/datatrove/blob/main/examples/fineweb.py
+    kind: repository
+  - label: ODC-By 1.0 license
+    url: https://opendatacommons.org/licenses/by/1-0/
+    kind: license
+summary:
+  text: >-
+    FineWeb is Hugging Face's English web-text pretraining dataset, built by extracting,
+    filtering, and deduplicating pages from Common Crawl snapshots dating back to 2013. The card
+    describes it as more than 18.5 trillion tokens (GPT-2 tokenizer), up from about 15 trillion
+    at first release in April 2024; version 1.4.0 (July 2025) added the Common Crawl snapshots
+    from January to June 2025. Hugging Face also published FineWeb-Edu, an educational subset.
+  source_ids: [fineweb-card, fineweb-paper]
+useful_for:
+  text: >-
+    The card describes it as a research artifact for pretraining large language models on
+    public web data; each Common Crawl snapshot can be loaded separately, and 10B, 100B, and
+    350B-token random samples are provided.
+  source_ids: [fineweb-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    FineWeb is created and published by Hugging Face's HuggingFaceFW organization ("FineData"),
+    which describes itself as part of the Hugging Face Science team, and it is processed with
+    Hugging Face's datatrove library. Hugging Face's terms of service identify Hugging Face,
+    Inc., a Delaware corporation, as the provider of its services, and its privacy policy states
+    that the company is located in the United States; see the hugging-face organization record
+    for the dual-country assessment. The underlying web data comes from the Common Crawl
+    Foundation's crawls and is recorded under provenance.
+  source_ids: [fineweb-card, hffw-org, hf-tos, hf-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from the Hugging Face Hub without gating (via datasets, huggingface_hub, or
+    datatrove). Use is also subject to Common Crawl's Terms of Use, per the card.
+  source_ids: [fineweb-card]
+licenses:
+  - name: Open Data Commons Attribution License v1.0
+    spdx: ODC-By-1.0
+    url: https://opendatacommons.org/licenses/by/1-0/
+    applies_to: data
+    source_ids: [fineweb-card]
+  - name: Apache License 2.0 (datatrove processing library)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/huggingface/datatrove/main/LICENSE
+    applies_to: code
+    source_ids: [datatrove-license]
+license_notes:
+  text: >-
+    The card releases the dataset under ODC-By 1.0 and states that its use is also subject to
+    Common Crawl's Terms of Use. It notes that some domains were removed in version 1.3.0 in
+    response to a cease-and-desist notice.
+  source_ids: [fineweb-card]
+checklist:
+  access:
+    status: public
+    note: >-
+      The full dataset, per-snapshot subsets, and sample subsets are downloadable without
+      gating; previous versions remain available on named branches.
+    source_ids: [fineweb-card]
+  provenance:
+    status: public
+    note: >-
+      Every record keeps its Common Crawl snapshot, source URL, crawl date, and WARC file path,
+      and the card lists the processing pipeline step by step.
+    source_ids: [fineweb-card]
+  documentation:
+    status: public
+    note: >-
+      The dataset card, a NeurIPS 2024 Datasets and Benchmarks paper, and a runnable datatrove
+      script that reproduces the processing pipeline are published; ablation models and
+      evaluation results are also released.
+    source_ids: [fineweb-card, fineweb-paper, datatrove-fineweb-script]
+  licensing:
+    status: public
+    note: ODC-By 1.0 for the data, also subject to Common Crawl's Terms of Use.
+    source_ids: [fineweb-card]
+  stated_limitations:
+    status: public
+    note: >-
+      The card states that despite URL filtering the data likely still contains toxic or
+      harmful content and personal information, that email and public IP addresses were
+      anonymized, and that code content is likely not prevalent.
+    source_ids: [fineweb-card]
+run_notes: []
+provenance:
+  text: >-
+    Derived from Common Crawl web crawls. Hugging Face extracted text from the WARC files with
+    Trafilatura, applied URL, English-language (fastText), and quality filters (Gopher, C4, and
+    FineWeb-specific heuristics), deduplicated each snapshot separately with MinHash, and
+    anonymized email and public IP addresses.
+  derived_from:
+    - name: Common Crawl
+      artifact_slug: common-crawl-corpus
+      url: https://commoncrawl.org/
+      note: Source web crawls (snapshots from 2013 onward).
+  source_ids: [fineweb-card, datatrove-fineweb-script]
+tags: [pretraining-data]
+publication_status: published
+archive_note: null
+released_at: 2024-04-21
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: fineweb-card
+    title: HuggingFaceFW/fineweb dataset card
+    url: https://huggingface.co/datasets/HuggingFaceFW/fineweb
+    publisher: Hugging Face
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fineweb-paper
+    title: "The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale (arXiv 2406.17557)"
+    url: https://arxiv.org/abs/2406.17557
+    publisher: Hugging Face (arXiv)
+    kind: paper
+    published_at: 2024-06-25
+    accessed_at: 2026-09-29
+  - id: datatrove-fineweb-script
+    title: datatrove examples/fineweb.py
+    url: https://raw.githubusercontent.com/huggingface/datatrove/main/examples/fineweb.py
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: datatrove-license
+    title: huggingface/datatrove LICENSE
+    url: https://raw.githubusercontent.com/huggingface/datatrove/main/LICENSE
+    publisher: Hugging Face
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hffw-org
+    title: HuggingFaceFW (FineData)
+    url: https://huggingface.co/HuggingFaceFW
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-tos
+    title: Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,225 @@
+slug: starcoder2-15b
+name: StarCoder2-15B
+kind: model
+record_level: release
+family_slug: starcoder2
+version: "starcoder2-15b"
+maintainers:
+  - name: BigCode project (open scientific collaboration)
+    organization_slug: null
+    source_ids: [starcoder2-15b-card, starcoder2-paper-html]
+  - name: Hugging Face (BigCode co-steward)
+    organization_slug: hugging-face
+    source_ids: [starcoder2-paper-html, hf-starcoder2-blog]
+  - name: ServiceNow (BigCode co-steward)
+    organization_slug: servicenow
+    source_ids: [starcoder2-paper-html, hf-starcoder2-blog]
+organization_slugs: [hugging-face, servicenow, nvidia]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/bigcode/starcoder2-15b
+    kind: model-hub
+  - label: StarCoder2 repository
+    url: https://github.com/bigcode-project/starcoder2
+    kind: repository
+  - label: "StarCoder 2 and The Stack v2: The Next Generation (arXiv 2402.19173)"
+    url: https://arxiv.org/abs/2402.19173
+    kind: paper
+  - label: BigCode OpenRAIL-M v1 License Agreement
+    url: https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement
+    kind: license
+summary:
+  text: >-
+    The largest StarCoder2 base model, with 15B parameters, trained on more than 4 trillion
+    tokens covering 600+ programming languages from The Stack v2. It uses grouped-query
+    attention, a 16,384-token context window with 4,096-token sliding-window attention, and a
+    fill-in-the-middle training objective. NVIDIA trained it with the NeMo framework on its
+    Eos supercomputer.
+  source_ids: [starcoder2-15b-card, hf-starcoder2-blog]
+useful_for:
+  text: >-
+    Code completion. The card notes it is not an instruction model, so commands such as
+    "write a function that..." do not work well.
+  source_ids: [starcoder2-15b-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Published in the BigCode organization on Hugging Face. The StarCoder2 report says BigCode
+    is stewarded by ServiceNow (Santa Clara, California, per its 2025 Form 10-K) and Hugging
+    Face (whose privacy policy names Hugging Face, Inc. as its service provider and says the
+    company is located in the United States). Hugging Face's announcement says NVIDIA trained
+    this model. Eligibility rests on the documented stewards, not on individual
+    contributors.
+  source_ids: [starcoder2-15b-card, starcoder2-paper-html, hf-starcoder2-blog, now-10k-2025, hf-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. Use is subject to the BigCode OpenRAIL-M
+    v1 license, including its use restrictions.
+  source_ids: [starcoder2-15b-card, hf-api-starcoder2-15b, bigcode-openrail-m]
+licenses:
+  - name: BigCode OpenRAIL-M v1 License Agreement
+    spdx: null
+    url: https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement
+    applies_to: weights
+    source_ids: [starcoder2-15b-card, bigcode-openrail-m]
+  - name: Apache License 2.0 (StarCoder2 repository)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/bigcode-project/starcoder2/main/LICENSE
+    applies_to: code
+    source_ids: [starcoder2-repo-license]
+license_notes:
+  text: >-
+    BigCode OpenRAIL-M v1 is a custom responsible-AI license. It grants royalty-free rights to
+    use, modify, and share the model, including commercially, but makes compliance with the
+    use restrictions in its Attachment A a condition of the grant and requires those
+    restrictions to be carried into any shared copies or modifications. It does not cover
+    source code or training data. The card adds that the model can reproduce training code
+    verbatim, which may carry its own license and attribution requirements, and points to a
+    search index for tracing outputs.
+  source_ids: [bigcode-openrail-m, starcoder2-15b-card]
+checklist:
+  weights:
+    status: public
+    note: null
+    source_ids: [starcoder2-15b-card, hf-api-starcoder2-15b]
+  inference_code:
+    status: public
+    note: >-
+      The card and repository document inference with Hugging Face Transformers (full
+      precision, bfloat16, and 8-bit or 4-bit bitsandbytes) and serving with
+      text-generation-inference.
+    source_ids: [starcoder2-15b-card, starcoder2-repo]
+  training_code:
+    status: partial
+    note: >-
+      The card names NVIDIA NeMo as the training framework. NeMo's code is public under Apache
+      2.0 (its repository is now NeMo Speech, which keeps the final pre-split NeMo release), but
+      this catalog did not find the pretraining configuration for this model published. The
+      StarCoder2 repository's LoRA script is fine-tuning code and is not counted here.
+    source_ids: [starcoder2-15b-card, nemo-speech-repo, starcoder2-repo]
+  training_data_information:
+    status: partial
+    note: >-
+      The Stack v2 is on Hugging Face behind a terms-of-use acceptance, with Software Heritage
+      identifiers for each file, but its terms say bulk download of the file contents requires
+      an agreement with Software Heritage and Inria.
+    source_ids: [stack-v2-card, starcoder2-paper-html]
+  training_recipe:
+    status: partial
+    note: >-
+      The card documents architecture, objective, token count, step count, precision, and
+      hardware (1,024 H100 GPUs); the report describes base training at a 4k context window
+      followed by 16k long-context training.
+    source_ids: [starcoder2-15b-card, starcoder2-paper-html]
+  evaluation_materials:
+    status: public
+    note: >-
+      The card and report give benchmark results. The StarCoder2 repository directs users to the
+      public BigCode Evaluation Harness to evaluate StarCoder2 models, and the report documents
+      its prompts and says evaluation code is available through that harness. This catalog did
+      not confirm that the harness covers every reported evaluation.
+    source_ids: [starcoder2-15b-card, starcoder2-repo, starcoder2-paper-html]
+run_notes:
+  - text: >-
+      The model card reports memory footprints, measured with Transformers'
+      get_memory_footprint (model weights only), of 16,900.18 MB when loaded with 8-bit
+      bitsandbytes quantization and 9,224.60 MB with 4-bit quantization.
+    source_ids: [starcoder2-15b-card]
+provenance:
+  text: >-
+    Trained by NVIDIA for the BigCode project on The Stack v2 (built from the Software
+    Heritage archive, with opt-out requests excluded) and additional sources such as arXiv
+    and Wikipedia.
+  derived_from:
+    - name: The Stack v2 (train split)
+      artifact_slug: null
+      url: https://huggingface.co/datasets/bigcode/the-stack-v2-train
+      note: Pretraining data; no separate catalog record.
+  source_ids: [starcoder2-15b-card, hf-starcoder2-blog, stack-v2-card]
+tags: [language-model, code-model]
+publication_status: published
+archive_note: null
+released_at: 2024-02-28
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: starcoder2-15b-card
+    title: bigcode/starcoder2-15b model card
+    url: https://huggingface.co/bigcode/starcoder2-15b
+    publisher: BigCode project
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-starcoder2-15b
+    title: Hugging Face model API metadata for bigcode/starcoder2-15b
+    url: https://huggingface.co/api/models/bigcode/starcoder2-15b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemo-speech-repo
+    title: NVIDIA-NeMo/Speech README (formerly the NVIDIA NeMo repository)
+    url: https://github.com/NVIDIA-NeMo/Speech/blob/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bigcode-openrail-m
+    title: BigCode Open RAIL-M v1 License Agreement (bigcode-model-license-agreement space)
+    url: https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement
+    publisher: BigCode project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: starcoder2-repo
+    title: bigcode-project/starcoder2 (GitHub repository README)
+    url: https://github.com/bigcode-project/starcoder2
+    publisher: BigCode project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: starcoder2-repo-license
+    title: bigcode-project/starcoder2 LICENSE
+    url: https://raw.githubusercontent.com/bigcode-project/starcoder2/main/LICENSE
+    publisher: BigCode project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: starcoder2-paper-html
+    title: "StarCoder 2 and The Stack v2: The Next Generation (arXiv 2402.19173v1, HTML full text)"
+    url: https://arxiv.org/html/2402.19173v1
+    publisher: BigCode project
+    kind: paper
+    published_at: 2024-02-29
+    accessed_at: 2026-09-29
+  - id: hf-starcoder2-blog
+    title: StarCoder2 and The Stack v2
+    url: https://huggingface.co/blog/starcoder2
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2024-02-28
+    accessed_at: 2026-09-29
+  - id: stack-v2-card
+    title: bigcode/the-stack-v2 dataset card
+    url: https://huggingface.co/datasets/bigcode/the-stack-v2
+    publisher: BigCode project
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: now-10k-2025
+    title: ServiceNow, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (ServiceNow filing)
+    kind: filing
+    published_at: 2026-01-28
+    accessed_at: 2026-09-29
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2023-03-28
+    accessed_at: 2026-09-29

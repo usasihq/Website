@@ -1,0 +1,166 @@
+slug: humaneval
+name: HumanEval
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [humaneval-repo, humaneval-license, humaneval-hf-card]
+organization_slugs: [openai]
+links:
+  - label: GitHub repository (evaluation harness and data)
+    url: https://github.com/openai/human-eval
+    kind: repository
+  - label: Dataset on Hugging Face (openai/openai_humaneval)
+    url: https://huggingface.co/datasets/openai/openai_humaneval
+    kind: dataset-hub
+  - label: "Paper: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)"
+    url: https://arxiv.org/abs/2107.03374
+    kind: paper
+  - label: License (MIT)
+    url: https://raw.githubusercontent.com/openai/human-eval/master/LICENSE
+    kind: license
+summary:
+  text: >-
+    HumanEval is a code-generation benchmark released by OpenAI with the Codex paper in July
+    2021. It contains 164 hand-written Python programming problems, each with a function
+    signature, docstring, reference solution, and unit tests, and measures functional
+    correctness of generated code with the pass@k metric. The GitHub repository provides the
+    problem file and the evaluation harness.
+  source_ids: [humaneval-paper, humaneval-hf-card, humaneval-readme]
+useful_for:
+  text: >-
+    Checking whether a model's Python completions pass the problem's unit tests, and
+    estimating pass@k from multiple samples per problem with the provided
+    evaluate_functional_correctness command.
+  source_ids: [humaneval-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    HumanEval is published in OpenAI's GitHub organization and on OpenAI's Hugging Face
+    organization, and its MIT license names OpenAI as copyright holder. OpenAI Group PBC lists
+    its address as 1455 3rd Street, San Francisco, California, in a February 2026 agreement
+    filed with the SEC.
+  source_ids: [humaneval-repo, humaneval-license, humaneval-hf-card, sec-openai-amazon-ecl]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Problems and harness are on GitHub under the MIT License, and the problems are also on the
+    Hugging Face Hub without gating. The execution call in the harness is commented out by
+    default; the README asks users to enable it only inside a security sandbox because it runs
+    untrusted model-generated code.
+  source_ids: [humaneval-repo, humaneval-readme, humaneval-hf-card]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/openai/human-eval/master/LICENSE
+    applies_to: all
+    source_ids: [humaneval-license, humaneval-hf-card]
+license_notes: null
+checklist:
+  code:
+    status: public
+    note: >-
+      The evaluation harness (Python package human-eval) is in the GitHub repository under the
+      MIT License. The repository changes rarely: its most recent commits (January 2025) fixed
+      a broken evaluation, and the earlier ones date from 2021.
+    source_ids: [humaneval-repo, humaneval-license, humaneval-setup, humaneval-commits]
+  tasks_data:
+    status: public
+    note: >-
+      The 164 problems are in data/HumanEval.jsonl.gz in the repository and in the
+      openai/openai_humaneval dataset on Hugging Face (MIT).
+    source_ids: [humaneval-repo, humaneval-hf-card]
+  methodology:
+    status: public
+    note: >-
+      The paper defines the functional-correctness evaluation and the unbiased pass@k
+      estimator; the README explains that pass@k is not computed when there are fewer samples
+      than k.
+    source_ids: [humaneval-paper, humaneval-readme]
+  reproducibility_instructions:
+    status: public
+    note: The README documents installation, the expected JSONL sample format, and the evaluation command, with example files for a sanity check.
+    source_ids: [humaneval-readme]
+  limitations:
+    status: partial
+    note: >-
+      The README warns about executing untrusted code and notes that low memory can cause
+      correct programs to fail. The dataset card says the problems were hand-written to avoid
+      training-set overlap but are likely to appear in later data dumps because they were
+      published on GitHub. A broader discussion of the benchmark's limits was not found in the
+      pages read.
+    source_ids: [humaneval-readme, humaneval-hf-card]
+run_notes:
+  - text: >-
+      The README asks for Python 3.7 or later and a pip install of the cloned repository; the
+      execution call in human_eval/execution.py must be uncommented before evaluation runs.
+    source_ids: [humaneval-readme]
+provenance: null
+tags: [evaluation, benchmark, code-model]
+publication_status: published
+archive_note: null
+released_at: 2021-07
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: humaneval-repo
+    title: openai/human-eval
+    url: https://github.com/openai/human-eval
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: humaneval-readme
+    title: human-eval README.md
+    url: https://raw.githubusercontent.com/openai/human-eval/master/README.md
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: humaneval-license
+    title: human-eval LICENSE
+    url: https://raw.githubusercontent.com/openai/human-eval/master/LICENSE
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: humaneval-setup
+    title: human-eval setup.py
+    url: https://raw.githubusercontent.com/openai/human-eval/master/setup.py
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: humaneval-commits
+    title: Commits · openai/human-eval
+    url: https://github.com/openai/human-eval/commits/master
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: humaneval-hf-card
+    title: openai/openai_humaneval dataset card
+    url: https://huggingface.co/datasets/openai/openai_humaneval
+    publisher: OpenAI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: humaneval-paper
+    title: Evaluating Large Language Models Trained on Code
+    url: https://arxiv.org/abs/2107.03374
+    publisher: arXiv (OpenAI authors)
+    kind: paper
+    published_at: 2021-07-07
+    accessed_at: 2026-09-29
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29

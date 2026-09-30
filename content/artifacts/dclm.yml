@@ -1,0 +1,179 @@
+slug: dclm
+name: DataComp-LM (DCLM) and DCLM-Baseline
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: The DCLM team (mlfoundations GitHub and Hugging Face organizations)
+    organization_slug: null
+    source_ids: [dclm-card, dclm-paper, dclm-repo-readme, dclm-license]
+organization_slugs: []
+links:
+  - label: DataComp-LM project page
+    url: https://www.datacomp.ai/dclm/
+    kind: website
+  - label: DCLM-Baseline 1.0 (Hugging Face)
+    url: https://huggingface.co/datasets/mlfoundations/dclm-baseline-1.0
+    kind: dataset-hub
+  - label: DCLM-Baseline on Common Crawl
+    url: https://data.commoncrawl.org/contrib/datacomp/DCLM-baseline/index.html
+    kind: dataset-hub
+  - label: DCLM code repository
+    url: https://github.com/mlfoundations/dclm
+    kind: repository
+  - label: "Paper: DataComp-LM (arXiv 2406.11794)"
+    url: https://arxiv.org/abs/2406.11794
+    kind: paper
+summary:
+  text: >-
+    DataComp-LM (DCLM) is a benchmark and testbed for pretraining-data curation: participants
+    build a training set, by filtering a standard pool or mixing in their own data, then train
+    models with fixed code at scales from about 400M to 7B parameters and evaluate them on 53
+    downstream tasks. Its released data include DCLM-Pool, a 240T-token corpus extracted from
+    Common Crawl, and DCLM-Baseline, a 4T-token, roughly 3B-document filtered subset used as
+    the reference dataset.
+  source_ids: [dclm-site, dclm-card, dclm-repo-readme, dclm-paper]
+useful_for:
+  text: >-
+    Research on pretraining-data curation with a fixed training and evaluation recipe. The
+    dataset card describes DCLM-Baseline as a research baseline for the DCLM benchmark and
+    says it is not intended for training production models or for domains such as code and
+    math.
+  source_ids: [dclm-card, dclm-repo-readme]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The dataset card says DCLM-Baseline was curated by "the DCLM team", and the paper's
+    datasheet says the DCLM team is responsible for maintaining the assets, which Common Crawl
+    and Hugging Face host. The code and data are published under the mlfoundations GitHub and
+    Hugging Face organizations, and the MIT license names "mlfoundations" as copyright holder;
+    no legal entity or institution is identified as the maintainer. The paper lists authors
+    from many U.S. and non-U.S. institutions (including the University of Washington, Apple,
+    Toyota Research Institute, UT Austin, Tel Aviv University, Stanford, LAION, and JSC), but
+    author affiliation does not establish a maintaining institution. No U.S. maintaining
+    institution is documented, so eligibility is unresolved.
+  source_ids: [dclm-card, dclm-paper, dclm-repo-readme, dclm-license]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    DCLM-Baseline is downloadable from Hugging Face without gating (JSONL and Parquet versions)
+    and from Common Crawl's S3 bucket. DCLM-Pool is hosted by Common Crawl; the README says S3
+    downloads need valid AWS credentials but should not incur costs.
+  source_ids: [dclm-card, dclm-repo-readme, dclm-cc-baseline]
+licenses:
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://huggingface.co/datasets/mlfoundations/dclm-baseline-1.0
+    applies_to: data
+    source_ids: [dclm-card, dclm-paper]
+  - name: MIT License (DCLM code)
+    spdx: MIT
+    url: https://raw.githubusercontent.com/mlfoundations/dclm/main/LICENSE
+    applies_to: code
+    source_ids: [dclm-license]
+license_notes:
+  text: >-
+    The paper states that the datasets are distributed under CC-BY-4.0 and that use is also
+    subject to Common Crawl's Terms of Use. Separately from the license, the dataset card states
+    that DCLM-Baseline is intended for research use in the context of the DCLM benchmark.
+  source_ids: [dclm-paper, cc-terms, dclm-card]
+checklist:
+  access:
+    status: public
+    note: Downloadable from Hugging Face without gating and from Common Crawl's S3 bucket.
+    source_ids: [dclm-card, dclm-repo-readme, dclm-cc-baseline]
+  provenance:
+    status: public
+    note: >-
+      Derived from Common Crawl (DCLM-Pool) through resiliparse text extraction, a
+      reproduction of RefinedWeb's heuristic filters, Bloom-filter deduplication, and a
+      fastText quality classifier trained on OpenHermes 2.5 and r/ExplainLikeImFive data.
+      Records keep WARC metadata and source URLs.
+    source_ids: [dclm-card, dclm-repo-readme, dclm-paper]
+  documentation:
+    status: public
+    note: The paper includes a datasheet; the repository README documents processing, tokenization, training, and evaluation steps.
+    source_ids: [dclm-paper, dclm-repo-readme]
+  licensing:
+    status: public
+    note: CC-BY-4.0 for the data (with Common Crawl's Terms of Use); MIT for the code.
+    source_ids: [dclm-card, dclm-paper, dclm-license]
+  stated_limitations:
+    status: public
+    note: >-
+      The dataset card notes biases inherited from Common Crawl, weaker coverage of code and
+      math, and research-only use. The paper says the pools received no special treatment for
+      personal or sensitive information. The README notes a September 2025 fix to baseline
+      values that makes earlier CORE and EXTENDED scores not directly comparable to newer ones.
+    source_ids: [dclm-card, dclm-paper, dclm-repo-readme]
+run_notes: []
+provenance:
+  text: >-
+    DCLM-Pool is text extracted from Common Crawl, and DCLM-Baseline is a filtered and
+    deduplicated subset of it. The quality classifier was trained on OpenHermes 2.5 and
+    r/ExplainLikeImFive data.
+  derived_from:
+    - name: Common Crawl
+      artifact_slug: common-crawl-corpus
+      url: https://commoncrawl.org
+      note: Source of DCLM-Pool, from which DCLM-Baseline is filtered.
+  source_ids: [dclm-card, dclm-paper]
+tags: [pretraining-data, benchmark]
+publication_status: draft
+archive_note: null
+released_at: 2024-06
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: dclm-card
+    title: mlfoundations/dclm-baseline-1.0 dataset card
+    url: https://huggingface.co/datasets/mlfoundations/dclm-baseline-1.0
+    publisher: The DCLM team (mlfoundations)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dclm-paper
+    title: "DataComp-LM: In search of the next generation of training sets for language models (arXiv 2406.11794v4)"
+    url: https://arxiv.org/html/2406.11794v4
+    publisher: arXiv (Li et al.)
+    kind: paper
+    published_at: 2025-04-21
+    accessed_at: 2026-09-29
+  - id: dclm-repo-readme
+    title: mlfoundations/dclm README.md
+    url: https://raw.githubusercontent.com/mlfoundations/dclm/main/README.md
+    publisher: The DCLM team (mlfoundations)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dclm-license
+    title: mlfoundations/dclm LICENSE
+    url: https://raw.githubusercontent.com/mlfoundations/dclm/main/LICENSE
+    publisher: The DCLM team (mlfoundations)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dclm-site
+    title: DataComp-LM project page
+    url: https://www.datacomp.ai/dclm/
+    publisher: DataComp
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dclm-cc-baseline
+    title: DCLM-baseline (Common Crawl contrib page)
+    url: https://data.commoncrawl.org/contrib/datacomp/DCLM-baseline/index.html
+    publisher: Common Crawl Foundation
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cc-terms
+    title: Common Crawl Terms of Use
+    url: https://commoncrawl.org/terms-of-use
+    publisher: Common Crawl Foundation
+    kind: license
+    published_at: 2024-03-07
+    accessed_at: 2026-09-29

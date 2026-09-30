@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { isActive, readRecords, shownCount, watchErrors } from "./helpers";
+import { isActive, readRecords, readRecordsFrom, shownCount, watchErrors } from "./helpers";
 
 const DISCLAIMER = "Independent project. Not a United States government website.";
 const orgs = readRecords("organizations");
@@ -229,5 +229,66 @@ test.describe("keyboard and menus", () => {
     await mobileNav.getByRole("link", { name: "Compare" }).click();
     await expect(page).toHaveURL(/\/matrix\/$/);
     await expect(mobileNav).toBeHidden();
+  });
+});
+
+test.describe("contact and profiles", () => {
+  test("footer lists the contact email and official profiles as plain links", async ({ page }) => {
+    await page.goto("/");
+    const contact = page.getByRole("list", { name: "USASI contact and profiles" });
+    await expect(contact.getByRole("link", { name: "usasihq@gmail.com" })).toHaveAttribute("href", "mailto:usasihq@gmail.com");
+    for (const host of ["github.com/usasihq", "huggingface.co/usasihq", "x.com/usasihq", "youtube.com/@USASIHQ", "bsky.app/profile/usasihq.bsky.social", "truthsocial.com/@Usasihq"]) {
+      await expect(contact.locator(`a[href*="${host}"]`)).toHaveCount(1);
+    }
+    // No third-party embeds or scripts.
+    const external = await page.evaluate(() =>
+      [...document.querySelectorAll("script[src], iframe, img[src]")]
+        .map((e) => (e as HTMLScriptElement).src)
+        .filter((src) => src && !src.startsWith(location.origin)),
+    );
+    expect(external).toEqual([]);
+  });
+
+  test("entry pages offer a working correction email while no repository is configured", async ({ page }) => {
+    await page.goto(`/companies/${activeOrg.slug}/`);
+    const report = page.getByRole("link", { name: /Report a correction/ });
+    await expect(report).toHaveAttribute("href", new RegExp(`^mailto:usasihq@gmail\\.com\\?subject=Correction`));
+  });
+
+  test("security.txt and structured data are published", async ({ request, page }) => {
+    const sec = await request.get("/.well-known/security.txt");
+    expect(sec.status()).toBe(200);
+    expect(await sec.text()).toContain("Contact: mailto:usasihq@gmail.com");
+    await page.goto("/");
+    const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
+    const org = ld["@graph"].find((n: { "@type": string }) => n["@type"] === "Organization");
+    expect(org.sameAs).toContain("https://github.com/usasihq");
+    expect(org.email).toBe("usasihq@gmail.com");
+  });
+});
+
+test.describe("Local corner", () => {
+  const people = (() => {
+    try {
+      return readRecordsFrom("people").filter((p) => p.publication_status === "published");
+    } catch {
+      return [];
+    }
+  })();
+
+  test("shows this month's profiles with sources and the removal note", async ({ page }) => {
+    test.skip(people.length === 0, "no published profiles yet");
+    await page.goto("/local/");
+    const profiles = page.locator("main article[id]");
+    const count = await profiles.count();
+    expect(count).toBeGreaterThan(0);
+    expect(count).toBeLessThanOrEqual(5);
+    await expect(page.getByText(/ask to be removed/)).toBeVisible();
+    // Every profile's first source marker jumps to that profile's own source list.
+    const firstMarker = profiles.first().locator("a[aria-label^='Source 1:']").first();
+    const href = await firstMarker.getAttribute("href");
+    await expect(page.locator(href!)).toHaveCount(1);
+    await page.goto("/");
+    await expect(page.getByRole("heading", { name: "People behind local AI" })).toBeVisible();
   });
 });

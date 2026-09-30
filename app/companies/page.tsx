@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { OrgDirectory } from "@/components/OrgDirectory";
 import { PageHeader } from "@/components/PageHeader";
+import { OrgQuickViews } from "@/components/QuickViews";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
@@ -35,6 +36,7 @@ export default function CompaniesPage() {
             How counts work
           </Link>
         </p>
+        <OrgQuickViews items={items} />
       </PageHeader>
       <div className="container-page py-10">
         <OrgDirectory items={items} />

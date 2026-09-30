@@ -27,6 +27,8 @@ export const ROLE_LABELS: Record<OrganizationRole, string> = {
   "open-source-steward": "Open-source steward",
   "nonprofit-research": "Nonprofit research",
   "data-services": "Data services",
+  "university-lab": "University lab",
+  "standards-body": "Standards body",
 };
 
 export const SECTOR_LABELS: Record<Sector, string> = {
@@ -40,6 +42,7 @@ export const SECTOR_LABELS: Record<Sector, string> = {
   robotics: "Robotics",
   defense: "Defense",
   research: "Research",
+  science: "Science",
 };
 
 export const OWNERSHIP_LABELS: Record<OwnershipCategory, string> = {
@@ -48,6 +51,7 @@ export const OWNERSHIP_LABELS: Record<OwnershipCategory, string> = {
   nonprofit: "Nonprofit",
   "unit-of-another-organization": "Unit of another organization",
   "foundation-hosted": "Foundation-hosted",
+  "public-institution": "Public institution",
   unknown: "Unknown",
 };
 

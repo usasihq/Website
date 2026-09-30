@@ -1,0 +1,154 @@
+slug: megatron-lm
+name: Megatron-LM and Megatron Core
+kind: research-stack
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [mlm-license, mcore-pypi]
+organization_slugs: [nvidia]
+links:
+  - label: GitHub repository
+    url: https://github.com/NVIDIA/Megatron-LM
+    kind: repository
+  - label: Megatron Core developer guide
+    url: https://docs.nvidia.com/megatron-core/developer-guide/latest/index.html
+    kind: documentation
+  - label: License
+    url: https://raw.githubusercontent.com/NVIDIA/Megatron-LM/main/LICENSE
+    kind: license
+  - label: "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism (arXiv 1909.08053)"
+    url: https://arxiv.org/abs/1909.08053
+    kind: paper
+summary:
+  text: >-
+    NVIDIA's Megatron-LM repository contains two components: Megatron Core, a library of
+    GPU-optimized building blocks for training transformer models at scale (tensor, pipeline,
+    data, expert, and context parallelism; FP16, BF16, FP8, and FP4 mixed precision), and
+    Megatron-LM, a reference training setup with pre-configured scripts built on Megatron
+    Core. The README says Megatron Core development moved to GitHub in December 2025, with all
+    development and CI now happening in the open.
+  source_ids: [mlm-readme]
+useful_for:
+  text: >-
+    The README presents Megatron-LM for research teams, learning distributed training, and
+    experimentation, and Megatron Core for developers building custom training frameworks.
+    NVIDIA's Megatron Bridge library builds on Megatron Core for Hugging Face checkpoint
+    conversion and training recipes.
+  source_ids: [mlm-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is published under NVIDIA's GitHub organization, its license names NVIDIA
+    Corporation as copyright holder for the project's own code, and the megatron-core PyPI
+    package lists NVIDIA as author and maintainer. NVIDIA's principal executive offices are in
+    Santa Clara, California, per its Form 10-Q for the quarter ended July 26, 2026.
+  source_ids: [mlm-license, mcore-pypi, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [mlm-readme, mlm-license]
+licenses:
+  - name: BSD 3-Clause License (NVIDIA code)
+    spdx: BSD-3-Clause
+    url: https://raw.githubusercontent.com/NVIDIA/Megatron-LM/main/LICENSE
+    applies_to: code
+    source_ids: [mlm-license]
+license_notes:
+  text: >-
+    The LICENSE file applies BSD 3-Clause terms (copyright NVIDIA Corporation) to all files
+    unless otherwise noted, and states that the repository also contains third-party code
+    under the Apache License 2.0 and MIT License, identified by file headers. The README badge
+    reads "Apache", and the megatron-core PyPI metadata gives "Apache 2.0" in its license field
+    while listing a BSD license classifier; this record follows the LICENSE file.
+  source_ids: [mlm-license, mlm-readme, mcore-pypi]
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository; the README says all development and CI now happen in the open.
+    source_ids: [mlm-readme]
+  documentation:
+    status: public
+    note: The Megatron Core developer guide covers installation, a first training run, data preparation, and parallelism.
+    source_ids: [mcore-install, mcore-quickstart]
+  training_code:
+    status: public
+    note: >-
+      Includes training scripts and examples, such as a Llama 3 8B FP8 training script, plus
+      post-training (quantization, distillation, pruning) and reinforcement learning code.
+    source_ids: [mlm-readme, mcore-quickstart]
+  data_information:
+    status: public
+    note: >-
+      The quickstart documents the expected JSONL input and the preprocessing script that
+      tokenizes it into binary .bin/.idx files.
+    source_ids: [mcore-quickstart]
+  reproducibility_instructions:
+    status: unknown
+    note: >-
+      The README describes its scaling benchmark configurations and points to the Megatron
+      Bridge performance summary; whether published instructions reproduce those results was
+      not assessed.
+    source_ids: [mlm-readme]
+run_notes:
+  - text: >-
+      The installation guide lists PyPI (megatron-core), source, and NGC PyTorch container
+      installs; it recommends NVIDIA Turing or later GPUs, requires Hopper, Ada, or Blackwell
+      GPUs for FP8, and lists PyTorch 2.6 or later. The guide lists Python 3.10 or later (3.12
+      recommended), while the README says the 0.17.0 release drops Python 3.10 support and
+      the current PyPI package (0.19.2) requires Python 3.12 or later.
+    source_ids: [mcore-install, mlm-readme, mcore-pypi]
+provenance: null
+tags: [training, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mlm-readme
+    title: NVIDIA/Megatron-LM README
+    url: https://raw.githubusercontent.com/NVIDIA/Megatron-LM/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlm-license
+    title: NVIDIA/Megatron-LM LICENSE
+    url: https://raw.githubusercontent.com/NVIDIA/Megatron-LM/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mcore-install
+    title: Installation — Megatron Core developer guide
+    url: https://docs.nvidia.com/megatron-core/developer-guide/latest/get-started/install.html
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mcore-quickstart
+    title: Your First Training Run — Megatron Core developer guide
+    url: https://docs.nvidia.com/megatron-core/developer-guide/latest/get-started/quickstart.html
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mcore-pypi
+    title: megatron-core on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/megatron-core/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

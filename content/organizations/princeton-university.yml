@@ -1,0 +1,109 @@
+slug: princeton-university
+name: Princeton University
+legal_name: null
+website: https://www.princeton.edu
+logo_text: PU
+summary:
+  text: >-
+    Princeton University is a university in Princeton, New Jersey. Researchers at Princeton
+    University and Princeton Language and Intelligence created SWE-bench, a benchmark of
+    real-world GitHub issues for evaluating language models on software engineering tasks.
+  source_ids: [irs-eo-bmf-nj, swe-bench-paper]
+organization_roles: [university-lab, research-lab]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3), with school
+    public-charity status (170(b)(1)(A)(ii)) in the IRS extract.
+  source_ids: [irs-eo-bmf-nj, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Princeton, New Jersey
+  country: US
+  source_ids: [irs-eo-bmf-nj]
+other_locations: []
+founded: null
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      The SWE-bench paper (ICLR 2024) lists Princeton University and Princeton Language and
+      Intelligence as the affiliations of its authors, with one co-author at the University of
+      Chicago.
+    source_ids: [swe-bench-paper]
+  - text: >-
+      The Princeton NLP group's Hugging Face account (princeton-nlp) hosts the original SWE-bench
+      datasets, including SWE-bench, SWE-bench Lite, and SWE-bench Verified. The SWE-bench
+      repository, now in a standalone SWE-bench GitHub organization, links current copies under a
+      separate SWE-bench Hugging Face organization.
+    source_ids: [princeton-nlp-hf, swe-bench-hf, swe-bench-readme]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The IRS exempt-organization extract for New Jersey lists Princeton University, in Princeton,
+    New Jersey, as a 501(c)(3) corporation with school status.
+  source_ids: [irs-eo-bmf-nj, irs-eo-info]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact, not for the university as a whole. The SWE-bench
+    code repository is published under the MIT License.
+  source_ids: [swe-bench-license]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: irs-eo-bmf-nj
+    title: Exempt Organizations Business Master File Extract - New Jersey (eo_nj.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_nj.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-paper
+    title: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (arXiv:2310.06770v3)"
+    url: https://arxiv.org/pdf/2310.06770
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-11-11
+    accessed_at: 2026-09-29
+  - id: princeton-nlp-hf
+    title: princeton-nlp (Princeton NLP group) on Hugging Face
+    url: https://huggingface.co/princeton-nlp
+    publisher: Princeton NLP group
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-hf
+    title: princeton-nlp/SWE-bench dataset card
+    url: https://huggingface.co/datasets/princeton-nlp/SWE-bench
+    publisher: Princeton NLP group
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-readme
+    title: SWE-bench README
+    url: https://raw.githubusercontent.com/SWE-bench/SWE-bench/main/README.md
+    publisher: SWE-bench
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: swe-bench-license
+    title: SWE-bench LICENSE
+    url: https://raw.githubusercontent.com/SWE-bench/SWE-bench/main/LICENSE
+    publisher: SWE-bench
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

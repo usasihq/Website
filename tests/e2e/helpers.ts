@@ -12,6 +12,15 @@ export interface ContentRecord {
   record_level?: string;
 }
 
+export function readRecordsFrom(sub: string): ContentRecord[] {
+  const dir = path.join(process.cwd(), "content", sub);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".yml"))
+    .map((f) => YAML.parse(fs.readFileSync(path.join(dir, f), "utf8")) as ContentRecord);
+}
+
 export function readRecords(sub: "organizations" | "artifacts"): ContentRecord[] {
   const dir = path.join(process.cwd(), "content", sub);
   return fs

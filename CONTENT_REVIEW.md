@@ -105,7 +105,57 @@ Azure availability 2025-07-09 → 2025-07-09); gpt-oss kept at month precision
   mattered, raw files (LICENSE files, model card READMEs, GitHub API) were read
   directly and records rely only on confirmed content.
 
-## F. Routine review
+## F. Round 2 expansion (2026-09-29)
+
+Fourteen research passes added tech giants, AI application companies, open-model
+labs, robotics companies, open-source tool makers, foundations, universities,
+and big-tech open releases; eleven fact-check passes then re-read every new
+record against its sources (logs in `research/verification/r2-*.md`). Two more
+passes researched and fact-checked the Local corner profiles
+(`research/verification/people.md`).
+
+### F1. Decisions that need the owner
+
+| # | Item | Current state | Options |
+| --- | --- | --- | --- |
+| F1a | **CrewAI** (org + framework): no official page, terms, or filing gives a headquarters; the only dated release is datelined "San Francisco and São Paulo". | Draft, pending_review | Keep draft, or publish if CrewAI documents a U.S. headquarters. |
+| F1b | **Unsloth** (org + library): "Unsloth AI Inc." appears in notices, but incorporation and headquarters are undocumented. | Draft | Same as above. |
+| F1c | **Community-governed projects**: Lance (multi-company committee, no legal entity), MLC LLM (multi-institution community), DCLM (unnamed multi-institution team), BigCodeBench (community working groups; archived repo), GPQA and MMLU (individual accounts only), Triton (individual maintainers), llama.cpp (see A1). | Draft | Adopt a policy for projects without a documented governing entity, or keep them out. (SWE-bench now also falls here; see F1d.) The LanceDB company's own Apache-2.0 library would qualify cleanly as a separate record. |
+| F1d | **SWE-bench** moved from Princeton NLP to a standalone GitHub org; no current source names Princeton or another institution as maintainer. **Berkeley Function Calling Leaderboard** keeps documented UC Berkeley hosting (code under an individual account). | SWE-bench: draft, pending_review. BFCL: published | Publish SWE-bench if an institutional maintainer is documented; decide whether BFCL should follow the stricter reading. |
+| F1e | **The Pile**: takedowns documented; the old download host fails; EleutherAI still hosts derived copies. | Published, availability partial | Keep, or archive. |
+| F1f | **Continue** (acquired by Cursor/Anysphere in June 2026; repo read-only). | Archived (org + extension) | Keep archived, or publish with a status note. |
+| F1g | **Boston Dynamics** ownership category (Hyundai majority; SoftBank stake purchase unconfirmed). | unit-of-another-organization, no parent link | Keep, or `privately-held`. |
+| F1h | **ARC Prize Foundation**: its Form 990 checks 501(c)(3) and a public-charity category in Schedule A Part I but "Private foundation" in Part II; it is absent from the IRS exempt-organization extract and Pub 78; site legal pages name "ARC Prize, Inc." (California). The record states exactly this. | Published | Keep, or switch basis to us-headquarters. |
+| F1i | **Nemotron-CC v2 / v2.1**: Hugging Face gates require manual approval; NVIDIA's data agreement allows internal model training only, no redistribution. | Resolved: access and availability `partial` | — |
+| F1j | **Fine-tune rule**: releases that publish only post-training code/recipe get `partial` for training code/recipe (never open-stack). | Applied consistently | Confirm. |
+| F1k | **Local corner policy**: a published profile needs a current, documented role connected to local or open-weight AI. Luca Soldaini, Awni Hannun, Brandon Duderstadt, and Andriy Mulyar are therefore drafts; Michael Chiang and Nathan Lambert have no profile (no allowed source for a current role). | Applied | Confirm, or allow profiles based on past contributions. |
+
+### F2. Pending events to re-review
+
+- Agility Robotics' merger with Churchill Capital Corp XI (S-4 filed 2026-09-04; pending).
+- Character.AI: members of its technical team expected to join Disney (announced 2026-09-18); no acquisition described.
+- Hyundai's pursuit of SoftBank's remaining Boston Dynamics stake (announced 2026-07-16).
+- EvolutionaryScale's team joined Chan Zuckerberg Biohub (Nov 2025); ESM now maintained by Biohub; no acquisition documented.
+- Reported NVIDIA hiring of Essential AI's founder and team (news only; **not published**).
+- SpaceX (Anysphere, xAI) and Qualcomm (Modular) acquisitions are completed and recorded.
+
+### F3. Evidence gaps (round 2)
+
+- Headquarters from weaker evidence, stated as such on each record: Midjourney and Character.AI (EU App Store trader addresses), LanceDB (company blog), LinkedIn (careers page), Nous Research (country only), Prime Intellect (Form D "principal place of business" in Dover, DE), All Hands AI (state only), Skild AI and Luma AI (city conflicts), Marvell (filings say Wilmington, DE; investor page says Santa Clara).
+- Sites that blocked automated reading: midjourney.com, character.ai, tesla.com/ai, servicenow.com, oracle.com, princeton.edu, parts of x.ai.
+- Releases with conflicting license statements, recorded as conflicts: Whisper large-v3 and V-JEPA 2 (MIT vs Apache-2.0), GR00T N1.7 (README vs license section), Megatron-LM (LICENSE vs metadata), Nemotron 3.5 Lightning (docs vs LICENSE), Palmyra-mini-thinking-b (Apache-2.0 on a CC-BY-4.0 base).
+- Unverified or missing: CLIP weights license (none stated), Zamba2-VL vision-encoder checkpoint, OpenMDW-1.1 SPDX identifier, several founding years, INTELLECT-3 evaluation environments (sign-in required).
+
+### F4. Candidates not yet covered
+
+Microsoft Agent Framework (AutoGen's successor), Laude Institute (Terminal-Bench host), the LanceDB open-source library, LM Studio, Answer.AI, Cisco Foundation-Sec-8B (Llama-based; license review needed), Kevin-32B (Cognition), Luma IMM checkpoints, Character.AI Ovi weights, Writer's larger Palmyra models (non-commercial), Mochi 1.1 (hosted only), Olmo Hybrid, Gemma 4 E2B/E4B.
+
+### F5. Process notes
+
+- Round-2 agents operated under an explicit no-personal-data rule. One fact-check probe sent a fictitious placeholder address (`admin@example.invalid`) in a User-Agent on five requests; no real address or identifier was sent.
+- Several agents read pages that block scripted clients (including SEC filings) through the in-app browser; no sign-ins were used and no personal information was entered.
+
+## G. Routine review
 
 Run `npm run report:reviews` monthly. Re-check `status_note` events above first,
 then records whose `last_reviewed` is older than 180 days.

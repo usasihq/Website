@@ -1,0 +1,173 @@
+slug: qualcomm-ai-hub-models
+name: Qualcomm AI Hub Models
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Qualcomm Technologies, Inc.
+    organization_slug: qualcomm
+    source_ids: [aihm-license, aihm-pypi]
+organization_slugs: [qualcomm]
+links:
+  - label: GitHub repository
+    url: https://github.com/qualcomm/ai-hub-models
+    kind: repository
+  - label: Qualcomm AI Hub
+    url: https://aihub.qualcomm.com
+    kind: website
+  - label: PyPI package (qai-hub-models)
+    url: https://pypi.org/project/qai-hub-models/
+    kind: documentation
+  - label: License (BSD 3-Clause)
+    url: https://github.com/qualcomm/ai-hub-models/blob/main/LICENSE
+    kind: license
+  - label: Release v0.63.0
+    url: https://github.com/qualcomm/ai-hub-models/releases/tag/v0.63.0
+    kind: release-notes
+summary:
+  text: >-
+    A Python package and GitHub repository of machine learning models prepared for deployment on
+    Qualcomm devices. It provides export scripts that compile, quantize where applicable,
+    profile, and run models through Qualcomm AI Hub Workbench, end-to-end demos for most models,
+    and sample application code. Many of the packaged models come from other developers, such as
+    YOLO, Llama, Mistral, Phi, and Qwen variants.
+  source_ids: [aihm-readme]
+useful_for:
+  text: >-
+    Preparing models for on-device runtimes (Qualcomm AI Engine Direct, LiteRT, and ONNX
+    Runtime) on Snapdragon and other Qualcomm platforms, and checking on-device output against
+    PyTorch output on cloud-hosted devices.
+  source_ids: [aihm-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is published under the qualcomm GitHub organization, its license names
+    Qualcomm Technologies, Inc. as copyright holder, and the PyPI package lists Qualcomm
+    Technologies, Inc. as author. Qualcomm Technologies, Inc. is a subsidiary of QUALCOMM
+    Incorporated, a Delaware corporation with principal executive offices in San Diego,
+    California.
+  source_ids: [aihm-license, aihm-pypi, qcom-modular-release, qcom-10q-q3-fy2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    The code is public. Compiling, quantizing, profiling, and running models on hosted devices
+    requires a Qualcomm ID and an AI Hub Workbench API token.
+  source_ids: [aihm-readme]
+licenses:
+  - name: BSD 3-Clause "New" or "Revised" License
+    spdx: BSD-3-Clause
+    url: https://github.com/qualcomm/ai-hub-models/blob/main/LICENSE
+    applies_to: code
+    source_ids: [aihm-license, aihm-readme]
+license_notes:
+  text: >-
+    The BSD 3-Clause license covers the repository's code. Each model's README links to the
+    license of the original implementation or weights, for example Qwen's license on Hugging
+    Face for Qwen3-4B and the YOLOv7 project's license for YOLOv7, so those terms apply to the
+    underlying models.
+  source_ids: [aihm-license, aihm-qwen3-4b-readme, aihm-yolov7-readme]
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public qualcomm/ai-hub-models GitHub repository.
+    source_ids: [aihm-readme]
+  documentation:
+    status: public
+    note: >-
+      The README covers setup, model export, end-to-end demos, and supported runtimes, chipsets,
+      and devices; each model has its own README.
+    source_ids: [aihm-readme, aihm-qwen3-4b-readme]
+  installation:
+    status: public
+    note: Published on PyPI as qai-hub-models and installable with pip.
+    source_ids: [aihm-readme, aihm-pypi]
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists Qualcomm AI Engine Direct (Android, Linux, Windows), LiteRT (Android,
+      Linux), and ONNX Runtime (Android, Linux, Windows) as on-device runtimes; PyPI lists
+      Python 3.10 to 3.13.
+    source_ids: [aihm-readme, aihm-pypi]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub and PyPI, including v0.63.0 on September 23, 2026.
+    source_ids: [aihm-release-0-63-0, aihm-pypi]
+run_notes:
+  - text: >-
+      The README documents a command-line interface (qai-hub-models) for browsing and
+      downloading deployable model assets. End-to-end demos can run locally in PyTorch or on
+      cloud-hosted Qualcomm devices through AI Hub Workbench.
+    source_ids: [aihm-readme]
+provenance:
+  text: >-
+    The repository packages models from many developers for Qualcomm hardware. Packaging a model
+    here does not change who developed it; each model README points to the original
+    implementation and its license.
+  derived_from: []
+  source_ids: [aihm-readme, aihm-qwen3-4b-readme, aihm-yolov7-readme]
+tags: [inference, local-inference]
+publication_status: published
+archive_note: null
+released_at: "2024-02"
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: aihm-readme
+    title: qualcomm/ai-hub-models README
+    url: https://github.com/qualcomm/ai-hub-models
+    publisher: Qualcomm (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: aihm-license
+    title: qualcomm/ai-hub-models LICENSE
+    url: https://github.com/qualcomm/ai-hub-models/blob/main/LICENSE
+    publisher: Qualcomm (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: aihm-pypi
+    title: qai-hub-models · PyPI
+    url: https://pypi.org/project/qai-hub-models/
+    publisher: Python Package Index
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: aihm-release-0-63-0
+    title: qualcomm/ai-hub-models release v0.63.0
+    url: https://github.com/qualcomm/ai-hub-models/releases/tag/v0.63.0
+    publisher: Qualcomm (GitHub)
+    kind: release-notes
+    published_at: 2026-09-23
+    accessed_at: 2026-09-29
+  - id: aihm-qwen3-4b-readme
+    title: Qwen3-4B model README in qualcomm/ai-hub-models
+    url: https://github.com/qualcomm/ai-hub-models/blob/main/src/qai_hub_models/models/qwen3_4b/README.md
+    publisher: Qualcomm (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: aihm-yolov7-readme
+    title: YOLOv7 model README in qualcomm/ai-hub-models
+    url: https://github.com/qualcomm/ai-hub-models/blob/main/src/qai_hub_models/models/yolov7/README.md
+    publisher: Qualcomm (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qcom-modular-release
+    title: Qualcomm Completes Acquisition of Modular
+    url: https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular
+    publisher: Qualcomm
+    kind: announcement
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29
+  - id: qcom-10q-q3-fy2026
+    title: QUALCOMM Incorporated Form 10-Q for the quarter ended June 28, 2026
+    url: https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

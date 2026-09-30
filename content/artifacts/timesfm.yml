@@ -1,0 +1,111 @@
+slug: timesfm
+name: TimesFM
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Google Research
+    organization_slug: google
+    source_ids: [timesfm-readme, timesfm3-card]
+organization_slugs: [google]
+links:
+  - label: GitHub repository
+    url: https://github.com/google-research/timesfm
+    kind: repository
+  - label: TimesFM 3.0 checkpoint (Hugging Face)
+    url: https://huggingface.co/google/timesfm-3.0-pytorch
+    kind: model-hub
+  - label: TimesFM 2.5 checkpoint (Hugging Face)
+    url: https://huggingface.co/google/timesfm-2.5-200m-pytorch
+    kind: model-hub
+  - label: "A decoder-only foundation model for time-series forecasting (arXiv 2310.10688)"
+    url: https://arxiv.org/abs/2310.10688
+    kind: paper
+summary:
+  text: >-
+    TimesFM (Time Series Foundation Model) is a family of pretrained time-series forecasting
+    models developed by Google Research, first described in an ICML 2024 paper. Open
+    checkpoints have been released as versions 1.0, 2.0, 2.5 (September 2025), and 3.0 (August
+    2026); version 3.0 adds native multivariate forecasting and native support for past-only
+    and past-and-future covariates.
+  source_ids: [timesfm-readme, timesfm3-blog]
+useful_for:
+  text: >-
+    The repository describes TimesFM for zero-shot time-series forecasting, and notes that
+    Google also offers it through BigQuery ML, Google Sheets, and Vertex Model Garden.
+  source_ids: [timesfm-readme]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The repository and model cards credit Google Research, and the TimesFM 3.0 weights license
+    is issued by Google LLC. Alphabet Inc.'s fiscal 2025 Form 10-K lists its principal
+    executive offices in Mountain View, California, and Exhibit 21.01 lists Google LLC as a
+    Delaware subsidiary of Alphabet.
+  source_ids: [timesfm-readme, timesfm3-license, alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    Licensing changed with version 3.0. The repository states that the source code and model
+    weights up to version 2.5 are Apache 2.0, while TimesFM 3.0 weights are distributed under
+    the TimesFM Non-Commercial License v1.0 and limited to non-commercial, non-production use;
+    commercial use of TimesFM 3.0 is offered through Google Cloud services such as BigQuery ML.
+  source_ids: [timesfm-readme, timesfm3-license]
+checklist: {}
+run_notes: []
+provenance: null
+tags: [time-series, forecasting]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: timesfm-readme
+    title: google-research/timesfm README
+    url: https://raw.githubusercontent.com/google-research/timesfm/master/README.md
+    publisher: Google Research
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm3-card
+    title: google/timesfm-3.0-pytorch model card
+    url: https://huggingface.co/google/timesfm-3.0-pytorch/raw/main/README.md
+    publisher: Google Research (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm3-license
+    title: TimesFM Non-Commercial License v1.0
+    url: https://huggingface.co/google/timesfm-3.0-pytorch/raw/main/LICENSE
+    publisher: Google LLC (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm3-blog
+    title: "TimesFM-3: A zero-shot foundation model for multivariate forecasting"
+    url: https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/
+    publisher: Google Research
+    kind: announcement
+    published_at: 2026-08-31
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Alphabet Inc. Form 10-K fiscal 2025, Exhibit 21.01 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

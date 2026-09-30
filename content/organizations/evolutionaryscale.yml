@@ -1,0 +1,165 @@
+slug: evolutionaryscale
+name: EvolutionaryScale
+legal_name:
+  text: EvolutionaryScale, PBC
+  source_ids: [es-terms-legacy, es-community-license]
+website: https://www.evolutionaryscale.ai
+logo_text: ES
+summary:
+  text: >-
+    EvolutionaryScale is a public benefit company that developed the ESM3 and ESM C (ESM
+    Cambrian) protein language models. In November 2025 Biohub announced that the
+    EvolutionaryScale team would join Biohub, and EvolutionaryScale's website now states that
+    it is part of Biohub.
+  source_ids: [es-esm3-blog, es-esmc-blog, es-home, biohub-announcement]
+organization_roles: [model-developer, research-lab]
+ownership_category: unit-of-another-organization
+legal_form:
+  text: Public benefit corporation (EvolutionaryScale, PBC)
+  source_ids: [es-terms-legacy, es-esm3-blog]
+parent_org_slug: null
+parent_relationship: null
+headquarters: null
+other_locations: []
+founded: null
+sectors: [science, open-models]
+status_note:
+  text: >-
+    On November 6, 2025, Biohub announced that the EvolutionaryScale team would join Biohub, a
+    501(c)(3) medical research organization supported by the Chan Zuckerberg Initiative.
+    EvolutionaryScale's website now states that it is part of Biohub and that current ESM
+    models, APIs, and related services are provided at biohub.ai under Biohub's terms. The ESM
+    GitHub repository and the ESM model repositories on Hugging Face are now published under
+    Biohub accounts. Its former terms of use are marked as no longer in effect and refer to the
+    period before EvolutionaryScale joined Biohub. The sources reviewed describe the team
+    joining Biohub (a law firm's client note calls it a strategic transaction with the Chan
+    Zuckerberg Initiative) but do not document an acquisition of, or merger with,
+    EvolutionaryScale, PBC, so no parent organization is linked.
+  source_ids: [biohub-announcement, es-home, es-terms-legacy, biohub-esm-repo, hf-biohub-esm3, gunderson-note]
+products: []
+notable_facts:
+  - text: >-
+      The EvolutionaryScale site hosts an EvolutionaryScale, PBC Community License Agreement
+      covering the ESM-3 open model code and weights that limits use to non-commercial
+      purposes. The current Biohub repository license and model card state the MIT license;
+      the sources reviewed do not say when the terms changed.
+    source_ids: [es-community-license, biohub-esm-license, hf-biohub-esm3]
+  - text: >-
+      EvolutionaryScale's hosted Forge API has moved from forge.evolutionaryscale.ai to the
+      Biohub Platform at biohub.ai; the esm SDK still uses Forge class names.
+    source_ids: [biohub-esm-repo]
+  - text: >-
+      EvolutionaryScale's former terms of use (effective January 15, 2025) gave a New York, New
+      York address and New York governing law; the site marks those terms as no longer in
+      effect.
+    source_ids: [es-terms-legacy]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    EvolutionaryScale's website states that it is now part of Biohub, and Biohub's announcement
+    describes the EvolutionaryScale team joining Biohub. Chan Zuckerberg Biohub Inc is listed by
+    the IRS as a 501(c)(3) organization in Redwood City, California. EvolutionaryScale, PBC's
+    former terms of use (effective January 15, 2025) gave a New York address. The sources reviewed do not
+    document the legal structure of the combination (for example, whether the PBC continues as a
+    subsidiary); either way, the documented controlling and prior locations are in the United
+    States.
+  source_ids: [es-home, biohub-announcement, irs-eo-bmf-ca, es-terms-legacy]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    The ESM3 open small model, the ESM C models, and the esm code are now published by Biohub
+    under the MIT license; the ESM3 README lists the larger ESM3 models as accessed through
+    Biohub, with only the small open model's weights on Hugging Face. See the ESM release
+    records.
+  source_ids: [biohub-esm-repo, esm3-readme, biohub-esm-license]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: es-home
+    title: EvolutionaryScale (home page)
+    url: https://www.evolutionaryscale.ai/
+    publisher: EvolutionaryScale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-terms-legacy
+    title: Terms of Use (historical) | EvolutionaryScale
+    url: https://www.evolutionaryscale.ai/policies/terms-of-use
+    publisher: EvolutionaryScale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-community-license
+    title: Community License Agreement | EvolutionaryScale
+    url: https://www.evolutionaryscale.ai/policies/community-license-agreement
+    publisher: EvolutionaryScale
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: es-esm3-blog
+    title: "ESM3: Simulating 500 million years of evolution with a language model"
+    url: https://www.evolutionaryscale.ai/blog/esm3-release
+    publisher: EvolutionaryScale
+    kind: announcement
+    published_at: 2024-06-25
+    accessed_at: 2026-09-29
+  - id: es-esmc-blog
+    title: "ESM Cambrian: Revealing the mysteries of proteins with unsupervised learning"
+    url: https://www.evolutionaryscale.ai/blog/esm-cambrian
+    publisher: EvolutionaryScale
+    kind: announcement
+    published_at: 2024-12-04
+    accessed_at: 2026-09-29
+  - id: biohub-announcement
+    title: Biohub launches first large-scale scientific initiative combining frontier AI with frontier biology to cure or prevent disease
+    url: https://biohub.org/news/ai-biology-cure-disease/
+    publisher: Biohub
+    kind: announcement
+    published_at: 2025-11-06
+    accessed_at: 2026-09-29
+  - id: biohub-esm-repo
+    title: Biohub/esm (formerly evolutionaryscale/esm)
+    url: https://github.com/Biohub/esm
+    publisher: Biohub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: biohub-esm-license
+    title: Biohub/esm LICENSE.md
+    url: https://raw.githubusercontent.com/Biohub/esm/main/LICENSE.md
+    publisher: Chan Zuckerberg Biohub, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: esm3-readme
+    title: ESM3 README (Biohub/esm, _assets/ESM3_README.md)
+    url: https://raw.githubusercontent.com/Biohub/esm/main/_assets/ESM3_README.md
+    publisher: Biohub
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-biohub-esm3
+    title: biohub/esm3-sm-open-v1 model card
+    url: https://huggingface.co/biohub/esm3-sm-open-v1
+    publisher: Biohub
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gunderson-note
+    title: Gunderson Client EvolutionaryScale Team Joins Biohub in Strategic Transaction with Chan Zuckerberg Initiative
+    url: https://www.gunder.com/en/news-insights/client-news/gunderson-client-evolutionaryscale-team-joins-biohub-in-strategic-transaction-with-chan-zuckerberg-initiative
+    publisher: Gunderson Dettmer
+    kind: news
+    published_at: 2025-11-06
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

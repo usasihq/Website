@@ -1,0 +1,202 @@
+slug: hermes-4-3-36b
+name: Hermes 4.3 36B
+kind: model
+record_level: release
+family_slug: hermes
+version: "Hermes-4.3-36B"
+maintainers:
+  - name: Nous Research
+    organization_slug: nous-research
+    source_ids: [mc-hermes-4-3-36b, hermes-4-3-blog]
+organization_slugs: [nous-research]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    kind: model-hub
+  - label: Hermes 4.3 announcement
+    url: https://nousresearch.com/introducing-hermes-4-3/
+    kind: release-notes
+  - label: Hermes 4 technical report (arXiv 2508.18255)
+    url: https://arxiv.org/abs/2508.18255
+    kind: paper
+  - label: Evaluation responses and scores (Hugging Face dataset)
+    url: https://huggingface.co/datasets/NousResearch/eval-Hermes-4.3-36B
+    kind: dataset-hub
+  - label: Nous Research TorchTitan fork
+    url: https://github.com/NousResearch/torchtitan
+    kind: repository
+summary:
+  text: >-
+    A 36B-parameter hybrid reasoning model that Nous Research post-trained from ByteDance Seed's
+    Seed-OSS-36B-Base. It was Nous's first Hermes model trained in a decentralized way over the
+    internet on the Psyche network, with context extended up to 512K tokens. Nous also released a
+    centrally trained version of the same model as a research comparison.
+  source_ids: [mc-hermes-4-3-36b, hermes-4-3-blog, nous-releases]
+useful_for:
+  text: >-
+    Nous presents it as a general assistant with optional reasoning, function calling and tool
+    use, and schema-following JSON output.
+  source_ids: [mc-hermes-4-3-36b]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    This fine-tune was made and published by Nous Research, Inc., a Delaware corporation with
+    U.S. addresses (see the nous-research record). Eligibility covers Nous Research's
+    post-training only; the Seed-OSS-36B-Base model it starts from was developed by ByteDance's
+    Seed Team and is not treated as a U.S.-developed model.
+  source_ids: [mc-hermes-4-3-36b, nous-portal-terms, seed-oss-card]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; GGUF quantizations are in a
+    separate repository. The model card also lists Nous Portal and Chutes as inference providers.
+  source_ids: [mc-hermes-4-3-36b]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    applies_to: weights
+    source_ids: [mc-hermes-4-3-36b]
+license_notes:
+  text: >-
+    The Apache 2.0 license is declared in the model card metadata; the repository has no
+    separate LICENSE file. The base model, Seed-OSS-36B-Base, is also tagged Apache 2.0 on its
+    model card.
+  source_ids: [mc-hermes-4-3-36b, hermes-4-3-repo-files, seed-oss-card]
+checklist:
+  weights:
+    status: public
+    note: BF16 safetensors in an ungated Hugging Face repository; the centrally trained comparison version is published separately.
+    source_ids: [mc-hermes-4-3-36b, hermes-4-3-blog]
+  inference_code:
+    status: public
+    note: The model card gives a Transformers example and says vLLM and SGLang include tool-call parsers for the Hermes format.
+    source_ids: [mc-hermes-4-3-36b]
+  training_code:
+    status: partial
+    note: >-
+      Nous says it trained Hermes 4.3 with its custom TorchTitan fork (BSD-3-Clause) and links the
+      open-source Psyche code (Apache 2.0). This covers Nous's post-training only; the code used
+      to pretrain the Seed-OSS base model is not part of this release.
+    source_ids: [hermes-4-3-blog, nous-torchtitan-license, psyche-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card describes a post-training corpus of about 5 million samples mixing
+      reasoning and non-reasoning data, and the Hermes 4 technical report describes how the
+      Hermes 4 data was synthesized (DataForge, Atropos rejection sampling). The Hermes 4.3
+      post-training dataset itself was not found as a public release, and the base model's
+      pretraining data is described only in ByteDance's materials.
+    source_ids: [mc-hermes-4-3-36b, hermes4-report-pdf, hermes-4-3-blog]
+  training_recipe:
+    status: partial
+    note: >-
+      The announcement describes decentralized training on Psyche using the DisTrO optimizer,
+      spread across 24 Psyche nodes, with a larger training set and a run twice as large as
+      Hermes 4; the Hermes 4 report documents the general post-training method. Full
+      hyperparameters for this release were not found.
+    source_ids: [hermes-4-3-blog, hermes4-report-pdf]
+  evaluation_materials:
+    status: public
+    note: >-
+      Nous publishes the full evaluation responses and scores for this model (and for the
+      centrally trained version) as Hugging Face datasets; the Hermes 4 report describes the
+      evaluation harness, which uses lighteval, EQBench, and Atropos.
+    source_ids: [hermes-4-3-blog, eval-hermes-4-3-dataset, hermes4-report-pdf]
+run_notes:
+  - text: >-
+      The model card recommends temperature 0.6, top_p 0.95, and top_k 20, uses the Llama 3 chat
+      format with an optional thinking flag, and suggests tensor-parallel serving with SGLang or
+      vLLM for multi-GPU nodes.
+    source_ids: [mc-hermes-4-3-36b]
+provenance:
+  text: >-
+    Fine-tuned by Nous Research from Seed-OSS-36B-Base, a base model developed and released by
+    ByteDance's Seed Team under Apache 2.0. The base model is not a catalog member and is not
+    treated as U.S.-developed; Nous Research's contribution is the post-training data and the
+    decentralized post-training run on Psyche.
+  derived_from:
+    - name: Seed-OSS-36B-Base (ByteDance Seed Team)
+      artifact_slug: null
+      url: https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Base
+      note: Third-party base model; not a catalog member.
+  source_ids: [mc-hermes-4-3-36b, hermes-4-3-blog, seed-oss-card]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2025-12-03
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-hermes-4-3-36b
+    title: NousResearch/Hermes-4.3-36B model card
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    publisher: Nous Research
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes-4-3-repo-files
+    title: Hermes-4.3-36B repository file listing
+    url: https://huggingface.co/api/models/NousResearch/Hermes-4.3-36B/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes-4-3-blog
+    title: Introducing Hermes 4.3
+    url: https://nousresearch.com/introducing-hermes-4-3/
+    publisher: Nous Research
+    kind: announcement
+    published_at: 2025-12
+    accessed_at: 2026-09-29
+  - id: nous-releases
+    title: Releases | Nous Research
+    url: https://nousresearch.com/releases
+    publisher: Nous Research
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes4-report-pdf
+    title: Hermes 4 Technical Report (arXiv 2508.18255v2)
+    url: https://arxiv.org/pdf/2508.18255v2
+    publisher: Nous Research
+    kind: paper
+    published_at: 2025-09-02
+    accessed_at: 2026-09-29
+  - id: eval-hermes-4-3-dataset
+    title: NousResearch/eval-Hermes-4.3-36B dataset
+    url: https://huggingface.co/datasets/NousResearch/eval-Hermes-4.3-36B
+    publisher: Nous Research
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nous-torchtitan-license
+    title: NousResearch/torchtitan LICENSE (BSD 3-Clause)
+    url: https://raw.githubusercontent.com/NousResearch/torchtitan/856a0ecabeb8a882c150641f73f8c1c235720622/LICENSE
+    publisher: Nous Research (fork of pytorch/torchtitan)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: psyche-license
+    title: PsycheFoundation/psyche LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/PsycheFoundation/psyche/main/LICENSE
+    publisher: Psyche Foundation
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: seed-oss-card
+    title: ByteDance-Seed/Seed-OSS-36B-Base model card
+    url: https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Base
+    publisher: ByteDance Seed
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nous-portal-terms
+    title: Terms of Service - Nous Portal
+    url: https://portal.nousresearch.com/terms
+    publisher: Nous Research
+    kind: official-page
+    published_at: 2026-09-28
+    accessed_at: 2026-09-29

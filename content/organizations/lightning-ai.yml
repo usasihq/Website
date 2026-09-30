@@ -1,0 +1,167 @@
+slug: lightning-ai
+name: Lightning AI
+legal_name: null
+website: https://lightning.ai
+logo_text: LAI
+summary:
+  text: >-
+    Lightning AI created and maintains the PyTorch Lightning training framework and runs a cloud
+    platform for building, training, and deploying AI models, including browser-based development
+    environments (Studios) and on-demand GPUs. It merged with GPU infrastructure provider Voltage
+    Park in January 2026 and operates under the Lightning AI name.
+  source_ids: [lightning-about, lightning-home, lightning-merger-blog]
+organization_roles: [cloud-provider, compute-infrastructure, developer-platform]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [lightning-form-d-2026]
+other_locations:
+  - label: New York, New York
+    country: US
+    source_ids: [lightning-careers, lightning-privacy]
+  - label: Seattle, Washington
+    country: US
+    source_ids: [lightning-careers]
+  - label: London, United Kingdom
+    country: GB
+    source_ids: [lightning-careers]
+founded: null
+sectors: [cloud]
+status_note:
+  text: >-
+    Lightning AI and Voltage Park completed a merger announced on January 21, 2026; the combined
+    company operates under the Lightning AI name and pairs Lightning's software platform with
+    Voltage Park's GPU data centers in the United States.
+  source_ids: [lightning-merger-blog, voltage-park-merger-release, lightning-about]
+products:
+  - id: lightning-ai-studio
+    name: Lightning AI Studio
+    kind: cloud-platform
+    access: >-
+      Browser-based cloud workspaces (Studios) for coding, training, and deploying models on CPUs
+      and GPUs; free tier with starter credits, then pay-as-you-go GPU time billed by the second,
+      with Pro, Teams, and Enterprise plans.
+    url: https://lightning.ai/pricing
+    source_ids: [lightning-pricing, lightning-about]
+    last_reviewed: 2026-09-29
+  - id: lightning-gpu-cloud
+    name: Lightning GPU cloud
+    kind: compute-service
+    access: >-
+      Self-serve on-demand GPUs and GPU clusters in Lightning's own data centers, plus a
+      marketplace that provisions capacity from other clouds through the same platform.
+    url: https://lightning.ai/
+    source_ids: [lightning-home, lightning-merger-blog, lightning-pricing]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      An SEC Form D filed on January 8, 2026 by Lightning AI, Inc. lists Voltage Park, Inc. as its
+      previous name, Delaware as its jurisdiction, a San Francisco principal place of business, and
+      a related business combination. Lightning AI's website privacy policy (effective August 2023)
+      names Grid.ai, Inc. doing business as Lightning AI, with a New York postal address.
+    source_ids: [lightning-form-d-2026, lightning-privacy]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Form D filed in January 2026 by Lightning AI, Inc. (formerly Voltage Park, Inc.), a
+    Delaware corporation, gives a principal place of business in San Francisco, California, and
+    the company's privacy policy gives a New York address for Grid.ai, Inc. doing business as
+    Lightning AI. The published legal material does not say how the two entities relate after the
+    merger, so no legal name is recorded, but both documented entities and addresses are in the
+    United States. Its terms of service are governed by New York law.
+  source_ids: [lightning-form-d-2026, lightning-privacy, lightning-terms, lightning-merger-blog]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Lightning AI's cloud platform is a commercial service. The company publishes PyTorch Lightning
+    under the Apache License 2.0, and its GitHub organization also hosts other open-source projects
+    such as LitServe, LitGPT, TorchMetrics, and lightning-thunder.
+  source_ids: [pl-license, lightning-github, lightning-about]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: lightning-about
+    title: About Lightning AI
+    url: https://lightning.ai/about
+    publisher: Lightning AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-home
+    title: Lightning - The AI cloud PyTorch developers love
+    url: https://lightning.ai/
+    publisher: Lightning AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-pricing
+    title: Lightning AI - Pricing
+    url: https://lightning.ai/pricing
+    publisher: Lightning AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-careers
+    title: Lightning AI Careers
+    url: https://lightning.ai/careers
+    publisher: Lightning AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-privacy
+    title: Lightning AI Privacy Policy
+    url: https://lightning.ai/legal/privacy
+    publisher: Lightning AI
+    kind: official-page
+    published_at: 2023-08-20
+    accessed_at: 2026-09-29
+  - id: lightning-terms
+    title: Lightning AI Terms and Conditions
+    url: https://lightning.ai/legal/terms-and-conditions
+    publisher: Lightning AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-form-d-2026
+    title: Lightning AI, Inc. Form D (Notice of Exempt Offering of Securities)
+    url: https://www.sec.gov/Archives/edgar/data/2101357/000210135726000001/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (filed by Lightning AI, Inc.)
+    kind: filing
+    published_at: 2026-01-08
+    accessed_at: 2026-09-29
+  - id: lightning-merger-blog
+    title: Why we merged Lightning AI and Voltage Park to build an AI-native cloud
+    url: https://lightning.ai/blog/lightning-ai-voltage-park-merger-ai-cloud
+    publisher: Lightning AI
+    kind: announcement
+    published_at: 2026-01-21
+    accessed_at: 2026-09-29
+  - id: voltage-park-merger-release
+    title: Lightning AI and Voltage Park Complete Merger to Create the First Cloud Built for AI
+    url: https://voltagepark.com/blog/lightning-ai-voltage-park-merger-to-create-the-first-cloud-built-for-ai
+    publisher: Voltage Park
+    kind: announcement
+    published_at: 2026-01
+    accessed_at: 2026-09-29
+  - id: lightning-github
+    title: Lightning AI on GitHub
+    url: https://github.com/Lightning-AI
+    publisher: Lightning AI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pl-license
+    title: Lightning-AI/pytorch-lightning LICENSE
+    url: https://github.com/Lightning-AI/pytorch-lightning/blob/master/LICENSE
+    publisher: Lightning AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

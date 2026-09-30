@@ -3,6 +3,7 @@ import { EditorialPage } from "@/components/EditorialPage";
 import { ExternalLink } from "@/components/ExternalLink";
 import { pageMetadata } from "@/lib/metadata";
 import { issueUrl, repositoryUrl } from "@/lib/paths";
+import { mailtoHref, siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
   title: "Contribute",
@@ -21,6 +22,15 @@ function RepositoryStatus() {
           <strong className="font-semibold text-text">Repository not yet published.</strong> The public repository for this catalog has not been
           configured, so there are no live links for issues or pull requests yet. The workflow below is what will apply once it is.
         </p>
+        {siteConfig.contact.email ? (
+          <p className="mt-3">
+            Until then, send corrections and entry suggestions by email:{" "}
+            <a href={mailtoHref(siteConfig.contact.email, "USASI correction or suggestion")} className="link">
+              {siteConfig.contact.email}
+            </a>
+            . Please include the entry, what should change, and a supporting source.
+          </p>
+        ) : null}
       </div>
     );
   }

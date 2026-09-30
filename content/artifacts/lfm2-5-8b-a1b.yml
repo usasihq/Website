@@ -1,0 +1,162 @@
+slug: lfm2-5-8b-a1b
+name: LFM2.5-8B-A1B
+kind: model
+record_level: release
+family_slug: lfm
+version: "LFM2.5-8B-A1B"
+maintainers:
+  - name: Liquid AI
+    organization_slug: liquid-ai
+    source_ids: [mc-lfm25-8b-a1b, lfm25-8b-blog]
+organization_slugs: [liquid-ai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B
+    kind: model-hub
+  - label: License (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B/blob/main/LICENSE
+    kind: license
+  - label: Release post
+    url: https://www.liquid.ai/blog/lfm2-5-8b-a1b
+    kind: release-notes
+summary:
+  text: >-
+    A text-only mixture-of-experts model with 8.3B total and 1.5B active parameters, built from
+    18 double-gated convolution blocks and 6 grouped-query attention blocks. Liquid AI pretrained
+    it on 38 trillion tokens, extended its context to 128,000 tokens, and tuned it for reasoning;
+    it writes a chain of thought before its final answer. It succeeds LFM2-8B-A1B.
+  source_ids: [mc-lfm25-8b-a1b, lfm25-8b-blog]
+useful_for:
+  text: >-
+    The model card recommends it for agentic workflows, tool use, structured outputs,
+    multilingual assistants, and on-device personal-assistant applications, and says it is not
+    the best fit for heavy programming or knowledge-intensive question answering without
+    retrieval.
+  source_ids: [mc-lfm25-8b-a1b]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Liquid AI, Inc., the licensor named in the model's license file.
+    Liquid AI gives its address as Cambridge, Massachusetts (see the liquid-ai record).
+  source_ids: [mc-lfm25-8b-a1b, lfm25-8b-license-file, liquid-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; use is governed by the LFM Open
+    License v1.0, which conditions commercial-use rights on the licensee's legal entity not
+    exceeding a threshold defined as annual revenue of US$10,000,000 or more. Liquid also offers
+    the model in its Playground.
+  source_ids: [mc-lfm25-8b-a1b, lfm25-8b-license-file, lfm25-8b-blog]
+licenses:
+  - name: LFM Open License v1.0
+    spdx: null
+    url: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [lfm25-8b-license-file, mc-lfm25-8b-a1b]
+license_notes:
+  text: >-
+    Custom Liquid AI license (card license field "lfm1.0") modeled on Apache 2.0. It grants
+    perpetual, royalty-free copyright and patent licenses, requires redistributors to include
+    the license and mark modified files, and ends patent rights for anyone who files patent
+    litigation over the work. Section 5 makes commercial rights conditional on the licensee's
+    legal entity not exceeding a "Threshold" defined as annual revenue of US$10,000,000 or more,
+    and states that commercial use by a legal entity that exceeds the Threshold is not licensed.
+    The Threshold does not apply to a qualified non-profit organization's use for non-commercial
+    or research purposes. Liquid's license page FAQ says fine-tuned models may be kept
+    proprietary and that hosting platforms may host and distribute the models. The release post
+    describes the weights as deployable without restrictions; the license text limits commercial
+    use as described here.
+  source_ids: [lfm25-8b-license-file, liquid-lfm-license, lfm25-8b-blog]
+checklist:
+  weights:
+    status: public
+    note: Ungated safetensors weights on Hugging Face; GGUF, ONNX, and MLX conversions are published as separate repositories.
+    source_ids: [mc-lfm25-8b-a1b]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents inference with Hugging Face Transformers (5.0.0 or later), vLLM,
+      SGLang, llama.cpp, MLX, and LM Studio; no custom modeling code is needed in the repository.
+    source_ids: [mc-lfm25-8b-a1b]
+  training_code:
+    status: unknown
+    note: >-
+      No training code release was found in the model card, release post, or LFM2 technical
+      report. Liquid documents fine-tuning with third-party tools (Unsloth, TRL), which is not
+      training code for this release.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: The model card and release post give the 38-trillion-token pretraining budget but do not describe data sources or composition.
+    source_ids: []
+  training_recipe:
+    status: partial
+    note: >-
+      The release post outlines the stages at a high level (scaled-up pretraining, context
+      extension to 32K and then 128K tokens, reasoning training, preference optimization against
+      repetitive loops, and reward-based hallucination mitigation) without full configurations.
+    source_ids: [lfm25-8b-blog]
+  evaluation_materials:
+    status: partial
+    note: The model card and release post report benchmark tables; evaluation code or prompts are not linked.
+    source_ids: [mc-lfm25-8b-a1b, lfm25-8b-blog]
+run_notes:
+  - text: >-
+      The model card recommends temperature 0.2, top_k 80, and repetition_penalty 1.05, and
+      shows Transformers loading in bfloat16. It also points to a separate 328M speculative
+      decoding drafter, LFM2.5-8B-A1B-DSpark, for use with SGLang.
+    source_ids: [mc-lfm25-8b-a1b]
+provenance:
+  text: >-
+    Post-trained by Liquid AI from its own LFM2.5-8B-A1B-Base checkpoint, which it pretrained
+    itself; no third-party base model is involved.
+  derived_from:
+    - name: LFM2.5-8B-A1B-Base
+      artifact_slug: null
+      url: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B-Base
+      note: Same organization; pretrained base checkpoint.
+  source_ids: [mc-lfm25-8b-a1b]
+tags: [language-model, reasoning, mixture-of-experts, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2026-05-28
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-lfm25-8b-a1b
+    title: LiquidAI/LFM2.5-8B-A1B model card
+    url: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B
+    publisher: Liquid AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lfm25-8b-license-file
+    title: LFM2.5-8B-A1B LICENSE (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/LFM2.5-8B-A1B/raw/main/LICENSE
+    publisher: Liquid AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liquid-lfm-license
+    title: LFM License
+    url: https://www.liquid.ai/lfm-license
+    publisher: Liquid AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lfm25-8b-blog
+    title: "LFM2.5-8B-A1B: An Even Better On-Device Mixture of Experts"
+    url: https://www.liquid.ai/blog/lfm2-5-8b-a1b
+    publisher: Liquid AI
+    kind: announcement
+    published_at: 2026-05-28
+    accessed_at: 2026-09-29
+  - id: liquid-privacy
+    title: Liquid AI Privacy Policy
+    url: https://www.liquid.ai/privacy-policy
+    publisher: Liquid AI
+    kind: official-page
+    published_at: 2025-07-14
+    accessed_at: 2026-09-29

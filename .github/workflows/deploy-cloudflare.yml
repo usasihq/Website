@@ -5,7 +5,8 @@
 #   Secret    CLOUDFLARE_API_TOKEN   (token with "Workers Scripts: Edit" for the account)
 #   Secret    CLOUDFLARE_ACCOUNT_ID
 # Pull requests from this repository get a preview URL (wrangler versions upload
-# --preview-alias); production deploys run on pushes to main.
+# --preview-alias); production deploys run on pushes to main and on the 1st of
+# each month (so the Local corner's monthly lineup rotates without a commit).
 name: Deploy to Cloudflare
 
 on:
@@ -13,6 +14,8 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: "20 6 1 * *"
 
 permissions:
   contents: read

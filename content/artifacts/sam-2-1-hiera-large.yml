@@ -1,0 +1,197 @@
+slug: sam-2-1-hiera-large
+name: SAM 2.1 Hiera-Large
+kind: model
+record_level: release
+family_slug: segment-anything
+version: "2.1 (sam2.1_hiera_large)"
+maintainers:
+  - name: Meta (FAIR)
+    organization_slug: meta
+    source_ids: [sam2-readme]
+organization_slugs: [meta]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/facebook/sam2.1-hiera-large
+    kind: model-hub
+  - label: SAM 2 repository
+    url: https://github.com/facebookresearch/sam2
+    kind: repository
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/facebookresearch/sam2/blob/main/LICENSE
+    kind: license
+  - label: "SAM 2: Segment Anything in Images and Videos (arXiv 2408.00714)"
+    url: https://arxiv.org/abs/2408.00714
+    kind: paper
+  - label: SAM 2 release notes
+    url: https://github.com/facebookresearch/sam2/blob/main/RELEASE_NOTES.md
+    kind: release-notes
+summary:
+  text: >-
+    SAM 2.1 Hiera-Large is the largest checkpoint (224.4M parameters, per the README) in Meta's SAM 2.1 suite, an
+    improved set of SAM 2 checkpoints released in September 2024. SAM 2 is a transformer with
+    streaming memory that segments objects in images and tracks them through video from point,
+    box, or mask prompts.
+  source_ids: [sam2-readme, sam2-release-notes]
+useful_for:
+  text: >-
+    Promptable segmentation of objects in images, automatic mask generation, and segmenting and
+    tracking objects across video frames.
+  source_ids: [sam2-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by Meta's FAIR research group and published in the facebookresearch GitHub
+    organization and the facebook Hugging Face account. Meta Platforms, Inc. has its principal
+    executive offices in Menlo Park, California, per its Form 10-K.
+  source_ids: [sam2-readme, hf-sam21-large, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    The checkpoint downloads directly from Meta's servers or from Hugging Face without gating.
+  source_ids: [sam2-readme, hf-api-sam21-large]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/facebookresearch/sam2/blob/main/LICENSE
+    applies_to: weights-and-code
+    source_ids: [sam2-license, sam2-readme, hf-api-sam21-large]
+license_notes:
+  text: >-
+    The README states that the SAM 2 model checkpoints, demo code, and training code are licensed
+    under Apache 2.0. The fonts bundled with the web demo are under the SIL Open Font License
+    1.1, and an optional connected-components post-processing module adapted from cc_torch
+    carries its own BSD 3-Clause license.
+  source_ids: [sam2-readme, sam2-license-cctorch]
+checklist:
+  weights:
+    status: public
+    note: Direct download links in the README and an ungated Hugging Face repository.
+    source_ids: [sam2-readme, hf-api-sam21-large]
+  inference_code:
+    status: public
+    note: >-
+      The repository provides image and video predictors and notebooks; the Hugging Face card
+      also documents use with Transformers.
+    source_ids: [sam2-readme, hf-sam21-large]
+  training_code:
+    status: public
+    note: >-
+      Training and fine-tuning code was released with SAM 2.1, including the trainer, loss
+      functions, dataset loaders, and launch scripts for single- and multi-node jobs.
+    source_ids: [sam2-release-notes, sam2-training-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The paper lists the training mix as SA-1B, the SA-V dataset, an internal video dataset,
+      and open-source video datasets. SA-V is downloadable under CC BY 4.0, but the internal
+      data is not released.
+    source_ids: [sam2-paper, sam2-sav-readme]
+  training_recipe:
+    status: partial
+    note: >-
+      The paper's appendix tabulates pre-training and full-training hyperparameters, and the paper
+      states its results use SAM 2.1, but it gives few details of what changed from the July 2024
+      checkpoints.
+    source_ids: [sam2-paper]
+  evaluation_materials:
+    status: public
+    note: >-
+      The README reports SA-V test, MOSE val, and LVOS v2 results for each SAM 2.1 checkpoint and
+      a benchmarking script for speed. The repository publishes a VOS inference script documented
+      with the SAM 2.1 configs and checkpoints (with a flag for LVOS-style datasets) and an SA-V
+      evaluator for the released val and test sets; MOSE and LVOS scores come from those datasets'
+      own evaluation tools or servers.
+    source_ids: [sam2-readme, sam2-tools-readme, sam2-sav-readme]
+run_notes:
+  - text: >-
+      The README requires Python 3.10 or later with PyTorch 2.5.1 and torchvision 0.20.1 or later
+      and notes that installation compiles an optional CUDA extension; it recommends WSL with
+      Ubuntu on Windows.
+    source_ids: [sam2-readme]
+provenance: null
+tags: [computer-vision, segmentation]
+publication_status: published
+archive_note: null
+released_at: 2024-09-29
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: sam2-readme
+    title: facebookresearch/sam2 README
+    url: https://github.com/facebookresearch/sam2/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-release-notes
+    title: SAM 2 release notes
+    url: https://github.com/facebookresearch/sam2/blob/main/RELEASE_NOTES.md
+    publisher: Meta (GitHub)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-license
+    title: facebookresearch/sam2 LICENSE (Apache 2.0)
+    url: https://github.com/facebookresearch/sam2/blob/main/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-license-cctorch
+    title: facebookresearch/sam2 LICENSE_cctorch
+    url: https://github.com/facebookresearch/sam2/blob/main/LICENSE_cctorch
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-training-readme
+    title: Training Code for SAM 2 (training/README.md)
+    url: https://github.com/facebookresearch/sam2/blob/main/training/README.md
+    publisher: Meta (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-sav-readme
+    title: Segment Anything Video (SA-V) Dataset README
+    url: https://github.com/facebookresearch/sam2/blob/main/sav_dataset/README.md
+    publisher: Meta (GitHub)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-tools-readme
+    title: SAM 2 toolkits README (tools/README.md, semi-supervised VOS inference)
+    url: https://github.com/facebookresearch/sam2/blob/main/tools/README.md
+    publisher: Meta (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sam2-paper
+    title: "SAM 2: Segment Anything in Images and Videos (arXiv 2408.00714v2)"
+    url: https://arxiv.org/html/2408.00714
+    publisher: arXiv (Meta FAIR authors)
+    kind: paper
+    published_at: 2024-10-28
+    accessed_at: 2026-09-29
+  - id: hf-sam21-large
+    title: facebook/sam2.1-hiera-large model card
+    url: https://huggingface.co/facebook/sam2.1-hiera-large
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-sam21-large
+    title: facebook/sam2.1-hiera-large (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/facebook/sam2.1-hiera-large
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

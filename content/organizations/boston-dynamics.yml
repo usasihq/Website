@@ -1,0 +1,239 @@
+slug: boston-dynamics
+name: Boston Dynamics
+legal_name:
+  text: Boston Dynamics, Inc.
+  source_ids: [bd-terms, bd-privacy]
+website: https://bostondynamics.com
+logo_text: BD
+summary:
+  text: >-
+    Boston Dynamics builds mobile robots: Spot, a quadruped used for industrial inspection;
+    Stretch, a box-handling robot for warehouses; and Atlas, an electric humanoid being
+    introduced with a select group of early adopters. Its Orbit software manages robot
+    fleets and site inspection data. The company began in 1992 as a spin-off from the MIT
+    Leg Lab and is controlled by Hyundai Motor Group.
+  source_ids: [bd-about, bd-waltham-2026, bd-atlas, bd-orbit, bd-hmg-2021, hmg-statement-2026]
+organization_roles: [robotics, hardware-manufacturer]
+ownership_category: unit-of-another-organization
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Waltham, Massachusetts
+  country: US
+  source_ids: [bd-waltham-2026, bd-terms, bd-careers]
+other_locations: []
+founded:
+  year: 1992
+  source_ids: [bd-about]
+sectors: [robotics]
+status_note:
+  text: >-
+    Hyundai Motor Group acquired an 80 percent controlling interest in Boston Dynamics from
+    SoftBank in June 2021, with a SoftBank affiliate keeping the other 20 percent. In June
+    2026 The Next Web reported that SoftBank's remaining stake was 9.65 percent, with Hyundai
+    Motor Group affiliates and the group's executive chair holding just over 90 percent. On
+    July 16, 2026, after SoftBank gave notice that it was exercising a put option, Hyundai
+    Motor Group said that the group's shareholders in Boston Dynamics were pursuing the
+    purchase of SoftBank's entire stake under the parties' existing agreements, subject to
+    approvals and settlement; this review found no official confirmation that the purchase has
+    closed.
+  source_ids: [bd-hmg-2021, tnw-bd-2026, hmg-statement-2026]
+products:
+  - id: spot
+    name: Spot
+    kind: robot
+    access: >-
+      Commercially available quadruped robot for inspection and data capture at industrial
+      sites, sold through Boston Dynamics sales; it has a payload capacity for added sensors
+      and an API with developer documentation.
+    url: https://bostondynamics.com/products/spot/
+    source_ids: [bd-spot]
+    last_reviewed: 2026-09-29
+  - id: atlas
+    name: Atlas
+    kind: robot
+    access: >-
+      Electric humanoid robot for material handling tasks such as part sequencing and machine
+      tending. Boston Dynamics says it is starting with a select group of early adopters and
+      that Atlas is in field testing at a Hyundai facility.
+    url: https://bostondynamics.com/products/atlas/
+    source_ids: [bd-atlas]
+    last_reviewed: 2026-09-29
+  - id: stretch
+    name: Stretch
+    kind: robot
+    access: >-
+      Mobile robot with a vision system and purpose-built arm for handling cases and
+      unloading trailers in warehouses; the company's boilerplate says it is being deployed
+      with logistics and retail customers.
+    url: https://bostondynamics.com/products/stretch/
+    source_ids: [bd-products, bd-waltham-2026]
+    last_reviewed: 2026-09-29
+  - id: orbit
+    name: Orbit
+    kind: enterprise-software
+    access: >-
+      Fleet-management and site-data software for Boston Dynamics robots, offered as an
+      AWS-hosted cloud application, an on-premises Site Hub appliance, or a virtual machine;
+      it includes AIVI-Learning, a visual-inspection feature that uses Google's Gemini and
+      Gemini Robotics models.
+    url: https://bostondynamics.com/products/orbit/
+    source_ids: [bd-orbit, bd-aivi-gemini]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      In August 2025 Boston Dynamics and the Toyota Research Institute described a Large
+      Behavior Model for Atlas: a 450M-parameter diffusion transformer policy that maps camera
+      images, proprioception, and language prompts to whole-body actions at 30Hz.
+    source_ids: [bd-lbm-blog]
+  - text: >-
+      Hyundai Motor Group says it plans to deploy Atlas at Hyundai Motor Group Metaplant
+      America beginning in 2028, initially for parts sequencing.
+    source_ids: [hmg-statement-2026]
+  - text: >-
+      In June 2026 Boston Dynamics announced plans to convert a 323,000-square-foot building
+      in Waltham, near its existing headquarters, into a robotics and AI center that would
+      consolidate three nearby sites.
+    source_ids: [bd-waltham-2026]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Headquarters: Boston Dynamics' June 2026 release (datelined Waltham, MA) refers to the
+    company's existing headquarters in Waltham, its site terms give Boston Dynamics, Inc.'s
+    address as 200 Smith Street, Waltham, MA, and most listed jobs are in Waltham. Ownership:
+    the company is majority-owned by Hyundai Motor Group (whose July 2026 statement is
+    datelined Seoul), which took an 80 percent controlling interest from SoftBank in 2021; in
+    July 2026 the group said its shareholders in Boston Dynamics were pursuing SoftBank's
+    remaining stake. Under this catalog's policy a
+    documented U.S. headquarters is an eligible basis by itself, so the record is eligible on
+    that basis; the foreign majority ownership is recorded here and in the status note, and
+    the record does not claim U.S. control.
+  source_ids: [bd-waltham-2026, bd-terms, bd-careers, bd-hmg-2021, hmg-statement-2026]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Boston Dynamics sells robots and fleet software. It publishes the Spot SDK on GitHub under
+    its own SDK license, which permits use only with Boston Dynamics products (and software
+    simulators). Its 2025 Large Behavior Model post for Atlas describes no public model
+    release, and this catalog has no record of public model weights from Boston Dynamics.
+  source_ids: [bd-github, bd-spot-sdk-license, bd-lbm-blog]
+hiring_url: https://bostondynamics.com/careers/
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: bd-about
+    title: About Us | Boston Dynamics
+    url: https://bostondynamics.com/about/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bd-terms
+    title: Terms of Use | Boston Dynamics
+    url: https://bostondynamics.com/terms/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: 2022-06-14
+    accessed_at: 2026-09-29
+  - id: bd-privacy
+    title: Privacy Policy | Boston Dynamics
+    url: https://bostondynamics.com/privacy-policy/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: 2025-03-20
+    accessed_at: 2026-09-29
+  - id: bd-careers
+    title: Careers | Boston Dynamics
+    url: https://bostondynamics.com/careers/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bd-waltham-2026
+    title: Boston Dynamics Expands Massachusetts Footprint with New 323,000 Square Foot Facility in Waltham
+    url: https://bostondynamics.com/news/boston-dynamics-expands-massachusetts-footprint-with-new-323000-square-foot-facility-in-waltham/
+    publisher: Boston Dynamics
+    kind: announcement
+    published_at: 2026-06-24
+    accessed_at: 2026-09-29
+  - id: bd-products
+    title: Products | Boston Dynamics
+    url: https://bostondynamics.com/products/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bd-spot
+    title: Spot | Boston Dynamics
+    url: https://bostondynamics.com/products/spot/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bd-atlas
+    title: Atlas Humanoid Robot | Boston Dynamics
+    url: https://bostondynamics.com/products/atlas/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bd-orbit
+    title: Orbit Robot Fleet Management Software | Boston Dynamics
+    url: https://bostondynamics.com/products/orbit/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bd-aivi-gemini
+    title: AIVI-Learning Now Powered by Google Gemini Robotics
+    url: https://bostondynamics.com/blog/aivi-learning-now-powered-google-gemini-robotics/
+    publisher: Boston Dynamics
+    kind: announcement
+    published_at: 2026-04-14
+    accessed_at: 2026-09-29
+  - id: bd-lbm-blog
+    title: Large Behavior Models and Atlas Find New Footing
+    url: https://bostondynamics.com/blog/large-behavior-models-atlas-find-new-footing/
+    publisher: Boston Dynamics
+    kind: announcement
+    published_at: 2025-08-20
+    accessed_at: 2026-09-29
+  - id: bd-hmg-2021
+    title: Hyundai Motor Group Completes Acquisition of Boston Dynamics from SoftBank
+    url: https://bostondynamics.com/news/hyundai-motor-group-completes-acquisition-of-boston-dynamics-from-softbank/
+    publisher: Boston Dynamics
+    kind: announcement
+    published_at: 2021-06-21
+    accessed_at: 2026-09-29
+  - id: hmg-statement-2026
+    title: Hyundai Motor Group's Statement on Boston Dynamics
+    url: https://www.hyundai.com/worldwide/en/newsroom/detail/0000001225
+    publisher: Hyundai Motor Group
+    kind: announcement
+    published_at: 2026-07-16
+    accessed_at: 2026-09-29
+  - id: tnw-bd-2026
+    title: Hyundai to buy SoftBank's last Boston Dynamics stake for $325m
+    url: https://thenextweb.com/news/hyundai-to-buy-softbanks-last-boston-dynamics-stake-for-325m
+    publisher: The Next Web
+    kind: news
+    published_at: 2026-06-19
+    accessed_at: 2026-09-29
+  - id: bd-spot-sdk-license
+    title: boston-dynamics/spot-sdk LICENSE (Boston Dynamics Software Development Kit License)
+    url: https://raw.githubusercontent.com/boston-dynamics/spot-sdk/master/LICENSE
+    publisher: Boston Dynamics
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bd-github
+    title: Boston Dynamics GitHub repositories (boston-dynamics)
+    url: https://github.com/orgs/boston-dynamics/repositories
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

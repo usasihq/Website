@@ -9,7 +9,7 @@ import { ExternalLink } from "@/components/ExternalLink";
  */
 function MdxLink({ href = "", children }: { href?: string; children?: React.ReactNode }) {
   if (href.startsWith("/")) return <Link href={href}>{children}</Link>;
-  if (href.startsWith("#")) return <a href={href}>{children}</a>;
+  if (href.startsWith("#") || href.startsWith("mailto:")) return <a href={href}>{children}</a>;
   if (href.startsWith("https://")) return <ExternalLink href={href} className="">{children}</ExternalLink>;
   return <span>{children}</span>;
 }

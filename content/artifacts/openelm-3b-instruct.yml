@@ -1,0 +1,198 @@
+slug: openelm-3b-instruct
+name: OpenELM 3B Instruct
+kind: model
+record_level: release
+family_slug: openelm
+version: "OpenELM-3B-Instruct"
+maintainers:
+  - name: Apple
+    organization_slug: apple
+    source_ids: [openelm-license, openelm-card]
+organization_slugs: [apple]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct
+    kind: model-hub
+  - label: CoreNet repository
+    url: https://github.com/apple/corenet
+    kind: repository
+  - label: OpenELM paper (arXiv 2404.14619)
+    url: https://arxiv.org/abs/2404.14619
+    kind: paper
+  - label: License (Apple Machine Learning Research Model License)
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    OpenELM 3B Instruct is the 3B-parameter instruction-tuned model in Apple's April 2024
+    OpenELM release. It was pretrained with Apple's CoreNet library on about 1.8 trillion tokens of
+    public data and then instruction-tuned on the UltraFeedback dataset using the Hugging Face
+    Alignment Handbook.
+  source_ids: [openelm-card, corenet-instruct-readme]
+useful_for:
+  text: >-
+    The card presents the model for open research on language models, notes it was trained on
+    public data without safety guarantees, and asks users to do their own safety testing and
+    filtering. Its license limits use to non-commercial research.
+  source_ids: [openelm-card, openelm-license]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model license states the model is developed and released by Apple Inc. Apple Inc. has
+    its principal executive offices in Cupertino, California, per its Form 10-K for fiscal year
+    2025.
+  source_ids: [openelm-license, aapl-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without an access gate, under a license that permits only
+    non-commercial research use.
+  source_ids: [openelm-hf-api, openelm-license]
+licenses:
+  - name: Apple Machine Learning Research Model License Agreement
+    spdx: null
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [openelm-license, openelm-hf-api]
+  - name: Apple software license (CoreNet)
+    spdx: null
+    url: https://raw.githubusercontent.com/apple/corenet/main/LICENSE
+    applies_to: code
+    source_ids: [corenet-license]
+license_notes:
+  text: >-
+    The weights license grants a personal, non-exclusive, revocable license to use, copy,
+    modify, distribute, and create derivatives only for non-commercial scientific research,
+    excluding product development and commercial use; derivatives are held to the same limit.
+    Redistribution requires passing on the agreement with a specified attribution notice and
+    identifying modifications. No patent rights are granted, and the agreement is governed by
+    California law. The card's metadata uses the license tag "apple-amlr" but still gives
+    "apple-sample-code-license" as the license name, while the LICENSE file in the repository
+    (copyright 2025) is the research-only agreement. CoreNet's
+    own license is a permissive Apple software license that grants no patent rights.
+  source_ids: [openelm-license, openelm-hf-api, corenet-license]
+checklist:
+  weights:
+    status: public
+    note: Weights are published on Hugging Face without an access gate, under a research-only license.
+    source_ids: [openelm-hf-api, openelm-license]
+  inference_code:
+    status: public
+    note: >-
+      The Hugging Face repository includes model code and a generate_openelm.py script for
+      inference with Transformers; CoreNet documents conversion to Apple's MLX.
+    source_ids: [openelm-card, openelm-hf-api, corenet-openelm-readme]
+  training_code:
+    status: public
+    note: >-
+      CoreNet documents OpenELM pre-training, and the instruction-tuning recipe uses the
+      public Alignment Handbook with a configuration published in CoreNet.
+    source_ids: [corenet-openelm-readme, corenet-pretraining-readme, corenet-instruct-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      Pre-training used public datasets (RefinedWeb, deduplicated PILE, a subset of RedPajama,
+      and a subset of Dolma v1.6, about 1.8T tokens), and CoreNet documents where to download
+      them and how the subsets were specified; instruction tuning used UltraFeedback. Current
+      availability of each source dataset was not verified.
+    source_ids: [openelm-card, corenet-pretraining-readme, corenet-instruct-readme]
+  training_recipe:
+    status: public
+    note: >-
+      Apple published pre-training configurations and training logs, and the instruction-tuning
+      README gives the recipe file and per-size hyperparameters.
+    source_ids: [openelm-arxiv, corenet-instruct-readme]
+  evaluation_materials:
+    status: public
+    note: >-
+      The model card gives the lm-evaluation-harness commit, tasks, and shot settings used to
+      reproduce its reported zero-shot and few-shot results.
+    source_ids: [openelm-card]
+run_notes:
+  - text: >-
+      The card's evaluation commands load the model with trust_remote_code and pair it with the
+      Llama 2 tokenizer (meta-llama/Llama-2-7b-hf); the CoreNet project notes that the models
+      use the LLaMA v1/v2 tokenizer, which is downloaded separately.
+    source_ids: [openelm-card, corenet-openelm-readme]
+provenance:
+  text: >-
+    Pretrained from scratch by Apple on public datasets using CoreNet, then instruction-tuned
+    by Apple. The models use Meta's Llama tokenizer, which is not distributed with them.
+  derived_from:
+    - name: OpenELM-3B (pretrained)
+      artifact_slug: null
+      url: https://huggingface.co/apple/OpenELM-3B
+      note: Pretrained base checkpoint; no separate catalog record.
+  source_ids: [openelm-card, corenet-openelm-readme, corenet-instruct-readme]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2024-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: openelm-card
+    title: apple/OpenELM-3B-Instruct model card
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct/raw/main/README.md
+    publisher: Apple (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openelm-hf-api
+    title: Hugging Face model metadata for apple/OpenELM-3B-Instruct
+    url: https://huggingface.co/api/models/apple/OpenELM-3B-Instruct
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openelm-license
+    title: OpenELM LICENSE (Apple Machine Learning Research Model License Agreement)
+    url: https://huggingface.co/apple/OpenELM-3B-Instruct/raw/main/LICENSE
+    publisher: Apple Inc. (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: corenet-license
+    title: apple/corenet LICENSE
+    url: https://raw.githubusercontent.com/apple/corenet/main/LICENSE
+    publisher: Apple Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: corenet-openelm-readme
+    title: CoreNet projects/openelm README
+    url: https://raw.githubusercontent.com/apple/corenet/main/projects/openelm/README.md
+    publisher: Apple (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: corenet-pretraining-readme
+    title: Pretraining OpenELM (CoreNet projects/openelm/README-pretraining.md)
+    url: https://raw.githubusercontent.com/apple/corenet/main/projects/openelm/README-pretraining.md
+    publisher: Apple (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: corenet-instruct-readme
+    title: OpenELM Instruction Tuning (CoreNet projects/openelm/README-instruct.md)
+    url: https://raw.githubusercontent.com/apple/corenet/main/projects/openelm/README-instruct.md
+    publisher: Apple (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openelm-arxiv
+    title: "OpenELM: An Efficient Language Model Family with Open Training and Inference Framework (arXiv 2404.14619)"
+    url: https://arxiv.org/abs/2404.14619
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-04-22
+    accessed_at: 2026-09-29
+  - id: aapl-10k-2025
+    title: Apple Inc. Form 10-K for the fiscal year ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+    publisher: Apple Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

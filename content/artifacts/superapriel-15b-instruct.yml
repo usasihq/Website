@@ -1,0 +1,204 @@
+slug: superapriel-15b-instruct
+name: SuperApriel-15B-Instruct
+kind: model
+record_level: release
+family_slug: apriel
+version: "SuperApriel-15B-Instruct"
+maintainers:
+  - name: ServiceNow (SLAM Labs)
+    organization_slug: servicenow
+    source_ids: [superapriel-card, superapriel-paper]
+organization_slugs: [servicenow]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/ServiceNow-AI/SuperApriel-15B-Instruct
+    kind: model-hub
+  - label: "Super Apriel: One Checkpoint, Many Speeds (arXiv 2604.19877)"
+    url: https://arxiv.org/abs/2604.19877
+    kind: paper
+  - label: Fast-LLM (training code and Apriel2 model implementation)
+    url: https://github.com/ServiceNow/Fast-LLM
+    kind: repository
+summary:
+  text: >-
+    A 15B-parameter instruction-tuned "supernet" in which each of 48 decoder layers carries
+    four token-mixer variants: full attention, sliding-window attention, Gated DeltaNet, and
+    Kimi Delta Attention. Choosing one mixer per layer gives deployment presets that trade
+    output quality for decoding speed from a single checkpoint. It was derived from
+    Apriel-1.6-15b-Thinker by distillation followed by supervised fine-tuning.
+  source_ids: [superapriel-card, superapriel-paper]
+useful_for:
+  text: >-
+    The card lists code assistance, multi-step reasoning, question answering, function
+    calling, instruction following, and agent use cases, and describes serving one preset for
+    a fixed deployment or switching presets at runtime. It says the model is not intended
+    for safety-critical use without human oversight.
+  source_ids: [superapriel-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The model is published by ServiceNow's ServiceNow-AI organization on Hugging Face, and
+    the accompanying report is credited to ServiceNow's SLAM Labs. ServiceNow, Inc. is a
+    Delaware corporation headquartered in Santa Clara, California, per its 2025 Form 10-K.
+    Its lineage traces through Apriel 1.6 and 1.5 to Pixtral-12B-Base-2409, published by
+    Mistral AI; that base is recorded under provenance and is not treated as U.S.-developed.
+  source_ids: [superapriel-card, superapriel-paper, now-10k-2025, apriel-1-5-paper]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. Loading uses custom model code shipped in
+    the repository (trust_remote_code), and presets are selected by copying a preset
+    configuration file.
+  source_ids: [superapriel-card, hf-api-superapriel]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://huggingface.co/ServiceNow-AI/SuperApriel-15B-Instruct
+    applies_to: weights
+    source_ids: [superapriel-card]
+  - name: Apache License 2.0 (Fast-LLM)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/ServiceNow/Fast-LLM/main/LICENSE
+    applies_to: code
+    source_ids: [fast-llm-license]
+license_notes:
+  text: >-
+    The weights license is stated as MIT in the model card's metadata and License section;
+    the Hugging Face repository has no separate LICENSE file. Fast-LLM's LICENSE file applies
+    Apache 2.0 to all files "unless otherwise noted".
+  source_ids: [superapriel-card, hf-api-superapriel, fast-llm-license]
+checklist:
+  weights:
+    status: public
+    note: One supernet checkpoint with preset configurations is downloadable from Hugging Face.
+    source_ids: [superapriel-card, hf-api-superapriel]
+  inference_code:
+    status: public
+    note: >-
+      The card documents inference with Hugging Face Transformers (custom modeling code in the
+      repository) and with vLLM through a Fast-LLM plugin published on a feature branch.
+    source_ids: [superapriel-card]
+  training_code:
+    status: public
+    note: >-
+      The paper states that the Fast-LLM training code is released; Fast-LLM's main branch
+      contains an apriel2 model implementation.
+    source_ids: [superapriel-paper, fast-llm-apriel2]
+  training_data_information:
+    status: partial
+    note: >-
+      The paper says distillation used the Apriel pretraining corpus and SFT data, and that
+      the SFT stage used instruction-tuning data; the datasets are not documented as released.
+    source_ids: [superapriel-paper-html]
+  training_recipe:
+    status: partial
+    note: >-
+      The card and paper describe two-stage stochastic distillation from a frozen Apriel 1.6
+      teacher followed by targeted SFT, with token counts, batch shape, and GPU counts, and
+      link training logs. This catalog did not confirm that complete configurations are
+      published.
+    source_ids: [superapriel-card, superapriel-paper-html]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card and paper report benchmark results for each preset; the paper says it uses
+      LM Evaluation Harness task formulations, but no evaluation configuration for this
+      release was found.
+    source_ids: [superapriel-card, superapriel-paper-html]
+run_notes:
+  - text: >-
+      The model card recommends vLLM with the Fast-LLM plugin. It states that single-preset
+      mode loads approximately 27 GiB of weights in bf16 and supernet mode (all four mixers
+      per layer, allowing runtime preset switching) approximately 46 GiB in bf16, excluding
+      KV cache.
+    source_ids: [superapriel-card]
+  - text: >-
+      Presets that use Gated DeltaNet or Kimi Delta Attention layers need the causal-conv1d
+      and mamba-ssm packages when run with Transformers; attention-only presets do not.
+    source_ids: [superapriel-card]
+provenance:
+  text: >-
+    Derived from ServiceNow's Apriel-1.6-15b-Thinker: shared parameters (feed-forward layers,
+    embeddings, and norms) are inherited from Apriel 1.6, and the new mixer weights were
+    trained by distillation from a frozen Apriel 1.6 teacher, then supervised fine-tuning.
+    The Apriel 1.x line began from Mistral AI's Pixtral-12B-Base-2409, and the model keeps a
+    Pixtral vision encoder.
+  derived_from:
+    - name: Apriel-1.6-15b-Thinker
+      artifact_slug: apriel-1-6-15b-thinker
+      url: https://huggingface.co/ServiceNow-AI/Apriel-1.6-15b-Thinker
+      note: Teacher model and source of the shared weights.
+    - name: SuperApriel-15b-Base
+      artifact_slug: null
+      url: https://huggingface.co/ServiceNow-AI/SuperApriel-15b-Base
+      note: Stage 1 distilled supernet; no separate catalog record.
+    - name: Pixtral-12B-Base-2409 (Mistral AI)
+      artifact_slug: null
+      url: https://huggingface.co/mistralai/Pixtral-12B-Base-2409
+      note: Starting checkpoint of the Apriel 1.5 line.
+  source_ids: [superapriel-card, superapriel-paper-html, apriel-1-5-paper]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: superapriel-card
+    title: ServiceNow-AI/SuperApriel-15B-Instruct model card
+    url: https://huggingface.co/ServiceNow-AI/SuperApriel-15B-Instruct
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-superapriel
+    title: Hugging Face model API metadata for ServiceNow-AI/SuperApriel-15B-Instruct
+    url: https://huggingface.co/api/models/ServiceNow-AI/SuperApriel-15B-Instruct
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: superapriel-paper
+    title: "Super Apriel: One Checkpoint, Many Speeds (arXiv 2604.19877)"
+    url: https://arxiv.org/abs/2604.19877
+    publisher: ServiceNow (SLAM Labs)
+    kind: paper
+    published_at: 2026-04-21
+    accessed_at: 2026-09-29
+  - id: superapriel-paper-html
+    title: "Super Apriel: One Checkpoint, Many Speeds (arXiv 2604.19877, HTML full text)"
+    url: https://arxiv.org/html/2604.19877
+    publisher: ServiceNow (SLAM Labs)
+    kind: paper
+    published_at: 2026-04-21
+    accessed_at: 2026-09-29
+  - id: fast-llm-license
+    title: Fast-LLM LICENSE
+    url: https://raw.githubusercontent.com/ServiceNow/Fast-LLM/main/LICENSE
+    publisher: ServiceNow
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fast-llm-apriel2
+    title: Fast-LLM fast_llm_external_models directory (includes apriel2)
+    url: https://github.com/ServiceNow/Fast-LLM/tree/main/fast_llm_external_models
+    publisher: ServiceNow
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-1-5-paper
+    title: Apriel-1.5-15b-Thinker (arXiv 2510.01141)
+    url: https://arxiv.org/html/2510.01141
+    publisher: ServiceNow (SLAM Lab)
+    kind: paper
+    published_at: 2025-10-01
+    accessed_at: 2026-09-29
+  - id: now-10k-2025
+    title: ServiceNow, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (ServiceNow filing)
+    kind: filing
+    published_at: 2026-01-28
+    accessed_at: 2026-09-29

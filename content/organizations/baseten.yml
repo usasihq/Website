@@ -1,0 +1,155 @@
+slug: baseten
+name: Baseten
+legal_name:
+  text: Baseten Labs, Inc.
+  source_ids: [baseten-terms, baseten-privacy, baseten-form-d-2026]
+website: https://www.baseten.co
+logo_text: BT
+summary:
+  text: >-
+    Baseten runs an inference platform for deploying open-source, custom, and fine-tuned models,
+    offering per-token APIs for hosted open models, dedicated deployments in its cloud, a
+    customer's cloud, or both, and managed training jobs. The company was started in 2019.
+  source_ids: [baseten-about, baseten-model-apis, baseten-dedicated, baseten-training]
+organization_roles: [inference-provider, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [baseten-form-d-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [baseten-form-d-2026, baseten-privacy]
+other_locations: []
+founded:
+  year: 2019
+  source_ids: [baseten-about]
+sectors: [cloud]
+status_note: null
+products:
+  - id: baseten-model-apis
+    name: Baseten Model APIs
+    kind: inference-service
+    access: >-
+      OpenAI-compatible APIs for open models from other developers (such as DeepSeek, GLM, Kimi,
+      Nemotron, and gpt-oss), billed per input, cached-input, and output token.
+    url: https://www.baseten.co/products/model-apis/
+    source_ids: [baseten-model-apis]
+    last_reviewed: 2026-09-29
+  - id: baseten-dedicated-inference
+    name: Baseten Dedicated Inference
+    kind: inference-service
+    access: >-
+      Dedicated serving of open-source, custom, or fine-tuned models on Baseten Cloud, on
+      self-hosted infrastructure, or in a hybrid setup; pricing is listed on a separate page.
+    url: https://www.baseten.co/products/dedicated-inference/
+    source_ids: [baseten-dedicated]
+    last_reviewed: 2026-09-29
+  - id: baseten-training
+    name: Baseten Training
+    kind: compute-service
+    access: >-
+      Managed training jobs on on-demand GPUs (generally available) and the Loops SDK for
+      reinforcement learning and fine-tuning (early access), with trained models promoted to
+      Dedicated Inference.
+    url: https://www.baseten.co/products/training/
+    source_ids: [baseten-training]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      In September 2026 Baseten announced the acquisition of Blaxel, a company that built
+      sandboxes and distributed storage for running AI agents.
+    source_ids: [baseten-blaxel]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Baseten Labs, Inc.'s Form D filed with the SEC on June 30, 2026 lists Delaware as its
+    jurisdiction of incorporation and a principal place of business in San Francisco, California.
+    Its privacy policy and terms give the same San Francisco address, and the terms are governed by
+    California law.
+  source_ids: [baseten-form-d-2026, baseten-privacy, baseten-terms]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Baseten's inference and training services are commercial hosted products. It publishes Truss,
+    its command-line tool for packaging and deploying models to Baseten, under the MIT License.
+  source_ids: [baseten-model-apis, baseten-dedicated, truss-license, truss-readme]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: baseten-about
+    title: Meet the engineers behind Baseten
+    url: https://www.baseten.co/about-us/
+    publisher: Baseten
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: baseten-terms
+    title: Baseten Terms and Conditions
+    url: https://www.baseten.co/terms-and-conditions/
+    publisher: Baseten
+    kind: official-page
+    published_at: 2026-09-15
+    accessed_at: 2026-09-29
+  - id: baseten-privacy
+    title: Privacy Policy
+    url: https://www.baseten.co/privacy-policy/
+    publisher: Baseten
+    kind: official-page
+    published_at: 2026-09-23
+    accessed_at: 2026-09-29
+  - id: baseten-form-d-2026
+    title: Baseten Labs, Inc. Form D (Notice of Exempt Offering of Securities)
+    url: https://www.sec.gov/Archives/edgar/data/1865393/000186539326000004/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (filed by Baseten Labs, Inc.)
+    kind: filing
+    published_at: 2026-06-30
+    accessed_at: 2026-09-29
+  - id: baseten-model-apis
+    title: Production-First Model APIs - Baseten Inference Stack
+    url: https://www.baseten.co/products/model-apis/
+    publisher: Baseten
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: baseten-dedicated
+    title: Inference at Scale with Dedicated Deployments | Baseten
+    url: https://www.baseten.co/products/dedicated-inference/
+    publisher: Baseten
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: baseten-training
+    title: AI Model Training Built for Production Inference | Baseten
+    url: https://www.baseten.co/products/training/
+    publisher: Baseten
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: baseten-blaxel
+    title: Blaxel is joining Baseten to build the future of agentic infrastructure
+    url: https://www.baseten.co/blog/blaxel-is-joining-baseten-to-build-the-future-of-agentic-cloud/
+    publisher: Baseten
+    kind: announcement
+    published_at: 2026-09-10
+    accessed_at: 2026-09-29
+  - id: truss-readme
+    title: basetenlabs/truss README
+    url: https://github.com/basetenlabs/truss
+    publisher: Baseten
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: truss-license
+    title: basetenlabs/truss LICENSE
+    url: https://github.com/basetenlabs/truss/blob/main/LICENSE
+    publisher: Baseten
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

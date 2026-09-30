@@ -1,0 +1,209 @@
+slug: nomic-ai
+name: Nomic AI
+legal_name:
+  text: Nomic, Inc.
+  source_ids: [nomic-terms, gpt4all-license]
+website: https://www.nomic.ai
+logo_text: N
+summary:
+  text: >-
+    Nomic is a New York City company that offers what it calls a domain-specific AI platform
+    for architecture, engineering, and construction firms, including agents and an Agent API. It has
+    also released open-source AI software and models, including the GPT4All desktop application
+    and the Nomic Embed embedding models.
+  source_ids: [nomic-home, nomic-careers, nomic-research, gpt4all-repo]
+organization_roles: [model-developer, enterprise-software, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [nomic-terms]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: New York, New York
+  country: US
+  source_ids: [nomic-careers]
+other_locations: []
+founded: null
+sectors: [enterprise, agents, open-models, data]
+status_note:
+  text: >-
+    In November 2025 Nomic announced a new Nomic Platform for what it calls the Built World
+    industries (energy, engineering, architecture, and construction). Its homepage now presents
+    Nomic as "the domain-specific AI platform for architecture, engineering, and construction
+    firms". Neither that announcement nor its September 2026 announcement mentions GPT4All or
+    Nomic Embed. GPT4All's latest GitHub release is v3.10.0 (February 2025), and Nomic's news page
+    lists no Nomic Embed release after Nomic Embed Multimodal (April 2025).
+  source_ids: [nomic-new-platform, nomic-sept-2026, nomic-home, gpt4all-releases, nomic-news]
+products:
+  - id: nomic-platform
+    name: Nomic Platform
+    kind: enterprise-software
+    access: >-
+      Web platform with agents for AEC tasks such as drawing and submittal review, code
+      compliance checks, RFI research, and project search. A free tier is available at
+      app.nomic.ai, with paid plans and demos.
+    url: https://www.nomic.ai/platform
+    source_ids: [nomic-platform]
+    last_reviewed: 2026-09-29
+  - id: nomic-agent-api
+    name: Nomic Agent API
+    kind: developer-tool
+    access: >-
+      APIs for parsing drawings and PDFs, extracting structured data, creating multimodal
+      embeddings, and managing datasets, for building custom AEC agents.
+    url: https://www.nomic.ai/developer
+    source_ids: [nomic-developer]
+    last_reviewed: 2026-09-29
+  - id: nomic-embedding-api
+    name: Nomic text embedding API
+    kind: hosted-model-api
+    access: >-
+      Hosted text embedding endpoint documented in the Nomic Atlas docs, serving
+      nomic-embed-text-v1, nomic-embed-text-v1.5, and gte-multilingual-base with task-specific
+      modes for search, classification, and clustering.
+    url: https://docs.nomic.ai/atlas/embeddings-and-retrieval/text-embedding
+    source_ids: [nomic-embed-api-docs]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Nomic's research page lists papers on Nomic Embed, Nomic Embed Vision, sparse
+      mixture-of-experts text embeddings, the CoRNStack code-retrieval dataset, and GPT4All,
+      as well as AEC-Bench, a benchmark for AI agents on architecture, engineering, and
+      construction tasks.
+    source_ids: [nomic-research]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Nomic's careers page states that its headquarters is in New York City. Its terms of
+    service (April 2026) name Nomic, Inc., a Delaware corporation, and apply Delaware law. No
+    foreign parent or headquarters was found.
+  source_ids: [nomic-careers, nomic-terms]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Nomic has published Nomic Embed text model weights, including nomic-embed-text-v1.5 and
+    nomic-embed-text-v2-moe, under Apache 2.0, with training code in its
+    Apache-licensed contrastors repository, which also documents access to the
+    nomic-embed-text-v1 training data. GPT4All is MIT-licensed. The AEC platform, Agent API,
+    and embedding API are hosted services. Openness is assessed per release in this catalog.
+  source_ids: [nomic-embed-v2-card, nomic-embed-v15-card, contrastors-repo, gpt4all-license, nomic-platform, nomic-developer]
+hiring_url: https://www.nomic.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nomic-home
+    title: Nomic
+    url: https://www.nomic.ai/
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-terms
+    title: Terms of Service | Nomic
+    url: https://www.nomic.ai/terms-of-service
+    publisher: Nomic, Inc.
+    kind: official-page
+    published_at: 2026-04-20
+    accessed_at: 2026-09-29
+  - id: nomic-careers
+    title: Careers | Nomic
+    url: https://www.nomic.ai/careers
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-news
+    title: Nomic - News & Updates
+    url: https://www.nomic.ai/news
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-new-platform
+    title: Announcing a new Nomic Platform
+    url: https://www.nomic.ai/news/announcing-a-new-nomic-platform
+    publisher: Nomic
+    kind: announcement
+    published_at: 2025-11-03
+    accessed_at: 2026-09-29
+  - id: nomic-sept-2026
+    title: Announcing Nomic's strategic funding round and partnerships with Aurecon and Arcadis
+    url: https://www.nomic.ai/news/announcing-nomics-strategic-funding-round-and-partnerships-with-aurecon-and-arcadis
+    publisher: Nomic
+    kind: announcement
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29
+  - id: nomic-platform
+    title: Nomic Platform
+    url: https://www.nomic.ai/platform
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-developer
+    title: Nomic Agent API for developers
+    url: https://www.nomic.ai/developer
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-embed-api-docs
+    title: Text Embedding | Nomic Atlas documentation
+    url: https://docs.nomic.ai/atlas/embeddings-and-retrieval/text-embedding
+    publisher: Nomic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-research
+    title: Research | Nomic
+    url: https://www.nomic.ai/research
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-embed-v2-card
+    title: nomic-ai/nomic-embed-text-v2-moe model card
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
+    publisher: Nomic
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-embed-v15-card
+    title: nomic-ai/nomic-embed-text-v1.5 model card
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+    publisher: Nomic
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: contrastors-repo
+    title: nomic-ai/contrastors
+    url: https://github.com/nomic-ai/contrastors
+    publisher: Nomic
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-repo
+    title: nomic-ai/gpt4all
+    url: https://github.com/nomic-ai/gpt4all
+    publisher: Nomic
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-license
+    title: GPT4All LICENSE.txt
+    url: https://github.com/nomic-ai/gpt4all/blob/main/LICENSE.txt
+    publisher: Nomic, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt4all-releases
+    title: GPT4All releases
+    url: https://github.com/nomic-ai/gpt4all/releases
+    publisher: Nomic
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29

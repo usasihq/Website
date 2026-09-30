@@ -1,0 +1,182 @@
+slug: pytorch-lightning
+name: PyTorch Lightning
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Lightning AI
+    organization_slug: lightning-ai
+    source_ids: [pl-repo, lightning-about, pl-advisory]
+organization_slugs: [lightning-ai]
+links:
+  - label: Repository
+    url: https://github.com/Lightning-AI/pytorch-lightning
+    kind: repository
+  - label: Documentation (installation)
+    url: https://lightning.ai/docs/pytorch/stable/home/installation
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/Lightning-AI/pytorch-lightning/blob/master/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/Lightning-AI/pytorch-lightning/releases
+    kind: release-notes
+summary:
+  text: >-
+    PyTorch Lightning is an open-source Python framework that structures PyTorch training code and
+    handles engineering tasks such as multi-GPU and multi-node distributed training and mixed
+    precision. The same repository contains Lightning Fabric, a lighter layer for scaling custom
+    PyTorch training loops, and both ship in the lightning package. It was open-sourced in 2019
+    and is maintained by Lightning AI.
+  source_ids: [pl-repo, lightning-about]
+useful_for:
+  text: >-
+    Training and fine-tuning PyTorch models on CPUs, GPUs (CUDA or Apple MPS), or TPUs, from a
+    single device to multiple nodes, without rewriting the model code.
+  source_ids: [pl-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The project is hosted in Lightning AI's GitHub organization, and Lightning AI describes itself
+    as the creator of PyTorch Lightning and handled the project's April 2026 security advisory and
+    PyPI publishing. Lightning AI's documented entities are U.S.-based: an SEC Form D filed in
+    January 2026 by Lightning AI, Inc. (Delaware) gives a San Francisco principal place of
+    business, and the website privacy policy gives a New York address for Grid.ai, Inc. doing
+    business as Lightning AI. The project's governance page gives final decisions to a single
+    project lead and release decisions to its maintainers; this assessment rests on the
+    maintaining company, not on individuals.
+  source_ids: [pl-repo, lightning-about, pl-advisory, lightning-form-d-2026, lightning-privacy, pl-governance]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [pl-repo, pl-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/Lightning-AI/pytorch-lightning/blob/master/LICENSE
+    applies_to: code
+    source_ids: [pl-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [pl-repo]
+  documentation:
+    status: public
+    note: Documentation is hosted on lightning.ai; the stable docs were for version 2.6.6 at review.
+    source_ids: [pl-install-docs]
+  installation:
+    status: public
+    note: >-
+      Installable with pip (python -m pip install lightning), from conda-forge, or from source
+      archives on GitHub.
+    source_ids: [pl-install-docs]
+  supported_platforms:
+    status: public
+    note: >-
+      The README's continuous-integration table covers Linux, macOS, and Windows, and it documents
+      running on CPUs, CUDA or MPS GPUs, and TPUs.
+    source_ids: [pl-repo]
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub and PyPI; the latest at review was 2.6.6,
+      released on September 10, 2026.
+    source_ids: [pl-releases, pypi-lightning]
+run_notes:
+  - text: >-
+      Security: versions 2.6.2 and 2.6.3 uploaded to PyPI on April 30, 2026 were published by an
+      attacker using stolen PyPI credentials and ran a credential-stealing payload on import
+      (CVE-2026-44484). Lightning AI says the GitHub source was not affected, the two versions were
+      quarantined and retired, and anyone who imported them should rotate exposed credentials;
+      later releases start at 2.6.4.
+    source_ids: [pl-advisory, pl-incident-blog, pl-releases]
+provenance: null
+tags: [training, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: "2019"
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: pl-repo
+    title: Lightning-AI/pytorch-lightning
+    url: https://github.com/Lightning-AI/pytorch-lightning
+    publisher: Lightning AI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pl-license
+    title: Lightning-AI/pytorch-lightning LICENSE
+    url: https://github.com/Lightning-AI/pytorch-lightning/blob/master/LICENSE
+    publisher: Lightning AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pl-releases
+    title: Lightning-AI/pytorch-lightning releases
+    url: https://github.com/Lightning-AI/pytorch-lightning/releases
+    publisher: Lightning AI
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pypi-lightning
+    title: lightning package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/lightning/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pl-install-docs
+    title: Install - PyTorch Lightning Docs
+    url: https://lightning.ai/docs/pytorch/stable/home/installation
+    publisher: Lightning AI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pl-governance
+    title: Lightning Governance - PyTorch Lightning Docs
+    url: https://lightning.ai/docs/pytorch/stable/reference/community/governance
+    publisher: Lightning AI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pl-advisory
+    title: Compromise of PyTorch Lightning PyPi Package Versions (GHSA-w37p-236h-pfx3)
+    url: https://github.com/Lightning-AI/pytorch-lightning/security/advisories/GHSA-w37p-236h-pfx3
+    publisher: Lightning AI
+    kind: announcement
+    published_at: 2026-04-30
+    accessed_at: 2026-09-29
+  - id: pl-incident-blog
+    title: How the PyTorch Lightning Community Discovered a Supply Chain Attack and Fixed it in 42 Minutes
+    url: https://lightning.ai/blog/pytorch-lightning-supply-chain-attack
+    publisher: Lightning AI
+    kind: announcement
+    published_at: 2026-04-30
+    accessed_at: 2026-09-29
+  - id: lightning-about
+    title: About Lightning AI
+    url: https://lightning.ai/about
+    publisher: Lightning AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-privacy
+    title: Lightning AI Privacy Policy
+    url: https://lightning.ai/legal/privacy
+    publisher: Lightning AI
+    kind: official-page
+    published_at: 2023-08-20
+    accessed_at: 2026-09-29
+  - id: lightning-form-d-2026
+    title: Lightning AI, Inc. Form D (Notice of Exempt Offering of Securities)
+    url: https://www.sec.gov/Archives/edgar/data/2101357/000210135726000001/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (filed by Lightning AI, Inc.)
+    kind: filing
+    published_at: 2026-01-08
+    accessed_at: 2026-09-29

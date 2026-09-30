@@ -103,3 +103,13 @@ describe("cross-directory search", () => {
     }
   });
 });
+
+describe("organization sort by catalog contributions", () => {
+  it("orders by number of open-artifact records, then name, and round-trips in the URL", () => {
+    const sorted = filterOrganizations(orgs, { ...DEFAULT_ORG_FILTERS, sort: "artifacts" });
+    for (let i = 1; i < sorted.length; i++) {
+      expect(sorted[i - 1].artifactCount).toBeGreaterThanOrEqual(sorted[i].artifactCount);
+    }
+    expect(parseOrgFilters(new URLSearchParams(serializeOrgFilters({ ...DEFAULT_ORG_FILTERS, sort: "artifacts" }))).sort).toBe("artifacts");
+  });
+});

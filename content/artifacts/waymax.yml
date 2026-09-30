@@ -1,0 +1,157 @@
+slug: waymax
+name: Waymax
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Waymo
+    organization_slug: waymo
+    source_ids: [waymax-license, waymax-readme]
+organization_slugs: [waymo]
+links:
+  - label: waymax repository
+    url: https://github.com/waymo-research/waymax
+    kind: repository
+  - label: Waymax documentation
+    url: https://waymo-research.github.io/waymax/docs/
+    kind: documentation
+  - label: Waymax License Agreement for Non-Commercial Use
+    url: https://github.com/waymo-research/waymax/blob/main/LICENSE
+    kind: license
+  - label: Waymax paper (arXiv 2310.08710)
+    url: https://arxiv.org/abs/2310.08710
+    kind: paper
+summary:
+  text: >-
+    Waymax is a multi-agent driving simulator written in JAX that builds scenarios from the
+    Waymo Open Motion Dataset and represents road users as bounding boxes rather than raw
+    sensor data. It includes data loading, visualization, metrics, simulated agents, and
+    adapters to reinforcement learning interfaces such as dm-env and Brax.
+  source_ids: [waymax-readme, waymax-paper]
+useful_for:
+  text: >-
+    Documented for autonomous driving behavior research, including closed-loop simulation
+    for planning and simulated-agent research and open-loop behavior prediction, on GPUs or
+    TPUs; a tutorial covers preparing Waymo Open Sim Agents Challenge submissions.
+  source_ids: [waymax-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Waymax is released by Waymo LLC under its own license agreement and hosted in Waymo's
+    waymo-research GitHub organization. Waymo's terms of service give Waymo LLC's address in
+    Mountain View, California.
+  source_ids: [waymax-license, waymax-readme, waymo-terms]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub and installable with pip from the main branch, free of
+    charge for non-commercial purposes only. Using it with the Waymo Open Motion Dataset
+    requires registering for Waymo Open Dataset access.
+  source_ids: [waymax-readme, waymax-license]
+licenses:
+  - name: Waymax License Agreement for Non-Commercial Use
+    spdx: null
+    url: https://raw.githubusercontent.com/waymo-research/waymax/main/LICENSE
+    applies_to: all
+    source_ids: [waymax-license]
+license_notes:
+  text: >-
+    Custom non-commercial license (headed October 17, 2023). It bars use for real-world
+    vehicle operation or its development, testing real vehicles, commercial driving
+    simulation, production systems, or other primarily commercial purposes; unmodified copies
+    may not be redistributed, though research results and derivative work may be shared with
+    a required notice that passes the terms on. The license also forbids using the Waymax
+    code or documentation to train or improve AI foundation models. The license field in
+    setup.py's package metadata reads Apache-2.0, but the header of setup.py itself and the
+    LICENSE file apply the non-commercial agreement.
+  source_ids: [waymax-license, waymax-setup]
+checklist:
+  source_code:
+    status: public
+    note: Source is published on GitHub under the non-commercial license.
+    source_ids: [waymax-readme, waymax-license]
+  documentation:
+    status: public
+    note: A documentation site with an API reference and getting-started material, plus Colab tutorial notebooks.
+    source_ids: [waymax-docs, waymax-readme]
+  installation:
+    status: public
+    note: The README documents installation with pip from the GitHub main branch; setup.py requires Python 3.10 or later.
+    source_ids: [waymax-readme, waymax-setup]
+  supported_platforms:
+    status: public
+    note: >-
+      Built on JAX; the README says it can run on hardware accelerators such as GPUs and
+      TPUs and refers to JAX's instructions for GPU/CUDA setup.
+    source_ids: [waymax-readme]
+  release_status:
+    status: not_public
+    note: >-
+      The GitHub releases page lists no releases; setup.py declares version 0.1.0 and the
+      README installs from the main branch.
+    source_ids: [waymax-releases, waymax-setup, waymax-readme]
+run_notes:
+  - text: >-
+      setup.py lists Python 3.10 or later and dependencies including JAX 0.4.6+, TensorFlow
+      2.11+, Flax, chex, and dm_env.
+    source_ids: [waymax-setup]
+provenance: null
+tags: [autonomous-driving, simulation, robotics]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: waymax-readme
+    title: waymo-research/waymax README
+    url: https://github.com/waymo-research/waymax
+    publisher: Waymo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: waymax-license
+    title: Waymax License Agreement for Non-Commercial Use (LICENSE)
+    url: https://raw.githubusercontent.com/waymo-research/waymax/main/LICENSE
+    publisher: Waymo
+    kind: license
+    published_at: 2023-10-17
+    accessed_at: 2026-09-29
+  - id: waymax-setup
+    title: waymo-research/waymax setup.py
+    url: https://raw.githubusercontent.com/waymo-research/waymax/main/setup.py
+    publisher: Waymo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: waymax-releases
+    title: Releases · waymo-research/waymax
+    url: https://github.com/waymo-research/waymax/releases
+    publisher: Waymo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: waymax-docs
+    title: Waymax documentation
+    url: https://waymo-research.github.io/waymax/docs/
+    publisher: Waymo
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: waymax-paper
+    title: "Waymax: An Accelerated, Data-Driven Simulator for Large-Scale Autonomous Driving Research (arXiv 2310.08710)"
+    url: https://arxiv.org/abs/2310.08710
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-12
+    accessed_at: 2026-09-29
+  - id: waymo-terms
+    title: Waymo Website Terms of Service
+    url: https://waymo.com/terms/
+    publisher: Waymo
+    kind: official-page
+    published_at: 2018-02-20
+    accessed_at: 2026-09-29

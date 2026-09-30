@@ -1,0 +1,161 @@
+slug: timesfm-2-5-200m
+name: TimesFM 2.5 200M
+kind: model
+record_level: release
+family_slug: timesfm
+version: "2.5 (timesfm-2.5-200m)"
+maintainers:
+  - name: Google Research
+    organization_slug: google
+    source_ids: [timesfm25-card]
+organization_slugs: [google]
+links:
+  - label: Model card, PyTorch checkpoint (Hugging Face)
+    url: https://huggingface.co/google/timesfm-2.5-200m-pytorch
+    kind: model-hub
+  - label: GitHub repository
+    url: https://github.com/google-research/timesfm
+    kind: repository
+  - label: "A decoder-only foundation model for time-series forecasting (arXiv 2310.10688)"
+    url: https://arxiv.org/abs/2310.10688
+    kind: paper
+summary:
+  text: >-
+    TimesFM 2.5 is a 200M-parameter time-series forecasting model from Google Research,
+    released in September 2025. Compared with TimesFM 2.0 it has fewer parameters (200M,
+    down from 500M), a context length of up to 16k points, an optional 30M quantile head for
+    continuous quantile forecasts up to a 1k horizon, and no frequency indicator input.
+  source_ids: [timesfm-readme, timesfm25-card]
+useful_for:
+  text: >-
+    The repository describes zero-shot point and quantile forecasting; covariate support
+    through XReg was added for 2.5 in October 2025.
+  source_ids: [timesfm-readme]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The model card lists Google Research as author. Google Research is part of Google;
+    Alphabet Inc.'s fiscal 2025 Form 10-K lists its principal executive offices in Mountain
+    View, California, and Exhibit 21.01 lists Google LLC as a Delaware subsidiary of Alphabet.
+  source_ids: [timesfm25-card, alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without an access gate. The card states the checkpoint is
+    not an officially supported Google product.
+  source_ids: [timesfm25-hf-api, timesfm25-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/google/timesfm-2.5-200m-pytorch
+    applies_to: weights
+    source_ids: [timesfm25-card, timesfm25-hf-api, timesfm-readme]
+  - name: Apache License 2.0 (timesfm source code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/google-research/timesfm/master/LICENSE
+    applies_to: code
+    source_ids: [timesfm-license]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: PyTorch and Flax checkpoints are published on Hugging Face without an access gate.
+    source_ids: [timesfm25-hf-api, timesfm25-flax-hf-api, timesfm-readme]
+  inference_code:
+    status: public
+    note: The Apache-2.0 timesfm package provides inference code; the model card includes a PyTorch example.
+    source_ids: [timesfm25-card, timesfm-readme, timesfm-license]
+  training_code:
+    status: unknown
+    note: >-
+      A LoRA fine-tuning example (Transformers with PEFT) was added in April 2026; no
+      pre-training code for version 2.5 was found.
+    source_ids: [timesfm-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card lists GiftEvalPretrain, Wikimedia pageviews (cutoff November 2023),
+      Google Trends top queries (cutoff end of 2022), and synthetic and augmented data. The
+      synthetic data is not documented as released.
+    source_ids: [timesfm25-card]
+  training_recipe:
+    status: unknown
+    note: >-
+      The ICML 2024 paper describes the original TimesFM approach; the changes in 2.5 are
+      summarized only as a list in the README.
+    source_ids: [timesfm25-card, timesfm-readme]
+  evaluation_materials:
+    status: unknown
+    note: No evaluation results or evaluation code specific to 2.5 were found in the sources read.
+    source_ids: []
+run_notes:
+  - text: >-
+      The model card shows loading the checkpoint with the timesfm package
+      (TimesFM_2p5_200M_torch) and compiling a forecast configuration with a maximum context
+      and horizon before forecasting.
+    source_ids: [timesfm25-card]
+provenance:
+  text: >-
+    Trained by Google Research as the third open TimesFM checkpoint. The card lists training
+    data from GiftEvalPretrain (Salesforce), Wikimedia pageviews, Google Trends, and synthetic
+    data. No other base model is named.
+  derived_from: []
+  source_ids: [timesfm25-card]
+tags: [time-series, forecasting]
+publication_status: published
+archive_note: null
+released_at: 2025-09-15
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: timesfm25-card
+    title: google/timesfm-2.5-200m-pytorch model card
+    url: https://huggingface.co/google/timesfm-2.5-200m-pytorch/raw/main/README.md
+    publisher: Google Research (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm25-hf-api
+    title: Hugging Face model metadata for google/timesfm-2.5-200m-pytorch
+    url: https://huggingface.co/api/models/google/timesfm-2.5-200m-pytorch
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm25-flax-hf-api
+    title: Hugging Face model metadata for google/timesfm-2.5-200m-flax
+    url: https://huggingface.co/api/models/google/timesfm-2.5-200m-flax
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm-readme
+    title: google-research/timesfm README
+    url: https://raw.githubusercontent.com/google-research/timesfm/master/README.md
+    publisher: Google Research
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm-license
+    title: google-research/timesfm LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/google-research/timesfm/master/LICENSE
+    publisher: Google Research
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Alphabet Inc. Form 10-K fiscal 2025, Exhibit 21.01 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,179 @@
+slug: zamba2-vl-7b
+name: Zamba2-VL-7B
+kind: model
+record_level: release
+family_slug: zamba
+version: "Zamba2-VL-7B"
+maintainers:
+  - name: Zyphra
+    organization_slug: zyphra
+    source_ids: [zamba2-vl-7b-card, zamba2-vl-blog]
+organization_slugs: [zyphra]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/Zyphra/Zamba2-VL-7B
+    kind: model-hub
+  - label: Zamba2-VL collection (Hugging Face)
+    url: https://huggingface.co/collections/Zyphra/zamba2-vl
+    kind: model-hub
+  - label: Zamba2-VL announcement
+    url: https://www.zyphra.com/our-work/zamba2-vl
+    kind: release-notes
+  - label: Zamba2-VL technical report (arXiv 2606.00390)
+    url: https://arxiv.org/abs/2606.00390
+    kind: paper
+  - label: Inference code (Zyphra Transformers fork, zamba2-vl branch)
+    url: https://github.com/Zyphra/transformers/tree/zamba2-vl
+    kind: repository
+summary:
+  text: >-
+    The largest of the three Zamba2-VL vision-language models Zyphra released in June 2026,
+    with about 8B parameters. It pairs the Zamba2-7B hybrid state-space language model with
+    the Qwen2.5-VL vision encoder and handles single- and multi-image understanding and
+    grounding.
+  source_ids: [zamba2-vl-blog, zamba2-vl-7b-card]
+useful_for:
+  text: >-
+    The model card describes it as a generalist model for on-device applications and reports
+    results on visual question answering, OCR, chart and document understanding, and
+    multimodal reasoning benchmarks. Zyphra's
+    announcement says the hybrid backbone keeps a fixed-size recurrent state rather than a
+    growing key-value cache, which lowers time to first token on long inputs.
+  source_ids: [zamba2-vl-7b-card, zamba2-vl-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Zyphra. The technical report lists the authors' affiliation
+    as Zyphra, San Francisco, CA, and Zyphra's terms of use name Zyphra Technologies, Inc. at
+    a San Francisco address. The vision encoder comes from Alibaba Cloud's Qwen2.5-VL; that
+    component is not thereby U.S.-developed, and eligibility here rests on Zyphra as the
+    developer of this model.
+  source_ids: [zamba2-vl-report, zyphra-terms, zamba2-vl-7b-card, qwen-hf-org]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [zamba2-vl-7b-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/Zyphra/Zamba2-VL-7B
+    applies_to: weights
+    source_ids: [zamba2-vl-7b-card, zamba2-vl-blog]
+  - name: Apache License 2.0 (Zyphra Transformers fork)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/Zyphra/transformers/zamba2-vl/LICENSE
+    applies_to: code
+    source_ids: [zyphra-transformers-license]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: null
+    source_ids: [zamba2-vl-7b-card]
+  inference_code:
+    status: public
+    note: >-
+      Inference uses the zamba2-vl branch of Zyphra's Transformers fork (based on
+      Transformers 4.57.1), qwen-vl-utils, flash_attn, and Zyphra's forks of mamba-ssm and
+      causal-conv1d, per the model card.
+    source_ids: [zamba2-vl-7b-card, zamba2-vl-blog]
+  training_code:
+    status: unknown
+    note: >-
+      The technical report points to the checkpoints and inference code; it does not mention
+      a training code release.
+    source_ids: [zamba2-vl-report]
+  training_data_information:
+    status: partial
+    note: >-
+      The technical report names the public datasets used in its training stages, for
+      example LLaVA-ReCap-558K, FineVision, PixMo, The Cauldron, and DocMatix, and says
+      document and OCR data were upsampled.
+    source_ids: [zamba2-vl-report]
+  training_recipe:
+    status: partial
+    note: >-
+      The report describes three stages: alignment with only the MLP adapter trained (vision
+      encoder and language backbone frozen), then joint pretraining and supervised
+      fine-tuning of the full model.
+    source_ids: [zamba2-vl-report]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The model card reports scores measured with Zyphra's own evaluation harness based on
+      VLMEvalKit; the harness itself is not linked.
+    source_ids: [zamba2-vl-7b-card]
+run_notes:
+  - text: >-
+      The model card says the model can run without the optimized Mamba2 kernels but that
+      this is not recommended because latency and memory use are significantly higher. Its
+      example loads the model in bfloat16 on a CUDA device with FlashAttention 2.
+    source_ids: [zamba2-vl-7b-card]
+provenance:
+  text: >-
+    Built by Zyphra on its Zamba2-7B language model, with the vision transformer from
+    Qwen2.5-VL as the vision backbone; Qwen is a model family built by Alibaba Cloud. The
+    model uses the Mistral v0.1 tokenizer.
+  derived_from:
+    - name: Zamba2-7B
+      artifact_slug: zamba2-7b
+      url: https://huggingface.co/Zyphra/Zamba2-7B
+      note: Language backbone.
+    - name: Qwen2.5-VL vision encoder
+      artifact_slug: null
+      url: https://huggingface.co/Qwen
+      note: >-
+        Vision backbone, developed by Alibaba Cloud's Qwen team. The model card and technical
+        report do not say which Qwen2.5-VL checkpoint supplied the encoder.
+  source_ids: [zamba2-vl-7b-card, zamba2-vl-blog, qwen-hf-org]
+tags: [multimodal, vision-language]
+publication_status: published
+archive_note: null
+released_at: 2026-06-02
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: zamba2-vl-7b-card
+    title: Zyphra/Zamba2-VL-7B model card
+    url: https://huggingface.co/Zyphra/Zamba2-VL-7B
+    publisher: Zyphra
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zamba2-vl-blog
+    title: "Zamba2-VL: Hybrid SSM Vision-Language Models"
+    url: https://www.zyphra.com/our-work/zamba2-vl
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2026-06-02
+    accessed_at: 2026-09-29
+  - id: zamba2-vl-report
+    title: Zamba2-VL Technical Report (arXiv 2606.00390v1)
+    url: https://arxiv.org/html/2606.00390v1
+    publisher: Zyphra
+    kind: paper
+    published_at: 2026-05-29
+    accessed_at: 2026-09-29
+  - id: zyphra-transformers-license
+    title: Zyphra/transformers LICENSE (zamba2-vl branch)
+    url: https://raw.githubusercontent.com/Zyphra/transformers/zamba2-vl/LICENSE
+    publisher: Hugging Face (fork maintained by Zyphra)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-terms
+    title: Terms of Use | Zyphra
+    url: https://www.zyphra.com/legal/terms-of-use
+    publisher: Zyphra Technologies, Inc.
+    kind: official-page
+    published_at: 2026-05-04
+    accessed_at: 2026-09-29
+  - id: qwen-hf-org
+    title: Qwen on Hugging Face
+    url: https://huggingface.co/Qwen
+    publisher: Qwen (Alibaba Cloud)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

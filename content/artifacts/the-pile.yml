@@ -1,0 +1,227 @@
+slug: the-pile
+name: The Pile
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: EleutherAI
+    organization_slug: eleutherai
+    source_ids: [pile-datasheet, pile-hf-card, the-pile-repo-readme]
+organization_slugs: [eleutherai]
+links:
+  - label: The Pile website
+    url: https://pile.eleuther.ai/
+    kind: website
+  - label: Pile paper (arXiv 2101.00027)
+    url: https://arxiv.org/abs/2101.00027
+    kind: paper
+  - label: Datasheet for the Pile (arXiv 2201.07311)
+    url: https://arxiv.org/abs/2201.07311
+    kind: paper
+  - label: Replication code (EleutherAI/the-pile)
+    url: https://github.com/EleutherAI/the-pile
+    kind: repository
+  - label: Dataset card (Hugging Face)
+    url: https://huggingface.co/datasets/EleutherAI/pile
+    kind: dataset-hub
+summary:
+  text: >-
+    The Pile is an 825 GiB English text dataset for language-model pretraining, assembled by
+    EleutherAI from 22 component datasets that include web text (Pile-CC, from Common Crawl),
+    academic and professional sources such as PubMed Central, arXiv, and FreeLaw, books, GitHub
+    code, and dialogue. It was described in a December 2020 paper and a 2022 datasheet and is
+    the training corpus of EleutherAI's Pythia models. Its current availability is limited; see
+    access conditions.
+  source_ids: [pile-paper, pile-datasheet, the-pile-repo-readme, mc-pythia-12b]
+useful_for:
+  text: >-
+    Pretraining and studying language models on diverse text, and as a language-modeling
+    benchmark (Pile bits per byte), as described on the Pile website. As the fixed training
+    corpus of the Pythia suite, it also underpins research on memorization and training
+    dynamics.
+  source_ids: [pile-website, pythia-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The datasheet describes the Pile as created by EleutherAI, and its website, replication code,
+    and Hugging Face copies are maintained under EleutherAI's domains and organizations.
+    EleutherAI states it incorporated as a non-profit research institute in early 2023, and the
+    IRS exempt-organization extract for the District of Columbia lists EleutherAI Institute in
+    Washington, D.C., as a 501(c)(3) organization.
+  source_ids: [pile-datasheet, pile-website, the-pile-repo-readme, pile-hf-card, eleuther-about, irs-eo-bmf-dc]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    The Pile website and replication-code README still point to a download hosted by the Eye,
+    which the Pythia model card calls a community mirror; when this catalog checked on
+    2026-09-29, that host presented an expired certificate and the Pile download path returned
+    a not-found error. The Hugging Face "EleutherAI/pile" repository contains only a dataset card
+    and a loading script that downloads from that host. The 2025 Common Pile paper, whose
+    authors include EleutherAI researchers, states that the use of unlicensed training data has
+    resulted in DMCA takedowns of datasets such as the Pile. EleutherAI's Hugging Face
+    organization still hosts a deduplicated text version without a dataset card, the
+    pre-tokenized data used to train Pythia, and the validation and test splits (tagged with an
+    MIT license).
+  source_ids: [pile-website, the-pile-repo-readme, mc-pythia-12b, pile-hf-card, pile-hf-loader, common-pile-paper, pile-deduplicated, pythia-repo, pile-val-test]
+licenses:
+  - name: MIT License (replication code)
+    spdx: MIT
+    url: https://raw.githubusercontent.com/EleutherAI/the-pile/master/LICENSE
+    applies_to: code
+    source_ids: [the-pile-license]
+license_notes:
+  text: >-
+    The dataset has no single license. The Hugging Face card directs users to the license of
+    each component subset, and the loading script lists "Unknown" as the license of every
+    individual component it offers. The MIT license covers the replication code only.
+  source_ids: [pile-hf-card, pile-hf-loader, the-pile-license]
+checklist:
+  access:
+    status: partial
+    note: >-
+      The original download channel could not be verified; EleutherAI hosts a deduplicated
+      version, pre-tokenized versions, and the validation and test splits on Hugging Face.
+    source_ids: [pile-website, common-pile-paper, pile-deduplicated, pile-val-test]
+  provenance:
+    status: public
+    note: >-
+      The paper, datasheet, and replication-code README list the 22 components with their
+      sources, sizes, and sampling weights, and each document is tagged with its component.
+    source_ids: [pile-paper, pile-datasheet, the-pile-repo-readme, pile-val-test]
+  documentation:
+    status: public
+    note: A paper and a separate datasheet document the dataset.
+    source_ids: [pile-paper, pile-datasheet]
+  licensing:
+    status: partial
+    note: Licensing is left to each component, and many component licenses are listed as unknown.
+    source_ids: [pile-hf-card, pile-hf-loader]
+  stated_limitations:
+    status: public
+    note: >-
+      EleutherAI's Pythia card warns that the Pile is known to contain profanity and lewd or
+      otherwise offensive text and points to the Pile paper's discussion of documented gender,
+      religious, and racial biases.
+    source_ids: [mc-pythia-12b]
+run_notes: []
+provenance:
+  text: >-
+    Assembled by EleutherAI from 22 existing or newly scraped sources, including Pile-CC (text
+    extracted from Common Crawl), PubMed Central, Books3, OpenWebText2, arXiv, GitHub, FreeLaw,
+    Stack Exchange, USPTO backgrounds, Project Gutenberg (PG-19), OpenSubtitles, English
+    Wikipedia, and others. The datasheet describes the sources as a mix of original scrapes,
+    data made available by the data owners, and third-party scrapes.
+  derived_from:
+    - name: Common Crawl (Pile-CC component)
+      artifact_slug: common-crawl-corpus
+      url: https://commoncrawl.org/
+      note: Largest single component by raw size.
+  source_ids: [the-pile-repo-readme, pile-datasheet]
+tags: [pretraining-data]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: pile-website
+    title: "The Pile: An 800GB Dataset of Diverse Text for Language Modeling (website)"
+    url: https://pile.eleuther.ai/
+    publisher: EleutherAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pile-paper
+    title: "The Pile: An 800GB Dataset of Diverse Text for Language Modeling (arXiv 2101.00027)"
+    url: https://arxiv.org/abs/2101.00027
+    publisher: EleutherAI (arXiv)
+    kind: paper
+    published_at: 2020-12-31
+    accessed_at: 2026-09-29
+  - id: pile-datasheet
+    title: Datasheet for the Pile (arXiv 2201.07311)
+    url: https://arxiv.org/abs/2201.07311
+    publisher: EleutherAI (arXiv)
+    kind: paper
+    published_at: 2022-01-13
+    accessed_at: 2026-09-29
+  - id: the-pile-repo-readme
+    title: The Pile Replication Code (EleutherAI/the-pile README)
+    url: https://raw.githubusercontent.com/EleutherAI/the-pile/master/README.md
+    publisher: EleutherAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: the-pile-license
+    title: EleutherAI/the-pile LICENSE
+    url: https://raw.githubusercontent.com/EleutherAI/the-pile/master/LICENSE
+    publisher: EleutherAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pile-hf-card
+    title: EleutherAI/pile dataset card
+    url: https://huggingface.co/datasets/EleutherAI/pile
+    publisher: EleutherAI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pile-hf-loader
+    title: EleutherAI/pile loading script (pile.py)
+    url: https://huggingface.co/datasets/EleutherAI/pile/raw/main/pile.py
+    publisher: EleutherAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pile-deduplicated
+    title: EleutherAI/the_pile_deduplicated
+    url: https://huggingface.co/datasets/EleutherAI/the_pile_deduplicated
+    publisher: EleutherAI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pile-val-test
+    title: "EleutherAI/pile_val_test: The Pile validation and test splits"
+    url: https://huggingface.co/datasets/EleutherAI/pile_val_test
+    publisher: EleutherAI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: common-pile-paper
+    title: "The Common Pile v0.1: An 8TB Dataset of Public Domain and Openly Licensed Text (arXiv 2506.05209)"
+    url: https://arxiv.org/html/2506.05209
+    publisher: EleutherAI and collaborators (arXiv)
+    kind: paper
+    published_at: 2025-06
+    accessed_at: 2026-09-29
+  - id: mc-pythia-12b
+    title: EleutherAI/pythia-12b model card
+    url: https://huggingface.co/EleutherAI/pythia-12b
+    publisher: EleutherAI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pythia-repo
+    title: "EleutherAI/pythia: Interpreting Transformers Across Time and Scale"
+    url: https://github.com/EleutherAI/pythia
+    publisher: EleutherAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: eleuther-about
+    title: About | EleutherAI
+    url: https://www.eleuther.ai/about
+    publisher: EleutherAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-dc
+    title: IRS Exempt Organizations Business Master File Extract (District of Columbia)
+    url: https://www.irs.gov/pub/irs-soi/eo_dc.csv
+    publisher: U.S. Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

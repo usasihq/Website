@@ -1,0 +1,193 @@
+slug: slimpajama
+name: SlimPajama
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Cerebras
+    organization_slug: cerebras
+    source_ids: [slim-blog, slim-readme]
+organization_slugs: [cerebras]
+links:
+  - label: "Announcement: SlimPajama (Cerebras blog)"
+    url: https://www.cerebras.ai/blog/slimpajama-a-627b-token-cleaned-and-deduplicated-version-of-redpajama
+    kind: release-notes
+  - label: Preprocessing scripts (Cerebras Model Zoo, Release_2.10.0 tag)
+    url: https://github.com/Cerebras/modelzoo/tree/Release_2.10.0/src/cerebras/modelzoo/data_preparation/nlp/slimpajama
+    kind: repository
+  - label: Commit removing the SlimPajama directory from Model Zoo (September 2026)
+    url: https://github.com/Cerebras/modelzoo/commit/d76e028d6a5f784954b1329b3ae44721ca8da36a
+    kind: release-notes
+summary:
+  text: >-
+    SlimPajama is a 627B-token pretraining dataset that Cerebras released in June 2023 by
+    cleaning and deduplicating Together's 1.21T-token RedPajama dataset, removing 49.6% of its
+    bytes. Cerebras also published validation and test sets and the preprocessing code. The
+    official Hugging Face distribution is no longer available, and in September 2026 the
+    preprocessing code was removed from the main branch of Cerebras's Model Zoo repository.
+  source_ids: [slim-blog, slim-readme, cerebras-hf-org, modelzoo-removal-commit]
+useful_for:
+  text: >-
+    Released for language model pretraining; the preprocessing scripts were published so that
+    others could reproduce SlimPajama or apply the same normalization, filtering, and global
+    deduplication to other trillion-token datasets.
+  source_ids: [slim-blog, slim-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    SlimPajama was created and released by Cerebras, which published it under its own Hugging
+    Face organization and Model Zoo repository; the blog credits Opentensor as a collaborator.
+    Cerebras Systems Inc. is a Delaware corporation with principal executive offices in
+    Sunnyvale, California, per its Form 10-Q for the quarter ended June 30, 2026.
+  source_ids: [slim-blog, slim-readme, cerebras-10q-q2-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: not_public
+  access_conditions: >-
+    Cerebras distributed the dataset at huggingface.co/datasets/cerebras/SlimPajama-627B. That
+    repository returned HTTP 401 (not found for anonymous access) when checked on 2026-09-29,
+    and Cerebras's Hugging Face organization no longer lists it. A Hugging Face forum post dated
+    August 1, 2026 reported the repository returning HTTP 404 (401 for anonymous API requests) on
+    July 31, 2026, and third-party documentation states that it was removed from the Hub. No
+    statement from Cerebras explaining the change was found.
+  source_ids: [cerebras-hf-org, hf-forum-slimpajama, oumi-pretraining-docs]
+licenses:
+  - name: Apache License 2.0 (as stated by Cerebras for the dataset)
+    spdx: Apache-2.0
+    url: https://www.cerebras.ai/blog/slimpajama-a-627b-token-cleaned-and-deduplicated-version-of-redpajama
+    applies_to: data
+    source_ids: [slim-blog, slim-readme]
+  - name: Apache License 2.0 (Cerebras Model Zoo, including the preprocessing scripts)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/Cerebras/modelzoo/main/LICENSE
+    applies_to: code
+    source_ids: [modelzoo-license]
+license_notes:
+  text: >-
+    The Cerebras announcement and the preprocessing README both state that SlimPajama is
+    released under Apache 2.0. The Hugging Face dataset card, which may have documented further
+    terms for the underlying RedPajama sources, could not be read because the repository was
+    not accessible during this review.
+  source_ids: [slim-blog, slim-readme, cerebras-hf-org]
+checklist:
+  access:
+    status: not_public
+    note: >-
+      The official Hugging Face repository is no longer accessible and is not listed on
+      Cerebras's organization page. Third-party documentation refers to a community re-upload,
+      which is not maintained by Cerebras.
+    source_ids: [cerebras-hf-org, hf-forum-slimpajama, oumi-pretraining-docs]
+  provenance:
+    status: public
+    note: >-
+      Derived from RedPajama (1.21T tokens): NFC normalization, removal of documents under 200
+      characters after stripping punctuation and whitespace (1.86% of documents; not applied
+      to Books and GitHub), and global MinHashLSH deduplication at a 0.8 Jaccard threshold on
+      13-grams, within and across sources.
+    source_ids: [slim-blog, slim-readme]
+  documentation:
+    status: public
+    note: >-
+      The announcement describes the pipeline and data composition; the step-by-step
+      preprocessing README remains readable at the Release_2.10.0 tag of Cerebras's Model Zoo
+      although it was removed from the main branch.
+    source_ids: [slim-blog, slim-readme, modelzoo-removal-commit]
+  licensing:
+    status: partial
+    note: Apache 2.0 is stated by Cerebras; the dataset card's licensing section could not be checked.
+    source_ids: [slim-blog, slim-readme]
+  stated_limitations:
+    status: public
+    note: >-
+      The announcement notes possible distributional bias, as in RedPajama, and general risks
+      of language models trained on such data, such as amplifying social stereotypes,
+      memorizing training data, or revealing private information.
+    source_ids: [slim-blog]
+run_notes:
+  - text: >-
+      For Cerebras's own run, the preprocessing README reports that processing the 1.21T-token
+      RedPajama dataset took about 2.5 days on a 64-core CPU machine, with peak RAM use of about
+      1.4 TB in the duplicate-pair generation step; it notes that the single-script path is
+      slower because some steps are not parallelized.
+    source_ids: [slim-readme]
+provenance:
+  text: >-
+    Built by Cerebras from Together's RedPajama dataset (1.21T tokens), with support from
+    Opentensor, by filtering short documents and deduplicating across all of RedPajama's
+    sources.
+  derived_from:
+    - name: RedPajama (RedPajama-Data-1T)
+      artifact_slug: redpajama
+      url: https://huggingface.co/datasets/togethercomputer/RedPajama-Data-1T
+      note: Source dataset from Together; SlimPajama removed 49.6% of its bytes.
+  source_ids: [slim-blog, slim-readme]
+tags: [pretraining-data]
+publication_status: archived
+archive_note: >-
+  Historical record. Cerebras's official SlimPajama distribution is no longer available: the
+  cerebras/SlimPajama-627B Hugging Face repository returned HTTP 401 when checked on
+  2026-09-29 and is not listed on Cerebras's Hugging Face organization, and on 2026-09-01 the
+  SlimPajama preprocessing directory was removed from the main branch of Cerebras's Model Zoo
+  repository. No official explanation was found.
+released_at: 2023-06-09
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: slim-blog
+    title: "SlimPajama: A 627B token, cleaned and deduplicated version of RedPajama"
+    url: https://www.cerebras.ai/blog/slimpajama-a-627b-token-cleaned-and-deduplicated-version-of-redpajama
+    publisher: Cerebras
+    kind: announcement
+    published_at: 2023-06-09
+    accessed_at: 2026-09-29
+  - id: slim-readme
+    title: SlimPajama preprocessing README (Cerebras Model Zoo, tag Release_2.10.0)
+    url: https://raw.githubusercontent.com/Cerebras/modelzoo/Release_2.10.0/src/cerebras/modelzoo/data_preparation/nlp/slimpajama/README.md
+    publisher: Cerebras
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modelzoo-removal-commit
+    title: "removing slimpaja dir (#93) · Cerebras/modelzoo commit d76e028"
+    url: https://github.com/Cerebras/modelzoo/commit/d76e028d6a5f784954b1329b3ae44721ca8da36a
+    publisher: Cerebras
+    kind: repository
+    published_at: 2026-09-01
+    accessed_at: 2026-09-29
+  - id: modelzoo-license
+    title: Cerebras/modelzoo LICENSE
+    url: https://raw.githubusercontent.com/Cerebras/modelzoo/main/LICENSE
+    publisher: Cerebras
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cerebras-hf-org
+    title: cerebras (Cerebras) on Hugging Face
+    url: https://huggingface.co/cerebras
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-forum-slimpajama
+    title: cerebras/SlimPajama-627B unexpectedly returns 401/404 (Hugging Face Forums)
+    url: https://discuss.huggingface.co/t/cerebras-slimpajama-627b-unexpectedly-returns-401-404/178356
+    publisher: Hugging Face Forums
+    kind: other
+    published_at: 2026-08-01
+    accessed_at: 2026-09-29
+  - id: oumi-pretraining-docs
+    title: oumi.datasets.pretraining (Oumi documentation)
+    url: https://oumi.ai/docs/en/latest/api/oumi.datasets.pretraining.html
+    publisher: Oumi
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cerebras-10q-q2-2026
+    title: Cerebras Systems Inc. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

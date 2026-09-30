@@ -1,0 +1,178 @@
+slug: nomic-embed-text-v1-5
+name: nomic-embed-text-v1.5
+kind: model
+record_level: release
+family_slug: nomic-embed
+version: "nomic-embed-text-v1.5"
+maintainers:
+  - name: Nomic AI
+    organization_slug: nomic-ai
+    source_ids: [nomic-embed-v15-card, nomic-embed-v15-news]
+organization_slugs: [nomic-ai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+    kind: model-hub
+  - label: GGUF build
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF
+    kind: model-hub
+  - label: v1.5 announcement
+    url: https://www.nomic.ai/news/nomic-embed-matryoshka
+    kind: release-notes
+  - label: Nomic Embed technical report (arXiv 2402.01613)
+    url: https://arxiv.org/abs/2402.01613
+    kind: paper
+  - label: contrastors training code
+    url: https://github.com/nomic-ai/contrastors
+    kind: repository
+summary:
+  text: >-
+    A text embedding model that updates nomic-embed-text-v1 with Matryoshka representation
+    learning, so its 768-dimension embeddings can be shortened to as few as 64 dimensions, or
+    binarized, with a small loss in quality. Released in February 2024, it follows v1's long-context
+    design, which Nomic describes as supporting 8,192 tokens.
+  source_ids: [nomic-embed-v15-news, nomic-embed-v15-card, nomic-embed-v1-news]
+useful_for:
+  text: >-
+    Embedding documents and queries for retrieval-augmented generation and search, and texts
+    for clustering and classification, selected with the task prefixes search_document,
+    search_query, clustering, and classification. Nomic's vision model
+    nomic-embed-vision-v1.5 is aligned to its embedding space, so text and image embeddings
+    can be compared.
+  source_ids: [nomic-embed-v15-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Nomic, Inc., which states that its headquarters is in New
+    York City. The model starts from nomic-bert-2048, a BERT variant Nomic trained itself.
+  source_ids: [nomic-embed-v15-card, nomic-careers, nomic-embed-v1-news]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. Nomic also serves the model through its
+    hosted embedding API.
+  source_ids: [nomic-embed-v15-card, nomic-embed-api-docs]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+    applies_to: weights
+    source_ids: [nomic-embed-v15-card]
+  - name: Apache License 2.0 (contrastors)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/nomic-ai/contrastors/main/LICENSE
+    applies_to: code
+    source_ids: [contrastors-license]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: null
+    source_ids: [nomic-embed-v15-card]
+  inference_code:
+    status: public
+    note: >-
+      The card documents use with Sentence Transformers, Transformers, and Transformers.js,
+      and says trust_remote_code is no longer needed from Transformers 5.5.0 and Sentence
+      Transformers 5.3.0.
+    source_ids: [nomic-embed-v15-card]
+  training_code:
+    status: public
+    note: Training code is in the contrastors repository.
+    source_ids: [nomic-embed-v15-news, contrastors-repo]
+  training_data_information:
+    status: public
+    note: >-
+      The card says the training data is released in full. The contrastors README explains
+      how to download it from Nomic's storage after creating a Nomic Atlas account.
+    source_ids: [nomic-embed-v15-card, nomic-embed-v15-news, contrastors-repo]
+  training_recipe:
+    status: partial
+    note: >-
+      The card describes the stages: start from nomic-bert-2048, contrastive training on
+      weakly related text pairs (for example forum question-answer pairs and review
+      title-body pairs), then fine-tuning on labeled data with hard-example mining; the
+      technical report gives details.
+    source_ids: [nomic-embed-v15-card]
+  evaluation_materials:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      The card shows applying layer normalization before truncating to a smaller Matryoshka
+      dimension and then normalizing, and explains how to extend the sequence length past
+      2,048 tokens with dynamic RoPE scaling.
+    source_ids: [nomic-embed-v15-card]
+provenance:
+  text: >-
+    Trained by Nomic from nomic-bert-2048, a long-context BERT variant Nomic developed for
+    Nomic Embed, as an update to nomic-embed-text-v1.
+  derived_from:
+    - name: nomic-bert-2048
+      artifact_slug: null
+      url: https://huggingface.co/nomic-ai/nomic-bert-2048
+      note: Nomic's long-context BERT starting model.
+    - name: nomic-embed-text-v1
+      artifact_slug: null
+      url: https://huggingface.co/nomic-ai/nomic-embed-text-v1
+      note: Previous release; v1.5 adds Matryoshka representation learning.
+  source_ids: [nomic-embed-v15-card, nomic-embed-v1-news]
+tags: [embedding]
+publication_status: published
+archive_note: null
+released_at: 2024-02-14
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nomic-embed-v15-card
+    title: nomic-ai/nomic-embed-text-v1.5 model card
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+    publisher: Nomic
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-embed-v15-news
+    title: "Unboxing Nomic Embed v1.5: Resizable Production Embeddings with Matryoshka Representation Learning"
+    url: https://www.nomic.ai/news/nomic-embed-matryoshka
+    publisher: Nomic
+    kind: announcement
+    published_at: 2024-02-14
+    accessed_at: 2026-09-29
+  - id: nomic-embed-v1-news
+    title: "Introducing Nomic Embed: A Truly Open Embedding Model"
+    url: https://www.nomic.ai/news/nomic-embed-text-v1
+    publisher: Nomic
+    kind: announcement
+    published_at: 2024-02-01
+    accessed_at: 2026-09-29
+  - id: nomic-embed-api-docs
+    title: Text Embedding | Nomic Atlas documentation
+    url: https://docs.nomic.ai/atlas/embeddings-and-retrieval/text-embedding
+    publisher: Nomic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: contrastors-repo
+    title: nomic-ai/contrastors
+    url: https://github.com/nomic-ai/contrastors
+    publisher: Nomic
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: contrastors-license
+    title: contrastors LICENSE
+    url: https://raw.githubusercontent.com/nomic-ai/contrastors/main/LICENSE
+    publisher: Nomic
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nomic-careers
+    title: Careers | Nomic
+    url: https://www.nomic.ai/careers
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

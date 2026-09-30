@@ -1,0 +1,194 @@
+slug: mojo
+name: Mojo
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Modular
+    organization_slug: modular
+    source_ids: [modular-repo-readme, modular-community-license]
+organization_slugs: [modular]
+links:
+  - label: Repository (Mojo directory)
+    url: https://github.com/modular/modular/tree/main/Mojo
+    kind: repository
+  - label: Documentation
+    url: https://mojolang.org/install/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/modular/modular/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/modular/modular/releases
+    kind: release-notes
+summary:
+  text: >-
+    Mojo is a programming language developed by Modular that pairs Python-style syntax with
+    systems programming and metaprogramming features, for writing code that runs on CPUs and GPUs.
+    Its compiler, standard library, and tooling are published in the Mojo directory of Modular's
+    modular repository; Mojo 1.0 was released in August 2026.
+  source_ids: [mojo-readme, modular-repo-readme, mojo-1-0, modcon-2026]
+useful_for:
+  text: >-
+    Writing performance-sensitive code for CPUs and GPUs, including GPU programming, while
+    keeping Python syntax and access to the Python ecosystem.
+  source_ids: [mojo-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Mojo is developed and published by Modular in its modular GitHub repository, and Modular's
+    Community License page states that the language, compiler, and tooling are available there
+    under Apache 2.0 with LLVM exceptions. Modular Inc's terms of service give offices in Los Altos,
+    California. Modular has been owned by Qualcomm Incorporated, a Delaware corporation with
+    principal executive offices in San Diego, California, since July 2026.
+  source_ids: [modular-repo-readme, modular-community-license, modular-terms, qualcomm-10q-q3-fy2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [modular-repo-readme, mojo-install]
+licenses:
+  - name: Apache License 2.0 with LLVM Exceptions
+    spdx: Apache-2.0 WITH LLVM-exception
+    url: https://github.com/modular/modular/blob/main/LICENSE
+    applies_to: code
+    source_ids: [modular-repo-license, modular-community-license]
+license_notes:
+  text: >-
+    The repository LICENSE applies Apache 2.0 with LLVM exceptions to the whole modular
+    repository. The PyPI metadata for the mojo 1.1.0 package declares a different identifier,
+    LicenseRef-MAX-Platform-Software-License, so the terms attached to prebuilt packages should be
+    checked separately from the source license. The repository README says contributions to the
+    compiler were not yet accepted, while Modular's 26.6 release post (September 17, 2026) says the
+    compiler now accepts contributions.
+  source_ids: [modular-repo-license, pypi-mojo, modular-repo-readme, modular-26-6]
+checklist:
+  source_code:
+    status: public
+    note: >-
+      The repository README lists the Mojo compiler and the Mojo standard library among the
+      published components; Modular made the compiler and tooling open source in August 2026.
+    source_ids: [modular-repo-readme, modcon-2026]
+  documentation:
+    status: public
+    note: Installation guide, system requirements, and language documentation on mojolang.org.
+    source_ids: [mojo-install, mojo-requirements]
+  installation:
+    status: public
+    note: Documented installs with uv (package mojo) and with pixi from Modular's conda channel.
+    source_ids: [mojo-install]
+  supported_platforms:
+    status: public
+    note: >-
+      Documented for Linux with glibc 2.34 or later on x86-64-v3 or ARM64 (Neoverse N1 or newer)
+      CPUs and for macOS 15 or later on Apple silicon; Windows is supported only through WSL. GPU
+      support is optional and covers NVIDIA, AMD, and Apple GPUs.
+    source_ids: [mojo-requirements]
+  release_status:
+    status: public
+    note: >-
+      Mojo 1.0.0 shipped with Modular 26.5 on August 11, 2026, and Mojo 1.1.0 with Modular 26.6 on
+      September 17, 2026; releases are published on GitHub.
+    source_ids: [mojo-1-0, modular-26-6, modular-releases]
+run_notes: []
+provenance: null
+tags: [compiler, programming-language, numerical-computing]
+publication_status: published
+archive_note: null
+released_at: "2023"
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: modular-repo-readme
+    title: modular/modular README
+    url: https://github.com/modular/modular
+    publisher: Modular
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mojo-readme
+    title: modular/modular Mojo directory
+    url: https://github.com/modular/modular/tree/main/Mojo
+    publisher: Modular
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-repo-license
+    title: modular/modular LICENSE
+    url: https://github.com/modular/modular/blob/main/LICENSE
+    publisher: Modular
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-releases
+    title: modular/modular releases
+    url: https://github.com/modular/modular/releases
+    publisher: Modular
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-community-license
+    title: "Modular: Community License"
+    url: https://www.modular.com/legal/community
+    publisher: Modular
+    kind: license
+    published_at: 2026-08-18
+    accessed_at: 2026-09-29
+  - id: mojo-install
+    title: Install Mojo
+    url: https://mojolang.org/install/
+    publisher: Modular
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mojo-requirements
+    title: System requirements | Mojo
+    url: https://mojolang.org/docs/requirements/
+    publisher: Modular
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mojo-1-0
+    title: "Modular 26.5: Mojo 1.0 is here!"
+    url: https://www.modular.com/blog/modular-26-5-mojo-1-0-is-here
+    publisher: Modular
+    kind: release-notes
+    published_at: 2026-08-11
+    accessed_at: 2026-09-29
+  - id: modcon-2026
+    title: "ModCon 2026: Open source, open cloud, open silicon"
+    url: https://www.modular.com/blog/modcon-announcements
+    publisher: Modular
+    kind: announcement
+    published_at: 2026-08-18
+    accessed_at: 2026-09-29
+  - id: modular-26-6
+    title: "Modular 26.6: Open compiler contributions, audio generation, and expanded model support"
+    url: https://www.modular.com/blog/modular-26-6-open-compiler-contributions-audio-generation-and-expanded-model-support
+    publisher: Modular
+    kind: release-notes
+    published_at: 2026-09-17
+    accessed_at: 2026-09-29
+  - id: pypi-mojo
+    title: mojo package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/mojo/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: modular-terms
+    title: "Modular: Terms of Service"
+    url: https://www.modular.com/legal/terms
+    publisher: Modular
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qualcomm-10q-q3-fy2026
+    title: QUALCOMM Incorporated Form 10-Q for the quarterly period ended June 28, 2026
+    url: https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm
+    publisher: U.S. Securities and Exchange Commission (filed by QUALCOMM Incorporated)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

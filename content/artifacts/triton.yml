@@ -1,0 +1,126 @@
+slug: triton
+name: Triton
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Triton core maintainers (individuals named in the project's governance document)
+    organization_slug: null
+    source_ids: [triton-contributing]
+organization_slugs: [openai]
+links:
+  - label: Repository (triton-lang/triton)
+    url: https://github.com/triton-lang/triton
+    kind: repository
+  - label: Documentation
+    url: https://triton-lang.org/main/index.html
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/triton-lang/triton/blob/main/LICENSE
+    kind: license
+  - label: PyPI package
+    url: https://pypi.org/project/triton/
+    kind: release-notes
+summary:
+  text: >-
+    Triton is a language and compiler for writing custom deep-learning compute kernels for GPUs
+    in a Python-based programming environment; its compiler uses MLIR and generates code through
+    LLVM. Its license names Philippe Tillet (2018–2020) and
+    OpenAI (2020–2022) as copyright holders; development now takes place in the triton-lang
+    GitHub organization.
+  source_ids: [triton-readme, triton-docs, triton-license]
+useful_for:
+  text: >-
+    Writing custom neural-network kernels in Python as an alternative to hand-written CUDA; the
+    documentation includes installation instructions and tutorials.
+  source_ids: [triton-readme, triton-docs]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    No current governing or maintaining organization is documented. The project's governance
+    document assigns control to individual core maintainers and a lead core maintainer, and names
+    no company or foundation. OpenAI appears only as a copyright holder for 2020–2022 in the
+    license. Eligibility cannot rest on individual maintainers, so this record stays in draft
+    until an official source documents the maintaining entity.
+  source_ids: [triton-contributing, triton-license, triton-docs]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [triton-readme, triton-pypi]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/triton-lang/triton/blob/main/LICENSE
+    applies_to: code
+    source_ids: [triton-license, triton-pypi]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [triton-readme]
+  documentation:
+    status: public
+    note: The official documentation site has installation instructions and tutorials.
+    source_ids: [triton-docs]
+  installation:
+    status: public
+    note: Installable with pip (binary wheels for CPython 3.10–3.14) or from source.
+    source_ids: [triton-readme]
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists Linux as the supported platform, with NVIDIA GPUs (compute capability 8.0
+      and above) and AMD GPUs (ROCm 6.2 and above); CPU support is under development.
+    source_ids: [triton-readme]
+  release_status:
+    status: public
+    note: Versioned releases are published on PyPI; version 3.8.0 was released on August 28, 2026.
+    source_ids: [triton-pypi]
+run_notes: []
+provenance: null
+tags: [compiler]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: triton-readme
+    title: triton-lang/triton README
+    url: https://github.com/triton-lang/triton/blob/main/README.md
+    publisher: Triton project (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: triton-license
+    title: triton-lang/triton LICENSE
+    url: https://github.com/triton-lang/triton/blob/main/LICENSE
+    publisher: Triton project (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: triton-contributing
+    title: Triton governance structure (CONTRIBUTING.md)
+    url: https://github.com/triton-lang/triton/blob/main/CONTRIBUTING.md
+    publisher: Triton project (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: triton-docs
+    title: Triton documentation
+    url: https://triton-lang.org/main/index.html
+    publisher: Triton project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: triton-pypi
+    title: triton on PyPI
+    url: https://pypi.org/project/triton/
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: 2026-08-28
+    accessed_at: 2026-09-29

@@ -1,0 +1,141 @@
+slug: dspy
+name: DSPy
+kind: framework
+record_level: project
+family_slug: null
+version: "3.4.0"
+maintainers:
+  - name: Stanford NLP Group
+    organization_slug: stanford-university
+    source_ids: [stanfordnlp-github, stanford-nlp-home, dspy-license]
+organization_slugs: [stanford-university]
+links:
+  - label: GitHub repository
+    url: https://github.com/stanfordnlp/dspy
+    kind: repository
+  - label: Documentation
+    url: https://dspy.ai/
+    kind: documentation
+  - label: Release 3.4.0
+    url: https://github.com/stanfordnlp/dspy/releases/tag/3.4.0
+    kind: release-notes
+  - label: License (MIT)
+    url: https://raw.githubusercontent.com/stanfordnlp/dspy/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    DSPy is an open-source Python framework for building language-model programs from
+    compositional Python modules instead of hand-written prompts. It includes optimizer
+    algorithms that tune the prompts and weights of those programs. The project started at the
+    Stanford NLP group.
+  source_ids: [dspy-readme, dspy-docs]
+useful_for:
+  text: >-
+    Building modular language-model systems, such as classifiers, retrieval-augmented
+    generation pipelines, and agent loops, and optimizing their prompts and weights.
+  source_ids: [dspy-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The DSPy repository sits in the Stanford NLP GitHub organization, which gives its location as
+    Stanford, California. The Stanford NLP Group's website lists DSPy among the software it
+    develops. The MIT license names Stanford Future Data Systems as the copyright holder, and the
+    documentation says the project started at Stanford NLP. Contributors come from many
+    organizations; eligibility rests on the Stanford hosting documented above.
+  source_ids: [stanfordnlp-github, stanford-nlp-home, dspy-license, dspy-docs]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Source code on GitHub under the MIT License; installable from PyPI as dspy.
+  source_ids: [dspy-readme, dspy-license, dspy-pypi]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/stanfordnlp/dspy/main/LICENSE
+    applies_to: code
+    source_ids: [dspy-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Published on GitHub under the MIT License.
+    source_ids: [dspy-readme, dspy-license]
+  documentation:
+    status: public
+    note: Documentation is published at dspy.ai.
+    source_ids: [dspy-readme, dspy-docs]
+  installation:
+    status: public
+    note: >-
+      Installed with pip from PyPI, or directly from the main branch on GitHub for the latest
+      changes.
+    source_ids: [dspy-readme, dspy-docs]
+  supported_platforms:
+    status: partial
+    note: >-
+      PyPI metadata requires Python 3.10 or later and earlier than 3.15. The pages read do not
+      give an operating-system or hardware support matrix.
+    source_ids: [dspy-pypi]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub and PyPI; 3.4.0 was released on 2026-09-25.
+    source_ids: [dspy-release, dspy-pypi]
+run_notes: []
+provenance: null
+tags: [prompt-optimization, agents, retrieval-augmented-generation]
+publication_status: published
+archive_note: null
+released_at: 2026-09-25
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: dspy-readme
+    title: DSPy README
+    url: https://raw.githubusercontent.com/stanfordnlp/dspy/main/README.md
+    publisher: Stanford NLP Group
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dspy-license
+    title: DSPy LICENSE
+    url: https://raw.githubusercontent.com/stanfordnlp/dspy/main/LICENSE
+    publisher: Stanford NLP Group
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dspy-docs
+    title: Overview - DSPy
+    url: https://dspy.ai/current/
+    publisher: DSPy project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dspy-pypi
+    title: dspy on PyPI
+    url: https://pypi.org/project/dspy/
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-09-25
+    accessed_at: 2026-09-29
+  - id: dspy-release
+    title: Release 3.4.0 · stanfordnlp/dspy
+    url: https://github.com/stanfordnlp/dspy/releases/tag/3.4.0
+    publisher: Stanford NLP Group
+    kind: release-notes
+    published_at: 2026-09-25
+    accessed_at: 2026-09-29
+  - id: stanfordnlp-github
+    title: Stanford NLP on GitHub
+    url: https://github.com/stanfordnlp
+    publisher: Stanford NLP Group
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: stanford-nlp-home
+    title: The Stanford Natural Language Processing Group
+    url: https://nlp.stanford.edu/
+    publisher: Stanford NLP Group
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

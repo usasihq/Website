@@ -1,0 +1,94 @@
+slug: gr00t
+name: NVIDIA Isaac GR00T N
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [gr00t-readme, gr00t-n17-card]
+organization_slugs: [nvidia]
+links:
+  - label: Isaac-GR00T repository
+    url: https://github.com/NVIDIA/Isaac-GR00T
+    kind: repository
+  - label: GR00T N1.7 collection on Hugging Face
+    url: https://huggingface.co/collections/nvidia/gr00t-n17
+    kind: model-hub
+  - label: GR00T N1 white paper (arXiv 2503.14734)
+    url: https://arxiv.org/abs/2503.14734
+    kind: paper
+summary:
+  text: >-
+    Isaac GR00T N is NVIDIA's family of open vision-language-action models for humanoid and
+    other robots. The models take camera images, language instructions, and robot state and
+    output continuous actions, using a vision-language backbone with a diffusion-transformer
+    action head. The repository describes N1.7 as the latest version of GR00T N1 and lists
+    N1.5 and N1.6 as previous releases.
+  source_ids: [gr00t-readme, gr00t-n17-card]
+useful_for:
+  text: >-
+    NVIDIA describes the models as cross-embodiment foundations that developers post-train with
+    real or synthetic data for a specific robot or task.
+  source_ids: [gr00t-n17-card, gr00t-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The GR00T models are developed and published by NVIDIA Corporation, which has its
+    principal executive offices in Santa Clara, California, per its Form 10-Q for the quarter
+    ended July 26, 2026.
+  source_ids: [gr00t-n17-card, gr00t-readme, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    The Isaac-GR00T repository's license section states that its code is Apache 2.0 and the
+    model weights are under the NVIDIA Open Model License, although its overview also calls
+    N1.7 commercially licensable under Apache 2.0. Some fine-tuned GR00T checkpoints on Hugging
+    Face carry other NVIDIA licenses (for example, GR00T-H lists an NVIDIA non-commercial
+    license), so check each checkpoint.
+  source_ids: [gr00t-readme, gr00t-h-hf-api]
+checklist: {}
+run_notes: []
+provenance: null
+tags: [robotics, vision-language-action]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: gr00t-readme
+    title: NVIDIA/Isaac-GR00T README
+    url: https://raw.githubusercontent.com/NVIDIA/Isaac-GR00T/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gr00t-n17-card
+    title: nvidia/GR00T-N1.7-3B model card
+    url: https://huggingface.co/nvidia/GR00T-N1.7-3B/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gr00t-h-hf-api
+    title: Hugging Face model metadata for nvidia/GR00T-H
+    url: https://huggingface.co/api/models/nvidia/GR00T-H
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

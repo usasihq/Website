@@ -1,0 +1,139 @@
+slug: keras
+name: Keras
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Keras team at Google
+    organization_slug: google
+    source_ids: [google-blog-keras-2024, keras-contributing]
+organization_slugs: [google]
+links:
+  - label: GitHub repository
+    url: https://github.com/keras-team/keras
+    kind: repository
+  - label: Website and documentation
+    url: https://keras.io/
+    kind: documentation
+  - label: License
+    url: https://raw.githubusercontent.com/keras-team/keras/master/LICENSE
+    kind: license
+summary:
+  text: >-
+    Keras is an open-source deep learning API. Keras 3 is multi-backend: models can run on
+    JAX, TensorFlow, or PyTorch, and an OpenVINO backend supports inference only. The keras.io
+    site also documents KerasHub, which provides Keras 3 implementations of model
+    architectures paired with pretrained checkpoints.
+  source_ids: [keras-readme, keras-io-home]
+useful_for:
+  text: >-
+    The README describes Keras 3 for building and training models across domains and scaling
+    from a laptop to clusters of GPUs or TPUs, and as a drop-in replacement for tf.keras when
+    using the TensorFlow backend.
+  source_ids: [keras-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    A November 2024 Google for Developers blog post states that the Keras team at Google will
+    continue to collaborate on the project in the open-source community and describes Google's
+    continued investment in Keras 3.
+    The contributing guide requires contributors to pass a Google Contributor License
+    Agreement check (cla/google). Google's parent Alphabet Inc. has its principal executive
+    offices in Mountain View, California, per its fiscal 2025 Form 10-K.
+  source_ids: [google-blog-keras-2024, keras-contributing, alphabet-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [keras-readme, keras-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/keras-team/keras/master/LICENSE
+    applies_to: code
+    source_ids: [keras-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Developed on GitHub at keras-team/keras.
+    source_ids: [keras-readme, keras-contributing]
+  documentation:
+    status: public
+    note: Guides and API documentation are published at keras.io.
+    source_ids: [keras-io-home, keras-readme]
+  installation:
+    status: public
+    note: Installed with pip ("pip install keras") plus a backend package (tensorflow, jax, or torch).
+    source_ids: [keras-readme, keras-pypi]
+  supported_platforms:
+    status: public
+    note: >-
+      The README states Keras 3 is compatible with Linux and macOS and recommends WSL2 on
+      Windows; it lists minimum backend versions and separate CUDA requirement files for GPU
+      support.
+    source_ids: [keras-readme]
+  release_status:
+    status: public
+    note: Versioned releases are published on PyPI; version 3.15.1 was uploaded on July 29, 2026.
+    source_ids: [keras-pypi]
+run_notes: []
+provenance: null
+tags: [training]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: keras-readme
+    title: keras-team/keras README
+    url: https://raw.githubusercontent.com/keras-team/keras/master/README.md
+    publisher: Keras team
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: keras-license
+    title: Keras LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/keras-team/keras/master/LICENSE
+    publisher: Keras team
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: keras-contributing
+    title: Keras CONTRIBUTING.md
+    url: https://raw.githubusercontent.com/keras-team/keras/master/CONTRIBUTING.md
+    publisher: Keras team
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: keras-io-home
+    title: "Keras: Deep Learning for humans"
+    url: https://keras.io/
+    publisher: Keras team
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: keras-pypi
+    title: keras on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/keras/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: google-blog-keras-2024
+    title: Farewell and thank you for the continued partnership (Keras)
+    url: https://developers.googleblog.com/farewell-and-thank-you-for-the-continued-partnership-francois-chollet/
+    publisher: Google for Developers Blog
+    kind: announcement
+    published_at: 2024-11-13
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

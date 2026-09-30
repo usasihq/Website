@@ -1,0 +1,158 @@
+slug: zyphra
+name: Zyphra
+legal_name:
+  text: Zyphra Technologies, Inc.
+  source_ids: [zyphra-terms, zyphra-privacy]
+website: https://www.zyphra.com
+logo_text: Z
+summary:
+  text: >-
+    Zyphra is a San Francisco AI company that trains open foundation models, including the
+    Zamba hybrid state-space language models and the ZAYA1 mixture-of-experts models. It also
+    runs Zyphra Cloud, a hosted platform for model inference and GPU compute.
+  source_ids: [zyphra-home, zyphra-research-index, zyphra-cloud, zyphra-zaya1-8b-post]
+organization_roles: [model-developer, research-lab, inference-provider]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [zyphra-terms, zyphra-zaya1-8b-post, zyphra-zaya1-8b-pr]
+other_locations:
+  - label: London, United Kingdom
+    country: GB
+    source_ids: [zyphra-about]
+founded: null
+sectors: [open-models, research, cloud]
+status_note: null
+products:
+  - id: zyphra-cloud
+    name: Zyphra Cloud
+    kind: inference-service
+    access: >-
+      Hosted platform with serverless inference for open-weight models (including a ZAYA1-8B
+      endpoint), reserved capacity for production deployments, and GPU compute. Users sign up
+      and log in at cloud.zyphra.com.
+    url: https://www.zyphra.com/cloud
+    source_ids: [zyphra-cloud, zyphra-zaya1-8b-post]
+    last_reviewed: 2026-09-29
+  - id: maia
+    name: Maia
+    kind: assistant-app
+    access: >-
+      Agent for teams that works across language, audio, and images and connects to tools such
+      as Gmail, Google Calendar, and Google Drive. The product page links to the Zyphra Cloud
+      login and does not state availability or pricing terms.
+    url: https://www.zyphra.com/agent
+    source_ids: [zyphra-agent]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Zyphra's research index lists the Zamba line (April 2024 to June 2026) and the ZAYA1 line
+      (from November 2025), which Zyphra says was trained end to end on AMD hardware. Its
+      Hugging Face organization also hosts the Zonos text-to-speech models, the ZUNA models,
+      and the Zyda pretraining datasets.
+    source_ids: [zyphra-research-index, zyphra-hf]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Zyphra's terms of use (May 2026) and privacy policy (August 2026) name Zyphra
+    Technologies, Inc. at 415 Mission Street, San Francisco, and apply California law with
+    San Francisco venue. Its May 2026 release announcement describes the company as
+    headquartered in San Francisco. The about page describes the company as based in San
+    Francisco and London; no foreign parent or headquarters was found.
+  source_ids: [zyphra-terms, zyphra-privacy, zyphra-zaya1-8b-post, zyphra-about]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Zyphra publishes model weights on Hugging Face, including the Zamba, ZAYA1, and Zonos
+    models, as well as the Zyda pretraining datasets. Its Zamba2-VL and ZAYA1-8B
+    announcements state Apache 2.0 licensing. Zyphra Cloud and Maia are hosted services. This
+    catalog assesses openness release by release (see the Zamba release records).
+  source_ids: [zyphra-hf, zyphra-zamba2-vl-blog, zyphra-zaya1-8b-post, zyphra-cloud]
+hiring_url: https://jobs.ashbyhq.com/zyphra
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: zyphra-home
+    title: Zyphra
+    url: https://www.zyphra.com/
+    publisher: Zyphra
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-about
+    title: About | Zyphra
+    url: https://www.zyphra.com/about
+    publisher: Zyphra
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-terms
+    title: Terms of Use | Zyphra
+    url: https://www.zyphra.com/legal/terms-of-use
+    publisher: Zyphra Technologies, Inc.
+    kind: official-page
+    published_at: 2026-05-04
+    accessed_at: 2026-09-29
+  - id: zyphra-privacy
+    title: Privacy Policy | Zyphra
+    url: https://www.zyphra.com/legal/privacy-policy
+    publisher: Zyphra Technologies, Inc.
+    kind: official-page
+    published_at: 2026-08-20
+    accessed_at: 2026-09-29
+  - id: zyphra-cloud
+    title: Zyphra Cloud
+    url: https://www.zyphra.com/cloud
+    publisher: Zyphra
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-agent
+    title: Maia | Zyphra
+    url: https://www.zyphra.com/agent
+    publisher: Zyphra
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-research-index
+    title: Zyphra Research
+    url: https://www.zyphra.com/post
+    publisher: Zyphra
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: zyphra-zaya1-8b-post
+    title: Zyphra Releases ZAYA1-8B, a Reasoning Model trained on AMD and Optimized for Maximum Intelligence Density per Parameter
+    url: https://www.zyphra.com/our-work/zyphra-releases-zaya1-8b-a-reasoning-model-trained-on-amd-and-optimized-for-maximum-intelligence-density-per-parameter
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-09-29
+  - id: zyphra-zaya1-8b-pr
+    title: Zyphra Releases ZAYA1-8B, a Reasoning Model trained on AMD and Optimized for Maximum Intelligence Density per Parameter (PR Newswire)
+    url: https://www.prnewswire.com/news-releases/zyphra-releases-zaya1-8b-a-reasoning-model-trained-on-amd-and-optimized-for-maximum-intelligence-density-per-parameter-302764700.html
+    publisher: Zyphra (via PR Newswire)
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-09-29
+  - id: zyphra-zamba2-vl-blog
+    title: "Zamba2-VL: Hybrid SSM Vision-Language Models"
+    url: https://www.zyphra.com/our-work/zamba2-vl
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2026-06-02
+    accessed_at: 2026-09-29
+  - id: zyphra-hf
+    title: Zyphra on Hugging Face
+    url: https://huggingface.co/Zyphra
+    publisher: Zyphra
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

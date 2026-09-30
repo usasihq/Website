@@ -1,0 +1,238 @@
+slug: nemo-framework
+name: NVIDIA NeMo Framework
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [nvidia-nemo-github-org, nemo-docs-landing, mbridge-pypi, nemo-toolkit-pypi]
+organization_slugs: [nvidia]
+links:
+  - label: NVIDIA-NeMo GitHub organization
+    url: https://github.com/NVIDIA-NeMo
+    kind: repository
+  - label: NVIDIA NeMo documentation
+    url: https://docs.nvidia.com/nemo/
+    kind: documentation
+  - label: NeMo Framework user guide (overview)
+    url: https://docs.nvidia.com/nemo-framework/user-guide/latest/overview.html
+    kind: documentation
+  - label: Megatron Bridge repository
+    url: https://github.com/NVIDIA-NeMo/Megatron-Bridge
+    kind: repository
+  - label: NeMo Speech repository
+    url: https://github.com/NVIDIA-NeMo/Speech
+    kind: repository
+  - label: NeMo Framework software component versions (Megatron Bridge docs)
+    url: https://docs.nvidia.com/nemo/megatron-bridge/latest/releases/software-versions.html
+    kind: release-notes
+summary:
+  text: >-
+    NeMo Framework is NVIDIA's open-source Python framework for pretraining, post-training,
+    and reinforcement learning of generative AI models, organized as separate libraries in the
+    NVIDIA-NeMo GitHub organization, including Megatron Bridge, AutoModel, NeMo RL, Curator,
+    Evaluator, Export-Deploy, Run, and NeMo Speech. In 2026 the original NeMo repository was
+    split and now focuses on audio, speech, and multimodal LLMs as NeMo Speech (version 3.0),
+    and for the framework container from 26.02 onward NVIDIA points to Megatron Bridge's
+    documentation and release notes.
+  source_ids: [nemo-docs-landing, nvidia-nemo-github-org, nemo-speech-readme, nemo-fw-overview]
+useful_for:
+  text: >-
+    NVIDIA's documentation lists data curation (Curator), training and fine-tuning of large
+    language, vision-language, and speech models (Megatron Bridge, AutoModel, NeMo Speech),
+    post-training with reinforcement learning (NeMo RL), evaluation (Evaluator), and export
+    and deployment to inference engines (Export-Deploy).
+  source_ids: [nemo-docs-landing, mbridge-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The libraries are published under the NVIDIA-NeMo GitHub organization, NVIDIA's
+    documentation presents NeMo Framework as an NVIDIA software suite component, and the PyPI
+    packages list NVIDIA as author. NVIDIA's principal executive offices are in Santa Clara,
+    California, per its Form 10-Q for the quarter ended July 26, 2026.
+  source_ids: [nvidia-nemo-github-org, nemo-docs-landing, mbridge-pypi, nemo-toolkit-pypi, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Library source code is public on GitHub. The prebuilt NeMo Framework container on NVIDIA
+    NGC is covered by the NVIDIA AI Product Agreement rather than Apache 2.0.
+  source_ids: [nvidia-nemo-github-org, nemo-fw-overview]
+licenses:
+  - name: Apache License 2.0 (Megatron Bridge)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Megatron-Bridge/main/LICENSE
+    applies_to: code
+    source_ids: [mbridge-license]
+  - name: Apache License 2.0 (AutoModel)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Automodel/main/LICENSE
+    applies_to: code
+    source_ids: [automodel-license]
+  - name: Apache License 2.0 (NeMo RL)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/RL/main/LICENSE
+    applies_to: code
+    source_ids: [nemo-rl-license]
+  - name: Apache License 2.0 (NeMo Speech)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/LICENSE
+    applies_to: code
+    source_ids: [nemo-speech-license]
+license_notes:
+  text: >-
+    The library repositories checked (Megatron Bridge, AutoModel, NeMo RL, Curator, Evaluator,
+    and NeMo Speech) carry the Apache License 2.0; Curator's LICENSE file also includes an MIT
+    License notice for Microsoft code. NVIDIA's user guide states that the NeMo
+    Framework container is licensed under the NVIDIA AI Product Agreement, accepted by pulling
+    and using it, and that it contains Llama materials governed by Meta's Llama 3 Community
+    License Agreement.
+  source_ids: [mbridge-license, automodel-license, nemo-rl-license, curator-license, evaluator-license, nemo-speech-license, nemo-fw-overview]
+checklist:
+  source_code:
+    status: public
+    note: Each library is developed in a public repository under github.com/NVIDIA-NeMo.
+    source_ids: [nvidia-nemo-github-org]
+  documentation:
+    status: public
+    note: Per-library documentation is published under docs.nvidia.com/nemo.
+    source_ids: [nemo-docs-landing, nemo-fw-overview]
+  installation:
+    status: public
+    note: >-
+      NVIDIA recommends the NeMo Framework container from NGC for Megatron Bridge; libraries
+      are also installable from PyPI (for example megatron-bridge and nemo-toolkit) or from
+      source.
+    source_ids: [mbridge-readme, nemo-speech-readme, mbridge-pypi, nemo-toolkit-pypi]
+  supported_platforms:
+    status: public
+    note: >-
+      Requirements are documented per library. NeMo Speech requires Python 3.12 or later and
+      PyTorch 2.7 or later, and needs an NVIDIA GPU with CUDA for training. The component
+      versions page lists the CUDA, PyTorch, and Megatron Core versions in each framework
+      container.
+    source_ids: [nemo-speech-readme, mbridge-software-versions]
+  release_status:
+    status: public
+    note: >-
+      NeMo Framework containers are versioned by year and month; the component versions page
+      lists releases through 26.06. Individual libraries publish their own releases (for
+      example NeMo Speech 3.0.0).
+    source_ids: [mbridge-software-versions, nemo-speech-readme]
+run_notes: []
+provenance: null
+tags: [training, distributed-computing, speech]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nemo-docs-landing
+    title: NVIDIA NeMo documentation (landing page)
+    url: https://docs.nvidia.com/nemo/
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemo-fw-overview
+    title: Overview — NVIDIA NeMo Framework User Guide
+    url: https://docs.nvidia.com/nemo-framework/user-guide/latest/overview.html
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-nemo-github-org
+    title: NVIDIA-NeMo (GitHub organization)
+    url: https://github.com/NVIDIA-NeMo
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemo-speech-readme
+    title: NVIDIA NeMo Speech README
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mbridge-readme
+    title: NVIDIA-NeMo/Megatron-Bridge README
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Megatron-Bridge/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mbridge-software-versions
+    title: Software Component Versions — NeMo Megatron Bridge documentation
+    url: https://docs.nvidia.com/nemo/megatron-bridge/latest/releases/software-versions.html
+    publisher: NVIDIA
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mbridge-license
+    title: Megatron-Bridge LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Megatron-Bridge/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: automodel-license
+    title: Automodel LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Automodel/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemo-rl-license
+    title: NeMo RL LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/RL/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: curator-license
+    title: NeMo Curator LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Curator/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: evaluator-license
+    title: NeMo Evaluator LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Evaluator/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemo-speech-license
+    title: NeMo Speech LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mbridge-pypi
+    title: megatron-bridge on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/megatron-bridge/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemo-toolkit-pypi
+    title: nemo-toolkit on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/nemo-toolkit/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

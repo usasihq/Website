@@ -1,0 +1,151 @@
+slug: gpqa
+name: "GPQA: A Graduate-Level Google-Proof Q&A Benchmark"
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: GPQA authors (published from individual GitHub and Hugging Face accounts)
+    organization_slug: null
+    source_ids: [gpqa-repo, gpqa-license, gpqa-hf]
+organization_slugs: [new-york-university]
+links:
+  - label: GitHub repository
+    url: https://github.com/idavidrein/gpqa
+    kind: repository
+  - label: Dataset (Hugging Face, gated)
+    url: https://huggingface.co/datasets/Idavidrein/gpqa
+    kind: dataset-hub
+  - label: GPQA paper (arXiv)
+    url: https://arxiv.org/pdf/2311.12022
+    kind: paper
+  - label: License (MIT, code)
+    url: https://raw.githubusercontent.com/idavidrein/gpqa/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    GPQA is a dataset of 448 multiple-choice questions in biology, physics, and chemistry,
+    written and validated by domain experts. The questions are designed to be difficult for
+    skilled non-experts even with unrestricted web access. It was built for scalable-oversight
+    experiments and is also used to benchmark language models.
+  source_ids: [gpqa-paper, gpqa-hf]
+useful_for:
+  text: >-
+    Scalable-oversight research and evaluating language models on expert-level science
+    questions, with baseline scripts for zero-shot, few-shot, chain-of-thought, and
+    retrieval-augmented prompting.
+  source_ids: [gpqa-paper, gpqa-repo]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The GPQA paper lists New York University as the affiliation of all its authors; two also list
+    Cohere or Anthropic. However, the code repository and the Hugging Face dataset are published
+    from individual accounts, and the MIT license names an individual as copyright holder. No NYU
+    page describing NYU as the benchmark's maintainer was found. A post on the NYU Alignment
+    Research Group blog discusses GPQA but does not present it as a group project. The catalog
+    policy for projects maintained by individuals without a documented organization applies, so
+    eligibility is left for editorial review.
+  source_ids: [gpqa-paper, gpqa-repo, gpqa-license, gpqa-hf, nyu-arg-gpqa-post]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    The Hugging Face dataset is gated: users agree to share contact information and not to
+    reveal examples in plain text or images online. The GitHub repository also provides the
+    data as a password-protected archive.
+  source_ids: [gpqa-hf, gpqa-repo]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/idavidrein/gpqa/main/LICENSE
+    applies_to: code
+    source_ids: [gpqa-license]
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://huggingface.co/datasets/Idavidrein/gpqa
+    applies_to: data
+    source_ids: [gpqa-hf]
+license_notes:
+  text: >-
+    The Hugging Face access terms ask users not to reveal examples online, to reduce leakage into
+    training corpora. The README states that the dataset includes a canary string (a superset
+    of the BIG-bench canary string).
+  source_ids: [gpqa-hf, gpqa-repo]
+checklist:
+  code:
+    status: public
+    note: >-
+      Baseline and analysis code is published on GitHub under the MIT License; the README says
+      only two OpenAI models are implemented in the baseline code.
+    source_ids: [gpqa-repo, gpqa-license]
+  tasks_data:
+    status: public
+    note: >-
+      Available on Hugging Face under CC BY 4.0 after accepting the access terms, with main,
+      diamond, extended, and experts configurations.
+    source_ids: [gpqa-hf]
+  methodology:
+    status: public
+    note: >-
+      The paper describes how questions were written and validated by contracted domain experts
+      and how non-expert validators were used.
+    source_ids: [gpqa-paper]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README documents environment setup and commands for running closed-book, open-book,
+      and answer-only baselines.
+    source_ids: [gpqa-repo]
+  limitations:
+    status: public
+    note: >-
+      The paper's limitations section covers the dataset's small size, the use of highly skilled
+      non-experts, possible bias from recruiting experts through Upwork, and its imperfect fit as
+      a proxy for supervising superhuman systems. A post on the NYU Alignment Research Group blog
+      discusses likely mistakes in some questions.
+    source_ids: [gpqa-paper, nyu-arg-gpqa-post]
+run_notes: []
+provenance: null
+tags: [evaluation, benchmark, science]
+publication_status: draft
+archive_note: null
+released_at: 2023-11
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: gpqa-paper
+    title: "GPQA: A Graduate-Level Google-Proof Q&A Benchmark (arXiv:2311.12022v1)"
+    url: https://arxiv.org/pdf/2311.12022
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-20
+    accessed_at: 2026-09-29
+  - id: gpqa-repo
+    title: GPQA repository README
+    url: https://raw.githubusercontent.com/idavidrein/gpqa/main/README.md
+    publisher: GPQA authors
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpqa-license
+    title: GPQA LICENSE
+    url: https://raw.githubusercontent.com/idavidrein/gpqa/main/LICENSE
+    publisher: GPQA authors
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpqa-hf
+    title: Idavidrein/gpqa dataset card
+    url: https://huggingface.co/datasets/Idavidrein/gpqa
+    publisher: GPQA authors (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nyu-arg-gpqa-post
+    title: Can Good Benchmarks Contain Mistakes?
+    url: https://wp.nyu.edu/arg/can-good-benchmarks-contain-mistakes/
+    publisher: NYU Alignment Research Group
+    kind: other
+    published_at: 2024-05-15
+    accessed_at: 2026-09-29

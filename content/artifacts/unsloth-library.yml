@@ -1,0 +1,171 @@
+slug: unsloth-library
+name: Unsloth (open-source library)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Unsloth
+    organization_slug: unsloth
+    source_ids: [unsloth-readme, unsloth-license]
+organization_slugs: [unsloth]
+links:
+  - label: Repository
+    url: https://github.com/unslothai/unsloth
+    kind: repository
+  - label: Documentation (installation)
+    url: https://unsloth.ai/docs/get-started/install
+    kind: documentation
+  - label: LICENSE (Apache 2.0 core)
+    url: https://github.com/unslothai/unsloth/blob/main/LICENSE
+    kind: license
+  - label: COPYING (AGPL-3.0 components)
+    url: https://github.com/unslothai/unsloth/blob/main/COPYING
+    kind: license
+  - label: Releases
+    url: https://github.com/unslothai/unsloth/releases
+    kind: release-notes
+summary:
+  text: >-
+    Unsloth is an open-source Python library for fine-tuning and reinforcement learning of
+    language, diffusion, text-to-speech, and embedding models, supporting LoRA, QLoRA,
+    full fine-tuning, pretraining, GRPO, and DPO, and exporting to formats such as GGUF. The same
+    repository contains Unsloth Studio, a web interface, and the Unsloth Desktop app.
+  source_ids: [unsloth-readme]
+useful_for:
+  text: >-
+    Fine-tuning and post-training open-weight models on a single machine or multi-GPU setup, and
+    exporting the results for local inference.
+  source_ids: [unsloth-readme]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The project is maintained in the unslothai GitHub organization by the company named in its
+    copyright notices as Unsloth AI Inc. No company or regulatory document found states where that
+    company is incorporated or headquartered; Y Combinator's directory lists San Francisco and the
+    GitHub organization profile lists the United States, but both are self-reported directory
+    fields. Eligibility follows the unresolved status of the maintaining organization.
+  source_ids: [unsloth-license, unsloth-studio-header, yc-unsloth, unsloth-github-org]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [unsloth-readme, unsloth-license]
+licenses:
+  - name: Apache License 2.0 (unsloth/, tests/, scripts/)
+    spdx: Apache-2.0
+    url: https://github.com/unslothai/unsloth/blob/main/LICENSE
+    applies_to: code
+    source_ids: [unsloth-license]
+  - name: GNU Affero General Public License v3.0 only (studio/, unsloth_cli/)
+    spdx: AGPL-3.0-only
+    url: https://github.com/unslothai/unsloth/blob/main/COPYING
+    applies_to: code
+    source_ids: [unsloth-license, unsloth-copying, unsloth-studio-header]
+license_notes:
+  text: >-
+    The LICENSE file applies Apache 2.0 to the core package directories and the AGPL v3 to the
+    optional Studio and command-line directories; source files in those directories carry the
+    SPDX identifier AGPL-3.0-only. The PyPI metadata for the unsloth package declares Apache-2.0.
+  source_ids: [unsloth-license, unsloth-studio-header, pypi-unsloth]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [unsloth-readme]
+  documentation:
+    status: public
+    note: Installation and usage guides on unsloth.ai/docs.
+    source_ids: [unsloth-install-docs]
+  installation:
+    status: public
+    note: >-
+      Documented installs by install script (macOS, Linux, WSL, and Windows PowerShell), pip or
+      conda for Unsloth Core, Docker images (including a separate ROCm image), and desktop app
+      downloads.
+    source_ids: [unsloth-readme, unsloth-install-docs]
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists Windows, Linux, WSL, and macOS, with NVIDIA, AMD, and Intel GPUs, CPUs,
+      multi-GPU setups, and a Vulkan backend.
+    source_ids: [unsloth-readme]
+  release_status:
+    status: public
+    note: >-
+      Releases are published frequently on GitHub; the unsloth package version on PyPI at review
+      was 2026.9.12, uploaded on September 28, 2026.
+    source_ids: [unsloth-releases, pypi-unsloth]
+run_notes: []
+provenance: null
+tags: [training, fine-tuning, local-inference]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: unsloth-readme
+    title: unslothai/unsloth
+    url: https://github.com/unslothai/unsloth
+    publisher: Unsloth
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: unsloth-license
+    title: unslothai/unsloth LICENSE
+    url: https://github.com/unslothai/unsloth/blob/main/LICENSE
+    publisher: Unsloth
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: unsloth-copying
+    title: unslothai/unsloth COPYING
+    url: https://github.com/unslothai/unsloth/blob/main/COPYING
+    publisher: Unsloth
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: unsloth-studio-header
+    title: unslothai/unsloth studio/__init__.py
+    url: https://github.com/unslothai/unsloth/blob/main/studio/__init__.py
+    publisher: Unsloth
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: unsloth-releases
+    title: unslothai/unsloth releases
+    url: https://github.com/unslothai/unsloth/releases
+    publisher: Unsloth
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pypi-unsloth
+    title: unsloth package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/unsloth/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: unsloth-install-docs
+    title: Unsloth Installation | Unsloth Documentation
+    url: https://unsloth.ai/docs/get-started/install
+    publisher: Unsloth
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: yc-unsloth
+    title: "Unsloth AI: Open-Source Reinforcement Learning (RL) & Fine-tuning for LLMs. | Y Combinator"
+    url: https://www.ycombinator.com/companies/unsloth-ai
+    publisher: Y Combinator
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: unsloth-github-org
+    title: Unsloth AI on GitHub
+    url: https://github.com/unslothai
+    publisher: Unsloth
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,83 @@
+slug: tim-dettmers
+name: Tim Dettmers
+initials: TD
+headline: Creator and maintainer of bitsandbytes; Assistant Professor at CMU and Research Scientist at Ai2
+bio:
+  text: >-
+    Tim Dettmers works on making AI models practical to train and use with modest compute. He
+    created and maintains bitsandbytes, a PyTorch library for k-bit quantization that provides
+    8-bit optimizers, LLM.int8() inference, and support for QLoRA fine-tuning. He is first author
+    of the QLoRA paper, which fine-tunes a frozen 4-bit quantized model through low-rank adapters
+    and reports fine-tuning a 65B-parameter model on a single 48GB GPU. He is an Assistant
+    Professor at Carnegie Mellon University and a Research Scientist at Ai2.
+  source_ids: [about, bnb-repo, qlora-paper, cmu]
+affiliations:
+  - name: Carnegie Mellon University
+    organization_slug: carnegie-mellon-university
+    role: Assistant Professor
+    current: true
+    source_ids: [about, cmu]
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    role: Research Scientist
+    current: true
+    source_ids: [about, ai2-team]
+work:
+  - name: bitsandbytes
+    artifact_slug: null
+    url: https://github.com/bitsandbytes-foundation/bitsandbytes
+    contribution: >-
+      Created the library and maintains it; its README cites his papers for the 8-bit optimizers,
+      LLM.int8(), and QLoRA features.
+    source_ids: [about, cmu, bnb-repo]
+  - name: QLoRA
+    artifact_slug: null
+    url: https://arxiv.org/abs/2305.14314
+    contribution: >-
+      First author of the paper introducing QLoRA, a method for fine-tuning 4-bit quantized
+      language models through low-rank adapters.
+    source_ids: [qlora-paper]
+links:
+  - label: Personal site
+    url: https://timdettmers.com/
+  - label: CMU faculty page
+    url: https://www.csd.cs.cmu.edu/people/faculty/tim-dettmers
+publication_status: published
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: about
+    title: About Me — Tim Dettmers
+    url: https://timdettmers.com/about/
+    publisher: Tim Dettmers
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cmu
+    title: Tim Dettmers — Carnegie Mellon University Computer Science Department
+    url: https://www.csd.cs.cmu.edu/people/faculty/tim-dettmers
+    publisher: Carnegie Mellon University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-team
+    title: Ai2 team page
+    url: https://allenai.org/team
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bnb-repo
+    title: bitsandbytes (GitHub repository README)
+    url: https://github.com/bitsandbytes-foundation/bitsandbytes
+    publisher: bitsandbytes-foundation
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qlora-paper
+    title: "QLoRA: Efficient Finetuning of Quantized LLMs (arXiv 2305.14314)"
+    url: https://arxiv.org/abs/2305.14314
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-23
+    accessed_at: 2026-09-29

@@ -1,0 +1,156 @@
+slug: liger-kernel
+name: Liger Kernel
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: LinkedIn
+    organization_slug: linkedin
+    source_ids: [liger-repo, liger-license, li-liger-blog]
+organization_slugs: [linkedin]
+links:
+  - label: Repository
+    url: https://github.com/linkedin/Liger-Kernel
+    kind: repository
+  - label: Documentation
+    url: https://linkedin.github.io/Liger-Kernel/
+    kind: documentation
+  - label: LICENSE
+    url: https://raw.githubusercontent.com/linkedin/Liger-Kernel/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/linkedin/Liger-Kernel/releases
+    kind: release-notes
+  - label: "Liger Kernel: Efficient Triton Kernels for LLM Training (arXiv 2410.10989)"
+    url: https://arxiv.org/abs/2410.10989
+    kind: paper
+summary:
+  text: >-
+    Liger Kernel is an open-source collection of Triton GPU kernels for training large
+    language models, developed at LinkedIn. It provides Hugging Face-compatible
+    implementations of layers such as RMSNorm, RoPE, SwiGLU, and cross-entropy (including a
+    fused linear cross-entropy), plus memory-efficient losses for post-training methods such
+    as DPO, ORPO, and KTO.
+  source_ids: [liger-readme, li-liger-blog]
+useful_for:
+  text: >-
+    Reducing GPU memory use and increasing throughput when training or fine-tuning language
+    models, either by patching a Hugging Face Transformers model with one line of code or by
+    composing models from its modules. It works with PyTorch FSDP, DeepSpeed, and DDP, and is
+    integrated in trainers such as Axolotl, LLaMA-Factory, TRL's SFTTrainer, and the Hugging
+    Face Trainer.
+  source_ids: [liger-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The project is hosted in LinkedIn's GitHub organization, its LICENSE names LinkedIn
+    Corporation as copyright holder, and LinkedIn Engineering describes it as LinkedIn's
+    open-source project. LinkedIn Corporation is listed as a U.S. subsidiary in Exhibit 21 to
+    Microsoft's Form 10-K for fiscal 2026 (see the LinkedIn record).
+  source_ids: [liger-repo, liger-license, li-liger-blog, msft-ex21-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [liger-repo, liger-pypi]
+licenses:
+  - name: BSD 2-Clause License
+    spdx: BSD-2-Clause
+    url: https://raw.githubusercontent.com/linkedin/Liger-Kernel/main/LICENSE
+    applies_to: code
+    source_ids: [liger-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [liger-repo]
+  documentation:
+    status: public
+    note: >-
+      A documentation site covers getting started, examples, and high- and low-level APIs.
+    source_ids: [liger-docs]
+  installation:
+    status: public
+    note: >-
+      Installable from PyPI (pip install liger-kernel), as a nightly package, or from source.
+    source_ids: [liger-readme, liger-pypi]
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists dependencies for NVIDIA CUDA (torch 2.1.2 or later, Triton 2.3.1 or
+      later), AMD ROCm (torch 2.5.0 or later, Triton 3.0.0 or later), and Ascend NPU, plus
+      optional CUDA-only cuTile and CuTe DSL backends (the latter targeting Hopper and
+      Blackwell GPUs). It notes that the kernels inherit Triton's hardware compatibility.
+    source_ids: [liger-readme]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub and PyPI; v0.8.3 was released on September 16, 2026.
+    source_ids: [liger-releases, liger-pypi]
+run_notes: []
+provenance: null
+tags: [training]
+publication_status: published
+archive_note: null
+released_at: 2024-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: liger-repo
+    title: linkedin/Liger-Kernel (GitHub repository)
+    url: https://github.com/linkedin/Liger-Kernel
+    publisher: LinkedIn
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liger-readme
+    title: Liger Kernel README
+    url: https://raw.githubusercontent.com/linkedin/Liger-Kernel/main/README.md
+    publisher: LinkedIn
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liger-license
+    title: Liger-Kernel LICENSE
+    url: https://raw.githubusercontent.com/linkedin/Liger-Kernel/main/LICENSE
+    publisher: LinkedIn
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liger-docs
+    title: Liger-Kernel Docs
+    url: https://linkedin.github.io/Liger-Kernel/
+    publisher: LinkedIn
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liger-releases
+    title: Liger-Kernel releases (GitHub releases feed)
+    url: https://github.com/linkedin/Liger-Kernel/releases.atom
+    publisher: LinkedIn
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liger-pypi
+    title: liger-kernel on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/liger-kernel/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: li-liger-blog
+    title: "Liger-Kernel: Empowering an open source ecosystem of Triton Kernels for Efficient LLM Training"
+    url: https://www.linkedin.com/blog/engineering/open-source/liger-kernel-open-source-ecosystem-for-efficient-llm-training
+    publisher: LinkedIn Engineering
+    kind: announcement
+    published_at: 2024-12-05
+    accessed_at: 2026-09-29
+  - id: msft-ex21-2026
+    title: Microsoft Corporation Form 10-K fiscal 2026, Exhibit 21 (Subsidiaries of Registrant)
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-ex21.htm
+    publisher: U.S. Securities and Exchange Commission (Microsoft filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

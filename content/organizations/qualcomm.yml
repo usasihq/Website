@@ -1,0 +1,164 @@
+slug: qualcomm
+name: Qualcomm
+legal_name:
+  text: QUALCOMM Incorporated
+  source_ids: [qcom-10q-q3-fy2026]
+website: https://www.qualcomm.com
+logo_text: QC
+summary:
+  text: >-
+    Qualcomm develops semiconductors and licenses its patent portfolio. Its annual report names
+    on-device AI among its foundational technologies, including the Hexagon NPU in
+    Snapdragon platforms. It also sells data center products, including rack-scale AI inference
+    accelerators under the Qualcomm Dragonfly brand.
+  source_ids: [qcom-10k-fy2025, qcom-modular-release, qcom-data-center-page]
+organization_roles: [chip-designer, developer-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation (incorporated in California in 1985 and reincorporated in Delaware in 1991)
+  source_ids: [qcom-10k-fy2025, qcom-10q-q3-fy2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Diego, California
+  country: US
+  source_ids: [qcom-10q-q3-fy2026]
+other_locations: []
+founded:
+  year: 1985
+  source_ids: [qcom-10k-fy2025]
+sectors: [chips]
+status_note: null
+products:
+  - id: dragonfly-ai-accelerators
+    name: Qualcomm Dragonfly AI accelerators (AI200, AI250, AI300)
+    kind: hardware
+    access: >-
+      Rack-scale AI inference platforms sold under the Qualcomm Dragonfly data center brand,
+      alongside a data center CPU, optical and electrical connectivity DSPs, custom silicon, and
+      software including an AI infrastructure management suite and the Cloud AI SDK; the page
+      directs buyers to Qualcomm sales.
+    url: https://www.qualcomm.com/data-center
+    source_ids: [qcom-data-center-page]
+    last_reviewed: 2026-09-29
+  - id: hexagon-npu
+    name: Qualcomm Hexagon NPU
+    kind: hardware
+    access: >-
+      Neural processing unit for on-device AI inference, part of the Qualcomm AI Engine in
+      Snapdragon platforms; Qualcomm lists laptops, smartphones, and XR devices that use it.
+    url: https://www.qualcomm.com/processors/hexagon
+    source_ids: [qcom-hexagon-page, qcom-10k-fy2025]
+    last_reviewed: 2026-09-29
+  - id: qualcomm-ai-hub
+    name: Qualcomm AI Hub
+    kind: developer-tool
+    access: >-
+      Web platform for converting, quantizing, profiling, and deploying models on Qualcomm
+      devices, with a library of pre-optimized models; developers sign in to AI Hub Workbench
+      to compile and test models on hosted devices.
+    url: https://aihub.qualcomm.com
+    source_ids: [qcom-ai-hub-page, aihm-readme]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Qualcomm completed its acquisition of Alphawave IP Group plc, a developer of high-speed
+      wired connectivity IP, custom silicon, and connectivity products, on December 18, 2025, as
+      part of its expansion into data centers.
+    source_ids: [qcom-10q-q3-fy2026]
+  - text: >-
+      Qualcomm completed its acquisition of Modular Inc, whose software platform is meant to run
+      AI workloads across different hardware architectures, on July 28, 2026, and announced the
+      closing on July 29, 2026. The announcement says Mojo, MAX, and Modular Cloud continue as
+      products and brands.
+    source_ids: [qcom-10q-q3-fy2026, qcom-modular-release]
+  - text: >-
+      Qualcomm Technologies, Inc., a subsidiary of Qualcomm Incorporated, runs substantially all
+      of the company's engineering, research and development, and product businesses, including
+      Snapdragon; Qualcomm Incorporated holds the licensing business and most of the patent
+      portfolio.
+    source_ids: [qcom-modular-release]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    QUALCOMM Incorporated is a Delaware corporation with principal executive offices in San
+    Diego, California, per the cover page of its Form 10-Q for the quarter ended June 28, 2026.
+  source_ids: [qcom-10q-q3-fy2026]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Qualcomm publishes the Qualcomm AI Hub Models code on GitHub under the BSD 3-Clause
+    license. The models packaged there keep the licenses of their original implementations.
+    AI Hub Workbench features such as compiling and on-device profiling require a Qualcomm
+    account.
+  source_ids: [aihm-readme, aihm-license, aihm-qwen3-4b-readme]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: qcom-10k-fy2025
+    title: QUALCOMM Incorporated Form 10-K for the fiscal year ended September 28, 2025
+    url: https://www.sec.gov/Archives/edgar/data/804328/000080432825000085/qcom-20250928.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-11-05
+    accessed_at: 2026-09-29
+  - id: qcom-10q-q3-fy2026
+    title: QUALCOMM Incorporated Form 10-Q for the quarter ended June 28, 2026
+    url: https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29
+  - id: qcom-data-center-page
+    title: Qualcomm Data Center Products | Qualcomm Dragonfly
+    url: https://www.qualcomm.com/data-center
+    publisher: Qualcomm
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qcom-hexagon-page
+    title: Qualcomm Hexagon NPU | Snapdragon NPU Details
+    url: https://www.qualcomm.com/processors/hexagon
+    publisher: Qualcomm
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qcom-ai-hub-page
+    title: Qualcomm AI Hub
+    url: https://aihub.qualcomm.com
+    publisher: Qualcomm
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qcom-modular-release
+    title: Qualcomm Completes Acquisition of Modular
+    url: https://www.qualcomm.com/news/releases/2026/07/qualcomm-completes-acquisition-of-modular
+    publisher: Qualcomm
+    kind: announcement
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29
+  - id: aihm-readme
+    title: qualcomm/ai-hub-models README
+    url: https://github.com/qualcomm/ai-hub-models
+    publisher: Qualcomm (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: aihm-license
+    title: qualcomm/ai-hub-models LICENSE
+    url: https://github.com/qualcomm/ai-hub-models/blob/main/LICENSE
+    publisher: Qualcomm (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: aihm-qwen3-4b-readme
+    title: Qwen3-4B model README in qualcomm/ai-hub-models
+    url: https://github.com/qualcomm/ai-hub-models/blob/main/src/qai_hub_models/models/qwen3_4b/README.md
+    publisher: Qualcomm (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

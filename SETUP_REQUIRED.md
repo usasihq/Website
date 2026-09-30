@@ -7,16 +7,21 @@ shown honestly on the site rather than faked.
 Nothing has been deployed, no DNS has been changed, and no accounts have been
 created.
 
-## 1. Source repository (enables corrections and edit links)
+## 1. Source repository (enables edit links and GitHub issue forms)
 
-- [ ] Create a GitHub repository and push this project to it.
+The GitHub account `usasihq` exists but had no repositories at the time of the
+build. Corrections already work by email (usasihq@gmail.com).
+
+- [ ] Create a repository under `github.com/usasihq` (for example
+      `usasihq/usasi`) and push this project to it. This machine's GitHub
+      login is a different account, so it was not done automatically.
 - [ ] Set `RAW_CONFIG.repository.url` in `lib/site-config.ts` to
       `https://github.com/<owner>/<repo>` (and `branch` if not `main`).
 - [ ] Enable Issues so the forms in `.github/ISSUE_TEMPLATE/` work.
 
-Until then, entry pages say the repository isn't available yet instead of
-showing **Report a correction** / **Edit this entry** links, and `/contribute/`
-explains the same.
+Until then, **Report a correction** opens a pre-filled email to
+usasihq@gmail.com, **Edit this entry** is replaced by a short explanation, and
+`/contribute/` explains how to send corrections by email.
 
 ## 2. Tip link (Support Us)
 
@@ -68,13 +73,35 @@ the same build.
 
 ## 4. Ownership and contact details
 
-- [ ] `/about/` says ownership and contact details have not been published. If
-      you want them public, edit `content/pages/about.mdx` (section
-      "Ownership and contact").
+Configured in `lib/site-config.ts` (`contact`, `socials`) and shown in the
+footer, on `/about/#contact`, in `/.well-known/security.txt`, and in the
+homepage's structured data:
+
+- Email: usasihq@gmail.com
+- GitHub `usasihq`, Hugging Face `usasihq`, X `@usasihq`, YouTube `@USASIHQ`
+- Bluesky `@usasihq.bsky.social`, Truth Social `@Usasihq` (the Truth Social
+  profile could not be checked automatically — its site requires a bot
+  verification step — so confirm the link opens your profile).
+
+- [ ] `/about/` still says further ownership details have not been published.
+      Edit `content/pages/about.mdx` ("Ownership") if you want to add them.
+- [ ] `public/.well-known/security.txt` expires 2027-09-29; renew it yearly.
 - [ ] `LICENSE` names "USASI contributors" as the copyright holder. Replace it
       with your name or entity if you prefer.
 
-## 5. Artwork rights
+## 5. Local corner
+
+- [ ] The corner profiles real people using public professional information
+      only, and says on the page that removal requests are honored. Be ready to
+      act on requests sent to usasihq@gmail.com (set the profile to `draft` or
+      delete it, then rebuild).
+- [ ] Recommended: let featured people know before or when they appear, and
+      invite corrections. Opt-in is kinder than surprise.
+- [ ] Monthly rotation needs a monthly rebuild: enable one of the deploy
+      workflows (they run on the 1st of each month) or rebuild manually.
+- [ ] Optional: set explicit lineups per month in `content/local-corner.yml`.
+
+## 6. Artwork rights
 
 - [ ] Confirm you hold the rights to the supplied artwork
       (`assets/original/USA SUPER LOGO.png`). It is marked "all rights reserved,
@@ -82,12 +109,12 @@ the same build.
 - [ ] Optional: supply a text-free version of the artwork if you want live HTML
       lettering over the image (see README → Images).
 
-## 6. Editorial decisions waiting for you
+## 7. Editorial decisions waiting for you
 
 See `CONTENT_REVIEW.md` for the full queue. The items that need an owner
 decision (not just more research) are listed at its top.
 
-## 7. Environment notes
+## 8. Environment notes
 
 - Node.js 22 is required; ≥ 22.13 is recommended. The machine used to build
   this had Node 22.11, which is why Vitest 4 / Vite 6 and ESLint 9 are pinned.

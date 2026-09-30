@@ -1,0 +1,145 @@
+slug: hermes
+name: Hermes
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Nous Research
+    organization_slug: nous-research
+    source_ids: [nous-releases, hermes4-report-pdf]
+organization_slugs: [nous-research]
+links:
+  - label: Nous Research releases
+    url: https://nousresearch.com/releases
+    kind: release-notes
+  - label: Hermes 4 technical report (arXiv 2508.18255)
+    url: https://arxiv.org/abs/2508.18255
+    kind: paper
+  - label: Hermes 4.3 announcement
+    url: https://nousresearch.com/introducing-hermes-4-3/
+    kind: release-notes
+summary:
+  text: >-
+    Hermes is Nous Research's series of post-trained language models, each built on a base model
+    released by another developer. Releases listed by Nous include Nous-Hermes Llama 2 13B (July
+    2023), Hermes 2 models on Mistral, Mixtral, Yi, and Llama 3 bases (2023 to 2024), Hermes 3 on
+    Llama 3.1 (August 2024), Hermes 4 at 405B, 70B, and 14B (August 2025), and Hermes 4.3 36B
+    (December 2025). Hermes 4 and 4.3 are hybrid reasoning models that can answer directly or
+    reason in think tags first.
+  source_ids: [nous-releases, nous-hf-models, hermes4-report-pdf, mc-hermes-4-3-36b]
+useful_for:
+  text: >-
+    Nous describes the Hermes 4 line as general assistants with optional reasoning, function
+    calling and tool use, and structured outputs that follow a given JSON schema, and says it
+    trained them to be easier to steer, with reduced refusal rates.
+  source_ids: [mc-hermes-4-70b, hermes4-report-pdf]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Hermes models are post-trained and published by Nous Research, Inc., a Delaware
+    corporation with U.S. addresses (see the nous-research record). Eligibility rests on Nous
+    Research as maintainer of the fine-tunes; it does not extend to the base models, which were
+    developed by other organizations. Each release is assessed on its own record.
+  source_ids: [nous-portal-terms, nous-shop-privacy, hermes4-report-pdf]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Hermes 4 and Hermes 4.3 release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    Every Hermes release is a fine-tune of another developer's base model. Hermes 4 405B and 70B
+    start from Meta's Llama 3.1 405B and 70B, Hermes 4 14B from Qwen3 14B, and Hermes 4.3 36B
+    from ByteDance Seed's Seed-OSS-36B-Base. Earlier generations used Llama 2, Mistral 7B,
+    Mixtral 8x7B, Yi 34B, Llama 3, and Llama 3.1 bases. Nous Research's own work is the
+    post-training data, the fine-tuning, and (for Hermes 4.3) decentralized training on Psyche.
+  derived_from:
+    - name: Llama 3.1 (405B and 70B base)
+      artifact_slug: llama
+      url: https://huggingface.co/meta-llama/Llama-3.1-70B
+      note: Meta base models for Hermes 3 and Hermes 4 405B/70B.
+    - name: Qwen3-14B
+      artifact_slug: null
+      url: https://huggingface.co/Qwen/Qwen3-14B
+      note: Qwen team base model for Hermes 4 14B; not a catalog member.
+    - name: Seed-OSS-36B-Base
+      artifact_slug: null
+      url: https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Base
+      note: ByteDance Seed Team base model for Hermes 4.3 36B; not a catalog member.
+  source_ids: [hermes4-report-pdf, mc-hermes-4-3-36b, nous-releases, nous-hf-models, seed-oss-card, qwen3-14b-card]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nous-releases
+    title: Releases | Nous Research
+    url: https://nousresearch.com/releases
+    publisher: Nous Research
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hermes4-report-pdf
+    title: Hermes 4 Technical Report (arXiv 2508.18255v2)
+    url: https://arxiv.org/pdf/2508.18255v2
+    publisher: Nous Research
+    kind: paper
+    published_at: 2025-09-02
+    accessed_at: 2026-09-29
+  - id: mc-hermes-4-3-36b
+    title: NousResearch/Hermes-4.3-36B model card
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    publisher: Nous Research
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-hermes-4-70b
+    title: NousResearch/Hermes-4-70B model card
+    url: https://huggingface.co/NousResearch/Hermes-4-70B
+    publisher: Nous Research
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nous-hf-models
+    title: Hugging Face model listing for the NousResearch organization (API)
+    url: https://huggingface.co/api/models?author=NousResearch&sort=createdAt&direction=-1&limit=80
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qwen3-14b-card
+    title: Qwen/Qwen3-14B model card
+    url: https://huggingface.co/Qwen/Qwen3-14B
+    publisher: Qwen Team
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: seed-oss-card
+    title: ByteDance-Seed/Seed-OSS-36B-Base model card
+    url: https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Base
+    publisher: ByteDance Seed
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nous-portal-terms
+    title: Terms of Service - Nous Portal
+    url: https://portal.nousresearch.com/terms
+    publisher: Nous Research
+    kind: official-page
+    published_at: 2026-09-28
+    accessed_at: 2026-09-29
+  - id: nous-shop-privacy
+    title: Privacy policy | Nous Research shop
+    url: https://shop.nousresearch.com/policies/privacy-policy
+    publisher: Nous Research
+    kind: official-page
+    published_at: 2026-07-05
+    accessed_at: 2026-09-29

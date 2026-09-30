@@ -1,0 +1,185 @@
+slug: v-jepa-2-vitg-384
+name: V-JEPA 2 ViT-g/16 (384 px)
+kind: model
+record_level: release
+family_slug: v-jepa-2
+version: "2 ViT-g/16, 384 resolution (vjepa2-vitg-fpc64-384)"
+maintainers:
+  - name: Meta (FAIR)
+    organization_slug: meta
+    source_ids: [vjepa2-readme, hf-vjepa2-vitg-384]
+organization_slugs: [meta]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/facebook/vjepa2-vitg-fpc64-384
+    kind: model-hub
+  - label: vjepa2 repository
+    url: https://github.com/facebookresearch/vjepa2
+    kind: repository
+  - label: LICENSE (MIT, repository)
+    url: https://github.com/facebookresearch/vjepa2/blob/main/LICENSE
+    kind: license
+  - label: V-JEPA 2 paper (arXiv 2506.09985)
+    url: https://arxiv.org/abs/2506.09985
+    kind: paper
+summary:
+  text: >-
+    The 1-billion-parameter ViT-g/16 encoder from Meta's V-JEPA 2, in the version that takes
+    64-frame clips at 384-pixel resolution. It was pretrained with self-supervision on
+    VideoMix22M, a mix of about 22 million video and image samples. Meta's action-conditioned
+    V-JEPA 2-AC world model was post-trained from a ViT-g/16 V-JEPA 2 encoder.
+  source_ids: [hf-vjepa2-vitg-384, vjepa2-readme, vjepa2-paper-html]
+useful_for:
+  text: >-
+    The model card describes use as a video and image encoder for video classification,
+    retrieval, and as the video encoder of vision-language models.
+  source_ids: [hf-vjepa2-vitg-384]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card identifies FAIR at Meta as the developer, and the code is published by Meta in
+    the facebookresearch GitHub organization. Meta Platforms, Inc. has its principal executive
+    offices in Menlo Park, California, per its Form 10-K.
+  source_ids: [hf-vjepa2-vitg-384, vjepa2-readme, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable without gating from Hugging Face and as a direct checkpoint link in the
+    repository README.
+  source_ids: [hf-api-vjepa2-vitg-384, vjepa2-readme]
+licenses:
+  - name: MIT License (vjepa2 repository)
+    spdx: MIT
+    url: https://github.com/facebookresearch/vjepa2/blob/main/LICENSE
+    applies_to: code
+    source_ids: [vjepa2-license, vjepa2-readme]
+  - name: Apache License 2.0 (Hugging Face model card)
+    spdx: Apache-2.0
+    url: https://huggingface.co/facebook/vjepa2-vitg-fpc64-384
+    applies_to: weights
+    source_ids: [hf-vjepa2-vitg-384, hf-api-vjepa2-vitg-384]
+license_notes:
+  text: >-
+    The repository README says most of V-JEPA 2 is licensed under MIT, with three
+    data-augmentation and worker-initialization files under Apache 2.0, but does not name a
+    separate license for the checkpoints linked from the README. The Hugging Face card for this
+    checkpoint declares Apache-2.0. Meta's announcement says the code and checkpoints are
+    available for commercial and research applications.
+  source_ids: [vjepa2-readme, hf-vjepa2-vitg-384, vjepa2-blog]
+checklist:
+  weights:
+    status: public
+    note: Ungated Hugging Face repository and direct download link.
+    source_ids: [hf-api-vjepa2-vitg-384, vjepa2-readme]
+  inference_code:
+    status: public
+    note: >-
+      The repository provides PyTorch Hub loaders and a demo; the model card documents use with
+      Hugging Face Transformers.
+    source_ids: [vjepa2-readme, hf-vjepa2-vitg-384]
+  training_code:
+    status: public
+    note: >-
+      The repository publishes the V-JEPA 2 pretraining loop and launch commands, with
+      pretraining and cooldown configurations for ViT-g/16 (including a 384-pixel cooldown).
+    source_ids: [vjepa2-readme, vjepa2-configs-vitg16]
+  training_data_information:
+    status: partial
+    note: >-
+      The paper lists VideoMix22M's components (Something-Something v2, Kinetics, HowTo100M,
+      YT-Temporal-1B, and ImageNet) and says all sources are publicly available. The YT-Temporal-1B
+      portion was filtered by retrieval-based curation; this review did not find the curated
+      subset list published.
+    source_ids: [vjepa2-paper-html]
+  training_recipe:
+    status: public
+    note: >-
+      Pretraining and cooldown configuration files are published, and the paper documents
+      pretraining hyperparameters in its appendix.
+    source_ids: [vjepa2-configs-vitg16, vjepa2-paper-html]
+  evaluation_materials:
+    status: public
+    note: >-
+      The repository publishes attentive-probe evaluation code, evaluation configs for the ViT-g
+      384-pixel model (for example SSv2, Diving48, EPIC-KITCHENS-100, Kinetics-400, ImageNet-1k),
+      and trained probe checkpoints.
+    source_ids: [vjepa2-readme, vjepa2-configs-eval-vitg384]
+run_notes:
+  - text: >-
+      The README notes that the code depends on decord, which does not support macOS, and
+      documents Python 3.12 environment setup; the model card documents loading with Transformers'
+      AutoModel and AutoVideoProcessor.
+    source_ids: [vjepa2-readme, hf-vjepa2-vitg-384]
+provenance: null
+tags: [computer-vision, video, self-supervised]
+publication_status: published
+archive_note: null
+released_at: 2025-06-11
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-vjepa2-vitg-384
+    title: facebook/vjepa2-vitg-fpc64-384 model card
+    url: https://huggingface.co/facebook/vjepa2-vitg-fpc64-384
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-vjepa2-vitg-384
+    title: facebook/vjepa2-vitg-fpc64-384 (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/facebook/vjepa2-vitg-fpc64-384
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-readme
+    title: facebookresearch/vjepa2 README
+    url: https://github.com/facebookresearch/vjepa2/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-license
+    title: facebookresearch/vjepa2 LICENSE (MIT)
+    url: https://github.com/facebookresearch/vjepa2/blob/main/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-configs-vitg16
+    title: vjepa2 configs/train/vitg16
+    url: https://github.com/facebookresearch/vjepa2/tree/main/configs/train/vitg16
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-configs-eval-vitg384
+    title: vjepa2 configs/eval/vitg-384
+    url: https://github.com/facebookresearch/vjepa2/tree/main/configs/eval/vitg-384
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-paper-html
+    title: "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning (arXiv 2506.09985, HTML)"
+    url: https://arxiv.org/html/2506.09985
+    publisher: arXiv (Meta FAIR authors)
+    kind: paper
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: vjepa2-blog
+    title: V-JEPA 2 announcement (Meta AI blog)
+    url: https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-06-11
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

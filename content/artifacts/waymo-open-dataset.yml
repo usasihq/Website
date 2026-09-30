@@ -1,0 +1,214 @@
+slug: waymo-open-dataset
+name: Waymo Open Dataset
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Waymo
+    organization_slug: waymo
+    source_ids: [wod-terms, wod-readme, wod-about]
+organization_slugs: [waymo]
+links:
+  - label: Waymo Open Dataset website
+    url: https://waymo.com/open/
+    kind: website
+  - label: About the dataset
+    url: https://waymo.com/open/about/
+    kind: documentation
+  - label: Waymo Dataset License Agreement for Non-Commercial Use
+    url: https://waymo.com/open/terms/
+    kind: license
+  - label: waymo-open-dataset code repository
+    url: https://github.com/waymo-research/waymo-open-dataset
+    kind: repository
+  - label: Perception dataset paper (arXiv 1912.04838)
+    url: https://arxiv.org/abs/1912.04838
+    kind: paper
+  - label: Motion dataset paper (arXiv 2104.10133)
+    url: https://arxiv.org/abs/2104.10133
+    kind: paper
+summary:
+  text: >-
+    Autonomous driving data collected by Waymo vehicles, released for research in August 2019
+    and since expanded into three datasets: Perception (lidar and camera data with labels for
+    2,030 segments), Motion (object trajectories and 3D maps for 103,354 segments), and
+    End-to-End Driving (360-degree camera images and routing instructions for 5,000
+    segments). A companion repository provides the data format definitions, evaluation
+    metrics, and TensorFlow helper code.
+  source_ids: [wod-about, wod-readme, waymo-open-2019]
+useful_for:
+  text: >-
+    Documented for research on perception (such as 3D detection, tracking, and segmentation),
+    behavior and motion prediction, simulated agents, and vision-based end-to-end driving, and
+    for benchmarking in Waymo's open challenges and in academic or applied research
+    publications.
+  source_ids: [wod-about, wod-home, wod-terms]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The dataset is published and licensed by Waymo LLC, whose terms of service give its
+    address in Mountain View, California, and the code repository is under Waymo's
+    waymo-research GitHub organization with Waymo LLC as copyright holder.
+  source_ids: [wod-terms, waymo-terms, wod-license-file]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    Free of charge, but downloads require signing in with a Google account and registering at
+    waymo.com/open, and use is limited to non-commercial purposes under Waymo's custom
+    license. Waymo's FAQ states that the license should not be considered an open source
+    license.
+  source_ids: [wod-home, wod-terms, wod-faq]
+licenses:
+  - name: Waymo Dataset License Agreement for Non-Commercial Use (March 2025)
+    spdx: null
+    url: https://waymo.com/open/terms/
+    applies_to: data
+    source_ids: [wod-terms]
+  - name: Apache License 2.0 (repository code outside src/waymo_open_dataset/wdl_limited)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/waymo-research/waymo-open-dataset/master/LICENSE
+    applies_to: code
+    source_ids: [wod-license-file, wod-readme]
+  - name: BSD 3-clause copyright license plus a limited patent license (wdl_limited folders)
+    spdx: null
+    url: https://raw.githubusercontent.com/waymo-research/waymo-open-dataset/master/LICENSE
+    applies_to: code
+    source_ids: [wod-license-file, wod-readme]
+license_notes:
+  text: >-
+    The data license grants a personal, royalty-free license for research, teaching,
+    scientific publication, personal experimentation, and benchmarking for academic or applied
+    research publication only. It bars using the data, or models trained on it, to operate or
+    assist a vehicle, in production systems, or for other primarily commercial purposes. Apart
+    from small extracts used as illustrations in publications, the dataset may be
+    redistributed only to others who have registered and accepted the terms; trained models
+    may be published only with notices that carry the non-commercial terms downstream; users
+    must include a set attribution and accept a limited non-assert toward Waymo. Code in each
+    wdl_limited subfolder also carries a limited patent license that covers only the use case
+    that license sets out in connection with the dataset, in compliance with the data
+    license. The repository README's metadata still names an August 2019 version of the
+    license, while the terms page shows the March 2025 version.
+  source_ids: [wod-terms, wod-readme]
+checklist:
+  access:
+    status: partial
+    note: >-
+      Downloadable at no cost after Google sign-in and registration; the download and data
+      pages redirect to Google sign-in. Use is restricted to non-commercial purposes.
+    source_ids: [wod-home, wod-terms]
+  provenance:
+    status: public
+    note: >-
+      Waymo states the data was collected by its vehicles, lists the sensors used for each
+      dataset, and names collection locations (the Motion dataset's map locations include San
+      Francisco, Phoenix, Mountain View, Los Angeles, Detroit, and Seattle). It notes the data mixes manual and
+      autonomous driving without labeling which is which.
+    source_ids: [wod-about, wod-faq, waymo-open-2019]
+  documentation:
+    status: public
+    note: >-
+      The dataset site describes each component and notes its latest updates; the repository
+      holds the format definitions, labeling specification, metrics code, tutorials, and a
+      release history, and papers describe the Perception and Motion datasets.
+    source_ids: [wod-about, wod-faq, wod-readme, wod-paper-perception, wod-paper-motion]
+  licensing:
+    status: public
+    note: Custom non-commercial data license published on the dataset site; repository code mainly Apache 2.0.
+    source_ids: [wod-terms, wod-license-file]
+  stated_limitations:
+    status: public
+    note: >-
+      Waymo states the data should be used only for research and not to evaluate the
+      real-world performance of any vehicle, because manual and autonomous driving data are
+      mixed, and that it is only a fraction of the data used to train the Waymo Driver.
+      Images blur faces and license plates.
+    source_ids: [wod-about, wod-faq]
+run_notes: []
+provenance:
+  text: >-
+    Collected by Waymo's own vehicles. The August 2019 first release covered 1,000 driving
+    segments recorded in Phoenix, Kirkland, Mountain View, and San Francisco; later versions
+    added the Motion and End-to-End Driving datasets. Motion dataset 3D boxes were produced
+    by a model trained on the Perception dataset.
+  derived_from: []
+  source_ids: [waymo-open-2019, wod-about]
+tags: [autonomous-driving, robotics, benchmark]
+publication_status: published
+archive_note: null
+released_at: 2019-08-21
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: wod-home
+    title: Waymo Open Dataset
+    url: https://waymo.com/open/
+    publisher: Waymo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: wod-about
+    title: About – Waymo Open Dataset
+    url: https://waymo.com/open/about/
+    publisher: Waymo
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: wod-faq
+    title: FAQ – Waymo Open Dataset
+    url: https://waymo.com/open/faq/
+    publisher: Waymo
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: wod-terms
+    title: Waymo Dataset License Agreement for Non-Commercial Use (March 2025)
+    url: https://waymo.com/open/terms/
+    publisher: Waymo
+    kind: license
+    published_at: 2025-03
+    accessed_at: 2026-09-29
+  - id: wod-readme
+    title: waymo-research/waymo-open-dataset README
+    url: https://github.com/waymo-research/waymo-open-dataset
+    publisher: Waymo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: wod-license-file
+    title: waymo-research/waymo-open-dataset LICENSE
+    url: https://raw.githubusercontent.com/waymo-research/waymo-open-dataset/master/LICENSE
+    publisher: Waymo
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: waymo-open-2019
+    title: "Waymo Open Dataset: Sharing our self-driving data for research"
+    url: https://waymo.com/blog/2019/08/waymo-open-dataset-sharing-our-self/
+    publisher: Waymo
+    kind: announcement
+    published_at: 2019-08-21
+    accessed_at: 2026-09-29
+  - id: wod-paper-perception
+    title: "Scalability in Perception for Autonomous Driving: Waymo Open Dataset (arXiv 1912.04838)"
+    url: https://arxiv.org/abs/1912.04838
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-10
+    accessed_at: 2026-09-29
+  - id: wod-paper-motion
+    title: "Large Scale Interactive Motion Forecasting for Autonomous Driving: The Waymo Open Motion Dataset (arXiv 2104.10133)"
+    url: https://arxiv.org/abs/2104.10133
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-04-20
+    accessed_at: 2026-09-29
+  - id: waymo-terms
+    title: Waymo Website Terms of Service
+    url: https://waymo.com/terms/
+    publisher: Waymo
+    kind: official-page
+    published_at: 2018-02-20
+    accessed_at: 2026-09-29

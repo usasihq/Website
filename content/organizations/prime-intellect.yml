@@ -1,0 +1,202 @@
+slug: prime-intellect
+name: Prime Intellect
+legal_name:
+  text: Prime Intellect, Inc.
+  source_ids: [sec-formd-prime-2026-07, prime-terms]
+website: https://www.primeintellect.ai
+logo_text: PI
+summary:
+  text: >-
+    Prime Intellect provides GPU compute, a hosted post-training platform (Lab) with an
+    Environments Hub for reinforcement-learning environments, inference, and code sandboxes,
+    and trains open-weight models such as the INTELLECT series. It maintains the open-source
+    prime-rl training framework and the verifiers environment library.
+  source_ids: [prime-home, prime-docs, prime-rl-readme]
+organization_roles: [model-developer, research-lab, compute-infrastructure, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Corporation incorporated in Delaware in 2024, per its SEC Form D filing.
+  source_ids: [sec-formd-prime-2026-07]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Dover, Delaware (principal place of business listed in its SEC Form D)
+  country: US
+  source_ids: [sec-formd-prime-2026-07, sec-edgar-prime]
+other_locations:
+  - label: San Francisco, California
+    country: US
+    source_ids: [prime-careers, prime-home]
+  - label: New York, New York
+    country: US
+    source_ids: [prime-careers]
+founded: null
+sectors: [open-models, cloud, research]
+status_note: null
+products:
+  - id: prime-compute
+    name: Prime Intellect Compute
+    kind: compute-service
+    access: >-
+      On-demand GPU instances, multi-node clusters, and reserved clusters; the CLI reference
+      documents provisioning instances with the prime CLI and an account API key.
+    url: https://docs.primeintellect.ai/cli-reference/provision-gpu
+    source_ids: [prime-home, prime-docs, prime-docs-gpu]
+    last_reviewed: 2026-09-29
+  - id: prime-lab
+    name: Lab (hosted training and Environments Hub)
+    kind: developer-tool
+    access: >-
+      Hosted platform for running reinforcement-learning training on Prime Intellect's
+      infrastructure, launched from the prime CLI with a dashboard for monitoring runs; it
+      includes the Environments Hub and hosted evaluations.
+    url: https://docs.primeintellect.ai/hosted-training/getting-started
+    source_ids: [prime-docs-lab, prime-docs]
+    last_reviewed: 2026-09-29
+  - id: prime-inference
+    name: Prime Intellect Inference
+    kind: hosted-model-api
+    access: >-
+      OpenAI-compatible inference API billed per input and output token from a Prime Intellect
+      account balance; API keys are created on the Prime Intellect platform.
+    url: https://docs.primeintellect.ai/inference/overview
+    source_ids: [prime-docs-inference]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      INTELLECT-1, a 10B-parameter model trained from scratch on 1 trillion tokens, was trained on
+      up to 14 concurrent nodes across three continents, with compute contributed by 30
+      independent community contributors, according to its model card.
+    source_ids: [mc-intellect-1]
+  - text: >-
+      prime-rl is released under Apache 2.0 and verifiers under the MIT License.
+    source_ids: [prime-rl-license, verifiers-license]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Prime Intellect, Inc. is a Delaware corporation; its July 2026 SEC Form D filing lists its
+    principal place of business in Dover, Delaware, and its terms of service and privacy policy
+    use the same Dover address. Its careers page lists roles in San Francisco and New York City,
+    and its homepage invites applicants to work in San Francisco or remotely. All documented
+    locations are in the United States.
+  source_ids: [sec-formd-prime-2026-07, sec-edgar-prime, prime-terms, prime-privacy, prime-careers, prime-home]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Prime Intellect publishes INTELLECT model weights on Hugging Face (INTELLECT-3 under the MIT
+    License) and open-sources its prime-rl training framework and verifiers library.
+    INTELLECT-3 is post-trained from a third-party base model (GLM-4.5-Air-Base). Its compute,
+    Lab, and inference offerings are hosted services. This catalog assesses openness per release.
+  source_ids: [mc-intellect-3, prime-rl-license, verifiers-license, prime-docs]
+hiring_url: https://www.primeintellect.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: prime-home
+    title: Prime Intellect - The Open Superintelligence Stack
+    url: https://www.primeintellect.ai/
+    publisher: Prime Intellect
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-docs
+    title: Prime Intellect documentation
+    url: https://docs.primeintellect.ai/
+    publisher: Prime Intellect
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-docs-gpu
+    title: Provision GPU | Prime Intellect CLI reference
+    url: https://docs.primeintellect.ai/cli-reference/provision-gpu
+    publisher: Prime Intellect
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-docs-lab
+    title: Hosted Training - Getting Started | Prime Intellect documentation
+    url: https://docs.primeintellect.ai/hosted-training/getting-started
+    publisher: Prime Intellect
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-docs-inference
+    title: Inference Overview | Prime Intellect documentation
+    url: https://docs.primeintellect.ai/inference/overview
+    publisher: Prime Intellect
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-careers
+    title: Careers | Prime Intellect
+    url: https://www.primeintellect.ai/careers
+    publisher: Prime Intellect
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-terms
+    title: Terms of Service | Prime Intellect
+    url: https://www.primeintellect.ai/terms-of-service
+    publisher: Prime Intellect
+    kind: official-page
+    published_at: 2024-02-23
+    accessed_at: 2026-09-29
+  - id: prime-privacy
+    title: Privacy Policy | Prime Intellect
+    url: https://www.primeintellect.ai/privacy-policy
+    publisher: Prime Intellect
+    kind: official-page
+    published_at: 2024-02-23
+    accessed_at: 2026-09-29
+  - id: sec-edgar-prime
+    title: EDGAR company search results for "Prime Intellect" (Prime Intellect, Inc., CIK 0002103990)
+    url: https://www.sec.gov/cgi-bin/browse-edgar?company=prime+intellect&owner=exclude&action=getcompany
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-formd-prime-2026-07
+    title: Prime Intellect, Inc. Form D (accession 0001231919-26-000720)
+    url: https://www.sec.gov/Archives/edgar/data/2103990/000123191926000720/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: 2026-07-01
+    accessed_at: 2026-09-29
+  - id: prime-rl-readme
+    title: "prime-rl: Async RL Training at Scale (README)"
+    url: https://github.com/PrimeIntellect-ai/prime-rl
+    publisher: Prime Intellect
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: prime-rl-license
+    title: prime-rl LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/prime-rl/main/LICENSE
+    publisher: Prime Intellect
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: verifiers-license
+    title: verifiers LICENSE (MIT)
+    url: https://raw.githubusercontent.com/PrimeIntellect-ai/verifiers/main/LICENSE
+    publisher: Prime Intellect
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-intellect-1
+    title: PrimeIntellect/INTELLECT-1 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-1
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mc-intellect-3
+    title: PrimeIntellect/INTELLECT-3 model card
+    url: https://huggingface.co/PrimeIntellect/INTELLECT-3
+    publisher: Prime Intellect
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29

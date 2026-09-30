@@ -1,0 +1,244 @@
+slug: arc-agi
+name: ARC-AGI
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: ARC Prize Foundation
+    organization_slug: arc-prize-foundation
+    source_ids: [arc-github-org, arc-agi2-repo, arc-toolkit-license, arc-agi3-report, arc-agi-series]
+organization_slugs: [arc-prize-foundation]
+links:
+  - label: ARC-AGI overview (ARC Prize)
+    url: https://arcprize.org/arc-agi
+    kind: website
+  - label: ARC-AGI-1 repository
+    url: https://github.com/fchollet/ARC-AGI
+    kind: repository
+  - label: ARC-AGI-2 repository
+    url: https://github.com/arcprize/ARC-AGI-2
+    kind: repository
+  - label: ARC-AGI Toolkit for ARC-AGI-3
+    url: https://github.com/arcprize/ARC-AGI
+    kind: repository
+  - label: "ARC-AGI-3 technical report (arXiv 2603.24621)"
+    url: https://arxiv.org/abs/2603.24621
+    kind: paper
+summary:
+  text: >-
+    ARC-AGI is a series of benchmarks that measure how efficiently a system acquires new
+    skills on unfamiliar tasks, using tasks that rely only on basic "core knowledge" priors and
+    are easy for people. ARC-AGI-1 (introduced in 2019) and ARC-AGI-2 (March 2025) are grid
+    puzzles in which the solver infers a transformation from a few input-output examples;
+    ARC-AGI-3 (March 2026) consists of interactive, turn-based game environments in which agents
+    must explore and infer goals without explicit instructions. Public tasks are released for
+    each version, while semi-private and private evaluation sets used for official scoring are
+    held back.
+  source_ids: [arc-agi-series, arc-agi1-page, arc-agi2-page, arc-agi3-launch, arc-agi3-report, arc-policy]
+useful_for:
+  text: >-
+    Evaluating abstraction and few-shot reasoning on grid tasks (ARC-AGI-1 and -2) and
+    exploration, goal discovery, and learning in interactive environments (ARC-AGI-3); the
+    public sets support development, and the withheld sets are used for verified testing and
+    ARC Prize competitions.
+  source_ids: [arc-agi1-readme, arc-agi2-repo, arc-agi3-page, arc-policy]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    ARC Prize Foundation publishes the ARC-AGI-2 tasks and the ARC-AGI-3 toolkit in its arcprize
+    GitHub organization (the toolkit's MIT license names ARC Prize Foundation), presents
+    ARC-AGI-1 through -3 as its ARC-AGI series, and is credited as the author of the ARC-AGI-3
+    technical report. The foundation is a nonprofit with a San Francisco, California address
+    per its site terms and its 2024 Form 990. The original ARC-AGI-1 repository remains in its
+    creator's personal GitHub account.
+  source_ids: [arc-github-org, arc-agi2-repo, arc-toolkit-license, arc-agi-series, arc-agi3-report, arc-terms, irs-990-batch-2025-11c, arc-agi1-page]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    ARC-AGI-1 (400 training and 400 evaluation tasks) and ARC-AGI-2 (1,000 training and 120
+    public evaluation tasks) are downloadable from GitHub under Apache 2.0. ARC-AGI-3 games can
+    be played in a browser or through the toolkit and API; an API key is optional but gives
+    access to more games. The semi-private and private evaluation sets of ARC-AGI-1 and -2, and
+    the semi-private set of ARC-AGI-3, are not published.
+  source_ids: [arc-agi1-readme, arc-agi1-license, arc-agi2-repo, arc-agi2-license, arc-agi2-page, arc-agi3-launch, arc-toolkit-readme, arc-policy]
+licenses:
+  - name: Apache License 2.0 (ARC-AGI-1 task data and testing interface)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/fchollet/ARC-AGI/master/LICENSE
+    applies_to: all
+    source_ids: [arc-agi1-license]
+  - name: Apache License 2.0 (ARC-AGI-2 public task data)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/arcprize/ARC-AGI-2/main/LICENSE
+    applies_to: all
+    source_ids: [arc-agi2-license]
+  - name: MIT License (ARC-AGI Toolkit for ARC-AGI-3)
+    spdx: MIT
+    url: https://raw.githubusercontent.com/arcprize/ARC-AGI/main/LICENSE
+    applies_to: code
+    source_ids: [arc-toolkit-license]
+license_notes:
+  text: >-
+    A license for the ARC-AGI-3 game environments themselves was not found in the pages read;
+    the toolkit that connects agents to them is MIT-licensed.
+  source_ids: [arc-toolkit-readme, arc-agi3-launch]
+checklist:
+  code:
+    status: public
+    note: >-
+      The ARC-AGI-1 repository includes a browser-based testing interface (Apache 2.0), and the
+      ARC-AGI-3 toolkit (arc-agi on pip) is MIT-licensed.
+    source_ids: [arc-agi1-readme, arc-toolkit-readme, arc-toolkit-license]
+  tasks_data:
+    status: partial
+    note: >-
+      Public training and evaluation sets are released for ARC-AGI-1 and -2, and a public game
+      set for ARC-AGI-3; the semi-private and private evaluation sets of ARC-AGI-1 and -2, and
+      ARC-AGI-3's semi-private set, are withheld.
+    source_ids: [arc-agi1-page, arc-agi2-page, arc-agi3-page, arc-policy]
+  methodology:
+    status: public
+    note: >-
+      The ARC-AGI-1 README defines the JSON task format and the scoring rule (exact output grid,
+      three trials per test input); ARC-AGI-2 evaluation tasks were calibrated with human
+      testers; the ARC-AGI-3 technical report describes the environment design and
+      efficiency-based scoring.
+    source_ids: [arc-agi1-readme, arc-agi2-page, arc-agi3-report]
+  reproducibility_instructions:
+    status: partial
+    note: >-
+      The public sets can be run locally from the documented task formats or through the
+      toolkit, but official scores on the semi-private and private sets are produced only by
+      ARC Prize through verified testing or its competitions.
+    source_ids: [arc-agi1-readme, arc-toolkit-readme, arc-policy]
+  limitations:
+    status: partial
+    note: >-
+      The testing policy acknowledges possible limited leakage of the semi-private set over
+      time because tasks are sent to external APIs, and the ARC-AGI-1 README warns against
+      leaking evaluation-set information into solutions.
+    source_ids: [arc-policy, arc-agi1-readme]
+run_notes: []
+provenance: null
+tags: [evaluation, benchmark, reasoning]
+publication_status: published
+archive_note: null
+released_at: "2019"
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: arc-agi-series
+    title: What is ARC-AGI? (ARC Prize)
+    url: https://arcprize.org/arc-agi
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi1-page
+    title: ARC-AGI-1 (ARC Prize)
+    url: https://arcprize.org/arc-agi/1/
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi2-page
+    title: ARC-AGI-2 (ARC Prize)
+    url: https://arcprize.org/arc-agi/2/
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi3-page
+    title: ARC-AGI-3 (ARC Prize)
+    url: https://arcprize.org/arc-agi/3/
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi3-launch
+    title: Announcing ARC-AGI-3
+    url: https://arcprize.org/blog/arc-agi-3-launch
+    publisher: ARC Prize Foundation
+    kind: announcement
+    published_at: 2026-03-25
+    accessed_at: 2026-09-29
+  - id: arc-agi3-report
+    title: "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence (arXiv 2603.24621)"
+    url: https://arxiv.org/abs/2603.24621
+    publisher: arXiv (ARC Prize Foundation)
+    kind: paper
+    published_at: 2026-03-24
+    accessed_at: 2026-09-29
+  - id: arc-agi1-readme
+    title: fchollet/ARC-AGI README.md (ARC-AGI-1)
+    url: https://raw.githubusercontent.com/fchollet/ARC-AGI/master/README.md
+    publisher: ARC-AGI-1 repository
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi1-license
+    title: fchollet/ARC-AGI LICENSE
+    url: https://raw.githubusercontent.com/fchollet/ARC-AGI/master/LICENSE
+    publisher: ARC-AGI-1 repository
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi2-repo
+    title: arcprize/ARC-AGI-2
+    url: https://github.com/arcprize/ARC-AGI-2
+    publisher: ARC Prize Foundation
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-agi2-license
+    title: arcprize/ARC-AGI-2 LICENSE
+    url: https://raw.githubusercontent.com/arcprize/ARC-AGI-2/main/LICENSE
+    publisher: ARC Prize Foundation
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-toolkit-readme
+    title: arcprize/ARC-AGI (ARC-AGI Toolkit) README
+    url: https://raw.githubusercontent.com/arcprize/ARC-AGI/main/README.md
+    publisher: ARC Prize Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-toolkit-license
+    title: arcprize/ARC-AGI LICENSE
+    url: https://raw.githubusercontent.com/arcprize/ARC-AGI/main/LICENSE
+    publisher: ARC Prize Foundation
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-github-org
+    title: ARC Prize Foundation (arcprize) on GitHub
+    url: https://github.com/arcprize
+    publisher: ARC Prize Foundation
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-policy
+    title: ARC Prize Verified Testing Policy
+    url: https://arcprize.org/policy
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arc-terms
+    title: ARC Prize Terms and Conditions
+    url: https://arcprize.org/terms
+    publisher: ARC Prize, Inc.
+    kind: official-page
+    published_at: 2024-06-03
+    accessed_at: 2026-09-29
+  - id: irs-990-batch-2025-11c
+    title: IRS Form 990 e-file XML batch 2025_TEOS_XML_11C (ARC Prize Foundation Form 990 for tax year 2024)
+    url: https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_11C.zip
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

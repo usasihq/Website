@@ -1,0 +1,194 @@
+slug: whisper-large-v3-turbo
+name: Whisper large-v3-turbo
+kind: model
+record_level: release
+family_slug: whisper
+version: "large-v3-turbo"
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [whisper-model-card, turbo-discussion]
+organization_slugs: [openai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/openai/whisper-large-v3-turbo
+    kind: model-hub
+  - label: openai/whisper repository
+    url: https://github.com/openai/whisper
+    kind: repository
+  - label: large-v3-turbo release discussion
+    url: https://github.com/openai/whisper/discussions/2363
+    kind: release-notes
+  - label: LICENSE (MIT)
+    url: https://github.com/openai/whisper/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    Whisper large-v3-turbo is a multilingual speech recognition model that OpenAI derived from
+    Whisper large-v3 by cutting the decoder from 32 layers to 4 and fine-tuning for two more
+    epochs. It has about 0.8 billion parameters (809M in the README and Hugging Face card; the
+    repository model card lists 798M) and is the default model in the openai-whisper package.
+  source_ids: [turbo-discussion, whisper-repo-readme, hf-whisper-large-v3-turbo, whisper-model-card]
+useful_for:
+  text: >-
+    The README presents turbo as a faster version of large-v3 for transcription with a small
+    loss of accuracy. It is not trained for translation: it returns the source language even
+    when the translate task is requested, and the README directs users to the other multilingual
+    models, such as medium or large, for translation into English.
+  source_ids: [whisper-repo-readme, turbo-discussion]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model was released by OpenAI in its openai/whisper repository and on its Hugging Face
+    account. OpenAI Group PBC lists its address as 1455 3rd Street, San Francisco, California,
+    in a February 2026 agreement filed with the SEC.
+  source_ids: [whisper-model-card, turbo-discussion, sec-openai-amazon-ecl]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable without gating from Hugging Face, and fetched automatically by the openai-whisper
+    package when the "turbo" or "large-v3-turbo" model is loaded.
+  source_ids: [hf-api-whisper-large-v3-turbo, whisper-init]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/openai/whisper/blob/main/LICENSE
+    applies_to: weights-and-code
+    source_ids: [whisper-license, whisper-repo-readme, hf-whisper-large-v3-turbo]
+license_notes:
+  text: >-
+    The README states that Whisper's code and model weights are released under the MIT License,
+    and the Hugging Face card for this model also lists MIT.
+  source_ids: [whisper-repo-readme, hf-whisper-large-v3-turbo]
+checklist:
+  weights:
+    status: public
+    note: Published on Hugging Face without gating and downloadable through the openai-whisper package.
+    source_ids: [hf-api-whisper-large-v3-turbo, whisper-init]
+  inference_code:
+    status: public
+    note: >-
+      The openai/whisper repository provides the inference code and command-line tool; the
+      Hugging Face card documents inference with Transformers.
+    source_ids: [whisper-repo-readme, hf-whisper-large-v3-turbo]
+  training_code:
+    status: unknown
+    note: The repository covers inference and evaluation-data preparation; this review found no published training code.
+    source_ids: [whisper-repo-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      OpenAI says turbo was fine-tuned on the same amount of multilingual transcription data used
+      to train large-v3, excluding translation data. The large-v3 training mixture (1 million
+      hours of weakly labeled audio and 4 million hours pseudo-labeled with large-v2) is described
+      but not released.
+    source_ids: [turbo-discussion, hf-whisper-large-v3]
+  training_recipe:
+    status: partial
+    note: >-
+      The release discussion describes the procedure at a high level (decoder reduced to 4 layers,
+      two further epochs of fine-tuning); no training configuration is published.
+    source_ids: [turbo-discussion]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The release discussion reports comparisons with other Whisper models. The repository's data
+      README documents how the paper's evaluation datasets were prepared, but no turbo-specific
+      evaluation scripts were located.
+    source_ids: [turbo-discussion, whisper-data-readme]
+run_notes:
+  - text: >-
+      The README documents running the model from the command line or Python with the
+      openai-whisper package (which requires ffmpeg) using the model name "turbo"; the Hugging
+      Face card documents use through the Transformers speech-recognition pipeline.
+    source_ids: [whisper-repo-readme, hf-whisper-large-v3-turbo]
+provenance:
+  text: >-
+    Derived by OpenAI from its own Whisper large-v3: the decoder was pruned from 32 to 4 layers
+    and the model was fine-tuned for two more epochs on large-v3's multilingual transcription
+    data.
+  derived_from:
+    - name: Whisper large-v3
+      artifact_slug: whisper-large-v3
+      url: https://huggingface.co/openai/whisper-large-v3
+      note: Base model; same developer.
+  source_ids: [turbo-discussion, hf-whisper-large-v3-turbo]
+tags: [speech]
+publication_status: published
+archive_note: null
+released_at: 2024-09
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-whisper-large-v3-turbo
+    title: openai/whisper-large-v3-turbo model card
+    url: https://huggingface.co/openai/whisper-large-v3-turbo
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-whisper-large-v3-turbo
+    title: openai/whisper-large-v3-turbo (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/openai/whisper-large-v3-turbo
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-whisper-large-v3
+    title: openai/whisper-large-v3 model card
+    url: https://huggingface.co/openai/whisper-large-v3
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: turbo-discussion
+    title: "Whisper large-v3-turbo model (openai/whisper discussion #2363)"
+    url: https://github.com/openai/whisper/discussions/2363
+    publisher: OpenAI (GitHub)
+    kind: release-notes
+    published_at: 2024-10-01
+    accessed_at: 2026-09-29
+  - id: whisper-model-card
+    title: "Model Card: Whisper"
+    url: https://github.com/openai/whisper/blob/main/model-card.md
+    publisher: OpenAI (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: whisper-repo-readme
+    title: openai/whisper README
+    url: https://github.com/openai/whisper/blob/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: whisper-license
+    title: openai/whisper LICENSE
+    url: https://github.com/openai/whisper/blob/main/LICENSE
+    publisher: OpenAI (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: whisper-init
+    title: openai/whisper whisper/__init__.py (checkpoint download URLs)
+    url: https://github.com/openai/whisper/blob/main/whisper/__init__.py
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: whisper-data-readme
+    title: openai/whisper data/README.md (evaluation data preparation)
+    url: https://github.com/openai/whisper/blob/main/data/README.md
+    publisher: OpenAI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29

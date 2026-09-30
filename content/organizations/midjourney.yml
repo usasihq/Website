@@ -1,0 +1,134 @@
+slug: midjourney
+name: Midjourney
+legal_name:
+  text: Midjourney, Inc.
+  source_ids: [niji-app-store-us, niji-app-store-ie]
+website: https://www.midjourney.com
+logo_text: MJ
+summary:
+  text: >-
+    Midjourney develops image-generation models and an image-to-video model and offers them
+    through its subscription web service. It also publishes niji・journey, an anime-style image
+    app whose accounts and plans can be synced with Midjourney accounts.
+  source_ids: [mj-v1-video, mj-v8-1-default, niji-app-store-us]
+organization_roles: [model-developer, consumer-products]
+ownership_category: privately-held
+legal_form:
+  text: >-
+    Delaware corporation, as alleged in a June 2025 federal copyright complaint filed
+    against Midjourney, Inc. by Disney and Universal.
+  source_ids: [disney-v-midjourney-complaint]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: South San Francisco, California
+  country: US
+  source_ids: [niji-app-store-ie]
+other_locations: []
+founded: null
+sectors: []
+status_note: null
+products:
+  - id: midjourney
+    name: Midjourney
+    kind: other
+    access: >-
+      Subscription image and video generation service used on Midjourney's website; video
+      works by animating images, and V8-series image models were first offered on a separate
+      alpha site before V8.1 became the default model in June 2026.
+    url: https://updates.midjourney.com/
+    source_ids: [mj-updates, mj-v1-video, mj-v8-1-alpha, mj-v8-1-default]
+    last_reviewed: 2026-09-29
+  - id: niji-journey
+    name: niji・journey
+    kind: other
+    access: >-
+      Free iOS app with paid subscription plans for generating anime-style images from text
+      prompts; accounts and subscription plans can be synced with Midjourney accounts.
+    url: https://apps.apple.com/us/app/niji-journey-ai-anime-art/id6446376937
+    source_ids: [niji-app-store-us]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The headquarters label rests on the EU trader information shown on the Ireland App Store
+    listing for Midjourney's niji・journey app, in which Midjourney, Inc. identifies itself as a
+    trader and gives an address at 611 Gateway Blvd Ste 120, South San Francisco, California,
+    United States; the listing does not describe this address as a headquarters. Separately,
+    a June 2025 federal copyright complaint filed against the company by Disney and Universal
+    alleges that Midjourney, Inc. is a Delaware corporation with its principal place of
+    business in San Francisco, California. Midjourney's main website and documentation block
+    automated access, so its own terms and help pages could not be read for this review.
+  source_ids: [niji-app-store-ie, disney-v-midjourney-complaint]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Midjourney's models are offered through its hosted service and app. Its GitHub
+    organization holds forks of third-party libraries and a deprecated documentation repository
+    rather than its own model or code releases, and this catalog has no record of public
+    Midjourney model weights.
+  source_ids: [mj-updates, mj-github]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: niji-app-store-us
+    title: niji・journey - AI Anime Art App - App Store (United States)
+    url: https://apps.apple.com/us/app/niji-journey-ai-anime-art/id6446376937
+    publisher: Apple App Store (developer Midjourney, Inc.)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: niji-app-store-ie
+    title: niji・journey - AI Anime Art App - App Store (Ireland), with EU trader information
+    url: https://apps.apple.com/ie/app/niji-journey-ai-anime-art/id6446376937
+    publisher: Apple App Store (developer Midjourney, Inc.)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: disney-v-midjourney-complaint
+    title: Disney Enterprises, Inc. et al. v. Midjourney, Inc., Case No. 2:25-cv-05275 (C.D. Cal.), Complaint
+    url: https://variety.com/wp-content/uploads/2025/06/Disney-NBCU-v-Midjourney.pdf
+    publisher: Plaintiffs' complaint filed in the U.S. District Court for the Central District of California (copy hosted by Variety)
+    kind: filing
+    published_at: 2025-06-11
+    accessed_at: 2026-09-29
+  - id: mj-updates
+    title: Midjourney (updates site)
+    url: https://updates.midjourney.com/
+    publisher: Midjourney
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mj-v1-video
+    title: Introducing Our V1 Video Model
+    url: https://updates.midjourney.com/introducing-our-v1-video-model/
+    publisher: Midjourney
+    kind: announcement
+    published_at: 2025-06-18
+    accessed_at: 2026-09-29
+  - id: mj-v8-1-alpha
+    title: V8.1 Alpha
+    url: https://updates.midjourney.com/v8-1-alpha/
+    publisher: Midjourney
+    kind: release-notes
+    published_at: 2026-04-14
+    accessed_at: 2026-09-29
+  - id: mj-v8-1-default
+    title: V8.1 is now the default model on Midjourney!
+    url: https://updates.midjourney.com/v8-1-is-now-the-default-model/
+    publisher: Midjourney
+    kind: release-notes
+    published_at: 2026-06-11
+    accessed_at: 2026-09-29
+  - id: mj-github
+    title: Midjourney · GitHub
+    url: https://github.com/midjourney
+    publisher: Midjourney (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

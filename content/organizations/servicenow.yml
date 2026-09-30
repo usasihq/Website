@@ -1,0 +1,148 @@
+slug: servicenow
+name: ServiceNow
+legal_name:
+  text: ServiceNow, Inc.
+  source_ids: [now-10k-2025]
+website: https://www.servicenow.com
+logo_text: SN
+summary:
+  text: >-
+    ServiceNow sells the ServiceNow AI Platform, enterprise software for running business
+    workflows, with generative AI tools (Now Assist), AI agents, and AI governance features
+    built in. Its research teams publish the open-weight Apriel language
+    models, and ServiceNow co-stewards the BigCode project with Hugging Face.
+  source_ids: [now-10k-2025, now-pr-2026-04-09, hf-servicenow-ai, starcoder2-paper]
+organization_roles: [enterprise-software, model-developer, research-lab]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation
+  source_ids: [now-10k-2025]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Santa Clara, California
+  country: US
+  source_ids: [now-10k-2025, now-pr-2026-04-09]
+other_locations: []
+founded: null
+sectors: [enterprise, agents, open-models]
+status_note: null
+products:
+  - id: servicenow-ai-platform
+    name: ServiceNow AI Platform
+    kind: enterprise-software
+    access: >-
+      Enterprise workflow platform sold to organizations. Since April 2026 ServiceNow says AI,
+      data, security, and governance features are included in every offering rather than sold
+      separately, and that the platform works with the customer's preferred model provider.
+    url: https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-moves-beyond-the-sidecar-AI-era-giving-customers-a-complete-AI-native-experience-across-all-products-and-packages/default.aspx
+    source_ids: [now-pr-2026-04-09, now-10k-2025]
+    last_reviewed: 2026-09-29
+  - id: ai-control-tower
+    name: AI Control Tower
+    kind: enterprise-software
+    access: >-
+      Governance dashboard on the ServiceNow AI Platform for discovering, observing, governing,
+      securing, and measuring AI, including AI agents, deployed across an enterprise's
+      systems.
+    url: https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-turns-enterprise-AI-chaos-into-control-with-the-platform-for-governed-autonomous-work/default.aspx
+    source_ids: [now-pr-2026-05-05, now-10k-2025]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      ServiceNow's 2025 Form 10-K says Now Assist customers can use ServiceNow's own language
+      models or integrate third-party or proprietary models.
+    source_ids: [now-10k-2025]
+  - text: >-
+      The 2025 Form 10-K says ServiceNow acquired Moveworks, Inc., adding enterprise search and
+      front-end virtual agent technology to its platform.
+    source_ids: [now-10k-2025]
+  - text: >-
+      ServiceNow's SLAM (ServiceNow Language Models) lab publishes the Apriel models on
+      Hugging Face under the ServiceNow-AI organization. ServiceNow AI Research also maintains
+      Fast-LLM, an Apache 2.0 open-source library for training large language models, which
+      the Apriel-1.6 model card names as part of its training stack.
+    source_ids: [hf-servicenow-ai, apriel-1-6-card, fast-llm-repo]
+  - text: >-
+      The StarCoder2 technical report says the BigCode project, an open scientific
+      collaboration on code language models, is stewarded by ServiceNow and Hugging Face.
+      Hugging Face's StarCoder2 announcement says ServiceNow trained the StarCoder2-3B model.
+    source_ids: [starcoder2-paper, hf-starcoder2-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    ServiceNow, Inc. is a Delaware corporation whose Form 10-K for fiscal 2025 lists its
+    principal executive offices at 2225 Lawson Lane, Santa Clara, California. Its April 2026
+    press release also describes the company as based in Santa Clara.
+  source_ids: [now-10k-2025, now-pr-2026-04-09]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    ServiceNow's platform products are hosted enterprise software. Separately, it publishes
+    Apriel model weights on Hugging Face under the MIT license and co-stewards BigCode, whose
+    StarCoder2 models use the custom BigCode OpenRAIL-M license. This catalog assesses those
+    models release by release.
+  source_ids: [now-pr-2026-04-09, hf-servicenow-ai, apriel-1-6-card, starcoder2-paper]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: now-10k-2025
+    title: ServiceNow, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (ServiceNow filing)
+    kind: filing
+    published_at: 2026-01-28
+    accessed_at: 2026-09-29
+  - id: now-pr-2026-04-09
+    title: ServiceNow moves beyond the sidecar AI era, giving customers a complete AI-native experience across all products and packages
+    url: https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-moves-beyond-the-sidecar-AI-era-giving-customers-a-complete-AI-native-experience-across-all-products-and-packages/default.aspx
+    publisher: ServiceNow
+    kind: announcement
+    published_at: 2026-04-09
+    accessed_at: 2026-09-29
+  - id: now-pr-2026-05-05
+    title: ServiceNow turns enterprise AI chaos into control with the platform for governed autonomous work
+    url: https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-turns-enterprise-AI-chaos-into-control-with-the-platform-for-governed-autonomous-work/default.aspx
+    publisher: ServiceNow
+    kind: announcement
+    published_at: 2026-05-05
+    accessed_at: 2026-09-29
+  - id: hf-servicenow-ai
+    title: ServiceNow-AI on Hugging Face
+    url: https://huggingface.co/ServiceNow-AI
+    publisher: ServiceNow (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: apriel-1-6-card
+    title: ServiceNow-AI/Apriel-1.6-15b-Thinker model card
+    url: https://huggingface.co/ServiceNow-AI/Apriel-1.6-15b-Thinker
+    publisher: ServiceNow
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fast-llm-repo
+    title: ServiceNow/Fast-LLM (GitHub repository)
+    url: https://github.com/ServiceNow/Fast-LLM
+    publisher: ServiceNow
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: starcoder2-paper
+    title: "StarCoder 2 and The Stack v2: The Next Generation (arXiv 2402.19173)"
+    url: https://arxiv.org/abs/2402.19173
+    publisher: BigCode project
+    kind: paper
+    published_at: 2024-02-29
+    accessed_at: 2026-09-29
+  - id: hf-starcoder2-blog
+    title: StarCoder2 and The Stack v2
+    url: https://huggingface.co/blog/starcoder2
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2024-02-28
+    accessed_at: 2026-09-29

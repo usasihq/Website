@@ -11,7 +11,15 @@ import path from "node:path";
 import { DEFAULT_CONTENT_DIR, readRawContent, todayIso } from "./content-loader";
 import { entryTypeFor, type EntryType } from "./labels";
 import { checklistFor, computeTier } from "./openness";
-import { HOSTED_MODEL_PRODUCT_KINDS, type Artifact, type ChangelogEntry, type FeaturedSelection, type Organization } from "./schema";
+import {
+  HOSTED_MODEL_PRODUCT_KINDS,
+  type Artifact,
+  type ChangelogEntry,
+  type FeaturedSelection,
+  type LocalCornerSchedule,
+  type Organization,
+  type Person,
+} from "./schema";
 import type { ArtifactListItem, OrgListItem, SearchEntry } from "./search";
 import { artifactHref, orgHref } from "./routes";
 import { validateContent, type ValidatedContent, type ValidationIssue } from "./validate";
@@ -52,18 +60,25 @@ export class Catalog {
   readonly archivedArtifacts: Artifact[];
   readonly changelog: ChangelogEntry[];
   readonly featured: FeaturedSelection | null;
+  readonly people: Person[];
+  readonly localCorner: LocalCornerSchedule | null;
   readonly buildAt: string;
 
   private orgMap: Map<string, Organization>;
   private artifactMap: Map<string, Artifact>;
 
-  constructor(content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured">, buildAt = new Date().toISOString()) {
+  constructor(
+    content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> & Partial<Pick<ValidatedContent, "people" | "localCorner">>,
+    buildAt = new Date().toISOString(),
+  ) {
     this.organizations = content.organizations.filter(isActive).sort(byName);
     this.artifacts = content.artifacts.filter(isActive).sort(byName);
     this.archivedOrganizations = content.organizations.filter((o) => o.publication_status === "archived").sort(byName);
     this.archivedArtifacts = content.artifacts.filter((a) => a.publication_status === "archived").sort(byName);
     this.changelog = content.changelog;
     this.featured = content.featured;
+    this.people = (content.people ?? []).filter((p) => p.publication_status === "published").sort(byName);
+    this.localCorner = content.localCorner ?? null;
     this.buildAt = buildAt;
     this.orgMap = new Map([...this.organizations, ...this.archivedOrganizations].map((o) => [o.slug, o]));
     this.artifactMap = new Map([...this.artifacts, ...this.archivedArtifacts].map((a) => [a.slug, a]));
@@ -152,6 +167,33 @@ export class Catalog {
           }
         : null,
     };
+  }
+
+  /* ---- Local corner ---- */
+
+  /**
+   * The month's five profiles: the editor's lineup from content/local-corner.yml
+   * when one exists for that month, otherwise a deterministic rotation through
+   * the published pool (sorted by slug), advancing five places each month.
+   */
+  localCornerLineup(month: string): { month: string; people: Person[]; source: "schedule" | "rotation" } {
+    const scheduled = this.localCorner?.lineups.find((l) => l.month === month);
+    if (scheduled) {
+      const people = scheduled.people.map((s) => this.people.find((p) => p.slug === s)).filter((p): p is Person => Boolean(p));
+      return { month, people, source: "schedule" };
+    }
+    const pool = [...this.people].sort((a, b) => a.slug.localeCompare(b.slug));
+    if (pool.length <= 5) return { month, people: pool, source: "rotation" };
+    const [y, m] = month.split("-").map(Number);
+    const offset = ((y * 12 + (m - 1)) * 5) % pool.length;
+    const people = Array.from({ length: 5 }, (_, i) => pool[(offset + i) % pool.length]);
+    return { month, people, source: "rotation" };
+  }
+
+  /** The month shown on the site: USASI_MONTH (YYYY-MM) for testing, else the build month. */
+  currentMonth(): string {
+    const override = process.env.USASI_MONTH;
+    return override && /^\d{4}-(0[1-9]|1[0-2])$/.test(override) ? override : this.buildAt.slice(0, 7);
   }
 
   /* ---- counts ---- */

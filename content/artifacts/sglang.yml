@@ -1,0 +1,187 @@
+slug: sglang
+name: SGLang
+kind: runtime
+record_level: project
+family_slug: null
+version: "0.5.20"
+maintainers:
+  - name: LMSYS (hosting organization)
+    organization_slug: lmsys
+    source_ids: [sglang-readme, lmsys-about]
+  - name: RadixArk (company described as a maintainer in a post on the LMSYS blog)
+    organization_slug: null
+    source_ids: [lmsys-tpu-blog, radixark-home]
+organization_slugs: [lmsys]
+links:
+  - label: GitHub repository
+    url: https://github.com/sgl-project/sglang
+    kind: repository
+  - label: Installation guide
+    url: https://docs.sglang.io/docs/get-started/install
+    kind: documentation
+  - label: Release v0.5.20
+    url: https://github.com/sgl-project/sglang/releases/tag/v0.5.20
+    kind: release-notes
+  - label: License (Apache 2.0)
+    url: https://raw.githubusercontent.com/sgl-project/sglang/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    SGLang is an open-source serving framework for large language models and multimodal models,
+    designed for low-latency, high-throughput inference on anything from a single GPU to large
+    distributed clusters. Its runtime features include RadixAttention prefix caching,
+    prefill-decode disaggregation, speculative decoding, continuous batching, several forms of
+    parallelism, structured outputs, and quantization.
+  source_ids: [sglang-readme]
+useful_for:
+  text: >-
+    Serving language, embedding, reward, and diffusion models behind an OpenAI-compatible API,
+    and acting as the rollout backend in reinforcement-learning post-training frameworks.
+  source_ids: [sglang-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The SGLang README states that the project is currently hosted under the non-profit
+    open-source organization LMSYS. LMSYS describes itself as a 501(c)(3) nonprofit incorporated
+    in September 2024. The IRS extract for California lists LMSYS Corp, in Sacramento, as a
+    501(c)(3) corporation with a September 2024 ruling date. A July 2026 post on the LMSYS blog,
+    credited to RadixArk and Google, also describes the company RadixArk as a maintainer; this
+    assessment rests on LMSYS hosting, and RadixArk's location was not verified. SGLang joined the PyTorch Ecosystem in 2025, but the pages read
+    do not describe it as a PyTorch Foundation-hosted project.
+  source_ids: [sglang-readme, lmsys-about, irs-eo-bmf-ca, lmsys-tpu-blog, pytorch-sglang]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the Apache License 2.0. Installable from PyPI as sglang, from
+    source, or with prebuilt Docker images.
+  source_ids: [sglang-readme, sglang-license, sglang-pypi, sglang-install]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/sgl-project/sglang/main/LICENSE
+    applies_to: code
+    source_ids: [sglang-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Published on GitHub under the Apache License 2.0.
+    source_ids: [sglang-repo, sglang-readme, sglang-license]
+  documentation:
+    status: public
+    note: >-
+      The documentation includes installation, quick-start, backend and frontend tutorials, a
+      per-model deployment cookbook, and a contribution guide.
+    source_ids: [sglang-readme, sglang-install]
+  installation:
+    status: public
+    note: >-
+      Documented methods include pip or uv, installing from source, Docker images, Kubernetes,
+      and cloud deployment options.
+    source_ids: [sglang-install]
+  supported_platforms:
+    status: public
+    note: >-
+      The install guide mainly covers NVIDIA GPUs and has separate pages for AMD GPUs, Apple
+      Metal, Intel Xeon CPUs, Intel XPU, Google TPU, NVIDIA Jetson and DGX Spark, and Ascend
+      NPUs.
+    source_ids: [sglang-install, sglang-readme]
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub and PyPI; v0.5.20 was released on 2026-09-18.
+      Nightly wheels are also available.
+    source_ids: [sglang-release, sglang-pypi, sglang-install]
+run_notes:
+  - text: >-
+      The installation guide requires Python 3.10 or higher. It states that SGLang requires
+      CUDA 13, that the CUDA 12 wheels and images are retired, and that 0.5.19 was the last
+      release with CUDA 12 builds.
+    source_ids: [sglang-install]
+provenance: null
+tags: [inference, serving]
+publication_status: published
+archive_note: null
+released_at: 2026-09-18
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: sglang-repo
+    title: sgl-project/sglang
+    url: https://github.com/sgl-project/sglang
+    publisher: SGLang project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sglang-readme
+    title: SGLang README
+    url: https://raw.githubusercontent.com/sgl-project/sglang/main/README.md
+    publisher: SGLang project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sglang-license
+    title: SGLang LICENSE
+    url: https://raw.githubusercontent.com/sgl-project/sglang/main/LICENSE
+    publisher: SGLang project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sglang-install
+    title: Installation - SGLang documentation
+    url: https://docs.sglang.io/docs/get-started/install
+    publisher: SGLang project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sglang-release
+    title: Release v0.5.20 · sgl-project/sglang
+    url: https://github.com/sgl-project/sglang/releases/tag/v0.5.20
+    publisher: SGLang project
+    kind: release-notes
+    published_at: 2026-09-18
+    accessed_at: 2026-09-29
+  - id: sglang-pypi
+    title: sglang on PyPI
+    url: https://pypi.org/project/sglang/
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-09-18
+    accessed_at: 2026-09-29
+  - id: lmsys-about
+    title: About | LMSYS Org
+    url: https://lmsys.org/about/
+    publisher: LMSYS
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lmsys-tpu-blog
+    title: RadixArk Joins Forces with Google to Bring Full SGLang Features to TPUs
+    url: https://www.lmsys.org/blog/2026-07-30-sglang-google-tpu/
+    publisher: LMSYS
+    kind: announcement
+    published_at: 2026-07-30
+    accessed_at: 2026-09-29
+  - id: radixark-home
+    title: RadixArk
+    url: https://www.radixark.com/
+    publisher: RadixArk
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-sglang
+    title: "SGLang Joins PyTorch Ecosystem: Efficient LLM Serving Engine"
+    url: https://pytorch.org/blog/sglang-joins-pytorch/
+    publisher: PyTorch Foundation
+    kind: announcement
+    published_at: 2025-03-19
+    accessed_at: 2026-09-29

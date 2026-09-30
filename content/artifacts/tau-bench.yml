@@ -1,0 +1,180 @@
+slug: tau-bench
+name: τ-bench (tau2-bench)
+kind: eval
+record_level: project
+family_slug: null
+version: "1.0.1"
+maintainers:
+  - name: Sierra
+    organization_slug: sierra
+    source_ids: [tau-bench-repo, tau-bench-license, sierra-tau2-blog]
+organization_slugs: [sierra]
+links:
+  - label: GitHub repository (sierra-research/tau2-bench)
+    url: https://github.com/sierra-research/tau2-bench
+    kind: repository
+  - label: Release 1.0.1
+    url: https://github.com/sierra-research/tau2-bench/releases/tag/v1.0.1
+    kind: release-notes
+  - label: Task schema and evaluation guide
+    url: https://github.com/sierra-research/tau2-bench/blob/main/docs/evaluation.md
+    kind: documentation
+  - label: τ²-bench paper (arXiv 2506.07982)
+    url: https://arxiv.org/abs/2506.07982
+    kind: paper
+  - label: License (MIT)
+    url: https://raw.githubusercontent.com/sierra-research/tau2-bench/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    τ-bench is Sierra's open-source simulation framework for evaluating customer-service AI
+    agents. In each domain an agent must follow a written policy and use tools while a
+    simulated user takes part in the conversation, in turn-based text mode or full-duplex
+    voice mode. The current repository, which carries the τ³-bench update, covers airline,
+    retail, telecom, and banking-knowledge domains plus a mock domain.
+  source_ids: [tau-bench-readme, sierra-tau2-blog]
+useful_for:
+  text: >-
+    Evaluating how well tool-using conversational agents complete customer-service tasks
+    under a domain policy, including tasks in which the user must also take actions, and
+    testing retrieval-based and voice agents.
+  source_ids: [tau-bench-readme, sierra-tau2-blog, tau2-paper]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The project is maintained in the sierra-research GitHub organization, its MIT license names
+    Sierra Research as copyright holder, and Sierra's own blog says Sierra introduced τ-bench,
+    presents τ²-bench as building on it, and links to this repository. Sierra Technologies, Inc.
+    is a Delaware corporation headquartered in San Francisco, California, per its modern
+    slavery statement.
+  source_ids: [tau-bench-repo, tau-bench-license, sierra-tau2-blog, sierra-modern-slavery]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code and domain task files on GitHub under the MIT License. Running an evaluation
+    requires API access to the language models used for the agent and the simulated user.
+  source_ids: [tau-bench-repo, tau-bench-license, tau-bench-readme]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/sierra-research/tau2-bench/main/LICENSE
+    applies_to: code
+    source_ids: [tau-bench-license]
+license_notes:
+  text: >-
+    The domains README (src/tau2/domains/README.md) says each domain's data (policy, task
+    definitions, task splits, and database files) is stored in the same repository under
+    data/tau2/domains/<domain_name>; the LICENSE file does not address data separately.
+  source_ids: [tau-bench-domains, tau-bench-license]
+checklist:
+  code:
+    status: public
+    note: Published on GitHub under the MIT License.
+    source_ids: [tau-bench-repo, tau-bench-license]
+  tasks_data:
+    status: public
+    note: >-
+      The domains README documents per-domain data files stored in the repository under
+      data/tau2/domains: policy, task definitions, voice tasks, task splits, and databases.
+    source_ids: [tau-bench-domains]
+  methodology:
+    status: public
+    note: >-
+      The evaluation guide explains how rewards combine database-state, communication, and
+      assertion checks, and the README cites the τ-bench, τ²-bench, τ-Voice, and τ-Knowledge
+      papers.
+    source_ids: [tau-bench-evaluation, tau-bench-readme, tau2-paper]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README documents installation with uv, API-key setup through LiteLLM, and example
+      run commands; versioned releases and a changelog are published, and a pre-v1.0.1 tag
+      is kept for reproducing earlier grading.
+    source_ids: [tau-bench-readme, tau-bench-release-1-0-1]
+  limitations:
+    status: partial
+    note: >-
+      The README states that, after grading fixes to the banking_knowledge domain, results
+      from versions before 1.0.1 are not comparable with later results (other domains are
+      unaffected), and the evaluation guide notes that the reference action sequence is only
+      one valid solution path. No general discussion of the benchmark's validity limits was
+      found in the pages read.
+    source_ids: [tau-bench-readme, tau-bench-evaluation]
+run_notes:
+  - text: >-
+      The README requires Python 3.12 or 3.13 (>=3.12, <3.14) and installs with uv; voice
+      features need extra system packages such as portaudio and ffmpeg.
+    source_ids: [tau-bench-readme]
+provenance: null
+tags: [evaluation, benchmark]
+publication_status: published
+archive_note: null
+released_at: 2026-07-22
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: tau-bench-repo
+    title: "GitHub - sierra-research/tau2-bench: τ-Bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains"
+    url: https://github.com/sierra-research/tau2-bench
+    publisher: Sierra Research (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tau-bench-readme
+    title: tau2-bench README.md
+    url: https://raw.githubusercontent.com/sierra-research/tau2-bench/main/README.md
+    publisher: Sierra Research (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tau-bench-license
+    title: tau2-bench LICENSE
+    url: https://raw.githubusercontent.com/sierra-research/tau2-bench/main/LICENSE
+    publisher: Sierra Research (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tau-bench-domains
+    title: tau2-bench/src/tau2/domains/README.md at main · sierra-research/tau2-bench
+    url: https://github.com/sierra-research/tau2-bench/blob/main/src/tau2/domains/README.md
+    publisher: Sierra Research (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tau-bench-evaluation
+    title: tau2-bench/docs/evaluation.md at main · sierra-research/tau2-bench
+    url: https://github.com/sierra-research/tau2-bench/blob/main/docs/evaluation.md
+    publisher: Sierra Research (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tau-bench-release-1-0-1
+    title: Release τ-bench 1.0.1 — banking_knowledge Grading Fixes · sierra-research/tau2-bench
+    url: https://github.com/sierra-research/tau2-bench/releases/tag/v1.0.1
+    publisher: Sierra Research (GitHub)
+    kind: release-notes
+    published_at: 2026-07-22
+    accessed_at: 2026-09-29
+  - id: tau2-paper
+    title: "τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment"
+    url: https://arxiv.org/abs/2506.07982
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-09
+    accessed_at: 2026-09-29
+  - id: sierra-tau2-blog
+    title: 𝜏²-bench | Sierra
+    url: https://sierra.ai/blog/benchmarking-agents-in-collaborative-real-world-scenarios
+    publisher: Sierra Technologies, Inc.
+    kind: announcement
+    published_at: 2025-06-10
+    accessed_at: 2026-09-29
+  - id: sierra-modern-slavery
+    title: Modern Slavery Statement | Sierra
+    url: https://sierra.ai/modern-slavery-statement
+    publisher: Sierra Technologies, Inc.
+    kind: official-page
+    published_at: 2026-02-04
+    accessed_at: 2026-09-29

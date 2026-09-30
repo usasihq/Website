@@ -1,0 +1,194 @@
+slug: timesfm-3-0
+name: TimesFM 3.0
+kind: model
+record_level: release
+family_slug: timesfm
+version: "3.0 (google/timesfm-3.0-pytorch)"
+maintainers:
+  - name: Google Research
+    organization_slug: google
+    source_ids: [timesfm3-card, timesfm-readme]
+organization_slugs: [google]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/google/timesfm-3.0-pytorch
+    kind: model-hub
+  - label: TimesFM Non-Commercial License v1.0
+    url: https://huggingface.co/google/timesfm-3.0-pytorch/blob/main/LICENSE
+    kind: license
+  - label: GitHub repository
+    url: https://github.com/google-research/timesfm
+    kind: repository
+  - label: Google Research blog post
+    url: https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/
+    kind: release-notes
+summary:
+  text: >-
+    TimesFM 3.0 is a Google Research time-series forecasting model released in August 2026.
+    Google's announcement gives it 330 million parameters and describes native multivariate
+    forecasting, support for past-only and past-and-future covariates, and probabilistic
+    forecasts with nine quantiles. The model card lists a 20-layer transformer architecture.
+  source_ids: [timesfm3-card, timesfm3-blog, timesfm-readme]
+useful_for:
+  text: >-
+    The repository presents TimesFM 3.0 for zero-shot univariate and multivariate forecasting
+    with covariates. Its weights license limits downloaded use to non-commercial,
+    non-production purposes.
+  source_ids: [timesfm-readme, timesfm3-license]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The model card states TimesFM was developed by Google Research, and the weights license is
+    issued by Google LLC. Alphabet Inc.'s fiscal 2025 Form 10-K lists its principal executive
+    offices in Mountain View, California, and Exhibit 21.01 lists Google LLC as a Delaware
+    subsidiary of Alphabet.
+  source_ids: [timesfm3-card, timesfm3-license, alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights are downloadable from Hugging Face without an access gate, but only for
+    non-commercial, non-production use under the TimesFM Non-Commercial License v1.0.
+    Commercial and production use is offered through Google Cloud services such as BigQuery ML.
+  source_ids: [timesfm3-hf-api, timesfm3-license, timesfm-readme]
+licenses:
+  - name: TimesFM Non-Commercial License v1.0
+    spdx: null
+    url: https://huggingface.co/google/timesfm-3.0-pytorch/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [timesfm3-card, timesfm3-license]
+  - name: Apache License 2.0 (timesfm source code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/google-research/timesfm/master/LICENSE
+    applies_to: code
+    source_ids: [timesfm-license, timesfm-readme]
+license_notes:
+  text: >-
+    The TimesFM Non-Commercial License v1.0 is issued by Google LLC. It grants a personal,
+    non-transferable, revocable license to use and create derivatives only for non-commercial
+    purposes, which it defines to exclude revenue-generating activity, production systems,
+    interactions with end users, and training or distilling other models for commercial use.
+    It prohibits distributing the model or derivatives. Model outputs are not treated as
+    derivatives, but the restrictions also bar using outputs for commercial or production
+    purposes. The repository notes that earlier TimesFM weights (up to 2.5) remain under
+    Apache 2.0.
+  source_ids: [timesfm3-license, timesfm-readme]
+checklist:
+  weights:
+    status: public
+    note: Weights (safetensors) are published on Hugging Face without an access gate, under a non-commercial license.
+    source_ids: [timesfm3-hf-api, timesfm3-card]
+  inference_code:
+    status: public
+    note: >-
+      The Apache-2.0 timesfm package (PyPI "timesfm") includes TimesFM 3.0 inference code with
+      PyTorch and Apple MLX backends; the README gives usage examples.
+    source_ids: [timesfm-readme, timesfm-pypi, timesfm-license]
+  training_code:
+    status: unknown
+    note: >-
+      The repository includes a fine-tuning example (Transformers with PEFT/LoRA), added in
+      April 2026 before the 3.0 release; no pre-training code for TimesFM 3.0 was found.
+    source_ids: [timesfm-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card lists GiftEvalPretrain (excluding datasets overlapping with fev-bench),
+      Wikipedia pageviews, Google Trends top queries, and synthetic and augmented data. The
+      synthetic data is not documented as released.
+    source_ids: [timesfm3-card]
+  training_recipe:
+    status: unknown
+    note: >-
+      The model card lists architecture settings, and the blog post describes the approach at
+      a high level; no technical report for version 3.0 was found.
+    source_ids: [timesfm3-card, timesfm3-blog]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The README and blog report benchmark standings on fev-bench, TIME, and GIFT-Eval; code
+      to re-run those evaluations for this release was not identified.
+    source_ids: [timesfm-readme, timesfm3-blog]
+run_notes:
+  - text: >-
+      The README documents installation with "pip install timesfm[torch]" or
+      "pip install timesfm[mlx]" (MLX-native inference on Apple silicon without PyTorch) and
+      notes that contexts longer than 15,360 points are truncated to the most recent points.
+    source_ids: [timesfm-readme]
+provenance:
+  text: >-
+    Trained by Google Research. The model card lists training data from GiftEvalPretrain,
+    Wikipedia pageviews, Google Trends, and synthetic data. No other base model is named.
+  derived_from: []
+  source_ids: [timesfm3-card]
+tags: [time-series, forecasting]
+publication_status: published
+archive_note: null
+released_at: 2026-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: timesfm3-card
+    title: google/timesfm-3.0-pytorch model card
+    url: https://huggingface.co/google/timesfm-3.0-pytorch/raw/main/README.md
+    publisher: Google Research (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm3-hf-api
+    title: Hugging Face model metadata for google/timesfm-3.0-pytorch
+    url: https://huggingface.co/api/models/google/timesfm-3.0-pytorch
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm3-license
+    title: TimesFM Non-Commercial License v1.0
+    url: https://huggingface.co/google/timesfm-3.0-pytorch/raw/main/LICENSE
+    publisher: Google LLC (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm-readme
+    title: google-research/timesfm README
+    url: https://raw.githubusercontent.com/google-research/timesfm/master/README.md
+    publisher: Google Research
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm-license
+    title: google-research/timesfm LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/google-research/timesfm/master/LICENSE
+    publisher: Google Research
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm-pypi
+    title: timesfm on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/timesfm/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: timesfm3-blog
+    title: "TimesFM-3: A zero-shot foundation model for multivariate forecasting"
+    url: https://research.google/blog/timesfm-3-a-zero-shot-foundation-model-for-multivariate-forecasting/
+    publisher: Google Research
+    kind: announcement
+    published_at: 2026-08-31
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Alphabet Inc. Form 10-K fiscal 2025, Exhibit 21.01 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

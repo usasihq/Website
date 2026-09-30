@@ -1,0 +1,164 @@
+slug: continue-extension
+name: Continue (coding agent for VS Code, JetBrains, and CLI)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Continue Dev, Inc.
+    organization_slug: continue
+    source_ids: [continue-license, continue-readme]
+organization_slugs: [continue]
+links:
+  - label: Repository
+    url: https://github.com/continuedev/continue
+    kind: repository
+  - label: Documentation
+    url: https://docs.continue.dev/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/continuedev/continue/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/continuedev/continue/releases
+    kind: release-notes
+summary:
+  text: >-
+    Continue is an open-source AI coding agent that ships as a VS Code extension, a JetBrains
+    plugin, and a command-line tool. Its maintainers put out a final 2.0.0 release, which removed
+    anonymous telemetry and the authentication layer. The repository now says it is no longer
+    actively maintained and is read-only.
+  source_ids: [continue-readme, continue-docs]
+useful_for:
+  text: >-
+    AI-assisted coding inside VS Code, JetBrains IDEs, or a terminal, with custom AI code agents
+    that developers can create, share, and use. The code can serve as a base for forks under its
+    Apache 2.0 license.
+  source_ids: [continue-docs, continue-readme, continue-license]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The LICENSE file and the README assign copyright to Continue Dev, Inc. Continue's terms of
+    service give a San Francisco, California street address for Continue Dev, Inc. and deem the
+    service based in California, and Y Combinator lists the company in San Francisco. Continue's
+    website says the company has since been acquired by
+    Cursor, whose terms of service name Anysphere, Inc. as its provider. No foundation or
+    community governance body has taken over maintenance, and the repository is no longer
+    actively maintained.
+  source_ids: [continue-license, continue-readme, continue-tos, yc-continue, continue-home, cursor-tos]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    The code is still downloadable, but the repository is read-only and no longer actively
+    maintained.
+  source_ids: [continue-repo, continue-readme, continue-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/continuedev/continue/blob/main/LICENSE
+    applies_to: code
+    source_ids: [continue-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: The repository is read-only.
+    source_ids: [continue-repo, continue-readme]
+  documentation:
+    status: public
+    note: The documentation site was still online on 2026-09-29 and did not mention the end of maintenance.
+    source_ids: [continue-docs]
+  installation:
+    status: public
+    note: >-
+      The README links the VS Code Marketplace and Open VSX listings, the CLI's npm package, and
+      JetBrains plugin builds on GitHub Releases. For JetBrains users, it recommends the CLI over
+      the plugin.
+    source_ids: [continue-readme]
+  supported_platforms:
+    status: public
+    note: VS Code, JetBrains IDEs, and a terminal CLI.
+    source_ids: [continue-readme]
+  release_status:
+    status: public
+    note: >-
+      The README calls 2.0.0 the final release. The VS Code v2.0.0 tag was published on GitHub on
+      2026-06-19; a v2.1.0-vscode tag marked as a pre-release was published the same day.
+    source_ids: [continue-readme, continue-releases]
+run_notes: []
+provenance: null
+tags: [agents, coding-agent, developer-tools]
+publication_status: archived
+archive_note: >-
+  Historical record. The repository says it is no longer actively maintained and is read-only
+  after a final 2.0.0 release, and the maintaining company, Continue Dev, Inc., has been acquired
+  by Cursor. The Apache 2.0 code is still downloadable.
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: continue-repo
+    title: continuedev/continue
+    url: https://github.com/continuedev/continue
+    publisher: Continue
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: continue-readme
+    title: Continue README
+    url: https://github.com/continuedev/continue/blob/main/README.md
+    publisher: Continue
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: continue-license
+    title: Continue LICENSE
+    url: https://github.com/continuedev/continue/blob/main/LICENSE
+    publisher: Continue
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: continue-releases
+    title: Continue releases
+    url: https://github.com/continuedev/continue/releases
+    publisher: Continue
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: continue-docs
+    title: What is Continue? | Continue Docs
+    url: https://docs.continue.dev/
+    publisher: Continue
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: continue-home
+    title: Continue (acquired by Cursor)
+    url: https://continue.dev/
+    publisher: Continue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: continue-tos
+    title: Terms of Service | Continue
+    url: https://continue.dev/terms-conditions/
+    publisher: Continue Dev, Inc.
+    kind: official-page
+    published_at: 2025-10-13
+    accessed_at: 2026-09-29
+  - id: yc-continue
+    title: "Continue: Pioneering open-source coding agent | Y Combinator"
+    url: https://www.ycombinator.com/companies/continue
+    publisher: Y Combinator
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cursor-tos
+    title: Cursor · Terms of Service
+    url: https://cursor.com/terms-of-service
+    publisher: Anysphere, Inc.
+    kind: official-page
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29

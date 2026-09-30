@@ -1,0 +1,169 @@
+slug: luma-ai
+name: Luma AI
+legal_name:
+  text: Luma AI, Inc.
+  source_ids: [luma-terms, luma-form-d-2023]
+website: https://lumalabs.ai
+logo_text: L
+summary:
+  text: >-
+    Luma AI develops generative models for video and images, including the Ray3.2 video model
+    and the Uni-1.1 image model. It offers them through Luma Agents, a web-based creative
+    workspace, and through a developer API.
+  source_ids: [luma-llm-info, luma-ray, luma-app, luma-api]
+organization_roles: [model-developer, consumer-products, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation, incorporated in 2021, per its 2023 SEC Form D notice.
+  source_ids: [luma-form-d-2023]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Redwood City, California
+  country: US
+  source_ids: [luma-careers, luma-llm-info]
+other_locations: []
+founded:
+  year: 2021
+  source_ids: [luma-llm-info, luma-form-d-2023]
+sectors: []
+status_note: null
+products:
+  - id: luma-agents
+    name: Luma Agents
+    kind: other
+    access: >-
+      Web-based creative workspace in which an agent plans and generates images, video, audio,
+      and text using Luma's own and third-party models; free to try, with paid individual
+      plans and team and enterprise plans through sales.
+    url: https://lumalabs.ai/app
+    source_ids: [luma-app, luma-llm-info]
+    last_reviewed: 2026-09-29
+  - id: luma-api
+    name: Luma API
+    kind: hosted-model-api
+    access: >-
+      Paid developer API for the Ray3.2 video model and the Uni-1.1 image model, authenticated
+      with API keys, with pay-as-you-go and dedicated-capacity plans and official SDKs for
+      Python, TypeScript, and Go.
+    url: https://lumalabs.ai/api
+    source_ids: [luma-api, luma-llm-info, luma-agents-docs]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Luma's careers page and its company information page list its headquarters in Redwood
+    City, California. Its terms of service (updated May 2026) give a legal address at 715 Alma
+    Street, Palo Alto, California, and its 2023 SEC Form D lists Luma AI, Inc. as a Delaware
+    corporation with its principal place of business in Palo Alto. Both cities are in
+    California; the record uses the headquarters named on the current careers page.
+  source_ids: [luma-careers, luma-llm-info, luma-terms, luma-form-d-2023]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Luma's Ray and Uni models are offered through its hosted app and API; the Ray3.2 page does
+    not mention a weights release. Luma publishes Apache-2.0 client SDKs on GitHub. Its
+    research repository for Inductive Moment Matching includes code under a CC BY-NC-SA 4.0
+    (non-commercial) license file and links to research checkpoints trained on CIFAR-10 and
+    ImageNet 256x256 on Hugging Face, where the model card metadata says Apache-2.0 but the
+    repository's license file is CC BY-NC-SA 4.0.
+  source_ids: [luma-ray, luma-api, luma-python-sdk, luma-python-sdk-license, luma-imm-repo, luma-imm-license, luma-imm-hf]
+hiring_url: https://lumalabs.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: luma-terms
+    title: Terms of Service | Luma
+    url: https://lumalabs.ai/legal/terms-of-service
+    publisher: Luma AI, Inc.
+    kind: official-page
+    published_at: 2026-05-14
+    accessed_at: 2026-09-29
+  - id: luma-form-d-2023
+    title: Luma AI, Inc. Form D notice of exempt offering of securities
+    url: https://www.sec.gov/Archives/edgar/data/1971882/000197188223000001/xslFormDX01/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2023-08-25
+    accessed_at: 2026-09-29
+  - id: luma-careers
+    title: Careers | Luma
+    url: https://lumalabs.ai/careers
+    publisher: Luma AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-llm-info
+    title: Luma — Official Information for AI Assistants | Luma
+    url: https://lumalabs.ai/llm-info
+    publisher: Luma AI, Inc.
+    kind: official-page
+    published_at: 2026-07-13
+    accessed_at: 2026-09-29
+  - id: luma-ray
+    title: Direct any frame. Finish every cut. | Luma
+    url: https://lumalabs.ai/ray
+    publisher: Luma AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-app
+    title: Creative agents for creative professionals | Luma
+    url: https://lumalabs.ai/app
+    publisher: Luma AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-api
+    title: Build with Luma APIs | Luma
+    url: https://lumalabs.ai/api
+    publisher: Luma AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-agents-docs
+    title: Quickstart | Luma Agents
+    url: https://docs.agents.lumalabs.ai/
+    publisher: Luma AI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-python-sdk
+    title: "GitHub - lumalabs/lumaai-python: Dream Machine SDK for Python"
+    url: https://github.com/lumalabs/lumaai-python
+    publisher: Luma AI, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-imm-repo
+    title: "GitHub - lumalabs/imm: Official implementation of Inductive Moment Matching"
+    url: https://github.com/lumalabs/imm
+    publisher: Luma AI, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-imm-license
+    title: lumalabs/imm LICENSE (Attribution-NonCommercial-ShareAlike 4.0 International)
+    url: https://raw.githubusercontent.com/lumalabs/imm/main/LICENSE
+    publisher: Luma AI, Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-imm-hf
+    title: lumaai/imm · Hugging Face (Inductive Moment Matching model checkpoints)
+    url: https://huggingface.co/lumaai/imm
+    publisher: Luma AI, Inc. (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: luma-python-sdk-license
+    title: lumalabs/lumaai-python LICENSE
+    url: https://raw.githubusercontent.com/lumalabs/lumaai-python/main/LICENSE
+    publisher: Luma AI, Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

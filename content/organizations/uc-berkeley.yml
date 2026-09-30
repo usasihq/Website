@@ -1,0 +1,161 @@
+slug: uc-berkeley
+name: University of California, Berkeley
+legal_name: null
+website: https://www.berkeley.edu
+logo_text: UCB
+summary:
+  text: >-
+    UC Berkeley is a public university and a campus of the University of California, which was
+    founded in 1868 and moved to its Berkeley campus in 1873. Its AI-related research includes
+    the Sky Computing Lab and the Gorilla project, which runs the Berkeley Function Calling
+    Leaderboard.
+  source_ids: [berkeley-about, berkeley-history, sky-lab, bfcl-hf, bfcl-leaderboard]
+organization_roles: [university-lab, research-lab]
+ownership_category: public-institution
+legal_form:
+  text: >-
+    A campus of the University of California. The University of California is governed by The
+    Regents, which hold full powers of organization and governance under Article IX, Section 9
+    of the California Constitution.
+  source_ids: [uc-regents-about, berkeley-about]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Berkeley, California
+  country: US
+  source_ids: [berkeley-history]
+other_locations: []
+founded:
+  year: 1868
+  source_ids: [berkeley-about, berkeley-history]
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      In May 2025 the PyTorch Foundation accepted vLLM, an inference and serving engine for
+      large language models contributed by the University of California, Berkeley, as a
+      foundation-hosted project.
+    source_ids: [pytorch-vllm]
+  - text: >-
+      The Sky Computing Lab presents itself as the next Berkeley lab for data-intensive systems
+      research after AMPLab and RISELab; its stated aim is to let applications run on any cloud
+      or on several clouds at once.
+    source_ids: [sky-lab]
+  - text: >-
+      The Berkeley Function Calling Leaderboard (BFCL) is described in an ICML 2025 paper whose
+      authors are all affiliated with the University of California, Berkeley. The leaderboard is
+      hosted at gorilla.cs.berkeley.edu, and its dataset is published by the Hugging Face
+      organization "Gorilla LLM (UC Berkeley)".
+    source_ids: [bfcl-paper, bfcl-leaderboard, bfcl-hf]
+  - text: >-
+      LMSYS states that it originated in 2023 from a multi-university collaboration that included
+      UC Berkeley. Chatbot Arena, which began as a research project under UC Berkeley and LMSYS,
+      is now operated by Arena Intelligence Inc., a company formed in 2025 that describes Arena
+      as created by researchers from UC Berkeley.
+    source_ids: [lmsys-about, arena-new-lmarena, arena-about]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    UC Berkeley is a public university campus of the University of California, which is governed
+    by The Regents under the California Constitution. The campus has been in Berkeley,
+    California, since 1873.
+  source_ids: [uc-regents-about, berkeley-history, berkeley-about]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact, not for the university as a whole. The Gorilla
+    repository, which contains the BFCL code, is published under the Apache License 2.0. vLLM,
+    contributed by UC Berkeley, is now governed as a PyTorch Foundation-hosted project.
+  source_ids: [gorilla-license, pytorch-vllm]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: berkeley-about
+    title: About | University of California, Berkeley
+    url: https://www.berkeley.edu/about/
+    publisher: University of California, Berkeley
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: berkeley-history
+    title: History & discoveries | University of California, Berkeley
+    url: https://www.berkeley.edu/about/history-discoveries/
+    publisher: University of California, Berkeley
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: uc-regents-about
+    title: About the Regents | Board of Regents
+    url: https://regents.universityofcalifornia.edu/about/index.html
+    publisher: University of California Board of Regents
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sky-lab
+    title: Sky Computing Lab | UC Berkeley
+    url: https://sky.cs.berkeley.edu/
+    publisher: UC Berkeley Sky Computing Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-vllm
+    title: PyTorch Foundation Welcomes vLLM as a Hosted Project
+    url: https://pytorch.org/blog/pytorch-foundation-welcomes-vllm/
+    publisher: PyTorch Foundation
+    kind: announcement
+    published_at: 2025-05-07
+    accessed_at: 2026-09-29
+  - id: bfcl-paper
+    title: "The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models (PDF)"
+    url: https://raw.githubusercontent.com/mlresearch/v267/main/assets/patil25a/patil25a.pdf
+    publisher: Proceedings of Machine Learning Research (ICML 2025)
+    kind: paper
+    published_at: "2025"
+    accessed_at: 2026-09-29
+  - id: bfcl-leaderboard
+    title: Berkeley Function Calling Leaderboard
+    url: https://gorilla.cs.berkeley.edu/leaderboard.html
+    publisher: UC Berkeley Gorilla project
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bfcl-hf
+    title: gorilla-llm/Berkeley-Function-Calling-Leaderboard dataset card
+    url: https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard
+    publisher: Gorilla LLM (UC Berkeley)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gorilla-license
+    title: Gorilla LICENSE
+    url: https://raw.githubusercontent.com/ShishirPatil/gorilla/main/LICENSE
+    publisher: Gorilla project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lmsys-about
+    title: About | LMSYS Org
+    url: https://lmsys.org/about/
+    publisher: LMSYS
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arena-new-lmarena
+    title: LMArena and The Future of AI Reliability
+    url: https://arena.ai/blog/new-lmarena
+    publisher: Arena Intelligence Inc.
+    kind: announcement
+    published_at: 2025-05-27
+    accessed_at: 2026-09-29
+  - id: arena-about
+    title: About Us - Arena.ai
+    url: https://arena.ai/company/about
+    publisher: Arena Intelligence Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

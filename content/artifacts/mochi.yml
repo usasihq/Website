@@ -1,0 +1,123 @@
+slug: mochi
+name: Mochi
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Genmo
+    organization_slug: genmo
+    source_ids: [genmo-mochi-blog, mochi-card]
+organization_slugs: [genmo]
+links:
+  - label: Mochi 1 announcement
+    url: https://www.genmo.ai/blog/mochi-1-a-new-sota-in-open-text-to-video
+    kind: release-notes
+  - label: genmoai/mochi repository
+    url: https://github.com/genmoai/mochi
+    kind: repository
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/genmo/mochi-1-preview
+    kind: model-hub
+  - label: Mochi in Hugging Face Diffusers
+    url: https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+    kind: documentation
+summary:
+  text: >-
+    Mochi is Genmo's line of text-to-video diffusion models. Its only open-weight release so
+    far is Mochi 1 preview (October 2024), a 10B-parameter model published with its video VAE
+    under Apache 2.0. Genmo's hosted playground refers to a Mochi 1.1 model, for which this
+    catalog found no open-weight release.
+  source_ids: [genmo-mochi-blog, mochi-card, genmo-hf, genmo-play]
+useful_for:
+  text: >-
+    Generating short videos from text prompts. Genmo notes that the preview is tuned for
+    photorealistic styles and generates 480p video.
+  source_ids: [mochi-repo, genmo-mochi-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Mochi is developed and published by Genmo, whose terms of service name Genmo Inc. at a San
+    Francisco address and whose job board lists roles at "San Francisco HQ". Eligibility of
+    each release is assessed on the release record.
+  source_ids: [genmo-terms, genmo-jobs]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Mochi 1 preview record.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    Genmo states that Mochi 1 was trained entirely from scratch. It encodes prompts with a
+    single T5-XXL text encoder (the google/t5-v1_1-xxl variant, per the Diffusers
+    documentation).
+  derived_from: []
+  source_ids: [mochi-repo, diffusers-mochi]
+tags: [multimodal]
+publication_status: published
+archive_note: null
+released_at: 2024-10-22
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: genmo-mochi-blog
+    title: "Mochi 1: A new SOTA in open text-to-video"
+    url: https://www.genmo.ai/blog/mochi-1-a-new-sota-in-open-text-to-video
+    publisher: Genmo
+    kind: announcement
+    published_at: 2024-10-22
+    accessed_at: 2026-09-29
+  - id: mochi-card
+    title: genmo/mochi-1-preview model card
+    url: https://huggingface.co/genmo/mochi-1-preview
+    publisher: Genmo
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mochi-repo
+    title: genmoai/mochi README
+    url: https://github.com/genmoai/mochi
+    publisher: Genmo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: diffusers-mochi
+    title: Mochi 1 Preview | Hugging Face Diffusers documentation
+    url: https://huggingface.co/docs/diffusers/en/api/pipelines/mochi
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-hf
+    title: Genmo on Hugging Face
+    url: https://huggingface.co/genmo
+    publisher: Genmo
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-play
+    title: Genmo Playground
+    url: https://www.genmo.ai/play
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: genmo-terms
+    title: Terms of Service | Genmo
+    url: https://www.genmo.ai/terms-of-service
+    publisher: Genmo Inc.
+    kind: official-page
+    published_at: 2024-09-16
+    accessed_at: 2026-09-29
+  - id: genmo-jobs
+    title: Genmo job board (Ashby posting API)
+    url: https://api.ashbyhq.com/posting-api/job-board/genmo
+    publisher: Genmo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,155 @@
+slug: lfm2-5-2-6b
+name: LFM2.5-2.6B
+kind: model
+record_level: release
+family_slug: lfm
+version: "LFM2.5-2.6B"
+maintainers:
+  - name: Liquid AI
+    organization_slug: liquid-ai
+    source_ids: [mc-lfm25-2-6b, lfm25-2-6b-blog]
+organization_slugs: [liquid-ai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/LiquidAI/LFM2.5-2.6B
+    kind: model-hub
+  - label: License (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/LFM2.5-2.6B/blob/main/LICENSE
+    kind: license
+  - label: Release post
+    url: https://www.liquid.ai/blog/lfm2-5-2-6b
+    kind: release-notes
+summary:
+  text: >-
+    A 2.69B-parameter text-only hybrid model with 30 layers (22 double-gated short-convolution
+    blocks and 8 grouped-query attention blocks), a 131,072-token context window, and support for
+    16 languages. Liquid AI pretrained it on about 34 trillion tokens and post-trained it for
+    agentic use; it always reasons before answering.
+  source_ids: [mc-lfm25-2-6b, lfm25-2-6b-blog]
+useful_for:
+  text: >-
+    The model card recommends it for agentic workloads, tool use, data extraction,
+    retrieval-augmented generation, and long-context workflows, and does not recommend it for
+    agentic coding or knowledge-heavy tasks.
+  source_ids: [mc-lfm25-2-6b]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Liquid AI, Inc., the licensor named in the model's license file.
+    Liquid AI gives its address as Cambridge, Massachusetts (see the liquid-ai record).
+  source_ids: [mc-lfm25-2-6b, lfm25-2-6b-license-file, liquid-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; use is governed by the LFM Open
+    License v1.0, which conditions commercial-use rights on the licensee's legal entity not
+    exceeding a threshold defined as annual revenue of US$10,000,000 or more.
+  source_ids: [mc-lfm25-2-6b, lfm25-2-6b-license-file]
+licenses:
+  - name: LFM Open License v1.0
+    spdx: null
+    url: https://huggingface.co/LiquidAI/LFM2.5-2.6B/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [lfm25-2-6b-license-file, mc-lfm25-2-6b]
+license_notes:
+  text: >-
+    Custom Liquid AI license (card license field "lfm1.0") modeled on Apache 2.0, with the same
+    text as the other LFM2.5 releases reviewed. Commercial rights are conditional on the
+    licensee's legal entity not exceeding a "Threshold" defined as annual revenue of
+    US$10,000,000 or more, and commercial use by a legal entity that exceeds the Threshold is not
+    licensed; the Threshold does not apply to a qualified non-profit organization's use for
+    non-commercial or research purposes. The license also requires
+    redistributors to include it and mark modified files, and ends patent rights for anyone who
+    files patent litigation over the work.
+  source_ids: [lfm25-2-6b-license-file, liquid-lfm-license]
+checklist:
+  weights:
+    status: public
+    note: Ungated safetensors weights on Hugging Face; GGUF, ONNX, and MLX conversions and a base checkpoint are published as separate repositories.
+    source_ids: [mc-lfm25-2-6b]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents inference with Hugging Face Transformers (5.0.0 or later), vLLM,
+      SGLang, llama.cpp, MLX, and LM Studio, and gives setup examples for several agent harnesses.
+    source_ids: [mc-lfm25-2-6b]
+  training_code:
+    status: unknown
+    note: No training code release was found in the model card or release post.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: The model card and release post state the pretraining budget (about 34 trillion tokens) but do not describe data sources or composition.
+    source_ids: []
+  training_recipe:
+    status: partial
+    note: >-
+      The model card and release post describe the stages at a high level: pretraining, a
+      mid-training phase that extends context to 128K, two rounds of supervised fine-tuning,
+      per-domain teacher specialization, multi-domain on-policy distillation, and agentic
+      reinforcement learning inside agent harnesses. Hyperparameters and data mixes are not given.
+    source_ids: [mc-lfm25-2-6b, lfm25-2-6b-blog]
+  evaluation_materials:
+    status: partial
+    note: The model card reports a benchmark table against other small models; evaluation code or prompts are not linked.
+    source_ids: [mc-lfm25-2-6b]
+run_notes:
+  - text: >-
+      The model card recommends temperature 0.1, top_k 50, and repetition_penalty 1.1, and shows
+      Transformers loading in bfloat16. It points to a separate 328M speculative-decoding
+      drafter, LFM2.5-2.6B-DSpark, for SGLang and Apple silicon.
+    source_ids: [mc-lfm25-2-6b]
+provenance:
+  text: >-
+    Post-trained by Liquid AI from its own LFM2.5-2.6B-Base checkpoint; no third-party base model
+    is involved.
+  derived_from:
+    - name: LFM2.5-2.6B-Base
+      artifact_slug: null
+      url: https://huggingface.co/LiquidAI/LFM2.5-2.6B-Base
+      note: Same organization; pretrained base checkpoint.
+  source_ids: [mc-lfm25-2-6b]
+tags: [language-model, reasoning, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2026-08-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-lfm25-2-6b
+    title: LiquidAI/LFM2.5-2.6B model card
+    url: https://huggingface.co/LiquidAI/LFM2.5-2.6B
+    publisher: Liquid AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lfm25-2-6b-license-file
+    title: LFM2.5-2.6B LICENSE (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/LFM2.5-2.6B/raw/main/LICENSE
+    publisher: Liquid AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: liquid-lfm-license
+    title: LFM License
+    url: https://www.liquid.ai/lfm-license
+    publisher: Liquid AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lfm25-2-6b-blog
+    title: "LFM2.5-2.6B: Deploy Agents Everywhere"
+    url: https://www.liquid.ai/blog/lfm2-5-2-6b
+    publisher: Liquid AI
+    kind: announcement
+    published_at: 2026-08-04
+    accessed_at: 2026-09-29
+  - id: liquid-privacy
+    title: Liquid AI Privacy Policy
+    url: https://www.liquid.ai/privacy-policy
+    publisher: Liquid AI
+    kind: official-page
+    published_at: 2025-07-14
+    accessed_at: 2026-09-29

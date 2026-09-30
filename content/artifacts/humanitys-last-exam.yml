@@ -1,0 +1,215 @@
+slug: humanitys-last-exam
+name: Humanity's Last Exam (HLE)
+kind: eval
+record_level: project
+family_slug: null
+version: "HLE (2,500 questions, finalized April 2025); HLE-Rolling; HLE-Diamond (September 2026)"
+maintainers:
+  - name: Center for AI Safety
+    organization_slug: center-for-ai-safety
+    source_ids: [hle-site, hle-repo, hle-license, hle-diamond]
+  - name: Scale AI
+    organization_slug: scale-ai
+    source_ids: [hle-site, hle-diamond]
+organization_slugs: [center-for-ai-safety, scale-ai]
+links:
+  - label: Website
+    url: https://lastexam.ai/
+    kind: website
+  - label: GitHub repository
+    url: https://github.com/centerforaisafety/hle
+    kind: repository
+  - label: Dataset (Hugging Face, cais/hle)
+    url: https://huggingface.co/datasets/cais/hle
+    kind: dataset-hub
+  - label: Paper (arXiv 2501.14249)
+    url: https://arxiv.org/abs/2501.14249
+    kind: paper
+  - label: Nature paper
+    url: https://www.nature.com/articles/s41586-025-09962-4
+    kind: paper
+  - label: HLE-Diamond release notes
+    url: https://lastexam.ai/blog/hle-diamond
+    kind: release-notes
+summary:
+  text: >-
+    A multimodal benchmark of 2,500 expert-written, closed-ended academic questions across more
+    than a hundred subjects, including mathematics, the humanities, and the natural sciences,
+    in multiple-choice and short-answer formats suited to automated grading. It was organized by
+    teams at the Center for AI Safety and Scale AI with questions from nearly 1,000 subject-matter
+    contributors, and was published in Nature in January 2026.
+  source_ids: [hle-site, hle-repo]
+useful_for:
+  text: >-
+    Measuring language model accuracy and calibration on difficult closed-ended academic
+    questions; the organizers keep a private held-out question set to check for overfitting.
+  source_ids: [hle-site, hle-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The benchmark's organizing team is drawn from the Center for AI Safety and Scale AI; its
+    GitHub repository is in the centerforaisafety organization under an MIT license held by
+    centerforaisafety, and its dataset is published under CAIS's Hugging Face organization. The
+    Center for AI Safety is a San Francisco 501(c)(3) nonprofit listed by the IRS. Scale AI is
+    covered by its own catalog record.
+  source_ids: [hle-site, hle-repo, hle-license, hf-cais-org, cais-donate, irs-eo-bmf-ca]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    The public question set is on Hugging Face behind an automatic access gate that asks users
+    to share contact information; the evaluation code is public on GitHub. A private held-out
+    question set is not released.
+  source_ids: [hle-hf-card, hle-hf-api, hle-repo, hle-site]
+licenses:
+  - name: MIT License (dataset)
+    spdx: MIT
+    url: https://huggingface.co/datasets/cais/hle
+    applies_to: data
+    source_ids: [hle-hf-card, hle-hf-api]
+  - name: MIT License (evaluation code)
+    spdx: MIT
+    url: https://raw.githubusercontent.com/centerforaisafety/hle/main/LICENSE
+    applies_to: code
+    source_ids: [hle-license]
+license_notes:
+  text: >-
+    The dataset and repository include a canary string intended to help model developers keep
+    the benchmark out of training data. The separate cais/hle-diamond dataset's metadata also
+    lists the MIT license and uses the same automatic access gate.
+  source_ids: [hle-repo, hle-hf-card, hle-diamond-hf-api]
+checklist:
+  code:
+    status: public
+    note: >-
+      The hle_eval scripts generate model predictions through the openai-python interface and
+      grade them with a judge model; MIT license.
+    source_ids: [hle-repo, hle-license]
+  tasks_data:
+    status: partial
+    note: >-
+      The 2,500 public questions are downloadable after accepting the Hugging Face access
+      prompt; a private held-out set is kept back to assess overfitting.
+    source_ids: [hle-hf-card, hle-hf-api, hle-site]
+  methodology:
+    status: public
+    note: >-
+      The paper (arXiv, with a Nature version) describes the benchmark, whose questions each have
+      a known, unambiguous, verifiable answer that cannot be quickly found by internet search.
+      The website explains that calibration error is measured by asking models for an answer
+      and a 0-100% confidence, with answers graded by a judge model.
+    source_ids: [hle-arxiv, hle-site]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README gives commands for running predictions and the judge, notes temperature 0 as
+      the default, and advises at least 8,192 completion tokens for reasoning models.
+    source_ids: [hle-repo]
+  limitations:
+    status: public
+    note: >-
+      The website states that HLE tests structured academic problems rather than open-ended
+      research or creative problem solving, and that high accuracy alone would not indicate
+      autonomous research ability. Changes to the question set (removals, re-additions, updates,
+      and additions) are listed in the public HLE-Rolling change log, and HLE-Diamond is described
+      as a subset refined over a year of cleaning.
+    source_ids: [hle-site, hle-rolling-log, hle-diamond]
+run_notes:
+  - text: >-
+      HLE-Rolling (October 2025) is a dynamic fork updated through a public change log, and
+      HLE-Diamond (September 22, 2026) is a refined 1,000-question subset split evenly between
+      reasoning and knowledge questions, published as cais/hle-diamond.
+    source_ids: [hle-site, hle-diamond, hle-rolling-log]
+provenance: null
+tags: [benchmark, evaluation, reasoning, multimodal]
+publication_status: published
+archive_note: null
+released_at: 2025-01
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hle-site
+    title: Humanity's Last Exam
+    url: https://lastexam.ai/
+    publisher: Center for AI Safety and Scale AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hle-repo
+    title: centerforaisafety/hle README
+    url: https://github.com/centerforaisafety/hle
+    publisher: Center for AI Safety
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hle-license
+    title: centerforaisafety/hle LICENSE
+    url: https://raw.githubusercontent.com/centerforaisafety/hle/main/LICENSE
+    publisher: Center for AI Safety
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hle-hf-card
+    title: cais/hle dataset card
+    url: https://huggingface.co/datasets/cais/hle
+    publisher: Center for AI Safety
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hle-hf-api
+    title: cais/hle (Hugging Face dataset API metadata)
+    url: https://huggingface.co/api/datasets/cais/hle
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hle-diamond-hf-api
+    title: cais/hle-diamond (Hugging Face dataset API metadata)
+    url: https://huggingface.co/api/datasets/cais/hle-diamond
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-cais-org
+    title: cais organization overview (Hugging Face API)
+    url: https://huggingface.co/api/organizations/cais/overview
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hle-arxiv
+    title: Humanity's Last Exam (arXiv 2501.14249)
+    url: https://arxiv.org/abs/2501.14249
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-01-24
+    accessed_at: 2026-09-29
+  - id: hle-diamond
+    title: HLE-Diamond release notes
+    url: https://lastexam.ai/blog/hle-diamond
+    publisher: Center for AI Safety and Scale AI
+    kind: release-notes
+    published_at: 2026-09-22
+    accessed_at: 2026-09-29
+  - id: hle-rolling-log
+    title: hle-rolling-changes.txt (centerforaisafety/hle)
+    url: https://github.com/centerforaisafety/hle/blob/main/hle-rolling-changes.txt
+    publisher: Center for AI Safety
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cais-donate
+    title: Donate | CAIS
+    url: https://safe.ai/donate
+    publisher: Center for AI Safety
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

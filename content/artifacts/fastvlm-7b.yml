@@ -1,0 +1,221 @@
+slug: fastvlm-7b
+name: FastVLM 7B
+kind: model
+record_level: release
+family_slug: fastvlm
+version: "FastVLM-7B"
+maintainers:
+  - name: Apple
+    organization_slug: apple
+    source_ids: [fastvlm-license, fastvlm7b-card]
+organization_slugs: [apple]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/apple/FastVLM-7B
+    kind: model-hub
+  - label: ml-fastvlm repository
+    url: https://github.com/apple/ml-fastvlm
+    kind: repository
+  - label: "FastVLM: Efficient Vision Encoding for Vision Language Models (arXiv 2412.13303)"
+    url: https://arxiv.org/abs/2412.13303
+    kind: paper
+  - label: License (Apple Machine Learning Research Model License)
+    url: https://huggingface.co/apple/FastVLM-7B/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    FastVLM 7B is the 7B variant of Apple's FastVLM release. It combines Apple's FastViTHD
+    vision encoder with the Qwen2-7B language model in a LLaVA-style architecture and accepts
+    an image plus a text prompt to generate text.
+  source_ids: [fastvlm7b-card, fastvlm-readme, fastvlm7b-config]
+useful_for:
+  text: >-
+    The paper and Apple's research article describe FastVLM for high-resolution and text-rich
+    image understanding with low time-to-first-token, including on-device use. Its license
+    limits use to non-commercial research.
+  source_ids: [fastvlm-paper, apple-ml-fastvlm, fastvlm-license]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model license states the model is developed and released by Apple Inc., and the paper
+    lists Apple as the authors' affiliation. Apple Inc. has its principal executive offices in
+    Cupertino, California, per its Form 10-K for fiscal year 2025. The language model is the
+    third-party Qwen2-7B, recorded under provenance; that base is not U.S.-developed.
+  source_ids: [fastvlm-license, fastvlm-paper, aapl-10k-2025, fastvlm-readme]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without an access gate and from Apple's CDN via the
+    repository's download script, under a license that permits only non-commercial research
+    use.
+  source_ids: [fastvlm7b-hf-api, fastvlm-readme, fastvlm-license]
+licenses:
+  - name: Apple Machine Learning Research Model License Agreement
+    spdx: null
+    url: https://huggingface.co/apple/FastVLM-7B/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [fastvlm-license, fastvlm7b-hf-api, fastvlm-repo-license-model]
+  - name: Apple software license (ml-fastvlm code)
+    spdx: null
+    url: https://raw.githubusercontent.com/apple/ml-fastvlm/main/LICENSE
+    applies_to: code
+    source_ids: [fastvlm-repo-license, fastvlm-readme]
+license_notes:
+  text: >-
+    The weights license grants a personal, non-exclusive, revocable license to use, copy,
+    modify, distribute, and create derivatives only for non-commercial scientific research,
+    excluding product development and commercial use; derivatives are held to the same limit.
+    Redistribution requires passing on the agreement with a specified attribution notice.
+    No patent rights are granted, and the agreement is governed by California law. The
+    Qwen2-7B language model it builds on is separately published under Apache 2.0 on Hugging
+    Face.
+  source_ids: [fastvlm-license, qwen2-7b-hf]
+checklist:
+  weights:
+    status: public
+    note: >-
+      Weights are published on Hugging Face without an access gate; the repository also links
+      stage 2 and stage 3 PyTorch checkpoints and an int4 Apple silicon export.
+    source_ids: [fastvlm7b-hf-api, fastvlm-readme]
+  inference_code:
+    status: public
+    note: >-
+      The ml-fastvlm repository provides a predict.py script, export code for Apple silicon,
+      and an iOS/macOS demo app; the card also shows Transformers inference with remote code.
+    source_ids: [fastvlm-readme, fastvlm7b-card]
+  training_code:
+    status: unknown
+    note: >-
+      The README says FastVLM variants were trained with the LLaVA codebase and directs users
+      to LLaVA's instructions for training; FastVLM-specific training scripts were not found.
+    source_ids: [fastvlm-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The paper describes the datasets used in each training stage (for example the LLaVA-558K
+      alignment and LLaVA-665K instruction data in its base setup) and the DataCompDR-1B data
+      used to pretrain FastViTHD; availability of every dataset for the released checkpoint was
+      not verified.
+    source_ids: [fastvlm-paper]
+  training_recipe:
+    status: partial
+    note: >-
+      The paper describes the multi-stage training setup (connector training, resolution
+      scaling, visual instruction tuning, and a further stage 3), with some hyperparameters
+      and compute details.
+    source_ids: [fastvlm-paper]
+  evaluation_materials:
+    status: partial
+    note: The card and paper report benchmark results; evaluation code for re-running them was not identified.
+    source_ids: [fastvlm7b-card, fastvlm-paper]
+run_notes:
+  - text: >-
+      The repository recommends exporting PyTorch checkpoints for Apple silicon with its
+      model_export code and provides a pre-exported 7B stage 3 checkpoint with int4
+      quantization for the language model.
+    source_ids: [fastvlm-readme]
+provenance:
+  text: >-
+    Built by Apple from its FastViTHD vision encoder and the Qwen2-7B language model, which
+    was developed by the Qwen Team at Alibaba Group (per the Qwen2 Technical Report) and is
+    published on Hugging Face. The configuration identifies the architecture as
+    LlavaQwen2ForCausalLM.
+  derived_from:
+    - name: Qwen2-7B
+      artifact_slug: null
+      url: https://huggingface.co/Qwen/Qwen2-7B
+      note: Language model decoder.
+  source_ids: [fastvlm-readme, fastvlm7b-config, qwen2-7b-hf, qwen2-report]
+tags: [vision-language, multimodal]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: fastvlm7b-card
+    title: apple/FastVLM-7B model card
+    url: https://huggingface.co/apple/FastVLM-7B/raw/main/README.md
+    publisher: Apple (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm7b-hf-api
+    title: Hugging Face model metadata for apple/FastVLM-7B
+    url: https://huggingface.co/api/models/apple/FastVLM-7B
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm7b-config
+    title: apple/FastVLM-7B config.json
+    url: https://huggingface.co/apple/FastVLM-7B/raw/main/config.json
+    publisher: Apple (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-license
+    title: FastVLM LICENSE (Apple Machine Learning Research Model License Agreement)
+    url: https://huggingface.co/apple/FastVLM-7B/raw/main/LICENSE
+    publisher: Apple Inc. (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-repo-license
+    title: apple/ml-fastvlm LICENSE (code)
+    url: https://raw.githubusercontent.com/apple/ml-fastvlm/main/LICENSE
+    publisher: Apple Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-repo-license-model
+    title: apple/ml-fastvlm LICENSE_MODEL
+    url: https://raw.githubusercontent.com/apple/ml-fastvlm/main/LICENSE_MODEL
+    publisher: Apple Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-readme
+    title: apple/ml-fastvlm README
+    url: https://raw.githubusercontent.com/apple/ml-fastvlm/main/README.md
+    publisher: Apple (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fastvlm-paper
+    title: "FastVLM: Efficient Vision Encoding for Vision Language Models (arXiv 2412.13303v2, HTML)"
+    url: https://arxiv.org/html/2412.13303v2
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-15
+    accessed_at: 2026-09-29
+  - id: apple-ml-fastvlm
+    title: "FastVLM: Efficient Vision Encoding for Vision Language Models"
+    url: https://machinelearning.apple.com/research/fast-vision-language-models
+    publisher: Apple Machine Learning Research
+    kind: announcement
+    published_at: 2025-07-23
+    accessed_at: 2026-09-29
+  - id: qwen2-7b-hf
+    title: Qwen/Qwen2-7B (Hugging Face)
+    url: https://huggingface.co/Qwen/Qwen2-7B
+    publisher: Qwen (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: qwen2-report
+    title: "Qwen2 Technical Report (arXiv 2407.10671, HTML)"
+    url: https://arxiv.org/html/2407.10671
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-07-15
+    accessed_at: 2026-09-29
+  - id: aapl-10k-2025
+    title: Apple Inc. Form 10-K for the fiscal year ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+    publisher: Apple Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

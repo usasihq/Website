@@ -1,0 +1,173 @@
+slug: dinov3-vit7b16
+name: DINOv3 ViT-7B/16 (LVD-1689M)
+kind: model
+record_level: release
+family_slug: dinov3
+version: "ViT-7B/16, pretrain LVD-1689M"
+maintainers:
+  - name: Meta (FAIR)
+    organization_slug: meta
+    source_ids: [hf-dinov3-vit7b16, dinov3-readme]
+organization_slugs: [meta]
+links:
+  - label: Model card (Hugging Face, gated)
+    url: https://huggingface.co/facebook/dinov3-vit7b16-pretrain-lvd1689m
+    kind: model-hub
+  - label: DINOv3 repository
+    url: https://github.com/facebookresearch/dinov3
+    kind: repository
+  - label: DINOv3 License
+    url: https://github.com/facebookresearch/dinov3/blob/main/LICENSE.md
+    kind: license
+  - label: DINOv3 paper (arXiv 2508.10104)
+    url: https://arxiv.org/abs/2508.10104
+    kind: paper
+summary:
+  text: >-
+    The largest DINOv3 backbone: a 6.7-billion-parameter Vision Transformer with 16-pixel
+    patches, trained by Meta with self-supervised learning (a DINO self-distillation loss and an
+    iBOT masked-image-modeling loss) on LVD-1689M. Training ran in three stages: pretraining,
+    Gram anchoring, and high-resolution adaptation.
+  source_ids: [hf-dinov3-vit7b16, dinov3-readme, dinov3-paper]
+useful_for:
+  text: >-
+    The model card lists use of frozen features for image classification with k-NN classifiers,
+    retrieval, depth estimation and semantic segmentation with linear layers, unsupervised object
+    discovery, and video segmentation tracking. It also reports performance differences across
+    income levels and regions in a fairness analysis.
+  source_ids: [hf-dinov3-vit7b16]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Meta AI as the developer. Meta Platforms, Inc. has its principal
+    executive offices in Menlo Park, California, per its Form 10-K. The DINOv3 License names Meta
+    Platforms Ireland Limited as licensor for EEA and Swiss users and Meta Platforms, Inc. for
+    everyone else.
+  source_ids: [hf-dinov3-vit7b16, dinov3-license, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    Access requires a request and acceptance of the DINOv3 License. Through Meta's download page,
+    approved users receive download URLs by email; the Hugging Face repository is gated with
+    manual approval and asks users to share contact information.
+  source_ids: [dinov3-readme, hf-dinov3-vit7b16, hf-api-dinov3-vit7b16]
+licenses:
+  - name: DINOv3 License
+    spdx: null
+    url: https://github.com/facebookresearch/dinov3/blob/main/LICENSE.md
+    applies_to: weights-and-code
+    source_ids: [dinov3-license, dinov3-readme, hf-api-dinov3-vit7b16]
+license_notes:
+  text: >-
+    Custom Meta license (last updated August 19, 2025); the README applies it to both the code
+    and the model weights. It grants a non-exclusive, worldwide, non-transferable, royalty-free
+    license to use, reproduce, modify, and distribute, and Meta's announcement describes it as a
+    commercial license. Redistributions must include the agreement, and published research must
+    acknowledge use of the DINO Materials. Users must comply with trade controls, may not be
+    sanctions targets, and may not use the materials for ITAR-regulated activities or prohibited
+    end uses including military or warfare, nuclear, espionage, or weapons applications. It also
+    forbids reverse engineering, ends for anyone who brings IP litigation against Meta over the
+    materials, is governed by California law, and may be modified by Meta.
+  source_ids: [dinov3-license, dinov3-readme, meta-dinov3-blog]
+checklist:
+  weights:
+    status: partial
+    note: Approval-gated on Hugging Face (manual) and on Meta's download page.
+    source_ids: [hf-api-dinov3-vit7b16, dinov3-readme]
+  inference_code:
+    status: public
+    note: >-
+      The repository loads backbones and heads through PyTorch Hub; the model card documents use
+      with Hugging Face Transformers, which supports DINOv3 from version 4.56.0.
+    source_ids: [dinov3-readme, hf-dinov3-vit7b16]
+  training_code:
+    status: public
+    note: >-
+      The repository publishes the training code with commands and configuration files for the
+      exact ViT-7B/16 setup (pretraining, Gram anchoring, and high-resolution adaptation) and for
+      multi-distillation.
+    source_ids: [dinov3-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card describes LVD-1689M as 1,689 million images curated from a pool of 17
+      billion web images from public Instagram posts. The README states that ViT-7B/16 was trained
+      on a private dataset, which is not released.
+    source_ids: [hf-dinov3-vit7b16, dinov3-readme]
+  training_recipe:
+    status: public
+    note: >-
+      Stage-by-stage configuration files for the ViT-7B/16 run are published, and the paper and
+      model card describe the objectives and training procedure.
+    source_ids: [dinov3-readme, hf-dinov3-vit7b16, dinov3-paper]
+  evaluation_materials:
+    status: public
+    note: >-
+      The repository publishes evaluation code and commands, including ImageNet-1k logistic
+      regression, ADE20K linear segmentation, and NYUv2 linear depth probing.
+    source_ids: [dinov3-readme]
+run_notes:
+  - text: >-
+      The model card documents loading the model with Transformers' AutoModel and
+      AutoImageProcessor using device_map="auto"; the README documents loading through PyTorch
+      Hub from local weight files or the emailed download URLs.
+    source_ids: [hf-dinov3-vit7b16, dinov3-readme]
+provenance: null
+tags: [computer-vision, self-supervised]
+publication_status: published
+archive_note: null
+released_at: 2025-08-14
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-dinov3-vit7b16
+    title: facebook/dinov3-vit7b16-pretrain-lvd1689m model card
+    url: https://huggingface.co/facebook/dinov3-vit7b16-pretrain-lvd1689m
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-dinov3-vit7b16
+    title: facebook/dinov3-vit7b16-pretrain-lvd1689m (Hugging Face model metadata)
+    url: https://huggingface.co/api/models/facebook/dinov3-vit7b16-pretrain-lvd1689m
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dinov3-readme
+    title: facebookresearch/dinov3 README
+    url: https://github.com/facebookresearch/dinov3/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dinov3-license
+    title: DINOv3 License (LICENSE.md)
+    url: https://github.com/facebookresearch/dinov3/blob/main/LICENSE.md
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: 2025-08-19
+    accessed_at: 2026-09-29
+  - id: dinov3-paper
+    title: DINOv3 (arXiv 2508.10104)
+    url: https://arxiv.org/abs/2508.10104
+    publisher: arXiv (Meta authors)
+    kind: paper
+    published_at: 2025-08-13
+    accessed_at: 2026-09-29
+  - id: meta-dinov3-blog
+    title: DINOv3 announcement (Meta AI blog)
+    url: https://ai.meta.com/blog/dinov3-self-supervised-vision-model/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-08-14
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

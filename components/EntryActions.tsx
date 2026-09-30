@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FilePen, MessageSquareWarning } from "lucide-react";
 import { editUrl, issueUrl } from "@/lib/paths";
+import { mailtoHref, siteConfig } from "@/lib/site-config";
 
 /**
  * "Report a correction" and "Edit this entry". Real repository links when a
@@ -12,11 +13,28 @@ export function EntryActions({ contentPath, title }: { contentPath: string; titl
   const report = issueUrl("correction.yml", `Correction: ${title}`, { entry: contentPath });
 
   if (!edit || !report) {
+    const email = siteConfig.contact.email;
+    const mail = email
+      ? mailtoHref(
+          email,
+          `Correction: ${title}`,
+          `Entry: ${contentPath}\n\nWhat is wrong:\n\nWhat it should say:\n\nSupporting source (URL):\n`,
+        )
+      : null;
     return (
-      <div className="rounded-xl border border-dashed border-line-strong p-4 text-[0.9375rem] text-muted" data-testid="entry-actions-unconfigured">
-        <p>
-          <strong className="font-semibold text-text">Corrections and edits:</strong> the public source repository for this catalog has not
-          been configured yet, so online correction and edit links are not available. The entry file is{" "}
+      <div className="grid gap-3" data-testid="entry-actions-unconfigured">
+        {mail ? (
+          <div className="flex flex-wrap gap-3">
+            <a href={mail} className="btn btn-secondary">
+              <MessageSquareWarning aria-hidden="true" className="h-4 w-4" />
+              Report a correction
+              <span className="sr-only"> (opens your email app)</span>
+            </a>
+          </div>
+        ) : null}
+        <p className="text-[0.9375rem] text-muted">
+          {mail ? "Corrections are sent by email for now. " : null}
+          Online editing through the public source repository is not available yet. The entry file is{" "}
           <code className="font-mono text-[0.8125rem] text-ice">{contentPath}</code>.{" "}
           <Link href="/contribute/" className="link">
             How contributions work

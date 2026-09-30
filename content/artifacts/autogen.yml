@@ -1,0 +1,146 @@
+slug: autogen
+name: AutoGen
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Microsoft
+    organization_slug: microsoft
+    source_ids: [autogen-readme, autogen-license-code]
+organization_slugs: [microsoft]
+links:
+  - label: Repository
+    url: https://github.com/microsoft/autogen
+    kind: repository
+  - label: Documentation
+    url: https://microsoft.github.io/autogen/stable/
+    kind: documentation
+  - label: LICENSE-CODE (MIT)
+    url: https://github.com/microsoft/autogen/blob/main/LICENSE-CODE
+    kind: license
+  - label: Successor project (Microsoft Agent Framework)
+    url: https://github.com/microsoft/agent-framework
+    kind: repository
+summary:
+  text: >-
+    AutoGen is Microsoft's open-source Python framework for building multi-agent AI applications
+    that act autonomously or alongside people. It comprises an event-driven Core, the
+    higher-level AgentChat API, Extensions for external services such as MCP servers and code
+    execution, and the no-code AutoGen Studio. The project is now in maintenance mode, and
+    Microsoft directs new users to its successor, Microsoft Agent Framework.
+  source_ids: [autogen-readme, autogen-docs]
+useful_for:
+  text: >-
+    Prototyping and running conversational single- and multi-agent applications that call
+    language models and tools. New users are advised to start with Microsoft Agent Framework
+    instead.
+  source_ids: [autogen-docs, autogen-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The repository is published in Microsoft's GitHub organization under a Microsoft Corporation
+    code copyright, and the README says AutoGen originated in Microsoft Research. Microsoft
+    Corporation lists Redmond, Washington as its address on the cover page of its Form 10-K for
+    fiscal year 2026. The README says the project is now community managed; no other
+    maintaining organization is documented.
+  source_ids: [autogen-readme, autogen-license-code, msft-10k-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [autogen-readme, autogen-pypi]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/microsoft/autogen/blob/main/LICENSE-CODE
+    applies_to: code
+    source_ids: [autogen-license-code, autogen-readme]
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://github.com/microsoft/autogen/blob/main/LICENSE
+    applies_to: documentation
+    source_ids: [autogen-license-docs, autogen-readme]
+license_notes:
+  text: >-
+    Per the README's legal notices, code is under the MIT License (LICENSE-CODE) and
+    documentation and other content under CC BY 4.0 (LICENSE); neither grants rights to
+    Microsoft's names, logos, or trademarks.
+  source_ids: [autogen-readme]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [autogen-readme]
+  documentation:
+    status: public
+    note: >-
+      Documentation covers AgentChat, Core, Extensions, and Studio, including a migration guide
+      from v0.2.
+    source_ids: [autogen-docs, autogen-readme]
+  installation:
+    status: public
+    note: Installed from PyPI (for example autogen-agentchat and autogen-ext); requires Python 3.10 or later.
+    source_ids: [autogen-readme, autogen-pypi]
+  supported_platforms:
+    status: public
+    note: PyPI lists autogen-agentchat as OS independent, requiring Python 3.10 or later.
+    source_ids: [autogen-pypi]
+  release_status:
+    status: public
+    note: >-
+      Maintenance mode: no new features or enhancements, community managed going forward. The
+      latest autogen-agentchat release on PyPI is 0.7.5, from September 30, 2025.
+    source_ids: [autogen-readme, autogen-pypi]
+run_notes: []
+provenance: null
+tags: [agents]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: autogen-readme
+    title: microsoft/autogen README
+    url: https://github.com/microsoft/autogen/blob/main/README.md
+    publisher: Microsoft (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: autogen-license-code
+    title: microsoft/autogen LICENSE-CODE
+    url: https://github.com/microsoft/autogen/blob/main/LICENSE-CODE
+    publisher: Microsoft (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: autogen-license-docs
+    title: microsoft/autogen LICENSE (CC BY 4.0)
+    url: https://github.com/microsoft/autogen/blob/main/LICENSE
+    publisher: Microsoft (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: autogen-docs
+    title: AutoGen documentation (stable)
+    url: https://microsoft.github.io/autogen/stable/
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: autogen-pypi
+    title: autogen-agentchat on PyPI
+    url: https://pypi.org/project/autogen-agentchat/
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: 2025-09-30
+    accessed_at: 2026-09-29
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

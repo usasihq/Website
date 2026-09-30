@@ -134,7 +134,7 @@ export function searchEntries(entries: SearchEntry[], query: string, limit = 12)
 /* Organization filters                                                */
 /* ------------------------------------------------------------------ */
 
-export const ORG_SORTS = ["name", "reviewed"] as const;
+export const ORG_SORTS = ["name", "reviewed", "artifacts"] as const;
 export type OrgSort = (typeof ORG_SORTS)[number];
 
 export interface OrgFilters {
@@ -200,11 +200,12 @@ export function orgMatches(item: OrgListItem, f: OrgFilters): boolean {
 
 export function sortOrganizations(items: OrgListItem[], sort: OrgSort): OrgListItem[] {
   const copy = [...items];
-  copy.sort((a, b) =>
-    sort === "reviewed"
-      ? b.lastReviewed.localeCompare(a.lastReviewed) || a.name.localeCompare(b.name)
-      : a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
-  );
+  const byName = (a: OrgListItem, b: OrgListItem) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+  copy.sort((a, b) => {
+    if (sort === "reviewed") return b.lastReviewed.localeCompare(a.lastReviewed) || byName(a, b);
+    if (sort === "artifacts") return b.artifactCount - a.artifactCount || byName(a, b);
+    return byName(a, b);
+  });
   return copy;
 }
 

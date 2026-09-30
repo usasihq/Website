@@ -1,0 +1,200 @@
+slug: medgemma-27b-it
+name: MedGemma 27B (multimodal)
+kind: model
+record_level: release
+family_slug: medgemma
+version: "1.0.0 (27B multimodal, instruction-tuned)"
+maintainers:
+  - name: Google (Health AI Developer Foundations)
+    organization_slug: google
+    source_ids: [mg1-model-card]
+organization_slugs: [google]
+links:
+  - label: MedGemma 1 model card (Health AI Developer Foundations)
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card-v1
+    kind: documentation
+  - label: Hugging Face repository
+    url: https://huggingface.co/google/medgemma-27b-it
+    kind: model-hub
+  - label: MedGemma Technical Report (arXiv 2507.05201)
+    url: https://arxiv.org/abs/2507.05201
+    kind: paper
+  - label: Health AI Developer Foundations terms of use
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    kind: license
+summary:
+  text: >-
+    MedGemma 27B multimodal is the 27B multimodal variant of MedGemma 1, released by Google on
+    July 9, 2025. It accepts text and images and produces text, and unlike the 27B text-only variant
+    it was also trained on medical images and FHIR-based electronic health record data. It is
+    published only as an instruction-tuned model.
+  source_ids: [mg1-model-card, gemma-releases]
+useful_for:
+  text: >-
+    The card suggests the 27B multimodal model for developers who want a single model for
+    medical text, medical record, and medical image tasks, and states that it requires
+    validation and adaptation before use and is not intended to directly inform clinical
+    decisions.
+  source_ids: [mg1-model-card, mg27-hf-page]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The model card lists Google as author, and the governing terms are issued by Google LLC.
+    Alphabet Inc.'s fiscal 2025 Form 10-K lists its principal executive offices in Mountain
+    View, California, and Exhibit 21.01 lists Google LLC as a Delaware subsidiary of Alphabet.
+  source_ids: [mg1-model-card, haidef-terms, alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face after logging in and acknowledging the Health AI Developer
+    Foundations terms of use; the gate states that requests are processed immediately. Also
+    offered through Google Cloud Model Garden.
+  source_ids: [mg27-hf-api, mg27-hf-page, mg1-model-card]
+licenses:
+  - name: Health AI Developer Foundations Terms of Use
+    spdx: null
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    applies_to: weights
+    source_ids: [mg27-hf-api, mg1-model-card, haidef-terms]
+  - name: Apache License 2.0 (google-health/medgemma notebooks and serving code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/google-health/medgemma/main/LICENSE
+    applies_to: code
+    source_ids: [medgemma-repo-readme, medgemma-repo-license]
+license_notes:
+  text: >-
+    The HAI-DEF terms (licensor Google LLC) permit use, modification, and distribution subject
+    to use restrictions, including the HAI-DEF Prohibited Use Policy and a bar on uses that
+    could lead a health regulator to deem Google a medical device manufacturer.
+    Redistributors must pass on the terms and use restrictions and include a specified notice
+    file. The terms require indemnification of Google and are governed by California law.
+  source_ids: [haidef-terms]
+checklist:
+  weights:
+    status: public
+    note: Weights are on Hugging Face behind a click-through acknowledgment of the HAI-DEF terms that is processed automatically.
+    source_ids: [mg27-hf-api, mg27-hf-page]
+  inference_code:
+    status: public
+    note: >-
+      The card documents inference with Hugging Face Transformers (4.50.0 or later), and the
+      Hugging Face page also shows vLLM and SGLang serving; notebooks and serving code are in
+      the Apache-2.0 google-health/medgemma repository.
+    source_ids: [mg1-model-card, mg27-hf-page, medgemma-repo-readme]
+  training_code:
+    status: unknown
+    note: >-
+      The card states training was done with JAX; fine-tuning notebooks are published, but
+      the code used to train the model was not found.
+    source_ids: [mg1-model-card, medgemma-repo-readme]
+  training_data_information:
+    status: partial
+    note: >-
+      The card lists public datasets (for example MIMIC-CXR and SLAKE) and describes licensed
+      or internally collected de-identified datasets that are not public.
+    source_ids: [mg1-model-card]
+  training_recipe:
+    status: partial
+    note: The MedGemma Technical Report describes the models and their training at a summary level.
+    source_ids: [mg1-report]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card publishes results on public and internal benchmarks; for 27B results it notes
+      test-time scaling was used. Several evaluation datasets are internal.
+    source_ids: [mg1-model-card]
+run_notes:
+  - text: >-
+      The card documents inputs of up to 128K tokens with images normalized to 896 x 896 and
+      encoded to 256 tokens each, and outputs of up to 8,192 tokens.
+    source_ids: [mg1-model-card]
+provenance:
+  text: >-
+    Built by Google on Gemma 3 27B; Hugging Face metadata lists google/gemma-3-27b-pt as the
+    base model. The multimodal variant uses a SigLIP image encoder pre-trained on de-identified
+    medical data.
+  derived_from:
+    - name: Gemma 3 27B (pre-trained), google/gemma-3-27b-pt
+      artifact_slug: gemma
+      url: null
+      note: Base model; see the Gemma family record.
+  source_ids: [mg27-hf-api, mg1-model-card]
+tags: [multimodal, vision-language, medical]
+publication_status: published
+archive_note: null
+released_at: 2025-07-09
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mg1-model-card
+    title: MedGemma 1 model card
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card-v1
+    publisher: Google for Developers (Health AI Developer Foundations)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg27-hf-page
+    title: google/medgemma-27b-it (Hugging Face)
+    url: https://huggingface.co/google/medgemma-27b-it
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg27-hf-api
+    title: Hugging Face model metadata for google/medgemma-27b-it
+    url: https://huggingface.co/api/models/google/medgemma-27b-it
+    publisher: Hugging Face
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: haidef-terms
+    title: Health AI Developer Foundations Terms of Use
+    url: https://developers.google.com/health-ai-developer-foundations/terms
+    publisher: Google LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: medgemma-repo-readme
+    title: google-health/medgemma README
+    url: https://raw.githubusercontent.com/google-health/medgemma/main/README.md
+    publisher: Google Health
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: medgemma-repo-license
+    title: google-health/medgemma LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/google-health/medgemma/main/LICENSE
+    publisher: Google Health
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mg1-report
+    title: MedGemma Technical Report (arXiv 2507.05201)
+    url: https://arxiv.org/abs/2507.05201
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-07-07
+    accessed_at: 2026-09-29
+  - id: gemma-releases
+    title: Gemma releases
+    url: https://ai.google.dev/gemma/docs/releases
+    publisher: Google AI for Developers
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Alphabet Inc. Form 10-K fiscal 2025, Exhibit 21.01 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

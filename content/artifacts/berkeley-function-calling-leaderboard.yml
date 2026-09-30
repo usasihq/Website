@@ -1,0 +1,167 @@
+slug: berkeley-function-calling-leaderboard
+name: Berkeley Function Calling Leaderboard (BFCL)
+kind: eval
+record_level: project
+family_slug: null
+version: "2026.3.23"
+maintainers:
+  - name: Gorilla project, UC Berkeley
+    organization_slug: uc-berkeley
+    source_ids: [bfcl-paper, bfcl-leaderboard, bfcl-hf]
+organization_slugs: [uc-berkeley]
+links:
+  - label: Code (Gorilla repository, berkeley-function-call-leaderboard directory)
+    url: https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard
+    kind: repository
+  - label: Leaderboard
+    url: https://gorilla.cs.berkeley.edu/leaderboard.html
+    kind: website
+  - label: Dataset (Hugging Face)
+    url: https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard
+    kind: dataset-hub
+  - label: BFCL paper (ICML 2025)
+    url: https://proceedings.mlr.press/v267/patil25a.html
+    kind: paper
+  - label: License (Apache 2.0)
+    url: https://raw.githubusercontent.com/ShishirPatil/gorilla/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    The Berkeley Function Calling Leaderboard (BFCL) is a benchmark and live leaderboard from UC
+    Berkeley's Gorilla project for evaluating how well language models call functions and tools.
+    It checks serial and parallel function calls in several programming languages using
+    abstract syntax tree (AST) evaluation. Later versions add multi-turn and multi-step
+    scenarios and, in V4, agentic tasks such as web search, memory management, and format
+    sensitivity.
+  source_ids: [bfcl-paper, bfcl-readme, bfcl-leaderboard, bfcl-hf]
+useful_for:
+  text: >-
+    Evaluating function calling in API-hosted models and in locally hosted open models served
+    through vLLM or SGLang, and comparing models on the public leaderboard, which also reports
+    cost and latency.
+  source_ids: [bfcl-readme, bfcl-leaderboard]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The ICML 2025 paper describing BFCL lists the University of California, Berkeley as the
+    affiliation of all its authors. The leaderboard is hosted at gorilla.cs.berkeley.edu, and the
+    dataset is published by the Hugging Face organization "Gorilla LLM (UC Berkeley)". The code
+    sits in the Gorilla repository, hosted under an individual GitHub account, and no separate
+    legal entity for the project was found. Eligibility rests on this documented UC Berkeley
+    maintenance. UC Berkeley is a campus of the University of California, which is governed by
+    The Regents under the California Constitution.
+  source_ids: [bfcl-paper, bfcl-leaderboard, bfcl-hf, bfcl-readme, uc-regents-about]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Code on GitHub under the Apache License 2.0 and installable from PyPI as bfcl-eval; the
+    dataset is on Hugging Face under Apache 2.0.
+  source_ids: [bfcl-readme, gorilla-license, bfcl-pypi, bfcl-hf]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/ShishirPatil/gorilla/main/LICENSE
+    applies_to: code
+    source_ids: [gorilla-license]
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard
+    applies_to: data
+    source_ids: [bfcl-hf]
+license_notes: null
+checklist:
+  code:
+    status: public
+    note: >-
+      Response-generation and evaluation code is in the berkeley-function-call-leaderboard
+      directory of the Gorilla repository.
+    source_ids: [bfcl-readme, gorilla-license]
+  tasks_data:
+    status: public
+    note: >-
+      Published on Hugging Face as JSON files, one per test category. The card says the files
+      are not compatible with the Hugging Face datasets load_dataset method; the card was last
+      updated for V3.
+    source_ids: [bfcl-hf]
+  methodology:
+    status: public
+    note: >-
+      The ICML 2025 paper describes AST-based checking, the mix of expert-curated and
+      user-contributed functions, and the stateful multi-step agentic evaluation. Release blog
+      posts cover each version.
+    source_ids: [bfcl-paper, bfcl-readme]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README documents installation, response generation, and evaluation. The leaderboard
+      names the code commit used for evaluation and makes model responses available.
+    source_ids: [bfcl-readme, bfcl-leaderboard]
+  limitations:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      The README says to install the PyPI package as bfcl-eval, not the unrelated bfcl package.
+      PyPI installations must set the BFCL_PROJECT_ROOT environment variable, and the web-search
+      category needs a SerpAPI key.
+    source_ids: [bfcl-readme]
+provenance: null
+tags: [evaluation, benchmark, agents]
+publication_status: published
+archive_note: null
+released_at: 2026-03-23
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: bfcl-readme
+    title: Berkeley Function Calling Leaderboard README
+    url: https://raw.githubusercontent.com/ShishirPatil/gorilla/main/berkeley-function-call-leaderboard/README.md
+    publisher: Gorilla project, UC Berkeley
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gorilla-license
+    title: Gorilla LICENSE
+    url: https://raw.githubusercontent.com/ShishirPatil/gorilla/main/LICENSE
+    publisher: Gorilla project, UC Berkeley
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bfcl-pypi
+    title: bfcl-eval on PyPI
+    url: https://pypi.org/project/bfcl-eval/
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-03-23
+    accessed_at: 2026-09-29
+  - id: bfcl-leaderboard
+    title: Berkeley Function Calling Leaderboard
+    url: https://gorilla.cs.berkeley.edu/leaderboard.html
+    publisher: UC Berkeley Gorilla project
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bfcl-hf
+    title: gorilla-llm/Berkeley-Function-Calling-Leaderboard dataset card
+    url: https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard
+    publisher: Gorilla LLM (UC Berkeley)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: bfcl-paper
+    title: "The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models (PDF)"
+    url: https://raw.githubusercontent.com/mlresearch/v267/main/assets/patil25a/patil25a.pdf
+    publisher: Proceedings of Machine Learning Research (ICML 2025)
+    kind: paper
+    published_at: "2025"
+    accessed_at: 2026-09-29
+  - id: uc-regents-about
+    title: About the Regents | Board of Regents
+    url: https://regents.universityofcalifornia.edu/about/index.html
+    publisher: University of California Board of Regents
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
