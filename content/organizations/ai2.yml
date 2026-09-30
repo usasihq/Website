@@ -1,0 +1,159 @@
+slug: ai2
+name: Ai2 (Allen Institute for AI)
+legal_name:
+  text: The Allen Institute for Artificial Intelligence
+  source_ids: [irs-eo-bmf-wa]
+website: https://allenai.org
+logo_text: Ai2
+summary:
+  text: >-
+    Ai2 is a non-profit AI research institute in Seattle, founded in 2014 by Paul Allen. Its
+    work covers open models and training data, as well as robotics, conservation, and other
+    applied research.
+  source_ids: [ai2-about]
+organization_roles: [model-developer, research-lab, nonprofit-research]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    classifies it as a private operating foundation.
+  source_ids: [irs-eo-bmf-wa, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Seattle, Washington
+  country: US
+  source_ids: [ai2-about, ai2-contact]
+other_locations: []
+founded:
+  year: 2014
+  source_ids: [ai2-about]
+sectors: [open-models, research, data]
+status_note: null
+products:
+  - id: ai2-playground
+    name: Ai2 Playground
+    kind: assistant-app
+    access: >-
+      Web chat interface for trying Ai2 models such as Olmo 3, including the OlmoTrace tool
+      for tracing parts of a response back to training data.
+    url: https://playground.allenai.org
+    source_ids: [ai2-olmo-page, ai2-olmo3-blog]
+    last_reviewed: 2026-09-29
+  - id: asta
+    name: Asta
+    kind: assistant-app
+    access: >-
+      Agentic research assistant for scholarly tasks, used on the web at asta.allen.ai; the
+      Asta page also covers the AstaBench benchmark suite and developer resources and invites
+      users to sign up for a preview.
+    url: https://asta.allen.ai
+    source_ids: [ai2-asta]
+    last_reviewed: 2026-09-29
+  - id: semantic-scholar
+    name: Semantic Scholar
+    kind: other
+    access: >-
+      Free AI-assisted search and discovery service for research literature, with the
+      Semantic Scholar Academic Graph datasets and APIs for developers.
+    url: https://www.semanticscholar.org
+    source_ids: [s2-about]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Ai2's developer documentation directs users who want hosted API access to Olmo models to
+      OpenRouter and to Ai2's inference providers Cirrascale and Parasail.
+    source_ids: [ai2-docs-apis]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    Ai2 describes itself as a Seattle-based non-profit AI research institute, and its contact
+    page lists a Seattle, Washington address. The IRS exempt-organization extract for
+    Washington lists The Allen Institute for Artificial Intelligence in Seattle as a
+    501(c)(3) organization.
+  source_ids: [ai2-about, ai2-contact, irs-eo-bmf-wa]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Ai2's developer documentation states that it releases training code, training data, model
+    weights, and recipes for its flagship models. This catalog assesses openness release by
+    release (see the OLMo release records), not for the organization as a whole; Asta and
+    Semantic Scholar are hosted services.
+  source_ids: [ai2-docs-intro, ai2-asta, s2-about]
+hiring_url: https://allenai.org/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-contact
+    title: Contact us | Ai2
+    url: https://allenai.org/contact
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-wa
+    title: Exempt Organizations Business Master File Extract - Washington (eo_wa.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_wa.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-intro
+    title: Introduction | Ai2 platform documentation
+    url: https://docs.allenai.org/
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-apis
+    title: Using models by API | Ai2 platform documentation
+    url: https://docs.allenai.org/quick_start/apis/index.html
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-olmo-page
+    title: Olmo from Ai2
+    url: https://allenai.org/olmo
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-olmo3-blog
+    title: "Olmo 3: Charting a path through the model flow to lead open-source AI"
+    url: https://allenai.org/blog/olmo3
+    publisher: Ai2
+    kind: announcement
+    published_at: 2025-11-20
+    accessed_at: 2026-09-29
+  - id: ai2-asta
+    title: "Asta: Advancing Scientific AI with Agents & Benchmarks"
+    url: https://allenai.org/asta
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: s2-about
+    title: Semantic Scholar | About Us
+    url: https://www.semanticscholar.org/about
+    publisher: Ai2 (Semantic Scholar)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,104 @@
+slug: amd
+name: AMD
+legal_name:
+  text: Advanced Micro Devices, Inc.
+  source_ids: [amd-10k-2025]
+website: https://www.amd.com
+logo_text: AMD
+summary:
+  text: >-
+    AMD designs processors and accelerators, including EPYC server CPUs, AMD Instinct data
+    center GPUs used for AI, adaptive SoCs and FPGAs, and networking products. It develops
+    the ROCm open software stack for AI and HPC work on its GPUs.
+  source_ids: [amd-10k-2025, amd-rocm-page]
+organization_roles: [chip-designer, developer-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation (incorporated May 1, 1969)
+  source_ids: [amd-10k-2025, amd-10q-q2-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Santa Clara, California
+  country: US
+  source_ids: [amd-10q-q2-2026]
+other_locations: []
+founded:
+  year: 1969
+  source_ids: [amd-10k-2025]
+sectors: [chips]
+status_note: null
+products:
+  - id: instinct-gpus
+    name: AMD Instinct GPUs
+    kind: hardware
+    access: >-
+      Data center GPU accelerators (MI300, MI350, and MI400 series) supported by the ROCm
+      software stack; available in partner systems, the Helios rack-scale solution, and from
+      cloud service providers.
+    url: https://www.amd.com/en/products/accelerators/instinct.html
+    source_ids: [amd-instinct-page]
+    last_reviewed: 2026-09-29
+  - id: rocm
+    name: AMD ROCm
+    kind: developer-tool
+    access: >-
+      Open software stack of programming models, compilers, libraries, runtimes, and tools for
+      AI and HPC development on AMD GPUs, with support for frameworks such as PyTorch,
+      TensorFlow, and JAX.
+    url: https://www.amd.com/en/products/software/rocm.html
+    source_ids: [amd-rocm-page]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      AMD acquired ZT Systems in March 2025, retaining certain intellectual property and
+      employees associated with its design operations, and sold the ZT data center
+      infrastructure manufacturing business to Sanmina in October 2025.
+    source_ids: [amd-10k-2025]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Advanced Micro Devices, Inc. is a Delaware corporation with principal executive offices in
+    Santa Clara, California, per the cover page of its Form 10-Q for the quarter ended June 27, 2026.
+  source_ids: [amd-10q-q2-2026]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    AMD describes ROCm as an open software stack. This catalog has not assessed any AMD model
+    releases.
+  source_ids: [amd-rocm-page]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: amd-10k-2025
+    title: Advanced Micro Devices, Inc. Form 10-K for the fiscal year ended December 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-02-04
+    accessed_at: 2026-09-29
+  - id: amd-10q-q2-2026
+    title: Advanced Micro Devices, Inc. Form 10-Q for the quarter ended June 27, 2026
+    url: https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-05
+    accessed_at: 2026-09-29
+  - id: amd-instinct-page
+    title: AMD Instinct GPUs
+    url: https://www.amd.com/en/products/accelerators/instinct.html
+    publisher: AMD
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: amd-rocm-page
+    title: AMD ROCm Software
+    url: https://www.amd.com/en/products/software/rocm.html
+    publisher: AMD
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

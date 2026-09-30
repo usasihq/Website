@@ -1,0 +1,178 @@
+slug: openxla
+name: OpenXLA
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenXLA project maintainers (Google-led technical leadership)
+    organization_slug: google
+    source_ids: [stablehlo-governance, xla-contributing, openxla-site]
+organization_slugs: [google]
+links:
+  - label: OpenXLA website
+    url: https://openxla.org/
+    kind: website
+  - label: XLA repository
+    url: https://github.com/openxla/xla
+    kind: repository
+  - label: StableHLO repository
+    url: https://github.com/openxla/stablehlo
+    kind: repository
+  - label: Shardy repository
+    url: https://github.com/openxla/shardy
+    kind: repository
+  - label: XLA license
+    url: https://github.com/openxla/xla/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    OpenXLA is an open-source project that develops machine learning compiler and infrastructure
+    components linking frameworks such as JAX, PyTorch, and TensorFlow to hardware backends. Its
+    website lists XLA (a compiler for GPUs, CPUs, and ML accelerators), StableHLO (a portable
+    operation set), Shardy (an MLIR-based tensor partitioner), PJRT (a device and compiler
+    interface), XProf (profiling tools), and Tokamax.
+  source_ids: [openxla-site, xla-readme]
+useful_for:
+  text: >-
+    XLA compiles models from ML frameworks for execution on different hardware, and StableHLO and
+    PJRT are described as interfaces that let frameworks and compilers or devices interoperate.
+  source_ids: [openxla-site, xla-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    OpenXLA lists member organizations from several countries, with Google as the founding member,
+    but this catalog found no documentation of a separate multi-company governing body. The XLA
+    contribution guide says the project follows Google's Open Source Community Guidelines and
+    requires Google's Contributor License Agreement. The StableHLO governance page says Google
+    engineers took responsibility for StableHLO's technical leadership during its 2022
+    bootstrapping phase, with an open governance model stated as a future aim; no later
+    project-wide governance document was found. On that basis the documented
+    maintaining entity is Google, whose parent Alphabet Inc. has its principal executive offices in
+    Mountain View, California, per its fiscal 2025 Form 10-K. This assessment should be revisited
+    if OpenXLA adopts a new governance structure.
+  source_ids: [xla-contributing, stablehlo-governance, openxla-members, openxla-site, alphabet-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [xla-readme, xla-license]
+licenses:
+  - name: Apache License 2.0 (XLA)
+    spdx: Apache-2.0
+    url: https://github.com/openxla/xla/blob/main/LICENSE
+    applies_to: code
+    source_ids: [xla-license]
+  - name: Apache License 2.0 (StableHLO)
+    spdx: Apache-2.0
+    url: https://github.com/openxla/stablehlo/blob/main/LICENSE
+    applies_to: code
+    source_ids: [stablehlo-license]
+  - name: Apache License 2.0 (Shardy)
+    spdx: Apache-2.0
+    url: https://github.com/openxla/shardy/blob/main/LICENSE
+    applies_to: code
+    source_ids: [shardy-license]
+license_notes:
+  text: >-
+    Licenses were checked for the XLA, StableHLO, and Shardy repositories only; other OpenXLA
+    components were not reviewed.
+  source_ids: [xla-license, stablehlo-license, shardy-license]
+checklist:
+  source_code:
+    status: public
+    note: XLA, StableHLO, and Shardy are developed in public repositories under the openxla GitHub organization.
+    source_ids: [xla-readme, openxla-site]
+  documentation:
+    status: public
+    note: The OpenXLA website links documentation for each component.
+    source_ids: [openxla-site]
+  installation:
+    status: public
+    note: >-
+      The website says XLA comes prebuilt for many ML frameworks; the XLA repository is aimed at
+      contributors and integrators who build it from source.
+    source_ids: [openxla-site, xla-readme]
+  supported_platforms:
+    status: public
+    note: The XLA README describes GPUs, CPUs, and ML accelerators as compilation targets.
+    source_ids: [xla-readme]
+  release_status:
+    status: unknown
+    note: >-
+      The XLA repository was not found to publish versioned GitHub releases; release practices for
+      the other components were not assessed.
+    source_ids: []
+run_notes: []
+provenance: null
+tags: [compiler, training, inference, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: openxla-site
+    title: OpenXLA Project
+    url: https://openxla.org/
+    publisher: OpenXLA Project
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: xla-readme
+    title: openxla/xla README (GitHub)
+    url: https://github.com/openxla/xla
+    publisher: OpenXLA Project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: xla-contributing
+    title: Contributing to OpenXLA
+    url: https://raw.githubusercontent.com/openxla/xla/main/docs/contributing.md
+    publisher: OpenXLA Project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: stablehlo-governance
+    title: StableHLO Governance
+    url: https://openxla.org/stablehlo/governance
+    publisher: OpenXLA Project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openxla-members
+    title: OpenXLA Member Organizations
+    url: https://raw.githubusercontent.com/openxla/community/main/MEMBER-ORGS.md
+    publisher: OpenXLA Project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: xla-license
+    title: XLA LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/openxla/xla/main/LICENSE
+    publisher: OpenXLA Project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: stablehlo-license
+    title: StableHLO LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/openxla/stablehlo/main/LICENSE
+    publisher: OpenXLA Project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: shardy-license
+    title: Shardy LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/openxla/shardy/main/LICENSE
+    publisher: OpenXLA Project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-02-05
+    accessed_at: 2026-09-29

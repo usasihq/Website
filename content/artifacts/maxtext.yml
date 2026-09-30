@@ -1,0 +1,168 @@
+slug: maxtext
+name: MaxText
+kind: research-stack
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Google (AI Hypercomputer GitHub organization)
+    organization_slug: google
+    source_ids: [maxtext-readme-raw, maxtext-contributing, ai-hypercomputer-org]
+organization_slugs: [google]
+links:
+  - label: GitHub repository
+    url: https://github.com/AI-Hypercomputer/maxtext
+    kind: repository
+  - label: Documentation
+    url: https://maxtext.readthedocs.io/en/latest/
+    kind: documentation
+  - label: License
+    url: https://github.com/AI-Hypercomputer/maxtext/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    MaxText is an open-source LLM library and reference implementation written in Python and JAX
+    for training on Google Cloud TPUs and GPUs. It provides implementations of Gemma, Llama,
+    DeepSeek, Qwen, Mistral, and other open model architectures, with support for pre-training and
+    for post-training methods such as supervised fine-tuning and reinforcement learning.
+  source_ids: [maxtext-repo, maxtext-readme-raw]
+useful_for:
+  text: >-
+    The README presents MaxText as a starting point to fork for pre-training experiments on TPU or
+    GPU and as a framework for post-training existing models.
+  source_ids: [maxtext-readme-raw]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    MaxText's source files carry a Google LLC copyright notice, its contribution guide requires
+    Google's Contributor License Agreement and follows Google's Open Source Community Guidelines,
+    and it is hosted in the AI Hypercomputer GitHub organization, which describes itself as
+    covering Google Cloud AI Hypercomputer. Google LLC is a Delaware subsidiary of Alphabet Inc., whose principal executive offices
+    are in Mountain View, California, per its fiscal 2025 Form 10-K.
+  source_ids: [maxtext-readme-raw, maxtext-contributing, ai-hypercomputer-org, alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [maxtext-repo, maxtext-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/AI-Hypercomputer/maxtext/blob/main/LICENSE
+    applies_to: code
+    source_ids: [maxtext-license]
+license_notes:
+  text: >-
+    The Apache 2.0 license covers the MaxText repository. This record does not assess the
+    licenses of the third-party model checkpoints that MaxText can load or train.
+  source_ids: [maxtext-license, maxtext-readme-raw]
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under the Apache License 2.0.
+    source_ids: [maxtext-repo, maxtext-license]
+  documentation:
+    status: public
+    note: Documentation is published on Read the Docs.
+    source_ids: [maxtext-docs, maxtext-readme-raw]
+  training_code:
+    status: public
+    note: Includes code for pre-training and for post-training (supervised fine-tuning and reinforcement learning).
+    source_ids: [maxtext-readme-raw]
+  data_information:
+    status: public
+    note: >-
+      The documentation describes the supported data input pipelines (Grain, Hugging Face, and
+      TFDS) and the file formats each accepts.
+    source_ids: [maxtext-data-pipeline]
+  reproducibility_instructions:
+    status: unknown
+    note: >-
+      Getting-started and tutorial guides are published; whether they reproduce specific reported
+      performance results was not assessed.
+    source_ids: [maxtext-readme-raw]
+run_notes:
+  - text: >-
+      The README recommends installing the latest PyPI release or a pre-built container image
+      rather than the main branch, and names Python 3.12 as the primary supported version. PyPI
+      lists version 0.2.4, released August 21, 2026.
+    source_ids: [maxtext-readme-raw, maxtext-pypi]
+provenance: null
+tags: [training, distributed-computing, language-model]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: maxtext-repo
+    title: AI-Hypercomputer/maxtext (GitHub)
+    url: https://github.com/AI-Hypercomputer/maxtext
+    publisher: Google (AI Hypercomputer)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: maxtext-readme-raw
+    title: MaxText README.md
+    url: https://raw.githubusercontent.com/AI-Hypercomputer/maxtext/main/README.md
+    publisher: Google (AI Hypercomputer)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: maxtext-license
+    title: MaxText LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/AI-Hypercomputer/maxtext/main/LICENSE
+    publisher: Google (AI Hypercomputer)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: maxtext-contributing
+    title: MaxText CONTRIBUTING.md
+    url: https://raw.githubusercontent.com/AI-Hypercomputer/maxtext/main/CONTRIBUTING.md
+    publisher: Google (AI Hypercomputer)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai-hypercomputer-org
+    title: AI Hypercomputer GitHub organization profile
+    url: https://api.github.com/orgs/AI-Hypercomputer
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: maxtext-docs
+    title: MaxText documentation
+    url: https://maxtext.readthedocs.io/en/latest/
+    publisher: Google (AI Hypercomputer)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: maxtext-data-pipeline
+    title: MaxText data input pipelines
+    url: https://maxtext.readthedocs.io/en/latest/guides/data_input_pipeline.html
+    publisher: Google (AI Hypercomputer)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: maxtext-pypi
+    title: maxtext on PyPI
+    url: https://pypi.org/project/maxtext/
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-02-05
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Exhibit 21.01 — Subsidiaries of the Registrant (Alphabet Inc. Form 10-K, fiscal 2025)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-02-05
+    accessed_at: 2026-09-29

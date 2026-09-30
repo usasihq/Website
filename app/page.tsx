@@ -1,0 +1,268 @@
+import Link from "next/link";
+import { ArrowRight, BookOpenCheck, Building2, Boxes, Landmark, Scale } from "lucide-react";
+import { EntryTypeBadge, Monogram } from "@/components/Badges";
+import { CoverageTable } from "@/components/CoverageTable";
+import { Hero } from "@/components/Hero";
+import { HomeSearch } from "@/components/HomeSearch";
+import { SupportPanel } from "@/components/SupportPanel";
+import { getCatalog } from "@/lib/catalog";
+import { formatDate } from "@/lib/dates";
+import { ENTRY_TYPE_LABELS, entryTypeFor, ROLE_LABELS } from "@/lib/labels";
+import { buildCoverage } from "@/lib/matrix";
+import { pageMetadata } from "@/lib/metadata";
+import { RUBRIC_LABEL } from "@/lib/openness";
+import { artifactHref, orgHref } from "@/lib/routes";
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata = pageMetadata({
+  description:
+    "An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is available, and where to find the original sources.",
+  path: "/",
+});
+
+export default function HomePage() {
+  const catalog = getCatalog();
+  const counts = catalog.counts();
+  const featured = catalog.featured;
+
+  const pickOrgs = featured?.organizations.length
+    ? featured.organizations.map((s) => catalog.organizations.find((o) => o.slug === s)!).filter(Boolean)
+    : catalog.organizations.slice(0, 6);
+  const pickArtifacts = featured?.artifacts.length
+    ? featured.artifacts.map((s) => catalog.artifacts.find((a) => a.slug === s)!).filter(Boolean)
+    : catalog.artifacts.slice(0, 6);
+
+  const recentlyReviewed = [
+    ...catalog.organizations.map((o) => ({ kind: "organization" as const, slug: o.slug, name: o.name, date: o.last_reviewed!, href: orgHref(o.slug), label: ENTRY_TYPE_LABELS.organization })),
+    ...catalog.artifacts.map((a) => ({
+      kind: "artifact" as const,
+      slug: a.slug,
+      name: a.name,
+      date: a.last_reviewed!,
+      href: artifactHref(a.slug),
+      label: ENTRY_TYPE_LABELS[entryTypeFor(a.kind, a.record_level)],
+    })),
+  ]
+    .sort((a, b) => b.date.localeCompare(a.date) || a.name.localeCompare(b.name))
+    .slice(0, 8);
+
+  const orgItems = catalog.organizations.map((o) => catalog.toOrgListItem(o));
+  const artifactItems = catalog.artifacts.map((a) => catalog.toArtifactListItem(a));
+  const coverage = buildCoverage(orgItems, artifactItems);
+
+  return (
+    <>
+      <Hero />
+
+      {/* 1–2. Introduction, search, and the two directory actions */}
+      <section aria-labelledby="intro-heading" className="relative">
+        <div className="container-page pb-14 pt-6 sm:pt-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 id="intro-heading" className="text-3xl font-semibold leading-tight text-text sm:text-4xl lg:text-[2.75rem]">
+              Explore the companies, models, and tools behind American AI.
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">
+              An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is
+              available, and where to find the original sources.
+            </p>
+            <p className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full border border-line px-4 py-1.5 text-[0.9375rem] text-text" data-testid="intro-disclaimer">
+              <Landmark aria-hidden="true" className="h-4 w-4 text-muted" />
+              {siteConfig.disclaimer}
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-3xl">
+            <HomeSearch entries={catalog.searchEntries()} />
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <Link href="/companies/" className="btn btn-primary min-h-14 text-base">
+                <Building2 aria-hidden="true" className="h-5 w-5" />
+                Explore Companies &amp; Labs
+              </Link>
+              <Link href="/open/" className="btn btn-primary min-h-14 text-base">
+                <Boxes aria-hidden="true" className="h-5 w-5" />
+                Explore Open Models &amp; Tools
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Two equally weighted directory previews */}
+      <section aria-labelledby="previews-heading" className="border-t border-line py-14">
+        <div className="container-page">
+          <h2 id="previews-heading" className="sr-only">
+            Directory previews
+          </h2>
+          {featured ? (
+            <p className="mb-6 max-w-3xl text-[0.9375rem] text-muted">
+              <strong className="font-semibold text-text">Editor’s selection ({formatDate(featured.selected_at)}):</strong> {featured.explanation}
+            </p>
+          ) : (
+            <p className="mb-6 text-[0.9375rem] text-muted">Showing the first entries of each directory in alphabetical order.</p>
+          )}
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="card flex flex-col p-5 sm:p-6">
+              <p className="eyebrow">Directory</p>
+              <h3 className="mt-1 text-2xl font-semibold text-text">Companies &amp; Labs</h3>
+              <p className="mt-2 text-muted">
+                U.S. AI organizations, labs, research units, and foundations: what they build and how their products are delivered.
+              </p>
+              <p className="meta mt-3">{counts.organizations} organization records</p>
+              <ul className="mt-5 divide-y divide-[rgba(120,180,255,0.12)] border-y border-line">
+                {pickOrgs.map((o) => (
+                  <li key={o.slug}>
+                    <Link prefetch={false} href={orgHref(o.slug)} className="flex items-center gap-3 py-3 hover:text-text">
+                      <Monogram text={o.logo_text} size="sm" />
+                      <span className="min-w-0">
+                        <span className="block font-medium text-text">{o.name}</span>
+                        <span className="block truncate text-sm text-muted">
+                          {o.organization_roles.slice(0, 2).map((r) => ROLE_LABELS[r]).join(" · ")}
+                          {o.headquarters ? ` · ${o.headquarters.label}` : ""}
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link prefetch={false} href="/companies/" className="link mt-auto inline-flex items-center gap-1 pt-5">
+                All {counts.organizations} organization records <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="card flex flex-col p-5 sm:p-6">
+              <p className="eyebrow">Directory</p>
+              <h3 className="mt-1 text-2xl font-semibold text-text">Open Models &amp; Tools</h3>
+              <p className="mt-2 text-muted">
+                U.S.-led open models, software, datasets, and evaluation tools: what is public, under which license, and who maintains it.
+              </p>
+              <p className="meta mt-3">
+                {counts.modelFamilies} model families · {counts.modelReleases} releases · {counts.software} software · {counts.datasets} datasets · {counts.evals} evaluation
+                tools
+              </p>
+              <ul className="mt-5 divide-y divide-[rgba(120,180,255,0.12)] border-y border-line">
+                {pickArtifacts.map((a) => (
+                  <li key={a.slug}>
+                    <Link prefetch={false} href={artifactHref(a.slug)} className="flex items-center justify-between gap-3 py-3">
+                      <span className="min-w-0">
+                        <span className="block font-medium text-text">{a.name}</span>
+                        <span className="block truncate text-sm text-muted">{a.maintainers.map((m) => m.name).join(", ")}</span>
+                      </span>
+                      <EntryTypeBadge type={entryTypeFor(a.kind, a.record_level)} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link prefetch={false} href="/open/" className="link mt-auto inline-flex items-center gap-1 pt-5">
+                All {catalog.artifacts.length} open-artifact records <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Comparison preview */}
+      <section aria-labelledby="coverage-heading" className="border-t border-line py-14">
+        <div className="container-page grid gap-8 lg:grid-cols-[1fr_1.4fr]">
+          <div>
+            <p className="eyebrow">Compare</p>
+            <h2 id="coverage-heading" className="mt-1 text-2xl font-semibold text-text">
+              Catalog coverage
+            </h2>
+            <p className="mt-3 text-muted">
+              These are counts of published records in this catalog — not measures of capability, and not a census of American AI. Family overviews
+              are counted separately from the releases they summarize, and research units are counted separately from their parents.
+            </p>
+            <Link prefetch={false} href="/matrix/" className="btn btn-secondary mt-5">
+              Open the comparison workspace <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </Link>
+          </div>
+          <CoverageTable rows={coverage} caption="Catalog coverage: published records by type. Each number links to the records it counts." />
+        </div>
+      </section>
+
+      {/* 5. Recently reviewed */}
+      <section aria-labelledby="reviewed-heading" className="border-t border-line py-14">
+        <div className="container-page">
+          <p className="eyebrow">Editorial log</p>
+          <h2 id="reviewed-heading" className="mt-1 text-2xl font-semibold text-text">
+            Recently reviewed
+          </h2>
+          <p className="mt-2 max-w-3xl text-muted">
+            Entries whose evidence an editor checked most recently. A review date is not a release date.{" "}
+            <Link prefetch={false} href="/changelog/" className="link">
+              See the changelog
+            </Link>
+            .
+          </p>
+          <ul className="mt-6 grid gap-x-8 sm:grid-cols-2">
+            {recentlyReviewed.map((r) => (
+              <li key={`${r.kind}-${r.slug}`} className="border-b border-line">
+                <Link prefetch={false} href={r.href} className="flex items-center justify-between gap-4 py-3">
+                  <span className="min-w-0">
+                    <span className="block truncate font-medium text-text">{r.name}</span>
+                    <span className="block text-sm text-muted">{r.label}</span>
+                  </span>
+                  <span className="meta shrink-0">
+                    <span className="sr-only">Reviewed </span>
+                    <time dateTime={r.date}>{formatDate(r.date)}</time>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 6. Methodology and independence */}
+      <section aria-labelledby="method-heading" className="border-t border-line py-14">
+        <div className="container-page">
+          <p className="eyebrow">How this catalog works</p>
+          <h2 id="method-heading" className="mt-1 text-2xl font-semibold text-text">
+            Evidence first, independent by design
+          </h2>
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            <div className="card p-5">
+              <BookOpenCheck aria-hidden="true" className="h-5 w-5 text-cyan" />
+              <h3 className="mt-3 font-semibold text-text">Sourced claims</h3>
+              <p className="mt-2 text-[0.9375rem] text-muted">
+                Each statement links to the official page, model card, repository, or license that supports it, with the date it was checked.
+                Unknown stays unknown.
+              </p>
+            </div>
+            <div className="card p-5">
+              <Landmark aria-hidden="true" className="h-5 w-5 text-cyan" />
+              <h3 className="mt-3 font-semibold text-text">Published eligibility rule</h3>
+              <p className="mt-2 text-[0.9375rem] text-muted">
+                Entries qualify through documented U.S. headquarters, a U.S. nonprofit or lab, documented U.S. control, or U.S.-based project
+                governance — applied the same way to everyone.
+              </p>
+            </div>
+            <div className="card p-5">
+              <Scale aria-hidden="true" className="h-5 w-5 text-cyan" />
+              <h3 className="mt-3 font-semibold text-text">Openness by artifact, not by reputation</h3>
+              <p className="mt-2 text-[0.9375rem] text-muted">
+                Models, software, datasets, and evaluation tools each get their own checklist. Model tiers follow {RUBRIC_LABEL}, an editorial rubric,
+                not a certification.
+              </p>
+            </div>
+          </div>
+          <p className="mt-6 max-w-3xl text-[0.9375rem] text-muted">
+            {siteConfig.disclaimer} USASI is not affiliated with any listed organization, and a listing is not an endorsement, a safety
+            assessment, or a ranking.{" "}
+            <Link prefetch={false} href="/methodology/" className="link">
+              Read the methodology
+            </Link>{" "}
+            or the{" "}
+            <Link prefetch={false} href="/disclaimer/" className="link">
+              disclaimer
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* 7. Support Us */}
+      <SupportPanel variant="home" />
+    </>
+  );
+}

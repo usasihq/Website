@@ -1,0 +1,191 @@
+slug: meta
+name: Meta
+legal_name:
+  text: Meta Platforms, Inc.
+  source_ids: [meta-10k-2025]
+website: https://about.meta.com
+logo_text: M
+summary:
+  text: >-
+    Meta operates social and messaging apps including Facebook, Instagram, WhatsApp, and
+    Messenger, along with VR headsets and AI glasses. It develops AI models, including the
+    Llama and Muse model families, and offers the Meta AI assistant across its apps.
+  source_ids: [meta-10k-2025, muse-spark-announcement]
+organization_roles: [model-developer, research-lab, consumer-products, developer-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation
+  source_ids: [meta-10k-2025]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Menlo Park, California
+  country: US
+  source_ids: [meta-10k-2025]
+other_locations: []
+founded:
+  year: 2004
+  source_ids: [meta-10k-2025]
+sectors: [frontier-models, open-models, agents, research]
+status_note: null
+products:
+  - id: meta-ai
+    name: Meta AI
+    kind: assistant-app
+    access: >-
+      Assistant offered in Meta's apps, as a stand-alone app, on AI glasses, and on the web at
+      meta.ai; Meta states it has been powered by Muse Spark since April 2026.
+    url: https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/
+    source_ids: [meta-10k-2025, muse-spark-announcement, meta-ai-acts]
+    last_reviewed: 2026-09-29
+  - id: meta-model-api
+    name: Meta Model API
+    kind: hosted-model-api
+    access: >-
+      Self-serve, paid developer API in public preview offering Muse Spark versions and other
+      Meta models; documented as compatible with the OpenAI SDK.
+    url: https://dev.meta.ai/products/meta-model-api/
+    source_ids: [meta-model-api, muse-spark-1-1-blog]
+    last_reviewed: 2026-09-29
+  - id: muse-agent
+    name: Muse (personal AI agent)
+    kind: assistant-app
+    access: >-
+      Personal agent app powered by Muse Spark, announced September 2026 for the United States
+      on iOS, Android, and the web; free tier with optional subscription plans.
+    url: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
+    source_ids: [muse-agent-announcement]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Meta attributes the Muse model family to Meta Superintelligence Labs (MSL); Muse Spark,
+      announced April 8, 2026, is described as the first model in that family. MSL is a unit
+      within Meta and does not have a separate record in this catalog.
+    source_ids: [muse-spark-announcement, muse-spark-blog]
+  - text: >-
+      Muse Spark was announced without public weights; Meta said it hopes to open-source future
+      versions of the model.
+    source_ids: [muse-spark-announcement]
+  - text: >-
+      Meta released Llama 4 Scout and Llama 4 Maverick on April 5, 2025. As of this review, these
+      are the most recent Llama language models listed in Meta's Llama model repository.
+    source_ids: [llama4-blog, llama-models-readme]
+  - text: >-
+      Meta released Muse Glimmer, a 30-billion-parameter open-weight model under the Apache 2.0
+      license, in August 2026.
+    source_ids: [muse-glimmer-dev-blog]
+  - text: >-
+      PyTorch, originally developed by Meta, moved to the newly formed PyTorch Foundation under
+      the Linux Foundation in September 2022.
+    source_ids: [lf-pytorch-press]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Meta Platforms, Inc. is a Delaware corporation whose principal executive offices are at
+    1 Meta Way, Menlo Park, California, per the cover page of its Form 10-K for fiscal year 2025.
+  source_ids: [meta-10k-2025]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Meta has published downloadable weights for some models: Llama 4 under the custom Llama 4
+    Community License, and Muse Glimmer under Apache 2.0. Its Muse Spark models are offered
+    through Meta AI and the Meta Model API without public weights.
+  source_ids: [llama4-license, muse-glimmer-model-card, muse-spark-announcement, meta-model-api]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29
+  - id: muse-spark-announcement
+    title: "Introducing Muse Spark: Meta's Most Powerful Model Yet"
+    url: https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-04-08
+    accessed_at: 2026-09-29
+  - id: muse-spark-blog
+    title: "Introducing Muse Spark: Scaling Towards Personal Superintelligence"
+    url: https://ai.meta.com/blog/introducing-muse-spark-msl/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-04-08
+    accessed_at: 2026-09-29
+  - id: muse-spark-1-1-blog
+    title: Introducing Muse Spark 1.1
+    url: https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-07-09
+    accessed_at: 2026-09-29
+  - id: meta-ai-acts
+    title: Meta AI Doesn’t Just Think, It Acts
+    url: https://about.fb.com/news/2026/07/meta-ai-muse-spark-doesnt-just-think-it-acts/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-07-24
+    accessed_at: 2026-09-29
+  - id: meta-model-api
+    title: Meta Model API
+    url: https://dev.meta.ai/products/meta-model-api/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: muse-agent-announcement
+    title: "Introducing Muse: The World’s First Personal AI Agent Built for Everyone"
+    url: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-08
+    accessed_at: 2026-09-29
+  - id: llama4-blog
+    title: "The Llama 4 herd: The beginning of a new era of natively multimodal AI innovation"
+    url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: llama-models-readme
+    title: meta-llama/llama-models README
+    url: https://github.com/meta-llama/llama-models/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama4-license
+    title: Llama 4 Community License Agreement
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-dev-blog
+    title: "Muse Glimmer: an open-weight model built for local agents"
+    url: https://dev.meta.ai/resources/blog/build-with-muse-glimmer/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-08-12
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-model-card
+    title: Muse Glimmer Model Card (meta-models/Muse-Glimmer-30B)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: 2026-08
+    accessed_at: 2026-09-29
+  - id: lf-pytorch-press
+    title: Meta Transitions PyTorch to the Linux Foundation, Further Accelerating AI/ML Open Source Collaboration
+    url: https://www.linuxfoundation.org/press/press-release/meta-transitions-pytorch-to-the-linux-foundation
+    publisher: Linux Foundation
+    kind: announcement
+    published_at: 2022-09-12
+    accessed_at: 2026-09-29

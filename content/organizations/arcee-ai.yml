@@ -1,0 +1,161 @@
+slug: arcee-ai
+name: Arcee AI
+legal_name:
+  text: Arcee AI, Inc.
+  source_ids: [arcee-privacy, arcee-terms]
+website: https://www.arcee.ai
+logo_text: A
+summary:
+  text: >-
+    Arcee AI trains and publishes the Trinity family of open-weight language models,
+    ranging from an on-device Nano model to a roughly 400-billion-parameter
+    mixture-of-experts model. It also runs a hosted, OpenAI-compatible API.
+  source_ids: [arcee-trinity-page, arcee-quickstart]
+organization_roles: [model-developer, research-lab, inference-provider]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [arcee-series-b-release, siliconangle-arcee-series-b]
+other_locations: []
+founded: null
+sectors: [open-models, research, enterprise]
+status_note: null
+products:
+  - id: arcee-platform
+    name: Arcee Platform API
+    kind: hosted-model-api
+    access: >-
+      Paid, per-token API with OpenAI-compatible endpoints, used with an API key
+      from the Arcee Platform. The pricing page lists Trinity-Large-Thinking
+      alongside models from other developers.
+    url: https://docs.arcee.ai/get-started/quick-start
+    source_ids: [arcee-quickstart, arcee-pricing]
+    last_reviewed: 2026-09-29
+  - id: arcee-chat
+    name: Arcee chat
+    kind: assistant-app
+    access: Web chat interface for Trinity models, described on Arcee's Trinity page as free to use.
+    url: https://chat.arcee.ai
+    source_ids: [arcee-trinity-page]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Arcee's September 2026 press release describes Arcee AI as a U.S. artificial
+    intelligence company and carries a San Francisco dateline, its about page calls
+    it a U.S. model lab, and SiliconANGLE reports it as San Francisco-based. Its site terms name Arcee AI, Inc., apply
+    Delaware law, and set venue in courts in Miami, Florida. All documented
+    locations are in the United States.
+  source_ids: [arcee-series-b-release, siliconangle-arcee-series-b, arcee-terms, arcee-about]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Arcee publishes Trinity model weights on Hugging Face. Trinity Nano Preview and
+    Trinity Mini were announced under Apache 2.0; in May 2026 Arcee moved the family,
+    including earlier releases, to the OpenMDW-1.1 license, which the Hugging Face model
+    cards now list. A technical report describes the pretraining data; this catalog found
+    no public release of the data itself. The hosted API is a paid service.
+  source_ids: [arcee-trinity-page, arcee-openmdw-blog, arcee-trinity-manifesto, trinity-mini-card, trinity-large-thinking-card, trinity-tech-report, arcee-pricing]
+hiring_url: https://www.arcee.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: arcee-about
+    title: About Arcee
+    url: https://www.arcee.ai/about
+    publisher: Arcee AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-trinity-page
+    title: Trinity Models
+    url: https://www.arcee.ai/trinity
+    publisher: Arcee AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-privacy
+    title: Privacy Policy
+    url: https://www.arcee.ai/privacy-policy
+    publisher: Arcee AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-terms
+    title: Terms and Conditions
+    url: https://www.arcee.ai/terms-and-conditions
+    publisher: Arcee AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-series-b-release
+    title: Arcee AI Reaches $1B+ Valuation with Series B Funding to Advance Frontier Open-Weight AI
+    url: https://www.globenewswire.com/news-release/2026/09/16/3363293/0/en/arcee-ai-reaches-1b-valuation-with-series-b-funding-to-advance-frontier-open-weight-ai.html
+    publisher: Arcee AI via GlobeNewswire
+    kind: announcement
+    published_at: 2026-09-16
+    accessed_at: 2026-09-29
+  - id: siliconangle-arcee-series-b
+    title: Open-weight model developer Arcee AI reaches $1B+ valuation with new funding
+    url: https://siliconangle.com/2026/09/16/open-weight-model-developer-arcee-ai-reaches-1b-plus-valuation-with-undisclosed-series-b-funding/
+    publisher: SiliconANGLE
+    kind: news
+    published_at: 2026-09-16
+    accessed_at: 2026-09-29
+  - id: arcee-quickstart
+    title: Quick Start
+    url: https://docs.arcee.ai/get-started/quick-start
+    publisher: Arcee AI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-pricing
+    title: Pricing
+    url: https://docs.arcee.ai/get-started/pricing
+    publisher: Arcee AI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-openmdw-blog
+    title: Trinity is moving to OpenMDW-1.1
+    url: https://www.arcee.ai/blog/trinity-is-moving-to-openmdw-1-1
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2026-05-29
+    accessed_at: 2026-09-29
+  - id: arcee-trinity-manifesto
+    title: The Trinity Manifesto
+    url: https://www.arcee.ai/blog/the-trinity-manifesto
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2025-12-01
+    accessed_at: 2026-09-29
+  - id: trinity-mini-card
+    title: arcee-ai/Trinity-Mini
+    url: https://huggingface.co/arcee-ai/Trinity-Mini
+    publisher: Arcee AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trinity-large-thinking-card
+    title: arcee-ai/Trinity-Large-Thinking
+    url: https://huggingface.co/arcee-ai/Trinity-Large-Thinking
+    publisher: Arcee AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trinity-tech-report
+    title: Arcee Trinity Large Technical Report
+    url: https://arxiv.org/abs/2602.17004
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-19
+    accessed_at: 2026-09-29

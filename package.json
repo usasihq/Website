@@ -1,0 +1,63 @@
+{
+  "name": "usasi-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "United States of America Superintelligence (USASI): an independent, unofficial catalog of U.S. AI organizations and U.S.-led open models, software, datasets, and evaluation tools.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.11.0"
+  },
+  "scripts": {
+    "dev": "npm run prepare:data && next dev",
+    "validate": "tsx scripts/validate.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:basepath": "node scripts/test-basepath.mjs",
+    "build": "npm run validate && npm run prepare:data && next build && node scripts/postbuild.mjs",
+    "prepare:data": "tsx scripts/generate-data.ts",
+    "prepare:images": "node scripts/prepare-images.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:sources": "tsx scripts/check-sources.ts",
+    "report:reviews": "tsx scripts/report-reviews.ts",
+    "preview:static": "node scripts/serve-static.mjs",
+    "preview:cloudflare": "wrangler dev --port 8787",
+    "deploy:cloudflare": "wrangler deploy"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "3.1.1",
+    "@mdx-js/react": "3.1.1",
+    "@next/mdx": "16.3.7",
+    "lucide-react": "1.49.0",
+    "next": "16.3.7",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "yaml": "2.9.1",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/mdx": "2.0.14",
+    "@types/node": "22.20.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.7",
+    "postcss": "8.5.28",
+    "sharp": "0.35.5",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vite": "6.4.3",
+    "vitest": "4.1.11",
+    "wrangler": "4.144.0"
+  },
+  "overrides": {
+    "vite": "6.4.3"
+  }
+}

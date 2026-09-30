@@ -1,0 +1,112 @@
+slug: eleutherai
+name: EleutherAI
+legal_name:
+  text: EleutherAI Institute (listed in the IRS exempt-organization extract as "ELEUTHERAI INSTITUTE")
+  source_ids: [irs-eo-bmf-dc, eleuther-year-two]
+website: https://www.eleuther.ai
+logo_text: EAI
+summary:
+  text: >-
+    EleutherAI is a non-profit AI research lab that trains and releases open models,
+    datasets, and tools, and studies how models learn, how to evaluate them, and how to make
+    open-weight systems safer. It began in July 2020 as a Discord community and incorporated
+    as a non-profit research institute in early 2023.
+  source_ids: [eleuther-about]
+organization_roles: [research-lab, nonprofit-research, model-developer, open-source-steward]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3), with a ruling
+    date of November 2023; the IRS extract classifies it as a publicly supported organization
+    under section 170(b)(1)(A)(vi).
+  source_ids: [irs-eo-bmf-dc, irs-eo-info]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Washington, D.C.
+  country: US
+  source_ids: [irs-eo-bmf-dc]
+other_locations: []
+founded:
+  year: 2020
+  source_ids: [eleuther-about]
+sectors: [open-models, research, data]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      EleutherAI says it works mainly through a public Discord server that does not sharply
+      separate employees, volunteers, and collaborators from other institutions.
+    source_ids: [eleuther-about]
+  - text: >-
+      EleutherAI announced in March 2023 that it was forming a non-profit research institute
+      funded by charitable donations and grants.
+    source_ids: [eleuther-year-two]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    EleutherAI states that it incorporated as a non-profit research institute in early 2023.
+    The IRS exempt-organization extract for the District of Columbia lists EleutherAI
+    Institute in Washington, D.C., as a 501(c)(3) organization with a November 2023 ruling
+    date. EleutherAI's own pages do not state a location, so the Washington, D.C. location
+    comes from IRS data. The executive director named in the organization's Form 990 data (as
+    compiled by ProPublica) matches the executive director on EleutherAI's staff page, which
+    links the IRS entity to EleutherAI.
+  source_ids: [eleuther-about, irs-eo-bmf-dc, propublica-eleutherai, eleuther-staff]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    EleutherAI lists openly licensed training corpora (the Common Pile), the GPT-NeoX training
+    framework, and model suites such as Pythia, released with checkpoints and data order, among
+    its work. This catalog assesses openness per artifact; it currently records the LM
+    Evaluation Harness.
+  source_ids: [eleuther-about]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: eleuther-about
+    title: About EleutherAI | EleutherAI
+    url: https://www.eleuther.ai/about
+    publisher: EleutherAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: eleuther-staff
+    title: Staff | EleutherAI
+    url: https://www.eleuther.ai/staff
+    publisher: EleutherAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: eleuther-year-two
+    title: "The View from 30,000 Feet: Preface to the Second EleutherAI Retrospective"
+    url: https://blog.eleuther.ai/year-two-preface/
+    publisher: EleutherAI
+    kind: announcement
+    published_at: 2023-03-02
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-dc
+    title: Exempt Organizations Business Master File Extract - District of Columbia (eo_dc.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_dc.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: propublica-eleutherai
+    title: Eleutherai Institute - Nonprofit Explorer
+    url: https://projects.propublica.org/nonprofits/organizations/922215190
+    publisher: ProPublica
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,162 @@
+slug: xai
+name: xAI (SpaceXAI)
+legal_name: null
+website: https://x.ai
+logo_text: xAI
+summary:
+  text: >-
+    xAI develops the Grok family of AI models and offers them through the Grok assistant
+    and a developer API. Since February 2026 it has been a wholly owned subsidiary of
+    SpaceX, whose AI segment also includes the X platform and AI computing
+    infrastructure.
+  source_ids: [spacex-10q-2026q2, grok-home, xai-api-docs]
+organization_roles: [model-developer, consumer-products, developer-platform, compute-infrastructure]
+ownership_category: unit-of-another-organization
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Palo Alto, California
+  country: US
+  source_ids: [xai-holdings-form-d-2026]
+other_locations:
+  - label: Memphis, Tennessee (COLOSSUS data center)
+    country: US
+    source_ids: [spacex-drs-2026-03]
+founded:
+  year: 2023
+  source_ids: [spacex-10q-2026q2]
+sectors: [frontier-models, open-models]
+status_note:
+  text: >-
+    On February 2, 2026, SpaceX completed its acquisition of X.AI Holdings Corp. (xAI),
+    which became a wholly owned subsidiary; xAI had itself acquired X Holdings Corp. in
+    March 2025. SpaceX, a Texas corporation with principal executive offices in Starbase,
+    Texas, completed its initial public offering in June 2026 and reports Grok, X, and AI
+    infrastructure in its AI segment. xAI's website now uses the name SpaceXAI, and its
+    footer reads SpaceXAI LLC. SpaceX has no record in this catalog, so no parent link is
+    shown.
+  source_ids: [spacex-10q-2026q2, xai-joins-spacex]
+products:
+  - id: grok
+    name: Grok
+    kind: assistant-app
+    access: >-
+      AI assistant used through the grok.com web app after signing in, with iOS and
+      Android apps and a Grok account on X.
+    url: https://grok.com/
+    source_ids: [grok-home, xai-grok-os]
+    last_reviewed: 2026-09-29
+  - id: xai-api
+    name: xAI API
+    kind: hosted-model-api
+    access: >-
+      Developer API for Grok models (text, code, voice, image, and video) authenticated
+      with API keys at api.x.ai, with published pricing.
+    url: https://docs.x.ai/overview
+    source_ids: [xai-api-docs]
+    last_reviewed: 2026-09-29
+  - id: grok-build
+    name: Grok Build
+    kind: developer-tool
+    access: >-
+      Terminal coding agent with prebuilt binaries for macOS, Linux, and Windows; its
+      first-party code is published under Apache 2.0 and it authenticates through the
+      browser on first launch.
+    url: https://github.com/xai-org/grok-build
+    source_ids: [xai-grok-build-repo]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    X.AI Holdings Corp.'s January 2026 SEC Form D lists its principal place of business at
+    1450 Page Mill Road, Palo Alto, California. Since February 2, 2026, xAI has been a
+    wholly owned subsidiary of Space Exploration Technologies Corp., a Texas corporation
+    with principal executive offices in Starbase, Texas, per SpaceX's Form 10-Q, so both
+    the unit and its parent are U.S.-based.
+  source_ids: [xai-holdings-form-d-2026, spacex-10q-2026q2]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    xAI's current Grok models are offered as hosted services through the Grok apps and
+    the xAI API. xAI has published weights for two earlier models on Hugging Face: Grok-1
+    under Apache 2.0 and Grok 2 under a custom xAI Community License.
+  source_ids: [xai-api-docs, hf-xai-org, xai-grok-os, hf-grok-2-license]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: spacex-10q-2026q2
+    title: Space Exploration Technologies Corp. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-08-04
+    accessed_at: 2026-09-29
+  - id: xai-holdings-form-d-2026
+    title: X.AI Holdings Corp. Form D notice of exempt offering of securities
+    url: https://www.sec.gov/Archives/edgar/data/2079267/000089183626000001/xslFormDX01/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-01-06
+    accessed_at: 2026-09-29
+  - id: spacex-drs-2026-03
+    title: Space Exploration Technologies Corp. draft registration statement on Form S-1 (Confidential Draft Submission No. 1)
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026021860/filename1.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-03-30
+    accessed_at: 2026-09-29
+  - id: xai-joins-spacex
+    title: xAI joins SpaceX
+    url: https://x.ai/news/xai-joins-spacex
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-02-02
+    accessed_at: 2026-09-29
+  - id: xai-grok-os
+    title: Open Release of Grok-1
+    url: https://x.ai/news/grok-os
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2024-03-17
+    accessed_at: 2026-09-29
+  - id: grok-home
+    title: Grok
+    url: https://grok.com/
+    publisher: SpaceXAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: xai-api-docs
+    title: xAI API documentation overview
+    url: https://docs.x.ai/overview
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: xai-grok-build-repo
+    title: xai-org/grok-build (GitHub repository)
+    url: https://github.com/xai-org/grok-build
+    publisher: SpaceXAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-grok-2-license
+    title: xAI Community License Agreement (xai-org/grok-2 LICENSE)
+    url: https://huggingface.co/xai-org/grok-2/blob/main/LICENSE
+    publisher: SpaceXAI (Hugging Face)
+    kind: license
+    published_at: 2025-11-04
+    accessed_at: 2026-09-29
+  - id: hf-xai-org
+    title: xAI on Hugging Face
+    url: https://huggingface.co/xai-org
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

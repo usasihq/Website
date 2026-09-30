@@ -1,0 +1,80 @@
+slug: microsoft-muse
+name: Muse (Microsoft Research WHAM)
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Microsoft Research
+    organization_slug: microsoft
+    source_ids: [msr-muse-blog, wham-model-card]
+organization_slugs: [microsoft]
+links:
+  - label: Microsoft Research announcement
+    url: https://www.microsoft.com/en-us/research/blog/introducing-muse-our-first-generative-ai-model-designed-for-gameplay-ideation/
+    kind: release-notes
+  - label: WHAM on Hugging Face
+    url: https://huggingface.co/microsoft/wham
+    kind: model-hub
+  - label: Nature paper
+    url: https://www.nature.com/articles/s41586-025-08600-3
+    kind: paper
+summary:
+  text: >-
+    Muse is Microsoft Research's name for its World and Human Action Model (WHAM), a generative
+    model of gameplay trained on human play data from the Xbox game Bleeding Edge. It can
+    generate game visuals, controller actions, or both. It was developed by Microsoft Research's
+    Game Intelligence and Teachable AI Experiences teams with Ninja Theory.
+  source_ids: [msr-muse-blog, wham-model-card]
+useful_for:
+  text: >-
+    Microsoft describes it as a research model for exploring how generative AI can support
+    gameplay ideation. The model card says it is intended for academic research only.
+  source_ids: [msr-muse-blog, wham-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by Microsoft Research, part of Microsoft Corporation, which lists Redmond,
+    Washington as its address on its Form 10-K cover page.
+  source_ids: [msr-muse-blog, msft-10k-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: >-
+    Assessed on the release record. Microsoft released weights, the WHAM Demonstrator, and
+    sample data in February 2025.
+  source_ids: [msr-muse-blog]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [multimodal]
+publication_status: published
+archive_note: null
+released_at: 2025-02-19
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: msr-muse-blog
+    title: "Introducing Muse: Our first generative AI model designed for gameplay ideation"
+    url: https://www.microsoft.com/en-us/research/blog/introducing-muse-our-first-generative-ai-model-designed-for-gameplay-ideation/
+    publisher: Microsoft Research
+    kind: announcement
+    published_at: 2025-02-19
+    accessed_at: 2026-09-29
+  - id: wham-model-card
+    title: World and Human Action Model (WHAM) model card (microsoft/wham)
+    url: https://huggingface.co/microsoft/wham
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

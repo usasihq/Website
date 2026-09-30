@@ -1,0 +1,130 @@
+slug: jax
+name: JAX
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: JAX core team (Google open-source project)
+    organization_slug: google
+    source_ids: [jax-about, jax-contributing, jax-pypi]
+organization_slugs: [google]
+links:
+  - label: GitHub repository
+    url: https://github.com/jax-ml/jax
+    kind: repository
+  - label: Documentation
+    url: https://docs.jax.dev/
+    kind: documentation
+  - label: License
+    url: https://github.com/jax-ml/jax/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    JAX is a Python library for array computation and program transformation, including automatic
+    differentiation, just-in-time compilation, and vectorization of NumPy-style code. It compiles
+    programs with the XLA compiler to run on CPUs, GPUs, TPUs, and other accelerators.
+  source_ids: [jax-repo, jax-pypi]
+useful_for:
+  text: >-
+    The project describes JAX as designed for high-performance numerical computing and large-scale
+    machine learning, and as a base for domain-specific libraries built on top of it.
+  source_ids: [jax-repo, jax-about]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    JAX's documentation says the project is led by the JAX core team, that it follows Google's Open
+    Source Community Guidelines, and that contributions require Google's Contributor License
+    Agreement; the PyPI package lists the JAX team with a google.com contact address. The README
+    calls JAX a research project rather than an official Google product. Google's parent Alphabet
+    Inc. has its principal executive offices in Mountain View, California, per its fiscal 2025
+    Form 10-K.
+  source_ids: [jax-about, jax-contributing, jax-pypi, jax-repo, alphabet-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [jax-repo, jax-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/jax-ml/jax/blob/main/LICENSE
+    applies_to: code
+    source_ids: [jax-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Developed in the open on GitHub at jax-ml/jax.
+    source_ids: [jax-repo, jax-about]
+  documentation:
+    status: public
+    note: User and developer documentation is published at docs.jax.dev.
+    source_ids: [jax-about, jax-contributing]
+  installation:
+    status: public
+    note: The README gives pip install commands for CPU, NVIDIA GPU, Google TPU, and AMD GPU builds.
+    source_ids: [jax-repo, jax-pypi]
+  supported_platforms:
+    status: public
+    note: >-
+      The README tabulates support by operating system and accelerator, covering Linux, macOS,
+      and Windows with CPU, NVIDIA GPU, Google TPU, AMD GPU, Apple GPU, and Intel GPU at varying
+      support levels, some marked experimental.
+    source_ids: [jax-repo]
+  release_status:
+    status: public
+    note: Versioned releases are published on PyPI; version 0.11.2 was released on September 17, 2026.
+    source_ids: [jax-pypi]
+run_notes: []
+provenance: null
+tags: [numerical-computing, training, compiler, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: jax-repo
+    title: jax-ml/jax (GitHub)
+    url: https://github.com/jax-ml/jax
+    publisher: JAX project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: jax-license
+    title: JAX LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/jax-ml/jax/main/LICENSE
+    publisher: JAX project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: jax-about
+    title: About the project — JAX documentation
+    url: https://docs.jax.dev/en/latest/about.html
+    publisher: JAX project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: jax-contributing
+    title: Contributing to JAX — JAX documentation
+    url: https://docs.jax.dev/en/latest/contributing.html
+    publisher: JAX project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: jax-pypi
+    title: jax on PyPI
+    url: https://pypi.org/project/jax/
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-02-05
+    accessed_at: 2026-09-29

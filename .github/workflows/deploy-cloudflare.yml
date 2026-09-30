@@ -1,0 +1,52 @@
+# Deploys the static export to Cloudflare Workers (static assets only).
+#
+# Does nothing until the owner opts in. Required repository configuration:
+#   Variable  CLOUDFLARE_DEPLOY = "true"
+#   Secret    CLOUDFLARE_API_TOKEN   (token with "Workers Scripts: Edit" for the account)
+#   Secret    CLOUDFLARE_ACCOUNT_ID
+# Pull requests from this repository get a preview URL (wrangler versions upload
+# --preview-alias); production deploys run on pushes to main.
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: vars.CLOUDFLARE_DEPLOY == 'true' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
+          NEXT_PUBLIC_BASE_PATH: ""
+      - name: Upload preview version (pull requests)
+        if: github.event_name == 'pull_request'
+        run: npx wrangler versions upload --preview-alias "pr-${{ github.event.pull_request.number }}" --message "PR #${{ github.event.pull_request.number }}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy production
+        if: github.event_name != 'pull_request'
+        run: npx wrangler deploy --message "${{ github.sha }}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

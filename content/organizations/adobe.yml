@@ -1,0 +1,125 @@
+slug: adobe
+name: Adobe
+legal_name:
+  text: Adobe Inc.
+  source_ids: [adbe-10k-fy2025]
+website: https://www.adobe.com
+logo_text: A
+summary:
+  text: >-
+    Adobe makes creative, document, and marketing software, including Photoshop, Acrobat, and its enterprise
+    content and marketing products. It develops Firefly, a family of generative AI models for images, video, and
+    other media, which it offers in its apps and through APIs.
+  source_ids: [adbe-10k-fy2025, adobe-firefly, adobe-firefly-services]
+organization_roles: [enterprise-software, consumer-products, model-developer]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation; common stock listed on Nasdaq (ADBE).
+  source_ids: [adbe-10k-fy2025]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Jose, California
+  country: US
+  source_ids: [adbe-10k-fy2025, adbe-10q-2026q3]
+other_locations: []
+founded:
+  year: 1982
+  source_ids: [adobe-about]
+sectors: [enterprise]
+status_note: null
+products:
+  - id: firefly
+    name: Adobe Firefly
+    kind: other
+    access: >-
+      Generative AI app for creating and editing images, video, audio, and designs from prompts, available on the web
+      and on iOS and Android with a free tier and paid plans; it offers Adobe's Firefly models alongside models from
+      other providers.
+    url: https://www.adobe.com/products/firefly.html
+    source_ids: [adobe-firefly]
+    last_reviewed: 2026-09-29
+  - id: firefly-services
+    name: Adobe Firefly Services
+    kind: hosted-model-api
+    access: >-
+      Set of APIs, including the Firefly API, for generating, editing, and assembling content with generative AI in
+      automated production workflows; documented for developers and enterprises.
+    url: https://developer.adobe.com/firefly-services/docs/guides/
+    source_ids: [adobe-firefly-services, adbe-10k-fy2025]
+    last_reviewed: 2026-09-29
+  - id: acrobat-ai-assistant
+    name: Acrobat AI Assistant
+    kind: assistant-app
+    access: >-
+      Generative AI assistant in Acrobat that summarizes and answers questions about documents; sold as an add-on
+      subscription or included in some Acrobat plans, on desktop, web, and mobile.
+    url: https://www.adobe.com/acrobat/generative-ai-pdf.html
+    source_ids: [adobe-acrobat-ai-assistant]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Adobe states that its Firefly models are trained on licensed content, such as Adobe Stock, and on public domain
+      content, and that it does not train them on users' personal or generated content.
+    source_ids: [adobe-firefly, adbe-10k-fy2025]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Adobe Inc. is a Delaware corporation whose SEC filings list its principal executive offices in San Jose,
+    California; its Form 10-K for fiscal 2025 states that its corporate headquarters is in San Jose.
+  source_ids: [adbe-10k-fy2025, adbe-10q-2026q3]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Adobe offers its Firefly generative models through its own apps and hosted APIs. This catalog has no record of
+    public model weights from Adobe.
+  source_ids: [adobe-firefly, adobe-firefly-services]
+hiring_url: https://careers.adobe.com/us/en
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: adbe-10k-fy2025
+    title: Adobe Inc. Form 10-K for the fiscal year ended November 28, 2025
+    url: https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-01-15
+    accessed_at: 2026-09-29
+  - id: adbe-10q-2026q3
+    title: Adobe Inc. Form 10-Q for the quarterly period ended August 28, 2026
+    url: https://www.sec.gov/Archives/edgar/data/796343/000079634326000156/adbe-20260828.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-09-22
+    accessed_at: 2026-09-29
+  - id: adobe-about
+    title: About Adobe
+    url: https://www.adobe.com/about-adobe.html
+    publisher: Adobe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: adobe-firefly
+    title: Adobe Firefly - Free Generative AI for Creatives
+    url: https://www.adobe.com/products/firefly.html
+    publisher: Adobe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: adobe-firefly-services
+    title: Documentation - Adobe Firefly Services
+    url: https://developer.adobe.com/firefly-services/docs/guides/
+    publisher: Adobe
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: adobe-acrobat-ai-assistant
+    title: "Acrobat AI Assistant: Generative AI Document & PDF Tool"
+    url: https://www.adobe.com/acrobat/generative-ai-pdf.html
+    publisher: Adobe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

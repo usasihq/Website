@@ -1,0 +1,222 @@
+slug: dolma
+name: Dolma
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [ai2-docs-dolma, dolma-card, dolma3-pool]
+organization_slugs: [ai2]
+links:
+  - label: Dolma v1.x (Hugging Face)
+    url: https://huggingface.co/datasets/allenai/dolma
+    kind: dataset-hub
+  - label: Dolma 3 pool (Hugging Face)
+    url: https://huggingface.co/datasets/allenai/dolma3_pool
+    kind: dataset-hub
+  - label: Dolma paper and datasheet (arXiv 2402.00159)
+    url: https://arxiv.org/abs/2402.00159
+    kind: paper
+  - label: Dolma toolkit
+    url: https://github.com/allenai/dolma
+    kind: repository
+  - label: Dolma 3 construction repository
+    url: https://github.com/allenai/dolma3
+    kind: repository
+  - label: Dolma documentation
+    url: https://docs.allenai.org/training_data/dolma/index.html
+    kind: documentation
+summary:
+  text: >-
+    Dolma is Ai2's family of English pretraining corpora built from web pages, academic
+    publications, code, and encyclopedic text, used to train the OLMo models. The first
+    release (v1, August 2023) was updated through v1.7 (April 2024); Dolma 3, used for Olmo 3,
+    consists of a pool of about 9.3 trillion tokens and curated pretraining, mid-training, and
+    long-context mixes. A Dolma 3.5 pool with additional sources and filtering has since been
+    published.
+  source_ids: [dolma-card, dolma3-pool, dolma3-repo, ai2-docs-dolma, dolma35-pool]
+useful_for:
+  text: >-
+    Documented for language model pretraining and research on pretraining data. The
+    accompanying Dolma toolkit supports tagging, deduplication, mixing, filtering, and
+    tokenization for reproducing or building similar corpora.
+  source_ids: [ai2-docs-dolma, dolma-paper]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Dolma is created and published by Ai2 (Allen Institute for AI) under its Hugging Face and
+    GitHub organizations, and Ai2's documentation presents it as Ai2's training corpus. Ai2
+    describes itself as a Seattle-based non-profit AI research institute.
+  source_ids: [ai2-docs-dolma, dolma-card, dolma-toolkit-repo, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from the Hugging Face Hub without gating. The v1.x card states that users are
+    also bound by the license terms of the original data sources, and the Dolma 3 pool
+    repository hosts only its Common Crawl and olmOCR PDF portions, linking the other sources
+    to their original repositories.
+  source_ids: [dolma-card, dolma3-pool]
+licenses:
+  - name: Open Data Commons Attribution License v1.0
+    spdx: ODC-By-1.0
+    url: https://huggingface.co/datasets/allenai/dolma
+    applies_to: data
+    source_ids: [dolma-card, dolma3-pool, dolma3-mix-6t, dolma35-pool]
+  - name: Apache License 2.0 (Dolma toolkit and Dolma 3 construction code)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/allenai/dolma/main/LICENSE
+    applies_to: code
+    source_ids: [dolma-toolkit-license, dolma3-license]
+license_notes:
+  text: >-
+    Dolma moved to ODC-BY in April 2024, per the v1.x dataset card, which also states that
+    users remain bound by the terms of the original data sources. The Dolma 3 cards state the
+    data is intended for research and educational use under Ai2's Responsible Use Guidelines.
+  source_ids: [dolma-card, dolma3-pool]
+checklist:
+  access:
+    status: public
+    note: >-
+      All versions are downloadable from Hugging Face without gating; some Dolma 3 pool
+      sources are obtained from their original repositories.
+    source_ids: [dolma-card, dolma3-pool]
+  provenance:
+    status: public
+    note: >-
+      Dataset cards list sources (for example Common Crawl, code, scientific PDFs, arXiv, math
+      web pages, and Wikipedia) with token and document counts per source.
+    source_ids: [dolma-card, dolma3-pool, dolma3-mix-7b]
+  documentation:
+    status: public
+    note: >-
+      The Dolma paper includes a datasheet appendix; the dolma3 repository documents how the
+      Dolma 3 datasets were built.
+    source_ids: [dolma-paper, dolma-card, dolma3-repo]
+  licensing:
+    status: public
+    note: ODC-BY for the data; Apache 2.0 for the toolkit code.
+    source_ids: [dolma-card, dolma3-pool, dolma-toolkit-license]
+  stated_limitations:
+    status: public
+    note: >-
+      The paper's Limitations section notes the English-only focus, incomplete coverage of
+      curation practices, ablations run only at 1B scale, and that full manual inspection of
+      the corpus is not feasible. The Olmo 3 7B mix card notes that some PDFs were redacted
+      after training.
+    source_ids: [dolma-paper, dolma3-mix-7b]
+run_notes: []
+provenance:
+  text: >-
+    Assembled by Ai2 from existing sources. Dolma v1.7 draws on Common Crawl, RefinedWeb,
+    StarCoder, C4, Reddit, peS2o, arXiv and StackExchange via RedPajama, and Wikipedia, among
+    others. The Dolma 3 pool combines Common Crawl, olmOCR-processed science PDFs, Stack-Edu,
+    arXiv, FineMath, and Wikipedia.
+  derived_from:
+    - name: Common Crawl
+      artifact_slug: null
+      url: null
+      note: Main web source across versions.
+    - name: Stack-Edu
+      artifact_slug: null
+      url: https://huggingface.co/datasets/HuggingFaceTB/stack-edu
+      note: Code source in the Dolma 3 pool.
+    - name: FineMath
+      artifact_slug: null
+      url: https://huggingface.co/datasets/HuggingFaceTB/finemath
+      note: Math web pages in the Dolma 3 pool.
+  source_ids: [dolma-card, dolma3-pool]
+tags: [pretraining-data]
+publication_status: published
+archive_note: null
+released_at: 2023-08-18
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: dolma-card
+    title: allenai/dolma dataset card
+    url: https://huggingface.co/datasets/allenai/dolma
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-pool
+    title: allenai/dolma3_pool dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_pool
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-mix-6t
+    title: allenai/dolma3_mix-6T dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_mix-6T
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-mix-7b
+    title: allenai/dolma3_mix-6T-1025-7B dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma35-pool
+    title: allenai/dolma3.5_pool dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3.5_pool
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma-paper
+    title: "Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research"
+    url: https://arxiv.org/html/2402.00159v2
+    publisher: Ai2 (Soldaini et al.)
+    kind: paper
+    published_at: 2024-06-06
+    accessed_at: 2026-09-29
+  - id: dolma-toolkit-repo
+    title: allenai/dolma
+    url: https://github.com/allenai/dolma
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma-toolkit-license
+    title: allenai/dolma LICENSE
+    url: https://raw.githubusercontent.com/allenai/dolma/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-repo
+    title: allenai/dolma3
+    url: https://github.com/allenai/dolma3
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-license
+    title: allenai/dolma3 LICENSE
+    url: https://raw.githubusercontent.com/allenai/dolma3/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-dolma
+    title: Dolma | Ai2 platform documentation
+    url: https://docs.allenai.org/training_data/dolma/index.html
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,440 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Design tokens (from the supplied artwork)                           */
+/* ------------------------------------------------------------------ */
+:root {
+  --bg: #050816;
+  --bg-elev: #0b1224;
+  --bg-card: rgba(11, 22, 44, 0.72);
+  --line: rgba(120, 180, 255, 0.18);
+  --line-strong: rgba(120, 180, 255, 0.32);
+  --text: #e8eefc;
+  --muted: #9aa8c7;
+  --cyan: #4cc9ff;
+  --blue: #2f6bff;
+  --ice: #b7d7ff;
+  --red-arc: #ff4d6d;
+  --glow: 0 0 40px rgba(76, 201, 255, 0.25);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-card: var(--bg-card);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-cyan: var(--cyan);
+  --color-blue: var(--blue);
+  --color-ice: var(--ice);
+  --color-arc: var(--red-arc);
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --shadow-glow: var(--glow);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base (layered so component classes such as .btn can override)     */
+/* ------------------------------------------------------------------ */
+@layer base {
+  /* ------------------------------------------------------------------ */
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  /* The canvas color comes from html, so body stays transparent and the
+     fixed grid layer (z-index -1) remains visible. */
+  body {
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: clip;
+  }
+
+  /* A very faint grid, fading out toward the bottom of the first screen. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      linear-gradient(to right, rgba(120, 180, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(120, 180, 255, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
+  }
+
+  /* Grid items default to min-width: auto, which lets a wide table (inside
+     its own scroll container) widen the whole page. Let tracks shrink. */
+  .grid > * {
+    min-width: 0;
+  }
+
+  ::selection {
+    background: rgba(76, 201, 255, 0.35);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Components                                                          */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    background: var(--cyan);
+    color: var(--bg);
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ice);
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .rule {
+    border: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 0.875rem;
+  }
+
+  .card-link {
+    transition: border-color 150ms ease, background-color 150ms ease;
+  }
+  .card-link:hover {
+    border-color: var(--line-strong);
+    background: rgba(14, 28, 56, 0.8);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.625rem 1.125rem;
+    border-radius: 0.625rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .btn-primary {
+    background: var(--cyan);
+    color: #041022;
+  }
+  .btn-primary:hover {
+    background: #7ad7ff;
+    box-shadow: var(--glow);
+  }
+  .btn-secondary {
+    background: rgba(11, 18, 36, 0.6);
+    color: var(--text);
+    border: 1px solid rgba(76, 201, 255, 0.45);
+  }
+  .btn-secondary:hover {
+    border-color: var(--cyan);
+    background: rgba(18, 32, 64, 0.8);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--text);
+    background: rgba(11, 18, 36, 0.7);
+    white-space: nowrap;
+  }
+
+  .link {
+    color: var(--ice);
+    text-decoration: underline;
+    text-decoration-color: rgba(183, 215, 255, 0.4);
+    text-underline-offset: 3px;
+  }
+  .link:hover {
+    color: #fff;
+    text-decoration-color: var(--cyan);
+  }
+
+  .field {
+    width: 100%;
+    min-height: 2.75rem;
+    background: rgba(5, 8, 22, 0.8);
+    border: 1px solid var(--line-strong);
+    border-radius: 0.625rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--text);
+    font-size: 1rem;
+  }
+  .field::placeholder {
+    color: #8391b3;
+  }
+  .field:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 1px;
+  }
+  select.field {
+    appearance: none;
+    padding-right: 2.25rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa8c7' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+  }
+  select.field option {
+    background: var(--bg-elev);
+    color: var(--text);
+  }
+
+  /* Editorial long-form pages */
+  .prose-usasi {
+    max-width: 44rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: #d5def2;
+  }
+  .prose-usasi.serif {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+  }
+  .prose-usasi > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-usasi h2 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 2.25em;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .prose-usasi h3 {
+    font-family: var(--font-sans);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 1.75em;
+  }
+  .prose-usasi a {
+    color: var(--ice);
+    text-decoration: underline;
+    text-decoration-color: rgba(183, 215, 255, 0.45);
+    text-underline-offset: 3px;
+  }
+  .prose-usasi a:hover {
+    color: #fff;
+  }
+  .prose-usasi ul,
+  .prose-usasi ol {
+    padding-left: 1.4em;
+  }
+  .prose-usasi ul {
+    list-style: disc;
+  }
+  .prose-usasi ol {
+    list-style: decimal;
+  }
+  .prose-usasi li + li {
+    margin-top: 0.4em;
+  }
+  .prose-usasi li::marker {
+    color: var(--muted);
+  }
+  .prose-usasi strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .prose-usasi code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: rgba(120, 180, 255, 0.08);
+    border: 1px solid var(--line);
+    border-radius: 0.3rem;
+    padding: 0.05em 0.35em;
+  }
+  .prose-usasi pre {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  .prose-usasi pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+  .prose-usasi blockquote {
+    border-left: 2px solid var(--cyan);
+    padding-left: 1rem;
+    color: var(--muted);
+  }
+  .prose-usasi table {
+    width: 100%;
+    font-size: 0.9375rem;
+    border-collapse: collapse;
+    display: block;
+    position: relative;
+    overflow-x: auto;
+  }
+  .prose-usasi th,
+  .prose-usasi td {
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose-usasi th {
+    font-family: var(--font-sans);
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Tables with contained horizontal scroll */
+  .table-scroll {
+    /* Contain absolutely positioned descendants (e.g. .sr-only text in cells)
+       so they are clipped by this scroller instead of widening the page. */
+    position: relative;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 0.875rem;
+    background: rgba(8, 14, 30, 0.7);
+    max-width: 100%;
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9375rem;
+  }
+  .data-table th,
+  .data-table td {
+    padding: 0.625rem 0.875rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+  .data-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #0a1122;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: var(--ice);
+    vertical-align: bottom;
+  }
+  .data-table tbody tr:last-child td,
+  .data-table tbody tr:last-child th {
+    border-bottom: 0;
+  }
+  .data-table tbody tr:hover > *,
+  .data-table tbody tr:focus-within > * {
+    background: rgba(76, 201, 255, 0.05);
+  }
+  .data-table .sticky-col {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: #080e1f;
+  }
+  .data-table thead .sticky-col {
+    z-index: 3;
+    background: #0a1122;
+  }
+  .data-table .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+}

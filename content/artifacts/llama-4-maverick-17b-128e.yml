@@ -1,0 +1,189 @@
+slug: llama-4-maverick-17b-128e
+name: Llama 4 Maverick (17Bx128E)
+kind: model
+record_level: release
+family_slug: llama
+version: "4 Maverick 17B-128E"
+maintainers:
+  - name: Meta
+    organization_slug: meta
+    source_ids: [llama4-model-card]
+organization_slugs: [meta]
+links:
+  - label: Model card
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md
+    kind: documentation
+  - label: Hugging Face (instruction-tuned)
+    url: https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct
+    kind: model-hub
+  - label: Hugging Face (pretrained)
+    url: https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E
+    kind: model-hub
+  - label: Llama 4 Community License Agreement
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE
+    kind: license
+  - label: Reference implementation
+    url: https://github.com/meta-llama/llama-models/tree/main/models/llama4
+    kind: repository
+summary:
+  text: >-
+    Llama 4 Maverick is a natively multimodal mixture-of-experts model from Meta with 17 billion
+    active and 400 billion total parameters across 128 experts. It accepts multilingual text and
+    images and produces text and code; the model card lists a 1M-token context length and an
+    August 2024 knowledge cutoff. Pretrained and instruction-tuned versions were released.
+  source_ids: [llama4-model-card]
+useful_for:
+  text: >-
+    The model card lists commercial and research use in 12 supported languages, assistant-style
+    chat and visual reasoning for the instruction-tuned model, and synthetic data generation and
+    distillation to improve other models.
+  source_ids: [llama4-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Meta as the model developer. Meta Platforms, Inc. has its principal
+    executive offices in Menlo Park, California, per its Form 10-K.
+  source_ids: [llama4-model-card, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    Weights are downloadable from Meta or Hugging Face after submitting an access request and
+    accepting the Llama 4 Community License. Meta's instructions say a signed download URL is
+    emailed once the request is approved; the Hugging Face repositories are gated. The acceptable
+    use policy withholds the license grant for Llama 4 multimodal models from individuals
+    domiciled in, and companies with a principal place of business in, the European Union.
+  source_ids: [llama-models-readme, hf-maverick-instruct, llama4-aup]
+licenses:
+  - name: Llama 4 Community License Agreement
+    spdx: null
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE
+    applies_to: weights-and-code
+    source_ids: [llama4-license, llama4-model-card]
+license_notes:
+  text: >-
+    Custom Meta license, effective April 5, 2025, covering weights and code. It grants a
+    royalty-free, non-exclusive license to use, modify, and redistribute. Redistributors must
+    include the agreement, show "Built with Llama", and keep an attribution notice; models
+    trained or fine-tuned with Llama materials or outputs that are distributed must start their
+    names with "Llama". Use must follow the Llama 4 Acceptable Use Policy, which is incorporated
+    by reference. Licensees whose products had more than 700 million monthly active users in the
+    month before the release date must request a separate license from Meta. The license ends
+    for anyone who sues Meta or any other entity alleging that the Llama materials or their
+    outputs infringe their IP. California law governs. The
+    acceptable use policy excludes EU-domiciled individuals and EU-based companies from the
+    rights granted for Llama 4 multimodal models.
+  source_ids: [llama4-license, llama4-aup]
+checklist:
+  weights:
+    status: partial
+    note: >-
+      Downloadable after an access request and license acceptance; Meta sends download links once
+      a request is approved. Not available under the license to EU-domiciled individuals or
+      EU-based companies for multimodal models.
+    source_ids: [llama-models-readme, hf-maverick-instruct, llama4-aup]
+  inference_code:
+    status: public
+    note: >-
+      Meta's llama-models repository includes Llama 4 model, generation, and quantization code,
+      and the Hugging Face card documents inference with Transformers 4.51.0 or later.
+    source_ids: [llama4-code-dir, hf-maverick-instruct]
+  training_code:
+    status: unknown
+    note: >-
+      The model card says Meta used custom training libraries; this review found no published
+      training code.
+    source_ids: [llama4-model-card]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card describes about 22 trillion tokens drawn from publicly available data,
+      licensed data, and information from Meta's products and services, including public
+      Instagram and Facebook posts and interactions with Meta AI. The data is not released.
+    source_ids: [llama4-model-card]
+  training_recipe:
+    status: partial
+    note: >-
+      Meta's announcement describes the MoE architecture, early fusion, the MetaP hyperparameter
+      technique, and FP8 training at a high level; no full recipe is published.
+    source_ids: [llama4-blog]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The model card reports benchmark results measured on bf16 models; evaluation code and
+      prompts were not located in this review.
+    source_ids: [llama4-model-card]
+run_notes:
+  - text: >-
+      The model card states that Maverick is released as both BF16 and FP8-quantized weights, and
+      that the FP8 weights fit on a single H100 DGX host.
+    source_ids: [llama4-model-card]
+  - text: >-
+      Meta's llama-models README states that Llama 4 models require at least 4 GPUs to run
+      inference at full (bf16) precision.
+    source_ids: [llama-models-readme]
+provenance: null
+tags: [language-model, multimodal, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2025-04-05
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: llama4-model-card
+    title: Llama 4 Model Card
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md
+    publisher: Meta (GitHub)
+    kind: model-card
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: llama4-license
+    title: Llama 4 Community License Agreement
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: llama4-aup
+    title: Llama 4 Acceptable Use Policy
+    url: https://dev.meta.ai/llama/llama4/use-policy/
+    publisher: Meta
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama-models-readme
+    title: meta-llama/llama-models README
+    url: https://github.com/meta-llama/llama-models/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama4-code-dir
+    title: meta-llama/llama-models models/llama4 directory
+    url: https://github.com/meta-llama/llama-models/tree/main/models/llama4
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-maverick-instruct
+    title: meta-llama/Llama-4-Maverick-17B-128E-Instruct
+    url: https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: llama4-blog
+    title: "The Llama 4 herd: The beginning of a new era of natively multimodal AI innovation"
+    url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

@@ -1,0 +1,201 @@
+slug: poolside
+name: Poolside
+legal_name:
+  text: Poolside, Inc.
+  source_ids: [poolside-terms, poolside-privacy]
+website: https://poolside.ai
+logo_text: P
+summary:
+  text: >-
+    Poolside trains foundation models for software engineering and publishes the
+    Laguna family of open-weight agentic coding models. It offers the models through
+    an OpenAI-compatible API, a terminal coding agent, and self-managed inference
+    deployments.
+  source_ids: [poolside-docs-overview, poolside-laguna-s-release]
+organization_roles: [model-developer, research-lab, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [poolside-terms]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [poolside-laguna-s-release, poolside-terms]
+other_locations:
+  - label: Paris, France (registered office of POOLSIDE AI SAS)
+    country: FR
+    source_ids: [fr-registry-poolside-ai]
+founded:
+  year: 2023
+  source_ids: [poolside-laguna-s-release]
+sectors: [open-models, agents, enterprise]
+status_note: null
+products:
+  - id: poolside-api
+    name: Poolside API
+    kind: hosted-model-api
+    access: >-
+      OpenAI-compatible API for Laguna models, using keys from the Poolside Platform
+      for Poolside-hosted inference; the documentation also describes access through
+      OpenRouter.
+    url: https://docs.poolside.ai/api/overview
+    source_ids: [poolside-api-docs]
+    last_reviewed: 2026-09-29
+  - id: poolside-agent-cli
+    name: Poolside Agent CLI (pool)
+    kind: developer-tool
+    access: >-
+      Terminal coding agent installed locally and signed in with pool login; the
+      documentation lists free developer access through the Poolside Platform.
+    url: https://docs.poolside.ai/cli/pool
+    source_ids: [poolside-cli-docs]
+    last_reviewed: 2026-09-29
+  - id: poolside-self-managed-inference
+    name: Self-managed Poolside inference
+    kind: enterprise-software
+    access: >-
+      Deployment of Poolside model inference in a customer's own cloud, on-premises,
+      or air-gapped environment.
+    url: https://docs.poolside.ai/get-started/overview
+    source_ids: [poolside-docs-overview]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Assessment of a company with a significant presence in France. Poolside's
+    July 2026 press release states that it is headquartered in San Francisco. Its
+    current Terms of Use name the contracting entity as Poolside, Inc., a Delaware
+    corporation with a San Francisco address, governed by California law. Earlier
+    reporting described the company as having moved its headquarters to Paris (French
+    Tech Journal, November 2023) and as Paris-based after relocating to France (Fortune,
+    September 2024), and the French business
+    registry lists an active Paris-registered company, POOLSIDE AI (SAS), created in
+    July 2023. The most recent official statements place the headquarters in San
+    Francisco, so the U.S.-headquarters basis applies. Two points are not documented:
+    how the U.S. and French entities are related, and whether the San Francisco
+    address in the legal documents, a private mailbox, is also a staffed office.
+    Re-check if Poolside's stated headquarters changes.
+  source_ids: [poolside-laguna-s-release, poolside-terms, poolside-dpa, frenchtech-poolside-2023, fortune-poolside-2024, fr-registry-poolside-ai]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Poolside publishes Laguna model weights on Hugging Face. Laguna XS.2 and M.1 carry
+    Apache 2.0, and Laguna XS 2.1 and S 2.1 carry OpenMDW-1.1. A technical report
+    describes the training data and process for XS.2 and M.1; this catalog found no
+    public release of the training data or training code.
+  source_ids: [poolside-docs-overview, laguna-tech-report, hf-laguna-xs2, hf-laguna-m1, hf-laguna-xs-2-1, hf-laguna-s-2-1, poolside-laguna-s-release]
+hiring_url: https://poolside.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: poolside-laguna-s-release
+    title: Poolside releases Laguna S 2.1, the West's most capable open-weight model
+    url: https://www.globenewswire.com/news-release/2026/07/21/3330818/0/en/Poolside-releases-Laguna-S-2-1-the-West-s-most-capable-open-weight-model.html
+    publisher: Poolside via GlobeNewswire
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-09-29
+  - id: poolside-terms
+    title: Poolside Terms of Use
+    url: https://poolside.ai/legal/eula
+    publisher: Poolside
+    kind: official-page
+    published_at: 2026-07-21
+    accessed_at: 2026-09-29
+  - id: poolside-privacy
+    title: Privacy Policy
+    url: https://poolside.ai/legal/privacy
+    publisher: Poolside
+    kind: official-page
+    published_at: 2026-07-21
+    accessed_at: 2026-09-29
+  - id: poolside-dpa
+    title: Data Processing Addendum
+    url: https://poolside.ai/legal/dpa
+    publisher: Poolside
+    kind: official-page
+    published_at: 2026-04-27
+    accessed_at: 2026-09-29
+  - id: fr-registry-poolside-ai
+    title: Recherche d'entreprises, SIREN 977666437 (POOLSIDE AI)
+    url: https://recherche-entreprises.api.gouv.fr/search?q=977666437
+    publisher: Government of France (annuaire des entreprises)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: frenchtech-poolside-2023
+    title: "Spotlight Interview: Poolside Co-Founders Jason Warner And Eiso Kant"
+    url: https://www.frenchtechjournal.com/spotlight-interview-poolside-cofounders/
+    publisher: French Tech Journal
+    kind: news
+    published_at: 2023-11-26
+    accessed_at: 2026-09-29
+  - id: fortune-poolside-2024
+    title: AI startup Poolside nears $3 billion valuation
+    url: https://fortune.com/2024/09/12/ai-startup-poolside-3-billion-valuation-bain-capital-ventures/
+    publisher: Fortune
+    kind: news
+    published_at: 2024-09-12
+    accessed_at: 2026-09-29
+  - id: poolside-docs-overview
+    title: Poolside overview
+    url: https://docs.poolside.ai/get-started/overview
+    publisher: Poolside
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-api-docs
+    title: Poolside API
+    url: https://docs.poolside.ai/api/overview
+    publisher: Poolside
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-cli-docs
+    title: Poolside Agent CLI
+    url: https://docs.poolside.ai/cli/pool
+    publisher: Poolside
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-laguna-xs2
+    title: poolside/Laguna-XS.2 model card
+    url: https://huggingface.co/poolside/Laguna-XS.2
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-laguna-m1
+    title: poolside/Laguna-M.1 model card
+    url: https://huggingface.co/poolside/Laguna-M.1
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-laguna-xs-2-1
+    title: poolside/Laguna-XS-2.1 model card
+    url: https://huggingface.co/poolside/Laguna-XS-2.1
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-laguna-s-2-1
+    title: poolside/Laguna-S-2.1 model card
+    url: https://huggingface.co/poolside/Laguna-S-2.1
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: laguna-tech-report
+    title: Laguna M.1/XS.2 Technical Report
+    url: https://poolside.ai/assets/laguna/laguna-m1-xs2-technical-report.pdf
+    publisher: Poolside
+    kind: paper
+    published_at: 2026-05-25
+    accessed_at: 2026-09-29

@@ -1,0 +1,122 @@
+slug: coreweave
+name: CoreWeave
+legal_name:
+  text: CoreWeave, Inc.
+  source_ids: [coreweave-10q-q2-2026]
+website: https://www.coreweave.com
+logo_text: CW
+summary:
+  text: >-
+    CoreWeave operates a cloud platform for AI workloads that combines GPU compute, managed
+    Kubernetes on bare metal, storage, and networking for model training and inference. Its
+    software offerings include the Weights & Biases developer platform.
+  source_ids: [coreweave-10k-2025, coreweave-docs]
+organization_roles: [cloud-provider, compute-infrastructure, developer-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation
+  source_ids: [coreweave-10q-q2-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Livingston, New Jersey
+  country: US
+  source_ids: [coreweave-10q-q2-2026]
+other_locations: []
+founded:
+  year: 2017
+  source_ids: [coreweave-10k-2025]
+sectors: [cloud]
+status_note:
+  text: >-
+    CoreWeave completed its initial public offering of Class A common stock in March 2025 and
+    acquired the AI developer platform Weights & Biases on May 5, 2025.
+  source_ids: [coreweave-10k-2025]
+products:
+  - id: gpu-compute
+    name: CoreWeave GPU Compute
+    kind: compute-service
+    access: >-
+      Cloud GPU capacity on NVIDIA Blackwell, Hopper, Ampere, and Ada generation GPUs,
+      provided as bare-metal servers and through CoreWeave Kubernetes Service, with reserved,
+      on-demand, and spot capacity plans.
+    url: https://www.coreweave.com/products/gpu-compute
+    source_ids: [coreweave-gpu-compute-page, coreweave-docs]
+    last_reviewed: 2026-09-29
+  - id: coreweave-kubernetes-service
+    name: CoreWeave Kubernetes Service (CKS)
+    kind: cloud-platform
+    access: >-
+      Managed Kubernetes running on bare-metal nodes, preconfigured with GPU drivers, storage,
+      networking, Slurm on Kubernetes (SUNK), and observability tooling.
+    url: https://www.coreweave.com/products/coreweave-kubernetes-service
+    source_ids: [coreweave-cks-page]
+    last_reviewed: 2026-09-29
+  - id: weights-and-biases
+    name: Weights & Biases
+    kind: developer-tool
+    access: >-
+      Platform for experiment tracking and model management (Models), tracing and evaluation of
+      AI applications (Weave), and hosted model inference; offered as SaaS, dedicated, or
+      customer-managed deployments.
+    url: https://wandb.ai/site/
+    source_ids: [wandb-site, coreweave-10k-2025]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    CoreWeave, Inc. is a Delaware corporation with principal executive offices in Livingston,
+    New Jersey, per the cover page of its Form 10-Q for the quarter ended June 30, 2026.
+  source_ids: [coreweave-10q-q2-2026]
+  assessed_at: 2026-09-29
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: coreweave-10k-2025
+    title: CoreWeave, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-03-02
+    accessed_at: 2026-09-29
+  - id: coreweave-10q-q2-2026
+    title: CoreWeave, Inc. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-12
+    accessed_at: 2026-09-29
+  - id: coreweave-docs
+    title: CoreWeave Documentation
+    url: https://docs.coreweave.com/
+    publisher: CoreWeave
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: coreweave-gpu-compute-page
+    title: CoreWeave GPU Compute
+    url: https://www.coreweave.com/products/gpu-compute
+    publisher: CoreWeave
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: coreweave-cks-page
+    title: CoreWeave Kubernetes Service
+    url: https://www.coreweave.com/products/coreweave-kubernetes-service
+    publisher: CoreWeave
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: wandb-site
+    title: Weights & Biases
+    url: https://wandb.ai/site/
+    publisher: Weights & Biases
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

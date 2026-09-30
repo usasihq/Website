@@ -1,0 +1,41 @@
+<p className="not-prose rounded-lg border border-[rgba(183,215,255,0.35)] px-4 py-3 font-sans text-[0.9375rem] text-ice">
+  <strong>Unofficial draft.</strong> The USASI Compact describes the voluntary editorial practices of this catalog. It is not government policy, not a legal instrument, not an endorsement of any party or candidate, and it creates no obligations for anyone listed.
+</p>
+
+<h2 id="what">1. What this project is and is not</h2>
+
+USASI is an independent directory of American AI work, kept as two equal directories: organizations, and the open artifacts some of them publish. It exists to make that landscape easier to search, read, and verify.
+
+It is not a government website, a regulator, a certification body, an investment service, or a scoreboard. It does not rank organizations, predict which one will build the most capable system, or judge whether any system is safe. A listing records documented facts; it does not confer approval.
+
+<h2 id="axes">2. Two axes: documented American control and inspectability</h2>
+
+Every entry in the catalog is described along two independent axes.
+
+**Documented American control** asks where an entry's accountable entity is based. For an organization, that means documented U.S. headquarters, a U.S. nonprofit or laboratory entity, or documented primary control by a U.S. entity. For a software project, dataset, or model, it means the documented governing or maintaining entity. It never depends on the names or presumed nationalities of individual contributors. A foreign organization with only a U.S. sales office does not qualify on that basis.
+
+**Inspectability** asks what outsiders can actually examine: weights, code, training materials, data, documentation, evaluation materials, and license terms. It is assessed per artifact with a checklist suited to what the artifact is, because a dataset, a compiler, and a language model expose different things.
+
+The two axes are deliberately kept apart. American control says nothing about openness, and openness says nothing about nationality. A U.S. fine-tune of a model trained elsewhere is recorded with its provenance, not relabeled as American-made.
+
+<h2 id="both">3. Why closed organizations and small open projects both appear</h2>
+
+A directory limited to open artifacts would leave out many of the organizations that shape American AI. A directory limited to large companies would leave out the small projects, nonprofit labs, and community tools that much other work depends on. USASI includes both, and structures them so neither crowds out the other.
+
+Closed products are described by how they are documented to be delivered — a hosted API, an assistant app, a cloud service — and are never presented as open artifacts. A small open project with a single maintainer appears on the same footing as a large company's release, provided its eligibility and evidence meet the same standard. Size, fame, and funding are not criteria.
+
+<h2 id="clauses">4. Draft editorial clauses</h2>
+
+These clauses describe how the catalog is maintained. They are editorial commitments, not legal terms.
+
+1. **Evidence.** Every public statement cites a source that specifically supports it, with the date it was read. Official documentation, license files, model and dataset cards, repositories, and filings come first. Reporting is used only for the claim it supports and is labeled as reporting. Unknown remains Unknown; nothing is estimated to fill a gap.
+2. **Provenance.** Where an artifact is derived from another — a fine-tune, a distillation, a repackaging — the relationship is recorded, including when the upstream work is not American or not in this catalog. Governance, provenance, and licensing are recorded separately.
+3. **Disclosure.** Labels such as open-weight, open-stack, and fully open are USASI rubric categories with published criteria and a version number. They are computed from each release's documented materials and license, never inherited from a model family or an organization's reputation. The catalog does not describe an entire organization as "open" because of one release.
+4. **Public documentation.** The eligibility policy, openness rubric, schema, and review process are published with the catalog, so any reader can check how an entry was assessed and reach a different conclusion from the same evidence.
+5. **Correction.** Errors are corrected in the open. Substantive changes are dated in the changelog. Review dates change only when an editor actually re-checks the evidence, never because the site was rebuilt.
+6. **Independence.** No payment, tip, sponsorship, or relationship affects whether an entry is listed, how it is described, or how it is assessed. Optional tips support upkeep only.
+7. **Forkability.** Catalog data is plain, validated text with an open schema. Anyone may copy it, subject to the stated licenses, and build a different catalog with different rules.
+
+<h2 id="revisions">5. How to propose revisions</h2>
+
+This is version 0.1, and it is expected to change. To propose a revision, open a pull request against the `content/pages/compact.mdx` file in the project repository. Describe the problem the change addresses, and note whether it affects the eligibility policy or the openness rubric; those changes also require matching updates to `ELIGIBILITY.md`, `OPENNESS.md`, and the rubric version. Discussion happens in the pull request, and accepted revisions are recorded in the [changelog](/changelog/) with a new Compact version number. The [contribution guide](/contribute/) describes the workflow.

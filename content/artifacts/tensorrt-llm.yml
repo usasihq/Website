@@ -1,0 +1,139 @@
+slug: tensorrt-llm
+name: TensorRT-LLM
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [trtllm-license, trtllm-github-api]
+organization_slugs: [nvidia]
+links:
+  - label: GitHub repository
+    url: https://github.com/NVIDIA/TensorRT-LLM
+    kind: repository
+  - label: Documentation
+    url: https://nvidia.github.io/TensorRT-LLM/
+    kind: documentation
+  - label: License
+    url: https://raw.githubusercontent.com/NVIDIA/TensorRT-LLM/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    TensorRT-LLM is NVIDIA's open-source library for running large language model inference on
+    NVIDIA GPUs. It provides a Python LLM API, optimized kernels, Python and C++ runtimes, and
+    an online serving command (trtllm-serve).
+  source_ids: [trtllm-github-api, trtllm-docs-home]
+useful_for:
+  text: >-
+    The documentation covers offline inference through the LLM API, online serving,
+    quantization, speculative decoding, KV cache management, LoRA adapters, and parallelism
+    strategies for deploying models on NVIDIA GPUs.
+  source_ids: [trtllm-docs-home]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is published under the NVIDIA GitHub organization and its license file
+    names NVIDIA Corporation & Affiliates as copyright holder. NVIDIA's principal executive
+    offices are in Santa Clara, California, per its Form 10-Q for the quarter ended July 26, 2026.
+  source_ids: [trtllm-license, trtllm-github-api, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub; prebuilt wheels are installable with pip and development
+    containers are available from NVIDIA NGC.
+  source_ids: [trtllm-github-api, trtllm-install-linux]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA/TensorRT-LLM/main/LICENSE
+    applies_to: code
+    source_ids: [trtllm-license]
+license_notes:
+  text: >-
+    The license file states the project is under Apache 2.0 but contains portions derived from
+    other open-source projects that may carry different licenses, listed in the same file;
+    individual file headers give specific terms.
+  source_ids: [trtllm-license]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [trtllm-github-api]
+  documentation:
+    status: public
+    note: null
+    source_ids: [trtllm-docs-home]
+  installation:
+    status: public
+    note: Installation via a PyPI wheel, NGC container images, or building from source on Linux.
+    source_ids: [trtllm-install-linux]
+  supported_platforms:
+    status: public
+    note: The support matrix lists Linux x86_64 and aarch64 and NVIDIA Ampere through Blackwell GPU architectures.
+    source_ids: [trtllm-support-matrix]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub; v1.2.1 (April 2026) was the latest non-prerelease when checked.
+    source_ids: [trtllm-releases-api]
+run_notes: []
+provenance: null
+tags: [inference, serving]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: trtllm-license
+    title: TensorRT-LLM LICENSE
+    url: https://raw.githubusercontent.com/NVIDIA/TensorRT-LLM/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trtllm-github-api
+    title: GitHub repository metadata for NVIDIA/TensorRT-LLM
+    url: https://api.github.com/repos/NVIDIA/TensorRT-LLM
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trtllm-releases-api
+    title: GitHub releases for NVIDIA/TensorRT-LLM
+    url: https://api.github.com/repos/NVIDIA/TensorRT-LLM/releases?per_page=100
+    publisher: GitHub
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trtllm-docs-home
+    title: TensorRT LLM documentation
+    url: https://nvidia.github.io/TensorRT-LLM/
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trtllm-install-linux
+    title: Installing on Linux via pip - TensorRT LLM
+    url: https://nvidia.github.io/TensorRT-LLM/installation/linux.html
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trtllm-support-matrix
+    title: Support Matrix - TensorRT LLM
+    url: https://nvidia.github.io/TensorRT-LLM/reference/support-matrix.html
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-26
+    accessed_at: 2026-09-29

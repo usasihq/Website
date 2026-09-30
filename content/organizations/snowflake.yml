@@ -1,0 +1,156 @@
+slug: snowflake
+name: Snowflake
+legal_name:
+  text: Snowflake Inc.
+  source_ids: [snow-10k-fy2026]
+website: https://www.snowflake.com
+logo_text: S
+summary:
+  text: >-
+    Snowflake operates a cloud data platform, which it calls the AI Data Cloud, deployed across multiple public
+    clouds and regions. Its Cortex AI services run large language models from several providers inside the platform,
+    and its research team released the Arctic language model with open weights in 2024.
+  source_ids: [snow-10k-fy2026, snow-cortex-aisql-docs, arctic-instruct-card]
+organization_roles: [data-platform, inference-provider, model-developer]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation, incorporated on July 23, 2012; common stock listed under the symbol SNOW.
+  source_ids: [snow-10k-fy2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Menlo Park, California (principal executive offices)
+  country: US
+  source_ids: [snow-10k-fy2026, snow-10q-2026q2]
+other_locations: []
+founded:
+  year: 2012
+  source_ids: [snow-10k-fy2026]
+sectors: [data, enterprise, agents, open-models]
+status_note:
+  text: >-
+    Snowflake's Form 10-K for fiscal 2025 described it as a company with a globally distributed workforce and no
+    corporate headquarters, and designated its Bozeman, Montana office as its principal executive office for SEC
+    purposes. Its Form 10-K for fiscal 2026 (filed March 2026) and later Form 10-Q list the principal executive
+    offices at 135 Constitution Drive, Menlo Park, California.
+  source_ids: [snow-10k-fy2025, snow-10k-fy2026, snow-10q-2026q2]
+products:
+  - id: cortex-ai
+    name: Snowflake Cortex AI
+    kind: hosted-model-api
+    access: >-
+      Managed AI functions and APIs inside Snowflake accounts that call hosted large language models from providers
+      including OpenAI, Anthropic, Meta, Mistral AI, DeepSeek, and xAI; usable from SQL or Python with the required
+      account privileges and database roles.
+    url: https://www.snowflake.com/en/product/features/cortex/
+    source_ids: [snow-cortex-page, snow-cortex-aisql-docs]
+    last_reviewed: 2026-09-29
+  - id: snowflake-cowork
+    name: Snowflake CoWork
+    kind: assistant-app
+    access: >-
+      Agentic application with a conversational interface for business users to ask questions of and act on
+      enterprise data in Snowflake; available through a web interface and an iOS app listed as Snowflake
+      Intelligence.
+    url: https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-cowork
+    source_ids: [snow-cowork-docs]
+    last_reviewed: 2026-09-29
+  - id: ai-data-cloud
+    name: Snowflake AI Data Cloud
+    kind: data-platform
+    access: >-
+      Fully managed cloud data platform sold to organizations and deployed on major public clouds across multiple
+      regional deployments.
+    url: https://www.snowflake.com/en/
+    source_ids: [snow-10k-fy2026, snow-home]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      In April 2024 Snowflake released base and instruct checkpoints of Arctic, a 480B-parameter dense-MoE hybrid
+      language model, under the Apache-2.0 license on Hugging Face.
+    source_ids: [arctic-instruct-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Snowflake Inc. is a Delaware corporation whose current SEC filings (Form 10-K for fiscal 2026 and the Form 10-Q
+    for the quarter ended July 31, 2026) list its principal executive offices in Menlo Park, California. Its Form
+    10-K for fiscal 2025 stated it had no corporate headquarters and designated Bozeman, Montana as its principal executive
+    office; both locations are in the United States.
+  source_ids: [snow-10k-fy2026, snow-10q-2026q2, snow-10k-fy2025]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Snowflake published weights and code for the Arctic base and instruct models under Apache-2.0. Its Cortex AI
+    services are hosted offerings inside the Snowflake platform, and the models from other providers offered there
+    are not Snowflake releases.
+  source_ids: [arctic-instruct-card, arctic-github, snow-cortex-aisql-docs]
+hiring_url: https://careers.snowflake.com/us/en
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: snow-10k-fy2026
+    title: Snowflake Inc. Form 10-K for the fiscal year ended January 31, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-03-20
+    accessed_at: 2026-09-29
+  - id: snow-10k-fy2025
+    title: Snowflake Inc. Form 10-K for the fiscal year ended January 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1640147/000164014725000052/snow-20250131.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-03-21
+    accessed_at: 2026-09-29
+  - id: snow-10q-2026q2
+    title: Snowflake Inc. Form 10-Q for the quarterly period ended July 31, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1640147/000164014726000037/snow-20260731.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-09-04
+    accessed_at: 2026-09-29
+  - id: snow-cortex-page
+    title: Snowflake Cortex AI | AI Data Cloud
+    url: https://www.snowflake.com/en/product/features/cortex/
+    publisher: Snowflake Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: snow-cortex-aisql-docs
+    title: Snowflake Cortex AI Functions
+    url: https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql
+    publisher: Snowflake Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: snow-cowork-docs
+    title: Snowflake CoWork
+    url: https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-cowork
+    publisher: Snowflake Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: snow-home
+    title: Snowflake homepage
+    url: https://www.snowflake.com/en/
+    publisher: Snowflake Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arctic-instruct-card
+    title: Snowflake/snowflake-arctic-instruct model card
+    url: https://huggingface.co/Snowflake/snowflake-arctic-instruct
+    publisher: Snowflake AI Research (Hugging Face)
+    kind: model-card
+    published_at: 2024-04-24
+    accessed_at: 2026-09-29
+  - id: arctic-github
+    title: Snowflake-Labs/snowflake-arctic
+    url: https://github.com/Snowflake-Labs/snowflake-arctic
+    publisher: Snowflake-Labs (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

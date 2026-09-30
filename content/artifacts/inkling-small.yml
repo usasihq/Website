@@ -1,0 +1,168 @@
+slug: inkling-small
+name: Inkling-Small
+kind: model
+record_level: release
+family_slug: inkling
+version: "Inkling-Small"
+maintainers:
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    source_ids: [tml-inkling-small-card, hf-inkling-small]
+organization_slugs: [thinking-machines-lab]
+links:
+  - label: Hugging Face (BF16)
+    url: https://huggingface.co/thinkingmachines/Inkling-Small
+    kind: model-hub
+  - label: Hugging Face (NVFP4)
+    url: https://huggingface.co/thinkingmachines/Inkling-Small-NVFP4
+    kind: model-hub
+  - label: Inkling-Small Model Card
+    url: https://thinkingmachines.ai/model-card/inkling-small/
+    kind: documentation
+  - label: Introducing Inkling-Small
+    url: https://thinkingmachines.ai/news/inkling-small/
+    kind: release-notes
+  - label: Model Acceptable Use Policy
+    url: https://thinkingmachines.ai/model-acceptable-use-policy/
+    kind: license
+summary:
+  text: >-
+    Inkling-Small is a 42-layer decoder-only mixture-of-experts transformer with 276B
+    total and 12B active parameters, routing each token to 6 of 256 experts plus 2 shared
+    experts. Like Inkling, it accepts text, image, and audio input, outputs text, and
+    supports a context window of up to 1M tokens.
+  source_ids: [tml-inkling-small-card, tml-inkling-small-news]
+useful_for:
+  text: >-
+    The model card describes use by developers building agentic and tool-use systems,
+    coding assistants, chatbots, and retrieval-augmented generation systems.
+  source_ids: [tml-inkling-small-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Thinking Machines Lab, Inc. as the model provider; the company
+    states in its privacy notice that it is based in the United States (see the
+    organization record for the San Francisco headquarters assessment).
+  source_ids: [tml-inkling-small-card, tml-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    BF16 and NVFP4 checkpoints are downloadable from Hugging Face without gating; the
+    developer's Model Acceptable Use Policy also applies.
+  source_ids: [hf-inkling-small, tml-model-aup]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+    applies_to: weights
+    source_ids: [hf-inkling-small, tml-inkling-small-card]
+license_notes:
+  text: >-
+    The Hugging Face repository declares Apache 2.0 in its metadata and links to the
+    Apache license text; it has no separate LICENSE file. The developer's Model
+    Acceptable Use Policy states that anyone who accesses, downloads, or uses its model
+    materials agrees to be bound by it, and it lists prohibited uses.
+  source_ids: [hf-inkling-small, tml-model-aup]
+checklist:
+  weights:
+    status: public
+    note: Published as a BF16 checkpoint and a separate NVFP4-quantized checkpoint.
+    source_ids: [hf-inkling-small, tml-inkling-small-card]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents deployment with open-source SGLang, vLLM, TokenSpeed,
+      Unsloth, and Hugging Face Transformers.
+    source_ids: [tml-inkling-small-card, hf-inkling-small]
+  training_code:
+    status: unknown
+    note: null
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The model card and training-data documentation describe source categories (public,
+      third-party, and synthetic data), deduplication, and filtering; the release post says
+      the pretraining data mix differs from Inkling's. The data is not released.
+    source_ids: [tml-inkling-small-card, tml-training-data-doc, tml-inkling-small-news]
+  training_recipe:
+    status: partial
+    note: >-
+      The release post describes, at a high level, changes to the pre-training data mix and
+      recipe, post-training that used on-policy distillation from Inkling in part, and further
+      agentic-coding reinforcement learning.
+    source_ids: [tml-inkling-small-news]
+  evaluation_materials:
+    status: partial
+    note: Benchmark results are published in the model card and as evaluation result files in the Hugging Face repository.
+    source_ids: [hf-inkling-small]
+run_notes:
+  - text: >-
+      The model card states that the BF16 checkpoint needs at least 600 GB of aggregated
+      GPU memory (for example 4x NVIDIA B300 or 8x H200), and that the NVFP4-quantized
+      checkpoint needs at least 180 GB (W4A4 on 1x B300, which requires SM100+
+      architecture, or W4A16 on 2x H200).
+    source_ids: [tml-inkling-small-card]
+provenance:
+  text: >-
+    Thinking Machines Lab says Inkling-Small was pretrained with a changed data mix and
+    recipe, and that an earlier checkpoint was post-trained in part using on-policy
+    distillation with Inkling as the teacher, followed by further agentic-coding
+    reinforcement learning.
+  derived_from:
+    - name: Inkling
+      artifact_slug: inkling-975b
+      url: https://huggingface.co/thinkingmachines/Inkling
+      note: Teacher model for on-policy distillation during post-training; not a weight initialization.
+  source_ids: [tml-inkling-small-news]
+tags: [language-model, multimodal, mixture-of-experts, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-07-30
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: tml-inkling-small-card
+    title: Inkling-Small Model Card
+    url: https://thinkingmachines.ai/model-card/inkling-small/
+    publisher: Thinking Machines Lab
+    kind: model-card
+    published_at: 2026-07-30
+    accessed_at: 2026-09-29
+  - id: tml-inkling-small-news
+    title: Introducing Inkling-Small
+    url: https://thinkingmachines.ai/news/inkling-small/
+    publisher: Thinking Machines Lab
+    kind: announcement
+    published_at: 2026-07-30
+    accessed_at: 2026-09-29
+  - id: hf-inkling-small
+    title: thinkingmachines/Inkling-Small
+    url: https://huggingface.co/thinkingmachines/Inkling-Small
+    publisher: Thinking Machines Lab (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tml-model-aup
+    title: Model Acceptable Use Policy - Thinking Machines Lab
+    url: https://thinkingmachines.ai/model-acceptable-use-policy/
+    publisher: Thinking Machines Lab
+    kind: license
+    published_at: 2026-07-15
+    accessed_at: 2026-09-29
+  - id: tml-training-data-doc
+    title: Training Data Documentation - Thinking Machines Lab
+    url: https://thinkingmachines.ai/training-data-documentation/
+    publisher: Thinking Machines Lab
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tml-privacy
+    title: Privacy Notice - Thinking Machines Lab
+    url: https://thinkingmachines.ai/legal/privacy/
+    publisher: Thinking Machines Lab
+    kind: official-page
+    published_at: 2026-05-19
+    accessed_at: 2026-09-29

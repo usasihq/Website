@@ -1,0 +1,131 @@
+slug: grok-2
+name: Grok 2
+kind: model
+record_level: release
+family_slug: grok
+version: "Grok 2"
+maintainers:
+  - name: xAI (SpaceXAI)
+    organization_slug: xai
+    source_ids: [hf-grok-2, grok-2-license]
+organization_slugs: [xai]
+links:
+  - label: Hugging Face model repository
+    url: https://huggingface.co/xai-org/grok-2
+    kind: model-hub
+  - label: LICENSE (xAI Community License Agreement)
+    url: https://huggingface.co/xai-org/grok-2/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    Grok 2 is a post-trained language model that xAI trained and used in 2024; its
+    weights, about 500 GB in 42 files, were published on Hugging Face in August 2025.
+    Press coverage at the time reported the release as Grok 2.5.
+  source_ids: [hf-grok-2, techcrunch-grok-2-5]
+useful_for: null
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by xAI, whose AI operations are headquartered in Palo Alto, California,
+    according to the June 2026 prospectus of its parent, Space Exploration Technologies
+    Corp., a Texas corporation. The license names X.AI LLC as licensor.
+  source_ids: [spacex-424b4, grok-2-license]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating; use is governed by the xAI Community
+    License Agreement, which conditions commercial use on following xAI's Acceptable Use
+    Policy and bars using the materials or outputs to train other general-purpose models.
+  source_ids: [hf-grok-2, grok-2-license]
+licenses:
+  - name: xAI Community License Agreement
+    spdx: null
+    url: https://huggingface.co/xai-org/grok-2/blob/main/LICENSE
+    applies_to: all
+    source_ids: [grok-2-license, hf-grok-2]
+license_notes:
+  text: >-
+    The model card calls it the "Grok 2 Community License Agreement", but the LICENSE
+    file is titled xAI Community License Agreement (last updated November 4, 2025). It
+    grants a revocable license for non-commercial and research use, and allows commercial
+    use only if users follow xAI's Acceptable Use Policy. It forbids using the materials or
+    their outputs to train or improve other foundation, large language, or general-purpose
+    models (fine-tuning Grok 2 itself is allowed), requires "Powered by xAI" attribution
+    when distributing, ends if the licensee brings certain IP lawsuits, and is governed by
+    Texas law.
+  source_ids: [grok-2-license, hf-grok-2]
+checklist:
+  weights:
+    status: public
+    note: Public download under a custom license with use restrictions.
+    source_ids: [hf-grok-2, grok-2-license]
+  inference_code:
+    status: public
+    note: >-
+      Serving is documented through the open-source SGLang engine (v0.5.1 or later); the
+      xAI repository holds weights, config, and tokenizer but no inference code of its own.
+    source_ids: [hf-grok-2]
+  training_code:
+    status: unknown
+    note: null
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: null
+    source_ids: []
+  training_recipe:
+    status: unknown
+    note: null
+    source_ids: []
+  evaluation_materials:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      The model card documents serving with SGLang using tensor parallelism across 8 GPUs,
+      each with more than 40GB of memory; the documented launch command uses fp8
+      quantization and the Triton attention backend.
+    source_ids: [hf-grok-2]
+  - text: >-
+      The model card says this is a post-trained model and that requests need the correct
+      chat template.
+    source_ids: [hf-grok-2]
+provenance: null
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2025-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-grok-2
+    title: xai-org/grok-2
+    url: https://huggingface.co/xai-org/grok-2
+    publisher: xAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: grok-2-license
+    title: xAI Community License Agreement (xai-org/grok-2 LICENSE)
+    url: https://huggingface.co/xai-org/grok-2/raw/main/LICENSE
+    publisher: xAI (Hugging Face)
+    kind: license
+    published_at: 2025-11-04
+    accessed_at: 2026-09-29
+  - id: techcrunch-grok-2-5
+    title: Elon Musk says xAI has open sourced Grok 2.5
+    url: https://techcrunch.com/2025/08/24/elon-musk-says-xai-has-open-sourced-grok-2-5/
+    publisher: TechCrunch
+    kind: news
+    published_at: 2025-08-24
+    accessed_at: 2026-09-29
+  - id: spacex-424b4
+    title: Space Exploration Technologies Corp. final prospectus (Rule 424(b)(4))
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-06-12
+    accessed_at: 2026-09-29

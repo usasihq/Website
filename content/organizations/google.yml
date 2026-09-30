@@ -1,0 +1,141 @@
+slug: google
+name: Google (Alphabet)
+legal_name:
+  text: Alphabet Inc. (parent and SEC registrant); Google LLC (subsidiary)
+  source_ids: [alphabet-10k-2025, alphabet-10k-2025-ex21]
+website: https://about.google/
+logo_text: G
+summary:
+  text: >-
+    Google is the largest of the businesses that make up Alphabet Inc. Alphabet reports Google
+    through its Google Services and Google Cloud segments, and reports centralized research and
+    development on frontier AI models as Alphabet-level activities. This record covers Google and
+    its parent Alphabet together; Google DeepMind has its own record as a research unit.
+  source_ids: [alphabet-10k-2025]
+organization_roles: [model-developer, research-lab, cloud-provider, developer-platform, consumer-products]
+ownership_category: publicly-traded
+legal_form:
+  text: >-
+    Alphabet Inc. is a Delaware corporation whose Class A and Class C shares are listed on the
+    Nasdaq Global Select Market; Google LLC is listed as an Alphabet subsidiary organized in Delaware.
+  source_ids: [alphabet-10k-2025, alphabet-10k-2025-ex21]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Mountain View, California
+  country: US
+  source_ids: [alphabet-10k-2025]
+other_locations: []
+founded:
+  year: 1998
+  source_ids: [alphabet-10k-2025]
+sectors: [frontier-models, cloud, open-models, research]
+status_note: null
+products:
+  - id: gemini-api
+    name: Gemini API
+    kind: hosted-model-api
+    access: >-
+      Developer API for Google's Gemini and other generative models. API keys are created in
+      Google AI Studio, and the documentation shows client code for Python, JavaScript, Java, Go,
+      and REST.
+    url: https://ai.google.dev/gemini-api/docs
+    source_ids: [gemini-api-docs]
+    last_reviewed: 2026-09-29
+  - id: gemini-app
+    name: Gemini app
+    kind: assistant-app
+    access: >-
+      Consumer AI assistant on the web, Android, and iOS, with a free plan and paid Google AI
+      subscription plans that raise usage limits.
+    url: https://gemini.google/about/
+    source_ids: [gemini-app-about]
+    last_reviewed: 2026-09-29
+  - id: gemini-enterprise-agent-platform
+    name: Gemini Enterprise Agent Platform (formerly Vertex AI)
+    kind: cloud-platform
+    access: >-
+      Google Cloud platform, previously named Vertex AI, for building, deploying, and governing AI
+      agents and applications. Its Model Garden offers Google models such as Gemini, third-party
+      models, and open models such as Gemma.
+    url: https://cloud.google.com/products/gemini-enterprise-agent-platform
+    source_ids: [gemini-enterprise-agent-platform]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Google was incorporated in California in September 1998. A 2015 holding company
+      reorganization made Alphabet Inc. the successor issuer to Google.
+    source_ids: [alphabet-10k-2025]
+  - text: >-
+      Alphabet's fiscal 2025 annual report says Google Cloud customers can use GPUs as well as
+      Google's own custom-built Tensor Processing Units (TPUs), including the seventh-generation
+      Ironwood TPU.
+    source_ids: [alphabet-10k-2025]
+  - text: >-
+      The Google Cloud AI development platform formerly named Vertex AI is now presented as
+      Gemini Enterprise Agent Platform.
+    source_ids: [gemini-enterprise-agent-platform]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Alphabet Inc., the parent covered by this record, is a Delaware corporation. The cover page of
+    its fiscal 2025 Form 10-K gives its principal executive offices as 1600 Amphitheatre Parkway,
+    Mountain View, California. Exhibit 21.01 to the same filing lists Google LLC as a Delaware
+    subsidiary of Alphabet.
+  source_ids: [alphabet-10k-2025, alphabet-10k-2025-ex21]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Google offers Gemini models through hosted products, including the Gemini API, the Gemini app,
+    and Google Cloud. The Gemma open-weight models are credited to Google DeepMind, which has its
+    own record. This catalog does not describe Google as open overall.
+  source_ids: [gemini-api-docs, gemini-app-about, gemma-4-model-card]
+hiring_url: https://www.google.com/about/careers/applications/
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-02-05
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025-ex21
+    title: Exhibit 21.01 — Subsidiaries of the Registrant (Alphabet Inc. Form 10-K, fiscal 2025)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-02-05
+    accessed_at: 2026-09-29
+  - id: gemini-api-docs
+    title: Gemini API documentation
+    url: https://ai.google.dev/gemini-api/docs
+    publisher: Google AI for Developers
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemini-app-about
+    title: About the Gemini app
+    url: https://gemini.google/about/
+    publisher: Google
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemini-enterprise-agent-platform
+    title: Gemini Enterprise Agent Platform (formerly Vertex AI) | Google Cloud
+    url: https://cloud.google.com/products/gemini-enterprise-agent-platform
+    publisher: Google Cloud
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemma-4-model-card
+    title: Gemma 4 model card
+    url: https://ai.google.dev/gemma/docs/core/model_card_4
+    publisher: Google AI for Developers
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29

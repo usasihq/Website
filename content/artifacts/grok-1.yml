@@ -1,0 +1,141 @@
+slug: grok-1
+name: Grok-1
+kind: model
+record_level: release
+family_slug: grok
+version: "Grok-1"
+maintainers:
+  - name: xAI (SpaceXAI)
+    organization_slug: xai
+    source_ids: [xai-grok-os, gh-grok-1]
+organization_slugs: [xai]
+links:
+  - label: Grok-1 repository
+    url: https://github.com/xai-org/grok-1
+    kind: repository
+  - label: Hugging Face model repository
+    url: https://huggingface.co/xai-org/grok-1
+    kind: model-hub
+  - label: Open Release of Grok-1
+    url: https://x.ai/news/grok-os
+    kind: release-notes
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/xai-org/grok-1/blob/main/LICENSE.txt
+    kind: license
+summary:
+  text: >-
+    Grok-1 is a 314-billion-parameter mixture-of-experts language model (8 experts, 2
+    used per token) that xAI trained from scratch. The published checkpoint is the raw
+    base model from pretraining that ended in October 2023 and is not fine-tuned for
+    dialogue or other applications.
+  source_ids: [xai-grok-os, gh-grok-1]
+useful_for: null
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by xAI, whose AI operations are headquartered in Palo Alto, California,
+    according to the June 2026 prospectus of its parent, Space Exploration Technologies
+    Corp., a Texas corporation.
+  source_ids: [spacex-424b4]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating or by torrent.
+  source_ids: [hf-grok-1, gh-grok-1]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/xai-org/grok-1/blob/main/LICENSE.txt
+    applies_to: weights-and-code
+    source_ids: [gh-grok-1-license, gh-grok-1, xai-grok-os]
+license_notes:
+  text: >-
+    The repository README states that the Apache 2.0 license applies only to the source
+    files in the repository and the Grok-1 weights.
+  source_ids: [gh-grok-1]
+checklist:
+  weights:
+    status: public
+    note: Base-model checkpoint published on Hugging Face (described there as int8) and via a torrent link.
+    source_ids: [hf-grok-1, gh-grok-1]
+  inference_code:
+    status: public
+    note: JAX example code for loading and sampling; xAI says its MoE implementation is not efficient.
+    source_ids: [gh-grok-1]
+  training_code:
+    status: unknown
+    note: null
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: The release notes say only that the base model was trained on a large amount of text data.
+    source_ids: []
+  training_recipe:
+    status: unknown
+    note: null
+    source_ids: []
+  evaluation_materials:
+    status: unknown
+    note: null
+    source_ids: []
+run_notes:
+  - text: >-
+      The GitHub repository documents running the checkpoint with its JAX example code
+      (run.py) and says a machine with enough GPU memory is required; the Hugging Face card
+      says a multi-GPU machine is needed. The model supports activation sharding and 8-bit
+      quantization.
+    source_ids: [gh-grok-1, hf-grok-1]
+  - text: >-
+      Documented specifications: 64 layers, 48 query heads and 8 key/value heads, a
+      131,072-token SentencePiece tokenizer, rotary embeddings, and a maximum context of
+      8,192 tokens.
+    source_ids: [gh-grok-1]
+provenance:
+  text: >-
+    xAI states that Grok-1 was trained from scratch using a custom training stack built on
+    JAX and Rust.
+  derived_from: []
+  source_ids: [xai-grok-os]
+tags: [language-model, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2024-03-17
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: xai-grok-os
+    title: Open Release of Grok-1
+    url: https://x.ai/news/grok-os
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2024-03-17
+    accessed_at: 2026-09-29
+  - id: gh-grok-1
+    title: xai-org/grok-1 (GitHub repository)
+    url: https://github.com/xai-org/grok-1
+    publisher: xAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gh-grok-1-license
+    title: xai-org/grok-1 LICENSE.txt
+    url: https://raw.githubusercontent.com/xai-org/grok-1/main/LICENSE.txt
+    publisher: xAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-grok-1
+    title: xai-org/grok-1
+    url: https://huggingface.co/xai-org/grok-1
+    publisher: xAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: spacex-424b4
+    title: Space Exploration Technologies Corp. final prospectus (Rule 424(b)(4))
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-06-12
+    accessed_at: 2026-09-29

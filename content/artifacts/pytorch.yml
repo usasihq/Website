@@ -1,0 +1,207 @@
+slug: pytorch
+name: PyTorch
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: PyTorch Foundation
+    organization_slug: pytorch-foundation
+    source_ids: [ptf-page, ptf-charter]
+organization_slugs: [pytorch-foundation, linux-foundation, meta]
+links:
+  - label: Website
+    url: https://pytorch.org
+    kind: website
+  - label: GitHub repository
+    url: https://github.com/pytorch/pytorch
+    kind: repository
+  - label: Documentation
+    url: https://docs.pytorch.org/docs/stable/index.html
+    kind: documentation
+  - label: License
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/pytorch/pytorch/releases
+    kind: release-notes
+summary:
+  text: >-
+    PyTorch is an open-source machine learning framework for tensors and dynamic neural networks
+    in Python, with GPU acceleration and a C++ distribution (LibTorch). Meta originally developed
+    it and released it in 2016. Since September 2022 it has been hosted by the PyTorch
+    Foundation under the Linux Foundation.
+  source_ids: [pytorch-repo, pytorch-get-started, lf-pytorch-press]
+useful_for:
+  text: >-
+    Building, training, and running neural network models in Python or C++ on CPUs and on NVIDIA
+    (CUDA) or AMD (ROCm) GPUs.
+  source_ids: [pytorch-get-started, pytorch-repo]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The PyTorch code base is established as PyTorch a Series of LF Projects, LLC, and supported by
+    the PyTorch Foundation, a directed fund of The Linux Foundation. The Linux Foundation is a
+    U.S. 501(c)(6) nonprofit whose privacy policy gives a contact mailing address in San
+    Francisco, California.
+    Technical decisions are made by individual maintainers under the project's published
+    governance, separate from the foundation's business governance.
+  source_ids: [ptf-charter, lf-about, lf-privacy, pytorch-governance]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [pytorch-repo, pytorch-license]
+licenses:
+  - name: BSD-style license (3-clause)
+    spdx: BSD-3-Clause
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    applies_to: code
+    source_ids: [pytorch-license, pytorch-readme]
+license_notes:
+  text: >-
+    The README calls the license "BSD-style". The LICENSE file contains the three BSD clauses,
+    preceded by copyright notices for PyTorch and Caffe2 contributors such as Facebook, Inc.,
+    Idiap Research Institute, DeepMind Technologies, NEC Laboratories America, and NYU. GitHub's
+    license detection assigns no SPDX identifier (it reports "Other"); this catalog records
+    BSD-3-Clause because the text fits the SPDX BSD-3-Clause matching template, whose third
+    clause allows named organizations in place of "the copyright holder".
+  source_ids: [pytorch-license, pytorch-readme, github-license-api, spdx-bsd3-template]
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public pytorch/pytorch GitHub repository.
+    source_ids: [pytorch-repo]
+  documentation:
+    status: public
+    note: Versioned documentation is published at docs.pytorch.org (version 2.14 at review time).
+    source_ids: [pytorch-docs]
+  installation:
+    status: public
+    note: >-
+      The project documents pip installation for Python, LibTorch for C++, and building from
+      source. The latest stable release requires Python 3.10 or later.
+    source_ids: [pytorch-get-started]
+  supported_platforms:
+    status: public
+    note: >-
+      The install page covers Linux (distributions with glibc 2.28 or later), macOS 10.15 or
+      later, and Windows, with CUDA, ROCm, and CPU builds.
+    source_ids: [pytorch-get-started]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub, including v2.14.0 on September 2, 2026.
+    source_ids: [pytorch-release-2-14]
+run_notes: []
+provenance:
+  text: >-
+    Originally developed by Meta and released in 2016. Moved to the PyTorch Foundation under the
+    Linux Foundation in September 2022. The LICENSE file also covers code from Caffe2.
+  derived_from: []
+  source_ids: [lf-pytorch-press, pytorch-license]
+tags: [training, numerical-computing, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: "2016"
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: pytorch-repo
+    title: pytorch/pytorch GitHub repository
+    url: https://github.com/pytorch/pytorch
+    publisher: PyTorch (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-readme
+    title: pytorch/pytorch README
+    url: https://github.com/pytorch/pytorch/blob/main/README.md
+    publisher: PyTorch (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-license
+    title: pytorch/pytorch LICENSE
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    publisher: PyTorch (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: github-license-api
+    title: GitHub license API response for pytorch/pytorch
+    url: https://api.github.com/repos/pytorch/pytorch/license
+    publisher: GitHub
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: spdx-bsd3-template
+    title: SPDX License List matching template for BSD-3-Clause
+    url: https://raw.githubusercontent.com/spdx/license-list-data/main/template/BSD-3-Clause.template.txt
+    publisher: SPDX (Linux Foundation)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-release-2-14
+    title: PyTorch 2.14.0 Release
+    url: https://github.com/pytorch/pytorch/releases/tag/v2.14.0
+    publisher: PyTorch (GitHub)
+    kind: release-notes
+    published_at: 2026-09-02
+    accessed_at: 2026-09-29
+  - id: pytorch-docs
+    title: PyTorch documentation
+    url: https://docs.pytorch.org/docs/stable/index.html
+    publisher: PyTorch Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-get-started
+    title: Get Started (Start Locally)
+    url: https://pytorch.org/get-started/locally/
+    publisher: PyTorch Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-governance
+    title: PyTorch Governance | Mechanics
+    url: https://docs.pytorch.org/docs/main/community/governance.html
+    publisher: PyTorch Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ptf-page
+    title: PyTorch Foundation
+    url: https://pytorch.org/foundation/
+    publisher: PyTorch Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ptf-charter
+    title: PyTorch Foundation Participation Agreement and Charter
+    url: https://cdn.platform.linuxfoundation.org/agreements/pytorch.pdf
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lf-pytorch-press
+    title: Meta Transitions PyTorch to the Linux Foundation, Further Accelerating AI/ML Open Source Collaboration
+    url: https://www.linuxfoundation.org/press/press-release/meta-transitions-pytorch-to-the-linux-foundation
+    publisher: Linux Foundation
+    kind: announcement
+    published_at: 2022-09-12
+    accessed_at: 2026-09-29
+  - id: lf-about
+    title: About the Linux Foundation
+    url: https://www.linuxfoundation.org/about
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lf-privacy
+    title: Privacy Policy | Linux Foundation
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

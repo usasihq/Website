@@ -1,0 +1,151 @@
+slug: lm-evaluation-harness
+name: LM Evaluation Harness
+kind: eval
+record_level: project
+family_slug: null
+version: "0.4.13"
+maintainers:
+  - name: EleutherAI
+    organization_slug: eleutherai
+    source_ids: [lm-eval-repo, lm-eval-license, lm-eval-pypi]
+organization_slugs: [eleutherai]
+links:
+  - label: GitHub repository
+    url: https://github.com/EleutherAI/lm-evaluation-harness
+    kind: repository
+  - label: Release v0.4.13
+    url: https://github.com/EleutherAI/lm-evaluation-harness/releases/tag/v0.4.13
+    kind: release-notes
+  - label: New task guide
+    url: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/docs/new_task_guide.md
+    kind: documentation
+  - label: License (MIT)
+    url: https://raw.githubusercontent.com/EleutherAI/lm-evaluation-harness/main/LICENSE.md
+    kind: license
+summary:
+  text: >-
+    An open-source framework from EleutherAI for evaluating language models on many
+    benchmark tasks through one interface. It supports local models (for example through
+    Hugging Face Transformers or vLLM) and hosted model APIs, and its README lists more than
+    60 standard academic benchmarks with hundreds of subtasks and variants.
+  source_ids: [lm-eval-repo]
+useful_for:
+  text: >-
+    Running benchmark evaluations of language models with shared, publicly available prompts,
+    and adding new tasks through YAML task configurations.
+  source_ids: [lm-eval-repo, lm-eval-new-task]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The project is maintained in EleutherAI's GitHub organization, its MIT license names
+    EleutherAI as copyright holder, and the PyPI package lists EleutherAI as author. EleutherAI
+    Institute is listed by the IRS as a 501(c)(3) organization in Washington, D.C.
+  source_ids: [lm-eval-repo, lm-eval-license, lm-eval-pypi, irs-eo-bmf-dc]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the MIT License; installable from PyPI as lm-eval, with
+    model backends installed as optional extras.
+  source_ids: [lm-eval-repo, lm-eval-pypi, lm-eval-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/EleutherAI/lm-evaluation-harness/main/LICENSE.md
+    applies_to: code
+    source_ids: [lm-eval-license]
+license_notes:
+  text: >-
+    The new-task guide states that task data is downloaded and managed through the Hugging
+    Face datasets API, so benchmark data comes from separately published datasets rather than
+    from the harness repository.
+  source_ids: [lm-eval-new-task]
+checklist:
+  code:
+    status: public
+    note: Published on GitHub under the MIT License.
+    source_ids: [lm-eval-repo, lm-eval-license]
+  tasks_data:
+    status: public
+    note: >-
+      Task configurations are in the repository; task data is loaded from datasets on the
+      Hugging Face Hub (or local files) as specified in each task's configuration.
+    source_ids: [lm-eval-new-task, lm-eval-repo]
+  methodology:
+    status: public
+    note: >-
+      The new-task guide describes generative and multiple-choice (log-likelihood) task types
+      and how metrics and aggregations are declared; the README sets out the order of
+      preference used to choose prompting and evaluation procedures.
+    source_ids: [lm-eval-new-task, lm-eval-repo]
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README documents command-line usage, publicly available prompts, result caching,
+      and logging; versioned releases are published on GitHub and PyPI.
+    source_ids: [lm-eval-repo, lm-eval-release, lm-eval-pypi]
+  limitations:
+    status: partial
+    note: >-
+      The README documents operational limitations (no native multi-node evaluation,
+      early-stage support for the PyTorch MPS backend, and request types some backends do not
+      support). A general discussion of benchmark validity limits was not found in the pages
+      read.
+    source_ids: [lm-eval-repo]
+run_notes:
+  - text: >-
+      Since December 2025 the base package no longer bundles transformers or torch; backends
+      are installed as extras such as lm_eval[hf], lm_eval[vllm], or lm_eval[api], per the
+      README.
+    source_ids: [lm-eval-repo]
+provenance: null
+tags: [evaluation, benchmark]
+publication_status: published
+archive_note: null
+released_at: 2026-08-31
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: lm-eval-repo
+    title: EleutherAI/lm-evaluation-harness
+    url: https://github.com/EleutherAI/lm-evaluation-harness
+    publisher: EleutherAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lm-eval-license
+    title: lm-evaluation-harness LICENSE.md
+    url: https://raw.githubusercontent.com/EleutherAI/lm-evaluation-harness/main/LICENSE.md
+    publisher: EleutherAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lm-eval-new-task
+    title: lm-evaluation-harness new task guide (docs/new_task_guide.md)
+    url: https://github.com/EleutherAI/lm-evaluation-harness/blob/main/docs/new_task_guide.md
+    publisher: EleutherAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lm-eval-release
+    title: Release v0.4.13 · EleutherAI/lm-evaluation-harness
+    url: https://github.com/EleutherAI/lm-evaluation-harness/releases/tag/v0.4.13
+    publisher: EleutherAI
+    kind: release-notes
+    published_at: 2026-08-31
+    accessed_at: 2026-09-29
+  - id: lm-eval-pypi
+    title: lm-eval on PyPI
+    url: https://pypi.org/project/lm-eval/
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2026-08-31
+    accessed_at: 2026-09-29
+  - id: irs-eo-bmf-dc
+    title: Exempt Organizations Business Master File Extract - District of Columbia (eo_dc.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_dc.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29

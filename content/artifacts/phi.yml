@@ -1,0 +1,94 @@
+slug: phi
+name: Phi
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Microsoft
+    organization_slug: microsoft
+    source_ids: [phi-portal]
+organization_slugs: [microsoft]
+links:
+  - label: Phi product page
+    url: https://azure.microsoft.com/en-us/products/phi
+    kind: website
+  - label: Microsoft on Hugging Face
+    url: https://huggingface.co/microsoft
+    kind: model-hub
+  - label: Phi Cookbook
+    url: https://github.com/microsoft/PhiCookBook
+    kind: documentation
+summary:
+  text: >-
+    Phi is Microsoft's family of small language models. Generations have included Phi-3, Phi-3.5,
+    and Phi-4, with instruction, reasoning, multimodal, and vision-language variants published on
+    Hugging Face and Microsoft Foundry. Recent Phi-4 releases include Phi-4-mini-flash-reasoning
+    (July 2025) and Phi-4-reasoning-vision-15B (March 2026).
+  source_ids: [phi-portal, phi4-rv-model-card, phi4-mfr-model-card, phi4-mfr-azure-blog]
+useful_for:
+  text: >-
+    Microsoft positions Phi models for cost-constrained and low-latency tasks, and for local,
+    on-device, or edge deployment as well as the cloud.
+  source_ids: [phi-portal]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Phi-4-reasoning-vision-15B model card names Microsoft Corporation as developer, and
+    Microsoft lists Redmond, Washington as its address on its Form 10-K cover page.
+  source_ids: [phi4-rv-model-card, msft-10k-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: >-
+    Assessed per release. Microsoft's Phi page states that Phi models are open source under the
+    MIT License and available through Azure AI Foundry Models, Hugging Face, and Ollama.
+  source_ids: [phi-portal]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, reasoning, multimodal]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: phi-portal
+    title: Phi Open Models - Small Language Models | Microsoft Azure
+    url: https://azure.microsoft.com/en-us/products/phi
+    publisher: Microsoft
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: phi4-rv-model-card
+    title: microsoft/Phi-4-reasoning-vision-15B model card
+    url: https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: phi4-mfr-model-card
+    title: microsoft/Phi-4-mini-flash-reasoning model card
+    url: https://huggingface.co/microsoft/Phi-4-mini-flash-reasoning
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: 2025-06
+    accessed_at: 2026-09-29
+  - id: phi4-mfr-azure-blog
+    title: "Reasoning reimagined: Introducing Phi-4-mini-flash-reasoning"
+    url: https://azure.microsoft.com/en-us/blog/reasoning-reimagined-introducing-phi-4-mini-flash-reasoning/
+    publisher: Microsoft Azure
+    kind: announcement
+    published_at: 2025-07-09
+    accessed_at: 2026-09-29
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

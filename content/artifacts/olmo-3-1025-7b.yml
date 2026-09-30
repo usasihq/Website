@@ -1,0 +1,210 @@
+slug: olmo-3-1025-7b
+name: Olmo 3 7B (base)
+kind: model
+record_level: release
+family_slug: olmo
+version: "Olmo-3-1025-7B"
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [mc-olmo3-7b]
+organization_slugs: [ai2]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/allenai/Olmo-3-1025-7B
+    kind: model-hub
+  - label: OLMo-core Olmo 3 training scripts
+    url: https://github.com/allenai/OLMo-core/tree/main/src/scripts/official/OLMo3
+    kind: repository
+  - label: Olmo 3 technical report (arXiv 2512.13961)
+    url: https://arxiv.org/abs/2512.13961
+    kind: paper
+  - label: Pretraining data (Dolma 3 Mix used for Olmo 3 7B)
+    url: https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B
+    kind: dataset-hub
+summary:
+  text: >-
+    The pretrained base model at the 7B scale in Ai2's Olmo 3 release, trained in three
+    stages (pretraining, mid-training, and long-context extension) on Dolma 3 data. The model
+    card lists 5.93 trillion training tokens, 32 layers, and a 65,536-token context length.
+  source_ids: [mc-olmo3-7b, ai2-olmo3-blog]
+useful_for:
+  text: >-
+    Ai2 documents base models as starting points for custom fine-tuning and for research on
+    pretrained models; the model card publishes intermediate checkpoints from each training
+    stage and fine-tuning instructions using OLMo-core.
+  source_ids: [mc-olmo3-7b, ai2-docs-olmo]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The model card states the model was developed by the Allen Institute for AI (Ai2), which
+    describes itself as a Seattle-based non-profit AI research institute.
+  source_ids: [mc-olmo3-7b, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. The card says the model is intended for
+    research and educational use in line with Ai2's Responsible Use Guidelines.
+  source_ids: [mc-olmo3-7b]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/allenai/Olmo-3-1025-7B
+    applies_to: weights
+    source_ids: [mc-olmo3-7b]
+  - name: Apache License 2.0 (OLMo-core)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/LICENSE
+    applies_to: code
+    source_ids: [olmo-core-license]
+license_notes:
+  text: >-
+    The model card states that the code and model are released under Apache 2.0 and that the
+    model is intended for research and educational use in accordance with Ai2's Responsible
+    Use Guidelines, which list categories of prohibited use.
+  source_ids: [mc-olmo3-7b, ai2-rug]
+checklist:
+  weights:
+    status: public
+    note: Final weights and staged intermediate checkpoints are published on Hugging Face.
+    source_ids: [mc-olmo3-7b]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents inference with Hugging Face Transformers and lists OLMo-core
+      as the core repository for training, inference, and fine-tuning.
+    source_ids: [mc-olmo3-7b, olmo-core-olmo3]
+  training_code:
+    status: public
+    note: >-
+      OLMo-core publishes the official Olmo 3 7B pretraining, mid-training, and long-context
+      scripts.
+    source_ids: [olmo-core-olmo3, olmo-core-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The Dolma 3 Mix used for pretraining is downloadable under ODC-BY, but its dataset card
+      says some olmOCR science PDFs were redacted after Olmo 3 7B was trained (marked
+      [REMOVED]) and that this affects reproducibility. Mid-training and long-context mixes are
+      linked from the model card.
+    source_ids: [dolma3-mix-7b, mc-olmo3-7b]
+  training_recipe:
+    status: public
+    note: >-
+      The technical report documents stages, schedules, and configurations, and the OLMo-core
+      scripts encode the official runs.
+    source_ids: [olmo3-report, olmo-core-olmo3]
+  evaluation_materials:
+    status: public
+    note: >-
+      The model card publishes base-model evaluation results; OLMES documents commands for
+      running the task suites from the Olmo 3 technical report.
+    source_ids: [mc-olmo3-7b, olmes-repo]
+run_notes:
+  - text: >-
+      The model card documents inference with Hugging Face Transformers version 4.57.0 or
+      later, and optional 8-bit loading through bitsandbytes.
+    source_ids: [mc-olmo3-7b]
+  - text: >-
+      Intermediate checkpoints are available as Hugging Face repository revisions named
+      stage1-stepXXX (pretraining), stage2-stepXXX (mid-training), and stage3-stepXXX (long
+      context).
+    source_ids: [mc-olmo3-7b]
+provenance:
+  text: >-
+    Trained from scratch by Ai2. Per the model card, stage 1 used the Dolma 3 Mix (5.93T
+    tokens), stage 2 used the Dolma 3 Dolmino Mix (100B tokens), and stage 3 used the Dolma 3
+    Longmino Mix (50B tokens).
+  derived_from:
+    - name: Dolma 3 Mix (6T, 1025)
+      artifact_slug: dolma
+      url: https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B
+      note: Stage 1 pretraining data.
+    - name: Dolma 3 Dolmino Mix (100B, 1025)
+      artifact_slug: dolma
+      url: https://huggingface.co/datasets/allenai/dolma3_dolmino_mix-100B-1025
+      note: Stage 2 mid-training data.
+    - name: Dolma 3 Longmino Mix (50B, 1025)
+      artifact_slug: dolma
+      url: https://huggingface.co/datasets/allenai/dolma3_longmino_mix-50B-1025
+      note: Stage 3 long-context data.
+  source_ids: [mc-olmo3-7b, dolma3-mix-7b]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2025-11-20
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-olmo3-7b
+    title: allenai/Olmo-3-1025-7B model card
+    url: https://huggingface.co/allenai/Olmo-3-1025-7B
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo-core-olmo3
+    title: OLMo-core official Olmo 3 training scripts (src/scripts/official/OLMo3)
+    url: https://github.com/allenai/OLMo-core/tree/main/src/scripts/official/OLMo3
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo-core-license
+    title: OLMo-core LICENSE
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-mix-7b
+    title: allenai/dolma3_mix-6T-1025-7B dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo3-report
+    title: Olmo 3 (arXiv 2512.13961v2)
+    url: https://arxiv.org/html/2512.13961v2
+    publisher: Team Olmo (Ai2)
+    kind: paper
+    published_at: 2026-04-14
+    accessed_at: 2026-09-29
+  - id: olmes-repo
+    title: allenai/olmes
+    url: https://github.com/allenai/olmes
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-olmo
+    title: Olmo | Ai2 platform documentation
+    url: https://docs.allenai.org/models/olmo/index.html
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-rug
+    title: Responsible use guidelines | Ai2
+    url: https://allenai.org/responsible-use
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-olmo3-blog
+    title: "Olmo 3: Charting a path through the model flow to lead open-source AI"
+    url: https://allenai.org/blog/olmo3
+    publisher: Ai2
+    kind: announcement
+    published_at: 2025-11-20
+    accessed_at: 2026-09-29

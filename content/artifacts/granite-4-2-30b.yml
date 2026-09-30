@@ -1,0 +1,186 @@
+slug: granite-4-2-30b
+name: Granite 4.2 30B
+kind: model
+record_level: release
+family_slug: granite
+version: "4.2 (30B)"
+maintainers:
+  - name: IBM (Granite Team)
+    organization_slug: ibm
+    source_ids: [model-card]
+organization_slugs: [ibm]
+links:
+  - label: Model card
+    url: https://huggingface.co/ibm-granite/granite-4.2-30b
+    kind: model-hub
+  - label: Granite 4.2 language models repository
+    url: https://github.com/ibm-granite/granite-4.2-language-models
+    kind: repository
+  - label: Technical blog
+    url: https://huggingface.co/blog/ibm-granite/granite-4-2
+    kind: release-notes
+  - label: Apache License 2.0 (repository)
+    url: https://github.com/ibm-granite/granite-4.2-language-models/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    Granite 4.2 30B is a 30-billion-parameter dense decoder-only language model from IBM with
+    built-in reasoning, selectable thinking, non-thinking, and low-effort modes, and tool calling.
+    It supports a 128K-token context natively; the model card documents extension to 512K. Per the model card, the 30B model received a second supervised fine-tuning phase with up-sampled agentic data.
+  source_ids: [model-card]
+useful_for:
+  text: >-
+    The model card lists reasoning, code generation, tool calling, agentic workflows, and
+    multilingual dialog in 12 tested languages.
+  source_ids: [model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by IBM's Granite Team per the model card. IBM's principal executive offices are in
+    Armonk, New York, per its fiscal 2025 Form 10-K. It is post-trained from IBM's own Granite 4.1
+    30B Base, not from another developer's weights.
+  source_ids: [model-card, ibm-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Weights are downloadable from Hugging Face without a gating agreement; Apache 2.0 terms apply.
+  source_ids: [model-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+    applies_to: weights
+    source_ids: [model-card]
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/ibm-granite/granite-4.2-language-models/blob/main/LICENSE
+    applies_to: code
+    source_ids: [repo-license]
+  - name: Community Data License Agreement – Permissive, Version 2.0
+    spdx: CDLA-Permissive-2.0
+    url: https://github.com/ibm-granite/granite-4.2-language-models/tree/main/disclosures
+    applies_to: documentation
+    source_ids: [disclosures-readme]
+license_notes:
+  text: >-
+    The Apache 2.0 license is stated in the model card metadata and summary table. IBM's
+    machine-readable training-data disclosures are published separately under CDLA Permissive
+    v2.
+  source_ids: [model-card, disclosures-readme]
+checklist:
+  weights:
+    status: public
+    note: Safetensors weights in bfloat16 are published in the Hugging Face repository.
+    source_ids: [model-card]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents running the model with Hugging Face Transformers, vLLM, and
+      SGLang, and the repository includes a chat template and a reasoning-parser plugin.
+    source_ids: [model-card]
+  training_code:
+    status: unknown
+    note: >-
+      The model card names NVIDIA's NeMo RL and NeMo Gym for reinforcement learning. This review
+      did not find IBM's own training code or configurations for this release.
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      IBM's disclosure file lists pre-training and post-training datasets by category, with URLs
+      for most of them. Several entries are internal, acquired, or synthetic datasets that are
+      not publicly obtainable.
+    source_ids: [disclosure-30b]
+  training_recipe:
+    status: partial
+    note: >-
+      The technical blog documents the post-training procedure, including the SFT data mixture
+      and configuration (learning rate, batch size, warm-up, epochs) and per-stage GRPO
+      reinforcement-learning and RLHF settings. Pre-training of the Granite 4.1 base model is
+      referred to a separate Granite 4.1 blog that this review did not assess, and no training
+      code or configuration files were found.
+    source_ids: [model-card, tech-blog]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The model card publishes a results table and states that evaluations use a framework based
+      on NVIDIA's NeMo Evaluator SDK. This review did not find IBM's evaluation configurations or
+      prompts.
+    source_ids: [model-card]
+run_notes:
+  - text: >-
+      The model card documents serving with vLLM (v0.20 or later for the bundled
+      granite_thinking_parser) and with SGLang (v0.5.18 or later), and loading with Hugging Face
+      Transformers. It recommends temperature 1.0 and top_p 0.95 for all modes.
+    source_ids: [model-card]
+  - text: >-
+      IBM also publishes quantized variants of this model in the ibm-granite Hugging Face
+      organization, including GGUF, FP8, MXFP4, NVFP4, and MLX builds.
+    source_ids: [hf-ibm-granite-models]
+provenance:
+  text: >-
+    Post-trained by IBM from its own Granite 4.1 30B Base model, using supervised fine-tuning,
+    reinforcement learning, and RLHF.
+  derived_from:
+    - name: Granite 4.1 30B Base
+      artifact_slug: null
+      url: https://huggingface.co/ibm-granite/granite-4.1-30b-base
+      note: IBM base model; pre-trained from scratch per the Granite 4.2 technical blog.
+  source_ids: [model-card, tech-blog]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-08-25
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: model-card
+    title: ibm-granite/granite-4.2-30b model card
+    url: https://huggingface.co/ibm-granite/granite-4.2-30b
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: 2026-08-25
+    accessed_at: 2026-09-29
+  - id: repo-license
+    title: granite-4.2-language-models LICENSE
+    url: https://github.com/ibm-granite/granite-4.2-language-models/blob/main/LICENSE
+    publisher: IBM
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: disclosures-readme
+    title: Granite 4.2 disclosures README
+    url: https://github.com/ibm-granite/granite-4.2-language-models/blob/main/disclosures/README.md
+    publisher: IBM
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: disclosure-30b
+    title: Granite 4.2 30B disclosure (JSON)
+    url: https://github.com/ibm-granite/granite-4.2-language-models/blob/main/disclosures/granite_4.2_30b_disclosure.json
+    publisher: IBM
+    kind: documentation
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29
+  - id: tech-blog
+    title: "Granite 4.2 LLMs: How They're Built"
+    url: https://huggingface.co/blog/ibm-granite/granite-4-2
+    publisher: IBM Granite (Hugging Face blog)
+    kind: release-notes
+    published_at: 2026-08-25
+    accessed_at: 2026-09-29
+  - id: hf-ibm-granite-models
+    title: Hugging Face model listing for ibm-granite (search granite-4.2)
+    url: https://huggingface.co/api/models?author=ibm-granite&search=granite-4.2
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ibm-10k-2025
+    title: IBM Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (filed by IBM)
+    kind: filing
+    published_at: 2026-02-24
+    accessed_at: 2026-09-29

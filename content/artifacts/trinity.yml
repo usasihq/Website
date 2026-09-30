@@ -1,0 +1,88 @@
+slug: trinity
+name: Trinity
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Arcee AI
+    organization_slug: arcee-ai
+    source_ids: [arcee-trinity-page]
+organization_slugs: [arcee-ai]
+links:
+  - label: Trinity overview
+    url: https://www.arcee.ai/trinity
+    kind: website
+  - label: Arcee AI on Hugging Face
+    url: https://huggingface.co/arcee-ai
+    kind: model-hub
+  - label: Arcee Trinity Large Technical Report
+    url: https://arxiv.org/abs/2602.17004
+    kind: paper
+summary:
+  text: >-
+    Trinity is Arcee AI's family of sparse mixture-of-experts language models:
+    Trinity Nano (6B total, about 1B active parameters), Trinity Mini (26B total, 3B
+    active), and Trinity Large (about 398B total, 13B active). Trinity Large is
+    published as base, pre-anneal base, preview, and reasoning-tuned Thinking
+    checkpoints.
+  source_ids: [arcee-trinity-page, trinity-tech-report, hf-trinity-large-thinking]
+useful_for:
+  text: >-
+    Arcee positions Nano for edge and on-device use and Mini for cloud or on-premises
+    deployment, and lists the Large models as offered through its cloud API, with
+    Trinity-Large-Thinking aimed at tool-calling and multi-step agent workflows.
+  source_ids: [arcee-trinity-page, hf-trinity-large-thinking]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Arcee AI, Inc., a U.S. company with a documented San
+    Francisco base (see the arcee-ai record). Arcee describes Trinity as trained end
+    to end in the United States by an American company.
+  source_ids: [arcee-trinity-manifesto, arcee-trinity-page]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and licenses are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, mixture-of-experts, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2025-12-01
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: arcee-trinity-page
+    title: Trinity Models
+    url: https://www.arcee.ai/trinity
+    publisher: Arcee AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-trinity-manifesto
+    title: The Trinity Manifesto
+    url: https://www.arcee.ai/blog/the-trinity-manifesto
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2025-12-01
+    accessed_at: 2026-09-29
+  - id: trinity-tech-report
+    title: Arcee Trinity Large Technical Report
+    url: https://arxiv.org/abs/2602.17004
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-19
+    accessed_at: 2026-09-29
+  - id: hf-trinity-large-thinking
+    title: arcee-ai/Trinity-Large-Thinking model card
+    url: https://huggingface.co/arcee-ai/Trinity-Large-Thinking
+    publisher: Arcee AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,171 @@
+slug: laguna-s-2-1
+name: Laguna S 2.1
+kind: model
+record_level: release
+family_slug: laguna
+version: "S 2.1"
+maintainers:
+  - name: Poolside
+    organization_slug: poolside
+    source_ids: [hf-laguna-s-2-1]
+organization_slugs: [poolside]
+links:
+  - label: Model card
+    url: https://huggingface.co/poolside/Laguna-S-2.1
+    kind: model-hub
+  - label: License (OpenMDW-1.1)
+    url: https://huggingface.co/poolside/Laguna-S-2.1/blob/main/LICENSE.md
+    kind: license
+  - label: Release announcement
+    url: https://poolside.ai/blog/introducing-laguna-s-2-1
+    kind: release-notes
+  - label: Evaluation trajectories
+    url: https://trajectories.poolside.ai
+    kind: documentation
+summary:
+  text: >-
+    Laguna S 2.1 is a mixture-of-experts model with 118B total and about 8B active
+    parameters per token, built for agentic coding. It has 48 layers mixing global
+    and sliding-window attention, 256 routed experts plus one shared expert, and a
+    1,048,576-token context window, with reasoning that can be switched on or off
+    per request.
+  source_ids: [hf-laguna-s-2-1]
+useful_for:
+  text: >-
+    Poolside documents it for long-running coding and research tasks with extended
+    tool use, and for running an open-weight model locally on high-memory hardware.
+  source_ids: [poolside-model-release-notes]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Poolside, Inc., which states that it is headquartered
+    in San Francisco and trains its models from scratch on its own data and
+    infrastructure. See the poolside organization record for the assessment of its
+    French presence.
+  source_ids: [poolside-laguna-s-release, hf-laguna-s-2-1]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Weights download from Hugging Face without an access gate. Also served through the Poolside API and OpenRouter.
+  source_ids: [hf-laguna-s-2-1, poolside-laguna-s-release]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1
+    spdx: null
+    url: https://huggingface.co/poolside/Laguna-S-2.1/blob/main/LICENSE.md
+    applies_to: weights-and-code
+    source_ids: [laguna-s-license-file, hf-laguna-s-2-1]
+license_notes:
+  text: >-
+    OpenMDW-1.1 grants broad use rights and places no restrictions on outputs. It
+    requires keeping the license and notices when redistributing, and ends the rights
+    of anyone who sues claiming the materials infringe a patent or copyright. The
+    model card also asks users to follow Poolside's Acceptable Use Policy.
+  source_ids: [laguna-s-license-file, hf-laguna-s-2-1]
+checklist:
+  weights:
+    status: public
+    note: BF16 weights are in the ungated repository; FP8, NVFP4, INT4, and GGUF variants are published as separate repositories.
+    source_ids: [hf-laguna-s-2-1]
+  inference_code:
+    status: public
+    note: The repository includes modeling code (modeling_laguna.py), and the model card documents vLLM, SGLang, TensorRT-LLM, llama.cpp, and Ollama.
+    source_ids: [hf-laguna-s-2-1, laguna-s-repo-files]
+  training_code:
+    status: unknown
+    note: null
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The release blog says S 2.1 was pre-trained on exactly the same data as Laguna XS 2.1
+      and describes post-training task sources (open-source repositories, internally
+      synthesized tasks, and tasks acquired from external data vendors) at a high level. The
+      pre-training data composition is not described for this release, and the data is not
+      released.
+    source_ids: [poolside-laguna-s-2-1-blog]
+  training_recipe:
+    status: partial
+    note: >-
+      The release blog describes the training at a high level: a scale-up of the Laguna XS
+      family with training-code fixes and small recipe changes, an SFT stage partly using
+      synthetic data, and reinforcement learning run in FP8 precision. The blog does not give
+      hyperparameters or training configurations.
+    source_ids: [poolside-laguna-s-2-1-blog]
+  evaluation_materials:
+    status: partial
+    note: The model card publishes benchmark results, and Poolside publishes full evaluation trajectories.
+    source_ids: [hf-laguna-s-2-1, laguna-s-trajectories]
+run_notes:
+  - text: >-
+      The model card states that the BF16 checkpoint is roughly 236GB of weights and
+      needs multiple GPUs, and that quantized variants reduce this. Its vLLM and
+      SGLang examples use tensor parallelism of 4.
+    source_ids: [hf-laguna-s-2-1]
+  - text: >-
+      llama.cpp support uses Poolside's llama.cpp fork (laguna branch); the model
+      card notes that base support is under review upstream.
+    source_ids: [hf-laguna-s-2-1]
+provenance:
+  text: >-
+    Poolside states that it trains its models from scratch on its own data and
+    infrastructure. The model card describes Laguna S 2.1 as sharing the Laguna
+    family architecture recipe with Laguna XS 2.1 and Laguna M.1.
+  derived_from: []
+  source_ids: [poolside-laguna-s-release, hf-laguna-s-2-1]
+tags: [language-model, code-model, mixture-of-experts, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-07-21
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-laguna-s-2-1
+    title: poolside/Laguna-S-2.1 model card
+    url: https://huggingface.co/poolside/Laguna-S-2.1
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: laguna-s-license-file
+    title: Laguna-S-2.1 LICENSE.md (OpenMDW-1.1)
+    url: https://huggingface.co/poolside/Laguna-S-2.1/raw/main/LICENSE.md
+    publisher: Poolside
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: laguna-s-repo-files
+    title: Laguna-S-2.1 repository file listing
+    url: https://huggingface.co/api/models/poolside/Laguna-S-2.1/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-laguna-s-2-1-blog
+    title: Introducing Laguna S 2.1
+    url: https://poolside.ai/blog/introducing-laguna-s-2-1
+    publisher: Poolside
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-09-29
+  - id: laguna-s-trajectories
+    title: Laguna S 2.1 evaluation trajectories
+    url: https://trajectories.poolside.ai/
+    publisher: Poolside
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-model-release-notes
+    title: Model release notes
+    url: https://docs.poolside.ai/release-notes/models
+    publisher: Poolside
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-laguna-s-release
+    title: Poolside releases Laguna S 2.1, the West's most capable open-weight model
+    url: https://www.globenewswire.com/news-release/2026/07/21/3330818/0/en/Poolside-releases-Laguna-S-2-1-the-West-s-most-capable-open-weight-model.html
+    publisher: Poolside via GlobeNewswire
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-09-29

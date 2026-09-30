@@ -1,0 +1,176 @@
+slug: ollama
+name: Ollama
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Ollama Inc.
+    organization_slug: null
+    source_ids: [ollama-terms, ollama-repo]
+organization_slugs: []
+links:
+  - label: Website
+    url: https://ollama.com
+    kind: website
+  - label: Repository
+    url: https://github.com/ollama/ollama
+    kind: repository
+  - label: Documentation
+    url: https://docs.ollama.com
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/ollama/ollama/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/ollama/ollama/releases
+    kind: release-notes
+summary:
+  text: >-
+    Ollama is an open-source application and runtime for downloading and running open models on
+    macOS, Windows, and Linux. It has an API, Python and JavaScript client libraries, and
+    integrations with coding agents and other tools. Its company, Ollama Inc., also offers
+    cloud-hosted models.
+  source_ids: [ollama-readme, ollama-terms, ollama-pricing]
+useful_for:
+  text: >-
+    Running open models on a local machine with GPU acceleration on NVIDIA, AMD, and Apple
+    hardware, and serving them to local applications.
+  source_ids: [ollama-gpu-docs, ollama-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Ollama's terms of service say its website, software, APIs, and related services are provided
+    by Ollama Inc. The terms are governed by California law, with arbitration in San Francisco.
+    Ollama Inc.'s July 2026 press release (distributed by Business Wire) is datelined Palo Alto,
+    California. Its job
+    board lists roles in Palo Alto. No foreign parent or headquarters was found.
+  source_ids: [ollama-terms, ollama-pr-series-b, ollama-jobs]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [ollama-repo, ollama-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/ollama/ollama/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ollama-license]
+license_notes:
+  text: >-
+    The MIT license covers the Ollama software. Models run with Ollama carry their own licenses,
+    and Ollama's cloud service is governed by its terms of service.
+  source_ids: [ollama-license, ollama-terms]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [ollama-repo]
+  documentation:
+    status: public
+    note: null
+    source_ids: [ollama-gpu-docs]
+  installation:
+    status: public
+    note: Install scripts and installers for macOS, Windows, and Linux, plus an official Docker image.
+    source_ids: [ollama-readme, ollama-download]
+  supported_platforms:
+    status: public
+    note: >-
+      Docs cover macOS, Windows, and Linux, with GPU support for NVIDIA (compute capability 5.0
+      and newer), AMD via ROCm, Apple Metal, and Vulkan.
+    source_ids: [ollama-gpu-docs]
+  release_status:
+    status: public
+    note: Versioned releases, including pre-releases, are published on GitHub.
+    source_ids: [ollama-releases]
+run_notes: []
+provenance:
+  text: >-
+    The Ollama README lists llama.cpp as a supported backend. The repository pins a llama.cpp
+    build version and an MLX version.
+  derived_from:
+    - name: llama.cpp
+      artifact_slug: llama-cpp
+      url: https://github.com/ggml-org/llama.cpp
+      note: Listed under "Supported backends" in the Ollama README.
+  source_ids: [ollama-readme, ollama-repo]
+tags: [inference, local-inference]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ollama-repo
+    title: ollama/ollama
+    url: https://github.com/ollama/ollama
+    publisher: Ollama
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ollama-readme
+    title: Ollama README
+    url: https://github.com/ollama/ollama/blob/main/README.md
+    publisher: Ollama
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ollama-license
+    title: Ollama LICENSE
+    url: https://github.com/ollama/ollama/blob/main/LICENSE
+    publisher: Ollama
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ollama-terms
+    title: Terms of Service
+    url: https://ollama.com/terms
+    publisher: Ollama Inc.
+    kind: official-page
+    published_at: 2026-05
+    accessed_at: 2026-09-29
+  - id: ollama-pricing
+    title: Ollama Pricing
+    url: https://ollama.com/pricing
+    publisher: Ollama Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ollama-download
+    title: Download Ollama
+    url: https://ollama.com/download
+    publisher: Ollama Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ollama-gpu-docs
+    title: Hardware support
+    url: https://docs.ollama.com/gpu
+    publisher: Ollama Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ollama-releases
+    title: Ollama releases
+    url: https://github.com/ollama/ollama/releases
+    publisher: Ollama
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ollama-pr-series-b
+    title: Ollama Raises $65M Series B Funding to Grow its Open-source AI Platform
+    url: https://finance.yahoo.com/technology/ai/articles/ollama-raises-65m-series-b-130000473.html
+    publisher: Ollama (via Business Wire)
+    kind: announcement
+    published_at: 2026-07-09
+    accessed_at: 2026-09-29
+  - id: ollama-jobs
+    title: Ollama job board (Ashby posting API)
+    url: https://api.ashbyhq.com/posting-api/job-board/ollama
+    publisher: Ollama Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,159 @@
+slug: llama-cpp
+name: llama.cpp
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: ggml team and ggml-org community
+    organization_slug: null
+    source_ids: [ggml-hf-discussion, ggml-ai-site]
+organization_slugs: [hugging-face]
+links:
+  - label: Repository
+    url: https://github.com/ggml-org/llama.cpp
+    kind: repository
+  - label: Website
+    url: https://llama.app
+    kind: website
+  - label: LICENSE
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/ggml-org/llama.cpp/releases
+    kind: release-notes
+summary:
+  text: >-
+    llama.cpp is a C/C++ library and set of tools for running LLM and vision-language model
+    inference locally or in the cloud, built on the ggml tensor library. It supports integer
+    quantization and many hardware backends. It includes a command-line interface and an
+    OpenAI-compatible server.
+  source_ids: [llamacpp-readme]
+useful_for:
+  text: >-
+    Running quantized models on local hardware, including CPU-only systems, Apple silicon, and a
+    range of GPUs.
+  source_ids: [llamacpp-readme, llama-app]
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    Governance is unresolved. In February 2026 the ggml team announced that it was joining
+    Hugging Face, and ggml.ai says the company was acquired by Hugging Face in 2026. The same
+    announcements say the ggml-org projects remain community driven. They also say the community
+    will keep operating autonomously and making its own technical decisions, with Hugging Face
+    providing resources. No governance document names Hugging Face (or another U.S. entity) as
+    the governing or maintaining organization of llama.cpp. The sources reviewed do not state
+    where ggml.ai was based. Hugging Face's own ownership may also change: on September 3, 2026
+    NVIDIA announced that it has agreed to acquire Hugging Face. Eligibility is not inferred from
+    the corporate affiliation of maintainers.
+  source_ids: [ggml-hf-discussion, hf-ggml-blog, ggml-ai-site, nvidia-hf-blog]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [llamacpp-repo, llamacpp-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    applies_to: code
+    source_ids: [llamacpp-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [llamacpp-repo]
+  documentation:
+    status: public
+    note: Documentation is kept in the repository README and docs directory.
+    source_ids: [llamacpp-readme]
+  installation:
+    status: public
+    note: >-
+      The README documents an install script on llama.app, Docker images, prebuilt binaries on
+      the releases page, and building from source.
+    source_ids: [llamacpp-readme]
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists CPU and GPU backends including Metal, CUDA, HIP, Vulkan, SYCL, and MUSA.
+      Releases include prebuilt binaries for macOS, Linux, Windows, and Android.
+    source_ids: [llamacpp-readme, llamacpp-releases]
+  release_status:
+    status: public
+    note: Versioned (v0.x) releases and frequent numbered builds are published on GitHub.
+    source_ids: [llamacpp-releases]
+run_notes: []
+provenance: null
+tags: [inference, local-inference]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: llamacpp-repo
+    title: ggml-org/llama.cpp
+    url: https://github.com/ggml-org/llama.cpp
+    publisher: ggml-org
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamacpp-readme
+    title: llama.cpp README
+    url: https://github.com/ggml-org/llama.cpp/blob/master/README.md
+    publisher: ggml-org
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamacpp-license
+    title: llama.cpp LICENSE
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llamacpp-releases
+    title: llama.cpp releases
+    url: https://github.com/ggml-org/llama.cpp/releases
+    publisher: ggml-org
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama-app
+    title: llama.app
+    url: https://llama.app
+    publisher: ggml-org
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ggml-hf-discussion
+    title: ggml.ai joins Hugging Face to ensure the long-term progress of Local AI
+    url: https://github.com/ggml-org/llama.cpp/discussions/19759
+    publisher: ggml-org
+    kind: announcement
+    published_at: 2026-02-20
+    accessed_at: 2026-09-29
+  - id: hf-ggml-blog
+    title: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
+    url: https://huggingface.co/blog/ggml-joins-hf
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2026-02-20
+    accessed_at: 2026-09-29
+  - id: ggml-ai-site
+    title: ggml.ai
+    url: https://ggml.ai
+    publisher: ggml.ai
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-hf-blog
+    title: NVIDIA to Acquire Hugging Face
+    url: https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "usasi-static",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve-static.mjs", "--port", "4321"],
+      "port": 4321
+    },
+    {
+      "name": "usasi-wrangler",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["wrangler", "dev", "--port", "8787", "--ip", "127.0.0.1"],
+      "port": 8787
+    }
+  ]
+}

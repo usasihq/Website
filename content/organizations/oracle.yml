@@ -1,0 +1,123 @@
+slug: oracle
+name: Oracle
+legal_name:
+  text: Oracle Corporation
+  source_ids: [oracle-10q-q1-fy2027]
+website: https://www.oracle.com
+logo_text: ORC
+summary:
+  text: >-
+    Oracle sells database and enterprise software and operates Oracle Cloud, made up of Oracle
+    Cloud Applications and Oracle Cloud Infrastructure (OCI). OCI compute includes GPU-based
+    and bare-metal offerings for AI model training and inference, and OCI Generative AI is a
+    managed service for building generative AI applications.
+  source_ids: [oracle-10k-fy2026, oracle-genai-docs]
+organization_roles: [cloud-provider, enterprise-software, data-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation
+  source_ids: [oracle-10q-q1-fy2027]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Austin, Texas
+  country: US
+  source_ids: [oracle-10q-q1-fy2027]
+other_locations: []
+founded:
+  year: 1977
+  source_ids: [oracle-10k-fy2025]
+sectors: [cloud, enterprise, data]
+status_note:
+  text: >-
+    In September 2025 Clayton M. Magouyrk and Michael D. Sicilia were promoted to Chief
+    Executive Officer, succeeding Safra A. Catz, who had been CEO since September 2014 and
+    became Executive Vice Chair of the Board. The announcement identified Lawrence J. Ellison
+    as Chairman of the Board and Chief Technology Officer.
+  source_ids: [oracle-8k-2025-09-22, oracle-ceo-release-2025-09-22, oracle-10k-fy2025]
+products:
+  - id: oci-ai-infrastructure
+    name: OCI AI Infrastructure
+    kind: compute-service
+    access: >-
+      GPU bare-metal and virtual machine instances with cluster networking, including OCI
+      Supercluster configurations with NVIDIA GPUs and instances with AMD Instinct GPUs,
+      available across Oracle's cloud regions.
+    url: https://www.oracle.com/ai-infrastructure/
+    source_ids: [oracle-ai-infra-page]
+    last_reviewed: 2026-09-29
+  - id: oci-generative-ai
+    name: OCI Generative AI
+    kind: inference-service
+    access: >-
+      Fully managed OCI service offering hosted pretrained models, custom model hosting on
+      dedicated AI clusters, and agent tooling, accessed through the OCI Console, API, CLI, or
+      OpenAI-compatible APIs.
+    url: https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm
+    source_ids: [oracle-genai-docs]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Oracle Corporation is a Delaware corporation with principal executive offices in Austin,
+    Texas, per the cover page of its Form 10-Q for the quarter ended August 31, 2026.
+  source_ids: [oracle-10q-q1-fy2027]
+  assessed_at: 2026-09-29
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: oracle-10k-fy2026
+    title: Oracle Corporation Form 10-K for the fiscal year ended May 31, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526277521/orcl-20260531.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-06-22
+    accessed_at: 2026-09-29
+  - id: oracle-10k-fy2025
+    title: Oracle Corporation Form 10-K for the fiscal year ended May 31, 2025
+    url: https://s23.q4cdn.com/440135859/files/doc_downloads/proxy-voting-material/2025/09/Oracle-2025-10-K-PDF-Final-9-26-25.pdf
+    publisher: Oracle Corporation
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oracle-8k-2025-09-22
+    title: Oracle Corporation Form 8-K (executive officer changes)
+    url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525210089/d921500d8k.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-09-22
+    accessed_at: 2026-09-29
+  - id: oracle-ceo-release-2025-09-22
+    title: "Exhibit 99.1: Oracle Corporation Announces Promotion of Clay Magouyrk and Mike Sicilia to CEOs; Safra Catz Appointed Executive Vice Chair of the Board of Directors"
+    url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525210089/d921500dex991.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-09-22
+    accessed_at: 2026-09-29
+  - id: oracle-10q-q1-fy2027
+    title: Oracle Corporation Form 10-Q for the quarter ended August 31, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526389274/orcl-20260831.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-09-11
+    accessed_at: 2026-09-29
+  - id: oracle-ai-infra-page
+    title: AI Infrastructure | Oracle
+    url: https://www.oracle.com/ai-infrastructure/
+    publisher: Oracle
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: oracle-genai-docs
+    title: OCI Generative AI overview
+    url: https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm
+    publisher: Oracle
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29

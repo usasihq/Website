@@ -1,0 +1,120 @@
+slug: sambanova
+name: SambaNova
+legal_name:
+  text: SambaNova Systems, Inc.
+  source_ids: [ftc-intel-sambanova-et]
+website: https://sambanova.ai
+logo_text: SN
+summary:
+  text: >-
+    SambaNova builds AI inference infrastructure: Reconfigurable Dataflow Unit (RDU) chips,
+    SambaRack systems, the SambaStack platform for dedicated deployments, and the SambaCloud
+    inference service for open models.
+  source_ids: [sambanova-seriesf-2026-07, sambanova-sambarack-page, sambanova-sambastack-page, sambanova-sambacloud-page]
+organization_roles: [chip-designer, hardware-manufacturer, inference-provider]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Jose, California
+  country: US
+  source_ids: [sambanova-seriesf-2026-07]
+other_locations: []
+founded:
+  year: 2017
+  source_ids: [sambanova-seriesf-2026-07]
+sectors: [chips, cloud]
+status_note:
+  text: >-
+    In February 2026 SambaNova announced a planned multi-year strategic collaboration with
+    Intel covering AI cloud expansion, integrated infrastructure, and go-to-market work, and
+    said Intel plans to make a strategic investment in the company. In July 2026 it announced
+    the first close of a Series F financing.
+  source_ids: [sambanova-intel-2026-02, sambanova-seriesf-2026-07]
+products:
+  - id: sambacloud
+    name: SambaCloud
+    kind: inference-service
+    access: >-
+      Cloud inference service for open models from several developers, accessed with an API key
+      through OpenAI-compatible endpoints from the cloud.sambanova.ai dashboard.
+    url: https://sambanova.ai/products/sambacloud
+    source_ids: [sambanova-sambacloud-page]
+    last_reviewed: 2026-09-29
+  - id: sambastack
+    name: SambaStack
+    kind: enterprise-software
+    access: >-
+      Hardware-and-software inference platform built on SambaNova RDU chips and SambaRack
+      systems, deployed on-premises or in the cloud with dedicated hosting options.
+    url: https://sambanova.ai/products/sambastack
+    source_ids: [sambanova-sambastack-page]
+    last_reviewed: 2026-09-29
+  - id: sambarack
+    name: SambaRack
+    kind: hardware
+    access: >-
+      Turnkey rack system containing SambaNova RDU chips (the latest generation is SN50) for
+      running AI inference in on-premises or hosted data centers.
+    url: https://sambanova.ai/products/sambarack
+    source_ids: [sambanova-sambarack-page]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    SambaNova's July 2026 announcement states that the company is headquartered in San Jose,
+    California.
+  source_ids: [sambanova-seriesf-2026-07]
+  assessed_at: 2026-09-29
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: sambanova-seriesf-2026-07
+    title: SambaNova Completes First Close of $1B Financing at $11B Valuation
+    url: https://sambanova.ai/press/sambanova-completes-first-close-of-1b-financing-at-11b-valuation
+    publisher: SambaNova
+    kind: announcement
+    published_at: 2026-07-08
+    accessed_at: 2026-09-29
+  - id: sambanova-intel-2026-02
+    title: SambaNova Unveils Fastest Chip for Agentic AI, Collaborates with Intel, and Raises $350M+
+    url: https://sambanova.ai/press/sambanova-unveils-fastest-chip-for-agentic-ai-collaborates-with-intel-and-raises-350m
+    publisher: SambaNova
+    kind: announcement
+    published_at: 2026-02-24
+    accessed_at: 2026-09-29
+  - id: ftc-intel-sambanova-et
+    title: "Early termination notice 20261227: Intel Corporation; SambaNova Systems, Inc."
+    url: https://www.ftc.gov/legal-library/browse/early-termination-notices/20261227
+    publisher: U.S. Federal Trade Commission
+    kind: filing
+    published_at: 2026-04-30
+    accessed_at: 2026-09-29
+  - id: sambanova-sambacloud-page
+    title: SambaCloud
+    url: https://sambanova.ai/products/sambacloud
+    publisher: SambaNova
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sambanova-sambastack-page
+    title: SambaStack
+    url: https://sambanova.ai/products/sambastack
+    publisher: SambaNova
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sambanova-sambarack-page
+    title: SambaRack
+    url: https://sambanova.ai/products/sambarack
+    publisher: SambaNova
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

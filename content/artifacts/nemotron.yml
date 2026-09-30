@@ -1,0 +1,84 @@
+slug: nemotron
+name: NVIDIA Nemotron
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [nemotron-dev-page]
+organization_slugs: [nvidia]
+links:
+  - label: Nemotron developer page
+    url: https://developer.nvidia.com/nemotron
+    kind: website
+  - label: Nemotron v3 collection on Hugging Face
+    url: https://huggingface.co/collections/nvidia/nvidia-nemotron-v3
+    kind: model-hub
+  - label: NVIDIA Nemotron Developer Repository
+    url: https://github.com/NVIDIA-NeMo/Nemotron
+    kind: repository
+summary:
+  text: >-
+    Nemotron is NVIDIA's family of models for building AI agents. The current generation is
+    organized into Nano, Lightning, Super, and Ultra tiers; NVIDIA publishes the weights on
+    Hugging Face and, for several releases, training datasets and training recipes.
+  source_ids: [nemotron-dev-page, nemotron-hf-collection, nemotron-repo-readme]
+useful_for:
+  text: >-
+    NVIDIA describes the tiers as ranging from efficient sub-agents and high-volume task
+    execution to multi-agent reasoning and complex agentic tasks.
+  source_ids: [nemotron-dev-page, nemotron-repo-readme]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Nemotron family is developed by NVIDIA Corporation, which has its principal executive
+    offices in Santa Clara, California, per its Form 10-Q for the quarter ended July 26, 2026.
+  source_ids: [nemotron-dev-page, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: nemotron-dev-page
+    title: NVIDIA Nemotron
+    url: https://developer.nvidia.com/nemotron
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemotron-hf-collection
+    title: NVIDIA Nemotron v3 collection
+    url: https://huggingface.co/collections/nvidia/nvidia-nemotron-v3
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemotron-repo-readme
+    title: NVIDIA Nemotron Developer Repository README
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-26
+    accessed_at: 2026-09-29

@@ -1,0 +1,131 @@
+slug: intel
+name: Intel
+legal_name:
+  text: Intel Corporation
+  source_ids: [intel-10q-q2-2026]
+website: https://www.intel.com
+logo_text: INT
+summary:
+  text: >-
+    Intel designs and manufactures semiconductor products, including CPUs used in PCs and data
+    centers. Its AI-related offerings include Intel Gaudi AI accelerators and the open-source
+    OpenVINO inference toolkit.
+  source_ids: [intel-10k-2025, intel-gaudi-page, intel-openvino-page]
+organization_roles: [chip-designer, hardware-manufacturer, developer-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation
+  source_ids: [intel-10q-q2-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Santa Clara, California
+  country: US
+  source_ids: [intel-10q-q2-2026]
+other_locations: []
+founded: null
+sectors: [chips]
+status_note:
+  text: >-
+    In August 2025 Intel issued common stock and a warrant to the U.S. Department of Commerce
+    under an agreement tied to accelerated CHIPS Act grant disbursements and Secure Enclave
+    program funding. It also sold common stock in private placements to SoftBank Group
+    (completed September 2025) and NVIDIA (completed December 2025), and in September 2025
+    completed the sale of 51% of Altera.
+  source_ids: [intel-10q-q3-2025, intel-8k-2025-12-26]
+products:
+  - id: gaudi-3
+    name: Intel Gaudi 3 AI accelerator
+    kind: hardware
+    access: >-
+      AI accelerator offered as a PCIe card, OAM mezzanine card, and baseboard, available in
+      systems from server makers such as Dell, HPE, and Supermicro and through cloud providers;
+      supported by Intel Gaudi software with PyTorch integration.
+    url: https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi.html
+    source_ids: [intel-gaudi-page]
+    last_reviewed: 2026-09-29
+  - id: openvino
+    name: OpenVINO toolkit
+    kind: developer-tool
+    access: >-
+      Open-source toolkit, available as a free download and on GitHub, for converting models
+      from frameworks such as PyTorch and TensorFlow and deploying inference across Intel
+      hardware on-premises, on devices, and in the cloud.
+    url: https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html
+    source_ids: [intel-openvino-page]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      In February 2026 SambaNova announced a planned multi-year strategic collaboration with
+      Intel covering AI cloud and AI infrastructure, and said Intel plans to make a strategic
+      investment in SambaNova.
+    source_ids: [sambanova-intel-2026-02]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Intel Corporation is a Delaware corporation with principal executive offices in Santa
+    Clara, California, per the cover page of its Form 10-Q for the quarter ended June 27, 2026.
+    The U.S. government's 2025 equity stake does not change the eligibility basis.
+  source_ids: [intel-10q-q2-2026, intel-10q-q3-2025]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Intel publishes OpenVINO as an open-source toolkit. This catalog has not assessed any Intel
+    model releases.
+  source_ids: [intel-openvino-page]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: intel-10k-2025
+    title: Intel Corporation Form 10-K for the fiscal year ended December 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-01-23
+    accessed_at: 2026-09-29
+  - id: intel-10q-q2-2026
+    title: Intel Corporation Form 10-Q for the quarter ended June 27, 2026
+    url: https://www.sec.gov/Archives/edgar/data/50863/000005086326000157/intc-20260627.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-07-24
+    accessed_at: 2026-09-29
+  - id: intel-10q-q3-2025
+    title: Intel Corporation Form 10-Q for the quarter ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/50863/000005086325000179/intc-20250927.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: intel-8k-2025-12-26
+    title: Intel Corporation Form 8-K (completion of sale of common stock to NVIDIA)
+    url: https://www.sec.gov/Archives/edgar/data/50863/000005086325000204/intc-20251226.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-12-29
+    accessed_at: 2026-09-29
+  - id: intel-gaudi-page
+    title: Intel Gaudi AI Accelerators
+    url: https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi.html
+    publisher: Intel
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: intel-openvino-page
+    title: OpenVINO Toolkit Overview
+    url: https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html
+    publisher: Intel
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sambanova-intel-2026-02
+    title: SambaNova Unveils Fastest Chip for Agentic AI, Collaborates with Intel, and Raises $350M+
+    url: https://sambanova.ai/press/sambanova-unveils-fastest-chip-for-agentic-ai-collaborates-with-intel-and-raises-350m
+    publisher: SambaNova
+    kind: announcement
+    published_at: 2026-02-24
+    accessed_at: 2026-09-29

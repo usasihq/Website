@@ -1,0 +1,54 @@
+# Alternative host: GitHub Pages, from the same static build.
+#
+# Does nothing until the owner opts in. Required repository configuration:
+#   Settings → Pages → Source: "GitHub Actions"
+#   Variable  GITHUB_PAGES_DEPLOY = "true"
+#   Variable  PAGES_BASE_PATH = "" for a custom domain, or "/<repo-name>" for
+#             https://<owner>.github.io/<repo-name>/
+#   Variable  PAGES_SITE_URL  = the public origin, e.g. https://<owner>.github.io
+# GitHub Pages ignores public/_headers, so the security headers there only apply
+# on Cloudflare; the per-page CSP <meta> tag still applies.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: vars.GITHUB_PAGES_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ vars.PAGES_BASE_PATH }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.PAGES_SITE_URL }}
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: out
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

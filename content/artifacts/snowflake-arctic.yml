@@ -1,0 +1,93 @@
+slug: snowflake-arctic
+name: Snowflake Arctic
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Snowflake AI Research
+    organization_slug: snowflake
+    source_ids: [arctic-base-card, arctic-instruct-card]
+organization_slugs: [snowflake]
+links:
+  - label: Arctic Base on Hugging Face
+    url: https://huggingface.co/Snowflake/snowflake-arctic-base
+    kind: model-hub
+  - label: Arctic Instruct on Hugging Face
+    url: https://huggingface.co/Snowflake/snowflake-arctic-instruct
+    kind: model-hub
+  - label: Snowflake-Labs/snowflake-arctic repository
+    url: https://github.com/Snowflake-Labs/snowflake-arctic
+    kind: repository
+  - label: Arctic announcement
+    url: https://www.snowflake.com/en/blog/arctic-open-efficient-foundation-language-models-snowflake/
+    kind: release-notes
+summary:
+  text: >-
+    Arctic is a text-in, text-and-code-out language model pretrained from scratch by the Snowflake AI Research Team.
+    It uses a dense-MoE hybrid transformer that combines a 10B dense model with a residual 128x3.66B mixture-of-experts
+    MLP, for 480B total and 17B active parameters with top-2 gating. Base and instruct-tuned checkpoints were released
+    on April 24, 2024 with weights and code under Apache-2.0.
+  source_ids: [arctic-base-card, arctic-instruct-card, arctic-blog]
+useful_for:
+  text: Snowflake presents Arctic as aimed at enterprise tasks such as SQL generation, coding, and instruction following.
+  source_ids: [arctic-github]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Arctic was developed by the Snowflake AI Research Team at Snowflake Inc., whose current Form 10-K lists its
+    principal executive offices in Menlo Park, California.
+  source_ids: [arctic-base-card, snow-10k-fy2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Both checkpoints are downloadable from Hugging Face without gating.
+  source_ids: [arctic-base-card, arctic-instruct-card]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2024-04-24
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: arctic-base-card
+    title: Snowflake/snowflake-arctic-base model card
+    url: https://huggingface.co/Snowflake/snowflake-arctic-base
+    publisher: Snowflake AI Research (Hugging Face)
+    kind: model-card
+    published_at: 2024-04-24
+    accessed_at: 2026-09-29
+  - id: arctic-instruct-card
+    title: Snowflake/snowflake-arctic-instruct model card
+    url: https://huggingface.co/Snowflake/snowflake-arctic-instruct
+    publisher: Snowflake AI Research (Hugging Face)
+    kind: model-card
+    published_at: 2024-04-24
+    accessed_at: 2026-09-29
+  - id: snow-10k-fy2026
+    title: Snowflake Inc. Form 10-K for the fiscal year ended January 31, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-03-20
+    accessed_at: 2026-09-29
+  - id: arctic-github
+    title: Snowflake-Labs/snowflake-arctic
+    url: https://github.com/Snowflake-Labs/snowflake-arctic
+    publisher: Snowflake-Labs (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arctic-blog
+    title: "Snowflake Arctic: The Best LLM for Enterprise AI — Efficiently Intelligent, Truly Open"
+    url: https://www.snowflake.com/en/blog/arctic-open-efficient-foundation-language-models-snowflake/
+    publisher: Snowflake
+    kind: announcement
+    published_at: 2024-04-24
+    accessed_at: 2026-09-29

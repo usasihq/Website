@@ -1,0 +1,176 @@
+slug: laguna-xs-2-1
+name: Laguna XS 2.1
+kind: model
+record_level: release
+family_slug: laguna
+version: "XS 2.1"
+maintainers:
+  - name: Poolside
+    organization_slug: poolside
+    source_ids: [hf-laguna-xs-2-1]
+organization_slugs: [poolside]
+links:
+  - label: Model card
+    url: https://huggingface.co/poolside/Laguna-XS-2.1
+    kind: model-hub
+  - label: License (OpenMDW-1.1)
+    url: https://huggingface.co/poolside/Laguna-XS-2.1/blob/main/LICENSE.md
+    kind: license
+  - label: Release announcement
+    url: https://poolside.ai/blog/introducing-laguna-xs-2-1
+    kind: release-notes
+  - label: Laguna M.1/XS.2 technical report
+    url: https://poolside.ai/assets/laguna/laguna-m1-xs2-technical-report.pdf
+    kind: paper
+summary:
+  text: >-
+    Laguna XS 2.1 is a mixture-of-experts model with 33B total and 3B active
+    parameters per token, built for agentic coding on a local machine. Poolside
+    describes it as an upgraded version of Laguna XS.2 with the same architecture. It
+    supports interleaved reasoning between tool calls and has a 262,144-token context
+    window.
+  source_ids: [hf-laguna-xs-2-1, poolside-laguna-xs-2-1-blog]
+useful_for:
+  text: >-
+    Poolside documents it for agentic coding and long-horizon work on local machines,
+    used through its agent CLI, OpenAI-compatible API integrations, or local runtimes
+    such as Ollama and MLX.
+  source_ids: [hf-laguna-xs-2-1, poolside-model-release-notes]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Poolside, Inc., which states that it is headquartered
+    in San Francisco. See the poolside organization record for the assessment of its
+    French presence. It updates Laguna XS.2, which Poolside's technical report says
+    it trained from scratch.
+  source_ids: [poolside-laguna-s-release, hf-laguna-xs-2-1, laguna-tech-report]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Weights download from Hugging Face without an access gate. Also served through the Poolside API and OpenRouter.
+  source_ids: [hf-laguna-xs-2-1, poolside-laguna-xs-2-1-blog]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1
+    spdx: null
+    url: https://huggingface.co/poolside/Laguna-XS-2.1/blob/main/LICENSE.md
+    applies_to: weights-and-code
+    source_ids: [laguna-xs-license-file, hf-laguna-xs-2-1]
+license_notes:
+  text: >-
+    OpenMDW-1.1 grants broad use rights and places no restrictions on outputs. It
+    requires keeping the license and notices when redistributing, and ends the rights
+    of anyone who sues claiming the materials infringe a patent or copyright. The
+    predecessor, Laguna XS.2, is published under Apache 2.0. The model card asks
+    users to follow Poolside's Acceptable Use Policy.
+  source_ids: [laguna-xs-license-file, hf-laguna-xs-2-1, hf-laguna-xs2]
+checklist:
+  weights:
+    status: public
+    note: BF16 weights are in the ungated repository; FP8, NVFP4, and INT4 variants are published as a collection.
+    source_ids: [hf-laguna-xs-2-1, poolside-laguna-xs-2-1-blog]
+  inference_code:
+    status: public
+    note: The repository includes modeling code (modeling_laguna.py), and the model card documents vLLM, SGLang, Transformers, TensorRT-LLM, llama.cpp, and Ollama.
+    source_ids: [hf-laguna-xs-2-1, laguna-xs-repo-files]
+  training_code:
+    status: unknown
+    note: null
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The model card points to the Laguna M.1/XS.2 technical report, which describes
+      the XS.2 pre-training mix (web, code, curated educational and academic text, and
+      synthetic data). Any data changes for XS 2.1 are not described, and no public data release was found.
+    source_ids: [hf-laguna-xs-2-1, laguna-tech-report]
+  training_recipe:
+    status: partial
+    note: >-
+      The technical report documents XS.2 pre-training, supervised fine-tuning, and
+      agentic reinforcement learning. The changes made for XS 2.1 are summarized, not
+      specified.
+    source_ids: [laguna-tech-report, hf-laguna-xs-2-1]
+  evaluation_materials:
+    status: partial
+    note: The model card publishes benchmark results with the harness, sampling settings, and sandbox resources used.
+    source_ids: [hf-laguna-xs-2-1]
+run_notes:
+  - text: >-
+      The model card documents support in vLLM, SGLang, Transformers, TensorRT-LLM,
+      and llama.cpp, plus Ollama (with MLX) and mlx-lm for local use on a Mac. It
+      notes a pending llama.cpp fix for empty output with Ollama on Apple Silicon.
+    source_ids: [hf-laguna-xs-2-1]
+provenance:
+  text: >-
+    The model card describes Laguna XS 2.1 as an upgraded version of Laguna XS.2.
+    The technical report states that XS.2 was trained from scratch by Poolside.
+  derived_from:
+    - name: Laguna XS.2
+      artifact_slug: null
+      url: https://huggingface.co/poolside/Laguna-XS.2
+      note: Same organization; earlier release in the family.
+  source_ids: [hf-laguna-xs-2-1, laguna-tech-report]
+tags: [language-model, code-model, mixture-of-experts, reasoning, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2026-07-02
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-laguna-xs-2-1
+    title: poolside/Laguna-XS-2.1 model card
+    url: https://huggingface.co/poolside/Laguna-XS-2.1
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: laguna-xs-license-file
+    title: Laguna-XS-2.1 LICENSE.md (OpenMDW-1.1)
+    url: https://huggingface.co/poolside/Laguna-XS-2.1/raw/main/LICENSE.md
+    publisher: Poolside
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: laguna-xs-repo-files
+    title: Laguna-XS-2.1 repository file listing
+    url: https://huggingface.co/api/models/poolside/Laguna-XS-2.1/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-laguna-xs2
+    title: poolside/Laguna-XS.2 model card
+    url: https://huggingface.co/poolside/Laguna-XS.2
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-laguna-xs-2-1-blog
+    title: Introducing Laguna XS 2.1
+    url: https://poolside.ai/blog/introducing-laguna-xs-2-1
+    publisher: Poolside
+    kind: announcement
+    published_at: 2026-07-02
+    accessed_at: 2026-09-29
+  - id: poolside-model-release-notes
+    title: Model release notes
+    url: https://docs.poolside.ai/release-notes/models
+    publisher: Poolside
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: laguna-tech-report
+    title: Laguna M.1/XS.2 Technical Report
+    url: https://poolside.ai/assets/laguna/laguna-m1-xs2-technical-report.pdf
+    publisher: Poolside
+    kind: paper
+    published_at: 2026-05-25
+    accessed_at: 2026-09-29
+  - id: poolside-laguna-s-release
+    title: Poolside releases Laguna S 2.1, the West's most capable open-weight model
+    url: https://www.globenewswire.com/news-release/2026/07/21/3330818/0/en/Poolside-releases-Laguna-S-2-1-the-West-s-most-capable-open-weight-model.html
+    publisher: Poolside via GlobeNewswire
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-09-29

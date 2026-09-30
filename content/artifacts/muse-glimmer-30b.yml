@@ -1,0 +1,202 @@
+slug: muse-glimmer-30b
+name: Muse Glimmer 30B
+kind: model
+record_level: release
+family_slug: meta-muse
+version: "Glimmer-30B"
+maintainers:
+  - name: Meta (Meta Superintelligence Labs)
+    organization_slug: meta
+    source_ids: [muse-glimmer-model-card, muse-glimmer-dev-blog]
+organization_slugs: [meta]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    kind: model-hub
+  - label: Muse Glimmer collection
+    url: https://huggingface.co/collections/meta-models/muse-glimmer
+    kind: model-hub
+  - label: License (Apache 2.0)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B/blob/main/LICENSE
+    kind: license
+  - label: Meta developer blog post
+    url: https://dev.meta.ai/resources/blog/build-with-muse-glimmer/
+    kind: release-notes
+summary:
+  text: >-
+    Muse Glimmer is an open-weight model from Meta Superintelligence Labs with about 29.6 billion
+    parameters, including a roughly 1.8-billion-parameter perception encoder. It is a dense
+    transformer that takes text and images as input and produces text, and was distilled from
+    Muse Spark for agentic tasks on consumer hardware. The model card lists a context length of
+    131,072+ tokens and a January 4, 2026 knowledge cutoff.
+  source_ids: [muse-glimmer-model-card]
+useful_for:
+  text: >-
+    The model card lists local AI agents, coding agents, tool use and function calling,
+    multimodal reasoning over screenshots, charts, and documents, synthetic data generation, and
+    LLM-as-a-judge evaluation, for commercial and research use.
+  source_ids: [muse-glimmer-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Meta Superintelligence Lab as author, and Meta's developer blog points
+    to the meta-models Hugging Face collection as the download location, which confirms the
+    repository is Meta's. Meta Platforms, Inc. has its principal executive offices in Menlo
+    Park, California, per its Form 10-K.
+  source_ids: [muse-glimmer-model-card, muse-glimmer-dev-blog, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights can be downloaded from Hugging Face without a gated access request, under Apache
+    2.0. The repository also includes a separate Muse Glimmer Usage Policy.
+  source_ids: [muse-glimmer-hf-api, muse-glimmer-license, muse-glimmer-usage-policy]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [muse-glimmer-license, muse-glimmer-model-card]
+license_notes:
+  text: >-
+    The repository's LICENSE file is the standard Apache License 2.0 text, and the model card
+    says all released artifacts (BF16 weights, two 4-bit quantized variants, the DFlash drafter,
+    and the perception encoder) are under Apache 2.0. The repository also includes a separate
+    Usage Policy listing prohibited uses, such as military and weapons applications, which the
+    model card links under responsible use. The LICENSE file does not reference that policy. The
+    model card also says the model is not intended for people under 18.
+  source_ids: [muse-glimmer-license, muse-glimmer-model-card, muse-glimmer-usage-policy]
+checklist:
+  weights:
+    status: public
+    note: >-
+      Full-precision BF16 weights and two 4-bit quantized variants, plus the speculative-decoding
+      drafter and the perception encoder, are published on Hugging Face without gating.
+    source_ids: [muse-glimmer-model-card, muse-glimmer-hf-api, muse-glimmer-collection]
+  inference_code:
+    status: public
+    note: >-
+      Runs in open-source runtimes rather than a Meta reference repository. Hugging Face's launch
+      post documents use with Transformers, llama.cpp, and vLLM.
+    source_ids: [muse-glimmer-hf-blog, muse-glimmer-model-card]
+  training_code:
+    status: unknown
+    note: null
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The model card describes multimodal data from publicly available sources, third parties,
+      and Meta's products and services, curated by vendors and Meta staff, covering more than 100
+      languages. The data is not released.
+    source_ids: [muse-glimmer-model-card]
+  training_recipe:
+    status: partial
+    note: >-
+      The model card says the model was distilled from Muse Spark and lists safety SFT and safety
+      RL steps at a high level; no full recipe is published.
+    source_ids: [muse-glimmer-model-card]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The model card reports benchmark and safety results, and Meta publishes an evaluation
+      methodology document. Evaluation code was not located in this review.
+    source_ids: [muse-glimmer-model-card, muse-glimmer-eval-methodology]
+run_notes:
+  - text: >-
+      The model card states that quantizing the weights to about 4-bit precision brings the
+      language model under 20 GB, and that together with the KV cache, perception encoder, and
+      drafter it targets a 24 GB or 32 GB GPU memory envelope. The card lists 64 GB VRAM as the
+      target hardware for full precision.
+    source_ids: [muse-glimmer-model-card]
+  - text: >-
+      The model card reports speed measurements for the 4-bit K-Quant-17GB variant with the
+      quantized DFlash drafter, run with llama.cpp on an NVIDIA RTX 5090 and with ExecuTorch on
+      Apple M4 Max and M5 Max machines, at batch size 1.
+    source_ids: [muse-glimmer-model-card]
+provenance:
+  text: >-
+    The model card describes Muse Glimmer as distilled from Muse Spark, a Meta model whose weights
+    are not public. Its perception encoder is a ViT-G/14 described in a paper that the model card
+    links.
+  derived_from:
+    - name: Muse Spark
+      artifact_slug: null
+      url: https://ai.meta.com/blog/introducing-muse-spark-msl/
+      note: Teacher model for distillation; weights not public.
+    - name: Perception Encoder (ViT-G/14)
+      artifact_slug: null
+      url: null
+      note: Vision encoder cited in the model card (arXiv 2504.13181).
+  source_ids: [muse-glimmer-model-card]
+tags: [language-model, multimodal, vision-language, reasoning, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2026-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: muse-glimmer-model-card
+    title: Muse Glimmer Model Card (meta-models/Muse-Glimmer-30B)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: 2026-08
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-hf-api
+    title: meta-models/Muse-Glimmer-30B repository metadata
+    url: https://huggingface.co/api/models/meta-models/Muse-Glimmer-30B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-collection
+    title: Muse Glimmer collection (meta-models) repository metadata
+    url: https://huggingface.co/api/collections/meta-models/muse-glimmer
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-license
+    title: Muse-Glimmer-30B LICENSE (Apache License 2.0)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B/blob/main/LICENSE
+    publisher: Meta (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-usage-policy
+    title: Muse Glimmer Usage Policy
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B/blob/main/USAGE_POLICY.md
+    publisher: Meta (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-dev-blog
+    title: "Muse Glimmer: an open-weight model built for local agents"
+    url: https://dev.meta.ai/resources/blog/build-with-muse-glimmer/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-08-12
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-hf-blog
+    title: "Meta is back with Muse Glimmer: local, agentic, multimodal, and open source"
+    url: https://huggingface.co/blog/muse-glimmer
+    publisher: Hugging Face
+    kind: documentation
+    published_at: 2026-08-10
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-eval-methodology
+    title: Muse Glimmer Eval Methodology
+    url: https://research.meta.ai/static/muse-glimmer-methodology
+    publisher: Meta
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

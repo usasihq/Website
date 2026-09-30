@@ -1,0 +1,232 @@
+slug: olmo-3-7b-instruct
+name: Olmo 3 7B Instruct
+kind: model
+record_level: release
+family_slug: olmo
+version: "Olmo-3-7B-Instruct"
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [mc-olmo3-7b-instruct]
+organization_slugs: [ai2]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/allenai/Olmo-3-7B-Instruct
+    kind: model-hub
+  - label: open-instruct Olmo 3 post-training scripts
+    url: https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3
+    kind: repository
+  - label: Olmo 3 technical report (arXiv 2512.13961)
+    url: https://arxiv.org/abs/2512.13961
+    kind: paper
+  - label: Olmo developer documentation
+    url: https://docs.allenai.org/models/olmo/index.html
+    kind: documentation
+summary:
+  text: >-
+    A 7B chat model in Ai2's Olmo 3 release, post-trained from the Olmo 3 7B base model with
+    supervised fine-tuning, direct preference optimization, and reinforcement learning with
+    verifiable rewards on the Dolci datasets. It responds without a separate reasoning trace,
+    unlike the Olmo 3 Think models.
+  source_ids: [mc-olmo3-7b-instruct, olmo3-report, ai2-olmo3-blog]
+useful_for:
+  text: >-
+    Ai2 documents the Instruct models for general chat, instruction following, and function
+    calling, including tool use through vLLM's olmo3 tool-call parser and use with MCP
+    servers.
+  source_ids: [ai2-docs-olmo, mc-olmo3-7b-instruct]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The model card states the model was developed by the Allen Institute for AI (Ai2), which
+    describes itself as a Seattle-based non-profit AI research institute.
+  source_ids: [mc-olmo3-7b-instruct, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. The card says the model is intended for
+    research and educational use in line with Ai2's Responsible Use Guidelines.
+  source_ids: [mc-olmo3-7b-instruct]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/allenai/Olmo-3-7B-Instruct
+    applies_to: weights
+    source_ids: [mc-olmo3-7b-instruct]
+  - name: Apache License 2.0 (open-instruct)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/allenai/open-instruct/main/LICENSE
+    applies_to: code
+    source_ids: [open-instruct-license]
+  - name: Apache License 2.0 (OLMo-core)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/LICENSE
+    applies_to: code
+    source_ids: [olmo-core-license]
+license_notes:
+  text: >-
+    The model card states the model is licensed under Apache 2.0 and intended for research
+    and educational use in accordance with Ai2's Responsible Use Guidelines, which list
+    categories of prohibited use.
+  source_ids: [mc-olmo3-7b-instruct, ai2-rug]
+checklist:
+  weights:
+    status: public
+    note: Final weights and post-training checkpoints (step revisions) are published on Hugging Face.
+    source_ids: [mc-olmo3-7b-instruct]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents inference with Hugging Face Transformers and vLLM; Ai2's
+      documentation adds a vLLM function-calling example.
+    source_ids: [mc-olmo3-7b-instruct, ai2-docs-olmo]
+  training_code:
+    status: public
+    note: >-
+      open-instruct publishes the Olmo 3 7B Instruct SFT, DPO, and RL scripts; its README
+      states that SFT runs on OLMo-core and DPO and RL on open-instruct. Base-model training
+      scripts are in OLMo-core.
+    source_ids: [open-instruct-olmo3, olmo-core-olmo3]
+  training_data_information:
+    status: partial
+    note: >-
+      The Dolci post-training datasets are downloadable under ODC-BY, but the Dolma 3 Mix used
+      to pretrain the underlying base model has some olmOCR science PDFs redacted after
+      training, which its dataset card says affects reproducibility.
+    source_ids: [dolci-instruct-sft, dolma3-mix-7b, mc-olmo3-7b-instruct]
+  training_recipe:
+    status: public
+    note: >-
+      The technical report describes the Instruct post-training pipeline, and the open-instruct
+      README lists the scripts, commits, and experiment logs used for each stage.
+    source_ids: [olmo3-report, open-instruct-olmo3]
+  evaluation_materials:
+    status: public
+    note: >-
+      The model card publishes post-training evaluation results; OLMES documents commands for
+      running the Olmo 3 evaluation suites.
+    source_ids: [mc-olmo3-7b-instruct, olmes-repo]
+run_notes:
+  - text: >-
+      The model card documents inference with Hugging Face Transformers 4.57.0 or later and
+      with vLLM, and recommends temperature 0.6 and top_p 0.95.
+    source_ids: [mc-olmo3-7b-instruct]
+  - text: >-
+      Ai2's documentation gives a vLLM (0.11.1 or later) serving command with automatic tool
+      choice and the olmo3 tool-call parser, which exposes an OpenAI-compatible endpoint.
+    source_ids: [ai2-docs-olmo]
+provenance:
+  text: >-
+    Fine-tuned by Ai2 from its own Olmo 3 7B base model (Olmo-3-1025-7B) through the
+    Olmo-3-7B-Instruct-SFT and Olmo-3-7B-Instruct-DPO checkpoints, followed by RLVR on the
+    Dolci Instruct RL data.
+  derived_from:
+    - name: Olmo 3 7B (base)
+      artifact_slug: olmo-3-1025-7b
+      url: https://huggingface.co/allenai/Olmo-3-1025-7B
+      note: Base model.
+    - name: Dolci Instruct SFT
+      artifact_slug: null
+      url: https://huggingface.co/datasets/allenai/Dolci-Instruct-SFT
+      note: Supervised fine-tuning mixture.
+  source_ids: [mc-olmo3-7b-instruct, dolci-instruct-sft]
+tags: [language-model]
+publication_status: published
+archive_note: null
+released_at: 2025-11-20
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-olmo3-7b-instruct
+    title: allenai/Olmo-3-7B-Instruct model card
+    url: https://huggingface.co/allenai/Olmo-3-7B-Instruct
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: open-instruct-olmo3
+    title: open-instruct Olmo 3 training scripts (scripts/train/olmo3)
+    url: https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: open-instruct-license
+    title: open-instruct LICENSE
+    url: https://raw.githubusercontent.com/allenai/open-instruct/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo-core-olmo3
+    title: OLMo-core official Olmo 3 training scripts (src/scripts/official/OLMo3)
+    url: https://github.com/allenai/OLMo-core/tree/main/src/scripts/official/OLMo3
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo-core-license
+    title: OLMo-core LICENSE
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolci-instruct-sft
+    title: allenai/Dolci-Instruct-SFT dataset card
+    url: https://huggingface.co/datasets/allenai/Dolci-Instruct-SFT
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-mix-7b
+    title: allenai/dolma3_mix-6T-1025-7B dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo3-report
+    title: Olmo 3 (arXiv 2512.13961v2)
+    url: https://arxiv.org/html/2512.13961v2
+    publisher: Team Olmo (Ai2)
+    kind: paper
+    published_at: 2026-04-14
+    accessed_at: 2026-09-29
+  - id: olmes-repo
+    title: allenai/olmes
+    url: https://github.com/allenai/olmes
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-olmo
+    title: Olmo | Ai2 platform documentation
+    url: https://docs.allenai.org/models/olmo/index.html
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-olmo3-blog
+    title: "Olmo 3: Charting a path through the model flow to lead open-source AI"
+    url: https://allenai.org/blog/olmo3
+    publisher: Ai2
+    kind: announcement
+    published_at: 2025-11-20
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-rug
+    title: Responsible use guidelines | Ai2
+    url: https://allenai.org/responsible-use
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,182 @@
+slug: phi-4-reasoning-vision-15b
+name: Phi-4-reasoning-vision-15B
+kind: model
+record_level: release
+family_slug: phi
+version: "4-reasoning-vision-15B"
+maintainers:
+  - name: Microsoft
+    organization_slug: microsoft
+    source_ids: [phi4-rv-model-card]
+organization_slugs: [microsoft]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B
+    kind: model-hub
+  - label: GitHub repository
+    url: https://github.com/microsoft/Phi-4-reasoning-vision-15B
+    kind: repository
+  - label: Microsoft Research blog post
+    url: https://www.microsoft.com/en-us/research/blog/phi-4-reasoning-vision-and-the-lessons-of-training-a-multimodal-reasoning-model/
+    kind: release-notes
+  - label: Data card
+    url: https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B/blob/main/DATACARD.md
+    kind: documentation
+summary:
+  text: >-
+    Phi-4-reasoning-vision-15B is a 15-billion-parameter multimodal reasoning model from
+    Microsoft. It combines the Phi-4-Reasoning language model with a SigLIP-2 vision encoder,
+    takes text and images as input, produces text, and has a 16,384-token context length. It can
+    either reason step by step or answer directly, depending on the task.
+  source_ids: [phi4-rv-model-card]
+useful_for:
+  text: >-
+    The model card lists scientific and mathematical reasoning over visual inputs such as
+    diagrams, charts, and documents, and computer-use agent tasks such as locating interface
+    elements on screens. It also covers captioning, visual question answering, and OCR, and is
+    trained primarily on English.
+  source_ids: [phi4-rv-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Microsoft Corporation as developer, with Microsoft Ireland Operations
+    Limited as authorized representative for the EU. The EU-format data card lists the Irish
+    entity in its developer field, but the release is a Microsoft product published on
+    Microsoft's Hugging Face and GitHub accounts. Microsoft Corporation lists Redmond,
+    Washington as its address on its Form 10-K cover page.
+  source_ids: [phi4-rv-model-card, phi4-rv-data-card, msft-10k-2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights can be downloaded from Hugging Face without a gated access request. Microsoft also
+    offers the model as a hosted deployment on Microsoft Foundry.
+  source_ids: [phi4-rv-hf-api, phi4-rv-model-card]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://opensource.org/licenses/MIT
+    applies_to: weights
+    source_ids: [phi4-rv-model-card]
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/microsoft/Phi-4-reasoning-vision-15B/blob/main/LICENSE
+    applies_to: code
+    source_ids: [phi4-rv-github-license]
+license_notes:
+  text: >-
+    The Hugging Face model card lists the MIT License, but that repository has no separate LICENSE
+    file. The GitHub repository has a standard MIT LICENSE file (Copyright 2026 Microsoft). The
+    model card says nothing in it restricts or modifies the license.
+  source_ids: [phi4-rv-model-card, phi4-rv-hf-api, phi4-rv-github-license]
+checklist:
+  weights:
+    status: public
+    note: Published on Hugging Face without gating.
+    source_ids: [phi4-rv-hf-api, phi4-rv-model-card]
+  inference_code:
+    status: public
+    note: >-
+      The GitHub repository has Transformers and vLLM directories, and the model card documents
+      the required torch, transformers, and vllm versions.
+    source_ids: [phi4-rv-github-license, phi4-rv-model-card]
+  training_code:
+    status: unknown
+    note: >-
+      The Microsoft Research blog says fine-tuning code was released with the model, but the
+      GitHub repository contains only Transformers and vLLM inference code, and this review did
+      not locate the fine-tuning code elsewhere.
+    source_ids: [phi4-rv-blog, phi4-rv-github-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card and blog describe about 200 billion tokens of multimodal data. Most of it
+      comes from filtered open-source vision-language datasets, with added internal Microsoft
+      domain data and targeted acquisitions. The blog says some responses were regenerated with
+      GPT-4o and o4-mini. An EU-format data card is published; the training data itself is not.
+    source_ids: [phi4-rv-model-card, phi4-rv-blog, phi4-rv-data-card]
+  training_recipe:
+    status: partial
+    note: >-
+      The model card describes supervised fine-tuning on a mix of reasoning and non-reasoning
+      data, the mid-fusion architecture, and compute (240 NVIDIA B200 GPUs for 4 days). A
+      technical report is linked but was not reviewed here.
+    source_ids: [phi4-rv-model-card]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The model card reports results and names the open-source evaluation frameworks used
+      (Eureka ML Insights and VLMEvalKit). Microsoft says benchmark logs were released; this
+      review did not locate them.
+    source_ids: [phi4-rv-model-card, phi4-rv-blog]
+run_notes:
+  - text: >-
+      The model card lists torch 2.7.1 or later and transformers 4.57.1 or later (vllm 0.15.2 or
+      later for vLLM). It says the model was tested on NVIDIA A6000, A100, H100, and B200 GPUs
+      under Ubuntu 22.04.5 and recommends serving it with vLLM in bf16 precision.
+    source_ids: [phi4-rv-model-card]
+provenance:
+  text: >-
+    Built on Microsoft's Phi-4-Reasoning language model and a SigLIP-2 vision encoder, according
+    to the model card. The Microsoft Research blog says some training responses were regenerated
+    with GPT-4o and o4-mini.
+  derived_from:
+    - name: Phi-4-Reasoning
+      artifact_slug: null
+      url: https://huggingface.co/microsoft/Phi-4-reasoning
+      note: Language model backbone listed as a model dependency.
+    - name: SigLIP-2
+      artifact_slug: null
+      url: null
+      note: Vision encoder named in the model card.
+  source_ids: [phi4-rv-model-card, phi4-rv-blog]
+tags: [vision-language, multimodal, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-03-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: phi4-rv-model-card
+    title: microsoft/Phi-4-reasoning-vision-15B model card
+    url: https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: phi4-rv-hf-api
+    title: microsoft/Phi-4-reasoning-vision-15B repository metadata
+    url: https://huggingface.co/api/models/microsoft/Phi-4-reasoning-vision-15B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: phi4-rv-data-card
+    title: Phi-4-Reasoning-Vision-15B data card (DATACARD.md)
+    url: https://huggingface.co/microsoft/Phi-4-reasoning-vision-15B/blob/main/DATACARD.md
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: 2026-08-31
+    accessed_at: 2026-09-29
+  - id: phi4-rv-github-license
+    title: microsoft/Phi-4-reasoning-vision-15B LICENSE and repository
+    url: https://github.com/microsoft/Phi-4-reasoning-vision-15B/blob/main/LICENSE
+    publisher: Microsoft (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: phi4-rv-blog
+    title: Phi-4-reasoning-vision and the lessons of training a multimodal reasoning model
+    url: https://www.microsoft.com/en-us/research/blog/phi-4-reasoning-vision-and-the-lessons-of-training-a-multimodal-reasoning-model/
+    publisher: Microsoft Research
+    kind: announcement
+    published_at: 2026-03-04
+    accessed_at: 2026-09-29
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29

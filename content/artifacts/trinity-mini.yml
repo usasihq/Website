@@ -1,0 +1,167 @@
+slug: trinity-mini
+name: Trinity Mini
+kind: model
+record_level: release
+family_slug: trinity
+version: "Mini"
+maintainers:
+  - name: Arcee AI
+    organization_slug: arcee-ai
+    source_ids: [hf-trinity-mini]
+organization_slugs: [arcee-ai]
+links:
+  - label: Model card
+    url: https://huggingface.co/arcee-ai/Trinity-Mini
+    kind: model-hub
+  - label: License (OpenMDW-1.1)
+    url: https://huggingface.co/arcee-ai/Trinity-Mini/blob/main/LICENSE
+    kind: license
+  - label: Release announcement
+    url: https://www.arcee.ai/blog/the-trinity-manifesto
+    kind: release-notes
+  - label: Technical report
+    url: https://arxiv.org/abs/2602.17004
+    kind: paper
+summary:
+  text: >-
+    Trinity Mini is a 26B-parameter mixture-of-experts model with 3B active
+    parameters, 128 experts (8 active plus 1 shared), and a 128k-token context
+    window. It was trained on 10 trillion tokens and tuned for reasoning.
+  source_ids: [hf-trinity-mini]
+useful_for:
+  text: >-
+    Arcee presents Trinity Mini as the mid-sized model in the family, for cloud or
+    on-premises deployment.
+  source_ids: [arcee-trinity-page]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Arcee AI, Inc., a U.S. company with a documented San
+    Francisco base (see the arcee-ai record). Arcee describes the Trinity models as
+    trained end to end in the United States.
+  source_ids: [hf-trinity-mini, arcee-trinity-manifesto]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Weights download from Hugging Face without an access gate. Also served through Arcee's API and OpenRouter.
+  source_ids: [hf-trinity-mini, arcee-trinity-manifesto]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1
+    spdx: null
+    url: https://huggingface.co/arcee-ai/Trinity-Mini/blob/main/LICENSE
+    applies_to: weights-and-code
+    source_ids: [trinity-mini-license-file, hf-trinity-mini]
+license_notes:
+  text: >-
+    Arcee released Trinity Mini on 2025-12-01 under Apache 2.0. On 2026-05-28 the
+    Hugging Face repository changed its license to OpenMDW-1.1 as part of Arcee's
+    move of all Trinity releases to that license. OpenMDW-1.1 requires keeping the
+    license and notices when redistributing, and ends the rights of anyone who sues
+    claiming the materials infringe a patent or copyright.
+  source_ids: [arcee-trinity-manifesto, trinity-mini-commit-history, arcee-openmdw-blog, trinity-mini-license-file]
+checklist:
+  weights:
+    status: public
+    note: Weights are in the ungated Hugging Face repository; a GGUF conversion is published as a separate repository.
+    source_ids: [hf-trinity-mini]
+  inference_code:
+    status: public
+    note: The repository includes modeling code (modeling_afmoe.py), and the model card documents Transformers, vLLM, llama.cpp, and LM Studio.
+    source_ids: [hf-trinity-mini, trinity-mini-repo-files]
+  training_code:
+    status: unknown
+    note: The technical report says training used a modified version of TorchTitan but does not link a release.
+    source_ids: [trinity-tech-report]
+  training_data_information:
+    status: partial
+    note: The technical report describes the 10-trillion-token, three-phase pretraining mix for Trinity Nano and Mini. No public release of the data itself was found.
+    source_ids: [trinity-tech-report]
+  training_recipe:
+    status: partial
+    note: The technical report documents architecture and optimizer choices for the family; post-training details for Mini are limited.
+    source_ids: [trinity-tech-report]
+  evaluation_materials:
+    status: partial
+    note: The model card shows a benchmark chart and the technical report includes results; evaluation code is not linked.
+    source_ids: [hf-trinity-mini, trinity-tech-report]
+run_notes:
+  - text: >-
+      The model card documents support in vLLM 0.11.1, llama.cpp release b7061, LM
+      Studio, and Transformers (main branch, or a released version with
+      trust_remote_code enabled).
+    source_ids: [hf-trinity-mini]
+provenance:
+  text: >-
+    Post-trained from Arcee's Trinity-Mini-Base checkpoint. The model card says the
+    training data was gathered and curated with Datology and training ran on a
+    cluster provided by Prime Intellect.
+  derived_from:
+    - name: Trinity-Mini-Base
+      artifact_slug: null
+      url: https://huggingface.co/arcee-ai/Trinity-Mini-Base
+      note: Same organization; pretrained base checkpoint.
+  source_ids: [hf-trinity-mini]
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2025-12-01
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-trinity-mini
+    title: arcee-ai/Trinity-Mini model card
+    url: https://huggingface.co/arcee-ai/Trinity-Mini
+    publisher: Arcee AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trinity-mini-license-file
+    title: Trinity-Mini LICENSE (OpenMDW-1.1)
+    url: https://huggingface.co/arcee-ai/Trinity-Mini/raw/main/LICENSE
+    publisher: Arcee AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trinity-mini-commit-history
+    title: Trinity-Mini repository commit history
+    url: https://huggingface.co/api/models/arcee-ai/Trinity-Mini/commits/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: trinity-mini-repo-files
+    title: Trinity-Mini repository file listing
+    url: https://huggingface.co/api/models/arcee-ai/Trinity-Mini/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-trinity-page
+    title: Trinity Models
+    url: https://www.arcee.ai/trinity
+    publisher: Arcee AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-trinity-manifesto
+    title: The Trinity Manifesto
+    url: https://www.arcee.ai/blog/the-trinity-manifesto
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2025-12-01
+    accessed_at: 2026-09-29
+  - id: arcee-openmdw-blog
+    title: Trinity is moving to OpenMDW-1.1
+    url: https://www.arcee.ai/blog/trinity-is-moving-to-openmdw-1-1
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2026-05-29
+    accessed_at: 2026-09-29
+  - id: trinity-tech-report
+    title: Arcee Trinity Large Technical Report
+    url: https://arxiv.org/abs/2602.17004
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-19
+    accessed_at: 2026-09-29

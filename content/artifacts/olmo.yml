@@ -1,0 +1,123 @@
+slug: olmo
+name: OLMo
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [ai2-release-notes, ai2-docs-olmo]
+organization_slugs: [ai2]
+links:
+  - label: OLMo project page
+    url: https://allenai.org/olmo
+    kind: website
+  - label: Olmo release notes
+    url: https://docs.allenai.org/release_notes/olmo-release-notes/index.html
+    kind: release-notes
+  - label: Olmo 3 technical report (arXiv 2512.13961)
+    url: https://arxiv.org/abs/2512.13961
+    kind: paper
+  - label: Olmo developer documentation
+    url: https://docs.allenai.org/models/olmo/index.html
+    kind: documentation
+summary:
+  text: >-
+    OLMo (styled Olmo in recent releases) is Ai2's series of open language models. Releases
+    have included the first OLMo 1B and 7B models (February 2024), OLMoE (September 2024),
+    OLMo 2 (November 2024 to May 2025), and Olmo 3 at 7B and 32B (November 2025), with Olmo
+    3.1 32B checkpoints added in December 2025. In March 2026 Ai2 also released Olmo Hybrid, a
+    7B model that mixes attention layers with linear RNN layers.
+  source_ids: [ai2-release-notes, ai2-olmo3-blog, ai2-olmohybrid-blog]
+useful_for:
+  text: >-
+    Ai2 presents the series as a way to study how language models are built, publishing
+    training data, code, intermediate checkpoints, and evaluation tools alongside the weights.
+    The current Olmo 3 line includes base, Instruct (chat and tool use), and Think
+    (reasoning) variants.
+  source_ids: [ai2-docs-olmo, ai2-olmo-page]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The OLMo models are developed by Ai2 (Allen Institute for AI), which describes itself as a
+    Seattle-based non-profit AI research institute. Eligibility of each release is assessed on
+    the release record.
+  source_ids: [ai2-release-notes, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Olmo 3 release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    Olmo 3 is pretrained on Dolma 3, the latest version of Ai2's Dolma corpus, and
+    post-trained on the Dolci datasets. Earlier 2024 releases used earlier Dolma versions
+    (for example, Dolma v1.7 for OLMo 7B April 2024).
+  derived_from:
+    - name: Dolma
+      artifact_slug: dolma
+      url: https://huggingface.co/datasets/allenai/dolma
+      note: Ai2 pretraining corpus family (v1 to v1.7, Dolma 3).
+  source_ids: [ai2-docs-olmo, ai2-docs-latest, ai2-release-notes]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2024-02-01
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ai2-release-notes
+    title: Olmo release notes | Ai2 platform documentation
+    url: https://docs.allenai.org/release_notes/olmo-release-notes/index.html
+    publisher: Ai2
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-olmo
+    title: Olmo | Ai2 platform documentation
+    url: https://docs.allenai.org/models/olmo/index.html
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-latest
+    title: Latest Releases | Ai2 platform documentation
+    url: https://docs.allenai.org/latest-releases/index.html
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-olmo-page
+    title: Olmo from Ai2
+    url: https://allenai.org/olmo
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-olmo3-blog
+    title: "Olmo 3: Charting a path through the model flow to lead open-source AI"
+    url: https://allenai.org/blog/olmo3
+    publisher: Ai2
+    kind: announcement
+    published_at: 2025-11-20
+    accessed_at: 2026-09-29
+  - id: ai2-olmohybrid-blog
+    title: "Introducing Olmo Hybrid: Combining transformers and linear RNNs for superior scaling"
+    url: https://allenai.org/blog/olmohybrid
+    publisher: Ai2
+    kind: announcement
+    published_at: 2026-03-05
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

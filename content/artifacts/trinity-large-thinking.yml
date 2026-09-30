@@ -1,0 +1,178 @@
+slug: trinity-large-thinking
+name: Trinity-Large-Thinking
+kind: model
+record_level: release
+family_slug: trinity
+version: "Large-Thinking"
+maintainers:
+  - name: Arcee AI
+    organization_slug: arcee-ai
+    source_ids: [hf-trinity-large-thinking]
+organization_slugs: [arcee-ai]
+links:
+  - label: Model card
+    url: https://huggingface.co/arcee-ai/Trinity-Large-Thinking
+    kind: model-hub
+  - label: License (OpenMDW-1.1)
+    url: https://huggingface.co/arcee-ai/Trinity-Large-Thinking/blob/main/LICENSE
+    kind: license
+  - label: Release announcement
+    url: https://www.arcee.ai/blog/trinity-large-thinking
+    kind: release-notes
+  - label: Technical report
+    url: https://arxiv.org/abs/2602.17004
+    kind: paper
+summary:
+  text: >-
+    Trinity-Large-Thinking is a reasoning-tuned sparse mixture-of-experts model with
+    about 398B total and 13B active parameters per token and a 512k-token context
+    window. It was post-trained from Trinity-Large-Base with chain-of-thought and
+    agentic reinforcement learning, and writes its reasoning in think blocks before
+    answering.
+  source_ids: [hf-trinity-large-thinking]
+useful_for:
+  text: >-
+    The model card documents it for tool calling, multi-step planning, and use as
+    the model behind agent frameworks, and notes that reasoning content must be kept
+    in the conversation history across turns.
+  source_ids: [hf-trinity-large-thinking]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Arcee AI, Inc., a U.S. company with a documented San
+    Francisco base (see the arcee-ai record). It is post-trained from Arcee's own
+    Trinity-Large-Base checkpoint.
+  source_ids: [hf-trinity-large-thinking, arcee-trinity-manifesto]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Weights download from Hugging Face without an access gate. Also served through Arcee's paid API and OpenRouter.
+  source_ids: [hf-trinity-large-thinking, arcee-tlt-blog]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1
+    spdx: null
+    url: https://huggingface.co/arcee-ai/Trinity-Large-Thinking/blob/main/LICENSE
+    applies_to: weights-and-code
+    source_ids: [tlt-license-file, hf-trinity-large-thinking]
+license_notes:
+  text: >-
+    Arcee announced this release on 2026-04-01 under Apache 2.0. On 2026-05-28 the
+    Hugging Face repository changed its license to OpenMDW-1.1, and Arcee states it
+    moved earlier Trinity releases to that license. OpenMDW-1.1 grants broad use
+    rights and places no restrictions on outputs. It requires keeping the license
+    and notices when redistributing, and ends the rights of anyone who sues claiming
+    the materials infringe a patent or copyright.
+  source_ids: [arcee-tlt-blog, tlt-commit-history, arcee-openmdw-blog, tlt-license-file]
+checklist:
+  weights:
+    status: public
+    note: Weights are in the ungated Hugging Face repository; Arcee also publishes GGUF, FP8, NVFP4, and W4A16 variants as separate repositories.
+    source_ids: [hf-trinity-large-thinking, hf-arcee-trinity-listing]
+  inference_code:
+    status: public
+    note: The repository includes modeling code (modeling_afmoe.py), and the model card documents running it with vLLM and Transformers.
+    source_ids: [hf-trinity-large-thinking, tlt-repo-files]
+  training_code:
+    status: unknown
+    note: The technical report says training used a modified version of TorchTitan but does not link a release.
+    source_ids: [trinity-tech-report]
+  training_data_information:
+    status: partial
+    note: The technical report describes the pretraining mix (curated web, synthetic, multilingual, and code data). No public release of the data itself was found.
+    source_ids: [trinity-tech-report]
+  training_recipe:
+    status: partial
+    note: Pretraining settings are documented in the technical report. The post-training for this variant is described only briefly on the model card.
+    source_ids: [trinity-tech-report, hf-trinity-large-thinking]
+  evaluation_materials:
+    status: partial
+    note: Benchmark results are published on the model card; evaluation code is not linked.
+    source_ids: [hf-trinity-large-thinking]
+run_notes:
+  - text: >-
+      The model card documents serving with vLLM 0.11.1 or later, using the
+      deepseek_r1 reasoning parser and qwen3_coder tool-call parser, and running with
+      Transformers from the main branch or with trust_remote_code enabled.
+    source_ids: [hf-trinity-large-thinking]
+provenance:
+  text: >-
+    Post-trained from Trinity-Large-Base, Arcee's own 17-trillion-token pretrained
+    checkpoint. The model card names Datology as data partner and Prime Intellect as
+    compute partner.
+  derived_from:
+    - name: Trinity-Large-Base
+      artifact_slug: null
+      url: https://huggingface.co/arcee-ai/Trinity-Large-Base
+      note: Same organization; pretrained foundation checkpoint.
+  source_ids: [hf-trinity-large-thinking]
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2026-04-01
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-trinity-large-thinking
+    title: arcee-ai/Trinity-Large-Thinking model card
+    url: https://huggingface.co/arcee-ai/Trinity-Large-Thinking
+    publisher: Arcee AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tlt-license-file
+    title: Trinity-Large-Thinking LICENSE (OpenMDW-1.1)
+    url: https://huggingface.co/arcee-ai/Trinity-Large-Thinking/raw/main/LICENSE
+    publisher: Arcee AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tlt-commit-history
+    title: Trinity-Large-Thinking repository commit history
+    url: https://huggingface.co/api/models/arcee-ai/Trinity-Large-Thinking/commits/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: tlt-repo-files
+    title: Trinity-Large-Thinking repository file listing
+    url: https://huggingface.co/api/models/arcee-ai/Trinity-Large-Thinking/tree/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-arcee-trinity-listing
+    title: Arcee AI Trinity model repositories on Hugging Face
+    url: https://huggingface.co/api/models?author=arcee-ai&search=Trinity&limit=100
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arcee-tlt-blog
+    title: "Trinity-Large-Thinking: Scaling an Open Source Frontier Agent"
+    url: https://www.arcee.ai/blog/trinity-large-thinking
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2026-04-01
+    accessed_at: 2026-09-29
+  - id: arcee-openmdw-blog
+    title: Trinity is moving to OpenMDW-1.1
+    url: https://www.arcee.ai/blog/trinity-is-moving-to-openmdw-1-1
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2026-05-29
+    accessed_at: 2026-09-29
+  - id: arcee-trinity-manifesto
+    title: The Trinity Manifesto
+    url: https://www.arcee.ai/blog/the-trinity-manifesto
+    publisher: Arcee AI
+    kind: announcement
+    published_at: 2025-12-01
+    accessed_at: 2026-09-29
+  - id: trinity-tech-report
+    title: Arcee Trinity Large Technical Report
+    url: https://arxiv.org/abs/2602.17004
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-19
+    accessed_at: 2026-09-29

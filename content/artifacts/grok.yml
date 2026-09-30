@@ -1,0 +1,88 @@
+slug: grok
+name: Grok
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: xAI (SpaceXAI)
+    organization_slug: xai
+    source_ids: [xai-grok-os, hf-xai-org]
+organization_slugs: [xai]
+links:
+  - label: xAI on Hugging Face
+    url: https://huggingface.co/xai-org
+    kind: model-hub
+  - label: Grok-1 repository
+    url: https://github.com/xai-org/grok-1
+    kind: repository
+summary:
+  text: >-
+    Grok is xAI's family of large language models, first launched in November 2023 and
+    offered mainly through the Grok assistant and the xAI API. xAI has published weights
+    for two earlier models: Grok-1 in March 2024 and Grok 2 in August 2025. SpaceX's
+    prospectus describes current Grok models as proprietary.
+  source_ids: [spacex-424b4, xai-grok-os, hf-grok-2, techcrunch-grok-2-5]
+useful_for: null
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by xAI, whose AI operations are headquartered in Palo Alto, California,
+    according to the June 2026 prospectus of its parent, Space Exploration Technologies
+    Corp., a Texas corporation.
+  source_ids: [spacex-424b4]
+  assessed_at: 2026-09-29
+availability:
+  status: partial
+  access_conditions: >-
+    Weights are public only for Grok-1 and Grok 2; other Grok models are offered only as
+    hosted services.
+  source_ids: [hf-xai-org, spacex-424b4]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2023-11
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: spacex-424b4
+    title: Space Exploration Technologies Corp. final prospectus (Rule 424(b)(4))
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-06-12
+    accessed_at: 2026-09-29
+  - id: xai-grok-os
+    title: Open Release of Grok-1
+    url: https://x.ai/news/grok-os
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2024-03-17
+    accessed_at: 2026-09-29
+  - id: hf-xai-org
+    title: xAI on Hugging Face
+    url: https://huggingface.co/xai-org
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-grok-2
+    title: xai-org/grok-2
+    url: https://huggingface.co/xai-org/grok-2
+    publisher: xAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: techcrunch-grok-2-5
+    title: Elon Musk says xAI has open sourced Grok 2.5
+    url: https://techcrunch.com/2025/08/24/elon-musk-says-xai-has-open-sourced-grok-2-5/
+    publisher: TechCrunch
+    kind: news
+    published_at: 2025-08-24
+    accessed_at: 2026-09-29

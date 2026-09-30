@@ -1,0 +1,92 @@
+slug: inkling
+name: Inkling
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    source_ids: [tml-inkling-card, tml-inkling-small-card]
+organization_slugs: [thinking-machines-lab]
+links:
+  - label: Thinking Machines Lab on Hugging Face
+    url: https://huggingface.co/thinkingmachines
+    kind: model-hub
+  - label: "Inkling: Our Open-Weights Model"
+    url: https://thinkingmachines.ai/news/introducing-inkling/
+    kind: release-notes
+summary:
+  text: >-
+    Inkling is Thinking Machines Lab's family of open-weight multimodal mixture-of-experts
+    models that accept text, image, and audio input and produce text. The first release,
+    Inkling (975B total and 41B active parameters), was published on July 15, 2026,
+    followed by Inkling-Small (276B total and 12B active) on July 30, 2026.
+  source_ids: [tml-inkling-news, tml-inkling-card, tml-inkling-small-card]
+useful_for:
+  text: >-
+    The developer presents the family as a general base for customization and
+    fine-tuning, including through its Tinker platform.
+  source_ids: [tml-inkling-news]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed by Thinking Machines Lab, Inc., which states in its privacy notice that it
+    is based in the United States; see the organization record for the San Francisco
+    headquarters assessment.
+  source_ids: [tml-inkling-card, tml-privacy]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights for both releases are downloadable from Hugging Face without gating; see the
+    release records for license and acceptable-use terms.
+  source_ids: [hf-thinkingmachines]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, multimodal, mixture-of-experts, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-07
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: tml-inkling-news
+    title: "Inkling: Our Open-Weights Model"
+    url: https://thinkingmachines.ai/news/introducing-inkling/
+    publisher: Thinking Machines Lab
+    kind: announcement
+    published_at: 2026-07-15
+    accessed_at: 2026-09-29
+  - id: tml-inkling-card
+    title: Inkling Model Card
+    url: https://thinkingmachines.ai/model-card/inkling/
+    publisher: Thinking Machines Lab
+    kind: model-card
+    published_at: 2026-07-15
+    accessed_at: 2026-09-29
+  - id: tml-inkling-small-card
+    title: Inkling-Small Model Card
+    url: https://thinkingmachines.ai/model-card/inkling-small/
+    publisher: Thinking Machines Lab
+    kind: model-card
+    published_at: 2026-07-30
+    accessed_at: 2026-09-29
+  - id: tml-privacy
+    title: Privacy Notice - Thinking Machines Lab
+    url: https://thinkingmachines.ai/legal/privacy/
+    publisher: Thinking Machines Lab
+    kind: official-page
+    published_at: 2026-05-19
+    accessed_at: 2026-09-29
+  - id: hf-thinkingmachines
+    title: Thinking Machines Lab on Hugging Face
+    url: https://huggingface.co/thinkingmachines
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

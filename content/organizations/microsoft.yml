@@ -1,0 +1,136 @@
+slug: microsoft
+name: Microsoft
+legal_name:
+  text: Microsoft Corporation
+  source_ids: [msft-10k-2026]
+website: https://www.microsoft.com
+logo_text: MS
+summary:
+  text: >-
+    Microsoft develops and sells software, cloud services, and devices. Its AI offerings include
+    the Microsoft Foundry platform on Azure, Copilot assistants, and models developed in-house,
+    including the Phi family of small language models and MAI models.
+  source_ids: [msft-10k-2026, foundry-page, phi-portal, mai-two-models]
+organization_roles: [model-developer, research-lab, cloud-provider, enterprise-software, developer-platform, consumer-products]
+ownership_category: publicly-traded
+legal_form:
+  text: Washington corporation
+  source_ids: [msft-10k-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Redmond, Washington
+  country: US
+  source_ids: [msft-10k-2026]
+other_locations: []
+founded:
+  year: 1975
+  source_ids: [msft-10k-2026]
+sectors: [cloud, enterprise, open-models, frontier-models, research]
+status_note: null
+products:
+  - id: microsoft-foundry
+    name: Microsoft Foundry
+    kind: cloud-platform
+    access: >-
+      Azure platform for building AI applications and agents, with a catalog of models from
+      Microsoft and other providers; building agents requires an Azure subscription, and pricing
+      depends on the services used.
+    url: https://azure.microsoft.com/en-us/products/ai-foundry
+    source_ids: [foundry-page]
+    last_reviewed: 2026-09-29
+  - id: microsoft-copilot
+    name: Microsoft Copilot
+    kind: assistant-app
+    access: >-
+      AI assistant available through the Copilot mobile app and inside Microsoft 365 apps;
+      Microsoft 365 individual subscription plans include Copilot features, with usage limits
+      that vary by plan.
+    url: https://www.microsoft.com/en-us/microsoft-copilot/for-individuals
+    source_ids: [copilot-individuals]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Microsoft publishes Phi models on Hugging Face and Microsoft Foundry, and its Phi product
+      page states that Phi models are available under the MIT License.
+    source_ids: [phi-portal]
+  - text: >-
+      Microsoft AI announced two in-house models, MAI-Voice-1 and MAI-1-preview, in August 2025,
+      describing MAI-1-preview as its first foundation model trained end-to-end. They were made
+      available through Copilot features, Copilot Labs, public testing, and API access for
+      trusted testers; the announcement did not include downloadable weights.
+    source_ids: [mai-two-models]
+  - text: >-
+      Microsoft Research released Muse, a World and Human Action Model (WHAM) for gameplay
+      ideation, with weights and sample data in February 2025.
+    source_ids: [msr-muse-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Microsoft Corporation is incorporated in Washington and lists One Microsoft Way, Redmond,
+    Washington as its address on the cover page of its Form 10-K for fiscal year 2026.
+  source_ids: [msft-10k-2026]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Microsoft publishes downloadable weights for Phi models under the MIT License and released
+    the Muse (WHAM) research model under a non-commercial research license. The MAI models
+    announced in August 2025 and its Copilot services are offered as hosted products without
+    public weights.
+  source_ids: [phi-portal, wham-license, mai-two-models]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-07-29
+    accessed_at: 2026-09-29
+  - id: foundry-page
+    title: Microsoft Foundry | Microsoft Azure
+    url: https://azure.microsoft.com/en-us/products/ai-foundry
+    publisher: Microsoft
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: copilot-individuals
+    title: Microsoft Copilot Plans for Individuals | Microsoft 365
+    url: https://www.microsoft.com/en-us/microsoft-copilot/for-individuals
+    publisher: Microsoft
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: phi-portal
+    title: Phi Open Models - Small Language Models | Microsoft Azure
+    url: https://azure.microsoft.com/en-us/products/phi
+    publisher: Microsoft
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mai-two-models
+    title: Two in-house models in support of our mission | Microsoft AI
+    url: https://microsoft.ai/news/two-new-in-house-models/
+    publisher: Microsoft AI
+    kind: announcement
+    published_at: 2025-08-28
+    accessed_at: 2026-09-29
+  - id: msr-muse-blog
+    title: "Introducing Muse: Our first generative AI model designed for gameplay ideation"
+    url: https://www.microsoft.com/en-us/research/blog/introducing-muse-our-first-generative-ai-model-designed-for-gameplay-ideation/
+    publisher: Microsoft Research
+    kind: announcement
+    published_at: 2025-02-19
+    accessed_at: 2026-09-29
+  - id: wham-license
+    title: Microsoft Research License Terms (microsoft/wham LICENSE.md)
+    url: https://huggingface.co/microsoft/wham/blob/main/LICENSE.md
+    publisher: Microsoft (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

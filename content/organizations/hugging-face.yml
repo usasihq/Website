@@ -1,0 +1,194 @@
+slug: hugging-face
+name: Hugging Face
+legal_name:
+  text: Hugging Face, Inc.
+  source_ids: [hf-tos]
+website: https://huggingface.co
+logo_text: HF
+summary:
+  text: >-
+    Hugging Face runs the Hugging Face Hub, which hosts Git-based repositories of models,
+    datasets, and demo apps (Spaces), and sells hosted inference and enterprise services. It
+    also maintains open-source machine-learning libraries such as Transformers.
+  source_ids: [hf-hub-docs, hf-inference-endpoints, transformers-license]
+organization_roles: [developer-platform, inference-provider, open-source-steward]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [hf-tos]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Brooklyn, New York
+  country: US
+  source_ids: [hf-nist-2024, hf-privacy]
+other_locations:
+  - label: Paris, France (Hugging Face SAS, the company's EU main establishment)
+    country: FR
+    source_ids: [hf-privacy]
+founded:
+  year: 2016
+  source_ids: [hf-ostp-2025]
+sectors: [open-models, data]
+status_note:
+  text: >-
+    On September 3, 2026 NVIDIA announced that it has agreed to acquire Hugging Face. NVIDIA's
+    Form 8-K states that it entered into a definitive agreement to acquire Hugging Face, Inc. on
+    September 2, 2026, and that the transaction is expected to close in the first half of 2027,
+    subject to customary closing conditions including required regulatory approvals. As of
+    2026-09-29 the acquisition is pending; this catalog has no source documenting that it has closed.
+  source_ids: [nvidia-hf-blog, nvidia-8k-hf-2026]
+products:
+  - id: hugging-face-hub
+    name: Hugging Face Hub
+    kind: developer-tool
+    access: >-
+      Web platform and API hosting public and private Git-based repositories for models,
+      datasets, and Spaces apps; PRO, Team, and Enterprise subscription plans are documented.
+    url: https://huggingface.co/docs/hub/index
+    source_ids: [hf-hub-docs]
+    last_reviewed: 2026-09-29
+  - id: inference-providers
+    name: Inference Providers
+    kind: hosted-model-api
+    access: >-
+      Single API, including an OpenAI-compatible chat endpoint, that routes requests to
+      partner inference providers and Hugging Face's own HF Inference; includes a free tier.
+    url: https://huggingface.co/docs/inference-providers/index
+    source_ids: [hf-inference-providers]
+    last_reviewed: 2026-09-29
+  - id: inference-endpoints
+    name: Inference Endpoints
+    kind: inference-service
+    access: >-
+      Managed service for deploying a model from the Hub to production on fully managed,
+      autoscaling infrastructure using engines such as vLLM, TGI, or a custom container.
+    url: https://huggingface.co/docs/inference-endpoints/index
+    source_ids: [hf-inference-endpoints]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      In February 2026 the ggml team, which maintains llama.cpp and the ggml library, joined
+      Hugging Face; the ggml.ai site states that the company was acquired by Hugging Face in 2026.
+    source_ids: [hf-ggml-blog, ggml-ai-site]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Dual-country assessment. Hugging Face has entities in both the United States and France.
+    The contracting entity for its services is Hugging Face, Inc., a Delaware corporation, and
+    its terms use New York law and New York courts. The privacy policy states that the company
+    and its servers are located in the United States. It names Hugging Face SAS in Paris only as
+    the company's "main establishment in the European Union" for GDPR purposes. Hugging Face's
+    2024 submission to NIST uses a Hugging Face, Inc. letterhead with a Brooklyn, New York
+    address while describing the company as "based in the U.S. and France"; its 2025 submission
+    to OSTP describes it as a U.S. company. AFP reporting from September 2026 describes its
+    headquarters as American. No source documents the French entity as the parent or the
+    principal place of business. On that basis the U.S. entity is treated as the headquarters.
+    NVIDIA's pending acquisition (a U.S. company) is noted but not relied on.
+  source_ids: [hf-tos, hf-privacy, hf-nist-2024, hf-ostp-2025, afp-hf-2026, nvidia-hf-blog, nvidia-8k-hf-2026]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Hugging Face hosts public and private repositories for other developers' models and datasets
+    and publishes open-source libraries, including Transformers under the Apache License 2.0.
+    Hosted inference and enterprise plans are commercial services. This record does not assess
+    any Hugging Face model release.
+  source_ids: [hf-hub-docs, transformers-license]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-tos
+    title: Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2022-09-15
+    accessed_at: 2026-09-29
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2023-03-28
+    accessed_at: 2026-09-29
+  - id: hf-nist-2024
+    title: Hugging Face Information for NIST Related to NIST's Assignments Under Sections 4.1, 4.5 and 11 of the Executive Order Concerning Artificial Intelligence
+    url: https://huggingface.co/datasets/irenesolaiman/hf_policy_materials/resolve/main/2024_NIST%20RFI%20on%20EO.pdf
+    publisher: Hugging Face, Inc.
+    kind: other
+    published_at: 2024-02-02
+    accessed_at: 2026-09-29
+  - id: hf-ostp-2025
+    title: Hugging Face Response to Request for Information on the Development of an Artificial Intelligence Action Plan
+    url: https://files.nitrd.gov/90-fr-9088/Hugging-Face-AI-RFI-2025.pdf
+    publisher: Hugging Face (hosted by NITRD)
+    kind: other
+    published_at: 2025-03
+    accessed_at: 2026-09-29
+  - id: afp-hf-2026
+    title: Hugging Face, the French startup that became AI's warehouse
+    url: https://techxplore.com/news/2026-09-french-startup-ai-warehouse.html
+    publisher: AFP (via Tech Xplore)
+    kind: news
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29
+  - id: nvidia-hf-blog
+    title: NVIDIA to Acquire Hugging Face
+    url: https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29
+  - id: nvidia-8k-hf-2026
+    title: NVIDIA Corporation Form 8-K (Date of Report September 2, 2026)
+    url: https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000078/nvda-20260902.htm
+    publisher: U.S. Securities and Exchange Commission (filed by NVIDIA Corporation)
+    kind: filing
+    published_at: 2026-09-03
+    accessed_at: 2026-09-29
+  - id: hf-hub-docs
+    title: Hugging Face Hub documentation
+    url: https://huggingface.co/docs/hub/index
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-inference-providers
+    title: Inference Providers
+    url: https://huggingface.co/docs/inference-providers/index
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-inference-endpoints
+    title: Inference Endpoints
+    url: https://huggingface.co/docs/inference-endpoints/index
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: transformers-license
+    title: Transformers LICENSE
+    url: https://github.com/huggingface/transformers/blob/main/LICENSE
+    publisher: Hugging Face
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-ggml-blog
+    title: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
+    url: https://huggingface.co/blog/ggml-joins-hf
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2026-02-20
+    accessed_at: 2026-09-29
+  - id: ggml-ai-site
+    title: ggml.ai
+    url: https://ggml.ai
+    publisher: ggml.ai
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

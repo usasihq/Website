@@ -1,0 +1,102 @@
+slug: dbrx
+name: DBRX
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Databricks
+    organization_slug: databricks
+    source_ids: [dbrx-blog]
+organization_slugs: [databricks]
+links:
+  - label: "Announcement: Introducing DBRX"
+    url: https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+    kind: release-notes
+  - label: Databricks Open Model License
+    url: https://www.databricks.com/legal/open-model-license
+    kind: license
+  - label: Databricks AI models maintenance policy (retirement dates)
+    url: https://docs.databricks.com/aws/en/machine-learning/retired-models-policy
+    kind: documentation
+summary:
+  text: >-
+    DBRX is a decoder-only language model from Databricks that uses a fine-grained mixture-of-experts design with
+    132B total and 36B active parameters (16 experts, 4 active per input), pretrained on 12T tokens of text and code
+    with a 32K-token context. It was released on March 27, 2024 as DBRX Base and the finetuned DBRX Instruct.
+  source_ids: [dbrx-blog, hf-transformers-dbrx]
+useful_for: null
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    DBRX was developed and released by Databricks, which states on its About page that it is headquartered in San
+    Francisco, California.
+  source_ids: [dbrx-blog, databricks-about]
+  assessed_at: 2026-09-29
+availability:
+  status: not_public
+  access_conditions: >-
+    No longer distributed by Databricks. Its Hugging Face organization lists no public models, Hugging Face's
+    Transformers documentation states the original DBRX Instruct checkpoint was closed, and Databricks retired DBRX
+    from its Foundation Model APIs and fine-tuning service during 2025. Copies uploaded by third parties remain on
+    Hugging Face but are not Databricks distributions.
+  source_ids: [databricks-hf-org, hf-transformers-dbrx, databricks-retired-models, hf-dbrx-search]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, mixture-of-experts]
+publication_status: archived
+archive_note: >-
+  Historical record. Databricks' official DBRX distributions are no longer publicly available: its Hugging Face
+  organization lists no public models, the databricks/dbrx GitHub repository named in the license returned HTTP 404
+  when checked on 2026-09-29, and Databricks retired DBRX from Foundation Model APIs pay-per-token and fine-tuning
+  on April 30, 2025 and from provisioned throughput on December 19, 2025.
+released_at: 2024-03-27
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: dbrx-blog
+    title: "Introducing DBRX: A New State-of-the-Art Open LLM"
+    url: https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+    publisher: Databricks
+    kind: announcement
+    published_at: 2024-03-27
+    accessed_at: 2026-09-29
+  - id: databricks-about
+    title: "About Databricks: The data and AI company"
+    url: https://www.databricks.com/company/about-us
+    publisher: Databricks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-transformers-dbrx
+    title: DBRX (Hugging Face Transformers documentation)
+    url: https://huggingface.co/docs/transformers/en/model_doc/dbrx
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-hf-org
+    title: Databricks organization on Hugging Face
+    url: https://huggingface.co/databricks
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-retired-models
+    title: AI models maintenance policy | Databricks on AWS
+    url: https://docs.databricks.com/aws/en/machine-learning/retired-models-policy
+    publisher: Databricks
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-dbrx-search
+    title: Hugging Face model search results for "dbrx"
+    url: https://huggingface.co/models?search=dbrx
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29

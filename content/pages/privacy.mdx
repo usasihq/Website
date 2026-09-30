@@ -1,0 +1,30 @@
+This page describes what the USASI website actually does with information. It is written for the site as built: a set of static files served by a hosting provider.
+
+<h2 id="summary">Summary</h2>
+
+- USASI sets **no cookies** and uses **no analytics, advertising, tracking pixels, or third-party scripts**.
+- Fonts, images, and scripts are served from the same site. Viewing a page does not contact any other service.
+- Search and filtering run in your browser. Your search text is not sent to USASI or anyone else, except that it appears in the page address (for example `?q=…`) so that links can be shared and the back button works.
+- The hosting provider that serves the files receives ordinary web request information, as described below.
+
+<h2 id="hosting">Hosting</h2>
+
+The site is a static export. There is no USASI application server, database, account system, or form that stores submissions. The files are delivered by a hosting provider chosen by the project owner. Like any web host, the provider receives standard request information — such as your IP address, the page address requested (including any `?q=` search text in it), your browser's user-agent, and the time — and may log it for security, abuse prevention, and operations. That processing is governed by the hosting provider's own privacy policy, not by USASI. Depending on the provider's security configuration, the provider itself may set short-lived security cookies; USASI does not add any.
+
+USASI does not enable the provider's visitor analytics. If that ever changes, this page will be updated first.
+
+<h2 id="storage">Storage in your browser</h2>
+
+The site does not use cookies, `localStorage`, `sessionStorage`, or IndexedDB. Filter choices live only in the page address.
+
+<h2 id="links">External links</h2>
+
+Entries link to official pages, repositories, model hubs, license files, and other sources. Following a link takes you to that site, where its own privacy practices apply. External links are marked with an arrow and are sent with `rel="noreferrer"`, so the destination is not told which USASI page you came from. Links for reporting corrections or editing entries go to GitHub, when a repository is configured, and GitHub's policies apply there.
+
+<h2 id="tips">Tipping</h2>
+
+When a tip link is configured, it is an ordinary link to an external tip or payment provider. USASI does not embed checkout forms or payment scripts, and no information is exchanged with the provider unless you follow the link. Anything you do on the provider's site — including payment details you enter — is handled by the provider under its own terms and privacy policy. USASI does not receive card details and does not keep a list of people who tip.
+
+<h2 id="changes">Changes</h2>
+
+Material changes to this page are recorded in the [changelog](/changelog/).

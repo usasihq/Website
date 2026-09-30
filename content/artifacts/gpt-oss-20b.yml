@@ -1,0 +1,176 @@
+slug: gpt-oss-20b
+name: gpt-oss-20b
+kind: model
+record_level: release
+family_slug: gpt-oss
+version: "gpt-oss-20b"
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [gpt-oss-model-card, hf-gpt-oss-20b]
+organization_slugs: [openai]
+links:
+  - label: Hugging Face model card
+    url: https://huggingface.co/openai/gpt-oss-20b
+    kind: model-hub
+  - label: gpt-oss repository
+    url: https://github.com/openai/gpt-oss
+    kind: repository
+  - label: Model card (arXiv)
+    url: https://arxiv.org/abs/2508.10925
+    kind: paper
+  - label: LICENSE (Apache 2.0)
+    url: https://huggingface.co/openai/gpt-oss-20b/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    gpt-oss-20b is the smaller gpt-oss model: a 24-layer mixture-of-experts transformer
+    with 20.9B total and about 3.6B active parameters per token, using 32 experts with the
+    top 4 selected per token. It is text-only, supports context up to 131,072 tokens, and
+    ships with its MoE weights quantized to MXFP4.
+  source_ids: [gpt-oss-model-card]
+useful_for:
+  text: >-
+    Presented for lower-latency, local, or specialized use cases, including tool use and
+    function calling; the model card says it can be fine-tuned on consumer hardware.
+  source_ids: [hf-gpt-oss-20b]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by OpenAI. Its operating company, OpenAI Group PBC, lists its
+    address in San Francisco, California, in a February 2026 SEC-filed agreement.
+  source_ids: [gpt-oss-model-card, sec-openai-amazon-ecl]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [hf-gpt-oss-20b]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/openai/gpt-oss-20b/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [hf-gpt-oss-20b-license, gpt-oss-model-card]
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/openai/gpt-oss/blob/main/LICENSE
+    applies_to: code
+    source_ids: [gh-gpt-oss-license]
+license_notes:
+  text: >-
+    The model card says the models are available under Apache 2.0 and OpenAI's gpt-oss
+    usage policy. The USAGE_POLICY file shipped with the weights is a short statement
+    asking users to comply with all applicable law; it adds no further listed
+    restrictions.
+  source_ids: [gpt-oss-model-card, hf-gpt-oss-20b-usage-policy]
+checklist:
+  weights:
+    status: public
+    note: MXFP4-quantized MoE weights plus an original-format checkpoint are in the Hugging Face repository.
+    source_ids: [hf-gpt-oss-20b]
+  inference_code:
+    status: public
+    note: The GitHub repository has reference PyTorch, Triton, and Metal implementations, tools, and a Responses API server.
+    source_ids: [gh-gpt-oss]
+  training_code:
+    status: unknown
+    note: The official repository covers inference, tools, and evaluation; no training code was found.
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The model card describes a text-only dataset of trillions of tokens focused on
+      STEM, coding, and general knowledge, filtered for hazardous biosecurity content,
+      with a June 2024 knowledge cutoff. The data itself is not released.
+    source_ids: [gpt-oss-model-card]
+  training_recipe:
+    status: partial
+    note: >-
+      The model card documents architecture, tokenizer, training compute (almost 10x
+      fewer H100-hours than the 2.1 million used for gpt-oss-120b), and post-training with
+      chain-of-thought reinforcement learning at a high level, not in reproducible detail.
+    source_ids: [gpt-oss-model-card]
+  evaluation_materials:
+    status: public
+    note: The model card reports benchmark and safety results; the repository includes evaluation code adapted from simple-evals for running GPQA and HealthBench.
+    source_ids: [gpt-oss-model-card, gh-gpt-oss-evals]
+run_notes:
+  - text: >-
+      The model card documents running the model with Transformers, vLLM, Ollama, and LM
+      Studio, and OpenAI's repository provides reference PyTorch, Triton, and Metal
+      implementations.
+    source_ids: [hf-gpt-oss-20b, gh-gpt-oss]
+  - text: >-
+      OpenAI states that with its MoE weights in MXFP4 precision (4.25 bits per
+      parameter), gpt-oss-20b can run on systems with as little as 16GB of memory; the
+      model card lists the checkpoint size as 12.8 GiB.
+    source_ids: [gpt-oss-model-card, hf-gpt-oss-20b]
+  - text: >-
+      The model must be prompted with OpenAI's harmony response format; the model card
+      says it will not work correctly otherwise.
+    source_ids: [hf-gpt-oss-20b]
+provenance: null
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2025-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: gpt-oss-model-card
+    title: gpt-oss-120b & gpt-oss-20b Model Card
+    url: https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-08-05
+    accessed_at: 2026-09-29
+  - id: hf-gpt-oss-20b
+    title: openai/gpt-oss-20b
+    url: https://huggingface.co/openai/gpt-oss-20b
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gpt-oss-20b-license
+    title: openai/gpt-oss-20b LICENSE
+    url: https://huggingface.co/openai/gpt-oss-20b/raw/main/LICENSE
+    publisher: OpenAI (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gpt-oss-20b-usage-policy
+    title: openai/gpt-oss-20b USAGE_POLICY
+    url: https://huggingface.co/openai/gpt-oss-20b/raw/main/USAGE_POLICY
+    publisher: OpenAI (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gh-gpt-oss
+    title: openai/gpt-oss (GitHub repository)
+    url: https://github.com/openai/gpt-oss
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gh-gpt-oss-license
+    title: openai/gpt-oss LICENSE
+    url: https://raw.githubusercontent.com/openai/gpt-oss/main/LICENSE
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gh-gpt-oss-evals
+    title: gpt_oss.evals README
+    url: https://raw.githubusercontent.com/openai/gpt-oss/main/gpt_oss/evals/README.md
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29

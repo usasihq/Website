@@ -1,0 +1,199 @@
+slug: gemma-4-26b-a4b
+name: Gemma 4 26B A4B
+kind: model
+record_level: release
+family_slug: gemma
+version: "4 (26B A4B)"
+maintainers:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    source_ids: [hf-card-26b-a4b-it, gemma-4-model-card]
+organization_slugs: [google-deepmind, google]
+links:
+  - label: Hugging Face (instruction-tuned)
+    url: https://huggingface.co/google/gemma-4-26B-A4B-it
+    kind: model-hub
+  - label: Hugging Face (pre-trained)
+    url: https://huggingface.co/google/gemma-4-26B-A4B
+    kind: model-hub
+  - label: Gemma 4 model card
+    url: https://ai.google.dev/gemma/docs/core/model_card_4
+    kind: documentation
+  - label: Gemma 4 license
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    kind: license
+  - label: Gemma 4 Technical Report
+    url: https://arxiv.org/abs/2607.02770
+    kind: paper
+summary:
+  text: >-
+    Gemma 4 26B A4B is the mixture-of-experts model in the Gemma 4 generation, with 25.2 billion
+    total and 3.8 billion active parameters (8 of 128 experts active, plus one shared expert). It
+    accepts text and image input, can process video as frames, and generates text, with a
+    256K-token context window. Google's release page dates the initial Gemma 4 release, which
+    included this size, to March 31, 2026.
+  source_ids: [hf-card-26b-a4b-it, gemma-4-model-card, gemma-releases]
+useful_for:
+  text: >-
+    The model card lists text generation, chatbots, summarization, image data extraction, NLP and
+    vision-language research, and language-learning tools among intended uses, and documents a
+    configurable thinking mode and native function calling.
+  source_ids: [hf-card-26b-a4b-it]
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The model card names Google DeepMind as the author. Google DeepMind is a research unit of
+    Google, announced by Google's CEO in 2023, and Google's parent Alphabet Inc. has its principal
+    executive offices in Mountain View, California, per its fiscal 2025 Form 10-K.
+  source_ids: [hf-card-26b-a4b-it, google-blog-gdm-2023, alphabet-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights are downloadable from Hugging Face; the repositories were not gated at the time of
+    review. Use is governed by the Apache License 2.0.
+  source_ids: [hf-card-26b-a4b-it, hf-api-26b-a4b-it, hf-api-26b-a4b, gemma-4-launch-blog]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    applies_to: weights
+    source_ids: [gemma-4-license, hf-card-26b-a4b-it]
+license_notes:
+  text: >-
+    The Gemma Terms of Use cover the earlier Gemma models listed in their appendix and direct
+    readers to the separate Gemma 4 license (Apache License 2.0) for Gemma 4 terms.
+  source_ids: [gemma-terms, gemma-4-license]
+checklist:
+  weights:
+    status: public
+    note: Pre-trained and instruction-tuned checkpoints are published in safetensors format on Hugging Face.
+    source_ids: [hf-card-26b-a4b-it, hf-api-26b-a4b-it, hf-api-26b-a4b]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents inference with Hugging Face Transformers; Google DeepMind's
+      Apache-2.0 gemma JAX library also supports Gemma 4.
+    source_ids: [hf-card-26b-a4b-it, gemma-jax-repo]
+  training_code:
+    status: unknown
+    note: >-
+      The gemma JAX library includes fine-tuning code. This catalog did not find published code
+      used to pre-train Gemma 4.
+    source_ids: [gemma-jax-repo]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card and technical report describe the data types (web documents, code,
+      mathematics, images) and a January 2025 cutoff; the data itself is not released.
+    source_ids: [hf-card-26b-a4b-it, gemma-4-tech-report]
+  training_recipe:
+    status: partial
+    note: >-
+      The technical report describes the architecture, compute setup (TPUv4 and TPUv6e, JAX,
+      Pathways), and data filtering, and says pre-training and post-training follow the Gemma 3
+      approach; it is not a complete recipe.
+    source_ids: [gemma-4-tech-report]
+  evaluation_materials:
+    status: partial
+    note: Benchmark results for the instruction-tuned models are reported in the model card and technical report.
+    source_ids: [hf-card-26b-a4b-it, gemma-4-tech-report]
+run_notes:
+  - text: >-
+      The model card shows loading the model with Hugging Face Transformers
+      (AutoModelForMultimodalLM) and recommends sampling with temperature 1.0, top_p 0.95, and
+      top_k 64.
+    source_ids: [hf-card-26b-a4b-it]
+provenance: null
+tags: [language-model, multimodal, vision-language, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2026-03-31
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: hf-card-26b-a4b-it
+    title: google/gemma-4-26B-A4B-it model card
+    url: https://huggingface.co/google/gemma-4-26B-A4B-it
+    publisher: Google DeepMind (via Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-26b-a4b-it
+    title: Hugging Face model metadata for google/gemma-4-26B-A4B-it
+    url: https://huggingface.co/api/models/google/gemma-4-26B-A4B-it
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-api-26b-a4b
+    title: Hugging Face model metadata for google/gemma-4-26B-A4B
+    url: https://huggingface.co/api/models/google/gemma-4-26B-A4B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemma-4-model-card
+    title: Gemma 4 model card
+    url: https://ai.google.dev/gemma/docs/core/model_card_4
+    publisher: Google AI for Developers
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemma-4-license
+    title: Gemma 4 license (Apache License 2.0)
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    publisher: Google AI for Developers
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemma-terms
+    title: Gemma Terms of Use
+    url: https://ai.google.dev/gemma/terms
+    publisher: Google AI for Developers
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemma-4-tech-report
+    title: Gemma 4 Technical Report
+    url: https://arxiv.org/html/2607.02770
+    publisher: Gemma Team, Google DeepMind (via arXiv)
+    kind: paper
+    published_at: 2026-07
+    accessed_at: 2026-09-29
+  - id: gemma-4-launch-blog
+    title: "Gemma 4: Byte for byte, the most capable open models"
+    url: https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/
+    publisher: Google
+    kind: announcement
+    published_at: 2026-04-02
+    accessed_at: 2026-09-29
+  - id: gemma-releases
+    title: Gemma releases
+    url: https://ai.google.dev/gemma/docs/releases
+    publisher: Google AI for Developers
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gemma-jax-repo
+    title: google-deepmind/gemma (GitHub)
+    url: https://github.com/google-deepmind/gemma
+    publisher: Google DeepMind
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: google-blog-gdm-2023
+    title: "Google DeepMind: Bringing together two world-class AI teams"
+    url: https://blog.google/technology/ai/april-ai-update/
+    publisher: Google
+    kind: announcement
+    published_at: 2023-04-20
+    accessed_at: 2026-09-29
+  - id: alphabet-10k-2025
+    title: Alphabet Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-02-05
+    accessed_at: 2026-09-29

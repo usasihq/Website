@@ -1,0 +1,117 @@
+The catalog is a set of plain YAML files in a Git repository. Every change — a new entry, a correction, a policy revision — is a pull request that anyone can read, and every pull request is checked by the same validation the site uses to build.
+
+<h2 id="corrections">Report a correction</h2>
+
+If something is wrong or out of date, the most useful report includes the entry, the specific statement, and a source that supports the correction (an official page, license file, model card, repository, or filing). Each entry page has **Report a correction** and **Edit this entry** actions that open the right issue form or file once the repository is configured. Corrections are handled the same way for everyone, including listed organizations.
+
+<h2 id="new-entries">Suggest a new entry</h2>
+
+Use the entry-request issue form, or open a pull request with a new record. Before suggesting an entry, check the [eligibility policy](/methodology/#eligibility): the entry needs a documented U.S. basis, and for projects that basis is the governing or maintaining entity, not the contributors. Requests that cannot yet be verified are kept in the internal review queue (`CONTENT_REVIEW.md`) rather than published.
+
+<h2 id="workflow">Editing workflow</h2>
+
+1. Fork the repository and create a branch.
+2. Add or edit a file in `content/organizations/` or `content/artifacts/`. The file name must match the record's `slug`. The full field reference is in `docs/CONTENT_FORMAT.md`.
+3. Cite a source for every statement. Only cite pages you have opened and read, and record the date you read them in `accessed_at`.
+4. Set `last_reviewed` to today only if you checked the entry's evidence. Set `updated_at` to today for any substantive edit. Never change `released_at` without a source.
+5. Run `npm run validate`. It checks schemas, unique slugs and source IDs, relationships between records, source references, eligibility and publication consistency, dates, family and release structure, and placeholder text.
+6. Open a pull request using the template. A maintainer reviews the evidence before merging.
+
+<h2 id="evidence">Evidence requirements</h2>
+
+- Licenses come from the license file or the model or dataset card, not from a summary on another site.
+- Headquarters come from the organization's own pages or, for public companies, regulatory filings.
+- News reporting is acceptable only for the specific claim it supports, and is labeled as a news report.
+- Do not add funding, valuations, staff counts, user counts, benchmark scores, hardware requirements, or power figures unless the catalog's rules for that field are met. Most of these are not published at all.
+- If a fact is unknown, leave it unknown.
+
+<h2 id="sample-organization">Sample organization record</h2>
+
+This abbreviated example uses a fictional organization to show the shape of a record. It is not catalog content.
+
+```yaml
+slug: sample-lab
+name: Sample Lab
+legal_name: null
+website: https://sample-lab.invalid
+logo_text: SL
+summary:
+  text: Sample Lab develops language models and publishes some of them with open weights.
+  source_ids: [about]
+organization_roles: [model-developer, research-lab]
+ownership_category: privately-held
+headquarters:
+  label: Denver, Colorado
+  country: US
+  source_ids: [about]
+products:
+  - id: sample-api
+    name: Sample API
+    kind: hosted-model-api
+    access: Paid API access to hosted models, documented in the developer docs.
+    url: https://sample-lab.invalid/api
+    source_ids: [api-docs]
+    last_reviewed: 2026-09-29
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: The company's about page gives its headquarters as Denver, Colorado.
+  source_ids: [about]
+  assessed_at: 2026-09-29
+publication_status: draft
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: about
+    title: About Sample Lab
+    url: https://sample-lab.invalid/about
+    publisher: Sample Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  # …plus the api-docs source
+```
+
+<h2 id="sample-artifact">Sample model-release record</h2>
+
+```yaml
+slug: sample-model-1-7b
+name: Sample Model 1 7B
+kind: model
+record_level: release
+family_slug: sample-model
+version: "1 (7B)"
+maintainers:
+  - name: Sample Lab
+    organization_slug: sample-lab
+    source_ids: [model-card]
+organization_slugs: [sample-lab]
+summary:
+  text: A 7-billion-parameter language model released with downloadable weights.
+  source_ids: [model-card]
+availability:
+  status: public
+  access_conditions: Downloadable from the model hub without an access request.
+  source_ids: [model-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://sample-lab.invalid/LICENSE
+    applies_to: weights-and-code
+    source_ids: [license]
+checklist:
+  weights: { status: public, note: null, source_ids: [model-card] }
+  training_code: { status: unknown, note: null, source_ids: [] }
+released_at: 2026-05
+# …eligibility, dates, and sources as above
+```
+
+The openness tier is never written by hand: the site computes it from the checklist and licenses using the published rubric.
+
+<h2 id="policy-changes">Changing the rules</h2>
+
+Changes to the eligibility policy, the openness rubric, or the [USASI Compact](/compact/) are proposed the same way, by pull request, and must update `ELIGIBILITY.md`, `OPENNESS.md`, or the Compact together with the code that applies them. Rubric changes get a new version number and a changelog entry.
+
+<h2 id="code">Code contributions</h2>
+
+The site is Next.js with TypeScript, Tailwind CSS, and Zod, exported as static files. Run `npm run typecheck`, `npm run lint`, `npm test`, and `npm run test:e2e` before opening a pull request. The README describes local development and deployment.

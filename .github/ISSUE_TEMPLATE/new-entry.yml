@@ -1,0 +1,54 @@
+name: Request an entry
+description: Suggest a U.S. AI organization or a U.S.-led open model, software project, dataset, or evaluation tool.
+title: "Entry request: "
+labels: [entry-request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check the eligibility policy (ELIGIBILITY.md) first. Entries need a documented U.S. basis — for projects, the governing or maintaining entity, not the contributors.
+        Requests that cannot yet be verified stay in the internal review queue instead of being published.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Entry type
+      options:
+        - Organization
+        - Model family or release
+        - Software (framework, runtime, research stack)
+        - Dataset
+        - Evaluation tool
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name
+    validations:
+      required: true
+  - type: input
+    id: official
+    attributes:
+      label: Official website or repository
+    validations:
+      required: true
+  - type: textarea
+    id: basis
+    attributes:
+      label: U.S. eligibility basis and source
+      description: For example, documented U.S. headquarters (with a link), or the U.S. foundation that governs the project.
+    validations:
+      required: true
+  - type: textarea
+    id: materials
+    attributes:
+      label: Public materials and license (for artifacts)
+      description: Links to the license file, model or dataset card, and code, if applicable.
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Your relationship to the entry
+      options:
+        - None
+        - I work for or maintain it
+        - Other

@@ -1,0 +1,151 @@
+slug: lambda
+name: Lambda
+legal_name:
+  text: Lambda, Inc.
+  source_ids: [lambda-terms, lambda-form-d-2024]
+website: https://lambda.ai
+logo_text: L
+summary:
+  text: >-
+    Lambda is an AI cloud company that provides NVIDIA GPU infrastructure for training and
+    inference, from on-demand instances and self-serve clusters to single-tenant
+    superclusters. It was founded in 2012 by machine learning engineers.
+  source_ids: [lambda-about, lambda-instances-page, lambda-superclusters-page]
+organization_roles: [cloud-provider, compute-infrastructure]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [lambda-form-d-2024]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Jose, California
+  country: US
+  source_ids: [lambda-contact, lambda-privacy-policy]
+other_locations: []
+founded:
+  year: 2012
+  source_ids: [lambda-about]
+sectors: [cloud]
+status_note:
+  text: >-
+    In May 2026 Lambda announced an expanded leadership structure in which Michel Combes became
+    CEO, co-founder Stephen Balaban became CTO, and John Donovan became Chairman of the Board.
+  source_ids: [lambda-leadership-2026-05]
+products:
+  - id: instances
+    name: Lambda Instances
+    kind: compute-service
+    access: >-
+      On-demand NVIDIA GPU instances with 1, 2, 4, or 8 GPUs, launched from a self-serve
+      console, the Lambda Cloud API, or a CLI and billed per GPU per hour.
+    url: https://lambda.ai/instances
+    source_ids: [lambda-instances-page]
+    last_reviewed: 2026-09-29
+  - id: one-click-clusters
+    name: 1-Click Clusters
+    kind: compute-service
+    access: >-
+      Self-serve multi-node NVIDIA HGX B200 or H100 clusters reserved from the Lambda Cloud
+      dashboard, with managed Kubernetes or Slurm and S3-compatible storage; short- and
+      long-term contracts are available on request.
+    url: https://lambda.ai/1-click-clusters
+    source_ids: [lambda-1cc-page]
+    last_reviewed: 2026-09-29
+  - id: superclusters
+    name: Lambda Superclusters
+    kind: compute-service
+    access: >-
+      Single-tenant, physically isolated NVIDIA GPU clusters for large-scale training and
+      inference, co-engineered with each customer.
+    url: https://lambda.ai/superclusters
+    source_ids: [lambda-superclusters-page]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Lambda's contact page and privacy policy give its headquarters address in San Jose,
+    California, and a 2024 SEC Form D lists Lambda, Inc. as a Delaware corporation with its
+    principal place of business at the same address. Its press releases carry a San
+    Francisco dateline.
+  source_ids: [lambda-contact, lambda-privacy-policy, lambda-form-d-2024, lambda-leadership-2026-05, lambda-pledge-2026-09]
+  assessed_at: 2026-09-29
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: lambda-about
+    title: About Lambda
+    url: https://lambda.ai/about
+    publisher: Lambda
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lambda-contact
+    title: Contact us | Lambda
+    url: https://lambda.ai/contact
+    publisher: Lambda
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lambda-privacy-policy
+    title: Privacy Policy | Lambda
+    url: https://lambda.ai/legal/privacy-policy
+    publisher: Lambda
+    kind: official-page
+    published_at: 2026-01-01
+    accessed_at: 2026-09-29
+  - id: lambda-terms
+    title: Terms of Service | Lambda
+    url: https://lambda.ai/legal/terms-of-service
+    publisher: Lambda
+    kind: official-page
+    published_at: 2025-08
+    accessed_at: 2026-09-29
+  - id: lambda-form-d-2024
+    title: Lambda, Inc. Form D (filed February 16, 2024)
+    url: https://www.sec.gov/Archives/edgar/data/1954966/000195496624000001/xslFormDX01/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2024-02-16
+    accessed_at: 2026-09-29
+  - id: lambda-leadership-2026-05
+    title: Lambda assembles leadership team to power gigawatt-scale AI infrastructure for the superintelligence era
+    url: https://lambda.ai/blog/lambda-assembles-leadership-team-to-power-gigawatt-scale-ai-infrastructure
+    publisher: Lambda
+    kind: announcement
+    published_at: 2026-05-05
+    accessed_at: 2026-09-29
+  - id: lambda-pledge-2026-09
+    title: Lambda signs the White House Ratepayer Protection Pledge
+    url: https://lambda.ai/blog/lambda-signs-the-white-house-ratepayer-protection-pledge
+    publisher: Lambda
+    kind: announcement
+    published_at: 2026-09-14
+    accessed_at: 2026-09-29
+  - id: lambda-instances-page
+    title: Lambda Instances
+    url: https://lambda.ai/instances
+    publisher: Lambda
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lambda-1cc-page
+    title: 1-Click Clusters | Lambda
+    url: https://lambda.ai/1-click-clusters
+    publisher: Lambda
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lambda-superclusters-page
+    title: Lambda Superclusters
+    url: https://lambda.ai/superclusters
+    publisher: Lambda
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

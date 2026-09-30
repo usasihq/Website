@@ -1,0 +1,110 @@
+slug: apple
+name: Apple
+legal_name:
+  text: Apple Inc.
+  source_ids: [aapl-10k-2025]
+website: https://www.apple.com
+logo_text: A
+summary:
+  text: >-
+    Apple makes and sells smartphones, personal computers, tablets, wearables, and accessories,
+    and sells related services. Its AI features, called Apple
+    Intelligence, run on-device and through Apple's Private Cloud Compute. Developers can reach
+    Apple's on-device model through the Foundation Models framework, and Apple machine learning
+    research publishes the open-source MLX array framework.
+  source_ids: [aapl-10k-2025, apple-intelligence-page, foundation-models-docs, mlx-readme]
+organization_roles: [consumer-products, hardware-manufacturer, model-developer, developer-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: California corporation
+  source_ids: [aapl-10k-2025]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Cupertino, California
+  country: US
+  source_ids: [aapl-10k-2025]
+other_locations: []
+founded: null
+sectors: [research]
+status_note: null
+products:
+  - id: apple-intelligence
+    name: Apple Intelligence
+    kind: assistant-app
+    access: >-
+      Built into supported iPhone, iPad, Mac, and Apple Vision Pro models, including Siri. Uses
+      on-device processing and can draw on larger server-based models through Private Cloud
+      Compute. Siri AI is not initially available in the EU on iOS, iPadOS, and watchOS.
+    url: https://www.apple.com/apple-intelligence/
+    source_ids: [apple-intelligence-page]
+    last_reviewed: 2026-09-29
+  - id: foundation-models-framework
+    name: Foundation Models framework
+    kind: developer-tool
+    access: >-
+      Apple developer framework for language understanding, structured output, and tool calling,
+      available from iOS, iPadOS, macOS, and visionOS 26 and watchOS 27.
+    url: https://developer.apple.com/documentation/foundationmodels
+    source_ids: [foundation-models-docs]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      MLX, an array framework for machine learning on Apple silicon, is published by Apple machine
+      learning research under the MIT License.
+    source_ids: [mlx-readme, mlx-license]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Apple Inc. is a California corporation whose principal executive offices are at One Apple
+    Park Way, Cupertino, California, per its Form 10-K for fiscal year 2025.
+  source_ids: [aapl-10k-2025]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Apple's consumer AI features and on-device model are delivered through its operating systems
+    and developer frameworks. It publishes open-source machine learning software such as MLX
+    under the MIT License. This catalog has not assessed Apple model weight releases.
+  source_ids: [apple-intelligence-page, foundation-models-docs, mlx-license]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: aapl-10k-2025
+    title: Apple Inc. Form 10-K for the fiscal year ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+    publisher: Apple Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2025-10-31
+    accessed_at: 2026-09-29
+  - id: apple-intelligence-page
+    title: Apple Intelligence and Siri - Apple
+    url: https://www.apple.com/apple-intelligence/
+    publisher: Apple
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: foundation-models-docs
+    title: Foundation Models | Apple Developer Documentation
+    url: https://developer.apple.com/tutorials/data/documentation/foundationmodels.json
+    publisher: Apple
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlx-readme
+    title: ml-explore/mlx README
+    url: https://github.com/ml-explore/mlx
+    publisher: Apple (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlx-license
+    title: ml-explore/mlx LICENSE
+    url: https://github.com/ml-explore/mlx/blob/main/LICENSE
+    publisher: Apple (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

@@ -1,0 +1,131 @@
+slug: anyscale
+name: Anyscale
+legal_name:
+  text: Anyscale, Inc.
+  source_ids: [anyscale-terms]
+website: https://www.anyscale.com
+logo_text: AS
+summary:
+  text: >-
+    Anyscale sells a managed platform for running Ray workloads (data processing, training, and
+    online inference) across clouds and Kubernetes. Ray began at UC Berkeley's RISELab, and
+    Anyscale contributed it to the PyTorch Foundation in 2025.
+  source_ids: [anyscale-about, anyscale-platform, pytorch-ray]
+organization_roles: [developer-platform]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [anyscale-about]
+other_locations:
+  - label: Bengaluru, India (Anyscale India Pvt Ltd)
+    country: IN
+    source_ids: [anyscale-about]
+founded:
+  year: 2019
+  source_ids: [anyscale-about]
+sectors: [cloud]
+status_note:
+  text: >-
+    On July 30, 2026 Anyscale and Nscale announced a definitive agreement for Nscale to acquire
+    Anyscale, with closing expected in the second half of 2026. Nscale's September 18, 2026 SEC
+    registration statement describes the deal as pending, with closing expected at the time of, or
+    concurrent with, Nscale's initial public offering. Nscale Limited is registered in England and Wales,
+    with principal executive offices in London.
+  source_ids: [anyscale-nscale-press, nscale-s1]
+products:
+  - id: anyscale-platform
+    name: Anyscale Platform
+    kind: cloud-platform
+    access: >-
+      Managed Ray platform for data processing, training, and inference, deployable across
+      clouds on Kubernetes or VMs; pay-as-you-go with a free trial credit.
+    url: https://www.anyscale.com/platform
+    source_ids: [anyscale-platform, anyscale-pricing]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Ray is now a PyTorch Foundation-hosted project; the Anyscale/Nscale announcement states
+      that Ray remains open source and community governed.
+    source_ids: [pytorch-ray, anyscale-nscale-press]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Anyscale's about page lists its headquarters in San Francisco, and its platform terms name
+    Anyscale, Inc. with a San Francisco legal address. As of 2026-09-29 the acquisition by
+    UK-registered Nscale is documented as pending, not completed, so Anyscale is assessed as an
+    independent U.S.-headquartered company. If the deal closes, Anyscale would be a subsidiary
+    of a foreign parent, and this assessment must be reviewed again.
+  source_ids: [anyscale-about, anyscale-terms, anyscale-nscale-press, nscale-s1]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    The Anyscale Platform is a commercial managed service. Ray, the framework it is built on, is
+    published under the Apache License 2.0 and is hosted by the PyTorch Foundation.
+  source_ids: [anyscale-platform, ray-license, pytorch-ray]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: anyscale-about
+    title: About Us
+    url: https://www.anyscale.com/about
+    publisher: Anyscale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: anyscale-terms
+    title: Anyscale Platform Terms and Conditions
+    url: https://www.anyscale.com/terms
+    publisher: Anyscale
+    kind: official-page
+    published_at: 2026-04-17
+    accessed_at: 2026-09-29
+  - id: anyscale-platform
+    title: Anyscale Platform
+    url: https://www.anyscale.com/platform
+    publisher: Anyscale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: anyscale-pricing
+    title: Anyscale Pricing
+    url: https://www.anyscale.com/pricing
+    publisher: Anyscale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: anyscale-nscale-press
+    title: Nscale Acquires Anyscale, Enhancing its Full Stack AI Cloud Platform
+    url: https://www.anyscale.com/press/nscale-acquires-anyscale-enhancing-its-full-stack-ai-cloud-platform
+    publisher: Anyscale
+    kind: announcement
+    published_at: 2026-07-30
+    accessed_at: 2026-09-29
+  - id: nscale-s1
+    title: Nscale Limited Form S-1 Registration Statement
+    url: https://www.sec.gov/Archives/edgar/data/0002110365/000119312526395475/ck0002110365-20260918.htm
+    publisher: U.S. Securities and Exchange Commission (filed by Nscale Limited)
+    kind: filing
+    published_at: 2026-09-18
+    accessed_at: 2026-09-29
+  - id: pytorch-ray
+    title: PyTorch Foundation Welcomes Ray to Deliver a Unified Open Source AI Compute Stack
+    url: https://pytorch.org/blog/pytorch-foundation-welcomes-ray-to-deliver-a-unified-open-source-ai-compute-stack/
+    publisher: PyTorch Foundation
+    kind: announcement
+    published_at: 2025-10-22
+    accessed_at: 2026-09-29
+  - id: ray-license
+    title: Ray LICENSE
+    url: https://github.com/ray-project/ray/blob/master/LICENSE
+    publisher: Ray project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29

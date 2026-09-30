@@ -1,0 +1,258 @@
+slug: olmo-3-1-32b-think
+name: Olmo 3.1 32B Think
+kind: model
+record_level: release
+family_slug: olmo
+version: "Olmo-3.1-32B-Think"
+maintainers:
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    source_ids: [mc-olmo31-32b-think]
+organization_slugs: [ai2]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/allenai/Olmo-3.1-32B-Think
+    kind: model-hub
+  - label: open-instruct Olmo 3 post-training scripts
+    url: https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3
+    kind: repository
+  - label: OLMo-core Olmo 3 training scripts
+    url: https://github.com/allenai/OLMo-core/tree/main/src/scripts/official/OLMo3
+    kind: repository
+  - label: Olmo 3 technical report (arXiv 2512.13961)
+    url: https://arxiv.org/abs/2512.13961
+    kind: paper
+summary:
+  text: >-
+    A 32B reasoning model from Ai2's December 2025 Olmo 3.1 update. It was produced by
+    continuing the reinforcement learning run behind Olmo 3 32B Think for about three more
+    weeks with additional passes over the Dolci-Think-RL data, and it writes a reasoning trace
+    before its final answer.
+  source_ids: [mc-olmo31-32b-think, ai2-olmo3-blog, olmo3-report]
+useful_for:
+  text: >-
+    Ai2 describes the Think models as reasoning models aimed at math, code, and precise
+    instruction following.
+  source_ids: [ai2-docs-olmo, mc-olmo31-32b-think]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The model card states the model was developed by the Allen Institute for AI (Ai2), which
+    describes itself as a Seattle-based non-profit AI research institute.
+  source_ids: [mc-olmo31-32b-think, ai2-about]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. The card says the model is intended for
+    research and educational use in line with Ai2's Responsible Use Guidelines.
+  source_ids: [mc-olmo31-32b-think]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/allenai/Olmo-3.1-32B-Think
+    applies_to: weights
+    source_ids: [mc-olmo31-32b-think]
+  - name: Apache License 2.0 (open-instruct)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/allenai/open-instruct/main/LICENSE
+    applies_to: code
+    source_ids: [open-instruct-license]
+  - name: Apache License 2.0 (OLMo-core)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/LICENSE
+    applies_to: code
+    source_ids: [olmo-core-license]
+license_notes:
+  text: >-
+    The model card states the model is licensed under Apache 2.0 and intended for research
+    and educational use in accordance with Ai2's Responsible Use Guidelines, which list
+    categories of prohibited use. The post-training datasets are ODC-BY but include
+    third-party sources under their own licenses, per their dataset cards.
+  source_ids: [mc-olmo31-32b-think, ai2-rug, dolci-think-sft-32b]
+checklist:
+  weights:
+    status: public
+    note: Final weights and RL step checkpoints (step revisions) are published on Hugging Face.
+    source_ids: [mc-olmo31-32b-think]
+  inference_code:
+    status: public
+    note: The model card documents inference with Hugging Face Transformers and vLLM.
+    source_ids: [mc-olmo31-32b-think]
+  training_code:
+    status: public
+    note: >-
+      open-instruct publishes the Olmo 3 32B Think SFT, DPO, and RL scripts, and OLMo-core
+      publishes the 32B base-model pretraining, mid-training, and long-context scripts.
+    source_ids: [open-instruct-olmo3, olmo-core-olmo3]
+  training_data_information:
+    status: public
+    note: >-
+      The 32B pretraining mix (Dolma 3 Mix 6T), the 32B mid-training and long-context mixes,
+      and the Dolci Think SFT, DPO, and RL datasets used for the 32B Think line are
+      downloadable from Hugging Face without gating under ODC-BY.
+    source_ids: [dolma3-mix-6t, dolmino-1125, longmino-1125, dolci-think-sft-32b, dolci-think-dpo-32b, dolci-think-rl-32b]
+  training_recipe:
+    status: public
+    note: >-
+      The technical report describes Olmo 3.1 Think 32B as the Olmo 3 Think 32B RL run
+      continued from 750 to 2,300 steps (an additional 21 days on 224 GPUs). The open-instruct
+      README lists the 32B Think scripts and an experiment report covering 3.1.
+    source_ids: [olmo3-report, open-instruct-olmo3]
+  evaluation_materials:
+    status: public
+    note: >-
+      The model card publishes evaluation results against its SFT, DPO, and Olmo 3 32B Think
+      predecessors; OLMES documents commands for running the Olmo 3 evaluation suites.
+    source_ids: [mc-olmo31-32b-think, olmes-repo]
+run_notes:
+  - text: >-
+      The model card documents inference with Hugging Face Transformers 4.57.0 or later and
+      with vLLM, recommending temperature 0.6, top_p 0.95, and up to 32,768 generated tokens.
+    source_ids: [mc-olmo31-32b-think]
+provenance:
+  text: >-
+    Trained by Ai2 from its own Olmo 3 32B base model (Olmo-3-1125-32B) through the
+    Olmo-3-32B-Think-SFT and Olmo-3-32B-Think-DPO checkpoints, then RLVR; Olmo 3.1 extends the
+    Olmo 3 32B Think RL run. The base model was pretrained on the Dolma 3 Mix (6T).
+  derived_from:
+    - name: Olmo 3 32B (base), Olmo-3-1125-32B
+      artifact_slug: null
+      url: https://huggingface.co/allenai/Olmo-3-1125-32B
+      note: Base model; no separate catalog record.
+    - name: Dolma 3 Mix (6T)
+      artifact_slug: dolma
+      url: https://huggingface.co/datasets/allenai/dolma3_mix-6T
+      note: Pretraining data for the 32B base model.
+    - name: Dolci-Think-RL-32B
+      artifact_slug: null
+      url: https://huggingface.co/datasets/allenai/Dolci-Think-RL-32B
+      note: RL prompts used for Olmo 3 and 3.1 32B Think.
+  source_ids: [mc-olmo31-32b-think, olmo3-report, dolma3-mix-6t, dolci-think-rl-32b]
+tags: [language-model, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2025-12-12
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mc-olmo31-32b-think
+    title: allenai/Olmo-3.1-32B-Think model card
+    url: https://huggingface.co/allenai/Olmo-3.1-32B-Think
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-olmo3-blog
+    title: "Olmo 3: Charting a path through the model flow to lead open-source AI (Update 12/12: Announcing Olmo 3.1)"
+    url: https://allenai.org/blog/olmo3
+    publisher: Ai2
+    kind: announcement
+    published_at: 2025-11-20
+    accessed_at: 2026-09-29
+  - id: olmo3-report
+    title: Olmo 3 (arXiv 2512.13961v2)
+    url: https://arxiv.org/html/2512.13961v2
+    publisher: Team Olmo (Ai2)
+    kind: paper
+    published_at: 2026-04-14
+    accessed_at: 2026-09-29
+  - id: open-instruct-olmo3
+    title: open-instruct Olmo 3 training scripts (scripts/train/olmo3)
+    url: https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: open-instruct-license
+    title: open-instruct LICENSE
+    url: https://raw.githubusercontent.com/allenai/open-instruct/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo-core-olmo3
+    title: OLMo-core official Olmo 3 training scripts (src/scripts/official/OLMo3)
+    url: https://github.com/allenai/OLMo-core/tree/main/src/scripts/official/OLMo3
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmo-core-license
+    title: OLMo-core LICENSE
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/LICENSE
+    publisher: Ai2
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolma3-mix-6t
+    title: allenai/dolma3_mix-6T dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_mix-6T
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolmino-1125
+    title: allenai/dolma3_dolmino_mix-100B-1125 dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_dolmino_mix-100B-1125
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: longmino-1125
+    title: allenai/dolma3_longmino_mix-100B-1125 dataset card
+    url: https://huggingface.co/datasets/allenai/dolma3_longmino_mix-100B-1125
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolci-think-sft-32b
+    title: allenai/Dolci-Think-SFT-32B dataset card
+    url: https://huggingface.co/datasets/allenai/Dolci-Think-SFT-32B
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolci-think-dpo-32b
+    title: allenai/Dolci-Think-DPO-32B dataset card
+    url: https://huggingface.co/datasets/allenai/Dolci-Think-DPO-32B
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: dolci-think-rl-32b
+    title: allenai/Dolci-Think-RL-32B dataset card
+    url: https://huggingface.co/datasets/allenai/Dolci-Think-RL-32B
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: olmes-repo
+    title: allenai/olmes
+    url: https://github.com/allenai/olmes
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-docs-olmo
+    title: Olmo | Ai2 platform documentation
+    url: https://docs.allenai.org/models/olmo/index.html
+    publisher: Ai2
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-about
+    title: About us | Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ai2-rug
+    title: Responsible use guidelines | Ai2
+    url: https://allenai.org/responsible-use
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

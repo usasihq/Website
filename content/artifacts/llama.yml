@@ -1,0 +1,88 @@
+slug: llama
+name: Llama
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Meta
+    organization_slug: meta
+    source_ids: [llama-models-readme]
+organization_slugs: [meta]
+links:
+  - label: Llama models repository
+    url: https://github.com/meta-llama/llama-models
+    kind: repository
+  - label: Meta Llama on Hugging Face
+    url: https://huggingface.co/meta-llama
+    kind: model-hub
+  - label: Llama 4 announcement
+    url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+    kind: release-notes
+summary:
+  text: >-
+    Llama is Meta's family of large language models. Meta's Llama models repository lists
+    generations from Llama 2 (July 2023) through Llama 4 (April 2025), each with its own license
+    file and acceptable use policy. Llama 4 is distributed under the custom Llama 4 Community
+    License Agreement rather than a standard open-source license.
+  source_ids: [llama-models-readme, llama4-license]
+useful_for:
+  text: >-
+    Meta documents the Llama 4 models for commercial and research use, including assistant-style
+    chat and visual reasoning for the instruction-tuned models and adaptation to other language
+    generation tasks for the pretrained models.
+  source_ids: [llama4-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Meta is named as the model developer in the Llama 4 model card. Meta Platforms, Inc. has its
+    principal executive offices in Menlo Park, California, per its Form 10-K.
+  source_ids: [llama4-model-card, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: >-
+    Availability and license terms are assessed on each release record. Meta's download
+    instructions require accepting the license and receiving an approved download link.
+  source_ids: [llama-models-readme]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, multimodal, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: llama-models-readme
+    title: meta-llama/llama-models README
+    url: https://github.com/meta-llama/llama-models/blob/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: llama4-model-card
+    title: Llama 4 Model Card
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md
+    publisher: Meta (GitHub)
+    kind: model-card
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: llama4-license
+    title: Llama 4 Community License Agreement
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: 2025-04-05
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

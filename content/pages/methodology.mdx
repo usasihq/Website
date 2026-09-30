@@ -1,0 +1,82 @@
+import { ChecklistTables, TierTable, StatusLegend } from "../../components/RubricTables";
+
+This page explains how entries get into the catalog, how openness is described, what counts as evidence, and how the numbers on the site are calculated. The same rules are published in the repository as `ELIGIBILITY.md`, `OPENNESS.md`, and `CONTENT_REVIEW.md`.
+
+<h2 id="eligibility">Eligibility</h2>
+
+An entry is eligible when a documented basis connects its accountable entity to the United States. There are four bases:
+
+- **U.S. headquarters** — the organization's documented headquarters or principal executive office is in the United States.
+- **U.S. nonprofit or lab** — the entity is a U.S. nonprofit, university laboratory, or research institute.
+- **Documented U.S. control** — the entity is documented as primarily controlled by a U.S. entity, for example a research unit wholly owned by a U.S.-headquartered company.
+- **U.S.-governed project** — for software, datasets, and models: the documented governing or maintaining entity is U.S.-based, such as a U.S. foundation or company.
+
+Some cases do not qualify on their own. A foreign organization with only a U.S. sales office is not eligible on that basis. Organizations with headquarters in two countries, and parent–subsidiary arrangements, get a written assessment on the entry that cites the documents it relies on. Project eligibility rests on documented governance, never on the names or assumed nationalities of contributors. A U.S. fine-tune or wrapper of foreign base weights does not make the base model American; the relationship is recorded as provenance.
+
+There are no exceptions for prominent organizations. Candidates whose basis cannot be documented stay in an internal review queue and are not published. International collaboration is described accurately where it exists; non-U.S. models or dependencies may appear as clearly labeled provenance context, never as catalog members.
+
+Each entry shows its eligibility status (**Eligible**, **Pending review**, or **Excluded**), the basis, a short explanation, the sources, and the date it was assessed. Only eligible entries are published.
+
+<h2 id="openness">Openness</h2>
+
+Openness is described per artifact with a checklist suited to what the artifact is. A language model, a compiler, and a dataset expose different things, so the catalog does not force every artifact onto a single scale built for model weights.
+
+<StatusLegend />
+
+<ChecklistTables />
+
+Availability is kept separate from permission. "Publicly downloadable" does not by itself mean unrestricted, open source, commercially usable, or redistributable. Each release lists its actual licenses and what they apply to.
+
+<h3 id="tiers">Model-disclosure tiers (USASI rubric v0.1)</h3>
+
+For **model releases only**, the checklist and licenses determine a disclosure tier. The tiers are USASI's own editorial categories, versioned as rubric v0.1. They are not an external certification, and they are not the Open Source Initiative's Open Source AI Definition or any other outside standard. The tier is computed automatically from the recorded checklist, so it cannot be typed in by hand or inherited from a family or an organization.
+
+<TierTable />
+
+Tiers are cumulative: every fully open release also counts as open-stack, and every open-stack release also counts as open-weight. When tiers appear as columns, the columns overlap and must not be added together.
+
+**Closed product/API** is a separate label used on organization pages. It describes how a documented product is delivered, such as a hosted API or assistant app. It is not an artifact tier, and it says nothing about other releases from the same organization. An organization is never labeled "open" because it has released one open-weight model.
+
+<h2 id="sources">Source standards</h2>
+
+Each claim cites the source that specifically supports it. In order of preference: the applicable license file; model and dataset cards; official documentation and release notes; the project's repository; the organization's own pages; and regulatory filings for facts such as headquarters. Reputable reporting is used only for the specific claim it supports and is labeled as a news report. An organization's homepage is not adequate evidence for a detailed technical claim.
+
+Every source records its title, publisher, URL, publication date if the page states one, and the date an editor read it. The catalog does not cite search snippets, reproduce source articles, or invent URLs. It does not publish speculative versions, acquisitions, partnerships, staffing, funding, valuations, benchmark scores, or power-capacity figures.
+
+<h2 id="families">Families and releases</h2>
+
+A **model family** record (for example, a named line of models) summarizes the line and links to its releases. A **model release** record describes one specific published release. Licenses, availability, checklists, and tiers attach only to releases, because they can differ between releases in the same family. Family overviews are never counted as releases, and a family never carries its own tier.
+
+Software, datasets, and evaluation tools are **project** records.
+
+<h2 id="dates">Dates</h2>
+
+- **Released** — the documented release date of an artifact, at the precision the evidence gives (a year, a month, or a day). Unknown if not documented.
+- **Entry updated** — the date the record was last substantively edited.
+- **Last reviewed** — the date an editor last checked the record's evidence.
+- **Site generated** — the date the website was built, shown in the footer.
+
+A build never changes the first three. "Recently reviewed" on the homepage means recently checked, not newly released.
+
+<h2 id="uncertainty">Uncertainty</h2>
+
+**Unknown** means the item has not been assessed or the evidence is insufficient. It is never a polite way of saying "no." **Not public** means the evidence documents that something is not available. Where an entry's facts are contested or ambiguous, the record says so in plain language rather than choosing a side.
+
+<h2 id="counts">How counts work</h2>
+
+Every total on the site is **catalog coverage**: the number of published records in this catalog. It is not a census of American AI, and a zero means only that no matching record has been published here.
+
+- **Organization records** include research units and subsidiaries that have their own records. They are also counted separately as "units and subsidiaries," so a parent and its unit are never presented as two independent companies.
+- **Model families** and **model releases** are counted separately.
+- Artifacts are linked to every organization named on the artifact record, so a release maintained by two organizations appears under both. Per-organization columns are therefore never summed.
+- Drafts and archived historical records are excluded from all counts, search, exports, and the sitemap. Archived records keep a clearly labeled historical page so links do not break.
+
+Every number on the [comparison workspace](/matrix/) links to exactly the records it counts.
+
+<h2 id="representation">Equal structural representation</h2>
+
+The two directories — organizations, and open artifacts — have the same prominence in navigation, on the homepage, and in search. Equal prominence does not mean equal numbers: the catalog lists what it can verify, and one directory may be longer than the other. Homepage selections are editorial, explained on the page, alphabetical or date-ordered by default, and never influenced by tips.
+
+<h2 id="badges">Reading the badges</h2>
+
+Status badges always pair an icon with a text label, so no information depends on color. Numbered markers after a statement link to the source list at the bottom of the entry. Links marked with an arrow lead to external sites; everything else stays on USASI.

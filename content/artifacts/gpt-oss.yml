@@ -1,0 +1,105 @@
+slug: gpt-oss
+name: gpt-oss
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [gpt-oss-model-card, gh-gpt-oss]
+organization_slugs: [openai]
+links:
+  - label: gpt-oss repository
+    url: https://github.com/openai/gpt-oss
+    kind: repository
+  - label: gpt-oss-120b on Hugging Face
+    url: https://huggingface.co/openai/gpt-oss-120b
+    kind: model-hub
+  - label: gpt-oss-20b on Hugging Face
+    url: https://huggingface.co/openai/gpt-oss-20b
+    kind: model-hub
+  - label: gpt-oss-120b & gpt-oss-20b Model Card (arXiv)
+    url: https://arxiv.org/abs/2508.10925
+    kind: paper
+summary:
+  text: >-
+    gpt-oss is OpenAI's series of open-weight, text-only reasoning models, released in
+    August 2025 in two sizes: gpt-oss-120b and gpt-oss-20b. Both are mixture-of-experts
+    transformers trained for OpenAI's harmony response format. OpenAI later published
+    gpt-oss-safeguard models fine-tuned from them for safety classification.
+  source_ids: [gpt-oss-model-card, gh-gpt-oss, hf-gpt-oss-safeguard-120b]
+useful_for:
+  text: >-
+    The model card describes use in agentic workflows with instruction following, tool
+    use such as web search and Python execution, adjustable reasoning effort, and
+    structured outputs.
+  source_ids: [gpt-oss-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by OpenAI. Its operating company, OpenAI Group PBC, lists its
+    address in San Francisco, California, in a February 2026 SEC-filed agreement.
+  source_ids: [gpt-oss-model-card, sec-openai-amazon-ecl]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights for both sizes can be downloaded from Hugging Face without gating; see the
+    release records for license terms.
+  source_ids: [hf-gpt-oss-120b, hf-gpt-oss-20b]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2025-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: gpt-oss-model-card
+    title: gpt-oss-120b & gpt-oss-20b Model Card
+    url: https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-08-05
+    accessed_at: 2026-09-29
+  - id: gh-gpt-oss
+    title: openai/gpt-oss (GitHub repository)
+    url: https://github.com/openai/gpt-oss
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gpt-oss-120b
+    title: openai/gpt-oss-120b
+    url: https://huggingface.co/openai/gpt-oss-120b
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gpt-oss-20b
+    title: openai/gpt-oss-20b
+    url: https://huggingface.co/openai/gpt-oss-20b
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-gpt-oss-safeguard-120b
+    title: openai/gpt-oss-safeguard-120b
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29

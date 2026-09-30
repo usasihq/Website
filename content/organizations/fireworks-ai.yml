@@ -1,0 +1,124 @@
+slug: fireworks-ai
+name: Fireworks AI
+legal_name:
+  text: Fireworks.ai, Inc.
+  source_ids: [fireworks-tos]
+website: https://fireworks.ai
+logo_text: FW
+summary:
+  text: >-
+    Fireworks AI operates a hosted platform for serving and training models, offering
+    pay-per-token access to open models from other developers, dedicated deployments, and
+    fine-tuning and reinforcement-learning training services.
+  source_ids: [fireworks-inference, fireworks-training]
+organization_roles: [inference-provider, developer-platform]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Mateo, California
+  country: US
+  source_ids: [fireworks-tos, fireworks-pr-series-d]
+other_locations: []
+founded: null
+sectors: [cloud]
+status_note: null
+products:
+  - id: fireworks-inference
+    name: Fireworks Inference
+    kind: hosted-model-api
+    access: >-
+      Serverless API billed per token, with OpenAI- and Anthropic-compatible endpoints, plus
+      on-demand dedicated deployments and reserved capacity for custom or post-trained models.
+    url: https://fireworks.ai/inference
+    source_ids: [fireworks-inference]
+    last_reviewed: 2026-09-29
+  - id: fireworks-training
+    name: Fireworks Training
+    kind: developer-tool
+    access: >-
+      Training API and managed training jobs for supervised fine-tuning, preference
+      optimization, and reinforcement learning, launched from the UI, the firectl CLI, or the API.
+    url: https://fireworks.ai/training
+    source_ids: [fireworks-training]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      The company's leadership page lists co-founders who previously worked on PyTorch and other
+      infrastructure at Meta and on Vertex AI at Google.
+    source_ids: [fireworks-team]
+  - text: >-
+      In September 2026 Fireworks announced Ember-1, which it describes as its own model built on
+      Kimi K3, offered as a research preview on its serverless service.
+    source_ids: [fireworks-ember-1]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Fireworks.ai, Inc.'s terms of service (updated July 2026) give its DMCA notice address in
+    San Mateo, California, and a July 2026 company press release is datelined San Mateo. Its
+    careers page lists most roles in San Mateo. No foreign parent or headquarters was found.
+  source_ids: [fireworks-tos, fireworks-pr-series-d, fireworks-careers]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Fireworks serves open models from other developers through commercial hosted APIs. Its
+    Ember-1 announcement describes a hosted research preview and does not describe a public
+    weights release.
+  source_ids: [fireworks-inference, fireworks-ember-1]
+hiring_url: https://fireworks.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: fireworks-tos
+    title: Fireworks Terms of Service
+    url: https://fireworks.ai/terms-of-service
+    publisher: Fireworks AI
+    kind: official-page
+    published_at: 2026-07-10
+    accessed_at: 2026-09-29
+  - id: fireworks-pr-series-d
+    title: Fireworks Raises a $1.5 Billion Series D to Lead the Specialized Intelligence Revolution
+    url: https://fortune.com/press-releases/fireworks-raises-1-5b-series-d-reaches-1b-arr-2026-07-16/
+    publisher: Fireworks (via EZ Newswire)
+    kind: announcement
+    published_at: 2026-07-16
+    accessed_at: 2026-09-29
+  - id: fireworks-careers
+    title: Careers
+    url: https://fireworks.ai/careers
+    publisher: Fireworks AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fireworks-inference
+    title: Inference
+    url: https://fireworks.ai/inference
+    publisher: Fireworks AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fireworks-training
+    title: Training
+    url: https://fireworks.ai/training
+    publisher: Fireworks AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fireworks-team
+    title: Team
+    url: https://fireworks.ai/team
+    publisher: Fireworks AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: fireworks-ember-1
+    title: Introducing Ember-1
+    url: https://fireworks.ai/blog/ember-1
+    publisher: Fireworks AI
+    kind: announcement
+    published_at: 2026-09-23
+    accessed_at: 2026-09-29

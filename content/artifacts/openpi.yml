@@ -1,0 +1,178 @@
+slug: openpi
+name: openpi
+kind: research-stack
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Physical Intelligence
+    organization_slug: physical-intelligence
+    source_ids: [openpi-readme]
+organization_slugs: [physical-intelligence]
+links:
+  - label: Repository
+    url: https://github.com/Physical-Intelligence/openpi
+    kind: repository
+  - label: License (Apache 2.0)
+    url: https://github.com/Physical-Intelligence/openpi/blob/main/LICENSE
+    kind: license
+  - label: π0 paper
+    url: https://arxiv.org/abs/2410.24164
+    kind: paper
+summary:
+  text: >-
+    openpi is Physical Intelligence's repository of code and model checkpoints for
+    its π0, π0-FAST, and π0.5 vision-language-action models for robot control. It
+    provides base checkpoints pre-trained on more than 10,000 hours of robot data,
+    fine-tuned checkpoints for the ALOHA, DROID, and LIBERO setups, and JAX and
+    PyTorch code for inference and fine-tuning.
+  source_ids: [openpi-readme]
+useful_for:
+  text: >-
+    The README documents fine-tuning the base models on a user's own robot data
+    (converted to the LeRobot dataset format), serving a policy over a websocket for
+    remote inference, and running the provided checkpoints on DROID and ALOHA robots.
+    It describes the release as an experiment that may not transfer to every robot.
+  source_ids: [openpi-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is published by the Physical Intelligence team, per its README. The π0
+    paper gives the authors' affiliation as Physical Intelligence, San Francisco, California,
+    USA, and The Robot Report describes the company as San Francisco-based; the
+    physical-intelligence record documents its headquarters.
+  source_ids: [openpi-readme, pi0-paper-html, robotreport-openpi]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Code is on GitHub. Checkpoints download from a public Google Cloud Storage bucket
+    (gs://openpi-assets), which the code fetches automatically.
+  source_ids: [openpi-readme, openpi-gcs-listing, robotreport-openpi]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/Physical-Intelligence/openpi/blob/main/LICENSE
+    applies_to: code
+    source_ids: [openpi-license-file]
+license_notes:
+  text: >-
+    The repository's LICENSE file is Apache 2.0. The repository also contains Google's
+    Gemma Terms of Use (LICENSE_GEMMA.txt, added September 2025) without saying which
+    files or checkpoints it covers; the π0 paper says the model uses PaliGemma as its
+    base. The README does not state separate license terms for the checkpoints.
+  source_ids: [openpi-license-file, openpi-gemma-license, openpi-gemma-commit, pi0-paper-html, openpi-readme]
+checklist:
+  source_code:
+    status: public
+    note: Model, training, and serving code in JAX, with PyTorch versions of π0 and π0.5.
+    source_ids: [openpi-readme]
+  documentation:
+    status: public
+    note: The README and docs folder cover installation, inference, fine-tuning, remote inference, and troubleshooting.
+    source_ids: [openpi-readme]
+  training_code:
+    status: public
+    note: >-
+      Fine-tuning scripts and configs are included, plus an approximate open-source
+      version of the pipeline used to train π0-FAST-DROID. The README does not
+      describe releasing the base-model pre-training pipeline.
+    source_ids: [openpi-readme]
+  data_information:
+    status: partial
+    note: >-
+      Fine-tuning examples use public LIBERO and DROID data. The π0 paper describes
+      the pre-training mixture (mostly internal robot data plus OXE, Bridge v2, and
+      DROID); no public release of the internal data was found.
+    source_ids: [openpi-readme, pi0-paper-html]
+  reproducibility_instructions:
+    status: partial
+    note: >-
+      Step-by-step instructions cover LIBERO fine-tuning and evaluation and DROID
+      training; reproducing the base-model pre-training is not covered.
+    source_ids: [openpi-readme]
+run_notes:
+  - text: >-
+      The README estimates, assuming a single NVIDIA GPU, more than 8 GB of GPU memory
+      for inference (example RTX 4090), more than 22.5 GB for LoRA fine-tuning, and
+      more than 70 GB for full fine-tuning (A100 80GB or H100). It states that JAX
+      inference keeps most weights in bfloat16 and training defaults to mixed
+      precision (float32 weights, mostly bfloat16 activations). The repository is
+      tested only on Ubuntu 22.04.
+    source_ids: [openpi-readme]
+provenance:
+  text: >-
+    The π0 paper states that π0 uses PaliGemma, an open 3-billion-parameter
+    vision-language model, as its base model and adds a flow-matching architecture
+    for actions; the openpi model code pairs a PaliGemma backbone with a separate
+    action expert.
+  derived_from:
+    - name: PaliGemma
+      artifact_slug: null
+      url: null
+      note: Vision-language base model named in the π0 paper.
+  source_ids: [pi0-paper-html, openpi-model-code]
+tags: [robotics, vision-language, training, inference]
+publication_status: published
+archive_note: null
+released_at: 2025-02
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: openpi-readme
+    title: openpi README
+    url: https://raw.githubusercontent.com/Physical-Intelligence/openpi/main/README.md
+    publisher: Physical Intelligence
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openpi-license-file
+    title: openpi LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/Physical-Intelligence/openpi/main/LICENSE
+    publisher: Physical Intelligence
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openpi-gemma-license
+    title: openpi LICENSE_GEMMA.txt (Gemma Terms of Use)
+    url: https://raw.githubusercontent.com/Physical-Intelligence/openpi/main/LICENSE_GEMMA.txt
+    publisher: Physical Intelligence
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openpi-gemma-commit
+    title: Commit history for LICENSE_GEMMA.txt
+    url: https://api.github.com/repos/Physical-Intelligence/openpi/commits?path=LICENSE_GEMMA.txt
+    publisher: GitHub
+    kind: repository
+    published_at: 2025-09-30
+    accessed_at: 2026-09-29
+  - id: openpi-model-code
+    title: openpi src/openpi/models/pi0.py
+    url: https://raw.githubusercontent.com/Physical-Intelligence/openpi/main/src/openpi/models/pi0.py
+    publisher: Physical Intelligence
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openpi-gcs-listing
+    title: openpi-assets checkpoint listing
+    url: https://storage.googleapis.com/storage/v1/b/openpi-assets/o?prefix=checkpoints/&delimiter=/
+    publisher: Physical Intelligence (Google Cloud Storage)
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pi0-paper-html
+    title: "π0: A Vision-Language-Action Flow Model for General Robot Control"
+    url: https://arxiv.org/html/2410.24164
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-31
+    accessed_at: 2026-09-29
+  - id: robotreport-openpi
+    title: Physical Intelligence open-sources Pi0 robotics foundation model
+    url: https://www.therobotreport.com/physical-intelligence-open-sources-pi0-robotics-foundation-model/
+    publisher: The Robot Report
+    kind: news
+    published_at: 2025-02-07
+    accessed_at: 2026-09-29

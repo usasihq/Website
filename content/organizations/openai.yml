@@ -1,0 +1,171 @@
+slug: openai
+name: OpenAI
+legal_name:
+  text: OpenAI Group PBC
+  source_ids: [sec-openai-amazon-ecl]
+website: https://openai.com
+logo_text: OAI
+summary:
+  text: >-
+    OpenAI develops AI models and offers them through ChatGPT, the OpenAI API, and
+    developer tools such as Codex. It has also published open-weight models,
+    including the gpt-oss series released under the Apache 2.0 license.
+  source_ids: [openai-dev-home, openai-api-docs, gpt-oss-model-card]
+organization_roles: [model-developer, research-lab, developer-platform, consumer-products]
+ownership_category: privately-held
+legal_form:
+  text: >-
+    Delaware public benefit corporation (OpenAI Group PBC), controlled by OpenAI's
+    nonprofit, which the Delaware attorney general identified in October 2025 as OpenAI,
+    Inc., a Delaware nonprofit corporation.
+  source_ids: [sec-openai-amazon-ecl, de-ag-openai-review, ca-ag-openai-mou]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [sec-openai-amazon-ecl, ca-ag-openai-mou]
+other_locations: []
+founded:
+  year: 2015
+  source_ids: [de-ag-openai-review]
+sectors: [frontier-models, open-models, agents]
+status_note:
+  text: >-
+    In October 2025 the Delaware and California attorneys general said they would not
+    object to OpenAI's recapitalization, under which its for-profit company became a
+    public benefit corporation that the nonprofit continues to control. A February 2026
+    agreement filed with the SEC identifies the company as OpenAI Group PBC, a Delaware
+    public benefit corporation based in San Francisco.
+  source_ids: [de-ag-openai-review, ca-ag-openai-mou, sec-openai-amazon-ecl]
+products:
+  - id: chatgpt
+    name: ChatGPT
+    kind: assistant-app
+    access: >-
+      AI assistant available on the web and in a desktop app, with a Free plan and paid
+      Go, Plus, Pro, Business, and Enterprise/Edu plans, per OpenAI's ChatGPT documentation.
+    url: https://learn.chatgpt.com/docs
+    source_ids: [chatgpt-docs, chatgpt-pricing]
+    last_reviewed: 2026-09-29
+  - id: openai-api
+    name: OpenAI API
+    kind: hosted-model-api
+    access: >-
+      Pay-as-you-go API access to OpenAI's hosted models using API keys, including the
+      Responses, Realtime, and Batch APIs, per the developer documentation.
+    url: https://developers.openai.com/api/docs
+    source_ids: [openai-api-docs]
+    last_reviewed: 2026-09-29
+  - id: codex-cli
+    name: Codex CLI
+    kind: developer-tool
+    access: >-
+      Open-source (Apache 2.0) terminal coding agent; users sign in with a ChatGPT plan
+      or use an API key.
+    url: https://github.com/openai/codex
+    source_ids: [openai-codex-repo]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Under commitments recorded by the Delaware attorney general, the nonprofit holds
+      sole authority to appoint and remove the public benefit corporation's directors.
+    source_ids: [de-ag-openai-review]
+  - text: >-
+      OpenAI's memorandum of understanding with the California attorney general states
+      that the nonprofit and the public benefit corporation will keep their headquarters
+      in California.
+    source_ids: [ca-ag-openai-mou]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    OpenAI Group PBC lists its address as 1455 3rd Street, San Francisco, California, in
+    a February 2026 agreement filed with the SEC, and OpenAI committed to the California
+    attorney general to keep its nonprofit and PBC headquarters in California. The Delaware
+    attorney general identified its nonprofit parent in October 2025 as OpenAI, Inc., a
+    Delaware nonprofit corporation.
+  source_ids: [sec-openai-amazon-ecl, ca-ag-openai-mou, de-ag-openai-review]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    OpenAI offers most of its models only as hosted services through ChatGPT and its
+    API. It has published some model weights on Hugging Face, including gpt-oss-120b and
+    gpt-oss-20b under Apache 2.0; those releases do not make its other models open.
+  source_ids: [hf-openai, gpt-oss-model-card, openai-api-docs]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-09-29
+  - id: de-ag-openai-review
+    title: AG Jennings completes review of OpenAI recapitalization
+    url: https://news.delaware.gov/2025/10/28/ag-jennings-completes-review-of-openai-recapitalization/
+    publisher: State of Delaware
+    kind: official-page
+    published_at: 2025-10-28
+    accessed_at: 2026-09-29
+  - id: ca-ag-openai-mou
+    title: Memorandum of Understanding between OpenAI and the California Attorney General (Notice of Conditions of Non-Objection)
+    url: https://oag.ca.gov/system/files/attachments/press-docs/Final%20Executed%20MOU%20Between%20OpenAI%20and%20California%20AG%20re%20Notice%20of%20Conditions%20of%20Non-Objection%20%2810.27.2025%29%20%28Signed%20by%20OpenAI%29%20%28Signed%20by%20CA%20DOJ%29.pdf
+    publisher: California Department of Justice
+    kind: filing
+    published_at: 2025-10-27
+    accessed_at: 2026-09-29
+  - id: openai-dev-home
+    title: OpenAI for developers
+    url: https://developers.openai.com/
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openai-api-docs
+    title: OpenAI API documentation
+    url: https://developers.openai.com/api/docs
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chatgpt-docs
+    title: ChatGPT and Codex documentation
+    url: https://learn.chatgpt.com/docs
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: chatgpt-pricing
+    title: ChatGPT and Codex pricing
+    url: https://learn.chatgpt.com/codex/pricing
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: openai-codex-repo
+    title: openai/codex (GitHub repository)
+    url: https://github.com/openai/codex
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: gpt-oss-model-card
+    title: gpt-oss-120b & gpt-oss-20b Model Card
+    url: https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-08-05
+    accessed_at: 2026-09-29
+  - id: hf-openai
+    title: OpenAI on Hugging Face
+    url: https://huggingface.co/openai
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

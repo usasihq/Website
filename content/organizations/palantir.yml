@@ -1,0 +1,110 @@
+slug: palantir
+name: Palantir
+legal_name:
+  text: Palantir Technologies Inc.
+  source_ids: [pltr-10k-2025]
+website: https://www.palantir.com
+logo_text: P
+summary:
+  text: >-
+    Palantir builds software platforms for data integration, analytics, and operational decision-making used by
+    government and commercial customers. Its Artificial Intelligence Platform (AIP) connects large language models
+    with customer data and workflows inside its Foundry and Gotham platforms.
+  source_ids: [pltr-10k-2025]
+organization_roles: [enterprise-software, data-platform]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation, incorporated on May 6, 2003; Class A common stock listed on Nasdaq (PLTR).
+  source_ids: [pltr-10k-2025]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Aventura, Florida
+  country: US
+  source_ids: [pltr-10q-2026q2, pltr-10k-2025]
+other_locations: []
+founded:
+  year: 2003
+  source_ids: [pltr-10k-2025]
+sectors: [enterprise, data, defense, agents]
+status_note:
+  text: >-
+    Palantir's Form 10-K for fiscal 2025 (filed February 2026) lists its principal executive offices in Aventura,
+    Florida, and gives its former address in Denver, Colorado, which the filing describes as the previous location of
+    its corporate headquarters. The Form 10-Q for the quarter ended June 30, 2026 lists the same Aventura address.
+  source_ids: [pltr-10k-2025, pltr-10q-2026q2]
+products:
+  - id: aip
+    name: Palantir AIP (Artificial Intelligence Platform)
+    kind: enterprise-software
+    access: >-
+      Software platform, bundled with Foundry, Gotham, and Apollo, that gives organizations access to open-source,
+      self-hosted, and commercial large language models for building AI workflows and agents on their own data;
+      documented builder tools include AIP Logic and AIP Evals.
+    url: https://www.palantir.com/platforms/aip/
+    source_ids: [pltr-10k-2025, pltr-aip-docs]
+    last_reviewed: 2026-09-29
+  - id: foundry
+    name: Palantir Foundry
+    kind: data-platform
+    access: >-
+      Data operations platform for integrating data, building pipelines and analytics, and developing applications on
+      a shared data model (the Ontology); the company reports that all of its commercial customers and many
+      government customers use it.
+    url: https://www.palantir.com/platforms/foundry/
+    source_ids: [pltr-10k-2025]
+    last_reviewed: 2026-09-29
+  - id: gotham
+    name: Palantir Gotham
+    kind: enterprise-software
+    access: >-
+      Software platform for integrating multi-domain and sensor data for operational decision-making; the company
+      describes it as used broadly across government functions, including defense and intelligence operations.
+    url: https://www.palantir.com/platforms/gotham/
+    source_ids: [pltr-10k-2025]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      The company states it began by building software for the U.S. intelligence community to assist in
+      counterterrorism investigations and later began working with commercial enterprises.
+    source_ids: [pltr-10k-2025]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Palantir Technologies Inc. is a Delaware corporation whose SEC filings list its principal executive offices in
+    Aventura, Florida (Form 10-K for fiscal 2025 and Form 10-Q for the quarter ended June 30, 2026).
+  source_ids: [pltr-10k-2025, pltr-10q-2026q2]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Palantir delivers its AI capabilities through proprietary, commercially licensed software platforms. This catalog
+    has no record of public model weights from Palantir.
+  source_ids: [pltr-10k-2025]
+hiring_url: https://www.palantir.com/careers/
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: pltr-10k-2025
+    title: Palantir Technologies Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://investors.palantir.com/files/2025%20FY%20PLTR%2010-K.pdf
+    publisher: Palantir Technologies Inc.
+    kind: filing
+    published_at: 2026-02-17
+    accessed_at: 2026-09-29
+  - id: pltr-10q-2026q2
+    title: Palantir Technologies Inc. Form 10-Q for the quarterly period ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/0001321655/000132165526000041/pltr-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-04
+    accessed_at: 2026-09-29
+  - id: pltr-aip-docs
+    title: AI Platform (AIP) Overview
+    url: https://www.palantir.com/docs/foundry/aip/overview/
+    publisher: Palantir Technologies Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29

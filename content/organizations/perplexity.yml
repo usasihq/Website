@@ -1,0 +1,112 @@
+slug: perplexity
+name: Perplexity
+legal_name:
+  text: Perplexity AI, Inc.
+  source_ids: [pplx-form-d-2023, pplx-app-store]
+website: https://www.perplexity.ai
+logo_text: P
+summary:
+  text: >-
+    Perplexity makes an AI search and answer assistant that responds to questions with cited web sources. It also
+    offers a developer API platform with web-grounded agent, search, embeddings, and model-routing APIs.
+  source_ids: [pplx-app-store, pplx-api-overview]
+organization_roles: [consumer-products, developer-platform, model-developer]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation, incorporated in 2022, per its 2023 SEC Form D notice.
+  source_ids: [pplx-form-d-2023]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [pplx-form-d-2023, pplx-gsa-elibrary]
+other_locations: []
+founded:
+  year: 2022
+  source_ids: [pplx-form-d-2023]
+sectors: [agents]
+status_note: null
+products:
+  - id: perplexity-app
+    name: Perplexity
+    kind: assistant-app
+    access: >-
+      AI search and chat assistant that answers questions with cited sources; distributed as a consumer app,
+      including through the Apple App Store.
+    url: https://apps.apple.com/us/app/perplexity-ask-anything/id1668000334
+    source_ids: [pplx-app-store]
+    last_reviewed: 2026-09-29
+  - id: perplexity-api-platform
+    name: Perplexity API Platform
+    kind: hosted-model-api
+    access: >-
+      Paid, API-key-based developer platform with an Agent API for web-grounded answers with citations using models
+      from several providers, plus Search, Embeddings, and Router APIs.
+    url: https://docs.perplexity.ai/docs/getting-started/overview
+    source_ids: [pplx-api-overview, pplx-agent-api]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Perplexity AI, Inc. is a Delaware corporation. Its 2023 SEC Form D notice lists its principal place of business
+    in San Francisco, California, and its current GSA eLibrary contractor listing gives a San Francisco address. The
+    company's own website could not be retrieved for this review, so these government records are the basis.
+  source_ids: [pplx-form-d-2023, pplx-gsa-elibrary]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Perplexity's main products are a hosted assistant and hosted APIs. It also publishes some model weights on
+    Hugging Face, such as the pplx-embed text embedding models, which the model card lists under the MIT license
+    and describes as derived from Qwen3 through continued pretraining by Perplexity.
+  source_ids: [pplx-app-store, pplx-api-overview, pplx-embed-card]
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: pplx-form-d-2023
+    title: Perplexity AI, Inc. Form D notice of exempt offering of securities
+    url: https://www.sec.gov/Archives/edgar/data/1972171/000156761923005521/xslFormDX01/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2023-04-05
+    accessed_at: 2026-09-29
+  - id: pplx-gsa-elibrary
+    title: GSA eLibrary contractor information for Perplexity AI, Inc (contract 47QTCA26D000N)
+    url: https://www.gsaelibrary.gsa.gov/ElibMain/contractorInfo.do?contractNumber=47QTCA26D000N&contractorName=PERPLEXITY+AI,+INC&executeQuery=YES
+    publisher: U.S. General Services Administration
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pplx-app-store
+    title: Perplexity - AI Search & Chat App - App Store
+    url: https://apps.apple.com/us/app/perplexity-ask-anything/id1668000334
+    publisher: Apple App Store (developer Perplexity AI, Inc.)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pplx-api-overview
+    title: Overview - Perplexity
+    url: https://docs.perplexity.ai/docs/getting-started/overview
+    publisher: Perplexity
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pplx-agent-api
+    title: Agent API - Perplexity
+    url: https://docs.perplexity.ai/docs/agent-api/quickstart
+    publisher: Perplexity
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pplx-embed-card
+    title: perplexity-ai/pplx-embed-v1-4b model card
+    url: https://huggingface.co/perplexity-ai/pplx-embed-v1-4b
+    publisher: Perplexity (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29

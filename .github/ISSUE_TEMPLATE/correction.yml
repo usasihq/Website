@@ -1,0 +1,53 @@
+name: Report a correction
+description: Something in a catalog entry is wrong, outdated, or unsupported by its source.
+title: "Correction: "
+labels: [correction]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep USASI accurate. Corrections are handled the same way for everyone, including listed organizations.
+        Please point to a source that supports the correction — an official page, license file, model or dataset card, repository, or filing.
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      description: The entry's page URL or content file (for example content/organizations/example.yml).
+    validations:
+      required: true
+  - type: textarea
+    id: statement
+    attributes:
+      label: What is wrong?
+      description: Quote or describe the specific statement, field, or label.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should it say?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Supporting source (URL)
+      description: A page that directly supports the correction.
+    validations:
+      required: true
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Your relationship to the entry
+      description: Optional. Disclosure helps review; it never changes the evidence standard.
+      options:
+        - None
+        - I work for or maintain the listed organization or project
+        - Other (explain below)
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have read the cited source myself and it supports the correction.
+          required: true

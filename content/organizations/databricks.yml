@@ -1,0 +1,144 @@
+slug: databricks
+name: Databricks
+legal_name: null
+website: https://www.databricks.com
+logo_text: D
+summary:
+  text: >-
+    Databricks sells a data and AI platform built on a lakehouse architecture that runs on AWS, Azure, and Google
+    Cloud. The platform includes tools for building and serving AI agents and models, and Databricks-hosted access to
+    open models through its Foundation Model APIs.
+  source_ids: [databricks-platform, databricks-ai-product, databricks-fmapi-docs]
+organization_roles: [data-platform, enterprise-software, inference-provider, model-developer]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [databricks-about]
+other_locations: []
+founded:
+  year: 2013
+  source_ids: [databricks-about]
+sectors: [data, enterprise, agents]
+status_note: null
+products:
+  - id: data-ai-platform
+    name: Databricks Data + AI Platform
+    kind: data-platform
+    access: >-
+      Commercial platform for data engineering, analytics, and AI built around a lakehouse architecture; Databricks
+      lists it as available on AWS, Azure, and Google Cloud.
+    url: https://www.databricks.com/product/data-intelligence-platform
+    source_ids: [databricks-platform]
+    last_reviewed: 2026-09-29
+  - id: agent-bricks
+    name: Agent Bricks
+    kind: developer-tool
+    access: >-
+      Component of the Databricks platform for building, evaluating, governing, and deploying AI agents grounded in
+      an organization's data.
+    url: https://www.databricks.com/product/artificial-intelligence/agent-bricks
+    source_ids: [databricks-agent-bricks, databricks-ai-product]
+    last_reviewed: 2026-09-29
+  - id: foundation-model-apis
+    name: Databricks Foundation Model APIs
+    kind: hosted-model-api
+    access: >-
+      Serving endpoints for open models hosted by Databricks, offered to Databricks customers on a pay-per-token or
+      provisioned-throughput basis.
+    url: https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/
+    source_ids: [databricks-fmapi-docs]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Databricks states it was founded by the original creators of the lakehouse architecture and of the open source
+      projects Apache Spark, Delta Lake, MLflow, and Unity Catalog.
+    source_ids: [databricks-about]
+  - text: >-
+      Databricks retired its DBRX models from Foundation Model APIs pay-per-token and from fine-tuning on April 30,
+      2025, and from provisioned throughput on December 19, 2025.
+    source_ids: [databricks-retired-models]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: Databricks states on its official About page that it is headquartered in San Francisco, California.
+  source_ids: [databricks-about]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Databricks released DBRX Base and DBRX Instruct weights in March 2024 under its custom Databricks Open Model
+    License; as of this review its Hugging Face organization lists no public models, and DBRX is kept here as an
+    archived record. The same organization lists public datasets such as databricks-dolly-15k.
+  source_ids: [databricks-dbrx-blog, databricks-open-model-license, databricks-hf-org]
+hiring_url: https://www.databricks.com/company/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: databricks-about
+    title: "About Databricks: The data and AI company"
+    url: https://www.databricks.com/company/about-us
+    publisher: Databricks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-platform
+    title: The Databricks Data and AI Platform
+    url: https://www.databricks.com/product/data-intelligence-platform
+    publisher: Databricks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-ai-product
+    title: Production-quality ML and GenAI
+    url: https://www.databricks.com/product/artificial-intelligence
+    publisher: Databricks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-agent-bricks
+    title: Agent Bricks
+    url: https://www.databricks.com/product/artificial-intelligence/agent-bricks
+    publisher: Databricks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-fmapi-docs
+    title: Databricks Foundation Model APIs | Databricks on AWS
+    url: https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/
+    publisher: Databricks
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-retired-models
+    title: AI models maintenance policy | Databricks on AWS
+    url: https://docs.databricks.com/aws/en/machine-learning/retired-models-policy
+    publisher: Databricks
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: databricks-dbrx-blog
+    title: "Introducing DBRX: A New State-of-the-Art Open LLM"
+    url: https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+    publisher: Databricks
+    kind: announcement
+    published_at: 2024-03-27
+    accessed_at: 2026-09-29
+  - id: databricks-open-model-license
+    title: Databricks Open Model License
+    url: https://www.databricks.com/legal/open-model-license
+    publisher: Databricks
+    kind: license
+    published_at: 2024-03-27
+    accessed_at: 2026-09-29
+  - id: databricks-hf-org
+    title: Databricks organization on Hugging Face
+    url: https://huggingface.co/databricks
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29

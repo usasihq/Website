@@ -1,0 +1,109 @@
+slug: broadcom
+name: Broadcom
+legal_name:
+  text: Broadcom Inc.
+  source_ids: [broadcom-10q-q3-fy2026]
+website: https://www.broadcom.com
+logo_text: BRC
+summary:
+  text: >-
+    Broadcom designs semiconductor products and sells infrastructure software, including
+    VMware Cloud Foundation. Its AI-related semiconductor offerings include custom
+    accelerators (XPUs), Ethernet switching and routing silicon, Ethernet NICs, and optical
+    components, as well as racks and systems based on its XPUs.
+  source_ids: [broadcom-10k-fy2025]
+organization_roles: [chip-designer, enterprise-software]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation
+  source_ids: [broadcom-10q-q3-fy2026, broadcom-8k12b-2018]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Palo Alto, California
+  country: US
+  source_ids: [broadcom-10q-q3-fy2026]
+other_locations: []
+founded: null
+sectors: [chips, enterprise]
+status_note: null
+products:
+  - id: tomahawk-6
+    name: Tomahawk 6 (BCM78910 series) Ethernet switch
+    kind: hardware
+    access: >-
+      Ethernet switch chip series that Broadcom describes as optimized for scale-up and
+      scale-out AI networks used for training and inference, with applications in data
+      center switches; the product page directs inquiries to Broadcom's Contact Sales page.
+    url: https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm78910-series
+    source_ids: [broadcom-tomahawk6-page]
+    last_reviewed: 2026-09-29
+  - id: vmware-private-ai-foundation
+    name: VMware Private AI Foundation with NVIDIA
+    kind: enterprise-software
+    access: >-
+      Multi-component solution built on VMware Cloud Foundation for running generative AI
+      workloads on systems with NVIDIA GPUs, including deep learning VMs, GPU-accelerated
+      Kubernetes clusters, and Private AI Services for delivering generative AI applications
+      in a model-as-a-service way.
+    url: https://techdocs.broadcom.com/us/en/vmware-cis/private-ai/foundation-with-nvidia/9-1.html
+    source_ids: [broadcom-vmware-pai-docs]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      The publicly traded parent of the Broadcom group became a Delaware corporation in April
+      2018, when Broadcom Limited, a Singapore company, became a subsidiary of Broadcom Inc.
+      through a court-approved scheme of arrangement.
+    source_ids: [broadcom-8k12b-2018]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Broadcom Inc. is a Delaware corporation with principal executive offices in Palo Alto,
+    California, per the cover page of its Form 10-Q for the quarter ended August 2, 2026. The
+    group's parent company redomiciled from Singapore to Delaware in April 2018, per its Form
+    8-K reporting completion of the redomiciliation; the current parent is the Delaware entity.
+  source_ids: [broadcom-10q-q3-fy2026, broadcom-8k12b-2018]
+  assessed_at: 2026-09-29
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: broadcom-10k-fy2025
+    title: Broadcom Inc. Form 10-K for the fiscal year ended November 2, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-12-18
+    accessed_at: 2026-09-29
+  - id: broadcom-10q-q3-fy2026
+    title: Broadcom Inc. Form 10-Q for the quarter ended August 2, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-09-10
+    accessed_at: 2026-09-29
+  - id: broadcom-8k12b-2018
+    title: Broadcom Inc. Form 8-K (8-K12B) reporting completion of redomiciliation
+    url: https://www.sec.gov/Archives/edgar/data/1730168/000119312518107559/d562806d8k12b.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2018-04-04
+    accessed_at: 2026-09-29
+  - id: broadcom-tomahawk6-page
+    title: Tomahawk 6 / BCM78910 Series
+    url: https://www.broadcom.com/products/ethernet-connectivity/switching/strataxgs/bcm78910-series
+    publisher: Broadcom
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: broadcom-vmware-pai-docs
+    title: VMware Private AI Foundation with NVIDIA 9.1
+    url: https://techdocs.broadcom.com/us/en/vmware-cis/private-ai/foundation-with-nvidia/9-1.html
+    publisher: Broadcom
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29

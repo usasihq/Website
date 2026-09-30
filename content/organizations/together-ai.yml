@@ -1,0 +1,127 @@
+slug: together-ai
+name: Together AI
+legal_name:
+  text: Together Computer, Inc.
+  source_ids: [together-tos]
+website: https://www.together.ai
+logo_text: TA
+summary:
+  text: >-
+    Together AI runs a cloud platform for inference, fine-tuning, and training on open-weight
+    models from many developers, and rents GPU clusters. Its website and APIs are operated by
+    Together Computer, Inc.
+  source_ids: [together-tos, together-serverless, together-gpu-clusters]
+organization_roles: [inference-provider, compute-infrastructure, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [together-tos]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [together-tos, together-pr-genesis, bisnow-together-hq]
+other_locations: []
+founded:
+  year: 2022
+  source_ids: [together-pr-genesis]
+sectors: [cloud, open-models]
+status_note: null
+products:
+  - id: serverless-inference
+    name: Together Serverless Inference
+    kind: hosted-model-api
+    access: >-
+      Pay-per-token API for hundreds of open-source models across text, image, video, code,
+      and voice, with an OpenAI-compatible interface.
+    url: https://www.together.ai/serverless-inference
+    source_ids: [together-serverless]
+    last_reviewed: 2026-09-29
+  - id: fine-tuning
+    name: Together Fine-Tuning
+    kind: developer-tool
+    access: >-
+      Managed LoRA and full fine-tuning of open-source models, launched from a web UI, API, or
+      CLI, with cost estimates shown before a job starts.
+    url: https://www.together.ai/fine-tuning
+    source_ids: [together-fine-tuning]
+    last_reviewed: 2026-09-29
+  - id: gpu-clusters
+    name: Together GPU Clusters
+    kind: compute-service
+    access: >-
+      Self-serve NVIDIA GPU clusters provisioned through a console, CLI, SDK, API, or Terraform,
+      with managed Kubernetes or Slurm; on-demand hourly or reserved pricing.
+    url: https://www.together.ai/gpu-clusters
+    source_ids: [together-gpu-clusters]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      In April 2026 Together AI announced that it had joined the U.S. Department of Energy's
+      Genesis Mission.
+    source_ids: [together-pr-genesis]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Together AI's operating entity, Together Computer, Inc., is a Delaware corporation whose
+    terms of service give a San Francisco, California address. Its 2026 press releases are
+    datelined San Francisco, and April 2026 reporting describes a new corporate headquarters
+    lease in San Francisco. No foreign parent or headquarters was found.
+  source_ids: [together-tos, together-pr-genesis, bisnow-together-hq]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Together AI's products are commercial hosted services that serve open-weight models from
+    other developers. This record does not assess any model, dataset, or software release by
+    Together AI.
+  source_ids: [together-serverless]
+hiring_url: https://www.together.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: together-tos
+    title: Terms of Service
+    url: https://www.together.ai/terms-of-service
+    publisher: Together AI
+    kind: official-page
+    published_at: 2026-05-19
+    accessed_at: 2026-09-29
+  - id: together-serverless
+    title: Serverless Inference
+    url: https://www.together.ai/serverless-inference
+    publisher: Together AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: together-fine-tuning
+    title: Fine-Tuning
+    url: https://www.together.ai/fine-tuning
+    publisher: Together AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: together-gpu-clusters
+    title: GPU Clusters
+    url: https://www.together.ai/gpu-clusters
+    publisher: Together AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: together-pr-genesis
+    title: Together AI Joins U.S. Department of Energy's Genesis Mission to Accelerate American Scientific Discovery
+    url: https://www.prnewswire.com/news-releases/together-ai-joins-us-department-of-energys-genesis-mission-to-accelerate-american-scientific-discovery-302752514.html
+    publisher: Together AI (via PR Newswire)
+    kind: announcement
+    published_at: 2026-04-27
+    accessed_at: 2026-09-29
+  - id: bisnow-together-hq
+    title: Together AI To Establish New HQ In San Francisco Design District
+    url: https://www.bisnow.com/san-francisco/news/office/ai-companies-lease-352k-sf-san-francisco-richmond-134166
+    publisher: Bisnow
+    kind: news
+    published_at: 2026-04-16
+    accessed_at: 2026-09-29

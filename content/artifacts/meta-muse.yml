@@ -1,0 +1,103 @@
+slug: meta-muse
+name: Muse (Meta)
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Meta (Meta Superintelligence Labs)
+    organization_slug: meta
+    source_ids: [muse-spark-announcement, muse-glimmer-model-card]
+organization_slugs: [meta]
+links:
+  - label: Muse Spark announcement
+    url: https://ai.meta.com/blog/introducing-muse-spark-msl/
+    kind: release-notes
+  - label: Meta AI developer site
+    url: https://dev.meta.ai/
+    kind: website
+  - label: Muse Glimmer on Hugging Face
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    kind: model-hub
+summary:
+  text: >-
+    Muse is a model family from Meta Superintelligence Labs, introduced with Muse Spark in April
+    2026. Muse Spark versions are offered through Meta AI and the Meta Model API without public
+    weights. Muse Glimmer, released in August 2026, is an open-weight model distilled from Muse
+    Spark. Meta's developer site also lists Muse Image and Muse Voice Transcribe.
+  source_ids: [muse-spark-announcement, muse-glimmer-model-card, meta-dev-site]
+useful_for:
+  text: >-
+    Meta describes Muse Spark as a multimodal reasoning model with tool use and multi-agent
+    orchestration, and Muse Glimmer as a model for local agentic and coding tasks on consumer
+    hardware.
+  source_ids: [muse-spark-blog, muse-glimmer-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Meta attributes the Muse models to Meta Superintelligence Labs, a unit of Meta. Meta
+    Platforms, Inc. has its principal executive offices in Menlo Park, California, per its
+    Form 10-K.
+  source_ids: [muse-spark-announcement, meta-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: >-
+    Varies by model. Muse Spark is available through Meta products and a paid API with no public
+    weights; Muse Glimmer weights are downloadable (see its release record).
+  source_ids: [muse-spark-announcement, meta-model-api, muse-glimmer-model-card]
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, multimodal, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-04-08
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: muse-spark-announcement
+    title: "Introducing Muse Spark: Meta's Most Powerful Model Yet"
+    url: https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-04-08
+    accessed_at: 2026-09-29
+  - id: muse-spark-blog
+    title: "Introducing Muse Spark: Scaling Towards Personal Superintelligence"
+    url: https://ai.meta.com/blog/introducing-muse-spark-msl/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-04-08
+    accessed_at: 2026-09-29
+  - id: meta-model-api
+    title: Meta Model API
+    url: https://dev.meta.ai/products/meta-model-api/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: meta-dev-site
+    title: Products & Solutions for AI Developers | Meta
+    url: https://dev.meta.ai/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: muse-glimmer-model-card
+    title: Muse Glimmer Model Card (meta-models/Muse-Glimmer-30B)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: 2026-08
+    accessed_at: 2026-09-29
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-09-29

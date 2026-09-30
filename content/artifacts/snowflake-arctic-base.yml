@@ -1,0 +1,141 @@
+slug: snowflake-arctic-base
+name: Snowflake Arctic Base
+kind: model
+record_level: release
+family_slug: snowflake-arctic
+version: "Base"
+maintainers:
+  - name: Snowflake AI Research
+    organization_slug: snowflake
+    source_ids: [arctic-base-card]
+organization_slugs: [snowflake]
+links:
+  - label: Model card
+    url: https://huggingface.co/Snowflake/snowflake-arctic-base
+    kind: model-hub
+  - label: Snowflake-Labs/snowflake-arctic repository
+    url: https://github.com/Snowflake-Labs/snowflake-arctic
+    kind: repository
+  - label: Apache License 2.0 (repository LICENSE)
+    url: https://github.com/Snowflake-Labs/snowflake-arctic/blob/main/LICENSE
+    kind: license
+  - label: Arctic announcement
+    url: https://www.snowflake.com/en/blog/arctic-open-efficient-foundation-language-models-snowflake/
+    kind: release-notes
+summary:
+  text: >-
+    Arctic Base is the pretrained checkpoint of Snowflake Arctic, a dense-MoE hybrid transformer (a 10B dense model
+    plus a residual 128x3.66B MoE MLP) with 480B total and 17B active parameters, pretrained from scratch by the
+    Snowflake AI Research Team. It takes text input and generates text and code.
+  source_ids: [arctic-base-card]
+useful_for: null
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Snowflake Arctic Base was developed by the Snowflake AI Research Team at Snowflake Inc., whose current Form 10-K lists its
+    principal executive offices in Menlo Park, California.
+  source_ids: [arctic-base-card, snow-10k-fy2026]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating; loading with Transformers requires trust_remote_code for the custom Arctic model code.
+  source_ids: [arctic-base-card]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/Snowflake-Labs/snowflake-arctic/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [arctic-base-card]
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/Snowflake-Labs/snowflake-arctic/blob/main/LICENSE
+    applies_to: code
+    source_ids: [arctic-license, arctic-github]
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: Checkpoint published on Hugging Face under Apache-2.0 without gating.
+    source_ids: [arctic-base-card]
+  inference_code:
+    status: public
+    note: >-
+      Custom modeling code for Transformers is included with the checkpoint, and the GitHub repository provides
+      Hugging Face and vLLM inference examples.
+    source_ids: [arctic-base-card, arctic-github]
+  training_code:
+    status: unknown
+    note: >-
+      The repository's training folder contains a LoRA fine-tuning script and a checkpoint converter; pretraining code
+      for Arctic was not located.
+    source_ids: [arctic-github]
+  training_data_information:
+    status: unknown
+    note: The model card refers readers to a cookbook series for data details; this review did not verify those pages.
+    source_ids: [arctic-base-card]
+  training_recipe:
+    status: unknown
+    note: >-
+      The announcement describes a cookbook series on pretraining, fine-tuning, data, and systems; this review did not
+      verify whether it documents the full Arctic training configuration.
+    source_ids: [arctic-blog]
+  evaluation_materials:
+    status: partial
+    note: Benchmark comparisons are published as figures in the repository README; evaluation code was not located.
+    source_ids: [arctic-github]
+run_notes:
+  - text: >-
+      The model card documents use with Transformers 4.39 or later (with trust_remote_code) and DeepSpeed 0.14.2 or
+      later, and the GitHub repository includes a vLLM deployment tutorial.
+    source_ids: [arctic-base-card, arctic-github]
+  - text: >-
+      Because of the model size, the model card recommends a single 8xH100 instance; its example loads the model in
+      bfloat16 with DeepSpeed FP8 quantization (FP6 is also supported) and a max_memory setting of 150GiB per GPU.
+    source_ids: [arctic-base-card]
+provenance:
+  text: Pretrained from scratch by the Snowflake AI Research Team, per the model card.
+  derived_from: []
+  source_ids: [arctic-base-card]
+tags: [language-model, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2024-04-24
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: arctic-base-card
+    title: Snowflake/snowflake-arctic-base model card
+    url: https://huggingface.co/Snowflake/snowflake-arctic-base
+    publisher: Snowflake AI Research (Hugging Face)
+    kind: model-card
+    published_at: 2024-04-24
+    accessed_at: 2026-09-29
+  - id: arctic-license
+    title: LICENSE (Apache License 2.0), Snowflake-Labs/snowflake-arctic
+    url: https://github.com/Snowflake-Labs/snowflake-arctic/blob/main/LICENSE
+    publisher: Snowflake-Labs (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: snow-10k-fy2026
+    title: Snowflake Inc. Form 10-K for the fiscal year ended January 31, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1640147/000164014726000008/snow-20260131.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-03-20
+    accessed_at: 2026-09-29
+  - id: arctic-github
+    title: Snowflake-Labs/snowflake-arctic
+    url: https://github.com/Snowflake-Labs/snowflake-arctic
+    publisher: Snowflake-Labs (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: arctic-blog
+    title: "Snowflake Arctic: The Best LLM for Enterprise AI — Efficiently Intelligent, Truly Open"
+    url: https://www.snowflake.com/en/blog/arctic-open-efficient-foundation-language-models-snowflake/
+    publisher: Snowflake
+    kind: announcement
+    published_at: 2024-04-24
+    accessed_at: 2026-09-29

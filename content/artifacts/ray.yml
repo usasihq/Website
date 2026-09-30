@@ -1,0 +1,167 @@
+slug: ray
+name: Ray
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: PyTorch Foundation (hosted project)
+    organization_slug: pytorch-foundation
+    source_ids: [pytorch-ray, pytorch-foundation-page]
+organization_slugs: [pytorch-foundation, linux-foundation, anyscale]
+links:
+  - label: Repository
+    url: https://github.com/ray-project/ray
+    kind: repository
+  - label: Documentation
+    url: https://docs.ray.io
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/ray-project/ray/blob/master/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/ray-project/ray/releases
+    kind: release-notes
+summary:
+  text: >-
+    Ray is an open-source distributed computing framework for AI workloads, with a core
+    distributed runtime and libraries for data processing, training, and serving. It was
+    developed at UC Berkeley's RISELab and became a PyTorch Foundation-hosted project in
+    October 2025, contributed by Anyscale.
+  source_ids: [ray-repo, anyscale-about, pytorch-ray]
+useful_for:
+  text: >-
+    Scaling Python data processing, model training, and model serving workloads from a single
+    machine to a cluster.
+  source_ids: [pytorch-ray]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Ray is a PyTorch Foundation-hosted project, announced in October 2025. The PyTorch
+    Foundation describes itself as hosted by the Linux Foundation, whose privacy policy gives a
+    contact mailing address in San Francisco, California. Anyscale (San Francisco) contributed
+    the project. Anyscale's pending acquisition by Nscale Limited, a company incorporated in
+    England and Wales, does not move Ray: the companies' July 2026 announcement states that Ray
+    was donated to the PyTorch Foundation and remains community governed.
+  source_ids: [pytorch-ray, pytorch-foundation-page, lf-privacy, anyscale-about, anyscale-nscale-press, nscale-s1]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [ray-repo, ray-license]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/ray-project/ray/blob/master/LICENSE
+    applies_to: code
+    source_ids: [ray-license]
+license_notes:
+  text: >-
+    The LICENSE file applies the Apache License 2.0 to Ray and appends notices for code adapted
+    from other projects under their own licenses (for example, MIT-licensed code from OpenAI).
+  source_ids: [ray-license]
+checklist:
+  source_code:
+    status: public
+    note: null
+    source_ids: [ray-repo]
+  documentation:
+    status: public
+    note: null
+    source_ids: [ray-install]
+  installation:
+    status: public
+    note: >-
+      Installable with pip; community-maintained conda packages and Docker images from the
+      rayproject/ray Docker Hub repository are documented.
+    source_ids: [ray-install]
+  supported_platforms:
+    status: public
+    note: >-
+      Documented as officially supporting Linux on x86_64 and aarch64 and Apple silicon; Windows
+      support is in beta.
+    source_ids: [ray-install]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub.
+    source_ids: [ray-releases]
+run_notes: []
+provenance: null
+tags: [distributed-computing, training, serving]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: ray-repo
+    title: ray-project/ray
+    url: https://github.com/ray-project/ray
+    publisher: Ray project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ray-license
+    title: Ray LICENSE
+    url: https://github.com/ray-project/ray/blob/master/LICENSE
+    publisher: Ray project
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ray-install
+    title: Installing Ray
+    url: https://docs.ray.io/en/latest/ray-overview/installation.html
+    publisher: Ray project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: ray-releases
+    title: Ray releases
+    url: https://github.com/ray-project/ray/releases
+    publisher: Ray project
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: pytorch-ray
+    title: PyTorch Foundation Welcomes Ray to Deliver a Unified Open Source AI Compute Stack
+    url: https://pytorch.org/blog/pytorch-foundation-welcomes-ray-to-deliver-a-unified-open-source-ai-compute-stack/
+    publisher: PyTorch Foundation
+    kind: announcement
+    published_at: 2025-10-22
+    accessed_at: 2026-09-29
+  - id: pytorch-foundation-page
+    title: PyTorch Foundation
+    url: https://pytorch.org/foundation/
+    publisher: PyTorch Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lf-privacy
+    title: Linux Foundation Privacy Policy
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: 2024-09-11
+    accessed_at: 2026-09-29
+  - id: anyscale-about
+    title: About Us
+    url: https://www.anyscale.com/about
+    publisher: Anyscale
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: anyscale-nscale-press
+    title: Nscale Acquires Anyscale, Enhancing its Full Stack AI Cloud Platform
+    url: https://www.anyscale.com/press/nscale-acquires-anyscale-enhancing-its-full-stack-ai-cloud-platform
+    publisher: Anyscale
+    kind: announcement
+    published_at: 2026-07-30
+    accessed_at: 2026-09-29
+  - id: nscale-s1
+    title: Nscale Limited Form S-1 Registration Statement
+    url: https://www.sec.gov/Archives/edgar/data/0002110365/000119312526395475/ck0002110365-20260918.htm
+    publisher: Nscale Limited (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: 2026-09-18
+    accessed_at: 2026-09-29

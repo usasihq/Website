@@ -1,0 +1,125 @@
+slug: mlx
+name: MLX
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Apple (machine learning research)
+    organization_slug: apple
+    source_ids: [mlx-readme, mlx-license]
+organization_slugs: [apple]
+links:
+  - label: GitHub repository
+    url: https://github.com/ml-explore/mlx
+    kind: repository
+  - label: Documentation
+    url: https://ml-explore.github.io/mlx/build/html/index.html
+    kind: documentation
+  - label: License (MIT)
+    url: https://github.com/ml-explore/mlx/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/ml-explore/mlx/releases
+    kind: release-notes
+summary:
+  text: >-
+    MLX is an array framework for machine learning on Apple silicon from Apple machine learning
+    research. It has a NumPy-like Python API plus C++, C, and Swift APIs, composable function
+    transformations, lazy computation, and a unified memory model that shares arrays between the
+    CPU and GPU.
+  source_ids: [mlx-readme]
+useful_for:
+  text: >-
+    Training and running machine learning models on Apple silicon, including language model
+    inference and fine-tuning examples published in a companion examples repository.
+  source_ids: [mlx-readme, mlx-docs]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The README says MLX is from Apple machine learning research, and the MIT license names Apple
+    Inc. as copyright holder. Apple Inc. has its principal executive offices in Cupertino,
+    California, per its Form 10-K.
+  source_ids: [mlx-readme, mlx-license, aapl-10k-2025]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [mlx-readme, mlx-license]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/ml-explore/mlx/blob/main/LICENSE
+    applies_to: code
+    source_ids: [mlx-license]
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public ml-explore/mlx GitHub repository.
+    source_ids: [mlx-readme]
+  documentation:
+    status: public
+    note: >-
+      Documentation covers installation, usage guides, examples, and the Python and C++ API
+      references.
+    source_ids: [mlx-docs]
+  installation:
+    status: public
+    note: Published on PyPI and installable with pip, with instructions for building from source.
+    source_ids: [mlx-readme]
+  supported_platforms:
+    status: public
+    note: >-
+      The README documents pip packages for macOS, a CUDA backend on Linux, and a CPU-only Linux
+      package.
+    source_ids: [mlx-readme]
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub, including v0.32.3 on September 29, 2026.
+    source_ids: [mlx-release-0-32-3, mlx-docs]
+run_notes: []
+provenance: null
+tags: [training, inference, numerical-computing, local-inference]
+publication_status: published
+archive_note: null
+released_at: "2023"
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: mlx-readme
+    title: ml-explore/mlx README
+    url: https://github.com/ml-explore/mlx
+    publisher: Apple (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlx-license
+    title: ml-explore/mlx LICENSE
+    url: https://github.com/ml-explore/mlx/blob/main/LICENSE
+    publisher: Apple (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlx-docs
+    title: MLX — MLX 0.32.3 documentation
+    url: https://ml-explore.github.io/mlx/build/html/index.html
+    publisher: Apple (ml-explore)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: mlx-release-0-32-3
+    title: ml-explore/mlx release v0.32.3
+    url: https://github.com/ml-explore/mlx/releases/tag/v0.32.3
+    publisher: Apple (GitHub)
+    kind: release-notes
+    published_at: 2026-09-29
+    accessed_at: 2026-09-29
+  - id: aapl-10k-2025
+    title: Apple Inc. Form 10-K for the fiscal year ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+    publisher: Apple Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2025-10-31
+    accessed_at: 2026-09-29

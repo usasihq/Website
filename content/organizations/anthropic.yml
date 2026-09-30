@@ -1,0 +1,157 @@
+slug: anthropic
+name: Anthropic
+legal_name:
+  text: Anthropic PBC
+  source_ids: [anthropic-privacy, anthropic-consumer-terms]
+website: https://www.anthropic.com
+logo_text: A
+summary:
+  text: >-
+    Anthropic, which describes itself as an AI safety and research company, develops the
+    Claude family of models. It offers Claude through web, desktop, and mobile apps,
+    through the Claude Platform API, and through the Claude Code coding agent.
+  source_ids: [anthropic-company, claude-product-overview, claude-platform-docs, claude-code-product]
+organization_roles: [model-developer, research-lab, developer-platform, consumer-products]
+ownership_category: privately-held
+legal_form:
+  text: Delaware public benefit corporation
+  source_ids: [anthropic-ltbt, anthropic-company]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [anthropic-transparency, anthropic-privacy]
+other_locations:
+  - label: Dublin, Ireland (Anthropic Ireland, Limited)
+    country: IE
+    source_ids: [anthropic-privacy]
+founded: null
+sectors: [frontier-models, agents, research]
+status_note: null
+products:
+  - id: claude-apps
+    name: Claude
+    kind: assistant-app
+    access: >-
+      AI assistant on the web and in desktop and mobile apps, with free and paid plans
+      (Pro, Max, Team, Enterprise).
+    url: https://claude.com/product/overview
+    source_ids: [claude-product-overview, claude-pricing]
+    last_reviewed: 2026-09-29
+  - id: claude-developer-platform
+    name: Claude Platform (Claude API)
+    kind: hosted-model-api
+    access: >-
+      API access to Claude models with API keys through the Claude Console; Claude is also
+      offered on Amazon Bedrock, Google Cloud, and Microsoft Foundry.
+    url: https://platform.claude.com/docs/en/home
+    source_ids: [claude-platform-docs]
+    last_reviewed: 2026-09-29
+  - id: claude-code
+    name: Claude Code
+    kind: developer-tool
+    access: >-
+      Agentic coding tool for the terminal, IDEs, desktop, web, and mobile; included in
+      Claude subscription plans or billed through a Claude Console account.
+    url: https://claude.com/product/claude-code
+    source_ids: [claude-code-product]
+    last_reviewed: 2026-09-29
+notable_facts:
+  - text: >-
+      Anthropic's governance includes a Long-Term Benefit Trust, which holds a special
+      class of stock and takes part in electing the company's board of directors.
+    source_ids: [anthropic-ltbt, anthropic-company]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Anthropic's transparency hub describes it as a public benefit corporation headquartered
+    in San Francisco, California. Its privacy policy describes the company as based and
+    headquartered in the United States and lists Anthropic PBC at a San Francisco,
+    California address. A separate Irish entity serves as data controller for the EEA, UK,
+    and Switzerland.
+  source_ids: [anthropic-transparency, anthropic-privacy]
+  assessed_at: 2026-09-29
+openness_summary:
+  text: >-
+    Anthropic offers its Claude models as hosted services through its apps and API.
+    Its Hugging Face organization lists datasets but no model repositories; this catalog
+    has no record of public Claude model weights.
+  source_ids: [hf-anthropic, claude-platform-docs]
+hiring_url: https://www.anthropic.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: anthropic-company
+    title: Company \ Anthropic
+    url: https://www.anthropic.com/company
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: anthropic-ltbt
+    title: The Long-Term Benefit Trust
+    url: https://www.anthropic.com/news/the-long-term-benefit-trust
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2023-09-19
+    accessed_at: 2026-09-29
+  - id: anthropic-privacy
+    title: Anthropic Privacy Policy
+    url: https://www.anthropic.com/legal/privacy
+    publisher: Anthropic
+    kind: official-page
+    published_at: 2026-09-10
+    accessed_at: 2026-09-29
+  - id: anthropic-consumer-terms
+    title: Consumer Terms of Service
+    url: https://www.anthropic.com/legal/consumer-terms
+    publisher: Anthropic
+    kind: official-page
+    published_at: 2025-10-08
+    accessed_at: 2026-09-29
+  - id: anthropic-transparency
+    title: Anthropic’s Transparency Hub
+    url: https://www.anthropic.com/transparency/voluntary-commitments
+    publisher: Anthropic
+    kind: official-page
+    published_at: 2026-07-23
+    accessed_at: 2026-09-29
+  - id: claude-pricing
+    title: Plans & Pricing | Claude by Anthropic
+    url: https://claude.com/pricing
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: claude-product-overview
+    title: Claude product overview
+    url: https://claude.com/product/overview
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: claude-platform-docs
+    title: Claude API Documentation
+    url: https://platform.claude.com/docs/en/home
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: claude-code-product
+    title: Claude Code
+    url: https://claude.com/product/claude-code
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-anthropic
+    title: Anthropic on Hugging Face
+    url: https://huggingface.co/Anthropic
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-09-29

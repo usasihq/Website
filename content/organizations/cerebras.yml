@@ -1,0 +1,115 @@
+slug: cerebras
+name: Cerebras
+legal_name:
+  text: Cerebras Systems Inc.
+  source_ids: [cerebras-10q-q2-2026]
+website: https://www.cerebras.ai
+logo_text: CS
+summary:
+  text: >-
+    Cerebras designs the Wafer-Scale Engine, a processor built from an entire silicon wafer,
+    and rack-scale systems based on it for deployment in its own and customers' data centers.
+    It also offers cloud inference and training services that run on its hardware.
+  source_ids: [cerebras-10q-q2-2026, cerebras-inference-docs, cerebras-cloud-page]
+organization_roles: [chip-designer, hardware-manufacturer, inference-provider, compute-infrastructure]
+ownership_category: publicly-traded
+legal_form:
+  text: Delaware corporation (incorporated April 2016)
+  source_ids: [cerebras-10q-q2-2026]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Sunnyvale, California
+  country: US
+  source_ids: [cerebras-10q-q2-2026]
+other_locations: []
+founded:
+  year: 2016
+  source_ids: [cerebras-10q-q2-2026]
+sectors: [chips, cloud]
+status_note:
+  text: >-
+    Cerebras became a public company in May 2026. Its Class A common stock began trading on
+    Nasdaq under the ticker CBRS on May 14, 2026, and the initial public offering closed on
+    May 15, 2026.
+  source_ids: [cerebras-10q-q2-2026, cerebras-ipo-closing]
+products:
+  - id: cerebras-inference
+    name: Cerebras Inference
+    kind: inference-service
+    access: >-
+      Cloud inference API for models hosted on Cerebras hardware; developers obtain an API key
+      through cloud.cerebras.ai and call it with Cerebras Python or JavaScript SDKs or with
+      OpenAI-compatible clients.
+    url: https://inference-docs.cerebras.ai/introduction
+    source_ids: [cerebras-inference-docs]
+    last_reviewed: 2026-09-29
+  - id: cs-4
+    name: Cerebras CS-4 system
+    kind: hardware
+    access: >-
+      Rack-scale inference system with three WSE-3 Turbo processors per system, built on a
+      modular rack design intended for deployment in hyperscale data centers.
+    url: https://www.cerebras.ai/cs4
+    source_ids: [cerebras-cs4-page]
+    last_reviewed: 2026-09-29
+  - id: cerebras-training-cloud
+    name: Cerebras Training Cloud
+    kind: compute-service
+    access: >-
+      Cloud service for training and fine-tuning models on Cerebras hardware, billed per hour of
+      training or offered as a service in which Cerebras designs and trains a custom model.
+    url: https://www.cerebras.ai/cloud
+    source_ids: [cerebras-cloud-page]
+    last_reviewed: 2026-09-29
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Cerebras Systems Inc. is a Delaware corporation with principal executive offices in
+    Sunnyvale, California, per the cover page of its Form 10-Q for the quarter ended June 30, 2026.
+  source_ids: [cerebras-10q-q2-2026]
+  assessed_at: 2026-09-29
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: cerebras-10q-q2-2026
+    title: Cerebras Systems Inc. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-12
+    accessed_at: 2026-09-29
+  - id: cerebras-ipo-closing
+    title: Cerebras Systems Announces Closing of Initial Public Offering
+    url: https://www.cerebras.ai/press-release/cerebras-systems-announces-closing-of-initial-public-offering
+    publisher: Cerebras
+    kind: announcement
+    published_at: 2026-05-15
+    accessed_at: 2026-09-29
+  - id: cerebras-inference-docs
+    title: Cerebras Inference documentation - Introduction
+    url: https://inference-docs.cerebras.ai/introduction
+    publisher: Cerebras
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cerebras-cs4-page
+    title: Cerebras CS-4 System
+    url: https://www.cerebras.ai/cs4
+    publisher: Cerebras
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: cerebras-cloud-page
+    title: Cerebras Training Cloud
+    url: https://www.cerebras.ai/cloud
+    publisher: Cerebras
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-09-29

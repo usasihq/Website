@@ -1,0 +1,191 @@
+slug: nemotron-3-5-lightning-30b-a3b
+name: NVIDIA Nemotron 3.5 Lightning 30B-A3B
+kind: model
+record_level: release
+family_slug: nemotron
+version: "3.5 Lightning (30B-A3B), GA"
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [lightning-model-card]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (BF16)
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+    kind: model-hub
+  - label: OpenMDW License Agreement, version 1.1
+    url: https://raw.githubusercontent.com/OpenMDW/OpenMDW/refs/heads/main/1.1/LICENSE.OpenMDW-1.1
+    kind: license
+  - label: Nemotron 3.5 Lightning training recipe
+    url: https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/lightning35/README.md
+    kind: documentation
+summary:
+  text: >-
+    Nemotron 3.5 Lightning is an NVIDIA language model with 30B total and 3B active
+    parameters, using a hybrid Mamba-2 and attention mixture-of-experts architecture with
+    multi-token prediction and configurable reasoning. NVIDIA released full-precision BF16
+    weights, an NVFP4 checkpoint for deployment, draft models for speculative decoding, and a
+    separate base checkpoint.
+  source_ids: [lightning-model-card, lightning-recipe-doc]
+useful_for:
+  text: >-
+    NVIDIA presents Lightning as a model for fast, specialized task execution in long-running agents;
+    the BF16 card describes these weights mainly as a starting point for customization such as
+    fine-tuning, reinforcement learning, distillation, and building quantized variants.
+  source_ids: [lightning-model-card, lightning-recipe-doc]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names NVIDIA Corporation as the model developer. NVIDIA's principal
+    executive offices are in Santa Clara, California, per its Form 10-Q for the quarter ended
+    July 26, 2026.
+  source_ids: [lightning-model-card, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights are downloadable from Hugging Face under the OpenMDW-1.1 license, a copy of which
+    is included in the model repository; the repository metadata showed no access gate when
+    checked.
+  source_ids: [lightning-model-card, lightning-license-file, lightning-hf-metadata]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1
+    spdx: null
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/raw/main/LICENSE
+    applies_to: weights
+    source_ids: [lightning-model-card, lightning-license-file]
+  - name: Apache License 2.0 (Nemotron Developer Repository training recipes)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/LICENSE
+    applies_to: code
+    source_ids: [nemotron-repo-license]
+license_notes:
+  text: >-
+    OpenMDW-1.1 grants free permission to use, modify, and share the model materials without
+    restriction, including under copyright, patent, database, and trade secret rights.
+    Redistributors must include a copy of the agreement and keep applicable origin notices.
+    All rights end for anyone who sues claiming the materials infringe a patent or copyright,
+    unless responding to a suit brought against them first. It imposes no conditions on
+    outputs and disclaims warranties. The SPDX list (version 3.29.0) includes OpenMDW-1.0 but
+    not version 1.1, so no SPDX ID is recorded. NVIDIA's Lightning recipe page states that the
+    weights, data, and recipes are released under OpenMDW-1.1, while the Nemotron Developer
+    Repository's only LICENSE file is Apache 2.0; this record lists the repository LICENSE for
+    the recipe code.
+  source_ids: [lightning-license-file, spdx-license-list, lightning-recipe-doc, nemotron-repo-license]
+checklist:
+  weights:
+    status: public
+    note: BF16, NVFP4, and base BF16 checkpoints are published on Hugging Face.
+    source_ids: [lightning-model-card, lightning-recipe-doc, lightning-hf-metadata]
+  inference_code:
+    status: public
+    note: The model card gives deployment instructions for vLLM and SGLang.
+    source_ids: [lightning-model-card]
+  training_code:
+    status: public
+    note: >-
+      The Apache-2.0 Nemotron Developer Repository provides pretraining, SFT, RL, evaluation,
+      and quantization stages for this model.
+    source_ids: [lightning-recipe-doc, nemotron-repo-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card lists the pre- and post-training datasets. Major portions are released in
+      Hugging Face collections, some requiring access approval, while several third-party and
+      NVIDIA datasets are listed as private and not publicly accessible.
+    source_ids: [lightning-model-card, nemotron-pretraining-collection]
+  training_recipe:
+    status: public
+    note: >-
+      The recipe documents pretraining, SFT, RL, evaluation, and quantization stages. There is no
+      separate technical report; NVIDIA names the model cards and recipe configs as the
+      references, and notes the recipes use only the open-sourced data subset.
+    source_ids: [lightning-recipe-doc]
+  evaluation_materials:
+    status: public
+    note: >-
+      The model card publishes benchmark results and states that evaluation recipes and commands
+      for reproducing them are published in NeMo Gym.
+    source_ids: [lightning-model-card]
+run_notes:
+  - text: >-
+      The model card documents serving the BF16 checkpoint with vLLM or SGLang on NVIDIA GB200,
+      B200, and H100 GPUs, including a single H100 80GB deployment in BF16 precision at a
+      256K-token context, and recommends the NVFP4 checkpoint for optimized inference.
+    source_ids: [lightning-model-card]
+provenance:
+  text: >-
+    Trained by NVIDIA through pretraining, continued pretraining for multi-token prediction,
+    supervised fine-tuning, and reinforcement learning; the base checkpoint is published
+    separately. The model card says post-training synthetic data was generated with teacher
+    models, including third-party open models such as GPT-OSS-120B.
+  derived_from:
+    - name: NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Base-BF16
+      artifact_slug: null
+      url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Base-BF16
+      note: NVIDIA's base checkpoint, listed alongside this release in the training recipe.
+  source_ids: [lightning-model-card, lightning-recipe-doc]
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2026-08-11
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: lightning-model-card
+    title: NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-08-11
+    accessed_at: 2026-09-29
+  - id: lightning-license-file
+    title: LICENSE file in the NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 repository
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/raw/main/LICENSE
+    publisher: NVIDIA (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-hf-metadata
+    title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+    url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: spdx-license-list
+    title: SPDX License List data (licenses.json, version 3.29.0)
+    url: https://raw.githubusercontent.com/spdx/license-list-data/main/json/licenses.json
+    publisher: SPDX
+    kind: other
+    published_at: 2026-09-16
+    accessed_at: 2026-09-29
+  - id: nemotron-repo-license
+    title: NVIDIA Nemotron Developer Repository LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: lightning-recipe-doc
+    title: Nemotron 3.5 Lightning Training Recipe
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/docs/nemotron/lightning35/README.md
+    publisher: NVIDIA (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemotron-pretraining-collection
+    title: Nemotron-Pre-Training-Datasets collection
+    url: https://huggingface.co/collections/nvidia/nemotron-pre-training-datasets
+    publisher: NVIDIA (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-26
+    accessed_at: 2026-09-29

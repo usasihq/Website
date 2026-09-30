@@ -1,0 +1,53 @@
+# Validation, tests, and a production static build on every push and pull request.
+# Needs no secrets and deploys nothing.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Validate catalog content
+        run: npm run validate
+      - run: npm run typecheck
+      - run: npm run lint
+      - name: Unit tests
+        run: npm test
+      - name: Production static build
+        run: npm run build
+      - name: Internal link check
+        run: npm run check:links
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+      - name: End-to-end tests against the static export
+        run: npm run test:e2e
+      - name: Base-path build and test (GitHub Pages project sites)
+        run: npm run test:basepath
+      - name: Upload screenshots and reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: e2e-reports
+          path: |
+            reports/screenshots/
+            playwright-report/
+          if-no-files-found: ignore
+          retention-days: 14

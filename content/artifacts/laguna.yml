@@ -1,0 +1,103 @@
+slug: laguna
+name: Laguna
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Poolside
+    organization_slug: poolside
+    source_ids: [poolside-model-release-notes]
+organization_slugs: [poolside]
+links:
+  - label: Poolside on Hugging Face
+    url: https://huggingface.co/poolside
+    kind: model-hub
+  - label: Model release notes
+    url: https://docs.poolside.ai/release-notes/models
+    kind: release-notes
+  - label: Laguna M.1/XS.2 technical report
+    url: https://poolside.ai/assets/laguna/laguna-m1-xs2-technical-report.pdf
+    kind: paper
+summary:
+  text: >-
+    Laguna is Poolside's family of mixture-of-experts language models for agentic
+    coding. Poolside's release notes and announcements list Laguna XS.2 and Laguna
+    M.1 (April 2026), Laguna XS 2.1 (announced 2 July 2026), and Laguna S 2.1 (21
+    July 2026), with sizes from 33B total (3B active) to 225B total (23B active)
+    parameters.
+  source_ids: [poolside-model-release-notes, poolside-laguna-xs-2-1-blog, hf-laguna-m1, hf-laguna-s-2-1]
+useful_for:
+  text: >-
+    Poolside documents the models for multi-step coding work that uses tools and
+    checks, such as exploring a codebase, editing files, running tests, and fixing
+    failures, mainly through its agent CLI or an OpenAI-compatible API.
+  source_ids: [poolside-model-release-notes]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Poolside, Inc., which states that it is headquartered
+    in San Francisco. See the poolside organization record for the assessment of its
+    French presence. The technical report states the models were trained from
+    scratch by Poolside.
+  source_ids: [poolside-laguna-s-release, laguna-tech-report]
+  assessed_at: 2026-09-29
+availability:
+  status: not_applicable
+  access_conditions: Availability and licenses are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, code-model, mixture-of-experts, reasoning]
+publication_status: published
+archive_note: null
+released_at: 2026-04
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: poolside-model-release-notes
+    title: Model release notes
+    url: https://docs.poolside.ai/release-notes/models
+    publisher: Poolside
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-laguna-xs-2-1-blog
+    title: Introducing Laguna XS 2.1
+    url: https://poolside.ai/blog/introducing-laguna-xs-2-1
+    publisher: Poolside
+    kind: announcement
+    published_at: 2026-07-02
+    accessed_at: 2026-09-29
+  - id: hf-laguna-m1
+    title: poolside/Laguna-M.1 model card
+    url: https://huggingface.co/poolside/Laguna-M.1
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: hf-laguna-s-2-1
+    title: poolside/Laguna-S-2.1 model card
+    url: https://huggingface.co/poolside/Laguna-S-2.1
+    publisher: Poolside
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: poolside-laguna-s-release
+    title: Poolside releases Laguna S 2.1, the West's most capable open-weight model
+    url: https://www.globenewswire.com/news-release/2026/07/21/3330818/0/en/Poolside-releases-Laguna-S-2-1-the-West-s-most-capable-open-weight-model.html
+    publisher: Poolside via GlobeNewswire
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-09-29
+  - id: laguna-tech-report
+    title: Laguna M.1/XS.2 Technical Report
+    url: https://poolside.ai/assets/laguna/laguna-m1-xs2-technical-report.pdf
+    publisher: Poolside
+    kind: paper
+    published_at: 2026-05-25
+    accessed_at: 2026-09-29

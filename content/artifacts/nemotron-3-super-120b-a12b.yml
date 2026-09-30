@@ -1,0 +1,182 @@
+slug: nemotron-3-super-120b-a12b
+name: NVIDIA Nemotron 3 Super 120B-A12B
+kind: model
+record_level: release
+family_slug: nemotron
+version: "3 Super (120B-A12B), v1.0"
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [super-model-card]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (BF16)
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
+    kind: model-hub
+  - label: NVIDIA Nemotron Open Model License
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/
+    kind: license
+  - label: Nemotron 3 Super training recipe
+    url: https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/super3/README.md
+    kind: documentation
+summary:
+  text: >-
+    Nemotron 3 Super is an NVIDIA language model with 120B total and 12B active parameters,
+    using a hybrid Mamba-2 and attention architecture with latent mixture-of-experts layers
+    and multi-token prediction, and configurable reasoning. NVIDIA released BF16, FP8, and
+    NVFP4 checkpoints and a separate base checkpoint on Hugging Face.
+  source_ids: [super-model-card, super-recipe-doc]
+useful_for:
+  text: >-
+    The model card lists agentic workflows, long-context reasoning, high-volume workloads such
+    as IT ticket automation, tool use, and retrieval-augmented generation, and states the model
+    is ready for commercial use.
+  source_ids: [super-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names NVIDIA Corporation as the model developer. NVIDIA's principal
+    executive offices are in Santa Clara, California, per its Form 10-Q for the quarter ended
+    July 26, 2026.
+  source_ids: [super-model-card, nvidia-10q-q2fy2027]
+  assessed_at: 2026-09-29
+availability:
+  status: public
+  access_conditions: >-
+    Weights are downloadable from Hugging Face under the NVIDIA Nemotron Open Model License;
+    the repository metadata showed no access gate when checked. The NIM container version is
+    covered by separate NVIDIA software license terms.
+  source_ids: [super-model-card, super-hf-metadata]
+licenses:
+  - name: NVIDIA Nemotron Open Model License
+    spdx: null
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/
+    applies_to: weights
+    source_ids: [super-model-card, nvidia-nemotron-open-model-license]
+  - name: Apache License 2.0 (Nemotron Developer Repository training recipes)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/LICENSE
+    applies_to: code
+    source_ids: [nemotron-repo-license]
+license_notes:
+  text: >-
+    The NVIDIA Nemotron Open Model License (version dated December 15, 2025) is NVIDIA's own
+    license. It grants a perpetual, worldwide, royalty-free license to reproduce, modify, and
+    distribute the model and derivatives, and states that the works are commercially usable
+    and that NVIDIA claims no ownership of outputs. Redistributors must pass on a copy of the
+    license and keep attribution notices, including a specified NVIDIA attribution statement
+    when a NOTICE file is present. The license ends for anyone who brings patent or copyright
+    litigation claiming the work or its outputs infringe. It also requires users to indemnify
+    NVIDIA against third-party claims arising from their use or distribution, requires
+    compliance with export and sanctions laws, and is governed by U.S. and Delaware law.
+  source_ids: [nvidia-nemotron-open-model-license]
+checklist:
+  weights:
+    status: public
+    note: BF16, FP8, and NVFP4 post-trained checkpoints and a BF16 base checkpoint are published on Hugging Face.
+    source_ids: [super-model-card, super-recipe-doc, super-hf-metadata]
+  inference_code:
+    status: public
+    note: The model card gives deployment instructions for vLLM, SGLang, TensorRT-LLM, and Transformers.
+    source_ids: [super-model-card]
+  training_code:
+    status: public
+    note: >-
+      The Apache-2.0 Nemotron Developer Repository provides pretraining, SFT, RL, and evaluation
+      stages built on Megatron-Bridge, NeMo RL, and NeMo Evaluator.
+    source_ids: [super-recipe-doc, nemotron-repo-license]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card lists the pre- and post-training datasets. Major portions are released in
+      Hugging Face collections, some requiring access approval, while several third-party and
+      NVIDIA datasets are listed as private and not publicly accessible.
+    source_ids: [super-model-card, nemotron-pretraining-collection]
+  training_recipe:
+    status: public
+    note: >-
+      The recipe documents each stage described in the model card (pretraining, SFT, and RL)
+      plus quantization and evaluation. NVIDIA notes the recipes use only the open-sourced data
+      subset, so results will differ, and marks a knowledge-distillation stage as not yet published.
+    source_ids: [super-recipe-doc, super-model-card]
+  evaluation_materials:
+    status: public
+    note: >-
+      The model card publishes benchmark results collected with the NeMo Evaluator SDK; it says
+      some benchmarks used internal scaffolding not yet open-sourced.
+    source_ids: [super-model-card]
+run_notes:
+  - text: >-
+      The model card documents serving with vLLM, SGLang, TensorRT-LLM, and Transformers, and
+      states a minimum of 8x H100-80GB GPUs for the BF16 checkpoint; it points to the NVFP4
+      checkpoint for running on a single B200 or DGX Spark.
+    source_ids: [super-model-card]
+provenance:
+  text: >-
+    Post-trained by NVIDIA (supervised fine-tuning and reinforcement learning) from its own
+    pre-trained Nemotron 3 Super base checkpoint. The model card says post-training synthetic
+    data was generated with teacher models, including third-party open models such as
+    GPT-OSS-120B.
+  derived_from:
+    - name: NVIDIA-Nemotron-3-Super-120B-A12B-Base-BF16
+      artifact_slug: null
+      url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-Base-BF16
+      note: NVIDIA's pre-trained base checkpoint for this release.
+  source_ids: [super-model-card]
+tags: [language-model, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2026-03-11
+updated_at: 2026-09-29
+last_reviewed: 2026-09-29
+sources:
+  - id: super-model-card
+    title: NVIDIA-Nemotron-3-Super-120B-A12B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-03-11
+    accessed_at: 2026-09-29
+  - id: super-hf-metadata
+    title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
+    url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-nemotron-open-model-license
+    title: NVIDIA Nemotron Open Model License
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/
+    publisher: NVIDIA
+    kind: license
+    published_at: 2025-12-15
+    accessed_at: 2026-09-29
+  - id: nemotron-repo-license
+    title: NVIDIA Nemotron Developer Repository LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: super-recipe-doc
+    title: Nemotron 3 Super Training Recipe
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/docs/nemotron/super3/README.md
+    publisher: NVIDIA (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nemotron-pretraining-collection
+    title: Nemotron-Pre-Training-Datasets collection
+    url: https://huggingface.co/collections/nvidia/nemotron-pre-training-datasets
+    publisher: NVIDIA (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-09-29
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-26
+    accessed_at: 2026-09-29
