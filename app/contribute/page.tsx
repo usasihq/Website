@@ -35,17 +35,28 @@ function RepositoryStatus() {
     );
   }
   return (
-    <ul className="mb-10 flex max-w-3xl flex-wrap gap-x-6 gap-y-2 font-sans text-[0.9375rem]">
-      <li>
-        <ExternalLink href={repo}>Source repository</ExternalLink>
-      </li>
-      <li>
-        <ExternalLink href={correction}>Report a correction</ExternalLink>
-      </li>
-      <li>
-        <ExternalLink href={entry}>Request an entry</ExternalLink>
-      </li>
-    </ul>
+    <div className="mb-10 max-w-3xl font-sans text-[0.9375rem]">
+      <ul className="flex flex-wrap gap-x-6 gap-y-2">
+        <li>
+          <ExternalLink href={repo}>Source repository</ExternalLink>
+        </li>
+        <li>
+          <ExternalLink href={correction}>Report a correction</ExternalLink>
+        </li>
+        <li>
+          <ExternalLink href={entry}>Request an entry</ExternalLink>
+        </li>
+      </ul>
+      {siteConfig.contact.email ? (
+        <p className="mt-3 text-muted">
+          No GitHub account? Email{" "}
+          <a href={mailtoHref(siteConfig.contact.email, "USASI correction or suggestion")} className="link">
+            {siteConfig.contact.email}
+          </a>{" "}
+          with the entry, what should change, and a supporting source.
+        </p>
+      ) : null}
+    </div>
   );
 }
 

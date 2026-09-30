@@ -7,21 +7,22 @@ shown honestly on the site rather than faked.
 Nothing has been deployed, no DNS has been changed, and no accounts have been
 created.
 
-## 1. Source repository (enables edit links and GitHub issue forms)
+## 1. Source repository
 
-The GitHub account `usasihq` exists but had no repositories at the time of the
-build. Corrections already work by email (usasihq@gmail.com).
+Configured: `https://github.com/usasihq/usasi` (public). "Edit this entry",
+"Report a correction", and entry-request links point there. Commits in this
+repository use the USASI identity
+(`USASI <335780783+usasihq@users.noreply.github.com>`, set in the repository's
+local git config), keeping the owner's personal GitHub account out of the history.
 
-- [ ] Create a repository under `github.com/usasihq` (for example
-      `usasihq/usasi`) and push this project to it. This machine's GitHub
-      login is a different account, so it was not done automatically.
+- [ ] Confirm Issues are enabled (they are by default) so the forms in
+      `.github/ISSUE_TEMPLATE/` work.
 - [ ] Set `RAW_CONFIG.repository.url` in `lib/site-config.ts` to
       `https://github.com/<owner>/<repo>` (and `branch` if not `main`).
 - [ ] Enable Issues so the forms in `.github/ISSUE_TEMPLATE/` work.
 
-Until then, **Report a correction** opens a pre-filled email to
-usasihq@gmail.com, **Edit this entry** is replaced by a short explanation, and
-`/contribute/` explains how to send corrections by email.
+Email (usasihq@gmail.com) remains available on `/about/` and `/contribute/`
+for people without a GitHub account.
 
 ## 2. Tip link (Support Us)
 

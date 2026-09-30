@@ -53,7 +53,7 @@ const RAW_CONFIG = {
     { label: "Truth Social", handle: "@Usasihq", url: "https://truthsocial.com/@Usasihq" },
   ] as Array<{ label: string; handle: string; url: string }>,
   repository: {
-    url: null as string | null,
+    url: "https://github.com/usasihq/usasi" as string | null,
     branch: "main",
   },
 };
