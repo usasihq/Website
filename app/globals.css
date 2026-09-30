@@ -302,13 +302,14 @@
     color: var(--text);
     margin-top: 1.75em;
   }
-  .prose-usasi a {
+  /* Text links only: buttons inside editorial pages keep their own colors. */
+  .prose-usasi a:not(.btn) {
     color: var(--ice);
     text-decoration: underline;
     text-decoration-color: rgba(183, 215, 255, 0.45);
     text-underline-offset: 3px;
   }
-  .prose-usasi a:hover {
+  .prose-usasi a:not(.btn):hover {
     color: #fff;
   }
   .prose-usasi ul,

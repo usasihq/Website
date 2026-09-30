@@ -11,7 +11,9 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
+import { siteConfig } from "../lib/site-config";
 import { computeTier, RUBRIC_VERSION } from "../lib/openness";
 import { SCHEMA_VERSION } from "../lib/schema";
 
@@ -43,3 +45,18 @@ fs.writeFileSync(path.join(outDir, "build-info.json"), JSON.stringify({ build_at
 console.log(
   `data: ${catalog.organizations.length} organizations, ${catalog.artifacts.length} artifacts → public/data (build_at ${buildAt})`,
 );
+
+// QR code for the configured tip page (shown on /support/), generated from the
+// same validated URL as the "Leave a tip" button so the two can never differ.
+const qrPath = path.join(process.cwd(), "public", "images", "tip-qr.svg");
+if (siteConfig.support.enabled && siteConfig.support.tipUrl) {
+  const svg = await QRCode.toString(siteConfig.support.tipUrl, {
+    type: "svg",
+    errorCorrectionLevel: "M",
+    margin: 2,
+    color: { dark: "#050816", light: "#ffffff" },
+  });
+  fs.writeFileSync(qrPath, svg);
+} else if (fs.existsSync(qrPath)) {
+  fs.rmSync(qrPath);
+}

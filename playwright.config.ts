@@ -52,10 +52,15 @@ export default defineConfig({
       testMatch: /(site|a11y)\.spec\.ts/,
       use: { ...devices["Pixel 7"] },
     },
-    {
-      name: "basepath",
-      testMatch: /basepath\.spec\.ts/,
-      use: { ...devices["Desktop Chrome"], baseURL: `http://localhost:${BASE_PORT}` },
-    },
+    // Only when the /usasi export exists (npm run test:basepath builds it first).
+    ...(hasBasePathBuild
+      ? [
+          {
+            name: "basepath",
+            testMatch: /basepath\.spec\.ts/,
+            use: { ...devices["Desktop Chrome"], baseURL: `http://localhost:${BASE_PORT}` },
+          },
+        ]
+      : []),
   ],
 });

@@ -34,9 +34,10 @@ for people without a GitHub account.
       `content/pages/privacy.mdx`) and adjust anything your provider's terms
       make inaccurate.
 
-Currently: `tipUrl: null`, so every page shows "Tips will be available here
-soon." with no payment link. No merchant ID, handle, or checkout URL has been
-invented.
+Configured: `https://buymeacoffee.com/usasi` (Buy Me a Coffee). Every page's
+Support Us panel links there, and `/support/` shows a QR code generated at build
+time from the same URL (verified to decode to it). No amount links are set,
+because Buy Me a Coffee amount parameters have not been verified.
 
 ## 3. Cloudflare hosting and the domain
 

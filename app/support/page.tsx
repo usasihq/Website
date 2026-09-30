@@ -2,6 +2,7 @@ import { Heart } from "lucide-react";
 import Content from "@/content/pages/support.mdx";
 import { EditorialPage } from "@/components/EditorialPage";
 import { pageMetadata } from "@/lib/metadata";
+import { asset } from "@/lib/paths";
 import { siteConfig, supportState } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
@@ -44,6 +45,18 @@ function TipAction() {
                   Optional. No USASI account required. Payment takes place on the linked provider’s website
                   {config.providerLabel ? ` (${config.providerLabel})` : ""}.
                 </p>
+                <figure className="mt-5 hidden items-center gap-4 sm:flex">
+                  <img
+                    src={asset("/images/tip-qr.svg")}
+                    width={120}
+                    height={120}
+                    alt={`QR code that opens ${config.tipUrl!.replace(/^https:\/\//, "")}`}
+                    className="rounded-lg bg-white p-1"
+                  />
+                  <figcaption className="max-w-[16rem] text-sm text-muted">
+                    On a computer? Scan with your phone to open the same tip page.
+                  </figcaption>
+                </figure>
               </>
             ) : (
               <p className="inline-flex rounded-lg border border-dashed border-line-strong px-4 py-2.5 text-[0.9375rem] text-ice" data-testid="support-unavailable">

@@ -24,11 +24,11 @@ const base: SupportConfig = {
 };
 
 describe("support configuration", () => {
-  it("ships unconfigured: no tip URL, provider, or amounts are invented", () => {
-    expect(siteConfig.support.tipUrl).toBeNull();
-    expect(siteConfig.support.providerLabel).toBeNull();
+  it("site config uses the owner's tip page and invents no amount links", () => {
+    expect(siteConfig.support.tipUrl).toBe("https://buymeacoffee.com/usasi");
+    expect(siteConfig.support.providerLabel).toBe("Buy Me a Coffee");
     expect(siteConfig.support.amountLinks).toEqual([]);
-    expect(supportState(siteConfig.support).active).toBe(false);
+    expect(supportState(siteConfig.support).active).toBe(true);
   });
 
   it.each([

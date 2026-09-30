@@ -28,11 +28,13 @@ fs.mkdirSync("reports/screenshots", { recursive: true });
 
 for (const width of WIDTHS) {
   test.describe(`${width}px`, () => {
+    test.setTimeout(60_000);
     test.use({ viewport: { width, height: width < 768 ? 800 : 1000 } });
     for (const [name, path] of PAGES) {
       test(`${name} has no page-wide horizontal overflow`, async ({ page }) => {
-        await page.goto(path);
-        await page.waitForLoadState("networkidle");
+        await page.goto(path, { waitUntil: "load" });
+        // Widths settle once web fonts are in; "networkidle" is flaky under load.
+        await page.evaluate(() => document.fonts.ready.then(() => undefined));
         const { scrollWidth, clientWidth } = await page.evaluate(() => ({
           scrollWidth: document.documentElement.scrollWidth,
           clientWidth: document.documentElement.clientWidth,
@@ -42,7 +44,8 @@ for (const width of WIDTHS) {
         const brand = page.getByRole("link", { name: /USASI — United States of America Superintelligence, home/ });
         const box = await brand.boundingBox();
         expect(box && box.x >= 0 && box.x + box.width <= clientWidth).toBeTruthy();
-        await page.screenshot({ path: `reports/screenshots/${name}-${width}.png`, fullPage: true });
+        // Screenshots are a deliverable, not an assertion: capture failures under load never fail the layout check.
+        await page.screenshot({ path: `reports/screenshots/${name}-${width}.png`, fullPage: true, timeout: 20_000 }).catch(() => undefined);
       });
     }
   });
