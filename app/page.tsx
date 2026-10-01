@@ -394,8 +394,8 @@ export default function HomePage() {
 
       <section className="container-page py-8" aria-labelledby="home-jobs-heading"><div className="card p-6"><h2 id="home-jobs-heading" className="text-xl font-semibold text-text">Work at companies and labs in the catalog</h2><p className="mt-2 text-muted">Explore current openings from employer career sources. Applications go directly to the employer.</p><Link href="/jobs/" className="link mt-4 inline-block">Explore Jobs →</Link></div></section>
 
-      {/* Local corner (monthly, deliberately quiet) */}
-      <LocalCornerStrip buildMonth={catalog.currentMonth()} people={catalog.people} schedule={catalog.localCorner} />
+      {/* People Behind Local AI (standing list, deliberately quiet) */}
+      <LocalCornerStrip people={catalog.people} />
 
       {/* 7. Support Us */}
       <SupportPanel variant="home" />

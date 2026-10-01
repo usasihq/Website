@@ -144,24 +144,17 @@ is never typed by hand.
 
 `npm run report:reviews` lists records due for re-review.
 
-### Local corner (monthly profiles)
+### People Behind Local AI (standing list)
 
-`/local/` and a quiet homepage strip show five people each month whose public
-work helps others run AI models locally. Profiles live in
+`/local/` lists every published profile, alphabetically, and a quiet homepage
+strip links to each one. There is no monthly rotation: a profile stays up until
+it is updated, set to `draft`, or deleted. Profiles live in
 `content/people/<slug>.yml` (schema `Person` in `lib/schema.ts`; research rules in
 `research/PEOPLE_BRIEF.md`). They hold only sourced professional information —
 the schema has no fields for location, nationality, age, or photos, and the
 validator rejects personal-detail wording. Each published profile must link to a
-published organization or artifact in the catalog.
-
-Lineups: add an entry to `content/local-corner.yml`
-(`lineups: [{ month: "2026-11", people: [slug, …] }]`, up to five). A month
-without an entry rotates automatically and deterministically through the
-published pool, five places per month. Selection runs in the visitor's browser
-from the current month (`lib/local-corner.ts`), so the lineup changes on the 1st
-of each month **without a rebuild or deploy**; the static HTML (and no-JavaScript
-visitors) get the build month's lineup. `USASI_MONTH=YYYY-MM` overrides the build
-month for previews.
+published organization or artifact in the catalog. To add someone, add a file;
+to remove someone, delete it (or set `publication_status: draft`), then publish.
 
 ### Changelog and homepage selection
 

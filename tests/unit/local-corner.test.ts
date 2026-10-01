@@ -21,16 +21,15 @@ function person(slug: string, overrides: Record<string, unknown> = {}) {
   };
 }
 
-function withPeople(people: Array<Record<string, unknown>>, lineups: Array<{ month: string; people: string[] }> = []): RawContent {
+function withPeople(people: Array<Record<string, unknown>>): RawContent {
   const raw = fixtureContent();
   raw.people = people.map((p) => ({ file: `people/${p.slug}.yml`, data: p }));
-  raw.localCorner = { file: "local-corner.yml", data: { lineups } };
   return raw;
 }
 
 const errors = (raw: RawContent) => validateContent(raw, { today: TODAY }).issues.filter((i) => i.level === "error").map((i) => i.message);
 
-describe("Local corner profiles", () => {
+describe("People Behind Local AI profiles", () => {
   it("accepts a professional, sourced profile tied to the catalog", () => {
     expect(errors(withPeople([person("fixture-a")]))).toEqual([]);
   });
@@ -60,33 +59,16 @@ describe("Local corner profiles", () => {
     expect(errors(raw)).toContain("A published profile must link to at least one published catalog organization or artifact");
   });
 
-  it("rejects schedules naming draft or unknown profiles", () => {
-    const raw = withPeople([person("fixture-a"), person("fixture-b", { publication_status: "draft" })], [{ month: "2026-10", people: ["fixture-a", "fixture-b", "nobody"] }]);
-    const msgs = errors(raw);
-    expect(msgs).toContain('"fixture-b" is not a published profile');
-    expect(msgs).toContain('"nobody" is not a published profile');
-  });
-
-  it("uses the editor's lineup when scheduled, otherwise rotates deterministically through the pool", () => {
-    const slugs = Array.from({ length: 12 }, (_, i) => `fixture-p${String(i).padStart(2, "0")}`);
-    const raw = withPeople(slugs.map((s) => person(s)), [{ month: "2026-10", people: ["fixture-p03", "fixture-p07"] }]);
-    const catalog = new Catalog(validateContent(raw, { today: TODAY }));
-    expect(catalog.localCornerLineup("2026-10")).toMatchObject({ source: "schedule" });
-    expect(catalog.localCornerLineup("2026-10").people.map((p) => p.slug)).toEqual(["fixture-p03", "fixture-p07"]);
-
-    const nov = catalog.localCornerLineup("2026-11");
-    const dec = catalog.localCornerLineup("2026-12");
-    expect(nov.source).toBe("rotation");
-    expect(nov.people).toHaveLength(5);
-    expect(new Set(nov.people.map((p) => p.slug)).size).toBe(5);
-    expect(catalog.localCornerLineup("2026-11").people).toEqual(nov.people); // deterministic
-    expect(dec.people.map((p) => p.slug)).not.toEqual(nov.people.map((p) => p.slug)); // changes monthly
+  it("lists every published profile, alphabetically by name, with no monthly limit", () => {
+    const slugs = Array.from({ length: 12 }, (_, i) => `fixture-p${String(11 - i).padStart(2, "0")}`);
+    const catalog = new Catalog(validateContent(withPeople(slugs.map((s) => person(s))), { today: TODAY }));
+    expect(catalog.people).toHaveLength(12);
+    expect(catalog.people.map((p) => p.name)).toEqual([...catalog.people.map((p) => p.name)].sort((a, b) => a.localeCompare(b)));
   });
 
   it("never exposes draft profiles", () => {
     const raw = withPeople([person("fixture-a"), person("fixture-secret", { publication_status: "draft" })]);
     const catalog = new Catalog(validateContent(raw, { today: TODAY }));
     expect(catalog.people.map((p) => p.slug)).toEqual(["fixture-a"]);
-    expect(catalog.localCornerLineup("2027-01").people.map((p) => p.slug)).toEqual(["fixture-a"]);
   });
 });

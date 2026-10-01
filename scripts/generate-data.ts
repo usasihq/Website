@@ -41,11 +41,8 @@ const exportData = {
   organizations: catalog.organizations.map((o) => catalog.publicOrganization(o)),
   artifacts: catalog.artifacts.map((a) => ({ ...catalog.publicArtifact(a), computed_tier: computeTier(a) })),
   news: catalog.news,
-  local_corner: {
-    month: catalog.currentMonth(),
-    lineup: catalog.localCornerLineup(catalog.currentMonth()).people.map((p) => p.slug),
-    people: catalog.people.map((p) => catalog.publicPerson(p)),
-  },
+  // People Behind Local AI: the permanent, alphabetical list of published profiles.
+  people: catalog.people.map((p) => catalog.publicPerson(p)),
 };
 
 fs.writeFileSync(path.join(outDir, "catalog.json"), JSON.stringify(exportData, null, 2) + "\n");

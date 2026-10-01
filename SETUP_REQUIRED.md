@@ -94,11 +94,10 @@ homepage's structured data:
       only, and says on the page that removal requests are honored. Be ready to
       act on requests sent to usasihq@gmail.com (set the profile to `draft` or
       delete it, then rebuild).
-- [ ] Recommended: let featured people know before or when they appear, and
+- [ ] Recommended: let listed people know when they are added, and
       invite corrections. Opt-in is kinder than surprise.
-- [ ] Nothing needed for rotation: the lineup changes in visitors' browsers on
-      the 1st of each month. Rebuild only when profiles or lineups change.
-- [ ] Optional: set explicit lineups per month in `content/local-corner.yml`.
+- [ ] The list is permanent (no monthly rotation). Add, edit, or remove files in
+      `content/people/` and publish when it should change.
 
 ## 6. Artwork rights
 

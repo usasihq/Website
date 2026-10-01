@@ -10,14 +10,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { DEFAULT_CONTENT_DIR, readRawContent, todayIso } from "./content-loader";
 import { entryTypeFor, type EntryType } from "./labels";
-import { lineupSlugs } from "./local-corner";
 import { checklistFor, computeTier } from "./openness";
 import {
   HOSTED_MODEL_PRODUCT_KINDS,
   type Artifact,
   type ChangelogEntry,
   type FeaturedSelection,
-  type LocalCornerSchedule,
   type NewsItem,
   type Organization,
   type Person,
@@ -63,7 +61,6 @@ export class Catalog {
   readonly changelog: ChangelogEntry[];
   readonly featured: FeaturedSelection | null;
   readonly people: Person[];
-  readonly localCorner: LocalCornerSchedule | null;
   readonly news: NewsItem[];
   readonly buildAt: string;
 
@@ -72,7 +69,7 @@ export class Catalog {
 
   constructor(
     content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> &
-      Partial<Pick<ValidatedContent, "people" | "localCorner" | "news">>,
+      Partial<Pick<ValidatedContent, "people" | "news">>,
     buildAt = new Date().toISOString(),
   ) {
     this.organizations = content.organizations.filter(isActive).sort(byName);
@@ -82,7 +79,6 @@ export class Catalog {
     this.changelog = content.changelog;
     this.featured = content.featured;
     this.people = (content.people ?? []).filter((p) => p.publication_status === "published").sort(byName);
-    this.localCorner = content.localCorner ?? null;
     this.news = (content.news ?? [])
       .filter((n) => n.publication_status === "published")
       .sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date) || a.title.localeCompare(b.title));
@@ -199,24 +195,6 @@ export class Catalog {
 
   newsForArtifact(slug: string): NewsItem[] {
     return this.news.filter((n) => n.related_artifacts.includes(slug));
-  }
-
-  /* ---- Local corner ---- */
-
-  /**
-   * The month's five profiles: the editor's lineup from content/local-corner.yml
-   * when one exists for that month, otherwise a deterministic rotation through
-   * the published pool (sorted by slug), advancing five places each month.
-   */
-  localCornerLineup(month: string): { month: string; people: Person[]; source: "schedule" | "rotation" } {
-    const { slugs, source } = lineupSlugs(month, this.people.map((p) => p.slug), this.localCorner);
-    return { month, people: slugs.map((s) => this.people.find((p) => p.slug === s)!), source };
-  }
-
-  /** The month shown on the site: USASI_MONTH (YYYY-MM) for testing, else the build month. */
-  currentMonth(): string {
-    const override = process.env.USASI_MONTH;
-    return override && /^\d{4}-(0[1-9]|1[0-2])$/.test(override) ? override : this.buildAt.slice(0, 7);
   }
 
   /* ---- counts ---- */

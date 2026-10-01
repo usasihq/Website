@@ -282,13 +282,14 @@ test.describe("Local corner", () => {
     }
   })();
 
-  test("shows this month's profiles with sources and the removal note", async ({ page }) => {
+  test("lists every published profile with sources and the removal note", async ({ page }) => {
     test.skip(people.length === 0, "no published profiles yet");
     await page.goto("/local/");
     const profiles = page.locator("main article[id]");
-    const count = await profiles.count();
-    expect(count).toBeGreaterThan(0);
-    expect(count).toBeLessThanOrEqual(5);
+    await expect(profiles).toHaveCount(people.length);
+    // The index at the top links to each profile on the page.
+    const index = page.getByRole("navigation", { name: "People on this page" });
+    await expect(index.getByRole("link")).toHaveCount(people.length);
     await expect(page.getByText(/ask to be removed/)).toBeVisible();
     // Every profile's first source marker jumps to that profile's own source list.
     const firstMarker = profiles.first().locator("a[aria-label^='Source 1:']").first();
@@ -299,29 +300,20 @@ test.describe("Local corner", () => {
   });
 });
 
-test.describe("Local corner rotation in the browser", () => {
-  test("shows the scheduled October lineup when the visitor's clock says October 2026", async ({ page }) => {
-    const people = readRecordsFrom("people").filter((p) => p.publication_status === "published");
-    test.skip(people.length < 5, "needs a full pool");
-    await page.clock.setFixedTime(new Date("2026-10-15T12:00:00Z"));
+test("People Behind Local AI is a standing list, the same in any month", async ({ page }) => {
+  const people = readRecordsFrom("people").filter((p) => p.publication_status === "published");
+  test.skip(people.length === 0, "no published profiles yet");
+  const ids: string[][] = [];
+  for (const when of ["2026-10-15T12:00:00Z", "2027-03-15T12:00:00Z"]) {
+    await page.clock.setFixedTime(new Date(when));
     await page.goto("/local/");
-    await expect(page.locator("[data-lineup-month]")).toHaveAttribute("data-lineup-month", "2026-10");
-    await expect(page.locator("main article[id]")).toHaveCount(5);
-    await expect(page.locator("main article#stella-biderman")).toHaveCount(1);
-    await expect(page.getByText("Local corner · October 2026")).toBeVisible();
-  });
-
-  test("rotates to a different five the next month without a rebuild", async ({ page }) => {
-    await page.clock.setFixedTime(new Date("2026-10-15T12:00:00Z"));
-    await page.goto("/local/");
-    const october = await page.locator("main article[id]").evaluateAll((els) => els.map((e) => e.id));
-    await page.clock.setFixedTime(new Date("2026-11-15T12:00:00Z"));
-    await page.goto("/local/");
-    await expect(page.locator("[data-lineup-month]")).toHaveAttribute("data-lineup-month", "2026-11");
-    const november = await page.locator("main article[id]").evaluateAll((els) => els.map((e) => e.id));
-    expect(november).toHaveLength(5);
-    expect(november).not.toEqual(october);
-  });
+    ids.push(await page.locator("main article[id]").evaluateAll((els) => els.map((e) => e.id)));
+  }
+  expect(ids[0]).toHaveLength(people.length);
+  expect(ids[1]).toEqual(ids[0]);
+  await page.goto("/");
+  const strip = page.locator("section[aria-labelledby='local-corner-heading']");
+  await expect(strip.locator("ul > li > a")).toHaveCount(people.length);
 });
 
 test.describe("first screen", () => {

@@ -9,14 +9,12 @@ import {
   Artifact,
   ChangelogEntry,
   FeaturedSelection,
-  LocalCornerSchedule,
   NewsItem,
   Organization,
   Person,
   type Artifact as ArtifactT,
   type ChangelogEntry as ChangelogEntryT,
   type FeaturedSelection as FeaturedSelectionT,
-  type LocalCornerSchedule as LocalCornerScheduleT,
   type NewsItem as NewsItemT,
   type Organization as OrganizationT,
   type Person as PersonT,
@@ -35,7 +33,6 @@ export interface RawContent {
   changelog: RawDocument[];
   featured: RawDocument | null;
   people?: RawDocument[];
-  localCorner?: RawDocument | null;
   news?: RawDocument[];
 }
 
@@ -52,7 +49,6 @@ export interface ValidatedContent {
   changelog: ChangelogEntryT[];
   featured: FeaturedSelectionT | null;
   people: PersonT[];
-  localCorner: LocalCornerScheduleT | null;
   news: NewsItemT[];
   issues: ValidationIssue[];
 }
@@ -384,7 +380,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
 
   /* ---- Local corner people ---- */
   const peopleDocs = parseDocs(raw.people ?? [], Person, issues);
-  const scheduleDoc = raw.localCorner ? parseDocs([raw.localCorner], LocalCornerSchedule, issues)[0] ?? null : null;
   const personSlugs = new Map<string, string>();
   for (const { file, value: person } of peopleDocs) {
     const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
@@ -433,20 +428,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
       if (!tied) push("error", "A published profile must link to at least one published catalog organization or artifact", "affiliations");
     }
   }
-  if (scheduleDoc) {
-    const months = new Set<string>();
-    scheduleDoc.value.lineups.forEach((lineup, i) => {
-      if (months.has(lineup.month)) issues.push({ level: "error", file: scheduleDoc.file, path: `lineups[${i}].month`, message: `Duplicate month ${lineup.month}` });
-      months.add(lineup.month);
-      lineup.people.forEach((slug, j) => {
-        const doc = peopleDocs.find((d) => d.value.slug === slug);
-        if (!doc || doc.value.publication_status !== "published") {
-          issues.push({ level: "error", file: scheduleDoc.file, path: `lineups[${i}].people[${j}]`, message: `"${slug}" is not a published profile` });
-        }
-      });
-    });
-  }
-
   /* ---- News ---- */
   const newsDocs = parseDocs(raw.news ?? [], NewsItem, issues);
   const newsSlugs = new Set<string>();
@@ -495,7 +476,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     changelog: changelogDocs.map((d) => d.value).sort((a, b) => b.date.localeCompare(a.date)),
     featured: featuredDoc?.value ?? null,
     people: peopleDocs.map((d) => d.value),
-    localCorner: scheduleDoc?.value ?? null,
     news: newsDocs.map((d) => d.value).sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date)),
     issues,
   };

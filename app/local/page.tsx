@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
-import { MonthLabel, MonthlyLineup } from "@/components/MonthlyLineup";
 import { PageHeader } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -12,41 +11,52 @@ import { artifactHref, orgHref } from "@/lib/routes";
 import { mailtoHref, siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
-  title: "Local corner",
+  title: "People behind local AI",
   description:
-    "A small, monthly look at people whose public work helps others run AI models on their own hardware — local runtimes, on-device frameworks, efficient fine-tuning, and open-weight models.",
+    "A standing list of people whose public work helps others run AI models on their own hardware — local runtimes, on-device frameworks, efficient fine-tuning, and open-weight models.",
   path: "/local/",
 });
 
 export default function LocalCornerPage() {
   const catalog = getCatalog();
-  const buildMonth = catalog.currentMonth();
   const people = catalog.people;
   const email = siteConfig.contact.email;
 
   return (
     <>
       <PageHeader
-        eyebrow={<MonthLabel buildMonth={buildMonth} prefix="Local corner · " />}
+        eyebrow="Local corner"
         title="People behind local AI"
         description={
           <p>
-            Each month, five people whose public work helps others run AI models on their own hardware: local runtimes, on-device
-            frameworks, efficient fine-tuning, and open-weight models. The lineup changes at the start of each month.
+            People whose public work helps others run AI models on their own hardware: local runtimes, on-device frameworks, efficient
+            fine-tuning, and open-weight models. Listed alphabetically; each profile stays up until it is updated or removed.
           </p>
         }
       />
       <div className="container-page grid gap-12 py-12">
-        <MonthlyLineup
-          as="ol"
-          className="grid gap-10"
-          buildMonth={buildMonth}
-          poolSlugs={people.map((p) => p.slug)}
-          schedule={catalog.localCorner}
-          empty={<p className="text-muted">No profiles are published for this month yet.</p>}
-          items={Object.fromEntries(
-            people.map((p) => [
-              p.slug,
+        {people.length === 0 ? (
+          <p className="text-muted">No profiles are published yet.</p>
+        ) : (
+          <>
+            <nav aria-label="People on this page">
+              <h2 className="eyebrow">{people.length} people</h2>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {people.map((p) => (
+                  <li key={p.slug}>
+                    <a
+                      href={`#${p.slug}`}
+                      className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-[rgba(11,18,36,0.7)] py-1 pl-1 pr-3.5 text-[0.9375rem] text-text hover:border-cyan"
+                    >
+                      <InitialsTile initials={p.initials} />
+                      {p.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <ol className="grid gap-10">
+              {people.map((p) => (
                 <li key={p.slug}>
                   <article id={p.slug} aria-labelledby={`${p.slug}-name`} className="card scroll-mt-24 p-5 sm:p-7">
                     <div className="flex items-start gap-4">
@@ -128,10 +138,11 @@ export default function LocalCornerPage() {
                       </div>
                     </div>
                   </article>
-                </li>,
-            ]),
-          )}
-        />
+                </li>
+              ))}
+            </ol>
+          </>
+        )}
 
         <section aria-labelledby="about-corner" className="max-w-3xl rounded-xl border border-line p-5 text-[0.9375rem] text-muted">
           <h2 id="about-corner" className="font-semibold text-text">
@@ -139,7 +150,7 @@ export default function LocalCornerPage() {
           </h2>
           <p className="mt-2">
             Profiles use only public, professional information — roles, projects, and pages people publish themselves — with a source for
-            each statement. They never include locations, nationality, ages, photos, or personal details. Everyone featured is connected to
+            each statement. They never include locations, nationality, ages, photos, or personal details. Everyone listed is connected to
             an organization or project in this catalog. Selection is editorial, is not a ranking, and is never influenced by tips.
           </p>
           {email ? (

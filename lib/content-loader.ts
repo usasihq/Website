@@ -30,14 +30,12 @@ function readYamlFile(root: string, relative: string): RawDocument {
 
 export function readRawContent(root: string = DEFAULT_CONTENT_DIR): RawContent {
   const featuredPath = path.join(root, "featured.yml");
-  const cornerPath = path.join(root, "local-corner.yml");
   return {
     organizations: readYamlDir(root, "organizations"),
     artifacts: readYamlDir(root, "artifacts"),
     changelog: readYamlDir(root, "changelog"),
     featured: fs.existsSync(featuredPath) ? readYamlFile(root, "featured.yml") : null,
     people: readYamlDir(root, "people"),
-    localCorner: fs.existsSync(cornerPath) ? readYamlFile(root, "local-corner.yml") : null,
     news: readYamlDir(root, "news"),
   };
 }

@@ -498,22 +498,6 @@ export const Person = z
   .strict();
 export type Person = z.infer<typeof Person>;
 
-export const LocalCornerSchedule = z
-  .object({
-    lineups: z
-      .array(
-        z
-          .object({
-            month: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, "YYYY-MM"),
-            people: z.array(Slug).min(1).max(5),
-          })
-          .strict(),
-      )
-      .default([]),
-  })
-  .strict();
-export type LocalCornerSchedule = z.infer<typeof LocalCornerSchedule>;
-
 /* ------------------------------------------------------------------ */
 /* Latest news (hand-edited, sourced, tied to catalog records)         */
 /* ------------------------------------------------------------------ */
