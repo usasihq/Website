@@ -10,7 +10,7 @@ import { defineConfig, devices } from "@playwright/test";
  * The "basepath" project needs a second export built under /usasi:
  *   npm run test:basepath
  */
-const PORT = 4410;
+const PORT = Number(process.env.PLAYWRIGHT_PORT ?? 4410);
 const BASE_PORT = 4411;
 const hasBasePathBuild = fs.existsSync(".out-basepath/index.html");
 
@@ -49,7 +49,7 @@ export default defineConfig({
     },
     {
       name: "mobile",
-      testMatch: /(site|a11y)\.spec\.ts/,
+      testMatch: /(site|a11y|jobs)\.spec\.ts/,
       use: { ...devices["Pixel 7"] },
     },
     // Only when the /usasi export exists (npm run test:basepath builds it first).

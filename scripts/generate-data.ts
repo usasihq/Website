@@ -17,6 +17,14 @@ import { siteConfig } from "../lib/site-config";
 import { computeTier, RUBRIC_VERSION } from "../lib/openness";
 import { SCHEMA_VERSION } from "../lib/schema";
 
+// A configured advertisement must reference an existing local asset.
+if (siteConfig.homepageSponsor) {
+  const logoPath = path.join(process.cwd(), "public", siteConfig.homepageSponsor.logo);
+  if (!fs.existsSync(logoPath) || !fs.lstatSync(logoPath).isFile()) {
+    throw new Error("The configured homepage sponsor logo must exist as a local file in public/images/sponsors/.");
+  }
+}
+
 const buildAt = process.env.USASI_BUILD_AT ?? new Date().toISOString();
 const catalog = loadCatalog(path.join(process.cwd(), "content"), { buildAt });
 const outDir = path.join(process.cwd(), "public", "data");

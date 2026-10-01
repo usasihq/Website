@@ -1,0 +1,69 @@
+# Activate only after integration: repository variable JOBS_REFRESH=true.
+# Reuses the existing Cloudflare deployment credentials and production environment.
+# No commits: operational state is cached and archived independently of editorial Git history.
+name: Refresh Jobs
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "43 */6 * * *"
+permissions:
+  contents: read
+concurrency:
+  # Same lock as deploy-cloudflare.yml. Never race production uploads.
+  group: cloudflare-production
+  cancel-in-progress: false
+jobs:
+  refresh:
+    if: github.ref == 'refs/heads/main' && vars.JOBS_REFRESH == 'true' && vars.CLOUDFLARE_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Restore most recent validated operational state
+        uses: actions/cache/restore@v4
+        with:
+          path: data/jobs/current.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: jobs-v1-main-
+      - name: Refresh supported official sources
+        run: npm run jobs:refresh
+      - run: npm run validate
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - name: Build static production snapshot
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
+          NEXT_PUBLIC_BASE_PATH: ""
+      - run: npm run check:links
+      - name: Refuse an obsolete release before saving state or publishing
+        run: |
+          release_sha=$(git rev-parse HEAD)
+          current_sha=$(git ls-remote origin refs/heads/main | cut -f1)
+          test -n "$current_sha" && test "$release_sha" = "$current_sha"
+          echo "RELEASE_SHA=$release_sha" >> "$GITHUB_ENV"
+      - name: Preserve validated reconciliation state
+        uses: actions/cache/save@v4
+        with:
+          path: data/jobs/current.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Retain operational dataset for recovery
+        uses: actions/upload-artifact@v7
+        with:
+          name: jobs-state-${{ github.run_id }}
+          path: data/jobs/current.json
+          retention-days: 7
+      - name: Deploy refreshed catalog using existing deployment access
+        run: npx wrangler deploy --message "Jobs refresh ${{ env.RELEASE_SHA }} run ${{ github.run_id }}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

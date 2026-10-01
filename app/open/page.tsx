@@ -21,26 +21,25 @@ export default function OpenPage() {
   return (
     <>
       <PageHeader
+        compact
         eyebrow="Directory"
         title="Open Models & Tools"
         description={
           <p>
-            U.S.-led models, software, datasets, and evaluation tools with publicly available materials. Each record says what is public, under
-            which license, and who maintains it. Publicly downloadable does not always mean unrestricted.
+            Find U.S.-led models, software, datasets, and evaluation tools by availability, license, and maintainer. Publicly downloadable does not always mean unrestricted.
           </p>
         }
       >
-        <p className="meta mt-4">
+        <p className="meta mt-2">
           {counts.modelFamilies} model families · {counts.modelReleases} model releases · {counts.software} software projects · {counts.datasets}{" "}
-          datasets · {counts.evals} evaluation tools. Family overviews are listed separately from releases and are not counted as releases. Tiers
-          follow {RUBRIC_LABEL}.{" "}
+          datasets · {counts.evals} evaluation tools.{" "}
           <Link href="/methodology/#openness" className="link">
             What the labels mean
           </Link>
         </p>
-        <ArtifactQuickViews items={items} />
+        <details className="mt-3"><summary className="cursor-pointer text-sm text-ice">Browse quick views</summary><p className="meta mt-3">Family overviews are separate from releases. Tiers follow {RUBRIC_LABEL}.</p><ArtifactQuickViews items={items} /></details>
       </PageHeader>
-      <div className="container-page py-10">
+      <div className="container-page py-6">
         <ArtifactDirectory items={items} />
       </div>
       <SupportPanel variant="compact" />

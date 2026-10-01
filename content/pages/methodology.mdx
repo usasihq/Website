@@ -27,15 +27,21 @@ Openness is described per artifact with a checklist suited to what the artifact 
 
 Availability is kept separate from permission. "Publicly downloadable" does not by itself mean unrestricted, open source, commercially usable, or redistributable. Each release lists its actual licenses and what they apply to.
 
-<h3 id="tiers">Model-disclosure tiers (USASI rubric v0.1)</h3>
+<h3 id="tiers">Model-disclosure tiers (USASI rubric v0.2)</h3>
 
-For **model releases only**, the checklist and licenses determine a disclosure tier. The tiers are USASI's own editorial categories, versioned as rubric v0.1. They are not an external certification, and they are not the Open Source Initiative's Open Source AI Definition or any other outside standard. The tier is computed automatically from the recorded checklist, so it cannot be typed in by hand or inherited from a family or an organization.
+For **model releases only**, the checklist determines a disclosure tier; the highest tier additionally requires a sourced, dated system-rights review. The tiers are USASI's own editorial categories, versioned as rubric v0.2. They are not an external certification, and they are not the Open Source Initiative's Open Source AI Definition or any other outside standard. The tier is computed from the recorded evidence and review; it is never inherited from a family or organization.
 
 <TierTable />
 
-Tiers are cumulative: every fully open release also counts as open-stack, and every open-stack release also counts as open-weight. When tiers appear as columns, the columns overlap and must not be added together.
+Training-data information completeness, actual data access, and reuse permission are assessed separately. v0.1 data statuses mixed access and disclosure; those historical notes remain visible as legacy evidence but are excluded from v0.2 tier calculations. New assessments remain unknown until checked. This may lower a computed label without claiming the underlying model changed.
 
-**Closed product/API** is a separate label used on organization pages. It describes how a documented product is delivered, such as a hosted API or assistant app. It is not an artifact tier, and it says nothing about other releases from the same organization. An organization is never labeled "open" because it has released one open-weight model.
+The [Open Source AI Definition 1.0](https://opensource.org/ai/open-source-ai-definition) does not require every original training datum to be downloadable. It requires sufficiently detailed data information, complete training/run/preprocessing code and parameters under qualifying terms. The catalog does not claim OSI certification. A fine-tuning script or inference SDK alone is not complete training code; downloadable data without provenance does not establish complete information.
+
+Component license filters apply the selected license to the selected component in the same license record. An MIT documentation license does not make custom-licensed weights MIT. Multiple distinct license records are not assumed to be alternatives or cumulative terms without review.
+
+Tiers are cumulative: every reviewed open-system release also counts as open-stack, and every open-stack release also counts as open-weight. When tiers appear as columns, the columns overlap and must not be added together.
+
+**Hosted product/API** is a separate label used on organization pages. It describes how a documented product is delivered, such as a hosted API or assistant app. It is not an artifact tier, and it says nothing about other releases from the same organization. An organization is never labeled "open" because it has released one open-weight model.
 
 <h2 id="sources">Source standards</h2>
 
@@ -54,9 +60,11 @@ Software, datasets, and evaluation tools are **project** records.
 - **Released** — the documented release date of an artifact, at the precision the evidence gives (a year, a month, or a day). Unknown if not documented.
 - **Entry updated** — the date the record was last substantively edited.
 - **Last reviewed** — the date an editor last checked the record's evidence.
+- **Fact reviewed / effective** — optional dates attached to a specific claim, license or availability assessment. An absent date is unknown; the record-wide review is not substituted.
+- **Source accessed / fetched** — retrieval dates; an automated fetch is not an editorial review.
 - **Site generated** — the date the website was built, shown in the footer.
 
-A build never changes the first three. "Recently reviewed" on the homepage means recently checked, not newly released.
+A build never changes editorial, fact, or source dates. "Recently reviewed" on the homepage means recently checked, not newly released.
 
 <h2 id="uncertainty">Uncertainty</h2>
 
@@ -84,3 +92,20 @@ Latest news items are short, dated updates about organizations and artifacts in 
 <h2 id="badges">Reading the badges</h2>
 
 Status badges always pair an icon with a text label, so no information depends on color. Numbered markers after a statement link to the source list at the bottom of the entry. Links marked with an arrow lead to external sites; everything else stays on USASI.
+
+
+<h2 id="jobs">Jobs: employer sources and freshness</h2>
+
+Jobs are machine-collected, transient records, separate from editorial catalog entries. Only published, eligible organizations already in Companies & Labs can supply jobs. Official employer career pages establish which ATS board belongs to each organization. Initial automated adapters support the public Greenhouse and Ashby job-board APIs; other organizations retain their official careers links without fabricated counts.
+
+USASI does not employ, represent, recruit for, or endorse listed organizations. Applications take place on the employer's official destination. No applicant profiles, resumes, accounts, or application tracking are collected.
+
+A recently confirmed position must still be open in the latest accepted source response, with a successful source check in the previous 48 hours. Cards show when the posting was last present in the feed. An employer can change a posting between checks. Older listings and sources needing attention are separated from the default current view. Dates are shown in UTC. Without JavaScript, the static snapshot is as of the site's generation time.
+
+A failed, malformed, redirected, oversized, or rate-limited response preserves previous job state. An unexpected empty response, or a drop greater than half from a feed of at least ten jobs, must be confirmed by an identical successful response at least six hours later. A job absent from an accepted response immediately leaves the current directory; closure requires another successful check at least 24 hours after the first absence. Reappearing jobs reopen. Closed records are retained privately in the generated dataset for at most 30 days after closure and have no individual public pages.
+
+Identity combines organization, source provider, source board, and source posting ID. Matching titles do not merge distinct requisitions. Exact duplicate records collapse; conflicting duplicate IDs reject a response. Multiple source-supplied locations on one posting stay together. Jobs do not create relationships to specific models or tools.
+
+Unknown fields stay unknown. Remote status and employment type require structured employer data; headquarters are never used as job locations. Departments are supplied by the source, not inferred categories. Publication dates retain the source's meaning: Ashby reports the latest publication, while Greenhouse can supply first publication. Salary ranges retain employer-supplied currency and period, are not guaranteed offers, and are never annualized, converted, or ranked across currencies. Salary minimum filtering requires a currency and period and compares the minimum of a disclosed range. Compensation hidden by the employer is not published.
+
+USASI publishes concise factual fields and links, not full job descriptions. Employer text is untrusted plain text; job destinations must use HTTPS on the approved ATS tenant or an explicitly reviewed employer host. The browser never contacts ATS APIs. The scheduled refresh fetches each supported feed serially, at most every six hours, without credentials, bypasses, or retries after access controls. Source health is visible in Jobs. Use each card's correction link to report a disputed field with an official supporting source.

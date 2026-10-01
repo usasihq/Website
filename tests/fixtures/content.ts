@@ -50,7 +50,7 @@ export function org(slug: string, overrides: Record<string, unknown> = {}) {
 const allPublic = (keys: string[]) =>
   Object.fromEntries(keys.map((k) => [k, { status: "public", note: null, source_ids: ["s1"] }]));
 
-const MODEL_KEYS = ["weights", "inference_code", "training_code", "training_data_information", "training_recipe", "evaluation_materials"];
+const MODEL_KEYS = ["weights", "inference_code", "training_code", "training_data_information", "training_pipeline", "training_recipe", "evaluation_materials"];
 
 export function artifact(slug: string, overrides: Record<string, unknown> = {}) {
   return {
@@ -128,7 +128,7 @@ export function fixtureContent(): RawContent {
   const artifacts = [
     artifact("fixture-family", { record_level: "family", family_slug: null, licenses: [], checklist: {}, released_at: null }),
     // Fully open: everything public, OSI licenses.
-    artifact("fixture-fully-open"),
+    artifact("fixture-fully-open", { system_openness_review: { status: "verified", permissions: { parameters: "qualifying", code: "qualifying", data_information: "qualifying" }, rationale: "Synthetic fixture with reviewed complete data information, pipeline and qualifying component rights.", source_ids: ["s1"], reviewed_at: TODAY } }),
     // Open-stack: eval materials unknown.
     artifact("fixture-open-stack", {
       checklist: { ...allPublic(MODEL_KEYS), evaluation_materials: { status: "unknown", note: null, source_ids: [] } },

@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { Monogram, StatusBadge } from "@/components/Badges";
+import { StatusBadge } from "@/components/Badges";
+import { ModelComparison } from "@/components/ModelComparison";
 import { CoverageTable } from "@/components/CoverageTable";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
-import { buildCoverage, buildModelMatrix, checklistColumnsFor, MODEL_COLUMNS, PROJECT_GROUPS, type MatrixCell } from "@/lib/matrix";
+import { buildCoverage, buildModelMatrix, checklistColumnsFor, MODEL_COLUMNS, PROJECT_GROUPS } from "@/lib/matrix";
 import { pageMetadata } from "@/lib/metadata";
 import { RUBRIC_LABEL } from "@/lib/openness";
-import { artifactHref, orgHref } from "@/lib/routes";
+import { artifactHref } from "@/lib/routes";
 import type { AvailabilityStatus } from "@/lib/schema";
 
 export const metadata = pageMetadata({
@@ -18,26 +19,6 @@ export const metadata = pageMetadata({
   path: "/matrix/",
 });
 
-const GROUP_LABELS: Record<string, string> = {
-  records: "Catalog records",
-  tiers: "Tiers — cumulative",
-  materials: "Release materials",
-  gaps: "Not open-weight or unassessed",
-};
-
-function CountLink({ cell, label }: { cell: MatrixCell; label: string }) {
-  return (
-    <Link prefetch={false}
-      href={cell.href}
-      className={`inline-flex min-h-8 min-w-8 items-center justify-end rounded px-1 underline-offset-4 hover:underline ${cell.count === 0 ? "text-muted" : "text-ice"}`}
-      aria-label={`${cell.count} — ${label}. View the records counted.`}
-      data-count={cell.count}
-    >
-      {cell.count}
-    </Link>
-  );
-}
-
 export default function MatrixPage() {
   const catalog = getCatalog();
   const orgItems = catalog.organizations.map((o) => catalog.toOrgListItem(o));
@@ -45,16 +26,11 @@ export default function MatrixPage() {
   const hostedIds = Object.fromEntries(catalog.organizations.map((o) => [o.slug, catalog.hostedModelProducts(o).map((p) => p.id)]));
   const rows = buildModelMatrix(orgItems, artifactItems, hostedIds);
   const coverage = buildCoverage(orgItems, artifactItems);
-  const groups = MODEL_COLUMNS.reduce<Array<{ group: string; span: number }>>((acc, c) => {
-    const last = acc[acc.length - 1];
-    if (last && last.group === c.group) last.span += 1;
-    else acc.push({ group: c.group, span: 1 });
-    return acc;
-  }, []);
 
   return (
     <>
       <PageHeader
+        compact
         eyebrow="Comparison workspace"
         title="Compare"
         description={
@@ -77,83 +53,31 @@ export default function MatrixPage() {
         </nav>
       </PageHeader>
 
-      <div className="container-page grid gap-16 py-12">
+      <div className="container-page grid gap-10 py-6">
         <section id="models" aria-labelledby="models-heading" className="scroll-mt-24">
           <h2 id="models-heading" className="text-2xl font-semibold text-text">
             Model releases view
           </h2>
-          <div className="mt-3 max-w-3xl space-y-3 text-[0.9375rem] text-muted">
+          <details className="mt-3 max-w-3xl text-[0.9375rem] text-muted">
+            <summary className="cursor-pointer text-ice">How to read this comparison</summary>
+            <div className="mt-3 space-y-3">
             <p>
               Rows are organization records with a documented hosted-model product or at least one model record. <strong className="text-text">Hosted model
               products</strong> come from sourced product records on each organization page (a product indicator, not a release count). All other columns
               count model records in the Open Models &amp; Tools directory.
             </p>
             <p>
-              Tier columns use {RUBRIC_LABEL} and are <strong className="text-text">cumulative, so they overlap</strong>: every fully open release is also counted as
+              Tier columns use {RUBRIC_LABEL} and are <strong className="text-text">cumulative, so they overlap</strong>: every reviewed open systems release is also counted as
               open-stack and open-weight. Do not add them together. A release listing two organizations appears in both rows, so columns are not summed.
             </p>
-          </div>
-
-          {rows.length === 0 ? (
-            <p className="mt-6 text-muted">No organization records with model products or model records have been published yet.</p>
-          ) : (
-            <div className="table-scroll mt-6 lg:max-h-[75vh]">
-              <table className="data-table">
-                <caption className="sr-only">
-                  Model releases view: for each organization, counts of documented hosted-model products and of model records by tier and published materials.
-                </caption>
-                <thead>
-                  <tr>
-                    <td className="sticky-col" />
-                    <th scope="colgroup" className="text-center">
-                      Products
-                    </th>
-                    {groups.map((g) => (
-                      <th key={g.group} scope="colgroup" colSpan={g.span} className="border-l border-line text-center">
-                        {GROUP_LABELS[g.group]}
-                      </th>
-                    ))}
-                  </tr>
-                  <tr>
-                    <th scope="col" className="sticky-col min-w-[12rem]">
-                      Organization
-                    </th>
-                    <th scope="col" className="num min-w-[7rem]">
-                      Hosted model products
-                    </th>
-                    {MODEL_COLUMNS.map((c) => (
-                      <th key={c.key} scope="col" className="num min-w-[7rem]" title={c.description}>
-                        {c.label}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows.map((row) => (
-                    <tr key={row.org.slug} data-org={row.org.slug}>
-                      <th scope="row" className="sticky-col">
-                        <span className="flex items-center gap-2">
-                          <Monogram text={row.org.logoText} size="sm" />
-                          <Link prefetch={false} href={orgHref(row.org.slug)} className="link font-medium">
-                            {row.org.name}
-                          </Link>
-                        </span>
-                      </th>
-                      <td className="num" data-col="hosted">
-                        <CountLink cell={row.hosted} label={`hosted model products documented for ${row.org.name}`} />
-                      </td>
-                      {MODEL_COLUMNS.map((c) => (
-                        <td key={c.key} className="num" data-col={c.key}>
-                          <CountLink cell={row.cells[c.key]} label={`${c.label} for ${row.org.name}`} />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </div>
-          )}
+          </details>
+          <p className="mt-2 text-sm text-muted">Counts describe catalog coverage, not capability. Open-weight means publicly downloadable weights, not unrestricted use. Select a count to inspect its records.</p>
 
+          <ModelComparison rows={rows} />
+
+          <details className="mt-5">
+            <summary className="cursor-pointer font-medium text-ice">Column definitions and counting rules</summary>
           <dl className="mt-6 grid gap-4 text-[0.9375rem] md:grid-cols-2">
             {MODEL_COLUMNS.map((c) => (
               <div key={c.key} className="border-t border-line pt-3">
@@ -173,6 +97,7 @@ export default function MatrixPage() {
               <dd className="mt-1 text-muted">Drafts and archived historical records are excluded from every count.</dd>
             </div>
           </dl>
+          </details>
         </section>
 
         <section id="projects" aria-labelledby="projects-heading" className="scroll-mt-24">
@@ -189,11 +114,11 @@ export default function MatrixPage() {
               if (items.length === 0) return null;
               const columns = checklistColumnsFor(group.kinds);
               return (
-                <div key={group.key}>
-                  <h3 className="text-lg font-semibold text-text">
+                <details key={group.key} className="card p-4">
+                  <summary className="cursor-pointer text-lg font-semibold text-text">
                     {group.label} <span className="meta">({items.length})</span>
-                  </h3>
-                  <div className="table-scroll mt-3">
+                  </summary>
+                  <div className="table-scroll mt-3" tabIndex={0} role="region" aria-label={`${group.label} comparison table`}>
                     <table className="data-table">
                       <caption className="sr-only">{group.label}: public-materials checklist comparison</caption>
                       <thead>
@@ -228,7 +153,7 @@ export default function MatrixPage() {
                             <td>
                               <StatusBadge status={a.availability.status} />
                             </td>
-                            <td className="text-muted">{a.licenses.map((l) => l.spdx ?? l.name).join(", ") || "Not recorded"}</td>
+                            <td className="text-muted">{[...new Set(a.licenses.map((l) => l.spdx ?? l.name))].join(", ") || "Not recorded"}</td>
                             {columns.map((c) => (
                               <td key={c.key}>
                                 <StatusBadge status={(a.checklist[c.key]?.status ?? "unknown") as AvailabilityStatus} label={c.label} />
@@ -240,7 +165,7 @@ export default function MatrixPage() {
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </details>
               );
             })}
           </div>

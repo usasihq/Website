@@ -96,9 +96,11 @@ describe("catalog: loading from disk", () => {
 
   it("the real /content tree validates and loads", () => {
     const root = path.join(process.cwd(), "content");
-    const validated = validateContent(readRawContent(root), { today: TODAY });
+    // Real content advances independently of the synthetic fixture date.
+    const today = new Date().toISOString().slice(0, 10);
+    const validated = validateContent(readRawContent(root), { today });
     expect(validated.issues.filter((i) => i.level === "error")).toEqual([]);
-    const real = loadCatalog(root, { today: TODAY });
+    const real = loadCatalog(root, { today });
     expect(real.organizations.length).toBeGreaterThan(0);
     expect(real.artifacts.length).toBeGreaterThan(0);
     // Test fixtures never leak into the real catalog.

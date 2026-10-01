@@ -1,3 +1,5 @@
+import { execFileSync } from "node:child_process";
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { isActive, readRecords, readRecordsFrom, shownCount, watchErrors } from "./helpers";
 
@@ -12,7 +14,7 @@ test.describe("homepage", () => {
     const errors = watchErrors(page);
     await page.goto("/");
     await expect(page.locator("h1")).toHaveCount(1);
-    await expect(page.locator("h1")).toHaveText("Explore the companies, models, and tools behind American AI.");
+    await expect(page.locator("h1")).toHaveText("Explore the companies, models, and tools behind American Super Intelligence.");
     await expect(page.getByTestId("intro-disclaimer")).toHaveText(DISCLAIMER);
     await expect(page.getByTestId("footer-disclaimer")).toHaveText(DISCLAIMER);
 
@@ -44,6 +46,7 @@ test.describe("directory URL state", () => {
   test("filters persist through refresh, back/forward, and can be cleared", async ({ page }) => {
     await page.goto("/companies/");
     const total = await shownCount(page);
+    await page.getByText("Filters and sort", { exact: false }).click();
     await page.getByLabel("Sector", { exact: true }).selectOption({ index: 1 });
     await expect(page).toHaveURL(/sector=/);
     const filtered = await shownCount(page);
@@ -53,7 +56,8 @@ test.describe("directory URL state", () => {
     await expect.poll(() => shownCount(page)).toBe(filtered);
     await expect(page.getByLabel("Sector", { exact: true })).not.toHaveValue("");
 
-    await page.getByLabel("Has open artifact records").check();
+    await page.getByText("Filters and sort", { exact: false }).click();
+    await page.getByLabel("Has cataloged artifact records").check();
     await expect(page).toHaveURL(/open=1/);
     const combined = await shownCount(page);
     expect(combined).toBeLessThanOrEqual(filtered);
@@ -194,7 +198,7 @@ test.describe("static hosting behavior", () => {
     const response = await request.get("/");
     expect(response.headers()["content-security-policy"]).toContain("frame-ancestors 'none'");
     expect(response.headers()["x-content-type-options"]).toBe("nosniff");
-    expect(await response.text()).toMatch(/<meta http-equiv="Content-Security-Policy" content="[^"]*script-src 'self' 'sha256-/);
+    expect(await response.text()).toMatch(/<meta http-equiv="Content-Security-Policy" content="[^"]*script-src 'self' https:\/\/static\.cloudflareinsights\.com 'sha256-/);
   });
 });
 
@@ -379,4 +383,167 @@ test.describe("latest news", () => {
     if (state === "active") await expect(block.getByRole("link", { name: /Subscribe/ })).toHaveAttribute("href", /^https:\/\//);
     else await expect(page.getByTestId("newsletter-unavailable")).toHaveText("The weekly email is coming soon.");
   });
+});
+
+test.describe("focused search and comparison", () => {
+  test("OpenAI wins over description matches; clearing restores the directory", async ({ page }) => {
+    await page.goto("/companies/?q=OpenAI");
+    await expect(page.locator("article[data-slug]").first()).toHaveAttribute("data-slug", "openai");
+    await page.getByRole("button", { name: "Clear all filters" }).click();
+    await expect(page).toHaveURL(/\/companies\/$/);
+    await expect(page.locator("article[data-slug]").first()).not.toHaveAttribute("data-slug", "openai");
+    await page.goBack();
+    await expect(page.locator("article[data-slug]").first()).toHaveAttribute("data-slug", "openai");
+  });
+
+  test("selection, full columns, refresh, back and reset are reflected in the URL", async ({ page }) => {
+    await page.goto("/matrix/");
+    const rows = page.locator("#models tbody tr");
+    const all = await rows.count();
+    await expect(page.locator("#models thead th")).toHaveCount(4);
+    await page.getByLabel("Add organization to compare").selectOption("openai");
+    await expect(rows).toHaveCount(1);
+    await page.getByLabel("Add organization to compare").selectOption("ai2");
+    await expect(rows).toHaveCount(2);
+    await page.getByLabel("Show all comparison columns").check();
+    await expect(page.locator("#models thead th")).toHaveCount(12);
+    await page.reload();
+    await expect(rows).toHaveCount(2);
+    await expect(page.getByLabel("Show all comparison columns")).toBeChecked();
+    await page.goBack();
+    await expect(page.getByLabel("Show all comparison columns")).not.toBeChecked();
+    await page.getByRole("button", { name: "Remove OpenAI", exact: true }).click();
+    await expect(rows).toHaveCount(1);
+    await page.getByRole("button", { name: "Reset comparison" }).click();
+    await expect(rows).toHaveCount(all);
+    await expect(page).toHaveURL(/\/matrix\/$/);
+  });
+
+  test("new disclosures and comparison table support keyboard and accessible names", async ({ page }) => {
+    await page.goto("/companies/");
+    const summary = page.getByText("Filters and sort", { exact: false });
+    await summary.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByLabel("Sector", { exact: true })).toBeVisible();
+    await page.keyboard.press("Enter");
+    await expect(page.getByLabel("Sector", { exact: true })).not.toBeVisible();
+    await page.goto("/matrix/?orgs=openai,ai2&detail=1");
+    const table = page.getByRole("region", { name: /Organization comparison table/ });
+    await table.focus();
+    await expect(table).toBeFocused();
+    await expect(page.getByRole("status")).toContainText("Showing 2 of");
+    await expect(page.getByRole("rowheader", { name: "OpenAI", exact: true })).toBeVisible();
+    await expect(page.locator('[data-org="openai"] td[data-col="releases"] a')).toHaveAccessibleName(/Model releases for OpenAI.*View the records counted/);
+    const definitions = page.getByText("Column definitions and counting rules", { exact: true });
+    await definitions.focus();
+    await page.keyboard.press("Space");
+    await expect(page.getByText("Zero versus unknown", { exact: true })).toBeVisible();
+  });
+});
+
+test("comparison handles unknown selections and caps a focused set at four", async ({ page }) => {
+  await page.goto("/matrix/?orgs=missing-organization");
+  await expect(page.getByText(/No published organizations match this selection/)).toBeVisible();
+  await page.getByRole("button", { name: "Reset comparison" }).click();
+  for (const slug of ["openai", "ai2", "google", "meta"]) {
+    await page.getByLabel("Add organization to compare").selectOption(slug);
+  }
+  await expect(page.locator("#models tbody tr")).toHaveCount(4);
+  await expect(page.getByLabel("Add organization to compare").locator("option")).toHaveCount(1);
+  await expect(page.getByLabel("Add organization to compare")).toContainText("Four selected — remove one first");
+  await page.getByRole("button", { name: "Remove OpenAI", exact: true }).click();
+  await expect(page.getByLabel("Add organization to compare")).toBeVisible();
+});
+
+test("expanded filters reflow on a narrow screen and result headings appear early", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  for (const path of ["/companies/", "/open/"]) {
+    await page.goto(path);
+    const first = page.locator("article[data-slug]").first();
+    const box = await first.boundingBox();
+    expect(box!.y).toBeLessThan(800);
+    await page.getByText("Filters and sort", { exact: false }).click();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
+  }
+});
+
+test("project comparison summarizes duplicate license labels without changing records", async ({ page }) => {
+  await page.goto("/matrix/");
+  const repeated = artifacts.filter((a) => isActive(a) && a.record_level === "project" && (a.licenses ?? []).length > new Set((a.licenses ?? []).map((l: { spdx: string | null; name: string }) => l.spdx ?? l.name)).size);
+  expect(repeated.length).toBeGreaterThan(0);
+  for (const artifact of repeated) {
+    const expected = [...new Set((artifact.licenses ?? []).map((l: { spdx: string | null; name: string }) => l.spdx ?? l.name))].join(", ");
+    await expect(page.locator(`#projects tr[data-artifact="${artifact.slug}"] td`).nth(2)).toHaveText(expected);
+  }
+});
+
+test("unconfigured sponsor is absent from every allowed and disallowed placement", async ({ page }) => {
+  for (const path of ["/", "/companies/", "/open/", "/matrix/", "/news/"]) {
+    await page.goto(path);
+    await expect(page.locator("[data-homepage-sponsor]")).toHaveCount(0);
+  }
+});
+
+for (const width of [320, 1280]) {
+  test(`configured sponsor fixture has disclosure, no tracking, and accessible layout at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.route("**/images/sponsors/fixture.png", (route) => route.fulfill({ path: "app/apple-icon.png", contentType: "image/png" }));
+    await page.goto("/");
+    const externalRequests: string[] = [];
+    page.on("request", (request) => { if (!request.url().startsWith("http://localhost:")) externalRequests.push(request.url()); });
+    // Render the actual component with synthetic test data; no fixture is shipped in the site.
+    const html = execFileSync(process.execPath, ["--import", "tsx", "tests/fixtures/render-sponsor.tsx"], { encoding: "utf8" });
+    await page.evaluate((markup) => document.getElementById("latest-heading")!.closest("section")!.insertAdjacentHTML("beforebegin", markup), html);
+    const panel = page.getByRole("complementary", { name: "Advertisement · Paid sponsor" });
+    await panel.scrollIntoViewIfNeeded();
+    await expect(panel.getByRole("link")).toHaveCount(1);
+    await expect(panel.getByRole("link")).toHaveAttribute("rel", "sponsored noopener noreferrer");
+    await expect(panel.getByRole("link")).toHaveAccessibleName(/Visit Fixture Sponsor.*external sponsor site/);
+    await expect.poll(() => panel.locator("img").evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+    const before = await page.locator("#previews-heading").evaluate((h) => h.closest("section")!.getBoundingClientRect().bottom);
+    const after = await page.locator("#latest-heading").evaluate((h) => h.closest("section")!.getBoundingClientRect().top);
+    const box = (await panel.boundingBox())!;
+    expect(box.y).toBeGreaterThanOrEqual(before);
+    expect(box.y + box.height).toBeLessThanOrEqual(after);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+    if (width === 320) {
+      const logo = (await panel.locator("img").boundingBox())!;
+      const text = (await panel.locator("h2").boundingBox())!;
+      expect(text.y).toBeGreaterThanOrEqual(logo.y + logo.height);
+    }
+    const results = await new AxeBuilder({ page }).include("[data-homepage-sponsor]").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+    expect(results.violations.map((v) => v.id)).toEqual([]);
+    expect(externalRequests).toEqual([]);
+    await panel.screenshot({ path: `reports/screenshots/sponsor-fixture-${width}.png` });
+  });
+}
+
+
+test("people navigation order, keyboard activation and current-page semantics", async ({ page, isMobile }) => {
+  await page.goto("/about/");
+  if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
+  const nav = page.getByRole("navigation", { name: isMobile ? "Primary (mobile)" : "Primary", exact: true });
+  const labels = await nav.getByRole("link").allTextContents();
+  expect(labels.slice(-3)).toEqual(["Methodology", "People Behind Local AI", "About"]);
+  await nav.getByRole("link", { name: "Methodology", exact: true }).focus();
+  await page.keyboard.press("Tab");
+  await expect(nav.getByRole("link", { name: "People Behind Local AI", exact: true })).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/local\/$/);
+  if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
+  await expect(nav.getByRole("link", { name: "People Behind Local AI", exact: true })).toHaveAttribute("aria-current", "page");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("Mia's October profile keeps sourced deployment work and catalog links", async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2026-10-15T12:00:00Z"));
+  await page.goto("/local/#mia");
+  const card = page.locator("article#mia");
+  await expect(card.getByRole("heading", { name: "Mia", exact: true })).toBeVisible();
+  await expect(card.getByRole("link", { name: /^Website \(external site:/ })).toHaveAttribute("href", "https://mia-ai.net/");
+  await expect(card.getByRole("link", { name: /^GitHub \(external site:/ })).toHaveAttribute("href", "https://github.com/MiaAI-Lab");
+  await expect(card.locator('a[href="/open/vllm/"]')).toHaveCount(1);
+  await expect(card).toContainText("independent deployment work using vLLM");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await card.screenshot({ path: `reports/screenshots/mia-${test.info().project.name}.png` });
 });

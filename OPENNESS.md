@@ -1,138 +1,48 @@
-# USASI openness rubric — version 0.1
+# USASI openness rubric — version 0.2
 
-This document defines how the USASI catalog describes what is public about an
-artifact. The rules are implemented in `lib/openness.ts`; this file and that
-module must change together, and any substantive change bumps `RUBRIC_VERSION`
-and is recorded in the changelog.
+This specification and `lib/openness.ts` change together. These are USASI editorial categories, not OSI certification or a claim that the entire catalog has undergone an OSAID audit. Ownership, hosting, availability, and reuse permission are separate axes. Publicly traded companies may publish restricted products; private companies may publish open components.
 
-The labels defined here are **USASI editorial categories ("USASI rubric
-v0.1")**. They are not a certification, not a quality or safety rating, and not
-the Open Source Initiative's Open Source AI Definition or any other external
-standard. Where the rubric relies on an outside list (OSI-approved licenses), it
-names the list and the exact identifiers it accepts.
+## Component evidence
 
-## 1. Scope
+Each availability item is `public`, `partial`, `not_public`, `unknown`, or `not_applicable`. Unknown means insufficient or unreviewed evidence, never closed. Public means obtainable or documented as asked by that item, not unrestricted reuse. Non-unknown assessments cite the specific release's evidence.
 
-- The rubric applies to records in the Open Models & Tools directory
-  (`content/artifacts/`).
-- Checklists apply to **model releases** and to **project** records (software,
-  datasets, evaluation tools, research stacks). **Model family** overview records
-  carry no checklist, no licenses, and no tier: families summarize releases,
-  and licenses and availability can differ between releases.
-- Organizations are never assigned an openness label. An organization page may
-  carry an evidence-based `openness_summary`, which must not describe the whole
-  organization as "open" because of one release.
+Model releases separately record weights, inference code, training code, complete training/preprocessing pipeline, training recipe, evaluation materials, training-data information, and training-data access. Information completeness covers provenance, scope, acquisition, selection, labeling, processing/filtering and listings of sources or alternatives. A downloadable dataset alone does not establish completeness. A fine-tuning script or inference SDK does not establish the complete base-training pipeline.
 
-## 2. Statuses
+The v0.1 `training_data_information` item mixed data access and disclosure. Its existing values, notes and citations are preserved as `legacy_training_data_information`, excluded from new tier calculations. New completeness/access assessments default to unknown until reviewed; the migration does not refresh evidence dates or silently certify old claims.
 
-Every checklist item has one status:
+Licenses record their component: weights, code, data, documentation, weights-and-code, or all. Scoped search requires the selected license and component to match the SAME license record. Weights-and-code covers only those two components. Any component is explicitly unscoped. Licenses on documentation do not license weights.
 
-| Status | Meaning |
+## Model tiers
+
+Families and organizations never inherit tiers. Only specific model releases have them.
+
+| Label | Requirement |
 | --- | --- |
-| `public` | Documented as available to the general public. Access conditions and license terms may still apply (for example, a click-through license). |
-| `partial` | Some of it is available, or access requires approval, is limited to some users, or is otherwise restricted. |
-| `not_public` | The evidence documents that it is not available. |
-| `unknown` | Not assessed, or the evidence is insufficient. Unknown never means "no". |
-| `not_applicable` | Does not apply to this artifact. |
+| Unknown | Weights unassessed. |
+| Restricted weights | Partial access (approval or other restrictions). |
+| Weights not public | Documented unavailable weights. |
+| Open-weight | Publicly obtainable weights; usage restrictions may still apply. |
+| Open-stack | Open-weight plus public inference code, training code and recipe, and public/partial NEW training-data information. This is a materials-disclosure label, not a rights determination. |
+| Open system (reviewed) | Open-stack plus public complete training pipeline and complete data information, AND an explicit release-specific `system_openness_review` marked verified, with rationale, sources and review date. |
 
-Any status other than `unknown` or `not_applicable` must cite at least one
-source that supports it for **this specific release or project**. Evidence for
-one release is never assumed to apply to another.
+The last label retains the `fully-open` URL key for shared links. Tiers are cumulative; do not sum their columns. No existing record receives the highest label solely from its old checklist or license names.
 
-## 3. Type-specific checklists
+A verified system review must assess the freedoms to use, study, modify and share the parameters, complete training/run/preprocessing code and data information, under applicable qualifying terms. It must explain any missing or unshareable inputs, how disclosed information permits reconstruction, and why the cited rights apply to this release. An editor must resolve license combinations/alternatives and scope; the code cannot make a legal or completeness judgment from SPDX identifiers alone. Unknown or restricted reviews cannot earn this label.
 
-### Model releases
+## Relationship to external definitions
 
-| Key | Item | Question |
-| --- | --- | --- |
-| `weights` | Weights | Can the general public download the model parameters for this release? `public` = downloadable by anyone, possibly after accepting a license; `partial` = access by request/approval, or restricted to some users or regions. |
-| `inference_code` | Inference code | Is code for running the model published? |
-| `training_code` | Training code | Is the code used to train the model published? |
-| `training_data_information` | Training-data information | `public` = the training data itself can be obtained; `partial` = composition or sources are documented without full access. |
-| `training_recipe` | Training recipe | Are the training configuration and procedure documented in enough detail to follow? |
-| `evaluation_materials` | Evaluation materials | `public` = evaluation code or prompts that let others re-run the reported evaluations are published for this release; `partial` = results only (for example a results table in the model card). |
+The [OSI Open Source AI Definition 1.0](https://opensource.org/ai/open-source-ai-definition) requires sufficient data information, complete code, and parameters in the preferred form for modification under qualifying terms. It does NOT require every original training datum to be freely downloadable: unshareable and third-party paid data can be described. Data access restrictions therefore do not alone disprove system openness. Its [checklist](https://opensource.org/ai/checklist) is an educational tool, not certification or a substitute for release-specific review.
 
-### Frameworks and runtimes
+Readability and reuse rights remain distinct. Noncommercial weights can be downloadable; NC data does not earn an open-data-rights indicator; no-derivatives documentation is readable but not freely modifiable. A restrictive dataset license is a component fact, not an automatic verdict on a whole AI system.
 
-`source_code`, `documentation`, `installation`, `supported_platforms`, `release_status`.
+`componentRights()` reports qualifying-license, review-required, or unknown. It requires a fact-level reviewed date and a recorded SPDX identifier; missing/custom/unreviewed terms remain unknown, not definitively closed. Multiple distinct licenses require review rather than assuming cumulative or alternative terms. The limited software-license list in `OSI_APPROVED_SPDX` is drawn from the [OSI license list](https://opensource.org/licenses). Data/content licenses are classified separately using the [Open Definition list](https://opendefinition.org/licenses/): CC0-1.0, CC-BY-4.0, CC-BY-SA-4.0, ODC-By-1.0, ODbL-1.0 and PDDL-1.0. They are not described as OSI-approved software licenses. An identifier alone never substitutes for inspecting the actual terms.
 
-### Datasets
+## Other artifact types and evidence
 
-`access`, `provenance`, `documentation`, `licensing`, `stated_limitations`.
+Frameworks/runtimes: source code, documentation, installation, supported platforms, release status. Datasets: access, provenance, documentation, licensing, limitations. Evaluations: code, tasks/data, methodology, reproducibility instructions, limitations. Research stacks: source, documentation, training code, data information, reproducibility. These are never forced onto a weights ladder.
 
-### Evaluation tools
+Hosted product/API describes delivery only, not weights or licensing. Licenses must cite the applicable license file or card. Availability must cite the actual access documentation and restrictions. Release evidence is never inherited from another version. Fact reviewed, fact effective, source fetched/accessed, record edited, record reviewed, and build dates remain distinct; absent dates are unknown. Hardware estimates retain source and precision/quantization assumptions.
 
-`code`, `tasks_data`, `methodology`, `reproducibility_instructions`, `limitations`.
+## Changes
 
-### Research stacks
-
-`source_code`, `documentation`, `training_code`, `data_information`, `reproducibility_instructions`.
-
-The weights ladder in §4 is never applied to software, datasets, or
-evaluation tools.
-
-## 4. Model-disclosure tiers (model releases only)
-
-The tier is **computed** from a release's checklist and licenses by
-`computeTier()` in `lib/openness.ts`. It cannot be written by hand and is never
-inherited by a family or an organization.
-
-| Tier | Requirement |
-| --- | --- |
-| **Unknown** | `weights` is `unknown`. |
-| **Restricted weights** | `weights` is `partial` (approval-gated, or restricted to some users or regions). Not counted as open-weight. |
-| **Weights not public** | `weights` is `not_public`. |
-| **Open-weight** | `weights` is `public`. License terms may still restrict use; a caveat is shown whenever the weights license is not on the OSI list below. |
-| **Open-stack** | Open-weight **and** `inference_code`, `training_code`, and `training_recipe` are all `public`, **and** `training_data_information` is `public` or `partial`. |
-| **Fully open** | Open-stack **and** all six model items are `public` (so the training data itself is obtainable) **and** every license recorded for the weights and for the code has an SPDX identifier on the list below. |
-
-Tiers are cumulative: fully open ⊂ open-stack ⊂ open-weight. When tiers are
-shown as columns (for example on `/matrix`), the columns overlap and must never
-be added together.
-
-**Closed product/API** is a separate label used on organization pages for
-documented hosted products (product kinds `hosted-model-api` and
-`assistant-app`). It describes delivery, not an artifact, and says nothing
-about other releases by the same organization.
-
-## 5. OSI-approved license list used by the rubric
-
-The rubric treats exactly these SPDX identifiers as OSI-approved:
-`Apache-2.0`, `MIT`, `BSD-2-Clause`, `BSD-3-Clause`, `MPL-2.0`, `ISC`,
-`GPL-2.0-only`, `GPL-2.0-or-later`, `GPL-3.0-only`, `GPL-3.0-or-later`,
-`LGPL-2.1-only`, `LGPL-2.1-or-later`, `LGPL-3.0-only`, `LGPL-3.0-or-later`,
-`AGPL-3.0-only`, `AGPL-3.0-or-later`, `EPL-2.0`.
-
-The list is deliberately short. A license absent from it — including custom
-model licenses such as community licenses, OpenMDW, or vendor model licenses —
-does not satisfy the fully open requirement until an editor adds it here with a
-citation to the OSI's approved-license list and bumps the rubric version.
-Data licenses (for example ODC-By or CC BY) are recorded but are not part of the
-fully open license test in v0.1.
-
-## 6. Evidence requirements
-
-- Licenses: the license file itself, or the license field of the model or
-  dataset card, for the specific release. `applies_to` records whether the
-  license covers weights, code, data, documentation, or everything.
-- Weights availability: the model hub page or the publisher's download
-  documentation, including any gating or regional restrictions.
-- Training code, data, and recipe: the repository, data card, or technical
-  report for that release. Fine-tuning code does not count as training code for
-  the base model.
-- Any hardware or memory estimate in run notes must be quoted from an official
-  source and must state precision or quantization and assumptions; the validator
-  rejects memory figures without them.
-
-## 7. Known limitations of v0.1
-
-- The rubric does not grade license restrictiveness beyond the OSI list.
-- It does not evaluate the quality or completeness of documentation, only its
-  documented availability.
-- `partial` covers a wide range of situations; the checklist note explains each.
-
-## 8. Changing the rubric
-
-Propose changes by pull request that updates this file, `lib/openness.ts`,
-the methodology page, and the unit tests together, bumps `RUBRIC_VERSION`, and
-adds a changelog entry with `type: policy`.
+Change this specification, implementation, methodology and tests together, bump `RUBRIC_VERSION`, and add a policy changelog. v0.2 conservatively withdraws old aggregate conclusions until the separate completeness and rights reviews exist. No automatic fetch changes a published fact or review date.

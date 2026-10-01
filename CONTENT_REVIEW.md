@@ -159,3 +159,17 @@ Microsoft Agent Framework (AutoGen's successor), Laude Institute (Terminal-Bench
 
 Run `npm run report:reviews` monthly. Re-check `status_note` events above first,
 then records whose `last_reviewed` is older than 180 days.
+
+## 2026-09-30: rubric v0.2 and profile review coverage
+
+This release does not claim a fresh audit of all 99 organizations or all artifact records. Deeper profile sections were added and checked against primary pages for OpenAI, IBM, and Ai2. The claims/resources in those sections have their own reviewed dates. Their record-wide `last_reviewed` remains unchanged because unrelated historic facts were not re-audited.
+
+For gpt-oss-20b, weights availability and the weights/code licenses were checked against its official Hugging Face card/license and the OpenAI repository license. Olmo 3 7B's model card was reviewed for partial data-information disclosure; this is not a completeness certification. Other new completeness and component-rights assessments remain unknown until reviewed. Prior training-data statuses are retained as legacy evidence; no review dates are advanced by schema migration.
+
+### Manual source-change proposals
+
+`npm run review:sources -- --limit 10` fetches a bounded set of existing cited HTTPS sources and saves snapshots and proposals under `reports/source-review/`. Each run prioritizes the least recently fetched URLs. It never edits `content/`, license terms, claims or editorial review dates. There is no new schedule or external notification. Redirects, blocked responses and errors become manual-review tasks; changed bytes can be cosmetic and unchanged bytes do not prove a claim remains correct.
+
+An editor must inspect the source, identify the disputed field and effective date, revise only supported claims, attach fact-level `reviewed_at` and citations, update `updated_at` for substantive edits, and record material changes in the changelog. Do not advance a whole record's `last_reviewed` unless the whole record was checked. Use the account-free email correction link to submit an entry URL, disputed field, proposed correction and supporting primary source.
+
+The system-openness review requires an explicit status, parameter/code/data-information permission assessments, rationale, citations and review date. `verified` does not by itself produce a badge if a permission remains unknown or the new completeness checks are not satisfied. No current release has been granted this highest review solely from migrated data.

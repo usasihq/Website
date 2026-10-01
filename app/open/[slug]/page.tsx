@@ -17,6 +17,7 @@ import {
   AVAILABILITY_DESCRIPTIONS,
   checklistFor,
   computeTier,
+  componentRights,
   isOsiApproved,
   licenseCaveats,
   RUBRIC_LABEL,
@@ -195,6 +196,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                       {a.availability.access_conditions ?? AVAILABILITY_DESCRIPTIONS[a.availability.status]}
                       <SourceRefs ids={a.availability.source_ids} sources={s} />
                     </p>
+                    <p className="meta mt-2 text-xs">Availability fact review: {a.availability.reviewed_at ? formatDate(a.availability.reviewed_at) : "not separately recorded"}{a.availability.effective_at ? ` · effective ${formatDate(a.availability.effective_at)}` : ""}</p>
                     <p className="mt-3 text-sm text-muted">Availability is separate from permission: read the license before using or redistributing.</p>
                   </div>
                   <div>
@@ -211,7 +213,9 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                             <p className="meta mt-1 text-[0.8125rem]">
                               Applies to: {APPLIES_LABELS[l.applies_to]}
                               {l.spdx ? ` · SPDX ${l.spdx}` : " · custom license (no SPDX identifier)"}
-                              {isOsiApproved(l.spdx) ? " · on the rubric’s OSI-approved list" : ""}
+                              {isOsiApproved(l.spdx) ? " · on the rubric’s OSI-approved software-license list" : ""}
+                              {l.reviewed_at ? ` · fact reviewed ${formatDate(l.reviewed_at)}` : " · fact-level rights review not recorded"}
+                              {l.effective_at ? ` · effective ${formatDate(l.effective_at)}` : ""}
                             </p>
                           </li>
                         ))}
@@ -220,6 +224,14 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                     {a.license_notes ? <ClaimText claim={a.license_notes} sources={s} className="mt-4 text-[0.9375rem] text-[#d5def2]" /> : null}
                   </div>
                 </div>
+              </Section>
+
+              <Section id="component-rights" title="Component reuse rights" description="A readable or downloadable component is not automatically reusable. These indicators concern recorded license evidence, not system certification.">
+                <dl className="grid gap-3 sm:grid-cols-2">{(["weights", "code", "data", "documentation"] as const).map(component => {
+                  const status = componentRights(a.licenses, component);
+                  return <div key={component} className="card p-3"><dt className="font-semibold capitalize">{component}</dt><dd className="mt-1 text-sm text-muted">{status === "qualifying-license" ? "Reviewed qualifying license recorded — check scope and conditions" : status === "review-required" ? "Terms or license combinations require review" : "Unknown — no complete fact-level rights review"}</dd></div>;
+                })}</dl>
+                {a.system_openness_review ? <p className="mt-4 text-sm">System review: {a.system_openness_review.status}. {a.system_openness_review.rationale}<SourceRefs ids={a.system_openness_review.source_ids} sources={s} /> Reviewed {formatDate(a.system_openness_review.reviewed_at)}.</p> : <p className="mt-4 text-sm text-muted">No complete system-rights review is recorded for this release.</p>}
               </Section>
 
               {tier ? (

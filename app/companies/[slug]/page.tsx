@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { OrganizationJobs } from "@/components/OrganizationJobs";
+import { readJobs } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
 import { Monogram, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
 import { ArchivedNotice, ClaimText, EligibilityBlock, FactList, ReviewDates } from "@/components/DetailParts";
@@ -84,6 +86,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
   const org = catalog.organization(slug);
   if (!org) notFound();
 
+  const jobData = readJobs(catalog.organizations);
   const s = org.sources;
   const parent = catalog.parentOrganization(org);
   const children = catalog.childOrganizations(org.slug);
@@ -122,6 +125,9 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
               </div>
             </div>
             <ClaimText claim={org.summary} sources={s} className="mt-6 max-w-3xl text-lg text-[#d5def2]" />
+            <nav aria-label="On this company page" className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+              {["overview", "facts", "products", "artifacts", "sources"].map(id => <a key={id} href={`#${id}`} className="link capitalize">{id}</a>)}
+            </nav>
             <div className="mt-6">
               <ReviewDates lastReviewed={org.last_reviewed} updatedAt={org.updated_at} />
             </div>
@@ -139,6 +145,15 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
             </div>
           ) : null}
 
+          <Section id="overview" title="Using this organization’s offerings" description="Ownership, delivery, and openness answer different questions. Publicly traded does not mean open source; privately held does not mean closed.">
+            {org.profile ? <div className="grid gap-5 sm:grid-cols-2">
+              <div><h3 className="font-semibold">Intended users</h3><ClaimText claim={org.profile.intended_users} sources={s} className="mt-2 text-muted" /></div>
+              <div><h3 className="font-semibold">Hosted and self-hosted access</h3><ClaimText claim={org.profile.access_overview} sources={s} className="mt-2 text-muted" /></div>
+              <div><h3 className="font-semibold">Restrictions and review limits</h3><ClaimText claim={org.profile.limitations} sources={s} className="mt-2 text-muted" /></div>
+              <div><h3 className="font-semibold">Documentation and pricing</h3><ul className="mt-2 space-y-2">{org.profile.resources.map(r => <li key={r.url}><ExternalLink href={r.url}>{r.label}</ExternalLink><SourceRefs ids={r.source_ids} sources={s} /><span className="meta block text-xs">Reviewed {formatDate(r.reviewed_at)}</span></li>)}</ul></div>
+            </div> : <p className="text-muted">The detailed audience, self-hosting, pricing, and restrictions review has not yet been completed. Consult the sourced product records below and the publisher’s current terms. Missing detail means unknown, not unavailable.</p>}
+          </Section>
+
           <Section id="facts" title="Key facts">
             <FactList
               facts={[
@@ -146,7 +161,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                 org.legal_name
                   ? { label: "Legal name", value: <>{org.legal_name.text}<SourceRefs ids={org.legal_name.source_ids} sources={s} /></> }
                   : null,
-                { label: "Ownership", value: OWNERSHIP_LABELS[org.ownership_category] },
+                { label: "Ownership (separate from openness)", value: <>{OWNERSHIP_LABELS[org.ownership_category]}{org.ownership_evidence ? <ClaimText claim={org.ownership_evidence} sources={s} className="mt-1 text-sm text-muted" /> : <p className="mt-1 text-xs text-muted">Recorded classification; fact-level ownership verification pending.</p>}</> },
                 { label: "Legal form", value: org.legal_form ? <>{org.legal_form.text}<SourceRefs ids={org.legal_form.source_ids} sources={s} /></> : "Unknown" },
                 {
                   label: "Headquarters",
@@ -190,8 +205,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                 <>
                   <h3 className="mb-2 text-lg font-semibold text-text">Hosted model products</h3>
                   <p className="mb-3 max-w-3xl text-sm text-muted">
-                    Labeled <span className="badge">Closed product/API</span> — this describes how a documented product is delivered (hosted access). It is
-                    not an open artifact and says nothing about other releases by the same organization.
+                    Labeled <span className="badge">Hosted product/API</span> — this describes how a documented product is delivered (hosted access). It does not determine whether underlying weights or code are open; assess the specific release and its licenses.
                   </p>
                   <ProductsTable products={hosted} sources={s} caption={`${org.name}: hosted model products`} />
                 </>
@@ -209,12 +223,12 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
 
           <Section
             id="artifacts"
-            title="Related open artifacts"
+            title="Cataloged artifacts"
             description="Records in the Open Models & Tools directory that list this organization as a maintainer or publisher."
           >
             {related.length === 0 ? (
               <p className="text-muted">
-                No open-artifact records in this catalog list {org.name}. That is not evidence that none exist — only that none have been reviewed here.
+                No artifact records in this catalog list {org.name}. That is not evidence that none exist — only that none have been reviewed here.
               </p>
             ) : (
               <div className="grid gap-8">
@@ -260,6 +274,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                       {parent.name}
                     </Link>{" "}
                     <span className="text-muted">({RELATIONSHIP_LABELS[org.parent_relationship!]})</span>
+                    {org.parent_evidence ? <ClaimText claim={org.parent_evidence} sources={s} /> : <p className="text-xs text-muted">Fact-level relationship verification pending.</p>}
                   </li>
                 ) : null}
                 {children.map((c) => (
@@ -299,6 +314,11 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
               </ol>
             </Section>
           ) : null}
+
+          {catalog.isActiveOrganization(org.slug) ? <OrganizationJobs slug={org.slug} name={org.name} url={org.careers?.url ?? org.hiring_url}
+            enabled={Boolean(org.careers?.enabled)} asOf={catalog.buildAt}
+            jobCount={jobData.jobs.filter(j => j.organization_slug === org.slug && j.status === "open").length}
+            feed={jobData.feeds.find(f => f.organization_slug === org.slug) ?? null} /> : null}
 
           <Section id="eligibility" title="U.S. eligibility" description="How this record meets the catalog’s published eligibility policy.">
             <EligibilityBlock eligibility={org.eligibility} sources={s} />

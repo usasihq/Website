@@ -44,3 +44,14 @@ test("filtered directory state stays accessible", async ({ page }) => {
   const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
   expect(results.violations.map((v) => v.id)).toEqual([]);
 });
+
+test("expanded comparison and directory controls stay accessible", async ({ page }) => {
+  await page.goto("/matrix/?orgs=openai,ai2&detail=1");
+  await page.getByText("Column definitions and counting rules", { exact: true }).click();
+  let results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+  expect(results.violations.map((v) => v.id)).toEqual([]);
+  await page.goto("/open/?q=gemma");
+  await page.getByText("Filters and sort", { exact: false }).click();
+  results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+  expect(results.violations.map((v) => v.id)).toEqual([]);
+});

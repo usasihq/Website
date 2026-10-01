@@ -34,7 +34,9 @@ export function PageHeader({
   description,
   crumbs,
   children,
+  compact = false,
 }: {
+  compact?: boolean;
   eyebrow?: React.ReactNode;
   title: string;
   description?: React.ReactNode;
@@ -43,11 +45,11 @@ export function PageHeader({
 }) {
   return (
     <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
-      <div className="container-page pb-10 pt-10 sm:pt-14">
+      <div className={`container-page ${compact ? "py-6" : "pb-10 pt-10 sm:pt-14"}`}>
         {crumbs ? <Breadcrumbs items={crumbs} /> : null}
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
         <h1 className="mt-2 text-3xl font-semibold text-text sm:text-4xl">{title}</h1>
-        {description ? <div className="mt-4 max-w-3xl text-lg text-muted">{description}</div> : null}
+        {description ? <div className={`${compact ? "mt-2 text-base" : "mt-4 text-lg"} max-w-3xl text-muted`}>{description}</div> : null}
         {children}
       </div>
     </header>

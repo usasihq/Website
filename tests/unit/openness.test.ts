@@ -7,7 +7,7 @@ import { fixtureContent, TODAY } from "../fixtures/content";
 const catalog = new Catalog(validateContent(fixtureContent(), { today: TODAY }));
 const a = (slug: string) => catalog.artifact(slug)!;
 
-describe("openness rubric v0.1", () => {
+describe("openness rubric v0.2", () => {
   it("computes tiers only for model releases", () => {
     expect(computeTier(a("fixture-family"))).toBeNull();
     expect(computeTier(a("fixture-tool"))).toBeNull();
@@ -22,8 +22,8 @@ describe("openness rubric v0.1", () => {
     expect(computeTier(a("fixture-unknown-weights"))).toBe("unknown");
   });
 
-  it("does not award fully open when any license is not OSI-approved", () => {
-    const release = { ...a("fixture-fully-open"), licenses: [{ ...a("fixture-fully-open").licenses[0], spdx: null, name: "Custom" }] };
+  it("does not award a reviewed system tier without an explicit review", () => {
+    const release = { ...a("fixture-fully-open"), system_openness_review: undefined, licenses: [{ ...a("fixture-fully-open").licenses[0], spdx: null, name: "Custom" }] };
     expect(computeTier(release)).toBe("open-stack");
   });
 

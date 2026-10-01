@@ -52,7 +52,7 @@ export function SelectField<T extends string>({
 }) {
   const id = useId();
   return (
-    <div>
+    <div className="min-w-0 max-w-full">
       <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-text">
         {label}
       </label>

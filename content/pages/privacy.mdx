@@ -2,8 +2,8 @@ This page describes what the USASI website actually does with information. It is
 
 <h2 id="summary">Summary</h2>
 
-- USASI sets **no cookies** and uses **no analytics, advertising, tracking pixels, or third-party scripts**.
-- Fonts, images, and scripts are served from the same site. Viewing a page does not contact any other service.
+- USASI sets **no cookies**. The only permitted visitor analytics is cookie-free Cloudflare Web Analytics, described below.
+- Fonts, images, and application scripts are served from the same site. When Web Analytics is enabled, a Cloudflare-hosted measurement script also loads.
 - Search and filtering run in your browser. Your search text is not sent to USASI or anyone else, except that it appears in the page address (for example `?q=…`) so that links can be shared and the back button works.
 - The hosting provider that serves the files receives ordinary web request information, as described below.
 
@@ -11,7 +11,13 @@ This page describes what the USASI website actually does with information. It is
 
 The site is a static export. There is no USASI application server, database, account system, or form that stores submissions. The files are delivered by a hosting provider chosen by the project owner. Like any web host, the provider receives standard request information — such as your IP address, the page address requested (including any `?q=` search text in it), your browser's user-agent, and the time — and may log it for security, abuse prevention, and operations. That processing is governed by the hosting provider's own privacy policy, not by USASI. Depending on the provider's security configuration, the provider itself may set short-lived security cookies; USASI does not add any.
 
-USASI does not enable the provider's visitor analytics. If that ever changes, this page will be updated first.
+<h2 id="analytics">Cloudflare Web Analytics</h2>
+
+USASI permits Cloudflare's free Web Analytics to measure page views and page performance. This disclosure is published before activation. When enabled, Cloudflare adds its measurement script to pages and receives statistics about visits and loading performance. This does not create a USASI account or a paid tier.
+
+Cloudflare describes Web Analytics as cookie-free and says it does not track individual visitors across customers' websites. Its analytics does not log URL query strings, including the search and filter values used on this site. The script is served from `static.cloudflareinsights.com`; with automatic setup, measurement reports go to this domain's `/cdn-cgi/rum` endpoint, operated by Cloudflare. Ordinary network request information still reaches Cloudflare as the hosting provider, as described above.
+
+USASI does not use advertising pixels or share reader information with sponsors. See [Cloudflare's Web Analytics documentation](https://developers.cloudflare.com/web-analytics/about/), [collection details](https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/), and [privacy policy](https://www.cloudflare.com/privacypolicy/) for the provider's practices.
 
 <h2 id="storage">Storage in your browser</h2>
 
@@ -20,6 +26,10 @@ The site does not use cookies, `localStorage`, `sessionStorage`, or IndexedDB. F
 <h2 id="links">External links</h2>
 
 Entries link to official pages, repositories, model hubs, license files, and other sources. Following a link takes you to that site, where its own privacy practices apply. External links are marked with an arrow and are sent with `rel="noreferrer"`, so the destination is not told which USASI page you came from. Links for reporting corrections or editing entries go to GitHub, when a repository is configured, and GitHub's policies apply there.
+
+<h2 id="advertisement">Optional homepage advertisement</h2>
+
+The homepage may display one panel labeled "Advertisement · Paid sponsor" below the directory previews and before news. With no sponsor configured, it renders nothing. Its logo is a local image; it contains no embeds, third-party scripts, pixels, or tracking links. USASI does not share reader data with sponsors, and viewing the panel sends no request to the sponsor. The one paid link uses `rel="sponsored noopener noreferrer"`; if you follow it, the destination's privacy practices apply. Sponsorship does not change catalog or editorial decisions.
 
 <h2 id="contact">Email and social profiles</h2>
 

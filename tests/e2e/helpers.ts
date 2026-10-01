@@ -10,6 +10,7 @@ export interface ContentRecord {
   eligibility: { status: string };
   kind?: string;
   record_level?: string;
+  licenses?: Array<{ spdx: string | null; name: string }>;
 }
 
 export function readRecordsFrom(sub: string): ContentRecord[] {

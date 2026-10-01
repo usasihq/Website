@@ -7,7 +7,7 @@ import { RUBRIC_LABEL } from "@/lib/openness";
 export const metadata = pageMetadata({
   title: "Methodology",
   description:
-    "How USASI decides eligibility, describes openness with type-specific checklists and rubric v0.1 tiers, handles sources, dates, uncertainty, and counts.",
+    "How USASI decides eligibility, describes openness with type-specific checklists and rubric v0.2 tiers, handles sources, dates, uncertainty, and counts.",
   path: "/methodology/",
 });
 
@@ -45,7 +45,7 @@ export default function MethodologyPage() {
               ))}
               <li>
                 <Link href="/compact/" className="link">
-                  USASI Compact v0.1
+                  USASI Compact v0.2
                 </Link>
               </li>
             </ul>

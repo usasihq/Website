@@ -1,6 +1,6 @@
 # United States of America Superintelligence (USASI)
 
-*American AI, infrastructure, and innovation.*
+*American Super Intelligence, infrastructure, and innovation.*
 
 An independent, **unofficial** catalog of U.S. AI organizations and U.S.-led open
 models, software, datasets, and evaluation tools, with a source for every
@@ -14,7 +14,8 @@ tip link.
 - Stack: Next.js 16 (App Router, static export) · TypeScript · Tailwind CSS 4 ·
   YAML content validated with Zod · MDX for editorial pages · lucide-react
 - Output: plain static files in `out/`. No server, database, accounts, CMS,
-  analytics, or cookies.
+  or cookies. Cloudflare Web Analytics is permitted under the Privacy page;
+  automatic injection is managed in the Cloudflare dashboard.
 
 Before going live, read **[SETUP_REQUIRED.md](SETUP_REQUIRED.md)** — it lists
 the owner decisions and configuration this repository cannot make for you.
@@ -54,7 +55,7 @@ npm run preview:static  # serve out/ like a static host at http://localhost:4321
 | `npm run preview:static` | Dependency-free static server for `out/` that applies `_headers` and compression (`-- --base /usasi --dir .out-basepath` for base paths). |
 | `npm run preview:cloudflare` | Serves `out/` in Cloudflare's local Workers runtime (`wrangler dev`) with the real asset routing, `_headers`, and 404 handling. No account needed. |
 | `npm run deploy:cloudflare` | `wrangler deploy` — requires your Cloudflare login or API token. Not run by anything automatically. |
-| `npm run prepare:images` | Regenerates hero derivatives, `og.png`, and the touch icon from the untouched original artwork. |
+| `npm run prepare:images` | Regenerates hero derivatives, `og.png`, and the touch icon, using the branding derivative while preserving the original artwork. |
 
 ## Repository layout
 
@@ -77,7 +78,7 @@ lib/
   schema.ts              Zod schemas (the content contract)
   validate.ts            cross-record validation
   catalog.ts             build-time catalog: published-only view, derived relations
-  openness.ts            rubric v0.1 checklists and tier computation
+  openness.ts            rubric v0.2 checklists and tier computation
   search.ts              search, filters, sorting, URL state (client-safe)
   matrix.ts              comparison cells defined as directory filters
   site-config.ts         owner configuration (tip link, repository)
@@ -171,7 +172,7 @@ directory) and must explain why the entries were chosen; tips never affect it.
 ### Rules and rubrics
 
 - [ELIGIBILITY.md](ELIGIBILITY.md) — who qualifies and how edge cases are assessed.
-- [OPENNESS.md](OPENNESS.md) — USASI rubric v0.1: checklists, statuses, and tiers.
+- [OPENNESS.md](OPENNESS.md) — USASI rubric v0.2: checklists, statuses, and tiers.
 - [CONTENT_REVIEW.md](CONTENT_REVIEW.md) — the internal queue: unresolved candidates, evidence gaps, and editorial calls to revisit.
 
 ## The tip link
@@ -202,18 +203,27 @@ Set `repository.url` in the same file (`https://github.com/<owner>/<repo>`) to
 turn on **Report a correction**, **Edit this entry**, and contribution links.
 Until then those actions explain that the repository is not yet available.
 
+## Optional homepage sponsor
+
+`lib/site-config.ts` → `homepageSponsor` stays `null` until the owner has an actual approved sponsor. Null emits no panel, placeholder, or reserved space. A configured sponsor requires a name, factual description, link label, query-free HTTPS URL, and a local raster `logo` path under `/images/sponsors/` (put the file in `public/images/sponsors/`). The build rejects a missing logo. Review the factual copy and logo rights before configuration; never invent a sponsor or destination.
+
+Only the homepage renders this single panel, after the two directory previews and before news. It is labeled “Advertisement · Paid sponsor”; the link uses `sponsored noopener noreferrer`. No tracking scripts, pixels, embeds, or reader-data sharing are permitted. Tips and editorial decisions remain separate. See Support, Privacy, and USASI Compact v0.2 for the owner-approved policy; eligibility is unchanged; rubric v0.2 is documented separately.
+
 ## Images
 
 The supplied artwork is kept byte-for-byte in `assets/original/USA SUPER LOGO.png`
 (SHA-256 recorded in `THIRD_PARTY_NOTICES.md`). No text-free version was
-supplied, so the homepage shows the branded artwork intact with the live heading,
+supplied, so the homepage shows a tagline-edited derivative with the live heading,
 search, and actions beneath it.
 
-`npm run prepare:images` regenerates, from that original:
+`assets/branding/usasi-hero.png` preserves the scene and replaces the tagline with
+“American Super Intelligence, infrastructure, and innovation.” The original stays untouched.
+
+`npm run prepare:images` regenerates from that branding derivative:
 
 - `public/images/hero/hero-{640,960,1280,1672}.{avif,webp,jpg}` — responsive
   derivatives (downscale only; 1672 px is the native width),
-- `public/hero.png` — an identical copy at a stable URL,
+- `public/hero.png` — a copy of the branding derivative at a stable URL,
 - `public/og.png` — 1200×630 social image,
 - `app/apple-icon.png` — from `app/icon.svg`.
 
@@ -237,7 +247,9 @@ requests are served from Cloudflare's static asset storage.
   `/data/*` so others can use the open catalog export.
 - Every HTML page also carries a `<meta>` Content-Security-Policy whose
   `script-src` lists SHA-256 hashes of that page's own inline scripts, so only
-  the site's scripts can run (added by `scripts/postbuild.mjs`).
+  matching inline scripts can run (added by `scripts/postbuild.mjs`). Both policies
+  also allow Cloudflare's beacon host `https://static.cloudflareinsights.com`,
+  including its versioned paths; collection stays restricted to same-origin.
 - `not_found_handling: "404-page"` serves the styled `404.html` with a real 404
   status; `html_handling: "auto-trailing-slash"` redirects `/companies` →
   `/companies/` (307).
@@ -301,3 +313,11 @@ and `index.html` for directory URLs; `_headers` is ignored there.
 - Original catalog prose: CC BY 4.0 ([CONTENT_LICENSE.md](CONTENT_LICENSE.md)).
 - Artwork: owner's, not licensed for reuse; fonts: SIL OFL 1.1; third-party names
   and marks belong to their owners ([THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
+
+## Jobs
+
+The `/jobs/` catalog uses first-party employer/official ATS sources configured on
+published organizations. See [Jobs architecture, source policy and operations](docs/JOBS.md)
+for setup, refresh scheduling, validation, reconciliation, supported adapters and limits.
+Run `npm run jobs:refresh` to fetch and reconcile supported feeds; ordinary builds are
+offline and use the validated snapshot. Applications remain on the employer's site.
