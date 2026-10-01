@@ -1,0 +1,107 @@
+slug: david-heinemeier-hansson
+name: David Heinemeier Hansson
+initials: DHH
+headline: Creator of Omarchy, a Linux system that sets up local-model tools such as Ollama and LM Studio
+bio:
+  text: >-
+    David Heinemeier Hansson created Omarchy, an open-source Linux system released under the MIT
+    License, and earlier created the Ruby on Rails web framework. Omarchy's manual has a Local LLMs
+    section that recommends LM Studio and Ollama for finding and running open-weight models, and its
+    Install > AI menu installs either one, along with agent apps such as Hermes and OpenClaw.
+    Heinemeier Hansson is a co-owner of 37signals, where Omarchy is incubated.
+  source_ids: [dhh-site, omarchy-site, omarchy-ai-manual, omarchy-license]
+affiliations:
+  - name: 37signals
+    organization_slug: null
+    role: Co-owner
+    current: true
+    source_ids: [dhh-site]
+  - name: Omacom Foundation
+    organization_slug: null
+    role: President
+    current: true
+    source_ids: [dhh-site]
+work:
+  - name: Omarchy
+    artifact_slug: null
+    url: https://omarchy.org/
+    contribution: >-
+      Created Omarchy, an MIT-licensed Linux system. Its manual's Local LLMs section recommends LM
+      Studio, for finding, installing, and running open-weight models through a graphical app, and
+      Ollama, for doing the same from the command line; both install from the Install > AI menu.
+    source_ids: [dhh-site, omarchy-site, omarchy-ai-manual, omarchy-license]
+  - name: Ollama setup in Omarchy
+    artifact_slug: ollama
+    url: https://github.com/omacom/omarchy
+    contribution: >-
+      Omarchy's Install > AI menu installs Ollama, choosing the CUDA build when it detects an NVIDIA
+      GPU and the ROCm build when it detects an AMD GPU, and its removal command deletes Ollama
+      together with the models it downloaded.
+    source_ids: [omarchy-menu, omarchy-remove-ollama, omarchy-ai-manual]
+  - name: Hermes and OpenClaw in Omarchy
+    artifact_slug: hermes-agent
+    url: https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md
+    contribution: >-
+      Omarchy can install Hermes Desktop and make Hermes, Nous Research's agent, or OpenClaw the
+      default agent. Its manual documents how Omarchy manages the Hermes runtime and OpenClaw's
+      Control UI with its own local gateway.
+    source_ids: [omarchy-ai-manual, omarchy-menu]
+links:
+  - label: Website
+    url: https://dhh.dk/
+  - label: GitHub
+    url: https://github.com/dhh
+  - label: Omarchy
+    url: https://omarchy.org/
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: dhh-site
+    title: David Heinemeier Hansson — personal site (projects and roles)
+    url: https://dhh.dk/
+    publisher: David Heinemeier Hansson
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-site
+    title: Omarchy
+    url: https://omarchy.org/
+    publisher: Omarchy
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-ai-manual
+    title: Omarchy manual — AI (including Local LLMs)
+    url: https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md
+    publisher: Omarchy (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-license
+    title: Omarchy LICENSE (MIT)
+    url: https://github.com/omacom/omarchy/blob/quattro/LICENSE
+    publisher: Omarchy (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-menu
+    title: Omarchy menu definitions (Install > AI entries)
+    url: https://github.com/omacom/omarchy/blob/quattro/default/omarchy/omarchy-menu.jsonc
+    publisher: Omarchy (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-remove-ollama
+    title: omarchy-remove-ai-ollama script
+    url: https://github.com/omacom/omarchy/blob/quattro/bin/omarchy-remove-ai-ollama
+    publisher: Omarchy (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
