@@ -1,0 +1,185 @@
+slug: hermes-agent
+name: Hermes Agent
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Nous Research
+    organization_slug: nous-research
+    source_ids:
+      - repo
+      - license
+organization_slugs:
+  - nous-research
+links:
+  - label: Website
+    url: https://hermes-agent.nousresearch.com/
+    kind: website
+  - label: Repository
+    url: https://github.com/NousResearch/hermes-agent
+    kind: repository
+  - label: Documentation
+    url: https://hermes-agent.nousresearch.com/docs/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/NousResearch/hermes-agent/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24
+    kind: release-notes
+summary:
+  text: Hermes Agent is an agent runtime from Nous Research with command-line and messaging
+    interfaces, persistent memory, reusable skills, and scheduled tasks. It can connect to different
+    model providers and local or remote execution backends. It is separate from the Hermes family of
+    language models.
+  source_ids:
+    - repo
+    - docs
+  reviewed_at: 2026-10-01
+useful_for:
+  text: Building persistent assistants and tool-using workflows with configurable model providers,
+    execution environments, and messaging channels.
+  source_ids:
+    - docs
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: Nous Research publishes and maintains Hermes Agent. Its official portal terms identify
+    Nous Research, Inc. as a Delaware corporation, and its careers page documents New York office
+    operations and Hermes Agent engineering roles. These sources establish U.S.-based project
+    stewardship; they do not establish a headquarters address.
+  source_ids:
+    - repo
+    - nous-terms
+    - nous-careers
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: Source code and installation documentation are public. Model-provider and
+    connected-service access are configured separately.
+  source_ids:
+    - repo
+    - docs
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/NousResearch/hermes-agent/blob/main/LICENSE
+    applies_to: code
+    source_ids:
+      - license
+    reviewed_at: 2026-10-01
+license_notes:
+  text: The MIT entry applies to this project’s code. It does not license model weights, external
+    services, or third-party components; consult their respective terms and notices.
+  source_ids:
+    - license
+    - repo
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public project repository.
+    source_ids:
+      - repo
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation.
+    source_ids:
+      - docs
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: Official documentation provides shell and PowerShell installers and distinguishes desktop
+      packages, command-line installation, Docker, and other supported methods. Provider access and
+      optional integrations require separate configuration.
+    source_ids:
+      - docs
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: The support matrix prioritizes Apple Silicon macOS, Windows 10/11, Linux/WSL2, and Docker,
+      with architecture and packaging qualifications. Nix and aarch64 Android/Termux are
+      best-effort. Intel macOS uses the darwin-x64 bundle or CLI route, not the Apple Silicon-only
+      bootstrap installer; Linux desktop release packaging is disabled.
+    source_ids:
+      - platforms
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: Reviewed Hermes Agent v0.21.5, tagged v2026.9.24 and published September 24, 2026. This entry
+      describes the project rather than one release; current main-branch documentation may describe
+      later work.
+    source_ids:
+      - release
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance: null
+tags:
+  - agents
+  - automation
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: Hermes Agent repository and README
+    url: https://github.com/NousResearch/hermes-agent
+    publisher: Nous Research
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Hermes Agent MIT LICENSE
+    url: https://raw.githubusercontent.com/NousResearch/hermes-agent/main/LICENSE
+    publisher: Nous Research
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs
+    title: Hermes Agent official documentation
+    url: https://hermes-agent.nousresearch.com/docs/
+    publisher: Nous Research
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Hermes Agent reviewed tagged release
+    url: https://github.com/NousResearch/hermes-agent/releases/tag/v2026.9.24
+    publisher: Nous Research
+    kind: release-notes
+    published_at: 2026-09-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nous-terms
+    title: Nous Portal terms — contracting entity
+    url: https://portal.nousresearch.com/terms
+    publisher: Nous Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nous-careers
+    title: Nous Research careers — office operations and Hermes Agent roles
+    url: https://nousresearch.com/careers
+    publisher: Nous Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: platforms
+    title: Hermes Agent platform support matrix
+    url: https://hermes-agent.nousresearch.com/docs/getting-started/platform-support
+    publisher: Nous Research
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
