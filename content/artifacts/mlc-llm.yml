@@ -8,7 +8,7 @@ maintainers:
   - name: MLC team (MLC open community)
     organization_slug: null
     source_ids: [mlc-readme, mlc-home]
-  - name: CMU Catalyst (lists MLC LLM among its research projects)
+  - name: CMU Catalyst (lists MLC LLM among its own research projects)
     organization_slug: carnegie-mellon-university
     source_ids: [cmu-catalyst]
 organization_slugs: [carnegie-mellon-university]
@@ -38,18 +38,18 @@ useful_for:
     browsers from a shared engine and compiler.
   source_ids: [mlc-readme]
 eligibility:
-  status: pending_review
-  basis: undetermined
+  status: eligible
+  basis: us-governed-project
   explanation: >-
-    The project credits the "MLC team", and the MLC site describes MLC as an open community;
-    neither documents a legal entity or location. CMU Catalyst lists MLC LLM among its research
-    projects. The MLC site lists NSF, CMU, Catalyst, Purdue, NVIDIA, Amazon, and Google as
-    supporting and contributing organizations. MLC's 2023 announcement says the project was
-    initiated by members of CMU Catalyst, UW SAMPL, Shanghai Jiao Tong University, OctoML, and
-    the MLC community. The governing entity is therefore a multi-institution community that
-    cannot be documented as U.S.-based, so eligibility is left for editorial review.
-  source_ids: [mlc-readme, mlc-home, cmu-catalyst, mlc-blog-2023]
-  assessed_at: 2026-09-29
+    Carnegie Mellon University's Catalyst research group lists MLC LLM as one of its own research
+    projects, which documents a U.S. university lab as a maintaining entity. The project credits the
+    "MLC team" and describes MLC as an open community; every organization the MLC site lists as
+    supporting and contributing (NSF, CMU, Catalyst, Purdue, NVIDIA, Amazon, and Google) is U.S.-based.
+    MLC's 2023 announcement says the project was started by members of CMU Catalyst, UW SAMPL, Shanghai
+    Jiao Tong University, OctoML, and the MLC community; that multi-institution origin is recorded here.
+    Eligibility rests on the documented CMU lab, not on contributors' affiliations or nationality.
+  source_ids: [cmu-catalyst, mlc-home, mlc-readme, mlc-blog-2023]
+  assessed_at: 2026-10-01
 availability:
   status: public
   access_conditions: >-
@@ -97,10 +97,10 @@ checklist:
 run_notes: []
 provenance: null
 tags: [inference, compiler, local-inference]
-publication_status: draft
+publication_status: published
 archive_note: null
 released_at: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: mlc-readme
@@ -110,6 +110,7 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: mlc-license
     title: MLC LLM LICENSE
     url: https://raw.githubusercontent.com/mlc-ai/mlc-llm/main/LICENSE
@@ -145,6 +146,7 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: mlc-blog-2023
     title: Bringing Hardware Accelerated Language Models to Android Devices
     url: https://blog.mlc.ai/2023/05/08/bringing-hardware-accelerated-language-models-to-android-devices
@@ -159,3 +161,4 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01

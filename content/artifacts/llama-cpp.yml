@@ -5,9 +5,9 @@ record_level: project
 family_slug: null
 version: null
 maintainers:
-  - name: ggml team and ggml-org community
-    organization_slug: null
-    source_ids: [ggml-hf-discussion, ggml-ai-site]
+  - name: ggml team at Hugging Face (ggml.ai, acquired by Hugging Face in 2026), with the ggml-org community
+    organization_slug: hugging-face
+    source_ids: [hf-ggml-blog, ggml-ai-site, ggml-hf-discussion]
 organization_slugs: [hugging-face]
 links:
   - label: Repository
@@ -35,20 +35,18 @@ useful_for:
     range of GPUs.
   source_ids: [llamacpp-readme, llama-app]
 eligibility:
-  status: pending_review
-  basis: undetermined
+  status: eligible
+  basis: us-governed-project
   explanation: >-
-    Governance is unresolved. In February 2026 the ggml team announced that it was joining
-    Hugging Face, and ggml.ai says the company was acquired by Hugging Face in 2026. The same
-    announcements say the ggml-org projects remain community driven. They also say the community
-    will keep operating autonomously and making its own technical decisions, with Hugging Face
-    providing resources. No governance document names Hugging Face (or another U.S. entity) as
-    the governing or maintaining organization of llama.cpp. The sources reviewed do not state
-    where ggml.ai was based. Hugging Face's own ownership may also change: on September 3, 2026
-    NVIDIA announced that it has agreed to acquire Hugging Face. Eligibility is not inferred from
-    the corporate affiliation of maintainers.
-  source_ids: [ggml-hf-discussion, hf-ggml-blog, ggml-ai-site, nvidia-hf-blog]
-  assessed_at: 2026-09-29
+    ggml.ai, the company Georgi Gerganov founded in 2023 to support ggml development, says it was
+    acquired by Hugging Face in 2026. Hugging Face's February 20, 2026 announcement says the ggml team
+    joined Hugging Face, dedicates all of its time to maintaining llama.cpp, and keeps leadership of the
+    project's technical direction, while the project stays open source and community driven. The
+    documented maintaining entity is therefore the ggml team within Hugging Face, a U.S. company in this
+    catalog. NVIDIA's pending agreement to acquire Hugging Face would not change the U.S. basis.
+    Eligibility rests on this documented ownership and maintenance, not on contributors' nationality.
+  source_ids: [hf-ggml-blog, ggml-ai-site, ggml-hf-discussion, nvidia-hf-blog]
+  assessed_at: 2026-10-01
 availability:
   status: public
   access_conditions: null
@@ -88,10 +86,10 @@ checklist:
 run_notes: []
 provenance: null
 tags: [inference, local-inference]
-publication_status: draft
+publication_status: published
 archive_note: null
 released_at: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: llamacpp-repo
@@ -143,6 +141,7 @@ sources:
     kind: announcement
     published_at: 2026-02-20
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: ggml-ai-site
     title: ggml.ai
     url: https://ggml.ai
@@ -150,6 +149,7 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: nvidia-hf-blog
     title: NVIDIA to Acquire Hugging Face
     url: https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/

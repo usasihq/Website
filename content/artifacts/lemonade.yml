@@ -5,8 +5,8 @@ record_level: project
 family_slug: null
 version: null
 maintainers:
-  - name: Lemonade project maintainers (community project sponsored by AMD)
-    organization_slug: null
+  - name: Lemonade project (sponsored and backed by AMD, with community maintainers)
+    organization_slug: amd
     source_ids: [readme, contribute]
 organization_slugs: [amd]
 links:
@@ -37,17 +37,17 @@ useful_for:
   source_ids: [readme]
   reviewed_at: 2026-10-01
 eligibility:
-  status: pending_review
-  basis: undetermined
+  status: eligible
+  basis: us-governed-project
   explanation: >-
-    The README describes Lemonade as a community project with many maintainers, built with
-    optimizations by AMD engineers and sponsored by AMD, and AMD's developer site calls it an
-    open-source project backed by AMD. The LICENSE names "Lemonade Community" as copyright
-    holder, and the maintainer list names individual GitHub accounts rather than an
-    organization. No document reviewed names AMD or another entity as the project's governing
-    or maintaining organization, so the U.S. basis is unresolved; sponsorship alone is not
-    treated as governance. AMD's role is recorded as a relationship.
-  source_ids: [readme, contribute, license, amd-article]
+    Lemonade's README says the project is sponsored by AMD, built with optimizations by AMD engineers,
+    and gives an amd.com address as its contact. AMD's developer article calls Lemonade an open-source
+    project backed by AMD and points readers to "our GitHub" and "our YouTube channel", presenting the
+    project as AMD's own. AMD, a U.S. company in this catalog, is therefore treated as the documented
+    maintaining entity. The README also describes many community maintainers, and the LICENSE names
+    "Lemonade Community" as copyright holder; both are recorded. Eligibility does not rest on any
+    contributor's affiliation or nationality.
+  source_ids: [readme, amd-article, contribute, license]
   assessed_at: 2026-10-01
 availability:
   status: public
@@ -127,7 +127,7 @@ provenance:
       note: Listed among the tools Lemonade builds on.
   source_ids: [readme]
 tags: [inference, local-inference, serving]
-publication_status: draft
+publication_status: published
 archive_note: null
 released_at: null
 updated_at: 2026-10-01

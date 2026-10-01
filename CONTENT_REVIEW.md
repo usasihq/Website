@@ -173,3 +173,15 @@ For gpt-oss-20b, weights availability and the weights/code licenses were checked
 An editor must inspect the source, identify the disputed field and effective date, revise only supported claims, attach fact-level `reviewed_at` and citations, update `updated_at` for substantive edits, and record material changes in the changelog. Do not advance a whole record's `last_reviewed` unless the whole record was checked. Use the account-free email correction link to submit an entry URL, disputed field, proposed correction and supporting primary source.
 
 The system-openness review requires an explicit status, parameter/code/data-information permission assessments, rationale, citations and review date. `verified` does not by itself produce a badge if a permission remains unknown or the new completeness checks are not satisfied. No current release has been granted this highest review solely from migrated data.
+
+## 2026-10-01: owner-delegated decisions
+
+The owner asked for these open items to be resolved. Each rests on primary
+sources re-read on 2026-10-01 and is explained in the record's eligibility text.
+
+| Item | Decision | Deciding evidence |
+|---|---|---|
+| A1 llama.cpp | Published, `us-governed-project` | ggml.ai (founded to support ggml) says Hugging Face acquired it in 2026; Hugging Face's 2026-02-20 announcement says the ggml team joined, maintains llama.cpp full time, and leads its technical direction. Maintaining entity: the ggml team within Hugging Face (U.S.). |
+| F1c MLC LLM | Published, `us-governed-project` | CMU Catalyst lists MLC LLM as its own research project; all supporting/contributing organizations on mlc.ai are U.S.-based. The 2023 multi-institution origin is recorded. Other F1c projects (Lance, DCLM, BigCodeBench, GPQA, MMLU, Triton, SWE-bench) remain draft. |
+| Lemonade | Published, `us-governed-project` | README: sponsored by AMD, amd.com contact; AMD's developer article calls it backed by AMD and links "our GitHub". |
+| xAI jobs | Greenhouse board `xai` (named "SpaceXAI") assigned to `xai` | x.ai/careers links to the board (round-3 jobs notes); the catalog already records xAI as SpaceX's wholly owned subsidiary using the SpaceXAI name. SpaceX's own `spacex` board (mostly non-AI roles) is not added. |
