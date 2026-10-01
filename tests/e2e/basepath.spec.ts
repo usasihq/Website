@@ -43,3 +43,13 @@ test("Jobs links and filters preserve the base path", async ({page}) => {
   await expect(page).toHaveURL(/\/usasi\/jobs\/\?company=anthropic/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href",/\/usasi\/jobs\/$/);
 });
+
+
+test("People Behind Local AI navigation preserves the base path", async ({page}) => {
+  await page.goto("/usasi/about/");
+  const link = page.getByRole("navigation", {name:"Primary", exact:true}).getByRole("link", {name:"People Behind Local AI", exact:true});
+  await expect(link).toHaveAttribute("href", "/usasi/local/");
+  await link.click();
+  await expect(page).toHaveURL(/\/usasi\/local\/$/);
+  await expect(link).toHaveAttribute("aria-current", "page");
+});

@@ -13,6 +13,7 @@ const NAV = [
   { href: "/matrix/", label: "Compare" },
   { href: "/news/", label: "News" },
   { href: "/methodology/", label: "Methodology" },
+  { href: "/local/", label: "People Behind Local AI" },
   { href: "/about/", label: "About" },
 ];
 
@@ -51,11 +52,9 @@ export function SiteHeader({ siteName, shortName }: { siteName: string; shortNam
         <Link href="/" prefetch={false} className="group flex min-w-0 items-center gap-3 rounded-md" aria-label={`${shortName} — ${siteName}, home`}>
           <BrandMark className="h-7 w-7 shrink-0" />
           <span className="text-[1.0625rem] font-semibold tracking-[0.06em] text-text">{shortName}</span>
-          <span aria-hidden="true" className="hidden h-5 w-px bg-line-strong 2xl:block" />
-          <span className="hidden truncate text-[0.9375rem] font-normal text-muted 2xl:block">{siteName}</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:block">
+        <nav aria-label="Primary" className="hidden shrink-0 xl:block">
           <ul className="flex items-center gap-1">
             {NAV.map((item) => {
               const current = isCurrent(pathname, item.href);
@@ -64,7 +63,7 @@ export function SiteHeader({ siteName, shortName }: { siteName: string; shortNam
                   <Link
                     href={item.href}
                     aria-current={current ? "page" : undefined}
-                    className={`inline-flex min-h-11 items-center rounded-md px-3 text-[0.9375rem] transition-colors ${
+                    className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-md px-3 text-[0.9375rem] transition-colors ${
                       current ? "text-text underline decoration-cyan decoration-2 underline-offset-[10px]" : "text-muted hover:text-text"
                     }`}
                   >
@@ -79,7 +78,7 @@ export function SiteHeader({ siteName, shortName }: { siteName: string; shortNam
         <button
           ref={toggleRef}
           type="button"
-          className="inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-line px-3 text-sm text-text lg:hidden"
+          className="inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-line px-3 text-sm text-text xl:hidden"
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => setOpen(!open)}
@@ -89,7 +88,7 @@ export function SiteHeader({ siteName, shortName }: { siteName: string; shortNam
         </button>
       </div>
 
-      <div id={panelId} hidden={!open} className="border-t border-line bg-bg lg:hidden">
+      <div id={panelId} hidden={!open} className="border-t border-line bg-bg xl:hidden">
         <nav aria-label="Primary (mobile)" className="container-page py-3">
           <ul className="flex flex-col">
             {NAV.map((item, i) => {

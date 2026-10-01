@@ -1,0 +1,71 @@
+slug: mia
+name: Mia
+initials: M
+headline: Developer of local model deployment recipes and the sparkDash monitoring dashboard
+bio:
+  text: >-
+    Mia is a developer who publishes recipes for deploying and tuning AI models
+    on local hardware through Mia's AI Lab. Her GLM-5.3 Flash recipe combines
+    vLLM serving with launch scripts and documented measurements for NVIDIA DGX
+    Spark systems. She also publishes sparkDash, a dashboard for monitoring
+    hardware and local model servers.
+  source_ids: [personal-site, glm-recipe, sparkdash-repo]
+affiliations:
+  - name: Mia's AI Lab
+    organization_slug: null
+    role: Developer
+    current: true
+    source_ids: [personal-site]
+work:
+  - name: Local deployment recipes using vLLM
+    artifact_slug: vllm
+    url: https://github.com/MiaAI-Lab/GLM-5.3-Flash-EXL3-2x-DGX-Sparks
+    contribution: >-
+      Publishes a GLM-5.3 Flash deployment recipe with vLLM launch scripts,
+      configuration guidance, and performance measurements, credited to Mia's
+      AI Lab and the community. This is independent deployment work using
+      vLLM. The recipe's code and documentation use AGPL-3.0, with earlier
+      contributions under MIT; model weights retain separate terms.
+    source_ids: [personal-site, glm-recipe]
+  - name: sparkDash
+    artifact_slug: null
+    url: https://github.com/MiaAI-Lab/sparkDash
+    contribution: >-
+      Publishes a monitoring dashboard for NVIDIA DGX Spark systems and other
+      Linux hosts with NVIDIA GPUs, including hardware and local model-server
+      metrics. The repository identifies Mia's AI Lab as the author and lists
+      an MIT license.
+    source_ids: [sparkdash-repo]
+links:
+  - label: Website
+    url: https://mia-ai.net/
+  - label: GitHub
+    url: https://github.com/MiaAI-Lab
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: personal-site
+    title: Mia's AI Lab — About and local model recipes
+    url: https://mia-ai.net/#about
+    publisher: Mia's AI Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: glm-recipe
+    title: GLM-5.3 Flash EXL3 on DGX Spark — README and license notes
+    url: https://github.com/MiaAI-Lab/GLM-5.3-Flash-EXL3-2x-DGX-Sparks
+    publisher: Mia's AI Lab
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: sparkdash-repo
+    title: sparkDash — README, authorship and license
+    url: https://github.com/MiaAI-Lab/sparkDash
+    publisher: Mia's AI Lab
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

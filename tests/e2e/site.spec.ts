@@ -517,3 +517,33 @@ for (const width of [320, 1280]) {
     await panel.screenshot({ path: `reports/screenshots/sponsor-fixture-${width}.png` });
   });
 }
+
+
+test("people navigation order, keyboard activation and current-page semantics", async ({ page, isMobile }) => {
+  await page.goto("/about/");
+  if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
+  const nav = page.getByRole("navigation", { name: isMobile ? "Primary (mobile)" : "Primary", exact: true });
+  const labels = await nav.getByRole("link").allTextContents();
+  expect(labels.slice(-3)).toEqual(["Methodology", "People Behind Local AI", "About"]);
+  await nav.getByRole("link", { name: "Methodology", exact: true }).focus();
+  await page.keyboard.press("Tab");
+  await expect(nav.getByRole("link", { name: "People Behind Local AI", exact: true })).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/local\/$/);
+  if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
+  await expect(nav.getByRole("link", { name: "People Behind Local AI", exact: true })).toHaveAttribute("aria-current", "page");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("Mia's October profile keeps sourced deployment work and catalog links", async ({ page }) => {
+  await page.clock.setFixedTime(new Date("2026-10-15T12:00:00Z"));
+  await page.goto("/local/#mia");
+  const card = page.locator("article#mia");
+  await expect(card.getByRole("heading", { name: "Mia", exact: true })).toBeVisible();
+  await expect(card.getByRole("link", { name: /^Website \(external site:/ })).toHaveAttribute("href", "https://mia-ai.net/");
+  await expect(card.getByRole("link", { name: /^GitHub \(external site:/ })).toHaveAttribute("href", "https://github.com/MiaAI-Lab");
+  await expect(card.locator('a[href="/open/vllm/"]')).toHaveCount(1);
+  await expect(card).toContainText("independent deployment work using vLLM");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await card.screenshot({ path: `reports/screenshots/mia-${test.info().project.name}.png` });
+});
