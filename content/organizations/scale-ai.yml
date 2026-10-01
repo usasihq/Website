@@ -73,9 +73,18 @@ openness_summary:
     public model weights from Scale AI.
   source_ids: [scale-about]
 hiring_url: https://scale.com/careers
+careers:
+  url: https://scale.com/careers
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: scaleai
+  posting_hosts: []
+  source_ids: [scale-ai-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: scale-about
@@ -113,3 +122,11 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+  - id: scale-ai-careers-jobs
+    title: Official careers directory and application links
+    url: https://scale.com/careers
+    publisher: Scale AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

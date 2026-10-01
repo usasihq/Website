@@ -1,0 +1,251 @@
+slug: goose
+name: goose
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: goose, a Series of LF Projects, LLC (Agentic AI Foundation project)
+    organization_slug: agentic-ai-foundation
+    source_ids: [goose-governance, goose-repo, aaif-projects]
+organization_slugs: [agentic-ai-foundation, linux-foundation, block]
+links:
+  - label: Documentation
+    url: https://goose-docs.ai/docs/quickstart
+    kind: documentation
+  - label: Repository
+    url: https://github.com/aaif-goose/goose
+    kind: repository
+  - label: Governance
+    url: https://github.com/aaif-goose/goose/blob/main/GOVERNANCE.md
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/aaif-goose/goose/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/aaif-goose/goose/releases/tag/v1.52.0
+    kind: release-notes
+summary:
+  text: >-
+    goose is an open-source, general-purpose AI agent that runs on the user's machine, with a
+    desktop app, a command-line interface, and an API, and is written in Rust. It works with
+    multiple hosted and local model providers and connects to extensions through the Model
+    Context Protocol. Block created goose and contributed it to the Agentic AI Foundation.
+  source_ids: [goose-repo, goose-quickstart, goose-governance]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Running a local agent for software development and for other tasks such as research,
+    writing, automation, and data analysis, with a choice of model provider and MCP-based
+    extensions.
+  source_ids: [goose-repo, goose-quickstart]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The project's governance document states that goose, founded by Block and now stewarded by
+    the Agentic AI Foundation, has been established as a series of LF Projects, LLC, a Delaware
+    series limited liability company, and that governance changes also need LF Projects'
+    approval. The Agentic AI Foundation is a directed fund of The Linux Foundation, which
+    describes itself as a 501(c)(6) nonprofit with a legal postal address in San Francisco,
+    California. Maintainer roles are tied to individuals rather than employers. Block, which
+    created goose, lists its principal executive office in Oakland, California, but eligibility
+    rests on the current documented governance, not on the founding company or contributors.
+  source_ids: [goose-governance, lfprojects, aaif-charter, lf-about, lf-privacy, block-10k-2025]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code, desktop and CLI downloads, and documentation are public. A model provider must
+    be configured, for example with an API key or a supported subscription; provider access is
+    governed by that provider's terms.
+  source_ids: [goose-repo, goose-install]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/aaif-goose/goose/main/LICENSE
+    applies_to: code
+    source_ids: [goose-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The repository's LICENSE is the Apache License 2.0 with a 2024 copyright notice for Block,
+    Inc.; Block's launch announcement also stated Apache 2.0. The governance document says
+    documentation other than specifications is made available under CC BY 4.0, but no separate
+    documentation license file is recorded here. The license does not cover model weights or
+    third-party providers and extensions.
+  source_ids: [goose-license, block-goose-launch, goose-governance]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository at aaif-goose/goose; the former block/goose address redirects there.
+    source_ids: [goose-repo, goose-moves-aaif]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public documentation site with quickstart, installation guides, and tutorials.
+    source_ids: [goose-quickstart, goose-install]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The installation guide documents desktop downloads, Homebrew packages, Linux DEB, RPM, and
+      Flatpak packages, a CLI install script, and a PowerShell path for Windows. An LLM provider
+      must be configured before use.
+    source_ids: [goose-install]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Desktop app and CLI for macOS (Apple silicon and Intel), Linux (Debian/Ubuntu,
+      RHEL/Fedora, and other distributions), and Windows, including WSL for the CLI.
+    source_ids: [goose-install]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release v1.52.0, published September 23, 2026 and marked Latest. This entry
+      describes the project rather than one release.
+    source_ids: [goose-release]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance:
+  text: >-
+    Block's Open Source Program Office announced codename goose on January 28, 2025. Block
+    contributed goose as a founding project of the Agentic AI Foundation, announced on December
+    9, 2025, and on April 7, 2026 the repository moved from Block's GitHub organization to
+    aaif-goose and the documentation to goose-docs.ai.
+  derived_from: []
+  source_ids: [block-goose-launch, lf-aaif-press, goose-moves-aaif]
+tags: [agents, coding-agent, automation]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: goose-repo
+    title: aaif-goose/goose repository and README
+    url: https://github.com/aaif-goose/goose
+    publisher: goose project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-license
+    title: aaif-goose/goose LICENSE
+    url: https://raw.githubusercontent.com/aaif-goose/goose/main/LICENSE
+    publisher: goose project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-governance
+    title: goose Technical Governance and Stewardship (GOVERNANCE.md)
+    url: https://raw.githubusercontent.com/aaif-goose/goose/main/GOVERNANCE.md
+    publisher: goose project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-quickstart
+    title: goose quickstart
+    url: https://goose-docs.ai/docs/quickstart
+    publisher: AAIF (Agentic AI Foundation)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-install
+    title: goose installation guide
+    url: https://goose-docs.ai/docs/getting-started/installation
+    publisher: AAIF (Agentic AI Foundation)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-release
+    title: goose v1.52.0 release
+    url: https://github.com/aaif-goose/goose/releases/tag/v1.52.0
+    publisher: goose project
+    kind: release-notes
+    published_at: 2026-09-23
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-moves-aaif
+    title: goose has a new home - the Agentic AI Foundation (AAIF)
+    url: https://goose-docs.ai/blog/2026/04/07/goose-moves-to-aaif/
+    publisher: goose project
+    kind: announcement
+    published_at: 2026-04-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-goose-launch
+    title: Block Open Source Introduces "codename goose" — an Open Framework for AI Agents
+    url: https://block.xyz/inside/block-open-source-introduces-codename-goose
+    publisher: Block
+    kind: announcement
+    published_at: 2025-01-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-aaif-press
+    title: >-
+      Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF), Anchored by
+      New Project Contributions Including Model Context Protocol (MCP), goose and AGENTS.md
+    url: https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation
+    publisher: Linux Foundation
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-projects
+    title: Projects - Agentic AI Foundation (AAIF)
+    url: https://aaif.io/projects
+    publisher: Agentic AI Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-charter
+    title: The Agentic AI Foundation Charter (amended July 29, 2026)
+    url: https://raw.githubusercontent.com/aaif/foundation/main/foundation-charter.pdf
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: 2026-07-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lfprojects
+    title: LF Projects, LLC
+    url: https://lfprojects.org/
+    publisher: LF Projects, LLC
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-about
+    title: About the Linux Foundation
+    url: https://www.linuxfoundation.org/about
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-privacy
+    title: Privacy Policy | Linux Foundation
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-10k-2025
+    title: Block, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1512673/000162828026012254/xyz-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (filed by Block, Inc.)
+    kind: filing
+    published_at: 2026-02-26
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

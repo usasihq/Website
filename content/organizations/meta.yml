@@ -95,7 +95,7 @@ openness_summary:
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: meta-10k-2025
@@ -189,3 +189,93 @@ sources:
     kind: announcement
     published_at: 2022-09-12
     accessed_at: 2026-09-29
+  - id: review-model-api
+    title: Meta Model API
+    url: https://dev.meta.ai/products/meta-model-api/
+    publisher: Meta
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-model-api-docs
+    title: Meta Model API documentation
+    url: https://dev.meta.ai/docs/
+    publisher: Meta
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-glimmer-card
+    title: Muse Glimmer model card (meta-models/Muse-Glimmer-30B)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hf-meta-models
+    title: meta-models on Hugging Face
+    url: https://huggingface.co/meta-models
+    publisher: Hugging Face
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-llama-models
+    title: meta-llama/llama-models (GitHub repository)
+    url: https://github.com/meta-llama/llama-models
+    publisher: Meta (GitHub)
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-llama4-license
+    title: Llama 4 Community License Agreement
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Meta presents the Meta Model API as self-serve, usage-priced access to
+      Muse Spark for developers building agent and multimodal workflows. The
+      Muse Glimmer model card targets commercial and research use, including
+      agents that run on consumer devices.
+    source_ids: [review-model-api, review-glimmer-card]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Muse Spark versions are offered through the Meta Model API, which is in
+      public preview; Meta's meta-models Hugging Face organization lists Muse
+      Glimmer weights but no Muse Spark weights. Muse Glimmer downloads are not
+      gated, while Llama weights are provided after users accept the license
+      and their access request is approved.
+    source_ids: [review-model-api, review-model-api-docs, review-hf-meta-models, review-glimmer-card, review-llama-models]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Licenses differ by release: Muse Glimmer uses Apache 2.0, while Llama
+      models use custom Llama licenses with acceptable use policies. The Llama
+      4 license requires "Built with Llama" attribution and a separate license
+      from Meta for licensees above 700 million monthly active users. This
+      profile is not a complete product or rights audit.
+    source_ids: [review-glimmer-card, review-llama-models, review-llama4-license]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Meta Model API overview and pricing
+      url: https://dev.meta.ai/products/meta-model-api/
+      kind: pricing
+      source_ids: [review-model-api]
+      reviewed_at: 2026-10-01
+    - label: Meta Model API documentation
+      url: https://dev.meta.ai/docs/
+      kind: documentation
+      source_ids: [review-model-api-docs]
+      reviewed_at: 2026-10-01
+    - label: Muse Glimmer weights on Hugging Face
+      url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+      kind: model-hub
+      source_ids: [review-glimmer-card]
+      reviewed_at: 2026-10-01
+    - label: Llama models repository
+      url: https://github.com/meta-llama/llama-models
+      kind: repository
+      source_ids: [review-llama-models]
+      reviewed_at: 2026-10-01

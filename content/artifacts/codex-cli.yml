@@ -1,0 +1,196 @@
+slug: codex-cli
+name: Codex CLI
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [repo, license, contributing]
+organization_slugs: [openai]
+links:
+  - label: Repository
+    url: https://github.com/openai/codex
+    kind: repository
+  - label: Documentation
+    url: https://learn.chatgpt.com/docs/codex/cli
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/openai/codex/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/openai/codex/releases/tag/rust-v0.159.3
+    kind: release-notes
+summary:
+  text: >-
+    Codex CLI is OpenAI's open-source coding agent that runs locally in a terminal, where it can
+    inspect, edit, and run code in a local repository. The README points to separate Codex
+    experiences for code editors, a desktop app, and Codex Web, OpenAI's cloud-based agent.
+  source_ids: [repo, docs-cli]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Interactive and scripted coding work from a terminal, including code review and automation in
+    scripts or CI. Codex CLI is open-source client code: by default it sends requests to OpenAI's
+    hosted models, which are not open, using a ChatGPT plan sign-in or an API key billed through
+    the OpenAI Platform.
+  source_ids: [docs-cli, repo, docs-auth]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Codex CLI is developed in OpenAI's GitHub organization. Its LICENSE and NOTICE files assign
+    copyright to OpenAI, the README describes it as a coding agent from OpenAI, and the contributing
+    guide says the project does not accept external code contributions. OpenAI Group PBC, a
+    Delaware public benefit corporation, gives a San Francisco, California address in a February
+    2026 agreement filed with the SEC. See the openai organization record.
+  source_ids: [repo, license, notice, contributing, sec-openai-amazon-ecl]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code and binaries are public. Using OpenAI's hosted models requires signing in with a
+    ChatGPT plan or an OpenAI API key; the hosted models themselves are not open. A documented
+    --oss mode connects to a local Ollama or LM Studio server instead.
+  source_ids: [repo, docs-auth, docs-config]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/openai/codex/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 license (copyright 2025 OpenAI) applies to the repository's code. The NOTICE
+    file says the project includes code derived from Ratatui under the MIT license. Neither
+    license covers OpenAI's hosted models, ChatGPT plans, or API services, which have their own
+    terms.
+  source_ids: [license, notice, docs-auth]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: >-
+      Public repository containing the agent client, not model weights. The contributing guide
+      says external code contributions are not accepted.
+    source_ids: [repo, contributing]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation, including authentication and configuration guides.
+    source_ids: [docs-cli, docs-auth, docs-config]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README documents standalone installers for macOS and Linux (shell) and Windows
+      (PowerShell), the npm package @openai/codex, Homebrew, and per-platform binaries on GitHub
+      Releases.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists release binaries for macOS (Apple Silicon and x86_64) and Linux (x86_64 and
+      arm64), and a PowerShell installer for Windows.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed rust-v0.159.3 (0.159.3), marked Latest and published September 30, 2026. The
+      repository also publishes frequent alpha pre-releases. This entry describes the project
+      rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The configuration documentation says Codex can run against a local open-source provider such
+      as Ollama or LM Studio when launched with --oss. The provider is chosen for one run with
+      --local-provider or set as the default with oss_provider in the configuration file.
+    source_ids: [docs-config]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [agents, coding-agent, developer-tools]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: openai/codex repository and README
+    url: https://github.com/openai/codex
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Codex Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/openai/codex/main/LICENSE
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: notice
+    title: Codex NOTICE file
+    url: https://raw.githubusercontent.com/openai/codex/main/NOTICE
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: contributing
+    title: Codex contributing guide
+    url: https://raw.githubusercontent.com/openai/codex/main/docs/contributing.md
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Codex rust-v0.159.3 release
+    url: https://github.com/openai/codex/releases/tag/rust-v0.159.3
+    publisher: OpenAI
+    kind: release-notes
+    published_at: 2026-09-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-cli
+    title: Codex CLI documentation
+    url: https://learn.chatgpt.com/docs/codex/cli
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-auth
+    title: Codex authentication documentation
+    url: https://learn.chatgpt.com/docs/auth
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-config
+    title: Codex advanced configuration documentation
+    url: https://learn.chatgpt.com/docs/config-file/config-advanced
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

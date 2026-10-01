@@ -1,0 +1,212 @@
+slug: world-labs
+name: World Labs
+legal_name:
+  text: World Labs Technologies, Inc.
+  source_ids: [wl-terms, spark-license]
+  reviewed_at: 2026-10-01
+website: https://www.worldlabs.ai
+logo_text: WL
+summary:
+  text: >-
+    World Labs develops world models that generate and reconstruct 3D environments. Its Marble
+    web app and World API create explorable 3D worlds from text, images, video, or panoramas,
+    and it maintains Spark, an open-source renderer for 3D Gaussian splats.
+  source_ids: [wl-home, wl-marble, wl-world-api, spark-readme]
+  reviewed_at: 2026-10-01
+organization_roles: [model-developer, research-lab, developer-platform]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [wl-terms, amd-ir-world-labs]
+other_locations: []
+founded: null
+sectors: [research]
+status_note:
+  text: >-
+    On September 28, 2026, AMD announced a definitive agreement to acquire World Labs. AMD
+    said the transaction is expected to close by the end of 2026, subject to regulatory
+    approvals and other customary closing conditions. As of October 1, 2026 this catalog treats
+    the acquisition as pending.
+  source_ids: [amd-ir-world-labs, amd-newsroom-world-labs, wl-amd-blog]
+  reviewed_at: 2026-10-01
+products:
+  - id: marble
+    name: Marble
+    kind: other
+    access: >-
+      Web app, usable on desktop and mobile with some features desktop-only, for generating,
+      editing, and exporting 3D worlds as Gaussian splats, meshes, or video; it requires an
+      account and uses credits.
+    url: https://docs.worldlabs.ai/
+    source_ids: [wl-marble, wl-docs]
+    last_reviewed: 2026-10-01
+  - id: world-api
+    name: World API
+    kind: hosted-model-api
+    access: >-
+      Paid API for generating 3D worlds; developers sign in to the World Labs Platform with a
+      Marble account, create an API key, and buy credits.
+    url: https://docs.worldlabs.ai/api
+    source_ids: [wl-api-docs, wl-world-api]
+    last_reviewed: 2026-10-01
+  - id: spark
+    name: Spark
+    kind: developer-tool
+    access: >-
+      Open-source (MIT) Gaussian splatting renderer for THREE.js, installed from npm or loaded
+      from a CDN.
+    url: https://sparkjs.dev/
+    source_ids: [spark-readme, spark-license, spark-site]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      In September 2026 World Labs announced Atlas, a world model it says was pretrained from
+      scratch to work natively with text, images, video, and 3D; it is available through early
+      access for selected partners.
+    source_ids: [wl-atlas]
+    reviewed_at: 2026-10-01
+  - text: >-
+      World Labs says Spark was developed alongside Marble; Spark 2.0, described in April 2026,
+      added a level-of-detail system for streaming large 3D Gaussian splat worlds.
+    source_ids: [wl-spark2]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    World Labs' terms of service name World Labs Technologies, Inc. as the contracting party,
+    with an address in San Francisco and California governing law, and AMD's September 2026
+    press release describes World Labs as headquartered in San Francisco. AMD's announced
+    acquisition was pending as of this assessment; AMD's press release is datelined Santa
+    Clara, California. Eligibility will be reassessed if a change of control is completed.
+  source_ids: [wl-terms, amd-ir-world-labs, amd-newsroom-world-labs]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    World Labs offers Marble, the World API, and Atlas as hosted services, and the pages
+    reviewed do not describe public weights for its world models. It publishes the Spark
+    renderer as open-source code under the MIT License.
+  source_ids: [wl-marble, wl-api-docs, wl-atlas, spark-license]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: wl-terms
+    title: World Labs Terms of Service
+    url: https://www.worldlabs.ai/terms-of-service
+    publisher: World Labs
+    kind: official-page
+    published_at: 2026-01-21
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-home
+    title: World Labs home page
+    url: https://www.worldlabs.ai/
+    publisher: World Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: amd-ir-world-labs
+    title: AMD to Acquire World Labs to Advance the Future of AI Compute
+    url: https://ir.amd.com/news-events/press-releases/detail/1299/amd-to-acquire-world-labs-to-advance-the-future-of-ai-compute
+    publisher: Advanced Micro Devices, Inc.
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: amd-newsroom-world-labs
+    title: AMD to Acquire World Labs to Advance the Future of AI (AMD Newsroom)
+    url: https://newsroom.amd.com/news/amd-acquire-world-labs/
+    publisher: Advanced Micro Devices, Inc.
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-amd-blog
+    title: World Labs is Joining AMD
+    url: https://www.worldlabs.ai/blog/amd-announcement
+    publisher: World Labs
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-marble
+    title: "Marble: A Multimodal World Model"
+    url: https://www.worldlabs.ai/blog/marble-world-model
+    publisher: World Labs
+    kind: announcement
+    published_at: 2025-11-12
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-docs
+    title: Marble documentation
+    url: https://docs.worldlabs.ai/
+    publisher: World Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-world-api
+    title: Announcing the World API
+    url: https://www.worldlabs.ai/blog/announcing-the-world-api
+    publisher: World Labs
+    kind: announcement
+    published_at: 2026-01-21
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-api-docs
+    title: World API quickstart
+    url: https://docs.worldlabs.ai/api
+    publisher: World Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-atlas
+    title: "Atlas: A World Model for Spatial Intelligence"
+    url: https://www.worldlabs.ai/blog/atlas
+    publisher: World Labs
+    kind: announcement
+    published_at: 2026-09-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-spark2
+    title: Streaming 3DGS worlds on the web (Spark 2.0)
+    url: https://www.worldlabs.ai/blog/spark-2.0
+    publisher: World Labs
+    kind: announcement
+    published_at: 2026-04-14
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: spark-readme
+    title: sparkjsdev/spark (GitHub repository and README)
+    url: https://github.com/sparkjsdev/spark
+    publisher: World Labs
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: spark-license
+    title: Spark LICENSE
+    url: https://raw.githubusercontent.com/sparkjsdev/spark/main/LICENSE
+    publisher: World Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: spark-site
+    title: Spark documentation site
+    url: https://sparkjs.dev/
+    publisher: World Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

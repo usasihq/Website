@@ -82,7 +82,7 @@ openness_summary:
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: msft-10k-2026
@@ -134,3 +134,93 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-foundry
+    title: Microsoft Foundry | Microsoft Azure
+    url: https://azure.microsoft.com/en-us/products/ai-foundry
+    publisher: Microsoft
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-foundry-pricing
+    title: Microsoft Foundry pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/ai-foundry/
+    publisher: Microsoft
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-foundry-docs
+    title: Microsoft Foundry documentation
+    url: https://learn.microsoft.com/en-us/azure/foundry/
+    publisher: Microsoft Learn
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-foundry-models-azure
+    title: Foundry Models sold by Azure
+    url: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+    publisher: Microsoft Learn
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-phi
+    title: Phi Open Models - Small Language Models | Microsoft Azure
+    url: https://azure.microsoft.com/en-us/products/phi
+    publisher: Microsoft
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-phi-4-card
+    title: microsoft/phi-4 model card
+    url: https://huggingface.co/microsoft/phi-4
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Microsoft describes Foundry as serving organizations that build AI
+      solutions, from start-ups and software vendors to data science, IT, and
+      security teams. It presents Phi as small models that let developers run
+      AI on devices without cloud connectivity.
+    source_ids: [review-foundry, review-phi]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Foundry can be explored without an Azure account, but building agents
+      requires an Azure subscription, and each model or service is billed at
+      its own rate. MAI models such as MAI-Thinking-1 are listed as preview
+      models sold by Azure, while Phi models are also published on Hugging Face
+      and Ollama.
+    source_ids: [review-foundry, review-foundry-pricing, review-foundry-models-azure, review-phi]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Foundry separates models sold by Azure, which Microsoft supports under
+      Azure service-level agreements, from partner and community models. Phi
+      model cards such as Phi-4 state the MIT License and advise evaluation
+      before high-risk uses. This profile is not a complete product or rights
+      audit.
+    source_ids: [review-foundry-models-azure, review-phi-4-card, review-phi]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Microsoft Foundry documentation
+      url: https://learn.microsoft.com/en-us/azure/foundry/
+      kind: documentation
+      source_ids: [review-foundry-docs]
+      reviewed_at: 2026-10-01
+    - label: Microsoft Foundry pricing
+      url: https://azure.microsoft.com/en-us/pricing/details/ai-foundry/
+      kind: pricing
+      source_ids: [review-foundry-pricing]
+      reviewed_at: 2026-10-01
+    - label: Foundry Models sold by Azure (including MAI and Phi)
+      url: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure
+      kind: documentation
+      source_ids: [review-foundry-models-azure]
+      reviewed_at: 2026-10-01
+    - label: Phi-4 on Hugging Face
+      url: https://huggingface.co/microsoft/phi-4
+      kind: model-hub
+      source_ids: [review-phi-4-card]
+      reviewed_at: 2026-10-01

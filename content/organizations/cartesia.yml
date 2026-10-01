@@ -1,0 +1,205 @@
+slug: cartesia
+name: Cartesia
+legal_name:
+  text: Cartesia AI, Inc.
+  source_ids: [cartesia-terms, line-license]
+  reviewed_at: 2026-10-01
+website: https://cartesia.ai
+logo_text: C
+summary:
+  text: >-
+    Cartesia develops speech models and offers them through an API, including the Sonic
+    text-to-speech and Ink speech-to-text models, along with a platform for building and
+    hosting voice agents. Its research centers on state space model (SSM) architectures, and it
+    publishes some SSM language models on Hugging Face.
+  source_ids: [cartesia-docs-overview, cartesia-home, hf-cartesia, llamba-8b-card]
+  reviewed_at: 2026-10-01
+organization_roles: [model-developer, developer-platform]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [cartesia-terms]
+other_locations: []
+founded: null
+sectors: [agents, open-models]
+status_note: null
+products:
+  - id: sonic
+    name: Sonic
+    kind: hosted-model-api
+    access: >-
+      Text-to-speech model family available through the Cartesia API and browser Playground;
+      the current documented model ID is sonic-3.6. Cartesia lists a Free plan with monthly
+      credits, paid Pro, Startup, and Scale plans, and custom Enterprise pricing.
+    url: https://docs.cartesia.ai/build-with-cartesia/tts-models/latest
+    source_ids: [cartesia-sonic-docs, cartesia-pricing]
+    last_reviewed: 2026-10-01
+  - id: ink
+    name: Ink
+    kind: hosted-model-api
+    access: >-
+      Streaming speech-to-text model (Ink 2) with turn detection, available through the same
+      Cartesia API and API keys as Sonic.
+    url: https://docs.cartesia.ai/get-started/overview
+    source_ids: [cartesia-docs-overview]
+    last_reviewed: 2026-10-01
+  - id: line
+    name: Line
+    kind: developer-tool
+    access: >-
+      Voice-agent platform that runs agent code in Cartesia's managed runtime with Ink and Sonic
+      by default; its Python SDK is published on GitHub under Apache 2.0.
+    url: https://docs.cartesia.ai/line/introduction
+    source_ids: [cartesia-line-docs, line-repo, line-license]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Cartesia's Edge repository, licensed under Apache 2.0, provides SSM language models for
+      on-device use, including Rene and the Llamba family, with PyTorch, Apple silicon (Metal),
+      and MLX packages.
+    source_ids: [edge-repo, edge-license]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The Llamba paper describes the models as distillations of Llama-3.x into the Mamba
+      architecture. The Llamba-8B model card on Hugging Face gives an Apache 2.0 license.
+    source_ids: [llamba-paper, llamba-8b-card]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Cartesia's terms of service identify Cartesia AI, Inc. as the operator of its services, give
+    a postal address in San Francisco, California, and apply California law. No non-U.S.
+    parent or headquarters is documented on the pages reviewed.
+  source_ids: [cartesia-terms]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Cartesia's Sonic and Ink speech models are offered as hosted services through its API; the
+    pages reviewed do not describe public weights for them. Cartesia publishes Apache 2.0 client
+    SDKs, the Line voice-agent SDK, and the Edge library, and has posted Llamba language-model
+    weights on Hugging Face under Apache 2.0. Llamba is distilled from Meta's Llama-3.x models.
+  source_ids: [cartesia-docs-overview, line-license, edge-license, cartesia-python-license, llamba-8b-card, llamba-paper]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: cartesia-terms
+    title: Cartesia Terms of Service
+    url: https://www.cartesia.ai/legal/terms
+    publisher: Cartesia
+    kind: official-page
+    published_at: 2024-06-14
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cartesia-home
+    title: Cartesia home page
+    url: https://cartesia.ai/
+    publisher: Cartesia
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cartesia-docs-overview
+    title: Welcome to Cartesia (documentation overview)
+    url: https://docs.cartesia.ai/get-started/overview
+    publisher: Cartesia
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cartesia-sonic-docs
+    title: Sonic 3.6 (TTS model documentation)
+    url: https://docs.cartesia.ai/build-with-cartesia/tts-models/latest
+    publisher: Cartesia
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cartesia-line-docs
+    title: Line introduction
+    url: https://docs.cartesia.ai/line/introduction
+    publisher: Cartesia
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cartesia-pricing
+    title: Cartesia pricing
+    url: https://cartesia.ai/pricing
+    publisher: Cartesia
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: line-repo
+    title: cartesia-ai/line (GitHub repository)
+    url: https://github.com/cartesia-ai/line
+    publisher: Cartesia
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: line-license
+    title: Line SDK LICENSE
+    url: https://raw.githubusercontent.com/cartesia-ai/line/main/LICENSE
+    publisher: Cartesia
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cartesia-python-license
+    title: cartesia-python LICENSE
+    url: https://raw.githubusercontent.com/cartesia-ai/cartesia-python/main/LICENSE
+    publisher: Cartesia
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: edge-repo
+    title: cartesia-ai/edge (GitHub repository)
+    url: https://github.com/cartesia-ai/edge
+    publisher: Cartesia
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: edge-license
+    title: Edge LICENSE
+    url: https://raw.githubusercontent.com/cartesia-ai/edge/main/LICENSE
+    publisher: Cartesia
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-cartesia
+    title: cartesia-ai on Hugging Face
+    url: https://huggingface.co/cartesia-ai
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llamba-8b-card
+    title: cartesia-ai/Llamba-8B model card
+    url: https://huggingface.co/cartesia-ai/Llamba-8B
+    publisher: Cartesia
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llamba-paper
+    title: "Llamba: Scaling Distilled Recurrent Models for Efficient Language Processing (arXiv 2502.14458)"
+    url: https://arxiv.org/abs/2502.14458
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-20
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

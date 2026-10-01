@@ -1,0 +1,257 @@
+slug: a2a-protocol
+name: Agent2Agent (A2A) Protocol
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Agent2Agent project (Linux Foundation; Agentic AI Foundation project)
+    organization_slug: agentic-ai-foundation
+    source_ids: [a2a-readme, a2a-governance, a2a-site, aaif-projects]
+organization_slugs: [agentic-ai-foundation, linux-foundation, google]
+links:
+  - label: Website and documentation
+    url: https://a2a-protocol.org/latest/
+    kind: documentation
+  - label: Specification
+    url: https://a2a-protocol.org/latest/specification/
+    kind: documentation
+  - label: Repository
+    url: https://github.com/a2aproject/A2A
+    kind: repository
+  - label: Governance
+    url: https://github.com/a2aproject/A2A/blob/main/GOVERNANCE.md
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/a2aproject/A2A/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/a2aproject/A2A/releases
+    kind: release-notes
+summary:
+  text: >-
+    Agent2Agent (A2A) is an open protocol for communication between AI agents built on different
+    frameworks and run by different parties. Agents publish Agent Cards describing their
+    capabilities and endpoints, and exchange messages and long-running tasks over JSON-RPC,
+    gRPC, or HTTP+JSON bindings without exposing internal state or tools. The project publishes
+    the specification, SDKs, and samples.
+  source_ids: [a2a-readme, a2a-spec]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Letting independently built agents discover one another and delegate or coordinate tasks
+    across vendor and framework boundaries.
+  source_ids: [a2a-readme, a2a-spec]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    A2A is an open-source project under The Linux Foundation, which Google transferred to it in
+    June 2025; the documentation site carries a Linux Foundation copyright, and the project's
+    governance charter refers to a series agreement and series manager. In August 2026 it became
+    a Growth Stage project of the Agentic AI Foundation, a directed fund of The Linux
+    Foundation. The Linux Foundation describes itself as a 501(c)(6) nonprofit with a legal
+    postal address in San Francisco, California. The Technical Steering Committee has eight
+    company-held seats (AWS, Cisco, Google, IBM, Microsoft, Salesforce, SAP, and ServiceNow);
+    this multi-organization governance was assessed, and eligibility rests on the documented
+    Linux Foundation stewardship rather than on the composition of the committee or the
+    nationality of contributors.
+  source_ids: [a2a-readme, lf-a2a-press, a2a-site, a2a-governance, a2a-joins-aaif, a2a-blog-aaif, aaif-charter, lf-about, lf-privacy]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    The specification, SDKs, and samples are public. Interacting with a particular A2A agent is
+    governed by that agent operator's own authentication and terms.
+  source_ids: [a2a-readme, a2a-spec]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/a2aproject/A2A/main/LICENSE
+    applies_to: code
+    source_ids: [a2a-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The A2A specification repository's LICENSE is the Apache License 2.0, and the README states
+    the project is licensed under it; the Python SDK repository's LICENSE is also Apache 2.0.
+    Other SDK repositories carry their own LICENSE files. The license does not cover agents or
+    services built with the protocol.
+  source_ids: [a2a-license, a2a-readme, a2a-python-license]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: >-
+      The specification is developed in a public repository; SDKs for Python, Go, JavaScript,
+      Java, .NET, and Rust are in separate public repositories.
+    source_ids: [a2a-readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      Public documentation site with the full specification, tutorials, and guides.
+    source_ids: [a2a-readme, a2a-spec]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README documents package installation for each SDK, for example pip install a2a-sdk
+      for Python, npm for JavaScript, Maven for Java, NuGet for .NET, and cargo for Rust.
+    source_ids: [a2a-readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Official SDKs cover Python, Go, JavaScript, Java, .NET, and Rust; the specification defines
+      JSON-RPC, gRPC, and HTTP+JSON/REST bindings.
+    source_ids: [a2a-readme, a2a-spec]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      The specification page presents version 1.0.0 as the latest released version. The
+      repository's latest tagged release reviewed is v1.0.1, published May 28, 2026; v1.0.0 was
+      published March 12, 2026.
+    source_ids: [a2a-spec, a2a-releases]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance:
+  text: >-
+    Google launched A2A in April 2025 and transferred the specification, SDKs, and developer
+    tooling to The Linux Foundation on June 23, 2025, with AWS, Cisco, Google, Microsoft,
+    Salesforce, SAP, and ServiceNow named as founding members. The project joined the Agentic
+    AI Foundation in August 2026.
+  derived_from: []
+  source_ids: [lf-a2a-press, google-a2a-donation, a2a-joins-aaif]
+tags: [agents, protocol, interoperability]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: a2a-readme
+    title: a2aproject/A2A README
+    url: https://raw.githubusercontent.com/a2aproject/A2A/main/README.md
+    publisher: Agent2Agent project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-license
+    title: a2aproject/A2A LICENSE
+    url: https://raw.githubusercontent.com/a2aproject/A2A/main/LICENSE
+    publisher: Agent2Agent project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-python-license
+    title: a2aproject/a2a-python LICENSE
+    url: https://raw.githubusercontent.com/a2aproject/a2a-python/main/LICENSE
+    publisher: Agent2Agent project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-governance
+    title: Agent2Agent (A2A) Governance (GOVERNANCE.md)
+    url: https://raw.githubusercontent.com/a2aproject/A2A/main/GOVERNANCE.md
+    publisher: Agent2Agent project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-site
+    title: A2A Protocol documentation home
+    url: https://a2a-protocol.org/latest/
+    publisher: The Linux Foundation (A2A Protocol)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-spec
+    title: A2A Protocol Specification
+    url: https://a2a-protocol.org/latest/specification/
+    publisher: The Linux Foundation (A2A Protocol)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-releases
+    title: a2aproject/A2A releases
+    url: https://github.com/a2aproject/A2A/releases
+    publisher: Agent2Agent project
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-a2a-press
+    title: >-
+      Linux Foundation Launches the Agent2Agent Protocol Project to Enable Secure, Intelligent
+      Communication Between AI Agents
+    url: https://www.linuxfoundation.org/press/linux-foundation-launches-the-agent2agent-protocol-project-to-enable-secure-intelligent-communication-between-ai-agents
+    publisher: Linux Foundation
+    kind: announcement
+    published_at: 2025-06-23
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: google-a2a-donation
+    title: Google Cloud donates A2A to Linux Foundation
+    url: https://developers.googleblog.com/en/google-cloud-donates-a2a-to-linux-foundation/
+    publisher: Google for Developers
+    kind: announcement
+    published_at: 2025-06-23
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-joins-aaif
+    title: A2A joins AAIF's open agentic stack
+    url: https://aaif.io/blog/a2a-joins-aaif
+    publisher: Agentic AI Foundation
+    kind: announcement
+    published_at: 2026-08-17
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: a2a-blog-aaif
+    title: "A New Chapter for A2A: Joining the Agentic AI Foundation"
+    url: https://a2a-protocol.org/latest/blog/2026/08/27/a-new-chapter-for-a2a-joining-the-agentic-ai-foundation/
+    publisher: A2A Protocol project
+    kind: announcement
+    published_at: 2026-08-27
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-projects
+    title: Projects - Agentic AI Foundation (AAIF)
+    url: https://aaif.io/projects
+    publisher: Agentic AI Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-charter
+    title: The Agentic AI Foundation Charter (amended July 29, 2026)
+    url: https://raw.githubusercontent.com/aaif/foundation/main/foundation-charter.pdf
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: 2026-07-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-about
+    title: About the Linux Foundation
+    url: https://www.linuxfoundation.org/about
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-privacy
+    title: Privacy Policy | Linux Foundation
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,122 @@
+slug: chai-1
+name: Chai-1
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Chai Discovery
+    organization_slug: chai-discovery
+    source_ids: [chai-readme, chai-license, hf-chai1-card]
+organization_slugs: [chai-discovery]
+links:
+  - label: GitHub repository (chai-lab)
+    url: https://github.com/chaidiscovery/chai-lab
+    kind: repository
+  - label: Chai-1 weights (Hugging Face)
+    url: https://huggingface.co/chaidiscovery/chai-1
+    kind: model-hub
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/chaidiscovery/chai-lab/blob/main/LICENSE
+    kind: license
+  - label: "Chai-1 technical report (bioRxiv, doi:10.1101/2024.10.10.615955)"
+    url: https://doi.org/10.1101/2024.10.10.615955
+    kind: paper
+summary:
+  text: >-
+    Chai-1 is a multi-modal foundation model from Chai Discovery for predicting molecular
+    structures, covering proteins, small molecules, DNA, RNA, glycosylations, and other
+    modifications. It was first released in September 2024, and its license changed in
+    November 2024 (see the release record). The chai_lab package (latest PyPI release 0.6.1,
+    March 2025) runs it locally.
+  reviewed_at: 2026-10-01
+  source_ids: [chai-readme, chai-license-history, chai-pypi]
+useful_for:
+  text: >-
+    Folding complexes given as FASTA input, optionally with MSAs, templates, user-specified
+    inter-chain contact or covalent-bond restraints, and custom embeddings, per the repository
+    README.
+  reviewed_at: 2026-10-01
+  source_ids: [chai-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Chai-1 is developed and published by Chai Discovery in its GitHub and Hugging Face
+    organizations, and the LICENSE names Chai Discovery as copyright holder. Chai Discovery's
+    careers page places its team in San Francisco, California, and its website terms choose
+    California law with San Francisco courts.
+  source_ids: [chai-readme, chai-license, hf-chai1-card, chai-careers, chai-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Chai-1 release record (chai-1-v0-6).
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [science, structure-prediction]
+publication_status: published
+archive_note: null
+released_at: 2024-09-09
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: chai-readme
+    title: chaidiscovery/chai-lab README
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/README.md
+    publisher: Chai Discovery
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license
+    title: chaidiscovery/chai-lab LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/LICENSE
+    publisher: Chai Discovery
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license-history
+    title: Commit history for LICENSE.md (chaidiscovery/chai-lab)
+    url: https://github.com/chaidiscovery/chai-lab/commits/main/LICENSE.md
+    publisher: Chai Discovery (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-pypi
+    title: chai_lab (PyPI JSON metadata)
+    url: https://pypi.org/pypi/chai_lab/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-chai1-card
+    title: chaidiscovery/chai-1 model card
+    url: https://huggingface.co/chaidiscovery/chai-1
+    publisher: Chai Discovery
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-careers
+    title: Careers | Chai Discovery
+    url: https://www.chaidiscovery.com/careers
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-terms
+    title: Chai Discovery Terms of Service
+    url: https://www.chaidiscovery.com/terms-of-service
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: 2025-06-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

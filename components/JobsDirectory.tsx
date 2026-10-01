@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useJobsClock } from "./useJobsClock";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { FeedHealth, Job } from "@/lib/jobs/schema";
-import { checkedLabel, DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
+import { checkedLabel, currentJobs, DEFAULT_JOB_FILTERS, filterJobs, isDefaultJobView, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
 import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
 import { ExternalLink } from "./ExternalLink";
@@ -30,19 +30,36 @@ function JobCard({ job, unverified }: { job: JobItem; unverified: boolean }) {
   </article>;
 }
 const options = (values: string[]) => [...new Set(values)].sort((a,b) => a.localeCompare(b,"en")).map(value => ({ value, label: value }));
-export function JobsDirectory({ items, feeds, coverage, asOf }: { items: JobItem[]; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string }) {
+export type JobsSummary = { currentCount: number; organizationCount: number; departments: string[]; currencies: string[]; periods: string[] };
+export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf }: { initial: JobItem[]; summary: JobsSummary; dataUrl: string; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string }) {
   const now = useJobsClock(asOf);
   const { state: f, update } = useQueryState(parseJobFilters, serializeJobFilters);
+  // The page embeds the first 30 listings; the full list loads after first paint.
+  const [all, setAll] = useState<JobItem[] | null>(null);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let live = true;
+    fetch(dataUrl).then(r => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((d: { jobs: JobItem[] }) => { if (live) setAll(d.jobs); })
+      .catch(() => { if (live) setFailed(true); });
+    return () => { live = false; };
+  }, [dataUrl]);
+  const items = all ?? initial;
+  const loading = all === null && !failed;
   const results = useMemo(() => filterJobs(items, feeds, f, now), [items, feeds, f, now]);
-  const current = useMemo(() => filterJobs(items, feeds, DEFAULT_JOB_FILTERS, now), [items, feeds, now]);
-  const count = new Set(current.map(j => j.organization_slug)).size;
-  const pageCount = Math.max(1, Math.ceil(results.length / 30)), page = Math.min(f.page, pageCount);
+  const current = useMemo(() => currentJobs(items, feeds, now), [items, feeds, now]);
+  const currentCount = all ? current.length : summary.currentCount;
+  const count = all ? new Set(current.map(j => j.organization_slug)).size : summary.organizationCount;
+  // Until the full list arrives, a filtered view would be computed from 30 rows, so it waits instead.
+  const waiting = loading && !isDefaultJobView(f);
+  const total = all || failed ? results.length : summary.currentCount;
+  const pageCount = all ? Math.max(1, Math.ceil(results.length / 30)) : 1, page = Math.min(f.page, pageCount);
   const visible = results.slice((page - 1) * 30, page * 30);
-  const announce = useDebounced(`${results.length} matching positions. Page ${page} of ${pageCount}.`);
+  const announce = useDebounced(waiting ? "Loading all positions." : `${total} matching positions. Page ${page} of ${pageCount}.`);
   const set = (patch: Partial<JobFilters>, mode: "push" | "replace" = "push") => update({ ...f, page: 1, ...patch }, mode);
-  const departments = useMemo(() => options(items.map(j => j.department).filter((v): v is string => Boolean(v))), [items]);
+  const departments = useMemo(() => summary.departments.map(value => ({ value, label: value })), [summary.departments]);
   return <>
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><p className="text-lg text-text"><strong>{current.length.toLocaleString("en-US")}</strong> recently confirmed positions across <strong>{count}</strong> organizations</p><a href="#job-sources" className="link text-sm">Coverage & source health</a></div>
+    <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><p className="text-lg text-text"><strong>{currentCount.toLocaleString("en-US")}</strong> recently confirmed positions across <strong>{count}</strong> organizations</p><a href="#job-sources" className="link text-sm">Coverage & source health</a></div>
     <p className="mb-6 max-w-3xl text-sm text-muted">Coverage is limited to configured employer feeds. A current listing was present at its last successful check within 48 hours; the employer may have changed it since. USASI does not recruit, endorse employers, or collect applications.</p>
     <div role="search" aria-label="Filter jobs" className="card p-4 sm:p-5">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -55,8 +72,8 @@ export function JobsDirectory({ items, feeds, coverage, asOf }: { items: JobItem
       </div>
       <details className="mt-4"><summary className="min-h-11 cursor-pointer text-sm text-ice">Salary and date filters</summary><div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <label className="flex min-h-11 items-center gap-2 text-sm"><input type="checkbox" checked={f.salary} onChange={e => set({ salary: e.target.checked })} className="h-5 w-5" />Employer supplies salary</label>
-        <SelectField label="Salary currency" value={f.currency} options={options(items.flatMap(j => j.salaries.map(s => s.currency)))} onChange={currency => set({ currency, salary_min: "" })} />
-        <SelectField label="Salary period" value={f.period} options={options(items.flatMap(j => j.salaries.map(s => s.period)))} onChange={period => set({ period, salary_min: "" })} />
+        <SelectField label="Salary currency" value={f.currency} options={options(summary.currencies)} onChange={currency => set({ currency, salary_min: "" })} />
+        <SelectField label="Salary period" value={f.period} options={options(summary.periods)} onChange={period => set({ period, salary_min: "" })} />
         <label className="text-sm">Minimum of disclosed range<input className="field mt-1.5" type="number" min="0" max="999999999" step="0.01" disabled={!f.currency || !f.period} value={f.salary_min} onChange={e => set({ salary_min: e.target.value }, "replace")} /><span className="mt-1 block text-xs text-muted">Choose a currency and period first. No conversion.</span></label>
         <SelectField label="Published within" value={f.posted} options={[{value:"7",label:"7 days"},{value:"30",label:"30 days"}]} onChange={posted => set({posted})} allLabel="Any supplied date" />
         <SelectField label="Seen within" value={f.verified} options={[{value:"24",label:"24 hours"},{value:"48",label:"48 hours"}]} onChange={verified => set({verified})} />
@@ -65,8 +82,9 @@ export function JobsDirectory({ items, feeds, coverage, asOf }: { items: JobItem
       <button type="button" className="link mt-3 min-h-11 text-sm" onClick={() => update({...DEFAULT_JOB_FILTERS})}>Clear job filters</button>
       <noscript><p className="text-sm text-muted">Filtering and paging require JavaScript. The first 30 recently confirmed listings as of {checkedLabel(asOf)} appear below. Employer career links in Coverage & source health show all available opportunities.</p></noscript>
     </div>
-    <div className="my-6"><ResultSummary visible={visible.length} total={results.length} noun={["matching position","matching positions"]} announce={announce} /></div>
-    {visible.length ? <ul className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{visible.map(job => <li key={job.id}><JobCard job={job} unverified={f.view === "unverified"} /></li>)}</ul> : <div className="card p-8"><h2 className="text-xl text-text">No positions match this view</h2><p className="mt-3 text-muted">This does not mean the organization has no openings. It may have no automated source, a source needing attention, or no matching listings. Use the official careers links below.</p></div>}
+    {failed ? <p className="mt-6 text-sm text-muted">The full list could not be loaded, so only the first 30 recently confirmed positions are shown. Official careers links under Coverage & source health list every opening.</p> : null}
+    <div className="my-6"><ResultSummary visible={visible.length} total={total} pending={waiting} noun={["matching position","matching positions"]} announce={announce} /></div>
+    {waiting ? <div className="card p-8 text-muted" aria-busy="true">Loading all positions…</div> : visible.length ? <ul className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{visible.map(job => <li key={job.id}><JobCard job={job} unverified={f.view === "unverified"} /></li>)}</ul> : <div className="card p-8"><h2 className="text-xl text-text">No positions match this view</h2><p className="mt-3 text-muted">This does not mean the organization has no openings. It may have no automated source, a source needing attention, or no matching listings. Use the official careers links below.</p></div>}
     {pageCount > 1 ? <nav aria-label="Job results pages" className="my-6 flex flex-wrap items-center justify-center gap-4"><button className="btn btn-secondary" disabled={page === 1} onClick={() => set({page: page-1})}>Previous</button><span className="text-sm text-muted">Page {page} of {pageCount}</span><button className="btn btn-secondary" disabled={page === pageCount} onClick={() => set({page: page+1})}>Next</button></nav> : null}
     <section id="job-sources" className="mt-14 scroll-mt-24"><h2 className="text-2xl font-semibold text-text">Coverage & source health</h2><p className="mt-3 max-w-3xl text-muted">Only organizations already published in USASI can appear. Automated coverage begins with verified, supported employer feeds and is not a complete employment census. No count is supplied for an unconfigured source.</p>
       <div className="mt-6 grid gap-3 md:grid-cols-2">{coverage.filter(c => c.mode === "automated").map(c => {

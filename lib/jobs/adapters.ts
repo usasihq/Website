@@ -16,7 +16,7 @@ const salaryComponent = z.object({ compensationType: z.string(), interval: z.str
 const ashby = z.object({ apiVersion: z.literal("1"), jobs: z.array(z.object({
   id: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(), title: short, jobUrl: z.string(), applyUrl: z.string().optional(),
   isListed: z.boolean(), location: short.optional(),
-  secondaryLocations: z.array(z.object({ location: short, address: z.object({ addressCountry: short.optional() }).optional() })).max(50).optional(),
+  secondaryLocations: z.array(z.object({ location: short, address: z.object({ addressCountry: short.optional() }).nullable().optional() })).max(50).optional(),
   address: z.object({ postalAddress: z.object({ addressCountry: short.optional() }).optional() }).nullable().optional(),
   department: short.optional(), team: short.optional(), isRemote: z.boolean().nullable().optional(), workplaceType: short.nullable().optional(),
   employmentType: short.optional(), publishedAt: z.string().nullable().optional(),

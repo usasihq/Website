@@ -84,9 +84,18 @@ openness_summary:
     model fine-tuned from Qwen's QwQ-32B; its license was not confirmed for this record.
   source_ids: [devin-home, cognition-swe-2, cognition-hf, kevin-32b-card]
 hiring_url: https://cognition.com/careers
+careers:
+  url: https://cognition.com/careers
+  enabled: true
+  source:
+    type: ashby
+    identifier: cognition
+  posting_hosts: []
+  source_ids: [cognition-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: cognition-platform-terms
@@ -159,3 +168,11 @@ sources:
     kind: model-card
     published_at: null
     accessed_at: 2026-09-29
+  - id: cognition-careers-jobs
+    title: Official careers directory and application links
+    url: https://cognition.com/careers
+    publisher: Cognition AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

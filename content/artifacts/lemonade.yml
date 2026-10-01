@@ -1,0 +1,183 @@
+slug: lemonade
+name: Lemonade
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Lemonade project maintainers (community project sponsored by AMD)
+    organization_slug: null
+    source_ids: [readme, contribute]
+organization_slugs: [amd]
+links:
+  - label: Website
+    url: https://lemonade-server.ai/
+    kind: website
+  - label: Repository
+    url: https://github.com/lemonade-sdk/lemonade
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/lemonade-sdk/lemonade/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/lemonade-sdk/lemonade/releases/tag/v2026.40.0
+    kind: release-notes
+summary:
+  text: >-
+    Lemonade is a local AI server that runs language, speech, and image-generation models on a
+    PC's CPU, GPU, or NPU and exposes them through OpenAI-, Anthropic-, and Ollama-compatible
+    APIs. It is also offered as an embeddable binary for applications, and it supports several
+    inference engines, including llama.cpp and engines for AMD Ryzen AI NPUs.
+  source_ids: [readme]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Serving local models to existing applications through standard APIs, with backends for AMD
+    Ryzen AI NPUs and Radeon GPUs as well as NVIDIA GPUs, Apple Silicon, and CPU-only systems.
+  source_ids: [readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    The README describes Lemonade as a community project with many maintainers, built with
+    optimizations by AMD engineers and sponsored by AMD, and AMD's developer site calls it an
+    open-source project backed by AMD. The LICENSE names "Lemonade Community" as copyright
+    holder, and the maintainer list names individual GitHub accounts rather than an
+    organization. No document reviewed names AMD or another entity as the project's governing
+    or maintaining organization, so the U.S. basis is unresolved; sponsorship alone is not
+    treated as governance. AMD's role is recorded as a relationship.
+  source_ids: [readme, contribute, license, amd-article]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/lemonade-sdk/lemonade/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license, readme]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The LICENSE lists third-party portions under other terms, including ISC-licensed icon paths
+    from Lucide and a Linux kernel header under GPL-2.0 with the Linux-syscall-note exception.
+  source_ids: [license]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the lemonade-sdk GitHub organization.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Documentation and an FAQ are published in the repository's docs directory.
+    source_ids: [readme, faq]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Install guides for Windows, Linux, macOS, Docker, and source builds; packages are built for
+      Windows (.msi), macOS (.pkg), Debian and Ubuntu, Fedora, Arch Linux, and Snap.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README's backend matrix lists llama.cpp on CPU, Vulkan, ROCm, CUDA (NVIDIA Turing or
+      newer), and Metal (Apple Silicon), and NPU engines for AMD XDNA2 NPUs on Windows and Linux,
+      with each engine's supported operating systems.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release v2026.40.0, published September 30, 2026; release candidates are also
+      published. This entry describes the project rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README shows the lemonade CLI listing, pulling, and running models (for example a Gemma
+      4 E2B GGUF build) and listing the backends available on the PC.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The README says the program does not transfer information to other networked systems
+      unless requested, and that model downloads contact Hugging Face or ModelScope depending on
+      the model source.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    Lemonade uses llama.cpp, whisper.cpp, stable-diffusion.cpp, ONNX Runtime GenAI, and other
+    projects as inference engines, per its README.
+  derived_from:
+    - name: llama.cpp
+      artifact_slug: llama-cpp
+      url: https://github.com/ggml-org/llama.cpp
+      note: Text-generation engine (llamacpp backends).
+    - name: ONNX Runtime GenAI
+      artifact_slug: null
+      url: https://github.com/microsoft/onnxruntime-genai
+      note: Listed among the tools Lemonade builds on.
+  source_ids: [readme]
+tags: [inference, local-inference, serving]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: lemonade-sdk/lemonade README
+    url: https://raw.githubusercontent.com/lemonade-sdk/lemonade/main/README.md
+    publisher: Lemonade project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: lemonade-sdk/lemonade LICENSE
+    url: https://raw.githubusercontent.com/lemonade-sdk/lemonade/main/LICENSE
+    publisher: Lemonade project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: contribute
+    title: Lemonade contribution guide (maintainers)
+    url: https://raw.githubusercontent.com/lemonade-sdk/lemonade/main/docs/dev/contribute.md
+    publisher: Lemonade project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faq
+    title: Lemonade FAQ
+    url: https://raw.githubusercontent.com/lemonade-sdk/lemonade/main/docs/guide/faq.md
+    publisher: Lemonade project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Release v2026.40.0
+    url: https://github.com/lemonade-sdk/lemonade/releases/tag/v2026.40.0
+    publisher: Lemonade project
+    kind: release-notes
+    published_at: 2026-09-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: amd-article
+    title: Ryzen AI and Radeon are ready to run LLMs Locally with Lemonade Software
+    url: https://www.amd.com/en/developer/resources/technical-articles/2025/ryzen-ai-radeon-llms-with-lemonade.html
+    publisher: AMD
+    kind: official-page
+    published_at: 2025-11-13
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,33 @@
+slug: nvidia-releases-nemotron-3-diarization
+title: NVIDIA releases Nemotron 3 Diarization, an open-weight speaker diarization model
+event_date: 2026-09-23
+published_at: 2026-10-01
+category: release
+summary:
+  text: >-
+    NVIDIA released Nemotron 3 Diarization on September 23, 2026. The model identifies which
+    speaker is talking at each point in an audio recording, for up to eight speakers, and can
+    run on streaming audio as well as complete recordings. It is a Transformer encoder with
+    about 100 million parameters, built with NVIDIA's NeMo speech tools. The weights are on
+    Hugging Face under the OpenMDW License Agreement, version 1.1, and the model card says they
+    are ready for commercial and non-commercial use.
+  source_ids: [nemotron-diarization-card, nemotron-diarization-blog]
+related_organizations: [nvidia]
+related_artifacts: [nemotron]
+publication_status: published
+updated_at: 2026-10-01
+sources:
+  - id: nemotron-diarization-card
+    title: nvidia/Nemotron-3-Diarization model card
+    url: https://huggingface.co/nvidia/Nemotron-3-Diarization
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-09-23
+    accessed_at: 2026-10-01
+  - id: nemotron-diarization-blog
+    title: "Know Who Spoke When: Build Real-Time, Multi-Speaker AI with NVIDIA Nemotron 3 Diarization"
+    url: https://huggingface.co/blog/nvidia/nemotron-diarization
+    publisher: NVIDIA (Hugging Face blog)
+    kind: announcement
+    published_at: 2026-09-23
+    accessed_at: 2026-10-01

@@ -1,0 +1,135 @@
+slug: ying-sheng
+name: Ying Sheng
+initials: YS
+headline: SGLang co-author and codeowner; first author of FlexGen, for running large models on a single
+  GPU
+bio:
+  text: Ying Sheng works on systems for serving and running large language models. Sheng is first author
+    of FlexGen, a 2023 system that runs large language models with limited GPU memory by spreading weights
+    and cache across GPU, CPU memory, and disk and compressing them to 4 bits. Sheng is an author of the
+    SGLang paper and a codeowner of the SGLang repository, whose maintenance guide names Sheng and Lianmin
+    Zheng as the people who start nominations for new maintainers. Sheng is also an officer of LMSYS,
+    the nonprofit that hosts SGLang.
+  source_ids:
+  - personal-site
+  - flexgen-paper
+  - sglang-paper
+  - sglang-codeowners
+  - sglang-maintainers
+  - lmsys-about
+  - sglang-repo
+  reviewed_at: 2026-10-01
+affiliations:
+- name: LMSYS
+  organization_slug: lmsys
+  role: Officer
+  current: true
+  source_ids:
+  - lmsys-about
+- name: SGLang project
+  organization_slug: null
+  role: Codeowner and maintainer-nomination contact
+  current: true
+  source_ids:
+  - sglang-codeowners
+  - sglang-maintainers
+- name: xAI
+  organization_slug: xai
+  role: Member of technical staff who co-led the inference team (2024–2025)
+  current: false
+  source_ids:
+  - personal-site
+work:
+- name: SGLang
+  artifact_slug: sglang
+  url: https://github.com/sgl-project/sglang
+  contribution: Listed as an author of the SGLang paper (arXiv 2312.07104) and as a codeowner for core
+    areas of the repository, including the scheduler managers, memory cache, model executor, LoRA, and
+    speculative decoding code.
+  source_ids:
+  - sglang-paper
+  - sglang-codeowners
+  - personal-site
+- name: FlexGen (FlexLLMGen)
+  artifact_slug: null
+  url: https://github.com/FMInference/FlexLLMGen
+  contribution: First author of the FlexGen paper on high-throughput inference of large language models
+    with a single GPU. The project repository, now archived, describes running large models on a single
+    GPU for throughput-oriented work.
+  source_ids:
+  - flexgen-paper
+  - flexgen-repo
+links:
+- label: Website
+  url: https://sites.google.com/view/yingsheng/home
+- label: GitHub
+  url: https://github.com/Ying1123
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+- id: personal-site
+  title: Ying Sheng — homepage (marked by its author as outdated)
+  url: https://sites.google.com/view/yingsheng/home
+  publisher: Ying Sheng
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: lmsys-about
+  title: About — LMSYS
+  url: https://lmsys.org/about/
+  publisher: LMSYS
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: sglang-repo
+  title: sgl-project/sglang README
+  url: https://github.com/sgl-project/sglang
+  publisher: SGLang project (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: sglang-codeowners
+  title: sgl-project/sglang CODEOWNERS
+  url: https://github.com/sgl-project/sglang/blob/main/.github/CODEOWNERS
+  publisher: SGLang project (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: sglang-maintainers
+  title: SGLang Code Maintenance Model (MAINTAINER.md)
+  url: https://github.com/sgl-project/sglang/blob/main/.github/MAINTAINER.md
+  publisher: SGLang project (GitHub repository)
+  kind: documentation
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: sglang-paper
+  title: 'SGLang: Efficient Execution of Structured Language Model Programs (arXiv 2312.07104)'
+  url: https://arxiv.org/abs/2312.07104
+  publisher: arXiv
+  kind: paper
+  published_at: 2023-12-12
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: flexgen-paper
+  title: 'FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU (arXiv
+    2303.06865)'
+  url: https://arxiv.org/abs/2303.06865
+  publisher: arXiv
+  kind: paper
+  published_at: 2023-03-13
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: flexgen-repo
+  title: FMInference/FlexLLMGen README (archived repository)
+  url: https://github.com/FMInference/FlexLLMGen
+  publisher: FMInference (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01

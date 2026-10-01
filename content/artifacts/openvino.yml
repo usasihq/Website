@@ -1,0 +1,162 @@
+slug: openvino
+name: OpenVINO
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Intel
+    organization_slug: intel
+    source_ids: [intel-page, source-header]
+organization_slugs: [intel]
+links:
+  - label: Website
+    url: https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html
+    kind: website
+  - label: Repository
+    url: https://github.com/openvinotoolkit/openvino
+    kind: repository
+  - label: Documentation
+    url: https://docs.openvino.ai/2026/index.html
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/openvinotoolkit/openvino/blob/master/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/openvinotoolkit/openvino/releases/tag/2026.4.1
+    kind: release-notes
+summary:
+  text: >-
+    OpenVINO is Intel's open-source toolkit for converting, optimizing, and running deep
+    learning models, including language and generative models. It converts models from PyTorch,
+    TensorFlow, ONNX, PaddlePaddle, JAX, and other frameworks and runs inference on CPUs (x86 and
+    ARM), Intel GPUs, and Intel NPUs, with APIs in C++, Python, C, and Node.js.
+  source_ids: [readme, intel-page]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Running models on local Intel hardware (CPU, integrated or discrete GPU, or NPU), including
+    LLM and other generative AI pipelines through the companion OpenVINO GenAI library.
+  source_ids: [readme, sysreq]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Intel describes OpenVINO as an open-source toolkit on its developer site, and source files
+    in the repository carry Intel Corporation copyright notices. Intel Corporation's principal
+    executive offices are in Santa Clara, California (see the Intel record).
+  source_ids: [intel-page, source-header, readme]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/openvinotoolkit/openvino/blob/master/LICENSE
+    applies_to: code
+    source_ids: [license, readme]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the openvinotoolkit GitHub organization.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Official documentation covers installation, model preparation, inference devices, GenAI, and system requirements.
+    source_ids: [readme, sysreq]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: The README gives `pip install -U openvino` and links to installation guides for other distributions.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The system requirements list Windows 10 and 11, Ubuntu 22.04, 24.04, and 26.04, Red Hat
+      Enterprise Linux 8 and 9, openSUSE Tumbleweed, and macOS 12.6 or later on ARM64 for CPU
+      inference, including Intel, ARM, and Apple silicon CPUs; Intel Arc, Iris Xe, and data
+      center GPUs; and Intel NPUs on Windows 11 and Ubuntu. Python 3.10 to 3.14 is listed.
+    source_ids: [sysreq]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release 2026.4.1, published October 1, 2026. This entry describes the project
+      rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The system requirements say GPU and NPU use requires drivers that are not included in the
+      OpenVINO package.
+    source_ids: [sysreq]
+    reviewed_at: 2026-10-01
+  - text: >-
+      OpenVINO collects performance and usage data, including through Google Analytics 4; the
+      README documents opting out with `opt_in_out --opt_out`.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [inference, local-inference, compiler]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: openvinotoolkit/openvino README
+    url: https://raw.githubusercontent.com/openvinotoolkit/openvino/master/README.md
+    publisher: Intel
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: openvinotoolkit/openvino LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/openvinotoolkit/openvino/master/LICENSE
+    publisher: Intel
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: source-header
+    title: OpenVINO source file header (src/core/include/openvino/core/core.hpp)
+    url: https://raw.githubusercontent.com/openvinotoolkit/openvino/master/src/core/include/openvino/core/core.hpp
+    publisher: Intel
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: intel-page
+    title: OpenVINO Toolkit Overview
+    url: https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html
+    publisher: Intel
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: sysreq
+    title: OpenVINO 2026 system requirements
+    url: https://docs.openvino.ai/2026/about-openvino/release-notes-openvino/system-requirements.html
+    publisher: Intel
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Release 2026.4.1
+    url: https://github.com/openvinotoolkit/openvino/releases/tag/2026.4.1
+    publisher: Intel
+    kind: release-notes
+    published_at: 2026-10-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,190 @@
+slug: awq
+name: AWQ (Activation-aware Weight Quantization)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: MIT HAN Lab
+    organization_slug: mit
+    source_ids: [awq-repo, awq-license, hanlab-home]
+organization_slugs: [mit]
+links:
+  - label: Repository (mit-han-lab/llm-awq)
+    url: https://github.com/mit-han-lab/llm-awq
+    kind: repository
+  - label: Project page
+    url: https://hanlab.mit.edu/projects/awq
+    kind: website
+  - label: "Paper: AWQ (arXiv 2306.00978)"
+    url: https://arxiv.org/abs/2306.00978
+    kind: paper
+  - label: LICENSE (MIT)
+    url: https://github.com/mit-han-lab/llm-awq/blob/main/LICENSE
+    kind: license
+  - label: AWQ model zoo (pre-computed search results)
+    url: https://huggingface.co/datasets/mit-han-lab/awq-model-zoo
+    kind: dataset-hub
+summary:
+  text: >-
+    AWQ is a post-training method and codebase for low-bit (INT3/INT4) weight-only quantization
+    of large language models, including instruction-tuned and multimodal models. It uses
+    activation statistics to find the most important weight channels and scales them before
+    quantization, without backpropagation. The repository also includes 4-bit CUDA kernels and
+    TinyChat, an inference interface for running quantized models on desktop and edge GPUs.
+  source_ids: [awq-paper, awq-repo]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Quantizing language and vision-language models to 4-bit or 3-bit weights to reduce the
+    memory needed to serve them, and running the quantized models with the included kernels
+    and TinyChat. The README provides example scripts for model families such as Llama, Qwen,
+    DeepSeek-R1-Distill, and VILA, and pre-computed AWQ search results on Hugging Face.
+  source_ids: [awq-repo]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The code is published and maintained in the MIT HAN Lab's mit-han-lab GitHub organization,
+    and the repository's MIT License names MIT HAN Lab as copyright holder. The lab is part of
+    the Massachusetts Institute of Technology, which the IRS lists as a 501(c)(3) school in
+    Cambridge, Massachusetts. The AWQ project page also credits researchers from Tsinghua
+    University and the MIT-IBM Watson AI Lab; eligibility rests on the documented maintaining
+    lab, not on authorship.
+  source_ids: [awq-repo, awq-license, hanlab-home, awq-project, irs-eo-bmf-ma]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub and installed from source; pre-computed AWQ search results
+    are published as a Hugging Face dataset.
+  source_ids: [awq-repo]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/mit-han-lab/llm-awq/blob/main/LICENSE
+    applies_to: code
+    source_ids: [awq-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT License covers this repository's code. It does not cover the model weights that
+    users quantize with AWQ.
+  source_ids: [awq-license, awq-repo]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under the MIT License.
+    source_ids: [awq-repo, awq-license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      The README covers installation, the model zoo, usage of the AWQ search and evaluation
+      commands, and example scripts; the method is described in the MLSys 2024 paper.
+    source_ids: [awq-repo, awq-paper]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Installed from source: clone the repository, create a Python 3.10 conda environment,
+      pip-install the package, build the CUDA kernels, and install FlashAttention. Separate
+      steps are documented for NVIDIA Jetson Orin.
+    source_ids: [awq-repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README targets NVIDIA GPUs through CUDA kernels, with examples on desktop GPUs (RTX
+      4090), Jetson Orin edge devices, and NVIDIA laptops. The README documents no other
+      hardware backends.
+    source_ids: [awq-repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: not_public
+    note: >-
+      The GitHub releases page lists no releases; the code is used from the main branch. The
+      README's news entries run through April 2025.
+    source_ids: [awq-releases, awq-repo]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README documents installation with a Python 3.10 conda environment, compiling the
+      W4A16 CUDA kernels, and installing FlashAttention. For Jetson Orin it says to install
+      NVIDIA's precompiled PyTorch (2.0.0 or later) and adjust the Python version to the
+      JetPack release.
+    source_ids: [awq-repo]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The README states that AWQ has been integrated into Hugging Face Transformers, vLLM,
+      TensorRT-LLM, Hugging Face TGI, LMDeploy, and other tools, and points to AutoAWQ as a
+      separate third-party implementation.
+    source_ids: [awq-repo]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [quantization, inference, compression]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: awq-repo
+    title: mit-han-lab/llm-awq (GitHub repository and README)
+    url: https://github.com/mit-han-lab/llm-awq
+    publisher: MIT HAN Lab
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: awq-license
+    title: llm-awq LICENSE (MIT License)
+    url: https://raw.githubusercontent.com/mit-han-lab/llm-awq/main/LICENSE
+    publisher: MIT HAN Lab
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: awq-releases
+    title: Releases · mit-han-lab/llm-awq
+    url: https://github.com/mit-han-lab/llm-awq/releases
+    publisher: MIT HAN Lab
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: awq-project
+    title: "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration (project page)"
+    url: https://hanlab.mit.edu/projects/awq
+    publisher: MIT HAN Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: awq-paper
+    title: "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration (arXiv 2306.00978)"
+    url: https://arxiv.org/abs/2306.00978
+    publisher: arXiv (MIT HAN Lab and co-authors)
+    kind: paper
+    published_at: 2023-06-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hanlab-home
+    title: MIT HAN Lab
+    url: https://hanlab.mit.edu/
+    publisher: MIT HAN Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ma
+    title: Exempt Organizations Business Master File Extract - Massachusetts (eo_ma.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ma.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,159 @@
+slug: mit
+name: Massachusetts Institute of Technology
+legal_name:
+  text: Massachusetts Institute of Technology
+  source_ids: [irs-eo-bmf-ma]
+  reviewed_at: 2026-10-01
+website: https://www.mit.edu
+logo_text: MIT
+summary:
+  text: >-
+    MIT is a university in Cambridge, Massachusetts, incorporated in 1861; its institutional
+    policies describe it as independent and privately endowed. Its AI research groups include
+    the MIT HAN Lab, which works on efficient AI methods such as model compression and
+    quantization and maintains the AWQ code.
+  source_ids: [mit-about, mit-policy-description, hanlab-home, awq-repo]
+  reviewed_at: 2026-10-01
+organization_roles: [university-lab, research-lab]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Organization recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    classifies it as a corporation with school public-charity status (170(b)(1)(A)(ii)).
+  source_ids: [irs-eo-bmf-ma, irs-eo-info]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Cambridge, Massachusetts
+  country: US
+  source_ids: [mit-policy-description, irs-eo-bmf-ma]
+other_locations:
+  - label: Lexington, Massachusetts (Lincoln Laboratory)
+    country: US
+    source_ids: [mit-policy-description]
+founded:
+  year: 1861
+  source_ids: [mit-about, mit-facts-home]
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      MIT records its founding in Boston in 1861 and its move to Cambridge in 1916. Its first
+      students were admitted in 1865, four years after its founding charter was approved.
+    source_ids: [mit-facts-home, mit-facts-origins]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The MIT HAN Lab lists model compression and quantization, LLM and multimodal models, and
+      edge AI among its research areas. It maintains the llm-awq repository for AWQ
+      (Activation-aware Weight Quantization) in its mit-han-lab GitHub organization; the MIT
+      License in that repository names MIT HAN Lab as copyright holder.
+    source_ids: [hanlab-home, awq-repo, awq-license]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The AWQ project page credits researchers from MIT, Tsinghua University, and the MIT-IBM
+      Watson AI Lab with the method.
+    source_ids: [awq-project]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The IRS exempt-organization extract for Massachusetts lists Massachusetts Institute of
+    Technology, at 77 Massachusetts Avenue in Cambridge, as a 501(c)(3) corporation with school
+    status. MIT's institutional policies place its main campus in Cambridge, Massachusetts.
+  source_ids: [irs-eo-bmf-ma, irs-eo-info, mit-policy-description]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact, not for the university as a whole. The AWQ
+    code maintained by the MIT HAN Lab is published under the MIT License.
+  source_ids: [awq-license]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: mit-about
+    title: About MIT
+    url: https://www.mit.edu/about/
+    publisher: Massachusetts Institute of Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mit-policy-description
+    title: 1.2 Description | MIT Policies
+    url: https://policies.mit.edu/policies-procedures/10-institute/12-description
+    publisher: Massachusetts Institute of Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mit-facts-home
+    title: MIT Facts
+    url: https://facts.mit.edu/
+    publisher: Massachusetts Institute of Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mit-facts-origins
+    title: Origins | MIT Facts
+    url: https://facts.mit.edu/origins
+    publisher: Massachusetts Institute of Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ma
+    title: Exempt Organizations Business Master File Extract - Massachusetts (eo_ma.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ma.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hanlab-home
+    title: MIT HAN Lab
+    url: https://hanlab.mit.edu/
+    publisher: MIT HAN Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: awq-project
+    title: "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration (project page)"
+    url: https://hanlab.mit.edu/projects/awq
+    publisher: MIT HAN Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: awq-repo
+    title: mit-han-lab/llm-awq (GitHub repository)
+    url: https://github.com/mit-han-lab/llm-awq
+    publisher: MIT HAN Lab
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: awq-license
+    title: llm-awq LICENSE (MIT License)
+    url: https://raw.githubusercontent.com/mit-han-lab/llm-awq/main/LICENSE
+    publisher: MIT HAN Lab
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

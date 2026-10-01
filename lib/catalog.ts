@@ -155,6 +155,17 @@ export class Catalog {
     };
   }
 
+  publicPerson(person: Person): Person {
+    return {
+      ...person,
+      affiliations: person.affiliations.map((a) => ({
+        ...a,
+        organization_slug: this.isActiveOrganization(a.organization_slug) ? a.organization_slug : null,
+      })),
+      work: person.work.map((w) => ({ ...w, artifact_slug: this.isActiveArtifact(w.artifact_slug) ? w.artifact_slug : null })),
+    };
+  }
+
   publicArtifact(artifact: Artifact): Artifact {
     return {
       ...artifact,

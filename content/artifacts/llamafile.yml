@@ -1,0 +1,209 @@
+slug: llamafile
+name: llamafile
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Mozilla.ai
+    organization_slug: mozilla-ai
+    source_ids: [readme, llamafile-returns]
+organization_slugs: [mozilla-ai]
+links:
+  - label: Website
+    url: https://www.mozilla.ai/open-tools/llamafile
+    kind: website
+  - label: Repository
+    url: https://github.com/mozilla-ai/llamafile
+    kind: repository
+  - label: Documentation
+    url: https://docs.mozilla.ai/llamafile
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/mozilla-ai/llamafile/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/mozilla-ai/llamafile/releases/tag/0.10.6
+    kind: release-notes
+summary:
+  text: >-
+    llamafile packages an open model's weights and a llama.cpp-based inference runtime into a
+    single executable that runs locally on several operating systems without installation. It
+    combines llama.cpp with Cosmopolitan Libc and includes whisperfile, a single-file
+    speech-to-text tool built on whisper.cpp.
+  source_ids: [readme, docs]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Distributing and running open language models on a local machine as one self-contained
+    file, or running the llamafile binary with separately downloaded GGUF weights.
+  source_ids: [readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Mozilla.ai announced in October 2025 that the llamafile codebase had joined its GitHub
+    organization, and the README says the former Mozilla Builders project is now revamped by
+    Mozilla.ai. The LICENSE names the Mozilla Foundation as copyright holder. Mozilla.ai (MZL.AI,
+    PBC) gives a San Francisco address, and the Mozilla Foundation's audited financial statements
+    list it as a wholly owned subsidiary of the foundation, a California not-for-profit
+    corporation headquartered in San Francisco (see the Mozilla.ai record).
+  source_ids: [llamafile-returns, readme, license, mzai-about, mozfdn-fs-2024]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code, release binaries, and documentation are public. Pre-built llamafiles for
+    example models are hosted on Hugging Face.
+  source_ids: [readme, release]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/mozilla-ai/llamafile/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license, readme]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The README says the llamafile project is Apache 2.0-licensed while its changes to llama.cpp
+    and whisper.cpp are MIT-licensed, like those projects. The LICENSE file names the Mozilla
+    Foundation as copyright holder. This entry covers the llamafile software, not model weights
+    packaged with it.
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the mozilla-ai GitHub organization.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Official documentation covers quick start, pre-built llamafiles, creating llamafiles, source installation, supported systems, and whisperfile.
+    source_ids: [docs, readme]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The quick start downloads a pre-built llamafile, marks it executable, and runs it; on
+      Windows the file is renamed with an .exe extension. Executables over 4 GB cannot run on
+      Windows, so larger models use the llamafile binary with external GGUF weights. Source
+      installation is documented.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Documented for Linux, macOS (GPU support on ARM64 only), Windows 10 and later (AMD64),
+      FreeBSD, NetBSD (AMD64), and OpenBSD 7.0 to 7.4 (AMD64), on AMD64 CPUs with AVX and ARMv8
+      CPUs. GPU backends include Apple Metal, NVIDIA CUDA, AMD ROCm/HIP, and Vulkan; the docs say
+      the 0.10 series has not yet been tested on every GPU and platform.
+    source_ids: [support-docs]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release llamafile v0.10.6, published September 15, 2026. Versions from 0.10.0 use
+      a new build system aligned with recent llama.cpp; earlier versions remain on the releases
+      page. This entry describes the project rather than one release.
+    source_ids: [release, readme]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README's quick start uses a pre-built llamafile of Qwen3.5 0.8B quantized to Q8_0,
+      which it describes as the smallest model the project has built a llamafile for.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Pre-built llamafiles state which llamafile server version they bundle, per the README.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    llamafile combines llama.cpp with Cosmopolitan Libc, and whisperfile builds on whisper.cpp.
+    The README badges pin specific llama.cpp and whisper.cpp commits.
+  derived_from:
+    - name: llama.cpp
+      artifact_slug: llama-cpp
+      url: https://github.com/ggml-org/llama.cpp
+      note: Inference engine combined into llamafile.
+    - name: whisper.cpp
+      artifact_slug: null
+      url: https://github.com/ggml-org/whisper.cpp
+      note: Basis of whisperfile.
+    - name: Cosmopolitan Libc
+      artifact_slug: null
+      url: https://github.com/jart/cosmopolitan
+      note: Used to build single executables that run on several operating systems.
+  source_ids: [readme]
+tags: [inference, local-inference]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: mozilla-ai/llamafile repository and README
+    url: https://github.com/mozilla-ai/llamafile
+    publisher: Mozilla.ai
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: mozilla-ai/llamafile LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/mozilla-ai/llamafile/main/LICENSE
+    publisher: Mozilla.ai
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs
+    title: llamafile documentation
+    url: https://docs.mozilla.ai/llamafile
+    publisher: Mozilla.ai
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: support-docs
+    title: llamafile supported systems
+    url: https://docs.mozilla.ai/llamafile/reference/support
+    publisher: Mozilla.ai
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Release llamafile v0.10.6
+    url: https://github.com/mozilla-ai/llamafile/releases/tag/0.10.6
+    publisher: Mozilla.ai
+    kind: release-notes
+    published_at: 2026-09-15
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llamafile-returns
+    title: llamafile Returns
+    url: https://blog.mozilla.ai/llamafile-returns/
+    publisher: Mozilla.ai
+    kind: announcement
+    published_at: 2025-10-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mzai-about
+    title: About us | Mozilla.ai
+    url: https://www.mozilla.ai/company/about-us
+    publisher: Mozilla.ai
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mozfdn-fs-2024
+    title: Mozilla Foundation and Subsidiaries, consolidated financial statements, December 31, 2024 and 2023
+    url: https://stateof.mozilla.org/pdf/Mozilla%20Fdn%202024%20-%20AuditedFinancials.pdf
+    publisher: Mozilla Foundation
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01

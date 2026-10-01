@@ -1,0 +1,177 @@
+slug: tinygrad
+name: tinygrad
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: tiny corp
+    organization_slug: tiny-corp
+    source_ids: [readme, license]
+organization_slugs: [tiny-corp]
+links:
+  - label: Website
+    url: https://tinygrad.org/
+    kind: website
+  - label: Repository
+    url: https://github.com/tinygrad/tinygrad
+    kind: repository
+  - label: Documentation
+    url: https://docs.tinygrad.org/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/tinygrad/tinygrad/blob/master/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/tinygrad/tinygrad/releases/tag/v0.14.0
+    kind: release-notes
+summary:
+  text: >-
+    tinygrad is a small end-to-end deep learning framework with a tensor library and autograd,
+    an IR and compiler that fuse and lower kernels, a JIT, and modules for neural networks,
+    optimizers, and datasets. Its API is similar to PyTorch's, and it supports both training and
+    inference across several accelerator backends.
+  source_ids: [readme, tc-home]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Training and running neural networks on NVIDIA, AMD, Apple, Qualcomm, and other hardware with
+    a compact, readable codebase, including example scripts for running LLaMA, Stable Diffusion,
+    and Whisper locally.
+  source_ids: [readme, showcase, runtime-docs]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The README says tinygrad is maintained by tiny corp, and the LICENSE names the tiny corp as
+    copyright holder. The company's Form W-9, linked from tinygrad.org, identifies tinygrad, Corp.
+    with an address in San Diego, California (see the tiny corp record).
+  source_ids: [readme, license, tc-w9]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/tinygrad/tinygrad/blob/master/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the tinygrad GitHub organization.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Official documentation includes a quickstart, tutorials, API reference, runtime documentation, and developer notes.
+    source_ids: [docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: The recommended installation is from source (git clone, then pip install -e .); installing directly from the GitHub master branch with pip is also documented.
+    source_ids: [readme, docs]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The runtime documentation lists NV (NVIDIA Ampere, Ada, and Blackwell GPUs), AMD (CDNA3,
+      CDNA4, RDNA3, and RDNA4 GPUs), QCOM (6xx-series GPUs), METAL (M1 or newer Macs), CUDA,
+      OpenCL 2.0, CPU via clang or LLVM, and WebGPU via Dawn.
+    source_ids: [runtime-docs]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release tinygrad 0.14.0, published August 24, 2026. The documentation says
+      tinygrad is not yet 1.0. This entry describes the project rather than one release.
+    source_ids: [release, docs]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The showcase documents running LLaMA with examples/llama.py, Stable Diffusion with
+      examples/stable_diffusion.py, and Whisper with examples/whisper.py.
+    source_ids: [showcase]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The default device is selected automatically from the available hardware and can be forced
+      with an environment variable such as DEV=CPU.
+    source_ids: [runtime-docs]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [training, inference, compiler]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: tinygrad/tinygrad README
+    url: https://raw.githubusercontent.com/tinygrad/tinygrad/master/README.md
+    publisher: tiny corp
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: tinygrad/tinygrad LICENSE (MIT)
+    url: https://raw.githubusercontent.com/tinygrad/tinygrad/master/LICENSE
+    publisher: tiny corp
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs
+    title: tinygrad documentation
+    url: https://docs.tinygrad.org/
+    publisher: tiny corp
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: runtime-docs
+    title: tinygrad runtime documentation
+    url: https://docs.tinygrad.org/runtime/
+    publisher: tiny corp
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: showcase
+    title: tinygrad showcase
+    url: https://docs.tinygrad.org/showcase/
+    publisher: tiny corp
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Release tinygrad 0.14.0
+    url: https://github.com/tinygrad/tinygrad/releases/tag/v0.14.0
+    publisher: tiny corp
+    kind: release-notes
+    published_at: 2026-08-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: tc-home
+    title: "tinygrad: A simple and powerful neural network framework"
+    url: https://tinygrad.org/
+    publisher: tiny corp
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: tc-w9
+    title: Form W-9 for tinygrad, Corp. (linked from tinygrad.org)
+    url: https://tinygrad.org/assets/fw9.pdf
+    publisher: tiny corp
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01

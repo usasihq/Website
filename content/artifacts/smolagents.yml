@@ -1,0 +1,196 @@
+slug: smolagents
+name: smolagents
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    source_ids: [repo, docs-home]
+organization_slugs: [hugging-face]
+links:
+  - label: Repository
+    url: https://github.com/huggingface/smolagents
+    kind: repository
+  - label: Documentation
+    url: https://huggingface.co/docs/smolagents/index
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/huggingface/smolagents/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/huggingface/smolagents/releases/tag/v1.26.0
+    kind: release-notes
+summary:
+  text: >-
+    smolagents is an open-source Python library from Hugging Face for building agents with few
+    abstractions. Its CodeAgent writes its actions as Python code, a ToolCallingAgent uses
+    conventional tool calling, and agents and tools can be shared through the Hugging Face Hub.
+  source_ids: [repo, docs-home]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Building code-executing or tool-calling agents with models from many sources. The library is
+    client code and does not include model weights; it can run models locally through Transformers
+    or Ollama, or call hosted models through Hugging Face Inference Providers, LiteLLM, or
+    OpenAI-compatible servers, whose terms and openness vary by model and provider.
+  source_ids: [repo, docs-home]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    smolagents is developed in Hugging Face's GitHub organization, its README carries a copyright
+    notice for the HuggingFace Team, and its documentation is published on Hugging Face's
+    documentation site. Hugging Face's terms of service identify Hugging Face, Inc., a Delaware
+    corporation, as the provider of its services under New York law, and its privacy policy states
+    that the company and its servers are located in the United States (a French entity is named as
+    its EU main establishment). NVIDIA announced on September 3, 2026 an agreement to acquire
+    Hugging Face; this assessment does not rely on it. See the hugging-face organization record for
+    the full dual-country assessment.
+  source_ids: [repo, docs-home, hf-tos, hf-privacy, nvidia-hf-blog]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public and the package installs from PyPI. Hosted model providers require their
+    own accounts or API keys; local models run through Transformers or Ollama.
+  source_ids: [repo, docs-install, docs-home]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/huggingface/smolagents/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 license applies to the library code. It does not license any model the agent
+    uses, Hugging Face Hub content, or third-party inference and sandbox services, which have their
+    own terms.
+  source_ids: [license, repo]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository; library code only.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation on the Hugging Face documentation site.
+    source_ids: [docs-home, docs-install]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Installed with pip or uv; optional extras add tools (toolkit, mcp), model integrations
+      (openai, transformers, vllm, mlx-lm, litellm, bedrock), remote execution (blaxel, e2b,
+      docker), and telemetry or Gradio UI support.
+    source_ids: [docs-install]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The installation guide requires Python 3.10 or newer with pip or uv; it does not list
+      operating-system restrictions.
+    source_ids: [docs-install]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed v1.26.0, the latest release at review, published May 29, 2026; commits to the main
+      branch continued through September 30, 2026. This entry describes the project rather than one
+      release.
+    source_ids: [release, commits]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The documentation describes running models locally with Transformers (the transformers extra)
+      or Ollama and lists vllm and mlx-lm extras. The README warns that the built-in
+      LocalPythonExecutor is not a security boundary and recommends running agent code in a sandbox
+      such as E2B, Blaxel, Modal, or Docker.
+    source_ids: [docs-home, docs-install, repo]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [agents, multi-agent]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: huggingface/smolagents repository and README
+    url: https://github.com/huggingface/smolagents
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: smolagents Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/huggingface/smolagents/main/LICENSE
+    publisher: Hugging Face
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-home
+    title: smolagents documentation
+    url: https://huggingface.co/docs/smolagents/index
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-install
+    title: smolagents installation options
+    url: https://huggingface.co/docs/smolagents/installation
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: smolagents v1.26.0 release
+    url: https://github.com/huggingface/smolagents/releases/tag/v1.26.0
+    publisher: Hugging Face
+    kind: release-notes
+    published_at: 2026-05-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: commits
+    title: smolagents commit history (main branch)
+    url: https://github.com/huggingface/smolagents/commits/main
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-tos
+    title: Hugging Face Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-privacy
+    title: Hugging Face Privacy Policy
+    url: https://huggingface.co/privacy
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2023-03-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-hf-blog
+    title: NVIDIA to Acquire Hugging Face
+    url: https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2026-09-03
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

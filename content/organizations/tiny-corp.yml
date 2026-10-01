@@ -1,0 +1,94 @@
+slug: tiny-corp
+name: tiny corp
+legal_name:
+  text: tinygrad, Corp.
+  source_ids: [tc-w9]
+  reviewed_at: 2026-10-01
+website: https://tinygrad.org
+logo_text: TC
+summary:
+  text: >-
+    The tiny corp writes and maintains tinygrad, an MIT-licensed neural network framework, and
+    sells the tinybox, a multi-GPU computer for deep learning.
+  source_ids: [tc-home, tinygrad-readme, tinygrad-license]
+  reviewed_at: 2026-10-01
+organization_roles: [hardware-manufacturer, open-source-steward]
+ownership_category: privately-held
+legal_form:
+  text: C corporation, per the Form W-9 the company publishes on tinygrad.org; the state of incorporation is not stated.
+  source_ids: [tc-w9]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Diego, California
+  country: US
+  source_ids: [tc-w9, tc-home]
+other_locations: []
+founded: null
+sectors: []
+status_note: null
+products:
+  - id: tinybox
+    name: tinybox
+    kind: hardware
+    access: >-
+      Deep-learning computers ordered through the company's online shop and paid by wire
+      transfer, with pickup in San Diego or worldwide shipping. Listed configurations are red v2
+      (four 9070XT GPUs) and green v2 (four RTX PRO 6000 Blackwell GPUs); an
+      exabox is offered for preorder for 2027.
+    url: https://tinygrad.org/
+    source_ids: [tc-home]
+    last_reviewed: 2026-10-01
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Form W-9 that the company links from tinygrad.org identifies tinygrad, Corp. as a C
+    corporation with an address in San Diego, California, and the site offers tinybox pickup in
+    San Diego. The W-9 is a tax form rather than a statement of headquarters, and no page reviewed
+    states the state of incorporation. No foreign parent or headquarters was found.
+  source_ids: [tc-w9, tc-home]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    tinygrad is published under the MIT License in a public GitHub repository. The tinybox is a
+    hardware product sold through the company's shop.
+  source_ids: [tinygrad-license, tinygrad-readme, tc-home]
+  reviewed_at: 2026-10-01
+hiring_url: null
+careers: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: tc-home
+    title: "tinygrad: A simple and powerful neural network framework"
+    url: https://tinygrad.org/
+    publisher: tiny corp
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: tc-w9
+    title: Form W-9 for tinygrad, Corp. (linked from tinygrad.org)
+    url: https://tinygrad.org/assets/fw9.pdf
+    publisher: tiny corp
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: tinygrad-readme
+    title: tinygrad/tinygrad README
+    url: https://raw.githubusercontent.com/tinygrad/tinygrad/master/README.md
+    publisher: tiny corp
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: tinygrad-license
+    title: tinygrad/tinygrad LICENSE (MIT)
+    url: https://raw.githubusercontent.com/tinygrad/tinygrad/master/LICENSE
+    publisher: tiny corp
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01

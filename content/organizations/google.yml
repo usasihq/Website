@@ -94,7 +94,7 @@ openness_summary:
 hiring_url: https://www.google.com/about/careers/applications/
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: alphabet-10k-2025
@@ -139,3 +139,75 @@ sources:
     kind: model-card
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-gemini-docs
+    title: Gemini API documentation
+    url: https://ai.google.dev/gemini-api/docs
+    publisher: Google AI for Developers
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-gemini-pricing
+    title: Gemini Developer API pricing
+    url: https://ai.google.dev/gemini-api/docs/pricing
+    publisher: Google AI for Developers
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-gemini-terms
+    title: Gemini API Additional Terms of Service
+    url: https://ai.google.dev/gemini-api/terms
+    publisher: Google AI for Developers
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-gdm-models
+    title: Google DeepMind models
+    url: https://deepmind.google/models/
+    publisher: Google DeepMind
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Google documents the Gemini API for developers building with its models
+      and points enterprise deployments to Gemini Enterprise Agent Platform. The
+      Gemini API terms require users to be 18 or older and limit Google AI
+      Studio and the Gemini API to professional or business use, not consumer
+      use.
+    source_ids: [review-gemini-docs, review-gemini-pricing, review-gemini-terms]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Gemini models are offered as hosted services through the Gemini app,
+      Google AI Studio, the Gemini API (free and paid tiers), and Gemini
+      Enterprise Agent Platform. Downloadable Gemma models are covered in the
+      Google DeepMind record.
+    source_ids: [review-gdm-models, review-gemini-pricing, review-gemini-docs]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Google states that free-tier Gemini API content is used to improve its
+      products and may be read by human reviewers, while paid-tier content is
+      not used for product improvement. The terms require paid services for
+      apps offered in the EEA, Switzerland, and the UK, and apply Google's
+      Prohibited Use Policy. This profile is not a complete product or rights
+      audit.
+    source_ids: [review-gemini-pricing, review-gemini-terms]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Gemini API documentation
+      url: https://ai.google.dev/gemini-api/docs
+      kind: documentation
+      source_ids: [review-gemini-docs]
+      reviewed_at: 2026-10-01
+    - label: Gemini Developer API pricing
+      url: https://ai.google.dev/gemini-api/docs/pricing
+      kind: pricing
+      source_ids: [review-gemini-pricing]
+      reviewed_at: 2026-10-01
+    - label: Gemini API additional terms of service
+      url: https://ai.google.dev/gemini-api/terms
+      kind: documentation
+      source_ids: [review-gemini-terms]
+      reviewed_at: 2026-10-01

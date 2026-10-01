@@ -65,12 +65,15 @@ openness_summary:
   text: >-
     Apple's consumer AI features and on-device model are delivered through its operating systems
     and developer frameworks. It publishes open-source machine learning software such as MLX
-    under the MIT License. This catalog has not assessed Apple model weight releases.
-  source_ids: [apple-intelligence-page, foundation-models-docs, mlx-license]
+    under the MIT License. It has also published research model weights on Hugging Face, such
+    as FastVLM and OpenELM, under the Apple Machine Learning Research Model License Agreement
+    rather than an OSI-approved license; those releases have their own catalog records.
+  source_ids: [apple-intelligence-page, foundation-models-docs, mlx-license, review-hf-apple, review-fastvlm-license]
+  reviewed_at: 2026-10-01
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: aapl-10k-2025
@@ -108,3 +111,96 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-apple-dev-intelligence
+    title: Apple Intelligence - Apple Developer
+    url: https://developer.apple.com/apple-intelligence/
+    publisher: Apple
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-fm-docs
+    title: Foundation Models | Apple Developer Documentation
+    url: https://developer.apple.com/tutorials/data/documentation/foundationmodels.json
+    publisher: Apple
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-apple-intelligence
+    title: Apple Intelligence and Siri - Apple
+    url: https://www.apple.com/apple-intelligence/
+    publisher: Apple
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-mlx
+    title: ml-explore/mlx (GitHub repository)
+    url: https://github.com/ml-explore/mlx
+    publisher: Apple (GitHub)
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hf-apple
+    title: Apple on Hugging Face
+    url: https://huggingface.co/apple
+    publisher: Hugging Face
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-fastvlm-license
+    title: Apple Machine Learning Research Model License Agreement (apple/FastVLM-7B LICENSE)
+    url: https://huggingface.co/apple/FastVLM-7B/blob/main/LICENSE
+    publisher: Apple (Hugging Face)
+    kind: license
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Apple presents the Foundation Models framework as a Swift API for app
+      developers adding features built on Apple Foundation Models. Its MLX
+      repository describes the framework as designed by and for machine
+      learning researchers.
+    source_ids: [review-apple-dev-intelligence, review-fm-docs, review-mlx]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      The framework, available from iOS, iPadOS, macOS, and visionOS 26 and
+      watchOS 27, documents both on-device and Private Cloud Compute models.
+      Apple says App Store Small Business Program members whose app has fewer
+      than 2 million total first-time downloads can use its next-generation
+      Private Cloud Compute models at no cloud API cost. Apple also publishes
+      some research model weights, such as FastVLM and OpenELM, on Hugging
+      Face.
+    source_ids: [review-fm-docs, review-apple-dev-intelligence, review-hf-apple]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      The framework requires a device that supports Apple Intelligence, whose
+      availability also depends on language and region. Some Apple research
+      weights, including FastVLM-7B, use the Apple Machine Learning Research
+      Model License, which limits use to non-commercial research; MLX itself
+      uses the MIT License. This profile is not a complete product or rights
+      audit.
+    source_ids: [review-fm-docs, review-apple-intelligence, review-fastvlm-license, review-mlx]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Apple Intelligence developer overview
+      url: https://developer.apple.com/apple-intelligence/
+      kind: documentation
+      source_ids: [review-apple-dev-intelligence]
+      reviewed_at: 2026-10-01
+    - label: Foundation Models framework documentation
+      url: https://developer.apple.com/documentation/foundationmodels
+      kind: documentation
+      source_ids: [review-fm-docs]
+      reviewed_at: 2026-10-01
+    - label: MLX repository
+      url: https://github.com/ml-explore/mlx
+      kind: repository
+      source_ids: [review-mlx]
+      reviewed_at: 2026-10-01
+    - label: Apple models on Hugging Face
+      url: https://huggingface.co/apple
+      kind: model-hub
+      source_ids: [review-hf-apple]
+      reviewed_at: 2026-10-01

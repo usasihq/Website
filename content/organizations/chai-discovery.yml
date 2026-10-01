@@ -1,0 +1,205 @@
+slug: chai-discovery
+name: Chai Discovery
+legal_name:
+  text: Chai Discovery, Inc. (as named in the original Chai-1 community license)
+  reviewed_at: 2026-10-01
+  source_ids: [chai-license-2024-09]
+website: https://www.chaidiscovery.com
+logo_text: CD
+summary:
+  text: >-
+    Chai Discovery develops AI models for predicting and designing molecular structures and
+    interactions for drug discovery. It released Chai-1, a structure prediction model whose code
+    and weights are now under Apache 2.0, and offers its later Chai-2 design models through an
+    access program rather than as downloads.
+  reviewed_at: 2026-10-01
+  source_ids: [chai-home, chai-readme, chai-product]
+organization_roles: [model-developer, research-lab]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [chai-careers, chai-terms]
+other_locations: []
+founded: null
+sectors: [science, open-models, research]
+status_note: null
+products:
+  - id: chai-lab-web
+    name: Chai Lab web server
+    kind: other
+    access: >-
+      Browser-based service for running Chai-1 without local setup; it requires signing in with
+      an email link.
+    url: https://lab.chaidiscovery.com
+    source_ids: [chai-readme, chai-lab-login]
+    last_reviewed: 2026-10-01
+  - id: chai-2-access
+    name: Chai-2 access program
+    kind: other
+    access: >-
+      Commercial organizations request access to Chai-2 through a form; Chai says it will offer
+      limited non-commercial access for academics through an early-access form.
+    url: https://www.chaidiscovery.com/product
+    source_ids: [chai-product]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Chai-1 was first released in September 2024 under the Chai Discovery Community License
+      Agreement, which limited use of the code, weights, and outputs to non-commercial purposes
+      and incorporated an acceptable use policy. On November 27, 2024 the repository license was
+      replaced with Apache License 2.0, and the README now states that code and weights are both
+      under Apache 2.0.
+    reviewed_at: 2026-10-01
+    source_ids: [chai-license-2024-09, chai-license-history, chai-readme, chai-license]
+  - text: >-
+      Chai's news page describes a 2026 Pfizer license agreement giving access to its platform,
+      including a model called Chai-3; no public weights for Chai-2 or Chai-3 were found in the
+      pages reviewed.
+    reviewed_at: 2026-10-01
+    source_ids: [chai-news, chai-product, hf-chai-models]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Chai Discovery's careers page says its team works in person in San Francisco, California,
+    and its website terms are governed by California law with disputes resolved in San
+    Francisco courts. Its original Chai-1 license names the company as Chai Discovery, Inc. No
+    regulatory filing listing a principal office was reviewed.
+  source_ids: [chai-careers, chai-terms, chai-license-2024-09]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Chai-1 code and weights are published under Apache 2.0 (see the Chai-1 record). Chai-2 is
+    offered through an access program, and no public weights for later models were found, so
+    Chai's offerings are not uniformly open.
+  reviewed_at: 2026-10-01
+  source_ids: [chai-readme, chai-license, chai-product, hf-chai-models]
+hiring_url: https://www.chaidiscovery.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Researchers who run Chai-1 locally or in the web server, and life-science organizations
+      seeking access to Chai-2 for antibody and protein design.
+    reviewed_at: 2026-10-01
+    source_ids: [chai-readme, chai-product]
+  access_overview:
+    text: >-
+      Chai-1 is installed from PyPI and downloads its weights automatically; a hosted web server
+      is also offered. Chai-2 access is requested through a form.
+    reviewed_at: 2026-10-01
+    source_ids: [chai-readme, chai-product]
+  limitations:
+    text: >-
+      The chai_lab package requires Linux and a CUDA GPU with bfloat16 support, and its README
+      covers inference only, not training. The terms for Chai-2 access were not reviewed. This
+      profile is not a full product or rights audit.
+    reviewed_at: 2026-10-01
+    source_ids: [chai-readme]
+  resources:
+    - label: chai-lab repository
+      url: https://github.com/chaidiscovery/chai-lab
+      kind: repository
+      source_ids: [chai-readme]
+      reviewed_at: 2026-10-01
+    - label: Chai-1 weights (Hugging Face)
+      url: https://huggingface.co/chaidiscovery/chai-1
+      kind: model-hub
+      source_ids: [hf-chai-models]
+      reviewed_at: 2026-10-01
+sources:
+  - id: chai-home
+    title: Chai Discovery (home page)
+    url: https://www.chaidiscovery.com/
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-careers
+    title: Careers | Chai Discovery
+    url: https://www.chaidiscovery.com/careers
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-terms
+    title: Chai Discovery Terms of Service
+    url: https://www.chaidiscovery.com/terms-of-service
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: 2025-06-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-product
+    title: Chai-2 platform and access (Chai Discovery product page)
+    url: https://www.chaidiscovery.com/product
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-news
+    title: Research & News | Chai Discovery
+    url: https://www.chaidiscovery.com/news
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-lab-login
+    title: Chai Discovery web server sign-in page
+    url: https://lab.chaidiscovery.com
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-readme
+    title: chaidiscovery/chai-lab README
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/README.md
+    publisher: Chai Discovery
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license
+    title: chaidiscovery/chai-lab LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/LICENSE
+    publisher: Chai Discovery
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license-2024-09
+    title: Chai Discovery Community License Agreement (chai-lab LICENSE.md at commit 84849ac)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/84849ac6c1932baa4fc2c933169f09add47ea358/LICENSE.md
+    publisher: Chai Discovery
+    kind: license
+    published_at: 2024-09-11
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license-history
+    title: Commit history for LICENSE.md (chaidiscovery/chai-lab)
+    url: https://github.com/chaidiscovery/chai-lab/commits/main/LICENSE.md
+    publisher: Chai Discovery (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-chai-models
+    title: Chai Discovery models on Hugging Face (model list API)
+    url: https://huggingface.co/api/models?author=chaidiscovery
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

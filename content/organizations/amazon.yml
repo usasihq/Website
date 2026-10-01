@@ -75,7 +75,7 @@ openness_summary:
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: amzn-10k-2025
@@ -113,3 +113,85 @@ sources:
     kind: documentation
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-bedrock
+    title: Amazon Bedrock
+    url: https://aws.amazon.com/bedrock/
+    publisher: Amazon Web Services
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-bedrock-docs
+    title: Overview - Amazon Bedrock User Guide
+    url: https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html
+    publisher: Amazon Web Services
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-bedrock-pricing
+    title: Amazon Bedrock Pricing
+    url: https://aws.amazon.com/bedrock/pricing/
+    publisher: Amazon Web Services
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-nova
+    title: Amazon Nova
+    url: https://aws.amazon.com/nova/
+    publisher: Amazon Web Services
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-nova2-guide
+    title: What is Amazon Nova 2? - Amazon Nova
+    url: https://docs.aws.amazon.com/nova/latest/nova2-userguide/what-is-nova-2.html
+    publisher: Amazon Web Services
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hf-amazon
+    title: Amazon on Hugging Face
+    url: https://huggingface.co/amazon
+    publisher: Hugging Face
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      AWS presents Amazon Bedrock for teams, from startups to large
+      enterprises, building generative AI applications and agents, and Amazon
+      Nova models for organizations of all sizes.
+    source_ids: [review-bedrock, review-nova]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Bedrock is a fully managed AWS service that offers foundation models from
+      Amazon and other providers, including Anthropic, DeepSeek, OpenAI, and
+      xAI, through AWS APIs. Amazon's Nova 2 models are accessed through
+      Bedrock and can be customized through fine-tuning.
+    source_ids: [review-bedrock-docs, review-nova2-guide]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Bedrock prices depend on modality, provider, and model and vary by AWS
+      Region. AWS documents Nova access through Bedrock, and Amazon's Hugging
+      Face organization lists other models, such as Chronos, but no Nova
+      weights. This profile is not a complete product or rights audit.
+    source_ids: [review-bedrock-pricing, review-nova2-guide, review-hf-amazon]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Amazon Bedrock user guide
+      url: https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html
+      kind: documentation
+      source_ids: [review-bedrock-docs]
+      reviewed_at: 2026-10-01
+    - label: Amazon Bedrock pricing
+      url: https://aws.amazon.com/bedrock/pricing/
+      kind: pricing
+      source_ids: [review-bedrock-pricing]
+      reviewed_at: 2026-10-01
+    - label: Amazon Nova 2 user guide
+      url: https://docs.aws.amazon.com/nova/latest/nova2-userguide/what-is-nova-2.html
+      kind: documentation
+      source_ids: [review-nova2-guide]
+      reviewed_at: 2026-10-01

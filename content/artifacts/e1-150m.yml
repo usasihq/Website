@@ -1,0 +1,219 @@
+slug: e1-150m
+name: Profluent-E1 150M (E1-150m)
+kind: model
+record_level: release
+family_slug: profluent-e1
+version: "Profluent-Bio/E1-150m"
+maintainers:
+  - name: Profluent
+    organization_slug: profluent
+    source_ids: [hf-card, e1-readme, e1-license]
+organization_slugs: [profluent]
+links:
+  - label: E1-150m weights (Hugging Face)
+    url: https://huggingface.co/Profluent-Bio/E1-150m
+    kind: model-hub
+  - label: GitHub repository (Profluent-AI/E1)
+    url: https://github.com/Profluent-AI/E1
+    kind: repository
+  - label: Profluent-E1 Clickthrough License Agreement
+    url: https://github.com/Profluent-AI/E1/blob/main/LICENSE
+    kind: license
+  - label: Profluent-E1 preprint (bioRxiv 2025.11.12.688125)
+    url: https://www.biorxiv.org/content/10.1101/2025.11.12.688125v1
+    kind: paper
+summary:
+  text: >-
+    The 150M-parameter member of the Profluent-E1 family of retrieval-augmented protein
+    encoder models, released in November 2025 alongside E1-600m and E1-300m. The
+    Hugging Face safetensors metadata counts 154,423,330 parameters stored in BF16. It can encode a
+    single protein sequence or a query preceded by homologous sequences.
+  reviewed_at: 2026-10-01
+  source_ids: [hf-card, hf-api, e1-readme, profluent-e1-showcase]
+useful_for:
+  text: >-
+    Protein embeddings and masked-token predictions for tasks such as zero-shot fitness
+    prediction of substitution mutants, contact or structure analysis, and in-silico
+    site-saturation mutagenesis; Profluent presents E1 as a drop-in replacement for ESM-family
+    encoders.
+  reviewed_at: 2026-10-01
+  source_ids: [e1-readme, profluent-e1-showcase]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Published by Profluent in its Hugging Face and GitHub organizations; the license and notice
+    name Profluent Bio Inc. as licensor and copyright holder. Profluent's website terms give an
+    Emeryville, California notice address.
+  source_ids: [hf-card, e1-license, e1-notice, profluent-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  reviewed_at: 2026-10-01
+  access_conditions: >-
+    Downloadable from Hugging Face without a gate, but the license states that downloading or
+    using Profluent-E1 means accepting the Profluent-E1 Clickthrough License Agreement and its
+    Attribution Guidelines. No biosecurity-specific access conditions were found in the README,
+    license, or announcement.
+  source_ids: [hf-api, e1-license, e1-readme, profluent-e1-showcase]
+licenses:
+  - name: Profluent-E1 Clickthrough License Agreement
+    spdx: null
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/LICENSE
+    applies_to: weights
+    reviewed_at: 2026-10-01
+    source_ids: [e1-license, e1-attribution, hf-card, hf-api]
+  - name: Apache License 2.0 (model code used separately from the weights, per LICENSE section 4)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/LICENSE
+    applies_to: code
+    reviewed_at: 2026-10-01
+    source_ids: [e1-license, e1-readme]
+license_notes:
+  text: >-
+    The clickthrough agreement, offered by Profluent Bio Inc., grants a perpetual, worldwide,
+    royalty-free copyright and patent license to use, modify, and redistribute Profluent-E1, with
+    Apache-style redistribution conditions. It defines Profluent-E1 to include both the weights
+    and the code, and says model code used separately from the weights is under Apache 2.0. The
+    Attribution Guidelines require commercial entities to display "Profluent-E1" attribution and
+    require any drug, target, hit, or lead created or identified using it to be identified as
+    "Built with Profluent-E1", including in regulatory disclosures. Profluent may amend the
+    agreement and may terminate it on breach; it is governed by California law with arbitration
+    in Alameda County. The Hugging Face card lists the license as other
+    (profluent-e1-clickthrough-license). One source file is adapted from flash-attention under
+    BSD-3-Clause.
+  reviewed_at: 2026-10-01
+  source_ids: [e1-license, e1-attribution, e1-notice, e1-readme, hf-card]
+checklist:
+  weights:
+    status: public
+    reviewed_at: 2026-10-01
+    note: Safetensors weights and config on Hugging Face without gating; use is subject to the clickthrough license.
+    source_ids: [hf-api, hf-card]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-01
+    note: The E1 GitHub repository provides the model code, batch preparation, and example notebooks.
+    source_ids: [e1-readme]
+  training_code:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: The README describes installation and inference only; no training code was found in the sources reviewed.
+    source_ids: []
+  training_pipeline:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: null
+    source_ids: []
+  training_recipe:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: >-
+      The announcement describes the architecture at a high level; the preprint was not reviewed
+      for this record.
+    source_ids: []
+  training_data_information:
+    status: partial
+    reviewed_at: 2026-10-01
+    note: >-
+      The announcement says the models were trained on Profluent's Protein Atlas, described as
+      billions of proteins, with homologous sequences supplied during training. This confirms
+      partial disclosure, not completeness.
+    source_ids: [profluent-e1-showcase]
+  training_data_access:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: No download of the Profluent Protein Atlas was found in the sources reviewed.
+    source_ids: []
+  evaluation_materials:
+    status: partial
+    reviewed_at: 2026-10-01
+    note: >-
+      The README and announcement report ProteinGym and CAMEO results as charts, and the
+      repository includes a zero-shot fitness prediction notebook; full evaluation scripts were
+      not identified.
+    source_ids: [e1-readme, profluent-e1-showcase]
+run_notes:
+  - text: >-
+      The README installs the code from the GitHub repository with pip. The models run on CPU or
+      GPU; because they were trained in BF16 precision, the README recommends a GPU with BF16
+      support (CUDA capability 8.0 or higher) and optionally the flash-attn package.
+    reviewed_at: 2026-10-01
+    source_ids: [e1-readme]
+provenance:
+  text: >-
+    Trained by Profluent on its Profluent Protein Atlas, which Profluent describes as a curated
+    protein dataset; the dataset itself is not published in the sources reviewed.
+  derived_from: []
+  source_ids: [profluent-e1-showcase]
+tags: [science, embedding, protein-language-model]
+publication_status: published
+archive_note: null
+released_at: 2025-11-13
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: hf-card
+    title: Profluent-Bio/E1-150m model card
+    url: https://huggingface.co/Profluent-Bio/E1-150m
+    publisher: Profluent
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-api
+    title: Profluent-Bio/E1-150m (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/Profluent-Bio/E1-150m
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-readme
+    title: Profluent-AI/E1 README
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/README.md
+    publisher: Profluent
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-license
+    title: Profluent-E1 Clickthrough License Agreement (Profluent-AI/E1 LICENSE)
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/LICENSE
+    publisher: Profluent Bio Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-notice
+    title: Profluent-E1 Notice File (Profluent-AI/E1 NOTICE)
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/NOTICE
+    publisher: Profluent Bio Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-attribution
+    title: Profluent-E1 Attribution Guidelines (Profluent-AI/E1 ATTRIBUTION)
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/ATTRIBUTION
+    publisher: Profluent Bio Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: profluent-e1-showcase
+    title: Introducing Profluent-E1 (Profluent showcase)
+    url: https://www.profluent.bio/showcase/e1
+    publisher: Profluent
+    kind: announcement
+    published_at: 2025-11-13
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: profluent-terms
+    title: Profluent Terms of Service
+    url: https://www.profluent.bio/terms
+    publisher: Profluent Bio Inc.
+    kind: official-page
+    published_at: 2025-01-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

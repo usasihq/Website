@@ -1,0 +1,198 @@
+slug: cuopt
+name: NVIDIA cuOpt
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [cuopt-contributing, cuopt-init-header, cuopt-readme]
+organization_slugs: [nvidia]
+links:
+  - label: GitHub repository
+    url: https://github.com/NVIDIA/cuopt
+    kind: repository
+  - label: Documentation
+    url: https://docs.nvidia.com/cuopt/user-guide/latest/introduction.html
+    kind: documentation
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/NVIDIA/cuopt/blob/main/LICENSE
+    kind: license
+  - label: Release v26.08.00
+    url: https://github.com/NVIDIA/cuopt/releases/tag/v26.08.00
+    kind: release-notes
+summary:
+  text: >-
+    cuOpt is NVIDIA's GPU-accelerated optimization engine for linear programming, quadratic
+    programming, and vehicle routing, with beta support for mixed integer, quadratically
+    constrained quadratic, and second-order cone programming. Its core is written in C++ with C,
+    Python, and server APIs. NVIDIA announced in March 2025 that it would open-source cuOpt, and
+    an NVIDIA post in June 2025 said it was available under Apache 2.0.
+  source_ids: [cuopt-readme, cuopt-docs-intro, cuopt-blog-announce, cuopt-devblog-open-source]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Solving large linear and mixed integer programs and routing problems such as traveling
+    salesperson, vehicle routing, and pickup-and-delivery problems, either as a library or as a
+    self-hosted optimization service; the README notes the MIP solver is in beta.
+  source_ids: [cuopt-readme, cuopt-docs-intro]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is in NVIDIA's GitHub organization, source files carry NVIDIA Corporation &
+    Affiliates copyright notices, and the contribution guide says the NVIDIA cuOpt team triages
+    issues and schedules them for releases. The README says the repository is also hosted as a
+    COIN-OR project, and NVIDIA's posts describe working with the COIN-OR Foundation to make and
+    distribute cuOpt as open source; no governing role for COIN-OR is documented in the sources
+    reviewed. NVIDIA's principal executive offices are in Santa Clara, California, per its Form
+    10-Q for the quarter ended July 26, 2026.
+  source_ids: [cuopt-contributing, cuopt-init-header, cuopt-readme, cuopt-blog-announce, cuopt-devblog-open-source, nvidia-10q-q2fy2027]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub, with pip packages from the NVIDIA Python Package Index, conda
+    packages, and Docker Hub container images. Separately, the documentation says the cuOpt
+    microservice offered through NVIDIA AI Enterprise requires an NVIDIA AI Enterprise license or
+    NVIDIA Developer Program membership.
+  source_ids: [cuopt-readme, cuopt-docs-intro]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/NVIDIA/cuopt/blob/main/LICENSE
+    applies_to: code
+    source_ids: [cuopt-license, cuopt-init-header]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 license covers the open-source repository. The NVIDIA AI Enterprise offering
+    is subject to its own licensing; the documentation says NVIDIA AI Enterprise support extends
+    only to the cuOpt routing service API. Contributions require a Developer Certificate of
+    Origin sign-off.
+  source_ids: [cuopt-license, cuopt-docs-intro, cuopt-contributing]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public NVIDIA/cuopt GitHub repository, which is also hosted as a COIN-OR project.
+    source_ids: [cuopt-readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      NVIDIA publishes a user guide covering the routing, LP, QP, and MIP features and the C,
+      Python, and server APIs; the README says the C++ API is not documented.
+    source_ids: [cuopt-docs-intro, cuopt-readme]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: The README documents pip, conda, Docker Hub containers (Ubuntu and FIPS-oriented UBI10 images), and building from source.
+    source_ids: [cuopt-readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Linux on x86_64 and aarch64, and Windows through WSL2; NVIDIA Volta or newer GPUs
+      (compute capability 7.0+), CUDA 12.0+ or 13.0+, and Python 3.11 to 3.14.
+    source_ids: [cuopt-readme, cuopt-docs-sysreq]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned releases follow the RAPIDS release schedule; v26.08.00, published on GitHub on
+      August 6, 2026, was the latest non-prerelease when checked.
+    source_ids: [cuopt-release-26-08, cuopt-readme]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance: null
+tags: [optimization, numerical-computing]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: cuopt-readme
+    title: NVIDIA/cuopt README
+    url: https://raw.githubusercontent.com/NVIDIA/cuopt/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-license
+    title: NVIDIA/cuopt LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA/cuopt/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-init-header
+    title: NVIDIA/cuopt python/cuopt/cuopt/__init__.py (SPDX copyright and license header)
+    url: https://raw.githubusercontent.com/NVIDIA/cuopt/main/python/cuopt/cuopt/__init__.py
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-contributing
+    title: NVIDIA/cuopt CONTRIBUTING.md
+    url: https://raw.githubusercontent.com/NVIDIA/cuopt/main/CONTRIBUTING.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-docs-intro
+    title: Introduction — NVIDIA cuOpt User Guide
+    url: https://docs.nvidia.com/cuopt/user-guide/latest/introduction.html
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-docs-sysreq
+    title: System Requirements — NVIDIA cuOpt User Guide
+    url: https://docs.nvidia.com/cuopt/user-guide/latest/system-requirements.html
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-release-26-08
+    title: NVIDIA/cuopt release v26.08.00
+    url: https://github.com/NVIDIA/cuopt/releases/tag/v26.08.00
+    publisher: NVIDIA (GitHub)
+    kind: release-notes
+    published_at: 2026-08-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-blog-announce
+    title: NVIDIA Open-Sources cuOpt, Ushering in New Era of Decision Optimization
+    url: https://blogs.nvidia.com/blog/cuopt-open-source
+    publisher: NVIDIA Blog
+    kind: announcement
+    published_at: 2025-03-18
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cuopt-devblog-open-source
+    title: Accelerate Decision Optimization Using Open Source NVIDIA cuOpt
+    url: https://developer.nvidia.com/blog/accelerate-decision-optimization-using-open-source-nvidia-cuopt
+    publisher: NVIDIA Technical Blog
+    kind: announcement
+    published_at: 2025-06-11
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

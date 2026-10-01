@@ -95,7 +95,7 @@ openness_summary:
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: nvidia-10k-fy2026
@@ -161,3 +161,91 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-nemotron
+    title: NVIDIA Nemotron
+    url: https://developer.nvidia.com/nemotron
+    publisher: NVIDIA
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-nim
+    title: NVIDIA NIM Microservices
+    url: https://www.nvidia.com/en-us/ai-data-science/products/nim-microservices/
+    publisher: NVIDIA
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-build
+    title: NVIDIA build.nvidia.com
+    url: https://build.nvidia.com/
+    publisher: NVIDIA
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hf-nvidia
+    title: NVIDIA on Hugging Face
+    url: https://huggingface.co/nvidia
+    publisher: Hugging Face
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-nemotron-super-card
+    title: NVIDIA-Nemotron-3-Super-120B-A12B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-nemotron-lightning-card
+    title: NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      NVIDIA presents Nemotron to developers building specialized and
+      multi-agent AI applications, and NIM to developers and enterprises
+      deploying prebuilt inference microservices.
+    source_ids: [review-nemotron, review-nim]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Nemotron models are published on Hugging Face and offered as hosted
+      endpoints on build.nvidia.com, and NVIDIA has released some Nemotron
+      training datasets and recipes. NIM can be tried free through the NVIDIA
+      Developer Program and self-hosted on a user's own infrastructure.
+    source_ids: [review-nemotron, review-build, review-hf-nvidia, review-nim]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Model licenses differ by release: the Nemotron 3 Super card names the
+      NVIDIA Nemotron Open Model License, while the Nemotron 3.5 Lightning card
+      names OpenMDW-1.1. Production use of self-hosted NIM requires an NVIDIA AI
+      Enterprise license. This profile is not a complete product or rights
+      audit.
+    source_ids: [review-nemotron-super-card, review-nemotron-lightning-card, review-nim]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Nemotron models, datasets, and recipes
+      url: https://developer.nvidia.com/nemotron
+      kind: documentation
+      source_ids: [review-nemotron]
+      reviewed_at: 2026-10-01
+    - label: Hosted model endpoints on build.nvidia.com
+      url: https://build.nvidia.com/
+      kind: model-hub
+      source_ids: [review-build]
+      reviewed_at: 2026-10-01
+    - label: NVIDIA models on Hugging Face
+      url: https://huggingface.co/nvidia
+      kind: model-hub
+      source_ids: [review-hf-nvidia]
+      reviewed_at: 2026-10-01
+    - label: NIM microservices and licensing options
+      url: https://www.nvidia.com/en-us/ai-data-science/products/nim-microservices/
+      kind: documentation
+      source_ids: [review-nim]
+      reviewed_at: 2026-10-01

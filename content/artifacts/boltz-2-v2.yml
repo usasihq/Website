@@ -1,0 +1,266 @@
+slug: boltz-2-v2
+name: Boltz-2 (boltz2_conf and boltz2_aff checkpoints)
+kind: model
+record_level: release
+family_slug: boltz-2
+version: "boltz-community/boltz-2: boltz2_conf.ckpt + boltz2_aff.ckpt"
+maintainers:
+  - name: Boltz (Boltz PBC)
+    organization_slug: boltz
+    source_ids: [boltz-home, boltz-readme, boltz-main-py]
+organization_slugs: [boltz, mit]
+links:
+  - label: Boltz-2 checkpoints (Hugging Face)
+    url: https://huggingface.co/boltz-community/boltz-2
+    kind: model-hub
+  - label: GitHub repository (jwohlwend/boltz)
+    url: https://github.com/jwohlwend/boltz
+    kind: repository
+  - label: LICENSE (MIT)
+    url: https://github.com/jwohlwend/boltz/blob/main/LICENSE
+    kind: license
+  - label: Boltz-2 technical report (bioRxiv, doi:10.1101/2025.06.14.659707)
+    url: https://doi.org/10.1101/2025.06.14.659707
+    kind: paper
+summary:
+  text: >-
+    The Boltz-2 weights published on June 6, 2025: a structure and confidence checkpoint
+    (boltz2_conf.ckpt) and a separate binding-affinity checkpoint (boltz2_aff.ckpt), released
+    together in one Hugging Face repository and loaded by the boltz package, which runs the
+    latest model by default. The two checkpoints are assessed together because the affinity
+    prediction runs as part of the same Boltz-2 pipeline.
+  reviewed_at: 2026-10-01
+  source_ids: [hf-boltz2-api, boltz-main-py, boltz-readme, boltz-boltz2-post]
+useful_for:
+  text: >-
+    Predicting complex structures from YAML inputs and, for protein-ligand pairs, a binder
+    probability for hit discovery and an affinity value for comparing related binders during
+    hit-to-lead and lead optimization.
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Developed by the Boltz team at MIT Jameel Clinic with Recursion and now presented by Boltz
+    PBC, whose terms give a Massachusetts notice address, as one of its open-source models. The
+    technical report also lists authors at Valence Labs and ETH Zurich. The repository sits
+    under an individual developer's GitHub account and its license names three individual
+    copyright holders.
+  source_ids: [boltz-boltz2-post, boltz-home, boltz-terms, boltz-license, boltz2-biorxiv]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  reviewed_at: 2026-10-01
+  access_conditions: >-
+    The boltz package downloads both checkpoints from a boltz.bio gateway and falls back to the
+    ungated boltz-community Hugging Face repository. The optional automatic MSA step queries the
+    public ColabFold server by default. No biosecurity-specific access conditions were found in
+    the README or announcement.
+  source_ids: [boltz-main-py, hf-boltz2-api, boltz-readme, boltz-boltz2-post]
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/LICENSE
+    applies_to: weights-and-code
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-license, boltz-readme, hf-boltz2-api]
+license_notes:
+  text: >-
+    The repository LICENSE is the MIT License, copyright 2024 by three named individual
+    developers. The README states that all code and weights are provided under MIT for academic
+    and commercial use, and the Hugging Face repository is tagged MIT. The June 2025
+    announcement says the model, weights, and training pipeline are released under MIT. Boltz
+    PBC's hosted-service terms, which bar using outputs to build competing models, apply to its
+    platform and API, not to this MIT release.
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-license, boltz-readme, hf-boltz2-api, boltz-boltz2-post, boltz-terms]
+checklist:
+  weights:
+    status: public
+    reviewed_at: 2026-10-01
+    note: Both checkpoints are in an ungated Hugging Face repository tagged MIT.
+    source_ids: [hf-boltz2-api, boltz-main-py]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-01
+    note: The boltz package (PyPI and GitHub) provides the boltz predict command.
+    source_ids: [boltz-readme, boltz-pypi]
+  training_code:
+    status: partial
+    reviewed_at: 2026-10-01
+    note: >-
+      The repository includes a training script and configuration templates, but the provided
+      structure configuration targets the Boltz-1 model class, and updated Boltz-2 training code
+      and information are marked as coming soon.
+    source_ids: [boltz-readme, boltz-training-doc, boltz-structure-config]
+  training_pipeline:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: >-
+      The announcement says the training pipeline is released, but the repository documents only
+      Boltz-1 data preprocessing and training; a complete Boltz-2 pipeline was not found.
+    source_ids: [boltz-boltz2-post, boltz-training-doc]
+  training_recipe:
+    status: partial
+    reviewed_at: 2026-10-01
+    note: >-
+      The announcement describes the added affinity module and the use of synthetic and
+      molecular-dynamics training data at a high level; the technical report was not reviewed
+      in full for this record.
+    source_ids: [boltz-boltz2-post]
+  training_data_information:
+    status: partial
+    reviewed_at: 2026-10-01
+    note: >-
+      The announcement mentions large collections of synthetic and molecular-dynamics data; the
+      repository's data documentation covers Boltz-1 sources (PDB and OpenFold structures and
+      MSAs). This confirms partial disclosure, not completeness.
+    source_ids: [boltz-boltz2-post, boltz-training-doc]
+  training_data_access:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: >-
+      Pre-processed Boltz-1 training data is downloadable per the training documentation;
+      no download of the Boltz-2 training data was found.
+    source_ids: [boltz-training-doc]
+  evaluation_materials:
+    status: partial
+    reviewed_at: 2026-10-01
+    note: >-
+      Boltz-2 results are published as plots in the README and evaluation documentation, but
+      Boltz-2 evaluation files and scripts are marked as coming soon.
+    source_ids: [boltz-readme, boltz-eval-doc]
+run_notes:
+  - text: >-
+      The README installs Boltz with pip install boltz[cuda] and runs predictions with boltz
+      predict; on CPU-only or non-CUDA hardware the [cuda] extra is dropped, and the README notes
+      the CPU version is significantly slower. PyPI metadata requires Python 3.10 to 3.12; the
+      latest release at review was 2.2.1 (September 8, 2025).
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-readme, boltz-pypi]
+  - text: On recent NVIDIA GPUs Boltz uses NVIDIA cuEquivariance kernels, per the README.
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-readme]
+provenance:
+  text: >-
+    Builds on Boltz-1, adding an affinity module and training on additional synthetic and
+    molecular-dynamics data, per the Boltz-2 announcement. The technical report lists authors
+    at MIT CSAIL, MIT Jameel Clinic, Recursion, Valence Labs, and ETH Zurich.
+  derived_from:
+    - name: Boltz-1
+      artifact_slug: null
+      url: https://huggingface.co/boltz-community/boltz-1
+      note: Earlier open model from the same team; no separate catalog record.
+  source_ids: [boltz-boltz2-post, boltz2-biorxiv, hf-boltz-community-models]
+tags: [science, structure-prediction]
+publication_status: published
+archive_note: null
+released_at: 2025-06-06
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: hf-boltz2-api
+    title: boltz-community/boltz-2 (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/boltz-community/boltz-2
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-boltz-community-models
+    title: boltz-community models on Hugging Face (model list API)
+    url: https://huggingface.co/api/models?author=boltz-community
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-readme
+    title: jwohlwend/boltz README
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/README.md
+    publisher: Boltz developers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-license
+    title: jwohlwend/boltz LICENSE
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/LICENSE
+    publisher: Boltz developers (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-main-py
+    title: jwohlwend/boltz src/boltz/main.py (checkpoint download URLs)
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/src/boltz/main.py
+    publisher: Boltz developers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-training-doc
+    title: jwohlwend/boltz docs/training.md
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/docs/training.md
+    publisher: Boltz developers (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-structure-config
+    title: jwohlwend/boltz scripts/train/configs/structure.yaml
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/scripts/train/configs/structure.yaml
+    publisher: Boltz developers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-eval-doc
+    title: jwohlwend/boltz docs/evaluation.md
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/docs/evaluation.md
+    publisher: Boltz developers (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-pypi
+    title: boltz (PyPI JSON metadata)
+    url: https://pypi.org/pypi/boltz/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-boltz2-post
+    title: "Introducing Boltz-2: Toward Accurate and Efficient Binding Affinity Prediction"
+    url: https://boltz.com/boltz2
+    publisher: Boltz
+    kind: announcement
+    published_at: 2025-06-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz2-biorxiv
+    title: "Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction (bioRxiv v1)"
+    url: https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1
+    publisher: bioRxiv
+    kind: paper
+    published_at: "2025"
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-home
+    title: Boltz - Build Better Molecules with AI (home page)
+    url: https://boltz.com/
+    publisher: Boltz
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-terms
+    title: Boltz Terms of Service
+    url: https://boltz.com/terms
+    publisher: Boltz PBC
+    kind: official-page
+    published_at: 2026-05-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

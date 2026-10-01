@@ -1,0 +1,170 @@
+slug: bitnet
+name: bitnet.cpp (BitNet inference framework)
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Microsoft
+    organization_slug: microsoft
+    source_ids: [license, readme]
+organization_slugs: [microsoft]
+links:
+  - label: Repository
+    url: https://github.com/microsoft/BitNet
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/microsoft/BitNet/blob/main/LICENSE
+    kind: license
+  - label: BitNet b1.58 2B4T model card
+    url: https://huggingface.co/microsoft/bitnet-b1.58-2B-4T
+    kind: model-hub
+summary:
+  text: >-
+    bitnet.cpp is Microsoft's official inference framework for 1-bit large language models,
+    such as BitNet b1.58, whose weights are ternary (1.58-bit). It provides optimized kernels for
+    running these models on x86 and ARM CPUs, with a separate GPU inference kernel, and is based
+    on llama.cpp.
+  source_ids: [readme]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Running ternary BitNet models locally on CPUs, including Microsoft's BitNet b1.58 2B4T
+    language model and BitNet embedding models.
+  source_ids: [readme, model-card]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is in Microsoft's GitHub organization, the README describes bitnet.cpp as the
+    official inference framework for 1-bit LLMs, and the LICENSE names Microsoft Corporation as
+    copyright holder. Microsoft is headquartered in the United States (see the Microsoft record).
+  source_ids: [license, readme]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/microsoft/BitNet/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT entry covers the bitnet.cpp code. The BitNet b1.58 2B4T weights are published
+    separately on Hugging Face; that model card states that the model weights and code are
+    released under the MIT License, and its LICENSE file names Microsoft Corporation.
+  source_ids: [license, model-card, model-license]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository in Microsoft's GitHub organization.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: The README documents requirements, building, usage, benchmarking, and checkpoint conversion, with linked guides for the GPU kernel and CPU optimizations.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Build from source with Python 3.10 or later, CMake 3.22 or later, and Clang 18 or later
+      (Visual Studio 2022 tooling on Windows); conda is recommended. A setup script prepares a
+      downloaded model and builds the kernels.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists which CPU kernels (I2_S, TL1, TL2) support each model on x86 and ARM, and
+      gives build instructions for Windows and Debian/Ubuntu. GPU inference uses a separate
+      kernel documented in the repository.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: partial
+    note: >-
+      The README announces bitnet.cpp 1.0 (October 17, 2024) and later kernel updates, but the
+      GitHub repository has no published releases; it is built from the main branch.
+    source_ids: [readme, releases]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The BitNet b1.58 2B4T model card says its efficiency benefits require bitnet.cpp; running
+      the model with the standard Transformers library is not expected to give speed, latency,
+      or energy gains.
+    source_ids: [model-card]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The README's build example downloads the GGUF version of BitNet b1.58 2B4T from Hugging
+      Face and prepares it with the i2_s quantization type.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    bitnet.cpp is based on the llama.cpp framework, and its kernels build on the lookup-table
+    methods of Microsoft's T-MAC project, per the README.
+  derived_from:
+    - name: llama.cpp
+      artifact_slug: llama-cpp
+      url: https://github.com/ggml-org/llama.cpp
+      note: Framework that bitnet.cpp is based on.
+    - name: T-MAC
+      artifact_slug: null
+      url: https://github.com/microsoft/T-MAC
+      note: Lookup-table kernel methods.
+  source_ids: [readme]
+tags: [inference, local-inference, quantization]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: microsoft/BitNet README
+    url: https://raw.githubusercontent.com/microsoft/BitNet/main/README.md
+    publisher: Microsoft
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: microsoft/BitNet LICENSE (MIT)
+    url: https://raw.githubusercontent.com/microsoft/BitNet/main/LICENSE
+    publisher: Microsoft
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: releases
+    title: microsoft/BitNet releases
+    url: https://github.com/microsoft/BitNet/releases
+    publisher: Microsoft
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: model-card
+    title: microsoft/bitnet-b1.58-2B-4T model card
+    url: https://huggingface.co/microsoft/bitnet-b1.58-2B-4T/raw/main/README.md
+    publisher: Microsoft
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: model-license
+    title: microsoft/bitnet-b1.58-2B-4T LICENSE (MIT)
+    url: https://huggingface.co/microsoft/bitnet-b1.58-2B-4T/raw/main/LICENSE
+    publisher: Microsoft
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

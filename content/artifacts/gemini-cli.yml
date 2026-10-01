@@ -1,0 +1,189 @@
+slug: gemini-cli
+name: Gemini CLI
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Google
+    organization_slug: google
+    source_ids: [repo, contributing]
+organization_slugs: [google]
+links:
+  - label: Website
+    url: https://geminicli.com
+    kind: website
+  - label: Repository
+    url: https://github.com/google-gemini/gemini-cli
+    kind: repository
+  - label: Documentation
+    url: https://www.geminicli.com/docs/get-started/installation
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/google-gemini/gemini-cli/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/google-gemini/gemini-cli/releases/tag/v0.62.0
+    kind: release-notes
+summary:
+  text: >-
+    Gemini CLI is an open-source AI agent from Google that runs in a terminal and uses Google's
+    Gemini models. It has built-in tools for file operations, shell commands, web fetching, and
+    Google Search grounding, supports MCP servers and extensions, and can run non-interactively in
+    scripts.
+  source_ids: [repo]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Querying and editing codebases, automating operational tasks, and scripted or CI use from a
+    terminal. Gemini CLI is open-source client code: the Gemini models it calls are hosted by Google
+    and are not open, and use requires signing in with a Google account, a Gemini API key, or
+    Vertex AI.
+  source_ids: [repo, tos-privacy]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Gemini CLI is developed in the google-gemini GitHub organization and distributed on npm as
+    @google/gemini-cli. Its README says it is built by Google and the open source community, and
+    its contributing guide requires contributors to sign Google's Contributor License Agreement.
+    Google's terms of service identify Google LLC, organized under the laws of Delaware, at 1600
+    Amphitheatre Parkway, Mountain View, California. See the google organization record.
+  source_ids: [repo, contributing, google-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public. Use requires an internet connection and authentication with a Google
+    account, a Gemini API key, or Vertex AI; each path is governed by its own Google terms and
+    privacy notice. The Gemini models themselves are not open.
+  source_ids: [repo, install, tos-privacy]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/google-gemini/gemini-cli/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 license applies to the CLI's code. It does not cover the Google services the CLI
+    connects to; the documentation lists separate terms of service and privacy notices that differ
+    by authentication method.
+  source_ids: [license, tos-privacy]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository containing the agent client, not model weights.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation.
+    source_ids: [install, tos-privacy, faq]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Documented installation through npx, npm, Homebrew, MacPorts, or an Anaconda environment;
+      the installation guide says it is preinstalled on Cloud Shell and Cloud Workstations.
+    source_ids: [repo, install]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The installation guide's recommended specifications list macOS 15 or later, Windows 11 24H2
+      or later, and Ubuntu 20.04 or later, with Node.js 20 or newer and a Bash, Zsh, or PowerShell
+      shell.
+    source_ids: [install]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed v0.62.0, marked Latest and published September 29, 2026. The README describes weekly
+      stable and preview releases and daily nightly releases. This entry describes the project
+      rather than one release.
+    source_ids: [release, repo]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The installation guide lists Node.js 20.0.0 or newer and an internet connection as
+      requirements. The documentation reviewed (README, installation guide, terms page, and FAQ)
+      describes only Google-hosted model access and does not document local model providers.
+    source_ids: [install, repo, tos-privacy, faq]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [agents, coding-agent, developer-tools]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: google-gemini/gemini-cli repository and README
+    url: https://github.com/google-gemini/gemini-cli
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Gemini CLI Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/google-gemini/gemini-cli/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: contributing
+    title: Gemini CLI contributing guide
+    url: https://raw.githubusercontent.com/google-gemini/gemini-cli/main/CONTRIBUTING.md
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: install
+    title: Gemini CLI installation, execution, and releases
+    url: https://www.geminicli.com/docs/get-started/installation
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: tos-privacy
+    title: Gemini CLI terms of service and privacy notice
+    url: https://www.geminicli.com/docs/resources/tos-privacy
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faq
+    title: Gemini CLI FAQ
+    url: https://www.geminicli.com/docs/resources/faq
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Gemini CLI v0.62.0 release
+    url: https://github.com/google-gemini/gemini-cli/releases/tag/v0.62.0
+    publisher: Google
+    kind: release-notes
+    published_at: 2026-09-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: google-terms
+    title: Google Terms of Service
+    url: https://policies.google.com/terms?hl=en-US
+    publisher: Google LLC
+    kind: official-page
+    published_at: 2026-07-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,272 @@
+slug: typesafe-ai
+name: TypeSafe AI
+legal_name:
+  text: TypeSafe AI, Inc.
+  source_ids: [ ts-terms ]
+  reviewed_at: 2026-10-01
+website: https://typesafe.ai
+logo_text: TS
+summary:
+  text: >-
+    TypeSafe AI is a San Francisco company that develops what it calls System
+    One models, AI models that answer typed questions about supplied input with
+    structured values and probabilities rather than generated text. Its first
+    such model, Jev, launched in early access in September 2026 through a hosted
+    API.
+  source_ids: [ ts-launch-blog, ts-docs-intro, ts-team ]
+  reviewed_at: 2026-10-01
+organization_roles: [ model-developer, developer-platform ]
+ownership_category: privately-held
+ownership_evidence:
+  text: >-
+    TypeSafe's team page says the company is backed by investors and offers
+    employees equity. The pages read do not describe any public listing.
+  source_ids: [ ts-team ]
+  reviewed_at: 2026-10-01
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [ ts-terms, ts-team ]
+other_locations: []
+founded: null
+sectors: [ research, enterprise ]
+status_note: null
+products:
+  - id: system-one-api
+    name: System One API (Jev)
+    kind: hosted-model-api
+    access: >-
+      Hosted API (POST /v1/systemone) authenticated with API keys from the
+      TypeSafe console, which also offers a browser playground. The current
+      model, Jev 1.13, accepts text input only and is priced per input token.
+      TypeSafe opened early access with a developer waitlist at launch.
+    url: https://docs.typesafe.ai/models
+    source_ids: [ ts-docs-models, ts-docs-quickstart, ts-launch-blog ]
+    last_reviewed: 2026-10-01
+  - id: typesafe-client-sdks
+    name: TypeSafe client SDKs
+    kind: developer-tool
+    access: >-
+      Python and JavaScript/TypeScript client libraries for the System One API,
+      published on GitHub under the MIT License; the Python SDK installs as the
+      typesafe-sdk package.
+    url: https://docs.typesafe.ai/sdk
+    source_ids: [ ts-docs-sdk, ts-docs-quickstart, ts-sdk-python-license, ts-sdk-js-license ]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      TypeSafe's documentation says Jev is trained with a method the company
+      calls Reinforcement Learning for Calibrated Decisions (RLCD), is not
+      fine-tuned on customer data, and serves every account from the same
+      weights.
+    source_ids: [ ts-docs-models, ts-launch-blog ]
+    reviewed_at: 2026-10-01
+  - text: >-
+      TypeSafe publishes a list of known failure modes for jev-1.13, including
+      literal reading of instructions, arithmetic and counting, date
+      comparison, and text generation. For those tasks it advises doing the work
+      in code or using a generative model instead.
+    source_ids: [ ts-docs-jaggedness ]
+    reviewed_at: 2026-10-01
+  - text: >-
+      TypeSafe publishes its WorkflowEvals harness and datasets, which compare
+      models on four automation workflows. Reference labels in these datasets
+      come from large models of other providers, not from human verification.
+    source_ids: [ ts-workflowevals-repo, ts-evals-site, ts-hf-org ]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    TypeSafe AI's terms of use (last updated September 19, 2026) state that the
+    site is offered by TypeSafe AI, Inc., located at 255 California St, Suite
+    1300, San Francisco, California, and give the same address for legal
+    notices. The team page says staff work in person at the company's San
+    Francisco office, and the privacy policy says the services are hosted in the
+    United States. The terms choose Delaware law but do not state where the
+    company is incorporated; this assessment does not rely on an SEC filing or
+    a state registry record.
+  source_ids: [ ts-terms, ts-team, ts-privacy ]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    TypeSafe offers Jev only through its hosted API. Its documentation
+    describes one set of weights serving all accounts, and its Hugging Face
+    organization lists datasets but no models. TypeSafe publishes its Python
+    and JavaScript client SDKs on GitHub under the MIT License, and its
+    WorkflowEvals harness code under Apache 2.0 (see the WorkflowEvals record).
+  source_ids: [ ts-docs-models, ts-hf-org, ts-github-org, ts-sdk-python-license, ts-sdk-js-license, ts-workflowevals-repo ]
+  reviewed_at: 2026-10-01
+hiring_url: https://jobs.ashbyhq.com/typesafe-ai
+profile:
+  intended_users:
+    text: >-
+      Developers building software that needs a model's judgment as structured
+      input to code, such as choosing an option, scoring against a rubric, or
+      answering yes/no questions inside automated workflows.
+    source_ids: [ ts-docs-intro ]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Jev is available through the hosted System One API, a console playground,
+      and the Python and JavaScript SDKs. No model weights are published. The
+      WorkflowEvals code and its Hugging Face datasets are public.
+    source_ids: [ ts-docs-quickstart, ts-docs-sdk, ts-docs-models, ts-hf-org, ts-workflowevals-repo ]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Jev returns typed answers and probabilities, not generated text. The
+      documentation lists known weaknesses with arithmetic, counting, dates, and
+      multi-step indirection, says English is the primary training language,
+      and warns that rate limits may change without notice.
+    source_ids: [ ts-docs-jaggedness, ts-docs-models ]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: TypeSafe documentation
+      url: https://docs.typesafe.ai/introduction
+      kind: documentation
+      source_ids: [ ts-docs-intro ]
+      reviewed_at: 2026-10-01
+    - label: Models, rate limits and pricing
+      url: https://docs.typesafe.ai/models
+      kind: pricing
+      source_ids: [ ts-docs-models ]
+      reviewed_at: 2026-10-01
+    - label: TypeSafe on GitHub
+      url: https://github.com/typesafe-ai
+      kind: repository
+      source_ids: [ ts-github-org ]
+      reviewed_at: 2026-10-01
+    - label: TypeSafe datasets on Hugging Face
+      url: https://huggingface.co/typesafe
+      kind: model-hub
+      source_ids: [ ts-hf-org ]
+      reviewed_at: 2026-10-01
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: ts-terms
+    title: Terms of use - TypeSafe AI
+    url: https://typesafe.ai/legal/terms
+    publisher: TypeSafe AI, Inc.
+    kind: official-page
+    published_at: 2026-09-19
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-privacy
+    title: Privacy policy - TypeSafe AI
+    url: https://typesafe.ai/legal/privacy-policy
+    publisher: TypeSafe AI, Inc.
+    kind: official-page
+    published_at: 2025-11-19
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-team
+    title: Team - TypeSafe AI
+    url: https://typesafe.ai/team
+    publisher: TypeSafe AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-launch-blog
+    title: Introducing System One Models & Jev - TypeSafe AI Blog
+    url: https://typesafe.ai/blog/introducing-system-one-models-and-jev
+    publisher: TypeSafe AI, Inc.
+    kind: announcement
+    published_at: 2026-09-15
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-docs-intro
+    title: Introduction - TypeSafe AI Documentation
+    url: https://docs.typesafe.ai/introduction
+    publisher: TypeSafe AI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-docs-quickstart
+    title: Quick start - TypeSafe AI Documentation
+    url: https://docs.typesafe.ai/introduction/quickstart
+    publisher: TypeSafe AI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-docs-models
+    title: Models - TypeSafe AI Documentation
+    url: https://docs.typesafe.ai/models
+    publisher: TypeSafe AI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-docs-jaggedness
+    title: Jev 1.13 jaggedness - TypeSafe AI Documentation
+    url: https://docs.typesafe.ai/model-jaggedness/jev-1.13
+    publisher: TypeSafe AI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-docs-sdk
+    title: Client SDKs - TypeSafe AI Documentation
+    url: https://docs.typesafe.ai/sdk
+    publisher: TypeSafe AI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-sdk-python-license
+    title: typesafe-sdk-python LICENSE (MIT)
+    url: https://raw.githubusercontent.com/typesafe-ai/typesafe-sdk-python/main/LICENSE
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-sdk-js-license
+    title: typesafe-sdk-js LICENSE (MIT)
+    url: https://raw.githubusercontent.com/typesafe-ai/typesafe-sdk-js/main/LICENSE
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-github-org
+    title: TypeSafe (typesafe-ai) on GitHub
+    url: https://github.com/typesafe-ai
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-hf-org
+    title: TypeSafe AI on Hugging Face
+    url: https://huggingface.co/typesafe
+    publisher: TypeSafe AI, Inc. (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-workflowevals-repo
+    title: typesafe-ai/WorkflowEvals (GitHub repository)
+    url: https://github.com/typesafe-ai/WorkflowEvals
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-evals-site
+    title: Workflow evals - TypeSafe AI
+    url: https://evals.typesafe.ai/
+    publisher: TypeSafe AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

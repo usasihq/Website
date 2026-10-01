@@ -149,7 +149,11 @@ scheduled Jobs publication is wired only to the current Cloudflare production de
 `/jobs/` uses existing page, card, field, external-link and URL-state patterns. Filters
 survive reload/back/forward; malformed parameters are bounded and ignored safely.
 Results page at 30 cards to bound DOM work while searching the full normalized dataset.
-Only currently open records are sent to the directory. Company routes receive counts,
+Only currently open records are sent to the directory. The page embeds the first 30 listings of the default
+view, summary counts and filter options; the browser then loads the full open list from the site's own
+`/data/jobs.json` (written by `prepare:data`, same validated fields, no bookkeeping such as closure state).
+Until it arrives, a filtered URL shows a loading state rather than a result computed from 30 rows. This kept
+the page at about 270 KB of HTML with 30 employer feeds. Company routes receive counts,
 not full feeds. Company links preserve catalog context. Home has a restrained entry point.
 No individual job pages, JobPosting structured data, or indexable facet routes are created.
 Every query view canonicals to `/jobs/`; only that path enters the sitemap. Static hosts

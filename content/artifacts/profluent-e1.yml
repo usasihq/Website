@@ -1,0 +1,115 @@
+slug: profluent-e1
+name: Profluent-E1
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Profluent
+    organization_slug: profluent
+    source_ids: [e1-readme, e1-license, e1-notice]
+organization_slugs: [profluent]
+links:
+  - label: GitHub repository (Profluent-AI/E1)
+    url: https://github.com/Profluent-AI/E1
+    kind: repository
+  - label: E1-600m weights (Hugging Face)
+    url: https://huggingface.co/Profluent-Bio/E1-600m
+    kind: model-hub
+  - label: Profluent-E1 Clickthrough License Agreement
+    url: https://github.com/Profluent-AI/E1/blob/main/LICENSE
+    kind: license
+  - label: Profluent-E1 announcement
+    url: https://www.profluent.bio/showcase/e1
+    kind: release-notes
+  - label: Profluent-E1 preprint (bioRxiv 2025.11.12.688125)
+    url: https://www.biorxiv.org/content/10.1101/2025.11.12.688125v1
+    kind: paper
+summary:
+  text: >-
+    Profluent-E1 is a family of protein encoder language models from Profluent, announced in
+    November 2025 in 150M, 300M, and 600M parameter sizes. The models can take homologous
+    sequences alongside a query sequence (retrieval augmentation) or run on a single sequence,
+    and Profluent presents them as drop-in replacements for ESM-family encoders.
+  reviewed_at: 2026-10-01
+  source_ids: [profluent-e1-showcase, e1-readme, hf-profluent-models]
+useful_for:
+  text: >-
+    Profluent describes uses in protein fitness prediction, structure prediction, and
+    representation learning; the repository includes notebooks for embeddings, zero-shot
+    fitness prediction of substitution mutants, and in-silico site-saturation mutagenesis.
+  reviewed_at: 2026-10-01
+  source_ids: [profluent-e1-showcase, e1-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Profluent-E1 is published by Profluent in its GitHub and Hugging Face organizations, and its
+    license and notice name Profluent Bio Inc. as licensor and copyright holder. Profluent's
+    website terms give an Emeryville, California notice address.
+  source_ids: [e1-readme, e1-license, e1-notice, profluent-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the E1-600m, E1-300m, and E1-150m release records.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [science, embedding, protein-language-model]
+publication_status: published
+archive_note: null
+released_at: 2025-11
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: e1-readme
+    title: Profluent-AI/E1 README
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/README.md
+    publisher: Profluent
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-license
+    title: Profluent-E1 Clickthrough License Agreement (Profluent-AI/E1 LICENSE)
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/LICENSE
+    publisher: Profluent Bio Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-notice
+    title: Profluent-E1 Notice File (Profluent-AI/E1 NOTICE)
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/NOTICE
+    publisher: Profluent Bio Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-profluent-models
+    title: Profluent-Bio models on Hugging Face (model list API)
+    url: https://huggingface.co/api/models?author=Profluent-Bio&limit=100
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: profluent-e1-showcase
+    title: Introducing Profluent-E1 (Profluent showcase)
+    url: https://www.profluent.bio/showcase/e1
+    publisher: Profluent
+    kind: announcement
+    published_at: 2025-11-13
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: profluent-terms
+    title: Profluent Terms of Service
+    url: https://www.profluent.bio/terms
+    publisher: Profluent Bio Inc.
+    kind: official-page
+    published_at: 2025-01-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

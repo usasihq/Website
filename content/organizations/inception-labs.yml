@@ -1,0 +1,121 @@
+slug: inception-labs
+name: Inception
+legal_name:
+  text: Inception AI, Inc.
+  source_ids: [inception-terms, inception-privacy]
+  reviewed_at: 2026-10-01
+website: https://www.inceptionlabs.ai
+logo_text: In
+summary:
+  text: >-
+    Inception (Inception AI, Inc., at inceptionlabs.ai) develops Mercury, a family of diffusion
+    language models that generate and refine many tokens in parallel rather than one at a time.
+    It offers the models through an OpenAI-compatible API.
+  source_ids: [inception-home, inception-docs, mercury-paper]
+  reviewed_at: 2026-10-01
+organization_roles: [model-developer]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Redwood City, California
+  country: US
+  source_ids: [inception-terms]
+other_locations: []
+founded: null
+sectors: []
+status_note: null
+products:
+  - id: inception-api
+    name: Inception API (Mercury models)
+    kind: hosted-model-api
+    access: >-
+      OpenAI-compatible API for Mercury 2.5, Mercury 2, and Mercury Edit 2, used with an API key
+      from an Inception Platform account; Mercury Voice is listed as enterprise-only.
+    url: https://docs.inceptionlabs.ai/
+    source_ids: [inception-docs, inception-models]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Inception's June 2025 technical report on arXiv describes Mercury Coder Mini and Small,
+      the first Mercury models, as diffusion-based language models for code, and says they were
+      released through a public API and a free playground.
+    source_ids: [mercury-paper]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The Inception Platform documentation lists Mercury Edit 2 for code completion and editing
+      with fill-in-the-middle support, alongside the general Mercury 2.5 and Mercury 2 models.
+    source_ids: [inception-models]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Inception's terms of use name Inception AI, Inc. as the contracting party and give its
+    address as Redwood City, California, with arbitration in San Francisco County. Its privacy
+    policy, published on the same domain, also names Inception AI, Inc. No non-U.S. parent or
+    headquarters is documented on the pages reviewed.
+  source_ids: [inception-terms, inception-privacy, inception-home]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Inception offers its Mercury models as hosted services through its API. It has published a
+    technical report on Mercury, but the report and the platform documentation describe API
+    access only, and this catalog has no record of public Mercury weights.
+  source_ids: [inception-docs, inception-models, mercury-paper]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: inception-terms
+    title: Inception Terms of Use
+    url: https://www.inceptionlabs.ai/docs/terms-of-use
+    publisher: Inception
+    kind: official-page
+    published_at: 2025-09-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: inception-privacy
+    title: Inception Privacy Policy
+    url: https://www.inceptionlabs.ai/docs/privacy-policy
+    publisher: Inception
+    kind: official-page
+    published_at: 2025-04-04
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: inception-home
+    title: Inception home page
+    url: https://www.inceptionlabs.ai/
+    publisher: Inception
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: inception-docs
+    title: Inception Platform documentation
+    url: https://docs.inceptionlabs.ai/
+    publisher: Inception
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: inception-models
+    title: Inception Platform — Models
+    url: https://docs.inceptionlabs.ai/get-started/models
+    publisher: Inception
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mercury-paper
+    title: "Mercury: Ultra-Fast Language Models Based on Diffusion (arXiv 2506.17298)"
+    url: https://arxiv.org/abs/2506.17298
+    publisher: arXiv (Inception Labs authors)
+    kind: paper
+    published_at: 2025-06-17
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -98,7 +98,7 @@ openness_summary:
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: hf-tos
@@ -192,3 +192,84 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-hf-pricing
+    title: Hugging Face pricing
+    url: https://huggingface.co/pricing
+    publisher: Hugging Face
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hub-docs
+    title: Hugging Face Hub documentation
+    url: https://huggingface.co/docs/hub/index
+    publisher: Hugging Face
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hub-licenses
+    title: Licenses (Hugging Face Hub documentation)
+    url: https://huggingface.co/docs/hub/repositories-licenses
+    publisher: Hugging Face
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-ip-pricing
+    title: Inference Providers pricing and billing
+    url: https://huggingface.co/docs/inference-providers/pricing
+    publisher: Hugging Face
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-transformers
+    title: huggingface/transformers (GitHub repository)
+    url: https://github.com/huggingface/transformers
+    publisher: Hugging Face (GitHub)
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Hugging Face offers a free Hub account for individuals, a PRO plan for
+      individual users, and Team and Enterprise plans for organizations, along
+      with paid compute such as Spaces hardware and Inference Endpoints.
+    source_ids: [review-hf-pricing]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      The Hub hosts Git-based model, dataset, and Spaces repositories that users
+      can download from or upload to. Inference Providers routes hosted
+      inference requests to partner providers at the providers' rates, with
+      monthly credits that vary by plan. Hugging Face also maintains the
+      Apache 2.0-licensed Transformers library.
+    source_ids: [review-hub-docs, review-ip-pricing, review-transformers]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Repository owners set licenses in each card's metadata, and the Hub
+      documentation asks users to seek out and respect each project's license;
+      a repository hosted on the Hub is not thereby a Hugging Face release. This
+      profile is not a complete product or rights audit.
+    source_ids: [review-hub-licenses, review-hub-docs]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Hub documentation
+      url: https://huggingface.co/docs/hub/index
+      kind: documentation
+      source_ids: [review-hub-docs]
+      reviewed_at: 2026-10-01
+    - label: Plans and compute pricing
+      url: https://huggingface.co/pricing
+      kind: pricing
+      source_ids: [review-hf-pricing]
+      reviewed_at: 2026-10-01
+    - label: Inference Providers pricing and billing
+      url: https://huggingface.co/docs/inference-providers/pricing
+      kind: pricing
+      source_ids: [review-ip-pricing]
+      reviewed_at: 2026-10-01
+    - label: Transformers repository
+      url: https://github.com/huggingface/transformers
+      kind: repository
+      source_ids: [review-transformers]
+      reviewed_at: 2026-10-01

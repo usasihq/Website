@@ -1,0 +1,304 @@
+slug: red-hat
+name: Red Hat
+legal_name:
+  text: Red Hat, Inc.
+  source_ids: [ ibm-10k-2025-ex21 ]
+  reviewed_at: 2026-10-01
+website: https://www.redhat.com
+logo_text: RH
+summary:
+  text: >-
+    Red Hat is an enterprise open-source software company, owned by IBM since 2019, whose
+    products include Red Hat Enterprise Linux and Red Hat OpenShift. Its Red Hat AI portfolio
+    covers inference software built on vLLM and llm-d, OpenShift AI, and Red Hat Enterprise
+    Linux AI. In 2025 it launched llm-d, an open-source distributed inference project.
+  source_ids: [ rh-company, ibm-rh-close-2019, rh-ai, rh-llmd-launch ]
+  reviewed_at: 2026-10-01
+organization_roles: [ enterprise-software, open-source-steward ]
+ownership_category: unit-of-another-organization
+ownership_evidence:
+  text: >-
+    Exhibit 21 to IBM's Form 10-K for fiscal 2025 lists Red Hat, Inc. (USA, Delaware) with a
+    voting percentage of 100 owned directly or indirectly by IBM.
+  source_ids: [ ibm-10k-2025-ex21 ]
+  reviewed_at: 2026-10-01
+parent_evidence:
+  text: >-
+    IBM completed its acquisition of Red Hat on July 9, 2019. The closing announcement says Red
+    Hat operates as a distinct unit within IBM and that IBM would keep Red Hat's headquarters in
+    Raleigh, North Carolina. IBM's fiscal 2025 subsidiary list still includes Red Hat, Inc. as a
+    wholly owned subsidiary.
+  source_ids: [ ibm-rh-close-2019, rh-ibm-close-pr, ibm-10k-2025-ex21 ]
+  reviewed_at: 2026-10-01
+legal_form:
+  text: Incorporated in Delaware (Red Hat, Inc.), per IBM's fiscal 2025 subsidiary list.
+  source_ids: [ ibm-10k-2025-ex21 ]
+  reviewed_at: 2026-10-01
+parent_org_slug: ibm
+parent_relationship: subsidiary
+headquarters:
+  label: Raleigh, North Carolina
+  country: US
+  source_ids: [ rh-offices, rh-company ]
+other_locations: []
+founded:
+  year: 1993
+  source_ids: [ rh-company ]
+sectors: [ enterprise, cloud ]
+status_note: null
+products:
+  - id: red-hat-ai-inference
+    name: Red Hat AI Inference
+    kind: enterprise-software
+    access: >-
+      Inference software built on vLLM and llm-d, sold on its own or as part of Red Hat AI and
+      supported on Red Hat OpenShift and Red Hat Enterprise Linux. Other Linux and Kubernetes
+      platforms fall under Red Hat's third-party support policy, and llm-d on third-party
+      Kubernetes is offered as early access.
+    url: https://www.redhat.com/en/products/ai/inference
+    source_ids: [ rh-ai-inference ]
+    last_reviewed: 2026-10-01
+  - id: openshift-ai
+    name: Red Hat OpenShift AI
+    kind: enterprise-software
+    access: >-
+      Platform on Red Hat OpenShift for deploying open-weight models and agents across hybrid
+      environments. A developer sandbox and a 60-day product trial are offered; the trial
+      requires an existing OpenShift cluster.
+    url: https://www.redhat.com/en/products/ai/openshift-ai
+    source_ids: [ rh-openshift-ai ]
+    last_reviewed: 2026-10-01
+  - id: rhel-ai
+    name: Red Hat Enterprise Linux AI
+    kind: enterprise-software
+    access: >-
+      Platform for running large language models on individual servers, delivered as a bootable
+      Red Hat Enterprise Linux image that packages IBM Granite models and includes Red Hat AI
+      Inference.
+    url: https://www.redhat.com/en/products/ai/enterprise-linux-ai
+    source_ids: [ rh-rhel-ai ]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Red Hat announced llm-d on May 20, 2025, naming CoreWeave, Google Cloud, IBM Research, and
+      NVIDIA as founding contributors. In March 2026 the Cloud Native Computing Foundation
+      accepted llm-d as a Sandbox project.
+    source_ids: [ rh-llmd-launch, cncf-llmd-blog ]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Red Hat and IBM launched the InstructLab project in 2024. A community announcement dated
+      September 2, 2025 split its components into separate repositories, including sdg_hub and
+      training_hub in the Red Hat AI Innovation Team's GitHub organization. The main InstructLab repository
+      was archived in April 2026.
+    source_ids: [ rh-rhel-ai-pr-2024, instructlab-readme, instructlab-repo, rh-ai-innovation-gh ]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Red Hat's office-locations page lists its corporate headquarters at 100 East Davie Street,
+    Raleigh, North Carolina. Red Hat is also a wholly owned subsidiary of IBM: Exhibit 21 to
+    IBM's fiscal 2025 Form 10-K lists Red Hat, Inc. (USA, Delaware) at 100 percent, and IBM's
+    10-K cover page gives its principal executive offices in Armonk, New York. Both the
+    subsidiary's own headquarters and its parent are in the United States.
+  source_ids: [ rh-offices, ibm-10k-2025-ex21, ibm-10k-2025-cover ]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Red Hat launched and contributes to the open-source llm-d project (Apache 2.0) and publishes
+    model repositories under a verified RedHatAI organization on Hugging Face. Its Red Hat AI
+    products are commercial software offerings. This record makes no openness claim about Red
+    Hat as a whole.
+  source_ids: [ rh-llmd-launch, llmd-license, rh-hf-org, rh-ai ]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Red Hat presents Red Hat AI to organizations building and deploying AI applications and
+      agents across hybrid cloud environments. OpenShift AI also offers a developer sandbox for
+      individual developers and data scientists.
+    source_ids: [ rh-ai, rh-openshift-ai ]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Red Hat AI Inference, OpenShift AI, and Red Hat Enterprise Linux AI are sold as Red Hat
+      products, with trials offered for some of them. The llm-d project that Red Hat AI Inference
+      builds on is published separately under the Apache License 2.0.
+    source_ids: [ rh-ai-inference, rh-openshift-ai, llmd-license ]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      This profile is not a pricing, support, or license audit. Red Hat product subscriptions
+      have their own terms, and the models served through them carry their own licenses. Check
+      each model's card and terms before reuse.
+    source_ids: [ rh-ai-inference, rh-ai ]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: RedHatAI on Hugging Face
+      url: https://huggingface.co/RedHatAI
+      kind: model-hub
+      source_ids: [ rh-hf-org ]
+      reviewed_at: 2026-10-01
+    - label: llm-d repository
+      url: https://github.com/llm-d/llm-d
+      kind: repository
+      source_ids: [ llmd-readme ]
+      reviewed_at: 2026-10-01
+sources:
+  - id: rh-company
+    title: Red Hat company information
+    url: https://www.redhat.com/en/about/company
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-offices
+    title: Red Hat office locations
+    url: https://www.redhat.com/en/about/office-locations
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ibm-10k-2025-ex21
+    title: IBM Form 10-K for fiscal 2025, Exhibit 21 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231x10kex21.htm
+    publisher: U.S. Securities and Exchange Commission (filed by IBM)
+    kind: filing
+    published_at: 2026-02-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ibm-10k-2025-cover
+    title: IBM Form 10-K for fiscal 2025, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/R1.htm
+    publisher: U.S. Securities and Exchange Commission (filed by IBM)
+    kind: filing
+    published_at: 2026-02-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ibm-rh-close-2019
+    title: IBM Completes Acquisition of Red Hat
+    url: https://www.ibm.com/investor/news/ibm-completes-acquisition-of-red-hat
+    publisher: IBM
+    kind: announcement
+    published_at: 2019-07-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-ibm-close-pr
+    title: IBM Closes Landmark Acquisition of Red Hat for $34 Billion; Defines Open, Hybrid Cloud Future
+    url: https://www.redhat.com/en/about/press-releases/ibm-closes-landmark-acquisition-red-hat-34-billion-defines-open-hybrid-cloud-future
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2019-07-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-ai
+    title: Red Hat AI
+    url: https://www.redhat.com/en/products/ai
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-ai-inference
+    title: Red Hat AI Inference
+    url: https://www.redhat.com/en/products/ai/inference
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-openshift-ai
+    title: Red Hat OpenShift AI
+    url: https://www.redhat.com/en/products/ai/openshift-ai
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-rhel-ai
+    title: Red Hat Enterprise Linux AI
+    url: https://www.redhat.com/en/products/ai/enterprise-linux-ai
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-llmd-launch
+    title: Red Hat Launches the llm-d Community, Powering Distributed Gen AI Inference at Scale
+    url: https://www.redhat.com/en/about/press-releases/red-hat-launches-llm-d-community-powering-distributed-gen-ai-inference-scale
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2025-05-20
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cncf-llmd-blog
+    title: Welcome llm-d to the CNCF
+    url: https://www.cncf.io/blog/2026/03/24/welcome-llm-d-to-the-cncf-evolving-kubernetes-into-sota-ai-infrastructure/
+    publisher: Cloud Native Computing Foundation
+    kind: announcement
+    published_at: 2026-03-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-readme
+    title: llm-d/llm-d README
+    url: https://github.com/llm-d/llm-d
+    publisher: llm-d project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-license
+    title: llm-d/llm-d LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/llm-d/llm-d/main/LICENSE
+    publisher: llm-d project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-hf-org
+    title: RedHatAI (Red Hat AI) on Hugging Face
+    url: https://huggingface.co/RedHatAI
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-rhel-ai-pr-2024
+    title: Red Hat Delivers Accessible, Open Source Generative AI Innovation with Red Hat Enterprise Linux AI
+    url: https://www.redhat.com/en/about/press-releases/red-hat-delivers-accessible-open-source-generative-ai-innovation-red-hat-enterprise-linux-ai
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2024-05-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: instructlab-readme
+    title: instructlab/instructlab README
+    url: https://raw.githubusercontent.com/instructlab/instructlab/main/README.md
+    publisher: InstructLab project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: instructlab-repo
+    title: instructlab/instructlab (GitHub repository, archived)
+    url: https://github.com/instructlab/instructlab
+    publisher: InstructLab project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-ai-innovation-gh
+    title: Red Hat AI Innovation Team (GitHub organization)
+    url: https://github.com/Red-Hat-AI-Innovation-Team
+    publisher: Red Hat AI Innovation Team
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

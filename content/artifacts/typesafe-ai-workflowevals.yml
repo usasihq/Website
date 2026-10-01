@@ -1,0 +1,241 @@
+slug: typesafe-ai-workflowevals
+name: WorkflowEvals (TypeSafe AI)
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: TypeSafe AI
+    organization_slug: typesafe-ai
+    source_ids: [ wfe-repo, ts-github-org, hf-collection ]
+organization_slugs: [ typesafe-ai ]
+links:
+  - label: GitHub repository (typesafe-ai/WorkflowEvals)
+    url: https://github.com/typesafe-ai/WorkflowEvals
+    kind: repository
+  - label: Workflow evals site
+    url: https://evals.typesafe.ai/
+    kind: website
+  - label: WorkflowEvals datasets on Hugging Face
+    url: https://huggingface.co/collections/typesafe/workflowevals
+    kind: dataset-hub
+  - label: License (Apache 2.0)
+    url: https://github.com/typesafe-ai/WorkflowEvals/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    WorkflowEvals is TypeSafe AI's evaluation harness for four automation
+    workflows: invoice processing, customer service, agent-trace review, and
+    security-incident triage. Each workflow splits a written policy into narrow
+    yes/no, choice, and score questions for a model, then combines the answers
+    in code into actions. Runs can compare TypeSafe's Jev with models from other
+    providers.
+  source_ids: [ wfe-readme, ts-evals-site ]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Comparing models on structured decision tasks inside fixed workflows, by
+    agreement with reference decisions, cost per case, and time per case, and
+    comparing a workflow approach with sending the same policy as a single
+    prompt.
+  source_ids: [ wfe-readme, ts-evals-site ]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    WorkflowEvals is published in the typesafe-ai GitHub organization, which
+    TypeSafe's documentation and launch post link to, and TypeSafe AI's Hugging
+    Face collection links the repository and the evals site. TypeSafe AI,
+    Inc.'s terms of use give its address in San Francisco, California (see the
+    typesafe-ai organization record).
+  source_ids: [ wfe-repo, ts-github-org, ts-launch-blog, hf-collection, ts-terms ]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Code is on GitHub under Apache 2.0, and the four workflow datasets download
+    from Hugging Face without login. Running models requires an API key for
+    each provider evaluated, including a TypeSafe API key for the default Jev
+    model.
+  source_ids: [ wfe-repo, wfe-readme, wfe-license, hf-collection ]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/typesafe-ai/WorkflowEvals/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ wfe-license, wfe-pyproject ]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The README says the datasets are licensed separately in their Hugging Face
+    repositories. On 2026-10-01 the invoice-processing dataset carried an
+    Apache 2.0 license, while the customer-service, security-incidents, and
+    agent-trace-observability dataset repositories stated no license. The
+    Apache 2.0 file in the code repository does not name a copyright holder.
+  source_ids: [ wfe-readme, wfe-license, hf-invoice, hf-customer-service, hf-security-incidents, hf-agent-trace ]
+  reviewed_at: 2026-10-01
+checklist:
+  code:
+    status: public
+    note: >-
+      Harness code for data loading, model clients, execution, scoring, and
+      plotting is on GitHub under Apache 2.0.
+    source_ids: [ wfe-repo, wfe-readme, wfe-license ]
+    reviewed_at: 2026-10-01
+  tasks_data:
+    status: public
+    note: >-
+      Four Hugging Face datasets (150 invoice-processing, 204 customer-service,
+      111 agent-trace, and 240 security-incident cases) hold inputs, reference
+      labels, and published run results. Only the invoice-processing dataset
+      states a license.
+    source_ids: [ wfe-readme, hf-collection, hf-invoice, hf-customer-service, hf-security-incidents, hf-agent-trace ]
+    reviewed_at: 2026-10-01
+  methodology:
+    status: public
+    note: >-
+      The evals site and dataset cards describe splitting each policy into
+      Noul, Choice, and Score questions. Consensus reference labels average
+      two providers' large models, and scoring uses exact_actions and
+      primary_action agreement.
+    source_ids: [ ts-evals-site, wfe-readme, hf-invoice ]
+    reviewed_at: 2026-10-01
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README documents uv setup, run commands, resuming, pinning a
+      dataset revision, and plotting. Dependency versions are pinned in
+      pyproject.toml. Runs call hosted model APIs and need provider API keys.
+    source_ids: [ wfe-readme, wfe-pyproject ]
+    reviewed_at: 2026-10-01
+  limitations:
+    status: partial
+    note: >-
+      Dataset cards state that reference labels are model-generated. The evals
+      site says the harness is assumed correct and models are measured against
+      large reference models, so scores measure agreement with those
+      references. The default model is the maintainer's own Jev. No broader
+      discussion of validity was found in the pages read.
+    source_ids: [ hf-invoice, ts-evals-site, wfe-readme ]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README requires Python 3.13 or later and uv. Supported providers are
+      openai, anthropic, fireworks, groq, cerebras, and typesafe, and each needs
+      its own API key environment variable.
+    source_ids: [ wfe-readme ]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [ evaluation, benchmark ]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: wfe-repo
+    title: typesafe-ai/WorkflowEvals (GitHub repository)
+    url: https://github.com/typesafe-ai/WorkflowEvals
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wfe-readme
+    title: WorkflowEvals README.md
+    url: https://raw.githubusercontent.com/typesafe-ai/WorkflowEvals/main/README.md
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wfe-license
+    title: WorkflowEvals LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/typesafe-ai/WorkflowEvals/main/LICENSE
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wfe-pyproject
+    title: WorkflowEvals pyproject.toml
+    url: https://raw.githubusercontent.com/typesafe-ai/WorkflowEvals/main/pyproject.toml
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-evals-site
+    title: Workflow evals - TypeSafe AI
+    url: https://evals.typesafe.ai/
+    publisher: TypeSafe AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-collection
+    title: WorkflowEvals collection (TypeSafe AI on Hugging Face)
+    url: https://huggingface.co/collections/typesafe/workflowevals
+    publisher: TypeSafe AI, Inc. (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-invoice
+    title: typesafe/evalsafe-invoice-processing dataset card
+    url: https://huggingface.co/datasets/typesafe/evalsafe-invoice-processing
+    publisher: TypeSafe AI, Inc. (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-customer-service
+    title: typesafe/evalsafe-customer-service dataset card
+    url: https://huggingface.co/datasets/typesafe/evalsafe-customer-service
+    publisher: TypeSafe AI, Inc. (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-security-incidents
+    title: typesafe/evalsafe-security-incidents dataset card
+    url: https://huggingface.co/datasets/typesafe/evalsafe-security-incidents
+    publisher: TypeSafe AI, Inc. (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-agent-trace
+    title: typesafe/evalsafe-agent-trace-observability dataset card
+    url: https://huggingface.co/datasets/typesafe/evalsafe-agent-trace-observability
+    publisher: TypeSafe AI, Inc. (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-github-org
+    title: TypeSafe (typesafe-ai) on GitHub
+    url: https://github.com/typesafe-ai
+    publisher: TypeSafe AI, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-launch-blog
+    title: Introducing System One Models & Jev - TypeSafe AI Blog
+    url: https://typesafe.ai/blog/introducing-system-one-models-and-jev
+    publisher: TypeSafe AI, Inc.
+    kind: announcement
+    published_at: 2026-09-15
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ts-terms
+    title: Terms of use - TypeSafe AI
+    url: https://typesafe.ai/legal/terms
+    publisher: TypeSafe AI, Inc.
+    kind: official-page
+    published_at: 2026-09-19
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,156 @@
+slug: crusoe
+name: Crusoe
+legal_name: null
+website: https://www.crusoe.ai
+logo_text: CR
+summary:
+  text: >-
+    Crusoe builds and operates data centers for AI workloads and runs Crusoe Cloud, a GPU cloud
+    platform with managed Kubernetes, Slurm, storage, and networking. It also offers managed
+    inference and fine-tuning services for open models through Crusoe Intelligence Foundry.
+  source_ids: [crusoe-about, crusoe-cloud, crusoe-managed-inference, crusoe-data-centers]
+  reviewed_at: 2026-10-01
+organization_roles: [cloud-provider, compute-infrastructure, inference-provider]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Denver, Colorado
+  country: US
+  source_ids: [crusoe-legal]
+other_locations:
+  - label: San Francisco, California
+    country: US
+    source_ids: [crusoe-careers-culture]
+  - label: Dublin, Ireland (European headquarters)
+    country: IE
+    source_ids: [crusoe-dublin]
+founded:
+  year: 2018
+  source_ids: [crusoe-about]
+sectors: [cloud]
+status_note: null
+products:
+  - id: crusoe-cloud
+    name: Crusoe Cloud
+    kind: cloud-platform
+    access: >-
+      Cloud platform offering NVIDIA and AMD GPUs with on-demand, spot, and reserved capacity,
+      Crusoe Managed Kubernetes, managed Slurm, S3-compatible storage, and InfiniBand and
+      Ethernet networking; resources are managed through a console, CLI, APIs, Terraform, or SDKs.
+    url: https://www.crusoe.ai/cloud
+    source_ids: [crusoe-cloud]
+    last_reviewed: 2026-10-01
+  - id: crusoe-managed-inference
+    name: Crusoe Managed Inference (Crusoe Intelligence Foundry)
+    kind: inference-service
+    access: >-
+      Hosted inference for open models from several developers: a usage-billed serverless API,
+      self-serve deployments on dedicated GPUs billed by the hour with an OpenAI-compatible API,
+      and tailored deployments arranged with Crusoe; self-serve deployments can also serve models
+      customized with Crusoe's Serverless Fine-Tuning.
+    url: https://www.crusoe.ai/cloud/managed-inference
+    source_ids: [crusoe-managed-inference, crusoe-sft-release]
+    last_reviewed: 2026-10-01
+  - id: crusoe-ai-data-centers
+    name: Crusoe AI data centers
+    kind: other
+    access: >-
+      Crusoe designs, builds, and operates data centers for AI workloads, including direct
+      liquid-to-chip cooling, and makes some components in-house; partners engage through a
+      contact request.
+    url: https://www.crusoe.ai/data-centers
+    source_ids: [crusoe-data-centers]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Crusoe's company timeline says that in 2025 it divested its bitcoin mining business to NYDIG
+      to focus on AI infrastructure, and acquired the GPU memory optimization startup Atero,
+      opening an office in Tel Aviv.
+    source_ids: [crusoe-about]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Crusoe's current recruiting privacy notice (version 1.4, effective March 12, 2026) describes
+    the company as headquartered in Denver, Colorado, and gives a Denver postal address for
+    Crusoe Technologies LLC. Its website privacy notice names Crusoe Energy Systems LLC, a Delaware
+    limited liability company at the same Denver address. Crusoe also lists a San Francisco office,
+    and recent press releases carry a San Francisco dateline; both cities are in the United States.
+    The same notice says the Denver-headquartered company has offices, affiliates, and subsidiaries
+    elsewhere; these include a European headquarters in Dublin and an office in Tel Aviv.
+  source_ids: [crusoe-legal, crusoe-careers-culture, crusoe-sft-release, crusoe-dublin, crusoe-about]
+  assessed_at: 2026-10-01
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: crusoe-legal
+    title: Crusoe Legal Center (Recruiting Privacy Notice v1.4; Website Privacy Notice v2.3)
+    url: https://legal.crusoe.ai/
+    publisher: Crusoe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: crusoe-about
+    title: About Crusoe | AI-Optimized cloud infrastructure
+    url: https://www.crusoe.ai/about/company
+    publisher: Crusoe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: crusoe-careers-culture
+    title: "Life at Crusoe: mission-driven & energy-first"
+    url: https://www.crusoe.ai/about/careers/culture
+    publisher: Crusoe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: crusoe-dublin
+    title: Crusoe opens European headquarters in Dublin
+    url: https://www.crusoe.ai/resources/newsroom/crusoe-opens-european-headquarters-in-dublin
+    publisher: Crusoe
+    kind: announcement
+    published_at: 2025-02-12
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: crusoe-cloud
+    title: Crusoe Cloud | AI Platform & Services
+    url: https://www.crusoe.ai/cloud
+    publisher: Crusoe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: crusoe-managed-inference
+    title: Managed inference for open models, low latency | Crusoe
+    url: https://www.crusoe.ai/cloud/managed-inference
+    publisher: Crusoe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: crusoe-sft-release
+    title: Crusoe launches Serverless Fine-Tuning and Self-Serve Inference Deployments
+    url: https://www.crusoe.ai/resources/newsroom/crusoe-launches-serverless-fine-tuning-and-self-serve-inference-deployments
+    publisher: Crusoe
+    kind: announcement
+    published_at: 2026-07-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: crusoe-data-centers
+    title: Crusoe AI Data Centers | Energy-First Acceleration
+    url: https://www.crusoe.ai/data-centers
+    publisher: Crusoe
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

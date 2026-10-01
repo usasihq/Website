@@ -84,9 +84,18 @@ openness_summary:
     obtained, and the Palmyra-mini models (September 2025) under Apache 2.0.
   source_ids: [writer-dev-models, writer-models, writer-hf, palmyra-x43-card, palmyra-med-32k-card, writer-oml, palmyra-mini-card]
 hiring_url: null
+careers:
+  url: https://writer.com/company/careers/
+  enabled: true
+  source:
+    type: ashby
+    identifier: writer
+  posting_hosts: []
+  source_ids: [writer-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: writer-company
@@ -166,3 +175,11 @@ sources:
     kind: model-card
     published_at: null
     accessed_at: 2026-09-29
+  - id: writer-careers-jobs
+    title: Official careers page and open positions link
+    url: https://writer.com/company/careers/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

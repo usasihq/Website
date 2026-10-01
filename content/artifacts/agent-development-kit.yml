@@ -1,0 +1,242 @@
+slug: agent-development-kit
+name: Agent Development Kit (ADK)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Google
+    organization_slug: google
+    source_ids: [repo, docs-home, contributing]
+organization_slugs: [google]
+links:
+  - label: Documentation
+    url: https://adk.dev/
+    kind: documentation
+  - label: Repository (Python)
+    url: https://github.com/google/adk-python
+    kind: repository
+  - label: LICENSE (Python)
+    url: https://github.com/google/adk-python/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release (Python)
+    url: https://github.com/google/adk-python/releases/tag/v2.10.0
+    kind: release-notes
+summary:
+  text: >-
+    Agent Development Kit (ADK) is an open-source framework from Google for building, evaluating,
+    and deploying AI agents, from single agents to multi-agent systems and graph-based workflows.
+    Google publishes implementations for Python, Java, Go, TypeScript, and Kotlin. The README says
+    ADK is optimized for Gemini but model-agnostic.
+  source_ids: [repo, docs-home]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Defining agents, tools, and workflows in code, testing them with a command-line runner and a
+    development web UI, and deploying them in containers or on Google Cloud. ADK is a framework
+    that calls models chosen by the developer: Gemini through Google's hosted services, which are
+    not open, other hosted providers, or self-hosted models through documented connectors. It does
+    not include model weights.
+  source_ids: [repo, docs-models]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    ADK's repositories are in Google's GitHub organization, its contributing guide requires
+    Google's Contributor License Agreement, and the ADK documentation site carries a Google
+    copyright notice. Google's terms of service identify Google LLC, organized under the laws of
+    Delaware, at 1600 Amphitheatre Parkway, Mountain View, California. See the google organization
+    record.
+  source_ids: [repo, contributing, docs-home, google-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code and documentation are public. Model access is configured separately; using Gemini
+    requires Google's hosted API services, whose models are not open.
+  source_ids: [repo, docs-models]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0 (adk-python)
+    spdx: Apache-2.0
+    url: https://github.com/google/adk-python/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 entry is for the Python repository. The Java, Go, TypeScript, and Kotlin
+    repositories each also carry an Apache 2.0 LICENSE file. These licenses cover ADK's code, not
+    the models or cloud services an agent uses.
+  source_ids: [license, license-java, license-go, license-js, license-kotlin]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repositories for each language implementation; framework code only.
+    source_ids: [repo, docs-home]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation at adk.dev.
+    source_ids: [docs-home, docs-models]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The installation guide covers pip (google-adk) for Python, npm for TypeScript, go get for Go,
+      and Maven or Gradle for Java and Kotlin.
+    source_ids: [docs-install, repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The Python package requires Python 3.10 or newer. The installation guide states that ADK Go
+      v2.0.0 requires Go 1.25 or later; the Java example targets Java 17.
+    source_ids: [repo, docs-install]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed adk-python v2.10.0, marked Latest and published September 25, 2026; the README
+      describes a roughly bi-weekly release cadence. Other language implementations are versioned
+      separately. This entry describes the project rather than one release.
+    source_ids: [release, repo]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The model documentation describes connecting self-hosted models through Ollama and vLLM via
+      the LiteLLM connector (ADK Python), and running models locally with LiteRT-LM (ADK Python and
+      Kotlin). The Ollama guide says to use the ollama_chat provider prefix and to choose a model
+      with tool support when agents use tools.
+    source_ids: [docs-models, docs-ollama, docs-vllm, docs-litert]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [agents, multi-agent]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: google/adk-python repository and README
+    url: https://github.com/google/adk-python
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: ADK Python Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/google/adk-python/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-java
+    title: ADK Java Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/google/adk-java/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-go
+    title: ADK Go Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/google/adk-go/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-js
+    title: ADK TypeScript Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/google/adk-js/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-kotlin
+    title: ADK Kotlin Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/google/adk-kotlin/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: contributing
+    title: ADK Python contributing guide
+    url: https://raw.githubusercontent.com/google/adk-python/main/CONTRIBUTING.md
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-home
+    title: Agent Development Kit documentation
+    url: https://adk.dev/
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-install
+    title: ADK installation
+    url: https://adk.dev/get-started/installation/
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-models
+    title: ADK models overview
+    url: https://adk.dev/agents/models/
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-ollama
+    title: ADK — Ollama model hosting
+    url: https://adk.dev/agents/models/ollama/
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-vllm
+    title: ADK — vLLM model hosting
+    url: https://adk.dev/agents/models/vllm/
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-litert
+    title: ADK — LiteRT-LM model hosting
+    url: https://adk.dev/agents/models/litert-lm/
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: adk-python v2.10.0 release
+    url: https://github.com/google/adk-python/releases/tag/v2.10.0
+    publisher: Google
+    kind: release-notes
+    published_at: 2026-09-25
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: google-terms
+    title: Google Terms of Service
+    url: https://policies.google.com/terms?hl=en-US
+    publisher: Google LLC
+    kind: official-page
+    published_at: 2026-07-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

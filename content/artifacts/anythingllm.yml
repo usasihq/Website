@@ -1,0 +1,196 @@
+slug: anythingllm
+name: AnythingLLM
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Mintplex Labs
+    organization_slug: mintplex-labs
+    source_ids: [license, readme]
+organization_slugs: [mintplex-labs]
+links:
+  - label: Website
+    url: https://anythingllm.com
+    kind: website
+  - label: Repository
+    url: https://github.com/Mintplex-Labs/anything-llm
+    kind: repository
+  - label: Documentation
+    url: https://docs.anythingllm.com/introduction
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/Mintplex-Labs/anything-llm/blob/master/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/Mintplex-Labs/anything-llm/releases/tag/v1.16.2
+    kind: release-notes
+summary:
+  text: >-
+    AnythingLLM is an application for chatting with documents and building AI agents on top of
+    local or hosted language models. It is available as a desktop app for macOS, Windows, and
+    Linux and as a multi-user Docker version, with connectors to many model providers and
+    vector databases.
+  source_ids: [readme, docs-intro, download]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Private chat over local documents and no-code agent workflows, using models run on the same
+    machine or served by local tools such as Ollama and LM Studio.
+  source_ids: [readme, docs-intro]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    AnythingLLM is published in Mintplex Labs' GitHub organization, and its LICENSE names
+    Mintplex Labs Inc. as copyright holder. Mintplex Labs' terms of use identify Mintplex Labs,
+    Inc. with a notice address in Anaheim, California, and say the company is located in
+    California, United States (see the Mintplex Labs record).
+  source_ids: [license, readme, desktop-terms, cloud-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public. The desktop app is a free download governed by separate desktop terms
+    of use; AnythingLLM Cloud is a paid hosted service.
+  source_ids: [readme, download, desktop-terms, cloud-docs]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/Mintplex-Labs/anything-llm/blob/master/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT License covers the repository's code. The desktop terms of use state that they apply
+    to AnythingLLM Desktop only and that other products and services are covered by their
+    respective terms (MIT).
+  source_ids: [license, desktop-terms]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public monorepo with frontend, server, document collector, and Docker build files.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Official documentation covers the desktop and Docker versions, agents, and AnythingLLM Cloud.
+    source_ids: [docs-intro, cloud-docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      One-click desktop installers; Docker instructions and cloud deployment templates; and a
+      guide for production setups without Docker.
+    source_ids: [download, readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Desktop downloads for macOS (Apple Silicon and Intel), Windows (x64 and ARM), and Linux.
+      The system-requirements page says M-series Macs handle local models and Intel Macs are
+      slower, and recommends a GPU on Windows.
+    source_ids: [download, sysreq]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release AnythingLLM v1.16.2, published September 22, 2026. This entry describes
+      the project rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      AnythingLLM collects anonymous usage telemetry; the README says it can be turned off by
+      setting DISABLE_TELEMETRY to true or in the app's privacy settings.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The README lists a native embedder and built-in audio transcription as defaults, and
+      supports any llama.cpp-compatible open model for local text generation.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [local-inference, agents, retrieval]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: Mintplex-Labs/anything-llm README
+    url: https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/README.md
+    publisher: Mintplex Labs
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Mintplex-Labs/anything-llm LICENSE (MIT)
+    url: https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/LICENSE
+    publisher: Mintplex Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-intro
+    title: AnythingLLM documentation introduction
+    url: https://docs.anythingllm.com/introduction
+    publisher: Mintplex Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: sysreq
+    title: AnythingLLM Desktop system requirements
+    url: https://docs.anythingllm.com/installation-desktop/system-requirements
+    publisher: Mintplex Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: download
+    title: Download AnythingLLM
+    url: https://anythingllm.com/download
+    publisher: Mintplex Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: desktop-terms
+    title: AnythingLLM Desktop App Terms of Use
+    url: https://docs.anythingllm.com/installation-desktop/terms
+    publisher: Mintplex Labs
+    kind: official-page
+    published_at: 2025-07-14
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cloud-terms
+    title: AnythingLLM Cloud Terms & Conditions
+    url: https://docs.anythingllm.com/cloud/terms-and-conditions
+    publisher: Mintplex Labs
+    kind: official-page
+    published_at: 2024-07-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cloud-docs
+    title: AnythingLLM Cloud overview
+    url: https://docs.anythingllm.com/cloud/overview
+    publisher: Mintplex Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Release AnythingLLM v1.16.2
+    url: https://github.com/Mintplex-Labs/anything-llm/releases/tag/v1.16.2
+    publisher: Mintplex Labs
+    kind: release-notes
+    published_at: 2026-09-22
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

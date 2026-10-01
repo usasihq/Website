@@ -66,9 +66,18 @@ openness_summary:
     weights from Runway.
   source_ids: [runway-product, runway-api-docs, runway-gen45]
 hiring_url: https://runway.com/careers
+careers:
+  url: https://runway.com/careers
+  enabled: true
+  source:
+    type: ashby
+    identifier: runway-ml
+  posting_hosts: []
+  source_ids: [runway-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: runway-form-d-2022
@@ -134,3 +143,11 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+  - id: runway-careers-jobs
+    title: Official careers directory and application links
+    url: https://runway.com/careers
+    publisher: Runway AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

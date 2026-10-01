@@ -91,7 +91,7 @@ careers:
   reviewed_at: 2026-09-30
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: anthropic-company
@@ -171,3 +171,91 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-30
+  - id: review-claude-pricing
+    title: Plans & Pricing | Claude by Anthropic
+    url: https://claude.com/pricing
+    publisher: Anthropic
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-platform-docs
+    title: Claude Platform documentation home
+    url: https://platform.claude.com/docs/en/home
+    publisher: Anthropic
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-models-overview
+    title: Claude models overview
+    url: https://platform.claude.com/docs/en/models/overview
+    publisher: Anthropic
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-api-pricing
+    title: Claude API pricing
+    url: https://platform.claude.com/docs/en/about-claude/pricing
+    publisher: Anthropic
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-usage-policy
+    title: Anthropic Usage Policy
+    url: https://www.anthropic.com/legal/aup
+    publisher: Anthropic
+    kind: official-page
+    published_at: 2025-09-15
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hf-anthropic
+    title: Anthropic on Hugging Face
+    url: https://huggingface.co/Anthropic
+    publisher: Hugging Face
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Anthropic sells Claude plans for individuals (Free, Pro, and Max) and for
+      teams and enterprises, and documents the Claude API for developers
+      building Claude into applications and agents.
+    source_ids: [review-claude-pricing, review-platform-docs]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Claude models are offered as hosted services: in the Claude apps, through
+      the Claude API with keys issued in the Claude Console, and on cloud
+      platforms including Amazon Bedrock, Google Cloud, and Microsoft Foundry.
+    source_ids: [review-platform-docs, review-models-overview, review-claude-pricing]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Anthropic's Hugging Face organization lists datasets but no public models.
+      Use is governed by Anthropic's Usage Policy; Claude Mythos models are
+      offered by invitation only, and Amazon Bedrock and Google Cloud set their
+      own pricing and retirement dates for Claude models. This profile is not a
+      complete product or rights audit.
+    source_ids: [review-hf-anthropic, review-usage-policy, review-api-pricing, review-models-overview]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Claude API documentation
+      url: https://platform.claude.com/docs/en/home
+      kind: documentation
+      source_ids: [review-platform-docs]
+      reviewed_at: 2026-10-01
+    - label: Claude models overview and platform model IDs
+      url: https://platform.claude.com/docs/en/models/overview
+      kind: documentation
+      source_ids: [review-models-overview]
+      reviewed_at: 2026-10-01
+    - label: Claude API pricing
+      url: https://platform.claude.com/docs/en/about-claude/pricing
+      kind: pricing
+      source_ids: [review-api-pricing]
+      reviewed_at: 2026-10-01
+    - label: Claude plans and pricing
+      url: https://claude.com/pricing
+      kind: pricing
+      source_ids: [review-claude-pricing]
+      reviewed_at: 2026-10-01

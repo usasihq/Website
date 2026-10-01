@@ -86,7 +86,7 @@ openness_summary:
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: spacex-10q-2026q2
@@ -159,3 +159,85 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-xai-docs
+    title: xAI API documentation overview
+    url: https://docs.x.ai/overview
+    publisher: SpaceXAI
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-xai-models
+    title: xAI API models
+    url: https://docs.x.ai/developers/models
+    publisher: SpaceXAI
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-xai-pricing
+    title: xAI API pricing
+    url: https://docs.x.ai/developers/pricing
+    publisher: SpaceXAI
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hf-xai
+    title: xAI on Hugging Face
+    url: https://huggingface.co/xai-org
+    publisher: Hugging Face
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-grok-1-card
+    title: xai-org/grok-1 model card
+    url: https://huggingface.co/xai-org/grok-1
+    publisher: SpaceXAI (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-grok-2-license
+    title: xAI Community License Agreement (xai-org/grok-2 LICENSE)
+    url: https://huggingface.co/xai-org/grok-2/blob/main/LICENSE
+    publisher: SpaceXAI (Hugging Face)
+    kind: license
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      xAI documents its API for developers building applications with its code,
+      text, voice, image, and video models.
+    source_ids: [review-xai-docs]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Current Grok models, such as grok-4.7, are offered through the xAI API
+      with API keys and OpenAI-compatible client libraries, billed per token,
+      image, or second of video. xAI's Hugging Face organization lists weights
+      for two earlier models, Grok-1 and Grok 2.
+    source_ids: [review-xai-docs, review-xai-models, review-xai-pricing, review-hf-xai]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Grok-1 weights are under Apache 2.0, while Grok 2 uses the xAI Community
+      License, which ties commercial use to xAI's Acceptable Use Policy and bars
+      using the materials or outputs to train other general-purpose AI models,
+      apart from modifying or fine-tuning xAI's own. This profile is not a
+      complete product or rights audit.
+    source_ids: [review-grok-1-card, review-grok-2-license, review-hf-xai]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: xAI API documentation
+      url: https://docs.x.ai/overview
+      kind: documentation
+      source_ids: [review-xai-docs]
+      reviewed_at: 2026-10-01
+    - label: xAI API pricing
+      url: https://docs.x.ai/developers/pricing
+      kind: pricing
+      source_ids: [review-xai-pricing]
+      reviewed_at: 2026-10-01
+    - label: xAI models on Hugging Face
+      url: https://huggingface.co/xai-org
+      kind: model-hub
+      source_ids: [review-hf-xai]
+      reviewed_at: 2026-10-01

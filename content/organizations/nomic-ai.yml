@@ -90,9 +90,19 @@ openness_summary:
     and embedding API are hosted services. Openness is assessed per release in this catalog.
   source_ids: [nomic-embed-v2-card, nomic-embed-v15-card, contrastors-repo, gpt4all-license, nomic-platform, nomic-developer]
 hiring_url: https://www.nomic.ai/careers
+careers:
+  url: https://www.nomic.ai/careers
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The official careers page links to an Ashby board whose identifier contains a period, which the current board identifier format does not accept, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [nomic-ai-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: nomic-home
@@ -207,3 +217,11 @@ sources:
     kind: release-notes
     published_at: null
     accessed_at: 2026-09-29
+  - id: nomic-ai-careers-jobs
+    title: Official careers directory and application links
+    url: https://www.nomic.ai/careers
+    publisher: Nomic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

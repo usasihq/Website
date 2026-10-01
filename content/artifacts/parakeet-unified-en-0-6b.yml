@@ -1,0 +1,232 @@
+slug: parakeet-unified-en-0-6b
+name: NVIDIA parakeet-unified-en-0.6b
+kind: model
+record_level: release
+family_slug: parakeet
+version: "parakeet-unified-en-0.6b"
+maintainers:
+  - name: NVIDIA (NeMo)
+    organization_slug: nvidia
+    source_ids: [unified-card, nemo-speech-readme]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/nvidia/parakeet-unified-en-0.6b
+    kind: model-hub
+  - label: NVIDIA Open Model License Agreement
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+    kind: license
+  - label: "Reducing the Offline-Streaming Gap for Unified ASR Transducer with Consistency Regularization (arXiv 2604.19079)"
+    url: https://arxiv.org/abs/2604.19079
+    kind: paper
+  - label: NeMo Speech repository
+    url: https://github.com/NVIDIA-NeMo/Speech
+    kind: repository
+summary:
+  text: >-
+    parakeet-unified-en-0.6b is a 600M-parameter English speech recognition model that serves
+    both offline and streaming transcription from one checkpoint. It pairs a 24-layer
+    FastConformer encoder, trained jointly in offline and streaming modes with a
+    mode-consistency regularization loss, with an RNN-T decoder; streaming latency can be set
+    from 2,080 ms down to 160 ms. Output includes punctuation and capitalization. NVIDIA released
+    it on Hugging Face on April 7, 2026.
+  source_ids: [unified-card, unified-paper]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Transcribing English audio in batch or streaming mode, for example in voice assistants, live
+    captioning, and conversational AI. For 80 ms latency the card recommends a different model,
+    nemotron-speech-streaming-en-0.6b.
+  source_ids: [unified-card]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Published by NVIDIA in its Hugging Face organization under the NVIDIA Open Model License and
+    announced in NVIDIA's NeMo Speech repository. NVIDIA's principal executive offices are in
+    Santa Clara, California, per its Form 10-Q for the quarter ended July 26, 2026. Third-party
+    models used to label training data are recorded under provenance.
+  source_ids: [unified-card, nemo-speech-readme, nvidia-10q-q2fy2027]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    The .nemo checkpoint is downloadable from Hugging Face without an access gate under the
+    NVIDIA Open Model License Agreement; the card states the model is ready for commercial and
+    non-commercial use and lists global deployment geography.
+  source_ids: [unified-api, unified-card]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: NVIDIA Open Model License Agreement
+    spdx: null
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+    applies_to: weights
+    source_ids: [unified-card, unified-api, nvidia-open-model-license]
+    reviewed_at: 2026-10-01
+  - name: Apache License 2.0 (NeMo Speech toolkit)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/LICENSE
+    applies_to: code
+    source_ids: [nemo-speech-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The NVIDIA Open Model License Agreement (last modified October 24, 2025) is NVIDIA's own
+    license. It grants a perpetual, worldwide, royalty-free license, revocable on the conditions
+    it states, to use, modify, and distribute the model; it states that models are commercially usable and that NVIDIA claims no
+    ownership of outputs, and lets licensees own their derivative models. Redistributors must
+    include a copy of the agreement and a "Licensed by NVIDIA Corporation under the NVIDIA Open
+    Model License" notice. Rights end for anyone who brings copyright or patent litigation over
+    the model, or who bypasses its safety guardrails without a substitute. Use must follow
+    NVIDIA's Trustworthy AI terms, users indemnify NVIDIA against third-party claims, and NVIDIA
+    may update the agreement. This differs from the CC-BY-4.0 terms of parakeet-tdt-0.6b-v3.
+  source_ids: [nvidia-open-model-license, unified-card]
+  reviewed_at: 2026-10-01
+checklist:
+  weights:
+    status: public
+    note: The ungated repository holds the .nemo checkpoint.
+    source_ids: [unified-api]
+    reviewed_at: 2026-10-01
+  inference_code:
+    status: public
+    note: >-
+      The card documents offline and streaming inference with NVIDIA NeMo, including a chunked
+      RNN-T streaming script and a pipeline configuration in the Apache 2.0 NeMo Speech repository.
+    source_ids: [unified-card, nemo-speech-license]
+    reviewed_at: 2026-10-01
+  training_code:
+    status: unknown
+    note: >-
+      Sources disagree. The card says only inference is supported for now and that the unified
+      training pipeline will be released later, while the accompanying paper's abstract says the
+      Unified ASR framework is open-sourced. NeMo Speech 3.0 release notes mention Unified RNN-T
+      streaming inference. Training-code availability was not confirmed.
+    source_ids: [unified-card, unified-paper, nemo-speech-3-0-release]
+    reviewed_at: 2026-10-01
+  training_data_information:
+    status: partial
+    note: >-
+      The card states about 250,000 hours of audio, mostly from the English portion of Granary
+      (YouTube-Commons, YODAS2, MOSEL, and LibriLight, with hours per source), plus a list of other
+      corpora, and gives collection and labeling methods (human-recorded audio; a mix of human and
+      ASR-generated transcripts). This review confirms disclosure, not completeness.
+    source_ids: [unified-card, granary-card]
+    reviewed_at: 2026-10-01
+  training_data_access:
+    status: partial
+    note: >-
+      Granary is published as CC-BY-4.0 transcript manifests that point to separately downloaded
+      source audio; access terms for the other listed corpora were not reviewed.
+    source_ids: [granary-card, unified-card]
+    reviewed_at: 2026-10-01
+  training_recipe:
+    status: partial
+    note: >-
+      The card describes the architecture, joint offline and streaming training with chunked
+      attention masks, dynamic chunked convolutions, and the consistency loss; hyperparameters and
+      schedules are not given on the card.
+    source_ids: [unified-card, unified-paper]
+    reviewed_at: 2026-10-01
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card publishes offline and streaming word error rates on Open ASR Leaderboard datasets
+      and names the text normalizer version used; evaluation scripts were not verified.
+    source_ids: [unified-card]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The card lists NeMo 2.7.3 as the runtime, Linux as the supported operating system, NVIDIA
+      Volta, Ampere, Hopper, and Blackwell GPUs as compatible (tested on V100, A100, A6000, and DGX
+      Spark), and recommended left, chunk, and right context settings for each streaming latency.
+    source_ids: [unified-card]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    Trained by NVIDIA. Most training data comes from the English portion of Granary, whose card
+    says transcripts were pseudo-labeled with Whisper-large-v3 and that punctuation and
+    capitalization were restored with Qwen-2.5-7B, both third-party models. No third-party model
+    weights are documented as part of this checkpoint.
+  derived_from: []
+  source_ids: [unified-card, granary-card]
+tags: [speech]
+publication_status: published
+archive_note: null
+released_at: 2026-04-07
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: unified-card
+    title: nvidia/parakeet-unified-en-0.6b model card
+    url: https://huggingface.co/nvidia/parakeet-unified-en-0.6b/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-04-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: unified-api
+    title: Hugging Face model metadata for nvidia/parakeet-unified-en-0.6b
+    url: https://huggingface.co/api/models/nvidia/parakeet-unified-en-0.6b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: unified-paper
+    title: Reducing the Offline-Streaming Gap for Unified ASR Transducer with Consistency Regularization
+    url: https://arxiv.org/abs/2604.19079
+    publisher: NVIDIA (arXiv)
+    kind: paper
+    published_at: 2026-04-21
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-open-model-license
+    title: NVIDIA Open Model License Agreement
+    url: https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+    publisher: NVIDIA
+    kind: license
+    published_at: 2025-10-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-speech-license
+    title: NVIDIA-NeMo/Speech LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-speech-readme
+    title: NVIDIA-NeMo/Speech README
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-speech-3-0-release
+    title: NVIDIA-NeMo/Speech release v3.0.0
+    url: https://github.com/NVIDIA-NeMo/Speech/releases/tag/v3.0.0
+    publisher: NVIDIA (GitHub)
+    kind: release-notes
+    published_at: 2026-08-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: granary-card
+    title: nvidia/Granary dataset card
+    url: https://huggingface.co/datasets/nvidia/Granary/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

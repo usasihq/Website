@@ -1,0 +1,210 @@
+slug: agents-md
+name: AGENTS.md
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: AGENTS.md a Series of LF Projects, LLC (Agentic AI Foundation project)
+    organization_slug: agentic-ai-foundation
+    source_ids: [agentsmd-site, agentsmd-charter, aaif-projects]
+organization_slugs: [agentic-ai-foundation, linux-foundation, openai]
+links:
+  - label: Website
+    url: https://agents.md/
+    kind: website
+  - label: Repository
+    url: https://github.com/agentsmd/agents.md
+    kind: repository
+  - label: Technical charter
+    url: https://github.com/agentsmd/agents.md/blob/main/Technical_Charter.pdf
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/agentsmd/agents.md/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    AGENTS.md is an open convention for a Markdown file, placed in a code repository, that gives
+    AI coding agents project-specific context and instructions such as build steps, test
+    commands, and code conventions. It is plain Markdown with no required fields; in a monorepo,
+    nested files can apply to subprojects, with the file closest to the edited code taking
+    precedence. OpenAI released it in August 2025 and contributed it to the Agentic AI
+    Foundation in December 2025.
+  source_ids: [agentsmd-site, agentsmd-repo, lf-aaif-press]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Giving coding agents a predictable place to find a repository's setup, testing, and
+    contribution instructions, separate from the human-facing README.
+  source_ids: [agentsmd-site, agentsmd-repo]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    AGENTS.md has been established as AGENTS.md a Series of LF Projects, LLC under a technical
+    charter adopted December 8, 2025; LF Projects is a Delaware series limited liability company.
+    The charter makes the project's technical chair its primary contact with the Agentic AI
+    Foundation, which it describes as a directed fund of The Linux Foundation, and the website
+    states that the format is stewarded by that foundation. The Linux Foundation describes itself as a 501(c)(6) nonprofit with a legal
+    postal address in San Francisco, California. Technical governance positions are held by
+    individuals, not companies. Eligibility rests on this documented governance, not on the
+    original developer or on contributors' affiliations or nationality.
+  source_ids: [agentsmd-charter, agentsmd-site, lfprojects, aaif-charter, lf-about, lf-privacy]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    The format description, examples, and website source are public. Whether a given coding
+    agent reads AGENTS.md depends on that agent.
+  source_ids: [agentsmd-site, agentsmd-repo]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/agentsmd/agents.md/main/LICENSE
+    applies_to: code
+    source_ids: [agentsmd-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The repository's LICENSE file is MIT, with copyright attributed to OpenAI (2025). The
+    project's technical charter states that outbound code is made available under MIT and that
+    documentation is received and made available under CC BY 4.0; no separate documentation
+    license file was found in the repository, so only the MIT file is recorded as a license
+    here.
+  source_ids: [agentsmd-license, agentsmd-charter, agentsmd-repo]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: >-
+      The public repository holds a README with a sample AGENTS.md file and the source of the
+      agents.md website. The convention itself has no reference implementation.
+    source_ids: [agentsmd-repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      The website explains the purpose, file placement, nesting and precedence rules, and gives
+      examples.
+    source_ids: [agentsmd-site]
+    reviewed_at: 2026-10-01
+  installation:
+    status: not_applicable
+    note: >-
+      Nothing is installed; a project adopts the convention by adding an AGENTS.md file.
+    source_ids: [agentsmd-site]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: not_applicable
+    note: >-
+      A plain Markdown file; support depends on each coding agent rather than on an operating
+      system or runtime.
+    source_ids: [agentsmd-site]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: not_applicable
+    note: >-
+      No versioned specification or tagged releases were found; the website describes the
+      format as standard Markdown without required fields.
+    source_ids: [agentsmd-site, agentsmd-repo]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance:
+  text: >-
+    The Linux Foundation describes AGENTS.md as released by OpenAI in August 2025; the website
+    says the format emerged from collaboration among several AI coding-agent developers. OpenAI
+    contributed it as a founding project of the Agentic AI Foundation, announced on December 9,
+    2025.
+  derived_from: []
+  source_ids: [lf-aaif-press, agentsmd-site]
+tags: [agents, coding-agent, documentation]
+publication_status: published
+archive_note: null
+released_at: 2025-08
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: agentsmd-site
+    title: AGENTS.md
+    url: https://agents.md/
+    publisher: AGENTS.md a Series of LF Projects, LLC
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: agentsmd-repo
+    title: agentsmd/agents.md repository and README
+    url: https://github.com/agentsmd/agents.md
+    publisher: AGENTS.md a Series of LF Projects, LLC
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: agentsmd-license
+    title: agentsmd/agents.md LICENSE
+    url: https://raw.githubusercontent.com/agentsmd/agents.md/main/LICENSE
+    publisher: AGENTS.md a Series of LF Projects, LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: agentsmd-charter
+    title: Technical Charter for AGENTS.md a Series of LF Projects, LLC (adopted December 8, 2025)
+    url: https://raw.githubusercontent.com/agentsmd/agents.md/main/Technical_Charter.pdf
+    publisher: AGENTS.md a Series of LF Projects, LLC
+    kind: official-page
+    published_at: 2025-12-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-aaif-press
+    title: >-
+      Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF), Anchored by
+      New Project Contributions Including Model Context Protocol (MCP), goose and AGENTS.md
+    url: https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation
+    publisher: Linux Foundation
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-projects
+    title: Projects - Agentic AI Foundation (AAIF)
+    url: https://aaif.io/projects
+    publisher: Agentic AI Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-charter
+    title: The Agentic AI Foundation Charter (amended July 29, 2026)
+    url: https://raw.githubusercontent.com/aaif/foundation/main/foundation-charter.pdf
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: 2026-07-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lfprojects
+    title: LF Projects, LLC
+    url: https://lfprojects.org/
+    publisher: LF Projects, LLC
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-about
+    title: About the Linux Foundation
+    url: https://www.linuxfoundation.org/about
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-privacy
+    title: Privacy Policy | Linux Foundation
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,177 @@
+slug: executorch
+name: ExecuTorch
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Meta
+    organization_slug: meta
+    source_ids: [license, contributing]
+organization_slugs: [meta, pytorch-foundation]
+links:
+  - label: Website
+    url: https://executorch.ai/
+    kind: website
+  - label: Repository
+    url: https://github.com/pytorch/executorch
+    kind: repository
+  - label: Documentation
+    url: https://docs.pytorch.org/executorch/stable/index.html
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/pytorch/executorch/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/pytorch/executorch/releases/tag/v1.5.1
+    kind: release-notes
+summary:
+  text: >-
+    ExecuTorch is PyTorch's open-source stack for running AI models on-device, from phones and
+    laptops to embedded systems and microcontrollers. A model is captured with torch.export,
+    lowered for selected hardware backends into a .pte program, and run through C++, Python,
+    Swift/Objective-C, Kotlin/Java, or JavaScript APIs.
+  source_ids: [readme, docs]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Deploying PyTorch models, including quantized language, speech, and vision models, to run
+    locally on mobile, desktop, browser, and embedded targets using CPU, GPU, NPU, or DSP
+    backends.
+  source_ids: [readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    ExecuTorch is developed in the pytorch GitHub organization. Its LICENSE lists Meta Platforms,
+    Inc. first among the copyright holders, and its contributing guide requires the contributor
+    license agreement used for Meta's open-source projects. The PyTorch Foundation website lists
+    ExecuTorch among its projects. Meta and the PyTorch Foundation's host, The Linux Foundation,
+    are U.S.-based (see their records). Other companies named in the LICENSE contributed
+    hardware-backend code; this assessment rests on Meta's documented role.
+  source_ids: [license, contributing, readme, ptf-project-page]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: BSD-style license (3-clause)
+    spdx: BSD-3-Clause
+    url: https://github.com/pytorch/executorch/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license, readme]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The LICENSE is a three-clause BSD license naming Meta Platforms, Inc. and affiliates plus
+    Arm, Qualcomm Innovation Center, Apple, MediaTek, NXP, Samsung Electronics, and Intel as
+    copyright holders. The README notes that embedded toolchains, simulators, and target
+    runtimes are installed separately; this entry does not cover them.
+  source_ids: [license, readme]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the pytorch GitHub organization.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Official documentation covers getting started, edge platforms, hardware backends, and LLM export and deployment.
+    source_ids: [docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      `pip install executorch` in Python 3.10 to 3.14, with wheels for Linux x86-64, Linux
+      AArch64, macOS arm64, and Windows x86-64; an Android AAR on Maven Central, Apple frameworks
+      through Swift Package Manager, and source builds are also documented.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README maps targets to backends: Android, iOS and iPadOS, macOS, Linux, Windows,
+      browser/WebAssembly, and embedded microcontrollers, with backends including XNNPACK, Vulkan,
+      Core ML, Qualcomm, MediaTek, Samsung Exynos, OpenVINO, Arm Ethos-U, NXP eIQ Neutron, and
+      Cadence DSP. Several desktop and browser paths are marked experimental.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release v1.5.1, published September 23, 2026. The README says it tracks main and
+      points users to the latest release with the stable documentation.
+    source_ids: [release, readme]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README lists local LLM building blocks, including quantized text models, tool calling,
+      speculative decoding, and an experimental OpenAI-compatible local server example.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      A .pte program exported for one hardware backend is not a universal model file; targeting
+      Core ML, Qualcomm, or another accelerator requires that backend's dependencies and a
+      separate export, per the README.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [inference, local-inference, on-device]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: pytorch/executorch README
+    url: https://raw.githubusercontent.com/pytorch/executorch/main/README.md
+    publisher: PyTorch (Meta)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: pytorch/executorch LICENSE
+    url: https://raw.githubusercontent.com/pytorch/executorch/main/LICENSE
+    publisher: PyTorch (Meta)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: contributing
+    title: pytorch/executorch CONTRIBUTING.md
+    url: https://raw.githubusercontent.com/pytorch/executorch/main/CONTRIBUTING.md
+    publisher: PyTorch (Meta)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs
+    title: ExecuTorch documentation (stable)
+    url: https://docs.pytorch.org/executorch/stable/index.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ptf-project-page
+    title: ExecuTorch (PyTorch Foundation project page)
+    url: https://pytorch.org/projects/executorch/
+    publisher: PyTorch Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Release v1.5.1
+    url: https://github.com/pytorch/executorch/releases/tag/v1.5.1
+    publisher: PyTorch (Meta)
+    kind: release-notes
+    published_at: 2026-09-23
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

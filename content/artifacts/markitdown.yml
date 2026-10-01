@@ -1,0 +1,158 @@
+slug: markitdown
+name: MarkItDown
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Microsoft
+    organization_slug: microsoft
+    source_ids: [markitdown-license, markitdown-readme]
+organization_slugs: [microsoft]
+links:
+  - label: GitHub repository
+    url: https://github.com/microsoft/markitdown
+    kind: repository
+  - label: PyPI package
+    url: https://pypi.org/project/markitdown/
+    kind: website
+  - label: LICENSE (MIT)
+    url: https://github.com/microsoft/markitdown/blob/main/LICENSE
+    kind: license
+  - label: Release v0.1.8
+    url: https://github.com/microsoft/markitdown/releases/tag/v0.1.8
+    kind: release-notes
+summary:
+  text: >-
+    MarkItDown is a Microsoft Python library and command-line tool that converts files such as
+    PDF, Word, PowerPoint, Excel, HTML, images, audio, EPUB, and ZIP archives into Markdown. It
+    aims to keep document structure (headings, lists, tables, links) for use by language models
+    and text analysis pipelines rather than for high-fidelity human-readable conversion.
+  source_ids: [markitdown-readme]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Preparing documents as Markdown input for language-model and text-analysis pipelines. The
+    README documents optional per-format dependencies, third-party plugins, an MCP server package
+    (markitdown-mcp), optional image descriptions through an OpenAI-compatible client, and
+    optional conversion through Azure Document Intelligence or Azure Content Understanding, which
+    are billable Azure services.
+  source_ids: [markitdown-readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is in Microsoft's GitHub organization, its MIT license names Microsoft
+    Corporation as copyright holder, and contributions go through the Microsoft Contributor
+    License Agreement. Microsoft Corporation lists One Microsoft Way, Redmond, Washington as its
+    principal executive offices on the cover page of its Form 10-K for fiscal year 2026.
+  source_ids: [markitdown-license, markitdown-readme, msft-10k-2026]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub and the package is installable from PyPI. Azure-backed
+    converters require the user's own Azure resources.
+  source_ids: [markitdown-readme, markitdown-pypi]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/microsoft/markitdown/blob/main/LICENSE
+    applies_to: code
+    source_ids: [markitdown-license, markitdown-pypi]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT license covers the project code. Use of Microsoft trademarks in modified versions is
+    subject to Microsoft's trademark guidelines, and optional dependencies and connected Azure or
+    model services have their own terms.
+  source_ids: [markitdown-license, markitdown-readme]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public microsoft/markitdown GitHub repository.
+    source_ids: [markitdown-readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: The README documents installation, command-line and Python usage, optional dependencies, plugins, Azure integrations, and security considerations.
+    source_ids: [markitdown-readme]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: Installable with pip (for example markitdown[all]) or from source; the README also documents building a Docker image.
+    source_ids: [markitdown-readme, markitdown-pypi]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: partial
+    note: >-
+      The README requires Python 3.10 through 3.14, and the PyPI classifiers list CPython and
+      PyPy; supported operating systems are not stated.
+    source_ids: [markitdown-readme, markitdown-pypi]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub and PyPI; v0.1.8, published on September 21,
+      2026, was the latest when checked; the first PyPI upload (0.0.1a1) dates from November
+      2024. PyPI classifies the package as beta.
+    source_ids: [markitdown-release-0-1-8, markitdown-pypi]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README warns that MarkItDown performs I/O with the privileges of the current process
+      and advises sanitizing inputs in untrusted environments and calling the narrowest convert
+      function needed.
+    source_ids: [markitdown-readme]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [document-processing, retrieval-augmented-generation]
+publication_status: published
+archive_note: null
+released_at: 2024-11
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: markitdown-readme
+    title: microsoft/markitdown README
+    url: https://raw.githubusercontent.com/microsoft/markitdown/main/README.md
+    publisher: Microsoft (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: markitdown-license
+    title: microsoft/markitdown LICENSE (MIT)
+    url: https://raw.githubusercontent.com/microsoft/markitdown/main/LICENSE
+    publisher: Microsoft (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: markitdown-pypi
+    title: markitdown on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/markitdown/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: markitdown-release-0-1-8
+    title: microsoft/markitdown release v0.1.8
+    url: https://github.com/microsoft/markitdown/releases/tag/v0.1.8
+    publisher: Microsoft (GitHub)
+    kind: release-notes
+    published_at: 2026-09-21
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

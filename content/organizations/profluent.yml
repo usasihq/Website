@@ -1,0 +1,138 @@
+slug: profluent
+name: Profluent
+legal_name:
+  text: Profluent Bio Inc.
+  reviewed_at: 2026-10-01
+  source_ids: [profluent-terms, e1-license]
+website: https://www.profluent.bio
+logo_text: P
+summary:
+  text: >-
+    Profluent is a company in Emeryville, California that trains protein language models and
+    uses them to design proteins, starting with gene editors. Its public releases include the
+    ProGen3 generative models under a non-commercial weights license, the Profluent-E1 encoder
+    models under a permissive license with attribution requirements, and the AI-designed
+    OpenCRISPR-1 gene editor.
+  reviewed_at: 2026-10-01
+  source_ids: [profluent-terms, profluent-opencrispr, profluent-e1-showcase, progen3-readme, e1-readme]
+organization_roles: [model-developer, research-lab]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Emeryville, California
+  country: US
+  source_ids: [profluent-terms]
+other_locations: []
+founded: null
+sectors: [science, open-models, research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      Profluent released OpenCRISPR-1, an AI-generated Cas9-like gene editor, as an
+      open-source initiative that is freely available to license for ethical research and
+      commercial uses; access is requested through a form. OpenCRISPR-1 is a protein design, not
+      a model release.
+    reviewed_at: 2026-10-01
+    source_ids: [profluent-opencrispr]
+  - text: >-
+      ProGen3 code is released under Apache 2.0 and its six model checkpoints (112M to 3B
+      parameters) under CC BY-NC-SA 4.0, a non-commercial license. Profluent's ProGen3
+      announcement directs partners to license its molecule assets or join early API access.
+    reviewed_at: 2026-10-01
+    source_ids: [progen3-readme, hf-profluent-models, profluent-progen3]
+  - text: >-
+      In September 2025 Profluent published protein2pam checkpoints on Hugging Face under CC
+      BY-NC 4.0.
+    reviewed_at: 2026-10-01
+    source_ids: [hf-profluent-models]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Profluent's website terms identify Profluent Bio Inc. as the website operator with a notice
+    address in Emeryville, California, and choose California law with venue in Alameda County.
+    The Profluent-E1 license also names Profluent Bio Inc. and California law. No regulatory
+    filing was reviewed.
+  source_ids: [profluent-terms, e1-license]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Profluent's public model weights carry different terms: Profluent-E1 weights are under a
+    custom clickthrough license that permits commercial use with attribution requirements, while
+    ProGen3 and protein2pam weights are under non-commercial Creative Commons licenses. Its
+    partnered work and API are not public releases. See the Profluent-E1 record.
+  reviewed_at: 2026-10-01
+  source_ids: [e1-license, e1-readme, progen3-readme, hf-profluent-models, profluent-progen3]
+hiring_url: https://job-boards.greenhouse.io/profluent
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: profluent-terms
+    title: Profluent Terms of Service
+    url: https://www.profluent.bio/terms
+    publisher: Profluent Bio Inc.
+    kind: official-page
+    published_at: 2025-01-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: profluent-opencrispr
+    title: Profluent Modalities | Gene Editing (OpenCRISPR)
+    url: https://www.profluent.bio/modality/opencrispr
+    publisher: Profluent
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: profluent-progen3
+    title: Introducing ProGen3 (Profluent showcase)
+    url: https://www.profluent.bio/showcase/progen3
+    publisher: Profluent
+    kind: announcement
+    published_at: 2025-04-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: profluent-e1-showcase
+    title: Introducing Profluent-E1 (Profluent showcase)
+    url: https://www.profluent.bio/showcase/e1
+    publisher: Profluent
+    kind: announcement
+    published_at: 2025-11-13
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: progen3-readme
+    title: Profluent-AI/progen3 README
+    url: https://raw.githubusercontent.com/Profluent-AI/progen3/main/README.md
+    publisher: Profluent
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-profluent-models
+    title: Profluent-Bio models on Hugging Face (model list API)
+    url: https://huggingface.co/api/models?author=Profluent-Bio&limit=100
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-readme
+    title: Profluent-AI/E1 README
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/README.md
+    publisher: Profluent
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: e1-license
+    title: Profluent-E1 Clickthrough License Agreement (Profluent-AI/E1 LICENSE)
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/LICENSE
+    publisher: Profluent Bio Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

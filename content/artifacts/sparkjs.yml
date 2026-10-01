@@ -1,0 +1,175 @@
+slug: sparkjs
+name: Spark (sparkjs)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: World Labs
+    organization_slug: world-labs
+    source_ids: [repo, license, spark-site]
+organization_slugs: [world-labs]
+links:
+  - label: Website and documentation
+    url: https://sparkjs.dev/
+    kind: website
+  - label: Repository
+    url: https://github.com/sparkjsdev/spark
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/sparkjsdev/spark/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/sparkjsdev/spark/releases/tag/v2.3.1
+    kind: release-notes
+summary:
+  text: >-
+    Spark is an open-source JavaScript renderer for 3D Gaussian splats built on THREE.js, made
+    by World Labs. It renders splats together with ordinary meshes, loads common splat formats
+    such as PLY, SPZ, and SPLAT, and lets splats be edited and animated on the GPU. Spark 2.0
+    added a level-of-detail system for streaming large splat worlds.
+  source_ids: [repo, spark-site, spark2-blog]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Displaying 3D Gaussian splat scenes, including worlds exported from World Labs' Marble, in
+    web pages and THREE.js applications.
+  source_ids: [repo, spark2-blog]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The README and documentation site say Spark is built by World Labs, and the LICENSE assigns
+    copyright to World Labs Technologies, Inc. World Labs' terms of service give that company's
+    address in San Francisco, California, and AMD's September 2026 press release describes
+    World Labs as headquartered in San Francisco. AMD's announced acquisition of World Labs was
+    pending as of this assessment and will be reassessed if it completes. Eligibility rests on
+    the maintaining company, not on contributors.
+  source_ids: [repo, spark-site, license, wl-terms, amd-ir-world-labs]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code, documentation, and npm and CDN builds are public. Splat assets used in the
+    examples are fetched from remote URLs and are not part of the code license.
+  source_ids: [repo, spark-docs]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/sparkjsdev/spark/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT entry applies to Spark's code. It does not license World Labs' hosted services,
+    world models, or third-party splat assets and formats; consult their own terms.
+  source_ids: [license, repo]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository, including a Rust component compiled to WebAssembly.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public documentation site with getting-started guides and examples.
+    source_ids: [spark-site, spark-docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Install from npm as @sparkjsdev/spark or load a versioned build through a CDN import map
+      alongside THREE.js. Building from source requires Rust for the WebAssembly component.
+    source_ids: [repo, spark-docs]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Runs in web browsers with THREE.js. The README says it targets devices with WebGL2
+      support, including low-powered mobile devices.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed tagged release v2.3.1, published October 1, 2026. This entry describes the
+      project rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance: null
+tags: [3d-rendering, gaussian-splatting, computer-vision]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: sparkjsdev/spark repository and README
+    url: https://github.com/sparkjsdev/spark
+    publisher: World Labs
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Spark MIT LICENSE
+    url: https://raw.githubusercontent.com/sparkjsdev/spark/main/LICENSE
+    publisher: World Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: spark-site
+    title: Spark website
+    url: https://sparkjs.dev/
+    publisher: World Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: spark-docs
+    title: Spark documentation — getting started
+    url: https://sparkjs.dev/docs/
+    publisher: World Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Spark v2.3.1 release
+    url: https://github.com/sparkjsdev/spark/releases/tag/v2.3.1
+    publisher: World Labs
+    kind: release-notes
+    published_at: 2026-10-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: spark2-blog
+    title: Streaming 3DGS worlds on the web (Spark 2.0)
+    url: https://www.worldlabs.ai/blog/spark-2.0
+    publisher: World Labs
+    kind: announcement
+    published_at: 2026-04-14
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wl-terms
+    title: World Labs Terms of Service
+    url: https://www.worldlabs.ai/terms-of-service
+    publisher: World Labs
+    kind: official-page
+    published_at: 2026-01-21
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: amd-ir-world-labs
+    title: AMD to Acquire World Labs to Advance the Future of AI Compute
+    url: https://ir.amd.com/news-events/press-releases/detail/1299/amd-to-acquire-world-labs-to-advance-the-future-of-ai-compute
+    publisher: Advanced Micro Devices, Inc.
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

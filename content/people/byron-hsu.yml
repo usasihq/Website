@@ -1,0 +1,107 @@
+slug: byron-hsu
+name: Byron Hsu
+initials: BH
+headline: Led Liger Kernel, open-source Triton kernels for memory-efficient LLM training and fine-tuning
+bio:
+  text: Byron (Pin-Lun) Hsu was the project lead for Liger Kernel, an open-source collection of Triton
+    kernels from LinkedIn that lowers GPU memory use and raises throughput when training and fine-tuning
+    language models. The Liger Kernel paper lists Hsu as project lead and credits Hsu with leading, architecting,
+    and implementing multiple kernels, the public interface, and the test suite. Hsu is currently listed
+    as a merge on-call maintainer for prefill-decode disaggregation in SGLang, and Hsu's GitHub profile
+    describes current work on reinforcement-learning systems at Periodic Labs.
+  source_ids:
+  - liger-paper
+  - liger-docs
+  - sglang-maintainers
+  - github-profile
+  reviewed_at: 2026-10-01
+affiliations:
+- name: SGLang project
+  organization_slug: null
+  role: Merge oncall for prefill-decode (PD) disaggregation
+  current: true
+  source_ids:
+  - sglang-maintainers
+  - sglang-codeowners
+- name: LinkedIn
+  organization_slug: linkedin
+  role: Liger Kernel project lead
+  current: false
+  source_ids:
+  - liger-paper
+work:
+- name: Liger Kernel
+  artifact_slug: liger-kernel
+  url: https://github.com/linkedin/Liger-Kernel
+  contribution: Project lead and first author of the Liger Kernel paper, which credits Hsu with leading,
+    architecting, and implementing multiple kernels, the public interface, and the test suite; the repository's
+    citation also lists Hsu first. The documentation lists integrations with Hugging Face TRL, Axolotl,
+    and LLaMA-Factory.
+  source_ids:
+  - liger-paper
+  - liger-repo
+  - liger-docs
+- name: SGLang
+  artifact_slug: sglang
+  url: https://github.com/sgl-project/sglang
+  contribution: Listed in the maintenance guide as a merge oncall for prefill-decode disaggregation and
+    in CODEOWNERS as a codeowner of that code.
+  source_ids:
+  - sglang-maintainers
+  - sglang-codeowners
+links:
+- label: GitHub
+  url: https://github.com/ByronHsu
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+- id: github-profile
+  title: ByronHsu (Byron Hsu) on GitHub
+  url: https://github.com/ByronHsu
+  publisher: GitHub
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: liger-paper
+  title: 'Liger Kernel: Efficient Triton Kernels for LLM Training (arXiv 2410.10989, author list and contributors
+    section)'
+  url: https://arxiv.org/abs/2410.10989
+  publisher: arXiv
+  kind: paper
+  published_at: 2024-10-14
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: liger-repo
+  title: linkedin/Liger-Kernel README and citation
+  url: https://github.com/linkedin/Liger-Kernel
+  publisher: LinkedIn (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: liger-docs
+  title: Liger Kernel documentation
+  url: https://linkedin.github.io/Liger-Kernel/
+  publisher: LinkedIn
+  kind: documentation
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: sglang-maintainers
+  title: SGLang Code Maintenance Model (MAINTAINER.md)
+  url: https://github.com/sgl-project/sglang/blob/main/.github/MAINTAINER.md
+  publisher: SGLang project (GitHub repository)
+  kind: documentation
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: sglang-codeowners
+  title: sgl-project/sglang CODEOWNERS
+  url: https://github.com/sgl-project/sglang/blob/main/.github/CODEOWNERS
+  publisher: SGLang project (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01

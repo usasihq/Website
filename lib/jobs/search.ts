@@ -1,7 +1,17 @@
 import type { Job, FeedHealth } from "./schema";
 export const STALE_MS = 48 * 3600000;
-export type JobItem = Job & { organization_name: string };
-export function isCurrent(job: Job, feed: FeedHealth | undefined, now: number): boolean {
+/** The fields the Jobs directory reads. Reconciliation bookkeeping stays out of the page and its data file. */
+export type JobItem = Pick<Job, "id" | "organization_slug" | "source_type" | "source_identifier" | "source_job_id" | "source_url" | "title" |
+  "locations" | "countries" | "workplace" | "employment_type" | "department" | "team" | "salaries" | "official_url" | "posted_at" |
+  "posted_date_kind" | "last_seen" | "status"> & { organization_name: string };
+export function toJobItem(j: Job, organization_name: string): JobItem {
+  return { id: j.id, organization_slug: j.organization_slug, source_type: j.source_type, source_identifier: j.source_identifier,
+    source_job_id: j.source_job_id, source_url: j.source_url, title: j.title, locations: j.locations, countries: j.countries,
+    workplace: j.workplace, employment_type: j.employment_type, department: j.department, team: j.team, salaries: j.salaries,
+    official_url: j.official_url, posted_at: j.posted_at, posted_date_kind: j.posted_date_kind, last_seen: j.last_seen, status: j.status,
+    organization_name };
+}
+export function isCurrent(job: Pick<Job, "status" | "last_seen">, feed: FeedHealth | undefined, now: number): boolean {
   return job.status === "open" && feed?.result === "ok" && now >= Date.parse(job.last_seen) && now - Date.parse(job.last_seen) <= STALE_MS;
 }
 export function checkedLabel(value: string | null): string {
@@ -31,6 +41,13 @@ export function serializeJobFilters(f: JobFilters): string {
   return p.toString();
 }
 const normalize = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const collator = new Intl.Collator("en");
+const byCode = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
+/** Currently confirmed rows, unsorted (for counts). */
+export function currentJobs(items: JobItem[], feeds: FeedHealth[], now: number): JobItem[] {
+  const health = new Map(feeds.map(v => [`${v.organization_slug}:${v.source_type}:${v.source_identifier}`, v]));
+  return items.filter(j => isCurrent(j, health.get(`${j.organization_slug}:${j.source_type}:${j.source_identifier}`), now));
+}
 export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters, now: number): JobItem[] {
   const health = new Map(feeds.map(v => [`${v.organization_slug}:${v.source_type}:${v.source_identifier}`, v]));
   const words = normalize(f.q).split(/\s+/).filter(Boolean);
@@ -47,12 +64,18 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     if ((f.currency || f.period || f.salary_min) && !j.salaries.some(s => (!f.currency || s.currency === f.currency) && (!f.period || s.period === f.period) && (!f.salary_min || (s.min !== null && s.min >= Number(f.salary_min))))) return false;
     if (f.posted && (!j.posted_at || now < Date.parse(j.posted_at) || now - Date.parse(j.posted_at) > Number(f.posted) * 86400000)) return false;
     if (f.verified && now - Date.parse(j.last_seen) > Number(f.verified) * 3600000) return false;
+    if (!words.length) return true;
     const text = normalize([j.title, j.organization_name, j.department, j.team, ...j.locations, ...j.countries].join(" "));
     return words.every(w => text.includes(w));
   });
+  // ISO timestamps and IDs sort correctly by code point; names use one shared collator (much faster than localeCompare per pair).
   return rows.sort((a,b) => {
-    const order = f.sort === "newest" ? (b.posted_at ?? "").localeCompare(a.posted_at ?? "") : f.sort === "verified" ? b.last_seen.localeCompare(a.last_seen) :
-      f.sort === "company" ? a.organization_name.localeCompare(b.organization_name, "en") : a.title.localeCompare(b.title, "en");
-    return order || a.title.localeCompare(b.title, "en") || a.id.localeCompare(b.id, "en");
+    const order = f.sort === "newest" ? byCode(b.posted_at ?? "", a.posted_at ?? "") : f.sort === "verified" ? byCode(b.last_seen, a.last_seen) :
+      f.sort === "company" ? collator.compare(a.organization_name, b.organization_name) : collator.compare(a.title, b.title);
+    return order || collator.compare(a.title, b.title) || byCode(a.id, b.id);
   });
+}
+/** True when only the page number differs from the default (current) view. */
+export function isDefaultJobView(f: JobFilters): boolean {
+  return (Object.keys(DEFAULT_JOB_FILTERS) as Array<keyof JobFilters>).every(k => k === "page" || f[k] === DEFAULT_JOB_FILTERS[k]);
 }

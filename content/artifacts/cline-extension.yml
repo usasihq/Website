@@ -1,0 +1,209 @@
+slug: cline-extension
+name: Cline (open-source coding agent)
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Cline Bot Inc.
+    organization_slug: cline
+    source_ids: [repo, license]
+organization_slugs: [cline]
+links:
+  - label: Website
+    url: https://cline.bot/
+    kind: website
+  - label: Repository
+    url: https://github.com/cline/cline
+    kind: repository
+  - label: Documentation
+    url: https://docs.cline.bot/cline-overview
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/cline/cline/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release (VS Code extension)
+    url: https://github.com/cline/cline/releases/tag/v4.1.22
+    kind: release-notes
+summary:
+  text: >-
+    Cline is an open-source AI coding agent that reads a project, edits files, and runs terminal
+    commands, asking for approval at each step unless auto-approve is turned on. Its public
+    repository holds a shared agent SDK, a command-line tool, the VS Code extension, and a desktop
+    app for macOS and Windows; the JetBrains plugin is not open-sourced.
+  source_ids: [repo, docs-overview]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Software development tasks in an editor, terminal, or CI pipeline, and building custom agents
+    on the Cline SDK. Cline is open-source client code that calls whichever model the user
+    configures: hosted models from third-party providers or through the Cline Provider, which are
+    not themselves open, or models served locally through runtimes such as Ollama or LM Studio.
+  source_ids: [repo, docs-overview, docs-local]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The LICENSE file and README assign copyright to Cline Bot Inc., which Cline's terms of service
+    name as the provider of the service. The USPTO registration record for the CLINE trademark
+    lists Cline Bot Inc. as a Delaware corporation with an owner address in Wilmington, Delaware,
+    and Cline's careers page lists on-site roles in San Francisco, California. No foundation or
+    multi-organization governance body is documented. See the cline organization record for the
+    headquarters assessment.
+  source_ids: [license, repo, tos, uspto-cline, careers]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code and installation documentation are public. Model access is configured separately:
+    a Cline account using the hosted Cline Provider, the user's own provider credentials, or a
+    local runtime. The JetBrains plugin is distributed through the JetBrains Marketplace but is not
+    open source.
+  source_ids: [repo, docs-overview, docs-install]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/cline/cline/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 license (copyright 2026 Cline Bot Inc.) applies to the code in the cline/cline
+    repository. It does not cover the JetBrains plugin, which the README says is not being
+    open-sourced, the hosted Cline Provider, which is governed by Cline's terms of service, or any
+    model the agent calls.
+  source_ids: [license, repo, tos]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: >-
+      Public repository with the SDK, CLI, VS Code extension, and desktop app; the JetBrains plugin
+      is excluded. The repository contains agent client code, not model weights.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation.
+    source_ids: [docs-overview]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The installation guide covers the extension in VS Code, Cursor, Windsurf, VSCodium, and
+      Antigravity, the JetBrains Marketplace plugin, the CLI through npm (Node.js 20 or newer,
+      22 recommended), the desktop app, and the @cline/sdk package.
+    source_ids: [docs-install]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      VS Code and VS Code-based editors, JetBrains IDEs, terminals through the CLI, and a desktop
+      app for macOS and Windows (the Windows app is in beta).
+    source_ids: [docs-install, repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed VS Code extension release v4.1.22 (CHANGELOG entry 4.1.22), published September 30,
+      2026. The repository also tags CLI, SDK, and desktop releases separately. This entry
+      describes the project rather than one release.
+    source_ids: [release, changelog]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The documentation covers running local models through Ollama, LM Studio, and Atomic Chat, and
+      recommends turning on the "Use Compact Prompt" setting when using local models.
+    source_ids: [docs-local]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [agents, coding-agent, developer-tools]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: cline/cline repository and README
+    url: https://github.com/cline/cline
+    publisher: Cline Bot Inc.
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Cline Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/cline/cline/main/LICENSE
+    publisher: Cline Bot Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: changelog
+    title: Cline VS Code extension CHANGELOG
+    url: https://raw.githubusercontent.com/cline/cline/main/CHANGELOG.md
+    publisher: Cline Bot Inc.
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Cline v4.1.22 release
+    url: https://github.com/cline/cline/releases/tag/v4.1.22
+    publisher: Cline Bot Inc.
+    kind: release-notes
+    published_at: 2026-09-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-overview
+    title: Cline overview (documentation)
+    url: https://docs.cline.bot/cline-overview
+    publisher: Cline Bot Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-install
+    title: Installing Cline (documentation)
+    url: https://docs.cline.bot/getting-started/installing-cline
+    publisher: Cline Bot Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-local
+    title: Running models locally (Cline documentation)
+    url: https://docs.cline.bot/running-models-locally/overview
+    publisher: Cline Bot Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: tos
+    title: Cline Terms of Service
+    url: https://cline.bot/tos
+    publisher: Cline Bot Inc.
+    kind: official-page
+    published_at: 2025-09-25
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: uspto-cline
+    title: USPTO TSDR status record for the CLINE trademark (Serial No. 98795282, Reg. No. 8258729)
+    url: https://tsdr.uspto.gov/statusview/sn98795282
+    publisher: United States Patent and Trademark Office
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: careers
+    title: Careers at Cline
+    url: https://cline.bot/careers
+    publisher: Cline Bot Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

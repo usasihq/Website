@@ -1,0 +1,155 @@
+slug: coremltools
+name: Core ML Tools (coremltools)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Apple
+    organization_slug: apple
+    source_ids: [coremltools-license, coremltools-readme]
+organization_slugs: [apple]
+links:
+  - label: GitHub repository
+    url: https://github.com/apple/coremltools
+    kind: repository
+  - label: Guide and examples
+    url: https://apple.github.io/coremltools/docs-guides/source/overview-coremltools.html
+    kind: documentation
+  - label: LICENSE (BSD-3-Clause)
+    url: https://github.com/apple/coremltools/blob/main/LICENSE.txt
+    kind: license
+  - label: Release 9.0
+    url: https://github.com/apple/coremltools/releases/tag/9.0
+    kind: release-notes
+summary:
+  text: >-
+    Core ML Tools (coremltools) is Apple's Python package for converting machine learning models
+    from libraries such as PyTorch, TensorFlow, scikit-learn, XGBoost, and LibSVM into the Core ML
+    format, and for reading, writing, and optimizing Core ML models. On macOS it can also check a
+    conversion by running predictions through Core ML.
+  source_ids: [coremltools-readme]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Preparing trained models to run on Apple devices through the Core ML framework, which the
+    README describes as running predictions on the user's device using the CPU, GPU, and Neural
+    Engine; converted models are then integrated into apps with Xcode.
+  source_ids: [coremltools-readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is in Apple's GitHub organization and its BSD-3-Clause license names Apple Inc.
+    as copyright holder. Apple Inc. has its principal executive offices at One Apple Park Way,
+    Cupertino, California, per the cover page of its Form 10-K for the fiscal year ended
+    September 27, 2025.
+  source_ids: [coremltools-license, coremltools-readme, aapl-10k-2025]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub and wheels are published on PyPI. Converted models run
+    through Apple's Core ML framework on Apple platforms, which is separate from this package.
+  source_ids: [coremltools-readme, coremltools-pypi]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: BSD 3-Clause License
+    spdx: BSD-3-Clause
+    url: https://github.com/apple/coremltools/blob/main/LICENSE.txt
+    applies_to: code
+    source_ids: [coremltools-license]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public apple/coremltools GitHub repository.
+    source_ids: [coremltools-readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Apple publishes a guide with examples, an API reference, and the Core ML model specification.
+    source_ids: [coremltools-readme, coremltools-install]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: Installable with pip from PyPI, with documented conda and virtual-environment setups and a build-from-source guide.
+    source_ids: [coremltools-readme, coremltools-install]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The installation guide covers macOS and Linux; version 9.0 wheels on PyPI target macOS
+      (x86_64 and arm64) and Linux x86_64. The README notes that verifying conversions by
+      running predictions requires macOS. The installation page's Python version list describes
+      version 8.0 and was not current when checked.
+    source_ids: [coremltools-install, coremltools-pypi, coremltools-readme]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub and PyPI. Version 9.0 (published November 10,
+      2025) added Python 3.13 support and iOS 26 and macOS 26 deployment targets; a 9.1.dev1
+      development release followed in August 2026. The first PyPI upload (0.3.0) dates from
+      June 2017.
+    source_ids: [coremltools-release-9-0, coremltools-pypi]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance: null
+tags: [model-conversion, inference, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2017-06
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: coremltools-readme
+    title: apple/coremltools README
+    url: https://raw.githubusercontent.com/apple/coremltools/main/README.md
+    publisher: Apple (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: coremltools-license
+    title: apple/coremltools LICENSE.txt (BSD 3-Clause)
+    url: https://raw.githubusercontent.com/apple/coremltools/main/LICENSE.txt
+    publisher: Apple (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: coremltools-install
+    title: Installing Core ML Tools — Guide to Core ML Tools
+    url: https://apple.github.io/coremltools/docs-guides/source/installing-coremltools.html
+    publisher: Apple
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: coremltools-pypi
+    title: coremltools on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/coremltools/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: coremltools-release-9-0
+    title: apple/coremltools release 9.0
+    url: https://github.com/apple/coremltools/releases/tag/9.0
+    publisher: Apple (GitHub)
+    kind: release-notes
+    published_at: 2025-11-10
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aapl-10k-2025
+    title: Apple Inc. Form 10-K for the fiscal year ended September 27, 2025
+    url: https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm
+    publisher: Apple Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

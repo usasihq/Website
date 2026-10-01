@@ -1,0 +1,190 @@
+slug: faiss
+name: Faiss
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Meta (Fundamental AI Research)
+    organization_slug: meta
+    source_ids: [ faiss-readme, faiss-docs, faiss-license ]
+organization_slugs: [ meta ]
+links:
+  - label: Repository
+    url: https://github.com/facebookresearch/faiss
+    kind: repository
+  - label: Documentation
+    url: https://faiss.ai/
+    kind: documentation
+  - label: Wiki (tutorial and FAQ)
+    url: https://github.com/facebookresearch/faiss/wiki
+    kind: documentation
+  - label: LICENSE (MIT)
+    url: https://github.com/facebookresearch/faiss/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/facebookresearch/faiss/releases
+    kind: release-notes
+summary:
+  text: >-
+    Faiss is a library for similarity search and clustering of dense vectors, written in C++
+    with Python wrappers. It includes exact and approximate nearest-neighbor indexes, among them
+    compressed (quantization-based) and graph-based (HNSW, NSG) indexes, and GPU
+    implementations of several algorithms. It is developed mainly at Meta's Fundamental AI
+    Research (FAIR) group, which released it in March 2017.
+  source_ids: [ faiss-readme, faiss-docs, faiss-announcement-2017 ]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Searching large collections of vectors by L2 distance, dot product, or cosine similarity,
+    for example the embeddings used in retrieval systems, including collections that do not fit
+    in RAM; also k-means clustering and tools for tuning index parameters.
+  source_ids: [ faiss-readme, faiss-docs ]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The README says Faiss is developed primarily at Meta's Fundamental AI Research group and
+    carries a Meta Platforms, Inc. copyright notice, and the MIT license names Facebook, Inc. and
+    its affiliates as copyright holder. Meta Platforms, Inc. is a Delaware corporation with
+    principal executive offices in Menlo Park, California, per the cover page of its fiscal 2025
+    Form 10-K.
+  source_ids: [ faiss-readme, faiss-license, meta-10k-2025-cover ]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code on GitHub under the MIT License. Prebuilt packages are distributed through the
+    pytorch conda channel.
+  source_ids: [ faiss-repo, faiss-license, faiss-install ]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/facebookresearch/faiss/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ faiss-license ]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository.
+    source_ids: [ faiss-repo ]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      A GitHub wiki with a tutorial, FAQ, and troubleshooting section, plus per-class C++ API
+      documentation at faiss.ai.
+    source_ids: [ faiss-readme, faiss-docs, faiss-wiki-start ]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      INSTALL.md names conda as the supported install path (faiss-cpu, faiss-gpu, and
+      faiss-gpu-cuvs packages, plus nightly builds) and also documents Pixi and building from
+      source with CMake.
+    source_ids: [ faiss-install ]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      faiss-cpu conda packages cover Linux (x86-64 and aarch64), macOS (arm64), and Windows
+      (x86-64); faiss-gpu covers Linux x86-64 with CUDA 11.4 and 12.1, and faiss-gpu-cuvs covers
+      Linux x86-64 with CUDA 13.2. The README describes optional GPU support through CUDA or AMD
+      ROCm; INSTALL.md says ROCm conda packages are not yet available.
+    source_ids: [ faiss-install, faiss-readme ]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: Versioned releases are published on GitHub; the latest at review was v1.15.1, published September 16, 2026.
+    source_ids: [ faiss-release-1-15-1 ]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README says the only required dependency is a BLAS implementation; the GPU code and
+      the Python interface are optional, and NVIDIA cuVS GPU backends can be enabled.
+    source_ids: [ faiss-readme ]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [ vector-search, numerical-computing, retrieval ]
+publication_status: published
+archive_note: null
+released_at: 2017-03
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: faiss-repo
+    title: facebookresearch/faiss (GitHub repository)
+    url: https://github.com/facebookresearch/faiss
+    publisher: Meta
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faiss-readme
+    title: facebookresearch/faiss README.md
+    url: https://raw.githubusercontent.com/facebookresearch/faiss/main/README.md
+    publisher: Meta
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faiss-license
+    title: facebookresearch/faiss LICENSE (MIT)
+    url: https://raw.githubusercontent.com/facebookresearch/faiss/main/LICENSE
+    publisher: Meta
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faiss-install
+    title: Installing Faiss (INSTALL.md)
+    url: https://raw.githubusercontent.com/facebookresearch/faiss/main/INSTALL.md
+    publisher: Meta
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faiss-docs
+    title: Welcome to Faiss Documentation
+    url: https://faiss.ai/
+    publisher: Meta
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faiss-wiki-start
+    title: Getting started · facebookresearch/faiss Wiki
+    url: https://github.com/facebookresearch/faiss/wiki/Getting-started
+    publisher: Meta
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faiss-release-1-15-1
+    title: Faiss release v1.15.1
+    url: https://github.com/facebookresearch/faiss/releases/tag/v1.15.1
+    publisher: Meta
+    kind: release-notes
+    published_at: 2026-09-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: faiss-announcement-2017
+    title: "Faiss: A library for efficient similarity search"
+    url: https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/
+    publisher: Engineering at Meta
+    kind: announcement
+    published_at: 2017-03-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: meta-10k-2025-cover
+    title: Meta Platforms, Inc. Form 10-K for fiscal 2025, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/R1.htm
+    publisher: U.S. Securities and Exchange Commission (filed by Meta Platforms, Inc.)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

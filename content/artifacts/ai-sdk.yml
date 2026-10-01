@@ -1,0 +1,184 @@
+slug: ai-sdk
+name: AI SDK
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Vercel
+    organization_slug: vercel
+    source_ids: [readme, license]
+organization_slugs: [vercel]
+links:
+  - label: Documentation
+    url: https://ai-sdk.dev/docs/introduction
+    kind: documentation
+  - label: Repository
+    url: https://github.com/vercel/ai
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/vercel/ai/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/vercel/ai/releases/tag/ai%407.0.127
+    kind: release-notes
+summary:
+  text: >-
+    The AI SDK is an open-source TypeScript toolkit from Vercel for building AI applications and
+    agents. AI SDK Core gives one API for generating text and structured output, calling tools,
+    and building agents across model providers, and AI SDK UI provides hooks for chat and
+    generative interfaces in web frameworks.
+  source_ids: [readme, docs-intro]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Adding model calls, structured output, tool use, and agent loops to TypeScript
+    applications, and switching between model providers without rewriting application code.
+  source_ids: [readme, docs-intro]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The AI SDK is published in Vercel's vercel organization on GitHub, its LICENSE assigns
+    copyright to Vercel, Inc., and its README says the library is created by Vercel and Next.js
+    team members with community contributions. Vercel's blog refers to its San Francisco
+    headquarters, and its terms name Vercel Inc. under California law. No foundation or
+    multi-organization governance is documented.
+  source_ids: [repo, license, readme, vercel-blog-hq, vercel-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code and documentation are public, and the package installs from npm. By default,
+    model strings are routed through Vercel AI Gateway, which needs its own credentials; provider
+    packages allow direct connections to model providers under their own terms.
+  source_ids: [readme, repo, ai-gateway-docs]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/vercel/ai/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 license covers the AI SDK code. It does not cover Vercel AI Gateway or the
+    model providers the SDK calls; those services have their own terms and pricing.
+  source_ids: [license, readme, ai-gateway-docs]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public monorepo containing the core ai package, UI packages, and provider packages.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public documentation and API reference at ai-sdk.dev.
+    source_ids: [docs-intro, readme]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README installs the core package with npm install ai and requires Node.js 22 or
+      later; framework UI hooks and individual providers are separate npm packages.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README names Next.js, React, Svelte, Vue, Angular, and Node.js; the documentation
+      introduction lists React, Next.js, Vue, Svelte, and Node.js.
+    source_ids: [readme, docs-intro]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed tagged release ai@7.0.127, published October 1, 2026. The repository publishes
+      frequent releases for many packages, including continued 6.x patch releases; this entry
+      describes the project rather than one release.
+    source_ids: [release, releases]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance: null
+tags: [agents, llm-applications, developer-tools]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: vercel/ai (GitHub repository)
+    url: https://github.com/vercel/ai
+    publisher: Vercel
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: readme
+    title: AI SDK README (packages/ai)
+    url: https://raw.githubusercontent.com/vercel/ai/main/packages/ai/README.md
+    publisher: Vercel
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: AI SDK Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/vercel/ai/main/LICENSE
+    publisher: Vercel
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-intro
+    title: AI SDK documentation — Introduction
+    url: https://ai-sdk.dev/docs/introduction
+    publisher: Vercel
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: AI SDK release ai@7.0.127
+    url: https://github.com/vercel/ai/releases/tag/ai%407.0.127
+    publisher: Vercel
+    kind: release-notes
+    published_at: 2026-10-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: releases
+    title: vercel/ai releases
+    url: https://github.com/vercel/ai/releases
+    publisher: Vercel
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ai-gateway-docs
+    title: "Vercel AI Gateway: Models, Routing, and Observability"
+    url: https://vercel.com/docs/ai-gateway
+    publisher: Vercel
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-blog-hq
+    title: Meet the 2026 Vercel AI Accelerator Cohort
+    url: https://vercel.com/blog/2026-vercel-ai-accelerator-cohort
+    publisher: Vercel
+    kind: announcement
+    published_at: 2026-03-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-terms
+    title: Vercel Terms of Service
+    url: https://vercel.com/legal/terms
+    publisher: Vercel
+    kind: official-page
+    published_at: 2026-06-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

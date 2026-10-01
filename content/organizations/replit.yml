@@ -1,0 +1,152 @@
+slug: replit
+name: Replit
+legal_name:
+  text: Replit, Inc.
+  source_ids: [replit-terms, replit-privacy]
+  reviewed_at: 2026-10-01
+website: https://replit.com
+logo_text: R
+summary:
+  text: >-
+    Replit offers a hosted platform, available on the web, desktop, and mobile, where people
+    describe software in natural language and create, publish, and run apps with the help of
+    Replit Agent. It has also published two small code-completion models on Hugging Face.
+  source_ids: [replit-about, replit-docs, replit-agent-docs, hf-replit-code-v1-5]
+  reviewed_at: 2026-10-01
+organization_roles: [developer-platform, model-developer]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Foster City, California
+  country: US
+  source_ids: [replit-careers, replit-privacy]
+other_locations: []
+founded: null
+sectors: [agents]
+status_note: null
+products:
+  - id: replit-platform
+    name: Replit
+    kind: developer-tool
+    access: >-
+      Hosted workspace for building and publishing apps, used through the web, desktop, and
+      mobile apps; paid Core and Pro plans and custom-priced Enterprise plans are listed on its
+      pricing page.
+    url: https://docs.replit.com/
+    source_ids: [replit-docs, replit-pricing]
+    last_reviewed: 2026-10-01
+  - id: replit-agent
+    name: Replit Agent
+    kind: developer-tool
+    access: >-
+      AI agent inside Replit that sets up projects, writes and tests code, and fixes errors. It
+      is available on Core and Pro plans, with a Free mode inside monthly allowances and paid
+      Power and Max modes billed by usage.
+    url: https://docs.replit.com/replitai/agent
+    source_ids: [replit-agent-docs]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Replit's model card for replit-code-v1_5-3b describes a 3.3B-parameter code-completion
+      model trained on about 1T tokens of code and related text, released under Apache 2.0.
+      The earlier replit-code-v1-3b (2.7B parameters) is licensed CC BY-SA 4.0, with its source
+      code files under Apache 2.0.
+    source_ids: [hf-replit-code-v1-5, hf-replit-code-v1]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Replit's careers page refers to its Foster City HQ, and its privacy policy gives Replit,
+    Inc.'s postal address in Foster City, California. Its terms of service name Replit, Inc. as
+    the contracting party under California law, with disputes heard in San Francisco.
+  source_ids: [replit-careers, replit-privacy, replit-terms]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Replit's platform and Agent are hosted commercial services. Replit has published
+    weights for two code-completion models on Hugging Face: replit-code-v1-3b under CC BY-SA
+    4.0 and replit-code-v1_5-3b under Apache 2.0. Those releases do not make its current
+    products open.
+  source_ids: [hf-replit-code-v1, hf-replit-code-v1-5, replit-pricing]
+  reviewed_at: 2026-10-01
+hiring_url: https://replit.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: replit-terms
+    title: Replit Terms of Service
+    url: https://replit.com/terms-of-service
+    publisher: Replit
+    kind: official-page
+    published_at: 2026-08-03
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: replit-privacy
+    title: Replit Privacy Policy
+    url: https://replit.com/privacy-policy
+    publisher: Replit
+    kind: official-page
+    published_at: 2026-08-03
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: replit-careers
+    title: Careers at Replit
+    url: https://replit.com/careers
+    publisher: Replit
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: replit-about
+    title: About Replit
+    url: https://replit.com/about
+    publisher: Replit
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: replit-docs
+    title: Replit Docs
+    url: https://docs.replit.com/
+    publisher: Replit
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: replit-agent-docs
+    title: Replit Agent documentation
+    url: https://docs.replit.com/replitai/agent
+    publisher: Replit
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: replit-pricing
+    title: Replit pricing
+    url: https://replit.com/pricing
+    publisher: Replit
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-replit-code-v1
+    title: replit/replit-code-v1-3b model card
+    url: https://huggingface.co/replit/replit-code-v1-3b
+    publisher: Replit
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-replit-code-v1-5
+    title: replit/replit-code-v1_5-3b model card
+    url: https://huggingface.co/replit/replit-code-v1_5-3b
+    publisher: Replit
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

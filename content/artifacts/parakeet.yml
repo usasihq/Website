@@ -1,0 +1,124 @@
+slug: parakeet
+name: NVIDIA Parakeet
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA (NeMo)
+    organization_slug: nvidia
+    source_ids: [nemo-speech-readme, hf-parakeet-listing]
+organization_slugs: [nvidia]
+links:
+  - label: NeMo Speech repository
+    url: https://github.com/NVIDIA-NeMo/Speech
+    kind: repository
+  - label: parakeet-tdt-0.6b-v3 (Hugging Face)
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+    kind: model-hub
+  - label: parakeet-unified-en-0.6b (Hugging Face)
+    url: https://huggingface.co/nvidia/parakeet-unified-en-0.6b
+    kind: model-hub
+  - label: Granary dataset (Hugging Face)
+    url: https://huggingface.co/datasets/nvidia/Granary
+    kind: dataset-hub
+summary:
+  text: >-
+    Parakeet is NVIDIA's family of automatic speech recognition models built on the FastConformer
+    encoder in the NeMo toolkit, released with CTC, RNN-T, TDT, and hybrid TDT-CTC decoders. The
+    first checkpoints were published on Hugging Face in December 2023; the card for one of them,
+    parakeet-rnnt-1.1b, says it was developed jointly by the NVIDIA NeMo and Suno.ai teams.
+    Later releases include the English parakeet-tdt-0.6b-v2 (April
+    2025), the 25-language parakeet-tdt-0.6b-v3 (August 2025), and parakeet-unified-en-0.6b
+    (April 2026), which handles offline and streaming transcription in one model; there are also
+    language-specific checkpoints such as Japanese, Danish, and Vietnamese.
+  source_ids: [hf-parakeet-listing, rnnt-1-1b-card, v3-card, unified-card, nemo-speech-readme]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Transcribing speech to text in batch or streaming settings, with punctuation,
+    capitalization, and timestamps in recent releases, for uses the cards list such as voice
+    assistants, transcription and captioning services, and voice analytics.
+  source_ids: [v3-card, unified-card]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Parakeet checkpoints are published in NVIDIA's Hugging Face organization and announced in
+    NVIDIA's NeMo Speech repository, and the cards describe training with NVIDIA's NeMo toolkit.
+    NVIDIA's principal executive offices are in Santa Clara, California, per its Form 10-Q for
+    the quarter ended July 26, 2026. The parakeet-rnnt-1.1b card says that early checkpoint was
+    developed jointly with the Suno.ai team.
+  source_ids: [hf-parakeet-listing, nemo-speech-readme, v3-card, rnnt-1-1b-card, nvidia-10q-q2fy2027]
+  assessed_at: 2026-10-01
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    Licensing differs by release. The original parakeet-rnnt-1.1b and parakeet-tdt-0.6b-v3 cards
+    give CC-BY-4.0, while parakeet-unified-en-0.6b is governed by the NVIDIA Open Model License
+    Agreement. Check each release.
+  source_ids: [rnnt-1-1b-card, v3-card, unified-card]
+  reviewed_at: 2026-10-01
+checklist: {}
+run_notes: []
+provenance: null
+tags: [speech]
+publication_status: published
+archive_note: null
+released_at: 2023-12
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: hf-parakeet-listing
+    title: Hugging Face model listing for nvidia Parakeet models (API)
+    url: https://huggingface.co/api/models?author=nvidia&search=parakeet&limit=100&sort=createdAt&direction=-1
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rnnt-1-1b-card
+    title: nvidia/parakeet-rnnt-1.1b model card
+    url: https://huggingface.co/nvidia/parakeet-rnnt-1.1b/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: v3-card
+    title: nvidia/parakeet-tdt-0.6b-v3 model card
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2025-08-14
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: unified-card
+    title: nvidia/parakeet-unified-en-0.6b model card
+    url: https://huggingface.co/nvidia/parakeet-unified-en-0.6b/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-04-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-speech-readme
+    title: NVIDIA-NeMo/Speech README
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,218 @@
+slug: openai-agents-sdk
+name: OpenAI Agents SDK
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [repo, license, docs-home]
+organization_slugs: [openai]
+links:
+  - label: Repository (Python)
+    url: https://github.com/openai/openai-agents-python
+    kind: repository
+  - label: Repository (JavaScript/TypeScript)
+    url: https://github.com/openai/openai-agents-js
+    kind: repository
+  - label: Documentation
+    url: https://openai.github.io/openai-agents-python/
+    kind: documentation
+  - label: LICENSE (Python)
+    url: https://github.com/openai/openai-agents-python/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release (Python)
+    url: https://github.com/openai/openai-agents-python/releases/tag/v0.22.3
+    kind: release-notes
+summary:
+  text: >-
+    The OpenAI Agents SDK is an open-source framework from OpenAI for building multi-agent
+    workflows from agents, tools, handoffs, guardrails, and sessions, with built-in tracing. OpenAI
+    describes it as a production-ready upgrade of its earlier Swarm experiment. The Python SDK has
+    a separate JavaScript/TypeScript counterpart.
+  source_ids: [repo, docs-home]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Building applications in which language-model agents call tools, hand tasks to other agents,
+    and check inputs and outputs. The SDK is open-source client code that calls a model API:
+    OpenAI's hosted models, which are not open, through the Responses or Chat Completions APIs by
+    default, or other providers through OpenAI-compatible endpoints, custom model providers, and
+    beta adapters. It does not include model weights.
+  source_ids: [repo, docs-models]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Both SDKs are developed in OpenAI's GitHub organization, their LICENSE files assign copyright to
+    OpenAI, and the documentation is published by OpenAI. OpenAI Group PBC, a Delaware public
+    benefit corporation, gives a San Francisco, California address in a February 2026 agreement
+    filed with the SEC. See the openai organization record.
+  source_ids: [repo, repo-js, license, license-js, docs-home, sec-openai-amazon-ecl]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public and the Python package installs from PyPI (openai-agents). The README's
+    examples require an OPENAI_API_KEY, and OpenAI's hosted models are not open. Tracing is enabled
+    by default and sends traces to OpenAI's Traces dashboard unless disabled.
+  source_ids: [repo, docs-tracing]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License (openai-agents-python)
+    spdx: MIT
+    url: https://github.com/openai/openai-agents-python/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+  - name: MIT License (openai-agents-js)
+    spdx: MIT
+    url: https://github.com/openai/openai-agents-js/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license-js]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT licenses (copyright 2025 OpenAI) cover the Python and JavaScript/TypeScript SDK code.
+    They do not cover OpenAI's hosted models or API services, or third-party model providers, which
+    have their own terms.
+  source_ids: [license, license-js, docs-models]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repositories for the Python and JavaScript/TypeScript SDKs; client code only.
+    source_ids: [repo, repo-js]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation, including model-provider and tracing guides.
+    source_ids: [docs-home, docs-models, docs-tracing]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Installed with pip or uv as openai-agents, with optional extras for voice and Redis
+      sessions.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Python 3.10 or newer. The README notes that the local Unix sandbox client supports macOS and
+      Linux; on Windows it points to the Docker sandbox client or a hosted sandbox client.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed Python SDK v0.22.3, marked Latest and published September 17, 2026; the
+      JavaScript/TypeScript SDK's latest release at review was v0.18.0, published September 10,
+      2026. This entry describes the project rather than one release.
+    source_ids: [release, release-js]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The tracing documentation says tracing is enabled by default and can be turned off with the
+      OPENAI_AGENTS_DISABLE_TRACING=1 environment variable, set_tracing_disabled(True), or a
+      per-run setting; it is unavailable to organizations using OpenAI's APIs under a Zero Data
+      Retention policy.
+    source_ids: [docs-tracing]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The models documentation describes using non-OpenAI providers through an OpenAI-compatible
+      base URL, a custom ModelProvider, per-agent model settings, and beta LiteLLM and any-llm
+      adapters, and warns that features differ between providers. It does not document a specific
+      local model runtime.
+    source_ids: [docs-models]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [agents, multi-agent]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: openai/openai-agents-python repository and README
+    url: https://github.com/openai/openai-agents-python
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: repo-js
+    title: openai/openai-agents-js repository
+    url: https://github.com/openai/openai-agents-js
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: OpenAI Agents SDK (Python) MIT LICENSE
+    url: https://raw.githubusercontent.com/openai/openai-agents-python/main/LICENSE
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-js
+    title: OpenAI Agents SDK (JavaScript/TypeScript) MIT LICENSE
+    url: https://raw.githubusercontent.com/openai/openai-agents-js/main/LICENSE
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-home
+    title: OpenAI Agents SDK documentation
+    url: https://openai.github.io/openai-agents-python/
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-models
+    title: OpenAI Agents SDK — Models
+    url: https://openai.github.io/openai-agents-python/models/
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-tracing
+    title: OpenAI Agents SDK — Tracing
+    url: https://openai.github.io/openai-agents-python/tracing/
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: openai-agents-python v0.22.3 release
+    url: https://github.com/openai/openai-agents-python/releases/tag/v0.22.3
+    publisher: OpenAI
+    kind: release-notes
+    published_at: 2026-09-17
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release-js
+    title: openai-agents-js v0.18.0 release
+    url: https://github.com/openai/openai-agents-js/releases/tag/v0.18.0
+    publisher: OpenAI
+    kind: release-notes
+    published_at: 2026-09-10
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

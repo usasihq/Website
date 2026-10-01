@@ -122,4 +122,17 @@ describe("catalog: public exports", () => {
     expect(exported).not.toContain("fixture-draft-artifact");
     expect(exported).toContain("Draft thing");
   });
+
+  it("strips links to unpublished records from exported people", () => {
+    const c = new Catalog(validateContent(fixtureContent(), { today: TODAY }));
+    const person = {
+      slug: "fixture-person",
+      affiliations: [{ name: "Draft org", organization_slug: "fixture-missing-org" }],
+      work: [{ name: "Draft thing", artifact_slug: "fixture-draft-artifact" }],
+    } as unknown as Parameters<Catalog["publicPerson"]>[0];
+    const exported = c.publicPerson(person);
+    expect(exported.affiliations[0].organization_slug).toBeNull();
+    expect(exported.work[0].artifact_slug).toBeNull();
+    expect(exported.work[0].name).toBe("Draft thing");
+  });
 });

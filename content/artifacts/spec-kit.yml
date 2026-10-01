@@ -1,0 +1,190 @@
+slug: spec-kit
+name: Spec Kit
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: GitHub
+    organization_slug: github
+    source_ids: [repo, license, support]
+organization_slugs: [github]
+links:
+  - label: Documentation
+    url: https://github.github.io/spec-kit/
+    kind: documentation
+  - label: Repository
+    url: https://github.com/github/spec-kit
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/github/spec-kit/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/github/spec-kit/releases/tag/v1.0.13
+    kind: release-notes
+summary:
+  text: >-
+    Spec Kit is an open-source toolkit from GitHub that gives AI coding agents structured
+    processes and reusable templates. Its core process, spec-driven development, turns
+    requirements into a specification, a technical plan, and a task list before implementation;
+    bug-fixing and idea-assessment processes are available as bundled extensions.
+  source_ids: [repo, announcement]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Working with an AI coding agent from a written specification, plan, and task list; keeping
+    bug diagnosis, fixes, and verification separate; and assessing whether an idea is worth
+    building before writing code.
+  source_ids: [repo]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Spec Kit is published in GitHub's own github organization on GitHub, its LICENSE assigns
+    copyright to GitHub, Inc., and its SUPPORT file says it is maintained by GitHub staff and
+    the community. GitHub, Inc.'s privacy statement gives its postal address in San Francisco,
+    California, and Microsoft announced that it completed its acquisition of GitHub in 2018. No
+    foundation or multi-organization governance is documented. Eligibility rests on this
+    maintaining entity, not on contributors.
+  source_ids: [repo, license, support, gh-privacy, msft-gh-acquisition]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code, templates, and documentation are public. Using the processes requires a
+    supported AI coding agent, which is configured and licensed separately.
+  source_ids: [repo, install-docs]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/github/spec-kit/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT license covers Spec Kit's code and templates. It does not cover the AI coding
+    agents or model services that Spec Kit integrates with, or community extensions published
+    elsewhere; those have their own terms.
+  source_ids: [license, integrations-docs]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the github organization.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      Public documentation site with quickstarts, guides, a CLI reference, and the
+      spec-driven development methodology.
+    source_ids: [repo, install-docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README installs the specify-cli command-line tool with uv (Python 3.11+ required) and
+      runs specify init with an agent integration key. The installation guide also documents
+      pipx and PyPI installs, installs pinned to a release tag from the repository, and
+      one-time use with uvx.
+    source_ids: [repo, install-docs]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README states Linux, macOS, or Windows. The integrations reference lists many
+      supported coding agents by integration key, including GitHub Copilot, Claude Code, Gemini
+      CLI, and Cursor, plus a generic option for unlisted agents.
+    source_ids: [repo, integrations-docs]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed tagged release v1.0.13, published September 29, 2026. This entry describes the
+      project rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance: null
+tags: [agents, coding-agent, developer-tools]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: github/spec-kit repository and README
+    url: https://github.com/github/spec-kit
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Spec Kit MIT LICENSE
+    url: https://raw.githubusercontent.com/github/spec-kit/main/LICENSE
+    publisher: GitHub
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: support
+    title: Spec Kit SUPPORT.md (project status)
+    url: https://raw.githubusercontent.com/github/spec-kit/main/SUPPORT.md
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: install-docs
+    title: Spec Kit installation guide
+    url: https://github.github.io/spec-kit/installation.html
+    publisher: GitHub
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: integrations-docs
+    title: Spec Kit supported AI coding agent integrations
+    url: https://github.github.io/spec-kit/reference/integrations.html
+    publisher: GitHub
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Spec Kit v1.0.13 release
+    url: https://github.com/github/spec-kit/releases/tag/v1.0.13
+    publisher: GitHub
+    kind: release-notes
+    published_at: 2026-09-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: announcement
+    title: "Spec-driven development with AI: Get started with a new open source toolkit"
+    url: https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/
+    publisher: GitHub
+    kind: announcement
+    published_at: 2025-09-02
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: gh-privacy
+    title: GitHub General Privacy Statement
+    url: https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement
+    publisher: GitHub
+    kind: official-page
+    published_at: 2026-04-27
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: msft-gh-acquisition
+    title: Microsoft completes GitHub acquisition
+    url: https://blogs.microsoft.com/blog/2018/10/26/microsoft-completes-github-acquisition/
+    publisher: Microsoft
+    kind: announcement
+    published_at: 2018-10-26
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

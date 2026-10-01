@@ -1,0 +1,221 @@
+slug: vercel
+name: Vercel
+legal_name:
+  text: Vercel Inc.
+  source_ids: [vercel-terms, vercel-privacy]
+  reviewed_at: 2026-10-01
+website: https://vercel.com
+logo_text: V
+summary:
+  text: >-
+    Vercel operates a cloud platform for building and deploying web applications and AI agents.
+    Its AI offerings include the AI Gateway for calling models from many providers, the v0 app
+    builder, and the open-source AI SDK for TypeScript.
+  source_ids: [vercel-docs, vercel-ai-gateway, v0-docs, ai-sdk-intro]
+  reviewed_at: 2026-10-01
+organization_roles: [developer-platform, cloud-provider]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation, per the company's record in the SEC's EDGAR system.
+  source_ids: [vercel-edgar]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [vercel-blog-hq, vercel-edgar]
+other_locations: []
+founded: null
+sectors: [cloud, agents]
+status_note: null
+products:
+  - id: vercel-platform
+    name: Vercel
+    kind: cloud-platform
+    access: >-
+      Hosted platform for deploying applications from Git or the Vercel CLI, with a free Hobby
+      plan, a paid Pro plan, and custom-priced Enterprise plans.
+    url: https://vercel.com/docs
+    source_ids: [vercel-docs, vercel-pricing]
+    last_reviewed: 2026-10-01
+  - id: ai-gateway
+    name: Vercel AI Gateway
+    kind: inference-service
+    access: >-
+      Managed gateway that routes model requests across providers using an AI Gateway API key
+      (or OIDC on Vercel deployments), with budgets, request logs, fallbacks, and bring-your-own-key
+      support; available on all Vercel plans.
+    url: https://vercel.com/docs/ai-gateway
+    source_ids: [vercel-ai-gateway]
+    last_reviewed: 2026-10-01
+  - id: v0
+    name: v0
+    kind: developer-tool
+    access: >-
+      Hosted AI agent that generates code, user interfaces, and full-stack apps that can be
+      deployed to Vercel; offered with a Free plan and paid Plus, Business, and Enterprise plans.
+    url: https://v0.app/docs
+    source_ids: [v0-docs, v0-pricing]
+    last_reviewed: 2026-10-01
+  - id: ai-sdk
+    name: AI SDK
+    kind: developer-tool
+    access: >-
+      Open-source (Apache 2.0) TypeScript toolkit installed from npm; it can call models through
+      the AI Gateway or directly through provider packages.
+    url: https://ai-sdk.dev/docs/introduction
+    source_ids: [ai-sdk-intro, ai-sdk-repo, ai-sdk-license]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      The AI SDK's README says that by default it sends model-string requests through the Vercel
+      AI Gateway, and that developers can instead connect to providers directly with separate
+      provider packages.
+    source_ids: [ai-sdk-readme]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Vercel's blog referred in March 2026 to "our new San Francisco headquarters", and its
+    April 2026 recap describes an event at Vercel headquarters in San Francisco. Its terms and
+    privacy policy name Vercel Inc. as the contracting entity with a California postal address
+    and California governing law. The company's EDGAR record lists Vercel Inc. as a Delaware
+    corporation with a San Francisco business address; that record comes from a 2021 filing.
+  source_ids: [vercel-blog-hq, vercel-blog-recap, vercel-terms, vercel-privacy, vercel-edgar]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Vercel's deployment platform, AI Gateway, and v0 are hosted commercial services. Vercel
+    publishes open-source developer software, including the AI SDK under the Apache 2.0 license
+    and Next.js under the MIT License. This catalog has no record of model weights published by
+    Vercel.
+  source_ids: [ai-sdk-license, nextjs-license, vercel-pricing, v0-pricing]
+  reviewed_at: 2026-10-01
+hiring_url: https://vercel.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: vercel-terms
+    title: Vercel Terms of Service
+    url: https://vercel.com/legal/terms
+    publisher: Vercel
+    kind: official-page
+    published_at: 2026-06-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-privacy
+    title: Vercel Privacy Policy
+    url: https://vercel.com/legal/privacy-policy
+    publisher: Vercel
+    kind: official-page
+    published_at: 2026-06-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-edgar
+    title: "EDGAR company filings: Vercel Inc. (CIK 0001893137)"
+    url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001893137&type=&dateb=&owner=include&count=40
+    publisher: U.S. Securities and Exchange Commission
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-blog-hq
+    title: Meet the 2026 Vercel AI Accelerator Cohort
+    url: https://vercel.com/blog/2026-vercel-ai-accelerator-cohort
+    publisher: Vercel
+    kind: announcement
+    published_at: 2026-03-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-blog-recap
+    title: 2026 Vercel AI Accelerator recap
+    url: https://vercel.com/blog/2026-vercel-ai-accelerator-recap
+    publisher: Vercel
+    kind: announcement
+    published_at: 2026-04-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-docs
+    title: Vercel Documentation
+    url: https://vercel.com/docs
+    publisher: Vercel
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-pricing
+    title: Vercel pricing
+    url: https://vercel.com/pricing
+    publisher: Vercel
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: vercel-ai-gateway
+    title: "Vercel AI Gateway: Models, Routing, and Observability"
+    url: https://vercel.com/docs/ai-gateway
+    publisher: Vercel
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: v0-docs
+    title: v0 documentation
+    url: https://v0.app/docs
+    publisher: Vercel
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: v0-pricing
+    title: v0 pricing
+    url: https://v0.app/pricing
+    publisher: Vercel
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ai-sdk-intro
+    title: AI SDK documentation — Introduction
+    url: https://ai-sdk.dev/docs/introduction
+    publisher: Vercel
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ai-sdk-repo
+    title: vercel/ai (GitHub repository)
+    url: https://github.com/vercel/ai
+    publisher: Vercel
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ai-sdk-readme
+    title: AI SDK README (packages/ai)
+    url: https://raw.githubusercontent.com/vercel/ai/main/packages/ai/README.md
+    publisher: Vercel
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ai-sdk-license
+    title: AI SDK LICENSE
+    url: https://raw.githubusercontent.com/vercel/ai/main/LICENSE
+    publisher: Vercel
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nextjs-license
+    title: Next.js license
+    url: https://raw.githubusercontent.com/vercel/next.js/canary/license.md
+    publisher: Vercel
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

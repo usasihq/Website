@@ -1,0 +1,244 @@
+slug: marin
+name: Marin
+kind: research-stack
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Open Athena (Open Athena AI Foundation Inc.)
+    organization_slug: null
+    source_ids: [marin-home, oa-marin, oa-terms]
+  - name: Stanford Center for Research on Foundation Models (CRFM)
+    organization_slug: stanford-university
+    source_ids: [marin-repo, marin-8b-base-card]
+organization_slugs: [stanford-university]
+links:
+  - label: Website
+    url: https://marin.community/
+    kind: website
+  - label: Repository
+    url: https://github.com/marin-community/marin
+    kind: repository
+  - label: Documentation
+    url: https://marin.readthedocs.io/en/latest/
+    kind: documentation
+  - label: Models and datasets (Hugging Face)
+    url: https://huggingface.co/marin-community
+    kind: model-hub
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/marin-community/marin/blob/main/LICENSE
+    kind: license
+  - label: Marin 8B retrospective
+    url: https://github.com/marin-community/marin/blob/main/docs/reports/marin-8b-retro.md
+    kind: documentation
+summary:
+  text: >-
+    Marin is an open lab and software platform for developing foundation models, covering data
+    curation, filtering, tokenization, pretraining, post-training, and evaluation, with
+    experiments, code, and training logs published as the work happens. It began at Stanford in
+    2024, originating in Stanford CRFM and HAI, and is now primarily developed by the nonprofit
+    Open Athena with Stanford CRFM as a core collaborator. Models trained with it include Marin
+    8B and Marin 32B.
+  source_ids: [marin-repo, marin-home, marin-announcement, marin-hf-org]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Running and studying language-model training experiments with a documented pipeline. The
+    documentation includes tutorials from installation and training a tiny model to a DCLM 1B
+    experiment, and the README says the same code scales to large GPU or TPU clusters.
+  source_ids: [marin-repo, marin-docs]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The Marin site says the project is primarily developed by Open Athena, and the README names
+    Stanford CRFM and Open Athena as its core collaborators. Open Athena's terms of use name
+    Open Athena AI Foundation Inc., at 1245 Broadway in New York, under New York law; the IRS
+    extract for New York lists Open Athena Foundation Inc. at the same address as a 501(c)(3)
+    corporation. The Marin 8B model card says the model was developed by the Marin team at
+    Stanford CRFM. Both documented stewards are U.S.-based; the slight difference between the
+    two Open Athena entity names is resolved here only by the matching address.
+  source_ids: [marin-home, marin-repo, oa-terms, irs-eo-bmf-ny, irs-eo-info, marin-8b-base-card]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code and documentation are public. Model checkpoints are published separately on
+    Hugging Face; the Marin 8B Base repository is not gated.
+  source_ids: [marin-repo, marin-docs, marin-8b-base-card, marin-8b-hf-api]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/marin-community/marin/blob/main/LICENSE
+    applies_to: code
+    source_ids: [marin-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 entry covers the Marin repository's code. Model releases carry their own
+    terms: the Marin 8B Base model card states that its code and model are released under
+    Apache 2.0, and that three of the Markdown-converted datasets Marin made for training
+    (StackExchange, Wikipedia, and one Ar5iv set) keep the licenses of their original sources.
+    This project record does not assess individual model releases.
+  source_ids: [marin-license, marin-8b-base-card]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under Apache 2.0.
+    source_ids: [marin-repo, marin-license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      Documentation on Read the Docs and in the repository's docs folder includes tutorials,
+      explanations, experiment reports, a developer guide, and technical reference.
+    source_ids: [marin-docs, marin-repo]
+    reviewed_at: 2026-10-01
+  training_code:
+    status: public
+    note: >-
+      The repository contains the pretraining and post-training pipeline, and the README links
+      the training script used for Marin 8B. The Marin 8B model card points to the Levanter
+      training library.
+    source_ids: [marin-repo, marin-8b-base-card]
+    reviewed_at: 2026-10-01
+  data_information:
+    status: public
+    note: >-
+      The Marin 8B retrospective documents the data mixture in each training phase (for
+      example DCLM Baseline, StarCoder, Proofpile 2, Nemotron-CC, and Marin-made Markdown
+      corpora), and the README links pipelines that reproduce the Delphi training mixture from
+      public datasets.
+    source_ids: [marin-8b-retro, marin-repo]
+    reviewed_at: 2026-10-01
+  reproducibility_instructions:
+    status: public
+    note: >-
+      Experiments are declared in code as dependent steps, and the documentation walks through
+      installation and example training runs. The 8B retrospective records hardware, phases,
+      and hyperparameters and links its experiment script and Weights & Biases report.
+      Reproducing the large runs requires TPU or GPU clusters.
+    source_ids: [marin-repo, marin-docs, marin-8b-retro]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The Marin 8B retrospective reports training on two TPU v5e-256 slices for the first
+      phase and on a TPU v4-2048 slice for later phases, with parameters and optimizer states
+      in float32 and computation in bfloat16.
+    source_ids: [marin-8b-retro]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [training, language-model, pretraining-data]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: marin-home
+    title: Marin
+    url: https://marin.community/
+    publisher: The Marin Project
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-repo
+    title: marin-community/marin (GitHub repository and README)
+    url: https://github.com/marin-community/marin
+    publisher: The Marin Project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-license
+    title: Marin LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/marin-community/marin/main/LICENSE
+    publisher: The Marin Project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-docs
+    title: Marin documentation
+    url: https://marin.readthedocs.io/en/latest/
+    publisher: The Marin Project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-announcement
+    title: "Introducing Marin: An Open Lab for Building Foundation Models"
+    url: https://marin.community/blog/2025/05/19/announcement/
+    publisher: The Marin Project
+    kind: announcement
+    published_at: 2025-05-19
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-8b-retro
+    title: Marin 8B retrospective (docs/reports/marin-8b-retro.md)
+    url: https://github.com/marin-community/marin/blob/main/docs/reports/marin-8b-retro.md
+    publisher: The Marin Project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-8b-base-card
+    title: marin-community/marin-8b-base model card
+    url: https://huggingface.co/marin-community/marin-8b-base
+    publisher: The Marin Project
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-hf-org
+    title: marin-community (The Marin Project) on Hugging Face
+    url: https://huggingface.co/marin-community
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: oa-marin
+    title: Marin | Open Athena
+    url: https://openathena.ai/projects/marin/
+    publisher: Open Athena
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: oa-terms
+    title: Terms of Use | Open Athena
+    url: https://openathena.ai/terms/
+    publisher: Open Athena
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ny
+    title: Exempt Organizations Business Master File Extract - New York (eo_ny.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ny.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: marin-8b-hf-api
+    title: Hugging Face Hub API metadata for marin-community/marin-8b-base (gated false)
+    url: https://huggingface.co/api/models/marin-community/marin-8b-base
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

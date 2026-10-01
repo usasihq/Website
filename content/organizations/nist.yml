@@ -1,0 +1,197 @@
+slug: nist
+name: National Institute of Standards and Technology
+legal_name: null
+website: https://www.nist.gov
+logo_text: NST
+summary:
+  text: >-
+    The National Institute of Standards and Technology (NIST) is a U.S. federal agency founded
+    in 1901 and now part of the Department of Commerce. It works on measurement science,
+    standards, and technology; its AI work includes the AI Risk Management Framework, the
+    Dioptra test platform, and a center for AI evaluation and voluntary guidelines.
+  source_ids: [nist-about, nist-ai-rmf, dioptra-docs, nist-caissi]
+  reviewed_at: 2026-10-01
+organization_roles: [standards-body, research-lab]
+ownership_category: public-institution
+ownership_evidence:
+  text: NIST states that it is part of the U.S. Department of Commerce.
+  source_ids: [nist-about]
+  reviewed_at: 2026-10-01
+legal_form:
+  text: >-
+    Federal agency within the U.S. Department of Commerce. NIST states that Congress
+    established it in 1901 and describes it as one of the country's oldest physical science
+    laboratories.
+  source_ids: [nist-about]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Gaithersburg, Maryland
+  country: US
+  source_ids: [nist-about, nist-visit]
+other_locations:
+  - label: Boulder, Colorado
+    country: US
+    source_ids: [nist-visit]
+  - label: Rockville, Maryland (National Cybersecurity Center of Excellence)
+    country: US
+    source_ids: [nist-visit]
+founded:
+  year: 1901
+  source_ids: [nist-about]
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      NIST released the AI Risk Management Framework (AI RMF 1.0, NIST AI 100-1) on January 26,
+      2023. It is intended for voluntary use in managing risks associated with AI and is
+      accompanied by an AI RMF Playbook, Roadmap, and Crosswalk. NIST added a Generative AI
+      Profile (NIST-AI-600-1) on July 26, 2024, and released a concept note for an AI RMF
+      profile on critical infrastructure on April 7, 2026. NIST's framework page states that
+      AI RMF 1.0 is being revised as part of the White House AI Action Plan.
+    source_ids: [nist-ai-rmf]
+    reviewed_at: 2026-10-01
+  - text: >-
+      NIST's National Cybersecurity Center of Excellence (NCCoE) built Dioptra, an open-source
+      test platform for assessing trustworthy characteristics of AI models. NIST announced it
+      in July 2024, and its README says it supports the Measure function of the AI RMF.
+    source_ids: [dioptra-why, nist-dioptra-announcement, dioptra-repo]
+    reviewed_at: 2026-10-01
+  - text: >-
+      NIST describes its center for AI evaluation as industry's main point of contact in the
+      U.S. government for testing and collaborative research on commercial systems. The center
+      develops voluntary guidelines, makes voluntary agreements with private-sector developers
+      and evaluators, and leads unclassified capability evaluations that focus on risks such as
+      cybersecurity, biosecurity, and chemical weapons.
+    source_ids: [nist-caissi, nist-caissi-guidelines]
+    reviewed_at: 2026-10-01
+  - text: >-
+      NIST news items through September 2026 call this center the Center for AI Standards and
+      Innovation (CAISI). As of October 1, 2026, nist.gov/caisi leads to a page for the Center
+      for Advancing Innovation and Standards for Super Intelligence (CAISSI). A NIST topic page
+      states that NIST is updating its communications to use the term "super intelligence," as
+      directed by a September 29, 2026 executive order.
+    source_ids: [nist-caissi, nist-caisi-news, nist-super-intelligence]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    NIST is a U.S. federal agency within the Department of Commerce and describes itself as one
+    of the country's oldest physical science laboratories. Its headquarters is at 100 Bureau
+    Drive, Gaithersburg, Maryland, and its two primary campuses are in Gaithersburg and Boulder,
+    Colorado.
+  source_ids: [nist-about, nist-visit]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact. Dioptra's source code is public on GitHub; its
+    license file says that work by NIST employees is not subject to U.S. copyright and that
+    copyright held by NIST is licensed under CC BY 4.0. The AI RMF 1.0 can be downloaded from
+    NIST's website.
+  source_ids: [dioptra-license, dioptra-repo, nist-ai-rmf]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: nist-about
+    title: About NIST
+    url: https://www.nist.gov/about-nist
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-visit
+    title: Visitor Information | NIST
+    url: https://www.nist.gov/about-nist/visit
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-ai-rmf
+    title: AI Risk Management Framework | NIST
+    url: https://www.nist.gov/itl/ai-risk-management-framework
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-caissi
+    title: Center for Advancing Innovation and Standards for Super Intelligence (CAISSI) | NIST
+    url: https://www.nist.gov/caissi
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-caissi-guidelines
+    title: Guidelines | NIST (CAISSI)
+    url: https://www.nist.gov/caissi/guidelines
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-caisi-news
+    title: "News and Events: Center for AI Standards and Innovation | NIST"
+    url: https://www.nist.gov/news-events/news-updates/tag/2810121
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-super-intelligence
+    title: Super intelligence | NIST
+    url: https://www.nist.gov/super-intelligence
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-docs
+    title: Dioptra Overview — Dioptra 1.1.0 documentation
+    url: https://pages.nist.gov/dioptra/
+    publisher: National Institute of Standards and Technology
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-why
+    title: Motivation — Dioptra 1.1.0 documentation
+    url: https://pages.nist.gov/dioptra/explanation/dioptra-motivation/why-dioptra.html
+    publisher: National Institute of Standards and Technology
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-repo
+    title: usnistgov/dioptra (GitHub repository)
+    url: https://github.com/usnistgov/dioptra
+    publisher: National Institute of Standards and Technology
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-license
+    title: Dioptra LICENSE
+    url: https://raw.githubusercontent.com/usnistgov/dioptra/main/LICENSE
+    publisher: National Institute of Standards and Technology
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-dioptra-announcement
+    title: Department of Commerce Announces New Guidance, Tools 270 Days Following President Biden's Executive Order on AI
+    url: https://www.nist.gov/news-events/news/2024/07/department-commerce-announces-new-guidance-tools-270-days-following
+    publisher: National Institute of Standards and Technology
+    kind: announcement
+    published_at: 2024-07-26
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

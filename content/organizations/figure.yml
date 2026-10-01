@@ -67,9 +67,18 @@ openness_summary:
     record of public model weights from Figure.
   source_ids: [figure-helix, figure-helix-02, figure-helix-2-5, figure-index]
 hiring_url: https://www.figure.ai/careers
+careers:
+  url: https://www.figure.ai/careers
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: figureai
+  posting_hosts: []
+  source_ids: [figure-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: figure-company
@@ -142,3 +151,11 @@ sources:
     kind: announcement
     published_at: 2026-08-25
     accessed_at: 2026-09-29
+  - id: figure-careers-jobs
+    title: Official careers directory and application links
+    url: https://www.figure.ai/careers
+    publisher: Figure AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,190 @@
+slug: openthoughts
+name: OpenThoughts
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenThoughts collaboration (open-thoughts GitHub and Hugging Face organizations)
+    organization_slug: null
+    source_ids: [openthoughts-site, openthoughts-readme, ot3-card]
+organization_slugs: []
+links:
+  - label: Website
+    url: https://www.openthoughts.ai/
+    kind: website
+  - label: Repository
+    url: https://github.com/open-thoughts/open-thoughts
+    kind: repository
+  - label: OpenThoughts3-1.2M (Hugging Face)
+    url: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+    kind: dataset-hub
+  - label: "Paper: OpenThoughts: Data Recipes for Reasoning Models (arXiv 2506.04178)"
+    url: https://arxiv.org/abs/2506.04178
+    kind: paper
+summary:
+  text: >-
+    OpenThoughts is a collaboration that curates open post-training datasets for reasoning and,
+    more recently, agent models. Its OpenThoughts3-1.2M dataset contains about 850,000 math,
+    250,000 code, and 100,000 science questions with reasoning traces, built through a pipeline
+    of question sourcing, filtering, deduplication, and sampling chosen through more than 1,000
+    ablation experiments.
+  source_ids: [openthoughts-site, ot3-card, openthoughts-paper]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Supervised fine-tuning of reasoning models on math, code, and science problems; the
+    collaboration used OpenThoughts3-1.2M to train its OpenThinker3-7B model.
+  source_ids: [ot3-card]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: pending_review
+  basis: undetermined
+  explanation: >-
+    No single U.S. governing or maintaining entity is documented. The repository README calls
+    the project a collaboration led by Bespoke Labs (whose terms name BespokeLabs.AI, Inc. under
+    California law) and the DataComp community, and lists researchers from U.S. and non-U.S.
+    institutions, including the Juelich Supercomputing Center and LAION. The current website
+    instead says the effort is led by researchers from a list of universities and partners that
+    includes TUM and LAION, without naming Bespoke Labs or a lead institution. The code and data
+    sit in open-thoughts GitHub and Hugging Face organizations not tied to a legal entity.
+    Eligibility needs an editor's decision on multi-organization governance.
+  source_ids: [openthoughts-readme, openthoughts-site, bespoke-terms, openthoughts-paper]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: OpenThoughts3-1.2M is downloadable from Hugging Face without gating.
+  source_ids: [ot3-card, ot3-hf-api]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0 (OpenThoughts3-1.2M dataset card)
+    spdx: Apache-2.0
+    url: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+    applies_to: data
+    source_ids: [ot3-card]
+    reviewed_at: 2026-10-01
+  - name: Apache License 2.0 (open-thoughts repository)
+    spdx: Apache-2.0
+    url: https://github.com/open-thoughts/open-thoughts/blob/main/LICENSE
+    applies_to: code
+    source_ids: [openthoughts-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The data license is the one declared on the OpenThoughts3-1.2M dataset card. The reasoning
+    traces were generated with QwQ-32B and some questions come from existing public datasets;
+    the card does not discuss their terms.
+  source_ids: [ot3-card]
+  reviewed_at: 2026-10-01
+checklist:
+  access:
+    status: public
+    note: OpenThoughts3-1.2M is published on Hugging Face without gating.
+    source_ids: [ot3-card, ot3-hf-api]
+    reviewed_at: 2026-10-01
+  provenance:
+    status: public
+    note: >-
+      The dataset card and paper describe question sources (human-written and synthetic),
+      filtering, deduplication, downsampling to 75,000 questions, and 16 annotations per
+      question generated with QwQ-32B.
+    source_ids: [ot3-card, openthoughts-paper]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Dataset card plus a paper describing the data recipe and ablations.
+    source_ids: [ot3-card, openthoughts-paper]
+    reviewed_at: 2026-10-01
+  licensing:
+    status: public
+    note: The dataset card declares Apache 2.0.
+    source_ids: [ot3-card]
+    reviewed_at: 2026-10-01
+  stated_limitations:
+    status: unknown
+    note: The dataset card read on 2026-10-01 does not include a limitations section; the paper was not reviewed for one.
+    source_ids: []
+run_notes: []
+provenance:
+  text: >-
+    The reasoning traces in OpenThoughts3-1.2M were generated with QwQ-32B as the teacher
+    model, and its questions come from human-written sources (such as StackExchange Physics)
+    and synthetic datasets. The teacher model was not developed by the OpenThoughts
+    collaboration.
+  derived_from:
+    - name: QwQ-32B
+      artifact_slug: null
+      url: https://huggingface.co/Qwen/QwQ-32B
+      note: Teacher model used to annotate questions; published by Qwen; not a catalog member.
+  source_ids: [ot3-card, qwq-card]
+tags: [reasoning, post-training-data]
+publication_status: draft
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: openthoughts-site
+    title: OpenThoughts
+    url: https://www.openthoughts.ai/
+    publisher: OpenThoughts
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: openthoughts-readme
+    title: open-thoughts/open-thoughts (GitHub repository README)
+    url: https://github.com/open-thoughts/open-thoughts
+    publisher: OpenThoughts
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ot3-card
+    title: open-thoughts/OpenThoughts3-1.2M dataset card
+    url: https://huggingface.co/datasets/open-thoughts/OpenThoughts3-1.2M
+    publisher: OpenThoughts
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: openthoughts-paper
+    title: "OpenThoughts: Data Recipes for Reasoning Models (arXiv 2506.04178v2)"
+    url: https://arxiv.org/html/2506.04178v2
+    publisher: OpenThoughts team
+    kind: paper
+    published_at: 2025-06-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: bespoke-terms
+    title: Terms of Use | Bespoke Labs
+    url: https://www.bespokelabs.ai/legal/terms-of-use
+    publisher: BespokeLabs.AI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: qwq-card
+    title: Qwen/QwQ-32B model card
+    url: https://huggingface.co/Qwen/QwQ-32B
+    publisher: Qwen
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: openthoughts-license
+    title: open-thoughts LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/open-thoughts/open-thoughts/main/LICENSE
+    publisher: OpenThoughts
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ot3-hf-api
+    title: Hugging Face Hub API metadata for open-thoughts/OpenThoughts3-1.2M (gated false)
+    url: https://huggingface.co/api/datasets/open-thoughts/OpenThoughts3-1.2M
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

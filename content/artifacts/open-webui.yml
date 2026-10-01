@@ -1,0 +1,230 @@
+slug: open-webui
+name: Open WebUI
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Open WebUI, Inc.
+    organization_slug: null
+    source_ids: [license, terms, careers]
+organization_slugs: []
+links:
+  - label: Website
+    url: https://openwebui.com
+    kind: website
+  - label: Repository
+    url: https://github.com/open-webui/open-webui
+    kind: repository
+  - label: Documentation
+    url: https://docs.openwebui.com/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/open-webui/open-webui/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/open-webui/open-webui/releases/tag/v0.11.4
+    kind: release-notes
+summary:
+  text: >-
+    Open WebUI is a self-hosted web interface for AI models that is built to run entirely
+    offline. It connects to Ollama and OpenAI-compatible APIs and includes retrieval over local
+    documents, role-based user and group permissions, plugins, and voice features.
+  source_ids: [readme, docs]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Providing a browser-based chat interface, with multi-user access controls, in front of
+    local models served by Ollama or other OpenAI-compatible servers on infrastructure you
+    control.
+  source_ids: [readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The LICENSE names Open WebUI Inc. as copyright holder, and the project's careers page
+    identifies Open WebUI Inc. as the employer. The openwebui.com terms of service name Open
+    WebUI, Inc. as the site's owner and give its contact address in San Francisco, California.
+    The pages reviewed do not state where the company is incorporated or describe the address as
+    a headquarters. Eligibility rests on this documented U.S. company, not on contributors.
+  source_ids: [license, careers, terms]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code and container images are public. Under the current license, removing or
+    altering Open WebUI branding is allowed only for deployments with no more than 50 end users
+    in a rolling 30-day period, with written permission, or under an enterprise license.
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Open WebUI License (BSD 3-Clause terms plus a branding clause)
+    spdx: null
+    url: https://github.com/open-webui/open-webui/blob/main/LICENSE
+    applies_to: code
+    effective_at: 2025-04
+    source_ids: [license, license-notice, license-docs, commit-branding]
+    reviewed_at: 2026-10-01
+  - name: BSD 3-Clause License (code committed up to the April 2025 license change)
+    spdx: BSD-3-Clause
+    url: https://github.com/open-webui/open-webui/blob/main/LICENSE_HISTORY
+    applies_to: code
+    source_ids: [license-history, license-notice]
+    reviewed_at: 2026-10-01
+  - name: MIT License (code committed before January 2025)
+    spdx: MIT
+    url: https://github.com/open-webui/open-webui/blob/main/LICENSE_HISTORY
+    applies_to: code
+    source_ids: [license-history, license-notice]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    Per LICENSE_NOTICE, code committed before commit a76068d (January 10, 2025) is under the MIT
+    License; code from that commit through commit 60d84a3 (April 18, 2025) is under the BSD
+    3-Clause License; and code contributed or modified afterward is under the Open WebUI License.
+    That license adds to the BSD terms a clause prohibiting removal or alteration of the "Open
+    WebUI" branding except for deployments of up to 50 end users in a rolling 30-day period,
+    with prior written permission, or under an enterprise license. The project's documentation
+    says the license, in effect from v0.6.6, is not an OSI-approved open-source license.
+    Contributors agree to a contributor license agreement.
+  source_ids: [license-notice, license, license-history, license-docs, commit-mit-to-bsd, commit-branding]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository; current code is under the Open WebUI License (see license notes).
+    source_ids: [readme, license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Official documentation covers installation, features, enterprise licensing, and the license.
+    source_ids: [docs, license-docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README documents installation with pip (Python 3.11) and with Docker, including images
+      that bundle Ollama or enable CUDA; the docs also list uv and a desktop app, and the README
+      mentions Docker Compose, Kustomize, and Helm.
+    source_ids: [readme, docs]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: partial
+    note: >-
+      The docs list Docker images for linux/amd64 and Python 3.11 for pip and uv installs; CUDA
+      images require the NVIDIA container toolkit on Linux or WSL. No complete operating-system
+      support matrix was found in the pages reviewed.
+    source_ids: [docs, readme]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release v0.11.4, published September 21, 2026. This entry describes the project
+      rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README documents an offline mode: setting HF_HUB_OFFLINE=1 prevents attempts to
+      download models from the internet.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The README says Docker installs should mount the open-webui data volume so the database is
+      not lost.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [local-inference, chat-interface]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: open-webui/open-webui README
+    url: https://raw.githubusercontent.com/open-webui/open-webui/main/README.md
+    publisher: Open WebUI, Inc.
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Open WebUI LICENSE
+    url: https://raw.githubusercontent.com/open-webui/open-webui/main/LICENSE
+    publisher: Open WebUI, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-notice
+    title: Open WebUI Multi-License Notice (LICENSE_NOTICE)
+    url: https://raw.githubusercontent.com/open-webui/open-webui/main/LICENSE_NOTICE
+    publisher: Open WebUI, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-history
+    title: Open WebUI LICENSE_HISTORY
+    url: https://raw.githubusercontent.com/open-webui/open-webui/main/LICENSE_HISTORY
+    publisher: Open WebUI, Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-docs
+    title: Open WebUI License (documentation)
+    url: https://docs.openwebui.com/license
+    publisher: Open WebUI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: commit-mit-to-bsd
+    title: "Commit a76068d: Update LICENSE (GitHub API)"
+    url: https://api.github.com/repos/open-webui/open-webui/commits/a76068d69cd59568b920dfab85dc573dbbb8f131
+    publisher: GitHub
+    kind: repository
+    published_at: 2025-01-10
+    accessed_at: 2026-10-01
+  - id: commit-branding
+    title: "Commit 60d84a3: chore: license branding clause (GitHub API)"
+    url: https://api.github.com/repos/open-webui/open-webui/commits/60d84a3aae9802339705826e9095e272e3c83623
+    publisher: GitHub
+    kind: repository
+    published_at: 2025-04-18
+    accessed_at: 2026-10-01
+  - id: docs
+    title: Open WebUI documentation
+    url: https://docs.openwebui.com/
+    publisher: Open WebUI, Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: terms
+    title: Terms of Service • Open WebUI
+    url: https://openwebui.com/terms
+    publisher: Open WebUI, Inc.
+    kind: official-page
+    published_at: 2026-07-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: careers
+    title: Careers · Open WebUI
+    url: https://careers.openwebui.com/
+    publisher: Open WebUI, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: release
+    title: Release v0.11.4
+    url: https://github.com/open-webui/open-webui/releases/tag/v0.11.4
+    publisher: Open WebUI, Inc.
+    kind: release-notes
+    published_at: 2026-09-21
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

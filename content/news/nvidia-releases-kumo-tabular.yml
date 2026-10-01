@@ -1,0 +1,33 @@
+slug: nvidia-releases-kumo-tabular
+title: NVIDIA releases Kumo Tabular, an open-weight model for predictions on tables
+event_date: 2026-09-29
+published_at: 2026-10-01
+category: release
+summary:
+  text: >-
+    NVIDIA published Kumo Tabular on September 29, 2026: a pretrained model for classification
+    and regression on tabular data that takes labeled example rows as context and predicts values
+    for new rows without task-specific training. It comes in three sizes, from 28 million to 215
+    million parameters, and NVIDIA says it was pretrained entirely on artificial tables. The
+    weights are on Hugging Face under the OpenMDW-1.1 license, and inference runs through NVIDIA's
+    open-source structured-data-models library.
+  source_ids: [kumo-tabular-blog, kumo-tabular-card]
+related_organizations: [nvidia]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-01
+sources:
+  - id: kumo-tabular-blog
+    title: NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction
+    url: https://huggingface.co/blog/nvidia/kumo-tabular
+    publisher: NVIDIA (Hugging Face blog)
+    kind: announcement
+    published_at: 2026-09-29
+    accessed_at: 2026-10-01
+  - id: kumo-tabular-card
+    title: nvidia/Kumo-Tabular model card
+    url: https://huggingface.co/nvidia/Kumo-Tabular
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01

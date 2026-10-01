@@ -1,0 +1,259 @@
+slug: chai-1-v0-6
+name: Chai-1 (weights used by chai_lab 0.6.1)
+kind: model
+record_level: release
+family_slug: chai-1
+version: "chai_lab 0.6.1 (models_v2 components)"
+maintainers:
+  - name: Chai Discovery
+    organization_slug: chai-discovery
+    source_ids: [chai-readme, chai-license, hf-chai1-card]
+organization_slugs: [chai-discovery]
+links:
+  - label: Chai-1 weights (Hugging Face)
+    url: https://huggingface.co/chaidiscovery/chai-1
+    kind: model-hub
+  - label: GitHub repository (chai-lab)
+    url: https://github.com/chaidiscovery/chai-lab
+    kind: repository
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/chaidiscovery/chai-lab/blob/main/LICENSE
+    kind: license
+  - label: "Chai-1 technical report (bioRxiv, doi:10.1101/2024.10.10.615955)"
+    url: https://doi.org/10.1101/2024.10.10.615955
+    kind: paper
+summary:
+  text: >-
+    The Chai-1 weights used by the current chai_lab package (version 0.6.1, published March 18,
+    2025). They are distributed as six exported PyTorch module files (feature embedding, bond
+    projection, token embedder, trunk, diffusion module, and confidence head). The package
+    fetches them from Chai's asset server, and the same six files are in the Hugging Face
+    repository, last updated February 18, 2025. The sources reviewed do not say which earlier
+    package versions used these same files.
+  reviewed_at: 2026-10-01
+  source_ids: [chai-init, chai-pypi, chai-paths, chai1-py, hf-chai1-api]
+useful_for:
+  text: >-
+    Folding complexes of proteins, small molecules, DNA, RNA, and glycosylations from FASTA
+    input, optionally with MSAs, templates, inter-chain contact or covalent-bond restraints, and
+    custom embeddings.
+  reviewed_at: 2026-10-01
+  source_ids: [chai-readme]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Developed and published by Chai Discovery in its GitHub and Hugging Face organizations;
+    the LICENSE and package source name Chai Discovery as copyright holder. Chai Discovery's
+    careers page places its team in San Francisco, California, and its website terms choose
+    California law with San Francisco courts.
+  source_ids: [chai-license, chai-init, hf-chai1-card, chai-careers, chai-terms]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  reviewed_at: 2026-10-01
+  access_conditions: >-
+    The chai_lab package downloads the weights automatically from Chai's asset server, and the
+    same component files are in an ungated Hugging Face repository. The current LICENSE and
+    README do not reference an acceptable use policy; the original 2024 community license did.
+  source_ids: [chai-paths, hf-chai1-api, chai-readme, chai-license, chai-license-2024-09]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/LICENSE
+    applies_to: weights-and-code
+    reviewed_at: 2026-10-01
+    effective_at: 2024-11-27
+    source_ids: [chai-license, chai-readme, hf-chai1-api, chai-license-2024-11-27]
+license_notes:
+  text: >-
+    Current terms: the repository LICENSE is Apache License 2.0 (copyright 2024 Chai Discovery),
+    the README states that code and model weights are both under Apache 2.0 for academic and
+    commercial use including drug discovery, and the Hugging Face repository is tagged
+    apache-2.0. Earlier terms: at the September 2024 release, LICENSE.md was the Chai Discovery
+    Community License Agreement from Chai Discovery, Inc., which granted rights to the code,
+    weights, and outputs only for non-commercial purposes, excluded commercial entities, and
+    incorporated an acceptable use policy. That file was replaced with the Apache 2.0 text in a
+    commit dated November 27, 2024, and package version 0.4.2 was released the same day. This
+    release record covers the weights fetched by version 0.6.1, which postdate the change.
+  reviewed_at: 2026-10-01
+  effective_at: 2024-11-27
+  source_ids: [chai-license, chai-readme, hf-chai1-api, chai-license-2024-09, chai-license-history, chai-license-2024-11-27, chai-license-change-commit, chai-pypi]
+checklist:
+  weights:
+    status: public
+    reviewed_at: 2026-10-01
+    note: >-
+      Six exported component files, downloadable without gating from Hugging Face and fetched
+      automatically by the package.
+    source_ids: [hf-chai1-api, chai-paths]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-01
+    note: The chai_lab package provides the chai-lab fold command and Python entry points.
+    source_ids: [chai-readme, chai-pypi]
+  training_code:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: The README covers inference only; no training code was found in the sources reviewed.
+    source_ids: [chai-readme]
+  training_pipeline:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: null
+    source_ids: []
+  training_recipe:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: The technical report was not reviewed for this record.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: The technical report was not reviewed for this record.
+    source_ids: []
+  training_data_access:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: null
+    source_ids: []
+  evaluation_materials:
+    status: unknown
+    reviewed_at: 2026-10-01
+    note: >-
+      The README shows a benchmark chart and links the technical report; no evaluation scripts
+      were identified in the README.
+    source_ids: []
+run_notes:
+  - text: >-
+      The README says the package requires Linux, Python 3.10 or later, and a CUDA GPU with
+      bfloat16 (bf16) support. It recommends A100 80GB, H100 80GB, or L40S 48GB GPUs, with A10
+      and A30 usable for smaller complexes; it states no further memory assumptions, such as
+      complex size.
+    reviewed_at: 2026-10-01
+    source_ids: [chai-readme]
+  - text: >-
+      By default the model generates five samples without MSAs or templates; the README
+      recommends MSAs and documents an option to query the public ColabFold MMseqs2 server.
+    reviewed_at: 2026-10-01
+    source_ids: [chai-readme]
+provenance: null
+tags: [science, structure-prediction]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: chai-readme
+    title: chaidiscovery/chai-lab README
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/README.md
+    publisher: Chai Discovery
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-init
+    title: chaidiscovery/chai-lab chai_lab/__init__.py (version 0.6.1)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/chai_lab/__init__.py
+    publisher: Chai Discovery
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-paths
+    title: chaidiscovery/chai-lab chai_lab/utils/paths.py (weight download URLs)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/chai_lab/utils/paths.py
+    publisher: Chai Discovery
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai1-py
+    title: chaidiscovery/chai-lab chai_lab/chai1.py (component loading)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/chai_lab/chai1.py
+    publisher: Chai Discovery
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-pypi
+    title: chai_lab (PyPI JSON metadata)
+    url: https://pypi.org/pypi/chai_lab/json
+    publisher: Python Package Index
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-chai1-card
+    title: chaidiscovery/chai-1 model card
+    url: https://huggingface.co/chaidiscovery/chai-1
+    publisher: Chai Discovery
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-chai1-api
+    title: chaidiscovery/chai-1 (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/chaidiscovery/chai-1
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license
+    title: chaidiscovery/chai-lab LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/LICENSE
+    publisher: Chai Discovery
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license-2024-09
+    title: Chai Discovery Community License Agreement (chai-lab LICENSE.md at commit 84849ac)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/84849ac6c1932baa4fc2c933169f09add47ea358/LICENSE.md
+    publisher: Chai Discovery
+    kind: license
+    published_at: 2024-09-11
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license-2024-11-27
+    title: chai-lab LICENSE.md after "update LICENSE.md (#186)", commit 0c7cfd5 (Apache License 2.0)
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/0c7cfd5bda98a92a7b60425a6db3e02b639bcfad/LICENSE.md
+    publisher: Chai Discovery
+    kind: license
+    published_at: 2024-11-27
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license-history
+    title: Commit history for LICENSE.md (chaidiscovery/chai-lab)
+    url: https://github.com/chaidiscovery/chai-lab/commits/main/LICENSE.md
+    publisher: Chai Discovery (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-license-change-commit
+    title: "Move LICENSE and bump version (#187), chaidiscovery/chai-lab commit 6c267f9"
+    url: https://github.com/chaidiscovery/chai-lab/commit/6c267f9c356e584283a5743adfef8f89fbc05cb3
+    publisher: Chai Discovery (GitHub)
+    kind: release-notes
+    published_at: 2024-11-27
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-careers
+    title: Careers | Chai Discovery
+    url: https://www.chaidiscovery.com/careers
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: chai-terms
+    title: Chai Discovery Terms of Service
+    url: https://www.chaidiscovery.com/terms-of-service
+    publisher: Chai Discovery
+    kind: official-page
+    published_at: 2025-06-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

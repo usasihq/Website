@@ -1,0 +1,304 @@
+slug: model-context-protocol
+name: Model Context Protocol (MCP)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Model Context Protocol a Series of LF Projects, LLC (Agentic AI Foundation project)
+    organization_slug: agentic-ai-foundation
+    source_ids: [mcp-governance, aaif-projects, mcp-blog-aaif]
+organization_slugs: [agentic-ai-foundation, linux-foundation, anthropic]
+links:
+  - label: Website and documentation
+    url: https://modelcontextprotocol.io/docs/getting-started/intro
+    kind: documentation
+  - label: Specification repository
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol
+    kind: repository
+  - label: Official SDKs
+    url: https://modelcontextprotocol.io/docs/sdk
+    kind: documentation
+  - label: Governance
+    url: https://modelcontextprotocol.io/community/governance
+    kind: documentation
+  - label: LICENSE (specification repository)
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/LICENSE
+    kind: license
+  - label: Protocol versioning and current revision
+    url: https://modelcontextprotocol.io/specification/versioning
+    kind: release-notes
+summary:
+  text: >-
+    The Model Context Protocol is an open protocol for connecting AI applications to external
+    data sources, tools, and workflows through MCP servers and clients. The project publishes the
+    specification, a TypeScript schema with a generated JSON Schema, documentation, and official
+    SDKs in ten programming languages. Anthropic introduced it in November 2024 and donated it to
+    the Agentic AI Foundation in December 2025.
+  source_ids: [mcp-intro, mcp-repo, mcp-sdks, anthropic-mcp-intro, anthropic-mcp-donation]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Building servers that expose tools, resources, and prompts, and clients that let AI
+    applications connect to those servers over local or remote transports.
+  source_ids: [mcp-sdks, mcp-intro]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    MCP has been established as Model Context Protocol a Series of LF Projects, LLC, and its
+    governance changes must also be approved by LF Projects, a Delaware series limited liability
+    company. It is a project of the Agentic AI Foundation, a directed fund of The Linux
+    Foundation, which describes itself as a 501(c)(6) nonprofit with a legal postal address in
+    San Francisco, California. Technical governance rests with individual maintainers; seats are
+    not reserved for companies. Eligibility rests on this documented governance, not on the
+    original developer or on contributors' affiliations or nationality.
+  source_ids: [mcp-governance, lfprojects, aaif-charter, aaif-projects, lf-about, lf-privacy]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    The specification, schema, documentation, and SDK source code are public. Connecting to a
+    particular MCP server or AI application is governed by that server's or application's own
+    terms.
+  source_ids: [mcp-repo, mcp-sdks, mcp-intro]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/LICENSE
+    applies_to: code
+    source_ids: [mcp-license]
+    reviewed_at: 2026-10-01
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/LICENSE
+    applies_to: code
+    source_ids: [mcp-license]
+    reviewed_at: 2026-10-01
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/LICENSE
+    applies_to: documentation
+    source_ids: [mcp-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The specification repository's LICENSE describes a transition from MIT to Apache 2.0: new
+    code and specification contributions are under Apache 2.0, contributions whose authors have
+    not consented to relicensing remain under MIT, and documentation other than the
+    specification is under CC BY 4.0. That repository's README still states MIT. SDK
+    repositories carry their own LICENSE files: the TypeScript SDK uses the same transition
+    text, while the Python and Java SDK LICENSE files reviewed are MIT only. None of these
+    licenses cover external MCP servers, model weights, or hosted services.
+  source_ids: [mcp-license, mcp-repo, mcp-ts-sdk-license, mcp-python-sdk-license, mcp-java-sdk-license]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: >-
+      The specification, schema, and documentation are developed in a public repository; each
+      official SDK has its own public repository.
+    source_ids: [mcp-repo, mcp-sdks]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      Public documentation site with the specification, architecture and security guidance, and
+      guides for building servers and clients.
+    source_ids: [mcp-intro, mcp-versioning]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Each SDK documents its own installation. For example, the Python SDK documents installing
+      the mcp package with pip or uv and requires Python 3.10 or later.
+    source_ids: [mcp-sdks, mcp-python-sdk-docs]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      Official SDKs are listed for TypeScript, Python, C#, Go, Rust, and Ruby (Tier 1), Java (Tier
+      2), and Swift, PHP, and Kotlin (Tier 3); tiers reflect feature completeness, protocol
+      support, and maintenance commitment.
+    source_ids: [mcp-sdks]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Protocol versions are dated identifiers marking the last backwards-incompatible change; the
+      current version is 2026-07-28. This entry describes the project rather than one revision
+      or SDK release.
+    source_ids: [mcp-versioning]
+    reviewed_at: 2026-10-01
+run_notes: []
+provenance:
+  text: >-
+    Anthropic introduced and open-sourced MCP on November 25, 2024. On December 9, 2025, Anthropic
+    donated it to the newly formed Agentic AI Foundation under The Linux Foundation; the project's
+    announcement said its maintainer-led governance and enhancement-proposal process would
+    continue unchanged.
+  derived_from: []
+  source_ids: [anthropic-mcp-intro, anthropic-mcp-donation, mcp-blog-aaif, lf-aaif-press]
+tags: [agents, protocol, tool-use]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: mcp-repo
+    title: modelcontextprotocol/modelcontextprotocol repository and README
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-license
+    title: modelcontextprotocol/modelcontextprotocol LICENSE
+    url: https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/LICENSE
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-intro
+    title: What is the Model Context Protocol (MCP)?
+    url: https://modelcontextprotocol.io/docs/getting-started/intro
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-sdks
+    title: MCP SDKs (official SDK list and tiers)
+    url: https://modelcontextprotocol.io/docs/sdk
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-versioning
+    title: MCP specification — Versioning
+    url: https://modelcontextprotocol.io/specification/versioning
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-governance
+    title: Model Context Protocol — Governance and Stewardship
+    url: https://modelcontextprotocol.io/community/governance
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-python-sdk-docs
+    title: MCP Python SDK documentation
+    url: https://py.sdk.modelcontextprotocol.io
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-ts-sdk-license
+    title: modelcontextprotocol/typescript-sdk LICENSE
+    url: https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/LICENSE
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-python-sdk-license
+    title: modelcontextprotocol/python-sdk LICENSE
+    url: https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/LICENSE
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-java-sdk-license
+    title: modelcontextprotocol/java-sdk LICENSE
+    url: https://raw.githubusercontent.com/modelcontextprotocol/java-sdk/main/LICENSE
+    publisher: Model Context Protocol a Series of LF Projects, LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: anthropic-mcp-intro
+    title: Introducing the Model Context Protocol
+    url: https://www.anthropic.com/news/model-context-protocol
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2024-11-25
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: anthropic-mcp-donation
+    title: Donating the Model Context Protocol and establishing the Agentic AI Foundation
+    url: https://anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mcp-blog-aaif
+    title: MCP joins the Agentic AI Foundation
+    url: https://blog.modelcontextprotocol.io/posts/2025-12-09-mcp-joins-agentic-ai-foundation/
+    publisher: Model Context Protocol
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-aaif-press
+    title: >-
+      Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF), Anchored by
+      New Project Contributions Including Model Context Protocol (MCP), goose and AGENTS.md
+    url: https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation
+    publisher: Linux Foundation
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-projects
+    title: Projects - Agentic AI Foundation (AAIF)
+    url: https://aaif.io/projects
+    publisher: Agentic AI Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aaif-charter
+    title: The Agentic AI Foundation Charter (amended July 29, 2026)
+    url: https://raw.githubusercontent.com/aaif/foundation/main/foundation-charter.pdf
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: 2026-07-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lfprojects
+    title: LF Projects, LLC
+    url: https://lfprojects.org/
+    publisher: LF Projects, LLC
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-about
+    title: About the Linux Foundation
+    url: https://www.linuxfoundation.org/about
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-privacy
+    title: Privacy Policy | Linux Foundation
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

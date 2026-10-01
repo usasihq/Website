@@ -1,0 +1,203 @@
+slug: florence-2-large
+name: Florence-2-large
+kind: model
+record_level: release
+family_slug: florence-2
+version: "Florence-2-large"
+maintainers:
+  - name: Microsoft (Azure AI)
+    organization_slug: microsoft
+    source_ids: [fl2-large-card, florence2-paper]
+organization_slugs: [microsoft]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/microsoft/Florence-2-large
+    kind: model-hub
+  - label: LICENSE (MIT)
+    url: https://huggingface.co/microsoft/Florence-2-large/blob/main/LICENSE
+    kind: license
+  - label: "Florence-2 technical report (arXiv 2311.06242)"
+    url: https://arxiv.org/abs/2311.06242
+    kind: paper
+  - label: Sample inference notebook
+    url: https://huggingface.co/microsoft/Florence-2-large/blob/main/sample_inference.ipynb
+    kind: documentation
+summary:
+  text: >-
+    Florence-2-large is the larger pretrained Florence-2 vision model, listed at 0.77B parameters
+    on its model card. It takes an image and a task prompt and returns text, boxes, or polygons
+    for tasks such as captioning, detection, grounding, and OCR. Since a December 2024 update,
+    the Hugging Face repository holds a version continued-pretrained for a 4k context length on
+    0.1B samples, which the card says might not be trained well; the same update changed OCR
+    output to include line separators.
+  source_ids: [fl2-large-card, fl2-large-commits]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Prompt-selected vision tasks shown on the card, including captions at several levels of
+    detail, object detection, dense region captioning, region proposals, caption-to-phrase
+    grounding, and OCR with or without regions; the report describes it as a base for
+    fine-tuning as well as zero-shot use.
+  source_ids: [fl2-large-card, florence2-paper]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The technical report lists its authors under Azure AI, Microsoft, and the checkpoint is
+    published in Microsoft's Hugging Face organization with an MIT license naming Microsoft
+    Corporation. Microsoft Corporation lists One Microsoft Way, Redmond, Washington as its
+    principal executive offices on the cover page of its Form 10-K for fiscal year 2026.
+  source_ids: [florence2-paper, fl2-large-card, fl2-large-license, msft-10k-2026]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without an access gate. Loading with Transformers uses custom
+    modeling code from the repository (trust_remote_code).
+  source_ids: [fl2-large-api, fl2-large-card]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://huggingface.co/microsoft/Florence-2-large/blob/main/LICENSE
+    applies_to: weights-and-code
+    source_ids: [fl2-large-license, fl2-large-card, fl2-large-api]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The card's license field and the repository LICENSE file both give MIT, with Microsoft
+    Corporation as copyright holder; the repository contains the weights and the configuration,
+    modeling, and processing code used by Transformers.
+  source_ids: [fl2-large-license, fl2-large-card, fl2-large-api]
+  reviewed_at: 2026-10-01
+checklist:
+  weights:
+    status: public
+    note: Safetensors and PyTorch weight files are in the Hugging Face repository, which is not gated.
+    source_ids: [fl2-large-api]
+    reviewed_at: 2026-10-01
+  inference_code:
+    status: public
+    note: >-
+      The repository includes the modeling and processing code, and the card gives Transformers
+      examples for each task plus a sample inference notebook.
+    source_ids: [fl2-large-card, fl2-large-api]
+    reviewed_at: 2026-10-01
+  training_code:
+    status: unknown
+    note: No official Florence-2 training code was linked from the model card, the report, or the Microsoft Research publication page.
+    source_ids: [fl2-large-card, florence2-paper, msr-florence2-pub]
+    reviewed_at: 2026-10-01
+  training_data_information:
+    status: partial
+    note: >-
+      The report describes building FLD-5B from images drawn from ImageNet-22k, Object 365, Open
+      Images, Conceptual Captions, and LAION, annotated by specialist models and refined through
+      filtering and iterative model refinement. This review confirms disclosure, not completeness
+      across every provenance, labeling, and processing requirement.
+    source_ids: [florence2-paper]
+    reviewed_at: 2026-10-01
+  training_data_access:
+    status: unknown
+    note: No official download of the FLD-5B annotations was linked from the model card, the report, or the Microsoft Research publication page.
+    source_ids: [fl2-large-card, florence2-paper, msr-florence2-pub]
+    reviewed_at: 2026-10-01
+  training_recipe:
+    status: partial
+    note: >-
+      The report gives the optimizer (AdamW with cosine decay), maximum learning rate, warmup,
+      batch size, image sizes, sample counts, and initialization for the original large model;
+      the card describes the later 4k-context continued pretraining only briefly.
+    source_ids: [florence2-paper, fl2-large-card]
+    reviewed_at: 2026-10-01
+  evaluation_materials:
+    status: partial
+    note: The card and report publish zero-shot and fine-tuned results; evaluation code was not found.
+    source_ids: [fl2-large-card, florence2-paper]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The model card documents loading the model with Hugging Face Transformers
+      (AutoModelForCausalLM with trust_remote_code) and states that all models were trained with
+      float16; its examples use float16 on CUDA and float32 on CPU.
+    source_ids: [fl2-large-card]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    Trained by Microsoft. The technical report says the image encoder and the multimodal
+    encoder-decoder were initialized from UniCL and BART weights, respectively. The current
+    repository weights are a continued-pretrained 4k-context version uploaded in December 2024.
+  derived_from:
+    - name: UniCL
+      artifact_slug: null
+      url: null
+      note: Initialization for the DaViT image encoder, per the technical report.
+    - name: BART
+      artifact_slug: null
+      url: null
+      note: Initialization for the multimodal encoder-decoder, per the technical report.
+  source_ids: [florence2-paper, fl2-large-card, fl2-large-commits]
+tags: [vision-language, multimodal, computer-vision]
+publication_status: published
+archive_note: null
+released_at: 2024-06
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: fl2-large-card
+    title: microsoft/Florence-2-large model card
+    url: https://huggingface.co/microsoft/Florence-2-large/raw/main/README.md
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-large-license
+    title: microsoft/Florence-2-large LICENSE (MIT)
+    url: https://huggingface.co/microsoft/Florence-2-large/raw/main/LICENSE
+    publisher: Microsoft (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-large-api
+    title: Hugging Face model metadata for microsoft/Florence-2-large
+    url: https://huggingface.co/api/models/microsoft/Florence-2-large
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-large-commits
+    title: microsoft/Florence-2-large commit history (Hugging Face API)
+    url: https://huggingface.co/api/models/microsoft/Florence-2-large/commits/main
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: florence2-paper
+    title: "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks"
+    url: https://arxiv.org/abs/2311.06242
+    publisher: Microsoft (arXiv)
+    kind: paper
+    published_at: 2023-11-10
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: msr-florence2-pub
+    title: "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks - Microsoft Research"
+    url: https://www.microsoft.com/en-us/research/publication/florence-2-advancing-a-unified-representation-for-a-variety-of-vision-tasks/
+    publisher: Microsoft Research
+    kind: official-page
+    published_at: 2024-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

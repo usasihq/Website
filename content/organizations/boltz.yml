@@ -1,0 +1,253 @@
+slug: boltz
+name: Boltz
+legal_name:
+  text: Boltz PBC
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-terms, boltz-website-terms]
+website: https://boltz.com
+logo_text: B
+summary:
+  text: >-
+    Boltz is a public benefit corporation that develops AI models for biomolecular structure
+    prediction, binding-affinity estimation, and protein and small-molecule design. Its team
+    started the Boltz models at MIT and founded Boltz PBC, announced in January 2026, which now
+    presents Boltz-1, Boltz-2, and BoltzGen as its open-source models alongside a hosted
+    platform and API.
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-launch, boltz-manifesto, boltz-home]
+organization_roles: [model-developer, research-lab, developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Public benefit corporation (Boltz PBC)
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-launch, boltz-terms]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Boston area, Massachusetts
+  country: US
+  source_ids: [boltz-terms, boltz-gsk-release]
+other_locations: []
+founded: null
+sectors: [science, open-models, research]
+status_note: null
+products:
+  - id: boltz-api
+    name: Boltz API
+    kind: hosted-model-api
+    access: >-
+      Usage-based API, with Python and JavaScript SDKs, that serves BoltzMol-1, BoltzProt-1, and
+      Boltz-2 through hosted endpoints.
+    url: https://boltz.com/api
+    source_ids: [boltz-api-page, boltz-api-announcement]
+    last_reviewed: 2026-10-01
+  - id: boltz-lab
+    name: Boltz Lab
+    kind: other
+    access: >-
+      Hosted molecular-design platform with a free monthly prediction allowance on its
+      Professional tier and custom Enterprise plans that include fine-tuning and private
+      deployment options.
+    url: https://boltz.com/platform
+    source_ids: [boltz-platform-page, boltz-pricing]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Boltz's founding post says the effort began at MIT and that the founders formed a company
+      to build, maintain, and support products in addition to releasing models. Boltz-2 was
+      released in June 2025 by the Boltz team at MIT Jameel Clinic with Recursion, before the
+      company launch.
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-manifesto, boltz-boltz2-post]
+  - text: >-
+      The open-source Boltz repository that Boltz links from its website is hosted under an
+      individual developer's GitHub account (jwohlwend/boltz), and its MIT LICENSE names three
+      individual developers as copyright holders. Checkpoints are served from a boltz.bio
+      download gateway, with copies on the boltz-community Hugging Face organization.
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-home, boltz-license, boltz-main-py]
+  - text: >-
+      Boltz's newer BoltzMol-1 and BoltzProt-1 models are offered through Boltz Lab and the Boltz
+      API; the homepage labels only Boltz-2 and BoltzGen as open-source. Its 2026 pharmaceutical
+      collaborations describe access to proprietary Boltz models.
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-home, boltz-api-announcement, boltz-gsk-release]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Boltz PBC's product and website terms (last updated May 6, 2026) give a Boston,
+    Massachusetts notice address and choose Delaware law, and its 2026 press releases are
+    datelined Cambridge, Massachusetts. The street address in the terms is not reproduced here.
+    No regulatory filing was reviewed.
+  source_ids: [boltz-terms, boltz-website-terms, boltz-gsk-release]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Boltz-2 code and weights are published under the MIT license (see the Boltz-2 record).
+    Boltz's newer BoltzMol-1 and BoltzProt-1 models are available only through its hosted
+    platform and API in the pages reviewed, so the company's offerings are not uniformly open.
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-license, boltz-readme, boltz-home, boltz-api-announcement]
+hiring_url: https://jobs.gem.com/boltz
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Drug-discovery scientists and teams in academia and industry; the API is also aimed at
+      developers integrating Boltz models into agents and pipelines.
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-launch, boltz-api-page]
+  access_overview:
+    text: >-
+      Boltz-2 can be installed from PyPI and run locally with downloadable checkpoints. Newer
+      models are reached through Boltz Lab or the usage-based Boltz API.
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-readme, boltz-api-page, boltz-pricing]
+  limitations:
+    text: >-
+      The Boltz-2 README marks updated Boltz-2 training and evaluation materials as coming soon.
+      Hosted services carry their own commercial terms, including restrictions on using outputs
+      to build competing models. This profile is not a full product or rights audit.
+    reviewed_at: 2026-10-01
+    source_ids: [boltz-readme, boltz-terms]
+  resources:
+    - label: Boltz repository (code and install instructions)
+      url: https://github.com/jwohlwend/boltz
+      kind: repository
+      source_ids: [boltz-readme]
+      reviewed_at: 2026-10-01
+    - label: Boltz Lab pricing
+      url: https://boltz.com/pricing
+      kind: pricing
+      source_ids: [boltz-pricing]
+      reviewed_at: 2026-10-01
+    - label: Boltz-2 checkpoints (Hugging Face)
+      url: https://huggingface.co/boltz-community/boltz-2
+      kind: model-hub
+      source_ids: [hf-boltz2-api]
+      reviewed_at: 2026-10-01
+sources:
+  - id: boltz-home
+    title: Boltz - Build Better Molecules with AI (home page)
+    url: https://boltz.com/
+    publisher: Boltz
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-launch
+    title: "Announcing Boltz: A Public Benefit Corporation for AI-Driven Drug Discovery"
+    url: https://boltz.com/launch
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-01-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-manifesto
+    title: The future we are building at Boltz
+    url: https://boltz.com/manifesto
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-01-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-boltz2-post
+    title: "Introducing Boltz-2: Toward Accurate and Efficient Binding Affinity Prediction"
+    url: https://boltz.com/boltz2
+    publisher: Boltz
+    kind: announcement
+    published_at: 2025-06-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-api-announcement
+    title: Announcing BoltzMol-1, BoltzProt-1, and the Boltz API
+    url: https://boltz.com/boltzmol-boltzprot-api
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-06-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-gsk-release
+    title: Boltz Announces Collaboration with GSK to Deploy Biomolecular AI Models for Drug Discovery
+    url: https://boltz.com/gsk-partnership
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-07-02
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-terms
+    title: Boltz Terms of Service
+    url: https://boltz.com/terms
+    publisher: Boltz PBC
+    kind: official-page
+    published_at: 2026-05-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-website-terms
+    title: Boltz Website Terms of Use
+    url: https://boltz.com/website-terms
+    publisher: Boltz PBC
+    kind: official-page
+    published_at: 2026-05-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-api-page
+    title: Boltz API
+    url: https://boltz.com/api
+    publisher: Boltz
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-platform-page
+    title: Boltz platform
+    url: https://boltz.com/platform
+    publisher: Boltz
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-pricing
+    title: Pricing | Boltz Lab
+    url: https://boltz.com/pricing
+    publisher: Boltz
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-readme
+    title: jwohlwend/boltz README
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/README.md
+    publisher: Boltz developers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-license
+    title: jwohlwend/boltz LICENSE
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/LICENSE
+    publisher: Boltz developers (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-main-py
+    title: jwohlwend/boltz src/boltz/main.py (checkpoint download URLs)
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/src/boltz/main.py
+    publisher: Boltz developers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-boltz2-api
+    title: boltz-community/boltz-2 (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/boltz-community/boltz-2
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

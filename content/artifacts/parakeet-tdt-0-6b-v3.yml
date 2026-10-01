@@ -1,0 +1,245 @@
+slug: parakeet-tdt-0-6b-v3
+name: NVIDIA parakeet-tdt-0.6b-v3
+kind: model
+record_level: release
+family_slug: parakeet
+version: "parakeet-tdt-0.6b-v3"
+maintainers:
+  - name: NVIDIA (NeMo)
+    organization_slug: nvidia
+    source_ids: [v3-card, nemo-speech-readme]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+    kind: model-hub
+  - label: CC-BY-4.0 legal code
+    url: https://creativecommons.org/licenses/by/4.0/legalcode.en
+    kind: license
+  - label: "Canary-1B-v2 & Parakeet-TDT-0.6B-v3 technical report (arXiv 2509.14128)"
+    url: https://arxiv.org/abs/2509.14128
+    kind: paper
+  - label: NeMo Speech repository
+    url: https://github.com/NVIDIA-NeMo/Speech
+    kind: repository
+  - label: Granary dataset
+    url: https://huggingface.co/datasets/nvidia/Granary
+    kind: dataset-hub
+summary:
+  text: >-
+    parakeet-tdt-0.6b-v3 is a 600-million-parameter multilingual speech recognition model with a
+    FastConformer encoder and a TDT decoder, which predicts tokens and their durations jointly. It
+    extends
+    parakeet-tdt-0.6b-v2 from English to 25 European languages, detects the spoken language
+    automatically, and outputs punctuated, capitalized text with word- and segment-level
+    timestamps. NVIDIA released it on Hugging Face on August 14, 2025.
+  source_ids: [v3-card, v3-report]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    The card lists speech-to-text uses such as conversational AI, voice assistants,
+    transcription services, subtitle generation, and voice analytics, and documents long-form
+    transcription with a local-attention mode (up to three hours of audio).
+  source_ids: [v3-card]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Published by NVIDIA in its Hugging Face organization, trained with NVIDIA's NeMo toolkit per
+    the card, and announced in NVIDIA's NeMo Speech repository. NVIDIA's principal executive
+    offices are in Santa Clara, California, per its Form 10-Q for the quarter ended July 26,
+    2026. Third-party models used to label training data are recorded under provenance.
+  source_ids: [v3-card, nemo-speech-readme, nvidia-10q-q2fy2027]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without an access gate; the card states the model is ready
+    for commercial and non-commercial use.
+  source_ids: [v3-api, v3-card]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/legalcode.en
+    applies_to: weights
+    source_ids: [v3-card, v3-api, cc-by-4-0]
+    reviewed_at: 2026-10-01
+  - name: Apache License 2.0 (NeMo Speech toolkit)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/LICENSE
+    applies_to: code
+    source_ids: [nemo-speech-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The card's governing terms put the model under CC-BY-4.0, which grants a worldwide,
+    royalty-free license to reproduce, share, and adapt the material and requires attribution and
+    license notices when sharing it; the card also states the model is ready for commercial and
+    non-commercial use. The NeMo toolkit used to run and train it is a separate Apache 2.0
+    repository.
+  source_ids: [v3-card, cc-by-4-0, nemo-speech-license]
+  reviewed_at: 2026-10-01
+checklist:
+  weights:
+    status: public
+    note: The ungated repository holds safetensors and .nemo checkpoints plus a q8_0 GGUF file.
+    source_ids: [v3-api]
+    reviewed_at: 2026-10-01
+  inference_code:
+    status: public
+    note: >-
+      The card documents inference with NVIDIA NeMo, the NeMo-Speech.cpp C++ runtime, and
+      Hugging Face Transformers, including timestamps, long-form, and streaming examples.
+    source_ids: [v3-card, nemo-speech-license]
+    reviewed_at: 2026-10-01
+  training_code:
+    status: public
+    note: >-
+      The card links the NeMo transducer training script and FastConformer hybrid TDT-CTC
+      configuration it was trained with; both are in the Apache 2.0 NeMo Speech repository.
+    source_ids: [v3-card, nemo-train-script, nemo-tdt-config, nemo-speech-license]
+    reviewed_at: 2026-10-01
+  training_data_information:
+    status: partial
+    note: >-
+      The card describes about 660,000 hours of pseudo-labeled Granary data (from YTC, MOSEL, and
+      YODAS) and about 10,000 hours of human-transcribed NeMo ASR Set 3.0 data, listing the
+      component corpora; the Granary card and paper describe the labeling pipeline. This review
+      confirms disclosure, not completeness across every provenance, labeling, and processing
+      requirement.
+    source_ids: [v3-card, granary-card, granary-paper]
+    reviewed_at: 2026-10-01
+  training_data_access:
+    status: partial
+    note: >-
+      Granary is published as CC-BY-4.0 transcript manifests that point to separately downloaded
+      source audio; NeMo ASR Set 3.0 is described as an in-house set, and access terms for its
+      component corpora were not reviewed.
+    source_ids: [granary-card, v3-card]
+    reviewed_at: 2026-10-01
+  training_recipe:
+    status: partial
+    note: >-
+      The card gives the initialization (an NVIDIA CTC multilingual checkpoint pretrained on
+      Granary), step counts and GPU counts for both stages, temperature-based data balancing, and
+      the tokenizer setup; the recipe for the initial checkpoint is not described there.
+    source_ids: [v3-card]
+    reviewed_at: 2026-10-01
+  evaluation_materials:
+    status: partial
+    note: The card publishes word error rates on FLEURS, MLS, CoVoST, and Open ASR Leaderboard datasets; evaluation scripts were not verified.
+    source_ids: [v3-card]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The card lists NeMo 2.4 as the runtime, Linux as the supported operating system, and NVIDIA
+      Volta, Ampere, Hopper, and Blackwell GPUs as compatible, and shows a local NeMo-Speech.cpp
+      workflow using the q8_0-quantized GGUF file.
+    source_ids: [v3-card]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    Trained by NVIDIA from an NVIDIA CTC multilingual checkpoint pretrained on Granary. Granary
+    was built by the NVIDIA NeMo team with CMU and FBK teams; its card says transcripts were
+    pseudo-labeled with Whisper-large-v3 and that punctuation and capitalization were restored
+    with Qwen-2.5-7B, both third-party models. No third-party model weights are documented as
+    part of this checkpoint.
+  derived_from: []
+  source_ids: [v3-card, granary-card]
+tags: [speech]
+publication_status: published
+archive_note: null
+released_at: 2025-08-14
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: v3-card
+    title: nvidia/parakeet-tdt-0.6b-v3 model card
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2025-08-14
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: v3-api
+    title: Hugging Face model metadata for nvidia/parakeet-tdt-0.6b-v3
+    url: https://huggingface.co/api/models/nvidia/parakeet-tdt-0.6b-v3
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: v3-report
+    title: "Canary-1B-v2 & Parakeet-TDT-0.6B-v3: Efficient and High-Performance Models for Multilingual ASR and AST"
+    url: https://arxiv.org/abs/2509.14128
+    publisher: NVIDIA (arXiv)
+    kind: paper
+    published_at: 2025-09-17
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cc-by-4-0
+    title: Creative Commons Attribution 4.0 International Public License (legal code)
+    url: https://creativecommons.org/licenses/by/4.0/legalcode.en
+    publisher: Creative Commons
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-speech-license
+    title: NVIDIA-NeMo/Speech LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-speech-readme
+    title: NVIDIA-NeMo/Speech README
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-train-script
+    title: NeMo Speech examples/asr/asr_transducer/speech_to_text_rnnt_bpe.py
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/examples/asr/asr_transducer/speech_to_text_rnnt_bpe.py
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nemo-tdt-config
+    title: NeMo Speech fastconformer_hybrid_tdt_ctc_bpe.yaml configuration
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/examples/asr/conf/fastconformer/hybrid_transducer_ctc/fastconformer_hybrid_tdt_ctc_bpe.yaml
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: granary-card
+    title: nvidia/Granary dataset card
+    url: https://huggingface.co/datasets/nvidia/Granary/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: granary-paper
+    title: "Granary: Speech Recognition and Translation Dataset in 25 European Languages"
+    url: https://arxiv.org/abs/2505.13404
+    publisher: NVIDIA (arXiv)
+    kind: paper
+    published_at: 2025-05-19
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

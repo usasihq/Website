@@ -78,9 +78,18 @@ openness_summary:
     weights from Glean.
   source_ids: [glean-tos-2026, glean-python-sdk, glean-python-sdk-license]
 hiring_url: https://www.glean.com/careers
+careers:
+  url: https://www.glean.com/careers
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: gleanwork
+  posting_hosts: []
+  source_ids: [glean-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: glean-tos-2026
@@ -132,3 +141,11 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-09-29
+  - id: glean-careers-jobs
+    title: Official careers directory and application links
+    url: https://www.glean.com/careers
+    publisher: Glean Technologies, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

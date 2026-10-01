@@ -84,9 +84,18 @@ openness_summary:
     services.
   source_ids: [ ai2-docs-intro, ai2-asta, s2-about ]
 hiring_url: https://allenai.org/careers
+careers:
+  url: https://allenai.org/careers
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: thealleninstitute
+  posting_hosts: []
+  source_ids: [ai2-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-30
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: ai2-about
@@ -180,6 +189,14 @@ sources:
     kind: documentation
     accessed_at: 2026-09-30
     reviewed_at: 2026-09-30
+  - id: ai2-careers-jobs
+    title: Official careers directory and application links
+    url: https://allenai.org/careers
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
 ownership_evidence:
   text: Ai2 describes itself as a nonprofit AI research institute. This
     organizational status is independent of the terms of each released artifact.

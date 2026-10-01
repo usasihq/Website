@@ -1,0 +1,234 @@
+slug: petri
+name: Petri (Inspect Petri)
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Meridian Labs
+    organization_slug: null
+    source_ids: [ meridian-about, petri-license, petri-pypi, anthropic-petri-donation ]
+organization_slugs: [ anthropic ]
+links:
+  - label: Repository
+    url: https://github.com/meridianlabs-ai/inspect_petri
+    kind: repository
+  - label: Documentation
+    url: https://meridianlabs-ai.github.io/inspect_petri/
+    kind: documentation
+  - label: LICENSE (MIT)
+    url: https://github.com/meridianlabs-ai/inspect_petri/blob/main/LICENSE
+    kind: license
+  - label: Original release post (Anthropic)
+    url: https://www.anthropic.com/research/petri-open-source-auditing
+    kind: release-notes
+  - label: Petri 3.0 announcement (Meridian Labs)
+    url: https://meridianlabs.ai/blog/posts/introducing-petri-3/
+    kind: release-notes
+summary:
+  text: >-
+    Petri (Parallel Exploration Tool for Risky Interactions) is an open-source tool for automated
+    alignment audits of language models. An auditor model drives multi-turn conversations with a
+    target model from seed instructions, simulating tools and rolling back turns, and a judge
+    model scores the transcripts. Anthropic released it in October 2025 and handed its
+    development to Meridian Labs, an AI evaluation nonprofit, in May 2026 with the release of
+    Petri 3.0. The repository moved from safety-research/petri to meridianlabs-ai/inspect_petri.
+  source_ids: [ anthropic-petri-release, anthropic-petri-donation, meridian-petri-3, petri-docs, petri-repo ]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Testing hypotheses about model behavior such as sycophancy, deception, or evaluation
+    awareness by running audits from built-in or custom seed instructions and reviewing
+    judge-scored transcripts.
+  source_ids: [ petri-docs, anthropic-petri-release ]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Meridian Labs maintains Petri: Anthropic's May 2026 post says it handed development to
+    Meridian Labs, the 2026 copyright in the MIT license is held by Meridian Labs, and Meridian
+    Labs is the PyPI author. Meridian Labs describes itself as a 501(c)(3) nonprofit and gives a
+    Boston, Massachusetts address. The documentation describes Petri as a collaboration between
+    Meridian Labs and the UK AI Security Institute's Red Team; this catalog treats Meridian Labs,
+    which holds the repository and publishes releases, as the maintaining entity. Anthropic
+    originated the project. This catalog did not check Meridian Labs' tax status in an IRS
+    listing.
+  source_ids: [ anthropic-petri-donation, petri-license, petri-pypi, meridian-home, meridian-about, petri-docs ]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is on GitHub and the package is on PyPI as inspect-petri. Running audits
+    requires API access to the auditor, target, and judge models, for example Anthropic or
+    OpenAI API keys.
+  source_ids: [ petri-repo, petri-pypi, petri-docs ]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/meridianlabs-ai/inspect_petri/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ petri-license, petri-pypi ]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT license lists two copyright holders: an individual contributor (2025) and Meridian
+    Labs (2026). It does not cover the models used as auditor, target, or judge, which are
+    accessed under their providers' terms.
+  source_ids: [ petri-license, petri-docs ]
+  reviewed_at: 2026-10-01
+checklist:
+  code:
+    status: public
+    note: Published on GitHub under the MIT License and on PyPI.
+    source_ids: [ petri-repo, petri-license, petri-pypi ]
+    reviewed_at: 2026-10-01
+  tasks_data:
+    status: public
+    note: >-
+      The package ships more than 170 built-in seed instructions and 38 built-in judging
+      dimensions; users can also supply their own.
+    source_ids: [ petri-docs ]
+    reviewed_at: 2026-10-01
+  methodology:
+    status: public
+    note: >-
+      The documentation describes the auditor, target, and judge roles, the audit options, and
+      the scoring: each dimension gets a 1-10 score with a written justification that cites
+      specific messages.
+    source_ids: [ petri-docs ]
+    reviewed_at: 2026-10-01
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The documentation gives install steps and inspect eval commands that select seeds and
+      assign a model to each role. Results also depend on which auditor, target, and judge
+      models are chosen.
+    source_ids: [ petri-docs ]
+    reviewed_at: 2026-10-01
+  limitations:
+    status: partial
+    note: >-
+      Anthropic's October 2025 release posts discuss limits of the original version: scenarios
+      that may reveal they are tests, inconsistent judge scores, a small pilot set of scenarios,
+      and metrics that cannot capture everything that matters. The current documentation adds a
+      responsible-use note on provider policies but no updated limitations section was found.
+    source_ids: [ anthropic-petri-release, anthropic-petri-alignment-blog, petri-docs ]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      Petri is built on the Inspect AI evaluation framework and requires Python 3.12 or later.
+      The latest PyPI release at review was 3.1.1; Petri 2.0 remains available on a separate
+      branch.
+    source_ids: [ petri-docs, petri-pypi, petri-repo ]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The documentation warns that the full default audit (all built-in seeds, up to 30 turns
+      each, scored by a frontier judge model) typically takes a few hours and incurs
+      substantial API costs, and suggests starting with one tag or a small sample limit.
+    source_ids: [ petri-docs ]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    Petri was developed by Anthropic's alignment team and released in October 2025; Petri 2.0
+    followed on January 22, 2026. In May 2026 Anthropic handed development to Meridian Labs, which
+    released Petri 3.0 with a restructured auditor/target design. Meridian Labs states that
+    Anthropic will continue to support Petri.
+  derived_from: []
+  source_ids: [ anthropic-petri-release, anthropic-petri-v2, anthropic-petri-donation, meridian-petri-3 ]
+tags: [ evaluation, alignment, safety, agents ]
+publication_status: published
+archive_note: null
+released_at: 2025-10-06
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: petri-repo
+    title: meridianlabs-ai/inspect_petri (GitHub repository; redirected from safety-research/petri)
+    url: https://github.com/meridianlabs-ai/inspect_petri
+    publisher: Meridian Labs
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: petri-license
+    title: meridianlabs-ai/inspect_petri LICENSE (MIT)
+    url: https://raw.githubusercontent.com/meridianlabs-ai/inspect_petri/main/LICENSE
+    publisher: Meridian Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: petri-docs
+    title: Inspect Petri documentation
+    url: https://meridianlabs-ai.github.io/inspect_petri/
+    publisher: Meridian Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: petri-pypi
+    title: inspect-petri on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/inspect-petri/json
+    publisher: Python Package Index
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: meridian-home
+    title: Meridian Labs
+    url: https://meridianlabs.ai/
+    publisher: Meridian Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: meridian-about
+    title: About - Meridian Labs
+    url: https://meridianlabs.ai/about
+    publisher: Meridian Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: meridian-petri-3
+    title: Introducing Petri 3.0
+    url: https://meridianlabs.ai/blog/posts/introducing-petri-3/
+    publisher: Meridian Labs
+    kind: announcement
+    published_at: 2026-05-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: anthropic-petri-donation
+    title: Donating our open-source alignment tool
+    url: https://www.anthropic.com/research/donating-open-source-petri
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-05-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: anthropic-petri-release
+    title: "Petri: An open-source AI auditing tool"
+    url: https://www.anthropic.com/research/petri-open-source-auditing
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-10-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: anthropic-petri-alignment-blog
+    title: "Petri: An open-source auditing tool to accelerate AI safety research (Alignment Science Blog)"
+    url: https://alignment.anthropic.com/2025/petri
+    publisher: Anthropic
+    kind: paper
+    published_at: 2025-10-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: anthropic-petri-v2
+    title: "Petri 2.0: New Scenarios, New Model Comparisons, and Improved Eval-Awareness Mitigations"
+    url: https://alignment.anthropic.com/2026/petri-v2/
+    publisher: Anthropic
+    kind: release-notes
+    published_at: 2026-01-22
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

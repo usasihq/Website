@@ -1,0 +1,241 @@
+slug: llm-d
+name: llm-d
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Cloud Native Computing Foundation (Linux Foundation), Sandbox project
+    organization_slug: linux-foundation
+    source_ids: [ cncf-llmd-project, cncf-llmd-blog, cncf-about ]
+  - name: Red Hat (launched the project; MAINTAINERS.md lists Red Hat staff in project leadership and as community managers)
+    organization_slug: red-hat
+    source_ids: [ rh-llmd-launch, llmd-maintainers ]
+  - name: Google (MAINTAINERS.md lists Google staff in project leadership)
+    organization_slug: google
+    source_ids: [ llmd-maintainers ]
+  - name: IBM (IBM Research is a founding contributor; MAINTAINERS.md lists IBM staff in project leadership and as a community manager)
+    organization_slug: ibm
+    source_ids: [ rh-llmd-launch, llmd-maintainers ]
+organization_slugs: [ linux-foundation, red-hat, google, ibm, coreweave, nvidia ]
+links:
+  - label: Website and documentation
+    url: https://llm-d.ai/
+    kind: website
+  - label: Repository
+    url: https://github.com/llm-d/llm-d
+    kind: repository
+  - label: Quickstart
+    url: https://llm-d.ai/docs/getting-started/quickstart
+    kind: documentation
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/llm-d/llm-d/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/llm-d/llm-d/releases
+    kind: release-notes
+summary:
+  text: >-
+    llm-d is an open-source distributed inference serving stack for running large language
+    models on Kubernetes. It sits above model servers such as vLLM and adds request routing
+    that is aware of prefix caches and load, KV-cache offloading, prefill/decode
+    disaggregation, expert parallelism for large models, autoscaling, and batch processing.
+    Red Hat launched it in May 2025, and it became a Cloud Native Computing Foundation Sandbox
+    project in March 2026.
+  source_ids: [ llmd-readme, cncf-llmd-project, rh-llmd-launch, cncf-llmd-blog ]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Serving open models at scale on Kubernetes clusters, using tested deployment guides
+    ("well-lit paths") with Helm charts for common serving patterns across several accelerator
+    types.
+  source_ids: [ llmd-readme, llmd-accelerators ]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    llm-d is a Cloud Native Computing Foundation Sandbox project, accepted on March 12, 2026.
+    The CNCF says it is part of the nonprofit Linux Foundation, whose privacy policy gives a
+    legal postal address in San Francisco, California. Before joining the CNCF, the project was
+    launched by Red Hat, which has its corporate headquarters in Raleigh, North Carolina. Its
+    MAINTAINERS.md lists project leadership employed by Google, IBM, and Red Hat. Day-to-day
+    decisions follow the process in PROJECT.md: lazy consensus, with project maintainers
+    approving process changes. This multi-company project is assessed through its U.S.-based
+    foundation host, not through contributors' nationalities.
+  source_ids: [ cncf-llmd-project, cncf-about, lf-privacy, rh-llmd-launch, rh-offices, llmd-maintainers, llmd-project ]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code, container images, and Helm-based guides are public. Deploying a model requires
+    a Kubernetes cluster with accelerators, and the quickstart uses a Hugging Face token stored
+    as a Kubernetes secret.
+  source_ids: [ llmd-readme, llmd-project, llmd-quickstart ]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/llm-d/llm-d/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ llmd-license ]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 license covers the llm-d repository. Model servers such as vLLM and the
+    models served have their own licenses.
+  source_ids: [ llmd-license, llmd-readme ]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: >-
+      Code is in the llm-d GitHub organization, with experimental components in a separate
+      llm-d-incubation organization.
+    source_ids: [ llmd-readme, llmd-project ]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Documentation and deployment guides are published at llm-d.ai and in the repository.
+    source_ids: [ llmd-readme, llmd-quickstart ]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The quickstart installs the router with Helm and the model server with Kustomize. It
+      needs kubectl, Helm, a Hugging Face token, and the Gateway API Inference Extension CRDs.
+    source_ids: [ llmd-quickstart ]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The accelerator guide names NVIDIA GPUs as the default and also covers AMD ROCm GPUs,
+      Intel XPU, Google Cloud TPUs on GKE, x86_64 CPUs, and several other vendors' accelerators,
+      each with named maintainers. Current images are built on the CUDA 12.9.1 runtime.
+    source_ids: [ llmd-accelerators ]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub. The latest at review was v0.10.0, published
+      September 29, 2026; the project has not yet reached version 1.0.
+    source_ids: [ llmd-release-0-10-0 ]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      PROJECT.md describes the project as building on vLLM and the Kubernetes Gateway API
+      Inference Extension, with code changes made upstream there rather than in forks.
+    source_ids: [ llmd-project ]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [ inference, serving, distributed-computing ]
+publication_status: published
+archive_note: null
+released_at: 2025-05-20
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: llmd-readme
+    title: llm-d/llm-d README
+    url: https://github.com/llm-d/llm-d
+    publisher: llm-d project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-project
+    title: llm-d PROJECT.md (project overview and governance)
+    url: https://github.com/llm-d/llm-d/blob/main/PROJECT.md
+    publisher: llm-d project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-maintainers
+    title: llm-d MAINTAINERS.md
+    url: https://github.com/llm-d/llm-d/blob/main/MAINTAINERS.md
+    publisher: llm-d project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-license
+    title: llm-d/llm-d LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/llm-d/llm-d/main/LICENSE
+    publisher: llm-d project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-quickstart
+    title: llm-d quickstart
+    url: https://llm-d.ai/docs/getting-started/quickstart
+    publisher: llm-d project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-accelerators
+    title: llm-d accelerators (docs/getting-started/accelerators.md)
+    url: https://github.com/llm-d/llm-d/blob/main/docs/getting-started/accelerators.md
+    publisher: llm-d project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmd-release-0-10-0
+    title: llm-d release v0.10.0
+    url: https://github.com/llm-d/llm-d/releases/tag/v0.10.0
+    publisher: llm-d project
+    kind: release-notes
+    published_at: 2026-09-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cncf-llmd-project
+    title: llm-d | CNCF project page
+    url: https://www.cncf.io/projects/llm-d/
+    publisher: Cloud Native Computing Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cncf-llmd-blog
+    title: Welcome llm-d to the CNCF
+    url: https://www.cncf.io/blog/2026/03/24/welcome-llm-d-to-the-cncf-evolving-kubernetes-into-sota-ai-infrastructure/
+    publisher: Cloud Native Computing Foundation
+    kind: announcement
+    published_at: 2026-03-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cncf-about
+    title: Who we are | CNCF
+    url: https://www.cncf.io/about/who-we-are/
+    publisher: Cloud Native Computing Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lf-privacy
+    title: Linux Foundation Privacy Policy
+    url: https://www.linuxfoundation.org/legal/privacy-policy
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-llmd-launch
+    title: Red Hat Launches the llm-d Community, Powering Distributed Gen AI Inference at Scale
+    url: https://www.redhat.com/en/about/press-releases/red-hat-launches-llm-d-community-powering-distributed-gen-ai-inference-scale
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2025-05-20
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-offices
+    title: Red Hat office locations
+    url: https://www.redhat.com/en/about/office-locations
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

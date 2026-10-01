@@ -1,0 +1,189 @@
+slug: dioptra
+name: Dioptra
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: National Institute of Standards and Technology (NIST)
+    organization_slug: nist
+    source_ids: [dioptra-repo, dioptra-docs, dioptra-why]
+organization_slugs: [nist]
+links:
+  - label: Documentation
+    url: https://pages.nist.gov/dioptra/
+    kind: documentation
+  - label: Repository
+    url: https://github.com/usnistgov/dioptra
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/usnistgov/dioptra/blob/main/LICENSE
+    kind: license
+  - label: Tags (versions)
+    url: https://github.com/usnistgov/dioptra/tags
+    kind: release-notes
+summary:
+  text: >-
+    Dioptra is an open-source software test platform for assessing trustworthy characteristics
+    of AI models, built by NIST's National Cybersecurity Center of Excellence and announced by
+    NIST in July 2024.
+    It runs as a set of containerized services with a REST API that can be used through a web
+    interface or a Python client to design, run, and track experiments, and its README says it
+    supports the Measure function of the NIST AI Risk Management Framework.
+  source_ids: [dioptra-repo, dioptra-docs, dioptra-why, nist-dioptra-announcement]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    The README lists model testing during development, acquisition, or audits; tracking
+    experiments in trustworthy-AI research; providing a common platform for evaluations and
+    challenges; and red-teaming in a controlled environment. The documentation's motivating
+    example is testing models against adversarial attacks and defenses.
+  source_ids: [dioptra-repo, dioptra-why]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Dioptra is developed and published by NIST, a U.S. federal agency within the Department of
+    Commerce; its repository is in NIST's usnistgov GitHub organization, and its license file
+    states that the software is made available by NIST as a public service.
+  source_ids: [dioptra-repo, dioptra-license, nist-about]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub, and prebuilt container images for the core services and
+    for CPU and GPU workers are published for each version.
+  source_ids: [dioptra-repo]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Creative Commons Attribution 4.0 International (to the extent NIST holds copyright)
+    spdx: CC-BY-4.0
+    url: https://github.com/usnistgov/dioptra/blob/main/LICENSE
+    applies_to: code
+    source_ids: [dioptra-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The license file states that work by NIST employees is not subject to copyright protection
+    in the United States under 17 U.S.C. 105, that NIST may hold international copyright and
+    copyright in portions assigned or licensed by its contractors, and that to the extent NIST
+    holds copyright the software is available under CC BY 4.0.
+  source_ids: [dioptra-license]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository in NIST's usnistgov GitHub organization.
+    source_ids: [dioptra-repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      Documentation on pages.nist.gov covers the platform's motivation and architecture,
+      setup, tutorials, how-to guides, and REST API and Python client references.
+    source_ids: [dioptra-docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Users pull versioned container images (or build them), generate a deployment folder from
+      a cruft template, initialize it, and start the services with Docker Compose.
+    source_ids: [dioptra-repo, dioptra-install]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: partial
+    note: >-
+      The installation guide recommends a Linux-based environment with Docker, Docker Compose,
+      Python 3.11 or later, and Git, and the project publishes PyTorch and TensorFlow worker
+      images for CPU and GPU. No detailed operating-system or processor-architecture support
+      matrix was found.
+    source_ids: [dioptra-install, dioptra-repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      The README gives the current release as 1.1.0, "with on-going improvements and
+      development". Versions are published as Git tags (1.0.0 on July 26, 2024; 1.0.1 on
+      October 28, 2024; 1.1.0 on February 19, 2026) rather than GitHub release entries.
+    source_ids: [dioptra-repo, dioptra-tags]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The installation guide lists Docker and Docker Compose, Python 3.11 or later on the host,
+      and Git as prerequisites, and recommends a Linux-based environment. GPU-enabled workers
+      are an optional configuration.
+    source_ids: [dioptra-install, dioptra-docs]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [evaluation, security]
+publication_status: published
+archive_note: null
+released_at: 2024-07-26
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: dioptra-repo
+    title: usnistgov/dioptra (GitHub repository and README)
+    url: https://github.com/usnistgov/dioptra
+    publisher: National Institute of Standards and Technology
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-license
+    title: Dioptra LICENSE
+    url: https://raw.githubusercontent.com/usnistgov/dioptra/main/LICENSE
+    publisher: National Institute of Standards and Technology
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-tags
+    title: Tags · usnistgov/dioptra
+    url: https://github.com/usnistgov/dioptra/tags
+    publisher: National Institute of Standards and Technology
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-docs
+    title: Dioptra Overview — Dioptra 1.1.0 documentation
+    url: https://pages.nist.gov/dioptra/
+    publisher: National Institute of Standards and Technology
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-why
+    title: Motivation — Dioptra 1.1.0 documentation
+    url: https://pages.nist.gov/dioptra/explanation/dioptra-motivation/why-dioptra.html
+    publisher: National Institute of Standards and Technology
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dioptra-install
+    title: Install Dioptra — Dioptra 1.1.0 documentation
+    url: https://pages.nist.gov/dioptra/how-to/setup-dioptra/install-dioptra-explanation.html
+    publisher: National Institute of Standards and Technology
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-dioptra-announcement
+    title: Department of Commerce Announces New Guidance, Tools 270 Days Following President Biden's Executive Order on AI
+    url: https://www.nist.gov/news-events/news/2024/07/department-commerce-announces-new-guidance-tools-270-days-following
+    publisher: National Institute of Standards and Technology
+    kind: announcement
+    published_at: 2024-07-26
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nist-about
+    title: About NIST
+    url: https://www.nist.gov/about-nist
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -85,7 +85,7 @@ openness_summary:
 hiring_url: https://deepmind.google/careers/
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: google-blog-gdm-2023
@@ -144,3 +144,91 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-09-29
+  - id: review-gdm-models
+    title: Google DeepMind models
+    url: https://deepmind.google/models/
+    publisher: Google DeepMind
+    kind: official-page
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-gemma-docs
+    title: Gemma models overview
+    url: https://ai.google.dev/gemma/docs
+    publisher: Google AI for Developers
+    kind: documentation
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-gemma-4-card
+    title: Gemma 4 model card
+    url: https://ai.google.dev/gemma/docs/core/model_card_4
+    publisher: Google AI for Developers
+    kind: model-card
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-gemma-4-license
+    title: Gemma 4 license (Apache License 2.0)
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    publisher: Google AI for Developers
+    kind: license
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-gemma-terms
+    title: Gemma Terms of Use
+    url: https://ai.google.dev/gemma/terms
+    publisher: Google AI for Developers
+    kind: license
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: review-hf-google
+    title: Google on Hugging Face
+    url: https://huggingface.co/google
+    publisher: Hugging Face
+    kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Google DeepMind presents Gemma as open models for developers to build on
+      and customize. Its models page lists other families, such as Gemini, for
+      use through Google's apps and developer tools.
+    source_ids: [review-gemma-docs, review-gdm-models]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Gemma weights can be downloaded from Kaggle and Hugging Face and run
+      locally or on Google Cloud. Gemini, Veo, Lyria, and other Google DeepMind
+      model families are offered through hosted Google products, including the
+      Gemini app, Google AI Studio, and Gemini Enterprise Agent Platform.
+    source_ids: [review-gemma-docs, review-hf-google, review-gdm-models]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Terms differ by Gemma generation: Gemma 4 is released under Apache 2.0,
+      while earlier Gemma models and variants such as EmbeddingGemma and
+      ShieldGemma fall under the Gemma Terms of Use, which incorporate a
+      prohibited use policy. This profile is not a complete product or rights
+      audit.
+    source_ids: [review-gemma-4-license, review-gemma-4-card, review-gemma-terms]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Gemma documentation
+      url: https://ai.google.dev/gemma/docs
+      kind: documentation
+      source_ids: [review-gemma-docs]
+      reviewed_at: 2026-10-01
+    - label: Google models on Hugging Face
+      url: https://huggingface.co/google
+      kind: model-hub
+      source_ids: [review-hf-google]
+      reviewed_at: 2026-10-01
+    - label: Gemma Terms of Use (Gemma releases other than Gemma 4)
+      url: https://ai.google.dev/gemma/terms
+      kind: documentation
+      source_ids: [review-gemma-terms]
+      reviewed_at: 2026-10-01
+    - label: Google DeepMind model families
+      url: https://deepmind.google/models/
+      kind: documentation
+      source_ids: [review-gdm-models]
+      reviewed_at: 2026-10-01

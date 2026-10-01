@@ -1,0 +1,206 @@
+slug: litert
+name: LiteRT
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Google (Google AI Edge)
+    organization_slug: google
+    source_ids: [readme, source-header, docs]
+organization_slugs: [google]
+links:
+  - label: Website
+    url: https://developers.google.com/edge/litert
+    kind: website
+  - label: Repository
+    url: https://github.com/google-ai-edge/LiteRT
+    kind: repository
+  - label: LiteRT-LM repository
+    url: https://github.com/google-ai-edge/LiteRT-LM
+    kind: repository
+  - label: LICENSE
+    url: https://github.com/google-ai-edge/LiteRT/blob/main/LICENSE
+    kind: license
+  - label: Reviewed release
+    url: https://github.com/google-ai-edge/LiteRT/releases/tag/v2.2.0
+    kind: release-notes
+summary:
+  text: >-
+    LiteRT is Google's on-device runtime for machine learning and generative AI models on
+    Android, iOS, desktop, web, and IoT platforms, with CPU, GPU, and NPU acceleration. LiteRT is
+    the new name for TensorFlow Lite; it runs models converted from PyTorch, TensorFlow, and JAX.
+  source_ids: [readme, docs, rename-blog]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Running converted models inside mobile, desktop, and web applications on the device, and
+    running LLMs locally through LiteRT-LM, a separate Google library built on the LiteRT
+    runtime.
+  source_ids: [readme, docs, litertlm-readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    LiteRT is published in Google's google-ai-edge GitHub organization; its README calls it
+    Google's on-device runtime, source files carry Google LLC copyright notices, and
+    contributions require a Google contributor license agreement. Google is headquartered in
+    the United States (see the Google record).
+  source_ids: [readme, source-header, contributing]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: null
+  source_ids: [readme, license]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/google-ai-edge/LiteRT/blob/main/LICENSE
+    applies_to: code
+    source_ids: [license, readme]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache 2.0 entry covers the LiteRT repository. LiteRT-LM is a separate repository whose
+    LICENSE is also Apache 2.0. Models run with LiteRT are not covered by these licenses.
+  source_ids: [license, litertlm-license]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the google-ai-edge GitHub organization.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Official documentation on Google's developer site covers conversion, runtime APIs, hardware acceleration, and LiteRT-LM.
+    source_ids: [docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README points to platform integration guides and documents building Linux and Android
+      artifacts from source with Docker, CMake, or Bazel. Google's renaming announcement says
+      LiteRT packages are distributed through Maven, PyPI, and CocoaPods.
+    source_ids: [readme, rename-blog]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README's platform table lists CPU support on Android, iOS, Linux, macOS, Windows, web,
+      and IoT; GPU support through OpenCL or OpenGL (Android), Metal (iOS and macOS), and WebGPU;
+      and NPU support from several chipset vendors on Android and Linux, with Intel NPUs on
+      Windows. Some accelerators are marked as coming soon.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed release v2.2.0, published August 13, 2026. The README says LiteRT provides
+      nightly builds and targets stable releases on a 6 to 8 week cadence.
+    source_ids: [release, readme]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      LiteRT-LM's README documents a command-line tool (litert-lm run) that downloads LiteRT-LM
+      model files from Hugging Face and runs them on Linux, macOS, Windows, or Raspberry Pi, and
+      lists Python, Kotlin, and C++ APIs as stable.
+    source_ids: [litertlm-readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The README says TensorFlow Lite packages and the tensorflow/lite directory are in
+      maintenance mode, receiving only critical security and stability updates, and directs new
+      code to LiteRT's Compiled Model API.
+    source_ids: [readme]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    Google renamed TensorFlow Lite to LiteRT in September 2024; the README says LiteRT continues
+    the legacy of TensorFlow Lite.
+  derived_from:
+    - name: TensorFlow Lite (part of TensorFlow)
+      artifact_slug: tensorflow
+      url: https://github.com/tensorflow/tensorflow
+      note: LiteRT is the renamed continuation of TensorFlow Lite.
+  source_ids: [rename-blog, readme]
+tags: [inference, local-inference, on-device]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: readme
+    title: google-ai-edge/LiteRT README
+    url: https://raw.githubusercontent.com/google-ai-edge/LiteRT/main/README.md
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: google-ai-edge/LiteRT LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/google-ai-edge/LiteRT/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: source-header
+    title: LiteRT source file header (litert/c/litert_common.h)
+    url: https://raw.githubusercontent.com/google-ai-edge/LiteRT/main/litert/c/litert_common.h
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: contributing
+    title: google-ai-edge/LiteRT CONTRIBUTING.md
+    url: https://raw.githubusercontent.com/google-ai-edge/LiteRT/main/CONTRIBUTING.md
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs
+    title: LiteRT overview (Google AI Edge)
+    url: https://developers.google.com/edge/litert
+    publisher: Google
+    kind: documentation
+    published_at: 2026-09-25
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rename-blog
+    title: TensorFlow Lite is now LiteRT
+    url: https://developers.googleblog.com/en/tensorflow-lite-is-now-litert/
+    publisher: Google
+    kind: announcement
+    published_at: 2024-09-04
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: litertlm-readme
+    title: google-ai-edge/LiteRT-LM README
+    url: https://raw.githubusercontent.com/google-ai-edge/LiteRT-LM/main/README.md
+    publisher: Google
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: litertlm-license
+    title: google-ai-edge/LiteRT-LM LICENSE (Apache 2.0)
+    url: https://raw.githubusercontent.com/google-ai-edge/LiteRT-LM/main/LICENSE
+    publisher: Google
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Release v2.2.0
+    url: https://github.com/google-ai-edge/LiteRT/releases/tag/v2.2.0
+    publisher: Google
+    kind: release-notes
+    published_at: 2026-08-13
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

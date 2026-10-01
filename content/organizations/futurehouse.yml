@@ -1,0 +1,172 @@
+slug: futurehouse
+name: FutureHouse
+legal_name:
+  text: Future House Inc (as listed in the IRS exempt-organization extract)
+  reviewed_at: 2026-10-01
+  source_ids: [irs-eo-bmf-ca]
+website: https://www.futurehouse.org
+logo_text: FH
+summary:
+  text: >-
+    FutureHouse is a 501(c)(3) nonprofit research lab in San Francisco, founded in 2023, that
+    builds AI systems intended to automate parts of scientific research, with a focus on
+    biology. Its open releases include the PaperQA literature-agent package and the ether0
+    chemistry reasoning model.
+  reviewed_at: 2026-10-01
+  source_ids: [fh-about, fh-edison-announcement, paperqa-repo, ether0-card]
+organization_roles: [research-lab, nonprofit-research, model-developer, open-source-steward]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3), classified as a
+    publicly supported organization (170(b)(1)(A)(vi)) in the IRS exempt-organization extract.
+  reviewed_at: 2026-10-01
+  source_ids: [irs-eo-bmf-ca, irs-eo-info, fh-about]
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [fh-about, irs-eo-bmf-ca]
+other_locations: []
+founded:
+  year: 2023
+  source_ids: [fh-about]
+sectors: [science, research, agents, open-models]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      In November 2025 FutureHouse announced Edison Scientific as a commercial spinout to develop
+      and deploy its AI Scientist work for commercial use, with part of the FutureHouse team
+      moving to Edison. FutureHouse describes the two as independent organizations with
+      separate missions, operations, and governance that share office space.
+    reviewed_at: 2026-10-01
+    source_ids: [fh-edison-announcement, fh-about]
+  - text: >-
+      Edison Scientific's February 2026 PaperQA3 announcement describes the open-source PaperQA
+      repository as the underlying algorithm of its literature agent. In the repository's
+      discussions, maintainers stated in July 2026 that there were no plans to open-source
+      PaperQA3.
+    reviewed_at: 2026-10-01
+    source_ids: [edison-paperqa3, paperqa-discussion-1211]
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    FutureHouse describes itself as a 501(c)(3) nonprofit research lab in San Francisco. The IRS
+    exempt-organization extract for California lists Future House Inc at a San Francisco address
+    with subsection code 03 (501(c)(3)). Its for-profit spinout, Edison Scientific, is a separate
+    organization and is not covered by this record.
+  source_ids: [fh-about, irs-eo-bmf-ca, irs-eo-info]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    FutureHouse publishes the PaperQA code under Apache 2.0 and the ether0 model weights and
+    reward-function code under Apache 2.0, with the ether0 benchmark under CC BY 4.0. The ether0
+    training code and full training data are not published. See the PaperQA and ether0 records;
+    this catalog does not assess openness for the organization as a whole.
+  reviewed_at: 2026-10-01
+  source_ids: [paperqa-license, ether0-card, ether0-repo, ether0-license, ether0-benchmark-api]
+hiring_url: https://www.futurehouse.org/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: fh-about
+    title: About | FutureHouse
+    url: https://www.futurehouse.org/about
+    publisher: FutureHouse
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fh-edison-announcement
+    title: Announcing Edison Scientific
+    url: https://www.futurehouse.org/research-announcements/announcing-edison-scientific
+    publisher: FutureHouse
+    kind: announcement
+    published_at: 2025-11-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: edison-paperqa3
+    title: "Introducing PaperQA3: a frontier multimodal deep research agent for science"
+    url: https://edisonscientific.com/news/edison-literature-agent
+    publisher: Edison Scientific
+    kind: announcement
+    published_at: 2026-02-18
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: paperqa-discussion-1211
+    title: "When will PaperQA 3 be open-sourced? (Future-House/paper-qa discussion #1211)"
+    url: https://github.com/Future-House/paper-qa/discussions/1211
+    publisher: FutureHouse (GitHub discussions)
+    kind: other
+    published_at: 2025-11-19
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: paperqa-repo
+    title: Future-House/paper-qa (GitHub repository)
+    url: https://github.com/Future-House/paper-qa
+    publisher: FutureHouse
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: paperqa-license
+    title: Future-House/paper-qa LICENSE
+    url: https://raw.githubusercontent.com/Future-House/paper-qa/main/LICENSE
+    publisher: FutureHouse
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ether0-card
+    title: futurehouse/ether0 model card
+    url: https://huggingface.co/futurehouse/ether0
+    publisher: FutureHouse
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ether0-repo
+    title: Future-House/ether0 README
+    url: https://github.com/Future-House/ether0
+    publisher: FutureHouse
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ether0-license
+    title: Future-House/ether0 LICENSE
+    url: https://raw.githubusercontent.com/Future-House/ether0/main/LICENSE
+    publisher: FutureHouse
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ether0-benchmark-api
+    title: futurehouse/ether0-benchmark (Hugging Face dataset API metadata)
+    url: https://huggingface.co/api/datasets/futurehouse/ether0-benchmark
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: 2026-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

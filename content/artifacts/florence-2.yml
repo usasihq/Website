@@ -1,0 +1,147 @@
+slug: florence-2
+name: Microsoft Florence-2
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Microsoft (Azure AI)
+    organization_slug: microsoft
+    source_ids: [florence2-paper, fl2-large-card]
+organization_slugs: [microsoft]
+links:
+  - label: "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks (arXiv 2311.06242)"
+    url: https://arxiv.org/abs/2311.06242
+    kind: paper
+  - label: Florence-2-large (Hugging Face)
+    url: https://huggingface.co/microsoft/Florence-2-large
+    kind: model-hub
+  - label: Florence-2-base (Hugging Face)
+    url: https://huggingface.co/microsoft/Florence-2-base
+    kind: model-hub
+  - label: Microsoft Research publication page
+    url: https://www.microsoft.com/en-us/research/publication/florence-2-advancing-a-unified-representation-for-a-variety-of-vision-tasks/
+    kind: paper
+summary:
+  text: >-
+    Florence-2 is a family of vision foundation models from Microsoft's Azure AI group that
+    handle captioning, object detection, visual grounding, segmentation, and OCR through text
+    prompts, using a sequence-to-sequence design with a DaViT vision encoder. The models were
+    trained on FLD-5B, a set of 5.4 billion visual annotations on 126 million images that the
+    team built with an iterative automated annotation process. Microsoft published four
+    checkpoints on Hugging Face in June 2024: Florence-2-base (0.23B parameters) and
+    Florence-2-large (0.77B), plus versions of each fine-tuned on a collection of downstream
+    tasks (base-ft and large-ft).
+  source_ids: [florence2-paper, fl2-large-card, msr-florence2-pub, hf-florence2-listing]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    The model card shows prompt-selected tasks including captioning at several levels of detail,
+    object detection, dense region captioning, region proposals, caption-to-phrase grounding,
+    OCR, and OCR with regions.
+  source_ids: [fl2-large-card]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The technical report lists its authors under Azure AI, Microsoft, and the checkpoints are
+    published in Microsoft's Hugging Face organization with an MIT license naming Microsoft
+    Corporation. Microsoft Corporation lists One Microsoft Way, Redmond, Washington as its
+    principal executive offices on the cover page of its Form 10-K for fiscal year 2026.
+  source_ids: [florence2-paper, fl2-large-card, fl2-large-license, msft-10k-2026]
+  assessed_at: 2026-10-01
+availability:
+  status: not_applicable
+  access_conditions: Availability and license terms are assessed on the individual release records.
+  source_ids: []
+licenses: []
+license_notes:
+  text: >-
+    All four Florence-2 checkpoints in Microsoft's Hugging Face organization were labeled MIT in
+    their repository metadata when checked; only Florence-2-large has a release record here, with
+    its license file reviewed.
+  source_ids: [fl2-large-license, fl2-base-api, fl2-base-ft-api, fl2-large-ft-api]
+  reviewed_at: 2026-10-01
+checklist: {}
+run_notes: []
+provenance: null
+tags: [vision-language, multimodal, computer-vision]
+publication_status: published
+archive_note: null
+released_at: 2024-06
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: florence2-paper
+    title: "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks"
+    url: https://arxiv.org/abs/2311.06242
+    publisher: Microsoft (arXiv)
+    kind: paper
+    published_at: 2023-11-10
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: msr-florence2-pub
+    title: "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks - Microsoft Research"
+    url: https://www.microsoft.com/en-us/research/publication/florence-2-advancing-a-unified-representation-for-a-variety-of-vision-tasks/
+    publisher: Microsoft Research
+    kind: official-page
+    published_at: 2024-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-large-card
+    title: microsoft/Florence-2-large model card
+    url: https://huggingface.co/microsoft/Florence-2-large/raw/main/README.md
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-large-license
+    title: microsoft/Florence-2-large LICENSE (MIT)
+    url: https://huggingface.co/microsoft/Florence-2-large/raw/main/LICENSE
+    publisher: Microsoft (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-florence2-listing
+    title: Hugging Face model listing for microsoft Florence models (API)
+    url: https://huggingface.co/api/models?author=microsoft&search=Florence&limit=50
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-base-api
+    title: Hugging Face model metadata for microsoft/Florence-2-base
+    url: https://huggingface.co/api/models/microsoft/Florence-2-base
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-base-ft-api
+    title: Hugging Face model metadata for microsoft/Florence-2-base-ft
+    url: https://huggingface.co/api/models/microsoft/Florence-2-base-ft
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fl2-large-ft-api
+    title: Hugging Face model metadata for microsoft/Florence-2-large-ft
+    url: https://huggingface.co/api/models/microsoft/Florence-2-large-ft
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: msft-10k-2026
+    title: Microsoft Corporation Form 10-K for the fiscal year ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm
+    publisher: Microsoft Corporation (U.S. SEC filing)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

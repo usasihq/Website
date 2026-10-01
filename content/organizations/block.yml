@@ -1,0 +1,234 @@
+slug: block
+name: Block
+legal_name:
+  text: Block, Inc.
+  source_ids: [block-10k-2025]
+  reviewed_at: 2026-10-01
+website: https://block.xyz
+logo_text: B
+summary:
+  text: >-
+    Block is a publicly traded company that operates Square, a network for businesses, and
+    Cash App, a consumer network, combining commerce, financial-services, software, and hardware
+    products. Its Open Source Program Office created the goose AI agent, which Block contributed
+    to the Agentic AI Foundation; it also describes AI features in its own products, including
+    Managerbot for Square sellers and Moneybot in Cash App.
+  source_ids: [block-10k-2025, block-goose-launch, block-aaif-post, block-ai]
+  reviewed_at: 2026-10-01
+organization_roles: [consumer-products, enterprise-software]
+ownership_category: publicly-traded
+ownership_evidence:
+  text: >-
+    Block's Form 10-K for fiscal 2025 lists its Class A common stock as trading on the New York Stock
+    Exchange under the symbol XYZ.
+  source_ids: [block-10k-2025]
+  reviewed_at: 2026-10-01
+legal_form:
+  text: Delaware corporation
+  source_ids: [block-10k-2025, block-10q-2026q2]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Oakland, California (principal executive office; no formal headquarters)
+  country: US
+  source_ids: [block-10k-2025, block-10q-2026q2]
+other_locations: []
+founded: null
+sectors: [agents]
+status_note: null
+products:
+  - id: managerbot
+    name: Managerbot
+    kind: enterprise-software
+    access: >-
+      AI business-management feature for Square sellers that monitors sales, labor, inventory,
+      and other operations and proposes actions for the seller to review and approve. Use is
+      subject to Square's AI terms of service.
+    url: https://squareup.com/us/en/the-bottom-line/inside-square/managerbot-ai-business-manager
+    source_ids: [square-managerbot, block-ai, square-ai-terms]
+    last_reviewed: 2026-10-01
+  - id: moneybot
+    name: Moneybot
+    kind: assistant-app
+    access: >-
+      AI assistant inside the Cash App mobile app that answers questions about a customer's
+      balances, transactions, and spending. Cash App's November 2025 announcement described an
+      initial pilot with selected customers.
+    url: https://cash.app/press/cash-releases-see-whats-new
+    source_ids: [cashapp-moneybot, block-ai]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Block's 10-K states that the company has adopted a distributed work model and has no
+      formal headquarters; the Oakland address is the principal executive office it identifies
+      under SEC rules. The June 30, 2026 Form 10-Q repeats this.
+    source_ids: [block-10k-2025, block-10q-2026q2]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Block's Open Source Program Office announced codename goose on January 28, 2025, releasing
+      it under the Apache License 2.0. In December 2025 Block co-founded the Agentic AI
+      Foundation with Anthropic and OpenAI and contributed goose to it; the goose repository
+      moved from Block's GitHub organization to aaif-goose in April 2026.
+    source_ids: [block-goose-launch, block-aaif-post, block-ai, goose-moves-aaif]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Block's AI page also describes Buzz and Berd as open-source workspaces for working with AI
+      agents, and Builderbot as a system that coordinates software agents in Block's own
+      development workflow.
+    source_ids: [block-ai, block-github]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Block's Form 10-K for fiscal 2025 lists its principal executive offices at 1955 Broadway,
+    Suite 600, Oakland, California, and its state of incorporation as Delaware; its Form 10-Q
+    for the quarter ended June 30, 2026 gives the same. The filings note that Block has no
+    formal headquarters because of its distributed work model; under this catalog's policy a
+    documented U.S. principal executive office satisfies the us-headquarters basis.
+  source_ids: [block-10k-2025, block-10q-2026q2]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Block publishes open-source software, including the agent workspaces Buzz and Berd; goose,
+    which Block created under the Apache License 2.0, is now stewarded by the Agentic AI
+    Foundation. Managerbot and Moneybot are hosted features of Square and Cash App under those
+    products' terms. This catalog has no record of model weights published by Block.
+  source_ids: [block-ai, block-github, goose-license, square-ai-terms, cashapp-terms]
+  reviewed_at: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Managerbot is aimed at Square sellers and Moneybot at Cash App customers; Block presents
+      Buzz, Berd, and goose as tools for builders working with AI agents.
+    source_ids: [block-ai]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      Block's AI features are delivered inside the hosted Square and Cash App services. Its
+      open-source agent projects are published as public repositories; goose is now maintained
+      under the Agentic AI Foundation rather than by Block alone.
+    source_ids: [block-ai, block-github, goose-moves-aaif]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      Square's AI terms say outputs may be inaccurate and should be validated by a person, and
+      that inputs may be shared with third-party technology providers. Cash App's terms say its
+      AI-powered features do not provide financial, legal, investment, or tax advice. This
+      profile is not a complete product or rights audit.
+    source_ids: [square-ai-terms, cashapp-terms]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Block open-source repositories
+      url: https://github.com/block
+      kind: repository
+      source_ids: [block-github]
+      reviewed_at: 2026-10-01
+    - label: Square AI Terms of Service
+      url: https://squareup.com/us/en/legal/general/sq-generativeai-terms
+      kind: documentation
+      source_ids: [square-ai-terms]
+      reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: block-10k-2025
+    title: Block, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1512673/000162828026012254/xyz-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (filed by Block, Inc.)
+    kind: filing
+    published_at: 2026-02-26
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-10q-2026q2
+    title: Block, Inc. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1512673/000162828026053368/xyz-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (filed by Block, Inc.)
+    kind: filing
+    published_at: 2026-08-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-ai
+    title: AI at Block
+    url: https://block.xyz/ai
+    publisher: Block
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-goose-launch
+    title: Block Open Source Introduces "codename goose" — an Open Framework for AI Agents
+    url: https://block.xyz/inside/block-open-source-introduces-codename-goose
+    publisher: Block
+    kind: announcement
+    published_at: 2025-01-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-aaif-post
+    title: Block, Anthropic, and OpenAI Launch the Agentic AI Foundation
+    url: https://block.xyz/inside/block-anthropic-and-openai-launch-the-agentic-ai-foundation
+    publisher: Block
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-moves-aaif
+    title: goose has a new home - the Agentic AI Foundation (AAIF)
+    url: https://goose-docs.ai/blog/2026/04/07/goose-moves-to-aaif/
+    publisher: goose project
+    kind: announcement
+    published_at: 2026-04-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: goose-license
+    title: aaif-goose/goose LICENSE
+    url: https://raw.githubusercontent.com/aaif-goose/goose/main/LICENSE
+    publisher: goose project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-github
+    title: Block on GitHub (Open Source at Block, Inc.)
+    url: https://github.com/block
+    publisher: Block
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: square-managerbot
+    title: "Managerbot: an AI business manager for Square sellers"
+    url: https://squareup.com/us/en/the-bottom-line/inside-square/managerbot-ai-business-manager
+    publisher: Square (Block, Inc.)
+    kind: announcement
+    published_at: 2026-04-28
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cashapp-moneybot
+    title: Cash App releases — see what's new (Moneybot announcement)
+    url: https://cash.app/press/cash-releases-see-whats-new
+    publisher: Cash App (Block, Inc.)
+    kind: announcement
+    published_at: 2025-11-13
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: square-ai-terms
+    title: Square AI Terms of Service
+    url: https://squareup.com/us/en/legal/general/sq-generativeai-terms
+    publisher: Square (Block, Inc.)
+    kind: official-page
+    published_at: 2026-09-10
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cashapp-terms
+    title: Cash App Terms of Service (US), including AI-powered features
+    url: https://cash.app/legal/us/en-us/gen-ai-terms
+    publisher: Cash App (Block, Inc.)
+    kind: official-page
+    published_at: 2026-09-11
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

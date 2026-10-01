@@ -1,0 +1,191 @@
+slug: weights-and-biases
+name: Weights & Biases
+legal_name:
+  text: Weights and Biases, LLC
+  source_ids: [wb-msa]
+  reviewed_at: 2026-10-01
+website: https://wandb.ai/site/
+logo_text: W&B
+summary:
+  text: >-
+    Weights & Biases develops an AI developer platform for tracking and comparing machine
+    learning experiments (W&B Models) and for tracing and evaluating LLM applications and agents
+    (W&B Weave), and maintains the open-source wandb Python library. CoreWeave acquired it in
+    May 2025, and its products are now offered within CoreWeave Forge.
+  source_ids: [cw-10k-2025, cw-docs-wandb, cw-wb-page, wandb-repo]
+  reviewed_at: 2026-10-01
+organization_roles: [developer-platform]
+ownership_category: unit-of-another-organization
+parent_evidence:
+  text: >-
+    CoreWeave's Form 10-K for fiscal 2025 states that on May 5, 2025 CoreWeave acquired all of the
+    outstanding equity interests of Weights and Biases, Inc. CoreWeave's Weights & Biases page
+    says W&B now operates as part of CoreWeave and is a product within CoreWeave Forge.
+  source_ids: [cw-10k-2025, cw-wb-completion, cw-wb-page]
+  reviewed_at: 2026-10-01
+legal_form:
+  text: Delaware limited liability company
+  source_ids: [wb-msa]
+  reviewed_at: 2026-10-01
+parent_org_slug: coreweave
+parent_relationship: subsidiary
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [wb-msa]
+other_locations: []
+founded:
+  year: 2017
+  source_ids: [cw-wb-page]
+sectors: [agents, enterprise]
+status_note:
+  text: >-
+    CoreWeave completed its acquisition of Weights & Biases on May 5, 2025. On September 30, 2026
+    CoreWeave launched CoreWeave Forge, which includes Weights & Biases Models; from that date
+    W&B Free, Pro, and Enterprise SaaS accounts sign in through CoreWeave Forge, and wandb.ai
+    pages are moving to coreweave.com in phases. Self-hosted and dedicated-instance deployments
+    are unchanged, according to W&B and CoreWeave.
+  source_ids: [cw-10k-2025, cw-wb-completion, cw-forge-launch, cw-wb-page, wb-domain-faq]
+  reviewed_at: 2026-10-01
+products:
+  - id: wandb-models
+    name: Weights & Biases Models
+    kind: developer-tool
+    access: >-
+      Experiment tracking, hyperparameter search, evaluation tables, reports, and model and
+      dataset versioning; offered in CoreWeave Forge Free, Pro, and Enterprise editions, with
+      managed cloud, private cloud, on-premises, and hybrid deployment options.
+    url: https://www.coreweave.com/products/coreweave-forge/weights-and-biases-models
+    source_ids: [cw-wb-models, cw-forge-launch]
+    last_reviewed: 2026-10-01
+  - id: wandb-weave
+    name: W&B Weave
+    kind: developer-tool
+    access: >-
+      Tools for tracing, evaluating, and monitoring LLM applications and agents, including prompt
+      management and cost tracking; documented alongside W&B Models in CoreWeave's Weights &
+      Biases documentation.
+    url: https://wandb.ai/site/traces/
+    source_ids: [wb-traces, cw-docs-wandb]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      CoreWeave's Weights & Biases FAQ says W&B remains usable with other infrastructure providers,
+      while some other CoreWeave Forge products, such as training, inference, and sandboxes, run on
+      CoreWeave compute.
+    source_ids: [cw-wb-page]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    CoreWeave's Form 10-K for fiscal 2025 reports that on May 5, 2025 CoreWeave acquired all of the
+    outstanding equity interests of Weights and Biases, Inc. CoreWeave, Inc. is a Delaware
+    corporation with principal executive offices in Livingston, New Jersey, per the same filing's
+    cover page. W&B's current Master Service Agreement (updated September 30, 2026) names
+    Weights and Biases, LLC, a Delaware limited liability company with its principal place of
+    business at 400 Alabama Street, San Francisco, California. The record keeps the W&B name
+    because the entity, the brand, and the wandb repository continue under CoreWeave.
+  source_ids: [cw-10k-2025, cw-wb-completion, wb-msa, cw-wb-page]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    W&B publishes its wandb Python client library on GitHub under the MIT License. The hosted
+    W&B platform is provided under W&B's Master Service Agreement; the MIT license does not cover
+    it.
+  source_ids: [wandb-license, wandb-repo, wb-msa]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: cw-10k-2025
+    title: CoreWeave, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-03-02
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cw-wb-completion
+    title: CoreWeave Completes Acquisition of Weights & Biases
+    url: https://www.coreweave.com/news/coreweave-completes-acquisition-of-weights-biases-2
+    publisher: CoreWeave
+    kind: announcement
+    published_at: 2025-05-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cw-wb-page
+    title: Weights & Biases is now part of CoreWeave
+    url: https://www.coreweave.com/companies/weights-and-biases
+    publisher: CoreWeave
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cw-forge-launch
+    title: CoreWeave Forge Launches, Turning the AI Loop Production Run Into a Better Model and Agent
+    url: https://www.coreweave.com/news/coreweave-forge-launches-turning-the-ai-loop-production-run-into-a-better-model-and-agent
+    publisher: CoreWeave
+    kind: announcement
+    published_at: 2026-09-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cw-wb-models
+    title: Weights & Biases Models | Track, compare, improve models
+    url: https://www.coreweave.com/products/coreweave-forge/weights-and-biases-models
+    publisher: CoreWeave
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cw-docs-wandb
+    title: Get Started with Weights & Biases - CoreWeave Docs
+    url: https://docs.coreweave.com/products/wandb
+    publisher: CoreWeave
+    kind: documentation
+    published_at: 2026-09-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wb-msa
+    title: W&B Master Service Agreement
+    url: https://wandb.ai/site/terms/
+    publisher: Weights & Biases
+    kind: official-page
+    published_at: 2026-09-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wb-domain-faq
+    title: Domain Update FAQ - Weights & Biases
+    url: https://wandb.ai/site/domain-update-faqs/
+    publisher: Weights & Biases
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wb-traces
+    title: Streamline generative AI workflows with W&B Traces
+    url: https://wandb.ai/site/traces/
+    publisher: Weights & Biases
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wandb-repo
+    title: wandb/wandb (GitHub repository)
+    url: https://github.com/wandb/wandb
+    publisher: Weights & Biases
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wandb-license
+    title: wandb LICENSE (MIT)
+    url: https://raw.githubusercontent.com/wandb/wandb/main/LICENSE
+    publisher: Weights & Biases
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

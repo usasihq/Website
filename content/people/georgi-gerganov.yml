@@ -1,0 +1,108 @@
+slug: georgi-gerganov
+name: Georgi Gerganov
+initials: GG
+headline: Develops llama.cpp and the ggml tensor library for running models on local hardware
+bio:
+  text: Georgi Gerganov develops ggml, a tensor library for machine learning on commodity hardware, and
+    llama.cpp, a C/C++ runtime for running language models locally. Gerganov's site also lists whisper.cpp,
+    which runs OpenAI's Whisper speech recognition model on the CPU. Gerganov founded ggml.ai in 2023
+    to support ggml development, and Hugging Face acquired the company in 2026. Hugging Face's announcement
+    says the ggml team still spends all of its time maintaining llama.cpp and keeps full leadership of
+    the project's technical direction.
+  source_ids:
+  - personal-site
+  - ggml-site
+  - hf-announcement
+  reviewed_at: 2026-10-01
+affiliations:
+- name: Hugging Face
+  organization_slug: hugging-face
+  role: Maintains llama.cpp with the ggml team
+  current: true
+  source_ids:
+  - hf-announcement
+  - github-profile
+work:
+- name: llama.cpp
+  artifact_slug: llama-cpp
+  url: https://github.com/ggml-org/llama.cpp
+  contribution: Listed among the projects on Gerganov's site and announced by Hugging Face as the ggml
+    team's project. The repository's CODEOWNERS file names Gerganov for core areas including the CPU and
+    Metal backends, quantization code, and llama-server, and Gerganov continues to author commits to it.
+  source_ids:
+  - personal-site
+  - hf-announcement
+  - llama-cpp-codeowners
+  - llama-cpp-commits
+- name: ggml
+  artifact_slug: null
+  url: https://github.com/ggml-org/ggml
+  contribution: Founded ggml.ai in 2023 to support development of ggml, the tensor library with integer
+    quantization support that llama.cpp and whisper.cpp are built on. The library is MIT-licensed.
+  source_ids:
+  - ggml-site
+- name: whisper.cpp
+  artifact_slug: null
+  url: https://github.com/ggml-org/whisper.cpp
+  contribution: Listed on Gerganov's site as inference of OpenAI's Whisper speech recognition model on
+    the CPU, and pinned on Gerganov's GitHub profile as a C/C++ port of the model.
+  source_ids:
+  - personal-site
+  - github-profile
+links:
+- label: Website
+  url: https://ggerganov.com
+- label: GitHub
+  url: https://github.com/ggerganov
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+- id: personal-site
+  title: Georgi Gerganov — projects
+  url: https://ggerganov.com
+  publisher: Georgi Gerganov
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: github-profile
+  title: ggerganov (Georgi Gerganov) on GitHub
+  url: https://github.com/ggerganov
+  publisher: GitHub
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: ggml-site
+  title: ggml.ai — about the company and the ggml library
+  url: https://ggml.ai
+  publisher: ggml.ai
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: hf-announcement
+  title: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
+  url: https://huggingface.co/blog/ggml-joins-hf
+  publisher: Hugging Face
+  kind: announcement
+  published_at: 2026-02-20
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: llama-cpp-codeowners
+  title: ggml-org/llama.cpp CODEOWNERS
+  url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+  publisher: ggml-org (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01
+- id: llama-cpp-commits
+  title: ggml-org/llama.cpp commits authored by ggerganov
+  url: https://github.com/ggml-org/llama.cpp/commits?author=ggerganov
+  publisher: ggml-org (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-01
+  reviewed_at: 2026-10-01

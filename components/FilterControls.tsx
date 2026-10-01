@@ -84,11 +84,23 @@ export function FilterChip({ label, onRemove }: { label: string; onRemove: () =>
   );
 }
 
-export function ResultSummary({ visible, total, noun, announce }: { visible: number; total: number; noun: [string, string]; announce: string }) {
+export function ResultSummary({
+  visible,
+  total,
+  noun,
+  announce,
+  pending = false,
+}: {
+  visible: number;
+  total: number;
+  noun: [string, string];
+  announce: string;
+  pending?: boolean;
+}) {
   return (
     <>
       <p className="meta" aria-hidden="true">
-        Showing {visible} of {total} {total === 1 ? noun[0] : noun[1]}
+        {pending ? `Loading all ${noun[1]}…` : `Showing ${visible} of ${total} ${total === 1 ? noun[0] : noun[1]}`}
       </p>
       <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {announce}

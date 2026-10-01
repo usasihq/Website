@@ -1,0 +1,180 @@
+slug: d-matrix
+name: d-Matrix
+legal_name: null
+website: https://www.d-matrix.ai
+logo_text: DM
+summary:
+  text: >-
+    d-Matrix designs hardware and software for AI inference in data centers. Its products are the
+    Corsair inference accelerator, the JetStream I/O accelerator for card-to-card communication,
+    the Aviator software stack, and SquadRack rack-scale configurations that combine them.
+  source_ids: [dm-about, dm-full-production, dm-product]
+  reviewed_at: 2026-10-01
+organization_roles: [chip-designer, hardware-manufacturer]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Santa Clara, California
+  country: US
+  source_ids: [dm-terms, dm-contact, dm-full-production]
+other_locations:
+  - label: Carlsbad, California
+    country: US
+    source_ids: [dm-contact]
+  - label: Sydney, Australia
+    country: AU
+    source_ids: [dm-contact]
+  - label: Bengaluru, India
+    country: IN
+    source_ids: [dm-contact]
+  - label: Toronto, Ontario
+    country: CA
+    source_ids: [dm-contact]
+  - label: Belgrade, Serbia
+    country: RS
+    source_ids: [dm-contact]
+founded: null
+sectors: [chips]
+status_note: null
+products:
+  - id: corsair
+    name: d-Matrix Corsair
+    kind: hardware
+    access: >-
+      PCIe accelerator cards for data center inference, built on a chiplet design with on-chip
+      SRAM; they fit existing PCIe servers and can be paired with GPUs in disaggregated inference
+      pipelines. Sold through d-Matrix sales.
+    url: https://www.d-matrix.ai/product/
+    source_ids: [dm-product, dm-full-production]
+    last_reviewed: 2026-10-01
+  - id: jetstream
+    name: d-Matrix JetStream
+    kind: hardware
+    access: >-
+      I/O accelerator card that d-Matrix describes as a transparent NIC for accelerator-to-
+      accelerator communication between Corsair cards, using PCIe Gen5 and standard Ethernet.
+    url: https://www.d-matrix.ai/jetstream-accelerator/
+    source_ids: [dm-jetstream]
+    last_reviewed: 2026-10-01
+  - id: aviator
+    name: d-Matrix Aviator
+    kind: developer-tool
+    access: >-
+      Software stack for Corsair, from compiler to runtime, that d-Matrix says is co-designed with
+      its hardware.
+    url: https://www.d-matrix.ai/product/aviator/
+    source_ids: [dm-aviator, dm-product]
+    last_reviewed: 2026-10-01
+  - id: squadrack
+    name: d-Matrix SquadRack
+    kind: hardware
+    access: >-
+      Rack-scale reference configurations for inference that combine Corsair and JetStream in
+      air-cooled PCIe servers with standard Ethernet leaf switches, offered in single-server to
+      half-rack sizes.
+    url: https://www.d-matrix.ai/corsair-at-rack-scale/
+    source_ids: [dm-squadrack]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      d-Matrix announced on June 9, 2026 that its Corsair inference accelerator platform had
+      entered full production.
+    source_ids: [dm-full-production]
+    reviewed_at: 2026-10-01
+  - text: >-
+      d-Matrix says it is a member of the UALink and Ultra Ethernet (UEC) industry consortiums.
+    source_ids: [dm-squadrack]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    d-Matrix's terms of use identify the site operator as d-Matrix Corporation at 5201 Great
+    America Parkway, Suite 300, Santa Clara, California, and are governed by California law. Its
+    contact page lists that Silicon Valley address first among its offices, and its press releases
+    carry a Santa Clara dateline. The offices in Australia, India, Canada, and Serbia are
+    additional locations. The legal name is left blank because the company's own pages use
+    "d-Matrix Corporation", "d-Matrix Corp.", and "d-Matrix, Inc."
+  source_ids: [dm-terms, dm-contact, dm-full-production, dm-privacy, dm-about]
+  assessed_at: 2026-10-01
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: dm-about
+    title: About d-Matrix | Innovators in AI Compute Solutions & Technology
+    url: https://www.d-matrix.ai/about/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-contact
+    title: Contact d-Matrix | AI Solutions Inquiries & Global Office Locations
+    url: https://www.d-matrix.ai/contact/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-terms
+    title: Terms of Use - d-Matrix
+    url: https://www.d-matrix.ai/terms-of-use/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: 2022-02-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-privacy
+    title: Privacy Policy - d-Matrix
+    url: https://www.d-matrix.ai/privacy-policy/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: 2022-02-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-product
+    title: d-Matrix Corsair AI Platform | In-Memory Computing for AI
+    url: https://www.d-matrix.ai/product/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-jetstream
+    title: d-Matrix JetStream | In-Memory Computing for AI
+    url: https://www.d-matrix.ai/jetstream-accelerator/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-aviator
+    title: d-Matrix Aviator software (page titled "d-Matrix Corsair AI Platform | In-Memory Computing for AI")
+    url: https://www.d-matrix.ai/product/aviator/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-squadrack
+    title: Corsair at Rack Scale | d-Matrix In-Memory Computing for AI
+    url: https://www.d-matrix.ai/corsair-at-rack-scale/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dm-full-production
+    title: d-Matrix Corsair AI Inference Platform Enters Full Production to Meet Customer Demand
+    url: https://www.d-matrix.ai/announcements/d-matrix-corsair-ai-inference-platform-enters-full-production-to-meet-customer-demand/
+    publisher: d-Matrix
+    kind: announcement
+    published_at: 2026-06-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,202 @@
+slug: nvidia-dynamo
+name: NVIDIA Dynamo
+kind: runtime
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [dynamo-license, dynamo-readme, dynamo-press-2025]
+organization_slugs: [nvidia]
+links:
+  - label: GitHub repository
+    url: https://github.com/ai-dynamo/dynamo
+    kind: repository
+  - label: Documentation
+    url: https://docs.nvidia.com/dynamo/latest
+    kind: documentation
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/ai-dynamo/dynamo/blob/main/LICENSE
+    kind: license
+  - label: Release v1.5.0
+    url: https://github.com/ai-dynamo/dynamo/releases/tag/v1.5.0
+    kind: release-notes
+summary:
+  text: >-
+    Dynamo is NVIDIA's open-source framework for serving generative AI models across many GPUs
+    and nodes. It sits above inference engines such as vLLM, SGLang, and TensorRT-LLM and adds
+    disaggregated prefill and decode, KV-cache-aware request routing, KV cache offloading, and
+    SLA-based autoscaling behind an OpenAI-compatible frontend. It is written in Rust and Python.
+  source_ids: [dynamo-readme, dynamo-docs-home]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    The README positions Dynamo for serving models across multiple GPUs or nodes, for example
+    when prefill and decode need to scale independently or requests should be routed by KV
+    cache overlap; it notes that a single model on a single GPU is usually served by an
+    inference engine alone.
+  source_ids: [dynamo-readme]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    NVIDIA announced Dynamo as its open-source inference software in March 2025 and publishes
+    its documentation on docs.nvidia.com. The repository sits in the separate ai-dynamo GitHub
+    organization, but its README and contribution guide carry NVIDIA Corporation & Affiliates
+    copyright notices and no other governing entity is documented. NVIDIA's principal executive
+    offices are in Santa Clara, California, per its Form 10-Q for the quarter ended July 26, 2026.
+  source_ids: [dynamo-press-2025, dynamo-docs-home, dynamo-readme, dynamo-contributing, nvidia-10q-q2fy2027]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub. The README documents prebuilt runtime containers on NVIDIA
+    NGC, the ai-dynamo package on PyPI, and Kubernetes deployment through the Dynamo Platform.
+  source_ids: [dynamo-readme, dynamo-pypi]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/ai-dynamo/dynamo/blob/main/LICENSE
+    applies_to: code
+    source_ids: [dynamo-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The LICENSE file applies Apache 2.0 to the codebase except for test data files under
+    lib/llm/tests/data/deepseek-v3.2, which it says are derived from the DeepSeek-V3.2 model
+    repository and are under the MIT License. Contributions must be signed off under the
+    Developer Certificate of Origin. The license does not cover the models served with Dynamo.
+  source_ids: [dynamo-license, dynamo-contributing]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Developed in the public ai-dynamo/dynamo GitHub repository.
+    source_ids: [dynamo-readme]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: NVIDIA publishes Kubernetes, local, and developer guides, recipes, and reference pages.
+    source_ids: [dynamo-docs-home]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README documents prebuilt vLLM, SGLang, and TensorRT-LLM runtime containers, PyPI
+      installation with backend extras, Kubernetes deployment, and building from source.
+    source_ids: [dynamo-readme, dynamo-pypi]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      For v1.5.0 the compatibility page lists NVIDIA Blackwell, Hopper, Ada Lovelace, and Ampere
+      GPUs, Ubuntu 24.04 (Ubuntu 22.04 for wheels only), and x86_64 and ARM64 (ARM64 on Ubuntu
+      24.04 only). The documentation home page also mentions AMD GPUs and Intel XPUs.
+    source_ids: [dynamo-compat, dynamo-docs-home]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub. Dynamo 1.0 was announced in March 2026;
+      v1.5.0, published on GitHub on September 21, 2026, was the current GA release when checked.
+      Model-specific preview builds are also tagged.
+    source_ids: [dynamo-release-1-5-0, dynamo-compat, dynamo-press-1-0]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README documents a single-node quick start that runs the Dynamo frontend and a vLLM or
+      SGLang worker inside a prebuilt container with file-based discovery; etcd and NATS are not
+      required for local or Kubernetes deployments.
+    source_ids: [dynamo-readme]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [inference, serving, distributed-computing]
+publication_status: published
+archive_note: null
+released_at: 2025-03-18
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: dynamo-readme
+    title: ai-dynamo/dynamo README
+    url: https://raw.githubusercontent.com/ai-dynamo/dynamo/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-license
+    title: ai-dynamo/dynamo LICENSE
+    url: https://raw.githubusercontent.com/ai-dynamo/dynamo/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-contributing
+    title: ai-dynamo/dynamo CONTRIBUTING.md
+    url: https://raw.githubusercontent.com/ai-dynamo/dynamo/main/CONTRIBUTING.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-docs-home
+    title: Dynamo | NVIDIA Dynamo Documentation
+    url: https://docs.nvidia.com/dynamo/latest
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-compat
+    title: Compatibility (support matrix) - NVIDIA Dynamo Documentation
+    url: https://docs.nvidia.com/dynamo/dev/reference/compatibility
+    publisher: NVIDIA
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-release-1-5-0
+    title: ai-dynamo/dynamo release v1.5.0
+    url: https://github.com/ai-dynamo/dynamo/releases/tag/v1.5.0
+    publisher: NVIDIA (GitHub)
+    kind: release-notes
+    published_at: 2026-09-21
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-pypi
+    title: ai-dynamo on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/ai-dynamo/json
+    publisher: Python Package Index
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-press-2025
+    title: NVIDIA Dynamo Open-Source Library Accelerates and Scales AI Reasoning Models
+    url: https://nvidianews.nvidia.com/news/nvidia-dynamo-open-source-library-accelerates-and-scales-ai-reasoning-models
+    publisher: NVIDIA Newsroom
+    kind: announcement
+    published_at: 2025-03-18
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: dynamo-press-1-0
+    title: NVIDIA Enters Production With Dynamo, the Broadly Adopted Inference Operating System for AI Factories
+    url: https://nvidianews.nvidia.com/news/dynamo-1-0
+    publisher: NVIDIA Newsroom
+    kind: announcement
+    published_at: 2026-03-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

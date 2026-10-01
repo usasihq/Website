@@ -13,6 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
+import { jobsDirectoryData } from "../lib/jobs/directory-data";
 import { siteConfig } from "../lib/site-config";
 import { computeTier, RUBRIC_VERSION } from "../lib/openness";
 import { SCHEMA_VERSION } from "../lib/schema";
@@ -43,12 +44,15 @@ const exportData = {
   local_corner: {
     month: catalog.currentMonth(),
     lineup: catalog.localCornerLineup(catalog.currentMonth()).people.map((p) => p.slug),
-    people: catalog.people,
+    people: catalog.people.map((p) => catalog.publicPerson(p)),
   },
 };
 
 fs.writeFileSync(path.join(outDir, "catalog.json"), JSON.stringify(exportData, null, 2) + "\n");
 fs.writeFileSync(path.join(outDir, "search-index.json"), JSON.stringify({ build_at: buildAt, entries: catalog.searchEntries() }) + "\n");
+// Full current Jobs list, loaded by the /jobs/ page after first paint (the page itself embeds only the first 30).
+const jobs = jobsDirectoryData(catalog);
+fs.writeFileSync(path.join(outDir, "jobs.json"), JSON.stringify({ build_at: buildAt, jobs: jobs.items }) + "\n");
 fs.writeFileSync(path.join(outDir, "build-info.json"), JSON.stringify({ build_at: buildAt, schema_version: SCHEMA_VERSION }) + "\n");
 
 console.log(

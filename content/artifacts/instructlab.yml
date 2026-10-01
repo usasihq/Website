@@ -1,0 +1,243 @@
+slug: instructlab
+name: InstructLab
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: InstructLab project (launched by IBM and Red Hat; documentation copyright Red Hat, Inc.)
+    organization_slug: red-hat
+    source_ids: [ rh-rhel-ai-pr-2024, il-docs-home ]
+  - name: IBM (co-launched the project; IBM Research developed the LAB method)
+    organization_slug: ibm
+    source_ids: [ rh-rhel-ai-pr-2024, ibm-research-instructlab ]
+organization_slugs: [ red-hat, ibm ]
+links:
+  - label: Repository (archived)
+    url: https://github.com/instructlab/instructlab
+    kind: repository
+  - label: Documentation
+    url: https://docs.instructlab.ai/
+    kind: documentation
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/instructlab/instructlab/blob/main/LICENSE
+    kind: license
+  - label: Final release (v0.26.1)
+    url: https://github.com/instructlab/instructlab/releases/tag/v0.26.1
+    kind: release-notes
+summary:
+  text: >-
+    InstructLab was an open-source project, launched by IBM and Red Hat in 2024, for adding
+    knowledge and skills to language models through a contributed taxonomy, synthetic data
+    generation, and tuning based on IBM Research's LAB method, using the ilab command-line
+    tool. A September 2, 2025 community announcement split its components into separate
+    repositories, with synthetic data generation and training continuing as sdg_hub and
+    training_hub in the Red Hat AI Innovation Team's GitHub organization. The main ilab repository was
+    archived on April 23, 2026, and most other InstructLab repositories are archived as well.
+  source_ids: [ rh-rhel-ai-pr-2024, ibm-research-instructlab, il-readme, il-repo, il-org-repos, rh-ai-innovation-gh ]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Historical reference for the taxonomy-guided synthetic-data approach to customizing models.
+    For current work, the project points to sdg_hub and training_hub.
+  source_ids: [ il-readme, il-docs-home ]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    IBM and Red Hat launched InstructLab, and its documentation site carries a Red Hat, Inc.
+    copyright. Its governance document says the initial Oversight Committee was appointed by the
+    project's founding sponsors. Red Hat's corporate headquarters is in Raleigh, North Carolina,
+    and Red Hat, Inc. is a wholly owned subsidiary of IBM, a New York corporation with principal
+    executive offices in Armonk, New York. The successor repositories named in the README sit in the
+    GitHub organization of the Red Hat AI Innovation Team, which describes itself as a team
+    within Red Hat.
+  source_ids: [ rh-rhel-ai-pr-2024, il-docs-home, il-governance, rh-offices, ibm-10k-2025-ex21, ibm-10k-2025-cover, il-readme, rh-ai-innovation-gh ]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    The source code is still downloadable and the package remains on PyPI, but the main
+    repository is archived and read-only. No release has been published since v0.26.1 in May
+    2025.
+  source_ids: [ il-repo, il-pypi, il-release-0-26-1 ]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/instructlab/instructlab/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ il-license ]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The repository's LICENSE file is the Apache License 2.0. The PyPI metadata for the package
+    gives its license as "Apache-2.0 AND MIT". Models used or produced with the tool carry their
+    own licenses.
+  source_ids: [ il-license, il-pypi ]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: The main repository is public but archived (read-only since April 23, 2026).
+    source_ids: [ il-repo ]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      docs.instructlab.ai is still online and carries the September 2025 announcement; its
+      source repository is archived.
+    source_ids: [ il-docs-home, il-org-repos ]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: The package is on PyPI as instructlab; the documentation has install guides for macOS (Apple silicon) and Linux with NVIDIA or AMD GPUs.
+    source_ids: [ il-pypi, il-docs-home ]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The documentation lists Apple M1/M2/M3 Macs or Linux (tested on Fedora) with Python 3.10
+      or 3.11, while the latest PyPI release declares Python 3.11 or later.
+    source_ids: [ il-docs-home, il-pypi ]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      The last release is v0.26.1, published May 5, 2025. The repository has been archived
+      since April 23, 2026, so no further releases are expected there.
+    source_ids: [ il-release-0-26-1, il-pypi, il-repo ]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      As of the review, the instructlab/training and instructlab/eval repositories were not
+      archived and had been updated in August 2026. The sdg, taxonomy, ui, and documentation
+      repositories were archived.
+    source_ids: [ il-org-repos ]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [ training, synthetic-data, fine-tuning ]
+publication_status: archived
+archive_note: >-
+  Historical record. The InstructLab community announced on September 2, 2025 that it would
+  split the project into separate component repositories, and the main ilab repository was
+  archived (read-only) on April 23, 2026, with no release since v0.26.1 in May 2025. Synthetic
+  data generation and training continue in sdg_hub and training_hub in the Red Hat AI
+  Innovation Team's GitHub organization. The Apache 2.0 code remains downloadable.
+released_at: 2024-05
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: il-repo
+    title: instructlab/instructlab (GitHub repository, archived)
+    url: https://github.com/instructlab/instructlab
+    publisher: InstructLab project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: il-readme
+    title: instructlab/instructlab README (community announcement, Sept 2, 2025)
+    url: https://raw.githubusercontent.com/instructlab/instructlab/main/README.md
+    publisher: InstructLab project
+    kind: repository
+    published_at: 2025-09-02
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: il-license
+    title: instructlab/instructlab LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/instructlab/instructlab/main/LICENSE
+    publisher: InstructLab project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: il-org-repos
+    title: InstructLab GitHub organization repositories
+    url: https://github.com/orgs/instructlab/repositories
+    publisher: InstructLab project
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: il-release-0-26-1
+    title: InstructLab release v0.26.1
+    url: https://github.com/instructlab/instructlab/releases/tag/v0.26.1
+    publisher: InstructLab project
+    kind: release-notes
+    published_at: 2025-05-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: il-pypi
+    title: instructlab on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/instructlab/json
+    publisher: Python Package Index
+    kind: documentation
+    published_at: 2025-05-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: il-docs-home
+    title: Welcome to InstructLab! (docs.instructlab.ai)
+    url: https://docs.instructlab.ai/
+    publisher: InstructLab project (Red Hat, Inc.)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: il-governance
+    title: InstructLab Governance Policy
+    url: https://docs.instructlab.ai/community/GOVERNANCE/
+    publisher: InstructLab project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-rhel-ai-pr-2024
+    title: Red Hat Delivers Accessible, Open Source Generative AI Innovation with Red Hat Enterprise Linux AI
+    url: https://www.redhat.com/en/about/press-releases/red-hat-delivers-accessible-open-source-generative-ai-innovation-red-hat-enterprise-linux-ai
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2024-05-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ibm-research-instructlab
+    title: A new way to collaboratively customize LLMs
+    url: https://research.ibm.com/blog/instruct-lab
+    publisher: IBM Research
+    kind: announcement
+    published_at: 2024-06-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-offices
+    title: Red Hat office locations
+    url: https://www.redhat.com/en/about/office-locations
+    publisher: Red Hat
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ibm-10k-2025-ex21
+    title: IBM Form 10-K for fiscal 2025, Exhibit 21 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/ibm-20251231x10kex21.htm
+    publisher: U.S. Securities and Exchange Commission (filed by IBM)
+    kind: filing
+    published_at: 2026-02-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ibm-10k-2025-cover
+    title: IBM Form 10-K for fiscal 2025, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/51143/000005114326000010/R1.htm
+    publisher: U.S. Securities and Exchange Commission (filed by IBM)
+    kind: filing
+    published_at: 2026-02-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: rh-ai-innovation-gh
+    title: Red Hat AI Innovation Team (GitHub organization)
+    url: https://github.com/Red-Hat-AI-Innovation-Team
+    publisher: Red Hat AI Innovation Team
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

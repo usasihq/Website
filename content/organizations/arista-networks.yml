@@ -1,0 +1,144 @@
+slug: arista-networks
+name: Arista Networks
+legal_name:
+  text: Arista Networks, Inc.
+  source_ids: [anet-10q-q2-2026, anet-10k-2025]
+  reviewed_at: 2026-10-01
+website: https://www.arista.com
+logo_text: AN
+summary:
+  text: >-
+    Arista Networks makes network systems for data center, campus, and wide-area networks,
+    built around its EOS network operating system. For AI workloads it sells the Etherlink
+    family of Ethernet switches, including the 7800R AI spine, the 7060 AI leaf, and the 7700R4
+    Distributed Etherlink Switch, for networks that connect GPU and other accelerator clusters.
+  source_ids: [anet-10k-2025, arista-ai-networking]
+  reviewed_at: 2026-10-01
+organization_roles: [hardware-manufacturer, enterprise-software]
+ownership_category: publicly-traded
+ownership_evidence:
+  text: >-
+    The cover page of Arista's Form 10-K for fiscal 2025 lists its common stock as registered and
+    trading on the New York Stock Exchange under the symbol ANET.
+  source_ids: [anet-10k-2025]
+  reviewed_at: 2026-10-01
+legal_form:
+  text: Delaware corporation
+  source_ids: [anet-10q-q2-2026, anet-10k-2025]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Santa Clara, California
+  country: US
+  source_ids: [anet-10q-q2-2026, anet-10k-2025, arista-about]
+other_locations: []
+founded: null
+sectors: [cloud, enterprise]
+status_note: null
+products:
+  - id: etherlink
+    name: Arista Etherlink AI networking platforms
+    kind: hardware
+    access: >-
+      Family of standards-based Ethernet switch systems that Arista positions for AI networks,
+      at 400G, 800G, and 1600G port speeds, including the 7060X-series leaf switches and
+      7800R4 spine systems; sold as switch hardware running Arista EOS.
+    url: https://www.arista.com/en/solutions/ai-networking
+    source_ids: [arista-ai-networking, anet-10k-2025]
+    last_reviewed: 2026-10-01
+  - id: 7800r4
+    name: Arista 7800R4 Series (AI Spine)
+    kind: hardware
+    access: >-
+      Modular 800G switch systems that Arista describes as an AI spine, with 7800R4C line cards
+      intended for cluster computing; also marketed for data center and service provider
+      networks.
+    url: https://www.arista.com/en/products/7800r4-series
+    source_ids: [arista-7800r4, anet-10k-2025]
+    last_reviewed: 2026-10-01
+  - id: 7700r4-des
+    name: Arista 7700R4 Distributed Etherlink Switch
+    kind: hardware
+    access: >-
+      Distributed switching system whose separate leaf and spine units operate as one logical
+      switch, intended for the back-end networks of large GPU and accelerator clusters.
+    url: https://www.arista.com/en/products/7700r4-series
+    source_ids: [arista-7700r4, anet-10k-2025]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      Arista's fiscal 2025 Form 10-K describes a "Centers of Data" strategy in which its network
+      connects four domains: AI centers, data centers, campus centers, and WAN centers.
+    source_ids: [anet-10k-2025]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Arista completed its acquisition of the VeloCloud SD-WAN business from Broadcom on June 30,
+      2025, according to its Form 10-Q for the quarter ended June 30, 2026.
+    source_ids: [anet-10q-q2-2026]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Arista Networks, Inc. is a Delaware corporation with principal executive offices at 5453 Great
+    America Parkway, Santa Clara, California, per the cover pages of its Form 10-K for fiscal 2025
+    and its Form 10-Q for the quarter ended June 30, 2026. Its company overview page also says it
+    is headquartered in Santa Clara.
+  source_ids: [anet-10q-q2-2026, anet-10k-2025, arista-about]
+  assessed_at: 2026-10-01
+openness_summary: null
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: anet-10k-2025
+    title: Arista Networks, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1596532/000159653226000013/anet-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-02-17
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: anet-10q-q2-2026
+    title: Arista Networks, Inc. Form 10-Q for the quarter ended June 30, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1596532/000159653226000175/anet-20260630.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-08-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: arista-about
+    title: About Arista Networks
+    url: https://www.arista.com/en/company/company-overview
+    publisher: Arista Networks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: arista-ai-networking
+    title: AI Networking Center | Artificial Intelligence AI technology - Arista
+    url: https://www.arista.com/en/solutions/ai-networking
+    publisher: Arista Networks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: arista-7800r4
+    title: Arista 7800R4 Series
+    url: https://www.arista.com/en/products/7800r4-series
+    publisher: Arista Networks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: arista-7700r4
+    title: Arista 7700R4 Distributed Etherlink Switch for Accelerated Computing
+    url: https://www.arista.com/en/products/7700r4-series
+    publisher: Arista Networks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

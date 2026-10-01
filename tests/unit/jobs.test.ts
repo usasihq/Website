@@ -35,6 +35,13 @@ describe("official adapters", () => {
     expect(() => adapters.greenhouse.normalize({ ...gh(), meta: { total: 2 } }, "employer", config)).toThrow();
     expect(() => adapters.greenhouse.normalize(gh([{ ...raw(), id: -1 }]), "employer", config)).toThrow();
   });
+  it("accepts Ashby secondary locations whose address is null", () => {
+    const rows = adapters.ashby.normalize({ apiVersion: "1", jobs: [{ id: "id", title: "Engineer", isListed: true, jobUrl: "https://jobs.ashbyhq.com/employer/id", location: "San Francisco", address: { postalAddress: { addressCountry: "United States" } }, secondaryLocations: [{ location: "Remote", address: null }] }] }, "employer", ashbyConfig);
+    expect(rows).toHaveLength(1);
+    expect(rows[0].locations).toEqual(["Remote", "San Francisco"]);
+    expect(rows[0].countries).toEqual(["United States"]);
+  });
+
   it("excludes prospect pools and unlisted Ashby jobs", () => {
     expect(adapters.greenhouse.normalize(gh([{ ...raw(), internal_job_id: null } as unknown as ReturnType<typeof raw>]), "employer", config)).toEqual([]);
     expect(adapters.ashby.normalize({ apiVersion: "1", jobs: [{ title: "Hidden", isListed: false, jobUrl: "https://jobs.ashbyhq.com/employer/id" }] }, "employer", ashbyConfig)).toEqual([]);

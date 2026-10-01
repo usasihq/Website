@@ -1,0 +1,136 @@
+slug: boltz-2
+name: Boltz-2
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Boltz (Boltz PBC)
+    organization_slug: boltz
+    source_ids: [boltz-home, boltz-manifesto, boltz-readme]
+organization_slugs: [boltz, mit]
+links:
+  - label: GitHub repository (jwohlwend/boltz)
+    url: https://github.com/jwohlwend/boltz
+    kind: repository
+  - label: Boltz-2 checkpoints (Hugging Face)
+    url: https://huggingface.co/boltz-community/boltz-2
+    kind: model-hub
+  - label: LICENSE (MIT)
+    url: https://github.com/jwohlwend/boltz/blob/main/LICENSE
+    kind: license
+  - label: Boltz-2 announcement
+    url: https://boltz.com/boltz2
+    kind: release-notes
+  - label: Boltz-2 technical report (bioRxiv, doi:10.1101/2025.06.14.659707)
+    url: https://doi.org/10.1101/2025.06.14.659707
+    kind: paper
+summary:
+  text: >-
+    Boltz-2 is a biomolecular foundation model that predicts the 3D structures of complexes of
+    proteins, nucleic acids, and small molecules together with protein-ligand binding affinity.
+    It was released in June 2025 by the Boltz team at MIT Jameel Clinic with Recursion and is
+    now presented by Boltz PBC as one of its open-source models. It ships as a structure and
+    confidence checkpoint plus a separate affinity checkpoint.
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-boltz2-post, boltz-home, hf-boltz2-api]
+useful_for:
+  text: >-
+    The README describes structure prediction from YAML inputs and two affinity outputs: a
+    binder probability intended for separating binders from decoys in hit discovery, and an
+    affinity value intended for comparing related binders during hit-to-lead and lead
+    optimization. The announcement adds contact constraints, template guidance, and
+    method-conditioning options.
+  reviewed_at: 2026-10-01
+  source_ids: [boltz-readme, boltz-boltz2-post]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Boltz-2 was developed by the Boltz team at MIT Jameel Clinic with Recursion, and Boltz PBC,
+    whose terms give a Massachusetts notice address, now presents it as one of its open-source
+    models and links the repository from its website. The technical report also lists authors
+    at Valence Labs and ETH Zurich. The code repository sits under an individual developer's
+    GitHub account, and its license names three individual copyright holders.
+  source_ids: [boltz-boltz2-post, boltz-home, boltz-terms, boltz-license, boltz2-biorxiv]
+  assessed_at: 2026-10-01
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the Boltz-2 checkpoints release record (boltz-2-v2).
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [science, structure-prediction]
+publication_status: published
+archive_note: null
+released_at: 2025-06-06
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: boltz-readme
+    title: jwohlwend/boltz README
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/README.md
+    publisher: Boltz developers (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-license
+    title: jwohlwend/boltz LICENSE
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/LICENSE
+    publisher: Boltz developers (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-boltz2-api
+    title: boltz-community/boltz-2 (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/boltz-community/boltz-2
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-boltz2-post
+    title: "Introducing Boltz-2: Toward Accurate and Efficient Binding Affinity Prediction"
+    url: https://boltz.com/boltz2
+    publisher: Boltz
+    kind: announcement
+    published_at: 2025-06-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz2-biorxiv
+    title: "Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction (bioRxiv v1)"
+    url: https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1
+    publisher: bioRxiv
+    kind: paper
+    published_at: "2025"
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-home
+    title: Boltz - Build Better Molecules with AI (home page)
+    url: https://boltz.com/
+    publisher: Boltz
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-manifesto
+    title: The future we are building at Boltz
+    url: https://boltz.com/manifesto
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-01-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: boltz-terms
+    title: Boltz Terms of Service
+    url: https://boltz.com/terms
+    publisher: Boltz PBC
+    kind: official-page
+    published_at: 2026-05-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

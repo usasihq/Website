@@ -1,0 +1,234 @@
+slug: strands-agents
+name: Strands Agents
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Amazon Web Services (AWS)
+    organization_slug: amazon
+    source_ids: [aws-announcement, notice, contributing]
+organization_slugs: [amazon]
+links:
+  - label: Website and documentation
+    url: https://strandsagents.com/
+    kind: website
+  - label: Repository
+    url: https://github.com/strands-agents/harness-sdk
+    kind: repository
+  - label: Python quickstart
+    url: https://strandsagents.com/docs/user-guide/sdk/quickstart/python/
+    kind: documentation
+  - label: LICENSE
+    url: https://github.com/strands-agents/harness-sdk/blob/main/LICENSE.APACHE
+    kind: license
+  - label: Reviewed release (Python SDK)
+    url: https://github.com/strands-agents/harness-sdk/releases/tag/python%2Fv1.57.2
+    kind: release-notes
+summary:
+  text: >-
+    Strands Agents is an open-source SDK from AWS for building and running AI agents in Python and
+    TypeScript. It runs a model-driven agent loop in the developer's own process, with tools,
+    MCP support, multi-agent patterns, memory and sessions, and tracing. Its repository also holds
+    Strands harness, a preassembled agent, along with a CLI and the documentation site.
+  source_ids: [repo, aws-announcement]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Writing agents that run without a hosted control plane and can be deployed on different
+    infrastructure. Strands is open-source client code that calls a model provider: Amazon Bedrock
+    by default, other hosted providers, or local runtimes such as Ollama and llama.cpp. The SDK does
+    not include model weights, and hosted models keep their own terms and availability.
+  source_ids: [repo, docs-providers, docs-quickstart-python]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    AWS announced Strands Agents on its Open Source Blog in May 2025 as an open-source SDK it
+    released. The repository's NOTICE file assigns copyright to Amazon.com, Inc. or its affiliates,
+    and its contributing guide adopts the Amazon Open Source Code of Conduct and directs security
+    reports to AWS. The repository is hosted in a separate strands-agents GitHub organization; no
+    foundation or multi-organization governance body is documented. The AWS Customer Agreement
+    gives Amazon Web Services, Inc. an address at 410 Terry Avenue North, Seattle, Washington. See
+    the amazon organization record.
+  source_ids: [aws-announcement, notice, contributing, repo, aws-agreement]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code and documentation are public. With the default Amazon Bedrock provider, the Python
+    quickstart requires AWS credentials and model access enabled in the Bedrock console; other
+    providers need their own credentials.
+  source_ids: [repo, docs-quickstart-python]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/strands-agents/harness-sdk/blob/main/LICENSE.APACHE
+    applies_to: code
+    source_ids: [license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The repository's license file is LICENSE.APACHE (Apache 2.0); the Python and TypeScript SDK
+    directories each carry an Apache 2.0 LICENSE file, and the NOTICE file assigns copyright to
+    Amazon.com, Inc. or its affiliates. The license covers the SDK code, not Amazon Bedrock or other
+    model services.
+  source_ids: [license, license-py, license-ts, notice]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: >-
+      Public monorepo containing the Python and TypeScript SDKs, Strands harness, the CLI, and the
+      documentation site; client code only.
+    source_ids: [repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: Public official documentation at strandsagents.com.
+    source_ids: [docs-home, docs-providers, docs-quickstart-python]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Python: pip install strands-agents (with strands-agents-tools for prebuilt tools);
+      TypeScript: npm install @strands-agents/sdk. The harness packages are strands-harness and
+      @strands-agents/harness.
+    source_ids: [repo, docs-quickstart-python]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists Python 3.10 or newer for the Python SDK and Node.js 22 or newer for the
+      TypeScript SDK; some model providers are documented for only one language.
+    source_ids: [repo, docs-providers]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Reviewed Python SDK release python/v1.57.2, marked Latest and published October 1, 2026.
+      Releases are tagged per package (for example python/, typescript/, harness-*, and mcp/).
+      This entry describes the project rather than one release.
+    source_ids: [release]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The model-provider documentation lists Ollama and llama.cpp providers for the Python SDK, with
+      Ollama installed as the strands-agents[ollama] extra and requiring a running Ollama server.
+      The Python quickstart's default provider is Amazon Bedrock.
+    source_ids: [docs-providers, docs-ollama, docs-quickstart-python]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [agents, multi-agent]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: repo
+    title: strands-agents/harness-sdk repository and README
+    url: https://github.com/strands-agents/harness-sdk
+    publisher: Strands Agents
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license
+    title: Strands Agents LICENSE.APACHE
+    url: https://raw.githubusercontent.com/strands-agents/harness-sdk/main/LICENSE.APACHE
+    publisher: Strands Agents
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-py
+    title: Strands Agents Python SDK LICENSE
+    url: https://raw.githubusercontent.com/strands-agents/harness-sdk/main/strands-py/LICENSE
+    publisher: Strands Agents
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: license-ts
+    title: Strands Agents TypeScript SDK LICENSE
+    url: https://raw.githubusercontent.com/strands-agents/harness-sdk/main/strands-ts/LICENSE
+    publisher: Strands Agents
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: notice
+    title: Strands Agents NOTICE file
+    url: https://raw.githubusercontent.com/strands-agents/harness-sdk/main/NOTICE
+    publisher: Strands Agents
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: contributing
+    title: Strands Agents contributing guide
+    url: https://raw.githubusercontent.com/strands-agents/harness-sdk/main/CONTRIBUTING.md
+    publisher: Strands Agents
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aws-announcement
+    title: Introducing Strands Agents, an Open Source AI Agents SDK
+    url: https://aws.amazon.com/blogs/opensource/introducing-strands-agents-an-open-source-ai-agents-sdk/
+    publisher: Amazon Web Services
+    kind: announcement
+    published_at: 2025-05-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-home
+    title: Strands Agents documentation
+    url: https://strandsagents.com/
+    publisher: Strands Agents
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-providers
+    title: Strands Agents model providers overview
+    url: https://strandsagents.com/docs/user-guide/sdk/model-providers/
+    publisher: Strands Agents
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-ollama
+    title: Strands Agents — Ollama model provider
+    url: https://strandsagents.com/docs/user-guide/sdk/model-providers/ollama/
+    publisher: Strands Agents
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: docs-quickstart-python
+    title: Strands Agents Python quickstart
+    url: https://strandsagents.com/docs/user-guide/sdk/quickstart/python/
+    publisher: Strands Agents
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: release
+    title: Strands Agents python/v1.57.2 release
+    url: https://github.com/strands-agents/harness-sdk/releases/tag/python%2Fv1.57.2
+    publisher: Strands Agents
+    kind: release-notes
+    published_at: 2026-10-01
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: aws-agreement
+    title: AWS Customer Agreement
+    url: https://aws.amazon.com/agreement/
+    publisher: Amazon Web Services, Inc.
+    kind: official-page
+    published_at: 2026-08-14
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

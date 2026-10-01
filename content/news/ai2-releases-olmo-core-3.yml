@@ -1,0 +1,40 @@
+slug: ai2-releases-olmo-core-3
+title: Ai2 releases OLMo-core 3, its open training library, with mixture-of-experts support
+event_date: 2026-10-01
+published_at: 2026-10-01
+category: release
+summary:
+  text: >-
+    Ai2 released version 3 of OLMo-core, the PyTorch training library behind its Olmo models, on
+    October 1, 2026. The release redesigns the library's mixture-of-experts training system,
+    adding expert and pipeline parallelism, a distributed optimizer, grouped matrix
+    multiplication for experts, and support for the MXFP8 number format; Ai2 says it is designed
+    to scale mixture-of-experts training into the trillion-parameter range. The code is licensed
+    under Apache 2.0, and the repository includes Ai2's official training scripts for Olmo 3.
+  source_ids: [olmo-core-3-blog, olmo-core-repo, olmo-core-pypi]
+related_organizations: [ai2]
+related_artifacts: [olmo]
+publication_status: published
+updated_at: 2026-10-01
+sources:
+  - id: olmo-core-3-blog
+    title: "Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs"
+    url: https://huggingface.co/blog/allenai/olmocore3
+    publisher: Ai2 (Hugging Face blog)
+    kind: announcement
+    published_at: 2026-10-01
+    accessed_at: 2026-10-01
+  - id: olmo-core-repo
+    title: allenai/OLMo-core repository
+    url: https://github.com/allenai/OLMo-core
+    publisher: Ai2
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: olmo-core-pypi
+    title: ai2-olmo-core package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/ai2-olmo-core/json
+    publisher: Python Package Index
+    kind: other
+    published_at: 2026-10-01
+    accessed_at: 2026-10-01

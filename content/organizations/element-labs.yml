@@ -1,0 +1,246 @@
+slug: element-labs
+name: Element Labs
+legal_name:
+  text: Element Labs, Inc.
+  source_ids: [lms-privacy, lms-app-terms]
+  reviewed_at: 2026-10-01
+website: https://lmstudio.ai
+logo_text: EL
+summary:
+  text: >-
+    Element Labs makes LM Studio, a desktop application for downloading and running language
+    models on a local computer, with a chat interface and a local API server. It also publishes
+    llmster, a headless version of LM Studio for servers, the lms command-line tool, and Python
+    and TypeScript SDKs.
+  source_ids: [lms-careers, lms-docs-app, lms-docs-developer, lms-download]
+  reviewed_at: 2026-10-01
+organization_roles: [developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Delaware corporation
+  source_ids: [lms-privacy, lms-app-terms]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: New York, New York
+  country: US
+  source_ids: [lms-careers, lms-app-terms]
+other_locations: []
+founded: null
+sectors: [open-models]
+status_note: null
+products:
+  - id: lm-studio
+    name: LM Studio
+    kind: developer-tool
+    access: >-
+      Proprietary desktop app, free to download, for Apple Silicon Macs (macOS 14 or newer),
+      Windows (x64 and ARM), and Linux (x64 and ARM64). It runs models locally with llama.cpp
+      (GGUF) and, on Apple Silicon, MLX, and serves them through OpenAI-compatible endpoints. Its
+      terms license it for personal and internal business use and say some features are paid.
+    url: https://lmstudio.ai/download
+    source_ids: [lms-download, lms-docs-app, lms-sysreq, lms-app-terms]
+    last_reviewed: 2026-10-01
+  - id: llmster-and-lms
+    name: llmster and the lms CLI
+    kind: developer-tool
+    access: >-
+      llmster is LM Studio's core packaged as a daemon for servers, cloud instances, and CI,
+      installed with a shell or PowerShell script. The lms command-line tool, published under the
+      MIT License, starts the daemon, downloads models, and runs the local server.
+    url: https://lmstudio.ai/docs/developer
+    source_ids: [lms-docs-developer, lms-download, lms-cli-license]
+    last_reviewed: 2026-10-01
+  - id: lmstudio-sdks
+    name: LM Studio SDKs (lmstudio-python and lmstudio-js)
+    kind: developer-tool
+    access: >-
+      MIT-licensed Python (pip install lmstudio) and TypeScript (npm @lmstudio/sdk) libraries for
+      building applications that use a computer running LM Studio in the foreground or in
+      headless mode.
+    url: https://lmstudio.ai/blog/introducing-lmstudio-sdk
+    source_ids: [lms-sdk-blog, lms-docs-developer, lmstudio-js-license, lmstudio-python-license]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      LM Studio for Mac bundles mlx-engine, an MIT-licensed engine in the lmstudio-ai GitHub
+      organization that runs text and vision models with Apple's MLX. Its README documents a
+      standalone demo for macOS 14 or later with Python 3.11; the repository has no tagged
+      releases.
+    source_ids: [mlx-engine-readme, mlx-engine-license, mlx-engine-tags]
+    reviewed_at: 2026-10-01
+  - text: >-
+      LM Studio's privacy policy says that when models are downloaded and run locally, messages,
+      chat histories, and documents are saved on the user's device and are not transmitted from
+      it.
+    source_ids: [lms-privacy]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    LM Studio's careers page says LM Studio is built by Element Labs in New York, USA. The privacy
+    policy identifies Element Labs, Inc. as a Delaware corporation with a registered address in
+    Wilmington, Delaware, and the app terms choose New York law, with actions brought in New York
+    County or federal court in New York. No foreign parent or headquarters was found.
+  source_ids: [lms-careers, lms-privacy, lms-app-terms]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    The LM Studio desktop application is proprietary: its terms describe the software and its
+    source code as trade secrets. Element Labs publishes the lms CLI, the Python and TypeScript
+    SDKs, and mlx-engine under the MIT License on GitHub.
+  source_ids: [lms-app-terms, lms-cli-license, lmstudio-js-license, lmstudio-python-license, mlx-engine-license]
+  reviewed_at: 2026-10-01
+hiring_url: https://lmstudio.ai/careers
+careers: null
+profile:
+  intended_users:
+    text: >-
+      LM Studio is presented for running models on one's own computer; llmster and the SDKs are
+      presented for developers building applications and services on a local or headless LM
+      Studio instance.
+    source_ids: [lms-docs-app, lms-docs-developer]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      The desktop app is a free download licensed for personal and internal business use, with
+      some paid features; llmster installs by script; the SDKs install from PyPI and npm.
+    source_ids: [lms-download, lms-app-terms, lms-docs-developer, lms-docs-python]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      The app terms treat the LM Studio software and its source code as trade secrets. The SDK
+      announcement says applications built with the SDKs run on a computer where LM Studio is
+      running. This profile is not a complete product or rights audit.
+    source_ids: [lms-app-terms, lms-sdk-blog]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: LM Studio documentation
+      url: https://lmstudio.ai/docs/app
+      kind: documentation
+      source_ids: [lms-docs-app]
+      reviewed_at: 2026-10-01
+    - label: lmstudio-ai on GitHub
+      url: https://github.com/lmstudio-ai
+      kind: repository
+      source_ids: [lms-github-org]
+      reviewed_at: 2026-10-01
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: lms-careers
+    title: LM Studio careers
+    url: https://lmstudio.ai/careers
+    publisher: Element Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lms-privacy
+    title: LM Studio Privacy Policy
+    url: https://lmstudio.ai/privacy
+    publisher: Element Labs
+    kind: official-page
+    published_at: 2026-06
+    accessed_at: 2026-10-01
+  - id: lms-app-terms
+    title: LM Studio App Terms of Service
+    url: https://lmstudio.ai/app-terms
+    publisher: Element Labs
+    kind: official-page
+    published_at: 2026-08-23
+    accessed_at: 2026-10-01
+  - id: lms-download
+    title: Download LM Studio
+    url: https://lmstudio.ai/download
+    publisher: Element Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lms-docs-app
+    title: LM Studio documentation (app)
+    url: https://lmstudio.ai/docs/app
+    publisher: Element Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lms-sysreq
+    title: LM Studio system requirements
+    url: https://lmstudio.ai/docs/app/system-requirements
+    publisher: Element Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lms-docs-developer
+    title: LM Studio developer documentation
+    url: https://lmstudio.ai/docs/developer
+    publisher: Element Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lms-docs-python
+    title: lmstudio-python documentation
+    url: https://lmstudio.ai/docs/python
+    publisher: Element Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lms-sdk-blog
+    title: Introducing lmstudio-python and lmstudio-js
+    url: https://lmstudio.ai/blog/introducing-lmstudio-sdk
+    publisher: Element Labs
+    kind: announcement
+    published_at: 2025-03-03
+    accessed_at: 2026-10-01
+  - id: lms-github-org
+    title: LM Studio on GitHub (lmstudio-ai)
+    url: https://github.com/lmstudio-ai
+    publisher: Element Labs
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lms-cli-license
+    title: lmstudio-ai/lms LICENSE (MIT)
+    url: https://raw.githubusercontent.com/lmstudio-ai/lms/main/LICENSE
+    publisher: Element Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lmstudio-js-license
+    title: lmstudio-ai/lmstudio-js LICENSE (MIT)
+    url: https://raw.githubusercontent.com/lmstudio-ai/lmstudio-js/main/LICENSE
+    publisher: Element Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lmstudio-python-license
+    title: lmstudio-ai/lmstudio-python LICENSE (MIT)
+    url: https://raw.githubusercontent.com/lmstudio-ai/lmstudio-python/main/LICENSE
+    publisher: Element Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mlx-engine-readme
+    title: lmstudio-ai/mlx-engine repository and README
+    url: https://github.com/lmstudio-ai/mlx-engine
+    publisher: Element Labs
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mlx-engine-license
+    title: lmstudio-ai/mlx-engine LICENSE (MIT)
+    url: https://raw.githubusercontent.com/lmstudio-ai/mlx-engine/main/LICENSE
+    publisher: Element Labs
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mlx-engine-tags
+    title: lmstudio-ai/mlx-engine tags
+    url: https://github.com/lmstudio-ai/mlx-engine/tags
+    publisher: Element Labs
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01

@@ -1,0 +1,183 @@
+slug: wandb-sdk
+name: Weights & Biases Python SDK (wandb)
+kind: framework
+record_level: project
+family_slug: null
+version: "0.30.0"
+maintainers:
+  - name: Weights & Biases (a CoreWeave company)
+    organization_slug: weights-and-biases
+    source_ids: [wandb-repo, wandb-license, wandb-pypi]
+organization_slugs: [weights-and-biases, coreweave]
+links:
+  - label: Repository
+    url: https://github.com/wandb/wandb
+    kind: repository
+  - label: Python SDK reference
+    url: https://docs.coreweave.com/products/wandb/ref/python
+    kind: documentation
+  - label: LICENSE
+    url: https://raw.githubusercontent.com/wandb/wandb/main/LICENSE
+    kind: license
+  - label: Release v0.30.0
+    url: https://github.com/wandb/wandb/releases/tag/v0.30.0
+    kind: release-notes
+summary:
+  text: >-
+    wandb is the open-source Python library and command-line tool for Weights & Biases. Training
+    scripts and notebooks use it to record runs with their hyperparameters and metrics on a W&B
+    server, where results can be viewed and compared; a Public API in the same SDK queries logged
+    data afterward.
+  source_ids: [wandb-readme, wandb-pypi, wandb-sdk-docs]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Tracking, visualizing, and comparing machine learning experiments, and adding experiment
+    tracking and data versioning to existing projects through W&B's integrations with ML
+    frameworks and libraries.
+  source_ids: [wandb-readme, wandb-sdk-docs]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The wandb repository is maintained under the wandb GitHub organization by Weights & Biases;
+    PyPI lists Weights & Biases as the package author, and the MIT license names Weights and
+    Biases, Inc. as copyright holder. Weights & Biases' Master Service Agreement gives its
+    principal place of business as San Francisco, California, and CoreWeave, a Delaware
+    corporation headquartered in Livingston, New Jersey, acquired all of its equity in May 2025.
+    The SDK reference is now published in CoreWeave's documentation.
+  source_ids: [wandb-repo, wandb-pypi, wandb-license, wb-msa, cw-10k-2025, wandb-sdk-docs]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub under the MIT License, and the package installs from PyPI with
+    pip install wandb. Logging results requires a W&B account and API key for a W&B server, which
+    is a separate hosted or self-managed service.
+  source_ids: [wandb-repo, wandb-license, wandb-pypi, wandb-readme]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://raw.githubusercontent.com/wandb/wandb/main/LICENSE
+    applies_to: code
+    source_ids: [wandb-license, wandb-pypi]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The MIT license covers the code in the wandb repository. The W&B platform that the library
+    logs to is provided under W&B's Master Service Agreement, not under this license.
+  source_ids: [wandb-license, wb-msa]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository wandb/wandb.
+    source_ids: [wandb-repo]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      The Python SDK reference (version 0.30.0) is published in CoreWeave's documentation;
+      docs.wandb.ai now redirects there.
+    source_ids: [wandb-sdk-docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Installable from PyPI with pip install wandb; the README describes creating an API key and
+      optionally running wandb login before logging runs.
+    source_ids: [wandb-pypi, wandb-readme]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: PyPI lists Python 3.10 or later, with classifiers for Python 3.10 through 3.14.
+    source_ids: [wandb-pypi]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned releases are published on GitHub and PyPI; version 0.30.0 was uploaded to PyPI on
+      September 9, 2026. PyPI marks the package as production/stable.
+    source_ids: [wandb-pypi, wandb-release]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README documents three hosting options for the W&B server that the library logs to:
+      multi-tenant cloud, dedicated cloud, and self-managed deployment on AWS, GCP, Azure, or
+      on-premises infrastructure.
+    source_ids: [wandb-readme]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [training, experiment-tracking, mlops]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: wandb-repo
+    title: wandb/wandb (GitHub repository)
+    url: https://github.com/wandb/wandb
+    publisher: Weights & Biases
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wandb-readme
+    title: wandb README
+    url: https://raw.githubusercontent.com/wandb/wandb/main/README.md
+    publisher: Weights & Biases
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wandb-license
+    title: wandb LICENSE (MIT)
+    url: https://raw.githubusercontent.com/wandb/wandb/main/LICENSE
+    publisher: Weights & Biases
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wandb-pypi
+    title: wandb on PyPI
+    url: https://pypi.org/project/wandb/
+    publisher: Python Package Index
+    kind: other
+    published_at: 2026-09-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wandb-release
+    title: Release v0.30.0 · wandb/wandb
+    url: https://github.com/wandb/wandb/releases/tag/v0.30.0
+    publisher: Weights & Biases
+    kind: release-notes
+    published_at: 2026-09-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wandb-sdk-docs
+    title: Python SDK 0.30.0 - CoreWeave Docs
+    url: https://docs.coreweave.com/products/wandb/ref/python
+    publisher: CoreWeave
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: wb-msa
+    title: W&B Master Service Agreement
+    url: https://wandb.ai/site/terms/
+    publisher: Weights & Biases
+    kind: official-page
+    published_at: 2026-09-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cw-10k-2025
+    title: CoreWeave, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-03-02
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

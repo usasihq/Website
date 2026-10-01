@@ -1,0 +1,118 @@
+slug: ether0
+name: ether0
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: FutureHouse
+    organization_slug: futurehouse
+    source_ids: [ether0-card, ether0-repo, fh-ether0-announcement]
+organization_slugs: [futurehouse]
+links:
+  - label: Model card and weights (Hugging Face)
+    url: https://huggingface.co/futurehouse/ether0
+    kind: model-hub
+  - label: Reward functions and utilities (GitHub)
+    url: https://github.com/Future-House/ether0
+    kind: repository
+  - label: ether0 benchmark (Hugging Face dataset)
+    url: https://huggingface.co/datasets/futurehouse/ether0-benchmark
+    kind: dataset-hub
+  - label: FutureHouse announcement
+    url: https://www.futurehouse.org/research-announcements/ether0-a-scientific-reasoning-model-for-chemistry
+    kind: release-notes
+  - label: "Training a Scientific Reasoning Model for Chemistry (arXiv 2506.17238)"
+    url: https://arxiv.org/abs/2506.17238
+    kind: paper
+summary:
+  text: >-
+    ether0 is a 24B-parameter chemistry reasoning model from FutureHouse, released in June 2025.
+    It reasons in English and answers with molecular structures written as SMILES. It was
+    fine-tuned and trained with reinforcement learning from Mistral AI's
+    Mistral-Small-24B-Instruct-2501.
+  reviewed_at: 2026-10-01
+  source_ids: [ether0-card, fh-ether0-announcement, hf-api-ether0]
+useful_for:
+  text: >-
+    The model card lists molecule-design and prediction tasks it was trained for, including
+    IUPAC name or formula to SMILES, adjusting solubility, pKa, or scent, ADME and toxicity
+    properties, one-step retrosynthesis, reaction outcome prediction, and molecule captioning
+    in reverse. The card says it is not a general-purpose chat model.
+  reviewed_at: 2026-10-01
+  source_ids: [ether0-card]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    ether0 is published by FutureHouse on its Hugging Face and GitHub organizations, and the
+    model card states a 2025 FutureHouse copyright. FutureHouse is a 501(c)(3) nonprofit in San
+    Francisco per its about page and the IRS exempt-organization extract. The base model,
+    Mistral-Small-24B-Instruct-2501, comes from Mistral AI and is recorded as provenance on the
+    release record, not as a U.S. model.
+  source_ids: [ether0-card, ether0-repo, fh-about, irs-eo-bmf-ca]
+  assessed_at: 2026-10-01
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the ether0 (24B) release record.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [language-model, reasoning, science]
+publication_status: published
+archive_note: null
+released_at: 2025-06
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: ether0-card
+    title: futurehouse/ether0 model card
+    url: https://huggingface.co/futurehouse/ether0
+    publisher: FutureHouse
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-api-ether0
+    title: futurehouse/ether0 (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/futurehouse/ether0
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ether0-repo
+    title: Future-House/ether0 README
+    url: https://raw.githubusercontent.com/Future-House/ether0/main/README.md
+    publisher: FutureHouse
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fh-ether0-announcement
+    title: "ether0: a scientific reasoning model for chemistry"
+    url: https://www.futurehouse.org/research-announcements/ether0-a-scientific-reasoning-model-for-chemistry
+    publisher: FutureHouse
+    kind: announcement
+    published_at: 2025-06-05
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fh-about
+    title: About | FutureHouse
+    url: https://www.futurehouse.org/about
+    publisher: FutureHouse
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

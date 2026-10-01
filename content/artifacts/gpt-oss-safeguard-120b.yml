@@ -1,0 +1,229 @@
+slug: gpt-oss-safeguard-120b
+name: gpt-oss-safeguard-120b
+kind: model
+record_level: release
+family_slug: gpt-oss-safeguard
+version: "gpt-oss-safeguard-120b"
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [ safeguard-tech-report, hf-safeguard-120b ]
+organization_slugs: [ openai ]
+links:
+  - label: Hugging Face model card
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b
+    kind: model-hub
+  - label: gpt-oss-safeguard repository
+    url: https://github.com/openai/gpt-oss-safeguard
+    kind: repository
+  - label: Technical report (PDF)
+    url: https://cdn.openai.com/pdf/08b7dee4-8bc6-4955-a219-7793fb69090c/Technical_report__Research_Preview_of_gpt_oss_safeguard.pdf
+    kind: paper
+  - label: LICENSE (Apache 2.0)
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    gpt-oss-safeguard-120b is the larger gpt-oss-safeguard model, a text-only safety reasoning
+    model fine-tuned from gpt-oss-120b. The model card gives 117B total parameters with 5.1B
+    active. Its configuration lists 36 layers, 128 experts with 4 used per token, and a
+    maximum of 131,072 position embeddings. The mixture-of-experts weights are quantized to
+    MXFP4; attention, router, embedding, and output layers are not.
+  source_ids: [ hf-safeguard-120b, hf-safeguard-120b-config, safeguard-tech-report ]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Classifying text against a safety policy written by the user, for example for filtering LLM
+    inputs and outputs or labeling content, with the model's reasoning visible to developers.
+    OpenAI's README presents the 120b size for production, general-purpose, high-reasoning use.
+  source_ids: [ hf-safeguard-120b, gh-safeguard ]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by OpenAI. Its operating company, OpenAI Group PBC, is described as
+    a Delaware public benefit corporation at 1455 3rd Street, San Francisco, California, in a
+    February 2026 agreement filed with the SEC.
+  source_ids: [ safeguard-tech-report, sec-openai-amazon-ecl ]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: Downloadable from Hugging Face without gating.
+  source_ids: [ hf-api-safeguard-120b ]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [ hf-safeguard-120b-license, hf-safeguard-120b, safeguard-tech-report ]
+    reviewed_at: 2026-10-01
+  - name: Apache License 2.0 (gpt-oss-safeguard repository documentation and example policy)
+    spdx: Apache-2.0
+    url: https://github.com/openai/gpt-oss-safeguard/blob/main/LICENSE
+    applies_to: documentation
+    source_ids: [ gh-safeguard-license, gh-safeguard ]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The technical report says the models are available under Apache 2.0 and OpenAI's gpt-oss
+    usage policy. The USAGE_POLICY file shipped with the weights asks users to comply with all
+    applicable law and lists no further restrictions. The GitHub repository holds documentation
+    and an example spam policy with a labeled sample set, not model code.
+  source_ids: [ safeguard-tech-report, hf-safeguard-120b-usage-policy, gh-safeguard ]
+  reviewed_at: 2026-10-01
+checklist:
+  weights:
+    status: public
+    note: Safetensors weights in the ungated Hugging Face repository.
+    source_ids: [ hf-api-safeguard-120b ]
+    reviewed_at: 2026-10-01
+  inference_code:
+    status: public
+    note: >-
+      The model card says the model is used like gpt-oss-120b, following the gpt-oss
+      cookbooks. OpenAI's user guide documents running it with vLLM, Hugging Face Transformers,
+      Ollama, and LM Studio.
+    source_ids: [ hf-safeguard-120b, safeguard-guide ]
+    reviewed_at: 2026-10-01
+  training_code:
+    status: unknown
+    note: No training or fine-tuning code for gpt-oss-safeguard was found in the official repositories reviewed.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: >-
+      The technical report says the models are fine-tunes of gpt-oss trained without any
+      additional biological or cybersecurity data. It does not otherwise describe the
+      post-training data.
+    source_ids: [ safeguard-tech-report ]
+    reviewed_at: 2026-10-01
+  training_recipe:
+    status: unknown
+    note: >-
+      The report says the model was post-trained to reason from a provided policy but gives no
+      further training details.
+    source_ids: [ safeguard-tech-report ]
+    reviewed_at: 2026-10-01
+  evaluation_materials:
+    status: partial
+    note: >-
+      The technical report gives results on internal multi-policy evaluations, OpenAI's 2022
+      moderation set, ToxicChat, a multilingual benchmark, and chat-safety evaluations. The
+      internal sets and evaluation code were not found to be published.
+    source_ids: [ safeguard-tech-report ]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The model must be used with OpenAI's harmony response format; the model card says it will
+      not work correctly otherwise.
+    source_ids: [ hf-safeguard-120b ]
+    reviewed_at: 2026-10-01
+  - text: >-
+      OpenAI's user guide places the policy in the system message, where the reasoning effort
+      (low, medium, or high) is also set. It suggests policies of about 400 to 600 tokens and
+      notes small but meaningful accuracy losses as more policies are added.
+    source_ids: [ safeguard-guide ]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The technical report notes that dedicated classifiers trained on large labeled sets can
+      still outperform the model, and that it can be time- and compute-intensive to run across
+      all platform content.
+    source_ids: [ safeguard-tech-report ]
+    reviewed_at: 2026-10-01
+provenance:
+  text: Fine-tuned by OpenAI from its gpt-oss-120b open-weight model.
+  derived_from:
+    - name: gpt-oss-120b
+      artifact_slug: gpt-oss-120b
+      url: https://huggingface.co/openai/gpt-oss-120b
+      note: Base model named in the Hugging Face card metadata (base_model_relation finetune).
+  source_ids: [ hf-safeguard-120b, safeguard-tech-report ]
+tags: [ language-model, reasoning, mixture-of-experts, safety, classification ]
+publication_status: published
+archive_note: null
+released_at: 2025-10
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: hf-safeguard-120b
+    title: openai/gpt-oss-safeguard-120b model card
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-api-safeguard-120b
+    title: Hugging Face model metadata for openai/gpt-oss-safeguard-120b
+    url: https://huggingface.co/api/models/openai/gpt-oss-safeguard-120b
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-safeguard-120b-config
+    title: openai/gpt-oss-safeguard-120b config.json
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b/blob/main/config.json
+    publisher: OpenAI (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-safeguard-120b-license
+    title: openai/gpt-oss-safeguard-120b LICENSE
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b/raw/main/LICENSE
+    publisher: OpenAI (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-safeguard-120b-usage-policy
+    title: openai/gpt-oss-safeguard-120b USAGE_POLICY
+    url: https://huggingface.co/openai/gpt-oss-safeguard-120b/raw/main/USAGE_POLICY
+    publisher: OpenAI (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: safeguard-tech-report
+    title: "Technical Report: Performance and baseline evaluations of gpt-oss-safeguard-120b and gpt-oss-safeguard-20b"
+    url: https://cdn.openai.com/pdf/08b7dee4-8bc6-4955-a219-7793fb69090c/Technical_report__Research_Preview_of_gpt_oss_safeguard.pdf
+    publisher: OpenAI
+    kind: paper
+    published_at: 2025-10-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: gh-safeguard
+    title: openai/gpt-oss-safeguard README
+    url: https://raw.githubusercontent.com/openai/gpt-oss-safeguard/main/README.md
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: gh-safeguard-license
+    title: openai/gpt-oss-safeguard LICENSE
+    url: https://raw.githubusercontent.com/openai/gpt-oss-safeguard/main/LICENSE
+    publisher: OpenAI
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: safeguard-guide
+    title: gpt-oss-safeguard user guide (OpenAI Cookbook)
+    url: https://developers.openai.com/cookbook/articles/gpt-oss-safeguard-guide
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

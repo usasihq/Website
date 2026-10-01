@@ -78,3 +78,12 @@ for (const width of [320,768,1024]) test(`Jobs fits ${width}px and renders at mo
   expect(await page.locator("article").count()).toBeLessThanOrEqual(30);
   if (width===1024 && await page.locator("article").count()) await page.locator("article").first().screenshot({path:"reports/screenshots/job-card.png"});
 });
+test("Jobs embeds one page of listings and loads the full list from the site's own data file", async ({ page, request }) => {
+  const html = await (await request.get("/jobs/")).text();
+  expect(html.length).toBeLessThan(750_000);
+  const loaded = page.waitForResponse(r => r.url().endsWith("/data/jobs.json") && r.ok());
+  await page.goto("/jobs/?company=openai");
+  await loaded;
+  await expect(page.getByText("Loading all positions…")).toHaveCount(0);
+  await expect(page.locator("main article").first().or(page.getByRole("heading", {name: "No positions match this view"}))).toBeVisible();
+});

@@ -1,0 +1,213 @@
+slug: cline
+name: Cline
+legal_name:
+  text: Cline Bot Inc.
+  source_ids: [cline-tos, cline-privacy, cline-license, uspto-cline]
+  reviewed_at: 2026-10-01
+website: https://cline.bot
+logo_text: Cl
+summary:
+  text: >-
+    Cline Bot Inc. develops Cline, an open-source AI coding agent offered as a VS Code extension, a
+    command-line tool, an SDK, and a desktop app, with a separate JetBrains plugin. It also runs the
+    Cline Provider, a hosted service that gives signed-in users credit-based access to models from
+    other providers.
+  source_ids: [cline-readme, cline-docs-install, cline-docs-provider]
+  reviewed_at: 2026-10-01
+organization_roles: [developer-platform]
+ownership_category: privately-held
+legal_form:
+  text: Corporation organized in Delaware, per the USPTO registration record for the CLINE trademark.
+  source_ids: [uspto-cline]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: >-
+    United States (no headquarters city stated; the USPTO record gives a Wilmington, Delaware owner
+    address, and the careers page lists on-site roles in San Francisco, California)
+  country: US
+  source_ids: [uspto-cline, cline-careers]
+other_locations:
+  - label: San Francisco, California
+    country: US
+    source_ids: [cline-careers]
+founded: null
+sectors: [agents]
+status_note: null
+products:
+  - id: cline-ide-extension
+    name: Cline for VS Code and JetBrains
+    kind: developer-tool
+    access: >-
+      Coding-agent extension installed from the VS Code Marketplace (also usable in Cursor,
+      Windsurf, VSCodium, and Antigravity) or from the JetBrains Marketplace. The VS Code extension
+      is open source under Apache 2.0; the README says the JetBrains plugin is not being
+      open-sourced.
+    url: https://docs.cline.bot/getting-started/installing-cline
+    source_ids: [cline-docs-install, cline-readme]
+    last_reviewed: 2026-10-01
+  - id: cline-cli
+    name: Cline CLI
+    kind: developer-tool
+    access: >-
+      Open-source command-line agent installed with npm (package "cline", Node.js 20 or newer) for
+      interactive terminal sessions and headless automation.
+    url: https://docs.cline.bot/usage/cli-overview
+    source_ids: [cline-docs-cli, cline-docs-install]
+    last_reviewed: 2026-10-01
+  - id: cline-provider
+    name: Cline Provider
+    kind: inference-service
+    access: >-
+      Hosted access to third-party models through a Cline account (sign-in with Google, GitHub, or
+      email), paid with pay-as-you-go Cline credits; some models are marked free. Users can instead
+      use their own provider credentials or local runtimes.
+    url: https://docs.cline.bot/getting-started/cline-provider
+    source_ids: [cline-docs-provider, cline-docs-overview]
+    last_reviewed: 2026-10-01
+notable_facts:
+  - text: >-
+      The Cline repository holds the SDK, CLI, VS Code extension, and desktop app code; its README
+      states that the JetBrains plugin is not being open-sourced.
+    source_ids: [cline-readme]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Cline's terms of service (last modified September 25, 2025) name Cline Bot Inc. as the provider
+    of the service, deem the service based solely in Delaware, and apply Delaware law; the privacy
+    notice names Cline Bot Inc. as the operator, and the Apache 2.0 LICENSE assigns copyright to
+    Cline Bot Inc. The USPTO registration record for the CLINE trademark lists Cline Bot Inc. as a
+    Delaware corporation with an owner address in Wilmington, Delaware. Cline's careers page lists
+    on-site roles in San Francisco, California. No official page reviewed names a headquarters
+    city, so only the country is recorded; no non-U.S. office or parent entity was found.
+  source_ids: [cline-tos, cline-privacy, cline-license, uspto-cline, cline-careers]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    Cline's agent code (VS Code extension, CLI, SDK, and desktop app) is published under Apache
+    2.0; the JetBrains plugin is not open source. This catalog has no record of Cline releasing
+    model weights: the agent works with models that users reach through third-party providers,
+    local runtimes, or the hosted Cline Provider. See the Cline agent record.
+  source_ids: [cline-readme, cline-license, cline-docs-overview]
+  reviewed_at: 2026-10-01
+hiring_url: https://cline.bot/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+profile:
+  intended_users:
+    text: >-
+      Developers who use a coding agent in an editor, terminal, or desktop app, and developers
+      building their own agents on the Cline SDK.
+    source_ids: [cline-docs-install, cline-readme]
+    reviewed_at: 2026-10-01
+  access_overview:
+    text: >-
+      The agent software is open source. Model access is separate: through the Cline Provider's
+      pay-as-you-go credits, a ClinePass subscription, or the user's own provider credentials and
+      local runtimes.
+    source_ids: [cline-docs-overview, cline-docs-provider]
+    reviewed_at: 2026-10-01
+  limitations:
+    text: >-
+      The JetBrains plugin is not open-sourced. Cline's hosted services are governed by its terms of
+      service, and third-party models carry their own terms. This profile is not a complete product
+      or rights audit.
+    source_ids: [cline-readme, cline-tos]
+    reviewed_at: 2026-10-01
+  resources:
+    - label: Cline documentation
+      url: https://docs.cline.bot/cline-overview
+      kind: documentation
+      source_ids: [cline-docs-overview]
+      reviewed_at: 2026-10-01
+    - label: Cline source repository
+      url: https://github.com/cline/cline
+      kind: repository
+      source_ids: [cline-readme]
+      reviewed_at: 2026-10-01
+sources:
+  - id: cline-tos
+    title: Cline Terms of Service
+    url: https://cline.bot/tos
+    publisher: Cline Bot Inc.
+    kind: official-page
+    published_at: 2025-09-25
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-privacy
+    title: Cline Privacy Notice
+    url: https://cline.bot/privacy
+    publisher: Cline Bot Inc.
+    kind: official-page
+    published_at: 2025-09-24
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-license
+    title: Cline Apache 2.0 LICENSE
+    url: https://raw.githubusercontent.com/cline/cline/main/LICENSE
+    publisher: Cline Bot Inc.
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-readme
+    title: cline/cline repository and README
+    url: https://github.com/cline/cline
+    publisher: Cline Bot Inc.
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: uspto-cline
+    title: USPTO TSDR status record for the CLINE trademark (Serial No. 98795282, Reg. No. 8258729)
+    url: https://tsdr.uspto.gov/statusview/sn98795282
+    publisher: United States Patent and Trademark Office
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-careers
+    title: Careers at Cline
+    url: https://cline.bot/careers
+    publisher: Cline Bot Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-docs-overview
+    title: Cline overview (documentation)
+    url: https://docs.cline.bot/cline-overview
+    publisher: Cline Bot Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-docs-install
+    title: Installing Cline (documentation)
+    url: https://docs.cline.bot/getting-started/installing-cline
+    publisher: Cline Bot Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-docs-cli
+    title: Cline CLI overview (documentation)
+    url: https://docs.cline.bot/usage/cli-overview
+    publisher: Cline Bot Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: cline-docs-provider
+    title: Cline Provider (documentation)
+    url: https://docs.cline.bot/getting-started/cline-provider
+    publisher: Cline Bot Inc.
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

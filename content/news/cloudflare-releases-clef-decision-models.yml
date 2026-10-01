@@ -1,0 +1,41 @@
+slug: cloudflare-releases-clef-decision-models
+title: Cloudflare releases Clef and Clef-flash decision models under Apache 2.0
+event_date: 2026-10-01
+published_at: 2026-10-01
+category: release
+summary:
+  text: >-
+    On October 1, 2026, Cloudflare released Clef and Clef-flash, the first models trained by its
+    Workers AI team. They are decision models: given a state and a set of typed questions, they
+    return a probability for each allowed answer, so an agent can classify or route a task. Clef
+    is post-trained from Qwen3.8-27B and Clef-flash from Qwen3.5-9B. The weights are on Hugging
+    Face under the Apache 2.0 license, and both models are also hosted on Workers AI. Cloudflare
+    also announced reinforcement-learning fine-tuning of Clef for customers, offered for now as a
+    hands-on service with its forward-deployed engineers.
+  source_ids: [clef-blog, clef-card, clef-flash-card]
+related_organizations: [cloudflare]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-01
+sources:
+  - id: clef-blog
+    title: "Introducing Clef: our open-source decision models, and new RL fine-tuning platform"
+    url: https://blog.cloudflare.com/clef-decision-models/
+    publisher: Cloudflare
+    kind: announcement
+    published_at: 2026-10-01
+    accessed_at: 2026-10-01
+  - id: clef-card
+    title: Cloudflare/clef model card
+    url: https://huggingface.co/Cloudflare/clef
+    publisher: Cloudflare (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: clef-flash-card
+    title: Cloudflare/clef-flash model card
+    url: https://huggingface.co/Cloudflare/clef-flash
+    publisher: Cloudflare (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
