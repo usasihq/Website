@@ -36,3 +36,23 @@ test("both CSP policies allow the Cloudflare beacon and same-origin collection o
   expect(await page.evaluate(async () => { try { await fetch("https://example.com/blocked"); return false; } catch { return true; } })).toBe(true);
   expect(await page.context().cookies()).toEqual([]);
 });
+
+
+test("client navigation validates data without CSP dynamic-code probes", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__violations = [];
+    document.addEventListener("securitypolicyviolation", event => {
+      window.__violations.push(`${event.violatedDirective}: ${event.blockedURI}`);
+    });
+  });
+  await page.goto("/");
+  const nav = page.getByRole("navigation", { name: "Primary", exact: true });
+  await nav.getByRole("link", { name: "Jobs", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("Jobs");
+  await page.getByLabel("Search jobs", { exact: true }).fill("engineer");
+  await nav.getByRole("link", { name: "People Behind Local AI", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("People behind local AI");
+  await nav.getByRole("link", { name: "Companies & Labs", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("Companies & Labs");
+  expect(await page.evaluate(() => window.__violations)).toEqual([]);
+});

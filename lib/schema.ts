@@ -7,7 +7,7 @@
  *
  * Enum values live in lib/enums.ts so client code can use them without Zod.
  */
-import { z } from "zod";
+import { z } from "./zod";
 import { Careers } from "./jobs/schema";
 import {
   ARTIFACT_KINDS,

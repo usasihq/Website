@@ -30,7 +30,7 @@
  *
  * Client-safe: plain data plus validation.
  */
-import { z } from "zod";
+import { z } from "./zod";
 
 const RAW_CONFIG = {
   name: "United States of America Superintelligence",

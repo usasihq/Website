@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "../zod";
 
 /** No URL supplied by a feed is ever fetched. Feed endpoints are code-owned. */
 export function safeJobUrl(value: string): boolean {

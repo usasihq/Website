@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "../zod";
 import type { Careers, NormalizedJob, Job } from "./schema";
 import { Salary } from "./schema";
 import { endpoint, FeedError, postingUrl } from "./security";
