@@ -1,0 +1,58 @@
+A training-data disclosure is whatever a model's provider publishes about the material the model learned from. It can range from named, downloadable datasets with per-source documentation to a short list of broad data types. To read one, separate four questions: which datasets were used, where the data came from and how it was processed, whether you can obtain it, and under what terms. Knowing that a dataset exists, or even downloading it, does not settle whether you may reuse what it contains. When a source does not say something, that is a gap in the disclosure, not evidence of anything else.
+
+<h2 id="what-a-disclosure-covers">What a disclosure can cover</h2>
+
+- **Dataset identity:** the names, versions, and links of the datasets used at each stage of training, such as pretraining and later fine-tuning.
+- **Provenance and collection:** where the material came from (web crawls, code, papers, licensed or internal data), how it was obtained and selected, and the date it runs up to (its cutoff).
+- **Processing:** filtering, deduplication, removal of personal or harmful content, and how much of each source went into the final mix.
+- **Availability:** whether the data, or a processed version of it, can be downloaded, and on what conditions.
+- **License scope:** which terms cover the dataset as a collection, and whether the underlying material carries terms of its own ([license scope](/glossary/#license-scope)).
+- **Documentation:** a dataset card or datasheet. The paper "Datasheets for Datasets" proposes that each dataset come with documentation of its motivation, composition, collection process, and recommended uses.
+- **Stated limits:** what the provider says is missing, removed, or not reproducible.
+
+For a reference point, the Open Source Initiative's [Open Source AI Definition 1.0](https://opensource.org/ai/open-source-ai-definition) asks for "Data Information" detailed enough that a skilled person could build a substantially equivalent system. That includes a complete description of all training data, including data that cannot be shared, covering provenance, scope, how the data was obtained and selected, labeling, and processing, plus lists of the public and third-party data used and where to obtain them. It does not require every training document to be downloadable.
+
+<h2 id="information-is-not-permission">Public information is not permission</h2>
+
+Three things are easy to run together: what a document says about a dataset, whether you can get the files, and what you are allowed to do with them. They are separate.
+
+- **Description without access.** A provider can describe data that no one else can obtain, such as licensed or internal material. The description still helps you understand the model.
+- **Access without blanket permission.** Ai2 releases its [Dolma](/open/dolma/) corpus under the Open Data Commons Attribution License (ODC-BY), and the Dolma dataset card adds that using it also binds you to the license agreements and terms of use of the original data sources. A license on a compiled dataset does not, by itself, clear every document inside it.
+- **Permission is specific.** Terms can differ by dataset, by version, and by source within a dataset, so check the terms for the exact files you plan to use.
+
+This page is general information, not legal advice.
+
+<h2 id="catalog">How the catalog records it</h2>
+
+For model releases, the catalog keeps training-data information (how complete the description is) and training-data access (whether the data can be obtained) as separate checklist items, and neither one is a finding about reuse rights ([methodology](/methodology/#openness)). Datasets have their own checklist: access, provenance, documentation, licensing, and stated limitations. [Unknown](/glossary/#unknown) means an item has not been assessed or the evidence is not enough; it never stands in for "no" ([methodology](/methodology/#uncertainty)).
+
+<h2 id="worked-example">A worked example: two disclosures compared</h2>
+
+This compares two real documents, field by field. Document A is Ai2's model card for [Olmo 3 7B](/open/olmo-3-1025-7b/), together with the card for the Dolma 3 Mix dataset it links. Document B is Google's Hugging Face model card for gemma-4-31B-it, the instruction-tuned checkpoint of [Gemma 4 31B](/open/gemma-4-31b/). Only these documents were reviewed; other publications, such as the Gemma 4 technical report, may say more.
+
+- **Dataset identity.** A: names and links a dataset for each of three training stages: Dolma 3 Mix for pretraining, Dolma 3 Dolmino Mix for mid-training, and Dolma 3 Longmino Mix for long-context training. B: describes a large, diverse pretraining collection; named datasets are not disclosed in the reviewed source.
+- **Composition and provenance.** A: the dataset card lists six sources (Common Crawl web pages, academic papers processed with olmOCR, code, mathematics, arXiv papers, and Wikipedia), with token, byte, and document counts and the share of the mix for each, and says the majority comes from Common Crawl. B: names web documents (with content in over 140 languages), code, mathematics, and images as key components, and its overview also mentions audio; the share of each is not disclosed in the reviewed source.
+- **Cutoff.** A: December 2024. B: January 2025.
+- **Processing.** A: the two cards give mix proportions; filtering methods are not disclosed in the reviewed sources, which link the Olmo 3 paper and the original Dolma release for more. B: describes filtering of child sexual abuse material at several stages, automated filtering of certain personal information and other sensitive data, and filtering for content quality and safety under Google's policies.
+- **Availability.** A: the mix downloads from Hugging Face without a gate. B: where to obtain the data is not disclosed in the reviewed source.
+- **License.** A: ODC-BY, with the card stating that the data is intended for research and educational use under Ai2's Responsible Use Guidelines. B: the card's Apache 2.0 license covers the model; terms for the training data are not disclosed in the reviewed source.
+- **Stated limits.** A: the dataset card warns that some olmOCR science PDFs were redacted after training and marked "[REMOVED]", which affects reproducibility, and recommends a complete mix for other uses. B: the Limitations section says that biases or gaps in training data can limit the model's responses.
+
+Neither side of this comparison is a verdict on either model. Document B's gaps mean only that this card does not answer those questions; Google may document them elsewhere. Document A's detail has limits too: a downloadable mix with per-source counts does not establish that every provenance, acquisition, and processing step is documented, which is why the catalog records Olmo 3 7B's training-data information as Partial.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse [datasets](/open/?kind=dataset) in the catalog and read their provenance, licensing, and stated-limitations entries.
+- Find model releases whose [training-data information is documented](/open/?kind=model&check=training_data_information:documented), in full or in part.
+- Read how information, access, and permission are kept apart in the [methodology](/methodology/#openness), and how a [model card](/glossary/#model-card) fits in.
+- For how data fits alongside weights and code, read [what open weight and open source actually mean](/learn/open-weight-vs-open-source/).
+- Before reusing a dataset, read its license and the terms of the sources it draws on.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- Ai2: [Olmo-3-1025-7B model card](https://huggingface.co/allenai/Olmo-3-1025-7B), [dolma3_mix-6T-1025-7B dataset card](https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B) and its [Hugging Face API metadata](https://huggingface.co/api/datasets/allenai/dolma3_mix-6T-1025-7B), [Dolma dataset card](https://huggingface.co/datasets/allenai/dolma)
+- Google: [gemma-4-31B-it model card](https://huggingface.co/google/gemma-4-31B-it)
+- Open Source Initiative: [The Open Source AI Definition, version 1.0](https://opensource.org/ai/open-source-ai-definition)
+- Gebru et al.: [Datasheets for Datasets (arXiv 1803.09010)](https://arxiv.org/abs/1803.09010)

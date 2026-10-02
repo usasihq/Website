@@ -1,0 +1,142 @@
+slug: georgia-institute-of-technology
+name: Georgia Institute of Technology
+legal_name: null
+website: https://www.gatech.edu
+logo_text: GT
+summary:
+  text: >-
+    The Georgia Institute of Technology (Georgia Tech) is a public research university in
+    Atlanta, Georgia, founded in 1885 and part of the University System of Georgia. Its AI
+    research groups include the Polo Club of Data Science, which builds interactive tools for
+    understanding machine learning models, among them Transformer Explainer.
+  source_ids: [gt-about, usg-institutions, polo-site, te-readme]
+  reviewed_at: 2026-10-01
+organization_roles: [university-lab, research-lab]
+ownership_category: public-institution
+legal_form:
+  text: >-
+    Public research university in the University System of Georgia, whose Board of Regents was
+    created in 1931 to govern the state's public colleges and universities. Regents are
+    appointed by the governor.
+  source_ids: [gt-about, usg-institutions, usg-regents]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Atlanta, Georgia
+  country: US
+  source_ids: [gt-about]
+other_locations: []
+founded:
+  year: 1885
+  source_ids: [gt-about]
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      The University System of Georgia lists Georgia Tech as one of its four research
+      universities, together with the University of Georgia, Georgia State University, and
+      Augusta University.
+    source_ids: [usg-institutions]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The Polo Club of Data Science at Georgia Tech lists human-centered AI (including
+      interpretable, fair, and safe AI and adversarial machine learning), large graph
+      visualization and mining, and cybersecurity among its research areas. It publishes its
+      code in the poloclub GitHub organization.
+    source_ids: [polo-site, polo-github]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Transformer Explainer is an interactive, browser-based visualization that runs a GPT-2
+      model so learners can see how a Transformer predicts the next token. Its README says it was
+      created at the Georgia Institute of Technology; the code is released under the MIT License
+      with copyright held by the Polo Club of Data Science, and the accompanying paper appears in
+      the proceedings of CHI 2026.
+    source_ids: [te-readme, te-license, te-paper]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    Georgia Tech describes itself as a public research university in Atlanta, and the University
+    System of Georgia lists it among the institutions governed by its Board of Regents, a body
+    created by the state of Georgia in 1931.
+  source_ids: [gt-about, usg-institutions, usg-regents]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact, not for the university as a whole. Transformer
+    Explainer's source code is published under the MIT License.
+  source_ids: [te-license]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: gt-about
+    title: About Georgia Tech
+    url: https://www.gatech.edu/about
+    publisher: Georgia Institute of Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: usg-institutions
+    title: Institution Profiles | University System of Georgia
+    url: https://www.usg.edu/institutions/
+    publisher: University System of Georgia
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: usg-regents
+    title: Regents | University System of Georgia
+    url: https://www.usg.edu/regents/
+    publisher: University System of Georgia
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: polo-site
+    title: Polo Club of Data Science @ Georgia Tech
+    url: https://poloclub.github.io/
+    publisher: Polo Club of Data Science, Georgia Tech
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: polo-github
+    title: Polo Club of Data Science, Georgia Tech (GitHub organization)
+    url: https://github.com/poloclub
+    publisher: Polo Club of Data Science, Georgia Tech
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: te-readme
+    title: poloclub/transformer-explainer (GitHub repository and README)
+    url: https://github.com/poloclub/transformer-explainer
+    publisher: Polo Club of Data Science, Georgia Tech
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: te-license
+    title: Transformer Explainer LICENSE (MIT License)
+    url: https://raw.githubusercontent.com/poloclub/transformer-explainer/main/LICENSE
+    publisher: Polo Club of Data Science
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: te-paper
+    title: "Transformer Explainer: Learning LLM Transformers with Interactive Visual Explanation and Experimentation (arXiv 2408.04619)"
+    url: https://arxiv.org/abs/2408.04619
+    publisher: arXiv (Polo Club of Data Science and co-authors)
+    kind: paper
+    published_at: 2024-08-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

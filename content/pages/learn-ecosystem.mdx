@@ -1,0 +1,63 @@
+An AI product rests on several layers of organizations. Chip designers create processors, which are often manufactured by other companies. Compute providers install those chips in data centers and rent out capacity. Model developers train models on that capacity using open-source software maintained by companies, universities, and foundations. Application companies build products on top of models, often from several developers at once. Many organizations work in more than one layer, and much of this work depends on suppliers and contributors in other countries. USASI catalogs organizations and projects with a documented U.S. basis; it does not claim that the supply chain behind them is entirely American.
+
+<h2 id="layers">Five layers, with catalog examples</h2>
+
+Each example below is a published catalog record. Where a source documents a connection between two of them, the text says so.
+
+- **Chip designers.** [NVIDIA](/companies/nvidia/) designs data center GPUs. Its annual report describes a fabless strategy: foundries such as TSMC and Samsung produce its wafers, it buys memory from suppliers including SK Hynix, [Micron](/companies/micron/), and Samsung, and contract manufacturers assemble, test, and package its products. Other chip designers in the catalog include [AMD](/companies/amd/) and [Intel](/companies/intel/).
+- **Compute providers.** [CoreWeave](/companies/coreweave/) rents GPU capacity for training and inference; its GPU compute page offers NVIDIA GPUs, including the Blackwell and Hopper generations, on bare-metal servers. Large clouds also host models for customers: Microsoft's Foundry documentation says the models Azure sells and operates include all Azure OpenAI models and selected models from other providers.
+- **Model developers.** [Ai2](/companies/ai2/), a nonprofit research institute, released [Olmo 3 7B](/open/olmo-3-1025-7b/). Ai2's Olmo 3 announcement says the models were pretrained on a cluster of H100 GPUs, an NVIDIA data center product.
+- **Open-source software.** The README for OLMo-core, Ai2's training code, says to install [PyTorch](/open/pytorch/) first. PyTorch is hosted by the [PyTorch Foundation](/companies/pytorch-foundation/), part of the [Linux Foundation](/companies/linux-foundation/). The PyTorch Foundation also hosts [vLLM](/open/vllm/), an inference engine, and its announcement says vLLM uses PyTorch as a common interface to hardware including NVIDIA and AMD GPUs, Google Cloud TPUs, Intel processors, and AWS Neuron.
+- **Application companies.** [Perplexity](/companies/perplexity/) offers an answer assistant and a developer platform. Its Agent API documentation says developers can reach models from [OpenAI](/companies/openai/), [Anthropic](/companies/anthropic/), [Google](/companies/google/), [xAI](/companies/xai/), and other providers through one API.
+
+These links are documented examples, not a complete map of who supplies whom.
+
+<h2 id="multiple-roles">One organization, several roles</h2>
+
+The layers describe roles, not companies. Each organization record lists the roles its sources document, and many list more than one:
+
+- NVIDIA's record lists chip designer, model developer, and developer platform. Besides hardware, NVIDIA publishes the [Nemotron](/open/nemotron/) model family on Hugging Face and open-source software such as [TensorRT-LLM](/open/tensorrt-llm/).
+- [Microsoft](/companies/microsoft/)'s record lists six roles, among them cloud provider, model developer, and consumer products: it operates Azure, develops models such as Phi, and offers Copilot assistants.
+- Google's record lists model developer, research lab, cloud provider, developer platform, and consumer products, and Google Cloud TPUs appear among vLLM's hardware back ends.
+
+Roles also change over time. vLLM began in the Sky Computing Lab at the [University of California, Berkeley](/companies/uc-berkeley/), which contributed it to the PyTorch Foundation; the foundation announced it as a hosted project in May 2025. Some organizations are also units or subsidiaries of others; the catalog shows that link so a parent and its unit are not presented as independent ([glossary](/glossary/#subsidiary)). Because an organization appears under every role it has, role lists overlap and should not be added together.
+
+<h2 id="global-dependencies">Global dependencies</h2>
+
+The same chains run through organizations that are not catalog members, including suppliers outside the United States.
+
+- **Manufacturing.** NVIDIA's annual report says its supply chain is mainly concentrated in Asia and that it is expanding into the U.S. and Latin America. The foundries and assembly contractors it names are not catalog members.
+- **Software.** The PyTorch Foundation describes a global contributor community, and vLLM's README describes a community of academic institutions and companies. vLLM also supports hardware from companies that are not catalog members, through plugins such as those for Huawei Ascend and Rebellions accelerators.
+- **Models.** U.S. organizations build on models from elsewhere. The model card for Deep Cogito's [Cogito v2.1 671B](/open/cogito-v2-1-671b/) names DeepSeek-V3-Base as its base model, and Microsoft's Foundry documentation lists model collections from providers such as Cohere, DeepSeek, and Mistral AI alongside Meta and xAI.
+
+<h2 id="eligibility-boundary">Where USASI draws the line</h2>
+
+The catalog asks one question of each record: does a documented basis connect its accountable entity to the United States? There are four bases: U.S. headquarters, U.S. nonprofit or lab, documented U.S. control, and, for software, datasets, and models, a U.S.-based governing or maintaining entity ([methodology](/methodology/#eligibility)). In practice:
+
+- NVIDIA is eligible through its documented U.S. headquarters. Its reliance on outside foundries does not change that, and it does not make those foundries catalog members.
+- vLLM is eligible through its documented governance as a PyTorch Foundation-hosted project. A project's eligibility never rests on contributors' names or assumed nationalities ([glossary](/glossary/#maintainer)).
+- Cogito v2.1 671B is eligible through [Deep Cogito](/companies/deep-cogito/), which post-trained and published it. That covers Deep Cogito's work only; the DeepSeek base model is recorded as provenance and is not treated as U.S.-developed ([glossary](/glossary/#fine-tuning)).
+- A foreign company whose only U.S. presence is a sales office does not qualify.
+
+Eligibility is a scope rule for this catalog, not a judgment about any country, company, or person. Totals on the site measure catalog coverage, not the size of American AI ([methodology](/methodology/#counts)).
+
+<h2 id="next">What you can do next</h2>
+
+- Browse organizations by role: [chip designers](/companies/?role=chip-designer), [cloud providers](/companies/?role=cloud-provider), [model developers](/companies/?role=model-developer), and [open-source stewards](/companies/?role=open-source-steward).
+- See which organizations are [units or subsidiaries](/companies/?structure=unit) of others, and read the glossary entries for [subsidiary](/glossary/#subsidiary) and [maintainer](/glossary/#maintainer).
+- Browse software by kind: [frameworks](/open/?kind=framework) and [runtimes](/open/?kind=runtime).
+- Read the [eligibility rules](/methodology/#eligibility) and how [counts](/methodology/#counts) work.
+- For what you may do with a downloaded model, read [what open weight and open source actually mean](/learn/open-weight-vs-open-source/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- NVIDIA: [Form 10-K for the fiscal year ended January 25, 2026](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm) (SEC EDGAR), [NVIDIA Nemotron](https://developer.nvidia.com/nemotron)
+- CoreWeave: [GPU Compute](https://www.coreweave.com/products/gpu-compute)
+- Microsoft: [Foundry Models sold directly by Azure](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure)
+- Ai2: [Olmo 3 announcement](https://allenai.org/blog/olmo3), [OLMo-core README](https://github.com/allenai/OLMo-core/blob/main/README.md)
+- PyTorch Foundation: [PyTorch Foundation](https://pytorch.org/foundation/), [PyTorch Foundation Welcomes vLLM as a Hosted Project](https://pytorch.org/blog/pytorch-foundation-welcomes-vllm/)
+- vLLM: [vllm-project/vllm README](https://github.com/vllm-project/vllm/blob/main/README.md)
+- Perplexity: [Agent API quickstart](https://docs.perplexity.ai/docs/agent-api/quickstart)
+- Deep Cogito: [cogito-671b-v2.1 model card](https://huggingface.co/deepcogito/cogito-671b-v2.1)

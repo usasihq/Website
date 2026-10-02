@@ -16,7 +16,7 @@ import { buildCoverage } from "@/lib/matrix";
 import { pageMetadata } from "@/lib/metadata";
 import { RUBRIC_LABEL } from "@/lib/openness";
 import { absoluteUrl, asset } from "@/lib/paths";
-import { artifactHref, openHref, orgHref } from "@/lib/routes";
+import { artifactHref, orgHref } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
@@ -166,9 +166,9 @@ export default function HomePage() {
         <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { href: "/start/", title: "New here? Start here", text: "Four short paths: learn a term, find something usable, understand an organization, check a claim." },
-            { href: "/learn/open-weight-vs-open-source/", title: "Open weight vs. open source", text: "What a downloadable model does and doesn’t let you do, with real catalog examples." },
-            { href: openHref("kind=runtime"), title: "Run models on your own hardware", text: "Local runtimes in the catalog, plus the people behind local AI." },
-            { href: "/methodology/#sources", title: "Check a claim", text: "How every statement links to a source, and how to report a correction." },
+            { href: "/learn/", title: "Learn the basics", text: "Ten short explainers and a glossary, from open weights to reading an evaluation." },
+            { href: "/hubs/", title: "Explore by subject", text: "Local AI, agents, chips and compute, open-source foundations, and science." },
+            { href: "/places/", title: "Browse by state", text: "Organizations by the state named in their documented headquarters." },
           ].map((item) => (
             <li key={item.href}>
               <Link prefetch={false} href={item.href} className="card flex h-full flex-col p-4 hover:border-cyan">

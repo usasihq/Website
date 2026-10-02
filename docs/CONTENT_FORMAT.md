@@ -236,3 +236,42 @@ changes:
 ```
 
 Only record genuine editorial changes. A rebuild is not a change.
+
+## Reference hub (`content/hubs/<slug>.yml`)
+
+A hub is an authored introduction to a subject, not a bare filtered list. Schema: `Hub` in
+`lib/schema.ts`; validated like other records (sources must be cited; featured records must be
+published; no funding, valuations, counts of users or staff, or superlatives).
+
+```yaml
+slug: local-ai
+title: Running AI on your own hardware
+summary: One sentence for cards and search (20–240 characters).
+intro:                     # 1–6 short paragraphs in your own words; each cites its sources
+  - text: >-
+      Paragraph one.
+    source_ids: [ollama-readme]
+    reviewed_at: 2026-10-01
+scope: >-
+  What this hub covers and what it does not (and that featured records are examples, not rankings).
+reading_path:              # internal links only, in a sensible order
+  - { label: "What open weight means", href: "/learn/open-weight-vs-open-source/", note: "Start here if ..." }
+directory_links:           # catalog views (filters) relevant to the subject
+  - { label: "Runtimes in the catalog", href: "/open/?kind=runtime", note: null }
+organizations: [ollama-org-slug]   # published slugs only
+artifacts: [ollama, llama-cpp]
+people: [georgi-gerganov]
+primary_documents:         # annotated primary sources: why each matters
+  - { source_id: ollama-readme, note: "The project's own description of ..." }
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: ollama-readme
+    title: Ollama README
+    url: https://github.com/ollama/ollama
+    publisher: Ollama (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+```

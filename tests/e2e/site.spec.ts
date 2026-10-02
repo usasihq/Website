@@ -561,3 +561,36 @@ test("every page carries the independence line, and orientation pages are reacha
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   }
 });
+
+test("reference sections: learn, hubs, places, and record context", async ({ page }) => {
+  await page.goto("/learn/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Learn");
+  const explainers = page.locator("section[aria-labelledby='explainers-heading'] li a");
+  expect(await explainers.count()).toBe(10);
+  await explainers.nth(1).click();
+  await expect(page.getByRole("heading", { level: 2, name: "Sources" })).toBeVisible();
+
+  await page.goto("/hubs/");
+  const hubs = page.locator("main li a");
+  if (await hubs.count()) {
+    await hubs.first().click();
+    await expect(page.getByRole("heading", { name: "What this hub covers" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Primary documents" })).toBeVisible();
+  }
+
+  await page.goto("/places/");
+  await page.getByRole("link", { name: /^California/ }).click();
+  await expect(page).toHaveURL(/\/places\/california\/$/);
+  await expect(page.getByText(/not offices, facilities, or computing capacity/)).toBeVisible();
+
+  await page.goto("/companies/nvidia/");
+  await expect(page.getByRole("heading", { name: "Explore related information" })).toBeVisible();
+});
+
+test("comparison exports the visible selection with caveats", async ({ page }) => {
+  await page.goto("/matrix/?orgs=openai,ai2");
+  const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: /^JSON/ }).click()]);
+  const body = JSON.parse(await (await import("node:fs/promises")).readFile((await download.path())!, "utf8"));
+  expect(body.rows.map((r: { slug: string }) => r.slug).sort()).toEqual(["ai2", "openai"]);
+  expect(body.caveat).toMatch(/not capability/);
+});

@@ -1,0 +1,179 @@
+slug: local-ai
+title: Running AI on your own hardware
+summary: >-
+  How running AI models on your own computer or device works: local runtimes, on-device
+  frameworks, quantization, and what to check about an open-weight model before you run it.
+intro:
+  - text: >-
+      Running a model locally means its weights are stored on a computer or device you control
+      and the computation happens there. A runtime loads the model and makes it usable.
+      llama.cpp is a C/C++ inference project with a command-line tool and an OpenAI-compatible
+      server. Ollama runs open models and serves a REST API on the local machine. llamafile,
+      now developed by Mozilla.ai, packages a model and a llama.cpp-based runtime into a single
+      executable that runs without installation.
+    source_ids: [llamacpp-readme, ollama-readme, llamafile-readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Local does not automatically mean offline. Ollama also offers cloud models that run on
+      Ollama's servers after you sign in, and its documentation says to disable cloud features
+      if you want to use only local models. Its integrations can also connect a local setup to
+      outside services such as messaging apps. Check a tool's settings before assuming that
+      nothing leaves your machine.
+    source_ids: [ollama-cloud, ollama-readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Hardware shapes what is practical. llama.cpp supports backends including CUDA for NVIDIA
+      GPUs, HIP for AMD GPUs, Metal for Apple silicon, and Vulkan, and it can split a model
+      between CPU and GPU when the model is larger than the GPU's memory. MLX, from Apple
+      machine learning research, is an array framework for Apple silicon in which arrays live
+      in memory shared by the CPU and GPU. ExecuTorch, PyTorch's on-device stack, captures a
+      model with torch.export and runs it on phones, laptops, embedded systems, and
+      microcontrollers.
+    source_ids: [llamacpp-readme, mlx-readme, executorch-readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Quantization stores a model's weights at lower numerical precision to reduce memory use.
+      llama.cpp supports integer quantization from 1.5 to 8 bits, and AWQ, from MIT's Han Lab,
+      is a method for 3- and 4-bit weight-only quantization of large language models.
+      Published results can depend on the precision used. OpenAI's gpt-oss-20b card says the
+      model's mixture-of-experts weights were post-trained with MXFP4 quantization so that it
+      runs within 16 GB of memory, and that all of its evaluations used that same quantization.
+    source_ids: [llamacpp-readme, awq-readme, gptoss20b-card]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Running a model on your own hardware does not change its license, so read the terms for
+      the specific release before you rely on it. gpt-oss-20b, for example, is published under
+      Apache 2.0. Its card describes it for lower-latency, local, or specialized uses and gives
+      instructions for running it with Ollama or LM Studio on consumer hardware.
+    source_ids: [gptoss20b-card]
+    reviewed_at: 2026-10-01
+scope: >-
+  Covers running open-weight models on computers and devices you control: local runtimes and
+  desktop apps, on-device frameworks, quantization methods, and models whose publishers
+  document local use. It does not cover hosted APIs, hardware buying advice, or speed
+  comparisons. Featured records are examples chosen to cover the subject, not a ranking or a
+  complete list. Profiles of people in this area are on People Behind Local AI.
+reading_path:
+  - label: Hosted or local?
+    href: /learn/hosted-or-local/
+    note: Start here to decide whether running a model yourself fits what you need.
+  - label: Self-hosting
+    href: /glossary/#self-hosting
+    note: A short definition of running software and models on infrastructure you control.
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: Downloadable weights are not the same as permission. Read this before choosing a model.
+  - label: Quantization
+    href: /glossary/#quantization
+    note: What lower-precision weights are and why they change memory needs.
+  - label: Inference hardware
+    href: /learn/inference-hardware/
+    note: How memory, GPUs, and other accelerators affect which models are practical to run.
+  - label: How to read a model card
+    href: /learn/how-to-read-a-model-card/
+    note: Find the license, intended uses, and any documented hardware notes for one release.
+  - label: People Behind Local AI
+    href: /local/
+    note: Profiles of people whose public work helps others run models on their own hardware.
+directory_links:
+  - label: Runtimes in the catalog
+    href: /open/?kind=runtime
+    note: Software that loads and runs models, including local runtimes and model servers.
+  - label: Records that mention local use
+    href: /open/?q=local
+    note: A text search that matches records tagged for local inference.
+  - label: Open-weight model releases
+    href: /open/?kind=model&tier=open-weight
+    note: Releases whose weights the public can obtain. Check each license before use.
+organizations: [element-labs, mozilla-ai]
+artifacts: [llama-cpp, ollama, llamafile, mlx, executorch, awq, gpt-oss-20b]
+people: [georgi-gerganov, awni-hannun, tim-dettmers]
+primary_documents:
+  - source_id: llamacpp-readme
+    note: >-
+      The project's own list of hardware backends and quantization formats. Use it to check
+      whether your machine is supported before downloading a model.
+  - source_id: ollama-cloud
+    note: >-
+      Explains which Ollama models run on Ollama's servers instead of your machine, and how to
+      keep to local models only.
+  - source_id: llamafile-readme
+    note: >-
+      Describes the single-file packaging approach and its basis in llama.cpp and Cosmopolitan
+      Libc.
+  - source_id: mlx-readme
+    note: >-
+      Apple's description of MLX and its unified memory model, which matters for how models
+      use memory on Apple silicon.
+  - source_id: executorch-readme
+    note: >-
+      Shows the export-then-run workflow for phones and embedded devices, and warns that
+      accuracy, memory use, and performance must be validated on the target device.
+  - source_id: awq-readme
+    note: >-
+      The authors' own description of the AWQ weight-quantization method, with the code and
+      4-bit kernels that implement it.
+  - source_id: gptoss20b-card
+    note: >-
+      A model card that ties a memory figure to a stated quantization and names local runtimes,
+      a useful example of what to look for in a card.
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: llamacpp-readme
+    title: llama.cpp README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md
+    publisher: ggml-org (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: ollama-readme
+    title: Ollama README
+    url: https://raw.githubusercontent.com/ollama/ollama/main/README.md
+    publisher: Ollama (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: ollama-cloud
+    title: Cloud (Ollama documentation)
+    url: https://docs.ollama.com/cloud
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: llamafile-readme
+    title: llamafile README
+    url: https://raw.githubusercontent.com/mozilla-ai/llamafile/main/README.md
+    publisher: Mozilla.ai (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mlx-readme
+    title: MLX README
+    url: https://raw.githubusercontent.com/ml-explore/mlx/main/README.md
+    publisher: Apple, ml-explore (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: executorch-readme
+    title: ExecuTorch README
+    url: https://raw.githubusercontent.com/pytorch/executorch/main/README.md
+    publisher: PyTorch (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: awq-readme
+    title: "AWQ: Activation-aware Weight Quantization (README)"
+    url: https://raw.githubusercontent.com/mit-han-lab/llm-awq/main/README.md
+    publisher: MIT Han Lab (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: gptoss20b-card
+    title: gpt-oss-20b model card
+    url: https://huggingface.co/openai/gpt-oss-20b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01

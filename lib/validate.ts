@@ -9,12 +9,14 @@ import {
   Artifact,
   ChangelogEntry,
   FeaturedSelection,
+  Hub,
   NewsItem,
   Organization,
   Person,
   type Artifact as ArtifactT,
   type ChangelogEntry as ChangelogEntryT,
   type FeaturedSelection as FeaturedSelectionT,
+  type Hub as HubT,
   type NewsItem as NewsItemT,
   type Organization as OrganizationT,
   type Person as PersonT,
@@ -34,6 +36,7 @@ export interface RawContent {
   featured: RawDocument | null;
   people?: RawDocument[];
   news?: RawDocument[];
+  hubs?: RawDocument[];
 }
 
 export interface ValidationIssue {
@@ -50,6 +53,7 @@ export interface ValidatedContent {
   featured: FeaturedSelectionT | null;
   people: PersonT[];
   news: NewsItemT[];
+  hubs: HubT[];
   issues: ValidationIssue[];
 }
 
@@ -464,6 +468,41 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     }
   }
 
+  /* ---- Hubs ---- */
+  const hubDocs = parseDocs(raw.hubs ?? [], Hub, issues);
+  const hubSlugs = new Set<string>();
+  const publishedPeople = new Set(peopleDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug));
+  for (const { file, value: hub } of hubDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    if (basename(file) !== hub.slug) push("error", `File name must match slug "${hub.slug}"`, "slug");
+    if (hubSlugs.has(hub.slug)) push("error", `Duplicate hub slug "${hub.slug}"`, "slug");
+    hubSlugs.add(hub.slug);
+    const ids = new Set(hub.sources.map((s) => s.id));
+    if (ids.size !== hub.sources.length) push("error", "Duplicate source id", "sources");
+    const cited = new Set<string>();
+    hub.intro.forEach((c, i) => c.source_ids.forEach((id) => { cited.add(id); if (!ids.has(id)) push("error", `Unknown source id "${id}"`, `intro[${i}].source_ids`); }));
+    hub.primary_documents.forEach((d, i) => { cited.add(d.source_id); if (!ids.has(d.source_id)) push("error", `Unknown source id "${d.source_id}"`, `primary_documents[${i}].source_id`); });
+    hub.sources.forEach((s, i) => {
+      if (!cited.has(s.id)) push("warning", `Source "${s.id}" is not cited`, `sources[${i}]`);
+      if (s.accessed_at > today) push("error", "accessed_at is in the future", `sources[${i}].accessed_at`);
+    });
+    if (hub.updated_at > today || hub.last_reviewed > today) push("error", "Hub dates are in the future", "updated_at");
+    const published = hub.publication_status === "published";
+    const check = (list: string[], all: Map<string, unknown> | Set<string>, pub: Set<string>, kind: string, path: string) =>
+      list.forEach((slug, i) => {
+        if (!all.has(slug)) push("error", `Unknown ${kind} "${slug}"`, `${path}[${i}]`);
+        else if (published && !pub.has(slug)) push("error", `${kind} "${slug}" is not published`, `${path}[${i}]`);
+      });
+    check(hub.organizations, orgBySlug, publishedOrgs, "organization", "organizations");
+    check(hub.artifacts, artifactBySlug, publishedArtifacts, "artifact", "artifacts");
+    check(hub.people, new Set(peopleDocs.map((d) => d.value.slug)), publishedPeople, "person", "people");
+    if (hub.organizations.length + hub.artifacts.length === 0) push("error", "A hub must feature at least one catalog record", "organizations");
+    for (const [path, text] of [["title", hub.title], ["summary", hub.summary], ["scope", hub.scope], ...hub.intro.map((c, i) => [`intro[${i}].text`, c.text] as const)] as const) {
+      if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(published ? "error" : "warning", `Placeholder text in ${path}`, path);
+      if (NEWS_FORBIDDEN.test(text)) push(published ? "error" : "warning", `Hubs may not include funding, valuations, staffing, user counts, or superlatives: "${text.slice(0, 60)}"`, path);
+    }
+  }
+
   const strip = <T extends { __file?: string }>(r: T) => {
     const { __file: _omit, ...rest } = r;
     void _omit;
@@ -477,6 +516,7 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     featured: featuredDoc?.value ?? null,
     people: peopleDocs.map((d) => d.value),
     news: newsDocs.map((d) => d.value).sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date)),
+    hubs: hubDocs.map((d) => d.value).sort((a, b) => a.title.localeCompare(b.title)),
     issues,
   };
 }

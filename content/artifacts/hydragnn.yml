@@ -1,0 +1,149 @@
+slug: hydragnn
+name: HydraGNN
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Oak Ridge National Laboratory
+    organization_slug: oak-ridge-national-laboratory
+    source_ids: [hydragnn-repo, hydragnn-license]
+organization_slugs: [oak-ridge-national-laboratory]
+links:
+  - label: Repository (ORNL/HydraGNN)
+    url: https://github.com/ORNL/HydraGNN
+    kind: repository
+  - label: User manual
+    url: https://github.com/ORNL/HydraGNN/blob/main/USER_MANUAL.md
+    kind: documentation
+  - label: LICENSE (BSD 3-Clause)
+    url: https://github.com/ORNL/HydraGNN/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/ORNL/HydraGNN/releases
+    kind: release-notes
+summary:
+  text: >-
+    HydraGNN is a PyTorch implementation of multi-headed graph neural networks from Oak Ridge
+    National Laboratory, with separate output heads for graph-level and node-level properties.
+    Its README lists distributed training with DDP, FSDP, and DeepSpeed; equivariant layers such
+    as EGNN, PaiNN, MACE, and DimeNet; heterogeneous graph learning; global attention through
+    GPS; and training of machine-learned interatomic potentials with energy-conserving forces.
+  source_ids: [hydragnn-repo]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Training graph neural network surrogate models on atomistic and materials data, such as
+    density functional theory outputs, including distributed training at supercomputing scale.
+    The README
+    also documents constraint-aware training for optimal power flow problems and gives example
+    scripts for each workflow.
+  source_ids: [hydragnn-repo]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    HydraGNN is published in Oak Ridge National Laboratory's ORNL GitHub organization, and its
+    BSD 3-Clause license names Oak Ridge National Laboratory as copyright holder. ORNL is a U.S.
+    Department of Energy national laboratory in Oak Ridge, Tennessee, managed by UT-Battelle LLC
+    for DOE.
+  source_ids: [hydragnn-repo, hydragnn-license, ornl-overview]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub and installed from source with pip after installing the
+    listed dependencies.
+  source_ids: [hydragnn-repo]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: BSD 3-Clause License
+    spdx: BSD-3-Clause
+    url: https://github.com/ORNL/HydraGNN/blob/main/LICENSE
+    applies_to: code
+    source_ids: [hydragnn-license]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Public repository in ORNL's GitHub organization under the BSD 3-Clause License.
+    source_ids: [hydragnn-repo, hydragnn-license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      The README covers capabilities, dependencies, installation, a quick start, and
+      configuration settings, and links to a user manual, feature guides, and a project wiki.
+    source_ids: [hydragnn-repo]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Dependencies are installed with an included script or modular pip requirement files
+      (core, PyTorch, PyTorch Geometric, optional extras); HydraGNN itself is installed with
+      pip from the cloned repository.
+    source_ids: [hydragnn-repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: partial
+    note: >-
+      The README states that HydraGNN is tested on Python 3.11 through 3.14, accepts PyTorch
+      2.13 or 2.14, and ships installation assets for HPC facilities. No operating-system or
+      accelerator support matrix was found.
+    source_ids: [hydragnn-repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned GitHub releases include v4.0 (August 15, 2025) and v5.0 (April 14, 2026).
+    source_ids: [hydragnn-releases]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README's baseline dependency script uses NumPy 2.4.6, PyTorch 2.13.0, torchvision
+      0.28.0, and PyTorch Geometric 2.8.0. The pyg-lib dependency is built from source, which
+      requires a working C++ compiler.
+    source_ids: [hydragnn-repo]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [graph-neural-network, training, distributed-computing, science]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: hydragnn-repo
+    title: ORNL/HydraGNN (GitHub repository and README)
+    url: https://github.com/ORNL/HydraGNN
+    publisher: Oak Ridge National Laboratory
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hydragnn-license
+    title: HydraGNN LICENSE (BSD 3-Clause)
+    url: https://raw.githubusercontent.com/ORNL/HydraGNN/main/LICENSE
+    publisher: Oak Ridge National Laboratory
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hydragnn-releases
+    title: Releases · ORNL/HydraGNN
+    url: https://github.com/ORNL/HydraGNN/releases
+    publisher: Oak Ridge National Laboratory
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ornl-overview
+    title: About Us | ORNL
+    url: https://www.ornl.gov/overview
+    publisher: Oak Ridge National Laboratory
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

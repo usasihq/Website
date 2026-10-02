@@ -8,10 +8,13 @@ import { BrandMark } from "./BrandMark";
 
 /** Reference links: in the slim top bar from 640px, and in the mobile menu. */
 const REFERENCE = [
-  { href: "/start/", label: "Start here" },
-  { href: "/glossary/", label: "Glossary" },
-  { href: "/reuse/", label: "Data & reuse" },
-  { href: "/contribute/#corrections", label: "Corrections" },
+  { href: "/start/", label: "Start here", bar: true },
+  { href: "/learn/", label: "Learn", bar: true },
+  { href: "/hubs/", label: "Hubs", bar: false },
+  { href: "/places/", label: "Places", bar: false },
+  { href: "/glossary/", label: "Glossary", bar: true },
+  { href: "/reuse/", label: "Data & reuse", bar: false },
+  { href: "/contribute/#corrections", label: "Corrections", bar: true },
 ];
 
 const NAV = [
@@ -65,7 +68,7 @@ export function SiteHeader({ siteName, shortName, disclaimer }: { siteName: stri
           </p>
           <nav aria-label="Reference" className="hidden shrink-0 sm:block">
             <ul className="flex items-center gap-4">
-              {REFERENCE.filter((r) => r.href !== "/reuse/").map((item) => (
+              {REFERENCE.filter((r) => r.bar).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="inline-flex h-7 items-center text-muted hover:text-text">
                     {item.label}

@@ -1,0 +1,188 @@
+slug: lbann
+name: LBANN (Livermore Big Artificial Neural Network Toolkit)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Lawrence Livermore National Laboratory (LBANN project)
+    organization_slug: lawrence-livermore-national-laboratory
+    source_ids: [lbann-license, lbann-repo, lbann-docs]
+organization_slugs: [lawrence-livermore-national-laboratory]
+links:
+  - label: Repository (LBANN/lbann)
+    url: https://github.com/LBANN/lbann
+    kind: repository
+  - label: Documentation
+    url: https://lbann.readthedocs.io/en/latest/index.html
+    kind: documentation
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/LBANN/lbann/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/LBANN/lbann/releases
+    kind: release-notes
+summary:
+  text: >-
+    LBANN is an open-source deep learning training framework from Lawrence Livermore National
+    Laboratory, built for high-performance computing systems. Its documentation describes
+    combining model parallelism through domain decomposition with data parallelism and ensemble
+    training, and support for supervised, self-supervised, unsupervised, and adversarial (GAN)
+    training. The repository's main branch now holds LBANNv2, a pre-alpha Python package
+    described as LBANN's core integration with PyTorch; the earlier toolkit remains on the v1.x
+    branches.
+  source_ids: [lbann-docs, lbann-readme-v1, lbann-readme-main, lbann-pyproject]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Training large neural networks on GPU-accelerated HPC clusters with MPI, including
+    model-parallel training to improve strong scaling and ensemble or multi-model training. The
+    documentation includes build guides for users at known HPC centers and for Livermore
+    Computing systems.
+  source_ids: [lbann-docs, lbann-readme-v1]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    LBANN's license file assigns copyright to Lawrence Livermore National Security, LLC and
+    other LBANN project developers, states that the code was produced at Lawrence Livermore
+    National Laboratory, and carries the LLNL code identifier LLNL-CODE-697807. LLNS operates
+    LLNL, a U.S. Department of Energy national laboratory in Livermore, California, for DOE's
+    National Nuclear Security Administration. The repository now sits in the LBANN GitHub
+    organization; the license names both that organization and the LLNL organization as project
+    locations.
+  source_ids: [lbann-license, lbann-repo, llnl-mgmt]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub. The v1.x toolkit is built with Spack; LBANNv2 on the main
+    branch is installed from source with pip after installing PyTorch.
+  source_ids: [lbann-repo, lbann-readme-v1, lbann-readme-main]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/LBANN/lbann/blob/main/LICENSE
+    applies_to: code
+    source_ids: [lbann-license, lbann-readme-main]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under the Apache License 2.0.
+    source_ids: [lbann-repo, lbann-license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      Read the Docs pages cover building and installing, running LBANN, examples, and a list
+      of publications. These pages describe the v1.x toolkit; the main-branch README for
+      LBANNv2 gives only brief build steps.
+    source_ids: [lbann-docs, lbann-readme-main]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The v1.x README names Spack ("spack install lbann") as the preferred install method. The
+      LBANNv2 README says to install PyTorch first and then install the package with pip from
+      a clone.
+    source_ids: [lbann-readme-v1, lbann-readme-main]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: partial
+    note: >-
+      The v1.x README says LBANN is optimized for one GPU per MPI rank, and the documentation
+      has build guides for known HPC centers and Livermore Computing systems. The LBANNv2
+      package metadata lists Python 3.9 through 3.13. No full hardware or operating-system
+      support matrix was found.
+    source_ids: [lbann-readme-v1, lbann-docs, lbann-pyproject]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned GitHub releases run through v0.104, published November 8, 2023. The LBANNv2
+      package on the main branch is versioned 0.0.1 and marked "Pre-Alpha" in its metadata.
+    source_ids: [lbann-releases, lbann-pyproject]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The v1.x README documents running LBANN through an MPI launcher with model, optimizer,
+      and data-reader configuration files in prototext format, and recommends assigning one GPU
+      per MPI rank.
+    source_ids: [lbann-readme-v1]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [training, distributed-computing, hpc]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: lbann-repo
+    title: LBANN/lbann (GitHub repository)
+    url: https://github.com/LBANN/lbann
+    publisher: LBANN project (Lawrence Livermore National Laboratory)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lbann-readme-main
+    title: LBANN README (main branch, LBANNv2)
+    url: https://raw.githubusercontent.com/LBANN/lbann/main/README.md
+    publisher: LBANN project (Lawrence Livermore National Laboratory)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lbann-readme-v1
+    title: LBANN README (v1.x-master branch)
+    url: https://raw.githubusercontent.com/LBANN/lbann/v1.x-master/README.md
+    publisher: LBANN project (Lawrence Livermore National Laboratory)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lbann-pyproject
+    title: LBANN pyproject.toml (main branch, package lbannv2)
+    url: https://raw.githubusercontent.com/LBANN/lbann/main/pyproject.toml
+    publisher: LBANN project (Lawrence Livermore National Laboratory)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lbann-license
+    title: LBANN LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/LBANN/lbann/main/LICENSE
+    publisher: Lawrence Livermore National Security, LLC
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lbann-docs
+    title: "LBANN: Livermore Big Artificial Neural Network Toolkit — LBANN documentation"
+    url: https://lbann.readthedocs.io/en/latest/index.html
+    publisher: LBANN project (Lawrence Livermore National Laboratory)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: lbann-releases
+    title: Releases · LBANN/lbann
+    url: https://github.com/LBANN/lbann/releases
+    publisher: LBANN project (Lawrence Livermore National Laboratory)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llnl-mgmt
+    title: Management and Sponsors | Lawrence Livermore National Laboratory
+    url: https://www.llnl.gov/purpose/management-sponsors
+    publisher: Lawrence Livermore National Laboratory
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

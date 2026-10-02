@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { RecordContext } from "@/components/RecordContext";
+import { artifactRelated, artifactUnknowns } from "@/lib/record-context";
 import { notFound } from "next/navigation";
 import { GitBranch, Info } from "lucide-react";
 import { EntryTypeBadge, StatusBadge, TierBadge } from "@/components/Badges";
@@ -417,6 +419,8 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
               </ol>
             </Section>
           ) : null}
+
+          <RecordContext unknowns={artifactUnknowns(a)} related={artifactRelated(catalog, a)} />
 
           <Section id="eligibility" title="U.S. eligibility" description="Project eligibility rests on documented governing or maintaining entities, not on contributors.">
             <EligibilityBlock eligibility={a.eligibility} sources={s} />

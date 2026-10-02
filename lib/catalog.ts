@@ -16,6 +16,7 @@ import {
   type Artifact,
   type ChangelogEntry,
   type FeaturedSelection,
+  type Hub,
   type NewsItem,
   type Organization,
   type Person,
@@ -62,6 +63,7 @@ export class Catalog {
   readonly featured: FeaturedSelection | null;
   readonly people: Person[];
   readonly news: NewsItem[];
+  readonly hubs: Hub[];
   readonly buildAt: string;
 
   private orgMap: Map<string, Organization>;
@@ -69,7 +71,7 @@ export class Catalog {
 
   constructor(
     content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> &
-      Partial<Pick<ValidatedContent, "people" | "news">>,
+      Partial<Pick<ValidatedContent, "people" | "news" | "hubs">>,
     buildAt = new Date().toISOString(),
   ) {
     this.organizations = content.organizations.filter(isActive).sort(byName);
@@ -82,6 +84,7 @@ export class Catalog {
     this.news = (content.news ?? [])
       .filter((n) => n.publication_status === "published")
       .sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date) || a.title.localeCompare(b.title));
+    this.hubs = (content.hubs ?? []).filter((h) => h.publication_status === "published");
     this.buildAt = buildAt;
     this.orgMap = new Map([...this.organizations, ...this.archivedOrganizations].map((o) => [o.slug, o]));
     this.artifactMap = new Map([...this.artifacts, ...this.archivedArtifacts].map((a) => [a.slug, a]));
@@ -195,6 +198,20 @@ export class Catalog {
 
   newsForArtifact(slug: string): NewsItem[] {
     return this.news.filter((n) => n.related_artifacts.includes(slug));
+  }
+
+  /* ---- hubs ---- */
+
+  hub(slug: string): Hub | undefined {
+    return this.hubs.find((h) => h.slug === slug);
+  }
+
+  hubsForOrganization(slug: string): Hub[] {
+    return this.hubs.filter((h) => h.organizations.includes(slug));
+  }
+
+  hubsForArtifact(slug: string): Hub[] {
+    return this.hubs.filter((h) => h.artifacts.includes(slug));
   }
 
   /* ---- counts ---- */

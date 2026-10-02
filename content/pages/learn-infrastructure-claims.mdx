@@ -1,0 +1,58 @@
+A data-center announcement usually tells you that a company plans to build, lease, or use a facility. It rarely tells you how much computing is running there today. To read one, separate four things: the stage (announced, under construction, or operating); the quantity (power, a rate measured in watts, or energy, an amount measured in watt-hours); the boundary (one building, a campus, the computing equipment alone, or the whole site); and the roles (who owns the site, who operates it, and who uses it). Then note the date the statement applies to. A company's headquarters answers none of these questions. The examples below come from a securities filing and a facility page.
+
+<h2 id="stages">Announced, under construction, operating</h2>
+
+- **Announced:** a stated plan or agreement. It may name a site, a partner, and a target year, and it can still change or be cancelled.
+- **Under construction:** work has started on the site. Electrical service and equipment may arrive in phases over several years.
+- **Operating:** the facility is running workloads. Even then, only part of a site's planned capacity may be in service.
+
+Wording usually signals the stage. CoreWeave's quarterly report for the period ended June 30, 2026 describes a lease "for various buildings located at a single site intended to be used as a data center," where electrical power "remained undelivered at the site and was expected to be delivered in phases in 2026 and 2028." That describes a contract and expected deliveries, not operating capacity. The filing states the undelivered amount in megawatts; USASI does not republish power-capacity figures ([methodology](/methodology/#sources)).
+
+By contrast, a Meta data-center page dated September 3, 2026 says that its Kuna, Idaho data center "is online and operational," and that the project broke ground in 2022. That establishes operating status as of the post. It does not say how much of the site is in use.
+
+<h2 id="power-energy">Power and energy are different quantities</h2>
+
+The U.S. Energy Information Administration explains that watts "measure power at a specific moment," while watthours measure "how much electricity is used over a period of time." One megawatt (MW) is 1,000 kilowatts and one gigawatt (GW) is 1,000 MW; utilities and power plants generally measure electricity in kilowatthours (kWh).
+
+So a figure in MW or GW is a rate: how much power a site can draw, a contract can deliver, or a power plant can supply at once. It often describes a maximum or contracted amount rather than what is being drawn at a given moment. A figure in MWh or terawatt-hours (TWh) is an amount of energy consumed or generated over a period, usually a year. Converting one into the other requires knowing how long, and at what level, the equipment runs.
+
+Announcements sometimes blur the two. The same Meta page says: "Three Meta-supported projects are adding 645 MW of new renewable energy in Ada County" (Meta, September 3, 2026). The unit, MW, is a measure of power, here the capacity of generating projects. The sentence does not establish the data center's own power draw, how much energy it uses, or whether those projects are already generating. The page itself says Meta will begin reporting the facility's energy consumption in its Annual Sustainability Report as operations begin.
+
+<h2 id="boundaries">Where the facility ends</h2>
+
+Before comparing any two figures, check that they draw the same boundary:
+
+- **Building, campus, or program:** one announcement may cover several buildings delivered in phases, or several sites.
+- **Computing equipment or whole facility:** the Department of Energy's data-center design guide (revised July 2024) defines power usage effectiveness (PUE) as the ratio of a facility's total annual energy to the annual energy drawn by its IT equipment. Cooling, lighting, and other non-IT loads fall between those two boundaries, so a figure for IT equipment and a figure for the whole facility measure different things.
+- **On site or elsewhere:** power plants and renewable projects that supply or offset a facility's use are separate facilities, often in a different place and owned by someone else.
+
+<h2 id="roles">Owner, operator, and customer</h2>
+
+One site can involve a landlord or developer, the company that runs the building, a cloud provider that installs servers there, and that provider's customers. CoreWeave's filing says the company leases or licenses space in third-party data centers in the United States, Canada, Europe, and the United Kingdom, and that "Given that we lease or license our existing data center space, we do not control the operation of these third-party facilities." It also describes an agreement under which a data center service provider will "design, purchase, build, and manage" a data center for the company.
+
+Meta's page, by contrast, refers to communities "where we own and operate data centers." Neither statement carries over to another company or site. When a claim says a company has capacity "at" a location, check whether it owns, operates, leases, or buys services there.
+
+<h2 id="dates">Dates and tense</h2>
+
+Every infrastructure statement has an as-of date. A quarterly report speaks as of the end of its period (June 30, 2026 for the report above), though it was filed later (August 12, 2026). Words such as "expected," "planned," and "intended" are forecasts. The same filing mentions delays, announced in November 2025, in the delivery of certain data centers by a third-party provider. Note the as-of date, the publication date, and the tense, and recheck before repeating a timeline.
+
+<h2 id="headquarters">Why a headquarters map cannot answer these questions</h2>
+
+The catalog records each organization's headquarters because eligibility depends on it ([methodology](/methodology/#eligibility)). The [Places](/places/) page groups organizations by headquarters state and says plainly that it is not a map of offices, data centers, or computing capacity. [CoreWeave](/companies/coreweave/) gives its principal executive offices as Livingston, New Jersey, while its filing describes leased or licensed data centers in four countries or regions. The [Meta](/companies/meta/) record gives its headquarters as Menlo Park, California; the facility above is in Idaho. A headquarters tells you where a company is based, not where its computing runs or how much power it uses.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse organizations with the roles [compute infrastructure](/companies/?role=compute-infrastructure) and [cloud provider](/companies/?role=cloud-provider), and read each record's sources.
+- When you read a claim, write down five things: stage, quantity and unit, boundary, roles, and as-of date. If one is missing, treat it as unknown ([methodology](/methodology/#uncertainty)).
+- See how the catalog keeps release, review, and source dates apart ([methodology](/methodology/#dates), [reviewed date](/glossary/#reviewed-date)).
+- For parent companies and their units, see [subsidiary](/glossary/#subsidiary) in the glossary.
+- To see how the parts of the ecosystem relate, read [How the American AI ecosystem fits together](/learn/how-the-ecosystem-fits-together/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- U.S. Energy Information Administration: [Electricity explained: Measuring electricity](https://www.eia.gov/energyexplained/electricity/measuring-electricity.php)
+- U.S. Department of Energy, Federal Energy Management Program: [Best Practices Guide for Energy-Efficient Data Center Design (revised July 2024)](https://www.energy.gov/sites/default/files/2024-07/best-practice-guide-data-center-design_0.pdf), section 8.1
+- CoreWeave, Inc.: [Form 10-Q for the quarterly period ended June 30, 2026](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm) (filed August 12, 2026), and its [EDGAR filing list](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001769628&type=10-Q&dateb=&owner=include&count=40)
+- Meta: [Kuna, we are online!](https://datacenters.atmeta.com/2026/09/kuna-we-are-online/) (September 3, 2026)

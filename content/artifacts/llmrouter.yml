@@ -1,0 +1,158 @@
+slug: llmrouter
+name: LLMRouter
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: U Lab, University of Illinois Urbana-Champaign
+    organization_slug: university-of-illinois-urbana-champaign
+    source_ids: [llmrouter-repo, llmrouter-license, ulab-github]
+organization_slugs: [university-of-illinois-urbana-champaign]
+links:
+  - label: Repository (ulab-uiuc/LLMRouter)
+    url: https://github.com/ulab-uiuc/LLMRouter
+    kind: repository
+  - label: Project page and documentation
+    url: https://ulab-uiuc.github.io/LLMRouter/
+    kind: documentation
+  - label: "Paper: LLMRouter (arXiv 2608.06867)"
+    url: https://arxiv.org/abs/2608.06867
+    kind: paper
+  - label: LICENSE (MIT)
+    url: https://github.com/ulab-uiuc/LLMRouter/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    LLMRouter is an open-source Python library for routing each query to a suitable large
+    language model, balancing response quality against inference cost. It implements more than
+    16 routing methods across single-round, multi-round, multimodal, agentic, and personalized
+    routers, and adds a command-line interface, a Gradio chat interface, and a pipeline for
+    generating routing training data. The accompanying paper introduces xRouteBench, a routing
+    benchmark.
+  source_ids: [llmrouter-repo, llmrouter-paper]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Training, evaluating, and deploying LLM routers that choose among candidate models from one
+    or more API providers, and comparing routing methods under a shared quality and cost
+    objective. The README also describes an OpenAI-compatible router server.
+  source_ids: [llmrouter-repo, llmrouter-docs]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    LLMRouter is maintained in the GitHub organization of U Lab at the University of Illinois
+    Urbana-Champaign, and its MIT License names U Lab @UIUC as copyright holder. The project
+    page lists authors from UIUC together with collaborators from the University of Maryland,
+    Nanyang Technological University, Purdue University, and the University of Illinois Chicago;
+    eligibility rests on the maintaining lab, not on authorship.
+  source_ids: [llmrouter-repo, llmrouter-license, ulab-github, llmrouter-docs]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub, and the package is installable from PyPI as llmrouter-lib.
+    Running inference, chat, or data generation requires API keys for the LLM services being
+    routed.
+  source_ids: [llmrouter-repo]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/ulab-uiuc/LLMRouter/blob/main/LICENSE
+    applies_to: code
+    source_ids: [llmrouter-license]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under the MIT License.
+    source_ids: [llmrouter-repo, llmrouter-license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      The README covers installation, API key setup, and command-line usage; a project page
+      links the paper, tutorials, a blog, and a leaderboard.
+    source_ids: [llmrouter-repo, llmrouter-docs]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      Install from source in a Python 3.10 environment with "pip install -e ." (with optional
+      extras), or from PyPI with "pip install llmrouter-lib".
+    source_ids: [llmrouter-repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: partial
+    note: >-
+      The README's setup uses Python 3.10 and says the optional Router-R1 extra requires a GPU
+      and is tested with vLLM 0.6.3 and PyTorch 2.4.0. No operating-system support list was
+      found.
+    source_ids: [llmrouter-repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: partial
+    note: >-
+      The GitHub repository has no release entries. The README's news items mention PyPI
+      package versions llmrouter-lib v0.2.0 (January 2026) and v0.3.1 (February 2026).
+    source_ids: [llmrouter-repo]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README states that LLMRouter needs API keys, set through an API_KEYS environment
+      variable, to call LLM endpoints for inference, chat, and data generation; keys can be
+      grouped by service provider.
+    source_ids: [llmrouter-repo]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [routing, inference, evaluation, language-model]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: llmrouter-repo
+    title: ulab-uiuc/LLMRouter (GitHub repository and README)
+    url: https://github.com/ulab-uiuc/LLMRouter
+    publisher: U Lab, University of Illinois Urbana-Champaign
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmrouter-license
+    title: LLMRouter LICENSE (MIT License)
+    url: https://raw.githubusercontent.com/ulab-uiuc/LLMRouter/main/LICENSE
+    publisher: U Lab @UIUC
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmrouter-docs
+    title: LLMRouter project page
+    url: https://ulab-uiuc.github.io/LLMRouter/
+    publisher: U Lab, University of Illinois Urbana-Champaign
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llmrouter-paper
+    title: "LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers (arXiv 2608.06867)"
+    url: https://arxiv.org/abs/2608.06867
+    publisher: arXiv (U Lab and co-authors)
+    kind: paper
+    published_at: 2026-08-07
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ulab-github
+    title: U Lab @UIUC (GitHub organization)
+    url: https://github.com/ulab-uiuc
+    publisher: U Lab, University of Illinois Urbana-Champaign
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

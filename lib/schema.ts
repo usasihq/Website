@@ -531,3 +531,46 @@ export const NewsItem = z
   })
   .strict();
 export type NewsItem = z.infer<typeof NewsItem>;
+
+/* ------------------------------------------------------------------ */
+/* Reference hubs                                                      */
+/* ------------------------------------------------------------------ */
+
+/** An internal site link used by hubs (reading paths and directory views). */
+export const HubLink = z
+  .object({
+    label: z.string().trim().min(2).max(90),
+    href: z.string().regex(/^\/[A-Za-z0-9\-/#?=&.,_]*$/, "Use an internal site path beginning with /"),
+    note: z.string().trim().min(5).max(240).nullable().default(null),
+  })
+  .strict();
+export type HubLink = z.infer<typeof HubLink>;
+
+/**
+ * A reference hub: an original, sourced introduction to a subject, with a
+ * scope note, a reading path, directory views, featured records, and annotated
+ * primary documents. A hub is an authored explanation, not a bare filter.
+ */
+export const Hub = z
+  .object({
+    slug: Slug,
+    title: z.string().trim().min(5).max(80),
+    summary: z.string().trim().min(20).max(240),
+    intro: z.array(Claim).min(1).max(6),
+    scope: z.string().trim().min(20).max(600),
+    reading_path: z.array(HubLink).min(2).max(10),
+    directory_links: z.array(HubLink).min(1).max(6),
+    organizations: z.array(Slug).default([]),
+    artifacts: z.array(Slug).default([]),
+    people: z.array(Slug).default([]),
+    primary_documents: z
+      .array(z.object({ source_id: SourceId, note: z.string().trim().min(10).max(320) }).strict())
+      .min(1)
+      .max(12),
+    publication_status: PublicationStatus,
+    updated_at: IsoDate,
+    last_reviewed: IsoDate,
+    sources: z.array(Source).min(1),
+  })
+  .strict();
+export type Hub = z.infer<typeof Hub>;

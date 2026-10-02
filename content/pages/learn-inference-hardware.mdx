@@ -1,0 +1,66 @@
+A model can run on your hardware when its weights, plus the working memory it needs while answering, fit in memory the runtime can use, and the runtime supports both your hardware and the model. Weight size depends on the parameter count and the precision used to store each parameter; quantization lowers the precision to save memory. Working memory grows with the context length and with the number of requests handled at once. Fitting is not the same as running well: a model split between GPU and system memory runs slower. Treat any single memory figure as a starting point, then test. This page is general information.
+
+<h2 id="memory">Which memory counts</h2>
+
+A dedicated GPU has its own memory, called VRAM, separate from the computer's system RAM. When a model does not fit in VRAM, runtimes such as Ollama can split it between the two ([FAQ](https://docs.ollama.com/faq)). Apple silicon works differently: the CPU and GPU share one pool. Apple's [MLX](/open/mlx/) framework is built around this unified memory model; its [README](https://github.com/ml-explore/mlx/blob/main/README.md) says arrays live in shared memory and can be used on either device without transferring data. That is why hardware notes sometimes say "VRAM or unified memory"; in a shared pool, other running software competes for the same memory.
+
+<h2 id="size-and-precision">Model size, precision, and quantization</h2>
+
+The weights take up roughly the number of parameters multiplied by the bits stored for each one. [Granite 4.2 8B](/open/granite-4-2-8b/), for example, is published in bfloat16, a 16-bit format, according to its [model card](https://huggingface.co/ibm-granite/granite-4.2-8b#model-summary). [Quantization](/glossary/#quantization) stores weights in fewer bits. llama.cpp's [README](https://github.com/ggml-org/llama.cpp/blob/master/README.md) lists integer quantization from 1.5-bit to 8-bit for faster inference and lower memory use, and vLLM's [conserving memory](https://docs.vllm.ai/en/latest/configuration/conserving_memory/) page notes the cost: lower precision.
+
+For [gpt-oss-20b](/open/gpt-oss-20b/), OpenAI's [model card](https://arxiv.org/abs/2508.10925) says the mixture-of-experts weights, more than 90% of all parameters, were quantized to the MXFP4 format at 4.25 bits per parameter, and lists a 12.8 GiB checkpoint for 20.9B total parameters. Only about 3.6B parameters are active for each token, but the checkpoint holds all of them.
+
+<h2 id="context-and-workload">Context length and workload</h2>
+
+A runtime keeps a cache for the text in the current [context window](/glossary/#context-window), and that cache grows as the context gets longer. Ollama's [context length page](https://docs.ollama.com/context-length) says a larger context increases the memory required, and that its default context depends on available VRAM: 4k tokens below 24 GiB, 32k from 24 to 48 GiB, and 256k at 48 GiB or more. A model's documented maximum is not necessarily the default. Handling several requests at once multiplies the need; Ollama's FAQ says required memory scales with the number of parallel requests times the context length. Runtimes offer ways to trade quality or capacity for memory, such as Ollama's quantized cache types and vLLM's limits on context length and batch size.
+
+<h2 id="runtime-support">Runtime support</h2>
+
+Hardware and operating-system requirements differ by runtime:
+
+- Ollama's [hardware support page](https://docs.ollama.com/gpu) lists NVIDIA GPUs with compute capability 5.0 or higher and driver 550 or newer, specific AMD GPUs through ROCm v7, Apple GPUs through Metal, and more GPUs through Vulkan.
+- vLLM's [GPU installation page](https://docs.vllm.ai/en/latest/getting_started/installation/gpu/) requires Linux and, for NVIDIA, compute capability 7.5 or higher; it does not support Windows natively.
+- llama.cpp's README lists CPU optimizations for Apple silicon, x86, and RISC-V, and backends including Metal, CUDA, HIP, Vulkan, and SYCL.
+
+A GPU that one runtime supports may not work with another. Models add their own requirements: the [gpt-oss-20b card](https://huggingface.co/openai/gpt-oss-20b) says the model works correctly only with OpenAI's harmony response format, and the Granite 4.2 8B card asks for vLLM v0.20 or later for its reasoning parser.
+
+<h2 id="one-number">Why one memory number is not enough</h2>
+
+A memory figure answers "will it load?" under particular assumptions, not "will it respond fast enough for my task?"
+
+- **Placement.** OpenAI's [guide to running gpt-oss with Ollama](https://developers.openai.com/cookbook/articles/gpt-oss/run-locally-ollama) says you can offload to the CPU when short on VRAM but should expect slower responses. Ollama's context length page advises against offloading to the CPU when performance matters.
+- **Settings.** llama.cpp's [performance troubleshooting notes](https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md) show one model on one machine generating text at markedly different speeds depending on thread count and GPU offload settings.
+- **Assumptions.** A figure holds only for its stated precision, context length, and runtime.
+- **Your task.** Long documents, coding agents, or several users need more context or more parallel requests than a short chat.
+
+<h2 id="worked-example">Worked example: a dated compatibility checklist</h2>
+
+gpt-oss-20b with Ollama, checked October 1, 2026. USASI did not run the model, so nothing below is a USASI test. Each line is labeled **Stated** (by the publisher or runtime), **Estimated** (a method you apply), or **Tested** (what you measure).
+
+1. **Release (Stated).** openai/gpt-oss-20b on Hugging Face, revision 6cee5e8; in Ollama, the `gpt-oss:20b` tag. OpenAI's Ollama guide (August 5, 2025) says the models ship in MXFP4, with no other quantization offered.
+2. **Memory (Stated, not tested by USASI).** OpenAI's model card, section 2.1: with the mixture-of-experts weights in MXFP4 (4.25 bits per parameter), the smaller model can "run on systems with as little as 16GB memory." Table 1 lists the checkpoint at 12.8 GiB. OpenAI's Ollama guide recommends at least 16GB of VRAM or unified memory.
+3. **Download (Stated).** Ollama's [library page](https://ollama.com/library/gpt-oss) lists `gpt-oss:20b` at 14GB with a 128K context window. That is the download size, not the memory needed while running.
+4. **Hardware support (Stated).** Find your GPU and driver on Ollama's hardware support page. If it is not listed, do not assume GPU acceleration.
+5. **Context (Stated).** The model card says the context length was extended to 131,072 tokens. Ollama's default depends on your VRAM, and raising it increases memory use.
+6. **Your budget (Estimated).** Add the checkpoint size, room for the context length and parallel requests you plan to use, and what your system already uses. If the total exceeds your GPU memory, expect a split between GPU and CPU, or plan a shorter context.
+7. **Your run (Tested).** Run the model, then `ollama ps`. Record the SIZE, the PROCESSOR column (100% GPU, 100% CPU, or a split), the CONTEXT, your Ollama version, and the date. Then try a typical prompt and judge whether the response time is acceptable.
+8. **Re-check.** Repeat after updating the runtime or changing the model, context, or parallel settings.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse [runtimes](/open/?kind=runtime), or only those with [documented supported platforms](/open/?kind=runtime&check=supported_platforms:public).
+- Read the run notes for [gpt-oss-20b](/open/gpt-oss-20b/#run-notes) and [Granite 4.2 8B](/open/granite-4-2-8b/#run-notes).
+- Look up [quantization](/glossary/#quantization), [context window](/glossary/#context-window), [inference](/glossary/#inference), and [weights](/glossary/#weights) in the glossary.
+- Meet the [people behind local AI](/local/).
+- Read [choosing hosted access or local inference](/learn/hosted-or-local/) and [how to read a model card](/learn/how-to-read-a-model-card/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- OpenAI: [gpt-oss-120b and gpt-oss-20b Model Card](https://arxiv.org/abs/2508.10925) (August 5, 2025); [gpt-oss-20b on Hugging Face](https://huggingface.co/openai/gpt-oss-20b) (revision 6cee5e8); [How to run gpt-oss locally with Ollama](https://developers.openai.com/cookbook/articles/gpt-oss/run-locally-ollama) (August 5, 2025)
+- Ollama: [Hardware support](https://docs.ollama.com/gpu), [Context length](https://docs.ollama.com/context-length), [FAQ](https://docs.ollama.com/faq), [gpt-oss library page](https://ollama.com/library/gpt-oss)
+- llama.cpp: [README](https://github.com/ggml-org/llama.cpp/blob/master/README.md), [Token generation performance troubleshooting](https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md)
+- vLLM: [GPU installation](https://docs.vllm.ai/en/latest/getting_started/installation/gpu/), [Conserving memory](https://docs.vllm.ai/en/latest/configuration/conserving_memory/)
+- Apple: [MLX README](https://github.com/ml-explore/mlx/blob/main/README.md)
+- IBM: [granite-4.2-8b model card](https://huggingface.co/ibm-granite/granite-4.2-8b)

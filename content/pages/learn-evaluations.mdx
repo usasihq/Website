@@ -1,0 +1,54 @@
+A benchmark result tells you how one system performed on one fixed set of tasks under one set of conditions. Whether it says anything about your own work depends on how close those tasks and conditions are to yours. Before relying on a result, find out what the tasks ask for and how success is checked, which model version was tested and through which provider, how it was prompted or which agent ran it, how many tasks and attempts stand behind it, how much it could vary, whether anyone has reproduced it, and whether the test material could have reached the model's training data.
+
+<h2 id="what-a-result-measures">What a result measures</h2>
+
+A [benchmark](/glossary/#benchmark) is a fixed set of tasks with a scoring rule, and an [evaluation harness](/glossary/#evaluation-harness) is software that runs it the same way each time. A result describes a particular system, on a particular task set, scored by a particular rule, at a particular time; change any of those and the result can change. Because your work rarely matches a benchmark exactly, a published result is a starting point for your own testing, not a substitute for it.
+
+<h2 id="questions">Questions to ask of any result</h2>
+
+- **Task definition.** What does each task ask for, and how is success checked? A benchmark that inspects the final state of a system measures something different from one that compares text with a reference answer.
+- **Exact model and provider version.** A model name can stay the same across updates, and one model can be served by several providers with different settings. A result should name the version, how the model was reached (the developer's API, a third-party host, or local weights), and settings such as reasoning effort.
+- **Prompting and scaffolding.** The prompt template, any examples in the prompt, and, for agents, the software wrapped around the model (the scaffold) all shape the outcome. ARC Prize Foundation, for example, reports ARC-AGI-3 results from a provider-neutral harness separately from those using provider-designed features, and labels each.
+- **Hardware, where relevant.** For speed and throughput benchmarks, the hardware and software stack is the subject. MLPerf sorts results by whether systems are available to rent or buy, in preview, or research, development, or internal, and requires on-premise submissions to be described in enough detail for others to build a similar system. For agent tasks, time, CPU, and memory limits can also change outcomes.
+- **Sample size.** How many tasks, and how many attempts per task? A gap of a few tasks on a small set may mean little.
+- **Uncertainty.** Look for confidence intervals, error bars, or repeated runs; a single run hides variation.
+- **Reproducibility.** Are the code, task data, prompts, and configuration published, with instructions to run them again?
+- **Contamination.** Could the test items or their solutions have appeared in training data? Public test sets carry this risk; held-back sets reduce it.
+
+<h2 id="reported-and-reproduced">Reported results and reproduced results</h2>
+
+A reported result is one a publisher states for its own system. It may be accurate, but no one else has necessarily rerun it. A reproduced result was obtained again by another party from published materials; a verified result was produced or checked under someone else's controls.
+
+Two published evaluation records show different routes. Under the [MLPerf](/open/mlperf/) submission rules, each submitter must review at least one other submission before results are published, and the submitted code must be sufficient to reproduce the results. For [ARC-AGI](/open/arc-agi/), ARC Prize Foundation runs selected models itself on a semi-private task set for its Verified Leaderboard, while Community Leaderboard entries get a light review and are not verified by default.
+
+In the catalog, a model release whose card reports results without the code or prompts to re-run them is marked Partial for evaluation materials ([methodology](/methodology/#sources)).
+
+<h2 id="worked-example">A worked example: reading Terminal-Bench's methodology</h2>
+
+Suppose an announcement (hypothetical) reports a model's result on [Terminal-Bench](/open/terminal-bench/), a benchmark of tasks that AI agents complete in command-line environments. Its paper, release posts, and repository answer many of the questions above.
+
+- **Task definition.** Each task is an instruction, a Docker image, a set of tests, a reference solution, and a time limit. The tests check the container's final state, not the commands the agent typed, so any working approach counts.
+- **Version.** Terminal-Bench is maintained as a "continuous benchmark" with semantic versions. Significant changes to the agent's environment are major versions that require re-running agents; changes to grading alone are minor and allow re-grading saved runs. Version 4.0 recalibrated time, CPU, and memory limits, fixed some tasks, and removed others, including tasks the latest models solved on every attempt. A 4.0 result is not directly comparable with one on an earlier version.
+- **Model, provider, and agent.** The paper notes that agent and model performance are hard to separate, partly because some agents are tuned for particular models, and it introduced Terminus 2, a minimal agent that uses only a terminal, as a neutral testbed. In its experiments on version 2.0, closed models were reached through their developers' APIs, open-weight models through the Together AI API, and reasoning effort was left at each provider's default. The headline figure used, for each model, the agent that maximized its performance, so ask which agent a reported number comes from.
+- **Sample size and uncertainty.** Terminal-Bench 2.0 has 89 tasks. Each model and agent pairing was run at least five times, and the headline figure shows 95% confidence intervals.
+- **Reproducibility.** Tasks pin package versions and ship prebuilt Docker images, and the README says to run the reference solutions five times in your own sandbox before testing agents. The paper notes that internet access and differing machine resources can still change the environment.
+- **Contamination.** Every file carries a canary string so training pipelines can exclude it, but the paper acknowledges that developers could still train on the tasks and that there is no private test set. ARC-AGI keeps a semi-private set instead; its policy acknowledges possible limited leakage, because tasks are sent to external APIs, and tracks the gap between public and semi-private performance.
+
+None of this predicts how a model will handle your own work. It shows what a result was measured on, so you can judge how close that is to yours.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse [evaluation tools and benchmarks](/open/?kind=eval). Each record has a checklist covering code, tasks, scoring, reproducibility, and limitations.
+- Find benchmarks that [publish reproduction instructions](/open/?kind=eval&check=reproducibility_instructions:public).
+- Compare model releases whose [evaluation materials are public](/open/?kind=model&check=evaluation_materials:public) with those that report results only.
+- Read how the catalog treats reported results in the [methodology](/methodology/#sources), and look up [benchmark](/glossary/#benchmark) and [evaluation harness](/glossary/#evaluation-harness) in the glossary.
+- When terms of use matter as much as results, read [what open weight and open source actually mean](/learn/open-weight-vs-open-source/).
+- Before adopting a model, test it on a sample of your own tasks with the settings and provider you plan to use.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- Terminal-Bench: [Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces (arXiv 2601.11868, HTML v1)](https://arxiv.org/html/2601.11868v1), [Terminal-Bench 4.0](https://www.tbench.ai/news/terminal-bench-4-0), [Continuous Benchmarks](https://www.tbench.ai/news/continuous-benchmarks), [harbor-framework/terminal-bench README](https://github.com/harbor-framework/terminal-bench/blob/main/README.md)
+- MLCommons: [General MLPerf Submission Rules](https://github.com/mlcommons/policies/blob/master/submission_rules.adoc)
+- ARC Prize Foundation: [ARC Prize Verified Testing Policy](https://arcprize.org/policy)

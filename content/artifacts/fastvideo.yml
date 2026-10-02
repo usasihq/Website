@@ -1,0 +1,188 @@
+slug: fastvideo
+name: FastVideo
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Hao AI Lab, UC San Diego
+    organization_slug: university-of-california-san-diego
+    source_ids: [fastvideo-repo, haolab-home, hao-github]
+organization_slugs: [university-of-california-san-diego]
+links:
+  - label: Repository (hao-ai-lab/FastVideo)
+    url: https://github.com/hao-ai-lab/FastVideo
+    kind: repository
+  - label: Documentation
+    url: https://hao-ai-lab.github.io/FastVideo/
+    kind: documentation
+  - label: LICENSE (Apache 2.0)
+    url: https://github.com/hao-ai-lab/FastVideo/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/hao-ai-lab/FastVideo/releases
+    kind: release-notes
+summary:
+  text: >-
+    FastVideo is a post-training and inference framework for accelerated video generation,
+    maintained by the Hao AI Lab at UC San Diego. Its README lists full and LoRA fine-tuning of
+    open video diffusion transformers, Distribution Matching Distillation (DMD2), Video Sparse
+    Attention and sparse distillation, causal distillation through Self-Forcing, and
+    sequence-parallel distributed training and inference.
+  source_ids: [fastvideo-repo, haolab-home]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    Fine-tuning and distilling open video generation models so they need fewer denoising steps,
+    and running them with optimized attention backends through a command-line interface or
+    Python API. The README also describes a real-time video generation and editing app built on
+    the framework.
+  source_ids: [fastvideo-repo]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    FastVideo is maintained in the Hao AI Lab's GitHub organization. The Hao AI Lab describes
+    itself as a lab at UC San Diego that develops and maintains open-source models, evaluations,
+    and systems. UC San Diego is a public university campus of the University of California in
+    La Jolla, California. Eligibility rests on the maintaining lab; the base video models that
+    FastVideo fine-tunes or distills come from other developers and are not assessed here.
+  source_ids: [fastvideo-repo, hao-github, haolab-home, ucsd-catalog]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub; the README documents installing the package with uv or
+    pip.
+  source_ids: [fastvideo-repo]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/hao-ai-lab/FastVideo/blob/main/LICENSE
+    applies_to: code
+    source_ids: [fastvideo-license]
+    reviewed_at: 2026-10-01
+license_notes:
+  text: >-
+    The Apache License 2.0 covers the framework code. Model checkpoints that the project
+    publishes on Hugging Face are separate releases with their own terms and are not assessed in
+    this record.
+  source_ids: [fastvideo-license, fastvideo-repo]
+  reviewed_at: 2026-10-01
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under the Apache License 2.0.
+    source_ids: [fastvideo-repo, fastvideo-license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      The documentation site covers installation, an inference quick start, training
+      workflows, optimizations, and a support matrix; a cookbook gives model-specific recipes.
+    source_ids: [fastvideo-docs, fastvideo-repo]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README recommends creating a uv environment and installing the fastvideo package with
+      a CUDA 12 or CUDA 13 PyTorch backend. Apple Silicon users follow an MLX install guide, and
+      NVIDIA DGX Spark (ARM64) requires an editable install from source.
+    source_ids: [fastvideo-repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: public
+    note: >-
+      The README lists H100, A100, and RTX 4090 GPUs and Linux, Windows, and macOS, plus MLX on
+      Apple Silicon, and links a support matrix of models, hardware assumptions, and
+      optimization compatibility.
+    source_ids: [fastvideo-repo, fastvideo-docs]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      Versioned GitHub releases are published; the most recent listed is v0.2.0, released June
+      4, 2026.
+    source_ids: [fastvideo-releases]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README's quick start creates a Python 3.12 environment with uv and installs FastVideo
+      with UV_TORCH_BACKEND=cu126 (CUDA 12) or cu130 (CUDA 13). It notes that there is no
+      prebuilt ARM wheel for the FastVideo CUDA kernel, so DGX Spark installs compile it from
+      source.
+    source_ids: [fastvideo-repo]
+    reviewed_at: 2026-10-01
+provenance:
+  text: >-
+    The README states that FastVideo learned design ideas from and reused code from Wan-Video,
+    ThunderKittens, DMD2, diffusers, xDiT, vLLM, and SGLang. Checkpoints released through the
+    project, such as the FastH3 models, are distilled from third-party base models (for example
+    MiniMax-H3); those base models are not developed by the Hao AI Lab.
+  derived_from: []
+  source_ids: [fastvideo-repo]
+tags: [video-generation, training, inference, diffusion]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: fastvideo-repo
+    title: hao-ai-lab/FastVideo (GitHub repository and README)
+    url: https://github.com/hao-ai-lab/FastVideo
+    publisher: Hao AI Lab
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fastvideo-license
+    title: FastVideo LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/hao-ai-lab/FastVideo/main/LICENSE
+    publisher: Hao AI Lab
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fastvideo-docs
+    title: FastVideo documentation
+    url: https://hao-ai-lab.github.io/FastVideo/
+    publisher: Hao AI Lab
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fastvideo-releases
+    title: Releases · hao-ai-lab/FastVideo
+    url: https://github.com/hao-ai-lab/FastVideo/releases
+    publisher: Hao AI Lab
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: haolab-home
+    title: Hao AI Lab @ UCSD
+    url: https://haoailab.com/
+    publisher: Hao AI Lab, UC San Diego
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hao-github
+    title: Hao AI Lab (GitHub organization)
+    url: https://github.com/hao-ai-lab
+    publisher: Hao AI Lab
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: ucsd-catalog
+    title: About UC San Diego - UCSD Catalog
+    url: https://catalog.ucsd.edu/about/about-uc-san-diego/index.html
+    publisher: University of California San Diego
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

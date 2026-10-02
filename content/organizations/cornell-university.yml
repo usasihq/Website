@@ -1,0 +1,153 @@
+slug: cornell-university
+name: Cornell University
+legal_name:
+  text: Cornell University
+  source_ids: [irs-eo-bmf-ny]
+  reviewed_at: 2026-10-01
+website: https://www.cornell.edu
+logo_text: CU
+summary:
+  text: >-
+    Cornell University is a privately endowed research university whose main campus is in
+    Ithaca, New York; its charter was signed into law in 1865. Its
+    AI-related research groups include the Kuleshov Group at Cornell Tech, which works on
+    machine learning and generative models, and the Zhang Research Group in electrical and
+    computer engineering, which studies hardware specialization for machine learning.
+  source_ids: [cornell-about, kuleshov-github, zhang-group]
+  reviewed_at: 2026-10-01
+organization_roles: [university-lab, research-lab]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Organization recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    classifies it as a corporation with school public-charity status (170(b)(1)(A)(ii)).
+  source_ids: [irs-eo-bmf-ny, irs-eo-info]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Ithaca, New York
+  country: US
+  source_ids: [cornell-about, irs-eo-bmf-ny]
+other_locations: []
+founded:
+  year: 1865
+  source_ids: [cornell-about]
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      Cornell describes itself as a privately endowed research university, a partner of the
+      State University of New York, and the federal land-grant institution in New York State.
+    source_ids: [cornell-about]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The Kuleshov Group at Cornell Tech describes itself as a research group focused on machine
+      learning, generative models, and AI for science. Its GitHub organization hosts the code for
+      MDLM, a masked diffusion language model presented at NeurIPS 2024, under the Apache License
+      2.0.
+    source_ids: [kuleshov-github, mdlm-repo, mdlm-license]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The Zhang Research Group, headed by a professor in Cornell's School of Electrical and
+      Computer Engineering, publishes on high-level synthesis, hardware specialization for
+      machine learning, and programming models for software-defined FPGAs. Its GitHub organization publishes HeuriGym, a benchmark for
+      evaluating how well large language models generate and refine heuristics for combinatorial
+      optimization problems, under the Apache License 2.0.
+    source_ids: [zhang-group, heurigym-repo, heurigym-license]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The IRS exempt-organization extract for New York lists Cornell University, in Ithaca, New
+    York, as a 501(c)(3) corporation with school status. Cornell's about page places its main
+    campus in Ithaca.
+  source_ids: [irs-eo-bmf-ny, irs-eo-info, cornell-about]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact and has no Cornell artifact record yet. The MDLM
+    and HeuriGym repositories maintained by Cornell research groups are published under the
+    Apache License 2.0.
+  source_ids: [mdlm-license, heurigym-license]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: cornell-about
+    title: About | Cornell University
+    url: https://www.cornell.edu/about/
+    publisher: Cornell University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ny
+    title: Exempt Organizations Business Master File Extract - New York (eo_ny.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ny.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kuleshov-github
+    title: Kuleshov Group @ Cornell Tech (GitHub organization)
+    url: https://github.com/kuleshov-group
+    publisher: Kuleshov Group, Cornell Tech
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mdlm-repo
+    title: kuleshov-group/mdlm (GitHub repository and README)
+    url: https://github.com/kuleshov-group/mdlm
+    publisher: Kuleshov Group, Cornell Tech
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: mdlm-license
+    title: MDLM LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/kuleshov-group/mdlm/master/LICENSE
+    publisher: Kuleshov Group, Cornell Tech
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: zhang-group
+    title: Zhang Research Group
+    url: https://zhang.ece.cornell.edu/
+    publisher: Zhang Research Group, Cornell University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: heurigym-repo
+    title: cornell-zhang/heurigym (GitHub repository and README)
+    url: https://github.com/cornell-zhang/heurigym
+    publisher: Cornell Zhang Research Group
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: heurigym-license
+    title: HeuriGym LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/cornell-zhang/heurigym/main/LICENSE
+    publisher: Cornell Zhang Research Group
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

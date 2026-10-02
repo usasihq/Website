@@ -1,0 +1,67 @@
+Hosted access sends your inputs over the network to a provider, which runs the model and returns the output. Local inference runs downloaded weights on hardware you control. Hosted access is quick to start and the provider maintains the hardware and software, but your inputs leave your machine and the provider's data policy governs them. Local inference keeps inputs on your hardware but needs a machine that can run the model and time to look after it. Hardware is paid for up front; hosted services charge for usage or by plan. Neither is cheaper in every case. This page is general information, not legal advice.
+
+<h2 id="same-model">The same model, two ways</h2>
+
+Some open-weight releases can be used either way. The [gpt-oss-20b model card](https://huggingface.co/openai/gpt-oss-20b#ollama) shows how to run it locally with Ollama, and Ollama's [library page](https://ollama.com/library/gpt-oss) also lists cloud versions of it. Ollama's [cloud documentation](https://docs.ollama.com/cloud) says cloud models run in Ollama's cloud and need no download. The weights are the same; what changes is where the computation happens, who can see the inputs, and whose terms apply.
+
+<h2 id="convenience">Convenience and maintenance</h2>
+
+Hosted access needs an account and usually an API key, and the provider runs and upgrades everything behind it. In exchange, the provider decides timing: it can retire a model. Ollama's cloud documentation, for example, notes upcoming cloud-model retirements and says downloaded local models are not affected.
+
+Local inference means installing a runtime, downloading weights, keeping storage free, and applying updates. Ollama's [FAQ](https://docs.ollama.com/faq) says its macOS and Windows apps download updates automatically while Linux users re-run the install script, and it lists each system's model folder. When something breaks, you troubleshoot it yourself.
+
+<h2 id="cost">Hardware cost and usage charges</h2>
+
+Keep two kinds of cost apart. A one-time hardware cost is what you pay to own a machine that can run the model, plus power and upkeep. A usage charge is what a hosted service bills for requests, for the amount of text processed, or for a plan. Which is lower depends on how often you run the model, which model you need, what you already own, and the provider's prices on the day you compare. USASI does not publish prices; if you compare, use the provider's official pricing page and note the date.
+
+<h2 id="privacy">Privacy boundaries</h2>
+
+With hosted access, the boundary is the provider's data policy, so read its current version. Two examples, as published on October 1, 2026:
+
+- OpenAI's [data controls page](https://developers.openai.com/api/docs/guides/your-data) says data sent to its API has not been used to train its models since March 1, 2023, unless the customer opts in. It also says abuse-monitoring logs, which may contain prompts and responses, are kept for up to 30 days by default, and that eligible customers can be approved for Zero Data Retention.
+- Ollama's [privacy policy](https://ollama.com/privacy) says cloud prompts and responses are processed transiently and not used for training. For local use, it says Ollama does not collect, store, transmit, or have access to the content you process, though it may collect limited device and usage metadata such as the app version and request counts.
+
+With local inference, the boundary is your machine and anyone who can reach it, so a runtime exposed on a network, or a shared computer, is not automatically private.
+
+<h2 id="network">Network behavior of local tools</h2>
+
+Local runtimes can still use the network. Check these points:
+
+- **Downloads.** The llama.cpp server can fetch models from Hugging Face, and its `--offline` flag limits it to the local cache ([server README](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md)). Hugging Face's libraries offer `HF_HUB_OFFLINE` for the same purpose ([environment variables](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables)).
+- **Telemetry.** vLLM collects anonymous usage data by default, and its [usage stats page](https://docs.vllm.ai/en/latest/usage/usage_stats/) explains how to opt out. Hugging Face libraries collect some usage data unless `HF_HUB_DISABLE_TELEMETRY` or `DO_NOT_TRACK` is set.
+- **Cloud features.** Ollama offers local and cloud models in one app; its FAQ describes a local-only mode that turns off cloud models and web search.
+- **Listening addresses.** Ollama binds to 127.0.0.1 on port 11434 by default, and the llama.cpp server listens on 127.0.0.1 with no API key unless one is set. Changing the address opens the model to other machines. vLLM's [security guide](https://docs.vllm.ai/en/latest/usage/security/) warns that some components may listen on all network interfaces and that its `--api-key` option protects only some endpoints, and it recommends a firewall.
+
+<h2 id="terms">Which terms apply</h2>
+
+Locally, each component brings its own terms. For gpt-oss-20b, the weights come under the [Apache License 2.0](https://huggingface.co/openai/gpt-oss-20b/blob/main/LICENSE) with a short [usage policy](https://huggingface.co/openai/gpt-oss-20b/blob/main/USAGE_POLICY) asking users to comply with applicable law. The runtime has a separate license: MIT for [Ollama](https://github.com/ollama/ollama/blob/main/LICENSE) and [llama.cpp](https://github.com/ggml-org/llama.cpp/blob/master/LICENSE), Apache 2.0 for [vLLM](https://github.com/vllm-project/vllm/blob/main/LICENSE). With hosted access, the provider's terms of service and usage policies also apply, even when the weights are openly licensed. OpenAI's data controls page, for example, cites its Usage Policies.
+
+<h2 id="worked-example">Worked example: a decision checklist</h2>
+
+Jordan is a fictional reader invented for this page. Jordan coordinates volunteers at a small nonprofit, wants to summarize meeting notes that include volunteers' names a few times a month, and has a laptop but no IT staff.
+
+1. **What goes in?** Notes with personal names. Jordan first checks the organization's own rules. If a hosted service is allowed, Jordan reads that provider's current data policy, including how long logs are kept.
+2. **Which model, under which terms?** Jordan picks a release whose weights license permits this use, and reads the license file itself.
+3. **Can the laptop run it?** Jordan checks the publisher's stated memory needs and the runtime's supported hardware, then tests on the laptop.
+4. **Who maintains it?** Only Jordan, so a desktop app that updates itself fits better than a server setup.
+5. **What touches the network?** Jordan keeps the runtime on 127.0.0.1, turns on local-only mode where the runtime offers one, and checks telemetry settings.
+6. **What will it cost?** Use is occasional and the laptop is already paid for. If the model does not fit, Jordan would compare an upgrade with dated usage charges from official pricing pages.
+
+Jordan's outcome: try local inference on the existing laptop first, and consider hosted access only after the organization approves a provider's data policy. Different answers, such as heavy daily use or no suitable hardware, could point the other way.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse [runtimes](/open/?kind=runtime) in the catalog, including [Ollama](/open/ollama/), [llama.cpp](/open/llama-cpp/), [vLLM](/open/vllm/), and [MLX](/open/mlx/).
+- Look up [hosted API](/glossary/#hosted-api), [self-hosting / local inference](/glossary/#self-hosting), and [license scope](/glossary/#license-scope) in the glossary.
+- Meet the [people behind local AI](/local/).
+- Read [understanding inference hardware](/learn/inference-hardware/), [how to read a model card](/learn/how-to-read-a-model-card/), and [what open weight and open source actually mean](/learn/open-weight-vs-open-source/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- OpenAI: [Data controls in the OpenAI platform](https://developers.openai.com/api/docs/guides/your-data); [gpt-oss-20b model card](https://huggingface.co/openai/gpt-oss-20b), [weights LICENSE](https://huggingface.co/openai/gpt-oss-20b/blob/main/LICENSE), and [USAGE_POLICY](https://huggingface.co/openai/gpt-oss-20b/blob/main/USAGE_POLICY) on Hugging Face
+- Ollama: [FAQ](https://docs.ollama.com/faq), [Cloud](https://docs.ollama.com/cloud), [Privacy Policy](https://ollama.com/privacy) (last updated March 2026), [gpt-oss library page](https://ollama.com/library/gpt-oss), [LICENSE](https://github.com/ollama/ollama/blob/main/LICENSE)
+- llama.cpp: [server README](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md), [LICENSE](https://github.com/ggml-org/llama.cpp/blob/master/LICENSE)
+- vLLM: [Usage Stats Collection](https://docs.vllm.ai/en/latest/usage/usage_stats/), [Security](https://docs.vllm.ai/en/latest/usage/security/), [LICENSE](https://github.com/vllm-project/vllm/blob/main/LICENSE)
+- Hugging Face: [huggingface_hub environment variables](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables)

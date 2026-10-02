@@ -1,0 +1,225 @@
+slug: open-source-foundations
+title: Open-source foundations and stewards
+summary: >-
+  How foundations such as the Linux Foundation, the PyTorch Foundation, LF AI & Data, and the
+  Agentic AI Foundation host AI projects, and why a nonprofit's tax status is separate from
+  the openness of what it hosts.
+intro:
+  - text: >-
+      An open-source foundation gives projects a neutral home. It can hold trademarks, raise
+      and spend member funds, and run governing boards, while each project keeps its own
+      technical leadership. The Linux Foundation, a 501(c)(6) nonprofit, describes itself as a
+      neutral hub for developers to manage and scale open technology projects. Under the
+      Agentic AI Foundation's charter, for example, trademarks relating to its projects must be
+      held by LF Projects, LLC or the Linux Foundation.
+    source_ids: [lf-about, aaif-charter]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Several AI-focused foundations are directed funds of the Linux Foundation. The charters
+      of the PyTorch Foundation, LF AI & Data, and the Agentic AI Foundation each say that the
+      fund raises, budgets, and spends money for its technical projects, operates under its
+      governing board and the Linux Foundation consistent with the Linux Foundation's
+      tax-exempt status, and leaves each project's governance to that project's own charter.
+      The PyTorch Foundation supports PyTorch, vLLM, DeepSpeed, Ray, Helion, and Safetensors.
+      The Agentic AI Foundation lists the Model Context Protocol, goose, AGENTS.md, and A2A
+      among its projects, and LF AI & Data hosts projects such as ONNX.
+    source_ids: [ptf-charter, lfai-charter, aaif-charter, ptf-page, aaif-projects, lfai-about]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Tax status describes the organization, not the license of what it hosts. The IRS
+      defines a 501(c)(6) business league as an association of persons with a common business
+      interest whose purpose is to promote that interest, not to run a regular business of a
+      kind ordinarily carried on for profit. It lists charitable, scientific, and educational
+      purposes among those of 501(c)(3) organizations. Neither status sets a project's terms.
+      PyTorch is distributed under a BSD-style license and vLLM under Apache 2.0. The Model
+      Context Protocol is moving from the MIT License to Apache 2.0 for new code and
+      specification contributions, with documentation under CC BY 4.0.
+    source_ids: [irs-business-leagues, irs-501c3-purposes, pytorch-license, vllm-license, mcp-license]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Nonprofit stewards also work outside the Linux Foundation. EleutherAI describes itself
+      as a non-profit AI research lab that trains and releases open models, datasets, and
+      tools. In this catalog, openness is described per artifact, and an organization is never
+      labeled open because it has released one open-weight model. A steward's nonprofit status
+      and the terms of each project it maintains are therefore recorded separately.
+    source_ids: [eleuther-about, usasi-methodology]
+    reviewed_at: 2026-10-01
+scope: >-
+  Covers foundations and nonprofit organizations that host, govern, or maintain open AI
+  software, protocols, datasets, and models, including Linux Foundation directed funds. It
+  explains legal form and governance; it does not rate how open a foundation is, and each
+  hosted project's license is recorded on that project's own record. Featured records are
+  examples chosen to cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: Open-source software
+    href: /glossary/#open-source-software
+    note: Start with what an open-source software license grants.
+  - label: Maintainer
+    href: /glossary/#maintainer
+    note: Who is accountable for a project, which can differ from who hosts or funds it.
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: Why each component of a release, and each license, has to be read separately.
+  - label: How projects qualify for the catalog
+    href: /methodology/#eligibility
+    note: How software governed by a U.S. foundation or company becomes eligible.
+  - label: How the ecosystem fits together
+    href: /learn/how-the-ecosystem-fits-together/
+    note: Where foundations sit between companies, research labs, and the projects they share.
+  - label: The Linux Foundation
+    href: /companies/linux-foundation/
+    note: The catalog record for the parent of several directed funds listed here.
+  - label: Policy and standards sources
+    href: /learn/policy-and-standards-sources/
+    note: How to find and read documents from standards bodies and public agencies.
+directory_links:
+  - label: Open-source stewards
+    href: /companies/?role=open-source-steward
+    note: Organizations whose records list stewardship of open-source projects as a role.
+  - label: Foundation-hosted organizations
+    href: /companies/?ownership=foundation-hosted
+    note: Directed funds and other units hosted by a foundation.
+  - label: Nonprofit organizations
+    href: /companies/?ownership=nonprofit
+    note: Organizations recorded as nonprofits, whatever the terms of their releases.
+organizations:
+  - linux-foundation
+  - pytorch-foundation
+  - lf-ai-data
+  - agentic-ai-foundation
+  - eleutherai
+  - mlcommons
+  - common-crawl
+  - lmsys
+artifacts: [pytorch, vllm, onnx, model-context-protocol]
+people: []
+primary_documents:
+  - source_id: ptf-charter
+    note: >-
+      The PyTorch Foundation's participation agreement and charter, which define it as a
+      directed fund of the Linux Foundation and leave technical oversight to each project's own
+      charter.
+  - source_id: aaif-charter
+    note: >-
+      The Agentic AI Foundation's charter, covering its governing board, project steering
+      committees, and where project trademarks are held.
+  - source_id: lfai-charter
+    note: >-
+      The LF AI & Data charter, which uses the same directed-fund structure for AI, machine
+      learning, and data projects.
+  - source_id: irs-business-leagues
+    note: >-
+      The IRS description of a 501(c)(6) business league, the tax category the Linux
+      Foundation gives for itself.
+  - source_id: irs-501c3-purposes
+    note: >-
+      The IRS list of 501(c)(3) exempt purposes, for comparison with business leagues.
+  - source_id: mcp-license
+    note: >-
+      A hosted project's license file that changes on its own schedule, independent of the
+      foundation's tax status.
+  - source_id: eleuther-about
+    note: >-
+      A nonprofit research lab's own description of what it trains and releases.
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: lf-about
+    title: About the Linux Foundation
+    url: https://www.linuxfoundation.org/about
+    publisher: The Linux Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: ptf-page
+    title: PyTorch Foundation
+    url: https://pytorch.org/foundation/
+    publisher: PyTorch Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: ptf-charter
+    title: PyTorch Foundation Participation Agreement and Charter
+    url: https://cdn.platform.linuxfoundation.org/agreements/pytorch.pdf
+    publisher: The Linux Foundation
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lfai-charter
+    title: The LF AI & Data Foundation Charter
+    url: https://lfaidata.foundation/wp-content/uploads/sites/3/2026/04/LF-AI-Data-Foundation-Participation-Agreement-Charter-JUNE-2024.docx.pdf
+    publisher: LF AI & Data Foundation
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: lfai-about
+    title: About LF AI & Data
+    url: https://lfaidata.foundation/about/
+    publisher: LF AI & Data Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: aaif-charter
+    title: The Agentic AI Foundation Charter (amended July 29, 2026)
+    url: https://raw.githubusercontent.com/aaif/foundation/main/foundation-charter.pdf
+    publisher: Agentic AI Foundation (GitHub)
+    kind: other
+    published_at: 2026-07-29
+    accessed_at: 2026-10-01
+  - id: aaif-projects
+    title: AAIF projects
+    url: https://aaif.io/projects/
+    publisher: Agentic AI Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: irs-business-leagues
+    title: Business leagues
+    url: https://www.irs.gov/charities-non-profits/other-non-profits/business-leagues
+    publisher: Internal Revenue Service
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: irs-501c3-purposes
+    title: Exempt purposes - Internal Revenue Code Section 501(c)(3)
+    url: https://www.irs.gov/charities-non-profits/charitable-organizations/exempt-purposes-internal-revenue-code-section-501c3
+    publisher: Internal Revenue Service
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: pytorch-license
+    title: PyTorch LICENSE
+    url: https://raw.githubusercontent.com/pytorch/pytorch/main/LICENSE
+    publisher: PyTorch (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: vllm-license
+    title: vLLM LICENSE
+    url: https://raw.githubusercontent.com/vllm-project/vllm/main/LICENSE
+    publisher: vLLM project (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mcp-license
+    title: Model Context Protocol LICENSE
+    url: https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/LICENSE
+    publisher: Model Context Protocol (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: eleuther-about
+    title: About EleutherAI
+    url: https://www.eleuther.ai/about
+    publisher: EleutherAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: usasi-methodology
+    title: Methodology
+    url: https://unitedstatesofamericasuperintelligence.com/methodology/
+    publisher: USASI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01

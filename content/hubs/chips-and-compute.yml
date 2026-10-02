@@ -1,0 +1,176 @@
+slug: chips-and-compute
+title: Chips, cloud, and compute
+summary: >-
+  The hardware and services behind AI: chip designers, accelerators, memory, networking, and
+  AI cloud providers, and why a headquarters is not a data-center location.
+intro:
+  - text: >-
+      AI computing rests on several layers, and organizations in the catalog sit at different
+      ones. Chip designers create accelerators and processors: NVIDIA's annual report describes
+      data center systems that combine its GPUs, CPUs, interconnects, and software stacks.
+      Memory makers supply high-bandwidth memory, which Micron describes as 3D-stacked SDRAM
+      designed for AI and high-performance computing workloads. Network vendors such as Arista sell
+      Ethernet switches for connecting accelerators in AI clusters. Cloud providers such as
+      CoreWeave rent out this hardware from the data centers they operate.
+    source_ids: [nvda-10k, micron-hbm, arista-ai-networking, crwv-10k]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Designing a chip is not the same as making it. NVIDIA describes a fabless strategy in
+      which suppliers handle wafer fabrication, assembly, testing, and packaging, and it names
+      foundries such as TSMC and Samsung. Etched, which designs inference hardware, says its
+      A0 silicon came back from TSMC's N4P process.
+    source_ids: [nvda-10k, etched-home]
+    reviewed_at: 2026-10-01
+  - text: >-
+      A headquarters is not a data-center location. NVIDIA's and CoreWeave's annual reports
+      list principal executive offices in Santa Clara, California, and Livingston, New Jersey.
+      CoreWeave's report separately describes data centers across the United States, Europe,
+      and Canada, located in leased buildings. In this catalog, a headquarters or principal
+      executive office is used to decide eligibility; it says nothing about where an
+      organization's chips are made or where its computing runs.
+    source_ids: [nvda-10k, crwv-10k, usasi-methodology]
+    reviewed_at: 2026-10-01
+  - text: >-
+      This catalog does not measure capacity. It does not publish power-capacity figures, and
+      announced megawatts, GPU counts, and speed claims remain the statements of the companies
+      that make them. For performance, MLPerf Inference from MLCommons measures how fast
+      specific submitted systems process inputs under published rules, with a closed division
+      meant for like-for-like comparison. Those results describe the systems tested, not a
+      company's total capacity.
+    source_ids: [usasi-methodology, mlperf-inference-dc]
+    reviewed_at: 2026-10-01
+scope: >-
+  Covers organizations that design chips, memory, and networking for AI, build servers, or
+  rent computing as a cloud or inference service, plus related open software and benchmarks.
+  It does not report capacity, power, GPU counts, prices, or data-center sites, and a
+  headquarters is never treated as a data-center location. Featured records are examples
+  chosen to cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: How the ecosystem fits together
+    href: /learn/how-the-ecosystem-fits-together/
+    note: Start here for how chips, clouds, models, and applications depend on one another.
+  - label: Inference hardware
+    href: /learn/inference-hardware/
+    note: What accelerators, memory, and interconnects do when a model runs.
+  - label: Inference
+    href: /glossary/#inference
+    note: A short definition of running a trained model to produce outputs.
+  - label: How eligibility uses headquarters
+    href: /methodology/#eligibility
+    note: Why the catalog records a principal executive office, and why that is not a facility location.
+  - label: Infrastructure and energy claims
+    href: /learn/infrastructure-and-energy-claims/
+    note: How to read announcements about data centers, power, and capacity.
+  - label: How counts work
+    href: /methodology/#counts
+    note: Catalog totals measure coverage, not the size of the industry.
+  - label: Latest news
+    href: /news/
+    note: Dated, sourced updates about cataloged organizations, including hardware and cloud releases.
+directory_links:
+  - label: Chip designers
+    href: /companies/?role=chip-designer
+    note: Organizations whose records list chip design as a role.
+  - label: Cloud providers
+    href: /companies/?role=cloud-provider
+    note: Organizations that rent computing as a cloud service.
+  - label: Compute infrastructure
+    href: /companies/?role=compute-infrastructure
+    note: Organizations that build or operate computing infrastructure for AI.
+  - label: Hardware manufacturers
+    href: /companies/?role=hardware-manufacturer
+    note: Organizations that make servers, systems, networking equipment, or devices.
+organizations:
+  - nvidia
+  - amd
+  - sifive
+  - etched
+  - micron
+  - broadcom
+  - arista-networks
+  - supermicro
+  - coreweave
+  - crusoe
+artifacts: [llm-d, mlperf]
+people: []
+primary_documents:
+  - source_id: nvda-10k
+    note: >-
+      Separates a chip designer's principal executive office from a manufacturing chain that
+      runs through outside foundries and suppliers.
+  - source_id: crwv-10k
+    note: >-
+      Gives a cloud provider's principal executive office separately from its description of
+      leased data centers in several countries.
+  - source_id: micron-hbm
+    note: >-
+      A memory maker's own explanation of high-bandwidth memory and the workloads it is built
+      for.
+  - source_id: arista-ai-networking
+    note: >-
+      Shows the networking layer that connects accelerators in a cluster, as described by a
+      switch vendor.
+  - source_id: etched-home
+    note: >-
+      An inference-hardware designer's statement that its silicon is fabricated by TSMC.
+  - source_id: mlperf-inference-dc
+    note: >-
+      Explains what MLPerf Inference measures, its closed and open divisions, and that results
+      belong to specific submitted systems.
+  - source_id: usasi-methodology
+    note: >-
+      USASI's own rules: how headquarters are used for eligibility, and that power-capacity
+      figures are not published.
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: nvda-10k
+    title: NVIDIA Corporation Form 10-K for the fiscal year ended January 25, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm
+    publisher: NVIDIA Corporation (SEC EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: crwv-10k
+    title: CoreWeave, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+    publisher: CoreWeave, Inc. (SEC EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: micron-hbm
+    title: High-bandwidth memory (HBM)
+    url: https://www.micron.com/products/memory/hbm
+    publisher: Micron Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: arista-ai-networking
+    title: AI networking
+    url: https://www.arista.com/en/solutions/ai-networking
+    publisher: Arista Networks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: etched-home
+    title: Etched
+    url: https://www.etched.com/
+    publisher: Etched
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mlperf-inference-dc
+    title: "MLPerf Inference: Datacenter"
+    url: https://mlcommons.org/benchmarks/inference-datacenter/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: usasi-methodology
+    title: Methodology
+    url: https://unitedstatesofamericasuperintelligence.com/methodology/
+    publisher: USASI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01

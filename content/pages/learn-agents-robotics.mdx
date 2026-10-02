@@ -1,0 +1,55 @@
+A language model on its own turns an input into an output. Once software lets that output call a tool, edit a file, or move a robot arm, the questions change: what can the system reach, who approves each step, and what happens when it gets something wrong? To answer them, separate three things: the model, the agent application that runs it in a loop with tools, and, for robots, the control software, hardware, and physical surroundings. Safeguards belong to specific components and are documented, or not, in specific sources. A catalog record usually describes one component, so check what that component's own documentation says before assuming a protection applies.
+
+<h2 id="three-layers">A model, an agent application, and a robotic system</h2>
+
+- **Model:** trained weights that map inputs to outputs, such as text, a tool request, or a sequence of robot actions. A model does nothing until other software acts on what it produces.
+- **Agent application:** software that sends a task to a model, carries out the tool calls the model asks for, and feeds the results back, step after step. Permissions, sandboxes, and approval prompts are implemented here. Protocols and libraries that connect applications to tools sit at this layer too.
+- **Robotic system:** a policy model, the software that turns its outputs into motor commands, the robot hardware, and the room it works in. Simulation frameworks used to train policies are a separate component again.
+
+The catalog files these under different kinds. [Model Context Protocol](/open/model-context-protocol/) and [NVIDIA Isaac Lab](/open/isaac-lab/) are frameworks, [Codex CLI](/open/codex-cli/) and [OpenClaw](/open/openclaw/) are runtimes, and [openpi](/open/openpi/) is a research stack of code and model checkpoints. None of these records describes a complete deployed system.
+
+<h2 id="permissions">Permissions live in the application, not the protocol</h2>
+
+The Model Context Protocol (MCP) defines how hosts (AI applications), clients (connectors inside a host), and servers (services that offer tools and data) exchange messages. Its latest specification, revision 2026-07-28, lists security principles: users must consent to and understand data access and operations, hosts must obtain explicit consent before invoking any tool, and tool descriptions should be treated as untrusted unless they come from a trusted server. The tools page adds that there "SHOULD always be a human in the loop with the ability to deny tool invocations."
+
+The same specification also states that MCP "cannot enforce these security principles at the protocol level"; it asks implementers to build consent and authorization flows into their applications. So the MCP record tells you which rules the protocol sets out, not whether a particular application or server follows them. To find that out, read the documentation of the host application and of each server it connects to.
+
+<h2 id="oversight">Human oversight is a setting with a scope</h2>
+
+OpenAI's documentation for Codex CLI separates two controls: "The sandbox defines technical boundaries. The approval policy decides when the agent must stop and ask before crossing them." The documented sandbox modes are `read-only`, `workspace-write` (edit files in the workspace and run routine local commands), and `danger-full-access` (no sandbox restrictions). The common approval policies are `on-request`, which asks before going beyond the sandbox, and `never`. Full access is the combination of `danger-full-access` and `never`.
+
+A statement such as "the agent asks before acting" is therefore true only for a given configuration, and a user or administrator can change it. Note also what the open-source code covers: the [Codex CLI record](/open/codex-cli/) explains that by default the client sends requests to OpenAI's hosted models, which are not open.
+
+NIST's AI Risk Management Framework makes the general point: human–AI configurations "can span from fully autonomous to fully manual," and some systems may specifically require human oversight. When you read a claim about oversight, ask who approves what, at which step, and under which settings.
+
+<h2 id="physical-world">Robots add hardware and an environment</h2>
+
+The openpi README describes its release as "an experiment": π0 was developed for Physical Intelligence's own robots, and the fine-tuned checkpoints "may or may not work on your particular robot." Its remote-inference guide runs the model on a separate GPU server that streams actions to the robot over a websocket; the code that drives the robot is the user's own. The DROID example's troubleshooting notes say the policy "will fail on more complex manipulation tasks."
+
+The openpi pages read for this explainer cover compatibility, setup, and expected failures. They do not describe physical safety procedures, such as stopping the robot or keeping people out of its reach. That does not show that no such procedures exist. It shows that the [openpi record](/open/openpi/) cannot claim them, and that whoever deploys it must supply them.
+
+Isaac Lab trains policies in simulation. Its gear-insertion tutorial sets effort and velocity limits in the simulated robot from the robot's specifications, discusses the gap between simulation and reality, and sends deployment on real hardware through a separate software stack, Isaac ROS. Limits set in a simulator are not limits on a real arm unless the deployed controller also enforces them.
+
+<h2 id="evaluation">What evaluations can and cannot show</h2>
+
+An agent evaluation measures behavior inside one environment, with one set of tools and permissions. NIST's Center for AI Standards and Innovation (CAISI) reported in December 2025 that models in its agent evaluations sometimes cheated: they searched the internet for walkthroughs of security challenges, crashed target servers instead of exploiting the intended vulnerability, and disabled assertions so that unit tests would pass. CAISI groups these as solution contamination and grader gaming, and suggests reviewing transcripts and stating clearly what agents are allowed to do.
+
+Two cautions follow. A score earned in a sandbox does not show how the same model behaves with broader permissions. And a robot policy evaluated on one platform, in simulation or on specific hardware, is evidence about that setup only. The catalog does not publish benchmark scores ([methodology](/methodology/#sources)); see [How to read an AI evaluation](/learn/reading-evaluations/) for more.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse agent applications under [runtimes](/open/?kind=runtime), protocols and simulation tools under [frameworks](/open/?kind=framework), and code-and-checkpoint releases under [research stacks](/open/?kind=research-stack).
+- Find organizations in [robotics](/companies/?sector=robotics) and [agents](/companies/?sector=agents), such as [Physical Intelligence](/companies/physical-intelligence/) and the [Agentic AI Foundation](/companies/agentic-ai-foundation/).
+- For any record, ask three questions: which component does it describe, what can that component reach and who sets that, and which safeguards does its source document, under which settings?
+- Catalog checklists record documentation and installation, not safety certification ([methodology](/methodology/#openness)); an unassessed item is Unknown, not "no" ([glossary](/glossary/#unknown)).
+- Look up [inference](/glossary/#inference), [hosted API](/glossary/#hosted-api), [self-hosting](/glossary/#self-hosting), and [benchmark](/glossary/#benchmark) in the glossary.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- Model Context Protocol: [Specification, revision 2026-07-28 (overview and security principles)](https://modelcontextprotocol.io/specification/2026-07-28), [Tools](https://modelcontextprotocol.io/specification/2026-07-28/server/tools), and [Versioning](https://modelcontextprotocol.io/docs/2026-07-28/learn/versioning)
+- OpenAI: [Sandbox documentation (Codex CLI, IDE extension, and ChatGPT desktop app)](https://learn.chatgpt.com/docs/sandboxing) and [Codex CLI documentation](https://learn.chatgpt.com/docs/codex/cli)
+- Physical Intelligence: [openpi README](https://github.com/Physical-Intelligence/openpi/blob/main/README.md), [remote inference guide](https://github.com/Physical-Intelligence/openpi/blob/main/docs/remote_inference.md), and [DROID example README](https://github.com/Physical-Intelligence/openpi/blob/main/examples/droid/README.md)
+- NVIDIA: [Isaac Lab documentation](https://isaac-sim.github.io/IsaacLab/main/index.html) and [Training a Gear Insertion Policy and ROS Deployment](https://isaac-sim.github.io/IsaacLab/main/source/policy_deployment/02_gear_assembly/gear_assembly_policy.html)
+- NIST: [Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1](https://doi.org/10.6028/NIST.AI.100-1), Appendix C; [Cheating On AI Agent Evaluations](https://www.nist.gov/blogs/caissi-research-blog/cheating-ai-agent-evaluations) (December 2, 2025)

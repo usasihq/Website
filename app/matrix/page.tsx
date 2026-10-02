@@ -74,7 +74,7 @@ export default function MatrixPage() {
           </details>
           <p className="mt-2 text-sm text-muted">Counts describe catalog coverage, not capability. Open-weight means publicly downloadable weights, not unrestricted use. Select a count to inspect its records.</p>
 
-          <ModelComparison rows={rows} />
+          <ModelComparison rows={rows} asOf={catalog.buildAt} />
 
           <details className="mt-5">
             <summary className="cursor-pointer font-medium text-ice">Column definitions and counting rules</summary>

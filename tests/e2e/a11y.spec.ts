@@ -31,6 +31,12 @@ const PAGES = [
   "/glossary/",
   "/learn/open-weight-vs-open-source/",
   "/reuse/",
+  "/learn/",
+  "/learn/how-to-read-a-model-card/",
+  "/hubs/",
+  "/hubs/local-ai/",
+  "/places/",
+  "/places/california/",
   "/no-such-page/",
 ];
 

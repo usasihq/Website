@@ -1,0 +1,54 @@
+A model card is the document a publisher releases with a model to say what it is, how it was trained and tested, what it is meant for, and where it falls short. Before relying on a model, use the card to pin down the exact release and who maintains it, read its intended uses and stated limitations, see which base model and data it cites, and notice what it leaves out. Every statement in a card is the publisher's own account: appearing on a model hub does not mean anyone else has checked it. This page is general information, not legal advice.
+
+<h2 id="what-a-card-is">What a model card is</h2>
+
+The format was proposed in the 2018 paper [Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993), which describes short documents that state the context a model is intended for and how its performance was evaluated. On Hugging Face, the card is the repository's `README.md` file: a block of metadata, such as the license, base model, and datasets, followed by free text. Hugging Face's [model card documentation](https://huggingface.co/docs/hub/model-cards) says a card should describe the model, its intended uses and potential limitations, its training, the datasets used, and its evaluation results. The publisher writes and edits both parts, and the hub uses the metadata for filters and links.
+
+<h2 id="what-to-check">What to check</h2>
+
+- **The exact release.** Note the name, size, version, release date, and the revision of the card you read. Releases in one [model family](/glossary/#model-family) share a name but not their evidence, and cards can be edited after release.
+- **The maintainer.** Who publishes the release and answers for it ([maintainer](/glossary/#maintainer)).
+- **Intended uses.** What the publisher says the model is for, and which uses it calls untested or out of scope.
+- **Limitations.** The section that states known risks and weak spots. Read it before the highlights.
+- **Training and evaluation descriptions.** Which data and training stages are described, and whether the code, prompts, or configurations needed to re-run the evaluations are published. A results table on its own is a [reported result](/glossary/#benchmark).
+- **Cited base models.** A [fine-tuned](/glossary/#fine-tuning) or post-trained model inherits much of its history from its base model, which has its own card and terms.
+- **Missing information.** What the card does not say. Record a gap as unknown rather than reading it as "no" ([methodology](/methodology/#uncertainty)).
+
+<h2 id="claims-and-evidence">A claim is not its evidence</h2>
+
+A model card reports what the publisher says; it does not independently verify anything. A claim is a statement such as "supports long documents" or "improves reasoning." Evidence is something you can inspect or re-run: a license file, a configuration file, published training or evaluation code, a dataset listing. When the evidence agrees with a claim, you have more reason to rely on it. When the evidence is missing, the claim stays a claim. The catalog draws the same line: a release whose card reports results without materials to re-run them is marked Partial for evaluation materials ([methodology](/methodology/#sources)).
+
+<h2 id="worked-example">Worked example: Granite 4.2 8B</h2>
+
+This walkthrough uses IBM's [Granite-4.2-8B model card](https://huggingface.co/ibm-granite/granite-4.2-8b) as it stood on October 1, 2026 ([revision f8de16c](https://huggingface.co/ibm-granite/granite-4.2-8b/blob/f8de16cdcdbc6c779ca517604e050d82cc119e44/README.md)). Its catalog record is [Granite 4.2 8B](/open/granite-4-2-8b/). Each note links to the card section it describes; read the original wording there.
+
+- **Exact release.** The [Model Summary](https://huggingface.co/ibm-granite/granite-4.2-8b#model-summary) gives the name, an 8B parameter count, bfloat16 precision, and a release date of August 25, 2026. The [commit history](https://huggingface.co/ibm-granite/granite-4.2-8b/commits/main) shows the card was changed again in September, so cite the revision you read.
+- **Maintainer.** The same summary names IBM's Granite Team as the developer.
+- **Intended uses.** The summary's row of intended uses lists reasoning, code generation, tool calling, agentic workflows, and multilingual dialog. It names 12 tested languages and says others have not been fully tested.
+- **Training.** [Training Methodology](https://huggingface.co/ibm-granite/granite-4.2-8b#training-methodology) describes supervised fine-tuning and reinforcement-learning stages. For pre-training details, it refers readers to a separate blog post. The dataset list is in the GitHub repository's [disclosures folder](https://github.com/ibm-granite/granite-4.2-language-models/tree/main/disclosures); the 8B file marks some entries as private third-party data or as synthetic data that is not publicly accessible, so not every source can be obtained.
+- **Cited base model.** Both the metadata and the text name [Granite-4.1-8B-Base](https://huggingface.co/ibm-granite/granite-4.1-8b-base), a separate release with its own card.
+- **Evaluation.** [Evaluation Results](https://huggingface.co/ibm-granite/granite-4.2-8b#evaluation-results) publishes a results table and says the evaluations ran on a framework based on NVIDIA's NeMo Evaluator SDK. The card does not include the configurations or prompts, so the catalog records evaluation materials as Partial.
+
+**Three documented limits.** The card's [Ethical Considerations and Limitations](https://huggingface.co/ibm-granite/granite-4.2-8b#ethical-considerations-and-limitations) section states that:
+
+1. performance in languages other than English may vary, because fine-tuning used mostly English instruction data;
+2. despite safety alignment, the model may sometimes produce inaccurate, biased, or unsafe responses;
+3. the reasoning text the model writes before its answer may contain unpolished intermediate thoughts that are not final conclusions.
+
+**A claim next to its evidence.** The [Description](https://huggingface.co/ibm-granite/granite-4.2-8b#description) lists a 512K-token context window among the model's key capabilities. The summary is more precise: 128K natively, with long-context extension to 512K. The files say something narrower: the shipped [config.json](https://huggingface.co/ibm-granite/granite-4.2-8b/blob/main/config.json) sets a maximum of 131,072 positions, and the card's own [vLLM serving example](https://huggingface.co/ibm-granite/granite-4.2-8b#serving-with-vllm) uses 131,072 tokens. The 512K figure traces to the base model's training, which the base model card describes. This review found no instructions in the card for running at 512K. Similarly, the card's overview describes the Apache 2.0 license as allowing unrestricted use, while the [license text](https://www.apache.org/licenses/LICENSE-2.0) sets conditions for redistribution, such as passing on a copy of the license and keeping notices.
+
+<h2 id="next">What you can do next</h2>
+
+- Open a release's [checklist](/open/granite-4-2-8b/#checklist) to see how the catalog recorded each item, with a source for each.
+- Browse [model releases](/open/?kind=model&level=release), or only those whose [evaluation materials are public](/open/?kind=model&level=release&check=evaluation_materials:public).
+- Look up [model card](/glossary/#model-card), [model release](/glossary/#model-release), and [benchmark](/glossary/#benchmark) in the glossary.
+- Read [what open weight and open source actually mean](/learn/open-weight-vs-open-source/) before relying on a license summary, and [understanding inference hardware](/learn/inference-hardware/) before relying on a card's hardware notes.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- Mitchell et al.: [Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993) (arXiv 1810.03993)
+- Hugging Face: [Model Cards documentation](https://huggingface.co/docs/hub/model-cards)
+- IBM: [granite-4.2-8b model card](https://huggingface.co/ibm-granite/granite-4.2-8b) (revision f8de16c), its [commit history](https://huggingface.co/ibm-granite/granite-4.2-8b/commits/main) and [config.json](https://huggingface.co/ibm-granite/granite-4.2-8b/blob/main/config.json); [granite-4.1-8b-base model card](https://huggingface.co/ibm-granite/granite-4.1-8b-base); [Granite 4.2 technical blog](https://huggingface.co/blog/ibm-granite/granite-4-2); granite-4.2-language-models [disclosures folder](https://github.com/ibm-granite/granite-4.2-language-models/tree/main/disclosures) and [8B disclosure file](https://github.com/ibm-granite/granite-4.2-language-models/blob/main/disclosures/granite_4.2_8b_disclosure.json)
+- Apache Software Foundation: [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)

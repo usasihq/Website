@@ -1,5 +1,13 @@
 These short definitions explain terms that appear on catalog pages. Each entry says what the term means in general, how this catalog uses it, and where to see it on a real record. Where a definition depends on an outside standard or document, the entry links to it. The rules behind the catalog are on the [methodology page](/methodology/), and [What open weight and open source actually mean](/learn/open-weight-vs-open-source/) explains licensing in more depth. Nothing here is legal advice.
 
+<h2 id="accelerator">Accelerator (AI chip)</h2>
+
+A processor built to speed up particular kinds of computation, working alongside a computer's general-purpose CPU. For AI, accelerators carry out the large matrix calculations used in training and inference; GPUs are one kind, and some companies design chips specifically for neural-network workloads.
+
+**In this catalog:** accelerators appear as hardware products on the records of the companies that make them, and software records note the hardware their documentation supports under the Supported platforms checklist item ([methodology](/methodology/#openness)).
+
+**Example:** [Intel](/companies/intel/) lists the Intel Gaudi 3 AI accelerator, which it offers as a PCIe card, an OAM mezzanine card, and a baseboard, with PyTorch support through Intel Gaudi software.
+
 <h2 id="acceptable-use-policy">Acceptable-use policy</h2>
 
 A document from a model's publisher that lists uses it prohibits. A license can incorporate such a policy by reference, which makes following the policy one of the license's conditions.
@@ -16,6 +24,14 @@ A fixed set of tasks with a scoring method, used to compare models under the sam
 
 **Example:** [HumanEval](/open/humaneval/) is a set of 164 hand-written Python programming problems, each scored by running unit tests against the generated code.
 
+<h2 id="checkpoint">Checkpoint</h2>
+
+A saved copy of a model's state at some point in training. A training checkpoint holds the weights and usually what is needed to resume training, such as the optimizer state, as PyTorch's tutorial on [saving and loading models](https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html) describes. Publishers also use the word for any downloadable set of weights, including a quantized version prepared for deployment.
+
+**In this catalog:** when a publisher releases intermediate checkpoints, the note on the release's Weights checklist item says so ([methodology](/methodology/#openness)).
+
+**Example:** For [SmolLM3 3B](/open/smollm3-3b/), Hugging Face publishes intermediate checkpoints in a separate repository, one branch per checkpoint, saved every 40,000 steps during pretraining and at later stages such as long-context extension and supervised fine-tuning.
+
 <h2 id="context-window">Context window</h2>
 
 The maximum number of tokens (small pieces of text or other input) that a model can take into account in one request, usually counting both the prompt and the generated output.
@@ -23,6 +39,14 @@ The maximum number of tokens (small pieces of text or other input) that a model 
 **In this catalog:** context lengths appear only as the publisher documents them, with a citation.
 
 **Example:** The model card for [Gemma 4 31B](/open/gemma-4-31b/) lists a 256K-token context window.
+
+<h2 id="data-center">Data center</h2>
+
+A building or campus that houses servers, storage, and networking equipment, together with the electrical and cooling systems that keep them running. Data centers built for AI hold large clusters of accelerators connected by high-speed networks.
+
+**In this catalog:** companies that build or operate data centers are organization records with roles such as Compute infrastructure or Cloud provider. Their records describe what the companies offer but give no power-capacity figures ([methodology](/methodology/#sources)).
+
+**Example:** [Crusoe](/companies/crusoe/) designs, builds, and operates data centers for AI workloads, with cooling methods that include direct liquid-to-chip cooling, and runs Crusoe Cloud, a GPU cloud platform.
 
 <h2 id="evaluation-harness">Evaluation harness</h2>
 
@@ -40,6 +64,14 @@ Continuing to train an existing model on additional data so that it behaves diff
 
 **Example:** [Llama 3.1 Tülu 3.1 8B](/open/llama-3-1-tulu-3-1-8b/) is Ai2's post-trained version of Meta's Llama 3.1 8B base model, and its weights carry the Llama 3.1 Community License Agreement.
 
+<h2 id="foundation">Foundation (open source)</h2>
+
+A nonprofit organization that gives open-source projects a neutral home: it can hold their money and trademarks and provide shared services, while each project keeps its own technical governance. A large foundation can also host directed funds, programs with their own name, charter, and governing board whose money the host foundation holds and administers.
+
+**In this catalog:** a directed fund has its own organization record, labeled Foundation-hosted and linked to the foundation that hosts it. Eligibility rests on the documented governing entity, never on the names or assumed nationalities of contributors ([methodology](/methodology/#eligibility)).
+
+**Example:** The [Agentic AI Foundation](/companies/agentic-ai-foundation/) is a directed fund of The Linux Foundation. Its [charter](https://raw.githubusercontent.com/aaif/foundation/main/foundation-charter.pdf) has a Governing Board approve the projects it supports, leaves each project's governance to that project's own charter, and gives The Linux Foundation control over how the fund's money is held and spent.
+
 <h2 id="gated-download">Gated download</h2>
 
 A download that requires an extra step before the files are released, such as signing in, sharing contact details, or accepting terms. On Hugging Face, a gated repository can grant access automatically once a user agrees, or it can require the publisher to approve each request by hand, as described in Hugging Face's [gated models documentation](https://huggingface.co/docs/hub/models-gated).
@@ -47,6 +79,14 @@ A download that requires an extra step before the files are released, such as si
 **In this catalog:** weights that are released only after a request is approved are recorded as Partial, and the release is labeled Restricted weights rather than Open-weight ([methodology](/methodology/#tiers)).
 
 **Example:** [SAM 3.1](/open/sam-3-1/) checkpoints are gated on Hugging Face, and downloads work only after an access request is accepted.
+
+<h2 id="gguf">GGUF</h2>
+
+A single-file format that stores a model's weights together with the metadata needed to load them, for inference with the GGML library and tools built on it, such as llama.cpp. Models are usually trained in another framework and then converted to GGUF, often with quantized weights. The format is specified in the [GGUF documentation](https://github.com/ggml-org/ggml/blob/master/docs/gguf.md) in the ggml repository.
+
+**In this catalog:** a GGUF build is mentioned in the Weights checklist note or run notes of the release it was made from, rather than recorded as a separate release.
+
+**Example:** For [Rnj-1 Instruct](/open/rnj-1-instruct/), Essential AI publishes an official quantized GGUF build in a separate Hugging Face repository, and the model card documents running it with llama.cpp.
 
 <h2 id="hosted-api">Hosted API</h2>
 
@@ -80,6 +120,14 @@ The organization or group that currently governs a project: it reviews and accep
 
 **Example:** [PyTorch](/open/pytorch/) was originally developed at Meta and has been hosted by the PyTorch Foundation, under the Linux Foundation, since September 2022.
 
+<h2 id="mixture-of-experts">Mixture of experts (MoE)</h2>
+
+A model design in which some layers contain many parallel sub-networks, called experts, and a small routing network sends each token to only a few of them. Because only part of the model runs for each token, the total parameter count differs from the number of active parameters. A sparsely gated form of the design was described in [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538) (Shazeer et al., 2017).
+
+**In this catalog:** total and active parameter counts appear only as the publisher states them, with a citation.
+
+**Example:** [Trinity Mini](/open/trinity-mini/), from Arcee AI, has 26B parameters in total and 3B active; its model card lists 128 experts, 8 of them active, plus 1 shared expert.
+
 <h2 id="model-card">Model card</h2>
 
 A document published with a model that describes what it is, how it was trained and evaluated, what it is intended for, and its known limitations. The format was proposed in the paper [Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993) (Mitchell et al., 2018). On Hugging Face, the model card is the repository's README file, with metadata such as the license, as described in its [model cards documentation](https://huggingface.co/docs/hub/model-cards).
@@ -104,6 +152,14 @@ One specific published model, identified by its name, size, and version, with it
 
 **Example:** [Olmo 3.1 32B Think](/open/olmo-3-1-32b-think/) is one release in Ai2's Olmo family, with its own licenses and checklist.
 
+<h2 id="nonprofit">Nonprofit</h2>
+
+An organization that is not run to make a profit for owners or shareholders. In the United States, the IRS recognizes many nonprofits as tax-exempt: [section 501(c)(3)](https://www.irs.gov/charities-non-profits/charitable-organizations/exemption-requirements-501c3-organizations) covers organizations run for charitable, scientific, educational, and similar purposes, and [section 501(c)(6)](https://www.irs.gov/charities-non-profits/other-non-profits/business-leagues) covers business leagues, such as trade associations, that promote a shared business interest. In both cases, net earnings may not benefit any private shareholder or individual.
+
+**In this catalog:** U.S. nonprofit or lab is one of the four eligibility bases. Nonprofit status is documented from the organization's own pages and, where available, the IRS listing of tax-exempt organizations ([methodology](/methodology/#eligibility)).
+
+**Example:** [EleutherAI](/companies/eleutherai/) appears in the IRS exempt-organization data for the District of Columbia as EleutherAI Institute, a 501(c)(3) organization with a ruling date of November 2023.
+
 <h2 id="open-source-software">Open source (software)</h2>
 
 Software distributed with its source code under a license that meets the Open Source Initiative's [Open Source Definition](https://opensource.org/osd) (version 1.9). Its criteria include free redistribution, access to the source code, permission to make derived works, and no discrimination against persons, groups, or fields of endeavor. Code that is merely readable on a public website is not open source on that basis alone.
@@ -120,6 +176,14 @@ An AI system made available under terms that grant the freedoms to use, study, m
 
 **Example:** [Olmo 3 7B](/open/olmo-3-1025-7b/) publishes its weights, training scripts, and training-data mixes. The catalog labels it Open-stack, which describes published materials and is not a finding that it meets the OSI definition.
 
+<h2 id="open-stack">Open-stack</h2>
+
+A USASI tier for a model release that is Open-weight and also has published inference code, training code, and a training recipe, plus at least a documented composition of its training data. It is an editorial category of rubric v0.2, not an outside standard, and it does not require the training data itself to be downloadable.
+
+**In this catalog:** the tier is computed from the release's checklist. Tiers are cumulative, so every Open-stack release also counts as Open-weight; the higher tier, Open system (reviewed), also requires complete training-data information, a complete training pipeline, and a sourced review of reuse rights ([methodology](/methodology/#tiers)).
+
+**Example:** [Olmo 3 7B](/open/olmo-3-1025-7b/) is labeled Open-stack: Ai2 publishes its weights, the OLMo-core scripts for its pretraining, mid-training, and long-context stages, a technical report with its training configuration, and links to the data mixes used at each stage.
+
 <h2 id="open-weight">Open weight</h2>
 
 A model whose trained parameters can be downloaded by the public. The term describes availability: the license that comes with the weights may still limit commercial use, redistribution, or particular uses. Others use the term with stricter requirements; the OSI's [explainer on open weights](https://opensource.org/ai/open-weights), for example, describes final parameters shared under an OSI-approved license, without the training code or data.
@@ -128,6 +192,22 @@ A model whose trained parameters can be downloaded by the public. The term descr
 
 **Example:** [gpt-oss-20b](/open/gpt-oss-20b/) is labeled Open-weight; its weights download without a gate under the Apache License 2.0.
 
+<h2 id="parent-company">Parent company and documented control</h2>
+
+A parent company controls another organization, its subsidiary, either directly or through other subsidiaries. In the SEC's definitions in [Rule 405](https://www.ecfr.gov/current/title-17/section-230.405), control means the power to direct an entity's management and policies, whether through owning voting securities, by contract, or otherwise, so it can rest on more than share ownership.
+
+**In this catalog:** documented U.S. control is one of the four eligibility bases. It applies when filings or official pages show that a U.S. entity primarily controls an organization, for example a research unit wholly owned by a U.S.-headquartered company, and each such case gets a written assessment ([methodology](/methodology/#eligibility)).
+
+**Example:** The [Google DeepMind](/companies/google-deepmind/) record names no headquarters, because the official pages reviewed do not state one. It is assessed under U.S. control because Google and Alphabet document it as part of Google, and Alphabet's principal executive offices are in Mountain View, California.
+
+<h2 id="power-and-energy">Power and energy</h2>
+
+Power is the rate at which electricity is supplied or used at a given moment, measured in watts (W): a kilowatt (kW) is 1,000 watts, a megawatt (MW) is 1,000 kW, and a gigawatt (GW) is 1,000 MW. Energy is power used over time, measured in watthours (Wh): a kilowatthour (kWh) is one kilowatt for one hour, and a megawatthour (MWh) is one megawatt for one hour. A figure in megawatts or gigawatts therefore describes capacity at a moment, not an amount of electricity used. The U.S. Energy Information Administration explains these units in [Measuring electricity](https://www.eia.gov/energyexplained/electricity/measuring-electricity.php).
+
+**In this catalog:** power-capacity figures are not published, even when an organization's own announcements state them ([methodology](/methodology/#sources)).
+
+**Example:** [Thinking Machines Lab](/companies/thinking-machines-lab/) records a March 2026 partnership with NVIDIA to deploy NVIDIA systems for its model training. The announcement, listed among the record's sources, calls the partnership gigawatt-scale in its title, which describes power capacity; the record's own text gives no capacity figure.
+
 <h2 id="quantization">Quantization</h2>
 
 Storing a model's weights, and sometimes its intermediate values, at lower numerical precision (for example 4-bit integers instead of 16-bit numbers) to reduce memory use and speed up inference, sometimes at some cost in output quality.
@@ -135,6 +215,14 @@ Storing a model's weights, and sometimes its intermediate values, at lower numer
 **In this catalog:** memory or hardware figures are recorded only when a publisher states them, together with the precision they assume.
 
 **Example:** [AWQ (Activation-aware Weight Quantization)](/open/awq/), from MIT HAN Lab, is a method and codebase for 4-bit and 3-bit weight-only quantization of language models.
+
+<h2 id="restricted-weights">Restricted weights</h2>
+
+A USASI tier for a model release whose weights can be obtained only by request, with approval, or by some users, for example through a gated download that the publisher reviews. Such a release is not counted as Open-weight, however much else about it is published.
+
+**In this catalog:** the tier follows from the Weights checklist item: weights recorded as Partial give Restricted weights, and the license is recorded separately ([methodology](/methodology/#tiers)).
+
+**Example:** For [DINOv3 ViT-7B/16](/open/dinov3-vit7b16/), Meta publishes training code and stage-by-stage configuration files, but downloading the weights from Hugging Face requires an approved access request, so the release is labeled Restricted weights.
 
 <h2 id="reviewed-date">Reviewed date</h2>
 
@@ -159,6 +247,14 @@ A company that is owned or controlled by another company, its parent. A research
 **In this catalog:** a subsidiary or unit with its own record is also counted under "units and subsidiaries," so a parent and its subsidiary are never presented as two independent companies. Parent–subsidiary cases get a written eligibility assessment ([methodology](/methodology/#counts)).
 
 **Example:** [Red Hat](/companies/red-hat/) is documented in its record as a wholly owned subsidiary of IBM, with its own headquarters in Raleigh, North Carolina.
+
+<h2 id="tokenizer">Tokenizer</h2>
+
+The component that splits input text into tokens, such as words, parts of words, or single characters, and converts them into the numeric IDs a model works with. A model is normally run with the same tokenizer it was trained with. Hugging Face's guide to [tokenization algorithms](https://huggingface.co/docs/transformers/tokenizer_summary) describes the common subword methods.
+
+**In this catalog:** a tokenizer that is distributed separately from a model's weights is noted in the release's run notes or provenance.
+
+**Example:** [OpenELM 3B Instruct](/open/openelm-3b-instruct/) is published without tokenizer files. Apple's example script loads Meta's Llama 2 tokenizer from a separate Hugging Face repository, which is gated, and the script requires a Hugging Face access token.
 
 <h2 id="unknown">Unknown</h2>
 

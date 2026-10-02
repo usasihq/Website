@@ -1,0 +1,163 @@
+slug: kempnerforge
+name: KempnerForge
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Kempner Institute for the Study of Natural and Artificial Intelligence, Harvard University
+    organization_slug: harvard-university
+    source_ids: [kempnerforge-repo, kempnerforge-license, kempner-github]
+organization_slugs: [harvard-university]
+links:
+  - label: Repository (KempnerInstitute/KempnerForge)
+    url: https://github.com/KempnerInstitute/KempnerForge
+    kind: repository
+  - label: Documentation
+    url: https://kempnerinstitute.github.io/KempnerForge/
+    kind: documentation
+  - label: LICENSE (MIT)
+    url: https://github.com/KempnerInstitute/KempnerForge/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/KempnerInstitute/KempnerForge/releases
+    kind: release-notes
+summary:
+  text: >-
+    KempnerForge is a PyTorch-native framework from Harvard's Kempner Institute for
+    fault-tolerant distributed training of foundation models on AI clusters. It trains
+    decoder-only Transformers and mixture-of-experts models with FSDP2, tensor, expert, and
+    pipeline parallelism and FP8 mixed precision, and it includes asynchronous checkpointing
+    with auto-resume, SLURM preemption handling, activation-extraction hooks for
+    interpretability, and vision-language model training.
+  source_ids: [kempnerforge-repo]
+  reviewed_at: 2026-10-01
+useful_for:
+  text: >-
+    The README lists scaling-law experiments, mechanistic interpretability, sparse
+    (mixture-of-experts) architecture research, optimizer and learning-rate-schedule
+    comparisons, long-running jobs on shared SLURM clusters, and extracting model
+    representations to compare with neural recordings in NeuroAI research.
+  source_ids: [kempnerforge-repo]
+  reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    KempnerForge is published in the Kempner Institute's GitHub organization, and its MIT
+    License names the Kempner Institute for the Study of Natural and Artificial Intelligence,
+    Harvard University, as copyright holder. Harvard University is a 501(c)(3) school in
+    Cambridge, Massachusetts, according to the IRS exempt-organization extract.
+  source_ids: [kempnerforge-repo, kempnerforge-license, kempner-github, irs-eo-bmf-ma]
+  assessed_at: 2026-10-01
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub and is installed from a clone with uv.
+  source_ids: [kempnerforge-repo]
+  reviewed_at: 2026-10-01
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/KempnerInstitute/KempnerForge/blob/main/LICENSE
+    applies_to: code
+    source_ids: [kempnerforge-license]
+    reviewed_at: 2026-10-01
+license_notes: null
+checklist:
+  source_code:
+    status: public
+    note: Public GitHub repository under the MIT License.
+    source_ids: [kempnerforge-repo, kempnerforge-license]
+    reviewed_at: 2026-10-01
+  documentation:
+    status: public
+    note: >-
+      A documentation site built from the repository covers getting started, how-to guides
+      (including an end-to-end training run), architecture, and API reference, and the
+      repository includes example notebooks.
+    source_ids: [kempnerforge-docs, kempnerforge-repo]
+    reviewed_at: 2026-10-01
+  installation:
+    status: public
+    note: >-
+      The README's quick start installs dependencies with "uv sync" and runs training scripts
+      on one GPU, several GPUs with torchrun, or SLURM.
+    source_ids: [kempnerforge-repo]
+    reviewed_at: 2026-10-01
+  supported_platforms:
+    status: partial
+    note: >-
+      The README lists Python 3.12 or later and PyTorch 2.4 or later with CUDA as
+      prerequisites, and includes SLURM launch scripts. No broader hardware or operating-system
+      support list was found.
+    source_ids: [kempnerforge-repo]
+    reviewed_at: 2026-10-01
+  release_status:
+    status: public
+    note: >-
+      The GitHub releases page lists v0.1.0, released April 20, 2026.
+    source_ids: [kempnerforge-releases]
+    reviewed_at: 2026-10-01
+run_notes:
+  - text: >-
+      The README's quick start runs a single-GPU debug configuration, a four-GPU FSDP run with
+      torchrun, and a single-node SLURM job, each driven by a TOML configuration file.
+    source_ids: [kempnerforge-repo]
+    reviewed_at: 2026-10-01
+provenance: null
+tags: [training, distributed-computing, interpretability, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2026-04-20
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: kempnerforge-repo
+    title: KempnerInstitute/KempnerForge (GitHub repository and README)
+    url: https://github.com/KempnerInstitute/KempnerForge
+    publisher: Kempner Institute, Harvard University
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempnerforge-license
+    title: KempnerForge LICENSE (MIT License)
+    url: https://raw.githubusercontent.com/KempnerInstitute/KempnerForge/main/LICENSE
+    publisher: Kempner Institute, Harvard University
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempnerforge-docs
+    title: KempnerForge documentation
+    url: https://kempnerinstitute.github.io/KempnerForge/
+    publisher: Kempner Institute, Harvard University
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempnerforge-releases
+    title: Releases · KempnerInstitute/KempnerForge
+    url: https://github.com/KempnerInstitute/KempnerForge/releases
+    publisher: Kempner Institute, Harvard University
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempner-github
+    title: Kempner Institute (GitHub organization)
+    url: https://github.com/KempnerInstitute
+    publisher: Kempner Institute, Harvard University
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ma
+    title: Exempt Organizations Business Master File Extract - Massachusetts (eo_ma.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ma.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

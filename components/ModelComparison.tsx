@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { MODEL_COLUMNS, type MatrixCell, type ModelMatrixRow } from "@/lib/matrix";
 import { orgHref } from "@/lib/routes";
+import { siteConfig } from "@/lib/site-config";
 import { SelectField } from "./FilterControls";
 import { useQueryState } from "./useQueryState";
 
@@ -26,7 +27,53 @@ function CountLink({ cell, label }: { cell: MatrixCell; label: string }) {
     aria-label={`${cell.count} — ${label}. View the records counted.`} data-count={cell.count}>{cell.count}</Link>;
 }
 
-export function ModelComparison({ rows }: { rows: ModelMatrixRow[] }) {
+const CAVEAT = "Counts describe this catalog's coverage on the snapshot date, not capability, market share, or a ranking. Each record page lists its sources.";
+
+/** Build the export for the rows and columns currently shown (same order, same values). */
+export function comparisonExport(rows: ModelMatrixRow[], columns: typeof MODEL_COLUMNS, asOf: string) {
+  const base = `https://${siteConfig.domain}`;
+  return {
+    source: `${base}/matrix/`,
+    snapshot: asOf,
+    caveat: CAVEAT,
+    fields: [
+      { key: "slug", description: "Stable record identifier." },
+      { key: "name", description: "Organization name." },
+      { key: "record_page", description: "The organization's record, where every statement cites its source." },
+      { key: "hosted_model_products", description: "Documented hosted-model products (APIs and assistant apps) in the record." },
+      ...columns.map((c) => ({ key: c.key, description: `${c.label}: ${c.description}` })),
+    ],
+    rows: rows.map((r) => ({
+      slug: r.org.slug,
+      name: r.org.name,
+      record_page: `${base}${orgHref(r.org.slug)}`,
+      hosted_model_products: r.hosted.count,
+      ...Object.fromEntries(columns.map((c) => [c.key, r.cells[c.key].count])),
+    })),
+  };
+}
+
+export function toCsv(data: ReturnType<typeof comparisonExport>): string {
+  const keys = data.fields.map((f) => f.key);
+  const esc = (v: unknown) => {
+    const s = String(v ?? "");
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  return [keys.join(","), ...data.rows.map((r) => keys.map((k) => esc((r as Record<string, unknown>)[k])).join(","))].join("\n") + "\n";
+}
+
+function download(name: string, type: string, body: string) {
+  const url = URL.createObjectURL(new Blob([body], { type }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+export function ModelComparison({ rows, asOf }: { rows: ModelMatrixRow[]; asOf: string }) {
   const { state, update } = useQueryState(parseComparison, serializeComparison);
   const selected = state.orgs.filter((slug) => rows.some((r) => r.org.slug === slug));
   const visible = state.orgs.length ? rows.filter((r) => selected.includes(r.org.slug)) : rows;
@@ -51,6 +98,11 @@ export function ModelComparison({ rows }: { rows: ModelMatrixRow[] }) {
       </ul>}
       {(state.orgs.length > 0 || state.detail) && <button type="button" className="link mt-2 min-h-11 text-sm" onClick={() => update({ orgs: [], detail: false })}>Reset comparison</button>}
       <noscript><p className="mt-2 text-sm text-muted">Selection needs JavaScript. All organizations appear below; their record pages contain the full evidence.</p></noscript>
+    </div>
+    <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
+      <span className="text-muted">Download this view:</span>
+      <button type="button" className="btn btn-secondary text-sm" onClick={() => download(`usasi-comparison-${asOf.slice(0, 10)}.csv`, "text/csv", toCsv(comparisonExport(visible, columns, asOf)))}>CSV</button>
+      <button type="button" className="btn btn-secondary text-sm" onClick={() => download(`usasi-comparison-${asOf.slice(0, 10)}.json`, "application/json", JSON.stringify(comparisonExport(visible, columns, asOf), null, 2) + "\n")}>JSON (with field definitions and caveats)</button>
     </div>
     <p role="status" aria-live="polite" aria-atomic="true" className="meta my-3">Showing {visible.length} of {rows.length} organizations · {state.detail ? "All columns" : "Summary columns"}</p>
     {visible.length ? <div className="table-scroll lg:max-h-[65vh]" tabIndex={0} role="region" aria-label="Organization comparison table; scroll horizontally for more columns">

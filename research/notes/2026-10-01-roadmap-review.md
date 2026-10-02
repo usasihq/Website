@@ -32,3 +32,16 @@ export, search replacement evaluation, and the institution-coverage pilot.
 - Whether to publish aggregate review-queue counts.
 - Whether to add a periodic human-written editorial brief, and its frequency and byline.
 - Which five hubs to build first.
+
+## Phase two build-out (2026-10-01, owner: "Build the site out")
+
+Owner decisions: no promised correction response time; no named editor. Both are stated on /about/
+and /contribute/.
+
+Built: five hubs (/hubs/), ten explainers with a Learn index (/learn/), places by documented
+headquarters state (/places/), "What this catalog does not know" and "Explore related information"
+on every record, comparison export (CSV, and JSON with field definitions and caveats), 34 glossary
+terms, and an institution pilot (5 DOE national laboratories, 6 universities, 7 open projects).
+
+Still deferred: typed relationship schema and migration, dossiers, a primary-source library and
+timeline, search replacement evaluation, review-queue counts, and a human-written periodic brief.

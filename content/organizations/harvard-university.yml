@@ -1,0 +1,144 @@
+slug: harvard-university
+name: Harvard University
+legal_name:
+  text: President and Fellows of Harvard College
+  source_ids: [irs-eo-bmf-ma]
+  reviewed_at: 2026-10-01
+website: https://www.harvard.edu
+logo_text: HU
+summary:
+  text: >-
+    Harvard University is a university in Cambridge, Massachusetts, founded in 1636 by a vote of
+    the Great and General Court of the Massachusetts Bay Colony. Its AI research includes the
+    Kempner Institute for the Study of Natural and Artificial Intelligence, which studies the
+    basis of intelligence in natural and artificial systems and publishes open-source software
+    such as KempnerForge.
+  source_ids: [harvard-about, harvard-history, kempner-home, kempnerforge-repo]
+  reviewed_at: 2026-10-01
+organization_roles: [university-lab, research-lab]
+ownership_category: nonprofit
+legal_form:
+  text: >-
+    Organization recognized by the IRS as tax-exempt under Section 501(c)(3); the IRS extract
+    lists it under the name President and Fellows of Harvard College and classifies it as a
+    corporation with school public-charity status (170(b)(1)(A)(ii)).
+  source_ids: [irs-eo-bmf-ma, irs-eo-info]
+  reviewed_at: 2026-10-01
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Cambridge, Massachusetts
+  country: US
+  source_ids: [harvard-about, irs-eo-bmf-ma]
+other_locations:
+  - label: Boston, Massachusetts (Longwood and Allston campuses)
+    country: US
+    source_ids: [harvard-history]
+founded: null
+sectors: [research]
+status_note: null
+products: []
+notable_facts:
+  - text: >-
+      Harvard dates its founding to October 28, 1636, and describes itself as the first college
+      in the American colonies.
+    source_ids: [harvard-about, harvard-history]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The Kempner Institute for the Study of Natural and Artificial Intelligence at Harvard
+      University states that it seeks to understand the basis of intelligence in natural and
+      artificial systems. It publishes code in the KempnerInstitute GitHub organization.
+    source_ids: [kempner-home, kempner-github]
+    reviewed_at: 2026-10-01
+  - text: >-
+      KempnerForge is a PyTorch-native framework for fault-tolerant distributed training of
+      foundation models on AI clusters, with tooling for interpretability and NeuroAI
+      representation analysis. It is released under the MIT License with copyright held by the
+      Kempner Institute for the Study of Natural and Artificial Intelligence, Harvard University.
+    source_ids: [kempnerforge-repo, kempnerforge-license]
+    reviewed_at: 2026-10-01
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    The IRS exempt-organization extract for Massachusetts lists President and Fellows of Harvard
+    College, at 1350 Massachusetts Avenue in Cambridge, as a 501(c)(3) corporation with school
+    status. Harvard's own pages place the university in Cambridge, Massachusetts.
+  source_ids: [irs-eo-bmf-ma, irs-eo-info, harvard-about]
+  assessed_at: 2026-10-01
+openness_summary:
+  text: >-
+    This catalog assesses openness per artifact, not for the university as a whole. KempnerForge's
+    source code is published under the MIT License.
+  source_ids: [kempnerforge-license]
+  reviewed_at: 2026-10-01
+hiring_url: null
+publication_status: published
+archive_note: null
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: harvard-about
+    title: About - Harvard University
+    url: https://www.harvard.edu/about/
+    publisher: Harvard University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: harvard-history
+    title: The history of Harvard University
+    url: https://www.harvard.edu/about/history/
+    publisher: Harvard University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-bmf-ma
+    title: Exempt Organizations Business Master File Extract - Massachusetts (eo_ma.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ma.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: irs-eo-info
+    title: Exempt Organization Business Master File Extract information sheet
+    url: https://www.irs.gov/pub/foia/ig/tege/eo-info.pdf
+    publisher: Internal Revenue Service
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempner-home
+    title: Kempner Institute - For the Study of Natural & Artificial Intelligence at Harvard University
+    url: https://kempnerinstitute.harvard.edu/
+    publisher: Kempner Institute, Harvard University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempner-github
+    title: Kempner Institute (GitHub organization)
+    url: https://github.com/KempnerInstitute
+    publisher: Kempner Institute, Harvard University
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempnerforge-repo
+    title: KempnerInstitute/KempnerForge (GitHub repository and README)
+    url: https://github.com/KempnerInstitute/KempnerForge
+    publisher: Kempner Institute, Harvard University
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: kempnerforge-license
+    title: KempnerForge LICENSE (MIT License)
+    url: https://raw.githubusercontent.com/KempnerInstitute/KempnerForge/main/LICENSE
+    publisher: Kempner Institute, Harvard University
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,233 @@
+slug: science
+title: AI for science
+summary: >-
+  Biology, chemistry, and medical models in the catalog, the science-focused organizations
+  that publish them, and the licenses, access gates, and safety measures their documents
+  describe.
+intro:
+  - text: >-
+      AI for science in this catalog mostly means models trained on biological or chemical
+      data rather than on general web text. Evo 2, from Arc Institute working with NVIDIA, is a
+      DNA language model trained on genomes from all domains of life. ESM3 is a generative
+      protein model that designs proteins from partial prompts of sequence, structure, and
+      function. Boltz-2 jointly models biomolecular complex structures and binding affinities,
+      and Chai-1 predicts the structures of proteins, small molecules, DNA, RNA, and other
+      molecules together. ether0, from FutureHouse, is a 24B model fine-tuned from
+      Mistral-Small-24B-Instruct-2501 that reasons in English and outputs molecules as SMILES.
+    source_ids: [evo2-readme, arc-evo2-news, esm3-card, boltz-readme, chai-readme, ether0-card]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The publishers range from nonprofits to companies. Arc Institute describes itself as an
+      independent nonprofit research organization headquartered in Palo Alto, and FutureHouse
+      as a 501(c)(3) AI-for-science research lab in San Francisco, while the Profluent-E1
+      license is offered by Profluent Bio Inc. FutureHouse's GitHub organization also hosts
+      PaperQA2, an Apache-2.0 package for retrieval-augmented generation over scientific
+      literature. By default it uses OpenAI models and embeddings, and any LiteLLM-compatible
+      model can be configured instead, so the tool's own license does not cover the model
+      service it calls.
+    source_ids: [arc-about, futurehouse-about, e1-license, paperqa-readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Terms differ from release to release. Boltz says all of its code and weights are under
+      the MIT license for academic and commercial use. Chai-1's code and weights are under
+      Apache 2.0. The ESM3 open small model card points to an MIT license, and the Evo 2
+      checkpoints are tagged Apache 2.0, with Arc saying it shared the training data, training
+      and inference code, and weights. Profluent-E1 uses a custom clickthrough license. Its
+      attribution guidelines require commercial entities to credit the model, and require any
+      drug, target, hit, or lead developed with it to be identified as Built with Profluent-E1,
+      including in public disclosures to the U.S. Food and Drug Administration.
+    source_ids: [boltz-readme, chai-readme, esm3-card, evo2-40b-card, arc-evo2-news, e1-license, e1-attribution]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Documented restrictions and safeguards take different forms. The MedGemma 27B model on
+      Hugging Face can be downloaded only after signing in and agreeing to the Health AI
+      Developer Foundations terms of use, and the MedGemma model card says its outputs are not
+      intended to directly inform clinical diagnosis, patient management, or treatment. Other
+      releases document measures in training data or model behavior instead. Arc says
+      pathogens that infect humans and other complex organisms were excluded from Evo 2's base
+      data set. The ESM3 open model card says virus-related data and some proteins from
+      organisms on the USDA Select Agents and Toxins list were removed from training. ether0
+      was post-trained to refuse questions about compounds on OPCW Schedules 1 and 2.
+    source_ids: [medgemma-hf, medgemma-card, arc-evo2-news, esm3-card, ether0-card]
+    reviewed_at: 2026-10-01
+scope: >-
+  Covers models and tools for biology, chemistry, medicine, and scientific literature, and the
+  organizations that publish them. It notes documented licenses, access gates, and safety
+  measures; it does not judge scientific accuracy, clinical suitability, or biosecurity risk.
+  Featured records are examples chosen to cover the subject, not a ranking or a complete
+  list.
+reading_path:
+  - label: How to read a model card
+    href: /learn/how-to-read-a-model-card/
+    note: Start here. Science model cards hold the license, intended uses, and safety notes.
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: Why downloadable weights and permission to use them are separate questions.
+  - label: Gated download
+    href: /glossary/#gated-download
+    note: What it means when a download asks you to sign in and accept terms first.
+  - label: Acceptable use policy
+    href: /glossary/#acceptable-use-policy
+    note: Use policies can limit applications even when weights download freely.
+  - label: Training-data disclosures
+    href: /learn/training-data-disclosures/
+    note: How to read what a release says about its training data, including exclusions.
+  - label: Reading evaluations
+    href: /learn/reading-evaluations/
+    note: How to treat reported results on scientific tasks with care.
+  - label: Arc Institute
+    href: /companies/arc-institute/
+    note: An example record for a nonprofit research organization that publishes open models.
+directory_links:
+  - label: Science organizations
+    href: /companies/?sector=science
+    note: Organizations whose records list science as a sector.
+  - label: Science models and tools
+    href: /open/?q=science
+    note: Open artifacts that match science, including biology and chemistry models.
+  - label: Protein models
+    href: /open/?q=protein
+    note: A text search for protein language and structure models.
+organizations: [arc-institute, futurehouse, biohub, profluent]
+artifacts:
+  - evo-2
+  - esm3-sm-open-v1
+  - boltz-2-v2
+  - chai-1-v0-6
+  - e1-600m
+  - ether0-24b
+  - paper-qa
+  - medgemma-27b-it
+people: []
+primary_documents:
+  - source_id: arc-evo2-news
+    note: >-
+      Arc Institute's announcement of Evo 2, which states what was shared openly and which
+      pathogens were excluded from the training data.
+  - source_id: esm3-card
+    note: >-
+      The ESM3 open model card, with its training-data removals, output filtering, and license
+      statement.
+  - source_id: boltz-readme
+    note: >-
+      The Boltz repository's statement that its code and weights are MIT-licensed for academic
+      and commercial use, and its optional automatic MSA generation through an MSA server.
+  - source_id: chai-readme
+    note: >-
+      Chai-1's current license statement for code and weights, and its hardware requirements.
+  - source_id: e1-attribution
+    note: >-
+      Profluent-E1's attribution guidelines, an example of conditions that go beyond a
+      standard open-source license.
+  - source_id: ether0-card
+    note: >-
+      The ether0 card, which records the base model, training stages, and refusal training.
+  - source_id: medgemma-card
+    note: >-
+      MedGemma's intended-use and limitations sections, which state what its outputs should
+      not be used for.
+  - source_id: paperqa-readme
+    note: >-
+      Shows how an open-source science agent depends on a separately configured model service.
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: evo2-readme
+    title: "Evo 2: Genome modeling and design across all domains of life (README)"
+    url: https://raw.githubusercontent.com/ArcInstitute/evo2/main/README.md
+    publisher: Arc Institute (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: evo2-40b-card
+    title: evo2_40b model card
+    url: https://huggingface.co/arcinstitute/evo2_40b/raw/main/README.md
+    publisher: Arc Institute (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: arc-evo2-news
+    title: AI can now model and design the genetic code for all domains of life with Evo 2
+    url: https://arcinstitute.org/news/evo2
+    publisher: Arc Institute
+    kind: announcement
+    published_at: 2025-02-19
+    accessed_at: 2026-10-01
+  - id: arc-about
+    title: About Arc Institute
+    url: https://arcinstitute.org/about
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: esm3-card
+    title: Model card for esm3-sm-open-v1
+    url: https://huggingface.co/biohub/esm3-sm-open-v1/raw/main/README.md
+    publisher: Biohub (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: boltz-readme
+    title: Boltz README
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/README.md
+    publisher: Boltz (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: chai-readme
+    title: Chai-1 README
+    url: https://raw.githubusercontent.com/chaidiscovery/chai-lab/main/README.md
+    publisher: Chai Discovery (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: ether0-card
+    title: ether0 model card
+    url: https://huggingface.co/futurehouse/ether0/raw/main/README.md
+    publisher: FutureHouse (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: futurehouse-about
+    title: About FutureHouse
+    url: https://www.futurehouse.org/about
+    publisher: FutureHouse
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: paperqa-readme
+    title: PaperQA2 README
+    url: https://raw.githubusercontent.com/Future-House/paper-qa/main/README.md
+    publisher: FutureHouse (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: e1-license
+    title: Profluent-E1 Clickthrough License Agreement
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/LICENSE
+    publisher: Profluent (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: e1-attribution
+    title: Profluent-E1 Attribution Guidelines
+    url: https://raw.githubusercontent.com/Profluent-AI/E1/main/ATTRIBUTION
+    publisher: Profluent (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: medgemma-hf
+    title: google/medgemma-27b-it
+    url: https://huggingface.co/google/medgemma-27b-it
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: medgemma-card
+    title: MedGemma 1 model card
+    url: https://developers.google.com/health-ai-developer-foundations/medgemma/model-card-v1
+    publisher: Google for Developers
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-01

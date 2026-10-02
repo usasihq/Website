@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { RecordContext } from "@/components/RecordContext";
+import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
 import { OrganizationJobs } from "@/components/OrganizationJobs";
 import { readJobs } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
@@ -319,6 +321,8 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
             enabled={Boolean(org.careers?.enabled)} asOf={catalog.buildAt}
             jobCount={jobData.jobs.filter(j => j.organization_slug === org.slug && j.status === "open").length}
             feed={jobData.feeds.find(f => f.organization_slug === org.slug) ?? null} /> : null}
+
+          <RecordContext unknowns={organizationUnknowns(org, related.length)} related={organizationRelated(catalog, org)} />
 
           <Section id="eligibility" title="U.S. eligibility" description="How this record meets the catalog’s published eligibility policy.">
             <EligibilityBlock eligibility={org.eligibility} sources={s} />

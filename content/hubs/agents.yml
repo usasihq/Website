@@ -1,0 +1,182 @@
+slug: agents
+title: AI agents and agent tooling
+summary: >-
+  What separates an agent from a model, and the open protocols, SDKs, and coding agents used
+  to build agents, including the Model Context Protocol, A2A, and AGENTS.md.
+intro:
+  - text: >-
+      A model takes an input and returns an output. An agent is software that wraps one or more
+      models with instructions and tools so that it can take actions. The OpenAI Agents SDK,
+      for example, defines agents as models configured with instructions, tools, guardrails,
+      and handoffs to other agents, and its tools include functions, MCP servers, and hosted
+      tools. Google's Agent Development Kit describes itself as a framework for building,
+      evaluating, and deploying agents that is optimized for Gemini but model-agnostic.
+    source_ids: [oai-agents-readme, adk-readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      The agent and the model are often separate pieces with separate terms. Codex CLI,
+      OpenAI's Apache-2.0 coding agent, runs on your computer but signs in with a ChatGPT plan
+      or an API key to use OpenAI's models. goose, an agent with a desktop app, a command line,
+      and an API, works with several model providers, among them Anthropic, OpenAI, Google,
+      and Ollama. An open-source agent can therefore depend on a hosted model service.
+    source_ids: [codex-readme, goose-readme]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Three open specifications connect agents to tools, to each other, and to codebases. The
+      Model Context Protocol (MCP) uses JSON-RPC 2.0 messages between hosts (LLM
+      applications), clients inside them, and servers that offer resources, prompts, and
+      tools. Agent2Agent (A2A) lets agents built on different frameworks by different companies
+      discover each other's capabilities through Agent Cards and work together without
+      exposing their internal memory or tools. AGENTS.md is a Markdown file in a project that
+      gives coding agents instructions; its maintainers call it a README for agents. All three
+      are projects of the Agentic AI Foundation, a Linux Foundation project.
+    source_ids: [mcp-spec, a2a-readme, agentsmd-readme, aaif-projects]
+    reviewed_at: 2026-10-01
+  - text: >-
+      Because agents act, permissions matter. The MCP specification treats tools as arbitrary
+      code execution, says hosts must obtain explicit user consent before invoking any tool,
+      and notes that the protocol itself cannot enforce these principles. It asks implementers
+      to build consent and authorization flows into their applications. When you assess an
+      agent, look at how it asks for approval, what it is allowed to run, and what data it
+      sends where.
+    source_ids: [mcp-spec]
+    reviewed_at: 2026-10-01
+scope: >-
+  Covers software that uses models to take actions: agent protocols and file conventions,
+  agent SDKs and frameworks, coding agents, and benchmarks that test agents. The models that
+  agents call are separate records with their own licenses. It does not cover hosted agent
+  products in depth or compare agent performance. Featured records are examples chosen to
+  cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: Agents and robotics
+    href: /learn/agents-and-robotics/
+    note: Start here for how agents and robots differ from the models they use.
+  - label: How the ecosystem fits together
+    href: /learn/how-the-ecosystem-fits-together/
+    note: Where agents sit relative to models, runtimes, and compute providers.
+  - label: Hosted API
+    href: /glossary/#hosted-api
+    note: Many agents call a model through a hosted API. This explains what that means.
+  - label: Model Context Protocol record
+    href: /open/model-context-protocol/
+    note: The catalog record for MCP, including its governance and license transition.
+  - label: Agentic AI Foundation
+    href: /companies/agentic-ai-foundation/
+    note: The Linux Foundation directed fund that hosts MCP, A2A, AGENTS.md, and goose.
+  - label: Hosted or local?
+    href: /learn/hosted-or-local/
+    note: Where the model behind an agent runs affects what data leaves your machine.
+  - label: Reading evaluations
+    href: /learn/reading-evaluations/
+    note: How to read agent benchmark results, such as Terminal-Bench, with care.
+directory_links:
+  - label: Organizations working on agents
+    href: /companies/?sector=agents
+    note: Organizations whose records list agents as a sector.
+  - label: Agent protocols, SDKs, and tools
+    href: /open/?q=agents
+    note: Open artifacts that match agents, including protocols, SDKs, and coding agents.
+  - label: Coding agents and related tools
+    href: /open/?q=coding
+    note: A text search that matches records tagged as coding agents.
+organizations: [agentic-ai-foundation]
+artifacts:
+  - model-context-protocol
+  - a2a-protocol
+  - agents-md
+  - openai-agents-sdk
+  - agent-development-kit
+  - smolagents
+  - codex-cli
+  - goose
+  - cline-extension
+  - terminal-bench
+people: []
+primary_documents:
+  - source_id: mcp-spec
+    note: >-
+      The normative MCP specification, including the consent, privacy, and tool-safety
+      principles that implementers are expected to follow.
+  - source_id: a2a-readme
+    note: >-
+      The A2A project's own summary of agent discovery through Agent Cards and its
+      Linux Foundation stewardship and Apache 2.0 license.
+  - source_id: agentsmd-readme
+    note: >-
+      Shows what an AGENTS.md file contains and why it is a convention rather than software.
+  - source_id: aaif-projects
+    note: >-
+      The Agentic AI Foundation's list of hosted projects, useful for checking which agent
+      projects are under neutral stewardship.
+  - source_id: oai-agents-readme
+    note: >-
+      A concise statement of the parts of an agent (instructions, tools, guardrails, handoffs,
+      tracing) as one SDK defines them.
+  - source_id: codex-readme
+    note: >-
+      Shows that a locally running, open-source agent can still require a hosted model account
+      or API key.
+  - source_id: goose-readme
+    note: >-
+      Describes an agent that can use different model providers and that is now part of the
+      Agentic AI Foundation.
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: oai-agents-readme
+    title: OpenAI Agents SDK README
+    url: https://raw.githubusercontent.com/openai/openai-agents-python/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: adk-readme
+    title: Agent Development Kit (ADK) README
+    url: https://raw.githubusercontent.com/google/adk-python/main/README.md
+    publisher: Google (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: codex-readme
+    title: Codex CLI README
+    url: https://raw.githubusercontent.com/openai/codex/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: goose-readme
+    title: goose README
+    url: https://raw.githubusercontent.com/aaif-goose/goose/main/README.md
+    publisher: Agentic AI Foundation, aaif-goose (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: mcp-spec
+    title: Model Context Protocol specification (revision 2026-07-28)
+    url: https://modelcontextprotocol.io/specification/2026-07-28
+    publisher: Model Context Protocol
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: a2a-readme
+    title: Agent2Agent (A2A) Protocol README
+    url: https://raw.githubusercontent.com/a2aproject/A2A/main/README.md
+    publisher: A2A Project (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: agentsmd-readme
+    title: AGENTS.md README
+    url: https://raw.githubusercontent.com/agentsmd/agents.md/main/README.md
+    publisher: AGENTS.md (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+  - id: aaif-projects
+    title: AAIF projects
+    url: https://aaif.io/projects/
+    publisher: Agentic AI Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01

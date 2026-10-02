@@ -37,6 +37,7 @@ export function readRawContent(root: string = DEFAULT_CONTENT_DIR): RawContent {
     featured: fs.existsSync(featuredPath) ? readYamlFile(root, "featured.yml") : null,
     people: readYamlDir(root, "people"),
     news: readYamlDir(root, "news"),
+    hubs: readYamlDir(root, "hubs"),
   };
 }
 

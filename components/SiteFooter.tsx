@@ -22,6 +22,9 @@ const COLUMNS = [
     heading: "Project",
     links: [
       { href: "/start/", label: "Start here" },
+      { href: "/learn/", label: "Learn" },
+      { href: "/hubs/", label: "Hubs" },
+      { href: "/places/", label: "Places" },
       { href: "/glossary/", label: "Glossary" },
       { href: "/methodology/", label: "Methodology" },
       { href: "/compact/", label: "USASI Compact v0.2" },
