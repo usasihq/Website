@@ -2,7 +2,7 @@ import { formatDate } from "@/lib/dates";
 import type { Source } from "@/lib/schema";
 import { ExternalLink } from "./ExternalLink";
 
-const KIND_LABELS: Record<string, string> = {
+export const SOURCE_KIND_LABELS: Record<string, string> = {
   "official-page": "Official page",
   documentation: "Documentation",
   repository: "Repository",
@@ -54,7 +54,7 @@ export function SourcesList({ sources, idPrefix = "" }: { sources: Source[]; idP
             <ExternalLink href={source.url}>{source.title}</ExternalLink>
             <p className="meta mt-0.5 text-[0.8125rem]">
               {source.publisher}
-              {source.kind ? ` · ${KIND_LABELS[source.kind]}` : ""}
+              {source.kind ? ` · ${SOURCE_KIND_LABELS[source.kind]}` : ""}
               {source.published_at ? ` · published ${formatDate(source.published_at)}` : ""} · accessed {formatDate(source.accessed_at)}
               {source.fetched_at ? ` · fetched ${formatDate(source.fetched_at)}` : ""}
               {source.reviewed_at ? ` · evidence reviewed ${formatDate(source.reviewed_at)}` : ""}

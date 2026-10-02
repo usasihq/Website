@@ -37,6 +37,8 @@ const PAGES = [
   "/hubs/local-ai/",
   "/places/",
   "/places/california/",
+  "/timeline/",
+  "/sources/",
   "/no-such-page/",
 ];
 

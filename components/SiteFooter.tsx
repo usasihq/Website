@@ -25,6 +25,8 @@ const COLUMNS = [
       { href: "/learn/", label: "Learn" },
       { href: "/hubs/", label: "Hubs" },
       { href: "/places/", label: "Places" },
+      { href: "/timeline/", label: "Timeline" },
+      { href: "/sources/", label: "Source library" },
       { href: "/glossary/", label: "Glossary" },
       { href: "/methodology/", label: "Methodology" },
       { href: "/compact/", label: "USASI Compact v0.2" },

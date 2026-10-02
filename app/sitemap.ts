@@ -30,6 +30,8 @@ const STATIC_ROUTES = [
   "/learn/",
   "/hubs/",
   "/places/",
+  "/timeline/",
+  "/sources/",
 ];
 
 /**

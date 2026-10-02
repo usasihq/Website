@@ -116,7 +116,19 @@ export const BASIS_LABELS: Record<EligibilityBasis, string> = {
 };
 
 /** Result-type label used by search across both directories. */
-export type EntryType = "organization" | "model-family" | "model-release" | "software" | "dataset" | "evaluation-tool";
+export type EntryType =
+  | "organization"
+  | "model-family"
+  | "model-release"
+  | "software"
+  | "dataset"
+  | "evaluation-tool"
+  // Reference pages (search only; never directory records)
+  | "hub"
+  | "explainer"
+  | "glossary-term"
+  | "person"
+  | "place";
 
 export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   organization: "Organization",
@@ -125,7 +137,15 @@ export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   software: "Software",
   dataset: "Dataset",
   "evaluation-tool": "Evaluation tool",
+  hub: "Hub",
+  explainer: "Explainer",
+  "glossary-term": "Glossary",
+  person: "Person",
+  place: "Place",
 };
+
+/** Entry types that belong to the Open Models & Tools directory. */
+export const ARTIFACT_ENTRY_TYPES: EntryType[] = ["model-family", "model-release", "software", "dataset", "evaluation-tool"];
 
 export function entryTypeFor(kind: ArtifactKind, level: RecordLevel): EntryType {
   if (kind === "model") return level === "family" ? "model-family" : "model-release";

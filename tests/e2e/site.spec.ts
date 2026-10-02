@@ -30,7 +30,7 @@ test.describe("homepage", () => {
 
   test("cross-directory search labels results and hands off to each directory", async ({ page }) => {
     await page.goto("/");
-    const input = page.getByLabel("Search both directories");
+    const input = page.getByLabel("Search the reference");
     await input.fill(activeRelease.name.split(" ")[0]);
     const results = page.getByRole("list", { name: "Search results" });
     await expect(results.getByRole("link").first()).toBeVisible();
@@ -334,7 +334,7 @@ test.describe("first screen", () => {
       await page.evaluate(() => document.fonts.ready.then(() => undefined));
       for (const locator of [
         page.locator("h1"),
-        page.getByLabel("Search both directories"),
+        page.getByLabel("Search the reference"),
         page.getByRole("link", { name: "Explore Companies & Labs" }),
         page.getByRole("link", { name: "Explore Open Models & Tools" }),
       ]) {
@@ -593,4 +593,22 @@ test("comparison exports the visible selection with caveats", async ({ page }) =
   const body = JSON.parse(await (await import("node:fs/promises")).readFile((await download.path())!, "utf8"));
   expect(body.rows.map((r: { slug: string }) => r.slug).sort()).toEqual(["ai2", "openai"]);
   expect(body.caveat).toMatch(/not capability/);
+});
+
+test("search covers reference pages; timeline and source library load", async ({ page }) => {
+  await page.goto("/");
+  await page.getByLabel("Search the reference").fill("quantization");
+  const results = page.getByRole("list", { name: "Search results" });
+  await expect(results.getByRole("link", { name: /Quantization/ }).first()).toBeVisible();
+  await page.getByLabel("Search the reference").fill("California");
+  await expect(results.getByRole("link", { name: /California/ }).first()).toBeVisible();
+
+  await page.goto("/timeline/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Timeline");
+  await expect(page.locator("main section[id^='y'] li a").first()).toBeVisible();
+
+  await page.goto("/sources/");
+  await expect(page.getByRole("status").filter({ hasText: /sources$/ })).toContainText(/of [\d,]+ sources/);
+  await page.getByLabel("Search sources").fill("license");
+  await expect(page.locator("main ul.space-y-4 > li").first()).toBeVisible();
 });

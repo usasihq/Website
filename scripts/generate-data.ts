@@ -14,6 +14,8 @@ import path from "node:path";
 import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
 import { jobsDirectoryData } from "../lib/jobs/directory-data";
+import { sourceLibrary } from "../lib/source-library";
+import { parseGlossary, referenceSearchEntries } from "../lib/reference-search";
 import { siteConfig } from "../lib/site-config";
 import { computeTier, RUBRIC_VERSION } from "../lib/openness";
 import { SCHEMA_VERSION } from "../lib/schema";
@@ -46,10 +48,16 @@ const exportData = {
 };
 
 fs.writeFileSync(path.join(outDir, "catalog.json"), JSON.stringify(exportData, null, 2) + "\n");
-fs.writeFileSync(path.join(outDir, "search-index.json"), JSON.stringify({ build_at: buildAt, entries: catalog.searchEntries() }) + "\n");
+const glossary = parseGlossary(fs.readFileSync(path.join(process.cwd(), "content", "pages", "glossary.mdx"), "utf8"));
+fs.writeFileSync(
+  path.join(outDir, "search-index.json"),
+  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary)] }) + "\n",
+);
 // Full current Jobs list, loaded by the /jobs/ page after first paint (the page itself embeds only the first 30).
 const jobs = jobsDirectoryData(catalog);
 fs.writeFileSync(path.join(outDir, "jobs.json"), JSON.stringify({ build_at: buildAt, jobs: jobs.items }) + "\n");
+// Every cited source, with the published records that cite it (loaded by /sources/).
+fs.writeFileSync(path.join(outDir, "sources.json"), JSON.stringify({ build_at: buildAt, entries: sourceLibrary(catalog) }) + "\n");
 fs.writeFileSync(path.join(outDir, "build-info.json"), JSON.stringify({ build_at: buildAt, schema_version: SCHEMA_VERSION }) + "\n");
 
 console.log(

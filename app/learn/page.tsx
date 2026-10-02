@@ -52,6 +52,8 @@ export default function LearnPage() {
           <ul className="mt-3 space-y-2">
             <li><Link href="/glossary/" className="link">Glossary</Link> <span className="text-muted">: terms used across the catalog</span></li>
             <li><Link href="/places/" className="link">Places</Link> <span className="text-muted">: organizations by documented headquarters state</span></li>
+            <li><Link href="/timeline/" className="link">Timeline</Link> <span className="text-muted">: open releases and news events by documented date</span></li>
+            <li><Link href="/sources/" className="link">Source library</Link> <span className="text-muted">: every cited source and the records that cite it</span></li>
             <li><Link href="/reuse/" className="link">Data and reuse</Link> <span className="text-muted">: the public data files and reuse terms</span></li>
             <li><Link href="/methodology/" className="link">Methodology</Link> <span className="text-muted">: eligibility, openness, sources, and dates</span></li>
           </ul>

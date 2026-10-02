@@ -45,3 +45,18 @@ terms, and an institution pilot (5 DOE national laboratories, 6 universities, 7 
 
 Still deferred: typed relationship schema and migration, dossiers, a primary-source library and
 timeline, search replacement evaluation, review-queue counts, and a human-written periodic brief.
+
+## Remaining roadmap items: decisions (2026-10-02)
+
+The owner declined a human-written brief and asked the assistant to decide the rest.
+
+- Primary-source library: built (/sources/), generated from existing citations, so it needs no
+  separate upkeep.
+- Timeline: built (/timeline/) from documented release and news dates only.
+- Search: extended to hubs, explainers, glossary terms, people, and states instead of replacing it.
+- Dossiers: not built. The reviewed profile blocks plus "What this catalog does not know" give most
+  of the value without a second, heavier record type to maintain.
+- Typed relationship schema migration: not done. Existing parent, maintainer, and organization links
+  cover current pages; a migration adds risk for little reader benefit.
+- Pagefind or another search engine: not adopted; the extended index covers the gap.
+- Review-queue counts: not published. Low reader value, and drafts must never leak.

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
 import { useCallback, useId, useMemo, useRef, useState } from "react";
-import { ENTRY_TYPE_LABELS } from "@/lib/labels";
+import { ARTIFACT_ENTRY_TYPES, ENTRY_TYPE_LABELS } from "@/lib/labels";
 import { companiesHref, openHref } from "@/lib/routes";
 import { searchEntries, type SearchEntry } from "@/lib/search";
 import { useDebounced } from "./useQueryState";
@@ -36,16 +36,16 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
   const all = useMemo(() => (entries ? searchEntries(entries, query, 500) : []), [entries, query]);
   const results = all.slice(0, 8);
   const orgCount = all.filter((r) => r.type === "organization").length;
-  const artifactCount = all.length - orgCount;
+  const artifactCount = all.filter((r) => ARTIFACT_ENTRY_TYPES.includes(r.type)).length;
   const trimmed = query.trim();
   const announce = useDebounced(trimmed ? `${all.length} matching entr${all.length === 1 ? "y" : "ies"}` : "");
   const q = encodeURIComponent(trimmed);
 
   return (
-    <div role="search" aria-label="Search the catalog">
+    <div role="search" aria-label="Site search">
       <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor={inputId} className="mb-2 block text-[0.9375rem] font-medium text-text">
-          Search both directories
+          Search the reference
         </label>
         <div className="relative">
           <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted" />
@@ -53,7 +53,7 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
             id={inputId}
             type="search"
             className="field min-h-13 pl-12 text-lg"
-            placeholder="Name, license, or tag"
+            placeholder="A company, model, term, or state"
             value={query}
             onFocus={ensureIndex}
             onChange={(e) => {
@@ -67,7 +67,7 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
         </div>
         {/* Visible from 640px; on phones it stays available to screen readers so the first screen fits. */}
         <p id={hintId} className="text-sm text-muted max-sm:sr-only sm:mt-2">
-          Searches names, summaries, maintainers, licenses, and tags across organizations and open artifacts.
+          Searches organizations, open models and tools, people, hubs, explainers, glossary terms, and states.
         </p>
         <noscript>
           <p className="mt-2 text-sm text-muted">Search needs JavaScript. You can browse both directories with the links below.</p>
