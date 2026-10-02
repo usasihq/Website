@@ -1,0 +1,120 @@
+slug: thomas-wolf
+name: Thomas Wolf
+initials: TW
+headline: Co-founder and Chief Science Officer of Hugging Face; created the Transformers library
+bio:
+  text: >-
+    Thomas Wolf is a co-founder and the Chief Science Officer of Hugging Face. Wolf's site lists
+    Transformers among the libraries Wolf created, and Wolf made the repository's first commit in 2018
+    and is first author of the paper describing the library, whose Pipeline API downloads a pretrained
+    model, caches it for reuse, and runs it. Wolf also made the first commit to Hugging
+    Face's Accelerate library in 2020 and is among the authors of the 2025 announcement of SmolLM3, a
+    3B-parameter model.
+  source_ids: [wolf-site, github-profile, transformers-initial-commit, transformers-paper, transformers-readme, accelerate-initial-commit, smollm3-post]
+  reviewed_at: 2026-10-01
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Co-founder and Chief Science Officer (CSO)
+    current: true
+    source_ids: [wolf-site, github-profile]
+work:
+  - name: Transformers
+    artifact_slug: transformers
+    url: https://github.com/huggingface/transformers
+    contribution: >-
+      Listed on Wolf's site as a library Wolf created. Wolf made the repository's initial commit in
+      October 2018 and is first author of the Transformers paper, which the README asks users to cite.
+      The README's quickstart loads a model through the Pipeline API, which downloads and caches it
+      for reuse.
+    source_ids: [wolf-site, transformers-initial-commit, transformers-paper, transformers-readme]
+  - name: Accelerate
+    artifact_slug: null
+    url: https://github.com/huggingface/accelerate
+    contribution: >-
+      Made the repository's initial commit in October 2020 and is listed among the authors in the
+      README's citation entry; Wolf's site names Accelerate among the libraries Wolf created or
+      advised.
+    source_ids: [accelerate-initial-commit, accelerate-readme, wolf-site]
+  - name: SmolLM3
+    artifact_slug: smollm
+    url: https://huggingface.co/blog/smollm3
+    contribution: >-
+      Listed among the authors of Hugging Face's July 2025 announcement of SmolLM3, a 3B-parameter
+      model in the SmolLM series.
+    source_ids: [smollm3-post]
+links:
+  - label: Website
+    url: https://thomwolf.io
+  - label: GitHub
+    url: https://github.com/thomwolf
+  - label: Hugging Face
+    url: https://huggingface.co/thomwolf
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: wolf-site
+    title: Thomas Wolf — homepage
+    url: https://thomwolf.io
+    publisher: Thomas Wolf
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: github-profile
+    title: thomwolf (Thomas Wolf) on GitHub
+    url: https://github.com/thomwolf
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: transformers-initial-commit
+    title: huggingface/transformers — initial commit (2018-10-29)
+    url: https://github.com/huggingface/transformers/commit/43badf217d1ccfaf486e2cbb1b3567226b5e95bf
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: 2018-10-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: transformers-paper
+    title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
+    url: https://arxiv.org/abs/1910.03771
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: transformers-readme
+    title: huggingface/transformers README (quickstart and citation)
+    url: https://github.com/huggingface/transformers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: accelerate-initial-commit
+    title: huggingface/accelerate — initial commit (2020-10-30)
+    url: https://github.com/huggingface/accelerate/commit/f88703334062f2dee4dfb7a1281e4febe76632cb
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: 2020-10-30
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: accelerate-readme
+    title: huggingface/accelerate README (citation entry)
+    url: https://github.com/huggingface/accelerate
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: smollm3-post
+    title: "SmolLM3: smol, multilingual, long-context reasoner"
+    url: https://huggingface.co/blog/smollm3
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2025-07-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

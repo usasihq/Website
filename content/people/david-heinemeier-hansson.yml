@@ -8,8 +8,10 @@ bio:
     License, and earlier created the Ruby on Rails web framework. Omarchy's manual has a Local LLMs
     section that recommends LM Studio and Ollama for finding and running open-weight models, and its
     Install > AI menu installs either one, along with agent apps such as Hermes and OpenClaw.
-    Heinemeier Hansson is a co-owner of 37signals, where Omarchy is incubated.
-  source_ids: [dhh-site, omarchy-site, omarchy-ai-manual, omarchy-license]
+    Heinemeier Hansson is a co-owner of 37signals, where Omarchy is incubated. In September 2026,
+    Heinemeier Hansson announced that the Omacom Foundation will sponsor 0xSero's local AI work through
+    Sybil Solutions for three years, to make local models work well out of the box on Omarchy.
+  source_ids: [dhh-site, omarchy-site, omarchy-ai-manual, omarchy-license, omarchy-0xsero-announcement]
 affiliations:
   - name: 37signals
     organization_slug: null
@@ -46,6 +48,15 @@ work:
       default agent. Its manual documents how Omarchy manages the Hermes runtime and OpenClaw's
       Control UI with its own local gateway.
     source_ids: [omarchy-ai-manual, omarchy-menu]
+  - name: Omacom sponsorship of local AI work
+    artifact_slug: null
+    url: https://omarchy.org/news/2026/09/omacom-foundation-to-be-premier-sponsor-of-0xsero/
+    contribution: >-
+      Announced on September 23, 2026 that the Omacom Foundation will be a premier sponsor of 0xSero's
+      local AI work for three years, collaborating on making local models work out of the box on
+      Omarchy; the post describes 0xSero's Local AI Registry of model configurations, hardware-specific
+      recipes, and performance measurements.
+    source_ids: [omarchy-0xsero-announcement]
 links:
   - label: Website
     url: https://dhh.dk/
@@ -103,5 +114,13 @@ sources:
     publisher: Omarchy (GitHub)
     kind: repository
     published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-0xsero-announcement
+    title: Omacom Foundation to be premier sponsor of 0xSero's work on local AI
+    url: https://omarchy.org/news/2026/09/omacom-foundation-to-be-premier-sponsor-of-0xsero/
+    publisher: Omarchy (by DHH)
+    kind: announcement
+    published_at: 2026-09-23
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01

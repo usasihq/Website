@@ -1,0 +1,89 @@
+slug: andrej-karpathy
+name: Andrej Karpathy
+initials: AK
+headline: Wrote llama2.c, a dependency-free C program for running Llama 2 models on a personal computer
+bio:
+  text: >-
+    Andrej Karpathy's site describes an AI researcher and educator who, since 2024, has made
+    educational videos on AI. Karpathy wrote llama2.c, a minimal project that trains Llama 2
+    architecture models in PyTorch and runs them with a single C file; its README shows small models
+    running on a laptop, explains how to load Meta's Llama 2 models, and adds an int8-quantized
+    variant. Earlier, Karpathy was a founding member and research scientist at OpenAI, Director of AI
+    at Tesla, and returned to OpenAI in 2023–2024.
+  source_ids: [karpathy-site, llama2c-readme]
+  reviewed_at: 2026-10-01
+affiliations:
+  - name: OpenAI
+    organization_slug: openai
+    role: >-
+      Research scientist and founding member (2015–2017); later built a team working on midtraining
+      and synthetic data generation (2023–2024)
+    current: false
+    source_ids: [karpathy-site]
+  - name: Tesla
+    organization_slug: tesla
+    role: Director of AI (2017–2022)
+    current: false
+    source_ids: [karpathy-site]
+work:
+  - name: llama2.c
+    artifact_slug: null
+    url: https://github.com/karpathy/llama2.c
+    contribution: >-
+      Wrote the C inference engine, run.c, as a single file with no dependencies, alongside PyTorch
+      training code adapted from Karpathy's earlier nanoGPT. The README walks through running small
+      TinyStories models on an M1 MacBook Air and documents runq.c, which runs int8-quantized
+      checkpoints. The project is MIT-licensed.
+    source_ids: [llama2c-readme, llama2c-license, github-profile]
+  - name: Meta's Llama 2 models in llama2.c
+    artifact_slug: llama
+    url: https://github.com/karpathy/llama2.c#metas-llama-2-models
+    contribution: >-
+      llama2.c's export script converts Meta's Llama 2 checkpoints, including the chat models, and
+      Hugging Face models with the Llama 2 architecture into its own format for the C program. The
+      README notes that float32 inference is practical only up to the 7B model and that the int8
+      export produces a much smaller checkpoint.
+    source_ids: [llama2c-readme]
+links:
+  - label: Website
+    url: https://karpathy.ai/
+  - label: GitHub
+    url: https://github.com/karpathy
+  - label: llama2.c
+    url: https://github.com/karpathy/llama2.c
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: karpathy-site
+    title: Andrej Karpathy — personal site (roles and bio)
+    url: https://karpathy.ai/
+    publisher: Andrej Karpathy
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: github-profile
+    title: karpathy on GitHub (pinned repositories)
+    url: https://github.com/karpathy
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llama2c-readme
+    title: llama2.c README
+    url: https://github.com/karpathy/llama2.c
+    publisher: karpathy (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: llama2c-license
+    title: llama2.c LICENSE (MIT)
+    url: https://github.com/karpathy/llama2.c/blob/master/LICENSE
+    publisher: karpathy (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

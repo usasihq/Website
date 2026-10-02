@@ -1,0 +1,150 @@
+slug: julien-chaumond
+name: Julien Chaumond
+initials: JC
+headline: CTO of Hugging Face; added the Hub's local-apps registry and works on the hf command-line tool
+bio:
+  text: >-
+    Julien Chaumond is CTO of Hugging Face. In the huggingface.js repository, Chaumond authored the 2024
+    pull request that added local apps, a registry that now lists local tools such as llama.cpp, LM
+    Studio, and Ollama with the commands for running a Hub model in each, as well as an earlier one
+    adding a parser for remotely hosted GGUF model files. Chaumond co-authored the 2025 announcement of hf, the Hugging
+    Face command-line tool for downloading files from and uploading them to the Hub, and has committed
+    changes to it in 2026. Chaumond is also an author of the Transformers paper.
+  source_ids: [github-profile, xethub-post, local-apps-pr, local-apps-file, gguf-parser-pr, hf-cli-post, hub-commits, transformers-paper]
+  reviewed_at: 2026-10-01
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: CTO
+    current: true
+    source_ids: [github-profile, xethub-post]
+work:
+  - name: Local apps on the Hugging Face Hub
+    artifact_slug: null
+    url: https://huggingface.co/docs/hub/local-apps
+    contribution: >-
+      Authored huggingface.js pull request 659, merged in May 2024, which added local-apps.ts, a
+      registry that now lists local applications such as llama.cpp, LM Studio, and Ollama with snippets
+      for running a model in each. The Hub documentation describes picking a local app from a model page's "Use
+      this model" menu and running the command it shows.
+    source_ids: [local-apps-pr, local-apps-file, hub-local-apps-docs]
+  - name: GGUF parser in huggingface.js
+    artifact_slug: null
+    url: https://github.com/huggingface/huggingface.js/pull/540
+    contribution: >-
+      Authored the March 2024 pull request that added a parser for GGUF files hosted remotely, read over
+      HTTP range requests. A July 2026 commit by Chaumond added the Q2_0 quantization type to it to match
+      llama.cpp.
+    source_ids: [gguf-parser-pr, gguf-q2-commit]
+  - name: hf command-line tool
+    artifact_slug: null
+    url: https://github.com/huggingface/huggingface_hub
+    contribution: >-
+      Co-authored the July 2025 post introducing hf, the redesigned Hugging Face CLI for downloading
+      files from and uploading them to the Hub. The huggingface_hub commit history shows CLI changes by
+      Chaumond in 2026, such as new hf subcommands.
+    source_ids: [hf-cli-post, hub-commits]
+  - name: Transformers
+    artifact_slug: transformers
+    url: https://github.com/huggingface/transformers
+    contribution: >-
+      Listed among the authors of the Transformers paper, which the library's README asks users to
+      cite.
+    source_ids: [transformers-paper, transformers-readme]
+links:
+  - label: GitHub
+    url: https://github.com/julien-c
+  - label: Hugging Face
+    url: https://huggingface.co/julien-c
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: github-profile
+    title: julien-c (Julien Chaumond) on GitHub
+    url: https://github.com/julien-c
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: xethub-post
+    title: XetHub is joining Hugging Face!
+    url: https://huggingface.co/blog/xethub-joins-hf
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2024-08-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: local-apps-pr
+    title: huggingface/huggingface.js pull request 659 — Local apps
+    url: https://github.com/huggingface/huggingface.js/pull/659
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: 2024-05-10
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: local-apps-file
+    title: huggingface.js packages/tasks/src/local-apps.ts
+    url: https://github.com/huggingface/huggingface.js/blob/main/packages/tasks/src/local-apps.ts
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hub-local-apps-docs
+    title: Hugging Face Hub documentation — Use AI Models Locally
+    url: https://huggingface.co/docs/hub/local-apps
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: gguf-parser-pr
+    title: huggingface/huggingface.js pull request 540 — a GGUF parser that works on remotely hosted files
+    url: https://github.com/huggingface/huggingface.js/pull/540
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: 2024-03-13
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: gguf-q2-commit
+    title: huggingface.js commit — add Q2_0 quant type
+    url: https://github.com/huggingface/huggingface.js/commit/dcbcec7a52061f14f0a353fe0ed382d3fcda7f29
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: 2026-07-16
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hf-cli-post
+    title: "Say hello to `hf`: a faster, friendlier Hugging Face CLI"
+    url: https://huggingface.co/blog/hf-cli
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2025-07-25
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hub-commits
+    title: huggingface/huggingface_hub commits authored by julien-c
+    url: https://github.com/huggingface/huggingface_hub/commits?author=julien-c
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: transformers-paper
+    title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
+    url: https://arxiv.org/abs/1910.03771
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: transformers-readme
+    title: huggingface/transformers README (citation)
+    url: https://github.com/huggingface/transformers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -1,0 +1,96 @@
+slug: jeremy-howard
+name: Jeremy Howard
+initials: JH
+headline: Co-founder of Answer.AI, which released FSDP/QLoRA for fine-tuning large models on gaming GPUs
+bio:
+  text: >-
+    Jeremy Howard co-founded Answer.AI, an AI research and development lab, is a founding researcher
+    at fast.ai, and created the fastai deep learning library. Answer.AI's first
+    project, FSDP/QLoRA, is an open-source system for fine-tuning a 70-billion-parameter language
+    model on a desktop computer with two 24 GB gaming GPUs. Answer.AI's announcement describes Howard
+    discussing the combination of FSDP and QLoRA with Tim Dettmers, working with Hugging Face's Titus
+    von Koeller to document the problems that arose, and writing a minimal standalone fine-tuning
+    script for the project.
+  source_ids: [jeremy-site, github-profile, fsdp-qlora-post]
+  reviewed_at: 2026-10-01
+affiliations:
+  - name: Answer.AI
+    organization_slug: null
+    role: Co-founder (with Eric Ries); CEO / R&D
+    current: true
+    source_ids: [jeremy-site, github-profile]
+  - name: fast.ai
+    organization_slug: null
+    role: Founder and founding researcher
+    current: true
+    source_ids: [jeremy-site, github-profile]
+work:
+  - name: FSDP/QLoRA
+    artifact_slug: null
+    url: https://github.com/AnswerDotAI/fsdp_qlora
+    contribution: >-
+      Answer.AI's announcement credits Howard with discussing the idea of combining FSDP and QLoRA in
+      late 2023 and with exploring and documenting the issues that occurred when the two were
+      combined. The Apache-2.0 repository documents fine-tuning Llama 2 70B on two 24 GB GPUs, with
+      4-bit quantization through bitsandbytes or HQQ.
+    source_ids: [fsdp-qlora-post, fsdp-qlora-readme, fsdp-qlora-license]
+  - name: Hugging Face Transformers in FSDP/QLoRA
+    artifact_slug: transformers
+    url: https://github.com/AnswerDotAI/fsdp_qlora
+    contribution: >-
+      According to the announcement, Howard studied how Meta's Llama-Recipes worked with bitsandbytes
+      and Hugging Face's PEFT, Transformers, and Accelerate libraries, then built a minimal standalone
+      script covering every step needed to fine-tune a model. The project's installation steps use
+      the Transformers library.
+    source_ids: [fsdp-qlora-post, fsdp-qlora-readme]
+links:
+  - label: Website
+    url: https://jeremy.fast.ai/
+  - label: GitHub
+    url: https://github.com/jph00
+  - label: Answer.AI
+    url: https://www.answer.ai/
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: jeremy-site
+    title: Jeremy Howard — personal site (projects and roles)
+    url: https://jeremy.fast.ai/
+    publisher: Jeremy Howard
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: github-profile
+    title: jph00 (Jeremy Howard) on GitHub
+    url: https://github.com/jph00
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fsdp-qlora-post
+    title: You can now train a 70b language model at home
+    url: https://www.answer.ai/posts/2024-03-06-fsdp-qlora.html
+    publisher: Answer.AI
+    kind: announcement
+    published_at: 2024-03-06
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fsdp-qlora-readme
+    title: fsdp_qlora README
+    url: https://github.com/AnswerDotAI/fsdp_qlora
+    publisher: Answer.AI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: fsdp-qlora-license
+    title: fsdp_qlora LICENSE (Apache-2.0)
+    url: https://github.com/AnswerDotAI/fsdp_qlora/blob/main/LICENSE
+    publisher: Answer.AI (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

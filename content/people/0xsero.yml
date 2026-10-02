@@ -1,0 +1,161 @@
+slug: 0xsero
+name: 0xSero
+initials: XS
+headline: Developer of the Local AI Registry, tested recipes for running open models on specific GPUs
+bio:
+  text: >-
+    0xSero is a developer who publishes the Local AI Registry, an MIT-licensed collection of recipes
+    that pair a model's weights with an inference engine and settings for a specific GPU, each with
+    the evidence from the run that validated it. The registry's engine profiles include vLLM, SGLang,
+    and TabbyAPI with ExLlamaV3, and a companion image repository packages unmodified upstream
+    llama.cpp for GGUF recipes. 0xSero also commits to Local Studio, Sybil Solutions' local-first
+    control panel for self-hosted model backends. In September 2026 the Omacom Foundation announced
+    a three-year sponsorship of 0xSero's local AI work through Sybil Solutions, to make local models
+    work well out of the box on Omarchy.
+  source_ids:
+    - registry-readme
+    - registry-engines
+    - images-readme
+    - local-studio-readme
+    - local-studio-commits
+    - omarchy-announcement
+  reviewed_at: 2026-10-01
+affiliations:
+  - name: Sybil Solutions
+    organization_slug: null
+    role: >-
+      Developer; the Omacom Foundation's announcement names Sybil Solutions as 0xSero's company
+    current: true
+    source_ids: [github-profile, omarchy-announcement, omarchy-sponsorships]
+work:
+  - name: Local AI Registry
+    artifact_slug: null
+    url: https://github.com/0xSero/local-ai-registry
+    contribution: >-
+      Publishes and commits to the registry. Its recipes are written only by a lab script that runs
+      the model on the named card and records the recipe if it loads, chats, reasons, calls tools,
+      holds its context window, and keeps pace. Omarchy's Local AI plugin reads the registry's recipe
+      file, and the catalog is also served at local.sybilsolutions.ai. MIT-licensed.
+    source_ids: [registry-readme, registry-commits, registry-site]
+  - name: vLLM engine profile in the Local AI Registry
+    artifact_slug: vllm
+    url: https://github.com/0xSero/local-ai-registry/blob/main/registry/engines/vllm.json
+    contribution: >-
+      The registry's vLLM engine profile pins the upstream vLLM OpenAI-compatible server image by
+      digest and defines the serving arguments that the registry's vLLM recipes fill in for each
+      card.
+    source_ids: [registry-vllm-engine, registry-engines]
+  - name: llama.cpp images for the Local AI Registry
+    artifact_slug: llama-cpp
+    url: https://github.com/0xSero/local-ai-images
+    contribution: >-
+      Publishes the container images the registry pins, including one that ships stock, unmodified
+      llama.cpp from the ggml-org release, verified against its published checksum, for
+      standard-quantization GGUF recipes.
+    source_ids: [images-readme]
+  - name: Local Studio
+    artifact_slug: null
+    url: https://github.com/sybil-solutions/local-studio
+    contribution: >-
+      Commits to Local Studio, Sybil Solutions' Apache-2.0 workstation for launching, monitoring, and
+      chatting with self-hosted model backends such as vLLM, SGLang, llama.cpp, and ExLlamaV3.
+    source_ids: [local-studio-readme, local-studio-commits, github-profile]
+links:
+  - label: GitHub
+    url: https://github.com/0xSero
+  - label: Local AI Registry
+    url: https://local.sybilsolutions.ai/
+  - label: Sybil Solutions
+    url: https://www.sybilsolutions.ai/
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
+sources:
+  - id: github-profile
+    title: 0xSero on GitHub (company and pinned repositories)
+    url: https://github.com/0xSero
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: registry-readme
+    title: local-ai-registry README and LICENSE (MIT)
+    url: https://github.com/0xSero/local-ai-registry
+    publisher: 0xSero (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: registry-commits
+    title: local-ai-registry commits authored by 0xSero
+    url: https://github.com/0xSero/local-ai-registry/commits?author=0xSero
+    publisher: 0xSero (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: registry-engines
+    title: local-ai-registry engine profiles (vLLM, SGLang, TabbyAPI with ExLlamaV3)
+    url: https://github.com/0xSero/local-ai-registry/tree/main/registry/engines
+    publisher: 0xSero (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: registry-vllm-engine
+    title: local-ai-registry vLLM engine profile
+    url: https://github.com/0xSero/local-ai-registry/blob/main/registry/engines/vllm.json
+    publisher: 0xSero (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: registry-site
+    title: Local AI registry — the model to run on your GPU
+    url: https://local.sybilsolutions.ai/
+    publisher: Sybil Solutions
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: images-readme
+    title: local-ai-images README
+    url: https://github.com/0xSero/local-ai-images
+    publisher: 0xSero (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: local-studio-readme
+    title: Local Studio README and LICENSE (Apache-2.0)
+    url: https://github.com/sybil-solutions/local-studio
+    publisher: Sybil Solutions (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: local-studio-commits
+    title: Local Studio commits authored by 0xSero
+    url: https://github.com/sybil-solutions/local-studio/commits?author=0xSero
+    publisher: Sybil Solutions (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-announcement
+    title: Omacom Foundation to be premier sponsor of 0xSero's work on local AI (by DHH)
+    url: https://omarchy.org/news/2026/09/omacom-foundation-to-be-premier-sponsor-of-0xsero/
+    publisher: Omarchy
+    kind: announcement
+    published_at: 2026-09-23
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: omarchy-sponsorships
+    title: Omarchy — Sponsorships (Sybil Solutions by 0xSero)
+    url: https://omarchy.org/sponsorships/
+    publisher: Omarchy
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
