@@ -1,0 +1,205 @@
+slug: data-and-datasets
+title: Training data and datasets
+summary: >-
+  Open pretraining datasets in the catalog and the organizations that steward them, how many
+  of them build on Common Crawl, and why a dataset's license and documentation are not
+  permission to reuse what it contains.
+intro:
+  - text: >-
+      Many of the open text datasets in this catalog start from the same source. Common
+      Crawl, a 501(c)(3) nonprofit, crawls the web and freely provides an archive of crawl data
+      collected since 2008. Hugging Face's FineWeb is built by filtering and deduplicating
+      Common Crawl snapshots. Together AI's RedPajama-V2 contains documents from 84 Common
+      Crawl snapshots, with quality signals for part of the corpus and the IDs of duplicate
+      documents so that you can filter it yourself. Essential AI's Essential-Web, also built from Common Crawl, labels
+      every document with subject, page type, complexity, and quality metadata. Ai2's Dolma
+      mixes web content with academic publications, code, books, and encyclopedic material.
+    source_ids: [cc-about, fineweb-card, rpv2-card, essential-web-card, dolma-card]
+    reviewed_at: 2026-10-02
+  - text: >-
+      A dataset's license covers the compilation, not every work inside it. FineWeb and Dolma
+      are released under the Open Data Commons Attribution License, but FineWeb's card says
+      its use is also subject to Common Crawl's Terms of Use, and Dolma's card says you are
+      also bound by the licenses and terms of the original data sources. RedPajama-V2 points
+      to Common Crawl's terms for its data and uses Apache 2.0 only for its code. Common
+      Crawl's terms in turn say you must evaluate and bear the risks of using crawled content,
+      recommend legal advice before any use, including commercial use, and require you to
+      respect the copyrights and other rights of third parties in that material.
+    source_ids: [fineweb-card, dolma-card, rpv2-card, cc-terms]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Some datasets come with use restrictions instead. Downloading Nemotron-CC-v2 from
+      Hugging Face requires accepting the NVIDIA Data Agreement for Model Training and
+      confirming that the data will be used only for model training. The agreement makes the
+      data available solely for internal training of your own AI models, bars redistributing
+      it, and says that NVIDIA does not grant any rights to copyrighted material the datasets
+      may contain.
+    source_ids: [nemotron-cc-v2-hub, nvidia-data-agreement]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Documentation does not guarantee lasting availability. EleutherAI's Pile was described
+      in a paper and a datasheet, and its card says the license depends on which of its
+      component datasets you use. A 2025 paper describing the Common Pile, a dataset of public domain
+      and openly licensed text, says that the use of unlicensed training data has previously
+      resulted in DMCA takedowns of datasets such as the Pile. Terms can also change: Ai2
+      switched Dolma to the ODC-By license in April 2024.
+    source_ids: [pile-card, common-pile-paper, dolma-card]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Web data includes personal information, and stewards document different responses.
+      FineWeb replaces email addresses and public IP addresses, says some personal information
+      is still likely to remain, and offers a removal form; Dolma's card also links a form for
+      requesting removal of personal data. Website owners who do not want Common Crawl to crawl
+      their sites can block its CCBot crawler in robots.txt.
+    source_ids: [fineweb-card, dolma-card, cc-ccbot]
+    reviewed_at: 2026-10-02
+scope: >-
+  Covers open pretraining and research datasets in the catalog, the organizations that collect
+  or maintain them, and the documents that state their sources, processing, licenses, and
+  access conditions. It does not decide whether any use of a dataset is lawful and is not
+  legal advice. Featured records are examples chosen to cover the subject, not a ranking or a
+  complete list.
+reading_path:
+  - label: Training-data disclosures
+    href: /learn/training-data-disclosures/
+    note: Start here. Separates which data was used, where it came from, access, and terms.
+  - label: License scope
+    href: /glossary/#license-scope
+    note: Why a dataset license may not cover the works collected in it.
+  - label: Availability is not permission
+    href: /methodology/#openness
+    note: How the catalog keeps what you can download separate from what you may do with it.
+  - label: Gated download
+    href: /glossary/#gated-download
+    note: What it means when a dataset asks you to sign in and accept terms first.
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: How data terms fit alongside the terms for weights and code in one release.
+  - label: Unknown
+    href: /glossary/#unknown
+    note: A gap in a disclosure means not assessed or not documented, never "no".
+  - label: Common Crawl corpus record
+    href: /open/common-crawl-corpus/
+    note: The catalog record for the web archive that many of these datasets build on.
+directory_links:
+  - label: Datasets in the catalog
+    href: /open/?kind=dataset
+    note: Open dataset records, each with its sources, licenses, and access conditions.
+  - label: Organizations working with data
+    href: /companies/?sector=data
+    note: Organizations whose records list data as a sector.
+  - label: Data services
+    href: /companies/?role=data-services
+    note: Organizations that collect, label, or supply data for AI.
+organizations: [common-crawl, ai2, eleutherai, hugging-face, together-ai]
+artifacts: [common-crawl-corpus, fineweb, dolma, redpajama, essential-web, nemotron-cc, the-pile]
+people: []
+primary_documents:
+  - source_id: cc-terms
+    note: >-
+      Common Crawl's Terms of Use, which put the risk and the duty to respect third-party
+      rights on whoever uses the crawled content.
+  - source_id: fineweb-card
+    note: >-
+      A dataset card that states its own license, the upstream terms that also apply, and
+      its handling of personal information.
+  - source_id: dolma-card
+    note: >-
+      Dolma's card, including its license change and the statement that the original
+      sources' terms still apply.
+  - source_id: rpv2-card
+    note: >-
+      Shows a dataset released with quality signals and duplicate IDs rather than a single
+      filtered version, with separate terms for data and code.
+  - source_id: nvidia-data-agreement
+    note: >-
+      An example of a dataset agreement that limits use to model training and disclaims any
+      grant of rights to copyrighted content.
+  - source_id: common-pile-paper
+    note: >-
+      Explains what "openly licensed" text means and why unlicensed training data limits
+      sharing datasets.
+  - source_id: cc-ccbot
+    note: >-
+      How website owners can identify Common Crawl's crawler and block it in robots.txt.
+publication_status: published
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: cc-about
+    title: About Common Crawl
+    url: https://commoncrawl.org/about
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: cc-terms
+    title: Terms of Use
+    url: https://commoncrawl.org/terms-of-use
+    publisher: Common Crawl Foundation
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: cc-ccbot
+    title: CCBot
+    url: https://commoncrawl.org/ccbot
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: fineweb-card
+    title: FineWeb dataset card
+    url: https://huggingface.co/datasets/HuggingFaceFW/fineweb/raw/main/README.md
+    publisher: Hugging Face (Hugging Face Hub)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: dolma-card
+    title: Dolma dataset card
+    url: https://huggingface.co/datasets/allenai/dolma/raw/main/README.md
+    publisher: Ai2 (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: rpv2-card
+    title: RedPajama-Data-V2 dataset card
+    url: https://huggingface.co/datasets/togethercomputer/RedPajama-Data-V2/raw/main/README.md
+    publisher: Together AI (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: essential-web-card
+    title: Essential-Web v1.0 dataset card
+    url: https://huggingface.co/datasets/EssentialAI/essential-web-v1.0/raw/main/README.md
+    publisher: Essential AI (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: nemotron-cc-v2-hub
+    title: nvidia/Nemotron-CC-v2 (Hugging Face Hub API metadata, including access terms)
+    url: https://huggingface.co/api/datasets/nvidia/Nemotron-CC-v2
+    publisher: NVIDIA (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: nvidia-data-agreement
+    title: NVIDIA Data Agreement for Model Training
+    url: https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Dataset-sample/raw/main/LICENSE.md
+    publisher: NVIDIA (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: pile-card
+    title: Dataset Card for The Pile
+    url: https://huggingface.co/datasets/EleutherAI/pile/raw/main/README.md
+    publisher: EleutherAI (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: common-pile-paper
+    title: "The Common Pile v0.1: An 8TB Dataset of Public Domain and Openly Licensed Text (arXiv 2506.05209)"
+    url: https://arxiv.org/html/2506.05209
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06
+    accessed_at: 2026-10-02

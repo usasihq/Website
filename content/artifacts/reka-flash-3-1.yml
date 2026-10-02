@@ -1,0 +1,206 @@
+slug: reka-flash-3-1
+name: Reka Flash 3.1
+kind: model
+record_level: release
+family_slug: reka-flash
+version: "reka-flash-3.1"
+maintainers:
+  - name: Reka
+    organization_slug: reka
+    source_ids: [ reka-flash31-card, reka-flash31-post ]
+organization_slugs: [ reka ]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/RekaAI/reka-flash-3.1
+    kind: model-hub
+  - label: 3.5-bit quantized version (Hugging Face)
+    url: https://huggingface.co/RekaAI/reka-flash-3.1-rekaquant-q3_k_s
+    kind: model-hub
+  - label: Release announcement
+    url: https://reka.ai/news/reka-flash-3-1-and-reka-quant
+    kind: release-notes
+  - label: Reinforcement learning write-up
+    url: https://reka.ai/news/reinforcement-learning-for-reka-flash-3-1
+    kind: paper
+summary:
+  text: >-
+    A 21B-parameter language model released by Reka in July 2025 as an update to Reka Flash 3.
+    Reka post-trained it with supervised fine-tuning on synthetic and public datasets followed by
+    large-scale reinforcement learning with verifiable rewards, with a focus on coding and on
+    serving as a base for fine-tuning on agentic tasks. It writes a reasoning trace before its
+    answer.
+  source_ids: [ reka-flash31-card, reka-flash31-post, reka-flash31-rl-post ]
+  reviewed_at: 2026-10-02
+useful_for:
+  text: >-
+    Reka presents it for coding tasks and as a base model to fine-tune for agentic use, including
+    in resource-constrained or local deployments with the quantized version.
+  source_ids: [ reka-flash31-card, reka-flash31-post ]
+  reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model is published by Reka in its verified RekaAI organization on Hugging Face. Reka AI,
+    Inc. states in its privacy policy that it is headquartered in the United States, and its June
+    2026 announcement describes it as headquartered in San Francisco (see the Reka record). Reka
+    says the Flash 3 base was pretrained from scratch.
+  source_ids: [ reka-flash31-card, reka-hf-org, reka-privacy, reka-moonvalley, reka-flash3-post ]
+  assessed_at: 2026-10-02
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating. Reka also serves Flash 3.1 through its API and
+    playground.
+  source_ids: [ reka-flash31-card, reka-flash31-meta, reka-flash31-post ]
+  reviewed_at: 2026-10-02
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://huggingface.co/RekaAI/reka-flash-3.1
+    applies_to: weights
+    source_ids: [ reka-flash31-card, reka-flash31-meta ]
+    reviewed_at: 2026-10-02
+license_notes: null
+checklist:
+  weights:
+    status: public
+    note: Full weights are on Hugging Face, plus a separate 3.5-bit quantized version.
+    source_ids: [ reka-flash31-card ]
+    reviewed_at: 2026-10-02
+  inference_code:
+    status: public
+    note: >-
+      The card documents running the model with Hugging Face Transformers and with vLLM; it is
+      released in a Llama-compatible format usable by libraries that support Llama.
+    source_ids: [ reka-flash31-card ]
+    reviewed_at: 2026-10-02
+  training_code:
+    status: unknown
+    note: The card and posts reviewed do not link training code.
+    source_ids: []
+    reviewed_at: 2026-10-02
+  training_data_information:
+    status: partial
+    note: >-
+      The card says supervised fine-tuning used synthetic and public datasets; the reinforcement
+      learning post says math prompts came from Numina-1.5 and code prompts were difficult coding
+      problems with test cases. Pretraining data for the Flash 3 base is described only as
+      publicly accessible and synthetic datasets.
+    source_ids: [ reka-flash31-card, reka-flash31-rl-post, reka-flash3-post ]
+    reviewed_at: 2026-10-02
+  training_recipe:
+    status: partial
+    note: >-
+      The reinforcement learning post describes Reka's REINFORCE-based algorithm (dynamic
+      sampling, token-level loss, gradient clipping, handling of long samples, on-policy updates)
+      and how RL and SFT examples were separated, but not full hyperparameters or data mixtures.
+    source_ids: [ reka-flash31-rl-post ]
+    reviewed_at: 2026-10-02
+  evaluation_materials:
+    status: partial
+    note: The card shows evaluation results as a chart; no evaluation code or prompts are linked.
+    source_ids: [ reka-flash31-card ]
+    reviewed_at: 2026-10-02
+run_notes:
+  - text: >-
+      The card documents the prompt format (human and assistant turns separated by <sep>), says
+      generation should stop at <sep> or <|endoftext|>, notes that the model uses the cl100k_base
+      tokenizer, and recommends dropping earlier reasoning traces in multi-turn conversations.
+    source_ids: [ reka-flash31-card ]
+    reviewed_at: 2026-10-02
+  - text: >-
+      The card says the model is primarily built for English and should be treated as an
+      English-only model, although it can understand other languages to some degree.
+    source_ids: [ reka-flash31-card ]
+    reviewed_at: 2026-10-02
+provenance:
+  text: >-
+    Reka describes Flash 3.1 as an update to its Reka Flash 3, which it says was pretrained from
+    scratch. The Llama-compatible format refers to how the weights are packaged for existing
+    libraries.
+  derived_from:
+    - name: Reka Flash 3
+      artifact_slug: null
+      url: https://huggingface.co/RekaAI/reka-flash-3
+      note: Earlier Reka release; no separate catalog record.
+  source_ids: [ reka-flash31-card, reka-flash3-card, reka-flash3-post ]
+tags: [ language-model, reasoning, code-model ]
+publication_status: published
+archive_note: null
+released_at: 2025-07-10
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: reka-flash31-card
+    title: RekaAI/reka-flash-3.1 model card
+    url: https://huggingface.co/RekaAI/reka-flash-3.1
+    publisher: Reka
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash31-meta
+    title: RekaAI/reka-flash-3.1 model metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/RekaAI/reka-flash-3.1
+    publisher: Reka (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash31-post
+    title: Reka Flash 3.1 and Reka Quant
+    url: https://reka.ai/news/reka-flash-3-1-and-reka-quant
+    publisher: Reka
+    kind: announcement
+    published_at: 2025-07-10
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash31-rl-post
+    title: Reinforcement Learning for Reka Flash 3.1
+    url: https://reka.ai/news/reinforcement-learning-for-reka-flash-3-1
+    publisher: Reka
+    kind: paper
+    published_at: 2025-07-10
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash3-post
+    title: Introducing Reka Flash
+    url: https://reka.ai/news/introducing-reka-flash
+    publisher: Reka
+    kind: announcement
+    published_at: 2025-03-10
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash3-card
+    title: RekaAI/reka-flash-3 model card
+    url: https://huggingface.co/RekaAI/reka-flash-3
+    publisher: Reka
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-hf-org
+    title: Reka (RekaAI) on Hugging Face
+    url: https://huggingface.co/RekaAI
+    publisher: Reka (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-privacy
+    title: Privacy Policy | Reka
+    url: https://reka.ai/legal/privacy-policy
+    publisher: Reka AI, Inc.
+    kind: official-page
+    published_at: 2026-06
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-moonvalley
+    title: Reka and Moonvalley Join Forces to Advance Models and Infrastructure for Physical AI
+    url: https://reka.ai/news/reka-and-moonvalley-join-forces-to-advance-models-and-infrastructure-for-physical-ai
+    publisher: Reka
+    kind: announcement
+    published_at: 2026-06-09
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

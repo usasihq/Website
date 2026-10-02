@@ -108,6 +108,17 @@ checklist:
       The model card publishes post-training evaluation results; OLMES documents commands for
       running the Olmo 3 evaluation suites.
     source_ids: [mc-olmo3-7b-instruct, olmes-repo]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card describes the SFT, DPO, and RLVR post-training stages and links the Dolci
+      Instruct dataset for each; those dataset cards describe their composition and state that
+      they were used for the Olmo 3 7B Instruct line. Pretraining data is linked from the Olmo 3
+      7B base model card. The card's stage descriptions name the Think datasets alongside the
+      Instruct ones. This review confirms disclosure, not completeness across every provenance,
+      acquisition, labeling and processing requirement.
+    source_ids: [mc-olmo3-7b-instruct, dolci-instruct-sft, dolci-instruct-dpo, dolci-instruct-rl, mc-olmo3-7b-base]
+    reviewed_at: 2026-10-02
 run_notes:
   - text: >-
       The model card documents inference with Hugging Face Transformers 4.57.0 or later and
@@ -136,7 +147,7 @@ tags: [language-model]
 publication_status: published
 archive_note: null
 released_at: 2025-11-20
-updated_at: 2026-09-29
+updated_at: 2026-10-02
 last_reviewed: 2026-09-29
 sources:
   - id: mc-olmo3-7b-instruct
@@ -145,7 +156,8 @@ sources:
     publisher: Ai2
     kind: model-card
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: open-instruct-olmo3
     title: open-instruct Olmo 3 training scripts (scripts/train/olmo3)
     url: https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3
@@ -180,7 +192,32 @@ sources:
     publisher: Ai2
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: dolci-instruct-dpo
+    title: allenai/Dolci-Instruct-DPO dataset card
+    url: https://huggingface.co/datasets/allenai/Dolci-Instruct-DPO
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: dolci-instruct-rl
+    title: allenai/Dolci-Instruct-RL dataset card
+    url: https://huggingface.co/datasets/allenai/Dolci-Instruct-RL
+    publisher: Ai2
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: mc-olmo3-7b-base
+    title: allenai/Olmo-3-1025-7B model card
+    url: https://huggingface.co/allenai/Olmo-3-1025-7B
+    publisher: Ai2
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: dolma3-mix-7b
     title: allenai/dolma3_mix-6T-1025-7B dataset card
     url: https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B

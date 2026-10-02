@@ -1,0 +1,217 @@
+slug: enterprise-ai
+title: AI in enterprise software
+summary: >-
+  Enterprise software and data-platform companies in the catalog, the AI products they
+  document, the outside models those products can call, and the open releases some of them
+  publish under separate terms.
+intro:
+  - text: >-
+      Enterprise software companies in this catalog build AI into platforms that already hold
+      a company's records and workflows. Salesforce describes Agentforce as an AI agent
+      platform whose agents use large language models and draw on business data such as
+      Salesforce CRM data and data from Data 360. Glean's terms describe a platform that
+      connects to the business applications and data sources a customer selects while keeping
+      each application's identity, access controls, and sharing settings. ServiceNow says its
+      AI Platform integrates with any cloud, model, and data source, and that its AI Control
+      Tower is meant to discover, observe, govern, and secure AI across a company.
+    source_ids: [salesforce-agentforce, glean-tos, servicenow-pr-2026-05]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Data platforms run models next to the data they store. Databricks' Foundation Model APIs
+      let customers query open models from serving endpoints, and Databricks says it hosts
+      those models itself. Snowflake says its Cortex AI Functions run models from several
+      developers, including OpenAI, Anthropic, and Meta, and that the models it provides
+      access to are deployed within the Snowflake service perimeter.
+    source_ids: [databricks-fmapi, snowflake-cortex-functions]
+    reviewed_at: 2026-10-02
+  - text: >-
+      The model behind an enterprise product often comes from another company, with its own
+      terms. Glean's terms name OpenAI, Anthropic, and Google as examples of supported model
+      providers and say that each model is governed by its own terms as well as Glean's
+      agreement. Writer makes its own Palmyra X6 the default model across its platform, and
+      administrators can also enable models from other providers or bring their own through
+      AWS Bedrock, Microsoft Azure, and NVIDIA NIM.
+    source_ids: [glean-tos, writer-models]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Some of these companies also publish models under terms separate from their hosted
+      products. IBM says all Granite models are released under Apache 2.0. ServiceNow's
+      Apriel-1.6-15B-Thinker card gives an MIT license and says the Apriel models are not
+      intended for safety-critical uses without human oversight. Snowflake released base and
+      instruct checkpoints of Arctic under Apache 2.0 in April 2024. Writer's Palmyra-mini card
+      says it was fine-tuned from Qwen2.5-1.5B, published by the Qwen Team; a U.S. fine-tune
+      does not make its base model American, and the catalog records that relationship as
+      provenance.
+    source_ids: [granite-42-8b-card, apriel-16-card, arctic-instruct-card, palmyra-mini-card, qwen25-15b-card, usasi-methodology]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Hosted models in these platforms are retired on the provider's schedule. Databricks says
+      a deprecated model is given a retirement date 30 or 90 days ahead, and that once a model
+      is retired, any workload using it no longer works. Its retirement table lists dates for
+      Databricks' own DBRX models that have now passed.
+    source_ids: [databricks-retired-models]
+    reviewed_at: 2026-10-02
+scope: >-
+  Covers companies that sell enterprise software or data platforms with documented AI
+  products, the model providers those products use, and the open models and tools they
+  publish. It describes products from their own documentation; it does not evaluate them,
+  compare prices, or report revenue or customers. Featured records are examples chosen to cover
+  the subject, not a ranking or a complete list.
+reading_path:
+  - label: Hosted or local?
+    href: /learn/hosted-or-local/
+    note: Start here for what changes when your data goes to a hosted model.
+  - label: Hosted API
+    href: /glossary/#hosted-api
+    note: A short definition of reaching a model through a provider's service.
+  - label: One organization, several roles
+    href: /learn/how-the-ecosystem-fits-together/
+    note: How a software company can also be a model developer and a customer of other labs.
+  - label: The hosted product/API label
+    href: /methodology/#openness
+    note: Why a hosted product says nothing about an organization's other releases.
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: How to read the license on an open release from an enterprise company.
+  - label: License scope
+    href: /glossary/#license-scope
+    note: The terms of one release do not cover a company's hosted products.
+  - label: AI agents and agent tooling
+    href: /hubs/agents/
+    note: The protocols and SDKs behind many enterprise agent products.
+directory_links:
+  - label: Enterprise software companies
+    href: /companies/?role=enterprise-software
+    note: Organizations whose records list enterprise software as a role.
+  - label: Data platforms
+    href: /companies/?role=data-platform
+    note: Organizations that store and process data and, in many cases, run models on it.
+  - label: Organizations in the enterprise sector
+    href: /companies/?sector=enterprise
+    note: A broader view that includes hardware and cloud companies selling to businesses.
+organizations: [salesforce, servicenow, ibm, databricks, snowflake, glean, writer]
+artifacts: [granite-4-2-8b, apriel-1-6-15b-thinker, snowflake-arctic-instruct, palmyra-mini, mlflow]
+people: []
+primary_documents:
+  - source_id: glean-tos
+    note: >-
+      An enterprise AI platform's terms, which describe permission-preserving connections and
+      say that third-party models are governed by their own terms.
+  - source_id: snowflake-cortex-functions
+    note: >-
+      Snowflake's documentation of which developers' models its AI functions use and where
+      those models are deployed.
+  - source_id: databricks-fmapi
+    note: >-
+      Databricks' description of the open models it hosts behind its Foundation Model APIs.
+  - source_id: databricks-retired-models
+    note: >-
+      A data platform's lifecycle policy for hosted models, with deprecation notice periods
+      and past retirement dates.
+  - source_id: writer-models
+    note: >-
+      Shows a platform that defaults to its own model while letting administrators enable
+      models from other providers.
+  - source_id: granite-42-8b-card
+    note: >-
+      The model card for an open release from an enterprise software company, with its
+      license statement.
+  - source_id: palmyra-mini-card
+    note: >-
+      A card that names its base model, an example of provenance to check before relying on a
+      release.
+publication_status: published
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: salesforce-agentforce
+    title: Agentforce
+    url: https://www.salesforce.com/agentforce/
+    publisher: Salesforce
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: glean-tos
+    title: Glean Technologies, Inc. Terms of Service (June 5, 2026)
+    url: https://assets.glean.com/marketing/Legal/Glean%20Technologies-%20Inc.%20Terms%20of%20Service%20Jun%205%202026.pdf
+    publisher: Glean
+    kind: other
+    published_at: 2026-06-05
+    accessed_at: 2026-10-02
+  - id: servicenow-pr-2026-05
+    title: ServiceNow turns enterprise AI chaos into control with the platform for governed, autonomous work
+    url: https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-turns-enterprise-AI-chaos-into-control-with-the-platform-for-governed-autonomous-work/default.aspx
+    publisher: ServiceNow
+    kind: announcement
+    published_at: 2026-05-05
+    accessed_at: 2026-10-02
+  - id: databricks-fmapi
+    title: Databricks Foundation Model APIs
+    url: https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/
+    publisher: Databricks
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: databricks-retired-models
+    title: Model retirement policy (Databricks documentation)
+    url: https://docs.databricks.com/aws/en/machine-learning/retired-models-policy
+    publisher: Databricks
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: snowflake-cortex-functions
+    title: Snowflake Cortex AI Functions
+    url: https://docs.snowflake.com/en/user-guide/snowflake-cortex/aisql
+    publisher: Snowflake
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: writer-models
+    title: Models
+    url: https://writer.com/models/
+    publisher: Writer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: granite-42-8b-card
+    title: Granite-4.2-8B model card
+    url: https://huggingface.co/ibm-granite/granite-4.2-8b/raw/main/README.md
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: apriel-16-card
+    title: Apriel-1.6-15B-Thinker model card
+    url: https://huggingface.co/ServiceNow-AI/Apriel-1.6-15b-Thinker/raw/main/README.md
+    publisher: ServiceNow (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: arctic-instruct-card
+    title: snowflake-arctic-instruct model card
+    url: https://huggingface.co/Snowflake/snowflake-arctic-instruct/raw/main/README.md
+    publisher: Snowflake (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: palmyra-mini-card
+    title: Palmyra-mini model card
+    url: https://huggingface.co/Writer/palmyra-mini/raw/main/README.md
+    publisher: Writer (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: qwen25-15b-card
+    title: Qwen2.5-1.5B model card
+    url: https://huggingface.co/Qwen/Qwen2.5-1.5B/raw/main/README.md
+    publisher: Qwen (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: usasi-methodology
+    title: Methodology
+    url: https://unitedstatesofamericasuperintelligence.com/methodology/
+    publisher: USASI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02

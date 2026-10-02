@@ -106,6 +106,19 @@ checklist:
       The model card publishes evaluation results against its SFT, DPO, and Olmo 3 32B Think
       predecessors; OLMES documents commands for running the Olmo 3 evaluation suites.
     source_ids: [mc-olmo31-32b-think, olmes-repo]
+  training_data_information:
+    status: partial
+    note: >-
+      The model card says the model was pretrained on Dolma 3 and post-trained on Dolci data and
+      lists Dolci-Think-RL in its metadata, but its stage-by-stage section names and links the 7B
+      datasets. The technical report says Olmo 3.1 Think 32B continued the Olmo 3 Think 32B RL run
+      with additional epochs on the Dolci Think RL data. The 32B Dolci Think SFT, DPO, and RL
+      dataset cards describe their composition and state that they were used for the 32B Think
+      model, and the Dolma 3 Mix (6T) card says it was used to pretrain the 32B base model. This
+      review confirms disclosure, not completeness across every provenance, acquisition, labeling
+      and processing requirement.
+    source_ids: [mc-olmo31-32b-think, olmo3-report, dolci-think-sft-32b, dolci-think-dpo-32b, dolci-think-rl-32b, dolma3-mix-6t]
+    reviewed_at: 2026-10-02
 run_notes:
   - text: >-
       The model card documents inference with Hugging Face Transformers 4.57.0 or later and
@@ -134,7 +147,7 @@ tags: [language-model, reasoning]
 publication_status: published
 archive_note: null
 released_at: 2025-12-12
-updated_at: 2026-09-29
+updated_at: 2026-10-02
 last_reviewed: 2026-09-29
 sources:
   - id: mc-olmo31-32b-think
@@ -143,7 +156,8 @@ sources:
     publisher: Ai2
     kind: model-card
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: ai2-olmo3-blog
     title: "Olmo 3: Charting a path through the model flow to lead open-source AI (Update 12/12: Announcing Olmo 3.1)"
     url: https://allenai.org/blog/olmo3
@@ -157,7 +171,7 @@ sources:
     publisher: Team Olmo (Ai2)
     kind: paper
     published_at: 2026-04-14
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
   - id: open-instruct-olmo3
     title: open-instruct Olmo 3 training scripts (scripts/train/olmo3)
     url: https://github.com/allenai/open-instruct/tree/main/scripts/train/olmo3
@@ -192,7 +206,7 @@ sources:
     publisher: Ai2
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
   - id: dolmino-1125
     title: allenai/dolma3_dolmino_mix-100B-1125 dataset card
     url: https://huggingface.co/datasets/allenai/dolma3_dolmino_mix-100B-1125
@@ -213,21 +227,24 @@ sources:
     publisher: Ai2
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: dolci-think-dpo-32b
     title: allenai/Dolci-Think-DPO-32B dataset card
     url: https://huggingface.co/datasets/allenai/Dolci-Think-DPO-32B
     publisher: Ai2
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: dolci-think-rl-32b
     title: allenai/Dolci-Think-RL-32B dataset card
     url: https://huggingface.co/datasets/allenai/Dolci-Think-RL-32B
     publisher: Ai2
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: olmes-repo
     title: allenai/olmes
     url: https://github.com/allenai/olmes

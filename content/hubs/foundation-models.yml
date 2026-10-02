@@ -1,0 +1,203 @@
+slug: foundation-models
+title: Foundation models and the labs that build them
+summary: >-
+  How model developers in the catalog make their models available, hosted, as downloadable
+  weights, or both, why a model family is not a release, and how to read access and license
+  terms.
+intro:
+  - text: >-
+      Model developers in this catalog make their models available in different ways. Some
+      offer them as hosted services: Anthropic's documentation lists each Claude model by its
+      ID on the Claude API and on cloud platforms run by Amazon, Google, and Microsoft. Some
+      publish the weights: Ai2 says its Olmo 3 models were pre-trained on the Dolma 3 dataset
+      and post-trained on the Dolci datasets, and that it is releasing the code, checkpoints,
+      and training details. Others do both. OpenAI serves models through its API and also
+      publishes gpt-oss, which its model card calls OpenAI's open-weight models, under the
+      Apache 2.0 license.
+    source_ids: [claude-models-overview, olmo31-think-card, openai-api-models, gptoss120b-card]
+    reviewed_at: 2026-10-02
+  - text: >-
+      A model name often covers many releases. The Olmo 3 model card lists 7B and 32B models in
+      Instruct and Think variants, and publishes a separate checkpoint for each training stage
+      (supervised fine-tuning, preference tuning, and a final reinforcement-learning stage). In
+      this catalog, a family record summarizes a named line of models, while licenses,
+      availability, and openness tiers attach only to individual releases, because they can
+      differ between releases in the same family.
+    source_ids: [olmo31-think-card, usasi-methodology]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Downloadable weights come with different terms. Gemma 4 and gpt-oss use Apache 2.0. The
+      Llama 4 Community License incorporates an acceptable use policy and requires anyone who
+      distributes the models, or a product that contains them, to display "Built with Llama";
+      a model trained or improved with them and then distributed must have a name beginning
+      with "Llama". The Llama 4 Scout repository on Hugging Face asks you to sign in and review
+      these conditions before access. The xAI Community License for Grok 2 allows commercial
+      use only within xAI's acceptable use policy and bars using the materials or their outputs
+      to train other general-purpose models.
+    source_ids: [gemma4-license, gptoss120b-card, llama4-license, llama4-scout-hf, grok2-license]
+    reviewed_at: 2026-10-02
+  - text: >-
+      A permissive license does not settle every question. Ai2's Olmo 3.1 32B Think card gives
+      an Apache 2.0 license and also says the model is intended for research and educational
+      use in line with Ai2's Responsible Use Guidelines. The catalog keeps availability
+      separate from permission: being publicly downloadable does not by itself make a release
+      unrestricted, open source, commercially usable, or redistributable.
+    source_ids: [olmo31-think-card, usasi-methodology]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Hosted models change on the provider's schedule. Anthropic says every Claude model ID is
+      a pinned snapshot, that a deprecated model is given a retirement date, and that requests
+      to a retired model fail. It gives at least 60 days' notice before retiring publicly
+      released models on the platforms it operates, while Amazon Bedrock and Google Cloud set
+      their own schedules. Check the lifecycle page for any hosted model you build on.
+    source_ids: [claude-models-overview, claude-deprecations]
+    reviewed_at: 2026-10-02
+scope: >-
+  Covers organizations that train and publish general-purpose models, whether hosted, as
+  downloadable weights, or both, and the family and release records for their models. It
+  explains access and license terms; it does not compare model quality, report results, or
+  give legal advice. Featured records are examples chosen to cover the subject, not a ranking
+  or a complete list.
+reading_path:
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: Start here. Downloadable weights and permission to use them are separate questions.
+  - label: Model family
+    href: /glossary/#model-family
+    note: A named line of related models released over time.
+  - label: Model release
+    href: /glossary/#model-release
+    note: One specific published model, with its own files and its own terms.
+  - label: Families and releases
+    href: /methodology/#families
+    note: Why licenses, availability, and tiers attach to releases and never to a family.
+  - label: How to read a model card
+    href: /learn/how-to-read-a-model-card/
+    note: Find the license, intended uses, base model, and limitations for one release.
+  - label: Acceptable use policy
+    href: /glossary/#acceptable-use-policy
+    note: Use policies can limit applications even when the weights download freely.
+  - label: Hosted or local?
+    href: /learn/hosted-or-local/
+    note: What changes when you call a hosted model instead of running downloaded weights.
+directory_links:
+  - label: Model developers
+    href: /companies/?role=model-developer
+    note: Organizations whose records list model development as a role.
+  - label: Model families
+    href: /open/?kind=model&level=family
+    note: Family overviews. Each links to the release records that carry licenses and tiers.
+  - label: Open-weight model releases
+    href: /open/?kind=model&tier=open-weight
+    note: Releases whose weights the public can obtain. Check each license before use.
+  - label: Releases with restricted weights
+    href: /open/?kind=model&tier=restricted-weights
+    note: Releases whose weights are available only by request, approval, or to some people.
+organizations: [anthropic, openai, ai2, meta, google-deepmind, xai]
+artifacts: [olmo, olmo-3-1-32b-think, gpt-oss, llama-4-scout-17b-16e, gemma-4-31b, grok-2]
+people: []
+primary_documents:
+  - source_id: claude-models-overview
+    note: >-
+      A hosted developer's own model list, with a model ID for each platform the models are
+      offered on and a retirement commitment for each model.
+  - source_id: claude-deprecations
+    note: >-
+      Defines the active, legacy, deprecated, and retired stages for hosted models and the
+      notice given before retirement.
+  - source_id: olmo31-think-card
+    note: >-
+      Shows a family split into many released checkpoints, with the training data and the
+      license and intended-use statements for one release.
+  - source_id: gptoss120b-card
+    note: >-
+      The model card for an open-weight release from a developer that also runs a hosted API.
+  - source_id: llama4-license
+    note: >-
+      A custom model license with attribution, naming, and acceptable-use conditions that go
+      beyond a standard open-source license.
+  - source_id: grok2-license
+    note: >-
+      A community license that conditions commercial use and restricts training other models
+      on the materials or their outputs.
+  - source_id: gemma4-license
+    note: >-
+      Google's statement of the license for Gemma 4, which is Apache 2.0.
+  - source_id: usasi-methodology
+    note: >-
+      USASI's rules for family and release records, and for keeping availability separate
+      from permission.
+publication_status: published
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: claude-models-overview
+    title: Models overview
+    url: https://platform.claude.com/docs/en/models/overview
+    publisher: Anthropic (Claude Platform documentation)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: claude-deprecations
+    title: Model deprecations
+    url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    publisher: Anthropic (Claude Platform documentation)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: openai-api-models
+    title: Models (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/models
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: gptoss120b-card
+    title: gpt-oss-120b model card
+    url: https://huggingface.co/openai/gpt-oss-120b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: olmo31-think-card
+    title: Model card for Olmo 3.1 32B Think
+    url: https://huggingface.co/allenai/Olmo-3.1-32B-Think/raw/main/README.md
+    publisher: Ai2 (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: gemma4-license
+    title: Gemma 4 license
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    publisher: Google AI for Developers
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: llama4-license
+    title: Llama 4 Community License Agreement
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama4/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: llama4-scout-hf
+    title: meta-llama/Llama-4-Scout-17B-16E
+    url: https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: grok2-license
+    title: xAI Community License Agreement (Grok 2)
+    url: https://huggingface.co/xai-org/grok-2/raw/main/LICENSE
+    publisher: xAI (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: usasi-methodology
+    title: Methodology
+    url: https://unitedstatesofamericasuperintelligence.com/methodology/
+    publisher: USASI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02

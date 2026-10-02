@@ -1,0 +1,159 @@
+slug: tri-dao
+name: Tri Dao
+initials: TD
+headline: First author of FlashAttention and co-author of Mamba; Princeton professor and Together AI co-founder
+bio:
+  text: >-
+    Tri Dao is an Assistant Professor of Computer Science at Princeton University, where Dao leads
+    the Dao AI Lab, and a co-founder and the Chief Scientist of Together AI; Dao's site describes
+    research on efficient training and inference through hardware-aware algorithms. Dao is first
+    author of the FlashAttention paper and sole author of FlashAttention-2, whose official
+    implementation lists support for consumer GPUs such as the RTX 3090 and RTX 4090. With Albert
+    Gu, Dao co-authored the Mamba and Mamba-2 papers, and the Mamba repository publishes pretrained
+    checkpoints from 130M to 2.8B parameters on Hugging Face under the Apache 2.0 license.
+  source_ids: [dao-site, fa-paper, fa2-paper, fa-readme, mamba-paper, mamba2-paper, mamba-readme, mamba-2-8b-card]
+  reviewed_at: 2026-10-02
+affiliations:
+  - name: Princeton University
+    organization_slug: princeton-university
+    role: Assistant Professor of Computer Science, leading the Dao AI Lab
+    current: true
+    source_ids: [dao-site, github-profile]
+  - name: Together AI
+    organization_slug: together-ai
+    role: Co-founder and Chief Scientist
+    current: true
+    source_ids: [dao-site]
+work:
+  - name: Mamba and Mamba-2
+    artifact_slug: null
+    url: https://github.com/state-spaces/mamba
+    contribution: >-
+      Co-author with Albert Gu of the Mamba (2023) and Mamba-2 (2024) papers, and listed in the
+      repository's AUTHORS file. The Apache-2.0 repository publishes pretrained Mamba and Mamba-2
+      checkpoints from 130M to 2.8B parameters on Hugging Face, with model cards under the Apache
+      2.0 license, and includes a script that downloads a checkpoint from the Hub and generates
+      text.
+    source_ids: [mamba-paper, mamba2-paper, mamba-readme, mamba-authors, hf-state-spaces, mamba-2-8b-card]
+  - name: FlashAttention
+    artifact_slug: null
+    url: https://github.com/Dao-AILab/flash-attention
+    contribution: >-
+      First author of the FlashAttention paper (2022) and sole author of FlashAttention-2 (2023).
+      The BSD-3-Clause repository, whose AUTHORS file lists Dao, provides the official
+      implementation; its README lists support for Ampere, Ada, and Hopper GPUs including the RTX
+      3090 and RTX 4090, and a ROCm version for AMD GPUs.
+    source_ids: [fa-paper, fa2-paper, fa-readme, fa-authors, fa-license]
+links:
+  - label: Website
+    url: https://tridao.me
+  - label: GitHub
+    url: https://github.com/tridao
+publication_status: published
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: dao-site
+    title: Tri Dao — homepage
+    url: https://tridao.me
+    publisher: Tri Dao
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: github-profile
+    title: tridao (Tri Dao) on GitHub
+    url: https://github.com/tridao
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: fa-paper
+    title: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (arXiv 2205.14135)"
+    url: https://arxiv.org/abs/2205.14135
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-05-27
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: fa2-paper
+    title: "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning (arXiv 2307.08691)"
+    url: https://arxiv.org/abs/2307.08691
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-07-17
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: fa-readme
+    title: Dao-AILab/flash-attention README (installation and GPU support)
+    url: https://github.com/Dao-AILab/flash-attention
+    publisher: Dao-AILab (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: fa-authors
+    title: Dao-AILab/flash-attention AUTHORS
+    url: https://github.com/Dao-AILab/flash-attention/blob/main/AUTHORS
+    publisher: Dao-AILab (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: fa-license
+    title: Dao-AILab/flash-attention LICENSE (BSD 3-Clause)
+    url: https://github.com/Dao-AILab/flash-attention/blob/main/LICENSE
+    publisher: Dao-AILab (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: mamba-paper
+    title: "Mamba: Linear-Time Sequence Modeling with Selective State Spaces (arXiv 2312.00752)"
+    url: https://arxiv.org/abs/2312.00752
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-01
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: mamba2-paper
+    title: "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (arXiv 2405.21060)"
+    url: https://arxiv.org/abs/2405.21060
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-31
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: mamba-readme
+    title: state-spaces/mamba README (pretrained models and inference) and license (Apache-2.0)
+    url: https://github.com/state-spaces/mamba
+    publisher: state-spaces (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: mamba-authors
+    title: state-spaces/mamba AUTHORS
+    url: https://github.com/state-spaces/mamba/blob/main/AUTHORS
+    publisher: state-spaces (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: mamba-2-8b-card
+    title: state-spaces/mamba-2.8b model card (license apache-2.0)
+    url: https://huggingface.co/state-spaces/mamba-2.8b
+    publisher: state-spaces (Hugging Face)
+    kind: model-card
+    published_at: 2023-12-03
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: hf-state-spaces
+    title: state-spaces on Hugging Face (pretrained Mamba and Mamba-2 checkpoints)
+    url: https://huggingface.co/state-spaces
+    publisher: state-spaces (Hugging Face)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

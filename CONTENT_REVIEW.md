@@ -185,3 +185,10 @@ sources re-read on 2026-10-01 and is explained in the record's eligibility text.
 | F1c MLC LLM | Published, `us-governed-project` | CMU Catalyst lists MLC LLM as its own research project; all supporting/contributing organizations on mlc.ai are U.S.-based. The 2023 multi-institution origin is recorded. Other F1c projects (Lance, DCLM, BigCodeBench, GPQA, MMLU, Triton, SWE-bench) remain draft. |
 | Lemonade | Published, `us-governed-project` | README: sponsored by AMD, amd.com contact; AMD's developer article calls it backed by AMD and links "our GitHub". |
 | xAI jobs | Greenhouse board `xai` (named "SpaceXAI") assigned to `xai` | x.ai/careers links to the board (round-3 jobs notes); the catalog already records xAI as SpaceX's wholly owned subsidiary using the SpaceXAI name. SpaceX's own `spacex` board (mostly non-AI roles) is not added. |
+
+## 2026-10-02: new drafts
+
+| Record | Status | Missing evidence |
+|---|---|---|
+| organizations/shield-ai | Draft, `pending_review` | Official pages last name a headquarters (San Diego) in 2022; current materials name none. |
+| organizations/magic | Draft, `pending_review` | Site gives only "Magic AI, Inc." and San Francisco job listings; no headquarters statement or address. |

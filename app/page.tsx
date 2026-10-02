@@ -167,7 +167,7 @@ export default function HomePage() {
           {[
             { href: "/start/", title: "New here? Start here", text: "Four short paths: learn a term, find something usable, understand an organization, check a claim." },
             { href: "/learn/", title: "Learn the basics", text: "Ten short explainers and a glossary, from open weights to reading an evaluation." },
-            { href: "/hubs/", title: "Explore by subject", text: "Local AI, agents, chips and compute, open-source foundations, and science." },
+            { href: "/hubs/", title: "Explore by subject", text: "Ten subject hubs, from local AI and agents to robotics, evaluation, and datasets." },
             { href: "/places/", title: "Browse by state", text: "Organizations by the state named in their documented headquarters." },
           ].map((item) => (
             <li key={item.href}>

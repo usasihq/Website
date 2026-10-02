@@ -1,0 +1,229 @@
+slug: robotics
+title: Robotics and embodied AI
+summary: >-
+  Robot makers, robot foundation models, simulators, and driving data in the catalog, with the
+  licenses they carry and the testing and safety limits their own documents state.
+intro:
+  - text: >-
+      Robotics in this catalog includes companies that build robots and the models and tools
+      used to control and train them. Boston Dynamics sells Spot, a mobile robot for sensing
+      and industrial inspection, Stretch, which handles cases and unloads trailers in
+      warehouses, the Atlas humanoid, and Orbit software for managing robot fleets. Figure
+      describes Helix, the model that controls its humanoids, as a generalist
+      vision-language-action (VLA) model that unifies perception, language understanding, and
+      learned control.
+    source_ids: [bd-products, figure-helix]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Some robot foundation models are published for others to adapt. Physical
+      Intelligence's openpi repository holds its π0, π0-FAST, and π0.5 VLA models, with base
+      and fine-tuned checkpoints. Its code is under Apache 2.0, and the repository also
+      carries a copy of the Gemma Terms of Use. NVIDIA describes Isaac GR00T N1.7 as an open
+      VLA model for humanoid robot skills that developers can post-train with real or
+      synthetic data. Its repository's license section puts the code under Apache 2.0 and the
+      weights under the NVIDIA Open Model License, as the model card does, although another
+      line of the same README calls N1.7 commercially licensable under Apache 2.0.
+    source_ids: [openpi-readme, openpi-license, openpi-gemma-license, gr00t-readme, gr00t-n17-card]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Much robot learning happens in simulation and on recorded data. Isaac Lab is a
+      GPU-accelerated, open-source framework for robot learning built on NVIDIA Isaac Sim; the
+      framework is BSD-3-licensed, but full-featured workflows need Isaac Sim, which includes
+      components under proprietary terms. Cosmos 3 models generate video, images, audio, and
+      robot actions for physical AI. Waymax, a driving simulator built on the Waymo Open Motion
+      Dataset, is licensed for non-commercial use only. The Waymo Open Dataset license
+      requires signing in and agreeing to its terms, and forbids deploying the data, or models
+      trained on it, in vehicle operation or production systems.
+    source_ids: [isaaclab-readme, cosmos3-nano-card, waymax-readme, waymax-license, wod-terms]
+    reviewed_at: 2026-10-02
+  - text: >-
+      The model documents state their own limits. openpi says π0 was developed for Physical
+      Intelligence's own robots and may or may not work on yours. The GR00T N1.7 card reports
+      simulation tests scored automatically and real-robot tests judged by human observers in
+      a lab, calls for further testing with data from your own use case, and makes developers
+      responsible for guardrails and other safety mechanisms. The Cosmos 3 card says its
+      outputs should not be treated as physically accurate simulation or safety-certified
+      decisions, and that robotics control needs additional validation and system-level safety
+      analysis.
+    source_ids: [openpi-readme, gr00t-n17-card, cosmos3-nano-card]
+    reviewed_at: 2026-10-02
+  - text: >-
+      A robot maker's safety description is a statement about its design. Agility Robotics
+      says the safety architecture of Digit 5 is designed to reduce dependence on the
+      protective barriers used in traditional automation, so the robot can work near people.
+      Its product page also says Digit 5 is in development, that certain safety features are
+      still in development, and that safety features do not eliminate all operational risk.
+    source_ids: [agility-digit5-pr, agility-digit5-page]
+    reviewed_at: 2026-10-02
+scope: >-
+  Covers organizations that build robots or autonomous vehicles, robot foundation models and
+  world models, simulation frameworks, and robotics datasets in the catalog. It reports what
+  sources say about licenses, testing, and safety; it does not assess whether a robot or model
+  is safe, compare performance, or cover defense uses. Featured records are examples chosen to
+  cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: Agents and robotics
+    href: /learn/agents-and-robotics/
+    note: Start here for how a model, the software around it, and a physical robot differ.
+  - label: How to read a model card
+    href: /learn/how-to-read-a-model-card/
+    note: Robot model cards hold the license, evaluation conditions, and limitations.
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: Why code, weights, and data can each come with different terms.
+  - label: License scope
+    href: /glossary/#license-scope
+    note: A license file in a code repository does not by itself cover weights or data.
+  - label: Reading evaluations
+    href: /learn/reading-evaluations/
+    note: How to read reported results, including results from simulation.
+  - label: Inference hardware
+    href: /learn/inference-hardware/
+    note: Why robot models list GPU memory requirements for inference and fine-tuning.
+  - label: openpi record
+    href: /open/openpi/
+    note: An example record for robot foundation models published with code and checkpoints.
+directory_links:
+  - label: Robotics organizations
+    href: /companies/?sector=robotics
+    note: Organizations whose records list robotics as a sector.
+  - label: Robot makers
+    href: /companies/?role=robotics
+    note: Organizations whose records list robotics as a role.
+  - label: Robotics models, simulators, and data
+    href: /open/?q=robotics
+    note: A text search for open artifacts that mention robotics.
+organizations: [physical-intelligence, boston-dynamics, agility-robotics, figure, waymo]
+artifacts: [openpi, gr00t, isaac-lab, cosmos, waymo-open-dataset, waymax]
+people: []
+primary_documents:
+  - source_id: openpi-readme
+    note: >-
+      Physical Intelligence's description of its released checkpoints and its plain warning
+      that they may not work on other robots.
+  - source_id: gr00t-n17-card
+    note: >-
+      The GR00T N1.7 card, with its weights license, how it was evaluated in simulation and
+      on real robots, and who is responsible for safe integration.
+  - source_id: gr00t-readme
+    note: >-
+      The Isaac GR00T repository, whose license section separates code terms from weights
+      terms.
+  - source_id: cosmos3-nano-card
+    note: >-
+      A world-model card whose limitations section says what its outputs should not be used
+      for.
+  - source_id: isaaclab-readme
+    note: >-
+      Isaac Lab's license section, which notes that full workflows depend on Isaac Sim and its
+      proprietary components.
+  - source_id: wod-terms
+    note: >-
+      The Waymo Open Dataset license, which limits use to non-commercial purposes and
+      excludes production systems.
+  - source_id: agility-digit5-page
+    note: >-
+      A humanoid product page with its own disclaimers about features still in development
+      and remaining operational risk.
+publication_status: published
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: bd-products
+    title: Products
+    url: https://bostondynamics.com/products/
+    publisher: Boston Dynamics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: figure-helix
+    title: "Helix: A Vision-Language-Action Model for Generalist Humanoid Control"
+    url: https://www.figure.ai/news/helix
+    publisher: Figure
+    kind: announcement
+    published_at: 2025-02-20
+    accessed_at: 2026-10-02
+  - id: openpi-readme
+    title: openpi README
+    url: https://raw.githubusercontent.com/Physical-Intelligence/openpi/main/README.md
+    publisher: Physical Intelligence (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: openpi-license
+    title: openpi LICENSE
+    url: https://raw.githubusercontent.com/Physical-Intelligence/openpi/main/LICENSE
+    publisher: Physical Intelligence (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: openpi-gemma-license
+    title: openpi LICENSE_GEMMA.txt (Gemma Terms of Use)
+    url: https://raw.githubusercontent.com/Physical-Intelligence/openpi/main/LICENSE_GEMMA.txt
+    publisher: Physical Intelligence (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: gr00t-readme
+    title: Isaac GR00T README
+    url: https://raw.githubusercontent.com/NVIDIA/Isaac-GR00T/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: gr00t-n17-card
+    title: GR00T-N1.7-3B model card
+    url: https://huggingface.co/nvidia/GR00T-N1.7-3B/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: isaaclab-readme
+    title: Isaac Lab README
+    url: https://raw.githubusercontent.com/isaac-sim/IsaacLab/develop/README.md
+    publisher: Isaac Sim, NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: cosmos3-nano-card
+    title: Cosmos3-Nano model card
+    url: https://huggingface.co/nvidia/Cosmos3-Nano/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: waymax-readme
+    title: Waymax README
+    url: https://raw.githubusercontent.com/waymo-research/waymax/main/README.md
+    publisher: Waymo Research (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: waymax-license
+    title: Waymax License Agreement for Non-Commercial Use
+    url: https://raw.githubusercontent.com/waymo-research/waymax/main/LICENSE
+    publisher: Waymo Research (GitHub)
+    kind: license
+    published_at: 2023-10-17
+    accessed_at: 2026-10-02
+  - id: wod-terms
+    title: Waymo Dataset License Agreement for Non-Commercial Use
+    url: https://waymo.com/open/terms/
+    publisher: Waymo
+    kind: license
+    published_at: 2025-03
+    accessed_at: 2026-10-02
+  - id: agility-digit5-pr
+    title: Agility unveils Digit 5 humanoid robot built for cooperatively safe work at scale
+    url: https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale
+    publisher: Agility Robotics
+    kind: announcement
+    published_at: 2026-09-15
+    accessed_at: 2026-10-02
+  - id: agility-digit5-page
+    title: Digit 5
+    url: https://www.agilityrobotics.com/solutions/digit-5
+    publisher: Agility Robotics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02

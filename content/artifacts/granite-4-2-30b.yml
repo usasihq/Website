@@ -26,8 +26,12 @@ summary:
   text: >-
     Granite 4.2 30B is a 30-billion-parameter dense decoder-only language model from IBM with
     built-in reasoning, selectable thinking, non-thinking, and low-effort modes, and tool calling.
-    It supports a 128K-token context natively; the model card documents extension to 512K. Per the model card, the 30B model received a second supervised fine-tuning phase with up-sampled agentic data.
-  source_ids: [model-card]
+    The model card states native 128K-token context support with long-context extension to 512K,
+    while the configuration file shipped with the weights sets a maximum of 131,072 positions. Per
+    the model card, the 30B model received a second supervised fine-tuning phase with up-sampled
+    agentic data.
+  source_ids: [model-card, hf-config]
+  reviewed_at: 2026-10-02
 useful_for:
   text: >-
     The model card lists reasoning, code generation, tool calling, agentic workflows, and
@@ -110,6 +114,14 @@ checklist:
     source_ids: [model-card]
 run_notes:
   - text: >-
+      The model card lists a 512K context window among key capabilities and describes native 128K
+      support with long-context extension to 512K, but its architecture table gives a sequence
+      length of 131,072, its vLLM and SGLang examples set a 131,072-token context limit, and the
+      repository's config.json sets max_position_embeddings to 131,072 with no RoPE scaling. The
+      card does not describe how to enable the 512K extension.
+    source_ids: [model-card, hf-config]
+    reviewed_at: 2026-10-02
+  - text: >-
       The model card documents serving with vLLM (v0.20 or later for the bundled
       granite_thinking_parser) and with SGLang (v0.5.18 or later), and loading with Hugging Face
       Transformers. It recommends temperature 1.0 and top_p 0.95 for all modes.
@@ -132,7 +144,7 @@ tags: [language-model, reasoning]
 publication_status: published
 archive_note: null
 released_at: 2026-08-25
-updated_at: 2026-09-29
+updated_at: 2026-10-02
 last_reviewed: 2026-09-29
 sources:
   - id: model-card
@@ -141,7 +153,15 @@ sources:
     publisher: IBM (Hugging Face)
     kind: model-card
     published_at: 2026-08-25
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+  - id: hf-config
+    title: ibm-granite/granite-4.2-30b config.json
+    url: https://huggingface.co/ibm-granite/granite-4.2-30b/raw/main/config.json
+    publisher: IBM (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: repo-license
     title: granite-4.2-language-models LICENSE
     url: https://github.com/ibm-granite/granite-4.2-language-models/blob/main/LICENSE

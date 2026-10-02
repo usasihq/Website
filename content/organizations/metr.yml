@@ -1,0 +1,153 @@
+slug: metr
+name: METR (Model Evaluation & Threat Research)
+legal_name:
+  text: Model Evaluation and Threat Research, Inc.
+  source_ids: [ metr-donate, irs-eo-bmf-ca ]
+  reviewed_at: 2026-10-02
+website: https://metr.org
+logo_text: MTR
+summary:
+  text: >-
+    METR is a research nonprofit that evaluates frontier AI models, measuring their autonomous
+    capabilities and assessing whether and when AI systems could pose catastrophic risks. It
+    publishes research, evaluation reports on specific models, and open-source tooling for
+    running evaluations.
+  source_ids: [ metr-about, metr-home, metr-github ]
+  reviewed_at: 2026-10-02
+organization_roles: [ research-lab, nonprofit-research ]
+ownership_category: nonprofit
+ownership_evidence:
+  text: >-
+    METR describes itself as a research nonprofit. The IRS exempt-organization extract for
+    California lists Model Evaluation and Threat Research as a Section 501(c)(3) organization.
+  source_ids: [ metr-about, irs-eo-bmf-ca ]
+  reviewed_at: 2026-10-02
+legal_form:
+  text: >-
+    Corporation recognized by the IRS as tax-exempt under Section 501(c)(3), per the IRS
+    exempt-organization extract for California (EIN 99-1219864, the EIN METR gives on its donation
+    page).
+  source_ids: [ irs-eo-bmf-ca, metr-donate ]
+  reviewed_at: 2026-10-02
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Berkeley, California
+  country: US
+  source_ids: [ metr-careers ]
+other_locations: []
+founded: null
+sectors: [ research ]
+status_note: null
+products:
+  - id: hawk
+    name: Inspect-Hawk
+    kind: developer-tool
+    access: >-
+      Open-source platform (MIT License) for running Inspect AI evaluations on AWS infrastructure
+      that the user deploys; the hawk command-line tool is installed from PyPI. See the Hawk
+      catalog record.
+    url: https://github.com/METR/hawk
+    source_ids: [ hawk-repo, hawk-license ]
+    last_reviewed: 2026-10-02
+notable_facts:
+  - text: >-
+      METR publishes summaries of evaluations it ran on frontier models before their release,
+      such as its September 2026 summary of the predeployment evaluation of Anthropic's Claude
+      Opus 5.5.
+    source_ids: [ metr-home ]
+    reviewed_at: 2026-10-02
+  - text: >-
+      METR's GitHub organization marks its earlier evaluation platform, Vivaria, as deprecated;
+      its current public tooling is built around the Inspect AI framework.
+    source_ids: [ metr-github ]
+    reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-nonprofit-or-lab
+  explanation: >-
+    METR's donation page gives its legal name as Model Evaluation and Threat Research, Inc., with
+    EIN 99-1219864 and a mailing address in Covina, California. The IRS exempt-organization
+    extract for California lists that EIN and name at the same address as a Section 501(c)(3)
+    organization. METR's careers page lists its open positions as on-site in Berkeley,
+    California. The Covina address appears to be a mailing address; this record uses Berkeley,
+    where staff work, as the headquarters label.
+  source_ids: [ metr-donate, irs-eo-bmf-ca, metr-careers, metr-about ]
+  assessed_at: 2026-10-02
+openness_summary:
+  text: >-
+    METR publishes research and evaluation reports on its website and open-source evaluation
+    tooling on GitHub, including Inspect-Hawk under the MIT License. It does not publish models of
+    its own.
+  source_ids: [ metr-home, metr-github, hawk-license ]
+  reviewed_at: 2026-10-02
+hiring_url: https://metr.org/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: metr-about
+    title: About - METR
+    url: https://metr.org/about
+    publisher: METR
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: metr-home
+    title: METR (Model Evaluation & Threat Research)
+    url: https://metr.org/
+    publisher: METR
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: metr-donate
+    title: Donate - METR
+    url: https://metr.org/donate
+    publisher: METR
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: metr-careers
+    title: Careers - METR
+    url: https://metr.org/careers
+    publisher: METR
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: metr-github
+    title: METR on GitHub
+    url: https://github.com/METR
+    publisher: METR (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: hawk-repo
+    title: METR/hawk (GitHub repository)
+    url: https://github.com/METR/hawk
+    publisher: METR (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: hawk-license
+    title: METR/hawk LICENSE (MIT)
+    url: https://raw.githubusercontent.com/METR/hawk/main/LICENSE
+    publisher: METR (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

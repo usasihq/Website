@@ -1,0 +1,199 @@
+slug: reka
+name: Reka
+legal_name:
+  text: Reka AI, Inc.
+  source_ids: [ reka-terms, reka-privacy ]
+  reviewed_at: 2026-10-02
+website: https://reka.ai
+logo_text: RK
+summary:
+  text: >-
+    Reka is an AI research lab that develops multimodal models (the Spark, Edge, Flash, and Core
+    lines) that process video, images, audio, and text, and offers them through an API. It also
+    runs Reka Cloud, a platform for serverless inference, dedicated GPU capacity, and model
+    fine-tuning, and it has released some models, including Reka Flash 3 and 3.1, as open
+    weights.
+  source_ids: [ reka-home, reka-docs, reka-cloud, reka-moonvalley ]
+  reviewed_at: 2026-10-02
+organization_roles: [ model-developer, research-lab, inference-provider ]
+ownership_category: unknown
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [ reka-moonvalley, reka-privacy ]
+other_locations:
+  - label: Sunnyvale, California (mailing address in terms and privacy policy)
+    country: US
+    source_ids: [ reka-terms, reka-privacy ]
+founded: null
+sectors: [ open-models, cloud, research ]
+status_note: null
+products:
+  - id: reka-api
+    name: Reka API
+    kind: hosted-model-api
+    access: >-
+      Hosted API for Reka's own models, authenticated with an API key, covering multimodal chat,
+      video understanding, and generation of short clips from long videos.
+    url: https://docs.reka.ai/
+    source_ids: [ reka-docs, reka-home ]
+    last_reviewed: 2026-10-02
+  - id: reka-cloud
+    name: Reka Cloud
+    kind: cloud-platform
+    access: >-
+      Platform with an OpenAI-compatible endpoint for serverless inference on open models from
+      several developers, dedicated NVIDIA GPU capacity, and fine-tuning and reinforcement
+      learning services; self-serve signup at developer.reka.ai or through Reka's sales team.
+    url: https://reka.ai/cloud
+    source_ids: [ reka-cloud ]
+    last_reviewed: 2026-10-02
+notable_facts:
+  - text: >-
+      In June 2026 Reka announced that it had joined forces with Moonvalley, adding a team of
+      Moonvalley researchers and engineers to Reka; the announcement calls this a merger and
+      describes Reka as headquartered in San Francisco.
+    source_ids: [ reka-moonvalley ]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Reka released Reka Flash 3, a 21B-parameter model it says was pretrained from scratch, as
+      open weights under the Apache License 2.0 in March 2025, followed by Reka Flash 3.1 in July
+      2025 (see the Reka Flash records).
+    source_ids: [ reka-flash3-post, reka-flash31-post ]
+    reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Reka's privacy policy (effective June 2026) covers Reka AI, Inc. and its subsidiaries, states
+    "We are headquartered in the United States," and gives a Sunnyvale, California mailing
+    address; its terms of use (updated September 2026) name Reka AI, Inc. at the same address
+    and choose California law. Reka's June 2026 announcement describes it as headquartered in San
+    Francisco. The privacy policy's list of data recipients mentions a "corporate parent" without
+    naming one; no parent company was identified in the pages reviewed, and Reka's own pages
+    present Reka AI, Inc. as the operating company. Reka's open roles are listed in the U.S., the
+    U.K., Singapore, and remote; that does not change the documented U.S. headquarters.
+  source_ids: [ reka-privacy, reka-terms, reka-moonvalley, reka-jobs ]
+  assessed_at: 2026-10-02
+openness_summary:
+  text: >-
+    Reka offers most of its models through its hosted API. It has published some models as open
+    weights on Hugging Face, including Reka Flash 3 and 3.1 under the Apache License 2.0; Reka
+    Edge 2603 is published under a separate Reka license file rather than a standard open
+    license. Openness is assessed per release in this catalog.
+  source_ids: [ reka-docs, reka-flash31-card, reka-hf-org, reka-edge-meta ]
+  reviewed_at: 2026-10-02
+hiring_url: https://reka.ai/careers
+careers:
+  url: https://reka.ai/careers
+  enabled: true
+  source:
+    type: ashby
+    identifier: Reka
+  posting_hosts: []
+  source_ids: [ reka-jobs ]
+  reviewed_at: 2026-10-02
+publication_status: published
+archive_note: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: reka-terms
+    title: Terms of Use | Reka
+    url: https://reka.ai/legal/terms-of-use
+    publisher: Reka AI, Inc.
+    kind: official-page
+    published_at: 2026-09
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-privacy
+    title: Privacy Policy | Reka
+    url: https://reka.ai/legal/privacy-policy
+    publisher: Reka AI, Inc.
+    kind: official-page
+    published_at: 2026-06
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-home
+    title: Reka
+    url: https://reka.ai/
+    publisher: Reka
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-docs
+    title: Reka API documentation
+    url: https://docs.reka.ai/
+    publisher: Reka
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-cloud
+    title: Reka Cloud
+    url: https://reka.ai/cloud
+    publisher: Reka
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-moonvalley
+    title: Reka and Moonvalley Join Forces to Advance Models and Infrastructure for Physical AI
+    url: https://reka.ai/news/reka-and-moonvalley-join-forces-to-advance-models-and-infrastructure-for-physical-ai
+    publisher: Reka
+    kind: announcement
+    published_at: 2026-06-09
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-jobs
+    title: Reka job board, Ashby public posting API (embedded on reka.ai/careers)
+    url: https://api.ashbyhq.com/posting-api/job-board/Reka
+    publisher: Reka
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash3-post
+    title: Introducing Reka Flash
+    url: https://reka.ai/news/introducing-reka-flash
+    publisher: Reka
+    kind: announcement
+    published_at: 2025-03-10
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash31-post
+    title: Reka Flash 3.1 and Reka Quant
+    url: https://reka.ai/news/reka-flash-3-1-and-reka-quant
+    publisher: Reka
+    kind: announcement
+    published_at: 2025-07-10
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash31-card
+    title: RekaAI/reka-flash-3.1 model card
+    url: https://huggingface.co/RekaAI/reka-flash-3.1
+    publisher: Reka
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-edge-meta
+    title: RekaAI/reka-edge-2603 model metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/RekaAI/reka-edge-2603
+    publisher: Reka (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-hf-org
+    title: Reka (RekaAI) on Hugging Face
+    url: https://huggingface.co/RekaAI
+    publisher: Reka (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

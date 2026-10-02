@@ -1,0 +1,173 @@
+slug: contextual-reranker-v2-2b
+name: Contextual AI Reranker v2 2B
+kind: model
+record_level: release
+family_slug: contextual-reranker
+version: "ctxl-rerank-v2-instruct-multilingual-2b"
+maintainers:
+  - name: Contextual AI
+    organization_slug: contextual-ai
+    source_ids: [ ctx-rerank-v2-2b-card ]
+organization_slugs: [ contextual-ai ]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b
+    kind: model-hub
+  - label: Announcement
+    url: https://contextual.ai/blog/rerank-v2
+    kind: release-notes
+  - label: CC BY-NC-SA 4.0 license
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    kind: license
+summary:
+  text: >-
+    The 2B-parameter size of Contextual AI Reranker v2, an instruction-following multilingual
+    reranker released in August 2025. Given a query, an optional natural-language instruction,
+    and a document, it outputs a relevance score; the card lists support for more than 100
+    languages and inputs of up to 32K tokens.
+  source_ids: [ ctx-rerank-v2-2b-card, ctx-rerank-v2-blog ]
+  reviewed_at: 2026-10-02
+useful_for:
+  text: >-
+    Re-ranking retrieved documents with custom instructions, such as prioritizing recent
+    information, handling conflicting retrieval results, and multilingual or long-context search.
+  source_ids: [ ctx-rerank-v2-2b-card ]
+  reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model is published in Contextual AI's Hugging Face organization and the card names
+    Contextual AI as its developer. Contextual AI, Inc. gives a Mountain View, California postal
+    address in its privacy notice (see the Contextual AI record). The checkpoint the model was
+    trained from is not disclosed; its configuration declares the Qwen3 architecture (see
+    provenance), so this record does not treat any underlying base weights as U.S.-developed.
+  source_ids: [ ctx-rerank-v2-2b-card, ctx-privacy, ctx-rerank-v2-2b-config ]
+  assessed_at: 2026-10-02
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without gating, for noncommercial use under CC BY-NC-SA 4.0.
+    Contextual AI also serves managed versions through its hosted Rerank API.
+  source_ids: [ ctx-rerank-v2-2b-card, ctx-rerank-v2-2b-meta, ctx-rerank-v2-blog ]
+  reviewed_at: 2026-10-02
+licenses:
+  - name: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+    spdx: CC-BY-NC-SA-4.0
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+    applies_to: weights
+    source_ids: [ ctx-rerank-v2-2b-card ]
+    reviewed_at: 2026-10-02
+license_notes:
+  text: >-
+    CC BY-NC-SA 4.0 prohibits commercial use and requires derivatives to be shared under the same
+    license, so the weights are open for research and other noncommercial use only.
+  source_ids: [ ctx-rerank-v2-2b-card ]
+  reviewed_at: 2026-10-02
+checklist:
+  weights:
+    status: public
+    note: >-
+      BF16 weights are on Hugging Face; the announcement also links NVFP4 quantized versions
+      published as separate repositories.
+    source_ids: [ ctx-rerank-v2-2b-card, ctx-rerank-v2-blog ]
+    reviewed_at: 2026-10-02
+  inference_code:
+    status: public
+    note: >-
+      The card gives inference code for Sentence Transformers (CrossEncoder), vLLM, and Hugging
+      Face Transformers, including the prompt template and how scores are read from the logits.
+    source_ids: [ ctx-rerank-v2-2b-card ]
+    reviewed_at: 2026-10-02
+  training_code:
+    status: unknown
+    note: No training code is linked from the card or announcement.
+    source_ids: []
+    reviewed_at: 2026-10-02
+  training_data_information:
+    status: unknown
+    note: The card and announcement reviewed do not describe the training data.
+    source_ids: []
+    reviewed_at: 2026-10-02
+  training_recipe:
+    status: unknown
+    note: The card and announcement reviewed do not describe the training method.
+    source_ids: []
+    reviewed_at: 2026-10-02
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card and announcement report benchmark results (including on BEIR) as charts; no
+      evaluation code is linked.
+    source_ids: [ ctx-rerank-v2-2b-card, ctx-rerank-v2-blog ]
+    reviewed_at: 2026-10-02
+run_notes:
+  - text: >-
+      The card recommends vLLM for production (vLLM 0.8.5 or later for BF16, vLLM 0.10.0 for NVFP4)
+      and documents a simpler Hugging Face Transformers path (Transformers 4.51.0 or later, BF16
+      only; NVFP4 is not supported there).
+    source_ids: [ ctx-rerank-v2-2b-card ]
+    reviewed_at: 2026-10-02
+provenance:
+  text: >-
+    The card and announcement do not name a base checkpoint. The published configuration
+    declares the Qwen3ForCausalLM architecture (model type qwen3), which is the architecture of
+    Alibaba Cloud's Qwen3 models; whether the weights were initialized from a Qwen3 checkpoint is
+    not documented in the sources reviewed.
+  derived_from: []
+  source_ids: [ ctx-rerank-v2-2b-config, ctx-rerank-v2-2b-card, qwen-hf-org ]
+tags: [ retrieval, reranker ]
+publication_status: published
+archive_note: null
+released_at: 2025-08-27
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: ctx-rerank-v2-2b-card
+    title: ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b model card
+    url: https://huggingface.co/ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b
+    publisher: Contextual AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-rerank-v2-2b-config
+    title: ctxl-rerank-v2-instruct-multilingual-2b config.json
+    url: https://huggingface.co/ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b/raw/main/config.json
+    publisher: Contextual AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-rerank-v2-2b-meta
+    title: ctxl-rerank-v2-instruct-multilingual-2b model metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b
+    publisher: Contextual AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-rerank-v2-blog
+    title: Contextual AI Reranker v2 (blog post)
+    url: https://contextual.ai/blog/rerank-v2
+    publisher: Contextual AI
+    kind: announcement
+    published_at: 2025-08-27
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-privacy
+    title: Privacy Policy | Contextual AI
+    url: https://contextual.ai/legal/privacy-policy
+    publisher: Contextual AI, Inc.
+    kind: official-page
+    published_at: 2026-02-25
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: qwen-hf-org
+    title: Qwen on Hugging Face
+    url: https://huggingface.co/Qwen
+    publisher: Qwen (Alibaba Cloud)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

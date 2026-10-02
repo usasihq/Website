@@ -1,0 +1,174 @@
+slug: hawk
+name: Inspect-Hawk (Hawk)
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: METR (Model Evaluation & Threat Research)
+    organization_slug: metr
+    source_ids: [ hawk-repo, hawk-license ]
+organization_slugs: [ metr ]
+links:
+  - label: Repository
+    url: https://github.com/METR/hawk
+    kind: repository
+  - label: Documentation
+    url: https://hawk.metr.org/
+    kind: documentation
+  - label: LICENSE (MIT)
+    url: https://github.com/METR/hawk/blob/main/LICENSE
+    kind: license
+  - label: Releases
+    url: https://github.com/METR/hawk/releases
+    kind: release-notes
+summary:
+  text: >-
+    Inspect-Hawk is METR's open-source platform for running Inspect AI evaluations on cloud
+    infrastructure. Users define tasks, agents, and models in a YAML file; Hawk runs each
+    evaluation in an isolated Kubernetes pod, manages model API credentials through a proxy,
+    streams logs, stores results in a PostgreSQL warehouse, and serves a web interface for
+    browsing them. It is built on Inspect AI, the evaluation framework created by the UK AI
+    Security Institute.
+  source_ids: [ hawk-repo, hawk-docs ]
+  reviewed_at: 2026-10-02
+useful_for:
+  text: >-
+    Teams that run model evaluations regularly and want to run grids of tasks, agents, and models
+    on their own AWS deployment, control which users can run or view results for each model, and
+    run Inspect Scout scans over transcripts from earlier runs.
+  source_ids: [ hawk-repo ]
+  reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Hawk is published in METR's GitHub organization, and its MIT license names METR as the 2026
+    copyright holder. METR (Model Evaluation and Threat Research, Inc.) is listed in the IRS
+    exempt-organization extract for California as a Section 501(c)(3) organization, and its staff
+    work in Berkeley, California (see the METR record). Hawk builds on Inspect AI, which the
+    README attributes to the UK AI Security Institute; that dependency is recorded as provenance
+    and is not a catalog member.
+  source_ids: [ hawk-repo, hawk-license, irs-eo-bmf-ca ]
+  assessed_at: 2026-10-02
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public on GitHub and the CLI is installed from PyPI. Running evaluations at
+    scale requires deploying Hawk to the user's own AWS account (EKS, ECS Fargate, Aurora
+    PostgreSQL, S3, and related services) and supplying model provider access.
+  source_ids: [ hawk-repo, hawk-docs ]
+  reviewed_at: 2026-10-02
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/METR/hawk/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ hawk-license ]
+    reviewed_at: 2026-10-02
+license_notes:
+  text: >-
+    The MIT license covers Hawk's own code. It does not cover the evaluated models or the
+    cloud services Hawk deploys to, which are used under their providers' terms.
+  source_ids: [ hawk-license, hawk-repo ]
+  reviewed_at: 2026-10-02
+checklist:
+  source_code:
+    status: public
+    note: Public repository in the METR GitHub organization.
+    source_ids: [ hawk-repo ]
+    reviewed_at: 2026-10-02
+  documentation:
+    status: public
+    note: >-
+      Documentation site at hawk.metr.org with deployment, configuration, CLI, and evaluation
+      guides.
+    source_ids: [ hawk-docs, hawk-repo ]
+    reviewed_at: 2026-10-02
+  installation:
+    status: public
+    note: >-
+      The README installs the CLI from PyPI with uv or pip (package hawk with the cli extra) and
+      describes deploying an instance with Pulumi, Docker, Python, Node.js, and uv, plus a domain
+      name.
+    source_ids: [ hawk-repo ]
+    reviewed_at: 2026-10-02
+  supported_platforms:
+    status: public
+    note: >-
+      Deployment targets AWS; a local mode runs the same evaluation configuration on the user's
+      machine for debugging. The built-in model proxy covers OpenAI, Anthropic, and Google
+      Vertex.
+    source_ids: [ hawk-repo, hawk-docs ]
+    reviewed_at: 2026-10-02
+  release_status:
+    status: public
+    note: >-
+      Versioned GitHub releases are published; the latest at review was v3.6.0 (September 24,
+      2026).
+    source_ids: [ hawk-releases ]
+    reviewed_at: 2026-10-02
+run_notes:
+  - text: >-
+      The README advises keeping the CLI version in sync with the deployment and documents a
+      version check that warns before each command by default.
+    source_ids: [ hawk-repo ]
+    reviewed_at: 2026-10-02
+provenance:
+  text: >-
+    Hawk is an original METR repository, not a fork. It depends on Inspect AI, the open-source
+    evaluation framework created by the UK AI Security Institute, and can run scans with Inspect
+    Scout, which is maintained in the meridianlabs-ai GitHub organization.
+  derived_from:
+    - name: Inspect AI (UK AI Security Institute)
+      artifact_slug: null
+      url: https://inspect.aisi.org.uk
+      note: Evaluation framework Hawk runs; not a catalog member.
+  source_ids: [ hawk-repo ]
+tags: [ evaluation, agents, distributed-computing ]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: hawk-repo
+    title: METR/hawk (GitHub repository and README)
+    url: https://github.com/METR/hawk
+    publisher: METR (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: hawk-license
+    title: METR/hawk LICENSE (MIT)
+    url: https://raw.githubusercontent.com/METR/hawk/main/LICENSE
+    publisher: METR (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: hawk-docs
+    title: Inspect Hawk documentation
+    url: https://hawk.metr.org/
+    publisher: METR
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: hawk-releases
+    title: METR/hawk releases
+    url: https://github.com/METR/hawk/releases
+    publisher: METR (GitHub)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

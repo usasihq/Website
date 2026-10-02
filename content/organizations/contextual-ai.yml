@@ -1,0 +1,139 @@
+slug: contextual-ai
+name: Contextual AI
+legal_name:
+  text: Contextual AI, Inc.
+  source_ids: [ ctx-terms, ctx-privacy ]
+  reviewed_at: 2026-10-02
+website: https://contextual.ai
+logo_text: CTX
+summary:
+  text: >-
+    Contextual AI builds an enterprise platform for creating AI agents and retrieval applications
+    that work over an organization's own documents and data. It also sells component APIs for
+    document parsing, instruction-following reranking, grounded generation, and natural-language
+    unit tests for evaluating model outputs, and it has released open-weight reranker models.
+  source_ids: [ ctx-company, ctx-platform, ctx-component-apis, ctx-rerank-v2-blog ]
+  reviewed_at: 2026-10-02
+organization_roles: [ model-developer, enterprise-software, developer-platform ]
+ownership_category: unknown
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Mountain View, California
+  country: US
+  source_ids: [ ctx-privacy, ctx-terms ]
+other_locations: []
+founded: null
+sectors: [ enterprise, agents, open-models ]
+status_note: null
+products:
+  - id: contextual-ai-platform
+    name: Contextual AI platform (Agent Composer)
+    kind: enterprise-software
+    access: >-
+      Web application at app.contextual.ai with Python and TypeScript/JavaScript SDKs and APIs for
+      building agents and managing datastores; deployable as multi-tenant SaaS, a dedicated cloud
+      instance, or a private VPC deployment.
+    url: https://contextual.ai/platform
+    source_ids: [ ctx-platform ]
+    last_reviewed: 2026-10-02
+  - id: contextual-ai-component-apis
+    name: Contextual AI component APIs (Parse, Rerank, Generate, LMUnit)
+    kind: hosted-model-api
+    access: >-
+      Token-priced hosted APIs, used with an API key from the Contextual AI app and documented at
+      docs.contextual.ai, for document parsing, instruction-following reranking, generation
+      grounded in supplied sources with inline attributions, and evaluating outputs against
+      natural-language unit tests.
+    url: https://contextual.ai/component-apis
+    source_ids: [ ctx-component-apis ]
+    last_reviewed: 2026-10-02
+notable_facts:
+  - text: >-
+      In August 2025 Contextual AI released Contextual AI Reranker v2 in 1B, 2B, and 6B sizes, with
+      quantized versions, as open weights on Hugging Face under the Creative Commons
+      Attribution-NonCommercial-ShareAlike 4.0 license; managed versions are offered through its
+      API.
+    source_ids: [ ctx-rerank-v2-blog, ctx-rerank-v2-2b-card ]
+    reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Contextual AI's privacy notice (last updated February 25, 2026) names Contextual AI, Inc. and
+    gives its postal address as 150 W Evelyn Ave, Suite 200, Mountain View, California, USA. Its
+    terms of use name Contextual AI, Inc., choose California law with arbitration in San
+    Francisco, and direct notices to "our headquarters". The pages reviewed do not state the state
+    of incorporation.
+  source_ids: [ ctx-privacy, ctx-terms ]
+  assessed_at: 2026-10-02
+openness_summary:
+  text: >-
+    Contextual AI's platform and component APIs are hosted services. It publishes some model
+    weights on Hugging Face, including the Reranker v2 models under a noncommercial
+    (CC BY-NC-SA 4.0) license; that license does not permit commercial use of the weights.
+  source_ids: [ ctx-platform, ctx-component-apis, ctx-rerank-v2-2b-card ]
+  reviewed_at: 2026-10-02
+hiring_url: https://contextual.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: ctx-terms
+    title: Terms of Use | Contextual AI
+    url: https://contextual.ai/legal/terms-of-use
+    publisher: Contextual AI, Inc.
+    kind: official-page
+    published_at: 2025-08-26
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-privacy
+    title: Privacy Policy | Contextual AI
+    url: https://contextual.ai/legal/privacy-policy
+    publisher: Contextual AI, Inc.
+    kind: official-page
+    published_at: 2026-02-25
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-company
+    title: Company | Contextual AI
+    url: https://contextual.ai/company
+    publisher: Contextual AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-platform
+    title: Platform | Contextual AI
+    url: https://contextual.ai/platform
+    publisher: Contextual AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-component-apis
+    title: Component APIs | Contextual AI
+    url: https://contextual.ai/component-apis
+    publisher: Contextual AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-rerank-v2-blog
+    title: Contextual AI Reranker v2 (blog post)
+    url: https://contextual.ai/blog/rerank-v2
+    publisher: Contextual AI
+    kind: announcement
+    published_at: 2025-08-27
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: ctx-rerank-v2-2b-card
+    title: ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b model card
+    url: https://huggingface.co/ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b
+    publisher: Contextual AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

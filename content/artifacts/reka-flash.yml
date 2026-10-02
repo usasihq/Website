@@ -1,0 +1,121 @@
+slug: reka-flash
+name: Reka Flash
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Reka
+    organization_slug: reka
+    source_ids: [ reka-flash3-post, reka-flash31-post ]
+organization_slugs: [ reka ]
+links:
+  - label: Reka Flash 3 announcement
+    url: https://reka.ai/news/introducing-reka-flash
+    kind: release-notes
+  - label: Reka Flash 3.1 and Reka Quant announcement
+    url: https://reka.ai/news/reka-flash-3-1-and-reka-quant
+    kind: release-notes
+  - label: Reka on Hugging Face
+    url: https://huggingface.co/RekaAI
+    kind: model-hub
+summary:
+  text: >-
+    Reka Flash is a line of Reka language models; this record covers its open-weight releases.
+    Reka Flash 3 (March 2025) is a 21B-parameter
+    reasoning model that Reka says was pretrained from scratch on publicly accessible and
+    synthetic data, then instruction-tuned and trained with reinforcement learning; it was
+    released as open weights under the Apache License 2.0. Reka Flash 3.1 (July 2025) updated it
+    with further reinforcement learning aimed at coding and agentic tasks, and was released with a
+    3.5-bit quantized version and the Reka Quant quantization library.
+  source_ids: [ reka-flash3-post, reka-flash3-card, reka-flash31-post, reka-flash31-card ]
+  reviewed_at: 2026-10-02
+useful_for:
+  text: >-
+    Reka describes the open Flash models as suited to general chat, coding, instruction
+    following, and function calling in low-latency or local deployments, and Flash 3.1 as a base
+    for fine-tuning on agentic tasks.
+  source_ids: [ reka-flash3-post, reka-flash31-card ]
+  reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The Reka Flash models are developed and published by Reka AI, Inc., whose privacy policy
+    states that it is headquartered in the United States and whose June 2026 announcement
+    describes it as headquartered in San Francisco (see the Reka record). Each release is
+    assessed on its own record.
+  source_ids: [ reka-privacy, reka-moonvalley, reka-flash31-card ]
+  assessed_at: 2026-10-02
+availability:
+  status: not_applicable
+  access_conditions: >-
+    Assessed per release; see the Reka Flash 3.1 record.
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance:
+  text: >-
+    Reka states that Reka Flash 3 was pretrained from scratch, and that Reka Flash 3.1 is an
+    update to Reka Flash 3. Both are distributed in a Llama-compatible format so that libraries
+    supporting Llama can run them; that is a file-format choice, not a statement that the weights
+    derive from Llama.
+  derived_from: []
+  source_ids: [ reka-flash3-post, reka-flash3-card, reka-flash31-card ]
+tags: [ language-model, reasoning ]
+publication_status: published
+archive_note: null
+released_at: 2025-03-10
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: reka-flash3-post
+    title: Introducing Reka Flash
+    url: https://reka.ai/news/introducing-reka-flash
+    publisher: Reka
+    kind: announcement
+    published_at: 2025-03-10
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash3-card
+    title: RekaAI/reka-flash-3 model card
+    url: https://huggingface.co/RekaAI/reka-flash-3
+    publisher: Reka
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash31-post
+    title: Reka Flash 3.1 and Reka Quant
+    url: https://reka.ai/news/reka-flash-3-1-and-reka-quant
+    publisher: Reka
+    kind: announcement
+    published_at: 2025-07-10
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-flash31-card
+    title: RekaAI/reka-flash-3.1 model card
+    url: https://huggingface.co/RekaAI/reka-flash-3.1
+    publisher: Reka
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-privacy
+    title: Privacy Policy | Reka
+    url: https://reka.ai/legal/privacy-policy
+    publisher: Reka AI, Inc.
+    kind: official-page
+    published_at: 2026-06
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: reka-moonvalley
+    title: Reka and Moonvalley Join Forces to Advance Models and Infrastructure for Physical AI
+    url: https://reka.ai/news/reka-and-moonvalley-join-forces-to-advance-models-and-infrastructure-for-physical-ai
+    publisher: Reka
+    kind: announcement
+    published_at: 2026-06-09
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

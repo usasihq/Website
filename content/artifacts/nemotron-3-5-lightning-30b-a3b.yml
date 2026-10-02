@@ -108,6 +108,15 @@ checklist:
       The model card publishes benchmark results and states that evaluation recipes and commands
       for reproducing them are published in NeMo Gym.
     source_ids: [lightning-model-card]
+  training_data_access:
+    status: partial
+    note: >-
+      The model card says NVIDIA releases its final pre-training and post-training data, with an
+      ungated sample set and gating and approval required for the remaining code, math, and
+      multilingual data. It also lists third-party and NVIDIA datasets used in training as
+      private and not publicly accessible.
+    source_ids: [lightning-model-card]
+    reviewed_at: 2026-10-02
 run_notes:
   - text: >-
       The model card documents serving the BF16 checkpoint with vLLM or SGLang on NVIDIA GB200,
@@ -130,7 +139,7 @@ tags: [language-model, reasoning, mixture-of-experts]
 publication_status: published
 archive_note: null
 released_at: 2026-08-11
-updated_at: 2026-09-29
+updated_at: 2026-10-02
 last_reviewed: 2026-09-29
 sources:
   - id: lightning-model-card
@@ -139,7 +148,7 @@ sources:
     publisher: NVIDIA (Hugging Face)
     kind: model-card
     published_at: 2026-08-11
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
   - id: lightning-license-file
     title: LICENSE file in the NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 repository
     url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/raw/main/LICENSE

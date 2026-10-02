@@ -1,0 +1,159 @@
+slug: harvey
+name: Harvey
+legal_name:
+  text: Harvey AI Corporation
+  source_ids: [ harvey-privacy ]
+  reviewed_at: 2026-10-02
+website: https://www.harvey.ai
+logo_text: HV
+summary:
+  text: >-
+    Harvey develops AI software for legal and professional services firms and in-house legal
+    teams. Its platform includes agents that carry out multi-step legal tasks, Vault for storing
+    and bulk-analyzing document collections, and Knowledge for legal, regulatory, and tax research
+    across licensed and public sources.
+  source_ids: [ harvey-company, harvey-agents, harvey-vault, harvey-knowledge ]
+  reviewed_at: 2026-10-02
+organization_roles: [ enterprise-software ]
+ownership_category: privately-held
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [ harvey-privacy ]
+other_locations:
+  - label: Dublin, Ireland (Harvey AI Ireland Limited, EU subsidiary)
+    country: IE
+    source_ids: [ harvey-privacy ]
+founded: null
+sectors: [ enterprise, agents ]
+status_note: null
+products:
+  - id: harvey-agents
+    name: Harvey agents
+    kind: enterprise-software
+    access: >-
+      Agents in the Harvey web platform that run multi-step legal work, can be scheduled, return
+      cited outputs with step logs, and ask for human review at set points; available to
+      enterprise customers, with a mobile app and connectors to Microsoft and document management
+      systems.
+    url: https://www.harvey.ai/platform/agents
+    source_ids: [ harvey-agents ]
+    last_reviewed: 2026-10-02
+  - id: harvey-vault
+    name: Vault
+    kind: enterprise-software
+    access: >-
+      Document store in the Harvey web platform for organizing and bulk-analyzing collections of
+      legal documents, with review tables that extract data points across files and integrations
+      with iManage, SharePoint, and Google Drive.
+    url: https://www.harvey.ai/platform/vault
+    source_ids: [ harvey-vault ]
+    last_reviewed: 2026-10-02
+  - id: harvey-knowledge
+    name: Knowledge
+    kind: enterprise-software
+    access: >-
+      Research tool in the Harvey platform that answers legal, regulatory, and tax questions using
+      licensed legal databases (for example LexisNexis and Wolters Kluwer), web sources, SEC
+      EDGAR filings, EUR-Lex, and a firm's own curated knowledge bases.
+    url: https://www.harvey.ai/platform/knowledge
+    source_ids: [ harvey-knowledge ]
+    last_reviewed: 2026-10-02
+notable_facts:
+  - text: >-
+      In May 2026 Harvey released the Legal Agent Benchmark (LAB), an open-source benchmark of
+      legal agent tasks with expert-written rubrics and an evaluation harness, under the MIT
+      License (see the Harvey LAB record).
+    source_ids: [ harvey-lab-blog, harvey-lab-license ]
+    reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Harvey's privacy policy (last updated July 13, 2026) names Harvey AI Corporation at 201 3rd
+    St, Suite 500, San Francisco, California, USA, as its primary entity, and separately lists
+    Harvey AI Ireland Limited in Dublin as its EU subsidiary. The Irish entity is a subsidiary of
+    the San Francisco company, not the reverse. The pages reviewed do not state the parent
+    company's state of incorporation.
+  source_ids: [ harvey-privacy ]
+  assessed_at: 2026-10-02
+openness_summary:
+  text: >-
+    Harvey's platform is offered as hosted enterprise software. Harvey publishes the Legal Agent
+    Benchmark task set and harness on GitHub under the MIT License; this catalog has no record of
+    public model weights from Harvey.
+  source_ids: [ harvey-company, harvey-lab-repo, harvey-lab-license ]
+  reviewed_at: 2026-10-02
+hiring_url: https://www.harvey.ai/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: harvey-privacy
+    title: Privacy Policy | Harvey
+    url: https://www.harvey.ai/legal/privacy-policy
+    publisher: Harvey AI Corporation
+    kind: official-page
+    published_at: 2026-07-13
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-company
+    title: Company | Harvey
+    url: https://www.harvey.ai/company
+    publisher: Harvey
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-agents
+    title: Agents | Harvey
+    url: https://www.harvey.ai/platform/agents
+    publisher: Harvey
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-vault
+    title: Vault | Harvey
+    url: https://www.harvey.ai/platform/vault
+    publisher: Harvey
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-knowledge
+    title: Knowledge | Harvey
+    url: https://www.harvey.ai/platform/knowledge
+    publisher: Harvey
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-lab-blog
+    title: Introducing Harvey's Legal Agent Benchmark
+    url: https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark
+    publisher: Harvey
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-lab-repo
+    title: harveyai/harvey-labs (GitHub repository)
+    url: https://github.com/harveyai/harvey-labs
+    publisher: Harvey AI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-lab-license
+    title: harveyai/harvey-labs LICENSE (MIT)
+    url: https://raw.githubusercontent.com/harveyai/harvey-labs/main/LICENSE
+    publisher: Harvey AI (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

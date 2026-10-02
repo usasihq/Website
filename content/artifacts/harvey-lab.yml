@@ -1,0 +1,201 @@
+slug: harvey-lab
+name: Harvey LAB (Legal Agent Benchmark)
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Harvey
+    organization_slug: harvey
+    source_ids: [ lab-repo, lab-license ]
+organization_slugs: [ harvey ]
+links:
+  - label: Repository
+    url: https://github.com/harveyai/harvey-labs
+    kind: repository
+  - label: Announcement
+    url: https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark
+    kind: release-notes
+  - label: Evaluation methodology
+    url: https://github.com/harveyai/harvey-labs/blob/main/docs/eval-strategies.md
+    kind: documentation
+  - label: LICENSE (MIT)
+    url: https://github.com/harveyai/harvey-labs/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    LAB is an open-source benchmark from Harvey for evaluating AI agents on legal work. It
+    consists of a task set, in which each task gives an agent instructions and a matter file of
+    documents and defines a rubric of pass/fail criteria, and an execution harness for running
+    agents against the tasks and grading their work product. The tasks span transactional,
+    advisory, regulatory, and litigation work across many legal practice areas.
+  source_ids: [ lab-repo, lab-blog, lab-eval-doc ]
+  reviewed_at: 2026-10-02
+useful_for:
+  text: >-
+    Comparing how different models or agent configurations handle associate-level legal
+    assignments, such as data-room red-flag reviews, that require producing reviewable documents.
+  source_ids: [ lab-blog, lab-tutorial ]
+  reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    LAB is published in Harvey's harveyai GitHub organization, and its MIT license names Harvey
+    AI as the 2026 copyright holder. Harvey's privacy policy names Harvey AI Corporation in San
+    Francisco, California, as its primary entity (see the Harvey record). No outside governance
+    is documented.
+  source_ids: [ lab-repo, lab-license, harvey-privacy ]
+  assessed_at: 2026-10-02
+availability:
+  status: public
+  access_conditions: >-
+    Tasks and harness are public on GitHub. Running the benchmark requires API access to the
+    model under test and to the LLM judge models, which are used under their providers' terms.
+  source_ids: [ lab-repo, lab-eval-doc ]
+  reviewed_at: 2026-10-02
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/harveyai/harvey-labs/blob/main/LICENSE
+    applies_to: all
+    source_ids: [ lab-license, lab-repo ]
+    reviewed_at: 2026-10-02
+license_notes:
+  text: >-
+    The repository has a single MIT license file (copyright 2026 Harvey AI), and the README
+    presents the benchmark as MIT-licensed; no separate license for the task documents was found.
+    The license does not cover the models used as agents or judges.
+  source_ids: [ lab-license, lab-repo ]
+  reviewed_at: 2026-10-02
+checklist:
+  code:
+    status: public
+    note: >-
+      The harness and grader are in the repository and are also built as the lab-core Python
+      package, attached as a wheel to each GitHub release.
+    source_ids: [ lab-repo ]
+    reviewed_at: 2026-10-02
+  tasks_data:
+    status: public
+    note: >-
+      Task instructions, matter documents, and rubrics are in the repository's tasks directory,
+      organized by practice area.
+    source_ids: [ lab-repo, lab-tutorial ]
+    reviewed_at: 2026-10-02
+  methodology:
+    status: public
+    note: >-
+      Each rubric criterion is graded pass or fail by LLM judges (by default one Anthropic and one
+      OpenAI model) reading only the deliverables relevant to that criterion; a task scores 1 only
+      if every criterion passes, and the per-criterion pass rate is reported as a diagnostic.
+    source_ids: [ lab-eval-doc ]
+    reviewed_at: 2026-10-02
+  reproducibility_instructions:
+    status: public
+    note: >-
+      A tutorial walks through setup, running an agent on one task, scoring, and comparing runs;
+      results also depend on the judge models chosen.
+    source_ids: [ lab-tutorial, lab-eval-doc ]
+    reviewed_at: 2026-10-02
+  limitations:
+    status: partial
+    note: >-
+      The tutorial says the matter documents were generated synthetically under the guidance and
+      review of lawyers and contain imperfections. The announcement describes LAB as an ongoing
+      project and says it launched without a leaderboard.
+    source_ids: [ lab-tutorial, lab-blog ]
+    reviewed_at: 2026-10-02
+run_notes:
+  - text: >-
+      The lab-core package requires Python 3.12 or 3.13, and grading .docx output needs the pandoc
+      command-line tool, version 3.5 or later. The latest release at review was v1.2.0 (October 1,
+      2026).
+    source_ids: [ lab-repo, lab-pyproject, lab-releases ]
+    reviewed_at: 2026-10-02
+provenance:
+  text: >-
+    Harvey says it built the tasks by starting from matters handled by practicing lawyers in each
+    practice area and breaking them into discrete associate-level tasks; the contributing guide
+    requires synthetic people, companies, and facts and no real confidential client material.
+  derived_from: []
+  source_ids: [ lab-blog, lab-contributing ]
+tags: [ evaluation, benchmark, agents, legal ]
+publication_status: published
+archive_note: null
+released_at: 2026-05-06
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: lab-repo
+    title: harveyai/harvey-labs (GitHub repository and README)
+    url: https://github.com/harveyai/harvey-labs
+    publisher: Harvey AI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lab-license
+    title: harveyai/harvey-labs LICENSE (MIT)
+    url: https://raw.githubusercontent.com/harveyai/harvey-labs/main/LICENSE
+    publisher: Harvey AI (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lab-eval-doc
+    title: Harvey LAB evaluation methodology (docs/eval-strategies.md)
+    url: https://raw.githubusercontent.com/harveyai/harvey-labs/main/docs/eval-strategies.md
+    publisher: Harvey AI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lab-tutorial
+    title: Harvey LAB tutorial (docs/tutorial.md)
+    url: https://raw.githubusercontent.com/harveyai/harvey-labs/main/docs/tutorial.md
+    publisher: Harvey AI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lab-contributing
+    title: Harvey LAB contributing guide (CONTRIBUTING.md)
+    url: https://raw.githubusercontent.com/harveyai/harvey-labs/main/CONTRIBUTING.md
+    publisher: Harvey AI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lab-pyproject
+    title: Harvey LAB pyproject.toml (lab-core package metadata)
+    url: https://raw.githubusercontent.com/harveyai/harvey-labs/main/pyproject.toml
+    publisher: Harvey AI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lab-releases
+    title: harveyai/harvey-labs releases
+    url: https://github.com/harveyai/harvey-labs/releases
+    publisher: Harvey AI (GitHub)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lab-blog
+    title: Introducing Harvey's Legal Agent Benchmark
+    url: https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark
+    publisher: Harvey
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: harvey-privacy
+    title: Privacy Policy | Harvey
+    url: https://www.harvey.ai/legal/privacy-policy
+    publisher: Harvey AI Corporation
+    kind: official-page
+    published_at: 2026-07-13
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

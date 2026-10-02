@@ -1,0 +1,186 @@
+slug: imbue
+name: Imbue
+legal_name:
+  text: Imbue, Inc.
+  source_ids: [ imbue-website-terms, imbue-website-privacy ]
+  reviewed_at: 2026-10-02
+website: https://imbue.com
+logo_text: IM
+summary:
+  text: >-
+    Imbue is a San Francisco company, founded in 2021, that builds software tools meant to keep AI
+    agents under their users' control, with a focus on coding agents. Its products include
+    Sculptor, a workspace for running coding agents in parallel; Vet, a tool that checks code
+    changes and agent conversations for problems; and mngr, a command-line tool for managing
+    coding agents. Most of its products are published as open source.
+  source_ids: [ imbue-about, imbue-products, imbue-careers ]
+  reviewed_at: 2026-10-02
+organization_roles: [ developer-platform, research-lab ]
+ownership_category: unknown
+legal_form: null
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: San Francisco, California
+  country: US
+  source_ids: [ imbue-careers, imbue-website-terms ]
+other_locations: []
+founded:
+  year: 2021
+  source_ids: [ imbue-about ]
+sectors: [ agents, research ]
+status_note: null
+products:
+  - id: sculptor
+    name: Sculptor
+    kind: developer-tool
+    access: >-
+      Desktop application for Apple Silicon Macs and Linux that provides a workspace for running
+      several coding agents in parallel, with agents pushing to a local git remote; open source
+      under the MIT License.
+    url: https://imbue.com/product/sculptor
+    source_ids: [ imbue-sculptor-page, imbue-github ]
+    last_reviewed: 2026-10-02
+  - id: vet
+    name: Vet
+    kind: developer-tool
+    access: >-
+      Command-line tool, agent skill, and GitHub Action that uses a language model chosen by the
+      user to review code changes and coding-agent conversations; installed from PyPI and
+      licensed under the AGPL-3.0. See the Vet catalog record.
+    url: https://imbue.com/product/vet
+    source_ids: [ imbue-vet-page, vet-repo ]
+    last_reviewed: 2026-10-02
+  - id: mngr
+    name: mngr
+    kind: developer-tool
+    access: >-
+      Free, MIT-licensed command-line tool for running and managing coding agents in parallel on
+      the local machine or on remote hosts, containers, and sandboxes, using SSH, git, and tmux;
+      users pay their own inference and compute costs.
+    url: https://imbue.com/product/mngr
+    source_ids: [ imbue-mngr-page, imbue-github ]
+    last_reviewed: 2026-10-02
+notable_facts: []
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Imbue's website terms (last updated July 6, 2026) and privacy notice name Imbue, Inc., choose
+    California law, and place jurisdiction in the state and federal courts in San Francisco. Its
+    careers page describes in-person roles at "our office in San Francisco" alongside remote
+    roles, and its job postings are located in San Francisco. The pages reviewed do not give a
+    street address or state of incorporation.
+  source_ids: [ imbue-website-terms, imbue-website-privacy, imbue-careers, imbue-jobs ]
+  assessed_at: 2026-10-02
+openness_summary:
+  text: >-
+    Imbue publishes most of its current products as source code on GitHub, under the MIT License
+    (for example Sculptor and mngr) or the AGPL-3.0 (for example Vet); licenses differ by
+    repository. This
+    catalog has no record of public model weights from Imbue.
+  source_ids: [ imbue-products, imbue-sculptor-page, imbue-mngr-page, vet-repo ]
+  reviewed_at: 2026-10-02
+hiring_url: https://imbue.com/careers
+careers:
+  url: https://imbue.com/careers
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: imbue
+  posting_hosts: []
+  source_ids: [ imbue-jobs ]
+  reviewed_at: 2026-10-02
+publication_status: published
+archive_note: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: imbue-about
+    title: About | Imbue
+    url: https://imbue.com/about
+    publisher: Imbue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-products
+    title: Products | Imbue
+    url: https://imbue.com/products
+    publisher: Imbue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-vet-page
+    title: Vet | Imbue
+    url: https://imbue.com/product/vet
+    publisher: Imbue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-sculptor-page
+    title: "Sculptor: The extensible, parallel coding workspace you own - Imbue"
+    url: https://imbue.com/product/sculptor
+    publisher: Imbue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-mngr-page
+    title: "mngr: Run any coding agent in parallel, anywhere - Imbue"
+    url: https://imbue.com/product/mngr
+    publisher: Imbue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-careers
+    title: Careers | Imbue
+    url: https://imbue.com/careers
+    publisher: Imbue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-jobs
+    title: Imbue job board (Greenhouse public API)
+    url: https://boards-api.greenhouse.io/v1/boards/imbue/jobs
+    publisher: Imbue
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-website-terms
+    title: Website Terms of Service | Imbue
+    url: https://imbue.com/website/terms
+    publisher: Imbue, Inc.
+    kind: official-page
+    published_at: 2026-07-06
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-website-privacy
+    title: Website Privacy Notice | Imbue
+    url: https://imbue.com/website/privacy
+    publisher: Imbue, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: imbue-github
+    title: Imbue (imbue-ai) on GitHub
+    url: https://github.com/imbue-ai
+    publisher: Imbue (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: vet-repo
+    title: imbue-ai/vet (GitHub repository and README)
+    url: https://github.com/imbue-ai/vet
+    publisher: Imbue (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

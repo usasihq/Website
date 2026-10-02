@@ -1,0 +1,66 @@
+# Genuine catalog change log entry.
+date: '2026-10-02'
+title: 'Corrections from source re-checks: Gemma 4, Olmo 3, Nemotron 3, EmbeddingGemma, Granite 4.2'
+summary: 'Re-checked flagged records against their primary sources. Updated the Gemma 4 license link to its current
+  page, added training-data information assessments to two Olmo 3 releases and training-data access assessments to
+  three Nemotron 3 releases, and recorded conflicting access and context-length statements for EmbeddingGemma and
+  Granite 4.2 as the sources state them.'
+changes:
+- type: updated
+  record_type: artifact
+  slug: gemma-4-12b
+  note: Gemma 4 license link now points to its current page, ai.google.dev/gemma/apache_2 (the old URL redirects there)
+- type: updated
+  record_type: artifact
+  slug: gemma-4-26b-a4b
+  note: Gemma 4 license link now points to its current page, ai.google.dev/gemma/apache_2
+- type: updated
+  record_type: artifact
+  slug: gemma-4-31b
+  note: Gemma 4 license link now points to its current page, ai.google.dev/gemma/apache_2
+- type: updated
+  record_type: artifact
+  slug: gemma
+  note: Gemma 4 license source link updated to ai.google.dev/gemma/apache_2
+- type: updated
+  record_type: artifact
+  slug: olmo-3-7b-instruct
+  note: Added a training-data information assessment (partial) based on the model card and Dolci Instruct dataset
+    cards
+- type: updated
+  record_type: artifact
+  slug: olmo-3-1-32b-think
+  note: Added a training-data information assessment (partial) based on the model card, technical report, and 32B
+    dataset cards; the model card's stage section links the 7B datasets
+- type: updated
+  record_type: artifact
+  slug: nemotron-3-super-120b-a12b
+  note: Added a training-data access assessment (partial); the model card lists gated and private datasets
+- type: updated
+  record_type: artifact
+  slug: nemotron-3-5-lightning-30b-a3b
+  note: Added a training-data access assessment (partial); the model card lists gated and private datasets
+- type: updated
+  record_type: artifact
+  slug: nemotron-3-ultra-550b-a55b
+  note: Added a training-data access assessment (partial); the model card lists gated and private datasets
+- type: corrected
+  record_type: artifact
+  slug: embeddinggemma-300m
+  note: The weights note now describes both the immediate-processing gate text and the manual gate mode in the
+    repository metadata
+- type: corrected
+  record_type: artifact
+  slug: granite-4-2-3b
+  note: The context length is now recorded as the sources state it, with the discrepancy noted (card says 128K native,
+    512K extended; shipped config sets 131,072)
+- type: corrected
+  record_type: artifact
+  slug: granite-4-2-8b
+  note: The context length is now recorded as the sources state it, with the discrepancy noted (card says 128K native,
+    512K extended; shipped config sets 131,072)
+- type: corrected
+  record_type: artifact
+  slug: granite-4-2-30b
+  note: The context length is now recorded as the sources state it, with the discrepancy noted (card says 128K native,
+    512K extended; shipped config sets 131,072)

@@ -1,0 +1,205 @@
+slug: evaluation
+title: Benchmarks and evaluation
+summary: >-
+  Evaluation harnesses, benchmarks, and the organizations that run them, and what a published
+  result can and cannot tell you about who tested what, on which version, and under which
+  conditions.
+intro:
+  - text: >-
+      Evaluation records in this catalog are of three kinds. Harnesses run many tests through
+      one interface: EleutherAI's lm-evaluation-harness tests generative language models on a
+      large number of tasks, using local models or commercial APIs, and Stanford CRFM's HELM
+      offers benchmarks in a standardized format, models from several providers behind one
+      interface, and metrics beyond accuracy such as efficiency, bias, and toxicity.
+      Benchmarks are the task sets themselves, such as Humanity's Last Exam, a set of
+      multiple-choice and short-answer questions suited to automated grading. System
+      benchmarks such as MLCommons' MLPerf measure how fast computer systems train a model to a
+      target quality or process inputs with a trained model.
+    source_ids: [lmeval-readme, helm-readme, hle-readme, mlc-benchmarks]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Who produced a result matters. Under MLPerf's submission rules, each submitter must
+      review at least one other submission, and the submitted source code must be sufficient
+      to reproduce the results. ARC Prize Foundation tests models for its Verified Leaderboard
+      on a semi-private evaluation set, working with model providers it selects, while
+      Community Leaderboard entries get a light review and are not verified by default.
+    source_ids: [mlperf-rules, arc-policy]
+    reviewed_at: 2026-10-02
+  - text: >-
+      Benchmarks change over time, so a result belongs to a version. Terminal-Bench uses
+      semantic versioning: a change that significantly alters the agent's environment is a
+      major version that requires re-running agents, while a change to the verifier alone is
+      minor and lets saved runs be re-graded, and each leaderboard corresponds to a specific
+      dataset version. Humanity's Last Exam keeps a dated public log of questions added,
+      removed, updated, and re-added. HELM entered maintenance mode on June 1, 2026: no new
+      evaluations will be added to its leaderboards, and its maintainers warn that scenarios
+      and models that depend on external APIs may break as those APIs change or providers
+      deprecate models.
+    source_ids: [tb-continuous, hle-rolling, helm-maintenance]
+    reviewed_at: 2026-10-02
+  - text: >-
+      How a model is reached limits what can be measured. In lm-evaluation-harness, models
+      that do not return log probabilities, such as those behind chat-completion APIs, can run
+      only generation tasks, while local models can run every task type; its README suggests
+      checking a few sample outputs to confirm that answers are extracted and scored as
+      intended. Test material can also reach training data. Humanity's Last Exam includes a
+      canary string so model builders can filter it out, and ARC Prize Foundation acknowledges
+      possible limited leakage over time because its tasks are sent to external APIs.
+    source_ids: [lmeval-readme, hle-readme, arc-policy]
+    reviewed_at: 2026-10-02
+  - text: >-
+      This catalog does not publish the scores that benchmarks produce. Each evaluation record
+      instead checks whether the evaluation code and the tasks or test data are available,
+      whether the scoring method is described, whether instructions for reproducing results
+      are published, and whether known limitations are documented.
+    source_ids: [usasi-methodology]
+    reviewed_at: 2026-10-02
+scope: >-
+  Covers evaluation harnesses, benchmarks, safety and system-performance tests, and the
+  organizations that maintain them. It explains how results are produced and where they stop;
+  it does not report scores, rank models, or say which benchmark to trust. Featured records are
+  examples chosen to cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: Reading evaluations
+    href: /learn/reading-evaluations/
+    note: Start here for the questions to ask of any published result.
+  - label: Benchmark
+    href: /glossary/#benchmark
+    note: A fixed set of tasks with a scoring method, and what a reported result is.
+  - label: Evaluation harness
+    href: /glossary/#evaluation-harness
+    note: Software that runs benchmarks the same way each time so others can re-run them.
+  - label: Source standards
+    href: /methodology/#sources
+    note: How the catalog treats reported results, and why it does not publish scores.
+  - label: How to read a model card
+    href: /learn/how-to-read-a-model-card/
+    note: Model cards report evaluations; check what was tested and how before relying on it.
+  - label: AI agents and agent tooling
+    href: /hubs/agents/
+    note: Agent benchmarks test a model together with the software wrapped around it.
+  - label: Chips, cloud, and compute
+    href: /hubs/chips-and-compute/
+    note: Where system benchmarks such as MLPerf fit among hardware and cloud providers.
+directory_links:
+  - label: Evaluation tools and benchmarks
+    href: /open/?kind=eval
+    note: Each record has a checklist covering code, tasks, scoring, and reproducibility.
+  - label: Records that mention benchmarks
+    href: /open/?q=benchmark
+    note: A text search that also finds datasets and tools used in evaluation.
+  - label: Standards bodies
+    href: /companies/?role=standards-body
+    note: Organizations that publish benchmarks, measurement methods, or standards.
+organizations: [mlcommons, arc-prize-foundation, center-for-ai-safety]
+artifacts:
+  - lm-evaluation-harness
+  - helm
+  - terminal-bench
+  - mlperf
+  - arc-agi
+  - humanitys-last-exam
+  - ailuminate
+  - tau-bench
+people: []
+primary_documents:
+  - source_id: mlperf-rules
+    note: >-
+      MLPerf's submission rules, including peer review between submitters and the
+      requirement that submitted code can reproduce the results.
+  - source_id: arc-policy
+    note: >-
+      ARC Prize Foundation's testing policy, which separates verified results from community
+      submissions and discusses leakage through external APIs.
+  - source_id: tb-continuous
+    note: >-
+      Explains how a benchmark can be versioned like software, and which changes require
+      re-running or only re-grading.
+  - source_id: hle-rolling
+    note: >-
+      A dated log of question changes, which shows that a benchmark's contents can differ
+      between two results.
+  - source_id: helm-maintenance
+    note: >-
+      What maintenance mode means for a harness whose tests depend on external model APIs.
+  - source_id: lmeval-readme
+    note: >-
+      The harness's own description of supported model types, and of which task types need
+      log probabilities.
+  - source_id: usasi-methodology
+    note: >-
+      USASI's source standards, including its rule against publishing benchmark results.
+publication_status: published
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: lmeval-readme
+    title: Language Model Evaluation Harness README
+    url: https://raw.githubusercontent.com/EleutherAI/lm-evaluation-harness/main/README.md
+    publisher: EleutherAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: helm-readme
+    title: Holistic Evaluation of Language Models (HELM) README
+    url: https://raw.githubusercontent.com/stanford-crfm/helm/main/README.md
+    publisher: Stanford CRFM (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: helm-maintenance
+    title: Maintenance Mode Policy (HELM documentation)
+    url: https://crfm-helm.readthedocs.io/en/latest/maintenance_mode/
+    publisher: Stanford CRFM
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: hle-readme
+    title: Humanity's Last Exam README
+    url: https://raw.githubusercontent.com/centerforaisafety/hle/main/README.md
+    publisher: Center for AI Safety (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: hle-rolling
+    title: HLE rolling changes log
+    url: https://raw.githubusercontent.com/centerforaisafety/hle/main/hle-rolling-changes.txt
+    publisher: Center for AI Safety (GitHub)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: mlc-benchmarks
+    title: Benchmarks
+    url: https://mlcommons.org/benchmarks/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: mlperf-rules
+    title: General MLPerf Submission Rules
+    url: https://raw.githubusercontent.com/mlcommons/policies/master/submission_rules.adoc
+    publisher: MLCommons (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: arc-policy
+    title: ARC Prize Verified Testing Policy
+    url: https://arcprize.org/policy
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: tb-continuous
+    title: Continuous Benchmarks
+    url: https://www.tbench.ai/news/continuous-benchmarks
+    publisher: Terminal-Bench
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-02
+  - id: usasi-methodology
+    title: Methodology
+    url: https://unitedstatesofamericasuperintelligence.com/methodology/
+    publisher: USASI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02

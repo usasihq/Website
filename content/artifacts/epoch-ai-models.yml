@@ -1,0 +1,149 @@
+slug: epoch-ai-models
+name: Epoch AI Data on AI Models
+kind: dataset
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Epoch AI
+    organization_slug: epoch-ai
+    source_ids: [ epoch-ai-models-data, epoch-ai-models-docs ]
+organization_slugs: [ epoch-ai ]
+links:
+  - label: Data explorer and downloads
+    url: https://epoch.ai/data/ai-models
+    kind: dataset-hub
+  - label: Documentation
+    url: https://epoch.ai/data/ai-models-documentation
+    kind: documentation
+  - label: Creative Commons Attribution 4.0 license
+    url: https://creativecommons.org/licenses/by/4.0/
+    kind: license
+summary:
+  text: >-
+    A public database of machine learning models maintained by Epoch AI, recording for each model
+    estimates such as training compute, parameter count, training dataset size, training cost,
+    training duration, and power draw. It is published as an interactive explorer and as CSV
+    files covering notable models, large-scale models (trained with at least 10^23 FLOP),
+    frontier models (top five in training compute when released), and all models.
+  source_ids: [ epoch-ai-models-data, epoch-ai-models-docs ]
+  reviewed_at: 2026-10-02
+useful_for:
+  text: >-
+    Studying trends in the resources used to train machine learning models over time, such as
+    growth in training compute or parameter counts, with citations to the sources behind each
+    estimate.
+  source_ids: [ epoch-ai-models-data ]
+  reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The dataset is compiled and published by Epoch AI on its own site. Epoch Artificial
+    Intelligence, Inc. gives a San Francisco, California address in its privacy notice and is
+    listed in the IRS exempt-organization extract for California as a Section 501(c)(3)
+    organization (see the Epoch AI record).
+  source_ids: [ epoch-ai-models-data, epoch-privacy, irs-eo-bmf-ca ]
+  assessed_at: 2026-10-02
+availability:
+  status: public
+  access_conditions: >-
+    Free to view in the web explorer and to download as CSV files (also bundled as
+    ai_models.zip) without an account.
+  source_ids: [ epoch-ai-models-data ]
+  reviewed_at: 2026-10-02
+licenses:
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+    applies_to: data
+    source_ids: [ epoch-ai-models-data, epoch-ai-models-docs ]
+    reviewed_at: 2026-10-02
+license_notes:
+  text: >-
+    Epoch states that its data is free to use, distribute, and reproduce provided the source and
+    authors are credited, and links the Creative Commons Attribution 4.0 license. The dataset
+    page provides a recommended citation.
+  source_ids: [ epoch-ai-models-data, epoch-ai-models-docs ]
+  reviewed_at: 2026-10-02
+checklist:
+  access:
+    status: public
+    note: CSV downloads for each subset are linked from the dataset page.
+    source_ids: [ epoch-ai-models-data ]
+    reviewed_at: 2026-10-02
+  provenance:
+    status: partial
+    note: >-
+      Epoch says models were collected from literature reviews, Papers With Code, historical
+      accounts, highly cited publications, conference proceedings, and suggestions from
+      individuals. The documentation includes a section on how values such as training compute
+      are estimated.
+    source_ids: [ epoch-ai-models-data, epoch-ai-models-docs ]
+    reviewed_at: 2026-10-02
+  documentation:
+    status: public
+    note: >-
+      A documentation page defines the subsets and covers records, field definitions, and
+      estimation methods, and a changelog is published.
+    source_ids: [ epoch-ai-models-docs ]
+    reviewed_at: 2026-10-02
+  licensing:
+    status: public
+    note: Creative Commons Attribution 4.0, stated on the dataset and documentation pages.
+    source_ids: [ epoch-ai-models-data, epoch-ai-models-docs ]
+    reviewed_at: 2026-10-02
+  stated_limitations:
+    status: partial
+    note: >-
+      The dataset page says the list of models is not exhaustive and that the explorer only shows
+      models for which Epoch has estimates, which are limited by publicly available information.
+    source_ids: [ epoch-ai-models-data ]
+    reviewed_at: 2026-10-02
+run_notes:
+  - text: >-
+      Epoch says the CSV files are updated daily and that major new models are generally added
+      within two weeks of release. At review, the notable-models and all-models files were dated
+      October 1, 2026.
+    source_ids: [ epoch-ai-models-data, epoch-ai-models-docs ]
+    reviewed_at: 2026-10-02
+provenance: null
+tags: [ training-compute, ai-trends ]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: epoch-ai-models-data
+    title: Data on AI Models | Epoch AI
+    url: https://epoch.ai/data/ai-models
+    publisher: Epoch AI
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: epoch-ai-models-docs
+    title: AI Models documentation | Epoch AI
+    url: https://epoch.ai/data/ai-models-documentation
+    publisher: Epoch AI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: epoch-privacy
+    title: Privacy Notice | Epoch AI
+    url: https://epoch.ai/privacy
+    publisher: Epoch Artificial Intelligence, Inc.
+    kind: official-page
+    published_at: 2025-01-18
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: irs-eo-bmf-ca
+    title: Exempt Organizations Business Master File Extract - California (eo_ca.csv)
+    url: https://www.irs.gov/pub/irs-soi/eo_ca.csv
+    publisher: Internal Revenue Service
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

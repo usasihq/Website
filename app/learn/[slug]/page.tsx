@@ -4,6 +4,8 @@ import { EditorialPage } from "@/components/EditorialPage";
 import { formatDate } from "@/lib/dates";
 import { EXPLAINERS, explainer } from "@/lib/learn";
 import { pageMetadata } from "@/lib/metadata";
+import { absoluteUrl } from "@/lib/paths";
+import { siteConfig } from "@/lib/site-config";
 import { EXPLAINER_CONTENT } from "../content";
 
 export function generateStaticParams() {
@@ -20,7 +22,20 @@ export default async function ExplainerPage({ params }: { params: Promise<{ slug
   const e = explainer(slug);
   const Content = EXPLAINER_CONTENT[slug];
   if (!e || !Content) notFound();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: e.title,
+    description: e.question,
+    dateModified: e.reviewed,
+    url: absoluteUrl(`/learn/${slug}/`),
+    author: { "@type": "Organization", name: siteConfig.name, url: absoluteUrl("/") },
+    publisher: { "@type": "Organization", name: siteConfig.name, url: absoluteUrl("/") },
+    isAccessibleForFree: true,
+  };
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
     <EditorialPage
       eyebrow="Explainer"
       title={e.title}
@@ -36,5 +51,6 @@ export default async function ExplainerPage({ params }: { params: Promise<{ slug
     >
       <Content />
     </EditorialPage>
+    </>
   );
 }

@@ -20,7 +20,7 @@ links:
     url: https://ai.google.dev/gemma/docs/core/model_card_4
     kind: documentation
   - label: Gemma 4 license
-    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    url: https://ai.google.dev/gemma/apache_2
     kind: license
   - label: Gemma 4 Technical Report
     url: https://arxiv.org/abs/2607.02770
@@ -57,14 +57,16 @@ availability:
 licenses:
   - name: Apache License 2.0
     spdx: Apache-2.0
-    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    url: https://ai.google.dev/gemma/apache_2
     applies_to: weights
+    reviewed_at: 2026-10-02
     source_ids: [gemma-4-license, hf-card-26b-a4b-it]
 license_notes:
   text: >-
     The Gemma Terms of Use cover the earlier Gemma models listed in their appendix and direct
     readers to the separate Gemma 4 license (Apache License 2.0) for Gemma 4 terms.
   source_ids: [gemma-terms, gemma-4-license]
+  reviewed_at: 2026-10-02
 checklist:
   weights:
     status: public
@@ -110,7 +112,7 @@ tags: [language-model, multimodal, vision-language, reasoning, mixture-of-expert
 publication_status: published
 archive_note: null
 released_at: 2026-03-31
-updated_at: 2026-09-29
+updated_at: 2026-10-02
 last_reviewed: 2026-09-29
 sources:
   - id: hf-card-26b-a4b-it
@@ -143,18 +145,20 @@ sources:
     accessed_at: 2026-09-29
   - id: gemma-4-license
     title: Gemma 4 license (Apache License 2.0)
-    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    url: https://ai.google.dev/gemma/apache_2
     publisher: Google AI for Developers
     kind: license
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: gemma-terms
     title: Gemma Terms of Use
     url: https://ai.google.dev/gemma/terms
     publisher: Google AI for Developers
     kind: license
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
   - id: gemma-4-tech-report
     title: Gemma 4 Technical Report
     url: https://arxiv.org/html/2607.02770

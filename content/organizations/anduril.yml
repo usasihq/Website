@@ -1,0 +1,192 @@
+slug: anduril
+name: Anduril Industries
+legal_name:
+  text: Anduril Industries, Inc.
+  source_ids: [ lattice-sdk-license, anduril-privacy ]
+  reviewed_at: 2026-10-02
+website: https://www.anduril.com
+logo_text: AND
+summary:
+  text: >-
+    Anduril Industries describes itself as a defense technology company specializing in
+    autonomous systems; it also develops the Lattice software platform. Its documented AI
+    software includes Lattice for Command & Control, which it describes as an
+    AI-enabled battle management platform, and Lattice for Mission Autonomy, which coordinates
+    teams of uncrewed systems under a human operator.
+  source_ids: [ anduril-privacy, anduril-c2, anduril-mission-autonomy ]
+  reviewed_at: 2026-10-02
+organization_roles: [ robotics, hardware-manufacturer, enterprise-software ]
+ownership_category: privately-held
+ownership_evidence:
+  text: >-
+    Anduril's investor relations page states that the company is privately owned and that it does
+    not offer investment opportunities to retail investors.
+  source_ids: [ anduril-investor-relations ]
+  reviewed_at: 2026-10-02
+legal_form:
+  text: >-
+    Corporation organized under the laws of the State of Delaware, according to Anduril's Lattice
+    SDK license agreement.
+  source_ids: [ lattice-sdk-license ]
+  reviewed_at: 2026-10-02
+parent_org_slug: null
+parent_relationship: null
+headquarters:
+  label: Costa Mesa, California
+  country: US
+  source_ids: [ lattice-sdk-license, anduril-careers ]
+other_locations:
+  - label: Washington, D.C.
+    country: US
+    source_ids: [ anduril-careers ]
+  - label: Columbus, Ohio (Arsenal-1 manufacturing facility)
+    country: US
+    source_ids: [ anduril-careers ]
+  - label: London, United Kingdom
+    country: GB
+    source_ids: [ anduril-careers ]
+  - label: Sydney, Australia (Anduril Australia Pty Limited)
+    country: AU
+    source_ids: [ anduril-careers, anduril-privacy ]
+  - label: Tokyo, Japan
+    country: JP
+    source_ids: [ anduril-careers ]
+  - label: Seoul, South Korea
+    country: KR
+    source_ids: [ anduril-careers ]
+  - label: Taipei, Taiwan
+    country: TW
+    source_ids: [ anduril-careers ]
+founded: null
+sectors: [ defense, robotics ]
+status_note: null
+products:
+  - id: lattice-command-and-control
+    name: Lattice for Command & Control
+    kind: enterprise-software
+    access: >-
+      Anduril describes it as an AI-enabled battle management platform that integrates sensors,
+      effectors, networks, and mission systems into a common operating picture and lets operators
+      manage fleets of crewed and uncrewed systems through machine-to-machine tasking; deployable
+      on laptops, tablets, and operator-worn headsets. Offered to defense customers.
+    url: https://www.anduril.com/command-and-control
+    source_ids: [ anduril-c2 ]
+    last_reviewed: 2026-10-02
+  - id: lattice-mission-autonomy
+    name: Lattice for Mission Autonomy
+    kind: enterprise-software
+    access: >-
+      Software for planning and running missions in which teams of uncrewed systems at sea, on
+      land, and in the air collaborate autonomously under the supervision of a single human
+      operator, with mission parameters such as acceptable risk and rules of engagement set in
+      planning. Offered to defense customers.
+    url: https://www.anduril.com/mission-autonomy
+    source_ids: [ anduril-mission-autonomy ]
+    last_reviewed: 2026-10-02
+  - id: lattice-sdk
+    name: Lattice SDK
+    kind: developer-tool
+    access: >-
+      Developer documentation, API references, sample applications, and client libraries (for
+      example the anduril-lattice-sdk Python package) for building applications, data services, and hardware
+      integrations on Lattice; published on GitHub under Anduril's own SDK license agreement,
+      which permits use only to develop applications for Lattice.
+    url: https://www.anduril.com/lattice-sdk
+    source_ids: [ anduril-lattice-sdk, lattice-sdk-python-repo, lattice-sdk-license ]
+    last_reviewed: 2026-10-02
+notable_facts:
+  - text: >-
+      Anduril's careers page lists offices or facilities in more than a dozen U.S. states and in
+      the United Kingdom, Australia, Ireland, Finland, South Korea, Taiwan, and Japan; it
+      describes its Japan office as a locally incorporated presence.
+    source_ids: [ anduril-careers ]
+    reviewed_at: 2026-10-02
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Anduril's Lattice SDK license agreement identifies Anduril Industries, Inc. as organized under
+    Delaware law with its principal place of business at 1400 Anduril, Costa Mesa, California, and
+    its careers page describes the Costa Mesa site as Anduril HQ. Anduril has foreign
+    subsidiaries and offices, including Anduril Australia Pty Limited, which are units of the U.S.
+    company rather than a separate headquarters.
+  source_ids: [ lattice-sdk-license, anduril-careers, anduril-privacy ]
+  assessed_at: 2026-10-02
+openness_summary:
+  text: >-
+    Anduril's Lattice software is offered to defense customers. Its Lattice SDK client libraries
+    and sample applications are public on GitHub but are licensed under Anduril's own agreement,
+    which restricts use to building applications for Lattice and forbids modification and
+    redistribution of the SDK; they are not open-source licensed.
+  source_ids: [ lattice-sdk-license, lattice-sdk-python-repo ]
+  reviewed_at: 2026-10-02
+hiring_url: https://www.anduril.com/careers
+publication_status: published
+archive_note: null
+updated_at: 2026-10-02
+last_reviewed: 2026-10-02
+sources:
+  - id: lattice-sdk-license
+    title: Anduril Lattice Software Development Kit License Agreement (lattice-sdk-python LICENSE)
+    url: https://raw.githubusercontent.com/anduril/lattice-sdk-python/master/LICENSE
+    publisher: Anduril Industries, Inc. (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: lattice-sdk-python-repo
+    title: anduril/lattice-sdk-python (GitHub repository)
+    url: https://github.com/anduril/lattice-sdk-python
+    publisher: Anduril Industries, Inc. (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: anduril-careers
+    title: Careers | Anduril
+    url: https://www.anduril.com/careers
+    publisher: Anduril Industries
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: anduril-privacy
+    title: Privacy Policy | Anduril (website user agreement and privacy notices)
+    url: https://www.anduril.com/privacy-policy
+    publisher: Anduril Industries, Inc.
+    kind: official-page
+    published_at: 2025-07-29
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: anduril-investor-relations
+    title: Investor Relations | Anduril
+    url: https://www.anduril.com/investor-relations
+    publisher: Anduril Industries
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: anduril-c2
+    title: Command & Control | Anduril
+    url: https://www.anduril.com/command-and-control
+    publisher: Anduril Industries
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: anduril-mission-autonomy
+    title: Mission Autonomy | Anduril
+    url: https://www.anduril.com/mission-autonomy
+    publisher: Anduril Industries
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02
+  - id: anduril-lattice-sdk
+    title: Lattice SDK | Anduril
+    url: https://www.anduril.com/lattice-sdk
+    publisher: Anduril Industries
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-02
+    reviewed_at: 2026-10-02

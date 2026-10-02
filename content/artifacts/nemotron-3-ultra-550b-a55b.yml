@@ -105,6 +105,17 @@ checklist:
       The model card publishes benchmark results and points to the NeMo Evaluator SDK for
       replication; it says some benchmarks used internal scaffolding not yet open-sourced.
     source_ids: [ultra-model-card]
+  training_data_access:
+    status: partial
+    note: >-
+      The model card says NVIDIA releases its final pre-training and post-training data, with an
+      ungated sample set and gating and approval required for the remaining code, math, and
+      multilingual data. It also lists third-party and NVIDIA datasets used in training as
+      private and not publicly accessible.
+      NVIDIA's training recipe adds that the data for the 1M-token long-context phase is not
+      open source.
+    source_ids: [ultra-model-card, ultra-recipe-doc]
+    reviewed_at: 2026-10-02
 run_notes:
   - text: >-
       The model card documents serving with vLLM, SGLang, and TensorRT-LLM, and lists NVIDIA
@@ -132,7 +143,7 @@ tags: [language-model, reasoning, mixture-of-experts]
 publication_status: published
 archive_note: null
 released_at: 2026-06-04
-updated_at: 2026-09-29
+updated_at: 2026-10-02
 last_reviewed: 2026-09-29
 sources:
   - id: ultra-model-card
@@ -141,7 +152,7 @@ sources:
     publisher: NVIDIA (Hugging Face)
     kind: model-card
     published_at: 2026-06-04
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
   - id: ultra-hf-metadata
     title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16
     url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16
@@ -176,7 +187,7 @@ sources:
     publisher: NVIDIA (GitHub)
     kind: documentation
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
   - id: nemotron-pretraining-collection
     title: Nemotron-Pre-Training-Datasets collection
     url: https://huggingface.co/collections/nvidia/nemotron-pre-training-datasets

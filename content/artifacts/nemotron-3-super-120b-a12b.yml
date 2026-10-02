@@ -106,6 +106,15 @@ checklist:
       The model card publishes benchmark results collected with the NeMo Evaluator SDK; it says
       some benchmarks used internal scaffolding not yet open-sourced.
     source_ids: [super-model-card]
+  training_data_access:
+    status: partial
+    note: >-
+      The model card says NVIDIA releases its final pre-training and post-training data, with an
+      ungated sample set and gating and approval required for the remaining code, math, and
+      multilingual data. It also lists third-party and NVIDIA datasets used in training as
+      private and not publicly accessible.
+    source_ids: [super-model-card]
+    reviewed_at: 2026-10-02
 run_notes:
   - text: >-
       The model card documents serving with vLLM, SGLang, TensorRT-LLM, and Transformers, and
@@ -128,7 +137,7 @@ tags: [language-model, reasoning, mixture-of-experts]
 publication_status: published
 archive_note: null
 released_at: 2026-03-11
-updated_at: 2026-09-29
+updated_at: 2026-10-02
 last_reviewed: 2026-09-29
 sources:
   - id: super-model-card
@@ -137,7 +146,7 @@ sources:
     publisher: NVIDIA (Hugging Face)
     kind: model-card
     published_at: 2026-03-11
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-02
   - id: super-hf-metadata
     title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
     url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
