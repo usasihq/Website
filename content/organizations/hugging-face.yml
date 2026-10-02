@@ -96,6 +96,16 @@ openness_summary:
     any Hugging Face model release.
   source_ids: [hf-hub-docs, transformers-license]
 hiring_url: null
+careers:
+  url: https://apply.workable.com/huggingface/
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The Careers link on huggingface.co goes to this Workable job board. No Workable adapter exists, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [hugging-face-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -225,6 +235,14 @@ sources:
     url: https://github.com/huggingface/transformers
     publisher: Hugging Face (GitHub)
     kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: hugging-face-careers-jobs
+    title: Official careers page (linked as Careers from huggingface.co)
+    url: https://apply.workable.com/huggingface/
+    publisher: Hugging Face (Workable)
+    kind: official-page
+    published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
 profile:

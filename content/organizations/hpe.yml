@@ -79,9 +79,19 @@ eligibility:
   assessed_at: 2026-09-29
 openness_summary: null
 hiring_url: null
+careers:
+  url: https://careers.hpe.com/us/en
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      HPE lists openings on careers.hpe.com, a Phenom-hosted careers site. No adapter exists for it, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [hpe-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: hpe-10k-fy2025
@@ -126,3 +136,11 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+  - id: hpe-careers-jobs
+    title: Official careers site
+    url: https://careers.hpe.com/us/en
+    publisher: Hewlett Packard Enterprise
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

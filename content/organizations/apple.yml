@@ -71,6 +71,16 @@ openness_summary:
   source_ids: [apple-intelligence-page, foundation-models-docs, mlx-license, review-hf-apple, review-fastvlm-license]
   reviewed_at: 2026-10-01
 hiring_url: null
+careers:
+  url: https://www.apple.com/careers/us/
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The careers page links to jobs.apple.com, Apple's own job search, which is not a supported public job board, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [apple-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -151,6 +161,14 @@ sources:
     url: https://huggingface.co/apple/FastVLM-7B/blob/main/LICENSE
     publisher: Apple (Hugging Face)
     kind: license
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: apple-careers-jobs
+    title: Official careers page
+    url: https://www.apple.com/careers/us/
+    publisher: Apple
+    kind: official-page
+    published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
 profile:

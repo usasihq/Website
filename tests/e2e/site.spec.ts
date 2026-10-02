@@ -226,7 +226,7 @@ test.describe("keyboard and menus", () => {
     await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
 
     await page.getByRole("button", { name: "Menu" }).click();
-    await mobileNav.getByRole("button", { name: "Close menu" }).click();
+    await page.getByRole("button", { name: "Close menu" }).click();
     await expect(mobileNav).toBeHidden();
 
     await page.getByRole("button", { name: "Menu" }).click();
@@ -538,4 +538,26 @@ test("Mia's October profile keeps sourced deployment work and catalog links", as
   await expect(card).toContainText("independent deployment work using vLLM");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await card.screenshot({ path: `reports/screenshots/mia-${test.info().project.name}.png` });
+});
+
+test("every page carries the independence line, and orientation pages are reachable", async ({ page, isMobile }) => {
+  for (const path of ["/", "/companies/", "/open/acme-not-real/", "/start/"]) {
+    await page.goto(path);
+    await expect(page.getByTestId("header-disclaimer")).toBeVisible();
+    await expect(page.getByTestId("header-disclaimer")).toContainText("Not a U.S. government website");
+  }
+  await page.goto("/");
+  if (isMobile) {
+    await page.getByRole("button", { name: "Menu", exact: true }).click();
+    await expect(page.getByRole("navigation", { name: "Reference (mobile)" }).getByRole("link", { name: "Start here" })).toBeVisible();
+  } else {
+    await page.getByRole("navigation", { name: "Reference" }).getByRole("link", { name: "Start here" }).click();
+    await expect(page).toHaveURL(/\/start\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("How to use this reference");
+  }
+  for (const path of ["/glossary/", "/learn/open-weight-vs-open-source/", "/reuse/"]) {
+    const res = await page.goto(path);
+    expect(res?.status()).toBe(200);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  }
 });

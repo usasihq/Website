@@ -65,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <SiteHeader siteName={siteConfig.name} shortName={siteConfig.shortName} />
+        <SiteHeader siteName={siteConfig.name} shortName={siteConfig.shortName} disclaimer={siteConfig.disclaimer} />
         <main id="main" tabIndex={-1} className="outline-none">
           {children}
         </main>

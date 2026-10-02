@@ -60,9 +60,19 @@ openness_summary:
     license, and the crawled content remains subject to the rights of its original publishers.
   source_ids: [cc-get-started, cc-terms]
 hiring_url: null
+careers:
+  url: https://commoncrawl.org/jobs
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      Common Crawl posts openings directly on this page and takes applications by email; there is no job board feed, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [common-crawl-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: cc-about
@@ -114,3 +124,11 @@ sources:
     kind: documentation
     published_at: 2026-01
     accessed_at: 2026-09-29
+  - id: common-crawl-careers-jobs
+    title: Official jobs page
+    url: https://commoncrawl.org/jobs
+    publisher: Common Crawl Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

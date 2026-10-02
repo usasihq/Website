@@ -38,16 +38,19 @@ useful_for:
     exporting the results for local inference.
   source_ids: [unsloth-readme]
 eligibility:
-  status: pending_review
-  basis: undetermined
+  status: eligible
+  basis: us-governed-project
   explanation: >-
-    The project is maintained in the unslothai GitHub organization by the company named in its
-    copyright notices as Unsloth AI Inc. No company or regulatory document found states where that
-    company is incorporated or headquartered; Y Combinator's directory lists San Francisco and the
-    GitHub organization profile lists the United States, but both are self-reported directory
-    fields. Eligibility follows the unresolved status of the maintaining organization.
-  source_ids: [unsloth-license, unsloth-studio-header, yc-unsloth, unsloth-github-org]
-  assessed_at: 2026-09-29
+    The maintaining entity is Unsloth AI Inc.: the library is developed in the unslothai GitHub
+    organization, and the repository's license and source-file copyright notices name the Unsloth
+    AI Inc. team. The company's U.S. principal place of business is documented in an official
+    registry: the USPTO registration of the UNSLOTH mark (No. 7973599), for downloadable software
+    for training and fine-tuning large language models, names Unsloth AI Inc., a Delaware
+    corporation, as owner with a San Francisco address; the Unsloth organization record explains
+    why the trademark file supports reading this as the company's principal place of business. No
+    foundation or multi-organization governance is documented.
+  source_ids: [unsloth-license, unsloth-studio-header, unsloth-github-org, uspto-tsdr-unsloth]
+  assessed_at: 2026-10-01
 availability:
   status: public
   access_conditions: null
@@ -100,10 +103,10 @@ checklist:
 run_notes: []
 provenance: null
 tags: [training, fine-tuning, local-inference]
-publication_status: draft
+publication_status: published
 archive_note: null
 released_at: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: unsloth-readme
@@ -120,6 +123,7 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: unsloth-copying
     title: unslothai/unsloth COPYING
     url: https://github.com/unslothai/unsloth/blob/main/COPYING
@@ -134,6 +138,7 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: unsloth-releases
     title: unslothai/unsloth releases
     url: https://github.com/unslothai/unsloth/releases
@@ -155,13 +160,6 @@ sources:
     kind: documentation
     published_at: null
     accessed_at: 2026-09-29
-  - id: yc-unsloth
-    title: "Unsloth AI: Open-Source Reinforcement Learning (RL) & Fine-tuning for LLMs. | Y Combinator"
-    url: https://www.ycombinator.com/companies/unsloth-ai
-    publisher: Y Combinator
-    kind: other
-    published_at: null
-    accessed_at: 2026-09-29
   - id: unsloth-github-org
     title: Unsloth AI on GitHub
     url: https://github.com/unslothai
@@ -169,3 +167,12 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
+  - id: uspto-tsdr-unsloth
+    title: "UNSLOTH: U.S. trademark Registration No. 7973599 (Serial No. 98849307), TSDR status record"
+    url: https://tsdr.uspto.gov/statusview/sn98849307
+    publisher: United States Patent and Trademark Office
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

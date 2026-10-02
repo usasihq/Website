@@ -1,0 +1,40 @@
+The catalog behind this site is published as static files you can download and reuse. There are no accounts, keys, or sign-ups. The files are rebuilt whenever the site is published, so check the build time inside each file.
+
+<h2 id="files">Files</h2>
+
+- [`/data/catalog.json`](/data/catalog.json): every published organization, open artifact, news item, and People Behind Local AI profile, with sources and dates. Also `schema_version`, `rubric_version`, `build_at`, and catalog `counts`.
+- [`/data/search-index.json`](/data/search-index.json): the compact index behind site search, with the name, type, summary, keywords, and page link for each published record.
+- [`/data/jobs.json`](/data/jobs.json): currently open job postings from the employer feeds the site covers, with when each was last seen.
+- [`/news/feed.xml`](/news/feed.xml): Latest news as an RSS 2.0 feed.
+- [`/sitemap.xml`](/sitemap.xml): every public page.
+
+<h2 id="what-is-included">What is included, and what isn't</h2>
+
+- Only **published** records are exported. Drafts and records under review never appear, and links from published records to unpublished ones are removed, so an export never reveals that an unpublished record exists.
+- Each artifact includes a `computed_tier` calculated with the published [openness rubric](/methodology/#tiers). It describes documented availability under this catalog's rules; it is not a certification or an external definition.
+- Counts describe this catalog's coverage. They are not a census, a ranking, or a measure of capability.
+
+<h2 id="identifiers">Identifiers</h2>
+
+Each record has a `slug`, which is also its page address (for example `/companies/<slug>/` or `/open/<slug>/`). Within a record, every source has an `id`, and each claim lists the source IDs that support it in `source_ids`. Use the slug as the stable identifier when linking to or joining against a record.
+
+<h2 id="dates">What the dates mean</h2>
+
+- `updated_at`: the last substantive edit to the record.
+- `last_reviewed`: when the record's evidence as a whole was last checked.
+- `reviewed_at` on a claim or source: when that specific item was checked.
+- `accessed_at` on a source: when it was read; an automated fetch is not an editorial review.
+- `released_at`: the documented release date of an artifact, at the precision the evidence gives.
+- `build_at`: when the file was generated. A rebuild never changes any of the editorial dates above.
+
+The [methodology](/methodology/#dates) explains these in more detail.
+
+<h2 id="terms">Reuse terms</h2>
+
+Original catalog prose (summaries, explanations, notes, and editorial pages) is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). Suggested attribution: "Source: USASI catalog (unitedstatesofamericasuperintelligence.com), CC BY 4.0." Facts such as names, dates, license identifiers, and URLs are not claimed as copyrighted.
+
+That license covers this project's own writing only. Models, software, datasets, and documents described in the catalog keep their own licenses, which each record links to. Names, logos, and marks belong to their owners. Job postings are factual fields and links taken from employers' own feeds; they are not relicensed by this project.
+
+<h2 id="corrections">Corrections</h2>
+
+If you find an error in the data, [report a correction](/contribute/#corrections) with the record, the field, and a supporting primary source. The [changelog](/changelog/) records catalog and policy changes.

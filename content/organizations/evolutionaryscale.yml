@@ -74,9 +74,19 @@ openness_summary:
     records.
   source_ids: [biohub-esm-repo, esm3-readme, biohub-esm-license]
 hiring_url: null
+careers:
+  url: https://biohub.org/careers/
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The Join the team link on evolutionaryscale.ai goes to Biohub's careers page, which lists Biohub roles on Biohub's Greenhouse board. That board belongs to Biohub, so automated collection is not configured here.
+  posting_hosts: []
+  source_ids: [evolutionaryscale-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: es-home
@@ -163,3 +173,11 @@ sources:
     kind: filing
     published_at: null
     accessed_at: 2026-09-29
+  - id: evolutionaryscale-careers-jobs
+    title: Biohub careers page (linked as Join the team from evolutionaryscale.ai)
+    url: https://biohub.org/careers/
+    publisher: Biohub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

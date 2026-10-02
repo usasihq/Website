@@ -66,7 +66,16 @@ openness_summary:
   source_ids: [al-license, al-desktop-terms, al-cloud-docs]
   reviewed_at: 2026-10-01
 hiring_url: null
-careers: null
+careers:
+  url: https://www.ycombinator.com/companies/anythingllm/jobs
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The Careers link on anythingllm.com goes to the company's Y Combinator jobs page, which listed no jobs on 2026-10-01. No adapter exists for it, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [mintplex-labs-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -121,3 +130,11 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-10-01
+  - id: mintplex-labs-careers-jobs
+    title: AnythingLLM jobs page (linked as Careers from anythingllm.com)
+    url: https://www.ycombinator.com/companies/anythingllm/jobs
+    publisher: Y Combinator
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

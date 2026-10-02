@@ -1,0 +1,177 @@
+These short definitions explain terms that appear on catalog pages. Each entry says what the term means in general, how this catalog uses it, and where to see it on a real record. Where a definition depends on an outside standard or document, the entry links to it. The rules behind the catalog are on the [methodology page](/methodology/), and [What open weight and open source actually mean](/learn/open-weight-vs-open-source/) explains licensing in more depth. Nothing here is legal advice.
+
+<h2 id="acceptable-use-policy">Acceptable-use policy</h2>
+
+A document from a model's publisher that lists uses it prohibits. A license can incorporate such a policy by reference, which makes following the policy one of the license's conditions.
+
+**In this catalog:** use policies are summarized in the license notes of the release they belong to, next to the license that brings them in ([methodology](/methodology/#openness)).
+
+**Example:** [EmbeddingGemma 300M](/open/embeddinggemma-300m/) is under the Gemma Terms of Use, which incorporate the Gemma Prohibited Use Policy and require anyone who redistributes the model to pass those use restrictions on.
+
+<h2 id="benchmark">Benchmark</h2>
+
+A fixed set of tasks with a scoring method, used to compare models under the same conditions. A score that a publisher reports for its own model is a reported result: it has not necessarily been reproduced by anyone else, and it depends on the prompts and settings used.
+
+**In this catalog:** benchmarks have their own project records. The catalog does not publish benchmark scores, and a model release whose card reports results without code or prompts to re-run them is marked Partial for evaluation materials ([methodology](/methodology/#sources)).
+
+**Example:** [HumanEval](/open/humaneval/) is a set of 164 hand-written Python programming problems, each scored by running unit tests against the generated code.
+
+<h2 id="context-window">Context window</h2>
+
+The maximum number of tokens (small pieces of text or other input) that a model can take into account in one request, usually counting both the prompt and the generated output.
+
+**In this catalog:** context lengths appear only as the publisher documents them, with a citation.
+
+**Example:** The model card for [Gemma 4 31B](/open/gemma-4-31b/) lists a 256K-token context window.
+
+<h2 id="evaluation-harness">Evaluation harness</h2>
+
+Software that runs a model against one or more benchmarks in a consistent way: it formats the prompts, collects the outputs, and computes the scores, so that others can re-run the same evaluation.
+
+**In this catalog:** evaluation tools are described with a checklist for code, tasks or data, scoring method, reproducibility instructions, and stated limitations, not with the model tiers ([methodology](/methodology/#openness)).
+
+**Example:** [LM Evaluation Harness](/open/lm-evaluation-harness/), maintained by EleutherAI, runs many benchmark tasks through one interface against local models or hosted model APIs.
+
+<h2 id="fine-tuning">Fine-tuning</h2>
+
+Continuing to train an existing model on additional data so that it behaves differently, for example to follow instructions or to handle a narrower task. The result is a new set of weights, and the base model's license may still apply to it.
+
+**In this catalog:** the base model is recorded as provenance. A U.S. fine-tune of a non-U.S. base model does not make the base model American ([methodology](/methodology/#eligibility)).
+
+**Example:** [Llama 3.1 Tülu 3.1 8B](/open/llama-3-1-tulu-3-1-8b/) is Ai2's post-trained version of Meta's Llama 3.1 8B base model, and its weights carry the Llama 3.1 Community License Agreement.
+
+<h2 id="gated-download">Gated download</h2>
+
+A download that requires an extra step before the files are released, such as signing in, sharing contact details, or accepting terms. On Hugging Face, a gated repository can grant access automatically once a user agrees, or it can require the publisher to approve each request by hand, as described in Hugging Face's [gated models documentation](https://huggingface.co/docs/hub/models-gated).
+
+**In this catalog:** weights that are released only after a request is approved are recorded as Partial, and the release is labeled Restricted weights rather than Open-weight ([methodology](/methodology/#tiers)).
+
+**Example:** [SAM 3.1](/open/sam-3-1/) checkpoints are gated on Hugging Face, and downloads work only after an access request is accepted.
+
+<h2 id="hosted-api">Hosted API</h2>
+
+Access to a model that runs on the provider's own servers. You send inputs over the network and receive outputs, but you do not receive the weights.
+
+**In this catalog:** "Hosted product/API" is a delivery label on organization pages. It is not an openness tier, and it says nothing about the organization's other releases ([methodology](/methodology/#openness)).
+
+**Example:** [OpenAI](/companies/openai/) lists the OpenAI API, pay-as-you-go access to its hosted models, among its products; its open-weight releases have their own separate records.
+
+<h2 id="inference">Inference</h2>
+
+Running a trained model to produce outputs from inputs, as opposed to training it. Inference code is the software that loads the weights and performs that computation.
+
+**In this catalog:** inference code is its own checklist item for each model release, separate from training code ([methodology](/methodology/#openness)).
+
+**Example:** [vLLM](/open/vllm/) is an inference and serving engine for large language models.
+
+<h2 id="license-scope">License scope</h2>
+
+The specific materials a license covers. One release can have different licenses for its weights, code, data, and documentation, and a license file in a code repository does not by itself license weights published elsewhere under other terms.
+
+**In this catalog:** each license entry records what it applies to (weights, code, data, documentation, weights and code, or all), and license filters match a license only to the component it covers ([methodology](/methodology/#openness)).
+
+**Example:** For [TimesFM 3.0](/open/timesfm-3-0/), the weights are under the TimesFM Non-Commercial License v1.0, while the timesfm source-code repository is under the Apache License 2.0.
+
+<h2 id="maintainer">Maintainer</h2>
+
+The organization or group that currently governs a project: it reviews and accepts changes and publishes releases. The maintainer can differ from the organization that first created the project.
+
+**In this catalog:** a project's eligibility rests on its documented governing or maintaining entity, never on the names or assumed nationalities of contributors ([methodology](/methodology/#eligibility)).
+
+**Example:** [PyTorch](/open/pytorch/) was originally developed at Meta and has been hosted by the PyTorch Foundation, under the Linux Foundation, since September 2022.
+
+<h2 id="model-card">Model card</h2>
+
+A document published with a model that describes what it is, how it was trained and evaluated, what it is intended for, and its known limitations. The format was proposed in the paper [Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993) (Mitchell et al., 2018). On Hugging Face, the model card is the repository's README file, with metadata such as the license, as described in its [model cards documentation](https://huggingface.co/docs/hub/model-cards).
+
+**In this catalog:** model cards are a preferred source for technical claims, after the applicable license file ([methodology](/methodology/#sources)).
+
+**Example:** Meta publishes the model card for [Llama 4 Scout](/open/llama-4-scout-17b-16e/) as a file in its llama-models GitHub repository.
+
+<h2 id="model-family">Model family</h2>
+
+A named line of related models released over time, often in several sizes or generations.
+
+**In this catalog:** a family record summarizes the line and links to its releases. It never carries a license or a tier, because those can differ from one release to the next ([methodology](/methodology/#families)).
+
+**Example:** The [Gemma](/open/gemma/) family record links releases including Gemma 4 31B, which is under the Apache License 2.0, and EmbeddingGemma 300M, which is under the Gemma Terms of Use.
+
+<h2 id="model-release">Model release</h2>
+
+One specific published model, identified by its name, size, and version, with its own files and its own terms.
+
+**In this catalog:** licenses, availability, checklists, and tiers attach only to releases, and a release's evidence is never inherited from another version ([methodology](/methodology/#families)).
+
+**Example:** [Olmo 3.1 32B Think](/open/olmo-3-1-32b-think/) is one release in Ai2's Olmo family, with its own licenses and checklist.
+
+<h2 id="open-source-software">Open source (software)</h2>
+
+Software distributed with its source code under a license that meets the Open Source Initiative's [Open Source Definition](https://opensource.org/osd) (version 1.9). Its criteria include free redistribution, access to the source code, permission to make derived works, and no discrimination against persons, groups, or fields of endeavor. Code that is merely readable on a public website is not open source on that basis alone.
+
+**In this catalog:** each project lists its license with an SPDX identifier where one exists and a link to the license file; an identifier alone never replaces reading the terms ([methodology](/methodology/#openness)).
+
+**Example:** [llama.cpp](/open/llama-cpp/) is published under the MIT License.
+
+<h2 id="open-source-ai">Open-source AI (OSI definition)</h2>
+
+An AI system made available under terms that grant the freedoms to use, study, modify, and share it, as set out in the Open Source Initiative's [Open Source AI Definition](https://opensource.org/ai/open-source-ai-definition), version 1.0. The definition requires detailed information about the training data, the complete code used to train and run the system, and the parameters, each under OSI-approved terms. It does not require every piece of training data to be downloadable.
+
+**In this catalog:** USASI does not certify releases against this definition. Its highest model tier, Open system (reviewed), is an editorial label that requires a sourced review specific to the release ([methodology](/methodology/#tiers)).
+
+**Example:** [Olmo 3 7B](/open/olmo-3-1025-7b/) publishes its weights, training scripts, and training-data mixes. The catalog labels it Open-stack, which describes published materials and is not a finding that it meets the OSI definition.
+
+<h2 id="open-weight">Open weight</h2>
+
+A model whose trained parameters can be downloaded by the public. The term describes availability: the license that comes with the weights may still limit commercial use, redistribution, or particular uses. Others use the term with stricter requirements; the OSI's [explainer on open weights](https://opensource.org/ai/open-weights), for example, describes final parameters shared under an OSI-approved license, without the training code or data.
+
+**In this catalog:** the Open-weight tier requires only publicly obtainable weights. The license is recorded separately and shown next to the label, with a caveat when it is not on the rubric's list of OSI-approved licenses ([methodology](/methodology/#tiers)).
+
+**Example:** [gpt-oss-20b](/open/gpt-oss-20b/) is labeled Open-weight; its weights download without a gate under the Apache License 2.0.
+
+<h2 id="quantization">Quantization</h2>
+
+Storing a model's weights, and sometimes its intermediate values, at lower numerical precision (for example 4-bit integers instead of 16-bit numbers) to reduce memory use and speed up inference, sometimes at some cost in output quality.
+
+**In this catalog:** memory or hardware figures are recorded only when a publisher states them, together with the precision they assume.
+
+**Example:** [AWQ (Activation-aware Weight Quantization)](/open/awq/), from MIT HAN Lab, is a method and codebase for 4-bit and 3-bit weight-only quantization of language models.
+
+<h2 id="reviewed-date">Reviewed date</h2>
+
+The date an editor last checked a piece of evidence against its sources. It is different from the date a record was edited, the date an artifact was released, and the date the site was built.
+
+**In this catalog:** each record shows a "Last reviewed" date, and individual facts, such as a license or an availability assessment, can carry their own reviewed date. An automated fetch is not a review ([methodology](/methodology/#dates)).
+
+**Example:** On [gpt-oss-20b](/open/gpt-oss-20b/), the license entries carry their own reviewed dates, separate from the record's "Last reviewed" date.
+
+<h2 id="self-hosting">Self-hosting / local inference</h2>
+
+Running a model on hardware you control, such as a laptop, a workstation, or your own servers, instead of calling a provider's hosted service. It requires access to the weights and to software that can run them, and the weights' license still applies.
+
+**In this catalog:** run notes on a release describe only documented ways to run it, and any memory figure is attributed to its source.
+
+**Example:** [Ollama](/open/ollama/) is an MIT-licensed application for downloading and running open models on macOS, Windows, and Linux; the company behind it also offers cloud-hosted models.
+
+<h2 id="subsidiary">Subsidiary</h2>
+
+A company that is owned or controlled by another company, its parent. A research unit is a similar relationship within a single company.
+
+**In this catalog:** a subsidiary or unit with its own record is also counted under "units and subsidiaries," so a parent and its subsidiary are never presented as two independent companies. Parent–subsidiary cases get a written eligibility assessment ([methodology](/methodology/#counts)).
+
+**Example:** [Red Hat](/companies/red-hat/) is documented in its record as a wholly owned subsidiary of IBM, with its own headquarters in Raleigh, North Carolina.
+
+<h2 id="unknown">Unknown</h2>
+
+A status meaning that an item has not been assessed yet, or that the available evidence is not enough to decide. It never stands in for "no."
+
+**In this catalog:** "Not public" is used instead when the evidence shows that something is unavailable ([methodology](/methodology/#uncertainty)).
+
+**Example:** On [Gemma 4 31B](/open/gemma-4-31b/), training code is Unknown: the record notes fine-tuning code in Google DeepMind's gemma library, but no published code used to pre-train Gemma 4.
+
+<h2 id="weights">Weights</h2>
+
+The numerical parameters a model learns during training. Together with the model's architecture and inference code they make up the model, a breakdown the [Open Source AI Definition](https://opensource.org/ai/open-source-ai-definition) also uses. Weights are usually distributed as large files, sometimes with checkpoints saved at intermediate points in training.
+
+**In this catalog:** weights are the first checklist item for a model release, and their availability decides whether a release can be labeled Open-weight ([methodology](/methodology/#tiers)).
+
+**Example:** [Pythia 12B](/open/pythia-12b/) publishes its final weights and 154 intermediate checkpoints as branches of its Hugging Face repository.

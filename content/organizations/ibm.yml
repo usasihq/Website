@@ -79,9 +79,19 @@ openness_summary:
     commercial services.
   source_ids: [ granite-4-2-8b-card, ibm-granite-page, ibm-watsonx-ai ]
 hiring_url: null
+careers:
+  url: https://www.ibm.com/careers
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      Openings are listed through IBM's own job search at ibm.com/careers/search; no supported public job board is exposed, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [ibm-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-30
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: ibm-10k-2025
@@ -161,6 +171,14 @@ sources:
     kind: documentation
     accessed_at: 2026-09-30
     reviewed_at: 2026-09-30
+  - id: ibm-careers-jobs
+    title: Official careers page
+    url: https://www.ibm.com/careers
+    publisher: IBM
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
 ownership_evidence:
   text: IBM publishes investor information for its publicly traded common stock.
     Stock ownership and model licensing are separate questions.

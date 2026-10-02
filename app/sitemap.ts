@@ -21,6 +21,10 @@ const STATIC_ROUTES = [
   "/privacy/",
   "/local/",
   "/news/",
+  "/start/",
+  "/glossary/",
+  "/learn/open-weight-vs-open-source/",
+  "/reuse/",
 ];
 
 /**

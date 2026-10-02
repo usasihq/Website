@@ -21,6 +21,9 @@ const PAGES: Array<[string, string]> = [
   ["matrix", "/matrix/"],
   ["support", "/support/"],
   ["local", "/local/"],
+  ["start", "/start/"],
+  ["glossary", "/glossary/"],
+  ["explainer", "/learn/open-weight-vs-open-source/"],
   ["not-found", "/this-page-does-not-exist/"],
 ];
 

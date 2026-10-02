@@ -16,7 +16,7 @@ import { buildCoverage } from "@/lib/matrix";
 import { pageMetadata } from "@/lib/metadata";
 import { RUBRIC_LABEL } from "@/lib/openness";
 import { absoluteUrl, asset } from "@/lib/paths";
-import { artifactHref, orgHref } from "@/lib/routes";
+import { artifactHref, openHref, orgHref } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
@@ -155,6 +155,32 @@ export default function HomePage() {
           Missing evidence stays Unknown; unverified candidates stay out of the published catalog.{" "}
           <Link href="/about/" className="link">About USASI</Link>{" · "}
           <Link href="/methodology/" className="link">Review process and methodology</Link>
+        </p>
+      </section>
+
+      {/* Practical starting paths for newcomers (orientation before the directory previews). */}
+      <section aria-labelledby="start-paths-heading" className="container-page pb-10">
+        <h2 id="start-paths-heading" className="text-lg font-semibold text-text">
+          Where to start
+        </h2>
+        <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { href: "/start/", title: "New here? Start here", text: "Four short paths: learn a term, find something usable, understand an organization, check a claim." },
+            { href: "/learn/open-weight-vs-open-source/", title: "Open weight vs. open source", text: "What a downloadable model does and doesn’t let you do, with real catalog examples." },
+            { href: openHref("kind=runtime"), title: "Run models on your own hardware", text: "Local runtimes in the catalog, plus the people behind local AI." },
+            { href: "/methodology/#sources", title: "Check a claim", text: "How every statement links to a source, and how to report a correction." },
+          ].map((item) => (
+            <li key={item.href}>
+              <Link prefetch={false} href={item.href} className="card flex h-full flex-col p-4 hover:border-cyan">
+                <span className="font-semibold text-text">{item.title}</span>
+                <span className="mt-1 text-sm text-muted">{item.text}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-sm text-muted">
+          Counts on this site are records in this catalog as of {formatDate(catalog.buildAt.slice(0, 10))}. Coverage is selective; counts are not a census, a
+          ranking, or a measure of capability. <Link href="/methodology/#counts" className="link">How counts work</Link>
         </p>
       </section>
 

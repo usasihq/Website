@@ -93,6 +93,16 @@ openness_summary:
     TensorRT-LLM under Apache 2.0. Terms differ by release; see individual artifact records.
   source_ids: [nvidia-nemotron-page, tensorrt-llm-license]
 hiring_url: null
+careers:
+  url: https://www.nvidia.com/en-us/about-nvidia/careers/
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The careers page links to jobs.nvidia.com, an Eightfold-powered job search whose applications run through Workday. No adapter exists for either, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [nvidia-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -201,6 +211,14 @@ sources:
     url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
     publisher: NVIDIA (Hugging Face)
     kind: model-card
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: nvidia-careers-jobs
+    title: Official careers page
+    url: https://www.nvidia.com/en-us/about-nvidia/careers/
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
 profile:

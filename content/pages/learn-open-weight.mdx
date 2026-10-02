@@ -1,0 +1,66 @@
+A download link tells you that the files are available, not what you may do with them. A release is usually several components (weights, the code that runs or trains them, data, and documentation), and each can come with its own terms. Those terms decide whether you may use the model commercially, change it, or share it. To find out, read the license for the weights themselves, any use policy that license brings in, and the separate licenses for code and data. A permissive license on a code repository does not cover files published under other terms. This page is general information, not legal advice.
+
+<h2 id="availability-and-permission">Availability is not permission</h2>
+
+Availability answers "can I get the files?" Permission answers "what may I do with them?" A model can download without any sign-in and still be licensed only for non-commercial use; another can sit behind a gate that asks for contact details and acceptance of terms. The catalog records the two separately: an availability status with its access conditions, and a list of licenses, each tied to the component it covers ([methodology](/methodology/#openness)).
+
+<h2 id="components">Weights, code, and data are separate components</h2>
+
+A release usually bundles several things:
+
+- **Weights:** the trained parameters, usually large files on a model hub.
+- **Inference code:** software that loads the weights and produces outputs.
+- **Training code:** software used to train the model. Sometimes only a fine-tuning script is published, not the pipeline used for pre-training.
+- **Training data and data information:** the data itself, which is often not released, and documentation of where it came from and how it was processed.
+
+Each component can be published or withheld on its own, under its own terms. An MIT License on a repository of inference code covers that code; it says nothing about weights stored elsewhere under a separate agreement.
+
+<h2 id="several-licenses">Why one release can carry several licenses</h2>
+
+Publishers often put code under a standard open-source software license while writing custom terms for the weights. A license may also incorporate a use policy by reference, and training datasets carry their own licenses, sometimes covering third-party material under yet other terms. Releases in the same family can also use different licenses, so terms for one generation or size do not carry over to the next.
+
+<h2 id="rubric-and-osaid">USASI's tiers and the OSI definition</h2>
+
+The Open Source Initiative publishes the [Open Source AI Definition](https://opensource.org/ai/open-source-ai-definition), version 1.0. It describes an AI system made available under terms that grant the freedoms to use, study, modify, and share it. For machine-learning systems it requires sufficiently detailed information about the training data, the complete code used to train and run the system, and the parameters, each under OSI-approved terms. It does not require every training datum to be downloadable, but it does require a description of all training data, including data that cannot be shared.
+
+USASI's model tiers (rubric v0.2) answer a narrower question: which materials for a release are documented as public.
+
+- **Open-weight:** the public can obtain the weights. The license may still restrict use.
+- **Open-stack:** adds published inference code, training code, and training recipe, plus documented training-data information. It describes disclosure, not rights.
+- **Open system (reviewed):** additionally requires a complete training pipeline, complete data information, and a sourced review of reuse rights for that specific release.
+
+These are USASI's editorial labels. They are not OSI certification, and an Open-weight or Open-stack label is not a claim that a release meets the OSI definition.
+
+<h2 id="worked-example">A worked example (hypothetical)</h2>
+
+This artifact is invented for illustration and is not in the catalog. Suppose "Example-7B" is published like this:
+
+- Its GitHub repository, with inference and fine-tuning scripts, is under the MIT License.
+- Its weights download from a model hub without sign-in, under a custom license that permits research use only and forbids distributing modified weights.
+- Its model card describes the training data in one paragraph. No data or pre-training code is released.
+
+You could use, change, and share the scripts under the MIT License. You could download the weights, but the custom license would govern them: under these terms, a commercial product or a published fine-tune would not be permitted. The catalog would record one license entry for the code and one for the weights, and would label the release Open-weight, with a caveat that the weight license is not on the rubric's list of OSI-approved licenses. Without training code and a recipe, it would not reach Open-stack.
+
+<h2 id="catalog-examples">Four releases in the catalog</h2>
+
+- **[gpt-oss-20b](/open/gpt-oss-20b/)** (OpenAI). The weights and the reference code repository are both under the Apache License 2.0, and the weights download without a gate. A usage-policy file shipped with the weights asks users to comply with applicable law. Computed tier: Open-weight; training code is Unknown in its record.
+- **[Gemma 4 31B](/open/gemma-4-31b/)** (Google DeepMind). Google's Gemma 4 license is the Apache License 2.0, and the weights download without a gate. Computed tier: Open-weight. In the same family, [EmbeddingGemma 300M](/open/embeddinggemma-300m/) is under the Gemma Terms of Use, which incorporate a prohibited-use policy and require redistributors to pass those restrictions on.
+- **[Olmo 3 7B](/open/olmo-3-1025-7b/)** (Ai2). The model card releases the code and model under Apache 2.0 and says the model is intended for research and educational use under Ai2's Responsible Use Guidelines. Training scripts are published, and the pretraining data mix is available under ODC-BY, though its dataset card notes that some documents were redacted after training. Computed tier: Open-stack. It is not Open system (reviewed): its data information is assessed as partial, and no release-specific rights review is recorded.
+- **[Llama 4 Scout](/open/llama-4-scout-17b-16e/)** (Meta). One custom agreement, the Llama 4 Community License, covers both weights and code. Downloads require an access request. The license incorporates an acceptable use policy, sets attribution and naming requirements for redistributed derivatives, and requires licensees above 700 million monthly active users to request a separate license. Computed tier: Restricted weights.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse [open models and tools](/open/) and open a release to see its licenses, what each applies to, and its checklist.
+- Read how checklists and tiers work in the [methodology](/methodology/#openness).
+- Look up unfamiliar terms in the [glossary](/glossary/).
+- Before relying on a release, read the license files it links to; the catalog's summaries are aids, not substitutes.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 1, 2026.
+
+- Open Source Initiative: [The Open Source AI Definition, version 1.0](https://opensource.org/ai/open-source-ai-definition)
+- OpenAI: [gpt-oss-20b model card](https://huggingface.co/openai/gpt-oss-20b), [weights LICENSE](https://huggingface.co/openai/gpt-oss-20b/blob/main/LICENSE), and [USAGE_POLICY](https://huggingface.co/openai/gpt-oss-20b/blob/main/USAGE_POLICY) on Hugging Face; [gpt-oss repository LICENSE](https://github.com/openai/gpt-oss/blob/main/LICENSE)
+- Google: [Gemma 4 license (Apache License 2.0)](https://ai.google.dev/gemma/apache_2), [Gemma Terms of Use](https://ai.google.dev/gemma/terms), [gemma-4-31B-it model card](https://huggingface.co/google/gemma-4-31B-it), [embeddinggemma-300m model card](https://huggingface.co/google/embeddinggemma-300m)
+- Ai2: [Olmo-3-1025-7B model card](https://huggingface.co/allenai/Olmo-3-1025-7B), [OLMo-core LICENSE](https://github.com/allenai/OLMo-core/blob/main/LICENSE), [dolma3_mix-6T-1025-7B dataset card](https://huggingface.co/datasets/allenai/dolma3_mix-6T-1025-7B), [Responsible Use Guidelines](https://allenai.org/responsible-use)
+- Meta: [Llama 4 Community License Agreement](https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE), [Llama 4 Acceptable Use Policy](https://dev.meta.ai/llama/llama4/use-policy/), [llama-models README](https://github.com/meta-llama/llama-models/blob/main/README.md), [Llama-4-Scout-17B-16E-Instruct on Hugging Face](https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct)

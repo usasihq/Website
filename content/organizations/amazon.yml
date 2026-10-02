@@ -73,6 +73,16 @@ openness_summary:
     weights for Amazon Nova models, and the Nova page does not mention open weights.
   source_ids: [nova-page, bedrock-page]
 hiring_url: null
+careers:
+  url: https://www.amazon.jobs/
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      Amazon lists openings on its own job site, amazon.jobs, which is not a supported public job board, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [amazon-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -153,6 +163,14 @@ sources:
     url: https://huggingface.co/amazon
     publisher: Hugging Face
     kind: repository
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: amazon-careers-jobs
+    title: Official careers site
+    url: https://www.amazon.jobs/
+    publisher: Amazon
+    kind: official-page
+    published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
 profile:

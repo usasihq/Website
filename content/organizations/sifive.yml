@@ -88,6 +88,16 @@ eligibility:
   assessed_at: 2026-10-01
 openness_summary: null
 hiring_url: null
+careers:
+  url: https://www.sifive.com/careers
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The careers page links to SiFive's Workday job site. No Workday adapter exists, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [sifive-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -144,6 +154,14 @@ sources:
   - id: sf-datacenter
     title: RISC-V Solutions for Datacenters, AI, and Cloud - SiFive
     url: https://www.sifive.com/solutions/data-center
+    publisher: SiFive
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: sifive-careers-jobs
+    title: Official careers page
+    url: https://www.sifive.com/careers
     publisher: SiFive
     kind: official-page
     published_at: null

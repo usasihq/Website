@@ -63,9 +63,18 @@ openness_summary:
     under SpaceX's own name.
   source_ids: [spacex-10q-2026q2, hf-xai-org]
 hiring_url: null
+careers:
+  url: https://www.spacex.com/careers/jobs
+  enabled: false
+  source:
+    type: greenhouse
+    identifier: spacex
+  posting_hosts: []
+  source_ids: [spacex-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: spacex-10q-2026q2
@@ -96,3 +105,11 @@ sources:
     kind: filing
     published_at: 2026-08-04
     accessed_at: 2026-09-29
+  - id: spacex-careers-jobs
+    title: Official jobs page
+    url: https://www.spacex.com/careers/jobs
+    publisher: SpaceX
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

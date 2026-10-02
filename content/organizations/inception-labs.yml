@@ -66,6 +66,16 @@ openness_summary:
   source_ids: [inception-docs, inception-models, mercury-paper]
   reviewed_at: 2026-10-01
 hiring_url: null
+careers:
+  url: https://www.inceptionlabs.ai/careers
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The careers page loads openings from a Gem job board (jobs.gem.com/inception). No Gem adapter exists, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [inception-labs-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -117,5 +127,13 @@ sources:
     publisher: arXiv (Inception Labs authors)
     kind: paper
     published_at: 2025-06-17
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: inception-labs-careers-jobs
+    title: Official careers page
+    url: https://www.inceptionlabs.ai/careers
+    publisher: Inception
+    kind: official-page
+    published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01

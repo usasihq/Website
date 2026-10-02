@@ -1,6 +1,9 @@
 slug: unsloth
 name: Unsloth
-legal_name: null
+legal_name:
+  text: Unsloth AI Inc.
+  source_ids: [uspto-tsdr-unsloth]
+  reviewed_at: 2026-10-01
 website: https://unsloth.ai
 logo_text: UN
 summary:
@@ -11,10 +14,16 @@ summary:
   source_ids: [unsloth-readme, unsloth-home, unsloth-install-docs]
 organization_roles: [developer-platform]
 ownership_category: privately-held
-legal_form: null
+legal_form:
+  text: Delaware corporation
+  source_ids: [uspto-tsdr-unsloth]
+  reviewed_at: 2026-10-01
 parent_org_slug: null
 parent_relationship: null
-headquarters: null
+headquarters:
+  label: San Francisco, California (owner address in the company's USPTO trademark registration)
+  country: US
+  source_ids: [uspto-tsdr-unsloth, uspto-unsloth-roa-2025-06, uspto-unsloth-oa-2025-06]
 other_locations: []
 founded: null
 sectors: [open-models]
@@ -31,27 +40,33 @@ products:
     last_reviewed: 2026-09-29
 notable_facts: []
 eligibility:
-  status: pending_review
-  basis: undetermined
+  status: eligible
+  basis: us-headquarters
   explanation: >-
-    The maintaining company appears as Unsloth AI Inc. in the repository's license and source-file
-    copyright notices, but no company page, legal page, or regulatory filing found states where it
-    is incorporated or headquartered; the website's terms and privacy pages returned not-found
-    errors, and no SEC filing under the Unsloth name was found. Y Combinator's directory lists
-    Unsloth AI in San Francisco, and the unslothai GitHub organization profile gives the United
-    States as its location, but both are self-reported directory fields rather than documentation
-    of incorporation or a principal office. A U.S. basis is therefore not documented.
-  source_ids: [unsloth-license, unsloth-studio-header, yc-unsloth, unsloth-github-org]
-  assessed_at: 2026-09-29
+    The deciding evidence is an official registry. The USPTO record for the UNSLOTH trademark
+    (Registration No. 7973599, registered October 7, 2025, for downloadable software for training
+    and fine-tuning large language models) names Unsloth AI Inc., a Delaware corporation, as owner
+    with an address in San Francisco, California. The application first gave a Delaware address;
+    the USPTO's May 2025 office action rejected it as a domicile and required the company's
+    headquarters address, defined as the place where its senior executives direct and control its
+    activities. The company's June 2025 response replaced it with the San Francisco address, the
+    only owner address in that response, and the USPTO's June 2025 action states that an acceptable
+    domicile address was submitted. This is read as a documented U.S. principal place of business.
+    The company's website, re-checked on 2026-10-01, gives no address, and its terms and privacy
+    URLs return not-found errors. The company is named in the copyright notices of the Unsloth
+    repository's license and source files. Y Combinator's directory (San Francisco) and the unslothai GitHub
+    profile (United States) agree but are self-reported and were not relied on.
+  source_ids: [uspto-tsdr-unsloth, uspto-unsloth-oa-2025-05, uspto-unsloth-roa-2025-06, uspto-unsloth-oa-2025-06, unsloth-about, unsloth-contact, unsloth-license, unsloth-studio-header, yc-unsloth, unsloth-github-org]
+  assessed_at: 2026-10-01
 openness_summary:
   text: >-
     Unsloth's core library is published under the Apache License 2.0, and its optional Studio and
     command-line components are published under the GNU AGPL v3.
   source_ids: [unsloth-license, unsloth-readme]
 hiring_url: null
-publication_status: draft
+publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: unsloth-home
@@ -82,6 +97,7 @@ sources:
     kind: license
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: unsloth-studio-header
     title: unslothai/unsloth studio/__init__.py
     url: https://github.com/unslothai/unsloth/blob/main/studio/__init__.py
@@ -89,6 +105,7 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: yc-unsloth
     title: "Unsloth AI: Open-Source Reinforcement Learning (RL) & Fine-tuning for LLMs. | Y Combinator"
     url: https://www.ycombinator.com/companies/unsloth-ai
@@ -96,6 +113,7 @@ sources:
     kind: other
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: unsloth-github-org
     title: Unsloth AI on GitHub
     url: https://github.com/unslothai
@@ -103,3 +121,52 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
+  - id: uspto-tsdr-unsloth
+    title: "UNSLOTH: U.S. trademark Registration No. 7973599 (Serial No. 98849307), TSDR status record"
+    url: https://tsdr.uspto.gov/statusview/sn98849307
+    publisher: United States Patent and Trademark Office
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: uspto-unsloth-oa-2025-05
+    title: Nonfinal Office Action, U.S. trademark Serial No. 98849307 (UNSLOTH)
+    url: https://tsdrsec.uspto.gov/ts/cd/tmcasedoc/downloadproxy?url=/api/casedoc/cms/case/98849307/office-action/OfficeAction7406018.pdf
+    publisher: United States Patent and Trademark Office
+    kind: filing
+    published_at: 2025-05-08
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: uspto-unsloth-roa-2025-06
+    title: Response to Office Action, U.S. trademark Serial No. 98849307 (UNSLOTH)
+    url: https://tsdrsec.uspto.gov/ts/cd/tmcasedoc/downloadproxy?url=/api/casedoc/ts/cd/98849307/ROA20250610062538/1/webcontent
+    publisher: United States Patent and Trademark Office
+    kind: filing
+    published_at: 2025-06-09
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: uspto-unsloth-oa-2025-06
+    title: Supplemental Nonfinal Office Action, U.S. trademark Serial No. 98849307 (UNSLOTH)
+    url: https://tsdrsec.uspto.gov/ts/cd/tmcasedoc/downloadproxy?url=/api/casedoc/cms/case/98849307/office-action/OfficeAction7564653.pdf
+    publisher: United States Patent and Trademark Office
+    kind: filing
+    published_at: 2025-06-25
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: unsloth-about
+    title: About | Unsloth
+    url: https://unsloth.ai/about
+    publisher: Unsloth
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: unsloth-contact
+    title: Contact | Unsloth
+    url: https://unsloth.ai/contact
+    publisher: Unsloth
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

@@ -112,6 +112,16 @@ openness_summary:
   source_ids: [ rh-llmd-launch, llmd-license, rh-hf-org, rh-ai ]
   reviewed_at: 2026-10-01
 hiring_url: null
+careers:
+  url: https://www.redhat.com/en/jobs
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      The jobs page links to Red Hat's Workday job site. No Workday adapter exists, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [red-hat-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -299,6 +309,14 @@ sources:
     url: https://github.com/Red-Hat-AI-Innovation-Team
     publisher: Red Hat AI Innovation Team
     kind: repository
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: red-hat-careers-jobs
+    title: Official jobs page
+    url: https://www.redhat.com/en/jobs
+    publisher: Red Hat
+    kind: official-page
     published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01

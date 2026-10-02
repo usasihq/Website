@@ -131,6 +131,16 @@ profile:
       source_ids: [square-ai-terms]
       reviewed_at: 2026-10-01
 hiring_url: null
+careers:
+  url: https://block.xyz/careers/jobs
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      Block lists openings on its own job pages at block.xyz/careers/jobs and does not expose a public job board identifier, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [block-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -230,5 +240,13 @@ sources:
     publisher: Cash App (Block, Inc.)
     kind: official-page
     published_at: 2026-09-11
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: block-careers-jobs
+    title: Official jobs page
+    url: https://block.xyz/careers/jobs
+    publisher: Block
+    kind: official-page
+    published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01

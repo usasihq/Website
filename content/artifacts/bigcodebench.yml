@@ -8,7 +8,13 @@ maintainers:
   - name: BigCode project (open scientific collaboration)
     organization_slug: null
     source_ids: [bcb-hf-card, bcb-repo, bigcode-mission]
-organization_slugs: []
+  - name: Hugging Face (co-leads the BigCode steering committee)
+    organization_slug: hugging-face
+    source_ids: [bigcode-organization]
+  - name: ServiceNow (co-leads the BigCode steering committee)
+    organization_slug: servicenow
+    source_ids: [bigcode-organization]
+organization_slugs: [hugging-face, servicenow]
 links:
   - label: GitHub repository (archived July 2026)
     url: https://github.com/bigcode-project/bigcodebench
@@ -36,18 +42,23 @@ useful_for:
     multiple library calls, with local, E2B-sandbox, or remote execution of the generated code.
   source_ids: [bcb-readme]
 eligibility:
-  status: pending_review
-  basis: undetermined
+  status: eligible
+  basis: us-governed-project
   explanation: >-
-    BigCodeBench is published under the BigCode project's GitHub and Hugging Face
-    organizations, and its dataset card names a primary contact at Monash University and
-    CSIRO's Data61. BigCode describes itself as an open scientific collaboration whose
-    technical governance takes place in community working groups and task forces, with
-    corporate support from ServiceNow and Hugging Face for hosting and training compute. That
-    support does not make either company the documented maintainer of this benchmark, and no
-    U.S. maintaining institution is documented for BigCodeBench, so eligibility is unresolved.
-  source_ids: [bcb-hf-card, bcb-repo, bigcode-mission]
-  assessed_at: 2026-09-29
+    Multi-organization assessment. BigCodeBench's dataset card, published in the BigCode Hugging
+    Face organization, says the dataset was created as part of the BigCode Project, and its code
+    and leaderboard are published under BigCode's GitHub and Hugging Face organizations. BigCode's
+    organization page says the project is jointly led by Hugging Face and ServiceNow and is governed
+    by a steering committee led by the two companies, which organizes and manages the project,
+    oversees all working groups, and makes tie-breaking decisions as a last resort; the mission
+    page says technical governance otherwise takes place in community working groups. Both companies are recorded in this catalog as U.S.-headquartered
+    (see their records), so the documented governing entities are U.S.-based; the BigCode StarCoder2
+    records rest on the same governance. The dataset's lead curator lists Monash University and
+    CSIRO's Data61 in Australia, and other contributors come from many institutions; contributor
+    affiliations do not affect eligibility. The GitHub repository has been archived and read-only
+    since July 2026.
+  source_ids: [bcb-hf-card, bcb-repo, bigcode-organization, bigcode-mission]
+  assessed_at: 2026-10-01
 availability:
   status: public
   access_conditions: >-
@@ -105,10 +116,10 @@ run_notes:
     source_ids: [bcb-readme]
 provenance: null
 tags: [evaluation, benchmark, code-model]
-publication_status: draft
+publication_status: published
 archive_note: null
 released_at: 2024-06-18
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: bcb-repo
@@ -118,6 +129,7 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: bcb-readme
     title: bigcodebench README.md
     url: https://raw.githubusercontent.com/bigcode-project/bigcodebench/main/README.md
@@ -125,6 +137,7 @@ sources:
     kind: documentation
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: bcb-license
     title: bigcodebench LICENSE
     url: https://raw.githubusercontent.com/bigcode-project/bigcodebench/main/LICENSE
@@ -139,6 +152,7 @@ sources:
     kind: dataset-card
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
   - id: bcb-paper
     title: "BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions"
     url: https://arxiv.org/abs/2406.15877
@@ -167,3 +181,12 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+    reviewed_at: 2026-10-01
+  - id: bigcode-organization
+    title: Organization - BigCode
+    url: https://www.bigcode-project.org/docs/about/organization/
+    publisher: BigCode project
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

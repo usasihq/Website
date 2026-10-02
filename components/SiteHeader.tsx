@@ -6,6 +6,14 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { BrandMark } from "./BrandMark";
 
+/** Reference links: in the slim top bar from 640px, and in the mobile menu. */
+const REFERENCE = [
+  { href: "/start/", label: "Start here" },
+  { href: "/glossary/", label: "Glossary" },
+  { href: "/reuse/", label: "Data & reuse" },
+  { href: "/contribute/#corrections", label: "Corrections" },
+];
+
 const NAV = [
   { href: "/companies/", label: "Companies & Labs" },
   { href: "/open/", label: "Open Models & Tools" },
@@ -22,7 +30,7 @@ function isCurrent(pathname: string, href: string) {
   return normalized === href || normalized.startsWith(href);
 }
 
-export function SiteHeader({ siteName, shortName }: { siteName: string; shortName: string }) {
+export function SiteHeader({ siteName, shortName, disclaimer }: { siteName: string; shortName: string; disclaimer: string }) {
   const pathname = usePathname() ?? "/";
   // The menu is open only for the path it was opened on, so it closes itself
   // after any navigation without an effect.
@@ -48,7 +56,27 @@ export function SiteHeader({ siteName, shortName }: { siteName: string; shortNam
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-[rgba(5,8,22,0.82)] backdrop-blur-md supports-[backdrop-filter]:bg-[rgba(5,8,22,0.7)]">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
+      {/* Persistent independence line on every page. */}
+      <div className="border-b border-line">
+        <div className="container-page flex h-7 items-center justify-between gap-4 text-xs sm:text-[0.8125rem]">
+          <p className="truncate text-muted" data-testid="header-disclaimer">
+            <span className="sm:hidden">Independent project. Not a U.S. government website.</span>
+            <span className="hidden sm:inline">{disclaimer}</span>
+          </p>
+          <nav aria-label="Reference" className="hidden shrink-0 sm:block">
+            <ul className="flex items-center gap-4">
+              {REFERENCE.filter((r) => r.href !== "/reuse/").map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="inline-flex h-7 items-center text-muted hover:text-text">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div className="container-page flex h-14 items-center justify-between gap-4 sm:h-16">
         <Link href="/" prefetch={false} className="group flex min-w-0 items-center gap-3 rounded-md" aria-label={`${shortName} — ${siteName}, home`}>
           <BrandMark className="h-7 w-7 shrink-0" />
           <span className="text-[1.0625rem] font-semibold tracking-[0.06em] text-text">{shortName}</span>
@@ -106,6 +134,18 @@ export function SiteHeader({ siteName, shortName }: { siteName: string; shortNam
                 </li>
               );
             })}
+          </ul>
+        </nav>
+        <nav aria-label="Reference (mobile)" className="container-page pb-3">
+          <p className="eyebrow px-2">Reference</p>
+          <ul className="mt-1 flex flex-col">
+            {REFERENCE.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="flex min-h-12 items-center rounded-md px-2 text-base text-muted hover:text-text">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
           <button
             type="button"

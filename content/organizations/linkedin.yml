@@ -57,9 +57,19 @@ openness_summary:
     hosted services and are not assessed here.
   source_ids: [liger-repo, liger-license]
 hiring_url: null
+careers:
+  url: https://careers.linkedin.com/
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      LinkedIn's careers site sends job seekers to LinkedIn's own job search for its openings, which is not a supported public job board, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [linkedin-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: msft-10k-2026
@@ -132,3 +142,11 @@ sources:
     kind: announcement
     published_at: 2024-12-05
     accessed_at: 2026-09-29
+  - id: linkedin-careers-jobs
+    title: Official careers site
+    url: https://careers.linkedin.com/
+    publisher: LinkedIn
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

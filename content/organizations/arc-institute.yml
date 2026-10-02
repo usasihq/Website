@@ -59,9 +59,18 @@ openness_summary:
     whole.
   source_ids: [evo2-repo, hf-api-arc-models, opengenome2-card]
 hiring_url: null
+careers:
+  url: https://arcinstitute.org/jobs
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: arcinstitute
+  posting_hosts: []
+  source_ids: [arc-institute-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-01
 last_reviewed: 2026-09-29
 sources:
   - id: arc-about
@@ -127,3 +136,11 @@ sources:
     kind: documentation
     published_at: 2026-01
     accessed_at: 2026-09-29
+  - id: arc-institute-careers-jobs
+    title: Official jobs page
+    url: https://arcinstitute.org/jobs
+    publisher: Arc Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01

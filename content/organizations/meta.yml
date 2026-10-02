@@ -93,6 +93,16 @@ openness_summary:
     through Meta AI and the Meta Model API without public weights.
   source_ids: [llama4-license, muse-glimmer-model-card, muse-spark-announcement, meta-model-api]
 hiring_url: null
+careers:
+  url: https://www.metacareers.com/
+  enabled: false
+  source:
+    type: unsupported
+    note: >-
+      Meta lists openings on its own careers site, metacareers.com, which the meta.com/about page links to as Careers. It is not a supported public job board, so automated collection is not configured.
+  posting_hosts: []
+  source_ids: [meta-careers-jobs]
+  reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
 updated_at: 2026-10-01
@@ -229,6 +239,14 @@ sources:
     url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE
     publisher: Meta (GitHub)
     kind: license
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: meta-careers-jobs
+    title: Official careers site
+    url: https://www.metacareers.com/
+    publisher: Meta
+    kind: official-page
+    published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
 profile:

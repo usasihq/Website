@@ -27,6 +27,10 @@ const PAGES = [
   "/privacy/",
   "/contribute/",
   "/changelog/",
+  "/start/",
+  "/glossary/",
+  "/learn/open-weight-vs-open-source/",
+  "/reuse/",
   "/no-such-page/",
 ];
 

@@ -4,19 +4,21 @@ initials: LS
 headline: Former co-lead of Ai2's Olmo open-model project; now a member of the technical staff at Microsoft AI
 bio:
   text: >-
-    Luca Soldaini works on data methods for language models, from pre-training through
-    post-training. From 2022 to early 2026 he was a lead research scientist at Ai2, where he
-    co-led the Olmo project, which released several generations of fully open models together
-    with the data, code, recipes, and checkpoints used to build them. He is first author of the
-    paper introducing Dolma, Ai2's three-trillion-token open corpus for pretraining research. He
-    is now a member of the technical staff at Microsoft AI.
-  source_ids: [site, dolma-paper]
+    Luca Soldaini works on scalable data methods for language models, from pre-training to
+    post-training. From 2022 to early 2026, Soldaini was a lead research scientist at Ai2 and co-led
+    the Olmo project, which released three generations of fully open models in dense,
+    mixture-of-experts, hybrid, and multimodal variants, together with the data, code, recipes, and
+    checkpoints used to build them. Soldaini is first author of the paper introducing Dolma, a
+    three-trillion-token open corpus for language model pretraining research, and is now a member of
+    the technical staff at Microsoft AI.
+  source_ids: [site, github-profile, dolma-paper]
+  reviewed_at: 2026-10-01
 affiliations:
   - name: Microsoft AI
     organization_slug: microsoft
     role: Member of the technical staff
     current: true
-    source_ids: [site]
+    source_ids: [site, github-profile]
   - name: Ai2 (Allen Institute for AI)
     organization_slug: ai2
     role: Lead research scientist
@@ -35,16 +37,16 @@ work:
     url: https://github.com/allenai/dolma
     contribution: >-
       First author of the paper describing Dolma, a three-trillion-token open corpus built for
-      language model pretraining research.
+      language model pretraining research, released with an open-source data curation toolkit.
     source_ids: [dolma-paper]
 links:
   - label: Personal site
     url: https://soldaini.net/
   - label: GitHub
     url: https://github.com/soldni
-publication_status: draft
-updated_at: 2026-09-29
-last_reviewed: 2026-09-29
+publication_status: published
+updated_at: 2026-10-01
+last_reviewed: 2026-10-01
 sources:
   - id: site
     title: Luca Soldaini (personal site)
@@ -52,11 +54,21 @@ sources:
     publisher: Luca Soldaini
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
+  - id: github-profile
+    title: soldni on GitHub
+    url: https://github.com/soldni
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
   - id: dolma-paper
     title: "Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research (arXiv 2402.00159)"
     url: https://arxiv.org/abs/2402.00159
     publisher: arXiv
     kind: paper
     published_at: 2024-01-31
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-01
+    reviewed_at: 2026-10-01
