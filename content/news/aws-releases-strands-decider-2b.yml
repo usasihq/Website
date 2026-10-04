@@ -1,0 +1,42 @@
+slug: aws-releases-strands-decider-2b
+title: AWS releases Strands Decider 2B, an open-source decision model, under Apache 2.0
+event_date: 2026-10-01
+published_at: 2026-10-04
+category: release
+summary:
+  text: >-
+    On October 1, 2026 the Strands team at AWS announced Strands Decider 2B, a 2-billion-parameter
+    "decision model" that picks between supplied options or assigns a score with a confidence value
+    instead of generating text. The announcement says the model starts from the Qwen3.5-2B model with
+    its language-model head replaced by a small pointer head and the base fine-tuned with a LoRA
+    adapter, and that it is meant for agent workflows such as those built with the Strands Harness SDK.
+    The code, training data, and scripts are published on GitHub and the weights on Hugging Face; the
+    repository and model card both list the Apache 2.0 license. AWS describes it as a Strands Labs
+    project and says it is unsuited to text-generation tasks such as coding, chat, or summarization.
+  source_ids: [strands-decider-blog, strands-decider-repo, strands-decider-model-card]
+related_organizations: [amazon]
+related_artifacts: [strands-agents]
+publication_status: published
+updated_at: 2026-10-04
+sources:
+  - id: strands-decider-blog
+    title: "Introducing Strands Decider 2B: a small, open source, decision model"
+    url: https://strandsagents.com/blog/introducing-strands-decider/
+    publisher: Strands Agents (AWS)
+    kind: announcement
+    published_at: 2026-10-01
+    accessed_at: 2026-10-04
+  - id: strands-decider-repo
+    title: strands-labs/strands-decider (GitHub repository)
+    url: https://github.com/strands-labs/strands-decider
+    publisher: Strands Labs (AWS)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: strands-decider-model-card
+    title: StrandsAgents/strands-decider-2B-hobson-v19 (Hugging Face model card)
+    url: https://huggingface.co/StrandsAgents/strands-decider-2B-hobson-v19
+    publisher: Strands Agents (AWS)
+    kind: model-card
+    published_at: 2026-09-30
+    accessed_at: 2026-10-04
