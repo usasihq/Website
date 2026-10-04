@@ -1,0 +1,163 @@
+slug: swe-sweep
+name: SWE-sweep
+kind: eval
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Meta
+    organization_slug: meta
+    source_ids: [ sweep-repo, sweep-license, sweep-site ]
+organization_slugs: [ meta ]
+links:
+  - label: Repository
+    url: https://github.com/facebookresearch/swe-sweep
+    kind: repository
+  - label: Project site
+    url: https://swesweep.com/
+    kind: website
+  - label: Paper (PDF)
+    url: https://swesweep.com/paper
+    kind: paper
+  - label: LICENSE (MIT)
+    url: https://github.com/facebookresearch/swe-sweep/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    SWE-sweep is a software-engineering benchmark in which a coding agent is given a real
+    repository containing many known bugs, with no hint about their type or location, and must
+    find and fix as many as it can. Each task is built from real GitHub issue and pull-request
+    pairs at a commit where many of those bugs are present at once, and repairs are graded with
+    hidden tests from the fixing pull requests plus the existing test suite to catch regressions.
+    The paper describes 100 repositories across 22 programming languages.
+  source_ids: [ sweep-paper, sweep-site, sweep-repo ]
+  reviewed_at: 2026-10-04
+useful_for:
+  text: >-
+    Evaluating coding agents on open-ended repository maintenance, where the agent must decide
+    what is broken before repairing it, rather than resolving a single reported issue.
+  source_ids: [ sweep-paper, sweep-site ]
+  reviewed_at: 2026-10-04
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The benchmark and harness are published in Meta's facebookresearch GitHub organization, and
+    the MIT license assigns copyright to Meta Platforms, Inc. and affiliates. The project site
+    lists the authors' primary affiliation as Meta Superintelligence Labs, and the paper lists
+    Meta FAIR and another Meta team, with co-authors also affiliated with Harvard University, the
+    University of Washington, and Stanford University. This catalog treats Meta, which holds the
+    repository, as the maintaining entity; see the meta organization record for its U.S.
+    headquarters.
+  source_ids: [ sweep-repo, sweep-license, sweep-site, sweep-paper ]
+  assessed_at: 2026-10-04
+availability:
+  status: public
+  access_conditions: >-
+    The harness and task definitions are on GitHub. Running an evaluation requires the Harbor
+    framework and Docker; evaluating a model also requires access to that model and an agent to
+    drive it.
+  source_ids: [ sweep-repo, sweep-paper ]
+  reviewed_at: 2026-10-04
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/facebookresearch/swe-sweep/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ sweep-license ]
+    reviewed_at: 2026-10-04
+license_notes:
+  text: >-
+    The MIT license covers the SWE-sweep repository. Tasks are built from third-party open-source
+    repositories that the paper says were selected from permissively licensed projects; each of
+    those projects remains under its own license, which the paper's appendix lists per
+    repository.
+  source_ids: [ sweep-license, sweep-paper ]
+  reviewed_at: 2026-10-04
+checklist:
+  code:
+    status: public
+    note: >-
+      The evaluation harness is public under the MIT License. The README describes it as a thin
+      wrapper around the Harbor framework.
+    source_ids: [ sweep-repo, sweep-license ]
+    reviewed_at: 2026-10-04
+  tasks_data:
+    status: public
+    note: >-
+      Task definitions are in the repository's tasks directory. The paper says the dataset and
+      harness are released, along with rollouts for the models reported in its main results.
+    source_ids: [ sweep-repo, sweep-paper ]
+    reviewed_at: 2026-10-04
+  methodology:
+    status: public
+    note: >-
+      The paper describes repository selection, task construction, and grading. The README gives
+      the scoring rule: a task scores zero if the patch introduces new failures in the visible
+      test suite; otherwise it scores the share of bugs whose hidden tests pass, and the final
+      score is the share of all bugs resolved across tasks.
+    source_ids: [ sweep-paper, sweep-repo ]
+    reviewed_at: 2026-10-04
+  reproducibility_instructions:
+    status: public
+    note: >-
+      The README gives installation steps, a setup check command, commands to evaluate a patch
+      for one task, and commands to summarize graded runs.
+    source_ids: [ sweep-repo ]
+    reviewed_at: 2026-10-04
+  limitations:
+    status: public
+    note: >-
+      The paper's discussion states that tasks include only bugs that were reported in an issue
+      and fixed by a pull request, so the benchmark under-counts the bugs actually present in each
+      codebase.
+    source_ids: [ sweep-paper ]
+    reviewed_at: 2026-10-04
+run_notes:
+  - text: >-
+      At release the README warns that Harbor 0.23 does not yet support the separate verifier
+      environments and collect hooks the tasks use, so the project pins a compatible Harbor
+      revision from source until Harbor 0.24 is released. The test suite runs on Python 3.12 and
+      3.13 in CI.
+    source_ids: [ sweep-repo ]
+    reviewed_at: 2026-10-04
+  - text: >-
+      The paper states that its experiments ran in Docker containers without internet access.
+    source_ids: [ sweep-paper ]
+    reviewed_at: 2026-10-04
+provenance: null
+tags: [ evaluation, benchmark, coding-agent ]
+publication_status: published
+archive_note: null
+released_at: 2026-10-01
+updated_at: 2026-10-04
+last_reviewed: 2026-10-04
+sources:
+  - id: sweep-repo
+    title: facebookresearch/swe-sweep repository and README
+    url: https://github.com/facebookresearch/swe-sweep
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: sweep-license
+    title: facebookresearch/swe-sweep LICENSE (MIT)
+    url: https://raw.githubusercontent.com/facebookresearch/swe-sweep/main/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: sweep-site
+    title: SWE-sweep
+    url: https://swesweep.com/
+    publisher: SWE-sweep project
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: sweep-paper
+    title: "SWE-sweep: Can Agents Autonomously Find and Fix Bugs?"
+    url: https://swesweep.com/paper
+    publisher: SWE-sweep project
+    kind: paper
+    published_at: 2026-10-01
+    accessed_at: 2026-10-04

@@ -1,0 +1,188 @@
+slug: synthid-bio
+name: SynthID Bio
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    source_ids: [ synthidbio-repo, synthidbio-license ]
+organization_slugs: [ google-deepmind ]
+links:
+  - label: Repository
+    url: https://github.com/google-deepmind/synthidbio
+    kind: repository
+  - label: LICENSE (Apache-2.0)
+    url: https://github.com/google-deepmind/synthidbio/blob/main/LICENSE
+    kind: license
+  - label: Paper (Nature)
+    url: https://www.nature.com/articles/s41586-026-10965-y
+    kind: paper
+summary:
+  text: >-
+    SynthID Bio is a set of methods from Google DeepMind for watermarking AI-generated protein
+    sequences and biomolecular structures so that their AI origin can later be detected.
+    SynthID Bio-sequence adds watermarked sampling to the ProteinMPNN inverse-folding model, and
+    SynthID Bio-structure is a fine-tuned AlphaFold 3 model that embeds a watermark in generated
+    structures. The public repository contains the sequence watermarking code, a standalone
+    detection script, and data supporting the paper.
+  source_ids: [ synthidbio-repo, synthidbio-paper ]
+  reviewed_at: 2026-10-04
+useful_for:
+  text: >-
+    Generating watermarked protein sequences with ProteinMPNN and computing detection scores for
+    existing sequences in FASTA files, for research on the provenance of AI-designed proteins.
+    The paper describes the work as a proof of concept.
+  source_ids: [ synthidbio-repo, synthidbio-paper ]
+  reviewed_at: 2026-10-04
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is published in Google DeepMind's GitHub organization and its licensing
+    section states copyright 2026 Google LLC. See the google-deepmind organization record, which
+    is assessed under U.S. control as part of Google.
+  source_ids: [ synthidbio-repo, synthidbio-license ]
+  assessed_at: 2026-10-04
+availability:
+  status: public
+  access_conditions: >-
+    The sequence watermarking code, bundled ProteinMPNN parameters, and paper data are on
+    GitHub. For the structure watermarking model, the README refers users to the AlphaFold 3
+    repository for downloading weights, which are governed by the AlphaFold 3 Model Parameters
+    Terms of Use; this catalog did not confirm how the fine-tuned SynthID Bio-structure
+    parameters are obtained.
+  source_ids: [ synthidbio-repo ]
+  reviewed_at: 2026-10-04
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/google-deepmind/synthidbio/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ synthidbio-license, synthidbio-repo ]
+    reviewed_at: 2026-10-04
+  - name: MIT License (bundled ProteinMPNN model parameters)
+    spdx: MIT
+    url: https://github.com/google-deepmind/synthidbio/blob/main/synthidbio_sequence/third_party/ProteinMPNN/LICENSE
+    applies_to: weights
+    source_ids: [ synthidbio-repo, synthidbio-proteinmpnn-license ]
+    reviewed_at: 2026-10-04
+  - name: Creative Commons Attribution 4.0 International
+    spdx: CC-BY-4.0
+    url: https://github.com/google-deepmind/synthidbio/blob/main/synthidbio_sequence/data/LICENSE
+    applies_to: data
+    source_ids: [ synthidbio-repo, synthidbio-data-license ]
+    reviewed_at: 2026-10-04
+license_notes:
+  text: >-
+    The README states that all software is under Apache 2.0, that the ProteinMPNN model
+    parameters are redistributed under their original MIT License, and that the data directory
+    is under CC-BY 4.0. AlphaFold 3 model parameters are covered by the separate AlphaFold 3
+    Model Parameters Terms of Use, which the repository references rather than reproduces. The
+    README also states that software, parameters, and outputs are for theoretical modeling only
+    and not for clinical use.
+  source_ids: [ synthidbio-repo, synthidbio-weights-terms ]
+  reviewed_at: 2026-10-04
+checklist:
+  source_code:
+    status: public
+    note: >-
+      Public on GitHub, including a modified copy of ProteinMPNN with watermarking added (the
+      README lists the changes and notes that ProteinMPNN's training code was removed) and a
+      vendored copy of SynthID Text.
+    source_ids: [ synthidbio-repo ]
+    reviewed_at: 2026-10-04
+  documentation:
+    status: public
+    note: The README documents setup, watermarked and unwatermarked generation examples, and detection.
+    source_ids: [ synthidbio-repo ]
+    reviewed_at: 2026-10-04
+  installation:
+    status: public
+    note: >-
+      The README gives steps using uv or venv with Python 3.9, a requirements file, and an
+      editable install of the bundled SynthID Text package.
+    source_ids: [ synthidbio-repo ]
+    reviewed_at: 2026-10-04
+  supported_platforms:
+    status: partial
+    note: The README's setup steps are written for Linux; other platforms are not documented.
+    source_ids: [ synthidbio-repo ]
+    reviewed_at: 2026-10-04
+  release_status:
+    status: not_public
+    note: >-
+      The repository listed no releases or tags at review; the code is used from the main
+      branch. It was published alongside the paper (Nature, online 2026-09-30).
+    source_ids: [ synthidbio-repo, synthidbio-paper ]
+    reviewed_at: 2026-10-04
+run_notes: []
+provenance:
+  text: >-
+    SynthID Bio-sequence modifies ProteinMPNN, an existing open-source inverse-folding model, and
+    uses Google DeepMind's SynthID Text watermarking package. SynthID Bio-structure is a
+    fine-tune of AlphaFold 3.
+  derived_from:
+    - name: ProteinMPNN
+      artifact_slug: null
+      url: null
+      note: Vendored and modified in synthidbio_sequence/third_party/ProteinMPNN (MIT License).
+    - name: SynthID Text
+      artifact_slug: null
+      url: null
+      note: Vendored in synthidbio_sequence/third_party/synthid-text (Apache-2.0).
+    - name: AlphaFold 3
+      artifact_slug: null
+      url: null
+      note: Base model for SynthID Bio-structure.
+  source_ids: [ synthidbio-repo, synthidbio-paper ]
+tags: [ science, safety, protein-language-model ]
+publication_status: published
+archive_note: null
+released_at: 2026-09-30
+updated_at: 2026-10-04
+last_reviewed: 2026-10-04
+sources:
+  - id: synthidbio-repo
+    title: google-deepmind/synthidbio repository and README
+    url: https://github.com/google-deepmind/synthidbio
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: synthidbio-license
+    title: google-deepmind/synthidbio LICENSE (Apache-2.0)
+    url: https://raw.githubusercontent.com/google-deepmind/synthidbio/main/LICENSE
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: synthidbio-proteinmpnn-license
+    title: synthidbio ProteinMPNN LICENSE (MIT)
+    url: https://raw.githubusercontent.com/google-deepmind/synthidbio/main/synthidbio_sequence/third_party/ProteinMPNN/LICENSE
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: synthidbio-data-license
+    title: synthidbio data LICENSE
+    url: https://raw.githubusercontent.com/google-deepmind/synthidbio/main/synthidbio_sequence/data/LICENSE
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: synthidbio-weights-terms
+    title: synthidbio WEIGHTS_TERMS_OF_USE.md (pointer to AlphaFold 3 terms)
+    url: https://github.com/google-deepmind/synthidbio/blob/main/WEIGHTS_TERMS_OF_USE.md
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: synthidbio-paper
+    title: Function-preserving watermarking of AI-generated proteins
+    url: https://www.nature.com/articles/s41586-026-10965-y
+    publisher: Nature
+    kind: paper
+    published_at: 2026-09-30
+    accessed_at: 2026-10-04

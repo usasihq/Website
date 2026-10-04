@@ -1,0 +1,176 @@
+slug: openai-mcp-extensions
+name: OpenAI MCP Extensions
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [ mcpx-repo, mcpx-npm, mcpx-pypi ]
+organization_slugs: [ openai ]
+links:
+  - label: Repository
+    url: https://github.com/openai/mcp-extensions
+    kind: repository
+  - label: Specification
+    url: https://github.com/openai/mcp-extensions/blob/main/docs/spec.md
+    kind: documentation
+  - label: LICENSE (Apache-2.0)
+    url: https://github.com/openai/mcp-extensions/blob/main/LICENSE
+    kind: license
+  - label: Release notes (Python 0.1.0)
+    url: https://github.com/openai/mcp-extensions/releases/tag/python-v0.1.0
+    kind: release-notes
+summary:
+  text: >-
+    OpenAI MCP Extensions is a specification and pair of SDKs from OpenAI that add
+    ChatGPT-specific capabilities on top of the Model Context Protocol (MCP) and MCP Apps, so that
+    plugins can appear in ChatGPT's interface. Documented extensions include sidebar and thread
+    entrypoints, file-type handlers, structured settings, composer at-mentions, and extended form
+    elicitation. The TypeScript SDK extends the official MCP TypeScript SDKs for servers and
+    apps; the Python SDK extends the official MCP Python SDK for servers.
+  source_ids: [ mcpx-repo, mcpx-spec, mcpx-ts-readme, mcpx-py-readme ]
+  reviewed_at: 2026-10-04
+useful_for:
+  text: >-
+    Building MCP servers and MCP Apps that integrate with ChatGPT beyond what the standard MCP
+    specification provides. The extensions target ChatGPT as the host; the specification lists
+    which features each ChatGPT platform supports.
+  source_ids: [ mcpx-repo, mcpx-spec ]
+  reviewed_at: 2026-10-04
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is in OpenAI's GitHub organization, and the TypeScript package is published
+    under OpenAI's @openai scope on npm with this repository as its source. See the openai
+    organization record for OpenAI's U.S. headquarters.
+  source_ids: [ mcpx-repo, mcpx-npm ]
+  assessed_at: 2026-10-04
+availability:
+  status: public
+  access_conditions: >-
+    Source code is public; the SDKs install from npm (@openai/mcp-extensions) and PyPI
+    (openai-mcp-extensions). The extensions take effect only in ChatGPT, OpenAI's hosted
+    product, which is not open.
+  source_ids: [ mcpx-repo, mcpx-npm, mcpx-pypi, mcpx-spec ]
+  reviewed_at: 2026-10-04
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/openai/mcp-extensions/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ mcpx-license, mcpx-npm, mcpx-pypi ]
+    reviewed_at: 2026-10-04
+license_notes:
+  text: >-
+    The Apache 2.0 license covers the specification and SDK code in the repository. It does not
+    cover ChatGPT or OpenAI's hosted models and services, which have their own terms.
+  source_ids: [ mcpx-license, mcpx-repo ]
+  reviewed_at: 2026-10-04
+checklist:
+  source_code:
+    status: public
+    note: Public repository containing the specification and the TypeScript and Python SDKs.
+    source_ids: [ mcpx-repo ]
+    reviewed_at: 2026-10-04
+  documentation:
+    status: public
+    note: The specification and per-SDK READMEs document each extension with examples.
+    source_ids: [ mcpx-spec, mcpx-ts-readme, mcpx-py-readme ]
+    reviewed_at: 2026-10-04
+  installation:
+    status: public
+    note: Installed from npm as @openai/mcp-extensions or from PyPI as openai-mcp-extensions.
+    source_ids: [ mcpx-ts-readme, mcpx-py-readme ]
+    reviewed_at: 2026-10-04
+  supported_platforms:
+    status: public
+    note: >-
+      The npm package requires Node.js 22 or newer and the PyPI package Python 3.10 or newer. The
+      specification's support table shows which extensions work in ChatGPT on desktop, web, iOS,
+      and Android; several are desktop-only.
+    source_ids: [ mcpx-npm, mcpx-pypi, mcpx-spec ]
+    reviewed_at: 2026-10-04
+  release_status:
+    status: public
+    note: >-
+      First releases python-v0.1.0 and node-v0.1.0 were published on GitHub on September 29,
+      2026, with matching 0.1.0 packages on PyPI and npm.
+    source_ids: [ mcpx-releases, mcpx-npm, mcpx-pypi ]
+    reviewed_at: 2026-10-04
+run_notes: []
+provenance:
+  text: >-
+    Builds on the Model Context Protocol and its MCP Apps extension, whose official SDKs it
+    extends.
+  derived_from:
+    - name: Model Context Protocol
+      artifact_slug: model-context-protocol
+      url: null
+      note: The extensions are defined on top of the MCP specification and MCP Apps.
+  source_ids: [ mcpx-spec, mcpx-ts-readme ]
+tags: [ agents, protocol, developer-tools ]
+publication_status: published
+archive_note: null
+released_at: 2026-09-29
+updated_at: 2026-10-04
+last_reviewed: 2026-10-04
+sources:
+  - id: mcpx-repo
+    title: openai/mcp-extensions repository and README
+    url: https://github.com/openai/mcp-extensions
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: mcpx-license
+    title: openai/mcp-extensions LICENSE (Apache-2.0)
+    url: https://raw.githubusercontent.com/openai/mcp-extensions/main/LICENSE
+    publisher: OpenAI (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: mcpx-spec
+    title: OpenAI MCP Extensions Specification
+    url: https://github.com/openai/mcp-extensions/blob/main/docs/spec.md
+    publisher: OpenAI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: mcpx-ts-readme
+    title: OpenAI MCP Extensions for TypeScript and JavaScript (README)
+    url: https://github.com/openai/mcp-extensions/blob/main/typescript/README.md
+    publisher: OpenAI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: mcpx-py-readme
+    title: OpenAI MCP Extensions for Python (README)
+    url: https://github.com/openai/mcp-extensions/blob/main/python/README.md
+    publisher: OpenAI (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: mcpx-releases
+    title: openai/mcp-extensions releases
+    url: https://github.com/openai/mcp-extensions/releases
+    publisher: OpenAI (GitHub)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: mcpx-npm
+    title: "@openai/mcp-extensions on npm (registry metadata)"
+    url: https://registry.npmjs.org/@openai/mcp-extensions
+    publisher: npm
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-04
+  - id: mcpx-pypi
+    title: openai-mcp-extensions on PyPI (JSON metadata)
+    url: https://pypi.org/pypi/openai-mcp-extensions/json
+    publisher: Python Package Index
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-04
