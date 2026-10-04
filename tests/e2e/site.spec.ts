@@ -128,7 +128,7 @@ test.describe("detail pages", () => {
     const errors = watchErrors(page);
     await page.goto(`/companies/${activeOrg.slug}/`);
     await expect(page.locator("h1")).toHaveText(activeOrg.name);
-    await expect(page.getByRole("heading", { name: "Sources" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Sources", exact: true })).toBeVisible();
     await expect(page.getByRole("heading", { name: "U.S. eligibility" })).toBeVisible();
     await expect(page.getByText("This listing is not an endorsement or a federal approval.")).toBeVisible();
     const marker = page.locator("a[aria-label^='Source 1:']").first();
@@ -354,8 +354,8 @@ test.describe("latest news", () => {
     await expect(page.locator("main article[data-news]")).toHaveCount(items.length);
     const first = page.locator("main article[data-news] h2 a").first();
     await first.click();
-    await expect(page.getByRole("heading", { name: "Sources" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Related catalog entries" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Sources", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Related catalog entries", exact: true })).toBeVisible();
 
     await page.goto("/");
     const strip = page.locator("section[aria-labelledby='latest-heading'] article[data-news]");
@@ -568,7 +568,7 @@ test("reference sections: learn, hubs, places, and record context", async ({ pag
   const explainers = page.locator("section[aria-labelledby='explainers-heading'] li a");
   expect(await explainers.count()).toBe(10);
   await explainers.nth(1).click();
-  await expect(page.getByRole("heading", { level: 2, name: "Sources" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Sources", exact: true })).toBeVisible();
 
   await page.goto("/hubs/");
   const hubs = page.locator("main li a");
