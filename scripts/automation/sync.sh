@@ -5,12 +5,12 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 mkdir -p reports/automation
-lock=reports/automation/run.lock
-if [ -e "$lock" ] && [ $(( $(date +%s) - $(stat -c %Y "$lock") )) -lt 10800 ]; then
-  echo "sync: another automated run started at $(cat "$lock"); stopping" >&2
+. scripts/automation/lock.sh
+if [ -e "$lock" ] && [ "$(lock_holder)" != "$lock_owner" ] && [ "$(lock_age)" -lt "$lock_stale_seconds" ]; then
+  echo "sync: another automated run started at $(lock_started); stopping" >&2
   exit 4
 fi
-date -u +%FT%TZ > "$lock"
+echo "$(date -u +%FT%TZ) $lock_owner" > "$lock"
 state=reports/automation/jobs-state.json
 cp data/jobs/current.json "$state"
 git checkout -- data/jobs/current.json

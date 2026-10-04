@@ -9,7 +9,7 @@ paused (`CLOUDFLARE_DEPLOY=false`), so there is no Cloudflare API token in GitHu
 
 | Task | When | What it does |
 |---|---|---|
-| Daily site update | every day, 7:00 local | refresh all Jobs feeds; research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition); check, commit, push, deploy |
+| Daily site update | every day, 7:00 local | refresh all Jobs feeds; research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy |
 | Weekly catalog upkeep | Sundays, 10:00 local | review a batch of cited sources for changes; apply supported corrections; add recent open releases from catalog organizations; check, commit, push, deploy |
 
 News is published without individual human review (disclosed on `/news/` and in
@@ -22,11 +22,25 @@ committed or deployed. Tasks never edit code, tests, or validation rules.
 - `scripts/automation/sync.sh` takes a run lock (one run at a time), keeps the
   local Jobs state (`data/jobs/current.json` is operational and never committed),
   and rebases onto GitHub `main`. It stops if there are uncommitted editorial
-  changes.
+  changes. The lock (`reports/automation/run.lock`) records the start time and
+  the Claude session that took it (`manual` outside Claude); another run may
+  take it over only after 12 hours.
 - `scripts/automation/publish.sh "summary"` runs every check, commits editorial
   changes as `USASI <335780783+usasihq@users.noreply.github.com>`, pushes with the
   `usasihq` account's token from `gh` (the active `gh` account is not switched),
-  deploys with Wrangler, verifies the live site, and releases the lock.
+  deploys with Wrangler, verifies the live site, and releases the lock. It
+  refuses to run unless the current run holds the lock, so one run never
+  commits another run's unfinished edits.
+- `scripts/automation/unlock.sh` releases the lock when a run stops early. It
+  leaves another run's lock in place.
+
+## Watch list
+
+`research/watchlist.md` lists claims the catalog has seen but cannot publish
+yet because no official source confirms them (for example a rename announced
+only on social media). Each item names the official sources to check and the
+update to make. The daily update checks them on every run and moves confirmed
+items to "Resolved".
 
 Run logs are written to `reports/automation/` (not committed).
 
