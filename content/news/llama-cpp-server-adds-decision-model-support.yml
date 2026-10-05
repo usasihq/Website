@@ -1,0 +1,34 @@
+slug: llama-cpp-server-adds-decision-model-support
+title: llama.cpp server adds support for decision models through a /v1/systemone endpoint
+event_date: 2026-10-02
+published_at: 2026-10-05
+category: release
+summary:
+  text: >-
+    On October 2, 2026 the ggml team announced on the Hugging Face blog that the llama.cpp server now
+    supports decision models through a new /v1/systemone endpoint. Decision models score the options a
+    caller supplies instead of generating text. The pull request that adds the endpoint (#29818) was
+    merged into the llama.cpp repository the same day; it describes these models as wrappers around
+    existing embedding-model architectures and adds a decision head and server handling for them. The
+    announcement lists six supported models (Julia-1, Laya, Kev-4B, lev, OpenJev, and Clef), while the
+    pull request itself covers five of them and lists Clef support as a planned follow-up.
+  source_ids: [ggml-decision-models-blog, llama-cpp-pr-29818]
+related_organizations: [hugging-face]
+related_artifacts: [llama-cpp]
+publication_status: published
+updated_at: 2026-10-05
+sources:
+  - id: ggml-decision-models-blog
+    title: "New in llama.cpp: Decision Models"
+    url: https://huggingface.co/blog/ggml-org/decision-models-in-llamacpp
+    publisher: ggml-org (Hugging Face)
+    kind: announcement
+    published_at: 2026-10-02
+    accessed_at: 2026-10-05
+  - id: llama-cpp-pr-29818
+    title: "llama, server: add /v1/systemone API (ggml-org/llama.cpp pull request #29818)"
+    url: https://github.com/ggml-org/llama.cpp/pull/29818
+    publisher: ggml-org
+    kind: repository
+    published_at: 2026-10-02
+    accessed_at: 2026-10-05
