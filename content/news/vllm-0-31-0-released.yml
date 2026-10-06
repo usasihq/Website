@@ -1,0 +1,28 @@
+slug: vllm-0-31-0-released
+title: vLLM 0.31.0 released with a preload command for faster engine restarts
+event_date: 2026-10-05
+published_at: 2026-10-06
+category: release
+summary:
+  text: >-
+    On October 5, 2026 the vLLM project published version 0.31.0 on GitHub. The release notes
+    highlight a new `vllm preload` command that launches a weight-cache daemon to keep
+    post-quantized weights in GPU memory across engine restarts, and experimental engine snapshots
+    (`vllm snapshot create/restore`) that use CRIU to restore a fully initialized TP1 engine. Under
+    security, the notes say per-request `mm_processor_kwargs` and `media_io_kwargs` are now rejected
+    unless `--trust-request-mm-kwargs` is set. The release also lists breaking changes, including the
+    removal of `tokenizer_mode="slow"`, and performance work for DeepSeek-V4.1-Flash. USASI has not
+    tested any of these changes.
+  source_ids: [vllm-v0-31-0-release]
+related_organizations: [pytorch-foundation]
+related_artifacts: [vllm]
+publication_status: published
+updated_at: 2026-10-06
+sources:
+  - id: vllm-v0-31-0-release
+    title: vLLM v0.31.0 (GitHub release notes)
+    url: https://github.com/vllm-project/vllm/releases/tag/v0.31.0
+    publisher: vLLM project
+    kind: release-notes
+    published_at: 2026-10-05
+    accessed_at: 2026-10-06
