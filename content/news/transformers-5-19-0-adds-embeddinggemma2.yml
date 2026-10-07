@@ -1,0 +1,31 @@
+slug: transformers-5-19-0-adds-embeddinggemma2
+title: Transformers 5.19.0 adds the EmbeddingGemma2 multimodal embedding model
+event_date: 2026-10-06
+published_at: 2026-10-07
+category: release
+summary:
+  text: >-
+    On October 6, 2026 Hugging Face published version 5.19.0 of its Transformers library on
+    GitHub. The release notes add support for EmbeddingGemma2, which the notes describe as a
+    multimodal embedding model from Google built on the Gemma 4 architecture that encodes text,
+    images, audio, and video into a shared 768-dimensional vector space and uses Matryoshka
+    Representation Learning so embeddings can be truncated to 512, 256, or 128 dimensions. The
+    notes also list breaking changes: every mixture-of-experts model that computes router logits
+    now returns them when `output_router_logits=True`, the `"paged|"` prefix for SDPA and flash
+    attention implementations is deprecated in favor of continuous batching on the regular
+    functions, and `Owlv2ForObjectDetection.embed_image_query` now selects the query box by
+    objectness score. EmbeddingGemma2 itself is a Google model and is not a separate catalog
+    entry; USASI has not tested these changes.
+  source_ids: [transformers-v5-19-0-release]
+related_organizations: [hugging-face]
+related_artifacts: [transformers]
+publication_status: published
+updated_at: 2026-10-07
+sources:
+  - id: transformers-v5-19-0-release
+    title: Transformers v5.19.0 (GitHub release notes)
+    url: https://github.com/huggingface/transformers/releases/tag/v5.19.0
+    publisher: Hugging Face
+    kind: release-notes
+    published_at: 2026-10-06
+    accessed_at: 2026-10-07
