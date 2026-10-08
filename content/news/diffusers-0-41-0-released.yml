@@ -1,0 +1,28 @@
+slug: diffusers-0-41-0-released
+title: Diffusers 0.41.0 adds a Qwen-Image 2.1 pipeline and deprecates ONNX support
+event_date: 2026-10-06
+published_at: 2026-10-08
+category: release
+summary:
+  text: >-
+    On October 6, 2026 Hugging Face published Diffusers 0.41.0 on GitHub. The release notes say it
+    adds Qwen-Image 2.1, with text-to-image generation, image editing, native transparency, and LoRA
+    training, and introduces tensor-parallel checkpoint loading in which each rank reads its own
+    slice of sharded weights. The notes deprecate ONNX support in favor of Optimum and remove
+    previously deprecated APIs, including the `LuminaText2ImgPipeline` and `Lumina2Text2ImgPipeline`
+    aliases. They also say minor releases will now be coordinated around new model integrations, as
+    in Transformers. Qwen-Image 2.1 is a third-party model and is not a catalog entry; the notes do
+    not state its license.
+  source_ids: [diffusers-v0-41-0-release]
+related_organizations: [hugging-face]
+related_artifacts: [diffusers]
+publication_status: published
+updated_at: 2026-10-08
+sources:
+  - id: diffusers-v0-41-0-release
+    title: "Diffusers 0.41.0: QwenImage 2.1 pipeline and more (GitHub release notes)"
+    url: https://github.com/huggingface/diffusers/releases/tag/v0.41.0
+    publisher: Hugging Face
+    kind: release-notes
+    published_at: 2026-10-06
+    accessed_at: 2026-10-08

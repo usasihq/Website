@@ -1,0 +1,27 @@
+slug: mlflow-3-17-0-released
+title: MLflow 3.17.0 released with fine-grained permissions and TypeSafe judge support
+event_date: 2026-10-07
+published_at: 2026-10-08
+category: release
+summary:
+  text: >-
+    On October 7, 2026 the MLflow project published version 3.17.0 on GitHub. The release notes list
+    "Jev Decisions Across Evaluation, Gateway, and Tracing", which lets TypeSafe models be used in
+    built-in scorers and custom judges, and "Fine-Grained Permissions for Shared Resources", with
+    wildcard grants and explicit DENY for contained resource types such as runs, traces, and versions. They also describe opt-in daily
+    summaries for trace analytics. The notes say SQL-backed servers need a coordinated
+    `mlflow db upgrade` with all writers stopped, and that mixed-version rolling upgrades are not
+    supported. USASI has not tested these changes.
+  source_ids: [mlflow-v3-17-0-release]
+related_organizations: [linux-foundation]
+related_artifacts: [mlflow]
+publication_status: published
+updated_at: 2026-10-08
+sources:
+  - id: mlflow-v3-17-0-release
+    title: MLflow 3.17.0 (GitHub release notes)
+    url: https://github.com/mlflow/mlflow/releases/tag/v3.17.0
+    publisher: MLflow project
+    kind: release-notes
+    published_at: 2026-10-07
+    accessed_at: 2026-10-08

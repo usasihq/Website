@@ -1,0 +1,41 @@
+slug: liquid-ai-releases-open-d1-decision-models
+title: Liquid AI releases open-weight d1 decision models for text, vision, and audio
+event_date: 2026-10-07
+published_at: 2026-10-08
+category: release
+summary:
+  text: >-
+    On October 7, 2026 Liquid AI announced "Open d1", two open-weight decision models that return an
+    answer in a single forward pass instead of generating text. The announcement and model cards
+    describe d1-3B, built on LFM2.5-VL-3B, which takes text and images, and d1-omni-600M, built on
+    LFM2.5-Encoder-350M, which takes text with images or text with up to 30 seconds of speech. The
+    weights are published on Hugging Face, and the announcement says the models have day-one support
+    in llama.cpp. Both model cards give the license as "other" with the name lfm1.0, pointing to a
+    LICENSE file in each repository; the announcement itself does not name a license.
+  source_ids: [liquid-d1-blog, liquid-d1-3b-card, liquid-d1-omni-card]
+related_organizations: [liquid-ai]
+related_artifacts: [lfm]
+publication_status: published
+updated_at: 2026-10-08
+sources:
+  - id: liquid-d1-blog
+    title: "Open d1: Edge decision models for text, vision, and audio"
+    url: https://www.liquid.ai/blog/d1-open
+    publisher: Liquid AI
+    kind: announcement
+    published_at: 2026-10-07
+    accessed_at: 2026-10-08
+  - id: liquid-d1-3b-card
+    title: LiquidAI/d1-3B (Hugging Face model card)
+    url: https://huggingface.co/LiquidAI/d1-3B
+    publisher: Liquid AI
+    kind: model-card
+    published_at: 2026-10-05
+    accessed_at: 2026-10-08
+  - id: liquid-d1-omni-card
+    title: LiquidAI/d1-omni-600M (Hugging Face model card)
+    url: https://huggingface.co/LiquidAI/d1-omni-600M
+    publisher: Liquid AI
+    kind: model-card
+    published_at: 2026-10-05
+    accessed_at: 2026-10-08
