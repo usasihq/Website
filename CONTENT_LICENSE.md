@@ -21,7 +21,8 @@ copyrightable subject matter.
 ## What is not covered
 
 - **Artwork.** The supplied artwork (`assets/original/USA SUPER LOGO.png` and its
-  derivatives in `public/hero.png`, `public/og.png`, and `public/images/hero/`)
+  derivatives in `public/hero.png`, `public/og.png`, `public/og-open.png`, and
+  `public/images/hero/`)
   is separately owned by the project owner and is **not** licensed under CC BY
   4.0 or MIT. All rights reserved unless the owner states otherwise.
 - **Third-party material.** Names, logos, and trademarks of listed organizations

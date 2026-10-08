@@ -84,6 +84,7 @@ const required = [
   "robots.txt",
   "_headers",
   "og.png",
+  "og-open.png",
   "hero.png",
   "data/catalog.json",
   "data/search-index.json",

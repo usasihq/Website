@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { ArtifactQuickViews } from "@/components/QuickViews";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, socialImages } from "@/lib/metadata";
 import { RUBRIC_LABEL } from "@/lib/openness";
 
 export const metadata = pageMetadata({
@@ -12,6 +12,7 @@ export const metadata = pageMetadata({
   description:
     "Directory of U.S.-led open models, software, datasets, and evaluation tools, with availability, licenses, public-materials checklists, and sources.",
   path: "/open/",
+  image: socialImages.open,
 });
 
 export default function OpenPage() {

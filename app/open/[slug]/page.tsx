@@ -14,7 +14,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_LABELS } from "@/lib/labels";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, socialImages } from "@/lib/metadata";
 import {
   AVAILABILITY_DESCRIPTIONS,
   checklistFor,
@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: a.summary.text.slice(0, 200),
     path: artifactHref(a.slug),
     noindex: a.publication_status === "archived",
+    image: socialImages.open,
   });
 }
 

@@ -20,6 +20,7 @@
     "build": "npm run validate && npm run prepare:data && next build && node scripts/postbuild.mjs",
     "prepare:data": "tsx scripts/generate-data.ts",
     "prepare:images": "node scripts/prepare-images.mjs",
+    "prepare:social": "node scripts/social-cards.mjs",
     "check:links": "node scripts/check-links.mjs",
     "check:sources": "tsx scripts/check-sources.ts",
     "report:reviews": "tsx scripts/report-reviews.ts",

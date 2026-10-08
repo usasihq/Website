@@ -56,6 +56,7 @@ npm run preview:static  # serve out/ like a static host at http://localhost:4321
 | `npm run preview:cloudflare` | Serves `out/` in Cloudflare's local Workers runtime (`wrangler dev`) with the real asset routing, `_headers`, and 404 handling. No account needed. |
 | `npm run deploy:cloudflare` | `wrangler deploy` — requires your Cloudflare login or API token. Not run by anything automatically. |
 | `npm run prepare:images` | Regenerates hero derivatives, `og.png`, and the touch icon, using the branding derivative while preserving the original artwork. |
+| `npm run prepare:social` | Renders section social cards (`og-open.png` for Open Models & Tools) with the site's fonts and colors. Their alt text lives in `lib/metadata.ts`. |
 
 ## Repository layout
 
@@ -219,6 +220,10 @@ search, and actions beneath it.
 - `public/hero.png` — a copy of the branding derivative at a stable URL,
 - `public/og.png` — 1200×630 social image,
 - `app/apple-icon.png` — from `app/icon.svg`.
+
+`npm run prepare:social` renders `public/og-open.png`, the 1200×630 card used
+for `/open/` and its record pages, so those links are distinguishable from
+homepage links when shared.
 
 If you later supply a text-free version of the artwork, place it next to the
 original and update `components/Hero.tsx` to layer live HTML branding over it;
