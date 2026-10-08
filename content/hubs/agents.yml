@@ -22,6 +22,16 @@ intro:
     source_ids: [codex-readme, goose-readme]
     reviewed_at: 2026-10-01
   - text: >-
+      Some agents are built to keep working between conversations. Hermes Agent, an
+      MIT-licensed project from Nous Research, keeps memory and reusable skills across
+      sessions, has a built-in scheduler for unattended tasks, and can be reached from its
+      terminal interface or from messaging apps including Telegram, Discord, and Slack. Like
+      Codex CLI and goose, it is separate from the model it calls: its documentation says at
+      least one model provider must be configured, from cloud APIs to self-hosted endpoints
+      such as Ollama and vLLM.
+    source_ids: [hermes-agent-readme, hermes-agent-license, hermes-agent-providers]
+    reviewed_at: 2026-10-07
+  - text: >-
       Three open specifications connect agents to tools, to each other, and to codebases. The
       Model Context Protocol (MCP) uses JSON-RPC 2.0 messages between hosts (LLM
       applications), clients inside them, and servers that offer resources, prompts, and
@@ -79,7 +89,7 @@ directory_links:
   - label: Coding agents and related tools
     href: /open/?q=coding
     note: A text search that matches records tagged as coding agents.
-organizations: [agentic-ai-foundation]
+organizations: [agentic-ai-foundation, nous-research]
 artifacts:
   - model-context-protocol
   - a2a-protocol
@@ -89,6 +99,7 @@ artifacts:
   - smolagents
   - codex-cli
   - goose
+  - hermes-agent
   - cline-extension
   - terminal-bench
 people: []
@@ -121,7 +132,7 @@ primary_documents:
       Describes an agent that can use different model providers and that is now part of the
       Agentic AI Foundation.
 publication_status: published
-updated_at: 2026-10-01
+updated_at: 2026-10-07
 last_reviewed: 2026-10-01
 sources:
   - id: oai-agents-readme
@@ -180,3 +191,24 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-10-01
+  - id: hermes-agent-readme
+    title: Hermes Agent README
+    url: https://raw.githubusercontent.com/NousResearch/hermes-agent/main/README.md
+    publisher: Nous Research (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-07
+  - id: hermes-agent-providers
+    title: Hermes Agent documentation, AI providers
+    url: https://hermes-agent.nousresearch.com/docs/integrations/providers
+    publisher: Nous Research
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-07
+  - id: hermes-agent-license
+    title: Hermes Agent LICENSE
+    url: https://raw.githubusercontent.com/NousResearch/hermes-agent/main/LICENSE
+    publisher: Nous Research (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-07

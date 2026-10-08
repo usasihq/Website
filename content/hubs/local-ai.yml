@@ -22,6 +22,15 @@ intro:
     source_ids: [ollama-cloud, ollama-readme]
     reviewed_at: 2026-10-01
   - text: >-
+      A local model can also power an agent. Hermes Agent, from Nous Research, needs at least
+      one model provider, and its documentation covers self-hosted options including Ollama,
+      llama.cpp's llama-server, LM Studio, and vLLM alongside cloud APIs. Where the agent's
+      commands run is a separate setting: its terminal backends include local, Docker, SSH, and
+      serverless options such as Modal and Daytona. Check where both the model and the
+      commands run before treating a setup as local.
+    source_ids: [hermes-agent-providers, hermes-agent-readme]
+    reviewed_at: 2026-10-07
+  - text: >-
       Hardware shapes what is practical. llama.cpp supports backends including CUDA for NVIDIA
       GPUs, HIP for AMD GPUs, Metal for Apple silicon, and Vulkan, and it can split a model
       between CPU and GPU when the model is larger than the GPU's memory. MLX, from Apple
@@ -86,7 +95,7 @@ directory_links:
     href: /open/?kind=model&tier=open-weight
     note: Releases whose weights the public can obtain. Check each license before use.
 organizations: [element-labs, mozilla-ai]
-artifacts: [llama-cpp, ollama, llamafile, mlx, executorch, awq, gpt-oss-20b]
+artifacts: [llama-cpp, ollama, llamafile, hermes-agent, mlx, executorch, awq, gpt-oss-20b]
 people: [georgi-gerganov, awni-hannun, tim-dettmers]
 primary_documents:
   - source_id: llamacpp-readme
@@ -118,7 +127,7 @@ primary_documents:
       A model card that ties a memory figure to a stated quantization and names local runtimes,
       a useful example of what to look for in a card.
 publication_status: published
-updated_at: 2026-10-01
+updated_at: 2026-10-07
 last_reviewed: 2026-10-01
 sources:
   - id: llamacpp-readme
@@ -177,3 +186,17 @@ sources:
     kind: model-card
     published_at: null
     accessed_at: 2026-10-01
+  - id: hermes-agent-readme
+    title: Hermes Agent README
+    url: https://raw.githubusercontent.com/NousResearch/hermes-agent/main/README.md
+    publisher: Nous Research (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-07
+  - id: hermes-agent-providers
+    title: Hermes Agent documentation, AI providers
+    url: https://hermes-agent.nousresearch.com/docs/integrations/providers
+    publisher: Nous Research
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-07
