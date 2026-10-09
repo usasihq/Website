@@ -11,6 +11,7 @@ export function EditorialPage({
   support = true,
   children,
   aside,
+  headerExtra,
 }: {
   eyebrow?: string;
   title: string;
@@ -20,10 +21,14 @@ export function EditorialPage({
   support?: boolean;
   children: React.ReactNode;
   aside?: React.ReactNode;
+  /** Rendered inside the page header, below the description. */
+  headerExtra?: React.ReactNode;
 }) {
   return (
     <>
-      <PageHeader eyebrow={eyebrow} title={title} description={description} crumbs={crumbs} />
+      <PageHeader eyebrow={eyebrow} title={title} description={description} crumbs={crumbs}>
+        {headerExtra}
+      </PageHeader>
       <div className="container-page py-12">
         <div className={`prose-usasi ${serif ? "serif" : ""}`}>{children}</div>
         {aside}

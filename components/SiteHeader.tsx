@@ -9,8 +9,7 @@ import { BrandMark } from "./BrandMark";
 /** Reference links: in the slim top bar from 640px, and in the mobile menu. */
 const REFERENCE = [
   { href: "/start/", label: "Start here", bar: true },
-  { href: "/learn/", label: "Learn", bar: true },
-  { href: "/hubs/", label: "Hubs", bar: false },
+  { href: "/hubs/", label: "Hubs", bar: true },
   { href: "/places/", label: "Places", bar: false },
   { href: "/timeline/", label: "Timeline", bar: false },
   { href: "/sources/", label: "Source library", bar: false },
@@ -22,6 +21,7 @@ const REFERENCE = [
 const NAV = [
   { href: "/companies/", label: "Companies & Labs" },
   { href: "/open/", label: "Open Models & Tools" },
+  { href: "/learn/", label: "Learn" },
   { href: "/jobs/", label: "Jobs" },
   { href: "/matrix/", label: "Compare" },
   { href: "/news/", label: "News" },

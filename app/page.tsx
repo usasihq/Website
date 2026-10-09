@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, Building2, Boxes, Landmark, Scale } from "lucide-react";
+import { ArrowRight, BookOpenCheck, Building2, Boxes, Landmark, Route, Scale } from "lucide-react";
 import { EntryTypeBadge, Monogram } from "@/components/Badges";
 import { CoverageTable } from "@/components/CoverageTable";
 import { HomepageSponsor } from "@/components/HomepageSponsor";
@@ -11,6 +11,7 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
+import { EXPLAINERS, LEARNING_PATHS, availableSteps } from "@/lib/learn";
 import { ENTRY_TYPE_LABELS, entryTypeFor, ROLE_LABELS } from "@/lib/labels";
 import { buildCoverage } from "@/lib/matrix";
 import { pageMetadata } from "@/lib/metadata";
@@ -166,8 +167,8 @@ export default function HomePage() {
         <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { href: "/start/", title: "New here? Start here", text: "Four short paths: learn a term, find something usable, understand an organization, check a claim." },
-            { href: "/learn/", title: "Learn the basics", text: "Ten short explainers and a glossary, from open weights to reading an evaluation." },
-            { href: "/hubs/", title: "Explore by subject", text: "Ten subject hubs, from local AI and agents to robotics, evaluation, and datasets." },
+            { href: "/learn/", title: "Learn the basics", text: `${EXPLAINERS.length} short explainers, ${LEARNING_PATHS.length} learning paths, and a glossary, from how models work to reading an evaluation.` },
+            { href: "/hubs/", title: "Explore by subject", text: `${catalog.hubs.length} subject hubs, from local AI and agents to robotics, evaluation, and datasets.` },
             { href: "/places/", title: "Browse by state", text: "Organizations by the state named in their documented headquarters." },
           ].map((item) => (
             <li key={item.href}>
@@ -254,6 +255,40 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Learning paths: the Learn section's entry points */}
+      <section aria-labelledby="learn-heading" className="border-t border-line py-14">
+        <div className="container-page">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow">Learn</p>
+              <h2 id="learn-heading" className="mt-1 text-2xl font-semibold text-text">
+                Learn how AI works, and how to check what you read
+              </h2>
+              <p className="mt-2 max-w-3xl text-muted">
+                Short, sourced explainers arranged into paths. Each one answers a single question and leads to real records and the documents behind them.
+              </p>
+            </div>
+            <Link prefetch={false} href="/learn/" className="link inline-flex items-center gap-1">
+              All explainers and paths <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </Link>
+          </div>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {LEARNING_PATHS.map((p) => (
+              <li key={p.id}>
+                <Link prefetch={false} href={`/learn/paths/${p.id}/`} className="card card-link group flex h-full flex-col p-4">
+                  <Route aria-hidden="true" className="h-5 w-5 text-cyan" />
+                  <span className="mt-3 font-semibold text-text group-hover:text-white">{p.title}</span>
+                  <span className="mt-1 text-sm text-muted">{p.audience}</span>
+                  <span className="mt-auto pt-4 text-xs uppercase tracking-[0.08em] text-ice">
+                    {availableSteps(p, new Set(catalog.hubs.map((h) => h.slug))).length} steps
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

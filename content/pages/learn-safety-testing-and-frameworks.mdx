@@ -1,0 +1,84 @@
+A system card, which some developers call a model card, is a document a developer publishes with a model to describe how it was built, tested, and safeguarded. Red teaming means people or software deliberately trying to make a model misbehave. Dangerous-capability evaluations check whether a model could meaningfully help someone cause severe harm, such as a cyberattack or a biological weapon. A frontier safety framework is a company policy that sets capability thresholds and says what the company will do when a model reaches one. All of these are written by the developer about its own work, so read them as its account: note the version and date, what was tested and how, who did the testing, and whether anyone outside the company checked the results. USASI describes these documents; it does not judge whether any framework or test is adequate.
+
+<h2 id="system-cards">What a system card contains</h2>
+
+OpenAI's [gpt-oss-120b and gpt-oss-20b model card](https://deploymentsafety.openai.com/gpt-oss), published August 5, 2025, is a useful example; the smaller model has a catalog record, [gpt-oss-20b](/open/gpt-oss-20b/). OpenAI says it calls the document a model card rather than a system card because these open-weight models will be built into many systems run by other people. The card covers:
+
+- **The model itself:** architecture, quantization, tokenizer, pretraining data, and post-training.
+- **Capability evaluations:** reasoning, factuality, tool use, health, and multilingual tests.
+- **Safety evaluations:** refusing disallowed content, resisting jailbreaks, following an instruction hierarchy, hallucinations, and fairness and bias.
+- **Preparedness Framework results:** biological, chemical, cyber, and AI self-improvement tests.
+- **An appendix** describing how OpenAI responded to recommendations from outside reviewers.
+
+Anthropic's [Responsible Scaling Policy](https://www-cdn.anthropic.com/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf) contrasts its periodic Risk Reports with system cards, which accompany each model release.
+
+<h2 id="testing">Red teaming and dangerous-capability evaluations</h2>
+
+NIST's [Generative AI Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf) (NIST AI 600-1) describes AI red-teaming as "a structured testing exercise used to probe an AI system to find flaws and vulnerabilities," often in a controlled environment. Red teamers can be members of the public, domain experts, a mix of both, or AI systems working with people. The gpt-oss card defines jailbreaks as adversarial prompts that purposely try to get around a model's refusals.
+
+Dangerous-capability evaluations ask a narrower question about severe harm. OpenAI's [Preparedness Framework](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf) uses automated "scalable evaluations" with preset thresholds, plus "deep dives" such as expert red-teaming and third-party evaluations, and treats any single test as "a lower bound, rather than a ceiling" on a model's capabilities. Because anyone can [fine-tune](/glossary/#fine-tuning) open weights, OpenAI trained unreleased versions of gpt-oss-120b to comply with unsafe requests and to be stronger in biology and cybersecurity; its Safety Advisory Group concluded they did not reach the framework's High threshold. Meta's [framework](https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2) also uses uplift studies, which compare how well people complete a task with and without the model.
+
+Results can be distorted. NIST's AI center [reported](https://www.nist.gov/blogs/caissi-research-blog/cheating-ai-agent-evaluations) in December 2025 that models had cheated on its agent evaluations, for example by searching the internet for answers to security challenges, and it suggested reviewing test transcripts.
+
+<h2 id="frameworks">Four published frameworks</h2>
+
+Each is described from the version its developer currently publishes or links, as read on October 8, 2026.
+
+- **Anthropic, [Responsible Scaling Policy](https://www-cdn.anthropic.com/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf), version 3.4, effective July 8, 2026.** It calls itself a "voluntary framework for managing catastrophic risks." A table pairs capability thresholds, such as chemical and biological weapons production, misaligned AI in high-stakes settings, and automated research and development in key domains, including AI itself, with Anthropic's own planned mitigations and with recommendations for the whole industry, which it says it cannot commit to follow on its own. It also requires Anthropic to maintain a Frontier Safety Roadmap and to publish a Risk Report every three to six months.
+- **OpenAI, [Preparedness Framework](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf), Version 2, last updated April 15, 2025.** OpenAI's [system card update of October 7, 2026](https://cdn.openai.com/pdf/gpt-6-october.pdf) links this version. It tracks biological and chemical, cybersecurity, and AI self-improvement capabilities, defines High and Critical thresholds, and says models reaching High are not deployed until the associated risks are "sufficiently minimized." An internal Safety Advisory Group makes recommendations that company leadership can approve or reject.
+- **Google DeepMind, [Frontier Safety Framework](https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf), version 3.1, published April 17, 2026.** It defines Critical Capability Levels in four risk domains (chemical, biological, radiological, and nuclear threats; cyber attacks; harmful manipulation; and machine-learning research and development (R&D) and misalignment), plus lower Tracked Capability Levels for some of them. "Early warning evaluations" and alert thresholds are meant to flag when a model may reach a critical level.
+- **Meta, [Advanced AI Scaling Framework](https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2), Version 2, dated April 7, 2026 in its change log.** It was renamed from the Frontier AI Framework of February 3, 2025. It covers chemical and biological, cybersecurity, and loss-of-control risks, sets Critical, High, and Moderate-or-lower thresholds, and says Meta will publish a preparedness report for each closed or open frontier model release.
+
+Each document describes how the company itself reviews and revises it.
+
+<h2 id="self-reports">Self-reports and independent checks</h2>
+
+NIST's [AI Risk Management Framework](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf) says processes for independent review "can improve the effectiveness of testing and can mitigate internal biases and potential conflicts of interest." Signs of an independent check include:
+
+- **Named outside testers and their access.** The gpt-oss card names the outside experts who reviewed its fine-tuning method, says they received non-public details on datasets and methods, and lists the high-urgency recommendations OpenAI did not adopt, with its reasons.
+- **Reviewers publishing in their own words.** Anthropic's policy says it will work toward public external review of its Risk Reports by reviewers with no financial interest in Anthropic, while noting "there are no well-established organizations or procedures" for this. Its roughly annual third-party compliance review covers procedure, "not substantive outcomes."
+- **Stated conditions on outside testing.** OpenAI's framework says it will work with third parties to evaluate models "when available and feasible," for deployments it deems to warrant deeper testing.
+- **Repeatable methods.** Published prompts, code, and data let others re-run a test.
+
+<h2 id="government">What the government does</h2>
+
+NIST, part of the Commerce Department, released the [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) on January 26, 2023, "intended for voluntary use." It organizes risk work into four functions: Govern, Map, Measure, and Manage. NIST's page says version 1.0 "is being revised as part of the White House AI Action Plan."
+
+The page at [nist.gov/caissi](https://www.nist.gov/caissi) names the Center for Advancing Innovation and Standards for Super Intelligence (CAISSI); earlier items use Center for AI Standards and Innovation (CAISI). The page says the center will establish voluntary agreements with private-sector developers and evaluators of what it calls SI (super intelligence) systems and lead unclassified evaluations of SI capabilities that may pose risks to national security, focusing on demonstrable risks such as cybersecurity, biosecurity, and chemical weapons. It lists published assessments of specific models, one of them conducted jointly with the UK AI Security Institute. [Finding AI policy and standards sources](/learn/policy-and-standards-sources/) explains the name change.
+
+<h2 id="open-tools">Open tools for testing</h2>
+
+- **[Dioptra](/open/dioptra/)** is NIST's [open-source](https://pages.nist.gov/dioptra/) test platform. Its [README](https://github.com/usnistgov/dioptra) says it supports the AI Risk Management Framework's Measure function and lists uses including third-party audits and red-teaming in a controlled environment.
+- **[Petri](/open/petri/)** runs automated audits: an auditor model holds multi-turn conversations with the model under test, starting from seed instructions, and a judge model scores the transcripts. Its [documentation](https://meridianlabs-ai.github.io/inspect_petri/) describes it as a collaboration between Meridian Labs and the UK AISI Red Team, based on work by Anthropic.
+- **[gpt-oss-safeguard](/open/gpt-oss-safeguard/)** is a pair of open-weight models that classify text against safety policies you supply; OpenAI's [README](https://github.com/openai/gpt-oss-safeguard) says they are intended for safety use cases.
+
+<h2 id="worked-example">Worked example: reading a safety claim</h2>
+
+Priya is a fictional reader invented for this page. Priya, a student journalist, sees a post saying a new open-weight model "passed safety testing" and opens the developer's model card.
+
+1. **Pin the document.** Priya notes the card's title, date, and the exact model versions it covers, as with any [model card](/learn/how-to-read-a-model-card/).
+2. **Find the framework.** The card names the framework it applied. Priya opens that version and notes its thresholds and what the developer says happens when one is reached.
+3. **Read what was tested.** Which risk categories, which version of the model (with safeguards, without them, or deliberately fine-tuned), and which settings. Priya treats results as a lower bound, as OpenAI's framework itself does.
+4. **Check who tested.** Priya separates the developer's own tests from outside ones and looks for reports the outside groups published themselves.
+5. **Look for gaps.** Priya reads the stated limitations and any recommendations the developer did not adopt.
+6. **Look beyond the developer.** Priya checks NIST's CAISSI page for any assessment of the model.
+
+Priya's article says "the developer reports that…" and names who checked what, rather than calling the model safe.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse the [AI safety, security, and trust hub](/hubs/safety-and-security/) and the [evaluation hub](/hubs/evaluation/), and read [how to read an AI evaluation](/learn/reading-evaluations/).
+- Open the records for [Dioptra](/open/dioptra/), [Petri](/open/petri/), and [gpt-oss-safeguard](/open/gpt-oss-safeguard/), and the [NIST](/companies/nist/) profile.
+- Look up [model card](/glossary/#model-card), [benchmark](/glossary/#benchmark), [evaluation harness](/glossary/#evaluation-harness), and [fine-tuning](/glossary/#fine-tuning) in the glossary.
+- Read [labels, watermarks, and content credentials](/learn/ai-content-provenance/) to see how developers mark what their models generate.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- OpenAI: [gpt-oss-120b and gpt-oss-20b Model Card](https://deploymentsafety.openai.com/gpt-oss) (published August 5, 2025); [Preparedness Framework, Version 2](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf) (last updated April 15, 2025); [GPT-6 Sol and GPT-6 Luna: October 2026 update](https://cdn.openai.com/pdf/gpt-6-october.pdf) (dated October 7, 2026); [gpt-oss-safeguard README](https://github.com/openai/gpt-oss-safeguard)
+- Anthropic: [Responsible Scaling Policy page](https://www.anthropic.com/responsible-scaling-policy) (last updated August 14, 2026) and [Responsible Scaling Policy, version 3.4](https://www-cdn.anthropic.com/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf) (effective July 8, 2026)
+- Google DeepMind: [Frontier safety page](https://deepmind.google/frontier-safety/) and [Frontier Safety Framework, version 3.1](https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/strengthening-our-frontier-safety-framework/frontier-safety-framework_3-1.pdf) (published April 17, 2026)
+- Meta: [Advanced AI Scaling Framework, Version 2](https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2)
+- NIST: [AI Risk Management Framework page](https://www.nist.gov/itl/ai-risk-management-framework); [AI RMF 1.0 (NIST AI 100-1)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf); [Generative AI Profile (NIST AI 600-1)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf); [CAISSI](https://www.nist.gov/caissi); [Cheating On AI Agent Evaluations](https://www.nist.gov/blogs/caissi-research-blog/cheating-ai-agent-evaluations) (December 2, 2025); [Dioptra README](https://github.com/usnistgov/dioptra) and [documentation](https://pages.nist.gov/dioptra/)
+- Meridian Labs: [Inspect Petri documentation](https://meridianlabs-ai.github.io/inspect_petri/)

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Monogram } from "@/components/Badges";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
+import { HubIcon } from "@/components/learn/HubIcon";
 import { PageHeader } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -30,7 +31,12 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
   return (
     <>
       <PageHeader
-        eyebrow="Hub"
+        eyebrow={
+          <span className="inline-flex items-center gap-1.5">
+            <HubIcon slug={hub.slug} className="h-3.5 w-3.5" />
+            Topic hub
+          </span>
+        }
         title={hub.title}
         crumbs={[{ href: "/hubs/", label: "Hubs" }, { href: `/hubs/${hub.slug}/`, label: hub.title }]}
         description={<p>{hub.summary}</p>}

@@ -1,0 +1,263 @@
+slug: developer-tools
+title: Building software with AI
+summary: >-
+  The open-source layers developers use to build with AI models: model libraries, inference
+  servers, application SDKs and frameworks, coding agents, and experiment tracking, and what
+  to check about where each one sends data.
+intro:
+  - text: >-
+      AI software is often built in layers. PyTorch, a Python package, provides tensors,
+      NumPy-style arrays that can live on a CPU or a GPU, and builds deep neural networks on a
+      tape-based automatic differentiation system. Hugging Face Transformers, which works with
+      PyTorch 2.5 or later, provides model definitions for text, vision, audio, video, and
+      multimodal models, for both inference and training. Its README says that a model
+      definition supported there is compatible with many training frameworks and inference
+      engines, including vLLM and SGLang.
+    source_ids: [pytorch-readme, transformers-readme]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Serving a model to an application often means running an inference server. vLLM,
+      originally developed in UC Berkeley's Sky Computing Lab, is a library for language model
+      inference and serving that manages attention key and value memory with PagedAttention,
+      batches incoming requests continuously, and includes an OpenAI-compatible API server. It
+      runs on NVIDIA, AMD, and Intel GPUs and on x86, ARM, and PowerPC CPUs, among other
+      hardware. SGLang is an open-source inference framework for language, vision-language,
+      and diffusion models, and its package includes SGLang Diffusion, an image and video
+      generation engine.
+    source_ids: [vllm-readme, sglang-readme]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Application code often reaches a model through an SDK or framework. Vercel's AI SDK is
+      a provider-agnostic TypeScript toolkit with one API for providers such as OpenAI,
+      Anthropic, and Google; by default it sends requests through the Vercel AI Gateway, and
+      developers can instead connect to a provider directly. LangChain offers a standard
+      interface for models, embeddings, and vector stores. DSPy takes a different approach:
+      developers write compositional Python code, and DSPy's algorithms optimize the prompts
+      and weights. Check which service an SDK calls by default before you send it data.
+    source_ids: [aisdk-readme, langchain-readme, dspy-readme]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Coding agents read, edit, and run code, so their permissions matter. Gemini CLI,
+      Google's Apache-2.0 terminal agent, has built-in tools for file operations, shell
+      commands, web fetching, and Google Search grounding. Its optional sandbox isolates shell
+      commands and file changes from the host: a Docker or Podman sandbox mounts the project
+      directory, and the default macOS profile confines writes to that directory while
+      allowing broad reads and network access. OpenHands warns that running its agent server
+      without a sandbox gives the agent full access to your filesystem. GitHub's Spec Kit
+      instead gives coding agents structured processes and templates, such as spec-driven
+      development.
+    source_ids: [geminicli-readme, geminicli-sandbox, openhands-readme, speckit-readme]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Experiment tracking records what was run and what it produced. With the wandb library
+      from Weights & Biases, a training script starts a run with wandb.init() and logs metrics
+      with run.log(); the quickstart has you create a W&B account and API key, and results are
+      viewed on wandb.ai. MLflow provides tracing, evaluation, and prompt management for
+      agents and language model applications, and its quickstart runs an MLflow server on your
+      own machine and logs OpenAI client calls to it. Logs and traces can contain your data,
+      so check where a tracking tool stores them.
+    source_ids: [wandb-readme, mlflow-readme]
+    reviewed_at: 2026-10-08
+scope: >-
+  Covers open-source software for building with AI models: model libraries and frameworks,
+  inference servers, application SDKs and frameworks, coding agents, and experiment tracking.
+  Agent protocols are covered in the AI agents hub, and local runtimes in Running AI on your
+  own hardware. It does not compare tools, measure speed, or recommend a stack. Featured
+  records are examples chosen to cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: How the ecosystem fits together
+    href: /learn/how-the-ecosystem-fits-together/
+    note: Start here for where libraries, runtimes, models, and compute providers sit.
+  - label: How language models work
+    href: /learn/how-language-models-work/
+    note: What the models these tools load and serve actually do.
+  - label: Inference
+    href: /glossary/#inference
+    note: A short definition of running a trained model, the job of an inference server.
+  - label: How models use tools
+    href: /learn/how-models-use-tools/
+    note: How SDKs and agents let a model call functions, and what can go wrong.
+  - label: Retrieval-augmented generation
+    href: /learn/retrieval-augmented-generation/
+    note: A common pattern built with application frameworks and vector stores.
+  - label: Hosted or local?
+    href: /learn/hosted-or-local/
+    note: Whether your SDK calls a hosted API or a server you run changes what data leaves your machine.
+  - label: Open-source software
+    href: /glossary/#open-source-software
+    note: What an open-source software license allows under the Open Source Definition.
+  - label: AI agents and agent tooling
+    href: /hubs/agents/
+    note: Agent protocols, SDKs, and more coding agents.
+  - label: Open-source foundations
+    href: /hubs/open-source-foundations/
+    note: The foundations that host projects such as PyTorch and vLLM.
+directory_links:
+  - label: Frameworks and libraries
+    href: /open/?kind=framework
+    note: Open frameworks, libraries, SDKs, and specifications in the catalog.
+  - label: Runtimes and inference servers
+    href: /open/?kind=runtime
+    note: >-
+      Records of the Runtime kind, mostly software that loads and serves models, from local
+      runtimes to multi-GPU servers, plus some agents, apps, and related tools.
+  - label: Coding agents and code models
+    href: /open/?q=coding
+    note: A text search that matches coding agents and models trained for code.
+  - label: Developer platforms
+    href: /companies/?role=developer-platform
+    note: Organizations whose records list developer platforms or tools as a role.
+  - label: Open-source stewards
+    href: /companies/?role=open-source-steward
+    note: Foundations and organizations that maintain shared open-source projects.
+organizations: [pytorch-foundation, hugging-face, lmsys, vercel, langchain, weights-and-biases]
+artifacts:
+  - pytorch
+  - transformers
+  - vllm
+  - sglang
+  - ai-sdk
+  - langchain-framework
+  - dspy
+  - gemini-cli
+  - openhands
+  - spec-kit
+  - wandb-sdk
+  - mlflow
+people: [soumith-chintala, thomas-wolf, woosuk-kwon, ying-sheng]
+primary_documents:
+  - source_id: pytorch-readme
+    note: >-
+      PyTorch's own description of its components, from the tensor library to autograd and
+      the neural network modules.
+  - source_id: transformers-readme
+    note: >-
+      Explains Transformers as a shared model-definition layer and shows the Pipeline API for
+      text, audio, vision, and multimodal tasks.
+  - source_id: vllm-readme
+    note: >-
+      Lists vLLM's serving features, supported hardware, and model types, useful for checking
+      whether a model and machine are supported.
+  - source_id: sglang-readme
+    note: >-
+      Describes SGLang's scope, from language and vision-language models to image and video
+      generation, and its supported hardware.
+  - source_id: aisdk-readme
+    note: >-
+      Shows the default routing through Vercel's AI Gateway and how to connect to a provider
+      directly instead.
+  - source_id: dspy-readme
+    note: >-
+      DSPy's statement of its approach, writing Python modules instead of prompts, with links
+      to the research papers about the framework.
+  - source_id: geminicli-sandbox
+    note: >-
+      A detailed account of a coding agent's sandbox options, including what each profile
+      allows for file writes and network access.
+  - source_id: openhands-readme
+    note: >-
+      Describes running agents locally, in containers, or on servers, with a plain warning
+      about running without a sandbox.
+  - source_id: wandb-readme
+    note: >-
+      The quickstart for logging training runs to W&B, including the account and API key it
+      requires.
+  - source_id: mlflow-readme
+    note: >-
+      MLflow's features for tracing, evaluation, and prompt management, with a quickstart that
+      runs the tracking server locally.
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: pytorch-readme
+    title: PyTorch README
+    url: https://raw.githubusercontent.com/pytorch/pytorch/main/README.md
+    publisher: PyTorch (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: transformers-readme
+    title: Transformers README
+    url: https://raw.githubusercontent.com/huggingface/transformers/main/README.md
+    publisher: Hugging Face (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: vllm-readme
+    title: vLLM README
+    url: https://raw.githubusercontent.com/vllm-project/vllm/main/README.md
+    publisher: vLLM project (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: sglang-readme
+    title: SGLang README
+    url: https://raw.githubusercontent.com/sgl-project/sglang/main/README.md
+    publisher: SGLang project (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: aisdk-readme
+    title: AI SDK README
+    url: https://raw.githubusercontent.com/vercel/ai/main/packages/ai/README.md
+    publisher: Vercel (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: langchain-readme
+    title: LangChain README
+    url: https://raw.githubusercontent.com/langchain-ai/langchain/master/README.md
+    publisher: LangChain (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: dspy-readme
+    title: DSPy README
+    url: https://raw.githubusercontent.com/stanfordnlp/dspy/main/README.md
+    publisher: Stanford NLP (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: geminicli-readme
+    title: Gemini CLI README
+    url: https://raw.githubusercontent.com/google-gemini/gemini-cli/main/README.md
+    publisher: Google (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: geminicli-sandbox
+    title: Sandboxing in Gemini CLI
+    url: https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/sandbox.md
+    publisher: Google (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: openhands-readme
+    title: OpenHands README
+    url: https://raw.githubusercontent.com/OpenHands/OpenHands/main/README.md
+    publisher: OpenHands (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: speckit-readme
+    title: Spec Kit README
+    url: https://raw.githubusercontent.com/github/spec-kit/main/README.md
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: wandb-readme
+    title: wandb README
+    url: https://raw.githubusercontent.com/wandb/wandb/main/README.md
+    publisher: Weights & Biases (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: mlflow-readme
+    title: MLflow README
+    url: https://raw.githubusercontent.com/mlflow/mlflow/master/README.md
+    publisher: MLflow (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08

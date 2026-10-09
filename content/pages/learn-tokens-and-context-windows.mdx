@@ -1,0 +1,81 @@
+A token is a small chunk of text, often a word or a piece of one, and it is the unit a language model reads and writes. AI tools count tokens because that is what the model actually processes, so input limits, reply limits, and usage bills are all measured in tokens. Different models can use different tokenizers, so the same sentence can produce different counts. The context window is the most tokens a model can handle in one request, and in a chat it must hold the instructions, the conversation so far, any attached files, and the reply. When a conversation outgrows it, an API may refuse the request or cut the reply short, and some tools drop or summarize older material, so the model may no longer see what was said early on.
+
+<h2 id="what-a-token-is">What a token is</h2>
+
+OpenAI's [tiktoken README](https://github.com/openai/tiktoken) explains that language models do not see text the way people do; they see a sequence of numbers called tokens. A [tokenizer](/glossary/#tokenizer) converts text into those numbers and back. OpenAI's [token counting cookbook](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) shows "tiktoken is great!" split into six tokens by the o200k_base encoding, which it lists for GPT-4o: "t", "ikt", "oken", " is", " great", and "!". The space travels with the word after it. Common pieces get their own tokens; the README says "encoding" will often split into "encod" and "ing".
+
+Google's [Gemini token guide](https://ai.google.dev/gemini-api/docs/tokens) says a Gemini token is about four characters, and 100 tokens about 60 to 80 English words. Google's [machine learning course](https://developers.google.com/machine-learning/crash-course/llm) adds that tokenization is language-specific, so the ratio differs across languages. Images and audio become tokens too: the Gemini guide counts an image 384 pixels or smaller on both sides as 258 tokens, and audio at 32 tokens per second.
+
+<h2 id="why-counts-differ">Why counts differ between models</h2>
+
+Each tokenizer has its own vocabulary, the fixed list of pieces it can produce. The cookbook runs several OpenAI encodings on the same text. "antidisestablishmentarianism" is 5 tokens in the older r50k_base encoding and 6 in cl100k_base and o200k_base, split at different points. "2 + 2 = 4" is 5 tokens in r50k_base and 7 in the other two. A short Japanese phrase falls from 14 tokens in r50k_base to 9 in cl100k_base and 8 in o200k_base. tiktoken's [model table](https://github.com/openai/tiktoken/blob/main/tiktoken/model.py) maps GPT-4 to cl100k_base, GPT-4o to o200k_base, and gpt-oss to o200k_harmony.
+
+Vocabulary sizes differ too. The [gpt-oss model card](https://arxiv.org/abs/2508.10925) gives 201,088 tokens for o200k_harmony, while the [configuration file](https://huggingface.co/allenai/Olmo-3-1025-7B/blob/main/config.json) for Ai2's Olmo 3 7B sets 100,278. Counts can shift within one provider: Anthropic's [token counting page](https://platform.claude.com/docs/en/build-with-claude/token-counting) says Claude models from version 4.7 onward use a newer tokenizer that produces roughly 30 percent more tokens for the same text, and advises recounting for the model you plan to use. A count holds only for the tokenizer it was measured with.
+
+<h2 id="limits">Input limits, output limits, and the context window</h2>
+
+The [context window](/glossary/#context-window) is the overall limit. OpenAI's [conversation state guide](https://developers.openai.com/api/docs/guides/conversation-state) defines it as the maximum number of tokens in a single request, counting input, output, and reasoning tokens; Google's guide calls it the combined limit of input and output tokens. A reply also has its own cap. OpenAI's example, gpt-4o-2024-08-06, has a 128k-token window but generates at most 16,384 output tokens. Anthropic's [context window page](https://platform.claude.com/docs/en/build-with-claude/context-windows) lists a 1M-token window for many of its models, with up to 128k output tokens per request on those, and 200k for the rest.
+
+Open models state limits in the model card or configuration. The [Olmo 3 7B card](https://huggingface.co/allenai/Olmo-3-1025-7B) lists a context length of 65,536 tokens, and the gpt-oss card says the context length of its dense attention layers was extended to 131,072 tokens. Software running a model locally may use less than the maximum: Ollama's [context length page](https://docs.ollama.com/context-length) says its default depends on graphics memory (VRAM), from 4k tokens with less than 24 GiB to 256k with 48 GiB or more, and that a larger context needs more memory.
+
+<h2 id="whats-in-the-window">What fills the window in a chat</h2>
+
+Anthropic's page lists what counts: the system prompt (instructions set by the app or developer), every message in the conversation, including tool results, images, and documents, the definitions of any tools the model can use, and the reply being generated, including the model's extended thinking. Each turn's input is the whole history plus the new message. Google's guide likewise counts system instructions as input, and counts tools too.
+
+More is not automatically better. Anthropic says accuracy and recall degrade as the token count grows, which it calls context rot. Google's [long context guide](https://ai.google.dev/gemini-api/docs/long-context) advises leaving out tokens the model does not need and, for long inputs, putting your question at the end.
+
+<h2 id="too-long">When a conversation gets too long</h2>
+
+What happens depends on the tool:
+
+- **The request is refused.** Anthropic's API returns a "prompt is too long" error when the input alone exceeds the window.
+- **The reply is cut off.** OpenAI's guide warns that exceeding the window might result in truncated outputs. On newer Claude models, a reply that reaches the limit stops with a stop reason saying so.
+- **Old turns are dropped.** Anthropic says chat interfaces such as claude.ai can manage the window on a rolling first-in, first-out basis, so the oldest material leaves first.
+- **Old turns are summarized.** Anthropic's server-side compaction summarizes earlier parts of a conversation so it can continue past the limit. OpenAI's [compaction guide](https://developers.openai.com/api/docs/guides/compaction) describes a compaction step that runs when the token count crosses a threshold the developer sets, carrying forward key prior state.
+
+Google's long context guide names similar strategies: dropping old messages, summarizing, [retrieval](/learn/retrieval-augmented-generation/), and filtering prompts. Either way, the model cannot consult what was dropped, and a summary keeps only part of the detail.
+
+<h2 id="billing-and-counting">Billing and counting tokens</h2>
+
+Hosted APIs bill by tokens: Google's guide says the cost of a Gemini API call depends in part on input and output tokens, and OpenAI's cookbook says usage is priced by token. Long chats cost more per turn because earlier turns are counted again: OpenAI says all previous input tokens in a chained conversation are billed as input tokens. Anthropic bills thinking tokens as output tokens. USASI does not publish prices; check the provider's pricing page and note the date.
+
+To count before you send:
+
+- **tiktoken** counts OpenAI tokens locally for plain text. OpenAI's [token counting guide](https://developers.openai.com/api/docs/guides/token-counting) says local tokenizers do not support images or files and that tools add tokens that are hard to count locally. It offers an endpoint that returns the exact input count, including formatting tokens for message roles.
+- **Anthropic's token counting API** accepts the same input as a message, including system prompt, tools, images, and PDFs, and returns an estimate that may differ slightly from actual use.
+- **Gemini's countTokens** returns the input count before sending, and each response reports input, output, and other counts in its usage data.
+
+```python
+import tiktoken
+enc = tiktoken.get_encoding("o200k_base")
+print(len(enc.encode("tiktoken is great!")))  # 6
+```
+
+<h2 id="worked-example">Worked example: fitting a transcript</h2>
+
+Ray is a fictional reader invented for this page. Ray wants the decisions from a 20,000-word meeting transcript, using a model run locally with Ollama on a graphics card with 16 GiB of memory.
+
+1. **Estimate the size.** At 60 to 80 words per 100 tokens, 20,000 words is roughly 25,000 to 33,000 tokens. The exact figure depends on the tokenizer.
+2. **Find the limit that applies.** The model card gives the model's maximum, but Ollama's default with less than 24 GiB of VRAM is 4k tokens, far too small for the transcript.
+3. **Leave room.** The window must also hold the instructions and the reply, so Ray sets a context length well above the estimate, then runs `ollama ps` to confirm the CONTEXT value and that the model still runs fully on the GPU.
+4. **Or split the job.** If the larger setting does not fit in memory, Ray asks about one section of the transcript at a time and combines the lists.
+5. **Repeat key instructions.** In follow-ups, Ray restates the format wanted rather than relying on the first message.
+
+On a hosted tool, the same steps apply, with the provider's counter and documented limits replacing Ollama's settings.
+
+<h2 id="next">What you can do next</h2>
+
+- Read [how large language models work](/learn/how-language-models-work/), and [retrieval-augmented generation](/learn/retrieval-augmented-generation/) for documents too large for the window.
+- Look up [tokenizer](/glossary/#tokenizer) and [context window](/glossary/#context-window) in the glossary.
+- Compare stated context lengths in the catalog, such as [Olmo 3 7B](/open/olmo-3-1025-7b/) and [gpt-oss-20b](/open/gpt-oss-20b/), and see how context affects memory in [understanding inference hardware](/learn/inference-hardware/).
+- Run models locally with [Ollama](/open/ollama/), or browse the [local AI hub](/hubs/local-ai/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- Ai2: [Olmo-3-1025-7B model card](https://huggingface.co/allenai/Olmo-3-1025-7B) and [config.json](https://huggingface.co/allenai/Olmo-3-1025-7B/blob/main/config.json)
+- Anthropic: [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows), [Token counting](https://platform.claude.com/docs/en/build-with-claude/token-counting)
+- Google: Gemini API [Understand and count tokens](https://ai.google.dev/gemini-api/docs/tokens) and [Long context](https://ai.google.dev/gemini-api/docs/long-context); Machine Learning Crash Course, [Introduction to Large Language Models](https://developers.google.com/machine-learning/crash-course/llm)
+- Ollama: [Context length](https://docs.ollama.com/context-length)
+- OpenAI: [tiktoken README](https://github.com/openai/tiktoken) and [model.py](https://github.com/openai/tiktoken/blob/main/tiktoken/model.py); OpenAI Cookbook, [How to count tokens with tiktoken](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb); [Conversation state](https://developers.openai.com/api/docs/guides/conversation-state), [Counting tokens](https://developers.openai.com/api/docs/guides/token-counting), and [Compaction](https://developers.openai.com/api/docs/guides/compaction) guides; [gpt-oss-120b and gpt-oss-20b model card](https://arxiv.org/abs/2508.10925) (arXiv)

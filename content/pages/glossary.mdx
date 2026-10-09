@@ -16,6 +16,30 @@ A document from a model's publisher that lists uses it prohibits. A license can 
 
 **Example:** [EmbeddingGemma 300M](/open/embeddinggemma-300m/) is under the Gemma Terms of Use, which incorporate the Gemma Prohibited Use Policy and require anyone who redistributes the model to pass those use restrictions on.
 
+<h2 id="agent">Agent</h2>
+
+Software in which a language model works toward a goal by choosing its own next steps, such as which tools to call, and reacting to the results until the task is done or a stopping condition is reached. Anthropic's guide [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) separates agents, where the model directs its own process and tool use, from workflows, where model calls and tools follow paths fixed in code.
+
+**In this catalog:** agent frameworks, protocols, and agent applications are project records, gathered in the [agents hub](/hubs/agents/). The models an agent calls are separate records with their own licenses.
+
+**Example:** [goose](/open/goose/) is a general-purpose agent that runs on the user's machine as a desktop app, a command-line tool, or an API. It works with hosted and local model providers and connects to extensions through the Model Context Protocol.
+
+<h2 id="attention">Attention</h2>
+
+A neural-network operation that builds a new representation of each position in a sequence, such as each token of a prompt, as a weighted mix of information from other positions. In [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017), an attention function maps a query and a set of key-value pairs to a weighted sum of the values, where each weight depends on how well the query matches the corresponding key; self-attention applies this between positions of the same sequence.
+
+**In this catalog:** attention designs are mentioned only as a model card or technical report describes them, usually in a release's summary.
+
+**Example:** [Rnj-1.5 Instruct](/open/rnj-1-5-instruct/) switches most of Rnj-1's attention layers to block-local attention, which has a fixed compute and storage cost per position, and keeps a group of global attention layers in the middle. Its model card says the change eases costs that grow with sequence length.
+
+<h2 id="base-model">Base model</h2>
+
+A model as it comes out of pretraining: it has learned to continue text but has not yet been trained further to follow instructions or hold a conversation. Hugging Face's guide to [chat templates](https://huggingface.co/docs/transformers/chat_templating) describes training that usually begins with pretraining on a huge corpus of text, which creates a base model that is then often fine-tuned for chat.
+
+**In this catalog:** a base model and the versions trained from it are separate release records, and when a release was built on another model, its "Provenance and derivatives" section names that model ([methodology](/methodology/#families)).
+
+**Example:** [StarCoder2-15B](/open/starcoder2-15b/) is a base model for code. Its model card warns that it is not an instruction model, so commands such as "Write a function that computes the square root." do not work well.
+
 <h2 id="benchmark">Benchmark</h2>
 
 A fixed set of tasks with a scoring method, used to compare models under the same conditions. A score that a publisher reports for its own model is a reported result: it has not necessarily been reproduced by anyone else, and it depends on the prompts and settings used.
@@ -32,6 +56,14 @@ A saved copy of a model's state at some point in training. A training checkpoint
 
 **Example:** For [SmolLM3 3B](/open/smollm3-3b/), Hugging Face publishes intermediate checkpoints in a separate repository, one branch per checkpoint, saved every 40,000 steps during pretraining and at later stages such as long-context extension and supervised fine-tuning.
 
+<h2 id="c2pa">Content credentials (C2PA)</h2>
+
+A signed, tamper-evident record of where a digital file came from and how it was made or edited, including whether AI was used, usually embedded in the file itself. It is defined in the [C2PA specification](https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html) from the Coalition for Content Provenance and Authenticity, whose [explainer](https://spec.c2pa.org/specifications/specifications/2.4/explainer/Explainer.html) notes that a Content Credential shows whether its provenance information is well-formed, untampered, and signed by a trusted party, not whether that information is true.
+
+**In this catalog:** no record is built around the specification itself; content credentials come up in explainers about labeling AI-generated content.
+
+**Example:** The explainer on [AI content provenance](/learn/ai-content-provenance/) covers what content credentials record, how to inspect a file for them, invisible watermarks, and what AI detectors can and cannot do.
+
 <h2 id="context-window">Context window</h2>
 
 The maximum number of tokens (small pieces of text or other input) that a model can take into account in one request, usually counting both the prompt and the generated output.
@@ -47,6 +79,30 @@ A building or campus that houses servers, storage, and networking equipment, tog
 **In this catalog:** companies that build or operate data centers are organization records with roles such as Compute infrastructure or Cloud provider. Their records describe what the companies offer but give no power-capacity figures ([methodology](/methodology/#sources)).
 
 **Example:** [Crusoe](/companies/crusoe/) designs, builds, and operates data centers for AI workloads, with cooling methods that include direct liquid-to-chip cooling, and runs Crusoe Cloud, a GPU cloud platform.
+
+<h2 id="diffusion-model">Diffusion model</h2>
+
+A generative model trained to reverse a process that gradually adds random noise to data, so that it can start from pure noise and remove it step by step to produce a new sample, such as an image. [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) (Ho et al., 2020) describes this training and sampling procedure for images.
+
+**In this catalog:** a release's summary says it uses diffusion when its documentation does, for outputs ranging from video to robot actions, and libraries for running and training diffusion models are project records.
+
+**Example:** [Diffusers](/open/diffusers/) is Hugging Face's library of pretrained diffusion models for generating images, audio, and other outputs. It combines models with interchangeable noise schedulers, which its README describes as offering different diffusion speeds and output quality.
+
+<h2 id="distillation">Distillation</h2>
+
+Training a smaller model to reproduce the outputs of a larger model, or of a group of models, so that their knowledge is carried by a model that is easier to deploy. In [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531) (Hinton et al., 2015), the small model learns from the large model's class probabilities, which the paper calls soft targets.
+
+**In this catalog:** when a model card says a release was distilled from another model, the release's provenance or training-recipe note records it.
+
+**Example:** The model card for [Muse Glimmer 30B](/open/muse-glimmer-30b/), from Meta Superintelligence Labs, says it was distilled from Muse Spark and built for agentic tasks on consumer hardware.
+
+<h2 id="embedding">Embedding</h2>
+
+A list of numbers (a vector) that a model produces to represent a piece of text, an image, or other data, arranged so that items with similar meaning get similar vectors. Anthropic's [embeddings guide](https://platform.claude.com/docs/en/build-with-claude/embeddings) describes text embeddings as numerical representations of text that enable measuring semantic similarity, for uses such as search and recommendations.
+
+**In this catalog:** embedding models are model releases with their own licenses and checklists, and their vector sizes and input limits appear only as the publisher states them.
+
+**Example:** [nomic-embed-text-v1.5](/open/nomic-embed-text-v1-5/) produces 768-dimension embeddings that can be shortened to as few as 64 dimensions. Its model card requires a task prefix at the start of each input, such as `search_document` for texts being indexed and `search_query` for questions.
 
 <h2 id="evaluation-harness">Evaluation harness</h2>
 
@@ -72,6 +128,14 @@ A nonprofit organization that gives open-source projects a neutral home: it can 
 
 **Example:** The [Agentic AI Foundation](/companies/agentic-ai-foundation/) is a directed fund of The Linux Foundation. Its [charter](https://raw.githubusercontent.com/aaif/foundation/main/foundation-charter.pdf) has a Governing Board approve the projects it supports, leaves each project's governance to that project's own charter, and gives The Linux Foundation control over how the fund's money is held and spent.
 
+<h2 id="function-calling">Function calling (tool calling)</h2>
+
+A way for a model to request an action outside itself: the application describes the available tools, the model replies with a structured request naming a tool and its inputs, and the application or the provider runs the tool and sends back the result. Anthropic's [tool use documentation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) describes the model deciding when to call a tool based on the user's request and the tool's description.
+
+**In this catalog:** when a model card documents tool or function calling, the release's "What it is useful for" section says so, and its run notes or checklist notes record any tool-call parser or chat format the card requires.
+
+**Example:** The [Berkeley Function Calling Leaderboard](/open/berkeley-function-calling-leaderboard/), from UC Berkeley's Gorilla project, evaluates how language models call functions. Its first version checked simple, parallel, and multiple function calls by abstract syntax tree (AST) evaluation, and later versions added multi-turn, multi-step, and agentic tasks.
+
 <h2 id="gated-download">Gated download</h2>
 
 A download that requires an extra step before the files are released, such as signing in, sharing contact details, or accepting terms. On Hugging Face, a gated repository can grant access automatically once a user agrees, or it can require the publisher to approve each request by hand, as described in Hugging Face's [gated models documentation](https://huggingface.co/docs/hub/models-gated).
@@ -88,6 +152,30 @@ A single-file format that stores a model's weights together with the metadata ne
 
 **Example:** For [Rnj-1 Instruct](/open/rnj-1-instruct/), Essential AI publishes an official quantized GGUF build in a separate Hugging Face repository, and the model card documents running it with llama.cpp.
 
+<h2 id="gpu">GPU (graphics processing unit)</h2>
+
+A processor first built for 3D graphics that runs thousands of threads in parallel, which suits the highly parallel calculations used to train and run AI models. NVIDIA's [CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html) contrasts a CPU, designed to run a sequence of operations as fast as possible, with a GPU, which trades lower single-thread performance for much greater total throughput.
+
+**In this catalog:** GPUs are one kind of [accelerator](/glossary/#accelerator) and appear as hardware products on the records of the companies that design them. GPU memory figures appear in run notes only as the publisher states them.
+
+**Example:** [AMD](/companies/amd/) designs AMD Instinct GPUs for data centers and develops ROCm, an open software stack of programming models, tools, compilers, libraries, and runtimes for AI and HPC work on its GPUs.
+
+<h2 id="hallucination">Hallucination</h2>
+
+Output from a generative AI model that is stated confidently but is false, or that contradicts its input or what it said earlier. NIST's [Generative AI Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf) (NIST AI 600-1) calls this confabulation and explains it as a natural result of models generating outputs that approximate the statistical patterns of their training data. [Why Language Models Hallucinate](https://arxiv.org/abs/2509.04664) (Kalai et al., 2025) argues that training and evaluation methods that reward guessing over admitting uncertainty help keep it going.
+
+**In this catalog:** records do not report hallucination or accuracy rates, because the catalog does not publish benchmark scores; benchmarks that measure the problem have their own project records ([methodology](/methodology/#sources)).
+
+**Example:** [Humanity's Last Exam](/open/humanitys-last-exam/) asks models for an answer and a confidence from 0% to 100%, and its paper treats confidently wrong answers, measured as calibration error, as a sign of confabulation or hallucination.
+
+<h2 id="hbm">High-bandwidth memory (HBM)</h2>
+
+Computer memory built by stacking several DRAM chips vertically and connecting them through a very wide interface, packaged next to a GPU or other processor so that data reaches it quickly. Micron's [HBM product page](https://www.micron.com/products/memory/hbm) describes a single HBM stack with a 1024-bit data interface, 16 times wider than a standard DDR5 module, and Google's [Introduction to Cloud TPU](https://docs.cloud.google.com/tpu/docs/intro-to-tpu) says on-chip HBM lets TPUs work with larger models and batch sizes.
+
+**In this catalog:** memory is part of the [chips and compute hub](/hubs/chips-and-compute/), and companies that make HBM list it among the hardware products on their organization records.
+
+**Example:** [Micron Technology](/companies/micron/) lists HBM3E and HBM4 among its products and describes HBM as 3D-stacked DRAM for AI, high-performance computing, and other data-intensive workloads.
+
 <h2 id="hosted-api">Hosted API</h2>
 
 Access to a model that runs on the provider's own servers. You send inputs over the network and receive outputs, but you do not receive the weights.
@@ -103,6 +191,38 @@ Running a trained model to produce outputs from inputs, as opposed to training i
 **In this catalog:** inference code is its own checklist item for each model release, separate from training code ([methodology](/methodology/#openness)).
 
 **Example:** [vLLM](/open/vllm/) is an inference and serving engine for large language models.
+
+<h2 id="instruction-tuning">Instruction tuning</h2>
+
+Fine-tuning a pretrained language model on many tasks written as plain-language instructions, so that it handles new tasks described the same way instead of only continuing text. [Finetuned Language Models Are Zero-Shot Learners](https://arxiv.org/abs/2109.01652) (Wei et al., 2021) describes instruction tuning as finetuning language models on a collection of tasks described via instructions.
+
+**In this catalog:** publishers often release a pretrained version and an instruction-tuned version of the same model, with names ending in words or suffixes such as "Instruct" or "-it". Each is a separate release record with its own evidence ([methodology](/methodology/#families)).
+
+**Example:** Google's MedGemma model card explains that the suffix -pt marks pre-trained versions and -it marks instruction-tuned ones, and that both 27B variants, including [MedGemma 27B (multimodal)](/open/medgemma-27b-it/), are available only in instruction-tuned form.
+
+<h2 id="jailbreak">Jailbreak</h2>
+
+An attempt by a user to make a model produce output its developer has restricted, for example by wording a request so that the model abandons its usual refusals. NIST's taxonomy of attacks on AI systems, [NIST AI 100-2 E2025](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf), defines a jailbreak as a direct prompting attack, carried out by the system's own user, intended to circumvent restrictions placed on model outputs.
+
+**In this catalog:** jailbreak tests appear in benchmark records and in the safety results that model cards report; the catalog does not publish those scores ([methodology](/methodology/#sources)).
+
+**Example:** [AILuminate](/open/ailuminate/), from MLCommons, includes a jailbreak benchmark for text and text-plus-image inputs, with a metric that captures how much a system's performance degrades when it is under jailbreak attack.
+
+<h2 id="knowledge-cutoff">Knowledge cutoff</h2>
+
+The point in time up to which a model's training data covers events, so the model may not know about anything later unless that information is given to it, for example in the prompt or through retrieval. Anthropic's [Transparency Hub](https://www.anthropic.com/transparency) explains a model's knowledge cutoff date as the date up to which its knowledge is most extensive and reliable, and its [models overview](https://platform.claude.com/docs/en/models/overview) lists a reliable knowledge cutoff and a separate training data cutoff for its current models.
+
+**In this catalog:** a knowledge cutoff is recorded only when the publisher states one, usually in a release's summary or training-data note.
+
+**Example:** OpenAI's model card for [gpt-oss-120b](/open/gpt-oss-120b/) states a knowledge cutoff of June 2024 for the text-only dataset the model was trained on.
+
+<h2 id="latency-and-throughput">Latency and throughput</h2>
+
+Two measures of how fast a model serves requests: latency is how long one request takes, often split into the time to the first token and the time between later tokens, and throughput is how much work the whole system completes per second, such as output tokens per second across all requests. NVIDIA's [guide to LLM inference metrics](https://docs.nvidia.com/nim/benchmarking/llm/metrics) explains that as more requests run at once, total throughput rises until the hardware is saturated while the speed each user sees falls, and that tools define these metrics differently, so results should be compared only when the definitions match.
+
+**In this catalog:** records mention speed measurements only as a publisher reports them, together with the hardware and settings it names.
+
+**Example:** [SGLang](/open/sglang/) is a serving framework whose documentation says it is designed for low-latency, high-throughput inference on setups from a single GPU to large distributed clusters.
 
 <h2 id="license-scope">License scope</h2>
 
@@ -136,6 +256,14 @@ A document published with a model that describes what it is, how it was trained 
 
 **Example:** Meta publishes the model card for [Llama 4 Scout](/open/llama-4-scout-17b-16e/) as a file in its llama-models GitHub repository.
 
+<h2 id="mcp">Model Context Protocol (MCP)</h2>
+
+An open protocol that standardizes how AI applications connect to outside data sources and tools. In the [MCP specification](https://modelcontextprotocol.io/specification/2026-07-28), a host application uses clients to exchange JSON-RPC 2.0 messages with servers, and servers can offer resources (context and data), prompts (templated messages and workflows), and tools (functions for the AI model to execute).
+
+**In this catalog:** the protocol has its own project record, and records for agents and models note MCP support where their documentation states it.
+
+**Example:** The repository of the [Model Context Protocol](/open/model-context-protocol/) holds the specification, a schema defined in TypeScript and also published as JSON Schema, and the official documentation. Anthropic donated the protocol to the Agentic AI Foundation, under the Linux Foundation, in December 2025.
+
 <h2 id="model-family">Model family</h2>
 
 A named line of related models released over time, often in several sizes or generations.
@@ -151,6 +279,14 @@ One specific published model, identified by its name, size, and version, with it
 **In this catalog:** licenses, availability, checklists, and tiers attach only to releases, and a release's evidence is never inherited from another version ([methodology](/methodology/#families)).
 
 **Example:** [Olmo 3.1 32B Think](/open/olmo-3-1-32b-think/) is one release in Ai2's Olmo family, with its own licenses and checklist.
+
+<h2 id="multimodal">Multimodal model</h2>
+
+A model that works with more than one kind of data, such as text, images, audio, or video, as input, output, or both. OpenAI's [GPT-4o System Card](https://arxiv.org/abs/2410.21276), for example, describes a model that accepts any combination of text, audio, image, and video as input and generates text, audio, and image outputs, with all of them processed by the same neural network.
+
+**In this catalog:** a release's summary states which kinds of input and output its publisher documents. Models that take images together with text are often called vision-language models.
+
+**Example:** [Molmo2-O 7B](/open/molmo2-o-7b/), from Ai2, is a vision-language model whose model card says it supports image, video, and multi-image understanding and grounding.
 
 <h2 id="nonprofit">Nonprofit</h2>
 
@@ -192,6 +328,14 @@ A model whose trained parameters can be downloaded by the public. The term descr
 
 **Example:** [gpt-oss-20b](/open/gpt-oss-20b/) is labeled Open-weight; its weights download without a gate under the Apache License 2.0.
 
+<h2 id="parameter">Parameter (parameter count)</h2>
+
+One of the numbers inside a model that training adjusts, such as the weights and biases of a neural-network layer; a model's parameter count is the total number of them, usually written with M for millions or B for billions. PyTorch's tutorial [Build the Neural Network](https://docs.pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html) describes layers whose weights and biases are optimized during training and shows how to list a model's parameters.
+
+**In this catalog:** parameter counts appear only as the publisher states them. For mixture-of-experts models, total and active counts are given separately where the publisher states both ([mixture of experts](/glossary/#mixture-of-experts)).
+
+**Example:** Google's documentation calls [EmbeddingGemma 300M](/open/embeddinggemma-300m/) a 308M-parameter model, while its Hugging Face model card calls it a 300M-parameter model and lists its size as 0.3B parameters, so the name gives a rounded figure.
+
 <h2 id="parent-company">Parent company and documented control</h2>
 
 A parent company controls another organization, its subsidiary, either directly or through other subsidiaries. In the SEC's definitions in [Rule 405](https://www.ecfr.gov/current/title-17/section-230.405), control means the power to direct an entity's management and policies, whether through owning voting securities, by contract, or otherwise, so it can rest on more than share ownership.
@@ -199,6 +343,14 @@ A parent company controls another organization, its subsidiary, either directly 
 **In this catalog:** documented U.S. control is one of the four eligibility bases. It applies when filings or official pages show that a U.S. entity primarily controls an organization, for example a research unit wholly owned by a U.S.-headquartered company, and each such case gets a written assessment ([methodology](/methodology/#eligibility)).
 
 **Example:** The [Google DeepMind](/companies/google-deepmind/) record names no headquarters, because the official pages reviewed do not state one. It is assessed under U.S. control because Google and Alphabet document it as part of Google, and Alphabet's principal executive offices are in Mountain View, California.
+
+<h2 id="post-training">Post-training</h2>
+
+The training applied after pretraining that turns a base model into one suited to a purpose, such as a chat assistant that follows instructions. Ai2's [Tülu 3 paper](https://arxiv.org/abs/2411.15124) describes post-training as refining behaviors and unlocking new skills, with methods such as supervised fine-tuning, Direct Preference Optimization, and reinforcement learning with verifiable rewards.
+
+**In this catalog:** a release's checklist notes whether its published code and data cover only post-training or also pretraining; a fine-tuning script alone does not count as complete training code ([methodology](/methodology/#tiers)).
+
+**Example:** Ai2 post-trained [Olmo 3 7B Instruct](/open/olmo-3-7b-instruct/) from the Olmo 3 7B base model in three stages, supervised fine-tuning, DPO, and reinforcement learning with verifiable rewards, and its model card links the checkpoint from each stage.
 
 <h2 id="power-and-energy">Power and energy</h2>
 
@@ -208,6 +360,38 @@ Power is the rate at which electricity is supplied or used at a given moment, me
 
 **Example:** [Thinking Machines Lab](/companies/thinking-machines-lab/) records a March 2026 partnership with NVIDIA to deploy NVIDIA systems for its model training. The announcement, listed among the record's sources, calls the partnership gigawatt-scale in its title, which describes power capacity; the record's own text gives no capacity figure.
 
+<h2 id="preference-tuning">Preference tuning (RLHF and DPO)</h2>
+
+Training a model on comparisons of which of two or more responses is better, so that it produces the kinds of responses people prefer. In reinforcement learning from human feedback (RLHF), as described in [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155) (Ouyang et al., 2022), people rank model outputs and those rankings are used to fine-tune the model with reinforcement learning; [Direct Preference Optimization](https://arxiv.org/abs/2305.18290) (Rafailov et al., 2023) learns from the same kind of comparisons with a simple classification loss instead.
+
+**In this catalog:** preference-tuning stages are described in the summary, provenance, or training-recipe notes of releases that document them, and the preference datasets in their training-data notes.
+
+**Example:** [TRL](/open/trl/), Hugging Face's library for post-training models, provides a DPOTrainer alongside trainers for supervised fine-tuning, GRPO, and KTO.
+
+<h2 id="pretraining">Pretraining</h2>
+
+The first stage of training a model, in which it learns general patterns from a very large collection of unlabeled data; a language model is usually pretrained to predict the next word from the text that comes before it. Anthropic's [glossary](https://platform.claude.com/docs/en/about-claude/glossary) notes that pretrained models are not inherently good at answering questions or following instructions, and that fine-tuning and RLHF are used to refine them.
+
+**In this catalog:** pretraining datasets have their own project records, and a release's checklist records whether its pretraining code, recipe, and data are published, separately from later training stages ([methodology](/methodology/#openness)).
+
+**Example:** [Dolma](/open/dolma/) is Ai2's family of pretraining corpora drawn from web content, academic publications, code, books, and encyclopedic material, and versions of it were used to train Ai2's OLMo models.
+
+<h2 id="prompt">Prompt</h2>
+
+The input given to a generative model to get a response, such as a question, instructions, examples, or a document to work on. Writing prompts so that a model reliably gives the output you need is called prompt engineering, which OpenAI's [prompting guide](https://developers.openai.com/api/docs/guides/prompt-engineering) describes as a mix of art and science because model output is non-deterministic.
+
+**In this catalog:** when a model card says a model needs a particular prompt format, chat template, or prefix to work correctly, the release's run notes usually say so.
+
+**Example:** [DSPy](/open/dspy/) is a framework for writing language-model programs as Python modules instead of hand-written prompts, with optimizers that tune the prompts and weights of those programs.
+
+<h2 id="prompt-injection">Prompt injection</h2>
+
+An attack in which text given to a model, typed by a user or hidden in content the model reads, overrides the instructions set by the developer or application, such as the system prompt. NIST's [AI 100-2 E2025](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) defines it as exploiting the concatenation of untrusted input with a prompt built by a higher-trust party, and calls it indirect when the instructions arrive through resources the system reads rather than from the user. OWASP's [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) says it is unclear whether there are fool-proof methods of preventing it.
+
+**In this catalog:** records do not rate how well any model or product resists prompt injection. The risk applies to agents and retrieval systems that read outside content; agent software is gathered in the [agents hub](/hubs/agents/).
+
+**Example:** [How models use tools](/learn/how-models-use-tools/) explains why tool results can carry indirect prompt injection and which controls, such as least privilege and human approval for high-risk actions, limit the damage.
+
 <h2 id="quantization">Quantization</h2>
 
 Storing a model's weights, and sometimes its intermediate values, at lower numerical precision (for example 4-bit integers instead of 16-bit numbers) to reduce memory use and speed up inference, sometimes at some cost in output quality.
@@ -215,6 +399,22 @@ Storing a model's weights, and sometimes its intermediate values, at lower numer
 **In this catalog:** memory or hardware figures are recorded only when a publisher states them, together with the precision they assume.
 
 **Example:** [AWQ (Activation-aware Weight Quantization)](/open/awq/), from MIT HAN Lab, is a method and codebase for 4-bit and 3-bit weight-only quantization of language models.
+
+<h2 id="reasoning-model">Reasoning model</h2>
+
+A language model that generates intermediate reasoning, often called thinking, before its final answer, which helps with multi-step problems at the cost of extra tokens. OpenAI's [reasoning guide](https://developers.openai.com/api/docs/guides/reasoning) describes reasoning tokens that the model uses to break down the prompt and consider several approaches, and notes that they take up space in the context window even though they are not visible through the API.
+
+**In this catalog:** whether a release reasons before answering, and how that mode is switched on or off, is recorded as its model card documents it.
+
+**Example:** [Hermes 4 70B](/open/hermes-4-70b/), from Nous Research, is a hybrid reasoning model that can answer directly or deliberate first inside think tags. Its model card says reasoning mode can be switched on with a thinking flag in the chat template or with a system prompt.
+
+<h2 id="red-teaming">Red teaming</h2>
+
+Structured testing in which people or automated tools act as adversaries, trying to make an AI system fail, misbehave, or help with misuse. NIST's [AI 100-2 E2025](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) defines red teaming in the AI context as a structured testing effort, often using adversarial methods, to find flaws and vulnerabilities, including unforeseen or undesirable system behaviors and potential risks from misuse.
+
+**In this catalog:** red-teaming tools and benchmarks are project records, and the catalog does not reproduce red-teaming results reported in model or system cards ([methodology](/methodology/#sources)).
+
+**Example:** The [Center for AI Safety](/companies/center-for-ai-safety/) lists among its research HarmBench, a standardized evaluation framework for automated red teaming and robust refusal.
 
 <h2 id="restricted-weights">Restricted weights</h2>
 
@@ -224,6 +424,14 @@ A USASI tier for a model release whose weights can be obtained only by request, 
 
 **Example:** For [DINOv3 ViT-7B/16](/open/dinov3-vit7b16/), Meta publishes training code and stage-by-stage configuration files, but downloading the weights from Hugging Face requires an approved access request, so the release is labeled Restricted weights.
 
+<h2 id="rag">Retrieval-augmented generation (RAG)</h2>
+
+A technique in which a system first retrieves passages relevant to a question from a collection of documents and then gives them to a language model along with the question, so that the answer can draw on, and cite, information beyond the model's training data. The approach was described in [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) (Lewis et al., 2020), and NIST's [AI 100-2 E2025](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) glossary notes that it lets a model's knowledge be changed without retraining.
+
+**In this catalog:** the parts of a RAG system, such as embedding models, vector databases, and orchestration frameworks, are separate records with their own licenses.
+
+**Example:** [PaperQA](/open/paper-qa/), from FutureHouse, is a package for retrieval-augmented question answering over PDFs, text files, Office documents, and source code that gives answers with in-text citations.
+
 <h2 id="reviewed-date">Reviewed date</h2>
 
 The date an editor last checked a piece of evidence against its sources. It is different from the date a record was edited, the date an artifact was released, and the date the site was built.
@@ -231,6 +439,14 @@ The date an editor last checked a piece of evidence against its sources. It is d
 **In this catalog:** each record shows a "Last reviewed" date, and individual facts, such as a license or an availability assessment, can carry their own reviewed date. An automated fetch is not a review ([methodology](/methodology/#dates)).
 
 **Example:** On [gpt-oss-20b](/open/gpt-oss-20b/), the license entries carry their own reviewed dates, separate from the record's "Last reviewed" date.
+
+<h2 id="temperature">Sampling temperature</h2>
+
+A setting that controls how random a language model's word choices are as it generates text: lower values keep it closer to the most likely tokens, and higher values give less likely tokens more chance, for more varied output. Hugging Face's [generation documentation](https://huggingface.co/docs/transformers/main_classes/text_generation) gives 1.0 as the default when a model's configuration sets no value, and Anthropic's [glossary](https://platform.claude.com/docs/en/about-claude/glossary) notes that on its API even a temperature of 0 does not make results fully deterministic.
+
+**In this catalog:** sampling settings that a model card recommends, such as temperature, are recorded in the release's run notes.
+
+**Example:** Google's model card for [Gemma 4 12B Unified](/open/gemma-4-12b/) recommends temperature 1.0, `top_p` 0.95, and `top_k` 64; the last two are further settings that limit which tokens can be chosen.
 
 <h2 id="self-hosting">Self-hosting / local inference</h2>
 
@@ -248,6 +464,38 @@ A company that is owned or controlled by another company, its parent. A research
 
 **Example:** [Red Hat](/companies/red-hat/) is documented in its record as a wholly owned subsidiary of IBM, with its own headquarters in Raleigh, North Carolina.
 
+<h2 id="synthetic-data">Synthetic data</h2>
+
+Training data generated by a model or program rather than collected from sources such as web pages, books, or code written by people, for example text rewritten by a language model or worked solutions it writes. Microsoft's [Phi-4 Technical Report](https://arxiv.org/abs/2412.08905) contrasts synthetic data with organic data such as web content or code, and describes generating it with techniques including multi-agent prompting, self-revision, and instruction reversal.
+
+**In this catalog:** training-data and provenance notes say when a publisher reports using synthetic data and, where documented, which models generated it.
+
+**Example:** The original release of NVIDIA's [Nemotron-CC](/open/nemotron-cc/) pretraining dataset has 6.3 trillion tokens: 4.4 trillion deduplicated original tokens from Common Crawl and 1.9 trillion synthetically generated ones. Its paper says the rephrased data was not checked for factual accuracy or fidelity to the original.
+
+<h2 id="system-card">System card</h2>
+
+A document in which a developer reports a model's capabilities and limitations, the safety evaluations it went through, and the decisions made about deploying it. Anthropic describes its [system cards](https://www.anthropic.com/system-cards) as documenting capabilities, safety evaluations, and responsible deployment decisions, and OpenAI's [GPT-4o System Card](https://arxiv.org/abs/2410.21276) covers the model's capabilities, limitations, and safety evaluations, including third-party assessments.
+
+**In this catalog:** like a [model card](/glossary/#model-card), a system card can be cited for what its developer states, but the catalog does not reproduce the safety or benchmark scores it reports ([methodology](/methodology/#sources)).
+
+**Example:** The explainer on [safety testing and frameworks](/learn/safety-testing-and-frameworks/) describes what a system card contains and how to read the safety claims in one.
+
+<h2 id="system-prompt">System prompt</h2>
+
+Instructions that a developer or application gives a model separately from the user's messages, setting its role, goals, tone, or rules. NIST's [AI 100-2 E2025](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) glossary describes system prompts as application-specific instructions, typically placed before other input, that may be treated as higher-trust than other input, and Anthropic's [Messages API](https://platform.claude.com/docs/en/api/messages/create) takes the system prompt as its own parameter rather than as a message.
+
+**In this catalog:** when a model card recommends or requires a system prompt, the release's run notes say so.
+
+**Example:** The model card for [Rnj-1 Instruct](/open/rnj-1-instruct/) recommends always adding a system prompt and warns that the model is especially inclined to write code, even for non-code tasks, when the system prompt is left out.
+
+<h2 id="token">Token</h2>
+
+The unit of text a language model reads and writes, which can be a whole word, part of a word, a single character, or a byte; a [tokenizer](/glossary/#tokenizer) splits text into tokens before the model processes it. Anthropic's [glossary](https://platform.claude.com/docs/en/about-claude/glossary) gives about 3.5 English characters per token as an approximate figure for its Claude models and notes that the number varies by language.
+
+**In this catalog:** context windows and dataset sizes are given in tokens as the publisher counts them, and a count depends on the tokenizer used to make it.
+
+**Example:** The dataset card for [FineWeb](/open/fineweb/) describes it as more than 18.5 trillion tokens of cleaned and deduplicated English web data and states its token counts using the GPT-2 tokenizer.
+
 <h2 id="tokenizer">Tokenizer</h2>
 
 The component that splits input text into tokens, such as words, parts of words, or single characters, and converts them into the numeric IDs a model works with. A model is normally run with the same tokenizer it was trained with. Hugging Face's guide to [tokenization algorithms](https://huggingface.co/docs/transformers/tokenizer_summary) describes the common subword methods.
@@ -256,6 +504,22 @@ The component that splits input text into tokens, such as words, parts of words,
 
 **Example:** [OpenELM 3B Instruct](/open/openelm-3b-instruct/) is published without tokenizer files. Apple's example script loads Meta's Llama 2 tokenizer from a separate Hugging Face repository, which is gated, and the script requires a Hugging Face access token.
 
+<h2 id="tpu">TPU (tensor processing unit)</h2>
+
+Google's custom chip for machine learning, an application-specific integrated circuit (ASIC) designed for the large matrix operations common in machine-learning algorithms. Google's [Introduction to Cloud TPU](https://docs.cloud.google.com/tpu/docs/intro-to-tpu) says TPUs have on-chip high-bandwidth memory, can be connected in groups called slices, and run code compiled by the XLA compiler.
+
+**In this catalog:** TPUs are named where a model card or technical report says a model was trained on them, and software records mention TPU support where their documentation states it.
+
+**Example:** [Google (Alphabet)](/companies/google/) offers TPUs to Google Cloud customers alongside GPUs. Its Cloud documentation describes TPU7x as the first release in the Ironwood family, Google Cloud's seventh-generation TPU.
+
+<h2 id="transformer">Transformer</h2>
+
+A neural-network architecture built around attention layers, which let each position in a sequence draw on the others, instead of processing the sequence one step at a time. It was proposed for machine translation in [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017), and NIST's [AI 100-2 E2025](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf) glossary calls transformer-based generative pre-trained models the predominant architecture for large language models.
+
+**In this catalog:** release summaries describe a model's architecture, such as a dense or mixture-of-experts transformer, as the publisher's documentation does.
+
+**Example:** [Transformer Explainer](/open/transformer-explainer/) runs a GPT-2 model in the web browser, so that users can enter their own text and follow how the transformer's components work together to predict the next token.
+
 <h2 id="unknown">Unknown</h2>
 
 A status meaning that an item has not been assessed yet, or that the available evidence is not enough to decide. It never stands in for "no."
@@ -263,6 +527,22 @@ A status meaning that an item has not been assessed yet, or that the available e
 **In this catalog:** "Not public" is used instead when the evidence shows that something is unavailable ([methodology](/methodology/#uncertainty)).
 
 **Example:** On [Gemma 4 31B](/open/gemma-4-31b/), training code is Unknown: the record notes fine-tuning code in Google DeepMind's gemma library, but no published code used to pre-train Gemma 4.
+
+<h2 id="vector-database">Vector database</h2>
+
+A database that stores embeddings together with the items they represent and finds the stored vectors closest to the vector of a query, which lets search and retrieval systems find related content by meaning. The [Faiss](https://github.com/facebookresearch/faiss) similarity-search library, for example, compares vectors by L2 distance or dot product and offers indexes that trade some search precision for speed or memory on very large collections.
+
+**In this catalog:** vector databases and vector-search libraries are project records, and the explainer on [retrieval-augmented generation](/learn/retrieval-augmented-generation/) shows where they fit in a retrieval system.
+
+**Example:** [Chroma](/open/chroma-db/) is an open-source database for AI applications that stores embeddings with metadata and supports dense, sparse, and hybrid vector search, keyword and regex search, and metadata filtering. It can run locally, be self-hosted, or be used as a managed cloud service.
+
+<h2 id="watermark">Watermark (AI content)</h2>
+
+A signal embedded in AI-generated content, usually imperceptible to people, that a detector can later check for to estimate whether the content came from a particular model or service. Google's [SynthID documentation](https://ai.google.dev/responsible/docs/safeguards/synthid) describes detectors that score content for the likelihood that it was watermarked, and notes that the score can drop sharply when generated text is thoroughly rewritten or translated.
+
+**In this catalog:** watermarking tools are project records. A watermark is different from [content credentials](/glossary/#c2pa), which attach signed provenance information to a file, although the C2PA specification can use a watermark to find credentials that were removed from a file.
+
+**Example:** [SynthID Bio](/open/synthid-bio/), from Google DeepMind, watermarks AI-generated protein sequences and biomolecular structures; its repository contains the code for watermarking sequences generated with ProteinMPNN and for computing detection scores.
 
 <h2 id="weights">Weights</h2>
 

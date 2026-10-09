@@ -1,0 +1,72 @@
+Today's AI grew out of about seventy years of research in universities, government agencies, and companies; this page follows the U.S. thread, though much work happened elsewhere too. A 1955 proposal for a summer study at Dartmouth College put "artificial intelligence" in its title, and a learning machine called the perceptron was demonstrated in 1958. Defense research agencies backed projects from a 1960s robot to driverless-vehicle races in the 2000s. A 2009 image database for training object-recognition models and a 2017 network design called the Transformer came later, and companies such as Google, Meta, and OpenAI have since published open-weight models. A 2021 federal law defines AI, and a September 2026 executive order tells federal agencies to use "Super Intelligence" in its place in their own documents. This is a short history for orientation, built from original documents and institutions' own pages, and it leaves out far more than it includes.
+
+<h2 id="naming-the-field">1955–1956: A proposal uses the term</h2>
+
+The [proposal for the Dartmouth Summer Research Project on Artificial Intelligence](http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html), hosted by Stanford, is dated August 31, 1955. Its authors were J. McCarthy of Dartmouth College, M. L. Minsky of [Harvard University](/companies/harvard-university/), N. Rochester of [IBM](/companies/ibm/), and C. E. Shannon of Bell Telephone Laboratories. They proposed that ten people spend two months of summer 1956 at Dartmouth, in Hanover, New Hampshire, working from a conjecture: that every feature of learning or intelligence could in principle be described precisely enough for a machine to simulate it. Its topics included programming a computer to use language, "neuron nets" (networks of simplified artificial neurons), self-improvement, and abstraction, and it lists earlier neuron-net research by several researchers, including Pitts and McCulloch and two of the proposal's own authors. Dartmouth's [milestones page](https://home.dartmouth.edu/about/artificial-intelligence-ai-coined-dartmouth) is titled "Artificial Intelligence (AI) Coined at Dartmouth" and calls the 1956 project the birth of the field.
+
+<h2 id="learning-machines">1958–1969: Learning machines and a robot</h2>
+
+A perceptron is a simple network that learns to sort inputs into two groups, adjusting itself each time it guesses wrong. [Cornell University's account](https://as.cornell.edu/news/professors-perceptron-paved-way-ai-60-years-too-soon) says the U.S. Office of Naval Research unveiled a demonstration of the perceptron in July 1958: an IBM 704 computer that, after 50 trials, taught itself to tell punch cards marked on the left from cards marked on the right. Its creator, Frank Rosenblatt, was then a research psychologist and project engineer at the Cornell Aeronautical Laboratory in Buffalo, New York. The same account says a 1969 book by Minsky and Seymour Papert, *Perceptrons*, attacked Rosenblatt's work and essentially sealed its fate.
+
+The Defense Department [created](https://www.darpa.mil/about/innovation-timeline/arpa-is-born) the Advanced Research Projects Agency (ARPA) on February 7, 1958; it was [renamed DARPA](https://www.darpa.mil/about/innovation-timeline/arpa-becomes-darpa) in 1972. DARPA's [Shakey page](https://www.darpa.mil/about/innovation-timeline/shakey-the-robot) says Charles Rosen of the Stanford Research Institute (now SRI International) proposed a robot in 1964 and ARPA began supporting it in 1966. Shakey carried a TV camera, a range finder, and radio communications, and could navigate on its own through a set of rooms.
+
+<h2 id="driverless-vehicles">2004–2007: Driverless vehicle challenges</h2>
+
+DARPA's [AI Next page](https://www.darpa.mil/research/programs/ai-next-campaign) describes more than five decades of its work on rule-based AI (following rules people write) and statistical-learning AI (finding patterns in data). DARPA also ran a set of races for self-driving ground vehicles ([Grand Challenge](https://www.darpa.mil/about/innovation-timeline/grand-challenge), [ten years later](https://www.darpa.mil/news/2014/grand-challenge-ten-years-later)):
+
+- **March 13, 2004:** 15 vehicles started a 142-mile course from near Barstow, California, to Primm, Nevada. None finished; the top-scoring vehicle traveled 7.5 miles.
+- **October 8, 2005:** five vehicles completed a 132-mile desert course, including [Stanford University's](/companies/stanford-university/) entry, Stanley.
+- **2007 Urban Challenge:** vehicles drove a staged city course in Victorville, California, among other traffic and obeying traffic rules. Six of 11 teams finished, including entries from [Carnegie Mellon University](/companies/carnegie-mellon-university/) and Stanford ([Urban Challenge](https://www.darpa.mil/about/innovation-timeline/darpa-urban-challenge)).
+
+<h2 id="data-and-transformers">2009–2017: Large datasets and the Transformer</h2>
+
+The [ImageNet paper](https://www.image-net.org/static_files/papers/imagenet_cvpr09.pdf), presented at the CVPR conference in 2009 by researchers at [Princeton University](/companies/princeton-university/), described an image database organized by WordNet, a database that groups the words for each concept into a set of synonyms called a synset. It then held 3.2 million images in 5,247 of those sets, each image checked by people through Amazon Mechanical Turk, an online platform for paid tasks, and aimed for tens of millions. Its [news list](https://www.image-net.org/about.php) records a 2019 research update on filtering and balancing its "person" subtree and a 2021 paper on privacy preservation: datasets can change after release.
+
+In June 2017, eight researchers, most at Google Brain and Google Research, posted ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762), presented at the NIPS 2017 conference. It proposed the Transformer, a network built only on attention (a way for each part of the input to weigh every other part) rather than the recurrent or convolutional networks that, the paper says, the dominant models for tasks such as translation were then based on. Later model documents name it: OpenAI's [gpt-oss model card](https://arxiv.org/abs/2508.10925) describes a [mixture-of-experts](/glossary/#mixture-of-experts) transformer architecture.
+
+<h2 id="open-weight-releases">2024–2026: Some open-weight releases</h2>
+
+An [open-weight](/glossary/#open-weight) model's trained parameters, its [weights](/glossary/#weights), can be downloaded by the public, though a license may still limit use. Google's [Gemma releases page](https://ai.google.dev/gemma/docs/releases) lists the initial Gemma release, in 2B and 7B sizes (billions of parameters), on February 21, 2024, and Gemma 4 on March 31, 2026 ([Gemma 4 31B](/open/gemma-4-31b/)); the [Gemma 4 model card](https://ai.google.dev/gemma/docs/core/model_card_4) says that release includes open-weights models. Meta's [Llama 4 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md) gives April 5, 2025 as the release date of [Llama 4 Scout](/open/llama-4-scout-17b-16e/) and Maverick. OpenAI's gpt-oss model card, posted in August 2025, says the weights of gpt-oss-120b and [gpt-oss-20b](/open/gpt-oss-20b/) are released under the Apache 2.0 license. These are examples, not a full list; the catalog's [timeline](/timeline/) shows release dates documented in its records.
+
+<h2 id="federal-policy">2021–2026: Federal law, standards, and orders</h2>
+
+- **Law.** The National Artificial Intelligence Initiative Act of 2020 is Division E of Public Law 116-283, dated January 1, 2021, and is codified at [15 U.S.C. chapter 119](https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap119.htm). It directs the President to establish a National Artificial Intelligence Initiative and defines AI as "a machine-based system that can, for a given set of human-defined objectives, make predictions, recommendations or decisions influencing real or virtual environments."
+- **Standards.** [NIST](/companies/nist/) released its [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) on January 26, 2023, for voluntary use.
+- **Orders change.** [Executive Order 14110](https://www.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf) of October 30, 2023, "Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence," was revoked by [Executive Order 14148](https://www.govinfo.gov/content/pkg/FR-2025-01-28/pdf/2025-01901.pdf) of January 20, 2025.
+- **A new term.** [Executive Order 14434](https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20321.pdf), "Inaugurating the Era of Super Intelligence," of September 29, 2026, directs agencies, to the maximum extent permitted by law, to use "Super Intelligence" and "SI" in place of "Artificial Intelligence" and "AI" in websites, reports, and other non-statutory documents. It does not require changing earlier regulations, contracts, or historical documents, defines the new terms by pointing to the 2020 Act's definition, and directs the Assistant to the President for Science and Technology to submit proposed legislative language within 60 days.
+
+When searching agency sites for newer material, try both terms; on October 8, 2026, NIST's site menu listed "Super intelligence" as a topic. See [finding AI policy and standards sources](/learn/policy-and-standards-sources/).
+
+<h2 id="worked-example">Worked example: checking a history claim</h2>
+
+Riley is a fictional student invented for this page. A class handout says: "The term artificial intelligence was invented at a 1956 Dartmouth conference."
+
+1. **Find the original.** Riley reads the proposal hosted by Stanford, not a summary.
+2. **Compare dates.** The proposal is dated August 31, 1955, and uses the phrase in its title, so the phrase was in writing before the 1956 meeting.
+3. **Separate plans from events.** A proposal says what its authors intended, not what happened that summer.
+4. **Attribute claims.** Dartmouth's page says the term was coined there; the proposal does not say whether anyone used the phrase earlier. Riley attributes the claim instead of stating it as fact.
+5. **Note credit to others.** The proposal cites earlier neuron-net research, so the ideas did not begin with this document.
+
+Riley's revision: "A proposal dated August 31, 1955, by researchers at Dartmouth, Harvard, IBM, and Bell Telephone Laboratories used 'artificial intelligence' in the title of a planned 1956 summer study."
+
+<h2 id="next">What you can do next</h2>
+
+- Browse the [timeline](/timeline/) of releases and news documented in the catalog.
+- Read [how the American AI ecosystem fits together](/learn/how-the-ecosystem-fits-together/) and [finding AI policy and standards sources](/learn/policy-and-standards-sources/).
+- Continue with [how language models work](/learn/how-language-models-work/) and [multimodal models](/learn/multimodal-models/).
+- Look up [open weight](/glossary/#open-weight), [weights](/glossary/#weights), and [model release](/glossary/#model-release) in the glossary.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- Stanford University (host): [A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence](http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html), dated August 31, 1955
+- Dartmouth College: [Artificial Intelligence (AI) Coined at Dartmouth](https://home.dartmouth.edu/about/artificial-intelligence-ai-coined-dartmouth)
+- Cornell University: [Professor's perceptron paved the way for AI – 60 years too soon](https://as.cornell.edu/news/professors-perceptron-paved-way-ai-60-years-too-soon) (Cornell Chronicle story of September 25, 2019, on the College of Arts and Sciences site)
+- DARPA: [ARPA is born](https://www.darpa.mil/about/innovation-timeline/arpa-is-born), [ARPA becomes DARPA](https://www.darpa.mil/about/innovation-timeline/arpa-becomes-darpa), [Shakey the Robot](https://www.darpa.mil/about/innovation-timeline/shakey-the-robot), [AI Next Campaign](https://www.darpa.mil/research/programs/ai-next-campaign), [Grand Challenge](https://www.darpa.mil/about/innovation-timeline/grand-challenge), [The DARPA Grand Challenge: Ten Years Later](https://www.darpa.mil/news/2014/grand-challenge-ten-years-later), [DARPA Urban Challenge](https://www.darpa.mil/about/innovation-timeline/darpa-urban-challenge)
+- ImageNet project (Princeton University and Stanford University): [ImageNet: A Large-Scale Hierarchical Image Database](https://www.image-net.org/static_files/papers/imagenet_cvpr09.pdf), [About ImageNet](https://www.image-net.org/about.php)
+- Google: [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (arXiv 1706.03762), [Gemma releases](https://ai.google.dev/gemma/docs/releases), [Gemma 4 model card](https://ai.google.dev/gemma/docs/core/model_card_4)
+- Meta: [Llama 4 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md)
+- OpenAI: [gpt-oss-120b &amp; gpt-oss-20b Model Card](https://arxiv.org/abs/2508.10925) (arXiv 2508.10925)
+- U.S. Government Publishing Office: [15 U.S.C. chapter 119, National Artificial Intelligence Initiative](https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap119.htm) (2023 edition); Federal Register texts of [Executive Order 14110](https://www.govinfo.gov/content/pkg/FR-2023-11-01/pdf/2023-24283.pdf), [Executive Order 14148](https://www.govinfo.gov/content/pkg/FR-2025-01-28/pdf/2025-01901.pdf), and [Executive Order 14434](https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20321.pdf)
+- NIST: [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)

@@ -1,0 +1,88 @@
+A language model starts as a base model, trained on a very large amount of text to predict what comes next. That makes it good at continuing text but not tuned to follow instructions. Developers then post-train it in stages, such as supervised fine-tuning on example answers, preference tuning on pairs of better and worse answers, and reinforcement learning on tasks whose answers a program can check, and release the results under names such as "Instruct," "Chat," or "Think." Anyone with a base model's weights can post-train it further; whether the base model's license follows the result depends on that license. A model card's `base_model` field and the developer's technical report tell you what a model was built on. This page is general information, not legal advice.
+
+<h2 id="pretraining">Pretraining and the base model</h2>
+
+A model's [weights](/glossary/#weights), also called parameters, are the numbers it learns in training; "8B" means about 8 billion of them. In pretraining, the model reads text split into tokens (words or pieces of words) and adjusts its weights to predict each next token better. OpenAI's [InstructGPT paper](https://arxiv.org/abs/2203.02155) describes this objective as predicting the next token on a webpage, and notes that it differs from following a user's instructions helpfully and safely.
+
+Meta's [Llama 3.1 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md) says those models were pretrained on about 15 trillion tokens from publicly available sources. Ai2's [Olmo 3 report](https://arxiv.org/abs/2512.13961) splits base-model training into pretraining on up to 5.9 trillion tokens, "midtraining" on 100 billion tokens of specialized data, and a long-context extension. Meta's card says pretrained models can be adapted for a variety of text-generation tasks, while its instruction-tuned models are intended for assistant-like chat.
+
+<h2 id="post-training">Post-training, stage by stage</h2>
+
+Each post-training stage is a form of [fine-tuning](/glossary/#fine-tuning): continued training on new data, starting from the previous stage's weights. The InstructGPT paper set out three steps: fine-tune on demonstrations written by human labelers; train a separate reward model to predict which of two outputs labelers prefer; then use a reinforcement-learning algorithm, PPO, to push the model toward outputs the reward model scores highly. The last two steps are reinforcement learning from human feedback (RLHF).
+
+### Supervised fine-tuning
+
+Supervised fine-tuning (SFT), or instruction tuning, trains on examples of the desired response. Hugging Face's [TRL documentation](https://huggingface.co/docs/trl/sft_trainer) shows a conversation as a list of messages: the user asks "What color is the sky?" and the assistant answers "It is blue."
+
+### Preference tuning: RLHF and DPO
+
+Preference tuning trains on comparisons. The [DPO paper](https://arxiv.org/abs/2305.18290) describes RLHF as complex and often unstable, and introduces Direct Preference Optimization, which reaches the same goal with a simple classification loss and no sampling from the model during training. [TRL's DPO trainer](https://huggingface.co/docs/trl/dpo_trainer) expects records with a prompt, a chosen answer, and a rejected one:
+
+```json
+{"prompt": "The sky is", "chosen": " blue.", "rejected": " green."}
+```
+
+### Reinforcement learning with verifiable rewards
+
+Ai2's [Tülu 3 report](https://arxiv.org/abs/2411.15124) introduced reinforcement learning with verifiable rewards (RLVR). Instead of a reward model, it uses tasks with checkable outcomes, such as math problems and precise instruction following, and gives a reward only when the model's answer is verified as correct. Tülu 3's recipe runs SFT, then DPO, then RLVR.
+
+<h2 id="variants">Instruct, chat, and think variants</h2>
+
+Names describe what a model was tuned for. They are conventions, not standards, so read the card.
+
+- **Chat.** Meta's [Llama 2 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama2/MODEL_CARD.md) calls its fine-tuned models Llama-2-Chat, optimized for dialogue.
+- **Instruct.** Llama 3.1 came as pretrained and instruction-tuned models, and its card says the tuned versions use SFT and RLHF.
+- **Think.** Ai2 post-trained the Olmo 3 base into Olmo 3 Think, trained with SFT, DPO, and RLVR to write a structured thinking trace before answering, and Olmo 3 Instruct, which answers without one and is tuned for function calling.
+- **Hybrid.** Nous Research's [Hermes 4 70B card](https://huggingface.co/NousResearch/Hermes-4-70B) says the model emits a `<think>…</think>` segment when it decides to deliberate, and a chat-template flag or system prompt turns reasoning mode on.
+
+<h2 id="built-on-another">When one model is built on another</h2>
+
+Some developers post-train another developer's base model; others run every stage themselves.
+
+- **Hermes 4.** Nous Research's [technical report](https://arxiv.org/abs/2508.18255) says it began with the 405B and 70B versions of Meta's Llama 3.1, and with Qwen3 14B for its 14B model. Nous assembled about 5 million examples, mostly newly synthesized, kept reasoning traces that passed task-specific verifiers, and trained with supervised fine-tuning.
+- **Tülu 3.** Ai2 applied SFT, DPO, and RLVR to Llama 3.1 base models. The [Llama 3.1 Tülu 3.1 8B card](https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B) links a published model for each stage: base, SFT, DPO, and final.
+- **Olmo 3.** Ai2 runs every stage itself, and its report says the release includes every stage, checkpoint, data point, and dependency used. The [Olmo 3 7B Instruct card](https://huggingface.co/allenai/Olmo-3-7B-Instruct) links the base, SFT, DPO, and final RLVR models, and the [base model card](https://huggingface.co/allenai/Olmo-3-1025-7B) lists pretraining [checkpoints](/glossary/#checkpoint) as repository revisions.
+
+<h2 id="licenses">What carries over: licenses</h2>
+
+The [Llama 3.1 Community License](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE) lets licensees create derivative works, with conditions. Anyone who distributes or makes available the Llama materials, a derivative of them, or a product or service that contains them (including another AI model) must provide a copy of the agreement and prominently display "Built with Llama." Copies of the Llama materials must also carry Meta's attribution notice in a "Notice" text file. Anyone who uses the materials or their outputs to create, train, fine-tune, or otherwise improve an AI model that is distributed or made available must "include “Llama” at the beginning of any such AI model name." Use must also follow Meta's acceptable use policy, which the license incorporates.
+
+Ai2's Tülu 3.1 card says all Llama 3.1 Tülu 3 models are released under that agreement, and that the Gemma Terms of Use and the Qwen License Agreement also apply because the training mix included outputs from third-party models. Post-training data can bring terms of its own. The Hermes 4 70B card lists `llama3` in its license field, although its `base_model` is Llama 3.1 70B.
+
+The [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) works differently. Section 4 allows distributing derivative works if you include the license, mark files you changed, and keep the original notices, and it lets you put your own modifications, or the derivative as a whole, under additional or different terms, provided you still comply with it. The Olmo 3 cards use Apache 2.0 and say the models are intended for research and educational use under Ai2's Responsible Use Guidelines.
+
+<h2 id="find-the-base">How to find out what a model was built on</h2>
+
+Start with the `base_model` field in the card's metadata. Hugging Face's [model card documentation](https://huggingface.co/docs/hub/model-cards#specifying-a-base-model) says you can set it for a fine-tune, an adapter, a quantized version, or a merge, and the Hub lets you filter models by it. Hermes 4 70B lists `meta-llama/Meta-Llama-3.1-70B`.
+
+The field may name only the previous step: Olmo 3 7B Instruct lists `allenai/Olmo-3-7B-Instruct-DPO`, its own DPO checkpoint, so follow the chain. The field is optional and set by the uploader, so confirm it in the technical report. If neither says, treat the base as unknown.
+
+<h2 id="worked-example">Worked example: tracing a model's lineage</h2>
+
+Riley is a fictional reader invented for this page. Riley is a graduate student who wants to fine-tune a small open model for a class project and publish the weights.
+
+1. **Open the cards.** Riley compares Llama 3.1 Tülu 3.1 8B and Olmo 3 7B Instruct. Each card's `base_model` points to a DPO checkpoint.
+2. **Follow the chain.** The stage tables lead back to Meta's Llama 3.1 8B for Tülu and to Ai2's own Olmo 3 7B base for Olmo.
+3. **Read the base licenses.** A Tülu-based release would follow the Llama 3.1 agreement (a copy of it, the attribution notice, "Built with Llama," a name starting with "Llama," and the acceptable use policy) plus the Gemma and Qwen terms Ai2 lists. An Olmo-based release would need the Apache 2.0 notices, and Riley could license the changes differently.
+4. **Pick a starting point.** Because Ai2 publishes each stage, Riley could start from the SFT checkpoint and add a preference-tuning step.
+
+Riley's outcome: start from the Olmo 3 7B Instruct SFT checkpoint and state its lineage on the new card. A student who needs something only Tülu offers could choose Tülu and follow its terms.
+
+<h2 id="next">What you can do next</h2>
+
+- Compare post-trained releases in the catalog: [Hermes](/open/hermes/) and [Hermes 4 70B](/open/hermes-4-70b/) from [Nous Research](/companies/nous-research/); [Olmo](/open/olmo/), [Olmo 3 7B Instruct](/open/olmo-3-7b-instruct/), and [Tülu](/open/tulu/) from [Ai2](/companies/ai2/); and Meta's [Llama](/open/llama/) family.
+- See the methods as code in [TRL](/open/trl/), Hugging Face's post-training library.
+- Look up [fine-tuning](/glossary/#fine-tuning), [checkpoint](/glossary/#checkpoint), [model card](/glossary/#model-card), and [license scope](/glossary/#license-scope) in the glossary.
+- Read [what open weight and open source actually mean](/learn/open-weight-vs-open-source/), [how to read a model card](/learn/how-to-read-a-model-card/), and [quantization](/learn/quantization/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- OpenAI: [Training language models to follow instructions with human feedback (arXiv 2203.02155)](https://arxiv.org/abs/2203.02155)
+- Stanford University: [Direct Preference Optimization (arXiv 2305.18290)](https://arxiv.org/abs/2305.18290)
+- Ai2: [Tülu 3 report (arXiv 2411.15124)](https://arxiv.org/abs/2411.15124), [Olmo 3 report (arXiv 2512.13961)](https://arxiv.org/abs/2512.13961), [Llama-3.1-Tulu-3.1-8B card](https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B), [Olmo-3-7B-Instruct card](https://huggingface.co/allenai/Olmo-3-7B-Instruct), [Olmo-3-1025-7B card](https://huggingface.co/allenai/Olmo-3-1025-7B)
+- Nous Research: [Hermes 4 Technical Report (arXiv 2508.18255)](https://arxiv.org/abs/2508.18255), [Hermes-4-70B card](https://huggingface.co/NousResearch/Hermes-4-70B)
+- Meta: [Llama 3.1 Community License](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE), [Llama 3.1 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md), [Llama 2 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama2/MODEL_CARD.md)
+- Hugging Face: [Model cards: specifying a base model](https://huggingface.co/docs/hub/model-cards#specifying-a-base-model), [TRL SFT Trainer](https://huggingface.co/docs/trl/sft_trainer), [TRL DPO Trainer](https://huggingface.co/docs/trl/dpo_trainer)
+- Apache Software Foundation: [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0)

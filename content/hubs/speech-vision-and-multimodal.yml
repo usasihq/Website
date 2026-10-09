@@ -1,0 +1,259 @@
+slug: speech-vision-and-multimodal
+title: Speech, vision, and multimodal AI
+summary: >-
+  Models and tools that work with images, audio, speech, and video: image-text encoders,
+  vision-language models, speech recognition, segmentation and vision backbones, and image and
+  video generation, with the terms that come with them.
+intro:
+  - text: >-
+      A multimodal model works with more than one kind of data, such as text, images, audio,
+      or video. Some designs pair two encoders. OpenAI's CLIP trains an image encoder and a
+      text encoder so that matching image and caption pairs score as similar, which lets it
+      pick the most relevant text for an image without being trained for that specific task.
+      Its model card describes CLIP as a research output: any deployed use, commercial or not,
+      is currently out of scope; certain surveillance and facial recognition uses are always
+      out of scope; and use should be limited to English.
+    source_ids: [clip-readme, clip-modelcard]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Vision-language models take images, and sometimes video, together with text and answer
+      in text. Ai2's Molmo2-O-7B joins the SigLIP 2 vision encoder to Ai2's Olmo 3 7B Instruct
+      language model and supports image, video, and multi-image understanding and grounding.
+      Microsoft's Florence-2 uses simple text prompts to choose a task such as captioning,
+      object detection, or segmentation. Google DeepMind's Gemma 4 12B Unified takes a
+      different route: instead of separate encoders, it projects image patches and audio
+      waveforms directly into the language model through lightweight linear layers, and it
+      reads video as sequences of frames.
+    source_ids: [molmo2-card, florence2-card, gemma4-12b-card]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Speech recognition models turn spoken audio into text. OpenAI's Whisper is a
+      sequence-to-sequence model trained for multilingual speech recognition, translation of
+      speech into English, and language identification. NVIDIA's parakeet-tdt-0.6b-v3 is a
+      600-million-parameter model that transcribes 25 European languages, detects the spoken
+      language automatically, and adds punctuation and word-level timestamps. Whisper's model
+      card warns that its output can include text that was not spoken, that accuracy varies
+      across languages, accents, and dialects, and cautions against transcribing people
+      recorded without their consent.
+    source_ids: [whisper-readme, whisper-modelcard, parakeet-v3-card]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Some vision models are building blocks for other software rather than chat systems.
+      Meta's SAM 3 detects, segments, and tracks objects in images and video from short text
+      phrases or from visual prompts such as points, boxes, and masks; SAM 3.1, released on
+      March 27, 2026, added new checkpoints and a shared-memory approach to tracking several
+      objects at once. Meta's DINOv3 is a family of vision foundation models that produce
+      dense image features, and its repository includes code for semantic segmentation and
+      depth estimation built on those features.
+    source_ids: [sam3-readme, dinov3-readme]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Generative models create images, video, or audio. Hugging Face's Diffusers library for
+      diffusion models is organized around three parts: pipelines that run a model in a few
+      lines of code, interchangeable noise schedulers, and pretrained model components.
+      Genmo's Mochi 1 preview is a 10-billion-parameter text-to-video diffusion model released
+      under Apache 2.0. Its card says the initial release generates 480p video and that
+      Genmo's reference code needs about 60 GB of GPU memory on a single GPU.
+    source_ids: [diffusers-readme, mochi-card]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Terms are set for each release, so models of the same type can come with different
+      conditions. parakeet-tdt-0.6b-v3 is under CC BY 4.0. Molmo2-O-7B is licensed under
+      Apache 2.0, but its card says it is intended for research and educational use and was
+      trained on third-party datasets subject to academic and non-commercial research use
+      only. SAM 3 and DINOv3 weights are available only after an access request and come under
+      Meta's own SAM License and DINOv3 License. Read the card and license for the specific
+      checkpoint before you build on it.
+    source_ids: [parakeet-v3-card, molmo2-card, sam3-readme, sam3-license, dinov3-readme]
+    reviewed_at: 2026-10-08
+scope: >-
+  Covers models and tools that take in or produce images, audio, speech, or video: image-text
+  encoders, vision-language models, speech recognition, segmentation and vision backbones, and
+  image and video generation. Robot control models are covered in the Robotics hub. It does
+  not compare accuracy across models or report benchmark results. Featured records are
+  examples chosen to cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: Multimodal models
+    href: /learn/multimodal-models/
+    note: Start here for how models handle images, audio, and video alongside text.
+  - label: How language models work
+    href: /learn/how-language-models-work/
+    note: Vision-language models such as Molmo2 are built on a language model, so start there.
+  - label: How to read a model card
+    href: /learn/how-to-read-a-model-card/
+    note: Find intended uses, out-of-scope uses, and known limitations for one release.
+  - label: What open weight and open source mean
+    href: /learn/open-weight-vs-open-source/
+    note: Downloadable weights are not the same as permission to use them for anything.
+  - label: Gated download
+    href: /glossary/#gated-download
+    note: Some vision checkpoints are released only after an access request.
+  - label: License scope
+    href: /glossary/#license-scope
+    note: Code, weights, and training data can carry different terms.
+  - label: AI content provenance
+    href: /learn/ai-content-provenance/
+    note: How the origin of generated images, audio, and video can be recorded and checked.
+  - label: Running AI on your own hardware
+    href: /hubs/local-ai/
+    note: Some multimodal models, such as Gemma 4 12B, are documented for local use.
+  - label: Robotics
+    href: /hubs/robotics/
+    note: Where vision and video models feed into robot control.
+directory_links:
+  - label: Records that mention vision
+    href: /open/?q=vision
+    note: A text search that matches vision-language models, vision backbones, and segmentation models.
+  - label: Speech and audio records
+    href: /open/?q=speech
+    note: A text search that matches speech recognition models and the tools around them.
+  - label: Records that mention video
+    href: /open/?q=video
+    note: A text search that matches video understanding and video generation models.
+  - label: Multimodal model releases
+    href: /open/?q=multimodal&kind=model
+    note: Model records that mention multimodal input or output. Check each license before use.
+organizations: [ai2, meta, nvidia, openai, genmo]
+artifacts:
+  - clip
+  - molmo2-o-7b
+  - florence-2
+  - gemma-4-12b
+  - whisper
+  - parakeet-tdt-0-6b-v3
+  - sam-3-1
+  - dinov3
+  - diffusers
+  - mochi-1-preview
+people: []
+primary_documents:
+  - source_id: clip-modelcard
+    note: >-
+      A short model card with direct statements of out-of-scope uses, a useful example of what
+      to look for before deploying a vision model.
+  - source_id: whisper-modelcard
+    note: >-
+      Describes Whisper's training data by language and its documented limitations, including
+      text that was not spoken and uneven accuracy across languages and accents.
+  - source_id: parakeet-v3-card
+    note: >-
+      Lists supported languages, input format, audio length limits, and the license for one
+      speech recognition release.
+  - source_id: molmo2-card
+    note: >-
+      Shows how a vision-language model names its vision encoder and language model, and how
+      license and training-data terms can differ.
+  - source_id: gemma4-12b-card
+    note: >-
+      Explains the encoder-free design of Gemma 4 12B and which input types each Gemma 4 size
+      accepts.
+  - source_id: sam3-readme
+    note: >-
+      SAM 3's description, the SAM 3.1 update, installation needs, and the access request
+      required for checkpoints.
+  - source_id: dinov3-readme
+    note: >-
+      Explains how to request DINOv3 weights and use the backbones and task adapters, with the
+      DINOv3 License noted at the end.
+  - source_id: diffusers-readme
+    note: >-
+      The library's own summary of its pipelines, schedulers, and model components.
+  - source_id: mochi-card
+    note: >-
+      A video generation model card that states its hardware needs, output resolution, and
+      known limitations.
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: clip-readme
+    title: CLIP README
+    url: https://raw.githubusercontent.com/openai/CLIP/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: clip-modelcard
+    title: "Model Card: CLIP"
+    url: https://raw.githubusercontent.com/openai/CLIP/main/model-card.md
+    publisher: OpenAI (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: molmo2-card
+    title: Molmo2-O-7B model card
+    url: https://huggingface.co/allenai/Molmo2-O-7B/raw/main/README.md
+    publisher: Ai2 (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: florence2-card
+    title: Florence-2-large model card
+    url: https://huggingface.co/microsoft/Florence-2-large/raw/main/README.md
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemma4-12b-card
+    title: Gemma 4 12B Unified (instruction-tuned) model card
+    url: https://huggingface.co/google/gemma-4-12B-it/raw/main/README.md
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: whisper-readme
+    title: Whisper README
+    url: https://raw.githubusercontent.com/openai/whisper/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: whisper-modelcard
+    title: "Model Card: Whisper"
+    url: https://raw.githubusercontent.com/openai/whisper/main/model-card.md
+    publisher: OpenAI (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: parakeet-v3-card
+    title: parakeet-tdt-0.6b-v3 model card
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: sam3-readme
+    title: "SAM 3: Segment Anything with Concepts (README)"
+    url: https://raw.githubusercontent.com/facebookresearch/sam3/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: sam3-license
+    title: SAM License
+    url: https://raw.githubusercontent.com/facebookresearch/sam3/main/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: 2025-11-19
+    accessed_at: 2026-10-08
+  - id: dinov3-readme
+    title: DINOv3 README
+    url: https://raw.githubusercontent.com/facebookresearch/dinov3/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: diffusers-readme
+    title: Diffusers README
+    url: https://raw.githubusercontent.com/huggingface/diffusers/main/README.md
+    publisher: Hugging Face (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: mochi-card
+    title: Mochi 1 preview model card
+    url: https://huggingface.co/genmo/mochi-1-preview/raw/main/README.md
+    publisher: Genmo (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08

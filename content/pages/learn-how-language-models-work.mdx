@@ -1,0 +1,67 @@
+A large language model is a file of learned numbers, called weights, plus an architecture: a fixed recipe for the calculations that turn those numbers and your text into a prediction. In training, the model was shown a very large amount of text, and its weights were adjusted again and again so it got better at predicting the next token, a word or piece of a word. When you send a prompt, the model scores every possible next token, one is chosen and added to the text, and the cycle repeats until the reply is finished. Chat assistants are base models given further training to follow instructions. Because the model produces likely text rather than looking facts up, a fluent answer can still be wrong, as developers say in their own documentation.
+
+<h2 id="model-file">What a model is made of</h2>
+
+Ai2's [Olmo 3 7B](https://huggingface.co/allenai/Olmo-3-1025-7B) has every file in public view. Its [file list](https://huggingface.co/allenai/Olmo-3-1025-7B/tree/main) includes three large `.safetensors` files holding the [weights](/glossary/#weights), the numbers learned in training; an [index file](https://huggingface.co/allenai/Olmo-3-1025-7B/blob/main/model.safetensors.index.json) counts 7,298,011,136 of them. A short [config.json](https://huggingface.co/allenai/Olmo-3-1025-7B/blob/main/config.json) describes the architecture: how many layers of calculation are stacked (32), how many different tokens the model knows (100,278), and how much text it can handle at once (65,536 tokens). The folder also holds the [tokenizer](/glossary/#tokenizer) files that turn text into tokens.
+
+The model card describes Olmo 3 as a Transformer-style autoregressive language model. The Transformer was proposed in the 2017 paper [Attention Is All You Need](https://arxiv.org/abs/1706.03762) as an architecture built entirely on a mechanism called attention. Google's [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/llm/transformers) explains self-attention as asking, for each token, how much every other token affects its meaning: in "The animal didn't cross the street because it was too tired," attention links "it" to "animal" more than to "street." Autoregressive means the model produces one piece at a time and feeds each piece back in as input for the next.
+
+<h2 id="training">What training does</h2>
+
+Models read tokens, not letters. Google's [introduction to language models](https://developers.google.com/machine-learning/crash-course/llm) says a token can be a word, part of a word, or a single character; "unwatched" might become "un", "watch", and "ed". [Tokens and context windows](/learn/tokens-and-context-windows/) covers them in depth.
+
+Training needs a very large amount of text: Olmo 3 7B's first training stage used 5.93 trillion tokens, according to its model card. The basic task is a guessing game: the model predicts the next token, the guess is compared with the token that actually comes next, and the weights are adjusted so the right answer becomes slightly more likely. Hugging Face's [guide to causal language modeling](https://huggingface.co/docs/transformers/tasks/language_modeling) describes this kind of model as predicting the next token while seeing only the tokens before it, and Google's course explains that the model's errors guide how an algorithm called backpropagation updates the parameter values. Over trillions of tokens, the weights come to capture patterns that, the course says, include a good deal about grammar, words, and idioms. This first phase is called pretraining. Its data stops at a cutoff date; the Olmo 3 card gives December 2024.
+
+<h2 id="inference">From prompt to answer</h2>
+
+Using a trained model is called [inference](/glossary/#inference). A prompt does not change the weights, as Google's [course page on prompting](https://developers.google.com/machine-learning/crash-course/llm/tuning) notes. A reply is built in a loop:
+
+1. **Tokenize.** The prompt is split into tokens, and each token becomes a number.
+2. **Score.** The model calculates a probability for every token it knows, which the 2017 paper calls next-token probabilities. In Google's example, to fill the blank in "When I hear rain on my roof, I ___ in my kitchen," a model might rate "cook soup" at 9.4% and "nap" at 2.5%.
+3. **Choose.** Greedy decoding always takes the top choice; Hugging Face's [generation guide](https://huggingface.co/docs/transformers/generation_strategies) notes that it starts repeating itself on longer outputs. Sampling picks at random, weighted by the probabilities. Google's [Gemini prompting guide](https://ai.google.dev/gemini-api/docs/prompting-strategies) says temperature controls the degree of randomness: lower values suit less open-ended answers, and higher values can give more diverse or creative results. Top-K and top-P settings narrow the choice to the most likely candidates.
+4. **Repeat.** The chosen token is added, and the longer text goes back in. Hugging Face's [text generation guide](https://huggingface.co/docs/transformers/llm_tutorial) says this continues until the model produces an end-of-sequence token or reaches a set length.
+5. **Detokenize.** The tokens are turned back into readable text.
+
+Because of the choosing step, the same prompt can produce different replies; OpenAI's [text generation guide](https://developers.openai.com/api/docs/guides/text) calls model output non-deterministic. The [Olmo 3 7B Instruct card](https://huggingface.co/allenai/Olmo-3-7B-Instruct) suggests a temperature of 0.6 and a top-p of 0.95, while Google recommends keeping the defaults for Gemini 3 models.
+
+<h2 id="context-window">What the model can see at once</h2>
+
+The [context window](/glossary/#context-window) is the text a model can take into account while writing a reply. Anthropic's [documentation](https://platform.claude.com/docs/en/build-with-claude/context-windows) describes it as all the text the model can reference when generating a response, including the response itself, and calls it a working memory, separate from the training data. Every model has a limit in tokens. In a conversation, each new turn includes the history so far, so long chats fill the window. [Tokens and context windows](/learn/tokens-and-context-windows/) explains what happens when it runs out.
+
+<h2 id="chat-assistants">Why chat assistants are trained further</h2>
+
+A pretrained model, often called a base or foundation model, has learned to continue text. Google's course calls instruction tuning an optional step that can improve a model's ability to follow instructions. [Why Language Models Hallucinate](https://arxiv.org/abs/2509.04664), a 2025 paper by researchers at OpenAI and Georgia Tech, describes current training as two stages, pretraining and post-training, with post-training refining the base model. Olmo shows the stages publicly: Olmo 3 7B Instruct starts from the Olmo 3 7B base model and adds supervised fine-tuning, direct preference optimization, and reinforcement learning, each with its own dataset. Its card shows the chat template, which wraps each message in markers such as `<|im_start|>user`, so a conversation still reaches the model as one sequence of tokens to continue. [Pretraining and post-training](/learn/pretraining-and-post-training/) covers these stages.
+
+<h2 id="fluent-but-wrong">Why fluent answers can still be wrong</h2>
+
+Fluency is not evidence of accuracy. The hallucination paper describes hallucinations as plausible but incorrect statements produced instead of an admission of uncertainty. It argues that pretraining leads to some errors even if the training data contained none, including on arbitrary facts with no pattern to learn, such as a birthday that appears only once in the data. It also argues that errors survive post-training partly because most evaluations give points for a correct guess and none for "I don't know," which rewards guessing.
+
+Anthropic's [guide to reducing hallucinations](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations) suggests explicitly allowing the model to say it does not know, asking it to extract word-for-word quotes from a long document before answering, and having it support each claim with a quote. It says these techniques reduce hallucinations but do not eliminate them, and advises validating critical information. The Olmo 3 cards warn that many statements from Olmo or any LLM are often inaccurate and should be verified.
+
+<h2 id="worked-example">Worked example: checking an answer</h2>
+
+Dana is a fictional reader invented for this page. Dana asks a chat assistant what year the town's public library opened, then asks again in a new chat and gets a different year.
+
+1. **Why two answers?** Each reply was sampled token by token, so a different year can come out on a different run. Anthropic's guide notes that inconsistent outputs to the same prompt could indicate hallucinations.
+2. **Is either one right?** A small library's opening date may appear rarely in training data, the kind of arbitrary fact the paper links to hallucination.
+3. **Give the model the source.** Dana pastes the library's own history page into the chat, putting it in the context window, and asks the assistant to quote the sentence that gives the opening year, or to say the page does not give one.
+4. **Check the quote.** Dana finds that sentence on the original page before using the year.
+5. **Outcome.** The year comes from the library's page; the assistant only helped locate it. The source counts, not how confident the answer sounded.
+
+<h2 id="next">What you can do next</h2>
+
+- Read [Tokens and context windows](/learn/tokens-and-context-windows/) and [Pretraining and post-training](/learn/pretraining-and-post-training/) for the next layer of detail.
+- See the [OLMo](/open/olmo/) family in the catalog, including [Olmo 3 7B](/open/olmo-3-1025-7b/) and [Olmo 3 7B Instruct](/open/olmo-3-7b-instruct/) from [Ai2](/companies/ai2/).
+- Look up [weights](/glossary/#weights), [tokenizer](/glossary/#tokenizer), [inference](/glossary/#inference), and [context window](/glossary/#context-window) in the glossary.
+- Learn [how to read a model card](/learn/how-to-read-a-model-card/), or browse the [foundation models hub](/hubs/foundation-models/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- Ai2: [Olmo-3-1025-7B model card](https://huggingface.co/allenai/Olmo-3-1025-7B), [file list](https://huggingface.co/allenai/Olmo-3-1025-7B/tree/main), [config.json](https://huggingface.co/allenai/Olmo-3-1025-7B/blob/main/config.json), and [model.safetensors.index.json](https://huggingface.co/allenai/Olmo-3-1025-7B/blob/main/model.safetensors.index.json); [Olmo-3-7B-Instruct model card](https://huggingface.co/allenai/Olmo-3-7B-Instruct)
+- Anthropic: [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows), [Reduce hallucinations](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations)
+- arXiv: Vaswani et al., [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (2017); Kalai, Nachum, Vempala, and Zhang, [Why Language Models Hallucinate](https://arxiv.org/abs/2509.04664) (2025), also published as an [OpenAI PDF](https://cdn.openai.com/pdf/d04913be-3f6f-4d2b-b283-ff432ef4aaa5/why-language-models-hallucinate.pdf)
+- Google: Machine Learning Crash Course, [Introduction to Large Language Models](https://developers.google.com/machine-learning/crash-course/llm), [What's a large language model?](https://developers.google.com/machine-learning/crash-course/llm/transformers), and [Fine-tuning, distillation, and prompt engineering](https://developers.google.com/machine-learning/crash-course/llm/tuning); Gemini API [Prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies)
+- Hugging Face: Transformers documentation, [Causal language modeling](https://huggingface.co/docs/transformers/tasks/language_modeling), [Text generation](https://huggingface.co/docs/transformers/llm_tutorial), and [Generation strategies](https://huggingface.co/docs/transformers/generation_strategies)
+- OpenAI: [Text generation guide](https://developers.openai.com/api/docs/guides/text)

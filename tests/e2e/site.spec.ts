@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { EXPLAINERS } from "../../lib/learn";
 import { isActive, readRecords, readRecordsFrom, shownCount, watchErrors } from "./helpers";
 
 const DISCLAIMER = "Independent project. Not a United States government website.";
@@ -184,6 +185,8 @@ test.describe("static hosting behavior", () => {
   });
 
   test("every sitemap page carries Support Us and the footer disclaimer", async ({ request }) => {
+    // One request per sitemap page (500+), so allow more than the default 30 s.
+    test.setTimeout(180_000);
     const sitemap = await (await request.get("/sitemap.xml")).text();
     const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
     expect(paths.length).toBeGreaterThan(10);
@@ -566,7 +569,7 @@ test("reference sections: learn, hubs, places, and record context", async ({ pag
   await page.goto("/learn/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Learn");
   const explainers = page.locator("section[aria-labelledby='explainers-heading'] li a");
-  expect(await explainers.count()).toBe(10);
+  expect(await explainers.count()).toBe(EXPLAINERS.length);
   await explainers.nth(1).click();
   await expect(page.getByRole("heading", { level: 2, name: "Sources", exact: true })).toBeVisible();
 

@@ -1,0 +1,99 @@
+A model's weights are millions or billions of numbers, and each is stored using a set number of bits; many releases use 16 bits per weight. Quantization stores them in fewer bits, often 8 or 4, so the weight files shrink roughly in proportion: a 4-bit copy is about a quarter to a third the size of the 16-bit original. That is how a model too large for a laptop's memory at 16 bits can fit once quantized. The cost is accuracy, because each stored number becomes an approximation; llama.cpp's documentation says quantization "may introduce some accuracy loss," which careful methods try to keep small. Quantized files come from publishers and from third parties, so prefer the publisher's or a source that documents how they were made.
+
+<h2 id="precision">Bits and precision</h2>
+
+A bit holds a 0 or a 1, so a number stored in 4 bits can take only 16 different values, while 16 bits allow 65,536. Fewer bits mean coarser steps between the values a weight can take. Hugging Face's [Transformers documentation](https://huggingface.co/docs/transformers/quantization/overview) says weights are typically stored in 32-bit floating point, with 16-bit formats increasingly common. Formats use their bits in two main ways:
+
+- **Floating point** splits the bits between an exponent, which sets how large or small a value can be, and a mantissa, which sets the fine detail. NVIDIA's [Transformer Engine guide](https://docs.nvidia.com/deeplearning/transformer-engine/examples/fp8_primer.html) describes two 8-bit versions, called FP8: E4M3 (1 sign, 4 exponent, and 3 mantissa bits) stores values up to ±448, while E5M2 reaches ±57,344 at lower precision.
+- **Integer** formats store evenly spaced whole numbers plus a scale, shared by a small group of weights, that converts them back. In the "affine" mode of Apple's [MLX](https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.quantize.html), each group of 32, 64, or 128 weights stores a scale and a bias, at 2, 3, 4, 5, 6, or 8 bits per weight.
+
+<h2 id="arithmetic">The arithmetic of weight files</h2>
+
+This section is arithmetic about weight files, not a hardware requirement. A file's size is roughly the number of weights times the bits per weight, divided by 8 bits per byte. For an imaginary model with 8 billion weights:
+
+- 32 bits per weight: 32 GB
+- 16 bits: 16 GB
+- 8 bits: 8 GB
+- 4 bits: 4 GB
+
+Shared scales add a little. Hugging Face's [GGUF documentation](https://huggingface.co/docs/hub/gguf) gives llama.cpp's Q4_K type 4.5 bits per weight, which would mean 4.5 GB here. In the [OCP Microscaling (MX) specification](https://www.opencompute.org/documents/ocp-microscaling-formats-mx-v1-0-spec-final-pdf), 32 values share one 8-bit scale, so MXFP4 uses 32 × 4 + 8 = 136 bits per 32 values, or 4.25 bits each.
+
+llama.cpp's [quantize README](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md) lists sizes for Meta's Llama 3.1 8B that follow this pattern: 14.96 GiB at 16 bits (F16), 7.95 GiB for Q8_0, and 4.58 GiB for Q4_K_M at about 4.89 bits per weight. A GiB is 2 to the 30th power bytes, about 7 percent more than a GB.
+
+Running a model takes more memory than its file. Ollama's [context length page](https://docs.ollama.com/context-length) says a longer context increases the memory required; see [understanding inference hardware](/learn/inference-hardware/).
+
+<h2 id="formats">Common formats: 16, 8, and 4 bits</h2>
+
+- **16-bit.** The GGUF documentation describes F16 as the standard half-precision format and BF16 as a shortened version of 32-bit floating point.
+- **8-bit.** The Transformer Engine guide says NVIDIA's H100 GPU introduced FP8 support. For integers, the [bitsandbytes](https://huggingface.co/docs/bitsandbytes/index) library's LLM.int8() uses 8 bits for most of its matrix math and handles outlier values separately in 16 bits.
+- **4-bit.** MXFP4, from the MX specification, uses 4-bit floating-point values (E2M1) in blocks of 32 that share a scale. OpenAI's [gpt-oss model card](https://arxiv.org/abs/2508.10925) says the [mixture-of-experts](/glossary/#mixture-of-experts) weights, over 90% of all parameters, were post-trained with MXFP4 quantization at 4.25 bits per parameter, which lets [gpt-oss-20b](/open/gpt-oss-20b/) run on systems with as little as 16 GB of memory.
+
+<h2 id="methods">Weight-only methods: AWQ and GPTQ</h2>
+
+Weight-only methods shrink the stored weights but leave activations, the intermediate values computed while the model runs, at higher precision. The AWQ paper gives W4A16 as an example of this setting, in which only the weights become low-bit integers. Both methods below are applied to an already trained model.
+
+- **GPTQ.** The [GPTQ paper](https://arxiv.org/abs/2210.17323) describes a one-shot method that uses approximate second-order information to reduce weights to 3 or 4 bits, and reports quantizing 175-billion-parameter models in about four GPU hours.
+- **AWQ.** MIT HAN Lab's [AWQ paper](https://arxiv.org/abs/2306.00978) starts from the finding that weights are not equally important: protecting about 1% of salient weights greatly reduces quantization error. It finds them from activation statistics collected on a small calibration set, sample data run through the model, then scales them up before quantizing. Its [repository](https://github.com/mit-han-lab/llm-awq) targets INT3 and INT4 weights.
+
+The Transformers documentation adds that other methods work on the fly, without calibration; Ai2's [Olmo 3 7B Instruct card](https://huggingface.co/allenai/Olmo-3-7B-Instruct) loads that model in 8-bit through bitsandbytes.
+
+<h2 id="gguf">llama.cpp types and GGUF files</h2>
+
+[GGUF](/glossary/#gguf) is a binary file format that holds a model's tensors (its arrays of weights) with a standard set of metadata, made for the GGML library and tools such as [llama.cpp](/open/llama-cpp/). The quantize README describes two phases: convert the original model to GGUF, typically in a high-precision format such as F32 or BF16, then pick a type:
+
+```bash
+./build/bin/llama-quantize gemma-4-E2B-it-bf16.gguf gemma-4-E2B-it-Q4_K_M.gguf Q4_K_M
+```
+
+The number in a type's name is its base bit width. "K" types group weights into super-blocks with their own scales, and variants differ in size: for Llama 3.1 8B, Q4_K_S is about 4.67 bits per weight and Q4_K_M about 4.89. "IQ" types use an importance matrix, which llama.cpp computes from the model and a sample text file and says can improve the quality of quantized models. On Hugging Face, a GGUF viewer shows each tensor's name, shape, and precision.
+
+<h2 id="trade-off">What you give up, in the tools' own words</h2>
+
+- llama.cpp says the accuracy loss is usually measured with perplexity and KL divergence. Its [perplexity README](https://github.com/ggml-org/llama.cpp/blob/master/tools/perplexity/README.md) says perplexity measures how well a model predicts the next token, lower being better, and is not directly comparable between models; KL divergence measures how similar the quantized and 16-bit models' output distributions are, with 0 meaning identical.
+- The quantize README warns that requantizing an already quantized file can severely reduce quality compared with starting from 16 or 32 bits.
+- The bitsandbytes documentation describes LLM.int8() as halving the memory needed for inference without performance degradation.
+- OpenAI's gpt-oss-20b card on [Hugging Face](https://huggingface.co/openai/gpt-oss-20b) says all its evaluations were performed with the same MXFP4 quantization.
+
+These are the publishers' descriptions. USASI does not publish scores; test a quantized model on your own tasks.
+
+<h2 id="choosing">Choosing a quantized file</h2>
+
+1. **Look to the publisher first.** OpenAI's gpt-oss model card lists a 12.8 GiB checkpoint for gpt-oss-20b, with the mixture-of-experts weights in MXFP4. Nous Research publishes [Hermes 4 70B](/open/hermes-4-70b/) in BF16 and FP8 itself, and its card points to GGUF files made by the LM Studio team.
+2. **Otherwise, pick a documented source.** Its card should name the original repository, the tool, and the type. Hugging Face's [model card documentation](https://huggingface.co/docs/hub/model-cards#specifying-a-base-model) lists "quantized" among the relationships the Hub infers from the `base_model` field.
+3. **Prefer files made from the 16- or 32-bit original,** not requantized ones.
+4. **Read the original license.** A quantized copy is made from the original weights.
+
+<h2 id="worked-example">Worked example: picking a file for a laptop</h2>
+
+Sam is a fictional reader invented for this page. Sam has a laptop with 16 GB of memory and wants to run an 8-billion-parameter model with llama.cpp.
+
+1. **Do the arithmetic.** At 16 bits, the weights alone would take about all 16 GB. At about 4.9 bits per weight, they come to under 5 GB.
+2. **Leave room.** The context needs memory too, so a file that nearly fills memory is a poor fit.
+3. **Check the source.** Sam looks for an official GGUF first, then for a repository that documents how its files were made.
+4. **Pick a type.** Using llama.cpp's Llama 3.1 8B figures, Q4_K_M (4.58 GiB) leaves more headroom than Q8_0 (7.95 GiB).
+5. **Test.** Sam runs the same prompts on both and compares the answers.
+
+Sam's outcome: start with Q4_K_M and move to Q8_0 only if answers are worse on Sam's tasks and memory allows.
+
+<h2 id="next">What you can do next</h2>
+
+- Browse [llama.cpp](/open/llama-cpp/), [AWQ](/open/awq/), [MLX](/open/mlx/), and [gpt-oss-20b](/open/gpt-oss-20b/) in the catalog.
+- Look up [quantization](/glossary/#quantization), [GGUF](/glossary/#gguf), [weights](/glossary/#weights), and [self-hosting](/glossary/#self-hosting) in the glossary.
+- Read [understanding inference hardware](/learn/inference-hardware/), [hosted or local](/learn/hosted-or-local/), and [pretraining, fine-tuning, and post-training](/learn/pretraining-and-post-training/).
+- Visit the [local AI hub](/hubs/local-ai/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- llama.cpp (ggml-org): [quantize README](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md), [imatrix README](https://github.com/ggml-org/llama.cpp/blob/master/tools/imatrix/README.md), [perplexity README](https://github.com/ggml-org/llama.cpp/blob/master/tools/perplexity/README.md)
+- Hugging Face: [GGUF](https://huggingface.co/docs/hub/gguf), [Transformers quantization overview](https://huggingface.co/docs/transformers/quantization/overview), [bitsandbytes documentation](https://huggingface.co/docs/bitsandbytes/index), [Model cards: specifying a base model](https://huggingface.co/docs/hub/model-cards#specifying-a-base-model)
+- NVIDIA: [Using FP8 and FP4 with Transformer Engine](https://docs.nvidia.com/deeplearning/transformer-engine/examples/fp8_primer.html)
+- Open Compute Project: [OCP Microscaling Formats (MX) Specification, version 1.0](https://www.opencompute.org/documents/ocp-microscaling-formats-mx-v1-0-spec-final-pdf)
+- OpenAI: [gpt-oss-120b and gpt-oss-20b Model Card (arXiv 2508.10925)](https://arxiv.org/abs/2508.10925), [gpt-oss-20b on Hugging Face](https://huggingface.co/openai/gpt-oss-20b)
+- MIT HAN Lab: [AWQ paper (arXiv 2306.00978)](https://arxiv.org/abs/2306.00978), [llm-awq repository](https://github.com/mit-han-lab/llm-awq)
+- IST Austria, ETH Zurich, and Neural Magic: [GPTQ paper (arXiv 2210.17323)](https://arxiv.org/abs/2210.17323)
+- Apple: [MLX quantize documentation](https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.quantize.html), [MLX README](https://github.com/ml-explore/mlx/blob/main/README.md)
+- Nous Research: [Hermes-4-70B card](https://huggingface.co/NousResearch/Hermes-4-70B)
+- Ai2: [Olmo-3-7B-Instruct card](https://huggingface.co/allenai/Olmo-3-7B-Instruct)
+- Ollama: [Context length](https://docs.ollama.com/context-length)

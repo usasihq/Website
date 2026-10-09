@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { HubIcon } from "@/components/learn/HubIcon";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
@@ -32,10 +34,23 @@ export default function HubsPage() {
           <ul className="grid gap-4 md:grid-cols-2">
             {hubs.map((h) => (
               <li key={h.slug}>
-                <Link prefetch={false} href={`/hubs/${h.slug}/`} className="card flex h-full flex-col p-5 hover:border-cyan">
-                  <span className="text-lg font-semibold text-text">{h.title}</span>
-                  <span className="mt-2 text-[0.9375rem] text-muted">{h.summary}</span>
-                  <span className="meta mt-3">Reviewed {formatDate(h.last_reviewed)}</span>
+                <Link prefetch={false} href={`/hubs/${h.slug}/`} className="card card-link group flex h-full gap-4 p-5">
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl border border-line-strong bg-elev text-cyan">
+                    <HubIcon slug={h.slug} className="h-5 w-5" />
+                  </span>
+                  <span className="flex min-w-0 flex-1 flex-col">
+                    <span className="text-lg font-semibold text-text group-hover:text-white">{h.title}</span>
+                    <span className="mt-2 text-[0.9375rem] text-muted">{h.summary}</span>
+                    <span className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-4 text-sm text-muted">
+                      <span>
+                        {h.organizations.length + h.artifacts.length + h.people.length} featured records · {h.reading_path.length} reading steps
+                      </span>
+                      <span className="meta inline-flex items-center gap-1">
+                        Reviewed {formatDate(h.last_reviewed)}
+                        <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 text-cyan transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    </span>
+                  </span>
                 </Link>
               </li>
             ))}

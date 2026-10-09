@@ -1,0 +1,78 @@
+A modality is a kind of data, such as text, images, audio, or video. A text-only model reads and writes text; a multimodal model also accepts or produces at least one other kind. Models that "see" or "hear" usually convert a picture or sound clip into the kind of internal pieces they use for text, often with a separate part called an encoder, then answer in text. Reading a modality is not producing it: a model that describes photos may be unable to create one. Licenses, use policies, and privacy risks can also differ by modality. A release's model card, the publisher's documentation for it, says which inputs and outputs it supports and where its limits are.
+
+<h2 id="inputs-and-outputs">Reading a card for inputs, outputs, and limits</h2>
+
+[Model cards](/glossary/#model-card) usually list what a model accepts and what it returns as separate items:
+
+- Meta's [Llama 4 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md) lists input as multilingual text and image, and output as multilingual text and code.
+- Google's [Gemma 4 model card](https://ai.google.dev/gemma/docs/core/model_card_4) says every size accepts text and images, the E2B, E4B, and 12B sizes also accept audio, and all of them generate text.
+- OpenAI's [Whisper model card](https://github.com/openai/whisper/blob/main/model-card.md) describes audio in and text out: transcription, plus translation into English.
+- NVIDIA's [MagpieTTS card](https://huggingface.co/nvidia/magpie_tts_multilingual_357m) is the reverse: text in, audio out.
+- Microsoft's [Florence-2-large card](https://huggingface.co/microsoft/Florence-2-large) takes an image plus a short task prompt, such as `<CAPTION>` or `<OD>` for object detection, and returns text, including box coordinates for detected objects.
+
+Cards also state limits for each modality. Gemma 4 accepts up to 30 seconds of audio and 60 seconds of video at one frame per second; Llama 4 was tested with up to five input images; and Parakeet expects 16 kHz mono audio.
+
+<h2 id="encoders">How pictures and sound become tokens</h2>
+
+Language models work on tokens, small pieces of text represented as numbers (see [tokens and context windows](/learn/tokens-and-context-windows/)). Other kinds of input have to be converted into something similar.
+
+- **Images.** Ai2's [Molmo2 paper](https://arxiv.org/abs/2601.10611) describes a common design. Images are split or resized into fixed-size crops; a vision encoder, a network trained on images, turns each crop into features for small patches; and a connector pools those features and projects them into "visual tokens" that go to the language model along with the text. The [Molmo2-O-7B card](https://huggingface.co/allenai/Molmo2-O-7B) pairs Ai2's Olmo 3 7B Instruct language model with a SigLIP vision backbone published by Google. In Gemma 4 31B the vision encoder has about 550 million parameters, and developers can choose how many tokens an image uses, with budgets of 70, 140, 280, 560, or 1,120; more tokens keep more detail but take more computation.
+- **Other designs.** Meta's [Llama 4 announcement](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) describes "early fusion," which feeds text and vision tokens into one model backbone, with a vision encoder based on MetaCLIP. Gemma 4 12B Unified has no separate encoders at all: its card says it projects raw image patches and audio waveforms directly into the language model's embedding space through lightweight linear layers.
+- **Audio.** The [Whisper paper](https://arxiv.org/abs/2212.04356) resamples audio to 16,000 samples per second and converts it into a log-Mel spectrogram, a grid showing how strong each frequency band is in each short slice of time, computed on 25-millisecond windows every 10 milliseconds. An encoder-decoder Transformer reads that grid and writes text.
+
+<h2 id="speech">Speech recognition and text-to-speech</h2>
+
+Automatic speech recognition (ASR) turns speech into text. The Whisper model card says the models were trained on 680,000 hours of internet audio with transcripts, perform unevenly across languages and accents, and may output text that was never spoken (hallucination). NVIDIA's [parakeet-tdt-0.6b-v3](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3) is a 600-million-parameter ASR model for 25 European languages that returns text with punctuation, capitalization, and timestamps.
+
+Text-to-speech (TTS) runs the other way. MagpieTTS predicts discrete audio codec tokens, compressed units of sound that a decoder turns back into a waveform, and outputs 22.05 kHz WAV audio in five built-in voices across 12 languages. Its card says it is not intended for zero-shot voice cloning (copying a new voice from a short sample). OpenAI's [text-to-speech guide](https://developers.openai.com/api/docs/guides/text-to-speech) says its usage policies require telling end users that the voice they hear is AI-generated.
+
+<h2 id="generation">Image and video generation by diffusion</h2>
+
+Some image and video generators use diffusion. The 2020 [Denoising Diffusion Probabilistic Models paper](https://arxiv.org/abs/2006.11239) by [UC Berkeley](/companies/uc-berkeley/) researchers describes a diffusion process that gradually adds noise to data until the signal is destroyed; the model learns to reverse it, so generating starts from noise and removes it step by step. [Genmo's](/companies/genmo/) [Mochi 1 preview card](https://huggingface.co/genmo/mochi-1-preview), tagged text-to-video, describes a 10-billion-parameter diffusion model that encodes the text prompt with a T5-XXL language model and works on video compressed by a separate autoencoder, a network that shrinks data and rebuilds it. Its card lists limits: 480p output, some warping with extreme motion, and poor results on animated content.
+
+<h2 id="terms">Licenses and use policies can differ by modality</h2>
+
+- The [Llama 4 Acceptable Use Policy](https://dev.meta.ai/llama/llama4/use-policy/) says that for any multimodal models in Llama 4, the license rights in Section 1(a) are not granted to individuals domiciled in, or companies with a principal place of business in, the European Union. The restriction does not apply to end users of a product that incorporates those models. The Llama 4 card lists image input for both Scout and Maverick.
+- One publisher may use different terms for models with different inputs and outputs. NVIDIA's Parakeet card uses [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode.en), which requires attribution when you share the licensed material; the MagpieTTS card uses the NVIDIA Open Model License.
+- Hosted services add their own rules. Besides the TTS disclosure requirement, OpenAI's [custom voices guide](https://developers.openai.com/api/docs/guides/custom-voices) limits the feature to eligible customers and requires a recorded consent statement from the voice actor.
+
+<h2 id="privacy">Privacy with photos and voices</h2>
+
+- **Location.** Apple's [guide to location metadata](https://support.apple.com/guide/personal-safety/manage-location-metadata-in-photos-ips0d7a5df82/web) explains that when Location Services is on for the Camera app, the coordinates where a photo or video was taken are embedded in it, and people you share it with may be able to see them. The guide shows how to remove them.
+- **Other people.** The Whisper card cautions against transcribing recordings of people made without their consent, and says the models may be able to recognize specific individuals.
+- **Inferences.** The Llama 4 Acceptable Use Policy prohibits collecting or inferring private or sensitive information about individuals, such as identity, health, or demographic information, unless you have the right to do so under applicable law.
+- **Where it runs.** A hosted service receives your files; local inference keeps them on your hardware ([hosted or local](/learn/hosted-or-local/), [AI and your data](/learn/ai-and-your-data/)).
+
+<h2 id="worked-example">Worked example: one project, three modalities</h2>
+
+Morgan is a fictional reader invented for this page. Morgan volunteers for a local history society that has recorded interviews, made with signed consent, and scanned photos with handwritten captions. The society wants transcripts, photo descriptions for its website, and short narrated summaries.
+
+1. **Split the job by modality.** Speech to text, image to text, and text to speech are three jobs, so Morgan reads each candidate card's input and output lines instead of assuming one model does everything.
+2. **Transcripts.** Parakeet v3 supports English and expects 16 kHz mono audio, so Morgan converts the recordings first. Because the Whisper card warns of text that was never spoken, a volunteer checks every transcript against its recording.
+3. **Photo descriptions.** Gemma 4 31B accepts images and returns text. Its card lists handwriting recognition and suggests higher image token budgets for reading small text, so Morgan uses one.
+4. **Narration.** MagpieTTS offers built-in voices and is not meant for voice cloning, so Morgan does not try to copy an interviewee's voice, and the society labels the audio as AI-generated.
+5. **Terms.** Morgan records each license: CC BY 4.0 for Parakeet, Apache 2.0 for Gemma 4, and the NVIDIA Open Model License for MagpieTTS.
+
+Morgan's outcome: three tools, each checked against its own card, run locally because the recordings name living people. A hosted service could work once the society approves its data policy.
+
+<h2 id="next">What you can do next</h2>
+
+- Open catalog records for [Parakeet](/open/parakeet/), [Whisper](/open/whisper/), [Florence-2](/open/florence-2/), [Molmo](/open/molmo/), [Gemma 4 31B](/open/gemma-4-31b/), [Llama 4 Scout](/open/llama-4-scout-17b-16e/), and [Mochi 1 preview](/open/mochi-1-preview/).
+- Read [how to read a model card](/learn/how-to-read-a-model-card/) and [how language models work](/learn/how-language-models-work/).
+- Look up [model card](/glossary/#model-card), [tokenizer](/glossary/#tokenizer), and [acceptable use policy](/glossary/#acceptable-use-policy) in the glossary.
+- Browse the [foundation models](/hubs/foundation-models/) and [local AI](/hubs/local-ai/) hubs.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- Meta: [Llama 4 model card](https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md), [Llama 4 Acceptable Use Policy](https://dev.meta.ai/llama/llama4/use-policy/), [The Llama 4 herd](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) (April 5, 2025)
+- Google: [Gemma 4 model card](https://ai.google.dev/gemma/docs/core/model_card_4)
+- OpenAI: [Whisper model card](https://github.com/openai/whisper/blob/main/model-card.md), [Robust Speech Recognition via Large-Scale Weak Supervision](https://arxiv.org/abs/2212.04356) (arXiv 2212.04356), [Text to speech guide](https://developers.openai.com/api/docs/guides/text-to-speech), [Custom voices guide](https://developers.openai.com/api/docs/guides/custom-voices)
+- NVIDIA: [parakeet-tdt-0.6b-v3 model card](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3), [magpie_tts_multilingual_357m model card](https://huggingface.co/nvidia/magpie_tts_multilingual_357m)
+- Ai2: [Molmo2 paper](https://arxiv.org/abs/2601.10611) (arXiv 2601.10611), [Molmo2-O-7B model card](https://huggingface.co/allenai/Molmo2-O-7B)
+- Microsoft: [Florence-2-large model card](https://huggingface.co/microsoft/Florence-2-large)
+- Genmo: [mochi-1-preview model card](https://huggingface.co/genmo/mochi-1-preview)
+- UC Berkeley researchers: [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) (arXiv 2006.11239)
+- Creative Commons: [Attribution 4.0 International legal code](https://creativecommons.org/licenses/by/4.0/legalcode.en)
+- Apple: [Manage location metadata in Photos](https://support.apple.com/guide/personal-safety/manage-location-metadata-in-photos-ips0d7a5df82/web)

@@ -1,0 +1,320 @@
+slug: safety-and-security
+title: AI safety, security, and trust
+summary: >-
+  How developers, standards bodies, and independent groups test AI systems for harm and
+  misuse: safety frameworks and model cards, testing tools, safety classifiers, content
+  provenance and watermarking, and prompt injection.
+intro:
+  - text: >-
+      NIST's AI Risk Management Framework, released on January 26, 2023, is intended for
+      voluntary use, and its core has four functions: Govern, Map, Measure, and Manage. NIST
+      says the framework is being revised as part of the White House AI Action Plan. NIST's
+      Dioptra test platform supports the Measure function and lists red-teaming in a
+      controlled environment among its uses. NIST's Center for Advancing Innovation and
+      Standards for Super Intelligence (CAISSI) says it will help industry develop voluntary
+      standards and lead unclassified evaluations focused on demonstrable risks such as
+      cybersecurity, biosecurity, and chemical weapons.
+    source_ids: [nist-rmf-page, nist-ai-100-1, dioptra-readme, nist-caissi]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Several developers publish frameworks for testing new models for risks of severe harm.
+      OpenAI's Preparedness Framework (version 2, April 2025) tracks biological and chemical,
+      cybersecurity, and AI self-improvement capabilities against set thresholds. Google
+      DeepMind's Frontier Safety Framework uses Critical Capability Levels, thresholds at
+      which a model may pose heightened risk of severe harm without mitigations. Anthropic's
+      Responsible Scaling Policy is at version 3.4, effective July 8, 2026. Model cards report
+      how one release was tested: OpenAI's gpt-oss card says that because open weights can be
+      fine-tuned, OpenAI also tested adversarially fine-tuned versions of gpt-oss-120b, which
+      it did not release.
+    source_ids: [oai-preparedness-v2, gdm-fsf, anthropic-rsp, gptoss-model-card]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Testing tools probe models for unwanted behavior. In Petri, an auditor model runs
+      multi-turn scenarios with a target model and a judge model scores the transcripts.
+      Anthropic says Petri has been part of its alignment assessment of every Claude model
+      since Claude Sonnet 4.5, and in May 2026 it handed Petri's development to Meridian Labs,
+      an AI evaluation nonprofit. METR's Inspect-Hawk runs evaluations written with Inspect
+      AI, the UK AI Security Institute's open-source framework, in isolated Kubernetes pods.
+      MLCommons' AILuminate benchmarks cover 12 hazard categories and include jailbreak tests
+      with text and with text plus images.
+    source_ids: [petri-readme, anthropic-petri, hawk-readme, ailuminate-page]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Safety classifiers screen what goes into and comes out of another model. Meta's Llama
+      Guard 4 is a 12-billion-parameter classifier for text and images that labels a prompt or
+      a response as safe or unsafe and, if unsafe, lists the violated categories from a
+      taxonomy based on MLCommons' hazard categories. OpenAI's gpt-oss-safeguard models, built
+      on gpt-oss, instead classify text against a written policy that the developer supplies.
+      OpenAI says they are intended for safety use cases and work correctly only with its
+      harmony response format.
+    source_ids: [llamaguard4-card, safeguard-readme, safeguard-20b-card]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Provenance records where content came from. NIST's report on synthetic content (NIST AI
+      100-4) covers watermarks, metadata, and detection, and says none of these techniques is
+      a comprehensive solution on its own. The C2PA standard's Content Credentials are a
+      cryptographically bound record of an asset's origin, edits, and use of AI; they show
+      whether that record is intact and signed by a trusted party, not whether its claims are
+      true. Google DeepMind has published watermarking code for generated text (SynthID Text,
+      a reference implementation not meant for production) and for AI-generated biological
+      sequences and structures (SynthID Bio).
+    source_ids: [nist-ai-100-4, c2pa-explainer, synthid-text-readme, synthidbio-readme]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Prompt injection is a security risk for systems built on language models. NIST's
+      taxonomy of attacks (NIST AI 100-2 E2025) calls it direct when the system's main user
+      supplies instructions that are appended to higher-trust ones, such as the system prompt,
+      and indirect when a third party plants instructions in data the system reads, such as
+      content fetched by an agent
+      or a retrieval system. NIST says current mitigations do not offer full protection, so
+      designers may assume injection is possible whenever a model sees untrusted input. For
+      agents that use tools, the added risks include running arbitrary code and exfiltrating
+      data.
+    source_ids: [nist-ai-100-2]
+    reviewed_at: 2026-10-08
+scope: >-
+  Covers how AI systems are tested and governed for safety and security: government
+  frameworks and standards work, developer safety frameworks and model cards, testing and
+  red-teaming tools, safety classifiers, content provenance and watermarking, and attacks such
+  as prompt injection. It does not rate how safe any model is or report test scores. Featured
+  records are examples chosen to cover the subject, not a ranking or a complete list.
+reading_path:
+  - label: Safety testing and frameworks
+    href: /learn/safety-testing-and-frameworks/
+    note: Start here for how developers and outside groups test models before and after release.
+  - label: How to read a model card
+    href: /learn/how-to-read-a-model-card/
+    note: Model and system cards are where a release's safety testing is usually reported.
+  - label: Reading evaluations
+    href: /learn/reading-evaluations/
+    note: Questions to ask of any published test result, including safety benchmarks.
+  - label: AI content provenance
+    href: /learn/ai-content-provenance/
+    note: How watermarks, metadata, and Content Credentials record where media came from.
+  - label: How models use tools
+    href: /learn/how-models-use-tools/
+    note: Tool use is where prompt injection can turn into actions, so read this before trusting an agent.
+  - label: Policy and standards sources
+    href: /learn/policy-and-standards-sources/
+    note: How to find and read government frameworks and standards documents.
+  - label: Acceptable use policy
+    href: /glossary/#acceptable-use-policy
+    note: A publisher's list of prohibited uses, which a license can make binding by reference.
+  - label: Benchmarks and evaluation
+    href: /hubs/evaluation/
+    note: Evaluation harnesses and benchmarks, including safety and system-performance tests.
+  - label: AI agents and agent tooling
+    href: /hubs/agents/
+    note: Agent protocols and their consent and permission rules.
+directory_links:
+  - label: Records that mention safety
+    href: /open/?q=safety
+    note: A text search that matches safety classifiers, alignment audits, and safety benchmarks.
+  - label: Records that mention security
+    href: /open/?q=security
+    note: A text search that matches security testing tools and benchmarks.
+  - label: Evaluation tools and benchmarks
+    href: /open/?kind=eval
+    note: Open evaluation records, including safety and jailbreak benchmarks.
+  - label: Standards bodies
+    href: /companies/?role=standards-body
+    note: Organizations whose records list standards work, including NIST and MLCommons.
+  - label: Nonprofit research organizations
+    href: /companies/?role=nonprofit-research
+    note: Nonprofits that do research, several of them on AI safety and evaluation.
+organizations: [nist, metr, mlcommons, center-for-ai-safety, far-ai]
+artifacts:
+  - dioptra
+  - petri
+  - hawk
+  - ailuminate
+  - gpt-oss-safeguard
+  - gpt-oss
+  - synthid-bio
+people: []
+primary_documents:
+  - source_id: nist-ai-100-1
+    note: >-
+      The AI Risk Management Framework itself, including the four core functions and the
+      characteristics NIST uses to describe trustworthy AI.
+  - source_id: nist-ai-100-2
+    note: >-
+      NIST's taxonomy of attacks on machine learning systems, with definitions of direct and
+      indirect prompt injection and a statement of the limits of current mitigations.
+  - source_id: nist-ai-100-4
+    note: >-
+      An overview of watermarking, metadata, and detection for synthetic content, with the
+      trade-offs and research gaps of each approach.
+  - source_id: c2pa-explainer
+    note: >-
+      The C2PA's plain-language explainer for Content Credentials, including what a valid
+      credential does and does not tell you.
+  - source_id: oai-preparedness-v2
+    note: >-
+      One developer's full framework, with its tracked categories, capability thresholds, and
+      safeguard requirements, useful for reading model cards that cite it.
+  - source_id: gptoss-model-card
+    note: >-
+      A model card for an open-weight release that explains how the developer tested
+      adversarially fine-tuned versions, a step specific to models whose weights are public.
+  - source_id: anthropic-rsp
+    note: >-
+      Lists every version of Anthropic's Responsible Scaling Policy with redlines and change
+      notes, which shows how such a policy changes over time.
+  - source_id: llamaguard4-card
+    note: >-
+      Shows the hazard categories a safety classifier is trained on and how it reports which
+      category a prompt or response violates.
+  - source_id: nist-caissi
+    note: >-
+      NIST's page for CAISSI, with its stated responsibilities and links to its published
+      evaluations of specific models. The evaluation items listed there use the name Center
+      for AI Standards and Innovation (CAISI).
+  - source_id: dioptra-readme
+    note: >-
+      NIST's test platform for AI, with its intended uses from in-house testing to audits and
+      red-teaming.
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: nist-rmf-page
+    title: AI Risk Management Framework
+    url: https://www.nist.gov/itl/ai-risk-management-framework
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: nist-ai-100-1
+    title: "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0)"
+    url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: 2023-01
+    accessed_at: 2026-10-08
+  - id: dioptra-readme
+    title: Dioptra README
+    url: https://raw.githubusercontent.com/usnistgov/dioptra/main/README.md
+    publisher: NIST (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: nist-caissi
+    title: Center for Advancing Innovation and Standards for Super Intelligence (CAISSI)
+    url: https://www.nist.gov/caissi
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: oai-preparedness-v2
+    title: Preparedness Framework, version 2
+    url: https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf
+    publisher: OpenAI
+    kind: official-page
+    published_at: 2025-04-15
+    accessed_at: 2026-10-08
+  - id: gdm-fsf
+    title: Strengthening our Frontier Safety Framework
+    url: https://deepmind.google/blog/strengthening-our-frontier-safety-framework/
+    publisher: Google DeepMind
+    kind: announcement
+    published_at: 2025-09-22
+    accessed_at: 2026-10-08
+  - id: anthropic-rsp
+    title: Anthropic's Responsible Scaling Policy
+    url: https://www.anthropic.com/responsible-scaling-policy
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gptoss-model-card
+    title: gpt-oss-120b and gpt-oss-20b Model Card
+    url: https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-08-05
+    accessed_at: 2026-10-08
+  - id: petri-readme
+    title: Inspect Petri README
+    url: https://raw.githubusercontent.com/meridianlabs-ai/inspect_petri/main/README.md
+    publisher: Meridian Labs (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: anthropic-petri
+    title: Donating our open-source alignment tool
+    url: https://www.anthropic.com/research/donating-open-source-petri
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-05-07
+    accessed_at: 2026-10-08
+  - id: hawk-readme
+    title: Inspect-Hawk README
+    url: https://raw.githubusercontent.com/METR/hawk/main/README.md
+    publisher: METR (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ailuminate-page
+    title: AILuminate
+    url: https://mlcommons.org/ailuminate/
+    publisher: MLCommons
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: llamaguard4-card
+    title: Llama Guard 4 model card
+    url: https://raw.githubusercontent.com/meta-llama/PurpleLlama/main/Llama-Guard4/12B/MODEL_CARD.md
+    publisher: Meta, PurpleLlama (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: safeguard-readme
+    title: gpt-oss-safeguard README
+    url: https://raw.githubusercontent.com/openai/gpt-oss-safeguard/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: safeguard-20b-card
+    title: gpt-oss-safeguard-20b model card
+    url: https://huggingface.co/openai/gpt-oss-safeguard-20b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: nist-ai-100-4
+    title: "NIST AI 100-4: Reducing Risks Posed by Synthetic Content"
+    url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-4.pdf
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: 2024-11
+    accessed_at: 2026-10-08
+  - id: c2pa-explainer
+    title: C2PA and Content Credentials Explainer (version 2.4)
+    url: https://spec.c2pa.org/specifications/specifications/2.4/explainer/Explainer.html
+    publisher: Coalition for Content Provenance and Authenticity (C2PA)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: synthid-text-readme
+    title: SynthID Text README
+    url: https://raw.githubusercontent.com/google-deepmind/synthid-text/main/README.md
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: synthidbio-readme
+    title: SynthID Bio README
+    url: https://raw.githubusercontent.com/google-deepmind/synthidbio/main/README.md
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: nist-ai-100-2
+    title: "NIST AI 100-2 E2025: Adversarial Machine Learning, A Taxonomy and Terminology of Attacks and Mitigations"
+    url: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf
+    publisher: National Institute of Standards and Technology
+    kind: official-page
+    published_at: 2025-03
+    accessed_at: 2026-10-08

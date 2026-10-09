@@ -47,12 +47,12 @@ const HUB_BY_ROLE: Record<string, string> = {
   "open-source-steward": "open-source-foundations",
 };
 const EXPLAINERS_BY_KIND: Record<string, string[]> = {
-  model: ["open-weight-vs-open-source", "how-to-read-a-model-card", "training-data-disclosures", "inference-hardware"],
-  runtime: ["hosted-or-local", "inference-hardware"],
-  framework: ["how-the-ecosystem-fits-together", "agents-and-robotics"],
-  dataset: ["training-data-disclosures"],
-  eval: ["reading-evaluations"],
-  "research-stack": ["open-weight-vs-open-source", "training-data-disclosures"],
+  model: ["open-weight-vs-open-source", "how-to-read-a-model-card", "pretraining-and-post-training", "training-data-disclosures", "inference-hardware", "quantization"],
+  runtime: ["hosted-or-local", "inference-hardware", "quantization", "how-models-use-tools"],
+  framework: ["how-the-ecosystem-fits-together", "how-models-use-tools", "retrieval-augmented-generation", "agents-and-robotics"],
+  dataset: ["training-data-disclosures", "pretraining-and-post-training"],
+  eval: ["reading-evaluations", "safety-testing-and-frameworks"],
+  "research-stack": ["open-weight-vs-open-source", "pretraining-and-post-training", "training-data-disclosures"],
 };
 
 function hubLinks(catalog: Catalog, slugs: Set<string>): RelatedLink[] {
@@ -85,5 +85,5 @@ export function organizationRelated(catalog: Catalog, o: Organization): RelatedL
 export function artifactRelated(catalog: Catalog, a: Artifact): RelatedLink[] {
   const hubs = new Set(catalog.hubsForArtifact(a.slug).map((h) => h.slug));
   if (a.kind === "runtime") hubs.add("local-ai");
-  return [...hubLinks(catalog, hubs), ...explainerLinks(EXPLAINERS_BY_KIND[a.kind] ?? [])];
+  return [...hubLinks(catalog, hubs), ...explainerLinks(EXPLAINERS_BY_KIND[a.kind] ?? []).slice(0, 4)];
 }

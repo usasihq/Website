@@ -1,0 +1,79 @@
+A language model learns from training data collected up to a cutoff date, so on its own it does not know your private documents or events after that date. Retrieval-augmented generation (RAG) works around this without retraining. Before the model answers, a search step finds passages in your documents that look relevant to the question and adds them to the prompt. The model then answers from those passages and can be asked to cite them. The search usually relies on embeddings, lists of numbers that place texts with similar meanings close together. RAG can still miss the right passage, mix up conflicting ones, or misread them, so it needs testing, and its index is a new copy of your documents that must be protected.
+
+<h2 id="why">Why a model alone does not know your documents</h2>
+
+A model's knowledge stops at a date. Anthropic's [models overview](https://platform.claude.com/docs/en/models/overview) lists a "reliable knowledge cutoff" of June 2026 for its current Claude models, and OpenAI's [embeddings guide](https://developers.openai.com/api/docs/guides/embeddings) says its text-embedding-3 models "lack knowledge of events that occurred after September 2021." Nor can a model have learned from documents it never saw, such as an internal handbook updated last week.
+
+A 2020 paper by Lewis and colleagues, [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401), introduced models it called RAG. For models that store knowledge in their parameters ([weights](/glossary/#weights)), it says "providing provenance for their decisions and updating their world knowledge remain open research problems." The paper paired a text generator with a searchable index of Wikipedia and showed the index could be "hot-swapped to update the model without requiring any retraining." The term is now used more broadly: Anthropic's [Contextual Retrieval](https://www.anthropic.com/engineering/contextual-retrieval) post describes RAG as a method that "retrieves relevant information from a knowledge base and appends it to the user's prompt."
+
+RAG is not always needed. The same post says a knowledge base under 200,000 tokens, "about 500 pages of material," can simply go into the prompt (see [tokens and context windows](/learn/tokens-and-context-windows/)).
+
+<h2 id="embeddings">Embeddings: meaning as numbers</h2>
+
+OpenAI defines an embedding as "a vector (list) of floating point numbers," where "the distance between two vectors measures their relatedness." Its [retrieval guide](https://developers.openai.com/api/docs/guides/retrieval) gives an example: for "When did we go to the moon?", the sentence "The first lunar landing occurred in July of 1969." shares no words with the query yet scores highest on semantic similarity.
+
+Embeddings come from a dedicated embedding model. The [EmbeddingGemma 300M](/open/embeddinggemma-300m/) [model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card) describes a 300M-parameter model that reads up to 2K tokens and outputs 768 numbers (or 512, 256, or 128), with an "on-device focus" suited to phones, laptops, and desktops. The card gives different prompts for queries and documents, and the [Sentence Transformers documentation](https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html) recommends separate `encode_query` and `encode_document` calls for "asymmetric" search, where a short question must find a longer passage. Both must land in the same vector space, so use one embedding model for both.
+
+<h2 id="chunks-and-search">Chunks and vector search</h2>
+
+Documents are first split into **chunks**, so search can return a passage instead of a whole file. Anthropic says chunks are "usually no more than a few hundred tokens"; the RAG paper split Wikipedia into "disjoint 100-word chunks," 21 million in all. OpenAI's vector stores chunk files automatically, with settings for chunk size and overlap (text shared by neighboring chunks).
+
+In **vector search**, each chunk's embedding goes into an index; at question time the question is embedded and the closest chunks come back. [FAISS](/open/faiss/), which the RAG paper used, is a library for "efficient similarity search and clustering of dense vectors," per its [README](https://github.com/facebookresearch/faiss/blob/main/README.md). Its index types trade search time against search quality and memory. Sentence Transformers explains that approximate search speeds up collections of millions of entries, but "results are not necessarily exact," so some close matches can be missed.
+
+Exact words still matter. Anthropic notes that embedding models "can miss crucial exact matches," such as an error code like "TS-999," which BM25, a ranking method based on matching words, can catch. OpenAI's [file search](https://developers.openai.com/api/docs/guides/tools-file-search) tool uses "semantic and keyword search."
+
+<h2 id="prompt-and-citations">Putting passages in the prompt, with citations</h2>
+
+Anthropic's [prompting guidance](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#long-context-prompting) suggests placing long documents above the question, labeling each with its source, and asking the model to "quote relevant parts of the documents first." Anthropic's [citations feature](https://platform.claude.com/docs/en/build-with-claude/citations) returns "valid pointers to the provided documents," and OpenAI's file search marks answers with file citations. A valid pointer shows where text came from, not that the answer reads it correctly, so readers should still open the source.
+
+<h2 id="failures">Where it goes wrong, and published fixes</h2>
+
+- **The right passage is not retrieved.** Anthropic says traditional RAG can "remove context when encoding information": a chunk saying a company's revenue grew may not name the company or quarter. Its Contextual Retrieval technique has a model write a short context, usually 50 to 100 tokens, for each chunk before both embedding and BM25 indexing; the post then adds a reranking model that rescores 150 candidates and keeps 20. Anthropic reports fewer failed retrievals in its tests on code, fiction, and research papers.
+- **Passages conflict.** Old and new versions of a policy can both match. Remove superseded documents, or record dates and filter on them; OpenAI's attribute filtering can restrict a search "to a specific date range."
+- **The model misreads or is misled.** More chunks raise the chance of including the right one, but Anthropic warns "more information can be distracting for models." OWASP's [prompt injection entry](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) says RAG does not fully mitigate injection and describes an attacker editing a document in a RAG repository to mislead answers (see [how AI models use tools](/learn/how-models-use-tools/)).
+
+<h2 id="privacy">Privacy when you index private documents</h2>
+
+If the index is hosted, read the provider's terms for that feature: OpenAI's [data controls page](https://developers.openai.com/api/docs/guides/your-data), for example, says data sent to its vector stores endpoint is not used for training, that its application state is kept "until deleted," and that the endpoint is not eligible for Zero Data Retention. The retrieval guide shows how to give a vector store an expiration policy. A local setup keeps the copy on your hardware: Google says the first version of [EmbeddingGemma](https://ai.google.dev/gemma/docs/embeddinggemma) generates embeddings directly on your hardware and "works without internet connection," and FAISS is a library you run yourself.
+
+Access is a separate question: retrieval returns whatever matches unless the application limits it, so a shared index can surface one team's files in another team's answers. File attributes, such as the "department" tag in OpenAI's retrieval examples, or separate indexes can keep them apart. Terms change; this is general information, not legal advice. See [AI and your data](/learn/ai-and-your-data/).
+
+<h2 id="evaluate">How to evaluate a RAG setup</h2>
+
+Test retrieval and answers separately.
+
+1. **Build a question set.** OpenAI's [evaluation guide](https://developers.openai.com/api/docs/guides/evaluation-best-practices) suggests mixing production data from users, correct answers written by domain experts, and historical logs, and including typical, edge, and adversarial cases. Note which passage answers each question.
+2. **Score retrieval.** Recall at k is the share of correct passages found in the top k results; Anthropic measured "1 minus recall@20," the share missed. Sentence Transformers' [InformationRetrievalEvaluator](https://sbert.net/docs/package_reference/sentence_transformer/evaluation.html) computes recall at k from queries, documents, and known correct matches.
+3. **Score answers.** OpenAI's example for questions over documents sets targets for context recall, context precision, and positively rated answers. OWASP's prompt injection entry mentions checking groundedness, meaning whether the answer is supported by the retrieved passages.
+4. **Repeat after every change.** OpenAI warns against "vibe-based evals."
+
+<h2 id="worked-example">Worked example: a handbook assistant</h2>
+
+Priya is a fictional reader invented for this page. Priya runs operations at a 40-person nonprofit and wants staff to ask questions about the employee handbook and years of policy memos, some of which replace earlier ones.
+
+1. **Is RAG needed?** The 80-page handbook is well under the roughly 500 pages Anthropic's post says can fit in a prompt, so it can go in directly. The memos add hundreds of pages and conflicting versions, which points toward retrieval.
+2. **Where does the index live?** The memos name staff. Priya compares a hosted vector store, checking retention and setting an expiration, with a local embedding model and FAISS index on an office machine.
+3. **How to chunk and search?** By section heading, with each memo's title and date attached, and with keyword search alongside embeddings because staff ask about form numbers.
+4. **How to handle conflicts?** Superseded memos leave the index.
+5. **Does it work?** Priya writes 40 real questions with the correct memo for each, checks recall at 5, reads every answer and its citations, and re-runs the set after each change.
+
+Priya's outcome: handbook in the prompt now, retrieval for memos only if the test questions show the need. Stricter rules on staff data could change that.
+
+<h2 id="next">What you can do next</h2>
+
+- See the catalog records for [FAISS](/open/faiss/) and [EmbeddingGemma 300M](/open/embeddinggemma-300m/), and browse the [data and datasets hub](/hubs/data-and-datasets/).
+- Read [how AI models use tools](/learn/how-models-use-tools/), since document search is often offered as a tool, and [tokens and context windows](/learn/tokens-and-context-windows/).
+- Read [hosted or local](/learn/hosted-or-local/) before choosing where your index lives.
+- Look up [context window](/glossary/#context-window), [weights](/glossary/#weights), and [self-hosting](/glossary/#self-hosting) in the glossary.
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- Lewis et al.: [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) (arXiv 2005.11401; abstract page and [v4 PDF](https://arxiv.org/pdf/2005.11401v4))
+- Anthropic: [Introducing Contextual Retrieval](https://www.anthropic.com/engineering/contextual-retrieval) (September 19, 2024), [Models overview](https://platform.claude.com/docs/en/models/overview), [Prompting best practices: long context prompting](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#long-context-prompting), [Citations](https://platform.claude.com/docs/en/build-with-claude/citations)
+- OpenAI: [Vector embeddings](https://developers.openai.com/api/docs/guides/embeddings), [Retrieval](https://developers.openai.com/api/docs/guides/retrieval), [File search](https://developers.openai.com/api/docs/guides/tools-file-search), [Data controls in the OpenAI platform](https://developers.openai.com/api/docs/guides/your-data), [Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices)
+- Google: [EmbeddingGemma model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card), [EmbeddingGemma overview](https://ai.google.dev/gemma/docs/embeddinggemma)
+- Meta: [Faiss README](https://github.com/facebookresearch/faiss/blob/main/README.md)
+- Sentence Transformers: [Semantic Search](https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html), [Evaluation reference](https://sbert.net/docs/package_reference/sentence_transformer/evaluation.html)
+- OWASP Gen AI Security Project: [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
