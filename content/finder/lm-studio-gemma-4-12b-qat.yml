@@ -1,0 +1,164 @@
+slug: lm-studio-gemma-4-12b-qat
+title: LM Studio with Gemma 4 12B (QAT Q4_0 GGUF)
+tasks: [chat-and-write, work-with-documents]
+runs: local
+summary:
+  text: >-
+    LM Studio is a desktop app for downloading and running language models on your computer, with
+    a chat interface and document attachments. Google's Gemma 4 documentation names a Q4_0 GGUF
+    download, built with quantization-aware training, for local use in llama.cpp and LM Studio.
+  reviewed_at: 2026-10-08
+  source_ids: [lms-docs, lms-rag, gemma-core]
+components:
+  - role: app
+    name: LM Studio
+    record_slug: element-labs
+    url: https://lmstudio.ai/docs/app
+  - role: runtime
+    name: llama.cpp engine inside LM Studio
+    record_slug: llama-cpp
+    url: https://lmstudio.ai/docs/app
+  - role: model
+    name: Gemma 4 12B instruction-tuned, QAT Q4_0 GGUF
+    record_slug: gemma-4-12b
+    url: https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [lms-sysreq, lms-docs]
+accelerators:
+  values: [apple-silicon, cpu-only]
+  source_ids: [lms-sysreq, gemma-core]
+memory:
+  variant: Gemma 4 12B at Q4_0 (4-bit), such as Google's gemma-4-12B-it-qat-q4_0-gguf
+  gpu_gb: 6.7
+  system_gb: null
+  statement:
+    text: >-
+      Google's Gemma 4 documentation lists about 6.7 GB of GPU or TPU memory to load Gemma 4 12B at
+      Q4_0 (4-bit), based on the model weights plus a 20% loading overhead. It says the figure does
+      not include memory for supporting software or the context window, which grows with the length
+      of prompts and responses.
+    reviewed_at: 2026-10-08
+    source_ids: [gemma-core, gemma4-12b-qat-card]
+skill: beginner
+skill_note: >-
+  LM Studio is a graphical installer; you find and download the model in its Discover tab and load
+  it from the Chat tab without using a command line.
+account_required:
+  value: false
+  source_ids: [lms-offline, gemma4-qat-hf-api]
+cost_basis:
+  value: free-download
+  note: >-
+    LM Studio's Free plan includes running local models with llama.cpp and MLX, and the Gemma 4
+    weights are Apache 2.0. Paid LM Studio plans add hosted cloud models and more included usage.
+  source_ids: [lms-pricing, gemma4-12b-qat-card]
+data_location:
+  text: >-
+    On your machine. LM Studio's offline guide says a downloaded model runs locally, nothing you
+    enter in chats leaves your device, and attached documents are processed locally. Searching for
+    and downloading models needs an internet connection.
+  reviewed_at: 2026-10-08
+  source_ids: [lms-offline]
+getting_started:
+  - "Check the system requirements, then download and install LM Studio for your operating system."
+  - "In the Discover tab, search for Google's gemma-4-12B-it-qat-q4_0-gguf and download it."
+  - "In the Chat tab, open the model loader and select the downloaded model."
+  - "To work with documents, attach .docx, .pdf, or .txt files to a chat message."
+getting_started_source_ids: [lms-basics, lms-sysreq, gemma-core, lms-rag]
+limitations:
+  - text: >-
+      On macOS, LM Studio needs Apple Silicon and macOS 14 or newer; Intel-based Macs are not
+      supported. On Windows it needs an x64 CPU with AVX2 or an ARM (Snapdragon X Elite) system, and
+      16GB of RAM and 4GB of dedicated VRAM are recommended.
+    reviewed_at: 2026-10-08
+    source_ids: [lms-sysreq]
+  - text: >-
+      For documents too long to fit in the model's context, LM Studio uses retrieval, which it says
+      sometimes works well but sometimes requires tuning and experimentation.
+    reviewed_at: 2026-10-08
+    source_ids: [lms-rag]
+  - text: >-
+      LM Studio's terms of use license the software solely for personal or internal business
+      purposes and prohibit redistributing, modifying, or reverse engineering it.
+    reviewed_at: 2026-10-08
+    source_ids: [lms-terms]
+unverified:
+  - USASI has not tested this configuration.
+  - LM Studio's pages reviewed do not name supported NVIDIA, AMD, or Intel graphics on Windows or Linux, so GPU acceleration on those cards is not established here.
+  - Google's memory figure excludes the context window; total memory at the context length you choose is not documented.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: lms-docs
+    title: Welcome to LM Studio Docs
+    url: https://lmstudio.ai/docs/app
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lms-basics
+    title: Get started with LM Studio
+    url: https://lmstudio.ai/docs/app/basics
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lms-sysreq
+    title: LM Studio system requirements
+    url: https://lmstudio.ai/docs/app/system-requirements
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lms-rag
+    title: Chat with Documents (LM Studio)
+    url: https://lmstudio.ai/docs/app/basics/rag
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lms-offline
+    title: Offline Operation (LM Studio)
+    url: https://lmstudio.ai/docs/app/offline
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lms-pricing
+    title: LM Studio pricing
+    url: https://lmstudio.ai/pricing
+    publisher: LM Studio (Element Labs)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lms-terms
+    title: LM Studio terms of use
+    url: https://lmstudio.ai/app-terms
+    publisher: LM Studio (Element Labs)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemma-core
+    title: Gemma 4 overview (Gemma documentation)
+    url: https://ai.google.dev/gemma/docs/core
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemma4-12b-qat-card
+    title: gemma-4-12B-it-qat-q4_0-gguf model card
+    url: https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf/raw/main/README.md
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemma4-qat-hf-api
+    title: google/gemma-4-12B-it-qat-q4_0-gguf repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/google/gemma-4-12B-it-qat-q4_0-gguf
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-08

@@ -1,0 +1,55 @@
+slug: apache-2-0-with-llvm-exception
+name: Apache License 2.0 with LLVM Exceptions
+spdx: Apache-2.0 WITH LLVM-exception
+category: permissive
+official_url: https://llvm.org/LICENSE.txt
+summary:
+  text: >-
+    This is the Apache License, Version 2.0 followed by two exceptions headed "LLVM Exceptions to
+    the Apache 2.0 License". The LLVM Project's license file states that the project "is under
+    the Apache License v2.0 with LLVM Exceptions". The SPDX License List records the exception
+    as LLVM-exception and notes that it "was created specifically to be used with Apache-2.0".
+    The Apache 2.0 terms apply in full except where the two exceptions change them.
+  reviewed_at: 2026-10-08
+  source_ids: [llvm-license-text, spdx-llvm-exception]
+key_terms:
+  - label: Base license
+    text: >-
+      The full Apache License 2.0 text comes first, including its copyright and patent grants,
+      its redistribution conditions in Section 4, its trademark clause, and its warranty
+      disclaimer. The LLVM exceptions are appended after the Apache terms.
+    source_ids: [llvm-license-text]
+  - label: Embedded compiled portions
+    text: >-
+      If compiling your source code embeds portions of the software into an object form of that
+      code, you may redistribute those embedded portions in that object form "without complying
+      with the conditions of Sections 4(a), 4(b) and 4(d) of the License."
+    source_ids: [llvm-license-text, spdx-llvm-exception]
+  - label: Combining with GPLv2 software
+    text: >-
+      If you combine or link compiled forms with software licensed under the GPLv2, and a court
+      determines that the patent provision (Section 3), the indemnity provision (Section 9), or
+      another section conflicts with the GPLv2, you may choose to treat those sections as waived,
+      "but only in their entirety and only with respect to the Combined Software."
+    source_ids: [llvm-license-text, spdx-llvm-exception]
+match:
+  spdx: [Apache-2.0 WITH LLVM-exception]
+  name_prefixes: ["Apache License 2.0 with LLVM Exceptions"]
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: llvm-license-text
+    title: LLVM Project license (Apache License v2.0 with LLVM Exceptions)
+    url: https://llvm.org/LICENSE.txt
+    publisher: LLVM Project
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: spdx-llvm-exception
+    title: LLVM Exception (SPDX License List)
+    url: https://spdx.org/licenses/LLVM-exception.html
+    publisher: SPDX Workgroup, The Linux Foundation
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08

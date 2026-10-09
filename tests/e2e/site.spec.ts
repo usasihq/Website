@@ -316,7 +316,8 @@ test("People Behind Local AI is a standing list, the same in any month", async (
   expect(ids[1]).toEqual(ids[0]);
   await page.goto("/");
   const strip = page.locator("section[aria-labelledby='local-corner-heading']");
-  await expect(strip.locator("ul > li > a")).toHaveCount(people.length);
+  await expect(strip.locator("ul > li > a")).toHaveCount(Math.min(people.length, 12));
+  if (people.length > 12) await expect(strip.getByRole("link", { name: `See all ${people.length} people` })).toBeVisible();
 });
 
 test.describe("first screen", () => {

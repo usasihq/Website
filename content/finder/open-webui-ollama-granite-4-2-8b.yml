@@ -1,0 +1,175 @@
+slug: open-webui-ollama-granite-4-2-8b
+title: Open WebUI with Granite 4.2 8B on Ollama
+tasks: [work-with-documents, chat-and-write]
+runs: local
+summary:
+  text: >-
+    Open WebUI is a self-hosted chat interface that works with Ollama and includes local
+    retrieval-augmented generation, so you can load documents into a chat. IBM's Granite 4.2 8B,
+    offered in Ollama as granite4.2:8b, is described there as supporting retrieval-augmented
+    generation.
+  reviewed_at: 2026-10-08
+  source_ids: [owui-readme, ollama-lib-granite42]
+components:
+  - role: app
+    name: Open WebUI
+    record_slug: open-webui
+    url: https://docs.openwebui.com/getting-started/quick-start/
+  - role: runtime
+    name: Ollama
+    record_slug: ollama
+    url: https://ollama.com/download
+  - role: model
+    name: Granite 4.2 8B (Ollama tag granite4.2:8b)
+    record_slug: granite-4-2-8b
+    url: https://ollama.com/library/granite4.2
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [owui-quickstart, ollama-windows, ollama-macos, ollama-linux]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [ollama-gpu, ollama-macos]
+memory: null
+skill: intermediate
+skill_note: >-
+  Start Open WebUI with Docker or with Python (pip or uv), or use its separate desktop app; then
+  create the local admin account and check the Ollama connection in the admin settings.
+account_required:
+  value: false
+  source_ids: [owui-quickstart, ollama-quickstart]
+cost_basis:
+  value: free-download
+  note: >-
+    The Open WebUI License permits use and redistribution with a condition on keeping its branding,
+    the Granite 4.2 weights are Apache 2.0, and Ollama's pricing page says running models on your
+    own hardware is always unlimited.
+  source_ids: [owui-license, ollama-lib-granite42, ollama-pricing]
+data_location:
+  text: >-
+    On your machine. Open WebUI says it is built to run entirely offline, and its quick start says
+    everything, including the admin login, stays in your own data volume. Ollama's FAQ says it does
+    not see your prompts or data when you run locally.
+  reviewed_at: 2026-10-08
+  source_ids: [owui-readme, owui-quickstart, ollama-faq]
+getting_started:
+  - "Install Ollama, then run `ollama run granite4.2:8b`."
+  - "Start Open WebUI with the README's Docker command for Ollama on the same computer, or with Python 3.11: `pip install open-webui`, then `open-webui serve`."
+  - "Open http://localhost:3000 (Docker) or http://localhost:8080 (Python) and create the admin account."
+  - "Check the Ollama connection under your avatar > Settings > Admin > Connections, then load documents into a chat or pull them from your library with the # command."
+getting_started_source_ids: [ollama-lib-granite42, owui-readme, owui-quickstart]
+limitations:
+  - text: >-
+      Open WebUI supports Python 3.11 and 3.12; Python 3.13 is not supported yet.
+    reviewed_at: 2026-10-08
+    source_ids: [owui-quickstart]
+  - text: >-
+      On Linux x86_64, a pip install pulls in PyTorch with NVIDIA CUDA libraries whatever GPU the
+      machine has; on machines without an NVIDIA GPU, the guide says to install the CPU build of
+      PyTorch first.
+    reviewed_at: 2026-10-08
+    source_ids: [owui-quickstart]
+  - text: >-
+      The first account created is the administrator, and losing its password locks you out of
+      instance settings; single-user mode without a login cannot later be switched to multi-account
+      mode.
+    reviewed_at: 2026-10-08
+    source_ids: [owui-quickstart]
+  - text: >-
+      Ollama defaults to a 4k-token context on GPUs with less than 24 GiB of VRAM; a larger context
+      for long documents needs more memory.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-ctx]
+unverified:
+  - USASI has not tested this configuration.
+  - IBM and Ollama do not state a memory figure for granite4.2:8b in the pages reviewed, so memory fit is not established.
+  - How well Granite 4.2 8B answers questions about your documents is not documented.
+  - Ollama names Intel GPUs only in its Linux Vulkan driver instructions and lists no supported Intel models; Intel GPU acceleration on Windows is not established here, and Intel-based Macs run on the CPU only.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: owui-readme
+    title: Open WebUI README
+    url: https://raw.githubusercontent.com/open-webui/open-webui/main/README.md
+    publisher: Open WebUI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: owui-license
+    title: Open WebUI License
+    url: https://raw.githubusercontent.com/open-webui/open-webui/main/LICENSE
+    publisher: Open WebUI (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: owui-quickstart
+    title: Open WebUI quick start
+    url: https://docs.openwebui.com/getting-started/quick-start/
+    publisher: Open WebUI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-lib-granite42
+    title: granite4.2 in the Ollama library
+    url: https://ollama.com/library/granite4.2
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-windows
+    title: Ollama on Windows
+    url: https://docs.ollama.com/windows
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-macos
+    title: Ollama on macOS
+    url: https://docs.ollama.com/macos
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-linux
+    title: Ollama on Linux
+    url: https://docs.ollama.com/linux
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-gpu
+    title: Hardware support (Ollama documentation)
+    url: https://docs.ollama.com/gpu
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-ctx
+    title: Context length (Ollama documentation)
+    url: https://docs.ollama.com/context-length.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-faq
+    title: Ollama FAQ
+    url: https://docs.ollama.com/faq.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-quickstart
+    title: Ollama quickstart
+    url: https://docs.ollama.com/quickstart.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-pricing
+    title: Ollama pricing
+    url: https://ollama.com/pricing
+    publisher: Ollama
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08

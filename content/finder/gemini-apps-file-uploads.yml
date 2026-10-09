@@ -1,0 +1,98 @@
+slug: gemini-apps-file-uploads
+title: Gemini Apps on the web and mobile with file uploads
+tasks: [chat-and-write, work-with-documents]
+runs: hosted
+summary:
+  text: >-
+    Gemini Apps are Google's hosted AI assistant at gemini.google.com and in mobile apps, used for
+    tasks such as brainstorming, summaries, and first drafts. When signed in, you can upload
+    documents, spreadsheets, and other files to get answers and summaries about them.
+  reviewed_at: 2026-10-08
+  source_ids: [gemini-use, gemini-upload]
+components:
+  - role: service
+    name: Gemini Apps (gemini.google.com and mobile apps)
+    record_slug: google
+    url: https://support.google.com/gemini/answer/13275745?hl=en
+platforms:
+  values: [web, android, ios]
+  source_ids: [gemini-use]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: beginner
+skill_note: >-
+  Use it in a supported web browser or the mobile app and sign in with a Google account; no
+  technical setup is needed.
+account_required:
+  value: true
+  source_ids: [gemini-upload, gemini-use]
+cost_basis:
+  value: free-tier-with-limits
+  note: >-
+    File uploads have rolling usage limits that reset after a period of time; upgrading to a Google
+    AI plan such as Google AI Pro or Ultra raises upload limits and lengths.
+  source_ids: [gemini-upload]
+data_location:
+  text: >-
+    On the provider's servers. Google's Gemini Apps privacy hub says that with Keep Activity on, a
+    subset of chats is reviewed by human reviewers to improve Google services, and asks you not to
+    enter confidential information in that case. Temporary chats are not used to train Google's AI
+    models.
+  reviewed_at: 2026-10-08
+  source_ids: [gemini-privacyhub]
+getting_started:
+  - "Go to gemini.google.com in a supported browser (Chrome, Safari, Firefox, Opera, or Chromium-based Edge), or open the Gemini mobile app."
+  - "Sign in with a personal Google account, or a work or school account where your administrator has enabled access."
+  - "In the text box, enter a prompt, click Add files, then Upload Files, choose a file, and click Submit."
+getting_started_source_ids: [gemini-use, gemini-upload]
+limitations:
+  - text: >-
+      Up to 10 files can be uploaded per prompt; videos can be up to 2 GB and other files up to 100
+      MB. Without an upgrade, total audio is limited to 10 minutes and total video to 5 minutes.
+    reviewed_at: 2026-10-08
+    source_ids: [gemini-upload]
+  - text: >-
+      Google says very large uploads may produce responses that miss connections or details spread
+      across the content.
+    reviewed_at: 2026-10-08
+    source_ids: [gemini-upload]
+  - text: >-
+      Chats reviewed by human reviewers are kept for up to three years, and chats made with Keep
+      Activity off are kept with your account for 72 hours.
+    reviewed_at: 2026-10-08
+    source_ids: [gemini-privacyhub]
+  - text: >-
+      Some Gemini features work without signing in, but file upload requires signing in.
+    reviewed_at: 2026-10-08
+    source_ids: [gemini-use, gemini-upload]
+unverified:
+  - USASI has not tested this configuration.
+  - Which Gemini model answers a given request, and its limits on each plan, are not recorded here.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: gemini-use
+    title: Use Gemini Apps
+    url: https://support.google.com/gemini/answer/13275745?hl=en
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemini-upload
+    title: Upload and analyze files in Gemini Apps
+    url: https://support.google.com/gemini/answer/14903178?hl=en
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemini-privacyhub
+    title: Gemini Apps Privacy Hub
+    url: https://support.google.com/gemini/answer/13594961?hl=en
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

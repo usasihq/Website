@@ -1,0 +1,27 @@
+explainer: agents-and-robotics
+updated_at: 2026-10-08
+questions:
+  - prompt: According to the page, where are permissions, sandboxes, and approval prompts implemented?
+    choices:
+      - In the model's trained weights, which learn when to ask for approval
+      - In the agent application that runs the model in a loop with tools
+      - In the Model Context Protocol, which enforces them for every application
+    answer: 1
+    explanation: >-
+      The page says of the agent application: "Permissions, sandboxes, and approval prompts are implemented here." MCP itself says it "cannot enforce these security principles at the protocol level," and a model "does nothing until other software acts on what it produces."
+  - prompt: A coding agent's description says "the agent asks before acting." How does the page say to read that statement?
+    choices:
+      - As true in every configuration, because the model fixes the approval policy
+      - As a guarantee that no user or administrator can turn approvals off
+      - As true only for a given configuration, which can be changed
+    answer: 2
+    explanation: >-
+      The page says such a statement "is therefore true only for a given configuration, and a user or administrator can change it." Codex CLI, for example, can be set to an approval policy of "never."
+  - prompt: The openpi pages read for the explainer do not describe physical safety procedures such as stopping the robot. What does that show?
+    choices:
+      - The openpi record cannot claim them; whoever deploys it must supply them
+      - No such procedures exist anywhere for robots that run openpi
+      - Limits set in a simulator will also protect people near a real robot arm
+    answer: 0
+    explanation: >-
+      The page says the gap "does not show that no such procedures exist. It shows that the openpi record cannot claim them, and that whoever deploys it must supply them." It also notes that "limits set in a simulator are not limits on a real arm" unless the deployed controller enforces them.

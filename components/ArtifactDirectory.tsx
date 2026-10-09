@@ -19,6 +19,9 @@ import type { ArtifactKind, AvailabilityStatus, RecordLevel } from "@/lib/schema
 import { ArtifactCard } from "./Cards";
 import { FilterChip, ResultSummary, SearchField, SelectField } from "./FilterControls";
 import { useDebounced, useQueryState } from "./useQueryState";
+import { DownloadResults } from "./DownloadResults";
+import { artifactExport } from "@/lib/export";
+import { siteConfig } from "@/lib/site-config";
 
 const SORT_OPTIONS: Array<{ value: ArtifactSort; label: string }> = [
   { value: "reviewed", label: "Recently reviewed" },
@@ -48,7 +51,7 @@ function describeCheck(check: string) {
   return `${label}: unknown`;
 }
 
-export function ArtifactDirectory({ items }: { items: ArtifactListItem[] }) {
+export function ArtifactDirectory({ items, asOf }: { items: ArtifactListItem[]; asOf?: string }) {
   const { state: f, update } = useQueryState<ArtifactFilters>(parseArtifactFilters, serializeArtifactFilters);
   const results = useMemo(() => filterArtifacts(items, f), [items, f]);
   const announce = useDebounced(`${results.length} of ${items.length} records shown`);
@@ -116,6 +119,11 @@ export function ArtifactDirectory({ items }: { items: ArtifactListItem[] }) {
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
         <ResultSummary visible={results.length} total={items.length} noun={["record", "records"]} announce={announce} />
+        <DownloadResults
+          count={results.length}
+          filename={`usasi-open-models-and-tools-${(asOf ?? "").slice(0, 10) || "export"}`}
+          build={() => artifactExport(results, `https://${siteConfig.domain}`, serializeArtifactFilters(f), asOf ?? "")}
+        />
         {activeFilterCount(f) > 0 ? (
           <button type="button" className="link min-h-11 text-sm" onClick={() => update({ ...DEFAULT_ARTIFACT_FILTERS, sort: f.sort })}>
             Clear all filters

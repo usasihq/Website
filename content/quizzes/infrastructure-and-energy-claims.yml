@@ -1,0 +1,27 @@
+explainer: infrastructure-and-energy-claims
+updated_at: 2026-10-08
+questions:
+  - prompt: What is the difference between a figure in megawatts (MW) and one in megawatt-hours (MWh)?
+    choices:
+      - They are the same quantity, written in two different ways
+      - MW measures energy used over a year; MWh measures power at a single moment
+      - MW is power at a moment; MWh is energy used over a period of time
+    answer: 2
+    explanation: >-
+      Citing the U.S. Energy Information Administration, the page says watts "measure power at a specific moment," while watthours measure "how much electricity is used over a period of time." Converting one into the other "requires knowing how long, and at what level, the equipment runs."
+  - prompt: A filing describes a leased site where electrical power "remained undelivered" and was "expected to be delivered in phases" in later years. What stage does that describe?
+    choices:
+      - A facility already running workloads at its full planned capacity
+      - A contract and expected deliveries, not operating capacity
+      - A site whose plans have been cancelled by the company
+    answer: 1
+    explanation: >-
+      The page says the CoreWeave wording "describes a contract and expected deliveries, not operating capacity." Words such as "expected," "planned," and "intended" are forecasts.
+  - prompt: The catalog records each organization's headquarters. What can a headquarters location tell you about a company's data centers?
+    choices:
+      - Nothing about them; it shows only where the company is based
+      - Where its computing runs, since data centers sit in the headquarters state
+      - How much power its computing uses, based on the size of its headquarters
+    answer: 0
+    explanation: >-
+      The page says "a headquarters tells you where a company is based, not where its computing runs or how much power it uses." CoreWeave's offices are in New Jersey, while it leases or licenses data centers in four countries or regions.

@@ -1,0 +1,27 @@
+explainer: tokens-and-context-windows
+updated_at: 2026-10-08
+questions:
+  - prompt: Why can the same sentence produce a different token count in two different models?
+    choices:
+      - Tokens are always whole words, and models disagree about where words end
+      - Counts differ only for images and audio; plain text always gives the same count
+      - Models can use different tokenizers, each with its own vocabulary
+    answer: 2
+    explanation: >-
+      The page says "different models can use different tokenizers," and "each tokenizer has its own vocabulary." Its examples show the same text split into different numbers of tokens, so "a count holds only for the tokenizer it was measured with."
+  - prompt: In a chat, what has to fit inside the context window?
+    choices:
+      - The system prompt, all messages and files so far, tool definitions, and the reply
+      - Only the newest message you typed, since earlier turns were already read
+      - Only the reply being written, since the prompt is handled separately
+    answer: 0
+    explanation: >-
+      The page lists what counts, from Anthropic's documentation: the system prompt, every message including tool results, images, and documents, the definitions of any tools, and the reply being generated. "Each turn's input is the whole history plus the new message."
+  - prompt: If a chat tool drops or summarizes older turns to stay within the context window, what follows, according to the page?
+    choices:
+      - Nothing is lost, because a summary keeps every detail of the earlier turns
+      - The model can no longer consult what was dropped, and summaries lose detail
+      - The dropped turns stay available, and the model can still read them later
+    answer: 1
+    explanation: >-
+      The page says that whichever strategy a tool uses, "the model cannot consult what was dropped, and a summary keeps only part of the detail." It adds that the model "may no longer see what was said early on."

@@ -2,8 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Lightbulb, Route } from "lucide-react";
 import { ExplainerCard, LevelBadge, ReadingTime, TopicIcon } from "@/components/learn/LearnParts";
+import { QuizCard } from "@/components/learn/QuizCard";
 import { TableOfContents } from "@/components/learn/TableOfContents";
+import { ExternalLink } from "@/components/ExternalLink";
 import { PageHeader } from "@/components/PageHeader";
+import { getCatalog } from "@/lib/catalog";
 import { SupportPanel } from "@/components/SupportPanel";
 import { formatDate } from "@/lib/dates";
 import { EXPLAINERS, adjacentExplainers, explainer, pathsForExplainer, relatedExplainers, topic } from "@/lib/learn";
@@ -32,7 +35,11 @@ export default async function ExplainerPage({ params }: { params: Promise<{ slug
   const { prev, next } = adjacentExplainers(slug);
   const related = relatedExplainers(slug, 3);
   const paths = pathsForExplainer(slug);
-  const tocHeadings = outline.headings.filter((h) => h.id !== "sources");
+  const quiz = getCatalog().quizzes.find((q) => q.explainer === slug);
+  const tocHeadings = [
+    ...outline.headings.filter((h) => h.id !== "sources"),
+    ...(quiz ? [{ id: "check-heading", title: "Check your understanding" }] : []),
+  ];
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -72,6 +79,24 @@ export default async function ExplainerPage({ params }: { params: Promise<{ slug
         <p className="mt-3 text-sm text-muted">
           General information, not legal or professional advice. <Link href="/learn/" className="link">All explainers</Link>
         </p>
+        <details className="mt-3 max-w-3xl text-sm text-muted">
+          <summary className="cursor-pointer text-text">How this page was made</summary>
+          <ul className="mt-2 space-y-1">
+            <li>Researched and written with AI assistance from primary sources, which are listed at the end with the date they were read.</li>
+            <li>
+              {e.factCheck ? (
+                <>
+                  Source-checked: a separate AI fact-check pass compared each sentence with its source and corrected what did not match (
+                  <ExternalLink href={`${siteConfig.repository.url}/blob/main/research/verification/${e.factCheck}`}>fact-check report</ExternalLink>).
+                </>
+              ) : (
+                "Not yet given a separate sentence-by-sentence fact-check pass."
+              )}
+            </li>
+            <li>Automated checks passed: links, structure, and formatting are validated before every publish.</li>
+            <li>Not individually reviewed by a person before publication. <Link href="/methodology/#review-levels" className="link">What these review levels mean</Link></li>
+          </ul>
+        </details>
       </PageHeader>
 
       <div className="container-page py-10 lg:py-12">
@@ -102,6 +127,18 @@ export default async function ExplainerPage({ params }: { params: Promise<{ slug
             <div className="prose-usasi serif">
               <Content />
             </div>
+
+            {quiz ? (
+              <section aria-labelledby="check-heading" className="mt-14 border-t border-line pt-10">
+                <h2 id="check-heading" className="scroll-mt-28 text-xl font-semibold text-text sm:text-2xl">
+                  Check your understanding
+                </h2>
+                <p className="mt-2 text-sm text-muted">Three quick questions, answered from this page. Nothing you choose is saved or sent anywhere.</p>
+                <div className="mt-5">
+                  <QuizCard quiz={quiz} />
+                </div>
+              </section>
+            ) : null}
 
             <nav aria-label="Previous and next explainers" className="mt-14 grid gap-3 sm:grid-cols-2">
               {prev ? (

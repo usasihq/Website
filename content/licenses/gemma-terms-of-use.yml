@@ -1,0 +1,60 @@
+slug: gemma-terms-of-use
+name: Gemma Terms of Use
+spdx: null
+category: model-license
+official_url: https://ai.google.dev/gemma/terms
+summary:
+  text: >-
+    The Gemma Terms of Use are Google's terms for the Gemma models listed in the appendix of the
+    terms page, among them Gemma 1 through Gemma 3, Gemma 3n, EmbeddingGemma, PaliGemma,
+    ShieldGemma, and CodeGemma. The page was last modified on April 1, 2026, and says Gemma 4
+    has its own separate license. The terms govern using, reproducing, modifying, and
+    distributing Gemma and "Model Derivatives," including through hosted services.
+  reviewed_at: 2026-10-08
+  source_ids: [gemma-terms-text]
+key_terms:
+  - label: Distribution conditions
+    text: >-
+      Distributors must pass on the Section 3.2 use restrictions as an enforceable provision,
+      give recipients a copy of the terms, mark modified files, and, except for Distribution
+      through a Hosted Service, include a Notice file stating "Gemma is provided under and subject to the Gemma Terms of Use found at
+      ai.google.dev/gemma/terms" (Section 3.1).
+    source_ids: [gemma-terms-text]
+  - label: Use restrictions
+    text: >-
+      Gemma may not be used for the restricted uses in the Gemma Prohibited Use Policy, which is
+      incorporated by reference, or in violation of law. Google "reserves the right to restrict
+      (remotely or otherwise) usage" it reasonably believes violates the terms (Section 3.2).
+    source_ids: [gemma-terms-text]
+  - label: Model Derivatives and hosting
+    text: >-
+      Model Derivatives include modifications, works based on Gemma, and models created by
+      transferring patterns of Gemma's weights, parameters, operations, or Output so that they
+      perform similarly to Gemma, including by distillation. Offering Gemma as a hosted service
+      via API or web access counts as Distribution (Section 1.1).
+    source_ids: [gemma-terms-text]
+  - label: Outputs
+    text: >-
+      "Google claims no rights in Outputs you generate using Gemma," and Outputs "are not deemed
+      Model Derivatives" (Sections 1.1 and 3.3).
+    source_ids: [gemma-terms-text]
+  - label: Termination
+    text: >-
+      Google may terminate the agreement if you breach any of its terms. On termination you must
+      delete and stop using and distributing all copies of Gemma and Model Derivatives in your
+      possession or control (Section 4.5).
+    source_ids: [gemma-terms-text]
+match:
+  spdx: []
+  name_prefixes: ["Gemma Terms of Use"]
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: gemma-terms-text
+    title: Gemma Terms of Use (last modified April 1, 2026)
+    url: https://ai.google.dev/gemma/terms
+    publisher: Google AI for Developers
+    kind: license
+    published_at: 2026-04-01
+    accessed_at: 2026-10-08

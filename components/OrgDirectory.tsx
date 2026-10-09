@@ -15,6 +15,9 @@ import {
 import { OrgCard } from "./Cards";
 import { FilterChip, ResultSummary, SearchField, SelectField } from "./FilterControls";
 import { useDebounced, useQueryState } from "./useQueryState";
+import { DownloadResults } from "./DownloadResults";
+import { orgExport } from "@/lib/export";
+import { siteConfig } from "@/lib/site-config";
 
 const SORT_LABELS: Record<OrgSort, string> = {
   name: "Name (A–Z)",
@@ -22,7 +25,7 @@ const SORT_LABELS: Record<OrgSort, string> = {
   artifacts: "Most open-artifact records in this catalog",
 };
 
-export function OrgDirectory({ items }: { items: OrgListItem[] }) {
+export function OrgDirectory({ items, asOf }: { items: OrgListItem[]; asOf?: string }) {
   const { state: f, update } = useQueryState<OrgFilters>(parseOrgFilters, serializeOrgFilters);
   const results = useMemo(() => filterOrganizations(items, f), [items, f]);
   const announce = useDebounced(`${results.length} of ${items.length} organizations shown`);
@@ -92,6 +95,11 @@ export function OrgDirectory({ items }: { items: OrgListItem[] }) {
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
         <ResultSummary visible={results.length} total={items.length} noun={["organization", "organizations"]} announce={announce} />
+        <DownloadResults
+          count={results.length}
+          filename={`usasi-companies-and-labs-${(asOf ?? "").slice(0, 10) || "export"}`}
+          build={() => orgExport(results, `https://${siteConfig.domain}`, serializeOrgFilters(f), asOf ?? "")}
+        />
         {activeFilterCount(f) > 0 ? (
           <button type="button" className="link min-h-11 text-sm" onClick={() => update({ ...DEFAULT_ORG_FILTERS, sort: f.sort })}>
             Clear all filters

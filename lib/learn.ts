@@ -19,6 +19,8 @@ export type Explainer = {
   topic: TopicId;
   level: Level;
   takeaways: [string, string, string];
+  /** File in research/verification/ recording a separate sentence-by-sentence source check, if one was done. */
+  factCheck?: string;
 };
 
 export type Topic = { id: TopicId; title: string; description: string };
@@ -39,6 +41,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "How large language models work",
     question: "What happens between typing a prompt and getting an answer?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-foundations.md",
     topic: "basics",
     level: "Beginner",
     takeaways: [
@@ -53,6 +56,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Tokens and context windows",
     question: "Why do AI tools count tokens, and what happens when a conversation gets too long?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-foundations.md",
     topic: "basics",
     level: "Beginner",
     takeaways: [
@@ -67,6 +71,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Multimodal models: text, images, audio, and video",
     question: "How do models that see and hear differ from text-only models?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-context.md",
     topic: "basics",
     level: "Intermediate",
     takeaways: [
@@ -81,6 +86,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "A short history of AI in the United States",
     question: "Where did today's AI come from?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-context.md",
     topic: "basics",
     level: "Beginner",
     takeaways: [
@@ -123,6 +129,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Pretraining, fine-tuning, and post-training",
     question: "How does a raw model become an assistant, and what does it mean when one model is built on another?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-making-models.md",
     topic: "models-and-licenses",
     level: "Intermediate",
     takeaways: [
@@ -165,6 +172,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "How AI models use tools",
     question: "What actually happens when a chatbot searches the web, runs code, or calls an app?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-using-ai.md",
     topic: "running-ai",
     level: "Intermediate",
     takeaways: [
@@ -193,6 +201,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Retrieval-augmented generation (RAG)",
     question: "How do AI systems answer questions about documents they were never trained on?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-using-ai.md",
     topic: "running-ai",
     level: "Intermediate",
     takeaways: [
@@ -221,6 +230,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Quantization: fitting models on smaller hardware",
     question: "How can a large model run on a laptop, and what do you give up?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-making-models.md",
     topic: "running-ai",
     level: "Intermediate",
     takeaways: [
@@ -235,6 +245,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Labels, watermarks, and content credentials",
     question: "How can you tell whether an image, video, audio clip, or text was made with AI?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-trust.md",
     topic: "evidence",
     level: "Beginner",
     takeaways: [
@@ -263,6 +274,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "How AI developers test models for safety",
     question: "What are system cards, red teaming, and frontier safety frameworks, and how should I read them?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-trust.md",
     topic: "evidence",
     level: "Intermediate",
     takeaways: [
@@ -291,6 +303,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Careers in AI: roles, skills, and paths",
     question: "What kinds of jobs exist around AI, and how do people prepare for them?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-people.md",
     topic: "industry",
     level: "Beginner",
     takeaways: [
@@ -319,6 +332,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "What happens to what you type into an AI service",
     question: "Does an AI service keep my conversations or use them to train its models?",
     reviewed: "2026-10-08",
+    factCheck: "round4-verify-people.md",
     topic: "policy",
     level: "Beginner",
     takeaways: [

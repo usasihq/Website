@@ -52,8 +52,8 @@ const RAW_CONFIG = {
     enabled: true,
     heading: "The USASI weekly",
     description: "New catalog entries, releases, license changes, and corrections, once a week.",
-    provider: "Buttondown" as string | null,
-    url: null as string | null,
+    provider: "beehiiv" as string | null,
+    url: "https://usasihq.beehiiv.com/subscribe" as string | null,
   },
   homepageSponsor: null as HomepageSponsorConfig | null,
   contact: {

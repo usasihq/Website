@@ -574,3 +574,194 @@ export const Hub = z
   })
   .strict();
 export type Hub = z.infer<typeof Hub>;
+
+/* ------------------------------------------------------------------ */
+/* License guides                                                      */
+/* ------------------------------------------------------------------ */
+
+export const LicenseCategory = z.enum(["permissive", "copyleft", "model-license", "data-license", "content-license", "non-commercial", "other"]);
+export type LicenseCategory = z.infer<typeof LicenseCategory>;
+
+/**
+ * A plain-language guide to one license used by catalog records. Every key
+ * term restates the license text itself; the guide is not legal advice.
+ * `match` attaches catalog records: by SPDX id, or by the start of the
+ * license name a record gives.
+ */
+export const LicenseGuide = z
+  .object({
+    slug: Slug,
+    name: z.string().trim().min(3).max(120),
+    spdx: z.string().trim().min(2).nullable().default(null),
+    category: LicenseCategory,
+    official_url: HttpsUrl,
+    summary: Claim,
+    key_terms: z
+      .array(
+        z
+          .object({
+            label: z.string().trim().min(3).max(48),
+            text: z.string().trim().min(10).max(360),
+            source_ids: z.array(SourceId).min(1),
+          })
+          .strict(),
+      )
+      .min(2)
+      .max(8),
+    match: z
+      .object({
+        spdx: z.array(z.string().trim().min(2)).default([]),
+        name_prefixes: z.array(z.string().trim().min(3)).default([]),
+      })
+      .strict(),
+    publication_status: PublicationStatus,
+    updated_at: IsoDate,
+    last_reviewed: IsoDate,
+    sources: z.array(Source).min(1),
+  })
+  .strict();
+export type LicenseGuide = z.infer<typeof LicenseGuide>;
+
+/* ------------------------------------------------------------------ */
+/* Policy documents                                                    */
+/* ------------------------------------------------------------------ */
+
+export const PolicyDocumentType = z.enum([
+  "law",
+  "executive-order",
+  "presidential-memorandum",
+  "omb-memorandum",
+  "regulation",
+  "agency-guidance",
+  "standard",
+  "framework",
+  "strategy-or-plan",
+  "report",
+]);
+export type PolicyDocumentType = z.infer<typeof PolicyDocumentType>;
+
+export const PolicyStatus = z.enum(["in-effect", "revoked", "superseded", "rescinded", "final", "draft", "unknown"]);
+export type PolicyStatus = z.infer<typeof PolicyStatus>;
+
+/**
+ * A U.S. federal AI policy document, described from its official text: what
+ * it is, who issued it, when, what it does, and its current status.
+ */
+export const PolicyDocument = z
+  .object({
+    slug: Slug,
+    title: z.string().trim().min(5).max(200),
+    short_title: z.string().trim().min(3).max(80).nullable().default(null),
+    document_type: PolicyDocumentType,
+    identifier: z.string().trim().min(2).max(60).nullable().default(null),
+    issuer: z.string().trim().min(2).max(120),
+    issuer_org_slug: Slug.nullable().default(null),
+    date: IsoDate,
+    date_label: z.enum(["signed", "enacted", "issued", "published", "released"]),
+    status: PolicyStatus,
+    status_note: Claim.nullable().default(null),
+    superseded_by: Slug.nullable().default(null),
+    summary: Claim,
+    official_url: HttpsUrl,
+    related_organizations: z.array(Slug).default([]),
+    publication_status: PublicationStatus,
+    updated_at: IsoDate,
+    last_reviewed: IsoDate,
+    sources: z.array(Source).min(1),
+  })
+  .strict();
+export type PolicyDocument = z.infer<typeof PolicyDocument>;
+
+/* ------------------------------------------------------------------ */
+/* Explainer quizzes                                                   */
+/* ------------------------------------------------------------------ */
+
+/** "Check your understanding" questions for one explainer, answerable from that explainer alone. */
+export const Quiz = z
+  .object({
+    explainer: Slug,
+    questions: z
+      .array(
+        z
+          .object({
+            prompt: z.string().trim().min(10).max(220),
+            choices: z.array(z.string().trim().min(1).max(160)).min(3).max(4),
+            answer: z.number().int().min(0).max(3),
+            explanation: z.string().trim().min(20).max(360),
+          })
+          .strict()
+          .refine((q) => q.answer < q.choices.length, "answer must index one of the choices"),
+      )
+      .min(3)
+      .max(5),
+    updated_at: IsoDate,
+  })
+  .strict();
+export type Quiz = z.infer<typeof Quiz>;
+
+/* ------------------------------------------------------------------ */
+/* Finder configurations ("Find AI for my needs")                      */
+/* ------------------------------------------------------------------ */
+
+export const FINDER_TASKS = ["write-code", "work-with-documents", "transcribe-audio", "chat-and-write"] as const;
+export const FinderTask = z.enum(FINDER_TASKS);
+export type FinderTask = z.infer<typeof FinderTask>;
+
+export const FinderPlatform = z.enum(["windows", "macos", "linux", "web", "ios", "android"]);
+export const FinderAccelerator = z.enum(["nvidia", "amd", "apple-silicon", "intel", "cpu-only"]);
+
+/**
+ * One documented way to accomplish a task: a specific combination of model,
+ * runtime, app, or hosted service. Every requirement restates the publisher's
+ * own documentation; USASI has not tested a configuration unless `tested`
+ * records a dated test. Prices are never stored; only the billing basis.
+ */
+export const FinderConfig = z
+  .object({
+    slug: Slug,
+    title: z.string().trim().min(8).max(90),
+    tasks: z.array(FinderTask).min(1),
+    runs: z.enum(["local", "hosted", "hybrid"]),
+    summary: Claim,
+    components: z
+      .array(
+        z
+          .object({
+            role: z.enum(["model", "runtime", "app", "service", "library", "extension"]),
+            name: z.string().trim().min(2).max(80),
+            record_slug: Slug.nullable().default(null),
+            url: HttpsUrl,
+          })
+          .strict(),
+      )
+      .min(1),
+    platforms: z.object({ values: z.array(FinderPlatform).min(1), source_ids: z.array(SourceId).min(1) }).strict(),
+    accelerators: z.object({ values: z.array(FinderAccelerator).default([]), source_ids: z.array(SourceId).default([]) }).strict(),
+    /** A publisher's own statement of memory needs, for the exact variant named. Null when none is documented. */
+    memory: z
+      .object({
+        variant: z.string().trim().min(3).max(120),
+        gpu_gb: z.number().positive().max(1024).nullable().default(null),
+        system_gb: z.number().positive().max(4096).nullable().default(null),
+        statement: Claim,
+      })
+      .strict()
+      .nullable()
+      .default(null),
+    skill: z.enum(["beginner", "intermediate", "advanced"]),
+    skill_note: z.string().trim().min(10).max(240),
+    account_required: z.object({ value: z.boolean(), source_ids: z.array(SourceId).min(1) }).strict(),
+    cost_basis: z.object({ value: z.enum(["free-download", "free-tier-with-limits", "subscription", "usage-billed", "mixed"]), note: z.string().trim().min(10).max(240), source_ids: z.array(SourceId).min(1) }).strict(),
+    data_location: Claim,
+    getting_started: z.array(z.string().trim().min(10).max(240)).min(2).max(6),
+    getting_started_source_ids: z.array(SourceId).min(1),
+    limitations: z.array(Claim).min(1).max(5),
+    unverified: z.array(z.string().trim().min(10).max(240)).min(1).max(5),
+    tested: z.object({ date: IsoDate, environment: z.string().min(10), result: z.string().min(10) }).strict().nullable().default(null),
+    publication_status: PublicationStatus,
+    updated_at: IsoDate,
+    last_reviewed: IsoDate,
+    sources: z.array(Source).min(1),
+  })
+  .strict();
+export type FinderConfig = z.infer<typeof FinderConfig>;

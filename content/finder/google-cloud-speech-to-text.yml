@@ -1,0 +1,103 @@
+slug: google-cloud-speech-to-text
+title: Google Cloud Speech-to-Text
+tasks: [transcribe-audio]
+runs: hosted
+summary:
+  text: >-
+    Cloud Speech-to-Text is Google Cloud's speech recognition API. You can create transcriptions in
+    the Google Cloud console without writing code, or send synchronous, asynchronous, or streaming
+    recognition requests from your own applications.
+  reviewed_at: 2026-10-08
+  source_ids: [gcp-stt-overview, gcp-stt-console]
+components:
+  - role: service
+    name: Cloud Speech-to-Text
+    record_slug: google
+    url: https://cloud.google.com/speech-to-text/docs/overview
+platforms:
+  values: [web]
+  source_ids: [gcp-stt-console]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: advanced
+skill_note: >-
+  Even the console path needs a Google Cloud project with billing enabled, the API turned on, IAM
+  roles, and a Cloud Storage location for audio and results.
+account_required:
+  value: true
+  source_ids: [gcp-stt-console]
+cost_basis:
+  value: usage-billed
+  note: >-
+    Billing must be enabled on the project. Usage beyond a monthly free allowance is billed by the
+    length of audio processed, each audio channel is billed separately, and Cloud Storage is billed
+    on its own.
+  source_ids: [gcp-stt-console, gcp-stt-pricing]
+data_location:
+  text: >-
+    On the provider's servers. Audio is processed by Google Cloud, and console transcriptions keep
+    audio and results in a Cloud Storage location you choose. By default the service does not log
+    customer audio or transcripts; an opt-in data logging program lets Google use logged data to
+    improve the service in exchange for discounted pricing.
+  reviewed_at: 2026-10-08
+  source_ids: [gcp-stt-console, gcp-stt-datalogging]
+getting_started:
+  - "Sign in to the Google Cloud console and select or create a project linked to a billing account."
+  - "Search for the Cloud Speech-to-Text API and enable it for the project."
+  - "Open the Speech-to-Text overview, click Create transcription, and upload a source audio file to Cloud Storage."
+  - "Select the file's encoding type and other options, then run the transcription."
+getting_started_source_ids: [gcp-stt-console]
+limitations:
+  - text: >-
+      Synchronous requests accept audio of 1 minute or less; asynchronous requests accept audio up
+      to 480 minutes.
+    reviewed_at: 2026-10-08
+    source_ids: [gcp-stt-overview]
+  - text: >-
+      Google advises recording at 16000 Hz where possible and not resampling audio already recorded
+      at another rate, since lower rates can reduce accuracy.
+    reviewed_at: 2026-10-08
+    source_ids: [gcp-stt-overview]
+  - text: >-
+      Data logged under the opt-in program is not deleted when you delete your project; deletion
+      requires a request form.
+    reviewed_at: 2026-10-08
+    source_ids: [gcp-stt-datalogging]
+unverified:
+  - USASI has not tested this configuration.
+  - Which recognition model suits your recordings and languages is not assessed here.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: gcp-stt-overview
+    title: Cloud Speech-to-Text overview
+    url: https://cloud.google.com/speech-to-text/docs/overview
+    publisher: Google Cloud
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gcp-stt-console
+    title: Transcribe speech to text by using the Google Cloud console
+    url: https://cloud.google.com/speech-to-text/docs/transcribe-console
+    publisher: Google Cloud
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gcp-stt-pricing
+    title: Speech-to-Text pricing
+    url: https://cloud.google.com/speech-to-text/pricing
+    publisher: Google Cloud
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gcp-stt-datalogging
+    title: Data logging (Cloud Speech-to-Text)
+    url: https://cloud.google.com/speech-to-text/docs/data-logging
+    publisher: Google Cloud
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

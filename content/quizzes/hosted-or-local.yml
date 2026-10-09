@@ -1,0 +1,27 @@
+explainer: hosted-or-local
+updated_at: 2026-10-08
+questions:
+  - prompt: You can run gpt-oss-20b on your own computer with Ollama or use a cloud version of it. What changes between the two?
+    choices:
+      - Where it runs, who can see the inputs, and whose terms apply
+      - The weights differ, so the cloud version gives different kinds of answers
+      - Nothing, because the same weights mean the same terms and the same privacy
+    answer: 0
+    explanation: >-
+      The page says "the weights are the same; what changes is where the computation happens, who can see the inputs, and whose terms apply." With hosted access, the provider's terms and usage policies apply "even when the weights are openly licensed."
+  - prompt: Is a model running on your own machine automatically private?
+    choices:
+      - Yes, because local runtimes never connect to the network for any reason at all
+      - Yes, as long as the weights are published under an open license
+      - No; local tools can still use the network, and others may reach your machine
+    answer: 2
+    explanation: >-
+      The page says "local runtimes can still use the network" through downloads, telemetry, cloud features, and listening addresses, and that "a runtime exposed on a network, or a shared computer, is not automatically private."
+  - prompt: Which costs less, hosted access or local inference?
+    choices:
+      - Local inference always, because it has no usage charges once you own the hardware
+      - Neither in every case; it depends on your use, needs, hardware, and current prices
+      - Hosted access always, because you never have to buy or maintain hardware
+    answer: 1
+    explanation: >-
+      The page says "neither is cheaper in every case." Which is lower "depends on how often you run the model, which model you need, what you already own, and the provider's prices on the day you compare."

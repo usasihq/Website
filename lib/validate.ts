@@ -9,18 +9,27 @@ import {
   Artifact,
   ChangelogEntry,
   FeaturedSelection,
+  FinderConfig,
   Hub,
+  LicenseGuide,
   NewsItem,
   Organization,
   Person,
+  PolicyDocument,
+  Quiz,
   type Artifact as ArtifactT,
   type ChangelogEntry as ChangelogEntryT,
   type FeaturedSelection as FeaturedSelectionT,
+  type FinderConfig as FinderConfigT,
   type Hub as HubT,
+  type LicenseGuide as LicenseGuideT,
+  type PolicyDocument as PolicyDocumentT,
+  type Quiz as QuizT,
   type NewsItem as NewsItemT,
   type Organization as OrganizationT,
   type Person as PersonT,
 } from "./schema";
+import { EXPLAINERS } from "./learn";
 import { CHECKLISTS } from "./openness";
 
 export interface RawDocument {
@@ -37,6 +46,10 @@ export interface RawContent {
   people?: RawDocument[];
   news?: RawDocument[];
   hubs?: RawDocument[];
+  licenses?: RawDocument[];
+  policy?: RawDocument[];
+  quizzes?: RawDocument[];
+  finder?: RawDocument[];
 }
 
 export interface ValidationIssue {
@@ -54,6 +67,10 @@ export interface ValidatedContent {
   people: PersonT[];
   news: NewsItemT[];
   hubs: HubT[];
+  licenses: LicenseGuideT[];
+  policy: PolicyDocumentT[];
+  quizzes: QuizT[];
+  finder: FinderConfigT[];
   issues: ValidationIssue[];
 }
 
@@ -503,6 +520,114 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     }
   }
 
+  /* ---- Shared checks for sourced reference documents ---- */
+  const checkSources = (
+    push: (level: ValidationIssue["level"], message: string, path?: string) => void,
+    sources: { id: string; accessed_at: string }[],
+    cited: Set<string>,
+  ) => {
+    const ids = new Set(sources.map((s) => s.id));
+    if (ids.size !== sources.length) push("error", "Duplicate source id", "sources");
+    for (const id of cited) if (!ids.has(id)) push("error", `Unknown source id "${id}"`, "source_ids");
+    sources.forEach((s, i) => {
+      if (!cited.has(s.id)) push("warning", `Source "${s.id}" is not cited`, `sources[${i}]`);
+      if (s.accessed_at > today) push("error", "accessed_at is in the future", `sources[${i}].accessed_at`);
+    });
+  };
+  const checkText = (push: (level: ValidationIssue["level"], message: string, path?: string) => void, published: boolean, kind: string, entries: (readonly [string, string])[]) => {
+    for (const [path, text] of entries) {
+      if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(published ? "error" : "warning", `Placeholder text in ${path}`, path);
+      if (NEWS_FORBIDDEN.test(text)) push(published ? "error" : "warning", `${kind} may not include funding, valuations, staffing, user counts, or superlatives: "${text.slice(0, 60)}"`, path);
+    }
+  };
+
+  /* ---- License guides ---- */
+  const licenseDocs = parseDocs(raw.licenses ?? [], LicenseGuide, issues);
+  const licenseSlugs = new Set<string>();
+  for (const { file, value: g } of licenseDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    if (basename(file) !== g.slug) push("error", `File name must match slug "${g.slug}"`, "slug");
+    if (licenseSlugs.has(g.slug)) push("error", `Duplicate license guide slug "${g.slug}"`, "slug");
+    licenseSlugs.add(g.slug);
+    if (g.match.spdx.length + g.match.name_prefixes.length === 0) push("error", "A license guide needs at least one match rule", "match");
+    if (g.updated_at > today || g.last_reviewed > today) push("error", "License guide dates are in the future", "updated_at");
+    checkSources(push, g.sources, new Set([...g.summary.source_ids, ...g.key_terms.flatMap((k) => k.source_ids)]));
+    checkText(push, g.publication_status === "published", "License guides", [["summary.text", g.summary.text], ...g.key_terms.map((k, i) => [`key_terms[${i}].text`, k.text] as const)]);
+  }
+
+  /* ---- Policy documents ---- */
+  const policyDocs = parseDocs(raw.policy ?? [], PolicyDocument, issues);
+  const policySlugs = new Set(policyDocs.map((d) => d.value.slug));
+  const seenPolicy = new Set<string>();
+  for (const { file, value: d } of policyDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    const published = d.publication_status === "published";
+    if (basename(file) !== d.slug) push("error", `File name must match slug "${d.slug}"`, "slug");
+    if (seenPolicy.has(d.slug)) push("error", `Duplicate policy slug "${d.slug}"`, "slug");
+    seenPolicy.add(d.slug);
+    if (d.date > today) push("error", "Document date is in the future", "date");
+    if (d.updated_at > today || d.last_reviewed > today) push("error", "Policy dates are in the future", "updated_at");
+    if (d.superseded_by && !policySlugs.has(d.superseded_by)) push("error", `Unknown policy document "${d.superseded_by}"`, "superseded_by");
+    if (d.superseded_by === d.slug) push("error", "A document cannot supersede itself", "superseded_by");
+    if (["revoked", "superseded", "rescinded"].includes(d.status) && !d.status_note) push("error", `Status "${d.status}" needs a sourced status_note`, "status_note");
+    const orgs = [...d.related_organizations, ...(d.issuer_org_slug ? [d.issuer_org_slug] : [])];
+    orgs.forEach((slug, i) => {
+      if (!orgBySlug.has(slug)) push("error", `Unknown organization slug "${slug}"`, `related_organizations[${i}]`);
+      else if (published && !publishedOrgs.has(slug)) push("error", `Organization "${slug}" is not published`, `related_organizations[${i}]`);
+    });
+    checkSources(push, d.sources, new Set([...d.summary.source_ids, ...(d.status_note?.source_ids ?? [])]));
+    checkText(push, published, "Policy entries", [["summary.text", d.summary.text], ...(d.status_note ? [["status_note.text", d.status_note.text] as const] : [])]);
+  }
+
+  /* ---- Quizzes ---- */
+  const quizDocs = parseDocs(raw.quizzes ?? [], Quiz, issues);
+  for (const { file, value: q } of quizDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    if (basename(file) !== q.explainer) push("error", `File name must match explainer "${q.explainer}"`, "explainer");
+    if (!EXPLAINERS.some((e) => e.slug === q.explainer)) push("error", `Unknown explainer "${q.explainer}"`, "explainer");
+    if (q.updated_at > today) push("error", "updated_at is in the future", "updated_at");
+    q.questions.forEach((item, i) => {
+      if (new Set(item.choices).size !== item.choices.length) push("error", "Duplicate choices", `questions[${i}].choices`);
+      checkText(push, true, "Quizzes", [[`questions[${i}].prompt`, item.prompt], [`questions[${i}].explanation`, item.explanation]]);
+    });
+  }
+
+  /* ---- Finder configurations ---- */
+  const finderDocs = parseDocs(raw.finder ?? [], FinderConfig, issues);
+  const finderSlugs = new Set<string>();
+  for (const { file, value: c } of finderDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    const published = c.publication_status === "published";
+    if (basename(file) !== c.slug) push("error", `File name must match slug "${c.slug}"`, "slug");
+    if (finderSlugs.has(c.slug)) push("error", `Duplicate finder slug "${c.slug}"`, "slug");
+    finderSlugs.add(c.slug);
+    if (c.updated_at > today || c.last_reviewed > today) push("error", "Finder dates are in the future", "updated_at");
+    if (c.tested && c.tested.date > today) push("error", "Test date is in the future", "tested.date");
+    if (c.memory && c.memory.gpu_gb === null && c.memory.system_gb === null) push("error", "A memory statement needs gpu_gb or system_gb", "memory");
+    c.components.forEach((comp, i) => {
+      if (!comp.record_slug) return;
+      if (!artifactBySlug.has(comp.record_slug) && !orgBySlug.has(comp.record_slug)) push("error", `Unknown record "${comp.record_slug}"`, `components[${i}].record_slug`);
+      else if (published && !publishedArtifacts.has(comp.record_slug) && !publishedOrgs.has(comp.record_slug)) push("error", `Record "${comp.record_slug}" is not published`, `components[${i}].record_slug`);
+    });
+    const cited = new Set([
+      ...c.summary.source_ids,
+      ...c.platforms.source_ids,
+      ...c.accelerators.source_ids,
+      ...(c.memory?.statement.source_ids ?? []),
+      ...c.account_required.source_ids,
+      ...c.cost_basis.source_ids,
+      ...c.data_location.source_ids,
+      ...c.getting_started_source_ids,
+      ...c.limitations.flatMap((l) => l.source_ids),
+    ]);
+    checkSources(push, c.sources, cited);
+    checkText(push, published, "Finder entries", [
+      ["summary.text", c.summary.text],
+      ["cost_basis.note", c.cost_basis.note],
+      ...c.limitations.map((l, i) => [`limitations[${i}].text`, l.text] as const),
+    ]);
+  }
+
   const strip = <T extends { __file?: string }>(r: T) => {
     const { __file: _omit, ...rest } = r;
     void _omit;
@@ -517,6 +642,10 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     people: peopleDocs.map((d) => d.value),
     news: newsDocs.map((d) => d.value).sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date)),
     hubs: hubDocs.map((d) => d.value).sort((a, b) => a.title.localeCompare(b.title)),
+    licenses: licenseDocs.map((d) => d.value).sort((a, b) => a.name.localeCompare(b.name)),
+    policy: policyDocs.map((d) => d.value).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title)),
+    quizzes: quizDocs.map((d) => d.value),
+    finder: finderDocs.map((d) => d.value).sort((a, b) => a.title.localeCompare(b.title)),
     issues,
   };
 }

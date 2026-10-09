@@ -128,7 +128,10 @@ export type EntryType =
   | "explainer"
   | "glossary-term"
   | "person"
-  | "place";
+  | "place"
+  | "license"
+  | "policy"
+  | "faq";
 
 export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   organization: "Organization",
@@ -142,6 +145,9 @@ export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   "glossary-term": "Glossary",
   person: "Person",
   place: "Place",
+  license: "License guide",
+  policy: "Policy",
+  faq: "FAQ",
 };
 
 /** Entry types that belong to the Open Models & Tools directory. */

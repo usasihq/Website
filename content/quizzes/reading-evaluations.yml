@@ -1,0 +1,27 @@
+explainer: reading-evaluations
+updated_at: 2026-10-08
+questions:
+  - prompt: What does a single benchmark result tell you?
+    choices:
+      - How one system did on one fixed task set under one set of conditions
+      - How the model will perform on your own work, once you match the settings
+      - How every version of a model performs, since the model name stays the same
+    answer: 0
+    explanation: >-
+      The page says a result "tells you how one system performed on one fixed set of tasks under one set of conditions," and that a published result "is a starting point for your own testing, not a substitute for it."
+  - prompt: What is the difference between a reported result and a reproduced result?
+    choices:
+      - A reported result has always been rerun by an independent lab; a reproduced one has not
+      - A reported one is the publisher's own; a reproduced one was rerun by another party
+      - There is no difference; the two terms mean the same thing
+    answer: 1
+    explanation: >-
+      The page says a reported result "may be accurate, but no one else has necessarily rerun it," while a reproduced result "was obtained again by another party from published materials."
+  - prompt: Can a Terminal-Bench 4.0 result be compared directly with a result on an earlier version of the benchmark?
+    choices:
+      - Yes, because the benchmark keeps the same name across versions
+      - Yes, as long as the same model was tested on both versions
+      - No; version 4.0 changed its limits and tasks
+    answer: 2
+    explanation: >-
+      The page says version 4.0 "recalibrated time, CPU, and memory limits, fixed some tasks, and removed others," so "a 4.0 result is not directly comparable with one on an earlier version." Change the task set and the result can change.

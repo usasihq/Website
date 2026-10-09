@@ -1,0 +1,170 @@
+slug: ollama-app-gpt-oss-20b
+title: Ollama desktop app with gpt-oss-20b
+tasks: [chat-and-write, work-with-documents]
+runs: local
+summary:
+  text: >-
+    Ollama's desktop app for macOS and Windows lets you download models and chat with them, and you
+    can drag text files or PDFs into a chat. OpenAI's open-weight gpt-oss-20b is available in it as
+    gpt-oss:20b.
+  reviewed_at: 2026-10-08
+  source_ids: [ollama-blog-app, ollama-lib-gptoss]
+components:
+  - role: app
+    name: Ollama desktop app
+    record_slug: ollama
+    url: https://ollama.com/download
+  - role: model
+    name: gpt-oss-20b (Ollama tag gpt-oss:20b)
+    record_slug: gpt-oss-20b
+    url: https://ollama.com/library/gpt-oss
+platforms:
+  values: [macos, windows]
+  source_ids: [ollama-blog-app, ollama-macos, ollama-windows]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [ollama-gpu, ollama-macos]
+memory:
+  variant: gpt-oss-20b with MXFP4-quantized MoE weights (Ollama tag gpt-oss:20b)
+  gpu_gb: null
+  system_gb: 16
+  statement:
+    text: >-
+      OpenAI's model card says MXFP4 quantization of the MoE weights lets gpt-oss-20b "run within
+      16GB of memory". Ollama's library page says it supports MXFP4 natively without additional
+      quantization and that the smaller model can run on systems with as little as 16GB memory.
+    reviewed_at: 2026-10-08
+    source_ids: [gptoss20b-card, ollama-lib-gptoss]
+skill: beginner
+skill_note: >-
+  Ollama for macOS and Windows is a graphical app: you install it, pick a local model in the app,
+  and chat; context length is a slider in its settings.
+account_required:
+  value: false
+  source_ids: [ollama-quickstart]
+cost_basis:
+  value: free-download
+  note: >-
+    Ollama's Free plan includes running models locally, and its pricing page says running models on
+    your own hardware is always unlimited; gpt-oss-20b is Apache 2.0. Ollama's optional cloud models
+    draw on included or purchased usage credits.
+  source_ids: [ollama-pricing, gptoss20b-card]
+data_location:
+  text: >-
+    On your machine. Ollama's FAQ says it runs locally and does not see your prompts or data when you
+    run locally; cloud-hosted models, if you choose them, are processed on Ollama's service, and
+    cloud features can be turned off.
+  reviewed_at: 2026-10-08
+  source_ids: [ollama-faq]
+getting_started:
+  - "Download Ollama for macOS or Windows from ollama.com/download and open the app."
+  - "Follow the setup prompts and choose a local model instead of signing in for cloud models."
+  - "Download gpt-oss:20b in the app, or run `ollama run gpt-oss:20b` in a terminal, and start a chat."
+  - "For long documents, drag the file into the chat and raise the context length slider in settings, which uses more memory."
+getting_started_source_ids: [ollama-quickstart, ollama-lib-gptoss, ollama-blog-app, ollama-ctx]
+limitations:
+  - text: >-
+      Ollama defaults to a 4k-token context on GPUs with less than 24 GiB of VRAM; increasing the
+      context for large documents requires more memory.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-ctx, ollama-blog-app]
+  - text: >-
+      The macOS app needs macOS Sonoma (14) or newer; Apple M-series Macs get CPU and GPU support,
+      while Intel Macs run on the CPU only. The Windows app needs Windows 10 22H2 or newer.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-macos, ollama-windows]
+  - text: >-
+      Downloaded models need extra disk space, which Ollama says can be tens to hundreds of GB.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-windows, ollama-macos]
+  - text: >-
+      On Linux, Ollama's documentation covers a command-line install rather than the desktop app.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-linux, ollama-blog-app]
+unverified:
+  - USASI has not tested this configuration.
+  - Ollama's app announcement mentions text and PDF drag and drop but does not document file size or page limits.
+  - The 16 GB figure does not include memory for a longer context.
+  - Ollama names Intel GPUs only in its Linux Vulkan driver instructions and lists no supported Intel models; Intel GPU acceleration on Windows is not established here, and Intel-based Macs run on the CPU only.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: ollama-blog-app
+    title: Ollama's new app
+    url: https://ollama.com/blog/new-app
+    publisher: Ollama
+    kind: announcement
+    published_at: 2025-07-30
+    accessed_at: 2026-10-08
+  - id: ollama-lib-gptoss
+    title: gpt-oss in the Ollama library
+    url: https://ollama.com/library/gpt-oss
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gptoss20b-card
+    title: gpt-oss-20b model card
+    url: https://huggingface.co/openai/gpt-oss-20b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-windows
+    title: Ollama on Windows
+    url: https://docs.ollama.com/windows
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-macos
+    title: Ollama on macOS
+    url: https://docs.ollama.com/macos
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-linux
+    title: Ollama on Linux
+    url: https://docs.ollama.com/linux
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-gpu
+    title: Hardware support (Ollama documentation)
+    url: https://docs.ollama.com/gpu
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-ctx
+    title: Context length (Ollama documentation)
+    url: https://docs.ollama.com/context-length.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-faq
+    title: Ollama FAQ
+    url: https://docs.ollama.com/faq.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-quickstart
+    title: Ollama quickstart
+    url: https://docs.ollama.com/quickstart.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-pricing
+    title: Ollama pricing
+    url: https://ollama.com/pricing
+    publisher: Ollama
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08

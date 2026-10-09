@@ -1,0 +1,27 @@
+explainer: safety-testing-and-frameworks
+updated_at: 2026-10-08
+questions:
+  - prompt: Who writes system cards and frontier safety frameworks, and how does the page say to read them?
+    choices:
+      - The developer, about its own work; read them as the developer's account
+      - A government regulator, so they can be read as official certification
+      - USASI, after judging whether each framework and test is adequate
+    answer: 0
+    explanation: >-
+      The page says these documents "are written by the developer about its own work, so read them as its account," noting "whether anyone outside the company checked the results." It adds that USASI "does not judge whether any framework or test is adequate."
+  - prompt: How does OpenAI's Preparedness Framework treat the result of any single capability test?
+    choices:
+      - As the most the model could ever do under any conditions
+      - As a lower bound, rather than a ceiling, on its capabilities
+      - As proof that the model is safe to deploy without further checks
+    answer: 1
+    explanation: >-
+      The page says the framework treats any single test as "a lower bound, rather than a ceiling" on a model's capabilities. In the worked example, Priya treats results as a lower bound "as OpenAI's framework itself does."
+  - prompt: What is a frontier safety framework, as the page defines it?
+    choices:
+      - A federal law that requires every model to pass a government test before release
+      - An open-source tool in which an auditor model questions the model under test
+      - A company policy setting capability thresholds and what it will do at each
+    answer: 2
+    explanation: >-
+      The page defines a frontier safety framework as "a company policy that sets capability thresholds and says what the company will do when a model reaches one." Anthropic's policy, for example, calls itself a "voluntary framework," and the auditor-model tool described is Petri.

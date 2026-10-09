@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, Building2, Boxes, Landmark, Route, Scale } from "lucide-react";
+import { ArrowRight, BookOpenCheck, Briefcase, Building2, Boxes, Cpu, Landmark, Route, Scale, SlidersHorizontal, Sparkles } from "lucide-react";
 import { EntryTypeBadge, Monogram } from "@/components/Badges";
 import { CoverageTable } from "@/components/CoverageTable";
 import { HomepageSponsor } from "@/components/HomepageSponsor";
@@ -147,6 +147,33 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Task-based entry points: what a visitor wants to do, not just what to browse. */}
+      <section aria-labelledby="actions-heading" className="container-page pb-8">
+        <h2 id="actions-heading" className="text-lg font-semibold text-text">
+          What do you want to do?
+        </h2>
+        <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { href: "/find/", title: "Find something to use", text: "Describe your task and computer; see documented options that fit, and why.", Icon: Sparkles },
+            { href: "/find/?where=local", title: "Check my hardware", text: "See which local setups a publisher documents for your graphics memory.", Icon: Cpu },
+            { href: "/matrix/", title: "Compare options", text: "Put organizations and releases side by side, with sources.", Icon: SlidersHorizontal },
+            { href: "/jobs/", title: "Find a job", text: "Current openings from employers' own career feeds.", Icon: Briefcase },
+          ].map(({ href, title, text, Icon }) => (
+            <li key={href}>
+              <Link prefetch={false} href={href} className="card card-link group flex h-full items-start gap-3 p-4">
+                <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl border border-line-strong bg-elev text-cyan">
+                  <Icon aria-hidden="true" className="h-5 w-5" />
+                </span>
+                <span>
+                  <span className="block font-semibold text-text group-hover:text-white">{title}</span>
+                  <span className="mt-1 block text-sm text-muted">{text}</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section aria-labelledby="project-heading" className="container-page pb-7">

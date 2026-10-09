@@ -1,0 +1,27 @@
+explainer: training-data-disclosures
+updated_at: 2026-10-08
+questions:
+  - prompt: Ai2 releases the Dolma corpus under ODC-BY. Does that license by itself clear every document in the corpus for reuse?
+    choices:
+      - No; using it also binds you to the original sources' terms
+      - Yes, because a license on a compiled dataset covers every document inside it
+      - Yes, because data that downloads without a gate may be reused freely
+    answer: 0
+    explanation: >-
+      The page says the Dolma dataset card adds that using the corpus also binds you to the license agreements and terms of use of the original data sources. It concludes that "a license on a compiled dataset does not, by itself, clear every document inside it."
+  - prompt: A model's training-data disclosure does not say how the data was filtered. What does the page say that silence means?
+    choices:
+      - The data was not filtered at all, or the card would have said so
+      - The provider has confirmed that no personal information was removed
+      - It is a gap in the disclosure, not evidence of anything else
+    answer: 2
+    explanation: >-
+      The page says "when a source does not say something, that is a gap in the disclosure, not evidence of anything else." In the worked example, a card's gaps "mean only that this card does not answer those questions."
+  - prompt: A provider describes licensed internal training data that no one outside can obtain. What is that description worth, according to the page?
+    choices:
+      - Nothing, because a description counts only if the data can be downloaded
+      - It still helps you understand the model, though you cannot get the data
+      - It gives you permission to use that data, because it was disclosed
+    answer: 1
+    explanation: >-
+      Under "Description without access," the page says a provider "can describe data that no one else can obtain" and "the description still helps you understand the model." Information, access, and permission are separate questions.

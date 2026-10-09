@@ -1,0 +1,98 @@
+slug: openai-speech-to-text-api
+title: OpenAI speech-to-text API with gpt-transcribe
+tasks: [transcribe-audio]
+runs: hosted
+summary:
+  text: >-
+    OpenAI's Audio API transcribes recordings that you upload to it. OpenAI's guide recommends the
+    gpt-transcribe model for recorded speech in its original language, and specialized models when
+    you need speaker labels, word timestamps, subtitle formats, or translation into English.
+  reviewed_at: 2026-10-08
+  source_ids: [oai-stt]
+components:
+  - role: service
+    name: OpenAI Audio API (transcriptions)
+    record_slug: openai
+    url: https://developers.openai.com/api/docs/guides/speech-to-text
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [oai-quickstart]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: advanced
+skill_note: >-
+  Requires an API key and a short program or curl command that uploads the audio file to the API
+  and reads the JSON response.
+account_required:
+  value: true
+  source_ids: [oai-quickstart]
+cost_basis:
+  value: usage-billed
+  note: >-
+    Transcription is billed by usage through your OpenAI API account; OpenAI's pricing page lists a
+    per-minute rate for each transcription model.
+  source_ids: [oai-pricing]
+data_location:
+  text: >-
+    On the provider's servers. Audio is uploaded to and processed by OpenAI's API. OpenAI says data
+    sent to the API is not used to train or improve its models unless you opt in, and abuse
+    monitoring logs, which may contain prompts and responses, are kept for up to 30 days by default.
+  reviewed_at: 2026-10-08
+  source_ids: [oai-stt, oai-yourdata]
+getting_started:
+  - "Create an API key in the OpenAI dashboard and export it as the OPENAI_API_KEY environment variable (macOS and Linux shells, or PowerShell on Windows)."
+  - "Install an official OpenAI SDK, or use curl."
+  - "Send the recording to the transcriptions endpoint with model gpt-transcribe and read the transcript from the JSON response."
+getting_started_source_ids: [oai-quickstart, oai-stt]
+limitations:
+  - text: >-
+      Files can be up to 25 MB, in mp3, mp4, mpeg, mpga, m4a, wav, or webm format.
+    reviewed_at: 2026-10-08
+    source_ids: [oai-stt]
+  - text: >-
+      Speaker labels require the separate gpt-4o-transcribe-diarize model, which needs a chunking
+      strategy for audio longer than 30 seconds.
+    reviewed_at: 2026-10-08
+    source_ids: [oai-stt]
+  - text: >-
+      Zero Data Retention and Modified Abuse Monitoring controls require prior approval from OpenAI.
+    reviewed_at: 2026-10-08
+    source_ids: [oai-yourdata]
+unverified:
+  - USASI has not tested this configuration.
+  - Accuracy for your recordings and languages is not documented here.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: oai-stt
+    title: Speech to text (OpenAI API guide)
+    url: https://developers.openai.com/api/docs/guides/speech-to-text
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: oai-quickstart
+    title: Developer quickstart (OpenAI API)
+    url: https://developers.openai.com/api/docs/quickstart
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: oai-pricing
+    title: OpenAI API pricing
+    url: https://developers.openai.com/api/docs/pricing
+    publisher: OpenAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: oai-yourdata
+    title: Data controls in the OpenAI platform
+    url: https://developers.openai.com/api/docs/guides/your-data
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

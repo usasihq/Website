@@ -1,0 +1,27 @@
+explainer: quantization
+updated_at: 2026-10-08
+questions:
+  - prompt: What does quantization give up in exchange for smaller weight files?
+    choices:
+      - Nothing, because the stored numbers stay exactly the same
+      - Some accuracy, because each stored number becomes an approximation
+      - The original license, because a quantized copy is a new work with its own terms
+    answer: 1
+    explanation: >-
+      The page says "the cost is accuracy, because each stored number becomes an approximation," and quotes llama.cpp that quantization "may introduce some accuracy loss." It also says to read the original license, since "a quantized copy is made from the original weights."
+  - prompt: Roughly how large is a 4-bit copy of a model's weights compared with the 16-bit original?
+    choices:
+      - About the same size, because the number of weights does not change
+      - About four times larger, because each weight needs a shared scale
+      - About a quarter to a third the size
+    answer: 2
+    explanation: >-
+      File size is roughly "the number of weights times the bits per weight," so files "shrink roughly in proportion: a 4-bit copy is about a quarter to a third the size of the 16-bit original." Shared scales add only a little.
+  - prompt: Which quantized file does the page advise you to prefer?
+    choices:
+      - A publisher's or documented file made from the 16- or 32-bit original
+      - A file requantized from another quantized file, because it is smaller still
+      - Any file with the lowest bit count available, whatever its source or method
+    answer: 0
+    explanation: >-
+      The page says to "look to the publisher first," otherwise to pick a documented source, and to "prefer files made from the 16- or 32-bit original, not requantized ones," since requantizing "can severely reduce quality."

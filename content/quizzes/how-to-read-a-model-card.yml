@@ -1,0 +1,27 @@
+explainer: how-to-read-a-model-card
+updated_at: 2026-10-08
+questions:
+  - prompt: A model card on a model hub says the model "improves reasoning." Who stands behind that statement?
+    choices:
+      - The model hub, which checks every card before it appears on the site
+      - An outside reviewer, because a card's results are always re-run by others
+      - The publisher; a card is its own account, not independently verified
+    answer: 2
+    explanation: >-
+      The page says "every statement in a card is the publisher's own account: appearing on a model hub does not mean anyone else has checked it." A card "does not independently verify anything."
+  - prompt: A model card says nothing about whether the model was tested in a particular language. How does the page say to record that?
+    choices:
+      - As "no," because anything a card leaves out was not done
+      - As unknown, not as "no"
+      - As "yes," because cards list only what was left untested
+    answer: 1
+    explanation: >-
+      Under "Missing information," the page says to note what the card does not say and to record a gap as unknown rather than reading it as "no." A missing detail is not evidence that something was not done.
+  - prompt: The Granite 4.2 8B card lists a 512K-token context window as a key capability. What did the page find in the files shipped with the model?
+    choices:
+      - Its config.json and serving example both use 131,072, a narrower figure
+      - Its config.json sets 512K positions, which confirms the claim
+      - The card gives step-by-step instructions for running the model at 512K
+    answer: 0
+    explanation: >-
+      The page says "the files say something narrower": config.json "sets a maximum of 131,072 positions," the vLLM example uses 131,072 tokens, and the review "found no instructions in the card for running at 512K." A claim is not its evidence.

@@ -1,0 +1,27 @@
+explainer: ai-content-provenance
+updated_at: 2026-10-08
+questions:
+  - prompt: The Verify tool reports "No Content Credentials found" for a photo. What does that show?
+    choices:
+      - That the photo was made with AI and should not be published
+      - That the photo is genuine and has not been edited since it was taken
+      - Only that no credential is attached to the file
+    answer: 2
+    explanation: >-
+      The page, describing C2PA's guidance, says this result means the file was not made with a conforming tool, or its credentials were stripped. In the worked example, Lee notes that it "shows only that no credential is attached"; finding nothing proves nothing.
+  - prompt: According to C2PA's explainer, what can a valid Content Credential not tell you?
+    choices:
+      - Whether the record and the content are still intact
+      - Whether the content is true, accurate, or factual
+      - Who signed the record and whether the signer is on a trust list
+    answer: 1
+    explanation: >-
+      The page says C2PA's explainer is plain about limits: "Provenance alone cannot tell you whether content is true, accurate, or factual." Content Credentials show whether the record is intact and whether its signer is on a known trust list.
+  - prompt: What does NIST's report say about AI text detectors that do not rely on a watermark?
+    choices:
+      - They do little better than chance on short passages, in studies NIST cites
+      - They work equally well on any text, in any language, from any generator
+      - They never label writing by people as AI-generated, so a flag is conclusive
+    answer: 0
+    explanation: >-
+      The page says NIST AI 100-4 reports studies finding detectors little better than chance on short passages, notes that most were built for English, and says they label English text by non-native writers as AI-generated more often. It adds that detectors may only perform well on specific generators.

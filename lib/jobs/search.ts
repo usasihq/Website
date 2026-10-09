@@ -1,4 +1,5 @@
 import type { Job, FeedHealth } from "./schema";
+import { JOB_TRACKS, jobTrack } from "./tracks";
 export const STALE_MS = 48 * 3600000;
 /** The fields the Jobs directory reads. Reconciliation bookkeeping stays out of the page and its data file. */
 export type JobItem = Pick<Job, "id" | "organization_slug" | "source_type" | "source_identifier" | "source_job_id" | "source_url" | "title" |
@@ -17,7 +18,7 @@ export function isCurrent(job: Pick<Job, "status" | "last_seen">, feed: FeedHeal
 export function checkedLabel(value: string | null): string {
   return value ? new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(new Date(value)) + " UTC" : "Not yet successfully checked";
 }
-export const DEFAULT_JOB_FILTERS = { q: "", company: "", department: "", location: "", workplace: "", employment: "", salary: false,
+export const DEFAULT_JOB_FILTERS = { q: "", track: "", company: "", department: "", location: "", workplace: "", employment: "", salary: false,
   currency: "", period: "", salary_min: "", posted: "", verified: "", view: "current", sort: "verified", page: 1 };
 export type JobFilters = typeof DEFAULT_JOB_FILTERS;
 const clean = (v: string | null, max = 120) => (v ?? "").trim().slice(0, max);
@@ -26,7 +27,7 @@ export function parseJobFilters(p: URLSearchParams): JobFilters {
   const currency = /^[A-Z]{3}$/.test(p.get("currency") ?? "") ? p.get("currency")! : "";
   const period = choice(p.get("period"), ["hour", "day", "week", "month", "year"]);
   const min = p.get("salary_min") ?? "";
-  return { q: clean(p.get("q"), 200), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
+  return { q: clean(p.get("q"), 200), track: choice(p.get("track"), JOB_TRACKS.map(t => t.id)), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
     workplace: p.get("remote") === "1" ? "remote" : choice(p.get("workplace"), ["remote", "hybrid", "on-site", "unknown"]),
     employment: choice(p.get("employment"), ["full-time", "part-time", "contract", "temporary", "internship", "unknown"]),
     salary: p.get("salary") === "1", currency, period,
@@ -55,6 +56,7 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     if (j.status !== "open") return false;
     const current = isCurrent(j, health.get(`${j.organization_slug}:${j.source_type}:${j.source_identifier}`), now);
     if (f.view === "current" ? !current : current) return false;
+    if (f.track && !jobTrack(f.track)?.test(j)) return false;
     if (f.company && j.organization_slug !== f.company) return false;
     if (f.department && j.department !== f.department) return false;
     if (f.location && !j.locations.some(l => normalize(l).includes(normalize(f.location)))) return false;

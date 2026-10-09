@@ -1,0 +1,232 @@
+slug: synthid-text
+name: SynthID Text
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    source_ids: [ st-readme, st-pyproject ]
+organization_slugs: [ google-deepmind ]
+links:
+  - label: Repository
+    url: https://github.com/google-deepmind/synthid-text
+    kind: repository
+  - label: LICENSE (Apache-2.0)
+    url: https://github.com/google-deepmind/synthid-text/blob/main/LICENSE
+    kind: license
+  - label: Package on PyPI
+    url: https://pypi.org/project/synthid-text/
+    kind: website
+  - label: Paper (Nature)
+    url: https://www.nature.com/articles/s41586-024-08025-4
+    kind: paper
+  - label: SynthID Text in Hugging Face Transformers (announcement)
+    url: https://huggingface.co/blog/synthid-text
+    kind: release-notes
+summary:
+  text: >-
+    SynthID Text is Google DeepMind's reference implementation of the text watermarking method
+    described in its 2024 Nature paper. The method changes only how a language model samples
+    tokens, using a configuration built around a sequence of integer keys, and detects the
+    watermark from the text without running the model. The repository provides mean, weighted
+    mean, and Bayesian scoring functions for detection, a mix-in that adds watermarking to Gemma
+    and GPT-2 classes from Hugging Face Transformers, a Colab notebook, and human evaluation
+    data.
+  source_ids: [ st-readme, st-paper ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    Reproducing and studying the paper's watermarking and detection methods. The README says the
+    code is for reference and research reproducibility, is not intended for production use, and
+    points to the SynthID Text implementation in Hugging Face Transformers for production.
+  source_ids: [ st-readme ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The repository is in Google DeepMind's GitHub organization, and its license section and
+    package metadata name DeepMind Technologies Limited, a UK company, as copyright holder and
+    author. UK Companies House lists DeepMind Holdings Limited as holding 75% or more of
+    DeepMind Technologies Limited's shares and voting rights, and lists Alphabet Inc., a Delaware
+    corporation, as holding 75% or more of DeepMind Holdings Limited's. Alphabet's fiscal 2025
+    Form 10-K gives its principal executive offices in Mountain View, California. This is the
+    same us-control basis as the catalog's google-deepmind record, which treats Google DeepMind
+    as part of Google: Google's CEO announced it in April 2023 as a unit combining DeepMind and
+    Google Research's Brain team. This review did not examine which entities employ the
+    repository's maintainers.
+  source_ids: [ st-readme, st-pyproject, ch-dmt-psc, ch-dmh-psc, alphabet-10k-2025-cover, google-blog-gdm-2023 ]
+  assessed_at: 2026-10-08
+availability:
+  status: public
+  access_conditions: >-
+    Source code and human evaluation data are public on GitHub, and the core library is
+    published on PyPI as synthid-text.
+  source_ids: [ st-readme, st-pypi ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/google-deepmind/synthid-text/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ st-license, st-readme ]
+    reviewed_at: 2026-10-08
+  - name: Creative Commons Attribution 4.0 International (materials other than software)
+    spdx: CC-BY-4.0
+    url: https://github.com/google-deepmind/synthid-text/blob/main/README.md#license-and-disclaimer
+    applies_to: data
+    source_ids: [ st-readme ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    The README states that all software is under Apache 2.0 and all other materials under CC-BY
+    4.0, with copyright held by DeepMind Technologies Limited, and that this is not an official
+    Google product. The human evaluation data, which compares watermarked and unwatermarked
+    text from Gemma 7B, falls under the "other materials" statement; the README gives code for
+    loading the matching prompts separately from the ELI5 dataset.
+  source_ids: [ st-readme ]
+  reviewed_at: 2026-10-08
+checklist:
+  source_code:
+    status: public
+    note: Python source for watermarking, the three detectors, and Bayesian detector training, with tests.
+    source_ids: [ st-readme ]
+    reviewed_at: 2026-10-08
+  documentation:
+    status: public
+    note: >-
+      The README explains the watermarking configuration, applying a watermark, detection, and
+      the human data, and links a Colab notebook that runs end to end with Gemma or GPT-2.
+    source_ids: [ st-readme ]
+    reviewed_at: 2026-10-08
+  installation:
+    status: public
+    note: >-
+      Installable from PyPI or from source with pip; the package requires Python 3.9 or later
+      and pins specific versions of PyTorch (2.4.0), Transformers (4.43.3), and NumPy.
+    source_ids: [ st-readme, st-pyproject ]
+    reviewed_at: 2026-10-08
+  supported_platforms:
+    status: partial
+    note: >-
+      The package metadata lists Python 3.10 and 3.11 and "OS Independent", but it depends on
+      jax[cuda]; the README describes running the notebook on Colab runtimes or locally from
+      source. No tested platform list is given.
+    source_ids: [ st-pyproject, st-readme ]
+    reviewed_at: 2026-10-08
+  release_status:
+    status: public
+    note: >-
+      Tagged releases 0.1 through 0.2.1 were published in November 2024, all marked as
+      pre-releases on GitHub, and PyPI shows 0.2.1 (uploaded 2024-11-14) as the latest version,
+      marked "Development Status :: 4 - Beta".
+    source_ids: [ st-releases, st-pypi ]
+    reviewed_at: 2026-10-08
+run_notes:
+  - text: >-
+      The README says the Bayesian detector must be trained on watermarked and unwatermarked text
+      for each watermarking key, with training data representative of the text the system will
+      generate. It also notes that the mix-in uses a static watermarking configuration and that
+      the hashing function gives no guarantee of cryptographic security.
+    source_ids: [ st-readme ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      For the notebook, the README suggests a GPU with 16GB of memory (such as a T4) for Gemma
+      v1.0 2B IT, 32GB (such as an A100) for Gemma v1.0 7B IT, and any runtime for GPT-2. Its
+      watermarking example loads Gemma in bfloat16; the README does not say what precision the
+      memory suggestions assume.
+    source_ids: [ st-readme ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Google DeepMind and Hugging Face's announcement says SynthID Text was added to Transformers
+      in version 4.46.0, that watermarking is less effective on factual responses, and that
+      detection confidence falls when text is thoroughly rewritten or translated.
+    source_ids: [ hf-synthid-blog ]
+    reviewed_at: 2026-10-08
+provenance: null
+tags: [ safety, watermarking, provenance, language-model ]
+publication_status: published
+archive_note: null
+released_at: 2024-10-23
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: st-readme
+    title: google-deepmind/synthid-text README
+    url: https://raw.githubusercontent.com/google-deepmind/synthid-text/main/README.md
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: st-license
+    title: google-deepmind/synthid-text LICENSE (Apache-2.0)
+    url: https://raw.githubusercontent.com/google-deepmind/synthid-text/main/LICENSE
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: st-pyproject
+    title: google-deepmind/synthid-text pyproject.toml
+    url: https://raw.githubusercontent.com/google-deepmind/synthid-text/main/pyproject.toml
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: st-pypi
+    title: synthid-text package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/synthid-text/json
+    publisher: Python Package Index
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: st-releases
+    title: google-deepmind/synthid-text releases (GitHub API)
+    url: https://api.github.com/repos/google-deepmind/synthid-text/releases
+    publisher: GitHub
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: st-paper
+    title: Scalable watermarking for identifying large language model outputs
+    url: https://www.nature.com/articles/s41586-024-08025-4
+    publisher: Nature
+    kind: paper
+    published_at: 2024-10-23
+    accessed_at: 2026-10-08
+  - id: hf-synthid-blog
+    title: Introducing SynthID Text
+    url: https://huggingface.co/blog/synthid-text
+    publisher: Hugging Face and Google DeepMind
+    kind: announcement
+    published_at: 2024-10-23
+    accessed_at: 2026-10-08
+  - id: ch-dmt-psc
+    title: DEEPMIND TECHNOLOGIES LIMITED (07386350), persons with significant control
+    url: https://find-and-update.company-information.service.gov.uk/company/07386350/persons-with-significant-control
+    publisher: UK Companies House
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ch-dmh-psc
+    title: DEEPMIND HOLDINGS LIMITED (12181850), persons with significant control
+    url: https://find-and-update.company-information.service.gov.uk/company/12181850/persons-with-significant-control
+    publisher: UK Companies House
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: alphabet-10k-2025-cover
+    title: Alphabet Inc. Form 10-K for fiscal 2025, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/R1.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: google-blog-gdm-2023
+    title: "Google DeepMind: Bringing together two world-class AI teams"
+    url: https://blog.google/technology/ai/april-ai-update/
+    publisher: Google
+    kind: announcement
+    published_at: 2023-04-20
+    accessed_at: 2026-10-08

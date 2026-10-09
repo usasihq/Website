@@ -1,0 +1,100 @@
+slug: claude-apps-file-uploads
+title: Claude web, desktop, and mobile apps with file uploads
+tasks: [chat-and-write, work-with-documents]
+runs: hosted
+summary:
+  text: >-
+    Claude is Anthropic's hosted AI assistant, used in a web browser, in desktop apps for Mac and
+    Windows, or in mobile apps for iOS and Android. You can attach documents such as PDF, DOCX, CSV,
+    and TXT files to a chat, or add files to a project for reference across conversations.
+  reviewed_at: 2026-10-08
+  source_ids: [claude-getstarted, claude-upload]
+components:
+  - role: service
+    name: Claude (claude.ai and Claude apps)
+    record_slug: anthropic
+    url: https://support.claude.com/en/articles/8114491-get-started-with-claude
+platforms:
+  values: [web, macos, windows, ios, android]
+  source_ids: [claude-getstarted]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: beginner
+skill_note: >-
+  Use it in a browser or install the desktop or mobile app, then log in; no technical setup is
+  needed.
+account_required:
+  value: true
+  source_ids: [claude-login]
+cost_basis:
+  value: free-tier-with-limits
+  note: >-
+    The free plan has a session-based usage limit that resets every five hours, and message limits
+    vary with demand. Paid subscriptions offer additional usage.
+  source_ids: [claude-getstarted]
+data_location:
+  text: >-
+    On the provider's servers. Chats and uploaded files are handled by Anthropic's hosted service.
+    For Free, Pro, and Max plans, Anthropic's privacy center says chats are used to improve its
+    models if you allow it in your settings, if a conversation is flagged for safety review, or if
+    you otherwise opt in; Incognito chats are not used.
+  reviewed_at: 2026-10-08
+  source_ids: [claude-login, claude-upload, claude-training]
+getting_started:
+  - "Go to claude.ai in a browser, or download the desktop app for Mac or Windows or the mobile app for iOS or Android."
+  - "Log in with a Google account or with a login link sent to your email address."
+  - "Click the + button in the chat box, choose Add files or photos, and pick files, or drag them into the chat window."
+getting_started_source_ids: [claude-getstarted, claude-login, claude-upload]
+limitations:
+  - text: >-
+      Chat uploads are limited to 500MB per file and 20 files per chat. PDFs can be up to 1000
+      pages, and charts and images inside a PDF are analyzed only when it has 100 pages or fewer.
+    reviewed_at: 2026-10-08
+    source_ids: [claude-upload]
+  - text: >-
+      For non-PDF documents Claude extracts text only, so embedded images are not read; XLSX
+      uploads require code execution and file creation to be turned on.
+    reviewed_at: 2026-10-08
+    source_ids: [claude-upload]
+  - text: >-
+      You must be in a supported location and at least 18 years old to use Claude.
+    reviewed_at: 2026-10-08
+    source_ids: [claude-getstarted]
+unverified:
+  - USASI has not tested this configuration.
+  - The Claude models available on each plan change over time and are not recorded here.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: claude-getstarted
+    title: Get started with Claude
+    url: https://support.claude.com/en/articles/8114491-get-started-with-claude
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: claude-upload
+    title: Upload files to Claude
+    url: https://support.claude.com/en/articles/8241126-what-kinds-of-documents-can-i-upload-to-claude-ai
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: claude-login
+    title: Log in to your Claude account
+    url: https://support.claude.com/en/articles/13189465-log-in-to-your-claude-account
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: claude-training
+    title: Is my data used for model training?
+    url: https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

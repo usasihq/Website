@@ -1,0 +1,175 @@
+slug: tiktoken
+name: tiktoken
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: OpenAI
+    organization_slug: openai
+    source_ids: [ tk-readme, tk-license ]
+organization_slugs: [ openai ]
+links:
+  - label: Repository
+    url: https://github.com/openai/tiktoken
+    kind: repository
+  - label: LICENSE (MIT)
+    url: https://github.com/openai/tiktoken/blob/main/LICENSE
+    kind: license
+  - label: Package on PyPI
+    url: https://pypi.org/project/tiktoken/
+    kind: website
+  - label: Changelog
+    url: https://github.com/openai/tiktoken/blob/main/CHANGELOG.md
+    kind: release-notes
+summary:
+  text: >-
+    tiktoken is OpenAI's open-source byte pair encoding (BPE) tokenizer for use with OpenAI's
+    models. It converts text to the token numbers a model sees and back, using named encodings
+    such as o200k_base and cl100k_base, and can return the encoding that corresponds to a given
+    OpenAI model name. It also includes an educational submodule for training and visualizing a
+    simple BPE tokenizer, and a plugin mechanism for registering other encodings.
+  source_ids: [ tk-readme, tk-openai-public ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    Counting or inspecting the tokens that a piece of text becomes for an OpenAI model, and
+    learning how BPE tokenization works. The README links an OpenAI Cookbook notebook on counting
+    tokens with tiktoken.
+  source_ids: [ tk-readme ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The repository is in OpenAI's GitHub organization and its license names OpenAI as a
+    copyright holder. OpenAI's operating company, OpenAI Group PBC, is described as a Delaware
+    public benefit corporation at an address in San Francisco, California, in a February 2026
+    agreement filed with the SEC.
+  source_ids: [ tk-readme, tk-license, sec-openai-amazon-ecl ]
+  assessed_at: 2026-10-08
+availability:
+  status: public
+  access_conditions: >-
+    Source is public on GitHub and prebuilt packages are on PyPI. The encoding files are not in
+    the repository; the library downloads them, when first used, from the
+    openaipublic.blob.core.windows.net addresses named in its code.
+  source_ids: [ tk-readme, tk-pypi, tk-openai-public ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: MIT License
+    spdx: MIT
+    url: https://github.com/openai/tiktoken/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ tk-license, tk-pyproject ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    The MIT license names OpenAI and an individual developer as copyright holders. The
+    encoding files that tiktoken downloads at run time are not part of the repository, and the
+    README does not state separate terms for them.
+  source_ids: [ tk-license, tk-openai-public, tk-readme ]
+  reviewed_at: 2026-10-08
+checklist:
+  source_code:
+    status: public
+    note: >-
+      Python package with a Rust core built through setuptools-rust; the encoding definitions are
+      in tiktoken_ext/openai_public.py.
+    source_ids: [ tk-pyproject, tk-openai-public ]
+    reviewed_at: 2026-10-08
+  documentation:
+    status: public
+    note: >-
+      The README covers basic use, BPE background, and extending tiktoken, and says the API is
+      documented in tiktoken/core.py; it links an OpenAI Cookbook notebook for examples.
+    source_ids: [ tk-readme ]
+    reviewed_at: 2026-10-08
+  installation:
+    status: public
+    note: Installable from PyPI with pip; requires Python 3.9 or later.
+    source_ids: [ tk-readme, tk-pypi ]
+    reviewed_at: 2026-10-08
+  supported_platforms:
+    status: public
+    note: >-
+      PyPI provides wheels for macOS (x86_64 and arm64), Linux (manylinux and musllinux, x86_64
+      and aarch64), and Windows (amd64), and a source distribution.
+    source_ids: [ tk-pypi, tk-pyproject ]
+    reviewed_at: 2026-10-08
+  release_status:
+    status: public
+    note: Versioned PyPI releases with a changelog; 0.14.0 was uploaded on 2026-08-17.
+    source_ids: [ tk-pypi, tk-changelog ]
+    reviewed_at: 2026-10-08
+run_notes:
+  - text: >-
+      On first use of an encoding, tiktoken downloads its file from the address in
+      openai_public.py and caches it in the system's temporary directory; setting the
+      TIKTOKEN_CACHE_DIR environment variable chooses another cache location.
+    source_ids: [ tk-openai-public, tk-load ]
+    reviewed_at: 2026-10-08
+provenance: null
+tags: [ tokenizer, language-model ]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: tk-readme
+    title: openai/tiktoken README
+    url: https://raw.githubusercontent.com/openai/tiktoken/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: tk-license
+    title: openai/tiktoken LICENSE (MIT)
+    url: https://raw.githubusercontent.com/openai/tiktoken/main/LICENSE
+    publisher: OpenAI (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: tk-pyproject
+    title: openai/tiktoken pyproject.toml
+    url: https://raw.githubusercontent.com/openai/tiktoken/main/pyproject.toml
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: tk-openai-public
+    title: openai/tiktoken tiktoken_ext/openai_public.py
+    url: https://raw.githubusercontent.com/openai/tiktoken/main/tiktoken_ext/openai_public.py
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: tk-load
+    title: openai/tiktoken tiktoken/load.py
+    url: https://raw.githubusercontent.com/openai/tiktoken/main/tiktoken/load.py
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: tk-changelog
+    title: openai/tiktoken CHANGELOG
+    url: https://raw.githubusercontent.com/openai/tiktoken/main/CHANGELOG.md
+    publisher: OpenAI (GitHub)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: tk-pypi
+    title: tiktoken package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/tiktoken/json
+    publisher: Python Package Index
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: sec-openai-amazon-ecl
+    title: "Exhibit 10.1: Equity commitment letter agreement between OpenAI Group PBC and Amazon"
+    url: https://www.sec.gov/Archives/edgar/data/1018724/000110465926021050/tm267374d1_ex10-1.htm
+    publisher: U.S. Securities and Exchange Commission (Amazon.com, Inc. filing)
+    kind: filing
+    published_at: 2026-02-27
+    accessed_at: 2026-10-08

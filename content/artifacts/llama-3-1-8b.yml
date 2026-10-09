@@ -1,0 +1,243 @@
+slug: llama-3-1-8b
+name: Llama 3.1 8B
+kind: model
+record_level: release
+family_slug: llama
+version: "3.1 8B"
+maintainers:
+  - name: Meta
+    organization_slug: meta
+    source_ids: [ l31-card ]
+organization_slugs: [ meta ]
+links:
+  - label: Model card
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md
+    kind: documentation
+  - label: Hugging Face (pretrained, gated)
+    url: https://huggingface.co/meta-llama/Llama-3.1-8B
+    kind: model-hub
+  - label: Hugging Face (instruction-tuned, gated)
+    url: https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+    kind: model-hub
+  - label: Llama 3.1 Community License Agreement
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE
+    kind: license
+  - label: Reference implementation (Llama 3)
+    url: https://github.com/meta-llama/llama-models/tree/main/models/llama3
+    kind: repository
+summary:
+  text: >-
+    Llama 3.1 8B is the smallest model in Meta's Llama 3.1 collection, released on July 23, 2024
+    in pretrained and instruction-tuned versions. It is a text-only, auto-regressive transformer
+    with grouped-query attention and a 128K context length. The model card lists eight supported
+    languages and says the collection was pretrained on about 15 trillion tokens with a December
+    2023 cutoff.
+  source_ids: [ l31-card, llama-models-readme ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    The model card lists commercial and research use in its supported languages: assistant-style
+    chat for the instruction-tuned model, adapting the pretrained model to other text generation
+    tasks, and using model outputs for synthetic data generation and distillation. Other
+    developers have used it as a base model; Ai2's Llama 3.1 Tülu 3.1 8B, for example, is
+    post-trained from it.
+  source_ids: [ l31-card, tulu-card ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Meta as the model developer. Meta Platforms, Inc. is a Delaware
+    corporation whose Form 10-K for fiscal 2025 gives its address as Menlo Park, California, on
+    the cover page.
+  source_ids: [ l31-card, meta-10k-2025-cover ]
+  assessed_at: 2026-10-08
+availability:
+  status: partial
+  access_conditions: >-
+    Weights are downloadable after an access request and license acceptance. The Hugging Face
+    repositories are gated with manual approval and ask for name, date of birth, country,
+    affiliation, and job title; Meta's own download instructions send a signed, expiring URL by
+    email once a request is approved.
+  source_ids: [ l31-hf-api, l31-instruct-hf-api, hf-gated-docs, llama-models-readme ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: Llama 3.1 Community License Agreement
+    spdx: null
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE
+    applies_to: weights
+    source_ids: [ l31-license, l31-card, l31-hf-api ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    Custom Meta license dated July 23, 2024; the Hugging Face metadata lists it as llama3.1. It
+    grants a royalty-free, non-exclusive license to use, modify, and redistribute. Redistributors
+    must include the agreement, show "Built with Llama", and keep an attribution notice, and
+    distributed models trained or fine-tuned with Llama materials or outputs must start their
+    names with "Llama". Use must follow the incorporated Llama 3.1 Acceptable Use Policy.
+    Licensees whose products had more than 700 million monthly active users in the month before
+    the release date must request a separate license. The license ends for anyone who sues
+    alleging that the Llama materials or outputs infringe their rights. California law governs.
+  source_ids: [ l31-license, l31-aup, l31-hf-api ]
+  reviewed_at: 2026-10-08
+checklist:
+  weights:
+    status: partial
+    note: >-
+      BF16 safetensors (8,030,261,248 parameters per the repository metadata) plus original
+      consolidated weights, in Hugging Face repositories gated with manual approval.
+    source_ids: [ l31-hf-api, hf-gated-docs ]
+    reviewed_at: 2026-10-08
+  inference_code:
+    status: public
+    note: >-
+      Meta's llama-models repository includes Llama 3 model, generation, tokenizer, and
+      quantization code with example scripts, and the Hugging Face metadata identifies the
+      Transformers LlamaForCausalLM architecture.
+    source_ids: [ llama3-code-dir, llama-models-readme, l31-hf-api ]
+    reviewed_at: 2026-10-08
+  training_code:
+    status: unknown
+    note: >-
+      The model card says Meta used custom training libraries; this review found no published
+      training code.
+    source_ids: [ l31-card ]
+    reviewed_at: 2026-10-08
+  training_data_information:
+    status: partial
+    note: >-
+      The card describes about 15 trillion pretraining tokens from publicly available sources
+      with a December 2023 cutoff, and fine-tuning data that includes public instruction datasets
+      and over 25 million synthetic examples. The data is not released, and this review does not
+      judge the description complete.
+    source_ids: [ l31-card ]
+    reviewed_at: 2026-10-08
+  training_recipe:
+    status: partial
+    note: >-
+      The card says the tuned versions use supervised fine-tuning and reinforcement learning with
+      human feedback, and that pretraining used Meta's custom libraries and GPU cluster. Meta's
+      Llama 3 technical paper was not assessed in this review.
+    source_ids: [ l31-card ]
+    reviewed_at: 2026-10-08
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card reports benchmark results, and Meta's evaluation notes describe the settings and
+      point to released evaluation outputs and a reproduction recipe using lm-evaluation-harness.
+      The evaluation datasets on Hugging Face are gated with manual approval, and the recipe was
+      not checked.
+    source_ids: [ l31-card, l31-eval-details, l31-evals-hf-api ]
+    reviewed_at: 2026-10-08
+run_notes:
+  - text: >-
+      llama.cpp's quantize README lists GGUF sizes for Llama 3.1 8B of 14.96 GiB at F16 (16 bits
+      per weight), 7.95 GiB for Q8_0 (about 8.5 bits per weight), and 4.58 GiB for Q4_K_M (about
+      4.89 bits per weight). It says memory and disk requirements are currently the same because
+      models are fully loaded into memory.
+    source_ids: [ lcpp-quant ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      The model card treats languages beyond its eight supported ones as out of scope unless a
+      developer fine-tunes for them in line with the license and acceptable use policy.
+    source_ids: [ l31-card ]
+    reviewed_at: 2026-10-08
+provenance: null
+tags: [ language-model ]
+publication_status: published
+archive_note: null
+released_at: 2024-07-23
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: l31-card
+    title: Llama 3.1 Model Card
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md
+    publisher: Meta (GitHub)
+    kind: model-card
+    published_at: 2024-07-23
+    accessed_at: 2026-10-08
+  - id: l31-license
+    title: Llama 3.1 Community License Agreement
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: 2024-07-23
+    accessed_at: 2026-10-08
+  - id: l31-aup
+    title: Llama 3.1 Acceptable Use Policy
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/USE_POLICY.md
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: l31-eval-details
+    title: Llama 3 Evaluation Details (Llama 3.1)
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/eval_details.md
+    publisher: Meta (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: llama-models-readme
+    title: meta-llama/llama-models README
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/README.md
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: llama3-code-dir
+    title: meta-llama/llama-models models/llama3 directory listing (GitHub API)
+    url: https://api.github.com/repos/meta-llama/llama-models/contents/models/llama3
+    publisher: Meta (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: l31-hf-api
+    title: Hugging Face model metadata for meta-llama/Llama-3.1-8B
+    url: https://huggingface.co/api/models/meta-llama/Llama-3.1-8B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: l31-instruct-hf-api
+    title: Hugging Face model metadata for meta-llama/Llama-3.1-8B-Instruct
+    url: https://huggingface.co/api/models/meta-llama/Llama-3.1-8B-Instruct
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: l31-evals-hf-api
+    title: Hugging Face dataset metadata for meta-llama/Llama-3.1-8B-evals
+    url: https://huggingface.co/api/datasets/meta-llama/Llama-3.1-8B-evals
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: hf-gated-docs
+    title: Gated models (Hugging Face Hub documentation source)
+    url: https://raw.githubusercontent.com/huggingface/hub-docs/main/docs/hub/models-gated.md
+    publisher: Hugging Face (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lcpp-quant
+    title: llama.cpp quantize README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/quantize/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: tulu-card
+    title: allenai/Llama-3.1-Tulu-3.1-8B model card
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B/raw/main/README.md
+    publisher: Ai2 (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: meta-10k-2025-cover
+    title: Meta Platforms, Inc. Form 10-K for fiscal 2025, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/R1.htm
+    publisher: Meta Platforms, Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08

@@ -15,7 +15,7 @@ import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
 import { jobsDirectoryData } from "../lib/jobs/directory-data";
 import { sourceLibrary } from "../lib/source-library";
-import { parseGlossary, referenceSearchEntries } from "../lib/reference-search";
+import { parseFaq, parseGlossary, referenceSearchEntries } from "../lib/reference-search";
 import { siteConfig } from "../lib/site-config";
 import { computeTier, RUBRIC_VERSION } from "../lib/openness";
 import { SCHEMA_VERSION } from "../lib/schema";
@@ -49,9 +49,11 @@ const exportData = {
 
 fs.writeFileSync(path.join(outDir, "catalog.json"), JSON.stringify(exportData, null, 2) + "\n");
 const glossary = parseGlossary(fs.readFileSync(path.join(process.cwd(), "content", "pages", "glossary.mdx"), "utf8"));
+const faqPath = path.join(process.cwd(), "content", "pages", "faq.mdx");
+const faq = fs.existsSync(faqPath) ? parseFaq(fs.readFileSync(faqPath, "utf8")) : [];
 fs.writeFileSync(
   path.join(outDir, "search-index.json"),
-  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary)] }) + "\n",
+  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq)] }) + "\n",
 );
 // Full current Jobs list, loaded by the /jobs/ page after first paint (the page itself embeds only the first 30).
 const jobs = jobsDirectoryData(catalog);

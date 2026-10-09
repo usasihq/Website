@@ -1,0 +1,182 @@
+slug: sentence-transformers
+name: Sentence Transformers
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    source_ids: [ stf-readme, stf-notice ]
+organization_slugs: [ hugging-face ]
+links:
+  - label: Repository
+    url: https://github.com/huggingface/sentence-transformers
+    kind: repository
+  - label: Documentation (SBERT.net)
+    url: https://www.sbert.net/
+    kind: documentation
+  - label: LICENSE (Apache-2.0)
+    url: https://github.com/huggingface/sentence-transformers/blob/main/LICENSE
+    kind: license
+  - label: Package on PyPI
+    url: https://pypi.org/project/sentence-transformers/
+    kind: website
+  - label: Releases
+    url: https://github.com/huggingface/sentence-transformers/releases
+    kind: release-notes
+summary:
+  text: >-
+    Sentence Transformers is a Python framework for using and training embedding and reranker
+    models. It computes dense embeddings with Sentence Transformer models, scores text pairs with
+    Cross-Encoder (reranker) models, and also supports sparse encoders and multi-vector models
+    for ColBERT-style late-interaction retrieval, with pretrained models published on Hugging
+    Face. Version
+    6.1.0 was released on September 18, 2026.
+  source_ids: [ stf-readme, stf-releases ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    Semantic search, semantic textual similarity, paraphrase mining, and reranking, and training
+    or fine-tuning embedding, reranker, sparse, and multi-vector models. Google's EmbeddingGemma 2
+    model card documents inference through this library.
+  source_ids: [ stf-readme, eg2-hf-card ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Two-organization history. The project was originally developed by the UKP Lab at TU
+    Darmstadt in Germany, which the NOTICE file lists as copyright holder for 2019 to 2025. The
+    repository is now in Hugging Face's GitHub organization, the NOTICE file lists Hugging Face,
+    Inc. as copyright holder from 2025, and the README names a Hugging Face maintainer.
+    Hugging Face, Inc. is a Delaware corporation per Hugging Face's terms of service; the catalog's
+    hugging-face record assesses its U.S. headquarters. The catalog treats Hugging Face as the
+    current maintaining entity.
+  source_ids: [ stf-readme, stf-notice, hf-tos ]
+  assessed_at: 2026-10-08
+availability:
+  status: public
+  access_conditions: >-
+    Source is public on GitHub, and the package is published on PyPI and conda-forge.
+  source_ids: [ stf-readme, stf-install ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/huggingface/sentence-transformers/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ stf-license, stf-pypi ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    The repository is licensed under Apache 2.0 with a NOTICE file crediting the UKP Lab at TU
+    Darmstadt (2019 to 2025) and Hugging Face, Inc. (2025 onward). Pretrained models loaded
+    through the library carry their own licenses, which this record does not cover.
+  source_ids: [ stf-license, stf-notice, stf-readme ]
+  reviewed_at: 2026-10-08
+checklist:
+  source_code:
+    status: public
+    note: Public on GitHub, with example applications in the repository.
+    source_ids: [ stf-readme ]
+    reviewed_at: 2026-10-08
+  documentation:
+    status: public
+    note: >-
+      SBERT.net has a quickstart, installation guide, training overviews for each model type, and
+      a package reference.
+    source_ids: [ stf-readme, stf-install ]
+    reviewed_at: 2026-10-08
+  installation:
+    status: public
+    note: >-
+      Installable with pip, uv, or conda-forge, or from source; optional extras add image, audio,
+      video, training, ONNX, and OpenVINO support. Requires Python 3.10 or later, PyTorch 2.2 or
+      later, and Transformers v5 or later.
+    source_ids: [ stf-install, stf-pypi ]
+    reviewed_at: 2026-10-08
+  supported_platforms:
+    status: partial
+    note: >-
+      The package metadata lists Python 3.10 to 3.13. For GPU use the documentation defers to
+      PyTorch's installation instructions; no operating system list is given.
+    source_ids: [ stf-pypi, stf-install ]
+    reviewed_at: 2026-10-08
+  release_status:
+    status: public
+    note: >-
+      Versioned GitHub releases with notes and matching PyPI versions, marked "Production/Stable";
+      6.1.0 was released on 2026-09-18.
+    source_ids: [ stf-releases, stf-pypi ]
+    reviewed_at: 2026-10-08
+run_notes: []
+provenance:
+  text: >-
+    Sentence Transformers was originally developed by the UKP Lab at TU Darmstadt, a German
+    university lab, and is now maintained in Hugging Face's GitHub organization.
+  derived_from: []
+  source_ids: [ stf-readme, stf-notice ]
+tags: [ embedding, retrieval, training, inference ]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: stf-readme
+    title: huggingface/sentence-transformers README
+    url: https://raw.githubusercontent.com/huggingface/sentence-transformers/main/README.md
+    publisher: Hugging Face (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: stf-license
+    title: huggingface/sentence-transformers LICENSE (Apache-2.0)
+    url: https://raw.githubusercontent.com/huggingface/sentence-transformers/main/LICENSE
+    publisher: Hugging Face (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: stf-notice
+    title: huggingface/sentence-transformers NOTICE.txt
+    url: https://raw.githubusercontent.com/huggingface/sentence-transformers/main/NOTICE.txt
+    publisher: Hugging Face (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: stf-releases
+    title: huggingface/sentence-transformers releases (GitHub API)
+    url: https://api.github.com/repos/huggingface/sentence-transformers/releases
+    publisher: GitHub
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: stf-pypi
+    title: sentence-transformers package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/sentence-transformers/json
+    publisher: Python Package Index
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: stf-install
+    title: Sentence Transformers installation
+    url: https://www.sbert.net/docs/installation.html
+    publisher: Sentence Transformers (SBERT.net)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: hf-tos
+    title: Hugging Face Terms of Service
+    url: https://huggingface.co/terms-of-service
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: eg2-hf-card
+    title: google/embeddinggemma-2 model card
+    url: https://huggingface.co/google/embeddinggemma-2/raw/main/README.md
+    publisher: Google DeepMind (via Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08

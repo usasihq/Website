@@ -1,0 +1,246 @@
+slug: embeddinggemma-2
+name: EmbeddingGemma 2
+kind: model
+record_level: release
+family_slug: gemma
+version: "embeddinggemma-2"
+maintainers:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    source_ids: [ eg2-hf-card, eg2-model-card ]
+organization_slugs: [ google-deepmind, google ]
+links:
+  - label: Hugging Face model card
+    url: https://huggingface.co/google/embeddinggemma-2
+    kind: model-hub
+  - label: EmbeddingGemma 2 model card (Google AI for Developers)
+    url: https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2
+    kind: documentation
+  - label: EmbeddingGemma overview
+    url: https://ai.google.dev/gemma/docs/embeddinggemma
+    kind: documentation
+  - label: Apache License 2.0 (Google's Gemma 4 license page)
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    kind: license
+  - label: Launch post
+    url: https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2
+    kind: release-notes
+summary:
+  text: >-
+    EmbeddingGemma 2 is a multimodal embedding model from Google DeepMind that maps text
+    (including code), images, video, and audio, alone or combined in one input, into a single
+    768-dimensional vector space. The model card gives 740M parameters in total: a 270M-parameter
+    text model plus a 170M vision encoder and a 300M audio encoder that can be loaded separately.
+    All inputs share an 8,192-token context, and outputs can be shortened to 512, 256, or 128
+    dimensions. Google's release page dates it to October 6, 2026.
+  source_ids: [ eg2-hf-card, eg2-model-card, gemma-releases ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    The model card lists retrieval, classification, clustering, semantic similarity, and fact
+    verification across text, code, images, video, and audio, for example search and
+    retrieval-augmented generation over documents, code, or audio archives. It describes the model
+    as designed to run on consumer hardware such as mobile devices and laptops.
+  source_ids: [ eg2-hf-card ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-control
+  explanation: >-
+    The model card names Google DeepMind as the author. Google's CEO announced Google DeepMind in
+    2023 as a group within Google combining DeepMind and Google Research's Brain team. Alphabet
+    Inc.'s fiscal 2025 Form 10-K gives its principal executive offices in Mountain View,
+    California, and Exhibit 21.01 lists Google LLC as a Delaware subsidiary.
+  source_ids: [ eg2-hf-card, google-blog-gdm-2023, alphabet-10k-2025-cover, alphabet-10k-2025-ex21 ]
+  assessed_at: 2026-10-08
+availability:
+  status: public
+  access_conditions: >-
+    Downloadable from Hugging Face without an access gate. Google's launch post says the weights
+    are also published on Kaggle.
+  source_ids: [ eg2-hf-api, eg2-blog ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    applies_to: weights
+    source_ids: [ eg2-license-page, eg2-hf-card, eg2-hf-api ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    The model card and the repository metadata give Apache 2.0, and the card links to Google's
+    Gemma 4 license page, which reproduces the Apache License 2.0 text; the Hugging Face repository has no
+    separate LICENSE file. The Gemma Terms of Use (last modified April 1, 2026) list the original
+    EmbeddingGemma in their appendix but not EmbeddingGemma 2. The model card's ethics section
+    separately says deployments must adhere to the Gemma Prohibited Use Policy; the Apache license
+    text itself does not refer to that policy.
+  source_ids: [ eg2-hf-card, eg2-hf-api, eg2-license-page, gemma-terms ]
+  reviewed_at: 2026-10-08
+checklist:
+  weights:
+    status: public
+    note: >-
+      A single BF16 safetensors file in the ungated Hugging Face repository; the repository
+      metadata counts 744,371,512 parameters.
+    source_ids: [ eg2-hf-api ]
+    reviewed_at: 2026-10-08
+  inference_code:
+    status: public
+    note: >-
+      The model card documents inference with the Sentence Transformers library on top of Hugging
+      Face Transformers. Google's launch post also names MLX, vLLM, llama.cpp, SGLang, Ollama,
+      and LM Studio for serving the model.
+    source_ids: [ eg2-hf-card, eg2-blog ]
+    reviewed_at: 2026-10-08
+  training_code:
+    status: unknown
+    note: >-
+      No training code was found. Google's EmbeddingGemma overview links a fine-tuning guide for
+      EmbeddingGemma that uses Sentence Transformers.
+    source_ids: [ eg-overview ]
+    reviewed_at: 2026-10-08
+  training_data_information:
+    status: partial
+    note: >-
+      The card describes web documents in over 140 languages, code, images, video, audio, and
+      paired cross-modal samples, with a January 2025 cutoff, and CSAM, sensitive-data, and
+      quality and safety filtering. It gives no data sizes, the data is not released, and this
+      review does not judge the description complete.
+    source_ids: [ eg2-hf-card ]
+    reviewed_at: 2026-10-08
+  training_recipe:
+    status: unknown
+    note: >-
+      The card gives the architecture (24 layers, mean pooling, a 512-to-768 projection) but not
+      the training procedure, and no technical report for this release was found.
+    source_ids: [ eg2-hf-card ]
+    reviewed_at: 2026-10-08
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card reports results on MTEB (multilingual and code), MIEB, MMEB v2, MSEB, and MAEB,
+      including at truncated dimensions; evaluation code and settings were not reviewed.
+    source_ids: [ eg2-hf-card ]
+    reviewed_at: 2026-10-08
+run_notes:
+  - text: >-
+      The model card says to run inference in bfloat16 or float32, not float16, because the
+      model's activations exceed float16's range and can produce NaN or degraded embeddings
+      without an error.
+    source_ids: [ eg2-hf-card ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      Text inputs take short task prefixes (for example "task: search result | query:" for
+      queries and "title: ... | text:" for documents); images, video, and audio take none. The
+      card's default budgets are 280 tokens per image, 140 per video frame (sampled at one frame
+      per second), and 25 per second of 16 kHz mono audio, all within the shared 8,192-token
+      context.
+    source_ids: [ eg2-hf-card ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      The vision and audio encoders can be left unloaded through Sentence Transformers'
+      config_kwargs; the card lists an effective size of 270M parameters for text only and 440M
+      for text and images. After truncating an embedding, the card says to L2-normalize it again,
+      and queries and documents must use the same dimension.
+    source_ids: [ eg2-hf-card ]
+    reviewed_at: 2026-10-08
+provenance:
+  text: >-
+    Google describes EmbeddingGemma 2 as built on the Gemma 4 architecture. Its overview compares
+    it with the original 308M-parameter text-only EmbeddingGemma, which it calls EmbeddingGemma
+    1. The card does not say whether EmbeddingGemma 2 was initialized from Gemma 4 weights.
+  derived_from:
+    - name: Gemma 4
+      artifact_slug: gemma
+      url: null
+      note: Architecture basis named by Google; see the Gemma family record.
+    - name: EmbeddingGemma (300M)
+      artifact_slug: embeddinggemma-300m
+      url: null
+      note: Earlier text-only release that Google's overview calls EmbeddingGemma 1.
+  source_ids: [ eg2-hf-card, eg2-blog, eg-overview ]
+tags: [ embedding, multimodal, multilingual, local-inference ]
+publication_status: published
+archive_note: null
+released_at: 2026-10-06
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: eg2-hf-card
+    title: google/embeddinggemma-2 model card
+    url: https://huggingface.co/google/embeddinggemma-2/raw/main/README.md
+    publisher: Google DeepMind (via Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: eg2-hf-api
+    title: Hugging Face model metadata for google/embeddinggemma-2
+    url: https://huggingface.co/api/models/google/embeddinggemma-2
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: eg2-model-card
+    title: EmbeddingGemma 2 model card
+    url: https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2
+    publisher: Google AI for Developers
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: eg-overview
+    title: EmbeddingGemma model overview
+    url: https://ai.google.dev/gemma/docs/embeddinggemma
+    publisher: Google AI for Developers
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemma-releases
+    title: Gemma releases
+    url: https://ai.google.dev/gemma/docs/releases
+    publisher: Google AI for Developers
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: eg2-blog
+    title: EmbeddingGemma 2 launch post
+    url: https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2
+    publisher: Google
+    kind: announcement
+    published_at: 2026-10-06
+    accessed_at: 2026-10-08
+  - id: eg2-license-page
+    title: Apache License 2.0 (Gemma 4 license page)
+    url: https://ai.google.dev/gemma/docs/gemma_4_license
+    publisher: Google AI for Developers
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemma-terms
+    title: Gemma Terms of Use
+    url: https://ai.google.dev/gemma/terms
+    publisher: Google AI for Developers
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: google-blog-gdm-2023
+    title: "Google DeepMind: Bringing together two world-class AI teams"
+    url: https://blog.google/technology/ai/april-ai-update/
+    publisher: Google
+    kind: announcement
+    published_at: 2023-04-20
+    accessed_at: 2026-10-08
+  - id: alphabet-10k-2025-cover
+    title: Alphabet Inc. Form 10-K for fiscal 2025, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/R1.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: alphabet-10k-2025-ex21
+    title: Alphabet Inc. Form 10-K fiscal 2025, Exhibit 21.01 (subsidiaries)
+    url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/googexhibit2101q42025.htm
+    publisher: Alphabet Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08

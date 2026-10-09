@@ -1,0 +1,115 @@
+slug: codex-cli-openai
+title: OpenAI Codex CLI signed in with ChatGPT or an API key
+tasks: [write-code]
+runs: hybrid
+summary:
+  text: >-
+    Codex CLI is OpenAI's open-source coding agent. It runs in your terminal, inspects and edits
+    files in your local repository, and runs commands there, while the model work is done by
+    OpenAI's hosted models, reached by signing in with a ChatGPT plan or an API key.
+  reviewed_at: 2026-10-08
+  source_ids: [codex-readme, codex-cli-docs, codex-auth]
+components:
+  - role: app
+    name: Codex CLI
+    record_slug: codex-cli
+    url: https://developers.openai.com/codex/cli
+  - role: service
+    name: OpenAI models through ChatGPT sign-in or the OpenAI API
+    record_slug: openai
+    url: https://developers.openai.com/codex/auth
+platforms:
+  values: [macos, linux, windows]
+  source_ids: [codex-readme, codex-install-doc]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: intermediate
+skill_note: >-
+  Install with a one-line installer, npm, or Homebrew, run codex in a project folder, and sign in
+  through the browser.
+account_required:
+  value: true
+  source_ids: [codex-readme, codex-auth]
+cost_basis:
+  value: subscription
+  note: >-
+    OpenAI lists Codex CLI with ChatGPT Plus, Pro, Business, Edu, and Enterprise plans, within plan
+    limits, or with an API key billed at standard API rates. Its pricing page describes Free and Go
+    access only in the desktop app.
+  source_ids: [codex-pricing, codex-auth, codex-readme]
+data_location:
+  text: >-
+    Local app calling a hosted service. Codex CLI reads, edits, and runs commands on your computer,
+    and OpenAI's hosted models process the requests. With ChatGPT sign-in, your ChatGPT workspace's
+    retention settings apply; with an API key, your API organization's retention and data-sharing
+    settings apply.
+  reviewed_at: 2026-10-08
+  source_ids: [codex-readme, codex-cli-docs, codex-auth]
+getting_started:
+  - "On macOS or Linux, run the standalone installer from the Codex README; on Windows, run its PowerShell installer. npm and Homebrew packages are also available."
+  - "Open a project directory in a terminal and run `codex`."
+  - "Choose Sign in with ChatGPT and complete the browser flow, or sign in with an API key."
+  - "Describe a task, and create Git checkpoints before and after it so you can revert changes."
+getting_started_source_ids: [codex-readme, codex-cli-docs, codex-auth]
+limitations:
+  - text: >-
+      The repository's install guide lists macOS 12+, Ubuntu 20.04+ or Debian 10+, or Windows 11
+      via WSL2, with 4 GB of RAM minimum and 8 GB recommended.
+    reviewed_at: 2026-10-08
+    source_ids: [codex-install-doc]
+  - text: >-
+      API key sign-in supports local workflows, but some features that rely on ChatGPT workspace
+      access or cloud services are limited or unavailable.
+    reviewed_at: 2026-10-08
+    source_ids: [codex-auth]
+  - text: >-
+      Included usage follows ChatGPT plan limits, which you can check with /status during a
+      session.
+    reviewed_at: 2026-10-08
+    source_ids: [codex-pricing]
+unverified:
+  - USASI has not tested this configuration.
+  - The models and usage each ChatGPT plan includes change over time and are not recorded here.
+  - The install guide's WSL2 requirement and the README's native Windows installer differ; USASI has not checked which applies to your Windows version.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: codex-readme
+    title: Codex CLI README
+    url: https://raw.githubusercontent.com/openai/codex/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: codex-install-doc
+    title: Installing and building Codex
+    url: https://raw.githubusercontent.com/openai/codex/main/docs/install.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: codex-cli-docs
+    title: Codex CLI documentation
+    url: https://developers.openai.com/codex/cli
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: codex-auth
+    title: Codex authentication
+    url: https://developers.openai.com/codex/auth
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: codex-pricing
+    title: Codex pricing and plans
+    url: https://developers.openai.com/codex/pricing
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

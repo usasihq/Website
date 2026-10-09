@@ -1,0 +1,225 @@
+slug: llama-guard-4-12b
+name: Llama Guard 4 12B
+kind: model
+record_level: release
+family_slug: llama
+version: "Llama-Guard-4-12B"
+maintainers:
+  - name: Meta
+    organization_slug: meta
+    source_ids: [ lg4-card, lg4-protection-blog ]
+organization_slugs: [ meta ]
+links:
+  - label: Model card (PurpleLlama repository)
+    url: https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard4/12B/MODEL_CARD.md
+    kind: documentation
+  - label: Hugging Face (gated)
+    url: https://huggingface.co/meta-llama/Llama-Guard-4-12B
+    kind: model-hub
+  - label: Prompt format documentation
+    url: https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/llama-guard-4/
+    kind: documentation
+  - label: Llama 4 Community License Agreement
+    url: https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard4/12B/LICENSE
+    kind: license
+  - label: Release announcement
+    url: https://ai.meta.com/blog/ai-defenders-program-llama-protection-tools/
+    kind: release-notes
+summary:
+  text: >-
+    Llama Guard 4 is a 12-billion-parameter safety classifier from Meta for text and images. Given
+    a prompt sent to a language model, or a model's response, it generates text saying whether
+    the content is safe or unsafe and, if unsafe, which categories it violates: 13 categories
+    based on the MLCommons hazards taxonomy plus a text-only category for code interpreter abuse.
+    It is a dense model pruned from the pre-trained Llama 4 Scout and fine-tuned for
+    classification, and it accepts multiple images in one prompt. Meta released it on April 29, 2025, as one of its
+    Llama protection tools.
+  source_ids: [ lg4-card, lg4-protection-blog ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    Filtering the inputs to a generative model, its outputs, or both, as part of a larger system.
+    Meta's documentation says it is designed to work with Llama 4 Scout and Maverick and can be
+    used as a drop-in replacement for Llama Guard 3 8B and 11B. Meta's Llama Protections page
+    says it is also available through the moderations endpoint of Meta's Llama API.
+  source_ids: [ lg4-card, lg4-docs, llama-protections ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Meta publishes the model and its card in its PurpleLlama repository and announced it on its
+    AI blog. Meta Platforms, Inc. is a Delaware corporation whose Form 10-K for fiscal 2025 gives
+    its address as Menlo Park, California, on the cover page.
+  source_ids: [ lg4-card, lg4-protection-blog, meta-10k-2025-cover ]
+  assessed_at: 2026-10-08
+availability:
+  status: partial
+  access_conditions: >-
+    The Hugging Face repository is gated with manual approval: requesters must accept the Llama 4
+    Community License and submit their name, date of birth, country, affiliation, and job title.
+    The Llama 4 Acceptable Use Policy shipped with the model withholds the license grant for
+    Llama 4 multimodal models from individuals domiciled in, and companies with a principal place
+    of business in, the European Union; this catalog has not confirmed how Meta applies that
+    clause to Llama Guard 4.
+  source_ids: [ lg4-hf-api, hf-gated-docs, lg4-use-policy ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: Llama 4 Community License Agreement
+    spdx: null
+    url: https://github.com/meta-llama/PurpleLlama/blob/main/Llama-Guard4/12B/LICENSE
+    applies_to: weights
+    source_ids: [ lg4-license, lg4-hf-api ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    Custom Meta license, effective April 5, 2025; the Hugging Face metadata lists it as "other"
+    with the name llama4. It grants a royalty-free, non-exclusive license to use, modify, and
+    redistribute. Redistributors must include the agreement, show "Built with Llama", and keep an
+    attribution notice, and distributed models trained or fine-tuned with Llama materials or
+    outputs must start their names with "Llama". Use must follow the incorporated Llama 4
+    Acceptable Use Policy. Licensees whose products had more than 700 million monthly active
+    users in the month before the Llama 4 release date must request a separate license. The
+    license ends for anyone who sues alleging that the Llama materials or outputs infringe their
+    rights. California law governs.
+  source_ids: [ lg4-license, lg4-hf-api, lg4-use-policy ]
+  reviewed_at: 2026-10-08
+checklist:
+  weights:
+    status: partial
+    note: >-
+      BF16 safetensors (12,001,097,216 parameters per the repository metadata) in a Hugging Face
+      repository gated with manual approval and a personal-information form.
+    source_ids: [ lg4-hf-api, hf-gated-docs ]
+    reviewed_at: 2026-10-08
+  inference_code:
+    status: public
+    note: >-
+      The repository metadata identifies the Hugging Face Transformers Llama 4 architecture
+      (Llama4ForConditionalGeneration), and Meta's documentation specifies the prompt format,
+      including how images are split into 336-by-336-pixel tiles. This review could not read the
+      gated Hugging Face card.
+    source_ids: [ lg4-hf-api, lg4-docs ]
+    reviewed_at: 2026-10-08
+  training_code:
+    status: unknown
+    note: No training or pruning code for Llama Guard 4 was found in the repositories reviewed.
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The card says post-training used the Llama Guard 3 8B and 11B-vision training data plus
+      multi-image samples (mostly two to five images) and multilingual data, written by human
+      annotators or translated from English, at roughly three parts text-only to one part
+      multimodal. The data is not released.
+    source_ids: [ lg4-card ]
+    reviewed_at: 2026-10-08
+  training_recipe:
+    status: partial
+    note: >-
+      The card describes pruning the Llama 4 Scout pre-trained checkpoint by removing all routed
+      experts and routers and keeping the shared expert, with no further pre-training, followed
+      by post-training for classification. Hyperparameters are not given.
+    source_ids: [ lg4-card ]
+    reviewed_at: 2026-10-08
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card reports recall, false positive rate, and F1 against Llama Guard 3 on an in-house
+      test set that the card does not make available.
+    source_ids: [ lg4-card ]
+    reviewed_at: 2026-10-08
+run_notes:
+  - text: >-
+      Meta's card and documentation say the model can be run on a single GPU; neither gives a
+      memory figure or a precision for that statement.
+    source_ids: [ lg4-card, lg4-docs ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      The card says the model was tested mostly with prompts containing a few images (most often
+      three), that categories such as defamation, intellectual property, and elections may need
+      up-to-date facts to judge, and that as a language model it may be open to prompt injection;
+      it points to Meta's Prompt Guard 2 for detecting prompt attacks.
+    source_ids: [ lg4-card ]
+    reviewed_at: 2026-10-08
+provenance:
+  text: >-
+    Meta built Llama Guard 4 by pruning the pre-trained Llama 4 Scout mixture-of-experts
+    checkpoint into a dense model and post-training it for safety classification. It shares Llama
+    4 Scout and Maverick's tokenizer and vision encoder.
+  derived_from:
+    - name: Llama 4 Scout (pre-trained)
+      artifact_slug: llama-4-scout-17b-16e
+      url: null
+      note: Routed experts and routers removed; the shared expert became a dense feed-forward layer.
+  source_ids: [ lg4-card ]
+tags: [ safety, classification, multimodal, vision-language ]
+publication_status: published
+archive_note: null
+released_at: 2025-04-29
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: lg4-card
+    title: Llama Guard 4 model card
+    url: https://raw.githubusercontent.com/meta-llama/PurpleLlama/main/Llama-Guard4/12B/MODEL_CARD.md
+    publisher: Meta, PurpleLlama (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lg4-license
+    title: Llama Guard 4 LICENSE (Llama 4 Community License Agreement)
+    url: https://raw.githubusercontent.com/meta-llama/PurpleLlama/main/Llama-Guard4/12B/LICENSE
+    publisher: Meta, PurpleLlama (GitHub)
+    kind: license
+    published_at: 2025-04-05
+    accessed_at: 2026-10-08
+  - id: lg4-use-policy
+    title: Llama 4 Acceptable Use Policy (Llama Guard 4 USE_POLICY.md)
+    url: https://raw.githubusercontent.com/meta-llama/PurpleLlama/main/Llama-Guard4/12B/USE_POLICY.md
+    publisher: Meta, PurpleLlama (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lg4-hf-api
+    title: Hugging Face model metadata for meta-llama/Llama-Guard-4-12B
+    url: https://huggingface.co/api/models/meta-llama/Llama-Guard-4-12B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: hf-gated-docs
+    title: Gated models (Hugging Face Hub documentation source)
+    url: https://raw.githubusercontent.com/huggingface/hub-docs/main/docs/hub/models-gated.md
+    publisher: Hugging Face (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lg4-docs
+    title: "Llama Guard 4 | Model Cards and Prompt formats"
+    url: https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/llama-guard-4/
+    publisher: Meta
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: llama-protections
+    title: Llama Protections
+    url: https://dev.meta.ai/llama/llama-protections/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: lg4-protection-blog
+    title: Sharing new open source protection tools and advancements in AI privacy and security
+    url: https://ai.meta.com/blog/ai-defenders-program-llama-protection-tools/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-04-29
+    accessed_at: 2026-10-08
+  - id: meta-10k-2025-cover
+    title: Meta Platforms, Inc. Form 10-K for fiscal 2025, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/R1.htm
+    publisher: Meta Platforms, Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08

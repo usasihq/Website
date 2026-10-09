@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
-import { ArrowRight, BookOpen, CalendarClock, Library, MapPin, Route, ScrollText, Search } from "lucide-react";
+import { ArrowRight, BookOpen, Calculator, CircleHelp, CalendarClock, Landmark, Library, MapPin, Route, Scale, ScrollText, Search } from "lucide-react";
 import { ExplainerCard, TopicIcon } from "@/components/learn/LearnParts";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -205,7 +205,11 @@ export default function LearnPage() {
           </h2>
           <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
+              { href: "/faq/", label: "Frequently asked questions", note: "Short, sourced answers with links to go deeper", Icon: CircleHelp },
               { href: "/glossary/", label: "Glossary", note: "Terms used across the catalog", Icon: Search },
+              { href: "/licenses/", label: "License guide", note: "What the licenses on models, software, and datasets say", Icon: Scale },
+              { href: "/policy/", label: "U.S. AI policy tracker", note: "Federal laws, orders, memoranda, and standards on AI", Icon: Landmark },
+              { href: "/learn/tools/model-size/", label: "Model size calculator", note: "How much storage a model's weights take at each precision", Icon: Calculator },
               { href: "/places/", label: "Places", note: "Organizations by documented headquarters state", Icon: MapPin },
               { href: "/timeline/", label: "Timeline", note: "Open releases and news events by documented date", Icon: CalendarClock },
               { href: "/sources/", label: "Source library", note: "Every cited source and the records that cite it", Icon: Library },

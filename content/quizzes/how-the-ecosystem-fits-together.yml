@@ -1,0 +1,27 @@
+explainer: how-the-ecosystem-fits-together
+updated_at: 2026-10-08
+questions:
+  - prompt: The catalog lists organizations by role, such as chip designer or model developer. Why should those role lists not be added together?
+    choices:
+      - Each organization may hold only one role, so the lists already form a total
+      - The role lists include only organizations based outside the United States
+      - An organization appears under every role it has, so the lists overlap
+    answer: 2
+    explanation: >-
+      The page says "the layers describe roles, not companies," and many records list more than one. "Because an organization appears under every role it has, role lists overlap and should not be added together."
+  - prompt: NVIDIA's wafers are produced by foundries such as TSMC and Samsung. How does that affect NVIDIA's place in the catalog?
+    choices:
+      - NVIDIA is not eligible, because its chips are manufactured outside the U.S.
+      - It does not change NVIDIA's eligibility or add the foundries to the catalog
+      - The foundries become catalog members, because NVIDIA is one
+    answer: 1
+    explanation: >-
+      The page says "NVIDIA is eligible through its documented U.S. headquarters. Its reliance on outside foundries does not change that, and it does not make those foundries catalog members."
+  - prompt: Deep Cogito's Cogito v2.1 671B names DeepSeek-V3-Base as its base model. What does the model's eligibility cover?
+    choices:
+      - Deep Cogito's own work; the DeepSeek base is recorded as provenance
+      - The whole model, including the base model, which is treated as U.S.-developed
+      - Nothing, because models built on a base model from elsewhere are never cataloged
+    answer: 0
+    explanation: >-
+      The page says Cogito v2.1 671B "is eligible through Deep Cogito, which post-trained and published it. That covers Deep Cogito's work only; the DeepSeek base model is recorded as provenance and is not treated as U.S.-developed."

@@ -1,0 +1,27 @@
+explainer: retrieval-augmented-generation
+updated_at: 2026-10-08
+questions:
+  - prompt: What does retrieval-augmented generation (RAG) do before the model answers a question?
+    choices:
+      - It retrains the model on your documents so they become part of its weights
+      - It moves the model's knowledge cutoff forward to today's date
+      - It searches your documents and adds relevant passages to the prompt
+    answer: 2
+    explanation: >-
+      The page says RAG works "without retraining": "before the model answers, a search step finds passages in your documents that look relevant to the question and adds them to the prompt."
+  - prompt: Why might a RAG system use keyword search such as BM25 alongside embeddings?
+    choices:
+      - Embedding models can miss exact matches, such as an error code
+      - Embedding search finds a passage only when it shares words with the question
+      - Embeddings can be made for documents but never for the questions
+    answer: 0
+    explanation: >-
+      Anthropic notes that embedding models "can miss crucial exact matches," such as an error code like "TS-999," which BM25 can catch. Embeddings work on meaning: in the moon example, the best match "shares no words with the query," and queries and documents are both embedded.
+  - prompt: Several teams' files go into one shared RAG index. What does the page warn could happen?
+    choices:
+      - Nothing, because an index returns only files that the person asking created
+      - One team's files can surface in another team's answers
+      - The index strips private details out of the files when it stores them
+    answer: 1
+    explanation: >-
+      The page says "retrieval returns whatever matches unless the application limits it, so a shared index can surface one team's files in another team's answers." File attributes or separate indexes can keep them apart.

@@ -1,0 +1,170 @@
+slug: olmo-core
+name: OLMo-core
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: Ai2
+    organization_slug: ai2
+    source_ids: [ oc-readme, oc-pypi ]
+organization_slugs: [ ai2 ]
+links:
+  - label: Repository
+    url: https://github.com/allenai/Olmo-core
+    kind: repository
+  - label: Documentation
+    url: https://olmo-core.readthedocs.io/en/latest/
+    kind: documentation
+  - label: LICENSE (Apache-2.0)
+    url: https://github.com/allenai/Olmo-core/blob/main/LICENSE
+    kind: license
+  - label: Package on PyPI (ai2-olmo-core)
+    url: https://pypi.org/project/ai2-olmo-core/
+    kind: website
+  - label: v3.0.0 release notes
+    url: https://github.com/allenai/Olmo-core/releases/tag/v3.0.0
+    kind: release-notes
+summary:
+  text: >-
+    OLMo-core is Ai2's Python library of building blocks for large-scale distributed training
+    with PyTorch, used for its OLMo language models. The repository also holds the official
+    training scripts for released OLMo 2 and Olmo 3 models and has beta support for text
+    generation, including a chat demo. Version 3.0.0 was released on October 1, 2026.
+  source_ids: [ oc-readme, oc-docs, oc-release-3 ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    Re-running or adapting the published OLMo training scripts, which are launched with torchrun
+    and accept command-line overrides, and building other distributed PyTorch training runs from
+    the library's components. For evaluation, the README points to Ai2's OLMo Eval and OLMES
+    repositories.
+  source_ids: [ oc-readme, oc-docs ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is in Ai2's allenai GitHub organization, the package is published on PyPI
+    as ai2-olmo-core, and the documentation says OLMo-core is developed and maintained at the
+    Allen Institute for Artificial Intelligence (AI2). Ai2 describes itself as a Seattle-based
+    nonprofit AI research institute founded in 2014.
+  source_ids: [ oc-readme, oc-pypi, oc-docs, ai2-about ]
+  assessed_at: 2026-10-08
+availability:
+  status: public
+  access_conditions: >-
+    Source is public on GitHub, the package is on PyPI, and Ai2 publishes Docker images with its
+    dependencies.
+  source_ids: [ oc-readme, oc-pypi ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/allenai/Olmo-core/blob/main/LICENSE
+    applies_to: code
+    source_ids: [ oc-license, oc-pypi ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    The repository's LICENSE file is the Apache License 2.0 text, and the PyPI package carries
+    the same license. Optional dependencies named in the README, such as flash-attn and
+    TransformerEngine, come from other projects with their own terms, which this record does not
+    assess.
+  source_ids: [ oc-license, oc-pypi, oc-readme ]
+  reviewed_at: 2026-10-08
+checklist:
+  source_code:
+    status: public
+    note: Library source in src/olmo_core, tests in src/test, and official training scripts in src/scripts/official.
+    source_ids: [ oc-readme ]
+    reviewed_at: 2026-10-08
+  documentation:
+    status: public
+    note: >-
+      The Read the Docs site has an overview, guides, examples, and an API reference. At review
+      the site showed version 2.6.0, while the latest tagged release was 3.0.0.
+    source_ids: [ oc-docs, oc-release-3 ]
+    reviewed_at: 2026-10-08
+  installation:
+    status: public
+    note: >-
+      The README says to install PyTorch for the user's system first, then install from PyPI or
+      from source; some features need optional dependencies, and the published Docker images
+      include them.
+    source_ids: [ oc-readme ]
+    reviewed_at: 2026-10-08
+  supported_platforms:
+    status: partial
+    note: >-
+      The package requires Python 3.10 or later. The README says the Docker images are tested on
+      Ai2's in-house H100 clusters and may not work with other hardware or driver and CUDA
+      versions; no general platform list is given.
+    source_ids: [ oc-pypi, oc-readme ]
+    reviewed_at: 2026-10-08
+  release_status:
+    status: public
+    note: Tagged GitHub releases with release notes and matching PyPI versions; 3.0.0 was released on 2026-10-01.
+    source_ids: [ oc-release-3, oc-pypi ]
+    reviewed_at: 2026-10-08
+run_notes:
+  - text: >-
+      The 3.0.0 release notes say it removed the olmo_core.model_ladder API and its training
+      scripts, so existing ladder configurations need an earlier revision.
+    source_ids: [ oc-release-3 ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      The official training scripts can also be launched with OLMo-core's Beaker launch tool,
+      which the README says requires access to Beaker; otherwise they run with torchrun.
+    source_ids: [ oc-readme ]
+    reviewed_at: 2026-10-08
+provenance: null
+tags: [ training, distributed-computing ]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: oc-readme
+    title: allenai/Olmo-core README
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/README.md
+    publisher: Ai2 (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: oc-license
+    title: allenai/Olmo-core LICENSE (Apache-2.0)
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/LICENSE
+    publisher: Ai2 (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: oc-release-3
+    title: OLMo-core v3.0.0 release notes (GitHub API)
+    url: https://api.github.com/repos/allenai/Olmo-core/releases/tags/v3.0.0
+    publisher: Ai2 (GitHub)
+    kind: release-notes
+    published_at: 2026-10-01
+    accessed_at: 2026-10-08
+  - id: oc-pypi
+    title: ai2-olmo-core package metadata (PyPI JSON API)
+    url: https://pypi.org/pypi/ai2-olmo-core/json
+    publisher: Python Package Index
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: oc-docs
+    title: OLMo-core documentation
+    url: https://olmo-core.readthedocs.io/en/latest/
+    publisher: Ai2 (Read the Docs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ai2-about
+    title: About Ai2
+    url: https://allenai.org/about
+    publisher: Ai2
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08

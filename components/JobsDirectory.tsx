@@ -4,6 +4,7 @@ import { useJobsClock } from "./useJobsClock";
 import { useEffect, useMemo, useState } from "react";
 import type { FeedHealth, Job } from "@/lib/jobs/schema";
 import { checkedLabel, currentJobs, DEFAULT_JOB_FILTERS, filterJobs, isDefaultJobView, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
+import { isExpressionOfInterest, jobTrack, JOB_TRACKS } from "@/lib/jobs/tracks";
 import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
 import { ExternalLink } from "./ExternalLink";
@@ -18,6 +19,7 @@ function JobCard({ job, unverified }: { job: JobItem; unverified: boolean }) {
   return <article className="card h-full p-5">
     <Link prefetch={false} href={orgHref(job.organization_slug)} className="link text-sm">{job.organization_name}</Link>
     <h2 className="mt-2 text-lg font-semibold text-text break-words">{job.title}</h2>
+    {isExpressionOfInterest(job.title) ? <p className="mt-2 text-sm text-ice">The employer&apos;s title presents this as a general expression of interest, not a specific vacancy.</p> : null}
     <p className="mt-3 text-sm text-muted">{job.locations.length ? job.locations.join(" · ") : "Location not supplied"}</p>
     <p className="mt-2 text-sm text-muted">{[job.employment_type !== "unknown" ? job.employment_type : null, job.workplace !== "unknown" ? job.workplace : "Workplace type not supplied"].filter(Boolean).join(" · ")}</p>
     {job.department || job.team ? <p className="mt-2 text-sm text-muted">{[job.department, job.team !== job.department ? job.team : null].filter(Boolean).join(" · ")}</p> : null}
@@ -61,6 +63,11 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   return <>
     <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><p className="text-lg text-text"><strong>{currentCount.toLocaleString("en-US")}</strong> recently confirmed positions across <strong>{count}</strong> organizations</p><a href="#job-sources" className="link text-sm">Coverage & source health</a></div>
     <p className="mb-6 max-w-3xl text-sm text-muted">Coverage is limited to configured employer feeds. A current listing was present at its last successful check within 48 hours; the employer may have changed it since. USASI does not recruit, endorse employers, or collect applications.</p>
+    <nav aria-label="Job tracks" className="mb-6">
+      <h2 className="text-lg font-semibold text-text">Browse by track</h2>
+      <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{JOB_TRACKS.map(t => <li key={t.id}><button type="button" aria-pressed={f.track === t.id} onClick={() => set({ track: f.track === t.id ? "" : t.id })} className={`card card-link flex h-full w-full flex-col p-4 text-left ${f.track === t.id ? "border-cyan bg-cyan/10" : ""}`}><span className="font-semibold text-text">{t.title}</span><span className="mt-1 text-sm text-muted">{t.description}</span></button></li>)}</ul>
+      {f.track && jobTrack(f.track) ? <p className="mt-3 max-w-3xl text-sm text-muted"><strong className="text-text">How this track is selected:</strong> {jobTrack(f.track)!.rule} It uses only what employers supply; listings with unclear titles may be missed. <button type="button" className="link" onClick={() => set({ track: "" })}>Clear track</button></p> : null}
+    </nav>
     <div role="search" aria-label="Filter jobs" className="card p-4 sm:p-5">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <SearchField label="Search jobs" value={f.q} onChange={q => set({ q }, "replace")} placeholder="Title, organization, team…" />

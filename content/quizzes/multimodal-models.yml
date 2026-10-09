@@ -1,0 +1,27 @@
+explainer: multimodal-models
+updated_at: 2026-10-08
+questions:
+  - prompt: A model card says a model accepts photos and returns text descriptions. What can you conclude about whether it can create images?
+    choices:
+      - It can, because any model that reads a kind of data can also produce it
+      - It can, because every multimodal model accepts and produces all kinds of data
+      - Not from that; reading a modality is not producing it
+    answer: 2
+    explanation: >-
+      The page says "reading a modality is not producing it: a model that describes photos may be unable to create one." Model cards "usually list what a model accepts and what it returns as separate items," so check the outputs.
+  - prompt: In the common image design the page describes from the Molmo2 paper, how does a picture reach the language model?
+    choices:
+      - A vision encoder turns crops into features, and a connector makes visual tokens
+      - It is turned into a log-Mel spectrogram, a grid of frequency bands over time
+      - The model starts from noise and removes it step by step until the image forms
+    answer: 0
+    explanation: >-
+      The page says a vision encoder "turns each crop into features for small patches," and a connector pools those features and projects them into "visual tokens" that go to the language model with the text. Spectrograms are how the page describes audio input, and denoising is how diffusion generates images.
+  - prompt: NVIDIA publishes both Parakeet (speech to text) and MagpieTTS (text to speech). What does the page say about their licenses?
+    choices:
+      - They share one license, because a single company publishes both models
+      - They use different licenses, CC BY 4.0 and the NVIDIA Open Model License
+      - Neither card names a license, so the terms are unknown
+    answer: 1
+    explanation: >-
+      The page says "one publisher may use different terms for models with different inputs and outputs." The Parakeet card uses CC BY 4.0, and "the MagpieTTS card uses the NVIDIA Open Model License."

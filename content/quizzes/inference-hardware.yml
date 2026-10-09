@@ -1,0 +1,27 @@
+explainer: inference-hardware
+updated_at: 2026-10-08
+questions:
+  - prompt: According to the page, what determines how much memory a model needs while it runs?
+    choices:
+      - Only the download size shown on the runtime's library page
+      - Only the parameters that are active for each token, not the whole checkpoint
+      - The weights plus working memory, which grows with context and parallel requests
+    answer: 2
+    explanation: >-
+      A model runs when "its weights, plus the working memory it needs while answering, fit in memory," and "working memory grows with the context length and with the number of requests handled at once." A download size is "not the memory needed while running," and a checkpoint holds all parameters, not only active ones.
+  - prompt: A model fits only when the runtime splits it between GPU memory and system memory. What should you expect?
+    choices:
+      - It runs, but slower; fitting is not the same as running well
+      - It runs at full GPU speed, because all of the weights are loaded
+      - It cannot load at all, because runtimes never split a model
+    answer: 0
+    explanation: >-
+      The page says "fitting is not the same as running well: a model split between GPU and system memory runs slower." Runtimes such as Ollama can split a model between the two, and OpenAI's guide says to expect slower responses.
+  - prompt: Your GPU is on Ollama's list of supported hardware. Does that mean vLLM will run on it too?
+    choices:
+      - Yes, because all runtimes support the same set of GPUs and systems
+      - Not necessarily; requirements differ by runtime
+      - Yes, as long as the model fits in the GPU's memory
+    answer: 1
+    explanation: >-
+      The page says "hardware and operating-system requirements differ by runtime" and "a GPU that one runtime supports may not work with another." vLLM, for example, requires Linux and a higher NVIDIA compute capability than Ollama lists.

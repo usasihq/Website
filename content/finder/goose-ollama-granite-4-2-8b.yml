@@ -1,0 +1,184 @@
+slug: goose-ollama-granite-4-2-8b
+title: goose desktop agent with Granite 4.2 8B on Ollama
+tasks: [write-code]
+runs: local
+summary:
+  text: >-
+    goose is an open-source AI agent for software work, with a desktop app and a command line. Its
+    Ollama provider uses a model you download and run locally, and goose relies heavily on tool
+    calling; IBM's Granite 4.2 8B is offered in Ollama's library as granite4.2:8b and is described
+    there as supporting tool use.
+  reviewed_at: 2026-10-08
+  source_ids: [goose-quickstart, goose-providers, ollama-lib-granite42]
+components:
+  - role: app
+    name: goose Desktop
+    record_slug: goose
+    url: https://goose-docs.ai/docs/getting-started/installation
+  - role: runtime
+    name: Ollama
+    record_slug: ollama
+    url: https://ollama.com/download
+  - role: model
+    name: Granite 4.2 8B (Ollama tag granite4.2:8b)
+    record_slug: granite-4-2-8b
+    url: https://ollama.com/library/granite4.2
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [goose-install, ollama-windows, ollama-macos, ollama-linux]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [ollama-gpu, ollama-macos]
+memory: null
+skill: intermediate
+skill_note: >-
+  Install the goose desktop app and Ollama, download the model with a terminal command, then
+  choose Ollama under Configure Provider in goose's settings.
+account_required:
+  value: false
+  source_ids: [goose-providers, ollama-quickstart]
+cost_basis:
+  value: free-download
+  note: >-
+    goose and the Granite 4.2 weights are Apache 2.0, and Ollama's pricing page says running models
+    on your own hardware is always unlimited. Hosted providers in goose and Ollama's cloud models
+    are separate options.
+  source_ids: [goose-readme, ollama-lib-granite42, ollama-pricing]
+data_location:
+  text: >-
+    On your machine. goose's provider guide says that with a local LLM you keep your data private
+    and can work entirely offline, and Ollama's FAQ says it does not see your prompts or data when
+    you run locally.
+  reviewed_at: 2026-10-08
+  source_ids: [goose-providers, ollama-faq]
+getting_started:
+  - "Download goose Desktop for macOS, Windows, or Linux from the goose installation page."
+  - "Install Ollama, then run `ollama run granite4.2:8b` to download and start the model."
+  - "In goose, open Settings, choose Configure Provider, find Ollama, and confirm the API host is http://localhost:11434."
+  - "Select granite4.2:8b; goose lists locally installed Ollama models in its model dropdown."
+getting_started_source_ids: [goose-install, ollama-lib-granite42, ollama-int-goose, goose-providers]
+limitations:
+  - text: >-
+      goose says it relies heavily on tool calling. Models without tool calling can only do chat
+      completion, and all goose extensions must then be disabled.
+    reviewed_at: 2026-10-08
+    source_ids: [goose-providers]
+  - text: >-
+      Ollama defaults to a 4k-token context on GPUs with less than 24 GiB of VRAM and says agents
+      and coding tools should be set to at least 64000 tokens; a larger context needs more memory.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-ctx]
+  - text: >-
+      Ollama lists NVIDIA GPUs with compute capability 5.0 or newer, specific AMD Radeon cards
+      through ROCm, Apple GPUs through Metal, and other GPUs through Vulkan on Windows and Linux.
+      Intel-based Macs run on the CPU only.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-gpu, ollama-macos]
+unverified:
+  - USASI has not tested this configuration.
+  - IBM and Ollama do not state a memory figure for granite4.2:8b in the pages reviewed, so memory fit is not established.
+  - How reliably Granite 4.2 8B handles goose's tool calls is not documented.
+  - Ollama names Intel GPUs only in its Linux Vulkan driver instructions and lists no supported Intel models; Intel GPU acceleration on Windows is not established here, and Intel-based Macs run on the CPU only.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: goose-quickstart
+    title: goose in 5 minutes (quickstart)
+    url: https://goose-docs.ai/docs/quickstart
+    publisher: goose project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: goose-install
+    title: Install goose
+    url: https://goose-docs.ai/docs/getting-started/installation
+    publisher: goose project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: goose-providers
+    title: Configure LLM provider (goose documentation)
+    url: https://goose-docs.ai/docs/getting-started/providers
+    publisher: goose project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: goose-readme
+    title: goose README
+    url: https://raw.githubusercontent.com/aaif-goose/goose/main/README.md
+    publisher: goose project (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-lib-granite42
+    title: granite4.2 in the Ollama library
+    url: https://ollama.com/library/granite4.2
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-int-goose
+    title: Goose integration (Ollama documentation)
+    url: https://docs.ollama.com/integrations/goose.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-windows
+    title: Ollama on Windows
+    url: https://docs.ollama.com/windows
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-macos
+    title: Ollama on macOS
+    url: https://docs.ollama.com/macos
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-linux
+    title: Ollama on Linux
+    url: https://docs.ollama.com/linux
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-gpu
+    title: Hardware support (Ollama documentation)
+    url: https://docs.ollama.com/gpu
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-ctx
+    title: Context length (Ollama documentation)
+    url: https://docs.ollama.com/context-length.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-faq
+    title: Ollama FAQ
+    url: https://docs.ollama.com/faq.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-quickstart
+    title: Ollama quickstart
+    url: https://docs.ollama.com/quickstart.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-pricing
+    title: Ollama pricing
+    url: https://ollama.com/pricing
+    publisher: Ollama
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08

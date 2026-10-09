@@ -1,0 +1,28 @@
+explainer: open-weight-vs-open-source
+updated_at: 2026-10-08
+questions:
+  - prompt: A model's weights download without any sign-in. What does that tell you about what you may do with them?
+    choices:
+      - That you may use them commercially, because no terms were shown at download
+      - Only that the files are available; their license decides what you may do
+      - That the release meets the Open Source Initiative's open source AI definition
+    answer: 1
+    explanation: >-
+      The page says "a download link tells you that the files are available, not what you may do with them." A model "can download without any sign-in and still be licensed only for non-commercial use."
+  - prompt: A release's inference code repository is under the MIT License, and its weights are stored elsewhere under a custom agreement. Which terms cover the weights?
+    choices:
+      - The MIT License, because the repository's license applies to the whole release
+      - Neither, because model weights cannot carry a license of their own
+      - The custom agreement; the MIT License covers only that code
+    answer: 2
+    explanation: >-
+      The page says an MIT License on a repository of inference code "covers that code; it says nothing about weights stored elsewhere under a separate agreement." Each component can be published "under its own terms."
+  - prompt: What does USASI's "Open-weight" tier mean?
+    choices:
+      - The public can obtain the weights, though the license may still restrict use
+      - The release meets the Open Source Initiative's definition of open source AI
+      - Inference code, training code, a recipe, and data information are all published
+      - A sourced review has confirmed reuse rights for that specific release
+    answer: 0
+    explanation: >-
+      The page defines Open-weight as "the public can obtain the weights. The license may still restrict use." Published code, recipe, and data information describe Open-stack, a rights review is part of Open system (reviewed), and the tiers are "not OSI certification."

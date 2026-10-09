@@ -1,0 +1,27 @@
+explainer: how-language-models-work
+updated_at: 2026-10-08
+questions:
+  - prompt: What does training change in a large language model?
+    choices:
+      - The architecture, which is rewritten for each training example
+      - The weights, so the model gets better at predicting the next token
+      - A stored list of facts that the model looks up later when it answers
+    answer: 1
+    explanation: >-
+      The page says training adjusts the model's weights "again and again so it got better at predicting the next token." The architecture is "a fixed recipe," and the model "produces likely text rather than looking facts up."
+  - prompt: Why can the same prompt give different replies on different runs?
+    choices:
+      - Sampling picks each next token at random, weighted by the probabilities
+      - Each prompt changes the model's weights, so the model is a little different every time
+      - The model looks up a different website on each run before it answers
+    answer: 0
+    explanation: >-
+      The page says "a prompt does not change the weights." Instead, sampling "picks at random, weighted by the probabilities," and "because of the choosing step, the same prompt can produce different replies."
+  - prompt: In the page's worked example, where does the library opening year that Dana finally uses come from?
+    choices:
+      - Whichever of the assistant's two answers sounded more confident
+      - The year that both of the assistant's answers agreed on
+      - A sentence on the library's own page, which Dana checked
+    answer: 2
+    explanation: >-
+      The two answers gave different years, so they could not agree. The page concludes that "the year comes from the library's page; the assistant only helped locate it," and that "the source counts, not how confident the answer sounded."

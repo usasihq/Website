@@ -299,6 +299,11 @@
   .prose-usasi > * + * {
     margin-top: 1.1em;
   }
+  /* Long unbroken strings, such as a domain name, wrap instead of widening the page. */
+  .prose-usasi p,
+  .prose-usasi li {
+    overflow-wrap: break-word;
+  }
   .prose-usasi h2 {
     scroll-margin-top: 7rem;
     font-family: var(--font-sans);
@@ -310,6 +315,7 @@
     border-top: 1px solid var(--line);
   }
   .prose-usasi h3 {
+    scroll-margin-top: 7rem;
     font-family: var(--font-sans);
     font-size: 1.1875rem;
     font-weight: 600;

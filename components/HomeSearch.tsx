@@ -67,7 +67,7 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
         </div>
         {/* Visible from 640px; on phones it stays available to screen readers so the first screen fits. */}
         <p id={hintId} className="text-sm text-muted max-sm:sr-only sm:mt-2">
-          Searches organizations, open models and tools, people, hubs, explainers, glossary terms, and states.
+          Searches organizations, open models and tools, people, hubs, explainers, glossary terms, license guides, policy documents, and states.
         </p>
         <noscript>
           <p className="mt-2 text-sm text-muted">Search needs JavaScript. You can browse both directories with the links below.</p>

@@ -1,0 +1,44 @@
+# Genuine catalog change log entry.
+date: '2026-10-08'
+title: 'Eight new catalog records and an EmbeddingGemma note'
+summary: 'Added Google DeepMind''s EmbeddingGemma 2 and SynthID Text, Meta''s Llama Guard 4 and Llama 3.1 8B, Ai2''s
+  OLMo-core, OpenAI''s tiktoken, AMD''s ROCm, and Sentence Transformers. Several of these were already named in the
+  explainers and reference hubs without a record of their own. The EmbeddingGemma 300M record now notes that Google lists
+  EmbeddingGemma 2 as a newer model.'
+changes:
+- type: added
+  record_type: artifact
+  slug: embeddinggemma-2
+  note: 740M-parameter multimodal embedding model for text, code, images, video, and audio; Gemma family (Apache-2.0; released 2026-10-06)
+- type: updated
+  record_type: artifact
+  slug: embeddinggemma-300m
+  note: Added a sourced note that Google's documentation now lists EmbeddingGemma 2 as a newer model; other claims unchanged
+- type: added
+  record_type: artifact
+  slug: llama-guard-4-12b
+  note: 12B safety classifier for text and images, pruned from Llama 4 Scout; Llama family (Llama 4 Community License; gated; released 2025-04-29)
+- type: added
+  record_type: artifact
+  slug: synthid-text
+  note: Reference implementation of Google DeepMind's text watermarking and detection method (code Apache-2.0, other materials CC-BY-4.0)
+- type: added
+  record_type: artifact
+  slug: llama-3-1-8b
+  note: Smallest Llama 3.1 model, pretrained and instruction-tuned (Llama 3.1 Community License; gated; released 2024-07-23)
+- type: added
+  record_type: artifact
+  slug: olmo-core
+  note: Ai2's PyTorch library for large-scale distributed training, with official OLMo training scripts (Apache-2.0)
+- type: added
+  record_type: artifact
+  slug: tiktoken
+  note: OpenAI's byte pair encoding tokenizer for OpenAI models (MIT)
+- type: added
+  record_type: artifact
+  slug: rocm
+  note: AMD's open software stack for GPU computing, licensed per component (mostly MIT; some components binary-only)
+- type: added
+  record_type: artifact
+  slug: sentence-transformers
+  note: Framework for embedding, reranker, sparse, and multi-vector models, now maintained by Hugging Face (Apache-2.0)

@@ -1,0 +1,198 @@
+This page answers questions people often ask about artificial intelligence and about USASI itself. The answers are short on purpose: each one links to a longer explainer, a glossary entry, or a site page that covers the topic in more depth, and specific facts link to the original documents they come from. If you are new to AI, the [New to AI](/learn/paths/new-to-ai/) learning path puts the basic explainers in order. Nothing here is legal, investment, or compliance advice.
+
+<h2 id="group-basics">AI basics</h2>
+
+<h3 id="where-to-start">I'm new to AI. Where should I start?</h3>
+
+Start with the [New to AI](/learn/paths/new-to-ai/) learning path, which puts short explainers in order: what a language model is, how it reads and writes, what happens to what you type, and how to look up a model before you use it. The [glossary](/glossary/) defines common terms in plain words, and [Learn](/learn/) lists every explainer by topic. Each explainer ends with the original sources it relies on, so you can check its statements yourself.
+
+Read more: [Start here](/start/), [How large language models work](/learn/how-language-models-work/).
+
+<h3 id="what-is-ai">What is artificial intelligence?</h3>
+
+U.S. federal law defines artificial intelligence as "a machine-based system that can, for a given set of human-defined objectives, make predictions, recommendations or decisions influencing real or virtual environments" ([15 U.S.C. 9401(3)](https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap119-sec9401.htm)). That definition comes from the National Artificial Intelligence Initiative Act of 2020, part of Public Law 116-283. The phrase itself appears in the title of [a proposal dated August 31, 1955](http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html) for a summer study at Dartmouth College in 1956. Large language models are one kind of AI system.
+
+Read more: [A short history of AI in the United States](/learn/ai-history/), [Finding AI policy and standards sources](/learn/policy-and-standards-sources/).
+
+<h3 id="what-is-an-llm">What is a large language model?</h3>
+
+A large language model (LLM) is an AI model that has learned from very large amounts of text and produces text one token at a time; a token can be a word, part of a word, or a single character. Google's [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/llm/transformers) says LLMs "predict a token or sequence of tokens, sometimes many paragraphs worth of predicted tokens," and that training on massive datasets lets them learn patterns and generate text based on probabilities. Because a reply is generated from learned patterns, it can read fluently and still be wrong, which is known as [hallucination](/glossary/#hallucination).
+
+Read more: [How large language models work](/learn/how-language-models-work/), [Glossary: token](/glossary/#token), [Glossary: weights](/glossary/#weights).
+
+<h3 id="tokens-and-context">What are tokens and context windows?</h3>
+
+A token is a chunk of text, such as a word, part of a word, or a single character, and it is the unit a language model reads and writes. The context window is how much a model can take into account at once; Anthropic's [documentation](https://platform.claude.com/docs/en/build-with-claude/context-windows) describes it as "all the text a language model can reference when generating a response, including the response itself." In a long chat, earlier messages and attachments fill that space: Anthropic's API returns an error when the input alone exceeds the window, and its compaction feature, in beta, summarizes earlier parts of a conversation so it can continue.
+
+Read more: [Tokens and context windows](/learn/tokens-and-context-windows/), [Glossary: context window](/glossary/#context-window).
+
+<h3 id="why-ai-makes-things-up">Why do AI chatbots make things up?</h3>
+
+Language models generate text from probabilities learned in training, so an answer can sound confident and still be false, which is known as hallucination. Google's [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/llm/transformers) lists it among the problems with LLMs, "meaning their predictions often contain mistakes." A September 2025 paper by researchers at OpenAI and Georgia Tech, [Why Language Models Hallucinate](https://arxiv.org/abs/2509.04664), argues that training and evaluation reward guessing over admitting uncertainty. Anthropic's [guide to reducing hallucinations](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations) says its techniques reduce them but "don't eliminate them entirely," and advises validating critical information.
+
+Read more: [How large language models work](/learn/how-language-models-work/), [Glossary: hallucination](/glossary/#hallucination).
+
+<h3 id="what-is-an-agent">What is an AI agent?</h3>
+
+An AI agent is software in which a language model works toward a goal by choosing its own next steps, such as which tools to call, and reacting to the results. Anthropic's guide [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) describes agents as systems where LLMs "dynamically direct their own processes and tool usage," unlike workflows, which follow predefined code paths. What an agent may do is set by the application around the model: the [Model Context Protocol](/open/model-context-protocol/) [specification](https://modelcontextprotocol.io/specification/2026-07-28) says hosts must obtain explicit user consent before invoking any tool, and also that the protocol itself cannot enforce these security principles.
+
+Read more: [How AI models use tools](/learn/how-models-use-tools/), [Agents and robotics without the hype](/learn/agents-and-robotics/), [Glossary: agent](/glossary/#agent).
+
+<h2 id="group-open-models">Open models and running AI yourself</h2>
+
+<h3 id="open-source-ai">What does "open source" mean for an AI model?</h3>
+
+The Open Source Initiative's [Open Source AI Definition 1.0](https://opensource.org/ai/open-source-ai-definition) calls an AI system open source when its terms grant the freedoms to use it for any purpose without asking permission, study how it works, modify it, and share it. As a precondition for those freedoms, it requires detailed information about the training data, the complete code used to train and run the system, and the model parameters, such as weights, each under OSI-approved terms. Many models described as open are open weight: the trained weights can be downloaded, but the license may still limit some uses, and the data and training code may not be public.
+
+Read more: [What open weight and open source actually mean](/learn/open-weight-vs-open-source/), [License guide](/licenses/), [Glossary: open weight](/glossary/#open-weight).
+
+<h3 id="is-chatgpt-open-source">Is ChatGPT open source?</h3>
+
+In the OpenAI documents read for this page, ChatGPT is a product OpenAI runs, and gpt-oss is a separate line of OpenAI models that can be downloaded. OpenAI's [gpt-oss model card](https://arxiv.org/abs/2508.10925) refers to "models served in our first-party products like ChatGPT" and says open models present a different risk profile than proprietary models because, once they are released, OpenAI has no way to add further mitigations or revoke access. OpenAI calls [gpt-oss-120b and gpt-oss-20b](/open/gpt-oss/) open-weight models, released under the Apache 2.0 license and its gpt-oss usage policy. Open weight is not automatically open source under the Open Source Initiative's definition, which also requires training data information and code.
+
+Read more: [gpt-oss](/open/gpt-oss/), [OpenAI](/companies/openai/), [What open weight and open source actually mean](/learn/open-weight-vs-open-source/).
+
+<h3 id="run-ai-locally">Can I run an AI model on my own computer?</h3>
+
+Yes, if the model's weights can be downloaded and your computer has enough memory to hold them. Programs such as [Ollama](/open/ollama/) and [llama.cpp](/open/llama-cpp/) download models and run them on your own machine, and the memory you need depends on the model: OpenAI's [gpt-oss-20b model card](https://huggingface.co/openai/gpt-oss-20b) says that model runs within 16GB of memory, while the larger gpt-oss-120b fits on a single 80GB GPU. Check where a model actually runs, because some tools also offer cloud models; Ollama's [FAQ](https://docs.ollama.com/faq) says it does not see your prompts when you run locally but processes them when you use its cloud-hosted models.
+
+Read more: [Choosing hosted access or local inference](/learn/hosted-or-local/), [Find AI for my needs](/find/), [Model size calculator](/learn/tools/model-size/).
+
+<h3 id="model-cards">What is a model card, and why read one?</h3>
+
+A model card is the document a publisher releases with a model to say what it is, how it was made and tested, what it is meant for, and where it falls short. Read it to pin down the exact release and who maintains it, its intended uses, and its stated limitations, but remember that every statement in it is the publisher's own account. Names vary: OpenAI calls its gpt-oss document a [model card](https://arxiv.org/abs/2508.10925) rather than a system card because the models "will be used as part of a wide range of systems."
+
+Read more: [How to read a model card](/learn/how-to-read-a-model-card/), [Glossary: model card](/glossary/#model-card), [Glossary: system card](/glossary/#system-card).
+
+<h2 id="group-trust">Privacy, evidence, and safety</h2>
+
+<h3 id="chats-and-training">Do AI chatbots use what I type to train their models?</h3>
+
+Sometimes; it depends on the product, the kind of account, and your settings. Anthropic's [privacy policy](https://www.anthropic.com/legal/privacy) says it may use your inputs and outputs to train its models unless you opt out in your account settings, with exceptions such as chats flagged for safety review, and Google's [Gemini Apps Privacy Hub](https://support.google.com/gemini/answer/13594961) says that when Keep Activity is on, Google uses your activity to improve its services, including training generative AI models. For developers, OpenAI's [API documentation](https://developers.openai.com/api/docs/guides/your-data) says data sent to its API is not used to train or improve its models unless you explicitly opt in. Policies change, so note the date, product, and plan that the page you read covers.
+
+Read more: [What happens to what you type into an AI service](/learn/ai-and-your-data/), [Choosing hosted access or local inference](/learn/hosted-or-local/).
+
+<h3 id="spot-ai-content">How can I tell if something was made by AI?</h3>
+
+No single check settles it: NIST's [report on synthetic content](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-4.pdf) (NIST AI 100-4) says there is "no silver bullet" for public trust in digital content, notes that metadata is often stripped when files are shared, and warns that false positives, which label human-made content as AI-generated, can in many contexts be extremely damaging. Content Credentials, built on the [C2PA](https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html) standard, are cryptographically bound records of a file's history, or provenance, though C2PA says they do not judge whether provenance data is "true." Google's [SynthID](https://deepmind.google/models/synthid/) adds imperceptible watermarks to content from Google's AI tools, and its detector checks for content made with AI from Google or its partners. A valid credential or a detected watermark is real evidence about a file's origin, but finding none proves nothing.
+
+Read more: [Labels, watermarks, and content credentials](/learn/ai-content-provenance/), [Glossary: C2PA](/glossary/#c2pa), [Glossary: watermark](/glossary/#watermark).
+
+<h3 id="benchmarks">What is a benchmark, and should I trust one?</h3>
+
+A benchmark is a fixed set of tasks with a scoring method, used to compare models under the same conditions. A result describes one system on those tasks under one setup, so before relying on it, check what the tasks ask, which model version was tested and how, and whether anyone else has reproduced the score. Results can also mislead: a [NIST research blog post](https://www.nist.gov/blogs/caissi-research-blog/cheating-ai-agent-evaluations) of December 2, 2025, reported that models in its evaluations sometimes cheated on agentic coding and cyber benchmarks, for example by using the internet to find walkthroughs and answers for security challenges. USASI does not publish benchmark scores.
+
+Read more: [How to read an AI evaluation](/learn/reading-evaluations/), [Glossary: benchmark](/glossary/#benchmark), [Benchmarks and evaluation](/hubs/evaluation/).
+
+<h3 id="safety-testing">How do AI companies test their models for safety?</h3>
+
+Developers test their own models and report the results in documents such as model cards and system cards, and several publish frameworks that define capability levels and say what they will do when a model reaches one. For example, Google DeepMind's [Frontier Safety Framework page](https://deepmind.google/frontier-safety/) lists version 3.1 of April 17, 2026, and describes identifying capability levels and preparing mitigation plans; Anthropic's [Responsible Scaling Policy page](https://www.anthropic.com/responsible-scaling-policy) lists versions up to 3.4, effective July 8, 2026; and OpenAI's gpt-oss [model card](https://arxiv.org/abs/2508.10925) reports evaluations under its Preparedness Framework. These documents are each company's own account of its work; USASI describes them but does not judge whether any test or framework is adequate.
+
+Read more: [How AI developers test models for safety](/learn/safety-testing-and-frameworks/), [Glossary: red teaming](/glossary/#red-teaming), [AI safety, security, and trust](/hubs/safety-and-security/).
+
+<h2 id="group-policy">Policy, terms, and careers</h2>
+
+<h3 id="agi-and-superintelligence">What do "AGI" and "superintelligence" mean?</h3>
+
+AGI stands for artificial general intelligence, and many AI researchers and organizations have proposed definitions of it. A [position paper by Google DeepMind researchers](https://arxiv.org/abs/2311.02462) reviews nine prominent definitions, proposes levels based on how well and how broadly a system performs, and uses "Artificial Superintelligence" for a general system able to do a wide range of tasks at a level no human can match. In U.S. executive-branch documents, "Super Intelligence" has a separate, official meaning: [Executive Order 14434](https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20321.pdf) of September 29, 2026, uses it for the technologies covered by the statutory definition of artificial intelligence. This page makes no predictions about future systems.
+
+Read more: [A short history of AI in the United States](/learn/ai-history/), [Finding AI policy and standards sources](/learn/policy-and-standards-sources/).
+
+<h3 id="super-intelligence-term">Why does the U.S. government now say "Super Intelligence"?</h3>
+
+[Executive Order 14434](https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20321.pdf), "Inaugurating the Era of Super Intelligence," signed September 29, 2026, directs executive agencies, to the maximum extent permitted by law, to use "Super Intelligence" and "SI" in place of "Artificial Intelligence" and "AI" in official correspondence, public communications, websites, reports, policy documents, and other non-statutory documents. It defines the new terms as the technologies covered by the existing statutory definition of artificial intelligence in 15 U.S.C. 9401(3), and it does not require changing previously issued regulations, contracts, or other historical documents. The order also directs the Assistant to the President for Science and Technology to propose legislative language for a federal definition within 60 days, and NIST's [super intelligence page](https://www.nist.gov/super-intelligence) says NIST is working to update its communications as directed.
+
+Read more: [A short history of AI in the United States](/learn/ai-history/#federal-policy), [U.S. AI policy tracker](/policy/#eo-14434), [NIST](/companies/nist/).
+
+<h3 id="who-regulates-ai">Who regulates AI in the United States?</h3>
+
+Rules and guidance on AI come from several places rather than one document. Congress passes laws, such as the National Artificial Intelligence Initiative Act of 2020, which defines AI and establishes a National Artificial Intelligence Initiative ([15 U.S.C. 9401](https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap119-sec9401.htm)); the President issues executive orders, such as [EO 14434](https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/); and the Office of Management and Budget issues memoranda to agencies, such as [M-25-21](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf) of April 3, 2025, on agencies' own use of AI. Agencies also publish guidance, such as NIST's [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), which NIST says is intended for voluntary use and is being revised. USASI describes such documents but does not say which rules apply to any person or product, and nothing here is legal advice.
+
+Read more: [U.S. AI policy tracker](/policy/), [Finding AI policy and standards sources](/learn/policy-and-standards-sources/), [Disclaimer](/disclaimer/#not-advice).
+
+<h3 id="ai-jobs">What jobs exist in AI?</h3>
+
+USASI's [careers explainer](/learn/careers-in-ai/) draws on government occupational guides and employer postings that describe researchers, software and machine learning engineers, data specialists, people who design chips and run data centers, and roles in product, design, policy, law, safety, and evaluation. A Department of Labor occupational profile, for example, describes [data scientists](https://www.onetonline.org/link/summary/15-2051.00) as developing techniques or analytics applications that turn raw data into meaningful information, and the Department's Apprenticeship.gov site has an [AI in Registered Apprenticeship](https://www.apprenticeship.gov/AI-in-registered-apprenticeships) portal. USASI's [Jobs](/jobs/) page lists open postings from employer feeds; USASI does not employ, represent, recruit for, or endorse listed organizations, and applications take place on the employer's official site.
+
+Read more: [Careers in AI: roles, skills, and paths](/learn/careers-in-ai/), [Methodology: jobs](/methodology/#jobs).
+
+<h2 id="group-usasi">About USASI</h2>
+
+<h3 id="what-is-usasi">What is USASI, and who runs it?</h3>
+
+United States of America Superintelligence (USASI) is an independent, unofficial catalog of American artificial-intelligence work, with two directories given equal weight: [Companies & Labs](/companies/) and [Open Models & Tools](/open/). It is maintained by its owner, does not name an individual editor, and is not a staffed newsroom or institution. Research, drafting, and the daily news are carried out with AI assistance under published rules: every published claim must cite a source, and automated checks block publication when a record fails validation.
+
+Read more: [About USASI](/about/), [Methodology](/methodology/).
+
+<h3 id="government-site">Is USASI a government website?</h3>
+
+No. USASI is an independent project, not operated, sponsored, endorsed, or reviewed by the United States government, any federal, state, or local agency, or any other government, and nothing on the site is an official statement, record, approval, or designation. The words "United States of America" in its name describe its subject, American AI work, and do not suggest government origin.
+
+Read more: [Disclaimer](/disclaimer/#independence).
+
+<h3 id="why-the-name">Why is the site called "Superintelligence"?</h3>
+
+The name describes the subject area the catalog covers, not a claim about any listed system. USASI is not an AI laboratory, an investment service, a safety certification, or a ranking of who is closest to "superintelligence."
+
+Read more: [About: what USASI is not](/about/#what-it-is-not), [How federal agencies now use "Super Intelligence"](/learn/ai-history/#federal-policy).
+
+<h3 id="what-gets-included">How does USASI decide what to include?</h3>
+
+An entry is published only when a documented basis, with sources, connects its accountable entity to the United States: a U.S. headquarters, a U.S. nonprofit or lab, documented primary control by a U.S. entity, or, for software, datasets, and models, a U.S.-based governing or maintaining entity. There are no exceptions for prominent organizations, and project eligibility rests on documented governance, never on the names or assumed nationalities of contributors. Candidates whose basis cannot be documented stay in an internal review queue and are not published.
+
+Read more: [Methodology: eligibility](/methodology/#eligibility), [Suggest a new entry](/contribute/#new-entries).
+
+<h3 id="rankings-and-ratings">Does USASI rank, test, or certify AI models?</h3>
+
+No. The catalog does not test, audit, certify, or rank any model, product, dataset, or tool, and it does not publish benchmark scores. Labels such as open-weight, open-stack, and open system (reviewed) are USASI's own editorial categories (rubric v0.2) describing documented materials and licenses, not quality or safety ratings. Every total on the site describes this catalog's coverage, not a census of American AI.
+
+Read more: [Disclaimer: not a certification](/disclaimer/#not-certification), [Methodology: how counts work](/methodology/#counts).
+
+<h3 id="unknown-details">Why are some details marked Unknown?</h3>
+
+Unknown means an item has not been assessed or the evidence is insufficient; it is never a polite way of saying "no." When evidence is missing, the catalog says Unknown instead of guessing. A different label, Not public, means the evidence documents that something is not available.
+
+Read more: [Methodology: uncertainty](/methodology/#uncertainty), [Glossary: Unknown](/glossary/#unknown).
+
+<h3 id="who-writes-news">Who writes the news on USASI?</h3>
+
+News items are researched and written by an AI assistant working only from primary sources, such as filings, official announcements, model cards, and release notes, and each item cites those sources. Since October 1, 2026, a daily automated run finds and publishes new items without individual human review before publication, and every item must pass automated checks that reject, for example, items without sources or containing funding amounts or benchmark scores. Because items are not individually reviewed first, please report any error with the correction link.
+
+Read more: [Methodology: news](/methodology/#news), [Latest news](/news/).
+
+<h3 id="report-a-mistake">How do I report a mistake?</h3>
+
+Each entry page has a Report a correction action, which opens the right form once the site's repository is configured, and you can also email a correction to the address on the [About page](/about/#contact); no GitHub account is needed. The most useful report names the entry, the specific statement, and a source that supports the correction, such as an official page, license file, model card, repository, or filing. Corrections are handled the same way for everyone and reviewed as time allows, with no promised response time, and accepted corrections are recorded in the [changelog](/changelog/).
+
+Read more: [Report a correction](/contribute/#corrections).
+
+<h3 id="reuse-data">Can I reuse USASI's data?</h3>
+
+Yes. The published catalog is available as static files, including a full catalog export in JSON, with no accounts, keys, or sign-ups, and original catalog prose is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), with the suggested attribution "Source: USASI catalog (unitedstatesofamericasuperintelligence.com), CC BY 4.0." Code written for the project is released under the MIT License. Models, software, datasets, and documents described in the catalog keep their own licenses, and names, logos, and marks belong to their owners.
+
+Read more: [Reuse the data](/reuse/), [About: licenses](/about/#licenses).
+
+<h3 id="visitor-privacy">Does USASI track visitors?</h3>
+
+USASI sets no cookies and does not use your browser's local storage, session storage, or IndexedDB; filter choices live only in the page address. The only visitor analytics it permits is Cloudflare Web Analytics, which Cloudflare describes as cookie-free, and search and filtering run in your browser, although your search text appears in the page address. Like any web host, the hosting provider receives standard request information, such as your IP address and the page requested.
+
+Read more: [Privacy](/privacy/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 8, 2026.
+
+- U.S. Government Publishing Office, govinfo: [15 U.S.C. 9401, United States Code, 2024 edition](https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap119-sec9401.htm); Federal Register text of [Executive Order 14434](https://www.govinfo.gov/content/pkg/FR-2026-10-02/pdf/2026-20321.pdf) (October 2, 2026)
+- The White House: [Inaugurating the Era of Super Intelligence](https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/) (September 29, 2026); Office of Management and Budget, [M-25-21, Accelerating Federal Use of AI through Innovation, Governance, and Public Trust](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf) (April 3, 2025)
+- NIST: [Super intelligence](https://www.nist.gov/super-intelligence); [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework); [Cheating On AI Agent Evaluations](https://www.nist.gov/blogs/caissi-research-blog/cheating-ai-agent-evaluations) (CAISSI Research Blog, December 2, 2025); [Reducing Risks Posed by Synthetic Content (NIST AI 100-4)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-4.pdf) and its [publication page](https://www.nist.gov/publications/reducing-risks-posed-synthetic-content-overview-technical-approaches-digital-content) (November 20, 2024)
+- U.S. Department of Labor: O\*NET OnLine, [Data Scientists](https://www.onetonline.org/link/summary/15-2051.00); Apprenticeship.gov, [AI in Registered Apprenticeship](https://www.apprenticeship.gov/AI-in-registered-apprenticeships)
+- Stanford University (host): [A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence](http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html) (August 31, 1955)
+- Google: Machine Learning Crash Course, [Introduction to Large Language Models](https://developers.google.com/machine-learning/crash-course/llm) and [LLMs: What's a large language model?](https://developers.google.com/machine-learning/crash-course/llm/transformers); [Gemini Apps Privacy Hub](https://support.google.com/gemini/answer/13594961) (last updated September 24, 2026)
+- Google DeepMind: [SynthID](https://deepmind.google/models/synthid/); [Frontier safety](https://deepmind.google/frontier-safety/); [Levels of AGI for Operationalizing Progress on the Path to AGI](https://arxiv.org/abs/2311.02462) (arXiv 2311.02462, version 5)
+- Anthropic: [Privacy Policy](https://www.anthropic.com/legal/privacy); [Reduce hallucinations](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations); [Context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows); [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) (December 19, 2024); [Responsible Scaling Policy](https://www.anthropic.com/responsible-scaling-policy) (last updated August 14, 2026)
+- OpenAI: [gpt-oss-120b and gpt-oss-20b Model Card](https://arxiv.org/abs/2508.10925) (arXiv 2508.10925, dated August 5, 2025); [gpt-oss-20b model card](https://huggingface.co/openai/gpt-oss-20b), [LICENSE](https://huggingface.co/openai/gpt-oss-20b/blob/main/LICENSE), and [USAGE_POLICY](https://huggingface.co/openai/gpt-oss-20b/blob/main/USAGE_POLICY) on Hugging Face; [Data controls in the OpenAI platform](https://developers.openai.com/api/docs/guides/your-data); [Why Language Models Hallucinate](https://arxiv.org/abs/2509.04664) (arXiv 2509.04664, September 4, 2025; also published as an [OpenAI PDF](https://cdn.openai.com/pdf/d04913be-3f6f-4d2b-b283-ff432ef4aaa5/why-language-models-hallucinate.pdf))
+- Open Source Initiative: [The Open Source AI Definition, version 1.0](https://opensource.org/ai/open-source-ai-definition)
+- C2PA: [C2PA and Content Credentials Explainer, 2.2](https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html)
+- Model Context Protocol: [Specification, revision 2026-07-28](https://modelcontextprotocol.io/specification/2026-07-28)
+- Ollama: [FAQ](https://docs.ollama.com/faq); [ollama README](https://github.com/ollama/ollama)
+- llama.cpp: [ggml-org/llama.cpp README](https://github.com/ggml-org/llama.cpp)

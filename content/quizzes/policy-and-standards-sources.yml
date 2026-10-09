@@ -1,0 +1,27 @@
+explainer: policy-and-standards-sources
+updated_at: 2026-10-08
+questions:
+  - prompt: A news article describes a new federal AI rule. How does the page say to treat the article?
+    choices:
+      - As the official text, carrying the same weight as the regulation itself
+      - As a standard developed through a standards organization
+      - As a pointer to the document, not the document itself
+    answer: 2
+    explanation: >-
+      The page says "a news article, a fact sheet, or a company blog post can point you to one of these, but it is not the document itself." Check the original text for its date, scope, status, and any replacement.
+  - prompt: The 2024 edition of the U.S. Code reprints Executive Order 14110 as a note and does not mention a revocation. What should you conclude?
+    choices:
+      - That a compilation can reprint text that is no longer in effect
+      - That the order is still in effect, because it appears in the Code
+      - That the Code is updated on the same day any order is revoked
+    answer: 0
+    explanation: >-
+      The page says "a compilation can reprint text that is no longer in effect." The Federal Register's record for the order lists "Revoked by: EO 14148, January 20, 2025," so "for executive orders, check the Federal Register's disposition notes."
+  - prompt: Which type of document is NIST's AI Risk Management Framework, according to the page?
+    choices:
+      - A law passed by Congress and compiled in the United States Code
+      - Agency guidance, described as intended for voluntary use
+      - A binding regulation compiled in the Code of Federal Regulations
+    answer: 1
+    explanation: >-
+      The page lists the AI RMF under agency guidance, which an agency publishes "often for voluntary use," and NIST's page says it is "intended for voluntary use." Whether another document makes any part binding "is a separate question."

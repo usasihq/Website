@@ -1,0 +1,100 @@
+slug: microsoft-copilot-file-upload
+title: Microsoft Copilot app (free) with file upload
+tasks: [chat-and-write, work-with-documents]
+runs: hosted
+summary:
+  text: >-
+    Microsoft Copilot is Microsoft's hosted AI assistant, offered at no cost in a web browser, in
+    desktop apps for Windows and Mac, and in mobile apps. You can upload documents such as PDF,
+    DOCX, XLSX, and PPTX files to a conversation and ask questions about them.
+  reviewed_at: 2026-10-08
+  source_ids: [mscop-diff, mscop-app, mscop-fileupload]
+components:
+  - role: service
+    name: Microsoft Copilot app
+    record_slug: microsoft
+    url: https://support.microsoft.com/en-us/microsoft-365-copilot/what-is-microsoft-copilot-app
+platforms:
+  values: [web, windows, macos, ios, android]
+  source_ids: [mscop-app, mscop-diff]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: beginner
+skill_note: >-
+  Use it in a browser or install the app from the Microsoft Store, the Mac download page, or a
+  mobile app store; no technical setup is needed.
+account_required:
+  value: false
+  source_ids: [mscop-diff]
+cost_basis:
+  value: free-tier-with-limits
+  note: >-
+    Microsoft Copilot is available at no cost. Microsoft 365 Personal, Family, and Premium
+    subscriptions add Copilot inside the Microsoft 365 desktop apps, with AI usage limits.
+  source_ids: [mscop-diff]
+data_location:
+  text: >-
+    On the provider's servers. Microsoft says files you share with Copilot are stored for no longer
+    than 18 months and then deleted, and that it does not use the content of uploaded files for
+    model training. With a personal Microsoft account, the Microsoft Services Agreement and the
+    Copilot Terms of Use apply.
+  reviewed_at: 2026-10-08
+  source_ids: [mscop-fileupload, mscop-privacy-new]
+getting_started:
+  - "Open the Copilot web app (copilot.cloud.microsoft or www.copilot.com), or install the app from the Microsoft Store, the Mac download page, the Apple App Store (iOS 16 or later), or Google Play."
+  - "Optionally sign in with a personal Microsoft account, Apple ID, or Google account for chat history and longer conversations."
+  - "Press the + icon, select Add images or files, choose a file, and ask a question about it."
+getting_started_source_ids: [mscop-app, mscop-diff, mscop-fileupload]
+limitations:
+  - text: >-
+      Up to 20 files per conversation and 50 MB per file. Supported types are PDF, DOCX, XLSX, and
+      PPTX documents, PNG and JPEG images, and TXT, JSON, CSV, and MD text files.
+    reviewed_at: 2026-10-08
+    source_ids: [mscop-fileupload]
+  - text: >-
+      Signing in is not required, but chat history, longer conversations, voice, and some other
+      features need a signed-in account.
+    reviewed_at: 2026-10-08
+    source_ids: [mscop-diff, mscop-app]
+  - text: Copilot features, functionality, and availability may vary by region.
+    reviewed_at: 2026-10-08
+    source_ids: [mscop-diff]
+unverified:
+  - USASI has not tested this configuration.
+  - Whether file upload works without signing in is not stated in the pages reviewed.
+  - Microsoft's broader data terms for the updated Copilot app are in separate documents that this entry does not summarize.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: mscop-app
+    title: Get started with the Microsoft Copilot app
+    url: https://support.microsoft.com/en-us/microsoft-365-copilot/what-is-microsoft-copilot-app
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: mscop-diff
+    title: What's the difference between Microsoft Copilot (free) and Copilot in Microsoft 365
+    url: https://support.microsoft.com/en-us/microsoft-365-copilot/what-s-the-difference-between-microsoft-copilot-free-and-copilot-in-microsoft-365
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: mscop-fileupload
+    title: File upload in Microsoft Copilot
+    url: https://support.microsoft.com/en-us/microsoft-365-copilot/file-upload-in-microsoft-copilot
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: mscop-privacy-new
+    title: "Microsoft Copilot for individuals: your data, privacy, and responsible AI"
+    url: https://support.microsoft.com/en-us/privacy/microsoft-copilot/overview
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

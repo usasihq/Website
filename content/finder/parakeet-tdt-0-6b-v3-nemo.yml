@@ -1,0 +1,110 @@
+slug: parakeet-tdt-0-6b-v3-nemo
+title: NVIDIA Parakeet TDT 0.6B v3 with the NeMo toolkit
+tasks: [transcribe-audio]
+runs: local
+summary:
+  text: >-
+    Parakeet TDT 0.6B v3 is NVIDIA's 600-million-parameter speech recognition model for 25 European
+    languages, with automatic language detection and word- and segment-level timestamps. It runs in
+    Python through the NVIDIA NeMo toolkit and is released under CC BY 4.0.
+  reviewed_at: 2026-10-08
+  source_ids: [parakeet-v3-card]
+components:
+  - role: model
+    name: parakeet-tdt-0.6b-v3
+    record_slug: parakeet-tdt-0-6b-v3
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+  - role: library
+    name: NVIDIA NeMo Speech (nemo_toolkit with the asr extra)
+    record_slug: nemo-framework
+    url: https://github.com/NVIDIA-NeMo/Speech
+platforms:
+  values: [linux]
+  source_ids: [parakeet-v3-card]
+accelerators:
+  values: [nvidia, cpu-only]
+  source_ids: [parakeet-v3-card, nemo-speech-readme]
+memory:
+  variant: parakeet-tdt-0.6b-v3 NeMo checkpoint
+  gpu_gb: null
+  system_gb: 2
+  statement:
+    text: >-
+      The model card says the model needs at least 2GB of RAM to load, and that more RAM supports
+      larger audio inputs.
+    reviewed_at: 2026-10-08
+    source_ids: [parakeet-v3-card]
+skill: advanced
+skill_note: >-
+  Requires a Python environment with PyTorch and NeMo and a short Python script to load the model and
+  transcribe files.
+account_required:
+  value: false
+  source_ids: [parakeet-v3-card, parakeet-hf-api]
+cost_basis:
+  value: free-download
+  note: >-
+    The model card says the model is released under CC BY 4.0 and is ready for commercial and
+    non-commercial use; NeMo Speech installs with pip.
+  source_ids: [parakeet-v3-card, nemo-speech-readme]
+data_location:
+  text: >-
+    On your machine. The model card's examples load the model into your own Python environment and
+    transcribe local audio files.
+  reviewed_at: 2026-10-08
+  source_ids: [parakeet-v3-card]
+getting_started:
+  - "Install a recent PyTorch build; NeMo Speech requires Python 3.12 or above and PyTorch 2.7 or above."
+  - "Install the speech recognition extras with `pip install -U nemo_toolkit['asr']`."
+  - "In Python, load the model with `nemo_asr.models.ASRModel.from_pretrained(model_name=\"nvidia/parakeet-tdt-0.6b-v3\")` and call `transcribe()` on audio files, adding `timestamps=True` for timestamps."
+  - "For long recordings, switch the model to local attention as shown on the model card."
+getting_started_source_ids: [parakeet-v3-card, nemo-speech-readme]
+limitations:
+  - text: >-
+      The model card lists Linux as the supported operating system and NVIDIA Ampere, Blackwell,
+      Hopper, and Volta as the supported GPU architectures.
+    reviewed_at: 2026-10-08
+    source_ids: [parakeet-v3-card]
+  - text: >-
+      It transcribes the 25 European languages listed on the model card.
+    reviewed_at: 2026-10-08
+    source_ids: [parakeet-v3-card]
+  - text: >-
+      With full attention it handles audio up to 24 minutes long (measured on an A100 80GB); local
+      attention extends this to 3 hours.
+    reviewed_at: 2026-10-08
+    source_ids: [parakeet-v3-card]
+  - text: >-
+      NeMo Speech recommends an NVIDIA GPU with CUDA for inference.
+    reviewed_at: 2026-10-08
+    source_ids: [nemo-speech-readme]
+unverified:
+  - USASI has not tested this configuration.
+  - Behavior on NVIDIA GPU architectures not listed on the model card is not documented.
+  - Transcription speed on a CPU is not documented.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: parakeet-v3-card
+    title: parakeet-tdt-0.6b-v3 model card
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: nemo-speech-readme
+    title: NVIDIA NeMo Speech README
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Speech/main/README.md
+    publisher: NVIDIA (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: parakeet-hf-api
+    title: nvidia/parakeet-tdt-0.6b-v3 repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/nvidia/parakeet-tdt-0.6b-v3
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-08

@@ -17,8 +17,12 @@ export function InitialsTile({ initials, size = "md" }: { initials: string; size
  * A quiet homepage strip listing everyone on the standing People Behind Local AI
  * list as compact links to their full profiles on /local/.
  */
+/** How many names the homepage strip shows before linking to the full list. */
+export const STRIP_LIMIT = 12;
+
 export function LocalCornerStrip({ people }: { people: Person[] }) {
   if (people.length === 0) return null;
+  const shown = people.slice(0, STRIP_LIMIT);
   return (
     <section aria-labelledby="local-corner-heading" className="border-t border-line py-12">
       <div className="container-page">
@@ -37,7 +41,7 @@ export function LocalCornerStrip({ people }: { people: Person[] }) {
           </Link>
         </div>
         <ul className="mt-6 flex flex-wrap gap-2">
-          {people.map((p) => (
+          {shown.map((p) => (
             <li key={p.slug}>
               <Link
                 prefetch={false}
@@ -50,6 +54,13 @@ export function LocalCornerStrip({ people }: { people: Person[] }) {
             </li>
           ))}
         </ul>
+        {people.length > shown.length ? (
+          <p className="mt-4">
+            <Link prefetch={false} href="/local/" className="link text-[0.9375rem]">
+              See all {people.length} people
+            </Link>
+          </p>
+        ) : null}
       </div>
     </section>
   );

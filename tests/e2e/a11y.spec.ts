@@ -39,6 +39,16 @@ const PAGES = [
   "/places/california/",
   "/timeline/",
   "/sources/",
+  "/learn/quantization/",
+  "/learn/paths/new-to-ai/",
+  "/learn/tools/model-size/",
+  "/find/",
+  "/find/?task=write-code&where=local&os=linux&gpu=nvidia&vram=16&charges=none",
+  "/licenses/",
+  "/licenses/apache-2-0/",
+  "/policy/",
+  "/faq/",
+  "/jobs/?track=early-career",
   "/no-such-page/",
 ];
 

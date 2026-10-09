@@ -1,0 +1,99 @@
+slug: gemini-cli-google
+title: Gemini CLI signed in with a Google account
+tasks: [write-code]
+runs: hybrid
+summary:
+  text: >-
+    Gemini CLI is Google's open-source AI agent for the terminal, with built-in tools for file
+    operations, shell commands, and web fetching. It sends requests to Google's Gemini models;
+    signing in with a personal Google account uses a free tier with request limits.
+  reviewed_at: 2026-10-08
+  source_ids: [gemini-readme]
+components:
+  - role: app
+    name: Gemini CLI
+    record_slug: gemini-cli
+    url: https://www.geminicli.com/docs/get-started/installation
+  - role: service
+    name: Gemini models through Gemini Code Assist or the Gemini API
+    record_slug: google
+    url: https://github.com/google-gemini/gemini-cli/blob/main/docs/resources/tos-privacy.md
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [gemini-install]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: intermediate
+skill_note: >-
+  Requires Node.js 20 or newer; install with npm, Homebrew, or MacPorts, run gemini in a terminal,
+  and sign in with Google in the browser.
+account_required:
+  value: true
+  source_ids: [gemini-readme, gemini-tos]
+cost_basis:
+  value: free-tier-with-limits
+  note: >-
+    Signing in with a personal Google account gives a free tier with per-minute and daily request
+    limits. A Gemini API key also has a free tier with usage-based billing for higher limits, and
+    organizations can use paid Code Assist licenses.
+  source_ids: [gemini-readme]
+data_location:
+  text: >-
+    Local app calling a hosted service. Gemini CLI runs in your terminal and needs an internet
+    connection; prompts go to Google's services, and the terms of service and privacy notice of
+    the service tied to your sign-in method apply.
+  reviewed_at: 2026-10-08
+  source_ids: [gemini-install, gemini-tos]
+getting_started:
+  - "Install Node.js 20.0.0 or newer."
+  - "Run `npm install -g @google/gemini-cli`, or install with Homebrew or MacPorts."
+  - "Run `gemini`, choose Sign in with Google, and follow the browser authentication flow."
+getting_started_source_ids: [gemini-install, gemini-readme]
+limitations:
+  - text: >-
+      The installation guide recommends Windows 11 24H2+, macOS 15+, or Ubuntu 20.04+, with 4GB+
+      of RAM for casual use and 16GB+ for long sessions or large codebases; it also lists a Gemini
+      Code Assist supported location and says an internet connection is required.
+    reviewed_at: 2026-10-08
+    source_ids: [gemini-install]
+  - text: >-
+      If your Google account is managed by an organization, the administrator may not permit access
+      to Gemini Code Assist for individuals.
+    reviewed_at: 2026-10-08
+    source_ids: [gemini-tos]
+  - text: >-
+      Google's terms page says accessing the services behind Gemini CLI through third-party
+      software violates the applicable terms and may lead to account suspension or termination.
+    reviewed_at: 2026-10-08
+    source_ids: [gemini-tos]
+unverified:
+  - USASI has not tested this configuration.
+  - Which Gemini model handles a given request on the free tier is not recorded here.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: gemini-readme
+    title: Gemini CLI README
+    url: https://raw.githubusercontent.com/google-gemini/gemini-cli/main/README.md
+    publisher: Google (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemini-install
+    title: Gemini CLI installation, execution, and releases
+    url: https://www.geminicli.com/docs/get-started/installation
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemini-tos
+    title: "Gemini CLI: License, Terms of Service, and Privacy Notices"
+    url: https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/resources/tos-privacy.md
+    publisher: Google (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

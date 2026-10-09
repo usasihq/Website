@@ -1,0 +1,27 @@
+explainer: how-models-use-tools
+updated_at: 2026-10-08
+questions:
+  - prompt: When a model uses a tool such as a weather lookup through function calling, what does the model itself do?
+    choices:
+      - It writes a request, a tool name plus arguments, for the application to run
+      - It runs the tool's code directly on the computer and reads the output itself
+      - It waits for a person to look up the weather and type the result into the chat
+    answer: 0
+    explanation: >-
+      The page quotes Anthropic: "The model never executes anything on its own." The model replies with a tool name and arguments, and "the application decides whether to run it, with what access, and what to send back."
+  - prompt: Why do tool results such as web pages and files call for permissions, human approval, and logs?
+    choices:
+      - Tool results are never shown to the model, so its mistakes go unnoticed
+      - Results feed back into the model's input and can carry unintended instructions
+      - OWASP says a known filter fully prevents prompt injection, but it is slow
+    answer: 1
+    explanation: >-
+      The page says tool results "go straight back into the model's input" and "can carry instructions nobody intended." OWASP says "it is unclear if there are fool-proof methods of prevention," so its advice limits damage.
+  - prompt: In the bookshop example, why does Riley give the email assistant read access and a draft tool, but no send tool?
+    choices:
+      - MCP enforces security at the protocol level, so a send tool would add nothing
+      - Language models are unable to write or format email drafts
+      - Least privilege, so a hostile email can at worst produce a bad draft Riley reads
+    answer: 2
+    explanation: >-
+      Riley cuts privileges to what the task needs, and the assistant does have a draft tool. "Since the assistant cannot send mail, the worst outcome here is a bad draft that Riley reads first." MCP says it "cannot enforce these security principles at the protocol level."

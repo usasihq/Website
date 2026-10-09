@@ -9,11 +9,14 @@ import { BrandMark } from "./BrandMark";
 /** Reference links: in the slim top bar from 640px, and in the mobile menu. */
 const REFERENCE = [
   { href: "/start/", label: "Start here", bar: true },
+  { href: "/faq/", label: "FAQ", bar: true },
   { href: "/hubs/", label: "Hubs", bar: true },
   { href: "/places/", label: "Places", bar: false },
   { href: "/timeline/", label: "Timeline", bar: false },
   { href: "/sources/", label: "Source library", bar: false },
   { href: "/glossary/", label: "Glossary", bar: true },
+  { href: "/licenses/", label: "License guide", bar: false },
+  { href: "/policy/", label: "Policy tracker", bar: true },
   { href: "/reuse/", label: "Data & reuse", bar: false },
   { href: "/contribute/#corrections", label: "Corrections", bar: true },
 ];

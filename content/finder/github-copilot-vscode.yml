@@ -1,0 +1,110 @@
+slug: github-copilot-vscode
+title: GitHub Copilot in Visual Studio Code
+tasks: [write-code]
+runs: hybrid
+summary:
+  text: >-
+    GitHub Copilot adds inline suggestions, chat, and agents to Visual Studio Code. It needs a
+    GitHub account with Copilot access; signing in without a plan enrolls an eligible account in
+    Copilot Free, which has a monthly allowance of inline suggestions and AI credits.
+  reviewed_at: 2026-10-08
+  source_ids: [vscode-copilot-setup]
+components:
+  - role: app
+    name: Visual Studio Code
+    record_slug: null
+    url: https://code.visualstudio.com/docs/supporting/requirements
+  - role: service
+    name: GitHub Copilot
+    record_slug: github
+    url: https://docs.github.com/en/copilot/get-started/plans
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [vscode-req]
+accelerators:
+  values: []
+  source_ids: []
+memory: null
+skill: intermediate
+skill_note: >-
+  Install VS Code, select Use AI Features from the Copilot icon in the Status Bar, and sign in with
+  a GitHub account.
+account_required:
+  value: true
+  source_ids: [vscode-copilot-setup]
+cost_basis:
+  value: free-tier-with-limits
+  note: >-
+    Copilot Free has a monthly allowance of inline suggestions and AI credits. Paid individual plans
+    are monthly subscriptions with larger AI-credit allowances, and you can set a budget for extra
+    usage.
+  source_ids: [gh-copilot-plans, vscode-faq]
+data_location:
+  text: >-
+    Local app calling a hosted service. VS Code runs on your computer, and models included with
+    Copilot are reached through the GitHub Copilot service, so prompts and project content you
+    include are sent to it. The setup guide asks you to review the GitHub Copilot Trust Center and
+    your organization's policies before sending work code.
+  reviewed_at: 2026-10-08
+  source_ids: [vscode-copilot-setup, vscode-faq]
+getting_started:
+  - "Install Visual Studio Code on a supported version of Windows, macOS, or Linux."
+  - "Hover over the Copilot icon in the Status Bar and select Use AI Features."
+  - "Choose a sign-in method; without a Copilot subscription, an eligible account is signed up for Copilot Free."
+  - "Optionally enter /init in a chat session to create starter custom instructions for a project."
+getting_started_source_ids: [vscode-req, vscode-copilot-setup]
+limitations:
+  - text: >-
+      Copilot Free limits inline suggestions to 2000 completions per month and offers auto model
+      selection only.
+    reviewed_at: 2026-10-08
+    source_ids: [gh-copilot-plans]
+  - text: >-
+      In the free version, telemetry is enabled and code suggestions that match public code are
+      allowed by default; both can be changed in settings.
+    reviewed_at: 2026-10-08
+    source_ids: [vscode-copilot-setup]
+  - text: >-
+      Requests can be rate-limited even when the monthly AI credits allowance is not used up, and
+      Copilot needs a network connection to GitHub.
+    reviewed_at: 2026-10-08
+    source_ids: [vscode-faq]
+  - text: Copilot is not currently available for GitHub Enterprise Server.
+    reviewed_at: 2026-10-08
+    source_ids: [gh-copilot-plans]
+unverified:
+  - USASI has not tested this configuration.
+  - The models each Copilot plan includes change over time and are not recorded here.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: vscode-req
+    title: Requirements for Visual Studio Code
+    url: https://code.visualstudio.com/docs/supporting/requirements
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: vscode-copilot-setup
+    title: Set up GitHub Copilot in VS Code
+    url: https://code.visualstudio.com/docs/copilot/setup
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: vscode-faq
+    title: Agents troubleshooting FAQ (VS Code documentation)
+    url: https://code.visualstudio.com/docs/agents/agent-troubleshooting/faq
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gh-copilot-plans
+    title: Plans for GitHub Copilot
+    url: https://docs.github.com/en/copilot/get-started/plans
+    publisher: GitHub
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08

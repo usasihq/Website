@@ -1,0 +1,185 @@
+slug: anythingllm-ollama-gemma-4-12b
+title: AnythingLLM Desktop with Gemma 4 12B on Ollama
+tasks: [work-with-documents, chat-and-write]
+runs: local
+summary:
+  text: >-
+    AnythingLLM Desktop is an open-source, single-user app for using local models with your own
+    documents (retrieval-augmented generation) and agents. Connected to Ollama, it can use Google's
+    Gemma 4 12B, which Ollama offers as gemma4:12b.
+  reviewed_at: 2026-10-08
+  source_ids: [allm-desktop, allm-ollama, ollama-lib-gemma4]
+components:
+  - role: app
+    name: AnythingLLM Desktop
+    record_slug: anythingllm
+    url: https://docs.anythingllm.com/installation-desktop/overview
+  - role: runtime
+    name: Ollama
+    record_slug: ollama
+    url: https://ollama.com/download
+  - role: model
+    name: Gemma 4 12B (Ollama tag gemma4:12b)
+    record_slug: gemma-4-12b
+    url: https://ollama.com/library/gemma4
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [allm-desktop, ollama-windows, ollama-macos, ollama-linux]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [ollama-gpu, ollama-macos, allm-ollama]
+memory: null
+skill: intermediate
+skill_note: >-
+  Install the AnythingLLM Desktop app and Ollama, download the model in Ollama, then select Ollama
+  as the LLM provider in AnythingLLM's settings.
+account_required:
+  value: false
+  source_ids: [allm-desktop, ollama-quickstart]
+cost_basis:
+  value: free-download
+  note: >-
+    AnythingLLM Desktop is open source, the Gemma 4 weights are Apache 2.0, and Ollama's pricing page
+    says running models on your own hardware is always unlimited.
+  source_ids: [allm-desktop, gemma4-12b-qat-card, ollama-pricing]
+data_location:
+  text: >-
+    On your machine. AnythingLLM describes the desktop app as the option for when everything needs
+    to stay only on your device, and Ollama's FAQ says it does not see your prompts or data when you
+    run locally.
+  reviewed_at: 2026-10-08
+  source_ids: [allm-desktop, ollama-faq]
+getting_started:
+  - "Install Ollama, then download the model with `ollama pull gemma4:12b`."
+  - "Install AnythingLLM Desktop for macOS, Windows, or Linux."
+  - "In AnythingLLM's settings, choose Ollama as the LLM provider; with Ollama's default settings, connect to http://127.0.0.1:11434 and pick the model."
+getting_started_source_ids: [ollama-lib-gemma4, allm-desktop, allm-ollama]
+limitations:
+  - text: >-
+      AnythingLLM's suggested baseline for a basic local experience is 16GB of RAM and an 8-core
+      CPU, with the local model as the main factor; on Windows a GPU is recommended.
+    reviewed_at: 2026-10-08
+    source_ids: [allm-sysreq]
+  - text: >-
+      AnythingLLM collects anonymous usage telemetry by default; it can be turned off in the app's
+      Privacy settings.
+    reviewed_at: 2026-10-08
+    source_ids: [allm-readme]
+  - text: >-
+      The desktop app is single-user and has no browser interface; multi-user access requires the
+      Docker version.
+    reviewed_at: 2026-10-08
+    source_ids: [allm-desktop]
+  - text: >-
+      Ollama defaults to a 4k-token context on GPUs with less than 24 GiB of VRAM; a larger context
+      for long documents needs more memory.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-ctx]
+unverified:
+  - USASI has not tested this configuration.
+  - Google publishes memory figures by quantization level, but Ollama's page does not state which quantization gemma4:12b uses, so memory fit is not established.
+  - How well this setup answers questions about your documents is not documented.
+  - Ollama names Intel GPUs only in its Linux Vulkan driver instructions and lists no supported Intel models; Intel GPU acceleration on Windows is not established here, and Intel-based Macs run on the CPU only.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: allm-desktop
+    title: AnythingLLM Desktop installation overview
+    url: https://docs.anythingllm.com/installation-desktop/overview
+    publisher: Mintplex Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: allm-sysreq
+    title: AnythingLLM system requirements
+    url: https://docs.anythingllm.com/installation-desktop/system-requirements
+    publisher: Mintplex Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: allm-ollama
+    title: Ollama LLM setup (AnythingLLM documentation)
+    url: https://docs.anythingllm.com/setup/llm-configuration/local/ollama
+    publisher: Mintplex Labs
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: allm-readme
+    title: AnythingLLM README
+    url: https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/master/README.md
+    publisher: Mintplex Labs (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-lib-gemma4
+    title: gemma4 in the Ollama library
+    url: https://ollama.com/library/gemma4
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gemma4-12b-qat-card
+    title: gemma-4-12B-it-qat-q4_0-gguf model card
+    url: https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf/raw/main/README.md
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-windows
+    title: Ollama on Windows
+    url: https://docs.ollama.com/windows
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-macos
+    title: Ollama on macOS
+    url: https://docs.ollama.com/macos
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-linux
+    title: Ollama on Linux
+    url: https://docs.ollama.com/linux
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-gpu
+    title: Hardware support (Ollama documentation)
+    url: https://docs.ollama.com/gpu
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-ctx
+    title: Context length (Ollama documentation)
+    url: https://docs.ollama.com/context-length.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-faq
+    title: Ollama FAQ
+    url: https://docs.ollama.com/faq.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-quickstart
+    title: Ollama quickstart
+    url: https://docs.ollama.com/quickstart.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-pricing
+    title: Ollama pricing
+    url: https://ollama.com/pricing
+    publisher: Ollama
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08

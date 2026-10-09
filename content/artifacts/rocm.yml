@@ -1,0 +1,249 @@
+slug: rocm
+name: ROCm
+kind: framework
+record_level: project
+family_slug: null
+version: null
+maintainers:
+  - name: AMD
+    organization_slug: amd
+    source_ids: [ rocm-what-is, rocm-license ]
+organization_slugs: [ amd ]
+links:
+  - label: ROCm documentation
+    url: https://rocm.docs.amd.com/en/latest/about/what-is-rocm.html
+    kind: documentation
+  - label: ROCm 10.1.0 release notes
+    url: https://rocm.docs.amd.com/en/latest/about/release-notes.html
+    kind: release-notes
+  - label: ROCm licenses
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    kind: license
+  - label: TheRock (build and release system)
+    url: https://github.com/ROCm/TheRock
+    kind: repository
+  - label: Compatibility matrix
+    url: https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html
+    kind: documentation
+summary:
+  text: >-
+    ROCm is AMD's open software stack for GPU-accelerated computing on AMD GPUs. Its Core SDK
+    includes the HIP runtime and programming interface, compilers including LLVM, math and deep
+    learning libraries such as rocBLAS and MIOpen, the RCCL communication library, and profiling,
+    debugging, and monitoring tools. Since version 7.14 it has been built and released through
+    TheRock, AMD's open build and release system; version 10.1.0 was released on October 5, 2026.
+  source_ids: [ rocm-what-is, rocm-release-notes, therock-readme ]
+  reviewed_at: 2026-10-08
+useful_for:
+  text: >-
+    Programming and running AI and high-performance computing workloads on AMD Instinct, Radeon,
+    and Ryzen GPUs. The 10.1.0 release notes list support for PyTorch 2.14.0, JAX 0.11.1, vLLM
+    0.29.0, SGLang 0.5.18, and MIGraphX 2.18, and drop support for TensorFlow 2.19.1.
+  source_ids: [ rocm-what-is, rocm-release-notes ]
+  reviewed_at: 2026-10-08
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    AMD's license page states that ROCm is released by Advanced Micro Devices, Inc. Advanced
+    Micro Devices, Inc. is a Delaware corporation whose Form 10-Q for the quarter ended June 27,
+    2026 gives its address as Santa Clara, California, on the cover page.
+  source_ids: [ rocm-license, amd-10q-q2-2026-cover ]
+  assessed_at: 2026-10-08
+availability:
+  status: public
+  access_conditions: >-
+    Open-source components are released through public GitHub repositories, packages on
+    repo.radeon.com, and other channels. AMD keeps proprietary products only on repo.radeon.com,
+    in a separate subdirectory, and distributes ROCprof Trace Decoder and the AOCC CPU
+    optimizations in binary form only.
+  source_ids: [ rocm-license ]
+  reviewed_at: 2026-10-08
+licenses:
+  - name: MIT License (most ROCm components, including HIP, rocBLAS, and MIOpen)
+    spdx: MIT
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: Apache License 2.0 (aomp, rocThrust, llvm-project/flang)
+    spdx: Apache-2.0
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: Apache License 2.0 with LLVM Exceptions (hipThreads, libhipcxx)
+    spdx: Apache-2.0 WITH LLVM-exception
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: University of Illinois/NCSA Open Source License (Comgr, ROCR-Runtime, ROCm-Device-Libs, rocminfo, ROCR Debug Agent)
+    spdx: NCSA
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: BSD 2-Clause License (rocSOLVER)
+    spdx: BSD-2-Clause
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: GNU General Public License v3.0 (ROCgdb)
+    spdx: null
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: GPL 2.0 with Linux-syscall-note (ROCK-Kernel-Driver)
+    spdx: null
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: Custom licenses (hipCUB, RCCL)
+    spdx: null
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: code
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+  - name: MIT License (ROCm repository, mainly documentation)
+    spdx: MIT
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    applies_to: documentation
+    source_ids: [ rocm-license ]
+    reviewed_at: 2026-10-08
+license_notes:
+  text: >-
+    AMD licenses ROCm per component. Its license page lists each component's terms, says that
+    components may include third-party code under additional licenses, and says the MIT license
+    on the ROCm repository covers what is mainly documentation. ROCprof Trace Decoder and the
+    AOCC CPU optimizations are binary-only and governed by separate license agreements. The
+    GPL entries are recorded without SPDX identifiers because the page does not say whether
+    "only" or "or later" terms apply.
+  source_ids: [ rocm-license ]
+  reviewed_at: 2026-10-08
+checklist:
+  source_code:
+    status: partial
+    note: >-
+      Open-source components are in public repositories, and TheRock provides a CMake
+      super-project for building ROCm from source. Two components are distributed in binary form
+      only.
+    source_ids: [ rocm-license, therock-readme ]
+    reviewed_at: 2026-10-08
+  documentation:
+    status: public
+    note: >-
+      AMD's documentation portal has release notes, a compatibility matrix, installation guides,
+      and a ROCm handbook with programming and optimization guides.
+    source_ids: [ rocm-what-is, rocm-release-notes, rocm-compat ]
+    reviewed_at: 2026-10-08
+  installation:
+    status: public
+    note: >-
+      AMD documents installation through Linux package managers, the amdgpu-install script (for
+      Radeon and Ryzen), Python wheels, tarballs, and a runfile installer. TheRock's README says a
+      source build needs about 200 GB of free disk space and can take hours.
+    source_ids: [ rocm-install, therock-readme ]
+    reviewed_at: 2026-10-08
+  supported_platforms:
+    status: public
+    note: >-
+      The compatibility matrix lists supported AMD Instinct, Radeon, and Ryzen devices. The
+      installation guide covers Ubuntu, Debian, RHEL, Oracle Linux, Rocky Linux, and SLES, native
+      Windows 11, and a WSL2 technical preview.
+    source_ids: [ rocm-compat, rocm-install ]
+    reviewed_at: 2026-10-08
+  release_status:
+    status: public
+    note: >-
+      Versioned releases with release notes; ROCm Core SDK 10.1.0 was released on 2026-10-05 and
+      tagged in the TheRock repository.
+    source_ids: [ rocm-release-notes, therock-release-10-1 ]
+    reviewed_at: 2026-10-08
+run_notes:
+  - text: >-
+      Release and build instructions moved to TheRock starting with ROCm 7.14. The former ROCm/ROCm
+      GitHub repository now appears as ROCm/legacy-rocm-build, and AMD's documentation includes a
+      transition guide from the legacy release stream.
+    source_ids: [ therock-readme, rocm-legacy-repo, rocm-what-is ]
+    reviewed_at: 2026-10-08
+  - text: >-
+      The 10.1.0 release notes describe added support for Ubuntu 26.04.1 and Ubuntu 24.04.5 and for
+      SR-IOV GPU virtualization on several Instinct and Radeon PRO GPUs; the compatibility matrix
+      is the reference for a given device and operating system.
+    source_ids: [ rocm-release-notes, rocm-compat ]
+    reviewed_at: 2026-10-08
+provenance: null
+tags: [ compiler, numerical-computing, training, inference ]
+publication_status: published
+archive_note: null
+released_at: null
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: rocm-what-is
+    title: What is ROCm?
+    url: https://rocm.docs.amd.com/en/latest/about/what-is-rocm.html
+    publisher: AMD
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: rocm-license
+    title: ROCm licenses
+    url: https://rocm.docs.amd.com/en/latest/about/license.html
+    publisher: AMD
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: rocm-release-notes
+    title: ROCm Core SDK 10.1.0 release notes
+    url: https://rocm.docs.amd.com/en/latest/about/release-notes.html
+    publisher: AMD
+    kind: release-notes
+    published_at: 2026-10-05
+    accessed_at: 2026-10-08
+  - id: rocm-compat
+    title: ROCm 10.1.0 compatibility matrix
+    url: https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html
+    publisher: AMD
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: rocm-install
+    title: Install AMD ROCm 10.1.0
+    url: https://rocm.docs.amd.com/en/latest/install/rocm.html
+    publisher: AMD
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: therock-readme
+    title: ROCm/TheRock README
+    url: https://raw.githubusercontent.com/ROCm/TheRock/main/README.md
+    publisher: AMD, ROCm (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: therock-release-10-1
+    title: TheRock release therock-10.1 (GitHub API)
+    url: https://api.github.com/repos/ROCm/TheRock/releases/tags/therock-10.1
+    publisher: AMD, ROCm (GitHub)
+    kind: release-notes
+    published_at: 2026-10-05
+    accessed_at: 2026-10-08
+  - id: rocm-legacy-repo
+    title: ROCm/ROCm repository metadata (GitHub API)
+    url: https://api.github.com/repos/ROCm/ROCm
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: amd-10q-q2-2026-cover
+    title: Advanced Micro Devices, Inc. Form 10-Q for the quarter ended June 27, 2026, cover page (XBRL viewer)
+    url: https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/R1.htm
+    publisher: Advanced Micro Devices, Inc. (via U.S. Securities and Exchange Commission EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-08

@@ -1,0 +1,110 @@
+slug: whisper-turbo-local
+title: OpenAI Whisper turbo on your own computer
+tasks: [transcribe-audio]
+runs: local
+summary:
+  text: >-
+    Whisper is OpenAI's open-source speech recognition model, released with a Python package and a
+    command-line tool under the MIT License. Its default turbo model, an optimized version of
+    large-v3, transcribes audio files on your own computer.
+  reviewed_at: 2026-10-08
+  source_ids: [whisper-readme, whisper-init-py]
+components:
+  - role: library
+    name: openai-whisper (Python package and command line)
+    record_slug: whisper
+    url: https://github.com/openai/whisper
+  - role: model
+    name: Whisper turbo (large-v3-turbo checkpoint)
+    record_slug: whisper-large-v3-turbo
+    url: https://github.com/openai/whisper#available-models-and-languages
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [whisper-readme]
+accelerators:
+  values: [nvidia, cpu-only]
+  source_ids: [whisper-transcribe-py]
+memory:
+  variant: Whisper turbo (large-v3-turbo checkpoint) in the openai-whisper package
+  gpu_gb: 6
+  system_gb: null
+  statement:
+    text: >-
+      The Whisper README lists approximate memory requirements per model size, giving about 6 GB of
+      required VRAM for the turbo model; the package maps the name turbo to the large-v3-turbo
+      checkpoint.
+    reviewed_at: 2026-10-08
+    source_ids: [whisper-readme, whisper-init-py]
+skill: intermediate
+skill_note: >-
+  Install the package with pip and add the ffmpeg command-line tool, then run the whisper command on
+  an audio file.
+account_required:
+  value: false
+  source_ids: [whisper-readme, whisper-init-py]
+cost_basis:
+  value: free-download
+  note: >-
+    Whisper's code and model weights are released under the MIT License and installed with pip; the
+    model weights download from public links built into the package.
+  source_ids: [whisper-readme, whisper-init-py]
+data_location:
+  text: >-
+    On your machine. The package loads the model and processes the audio file locally, using a CUDA
+    GPU when one is available and otherwise the CPU.
+  reviewed_at: 2026-10-08
+  source_ids: [whisper-readme, whisper-transcribe-py]
+getting_started:
+  - "Install the package with `pip install -U openai-whisper`; the README says the code is expected to work with Python 3.8-3.11 and recent PyTorch versions."
+  - "Install ffmpeg with your system's package manager, such as apt, pacman, Homebrew, Chocolatey, or Scoop."
+  - "Run `whisper audio.mp3 --model turbo`; turbo is also the default model."
+getting_started_source_ids: [whisper-readme]
+limitations:
+  - text: >-
+      The turbo model is not trained for translation; the README says to use the medium or large
+      models to translate non-English speech into English.
+    reviewed_at: 2026-10-08
+    source_ids: [whisper-readme]
+  - text: >-
+      The README says Whisper's performance varies widely depending on the language.
+    reviewed_at: 2026-10-08
+    source_ids: [whisper-readme]
+  - text: >-
+      Installation may also need Rust if the tiktoken dependency has no pre-built wheel for your
+      platform.
+    reviewed_at: 2026-10-08
+    source_ids: [whisper-readme]
+  - text: >-
+      On a CPU, the package falls back from FP16 to FP32 because FP16 is not supported there.
+    reviewed_at: 2026-10-08
+    source_ids: [whisper-transcribe-py]
+unverified:
+  - USASI has not tested this configuration.
+  - Speed on your hardware is not documented; the README's relative speeds were measured on an A100 GPU.
+  - Acceleration on AMD, Intel, or Apple GPUs is not documented in the Whisper repository.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: whisper-readme
+    title: Whisper README
+    url: https://raw.githubusercontent.com/openai/whisper/main/README.md
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: whisper-transcribe-py
+    title: whisper/transcribe.py (device selection and CPU precision)
+    url: https://raw.githubusercontent.com/openai/whisper/main/whisper/transcribe.py
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: whisper-init-py
+    title: whisper/__init__.py (model download table)
+    url: https://raw.githubusercontent.com/openai/whisper/main/whisper/__init__.py
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08

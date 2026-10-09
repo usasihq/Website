@@ -1,0 +1,211 @@
+slug: cline-ollama-gpt-oss-20b
+title: Cline in VS Code with gpt-oss-20b on Ollama
+tasks: [write-code]
+runs: local
+summary:
+  text: >-
+    Cline is an open-source coding agent that runs as an editor extension and can use a model
+    served by Ollama on your own computer. OpenAI describes gpt-oss-20b, one of its open-weight
+    models, as meant for lower latency and local or specialized use cases, and Ollama offers it
+    as gpt-oss:20b.
+  reviewed_at: 2026-10-08
+  source_ids: [cline-local, cline-readme, gptoss20b-card, ollama-lib-gptoss]
+components:
+  - role: extension
+    name: Cline
+    record_slug: cline-extension
+    url: https://docs.cline.bot/getting-started/installing-cline
+  - role: app
+    name: Visual Studio Code
+    record_slug: null
+    url: https://code.visualstudio.com/docs/supporting/requirements
+  - role: runtime
+    name: Ollama
+    record_slug: ollama
+    url: https://ollama.com/download
+  - role: model
+    name: gpt-oss-20b (Ollama tag gpt-oss:20b)
+    record_slug: gpt-oss-20b
+    url: https://huggingface.co/openai/gpt-oss-20b
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [vscode-req, ollama-windows, ollama-macos, ollama-linux]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [ollama-gpu, ollama-macos]
+memory:
+  variant: gpt-oss-20b with MXFP4-quantized MoE weights (Ollama tag gpt-oss:20b)
+  gpu_gb: null
+  system_gb: 16
+  statement:
+    text: >-
+      OpenAI's model card says MXFP4 quantization of the MoE weights lets gpt-oss-20b "run within
+      16GB of memory". Ollama's library page says it supports MXFP4 natively without additional
+      quantization and that the smaller model can run on systems with as little as 16GB memory.
+    reviewed_at: 2026-10-08
+    source_ids: [gptoss20b-card, ollama-lib-gptoss]
+skill: intermediate
+skill_note: >-
+  Install VS Code and Ollama, add the Cline extension, pull the model from a terminal, and select
+  Ollama as the provider in Cline's settings.
+account_required:
+  value: false
+  source_ids: [cline-auth, ollama-quickstart]
+cost_basis:
+  value: free-download
+  note: >-
+    Cline and the gpt-oss-20b weights are Apache 2.0, and Ollama's pricing page says running models
+    on your own hardware is always unlimited. Cline's hosted provider and Ollama's cloud models are
+    separate options.
+  source_ids: [cline-readme, gptoss20b-card, ollama-pricing, cline-auth]
+data_location:
+  text: >-
+    On your machine. Cline sends prompts to Ollama at http://localhost:11434, and Ollama's FAQ says
+    Ollama runs locally and does not see your prompts or data when you run locally.
+  reviewed_at: 2026-10-08
+  source_ids: [cline-local, ollama-faq]
+getting_started:
+  - "Install Ollama for your operating system from ollama.com, then run `ollama pull gpt-oss:20b`."
+  - "Install Cline from the VS Code Extensions view by searching for Cline."
+  - "In Cline settings, set the API provider to Ollama with base URL http://localhost:11434 and select gpt-oss:20b."
+  - "Set the context window to at least 32K tokens, as Ollama's Cline guide advises, and turn on Use Compact Prompt."
+getting_started_source_ids: [cline-install, cline-local, ollama-int-cline, gptoss20b-card]
+limitations:
+  - text: >-
+      Ollama defaults to a 4k-token context on GPUs with less than 24 GiB of VRAM, and a larger
+      context needs more memory; Ollama's Cline guide asks for at least 32K tokens for coding.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-ctx, ollama-int-cline]
+  - text: >-
+      Cline's local-model guide lists 16-32GB of RAM as typical for small or quantized models and
+      recommends its Use Compact Prompt setting and focused tasks for local inference.
+    reviewed_at: 2026-10-08
+    source_ids: [cline-local]
+  - text: >-
+      Ollama lists NVIDIA GPUs with compute capability 5.0 or newer, specific AMD Radeon cards
+      through ROCm, Apple GPUs through Metal, and other GPUs through Vulkan on Windows and Linux.
+      Intel-based Macs run on the CPU only.
+    reviewed_at: 2026-10-08
+    source_ids: [ollama-gpu, ollama-macos]
+unverified:
+  - USASI has not tested this configuration.
+  - The 16 GB figure is the publishers' statement for the model; how much a longer context adds on your hardware is not documented.
+  - Neither publisher documents how well gpt-oss-20b handles Cline's agent tasks.
+  - Ollama names Intel GPUs only in its Linux Vulkan driver instructions and lists no supported Intel models; Intel GPU acceleration on Windows is not established here, and Intel-based Macs run on the CPU only.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: cline-local
+    title: Local models (Cline documentation)
+    url: https://docs.cline.bot/running-models-locally/overview.md
+    publisher: Cline
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: cline-install
+    title: Installing Cline
+    url: https://docs.cline.bot/getting-started/installing-cline.md
+    publisher: Cline
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: cline-auth
+    title: Authorization (Cline documentation)
+    url: https://docs.cline.bot/getting-started/authorizing-with-cline.md
+    publisher: Cline
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: cline-readme
+    title: Cline README
+    url: https://raw.githubusercontent.com/cline/cline/main/README.md
+    publisher: Cline (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: vscode-req
+    title: Requirements for Visual Studio Code
+    url: https://code.visualstudio.com/docs/supporting/requirements
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-windows
+    title: Ollama on Windows
+    url: https://docs.ollama.com/windows
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-macos
+    title: Ollama on macOS
+    url: https://docs.ollama.com/macos
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-linux
+    title: Ollama on Linux
+    url: https://docs.ollama.com/linux
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-gpu
+    title: Hardware support (Ollama documentation)
+    url: https://docs.ollama.com/gpu
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-ctx
+    title: Context length (Ollama documentation)
+    url: https://docs.ollama.com/context-length.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-faq
+    title: Ollama FAQ
+    url: https://docs.ollama.com/faq.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-quickstart
+    title: Ollama quickstart
+    url: https://docs.ollama.com/quickstart.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-pricing
+    title: Ollama pricing
+    url: https://ollama.com/pricing
+    publisher: Ollama
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-int-cline
+    title: Cline integration (Ollama documentation)
+    url: https://docs.ollama.com/integrations/cline.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: ollama-lib-gptoss
+    title: gpt-oss in the Ollama library
+    url: https://ollama.com/library/gpt-oss
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gptoss20b-card
+    title: gpt-oss-20b model card
+    url: https://huggingface.co/openai/gpt-oss-20b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08

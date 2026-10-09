@@ -131,6 +131,13 @@ run_notes:
       Transformers, and task-specific prompts such as a code-retrieval query prefix.
     source_ids: [ eg-hf-card ]
     reviewed_at: 2026-10-01
+  - text: >-
+      Google now lists a newer model, EmbeddingGemma 2, released on October 6, 2026. Its
+      EmbeddingGemma overview leads with that 740M-parameter multimodal model, licensed under
+      Apache 2.0, and refers to this 308M-parameter text model as EmbeddingGemma 1. This record
+      covers only the original model.
+    source_ids: [ eg-overview-20261008, gemma-releases-20261008 ]
+    reviewed_at: 2026-10-08
 provenance:
   text: >-
     Built by Google DeepMind from Gemma 3, with T5Gemma initialization, according to the model
@@ -149,7 +156,7 @@ tags: [ embedding, multilingual, local-inference ]
 publication_status: published
 archive_note: null
 released_at: 2025-09-04
-updated_at: 2026-10-02
+updated_at: 2026-10-08
 last_reviewed: 2026-10-01
 sources:
   - id: eg-hf-card
@@ -232,3 +239,19 @@ sources:
     published_at: null
     accessed_at: 2026-10-02
     reviewed_at: 2026-10-02
+  - id: eg-overview-20261008
+    title: EmbeddingGemma model overview (as of October 8, 2026)
+    url: https://ai.google.dev/gemma/docs/embeddinggemma
+    publisher: Google AI for Developers
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+    reviewed_at: 2026-10-08
+  - id: gemma-releases-20261008
+    title: Gemma releases (as of October 8, 2026)
+    url: https://ai.google.dev/gemma/docs/releases
+    publisher: Google AI for Developers
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-08
+    reviewed_at: 2026-10-08

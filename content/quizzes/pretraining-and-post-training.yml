@@ -1,0 +1,28 @@
+explainer: pretraining-and-post-training
+updated_at: 2026-10-08
+questions:
+  - prompt: What is a base model good at after pretraining, according to the page?
+    choices:
+      - Continuing text, though it is not yet tuned to follow instructions
+      - Following instructions helpfully, because that is what pretraining teaches
+      - Only solving math problems whose answers a program can check
+    answer: 0
+    explanation: >-
+      The page says pretraining "makes it good at continuing text but not tuned to follow instructions." The InstructGPT paper notes that predicting the next token on a webpage differs from following instructions helpfully and safely.
+  - prompt: Which post-training method skips a reward model and gives a reward only when the model's answer is verified as correct?
+    choices:
+      - Supervised fine-tuning on examples of the desired response
+      - Direct Preference Optimization on pairs of chosen and rejected answers
+      - Reinforcement learning with verifiable rewards (RLVR)
+      - Pretraining on a very large amount of text from the web
+    answer: 2
+    explanation: >-
+      The page says RLVR, introduced in Ai2's Tülu 3 report, uses "tasks with checkable outcomes" instead of a reward model "and gives a reward only when the model's answer is verified as correct."
+  - prompt: Does a base model's license follow a model that someone post-trains from it?
+    choices:
+      - Never, because post-training creates a new model free of the base model's terms
+      - It depends on that license; Llama 3.1 and Apache 2.0 set different conditions
+      - Always, and in exactly the same way whatever the license says
+    answer: 1
+    explanation: >-
+      The page says "whether the base model's license follows the result depends on that license." The Llama 3.1 license sets naming and attribution conditions for distributed derivatives, while Apache 2.0 "works differently": it allows additional or different terms for your modifications, "provided you still comply with it."

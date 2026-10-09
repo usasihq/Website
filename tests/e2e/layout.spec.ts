@@ -24,6 +24,11 @@ const PAGES: Array<[string, string]> = [
   ["start", "/start/"],
   ["glossary", "/glossary/"],
   ["explainer", "/learn/open-weight-vs-open-source/"],
+  ["finder", "/find/?task=write-code&where=local&os=linux&gpu=nvidia&vram=16"],
+  ["license-guide", "/licenses/llama-3-1-community/"],
+  ["policy", "/policy/"],
+  ["faq", "/faq/"],
+  ["calculator", "/learn/tools/model-size/"],
   ["not-found", "/this-page-does-not-exist/"],
 ];
 

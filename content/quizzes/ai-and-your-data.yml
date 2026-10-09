@@ -1,0 +1,27 @@
+explainer: ai-and-your-data
+updated_at: 2026-10-08
+questions:
+  - prompt: Does turning off a chat app's training setting also delete the chats it has already stored?
+    choices:
+      - No; turning training off is a separate step from deleting chats
+      - Yes, the chats are deleted at the moment the setting is turned off
+      - Yes, and they leave every provider system immediately and permanently
+    answer: 0
+    explanation: >-
+      The page says "turning training off is a separate step from deleting chats, and a deleted chat can take up to 30 days to leave a provider's systems."
+  - prompt: What does the page say about temporary or incognito chats in its consumer examples?
+    choices:
+      - They are never stored anywhere, not even for a short time
+      - They are kept out of training, but a copy is kept for a period
+      - They are used for training but are deleted within an hour
+    answer: 1
+    explanation: >-
+      The page says "temporary or incognito chats are kept out of training, but providers still keep a copy for 72 hours to 30 days in the consumer examples." Google keeps temporary chats for 72 hours; Anthropic keeps incognito chats for 30 days by default.
+  - prompt: A school wants to know how an AI service handles its data. Which terms should it read?
+    choices:
+      - The consumer privacy pages, because they apply to every kind of account
+      - None, because business and school plans never keep logs of chats
+      - The business or school terms that match its plan
+    answer: 2
+    explanation: >-
+      The page says to "read the business terms that match your plan, not the consumer pages," and to tell people "that personal accounts bring consumer terms." Business plans can still keep logs; Microsoft says IT admins can view Copilot Chat prompts and responses.

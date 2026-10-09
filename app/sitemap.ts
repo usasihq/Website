@@ -32,6 +32,11 @@ const STATIC_ROUTES = [
   "/places/",
   "/timeline/",
   "/sources/",
+  "/licenses/",
+  "/policy/",
+  "/learn/tools/model-size/",
+  "/faq/",
+  "/find/",
 ];
 
 /**
@@ -49,6 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...EXPLAINERS.map((e) => ({ url: absoluteUrl(`/learn/${e.slug}/`), lastModified: e.reviewed })),
     ...LEARNING_PATHS.map((p) => ({ url: absoluteUrl(`/learn/paths/${p.id}/`) })),
     ...catalog.hubs.map((h) => ({ url: absoluteUrl(`/hubs/${h.slug}/`), lastModified: h.updated_at })),
+    ...catalog.licenses.map((l) => ({ url: absoluteUrl(`/licenses/${l.slug}/`), lastModified: l.updated_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
   ];
 }

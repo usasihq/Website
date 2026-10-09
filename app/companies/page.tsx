@@ -38,7 +38,7 @@ export default function CompaniesPage() {
         <details className="mt-3"><summary className="cursor-pointer text-sm text-ice">Browse quick views</summary><OrgQuickViews items={items} /></details>
       </PageHeader>
       <div className="container-page py-6">
-        <OrgDirectory items={items} />
+        <OrgDirectory items={items} asOf={catalog.buildAt} />
       </div>
       <SupportPanel variant="compact" />
     </>

@@ -38,6 +38,10 @@ export function readRawContent(root: string = DEFAULT_CONTENT_DIR): RawContent {
     people: readYamlDir(root, "people"),
     news: readYamlDir(root, "news"),
     hubs: readYamlDir(root, "hubs"),
+    licenses: readYamlDir(root, "licenses"),
+    policy: readYamlDir(root, "policy"),
+    quizzes: readYamlDir(root, "quizzes"),
+    finder: readYamlDir(root, "finder"),
   };
 }
 

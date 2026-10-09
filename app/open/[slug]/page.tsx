@@ -13,6 +13,7 @@ import { NewsCard } from "@/components/NewsList";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
+import { guideFor } from "@/lib/licenses";
 import { entryTypeFor, KIND_LABELS } from "@/lib/labels";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import {
@@ -220,6 +221,14 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                               {l.reviewed_at ? ` · fact reviewed ${formatDate(l.reviewed_at)}` : " · fact-level rights review not recorded"}
                               {l.effective_at ? ` · effective ${formatDate(l.effective_at)}` : ""}
                             </p>
+                            {(() => {
+                              const guide = guideFor(catalog, l);
+                              return guide ? (
+                                <Link prefetch={false} href={`/licenses/${guide.slug}/`} className="link mt-2 inline-block text-sm">
+                                  Plain-language guide to the {guide.name}
+                                </Link>
+                              ) : null;
+                            })()}
                           </li>
                         ))}
                       </ul>

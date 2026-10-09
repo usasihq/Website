@@ -1,0 +1,116 @@
+slug: llamafile-gpt-oss-20b
+title: llamafile with gpt-oss-20b (MXFP4)
+tasks: [chat-and-write]
+runs: local
+summary:
+  text: >-
+    llamafile, from Mozilla.ai, combines llama.cpp with Cosmopolitan Libc so a model and its server
+    run from a single executable file without installation. Mozilla.ai publishes a pre-built
+    gpt-oss-20b llamafile in MXFP4 format.
+  reviewed_at: 2026-10-08
+  source_ids: [llamafile-readme, llamafile-prebuilt]
+components:
+  - role: runtime
+    name: llamafile
+    record_slug: llamafile
+    url: https://docs.mozilla.ai/llamafile
+  - role: model
+    name: gpt-oss-20b (gpt-oss-20b-mxfp4.llamafile)
+    record_slug: gpt-oss-20b
+    url: https://docs.mozilla.ai/llamafile/getting-started/pre-built-llamafiles
+platforms:
+  values: [linux, macos, windows]
+  source_ids: [llamafile-support]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [llamafile-support]
+memory: null
+skill: intermediate
+skill_note: >-
+  Download one file, mark it executable, and run it from a terminal; on Windows, files over 4GB
+  need the separate llamafile program with external GGUF weights, or WSL.
+account_required:
+  value: false
+  source_ids: [llamafile-readme]
+cost_basis:
+  value: free-download
+  note: >-
+    llamafile is Apache 2.0, and Mozilla.ai lists the pre-built gpt-oss-20b llamafile under Apache
+    2.0; both are downloaded and run directly, with no sign-up step in the quick start.
+  source_ids: [llamafile-readme, llamafile-prebuilt]
+data_location:
+  text: >-
+    On your machine. The llamafile executable runs the model locally on your computer; the pre-built
+    file is downloaded once from Hugging Face.
+  reviewed_at: 2026-10-08
+  source_ids: [llamafile-readme, llamafile-prebuilt]
+getting_started:
+  - "Download gpt-oss-20b-mxfp4.llamafile from Mozilla.ai's pre-built llamafiles page."
+  - "On macOS, Linux, or BSD, make it executable with `chmod +x`, then run it."
+  - "On Windows, executables over 4GB will not run; download the llamafile program and run it with the model as external GGUF weights, or run the file inside WSL."
+  - "For NVIDIA, AMD, or other Vulkan graphics such as Intel, pass `-ngl 999` to offload to the GPU (`--gpu vulkan` selects Vulkan); on Apple Silicon, Metal offload is on by default."
+getting_started_source_ids: [llamafile-readme, llamafile-prebuilt, llamafile-support]
+limitations:
+  - text: >-
+      Only executables under 4GB can run on Windows, so the 12 GB gpt-oss-20b llamafile needs
+      external weights or WSL there.
+    reviewed_at: 2026-10-08
+    source_ids: [llamafile-readme, llamafile-support, llamafile-prebuilt]
+  - text: >-
+      llamafile silently falls back to the CPU if a GPU backend cannot be set up; on Linux, NVIDIA
+      cards need the CUDA SDK and AMD cards need the HIP SDK installed.
+    reviewed_at: 2026-10-08
+    source_ids: [llamafile-support]
+  - text: >-
+      The 0.10.* series has not been tested on every GPU and platform, and the project calls its AMD
+      and Windows paths "best-effort".
+    reviewed_at: 2026-10-08
+    source_ids: [llamafile-support]
+  - text: >-
+      On x86-64 computers the processor must support AVX; GPU support on macOS is limited to ARM64
+      (Apple Silicon).
+    reviewed_at: 2026-10-08
+    source_ids: [llamafile-support]
+  - text: >-
+      OpenAI's model card says MXFP4 quantization of the MoE weights lets gpt-oss-20b "run within
+      16GB of memory", but Mozilla.ai states no memory figure for its 12 GB MXFP4 llamafile, so
+      USASI does not compare this build with your memory.
+    reviewed_at: 2026-10-08
+    source_ids: [gptoss20b-card, llamafile-prebuilt]
+unverified:
+  - USASI has not tested this configuration.
+  - Mozilla.ai does not state memory needs for this llamafile build, so memory fit is not established.
+  - llamafile supports Intel GPUs only through its Vulkan backend (it has no Intel oneAPI or SYCL backend) and lists no specific Intel models; whether a given Intel GPU works is not documented.
+tested: null
+publication_status: published
+updated_at: 2026-10-08
+last_reviewed: 2026-10-08
+sources:
+  - id: llamafile-readme
+    title: llamafile README
+    url: https://raw.githubusercontent.com/mozilla-ai/llamafile/main/README.md
+    publisher: Mozilla.ai (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: llamafile-prebuilt
+    title: Pre-built llamafiles
+    url: https://docs.mozilla.ai/llamafile/getting-started/pre-built-llamafiles
+    publisher: Mozilla.ai
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: llamafile-support
+    title: Supported systems (llamafile documentation)
+    url: https://docs.mozilla.ai/llamafile/reference/support
+    publisher: Mozilla.ai
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-08
+  - id: gptoss20b-card
+    title: gpt-oss-20b model card
+    url: https://huggingface.co/openai/gpt-oss-20b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-08
