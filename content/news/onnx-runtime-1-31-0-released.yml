@@ -1,0 +1,28 @@
+slug: onnx-runtime-1-31-0-released
+title: ONNX Runtime 1.31.0 released with stable model-package and EPContext data APIs
+event_date: 2026-10-09
+published_at: 2026-10-09
+category: release
+summary:
+  text: >-
+    On October 9, 2026 Microsoft published ONNX Runtime 1.31.0 on GitHub. The release notes say
+    the model-package API and EPContext data callbacks were promoted to stable C and C++ APIs, and
+    that CoreML can now take part in device-based execution-provider selection, including Apple
+    Neural Engine selection through `PREFER_NPU`. The notes also announce that the ACL execution
+    provider is deprecated, that out-of-range indices in `GatherBlockQuantized` now produce zero
+    output slices, and that supported native builds now default to 1DS telemetry, which can be
+    disabled with `--no_telemetry`. The ONNX dependency stays at 1.22.0. USASI has not tested these
+    changes.
+  source_ids: [onnxruntime-v1-31-0-release]
+related_organizations: [microsoft]
+related_artifacts: [onnx-runtime]
+publication_status: published
+updated_at: 2026-10-09
+sources:
+  - id: onnxruntime-v1-31-0-release
+    title: ONNX Runtime v1.31.0 (GitHub release notes)
+    url: https://github.com/microsoft/onnxruntime/releases/tag/v1.31.0
+    publisher: Microsoft
+    kind: release-notes
+    published_at: 2026-10-09
+    accessed_at: 2026-10-09

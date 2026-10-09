@@ -1,0 +1,27 @@
+slug: trl-1-15-0-released
+title: TRL 1.15.0 released with a fused LM head enabled by default
+event_date: 2026-10-08
+published_at: 2026-10-09
+category: release
+summary:
+  text: >-
+    On October 8, 2026 Hugging Face published version 1.15.0 of TRL on GitHub. The release notes
+    say the SFT, DPO, KTO, GRPO, RLOO and Distillation trainers now score tokens with a fused LM
+    head, a Triton kernel that avoids building the full logits tensor, and that it is on by default;
+    scoring this way needs Triton on a GPU. The notes list breaking changes: a PEFT adapter on
+    `lm_head` now raises an error, and `use_liger_kernel=True` is deprecated in the GRPO, RLOO, DPO
+    and KTO trainers and will be removed in v2.0.0. The release also adds selective activation
+    checkpointing in SFT. USASI has not tested these changes.
+  source_ids: [trl-v1-15-0-release]
+related_organizations: [hugging-face]
+related_artifacts: [trl]
+publication_status: published
+updated_at: 2026-10-09
+sources:
+  - id: trl-v1-15-0-release
+    title: TRL v1.15.0 (GitHub release notes)
+    url: https://github.com/huggingface/trl/releases/tag/v1.15.0
+    publisher: Hugging Face
+    kind: release-notes
+    published_at: 2026-10-08
+    accessed_at: 2026-10-09
