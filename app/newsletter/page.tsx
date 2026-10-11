@@ -1,6 +1,9 @@
+import Link from "next/link";
 import { Mail, Rss } from "lucide-react";
 import Content from "@/content/pages/newsletter.mdx";
 import { EditorialPage } from "@/components/EditorialPage";
+import { getCatalog } from "@/lib/catalog";
+import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
 import { siteConfig } from "@/lib/site-config";
@@ -14,6 +17,7 @@ export const metadata = pageMetadata({
 
 export default function NewsletterPage() {
   const { heading, description, provider, url } = siteConfig.newsletter;
+  const issues = getCatalog().newsletter;
   return (
     <EditorialPage
       eyebrow="Weekly email"
@@ -36,6 +40,30 @@ export default function NewsletterPage() {
             <Rss aria-hidden="true" className="h-4 w-4" /> RSS feed, no signup
           </a>
         </div>
+      }
+      aside={
+        <section id="issues" aria-labelledby="issues-heading" className="mt-12 max-w-3xl scroll-mt-28">
+          <h2 id="issues-heading" className="text-2xl font-semibold text-text">
+            Past issues
+          </h2>
+          {issues.length === 0 ? (
+            <p className="mt-3 text-muted">No issues have been sent yet.</p>
+          ) : (
+            <ol className="mt-4 divide-y divide-line border-y border-line" data-testid="newsletter-issues">
+              {issues.map((n) => (
+                <li key={n.slug} className="py-4">
+                  <p className="meta">
+                    Issue {n.number} · Emailed <time dateTime={n.sent_at}>{formatDate(n.sent_at)}</time>
+                  </p>
+                  <Link prefetch={false} href={`/newsletter/${n.slug}/`} className="link mt-1 inline-block text-lg font-medium">
+                    {n.subject}
+                  </Link>
+                  <p className="mt-1 text-[0.9375rem] text-muted">{n.preview}</p>
+                </li>
+              ))}
+            </ol>
+          )}
+        </section>
       }
     >
       <Content />

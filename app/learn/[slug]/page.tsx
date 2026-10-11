@@ -5,7 +5,9 @@ import { ExplainerCard, LevelBadge, ReadingTime, TopicIcon } from "@/components/
 import { QuizCard } from "@/components/learn/QuizCard";
 import { TableOfContents } from "@/components/learn/TableOfContents";
 import { ExternalLink } from "@/components/ExternalLink";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PageHeader } from "@/components/PageHeader";
+import { ShareCite } from "@/components/ShareCite";
 import { getCatalog } from "@/lib/catalog";
 import { SupportPanel } from "@/components/SupportPanel";
 import { formatDate } from "@/lib/dates";
@@ -187,6 +189,11 @@ export default async function ExplainerPage({ params }: { params: Promise<{ slug
               ) : null}
             </div>
           </aside>
+        </div>
+
+        <div className="mt-12 grid max-w-3xl gap-6">
+          <ShareCite path={`/learn/${e.slug}/`} title={e.title} date={e.reviewed} citeKey={`learn_${e.slug}`} />
+          <NewsletterSignup variant="compact" />
         </div>
 
         <section aria-labelledby="keep-learning-heading" className="mt-16 border-t border-line pt-10">

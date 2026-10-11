@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Finder } from "@/components/Finder";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -53,6 +54,9 @@ export default function FindPage() {
             <Link href="/learn/inference-hardware/" className="link">understanding inference hardware</Link>, or use the{" "}
             <Link href="/learn/tools/model-size/" className="link">model size calculator</Link>.
           </p>
+        </div>
+        <div className="max-w-3xl">
+          <NewsletterSignup variant="compact" />
         </div>
       </div>
       <SupportPanel variant="compact" />

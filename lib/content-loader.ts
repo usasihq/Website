@@ -42,6 +42,7 @@ export function readRawContent(root: string = DEFAULT_CONTENT_DIR): RawContent {
     policy: readYamlDir(root, "policy"),
     quizzes: readYamlDir(root, "quizzes"),
     finder: readYamlDir(root, "finder"),
+    newsletter: readYamlDir(root, "newsletter"),
   };
 }
 

@@ -13,6 +13,7 @@ import {
   Hub,
   LicenseGuide,
   NewsItem,
+  NewsletterIssue,
   Organization,
   Person,
   PolicyDocument,
@@ -26,10 +27,13 @@ import {
   type PolicyDocument as PolicyDocumentT,
   type Quiz as QuizT,
   type NewsItem as NewsItemT,
+  type NewsletterIssue as NewsletterIssueT,
   type Organization as OrganizationT,
   type Person as PersonT,
 } from "./schema";
-import { EXPLAINERS } from "./learn";
+import { inlineLinks, isAllowedHref } from "./inline-text";
+import { EXPLAINERS, LEARNING_PATHS } from "./learn";
+import { isKnownSitePath } from "./site-routes";
 import { CHECKLISTS } from "./openness";
 
 export interface RawDocument {
@@ -50,6 +54,7 @@ export interface RawContent {
   policy?: RawDocument[];
   quizzes?: RawDocument[];
   finder?: RawDocument[];
+  newsletter?: RawDocument[];
 }
 
 export interface ValidationIssue {
@@ -71,6 +76,7 @@ export interface ValidatedContent {
   policy: PolicyDocumentT[];
   quizzes: QuizT[];
   finder: FinderConfigT[];
+  newsletter: NewsletterIssueT[];
   issues: ValidationIssue[];
 }
 
@@ -628,6 +634,46 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     ]);
   }
 
+
+  /* ---- Weekly email issues ---- */
+  const issueDocs = parseDocs(raw.newsletter ?? [], NewsletterIssue, issues);
+  const siteSlugs = {
+    organizations: publishedOrgs,
+    artifacts: publishedArtifacts,
+    news: new Set(newsDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
+    hubs: new Set(hubDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
+    licenses: new Set(licenseDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
+    explainers: new Set(EXPLAINERS.map((e) => e.slug)),
+    paths: new Set(LEARNING_PATHS.map((p) => p.id)),
+    issues: new Set(issueDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
+  };
+  const issueNumbers = new Set<number>();
+  for (const { file, value: n } of issueDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    const published = n.publication_status === "published";
+    if (basename(file) !== n.slug) push("error", `File name must match slug "${n.slug}"`, "slug");
+    if (issueNumbers.has(n.number)) push("error", `Duplicate issue number ${n.number}`, "number");
+    issueNumbers.add(n.number);
+    if (published && n.sent_at > today) push("error", "A published issue cannot have a future sent_at", "sent_at");
+    if (n.covers.from > n.covers.to || n.covers.to > n.sent_at) push("error", "covers must run from an earlier date to a date on or before sent_at", "covers");
+    const lines: (readonly [string, string])[] = [
+      ...n.intro.map((t, i) => [`intro[${i}]`, t] as const),
+      ...n.sections.flatMap((sec, si) => [
+        ...(sec.intro ? [[`sections[${si}].intro`, sec.intro] as const] : []),
+        ...sec.items.map((t, i) => [`sections[${si}].items[${i}]`, t] as const),
+        ...(sec.note ? [[`sections[${si}].note`, sec.note] as const] : []),
+      ]),
+      ...n.closing.map((t, i) => [`closing[${i}]`, t] as const),
+    ];
+    for (const [path, text] of lines) {
+      for (const href of inlineLinks(text)) {
+        if (!isAllowedHref(href)) push("error", `Links must be site paths or https URLs: "${href}"`, path);
+        else if (href.startsWith("/") && !isKnownSitePath(href, siteSlugs)) push(published ? "error" : "warning", `Link to a page the site does not publish: "${href}"`, path);
+      }
+    }
+    checkText(push, published, "Weekly email issues", lines);
+  }
+
   const strip = <T extends { __file?: string }>(r: T) => {
     const { __file: _omit, ...rest } = r;
     void _omit;
@@ -646,6 +692,7 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     policy: policyDocs.map((d) => d.value).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title)),
     quizzes: quizDocs.map((d) => d.value),
     finder: finderDocs.map((d) => d.value).sort((a, b) => a.title.localeCompare(b.title)),
+    newsletter: issueDocs.map((d) => d.value).sort((a, b) => b.number - a.number),
     issues,
   };
 }

@@ -49,6 +49,8 @@ const PAGES = [
   "/policy/",
   "/faq/",
   "/newsletter/",
+  "/newsletter/issue-1/",
+  "/badges/",
   "/jobs/?track=early-career",
   "/no-such-page/",
 ];

@@ -10,6 +10,8 @@ import { ExternalLink } from "@/components/ExternalLink";
 import { Breadcrumbs, Section } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { NewsCard } from "@/components/NewsList";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { ShareCite } from "@/components/ShareCite";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -444,6 +446,8 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
             <EntryActions contentPath={`content/artifacts/${a.slug}.yml`} title={a.name} />
             <p className="text-[0.9375rem] text-muted">This listing is not an endorsement, a safety assessment, or a federal approval.</p>
           </div>
+          <ShareCite path={artifactHref(a.slug)} title={a.name} date={a.updated_at} citeKey={a.slug} badge />
+          <NewsletterSignup variant="compact" />
         </div>
       </article>
       <SupportPanel variant="compact" />

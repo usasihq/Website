@@ -11,6 +11,8 @@ import { ExternalLink } from "@/components/ExternalLink";
 import { Breadcrumbs, Section } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { NewsCard } from "@/components/NewsList";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { ShareCite } from "@/components/ShareCite";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -341,6 +343,8 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
             <EntryActions contentPath={`content/organizations/${org.slug}.yml`} title={org.name} />
             <p className="text-[0.9375rem] text-muted">This listing is not an endorsement or a federal approval.</p>
           </div>
+          <ShareCite path={orgHref(org.slug)} title={org.name} date={org.updated_at} citeKey={org.slug} badge />
+          <NewsletterSignup variant="compact" />
         </div>
       </article>
       <SupportPanel variant="compact" />

@@ -765,3 +765,43 @@ export const FinderConfig = z
   })
   .strict();
 export type FinderConfig = z.infer<typeof FinderConfig>;
+
+/* ------------------------------------------------------------------ */
+/* Weekly email issues                                                 */
+/* ------------------------------------------------------------------ */
+
+/**
+ * One line of issue text. Supports **bold** and [label](href) links only,
+ * where href is a site path beginning with / or an https URL. An issue adds no
+ * new claims: everything in it links to a page already published on the site.
+ */
+export const NewsletterText = z.string().trim().min(2).max(1500);
+
+export const NewsletterSection = z
+  .object({
+    heading: z.string().trim().min(2).max(80),
+    intro: NewsletterText.nullable().default(null),
+    items: z.array(NewsletterText).default([]),
+    note: NewsletterText.nullable().default(null),
+  })
+  .strict();
+export type NewsletterSection = z.infer<typeof NewsletterSection>;
+
+/** A sent issue of the USASI weekly, archived on the site as it was emailed. */
+export const NewsletterIssue = z
+  .object({
+    number: z.number().int().min(1),
+    slug: Slug,
+    subject: z.string().trim().min(10).max(150),
+    preview: z.string().trim().min(10).max(200),
+    sent_at: IsoDate,
+    covers: z.object({ from: IsoDate, to: IsoDate }).strict(),
+    intro: z.array(NewsletterText).min(1),
+    sections: z.array(NewsletterSection).min(1),
+    closing: z.array(NewsletterText).default([]),
+    /** The issue's page on the email provider's site, once sent. */
+    web_url: HttpsUrl.nullable().default(null),
+    publication_status: PublicationStatus,
+  })
+  .strict();
+export type NewsletterIssue = z.infer<typeof NewsletterIssue>;

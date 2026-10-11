@@ -5,6 +5,7 @@ import { NEWS_CATEGORY_LABELS, RelatedRecords, newsHref } from "@/components/New
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Breadcrumbs } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
+import { ShareCite } from "@/components/ShareCite";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -71,6 +72,7 @@ export default async function NewsItemPage({ params }: { params: Promise<{ slug:
               </Link>
             </p>
           </div>
+          <ShareCite path={newsHref(item.slug)} title={item.title} date={item.updated_at} citeKey={`news_${item.slug}`} />
           <NewsletterSignup variant="compact" />
         </div>
       </article>

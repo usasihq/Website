@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { SupportPanel } from "@/components/SupportPanel";
 
 export const metadata = {
@@ -40,6 +41,9 @@ export default function NotFound() {
             </Link>
           </li>
         </ul>
+        <div className="mt-10 max-w-2xl">
+          <NewsletterSignup variant="compact" />
+        </div>
       </section>
       <SupportPanel variant="compact" />
     </>

@@ -44,6 +44,17 @@ items to "Resolved".
 
 Run logs are written to `reports/automation/` (not committed).
 
+## Weekly email issues
+
+Each issue of the USASI weekly is a file in `content/newsletter/` (schema `NewsletterIssue` in `lib/schema.ts`). The same file produces the email and the archived copy at `/newsletter/<slug>/`, so the two cannot drift apart.
+
+- Write the issue only from what the site published that week: news items, changelog entries, and new records. Text supports `**bold**` and `[label](/site/path/)` links only. Validation rejects links to pages the site does not build and non-https external links.
+- Keep `publication_status: draft` until the issue is sent. Drafts are validated but not shown on the site.
+- `npm run newsletter:email -- <slug>` writes `reports/automation/newsletter/<slug>.inline.html` and prints its length and SHA-256. Paste it into one HTML snippet block in beehiiv, then check that the snippet's text has the same hash.
+- In beehiiv, set the byline to the "USASI" guest author, not a personal profile.
+- Sending, scheduling, and test sends happen only after the owner says yes.
+- After sending, set `publication_status: published`, `sent_at`, and `web_url`, then publish the site. A unit test pins issue 1 to the exact HTML that was emailed.
+
 ## Pausing or changing it
 
 Pause or edit either task in the desktop app's Scheduled view. To publish by

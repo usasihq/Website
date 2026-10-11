@@ -36,6 +36,7 @@ const COLUMNS = [
       { href: "/changelog/", label: "Changelog" },
       { href: "/reuse/", label: "Data & reuse" },
       { href: "/contribute/", label: "Contribute" },
+      { href: "/badges/", label: "Badges for maintainers" },
     ],
   },
   {

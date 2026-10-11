@@ -4,7 +4,9 @@ import { Monogram } from "@/components/Badges";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
 import { HubIcon } from "@/components/learn/HubIcon";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PageHeader } from "@/components/PageHeader";
+import { ShareCite } from "@/components/ShareCite";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
@@ -137,6 +139,10 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
           <h2 id="sources-heading" className="eyebrow">Sources · reviewed {formatDate(hub.last_reviewed)}</h2>
           <div className="mt-3"><SourcesList sources={hub.sources} /></div>
         </section>
+        <div className="grid max-w-3xl gap-6">
+          <ShareCite path={`/hubs/${hub.slug}/`} title={hub.title} date={hub.updated_at} citeKey={`hub_${hub.slug}`} />
+          <NewsletterSignup variant="compact" />
+        </div>
       </div>
       <SupportPanel variant="compact" />
     </>

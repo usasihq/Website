@@ -616,3 +616,30 @@ test("search covers reference pages; timeline and source library load", async ({
   await page.getByLabel("Search sources").fill("license");
   await expect(page.locator("main ul.space-y-4 > li").first()).toBeVisible();
 });
+
+test.describe("sharing, citing, and the weekly archive", () => {
+  test("record pages offer plain share links, citations, and the maintainer badge", async ({ page }) => {
+    await page.goto(`/open/${activeRelease.slug}/`);
+    const box = page.getByTestId("share-cite");
+    await expect(box.getByRole("heading", { name: "Share or cite this page" })).toBeVisible();
+    const x = box.getByRole("link", { name: /^X/ });
+    await expect(x).toHaveAttribute("href", new RegExp(`^https://x\\.com/intent/tweet\\?text=.+&url=.+${activeRelease.slug}`));
+    await box.locator("summary", { hasText: "Cite this page" }).click();
+    await expect(box.locator("pre").first()).toContainText(`/open/${activeRelease.slug}/`);
+    await box.locator("summary", { hasText: "For maintainers" }).click();
+    await expect(box.locator("pre").filter({ hasText: "badges/listed.svg" }).first()).toBeVisible();
+    const svg = await page.request.get("/badges/listed.svg");
+    expect(svg.status()).toBe(200);
+    expect(await svg.text()).toContain("USASI: listed");
+  });
+
+  test("the newsletter page lists sent issues, and issues link back into the catalog", async ({ page }) => {
+    await page.goto("/newsletter/");
+    const issues = page.getByTestId("newsletter-issues");
+    await issues.getByRole("link").first().click();
+    await expect(page).toHaveURL(/\/newsletter\/issue-\d+\/$/);
+    await expect(page.getByText(/^The USASI weekly · Issue \d+$/)).toBeVisible();
+    const internal = page.locator("main article a[href^='/news/'], main article a[href^='/open/']");
+    expect(await internal.count()).toBeGreaterThan(5);
+  });
+});

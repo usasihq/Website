@@ -5,40 +5,9 @@ import { absoluteUrl } from "@/lib/paths";
 import { organizationsByState } from "@/lib/place-index";
 import { stateSlug } from "@/lib/places";
 import { artifactHref, orgHref } from "@/lib/routes";
+import { STATIC_ROUTES } from "@/lib/site-routes";
 
 export const dynamic = "force-static";
-
-const STATIC_ROUTES = [
-  "/",
-  "/companies/",
-  "/open/",
-  "/jobs/",
-  "/matrix/",
-  "/methodology/",
-  "/compact/",
-  "/about/",
-  "/disclaimer/",
-  "/changelog/",
-  "/contribute/",
-  "/support/",
-  "/privacy/",
-  "/local/",
-  "/news/",
-  "/newsletter/",
-  "/start/",
-  "/glossary/",
-  "/reuse/",
-  "/learn/",
-  "/hubs/",
-  "/places/",
-  "/timeline/",
-  "/sources/",
-  "/licenses/",
-  "/policy/",
-  "/learn/tools/model-size/",
-  "/faq/",
-  "/find/",
-];
 
 /**
  * Only active (published + eligible) records. Drafts never exist as pages;
@@ -56,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...LEARNING_PATHS.map((p) => ({ url: absoluteUrl(`/learn/paths/${p.id}/`) })),
     ...catalog.hubs.map((h) => ({ url: absoluteUrl(`/hubs/${h.slug}/`), lastModified: h.updated_at })),
     ...catalog.licenses.map((l) => ({ url: absoluteUrl(`/licenses/${l.slug}/`), lastModified: l.updated_at })),
+    ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
   ];
 }

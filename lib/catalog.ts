@@ -19,6 +19,7 @@ import {
   type FinderConfig,
   type Hub,
   type LicenseGuide,
+  type NewsletterIssue,
   type PolicyDocument,
   type Quiz,
   type NewsItem,
@@ -72,6 +73,7 @@ export class Catalog {
   readonly policy: PolicyDocument[];
   readonly quizzes: Quiz[];
   readonly finder: FinderConfig[];
+  readonly newsletter: NewsletterIssue[];
   readonly buildAt: string;
 
   private orgMap: Map<string, Organization>;
@@ -79,7 +81,7 @@ export class Catalog {
 
   constructor(
     content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> &
-      Partial<Pick<ValidatedContent, "people" | "news" | "hubs" | "licenses" | "policy" | "quizzes" | "finder">>,
+      Partial<Pick<ValidatedContent, "people" | "news" | "hubs" | "licenses" | "policy" | "quizzes" | "finder" | "newsletter">>,
     buildAt = new Date().toISOString(),
   ) {
     this.organizations = content.organizations.filter(isActive).sort(byName);
@@ -97,6 +99,7 @@ export class Catalog {
     this.policy = (content.policy ?? []).filter((d) => d.publication_status === "published");
     this.quizzes = content.quizzes ?? [];
     this.finder = (content.finder ?? []).filter((c) => c.publication_status === "published");
+    this.newsletter = (content.newsletter ?? []).filter((n) => n.publication_status === "published").sort((a, b) => b.number - a.number);
     this.buildAt = buildAt;
     this.orgMap = new Map([...this.organizations, ...this.archivedOrganizations].map((o) => [o.slug, o]));
     this.artifactMap = new Map([...this.artifacts, ...this.archivedArtifacts].map((a) => [a.slug, a]));
@@ -110,6 +113,10 @@ export class Catalog {
 
   artifact(slug: string): Artifact | undefined {
     return this.artifactMap.get(slug);
+  }
+
+  newsletterIssue(slug: string): NewsletterIssue | undefined {
+    return this.newsletter.find((n) => n.slug === slug);
   }
 
   isActiveOrganization(slug: string | null | undefined): boolean {

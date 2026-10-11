@@ -1,0 +1,53 @@
+# The USASI weekly, issue 1, as emailed. Links are site paths; the email used absolute URLs.
+number: 1
+slug: issue-1
+subject: "Issue 1: open decision models, EmbeddingGemma 2, and a learning center"
+preview: "What changed in the USASI catalog from October 4 to 11, 2026. Every item links to its sources."
+sent_at: 2026-10-11
+covers:
+  from: 2026-10-04
+  to: 2026-10-11
+intro:
+  - "Welcome to the first issue of the USASI weekly."
+  - "[USASI](/) is an independent catalog of U.S. AI organizations and U.S.-led open models and tools. Once a week, this email sums up what changed on the site. Nothing in it is new: every item was already published on the site, and each link leads to a page that cites its sources. This issue covers October 4 to 11, 2026."
+sections:
+  - heading: Open models
+    items:
+      - "**Decision models.** Three items this week cover models that return an answer or a score instead of generating text: [AWS's Strands Decider 2B](/news/aws-releases-strands-decider-2b/) under Apache 2.0, [Liquid AI's open-weight d1 models](/news/liquid-ai-releases-open-d1-decision-models/) for text, images, and speech, and [support for decision models in the llama.cpp server](/news/llama-cpp-server-adds-decision-model-support/)."
+      - "**EmbeddingGemma 2.** [Google released](/news/google-releases-embeddinggemma-2/) a 740-million-parameter embedding model for text, code, images, video, and audio under Apache 2.0. It now has [its own record](/open/embeddinggemma-2/), and [Transformers 5.19.0](/news/transformers-5-19-0-adds-embeddinggemma2/) added support for it."
+      - "**AstaBrief 8B.** [Ai2 open-sourced](/news/ai2-open-sources-astabrief-8b/) a model that turns a research question and retrieved literature excerpts into a cited report, along with its training data. The model card lists Apache 2.0."
+  - heading: Tool releases
+    items:
+      - "[vLLM 0.31.0](/news/vllm-0-31-0-released/): a preload command that keeps weights in GPU memory across engine restarts."
+      - "[Diffusers 0.41.0](/news/diffusers-0-41-0-released/): a Qwen-Image 2.1 pipeline; ONNX support is deprecated in favor of Optimum."
+      - "[MLflow 3.17.0](/news/mlflow-3-17-0-released/): fine-grained permissions for shared resources. SQL-backed servers need a coordinated database upgrade."
+      - "[TRL 1.15.0](/news/trl-1-15-0-released/): a fused LM head, on by default in six trainers."
+      - "[ONNX Runtime 1.31.0](/news/onnx-runtime-1-31-0-released/): stable model-package and EPContext data APIs. Supported native builds now default to telemetry, which can be turned off."
+      - "Codex CLI [0.161.0](/news/codex-cli-0-161-0-released/) makes GPT-6.1 Sol the default model, and [0.162.0](/news/codex-cli-0-162-0-released/) adds managed Git worktree tools."
+    note: "USASI has not tested any of these releases."
+  - heading: Hosted models and policy
+    items:
+      - "[Claude Haiku 5.5](/news/anthropic-releases-claude-haiku-5-5/): Anthropic announced a hosted model for high-volume tasks such as summaries and classification. The announcement does not describe a release of model weights."
+      - "[Anthropic's Usage Policy update](/news/anthropic-updates-usage-policy-2026/) takes effect November 12, 2026. It changes the company's own rules for use of its models; it is not a government rule."
+      - "[Anthropic's Genesis Mission commitments](/news/anthropic-announces-genesis-mission-commitments/): Claude, Claude Code, and API credits over three years for research projects in the federal Genesis Mission, as described in Anthropic's own announcement."
+      - "[xAI's developer documentation now uses the name SpaceXSI](/news/xai-developer-docs-adopt-spacexsi-name/), and the [catalog record](/companies/xai/) now reads xAI (SpaceXSI). No change to the company's legal name has been documented."
+  - heading: New in the catalog
+    intro: "Eleven records were added:"
+    items:
+      - "From Google DeepMind: [EmbeddingGemma 2](/open/embeddinggemma-2/); [SynthID Text](/open/synthid-text/), a reference implementation of its text watermarking method; and [SynthID Bio](/open/synthid-bio/), watermarking methods for AI-generated protein sequences and structures."
+      - "From Meta: [Llama Guard 4](/open/llama-guard-4-12b/), a safety classifier; [Llama 3.1 8B](/open/llama-3-1-8b/); and [SWE-sweep](/open/swe-sweep/), a benchmark in which coding agents find and fix unreported bugs."
+      - "From OpenAI: [tiktoken](/open/tiktoken/) and the [MCP Extensions SDKs](/open/openai-mcp-extensions/)."
+      - "Also: [OLMo-core](/open/olmo-core/) from Ai2, [ROCm](/open/rocm/) from AMD, and [Sentence Transformers](/open/sentence-transformers/), now maintained by Hugging Face."
+  - heading: New on the site
+    items:
+      - "**[Learn](/learn/)** is now a learning center: 22 explainers in six topics, five learning paths starting with [New to AI](/learn/paths/new-to-ai/), and a [glossary](/glossary/) of 69 terms."
+      - "**[Find AI for my needs](/find/)** matches a task and a computer against 17 documented setups and explains each match. USASI has not tested them."
+      - "**Reference:** a [license guide](/licenses/) covering 20 licenses, a [U.S. AI policy tracker](/policy/) with 30 federal documents, an [FAQ](/faq/), and a [model size calculator](/learn/tools/model-size/)."
+      - "**[Jobs](/jobs/)** now has tracks for roles beyond engineering, data-center and infrastructure careers, customer and operations roles, and internships."
+      - "**[Hubs](/hubs/):** three new hubs on [safety and security](/hubs/safety-and-security/), [developer tools](/hubs/developer-tools/), and [speech, vision, and multimodal AI](/hubs/speech-vision-and-multimodal/). Nous Research and Hermes Agent were added to the [Agents hub](/hubs/agents/)."
+  - heading: Corrections
+    intro: "None this week. If you spot an error, reply to this email or use the [corrections page](/contribute/#corrections)."
+closing:
+  - "New here? [Start here](/start/) explains how the catalog works. This issue has no sponsor."
+web_url: https://usasihq.beehiiv.com/p/issue-1-open-decision-models-embeddinggemma-2-and-a-learning-center
+publication_status: published
