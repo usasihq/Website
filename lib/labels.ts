@@ -132,7 +132,12 @@ export type EntryType =
   | "place"
   | "license"
   | "policy"
-  | "faq";
+  | "faq"
+  | "news"
+  | "newsletter"
+  | "learning-path"
+  | "kids-lesson"
+  | "page";
 
 export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   organization: "Organization",
@@ -149,6 +154,11 @@ export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   license: "License guide",
   policy: "Policy",
   faq: "FAQ",
+  news: "News",
+  newsletter: "Weekly email",
+  "learning-path": "Learning path",
+  "kids-lesson": "For kids",
+  page: "Page",
 };
 
 /** Entry types that belong to the Open Models & Tools directory. */

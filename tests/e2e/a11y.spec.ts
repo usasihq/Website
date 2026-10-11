@@ -56,6 +56,8 @@ const PAGES = [
   "/kids/what-is-super-intelligence/",
   "/kids/words/",
   "/kids/grown-ups/",
+  "/kids/packet/",
+  "/search/?q=open%20model",
   "/jobs/?track=early-career",
   "/no-such-page/",
 ];
@@ -84,4 +86,14 @@ test("expanded comparison and directory controls stay accessible", async ({ page
   await page.getByText("Filters and sort", { exact: false }).click();
   results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
   expect(results.violations.map((v) => v.id)).toEqual([]);
+});
+
+test("the site search dialog stays accessible with results showing", async ({ page }) => {
+  await page.goto("/");
+  await page.getByTestId("site-search-open").click();
+  await page.getByRole("combobox").fill("speech");
+  await expect(page.getByRole("listbox").getByRole("option").first()).toBeVisible();
+  const results = await new AxeBuilder({ page }).include("dialog").withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"]).analyze();
+  const summary = results.violations.map((v) => `${v.id} (${v.impact}): ${v.nodes.length} node(s) — ${v.nodes[0]?.target.join(" ")}`);
+  expect(summary, summary.join("\n")).toEqual([]);
 });

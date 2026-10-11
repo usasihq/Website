@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { BrandMark } from "./BrandMark";
+import { SiteSearch } from "./SiteSearch";
 
 /** Reference links: in the slim top bar from 640px, and in the mobile menu. */
 const REFERENCE = [
@@ -40,7 +41,7 @@ function isCurrent(pathname: string, href: string) {
   return normalized === href || normalized.startsWith(href);
 }
 
-export function SiteHeader({ siteName, shortName, disclaimer }: { siteName: string; shortName: string; disclaimer: string }) {
+export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: { siteName: string; shortName: string; disclaimer: string; searchIndexUrl: string }) {
   const pathname = usePathname() ?? "/";
   // The menu is open only for the path it was opened on, so it closes itself
   // after any navigation without an effect.
@@ -113,17 +114,20 @@ export function SiteHeader({ siteName, shortName, disclaimer }: { siteName: stri
           </ul>
         </nav>
 
-        <button
-          ref={toggleRef}
-          type="button"
-          className="inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-line px-3 text-sm text-text xl:hidden"
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X aria-hidden="true" className="h-5 w-5" /> : <Menu aria-hidden="true" className="h-5 w-5" />}
-          <span>{open ? "Close" : "Menu"}</span>
-        </button>
+        <div className="flex shrink-0 items-center gap-2">
+          <SiteSearch indexUrl={searchIndexUrl} />
+          <button
+            ref={toggleRef}
+            type="button"
+            className="inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-line px-3 text-sm text-text xl:hidden"
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X aria-hidden="true" className="h-5 w-5" /> : <Menu aria-hidden="true" className="h-5 w-5" />}
+            <span>{open ? "Close" : "Menu"}</span>
+          </button>
+        </div>
       </div>
 
       <div id={panelId} hidden={!open} className="border-t border-line bg-bg xl:hidden">

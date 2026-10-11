@@ -49,6 +49,9 @@ export default function KidsPage() {
             <Link prefetch={false} href="/kids/grown-ups/" className="link text-[1.0625rem]">
               A note for parents and teachers
             </Link>
+            <Link prefetch={false} href="/kids/packet/" className="link text-[1.0625rem]">
+              Printable classroom packet
+            </Link>
           </div>
         </div>
       </header>

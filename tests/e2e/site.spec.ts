@@ -184,7 +184,7 @@ test.describe("static hosting behavior", () => {
     for (const r of [...orgs, ...artifacts].filter((r) => !isActive(r))) expect(exported.has(r.slug), r.slug).toBe(false);
   });
 
-  test("every sitemap page carries Support Us and the footer disclaimer", async ({ request }) => {
+  test("every sitemap page carries Support Us (except the kids section) and the footer disclaimer", async ({ request }) => {
     // One request per sitemap page (500+), so allow more than the default 30 s.
     test.setTimeout(180_000);
     const sitemap = await (await request.get("/sitemap.xml")).text();
@@ -192,7 +192,9 @@ test.describe("static hosting behavior", () => {
     expect(paths.length).toBeGreaterThan(10);
     for (const path of paths) {
       const html = await (await request.get(path)).text();
-      expect(html, path).toContain("data-support-panel=");
+      // Pages for children never ask for tips.
+      if (path.startsWith("/kids/")) expect(html, path).not.toContain("data-support-panel=");
+      else expect(html, path).toContain("data-support-panel=");
       expect(html, path).toContain(DISCLAIMER);
     }
   });
@@ -583,7 +585,7 @@ test("reference sections: learn, hubs, places, and record context", async ({ pag
   }
 
   await page.goto("/places/");
-  await page.getByRole("link", { name: /^California/ }).click();
+  await page.getByRole("link", { name: /^California \d+ organizations$/ }).click();
   await expect(page).toHaveURL(/\/places\/california\/$/);
   await expect(page.getByText(/not offices, facilities, or computing capacity/)).toBeVisible();
 
@@ -686,7 +688,7 @@ test.describe("kids section", () => {
   });
 
   test("kids pages carry no sign-up, share, or tip prompts and store nothing", async ({ page }) => {
-    for (const path of ["/kids/", "/kids/what-is-super-intelligence/", "/kids/words/", "/kids/grown-ups/"]) {
+    for (const path of ["/kids/", "/kids/what-is-super-intelligence/", "/kids/words/", "/kids/grown-ups/", "/kids/packet/"]) {
       await page.goto(path);
       const main = page.locator("main");
       await expect(main.getByText(/Cite this page/)).toHaveCount(0);
@@ -694,5 +696,82 @@ test.describe("kids section", () => {
       await expect(main.locator("a[href*='/support/']")).toHaveCount(0);
       expect(await page.evaluate(() => [document.cookie, localStorage.length, sessionStorage.length]), path).toEqual(["", 0, 0]);
     }
+  });
+});
+
+test.describe("site search, places map, and printing", () => {
+  test("search opens from any page with / or Ctrl+K and moves with the keyboard", async ({ page }) => {
+    await page.goto("/learn/");
+    const dialog = page.getByTestId("site-search");
+    // The shortcut works once the page has hydrated.
+    await expect(async () => {
+      await page.keyboard.press("/");
+      await expect(dialog).toBeVisible({ timeout: 500 });
+    }).toPass();
+    const box = page.getByRole("combobox");
+    await expect(box).toBeFocused();
+    await expect(dialog.getByRole("option", { name: /Start here/ })).toBeVisible();
+    await box.fill("olmo");
+    const first = dialog.getByRole("option").first();
+    await expect(first).toContainText(/Olmo/i);
+    await expect(first).toHaveAttribute("aria-selected", "true");
+    const href = await first.getAttribute("href");
+    await box.press("Enter");
+    await expect(page).toHaveURL(new RegExp(`${href!.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`));
+    await expect(dialog).toBeHidden();
+
+    await page.keyboard.press("Control+k");
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+  });
+
+  test("search reaches kids lessons, news, and site pages, and hands off to the full results page", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTestId("site-search-open").click();
+    const box = page.getByRole("combobox");
+    await box.fill("super intelligence");
+    await expect(page.getByRole("option", { name: /What does "super intelligence" mean\?.*For kids/ })).toBeVisible();
+    await box.fill("privacy");
+    await page.getByRole("option", { name: /See all results for/ }).click();
+    await expect(page).toHaveURL(/\/search\/\?q=privacy$/);
+    await expect(page.getByTestId("search-results").getByRole("link").first()).toBeVisible();
+    await page.getByRole("button", { name: /^Learn/ }).click();
+    await expect(page).toHaveURL(/\/search\/\?q=privacy&in=learn$/);
+  });
+
+  test("the header search button never overlaps the logo or the navigation", async ({ page }) => {
+    for (const width of [1280, 1366, 1440, 1536, 1920]) {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto("/");
+      const logo = (await page.locator("header a[aria-label$=', home']").boundingBox())!;
+      const nav = (await page.getByRole("navigation", { name: "Primary", exact: true }).boundingBox())!;
+      const search = (await page.getByTestId("site-search-open").boundingBox())!;
+      expect(logo.x + logo.width, `${width}px logo/nav`).toBeLessThanOrEqual(nav.x);
+      expect(nav.x + nav.width, `${width}px nav/search`).toBeLessThanOrEqual(search.x);
+    }
+  });
+
+  test("a missing page suggests a search for the words in its address", async ({ page }) => {
+    await page.goto("/open/some-missing-model/");
+    await expect(page.getByRole("link", { name: "“some missing model”" })).toHaveAttribute("href", /\/search\/\?q=some%20missing%20model$/);
+  });
+
+  test("the places map links each state that has organizations", async ({ page }) => {
+    await page.goto("/places/");
+    const map = page.getByRole("navigation", { name: "Map of headquarters states" });
+    await map.getByRole("link", { name: /^California: \d+ organizations$/ }).click();
+    await expect(page).toHaveURL(/\/places\/california\/$/);
+  });
+
+  test("lessons and the classroom packet print as worksheets with an answer key", async ({ page }) => {
+    await page.goto("/kids/what-is-ai/");
+    await page.emulateMedia({ media: "print" });
+    await expect(page.locator("body > header")).toBeHidden();
+    await expect(page.getByRole("region", { name: "Answer key" })).toBeVisible();
+    await expect(page.getByRole("region", { name: /^Quiz: What is AI\?$/ })).toBeVisible();
+    await page.goto("/kids/packet/");
+    await expect(page.locator("main article > div > section[id]")).toHaveCount(7);
+    await expect(page.getByRole("region", { name: "Answer key" }).locator("li")).toHaveCount(21);
   });
 });

@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CircleCheck, Lightbulb, ListChecks, NotebookPen } from "lucide-react";
+import { ArrowLeft, ArrowRight, Lightbulb } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InlineText } from "@/components/InlineText";
-import { KidIcon, kidTint } from "@/components/kids/KidParts";
+import { KidAnswerKey, KidIcon, KidLessonBody, KidQuizSheet, kidTint } from "@/components/kids/KidParts";
 import { QuizCard } from "@/components/learn/QuizCard";
 import { Breadcrumbs } from "@/components/PageHeader";
+import { PrintButton } from "@/components/PrintButton";
 import { getCatalog } from "@/lib/catalog";
 import { KID_LESSONS, KIDS_AGES, KIDS_REVIEWED, kidLesson, kidNeighbors } from "@/lib/kids";
 import { pageMetadata } from "@/lib/metadata";
@@ -57,7 +58,12 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
               <p className="font-mono text-sm text-muted">
                 Lesson {l.number} of {KID_LESSONS.length} · about {l.minutes} minutes
               </p>
+              <PrintButton label="Print this lesson" className="btn btn-secondary ml-auto text-sm" />
             </div>
+            <p className="mt-4 hidden gap-10 text-base print:flex" aria-hidden="true">
+              <span>Name: ______________________</span>
+              <span>Date: ____________</span>
+            </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-text sm:text-5xl">{l.title}</h1>
             <div className="mt-6 flex max-w-3xl gap-3 rounded-2xl border border-[rgba(251,191,36,0.4)] bg-[rgba(251,191,36,0.08)] p-5">
               <Lightbulb aria-hidden="true" className="mt-1 h-6 w-6 flex-none text-[#fcd34d]" />
@@ -70,58 +76,9 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
         </header>
 
         <div className="container-page grid gap-10 py-10">
-          <div className="max-w-2xl space-y-9 text-[1.1875rem] leading-relaxed text-[#d5def2]">
-            {l.sections.map((s, i) => (
-              <section key={s.heading} aria-labelledby={`part-${i}`}>
-                <h2 id={`part-${i}`} className="text-2xl font-semibold text-text">
-                  {s.heading}
-                </h2>
-                {s.paragraphs.map((p, pi) => (
-                  <p key={pi} className="mt-3">
-                    <InlineText text={p} />
-                  </p>
-                ))}
-                {s.bullets ? (
-                  <ul className="mt-3 list-disc space-y-2 pl-6 marker:text-cyan">
-                    {s.bullets.map((b, bi) => (
-                      <li key={bi}>
-                        <InlineText text={b} />
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </section>
-            ))}
-          </div>
+          <KidLessonBody lesson={l} />
 
-          <section aria-labelledby="try-heading" className="max-w-2xl rounded-2xl border border-[rgba(52,211,153,0.4)] bg-[rgba(52,211,153,0.07)] p-6">
-            <h2 id="try-heading" className="flex items-center gap-2 text-2xl font-semibold text-text">
-              <NotebookPen aria-hidden="true" className="h-6 w-6 text-[#6ee7b7]" />
-              Try this: {l.tryThis.title}
-            </h2>
-            <ol className="mt-4 list-decimal space-y-2 pl-6 text-[1.1875rem] leading-relaxed text-[#d5def2] marker:font-semibold marker:text-[#6ee7b7]">
-              {l.tryThis.steps.map((s, i) => (
-                <li key={i}>{s}</li>
-              ))}
-            </ol>
-          </section>
-
-          <section aria-labelledby="remember-heading" className="max-w-2xl rounded-2xl border border-line-strong bg-[rgba(76,201,255,0.06)] p-6">
-            <h2 id="remember-heading" className="flex items-center gap-2 text-2xl font-semibold text-text">
-              <ListChecks aria-hidden="true" className="h-6 w-6 text-cyan" />
-              Remember
-            </h2>
-            <ul className="mt-4 space-y-3 text-[1.1875rem] leading-relaxed text-[#d5def2]">
-              {l.remember.map((r, i) => (
-                <li key={i} className="flex gap-3">
-                  <CircleCheck aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-cyan" />
-                  <span>{r}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section aria-labelledby="quiz-heading" className="max-w-2xl">
+          <section aria-labelledby="quiz-heading" className="max-w-2xl print:hidden">
             <h2 id="quiz-heading" className="text-2xl font-semibold text-text">
               Quick quiz
             </h2>
@@ -131,7 +88,11 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
             </div>
           </section>
 
-          <nav aria-label="More lessons" className="grid max-w-2xl gap-4 sm:grid-cols-2">
+          <div className="hidden print:block">
+            <KidQuizSheet lesson={l} />
+          </div>
+
+          <nav aria-label="More lessons" className="grid max-w-2xl gap-4 sm:grid-cols-2 print:hidden">
             {prev ? (
               <Link prefetch={false} href={`/kids/${prev.slug}/`} className="card card-link flex flex-col rounded-2xl p-5">
                 <span className="flex items-center gap-1.5 text-sm uppercase tracking-[0.08em] text-muted">
@@ -186,6 +147,14 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
               </p>
             </div>
           </details>
+
+          <div className="hidden print:block">
+            <KidAnswerKey lessons={[l]} />
+          </div>
+          <p className="hidden text-sm print:block">
+            {absoluteUrl(`/kids/${l.slug}/`)} · Source: USASI catalog (unitedstatesofamericasuperintelligence.com), CC BY 4.0. Independent project, not a
+            U.S. government website.
+          </p>
         </div>
       </article>
     </>

@@ -1,16 +1,56 @@
 /**
  * Search entries for reference pages, so site search covers hubs, explainers,
- * glossary terms, People Behind Local AI, and headquarters states as well as
- * the two directories. Only published content is indexed.
+ * learning paths, kids lessons, glossary terms, news, weekly email issues,
+ * People Behind Local AI, headquarters states, and the site's own pages as
+ * well as the two directories. Only published content is indexed.
  */
 import type { Catalog } from "./catalog";
 import type { EntryType } from "./labels";
-import { EXPLAINERS } from "./learn";
+import { KID_LESSONS } from "./kids";
+import { EXPLAINERS, LEARNING_PATHS } from "./learn";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
 import type { SearchEntry } from "./search";
 
 export type GlossaryTerm = { id: string; term: string; definition: string };
+
+/** Fixed pages worth finding by name, with words people might type for them. */
+export const SITE_PAGES: { href: string; name: string; summary: string; keywords: string }[] = [
+  { href: "/start/", name: "Start here", summary: "Four ways into the catalog, and a checklist before you use a model or tool.", keywords: "new begin intro overview guide tour" },
+  { href: "/companies/", name: "Companies & Labs", summary: "Directory of U.S. AI organizations: labs, companies, universities, agencies, and nonprofits.", keywords: "organizations directory labs list" },
+  { href: "/open/", name: "Open Models & Tools", summary: "Directory of U.S.-led open models, software, datasets, and evaluation tools.", keywords: "models tools directory open weights list" },
+  { href: "/learn/", name: "Learn", summary: "Plain-language explainers, learning paths, and tools about how AI works.", keywords: "explainers guides education courses" },
+  { href: "/kids/", name: "AI and Super Intelligence for kids", summary: "Seven short lessons for readers about 8 to 12, with activities and quizzes.", keywords: "children kids students school lessons classroom teachers parents" },
+  { href: "/kids/words/", name: "Words to know (for kids)", summary: "Simple meanings of AI words for young readers.", keywords: "kids vocabulary words children" },
+  { href: "/kids/packet/", name: "Printable classroom packet (kids lessons)", summary: "All seven kids lessons on one printable page, with paper quizzes and an answer key.", keywords: "print printable worksheet classroom teachers packet kids pdf" },
+  { href: "/kids/grown-ups/", name: "For parents and teachers", summary: "How the kids lessons were made, their sources, and ideas for talking together.", keywords: "parents teachers classroom educators kids" },
+  { href: "/jobs/", name: "Jobs", summary: "Current openings from employers' own job feeds, with early-career and internship tracks.", keywords: "careers hiring openings internships work" },
+  { href: "/matrix/", name: "Compare", summary: "Compare open models and tools side by side on documented facts.", keywords: "matrix comparison side by side" },
+  { href: "/news/", name: "Latest news", summary: "Sourced news items about U.S. AI organizations, models, and policy.", keywords: "news updates announcements" },
+  { href: "/newsletter/", name: "The USASI weekly", summary: "A free weekly email summarizing what changed in the catalog.", keywords: "newsletter email subscribe weekly digest" },
+  { href: "/policy/", name: "Policy tracker", summary: "U.S. federal AI laws, executive orders, and standards, from official sources.", keywords: "policy law executive order regulation standards government" },
+  { href: "/glossary/", name: "Glossary", summary: "Definitions of AI terms used across the site.", keywords: "definitions terms dictionary vocabulary" },
+  { href: "/faq/", name: "FAQ", summary: "Answers to common questions about USASI and the catalog.", keywords: "questions answers help" },
+  { href: "/hubs/", name: "Hubs", summary: "Topic hubs that gather records, explainers, and sources on one subject.", keywords: "topics subjects collections" },
+  { href: "/places/", name: "Places", summary: "Organizations in the catalog by the U.S. state of their documented headquarters.", keywords: "states map locations geography headquarters" },
+  { href: "/timeline/", name: "Timeline", summary: "Dated events from the catalog's records, in order.", keywords: "history dates chronology events" },
+  { href: "/sources/", name: "Source library", summary: "Every source the catalog cites, with the records that cite it.", keywords: "sources citations references documents" },
+  { href: "/licenses/", name: "License guide", summary: "Plain-language guides to the licenses open models and tools use.", keywords: "licenses apache mit llama terms legal" },
+  { href: "/find/", name: "Model finder", summary: "Answer a few questions to find open models that fit your task and hardware.", keywords: "finder recommend choose pick gpu vram local" },
+  { href: "/learn/tools/model-size/", name: "Model size calculator", summary: "Estimate the memory a model needs at different precisions.", keywords: "calculator vram memory gpu quantization size" },
+  { href: "/local/", name: "People Behind Local AI", summary: "Profiles of people who build tools for running AI on your own computer.", keywords: "people local ai profiles maintainers" },
+  { href: "/methodology/", name: "Methodology", summary: "Eligibility, openness ratings, source standards, review levels, and how counts work.", keywords: "method rubric criteria openness tiers how" },
+  { href: "/compact/", name: "USASI Compact", summary: "What the project is, how it weighs American control and inspectability, and its draft editorial clauses.", keywords: "principles commitments compact editorial clauses" },
+  { href: "/about/", name: "About", summary: "What USASI is and is not, who maintains it, and how to get in touch.", keywords: "about who contact project ownership" },
+  { href: "/contribute/", name: "Contribute and corrections", summary: "Suggest a record or report an error.", keywords: "corrections errors suggest submit contribute report" },
+  { href: "/reuse/", name: "Data & reuse", summary: "Download the catalog and reuse it under CC BY 4.0.", keywords: "data download csv json api dataset license reuse" },
+  { href: "/feeds/", name: "RSS feeds", summary: "Subscribe to news, changes, and topics in a feed reader.", keywords: "rss atom feeds subscribe" },
+  { href: "/badges/", name: "Badges for maintainers", summary: "A badge maintainers can add to show their project is listed.", keywords: "badge maintainers readme listed" },
+  { href: "/changelog/", name: "Changelog", summary: "What changed in the catalog and on the site, by date.", keywords: "changes updates history log" },
+  { href: "/support/", name: "Support USASI", summary: "Optional tips, the sponsorship policy, and other ways to help.", keywords: "support tip donate help sponsorship" },
+  { href: "/privacy/", name: "Privacy", summary: "What the site does with information: no cookies, no accounts.", keywords: "privacy cookies tracking analytics data" },
+  { href: "/disclaimer/", name: "Disclaimer", summary: "USASI is an independent project, not a U.S. government website.", keywords: "disclaimer legal independent government" },
+];
 
 /** Glossary entries from content/pages/glossary.mdx: each `<h2 id>` heading and its first paragraph. */
 export function parseGlossary(mdx: string): GlossaryTerm[] {
@@ -45,6 +85,11 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
       e("policy", d.slug, `/policy/#${d.slug}`, d.short_title ?? d.title, d.summary.text, [d.identifier, d.title, d.issuer, "policy"].filter(Boolean).join(" ")),
     ),
     ...faq.map((q) => e("faq", q.id, `/faq/#${q.id}`, q.term, q.definition, "question answer faq")),
+    ...LEARNING_PATHS.map((p) => e("learning-path", p.id, `/learn/paths/${p.id}/`, p.title, p.description, `learning path ${p.audience}`)),
+    ...KID_LESSONS.map((l) => e("kids-lesson", l.slug, `/kids/${l.slug}/`, l.title, l.question, `kids children lesson ${l.number}`)),
+    ...catalog.news.map((n) => e("news", n.slug, `/news/${n.slug}/`, n.title, n.summary.text, `news ${n.category} ${n.event_date}`)),
+    ...catalog.newsletter.map((i) => e("newsletter", i.slug, `/newsletter/${i.slug}/`, `Issue ${i.number}: ${i.subject}`, i.preview, "weekly email newsletter issue")),
+    ...SITE_PAGES.map((pg) => e("page", pg.href.replace(/^\/|\/$/g, "").replace(/\//g, "-"), pg.href, pg.name, pg.summary, pg.keywords)),
     ...catalog.people.map((p) => e("person", p.slug, `/local/#${p.slug}`, p.name, p.headline, p.affiliations.map((a) => a.name).join(" "))),
     ...organizationsByState(catalog).states.map((s) =>
       e("place", stateSlug(s.code), `/places/${stateSlug(s.code)}/`, s.name, `Organizations headquartered in ${s.name}`, "state headquarters place"),

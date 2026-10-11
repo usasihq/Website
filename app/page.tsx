@@ -85,6 +85,11 @@ export default function HomePage() {
         alternateName: siteConfig.shortName,
         inLanguage: "en-US",
         publisher: { "@id": orgId },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: { "@type": "EntryPoint", urlTemplate: `${absoluteUrl("/search/")}?q={search_term_string}` },
+          "query-input": "required name=search_term_string",
+        },
       },
       {
         "@type": "Dataset",

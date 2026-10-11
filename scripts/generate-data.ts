@@ -16,7 +16,7 @@ import { loadCatalog } from "../lib/catalog";
 import { jobsDirectoryData } from "../lib/jobs/directory-data";
 import { sourceLibrary } from "../lib/source-library";
 import { parseFaq, parseGlossary, referenceSearchEntries } from "../lib/reference-search";
-import { siteConfig } from "../lib/site-config";
+import { BASE_PATH, SITE_URL, siteConfig } from "../lib/site-config";
 import { computeTier, RUBRIC_VERSION } from "../lib/openness";
 import { SCHEMA_VERSION } from "../lib/schema";
 
@@ -60,6 +60,20 @@ const jobs = jobsDirectoryData(catalog);
 fs.writeFileSync(path.join(outDir, "jobs.json"), JSON.stringify({ build_at: buildAt, jobs: jobs.items }) + "\n");
 // Every cited source, with the published records that cite it (loaded by /sources/).
 fs.writeFileSync(path.join(outDir, "sources.json"), JSON.stringify({ build_at: buildAt, entries: sourceLibrary(catalog) }) + "\n");
+// OpenSearch description, so browsers can add site search (linked from every page's <head>).
+const siteRoot = `${SITE_URL}${BASE_PATH}`;
+fs.writeFileSync(
+  path.join(process.cwd(), "public", "opensearch.xml"),
+  `<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>${siteConfig.shortName}</ShortName>
+  <Description>Search the ${siteConfig.shortName} catalog of U.S. AI organizations, open models and tools, explainers, and news.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="180" height="180" type="image/png">${siteRoot}/apple-icon.png</Image>
+  <Url type="text/html" method="get" template="${siteRoot}/search/?q={searchTerms}"/>
+</OpenSearchDescription>
+`,
+);
 fs.writeFileSync(path.join(outDir, "build-info.json"), JSON.stringify({ build_at: buildAt, schema_version: SCHEMA_VERSION }) + "\n");
 
 console.log(

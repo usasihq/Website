@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { NotFoundSearch } from "@/components/NotFoundSearch";
 import { SupportPanel } from "@/components/SupportPanel";
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function NotFound() {
           The address may be mistyped, or the entry may have been renamed. Draft and unverified entries are never published, so a link to one will
           land here.
         </p>
+        <NotFoundSearch />
         <ul className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
           <li>
             <Link href="/companies/" className="btn btn-primary w-full">

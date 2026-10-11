@@ -39,6 +39,7 @@ export const STATIC_ROUTES = [
   "/kids/",
   "/kids/words/",
   "/kids/grown-ups/",
+  "/kids/packet/",
 ];
 
 /** Sets of slugs that make up the slugged sections of the site. */

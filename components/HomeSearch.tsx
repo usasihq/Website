@@ -92,7 +92,7 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
                   <Link prefetch={false} href={r.href} className="flex items-start justify-between gap-4 px-4 py-3 hover:bg-[rgba(76,201,255,0.06)]">
                     <span className="min-w-0">
                       <span className="block font-medium text-text">{r.name}</span>
-                      <span className="line-clamp-1 block text-sm text-muted">{r.summary}</span>
+                      <span className="line-clamp-1 text-sm text-muted">{r.summary}</span>
                     </span>
                     <span className="badge shrink-0 font-mono text-[0.75rem] uppercase tracking-[0.06em] text-ice">{ENTRY_TYPE_LABELS[r.type]}</span>
                   </Link>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
+import { StateTileMap } from "@/components/StateTileMap";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
@@ -27,7 +28,13 @@ export default function PlacesPage() {
         }
       />
       <div className="container-page py-10">
-        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <StateTileMap states={states} />
+        <p className="mt-4 max-w-3xl text-sm text-muted">
+          Each state is one equal square, placed roughly where it sits on a map. Shading shows how many organizations in this catalog name the state in
+          their headquarters; it reflects what the catalog covers so far, not how much AI work happens in a state.
+        </p>
+        <h2 className="mt-10 text-xl font-semibold text-text">States with organizations in the catalog</h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {states.map((s) => (
             <li key={s.code}>
               <Link prefetch={false} href={`/places/${stateSlug(s.code)}/`} className="card flex items-center justify-between gap-3 p-4 hover:border-cyan">

@@ -39,3 +39,7 @@
 /data/*
   Cache-Control: public, max-age=300, stale-while-revalidate=3600
   Access-Control-Allow-Origin: *
+
+/opensearch.xml
+  Content-Type: application/opensearchdescription+xml; charset=utf-8
+  Cache-Control: public, max-age=86400

@@ -34,6 +34,9 @@ const PAGES: Array<[string, string]> = [
   ["kids", "/kids/"],
   ["kid-lesson", "/kids/what-is-super-intelligence/"],
   ["kid-words", "/kids/words/"],
+  ["kid-packet", "/kids/packet/"],
+  ["places", "/places/"],
+  ["search", "/search/?q=model"],
   ["calculator", "/learn/tools/model-size/"],
   ["not-found", "/this-page-does-not-exist/"],
 ];

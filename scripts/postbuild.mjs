@@ -132,7 +132,9 @@ for (const [sub, route, key] of [
     const active = record.publication_status === "published" && record.eligibility?.status === "eligible";
     const routeExists = fs.existsSync(path.join(out, route, record.slug, "index.html"));
     const inExport = catalogJson?.[key]?.some((r) => r.slug === record.slug);
-    const inSearch = searchJson?.entries?.some((e) => e.slug === record.slug && (key === "organizations" ? e.type === "organization" : e.type !== "organization"));
+    const inSearch = searchJson?.entries?.some(
+      (e) => e.slug === record.slug && (key === "organizations" ? e.type === "organization" : ["model-family", "model-release", "software", "dataset", "evaluation-tool"].includes(e.type)),
+    );
     const inSitemap = sitemap.includes(`/${route}/${record.slug}/<`);
     if (active) {
       if (!routeExists) failures.push(`published ${sub}/${record.slug} has no page`);

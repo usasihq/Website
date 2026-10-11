@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { absoluteUrl } from "@/lib/paths";
+import { absoluteUrl, asset } from "@/lib/paths";
 import { SITE_URL, BASE_PATH, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -65,7 +65,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <SiteHeader siteName={siteConfig.name} shortName={siteConfig.shortName} disclaimer={siteConfig.disclaimer} />
+        <link rel="search" type="application/opensearchdescription+xml" title={siteConfig.shortName} href={asset("/opensearch.xml")} />
+        <SiteHeader siteName={siteConfig.name} shortName={siteConfig.shortName} disclaimer={siteConfig.disclaimer} searchIndexUrl={asset("/data/search-index.json")} />
         <main id="main" tabIndex={-1} className="outline-none">
           {children}
         </main>
