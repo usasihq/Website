@@ -298,9 +298,14 @@ export default function HomePage() {
                 Short, sourced explainers arranged into paths. Each one answers a single question and leads to real records and the documents behind them.
               </p>
             </div>
-            <Link prefetch={false} href="/learn/" className="link inline-flex items-center gap-1">
-              All explainers and paths <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <Link prefetch={false} href="/kids/" className="link inline-flex items-center gap-1">
+                For kids <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+              <Link prefetch={false} href="/learn/" className="link inline-flex items-center gap-1">
+                All explainers and paths <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {LEARNING_PATHS.map((p) => (

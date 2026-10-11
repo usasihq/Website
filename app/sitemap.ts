@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getCatalog } from "@/lib/catalog";
+import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
 import { EXPLAINERS, LEARNING_PATHS } from "@/lib/learn";
 import { absoluteUrl } from "@/lib/paths";
 import { organizationsByState } from "@/lib/place-index";
@@ -23,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...catalog.news.map((n) => ({ url: absoluteUrl(`/news/${n.slug}/`), lastModified: n.updated_at })),
     ...EXPLAINERS.map((e) => ({ url: absoluteUrl(`/learn/${e.slug}/`), lastModified: e.reviewed })),
     ...LEARNING_PATHS.map((p) => ({ url: absoluteUrl(`/learn/paths/${p.id}/`) })),
+    ...KID_LESSONS.map((l) => ({ url: absoluteUrl(`/kids/${l.slug}/`), lastModified: KIDS_REVIEWED })),
     ...catalog.hubs.map((h) => ({ url: absoluteUrl(`/hubs/${h.slug}/`), lastModified: h.updated_at })),
     ...catalog.licenses.map((l) => ({ url: absoluteUrl(`/licenses/${l.slug}/`), lastModified: l.updated_at })),
     ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),

@@ -1,3 +1,5 @@
+import { KID_LESSONS } from "./kids";
+
 /**
  * Fixed site pages (no slug). Shared by the sitemap and by validation of
  * internal links in weekly email issues.
@@ -34,6 +36,9 @@ export const STATIC_ROUTES = [
   "/learn/tools/model-size/",
   "/faq/",
   "/find/",
+  "/kids/",
+  "/kids/words/",
+  "/kids/grown-ups/",
 ];
 
 /** Sets of slugs that make up the slugged sections of the site. */
@@ -59,5 +64,7 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
     return set.has(slug);
   }
   const p = path.match(/^\/learn\/paths\/([a-z0-9-]+)\/$/);
-  return Boolean(p && slugs.paths.has(p[1]));
+  if (p) return slugs.paths.has(p[1]);
+  const k = path.match(/^\/kids\/([a-z0-9-]+)\/$/);
+  return Boolean(k && KID_LESSONS.some((l) => l.slug === k[1]));
 }

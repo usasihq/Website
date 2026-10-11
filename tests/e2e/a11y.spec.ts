@@ -52,6 +52,10 @@ const PAGES = [
   "/newsletter/issue-1/",
   "/badges/",
   "/feeds/",
+  "/kids/",
+  "/kids/what-is-super-intelligence/",
+  "/kids/words/",
+  "/kids/grown-ups/",
   "/jobs/?track=early-career",
   "/no-such-page/",
 ];

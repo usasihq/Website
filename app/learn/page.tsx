@@ -1,11 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Calculator, CircleHelp, CalendarClock, Landmark, Library, MapPin, Route, Scale, ScrollText, Search } from "lucide-react";
+import { ArrowRight, BookOpen, Calculator, Rocket, CircleHelp, CalendarClock, Landmark, Library, MapPin, Route, Scale, ScrollText, Search } from "lucide-react";
 import { ExplainerCard, TopicIcon } from "@/components/learn/LearnParts";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
+import { KID_LESSONS, KIDS_AGES } from "@/lib/kids";
 import { EXPLAINERS, LEARNING_PATHS, availableSteps, explainer, explainersByTopic } from "@/lib/learn";
 import { explainerOutline } from "@/lib/learn-outline";
 import { pageMetadata } from "@/lib/metadata";
@@ -77,6 +78,27 @@ export default function LearnPage() {
       </PageHeader>
 
       <div className="container-page grid gap-16 py-12">
+        <Link
+          prefetch={false}
+          href="/kids/"
+          className="card card-link group flex flex-col gap-4 rounded-2xl border-[rgba(167,139,250,0.35)] bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.12),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(167,139,250,0.12),transparent_55%)] p-5 sm:flex-row sm:items-center sm:p-6"
+          data-testid="learn-kids-card"
+        >
+          <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-[rgba(76,201,255,0.15)] text-cyan">
+            <Rocket aria-hidden="true" className="h-6 w-6" />
+          </span>
+          <span className="flex-1">
+            <span className="block text-xs font-medium uppercase tracking-[0.08em] text-cyan">For kids</span>
+            <span className="mt-1 block text-lg font-semibold text-text group-hover:text-white">AI and Super Intelligence, explained for kids</span>
+            <span className="mt-1 block text-sm text-muted">
+              {KID_LESSONS.length} short lessons for readers {KIDS_AGES}, with activities and quick quizzes. Made to read together with a grown-up.
+            </span>
+          </span>
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-cyan">
+            Open the lessons <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </Link>
+
         <section aria-labelledby="paths-heading">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>

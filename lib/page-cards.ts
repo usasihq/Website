@@ -7,6 +7,7 @@
 import type { Catalog } from "./catalog";
 import { formatDate } from "./dates";
 import { ENTRY_TYPE_LABELS, NEWS_CATEGORY_LABELS, ROLE_LABELS } from "./labels";
+import { KID_LESSONS } from "./kids";
 import { EXPLAINERS, topic } from "./learn";
 import { AVAILABILITY_LABELS } from "./openness";
 import { artifactHref, orgHref } from "./routes";
@@ -28,6 +29,16 @@ export type PageCard = {
 };
 
 const clip = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s);
+/** Whole sentences from the start of `s` that fit in `n` characters (at least the first). */
+function leadSentences(s: string, n: number) {
+  let out = "";
+  for (const x of s.split(/(?<=[.!?])\s+/)) {
+    const next = out ? `${out} ${x}` : x;
+    if (out && next.length > n) break;
+    out = next;
+  }
+  return out;
+}
 const listOf = (items: string[], n = 2) => (items.length > n ? `${items.slice(0, n).join(", ")} +${items.length - n}` : items.join(", "));
 
 function card(c: Omit<PageCard, "alt">): PageCard {
@@ -98,6 +109,30 @@ export function pageCards(catalog: Catalog): PageCard[] {
         eyebrow: `Learn · ${topic(e.topic).title}`,
         title: e.title,
         subtitle: e.question,
+        facts: [],
+      }),
+    );
+  }
+  cards.push(
+    card({
+      page: "/kids/",
+      image: "/og/kids/index.jpg",
+      template: "article",
+      eyebrow: "USASI for Kids",
+      title: "AI and Super Intelligence, explained for kids",
+      subtitle: `${KID_LESSONS.length} short lessons for readers about 8 to 12, to read with a grown-up`,
+      facts: [],
+    }),
+  );
+  for (const l of KID_LESSONS) {
+    cards.push(
+      card({
+        page: `/kids/${l.slug}/`,
+        image: `/og/kids/${l.slug}.jpg`,
+        template: "article",
+        eyebrow: `USASI for Kids · Lesson ${l.number}`,
+        title: l.title,
+        subtitle: clip(leadSentences(l.bigIdea, 200), 200),
         facts: [],
       }),
     );

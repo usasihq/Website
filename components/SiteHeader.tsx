@@ -15,6 +15,7 @@ const REFERENCE = [
   { href: "/timeline/", label: "Timeline", bar: false },
   { href: "/sources/", label: "Source library", bar: false },
   { href: "/glossary/", label: "Glossary", bar: true },
+  { href: "/kids/", label: "For kids", bar: false },
   { href: "/licenses/", label: "License guide", bar: false },
   { href: "/policy/", label: "Policy tracker", bar: true },
   { href: "/reuse/", label: "Data & reuse", bar: false },

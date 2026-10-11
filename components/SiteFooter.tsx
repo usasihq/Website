@@ -25,6 +25,7 @@ const COLUMNS = [
     links: [
       { href: "/start/", label: "Start here" },
       { href: "/learn/", label: "Learn" },
+      { href: "/kids/", label: "For kids" },
       { href: "/hubs/", label: "Hubs" },
       { href: "/places/", label: "Places" },
       { href: "/timeline/", label: "Timeline" },

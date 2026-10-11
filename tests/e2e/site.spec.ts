@@ -668,3 +668,31 @@ test.describe("preview cards and feeds", () => {
     }
   });
 });
+
+test.describe("kids section", () => {
+  test("the Learn page leads to the kids lessons, which run in order with a working quiz", async ({ page }) => {
+    await page.goto("/learn/");
+    await page.getByTestId("learn-kids-card").click();
+    await expect(page).toHaveURL(/\/kids\/$/);
+    const cards = page.getByTestId("kid-lesson-card");
+    expect(await cards.count()).toBe(7);
+    await page.getByRole("link", { name: /Start with lesson 1/ }).click();
+    await expect(page).toHaveURL(/\/kids\/what-is-ai\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("What is AI?");
+    await page.getByRole("button", { name: "Artificial" }).click();
+    await expect(page.getByText(/^Correct\./).first()).toBeVisible();
+    await page.getByRole("navigation", { name: "More lessons" }).getByRole("link", { name: /Lesson 2/ }).click();
+    await expect(page).toHaveURL(/\/kids\/how-ai-learns\/$/);
+  });
+
+  test("kids pages carry no sign-up, share, or tip prompts and store nothing", async ({ page }) => {
+    for (const path of ["/kids/", "/kids/what-is-super-intelligence/", "/kids/words/", "/kids/grown-ups/"]) {
+      await page.goto(path);
+      const main = page.locator("main");
+      await expect(main.getByText(/Cite this page/)).toHaveCount(0);
+      await expect(main.locator("form")).toHaveCount(0);
+      await expect(main.locator("a[href*='/support/']")).toHaveCount(0);
+      expect(await page.evaluate(() => [document.cookie, localStorage.length, sessionStorage.length]), path).toEqual(["", 0, 0]);
+    }
+  });
+});
