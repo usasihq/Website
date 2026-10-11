@@ -7,7 +7,9 @@
  * as summary CSVs (for the dataset viewer) and full JSON Lines with every
  * source and date. Excluded: People Behind Local AI profiles and job postings.
  *
- * Usage: npx tsx scripts/hf-dataset.ts
+ * Usage: npx tsx scripts/hf-dataset.ts [--summary-only]
+ *   --summary-only  skip full/*.jsonl (for uploads through the website, where
+ *                   the card points to the site's catalog.json instead)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -17,6 +19,7 @@ import { absoluteUrl } from "../lib/paths";
 
 const SITE_URL = absoluteUrl("/").replace(/\/$/, "");
 
+const summaryOnly = process.argv.includes("--summary-only");
 const out = path.join("reports", "automation", "hf-dataset");
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(path.join(out, "full"), { recursive: true });
@@ -54,9 +57,13 @@ fs.writeFileSync(path.join(out, "organizations.csv"), exportCsv(orgs));
 fs.writeFileSync(path.join(out, "artifacts.csv"), exportCsv(arts));
 fs.writeFileSync(path.join(out, "news.csv"), exportCsv({ ...news, source: "", snapshot, caveat: "" }));
 const jsonl = (rows: unknown[]) => rows.map((r) => JSON.stringify(r)).join("\n") + "\n";
-fs.writeFileSync(path.join(out, "full", "organizations.jsonl"), jsonl(exported.organizations));
-fs.writeFileSync(path.join(out, "full", "artifacts.jsonl"), jsonl(exported.artifacts));
-fs.writeFileSync(path.join(out, "full", "news.jsonl"), jsonl(exported.news));
+if (!summaryOnly) {
+  fs.writeFileSync(path.join(out, "full", "organizations.jsonl"), jsonl(exported.organizations));
+  fs.writeFileSync(path.join(out, "full", "artifacts.jsonl"), jsonl(exported.artifacts));
+  fs.writeFileSync(path.join(out, "full", "news.jsonl"), jsonl(exported.news));
+} else {
+  fs.rmSync(path.join(out, "full"), { recursive: true, force: true });
+}
 
 const fieldTable = (fields: { key: string; description: string }[]) => fields.map((f) => `| \`${f.key}\` | ${f.description} |`).join("\n");
 const readme = `---
@@ -95,7 +102,7 @@ Snapshot: \`${snapshot}\` (catalog schema ${exported.schema_version}, openness r
 | \`artifacts.csv\` | ${arts.rows.length} | Open models, model families, software, datasets, and evaluation tools: type, organizations, availability, licenses, release date, last review |
 | \`organizations.csv\` | ${orgs.rows.length} | Companies, labs, and institutions: legal name, headquarters, roles, sectors, ownership category, number of linked open records, last review |
 | \`news.csv\` | ${news.rows.length} | Dated news items about catalog records, each with its primary source links |
-| \`full/*.jsonl\` | | The same published records with every claim, source, and date, as on the site |
+${summaryOnly ? `| [catalog.json](${SITE_URL}/data/catalog.json) (on the site) | | The full published records with every claim, source, and date |` : "| \`full/*.jsonl\` | | The same published records with every claim, source, and date, as on the site |"}
 
 Every row links to its page on the site, where each statement cites a primary source (model cards, license files, release notes, official pages, filings) with the date it was read.
 
@@ -126,6 +133,6 @@ Original catalog text is licensed under CC BY 4.0. Suggested attribution: "Sourc
 Corrections: [${SITE_URL}/contribute/#corrections](${SITE_URL}/contribute/#corrections).
 `;
 fs.writeFileSync(path.join(out, "README.md"), readme);
-for (const f of ["README.md", "artifacts.csv", "organizations.csv", "news.csv", "full/organizations.jsonl", "full/artifacts.jsonl", "full/news.jsonl"]) {
+for (const f of ["README.md", "artifacts.csv", "organizations.csv", "news.csv", ...(summaryOnly ? [] : ["full/organizations.jsonl", "full/artifacts.jsonl", "full/news.jsonl"])]) {
   console.log(`${f.padEnd(26)} ${(fs.statSync(path.join(out, f)).size / 1024).toFixed(0).padStart(6)} KiB`);
 }
