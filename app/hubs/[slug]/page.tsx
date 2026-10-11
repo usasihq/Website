@@ -119,7 +119,7 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
                 <li key={`p-${p.slug}`}>
                   <Link prefetch={false} href={`/local/#${p.slug}`} className="card flex h-full items-start gap-3 p-4 hover:border-cyan">
                     <InitialsTile initials={p.initials} />
-                    <span className="min-w-0"><span className="block font-medium text-text">{p.name}</span><span className="block text-sm text-muted">People Behind Local AI</span></span>
+                    <span className="min-w-0"><span className="block font-medium text-text">{p.name}</span><span className="block text-sm text-muted">People Behind Local SI</span></span>
                   </Link>
                 </li>
               ))}

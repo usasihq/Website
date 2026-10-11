@@ -25,6 +25,7 @@ import {
   type NewsItem,
   type Organization,
   type Person,
+  type Leader,
 } from "./schema";
 import type { ArtifactListItem, OrgListItem, SearchEntry } from "./search";
 import { artifactHref, orgHref } from "./routes";
@@ -67,6 +68,7 @@ export class Catalog {
   readonly changelog: ChangelogEntry[];
   readonly featured: FeaturedSelection | null;
   readonly people: Person[];
+  readonly leaders: Leader[];
   readonly news: NewsItem[];
   readonly hubs: Hub[];
   readonly licenses: LicenseGuide[];
@@ -81,7 +83,7 @@ export class Catalog {
 
   constructor(
     content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> &
-      Partial<Pick<ValidatedContent, "people" | "news" | "hubs" | "licenses" | "policy" | "quizzes" | "finder" | "newsletter">>,
+      Partial<Pick<ValidatedContent, "people" | "leaders" | "news" | "hubs" | "licenses" | "policy" | "quizzes" | "finder" | "newsletter">>,
     buildAt = new Date().toISOString(),
   ) {
     this.organizations = content.organizations.filter(isActive).sort(byName);
@@ -91,6 +93,7 @@ export class Catalog {
     this.changelog = content.changelog;
     this.featured = content.featured;
     this.people = (content.people ?? []).filter((p) => p.publication_status === "published").sort(byName);
+    this.leaders = (content.leaders ?? []).filter((p) => p.publication_status === "published").sort(byName);
     this.news = (content.news ?? [])
       .filter((n) => n.publication_status === "published")
       .sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date) || a.title.localeCompare(b.title));
@@ -113,6 +116,15 @@ export class Catalog {
 
   artifact(slug: string): Artifact | undefined {
     return this.artifactMap.get(slug);
+  }
+
+  leader(slug: string): Leader | undefined {
+    return this.leaders.find((l) => l.slug === slug);
+  }
+
+  /** Published leader profiles whose current or past roles name this organization. */
+  leadersForOrganization(slug: string): Leader[] {
+    return this.leaders.filter((l) => [...l.current_roles, ...l.past_roles].some((r) => r.organization_slug === slug));
   }
 
   newsletterIssue(slug: string): NewsletterIssue | undefined {

@@ -1,7 +1,7 @@
 /**
  * Search entries for reference pages, so site search covers hubs, explainers,
  * learning paths, kids lessons, glossary terms, news, weekly email issues,
- * People Behind Local AI, headquarters states, and the site's own pages as
+ * People Behind Local SI, headquarters states, and the site's own pages as
  * well as the two directories. Only published content is indexed.
  */
 import type { Catalog } from "./catalog";
@@ -38,7 +38,8 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/licenses/", name: "License guide", summary: "Plain-language guides to the licenses open models and tools use.", keywords: "licenses apache mit llama terms legal" },
   { href: "/find/", name: "Model finder", summary: "Answer a few questions to find open models that fit your task and hardware.", keywords: "finder recommend choose pick gpu vram local" },
   { href: "/learn/tools/model-size/", name: "Model size calculator", summary: "Estimate the memory a model needs at different precisions.", keywords: "calculator vram memory gpu quantization size" },
-  { href: "/local/", name: "People Behind Local AI", summary: "Profiles of people who build tools for running AI on your own computer.", keywords: "people local ai profiles maintainers" },
+  { href: "/big-si/", name: "People Behind Big SI", summary: "Career profiles of the founders, chief executives, and builders behind the companies shaping AI.", keywords: "leaders ceo founders executives people biography big tech" },
+  { href: "/local/", name: "People Behind Local SI", summary: "Profiles of people who build tools for running AI on your own computer.", keywords: "people local ai profiles maintainers" },
   { href: "/methodology/", name: "Methodology", summary: "Eligibility, openness ratings, source standards, review levels, and how counts work.", keywords: "method rubric criteria openness tiers how" },
   { href: "/compact/", name: "USASI Compact", summary: "What the project is, how it weighs American control and inspectability, and its draft editorial clauses.", keywords: "principles commitments compact editorial clauses" },
   { href: "/about/", name: "About", summary: "What USASI is and is not, who maintains it, and how to get in touch.", keywords: "about who contact project ownership" },
@@ -90,6 +91,9 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ...catalog.news.map((n) => e("news", n.slug, `/news/${n.slug}/`, n.title, n.summary.text, `news ${n.category} ${n.event_date}`)),
     ...catalog.newsletter.map((i) => e("newsletter", i.slug, `/newsletter/${i.slug}/`, `Issue ${i.number}: ${i.subject}`, i.preview, "weekly email newsletter issue")),
     ...SITE_PAGES.map((pg) => e("page", pg.href.replace(/^\/|\/$/g, "").replace(/\//g, "-"), pg.href, pg.name, pg.summary, pg.keywords)),
+    ...catalog.leaders.map((l) =>
+      e("leader", l.slug, `/big-si/${l.slug}/`, l.name, l.headline, [...l.current_roles, ...l.past_roles].map((r) => `${r.role} ${r.organization}`).join(" ")),
+    ),
     ...catalog.people.map((p) => e("person", p.slug, `/local/#${p.slug}`, p.name, p.headline, p.affiliations.map((a) => a.name).join(" "))),
     ...organizationsByState(catalog).states.map((s) =>
       e("place", stateSlug(s.code), `/places/${stateSlug(s.code)}/`, s.name, `Organizations headquartered in ${s.name}`, "state headquarters place"),

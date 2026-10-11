@@ -5,6 +5,7 @@ import { OrganizationJobs } from "@/components/OrganizationJobs";
 import { readJobs } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
 import { Monogram, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
+import { DeepDive } from "@/components/DeepDive";
 import { ArchivedNotice, ClaimText, EligibilityBlock, FactList, ReviewDates } from "@/components/DetailParts";
 import { EntryActions } from "@/components/EntryActions";
 import { ExternalLink } from "@/components/ExternalLink";
@@ -98,6 +99,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
   const parent = catalog.parentOrganization(org);
   const children = catalog.childOrganizations(org.slug);
   const related = catalog.artifactsForOrganization(org.slug);
+  const leaders = catalog.leadersForOrganization(org.slug);
   const hosted = org.products.filter((p) => HOSTED_MODEL_PRODUCT_KINDS.includes(p.kind));
   const other = org.products.filter((p) => !HOSTED_MODEL_PRODUCT_KINDS.includes(p.kind));
 
@@ -150,6 +152,23 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                 <SourceRefs ids={org.status_note.source_ids} sources={s} />
               </p>
             </div>
+          ) : null}
+
+          {org.deep_dive ? <DeepDive name={org.name} deep={org.deep_dive} sources={s} leaders={leaders} /> : null}
+
+          {leaders.length && !org.deep_dive ? (
+            <Section id="leaders" title="People Behind Big SI" description={`Career profiles of people who lead or led ${org.name}.`}>
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {leaders.map((l) => (
+                  <li key={l.slug}>
+                    <Link prefetch={false} href={`/big-si/${l.slug}/`} className="card card-link block p-4">
+                      <span className="block font-semibold text-text">{l.name}</span>
+                      <span className="mt-1 block text-sm text-muted">{l.headline}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Section>
           ) : null}
 
           <Section id="overview" title="Using this organization’s offerings" description="Ownership, delivery, and openness answer different questions. Publicly traded does not mean open source; privately held does not mean closed.">

@@ -34,20 +34,22 @@ products:
     name: Claude
     kind: assistant-app
     access: >-
-      AI assistant on the web and in desktop and mobile apps, with free and paid plans
-      (Pro, Max, Team, Enterprise).
+      AI assistant on the web and in desktop (macOS, Windows, and a Linux beta) and mobile apps,
+      with Free, Pro, Max, Team, Enterprise, and Education plans; Claude Cowork is being merged
+      into the main app from September 2026.
     url: https://claude.com/product/overview
-    source_ids: [claude-product-overview, claude-pricing]
-    last_reviewed: 2026-09-29
+    source_ids: [claude-product-overview, claude-pricing, claude-download, claude-cowork-merge]
+    last_reviewed: 2026-10-11
   - id: claude-developer-platform
     name: Claude Platform (Claude API)
     kind: hosted-model-api
     access: >-
       API access to Claude models with API keys through the Claude Console; Claude is also
-      offered on Amazon Bedrock, Google Cloud, and Microsoft Foundry.
+      offered on Amazon Bedrock, Google Cloud, Microsoft Foundry, and Claude Platform on AWS
+      (operated by Anthropic, with AWS sign-in and billing).
     url: https://platform.claude.com/docs/en/home
-    source_ids: [claude-platform-docs]
-    last_reviewed: 2026-09-29
+    source_ids: [claude-platform-docs, claude-platform-features, claude-platform-on-aws-docs]
+    last_reviewed: 2026-10-11
   - id: claude-code
     name: Claude Code
     kind: developer-tool
@@ -91,7 +93,7 @@ careers:
   reviewed_at: 2026-09-30
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-11
 last_reviewed: 2026-09-29
 sources:
   - id: anthropic-company
@@ -214,6 +216,582 @@ sources:
     kind: repository
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
+  - id: anthropic-leadership
+    title: Leadership \ Anthropic
+    url: https://www.anthropic.com/company/leadership
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-model-deprecations
+    title: Model deprecations (Claude Platform documentation)
+    url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-fable-5-1-docs
+    title: Claude Fable 5.1 (model documentation)
+    url: https://platform.claude.com/docs/en/models/fable-5-1/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-mythos-5-1-docs
+    title: Claude Mythos 5.1 (model documentation)
+    url: https://platform.claude.com/docs/en/models/mythos-5-1/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-fable-5-docs
+    title: Claude Fable 5 (model documentation)
+    url: https://platform.claude.com/docs/en/models/fable-5/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-opus-5-docs
+    title: Claude Opus 5 (model documentation)
+    url: https://platform.claude.com/docs/en/models/opus-5/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-sonnet-5-docs
+    title: Claude Sonnet 5 (model documentation)
+    url: https://platform.claude.com/docs/en/models/sonnet-5/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-opus-4-8-docs
+    title: Claude Opus 4.8 (model documentation)
+    url: https://platform.claude.com/docs/en/models/opus-4-8/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-opus-4-7-docs
+    title: Claude Opus 4.7 (model documentation)
+    url: https://platform.claude.com/docs/en/models/opus-4-7/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-opus-4-6-docs
+    title: Claude Opus 4.6 (model documentation)
+    url: https://platform.claude.com/docs/en/models/opus-4-6/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-sonnet-4-6-docs
+    title: Claude Sonnet 4.6 (model documentation)
+    url: https://platform.claude.com/docs/en/models/sonnet-4-6/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-opus-4-5-docs
+    title: Claude Opus 4.5 (model documentation)
+    url: https://platform.claude.com/docs/en/models/opus-4-5/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-haiku-4-5-docs
+    title: Claude Haiku 4.5 (model documentation)
+    url: https://platform.claude.com/docs/en/models/haiku-4-5/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: anthropic-opus-5-5
+    title: Introducing Claude Opus 5.5
+    url: https://www.anthropic.com/claude-opus-5-5
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-09-22
+    accessed_at: 2026-10-11
+  - id: anthropic-sonnet-5-5
+    title: Claude Sonnet 5.5
+    url: https://www.anthropic.com/claude-sonnet-5-5
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-11
+  - id: anthropic-haiku-5-5
+    title: Introducing Claude Haiku 5.5
+    url: https://www.anthropic.com/claude-haiku-5-5
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-10-07
+    accessed_at: 2026-10-11
+  - id: anthropic-fable-mythos-5-1
+    title: Claude Fable 5.1 and Claude Mythos 5.1
+    url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+    publisher: Anthropic
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: anthropic-fable-mythos-5
+    title: Claude Fable 5 and Claude Mythos 5
+    url: https://www.anthropic.com/news/claude-fable-5-mythos-5
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-06-09
+    accessed_at: 2026-10-11
+  - id: anthropic-opus-5
+    title: Introducing Claude Opus 5
+    url: https://www.anthropic.com/news/claude-opus-5
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-07-24
+    accessed_at: 2026-10-11
+  - id: anthropic-sonnet-5
+    title: Introducing Claude Sonnet 5
+    url: https://www.anthropic.com/news/claude-sonnet-5
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-06-30
+    accessed_at: 2026-10-11
+  - id: anthropic-glasswing
+    title: Project Glasswing
+    url: https://www.anthropic.com/glasswing
+    publisher: Anthropic
+    kind: official-page
+    published_at: 2026-04-07
+    accessed_at: 2026-10-11
+  - id: anthropic-claude-4
+    title: Introducing Claude 4
+    url: https://www.anthropic.com/news/claude-4
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-05-22
+    accessed_at: 2026-10-11
+  - id: anthropic-sonnet-4-5
+    title: Introducing Claude Sonnet 4.5
+    url: https://www.anthropic.com/news/claude-sonnet-4-5
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-09-29
+    accessed_at: 2026-10-11
+  - id: anthropic-opus-4-1
+    title: Claude Opus 4.1
+    url: https://www.anthropic.com/news/claude-opus-4-1
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-08-05
+    accessed_at: 2026-10-11
+  - id: anthropic-claude-3-7-sonnet
+    title: Claude 3.7 Sonnet and Claude Code
+    url: https://www.anthropic.com/news/claude-3-7-sonnet
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-02-24
+    accessed_at: 2026-10-11
+  - id: anthropic-claude-3-5-sonnet
+    title: Introducing Claude 3.5 Sonnet
+    url: https://www.anthropic.com/news/claude-3-5-sonnet
+    publisher: Anthropic
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: anthropic-computer-use
+    title: Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku
+    url: https://www.anthropic.com/news/3-5-models-and-computer-use
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2024-10-22
+    accessed_at: 2026-10-11
+  - id: anthropic-claude-3-family
+    title: Introducing the next generation of Claude
+    url: https://www.anthropic.com/news/claude-3-family
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2024-03-04
+    accessed_at: 2026-10-11
+  - id: anthropic-claude-2-1
+    title: Introducing Claude 2.1
+    url: https://www.anthropic.com/news/claude-2-1
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2023-11-21
+    accessed_at: 2026-10-11
+  - id: anthropic-claude-2
+    title: Claude 2
+    url: https://www.anthropic.com/news/claude-2
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2023-07-11
+    accessed_at: 2026-10-11
+  - id: anthropic-introducing-claude
+    title: Introducing Claude
+    url: https://www.anthropic.com/news/introducing-claude
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2023-03-14
+    accessed_at: 2026-10-11
+  - id: anthropic-rsp
+    title: Anthropic's Responsible Scaling Policy
+    url: https://www.anthropic.com/responsible-scaling-policy
+    publisher: Anthropic
+    kind: official-page
+    published_at: 2026-08-14
+    accessed_at: 2026-10-11
+  - id: anthropic-transparency-hub
+    title: Anthropic's Transparency Hub (Model Report)
+    url: https://www.anthropic.com/transparency
+    publisher: Anthropic
+    kind: official-page
+    published_at: 2026-10-02
+    accessed_at: 2026-10-11
+  - id: anthropic-asl3
+    title: Activating AI Safety Level 3 protections
+    url: https://www.anthropic.com/news/activating-asl3-protections
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-05-22
+    accessed_at: 2026-10-11
+  - id: anthropic-constitution-2026
+    title: Claude's new constitution
+    url: https://www.anthropic.com/news/claude-new-constitution
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-01-22
+    accessed_at: 2026-10-11
+  - id: anthropic-deprecation-commitments
+    title: Commitments on model deprecation and preservation
+    url: https://www.anthropic.com/research/deprecation-commitments
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-11-04
+    accessed_at: 2026-10-11
+  - id: anthropic-economic-index-launch
+    title: The Anthropic Economic Index
+    url: https://www.anthropic.com/news/the-anthropic-economic-index
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-02-10
+    accessed_at: 2026-10-11
+  - id: anthropic-economics-team
+    title: Economics \ Anthropic
+    url: https://www.anthropic.com/research/team/economics
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: anthropic-research
+    title: Research \ Anthropic
+    url: https://www.anthropic.com/research
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: anthropic-petri-donation
+    title: Donating our open-source alignment tool
+    url: https://www.anthropic.com/research/donating-open-source-petri
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-05-07
+    accessed_at: 2026-10-11
+  - id: anthropic-mcp-intro
+    title: Introducing the Model Context Protocol
+    url: https://www.anthropic.com/news/model-context-protocol
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2024-11-25
+    accessed_at: 2026-10-11
+  - id: anthropic-mcp-donation
+    title: Donating the Model Context Protocol and establishing the Agentic AI Foundation
+    url: https://anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-12-09
+    accessed_at: 2026-10-11
+  - id: claude-download
+    title: Download Claude
+    url: https://claude.com/download
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-research-support
+    title: Use research on Claude
+    url: https://support.claude.com/en/articles/11088861-use-research-on-claude
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-apps-release-notes
+    title: Release notes (Claude apps)
+    url: https://support.claude.com/en/articles/12138966-release-notes
+    publisher: Anthropic
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-cowork-support
+    title: Get started with Claude Cowork
+    url: https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-cowork-merge
+    title: Claude Cowork and chat are now one Claude
+    url: https://claude.com/resources/articles/cowork-is-now-claude
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-09-16
+    accessed_at: 2026-10-11
+  - id: claude-design-news
+    title: Introducing Claude Design by Anthropic Labs
+    url: https://www.anthropic.com/news/claude-design-anthropic-labs
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-04-17
+    accessed_at: 2026-10-11
+  - id: claude-for-chrome-pilot
+    title: Claude for Chrome (pilot announcement)
+    url: https://claude.com/blog/claude-for-chrome
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-08-25
+    accessed_at: 2026-10-11
+  - id: claude-in-chrome-ga
+    title: Claude in Chrome is generally available
+    url: https://claude.com/resources/articles/claude-in-chrome-generally-available
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-08-26
+    accessed_at: 2026-10-11
+  - id: claude-m365
+    title: Claude for Microsoft 365
+    url: https://claude.com/claude-for-microsoft-365
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-science-news
+    title: Claude Science, an AI workbench for scientists
+    url: https://www.anthropic.com/news/claude-science-ai-workbench
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-06-30
+    accessed_at: 2026-10-11
+  - id: claude-tag-news
+    title: Introducing Claude Tag
+    url: https://www.anthropic.com/news/introducing-claude-tag
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-06-23
+    accessed_at: 2026-10-11
+  - id: claude-security-beta
+    title: Claude Security is now in public beta
+    url: https://claude.com/blog/claude-security-public-beta
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-04-30
+    accessed_at: 2026-10-11
+  - id: claude-code-docs-overview
+    title: Claude Code overview
+    url: https://code.claude.com/docs/en/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-agent-sdk-docs
+    title: Agent SDK overview
+    url: https://code.claude.com/docs/en/agent-sdk/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-managed-agents-docs
+    title: Claude Managed Agents overview
+    url: https://platform.claude.com/docs/en/managed-agents/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-platform-features
+    title: Features overview (Claude Platform documentation)
+    url: https://platform.claude.com/docs/en/build-with-claude/overview
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-platform-on-aws-docs
+    title: Claude Platform on AWS
+    url: https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-foundry-docs
+    title: Claude in Microsoft Foundry
+    url: https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry
+    publisher: Anthropic
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: claude-platform-release-notes
+    title: Claude Platform release notes
+    url: https://platform.claude.com/docs/en/release-notes/overview
+    publisher: Anthropic
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: anthropic-claude-gov
+    title: Claude Gov models for U.S. national security customers
+    url: https://www.anthropic.com/news/claude-gov-models-for-u-s-national-security-customers
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-06-06
+    accessed_at: 2026-10-11
+  - id: anthropic-three-branches
+    title: Offering expanded Claude access across all three branches of government
+    url: https://www.anthropic.com/news/offering-expanded-claude-access-across-all-three-branches-of-government
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-08-12
+    accessed_at: 2026-10-11
+  - id: gsa-feb-2026-directive
+    title: GSA Stands with President Trump on National Security AI Directive
+    url: https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-stands-with-president-trump-on-national-security-ai-directive-02272026
+    publisher: U.S. General Services Administration
+    kind: official-page
+    published_at: 2026-02-27
+    accessed_at: 2026-10-11
+  - id: gsa-injunction-statement
+    title: GSA Issues Statement on Anthropic Preliminary Injunction
+    url: https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-issues-statement-on-anthropic-preliminary-injunction-04032026
+    publisher: U.S. General Services Administration
+    kind: official-page
+    published_at: 2026-04-03
+    accessed_at: 2026-10-11
+  - id: gsa-ai-page
+    title: Artificial intelligence | GSA
+    url: https://www.gsa.gov/artificial-intelligence
+    publisher: U.S. General Services Administration
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: dccir-anthropic-v-dow
+    title: Anthropic PBC v. United States Department of War, No. 26-1049 (D.C. Cir. Sept. 25, 2026)
+      (opinion)
+    url: https://media.cadc.uscourts.gov/opinions/docs/2026/09/26-1049-2194984.pdf
+    publisher: United States Court of Appeals for the District of Columbia Circuit
+    kind: other
+    published_at: 2026-09-25
+    accessed_at: 2026-10-11
+  - id: anthropic-genesis-commitment
+    title: Building on our commitment to American scientific discovery
+    url: https://www.anthropic.com/news/genesis-mission-commitment
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-10-08
+    accessed_at: 2026-10-09
+  - id: anthropic-usage-policy-2026-update
+    title: 2026 Usage Policy update
+    url: https://www.anthropic.com/news/2026-usage-policy-update
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-10-08
+    accessed_at: 2026-10-09
+  - id: anthropic-cyber-mission
+    title: Introducing the Anthropic Cyber Mission
+    url: https://www.anthropic.com/news/anthropic-cyber-mission
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-10-08
+    accessed_at: 2026-10-11
+  - id: anthropic-cvp
+    title: Expanding the Cyber Verification Program
+    url: https://www.anthropic.com/news/cyber-verification-program
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-10-06
+    accessed_at: 2026-10-11
+  - id: anthropic-lsvp
+    title: Introducing the Life Sciences Verification Program
+    url: https://www.anthropic.com/news/life-sciences-verification-program
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-09-17
+    accessed_at: 2026-10-11
+  - id: anthropic-efs
+    title: Developing Enterprise Frontier Safeguards with our customers
+    url: https://www.anthropic.com/news/enterprise-frontier-safeguards
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-09-01
+    accessed_at: 2026-10-11
+  - id: anthropic-mhs
+    title: Previewing the Model Hardware Standard
+    url: https://www.anthropic.com/news/model-hardware-standard-research-preview
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-08-27
+    accessed_at: 2026-10-11
+  - id: anthropic-google-broadcom-compute
+    title: Anthropic expands Google and Broadcom compute deal
+    url: https://www.anthropic.com/news/google-broadcom-partnership-compute
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-04-06
+    accessed_at: 2026-10-11
+  - id: anthropic-amazon-compute
+    title: Anthropic and Amazon expand compute collaboration
+    url: https://www.anthropic.com/news/anthropic-amazon-compute
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-04-20
+    accessed_at: 2026-10-11
+  - id: anthropic-spacex-compute
+    title: Higher usage limits and a SpaceX compute deal
+    url: https://www.anthropic.com/news/higher-limits-spacex
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-10-11
+  - id: anthropic-paris-munich
+    title: New offices in Paris and Munich
+    url: https://www.anthropic.com/news/new-offices-in-paris-and-munich-expand-european-presence
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-11-07
+    accessed_at: 2026-10-11
+  - id: anthropic-tokyo-office
+    title: Anthropic opens Tokyo office, signs a Memorandum of Cooperation with the Japan AI Safety
+      Institute
+    url: https://www.anthropic.com/news/opening-our-tokyo-office
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2025-10-29
+    accessed_at: 2026-10-11
+  - id: anthropic-seoul-office
+    title: Anthropic opens Seoul office
+    url: https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-06-17
+    accessed_at: 2026-10-11
+  - id: anthropic-bengaluru-office
+    title: Anthropic opens Bengaluru office
+    url: https://www.anthropic.com/news/bengaluru-office-partnerships-across-india
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-02-16
+    accessed_at: 2026-10-11
+  - id: anthropic-sydney-office
+    title: Sydney will become Anthropic's fourth office in Asia-Pacific
+    url: https://www.anthropic.com/news/sydney-fourth-office-asia-pacific
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-03-10
+    accessed_at: 2026-10-11
 profile:
   intended_users:
     text: >-
@@ -233,11 +811,11 @@ profile:
     text: >-
       Anthropic's Hugging Face organization lists datasets but no public models.
       Use is governed by Anthropic's Usage Policy; Claude Mythos models are
-      offered by invitation only, and Amazon Bedrock and Google Cloud set their
+      available only to organizations verified through Anthropic's verification programs, and Amazon Bedrock and Google Cloud set their
       own pricing and retirement dates for Claude models. This profile is not a
       complete product or rights audit.
-    source_ids: [review-hf-anthropic, review-usage-policy, review-api-pricing, review-models-overview]
-    reviewed_at: 2026-10-01
+    source_ids: [review-hf-anthropic, review-usage-policy, review-api-pricing, review-models-overview, claude-mythos-5-1-docs, anthropic-cvp, anthropic-lsvp]
+    reviewed_at: 2026-10-11
   resources:
     - label: Claude API documentation
       url: https://platform.claude.com/docs/en/home
@@ -259,3 +837,1238 @@ profile:
       kind: pricing
       source_ids: [review-claude-pricing]
       reviewed_at: 2026-10-01
+deep_dive:
+  reviewed_at: 2026-10-11
+  overview:
+    - text: Anthropic PBC describes itself as an AI safety and research company that builds AI systems
+        people can rely on and studies the opportunities and risks of AI. It is a public benefit
+        corporation whose stated purpose is "the responsible development and maintenance of advanced
+        AI for the long-term benefit of humanity." Its privacy policy lists Anthropic PBC at a San
+        Francisco, California address.
+      source_ids:
+        - anthropic-company
+        - anthropic-privacy
+    - text: Anthropic develops the Claude family of AI models and offers them as hosted services; its
+        Hugging Face organization lists no model repositories. As of October 2026 its model
+        documentation lists four current models (Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet
+        5.5, and Claude Haiku 5.5), each with a 1M-token context window. A separate model, Claude
+        Mythos 5.1, has the same capabilities as Claude Fable 5.1 but is offered only to
+        organizations that pass Anthropic's verification programs.
+      source_ids:
+        - review-models-overview
+        - claude-mythos-5-1-docs
+        - review-hf-anthropic
+    - text: People can use Claude through the Claude app on the web, desktop, and mobile, through the
+        Claude Code coding agent, and through the Claude Platform API. Developers can also reach
+        Claude models on Amazon Bedrock, Google Cloud, Microsoft Foundry, and Claude Platform on
+        AWS. Subscription plans range from Free to Enterprise; this profile does not list prices.
+      source_ids:
+        - claude-download
+        - claude-code-docs-overview
+        - claude-platform-features
+        - review-claude-pricing
+    - text: Anthropic publishes a Responsible Scaling Policy (version 3.4 took effect on July 8, 2026),
+        system cards for its models, periodic risk reports, a Transparency Hub, a Usage Policy, and
+        a public constitution that describes the values it intends Claude to hold. A Long-Term
+        Benefit Trust, which holds a special class of stock, takes part in electing the company's
+        board.
+      source_ids:
+        - anthropic-rsp
+        - anthropic-transparency-hub
+        - anthropic-constitution-2026
+        - review-usage-policy
+        - anthropic-ltbt
+        - anthropic-company
+    - text: Anthropic has offered Claude to U.S. government agencies, including custom Claude Gov models
+        for national security customers. In 2026 the Department of War excluded Claude from its
+        supply chain after a contract dispute over use restrictions; court records show that a
+        federal district court set aside one designation in August 2026, while the D.C. Circuit
+        denied Anthropic's challenge to a separate exclusion on September 25, 2026.
+      source_ids:
+        - anthropic-claude-gov
+        - dccir-anthropic-v-dow
+  sections:
+    - id: business-overview
+      title: What Anthropic does
+      intro:
+        text: Anthropic says it is dedicated to building AI systems that people can rely on and to producing
+          research about the opportunities and risks of AI.
+        source_ids:
+          - anthropic-company
+      items:
+        - text: Its main product line is Claude, a family of large language models that take text and images
+            as input and produce text. Anthropic offers the models as hosted services; its Hugging
+            Face organization lists datasets but no model repositories.
+          source_ids:
+            - review-models-overview
+            - review-hf-anthropic
+        - text: Anthropic sells Claude plans for individuals (Free, Pro, and Max), for organizations (Team and
+            Enterprise), and for schools (Education), and it offers pay-as-you-go API access on the
+            Claude Platform.
+          source_ids:
+            - review-claude-pricing
+        - text: "Its research page names five research teams: Alignment, Economics, Frontier Red Team (which
+            studies what new models mean for cybersecurity, biosecurity, and autonomous systems),
+            Interpretability (which studies how models work inside), and Societal Impacts."
+          source_ids:
+            - anthropic-research
+        - text: Anthropic introduced the Model Context Protocol (MCP) in November 2024 as an open standard for
+            connecting AI applications to outside data and tools, and in December 2025 donated it to
+            the Agentic AI Foundation, a directed fund under the Linux Foundation.
+          source_ids:
+            - anthropic-mcp-intro
+            - anthropic-mcp-donation
+        - text: Since September 2026 Anthropic has run verification programs for cybersecurity and life
+            sciences work. Vetted organizations in these programs get access to models with
+            safeguards adjusted for their field, including Claude Mythos 5.1.
+          source_ids:
+            - anthropic-cvp
+            - anthropic-lsvp
+        - text: Anthropic also works with governments, including Claude Gov models for U.S. national security
+            customers and commitments announced in October 2026 to support the federal Genesis
+            Mission for AI-driven science.
+          source_ids:
+            - anthropic-claude-gov
+            - anthropic-genesis-commitment
+    - id: models
+      title: Claude models
+      intro:
+        text: Anthropic's models overview lists Claude Fable 5.1, Claude Opus 5.5, Claude Sonnet 5.5, and
+          Claude Haiku 5.5 as the current models. All support text and image input, text output,
+          vision, tool use, and a 1M-token context window, with a maximum output of 128K tokens.
+        source_ids:
+          - review-models-overview
+      items:
+        - text: The documentation suggests Claude Opus 5.5 as the default starting point and Claude Fable 5.1
+            for demanding reasoning and long-horizon agentic work. Claude Haiku 5.5 is aimed at
+            high-volume tasks such as classification, extraction, and routing.
+          source_ids:
+            - review-models-overview
+        - text: Anthropic added the Fable and Mythos lines in June 2026. It describes Mythos-class models as a
+            tier above its Opus class. Claude Fable 5 was the general-release version. Claude Mythos
+            5 was the same underlying model with some safeguards lifted, for vetted partners.
+          source_ids:
+            - anthropic-fable-mythos-5
+        - text: Claude Fable 5.1 and Claude Mythos 5.1, released September 1, 2026, are the same model with
+            different safeguard levels. Mythos 5.1's safeguards are tuned for cybersecurity and life
+            sciences work, and only verified organizations can use it.
+          source_ids:
+            - anthropic-fable-mythos-5-1
+            - claude-mythos-5-1-docs
+        - text: 'Current models use "adaptive thinking": the model decides how much to reason before
+            answering, guided by an effort setting. On Claude Fable 5.1 and Claude Opus 5.5 this
+            thinking is always on.'
+          source_ids:
+            - review-models-overview
+        - text: "Anthropic sorts models into four lifecycle stages: Active, Legacy, Deprecated, and Retired.
+            It gives at least 60 days' notice before retiring a publicly released model. Its
+            retirement dates apply to the platforms Anthropic operates; Amazon Bedrock and Google
+            Cloud set their own."
+          source_ids:
+            - claude-model-deprecations
+        - text: Legacy models that are still available include Claude Fable 5, Claude Opus 5, Claude Opus 4.8,
+            4.7, 4.6, and 4.5, Claude Sonnet 5, Claude Sonnet 4.6, and Claude Haiku 4.5.
+          source_ids:
+            - review-models-overview
+        - text: Recent retirements include Claude Haiku 3.5 and Claude Sonnet 3.7 (February 19, 2026), Claude
+            Haiku 3 (April 20, 2026), Claude Opus 4 and Claude Sonnet 4 (June 15, 2026), and Claude
+            Opus 4.1 (August 5, 2026). Claude Sonnet 4.5 was deprecated on September 30, 2026 and is
+            due to retire on November 30, 2026.
+          source_ids:
+            - claude-model-deprecations
+        - text: Claude Mythos Preview was offered from April 2026 through Project Glasswing, an effort to find
+            and fix flaws in critical software. Anthropic said it did not plan to make the model
+            generally available, and it was deprecated on June 9, 2026.
+          source_ids:
+            - anthropic-glasswing
+            - claude-model-deprecations
+        - text: Earlier generations were Claude and Claude Instant (March 2023), Claude 2 (July 2023), Claude
+            2.1 (November 2023), the Claude 3 family (March 2024), Claude 3.5 Sonnet (June 2024),
+            Claude 3.7 Sonnet (February 2025), and Claude Opus 4 and Claude Sonnet 4 (May 2025). All
+            of these have since been retired.
+          source_ids:
+            - anthropic-introducing-claude
+            - anthropic-claude-2
+            - anthropic-claude-2-1
+            - anthropic-claude-3-family
+            - anthropic-claude-3-5-sonnet
+            - anthropic-claude-3-7-sonnet
+            - anthropic-claude-4
+            - claude-model-deprecations
+        - text: In November 2025 Anthropic committed to keep the weights of all publicly released models, and
+            of models used significantly inside the company, for at least as long as the company
+            exists. It also said it would interview models about their development before
+            deprecating them.
+          source_ids:
+            - anthropic-deprecation-commitments
+    - id: apps-and-plans
+      title: Claude apps, plans, and features
+      intro:
+        text: The Claude app runs on the web, on desktop (macOS, Windows, and a Linux beta for Ubuntu and
+          Debian), and on iOS and Android.
+        source_ids:
+          - claude-download
+          - claude-product-overview
+
+          - claude-code-docs-overview
+      items:
+        - text: Plans are Free, Pro, Max (with two usage tiers), Team (Standard and Premium seats),
+            Enterprise, and Education. Team and Enterprise add admin tools such as single sign-on,
+            and Enterprise adds features such as audit logs, SCIM, and a Compliance API.
+          source_ids:
+            - review-claude-pricing
+        - text: App features include Projects, Artifacts, memory, connectors (including custom MCP
+            connectors), skills, plugins, web search, voice, scheduled tasks, and file creation.
+          source_ids:
+            - claude-product-overview
+            - review-claude-pricing
+        - text: Research is a mode on paid plans in which Claude runs a series of searches and returns an
+            answer with citations. It can search the web and connected Google Workspace apps such as
+            Gmail, Google Calendar, and Google Docs.
+          source_ids:
+            - claude-research-support
+        - text: On July 10, 2026 memory changed from a daily summary to separate, labeled entries that Claude
+            updates during conversations.
+          source_ids:
+            - claude-apps-release-notes
+        - text: Claude Cowork brings Claude Code's agentic abilities to non-coding work, such as organizing
+            files and producing spreadsheets and slides. On September 16, 2026 Anthropic began
+            merging Cowork and chat into one Claude experience, starting with Pro and Max.
+          source_ids:
+            - claude-cowork-support
+            - claude-cowork-merge
+        - text: Claude Design, a product for creating designs, prototypes, and slides, launched as an
+            Anthropic Labs research preview on April 17, 2026. Since September 16, 2026, Claude
+            Design, Claude Slides, and Claude Docs work inside any conversation as Artifacts.
+          source_ids:
+            - claude-design-news
+            - claude-cowork-merge
+            - claude-apps-release-notes
+        - text: Claude in Chrome is a browser extension that lets Claude read pages, click, and fill in forms.
+            It began as a pilot in August 2025 and became generally available on every paid plan on
+            August 26, 2026. It does not yet run on mobile or on other Chromium browsers.
+          source_ids:
+            - claude-for-chrome-pilot
+            - claude-in-chrome-ga
+        - text: Claude for Microsoft 365 puts Claude inside Office apps. The Excel, PowerPoint, and Word
+            add-ins are generally available on all paid plans, and the Outlook add-in is in beta.
+          source_ids:
+            - claude-m365
+        - text: Claude Science, launched in beta on June 30, 2026, is described by Anthropic as "an AI
+            workbench for scientists." It bundles common research tools and keeps the code behind
+            each figure.
+          source_ids:
+            - claude-science-news
+        - text: Claude Tag, a beta for Team and Enterprise plans launched June 23, 2026, lets anyone in a
+            Slack channel hand tasks to Claude by tagging @Claude. It replaces the earlier Claude in
+            Slack app.
+          source_ids:
+            - claude-tag-news
+        - text: Claude Security, formerly a research preview called Claude Code Security, entered public beta
+            for Enterprise customers on April 30, 2026. It scans codebases for security flaws and
+            suggests patches.
+          source_ids:
+            - claude-security-beta
+    - id: developers
+      title: Claude Code, Agent SDK, and the Claude Platform
+      intro:
+        text: Claude Code is an agentic coding tool. It reads a codebase, edits files, runs commands, and
+          works with developer tools from the terminal, IDEs, a desktop app, and the browser.
+        source_ids:
+          - claude-code-docs-overview
+      items:
+        - text: Claude Code launched as a limited research preview on February 24, 2025 and became generally
+            available on May 22, 2025. It now also runs in VS Code, JetBrains IDEs, Slack, GitHub
+            Actions, and GitLab CI/CD.
+          source_ids:
+            - anthropic-claude-3-7-sonnet
+            - anthropic-claude-4
+            - claude-code-docs-overview
+        - text: Claude Code surfaces generally require a Claude subscription or a Claude Console account. The
+            terminal tool, VS Code, and JetBrains can also use third-party cloud providers.
+          source_ids:
+            - claude-code-docs-overview
+        - text: The Claude Agent SDK, released with Claude Sonnet 4.5 on September 29, 2025, offers the same
+            tools, agent loop, and context management that power Claude Code, for Python and
+            TypeScript. Its use is governed by Anthropic's Commercial Terms of Service.
+          source_ids:
+            - anthropic-sonnet-4-5
+            - claude-agent-sdk-docs
+        - text: Claude Managed Agents, in beta, is a hosted agent harness. Sessions run in an
+            Anthropic-managed cloud sandbox or in a self-hosted sandbox on the customer's own
+            infrastructure.
+          source_ids:
+            - claude-managed-agents-docs
+        - text: The Claude Platform API groups its features into model capabilities, tools, tool
+            infrastructure, context management, and files. Examples include batch processing,
+            citations, prompt caching, token counting, structured outputs, and the Files API.
+          source_ids:
+            - claude-platform-features
+        - text: Built-in tools include web search, web fetch, and code execution, which run on Anthropic's
+            servers, and bash, text editor, memory, computer use, and browser use, which run in the
+            developer's environment. Computer use left beta and a browser use tool launched on
+            August 19, 2026.
+          source_ids:
+            - claude-platform-features
+            - claude-platform-release-notes
+        - text: Agent Skills package instructions and scripts, with pre-built skills for PowerPoint, Excel,
+            Word, and PDF. A beta MCP connector lets the Messages API call remote MCP servers
+            directly.
+          source_ids:
+            - claude-platform-features
+        - text: Besides Anthropic's own API, Claude models are on Amazon Bedrock (run by AWS), Google Cloud
+            (run by Google), Microsoft Foundry (run by Anthropic on Azure), and Claude Platform on
+            AWS (run by Anthropic, with AWS sign-in and billing). Feature availability differs by
+            platform.
+          source_ids:
+            - claude-platform-features
+            - claude-platform-on-aws-docs
+            - claude-foundry-docs
+        - text: On Microsoft Foundry, customers choose between "Hosted on Azure," where inference runs on
+            Azure infrastructure, and "Hosted on Anthropic," which offers all Claude models
+            available on Foundry.
+          source_ids:
+            - claude-foundry-docs
+    - id: research-safety-policies
+      title: Research, safety, and policies
+      intro:
+        text: Anthropic's Responsible Scaling Policy (RSP) sets capability thresholds and the safeguards
+          required when models reach them. Version 3.4 took effect on July 8, 2026.
+        source_ids:
+          - anthropic-rsp
+      items:
+        - text: "RSP versions and effective dates: 1.0 (September 19, 2023), 2.0 (October 15, 2024), 2.1
+            (March 31, 2025), 2.2 (May 14, 2025), 3.0 (February 24, 2026), 3.1 (April 2, 2026), 3.2
+            (April 29, 2026), 3.3 (May 26, 2026), and 3.4 (July 8, 2026). Version 3.0 was a full
+            rewrite that added Frontier Safety Roadmaps and Risk Reports."
+          source_ids:
+            - anthropic-rsp
+        - text: On May 22, 2025 Anthropic turned on AI Safety Level 3 (ASL-3) protections for Claude Opus 4.
+            These included classifiers that screen inputs and outputs for chemical, biological,
+            radiological, and nuclear weapons content, plus security controls meant to prevent theft
+            of model weights.
+          source_ids:
+            - anthropic-asl3
+        - text: The Transparency Hub's Model Report summarizes each model's capabilities, safety evaluations,
+            and safeguards, and links to its system card. It states that Claude Opus 5, Claude Opus
+            5.5, Claude Fable 5.1, and Claude Mythos 5.1 were deployed with ASL-3 protections.
+          source_ids:
+            - anthropic-transparency-hub
+        - text: Under RSP 3.0, Anthropic publishes Risk Reports covering all of its deployed models. Redacted
+            reports are dated February 2026 and August 2026; the August report covers the period up
+            to July 15, 2026.
+          source_ids:
+            - anthropic-rsp
+        - text: On Claude Fable models, classifiers detect certain cybersecurity, biology, chemistry, and
+            model-distillation requests and hand them to another Claude model. Anthropic requires
+            30-day data retention for traffic on Mythos-class models and says this data is used for
+            safety, not training.
+          source_ids:
+            - anthropic-fable-mythos-5
+        - text: Since September 1, 2026, text generated by Claude Fable 5.1 and Claude Mythos 5.1 carries an
+            Anthropic watermark, and media files from code execution carry C2PA Content Credentials.
+            Anthropic ties the watermark to EU AI Act compliance and is previewing a detection API
+            privately.
+          source_ids:
+            - claude-platform-release-notes
+            - anthropic-fable-mythos-5-1
+        - text: On October 8, 2026 Anthropic announced Usage Policy changes taking effect November 12, 2026.
+            They include a new section on deceptive campaigns, wider weapons rules that cover arming
+            drones, and requirements for models that control hardware able to act physically.
+          source_ids:
+            - anthropic-usage-policy-2026-update
+            - review-usage-policy
+        - text: On January 22, 2026 Anthropic published a new constitution for Claude, describing the values
+            and behavior it intends for Claude. It is released under a CC0 1.0 public domain
+            dedication.
+          source_ids:
+            - anthropic-constitution-2026
+        - text: The Anthropic Economic Index, launched February 10, 2025, studies how AI use affects work and
+            the economy, and its initial dataset was published on Hugging Face. 2026 reports include
+            "Learning curves" (March 24) and "Cadences" (June 26).
+          source_ids:
+            - anthropic-economic-index-launch
+            - anthropic-economics-team
+        - text: Anthropic released Petri, an open-source tool for testing models for behaviors such as
+            deception and sycophancy. On May 7, 2026 it handed development to Meridian Labs, an AI
+            evaluation nonprofit.
+          source_ids:
+            - anthropic-petri-donation
+        - text: Anthropic's privacy policy names Anthropic PBC as the company behind its services and
+            Anthropic Ireland, Limited as data controller for people in the EEA, the UK, and
+            Switzerland.
+          source_ids:
+            - anthropic-privacy
+    - id: infrastructure-and-compute
+      title: Infrastructure and compute
+      intro:
+        text: Anthropic says it trains and runs Claude on AWS Trainium, Google TPUs, and NVIDIA GPUs, and
+          picks the chip that suits each workload.
+        source_ids:
+          - anthropic-google-broadcom-compute
+      items:
+        - text: On April 20, 2026 Anthropic and Amazon agreed on up to 5 gigawatts of capacity for training
+            and running Claude, built on Amazon's Trainium and Graviton chips. Anthropic calls AWS
+            its primary training and cloud provider for mission-critical workloads. The two
+            companies built the Project Rainier compute cluster together.
+          source_ids:
+            - anthropic-amazon-compute
+        - text: The same Amazon agreement covered more inference capacity in Asia and Europe and bringing the
+            full Claude Platform into AWS.
+          source_ids:
+            - anthropic-amazon-compute
+        - text: On April 6, 2026 Anthropic signed an agreement with Google and Broadcom for multiple gigawatts
+            of next-generation TPU capacity, expected to come online from 2027. The bulk of it will
+            be in the United States.
+          source_ids:
+            - anthropic-google-broadcom-compute
+        - text: On May 6, 2026 Anthropic agreed to use all of the compute capacity at SpaceX's Colossus 1 data
+            center, over 300 megawatts. The same post doubled Claude Code's five-hour usage limits
+            on Pro, Max, Team, and seat-based Enterprise plans.
+          source_ids:
+            - anthropic-spacex-compute
+        - text: Claude Platform on AWS runs on infrastructure that Anthropic manages. For workspaces created
+            from September 18, 2026 on, requests, model inference, and stored workspace content are
+            processed on AWS infrastructure.
+          source_ids:
+            - claude-platform-on-aws-docs
+        - text: Developers can use the inference_geo setting to choose where inference runs, either "global"
+            or "us."
+          source_ids:
+            - claude-platform-features
+        - text: When it announced its Sydney office in March 2026, Anthropic said it was exploring local
+            compute capacity in Australia through third-party partners.
+          source_ids:
+            - anthropic-sydney-office
+    - id: corporate-structure-and-governance
+      title: Corporate structure and governance
+      intro:
+        text: Anthropic PBC is a Delaware public benefit corporation. The Long-Term Benefit Trust works
+          alongside that status to tie the company's governance to its mission.
+        source_ids:
+          - anthropic-ltbt
+          - anthropic-company
+      items:
+        - text: The board of directors is elected by stockholders and by the Long-Term Benefit Trust. The
+            company page lists Dario Amodei, Daniela Amodei, Yasmin Razavi, Reed Hastings, Chris
+            Liddell, and Vas Narasimhan as directors.
+          source_ids:
+            - anthropic-company
+        - text: When it was announced in 2023, the Trust was set up as an independent body of trustees with no
+            financial interest in Anthropic. It holds Class T stock, which lets it elect and remove
+            some directors, a share planned to grow to a board majority.
+          source_ids:
+            - anthropic-ltbt
+        - text: The company page lists the current trustees of the Long-Term Benefit Trust as Neil Buddy Shah,
+            Richard Fontaine, and Ben Bernanke.
+          source_ids:
+            - anthropic-company
+        - text: Anthropic Ireland, Limited acts as data controller for the EEA, the UK, and Switzerland.
+          source_ids:
+            - anthropic-privacy
+        - text: Country leaders named in Anthropic announcements include Hidetoshi Tojo (Representative
+            Director and President of Anthropic in Japan), KiYoung Choi (Representative Director of
+            Korea), Irina Ghose (Managing Director of India), and Chris Ciauri (Managing Director of
+            International).
+          source_ids:
+            - anthropic-tokyo-office
+            - anthropic-seoul-office
+            - anthropic-bengaluru-office
+            - anthropic-paris-munich
+        - text: "Anthropic has handed some projects to outside stewards: the Model Context Protocol to the
+            Agentic AI Foundation in December 2025, and the Petri auditing tool to Meridian Labs in
+            May 2026."
+          source_ids:
+            - anthropic-mcp-donation
+            - anthropic-petri-donation
+    - id: government-and-public-sector
+      title: Government and national security
+      intro:
+        text: Anthropic makes custom Claude Gov models for U.S. national security customers. Access is
+          limited to those who work in classified environments.
+        source_ids:
+          - anthropic-claude-gov
+      items:
+        - text: On August 12, 2025 Anthropic offered Claude for Enterprise and Claude for Government to all
+            three branches of the U.S. government for one year through the GSA OneGov program. It
+            said models offered through Claude for Government are certified for FedRAMP High.
+          source_ids:
+            - anthropic-three-branches
+        - text: On February 27, 2026 the General Services Administration (GSA) removed Anthropic from USAi.gov
+            and its Multiple Award Schedule, citing a presidential directive to stop using
+            Anthropic's technology.
+          source_ids:
+            - gsa-feb-2026-directive
+        - text: On March 3, 2026 the Secretary of War made a determination under the Federal Acquisition
+            Supply Chain Security Act to exclude Claude from the Department of War's supply chain.
+            According to the D.C. Circuit, this followed Anthropic's refusal to relax contract terms
+            that barred using Claude for lethal autonomous warfare or domestic surveillance.
+          source_ids:
+            - dccir-anthropic-v-dow
+        - text: On March 26, 2026 the U.S. District Court for the Northern District of California (Case No.
+            26-cv-01996-RFL) issued a preliminary injunction blocking the government from carrying
+            out the directive. On April 3 GSA said it would restore Anthropic's earlier status.
+          source_ids:
+            - gsa-injunction-statement
+        - text: According to the D.C. Circuit's opinion, the Northern District of California decided its case
+            on August 27, 2026 and set aside the department's designation of Anthropic as a "supply
+            chain risk" under 10 U.S.C. § 3252.
+          source_ids:
+            - dccir-anthropic-v-dow
+        - text: On September 25, 2026 the U.S. Court of Appeals for the D.C. Circuit (No. 26-1049) denied
+            Anthropic's petitions for review of the separate exclusion under 41 U.S.C. § 4713. One
+            judge dissented.
+          source_ids:
+            - dccir-anthropic-v-dow
+        - text: As of October 11, 2026, GSA's artificial intelligence page carried an alert that GSA will
+            remove any system integrations with Anthropic by August 27, 2026. The page did not give
+            a reason.
+          source_ids:
+            - gsa-ai-page
+        - text: On October 8, 2026 Anthropic announced commitments to the federal Genesis Mission. Over three
+            years it plans to provide Claude, Claude Code, and API credits to research projects and
+            to work with agencies and national laboratories.
+          source_ids:
+            - anthropic-genesis-commitment
+        - text: Anthropic says it developed the Life Sciences Verification Program with the U.S. government.
+            Organizations seeking the Cyber Verification Program's Specialized Access tier are
+            reviewed in depth with the U.S. government.
+          source_ids:
+            - anthropic-fable-mythos-5-1
+            - anthropic-cvp
+        - text: Outside the U.S., Anthropic signed a Memorandum of Cooperation on AI evaluation methods with
+            the Japan AI Safety Institute (October 2025). It also signed a Memorandum of
+            Understanding on AI safety and cybersecurity with Korea's Ministry of Science and ICT
+            (June 2026).
+          source_ids:
+            - anthropic-tokyo-office
+            - anthropic-seoul-office
+    - id: offices
+      title: Offices and international presence
+      intro:
+        text: Anthropic is headquartered in San Francisco, California, and has announced offices across
+          North America, Europe, and Asia-Pacific.
+        source_ids:
+          - anthropic-privacy
+          - anthropic-paris-munich
+      items:
+        - text: A November 7, 2025 announcement named offices in San Francisco, Seattle, New York, Washington
+            D.C., London, Dublin, Zurich, Tokyo, Seoul, and Bengaluru, and announced new offices in
+            Paris and Munich.
+          source_ids:
+            - anthropic-paris-munich
+        - text: Anthropic opened a Tokyo office in October 2025.
+          source_ids:
+            - anthropic-tokyo-office
+        - text: Anthropic opened a Bengaluru office on February 16, 2026, led by Irina Ghose. The announcement
+            described partnerships, including a government MCP server from India's Ministry of
+            Statistics.
+          source_ids:
+            - anthropic-bengaluru-office
+        - text: Anthropic opened a Seoul office in June 2026, led by KiYoung Choi.
+          source_ids:
+            - anthropic-seoul-office
+        - text: On March 10, 2026 Anthropic announced a Sydney office, its fourth in Asia-Pacific, focused at
+            the start on enterprise, startup, and research customers.
+          source_ids:
+            - anthropic-sydney-office
+    - id: recent-updates
+      title: Recent updates (July to October 2026)
+      items:
+        - text: "July 1, 2026: Access to Claude Fable 5 and Claude Mythos 5 was restored after being suspended
+            on June 12. On July 8, version 3.4 of the Responsible Scaling Policy took effect."
+          source_ids:
+            - anthropic-fable-mythos-5
+            - claude-platform-release-notes
+            - anthropic-rsp
+        - text: "July 24, 2026: Anthropic released Claude Opus 5. With it, the API gained beta support for
+            changing tools in the middle of a conversation and for automatic fallback to another
+            model when a request is flagged."
+          source_ids:
+            - anthropic-opus-5
+        - text: "August 2026: Anthropic published a redacted Risk Report covering the period up to July 15. On
+            August 19, computer use left beta, a browser use tool launched, and the Files API and
+            Agent Skills left beta."
+          source_ids:
+            - anthropic-rsp
+            - claude-platform-release-notes
+        - text: "August 26, 2026: Claude in Chrome became generally available on every paid plan."
+          source_ids:
+            - claude-in-chrome-ga
+        - text: "August 27, 2026: Anthropic opened a research preview of the Model Hardware Standard, a shared
+            specification for AI agents to safely operate lab instruments and other physical
+            devices. Anthropic says it plans to make the standard open source later."
+          source_ids:
+            - anthropic-mhs
+        - text: "September 1, 2026: Anthropic released Claude Fable 5.1 and Claude Mythos 5.1. It also
+            announced Enterprise Frontier Safeguards, which pair zero data retention with misuse
+            detection on cloud infrastructure the customer controls. Rollout is in phases starting
+            in fall 2026."
+          source_ids:
+            - anthropic-fable-mythos-5-1
+            - anthropic-efs
+        - text: "September 16, 2026: Anthropic began merging Claude Cowork and chat into one Claude, and made
+            Claude Design, Claude Slides, and Claude Docs available inside conversations."
+          source_ids:
+            - claude-cowork-merge
+        - text: "September 17, 2026: Anthropic launched the Life Sciences Verification Program in beta. On
+            October 6 it expanded the Cyber Verification Program into three tiers (Defense, Red
+            Team, and Specialized Access)."
+          source_ids:
+            - anthropic-lsvp
+            - anthropic-cvp
+        - text: "September 22 to October 7, 2026: Anthropic released Claude Opus 5.5 (September 22), Claude
+            Sonnet 5.5 (September 28), and Claude Haiku 5.5 (October 7). On September 30 it
+            announced the deprecation of Claude Sonnet 4.5."
+          source_ids:
+            - anthropic-opus-5-5
+            - anthropic-sonnet-5-5
+            - anthropic-haiku-5-5
+            - claude-model-deprecations
+        - text: "September 25, 2026: The D.C. Circuit denied Anthropic's petitions for review of the
+            Department of War's supply chain exclusion."
+          source_ids:
+            - dccir-anthropic-v-dow
+        - text: "October 7, 2026: Python and TypeScript SDKs added beta tool classes for computer use and
+            browser use, and Max and Team plans began to include monthly API credits."
+          source_ids:
+            - claude-platform-release-notes
+        - text: "October 8, 2026: Anthropic announced Usage Policy updates (effective November 12), the
+            Anthropic Cyber Mission, and commitments to the Genesis Mission. The Cyber Mission
+            includes a defense program for critical infrastructure and an opt-in security scanner
+            for open-source projects."
+          source_ids:
+            - anthropic-usage-policy-2026-update
+            - anthropic-cyber-mission
+            - anthropic-genesis-commitment
+  lineup:
+    - name: Claude Fable 5.1
+      kind: model
+      status: current
+      released: 2026-09-01
+      description: Model for demanding reasoning and long-horizon agentic work, with a 1M-token context
+        window and always-on adaptive thinking. Offered on the Claude API (claude-fable-5-1), Amazon
+        Bedrock, Google Cloud, Microsoft Foundry, and Claude Platform on AWS.
+      url: https://platform.claude.com/docs/en/models/fable-5-1/overview
+      source_ids:
+        - claude-fable-5-1-docs
+        - anthropic-fable-mythos-5-1
+    - name: Claude Mythos 5.1
+      kind: model
+      status: limited
+      released: 2026-09-01
+      description: The same model as Claude Fable 5.1, with safeguards tuned for cybersecurity and life
+        sciences work. Only organizations verified through Anthropic's verification programs, such
+        as the Cyber Verification Program, can use it.
+      url: https://platform.claude.com/docs/en/models/mythos-5-1/overview
+      source_ids:
+        - claude-mythos-5-1-docs
+        - anthropic-fable-mythos-5-1
+    - name: Claude Opus 5.5
+      kind: model
+      status: current
+      released: 2026-09-22
+      description: Opus model for long-running agentic coding and knowledge work, with a 1M-token context
+        window. Offered in Claude plans, Claude Code, and the Claude Platform (claude-opus-5-5), and
+        through AWS, Google Cloud, and Microsoft Azure.
+      url: https://www.anthropic.com/claude-opus-5-5
+      source_ids:
+        - anthropic-opus-5-5
+        - review-models-overview
+    - name: Claude Sonnet 5.5
+      kind: model
+      status: current
+      released: 2026-09-28
+      description: Faster, lower-cost companion to Claude Opus 5.5 for well-scoped everyday tasks, with a
+        1M-token context window. Offered on the Claude Platform (claude-sonnet-5-5) and through AWS,
+        Google Cloud, and Microsoft Azure.
+      url: https://www.anthropic.com/claude-sonnet-5-5
+      source_ids:
+        - anthropic-sonnet-5-5
+        - review-models-overview
+    - name: Claude Haiku 5.5
+      kind: model
+      status: current
+      released: 2026-10-07
+      description: Small model for high-volume, cost-sensitive tasks such as classification, extraction,
+        and routing, with a 1M-token context window. Offered on the Claude Platform
+        (claude-haiku-5-5) and through AWS, Google Cloud, and Microsoft Azure.
+      url: https://www.anthropic.com/claude-haiku-5-5
+      source_ids:
+        - anthropic-haiku-5-5
+        - review-models-overview
+    - name: Claude Opus 5
+      kind: model
+      status: legacy
+      released: 2026-07-24
+      description: Opus model with a 1M-token context window, now marked legacy but still available.
+        Anthropic recommends moving to Claude Opus 5.5.
+      url: https://platform.claude.com/docs/en/models/opus-5/overview
+      source_ids:
+        - claude-opus-5-docs
+        - anthropic-opus-5
+    - name: Claude Sonnet 5
+      kind: model
+      status: legacy
+      released: 2026-06-30
+      description: Sonnet model that Anthropic described as built for agentic work such as planning and
+        using browsers and terminals. Now legacy but still available; Claude Sonnet 5.5 is the
+        current Sonnet.
+      url: https://platform.claude.com/docs/en/models/sonnet-5/overview
+      source_ids:
+        - claude-sonnet-5-docs
+        - anthropic-sonnet-5
+    - name: Claude Fable 5
+      kind: model
+      status: legacy
+      released: 2026-06-09
+      description: Anthropic called it a Mythos-class model made safe for general use. Access was
+        suspended from June 12 to July 1, 2026. Now legacy but still available; Claude Fable 5.1 is
+        the current Fable model.
+      url: https://platform.claude.com/docs/en/models/fable-5/overview
+      source_ids:
+        - claude-fable-5-docs
+        - anthropic-fable-mythos-5
+    - name: Claude Mythos 5
+      kind: model
+      status: limited
+      released: 2026-06-09
+      description: The same underlying model as Claude Fable 5 with some safeguards lifted. It was offered
+        at launch to Project Glasswing partners and a small group of cyber defenders and infrastructure
+        providers, with access for selected biology researchers planned. Platform listings mark it as
+        limited availability.
+      url: null
+      source_ids:
+        - anthropic-fable-mythos-5
+        - claude-model-deprecations
+        - claude-foundry-docs
+    - name: Claude Mythos Preview
+      kind: model
+      status: legacy
+      released: 2026-04-07
+      description: General-purpose model offered to Project Glasswing partners and other organizations
+        that maintain critical software, to find and fix vulnerabilities. Anthropic did not make it
+        generally available, and it was deprecated on June 9, 2026.
+      url: https://www.anthropic.com/glasswing
+      source_ids:
+        - anthropic-glasswing
+        - claude-model-deprecations
+    - name: Claude Opus 4.8
+      kind: model
+      status: legacy
+      released: 2026-05-28
+      description: Opus model with a 1M-token context window, now legacy but still available on the Claude
+        API and cloud platforms. Retirement is not sooner than May 28, 2027.
+      url: https://platform.claude.com/docs/en/models/opus-4-8/overview
+      source_ids:
+        - claude-opus-4-8-docs
+    - name: Claude Opus 4.7
+      kind: model
+      status: legacy
+      released: 2026-04-16
+      description: Opus model that introduced the tokenizer used by current models. Now legacy but still
+        available; retirement is not sooner than April 16, 2027.
+      url: https://platform.claude.com/docs/en/models/opus-4-7/overview
+      source_ids:
+        - claude-opus-4-7-docs
+    - name: Claude Opus 4.6
+      kind: model
+      status: legacy
+      released: 2026-02-05
+      description: Opus model with a 1M-token context window, now legacy but still available. Retirement
+        is not sooner than February 5, 2027.
+      url: https://platform.claude.com/docs/en/models/opus-4-6/overview
+      source_ids:
+        - claude-opus-4-6-docs
+    - name: Claude Sonnet 4.6
+      kind: model
+      status: legacy
+      released: 2026-02-17
+      description: Sonnet model with a 1M-token context window, now legacy but still available. Retirement
+        is not sooner than February 17, 2027.
+      url: https://platform.claude.com/docs/en/models/sonnet-4-6/overview
+      source_ids:
+        - claude-sonnet-4-6-docs
+    - name: Claude Opus 4.5
+      kind: model
+      status: legacy
+      released: 2025-11-24
+      description: Opus model with a 200K-token context window, now legacy but still available. Retirement
+        is not sooner than November 24, 2026.
+      url: https://platform.claude.com/docs/en/models/opus-4-5/overview
+      source_ids:
+        - claude-opus-4-5-docs
+        - claude-model-deprecations
+    - name: Claude Haiku 4.5
+      kind: model
+      status: legacy
+      released: 2025-10-15
+      description: Small model with a 200K-token context window, now legacy but still available.
+        Retirement is not sooner than October 15, 2026.
+      url: https://platform.claude.com/docs/en/models/haiku-4-5/overview
+      source_ids:
+        - claude-haiku-4-5-docs
+        - claude-model-deprecations
+    - name: Claude Sonnet 4.5
+      kind: model
+      status: legacy
+      released: 2025-09-29
+      description: Sonnet model released under ASL-3 protections. Deprecated on September 30, 2026, with
+        retirement on the Claude API set for November 30, 2026.
+      url: https://www.anthropic.com/news/claude-sonnet-4-5
+      source_ids:
+        - anthropic-sonnet-4-5
+        - claude-model-deprecations
+    - name: Claude Opus 4.1
+      kind: model
+      status: retired
+      released: 2025-08-05
+      description: Upgrade to Claude Opus 4 for agentic tasks, coding, and reasoning. Retired on August 5, 2026.
+      url: https://www.anthropic.com/news/claude-opus-4-1
+      source_ids:
+        - anthropic-opus-4-1
+        - claude-model-deprecations
+    - name: Claude Opus 4
+      kind: model
+      status: retired
+      released: 2025-05-22
+      description: Hybrid model with near-instant replies and an extended thinking mode. It was the model
+        for which Anthropic turned on ASL-3 protections. Retired on June 15, 2026.
+      url: https://www.anthropic.com/news/claude-4
+      source_ids:
+        - anthropic-claude-4
+        - anthropic-asl3
+        - claude-model-deprecations
+    - name: Claude Sonnet 4
+      kind: model
+      status: retired
+      released: 2025-05-22
+      description: Sonnet model released alongside Claude Opus 4 as an upgrade to Claude Sonnet 3.7.
+        Retired on June 15, 2026.
+      url: https://www.anthropic.com/news/claude-4
+      source_ids:
+        - anthropic-claude-4
+        - claude-model-deprecations
+    - name: Claude 3.7 Sonnet
+      kind: model
+      status: retired
+      released: 2025-02-24
+      description: Hybrid reasoning model that could answer quickly or use visible step-by-step "extended
+        thinking." Retired on February 19, 2026.
+      url: https://www.anthropic.com/news/claude-3-7-sonnet
+      source_ids:
+        - anthropic-claude-3-7-sonnet
+        - claude-model-deprecations
+    - name: Claude 3.5 Sonnet
+      kind: model
+      status: retired
+      released: 2024-06
+      description: Mid-sized model launched with the Artifacts preview in Claude.ai, with an upgraded
+        version on October 22, 2024. Both versions were retired on October 28, 2025.
+      url: https://www.anthropic.com/news/claude-3-5-sonnet
+      source_ids:
+        - anthropic-claude-3-5-sonnet
+        - anthropic-computer-use
+        - claude-model-deprecations
+    - name: Claude 3.5 Haiku
+      kind: model
+      status: retired
+      released: 2024-10-22
+      description: Small model announced together with the upgraded Claude 3.5 Sonnet and the computer use
+        beta. Retired on February 19, 2026.
+      url: https://www.anthropic.com/news/3-5-models-and-computer-use
+      source_ids:
+        - anthropic-computer-use
+        - claude-model-deprecations
+    - name: Claude 3 Opus
+      kind: model
+      status: retired
+      released: 2024-03-04
+      description: Large model in the Claude 3 family, announced with Claude 3 Sonnet and Claude 3 Haiku,
+        with a 200K-token context window at launch. Retired on January 5, 2026; Claude 3 Haiku
+        followed on April 20, 2026.
+      url: https://www.anthropic.com/news/claude-3-family
+      source_ids:
+        - anthropic-claude-3-family
+        - claude-model-deprecations
+    - name: Claude 2
+      kind: model
+      status: retired
+      released: 2023-07-11
+      description: Model offered through the API and the then-new claude.ai beta website. Claude 2 and
+        Claude 2.1 were retired on July 21, 2025.
+      url: https://www.anthropic.com/news/claude-2
+      source_ids:
+        - anthropic-claude-2
+        - claude-model-deprecations
+    - name: Claude Instant
+      kind: model
+      status: retired
+      released: 2023-03-14
+      description: A lighter, lower-cost, quicker option introduced alongside the original Claude. Instant
+        versions 1.0 to 1.2 were retired on November 6, 2024.
+      url: https://www.anthropic.com/news/introducing-claude
+      source_ids:
+        - anthropic-introducing-claude
+        - claude-model-deprecations
+    - name: Claude
+      kind: model
+      status: retired
+      released: 2023-03-14
+      description: Anthropic's original AI assistant model, offered through a chat interface and an API.
+        Claude 1.0 to 1.3 were retired on November 6, 2024.
+      url: https://www.anthropic.com/news/introducing-claude
+      source_ids:
+        - anthropic-introducing-claude
+        - claude-model-deprecations
+    - name: Claude Gov
+      kind: model
+      status: limited
+      released: 2025-03
+      description: Custom Claude models built for U.S. national security customers. Access is limited to
+        those who work in classified environments.
+      url: https://www.anthropic.com/news/claude-gov-models-for-u-s-national-security-customers
+      source_ids:
+        - anthropic-claude-gov
+        - dccir-anthropic-v-dow
+    - name: Claude app
+      kind: app
+      status: current
+      released: 2023-07-11
+      description: Claude's own app on the web (claude.ai), desktop, and iOS and Android, with Free, Pro,
+        Max, Team, Enterprise, and Education plans. Claude.ai opened as a public beta website with
+        Claude 2.
+      url: https://claude.com/download
+      source_ids:
+        - claude-download
+        - review-claude-pricing
+        - claude-product-overview
+
+        - anthropic-claude-2
+    - name: Claude Code
+      kind: agent
+      status: current
+      released: 2025-02-24
+      description: Agentic coding tool for the terminal, IDEs, desktop, web, and mobile. It is included in
+        Claude subscription plans or used through a Claude Console account.
+      url: https://code.claude.com/docs/en/overview
+      source_ids:
+        - claude-code-docs-overview
+        - anthropic-claude-3-7-sonnet
+    - name: Claude Agent SDK
+      kind: api
+      status: current
+      released: 2025-09-29
+      description: Python and TypeScript libraries that give developers the tools, agent loop, and context
+        management behind Claude Code, for building their own agents.
+      url: https://code.claude.com/docs/en/agent-sdk/overview
+      source_ids:
+        - claude-agent-sdk-docs
+        - anthropic-sonnet-4-5
+    - name: Claude Platform (Claude API)
+      kind: api
+      status: current
+      released: 2023-03
+      description: Anthropic's API for Claude models, with keys issued in the Claude Console. Anthropic
+        has offered Claude through an API since March 2023.
+      url: https://platform.claude.com/docs/en/home
+      source_ids:
+        - claude-platform-docs
+        - claude-platform-features
+        - anthropic-introducing-claude
+    - name: Claude Managed Agents
+      kind: service
+      status: preview
+      released: null
+      description: Beta hosted agent harness on the Claude Platform. Claude sessions run in an
+        Anthropic-managed cloud sandbox or a self-hosted sandbox, with built-in tools and MCP
+        servers.
+      url: https://platform.claude.com/docs/en/managed-agents/overview
+      source_ids:
+        - claude-managed-agents-docs
+    - name: Claude Cowork
+      kind: agent
+      status: current
+      released: null
+      description: Brings Claude Code's agentic abilities to knowledge work beyond coding, on paid plans.
+        Since September 16, 2026 it has been merging into the main Claude app.
+      url: https://claude.com/product/cowork
+      source_ids:
+        - claude-cowork-support
+        - claude-cowork-merge
+    - name: Claude in Chrome
+      kind: app
+      status: current
+      released: 2025-08-25
+      description: Chrome extension that lets Claude read, click, and fill in forms on web pages. It began
+        as a pilot in August 2025 and became generally available on every paid plan on August 26,
+        2026.
+      url: https://claude.com/resources/articles/claude-in-chrome-generally-available
+      source_ids:
+        - claude-for-chrome-pilot
+        - claude-in-chrome-ga
+    - name: Claude for Microsoft 365
+      kind: app
+      status: current
+      released: null
+      description: Add-ins that put Claude inside Excel, PowerPoint, and Word (generally available on paid
+        plans) and Outlook (beta).
+      url: https://claude.com/claude-for-microsoft-365
+      source_ids:
+        - claude-m365
+    - name: Claude Science
+      kind: app
+      status: preview
+      released: 2026-06-30
+      description: Beta app for macOS and Linux that Anthropic calls "an AI workbench for scientists." It is offered
+        on Pro, Max, Team, and Enterprise plans.
+      url: https://www.anthropic.com/news/claude-science-ai-workbench
+      source_ids:
+        - claude-science-news
+    - name: Claude Security
+      kind: service
+      status: preview
+      released: 2026-04-30
+      description: Scans codebases for vulnerabilities and generates targeted patches. Public beta for
+        Enterprise customers; formerly the Claude Code Security research preview.
+      url: https://claude.com/blog/claude-security-public-beta
+      source_ids:
+        - claude-security-beta
+    - name: Model Context Protocol (MCP)
+      kind: platform
+      status: current
+      released: 2024-11-25
+      description: Open standard Anthropic introduced for connecting AI applications to external data
+        sources and tools. Anthropic donated it to the Agentic AI Foundation in December 2025.
+      url: https://modelcontextprotocol.io
+      source_ids:
+        - anthropic-mcp-intro
+        - anthropic-mcp-donation
+  timeline:
+    - date: 2023-03-14
+      text: Anthropic introduced Claude and Claude Instant through a chat interface and an API.
+      source_ids:
+        - anthropic-introducing-claude
+    - date: 2023-07-11
+      text: Anthropic released Claude 2 and opened the claude.ai beta website in the US and UK.
+      source_ids:
+        - anthropic-claude-2
+    - date: 2023-09-19
+      text: Anthropic announced the Long-Term Benefit Trust, and version 1.0 of its Responsible Scaling
+        Policy took effect.
+      source_ids:
+        - anthropic-ltbt
+        - anthropic-rsp
+    - date: 2023-11-21
+      text: Claude 2.1 added a 200K-token context window, system prompts, and beta tool use.
+      source_ids:
+        - anthropic-claude-2-1
+    - date: 2024-03-04
+      text: Anthropic introduced the Claude 3 family (Claude 3 Opus, Claude 3 Sonnet, and Claude 3 Haiku).
+      source_ids:
+        - anthropic-claude-3-family
+    - date: 2024-06
+      text: Anthropic released Claude 3.5 Sonnet and a preview of Artifacts on Claude.ai.
+      source_ids:
+        - anthropic-claude-3-5-sonnet
+    - date: 2024-10-15
+      text: Version 2.0 of the Responsible Scaling Policy took effect.
+      source_ids:
+        - anthropic-rsp
+    - date: 2024-10-22
+      text: Anthropic released an upgraded Claude 3.5 Sonnet and Claude 3.5 Haiku, and opened a public
+        beta of computer use.
+      source_ids:
+        - anthropic-computer-use
+    - date: 2024-11-25
+      text: Anthropic introduced the Model Context Protocol as an open standard.
+      source_ids:
+        - anthropic-mcp-intro
+    - date: 2025-02-10
+      text: Anthropic launched the Anthropic Economic Index and published its dataset on Hugging Face.
+      source_ids:
+        - anthropic-economic-index-launch
+    - date: 2025-02-24
+      text: Anthropic released Claude 3.7 Sonnet and a limited research preview of Claude Code.
+      source_ids:
+        - anthropic-claude-3-7-sonnet
+    - date: 2025-05-22
+      text: Anthropic released Claude Opus 4 and Claude Sonnet 4, made Claude Code generally available,
+        and turned on ASL-3 protections for Claude Opus 4.
+      source_ids:
+        - anthropic-claude-4
+        - anthropic-asl3
+    - date: 2025-06-06
+      text: Anthropic announced Claude Gov models for U.S. national security customers.
+      source_ids:
+        - anthropic-claude-gov
+    - date: 2025-08-12
+      text: Anthropic offered Claude for Enterprise and Claude for Government to all three branches of the
+        U.S. government through GSA's OneGov program.
+      source_ids:
+        - anthropic-three-branches
+    - date: 2025-08-25
+      text: Anthropic began a pilot of Claude for Chrome, a browser extension.
+      source_ids:
+        - claude-for-chrome-pilot
+    - date: 2025-09-29
+      text: Anthropic released Claude Sonnet 4.5 and the Claude Agent SDK.
+      source_ids:
+        - anthropic-sonnet-4-5
+    - date: 2025-11-04
+      text: Anthropic published commitments to preserve the weights of publicly released models.
+      source_ids:
+        - anthropic-deprecation-commitments
+    - date: 2025-11-24
+      text: Anthropic released Claude Opus 4.5.
+      source_ids:
+        - claude-opus-4-5-docs
+    - date: 2025-12-09
+      text: Anthropic donated the Model Context Protocol to the Agentic AI Foundation under the Linux
+        Foundation.
+      source_ids:
+        - anthropic-mcp-donation
+    - date: 2026-01-22
+      text: Anthropic published a new constitution for Claude under a CC0 public domain dedication.
+      source_ids:
+        - anthropic-constitution-2026
+    - date: 2026-02
+      text: Anthropic released Claude Opus 4.6 (February 5) and Claude Sonnet 4.6 (February 17).
+      source_ids:
+        - claude-opus-4-6-docs
+        - claude-sonnet-4-6-docs
+    - date: 2026-02-24
+      text: Version 3.0 of the Responsible Scaling Policy, a full rewrite, took effect.
+      source_ids:
+        - anthropic-rsp
+    - date: 2026-02-27
+      text: GSA removed Anthropic from USAi.gov and its Multiple Award Schedule, citing a presidential
+        directive.
+      source_ids:
+        - gsa-feb-2026-directive
+    - date: 2026-03-03
+      text: The Secretary of War made a determination to exclude Claude from the Department of War's
+        supply chain.
+      source_ids:
+        - dccir-anthropic-v-dow
+    - date: 2026-03-26
+      text: A federal district court in Northern California issued a preliminary injunction against the
+        directive, and GSA later restored Anthropic's earlier status.
+      source_ids:
+        - gsa-injunction-statement
+    - date: 2026-04-07
+      text: Anthropic announced Project Glasswing and gave partners access to Claude Mythos Preview.
+      source_ids:
+        - anthropic-glasswing
+    - date: 2026-04-16
+      text: Anthropic released Claude Opus 4.7.
+      source_ids:
+        - claude-opus-4-7-docs
+    - date: 2026-05-28
+      text: Anthropic released Claude Opus 4.8.
+      source_ids:
+        - claude-opus-4-8-docs
+    - date: 2026-06-09
+      text: Anthropic released Claude Fable 5 and Claude Mythos 5.
+      source_ids:
+        - anthropic-fable-mythos-5
+    - date: 2026-06-30
+      text: Anthropic released Claude Sonnet 5 and a beta of Claude Science.
+      source_ids:
+        - anthropic-sonnet-5
+        - claude-science-news
+    - date: 2026-07-24
+      text: Anthropic released Claude Opus 5.
+      source_ids:
+        - anthropic-opus-5
+    - date: 2026-08-26
+      text: Claude in Chrome became generally available on every paid plan.
+      source_ids:
+        - claude-in-chrome-ga
+    - date: 2026-08-27
+      text: The Northern District of California set aside the Department of War's designation of Anthropic
+        as a supply chain risk under 10 U.S.C. § 3252.
+      source_ids:
+        - dccir-anthropic-v-dow
+    - date: 2026-09-01
+      text: Anthropic released Claude Fable 5.1 and Claude Mythos 5.1.
+      source_ids:
+        - anthropic-fable-mythos-5-1
+        - claude-fable-5-1-docs
+    - date: 2026-09-16
+      text: Anthropic began merging Claude Cowork and chat into one Claude experience.
+      source_ids:
+        - claude-cowork-merge
+    - date: 2026-09-22
+      text: Anthropic released Claude Opus 5.5.
+      source_ids:
+        - anthropic-opus-5-5
+    - date: 2026-09-25
+      text: The D.C. Circuit denied Anthropic's petitions for review of its exclusion under 41 U.S.C. §
+        4713.
+      source_ids:
+        - dccir-anthropic-v-dow
+    - date: 2026-09-28
+      text: Anthropic released Claude Sonnet 5.5.
+      source_ids:
+        - anthropic-sonnet-5-5
+    - date: 2026-10-07
+      text: Anthropic released Claude Haiku 5.5.
+      source_ids:
+        - anthropic-haiku-5-5
+    - date: 2026-10-08
+      text: Anthropic announced Usage Policy updates, the Anthropic Cyber Mission, and commitments to the
+        Genesis Mission.
+      source_ids:
+        - anthropic-usage-policy-2026-update
+        - anthropic-cyber-mission
+        - anthropic-genesis-commitment
+  leadership:
+    - name: Dario Amodei
+      role: Co-Founder and Chief Executive Officer
+      source_ids:
+        - anthropic-leadership
+    - name: Daniela Amodei
+      role: Co-Founder and President
+      source_ids:
+        - anthropic-leadership
+    - name: Tom Brown
+      role: Co-Founder and Chief Compute Officer
+      source_ids:
+        - anthropic-leadership
+    - name: Jack Clark
+      role: Co-Founder and Head of Public Benefit
+      source_ids:
+        - anthropic-leadership
+    - name: Jared Kaplan
+      role: Co-Founder and Chief Science Officer
+      source_ids:
+        - anthropic-leadership
+    - name: Sam McCandlish
+      role: Co-Founder and Chief Architect
+      source_ids:
+        - anthropic-leadership
+    - name: Chris Olah
+      role: Co-Founder and Interpretability Research Lead
+      source_ids:
+        - anthropic-leadership
+    - name: Mariano-Florentino (Tino) Cuéllar
+      role: Chief Global Affairs Officer
+      source_ids:
+        - anthropic-leadership
+    - name: Rahul Patil
+      role: Chief Technology Officer
+      source_ids:
+        - anthropic-leadership
+    - name: Krishna Rao
+      role: Chief Financial Officer
+      source_ids:
+        - anthropic-leadership
+    - name: Paul Smith
+      role: Chief Commercial Officer
+      source_ids:
+        - anthropic-leadership
+    - name: Ami Vora
+      role: Chief Product Officer
+      source_ids:
+        - anthropic-leadership

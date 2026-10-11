@@ -12,7 +12,11 @@ summary:
   source_ids: [spacex-10q-2026q2, grok-home, xai-api-docs]
 organization_roles: [model-developer, consumer-products, developer-platform, compute-infrastructure]
 ownership_category: unit-of-another-organization
-legal_form: null
+legal_form:
+  text: >-
+    Limited liability company (X.AI Holdings LLC, per SpaceX's March 2026 draft registration
+    statement; SpaceXAI is a doing-business-as name of XAI LLC, per xAI's 2026 model cards)
+  source_ids: [spacex-drs-2026-03, xai-grok-4-7-model-card]
 parent_org_slug: spacex
 parent_relationship: subsidiary
 headquarters:
@@ -21,6 +25,12 @@ headquarters:
   source_ids: [xai-holdings-form-d-2026]
 other_locations:
   - label: Memphis, Tennessee (COLOSSUS data center)
+    country: US
+    source_ids: [spacex-drs-2026-03]
+  - label: Memphis, Tennessee (MACROHARD data center)
+    country: US
+    source_ids: [spacex-drs-2026-03]
+  - label: Southaven, Mississippi (MACROHARDRR data center)
     country: US
     source_ids: [spacex-drs-2026-03]
 founded:
@@ -33,23 +43,26 @@ status_note:
     which became a wholly owned subsidiary; xAI had itself acquired X Holdings Corp. in
     March 2025. SpaceX, a Texas corporation with principal executive offices in Starbase,
     Texas, completed its initial public offering in June 2026 and reports Grok, X, and AI
-    infrastructure in its AI segment. In September 2026 xAI's website used the name
-    SpaceXAI, and its footer read SpaceXAI LLC. As of October 11, 2026, its developer
+    infrastructure in its AI segment. In September 2026 xAI's website used the name SpaceXAI; by
+    October 2026 its page titles used SpaceXSI while its footer still read SpaceXAI LLC. As of October 11, 2026, its developer
     documentation at docs.x.ai is titled "SpaceXSI Docs", describes itself as the official
     SpaceXSI API documentation, and opens with "Get started with SpaceX Super Intelligence",
-    while the company's job board still carried the name SpaceXAI. No change to the
-    company's legal name has been documented.
-  source_ids: [spacex-10q-2026q2, xai-joins-spacex, spacexsi-docs-overview, xai-greenhouse-board]
+    while the company's job board still carried the name SpaceXAI. xAI's model cards for Grok
+    4.5, 4.6, and 4.7 (July to September 2026) state that SpaceXAI is a doing-business-as name
+    of XAI LLC, and SpaceX's March 2026 draft registration statement defines xAI as X.AI
+    Holdings LLC (formerly X.AI Holdings Corp.) together with its subsidiaries. USASI has found
+    no official announcement of the SpaceXSI name.
+  source_ids: [spacex-10q-2026q2, xai-joins-spacex, spacexsi-docs-overview, xai-greenhouse-board, xai-grok-4-5-model-card, xai-grok-4-6-model-card, xai-grok-4-7-model-card, spacex-drs-2026-03]
 products:
   - id: grok
     name: Grok
     kind: assistant-app
     access: >-
-      AI assistant used through the grok.com web app after signing in, with iOS and
-      Android apps and a Grok account on X.
+      AI assistant on grok.com and in iOS and Android apps; signing in syncs conversations and
+      subscriptions. Grok also answers as @grok on X.
     url: https://grok.com/
-    source_ids: [grok-home, xai-grok-os]
-    last_reviewed: 2026-09-29
+    source_ids: [grok-home, xai-docs-grok-overview, xai-grok-prompts-repo]
+    last_reviewed: 2026-10-11
   - id: xai-api
     name: xAI API
     kind: hosted-model-api
@@ -63,12 +76,22 @@ products:
     name: Grok Build
     kind: developer-tool
     access: >-
-      Terminal coding agent with prebuilt binaries for macOS, Linux, and Windows; its
-      first-party code is published under Apache 2.0 and it authenticates through the
-      browser on first launch.
+      Terminal coding agent (launched in early beta on May 25, 2026) with interactive, headless, and Agent
+      Client Protocol modes and prebuilt binaries for macOS, Linux, and Windows. xAI released its
+      own source code under Apache 2.0 on July 15, 2026. Since August 19, 2026, xAI also uses the
+      name Grok Build for in-chat app building on grok.com and the mobile apps.
     url: https://github.com/xai-org/grok-build
-    source_ids: [xai-grok-build-repo]
-    last_reviewed: 2026-09-29
+    source_ids: [xai-grok-build-repo, xai-news-grok-build-cli, xai-news-grok-build-open-source, xai-news-grok-build-web-mobile]
+    last_reviewed: 2026-10-11
+  - id: grok-bot
+    name: Grok Bot
+    kind: developer-tool
+    access: >-
+      AI "teammates" that run on their own persistent cloud computers, in beta since August 11,
+      2026; included with SuperGrok and Cursor plans, with Enterprise and Team Bots versions.
+    url: https://x.ai/news/introducing-grok-bot
+    source_ids: [xai-news-introducing-grok-bot, xai-news-grok-bot-more-plans, xai-news-grok-bot-enterprise, xai-news-team-bots]
+    last_reviewed: 2026-10-11
 notable_facts: []
 eligibility:
   status: eligible
@@ -85,8 +108,10 @@ openness_summary:
   text: >-
     xAI's current Grok models are offered as hosted services through the Grok apps and
     the xAI API. xAI has published weights for two earlier models on Hugging Face: Grok-1
-    under Apache 2.0 and Grok 2 under a custom xAI Community License.
-  source_ids: [xai-api-docs, hf-xai-org, xai-grok-os, hf-grok-2-license]
+    under Apache 2.0 and Grok 2 under a custom xAI Community License. It also publishes the
+    Grok Build agent's own source code under Apache 2.0 and its consumer Grok system prompts
+    under AGPL-3.0.
+  source_ids: [xai-api-docs, hf-xai-org, xai-grok-os, hf-grok-2-license, xai-grok-build-repo, xai-grok-prompts-repo]
 hiring_url: null
 careers:
   url: https://x.ai/careers
@@ -236,6 +261,560 @@ sources:
     kind: license
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
+  - id: xai-release-notes
+    title: Release Notes
+    url: https://docs.x.ai/developers/release-notes
+    publisher: SpaceXAI
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-news-announcing-grok
+    title: Announcing Grok
+    url: https://x.ai/news/grok
+    publisher: xAI
+    kind: announcement
+    published_at: 2023-11-03
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-1-5
+    title: Announcing Grok-1.5
+    url: https://x.ai/news/grok-1.5
+    publisher: xAI
+    kind: announcement
+    published_at: 2024-03-28
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-1-5v
+    title: Grok-1.5 Vision Preview
+    url: https://x.ai/news/grok-1.5v
+    publisher: xAI
+    kind: announcement
+    published_at: 2024-04-12
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-2
+    title: Grok-2 Beta Release
+    url: https://x.ai/news/grok-2
+    publisher: xAI
+    kind: announcement
+    published_at: 2024-08-13
+    accessed_at: 2026-10-11
+  - id: xai-news-aurora
+    title: Grok Image Generation Release
+    url: https://x.ai/news/grok-image-generation-release
+    publisher: xAI
+    kind: announcement
+    published_at: 2024-12-09
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-1212
+    title: Bringing Grok to Everyone
+    url: https://x.ai/news/grok-1212
+    publisher: xAI
+    kind: announcement
+    published_at: 2024-12-12
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-3
+    title: "Grok 3 Beta: The Age of Reasoning Agents"
+    url: https://x.ai/news/grok-3
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-02-19
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4
+    title: Grok 4
+    url: https://x.ai/news/grok-4
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-07-09
+    accessed_at: 2026-10-11
+  - id: xai-news-government
+    title: Announcing xAI for Government
+    url: https://x.ai/news/government
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-07-14
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-code-fast-1
+    title: Grok Code Fast 1
+    url: https://x.ai/news/grok-code-fast-1
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-08-28
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-fast
+    title: Grok 4 Fast
+    url: https://x.ai/news/grok-4-fast
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-09-19
+    accessed_at: 2026-10-11
+  - id: xai-news-onegov
+    title: Expanding xAI for Government with GSA OneGov
+    url: https://x.ai/news/onegov
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-09-25
+    accessed_at: 2026-10-11
+  - id: gsa-xai-onegov-2025
+    title: GSA and xAI Partner on … per Agency Agreement to Accelerate Federal AI Adoption (title
+      shortened; price omitted)
+    url: https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-xai-partner-to-accelerate-federal-ai-adoption-09252025
+    publisher: U.S. General Services Administration
+    kind: announcement
+    published_at: 2025-09-25
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-1
+    title: Grok 4.1
+    url: https://x.ai/news/grok-4-1
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-11-17
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-1-fast
+    title: Grok 4.1 Fast and Agent Tools API
+    url: https://x.ai/news/grok-4-1-fast
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-11-19
+    accessed_at: 2026-10-11
+  - id: xai-news-ksa
+    title: Grok goes Global with KSA
+    url: https://x.ai/news/grok-goes-global
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-11-19
+    accessed_at: 2026-10-11
+  - id: xai-news-voice-agent-api
+    title: Grok Voice Agent API
+    url: https://x.ai/news/grok-voice-agent-api
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-12-17
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-business
+    title: Introducing Grok Business and Grok Enterprise
+    url: https://x.ai/news/grok-business
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-12-30
+    accessed_at: 2026-10-11
+  - id: xai-news-imagine-api
+    title: Grok Imagine API
+    url: https://x.ai/news/grok-imagine-api
+    publisher: xAI
+    kind: announcement
+    published_at: 2026-01-28
+    accessed_at: 2026-10-11
+  - id: xai-news-custom-voices
+    title: Custom Voices
+    url: https://x.ai/news/grok-custom-voices
+    publisher: xAI
+    kind: announcement
+    published_at: 2026-04-30
+    accessed_at: 2026-10-11
+  - id: xai-news-anthropic-compute
+    title: New Compute Partnership with Anthropic
+    url: https://x.ai/news/anthropic-compute-partnership
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-10-11
+  - id: xai-news-imagine-quality-mode
+    title: Grok Imagine Quality Mode API
+    url: https://x.ai/news/grok-imagine-quality-mode
+    publisher: xAI
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-build-cli
+    title: Introducing Grok Build
+    url: https://x.ai/news/grok-build-cli
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-05-25
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-build-0-1
+    title: Grok Build 0.1 on API
+    url: https://x.ai/news/grok-build-0-1
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-05-29
+    accessed_at: 2026-10-11
+  - id: xai-news-imagine-1-5-preview
+    title: Grok Imagine 1.5 Preview
+    url: https://x.ai/news/grok-imagine-1-5
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-06-03
+    accessed_at: 2026-10-11
+  - id: xai-news-imagine-video-1-5
+    title: Grok Imagine Video 1.5
+    url: https://x.ai/news/grok-imagine-video-1-5
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-06-16
+    accessed_at: 2026-10-11
+  - id: xai-news-word-addin
+    title: Introducing Grok for Word
+    url: https://x.ai/news/introducing-word-addin
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-06-18
+    accessed_at: 2026-10-11
+  - id: xai-news-databricks
+    title: Grok on Databricks
+    url: https://x.ai/news/grok-databricks
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-06-18
+    accessed_at: 2026-10-11
+  - id: xai-news-voice-agent-builder
+    title: Introducing the Voice Agent Builder
+    url: https://x.ai/news/grok-voice-agent-builder
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-07-01
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-build-open-source
+    title: Grok Build is Now Open Source
+    url: https://x.ai/news/grok-build-open-source
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-07-15
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-5
+    title: Introducing Grok 4.5
+    url: https://x.ai/news/grok-4-5
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-07-16
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-5-everywhere
+    title: Bringing Grok 4.5 to iOS, Android, Web, and X
+    url: https://x.ai/news/grok-4-5-everywhere
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-07-22
+    accessed_at: 2026-10-11
+  - id: xai-news-google-workspace
+    title: Grok in Google Workspace
+    url: https://x.ai/news/introducing-google-workspace-addon
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-07-24
+    accessed_at: 2026-10-11
+  - id: xai-news-build-mode
+    title: Introducing Build Mode
+    url: https://x.ai/news/grok-build-mode
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-07-28
+    accessed_at: 2026-10-11
+  - id: xai-news-imagine-video-references
+    title: Imagine Video 1.5 with References
+    url: https://x.ai/news/grok-imagine-video-1-5-references
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-07-31
+    accessed_at: 2026-10-11
+  - id: xai-news-imagine-image-2
+    title: Imagine Image 2.0
+    url: https://x.ai/news/grok-imagine-image-2
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-08-07
+    accessed_at: 2026-10-11
+  - id: xai-news-introducing-grok-bot
+    title: Introducing Grok Bot
+    url: https://x.ai/news/introducing-grok-bot
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-08-11
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-6
+    title: Introducing Grok 4.6
+    url: https://x.ai/news/grok-4-6
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-08-12
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-build-web-mobile
+    title: Grok Build on web and mobile
+    url: https://x.ai/news/grok-build-for-everyone
+    publisher: SpaceXSI
+    kind: announcement
+    published_at: 2026-08-19
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-6-vertex
+    title: Grok 4.6 on Gemini Enterprise Agent Platform
+    url: https://x.ai/news/grok-4-6-vertex-ai
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-08-21
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-bot-more-plans
+    title: Grok Bot is now included with more plans
+    url: https://x.ai/news/grok-bot-more-plans
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-08-26
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-bot-x
+    title: Grok Bot now works with X
+    url: https://x.ai/news/grok-bot-and-x
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-08-29
+    accessed_at: 2026-10-11
+  - id: xai-news-biosecurity
+    title: Biosecurity at the frontier
+    url: https://x.ai/news/biosafety-at-the-frontier
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-09-01
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-bot-enterprise
+    title: Grok Bot for Enterprise
+    url: https://x.ai/news/grok-bot-for-enterprise
+    publisher: SpaceXAI
+    kind: announcement
+    published_at: 2026-09-03
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-4-7
+    title: Introducing Grok 4.7
+    url: https://x.ai/news/grok-4-7
+    publisher: SpaceXSI
+    kind: announcement
+    published_at: 2026-09-21
+    accessed_at: 2026-10-11
+  - id: xai-news-grok-bot-support
+    title: How SpaceXSI is using Grok Bot to scale customer support
+    url: https://x.ai/news/grok-bot-customer-support
+    publisher: SpaceXSI
+    kind: announcement
+    published_at: 2026-09-22
+    accessed_at: 2026-10-11
+  - id: xai-news-team-bots
+    title: "Team Bots: shared AI teammates that learn as they work"
+    url: https://x.ai/news/team-bots
+    publisher: SpaceXSI
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-11
+  - id: xai-rmf-draft-2025
+    title: xAI Risk Management Framework (Draft)
+    url: https://data.x.ai/2025.02.20-RMF-Draft.pdf
+    publisher: xAI
+    kind: official-page
+    published_at: 2025-02-20
+    accessed_at: 2026-10-11
+  - id: xai-rmf-2025-08
+    title: xAI Risk Management Framework
+    url: https://data.x.ai/2025-08-20-xai-risk-management-framework.pdf
+    publisher: xAI
+    kind: official-page
+    published_at: 2025-08-20
+    accessed_at: 2026-10-11
+  - id: xai-faif-2025-12
+    title: xAI Frontier Artificial Intelligence Framework
+    url: https://data.x.ai/2025-12-31-xai-frontier-artificial-intelligence-framework.pdf
+    publisher: xAI
+    kind: official-page
+    published_at: 2025-12-30
+    accessed_at: 2026-10-11
+  - id: xai-grok-4-model-card
+    title: Grok 4 Model Card
+    url: https://data.x.ai/2025-08-20-grok-4-model-card.pdf
+    publisher: xAI
+    kind: model-card
+    published_at: 2025-08-20
+    accessed_at: 2026-10-11
+  - id: xai-grok-4-fast-model-card
+    title: Grok 4 Fast Model Card
+    url: https://data.x.ai/2025-09-19-grok-4-fast-model-card.pdf
+    publisher: xAI
+    kind: model-card
+    published_at: 2025-09-19
+    accessed_at: 2026-10-11
+  - id: xai-grok-4-1-model-card
+    title: Grok 4.1 Model Card
+    url: https://data.x.ai/2025-11-17-grok-4-1-model-card.pdf
+    publisher: xAI
+    kind: model-card
+    published_at: 2025-11-17
+    accessed_at: 2026-10-11
+  - id: xai-grok-4-20-system-card
+    title: Grok 4.20 System Card
+    url: https://data.x.ai/2026-04-07-grok-4-20-model-card.pdf
+    publisher: xAI
+    kind: model-card
+    published_at: 2026-04-07
+    accessed_at: 2026-10-11
+  - id: xai-grok-4-5-model-card
+    title: "Model Card: Grok 4.5"
+    url: https://media.x.ai/v1/website/4p5-5184fdf9.pdf
+    publisher: SpaceXAI
+    kind: model-card
+    published_at: 2026-07-14
+    accessed_at: 2026-10-11
+  - id: xai-grok-4-6-model-card
+    title: "Model Card: Grok 4.6"
+    url: https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf
+    publisher: SpaceXAI
+    kind: model-card
+    published_at: 2026-08-12
+    accessed_at: 2026-10-11
+  - id: xai-grok-4-7-model-card
+    title: "Model Card: Grok 4.7"
+    url: https://media.x.ai/v1/website/4p7card-5eccc980.pdf
+    publisher: SpaceXAI
+    kind: model-card
+    published_at: 2026-09-21
+    accessed_at: 2026-10-11
+  - id: xai-grok-prompts-repo
+    title: xai-org/grok-prompts (GitHub repository)
+    url: https://github.com/xai-org/grok-prompts
+    publisher: xAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-api-security-faq
+    title: FAQ - API Security
+    url: https://docs.x.ai/developers/faq/security
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-regions
+    title: Regional Endpoints
+    url: https://docs.x.ai/developers/advanced-api-usage/regions
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-grok-overview
+    title: Welcome to Grok
+    url: https://docs.x.ai/grok/overview
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-grok-faq
+    title: FAQ - Grok Website / Apps
+    url: https://docs.x.ai/grok/faq
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-grok-bot-faq
+    title: Grok Bot frequently asked questions
+    url: https://docs.x.ai/grok-bot/faq
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-imagine
+    title: Imagine Overview
+    url: https://docs.x.ai/developers/model-capabilities/imagine
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-voice
+    title: Voice Overview
+    url: https://docs.x.ai/developers/model-capabilities/audio/voice
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-multi-agent
+    title: Multi Agent
+    url: https://docs.x.ai/developers/model-capabilities/text/multi-agent
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-may-15-retirement
+    title: May 15, 2026 Model Retirement
+    url: https://docs.x.ai/developers/migration/may-15-retirement
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-grok-4-3
+    title: Grok 4.3 (model page)
+    url: https://docs.x.ai/developers/models/grok-4.3
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-grok-4-20
+    title: Grok 4.20 (model page)
+    url: https://docs.x.ai/developers/models/grok-4.20
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-grok-4-7
+    title: Grok 4.7 (model page)
+    url: https://docs.x.ai/developers/models/grok-4.7
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-docs-build-overview
+    title: "Grok Build: SpaceXAI's Coding Agent"
+    url: https://docs.x.ai/build/overview
+    publisher: SpaceXAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: grokipedia-home
+    title: Grokipedia
+    url: https://grokipedia.com/
+    publisher: SpaceXAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: cursor-spacex-model-training
+    title: Cursor partners with SpaceX on model training
+    url: https://cursor.com/blog/spacex-model-training
+    publisher: Cursor (Anysphere, Inc.)
+    kind: announcement
+    published_at: 2026-04-21
+    accessed_at: 2026-10-11
+  - id: cursor-joining-spacex
+    title: Cursor is now a part of SpaceX
+    url: https://cursor.com/blog/joining-spacex
+    publisher: Cursor (Anysphere, Inc.)
+    kind: announcement
+    published_at: 2026-08-14
+    accessed_at: 2026-10-11
+  - id: spacex-q2-2026-release
+    title: SpaceX Reports Second Quarter 2026 Results (Exhibit 99.1)
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/earningsreleaseq22608042.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-08-04
+    accessed_at: 2026-10-11
+  - id: spacex-8k-2026-08-14
+    title: Space Exploration Technologies Corp. Form 8-K (Items 2.01, 3.02, and 9.01), August 14, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1181412/000162828026056945/spcx-20260814.htm
+    publisher: U.S. Securities and Exchange Commission (SpaceX filing)
+    kind: filing
+    published_at: 2026-08-14
+    accessed_at: 2026-10-11
+  - id: xai-corp-form-d-2025
+    title: X.AI Corp. Form D notice of exempt offering of securities
+    url: https://www.sec.gov/Archives/edgar/data/2002695/000200269525000001/xslFormDX01/primary_doc.xml
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-02-25
+    accessed_at: 2026-10-11
+  - id: hf-xai-models-api
+    title: Hugging Face model listing for the xai-org organization (API)
+    url: https://huggingface.co/api/models?author=xai-org
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-11
 profile:
   intended_users:
     text: >-
@@ -276,3 +855,1173 @@ profile:
       kind: model-hub
       source_ids: [review-hf-xai]
       reviewed_at: 2026-10-01
+deep_dive:
+  reviewed_at: 2026-10-11
+  overview:
+    - text: xAI develops the Grok family of AI models. It offers them through the Grok assistant on
+        grok.com and in iOS and Android apps, and through a developer API for code, text, voice,
+        image, and video. X.AI Corp. began operations in March 2023, and xAI announced Grok on
+        November 3, 2023.
+      source_ids:
+        - spacex-10q-2026q2
+        - xai-news-announcing-grok
+        - xai-docs-grok-overview
+        - spacexsi-docs-overview
+    - text: Since February 2, 2026, xAI has been a wholly owned subsidiary of SpaceX. SpaceX reports Grok,
+        AI products for consumers and businesses, the X platform, and AI computing infrastructure in
+        its AI segment. Before that, on March 28, 2025, xAI had acquired X Holdings Corp., the owner
+        of X.
+      source_ids:
+        - spacex-10q-2026q2
+        - xai-joins-spacex
+    - text: In 2026 the company's own pages use the names SpaceXAI and SpaceXSI. Its model cards from July
+        to September 2026 state that SpaceXAI is a doing-business-as name of XAI LLC and that "xAI"
+        and "SpaceXAI" may be used interchangeably, while its developer documentation is titled
+        SpaceXSI Docs.
+      source_ids:
+        - xai-grok-4-5-model-card
+        - xai-grok-4-7-model-card
+        - spacexsi-docs-overview
+    - text: "In 2026 xAI's releases have centered on coding and agent work: Grok 4.5, 4.6, and 4.7, which
+        xAI developed with Cursor's involvement; the Grok Build coding agent; and Grok Bot, which
+        runs AI \"teammates\" on their own cloud computers. Cursor's parent, Anysphere, Inc., became
+        a wholly owned SpaceX subsidiary on August 14, 2026."
+      source_ids:
+        - xai-news-grok-4-5
+        - xai-grok-4-6-model-card
+        - xai-grok-4-7-model-card
+        - xai-news-grok-build-cli
+        - xai-news-introducing-grok-bot
+        - spacex-8k-2026-08-14
+    - text: "SpaceX's filings describe xAI's data centers in Memphis, Tennessee, and Southaven,
+        Mississippi, named COLOSSUS, MACROHARD, and MACROHARDRR. xAI has published model weights for
+        two older models: Grok-1 under Apache 2.0 and Grok 2 under its own xAI Community License.
+        Its current models are offered only as hosted services."
+      source_ids:
+        - spacex-drs-2026-03
+        - xai-grok-os
+        - hf-grok-2-license
+        - hf-xai-org
+  sections:
+    - id: business-overview
+      title: What xAI does
+      intro:
+        text: SpaceX's Form 10-Q describes its AI segment as a vertically integrated AI platform. It spans
+          the Grok frontier language model, AI solutions for consumers and enterprises, the X
+          platform, and AI computing infrastructure.
+        source_ids:
+          - spacex-10q-2026q2
+      items:
+        - text: For consumers, Grok is an AI assistant on the web and in mobile apps, with chat, Grok Imagine
+            for images and video, voice conversations, file analysis, connectors to email, files,
+            and calendar, and Grok Bot. Paid SuperGrok plans raise usage limits, and Business and
+            Enterprise plans add team workspaces and organization controls.
+          source_ids:
+            - xai-docs-grok-overview
+        - text: For developers, xAI's API offers Grok models for code, text, voice, image, and video. Its
+            quickstart uses the OpenAI client library pointed at api.x.ai.
+          source_ids:
+            - spacexsi-docs-overview
+        - text: For organizations, xAI launched Grok Business and Grok Enterprise on December 30, 2025. xAI
+            says customer data in these plans is not used for training.
+          source_ids:
+            - xai-news-grok-business
+        - text: xAI also sells computing capacity. SpaceX's 10-Q says that in 2026 the AI segment entered into
+            cloud services arrangements that give customers continuous access to reserved compute
+            capacity. On May 6, 2026, xAI announced that Anthropic would get access to its Colossus
+            1 supercomputer.
+          source_ids:
+            - spacex-10q-2026q2
+            - xai-news-anthropic-compute
+        - text: xAI sells to governments under the name xAI for Government, launched on July 14, 2025.
+            SpaceX's draft registration statement defines "xAI Gov" as its offering that gives
+            government customers access to Grok models and related tools.
+          source_ids:
+            - xai-news-government
+            - spacex-drs-2026-03
+        - text: Grokipedia is an online encyclopedia whose footer reads "© 2026 SpaceXAI". The site says its
+            articles are written and fact-checked by Grok and corrected by readers. On October 11,
+            2026, it was labeled version 0.3.
+          source_ids:
+            - grokipedia-home
+        - text: SpaceX's March 2026 draft registration statement says it is developing Macrohard, an agentic
+            AI platform. It calls Macrohard a joint AI project with Tesla, built to emulate digital
+            workflows and help people operate computers.
+          source_ids:
+            - spacex-drs-2026-03
+    - id: grok-models
+      title: Grok models over time
+      intro:
+        text: "On October 11, 2026, xAI's API models page listed these text models: grok-4.7, grok-4.6,
+          grok-4.5, grok-4.3, the Grok 4.20 variants, and grok-build-0.1. It also listed Grok
+          Imagine image and video models and a speech-to-speech voice model."
+        source_ids:
+          - review-xai-models
+      items:
+        - text: Grok launched on November 3, 2023, running on Grok-1. On March 17, 2024, xAI published the
+            Grok-1 base model weights and architecture under Apache 2.0. It describes the model as a
+            314-billion-parameter mixture-of-experts model.
+          source_ids:
+            - xai-news-announcing-grok
+            - xai-grok-os
+        - text: Grok-1.5, announced March 28, 2024, extended the context window to 128,000 tokens. Grok-1.5V,
+            previewed April 12, 2024, added image understanding. With it, xAI released the
+            RealWorldQA benchmark under a CC BY-ND 4.0 license.
+          source_ids:
+            - xai-news-grok-1-5
+            - xai-news-grok-1-5v
+        - text: On August 13, 2024, Grok-2 and Grok-2 mini went into beta on X. In December 2024 the API
+            gained grok-2-1212 and grok-2-vision-1212. Grok 2 weights went on Hugging Face in August
+            2025 under the xAI Community License Agreement.
+          source_ids:
+            - xai-news-grok-2
+            - xai-news-grok-1212
+            - hf-xai-models-api
+            - hf-grok-2-license
+        - text: Grok 3 and Grok 3 mini arrived on February 19, 2025, adding a "Think" reasoning mode, the
+            DeepSearch research agent, and a 1-million-token context window. The Grok 3 models
+            became generally available on the API in April 2025.
+          source_ids:
+            - xai-news-grok-3
+            - xai-release-notes
+        - text: Grok 4 and Grok 4 Heavy were released on July 9, 2025, with native tool use and real-time
+            search. Grok 4 Heavy runs several lines of reasoning in parallel, and the Grok 4 API had
+            a 256,000-token context window.
+          source_ids:
+            - xai-news-grok-4
+        - text: "Several models followed in late 2025: grok-code-fast-1 for agentic coding (August 28), Grok 4
+            Fast with a 2-million-token context (September 19), Grok 4.1 for conversation (November
+            17), and Grok 4.1 Fast for tool calling (November 19)."
+          source_ids:
+            - xai-news-grok-code-fast-1
+            - xai-news-grok-4-fast
+            - xai-news-grok-4-1
+            - xai-news-grok-4-1-fast
+        - text: Grok 4.20 and Grok 4.20 Multi-agent went live in March 2026, both with a 1-million-token
+            context window. The multi-agent version, still in beta, runs 4 or 16 cooperating agents
+            for in-depth research. Its system card is dated April 7, 2026.
+          source_ids:
+            - xai-release-notes
+            - xai-docs-grok-4-20
+            - xai-docs-multi-agent
+            - xai-grok-4-20-system-card
+        - text: xAI's documentation lists grok-4.3 with a 1-million-token context window and text and image
+            input. It describes the model as fast and reliable, with strong tool calling and
+            instruction following. The documentation gives no release date.
+          source_ids:
+            - xai-docs-grok-4-3
+        - text: Grok 4.5 was released on July 16, 2026. xAI says it was trained alongside Cursor on tens of
+            thousands of NVIDIA GB300 GPUs. SpaceX's second-quarter results say it incorporates
+            SpaceX's 1.5-trillion-parameter V9 foundation model.
+          source_ids:
+            - xai-news-grok-4-5
+            - spacex-q2-2026-release
+        - text: Grok 4.6 (August 12, 2026) and Grok 4.7 (September 21, 2026) followed. Both have a
+            500,000-token context window, accept text and images, produce text, and support low,
+            medium, high, and xhigh reasoning effort. Grok 4.7 has a pretraining data cutoff of June
+            2026.
+          source_ids:
+            - xai-news-grok-4-6
+            - xai-news-grok-4-7
+            - xai-docs-grok-4-7
+            - xai-grok-4-7-model-card
+        - text: Grok 4.7 Fast is the same model as Grok 4.7. The release notes say it is offered only in
+            Cursor and Grok Build, not on the public API.
+          source_ids:
+            - xai-release-notes
+        - text: "On May 15, 2026, xAI retired several older API models: grok-3, grok-4-0709, the Grok 4 Fast
+            and Grok 4.1 Fast models, grok-code-fast-1, and grok-imagine-image-pro. Requests to
+            those names now go to grok-4.3, grok-build-0.1, or grok-imagine-image-quality."
+          source_ids:
+            - xai-docs-may-15-retirement
+    - id: how-to-use
+      title: Apps, API, and where Grok is available
+      items:
+        - text: The Grok assistant runs on grok.com and in iOS and Android apps. Signing in keeps
+            conversations, settings, and subscriptions in sync across them.
+          source_ids:
+            - xai-docs-grok-overview
+        - text: "xAI's help pages name the plans: a no-subscription tier, SuperGrok, SuperGrok Heavy, and X
+            Premium, including X Premium+. Linking an X account lets xAI apply X subscription
+            benefits. X handles X Premium subscriptions, and SpaceXAI does not oversee X's service
+            operations. Companions are offered only in the iOS app."
+          source_ids:
+            - xai-docs-grok-faq
+        - text: Grok is also built into X, including the "@grok" bot and a "Grok Explain" feature. xAI
+            publishes their system prompts on GitHub. Grok 4.5 reached grok.com, X, and the iOS and
+            Android apps on July 22, 2026.
+          source_ids:
+            - xai-grok-prompts-repo
+            - xai-news-grok-4-5-everywhere
+        - text: xAI says Grok runs in Tesla vehicles using the same voice technology as its Voice Agent API.
+            There it can check vehicle status, look up directions, and control navigation.
+          source_ids:
+            - xai-news-voice-agent-api
+        - text: The API offers chat and Responses endpoints, function calling, structured outputs, a Batch
+            API, Files and Collections storage, and server-side tools such as web search, X search,
+            code execution, and remote MCP servers.
+          source_ids:
+            - spacexsi-docs-overview
+            - xai-release-notes
+            - xai-news-grok-4-1-fast
+        - text: A US regional endpoint, us.api.x.ai, serves grok-4.7 and grok-4.6. xAI says it keeps request
+            handling, inference, safety moderation, and retained request data in the United States,
+            but files, collections, and server-side tools are not covered.
+          source_ids:
+            - xai-docs-regions
+        - text: Grok 4.5 through 4.7 are offered in Cursor on every plan tier. They are also reachable through
+            model gateways including OpenRouter, Vercel, Cloudflare, Snowflake, and Databricks
+            Mosaic.
+          source_ids:
+            - xai-grok-4-5-model-card
+            - xai-grok-4-6-model-card
+            - xai-grok-4-7-model-card
+        - text: Grok is also available on cloud platforms. xAI announced Databricks Agent Bricks on June 18,
+            2026, noting Amazon Bedrock in the same post, and Google's Gemini Enterprise Agent
+            Platform for Grok 4.6 on August 21, 2026.
+          source_ids:
+            - xai-news-databricks
+            - xai-news-grok-4-6-vertex
+        - text: Grok works inside Microsoft Word, Excel, PowerPoint, and Outlook through Microsoft 365 add-ins
+            (Grok for Word was announced June 18, 2026). A Google Workspace add-on for Docs, Sheets,
+            and Slides was announced July 24, 2026.
+          source_ids:
+            - xai-news-word-addin
+            - xai-news-grok-4-5-everywhere
+            - xai-news-google-workspace
+        - text: Grok Enterprise adds single sign-on, directory sync (SCIM), and audit and security controls.
+            An add-on called Enterprise Vault provides a dedicated data plane, application-level
+            encryption, and customer-managed encryption keys.
+          source_ids:
+            - xai-news-grok-business
+    - id: imagine-and-voice
+      title: Grok Imagine and Grok Voice
+      items:
+        - text: On December 9, 2024, xAI released Aurora on X. It is an image generation model that xAI
+            describes as an autoregressive mixture-of-experts network.
+          source_ids:
+            - xai-news-aurora
+        - text: The Grok Imagine API launched on January 28, 2026. It makes video with native audio from
+            images or text and edits existing video. It is also offered through partners including
+            fal, ComfyUI, Invideo, Flora, and HeyGen.
+          source_ids:
+            - xai-news-imagine-api
+        - text: "Imagine Video 1.5 came in three steps: an API preview on June 3, 2026; general release on
+            June 16, 2026, with Video 1.5 Fast on grok.com/imagine and the mobile apps; and on July
+            31, 2026, image and voice references, text-to-video, and native 1080p output."
+          source_ids:
+            - xai-news-imagine-1-5-preview
+            - xai-news-imagine-video-1-5
+            - xai-news-imagine-video-references
+        - text: Imagine Image 2.0 was released on August 7, 2026, as Quality Mode on grok.com/imagine and the
+            mobile apps, and as grok-imagine-image-2.0 on the API. The older
+            grok-imagine-image-quality model retires on November 2, 2026.
+          source_ids:
+            - xai-news-imagine-image-2
+            - xai-release-notes
+        - text: xAI's Imagine documentation lists videos of up to 15 seconds, and up to 14 reference images
+            and 3 voice references on grok-imagine-video-1.5. It says generated media is subject to
+            content policy review and is not used for training.
+          source_ids:
+            - xai-docs-imagine
+        - text: The Grok Voice Agent API launched on December 17, 2025. It follows the OpenAI Realtime API
+            specification and has an official LiveKit plugin. On October 11, 2026, the alias
+            grok-voice-latest pointed to grok-voice-think-fast-2.0.
+          source_ids:
+            - xai-news-voice-agent-api
+            - xai-docs-voice
+            - xai-release-notes
+        - text: Text-to-Speech became generally available in March 2026 and Speech to Text in April 2026.
+            grok-voice-transcribe-2.0 became the default speech-to-text model in September 2026, and
+            version 1.0 reached end of life on October 2, 2026. The documentation says speech to
+            text supports more than 38 languages.
+          source_ids:
+            - xai-release-notes
+            - xai-docs-voice
+        - text: Custom Voices, announced April 30, 2026, clones a voice from a short recording. Speakers
+            verify by reading a passphrase, and xAI says people cannot clone pre-existing recordings
+            or someone else's voice.
+          source_ids:
+            - xai-news-custom-voices
+        - text: The Voice Agent Builder, a no-code tool for setting up phone and web voice agents on Grok
+            Voice, entered beta on July 1, 2026.
+          source_ids:
+            - xai-news-voice-agent-builder
+    - id: agents-and-coding
+      title: Coding and agent products
+      items:
+        - text: grok-code-fast-1, announced August 28, 2025, was a reasoning model for agentic coding. It was
+            initially released quietly under the codename "sonic" and was offered through partners
+            including GitHub Copilot, Cursor, Cline, and Windsurf.
+          source_ids:
+            - xai-news-grok-code-fast-1
+        - text: Grok Build, a coding agent that runs in the terminal, launched in early beta on May 25, 2026,
+            for SuperGrok and X Premium Plus subscribers. It has a plan review mode, parallel
+            subagents, and support for AGENTS.md files, plugins, hooks, skills, and MCP servers. It
+            can also run without a screen in scripts, and other apps can use it through the Agent
+            Client Protocol.
+          source_ids:
+            - xai-news-grok-build-cli
+        - text: xAI released Grok Build's source code on July 15, 2026. The repository puts xAI's own code
+            under Apache 2.0, ships prebuilt binaries for macOS, Linux, and Windows, and does not
+            accept outside contributions.
+          source_ids:
+            - xai-news-grok-build-open-source
+            - xai-grok-build-repo
+        - text: The model behind Grok Build, grok-build-0.1, went into early access in May 2026 and into a
+            public API beta on May 29, 2026. Since May 15, 2026, requests to grok-code-fast-1 have
+            gone to it.
+          source_ids:
+            - xai-release-notes
+            - xai-news-grok-build-0-1
+            - xai-docs-may-15-retirement
+        - text: Grok also builds apps, games, websites, and dashboards from a description inside a chat. This
+            started as Build Mode for SuperGrok Heavy on July 28, 2026, and opened to every plan on
+            web, iOS, and Android on August 19, 2026. Published apps get a grok.me address.
+          source_ids:
+            - xai-news-build-mode
+            - xai-news-grok-build-web-mobile
+        - text: Grok Bot entered beta on August 11, 2026. Each Bot has its own cloud computer, signs in to the
+            tools a team uses, and asks for approval when needed. The help pages list apps for
+            macOS, Windows, Linux, iPhone, iPad, and Android. Grok Bot uses Cursor accounts and
+            sign-in.
+          source_ids:
+            - xai-news-introducing-grok-bot
+            - xai-docs-grok-bot-faq
+        - text: On August 26, 2026, Grok Bot was added to SuperGrok and Cursor plans. An X connector followed
+            on August 29, 2026, and an enterprise version with access, network, and audit controls
+            on September 3, 2026.
+          source_ids:
+            - xai-news-grok-bot-more-plans
+            - xai-news-grok-bot-x
+            - xai-news-grok-bot-enterprise
+        - text: Team Bots, shared Bots with their own context, plugins, credentials, and memory, entered
+            public beta on Teams and Enterprise plans on September 28, 2026.
+          source_ids:
+            - xai-news-team-bots
+        - text: Cursor announced a model-training partnership with SpaceX on April 21, 2026, to use SpaceXAI's
+            Colossus infrastructure. xAI's model cards say Grok 4.5, 4.6, and 4.7 received extra
+            training on anonymized Cursor workflow data.
+          source_ids:
+            - cursor-spacex-model-training
+            - xai-grok-4-5-model-card
+            - xai-grok-4-7-model-card
+    - id: safety-and-policies
+      title: Safety, policies, and data use
+      items:
+        - text: "xAI published a draft Risk Management Framework on February 20, 2025, and a Risk Management
+            Framework on August 20, 2025. Both focus on two kinds of risk: malicious use and loss of
+            control. The 2025 framework sorts the model behaviors it checks into abuse potential,
+            concerning tendencies, and dual-use capabilities."
+          source_ids:
+            - xai-rmf-draft-2025
+            - xai-rmf-2025-08
+        - text: Its Frontier Artificial Intelligence Framework, last updated December 30, 2025, says it
+            complies with California's Transparency in Frontier Artificial Intelligence Act. It
+            covers public transparency, third-party review, and information security.
+          source_ids:
+            - xai-faif-2025-12
+        - text: xAI has published safety model cards for Grok 4 (August 20, 2025), Grok 4 Fast (September 19,
+            2025), and Grok 4.1 (November 17, 2025), and a Grok 4.20 system card (April 7, 2026).
+            The 2026 cards for Grok 4.5, 4.6, and 4.7 are dated July 14, August 12, and September
+            21, 2026.
+          source_ids:
+            - xai-grok-4-model-card
+            - xai-grok-4-fast-model-card
+            - xai-grok-4-1-model-card
+            - xai-grok-4-20-system-card
+            - xai-grok-4-5-model-card
+            - xai-grok-4-6-model-card
+            - xai-grok-4-7-model-card
+        - text: The 2026 model cards say use of the models is subject to SpaceXAI's Acceptable Use Policy and
+            its Consumer and Enterprise Terms of Service. They also say the models are not meant to
+            make high-stakes decisions on their own in medicine, law, finance, or safety-critical
+            systems without human oversight and expert checks.
+          source_ids:
+            - xai-grok-4-5-model-card
+            - xai-grok-4-7-model-card
+        - text: The Grok 4.1 model card describes input filters that reject certain sensitive requests, such
+            as those involving biological or chemical weapons, self-harm, or child sexual abuse
+            material. For Grok 4.7, xAI announced a new safeguard stack and invite-only red-team
+            access for selected cybersecurity partners.
+          source_ids:
+            - xai-grok-4-1-model-card
+            - xai-news-grok-4-7
+        - text: xAI publishes system prompts for its consumer Grok products and some API models in the
+            xai-org/grok-prompts repository, licensed under AGPL-3.0.
+          source_ids:
+            - xai-grok-prompts-repo
+            - xai-grok-4-fast-model-card
+        - text: xAI's API security FAQ says requests and responses are stored encrypted for 30 days so abuse
+            can be checked, are not used for training, and are then deleted. It says xAI never
+            trains on API inputs or outputs without explicit permission. Teams can turn on Zero Data
+            Retention, and xAI says it is SOC 2 Type 2 compliant.
+          source_ids:
+            - xai-docs-api-security-faq
+        - text: In September 2026 the API added a safety_identifier field. Apps can use it to tie policy
+            violations to the individual people using the app.
+          source_ids:
+            - xai-release-notes
+        - text: On September 1, 2026, xAI published an outside evaluation of Grok 4.6 by LatchBio. It tested
+            whether the model can tell routine biology work from requests that hide a biosecurity
+            hazard, and whether it can carry out pathogen surveillance work.
+          source_ids:
+            - xai-news-biosecurity
+    - id: infrastructure-and-compute
+      title: Colossus and compute infrastructure
+      items:
+        - text: SpaceX's March 2026 draft registration statement names three data centers. COLOSSUS is the
+            flagship, on Paul R. Lowry Road in Memphis, Tennessee. MACROHARD is on Tulane Road in
+            Memphis. MACROHARDRR in Southaven, Mississippi, is described as the next phase of
+            expansion.
+          source_ids:
+            - spacex-drs-2026-03
+        - text: The same filing says the initial COLOSSUS cluster came online in 122 days inside the shell of
+            a former factory, and the initial MACROHARD cluster came online in 91 days.
+          source_ids:
+            - spacex-drs-2026-03
+        - text: The filing says COLOSSUS and MACROHARD together provide 0.7 gigawatts of compute power. It
+            puts the AI segment's nameplate compute draw at 0.8 gigawatts for 2025, up from 0.3
+            gigawatts in 2024, and says its data centers rely significantly on natural gas and gas
+            turbines.
+          source_ids:
+            - spacex-drs-2026-03
+        - text: SpaceX's second-quarter 2026 results say it expanded compute capacity to 1.4 gigawatts and
+            continued building out Colossus II.
+          source_ids:
+            - spacex-q2-2026-release
+        - text: xAI says Grok 3 was trained on its Colossus supercluster. For Grok 4, xAI says it used
+            Colossus, a 200,000-GPU cluster, to run reinforcement learning at pretraining scale.
+          source_ids:
+            - xai-news-grok-3
+            - xai-news-grok-4
+        - text: In May 2026 xAI described Colossus 1 as having more than 220,000 NVIDIA GPUs, including H100,
+            H200, and GB200 chips. The same announcement said xAI and Anthropic had discussed
+            working together on computing in orbit.
+          source_ids:
+            - xai-news-anthropic-compute
+        - text: "SpaceX's draft registration statement describes plans for orbital AI compute: satellites
+            acting as data centers in orbit, powered by sunlight. It also describes TERAFAB, a chip
+            manufacturing effort with Tesla announced in March 2026."
+          source_ids:
+            - spacex-drs-2026-03
+        - text: On November 19, 2025, xAI announced a partnership with Saudi Arabia and HUMAIN. The partners
+            plan to design, build, and run new GPU data centers in Saudi Arabia.
+          source_ids:
+            - xai-news-ksa
+    - id: corporate-structure
+      title: Corporate structure and governance
+      items:
+        - text: X.AI Corp. is a Nevada corporation incorporated in 2023. Its SEC Form D filings list its
+            principal place of business at 1450 Page Mill Road, Palo Alto, California.
+          source_ids:
+            - xai-corp-form-d-2025
+        - text: X.AI Holdings Corp., a Nevada corporation, filed a Form D in January 2026 at the same Palo
+            Alto address. It named Elon Musk as an executive officer and director and Jared Birchall
+            as an executive officer.
+          source_ids:
+            - xai-holdings-form-d-2026
+        - text: On March 28, 2025, xAI acquired X Holdings Corp. and X.AI Corp. through share exchanges. On
+            February 2, 2026, SpaceX acquired X.AI Holdings Corp., which became a wholly owned
+            subsidiary. SpaceX accounts for this as a merger of companies under common control.
+          source_ids:
+            - spacex-10q-2026q2
+        - text: SpaceX's March 2026 draft registration statement defines "xAI" as X.AI Holdings LLC, or before
+            the merger, X.AI Holdings Corp., together with its subsidiaries.
+          source_ids:
+            - spacex-drs-2026-03
+        - text: xAI's 2026 model cards say SpaceXAI is a doing-business-as name of XAI LLC. The footer of its
+            website reads SpaceXAI LLC.
+          source_ids:
+            - xai-grok-4-7-model-card
+            - xai-joins-spacex
+        - text: On August 14, 2026, a SpaceX subsidiary merged with Anysphere, Inc. (Cursor), which became a
+            wholly owned SpaceX subsidiary. xAI says Cursor became part of SpaceXSI that day, and
+            the two companies' support teams began merging.
+          source_ids:
+            - spacex-8k-2026-08-14
+            - xai-news-grok-bot-support
+        - text: SpaceX's draft registration statement says the Irish Data Protection Commission opened a
+            large-scale inquiry into GDPR compliance involving Grok within the X platform. It also
+            says the Federal Trade Commission has undertaken an inquiry into the AI segment's
+            chatbots, and that the segment faces ongoing litigation, including putative class
+            actions.
+          source_ids:
+            - spacex-drs-2026-03
+    - id: government
+      title: Government work
+      items:
+        - text: On July 14, 2025, xAI launched xAI for Government, starting with U.S. government customers. It
+            offers Grok models including Grok 4, Deep Search, and tool use, and is available to
+            federal agencies through the GSA schedule. xAI also announced a contract with the
+            Department of Defense the same day.
+          source_ids:
+            - xai-news-government
+        - text: In the same announcement, xAI said it planned to offer custom models for national security and
+            critical science, engineers with U.S. government clearances, and models for classified
+            or restricted environments.
+          source_ids:
+            - xai-news-government
+        - text: On September 25, 2025, GSA announced a OneGov agreement with xAI covering Grok 4 and Grok 4
+            Fast. It runs for 18 months, through March 2027, and includes dedicated xAI engineers,
+            training, and a path to FedRAMP and DoD Impact Level-aligned enterprise subscriptions.
+          source_ids:
+            - gsa-xai-onegov-2025
+            - xai-news-onegov
+        - text: SpaceX's draft registration statement says its business is subject to the Department of War's
+            Cybersecurity Maturity Model Certification requirements.
+          source_ids:
+            - spacex-drs-2026-03
+        - text: Under the November 19, 2025 Saudi Arabia partnership, xAI said Grok would roll out across the
+            country and be built into HUMAIN ONE, HUMAIN's agent platform, for government, business,
+            and public use.
+          source_ids:
+            - xai-news-ksa
+    - id: recent-updates
+      title: Recent updates (July to October 2026)
+      items:
+        - text: "July 15–16, 2026: xAI released Grok Build's source code and launched Grok 4.5 in Grok Build,
+            Cursor, and the API. On July 22, 2026, Grok 4.5 reached grok.com, X, and the mobile
+            apps."
+          source_ids:
+            - xai-news-grok-build-open-source
+            - xai-news-grok-4-5
+            - xai-news-grok-4-5-everywhere
+        - text: "July 24–31, 2026: xAI released the Google Workspace add-on (July 24), Build Mode (July 28),
+            and reference-based video generation in Imagine Video 1.5 (July 31)."
+          source_ids:
+            - xai-news-google-workspace
+            - xai-news-build-mode
+            - xai-news-imagine-video-references
+        - text: "August 7, 2026: xAI released Imagine Image 2.0 as Quality Mode in the Grok apps and as
+            grok-imagine-image-2.0 on the API."
+          source_ids:
+            - xai-news-imagine-image-2
+        - text: "August 11–12, 2026: Grok Bot entered beta, and Grok 4.6 was released with a focus on
+            long-running agents."
+          source_ids:
+            - xai-news-introducing-grok-bot
+            - xai-news-grok-4-6
+        - text: "August 14, 2026: SpaceX completed its acquisition of Cursor (Anysphere, Inc.)."
+          source_ids:
+            - spacex-8k-2026-08-14
+            - cursor-joining-spacex
+        - text: "August 19–29, 2026: Grok's app building opened to every plan (August 19), Grok 4.6 came to
+            Google's Gemini Enterprise Agent Platform (August 21), Grok Bot was added to more plans
+            (August 26), and Grok Bot gained an X connector (August 29)."
+          source_ids:
+            - xai-news-grok-build-web-mobile
+            - xai-news-grok-4-6-vertex
+            - xai-news-grok-bot-more-plans
+            - xai-news-grok-bot-x
+        - text: "September 1–3, 2026: xAI published LatchBio's biosecurity evaluation of Grok 4.6 and launched
+            Grok Bot for Enterprise."
+          source_ids:
+            - xai-news-biosecurity
+            - xai-news-grok-bot-enterprise
+        - text: "September 2026: The API added the safety_identifier field, and grok-voice-transcribe-2.0
+            became the default speech-to-text model."
+          source_ids:
+            - xai-release-notes
+        - text: "September 21, 2026: Grok 4.7 was released, with a model card. Grok 4.7 Fast was offered only
+            in Cursor and Grok Build. The model card says xAI plans to bring Grok 4.7 to its web and
+            mobile apps and to X later."
+          source_ids:
+            - xai-news-grok-4-7
+            - xai-grok-4-7-model-card
+            - xai-release-notes
+        - text: "September 28, 2026: Team Bots entered public beta."
+          source_ids:
+            - xai-news-team-bots
+        - text: "October 2, 2026: grok-voice-transcribe-1.0 reached end of life. On November 2, 2026,
+            grok-imagine-image-quality is scheduled to retire."
+          source_ids:
+            - xai-release-notes
+        - text: "October 11, 2026: xAI's developer documentation was titled SpaceXSI Docs and opened with
+            \"Get started with SpaceX Super Intelligence.\""
+          source_ids:
+            - spacexsi-docs-overview
+  lineup:
+    - name: Grok-1
+      kind: model
+      status: legacy
+      released: 2023-11-03
+      description: A 314-billion-parameter mixture-of-experts language model that powered Grok at launch.
+        Its base model weights were published on March 17, 2024 under Apache 2.0.
+      url: https://x.ai/news/grok-os
+      source_ids:
+        - xai-news-announcing-grok
+        - xai-grok-os
+        - hf-xai-org
+    - name: Grok-1.5
+      kind: model
+      status: legacy
+      released: 2024-03-28
+      description: A Grok-1 update with a 128,000-token context window, rolled out to Grok on X.
+      url: https://x.ai/news/grok-1.5
+      source_ids:
+        - xai-news-grok-1-5
+    - name: Grok-1.5V
+      kind: model
+      status: legacy
+      released: 2024-04-12
+      description: A preview model that added image understanding (documents, diagrams, charts,
+        screenshots, and photos) to Grok.
+      url: https://x.ai/news/grok-1.5v
+      source_ids:
+        - xai-news-grok-1-5v
+    - name: Grok-2
+      kind: model
+      status: legacy
+      released: 2024-08-13
+      description: Released in beta on X together with the smaller Grok-2 mini. Updated API versions
+        (grok-2-1212 and grok-2-vision-1212) followed in December 2024. Grok 2 weights were
+        published on Hugging Face in August 2025 under the xAI Community License.
+      url: https://x.ai/news/grok-2
+      source_ids:
+        - xai-news-grok-2
+        - xai-news-grok-1212
+        - hf-xai-models-api
+        - hf-grok-2-license
+    - name: Aurora
+      kind: model
+      status: legacy
+      released: 2024-12-09
+      description: An image generation model, described by xAI as an autoregressive mixture-of-experts
+        network, launched for Grok on X.
+      url: https://x.ai/news/grok-image-generation-release
+      source_ids:
+        - xai-news-aurora
+    - name: Grok 3
+      kind: model
+      status: retired
+      released: 2025-02-19
+      description: A model released with Grok 3 mini, a "Think" reasoning mode, and DeepSearch. It became
+        generally available on the API in April 2025, and grok-3 was retired from the API on May 15,
+        2026.
+      url: https://x.ai/news/grok-3
+      source_ids:
+        - xai-news-grok-3
+        - xai-release-notes
+        - xai-docs-may-15-retirement
+    - name: Grok 4
+      kind: model
+      status: retired
+      released: 2025-07-09
+      description: A reasoning model with native tool use and real-time search, released with Grok 4 Heavy
+        for the SuperGrok Heavy tier. Its API version, grok-4-0709, was retired on May 15, 2026.
+      url: https://x.ai/news/grok-4
+      source_ids:
+        - xai-news-grok-4
+        - xai-docs-may-15-retirement
+    - name: Grok Code Fast 1
+      kind: model
+      status: retired
+      released: 2025-08-28
+      description: A reasoning model for agentic coding (grok-code-fast-1), offered through the API and
+        coding-tool partners. It was retired on May 15, 2026, and requests now go to grok-build-0.1.
+      url: https://x.ai/news/grok-code-fast-1
+      source_ids:
+        - xai-news-grok-code-fast-1
+        - xai-docs-may-15-retirement
+    - name: Grok 4 Fast
+      kind: model
+      status: retired
+      released: 2025-09-19
+      description: A cost-focused reasoning model with a 2-million-token context window, offered in the
+        Grok apps and the API. It was retired from the API on May 15, 2026.
+      url: https://x.ai/news/grok-4-fast
+      source_ids:
+        - xai-news-grok-4-fast
+        - xai-docs-may-15-retirement
+    - name: Grok 4.1
+      kind: model
+      status: legacy
+      released: 2025-11-17
+      description: A model tuned for more natural conversation. It was offered on grok.com, X, and the iOS
+        and Android apps in Thinking and non-thinking versions.
+      url: https://x.ai/news/grok-4-1
+      source_ids:
+        - xai-news-grok-4-1
+        - xai-grok-4-1-model-card
+    - name: Grok 4.1 Fast
+      kind: model
+      status: retired
+      released: 2025-11-19
+      description: A tool-calling model with a 2-million-token context window, launched with the Agent
+        Tools API. It was retired on May 15, 2026, and requests now go to grok-4.3.
+      url: https://x.ai/news/grok-4-1-fast
+      source_ids:
+        - xai-news-grok-4-1-fast
+        - xai-docs-may-15-retirement
+    - name: Grok 4.20
+      kind: model
+      status: current
+      released: 2026-03
+      description: A model with reasoning and non-reasoning versions, a 1-million-token context window,
+        and text and image input, offered on the API and in the consumer apps.
+      url: https://docs.x.ai/developers/models/grok-4.20
+      source_ids:
+        - xai-release-notes
+        - xai-docs-grok-4-20
+        - review-xai-models
+
+        - xai-grok-4-20-system-card
+    - name: Grok 4.20 Multi-agent
+      kind: model
+      status: preview
+      released: 2026-03
+      description: A beta API model (grok-4.20-multi-agent) that runs 4 or 16 cooperating agents for
+        in-depth research, with a lead agent writing the final answer.
+      url: https://docs.x.ai/developers/model-capabilities/text/multi-agent
+      source_ids:
+        - xai-release-notes
+        - xai-docs-multi-agent
+    - name: Grok 4.3
+      kind: model
+      status: current
+      released: null
+      description: An API model (grok-4.3) with a 1-million-token context window and text and image input.
+        It receives requests sent to several models retired in May 2026.
+      url: https://docs.x.ai/developers/models/grok-4.3
+      source_ids:
+        - xai-docs-grok-4-3
+        - xai-docs-may-15-retirement
+    - name: Grok 4.5
+      kind: model
+      status: current
+      released: 2026-07-16
+      description: A model for coding, agentic tasks, and knowledge work, trained alongside Cursor. It is
+        offered in Grok Build, Cursor, the API, and since July 22, 2026, on grok.com, X, and the
+        mobile apps.
+      url: https://x.ai/news/grok-4-5
+      source_ids:
+        - xai-news-grok-4-5
+        - xai-news-grok-4-5-everywhere
+    - name: Grok 4.6
+      kind: model
+      status: current
+      released: 2026-08-12
+      description: An update to Grok 4.5 focused on long-running agents. It has a 500,000-token context
+        window and is offered in Cursor, Grok Build, the API, and partner platforms.
+      url: https://x.ai/news/grok-4-6
+      source_ids:
+        - xai-news-grok-4-6
+        - review-xai-models
+    - name: Grok 4.7
+      kind: model
+      status: current
+      released: 2026-09-21
+      description: A model for coding, agentic tasks, and knowledge work. It has a 500,000-token context
+        window and is offered in Cursor, Grok Build, the API (including the US regional endpoint),
+        Office add-ins, and model gateways.
+      url: https://x.ai/news/grok-4-7
+      source_ids:
+        - xai-news-grok-4-7
+        - xai-docs-grok-4-7
+        - xai-grok-4-7-model-card
+        - xai-docs-regions
+    - name: Grok 4.7 Fast
+      kind: model
+      status: limited
+      released: 2026-09
+      description: The same model as Grok 4.7, offered only in Cursor and Grok Build rather than on the
+        public API.
+      url: null
+      source_ids:
+        - xai-release-notes
+    - name: Grok Build 0.1
+      kind: model
+      status: preview
+      released: 2026-05-29
+      description: The coding model behind Grok Build (grok-build-0.1), offered on the API in public beta
+        with a 256,000-token context window.
+      url: https://x.ai/news/grok-build-0-1
+      source_ids:
+        - xai-news-grok-build-0-1
+        - review-xai-models
+    - name: Grok Imagine Image
+      kind: model
+      status: current
+      released: null
+      description: API image generation model (grok-imagine-image) listed on xAI's models page.
+      url: https://docs.x.ai/developers/model-capabilities/imagine
+      source_ids:
+        - xai-release-notes
+        - review-xai-models
+    - name: Grok Imagine Quality Mode
+      kind: model
+      status: legacy
+      released: 2026-05-06
+      description: An API image model (grok-imagine-image-quality) for image generation and editing. It is
+        scheduled to retire on November 2, 2026, after which requests go to grok-imagine-image-2.0.
+      url: https://x.ai/news/grok-imagine-quality-mode
+      source_ids:
+        - xai-news-imagine-quality-mode
+        - xai-release-notes
+    - name: Imagine Image 2.0
+      kind: model
+      status: current
+      released: 2026-08-07
+      description: An image generation and editing model, offered as Quality Mode on grok.com/imagine and
+        the mobile apps and as grok-imagine-image-2.0 on the API.
+      url: https://x.ai/news/grok-imagine-image-2
+      source_ids:
+        - xai-news-imagine-image-2
+    - name: Grok Imagine Video
+      kind: model
+      status: current
+      released: 2026-01-28
+      description: A video-and-audio generation model offered through the Grok Imagine API. The
+        documentation lists grok-imagine-video for video editing.
+      url: https://x.ai/news/grok-imagine-api
+      source_ids:
+        - xai-news-imagine-api
+        - xai-docs-imagine
+    - name: Grok Imagine Video 1.5
+      kind: model
+      status: current
+      released: 2026-06-16
+      description: A video model (grok-imagine-video-1.5) for text-to-video, image-to-video, and
+        reference-to-video, with native 1080p output. A lighter grok-imagine-video-1.5-lite is also
+        listed.
+      url: https://x.ai/news/grok-imagine-video-1-5
+      source_ids:
+        - xai-news-imagine-video-1-5
+        - xai-news-imagine-video-references
+        - review-xai-models
+    - name: Grok Voice Think Fast 2.0
+      kind: model
+      status: current
+      released: 2026-07
+      description: The speech-to-speech model behind the real-time Voice API (grok-voice-think-fast-2.0).
+        Since August 5, 2026, the grok-voice-latest alias has pointed to it.
+      url: https://docs.x.ai/developers/model-capabilities/audio/voice
+      source_ids:
+        - xai-release-notes
+        - xai-docs-voice
+    - name: Grok Voice Transcribe 2.0
+      kind: model
+      status: current
+      released: 2026-09
+      description: The default speech-to-text model (grok-voice-transcribe-2.0), with single-call and
+        streaming modes.
+      url: https://docs.x.ai/developers/model-capabilities/audio/voice
+      source_ids:
+        - xai-release-notes
+        - xai-docs-voice
+    - name: Grok
+      kind: app
+      status: current
+      released: 2023-11-03
+      description: xAI's AI assistant on grok.com and in iOS and Android apps, with chat, Grok Imagine,
+        voice, file analysis, and connectors, offered without a subscription and on paid SuperGrok
+        plans.
+      url: https://grok.com/
+      source_ids:
+        - xai-news-announcing-grok
+        - xai-docs-grok-overview
+        - xai-docs-grok-faq
+    - name: Grok on X
+      kind: service
+      status: current
+      released: null
+      description: Grok built into the X platform, including the "@grok" bot and a "Grok Explain" feature.
+        xAI publishes their system prompts.
+      url: null
+      source_ids:
+        - xai-grok-prompts-repo
+        - xai-news-grok-4-5-everywhere
+    - name: xAI API
+      kind: api
+      status: current
+      released: 2024-11
+      description: A developer API at api.x.ai for Grok text, code, image, video, and voice models. It
+        launched in public beta in November 2024 and is used with API keys from the console.
+      url: https://docs.x.ai/overview
+      source_ids:
+        - xai-release-notes
+        - spacexsi-docs-overview
+    - name: Grok Business and Grok Enterprise
+      kind: service
+      status: current
+      released: 2025-12-30
+      description: Grok plans for organizations with team management, SSO and SCIM (Enterprise), and an
+        optional Enterprise Vault with customer-managed encryption keys.
+      url: https://x.ai/news/grok-business
+      source_ids:
+        - xai-news-grok-business
+    - name: xAI for Government
+      kind: service
+      status: current
+      released: 2025-07-14
+      description: Grok models and tools for U.S. government customers, available through the GSA schedule
+        and a GSA OneGov agreement that runs through March 2027.
+      url: https://x.ai/news/government
+      source_ids:
+        - xai-news-government
+        - gsa-xai-onegov-2025
+    - name: Grok Bot
+      kind: agent
+      status: preview
+      released: 2026-08-11
+      description: AI "teammates" that each run on a persistent cloud computer and work across apps and
+        websites. It is offered in beta with SuperGrok and Cursor plans, for enterprises, and as
+        shared Team Bots.
+      url: https://x.ai/news/introducing-grok-bot
+      source_ids:
+        - xai-news-introducing-grok-bot
+        - xai-news-grok-bot-enterprise
+        - xai-news-team-bots
+    - name: Grok Build
+      kind: agent
+      status: preview
+      released: 2026-05-25
+      description: A terminal coding agent with interactive, headless, and Agent Client Protocol modes.
+        xAI's own source code for it has been published under Apache 2.0 since July 15, 2026.
+      url: https://docs.x.ai/build/overview
+      source_ids:
+        - xai-news-grok-build-cli
+        - xai-docs-build-overview
+        - xai-grok-build-repo
+    - name: Grok Build on web and mobile
+      kind: app
+      status: current
+      released: 2026-08-19
+      description: A Grok feature, originally called Build Mode, that builds working apps, games,
+        websites, and dashboards inside a chat on web, iOS, and Android. Published apps get grok.me
+        addresses.
+      url: https://x.ai/news/grok-build-for-everyone
+      source_ids:
+        - xai-news-grok-build-web-mobile
+        - xai-news-build-mode
+    - name: Grok for Microsoft 365
+      kind: app
+      status: current
+      released: 2026-06
+      description: Add-ins that put Grok inside Word, Excel, PowerPoint, and Outlook, installed from the
+        Microsoft Marketplace.
+      url: https://x.ai/news/introducing-word-addin
+      source_ids:
+        - xai-news-word-addin
+        - xai-news-grok-4-5-everywhere
+    - name: Grok in Google Workspace
+      kind: app
+      status: current
+      released: 2026-07-24
+      description: An add-on that puts Grok inside Google Docs, Sheets, and Slides, installed from the
+        Google Workspace Marketplace.
+      url: https://x.ai/news/introducing-google-workspace-addon
+      source_ids:
+        - xai-news-google-workspace
+    - name: Voice Agent Builder
+      kind: platform
+      status: preview
+      released: 2026-07-01
+      description: A no-code beta tool for setting up voice agents on Grok Voice, with phone service,
+        knowledge bases, tools, and guardrails.
+      url: https://x.ai/news/grok-voice-agent-builder
+      source_ids:
+        - xai-news-voice-agent-builder
+    - name: Grokipedia
+      kind: platform
+      status: current
+      released: null
+      description: An online encyclopedia run under the SpaceXAI name, whose site says its articles are written and fact-checked by
+        Grok. It was labeled version 0.3 on October 11, 2026.
+      url: https://grokipedia.com/
+      source_ids:
+        - grokipedia-home
+    - name: COLOSSUS
+      kind: hardware
+      status: current
+      released: null
+      description: The AI data center on Paul R. Lowry Road in Memphis, Tennessee, which SpaceX's draft
+        registration statement calls its flagship, used to train Grok models. In May 2026 xAI agreed to give Anthropic access to Colossus 1.
+      url: null
+      source_ids:
+        - spacex-drs-2026-03
+        - xai-news-grok-4
+        - xai-news-anthropic-compute
+  timeline:
+    - date: 2023-03
+      text: X.AI Corp. began operations.
+      source_ids:
+        - spacex-10q-2026q2
+    - date: 2023-11-03
+      text: xAI announced Grok, powered by Grok-1, in early access in the United States.
+      source_ids:
+        - xai-news-announcing-grok
+    - date: 2024-03-17
+      text: xAI published the Grok-1 base model weights and architecture under Apache 2.0.
+      source_ids:
+        - xai-grok-os
+    - date: 2024-03-28
+      text: xAI announced Grok-1.5 with a 128,000-token context window.
+      source_ids:
+        - xai-news-grok-1-5
+    - date: 2024-04-12
+      text: xAI previewed Grok-1.5V, which added image understanding.
+      source_ids:
+        - xai-news-grok-1-5v
+    - date: 2024-08-13
+      text: Grok-2 and Grok-2 mini were released in beta on X.
+      source_ids:
+        - xai-news-grok-2
+    - date: 2024-11
+      text: The xAI API launched in public beta.
+      source_ids:
+        - xai-release-notes
+    - date: 2024-12-09
+      text: xAI released the Aurora image generation model on X.
+      source_ids:
+        - xai-news-aurora
+    - date: 2024-12-12
+      text: xAI made an updated Grok-2 available to everyone on X and added grok-2-1212 to the API.
+      source_ids:
+        - xai-news-grok-1212
+    - date: 2025-02-19
+      text: xAI released Grok 3 and Grok 3 mini in beta, with Think mode and DeepSearch.
+      source_ids:
+        - xai-news-grok-3
+    - date: 2025-02-20
+      text: xAI published a draft Risk Management Framework.
+      source_ids:
+        - xai-rmf-draft-2025
+    - date: 2025-03-28
+      text: xAI acquired X Holdings Corp. and X.AI Corp., which became its wholly owned subsidiaries.
+      source_ids:
+        - spacex-10q-2026q2
+    - date: 2025-07-09
+      text: xAI released Grok 4 and Grok 4 Heavy.
+      source_ids:
+        - xai-news-grok-4
+    - date: 2025-07-14
+      text: xAI launched xAI for Government and announced a contract with the Department of Defense.
+      source_ids:
+        - xai-news-government
+    - date: 2025-08-20
+      text: xAI published its Risk Management Framework and the Grok 4 model card.
+      source_ids:
+        - xai-rmf-2025-08
+        - xai-grok-4-model-card
+    - date: 2025-08-22
+      text: xAI published Grok 2 weights on Hugging Face.
+      source_ids:
+        - hf-xai-models-api
+        - hf-grok-2-license
+    - date: 2025-08-28
+      text: xAI released grok-code-fast-1 for agentic coding.
+      source_ids:
+        - xai-news-grok-code-fast-1
+    - date: 2025-09-19
+      text: xAI released Grok 4 Fast with a 2-million-token context window.
+      source_ids:
+        - xai-news-grok-4-fast
+    - date: 2025-09-25
+      text: GSA announced a OneGov agreement making Grok 4 and Grok 4 Fast available to federal agencies.
+      source_ids:
+        - gsa-xai-onegov-2025
+        - xai-news-onegov
+    - date: 2025-11-17
+      text: xAI released Grok 4.1 on grok.com, X, and the mobile apps.
+      source_ids:
+        - xai-news-grok-4-1
+    - date: 2025-11-19
+      text: xAI launched Grok 4.1 Fast and the Agent Tools API, and announced its Saudi Arabia partnership
+        with HUMAIN.
+      source_ids:
+        - xai-news-grok-4-1-fast
+        - xai-news-ksa
+    - date: 2025-12-17
+      text: xAI launched the Grok Voice Agent API.
+      source_ids:
+        - xai-news-voice-agent-api
+    - date: 2025-12-30
+      text: xAI launched Grok Business and Grok Enterprise and updated its Frontier Artificial
+        Intelligence Framework.
+      source_ids:
+        - xai-news-grok-business
+        - xai-faif-2025-12
+    - date: 2026-01-28
+      text: xAI launched the Grok Imagine API for video and image generation.
+      source_ids:
+        - xai-news-imagine-api
+    - date: 2026-02-02
+      text: SpaceX completed its acquisition of xAI, which became a wholly owned subsidiary.
+      source_ids:
+        - xai-joins-spacex
+        - spacex-10q-2026q2
+    - date: 2026-03
+      text: Grok 4.20 and Grok 4.20 Multi-agent went live on the API.
+      source_ids:
+        - xai-release-notes
+    - date: 2026-04-21
+      text: Cursor announced a model-training partnership with SpaceX using Colossus.
+      source_ids:
+        - cursor-spacex-model-training
+    - date: 2026-05-06
+      text: xAI announced that Anthropic would get access to its Colossus 1 supercomputer.
+      source_ids:
+        - xai-news-anthropic-compute
+    - date: 2026-05-15
+      text: xAI retired grok-3, grok-4-0709, the Grok 4 Fast and 4.1 Fast models, and grok-code-fast-1
+        from its API.
+      source_ids:
+        - xai-docs-may-15-retirement
+    - date: 2026-05-25
+      text: xAI launched Grok Build, a terminal coding agent, in early beta.
+      source_ids:
+        - xai-news-grok-build-cli
+    - date: 2026-06-16
+      text: xAI released Grok Imagine Video 1.5 on the API and in the Grok apps.
+      source_ids:
+        - xai-news-imagine-video-1-5
+    - date: 2026-07-16
+      text: xAI released Grok 4.5, trained alongside Cursor.
+      source_ids:
+        - xai-news-grok-4-5
+    - date: 2026-08-11
+      text: xAI launched Grok Bot in beta.
+      source_ids:
+        - xai-news-introducing-grok-bot
+    - date: 2026-08-12
+      text: xAI released Grok 4.6.
+      source_ids:
+        - xai-news-grok-4-6
+    - date: 2026-08-14
+      text: SpaceX completed its acquisition of Cursor (Anysphere, Inc.).
+      source_ids:
+        - spacex-8k-2026-08-14
+        - cursor-joining-spacex
+    - date: 2026-09-03
+      text: xAI made Grok Bot available to enterprises.
+      source_ids:
+        - xai-news-grok-bot-enterprise
+    - date: 2026-09-21
+      text: xAI released Grok 4.7 and its model card.
+      source_ids:
+        - xai-news-grok-4-7
+        - xai-grok-4-7-model-card
+    - date: 2026-09-28
+      text: xAI launched Team Bots in public beta.
+      source_ids:
+        - xai-news-team-bots
+    - date: 2026-10-02
+      text: The grok-voice-transcribe-1.0 speech-to-text model reached end of life.
+      source_ids:
+        - xai-release-notes
+  leadership:
+    - name: Elon Musk
+      role: Executive Officer and Director (X.AI Holdings Corp.)
+      source_ids:
+        - xai-holdings-form-d-2026
+    - name: Jared Birchall
+      role: Executive Officer (X.AI Holdings Corp.); Corporate Secretary (X.AI Corp.)
+      source_ids:
+        - xai-holdings-form-d-2026
+        - xai-corp-form-d-2025
+    - name: Bret Johnsen
+      role: Chief Financial Officer (Space Exploration Technologies Corp., xAI's parent)
+      source_ids:
+        - spacex-8k-2026-08-14

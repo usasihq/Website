@@ -37,29 +37,31 @@ status_note:
     company became a public benefit corporation that the nonprofit continues to
     control. A February 2026 agreement filed with the SEC identifies the company
     as OpenAI Group PBC, a Delaware public benefit corporation based in San
-    Francisco.
-  source_ids: [ de-ag-openai-review, ca-ag-openai-mou, sec-openai-amazon-ecl ]
+    Francisco. The OpenAI Foundation, a nonprofit, says it controls OpenAI Group PBC.
+  source_ids: [ de-ag-openai-review, ca-ag-openai-mou, sec-openai-amazon-ecl, oaif-christiano ]
 products:
   - id: chatgpt
     name: ChatGPT
     kind: assistant-app
     access: >-
-      AI assistant available on the web and in a desktop app, with a Free plan
-      and paid Go, Plus, Pro, Business, and Enterprise/Edu plans, per OpenAI's
-      ChatGPT documentation.
+      AI assistant with Chat, Work, and Codex modes, available on the web, in a
+      desktop app for macOS, Windows, and Linux (Linux in preview), and in a mobile
+      app, with a Free plan and paid Go, Plus, Pro, Business, and Enterprise/Edu
+      plans, per OpenAI's ChatGPT documentation.
     url: https://learn.chatgpt.com/docs
-    source_ids: [ chatgpt-docs, chatgpt-pricing ]
-    last_reviewed: 2026-09-29
+    source_ids: [ chatgpt-docs, chatgpt-pricing, chatgpt-use, chatgpt-quickstart, chatgpt-whats-new ]
+    last_reviewed: 2026-10-11
   - id: openai-api
     name: OpenAI API
     kind: hosted-model-api
     access: >-
       Pay-as-you-go API access to OpenAI's hosted models using API keys,
-      including the Responses, Realtime, and Batch APIs, per the developer
-      documentation.
+      including the Responses, Chat Completions, Realtime, and Batch APIs, with the
+      Agents API and Decisions API in beta; the older Assistants API shut down on
+      August 26, 2026.
     url: https://developers.openai.com/api/docs
-    source_ids: [ openai-api-docs ]
-    last_reviewed: 2026-09-29
+    source_ids: [ openai-api-docs, oai-api-changelog, oai-agents-api ]
+    last_reviewed: 2026-10-11
   - id: codex-cli
     name: Codex CLI
     kind: developer-tool
@@ -96,9 +98,10 @@ openness_summary:
   text: >-
     OpenAI offers most of its models only as hosted services through ChatGPT and
     its API. It has published some model weights on Hugging Face, including
-    gpt-oss-120b and gpt-oss-20b under Apache 2.0; those releases do not make
-    its other models open.
-  source_ids: [ hf-openai, gpt-oss-model-card, openai-api-docs ]
+    gpt-oss-120b and gpt-oss-20b under Apache 2.0, the gpt-oss-safeguard safety
+    models built on them, and the Apache 2.0-licensed Privacy Filter model; those
+    releases do not make its other models open.
+  source_ids: [ hf-openai, gpt-oss-model-card, openai-api-docs, oai-api-changelog, hf-privacy-filter ]
 hiring_url: null
 careers:
   url: https://openai.com/careers/search/
@@ -111,7 +114,7 @@ careers:
   reviewed_at: 2026-09-30
 publication_status: published
 archive_note: null
-updated_at: 2026-09-30
+updated_at: 2026-10-11
 last_reviewed: 2026-09-29
 sources:
   - id: sec-openai-amazon-ecl
@@ -214,6 +217,490 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-30
+  - id: oai-api-changelog
+    title: Changelog (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/changelog
+    publisher: OpenAI
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-api-models
+    title: Models (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/models
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-api-models-all
+    title: All models (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/models/all
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-api-deprecations
+    title: Deprecations (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/deprecations
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-model-gpt-6-astra
+    title: GPT-6 Astra (OpenAI API model page)
+    url: https://developers.openai.com/api/docs/models/gpt-6-astra
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-model-gpt-6-1-sol
+    title: GPT-6.1 Sol (OpenAI API model page)
+    url: https://developers.openai.com/api/docs/models/gpt-6.1-sol
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-model-gpt-6-sol
+    title: GPT-6 Sol (OpenAI API model page)
+    url: https://developers.openai.com/api/docs/models/gpt-6-sol
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-model-gpt-5-6-cyber
+    title: GPT-5.6 Cyber (OpenAI API model page)
+    url: https://developers.openai.com/api/docs/models/gpt-5.6-cyber
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-your-data
+    title: Your data (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/guides/your-data
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-under-18-api
+    title: Under-18 API guidance (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/guides/safety-checks/under-18-api-guidance
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-agents-api
+    title: Agents API overview (OpenAI API documentation)
+    url: https://developers.openai.com/api/docs/guides/agents-api/overview
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-plugins-docs
+    title: Plugins (OpenAI developer documentation)
+    url: https://developers.openai.com/apps-sdk
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-ads-docs
+    title: Ads in ChatGPT (OpenAI developer documentation)
+    url: https://developers.openai.com/ads
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-commerce-docs
+    title: Commerce in ChatGPT (OpenAI developer documentation)
+    url: https://developers.openai.com/commerce
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-whats-new
+    title: What's new (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/whats-new
+    publisher: OpenAI
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-use
+    title: Use ChatGPT (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/use-chatgpt
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-quickstart
+    title: Quickstart (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/quickstart
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-work-docs
+    title: Get started with Work (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/get-started-with-work
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-models-docs
+    title: Models (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/models
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-memories-docs
+    title: Memories (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/customization/memories
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-projects-docs
+    title: Projects and chats (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/projects
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-voice-docs
+    title: Voice (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/features/voice
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-dots-docs
+    title: Dots (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/dots
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-space-docs
+    title: ChatGPT Space (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/space
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-sites-docs
+    title: Sites (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/sites
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-extension-docs
+    title: ChatGPT browser extension (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/chrome-extension
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: chatgpt-personalize-docs
+    title: Personalize ChatGPT (ChatGPT and Codex documentation)
+    url: https://learn.chatgpt.com/docs/personalize
+    publisher: OpenAI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: dsh-home
+    title: OpenAI Deployment Safety Hub
+    url: https://deploymentsafety.openai.com/
+    publisher: OpenAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-6-astra
+    title: GPT-6 Astra System Card
+    url: https://deploymentsafety.openai.com/gpt-6-astra
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-09-03
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-6-1-sol
+    title: "Addendum to GPT-6 Astra System Card: GPT-6.1 Sol"
+    url: https://deploymentsafety.openai.com/gpt-6-1-sol
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-09-29
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-6-october
+    title: "GPT-6 Sol and GPT-6 Luna: October 2026 update"
+    url: https://deploymentsafety.openai.com/gpt-6-october
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-10-07
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-6
+    title: GPT-5.6 System Card
+    url: https://deploymentsafety.openai.com/gpt-5-6
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-07-09
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-6-preview
+    title: GPT-5.6 Preview System Card
+    url: https://deploymentsafety.openai.com/gpt-5-6-preview
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-06-26
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-live
+    title: GPT-Live System Card
+    url: https://deploymentsafety.openai.com/gpt-live
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-07-08
+    accessed_at: 2026-10-11
+  - id: dsh-images-2-5
+    title: ChatGPT Images 2.5 System Card
+    url: https://deploymentsafety.openai.com/chatgpt-images-2-5
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-09-08
+    accessed_at: 2026-10-11
+  - id: dsh-images-2-0
+    title: ChatGPT Images 2.0 System Card
+    url: https://deploymentsafety.openai.com/chatgpt-images-2-0
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-04-21
+    accessed_at: 2026-10-11
+  - id: dsh-4o-image-gen
+    title: 4o Native Image Generation System Card
+    url: https://deploymentsafety.openai.com/4o-native-image-generation
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-03-25
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-rosalind-5-5
+    title: GPT-Rosalind-5.5 System Card
+    url: https://deploymentsafety.openai.com/gpt-rosalind-5-5
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-06-03
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-5
+    title: GPT-5.5 System Card
+    url: https://deploymentsafety.openai.com/gpt-5-5
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-04-23
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-5-instant
+    title: GPT-5.5 Instant System Card
+    url: https://deploymentsafety.openai.com/gpt-5-5-instant
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-05-05
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-4-thinking
+    title: GPT-5.4 Thinking System Card
+    url: https://deploymentsafety.openai.com/gpt-5-4-thinking
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-03-05
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-3-instant
+    title: GPT-5.3 Instant System Card
+    url: https://deploymentsafety.openai.com/gpt-5-3-instant
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2026-03-02
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-1
+    title: GPT-5.1 Instant and GPT-5.1 Thinking System Card Addendum
+    url: https://deploymentsafety.openai.com/gpt-5-1
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-11-12
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5
+    title: GPT-5 System Card
+    url: https://deploymentsafety.openai.com/gpt-5
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-08-07
+    accessed_at: 2026-10-11
+  - id: dsh-gpt-5-sensitive
+    title: "Addendum to GPT-5 System Card: Sensitive conversations"
+    url: https://deploymentsafety.openai.com/gpt-5-sensitive-conversations
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-10-27
+    accessed_at: 2026-10-11
+  - id: dsh-chatgpt-agent
+    title: ChatGPT Agent System Card
+    url: https://deploymentsafety.openai.com/chatgpt-agent
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-07-17
+    accessed_at: 2026-10-11
+  - id: dsh-deep-research
+    title: Deep Research System Card
+    url: https://deploymentsafety.openai.com/deep-research
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-02-25
+    accessed_at: 2026-10-11
+  - id: dsh-sora-2
+    title: Sora 2 System Card
+    url: https://deploymentsafety.openai.com/sora-2
+    publisher: OpenAI
+    kind: model-card
+    published_at: 2025-09-30
+    accessed_at: 2026-10-11
+  - id: oai-preparedness-v2
+    title: Preparedness Framework, Version 2
+    url: https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf
+    publisher: OpenAI
+    kind: official-page
+    published_at: 2025-04-15
+    accessed_at: 2026-10-11
+  - id: oai-model-spec-repo
+    title: openai/model_spec (GitHub repository)
+    url: https://github.com/openai/model_spec
+    publisher: OpenAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-model-spec-changelog
+    title: Model Spec changelog
+    url: https://raw.githubusercontent.com/openai/model_spec/main/CHANGELOG.md
+    publisher: OpenAI
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oai-model-spec-md
+    title: OpenAI Model Spec (source text)
+    url: https://raw.githubusercontent.com/openai/model_spec/main/model_spec.md
+    publisher: OpenAI
+    kind: documentation
+    published_at: 2026-08-18
+    accessed_at: 2026-10-11
+  - id: oaif-home
+    title: OpenAI Foundation
+    url: https://openaifoundation.org/
+    publisher: OpenAI Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: oaif-update-mar-2026
+    title: Update on the OpenAI Foundation
+    url: https://openaifoundation.org/news/update-on-the-openai-foundation
+    publisher: OpenAI Foundation
+    kind: announcement
+    published_at: 2026-03-24
+    accessed_at: 2026-10-11
+  - id: oaif-christiano
+    title: Paul Christiano joins OpenAI Foundation Board
+    url: https://openaifoundation.org/news/paul-christiano-joins-openai-foundation-board
+    publisher: OpenAI Foundation
+    kind: announcement
+    published_at: 2026-09-09
+    accessed_at: 2026-10-11
+  - id: oaif-velez-vince
+    title: David Vélez and Robin Vince join OpenAI's boards
+    url: https://openaifoundation.org/news/david-velez-robin-vince-join-openai-boards
+    publisher: OpenAI Foundation
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-10-11
+  - id: oaif-come-build
+    title: Come build the OpenAI Foundation
+    url: https://openaifoundation.org/news/come-build-the-openai-foundation
+    publisher: OpenAI Foundation
+    kind: announcement
+    published_at: 2026-08-20
+    accessed_at: 2026-10-11
+  - id: gsa-onegov-openai
+    title: GSA announces new partnership with OpenAI, delivering deep discount to ChatGPT
+    url: https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-announces-new-partnership-with-openai-delivering-deep-discount-to-chatgpt-08062025
+    publisher: U.S. General Services Administration
+    kind: official-page
+    published_at: 2025-08-06
+    accessed_at: 2026-10-11
+  - id: softbank-stargate-jan-2025
+    title: Announcing The Stargate Project
+    url: https://group.softbank/en/news/press/20250122
+    publisher: SoftBank Group Corp.
+    kind: announcement
+    published_at: 2025-01-22
+    accessed_at: 2026-10-11
+  - id: softbank-stargate-five-sites
+    title: OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites
+    url: https://group.softbank/en/news/press/20250924
+    publisher: SoftBank Group Corp.
+    kind: announcement
+    published_at: 2025-09-24
+    accessed_at: 2026-10-11
+  - id: wh-genesis-fact-sheet
+    title: "Fact Sheet: Trump Administration Announces the Most Ambitious Set of Science Initiatives
+      This Century"
+    url: https://www.whitehouse.gov/fact-sheets/2026/10/fact-sheet-trump-administration-announces-the-most-ambitious-set-of-science-initiatives-this-century/
+    publisher: The White House
+    kind: official-page
+    published_at: 2026-10-08
+    accessed_at: 2026-10-11
+  - id: nber-how-people-use-chatgpt
+    title: How People Use ChatGPT (NBER Working Paper 34255)
+    url: https://www.nber.org/papers/w34255
+    publisher: National Bureau of Economic Research
+    kind: paper
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: arxiv-gpt-4-report
+    title: GPT-4 Technical Report
+    url: https://arxiv.org/abs/2303.08774
+    publisher: OpenAI (arXiv)
+    kind: paper
+    published_at: 2023-03-15
+    accessed_at: 2026-10-11
+  - id: gh-whisper-model-card
+    title: Whisper model card (openai/whisper)
+    url: https://github.com/openai/whisper/blob/main/model-card.md
+    publisher: OpenAI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: hf-gpt-oss-safeguard-20b
+    title: openai/gpt-oss-safeguard-20b (Hugging Face model card)
+    url: https://huggingface.co/openai/gpt-oss-safeguard-20b
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: hf-privacy-filter
+    title: openai/privacy-filter (Hugging Face model card)
+    url: https://huggingface.co/openai/privacy-filter
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: devday-2026
+    title: OpenAI DevDay 2026
+    url: https://devday.openai.com/
+    publisher: OpenAI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: gh-codex-releases
+    title: openai/codex releases (GitHub)
+    url: https://github.com/openai/codex/releases
+    publisher: OpenAI
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: gh-codex-v0-161-0
+    title: Codex 0.161.0 (GitHub release notes, rust-v0.161.0)
+    url: https://github.com/openai/codex/releases/tag/rust-v0.161.0
+    publisher: OpenAI
+    kind: release-notes
+    published_at: 2026-10-07
+    accessed_at: 2026-10-11
 ownership_evidence:
   text: OpenAI states that the nonprofit OpenAI Foundation controls OpenAI Group
     PBC. A public benefit corporation is a legal form, not proof of publicly
@@ -258,3 +745,1358 @@ profile:
       source_ids:
         - review-gpt-oss
       reviewed_at: 2026-09-30
+deep_dive:
+  reviewed_at: 2026-10-11
+  overview:
+    - text: OpenAI develops AI models and offers them through ChatGPT, the OpenAI API, and Codex, its
+        coding agent. Most of its models are available only as hosted services, but it has also
+        published some open-weight models, including the gpt-oss series under the Apache 2.0
+        license.
+      source_ids:
+        - chatgpt-use
+        - openai-api-docs
+        - openai-codex-repo
+        - gpt-oss-model-card
+    - text: "ChatGPT launched in November 2022. OpenAI's documentation now describes it as \"an AI agent
+        that you communicate with in natural language,\" with three modes: Chat for questions and
+        drafts, Work for longer tasks that end in files to review, and Codex for software
+        development. It runs on the web, in a desktop app for macOS, Windows, and Linux (Linux in
+        preview), and in a mobile app, under plans named Free, Go, Plus, Pro, Business, and
+        Enterprise and Edu."
+      source_ids:
+        - nber-how-people-use-chatgpt
+        - chatgpt-use
+        - chatgpt-quickstart
+        - chatgpt-whats-new
+        - chatgpt-pricing
+    - text: OpenAI's models have moved from GPT-4 through GPT-4o, the o-series reasoning models, and the
+        GPT-5 series to the GPT-6 series released in September 2026. In October 2026 its API model
+        list opens with GPT-6 Astra, GPT-6.1 Sol, and GPT-6 Luna, and on October 7, 2026 OpenAI said
+        it was launching GPT-6 to everyone in ChatGPT across free and paid plans.
+      source_ids:
+        - arxiv-gpt-4-report
+        - oai-api-changelog
+        - oai-api-models
+        - dsh-gpt-6-october
+    - text: OpenAI posts system cards for its launches on its Deployment Safety Hub and rates models under
+        its Preparedness Framework, which tracks biological and chemical, cybersecurity, and AI
+        self-improvement capabilities. Its GPT-6 Astra system card says the model reached the
+        framework's Critical level in cybersecurity, and OpenAI offers its specialized cyber model
+        only to approved defenders through a program called Daybreak.
+      source_ids:
+        - dsh-home
+        - oai-preparedness-v2
+        - dsh-gpt-6-astra
+        - oai-model-gpt-5-6-cyber
+    - text: OpenAI's operating company, OpenAI Group PBC, is a Delaware public benefit corporation based
+        in San Francisco. After an October 2025 recapitalization that the Delaware and California
+        attorneys general did not oppose, the nonprofit keeps control of the PBC and appoints its
+        directors. The OpenAI Foundation, a nonprofit, says it controls OpenAI Group PBC.
+      source_ids:
+        - sec-openai-amazon-ecl
+        - de-ag-openai-review
+        - ca-ag-openai-mou
+        - oaif-christiano
+  sections:
+    - id: what-openai-does
+      title: What OpenAI does
+      intro:
+        text: OpenAI states its mission as ensuring that artificial general intelligence (AGI) benefits all
+          of humanity.
+        source_ids:
+          - oai-preparedness-v2
+          - oaif-home
+      items:
+        - text: "OpenAI builds AI models and offers them in two main ways: ChatGPT and Codex plans for people
+            and organizations, and API access for developers, billed by usage at API rates."
+          source_ids:
+            - chatgpt-pricing
+            - openai-api-docs
+        - text: ChatGPT is its assistant for questions, research, writing, files, images, and voice. The same
+            app can also take on longer tasks through ChatGPT Work and coding tasks through Codex.
+          source_ids:
+            - chatgpt-use
+        - text: The OpenAI API gives developers hosted models for text, images, speech, transcription, and
+            embeddings, plus tools for building AI agents such as the Responses API, the Agents SDK,
+            and the Agents API.
+          source_ids:
+            - oai-api-models-all
+            - oai-api-changelog
+            - oai-agents-api
+        - text: OpenAI publishes some code and model weights openly. The Codex CLI is Apache-2.0 code on
+            GitHub, gpt-oss-120b and gpt-oss-20b are Apache 2.0 open-weight models, and its Hugging
+            Face page also hosts the gpt-oss-safeguard models and an Apache 2.0-licensed Privacy
+            Filter model.
+          source_ids:
+            - openai-codex-repo
+            - gpt-oss-model-card
+            - hf-openai
+            - hf-privacy-filter
+        - text: For organizations it sells Business, Enterprise, and Edu plans, and it has made public-sector
+            agreements such as an August 2025 GSA OneGov deal that offered ChatGPT Enterprise to
+            participating federal agencies.
+          source_ids:
+            - chatgpt-pricing
+            - gsa-onegov-openai
+        - text: OpenAI models are also offered through other clouds. OpenAI's changelog says they became
+            available in Amazon Bedrock through an OpenAI-compatible Responses API endpoint on June
+            1, 2026.
+          source_ids:
+            - oai-api-changelog
+        - text: "Some models are offered only to approved organizations: GPT-Rosalind for life sciences
+            research and GPT-5.6 Cyber for authorized security testing."
+          source_ids:
+            - oai-api-models
+            - dsh-gpt-rosalind-5-5
+            - oai-model-gpt-5-6-cyber
+    - id: chatgpt
+      title: ChatGPT in depth
+      intro:
+        text: OpenAI describes ChatGPT as "an AI agent that you communicate with in natural language."
+          People start with a question, idea, file, or task, add context and tools, then review and
+          refine the result.
+        source_ids:
+          - chatgpt-use
+      items:
+        - text: ChatGPT has three modes. Chat is for questions, brainstorming, drafting, and summarizing.
+            ChatGPT Work is for bigger tasks that end in a result to review, such as a slide deck,
+            report, or project plan. Codex is for software work such as debugging, running tests,
+            and reviewing pull requests.
+          source_ids:
+            - chatgpt-use
+        - text: ChatGPT can search the web and compare sources. Its deep research feature, described in a
+            February 2025 system card, runs multi-step research across web pages, images, and PDFs
+            and can analyze data by writing and running Python code. It ran on an early version of
+            OpenAI o3 and was available to Pro subscribers at launch.
+          source_ids:
+            - chatgpt-use
+            - dsh-deep-research
+        - text: ChatGPT agent, introduced in July 2025, combined deep research with Operator, an earlier tool
+            that worked in a remote web browser. It added a terminal for running code and making
+            slides or spreadsheets, and could connect to services such as Google Drive.
+          source_ids:
+            - dsh-chatgpt-agent
+        - text: ChatGPT Work, launched in July 2026, gathers context from files and plugins, works toward a
+            goal in steps, and produces documents, presentations, spreadsheets, and Sites for
+            review. It can run in a managed cloud environment or, from the desktop app, use local
+            files, apps, and the browser. Scheduled tasks can repeat or refresh work.
+          source_ids:
+            - chatgpt-whats-new
+            - chatgpt-work-docs
+        - text: Dots, rolling out gradually since late September 2026, are always-on agents powered by GPT-6
+            Astra. Each runs in the cloud with its own computer and browser, keeps track of ongoing
+            responsibilities, and can be reached in ChatGPT, Slack, or Microsoft Teams. The docs
+            list them for Pro, Business Premium, and Enterprise plans; on Pro they are limited to
+            people over 18 outside the EEA, UK, and Switzerland.
+          source_ids:
+            - chatgpt-dots-docs
+            - chatgpt-whats-new
+        - text: Memories carry useful context from earlier chats into later ones and are managed in Settings,
+            under Personalization. On macOS, an opt-in feature called Computer History turns
+            activity in allowed apps and websites into a searchable timeline and memories; OpenAI
+            says it does not include screenshots or audio, and it can be paused or cleared.
+          source_ids:
+            - chatgpt-memories-docs
+            - chatgpt-personalize-docs
+        - text: Projects group related chats, files, and instructions. ChatGPT Space, added in late September
+            2026, holds Pages that people write and edit together with ChatGPT, along with
+            spreadsheets, presentations, Sites, and files that can be shared with collaborators.
+          source_ids:
+            - chatgpt-projects-docs
+            - chatgpt-space-docs
+            - chatgpt-whats-new
+        - text: ChatGPT Voice is powered by GPT-Live, a voice model that can listen and respond at the same
+            time. The GPT-Live system card says GPT-Live-1 is the default voice model on paid plans
+            and GPT-Live-1 mini on the free plan. In the desktop app, Voice can start, check on, and
+            steer other tasks.
+          source_ids:
+            - chatgpt-voice-docs
+            - dsh-gpt-live
+        - text: OpenAI added image generation built into GPT-4o in March 2025, describing it as a different
+            approach from its earlier DALL·E models. ChatGPT Images 2.0 followed in April 2026 and
+            ChatGPT Images 2.5 in September 2026; OpenAI says Images 2.5 adds C2PA provenance
+            metadata and an invisible SynthID watermark.
+          source_ids:
+            - dsh-4o-image-gen
+            - dsh-images-2-0
+            - dsh-images-2-5
+        - text: Plugins connect ChatGPT and Codex to outside tools such as Google Drive, SharePoint, Slack,
+            and GitHub. Developers build them from MCP servers, reusable skills, and optional
+            on-screen interfaces, and can submit them to a ChatGPT directory.
+          source_ids:
+            - chatgpt-use
+            - oai-plugins-docs
+        - text: Sites, in public beta since June 2026, lets ChatGPT build, host, and share websites, web apps,
+            and games. A new Site is visible only to its owner and workspace admins until its access
+            is changed. Sites is included with Plus, Pro, Business, Enterprise, and Edu plans.
+          source_ids:
+            - chatgpt-sites-docs
+            - chatgpt-whats-new
+        - text: A ChatGPT browser extension for Chrome, Edge, Brave, Opera, and Vivaldi lets the desktop app
+            work inside a person's browser. ChatGPT asks before using each new site, and browser
+            history access is a separate permission it requests each time.
+          source_ids:
+            - chatgpt-extension-docs
+    - id: plans-and-access
+      title: Plans, apps, and data controls
+      intro:
+        text: OpenAI's pricing documentation lists ChatGPT plans named Free, Go, Plus, Pro, Business, and
+          Enterprise and Edu, plus an option to use Codex with an API key.
+        source_ids:
+          - chatgpt-pricing
+      items:
+        - text: Free and Go include lighter Codex use with GPT-6 Luna in the desktop app. Plus adds Codex on
+            the web, in the CLI, in the IDE extension, and on iOS, along with GPT-6.1 Sol. Pro
+            includes everything in Plus with several usage tiers, and Ultrafast mode is offered on
+            the highest Pro tier.
+          source_ids:
+            - chatgpt-pricing
+        - text: Business adds a dedicated workspace with admin controls, SAML single sign-on, and multi-factor
+            authentication, and the pricing page says Business data is not used for training by
+            default. Enterprise and Edu add SCIM, enterprise key management, role-based access
+            control, audit logs through the Compliance API, and data retention and residency
+            controls.
+          source_ids:
+            - chatgpt-pricing
+        - text: Model choice depends on the plan. In August 2026 GPT-5.6 Luna became the default on Free and
+            Go, while Plus and Pro got a slider for how long GPT-5.6 Sol thinks. On October 7, 2026,
+            OpenAI said GPT-6 Sol and GPT-6 Luna were launching to everyone in ChatGPT and would
+            replace GPT-5.6 Sol and Luna there.
+          source_ids:
+            - chatgpt-whats-new
+            - dsh-gpt-6-october
+        - text: For ChatGPT Work and Codex, the model docs list GPT-6 Astra, GPT-6.1 Sol, GPT-6 Sol, and GPT-6
+            Luna. GPT-6.1 Sol is rolling out on Plus, Pro, Business, Enterprise, and Edu, and stays
+            off for Enterprise and Edu until an admin enables it. GPT-5.5 is scheduled to leave
+            ChatGPT, ChatGPT Work, and Codex on October 14, 2026, while remaining in the API.
+          source_ids:
+            - chatgpt-models-docs
+            - chatgpt-pricing
+        - text: ChatGPT works on the web at chatgpt.com without installing anything, in a desktop app for
+            macOS, Windows, and Linux, and in a mobile app. The Linux app entered preview on August
+            11, 2026 for supported Ubuntu, Debian, and Fedora systems.
+          source_ids:
+            - chatgpt-quickstart
+            - chatgpt-whats-new
+        - text: On July 9, 2026, the Codex app merged into the ChatGPT desktop app for macOS and Windows.
+            OpenAI says the desktop app is available on every plan, including Free.
+          source_ids:
+            - chatgpt-whats-new
+        - text: ChatGPT can be brought into Slack and Microsoft Teams conversations, and app developers can
+            offer "Sign in with ChatGPT" so people can use their ChatGPT plan in other apps;
+            commercial use of that sign-in was in a limited trial as of DevDay 2026.
+          source_ids:
+            - chatgpt-whats-new
+        - text: In ChatGPT's settings, people can view and revoke shared links under data controls, manage or
+            turn off memories under Personalization, and pause, filter, or clear Computer History.
+          source_ids:
+            - chatgpt-use
+            - chatgpt-memories-docs
+            - chatgpt-personalize-docs
+        - text: For the API, OpenAI says data sent to the API has not been used to train its models by default
+            since March 1, 2023. Abuse-monitoring logs are kept for up to 30 days, and approved
+            customers can get Zero Data Retention.
+          source_ids:
+            - oai-your-data
+        - text: "OpenAI's developer docs also cover advertising and shopping in ChatGPT: an Ads API for
+            advertisers to create and measure ads in ChatGPT, and the Agentic Commerce Protocol,
+            which merchants and payment providers use to support checkout inside ChatGPT."
+          source_ids:
+            - oai-ads-docs
+            - oai-commerce-docs
+    - id: models-over-time
+      title: Models over time
+      intro:
+        text: OpenAI's API changelog, model list, and deprecations page record when each model arrived and
+          when older ones are switched off.
+        source_ids:
+          - oai-api-changelog
+          - oai-api-models-all
+          - oai-api-deprecations
+      items:
+        - text: OpenAI published its GPT-4 Technical Report on March 15, 2023. GPT-3.5 Turbo, GPT-4, and GPT-4
+            Turbo are now deprecated, with an API shutdown date of October 23, 2026 and GPT-5.6
+            models named as replacements.
+          source_ids:
+            - arxiv-gpt-4-report
+            - oai-api-deprecations
+        - text: GPT-4o arrived in the API on May 13, 2024 and GPT-4o mini on July 18, 2024. Both are still
+            listed, but the dated gpt-4o-2024-05-13 snapshot shuts down on October 23, 2026, and the
+            chatgpt-4o-latest alias was shut down on February 17, 2026.
+          source_ids:
+            - oai-api-changelog
+            - oai-api-models-all
+            - oai-api-deprecations
+        - text: The o-series reasoning models, which work through a problem before answering, began with
+            o1-preview and o1-mini on September 12, 2024, followed by o1 (December 17, 2024),
+            o3-mini (January 31, 2025), and o3 and o4-mini (April 16, 2025). o1, o3-mini, and
+            o4-mini are scheduled to leave the API on October 23, 2026.
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+        - text: GPT-4.5 Preview (February 27, 2025) was shut down on July 14, 2025, with GPT-4.1 as its
+            replacement. The GPT-4.1 family arrived on April 14, 2025; GPT-4.1 and GPT-4.1 mini are
+            still listed, while GPT-4.1 nano shuts down on October 23, 2026.
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+            - oai-api-models-all
+        - text: GPT-5 arrived on August 7, 2025. Its system card describes it in ChatGPT as one system with a
+            fast model, a deeper reasoning model, and a router that picks between them, taking over
+            from GPT-4o, GPT-4o mini, o3, o4-mini, and o3 Pro.
+          source_ids:
+            - dsh-gpt-5
+            - oai-api-changelog
+        - text: "Updates followed quickly: GPT-5.1 Instant and Thinking (November 2025), GPT-5.2 (December 11,
+            2025), GPT-5.3 Instant (March 2, 2026), GPT-5.4 and GPT-5.4 Pro with a 1M-token context
+            window (March 5, 2026), GPT-5.5 and GPT-5.5 Pro (April 24, 2026), and GPT-5.5 Instant
+            (May 5, 2026)."
+          source_ids:
+            - dsh-gpt-5-1
+            - oai-api-changelog
+            - dsh-gpt-5-3-instant
+            - dsh-gpt-5-5-instant
+        - text: GPT-5.6, released on July 9, 2026 after a limited preview in late June, introduced three sizes
+            named Sol, Terra, and Luna. The system card describes Sol as the main model, Terra as a
+            capable lower-cost option, and Luna as a quicker, more economical option.
+          source_ids:
+            - dsh-gpt-5-6
+            - dsh-gpt-5-6-preview
+            - oai-api-changelog
+        - text: "The GPT-6 series followed: GPT-6 Astra on September 3, 2026, GPT-6 Sol and GPT-6 Luna on
+            September 22, and GPT-6.1 Sol on September 29. The API pages list a 1,050,000-token
+            context window and up to 128,000 output tokens for these models, with text and image
+            input and text output."
+          source_ids:
+            - oai-api-changelog
+            - oai-model-gpt-6-astra
+            - oai-model-gpt-6-1-sol
+            - oai-model-gpt-6-sol
+        - text: "Two specialized lines require approval: GPT-5.6 Cyber, added on August 7, 2026 for authorized
+            vulnerability research through the Daybreak program, and GPT-Rosalind for life sciences
+            research, generally available through trusted access from September 8, 2026.
+            GPT-Rosalind-5.5 was trained further from GPT-5.5."
+          source_ids:
+            - oai-model-gpt-5-6-cyber
+            - oai-api-changelog
+            - dsh-gpt-rosalind-5-5
+        - text: Open-weight releases include the Whisper speech recognition models (from September 2022),
+            gpt-oss-120b and gpt-oss-20b (August 5, 2025), gpt-oss-safeguard (October 29, 2025), and
+            Privacy Filter, a model for finding and masking personal information with 1.5B total
+            parameters, about 50M of them active per token.
+          source_ids:
+            - gh-whisper-model-card
+            - gpt-oss-model-card
+            - oai-api-changelog
+            - hf-privacy-filter
+        - text: Image models moved from DALL·E 2 and 3, removed from the API on May 12, 2026, to gpt-image-1
+            (April 23, 2025), gpt-image-2 (April 21, 2026), and GPT Image 2.5 Sunburst and Flare
+            (September 8, 2026). The Sora 2 video model launched in September 2025; OpenAI's
+            deprecations page lists the Videos API and Sora 2 models as shut down on September 24,
+            2026.
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+            - dsh-sora-2
+            - oai-your-data
+        - text: Audio models include the realtime voice models (including GPT-Realtime-2.1, released July 6,
+            2026), GPT-Live 1, and GPT-Transcribe and GPT-Live-Transcribe (July 28, 2026). whisper-1
+            and the GPT-4o transcription models are set to shut down on February 26, 2027. The
+            text-embedding-3 models (January 25, 2024) and omni-moderation (September 26, 2024) are
+            still listed.
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+            - oai-api-models-all
+    - id: codex
+      title: Codex
+      intro:
+        text: OpenAI's Codex README calls Codex CLI "a coding agent from OpenAI that runs locally on your
+          computer," and points to Codex in code editors, a desktop app, and Codex Web, a
+          cloud-based agent at chatgpt.com/codex.
+        source_ids:
+          - openai-codex-repo
+      items:
+        - text: OpenAI launched the Codex CLI on April 16, 2025, alongside o3 and o4-mini. It is open source
+            under the Apache-2.0 license, installs by script, npm, or Homebrew, and signs in with a
+            ChatGPT plan (Plus, Pro, Business, Edu, or Enterprise) or an API key.
+          source_ids:
+            - oai-api-changelog
+            - openai-codex-repo
+        - text: "Codex used its own Codex-specific models for a time: codex-mini-latest (May 15, 2025),
+            GPT-5-Codex (September 23, 2025), GPT-5.1-Codex (November 13, 2025), GPT-5.1-Codex-Max
+            (December 4, 2025), GPT-5.2-Codex (January 14, 2026), and GPT-5.3-Codex (February 24,
+            2026). Most are now deprecated, and GPT-5.3-Codex is set to leave the API on April 1,
+            2027."
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+        - text: Codex now runs OpenAI's general models. Codex CLI 0.161.0, published on October 7, 2026, made
+            GPT-6.1 Sol the default model in its bundled catalog.
+          source_ids:
+            - gh-codex-v0-161-0
+            - chatgpt-models-docs
+        - text: The Codex desktop app arrived on macOS in early February 2026 and on Windows in early March
+            2026. On July 9, 2026 it merged into the ChatGPT desktop app, adding inline diff
+            editing, pull request review, and projects that span several repositories.
+          source_ids:
+            - chatgpt-whats-new
+        - text: Through 2026 Codex added plugins (late March), generally available scheduled tasks (March 12),
+            browser control and macOS computer use (April), Windows computer use (late May), and
+            Remote, which lets people continue desktop work from the mobile app (May).
+          source_ids:
+            - chatgpt-whats-new
+        - text: Codex cloud features include reusable cloud environments and integrations with GitHub, Slack,
+            Linear, and GitLab (in beta since August 19, 2026), including automatic code review on
+            paid plans.
+          source_ids:
+            - chatgpt-docs
+            - chatgpt-whats-new
+            - chatgpt-pricing
+        - text: Codex Security reviews pull requests for security problems (research preview from August 6,
+            2026), and Codex Security Cloud, announced at DevDay 2026, scans connected repositories
+            and prepares patches, also as a research preview.
+          source_ids:
+            - chatgpt-whats-new
+        - text: Codex Micro, launched on July 15, 2026 with Work Louder, is a limited-run physical control
+            surface for Codex with status keys, an analog stick, and a dial for adjusting reasoning
+            effort.
+          source_ids:
+            - chatgpt-whats-new
+        - text: Codex can use OpenAI models through Amazon Bedrock with AWS-managed sign-in and billing (June
+            2026), and developers can build on the Codex harness itself through the Agents API
+            (public beta from September 10, 2026).
+          source_ids:
+            - chatgpt-whats-new
+            - oai-agents-api
+            - oai-api-changelog
+        - text: GPT-5.3-Codex-Spark, a near-instant research-preview model for real-time coding added in
+            February 2026, was retired from Codex on September 14, 2026.
+          source_ids:
+            - chatgpt-whats-new
+            - chatgpt-models-docs
+    - id: developer-platform
+      title: OpenAI API and developer platform
+      intro:
+        text: The OpenAI API serves hosted models through endpoints such as Responses, Chat Completions,
+          Batch, and Realtime. On October 6, 2026 OpenAI cut its usage tiers from five to three,
+          named Build, Launch, and Grow.
+        source_ids:
+          - openai-api-docs
+          - oai-model-gpt-6-astra
+          - oai-api-changelog
+      items:
+        - text: The Responses API, released on March 11, 2025, is OpenAI's API "for creating and using agents
+            and tools." Built-in tools added since include web search, file search, computer use,
+            remote MCP servers, a code interpreter, a hosted shell, skills, and tool search.
+          source_ids:
+            - oai-api-changelog
+            - oai-model-gpt-6-astra
+        - text: The Conversations API (August 20, 2025) stores long-running conversations. The older
+            Assistants API, introduced on November 6, 2023, shut down on August 26, 2026, with the
+            Responses and Conversations APIs as replacements.
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+        - text: The Agents SDK, released with the Responses API in March 2025 and in TypeScript in June 2025,
+            is OpenAI's open-source library for building agents. 2026 updates added sandboxes and a
+            built-in open-source harness.
+          source_ids:
+            - oai-api-changelog
+        - text: The Agents API entered public beta on September 10, 2026. It gives applications the Codex
+            harness as an OpenAI-managed service with lasting sessions and hosted or self-hosted
+            sandboxes; computer use was added on September 29. The docs say it supports data
+            residency only in the United States and does not offer Zero Data Retention.
+          source_ids:
+            - oai-agents-api
+            - oai-api-changelog
+        - text: The Realtime API for speech-to-speech apps was introduced on October 1, 2024 and became
+            generally available on August 28, 2025. GPT-Live 1, a full-duplex voice model, became
+            generally available in the API on September 10, 2026.
+          source_ids:
+            - oai-api-changelog
+        - text: The Decisions API, released in beta on October 6, 2026 with gpt-6-luna, turns text and images
+            into typed answers.
+          source_ids:
+            - oai-api-changelog
+        - text: Agent Builder and ChatKit arrived at DevDay on October 6, 2025. On June 3, 2026 OpenAI
+            announced that Agent Builder, the Evals platform, and reusable prompts will shut down on
+            November 30, 2026; ChatKit stays, and the Agents SDK or ChatGPT workspace agents are the
+            suggested paths.
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+        - text: On January 15, 2026 OpenAI announced Open Responses, an open-source specification for building
+            interfaces that work with many model providers, based on the Responses API.
+          source_ids:
+            - oai-api-changelog
+        - text: Developers extend ChatGPT and Codex with plugins built on MCP servers. At DevDay 2026 OpenAI
+            added Plugin Extensions for sidebar apps, panels, editors, and forms, and MCP Events,
+            which let ChatGPT act on updates from an MCP server.
+          source_ids:
+            - oai-plugins-docs
+            - chatgpt-whats-new
+        - text: Enterprise controls added over 2025 and 2026 include customer-managed encryption keys (October
+            24, 2025), hard spend limits (July 22, 2026), mutual TLS and workload identity
+            federation (August 29, 2026), and an in-product flow for HIPAA business associate
+            agreements (October 5, 2026).
+          source_ids:
+            - oai-api-changelog
+    - id: safety-and-policies
+      title: Research, safety, and policies
+      intro:
+        text: OpenAI's Deployment Safety Hub collects system cards for its launches, including GPT-5,
+          GPT-5.6, GPT-6 Astra, GPT-Live, ChatGPT agent, deep research, Sora 2, and ChatGPT Images.
+        source_ids:
+          - dsh-home
+      items:
+        - text: "Version 2 of OpenAI's Preparedness Framework, dated April 15, 2025, tracks three areas:
+            biological and chemical, cybersecurity, and AI self-improvement. OpenAI says it will not
+            deploy a model that reaches a High capability threshold until the related risks are
+            sufficiently reduced, and that reaching a Critical threshold also requires safeguards
+            during development."
+          source_ids:
+            - oai-preparedness-v2
+        - text: Under the framework, an internal Safety Advisory Group recommends safeguards, OpenAI
+            leadership approves or rejects them, and the board's Safety and Security Committee
+            oversees those decisions. Version 2 also lists research areas such as long-range
+            autonomy, sandbagging, autonomous replication, undermining safeguards, and nuclear and
+            radiological risk. The GPT-6 Astra system card links to this version.
+          source_ids:
+            - oai-preparedness-v2
+            - dsh-gpt-6-astra
+        - text: OpenAI treated ChatGPT agent (July 2025) and GPT-5's thinking model as High capability in
+            biology and chemistry. It treated GPT-5.5 as High in cybersecurity but below Critical,
+            and the GPT-5.6 models as High in both areas; none reached High in AI self-improvement.
+          source_ids:
+            - dsh-chatgpt-agent
+            - dsh-gpt-5
+            - dsh-gpt-5-5
+            - dsh-gpt-5-6
+        - text: The GPT-6 Astra system card (September 3, 2026) says Astra reaches the Critical level in
+            cybersecurity and is treated as High in biology and chemistry. A September 29 addendum
+            treats GPT-6.1 Sol as Critical in cybersecurity too. Listed safeguards include
+            misalignment monitoring on all tool-using requests and real-time misuse monitors.
+          source_ids:
+            - dsh-gpt-6-astra
+            - dsh-gpt-6-1-sol
+        - text: "Sensitive capabilities go through approval-based programs: Trusted Access for Cyber, the
+            Daybreak Blue and Daybreak Red tiers for security defenders (August 2026), and Trusted
+            Access for Biology Research. GPT-Rosalind is offered only to approved customers after a
+            review of their mission, governance, and access controls."
+          source_ids:
+            - dsh-gpt-6-astra
+            - oai-api-changelog
+            - dsh-gpt-rosalind-5-5
+        - text: The Model Spec describes how OpenAI intends its models to behave. Its original version is
+            dated May 8, 2024; it has been public-domain (CC0) source on GitHub since February 12,
+            2025. Later versions added agent principles (September 12, 2025), an Under-18 Safety
+            Mode (December 18, 2025), and clarifications on August 18, 2026.
+          source_ids:
+            - oai-model-spec-repo
+            - oai-model-spec-changelog
+            - oai-model-spec-md
+        - text: For teens, the Model Spec marks rules for people under 18 with a "U18" badge. The GPT-6 Astra
+            card describes expanded under-18 protections, and the Sora 2 card (2025) said parental
+            controls were being introduced. OpenAI's API guidance for apps serving minors requires
+            following child-protection laws such as COPPA.
+          source_ids:
+            - oai-model-spec-md
+            - dsh-gpt-6-astra
+            - dsh-sora-2
+            - oai-under-18-api
+        - text: An October 27, 2025 addendum covers how ChatGPT handles conversations about mental health,
+            emotional reliance, and self-harm. It describes an October 3 update to the default model
+            meant to respond with care and point people toward real-world support.
+          source_ids:
+            - dsh-gpt-5-sensitive
+        - text: OpenAI marks generated media with C2PA provenance metadata. Sora 2 videos carried a visible
+            moving watermark, and ChatGPT Images 2.5 adds an invisible SynthID watermark in ChatGPT,
+            Codex, and the API.
+          source_ids:
+            - dsh-4o-image-gen
+            - dsh-sora-2
+            - dsh-images-2-5
+        - text: API safety tools include moderation scores in the Responses and Chat Completions APIs (June 4,
+            2026) and a Safety Usage Dashboard (June 23, 2026). The open-weight gpt-oss-safeguard
+            models, released on October 29, 2025, classify text against safety policies that the
+            developer provides.
+          source_ids:
+            - oai-api-changelog
+            - hf-gpt-oss-safeguard-20b
+        - text: OpenAI's usage policies and terms apply to developers. Its under-18 guidance adds that apps
+            must not process data from children under 13 without Zero Data Retention, and that
+            OpenAI may audit organizations and suspend access for repeated or serious noncompliance.
+          source_ids:
+            - oai-under-18-api
+    - id: infrastructure-and-government
+      title: Infrastructure, compute, and government work
+      intro:
+        text: A joint release from OpenAI, Oracle, and SoftBank describes Stargate as OpenAI's AI
+          infrastructure platform.
+        source_ids:
+          - softbank-stargate-five-sites
+      items:
+        - text: The Stargate Project was announced in Washington, D.C. on January 21, 2025 as a new company to
+            build AI infrastructure for OpenAI in the United States, starting in Texas. SoftBank
+            holds financial responsibility and OpenAI operational responsibility; SoftBank, OpenAI,
+            Oracle, and MGX are the initial equity funders, and Masayoshi Son chairs it.
+          source_ids:
+            - softbank-stargate-jan-2025
+        - text: Initial technology partners named for Stargate were Arm, Microsoft, NVIDIA, Oracle, and
+            OpenAI.
+          source_ids:
+            - softbank-stargate-jan-2025
+        - text: "On September 23, 2025 the partners named five more U.S. sites: Shackelford County, Texas;
+            Doña Ana County, New Mexico; and a Midwest site, developed by Oracle; and Lordstown,
+            Ohio, and Milam County, Texas, developed with SoftBank, with SB Energy supplying power
+            infrastructure for Milam County."
+          source_ids:
+            - softbank-stargate-five-sites
+        - text: The same release said the main campus in Abilene, Texas, was running on Oracle Cloud
+            Infrastructure with NVIDIA GB200 racks delivered from June 2025, and that the announced
+            sites, Abilene, and CoreWeave projects brought Stargate to nearly 7 gigawatts of planned
+            capacity.
+          source_ids:
+            - softbank-stargate-five-sites
+        - text: For API customers, OpenAI offers data storage and processing in the United States, Europe, and
+            the United Arab Emirates, and storage only in Australia, Canada, Japan, India,
+            Singapore, South Korea, and the United Kingdom; regions outside the United States
+            require extra approvals.
+          source_ids:
+            - oai-your-data
+        - text: On August 6, 2025 the U.S. General Services Administration announced a OneGov agreement making
+            ChatGPT Enterprise available to participating federal agencies for one year at a nominal
+            cost, plus training resources; GSA said it supports OMB memoranda M-25-21 and M-25-22.
+          source_ids:
+            - gsa-onegov-openai
+        - text: OpenAI said it previewed GPT-5.6 with the U.S. government and, at the government's request,
+            started with a limited preview for a small group of trusted partners on June 26, 2026
+            before a wider release.
+          source_ids:
+            - dsh-gpt-5-6-preview
+        - text: GPT-Rosalind has a separate trusted-access path for government applicants working on
+            biosecurity, public health, and biodefense.
+          source_ids:
+            - dsh-gpt-rosalind-5-5
+        - text: On October 8, 2026 a White House fact sheet listed OpenAI among eleven industry partners
+            committing AI-for-science tools and compute credits to the Genesis Mission Consortium.
+          source_ids:
+            - wh-genesis-fact-sheet
+    - id: corporate-structure
+      title: Corporate structure and governance
+      intro:
+        text: A February 2026 agreement filed with the SEC describes OpenAI Group PBC as "a Delaware public
+          benefit corporation" at 1455 3rd Street, San Francisco; it was signed for the company by
+          Sarah Friar, Chief Financial Officer.
+        source_ids:
+          - sec-openai-amazon-ecl
+      items:
+        - text: OpenAI, Inc. was incorporated in 2015 as a Delaware nonprofit.
+          source_ids:
+            - de-ag-openai-review
+        - text: On October 28, 2025 the Delaware attorney general issued a Statement of No Objection to
+            OpenAI's recapitalization. OpenAI had initially proposed ending the nonprofit's
+            oversight of its for-profit work, but instead agreed to create a public benefit
+            corporation that the nonprofit controls; the nonprofit alone can appoint and remove the
+            PBC's directors.
+          source_ids:
+            - de-ag-openai-review
+        - text: The PBC's mission is identical to the nonprofit's, and on safety and security matters its
+            directors must consider only the mission. The nonprofit also gets access to the PBC's
+            models and APIs.
+          source_ids:
+            - de-ag-openai-review
+        - text: The Safety and Security Committee stays with the nonprofit and can require safety measures "up
+            to and including halting the release of models." Its chair sits on the nonprofit board
+            but not the PBC board, with rights to observe PBC board meetings.
+          source_ids:
+            - de-ag-openai-review
+        - text: Under an October 27, 2025 memorandum of understanding with the California attorney general,
+            the nonprofit and the PBC will keep their headquarters in California.
+          source_ids:
+            - ca-ag-openai-mou
+        - text: The nonprofit now operates as the OpenAI Foundation. It describes itself as a separate
+            nonprofit corporation that runs independently for its charitable mission, and says "The
+            Foundation controls OpenAI Group PBC."
+          source_ids:
+            - oaif-come-build
+            - oaif-christiano
+        - text: "The Foundation lists three initial program areas: life sciences and curing diseases, AI
+            resilience, and civil society and philanthropy. It also runs a community grant fund,
+            whose 2026 grantees it announced on October 1, 2026."
+          source_ids:
+            - oaif-home
+            - oaif-update-mar-2026
+        - text: Bret Taylor chairs both the Foundation and OpenAI Group PBC boards. David Vélez and Robin
+            Vince joined both boards on July 21, 2026, and Paul Christiano joined the Foundation
+            board and its Safety and Security Committee on September 9, 2026.
+          source_ids:
+            - oaif-velez-vince
+            - oaif-christiano
+    - id: recent-updates
+      title: Recent updates (July to October 2026)
+      items:
+        - text: "July 6-10, 2026: OpenAI launched ChatGPT Work. On July 9 it released the GPT-5.6 family (Sol,
+            Terra, Luna) and merged the Codex app into the ChatGPT desktop app."
+          source_ids:
+            - chatgpt-whats-new
+            - oai-api-changelog
+        - text: "July 8, 2026: OpenAI published the GPT-Live system card. In late July it introduced ChatGPT
+            Voice powered by GPT-Live in the desktop app, which can start and steer tasks."
+          source_ids:
+            - dsh-gpt-live
+            - chatgpt-whats-new
+        - text: "July 15 and 21, 2026: OpenAI released Codex Micro, a limited-run control surface, and David
+            Vélez and Robin Vince joined the boards of the OpenAI Foundation and OpenAI Group PBC."
+          source_ids:
+            - chatgpt-whats-new
+            - oaif-velez-vince
+        - text: "August 7-11, 2026: OpenAI added GPT-5.6 Cyber and the Daybreak Blue and Red access tiers for
+            approved security defenders, and opened a preview of the ChatGPT desktop app for Linux."
+          source_ids:
+            - oai-api-changelog
+            - chatgpt-whats-new
+        - text: "August 26, 2026: The Assistants API shut down, and OpenAI announced that whisper-1 and the
+            GPT-4o transcription models will shut down on February 26, 2027."
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+        - text: "September 3, 2026: OpenAI released GPT-6 Astra and its system card, which says the model
+            reaches the Critical level in cybersecurity under the Preparedness Framework."
+          source_ids:
+            - oai-api-changelog
+            - dsh-gpt-6-astra
+        - text: "September 8-10, 2026: OpenAI released GPT Image 2.5 Sunburst and Flare, made GPT-Rosalind
+            generally available through trusted access, added Paul Christiano to the Foundation
+            board (September 9), and opened the Agents API in public beta (September 10)."
+          source_ids:
+            - oai-api-changelog
+            - dsh-images-2-5
+            - oaif-christiano
+        - text: "September 22-24, 2026: OpenAI released GPT-6 Sol and GPT-6 Luna, and September 24 was the
+            listed shutdown date for the Videos API and Sora 2 models."
+          source_ids:
+            - oai-api-changelog
+            - oai-api-deprecations
+        - text: "September 29, 2026: At DevDay in San Francisco, OpenAI released GPT-6.1 Sol and announced
+            dots, ChatGPT Space, ChatGPT in Slack and Teams, Team Tasks, Plugin Extensions, and
+            computer use in the Agents API."
+          source_ids:
+            - devday-2026
+            - oai-api-changelog
+            - chatgpt-whats-new
+        - text: "October 6-8, 2026: OpenAI released the Decisions API in beta (October 6), began launching
+            GPT-6 to everyone in ChatGPT (October 7), and made GPT-6.1 Sol the default in Codex CLI
+            0.161.0 (October 7); on October 8 the White House listed OpenAI as a Genesis Mission
+            Consortium partner."
+          source_ids:
+            - oai-api-changelog
+            - dsh-gpt-6-october
+            - gh-codex-v0-161-0
+            - wh-genesis-fact-sheet
+        - text: "Scheduled: GPT-5.5 leaves ChatGPT, ChatGPT Work, and Codex on October 14, 2026, and GPT-3.5
+            Turbo, GPT-4, GPT-4 Turbo, o1, o3-mini, o4-mini, and gpt-image-1 are set to leave the
+            API on October 23, 2026."
+          source_ids:
+            - chatgpt-models-docs
+            - oai-api-deprecations
+  lineup:
+    - name: ChatGPT
+      kind: app
+      status: current
+      released: 2022-11
+      description: OpenAI's AI assistant with Chat, Work, and Codex modes, available on the web, in a
+        desktop app, and in a mobile app under Free, Go, Plus, Pro, Business, and Enterprise and Edu
+        plans.
+      url: https://chatgpt.com/
+      source_ids:
+        - nber-how-people-use-chatgpt
+        - chatgpt-use
+        - chatgpt-pricing
+    - name: ChatGPT Work
+      kind: agent
+      status: current
+      released: 2026-07
+      description: A ChatGPT mode for longer tasks that gathers context from files and plugins and
+        produces documents, presentations, spreadsheets, and Sites for review, in the cloud or on a
+        connected computer.
+      url: https://learn.chatgpt.com/docs/get-started-with-work
+      source_ids:
+        - chatgpt-work-docs
+        - chatgpt-whats-new
+    - name: Dots
+      kind: agent
+      status: preview
+      released: null
+      description: Always-on ChatGPT agents powered by GPT-6 Astra that run in the cloud and keep working
+        on ongoing responsibilities; rolling out gradually on Pro, Business Premium, and Enterprise
+        plans.
+      url: https://learn.chatgpt.com/docs/dots
+      source_ids:
+        - chatgpt-dots-docs
+        - chatgpt-whats-new
+    - name: ChatGPT Space
+      kind: service
+      status: current
+      released: null
+      description: A shared place in ChatGPT for Pages edited together with ChatGPT, plus spreadsheets,
+        presentations, Sites, and files; announced at DevDay 2026.
+      url: https://learn.chatgpt.com/docs/space
+      source_ids:
+        - chatgpt-space-docs
+        - chatgpt-whats-new
+    - name: Sites in ChatGPT
+      kind: service
+      status: preview
+      released: 2026-06
+      description: A public beta for building, hosting, and sharing websites, web apps, and games from
+        ChatGPT, included with Plus, Pro, Business, Enterprise, and Edu plans.
+      url: https://learn.chatgpt.com/docs/sites
+      source_ids:
+        - chatgpt-sites-docs
+        - chatgpt-whats-new
+    - name: Codex
+      kind: agent
+      status: current
+      released: null
+      description: OpenAI's coding agent, offered in the ChatGPT desktop app, on the web as a cloud agent,
+        in the CLI, in IDE extensions, and on mobile, using a ChatGPT plan or an API key.
+      url: https://learn.chatgpt.com/docs
+      source_ids:
+        - chatgpt-docs
+        - openai-codex-repo
+        - chatgpt-pricing
+    - name: Codex CLI
+      kind: agent
+      status: current
+      released: 2025-04-16
+      description: Open-source (Apache-2.0) coding agent that runs locally in a terminal; version 0.162.1
+        was the latest stable release on October 9, 2026.
+      url: https://github.com/openai/codex
+      source_ids:
+        - openai-codex-repo
+        - oai-api-changelog
+        - gh-codex-releases
+    - name: Codex Micro
+      kind: hardware
+      status: limited
+      released: 2026-07-15
+      description: A limited-run physical control surface for Codex in the ChatGPT desktop app, made with
+        Work Louder, with status keys, an analog stick, and a dial.
+      url: null
+      source_ids:
+        - chatgpt-whats-new
+    - name: OpenAI API
+      kind: platform
+      status: current
+      released: null
+      description: Developer platform for OpenAI's hosted models, billed by usage, with US, European, and
+        other data residency options.
+      url: https://developers.openai.com/api/docs
+      source_ids:
+        - openai-api-docs
+        - oai-your-data
+    - name: Responses API
+      kind: api
+      status: current
+      released: 2025-03-11
+      description: OpenAI's API for creating and using agents and tools, with built-in tools such as web
+        search, file search, computer use, and MCP.
+      url: https://developers.openai.com/api/docs
+      source_ids:
+        - oai-api-changelog
+        - oai-model-gpt-6-astra
+    - name: Agents API
+      kind: api
+      status: preview
+      released: 2026-09-10
+      description: Public-beta API that runs the Codex harness as an OpenAI-managed service with lasting
+        sessions and sandboxes; computer use was added on September 29, 2026.
+      url: https://developers.openai.com/api/docs/guides/agents-api/overview
+      source_ids:
+        - oai-agents-api
+        - oai-api-changelog
+    - name: Decisions API
+      kind: api
+      status: preview
+      released: 2026-10-06
+      description: Beta API, launched with gpt-6-luna, that turns text and images into typed answers.
+      url: null
+      source_ids:
+        - oai-api-changelog
+    - name: Realtime API
+      kind: api
+      status: current
+      released: 2025-08-28
+      description: API for live speech and voice apps; introduced in October 2024 and generally available
+        since August 28, 2025.
+      url: null
+      source_ids:
+        - oai-api-changelog
+    - name: Assistants API
+      kind: api
+      status: retired
+      released: 2023-11-06
+      description: Earlier API for building assistants, introduced at DevDay 2023 and shut down on August
+        26, 2026 in favor of the Responses and Conversations APIs.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - oai-api-deprecations
+    - name: OpenAI Agents SDK
+      kind: platform
+      status: current
+      released: 2025-03-11
+      description: Framework for building agents, released alongside the Responses API, with a TypeScript
+        version added in June 2025.
+      url: https://openai.github.io/openai-agents-python/
+      source_ids:
+        - oai-api-changelog
+    - name: GPT-6 Astra
+      kind: model
+      status: current
+      released: 2026-09-03
+      description: GPT-6 model built for complex reasoning, coding, computer use, and research, with a
+        1,050,000-token context window and text and image input. Its system card treats it as
+        Critical in cybersecurity.
+      url: https://developers.openai.com/api/docs/models/gpt-6-astra
+      source_ids:
+        - oai-model-gpt-6-astra
+        - dsh-gpt-6-astra
+    - name: GPT-6.1 Sol
+      kind: model
+      status: current
+      released: 2026-09-29
+      description: Model OpenAI describes as offering near-Astra performance for coding and professional
+        work at lower cost; in the API, Codex, and ChatGPT Work.
+      url: https://developers.openai.com/api/docs/models/gpt-6.1-sol
+      source_ids:
+        - oai-model-gpt-6-1-sol
+        - chatgpt-models-docs
+        - dsh-gpt-6-1-sol
+    - name: GPT-6 Sol
+      kind: model
+      status: current
+      released: 2026-09-22
+      description: GPT-6 model for coding and agent workflows; began launching to everyone in ChatGPT on October 7, 2026, replacing GPT-5.6 Sol there.
+      url: https://developers.openai.com/api/docs/models/gpt-6-sol
+      source_ids:
+        - oai-model-gpt-6-sol
+        - dsh-gpt-6-october
+    - name: GPT-6 Luna
+      kind: model
+      status: current
+      released: 2026-09-22
+      description: GPT-6 model for focused, high-volume tasks; launching to free and paid ChatGPT plans from October 7, 2026, and available in the API.
+      url: null
+      source_ids:
+        - oai-api-models
+        - oai-api-changelog
+        - dsh-gpt-6-october
+    - name: GPT-5.6 (Sol, Terra, Luna)
+      kind: model
+      status: legacy
+      released: 2026-07-09
+      description: Three-size model family that preceded GPT-6; still listed in the API, but replaced in
+        ChatGPT by GPT-6 Sol and Luna in October 2026.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - dsh-gpt-5-6
+        - oai-api-models-all
+        - dsh-gpt-6-october
+    - name: GPT-5.6 Cyber
+      kind: model
+      status: limited
+      released: 2026-08-07
+      description: Cybersecurity model for approved defenders doing authorized vulnerability research and
+        security testing; requires approval through the Daybreak program.
+      url: https://developers.openai.com/api/docs/models/gpt-5.6-cyber
+      source_ids:
+        - oai-model-gpt-5-6-cyber
+        - oai-api-changelog
+    - name: GPT-Rosalind
+      kind: model
+      status: limited
+      released: 2026-09-08
+      description: Life sciences reasoning model for approved organizations, generally available through a
+        trusted-access program; GPT-Rosalind-5.5 was trained further from GPT-5.5.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - dsh-gpt-rosalind-5-5
+    - name: GPT-5.5
+      kind: model
+      status: legacy
+      released: 2026-04-24
+      description: Previous-generation model with a 1M-token context window; leaves ChatGPT, ChatGPT Work,
+        and Codex on October 14, 2026 but stays in the API.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - chatgpt-models-docs
+    - name: GPT-5
+      kind: model
+      status: legacy
+      released: 2025-08-07
+      description: Model family (gpt-5, gpt-5-mini, gpt-5-nano) that unified fast and reasoning models in
+        ChatGPT; the August 2025 snapshots are set to shut down in the API on December 11, 2026.
+      url: null
+      source_ids:
+        - dsh-gpt-5
+        - oai-api-changelog
+        - oai-api-deprecations
+    - name: GPT-4o
+      kind: model
+      status: legacy
+      released: 2024-05-13
+      description: Earlier multimodal model, still listed in the API; its original dated snapshot shuts
+        down on October 23, 2026.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - oai-api-models-all
+        - oai-api-deprecations
+    - name: o3
+      kind: model
+      status: legacy
+      released: 2025-04-16
+      description: Reasoning model that the API model list says was succeeded by GPT-5; its April 2025
+        snapshot shuts down on December 11, 2026.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - oai-api-models-all
+        - oai-api-deprecations
+    - name: GPT-4
+      kind: model
+      status: legacy
+      released: 2023-03
+      description: Large multimodal model described in OpenAI's March 2023 technical report; deprecated,
+        with API shutdown on October 23, 2026.
+      url: null
+      source_ids:
+        - arxiv-gpt-4-report
+        - oai-api-deprecations
+    - name: GPT-3.5 Turbo
+      kind: model
+      status: legacy
+      released: null
+      description: Earlier chat model in the API; deprecated, with shutdown on October 23, 2026 and
+        GPT-5.6 Terra named as the substitute.
+      url: null
+      source_ids:
+        - oai-api-deprecations
+    - name: GPT-4.5 Preview
+      kind: model
+      status: retired
+      released: 2025-02-27
+      description: Research preview model, shut down in the API on July 14, 2025 with GPT-4.1 as the
+        replacement.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - oai-api-deprecations
+    - name: GPT Image 2.5 (Sunburst and Flare)
+      kind: model
+      status: current
+      released: 2026-09-08
+      description: "Image generation and editing models behind ChatGPT Images 2.5: Sunburst for precise
+        editing and Flare for quick generation."
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - dsh-images-2-5
+    - name: GPT-Live 1
+      kind: model
+      status: current
+      released: 2026-07
+      description: Full-duplex voice model that powers ChatGPT Voice; generally available in the API since
+        September 10, 2026.
+      url: null
+      source_ids:
+        - dsh-gpt-live
+        - oai-api-changelog
+        - chatgpt-voice-docs
+    - name: GPT-Transcribe
+      kind: model
+      status: current
+      released: 2026-07-28
+      description: Speech-to-text model for files, released with GPT-Live-Transcribe for low-latency
+        streaming transcription.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - oai-api-models
+    - name: text-embedding-3 (small and large)
+      kind: model
+      status: current
+      released: 2024-01-25
+      description: Embedding models that turn text into number vectors for search and retrieval.
+      url: null
+      source_ids:
+        - oai-api-changelog
+        - oai-api-models-all
+    - name: gpt-oss (gpt-oss-120b and gpt-oss-20b)
+      kind: model
+      status: current
+      released: 2025-08-05
+      description: Open-weight text reasoning models released under Apache 2.0, downloadable from Hugging Face.
+      url: https://github.com/openai/gpt-oss
+      source_ids:
+        - gpt-oss-model-card
+        - hf-openai
+        - oai-api-models-all
+    - name: gpt-oss-safeguard
+      kind: model
+      status: current
+      released: 2025-10-29
+      description: Open-weight (Apache 2.0) safety reasoning models built on gpt-oss that classify text
+        against safety policies the developer provides.
+      url: https://huggingface.co/openai/gpt-oss-safeguard-20b
+      source_ids:
+        - oai-api-changelog
+        - hf-gpt-oss-safeguard-20b
+    - name: OpenAI Privacy Filter
+      kind: model
+      status: current
+      released: null
+      description: Open-weight Apache 2.0 model that finds and masks personal information in text, with
+        1.5B total parameters and a 128,000-token context window.
+      url: https://huggingface.co/openai/privacy-filter
+      source_ids:
+        - hf-privacy-filter
+    - name: Whisper
+      kind: model
+      status: legacy
+      released: 2022-09
+      description: Open speech recognition models published on GitHub from 2022 to 2024; the hosted
+        whisper-1 API model is set to shut down on February 26, 2027.
+      url: https://github.com/openai/whisper
+      source_ids:
+        - gh-whisper-model-card
+        - oai-api-deprecations
+    - name: Sora 2
+      kind: model
+      status: retired
+      released: 2025-09-30
+      description: Video and audio generation model launched in a Sora app and on sora.com; the Videos API
+        and Sora 2 models had a listed shutdown date of September 24, 2026.
+      url: null
+      source_ids:
+        - dsh-sora-2
+        - oai-api-deprecations
+        - oai-your-data
+  timeline:
+    - date: "2015"
+      text: OpenAI, Inc. is incorporated as a Delaware nonprofit.
+      source_ids:
+        - de-ag-openai-review
+    - date: 2022-09
+      text: OpenAI releases the original Whisper speech recognition models.
+      source_ids:
+        - gh-whisper-model-card
+    - date: 2022-11
+      text: OpenAI launches ChatGPT.
+      source_ids:
+        - nber-how-people-use-chatgpt
+    - date: 2023-03-01
+      text: OpenAI stops using data sent to its API for model training by default.
+      source_ids:
+        - oai-your-data
+    - date: 2023-03-15
+      text: OpenAI publishes the GPT-4 Technical Report.
+      source_ids:
+        - arxiv-gpt-4-report
+    - date: 2023-11-06
+      text: At DevDay, OpenAI introduces GPT-4 Turbo in preview, the Assistants API, and DALL·E 3 and
+        text-to-speech in the API.
+      source_ids:
+        - oai-api-changelog
+    - date: 2024-05-08
+      text: OpenAI publishes the original version of its Model Spec.
+      source_ids:
+        - oai-model-spec-changelog
+    - date: 2024-05-13
+      text: GPT-4o becomes available in the API.
+      source_ids:
+        - oai-api-changelog
+    - date: 2024-09-12
+      text: OpenAI releases its o1-preview and o1-mini reasoning models.
+      source_ids:
+        - oai-api-changelog
+    - date: 2025-01-21
+      text: The Stargate Project, a new company to build AI infrastructure for OpenAI, is announced in
+        Washington, D.C.
+      source_ids:
+        - softbank-stargate-jan-2025
+    - date: 2025-03-11
+      text: OpenAI releases the Responses API and the Agents SDK.
+      source_ids:
+        - oai-api-changelog
+    - date: 2025-03-25
+      text: OpenAI publishes the system card for image generation built into GPT-4o.
+      source_ids:
+        - dsh-4o-image-gen
+    - date: 2025-04-15
+      text: OpenAI updates its Preparedness Framework to version 2.
+      source_ids:
+        - oai-preparedness-v2
+    - date: 2025-04-16
+      text: OpenAI releases o3 and o4-mini and launches the Codex CLI.
+      source_ids:
+        - oai-api-changelog
+    - date: 2025-07-17
+      text: OpenAI publishes the ChatGPT agent system card for its new agent in ChatGPT.
+      source_ids:
+        - dsh-chatgpt-agent
+    - date: 2025-08-05
+      text: OpenAI releases the open-weight gpt-oss-120b and gpt-oss-20b models.
+      source_ids:
+        - gpt-oss-model-card
+    - date: 2025-08-06
+      text: GSA announces a OneGov agreement offering ChatGPT Enterprise to participating federal
+        agencies.
+      source_ids:
+        - gsa-onegov-openai
+    - date: 2025-08-07
+      text: OpenAI releases GPT-5 in ChatGPT and the API.
+      source_ids:
+        - dsh-gpt-5
+        - oai-api-changelog
+    - date: 2025-09-23
+      text: OpenAI, Oracle, and SoftBank name five more U.S. Stargate data center sites.
+      source_ids:
+        - softbank-stargate-five-sites
+    - date: 2025-09-30
+      text: OpenAI publishes the system card for Sora 2, its video and audio generation model.
+      source_ids:
+        - dsh-sora-2
+    - date: 2025-10-28
+      text: The Delaware attorney general issues a Statement of No Objection to OpenAI's recapitalization
+        into a public benefit corporation controlled by the nonprofit.
+      source_ids:
+        - de-ag-openai-review
+    - date: 2025-11-13
+      text: GPT-5.1 becomes available in the API.
+      source_ids:
+        - oai-api-changelog
+    - date: 2025-12-11
+      text: OpenAI releases GPT-5.2.
+      source_ids:
+        - oai-api-changelog
+    - date: 2025-12-18
+      text: A Model Spec update adds an Under-18 Safety Mode.
+      source_ids:
+        - oai-model-spec-changelog
+    - date: 2026-02
+      text: OpenAI releases the Codex desktop app for macOS.
+      source_ids:
+        - chatgpt-whats-new
+    - date: 2026-03-05
+      text: OpenAI releases GPT-5.4 and GPT-5.4 Pro with a 1M-token context window.
+      source_ids:
+        - oai-api-changelog
+        - dsh-gpt-5-4-thinking
+    - date: 2026-03-24
+      text: OpenAI announces the deprecation of its Videos API and Sora 2 models, and the OpenAI
+        Foundation's board chair publishes an update on the Foundation's plans.
+      source_ids:
+        - oai-api-deprecations
+        - oaif-update-mar-2026
+    - date: 2026-04-24
+      text: OpenAI releases GPT-5.5 and GPT-5.5 Pro in the API.
+      source_ids:
+        - oai-api-changelog
+    - date: 2026-06-26
+      text: OpenAI begins a limited preview of GPT-5.6 for trusted partners at the U.S. government's
+        request.
+      source_ids:
+        - dsh-gpt-5-6-preview
+    - date: 2026-07-09
+      text: OpenAI releases GPT-5.6 and merges the Codex app into the ChatGPT desktop app, the same week
+        it launches ChatGPT Work.
+      source_ids:
+        - oai-api-changelog
+        - chatgpt-whats-new
+    - date: 2026-08-26
+      text: The Assistants API shuts down.
+      source_ids:
+        - oai-api-changelog
+    - date: 2026-09-03
+      text: OpenAI releases GPT-6 Astra, which its system card treats as Critical in cybersecurity.
+      source_ids:
+        - oai-api-changelog
+        - dsh-gpt-6-astra
+    - date: 2026-09-09
+      text: Paul Christiano joins the OpenAI Foundation board.
+      source_ids:
+        - oaif-christiano
+    - date: 2026-09-24
+      text: The listed shutdown date for the Videos API and Sora 2 models arrives.
+      source_ids:
+        - oai-api-deprecations
+        - oai-your-data
+    - date: 2026-09-29
+      text: OpenAI holds DevDay 2026 in San Francisco and releases GPT-6.1 Sol.
+      source_ids:
+        - devday-2026
+        - oai-api-changelog
+    - date: 2026-10-07
+      text: OpenAI begins launching GPT-6 Sol and GPT-6 Luna to everyone in ChatGPT.
+      source_ids:
+        - dsh-gpt-6-october
+    - date: 2026-10-08
+      text: A White House fact sheet lists OpenAI as an industry partner in the Genesis Mission
+        Consortium.
+      source_ids:
+        - wh-genesis-fact-sheet
+  leadership:
+    - name: Sam Altman
+      role: CEO of OpenAI
+      source_ids:
+        - gsa-onegov-openai
+        - softbank-stargate-five-sites
+    - name: Sarah Friar
+      role: Chief Financial Officer
+      source_ids:
+        - sec-openai-amazon-ecl
+    - name: Bret Taylor
+      role: Chair of the OpenAI Foundation and OpenAI Group PBC Boards
+      source_ids:
+        - oaif-velez-vince
+        - oaif-christiano
+    - name: Zico Kolter
+      role: Chair of the Safety and Security Committee
+      source_ids:
+        - oaif-christiano
+        - de-ag-openai-review
+    - name: Paul Christiano
+      role: Member of the OpenAI Foundation Board and non-voting observer on the OpenAI Group PBC Board
+      source_ids:
+        - oaif-christiano
+    - name: David Vélez
+      role: Member of the boards of the OpenAI Foundation and OpenAI Group PBC
+      source_ids:
+        - oaif-velez-vince
+    - name: Robin Vince
+      role: Member of the boards of the OpenAI Foundation and OpenAI Group PBC
+      source_ids:
+        - oaif-velez-vince
+    - name: Wojciech Zaremba
+      role: Head of AI Resilience, OpenAI Foundation
+      source_ids:
+        - oaif-update-mar-2026
+    - name: Jacob Trefethen
+      role: Head of Life Sciences and Curing Diseases, OpenAI Foundation
+      source_ids:
+        - oaif-update-mar-2026
+    - name: Anna Makanju
+      role: Head of AI for Civil Society and Philanthropy, OpenAI Foundation
+      source_ids:
+        - oaif-update-mar-2026
+    - name: Robert Kaiden
+      role: Chief Financial Officer, OpenAI Foundation
+      source_ids:
+        - oaif-update-mar-2026

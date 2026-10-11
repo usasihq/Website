@@ -43,7 +43,7 @@ const exportData = {
   organizations: catalog.organizations.map((o) => catalog.publicOrganization(o)),
   artifacts: catalog.artifacts.map((a) => ({ ...catalog.publicArtifact(a), computed_tier: computeTier(a) })),
   news: catalog.news,
-  // People Behind Local AI: the permanent, alphabetical list of published profiles.
+  // People Behind Local SI: the permanent, alphabetical list of published profiles.
   people: catalog.people.map((p) => catalog.publicPerson(p)),
 };
 

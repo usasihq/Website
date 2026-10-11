@@ -137,6 +137,7 @@ export type EntryType =
   | "newsletter"
   | "learning-path"
   | "kids-lesson"
+  | "leader"
   | "page";
 
 export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
@@ -158,6 +159,7 @@ export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   newsletter: "Weekly email",
   "learning-path": "Learning path",
   "kids-lesson": "For kids",
+  leader: "Big SI profile",
   page: "Page",
 };
 

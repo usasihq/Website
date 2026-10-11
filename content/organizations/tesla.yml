@@ -43,25 +43,27 @@ products:
     name: Robotaxi
     kind: other
     access: >-
-      Autonomous ride-hailing service booked through the Robotaxi app for iOS and Android. On
-      the date reviewed, the page listed rides in Austin, Dallas, Houston, Miami, Orlando, and
-      Tampa, using Model Y vehicles, and showed Cybercab as a vehicle designed without a steering
-      wheel or pedals.
+      Ride-hailing service booked through the Robotaxi app for iOS and Android. Tesla's Q2 2026
+      update listed Austin, Dallas, Houston, Miami, Orlando, and Tampa as ramping unsupervised
+      operation with Model Y vehicles, and the San Francisco Bay Area as operating with a safety
+      driver. NHTSA records that Tesla began commercial deployment of a small number of Cybercab
+      vehicles, which have no steering wheel or pedals, in Austin on September 3, 2026.
     url: https://www.tesla.com/robotaxi
-    source_ids: [tesla-robotaxi-page, tesla-10k-2025]
-    last_reviewed: 2026-09-29
+    source_ids: [tesla-robotaxi-page, tesla-10k-2025, tesla-q2-2026-update, nhtsa-aq26002-open]
+    last_reviewed: 2026-10-11
 notable_facts:
   - text: >-
-      Tesla launched its Robotaxi service in June 2025. Its annual report says the service
-      operates with Model Y vehicles and is planned to include Cybercab, a purpose-built
-      autonomous vehicle.
-    source_ids: [tesla-10k-2025]
+      Tesla launched its Robotaxi service in Austin in June 2025 with Model Y vehicles. NHTSA
+      records that Tesla began commercial deployment of a small number of Cybercab vehicles, its
+      purpose-built autonomous vehicle, in Austin on September 3, 2026, and opened an audit query
+      into how Tesla certified the vehicle.
+    source_ids: [tesla-10k-2025, nhtsa-aq26002-open, tesla-q2-2025-update]
   - text: >-
-      Tesla's annual report describes Cortex as its AI training cluster at Gigafactory Texas; the
-      company expanded it in 2025 and is building Cortex 2 there to add training compute. In 2025
-      Tesla also announced a collaboration with Samsung to manufacture semiconductors for AI
-      inference and training in the United States.
-    source_ids: [tesla-10k-2025]
+      Tesla's annual report describes Cortex as its AI training cluster at Gigafactory Texas. By
+      July 2026 Tesla listed both Cortex 1 and Cortex 2 as in production in Texas. In 2025 Tesla
+      also announced a collaboration with Samsung to manufacture semiconductors for AI inference
+      and training in the United States.
+    source_ids: [tesla-10k-2025, tesla-q2-2026-update]
 eligibility:
   status: eligible
   basis: us-headquarters
@@ -74,7 +76,7 @@ openness_summary: null
 hiring_url: null
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-11
 last_reviewed: 2026-09-29
 sources:
   - id: tesla-10k-2025
@@ -105,3 +107,1270 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-09-29
+  - id: tesla-q2-2026-update
+    title: Tesla Q2 2026 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-07-22
+    accessed_at: 2026-10-11
+  - id: tesla-q1-2026-update
+    title: Tesla Q1 2026 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026026551/exhibit991.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-04-22
+    accessed_at: 2026-10-11
+  - id: tesla-q4-2025-update
+    title: Tesla Q4 and Full Year 2025 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026003837/exhibit991.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-01-28
+    accessed_at: 2026-10-11
+  - id: tesla-q3-2025-update
+    title: Tesla Q3 2025 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828025045861/exhibit991.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-10-22
+    accessed_at: 2026-10-11
+  - id: tesla-q2-2025-update
+    title: Tesla Q2 2025 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828025035738/exhibit991.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-07-23
+    accessed_at: 2026-10-11
+  - id: tesla-q4-2024-update
+    title: Tesla Q4 and Full Year 2024 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828025002993/exhibit991.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-01-29
+    accessed_at: 2026-10-11
+  - id: tesla-q3-2024-update
+    title: Tesla Q3 2024 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828024043432/exhibit.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2024-10-23
+    accessed_at: 2026-10-11
+  - id: tesla-q2-2023-update
+    title: Tesla Q2 2023 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000095017023033544/tsla-ex99_1.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2023-07-19
+    accessed_at: 2026-10-11
+  - id: tesla-q3-2020-update
+    title: Tesla Q3 2020 Update (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000156459020047108/tsla-ex991_57.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2020-10-21
+    accessed_at: 2026-10-11
+  - id: tesla-10k-2016
+    title: Tesla, Inc. Form 10-K for the fiscal year ended December 31, 2016
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000156459017003118/tsla-10k_20161231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2017-03-01
+    accessed_at: 2026-10-11
+  - id: tesla-10k-2019
+    title: Tesla, Inc. Form 10-K for the fiscal year ended December 31, 2019
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000156459020004475/tsla-10k_20191231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2020-02-13
+    accessed_at: 2026-10-11
+  - id: tesla-10k-2022
+    title: Tesla, Inc. Form 10-K for the fiscal year ended December 31, 2022
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000095017023001409/tsla-20221231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2023-01-31
+    accessed_at: 2026-10-11
+  - id: tesla-10k-2023
+    title: Tesla, Inc. Form 10-K for the fiscal year ended December 31, 2023
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2024-01-29
+    accessed_at: 2026-10-11
+  - id: tesla-proxy-2025
+    title: Tesla, Inc. Definitive Proxy Statement (Schedule 14A) for the 2025 Annual Meeting
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000110465925090866/tm252289-12_def14a.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-09-17
+    accessed_at: 2026-10-11
+  - id: tesla-8k-2025-11-07
+    title: Tesla, Inc. Form 8-K (results of the November 6, 2025 Annual Meeting of Shareholders)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000110465925108507/tm2530590d1_8k.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2025-11-07
+    accessed_at: 2026-10-11
+  - id: tesla-8k-2026-07-22
+    title: Tesla, Inc. Form 8-K dated July 22, 2026 (Q2 2026 results)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/tsla-20260722.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-07-22
+    accessed_at: 2026-10-11
+  - id: tesla-8k-2026-09-29
+    title: Tesla, Inc. Form 8-K dated September 29, 2026 (credit agreements)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026063820/tsla-20260929.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-09-29
+    accessed_at: 2026-10-11
+  - id: tesla-8k-2026-10-02
+    title: Tesla Q3 2026 Vehicle Production, Deliveries and Deployments (Exhibit 99.1 to Form 8-K)
+    url: https://www.sec.gov/Archives/edgar/data/1318605/000162828026064366/exhibit991111111.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: 2026-10-02
+    accessed_at: 2026-10-11
+  - id: nhtsa-recall-23v085
+    title: Part 573 Safety Recall Report 23V-085 (Tesla, FSD Beta)
+    url: https://static.nhtsa.gov/odi/rcl/2023/RCLRPT-23V085-3451.PDF
+    publisher: National Highway Traffic Safety Administration
+    kind: filing
+    published_at: 2023-02-15
+    accessed_at: 2026-10-11
+  - id: nhtsa-recall-23v838
+    title: Part 573 Safety Recall Report 23V-838 (Tesla, Autosteer)
+    url: https://static.nhtsa.gov/odi/rcl/2023/RCLRPT-23V838-8276.PDF
+    publisher: National Highway Traffic Safety Administration
+    kind: filing
+    published_at: 2023-12-12
+    accessed_at: 2026-10-11
+  - id: nhtsa-ea22002-close
+    title: "ODI Resume: Investigation EA22002 (Close), Autopilot System Driver Controls"
+    url: https://static.nhtsa.gov/odi/inv/2022/INCLA-EA22002-14498.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2024-04-25
+    accessed_at: 2026-10-11
+  - id: nhtsa-rq24009-open
+    title: "ODI Resume: Investigation RQ24009 (Open), Recall 23V838 Remedy Effectiveness"
+    url: https://static.nhtsa.gov/odi/inv/2024/INOA-RQ24009-12046.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2024-04-25
+    accessed_at: 2026-10-11
+  - id: nhtsa-pe24031-open
+    title: "ODI Resume: Investigation PE24031 (Open), FSD Collisions in Reduced Roadway Visibility
+      Conditions"
+    url: https://static.nhtsa.gov/odi/inv/2024/INOA-PE24031-23232.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2024-10-17
+    accessed_at: 2026-10-11
+  - id: nhtsa-pe24031-robotaxi-ir
+    title: NHTSA Information Request ID PE24031-02 to Tesla, Inc. (robotaxi technologies)
+    url: https://static.nhtsa.gov/odi/inv/2024/INIM-PE24031-62887.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2025-05-08
+    accessed_at: 2026-10-11
+  - id: nhtsa-pe24033-open
+    title: "ODI Resume: Investigation PE24033 (Open), Crash incidents during Actually Smart Summon sessions"
+    url: https://static.nhtsa.gov/odi/inv/2024/INOA-PE24033-35917.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2025-01-06
+    accessed_at: 2026-10-11
+  - id: nhtsa-pe24033-close
+    title: "ODI Resume: Investigation PE24033 (Close), Actually Smart Summon sessions resulting in
+      low-speed impacts"
+    url: https://static.nhtsa.gov/odi/inv/2024/INCLA-PE24033-87838.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2026-04-03
+    accessed_at: 2026-10-11
+  - id: nhtsa-aq25002-open
+    title: "ODI Resume: Investigation AQ25002 (Open), Compliance with Standing General Order 2021-01
+      Reporting Requirements"
+    url: https://static.nhtsa.gov/odi/inv/2025/INOA-AQ25002-18184.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2025-08-19
+    accessed_at: 2026-10-11
+  - id: nhtsa-pe25012-open
+    title: "ODI Resume: Investigation PE25012 (Open), Traffic safety violations while Full Self Driving
+      is engaged"
+    url: https://static.nhtsa.gov/odi/inv/2025/INOA-PE25012-19171.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2025-10-07
+    accessed_at: 2026-10-11
+  - id: nhtsa-ea26002-open
+    title: "ODI Resume: Investigation EA26002 (Open), FSD Collisions in Reduced Roadway Visibility
+      Conditions"
+    url: https://static.nhtsa.gov/odi/inv/2026/INOA-EA26002-10023.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2026-03-18
+    accessed_at: 2026-10-11
+  - id: nhtsa-ea26002-ir
+    title: NHTSA Information Request ID EA26002-01 to Tesla, Inc.
+    url: https://static.nhtsa.gov/odi/inv/2026/INIM-EA26002-14414.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2026-07-02
+    accessed_at: 2026-10-11
+  - id: nhtsa-aq26002-open
+    title: "OVSC Resume: Investigation AQ26002 (Open), Tesla Cybercab FMVSS Certification"
+    url: https://static.nhtsa.gov/odi/inv/2026/INOA-AQ26002-17078.pdf
+    publisher: National Highway Traffic Safety Administration
+    kind: other
+    published_at: 2026-09-03
+    accessed_at: 2026-10-11
+  - id: cadmv-tesla-decision-2025
+    title: DMV Finds Tesla Violated California State Law
+    url: https://www.dmv.ca.gov/portal/news-and-media/news-releases/dmv-finds-tesla-violated-california-state-law/
+    publisher: California Department of Motor Vehicles
+    kind: announcement
+    published_at: 2025-12-16
+    accessed_at: 2026-10-11
+  - id: cadmv-tesla-corrective-2026
+    title: Tesla Takes Corrective Action to Avoid DMV Suspension
+    url: https://www.dmv.ca.gov/portal/news-and-media/tesla-takes-corrective-action-to-avoid-dmv-suspension/
+    publisher: California Department of Motor Vehicles
+    kind: announcement
+    published_at: 2026-02-17
+    accessed_at: 2026-10-11
+  - id: cadmv-av-permit-holders
+    title: Autonomous Vehicle Testing Permit Holders
+    url: https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/autonomous-vehicle-testing-permit-holders/
+    publisher: California Department of Motor Vehicles
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: cpuc-tesla-comments-2026
+    title: Comments of Tesla, Inc. on the Email Ruling Providing Prehearing Conference Questions for
+      Parties (Rulemaking 25-08-013)
+    url: https://docs.cpuc.ca.gov/PublishedDocs/Efile/G000/M598/K100/598100914.PDF
+    publisher: California Public Utilities Commission (filing by Tesla, Inc.)
+    kind: filing
+    published_at: 2026-01-30
+    accessed_at: 2026-10-11
+deep_dive:
+  reviewed_at: 2026-10-11
+  overview:
+    - text: Tesla, Inc. designs, makes, sells and leases electric vehicles and energy generation and
+        storage systems. Its annual report for 2025 says the company is focused on bringing
+        artificial intelligence (AI) into the real world through products and services such as Full
+        Self-Driving (Supervised) and Robotaxi, and through AI robots, including the Optimus
+        humanoid robot.
+      source_ids:
+        - tesla-10k-2025
+    - text: Tesla's driving software learns from camera video. The company says it uses vision-based
+        systems to train artificial neural networks (computer programs that learn patterns from
+        examples), runs them in its products on inference chips it designs itself, and trains them
+        on its own computing clusters, Cortex and Cortex 2, at Gigafactory Texas.
+      source_ids:
+        - tesla-10k-2025
+        - tesla-q2-2026-update
+        - tesla-q1-2026-update
+
+    - text: Full Self-Driving (Supervised) is driver assistance, not a self-driving car. Tesla's own
+        materials say it requires active driver supervision and does not make the vehicle
+        autonomous. NHTSA notes that Tesla describes FSD as an SAE Level 2 system, which means a
+        person must watch the road and stay responsible for driving at all times.
+      source_ids:
+        - tesla-fsd-page
+        - tesla-q2-2026-update
+        - nhtsa-pe25012-open
+    - text: Tesla launched its Robotaxi ride-hailing service in Austin in June 2025. By July 2026 it
+        described unsupervised operation as ramping in six Texas and Florida metro areas, while its
+        San Francisco Bay Area service used a safety driver. NHTSA records that Tesla began commercial
+        deployment of a small number of Cybercab vehicles, which have no steering wheel or pedals, in
+        Austin on September 3, 2026.
+      source_ids:
+        - tesla-10k-2025
+        - tesla-q2-2025-update
+
+        - tesla-q2-2026-update
+        - nhtsa-aq26002-open
+    - text: Regulators are actively reviewing Tesla's driver-assistance and autonomy work. NHTSA has
+        opened reviews of how FSD handles reduced visibility and traffic signals and of how Tesla
+        certified the Cybercab. In California, the DMV decided in December 2025 that Tesla's
+        "Autopilot" marketing was misleading, and said in February 2026 that Tesla had taken
+        corrective action.
+      source_ids:
+        - nhtsa-ea26002-open
+        - nhtsa-pe25012-open
+        - nhtsa-aq26002-open
+        - cadmv-tesla-decision-2025
+        - cadmv-tesla-corrective-2026
+  sections:
+    - id: business-overview
+      title: What Tesla does
+      intro:
+        text: "Tesla reports two business segments: automotive, and energy generation and storage. It says
+          these products increasingly deliver AI-related software and services."
+        source_ids:
+          - tesla-10k-2025
+      items:
+        - text: Tesla's 2025 annual report lists five consumer vehicles (Model 3, Model Y, Model S, Model X
+            and Cybertruck) and says early production and deliveries of the Tesla Semi truck began
+            in 2022.
+          source_ids:
+            - tesla-10k-2025
+        - text: In its Q2 2026 update, Tesla said it had decommissioned the Model S and Model X production
+            lines at its Fremont, California factory and was installing Optimus robot production
+            lines in their place.
+          source_ids:
+            - tesla-q2-2026-update
+        - text: Tesla's energy products include Powerwall (a home battery), Megapack (a utility-scale battery)
+            and solar products including Solar Roof. Its Powerhub and Autobidder software platforms
+            manage networks of Powerwalls and Megapack systems.
+          source_ids:
+            - tesla-10k-2025
+        - text: Tesla develops almost all of its vehicle control and infotainment software in-house and
+            updates it "over the air", meaning through wireless software downloads to cars already
+            on the road.
+          source_ids:
+            - tesla-10k-2025
+        - text: Tesla states its mission as "building a world of amazing abundance." It says every vehicle it
+            delivers is designed for autonomy, while today's customer vehicles still require the
+            driver to stay fully engaged.
+          source_ids:
+            - tesla-10k-2025
+        - text: In July 2026 Tesla said it expects profits from selling hardware to be followed, over time, by
+            growth in AI, software and fleet-based profits.
+          source_ids:
+            - tesla-q2-2026-update
+    - id: fsd-and-autopilot
+      title: Full Self-Driving (Supervised) and Autopilot
+      intro:
+        text: Tesla's driver-assistance systems can steer, brake and accelerate, but a person must stay in
+          charge. Tesla's quarterly updates footnote FSD (Supervised) with the words "Active driver
+          supervision required; does not make the vehicle autonomous."
+        source_ids:
+          - tesla-q2-2026-update
+          - tesla-fsd-page
+      items:
+        - text: "NHTSA describes Autopilot as the combined use of two Tesla features: Traffic-Aware Cruise
+            Control, which keeps a set speed and following distance, and Autosteer, which keeps the
+            car in its lane. Tesla characterizes Autopilot as an SAE Level 2 partial driving
+            automation system."
+          source_ids:
+            - nhtsa-ea22002-close
+        - text: FSD (Supervised) is Tesla's more capable driver-assistance package, which can drive on city
+            streets as well as highways under supervision. NHTSA notes that Tesla describes it as
+            requiring a fully attentive driver, and that the driver remains fully responsible for
+            driving, including obeying traffic laws.
+          source_ids:
+            - nhtsa-pe25012-open
+            - tesla-fsd-page
+            - tesla-q3-2020-update
+        - text: Tesla began its FSD beta in October 2020, sending city-street driving software built on a
+            ground-up rewrite of its Autopilot neural networks to a limited group of Early Access
+            Program participants.
+          source_ids:
+            - tesla-q3-2020-update
+        - text: According to NHTSA, Tesla moved in mid-2021 from using both cameras and radar to a camera-only
+            approach it calls Tesla Vision, and added a system meant to detect when camera
+            visibility is degraded.
+          source_ids:
+            - nhtsa-ea26002-open
+        - text: Tesla describes FSD (Supervised) v14 as an end-to-end foundation model, a single large AI
+            model trained on driving data from customer vehicles and the Robotaxi fleet. Deployment
+            of v14 began in October 2025. Tesla released v14.3 in April 2026, saying it improved
+            training for rare situations, vision in low visibility, and reaction time.
+          source_ids:
+            - tesla-q3-2025-update
+            - tesla-q4-2025-update
+            - tesla-q1-2026-update
+        - text: FSD v14 lite brings v14-style driving to cars with Tesla's older AI3 computer by distilling
+            driving behavior learned on AI4 cars. Tesla began delivering it in the U.S. and, in July
+            2026, in South Korea.
+          source_ids:
+            - tesla-q2-2026-update
+        - text: FSD (Supervised) is called "FSD (Capability)" in Europe, the Middle East and Asia Pacific.
+            Tesla reported launches in Australia and New Zealand in 2025 and in South Korea by
+            January 2026, approval in the Netherlands in April 2026, and approvals in Lithuania,
+            Estonia, Denmark and Belgium by July 2026. Tesla says approval in China is still being
+            pursued.
+          source_ids:
+            - tesla-10k-2025
+            - tesla-q3-2025-update
+            - tesla-q4-2025-update
+            - tesla-q1-2026-update
+            - tesla-q2-2026-update
+        - text: Actually Smart Summon, released in 2024, lets an owner use the phone app to have the car drive
+            itself a short distance in a parking lot. Tesla describes Summon to NHTSA as a
+            short-distance SAE Level 2 system for parking lots and private property.
+          source_ids:
+            - tesla-q3-2024-update
+            - nhtsa-pe24033-close
+        - text: Starting in early 2026, Tesla began moving FSD (Supervised) to monthly subscriptions only and
+            phasing out the up-front purchase option.
+          source_ids:
+            - tesla-q4-2025-update
+            - tesla-q1-2026-update
+    - id: robotaxi-and-cybercab
+      title: Robotaxi and Cybercab
+      intro:
+        text: Robotaxi is Tesla's ride-hailing service built on its self-driving software. Riders book
+          through the Robotaxi app for iOS and Android.
+        source_ids:
+          - tesla-robotaxi-page
+          - tesla-10k-2025
+      items:
+        - text: Tesla launched Robotaxi in Austin, Texas, in June 2025 using Model Y vehicles, with a safety
+            rider on board. Tesla said it planned to expand the service and eventually run it
+            without the safety rider.
+          source_ids:
+            - tesla-10k-2025
+            - tesla-q2-2025-update
+        - text: On May 8, 2025, before the launch, NHTSA asked Tesla how it planned to evaluate its robotaxi
+            technology for use on public roads, including its ability to handle reduced visibility
+            such as sun glare, fog or snow.
+          source_ids:
+            - nhtsa-pe24031-robotaxi-ir
+        - text: Tesla began testing driverless Robotaxis in Austin in December 2025 and began removing the
+            safety monitor from some customer rides there in January 2026.
+          source_ids:
+            - tesla-q4-2025-update
+        - text: Tesla launched unsupervised rides in Dallas and Houston in April 2026, and in Miami, Orlando
+            and Tampa in July 2026, when it also expanded the unsupervised area in Austin. Tesla
+            describes service in these six metro areas as "ramping unsupervised."
+          source_ids:
+            - tesla-q1-2026-update
+            - tesla-q2-2026-update
+        - text: In the San Francisco Bay Area, Tesla runs ride-hailing with a safety driver under a California
+            charter-party carrier permit. Tesla began serving San Jose Airport in October 2025. In
+            January 2026 Tesla told the California Public Utilities Commission that it does not hold
+            the permits needed to run autonomous rideshare vehicles in California, and that all
+            rides there use a safety driver with FSD (Supervised).
+          source_ids:
+            - tesla-q1-2026-update
+            - tesla-q4-2025-update
+            - cpuc-tesla-comments-2026
+        - text: In July 2026 Tesla said preparations were underway in Phoenix, Arizona, and Las Vegas, Nevada,
+            and that it was testing, seeking permits and training emergency responders for more U.S.
+            metro areas.
+          source_ids:
+            - tesla-q2-2026-update
+        - text: Tesla unveiled Cybercab, its purpose-built autonomous vehicle, together with the Robovan at
+            its "We, Robot" event on October 10, 2024. Tesla said both were designed for autonomy
+            without a steering wheel or pedals.
+          source_ids:
+            - tesla-q3-2024-update
+            - tesla-10k-2025
+        - text: Cybercab production started at Gigafactory Texas in 2026. In July 2026 Tesla said production
+            units had begun engineering test drives on public roads and that rides for Tesla staff
+            had started on the Gigafactory Texas campus.
+          source_ids:
+            - tesla-q1-2026-update
+            - tesla-q2-2026-update
+        - text: NHTSA records that Tesla began commercial deployment with a small number of Cybercab vehicles
+            in Austin on September 3, 2026. Tesla told the agency it had certified them as meeting
+            all applicable Federal Motor Vehicle Safety Standards and planned to expand to more
+            vehicles and locations gradually.
+          source_ids:
+            - nhtsa-aq26002-open
+        - text: Tesla says that once Cybercab is in production it is expected to begin replacing the Model Y
+            vehicles in the Robotaxi fleet.
+          source_ids:
+            - tesla-q1-2026-update
+    - id: optimus
+      title: Optimus humanoid robot
+      intro:
+        text: Tesla describes Optimus as a general-purpose, autonomous humanoid robot in development, and
+          says it applies what it learned from self-driving to robots.
+        source_ids:
+          - tesla-10k-2025
+      items:
+        - text: Tesla showed a preview of Optimus in 2022. Its annual reports say the robot is controlled by
+            the same AI system that Tesla develops for self-driving.
+          source_ids:
+            - tesla-10k-2022
+            - tesla-10k-2023
+        - text: At its October 10, 2024 "We, Robot" event, Tesla showed Optimus and a newer Optimus hand with
+            twice the degrees of freedom (ways the hand can move).
+          source_ids:
+            - tesla-q3-2024-update
+        - text: In January 2026 Tesla said it planned to unveil a Gen 3 version of Optimus in Q1 2026, with a
+            new hand design, describing Gen 3 as the design intended for mass production and saying
+            production was planned to start before the end of 2026.
+          source_ids:
+            - tesla-q4-2025-update
+        - text: Tesla is installing Optimus production lines at its Fremont factory in place of the Model S
+            and Model X lines, and is preparing a later-generation, higher-volume Optimus line at
+            Gigafactory Texas.
+          source_ids:
+            - tesla-q1-2026-update
+            - tesla-q2-2026-update
+        - text: Tesla says early Optimus units will support an "Optimus Academy" for collecting training data
+            and developing the robot's skills, and that its Cortex 2 cluster trains both vehicle and
+            humanoid-robot autonomy software.
+          source_ids:
+            - tesla-q2-2026-update
+        - text: Tesla's annual report calls robotics a nascent industry and says its robots have not yet been
+            commercialized; it says success depends on applying its neural-network training
+            experience to robots and making them cost-effective.
+          source_ids:
+            - tesla-10k-2025
+    - id: chips-and-compute
+      title: AI chips, computers and training clusters
+      intro:
+        text: Tesla designs its own inference chips, the chips inside a car or robot that run trained AI
+          models, and trains those models on computing clusters it operates.
+        source_ids:
+          - tesla-10k-2025
+      items:
+        - text: "In October 2016 Tesla began fitting all its vehicles with hardware it described as intended
+            for full self-driving capability: cameras with 360-degree visibility, ultrasonic
+            sensors, a forward radar and a more powerful onboard computer."
+          source_ids:
+            - tesla-10k-2016
+        - text: Tesla introduced a new proprietary onboard computer for self-driving in 2019. Its later annual
+            reports call the in-car computer that runs its neural networks the FSD Computer, and its
+            2026 updates refer to AI3 and AI4 hardware generations.
+          source_ids:
+            - tesla-10k-2019
+            - tesla-10k-2023
+            - tesla-q2-2026-update
+        - text: AI5 is Tesla's next in-house inference chip. In January 2026 Tesla said AI5 production was
+            planned for 2027 and AI6 for 2028, and that AI5 was designed with roughly 10 times the
+            raw compute and 9 times the memory of AI4. Tesla completed AI5's final chip design
+            (tape-out) in April 2026.
+          source_ids:
+            - tesla-q4-2025-update
+            - tesla-q1-2026-update
+        - text: Tesla started production of Dojo, an in-house computer for training neural networks, in July
+            2023. Its 2025 annual report describes a third-quarter 2025 restructuring tied to the
+            "convergence of AI chip design efforts," with charges for supercomputer assets. In April
+            2026 Tesla said it continues custom silicon work with Dojo 3 to lower training costs
+            over time.
+          source_ids:
+            - tesla-q2-2023-update
+            - tesla-10k-2025
+            - tesla-q1-2026-update
+        - text: Cortex is Tesla's AI training cluster at Gigafactory Texas. Tesla finished deploying it in Q4
+            2024 with about 50,000 H100-class GPUs, expanded it in 2025, and in April 2026 listed
+            Cortex 1 at more than 100,000 H100-equivalent GPUs.
+          source_ids:
+            - tesla-q4-2024-update
+            - tesla-10k-2025
+            - tesla-q1-2026-update
+        - text: Cortex 2, also at Gigafactory Texas, came online and began running training workloads in early
+            2026. In July 2026 Tesla listed Cortex 1 at more than 90 megawatts and Cortex 2 at more
+            than 115 megawatts, and said its onsite compute in Texas more than doubled between
+            January and June 2026.
+          source_ids:
+            - tesla-q1-2026-update
+            - tesla-q2-2026-update
+        - text: In 2025 Tesla announced a collaboration with Samsung to manufacture advanced semiconductors
+            for AI inference and training in the United States.
+          source_ids:
+            - tesla-10k-2025
+            - tesla-q3-2025-update
+        - text: Tesla says it is adding chip manufacturing to secure enough chips as Robotaxi and Optimus
+            grow. In April 2026 it described a partnership with SpaceX to build a chip fab combining
+            logic, memory and advanced packaging, starting with a Tesla-owned Research Fab on the
+            Gigafactory Texas campus. In July 2026 it said construction and equipment purchasing for
+            a semiconductor fab in Austin were progressing.
+          source_ids:
+            - tesla-q1-2026-update
+            - tesla-q2-2026-update
+        - text: In the second quarter of 2026 Tesla acquired an AI hardware company, which its filing does not
+            name, in an asset acquisition; part of the payment depends on the successful deployment
+            of that company's technology.
+          source_ids:
+            - tesla-10q-q2-2026
+    - id: how-to-use
+      title: How people can use Tesla's AI
+      intro:
+        text: People mainly meet Tesla's AI through software in Tesla vehicles and through the Robotaxi app.
+        source_ids:
+          - tesla-fsd-page
+          - tesla-robotaxi-page
+      items:
+        - text: FSD (Supervised) is offered by monthly subscription in select markets in North America, Europe
+            and Asia Pacific.
+          source_ids:
+            - tesla-fsd-page
+            - tesla-q1-2026-update
+        - text: The Robotaxi app lets riders request a ride, track the vehicle, preset the cabin temperature,
+            unlock the car with their phone and pay through their Tesla payment profile. Tesla said
+            in January 2026 that the iOS app no longer had a waitlist in the areas it serves.
+          source_ids:
+            - tesla-q2-2025-update
+            - tesla-q4-2025-update
+            - tesla-robotaxi-page
+        - text: Grok, the AI assistant made by xAI, began rolling out to Tesla vehicles in North America by
+            over-the-air update in 2025. Later Tesla updates added hands-free navigation commands, a
+            "Hey Grok" wake phrase and location-based reminders, and, in July 2026, phone calls,
+            search, music playback and climate control.
+          source_ids:
+            - tesla-q3-2025-update
+            - tesla-q4-2025-update
+            - tesla-q1-2026-update
+            - tesla-q2-2026-update
+        - text: Tesla's 2026 Summer Release lets customers view and share Self-Driving Stats and lets
+            Automatic Navigation work with destinations based on habits and schedules, such as
+            school drop-offs.
+          source_ids:
+            - tesla-q2-2026-update
+        - text: Tesla says its latest Safety Score version gives every mile driven with FSD (Supervised) a
+            score of 100, which can help eligible customers with Tesla's insurance; it also offers
+            insurance discounts for FSD use in certain states.
+          source_ids:
+            - tesla-q1-2026-update
+            - tesla-q4-2025-update
+        - text: Actually Smart Summon is controlled from the Tesla phone app within a set distance of the car
+            and is intended for parking lots and private property.
+          source_ids:
+            - nhtsa-pe24033-close
+    - id: safety-and-regulators
+      title: Safety, regulators and policies
+      intro:
+        text: Under an NHTSA Standing General Order, Tesla must report certain crashes involving its
+          driver-assistance systems, and NHTSA can investigate any vehicle or feature used on public
+          roads.
+        source_ids:
+          - tesla-10k-2025
+      items:
+        - text: On February 15, 2023, Tesla filed recall 23V-085 for FSD Beta after NHTSA identified concerns
+            that it could break local traffic laws at certain intersections and speed zones. The fix
+            was an over-the-air software update.
+          source_ids:
+            - nhtsa-recall-23v085
+        - text: On December 12, 2023, Tesla filed recall 23V-838 for vehicles with Autosteer, saying the
+            system's controls might not be enough to prevent driver misuse, and added stronger
+            alerts and checks by over-the-air update. On April 25, 2024, NHTSA closed its Autopilot
+            engineering analysis (EA22002) and opened a recall query (RQ24009) to assess whether the
+            fix is adequate.
+          source_ids:
+            - nhtsa-recall-23v838
+            - nhtsa-ea22002-close
+            - nhtsa-rq24009-open
+        - text: NHTSA opened a preliminary evaluation (PE24031) on October 17, 2024, into FSD crashes in
+            reduced visibility such as sun glare, fog or airborne dust. On March 18, 2026, it
+            upgraded the review to an engineering analysis (EA26002) to examine whether FSD detects
+            degraded camera visibility and warns the driver in time.
+          source_ids:
+            - nhtsa-pe24031-open
+            - nhtsa-ea26002-open
+        - text: On October 7, 2025, NHTSA opened a preliminary evaluation (PE25012) into reports of vehicles
+            running red lights or entering opposing lanes with FSD engaged, focusing on whether
+            drivers get enough warning and time to intervene.
+          source_ids:
+            - nhtsa-pe25012-open
+        - text: On August 19, 2025, NHTSA opened an audit query (AQ25002) into whether Tesla submitted crash
+            reports under the Standing General Order on time. Tesla attributed the delays to a
+            data-collection issue that it says has been fixed.
+          source_ids:
+            - nhtsa-aq25002-open
+        - text: NHTSA opened a review of Actually Smart Summon crashes (PE24033) on January 6, 2025, and
+            closed it on April 3, 2026, citing Tesla's over-the-air updates that improved detection
+            of blocked cameras.
+          source_ids:
+            - nhtsa-pe24033-open
+            - nhtsa-pe24033-close
+        - text: On September 3, 2026, NHTSA opened an audit query (AQ26002) into how Tesla certified the
+            Cybercab, which lacks conventional controls such as a steering wheel, pedals and
+            mirrors, including how far the certification relied on finding some safety standards
+            inapplicable.
+          source_ids:
+            - nhtsa-aq26002-open
+        - text: On December 16, 2025, the California DMV decided that Tesla's use of "Autopilot" and "Full
+            Self-Driving Capability" in marketing was misleading under state law. It permanently
+            stayed a suspension of Tesla's manufacturer license and gave Tesla 60 days to address
+            "Autopilot." On February 17, 2026, the DMV said Tesla had stopped using "Autopilot" in
+            its California marketing and would avoid suspension.
+          source_ids:
+            - cadmv-tesla-decision-2025
+            - cadmv-tesla-corrective-2026
+        - text: As of September 17, 2026, the California DMV list of permit holders for autonomous vehicle
+            testing with a driver included Tesla Robotaxi LLC. When reviewed on October 11, 2026, no
+            Tesla entity appeared on the DMV lists of driverless testing or deployment permit
+            holders.
+          source_ids:
+            - cadmv-av-permit-holders
+    - id: governance-and-filings
+      title: Corporate structure, governance and links to xAI and SpaceX
+      intro:
+        text: Tesla, Inc. was incorporated in Delaware in 2003 and became a Texas corporation on June 13,
+          2024. Its principal executive offices are at 1 Tesla Road, Austin, Texas.
+        source_ids:
+          - tesla-10q-q2-2026
+          - tesla-10k-2025
+      items:
+        - text: Robyn Denholm has been Chair of the Board since November 2018. At the November 6, 2025 annual
+            meeting, shareholders re-elected three directors and approved a shareholder proposal to
+            elect each director annually.
+          source_ids:
+            - tesla-proxy-2025
+            - tesla-8k-2025-11-07
+        - text: Tesla's annual report lists as a risk factor that its chief executive officer does not devote
+            full time to Tesla and also holds management roles at SpaceX, xAI, Neuralink and The
+            Boring Company.
+          source_ids:
+            - tesla-10k-2025
+        - text: At the November 6, 2025 meeting, an advisory shareholder proposal on board authorization of an
+            investment in xAI did not pass, because Tesla's bylaws generally count abstentions as
+            votes against. The board had made no voting recommendation on it.
+          source_ids:
+            - tesla-8k-2025-11-07
+            - tesla-proxy-2025
+        - text: In January 2026 Tesla agreed to make a minority investment in xAI preferred stock, on the same
+            terms as other investors in that financing, and Tesla and xAI signed a framework
+            agreement for evaluating possible AI collaborations.
+          source_ids:
+            - tesla-10k-2025
+            - tesla-q4-2025-update
+        - text: In March 2026, after regulatory approvals, Tesla's xAI preferred shares became SpaceX common
+            stock. Tesla says it has significant influence over this holding because its CEO is also
+            CEO of SpaceX, and it accounts for the holding at fair value.
+          source_ids:
+            - tesla-10q-q2-2026
+        - text: Tesla reports related-party dealings with SpaceX, The Boring Company and Redwood Materials. In
+            2026 SpaceX bought Megapack products from Tesla in the ordinary course of business.
+          source_ids:
+            - tesla-10q-q2-2026
+        - text: Derivative lawsuits filed on Tesla's behalf in the Delaware Court of Chancery in 2024,
+            relating to X Corp. and xAI, were dismissed on April 13, 2026; the plaintiffs appealed
+            to the Delaware Supreme Court in May 2026.
+          source_ids:
+            - tesla-10q-q2-2026
+        - text: "Tesla's filings describe other cases about its driver-assistance technology: a consumer class
+            action in federal court in Northern California filed in 2022 (the Ninth Circuit agreed
+            in December 2025 to hear Tesla's appeal of class certification); a securities class
+            action in the Western District of Texas filed August 4, 2025 over statements about
+            Autopilot, FSD (Supervised) and Robotaxi; and Tesla's appeal to the Eleventh Circuit of
+            an August 2025 Florida jury verdict in an Autopilot crash case."
+          source_ids:
+            - tesla-10q-q2-2026
+        - text: Tesla says it regularly receives information requests and subpoenas from agencies including
+            NHTSA, the NTSB, the SEC and the Department of Justice on topics including Autopilot,
+            FSD and Robotaxi, and that to its knowledge no agency in any ongoing investigation has
+            concluded that wrongdoing occurred.
+          source_ids:
+            - tesla-10q-q2-2026
+    - id: recent-updates
+      title: Recent updates (July to October 2026)
+      items:
+        - text: "July 2, 2026: NHTSA sent Tesla an information request under engineering analysis EA26002
+            about FSD's ability to detect reduced visibility and alert drivers, tied to nine crashes
+            under review."
+          source_ids:
+            - nhtsa-ea26002-ir
+        - text: "July 2026: Tesla launched unsupervised Robotaxi rides in Miami, Orlando and Tampa, expanded
+            the unsupervised area in Austin, began Cybercab rides for staff at Gigafactory Texas,
+            and started delivering FSD v14 lite in South Korea."
+          source_ids:
+            - tesla-q2-2026-update
+        - text: "July 22, 2026: Tesla's Q2 2026 update listed Cortex 1 and Cortex 2 as in production in Texas,
+            described Optimus lines being installed in Fremont and progress on an Austin
+            semiconductor fab, and reported FSD (Supervised) approvals in Lithuania, Estonia,
+            Denmark and Belgium."
+          source_ids:
+            - tesla-q2-2026-update
+        - text: "July 22, 2026: Tesla said Tesla Semi, Megapack 3 and Optimus production remained planned to
+            start in 2026."
+          source_ids:
+            - tesla-q2-2026-update
+        - text: "July 23, 2026: Tesla's quarterly report disclosed the Q2 2026 acquisition of an AI hardware
+            company and its equity investment in SpaceX."
+          source_ids:
+            - tesla-10q-q2-2026
+        - text: "September 3, 2026: Tesla began commercial deployment of a small number of Cybercabs in
+            Austin, and NHTSA opened audit query AQ26002 into how Tesla certified the vehicle."
+          source_ids:
+            - nhtsa-aq26002-open
+        - text: "September 17, 2026: the California DMV list of permit holders for autonomous testing with a
+            driver, dated as of that day, included Tesla Robotaxi LLC."
+          source_ids:
+            - cadmv-av-permit-holders
+        - text: "October 2, 2026: Tesla reported Q3 2026 production and deliveries and said it would post Q3
+            financial results on October 21, 2026."
+          source_ids:
+            - tesla-8k-2026-10-02
+  lineup:
+    - name: Full Self-Driving (Supervised)
+      kind: service
+      status: current
+      released: 2020-10
+      description: Tesla's driver-assistance software for city and highway driving, offered by monthly
+        subscription in select markets. Tesla says it requires active driver supervision and does
+        not make the vehicle autonomous; its beta began in October 2020.
+      url: https://www.tesla.com/fsd
+      source_ids:
+        - tesla-fsd-page
+        - tesla-q3-2020-update
+        - tesla-q2-2026-update
+    - name: FSD (Supervised) v14
+      kind: model
+      status: current
+      released: 2025-10
+      description: Version of FSD (Supervised) that Tesla describes as an end-to-end foundation model
+        trained on customer and Robotaxi data, adding features such as choosing where to park at the
+        destination. Version 14.3 followed in April 2026.
+      url: null
+      source_ids:
+        - tesla-q3-2025-update
+        - tesla-q4-2025-update
+        - tesla-q1-2026-update
+    - name: FSD (Supervised) v14 lite
+      kind: model
+      status: current
+      released: "2026"
+      description: A version for cars with the older AI3 computer that distills driving behavior from the
+        AI4 v14 series. Delivered in the U.S. and, from July 2026, in South Korea.
+      url: null
+      source_ids:
+        - tesla-q2-2026-update
+    - name: FSD (Supervised) v13
+      kind: model
+      status: legacy
+      released: "2024"
+      description: Earlier FSD (Supervised) version, trained with help from the Cortex cluster, that added
+        starting from Park, unparking, reversing and parking.
+      url: null
+      source_ids:
+        - tesla-q4-2024-update
+    - name: Autopilot
+      kind: service
+      status: current
+      released: 2014-10
+      description: Tesla's driver-assistance pairing of Traffic-Aware Cruise Control and Autosteer, an SAE
+        Level 2 system; Tesla began fitting Autopilot hardware in October 2014. The California DMV
+        said in February 2026 that Tesla had stopped using the term in California marketing.
+      url: null
+      source_ids:
+        - tesla-10k-2016
+        - nhtsa-ea22002-close
+        - cadmv-tesla-corrective-2026
+    - name: Actually Smart Summon
+      kind: app
+      status: current
+      released: "2024"
+      description: Feature controlled from the Tesla phone app that lets a vehicle drive itself a short
+        distance to its owner in a parking lot or on private property.
+      url: null
+      source_ids:
+        - tesla-q3-2024-update
+        - nhtsa-pe24033-close
+    - name: Robotaxi
+      kind: service
+      status: current
+      released: 2025-06
+      description: Tesla's ride-hailing service, launched in Austin in June 2025. By July 2026 it was
+        ramping unsupervised rides in six Texas and Florida metro areas and running with a safety
+        driver in the San Francisco Bay Area.
+      url: https://www.tesla.com/robotaxi
+      source_ids:
+        - tesla-10k-2025
+        - tesla-q2-2026-update
+        - tesla-robotaxi-page
+        - tesla-q2-2025-update
+
+    - name: Robotaxi app
+      kind: app
+      status: current
+      released: "2025"
+      description: Mobile app for iOS and Android used to request and pay for Robotaxi rides, track the
+        vehicle, set the cabin temperature and unlock the car.
+      url: https://www.tesla.com/robotaxi
+      source_ids:
+        - tesla-q2-2025-update
+        - tesla-robotaxi-page
+    - name: Cybercab
+      kind: hardware
+      status: limited
+      released: 2026-09-03
+      description: Tesla's purpose-built autonomous vehicle without a steering wheel or pedals. NHTSA
+        records that Tesla began commercial deployment of a small number in Austin on September 3,
+        2026.
+      url: https://www.tesla.com/robotaxi
+      source_ids:
+        - tesla-q3-2024-update
+        - tesla-q2-2026-update
+        - nhtsa-aq26002-open
+    - name: Robovan
+      kind: hardware
+      status: announced
+      released: null
+      description: Autonomous van that Tesla unveiled with Cybercab on October 10, 2024, designed without
+        a steering wheel or pedals.
+      url: null
+      source_ids:
+        - tesla-q3-2024-update
+    - name: Optimus
+      kind: robot
+      status: announced
+      released: null
+      description: General-purpose, autonomous humanoid robot in development, previewed in 2022. Tesla is
+        installing production lines in Fremont and says production is planned for 2026.
+      url: null
+      source_ids:
+        - tesla-10k-2025
+        - tesla-10k-2022
+        - tesla-q2-2026-update
+    - name: Optimus Gen 3
+      kind: robot
+      status: announced
+      released: null
+      description: Version of Optimus with a new hand design that Tesla describes as intended for mass
+        production; Tesla said in January 2026 it planned to unveil it in Q1 2026.
+      url: null
+      source_ids:
+        - tesla-q4-2025-update
+    - name: Optimus Academy
+      kind: research
+      status: announced
+      released: null
+      description: Program in which early Optimus units will collect training data and help develop the
+        robot's skills, according to Tesla's Q2 2026 update.
+      url: null
+      source_ids:
+        - tesla-q2-2026-update
+    - name: FSD Computer
+      kind: hardware
+      status: current
+      released: "2019"
+      description: Tesla's proprietary onboard computer that runs the neural networks in its vehicles;
+        Tesla introduced a new self-driving computer of its own design in 2019.
+      url: null
+      source_ids:
+        - tesla-10k-2019
+        - tesla-10k-2023
+    - name: AI3
+      kind: hardware
+      status: legacy
+      released: null
+      description: Earlier generation of Tesla's in-vehicle AI hardware; Tesla built FSD v14 lite to run
+        on its cameras and compute.
+      url: null
+      source_ids:
+        - tesla-q2-2026-update
+    - name: AI4
+      kind: hardware
+      status: current
+      released: null
+      description: Current generation of Tesla's in-vehicle AI hardware, which runs the FSD (Supervised)
+        v14 series.
+      url: null
+      source_ids:
+        - tesla-q2-2026-update
+        - tesla-q4-2025-update
+    - name: AI5
+      kind: hardware
+      status: announced
+      released: null
+      description: Next in-house inference chip for autonomy. Tesla completed its final design (tape-out)
+        in April 2026 and plans production for 2027.
+      url: null
+      source_ids:
+        - tesla-q4-2025-update
+        - tesla-q1-2026-update
+    - name: AI6
+      kind: hardware
+      status: announced
+      released: null
+      description: Planned in-house inference chip that follows AI5, with production planned for 2028.
+      url: null
+      source_ids:
+        - tesla-q4-2025-update
+    - name: Dojo 3
+      kind: research
+      status: announced
+      released: null
+      description: Custom silicon effort for training AI that Tesla says aims to reduce training costs
+        over time; it follows the Dojo training computer, which entered production in July 2023.
+      url: null
+      source_ids:
+        - tesla-q1-2026-update
+        - tesla-q2-2023-update
+    - name: Cortex
+      kind: platform
+      status: current
+      released: "2024"
+      description: Tesla's AI training cluster at Gigafactory Texas, deployed in Q4 2024 and expanded in
+        2025; listed in 2026 as Cortex 1, in production.
+      url: null
+      source_ids:
+        - tesla-q4-2024-update
+        - tesla-10k-2025
+        - tesla-q2-2026-update
+    - name: Cortex 2
+      kind: platform
+      status: current
+      released: "2026"
+      description: Second AI training cluster at Gigafactory Texas, online since early 2026; Tesla says it
+        supports both vehicle and humanoid-robot autonomy software.
+      url: null
+      source_ids:
+        - tesla-q1-2026-update
+        - tesla-q2-2026-update
+    - name: Research Fab
+      kind: research
+      status: announced
+      released: null
+      description: Tesla-owned semiconductor research fab on the Gigafactory Texas campus, the starting
+        point of a planned chip-making effort with SpaceX; Tesla's Q1 2026 update showed its
+        groundbreaking.
+      url: null
+      source_ids:
+        - tesla-q1-2026-update
+        - tesla-q2-2026-update
+    - name: Grok (in Tesla vehicles)
+      kind: app
+      status: current
+      released: "2025"
+      description: xAI's AI assistant, delivered to Tesla vehicles in North America by over-the-air
+        update; it can take navigation commands, set location-based reminders, make phone calls, play
+        music and adjust climate controls.
+      url: null
+      source_ids:
+        - tesla-q3-2025-update
+        - tesla-q4-2025-update
+
+        - tesla-q1-2026-update
+        - tesla-q2-2026-update
+    - name: Autobidder
+      kind: platform
+      status: current
+      released: null
+      description: Tesla software platform used with Megapack utility-scale battery systems.
+      url: null
+      source_ids:
+        - tesla-10k-2025
+    - name: Powerhub
+      kind: platform
+      status: current
+      released: null
+      description: Tesla software platform for managing distributed energy resources, including virtual
+        power plants made of Powerwall home batteries.
+      url: null
+      source_ids:
+        - tesla-10k-2025
+  timeline:
+    - date: "2003"
+      text: Tesla was incorporated in Delaware.
+      source_ids:
+        - tesla-10q-q2-2026
+        - tesla-10k-2025
+    - date: 2014-10
+      text: Tesla began equipping all Model S vehicles with hardware designed to support Autopilot
+        features over time.
+      source_ids:
+        - tesla-10k-2016
+    - date: 2016-10
+      text: Tesla began equipping all its vehicles with cameras, sensors, radar and an onboard computer it
+        described as hardware for full self-driving capability.
+      source_ids:
+        - tesla-10k-2016
+    - date: "2019"
+      text: Tesla introduced a new proprietary onboard computer for self-driving.
+      source_ids:
+        - tesla-10k-2019
+    - date: 2020-10
+      text: Tesla began rolling out the FSD beta for city streets to a limited group of Early Access
+        Program participants.
+      source_ids:
+        - tesla-q3-2020-update
+    - date: "2021"
+      text: According to NHTSA, Tesla began moving from cameras plus radar to a camera-only approach
+        called Tesla Vision in mid-2021.
+      source_ids:
+        - nhtsa-ea26002-open
+    - date: "2022"
+      text: Tesla showed a preview of its Optimus humanoid robot.
+      source_ids:
+        - tesla-10k-2022
+    - date: 2022-06-08
+      text: NHTSA upgraded its review of Autopilot to an engineering analysis (EA22002).
+      source_ids:
+        - nhtsa-ea22002-close
+    - date: 2023-02-15
+      text: Tesla filed recall 23V-085, an over-the-air update to how FSD Beta handles certain
+        intersections and speed zones.
+      source_ids:
+        - nhtsa-recall-23v085
+    - date: 2023-07
+      text: Tesla started production of its Dojo training computer.
+      source_ids:
+        - tesla-q2-2023-update
+    - date: 2023-11
+      text: The California DMV filed accusations against Tesla's manufacturer and dealer licenses over its
+        driver-assistance marketing.
+      source_ids:
+        - cadmv-tesla-decision-2025
+    - date: 2023-12-12
+      text: Tesla filed recall 23V-838 to add stronger Autosteer controls and alerts by over-the-air
+        update.
+      source_ids:
+        - nhtsa-recall-23v838
+    - date: 2024-04-25
+      text: NHTSA closed its Autopilot engineering analysis and opened a recall query to assess the
+        23V-838 fix.
+      source_ids:
+        - nhtsa-ea22002-close
+        - nhtsa-rq24009-open
+    - date: 2024-06-13
+      text: Tesla converted from a Delaware corporation to a Texas corporation.
+      source_ids:
+        - tesla-10q-q2-2026
+    - date: 2024-10-10
+      text: Tesla unveiled Cybercab and Robovan, designed without a steering wheel or pedals, at its "We,
+        Robot" event.
+      source_ids:
+        - tesla-q3-2024-update
+    - date: 2024-10-17
+      text: NHTSA opened a preliminary evaluation of FSD crashes in reduced roadway visibility (PE24031).
+      source_ids:
+        - nhtsa-pe24031-open
+    - date: 2025-01-06
+      text: NHTSA opened a preliminary evaluation of crashes during Actually Smart Summon sessions
+        (PE24033).
+      source_ids:
+        - nhtsa-pe24033-open
+    - date: 2025-01-29
+      text: Tesla reported that it had finished deploying its Cortex training cluster at Gigafactory Texas
+        in Q4 2024.
+      source_ids:
+        - tesla-q4-2024-update
+    - date: 2025-06
+      text: Tesla launched its Robotaxi service in Austin with Model Y vehicles and a safety rider on
+        board.
+      source_ids:
+        - tesla-10k-2025
+        - tesla-q2-2025-update
+    - date: 2025-08-19
+      text: NHTSA opened an audit query into the timeliness of Tesla's crash reports (AQ25002).
+      source_ids:
+        - nhtsa-aq25002-open
+    - date: 2025-10
+      text: Tesla began deploying FSD (Supervised) v14 and its Bay Area ride-hailing service began serving
+        San Jose Airport.
+      source_ids:
+        - tesla-q3-2025-update
+        - tesla-q4-2025-update
+    - date: 2025-10-07
+      text: NHTSA opened a preliminary evaluation of traffic-law violations with FSD engaged (PE25012).
+      source_ids:
+        - nhtsa-pe25012-open
+    - date: 2025-11-06
+      text: At Tesla's annual meeting, an advisory shareholder proposal on investing in xAI did not pass.
+      source_ids:
+        - tesla-8k-2025-11-07
+    - date: 2025-12
+      text: Tesla began testing driverless Robotaxis in Austin.
+      source_ids:
+        - tesla-q4-2025-update
+    - date: 2025-12-16
+      text: The California DMV found Tesla's "Autopilot" and "Full Self-Driving Capability" marketing
+        misleading and gave Tesla 60 days to act.
+      source_ids:
+        - cadmv-tesla-decision-2025
+    - date: 2026-01
+      text: Tesla began removing the safety monitor from some customer Robotaxi rides in Austin and agreed
+        to make a minority investment in xAI preferred stock.
+      source_ids:
+        - tesla-q4-2025-update
+        - tesla-10k-2025
+    - date: 2026-02-17
+      text: The California DMV said Tesla had stopped using "Autopilot" in California marketing and would
+        avoid a license suspension.
+      source_ids:
+        - cadmv-tesla-corrective-2026
+    - date: 2026-03
+      text: Tesla's xAI preferred shares became SpaceX common stock after regulatory approvals.
+      source_ids:
+        - tesla-10q-q2-2026
+    - date: 2026-03-18
+      text: NHTSA upgraded its FSD reduced-visibility review to an engineering analysis (EA26002).
+      source_ids:
+        - nhtsa-ea26002-open
+    - date: 2026-04
+      text: Tesla completed AI5's chip design, released FSD (Supervised) v14.3, received approval for FSD
+        (Supervised) in the Netherlands, and launched unsupervised Robotaxi rides in Dallas and
+        Houston.
+      source_ids:
+        - tesla-q1-2026-update
+    - date: 2026-04-03
+      text: NHTSA closed its Actually Smart Summon review, citing Tesla's over-the-air updates.
+      source_ids:
+        - nhtsa-pe24033-close
+    - date: 2026-07
+      text: Tesla launched unsupervised Robotaxi rides in Miami, Orlando and Tampa and began Cybercab
+        rides for staff at Gigafactory Texas.
+      source_ids:
+        - tesla-q2-2026-update
+    - date: 2026-07-02
+      text: NHTSA sent Tesla an information request under EA26002 about FSD in reduced visibility.
+      source_ids:
+        - nhtsa-ea26002-ir
+    - date: 2026-07-22
+      text: Tesla's Q2 2026 update listed Cortex 1 and Cortex 2 in production and described Optimus lines
+        being installed in Fremont.
+      source_ids:
+        - tesla-q2-2026-update
+    - date: 2026-09-03
+      text: Tesla began commercial deployment of a small number of Cybercabs in Austin, and NHTSA opened
+        an audit query into the vehicle's certification.
+      source_ids:
+        - nhtsa-aq26002-open
+  leadership:
+    - name: Elon Musk
+      role: Technoking of Tesla and Chief Executive Officer
+      source_ids:
+        - tesla-proxy-2025
+    - name: Vaibhav Taneja
+      role: Chief Financial Officer
+      source_ids:
+        - tesla-8k-2026-09-29
+        - tesla-proxy-2025
+    - name: Xiaotong (Tom) Zhu
+      role: Senior Vice President, APAC and Global Vehicle Manufacturing
+      source_ids:
+        - tesla-proxy-2025
+    - name: Brandon Ehrhart
+      role: General Counsel and Corporate Secretary
+      source_ids:
+        - tesla-8k-2026-07-22
+    - name: Robyn Denholm
+      role: Chair of the Board
+      source_ids:
+        - tesla-proxy-2025
+    - name: JB Straubel
+      role: Director
+      source_ids:
+        - tesla-proxy-2025
+    - name: James Murdoch
+      role: Director
+      source_ids:
+        - tesla-proxy-2025
+    - name: Kimbal Musk
+      role: Director
+      source_ids:
+        - tesla-proxy-2025
+    - name: Jack Hartung
+      role: Director
+      source_ids:
+        - tesla-proxy-2025
+    - name: Ira Ehrenpreis
+      role: Director
+      source_ids:
+        - tesla-proxy-2025
+        - tesla-8k-2025-11-07
+    - name: Joe Gebbia
+      role: Director
+      source_ids:
+        - tesla-proxy-2025
+        - tesla-8k-2025-11-07
+    - name: Kathleen Wilson-Thompson
+      role: Director
+      source_ids:
+        - tesla-proxy-2025
+        - tesla-8k-2025-11-07

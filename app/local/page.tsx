@@ -11,7 +11,7 @@ import { artifactHref, orgHref } from "@/lib/routes";
 import { mailtoHref, siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
-  title: "People behind local AI",
+  title: "People behind local SI",
   description:
     "A standing list of people whose public work helps others run AI models on their own hardware — local runtimes, on-device frameworks, efficient fine-tuning, and open-weight models.",
   path: "/local/",
@@ -26,11 +26,12 @@ export default function LocalCornerPage() {
     <>
       <PageHeader
         eyebrow="Local corner"
-        title="People behind local AI"
+        title="People behind local SI"
         description={
           <p>
             People whose public work helps others run AI models on their own hardware: local runtimes, on-device frameworks, efficient
-            fine-tuning, and open-weight models. Listed alphabetically; each profile stays up until it is updated or removed.
+            fine-tuning, and open-weight models. Listed alphabetically; each profile stays up until it is updated or removed. For the leaders of the
+            large AI companies, see <Link href="/big-si/" className="link">People Behind Big SI</Link>.
           </p>
         }
       />

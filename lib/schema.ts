@@ -201,6 +201,71 @@ export const Product = z
   .strict();
 export type Product = z.infer<typeof Product>;
 
+/** A dated milestone on an organization or leader timeline. */
+export const TimelineEntry = z
+  .object({
+    date: DocumentedDate,
+    text: z.string().trim().min(10),
+    source_ids: z.array(SourceId).min(1),
+  })
+  .strict();
+export type TimelineEntry = z.infer<typeof TimelineEntry>;
+
+export const LINEUP_KINDS = ["model", "app", "api", "agent", "platform", "hardware", "robot", "service", "research"] as const;
+export const LINEUP_STATUSES = ["current", "preview", "limited", "legacy", "retired", "announced"] as const;
+
+/**
+ * An in-depth, sourced profile for a large organization: an overview, themed
+ * sections, a lineup of models and products over time, a dated timeline, and
+ * leadership as official pages list it.
+ */
+export const DeepDive = z
+  .object({
+    reviewed_at: IsoDate,
+    overview: z.array(Claim).min(1),
+    sections: z
+      .array(
+        z
+          .object({
+            id: Slug,
+            title: z.string().trim().min(3).max(80),
+            intro: Claim.optional(),
+            items: z.array(Claim).min(1),
+          })
+          .strict(),
+      )
+      .default([]),
+    lineup: z
+      .array(
+        z
+          .object({
+            name: z.string().trim().min(1),
+            kind: z.enum(LINEUP_KINDS),
+            status: z.enum(LINEUP_STATUSES),
+            released: DocumentedDate.nullable().default(null),
+            description: z.string().trim().min(10),
+            url: HttpsUrl.nullable().default(null),
+            source_ids: z.array(SourceId).min(1),
+          })
+          .strict(),
+      )
+      .default([]),
+    timeline: z.array(TimelineEntry).default([]),
+    leadership: z
+      .array(
+        z
+          .object({
+            name: z.string().trim().min(2),
+            role: z.string().trim().min(2),
+            source_ids: z.array(SourceId).min(1),
+          })
+          .strict(),
+      )
+      .default([]),
+  })
+  .strict();
+export type DeepDive = z.infer<typeof DeepDive>;
+
 export const Organization = z
   .object({
     slug: Slug,
@@ -233,6 +298,7 @@ export const Organization = z
     status_note: Claim.nullable().default(null),
     products: z.array(Product).default([]),
     notable_facts: z.array(Claim).default([]),
+    deep_dive: DeepDive.optional(),
     eligibility: Eligibility,
     openness_summary: Claim.nullable().default(null),
     hiring_url: HttpsUrl.nullable().default(null),
@@ -497,6 +563,62 @@ export const Person = z
   })
   .strict();
 export type Person = z.infer<typeof Person>;
+
+/* ------------------------------------------------------------------ */
+/* People Behind Big SI (leaders of large AI organizations)             */
+/* ------------------------------------------------------------------ */
+
+const LeaderRoleFields = {
+  organization: z.string().trim().min(1),
+  organization_slug: Slug.nullable().default(null),
+  role: z.string().trim().min(2),
+  source_ids: z.array(SourceId).min(1),
+};
+
+/**
+ * A celebratory career profile of a leader of a large AI organization. Every
+ * statement is sourced to official biographies, filings, government records,
+ * universities, or awarding bodies. No wealth, compensation, or family details.
+ */
+export const Leader = z
+  .object({
+    slug: Slug,
+    name: z.string().min(1),
+    initials: z.string().regex(/^[A-Za-z]{1,3}$/, "1–3 letters for the initials tile"),
+    headline: z.string().trim().min(10).max(140),
+    summary: Claim,
+    current_roles: z.array(z.object({ ...LeaderRoleFields, since: DocumentedDate.nullable().default(null) }).strict()).min(1),
+    past_roles: z
+      .array(z.object({ ...LeaderRoleFields, from: DocumentedDate.nullable().default(null), to: DocumentedDate.nullable().default(null) }).strict())
+      .default([]),
+    bio_sections: z
+      .array(z.object({ heading: z.string().trim().min(3).max(90), paragraphs: z.array(Claim).min(1) }).strict())
+      .min(1),
+    highlights: z.array(Claim).default([]),
+    honors: z
+      .array(
+        z
+          .object({
+            name: z.string().trim().min(3),
+            year: z.number().int().min(1900).max(2100).nullable().default(null),
+            awarded_by: z.string().trim().min(2),
+            source_ids: z.array(SourceId).min(1),
+          })
+          .strict(),
+      )
+      .default([]),
+    timeline: z.array(TimelineEntry).default([]),
+    links: z
+      .array(z.object({ label: z.string().min(1).max(60), url: HttpsUrl }).strict())
+      .max(4)
+      .default([]),
+    publication_status: PublicationStatus,
+    updated_at: IsoDate,
+    last_reviewed: IsoDate.nullable(),
+    sources: z.array(Source).min(1),
+  })
+  .strict();
+export type Leader = z.infer<typeof Leader>;
 
 /* ------------------------------------------------------------------ */
 /* Latest news (hand-edited, sourced, tied to catalog records)         */

@@ -1,6 +1,6 @@
 /**
  * The source library: every source cited by a published record, news item, hub,
- * or People Behind Local AI profile, deduplicated by URL, with the records that
+ * or People Behind Local SI profile, deduplicated by URL, with the records that
  * cite it. Built from existing citations only; nothing is added by hand.
  */
 import type { Catalog } from "./catalog";

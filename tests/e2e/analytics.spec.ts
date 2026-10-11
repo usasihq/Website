@@ -50,8 +50,8 @@ test("client navigation validates data without CSP dynamic-code probes", async (
   await nav.getByRole("link", { name: "Jobs", exact: true }).click();
   await expect(page.locator("h1")).toHaveText("Jobs");
   await page.getByLabel("Search jobs", { exact: true }).fill("engineer");
-  await nav.getByRole("link", { name: "People Behind Local AI", exact: true }).click();
-  await expect(page.locator("h1")).toHaveText("People behind local AI");
+  await nav.getByRole("link", { name: "People Behind Local SI", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("People behind local SI");
   await nav.getByRole("link", { name: "Companies & Labs", exact: true }).click();
   await expect(page.locator("h1")).toHaveText("Companies & Labs");
   expect(await page.evaluate(() => window.__violations)).toEqual([]);

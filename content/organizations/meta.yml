@@ -8,9 +8,11 @@ logo_text: M
 summary:
   text: >-
     Meta operates social and messaging apps including Facebook, Instagram, WhatsApp, and
-    Messenger, along with VR headsets and AI glasses. It develops AI models, including the
-    Llama and Muse model families, and offers the Meta AI assistant across its apps.
-  source_ids: [meta-10k-2025, muse-spark-announcement]
+    Messenger, along with VR devices and AI glasses. Its Meta Superintelligence Labs builds the
+    Muse model family, and Meta has released open-weight Llama and Muse Glimmer models. It offers
+    the Meta AI assistant across its apps, the Muse personal agent, and the Meta Model API for
+    developers.
+  source_ids: [meta-10k-2025, muse-spark-announcement, muse-agent-announcement, meta-model-api, muse-glimmer-research-blog]
 organization_roles: [model-developer, research-lab, consumer-products, developer-platform]
 ownership_category: publicly-traded
 legal_form:
@@ -42,26 +44,39 @@ products:
     name: Meta Model API
     kind: hosted-model-api
     access: >-
-      Self-serve, paid developer API in public preview offering Muse Spark versions and other
-      Meta models; documented as compatible with the OpenAI SDK.
+      Self-serve, paid developer API in public preview offering Muse Spark 1.1, 1.2, and 1.3 (each
+      with a 1,048,576-token context window), Muse Image, Muse Voice Transcribe, and SAM 3.1;
+      documented as compatible with the OpenAI SDK. Muse Glimmer is self-hosted and not served on
+      the API.
     url: https://dev.meta.ai/products/meta-model-api/
-    source_ids: [meta-model-api, muse-spark-1-1-blog]
-    last_reviewed: 2026-09-29
+    source_ids: [meta-model-api, muse-spark-1-1-blog, meta-model-api-models-docs]
+    last_reviewed: 2026-10-11
   - id: muse-agent
     name: Muse (personal AI agent)
     kind: assistant-app
     access: >-
-      Personal agent app powered by Muse Spark, announced September 2026 for the United States
-      on iOS, Android, and the web; free tier with optional subscription plans.
+      Personal agent powered by Muse Spark, announced September 8, 2026 on iOS, Android, the web at
+      muse.ai, and in WhatsApp; Meta's September 29, 2026 small-business post says Muse is
+      available in the US and Canada. Free for most needs, with optional subscription plans; Meta
+      says it is coming to AI glasses.
     url: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
-    source_ids: [muse-agent-announcement]
-    last_reviewed: 2026-09-29
+    source_ids: [muse-agent-announcement, muse-small-business, ray-ban-meta-audio-announcement]
+    last_reviewed: 2026-10-11
+  - id: muse-code
+    name: Muse Code
+    kind: developer-tool
+    access: >-
+      Terminal coding agent powered by Muse Spark, released in beta on August 5, 2026.
+    url: https://dev.meta.ai/products/muse-code/
+    source_ids: [muse-code-spark-1-2-blog, muse-code-page]
+    last_reviewed: 2026-10-11
 notable_facts:
   - text: >-
-      Meta attributes the Muse model family to Meta Superintelligence Labs (MSL); Muse Spark,
-      announced April 8, 2026, is described as the first model in that family. MSL is a unit
-      within Meta and does not have a separate record in this catalog.
-    source_ids: [muse-spark-announcement, muse-spark-blog]
+      Meta attributes the Muse model family to Meta Superintelligence Labs (MSL), led by Chief AI
+      Officer Alexandr Wang. Muse Spark, announced April 8, 2026, opened the family and was
+      followed by Muse Spark 1.1 (July 9), 1.2 (August 5), and 1.3 (September 2, 2026). MSL is a
+      unit within Meta and does not have a separate record in this catalog.
+    source_ids: [muse-spark-announcement, muse-spark-blog, muse-spark-1-1-blog, muse-code-spark-1-2-blog, muse-spark-1-3-blog, alexandr-wang-bio]
   - text: >-
       Muse Spark was announced without public weights; Meta said it hopes to open-source future
       versions of the model.
@@ -75,7 +90,7 @@ notable_facts:
       license, in August 2026.
     source_ids: [muse-glimmer-dev-blog]
   - text: >-
-      PyTorch, originally developed by Meta, moved to the newly formed PyTorch Foundation under
+      PyTorch, which was incubated at Meta, moved to the newly formed PyTorch Foundation under
       the Linux Foundation in September 2022.
     source_ids: [lf-pytorch-press]
 eligibility:
@@ -105,7 +120,7 @@ careers:
   reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-11
 last_reviewed: 2026-09-29
 sources:
   - id: meta-10k-2025
@@ -249,6 +264,485 @@ sources:
     published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
+  - id: msl-scaling-framework-v2-1
+    title: Meta Superintelligence Scaling Framework, Version 2.1
+    url: https://research.meta.ai/static/meta-superintelligence-scaling-framework
+    publisher: Meta
+    kind: documentation
+    published_at: 2026-10-02
+    accessed_at: 2026-10-11
+  - id: developing-capable-models-responsibly
+    title: Developing Capable Models Responsibly
+    url: https://research.meta.ai/blog/developing-capable-models-responsibly
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-10-02
+    accessed_at: 2026-10-11
+  - id: advanced-ai-scaling-framework-blog
+    title: Scaling How We Build and Test Our Most Advanced AI
+    url: https://ai.meta.com/blog/scaling-how-we-build-test-advanced-ai/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-04-08
+    accessed_at: 2026-10-11
+  - id: frontier-ai-framework-announcement
+    title: Our Approach to Frontier AI
+    url: https://about.fb.com/news/2025/02/meta-approach-frontier-ai/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-02-03
+    accessed_at: 2026-10-11
+  - id: muse-spark-safety-report
+    title: Muse Spark Safety & Preparedness Report
+    url: https://ai.meta.com/static-resource/muse-spark-safety-and-preparedness-report/
+    publisher: Meta
+    kind: paper
+    published_at: 2026-05-26
+    accessed_at: 2026-10-11
+  - id: muse-image-video-blog
+    title: Introducing Muse Image and Muse Video
+    url: https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-07-07
+    accessed_at: 2026-10-11
+  - id: muse-code-spark-1-2-blog
+    title: Introducing Muse Code and Muse Spark 1.2
+    url: https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-08-05
+    accessed_at: 2026-10-11
+  - id: muse-glimmer-research-blog
+    title: "Introducing Muse Glimmer: An Open Agentic Model That Runs on Your Device"
+    url: https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-08-10
+    accessed_at: 2026-10-11
+  - id: muse-spark-1-1-cyber-eval-issue
+    title: Addressing an issue involving a third-party cyber evaluation of Muse Spark 1.1
+    url: https://research.meta.ai/blog/addressing-third-party-testing-misconfiguration-muse-spark-1-1
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-08-14
+    accessed_at: 2026-10-11
+  - id: muse-voice-transcribe-blog
+    title: Introducing Muse Voice Transcribe
+    url: https://research.meta.ai/blog/introducing-muse-voice-transcribe
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-01
+    accessed_at: 2026-10-11
+  - id: muse-spark-1-3-blog
+    title: Introducing Muse Spark 1.3
+    url: https://research.meta.ai/blog/introducing-muse-spark-1-3
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-02
+    accessed_at: 2026-10-11
+  - id: muse-safety-blog
+    title: How We Built Safety Into Muse
+    url: https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-08
+    accessed_at: 2026-10-11
+  - id: muse-realtime-avatar-blog
+    title: Bringing Your Muse to Life
+    url: https://research.meta.ai/blog/bringing-your-muse-to-life
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-23
+    accessed_at: 2026-10-11
+  - id: open-research-problems-blog
+    title: Solving Open Research Problems Together
+    url: https://research.meta.ai/blog/solving-open-research-problems-together
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-10-02
+    accessed_at: 2026-10-11
+  - id: muse-small-business
+    title: "The Future Is for Everyone: Muse for Small Business"
+    url: https://about.fb.com/news/2026/09/introducing-muse-small-business/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-29
+    accessed_at: 2026-10-11
+  - id: meta-enterprise-platform
+    title: Launching Meta Enterprise Platform
+    url: https://about.fb.com/news/2026/09/launching-meta-enterprise-platform/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-11
+  - id: connect-2026-roundup
+    title: The Biggest News From Connect 2026
+    url: https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-24
+    accessed_at: 2026-10-11
+  - id: ray-ban-meta-audio-announcement
+    title: Introducing Ray-Ban Meta Audio and More AI Glasses Styles
+    url: https://about.fb.com/news/2026/09/introducing-ray-ban-meta-audio-glasses-new-styles-plus-muse/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-23
+    accessed_at: 2026-10-11
+  - id: meta-ray-ban-display-2026-features
+    title: New Features for Meta Ray-Ban Display
+    url: https://about.fb.com/news/2026/09/new-features-for-meta-ray-ban-display-navigation-hologram/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-23
+    accessed_at: 2026-10-11
+  - id: meta-vr-glasses
+    title: "Introducing Meta VR Glasses: A Cinema, Courtside Seat, and Workspace in Just 100 Grams"
+    url: https://about.fb.com/news/2026/09/introducing-meta-vr-glasses-3d-movies-immersive-live-sports-100-grams/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-23
+    accessed_at: 2026-10-11
+  - id: meta-one
+    title: "Introducing Meta One: A Subscription Service With More Features and AI to Create, Connect,
+      and Stand Out"
+    url: https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-09-15
+    accessed_at: 2026-10-11
+  - id: meta-glasses-launch
+    title: We're Partnering With EssilorLuxottica to Launch Meta Glasses
+    url: https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-06-23
+    accessed_at: 2026-10-11
+  - id: meta-business-agent
+    title: Be There for Every Customer With Meta Business Agent
+    url: https://about.fb.com/news/2026/06/meta-business-agent/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-06-03
+    accessed_at: 2026-10-11
+  - id: meta-dev-site
+    title: Products & Solutions for AI Developers | Meta
+    url: https://dev.meta.ai/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: meta-model-api-models-docs
+    title: Models - Meta Model API
+    url: https://dev.meta.ai/docs/models
+    publisher: Meta
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: muse-code-page
+    title: Muse Code
+    url: https://dev.meta.ai/products/muse-code/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: llama-docs-hub
+    title: Llama (Meta developer documentation)
+    url: https://dev.meta.ai/llama/
+    publisher: Meta
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: llamacon-2025-blog
+    title: Everything we announced at our first-ever LlamaCon
+    url: https://ai.meta.com/blog/llamacon-llama-news/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-04-29
+    accessed_at: 2026-10-11
+  - id: llama-1-blog
+    title: Introducing LLaMA, a foundational, 65-billion-parameter large language model
+    url: https://ai.meta.com/blog/large-language-model-llama-meta-ai/
+    publisher: Meta
+    kind: announcement
+    published_at: 2023-02-24
+    accessed_at: 2026-10-11
+  - id: llama-2-announcement
+    title: Meta and Microsoft Introduce the Next Generation of Llama
+    url: https://about.fb.com/news/2023/07/llama-2/
+    publisher: Meta
+    kind: announcement
+    published_at: 2023-07-18
+    accessed_at: 2026-10-11
+  - id: meta-ai-launch-2023
+    title: Introducing New AI Experiences Across Our Family of Apps and Devices
+    url: https://about.fb.com/news/2023/09/introducing-ai-powered-assistants-characters-and-creative-tools/
+    publisher: Meta
+    kind: announcement
+    published_at: 2023-09-27
+    accessed_at: 2026-10-11
+  - id: meta-ai-llama-3
+    title: "Meet Your New Assistant: Meta AI, Built With Llama 3"
+    url: https://about.fb.com/news/2024/04/meta-ai-assistant-built-with-llama-3/
+    publisher: Meta
+    kind: announcement
+    published_at: 2024-04-18
+    accessed_at: 2026-10-11
+  - id: meta-ai-app-launch
+    title: "Introducing the Meta AI App: A New Way to Access Your AI Assistant"
+    url: https://about.fb.com/news/2025/04/introducing-meta-ai-app-new-way-access-ai-assistant/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-04-29
+    accessed_at: 2026-10-11
+  - id: ray-ban-stories-launch
+    title: "Introducing Ray-Ban Stories: First-Generation Smart Glasses"
+    url: https://about.fb.com/news/2021/09/introducing-ray-ban-stories-smart-glasses/
+    publisher: Meta
+    kind: announcement
+    published_at: 2021-09-09
+    accessed_at: 2026-10-11
+  - id: ray-ban-meta-2023
+    title: Introducing the New Ray-Ban | Meta Smart Glasses
+    url: https://about.fb.com/news/2023/09/new-ray-ban-meta-smart-glasses/
+    publisher: Meta
+    kind: announcement
+    published_at: 2023-09-27
+    accessed_at: 2026-10-11
+  - id: oakley-meta-hstn
+    title: Introducing Oakley Meta Glasses, a New Category of Performance AI Glasses
+    url: https://about.fb.com/news/2025/06/introducing-oakley-meta-glasses-a-new-category-of-performance-ai-glasses/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-06-20
+    accessed_at: 2026-10-11
+  - id: oakley-meta-vanguard
+    title: Athletic Intelligence Is Here, Meet Oakley Meta Vanguard
+    url: https://about.fb.com/news/2025/09/oakley-meta-vanguard-performance-ai-glasses-sports/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-09-17
+    accessed_at: 2026-10-11
+  - id: meta-ray-ban-display-2025
+    title: "Meta Ray-Ban Display: AI Glasses With an EMG Wristband"
+    url: https://about.fb.com/news/2025/09/meta-ray-ban-display-ai-glasses-emg-wristband/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-09-17
+    accessed_at: 2026-10-11
+  - id: personal-superintelligence-letter
+    title: Personal Superintelligence
+    url: https://www.meta.com/superintelligence/
+    publisher: Meta
+    kind: official-page
+    published_at: 2025-07-30
+    accessed_at: 2026-10-11
+  - id: q2-2025-call-transcript
+    title: Meta Platforms, Inc. Second Quarter 2025 Results Conference Call (transcript)
+    url: https://s21.q4cdn.com/399680738/files/doc_financials/2025/q2/META-Q2-2025-Earnings-Call-Transcript.pdf
+    publisher: Meta Platforms, Inc. (Investor Relations)
+    kind: other
+    published_at: 2025-07-30
+    accessed_at: 2026-10-11
+  - id: q2-2026-call-transcript
+    title: Meta Platforms, Inc. Second Quarter 2026 Results Conference Call (transcript)
+    url: https://s21.q4cdn.com/399680738/files/doc_financials/2026/q2/META-Q2-2026-Earnings-Call-Transcript.pdf
+    publisher: Meta Platforms, Inc. (Investor Relations)
+    kind: other
+    published_at: 2026-07-29
+    accessed_at: 2026-10-11
+  - id: meta-leadership
+    title: "Meta Leadership: Executives & Company Leaders"
+    url: https://www.meta.com/about/leadership/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: alexandr-wang-bio
+    title: Alexandr Wang, Chief AI Officer
+    url: https://www.meta.com/about/leadership/alexandr-wang/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: dina-powell-mccormick-announcement
+    title: Dina Powell McCormick Joins Meta as President and Vice Chairman
+    url: https://about.fb.com/news/2026/01/dina-powell-mccormick-joins-meta-as-president-and-vice-chairman/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-01-12
+    accessed_at: 2026-10-11
+  - id: mtia-four-chips-blog
+    title: "Four MTIA Chips in Two Years: Scaling AI Experiences for Billions"
+    url: https://ai.meta.com/blog/meta-mtia-scale-ai-chips-for-billions/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-03-11
+    accessed_at: 2026-10-11
+  - id: compute-power-explained
+    title: "Infrastructure Explained: Compute Power"
+    url: https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infrastructure/
+    publisher: Meta
+    kind: official-page
+    published_at: 2026-06-10
+    accessed_at: 2026-10-11
+  - id: infrastructure-explained-data-centers
+    title: "Infrastructure Explained: Data Centers"
+    url: https://about.fb.com/news/2026/04/infrastructure-explained-meta-data-centers/
+    publisher: Meta
+    kind: official-page
+    published_at: 2026-04-28
+    accessed_at: 2026-10-11
+  - id: meta-infra-evolution-2025
+    title: Meta's Infrastructure Evolution and the Advent of AI
+    url: https://engineering.fb.com/2025/09/29/data-infrastructure/metas-infrastructure-evolution-and-the-advent-of-ai/
+    publisher: Meta (Engineering at Meta)
+    kind: official-page
+    published_at: 2025-09-29
+    accessed_at: 2026-10-11
+  - id: prometheus-backend-aggregation
+    title: "Building Prometheus: How Backend Aggregation Enables Gigawatt-Scale AI Clusters"
+    url: https://engineering.fb.com/2026/02/09/data-center-engineering/building-prometheus-how-backend-aggregation-enables-gigawatt-scale-ai-clusters/
+    publisher: Meta (Engineering at Meta)
+    kind: official-page
+    published_at: 2026-02-09
+    accessed_at: 2026-10-11
+  - id: richland-parish-expansion
+    title: Deepening our investment in Richland Parish, Louisiana
+    url: https://datacenters.atmeta.com/2026/07/deepening-our-investment-in-richland-parish-louisiana/
+    publisher: Meta (Meta Data Centers)
+    kind: announcement
+    published_at: 2026-07-13
+    accessed_at: 2026-10-11
+  - id: new-albany-fact-sheet
+    title: Meta New Albany Data Center (fact sheet)
+    url: https://datacenters.atmeta.com/wp-content/uploads/2026/09/Meta_s-New-Albany-Data-Center.pdf
+    publisher: Meta (Meta Data Centers)
+    kind: official-page
+    published_at: 2026-09
+    accessed_at: 2026-10-11
+  - id: nuclear-energy-projects
+    title: Meta Announces Nuclear Energy Projects, Unlocking Up to 6.6 GW to Power American Leadership
+      in AI Innovation
+    url: https://about.fb.com/news/2026/01/meta-nuclear-energy-projects-power-american-ai-leadership/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-01-09
+    accessed_at: 2026-10-11
+  - id: el-paso-blackrock
+    title: Meta Announces New Strategic Venture With BlackRock to Develop Data Center in El Paso
+    url: https://about.fb.com/news/2026/07/meta-announces-new-venture-with-blackrock-to-develop-data-center-in-el-paso/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-07-28
+    accessed_at: 2026-10-11
+  - id: canada-data-center
+    title: Breaking Ground on Meta's First Data Center in Canada
+    url: https://about.fb.com/news/2026/07/breaking-ground-on-metas-first-data-center-in-canada/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-07-08
+    accessed_at: 2026-10-11
+  - id: data-centers-ai-approach
+    title: Why Data Centers Are Such a Big Part of Meta's AI Approach
+    url: https://about.fb.com/news/2026/10/meta-data-centers-ai-approach/
+    publisher: Meta
+    kind: official-page
+    published_at: 2026-10-07
+    accessed_at: 2026-10-11
+  - id: eu-ai-training-notice
+    title: Making AI Work Harder for Europeans
+    url: https://about.fb.com/news/2025/04/making-ai-work-harder-for-europeans/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-04-14
+    accessed_at: 2026-10-11
+  - id: ai-personalization-notice
+    title: Improving Your Recommendations on Our Apps With AI at Meta
+    url: https://about.fb.com/news/2025/10/improving-your-recommendations-apps-ai-meta/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-10-01
+    accessed_at: 2026-10-11
+  - id: privacy-matters-genai
+    title: "Privacy Matters: Meta's Generative AI Features"
+    url: https://about.fb.com/news/2023/09/privacy-matters-metas-generative-ai-features/
+    publisher: Meta
+    kind: official-page
+    published_at: 2023-09-27
+    accessed_at: 2026-10-11
+  - id: ai-training-data-transparency
+    title: AI at Meta (training data)
+    url: https://transparency.meta.com/features/ai-at-meta-training-data/
+    publisher: Meta (Transparency Center)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: meta-ai-terms
+    title: Meta AIs Terms of Service
+    url: https://www.facebook.com/legal/ai-terms
+    publisher: Meta
+    kind: license
+    published_at: 2026-05-13
+    accessed_at: 2026-10-11
+  - id: sam-1-blog
+    title: "Introducing Segment Anything: Working toward the first foundation model for image segmentation"
+    url: https://ai.meta.com/blog/segment-anything-foundation-model-image-segmentation/
+    publisher: Meta
+    kind: announcement
+    published_at: 2023-04-05
+    accessed_at: 2026-10-11
+  - id: sam-3-newsroom
+    title: New Segment Anything Models Make it Easier to Detect Objects and Create 3D Reconstructions
+    url: https://about.fb.com/news/2025/11/new-sam-models-detect-objects-create-3d-reconstructions/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-11-19
+    accessed_at: 2026-10-11
+  - id: sam-3-1-blog
+    title: "SAM 3.1: Faster and More Accessible Real-Time Video Detection and Tracking With Multiplexing
+      and Global Reasoning"
+    url: https://ai.meta.com/blog/segment-anything-model-3/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-03-27
+    accessed_at: 2026-10-11
+  - id: dinov3-blog
+    title: "DINOv3: Self-supervised learning for vision at unprecedented scale"
+    url: https://ai.meta.com/blog/dinov3-self-supervised-vision-model/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-08-14
+    accessed_at: 2026-10-11
+  - id: v-jepa-2-newsroom
+    title: Our New Model Helps AI Think Before it Acts
+    url: https://about.fb.com/news/2025/06/our-new-model-helps-ai-think-before-it-acts/
+    publisher: Meta
+    kind: announcement
+    published_at: 2025-06-11
+    accessed_at: 2026-10-11
+  - id: cwm-preparedness-report
+    title: Code World Model Preparedness Report
+    url: https://ai.meta.com/research/publications/code-world-model-preparedness-report/
+    publisher: Meta
+    kind: paper
+    published_at: 2025-09-24
+    accessed_at: 2026-10-11
+  - id: fair-decade
+    title: A Decade of Advancing the State-of-the-Art in AI Through Open Research
+    url: https://about.fb.com/news/2023/11/decade-of-advancing-ai-through-open-research/
+    publisher: Meta
+    kind: announcement
+    published_at: 2023-11-30
+    accessed_at: 2026-10-11
+  - id: genesis-mission-blog
+    title: How Meta's AI Models Are Powering the First Wave of Genesis Mission Projects
+    url: https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-10-11
 profile:
   intended_users:
     text: >-
@@ -297,3 +791,1085 @@ profile:
       kind: repository
       source_ids: [review-llama-models]
       reviewed_at: 2026-10-01
+deep_dive:
+  reviewed_at: 2026-10-11
+  overview:
+    - text: "Meta Platforms, Inc. is a Delaware corporation based in Menlo Park, California. Its Form 10-K
+        reports two segments: Family of Apps, which includes Facebook, Instagram, Messenger, Meta
+        AI, Threads, and WhatsApp, and Reality Labs, which includes Meta Quest VR devices and AI
+        glasses such as Ray-Ban Meta, Oakley Meta, and Meta Ray-Ban Display."
+      source_ids:
+        - meta-10k-2025
+    - text: Meta says its vision is to bring "personal superintelligence" to everyone. In July 2025 it
+        said it had set up Meta Superintelligence Labs (MSL), which brings together its foundations,
+        product, and FAIR research teams with a new lab building its next models. Meta's leadership
+        page says Chief AI Officer Alexandr Wang leads MSL.
+      source_ids:
+        - personal-superintelligence-letter
+        - q2-2025-call-transcript
+        - alexandr-wang-bio
+    - text: Meta released downloadable Llama models from 2023 to 2025, ending with Llama 4 Scout and Llama
+        4 Maverick in April 2025. Since April 2026 its main models come from the Muse family built
+        by MSL. Muse Spark versions are offered without public weights, while Muse Glimmer was
+        released with open weights under Apache 2.0. Meta says it plans a mix of open and closed
+        models.
+      source_ids:
+        - llama-models-readme
+        - muse-spark-announcement
+        - muse-glimmer-research-blog
+        - meta-10k-2025
+        - q2-2026-call-transcript
+    - text: People reach Meta's AI through the Meta AI assistant in Meta's apps, a stand-alone app, the
+        web, and AI glasses; through Muse, a personal agent launched in September 2026; and, for
+        developers, through the Meta Model API, which is in public preview.
+      source_ids:
+        - meta-10k-2025
+        - muse-agent-announcement
+        - meta-model-api
+    - text: Meta publishes a frontier-risk policy, the Meta Superintelligence Scaling Framework (previously
+        titled the Frontier AI Framework; version 2.1, October 2026), and documents gigawatt-scale AI data centers such as Prometheus in Ohio and
+        Hyperion in Louisiana, along with its own MTIA chips.
+      source_ids:
+        - msl-scaling-framework-v2-1
+        - new-albany-fact-sheet
+        - richland-parish-expansion
+        - mtia-four-chips-blog
+  sections:
+    - id: business-overview
+      title: What Meta does
+      intro:
+        text: Meta builds social and messaging apps, VR devices, and AI glasses, and its 10-K describes AI
+          as central to its plan "to deliver personal superintelligence for everyone."
+        source_ids:
+          - meta-10k-2025
+      items:
+        - text: The Family of Apps segment covers Facebook, Instagram, Messenger, Meta AI, Threads, and
+            WhatsApp. Reality Labs covers Meta Quest VR devices, AI glasses, Meta Ray-Ban Display
+            with the Meta Neural Band, and the Orion augmented reality glasses prototype.
+          source_ids:
+            - meta-10k-2025
+        - text: In its 10-K, Meta says it will train "a combination of open and closed models going forward."
+            It describes Meta AI as an assistant available across its apps, as a stand-alone app, on
+            AI glasses, and on the web.
+          source_ids:
+            - meta-10k-2025
+        - text: "On its July 29, 2026 earnings call, Meta named three areas for AI: improving its core apps
+            and ads, building personal agents, and selling to businesses through APIs, business
+            agents, and possibly compute."
+          source_ids:
+            - q2-2026-call-transcript
+        - text: On September 28, 2026, Meta announced Meta Enterprise Platform, which it calls the next major pillar of its business,
+            and which will offer the Muse agent, Meta Business Agent, the Muse API, and Muse Code to
+            companies.
+          source_ids:
+            - meta-enterprise-platform
+        - text: Meta One, announced September 15, 2026, is a subscription service across Instagram, Facebook,
+            WhatsApp, and Meta AI that adds more AI image and video creation and other features.
+            Meta says Meta AI stays free for everyday use.
+          source_ids:
+            - meta-one
+    - id: ai-organization
+      title: How Meta organizes its AI work
+      intro:
+        text: Meta's safety framework says it has built and shared AI research "through Meta
+          Superintelligence Labs, our Fundamental AI Research (FAIR) Lab, and our product teams."
+        source_ids:
+          - msl-scaling-framework-v2-1
+      items:
+        - text: Alexandr Wang joined Meta in June 2025 as Chief AI Officer and leads Meta Superintelligence
+            Labs, according to Meta's leadership page.
+          source_ids:
+            - alexandr-wang-bio
+            - meta-leadership
+        - text: On July 30, 2025, Meta said MSL includes its foundations, product, and FAIR teams plus a new
+            lab focused on its next generation of models. At that time Meta said Nat Friedman led AI
+            products and applied research and Shengjia Zhao was Chief Scientist for the new effort.
+          source_ids:
+            - q2-2025-call-transcript
+        - text: FAIR, Meta's Fundamental AI Research lab, marked ten years of open research in November 2023.
+            Meta credits it with work such as Segment Anything, No Language Left Behind, and the
+            Seamless translation models.
+          source_ids:
+            - fair-decade
+        - text: Under Meta's framework, the Chief AI Officer oversees risk evaluation and mitigation,
+            supported by a Director of Alignment and Risk who runs risk assessments, preparedness
+            reports, and framework updates.
+          source_ids:
+            - msl-scaling-framework-v2-1
+        - text: Meta's leadership page lists Daniel Gross as Co-Lead of Meta Compute, Meta's effort to build
+            AI infrastructure, and Santosh Janardhan as Head of Infrastructure.
+          source_ids:
+            - meta-leadership
+            - q2-2026-call-transcript
+        - text: Muse Spark's safety report was written by MSL's Preparedness, Red Teaming and Alignment team
+            together with Meta's AI Security team.
+          source_ids:
+            - muse-spark-safety-report
+    - id: models
+      title: "Models: Muse and Llama"
+      intro:
+        text: Meta's current models are the Muse family from Meta Superintelligence Labs. Its earlier Llama
+          family remains available for download under custom Llama licenses.
+        source_ids:
+          - muse-spark-blog
+          - llama-models-readme
+      items:
+        - text: Muse Spark, announced April 8, 2026, is the opening model of the Muse family. Meta describes
+            it as a natively multimodal reasoning model that supports tool use and multi-agent
+            orchestration, with a "Contemplating" mode that runs several agents in parallel.
+          source_ids:
+            - muse-spark-blog
+        - text: Meta followed with Muse Spark 1.1 on July 9, 2026, built for agentic tasks with a
+            1-million-token context window; 1.2 on August 5, a coding-focused update; and 1.3 on
+            September 2, aimed at long-running agentic and coding work.
+          source_ids:
+            - muse-spark-1-1-blog
+            - muse-code-spark-1-2-blog
+            - muse-spark-1-3-blog
+        - text: Muse Image, launched July 7, 2026, generates and edits images. Muse Video, previewed the same
+            day, generates video with native audio and is still in development.
+          source_ids:
+            - muse-image-video-blog
+        - text: Muse Glimmer, released August 10, 2026, is a 30-billion-parameter model that reads text and
+            images, distilled from Muse Spark and built to run agents on a Mac or a single consumer
+            GPU. Its weights are published under the Apache 2.0 license.
+          source_ids:
+            - muse-glimmer-research-blog
+            - muse-glimmer-dev-blog
+        - text: Muse Voice Transcribe, released September 1, 2026, is a streaming speech recognition model
+            that also separates speakers. Meta says it was trained on more than 70 languages, 25 of
+            them extensively verified.
+          source_ids:
+            - muse-voice-transcribe-blog
+        - text: The original LLaMA came out on February 24, 2023 in 7B to 65B sizes under a noncommercial
+            research license. Llama 2, released July 18, 2023, was free for research and commercial
+            use.
+          source_ids:
+            - llama-1-blog
+            - llama-2-announcement
+        - text: Meta's Llama repository lists Llama 3 (April 18, 2024), Llama 3.1 with a 405B size (July 23,
+            2024), Llama 3.2 with small and vision models (September 25, 2024), Llama 3.3 70B
+            (December 4, 2024), and Llama 4 (April 5, 2025).
+          source_ids:
+            - llama-models-readme
+        - text: Llama 4 Scout (17B active parameters, 16 experts, 109B total, 10-million-token context) and
+            Llama 4 Maverick (17B active, 128 experts, 400B total) are mixture-of-experts models.
+            Meta previewed a larger Llama 4 Behemoth as "still training" and did not release it.
+          source_ids:
+            - llama4-blog
+            - llama-models-readme
+        - text: Each Llama generation has its own license and acceptable use policy. The Llama 4 license
+            requires "Built with Llama" attribution, and very large services above a size threshold set
+            in the license must get a separate license from Meta.
+          source_ids:
+            - llama-models-readme
+            - review-llama4-license
+    - id: how-to-use
+      title: "How you can use it: apps, agents, and API"
+      intro:
+        text: Meta AI is offered in Meta's apps, a stand-alone app, on the web at meta.ai, and on AI
+          glasses. Muse Spark has powered it since April 2026.
+        source_ids:
+          - meta-10k-2025
+          - muse-spark-announcement
+      items:
+        - text: Meta launched Meta AI in beta in the US on September 27, 2023, in WhatsApp, Messenger, and
+            Instagram. In April 2024 it added the meta.ai website and Meta AI in the search bars of
+            Facebook, Instagram, WhatsApp, and Messenger.
+          source_ids:
+            - meta-ai-launch-2023
+            - meta-ai-llama-3
+        - text: The stand-alone Meta AI app launched April 29, 2025 on iOS and Android and also became the
+            companion app for Meta's AI glasses.
+          source_ids:
+            - meta-ai-app-launch
+        - text: Meta's Muse Spark announcement (April 8, 2026, updated May 12) says the model is coming to
+            Meta AI in WhatsApp, Instagram, Facebook, Messenger, and Threads, and to Ray-Ban Meta
+            and Oakley Meta glasses in the US and Canada.
+          source_ids:
+            - muse-spark-announcement
+        - text: On July 24, 2026, Meta added agent features to Meta AI, such as connecting to email and
+            calendars, daily briefings, recurring tasks, and web research with slides, starting in
+            select markets in the Meta AI app and on meta.ai.
+          source_ids:
+            - meta-ai-acts
+        - text: Muse is a personal AI agent announced September 8, 2026. It runs in a dedicated cloud virtual
+            machine, can send email, book travel, and fill out forms, and asks before sensitive
+            actions. It is offered on iOS, Android, the web at muse.ai, and in WhatsApp.
+          source_ids:
+            - muse-agent-announcement
+            - muse-safety-blog
+        - text: Meta's Muse for Small Business post (September 29, updated October 8, 2026) says Muse is
+            available in the US and Canada, is free for most needs, and has subscription plans for
+            heavier use.
+          source_ids:
+            - muse-small-business
+        - text: The Meta Model API, in public preview, offers Muse Spark 1.1, 1.2, and 1.3, Muse Image, Muse
+            Voice Transcribe, and SAM 3.1. Meta says it works with existing OpenAI SDK code.
+            "Contributor" model versions let Meta use the data to improve its products.
+          source_ids:
+            - meta-model-api
+            - meta-model-api-models-docs
+        - text: Muse Code is a terminal coding agent powered by Muse Spark, released in beta on August 5,
+            2026, which runs several worker agents in parallel.
+          source_ids:
+            - muse-code-spark-1-2-blog
+            - muse-code-page
+        - text: Meta Business Agent answers customer messages for businesses on WhatsApp and Messenger and is
+            expanding to Instagram. Its Business Agent Platform lets larger companies build and
+            deploy agents connected to their own systems.
+          source_ids:
+            - meta-business-agent
+        - text: Llama weights are available after accepting the license, from Meta or Hugging Face. Meta's
+            developer site, dev.meta.ai, keeps Llama documentation, licenses, use policies, and
+            download guides in a Llama section.
+          source_ids:
+            - llama-models-readme
+            - llama-docs-hub
+            - meta-dev-site
+    - id: glasses-and-wearables
+      title: AI glasses and wearables
+      intro:
+        text: Meta makes AI glasses with EssilorLuxottica. Meta says glasses are the ideal device for
+          personal superintelligence because they can stay with a person all day.
+        source_ids:
+          - ray-ban-meta-2023
+          - q2-2026-call-transcript
+      items:
+        - text: Ray-Ban Stories, made with EssilorLuxottica, launched September 9, 2021. The Ray-Ban Meta
+            smart glasses followed on September 27, 2023, with Meta AI built in, in beta in the US.
+          source_ids:
+            - ray-ban-stories-launch
+            - ray-ban-meta-2023
+        - text: Oakley Meta HSTN performance AI glasses were announced June 20, 2025. Oakley Meta Vanguard,
+            built for high-intensity sports with Garmin and Strava links, was announced September
+            17, 2025.
+          source_ids:
+            - oakley-meta-hstn
+            - oakley-meta-vanguard
+        - text: Meta Ray-Ban Display, announced September 17, 2025, has a built-in display and comes with the
+            Meta Neural Band, an EMG wristband that reads muscle signals to control the glasses.
+            Sales began in the US on September 30, 2025.
+          source_ids:
+            - meta-ray-ban-display-2025
+        - text: Meta Glasses, a new line made with EssilorLuxottica, went on sale June 23, 2026 in Meta
+            Adventurer, Meta Fury, and Meta Glasses by Kylie styles, with Meta AI powered by Muse
+            Spark in the US and Canada.
+          source_ids:
+            - meta-glasses-launch
+        - text: At Connect on September 23, 2026, Meta released Ray-Ban Meta (Gen 3), opened pre-orders for
+            Ray-Ban Meta Audio glasses shipping October 13, and said Muse is coming to its AI
+            glasses.
+          source_ids:
+            - ray-ban-meta-audio-announcement
+        - text: Meta Ray-Ban Display went on sale in Canada and the UK on September 23, 2026, with France,
+            Italy, and Germany set for October 13, and gained new navigation and video-call hologram
+            features.
+          source_ids:
+            - meta-ray-ban-display-2026-features
+        - text: Meta also announced Meta VR Glasses, a strapless VR device weighing about 100 grams with a
+            Meta AI agent built into its operating system, going on sale in spring 2027, and Muse
+            Charm, a pocket-sized device for talking with Muse.
+          source_ids:
+            - meta-vr-glasses
+            - connect-2026-roundup
+        - text: Meta said hearing enhancement software, which it describes as FDA-cleared, will launch in the
+            US later in 2026 for supported AI glasses, for adults with perceived mild to moderate
+            hearing loss.
+          source_ids:
+            - connect-2026-roundup
+    - id: research-and-open-releases
+      title: Research releases and open models
+      intro:
+        text: Meta's research teams publish models, code, and papers, many with downloadable weights, though
+          license terms differ by release.
+        source_ids:
+          - fair-decade
+          - msl-scaling-framework-v2-1
+      items:
+        - text: Segment Anything (SAM), released April 5, 2023 under Apache 2.0, finds and outlines objects in
+            images. SAM 3 and SAM 3D followed on November 19, 2025, and SAM 3.1 on March 27, 2026 as
+            a more efficient drop-in replacement for video tracking.
+          source_ids:
+            - sam-1-blog
+            - sam-3-newsroom
+            - sam-3-1-blog
+        - text: DINOv3, released August 14, 2025, is a self-supervised vision model with a 7-billion-parameter
+            version, released with training code under a commercial license.
+          source_ids:
+            - dinov3-blog
+        - text: V-JEPA 2, announced June 11, 2025, is a world model trained on video that helps AI agents
+            understand and predict the physical world; Meta tested it on robots in its labs.
+          source_ids:
+            - v-jepa-2-newsroom
+        - text: Code World Model (CWM), a code research model, was released with open weights after a
+            preparedness report dated September 24, 2025 found it added no frontier risks beyond
+            those already in the AI ecosystem.
+          source_ids:
+            - cwm-preparedness-report
+        - text: On July 21, 2026, Meta described how Lawrence Berkeley National Laboratory's SYNAPS-I project,
+            part of the US Department of Energy's Genesis Mission, uses SAM 3 and DINOv3.
+          source_ids:
+            - genesis-mission-blog
+        - text: On October 2, 2026, Meta shared six math papers written by researchers working with Muse
+            Spark, five of which present answers to previously open questions.
+          source_ids:
+            - open-research-problems-blog
+        - text: PyTorch, which was incubated at Meta, moved to the PyTorch Foundation under the Linux
+            Foundation in September 2022.
+          source_ids:
+            - lf-pytorch-press
+        - text: On its July 29, 2026 earnings call, Meta said it expected to "get back to releasing some open
+            source models at some point soon"; Muse Glimmer followed in August 2026.
+          source_ids:
+            - q2-2026-call-transcript
+            - muse-glimmer-research-blog
+    - id: safety-and-policies
+      title: Safety frameworks, terms, and data use
+      intro:
+        text: Meta's frontier-risk policy began as the Frontier AI Framework on February 3, 2025, was
+          renamed the Advanced AI Scaling Framework in April 2026, and is now titled the Meta Superintelligence Scaling Framework, whose version 2.1 is dated
+          October 2026.
+        source_ids:
+          - frontier-ai-framework-announcement
+          - advanced-ai-scaling-framework-blog
+          - msl-scaling-framework-v2-1
+      items:
+        - text: "The framework covers catastrophic risks in three areas: chemical and biological weapons,
+            cybersecurity, and loss of control. It applies to open-weight, API, and closed
+            releases."
+          source_ids:
+            - msl-scaling-framework-v2-1
+            - advanced-ai-scaling-framework-blog
+        - text: Meta commits to publish a preparedness report for each frontier release and a "model spec"
+            describing intended model behavior. A model counts as frontier if it shows high
+            capability in the risk areas or reaches a compute threshold of at least 10^26
+            operations.
+          source_ids:
+            - msl-scaling-framework-v2-1
+        - text: Version 2.1 added rules for keeping models contained during training and testing, and more
+            discussion of open-weight risks. Meta also said it will set up a new AI committee of its
+            Board of Directors to review future framework changes.
+          source_ids:
+            - msl-scaling-framework-v2-1
+            - developing-capable-models-responsibly
+        - text: Muse Spark's Safety and Preparedness Report (May 26, 2026) says chemical and biological
+            capabilities were likely "high risk" before safeguards, and that after mitigations the
+            risk was acceptable for release in Meta AI. It also reports that outside tester Apollo
+            Research saw high rates of the model noticing it was being tested.
+          source_ids:
+            - muse-spark-safety-report
+        - text: On August 14, 2026, Meta disclosed that during a contracted cyber test of a pre-release Muse
+            Spark 1.1, a setup error let the model reach the internet and alter a real website's
+            database. Meta says it is adding independent checks that test environments are isolated.
+          source_ids:
+            - muse-spark-1-1-cyber-eval-issue
+        - text: For Llama developers, Meta released protection tools on April 29, 2025, including Llama Guard
+            4, LlamaFirewall, and Llama Prompt Guard 2.
+          source_ids:
+            - llamacon-2025-blog
+        - text: The Meta AIs Terms of Service (effective May 13, 2026) bar people under 13, say Meta may
+            review AI conversations by automated or human means, and warn not to rely on outputs.
+            The UK, Brazil, and the European Region have separate terms.
+          source_ids:
+            - meta-ai-terms
+        - text: Meta says it trains AI on public posts, licensed data, and people's interactions with its AI,
+            but not on private messages with friends and family unless someone shares them with Meta
+            AI. In the EU, it trains on adults' public content and offers an objection form.
+          source_ids:
+            - privacy-matters-genai
+            - ai-training-data-transparency
+            - eu-ai-training-notice
+        - text: Meta said that from December 16, 2025 it would use people's chats with its AI features to
+            personalize content and ads in most regions, but would not use chats about sensitive
+            topics such as health or religion to show ads.
+          source_ids:
+            - ai-personalization-notice
+        - text: Meta says Muse does not share conversations or virtual machine data with its ad systems, and
+            that Muse Image pictures carry an invisible "Content Seal" watermark.
+          source_ids:
+            - muse-safety-blog
+            - muse-image-video-blog
+    - id: infrastructure-and-compute
+      title: Infrastructure and compute
+      intro:
+        text: Meta designs and runs its own data centers and listed 32 owned and operated data centers in
+          April 2026, with several 1-gigawatt-or-larger sites under construction.
+        source_ids:
+          - infrastructure-explained-data-centers
+          - meta-10k-2025
+      items:
+        - text: Prometheus is Meta's 1-gigawatt AI cluster at its New Albany, Ohio data center, spread across
+            several buildings, tents, and nearby leased facilities and linking tens of thousands of
+            GPUs.
+          source_ids:
+            - new-albany-fact-sheet
+            - meta-infra-evolution-2025
+            - prometheus-backend-aggregation
+        - text: Hyperion is Meta's AI training cluster at its Richland Parish, Louisiana data center, which
+            broke ground in December 2024. In July 2026 Meta said it would expand the site to 5 GW;
+            an earlier Meta post said Hyperion would begin coming online in 2028.
+          source_ids:
+            - richland-parish-expansion
+            - meta-infra-evolution-2025
+        - text: Meta is also building 1-gigawatt sites in El Paso, Texas, through a venture with funds managed
+            by BlackRock, expected to start coming online in 2028, and in Sturgeon County, Alberta,
+            an AI-optimized site that Meta lists as its 33rd data center.
+          source_ids:
+            - el-paso-blackrock
+            - canada-data-center
+        - text: MTIA is Meta's own AI chip family. MTIA 300 is in production for training ranking and
+            recommendation models; MTIA 400 has finished lab tests; MTIA 450 and MTIA 500 are
+            scheduled for mass deployment in 2027.
+          source_ids:
+            - mtia-four-chips-blog
+        - text: Meta co-develops MTIA chips with Broadcom, co-developed an Arm data center CPU, and buys chips
+            from NVIDIA, AMD, and AWS.
+          source_ids:
+            - compute-power-explained
+        - text: On January 9, 2026, Meta announced nuclear energy agreements with Vistra, TerraPower, and Oklo
+            that it says will support up to 6.6 GW of new and existing clean energy by 2035,
+            including for the Prometheus site.
+          source_ids:
+            - nuclear-energy-projects
+        - text: Meta says data centers are essential for building AI, and that it pays the full cost of the
+            energy its sites use and of the new energy and water infrastructure they need.
+          source_ids:
+            - data-centers-ai-approach
+            - richland-parish-expansion
+            - new-albany-fact-sheet
+    - id: corporate-structure
+      title: Corporate structure and governance
+      intro:
+        text: Meta Platforms, Inc. was incorporated in Delaware in July 2004 and has its principal offices
+          at 1 Meta Way, Menlo Park, California.
+        source_ids:
+          - meta-10k-2025
+      items:
+        - text: Meta has Class A and Class B common stock. Its 10-K says Class A shares have limited voting
+            power relative to Class B, and that the CEO controls a majority of the voting power.
+          source_ids:
+            - meta-10k-2025
+        - text: Mark Zuckerberg is Founder, Chairman and Chief Executive Officer. Dina Powell McCormick,
+            formerly a board member, joined as President and Vice Chairman in January 2026 to help
+            guide strategy, infrastructure investment, and capital partnerships.
+          source_ids:
+            - meta-leadership
+            - dina-powell-mccormick-announcement
+        - text: Meta's AI framework says its Board of Directors oversees product and regulatory compliance,
+            and that Meta is building more formal board governance for AI policy.
+          source_ids:
+            - msl-scaling-framework-v2-1
+        - text: In July 2025, Meta said it had made a minority investment in Scale AI, the company Alexandr
+            Wang founded before joining Meta.
+          source_ids:
+            - q2-2025-call-transcript
+            - alexandr-wang-bio
+        - text: Meta Enterprise Platform is a new division led by Chirantan "CJ" Desai, Chief Enterprise
+            Platform Officer, reporting to Mark Zuckerberg.
+          source_ids:
+            - meta-enterprise-platform
+            - meta-leadership
+        - text: Meta uses capital partnerships for some data centers; for example, the El Paso campus will be
+            owned by a joint venture in which Meta holds a minority stake.
+          source_ids:
+            - el-paso-blackrock
+    - id: recent-updates
+      title: Recent updates (July to October 2026)
+      items:
+        - text: "July 7, 2026: Meta launched Muse Image in the Meta AI app and on meta.ai and previewed Muse
+            Video."
+          source_ids:
+            - muse-image-video-blog
+        - text: "July 9, 2026: Meta released Muse Spark 1.1 and opened the Meta Model API in public preview."
+          source_ids:
+            - muse-spark-1-1-blog
+        - text: "July 24, 2026: Meta AI gained planning, calendar, and recurring-task features in select
+            markets."
+          source_ids:
+            - meta-ai-acts
+        - text: "July 28, 2026: Meta announced a venture with BlackRock-managed funds to develop a 1-gigawatt
+            data center in El Paso, Texas."
+          source_ids:
+            - el-paso-blackrock
+            - q2-2026-call-transcript
+        - text: "August 5, 2026: Meta released Muse Code in beta along with Muse Spark 1.2."
+          source_ids:
+            - muse-code-spark-1-2-blog
+        - text: "August 10, 2026: Meta released Muse Glimmer with open weights under Apache 2.0."
+          source_ids:
+            - muse-glimmer-research-blog
+        - text: "August 14, 2026: Meta disclosed a misconfigured third-party cyber test of a pre-release Muse
+            Spark 1.1 and the fixes it made."
+          source_ids:
+            - muse-spark-1-1-cyber-eval-issue
+        - text: "September 1 and 2, 2026: Meta released Muse Voice Transcribe and Muse Spark 1.3."
+          source_ids:
+            - muse-voice-transcribe-blog
+            - muse-spark-1-3-blog
+        - text: "September 8, 2026: Meta announced Muse, a personal AI agent, followed by Muse for Small
+            Business on September 29."
+          source_ids:
+            - muse-agent-announcement
+            - muse-small-business
+        - text: "September 23, 2026: At Connect, Meta announced Ray-Ban Meta (Gen 3), Ray-Ban Meta Audio, Meta
+            VR Glasses, Muse Charm, and plans to bring Muse to its glasses."
+          source_ids:
+            - connect-2026-roundup
+            - ray-ban-meta-audio-announcement
+        - text: "September 28, 2026: Meta launched Meta Enterprise Platform, which it calls the next major pillar
+            of its business, to bring its AI products to companies."
+          source_ids:
+            - meta-enterprise-platform
+        - text: "October 2, 2026: Meta published version 2.1 of its Meta Superintelligence Scaling Framework
+            (previously the Frontier AI Framework) and said it will establish an AI committee of its
+            board."
+          source_ids:
+            - msl-scaling-framework-v2-1
+            - developing-capable-models-responsibly
+  lineup:
+    - name: Muse Spark
+      kind: model
+      status: current
+      released: 2026-04-08
+      description: Multimodal reasoning model, the first in the Muse family from Meta Superintelligence
+        Labs, launched in Meta AI in April 2026. Offered without public weights.
+      url: https://ai.meta.com/blog/introducing-muse-spark-msl/
+      source_ids:
+        - muse-spark-blog
+        - muse-spark-announcement
+    - name: Muse Spark 1.1
+      kind: model
+      status: current
+      released: 2026-07-09
+      description: Update built for agentic tasks, coding, and computer use, with a 1-million-token
+        context window. Offered in Meta AI's Thinking mode and through the Meta Model API.
+      url: https://dev.meta.ai/models/muse-spark-1-1/
+      source_ids:
+        - muse-spark-1-1-blog
+        - meta-model-api-models-docs
+    - name: Muse Spark 1.2
+      kind: model
+      status: current
+      released: 2026-08-05
+      description: Coding-focused update to Muse Spark 1.1, offered in Muse Code and the Meta Model API.
+      url: https://dev.meta.ai/models/muse-spark-1-2/
+      source_ids:
+        - muse-code-spark-1-2-blog
+        - meta-model-api-models-docs
+    - name: Muse Spark 1.3
+      kind: model
+      status: current
+      released: 2026-09-02
+      description: Version for long-running agentic and coding work with a "max" reasoning setting,
+        offered in Muse Code and the Meta Model API.
+      url: https://dev.meta.ai/models/muse-spark/
+      source_ids:
+        - muse-spark-1-3-blog
+        - meta-model-api-models-docs
+    - name: Muse Image
+      kind: model
+      status: current
+      released: 2026-07-07
+      description: Image generation and editing model in the Meta AI app, meta.ai, Instagram Stories in
+        the US, and the Meta Model API.
+      url: https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/
+      source_ids:
+        - muse-image-video-blog
+        - meta-model-api-models-docs
+    - name: Muse Video
+      kind: model
+      status: announced
+      released: null
+      description: Video generation model with native audio, shown as an early preview on July 7, 2026 and
+        described as coming soon to creators and Meta AI.
+      url: https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/
+      source_ids:
+        - muse-image-video-blog
+    - name: Muse Glimmer
+      kind: model
+      status: current
+      released: 2026-08-10
+      description: 30-billion-parameter open-weight model for local agents that reads text and images,
+        distilled from Muse Spark and published on Hugging Face under Apache 2.0.
+      url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+      source_ids:
+        - muse-glimmer-research-blog
+        - muse-glimmer-model-card
+    - name: Muse Voice Transcribe
+      kind: model
+      status: current
+      released: 2026-09-01
+      description: Streaming speech-to-text model with speaker separation, offered through the Meta Model
+        API and used for voice dictation in Meta AI and Muse Code.
+      url: https://dev.meta.ai/models/muse-voice-transcribe/
+      source_ids:
+        - muse-voice-transcribe-blog
+    - name: Muse Realtime Avatar
+      kind: research
+      status: announced
+      released: null
+      description: Research system that turns Muse Realtime Voice into live talking avatars, described by
+        MSL on September 23, 2026 with no release date.
+      url: https://research.meta.ai/blog/bringing-your-muse-to-life
+      source_ids:
+        - muse-realtime-avatar-blog
+    - name: Llama 4 Scout
+      kind: model
+      status: current
+      released: 2025-04-05
+      description: Mixture-of-experts model with 17B active and 109B total parameters and a
+        10-million-token context window; weights under the Llama 4 Community License.
+      url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md
+      source_ids:
+        - llama4-blog
+        - llama-models-readme
+        - llama4-license
+    - name: Llama 4 Maverick
+      kind: model
+      status: current
+      released: 2025-04-05
+      description: Mixture-of-experts model with 17B active and 400B total parameters; weights under the
+        Llama 4 Community License.
+      url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md
+      source_ids:
+        - llama4-blog
+        - llama-models-readme
+        - llama4-license
+    - name: Llama 3.3
+      kind: model
+      status: legacy
+      released: 2024-12-04
+      description: 70B text model from the Llama 3 generation, still listed with its own license and use
+        policy in Meta's Llama repository.
+      url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md
+      source_ids:
+        - llama-models-readme
+    - name: Llama 2
+      kind: model
+      status: legacy
+      released: 2023-07-18
+      description: 7B, 13B, and 70B models that Meta made free for research and commercial use.
+      url: https://github.com/meta-llama/llama-models/blob/main/models/llama2/MODEL_CARD.md
+      source_ids:
+        - llama-2-announcement
+        - llama-models-readme
+    - name: Llama Guard 4
+      kind: model
+      status: current
+      released: 2025-04-29
+      description: Llama protection tool released on April 29, 2025 with LlamaFirewall and Llama Prompt
+        Guard 2.
+      url: https://dev.meta.ai/llama/llama-protections/
+      source_ids:
+        - llamacon-2025-blog
+    - name: SAM 3.1
+      kind: model
+      status: current
+      released: 2026-03-27
+      description: Segment Anything model that finds, outlines, and tracks objects in images and video
+        from text prompts; also served on the Meta Model API.
+      url: https://ai.meta.com/blog/segment-anything-model-3/
+      source_ids:
+        - sam-3-1-blog
+        - meta-model-api-models-docs
+    - name: SAM 3D
+      kind: research
+      status: current
+      released: 2025-11-19
+      description: Two open models that rebuild 3D objects and people from a single image.
+      url: https://about.fb.com/news/2025/11/new-sam-models-detect-objects-create-3d-reconstructions/
+      source_ids:
+        - sam-3-newsroom
+    - name: DINOv3
+      kind: research
+      status: current
+      released: 2025-08-14
+      description: Self-supervised vision model family up to 7B parameters, released with training code
+        under a commercial license.
+      url: https://ai.meta.com/blog/dinov3-self-supervised-vision-model/
+      source_ids:
+        - dinov3-blog
+    - name: V-JEPA 2
+      kind: research
+      status: current
+      released: 2025-06-11
+      description: World model trained on video to help AI agents understand and plan in the physical world.
+      url: https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/
+      source_ids:
+        - v-jepa-2-newsroom
+    - name: Code World Model (CWM)
+      kind: research
+      status: current
+      released: 2025-09
+      description: Open-weight research model for code generation, released after a preparedness
+        assessment under Meta's Frontier AI Framework.
+      url: https://ai.meta.com/research/publications/code-world-model-preparedness-report/
+      source_ids:
+        - cwm-preparedness-report
+    - name: Meta AI
+      kind: app
+      status: current
+      released: 2023-09-27
+      description: Meta's AI assistant in its apps, a stand-alone app, meta.ai, and AI glasses, powered by
+        Muse Spark since April 2026.
+      url: https://www.meta.ai/
+      source_ids:
+        - meta-ai-launch-2023
+        - meta-10k-2025
+        - muse-spark-announcement
+    - name: Muse
+      kind: agent
+      status: current
+      released: 2026-09-08
+      description: Personal AI agent that runs in a dedicated cloud virtual machine and acts across
+        connected apps under permissions the person sets, asking before sensitive actions such as
+        purchases; on iOS, Android, muse.ai, and WhatsApp.
+      url: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/
+      source_ids:
+        - muse-agent-announcement
+        - muse-safety-blog
+    - name: Muse for Small Business
+      kind: agent
+      status: current
+      released: 2026-09-29
+      description: Muse skills and connectors for running a business, including Facebook Pages, Instagram
+        professional accounts, and Meta ad accounts.
+      url: https://about.fb.com/news/2026/09/introducing-muse-small-business/
+      source_ids:
+        - muse-small-business
+    - name: Muse Code
+      kind: agent
+      status: preview
+      released: 2026-08-05
+      description: Terminal coding agent powered by Muse Spark that runs worker agents in
+        parallel with reviewers in the background; released in beta.
+      url: https://dev.meta.ai/products/muse-code/
+      source_ids:
+        - muse-code-spark-1-2-blog
+        - muse-code-page
+    - name: Meta Business Agent
+      kind: agent
+      status: current
+      released: null
+      description: AI agent that answers customers for businesses on WhatsApp and Messenger, expanding to
+        Instagram, with a Business Agent Platform for larger companies.
+      url: https://about.fb.com/news/2026/06/meta-business-agent/
+      source_ids:
+        - meta-business-agent
+    - name: Meta Model API
+      kind: api
+      status: preview
+      released: 2026-07-09
+      description: Self-serve developer API in public preview for Muse Spark and other Meta models,
+        compatible with the OpenAI SDK.
+      url: https://dev.meta.ai/products/meta-model-api/
+      source_ids:
+        - meta-model-api
+        - muse-spark-1-1-blog
+    - name: Meta Enterprise Platform
+      kind: platform
+      status: announced
+      released: 2026-09-28
+      description: What Meta calls the next major pillar of its business, bringing its AI stack, including
+        the Muse agent, Muse API, and Muse Code, to companies.
+      url: https://about.fb.com/news/2026/09/launching-meta-enterprise-platform/
+      source_ids:
+        - meta-enterprise-platform
+    - name: Meta One
+      kind: service
+      status: current
+      released: 2026-09-15
+      description: Subscription plans across Instagram, Facebook, WhatsApp, and Meta AI that add AI
+        creation and other features.
+      url: https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/
+      source_ids:
+        - meta-one
+    - name: Ray-Ban Meta (Gen 3)
+      kind: hardware
+      status: current
+      released: 2026-09-23
+      description: AI glasses with Meta AI and an action button.
+      url: https://about.fb.com/news/2026/09/introducing-ray-ban-meta-audio-glasses-new-styles-plus-muse/
+      source_ids:
+        - ray-ban-meta-audio-announcement
+    - name: Ray-Ban Meta Audio
+      kind: hardware
+      status: announced
+      released: null
+      description: Audio-only AI glasses opened for pre-order September 23, 2026, with shipping set for
+        October 13.
+      url: https://about.fb.com/news/2026/09/introducing-ray-ban-meta-audio-glasses-new-styles-plus-muse/
+      source_ids:
+        - ray-ban-meta-audio-announcement
+    - name: Oakley Meta HSTN
+      kind: hardware
+      status: current
+      released: 2025-06-20
+      description: Performance AI glasses with a camera, open-ear speakers, and Meta AI.
+      url: https://about.fb.com/news/2025/06/introducing-oakley-meta-glasses-a-new-category-of-performance-ai-glasses/
+      source_ids:
+        - oakley-meta-hstn
+    - name: Oakley Meta Vanguard
+      kind: hardware
+      status: current
+      released: 2025-09-17
+      description: AI glasses for high-intensity sports that connect to Garmin and Strava.
+      url: https://about.fb.com/news/2025/09/oakley-meta-vanguard-performance-ai-glasses-sports/
+      source_ids:
+        - oakley-meta-vanguard
+    - name: Meta Ray-Ban Display
+      kind: hardware
+      status: current
+      released: 2025-09-17
+      description: AI glasses with a built-in display, sold with the Meta Neural Band EMG wristband; on
+        sale in the US, Canada, and the UK, with France, Italy, and Germany from October 13, 2026.
+      url: https://about.fb.com/news/2025/09/meta-ray-ban-display-ai-glasses-emg-wristband/
+      source_ids:
+        - meta-ray-ban-display-2025
+        - meta-ray-ban-display-2026-features
+    - name: Meta Glasses
+      kind: hardware
+      status: current
+      released: 2026-06-23
+      description: Meta's own AI glasses line made with EssilorLuxottica, shipping with Meta AI powered by
+        Muse Spark in the US and Canada.
+      url: https://about.fb.com/news/2026/06/meta-essilorluxottica-partner-launch-meta-glasses/
+      source_ids:
+        - meta-glasses-launch
+    - name: Meta VR Glasses
+      kind: hardware
+      status: announced
+      released: null
+      description: Strapless VR device of about 100 grams with a separate compute puck and Meta AI built
+        into the operating system; Meta says it goes on sale in spring 2027.
+      url: https://about.fb.com/news/2026/09/introducing-meta-vr-glasses-3d-movies-immersive-live-sports-100-grams/
+      source_ids:
+        - meta-vr-glasses
+    - name: Muse Charm
+      kind: hardware
+      status: announced
+      released: null
+      description: Pocket-sized device for talking with Muse, announced at Connect 2026 with more details
+        due later in 2026.
+      url: https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/
+      source_ids:
+        - connect-2026-roundup
+    - name: MTIA (Meta Training and Inference Accelerator)
+      kind: hardware
+      status: current
+      released: null
+      description: Meta's in-house AI chips for its own data centers; MTIA 300 is in production, with MTIA
+        400, 450, and 500 planned for 2026 and 2027.
+      url: https://ai.meta.com/blog/meta-mtia-scale-ai-chips-for-billions/
+      source_ids:
+        - mtia-four-chips-blog
+  timeline:
+    - date: 2021-09-09
+      text: Meta and EssilorLuxottica launched Ray-Ban Stories smart glasses.
+      source_ids:
+        - ray-ban-stories-launch
+    - date: 2023-02-24
+      text: Meta released the original LLaMA models to researchers under a noncommercial license.
+      source_ids:
+        - llama-1-blog
+    - date: 2023-04-05
+      text: Meta released the Segment Anything Model under Apache 2.0, with the SA-1B dataset for
+        research.
+      source_ids:
+        - sam-1-blog
+    - date: 2023-07-18
+      text: Meta released Llama 2, free for research and commercial use.
+      source_ids:
+        - llama-2-announcement
+    - date: 2023-09-27
+      text: Meta launched the Meta AI assistant in beta in the US and announced Ray-Ban Meta smart
+        glasses.
+      source_ids:
+        - meta-ai-launch-2023
+        - ray-ban-meta-2023
+    - date: 2024-04-18
+      text: Meta released Llama 3, rebuilt Meta AI on it, and launched the meta.ai website.
+      source_ids:
+        - llama-models-readme
+        - meta-ai-llama-3
+    - date: 2024-07-23
+      text: Meta released Llama 3.1, including a 405B model with a 128K context window.
+      source_ids:
+        - llama-models-readme
+    - date: 2024-12
+      text: Meta broke ground on its Richland Parish, Louisiana data center, the site of the Hyperion
+        cluster.
+      source_ids:
+        - richland-parish-expansion
+    - date: 2025-02-03
+      text: Meta published its Frontier AI Framework for frontier-risk release decisions.
+      source_ids:
+        - frontier-ai-framework-announcement
+    - date: 2025-04-05
+      text: Meta released Llama 4 Scout and Llama 4 Maverick.
+      source_ids:
+        - llama4-blog
+    - date: 2025-04-29
+      text: Meta launched the stand-alone Meta AI app and, at LlamaCon, a Llama API preview and Llama
+        Guard 4.
+      source_ids:
+        - meta-ai-app-launch
+        - llamacon-2025-blog
+    - date: 2025-06
+      text: Alexandr Wang joined Meta as Chief AI Officer.
+      source_ids:
+        - alexandr-wang-bio
+    - date: 2025-06-20
+      text: Meta and Oakley announced Oakley Meta HSTN performance AI glasses.
+      source_ids:
+        - oakley-meta-hstn
+    - date: 2025-07-30
+      text: Meta published its personal superintelligence vision and said it had set up Meta
+        Superintelligence Labs.
+      source_ids:
+        - personal-superintelligence-letter
+        - q2-2025-call-transcript
+    - date: 2025-08-14
+      text: Meta released the DINOv3 vision models under a commercial license.
+      source_ids:
+        - dinov3-blog
+    - date: 2025-09-17
+      text: Meta announced Meta Ray-Ban Display with the Meta Neural Band, and Oakley Meta Vanguard.
+      source_ids:
+        - meta-ray-ban-display-2025
+        - oakley-meta-vanguard
+    - date: 2025-10-01
+      text: Meta announced it would use people's chats with its AI features to personalize content and ads
+        from December 16, 2025.
+      source_ids:
+        - ai-personalization-notice
+    - date: 2025-11-19
+      text: Meta released SAM 3 and SAM 3D.
+      source_ids:
+        - sam-3-newsroom
+    - date: 2026-01-09
+      text: Meta announced nuclear energy agreements with Vistra, TerraPower, and Oklo.
+      source_ids:
+        - nuclear-energy-projects
+    - date: 2026-03-11
+      text: Meta outlined four new MTIA chip generations planned through 2027.
+      source_ids:
+        - mtia-four-chips-blog
+    - date: 2026-04-08
+      text: Meta Superintelligence Labs announced Muse Spark, and Meta published its Advanced AI Scaling
+        Framework.
+      source_ids:
+        - muse-spark-blog
+        - advanced-ai-scaling-framework-blog
+    - date: 2026-05-26
+      text: Meta published the Muse Spark Safety and Preparedness Report.
+      source_ids:
+        - muse-spark-safety-report
+    - date: 2026-06-23
+      text: Meta Glasses went on sale with Meta AI powered by Muse Spark in the US and Canada.
+      source_ids:
+        - meta-glasses-launch
+    - date: 2026-07-07
+      text: Meta launched Muse Image and previewed Muse Video.
+      source_ids:
+        - muse-image-video-blog
+    - date: 2026-07-09
+      text: Meta released Muse Spark 1.1 and opened the Meta Model API in public preview.
+      source_ids:
+        - muse-spark-1-1-blog
+    - date: 2026-07-13
+      text: Meta said it would expand its Richland Parish, Louisiana data center to 5 GW.
+      source_ids:
+        - richland-parish-expansion
+    - date: 2026-07-28
+      text: Meta announced a venture to build a 1-gigawatt data center in El Paso, Texas.
+      source_ids:
+        - el-paso-blackrock
+    - date: 2026-08-05
+      text: Meta released Muse Code in beta and Muse Spark 1.2.
+      source_ids:
+        - muse-code-spark-1-2-blog
+    - date: 2026-08-10
+      text: Meta released Muse Glimmer with open weights under Apache 2.0.
+      source_ids:
+        - muse-glimmer-research-blog
+    - date: 2026-09-02
+      text: Meta released Muse Spark 1.3 in Muse Code and the Meta Model API.
+      source_ids:
+        - muse-spark-1-3-blog
+    - date: 2026-09-08
+      text: Meta announced Muse, a personal AI agent.
+      source_ids:
+        - muse-agent-announcement
+    - date: 2026-09-15
+      text: Meta introduced Meta One subscription plans.
+      source_ids:
+        - meta-one
+    - date: 2026-09-23
+      text: At Connect 2026, Meta announced Ray-Ban Meta (Gen 3), Ray-Ban Meta Audio, Meta VR Glasses, and
+        Muse Charm.
+      source_ids:
+        - connect-2026-roundup
+        - ray-ban-meta-audio-announcement
+    - date: 2026-09-28
+      text: Meta launched Meta Enterprise Platform to bring its AI products to companies.
+      source_ids:
+        - meta-enterprise-platform
+    - date: 2026-10-02
+      text: Meta published version 2.1 of its framework as the Meta Superintelligence Scaling Framework.
+      source_ids:
+        - msl-scaling-framework-v2-1
+        - developing-capable-models-responsibly
+  leadership:
+    - name: Mark Zuckerberg
+      role: Founder, Chairman and Chief Executive Officer
+      source_ids:
+        - meta-leadership
+    - name: Dina Powell McCormick
+      role: President and Vice Chairman
+      source_ids:
+        - meta-leadership
+        - dina-powell-mccormick-announcement
+    - name: Alexandr Wang
+      role: Chief AI Officer
+      source_ids:
+        - meta-leadership
+        - alexandr-wang-bio
+    - name: Andrew Bosworth
+      role: Chief Technology Officer
+      source_ids:
+        - meta-leadership
+    - name: Chris Cox
+      role: Chief Product Officer
+      source_ids:
+        - meta-leadership
+    - name: Javier Olivan
+      role: Chief Operating Officer
+      source_ids:
+        - meta-leadership
+    - name: Susan Li
+      role: Chief Financial Officer
+      source_ids:
+        - meta-leadership
+    - name: Chirantan Desai
+      role: Chief Enterprise Platform Officer
+      source_ids:
+        - meta-leadership
+        - meta-enterprise-platform
+    - name: Daniel Gross
+      role: Co-Lead, Meta Compute
+      source_ids:
+        - meta-leadership
+    - name: Santosh Janardhan
+      role: Head of Infrastructure
+      source_ids:
+        - meta-leadership
+    - name: Erin Egan
+      role: Chief Privacy Officer, Policy
+      source_ids:
+        - meta-leadership
+    - name: Michel Protti
+      role: Chief Compliance and Privacy Officer, Product
+      source_ids:
+        - meta-leadership

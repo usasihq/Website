@@ -12,6 +12,32 @@ as it is.
 
 ## Watching
 
+### Follow-ups from the 2026-10-11 company deep dives
+
+- Added: 2026-10-11
+- Claims to confirm (each was seen only in news coverage, social posts, or a
+  search snippet; none is on the site). When one is confirmed, add it to that
+  organization's `deep_dive` with the official source.
+  - OpenAI: the status of ChatGPT Atlas; parental controls and "ChatGPT for
+    Teens"; age prediction; the Sora app shutdown; Greg Brockman's current title;
+    Thibault Sottiaux's current title (openai.com pages reportedly say "Head of
+    Core Products & Platform"; openai.com blocks automated reads). Update
+    content/leaders/ when confirmed.
+  - Anthropic: the Cowork launch and general-availability dates; a Ninth Circuit
+    stay in appeal 26-2011.
+  - Meta: the June 30, 2025 date Meta Superintelligence Labs was created.
+  - xAI: a War Department GenAI.mil agreement; whether Grok 4.7 is in the
+    consumer Grok apps.
+  - Tesla: a Texas DMV automated-vehicle authorization for "Tesla Robotaxi, LLC"
+    (May 14, 2026); an Optimus Gen 3 unveiling.
+- Official sources to check:
+  - https://help.openai.com/en/articles/6825453-chatgpt-release-notes
+  - https://www.anthropic.com/news
+  - https://about.fb.com/news/
+  - https://x.ai/news
+  - https://www.txdmv.gov/
+  - Tesla quarterly update decks (8-K Exhibit 99.1) on sec.gov
+
 ### "Super Intelligence Force" and a "White House Accord on Super Intelligence"
 
 - Added: 2026-10-04

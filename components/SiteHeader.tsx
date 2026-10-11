@@ -17,6 +17,7 @@ const REFERENCE = [
   { href: "/sources/", label: "Source library", bar: false },
   { href: "/glossary/", label: "Glossary", bar: true },
   { href: "/kids/", label: "For kids", bar: false },
+  { href: "/big-si/", label: "People Behind Big SI", bar: false },
   { href: "/licenses/", label: "License guide", bar: false },
   { href: "/policy/", label: "Policy tracker", bar: true },
   { href: "/reuse/", label: "Data & reuse", bar: false },
@@ -32,7 +33,7 @@ const NAV = [
   { href: "/matrix/", label: "Compare" },
   { href: "/news/", label: "News" },
   { href: "/methodology/", label: "Methodology" },
-  { href: "/local/", label: "People Behind Local AI" },
+  { href: "/local/", label: "People Behind Local SI" },
   { href: "/about/", label: "About" },
 ];
 

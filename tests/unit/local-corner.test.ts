@@ -29,7 +29,7 @@ function withPeople(people: Array<Record<string, unknown>>): RawContent {
 
 const errors = (raw: RawContent) => validateContent(raw, { today: TODAY }).issues.filter((i) => i.level === "error").map((i) => i.message);
 
-describe("People Behind Local AI profiles", () => {
+describe("People Behind Local SI profiles", () => {
   it("accepts a professional, sourced profile tied to the catalog", () => {
     expect(errors(withPeople([person("fixture-a")]))).toEqual([]);
   });

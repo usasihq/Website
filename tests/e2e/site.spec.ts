@@ -301,11 +301,11 @@ test.describe("Local corner", () => {
     const href = await firstMarker.getAttribute("href");
     await expect(page.locator(href!)).toHaveCount(1);
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: "People behind local AI" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "People behind local SI" })).toBeVisible();
   });
 });
 
-test("People Behind Local AI is a standing list, the same in any month", async ({ page }) => {
+test("People Behind Local SI is a standing list, the same in any month", async ({ page }) => {
   const people = readRecordsFrom("people").filter((p) => p.publication_status === "published");
   test.skip(people.length === 0, "no published profiles yet");
   const ids: string[][] = [];
@@ -522,14 +522,14 @@ test("people navigation order, keyboard activation and current-page semantics", 
   if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
   const nav = page.getByRole("navigation", { name: isMobile ? "Primary (mobile)" : "Primary", exact: true });
   const labels = await nav.getByRole("link").allTextContents();
-  expect(labels.slice(-3)).toEqual(["Methodology", "People Behind Local AI", "About"]);
+  expect(labels.slice(-3)).toEqual(["Methodology", "People Behind Local SI", "About"]);
   await nav.getByRole("link", { name: "Methodology", exact: true }).focus();
   await page.keyboard.press("Tab");
-  await expect(nav.getByRole("link", { name: "People Behind Local AI", exact: true })).toBeFocused();
+  await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/local\/$/);
   if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
-  await expect(nav.getByRole("link", { name: "People Behind Local AI", exact: true })).toHaveAttribute("aria-current", "page");
+  await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toHaveAttribute("aria-current", "page");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
@@ -773,5 +773,36 @@ test.describe("site search, places map, and printing", () => {
     await page.goto("/kids/packet/");
     await expect(page.locator("main article > div > section[id]")).toHaveCount(7);
     await expect(page.getByRole("region", { name: "Answer key" }).locator("li")).toHaveCount(21);
+  });
+});
+
+test.describe("big companies in depth and People Behind Big SI", () => {
+  test("the five big-company pages carry a sourced in-depth guide", async ({ page }) => {
+    for (const slug of ["xai", "tesla", "meta", "anthropic", "openai"]) {
+      await page.goto(`/companies/${slug}/`);
+      const section = page.locator("#in-depth");
+      await expect(section, slug).toBeVisible();
+      expect(await page.getByTestId("deep-dive-overview").locator("p").count(), slug).toBeGreaterThanOrEqual(3);
+      expect(await page.getByTestId("deep-dive-lineup").locator("tbody tr").count(), slug).toBeGreaterThanOrEqual(10);
+      expect(await page.getByTestId("deep-dive-timeline").locator("li").count(), slug).toBeGreaterThanOrEqual(10);
+      await expect(section.getByRole("navigation").getByRole("link", { name: "Timeline" }), slug).toBeVisible();
+    }
+  });
+
+  test("People Behind Big SI lists leaders, and profiles link back to their companies", async ({ page }) => {
+    await page.goto("/big-si/");
+    expect(await page.getByTestId("big-si-list").locator("li").count()).toBeGreaterThanOrEqual(10);
+    await page.getByTestId("big-si-list").getByRole("link", { name: /Elon Musk/ }).click();
+    await expect(page).toHaveURL(/\/big-si\/elon-musk\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Elon Musk");
+    expect(await page.getByTestId("leader-highlights").locator("li").count()).toBeGreaterThanOrEqual(5);
+    await page.getByRole("list", { name: "Current roles" }).getByRole("link", { name: "Tesla", exact: true }).first().click();
+    await expect(page).toHaveURL(/\/companies\/tesla\/$/);
+  });
+
+  test("People Behind Local SI keeps its address under the new name", async ({ page }) => {
+    await page.goto("/local/");
+    await expect(page.locator("h1")).toHaveText("People behind local SI");
+    await expect(page.getByRole("link", { name: "People Behind Big SI" }).first()).toBeVisible();
   });
 });

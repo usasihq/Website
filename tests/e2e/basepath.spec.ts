@@ -45,9 +45,9 @@ test("Jobs links and filters preserve the base path", async ({page}) => {
 });
 
 
-test("People Behind Local AI navigation preserves the base path", async ({page}) => {
+test("People Behind Local SI navigation preserves the base path", async ({page}) => {
   await page.goto("/usasi/about/");
-  const link = page.getByRole("navigation", {name:"Primary", exact:true}).getByRole("link", {name:"People Behind Local AI", exact:true});
+  const link = page.getByRole("navigation", {name:"Primary", exact:true}).getByRole("link", {name:"People Behind Local SI", exact:true});
   await expect(link).toHaveAttribute("href", "/usasi/local/");
   await link.click();
   await expect(page).toHaveURL(/\/usasi\/local\/$/);

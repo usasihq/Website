@@ -5,7 +5,7 @@ import { CoverageTable } from "@/components/CoverageTable";
 import { HomepageSponsor } from "@/components/HomepageSponsor";
 import { Hero } from "@/components/Hero";
 import { HomeSearch } from "@/components/HomeSearch";
-import { LocalCornerStrip } from "@/components/LocalCorner";
+import { BigSiStrip, LocalCornerStrip } from "@/components/LocalCorner";
 import { NewsCard } from "@/components/NewsList";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -492,7 +492,8 @@ export default function HomePage() {
 
       <section className="container-page py-8" aria-labelledby="home-jobs-heading"><div className="card p-6"><h2 id="home-jobs-heading" className="text-xl font-semibold text-text">Work at companies and labs in the catalog</h2><p className="mt-2 text-muted">Explore current openings from employer career sources. Applications go directly to the employer.</p><Link href="/jobs/" className="link mt-4 inline-block">Explore Jobs →</Link></div></section>
 
-      {/* People Behind Local AI (standing list, deliberately quiet) */}
+      {/* People Behind Big SI and People Behind Local SI */}
+      <BigSiStrip leaders={catalog.leaders} />
       <LocalCornerStrip people={catalog.people} />
 
       {/* 7. Support Us */}

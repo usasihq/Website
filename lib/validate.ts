@@ -16,6 +16,7 @@ import {
   NewsletterIssue,
   Organization,
   Person,
+  Leader,
   PolicyDocument,
   Quiz,
   type Artifact as ArtifactT,
@@ -30,6 +31,7 @@ import {
   type NewsletterIssue as NewsletterIssueT,
   type Organization as OrganizationT,
   type Person as PersonT,
+  type Leader as LeaderT,
 } from "./schema";
 import { inlineLinks, isAllowedHref } from "./inline-text";
 import { EXPLAINERS, LEARNING_PATHS } from "./learn";
@@ -48,6 +50,7 @@ export interface RawContent {
   changelog: RawDocument[];
   featured: RawDocument | null;
   people?: RawDocument[];
+  leaders?: RawDocument[];
   news?: RawDocument[];
   hubs?: RawDocument[];
   licenses?: RawDocument[];
@@ -70,6 +73,7 @@ export interface ValidatedContent {
   changelog: ChangelogEntryT[];
   featured: FeaturedSelectionT | null;
   people: PersonT[];
+  leaders: LeaderT[];
   news: NewsItemT[];
   hubs: HubT[];
   licenses: LicenseGuideT[];
@@ -82,6 +86,15 @@ export interface ValidatedContent {
 
 /** Claims the catalog does not publish, in news either. */
 const NEWS_FORBIDDEN = /(\$\s?\d|\bvaluation|\bvalued at|\bfunding round|\braised\b|\bseries [a-h]\b|\bemployees\b|\bheadcount|\bmonthly active|\busers\b|\bbenchmark score|\bstate-of-the-art|\bbest-in-class|\bleading\b)/i;
+
+/** Leader profiles celebrate careers; they never include wealth, money, family, or counts of people. */
+const LEADER_FORBIDDEN =
+  /(\$\s?\d|\bnet worth|\bbillionaire|\bwealth|\bfortune\b|\bcompensation|\bsalary|\bvaluation|\bvalued at|\bfunding round|\bemployees\b|\bheadcount|\busers\b|\bmarried|\bspouse|\bwife\b|\bhusband|\bchildren\b|\bdaughters?\b|\bsons?\b|\breligio\w*|\bhome address)/i;
+
+/** Identifiers and dates inside records, which prose rules do not apply to. */
+const NON_PROSE_PATH = /(source_ids\[\d+\]|\.(id|slug|kind|status|date|released|since|from|to|reviewed_at|organization_slug))$/;
+
+const GENDERED_PRONOUNS = /\b(he|she|him|her|his|hers|himself|herself)\b/i;
 
 /** Wording that would add personal (non-professional) details to a profile. */
 const PERSONAL_DETAIL_PATTERN =
@@ -286,6 +299,30 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
       if (p.last_reviewed > today) push("error", "Product last_reviewed is in the future", `products[${i}].last_reviewed`);
     });
 
+    if (org.deep_dive) {
+      const d = org.deep_dive;
+      const level = org.publication_status === "draft" ? "warning" : "error";
+      if (d.reviewed_at > today) push("error", "deep_dive.reviewed_at is in the future", "deep_dive.reviewed_at");
+      const sectionIds = new Set<string>();
+      d.sections.forEach((sec, i) => {
+        if (sectionIds.has(sec.id)) push("error", `Duplicate deep-dive section id "${sec.id}"`, `deep_dive.sections[${i}].id`);
+        sectionIds.add(sec.id);
+      });
+      d.timeline.forEach((t, i) => {
+        if (datePrefixAfter(t.date, today)) push("error", "Timeline date is in the future", `deep_dive.timeline[${i}].date`);
+      });
+      d.lineup.forEach((l, i) => {
+        if (l.released && datePrefixAfter(l.released, today)) push("error", "Lineup release date is in the future", `deep_dive.lineup[${i}].released`);
+      });
+      const strings: Array<{ text: string; path: string }> = [];
+      collectStrings(d, "deep_dive", strings);
+      for (const { text, path } of strings) {
+        if (isUrlLike(text) || NON_PROSE_PATH.test(path)) continue;
+        if (NEWS_FORBIDDEN.test(text)) push(level, `Profiles may not include funding, valuations, staffing, user counts, or superlatives: "${text.slice(0, 60)}"`, path);
+        if (GENDERED_PRONOUNS.test(text)) push(level, `Use names or "they", not gendered pronouns: "${text.slice(0, 60)}"`, path);
+      }
+    }
+
     if (org.parent_org_slug) {
       const parent = orgBySlug.get(org.parent_org_slug);
       if (!parent) {
@@ -454,6 +491,48 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
         person.work.some((w) => w.artifact_slug && publishedArtifacts.has(w.artifact_slug));
       if (!tied) push("error", "A published profile must link to at least one published catalog organization or artifact", "affiliations");
     }
+  }
+
+  /* ---- People Behind Big SI ---- */
+  const leaderDocs = parseDocs(raw.leaders ?? [], Leader, issues);
+  const leaderSlugs = new Set<string>();
+  for (const { file, value: leader } of leaderDocs) {
+    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
+    if (basename(file) !== leader.slug) push("error", `File name must match slug "${leader.slug}"`, "slug");
+    if (leaderSlugs.has(leader.slug)) push("error", `Duplicate leader slug "${leader.slug}"`, "slug");
+    leaderSlugs.add(leader.slug);
+    const ids = new Set<string>();
+    leader.sources.forEach((s, i) => {
+      if (ids.has(s.id)) push("error", `Duplicate source id "${s.id}"`, `sources[${i}].id`);
+      ids.add(s.id);
+      if (s.accessed_at > today) push("error", "accessed_at is in the future", `sources[${i}].accessed_at`);
+      if (s.published_at && datePrefixAfter(s.published_at, today)) push("error", "published_at is in the future", `sources[${i}].published_at`);
+    });
+    const refs: Array<{ id: string; path: string }> = [];
+    collectSourceRefs(leader, "", refs);
+    const used = new Set(refs.map((r) => r.id));
+    for (const r of refs) if (!ids.has(r.id)) push("error", `Unknown source id "${r.id}"`, r.path);
+    leader.sources.forEach((s, i) => {
+      if (!used.has(s.id)) push("warning", `Source "${s.id}" is not cited by any claim`, `sources[${i}]`);
+    });
+    if (leader.updated_at > today) push("error", "updated_at is in the future", "updated_at");
+    if (leader.last_reviewed && leader.last_reviewed > today) push("error", "last_reviewed is in the future", "last_reviewed");
+    leader.timeline.forEach((t, i) => {
+      if (datePrefixAfter(t.date, today)) push("error", "Timeline date is in the future", `timeline[${i}].date`);
+    });
+    [...leader.current_roles, ...leader.past_roles].forEach((r, i) => {
+      if (r.organization_slug && !orgBySlug.has(r.organization_slug)) push("error", `Unknown organization slug "${r.organization_slug}"`, `roles[${i}]`);
+    });
+    const level = leader.publication_status === "draft" ? "warning" : "error";
+    const strings: Array<{ text: string; path: string }> = [];
+    collectStrings(leader, "", strings);
+    for (const { text, path } of strings) {
+      if (isUrlLike(text) || path.startsWith("sources") || path.startsWith("links") || NON_PROSE_PATH.test(path)) continue;
+      if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(level, `Placeholder text found: "${text.slice(0, 60)}"`, path);
+      if (LEADER_FORBIDDEN.test(text)) push(level, `Leader profiles may not include wealth, money, family, or user and staff counts: "${text.slice(0, 60)}"`, path);
+      if (GENDERED_PRONOUNS.test(text)) push(level, `Use names or "they", not gendered pronouns: "${text.slice(0, 60)}"`, path);
+    }
+    if (leader.publication_status === "published" && !leader.last_reviewed) push("error", "Published profiles need a last_reviewed date", "last_reviewed");
   }
   /* ---- News ---- */
   const newsDocs = parseDocs(raw.news ?? [], NewsItem, issues);
@@ -686,6 +765,7 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     changelog: changelogDocs.map((d) => d.value).sort((a, b) => b.date.localeCompare(a.date)),
     featured: featuredDoc?.value ?? null,
     people: peopleDocs.map((d) => d.value),
+    leaders: leaderDocs.map((d) => d.value),
     news: newsDocs.map((d) => d.value).sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date)),
     hubs: hubDocs.map((d) => d.value).sort((a, b) => a.title.localeCompare(b.title)),
     licenses: licenseDocs.map((d) => d.value).sort((a, b) => a.name.localeCompare(b.name)),
