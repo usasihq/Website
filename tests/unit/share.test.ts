@@ -37,3 +37,33 @@ describe("badge snippets", () => {
     expect(s.html).toContain('href="https://site.test/open/x/"');
   });
 });
+
+describe("share kit", async () => {
+  const { shareKit, POST_LIMITS } = await import("@/lib/share-kit");
+  const issue = {
+    number: 3,
+    slug: "issue-3",
+    subject: "Issue 3: a fairly long subject line about several model releases and policy updates this week",
+    preview: "p",
+    sent_at: "2026-10-25",
+    covers: { from: "2026-10-19", to: "2026-10-25" },
+    intro: ["x"],
+    sections: [
+      { heading: "Open models", intro: null, note: null, items: ["**Thing.** text [a](/news/a/)", "[B 1.0](/news/b/): more"] },
+      { heading: "Corrections", intro: "None this week. Reply to this email.", note: null, items: [] },
+    ],
+    closing: [],
+    web_url: null,
+    publication_status: "published" as const,
+  };
+  it("keeps every post within its platform's limit and links the issue", () => {
+    const url = "https://unitedstatesofamericasuperintelligence.com/newsletter/issue-3/";
+    const kit = shareKit(issue, url);
+    expect([...kit.bluesky].length).toBeLessThanOrEqual(POST_LIMITS.bluesky);
+    expect([...kit.truthSocial].length).toBeLessThanOrEqual(POST_LIMITS.truthSocial);
+    expect([...kit.x.replace(url, "x".repeat(23))].length).toBeLessThanOrEqual(POST_LIMITS.x);
+    for (const post of Object.values(kit)) expect(post).toContain(url);
+    expect(kit.linkedin).not.toContain("Reply to this email");
+    expect(kit.linkedin).toContain("Open models: Thing; B 1.0");
+  });
+});

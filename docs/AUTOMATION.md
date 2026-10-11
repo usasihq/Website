@@ -3,14 +3,15 @@
 The site is kept current by two scheduled Claude tasks on the owner's computer
 (Claude desktop app → Scheduled). They run only while that computer is on and
 the app is open; a missed run starts on the next launch. Both work in a
-permanent clone of this repository and deploy with the machine's existing
-Wrangler login. The GitHub Actions deploy and Jobs-refresh workflows stay
+permanent clone of this repository. The daily task deploys with the machine's
+existing Wrangler login; the weekly task opens a pull request for the owner's
+review and never deploys. The GitHub Actions deploy and Jobs-refresh workflows stay
 paused (`CLOUDFLARE_DEPLOY=false`), so there is no Cloudflare API token in GitHub.
 
 | Task | When | What it does |
 |---|---|---|
 | Daily site update | every day, 7:00 local | refresh all Jobs feeds; research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy |
-| Weekly catalog upkeep | Sundays, 10:00 local | review a batch of cited sources for changes; apply supported corrections; add recent open releases from catalog organizations; check, commit, push, deploy |
+| Weekly catalog upkeep | Sundays, 10:00 local | review a batch of cited sources for changes; apply supported corrections; add recent open releases from catalog organizations; draft the next weekly email issue; check, commit to a `weekly/YYYY-MM-DD` branch, and open a pull request. Merged changes go live on the next daily run (or a manual publish) |
 
 News is published without individual human review (disclosed on `/news/` and in
 the methodology). Every run must pass `npm run validate`, typecheck, lint, unit
@@ -54,6 +55,8 @@ Each issue of the USASI weekly is a file in `content/newsletter/` (schema `Newsl
 - In beehiiv, set the byline to the "USASI" guest author, not a personal profile.
 - Sending, scheduling, and test sends happen only after the owner says yes.
 - After sending, set `publication_status: published`, `sent_at`, and `web_url`, then publish the site. A unit test pins issue 1 to the exact HTML that was emailed.
+- `npm run newsletter:share -- <slug>` writes ready-to-post text for the X, Bluesky, Truth Social, and LinkedIn accounts to `reports/automation/newsletter/<slug>.share.md`. The owner posts it.
+- The weekly upkeep drafts the next issue (as `draft`) in its pull request when the week had published news or catalog changes. A week with nothing new gets no issue.
 
 ## Pausing or changing it
 
