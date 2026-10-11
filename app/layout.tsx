@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.shortName}`,
   },
   description:
-    "An independent directory of U.S. AI organizations and U.S.-led open models, software, and research, with sources for every claim. Not a United States government website.",
+    "An independent, sourced directory of U.S. AI organizations and U.S.-led open models and tools. Not a United States government website.",
   applicationName: siteConfig.shortName,
   alternates: { canonical: absoluteUrl("/") },
   formatDetection: { telephone: false, address: false, email: false },

@@ -31,3 +31,21 @@ describe("social metadata", () => {
     }
   });
 });
+
+describe("meta descriptions", async () => {
+  const { clipDescription, DESCRIPTION_MAX } = await import("@/lib/metadata");
+  it("keeps short descriptions as they are", () => {
+    expect(clipDescription("A short description.")).toBe("A short description.");
+  });
+  it("cuts long ones at a word boundary within the limit", () => {
+    const long = "word ".repeat(60);
+    const out = clipDescription(long);
+    expect(out.length).toBeLessThanOrEqual(DESCRIPTION_MAX);
+    expect(out.endsWith("word…")).toBe(true);
+  });
+  it("applies to page metadata", () => {
+    const meta = pageMetadata({ description: "x ".repeat(200), path: "/a/" });
+    expect((meta.description as string).length).toBeLessThanOrEqual(DESCRIPTION_MAX);
+    expect((meta.openGraph?.description as string).length).toBeLessThanOrEqual(DESCRIPTION_MAX);
+  });
+});

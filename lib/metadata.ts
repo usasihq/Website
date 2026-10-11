@@ -31,8 +31,20 @@ interface PageMeta {
   feeds?: { path: string; title: string }[];
 }
 
+/** Search engines show about 160 characters; longer descriptions are cut at a word boundary. */
+export const DESCRIPTION_MAX = 160;
+
+export function clipDescription(text: string, max = DESCRIPTION_MAX): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  const at = cut.lastIndexOf(" ");
+  return `${(at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[\s,;:.\u2014-]+$/, "")}\u2026`;
+}
+
 /** Route-specific title, description, canonical URL, and social metadata. */
-export function pageMetadata({ title, description, path, noindex, image = socialImages.site, feeds }: PageMeta): Metadata {
+export function pageMetadata({ title, description: rawDescription, path, noindex, image = socialImages.site, feeds }: PageMeta): Metadata {
+  const description = clipDescription(rawDescription);
   const fullTitle = title ? `${title} · ${siteConfig.shortName}` : `${siteConfig.name} (${siteConfig.shortName})`;
   const url = absoluteUrl(path);
   const imageUrl = absoluteUrl(image.path);

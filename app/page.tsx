@@ -22,7 +22,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
   description:
-    "An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is available, and where to find the original sources.",
+    "Independent, sourced directory of U.S. AI organizations and U.S.-led open models and tools: what they build, what's available, and the original sources.",
   path: "/",
 });
 
