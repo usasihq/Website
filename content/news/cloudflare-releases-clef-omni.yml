@@ -1,0 +1,35 @@
+slug: cloudflare-releases-clef-omni
+title: Cloudflare releases Clef-omni, a multimodal decision model, under Apache 2.0
+event_date: 2026-10-09
+published_at: 2026-10-11
+category: release
+summary:
+  text: >-
+    On October 9, 2026 Cloudflare released Clef-omni, a decision model in its Clef family that
+    accepts audio and video input alongside text and images, and published its weights on Hugging
+    Face. The model card lists the Apache 2.0 license and describes Clef-Omni as a 30B-A3B
+    mixture-of-experts model that returns a probability for every allowed option of each typed
+    question, without free-form text generation. It is post-trained from Qwen3-Omni-30B-A3B-Instruct,
+    a base model Cloudflare did not develop. In the same post Cloudflare said it lowered the price of
+    Clef-flash and made Clef
+    faster. USASI has not tested the model.
+  source_ids: [clef-omni-blog, clef-omni-card]
+related_organizations: [cloudflare]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-11
+sources:
+  - id: clef-omni-blog
+    title: Introducing Clef-omni with full multimodality, plus a faster Clef and a cheaper Clef-flash
+    url: https://blog.cloudflare.com/clef-faster-cheaper-multimodal/
+    publisher: Cloudflare
+    kind: announcement
+    published_at: 2026-10-09
+    accessed_at: 2026-10-11
+  - id: clef-omni-card
+    title: Cloudflare/clef-omni model card
+    url: https://huggingface.co/Cloudflare/clef-omni
+    publisher: Cloudflare (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-11
