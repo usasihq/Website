@@ -18,6 +18,7 @@ import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_PLURAL, OWNERSHIP_LABELS, PRODUCT_KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 import { computeTier } from "@/lib/openness";
 import { artifactHref, orgHref } from "@/lib/routes";
 import { HOSTED_MODEL_PRODUCT_KINDS, type Artifact, type Product } from "@/lib/schema";
@@ -38,6 +39,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: org.summary.text.slice(0, 200),
     path: orgHref(org.slug),
     noindex: org.publication_status === "archived",
+    image: cardImage(getCatalog(), orgHref(org.slug)),
+    feeds: org.publication_status === "archived" ? undefined : [{ path: `${orgHref(org.slug)}feed.xml`, title: `${org.name} — USASI news` }],
   });
 }
 
@@ -343,7 +346,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
             <EntryActions contentPath={`content/organizations/${org.slug}.yml`} title={org.name} />
             <p className="text-[0.9375rem] text-muted">This listing is not an endorsement or a federal approval.</p>
           </div>
-          <ShareCite path={orgHref(org.slug)} title={org.name} date={org.updated_at} citeKey={org.slug} badge />
+          <ShareCite path={orgHref(org.slug)} title={org.name} date={org.updated_at} citeKey={org.slug} badge feed={org.publication_status === "archived" ? undefined : `${orgHref(org.slug)}feed.xml`} />
           <NewsletterSignup variant="compact" />
         </div>
       </article>

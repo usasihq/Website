@@ -14,6 +14,7 @@ import { formatDate } from "@/lib/dates";
 import { EXPLAINERS, adjacentExplainers, explainer, pathsForExplainer, relatedExplainers, topic } from "@/lib/learn";
 import { explainerOutline } from "@/lib/learn-outline";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 import { absoluteUrl } from "@/lib/paths";
 import { siteConfig } from "@/lib/site-config";
 import { EXPLAINER_CONTENT } from "../content";
@@ -24,7 +25,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const e = explainer((await params).slug);
-  return pageMetadata({ title: e?.title ?? "Explainer", description: e?.question ?? "", path: `/learn/${(await params).slug}/` });
+  const path = `/learn/${(await params).slug}/`;
+  return pageMetadata({ title: e?.title ?? "Explainer", description: e?.question ?? "", path, image: cardImage(getCatalog(), path) });
 }
 
 export default async function ExplainerPage({ params }: { params: Promise<{ slug: string }> }) {

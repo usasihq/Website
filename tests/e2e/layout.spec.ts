@@ -30,6 +30,7 @@ const PAGES: Array<[string, string]> = [
   ["faq", "/faq/"],
   ["newsletter", "/newsletter/"],
   ["newsletter-issue", "/newsletter/issue-1/"],
+  ["feeds", "/feeds/"],
   ["calculator", "/learn/tools/model-size/"],
   ["not-found", "/this-page-does-not-exist/"],
 ];

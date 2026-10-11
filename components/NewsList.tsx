@@ -2,17 +2,10 @@ import Link from "next/link";
 import type { Catalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { artifactHref, orgHref } from "@/lib/routes";
-import type { NewsCategory, NewsItem } from "@/lib/schema";
+import { NEWS_CATEGORY_LABELS } from "@/lib/labels";
+import type { NewsItem } from "@/lib/schema";
 
-export const NEWS_CATEGORY_LABELS: Record<NewsCategory, string> = {
-  release: "Release",
-  license: "License change",
-  acquisition: "Ownership",
-  governance: "Governance",
-  catalog: "Catalog update",
-  research: "Research",
-  policy: "Policy",
-};
+export { NEWS_CATEGORY_LABELS };
 
 export const newsHref = (slug: string) => `/news/${slug}/`;
 

@@ -20,6 +20,7 @@ export const STATIC_ROUTES = [
   "/news/",
   "/newsletter/",
   "/badges/",
+  "/feeds/",
   "/start/",
   "/glossary/",
   "/reuse/",

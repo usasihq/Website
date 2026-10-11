@@ -17,6 +17,7 @@ const COLUMNS = [
       { href: "/jobs/", label: "Jobs" },
       { href: "/news/", label: "Latest news" },
       { href: "/newsletter/", label: "Weekly email" },
+      { href: "/feeds/", label: "RSS feeds" },
     ],
   },
   {

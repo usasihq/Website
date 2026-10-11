@@ -9,6 +9,7 @@ import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { LICENSE_CATEGORY_LABELS, usesOfLicense } from "@/lib/licenses";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 import { artifactHref } from "@/lib/routes";
 
 export const dynamicParams = false;
@@ -29,7 +30,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const slug = (await params).slug;
   const guide = getCatalog().licenses.find((x) => x.slug === slug);
-  return pageMetadata({ title: guide ? `${guide.name}: a plain-language guide` : "License guide", description: guide?.summary.text.slice(0, 200) ?? "", path: `/licenses/${slug}/` });
+  return pageMetadata({
+    title: guide ? `${guide.name}: a plain-language guide` : "License guide",
+    description: guide?.summary.text.slice(0, 200) ?? "",
+    path: `/licenses/${slug}/`,
+    image: cardImage(getCatalog(), `/licenses/${slug}/`),
+  });
 }
 
 export default async function LicenseGuidePage({ params }: { params: Promise<{ slug: string }> }) {

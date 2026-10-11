@@ -12,6 +12,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 import { artifactHref, orgHref } from "@/lib/routes";
 
 export function generateStaticParams() {
@@ -20,7 +21,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const hub = getCatalog().hub((await params).slug);
-  return pageMetadata({ title: hub?.title ?? "Hub", description: hub?.summary ?? "", path: `/hubs/${(await params).slug}/` });
+  const path = `/hubs/${(await params).slug}/`;
+  return pageMetadata({
+    title: hub?.title ?? "Hub",
+    description: hub?.summary ?? "",
+    path,
+    image: cardImage(getCatalog(), path),
+    feeds: hub ? [{ path: `${path}feed.xml`, title: `${hub.title} — USASI news` }] : undefined,
+  });
 }
 
 export default async function HubPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -140,7 +148,7 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
           <div className="mt-3"><SourcesList sources={hub.sources} /></div>
         </section>
         <div className="grid max-w-3xl gap-6">
-          <ShareCite path={`/hubs/${hub.slug}/`} title={hub.title} date={hub.updated_at} citeKey={`hub_${hub.slug}`} />
+          <ShareCite path={`/hubs/${hub.slug}/`} title={hub.title} date={hub.updated_at} citeKey={`hub_${hub.slug}`} feed={`/hubs/${hub.slug}/feed.xml`} />
           <NewsletterSignup variant="compact" />
         </div>
       </div>

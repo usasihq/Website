@@ -4,12 +4,14 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
+import { changelogAnchor } from "@/lib/rss";
 import { artifactHref, orgHref } from "@/lib/routes";
 
 export const metadata = pageMetadata({
   title: "Changelog",
   description: "Substantive changes to the USASI catalog and its policies, with dates. Rebuilds of the site are not recorded as changes.",
   path: "/changelog/",
+  feeds: [{ path: "/changelog/feed.xml", title: "USASI — Changelog" }],
 });
 
 const TYPE_LABELS: Record<string, string> = {
@@ -36,7 +38,7 @@ export default function ChangelogPage() {
         ) : (
           <ol className="grid max-w-3xl gap-10">
             {catalog.changelog.map((entry) => (
-              <li key={`${entry.date}-${entry.title}`} className="border-l border-line-strong pl-6">
+              <li key={`${entry.date}-${entry.title}`} id={changelogAnchor(entry)} className="scroll-mt-28 border-l border-line-strong pl-6">
                 <p className="meta">
                   <time dateTime={entry.date}>{formatDate(entry.date)}</time>
                 </p>

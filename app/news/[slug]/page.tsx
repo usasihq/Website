@@ -10,6 +10,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 
 export const dynamicParams = false;
 
@@ -21,7 +22,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const item = getCatalog().newsItem(slug);
   if (!item) return {};
-  return pageMetadata({ title: item.title, description: item.summary.text.slice(0, 200), path: newsHref(item.slug) });
+  return pageMetadata({
+    title: item.title,
+    description: item.summary.text.slice(0, 200),
+    path: newsHref(item.slug),
+    image: cardImage(getCatalog(), newsHref(item.slug)),
+    feeds: [{ path: "/news/feed.xml", title: "USASI — Latest news" }],
+  });
 }
 
 export default async function NewsItemPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -72,7 +79,7 @@ export default async function NewsItemPage({ params }: { params: Promise<{ slug:
               </Link>
             </p>
           </div>
-          <ShareCite path={newsHref(item.slug)} title={item.title} date={item.updated_at} citeKey={`news_${item.slug}`} />
+          <ShareCite path={newsHref(item.slug)} title={item.title} date={item.updated_at} citeKey={`news_${item.slug}`} feed="/news/feed.xml" />
           <NewsletterSignup variant="compact" />
         </div>
       </article>

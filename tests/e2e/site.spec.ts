@@ -643,3 +643,28 @@ test.describe("sharing, citing, and the weekly archive", () => {
     expect(await internal.count()).toBeGreaterThan(5);
   });
 });
+
+test.describe("preview cards and feeds", () => {
+  test("record pages point to their own preview card and news feed", async ({ page }) => {
+    await page.goto(`/open/${activeRelease.slug}/`);
+    const og = await page.locator('meta[property="og:image"]').getAttribute("content");
+    expect(og).toMatch(new RegExp(`/og/open/${activeRelease.slug}\\.jpg$`));
+    const card = await page.request.get(new URL(og!).pathname);
+    expect(card.status()).toBe(200);
+    expect(card.headers()["content-type"]).toMatch(/image\/jpeg/);
+    const feed = await page.locator('link[rel="alternate"][type="application/rss+xml"]').getAttribute("href");
+    const xml = await (await page.request.get(new URL(feed!).pathname)).text();
+    expect(xml).toContain("<rss version=\"2.0\"");
+    expect(xml).toContain(activeRelease.slug);
+  });
+
+  test("the feeds page lists site-wide and topic feeds that all parse", async ({ page }) => {
+    await page.goto("/feeds/");
+    const links = await page.locator("main a[type='application/rss+xml']").evaluateAll((as) => as.map((a) => (a as HTMLAnchorElement).getAttribute("href")!));
+    expect(links.length).toBeGreaterThan(5);
+    for (const href of links.slice(0, 8)) {
+      const body = await (await page.request.get(href)).text();
+      expect(body, href).toContain("<channel>");
+    }
+  });
+});

@@ -27,17 +27,22 @@ interface PageMeta {
   path: string;
   noindex?: boolean;
   image?: SocialImage;
+  /** RSS feeds for this page, announced with <link rel="alternate">. */
+  feeds?: { path: string; title: string }[];
 }
 
 /** Route-specific title, description, canonical URL, and social metadata. */
-export function pageMetadata({ title, description, path, noindex, image = socialImages.site }: PageMeta): Metadata {
+export function pageMetadata({ title, description, path, noindex, image = socialImages.site, feeds }: PageMeta): Metadata {
   const fullTitle = title ? `${title} · ${siteConfig.shortName}` : `${siteConfig.name} (${siteConfig.shortName})`;
   const url = absoluteUrl(path);
   const imageUrl = absoluteUrl(image.path);
   return {
     title: title ? title : { absolute: fullTitle },
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      ...(feeds?.length ? { types: { "application/rss+xml": feeds.map((f) => ({ url: absoluteUrl(f.path), title: f.title })) } } : {}),
+    },
     robots: noindex ? { index: false, follow: true } : undefined,
     openGraph: {
       type: "website",

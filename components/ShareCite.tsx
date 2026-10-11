@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Share2 } from "lucide-react";
+import { Rss, Share2 } from "lucide-react";
 import { absoluteUrl, asset } from "@/lib/paths";
 import { badgeSnippets, citations, shareLinks } from "@/lib/share";
 import { CopyButton } from "./CopyButton";
@@ -15,6 +15,7 @@ export function ShareCite({
   date,
   citeKey,
   badge = false,
+  feed,
 }: {
   path: string;
   title: string;
@@ -22,6 +23,8 @@ export function ShareCite({
   date: string;
   citeKey: string;
   badge?: boolean;
+  /** Site path of an RSS feed of updates about this page's subject. */
+  feed?: string;
 }) {
   const url = absoluteUrl(path);
   const cite = citations({ title, url, date, key: citeKey });
@@ -45,6 +48,14 @@ export function ShareCite({
         <li>
           <CopyButton text={url} label="Copy link" />
         </li>
+        {feed ? (
+          <li>
+            <a href={asset(feed)} className={pill} type="application/rss+xml">
+              <Rss aria-hidden="true" className="mr-1.5 h-4 w-4 text-cyan" />
+              RSS updates
+            </a>
+          </li>
+        ) : null}
       </ul>
       <details className="group">
         <summary className="cursor-pointer text-[0.9375rem] text-ice hover:text-white">Cite this page</summary>

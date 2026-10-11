@@ -13,6 +13,7 @@ export const metadata = pageMetadata({
   description:
     "A weekly email summing up new catalog records, releases, license changes, corrections, and new explainers, each linked to its sourced page.",
   path: "/newsletter/",
+  feeds: [{ path: "/newsletter/feed.xml", title: "The USASI weekly" }],
 });
 
 export default function NewsletterPage() {
@@ -39,6 +40,9 @@ export default function NewsletterPage() {
           <a href={asset("/news/feed.xml")} className="link inline-flex items-center gap-1 text-[0.9375rem]" type="application/rss+xml">
             <Rss aria-hidden="true" className="h-4 w-4" /> RSS feed, no signup
           </a>
+          <Link prefetch={false} href="/feeds/" className="link text-[0.9375rem]">
+            All feeds
+          </Link>
         </div>
       }
       aside={

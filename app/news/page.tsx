@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
   description:
     "Dated, sourced updates about the U.S. AI organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.",
   path: "/news/",
+  feeds: [{ path: "/news/feed.xml", title: "USASI — Latest news" }],
 });
 
 export default function NewsPage() {

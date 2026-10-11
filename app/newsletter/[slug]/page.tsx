@@ -9,6 +9,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 
 export const dynamicParams = false;
 
@@ -20,7 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const issue = getCatalog().newsletterIssue(slug);
   if (!issue) return {};
-  return pageMetadata({ title: issue.subject, description: issue.preview, path: `/newsletter/${issue.slug}/` });
+  return pageMetadata({
+    title: issue.subject,
+    description: issue.preview,
+    path: `/newsletter/${issue.slug}/`,
+    image: cardImage(getCatalog(), `/newsletter/${issue.slug}/`),
+    feeds: [{ path: "/newsletter/feed.xml", title: "The USASI weekly" }],
+  });
 }
 
 export default async function NewsletterIssuePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -114,7 +121,7 @@ export default async function NewsletterIssuePage({ params }: { params: Promise<
               <span />
             )}
           </nav>
-          <ShareCite path={`/newsletter/${issue.slug}/`} title={issue.subject} date={issue.sent_at} citeKey={`newsletter_${issue.slug}`} />
+          <ShareCite path={`/newsletter/${issue.slug}/`} title={issue.subject} date={issue.sent_at} citeKey={`newsletter_${issue.slug}`} feed="/newsletter/feed.xml" />
         </div>
       </article>
       <SupportPanel variant="compact" />

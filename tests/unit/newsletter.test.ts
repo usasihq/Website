@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import { describe, expect, it } from "vitest";
-import { readRawContent, todayIso } from "@/lib/content-loader";
+import { readRawContent } from "@/lib/content-loader";
 import { inlineLinks, inlinePlain, inlineToEmailHtml, isAllowedHref, parseInline } from "@/lib/inline-text";
 import { issueEmailHtml } from "@/lib/newsletter-email";
 import { absoluteUrl } from "@/lib/paths";
@@ -91,7 +91,7 @@ describe("issue validation", () => {
 
 describe("issue 1 archive", () => {
   it("regenerates exactly the HTML that was emailed", () => {
-    const validated = validateContent(readRawContent(), { today: todayIso() });
+    const validated = validateContent(readRawContent(), { today: new Date().toISOString().slice(0, 10) });
     const issue = validated.newsletter.find((n) => n.slug === "issue-1")!;
     const html = issueEmailHtml(issue, (href) => (href.startsWith("/") ? absoluteUrl(href) : href));
     expect(html.length).toBe(11217);

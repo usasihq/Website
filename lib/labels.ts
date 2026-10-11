@@ -3,6 +3,7 @@ import type {
   ArtifactKind,
   EligibilityBasis,
   EligibilityStatus,
+  NewsCategory,
   OrganizationRole,
   OwnershipCategory,
   ParentRelationship,
@@ -159,3 +160,13 @@ export function entryTypeFor(kind: ArtifactKind, level: RecordLevel): EntryType 
   if (kind === "eval") return "evaluation-tool";
   return "software";
 }
+
+export const NEWS_CATEGORY_LABELS: Record<NewsCategory, string> = {
+  release: "Release",
+  license: "License change",
+  acquisition: "Ownership",
+  governance: "Governance",
+  catalog: "Catalog update",
+  research: "Research",
+  policy: "Policy",
+};

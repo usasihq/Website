@@ -18,6 +18,7 @@ import { formatDate } from "@/lib/dates";
 import { guideFor } from "@/lib/licenses";
 import { entryTypeFor, KIND_LABELS } from "@/lib/labels";
 import { pageMetadata, socialImages } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 import {
   AVAILABILITY_DESCRIPTIONS,
   checklistFor,
@@ -46,7 +47,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: a.summary.text.slice(0, 200),
     path: artifactHref(a.slug),
     noindex: a.publication_status === "archived",
-    image: socialImages.open,
+    image: cardImage(getCatalog(), artifactHref(a.slug)) ?? socialImages.open,
+    feeds: a.publication_status === "archived" ? undefined : [{ path: `${artifactHref(a.slug)}feed.xml`, title: `${a.name} — USASI news` }],
   });
 }
 
@@ -446,7 +448,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
             <EntryActions contentPath={`content/artifacts/${a.slug}.yml`} title={a.name} />
             <p className="text-[0.9375rem] text-muted">This listing is not an endorsement, a safety assessment, or a federal approval.</p>
           </div>
-          <ShareCite path={artifactHref(a.slug)} title={a.name} date={a.updated_at} citeKey={a.slug} badge />
+          <ShareCite path={artifactHref(a.slug)} title={a.name} date={a.updated_at} citeKey={a.slug} badge feed={a.publication_status === "archived" ? undefined : `${artifactHref(a.slug)}feed.xml`} />
           <NewsletterSignup variant="compact" />
         </div>
       </article>
