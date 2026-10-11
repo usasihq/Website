@@ -1,0 +1,163 @@
+slug: liquid-d1-3b
+name: d1-3B
+kind: model
+record_level: release
+family_slug: liquid-d1
+version: "d1-3B"
+maintainers:
+  - name: Liquid AI
+    organization_slug: liquid-ai
+    source_ids: [d1-blog, mc-d1-3b]
+organization_slugs: [liquid-ai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/LiquidAI/d1-3B
+    kind: model-hub
+  - label: "Open d1 announcement"
+    url: https://www.liquid.ai/blog/open-d1
+    kind: release-notes
+  - label: License (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/d1-3B/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    d1-3B is a 3.12-billion-parameter multimodal decision model from Liquid AI, post-trained from
+    its LFM2.5-VL-3B vision-language model. It accepts text, JSON, and images with a 32,768-token
+    context and answers named questions in one forward pass without generating output tokens;
+    the card says it is not a chat model.
+  reviewed_at: 2026-10-11
+  source_ids: [mc-d1-3b, d1-blog]
+useful_for:
+  text: >-
+    Yes/no, multiple-choice, and rating decisions inside a pipeline: routing and triage,
+    moderation, intent and topic classification, extraction checks, reranking, judge-style
+    scoring, agent guardrails, and visual inspection, per the model card.
+  reviewed_at: 2026-10-11
+  source_ids: [mc-d1-3b]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Developed and published by Liquid AI in its Hugging Face organization; the license file names
+    Liquid AI, Inc. as licensor. Liquid AI gives its address as Cambridge, Massachusetts (see the
+    liquid-ai record).
+  source_ids: [d1-blog, mc-d1-3b, d1-3b-license-file]
+  assessed_at: 2026-10-11
+availability:
+  status: public
+  reviewed_at: 2026-10-11
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; use is governed by the LFM Open
+    License v1.0, which conditions commercial-use rights on the licensee's legal entity not
+    exceeding a threshold defined as annual revenue of US$10,000,000 or more.
+  source_ids: [d1-3b-hf-api, d1-3b-license-file]
+licenses:
+  - name: LFM Open License v1.0
+    spdx: null
+    url: https://huggingface.co/LiquidAI/d1-3B/blob/main/LICENSE
+    applies_to: weights
+    reviewed_at: 2026-10-11
+    source_ids: [d1-3b-license-file, d1-3b-hf-api]
+license_notes:
+  text: >-
+    Custom Liquid AI license (card license field "lfm1.0") modeled on Apache 2.0; the file is
+    the same text as the LFM2.5-2.6B license already recorded in this catalog. Commercial rights
+    are conditional on the licensee's legal entity not exceeding a "Threshold" of US$10,000,000
+    or more in annual revenue, and commercial use by a legal entity above the Threshold is not
+    licensed; the Threshold does not apply to a qualified non-profit organization's
+    non-commercial or research use. The repository's custom model code (loaded with
+    trust_remote_code) has no separate license file.
+  reviewed_at: 2026-10-11
+  source_ids: [d1-3b-license-file, d1-3b-hf-api]
+checklist:
+  weights:
+    status: public
+    reviewed_at: 2026-10-11
+    note: A single safetensors file in the ungated Hugging Face repository.
+    source_ids: [d1-3b-hf-api]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-11
+    note: >-
+      The repository ships its own modeling code for Transformers (version 5.14 or later,
+      loaded with trust_remote_code), and the card documents system_one and batch calls.
+    source_ids: [mc-d1-3b, d1-3b-hf-api]
+  training_code:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: No training code was found in the model card or announcement.
+    source_ids: []
+  training_pipeline:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: null
+    source_ids: []
+  training_recipe:
+    status: partial
+    reviewed_at: 2026-10-11
+    note: >-
+      The announcement describes the approach at a high level: merging weights of LFM2.5-2.6B
+      and the LFM2.5-VL-3B text backbone, then fine-tuning checkpoints with different seeds and
+      data mixtures and merging them again. No hyperparameters are given.
+    source_ids: [d1-blog]
+  training_data_information:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: The sources reviewed do not describe the training data.
+    source_ids: []
+  training_data_access:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: null
+    source_ids: []
+  evaluation_materials:
+    status: partial
+    reviewed_at: 2026-10-11
+    note: The card and announcement report results on named benchmarks; evaluation code was not identified.
+    source_ids: [mc-d1-3b, d1-blog]
+run_notes: []
+provenance:
+  text: >-
+    Post-trained by Liquid AI from its LFM2.5-VL-3B vision-language model, which the card lists as
+    the base model; the card names the vision encoder as SigLIP2 NaFlex (shape-optimized, 400M).
+  derived_from:
+    - name: LFM2.5-VL-3B
+      artifact_slug: null
+      url: https://huggingface.co/LiquidAI/LFM2.5-VL-3B
+      note: Base model (Liquid AI).
+  source_ids: [mc-d1-3b, d1-3b-hf-api, d1-blog]
+tags: [multimodal, vision-language, edge]
+publication_status: published
+archive_note: null
+released_at: 2026-10-07
+updated_at: 2026-10-11
+last_reviewed: 2026-10-11
+sources:
+  - id: d1-blog
+    title: "Open d1: Edge decision models for text, vision, and audio"
+    url: https://www.liquid.ai/blog/open-d1
+    publisher: Liquid AI
+    kind: announcement
+    published_at: 2026-10-07
+    accessed_at: 2026-10-11
+  - id: mc-d1-3b
+    title: LiquidAI/d1-3B model card
+    url: https://huggingface.co/LiquidAI/d1-3B/raw/main/README.md
+    publisher: Liquid AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: d1-3b-hf-api
+    title: LiquidAI/d1-3B (Hugging Face model API metadata)
+    url: https://huggingface.co/api/models/LiquidAI/d1-3B
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: d1-3b-license-file
+    title: LiquidAI/d1-3B LICENSE (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/d1-3B/raw/main/LICENSE
+    publisher: Liquid AI (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-11

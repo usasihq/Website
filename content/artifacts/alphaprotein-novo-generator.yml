@@ -1,0 +1,186 @@
+slug: alphaprotein-novo-generator
+name: AlphaProtein Novo Generator
+kind: model
+record_level: release
+family_slug: alphaprotein-novo
+version: "AP Novo Generator (generator.bin.zst)"
+maintainers:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    source_ids: [apn-readme, apn-weights-terms]
+organization_slugs: [google-deepmind]
+links:
+  - label: GitHub repository (alphaprotein-novo)
+    url: https://github.com/google-deepmind/alphaprotein-novo
+    kind: repository
+  - label: AP Novo Generator Model Parameters Terms of Use
+    url: https://github.com/google-deepmind/alphaprotein-novo/blob/main/WEIGHTS_TERMS_OF_USE.md
+    kind: license
+  - label: "Designing enzymes for new-to-nature chemistry and non-natural substrates with AlphaProtein Novo (bioRxiv)"
+    url: https://www.biorxiv.org/content/10.64898/2026.10.01.756017v1
+    kind: paper
+summary:
+  text: >-
+    The pretrained AP Novo Generator weights, a single generator.bin.zst file that the
+    alphaprotein-novo package (JAX) loads to co-generate protein structures and amino acid
+    sequences conditioned on a catalytic motif and ligand context. The weights are not in the
+    repository; the README gives a direct download from Google Cloud Storage.
+  reviewed_at: 2026-10-11
+  source_ids: [apn-readme, apn-pyproject, apn-weights-file]
+useful_for:
+  text: >-
+    Generating candidate enzyme scaffolds for a specified catalytic motif in non-commercial
+    research, either alone or as the first stage of the AP Novo pipeline.
+  reviewed_at: 2026-10-11
+  source_ids: [apn-readme, apn-weights-terms]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is published in Google DeepMind's GitHub organization, its licensing section
+    states copyright 2026 Google LLC, and the weights terms are an agreement with Google LLC
+    (Google Ireland Limited for users in the EEA or Switzerland) under California law. See the
+    google-deepmind organization record, which is assessed under U.S. control as part of Google.
+  source_ids: [apn-readme, apn-weights-terms]
+  assessed_at: 2026-10-11
+availability:
+  status: public
+  reviewed_at: 2026-10-11
+  access_conditions: >-
+    Downloadable without sign-in from the Google Cloud Storage URL given in the README, under
+    terms that allow only non-commercial use by or for non-commercial organizations and forbid
+    republishing the weights. The terms also say Google may ask users to verify their name and
+    organization.
+  source_ids: [apn-readme, apn-weights-file, apn-weights-terms]
+licenses:
+  - name: AlphaProtein Novo Generator Model Parameters Terms of Use
+    spdx: null
+    url: https://github.com/google-deepmind/alphaprotein-novo/blob/main/WEIGHTS_TERMS_OF_USE.md
+    applies_to: weights
+    reviewed_at: 2026-10-11
+    source_ids: [apn-weights-terms, apn-readme]
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/LICENSE
+    applies_to: code
+    reviewed_at: 2026-10-11
+    source_ids: [apn-license, apn-readme]
+license_notes:
+  text: >-
+    The README places the software under Apache 2.0, the generator weights under the AP Novo
+    Generator Model Parameters Terms of Use (last modified 2026-10-05), generated designs under
+    separate Output Terms of Use, and other materials under CC BY 4.0. The weights terms limit
+    use to non-commercial work by or on behalf of non-commercial organizations, forbid
+    publishing or sharing the weights outside the user's organization, forbid using outputs to
+    train similar protein- or enzyme-design models, incorporate a prohibited use policy, and
+    are revocable. The pipeline's AlphaFold 3 and AlphaFold 3 Leaving Atom weights are under
+    the separate AlphaFold 3 model parameters terms, and LigandMPNN is under its own terms.
+  reviewed_at: 2026-10-11
+  source_ids: [apn-readme, apn-weights-terms, apn-output-terms]
+checklist:
+  weights:
+    status: public
+    reviewed_at: 2026-10-11
+    note: >-
+      A single compressed weights file downloadable from Google Cloud Storage without sign-in;
+      use is restricted to non-commercial purposes by the weights terms.
+    source_ids: [apn-readme, apn-weights-file, apn-weights-terms]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-11
+    note: >-
+      The repository provides run_generator.py for the diffusion model and run_pipeline.py for
+      the end-to-end pipeline. The README describes the repository as a port of the original
+      Google-internal pipeline used for the paper.
+    source_ids: [apn-readme]
+  training_code:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: The README covers generation, folding, and evaluation; no training code was found in it.
+    source_ids: [apn-readme]
+  training_pipeline:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: null
+    source_ids: []
+  training_recipe:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: The bioRxiv paper was not reviewed for this record.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: The bioRxiv paper was not reviewed for this record.
+    source_ids: []
+  training_data_access:
+    status: unknown
+    reviewed_at: 2026-10-11
+    note: null
+    source_ids: []
+  evaluation_materials:
+    status: partial
+    reviewed_at: 2026-10-11
+    note: >-
+      The repository includes evaluate_design.py with evaluation suites for five example
+      reactions and example manifests that partially reproduce the paper's settings; the README
+      says some settings were reduced relative to the paper.
+    source_ids: [apn-readme]
+run_notes:
+  - text: >-
+      The README recommends a Python 3.12 environment with JAX (CUDA 12, or CPU) and AlphaFold 3
+      installed, plus an optional separate Python 3.11 PyTorch environment for LigandMPNN. The
+      pipeline shards generation and folding across all visible GPUs on a single node. It
+      states no GPU memory requirement.
+    reviewed_at: 2026-10-11
+    source_ids: [apn-readme, apn-pyproject]
+provenance: null
+tags: [science, protein-design]
+publication_status: published
+archive_note: null
+released_at: 2026-10
+updated_at: 2026-10-11
+last_reviewed: 2026-10-11
+sources:
+  - id: apn-readme
+    title: google-deepmind/alphaprotein-novo README
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/README.md
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: apn-license
+    title: google-deepmind/alphaprotein-novo LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/LICENSE
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: apn-weights-terms
+    title: AlphaProtein Novo Generator Model Parameters Terms of Use
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/WEIGHTS_TERMS_OF_USE.md
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: 2026-10-05
+    accessed_at: 2026-10-11
+  - id: apn-output-terms
+    title: AlphaProtein Novo Generator Outputs Terms of Use
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/OUTPUT_TERMS_OF_USE.md
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: apn-weights-file
+    title: AP Novo generator weights file (generator.bin.zst, Google Cloud Storage)
+    url: https://storage.googleapis.com/alphaprotein_novo/generator.bin.zst
+    publisher: Google DeepMind
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: apn-pyproject
+    title: google-deepmind/alphaprotein-novo pyproject.toml
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/pyproject.toml
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-11

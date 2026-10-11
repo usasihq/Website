@@ -1,0 +1,80 @@
+slug: liquid-d1
+name: Liquid AI d1
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Liquid AI
+    organization_slug: liquid-ai
+    source_ids: [d1-blog, mc-d1-3b]
+organization_slugs: [liquid-ai]
+links:
+  - label: "Open d1 announcement"
+    url: https://www.liquid.ai/blog/open-d1
+    kind: release-notes
+  - label: d1-3B model card (Hugging Face)
+    url: https://huggingface.co/LiquidAI/d1-3B
+    kind: model-hub
+summary:
+  text: >-
+    d1 is Liquid AI's family of decision models. Instead of generating text, a d1 model takes a
+    state (text, JSON, images, or for some checkpoints audio) and a set of named questions and
+    returns typed answers (yes/no, a choice, or a score) in a single forward pass. Liquid AI
+    released the first open-weight d1 models, d1-3B and the experimental d1-omni-600M, on
+    October 7, 2026.
+  reviewed_at: 2026-10-11
+  source_ids: [d1-blog, mc-d1-3b]
+useful_for:
+  text: >-
+    Pipeline steps that need a structured decision rather than generated text, such as routing
+    and triage, moderation, classification, reranking, judge-style scoring, and agent guardrails,
+    per the d1-3B model card.
+  reviewed_at: 2026-10-11
+  source_ids: [mc-d1-3b]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    Developed and published by Liquid AI in its Hugging Face organization; the license file names
+    Liquid AI, Inc. as licensor. Liquid AI gives its address as Cambridge, Massachusetts (see the
+    liquid-ai record).
+  source_ids: [d1-blog, mc-d1-3b, d1-3b-license-file]
+  assessed_at: 2026-10-11
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the d1-3B release record (liquid-d1-3b).
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [multimodal, vision-language, edge]
+publication_status: published
+archive_note: null
+released_at: 2026-10-07
+updated_at: 2026-10-11
+last_reviewed: 2026-10-11
+sources:
+  - id: d1-blog
+    title: "Open d1: Edge decision models for text, vision, and audio"
+    url: https://www.liquid.ai/blog/open-d1
+    publisher: Liquid AI
+    kind: announcement
+    published_at: 2026-10-07
+    accessed_at: 2026-10-11
+  - id: mc-d1-3b
+    title: LiquidAI/d1-3B model card
+    url: https://huggingface.co/LiquidAI/d1-3B/raw/main/README.md
+    publisher: Liquid AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: d1-3b-license-file
+    title: LiquidAI/d1-3B LICENSE (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/d1-3B/raw/main/LICENSE
+    publisher: Liquid AI (Hugging Face)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-11

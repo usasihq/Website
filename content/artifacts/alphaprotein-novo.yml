@@ -1,0 +1,84 @@
+slug: alphaprotein-novo
+name: AlphaProtein Novo
+kind: model
+record_level: family
+family_slug: null
+version: null
+maintainers:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    source_ids: [apn-readme, apn-weights-terms]
+organization_slugs: [google-deepmind]
+links:
+  - label: GitHub repository (alphaprotein-novo)
+    url: https://github.com/google-deepmind/alphaprotein-novo
+    kind: repository
+  - label: AP Novo Generator Model Parameters Terms of Use
+    url: https://github.com/google-deepmind/alphaprotein-novo/blob/main/WEIGHTS_TERMS_OF_USE.md
+    kind: license
+  - label: "Designing enzymes for new-to-nature chemistry and non-natural substrates with AlphaProtein Novo (bioRxiv)"
+    url: https://www.biorxiv.org/content/10.64898/2026.10.01.756017v1
+    kind: paper
+summary:
+  text: >-
+    AlphaProtein Novo (AP Novo) is a Google DeepMind pipeline for designing new enzymes by
+    scaffolding a structural catalytic motif. Its diffusion model, the AP Novo Generator,
+    generates protein structures and sequences together, conditioned on the motif and ligand
+    context; optional LigandMPNN sequence redesign, AlphaFold 3 structure prediction, and
+    evaluation metrics complete the pipeline. The code and generator weights were published in
+    October 2026 alongside a bioRxiv paper.
+  reviewed_at: 2026-10-11
+  source_ids: [apn-readme, apn-weights-terms, apn-commits]
+useful_for:
+  text: >-
+    Non-commercial research on de novo enzyme design, starting from a 3D arrangement of
+    side-chain and ligand atoms that represents a reaction's transition state or intermediate.
+  reviewed_at: 2026-10-11
+  source_ids: [apn-readme, apn-weights-terms]
+eligibility:
+  status: eligible
+  basis: us-governed-project
+  explanation: >-
+    The repository is published in Google DeepMind's GitHub organization, its licensing section
+    states copyright 2026 Google LLC, and the weights terms are an agreement with Google LLC
+    (Google Ireland Limited for users in the EEA or Switzerland) under California law. See the
+    google-deepmind organization record, which is assessed under U.S. control as part of Google.
+  source_ids: [apn-readme, apn-weights-terms]
+  assessed_at: 2026-10-11
+availability:
+  status: not_applicable
+  access_conditions: Assessed per release; see the AP Novo Generator release record (alphaprotein-novo-generator).
+  source_ids: []
+licenses: []
+license_notes: null
+checklist: {}
+run_notes: []
+provenance: null
+tags: [science, protein-design]
+publication_status: published
+archive_note: null
+released_at: 2026-10
+updated_at: 2026-10-11
+last_reviewed: 2026-10-11
+sources:
+  - id: apn-readme
+    title: google-deepmind/alphaprotein-novo README
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/README.md
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: apn-weights-terms
+    title: AlphaProtein Novo Generator Model Parameters Terms of Use
+    url: https://raw.githubusercontent.com/google-deepmind/alphaprotein-novo/main/WEIGHTS_TERMS_OF_USE.md
+    publisher: Google DeepMind (GitHub)
+    kind: license
+    published_at: 2026-10-05
+    accessed_at: 2026-10-11
+  - id: apn-commits
+    title: Recent commits to google-deepmind/alphaprotein-novo (main, Atom feed)
+    url: https://github.com/google-deepmind/alphaprotein-novo/commits/main.atom
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-11
