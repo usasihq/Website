@@ -12,33 +12,6 @@ as it is.
 
 ## Watching
 
-### xAI (SpaceXAI) renamed SpaceXSI
-
-- Added: 2026-10-04
-- Claim to confirm: xAI, the SpaceX subsidiary listed as "xAI (SpaceXAI)", has
-  been renamed SpaceXSI.
-- Status on 2026-10-04: the claim comes from a social media post saying the
-  company "will" be renamed. spacex.com shows no rename, and the company's own
-  job board is still named "SpaceXAI". spacexsi.com is a parked domain listed
-  for sale and is not an official source.
-- Official sources to check:
-  - the company's job board name: https://boards-api.greenhouse.io/v1/boards/xai
-    (the `name` field read "SpaceXAI" on 2026-10-04)
-  - https://docs.x.ai
-  - https://x.ai (home page, footer, and legal pages); it refused automated
-    requests on 2026-10-04, so skip it if it still does
-  - https://www.spacex.com
-  - SpaceX filings on SEC EDGAR, if any
-- A job board name change alone is enough to watch closely but not to rename
-  the record: confirm it on docs.x.ai, x.ai, spacex.com, or a filing.
-- Update when confirmed:
-  - content/organizations/xai.yml: `name`, `legal_name` (only if a legal page or
-    filing states it), `website` (only if the official site moves),
-    `status_note` explaining the rename, the new source, `updated_at`
-  - content/organizations/spacex.yml: check how it names its AI business and
-    update that wording if the same source supports it
-  - one news item
-
 ### "Super Intelligence Force" and a "White House Accord on Super Intelligence"
 
 - Added: 2026-10-04
@@ -69,4 +42,26 @@ as it is.
 
 ## Resolved
 
-None yet.
+### xAI (SpaceXAI) renamed SpaceXSI
+
+- Added: 2026-10-04. Resolved: 2026-10-11.
+- Prompted again on 2026-10-11 by a screenshot of the company's X profile,
+  which is not a source.
+- Confirmed by: https://docs.x.ai/overview, accessed 2026-10-11. The page is
+  titled "Grok API Documentation | SpaceXSI Docs", its description reads
+  "Official SpaceXSI API documentation", and its heading reads "Get started
+  with SpaceX Super Intelligence".
+- Not yet changed on 2026-10-11:
+  - the Greenhouse job board `name` still read "SpaceXAI";
+  - the page's structured data still named the organization xAI;
+  - x.ai still refused automated requests, so its footer could not be checked.
+- What changed:
+  - content/organizations/xai.yml: `name` is now "xAI (SpaceXSI)", with a
+    `status_note` and two new sources. `legal_name` and `website` are unchanged
+    because no legal page or filing states a new name.
+  - content/organizations/spacex.yml: the cross-reference wording.
+  - The maintainer name on content/artifacts/grok.yml, grok-1.yml, and
+    grok-2.yml.
+  - News item: content/news/xai-developer-docs-adopt-spacexsi-name.yml.
+- Still worth checking: a legal name in a SpaceX filing or on x.ai's legal
+  pages. If one appears, set `legal_name` in xai.yml with that source.

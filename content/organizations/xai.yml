@@ -1,5 +1,5 @@
 slug: xai
-name: xAI (SpaceXAI)
+name: xAI (SpaceXSI)
 legal_name: null
 website: https://x.ai
 logo_text: xAI
@@ -33,9 +33,13 @@ status_note:
     which became a wholly owned subsidiary; xAI had itself acquired X Holdings Corp. in
     March 2025. SpaceX, a Texas corporation with principal executive offices in Starbase,
     Texas, completed its initial public offering in June 2026 and reports Grok, X, and AI
-    infrastructure in its AI segment. xAI's website now uses the name SpaceXAI, and its
-    footer reads SpaceXAI LLC.
-  source_ids: [spacex-10q-2026q2, xai-joins-spacex]
+    infrastructure in its AI segment. In September 2026 xAI's website used the name
+    SpaceXAI, and its footer read SpaceXAI LLC. As of October 11, 2026, its developer
+    documentation at docs.x.ai is titled "SpaceXSI Docs", describes itself as the official
+    SpaceXSI API documentation, and opens with "Get started with SpaceX Super Intelligence",
+    while the company's job board still carried the name SpaceXAI. No change to the
+    company's legal name has been documented.
+  source_ids: [spacex-10q-2026q2, xai-joins-spacex, spacexsi-docs-overview, xai-greenhouse-board]
 products:
   - id: grok
     name: Grok
@@ -95,9 +99,23 @@ careers:
   reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-11
 last_reviewed: 2026-09-29
 sources:
+  - id: spacexsi-docs-overview
+    title: Grok API Documentation | SpaceXSI Docs
+    url: https://docs.x.ai/overview
+    publisher: SpaceXSI
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-11
+  - id: xai-greenhouse-board
+    title: SpaceXAI job board (Greenhouse board information)
+    url: https://boards-api.greenhouse.io/v1/boards/xai
+    publisher: xAI (Greenhouse job board)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-11
   - id: xai-careers-jobs
     title: SpaceXAI careers (official careers page linking to its Greenhouse job board)
     url: https://x.ai/careers
