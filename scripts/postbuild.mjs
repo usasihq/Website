@@ -179,6 +179,27 @@ for (const person of readDir("people")) {
 }
 
 // Private material must never be exported.
+// React keys and other strings that look like site paths are visible to crawlers in the
+// embedded page data. A key such as "/local/" + index reads as a link to a page that does
+// not exist (Google reported /local/6 as a 404), so every path-shaped key must be a real page.
+{
+  const KEYED_PATH = /\["\$","[a-zA-Z0-9]+","(\/[^"]*)"/g;
+  const exists = (p) => {
+    const rel = p.split(/[?#]/)[0].replace(/^\//, "");
+    const abs = path.join(out, rel);
+    return fs.existsSync(path.join(abs, "index.html")) || fs.existsSync(abs) || fs.existsSync(`${abs.replace(/\/$/, "")}.html`);
+  };
+  const seen = new Set();
+  for (const file of walk(out).filter((f) => f.endsWith(".html") || f.endsWith(".txt"))) {
+    for (const m of fs.readFileSync(file, "utf8").matchAll(KEYED_PATH)) {
+      const p = m[1];
+      if (seen.has(p) || exists(p)) continue;
+      seen.add(p);
+      failures.push(`path-shaped key "${p}" (in ${path.relative(out, file)}) is not a page; use a key that is not a URL`);
+    }
+  }
+}
+
 for (const forbidden of ["research", "CONTENT_REVIEW.md", "tests", "content"]) {
   if (fs.existsSync(path.join(out, forbidden))) failures.push(`private path exported: ${forbidden}`);
 }

@@ -71,7 +71,7 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
             <h2 id="path-heading" className="text-xl font-semibold text-text">Reading path</h2>
             <ol className="mt-4 space-y-3">
               {hub.reading_path.map((l, i) => (
-                <li key={l.href + i} className="grid grid-cols-[1.75rem_1fr] gap-2">
+                <li key={`step-${i}`} className="grid grid-cols-[1.75rem_1fr] gap-2">
                   <span className="meta pt-0.5 text-right">{i + 1}.</span>
                   <span>
                     <Link prefetch={false} href={l.href} className="link font-medium">{l.label}</Link>
@@ -85,7 +85,7 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
             <h2 id="directory-heading" className="text-xl font-semibold text-text">In the catalog</h2>
             <ul className="mt-4 space-y-3">
               {hub.directory_links.map((l, i) => (
-                <li key={l.href + i}>
+                <li key={`view-${i}`}>
                   <Link prefetch={false} href={l.href} className="link font-medium">{l.label}</Link>
                   {l.note ? <span className="block text-sm text-muted">{l.note}</span> : null}
                 </li>
