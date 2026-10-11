@@ -16,6 +16,7 @@ const COLUMNS = [
       { href: "/matrix/", label: "Compare" },
       { href: "/jobs/", label: "Jobs" },
       { href: "/news/", label: "Latest news" },
+      { href: "/newsletter/", label: "Weekly email" },
     ],
   },
   {

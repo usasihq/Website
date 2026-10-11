@@ -45,9 +45,14 @@ export function NewsletterSignup({ variant = "block", config = siteConfig.newsle
               The weekly email is coming soon.
             </p>
           )}
-          <a href={asset("/news/feed.xml")} className="link inline-flex items-center gap-1 text-sm" type="application/rss+xml">
-            <Rss aria-hidden="true" className="h-3.5 w-3.5" /> RSS feed
-          </a>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 @xl:justify-end">
+            <Link prefetch={false} href="/newsletter/" className="link text-sm">
+              What’s in each issue
+            </Link>
+            <a href={asset("/news/feed.xml")} className="link inline-flex items-center gap-1 text-sm" type="application/rss+xml">
+              <Rss aria-hidden="true" className="h-3.5 w-3.5" /> RSS feed
+            </a>
+          </div>
         </div>
       </div>
       {compact ? null : (

@@ -48,6 +48,7 @@ const PAGES = [
   "/licenses/apache-2-0/",
   "/policy/",
   "/faq/",
+  "/newsletter/",
   "/jobs/?track=early-career",
   "/no-such-page/",
 ];

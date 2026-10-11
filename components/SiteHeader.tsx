@@ -18,6 +18,7 @@ const REFERENCE = [
   { href: "/licenses/", label: "License guide", bar: false },
   { href: "/policy/", label: "Policy tracker", bar: true },
   { href: "/reuse/", label: "Data & reuse", bar: false },
+  { href: "/newsletter/", label: "Weekly email", bar: false },
   { href: "/contribute/#corrections", label: "Corrections", bar: true },
 ];
 

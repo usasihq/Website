@@ -28,6 +28,7 @@ const PAGES: Array<[string, string]> = [
   ["license-guide", "/licenses/llama-3-1-community/"],
   ["policy", "/policy/"],
   ["faq", "/faq/"],
+  ["newsletter", "/newsletter/"],
   ["calculator", "/learn/tools/model-size/"],
   ["not-found", "/this-page-does-not-exist/"],
 ];
