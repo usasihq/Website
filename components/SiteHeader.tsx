@@ -148,7 +148,19 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
       }
     };
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    // While the menu is open, the page behind it neither scrolls nor takes focus.
+    const header = toggleRef.current?.closest("header");
+    const behind = [...document.querySelectorAll<HTMLElement>("body > main, body > footer, body > .skip-link")].filter(
+      (el) => el !== header,
+    );
+    behind.forEach((el) => el.setAttribute("inert", ""));
+    const previousOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      behind.forEach((el) => el.removeAttribute("inert"));
+      document.documentElement.style.overflow = previousOverflow;
+    };
   }, [open]);
 
   return (
@@ -157,14 +169,14 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
       <div className="border-b border-line">
         <div className="container-page flex h-7 items-center justify-between gap-4 text-xs sm:text-[0.8125rem]">
           <p className="truncate text-muted" data-testid="header-disclaimer">
-            <span className="sm:hidden">Independent project. Not a U.S. government website.</span>
-            <span className="hidden sm:inline">{disclaimer}</span>
+            <span className="lg:hidden">Independent project. Not a U.S. government website.</span>
+            <span className="hidden lg:inline">{disclaimer}</span>
           </p>
           <nav aria-label="Reference" className="hidden shrink-0 sm:block">
             <ul className="flex items-center gap-4">
               {REFERENCE.filter((r) => r.bar).map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="inline-flex h-7 items-center text-muted hover:text-text">
+                  <Link href={item.href} prefetch={false} className="inline-flex h-7 items-center text-muted hover:text-text">
                     {item.label}
                   </Link>
                 </li>
@@ -223,7 +235,12 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
         </div>
       </div>
 
-      <div id={panelId} hidden={!open} className="border-t border-line bg-bg xl:hidden">
+      {/* The panel scrolls on its own, so every link stays reachable on short screens. */}
+      <div
+        id={panelId}
+        hidden={!open}
+        className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain border-t border-line bg-bg sm:max-h-[calc(100dvh-6rem)] xl:hidden"
+      >
         <nav aria-label="Primary (mobile)" className="container-page py-3">
           <ul className="flex flex-col">
             {MOBILE_NAV.map((item, i) => {

@@ -17,6 +17,7 @@ export function BackToTop() {
       frame = requestAnimationFrame(() => setVisible(window.scrollY > 1400));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // a page opened mid-way (a #section link, a restored position) shows it at once
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);

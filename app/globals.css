@@ -532,10 +532,14 @@ html:has(dialog.site-search[open]) {
   h3 {
     break-after: avoid;
   }
-  section,
+  /* Not sections: a long section that must stay whole pushes itself onto a
+     fresh page and leaves blank pages and dropped content behind. */
   li,
   .card,
   figure {
     break-inside: avoid;
+  }
+  .prose-usasi {
+    color: var(--text) !important;
   }
 }

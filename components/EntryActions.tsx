@@ -25,7 +25,7 @@ export function EntryActions({ contentPath, title }: { contentPath: string; titl
         )
       : null;
     return (
-      <div className="grid gap-3" data-testid="entry-actions-unconfigured">
+      <div className="grid gap-3 print:hidden" data-testid="entry-actions-unconfigured">
         {mail ? (
           <div className="flex flex-wrap gap-3">
             <a href={mail} className="btn btn-secondary">
@@ -49,7 +49,7 @@ export function EntryActions({ contentPath, title }: { contentPath: string; titl
   }
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-3 print:hidden">
       {correction ? <a href={correction} className="btn btn-primary">Email a correction<span className="sr-only"> (opens your email app; no account on USASI needed)</span></a> : null}
       <a href={report} className="btn btn-secondary" rel="noopener noreferrer">
         <MessageSquareWarning aria-hidden="true" className="h-4 w-4" />

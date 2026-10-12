@@ -286,9 +286,29 @@ export function Finder({ configs, recordHrefs }: { configs: FinderConfig[]; reco
           </button>
         </div>
         <p className="text-xs text-muted">Your answers live only in this page&apos;s address. Nothing is saved or sent to USASI.</p>
+        {/* One short live line instead of re-reading every result; on phones it
+            stays in view while answering and jumps to the results below. */}
+        <p
+          role="status"
+          className={`sticky bottom-3 z-10 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-line-strong bg-[rgba(5,8,22,0.94)] px-4 py-3 text-sm text-text lg:static lg:bg-transparent ${
+            state.task ? "" : "sr-only"
+          }`}
+        >
+          {state.task ? (
+            <>
+              <span>
+                <strong>{matches.length}</strong> {matches.length === 1 ? "fits" : "fit"} everything you entered
+                {close.length ? `, ${close.length} close` : ""}
+              </span>
+              <a href="#finder-results" className="link lg:hidden">
+                See results
+              </a>
+            </>
+          ) : null}
+        </p>
       </form>
 
-      <section aria-label="Results" aria-live="polite">
+      <section id="finder-results" aria-label="Results" className="scroll-mt-28">
         {!state.task ? (
           <div className="card p-6 text-muted">
             <p className="text-lg font-semibold text-text">Start by choosing what you want to do.</p>

@@ -17,7 +17,7 @@ export function SupportPanel({ variant = "standard", config = siteConfig.support
   const compact = variant === "compact";
 
   return (
-    <section aria-labelledby="support-heading" className={home ? "py-16 sm:py-20" : compact ? "py-10" : "py-14"} data-support-panel={active ? "active" : "unconfigured"}>
+    <section aria-labelledby="support-heading" className={`print:hidden ${home ? "py-16 sm:py-20" : compact ? "py-10" : "py-14"}`} data-support-panel={active ? "active" : "unconfigured"}>
       <div className="container-page">
         <div
           className={`relative overflow-hidden rounded-2xl border border-[rgba(76,201,255,0.28)] bg-[linear-gradient(135deg,#0b1428_0%,#081022_60%,#0a1530_100%)] ${

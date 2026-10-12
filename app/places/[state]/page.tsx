@@ -36,7 +36,8 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
         crumbs={[{ href: "/places/", label: "Places" }, { href: `/places/${stateSlug(code)}/`, label: group.name }]}
         description={
           <p>
-            {group.organizations.length} organizations in this catalog whose documented headquarters is in {group.name}. Each label below is quoted
+            {group.organizations.length} {group.organizations.length === 1 ? "organization" : "organizations"} in this catalog whose documented
+            headquarters is in {group.name}. Each label below is quoted
             from the organization&rsquo;s record, where its source is cited. Headquarters are not offices, facilities, or computing capacity.
           </p>
         }

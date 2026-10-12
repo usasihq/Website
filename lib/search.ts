@@ -94,52 +94,315 @@ export function tokenize(query: string): string[] {
   return normalize(query).split(" ").filter(Boolean).slice(0, 12);
 }
 
-function matchesTokens(haystack: string, tokens: string[]): boolean {
+/**
+ * Words that only say how a question is phrased ("how do I ... on my
+ * computer"), not what it is about. They are dropped from a query unless
+ * nothing else is left, so "what is RAG" looks for "rag" while a lone "about"
+ * still finds the About page. Words that carry meaning on this site, such as
+ * "run", "ai", "open", "us", "no", "all", "may", and "use", are kept.
+ */
+const STOP_WORDS = new Set(
+  [
+    "a an the this that these those some any",
+    "what whats which who whom whose how why when where",
+    "is are was were be been being am do does did can could should would will",
+    "i im ive me my mine we our you your it its they them their he she his her",
+    "of in on at to for with from by about into onto as and or but if than then so",
+    "there here just really very also please want need",
+    "s t d m ll re ve don doesn didn isn aren",
+  ]
+    .join(" ")
+    .split(" "),
+);
+
+/** The words a query is matched on: normalized, without stop words, at most 12. */
+function queryTokens(query: string): string[] {
+  const all = normalize(query).split(" ").filter(Boolean);
+  const meaningful = all.filter((t) => !STOP_WORDS.has(t));
+  return (meaningful.length ? meaningful : all).slice(0, 12);
+}
+
+/** Letters and digits only, so "Hugging Face", "huggingface", and "hugging-face" compare equal. */
+const compact = (text: string) => text.replace(/[^a-z0-9]/g, "");
+
+/** A normalized text with its spaces and punctuation removed, and where each original word started. */
+interface CompactText {
+  text: string;
+  starts: Set<number>;
+}
+
+function compactText(normalized: string): CompactText {
+  let text = "";
+  const starts = new Set<number>();
+  for (const word of normalized.split(" ")) {
+    const c = compact(word);
+    if (!c) continue;
+    starts.add(text.length);
+    text += c;
+  }
+  return { text, starts };
+}
+
+/**
+ * True when a squeezed query word (see `compact`) occurs in the compact text
+ * starting at a word boundary: "huggingface" finds "Hugging Face" and "gptoss"
+ * finds "gpt-oss". Short words are left to plain matching.
+ */
+function compactHit(target: CompactText, squeezed: string): boolean {
+  if (squeezed.length < 4) return false;
+  for (let i = target.text.indexOf(squeezed); i !== -1; i = target.text.indexOf(squeezed, i + 1)) {
+    if (target.starts.has(i)) return true;
+  }
+  return false;
+}
+
+/** Plain substring match on the whole text, or a spacing-insensitive match on the labels (names, products, tags). */
+function matchesTokens(haystack: string, labels: string, tokens: string[]): boolean {
   if (tokens.length === 0) return true;
   const text = ` ${normalize(haystack)} `;
-  return tokens.every((t) => text.includes(t));
+  let compactLabels: CompactText | null = null;
+  return tokens.every((t) => text.includes(t) || compactHit((compactLabels ??= compactText(normalize(labels))), compact(t)));
+}
+
+type Phrase = { plain: string; squeezed: string };
+
+/** The whole query, and the query without stop words, as phrases a name can equal or start with. */
+function queryPhrases(query: string): Phrase[] {
+  const all = tokenize(query);
+  if (all.length === 0) return [];
+  return [...new Set([all.join(" "), queryTokens(query).join(" ")])].map((plain) => ({ plain, squeezed: compact(plain) }));
+}
+
+/** 2 when the normalized name equals a phrase (ignoring spacing), 1 when it starts with one, else 0. */
+function phraseRelevance(name: string, squeezedName: string, phrases: Phrase[]): number {
+  let relevance = 0;
+  for (const { plain, squeezed } of phrases) {
+    if (name === plain || (squeezed && squeezedName === squeezed)) return 2;
+    if (name.startsWith(plain) || (squeezed.length >= 3 && squeezedName.startsWith(squeezed))) relevance = 1;
+  }
+  return relevance;
 }
 
 /** Exact names, then name prefixes; description-only matches come afterwards. */
 export function nameRelevance(name: string, query: string): number {
-  const phrase = tokenize(query).join(" ");
-  if (!phrase) return 0;
   const normalized = normalize(name);
-  return normalized === phrase ? 2 : normalized.startsWith(phrase) ? 1 : 0;
+  return phraseRelevance(normalized, compact(normalized), queryPhrases(query));
 }
 
+const byBaseLetters = new Intl.Collator("en", { sensitivity: "base" });
+const bySlug = new Intl.Collator("en");
+
 function compareNames(a: { name: string; slug: string }, b: { name: string; slug: string }): number {
-  return a.name.localeCompare(b.name, "en", { sensitivity: "base" }) || a.slug.localeCompare(b.slug, "en");
+  return byBaseLetters.compare(a.name, b.name) || bySlug.compare(a.slug, b.slug);
 }
+
+/* ------------------------------------------------------------------ */
+/* Cross-directory search                                              */
+/* ------------------------------------------------------------------ */
+
+/** An entry's normalized text, computed once per entry and reused on every keystroke. */
+interface PreparedEntry {
+  entry: SearchEntry;
+  name: string;
+  nameWords: string[];
+  compactName: CompactText;
+  /** Name and keywords without spaces or punctuation. */
+  compactLabels: CompactText;
+  keywords: string;
+  /** ` name summary keywords ` */
+  text: string;
+  /** Name words (and the whole name squeezed together) that a misspelled query word may stand for. */
+  typoTargets: string[];
+}
+
+const preparedEntries = new WeakMap<SearchEntry, PreparedEntry>();
+
+function prepare(entry: SearchEntry): PreparedEntry {
+  let p = preparedEntries.get(entry);
+  if (!p) {
+    const name = normalize(entry.name);
+    const keywords = normalize(entry.keywords);
+    const nameWords = name.split(" ").filter(Boolean);
+    const compactName = compactText(name);
+    p = {
+      entry,
+      name,
+      nameWords,
+      compactName,
+      compactLabels: compactText(`${name} ${keywords}`),
+      keywords,
+      text: ` ${name} ${normalize(entry.summary)} ${keywords} `,
+      typoTargets: [...new Set([...nameWords.filter((w) => w.length >= 3), ...(nameWords.length > 1 ? [compactName.text] : [])])],
+    };
+    preparedEntries.set(entry, p);
+  }
+  return p;
+}
+
+/** The prepared entries plus every distinct typo target, once per index. */
+interface Corpus {
+  prepared: PreparedEntry[];
+  vocabulary: string[];
+}
+
+const corpora = new WeakMap<SearchEntry[], Corpus>();
+
+function corpusOf(entries: SearchEntry[]): Corpus {
+  let corpus = corpora.get(entries);
+  if (!corpus) {
+    const prepared = entries.map(prepare);
+    corpus = { prepared, vocabulary: [...new Set(prepared.flatMap((p) => p.typoTargets))] };
+    corpora.set(entries, corpus);
+  }
+  return corpus;
+}
+
+/** Edit distance counting insertions, deletions, substitutions, and swaps of neighboring letters. */
+function editDistance(a: string, b: string): number {
+  let before: number[] = [];
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const row = [i];
+    for (let j = 1; j <= b.length; j++) {
+      let d = Math.min(prev[j] + 1, row[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d = Math.min(d, before[j - 2] + 1);
+      row.push(d);
+    }
+    before = prev;
+    prev = row;
+  }
+  return prev[b.length];
+}
+
+/**
+ * Name words a query word may be a misspelling of: only for words of five or
+ * more letters that appear in no name at all ("antropic"), within one edit,
+ * or two for words of eight or more letters. Null when the word is not a
+ * likely typo. A length check skips most of the vocabulary before any
+ * distance is computed.
+ */
+function typoMatches(corpus: Corpus, token: string): Set<string> | null {
+  if (token.length < 5 || !/^[a-z]+$/.test(token)) return null;
+  if (corpus.prepared.some((p) => p.name.includes(token) || compactHit(p.compactName, token))) return null;
+  const max = token.length >= 8 ? 2 : 1;
+  const found = new Set<string>();
+  for (const word of corpus.vocabulary) {
+    if (Math.abs(word.length - token.length) <= max && editDistance(token, word) <= max) found.add(word);
+  }
+  return found.size ? found : null;
+}
+
+/** A query word as matched against one entry (a misspelling is replaced by the name word it matched). */
+type Term = { plain: string; squeezed: string };
+
+/** How a query word matched an entry. */
+const NO_HIT = 0;
+/** Only inside another word of the description ("run" in "pruned", "rag" in "storage"). */
+const INSIDE_WORD = 1;
+/** At the start of a word, inside a name ("llama" in "Ollama"), or ignoring spacing ("huggingface"). */
+const WORD_HIT = 2;
+
+function exactHit(p: PreparedEntry, { plain, squeezed }: Term): number {
+  if (p.text.includes(plain)) {
+    const atWordStart = p.text.includes(` ${plain}`) || p.text.includes(`.${plain}`);
+    return atWordStart || (plain.length >= 4 && p.name.includes(plain)) ? WORD_HIT : INSIDE_WORD;
+  }
+  return compactHit(p.compactLabels, squeezed) ? WORD_HIT : NO_HIT;
+}
+
+/** Ranking score for an entry from the query words it matched. */
+function scorePrepared(p: PreparedEntry, terms: Term[]): number {
+  const phrase = terms.map((t) => t.plain).join(" ");
+  const squeezed = terms.map((t) => t.squeezed).join("");
+  let score = 1;
+  if (p.name === phrase || (squeezed && p.compactName.text === squeezed)) score += 100;
+  else if (p.name.startsWith(phrase) || (squeezed.length >= 3 && p.compactName.text.startsWith(squeezed))) score += 60;
+  else if (` ${p.name}`.includes(` ${phrase}`)) score += 40;
+  for (const { plain, squeezed } of terms) {
+    if (p.nameWords.some((w) => w.startsWith(plain)) || compactHit(p.compactName, squeezed)) score += 10;
+    if (p.nameWords.includes(plain)) score += 2;
+    if (p.keywords.includes(plain)) score += 3;
+    // A whole word ("rag") rather than part of one ("storage").
+    if (p.text.includes(` ${plain} `)) score += 2;
+  }
+  if (p.entry.type === "organization" || p.entry.type === "model-family") score += 1;
+  return score;
+}
+
+const termOf = (plain: string): Term => ({ plain, squeezed: compact(plain) });
 
 /** Relevance score for the cross-directory search. 0 means no match. */
 export function scoreEntry(entry: SearchEntry, tokens: string[]): number {
   if (tokens.length === 0) return 0;
-  const name = normalize(entry.name);
-  const all = ` ${name} ${normalize(entry.summary)} ${normalize(entry.keywords)} `;
-  if (!tokens.every((t) => all.includes(t))) return 0;
-  const phrase = tokens.join(" ");
-  let score = 1;
-  if (name === phrase) score += 100;
-  else if (name.startsWith(phrase)) score += 60;
-  else if (name.includes(phrase)) score += 40;
-  for (const t of tokens) {
-    if (name.split(" ").some((w) => w.startsWith(t))) score += 10;
-    if (normalize(entry.keywords).includes(t)) score += 3;
-  }
-  if (entry.type === "organization" || entry.type === "model-family") score += 1;
-  return score;
+  const p = prepare(entry);
+  const terms = tokens.map(termOf);
+  return terms.every((t) => exactHit(p, t) !== NO_HIT) ? scorePrepared(p, terms) : 0;
 }
 
-export function searchEntries(entries: SearchEntry[], query: string, limit = 12): SearchEntry[] {
-  const tokens = tokenize(query);
+/**
+ * Searches every entry for the meaningful words of `query`.
+ *
+ * Entries that contain every word come first, ranked by exact name, name
+ * prefix, then score. A word of five or more letters that appears in no name
+ * may match a name word one letter off ("antropic" finds Anthropic); such
+ * matches rank below exact ones, and so do words found only inside other
+ * words. When no entry contains every word, the entries that contain the most
+ * words are returned instead of nothing.
+ *
+ * With `{ fuzzy: false }` there are no typo matches and no partial fallback:
+ * every word must appear, the way the directory pages filter. Counts that
+ * link to a directory use this, so the number shown is the number found there.
+ */
+export function searchEntries(entries: SearchEntry[], query: string, limit = 12, { fuzzy = true }: { fuzzy?: boolean } = {}): SearchEntry[] {
+  const tokens = queryTokens(query);
   if (tokens.length === 0) return [];
-  return entries
-    .map((entry) => ({ entry, score: scoreEntry(entry, tokens) }))
-    .filter((r) => r.score > 0)
-    .sort((a, b) => nameRelevance(b.entry.name, query) - nameRelevance(a.entry.name, query) || b.score - a.score || compareNames(a.entry, b.entry))
+  const terms = tokens.map(termOf);
+  const phrases = queryPhrases(query);
+  const corpus = corpusOf(entries);
+  const typos = tokens.map((t) => (fuzzy ? typoMatches(corpus, t) : null));
+  type Hit = { p: PreparedEntry; matched: Term[]; fuzzy: number; inside: number; relevance: number; score: number };
+  const hits: Hit[] = [];
+  let most = 0;
+  for (const p of corpus.prepared) {
+    const matched: Term[] = [];
+    let fuzzy = 0;
+    let inside = 0;
+    terms.forEach((term, i) => {
+      const hit = exactHit(p, term);
+      if (hit !== NO_HIT) {
+        matched.push(term);
+        if (hit === INSIDE_WORD) inside++;
+        return;
+      }
+      const target = typos[i] && p.typoTargets.find((w) => typos[i]!.has(w));
+      if (target) {
+        matched.push(termOf(target));
+        fuzzy++;
+      }
+    });
+    if (matched.length === 0) continue;
+    hits.push({ p, matched, fuzzy, inside, relevance: 0, score: 0 });
+    most = Math.max(most, matched.length);
+  }
+  // Every word if any entry has them all; otherwise at least half of them (or the most any entry has).
+  const needed = !fuzzy || most === tokens.length ? tokens.length : Math.min(most, Math.ceil(tokens.length / 2));
+  const kept = hits.filter((h) => h.matched.length >= needed);
+  for (const h of kept) {
+    h.relevance = phraseRelevance(h.p.name, h.p.compactName.text, phrases);
+    h.score = scorePrepared(h.p, h.matched);
+  }
+  return kept
+    .sort(
+      (a, b) =>
+        b.relevance - a.relevance ||
+        b.matched.length - a.matched.length ||
+        a.fuzzy - b.fuzzy ||
+        a.inside - b.inside ||
+        b.score - a.score ||
+        compareNames(a.p.entry, b.p.entry),
+    )
     .slice(0, limit)
-    .map((r) => r.entry);
+    .map((h) => h.p.entry);
 }
 
 /* ------------------------------------------------------------------ */
@@ -207,7 +470,8 @@ export function orgMatches(item: OrgListItem, f: OrgFilters): boolean {
   const haystack = [item.name, item.legalName, item.summary, item.headquarters, item.parent?.name, ...item.roles, ...item.sectors, ...item.productNames]
     .filter(Boolean)
     .join(" ");
-  return matchesTokens(haystack, tokenize(f.q));
+  const labels = [item.name, item.legalName, item.headquarters, item.parent?.name, ...item.roles, ...item.sectors, ...item.productNames].filter(Boolean).join(" ");
+  return matchesTokens(haystack, labels, queryTokens(f.q));
 }
 
 export function sortOrganizations(items: OrgListItem[], sort: OrgSort, query = ""): OrgListItem[] {
@@ -327,20 +591,18 @@ export function artifactMatches(item: ArtifactListItem, f: ArtifactFilters): boo
     if (mode === "documented" && status !== "public" && status !== "partial") return false;
     if (mode === "unknown" && status !== "unknown") return false;
   }
-  const haystack = [
+  const labels = [
     item.name,
     item.version,
-    item.summary,
     item.familyName,
     item.kind,
     ...item.maintainers,
     ...item.organizations.map((o) => o.name),
     ...item.licenses.map((l) => l.label),
     ...item.tags,
-  ]
-    .filter(Boolean)
-    .join(" ");
-  return matchesTokens(haystack, tokenize(f.q));
+  ];
+  const haystack = [labels[0], labels[1], item.summary, ...labels.slice(2)].filter(Boolean).join(" ");
+  return matchesTokens(haystack, labels.filter(Boolean).join(" "), queryTokens(f.q));
 }
 
 export function sortArtifacts(items: ArtifactListItem[], sort: ArtifactSort, query = ""): ArtifactListItem[] {

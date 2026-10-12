@@ -19,7 +19,8 @@ export const TILE_POSITIONS: Record<string, [col: number, row: number]> = {
 };
 
 export const TILE_BUCKETS: { min: number; label: string; className: string }[] = [
-  { min: 10, label: "10 or more", className: "border-cyan bg-[rgba(76,201,255,0.55)] text-white" },
+  { min: 25, label: "25 or more", className: "border-[#9be3ff] bg-[rgba(120,214,255,0.88)] text-[#04101f]" },
+  { min: 10, label: "10 to 24", className: "border-cyan bg-[rgba(76,201,255,0.55)] text-white" },
   { min: 5, label: "5 to 9", className: "border-cyan bg-[rgba(76,201,255,0.36)] text-text" },
   { min: 2, label: "2 to 4", className: "border-[rgba(76,201,255,0.6)] bg-[rgba(76,201,255,0.2)] text-text" },
   { min: 1, label: "1", className: "border-[rgba(76,201,255,0.45)] bg-[rgba(76,201,255,0.09)] text-text" },
@@ -48,11 +49,11 @@ export function StateTileMap({ states }: { states: StateGroup[] }) {
                     title={`${US_STATES[code]}: ${n}`}
                     className={`${tile} ${bucket.className} transition-transform hover:z-10 hover:scale-110 focus-visible:z-10`}
                   >
-                    <span className="text-[0.5625rem] font-medium sm:text-xs">{code}</span>
+                    <span className="text-[0.6875rem] font-semibold sm:text-xs">{code}</span>
                     <span className="mt-0.5 hidden text-[0.625rem] sm:block">{n}</span>
                   </Link>
                 ) : (
-                  <span aria-hidden="true" title={`${US_STATES[code]}: none in the catalog`} className={`${tile} border-line text-[0.5625rem] text-muted sm:text-xs`}>
+                  <span aria-hidden="true" title={`${US_STATES[code]}: none in the catalog`} className={`${tile} border-line text-[0.6875rem] text-muted sm:text-xs`}>
                     {code}
                   </span>
                 )}

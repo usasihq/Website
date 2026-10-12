@@ -10,6 +10,7 @@ import { ArchivedNotice, ClaimText, EligibilityBlock, FactList, ReviewDates } fr
 import { EntryActions } from "@/components/EntryActions";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Breadcrumbs, Section } from "@/components/PageHeader";
+import { SectionJump } from "@/components/SectionJump";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { NewsCard } from "@/components/NewsList";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
@@ -103,6 +104,17 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
   const hosted = org.products.filter((p) => HOSTED_MODEL_PRODUCT_KINDS.includes(p.kind));
   const other = org.products.filter((p) => !HOSTED_MODEL_PRODUCT_KINDS.includes(p.kind));
 
+  const jumpLinks = [
+    org.deep_dive ? { id: "in-depth", label: "In depth" } : null,
+    leaders.length && !org.deep_dive ? { id: "leaders", label: "People" } : null,
+    { id: "overview", label: "Overview" },
+    { id: "facts", label: "Key facts" },
+    { id: "products", label: "Products" },
+    { id: "artifacts", label: "Artifacts" },
+    catalog.newsForOrganization(org.slug).length > 0 ? { id: "news", label: "News" } : null,
+    catalog.isActiveOrganization(org.slug) ? { id: "jobs", label: "Jobs" } : null,
+    { id: "sources", label: "Sources" },
+  ].filter((x): x is { id: string; label: string } => Boolean(x));
   return (
     <>
       {org.publication_status === "archived" && org.archive_note ? <ArchivedNotice note={org.archive_note} /> : null}
@@ -138,25 +150,13 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                 <ClaimText claim={org.summary} sources={s} className="mt-6 max-w-3xl text-lg text-[#d5def2]" />
                 <nav aria-label="On this company page" className="mt-6">
                   <ul className="flex flex-wrap gap-2">
-                    {[
-                      org.deep_dive ? { id: "in-depth", label: "In depth" } : null,
-                      leaders.length && !org.deep_dive ? { id: "leaders", label: "People" } : null,
-                      { id: "overview", label: "Overview" },
-                      { id: "facts", label: "Key facts" },
-                      { id: "products", label: "Products" },
-                      { id: "artifacts", label: "Artifacts" },
-                      catalog.newsForOrganization(org.slug).length > 0 ? { id: "news", label: "News" } : null,
-                      catalog.isActiveOrganization(org.slug) ? { id: "jobs", label: "Jobs" } : null,
-                      { id: "sources", label: "Sources" },
-                    ]
-                      .filter((x): x is { id: string; label: string } => Boolean(x))
-                      .map((x) => (
-                        <li key={x.id}>
-                          <a href={`#${x.id}`} className="badge px-3 py-1 text-sm text-ice hover:border-cyan hover:text-white">
-                            {x.label}
-                          </a>
-                        </li>
-                      ))}
+                    {jumpLinks.map((x) => (
+                      <li key={x.id}>
+                        <a href={`#${x.id}`} className="badge px-3 py-1 text-sm text-ice hover:border-cyan hover:text-white">
+                          {x.label}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </nav>
                 <div className="mt-6">
@@ -439,6 +439,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
         </div>
       </article>
       <SupportPanel variant="compact" />
+      <SectionJump sections={jumpLinks} />
     </>
   );
 }

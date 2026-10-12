@@ -23,8 +23,9 @@ export function ExternalLink({
     /* validated upstream */
   }
   return (
-    <a href={href} className={`${className} inline-flex items-baseline gap-0.5 break-words`} rel="noopener noreferrer" data-external="true">
-      <span>
+    <a href={href} className={`${className} inline-flex max-w-full items-baseline gap-0.5 break-words`} rel="noopener noreferrer" data-external="true">
+      {/* min-w-0 lets long addresses wrap instead of widening the page on phones. */}
+      <span className="min-w-0 [overflow-wrap:anywhere]">
         {children}
         {showHost && host ? <span className="text-muted"> · {host}</span> : null}
       </span>

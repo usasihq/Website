@@ -11,6 +11,7 @@ import { EXPLAINERS, LEARNING_PATHS } from "./learn";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
 import type { SearchEntry } from "./search";
+import { plainText } from "./plain-text";
 
 export type GlossaryTerm = { id: string; term: string; definition: string };
 
@@ -88,8 +89,8 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ...faq.map((q) => e("faq", q.id, `/faq/#${q.id}`, q.term, q.definition, "question answer faq")),
     ...LEARNING_PATHS.map((p) => e("learning-path", p.id, `/learn/paths/${p.id}/`, p.title, p.description, `learning path ${p.audience}`)),
     ...KID_LESSONS.map((l) => e("kids-lesson", l.slug, `/kids/${l.slug}/`, l.title, l.question, `kids children lesson ${l.number}`)),
-    ...catalog.news.map((n) => e("news", n.slug, `/news/${n.slug}/`, n.title, n.summary.text, `news ${n.category} ${n.event_date}`)),
-    ...catalog.newsletter.map((i) => e("newsletter", i.slug, `/newsletter/${i.slug}/`, `Issue ${i.number}: ${i.subject}`, i.preview, "weekly email newsletter issue")),
+    ...catalog.news.map((n) => e("news", n.slug, `/news/${n.slug}/`, n.title, plainText(n.summary.text), `news ${n.category} ${n.event_date}`)),
+    ...catalog.newsletter.map((i) => e("newsletter", i.slug, `/newsletter/${i.slug}/`, `Issue ${i.number}: ${i.subject.replace(/^Issue \d+:\s*/i, "")}`, i.preview, "weekly email newsletter issue")),
     ...SITE_PAGES.map((pg) => e("page", pg.href.replace(/^\/|\/$/g, "").replace(/\//g, "-"), pg.href, pg.name, pg.summary, pg.keywords)),
     ...catalog.leaders.map((l) =>
       e("leader", l.slug, `/big-si/${l.slug}/`, l.name, l.headline, [...l.current_roles, ...l.past_roles].map((r) => `${r.role} ${r.organization}`).join(" ")),

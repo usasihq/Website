@@ -1,6 +1,7 @@
 /** RSS 2.0 documents, generated as static files at build time. */
 import { absoluteUrl } from "./paths";
 import type { NewsItem } from "./schema";
+import { plainText } from "./plain-text";
 
 export type RssItem = { title: string; path: string; date: string; category?: string; description: string };
 
@@ -42,6 +43,6 @@ export const changelogAnchor = (c: { date: string; title: string }) =>
   `c-${c.date}-${c.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)}`;
 
 export const newsRssItems = (items: NewsItem[]): RssItem[] =>
-  items.slice(0, 50).map((n) => ({ title: n.title, path: `/news/${n.slug}/`, date: n.published_at, category: n.category, description: n.summary.text }));
+  items.slice(0, 50).map((n) => ({ title: n.title, path: `/news/${n.slug}/`, date: n.published_at, category: n.category, description: plainText(n.summary.text) }));
 
 export const rssResponse = (xml: string) => new Response(xml, { headers: { "content-type": "application/rss+xml; charset=utf-8" } });

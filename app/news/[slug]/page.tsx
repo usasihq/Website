@@ -11,6 +11,8 @@ import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
 import { cardImage } from "@/lib/page-cards";
+import { CodeText } from "@/components/CodeText";
+import { plainText } from "@/lib/plain-text";
 
 export const dynamicParams = false;
 
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!item) return {};
   return pageMetadata({
     title: item.title,
-    description: item.summary.text.slice(0, 200),
+    description: plainText(item.summary.text).slice(0, 200),
     path: newsHref(item.slug),
     image: cardImage(getCatalog(), newsHref(item.slug)),
     feeds: [{ path: "/news/feed.xml", title: "USASI — Latest news" }],
@@ -51,8 +53,8 @@ export default async function NewsItemPage({ params }: { params: Promise<{ slug:
           </div>
         </header>
         <div className="container-page grid gap-10 py-10">
-          <p className="max-w-3xl text-lg text-[#d5def2]">
-            {item.summary.text}
+          <p className="max-w-3xl break-words text-lg text-[#d5def2]">
+            <CodeText text={item.summary.text} />
             <SourceRefs ids={item.summary.source_ids} sources={item.sources} />
           </p>
           <section aria-labelledby="related-heading">

@@ -35,8 +35,10 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
   const hintId = useId();
   const all = useMemo(() => (entries ? searchEntries(entries, query, 500) : []), [entries, query]);
   const results = all.slice(0, 8);
-  const orgCount = all.filter((r) => r.type === "organization").length;
-  const artifactCount = all.filter((r) => ARTIFACT_ENTRY_TYPES.includes(r.type)).length;
+  // Directory links filter strictly (every word, no typo guesses), so their counts must too.
+  const strict = useMemo(() => (entries ? searchEntries(entries, query, 500, { fuzzy: false }) : []), [entries, query]);
+  const orgCount = strict.filter((r) => r.type === "organization").length;
+  const artifactCount = strict.filter((r) => ARTIFACT_ENTRY_TYPES.includes(r.type)).length;
   const trimmed = query.trim();
   const announce = useDebounced(trimmed ? `${all.length} matching entr${all.length === 1 ? "y" : "ies"}` : "");
   const q = encodeURIComponent(trimmed);

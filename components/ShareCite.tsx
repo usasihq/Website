@@ -31,7 +31,7 @@ export function ShareCite({
   const snippets = badgeSnippets(url, absoluteUrl("/badges/listed.svg"));
   const pill = "inline-flex min-h-11 items-center rounded-lg border border-line px-3 text-sm text-text hover:border-cyan";
   return (
-    <section aria-labelledby="share-heading" className="grid gap-4 rounded-2xl border border-line bg-[rgba(8,14,30,0.5)] p-5" data-testid="share-cite">
+    <section aria-labelledby="share-heading" className="grid gap-4 rounded-2xl border border-line bg-[rgba(8,14,30,0.5)] p-5 print:hidden" data-testid="share-cite">
       <h2 id="share-heading" className="flex items-center gap-2 text-base font-semibold text-text">
         <Share2 aria-hidden="true" className="h-4 w-4 text-cyan" />
         Share or cite this page

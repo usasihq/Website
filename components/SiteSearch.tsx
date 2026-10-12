@@ -187,8 +187,14 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
               onKeyDown={onKeyDown}
               className="h-14 min-w-0 flex-1 bg-transparent text-lg text-text outline-none placeholder:text-muted"
             />
-            <button type="button" onClick={close} className="rounded-md border border-line px-2 py-1 font-mono text-xs text-muted hover:text-text">
-              Esc<span className="sr-only"> (close search)</span>
+            <button
+              type="button"
+              onClick={close}
+              className="inline-flex h-11 min-w-11 items-center justify-center rounded-md border border-line px-3 text-sm text-muted hover:text-text sm:h-auto sm:min-w-0 sm:px-2 sm:py-1 sm:font-mono sm:text-xs"
+            >
+              <span className="sm:hidden">Close</span>
+              <span className="hidden sm:inline">Esc</span>
+              <span className="sr-only"> (close search)</span>
             </button>
           </div>
 
@@ -218,7 +224,7 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
                 const body = (
                   <>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate font-medium text-text">
+                      <span className="line-clamp-2 block break-words font-medium text-text sm:line-clamp-1">
                         {o.badge
                           ? highlightParts(o.name, trimmed).map((p, pi) =>
                               p.hit ? (
@@ -231,10 +237,13 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
                             )
                           : o.name}
                       </span>
+                      {o.badge ? (
+                        <span className="badge mt-1 font-mono text-[0.625rem] uppercase tracking-[0.06em] text-ice sm:hidden">{o.badge}</span>
+                      ) : null}
                       {o.summary ? <span className="mt-0.5 line-clamp-1 text-sm text-muted">{o.summary}</span> : null}
                     </span>
                     {o.badge ? (
-                      <span className="badge shrink-0 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-ice">{o.badge}</span>
+                      <span className="badge hidden shrink-0 font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-ice sm:inline-flex">{o.badge}</span>
                     ) : o.random ? (
                       <Shuffle aria-hidden="true" className="h-4 w-4 flex-none text-cyan" />
                     ) : (

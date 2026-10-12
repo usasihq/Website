@@ -4,6 +4,7 @@ import { formatDate } from "@/lib/dates";
 import { artifactHref, orgHref } from "@/lib/routes";
 import { NEWS_CATEGORY_LABELS } from "@/lib/labels";
 import type { NewsItem } from "@/lib/schema";
+import { CodeText } from "./CodeText";
 
 export { NEWS_CATEGORY_LABELS };
 
@@ -46,7 +47,7 @@ export function NewsCard({ item, catalog, headingLevel = 3 }: { item: NewsItem; 
           {item.title}
         </Link>
       </Heading>
-      <p className="mt-2 max-w-3xl text-[0.9375rem] text-[#c7d2ea]">{item.summary.text}</p>
+      <p className="mt-2 max-w-[68ch] text-base text-[#c7d2ea]"><CodeText text={item.summary.text} /></p>
       <div className="mt-3">
         <RelatedRecords item={item} catalog={catalog} />
       </div>
