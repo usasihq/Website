@@ -60,12 +60,10 @@ const RAW_CONFIG = {
     email: "usasihq@gmail.com" as string | null,
   },
   socials: [
-    { label: "GitHub", handle: "usasihq", url: "https://github.com/usasihq" },
-    { label: "Hugging Face", handle: "usasihq", url: "https://huggingface.co/usasihq" },
-    { label: "X", handle: "@usasihq", url: "https://x.com/usasihq" },
+    // Owner decision 2026-10-12: the same three profiles on every site the owner runs.
+    { label: "GitHub", handle: "ShadowfetchStudio", url: "https://github.com/ShadowfetchStudio" },
+    { label: "X", handle: "@Shadowfetch", url: "https://x.com/Shadowfetch" },
     { label: "YouTube", handle: "@USASIHQ", url: "https://www.youtube.com/@USASIHQ" },
-    { label: "Bluesky", handle: "@usasihq.bsky.social", url: "https://bsky.app/profile/usasihq.bsky.social" },
-    { label: "Truth Social", handle: "@Usasihq", url: "https://truthsocial.com/@Usasihq" },
   ] as Array<{ label: string; handle: string; url: string }>,
   repository: {
     url: "https://github.com/usasihq/Website" as string | null,

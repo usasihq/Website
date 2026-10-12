@@ -246,8 +246,12 @@ test.describe("contact and profiles", () => {
     await page.goto("/");
     const contact = page.getByRole("list", { name: "USASI contact and profiles" });
     await expect(contact.getByRole("link", { name: "usasihq@gmail.com" })).toHaveAttribute("href", "mailto:usasihq@gmail.com");
-    for (const host of ["github.com/usasihq", "huggingface.co/usasihq", "x.com/usasihq", "youtube.com/@USASIHQ", "bsky.app/profile/usasihq.bsky.social", "truthsocial.com/@Usasihq"]) {
-      await expect(contact.locator(`a[href*="${host}"]`)).toHaveCount(1);
+    for (const href of ["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ"]) {
+      await expect(contact.locator(`a[href="${href}"]`)).toHaveCount(1);
+    }
+    // Exactly those three profiles, nothing retired.
+    for (const host of ["huggingface.co/usasihq", "x.com/usasihq", "bsky.app/profile", "truthsocial.com"]) {
+      await expect(page.locator(`a[href*="${host}"]`)).toHaveCount(0);
     }
     // No third-party embeds or scripts.
     const external = await page.evaluate(() =>
@@ -273,7 +277,7 @@ test.describe("contact and profiles", () => {
     await page.goto("/");
     const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
     const org = ld["@graph"].find((n: { "@type": string }) => n["@type"] === "Organization");
-    expect(org.sameAs).toContain("https://github.com/usasihq");
+    expect(org.sameAs).toEqual(["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ"]);
     expect(org.email).toBe("usasihq@gmail.com");
   });
 });

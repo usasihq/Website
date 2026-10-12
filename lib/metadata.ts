@@ -66,7 +66,7 @@ export function pageMetadata({ title, description: rawDescription, path, noindex
     },
     twitter: {
       card: "summary_large_image",
-      site: "@usasihq",
+      site: "@Shadowfetch",
       title: fullTitle,
       description,
       images: [{ url: imageUrl, alt: image.alt }],

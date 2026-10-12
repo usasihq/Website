@@ -77,10 +77,10 @@ footer, on `/about/#contact`, in `/.well-known/security.txt`, and in the
 homepage's structured data:
 
 - Email: usasihq@gmail.com
-- GitHub `usasihq`, Hugging Face `usasihq`, X `@usasihq`, YouTube `@USASIHQ`
-- Bluesky `@usasihq.bsky.social`, Truth Social `@Usasihq` (the Truth Social
-  profile could not be checked automatically — its site requires a bot
-  verification step — so confirm the link opens your profile).
+- GitHub `ShadowfetchStudio`, X `@Shadowfetch`, YouTube `@USASIHQ` (owner
+  decision 2026-10-12: the same three profiles on every site the owner runs;
+  the earlier usasihq GitHub/X, Hugging Face, Bluesky and Truth Social links
+  were removed). The code repository stays at `github.com/usasihq/Website`.
 
 - [ ] `/about/` still says further ownership details have not been published.
       Edit `content/pages/about.mdx` ("Ownership") if you want to add them.
