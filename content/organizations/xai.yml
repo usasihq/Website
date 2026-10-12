@@ -51,8 +51,9 @@ status_note:
     4.5, 4.6, and 4.7 (July to September 2026) state that SpaceXAI is a doing-business-as name
     of XAI LLC, and SpaceX's March 2026 draft registration statement defines xAI as X.AI
     Holdings LLC (formerly X.AI Holdings Corp.) together with its subsidiaries. USASI has found
-    no official announcement of the SpaceXSI name.
-  source_ids: [spacex-10q-2026q2, xai-joins-spacex, spacexsi-docs-overview, xai-greenhouse-board, xai-grok-4-5-model-card, xai-grok-4-6-model-card, xai-grok-4-7-model-card, spacex-drs-2026-03]
+    no official announcement of the SpaceXSI name. On October 12, 2026 USASI added xAI's
+    December 22, 2025 GenAI.mil announcement to the government section of this profile.
+  source_ids: [spacex-10q-2026q2, xai-joins-spacex, spacexsi-docs-overview, xai-greenhouse-board, xai-grok-4-5-model-card, xai-grok-4-6-model-card, xai-grok-4-7-model-card, spacex-drs-2026-03, xai-news-dow-genai-mil]
 products:
   - id: grok
     name: Grok
@@ -124,7 +125,7 @@ careers:
   reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-10-11
+updated_at: 2026-10-12
 last_reviewed: 2026-09-29
 sources:
   - id: spacexsi-docs-overview
@@ -324,6 +325,13 @@ sources:
     kind: announcement
     published_at: 2025-07-09
     accessed_at: 2026-10-11
+  - id: xai-news-dow-genai-mil
+    title: Supporting the DOW's mission with AI
+    url: https://x.ai/news/us-gov-dept-of-war
+    publisher: xAI
+    kind: announcement
+    published_at: 2025-12-22
+    accessed_at: 2026-10-12
   - id: xai-news-government
     title: Announcing xAI for Government
     url: https://x.ai/news/government
@@ -1377,6 +1385,11 @@ deep_dive:
             and public use.
           source_ids:
             - xai-news-ksa
+        - text: On December 22, 2025, xAI announced that the U.S. Department of War had selected its Frontier
+            AI systems for the department's GenAI.mil suite, through a partnership with the department's
+            Chief Digital and Artificial Intelligence Office (CDAO).
+          source_ids:
+            - xai-news-dow-genai-mil
     - id: recent-updates
       title: Recent updates (July to October 2026)
       items:

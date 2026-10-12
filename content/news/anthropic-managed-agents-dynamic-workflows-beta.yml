@@ -1,0 +1,27 @@
+slug: anthropic-managed-agents-dynamic-workflows-beta
+title: Anthropic adds dynamic workflows to Claude Managed Agents in beta
+event_date: 2026-10-09
+published_at: 2026-10-12
+category: release
+summary:
+  text: >-
+    Anthropic's Claude Platform release notes, in an entry dated October 9, 2026, say a Claude
+    Managed Agents agent can now use dynamic workflows, in beta with the managed-agents-2026-04-01
+    beta header. The notes describe a workflow as a program that runs many agents in phases and
+    combines their results, which the server runs in the background as a workflow run. Developers
+    turn the feature on through the agent's multiagent field and follow each run through
+    workflow_run events on the session's event stream. This is a feature of Anthropic's hosted
+    service, not an open-source or open-weight release, and USASI has not tested it.
+  source_ids: [claude-platform-release-notes]
+related_organizations: [anthropic]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-12
+sources:
+  - id: claude-platform-release-notes
+    title: Claude Platform release notes
+    url: https://platform.claude.com/docs/en/release-notes/overview
+    publisher: Anthropic
+    kind: release-notes
+    published_at: 2026-10-09
+    accessed_at: 2026-10-12

@@ -28,7 +28,11 @@ other_locations:
     source_ids: [anthropic-privacy]
 founded: null
 sectors: [frontier-models, agents, research]
-status_note: null
+status_note:
+  text: >-
+    On October 12, 2026 USASI added the Claude Cowork research-preview launch date, from
+    Anthropic's January 13, 2026 post introducing Labs, to this profile.
+  source_ids: [anthropic-news-introducing-labs]
 products:
   - id: claude-apps
     name: Claude
@@ -93,7 +97,7 @@ careers:
   reviewed_at: 2026-09-30
 publication_status: published
 archive_note: null
-updated_at: 2026-10-11
+updated_at: 2026-10-12
 last_reviewed: 2026-09-29
 sources:
   - id: anthropic-company
@@ -538,6 +542,13 @@ sources:
     kind: documentation
     published_at: null
     accessed_at: 2026-10-11
+  - id: anthropic-news-introducing-labs
+    title: Introducing Labs
+    url: https://www.anthropic.com/news/introducing-anthropic-labs
+    publisher: Anthropic
+    kind: announcement
+    published_at: 2026-01-13
+    accessed_at: 2026-10-12
   - id: claude-cowork-merge
     title: Claude Cowork and chat are now one Claude
     url: https://claude.com/resources/articles/cowork-is-now-claude
@@ -1032,11 +1043,13 @@ deep_dive:
           source_ids:
             - claude-apps-release-notes
         - text: Claude Cowork brings Claude Code's agentic abilities to non-coding work, such as organizing
-            files and producing spreadsheets and slides. On September 16, 2026 Anthropic began
-            merging Cowork and chat into one Claude experience, starting with Pro and Max.
+            files and producing spreadsheets and slides. Anthropic's January 13, 2026 post introducing
+            Labs says Cowork launched as a research preview the previous day. On September 16, 2026
+            Anthropic began merging Cowork and chat into one Claude experience, starting with Pro and Max.
           source_ids:
             - claude-cowork-support
             - claude-cowork-merge
+            - anthropic-news-introducing-labs
         - text: Claude Design, a product for creating designs, prototypes, and slides, launched as an
             Anthropic Labs research preview on April 17, 2026. Since September 16, 2026, Claude
             Design, Claude Slides, and Claude Docs work inside any conversation as Artifacts.

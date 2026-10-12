@@ -1,0 +1,27 @@
+slug: onnx-runtime-cuda-plugin-ep-0-3-0-released
+title: ONNX Runtime CUDA Plugin EP 0.3.0 adds sparse attention and INT2 QMoE support
+event_date: 2026-10-09
+published_at: 2026-10-12
+category: release
+summary:
+  text: >-
+    On October 9, 2026 Microsoft published version 0.3.0 of the ONNX Runtime CUDA Plugin EP on the
+    ONNX Runtime GitHub repository. This is a separate release from ONNX Runtime 1.31.0, which the
+    notes give as the matched core version. The release notes list sparse attention and packed
+    continuous-batching support, INT2 and mixed-width QMoE execution, new QSA/CSA attention
+    operators, expanded paged speculative decoding, and opt-in MatMul auto-tuning. The notes warn
+    that the core and the plugin must use the same contributed-operator schemas and recommend
+    building both from the same ONNX Runtime revision. USASI has not tested this release.
+  source_ids: [ort-cuda-plugin-ep-0-3-0]
+related_organizations: [microsoft]
+related_artifacts: [onnx-runtime]
+publication_status: published
+updated_at: 2026-10-12
+sources:
+  - id: ort-cuda-plugin-ep-0-3-0
+    title: ONNX Runtime CUDA Plugin EP 0.3.0 (GitHub release notes)
+    url: https://github.com/microsoft/onnxruntime/releases/tag/plugin-ep-cuda/v0.3.0
+    publisher: Microsoft (ONNX Runtime)
+    kind: release-notes
+    published_at: 2026-10-09
+    accessed_at: 2026-10-12

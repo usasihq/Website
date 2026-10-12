@@ -23,11 +23,12 @@ as it is.
     Thibault Sottiaux's current title (openai.com pages reportedly say "Head of
     Core Products & Platform"; openai.com blocks automated reads). Update
     content/leaders/ when confirmed.
-  - Anthropic: the Cowork launch and general-availability dates; a Ninth Circuit
-    stay in appeal 26-2011.
+  - Anthropic: the Cowork general-availability date; a Ninth Circuit stay in
+    appeal 26-2011. (The Cowork launch date was resolved on 2026-10-12; see
+    "Resolved".)
   - Meta: the June 30, 2025 date Meta Superintelligence Labs was created.
-  - xAI: a War Department GenAI.mil agreement; whether Grok 4.7 is in the
-    consumer Grok apps.
+  - xAI: whether Grok 4.7 is in the consumer Grok apps. (The GenAI.mil
+    agreement was resolved on 2026-10-12; see "Resolved".)
   - Tesla: a Texas DMV automated-vehicle authorization for "Tesla Robotaxi, LLC"
     (May 14, 2026); an Optimus Gen 3 unveiling.
 - Official sources to check:
@@ -67,6 +68,26 @@ as it is.
   - do not edit organization records for this item
 
 ## Resolved
+
+### Deep-dive follow-ups: xAI GenAI.mil and the Cowork launch date
+
+- Added: 2026-10-11 (part of "Follow-ups from the 2026-10-11 company deep
+  dives"). Resolved: 2026-10-12. The rest of that item is still watched.
+- xAI GenAI.mil: confirmed by https://x.ai/news/us-gov-dept-of-war ("Supporting
+  the DOW's mission with AI", dated Dec 22, 2025), accessed 2026-10-12. It says
+  the Department of War selected xAI's Frontier AI systems for its GenAI.mil
+  suite through a partnership with the CDAO. Added as a new item in the
+  `government` section of content/organizations/xai.yml (source
+  `xai-news-dow-genai-mil`), with a sentence appended to `status_note` and
+  `updated_at` set to 2026-10-12. The page's personnel count was left out.
+- Anthropic Cowork launch: confirmed by
+  https://www.anthropic.com/news/introducing-anthropic-labs ("Introducing Labs",
+  dated Jan 13, 2026), accessed 2026-10-12, which says Cowork "launched as a
+  research preview yesterday". Added to the Cowork item in the
+  `apps-and-plans` section of content/organizations/anthropic.yml (source
+  `anthropic-news-introducing-labs`), with a `status_note` and `updated_at` set
+  to 2026-10-12. The general-availability date is still unconfirmed.
+- No news item: both are older events added to profiles, not new events.
 
 ### xAI (SpaceXAI) renamed SpaceXSI
 
