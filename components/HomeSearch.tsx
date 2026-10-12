@@ -53,7 +53,7 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
             id={inputId}
             type="search"
             className="field min-h-13 pl-12 text-lg"
-            placeholder="A company, model, term, or state"
+            placeholder="Company, model, term, or state"
             value={query}
             onFocus={ensureIndex}
             onChange={(e) => {

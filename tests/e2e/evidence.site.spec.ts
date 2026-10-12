@@ -21,6 +21,8 @@ test("component filters expose matching scope and survive back, refresh and rese
 });
 
 test("representative profiles and component evidence are accessible and wrap at 320px", async ({ page }) => {
+  // Three full accessibility scans of long organization pages (openai has an in-depth guide).
+  test.setTimeout(120_000);
   await page.setViewportSize({ width: 320, height: 850 });
   for (const slug of ["openai", "ibm", "ai2"]) {
     await page.goto(`/companies/${slug}/`);

@@ -109,44 +109,53 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Hero />
-
-      {/* 1–2. Introduction, search, and the two directory actions, all on the first screen. Phones: heading, actions,
-          then description (DOM order). Desktop: heading and description on the left, actions on the right. */}
-      <section aria-labelledby="intro-heading" className="relative">
-        <div className="container-page pb-7 pt-3 sm:pt-4 lg:pb-8">
-          <div className="grid gap-4 sm:gap-5 lg:grid-cols-[1.1fr_1fr] lg:gap-x-14 lg:gap-y-4">
-            <h1
-              id="intro-heading"
-              className="text-center text-2xl font-semibold leading-tight text-text sm:text-3xl lg:col-start-1 lg:row-start-1 lg:self-end lg:text-left lg:text-[2.25rem]"
-            >
-              Explore the companies, models, and tools behind American Super Intelligence.
-            </h1>
-            <div className="mx-auto w-full max-w-3xl lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:self-center">
-              <HomeSearch indexUrl={asset("/data/search-index.json")} />
-              {/* Two-up on phones too, so both fit on the first screen; "Explore" stays in the accessible name. */}
-              <div className="mt-4 grid grid-cols-2 gap-3">
-                <Link href="/companies/" className="btn btn-primary min-h-13 px-3 text-center text-[0.9375rem] leading-snug sm:px-[1.125rem] sm:text-base">
-                  <Building2 aria-hidden="true" className="h-5 w-5 shrink-0" />
-                  <span>
-                    <span className="max-sm:sr-only">Explore </span>Companies &amp; Labs
-                  </span>
-                </Link>
-                <Link href="/open/" className="btn btn-primary min-h-13 px-3 text-center text-[0.9375rem] leading-snug sm:px-[1.125rem] sm:text-base">
-                  <Boxes aria-hidden="true" className="h-5 w-5 shrink-0" />
-                  <span>
-                    <span className="max-sm:sr-only">Explore </span>Open Models &amp; Tools
-                  </span>
-                </Link>
-              </div>
+      {/* 1–2. Introduction, search, and the two directory actions, all on the first screen. Phones: artwork, heading, search,
+          actions, then description. Desktop: text, search, and actions on the left; the framed artwork on the right. */}
+      <section aria-labelledby="intro-heading" className="relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_at_78%_35%,rgba(76,201,255,0.13),transparent_55%)] lg:block"
+        />
+        <div className="container-page relative pb-8 lg:pb-14 lg:pt-12">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
+            <div className="lg:col-start-2 lg:row-start-1">
+              <Hero />
             </div>
-            <div className="text-center lg:col-start-1 lg:row-start-2 lg:self-start lg:text-left">
-              <p className="mx-auto max-w-2xl text-base text-muted lg:mx-0">
+            <div className="flex flex-col text-center lg:col-start-1 lg:row-start-1 lg:text-left">
+              <p className="eyebrow order-1 hidden lg:block">Independent reference · Every claim sourced</p>
+              <h1
+                id="intro-heading"
+                className="order-2 text-2xl font-semibold leading-tight text-text sm:text-3xl lg:mt-3 lg:text-[2.625rem] lg:leading-[1.12]"
+              >
+                Explore the companies, models, and tools behind American Super Intelligence.
+              </h1>
+              <p className="order-5 mx-auto mt-5 max-w-2xl text-base text-muted lg:order-3 lg:mx-0 lg:mt-4 lg:text-[1.0625rem]">
                 An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is
                 available, and where to find the original sources.
               </p>
-              <p className="mt-3 inline-flex items-center gap-2 rounded-xl border border-line px-4 py-1.5 text-[0.9375rem] text-text" data-testid="intro-disclaimer">
-                <Landmark aria-hidden="true" className="h-4 w-4 shrink-0 text-muted" />
+              <div className="order-3 mx-auto mt-4 w-full max-w-3xl text-left lg:order-4 lg:mx-0 lg:mt-6">
+                <HomeSearch indexUrl={asset("/data/search-index.json")} />
+              </div>
+              {/* Two-up at every size, so both fit on the first screen; "Explore" stays in the accessible name. */}
+              <div className="order-4 mt-4 grid grid-cols-2 gap-3 lg:order-5">
+                <Link href="/companies/" className="btn btn-primary min-h-13 px-3 text-center text-[0.9375rem] leading-snug sm:px-[1.125rem] sm:text-base">
+                  <Building2 aria-hidden="true" className="h-5 w-5 shrink-0" />
+                  <span>
+                    <span className="sr-only">Explore </span>Companies &amp; Labs
+                  </span>
+                </Link>
+                <Link href="/open/" className="btn btn-secondary min-h-13 px-3 text-center text-[0.9375rem] leading-snug sm:px-[1.125rem] sm:text-base">
+                  <Boxes aria-hidden="true" className="h-5 w-5 shrink-0" />
+                  <span>
+                    <span className="sr-only">Explore </span>Open Models &amp; Tools
+                  </span>
+                </Link>
+              </div>
+              <p
+                className="order-6 mx-auto mt-4 inline-flex items-center gap-2 text-[0.875rem] text-muted lg:mx-0"
+                data-testid="intro-disclaimer"
+              >
+                <Landmark aria-hidden="true" className="h-4 w-4 shrink-0" />
                 {siteConfig.disclaimer}
               </p>
             </div>

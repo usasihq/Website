@@ -45,7 +45,7 @@
   html {
     background: var(--bg);
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6.5rem;
   }
 
   /* The canvas color comes from html, so body stays transparent and the
@@ -95,6 +95,30 @@
     color: inherit;
   }
 
+  /* Disclosures: one consistent chevron instead of each browser's triangle. */
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::before {
+    content: "";
+    display: inline-block;
+    width: 0.45em;
+    height: 0.45em;
+    margin-right: 0.6em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    opacity: 0.75;
+    transform: translateY(-0.12em) rotate(-45deg);
+    transition: transform 160ms ease;
+  }
+  details[open] > summary::before {
+    transform: translateY(-0.28em) rotate(45deg);
+  }
+
   h1,
   h2,
   h3,
@@ -134,19 +158,6 @@
   @media (min-width: 640px) {
     .container-page {
       padding-inline: 1.5rem;
-    }
-  }
-
-  /* Homepage artwork: full width on small screens; on desktop capped at 30% of
-     the viewport height (aspect ratio 1672:941) so the introduction, search,
-     and both directory actions are visible without scrolling. */
-  .hero-figure {
-    max-width: 1672px;
-  }
-  @media (min-width: 1024px) {
-    .hero-figure {
-      max-width: min(1672px, calc(30vh * 1.7768));
-      max-width: min(1672px, calc(30svh * 1.7768));
     }
   }
 

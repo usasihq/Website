@@ -105,7 +105,8 @@ describe("catalog: loading from disk", () => {
     expect(real.artifacts.length).toBeGreaterThan(0);
     // Test fixtures never leak into the real catalog.
     expect(JSON.stringify(real.searchEntries())).not.toMatch(/fixture/i);
-  });
+    // Reads and parses the whole content tree twice, which grows with the catalog.
+  }, 30_000);
 });
 
 describe("catalog: public exports", () => {

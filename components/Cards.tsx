@@ -38,9 +38,14 @@ export function OrgCard({ item, headingLevel = 3 }: { item: OrgListItem; heading
           ))}
         </ul>
       ) : null}
-      <p className="meta mt-auto pt-4 text-[0.8125rem]">
-        {item.artifactCount} open artifact record{item.artifactCount === 1 ? "" : "s"} · reviewed {formatDate(item.lastReviewed)}
-      </p>
+      <div className="mt-auto pt-4">
+        <p className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-line pt-3 text-xs text-muted">
+          <span>
+            <span className="font-medium text-text tabular-nums">{item.artifactCount}</span> open artifact record{item.artifactCount === 1 ? "" : "s"}
+          </span>
+          <span>Reviewed {formatDate(item.lastReviewed)}</span>
+        </p>
+      </div>
     </article>
   );
 }
@@ -73,10 +78,16 @@ export function ArtifactCard({ item, headingLevel = 3 }: { item: ArtifactListIte
           </span>
         ) : null}
       </div>
-      <p className="meta mt-auto pt-4 text-[0.8125rem]">
-        {licenseText ? `${licenseText} · ` : ""}
-        {item.releasedAt ? `released ${formatDate(item.releasedAt)} · ` : ""}reviewed {formatDate(item.lastReviewed)}
-      </p>
+      <div className="mt-auto pt-4">
+        <p className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-line pt-3 text-xs text-muted">
+          <span className="min-w-0">
+            {licenseText ? <span className="text-text">{licenseText}</span> : null}
+            {licenseText && item.releasedAt ? " · " : ""}
+            {item.releasedAt ? `Released ${formatDate(item.releasedAt)}` : ""}
+          </span>
+          <span>Reviewed {formatDate(item.lastReviewed)}</span>
+        </p>
+      </div>
     </article>
   );
 }

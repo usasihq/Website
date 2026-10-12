@@ -9,12 +9,34 @@ import { ExternalLink } from "./ExternalLink";
 
 const COLUMNS = [
   {
-    heading: "Directories",
+    heading: "Explore",
     links: [
       { href: "/companies/", label: "Companies & Labs" },
       { href: "/open/", label: "Open Models & Tools" },
       { href: "/matrix/", label: "Compare" },
       { href: "/jobs/", label: "Jobs" },
+      { href: "/hubs/", label: "Hubs" },
+      { href: "/places/", label: "Places" },
+      { href: "/timeline/", label: "Timeline" },
+    ],
+  },
+  {
+    heading: "Learn",
+    links: [
+      { href: "/start/", label: "Start here" },
+      { href: "/learn/", label: "Learn" },
+      { href: "/kids/", label: "For kids" },
+      { href: "/glossary/", label: "Glossary" },
+      { href: "/faq/", label: "FAQ" },
+      { href: "/policy/", label: "Policy tracker" },
+      { href: "/sources/", label: "Source library" },
+    ],
+  },
+  {
+    heading: "People & news",
+    links: [
+      { href: "/big-si/", label: "People Behind Big SI" },
+      { href: "/local/", label: "People Behind Local SI" },
       { href: "/news/", label: "Latest news" },
       { href: "/newsletter/", label: "Weekly email" },
       { href: "/feeds/", label: "RSS feeds" },
@@ -23,22 +45,12 @@ const COLUMNS = [
   {
     heading: "Project",
     links: [
-      { href: "/start/", label: "Start here" },
-      { href: "/learn/", label: "Learn" },
-      { href: "/kids/", label: "For kids" },
-      { href: "/hubs/", label: "Hubs" },
-      { href: "/places/", label: "Places" },
-      { href: "/timeline/", label: "Timeline" },
-      { href: "/sources/", label: "Source library" },
-      { href: "/glossary/", label: "Glossary" },
+      { href: "/about/", label: "About" },
       { href: "/methodology/", label: "Methodology" },
       { href: "/compact/", label: "USASI Compact v0.2" },
-      { href: "/about/", label: "About" },
-      { href: "/big-si/", label: "People Behind Big SI" },
-      { href: "/local/", label: "People Behind Local SI" },
       { href: "/changelog/", label: "Changelog" },
-      { href: "/reuse/", label: "Data & reuse" },
       { href: "/contribute/", label: "Contribute" },
+      { href: "/reuse/", label: "Data & reuse" },
       { href: "/badges/", label: "Badges for maintainers" },
     ],
   },
@@ -57,25 +69,25 @@ export function SiteFooter() {
   const repo = repositoryUrl();
   return (
     <footer className="border-t border-line bg-[#040613]">
-      <div className="container-page py-12">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)]">
-          <div className="max-w-sm">
+      <div className="container-page pb-20 pt-12">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-[1.5fr_repeat(5,minmax(0,1fr))] lg:gap-x-8">
+          <div className="col-span-2 max-w-sm sm:col-span-3 lg:col-span-1">
             <div className="flex items-center gap-3">
               <BrandMark className="h-8 w-8" />
               <p className="font-semibold tracking-[0.06em]">{siteConfig.shortName}</p>
             </div>
             <p className="mt-3 text-[0.9375rem] text-muted">{siteConfig.name}. {siteConfig.tagline}</p>
-            <p className="mt-4 rounded-lg border border-line px-3 py-2 text-[0.9375rem] font-medium text-text" data-testid="footer-disclaimer">
+            <p className="mt-4 rounded-lg border border-line bg-[rgba(11,18,36,0.6)] px-3 py-2 text-sm font-medium text-text" data-testid="footer-disclaimer">
               {siteConfig.disclaimer}
             </p>
           </div>
           {COLUMNS.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>
-              <h2 className="eyebrow">{col.heading}</h2>
-              <ul className="mt-3 space-y-1">
+              <h2 className="eyebrow text-[0.75rem]">{col.heading}</h2>
+              <ul className="mt-3 space-y-0.5">
                 {col.links.map((l) => (
                   <li key={l.href}>
-                    <Link href={l.href} className="inline-flex min-h-9 items-center text-[0.9375rem] text-muted hover:text-text">
+                    <Link href={l.href} className="inline-flex min-h-8 items-center text-sm text-muted transition-colors hover:text-text">
                       {l.label}
                     </Link>
                   </li>

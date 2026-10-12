@@ -110,35 +110,104 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
         <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={[{ href: "/companies/", label: "Companies & Labs" }]} />
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-              <Monogram text={org.logo_text} size="lg" />
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
               <div className="min-w-0">
-                <p className="eyebrow">Organization</p>
-                <h1 className="mt-1 text-3xl font-semibold text-text sm:text-4xl">{org.name}</h1>
-                <p className="mt-2 text-[0.9375rem] text-muted">
-                  {org.organization_roles.map((r) => ROLE_LABELS[r]).join(" · ")}
-                  {org.headquarters ? ` · ${org.headquarters.label}` : ""}
-                </p>
-                {org.parent_org_slug && org.parent_relationship ? (
-                  <p className="mt-2 text-[0.9375rem] text-ice">
-                    {RELATIONSHIP_LABELS[org.parent_relationship]} of{" "}
-                    {parent ? (
-                      <Link prefetch={false} href={orgHref(parent.slug)} className="link">
-                        {parent.name}
-                      </Link>
-                    ) : (
-                      "an organization not currently listed in this catalog"
-                    )}
-                  </p>
-                ) : null}
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                  <Monogram text={org.logo_text} size="lg" />
+                  <div className="min-w-0">
+                    <p className="eyebrow">Organization</p>
+                    <h1 className="mt-1 text-3xl font-semibold text-text sm:text-4xl">{org.name}</h1>
+                    <p className="mt-2 text-[0.9375rem] text-muted">
+                      {org.organization_roles.map((r) => ROLE_LABELS[r]).join(" · ")}
+                      {org.headquarters ? ` · ${org.headquarters.label}` : ""}
+                    </p>
+                    {org.parent_org_slug && org.parent_relationship ? (
+                      <p className="mt-2 text-[0.9375rem] text-ice">
+                        {RELATIONSHIP_LABELS[org.parent_relationship]} of{" "}
+                        {parent ? (
+                          <Link prefetch={false} href={orgHref(parent.slug)} className="link">
+                            {parent.name}
+                          </Link>
+                        ) : (
+                          "an organization not currently listed in this catalog"
+                        )}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+                <ClaimText claim={org.summary} sources={s} className="mt-6 max-w-3xl text-lg text-[#d5def2]" />
+                <nav aria-label="On this company page" className="mt-6">
+                  <ul className="flex flex-wrap gap-2">
+                    {[
+                      org.deep_dive ? { id: "in-depth", label: "In depth" } : null,
+                      leaders.length && !org.deep_dive ? { id: "leaders", label: "People" } : null,
+                      { id: "overview", label: "Overview" },
+                      { id: "facts", label: "Key facts" },
+                      { id: "products", label: "Products" },
+                      { id: "artifacts", label: "Artifacts" },
+                      catalog.newsForOrganization(org.slug).length > 0 ? { id: "news", label: "News" } : null,
+                      catalog.isActiveOrganization(org.slug) ? { id: "jobs", label: "Jobs" } : null,
+                      { id: "sources", label: "Sources" },
+                    ]
+                      .filter((x): x is { id: string; label: string } => Boolean(x))
+                      .map((x) => (
+                        <li key={x.id}>
+                          <a href={`#${x.id}`} className="badge px-3 py-1 text-sm text-ice hover:border-cyan hover:text-white">
+                            {x.label}
+                          </a>
+                        </li>
+                      ))}
+                  </ul>
+                </nav>
+                <div className="mt-6">
+                  <ReviewDates lastReviewed={org.last_reviewed} updatedAt={org.updated_at} />
+                </div>
               </div>
-            </div>
-            <ClaimText claim={org.summary} sources={s} className="mt-6 max-w-3xl text-lg text-[#d5def2]" />
-            <nav aria-label="On this company page" className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-              {["overview", "facts", "products", "artifacts", "sources"].map(id => <a key={id} href={`#${id}`} className="link capitalize">{id}</a>)}
-            </nav>
-            <div className="mt-6">
-              <ReviewDates lastReviewed={org.last_reviewed} updatedAt={org.updated_at} />
+
+              <aside aria-label={`${org.name} at a glance`} className="card self-start p-5">
+                <h2 className="eyebrow text-[0.75rem]">At a glance</h2>
+                <dl className="mt-3 divide-y divide-[rgba(120,180,255,0.12)] text-sm">
+                  {([
+                    { label: "Website", value: <ExternalLink href={org.website}>{new URL(org.website).hostname.replace(/^www\./, "")}</ExternalLink> },
+                    org.headquarters ? { label: "Headquarters", value: org.headquarters.label } : null,
+                    org.founded ? { label: "Founded", value: String(org.founded.year) } : null,
+                    { label: "Ownership", value: OWNERSHIP_LABELS[org.ownership_category] },
+                    { label: "Products recorded", value: String(org.products.length) },
+                    { label: "Open records", value: String(related.length) },
+                  ] as ({ label: string; value: React.ReactNode } | null)[])
+                    .filter((x): x is { label: string; value: React.ReactNode } => Boolean(x))
+                    .map((x) => (
+                      <div key={x.label} className="flex items-baseline justify-between gap-4 py-2">
+                        <dt className="text-muted">{x.label}</dt>
+                        <dd className="min-w-0 text-right text-text">{x.value}</dd>
+                      </div>
+                    ))}
+                </dl>
+                {leaders.length ? (
+                  <div className="mt-3 border-t border-line pt-3">
+                    <p className="text-xs uppercase tracking-[0.08em] text-muted">People Behind Big SI</p>
+                    {[
+                      { label: null, people: leaders.filter((l) => l.current_roles.some((r) => r.organization_slug === org.slug)) },
+                      { label: `Formerly at ${org.name}`, people: leaders.filter((l) => !l.current_roles.some((r) => r.organization_slug === org.slug)) },
+                    ]
+                      .filter((g) => g.people.length)
+                      .map((g) => (
+                        <div key={g.label ?? "current"} className="mt-2">
+                          {g.label ? <p className="text-xs text-muted">{g.label}</p> : null}
+                          <ul className="mt-1 space-y-1.5 text-sm">
+                            {g.people.map((l) => (
+                              <li key={l.slug}>
+                                <Link prefetch={false} href={`/big-si/${l.slug}/`} className="link">
+                                  {l.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                  </div>
+                ) : null}
+              </aside>
             </div>
           </div>
         </header>

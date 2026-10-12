@@ -519,17 +519,40 @@ for (const width of [320, 1280]) {
 
 test("people navigation order, keyboard activation and current-page semantics", async ({ page, isMobile }) => {
   await page.goto("/about/");
-  if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
-  const nav = page.getByRole("navigation", { name: isMobile ? "Primary (mobile)" : "Primary", exact: true });
-  const labels = await nav.getByRole("link").allTextContents();
-  expect(labels.slice(-3)).toEqual(["Methodology", "People Behind Local SI", "About"]);
-  await nav.getByRole("link", { name: "Methodology", exact: true }).focus();
-  await page.keyboard.press("Tab");
-  await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toBeFocused();
-  await page.keyboard.press("Enter");
-  await expect(page).toHaveURL(/\/local\/$/);
-  if (isMobile) await page.getByRole("button", { name: "Menu", exact: true }).click();
-  await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toHaveAttribute("aria-current", "page");
+  if (isMobile) {
+    await page.getByRole("button", { name: "Menu", exact: true }).click();
+    const nav = page.getByRole("navigation", { name: "Primary (mobile)", exact: true });
+    const labels = await nav.getByRole("link").allTextContents();
+    expect(labels.slice(-4)).toEqual(["Methodology", "People Behind Big SI", "People Behind Local SI", "About"]);
+    await nav.getByRole("link", { name: "People Behind Big SI", exact: true }).focus();
+    await page.keyboard.press("Tab");
+    await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/\/local\/$/);
+    await page.getByRole("button", { name: "Menu", exact: true }).click();
+    await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toHaveAttribute("aria-current", "page");
+  } else {
+    const nav = page.getByRole("navigation", { name: "Primary", exact: true });
+    const people = nav.getByRole("button", { name: "People", exact: true });
+    await nav.getByRole("link", { name: "Methodology", exact: true }).focus();
+    await page.keyboard.press("Tab");
+    await expect(people).toBeFocused();
+    await expect(people).toHaveAttribute("aria-expanded", "false");
+    await page.keyboard.press("Enter");
+    await expect(people).toHaveAttribute("aria-expanded", "true");
+    await page.keyboard.press("Tab");
+    await expect(nav.getByRole("link", { name: /^People Behind Big SI/ })).toBeFocused();
+    await page.keyboard.press("Tab");
+    await expect(nav.getByRole("link", { name: /^People Behind Local SI/ })).toBeFocused();
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/\/local\/$/);
+    await expect(people).toHaveAttribute("aria-expanded", "false");
+    await people.click();
+    await expect(nav.getByRole("link", { name: /^People Behind Local SI/ })).toHaveAttribute("aria-current", "page");
+    await page.keyboard.press("Escape");
+    await expect(people).toHaveAttribute("aria-expanded", "false");
+    await expect(people).toBeFocused();
+  }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { BrandMark } from "./BrandMark";
 import { SiteSearch } from "./SiteSearch";
@@ -17,7 +17,6 @@ const REFERENCE = [
   { href: "/sources/", label: "Source library", bar: false },
   { href: "/glossary/", label: "Glossary", bar: true },
   { href: "/kids/", label: "For kids", bar: false },
-  { href: "/big-si/", label: "People Behind Big SI", bar: false },
   { href: "/licenses/", label: "License guide", bar: false },
   { href: "/policy/", label: "Policy tracker", bar: true },
   { href: "/reuse/", label: "Data & reuse", bar: false },
@@ -25,7 +24,14 @@ const REFERENCE = [
   { href: "/contribute/#corrections", label: "Corrections", bar: true },
 ];
 
-const NAV = [
+const PEOPLE = [
+  { href: "/big-si/", label: "People Behind Big SI", description: "Founders, executives, and builders behind the companies shaping AI" },
+  { href: "/local/", label: "People Behind Local SI", description: "People whose work helps you run AI on your own hardware" },
+];
+
+type NavItem = { href: string; label: string } | { label: string; items: typeof PEOPLE };
+
+const NAV: NavItem[] = [
   { href: "/companies/", label: "Companies & Labs" },
   { href: "/open/", label: "Open Models & Tools" },
   { href: "/learn/", label: "Learn" },
@@ -33,9 +39,88 @@ const NAV = [
   { href: "/matrix/", label: "Compare" },
   { href: "/news/", label: "News" },
   { href: "/methodology/", label: "Methodology" },
-  { href: "/local/", label: "People Behind Local SI" },
+  { label: "People", items: PEOPLE },
   { href: "/about/", label: "About" },
 ];
+
+/** Mobile menu: the People group is listed as its links. */
+const MOBILE_NAV = NAV.flatMap((item) => ("items" in item ? item.items : [item]));
+
+/**
+ * A disclosure (button plus a short list of links) for the People pages.
+ * It closes on Escape, on a click outside, and after any navigation.
+ */
+function PeopleMenu({ pathname }: { pathname: string }) {
+  const [openedFor, setOpenedFor] = useState<string | null>(null);
+  const open = openedFor === pathname;
+  const panelId = useId();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const current = PEOPLE.some((p) => isCurrent(pathname, p.href));
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenedFor(null);
+        buttonRef.current?.focus();
+      }
+    };
+    const onPointer = (event: PointerEvent) => {
+      if (!wrapRef.current?.contains(event.target as Node)) setOpenedFor(null);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={wrapRef}
+      className="relative"
+      onBlur={(event) => {
+        if (open && !event.currentTarget.contains(event.relatedTarget as Node | null)) setOpenedFor(null);
+      }}
+    >
+      <button
+        ref={buttonRef}
+        type="button"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpenedFor(open ? null : pathname)}
+        className={`inline-flex min-h-11 items-center gap-1 whitespace-nowrap rounded-md px-3 text-[0.9375rem] transition-colors ${
+          current ? "text-text underline decoration-cyan decoration-2 underline-offset-[10px]" : "text-muted hover:text-text"
+        }`}
+      >
+        People
+        <ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      <div
+        id={panelId}
+        hidden={!open}
+        className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border border-line-strong bg-[#0a1024] p-2 shadow-[0_20px_60px_rgba(0,0,0,0.55)]"
+      >
+        <ul>
+          {PEOPLE.map((p) => (
+            <li key={p.href}>
+              <Link
+                href={p.href}
+                aria-current={isCurrent(pathname, p.href) ? "page" : undefined}
+                className="block rounded-lg px-3 py-2.5 hover:bg-[rgba(76,201,255,0.08)] aria-[current=page]:bg-[rgba(76,201,255,0.1)]"
+              >
+                <span className="block text-[0.9375rem] font-medium text-text">{p.label}</span>
+                <span className="mt-0.5 block text-[0.8125rem] leading-snug text-muted">{p.description}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function isCurrent(pathname: string, href: string) {
   const normalized = pathname.endsWith("/") ? pathname : `${pathname}/`;
@@ -97,6 +182,13 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
         <nav aria-label="Primary" className="hidden shrink-0 xl:block">
           <ul className="flex items-center gap-1">
             {NAV.map((item) => {
+              if ("items" in item) {
+                return (
+                  <li key={item.label}>
+                    <PeopleMenu pathname={pathname} />
+                  </li>
+                );
+              }
               const current = isCurrent(pathname, item.href);
               return (
                 <li key={item.href}>
@@ -134,7 +226,7 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
       <div id={panelId} hidden={!open} className="border-t border-line bg-bg xl:hidden">
         <nav aria-label="Primary (mobile)" className="container-page py-3">
           <ul className="flex flex-col">
-            {NAV.map((item, i) => {
+            {MOBILE_NAV.map((item, i) => {
               const current = isCurrent(pathname, item.href);
               return (
                 <li key={item.href}>

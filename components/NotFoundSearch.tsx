@@ -26,16 +26,16 @@ export function NotFoundSearch() {
     () => "",
   );
   return (
-    <p className="mt-6 flex flex-wrap items-center gap-2 text-lg">
-      <Search aria-hidden="true" className="h-5 w-5 text-cyan" />
+    <p className="mt-6 flex items-start gap-2 text-lg">
+      <Search aria-hidden="true" className="mt-1.5 h-5 w-5 flex-none text-cyan" />
       {words ? (
-        <>
-          <span className="text-muted">Looking for</span>
+        <span className="text-muted">
+          Looking for{" "}
           <Link prefetch={false} href={`/search/?q=${encodeURIComponent(words)}`} className="link">
             “{words}”
           </Link>
-          <span className="text-muted">? Search the site for it, or press / on any page.</span>
-        </>
+          ? Search the site for it, or press <kbd className="rounded border border-line px-1.5 font-mono text-sm">/</kbd> on any page.
+        </span>
       ) : (
         <Link prefetch={false} href="/search/" className="link">
           Search the site
