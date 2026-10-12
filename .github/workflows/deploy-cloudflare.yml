@@ -51,12 +51,12 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
+      - run: npx playwright install --with-deps chromium
       - run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
           NEXT_PUBLIC_BASE_PATH: ""
       - run: npm run check:links
-      - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - name: Refuse an obsolete release before saving state or publishing
         run: |

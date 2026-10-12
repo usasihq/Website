@@ -31,12 +31,12 @@ jobs:
       - run: npm run lint
       - name: Unit tests
         run: npm test
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
       - name: Production static build
         run: npm run build
       - name: Internal link check
         run: npm run check:links
-      - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
       - name: End-to-end tests against the static export
         run: npm run test:e2e
       - name: Base-path build and test (GitHub Pages project sites)
