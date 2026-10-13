@@ -369,8 +369,9 @@ test.describe("latest news", () => {
   test("news page, item pages, homepage strip, and RSS feed agree", async ({ page, request }) => {
     test.skip(items.length === 0, "no published news yet");
     await page.goto("/news/");
-    await expect(page.locator("main article[data-news]")).toHaveCount(items.length);
-    const first = page.locator("main article[data-news] h2 a").first();
+    // The list shows the first page of items once interactive; the summary counts all of them.
+    await expect(page.getByText(new RegExp(`^Showing ${Math.min(30, items.length)} of ${items.length} news items?$`)).first()).toBeVisible();
+    const first = page.locator("main article[data-news] h3 a").first();
     await first.click();
     await expect(page.getByRole("heading", { name: "Sources", exact: true })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Related catalog entries" })).toBeVisible();
