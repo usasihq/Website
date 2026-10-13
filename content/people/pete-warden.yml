@@ -1,0 +1,112 @@
+slug: pete-warden
+name: Pete Warden
+initials: PW
+groups: [local, open-source, leadership]
+sector: corporate
+specialties: [inference, speech-audio, ml-frameworks]
+headline: CEO of Useful Sensors, founding member of the TensorFlow team, and co-author of TinyML and Moonshine
+bio:
+  text: >-
+    Pete Warden's about page describes Warden as an engineer, CEO of Useful Sensors Inc, a founding
+    member of the TensorFlow team, and author of TinyML. Warden is a co-author of the TensorFlow white paper and the
+    2016 TensorFlow system paper, and co-wrote the TinyML book with Daniel Situnayake, which covers
+    TensorFlow Lite for Microcontrollers and training models small enough for microcontrollers. Warden is
+    also a co-author of the Moonshine speech recognition papers; the Moonshine repository says
+    everything runs on-device and publishes its code and most models under the MIT License.
+  source_ids: [warden-about, tf-whitepaper, tf-osdi-paper, tinyml-book, moonshine-paper, moonshine-v2-paper, moonshine-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Useful Sensors Inc
+    organization_slug: null
+    role: CEO
+    current: true
+    source_ids: [warden-about]
+  - name: Google (TensorFlow team)
+    organization_slug: google
+    role: Founding member of the TensorFlow team
+    current: false
+    source_ids: [warden-about, tf-whitepaper, tf-osdi-paper]
+work:
+  - name: TensorFlow
+    artifact_slug: tensorflow
+    type: open-source
+    url: https://github.com/tensorflow/tensorflow
+    contribution: >-
+      Founding member of the TensorFlow team and co-author of the TensorFlow white paper and of the 2016
+      paper TensorFlow: A system for large-scale machine learning.
+    source_ids: [warden-about, tf-whitepaper, tf-osdi-paper]
+  - name: Moonshine
+    artifact_slug: null
+    type: open-weights
+    url: https://github.com/moonshine-ai/moonshine
+    contribution: >-
+      Co-author of the 2024 Moonshine paper on speech recognition models for live transcription and
+      voice commands and of the 2026 Moonshine v2 paper on streaming recognition for edge devices; the
+      repository says everything runs on-device and licenses code and most models under MIT.
+    source_ids: [moonshine-paper, moonshine-v2-paper, moonshine-repo]
+  - name: TinyML (book)
+    artifact_slug: null
+    type: open-research
+    url: https://tinymlbook.com/
+    contribution: >-
+      Co-author, with Daniel Situnayake, of TinyML, a book on training models small enough for
+      microcontrollers that covers TensorFlow Lite for Microcontrollers.
+    source_ids: [tinyml-book, warden-about]
+links:
+  - label: Website
+    url: https://petewarden.com/
+  - label: GitHub
+    url: https://github.com/petewarden
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: warden-about
+    title: About — Pete Warden's blog
+    url: https://petewarden.com/about/
+    publisher: Pete Warden
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tf-whitepaper
+    title: "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems (arXiv 1603.04467)"
+    url: https://arxiv.org/abs/1603.04467
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-03-14
+    accessed_at: 2026-10-13
+  - id: tf-osdi-paper
+    title: "TensorFlow: A system for large-scale machine learning (arXiv 1605.08695)"
+    url: https://arxiv.org/abs/1605.08695
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-05-27
+    accessed_at: 2026-10-13
+  - id: tinyml-book
+    title: TinyML Book
+    url: https://tinymlbook.com/
+    publisher: Pete Warden and Daniel Situnayake
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: moonshine-paper
+    title: "Moonshine: Speech Recognition for Live Transcription and Voice Commands (arXiv 2410.15608)"
+    url: https://arxiv.org/abs/2410.15608
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-21
+    accessed_at: 2026-10-13
+  - id: moonshine-v2-paper
+    title: "Moonshine v2: Ergodic Streaming Encoder ASR for Latency-Critical Speech Applications (arXiv 2602.12241)"
+    url: https://arxiv.org/abs/2602.12241
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-12
+    accessed_at: 2026-10-13
+  - id: moonshine-repo
+    title: moonshine-ai/moonshine README and license
+    url: https://github.com/moonshine-ai/moonshine
+    publisher: Moonshine AI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

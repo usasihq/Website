@@ -1,0 +1,79 @@
+slug: denny-britz
+name: Denny Britz
+initials: DB
+groups: [engineering, open-source]
+specialties: [language-models, reinforcement-learning, education]
+headline: First-listed author of a 2017 Google Brain study of NMT architectures; contributor to its TensorFlow framework
+bio:
+  text: >-
+    Denny Britz's site says Britz published several papers as part of the Google AI team, focusing on
+    NLP, machine translation, and reinforcement learning, and now applies machine learning and
+    reinforcement learning techniques to financial markets. Britz is the first-listed author, with equal
+    contribution from Anna Goldie, of Massive Exploration of Neural Machine Translation Architectures
+    (2017), listed with a Google Brain affiliation; its official code is google/seq2seq, an Apache-2.0
+    encoder-decoder framework for TensorFlow whose contributor listing includes Britz's GitHub account.
+    Britz's blog also hosts tutorials such as implementing a CNN for text classification in TensorFlow.
+  source_ids: [britz-site, nmt-exploration-paper, seq2seq-repo, seq2seq-contributors]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google Brain
+    organization_slug: google
+    role: Listed with a Google Brain affiliation on the 2017 NMT architecture paper
+    current: false
+    source_ids: [nmt-exploration-paper, britz-site]
+work:
+  - name: google/seq2seq
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/google/seq2seq
+    contribution: >-
+      Listed among the contributors to the google/seq2seq repository, a general-purpose encoder-decoder
+      framework for TensorFlow released under the Apache 2.0 license, which its README describes as the
+      official code for the 2017 paper on which Britz is the first-listed author.
+    source_ids: [nmt-exploration-paper, seq2seq-repo, seq2seq-contributors]
+  - name: Massive Exploration of Neural Machine Translation Architectures
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1703.03906
+    contribution: >-
+      First-listed author (equal contribution with Anna Goldie) of a 2017 Google Brain study that
+      analyzes NMT architecture hyperparameters across several hundred experimental runs on WMT
+      English-to-German translation.
+    source_ids: [nmt-exploration-paper]
+links:
+  - label: Website
+    url: https://dennybritz.com/
+  - label: GitHub
+    url: https://github.com/dennybritz
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: britz-site
+    title: Denny's Blog — homepage
+    url: https://dennybritz.com/
+    publisher: Denny Britz
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: nmt-exploration-paper
+    title: Massive Exploration of Neural Machine Translation Architectures (arXiv 1703.03906)
+    url: https://arxiv.org/abs/1703.03906
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-11
+    accessed_at: 2026-10-13
+  - id: seq2seq-repo
+    title: google/seq2seq README (Apache-2.0)
+    url: https://github.com/google/seq2seq
+    publisher: Google (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: seq2seq-contributors
+    title: google/seq2seq contributors (GitHub API listing)
+    url: https://api.github.com/repos/google/seq2seq/contributors
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

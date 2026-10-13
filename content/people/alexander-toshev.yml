@@ -1,0 +1,82 @@
+slug: alexander-toshev
+name: Alexander Toshev
+initials: AT
+groups: [engineering]
+sector: corporate
+specialties: [agents, vision, data]
+headline: Apple machine learning researcher; co-author of DataComp-LM, MobileCLIP2, and recent agent-training work
+bio:
+  text: >-
+    Alexander Toshev is a machine learning researcher at Apple, listed with Apple on papers through
+    September 2026. Toshev's recent Apple work covers training agents, including RLTL;DR, a 2026 method in
+    which an agent writes short feedback insights after failed attempts and conditions later attempts on
+    them. Toshev is also a co-author of DataComp-LM, a testbed for controlled dataset experiments built
+    around a standardized Common Crawl corpus, and of MobileCLIP2, which improves the training of
+    low-latency image-text models.
+  source_ids: [rltldr-paper, simulate-paper, dclm-paper, mobileclip2-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Apple
+    organization_slug: apple
+    role: Listed with Apple on the RLTL;DR paper (September 2026)
+    current: true
+    source_ids: [rltldr-paper, simulate-paper, mobileclip2-paper]
+work:
+  - name: "DataComp-LM: In search of the next generation of training sets for language models"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2406.11794
+    contribution: >-
+      Co-author, listed with Apple, of the 2024 DataComp-LM paper, which provides a standardized corpus,
+      pretraining recipes, and downstream evaluations for dataset experiments at model scales from 412M to
+      7B parameters.
+    source_ids: [dclm-paper]
+  - name: "RLTL;DR: Self-improvement by Internalizing Self-generated Feedback"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2609.37633
+    contribution: >-
+      Co-author of the 2026 Apple paper introducing RLTL;DR for self-improvement in reinforcement learning
+      with verifiable rewards.
+    source_ids: [rltldr-paper]
+  - name: "MobileCLIP2: Improving Multi-Modal Reinforced Training"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2508.20691
+    contribution: >-
+      Co-author, listed with Apple, of the 2025 MobileCLIP2 paper on improved multi-modal reinforced
+      training for low-latency image-text models.
+    source_ids: [mobileclip2-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: rltldr-paper
+    title: "RLTL;DR: Self-improvement by Internalizing Self-generated Feedback (arXiv 2609.37633)"
+    url: https://arxiv.org/abs/2609.37633
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-09-29
+    accessed_at: 2026-10-13
+  - id: simulate-paper
+    title: "Simulate to Generalize: Scaling Stateful Supervision for API-calling Agents using LLM World Models (arXiv 2607.16900)"
+    url: https://arxiv.org/abs/2607.16900
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-07-18
+    accessed_at: 2026-10-13
+  - id: dclm-paper
+    title: "DataComp-LM: In search of the next generation of training sets for language models (arXiv 2406.11794)"
+    url: https://arxiv.org/abs/2406.11794
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-17
+    accessed_at: 2026-10-13
+  - id: mobileclip2-paper
+    title: "MobileCLIP2: Improving Multi-Modal Reinforced Training (arXiv 2508.20691)"
+    url: https://arxiv.org/abs/2508.20691
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-08-28
+    accessed_at: 2026-10-13

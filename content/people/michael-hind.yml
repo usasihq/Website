@@ -1,0 +1,124 @@
+slug: michael-hind
+name: Michael Hind
+initials: MH
+groups: [engineering, open-source]
+sector: corporate
+specialties: [safety-alignment, interpretability]
+headline: Distinguished Research Staff Member at IBM Research; co-author of AI Fairness 360, AIX360 and FactSheets
+bio:
+  text: >-
+    Michael Hind is a Distinguished Research Staff Member in IBM Research's AI department, who has worked
+    on AI governance for much of the past decade and is now also pursuing ideas in generative computing,
+    according to the IBM Research profile. The profile credits Hind and collaborators with transferring
+    FactSheets and AI risk tools into IBM and with launching open-source projects including AI Fairness
+    360, AI Explainability 360, and AI Risk Atlas Nexus, alongside programming-language projects such as
+    Jikes RVM and WALA. Hind is a co-author of the papers introducing AI Fairness 360, AI
+    Explainability 360, FactSheets, and IBM's Granite Guardian models, and the profile notes the SIGPLAN
+    Software Award in 2012 for work on Jikes RVM.
+  source_ids: [ibm-research-profile, aif360-paper, aix360-paper, factsheets-paper, granite-guardian-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: IBM Research
+    organization_slug: ibm
+    role: Distinguished Research Staff Member
+    current: true
+    source_ids: [ibm-research-profile]
+work:
+  - name: Granite Guardian
+    artifact_slug: granite
+    type: open-weights
+    url: https://github.com/ibm-granite/granite-guardian
+    contribution: >-
+      Listed among the authors of the Granite Guardian technical report (2024), which introduces
+      risk-detection models for LLM prompts and responses released as open source; the repository is
+      under the Apache-2.0 license and the Granite Guardian 3.0 8B model card lists the apache-2.0
+      license.
+    source_ids: [granite-guardian-paper, granite-guardian-repo, granite-guardian-card]
+  - name: AI Fairness 360 and AI Explainability 360
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/Trusted-AI/AIF360
+    contribution: >-
+      Co-author of the 2018 paper introducing AI Fairness 360, released under the Apache v2.0 license,
+      and of the 2019 paper introducing the open-source AI Explainability 360 toolkit; IBM Research's
+      profile lists both among the open-source projects Hind and collaborators launched.
+    source_ids: [aif360-paper, aif360-repo, aix360-paper, ibm-research-profile]
+  - name: FactSheets and AI Risk Atlas Nexus
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/IBM/ai-atlas-nexus
+    contribution: >-
+      Co-author of the 2018 FactSheets paper on documenting AI services; the IBM Research profile lists
+      AI FactSheets 360 and AI Risk Atlas Nexus among Hind's projects, and the IBM/ai-atlas-nexus
+      repository is under the Apache-2.0 license.
+    source_ids: [factsheets-paper, ibm-research-profile, atlas-nexus-repo]
+links:
+  - label: IBM Research profile
+    url: https://research.ibm.com/people/michael-hind
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: ibm-research-profile
+    title: Michael Hind — IBM Research
+    url: https://research.ibm.com/people/michael-hind
+    publisher: IBM Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: granite-guardian-paper
+    title: Granite Guardian (arXiv 2412.07724)
+    url: https://arxiv.org/abs/2412.07724
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-10
+    accessed_at: 2026-10-13
+  - id: granite-guardian-repo
+    title: ibm-granite/granite-guardian README and license (Apache-2.0)
+    url: https://github.com/ibm-granite/granite-guardian
+    publisher: IBM Granite (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: granite-guardian-card
+    title: ibm-granite/granite-guardian-3.0-8b model card (license apache-2.0)
+    url: https://huggingface.co/ibm-granite/granite-guardian-3.0-8b
+    publisher: IBM Granite (Hugging Face)
+    kind: model-card
+    published_at: 2024-10-15
+    accessed_at: 2026-10-13
+  - id: aif360-paper
+    title: "AI Fairness 360: An Extensible Toolkit for Detecting, Understanding, and Mitigating Unwanted Algorithmic Bias (arXiv 1810.01943)"
+    url: https://arxiv.org/abs/1810.01943
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-10-03
+    accessed_at: 2026-10-13
+  - id: aif360-repo
+    title: Trusted-AI/AIF360 README and license (Apache-2.0)
+    url: https://github.com/Trusted-AI/AIF360
+    publisher: Trusted-AI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: aix360-paper
+    title: "One Explanation Does Not Fit All: A Toolkit and Taxonomy of AI Explainability Techniques (arXiv 1909.03012)"
+    url: https://arxiv.org/abs/1909.03012
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-09-06
+    accessed_at: 2026-10-13
+  - id: factsheets-paper
+    title: "FactSheets: Increasing Trust in AI Services through Supplier's Declarations of Conformity (arXiv 1808.07261)"
+    url: https://arxiv.org/abs/1808.07261
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-08-22
+    accessed_at: 2026-10-13
+  - id: atlas-nexus-repo
+    title: IBM/ai-atlas-nexus README and license (Apache-2.0)
+    url: https://github.com/IBM/ai-atlas-nexus
+    publisher: IBM (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

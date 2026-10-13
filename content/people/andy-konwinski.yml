@@ -1,0 +1,126 @@
+slug: andy-konwinski
+name: Andy Konwinski
+initials: AK
+groups: [leadership, open-source, engineering]
+sector: null
+specialties: [evaluation, agents, data]
+headline: Co-founder of Laude, Databricks and Perplexity; co-author of the Terminal-Bench and Mesos papers
+bio:
+  text: >-
+    Andy Konwinski co-founded Laude (Institute and Ventures), Databricks and Perplexity, and teaches a
+    PhD seminar called Research to Startups in UC Berkeley's computer science department. At
+    Databricks, Konwinski was VP Product AI/ML, created the Data + AI Summit and co-authored the
+    O'Reilly book Learning Spark; at Perplexity, Konwinski was the founding President. Konwinski's site
+    says that during PhD studies at UC Berkeley Konwinski co-created Mesos and was part of the team
+    that created Spark, and the Apache Spark committers page lists Konwinski as a committer. Laude
+    co-created the Terminal-Bench benchmark with Ludwig Schmidt's group at Stanford, and Konwinski is
+    a co-author of the Terminal-Bench paper.
+  source_ids: [konwinski-about, laude-site, spark-committers, mesos-paper, tb-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Laude Institute and Laude Ventures
+    organization_slug: null
+    role: Co-founder, MoTS, Board; Laude Ventures Co-founder and GP
+    current: true
+    source_ids: [laude-site, konwinski-about]
+  - name: University of California, Berkeley
+    organization_slug: uc-berkeley
+    role: Teaches the PhD seminar Research to Startups in the computer science department
+    current: true
+    source_ids: [konwinski-about]
+  - name: Perplexity
+    organization_slug: perplexity
+    role: Co-founder and founding President
+    current: false
+    source_ids: [konwinski-about, aws-perplexity-article]
+  - name: Databricks
+    organization_slug: databricks
+    role: Co-founder; VP Product AI/ML
+    current: false
+    source_ids: [konwinski-about]
+work:
+  - name: Terminal-Bench
+    artifact_slug: terminal-bench
+    type: open-research
+    url: https://arxiv.org/abs/2601.11868
+    contribution: >-
+      Co-author of "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line
+      Interfaces" (2026). Konwinski's site says Laude co-created Terminal-Bench and the Harbor
+      framework with Ludwig Schmidt's group at Stanford, and Laude's site lists Konwinski on the
+      Terminal-Bench team.
+    source_ids: [tb-paper, konwinski-about, laude-site]
+  - name: Mesos
+    artifact_slug: null
+    type: open-research
+    url: https://www.usenix.org/conference/nsdi11/mesos-platform-fine-grained-resource-sharing-data-center
+    contribution: >-
+      Co-author of "Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center" (NSDI
+      2011); Konwinski's site says Konwinski co-created Mesos during graduate school.
+    source_ids: [mesos-paper, konwinski-about]
+  - name: Apache Spark
+    artifact_slug: null
+    type: open-source
+    url: https://spark.apache.org
+    contribution: >-
+      Listed as a committer on the Apache Spark committers page. Konwinski's site says Konwinski was
+      part of the team that created Spark and co-authored the O'Reilly book Learning Spark. The
+      apache/spark repository is Apache-2.0.
+    source_ids: [spark-committers, konwinski-about, spark-repo]
+links:
+  - label: Website
+    url: https://andykonwinski.com
+  - label: GitHub
+    url: https://github.com/andyk
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: konwinski-about
+    title: About Me | Andy Konwinski
+    url: https://andykonwinski.com/about/
+    publisher: Andy Konwinski
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: laude-site
+    title: Laude — homepage and team listing
+    url: https://www.laude.org/
+    publisher: Laude
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: aws-perplexity-article
+    title: "Reimagining search: Perplexity drives productivity with generative AI-powered answer engine (AWS Startups)"
+    url: https://aws.amazon.com/aws-startups/learn/reimagining-search-perplexity-drives-productivity-with-generative-ai-powered-answer-engine/
+    publisher: Amazon Web Services (byline Denis Yarats and Marcos Boaglio)
+    kind: official-page
+    published_at: 2024-11-18
+    accessed_at: 2026-10-13
+  - id: spark-committers
+    title: Committers | Apache Spark
+    url: https://spark.apache.org/committers.html
+    publisher: Apache Spark (Apache Software Foundation)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: spark-repo
+    title: apache/spark repository (Apache-2.0 license)
+    url: https://github.com/apache/spark
+    publisher: Apache Software Foundation (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: mesos-paper
+    title: "Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center (NSDI '11)"
+    url: https://www.usenix.org/conference/nsdi11/mesos-platform-fine-grained-resource-sharing-data-center
+    publisher: USENIX
+    kind: paper
+    published_at: 2011-03
+    accessed_at: 2026-10-13
+  - id: tb-paper
+    title: "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces (arXiv 2601.11868)"
+    url: https://arxiv.org/abs/2601.11868
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-01-17
+    accessed_at: 2026-10-13

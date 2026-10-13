@@ -1,0 +1,65 @@
+slug: yonghui-wu
+name: Yonghui Wu
+initials: YW
+groups: [engineering, open-source]
+specialties: [language-models, training-systems, speech-audio]
+headline: First author of the paper on Google's Neural Machine Translation system (GNMT); co-author of Lingvo
+bio:
+  text: >-
+    Yonghui Wu is the first author of the 2016 paper presenting GNMT, Google's Neural Machine Translation
+    system, which describes deep LSTM encoder and decoder networks with attention for translation and
+    thanks the Google Brain and Google Translate teams. Wu is also a co-author of the 2019 paper on
+    Lingvo, a TensorFlow framework for sequence-to-sequence modeling published in the TensorFlow GitHub
+    organization under the Apache 2.0 license.
+  source_ids: [gnmt-paper, lingvo-paper, lingvo-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google
+    organization_slug: google
+    role: First author of Google's 2016 GNMT paper
+    current: false
+    source_ids: [gnmt-paper]
+work:
+  - name: Google's Neural Machine Translation system (GNMT)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1609.08144
+    contribution: >-
+      First author of the 2016 paper presenting GNMT, a translation model built from a deep LSTM network
+      with eight encoder and eight decoder layers and an attention mechanism, using sub-word units
+      called wordpieces.
+    source_ids: [gnmt-paper]
+  - name: Lingvo
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/tensorflow/lingvo
+    contribution: >-
+      Co-author of the 2019 Lingvo paper; Lingvo is a framework for building neural networks in
+      TensorFlow, particularly sequence models, released under the Apache 2.0 license.
+    source_ids: [lingvo-paper, lingvo-repo]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: gnmt-paper
+    title: "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation (arXiv 1609.08144)"
+    url: https://arxiv.org/abs/1609.08144
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-09-26
+    accessed_at: 2026-10-13
+  - id: lingvo-paper
+    title: "Lingvo: a Modular and Scalable Framework for Sequence-to-Sequence Modeling (arXiv 1902.08295)"
+    url: https://arxiv.org/abs/1902.08295
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-02-21
+    accessed_at: 2026-10-13
+  - id: lingvo-repo
+    title: tensorflow/lingvo README (Apache-2.0)
+    url: https://github.com/tensorflow/lingvo
+    publisher: TensorFlow (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

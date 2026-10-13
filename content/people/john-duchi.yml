@@ -1,0 +1,75 @@
+slug: john-duchi
+name: John Duchi
+initials: JD
+groups: [engineering]
+sector: academic
+specialties: [ml-theory, training-systems]
+headline: Stanford associate professor of Statistics and Electrical Engineering; first author of the Adagrad paper
+bio:
+  text: >-
+    John Duchi is an associate professor of Statistics and Electrical Engineering at Stanford University,
+    with work spanning statistical learning, optimization, information theory, and computation. Duchi's
+    stated goals include large-scale optimization methods that work robustly across machine learning
+    problems and tools to assess the validity of machine-learned systems. Duchi is first author, with Elad
+    Hazan and Yoram Singer, of the 2011 JMLR paper on adaptive subgradient methods, which PyTorch's
+    documentation cites for its Adagrad optimizer, and before joining the Stanford faculty worked at Google
+    as a software engineer and as a summer research intern and engineer.
+  source_ids: [homepage, cv, adagrad-paper, pytorch-adagrad]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: Associate Professor of Statistics and Electrical Engineering
+    current: true
+    source_ids: [homepage, cv]
+  - name: Google
+    organization_slug: google
+    role: Software Engineer (2007–2008); Research Intern/Engineer, summers 2009–2014
+    current: false
+    source_ids: [cv]
+work:
+  - name: Adaptive Subgradient Methods for Online Learning and Stochastic Optimization (Adagrad)
+    artifact_slug: null
+    type: open-research
+    url: https://jmlr.org/papers/v12/duchi11a.html
+    contribution: >-
+      First author, with Elad Hazan and Yoram Singer, of the 2011 Journal of Machine Learning Research
+      paper presenting subgradient methods that adapt to the geometry of the data seen in earlier
+      iterations; PyTorch's documentation for its Adagrad optimizer refers to this paper for details of
+      the algorithm.
+    source_ids: [adagrad-paper, pytorch-adagrad]
+links:
+  - label: Website
+    url: https://web.stanford.edu/~jduchi/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: John Duchi — homepage
+    url: https://web.stanford.edu/~jduchi/
+    publisher: John Duchi
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: cv
+    title: John C. Duchi — curriculum vitae (updated July 2025)
+    url: https://web.stanford.edu/~jduchi/cv.pdf
+    publisher: John Duchi
+    kind: official-page
+    published_at: "2025-07"
+    accessed_at: 2026-10-13
+  - id: adagrad-paper
+    title: Adaptive Subgradient Methods for Online Learning and Stochastic Optimization (JMLR 12(61), 2011)
+    url: https://jmlr.org/papers/v12/duchi11a.html
+    publisher: Journal of Machine Learning Research
+    kind: paper
+    published_at: "2011"
+    accessed_at: 2026-10-13
+  - id: pytorch-adagrad
+    title: torch.optim.Adagrad — PyTorch 2.14 documentation
+    url: https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adagrad.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13

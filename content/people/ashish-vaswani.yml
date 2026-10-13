@@ -1,0 +1,127 @@
+slug: ashish-vaswani
+name: Ashish Vaswani
+initials: AV
+groups: [leadership, engineering, open-source]
+sector: corporate
+specialties: [language-models, data]
+headline: CEO of Essential AI, maker of the open Rnj-1 models; first-listed author of the Transformer paper
+bio:
+  text: >-
+    Ashish Vaswani is the CEO of Essential AI, according to the company's about page, and wrote the
+    December 2025 announcement of Rnj-1, Essential AI's pair of 8B base and instruction-tuned language
+    models, whose model card lists the Apache 2.0 license. Vaswani is also a co-author of the Essential-Web
+    v1.0 paper, which presents a 24-trillion-token web dataset annotated with a twelve-category taxonomy.
+    Earlier, Vaswani was listed with a Google Brain affiliation as the first-listed author of Attention Is
+    All You Need (2017), whose contribution note says Vaswani, with Illia Polosukhin, designed and
+    implemented the first Transformer models, and as first author of the 2018 Tensor2Tensor paper.
+  source_ids: [essential-about, rnj1-post, rnj1-card, essential-web-paper, attention-paper, t2t-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Essential AI
+    organization_slug: essential-ai
+    role: CEO
+    current: true
+    source_ids: [essential-about, rnj1-post]
+  - name: Google Brain
+    organization_slug: google
+    role: Listed with a Google Brain affiliation on 2017–2018 papers
+    current: false
+    source_ids: [attention-paper, t2t-paper]
+work:
+  - name: Rnj-1
+    artifact_slug: rnj
+    type: open-weights
+    url: https://www.essential.ai/research/rnj-1
+    contribution: >-
+      Author of Essential AI's December 2025 announcement of Rnj-1, an 8B base and instruction-tuned
+      model pair that roughly follows the Gemma 3 architecture; the Hugging Face model card lists the
+      Apache 2.0 license.
+    source_ids: [rnj1-post, rnj1-card]
+  - name: Essential-Web v1.0
+    artifact_slug: essential-web
+    type: open-data
+    url: https://huggingface.co/datasets/EssentialAI/essential-web-v1.0
+    contribution: >-
+      Co-author of the 2025 Essential-Web v1.0 paper, which presents a 24-trillion-token dataset in which
+      every document is annotated with a taxonomy; the dataset card lists the ODC-By license.
+    source_ids: [essential-web-paper, essential-web-card]
+  - name: Transformer (Attention Is All You Need)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1706.03762
+    contribution: >-
+      First-listed author of the 2017 paper that introduced the Transformer; the paper lists the author
+      order as random and says Vaswani, with Illia Polosukhin, designed and implemented the first
+      Transformer models.
+    source_ids: [attention-paper]
+  - name: Tensor2Tensor
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/tensorflow/tensor2tensor
+    contribution: >-
+      First author of the 2018 Tensor2Tensor paper; the Apache-2.0 library, developed by the Google
+      Brain team, includes the reference implementation of the Transformer.
+    source_ids: [t2t-paper, t2t-repo]
+links:
+  - label: Essential AI
+    url: https://www.essential.ai/about
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: essential-about
+    title: Essential AI — About (Essential Memo)
+    url: https://www.essential.ai/about
+    publisher: Essential AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: rnj1-post
+    title: "Announcing Rnj-1: Building Instruments of Intelligence"
+    url: https://www.essential.ai/research/rnj-1
+    publisher: Essential AI
+    kind: announcement
+    published_at: 2025-12-05
+    accessed_at: 2026-10-13
+  - id: rnj1-card
+    title: EssentialAI/rnj-1 model card (license apache-2.0)
+    url: https://huggingface.co/EssentialAI/rnj-1
+    publisher: Essential AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: essential-web-paper
+    title: "Essential-Web v1.0: 24T tokens of organized web data (arXiv 2506.14111)"
+    url: https://arxiv.org/abs/2506.14111
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-17
+    accessed_at: 2026-10-13
+  - id: essential-web-card
+    title: EssentialAI/essential-web-v1.0 dataset card (license odc-by)
+    url: https://huggingface.co/datasets/EssentialAI/essential-web-v1.0
+    publisher: Essential AI (Hugging Face)
+    kind: dataset-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: attention-paper
+    title: Attention Is All You Need (arXiv 1706.03762)
+    url: https://arxiv.org/abs/1706.03762
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-06-12
+    accessed_at: 2026-10-13
+  - id: t2t-paper
+    title: Tensor2Tensor for Neural Machine Translation (arXiv 1803.07416)
+    url: https://arxiv.org/abs/1803.07416
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-03-16
+    accessed_at: 2026-10-13
+  - id: t2t-repo
+    title: tensorflow/tensor2tensor README (Apache-2.0)
+    url: https://github.com/tensorflow/tensor2tensor
+    publisher: TensorFlow (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

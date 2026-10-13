@@ -1,0 +1,98 @@
+slug: ruchir-puri
+name: Ruchir Puri
+initials: RP
+groups: [engineering, leadership, open-source]
+sector: corporate
+specialties: [language-models, data, evaluation]
+headline: Chief Scientist of IBM Research and IBM Fellow; first author of the Project CodeNet dataset paper
+bio:
+  text: >-
+    Ruchir Puri is the Chief Scientist of IBM Research, an IBM Fellow, and Vice President of IBM
+    Technology and Technical Community, according to the IBM Research profile. The profile notes that
+    Puri led IBM Watson as its CTO and Chief Architect from 2016 to 2019. Puri is the first author of the
+    2021 paper introducing CodeNet, an AI-for-code dataset whose IBM/Project_CodeNet repository
+    (Apache-2.0) provides processing tools and a download link for the full dataset, and a co-author of IBM's Granite Code models paper,
+    whose models were released under the Apache 2.0 license. Puri also appears among the authors of ITBench, a benchmark for AI
+    agents on IT automation tasks.
+  source_ids: [ibm-research-profile, codenet-paper, codenet-repo, granite-code-paper, itbench-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: IBM Research
+    organization_slug: ibm
+    role: Chief Scientist, IBM Research; IBM Fellow; Vice President, IBM Technology & Technical Community
+    current: true
+    source_ids: [ibm-research-profile]
+  - name: IBM Watson
+    organization_slug: ibm
+    role: CTO and Chief Architect (2016–2019)
+    current: false
+    source_ids: [ibm-research-profile]
+work:
+  - name: IBM Granite Code models
+    artifact_slug: granite
+    type: open-weights
+    url: https://arxiv.org/abs/2405.04324
+    contribution: >-
+      Listed among the authors of "Granite Code Models: A Family of Open Foundation Models for Code
+      Intelligence" (2024), which introduces decoder-only code models from 3 to 34 billion parameters and
+      states that all Granite Code models are released under an Apache 2.0 license.
+    source_ids: [granite-code-paper]
+  - name: Project CodeNet
+    artifact_slug: null
+    type: open-data
+    url: https://github.com/IBM/Project_CodeNet
+    contribution: >-
+      First author of "CodeNet: A Large-Scale AI for Code Dataset for Learning a Diversity of Coding
+      Tasks" (2021). The IBM/Project_CodeNet repository, whose code is under the Apache-2.0 license,
+      provides tools for the dataset and download instructions for the full dataset.
+    source_ids: [codenet-paper, codenet-repo]
+  - name: ITBench
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2502.05352
+    contribution: >-
+      Listed among the authors of "ITBench: Evaluating AI Agents across Diverse Real-World IT Automation
+      Tasks" (2025).
+    source_ids: [itbench-paper]
+links:
+  - label: IBM Research profile
+    url: https://research.ibm.com/people/ruchir-puri
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: ibm-research-profile
+    title: Ruchir Puri — IBM Research
+    url: https://research.ibm.com/people/ruchir-puri
+    publisher: IBM Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: codenet-paper
+    title: "CodeNet: A Large-Scale AI for Code Dataset for Learning a Diversity of Coding Tasks (arXiv 2105.12655)"
+    url: https://arxiv.org/abs/2105.12655
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-05-25
+    accessed_at: 2026-10-13
+  - id: codenet-repo
+    title: IBM/Project_CodeNet README (dataset download) and license (Apache-2.0)
+    url: https://github.com/IBM/Project_CodeNet
+    publisher: IBM (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: granite-code-paper
+    title: "Granite Code Models: A Family of Open Foundation Models for Code Intelligence (arXiv 2405.04324)"
+    url: https://arxiv.org/abs/2405.04324
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-07
+    accessed_at: 2026-10-13
+  - id: itbench-paper
+    title: "ITBench: Evaluating AI Agents across Diverse Real-World IT Automation Tasks (arXiv 2502.05352)"
+    url: https://arxiv.org/abs/2502.05352
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-07
+    accessed_at: 2026-10-13

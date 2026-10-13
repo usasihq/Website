@@ -1,0 +1,81 @@
+slug: werner-vogels
+name: Werner Vogels
+initials: WV
+groups: [leadership, engineering]
+sector: corporate
+specialties: [developer-tools, data]
+headline: Chief Technology Officer of Amazon.com; co-author of the 2007 Dynamo paper
+bio:
+  text: >-
+    Werner Vogels is the Chief Technology Officer of Amazon.com. Vogels joined Amazon in 2004 from
+    Cornell University, where Vogels was a distributed systems researcher, and has written many
+    articles on distributed systems technologies for enterprise computing. Vogels is a co-author of
+    the 2007 ACM SOSP paper on Dynamo, the highly available key-value store used by some of
+    Amazon's core services, and writes the All Things Distributed blog on building scalable and
+    robust distributed systems, with posts through September 2026.
+  source_ids: [atd-about, atd-home, aa-predictions-2025, dynamo-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Amazon
+    organization_slug: amazon
+    role: Chief Technology Officer, Amazon.com
+    current: true
+    source_ids: [atd-about, aa-predictions-2025]
+  - name: Cornell University
+    organization_slug: cornell-university
+    role: Distributed systems researcher
+    current: false
+    source_ids: [atd-about]
+work:
+  - name: "Dynamo: Amazon's highly available key-value store"
+    artifact_slug: null
+    type: open-research
+    url: https://www.amazon.science/publications/dynamo-amazons-highly-available-key-value-store
+    contribution: >-
+      Co-author of the 2007 ACM SOSP paper, which presents Dynamo, a key-value store that keeps
+      Amazon services available during failures by relaxing consistency and using object
+      versioning with application-assisted conflict resolution.
+    source_ids: [dynamo-paper]
+  - name: All Things Distributed (blog)
+    artifact_slug: null
+    type: null
+    url: https://www.allthingsdistributed.com/
+    contribution: >-
+      Writes the blog, subtitled "Werner Vogels on building scalable and robust distributed
+      systems"; recent posts include ones on scalable control planes and DuckDB.
+    source_ids: [atd-home]
+links:
+  - label: All Things Distributed
+    url: https://www.allthingsdistributed.com/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: atd-about
+    title: About — All Things Distributed
+    url: https://www.allthingsdistributed.com/about.html
+    publisher: Werner Vogels
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: atd-home
+    title: All Things Distributed — homepage
+    url: https://www.allthingsdistributed.com/
+    publisher: Werner Vogels
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: aa-predictions-2025
+    title: 5 tech predictions for 2026 and beyond, according to Amazon CTO Dr. Werner Vogels
+    url: https://www.aboutamazon.com/news/aws/werner-vogels-amazon-cto-predictions-2026
+    publisher: Amazon
+    kind: official-page
+    published_at: 2025-11-25
+    accessed_at: 2026-10-13
+  - id: dynamo-paper
+    title: "Dynamo: Amazon's highly available key-value store (ACM SOSP 2007)"
+    url: https://www.amazon.science/publications/dynamo-amazons-highly-available-key-value-store
+    publisher: Amazon Science
+    kind: paper
+    published_at: "2007"
+    accessed_at: 2026-10-13

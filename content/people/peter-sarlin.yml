@@ -1,0 +1,92 @@
+slug: peter-sarlin
+name: Peter Sarlin
+initials: PS
+groups: [leadership]
+sector: corporate
+specialties: [language-models]
+headline: Co-founder and former CEO of Silo AI, acquired by AMD in 2024; co-author of the Poro 34B open model paper
+bio:
+  text: >-
+    Peter Sarlin co-founded Silo AI and was its CEO when AMD announced in July 2024 that it would
+    acquire the company, saying Sarlin would continue to lead the Silo AI team within the AMD
+    Artificial Intelligence Group; AMD completed the acquisition in August 2024. A CV published by
+    Zalando for its 2026 annual general meeting lists Sarlin as Silo AI's co-founder, CEO and board
+    member from 2017 to 2026, as founder and chairperson of the board of Qutwo Oy and NestAI Oy
+    since 2025, and as Professor of Practice in applied machine learning and AI at Aalto University
+    since 2022. Sarlin is a co-author of Poro 34B and the Blessing of Multilinguality (2024), which
+    lists Sarlin with Silo AI and Aalto University; the Poro 34B model card says the model was
+    created by SiloGen from Silo AI with the TurkuNLP group at the University of Turku and HPLT,
+    under the Apache 2.0 license.
+  source_ids: [amd-silo-announce, amd-silo-complete, zalando-cv, poro-paper, poro-card]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Qutwo Oy and NestAI Oy
+    organization_slug: null
+    role: Founder and chairperson of the board (since 2025, per a CV dated March 2026)
+    current: true
+    source_ids: [zalando-cv]
+  - name: Aalto University
+    organization_slug: null
+    role: Professor of Practice in applied machine learning and AI (since 2022, per a CV dated March 2026)
+    current: true
+    source_ids: [zalando-cv, poro-paper]
+  - name: AMD
+    organization_slug: amd
+    role: CEO of Silo AI, whose team joined the AMD Artificial Intelligence Group after AMD's August 2024 acquisition; AMD's July 2024 release said Sarlin would continue to lead the team
+    current: false
+    source_ids: [amd-silo-announce, amd-silo-complete, zalando-cv]
+  - name: Silo AI
+    organization_slug: null
+    role: Co-founder, CEO and board member (2017 to 2026)
+    current: false
+    source_ids: [zalando-cv, amd-silo-announce, poro-paper]
+work:
+  - name: Poro 34B
+    artifact_slug: null
+    type: open-weights
+    url: https://huggingface.co/LumiOpen/Poro-34B
+    contribution: >-
+      Co-author of Poro 34B and the Blessing of Multilinguality (2024), on a 34-billion-parameter
+      model trained on Finnish, English and programming-language text; the model card credits SiloGen
+      from Silo AI, TurkuNLP and HPLT and lists the Apache 2.0 license.
+    source_ids: [poro-paper, poro-card]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: amd-silo-announce
+    title: AMD to Acquire Silo AI to Expand Enterprise AI Solutions Globally (AMD press release)
+    url: https://ir.amd.com/news-events/press-releases/detail/1206/amd-to-acquire-silo-ai-to-expand-enterprise-ai-solutions-globally
+    publisher: AMD
+    kind: announcement
+    published_at: 2024-07-10
+    accessed_at: 2026-10-13
+  - id: amd-silo-complete
+    title: AMD Completes Acquisition of Silo AI (AMD press release)
+    url: https://ir.amd.com/news-events/press-releases/detail/1210/amd-completes-acquisition-of-silo-ai-to-accelerate-development-and-deployment-of-ai-models-on-amd-hardware
+    publisher: AMD
+    kind: announcement
+    published_at: 2024-08-12
+    accessed_at: 2026-10-13
+  - id: zalando-cv
+    title: Prof Dr Peter Sarlin — curriculum vitae (Zalando SE annual general meeting 2026, as of March 2026)
+    url: https://corporate.zalando.com/sites/default/files/media-download/zalando-se_agm-2026_13_curriculum-vitae_peter-sarlin.pdf
+    publisher: Zalando SE
+    kind: filing
+    published_at: 2026-03
+    accessed_at: 2026-10-13
+  - id: poro-paper
+    title: Poro 34B and the Blessing of Multilinguality (arXiv 2404.01856), author affiliations
+    url: https://arxiv.org/abs/2404.01856
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-04-02
+    accessed_at: 2026-10-13
+  - id: poro-card
+    title: LumiOpen/Poro-34B model card (license apache-2.0)
+    url: https://huggingface.co/LumiOpen/Poro-34B
+    publisher: LumiOpen (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

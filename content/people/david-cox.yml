@@ -1,0 +1,103 @@
+slug: david-cox
+name: David D. Cox
+initials: DC
+groups: [engineering, leadership, open-source, local]
+sector: corporate
+specialties: [language-models, training-systems]
+headline: VP, AI Foundations at IBM Research, working on IBM's Granite models; earlier a Harvard professor
+bio:
+  text: >-
+    David Cox is VP, AI Foundations at IBM Research and the IBM director of the MIT-IBM Computing Research
+    Lab, which IBM Research's profile lists as the MIT-IBM Watson AI Lab. IBM Research describes Cox as responsible for the
+    development and training of IBM's large language models, and Cox is a co-author of the Granite Code
+    and Granite Embedding papers, both of which release their models under the Apache 2.0 license; the
+    Granite Code paper describes sizes from 3 billion parameters suited to on-device, memory-constrained
+    use. Before IBM, Cox was the John L. Loeb Associate Professor of the Natural Sciences and of
+    Engineering and Applied Sciences at Harvard University, where Cox's lab started the open-source
+    Hyperopt hyperparameter optimization library.
+  source_ids: [ibm-research-profile, mitibm-profile, granite-code-paper, granite-embedding-paper, hyperopt-paper, hyperopt-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: IBM Research
+    organization_slug: ibm
+    role: VP, AI Foundations; IBM Director, MIT-IBM Computing Research Lab
+    current: true
+    source_ids: [mitibm-profile, ibm-research-profile]
+  - name: Harvard University
+    organization_slug: harvard-university
+    role: John L. Loeb Associate Professor of the Natural Sciences and of Engineering and Applied Sciences
+    current: false
+    source_ids: [ibm-research-profile, mitibm-profile]
+work:
+  - name: IBM Granite models
+    artifact_slug: granite
+    type: open-weights
+    url: https://arxiv.org/abs/2405.04324
+    contribution: >-
+      Listed among the authors of the Granite Code models paper (2024), which releases code models from
+      3 to 34 billion parameters under an Apache 2.0 license, and of the Granite Embedding models report
+      (2025), which releases English and multilingual retrieval embedding models under Apache 2.0. IBM
+      Research's profile describes Cox as responsible for the development and training of IBM's large
+      language models.
+    source_ids: [granite-code-paper, granite-embedding-paper, ibm-research-profile]
+  - name: Hyperopt
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/hyperopt/hyperopt
+    contribution: >-
+      IBM Research's profile states that Cox's lab at Harvard started Hyperopt, a BSD-licensed Python
+      library for hyperparameter optimization; Cox co-authored, with James Bergstra and Daniel Yamins, the ICML 2013
+      paper "Making a Science of Model Search: Hyperparameter Optimization in Hundreds of Dimensions for
+      Vision Architectures."
+    source_ids: [ibm-research-profile, hyperopt-paper, hyperopt-repo]
+links:
+  - label: IBM Research profile
+    url: https://research.ibm.com/people/david-cox
+  - label: MIT-IBM lab profile
+    url: https://mitibm.mit.edu/people/david-cox/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: ibm-research-profile
+    title: David D. Cox — IBM Research
+    url: https://research.ibm.com/people/david-cox
+    publisher: IBM Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: mitibm-profile
+    title: David Cox — MIT-IBM Computing Research Lab people page
+    url: https://mitibm.mit.edu/people/david-cox/
+    publisher: MIT-IBM Computing Research Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: granite-code-paper
+    title: "Granite Code Models: A Family of Open Foundation Models for Code Intelligence (arXiv 2405.04324)"
+    url: https://arxiv.org/abs/2405.04324
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-07
+    accessed_at: 2026-10-13
+  - id: granite-embedding-paper
+    title: Granite Embedding Models (arXiv 2502.20204)
+    url: https://arxiv.org/abs/2502.20204
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-27
+    accessed_at: 2026-10-13
+  - id: hyperopt-paper
+    title: "Making a Science of Model Search: Hyperparameter Optimization in Hundreds of Dimensions for Vision Architectures (ICML 2013)"
+    url: https://proceedings.mlr.press/v28/bergstra13.html
+    publisher: Proceedings of Machine Learning Research
+    kind: paper
+    published_at: "2013"
+    accessed_at: 2026-10-13
+  - id: hyperopt-repo
+    title: hyperopt/hyperopt README and LICENSE.txt (BSD-style license)
+    url: https://github.com/hyperopt/hyperopt
+    publisher: hyperopt (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

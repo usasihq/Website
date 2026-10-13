@@ -1,0 +1,83 @@
+slug: david-patterson
+name: David Patterson
+initials: DP
+groups: [engineering]
+sector: corporate
+specialties: [hardware, evaluation, training-systems]
+headline: Google Fellow and UC Berkeley professor emeritus; co-author of Google TPU papers and MLPerf Training
+bio:
+  text: >-
+    David Patterson is a Google Fellow and the Pardee Professor of Computer Science, Emeritus, at UC
+    Berkeley, and Google's research profile says Patterson worked at Berkeley for four decades and at
+    Google for one decade. Patterson co-authored the 2017 paper evaluating Google's Tensor Processing
+    Unit in production datacenters and later TPU papers, as well as the MLPerf Training Benchmark paper.
+    Berkeley's faculty page describes Patterson's Berkeley projects, including RISC, RAID, and Networks
+    of Workstations.
+  source_ids: [patterson-google, patterson-berkeley, tpu-paper, mlperf-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google
+    organization_slug: google
+    role: Google Fellow
+    current: true
+    source_ids: [patterson-google]
+  - name: University of California, Berkeley
+    organization_slug: uc-berkeley
+    role: Pardee Professor of Computer Science, Emeritus
+    current: true
+    source_ids: [patterson-berkeley, patterson-google]
+work:
+  - name: MLPerf Training Benchmark
+    artifact_slug: mlperf
+    type: open-research
+    url: https://arxiv.org/abs/1910.01500
+    contribution: >-
+      Co-author of the MLPerf Training Benchmark paper (arXiv 2019; MLSys 2020), which Berkeley's
+      faculty page lists among Patterson's selected publications.
+    source_ids: [mlperf-paper, patterson-berkeley]
+  - name: Tensor Processing Unit (TPU) papers
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1704.04760
+    contribution: >-
+      Co-author of In-Datacenter Performance Analysis of a Tensor Processing Unit (2017), which
+      evaluates a custom ASIC deployed in Google datacenters since 2015 for neural network inference,
+      and of later papers on TPU v4 and Google's training supercomputers.
+    source_ids: [tpu-paper, patterson-berkeley, patterson-google]
+links:
+  - label: Berkeley faculty page
+    url: https://www2.eecs.berkeley.edu/Faculty/Homepages/patterson.html
+  - label: Google Research profile
+    url: https://research.google/people/105290/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: patterson-google
+    title: Dave Patterson — Google Research profile
+    url: https://research.google/people/105290/
+    publisher: Google Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: patterson-berkeley
+    title: David A. Patterson — Faculty Home Page, Berkeley EECS
+    url: https://www2.eecs.berkeley.edu/Faculty/Homepages/patterson.html
+    publisher: UC Berkeley EECS
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tpu-paper
+    title: In-Datacenter Performance Analysis of a Tensor Processing Unit (arXiv 1704.04760)
+    url: https://arxiv.org/abs/1704.04760
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-04-16
+    accessed_at: 2026-10-13
+  - id: mlperf-paper
+    title: MLPerf Training Benchmark (arXiv 1910.01500)
+    url: https://arxiv.org/abs/1910.01500
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-02
+    accessed_at: 2026-10-13

@@ -1,0 +1,107 @@
+slug: denis-yarats
+name: Denis Yarats
+initials: DY
+groups: [leadership, engineering, open-source]
+sector: corporate
+specialties: [reinforcement-learning, evaluation, agents]
+headline: Co-founder and CTO of Perplexity; first author of DrQ-v2 for reinforcement learning from pixels
+bio:
+  text: >-
+    Denis Yarats is a co-founder and the CTO of Perplexity, according to a November 2024 AWS Startups
+    article that Yarats co-wrote and the speaker page for the April 2026 HumanX conference. The AWS
+    article says Yarats worked as an AI research scientist at Facebook AI Research before co-founding
+    Perplexity. Papers from that period that list Yarats at New York University and Facebook AI
+    Research include DrQ and DrQ-v2, off-policy methods that use data augmentation to learn continuous
+    control directly from pixels, and DrQ-v2's original PyTorch implementation is published under the
+    MIT license in the facebookresearch GitHub organization. With Perplexity colleagues, Yarats is a
+    co-author of DRACO (2026), a benchmark of deep research tasks graded for accuracy, completeness and
+    objectivity.
+  source_ids: [aws-perplexity-article, humanx-yarats, drq-paper, drqv2-paper, drqv2-repo, draco-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Perplexity
+    organization_slug: perplexity
+    role: Co-founder and CTO
+    current: true
+    source_ids: [aws-perplexity-article, humanx-yarats, draco-paper]
+  - name: Meta (Facebook AI Research)
+    organization_slug: meta
+    role: AI Research Scientist
+    current: false
+    source_ids: [aws-perplexity-article, humanx-yarats]
+work:
+  - name: DrQ-v2
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/drqv2
+    contribution: >-
+      First author of "Mastering Visual Continuous Control: Improved Data-Augmented Reinforcement
+      Learning" (2021), which lists Yarats at NYU and FAIR; the MIT-licensed facebookresearch/drqv2
+      repository is the original PyTorch implementation and credits Yarats, Rob Fergus, Alessandro
+      Lazaric and Lerrel Pinto.
+    source_ids: [drqv2-paper, drqv2-repo]
+  - name: DrQ
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2004.13649
+    contribution: >-
+      Co-author, with Ilya Kostrikov and Rob Fergus, of "Image Augmentation Is All You Need:
+      Regularizing Deep Reinforcement Learning from Pixels" (2020), which lists Yarats at New York
+      University and Facebook AI Research.
+    source_ids: [drq-paper]
+  - name: DRACO benchmark
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2602.11685
+    contribution: >-
+      Co-author, listed with Perplexity, of "DRACO: a Cross-Domain Benchmark for Deep Research
+      Accuracy, Completeness, and Objectivity" (2026), whose tasks are drawn from de-identified
+      Perplexity Deep Research requests.
+    source_ids: [draco-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: aws-perplexity-article
+    title: "Reimagining search: Perplexity drives productivity with generative AI-powered answer engine (AWS Startups)"
+    url: https://aws.amazon.com/aws-startups/learn/reimagining-search-perplexity-drives-productivity-with-generative-ai-powered-answer-engine/
+    publisher: Amazon Web Services (byline Denis Yarats and Marcos Boaglio)
+    kind: official-page
+    published_at: 2024-11-18
+    accessed_at: 2026-10-13
+  - id: humanx-yarats
+    title: Denis Yarats — HumanX 2026 speaker page
+    url: https://www.humanx.co/us/speakers/denis-yarats
+    publisher: HumanX
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: drqv2-paper
+    title: "Mastering Visual Continuous Control: Improved Data-Augmented Reinforcement Learning (arXiv 2107.09645 v1 PDF, author affiliations)"
+    url: https://arxiv.org/pdf/2107.09645v1
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-07-20
+    accessed_at: 2026-10-13
+  - id: drqv2-repo
+    title: facebookresearch/drqv2 README and license (MIT)
+    url: https://github.com/facebookresearch/drqv2
+    publisher: facebookresearch (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: drq-paper
+    title: "Image Augmentation Is All You Need: Regularizing Deep Reinforcement Learning from Pixels (arXiv 2004.13649 v4 PDF, author affiliations)"
+    url: https://arxiv.org/pdf/2004.13649v4
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-04-28
+    accessed_at: 2026-10-13
+  - id: draco-paper
+    title: "DRACO: a Cross-Domain Benchmark for Deep Research Accuracy, Completeness, and Objectivity (arXiv 2602.11685 v1 HTML, author affiliations)"
+    url: https://arxiv.org/html/2602.11685v1
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-12
+    accessed_at: 2026-10-13

@@ -1,0 +1,89 @@
+slug: arthur-mensch
+name: Arthur Mensch
+initials: AM
+groups: [leadership, engineering]
+sector: corporate
+specialties: [language-models, training-systems]
+headline: Co-founder and CEO of Mistral AI; equal-contribution author of DeepMind's Chinchilla scaling paper
+bio:
+  text: >-
+    Arthur Mensch is a co-founder and the CEO of Mistral AI, according to the company's about page.
+    Before Mistral, Mensch was one of four equal-contribution authors of Training Compute-Optimal
+    Large Language Models (2022), the DeepMind paper that introduced Chinchilla and studied how model
+    size and the number of training tokens should grow together under a fixed compute budget; the
+    paper lists Mensch among its corresponding authors at DeepMind. Mensch was also an
+    equal-contribution author of the retrieval-enhanced RETRO paper (2021), whose authors are all
+    listed as from DeepMind. Mensch co-authored the
+    Mistral 7B (2023) and Mixtral of Experts (2024) papers, whose abstracts say the models are
+    released under the Apache 2.0 license.
+  source_ids: [mistral-about, chinchilla-paper, retro-paper, mistral7b-paper, mixtral-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Mistral AI
+    organization_slug: null
+    role: Co-founder and CEO
+    current: true
+    source_ids: [mistral-about]
+  - name: DeepMind (now Google DeepMind)
+    organization_slug: google-deepmind
+    role: Equal-contribution author of the RETRO (2021) and Chinchilla (2022) papers, written at DeepMind
+    current: false
+    source_ids: [chinchilla-paper, retro-paper]
+work:
+  - name: Chinchilla (Training Compute-Optimal Large Language Models)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2203.15556
+    contribution: >-
+      One of four equal-contribution authors of the 2022 DeepMind paper, which trains over 400
+      language models to find that model size and training tokens should be scaled equally for
+      compute-optimal training, and tests this with the 70B-parameter Chinchilla model.
+    source_ids: [chinchilla-paper]
+  - name: Mistral 7B and Mixtral 8x7B
+    artifact_slug: null
+    type: open-weights
+    url: https://arxiv.org/abs/2310.06825
+    contribution: >-
+      Co-author of the Mistral 7B (2023) and Mixtral of Experts (2024) papers; both abstracts say the
+      models are released under the Apache 2.0 license.
+    source_ids: [mistral7b-paper, mixtral-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: mistral-about
+    title: Mistral AI — About (founders)
+    url: https://mistral.ai/about
+    publisher: Mistral AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: chinchilla-paper
+    title: "Training Compute-Optimal Large Language Models (arXiv 2203.15556), author list, equal-contribution note and DeepMind corresponding authors"
+    url: https://arxiv.org/abs/2203.15556
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-03-29
+    accessed_at: 2026-10-13
+  - id: retro-paper
+    title: "Improving language models by retrieving from trillions of tokens (arXiv 2112.04426), author list, DeepMind affiliation and equal-contribution note"
+    url: https://arxiv.org/abs/2112.04426
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-12-08
+    accessed_at: 2026-10-13
+  - id: mistral7b-paper
+    title: Mistral 7B (arXiv 2310.06825)
+    url: https://arxiv.org/abs/2310.06825
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-10
+    accessed_at: 2026-10-13
+  - id: mixtral-paper
+    title: Mixtral of Experts (arXiv 2401.04088)
+    url: https://arxiv.org/abs/2401.04088
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-01-08
+    accessed_at: 2026-10-13

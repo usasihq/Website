@@ -1,0 +1,112 @@
+slug: armand-joulin
+name: Armand Joulin
+initials: AJ
+groups: [engineering, open-source]
+sector: corporate
+specialties: [language-models, data]
+headline: Lead of the Gemma 2 and Gemma 3 reports at Google DeepMind; co-author of Meta's LLaMA and the fastText papers
+bio:
+  text: >-
+    Armand Joulin is listed as the lead in the contributor lists of the Gemma 2 (2024) and Gemma 3
+    (2025) technical reports from Google DeepMind's Gemma Team, and among the leads of the first
+    Gemma report (2024). The July 2026 Gemma 4 Technical Report from the same team lists Joulin
+    among its core contributors and says the Gemma 4 models are released under an Apache 2.0
+    license. Earlier, Joulin was first author of Bag of Tricks for Efficient Text Classification
+    (2016), written at Facebook AI Research, and of FastText.zip, two of the three papers listed in
+    the references of the MIT-licensed fastText repository. Joulin is also a co-author of LLaMA:
+    Open and Efficient Foundation Language Models (2023), written at Meta AI.
+  source_ids: [gemma-report, gemma2-report, gemma3-report, gemma4-report, fasttext-paper, fasttext-repo, llama-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Gemma Team (lead on the Gemma 2 and Gemma 3 reports; core contributor on the July 2026 Gemma 4 report)
+    current: true
+    source_ids: [gemma2-report, gemma3-report, gemma4-report]
+  - name: Meta (Facebook AI Research and Meta AI)
+    organization_slug: meta
+    role: Author listed with Facebook AI Research (2016) and Meta AI (2023)
+    current: false
+    source_ids: [fasttext-paper, llama-paper]
+work:
+  - name: Gemma
+    artifact_slug: gemma
+    type: open-weights
+    url: https://arxiv.org/abs/2607.02770
+    contribution: >-
+      Listed among the leads of the Gemma (2024) report and as the lead of the Gemma 2 (2024) and
+      Gemma 3 (2025) reports, and among the core contributors of the Gemma 4 Technical Report (2026);
+      the Gemma 4 report says those models are released under an Apache 2.0 license.
+    source_ids: [gemma-report, gemma2-report, gemma3-report, gemma4-report]
+  - name: LLaMA
+    artifact_slug: llama
+    type: open-research
+    url: https://arxiv.org/abs/2302.13971
+    contribution: >-
+      Co-author of LLaMA: Open and Efficient Foundation Language Models (2023), whose author list gives
+      a Meta AI affiliation and whose abstract says all models were released to the research
+      community.
+    source_ids: [llama-paper]
+  - name: fastText
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/fastText
+    contribution: >-
+      First author of Bag of Tricks for Efficient Text Classification (2016) and of FastText.zip, and
+      co-author of Enriching Word Vectors with Subword Information, the three papers listed in the
+      references of the MIT-licensed fastText repository (archived in 2024).
+    source_ids: [fasttext-repo, fasttext-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: gemma-report
+    title: "Gemma: Open Models Based on Gemini Research and Technology (arXiv 2403.08295), contributor list"
+    url: https://arxiv.org/abs/2403.08295
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-03-13
+    accessed_at: 2026-10-13
+  - id: gemma2-report
+    title: "Gemma 2: Improving Open Language Models at a Practical Size (arXiv 2408.00118), contributor list"
+    url: https://arxiv.org/abs/2408.00118
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-07-31
+    accessed_at: 2026-10-13
+  - id: gemma3-report
+    title: Gemma 3 Technical Report (arXiv 2503.19786), contributor list
+    url: https://arxiv.org/abs/2503.19786
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-03-25
+    accessed_at: 2026-10-13
+  - id: gemma4-report
+    title: Gemma 4 Technical Report (arXiv 2607.02770, v2 July 2026), core contributor list and license statement
+    url: https://arxiv.org/abs/2607.02770
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-07-02
+    accessed_at: 2026-10-13
+  - id: fasttext-paper
+    title: Bag of Tricks for Efficient Text Classification (arXiv 1607.01759), Facebook AI Research affiliation
+    url: https://arxiv.org/abs/1607.01759
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-07-06
+    accessed_at: 2026-10-13
+  - id: fasttext-repo
+    title: facebookresearch/fastText README (references and MIT license)
+    url: https://github.com/facebookresearch/fastText
+    publisher: facebookresearch (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-paper
+    title: "LLaMA: Open and Efficient Foundation Language Models (arXiv 2302.13971), author list and Meta AI affiliation"
+    url: https://arxiv.org/abs/2302.13971
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-02-27
+    accessed_at: 2026-10-13

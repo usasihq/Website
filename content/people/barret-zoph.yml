@@ -1,0 +1,81 @@
+slug: barret-zoph
+name: Barret Zoph
+initials: BZ
+groups: [engineering, leadership]
+specialties: [language-models, training-systems, vision]
+headline: First author of neural architecture search at Google Brain; earlier VP of Research (Post-Training) at OpenAI
+bio:
+  text: >-
+    Barret Zoph's homepage describes earlier roles as VP of Research (Post-Training) at OpenAI, where
+    Zoph's team worked on alignment, tool use, evaluations, and the models shipped in ChatGPT and the
+    API, and before that as a Staff Research Scientist at Google Brain working on large sparse language
+    models and AutoML. With Quoc V. Le at Google Brain, Zoph wrote Neural Architecture Search with
+    Reinforcement Learning (2016), and Zoph's homepage lists Switch Transformers and ST-MoE among
+    Zoph's sparse-model papers. OpenAI's GPT-4o and o1 system cards credit Zoph as a post-training
+    organization lead and in executive leadership, respectively.
+  source_ids: [zoph-site, nas-paper, gpt4o-system-card, o1-system-card]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: OpenAI
+    organization_slug: openai
+    role: VP of Research (Post-Training)
+    current: false
+    source_ids: [zoph-site, gpt4o-system-card, o1-system-card]
+  - name: Google Brain
+    organization_slug: google
+    role: Staff Research Scientist
+    current: false
+    source_ids: [zoph-site, nas-paper]
+work:
+  - name: Neural architecture search
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1611.01578
+    contribution: >-
+      First author, with Quoc V. Le at Google Brain, of the 2016 paper that trains a recurrent network
+      with reinforcement learning to generate neural network architectures; Zoph's homepage says this
+      work was an impetus for Google's AutoML.
+    source_ids: [nas-paper, zoph-site]
+  - name: OpenAI post-training (GPT-4o and o1)
+    artifact_slug: null
+    type: proprietary
+    url: https://arxiv.org/abs/2410.21276
+    contribution: >-
+      Credited as a post-training organization lead in the GPT-4o System Card (2024) and in executive
+      leadership in the OpenAI o1 System Card (2024).
+    source_ids: [gpt4o-system-card, o1-system-card]
+links:
+  - label: Website
+    url: https://barretzoph.github.io/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: zoph-site
+    title: Barret Zoph — homepage
+    url: https://barretzoph.github.io/
+    publisher: Barret Zoph
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: nas-paper
+    title: Neural Architecture Search with Reinforcement Learning (arXiv 1611.01578)
+    url: https://arxiv.org/abs/1611.01578
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-11-05
+    accessed_at: 2026-10-13
+  - id: gpt4o-system-card
+    title: GPT-4o System Card (arXiv 2410.21276), contributions
+    url: https://arxiv.org/abs/2410.21276
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-25
+    accessed_at: 2026-10-13
+  - id: o1-system-card
+    title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
+    url: https://arxiv.org/abs/2412.16720
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-21
+    accessed_at: 2026-10-13

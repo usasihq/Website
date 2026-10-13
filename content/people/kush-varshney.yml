@@ -1,0 +1,130 @@
+slug: kush-varshney
+name: Kush R. Varshney
+initials: KV
+groups: [engineering, open-source]
+sector: corporate
+specialties: [safety-alignment, interpretability, evaluation]
+headline: IBM Fellow directing trustworthy AI research at IBM; team behind AI Fairness 360 and Granite Guardian
+bio:
+  text: >-
+    Kush R. Varshney is an IBM Fellow at IBM Research who directs Human-Centered Trustworthy AI research,
+    and was the founding co-director of the IBM Science for Social Good initiative from 2015 to 2023.
+    Varshney's homepage and IBM Research profile say Varshney and team created the open-source toolkits
+    AI Fairness 360, AI Explainability 360, Uncertainty Quantification 360, and AI FactSheets 360, as
+    well as the Granite Guardian model family. Varshney is a co-author of the papers introducing AI
+    Fairness 360, AI Explainability 360, FactSheets, and Granite Guardian, and published the book
+    "Trustworthy Machine Learning" in 2022.
+  source_ids: [homepage, ibm-research-profile, aif360-paper, aix360-paper, factsheets-paper, granite-guardian-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: IBM Research
+    organization_slug: ibm
+    role: IBM Fellow, directing Human-Centered Trustworthy AI research
+    current: true
+    source_ids: [ibm-research-profile, homepage]
+  - name: IBM Science for Social Good
+    organization_slug: ibm
+    role: Founding co-director (2015–2023)
+    current: false
+    source_ids: [ibm-research-profile, homepage]
+work:
+  - name: Granite Guardian
+    artifact_slug: granite
+    type: open-weights
+    url: https://github.com/ibm-granite/granite-guardian
+    contribution: >-
+      Co-author of the Granite Guardian technical report (2024), which introduces risk-detection models
+      for LLM prompts and responses released as open source; the ibm-granite/granite-guardian repository
+      is under the Apache-2.0 license, and the Granite Guardian 3.0 8B model card lists the apache-2.0
+      license. Varshney's homepage lists the Granite Guardian model family among the work of Varshney's
+      team.
+    source_ids: [granite-guardian-paper, granite-guardian-repo, granite-guardian-card, homepage]
+  - name: AI Fairness 360
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/Trusted-AI/AIF360
+    contribution: >-
+      Co-author of the 2018 paper introducing AI Fairness 360, an open-source Python toolkit for
+      algorithmic fairness released under the Apache v2.0 license; the homepage lists it among the
+      toolkits Varshney's team created.
+    source_ids: [aif360-paper, aif360-repo, homepage]
+  - name: AI Explainability 360 and FactSheets
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1909.03012
+    contribution: >-
+      Co-author of the 2019 paper introducing the AI Explainability 360 toolkit and of the 2018
+      FactSheets paper on documenting AI services.
+    source_ids: [aix360-paper, factsheets-paper]
+links:
+  - label: Website
+    url: https://krvarshney.github.io/
+  - label: IBM Research profile
+    url: https://research.ibm.com/people/kush-varshney
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Kush R. Varshney — homepage
+    url: https://krvarshney.github.io/
+    publisher: Kush R. Varshney
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ibm-research-profile
+    title: Kush Varshney — IBM Research
+    url: https://research.ibm.com/people/kush-varshney
+    publisher: IBM Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: granite-guardian-paper
+    title: Granite Guardian (arXiv 2412.07724)
+    url: https://arxiv.org/abs/2412.07724
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-10
+    accessed_at: 2026-10-13
+  - id: granite-guardian-repo
+    title: ibm-granite/granite-guardian README and license (Apache-2.0)
+    url: https://github.com/ibm-granite/granite-guardian
+    publisher: IBM Granite (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: granite-guardian-card
+    title: ibm-granite/granite-guardian-3.0-8b model card (license apache-2.0)
+    url: https://huggingface.co/ibm-granite/granite-guardian-3.0-8b
+    publisher: IBM Granite (Hugging Face)
+    kind: model-card
+    published_at: 2024-10-15
+    accessed_at: 2026-10-13
+  - id: aif360-paper
+    title: "AI Fairness 360: An Extensible Toolkit for Detecting, Understanding, and Mitigating Unwanted Algorithmic Bias (arXiv 1810.01943)"
+    url: https://arxiv.org/abs/1810.01943
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-10-03
+    accessed_at: 2026-10-13
+  - id: aif360-repo
+    title: Trusted-AI/AIF360 README and license (Apache-2.0)
+    url: https://github.com/Trusted-AI/AIF360
+    publisher: Trusted-AI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: aix360-paper
+    title: "One Explanation Does Not Fit All: A Toolkit and Taxonomy of AI Explainability Techniques (arXiv 1909.03012)"
+    url: https://arxiv.org/abs/1909.03012
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-09-06
+    accessed_at: 2026-10-13
+  - id: factsheets-paper
+    title: "FactSheets: Increasing Trust in AI Services through Supplier's Declarations of Conformity (arXiv 1808.07261)"
+    url: https://arxiv.org/abs/1808.07261
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-08-22
+    accessed_at: 2026-10-13

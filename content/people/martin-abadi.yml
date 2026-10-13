@@ -1,0 +1,90 @@
+slug: martin-abadi
+name: Martín Abadi
+initials: MA
+groups: [engineering, open-source]
+sector: corporate
+specialties: [ml-frameworks, training-systems, ml-theory]
+headline: At Google since 2014; first author of the TensorFlow papers; emeritus at UC Santa Cruz
+bio:
+  text: >-
+    Martín Abadi has been at Google since November 2014, according to Google's research profile, and is
+    emeritus at UC Santa Cruz. Abadi is the first author of the TensorFlow white paper, which describes
+    the system built at Google and its open-source release under the Apache 2.0 license, and of the 2016
+    paper TensorFlow: A system for large-scale machine learning. Abadi is also first author of Deep
+    Learning with Differential Privacy (2016), which develops techniques for training deep neural
+    networks under a modest privacy budget.
+  source_ids: [abadi-google, abadi-ucsc, tf-whitepaper, tf-osdi-paper, dp-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google
+    organization_slug: google
+    role: At Google since November 2014
+    current: true
+    source_ids: [abadi-google]
+  - name: UC Santa Cruz
+    organization_slug: null
+    role: Emeritus
+    current: true
+    source_ids: [abadi-google, abadi-ucsc]
+work:
+  - name: TensorFlow
+    artifact_slug: tensorflow
+    type: open-source
+    url: https://github.com/tensorflow/tensorflow
+    contribution: >-
+      First author of the TensorFlow white paper and of the 2016 paper TensorFlow: A system for
+      large-scale machine learning; the white paper describes the interface and implementation built at
+      Google and their open-source release under the Apache 2.0 license.
+    source_ids: [tf-whitepaper, tf-osdi-paper, abadi-google]
+  - name: Deep learning with differential privacy
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1607.00133
+    contribution: >-
+      First author of the 2016 paper that develops algorithmic techniques and a refined analysis of
+      privacy costs for training deep neural networks within the framework of differential privacy.
+    source_ids: [dp-paper]
+links:
+  - label: Google Research profile
+    url: https://research.google/people/abadi/
+  - label: UC Santa Cruz page
+    url: https://users.soe.ucsc.edu/~abadi/home.html
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: abadi-google
+    title: Martín Abadi — Google Research profile
+    url: https://research.google/people/abadi/
+    publisher: Google Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: abadi-ucsc
+    title: Martin Abadi — UC Santa Cruz home page
+    url: https://users.soe.ucsc.edu/~abadi/home.html
+    publisher: Martín Abadi (UC Santa Cruz)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tf-whitepaper
+    title: "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems (arXiv 1603.04467)"
+    url: https://arxiv.org/abs/1603.04467
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-03-14
+    accessed_at: 2026-10-13
+  - id: tf-osdi-paper
+    title: "TensorFlow: A system for large-scale machine learning (arXiv 1605.08695)"
+    url: https://arxiv.org/abs/1605.08695
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-05-27
+    accessed_at: 2026-10-13
+  - id: dp-paper
+    title: Deep Learning with Differential Privacy (arXiv 1607.00133)
+    url: https://arxiv.org/abs/1607.00133
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-07-01
+    accessed_at: 2026-10-13

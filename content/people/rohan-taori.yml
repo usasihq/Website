@@ -1,0 +1,99 @@
+slug: rohan-taori
+name: Rohan Taori
+initials: RT
+groups: [engineering, open-source]
+sector: corporate
+specialties: [language-models, evaluation, data]
+headline: Pretraining researcher at Anthropic; co-author of Stanford Alpaca, AlpacaFarm and AlpacaEval
+bio:
+  text: >-
+    Rohan Taori is a researcher on the pretraining team at Anthropic. Taori received a PhD in computer
+    science at Stanford, advised by Tatsu Hashimoto, and is one of the five graduate-student authors
+    who contributed equally to Stanford Alpaca, an instruction-following model fine-tuned from a 7B
+    LLaMA model. Taori also co-authored AlpacaFarm, a simulation framework for methods that learn from
+    human feedback, and AlpacaEval, an automatic evaluator for instruction-following language models.
+    Earlier work listed on Taori's site includes a study of how image classifiers hold up under natural
+    distribution shifts.
+  source_ids: [taori-site, alpaca-repo, alpacafarm-paper, alpacaeval-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Researcher on the pretraining team
+    current: true
+    source_ids: [taori-site, github-profile]
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: PhD student in Computer Science, advised by Tatsu Hashimoto
+    current: false
+    source_ids: [taori-site, alpaca-repo]
+work:
+  - name: Stanford Alpaca
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/tatsu-lab/stanford_alpaca
+    contribution: >-
+      Listed in the repository's Authors section among the graduate students who contributed equally,
+      all advised by Tatsunori B. Hashimoto. The code is Apache-2.0; the README says the dataset and
+      weight diff are CC BY NC 4.0 and intended for research use only.
+    source_ids: [alpaca-repo]
+  - name: AlpacaFarm
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2305.14387
+    contribution: >-
+      Co-author of "AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback"
+      (2023); Taori's site marks Taori as one of four equal-contribution authors.
+    source_ids: [alpacafarm-paper, taori-site]
+  - name: AlpacaEval
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/tatsu-lab/alpaca_eval
+    contribution: >-
+      Listed on Taori's site as an equal-contribution co-author of AlpacaEval, an automatic evaluator
+      for instruction-following language models. The tatsu-lab/alpaca_eval repository is Apache-2.0.
+    source_ids: [taori-site, alpacaeval-repo]
+links:
+  - label: Website
+    url: https://www.rohantaori.com/
+  - label: GitHub
+    url: https://github.com/rtaori
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: taori-site
+    title: Rohan Taori — homepage
+    url: https://www.rohantaori.com/
+    publisher: Rohan Taori
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: rtaori (Rohan Taori) on GitHub
+    url: https://github.com/rtaori
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: alpaca-repo
+    title: tatsu-lab/stanford_alpaca README (authors and license notices)
+    url: https://github.com/tatsu-lab/stanford_alpaca
+    publisher: tatsu-lab (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: alpacafarm-paper
+    title: "AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback (arXiv 2305.14387)"
+    url: https://arxiv.org/abs/2305.14387
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-22
+    accessed_at: 2026-10-13
+  - id: alpacaeval-repo
+    title: tatsu-lab/alpaca_eval repository (Apache-2.0 license)
+    url: https://github.com/tatsu-lab/alpaca_eval
+    publisher: tatsu-lab (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
