@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Award, Briefcase, CalendarDays, Sparkles } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
+import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -10,7 +11,8 @@ import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
 import { cardImage } from "@/lib/page-cards";
-import { absoluteUrl } from "@/lib/paths";
+import { leaderSeo } from "@/lib/seo";
+import { leaderLd } from "@/lib/structured-data";
 import { orgHref } from "@/lib/routes";
 
 export const dynamicParams = false;
@@ -24,7 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const l = catalog.leader((await params).slug);
   if (!l) return {};
   const path = `/big-si/${l.slug}/`;
-  return pageMetadata({ title: `${l.name}: People Behind Big SI`, description: l.headline, path, image: cardImage(catalog, path) });
+  const seo = leaderSeo(catalog, l);
+  return pageMetadata({ title: seo.title, description: seo.description, path, image: cardImage(catalog, path) });
 }
 
 const span = (from: string | null, to: string | null) =>
@@ -48,28 +51,13 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
       <span className="text-text">{name}</span>
     );
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    url: absoluteUrl(`/big-si/${l.slug}/`),
-    dateModified: l.updated_at,
-    mainEntity: {
-      "@type": "Person",
-      name: l.name,
-      description: l.summary.text,
-      jobTitle: l.current_roles[0]?.role,
-      worksFor: l.current_roles.map((r) => ({ "@type": "Organization", name: r.organization })),
-      sameAs: l.links.map((x) => x.url),
-    },
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={leaderLd(catalog, l)} />
       <article>
         <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.14),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(167,139,250,0.1),transparent_55%)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
-            <Breadcrumbs items={[{ href: "/big-si/", label: "People Behind Big SI" }]} />
+            <Breadcrumbs items={[{ href: "/big-si/", label: "People Behind Big SI" }]} current={{ href: `/big-si/${l.slug}/`, label: l.name }} />
             <div className="flex flex-wrap items-center gap-5">
               <InitialsTile initials={l.initials} size="lg" />
               <div className="min-w-0">

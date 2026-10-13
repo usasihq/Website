@@ -15,6 +15,7 @@ export default function KidsGrownUpsPage() {
       title="About the lessons for kids"
       description={<p>How the lessons were made, what they say about super intelligence, and how to use them at home or in class.</p>}
       crumbs={[{ href: "/kids/", label: "For kids" }]}
+      current={{ href: "/kids/grown-ups/", label: "For parents and teachers" }}
       support={false}
     >
       <Content />

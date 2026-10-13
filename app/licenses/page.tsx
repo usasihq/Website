@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { ArrowRight, Scale } from "lucide-react";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { LICENSE_CATEGORY_LABELS, uncoveredLicenses, usesOfLicense } from "@/lib/licenses";
 import { pageMetadata } from "@/lib/metadata";
 import type { LicenseCategory } from "@/lib/schema";
+import { itemList } from "@/lib/structured-data";
 
 export const metadata = pageMetadata({
-  title: "License guide",
+  title: "AI licenses explained: model, software & data licenses",
   description:
-    "Plain-language guides to the licenses on U.S.-led open models, software, and datasets in the catalog: what each license says about use, attribution, restrictions, and derivatives, with the records that use it.",
+    "Plain-language guides to the licenses on U.S.-led open models, software, and datasets: what each says about use, attribution, restrictions, and derivatives.",
   path: "/licenses/",
 });
 
@@ -25,6 +27,13 @@ export default function LicensesPage() {
   const uncovered = uncoveredLicenses(catalog);
   return (
     <>
+      <JsonLd
+        data={itemList({
+          name: "License guides",
+          path: "/licenses/",
+          items: groups.flatMap(({ items }) => items.map(({ g }) => ({ name: g.name, href: `/licenses/${g.slug}/` }))),
+        })}
+      />
       <PageHeader
         eyebrow="Reference"
         title="License guide"

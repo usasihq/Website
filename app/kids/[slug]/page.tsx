@@ -50,7 +50,7 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
       <article>
         <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.14),transparent_60%)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
-            <Breadcrumbs items={[{ href: "/kids/", label: "For kids" }]} />
+            <Breadcrumbs items={[{ href: "/kids/", label: "For kids" }]} current={{ href: `/kids/${l.slug}/`, label: l.title }} />
             <div className="flex flex-wrap items-center gap-4">
               <span className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${kidTint(l.number)}`}>
                 <KidIcon name={l.icon} className="h-7 w-7" />

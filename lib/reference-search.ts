@@ -12,6 +12,7 @@ import { EXPLAINERS, LEARNING_PATHS } from "./learn";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
 import { longIdentifier, policyHref } from "./policy";
+import { stateTitle } from "./seo";
 import type { SearchEntry } from "./search";
 import { plainText } from "./plain-text";
 
@@ -110,7 +111,7 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ),
     ...catalog.people.map((p) => e("person", p.slug, `/local/#${p.slug}`, p.name, p.headline, p.affiliations.map((a) => a.name).join(" "))),
     ...organizationsByState(catalog).states.map((s) =>
-      e("place", stateSlug(s.code), `/places/${stateSlug(s.code)}/`, s.name, `Organizations headquartered in ${s.name}`, "state headquarters place"),
+      e("place", stateSlug(s.code), `/places/${stateSlug(s.code)}/`, s.name, `${stateTitle(s)}: organizations headquartered there`, "state headquarters place ai companies labs"),
     ),
   ];
 }

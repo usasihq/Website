@@ -8,7 +8,7 @@ import { landingLinks, type LandingLink } from "@/lib/jobs/landing-links";
 import { MIN_STATE_LISTINGS } from "@/lib/jobs/landing";
 import { pageMetadata } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
-export const metadata = pageMetadata({ title: "Jobs", description: "Current positions at companies and labs documented by USASI, collected from authoritative employer career sources. Explore listings and apply directly with the employer.", path: "/jobs/" });
+export const metadata = pageMetadata({ title: "Jobs at U.S. AI companies & labs", description: "Current positions at U.S. AI companies and labs documented by USASI, collected from authoritative employer career sources. Apply directly with the employer.", path: "/jobs/" });
 function BrowseLinks({ links }: { links: LandingLink[] }) {
   return <ul className="mt-2 flex flex-wrap gap-2">{links.map(l => <li key={l.path}><Link prefetch={false} href={l.path} className="badge min-h-11 px-3 hover:border-cyan">{l.kind === "state" ? <><span className="sr-only">Jobs in </span>{l.name.replace(/^Jobs in /, "")}</> : l.name} <span className="text-muted">({l.count.toLocaleString("en-US")})</span></Link></li>)}</ul>;
 }

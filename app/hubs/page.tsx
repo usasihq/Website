@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { HubIcon } from "@/components/learn/HubIcon";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
+import { itemList } from "@/lib/structured-data";
 
 export const metadata = pageMetadata({
-  title: "Hubs",
+  title: "U.S. AI topic hubs: agents, chips, robotics, science & more",
   description: "Sourced introductions to parts of the American AI landscape, each with a reading path into the catalog and its primary documents.",
   path: "/hubs/",
 });
@@ -17,6 +19,7 @@ export default function HubsPage() {
   const hubs = getCatalog().hubs;
   return (
     <>
+      <JsonLd data={itemList({ name: "Topic hubs", path: "/hubs/", items: hubs.map((h) => ({ name: h.title, href: `/hubs/${h.slug}/` })) })} />
       <PageHeader
         eyebrow="Reference"
         title="Hubs"

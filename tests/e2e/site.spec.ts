@@ -620,6 +620,30 @@ test("reference sections: learn, hubs, places, and record context", async ({ pag
   await expect(page.getByRole("heading", { name: "Explore related information" })).toBeVisible();
 });
 
+test.describe("search metadata", () => {
+  test("state pages are titled the way people search, with large previews allowed", async ({ page }) => {
+    await page.goto("/places/california/");
+    await expect(page.locator("h1")).toHaveText("AI companies & labs in California");
+    await expect(page).toHaveTitle("AI companies & labs in California · USASI");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
+    const types = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((t) => JSON.parse(t)["@type"]);
+    expect(types).toEqual(expect.arrayContaining(["ItemList", "BreadcrumbList"]));
+  });
+
+  test("record pages open with an answer and carry structured data", async ({ page }) => {
+    await page.goto(`/companies/${activeOrg.slug}/`);
+    await expect(page.getByTestId("record-lead")).toContainText(`${activeOrg.name} is `);
+    const orgTypes = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((t) => JSON.parse(t)["@type"]);
+    expect(orgTypes).toEqual(expect.arrayContaining(["Organization", "BreadcrumbList"]));
+
+    await page.goto(`/open/${activeRelease.slug}/`);
+    await expect(page.getByTestId("record-lead")).toContainText(`${activeRelease.name} is `);
+    await expect(page).toHaveTitle(/: license/);
+    const crumbs = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((t) => JSON.parse(t)).find((d) => d["@type"] === "BreadcrumbList");
+    expect(crumbs.itemListElement.at(-1).name).toBe(activeRelease.name);
+  });
+});
+
 test("comparison exports the visible selection with caveats", async ({ page }) => {
   await page.goto("/matrix/?orgs=openai,ai2");
   const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: /^JSON/ }).click()]);

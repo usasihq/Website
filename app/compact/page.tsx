@@ -15,6 +15,7 @@ export default function CompactPage() {
       eyebrow="Editorial practices · version 0.2"
       title="USASI Compact v0.2 — unofficial"
       crumbs={[{ href: "/about/", label: "About" }]}
+      current={{ href: "/compact/", label: "USASI Compact" }}
       description={<p>Voluntary editorial practices for this catalog. Not government policy and not a legal document.</p>}
     >
       <Content />

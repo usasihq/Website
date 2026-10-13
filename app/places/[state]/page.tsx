@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Monogram } from "@/components/Badges";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
@@ -11,19 +12,24 @@ import { cardImage } from "@/lib/page-cards";
 import { organizationsByState } from "@/lib/place-index";
 import { stateFromSlug, stateSlug, US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
+import { statePlaceName, stateSeo, stateTitle } from "@/lib/seo";
+import { itemList } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return organizationsByState(getCatalog()).states.map((s) => ({ state: stateSlug(s.code) }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ state: string }> }) {
-  const code = stateFromSlug((await params).state);
-  const name = code ? US_STATES[code] : "Unknown state";
+  const slug = (await params).state;
+  const catalog = getCatalog();
+  const code = stateFromSlug(slug);
+  const group = code ? organizationsByState(catalog).states.find((s) => s.code === code) : undefined;
+  const seo = group ? stateSeo(catalog, group) : { title: `AI companies & labs in ${code ? US_STATES[code] : "an unknown state"}`, description: "" };
   return pageMetadata({
-    title: `${name}: organizations by headquarters`,
-    description: `Organizations in the USASI catalog whose documented headquarters is in ${name}. Not a map of offices, facilities, or capacity.`,
-    path: `/places/${(await params).state}/`,
-    image: cardImage(getCatalog(), `/places/${(await params).state}/`),
+    title: seo.title,
+    description: seo.description,
+    path: `/places/${slug}/`,
+    image: cardImage(catalog, `/places/${slug}/`),
   });
 }
 
@@ -32,16 +38,24 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
   const group = code ? organizationsByState(getCatalog()).states.find((s) => s.code === code) : undefined;
   if (!code || !group) notFound();
   const jobs = landingPage(getCatalog(), `/jobs/in/${stateSlug(code)}/`);
+  const path = `/places/${stateSlug(code)}/`;
   return (
     <>
+      <JsonLd
+        data={itemList({
+          name: stateTitle(group),
+          path,
+          items: group.organizations.map((o) => ({ name: o.name, href: orgHref(o.slug) })),
+        })}
+      />
       <PageHeader
-        eyebrow="Places"
-        title={group.name}
-        crumbs={[{ href: "/places/", label: "Places" }, { href: `/places/${stateSlug(code)}/`, label: group.name }]}
+        eyebrow={`Places · ${group.name}`}
+        title={stateTitle(group)}
+        crumbs={[{ href: "/places/", label: "Places" }, { href: path, label: group.name }]}
         description={
           <p>
-            {group.organizations.length} {group.organizations.length === 1 ? "organization" : "organizations"} in this catalog whose documented
-            headquarters is in {group.name}. Each label below is quoted
+            {group.organizations.length} AI {group.organizations.length === 1 ? "company, lab, or research organization" : "companies, labs, and research organizations"} in
+            this catalog whose documented headquarters is in {statePlaceName(group)}. Each label below is quoted
             from the organization&rsquo;s record, where its source is cited. Headquarters are not offices, facilities, or computing capacity.
           </p>
         }

@@ -1,15 +1,19 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { OrgDirectory } from "@/components/OrgDirectory";
 import { PageHeader } from "@/components/PageHeader";
 import { OrgQuickViews } from "@/components/QuickViews";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
+import { orgHref } from "@/lib/routes";
+import { itemList } from "@/lib/structured-data";
+
+const COUNTS = getCatalog().counts();
 
 export const metadata = pageMetadata({
-  title: "Companies & Labs",
-  description:
-    "Directory of U.S. AI companies, laboratories, research units, and foundations, with documented products, roles, eligibility, and sources.",
+  title: "U.S. AI companies & labs directory",
+  description: `Directory of ${COUNTS.organizations} U.S. AI companies, labs, research units, and foundations: products, open models, headquarters, and eligibility, each with sources.`,
   path: "/companies/",
 });
 
@@ -19,10 +23,11 @@ export default function CompaniesPage() {
   const items = catalog.organizations.map((o) => catalog.toOrgListItem(o));
   return (
     <>
+      <JsonLd data={itemList({ name: "U.S. AI companies & labs", path: "/companies/", items: items.map((o) => ({ name: o.name, href: orgHref(o.slug) })) })} />
       <PageHeader
         compact
-        eyebrow="Directory"
-        title="Companies & Labs"
+        eyebrow="Directory · Companies & Labs"
+        title="U.S. AI companies & labs"
         description={
           <p>
             Search U.S. AI companies, labs, research units, and foundations, covering both closed and open offerings.

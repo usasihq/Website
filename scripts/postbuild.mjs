@@ -202,6 +202,64 @@ for (const person of readDir("people")) {
   }
 }
 
+/* ---------------------------------------------------------------- */
+/* 3. Structured data (JSON-LD)                                      */
+/* ---------------------------------------------------------------- */
+
+// Every JSON-LD block must parse, name the schema.org context, and give each
+// node a @type. Breadcrumb and item lists need position, name, and an absolute
+// link for every entry. Detail pages must carry a BreadcrumbList.
+{
+  const LD = /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
+  const DETAIL = /^(?:(?:companies|open|big-si|licenses|places|hubs|news|newsletter|learn|kids)\/[^/]+|learn\/(?:paths|tools)\/[^/]+)\/index\.html$/;
+  const absolute = (u) => typeof u === "string" && /^https?:\/\/[^\s/]+\//.test(u);
+  const nodesOf = (value, found = []) => {
+    if (Array.isArray(value)) value.forEach((v) => nodesOf(v, found));
+    else if (value && typeof value === "object") {
+      if (value["@type"]) found.push(value);
+      for (const v of Object.values(value)) if (v && typeof v === "object") nodesOf(v, found);
+    }
+    return found;
+  };
+  let blocks = 0;
+  for (const file of htmlFiles) {
+    const rel = path.relative(out, file).split(path.sep).join("/");
+    const html = fs.readFileSync(file, "utf8");
+    const types = new Set();
+    for (const match of html.matchAll(LD)) {
+      blocks += 1;
+      let data;
+      try {
+        data = JSON.parse(match[1]);
+      } catch (error) {
+        failures.push(`${rel}: JSON-LD is not valid JSON (${error.message})`);
+        continue;
+      }
+      if (data?.["@context"] !== "https://schema.org") failures.push(`${rel}: JSON-LD block without "@context": "https://schema.org"`);
+      const top = Array.isArray(data?.["@graph"]) ? data["@graph"] : [data];
+      for (const node of top) if (!node?.["@type"]) failures.push(`${rel}: JSON-LD node without @type`);
+      for (const node of nodesOf(data)) {
+        types.add(node["@type"]);
+        if (node["@type"] !== "BreadcrumbList" && node["@type"] !== "ItemList") continue;
+        const isTrail = node["@type"] === "BreadcrumbList";
+        const items = node.itemListElement;
+        if (!Array.isArray(items) || items.length === 0) {
+          if (isTrail) failures.push(`${rel}: BreadcrumbList without items`);
+          continue;
+        }
+        items.forEach((item, i) => {
+          const link = isTrail ? item.item : item.url;
+          if (item["@type"] !== "ListItem" || item.position !== i + 1 || typeof item.name !== "string" || !item.name.trim() || !absolute(link)) {
+            failures.push(`${rel}: ${node["@type"]} entry ${i + 1} needs @type ListItem, position ${i + 1}, a name, and an absolute ${isTrail ? "item" : "url"}`);
+          }
+        });
+      }
+    }
+    if (DETAIL.test(rel) && !types.has("BreadcrumbList")) failures.push(`${rel}: detail page without a BreadcrumbList`);
+  }
+  console.log(`postbuild: ${blocks} JSON-LD blocks checked.`);
+}
+
 for (const forbidden of ["research", "CONTENT_REVIEW.md", "tests", "content"]) {
   if (fs.existsSync(path.join(out, forbidden))) failures.push(`private path exported: ${forbidden}`);
 }

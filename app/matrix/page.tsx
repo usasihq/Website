@@ -13,7 +13,7 @@ import { artifactHref } from "@/lib/routes";
 import type { AvailabilityStatus } from "@/lib/schema";
 
 export const metadata = pageMetadata({
-  title: "Compare",
+  title: "Compare U.S. AI labs: open-weight models & openness",
   description:
     "Comparison workspace for the USASI catalog: documented hosted products, public-weight model releases, training materials, and software, dataset, and evaluation-tool checklists. Not a leaderboard.",
   path: "/matrix/",

@@ -13,7 +13,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { parseGlossary } from "@/lib/reference-search";
 
 export const metadata = pageMetadata({
-  title: "Learn",
+  title: "Learn AI: plain-language explainers & learning paths",
   description:
     "Learn how AI works and how to check claims about it: learning paths, plain-language explainers, topic hubs, and a glossary, each leading to real records and their sources.",
   path: "/learn/",

@@ -19,7 +19,7 @@ export default function KidsPacketPage() {
     <article>
       <header className="border-b border-line">
         <div className="container-page pb-8 pt-10 sm:pt-12">
-          <Breadcrumbs items={[{ href: "/kids/", label: "For kids" }]} />
+          <Breadcrumbs items={[{ href: "/kids/", label: "For kids" }]} current={{ href: "/kids/packet/", label: "Classroom packet" }} />
           <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-text sm:text-5xl">AI and Super Intelligence, explained for kids</h1>
           <p className="mt-4 max-w-2xl text-lg text-muted print:hidden">
             All seven lessons on one page for printing: each with its activity and a paper quiz, then the word list and an answer key for the grown-up. The

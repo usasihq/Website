@@ -42,7 +42,7 @@ export default async function NewsletterIssuePage({ params }: { params: Promise<
       <article>
         <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
-            <Breadcrumbs items={[{ href: "/newsletter/", label: "The USASI weekly" }]} />
+            <Breadcrumbs items={[{ href: "/newsletter/", label: "The USASI weekly" }]} current={{ href: `/newsletter/${issue.slug}/`, label: issue.subject }} />
             <p className="eyebrow">The USASI weekly · Issue {issue.number}</p>
             <h1 className="mt-2 max-w-4xl text-3xl font-semibold text-text sm:text-4xl">{issue.subject}</h1>
             <p className="mt-3 max-w-3xl text-lg text-muted">{issue.preview}</p>

@@ -127,6 +127,16 @@ export class Catalog {
     return this.leaders.filter((l) => [...l.current_roles, ...l.past_roles].some((r) => r.organization_slug === slug));
   }
 
+  /** Published People Behind Local SI profiles whose affiliations name this organization. */
+  peopleForOrganization(slug: string): Person[] {
+    return this.people.filter((p) => p.affiliations.some((a) => a.organization_slug === slug));
+  }
+
+  /** Published People Behind Local SI profiles whose listed work names this artifact. */
+  peopleForArtifact(slug: string): Person[] {
+    return this.people.filter((p) => p.work.some((w) => w.artifact_slug === slug));
+  }
+
   newsletterIssue(slug: string): NewsletterIssue | undefined {
     return this.newsletter.find((n) => n.slug === slug);
   }

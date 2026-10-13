@@ -7,8 +7,8 @@ import { pageMetadata } from "@/lib/metadata";
 import { groupTimeline, timelineEvents } from "@/lib/timeline";
 
 export const metadata = pageMetadata({
-  title: "Timeline",
-  description: "Open releases and news events in the USASI catalog, by documented date. A navigation aid, not a ranking of importance.",
+  title: "U.S. AI timeline: open model releases & news by date",
+  description: "Model, software, dataset, and evaluation-tool releases and news events in the USASI catalog, by documented date. A navigation aid, not a ranking of importance.",
   path: "/timeline/",
 });
 

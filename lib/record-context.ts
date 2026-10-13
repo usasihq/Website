@@ -8,6 +8,7 @@ import type { Catalog } from "./catalog";
 import { EXPLAINERS } from "./learn";
 import { checklistFor } from "./openness";
 import { stateFromHeadquarters, stateSlug, US_STATES } from "./places";
+import { stateTitle } from "./seo";
 import type { Artifact, Organization } from "./schema";
 
 export type RelatedLink = { href: string; label: string; note: string };
@@ -75,7 +76,7 @@ export function organizationRelated(catalog: Catalog, o: Organization): RelatedL
   for (const r of o.organization_roles) if (HUB_BY_ROLE[r]) hubs.add(HUB_BY_ROLE[r]);
   const links = hubLinks(catalog, hubs);
   const code = stateFromHeadquarters(o.headquarters?.label, o.headquarters?.country);
-  if (code) links.push({ href: `/places/${stateSlug(code)}/`, label: `Organizations headquartered in ${US_STATES[code]}`, note: "Place" });
+  if (code) links.push({ href: `/places/${stateSlug(code)}/`, label: stateTitle({ code, name: US_STATES[code] }), note: "Place" });
   const ex = ["how-the-ecosystem-fits-together"];
   if (o.organization_roles.includes("model-developer")) ex.push("open-weight-vs-open-source");
   if (o.organization_roles.some((r) => ["chip-designer", "compute-infrastructure", "cloud-provider"].includes(r))) ex.push("infrastructure-and-energy-claims");

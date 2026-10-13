@@ -43,7 +43,7 @@ export default async function NewsItemPage({ params }: { params: Promise<{ slug:
       <article>
         <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
-            <Breadcrumbs items={[{ href: "/news/", label: "Latest news" }]} />
+            <Breadcrumbs items={[{ href: "/news/", label: "Latest news" }]} current={{ href: newsHref(item.slug), label: item.title }} />
             <p className="eyebrow">{NEWS_CATEGORY_LABELS[item.category]}</p>
             <h1 className="mt-2 max-w-4xl text-3xl font-semibold text-text sm:text-4xl">{item.title}</h1>
             <p className="meta mt-4">
