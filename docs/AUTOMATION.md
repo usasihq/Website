@@ -10,7 +10,7 @@ paused (`CLOUDFLARE_DEPLOY=false`), so there is no Cloudflare API token in GitHu
 
 | Task | When | What it does |
 |---|---|---|
-| Daily site update | every day, 7:00 local | refresh all Jobs feeds; research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy |
+| Daily site update | every day, 7:00 local | refresh all Jobs feeds; on the first run of each month, write that month's edition of The State of American AI (`npm run report:snapshot -- YYYY-MM`, never replacing an existing one); research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy |
 | Weekly catalog upkeep | Sundays, 10:00 local | review a batch of cited sources for changes; apply supported corrections; add recent open releases from catalog organizations; draft the next weekly email issue; check, commit to a `weekly/YYYY-MM-DD` branch, and open a pull request. Merged changes go live on the next daily run (or a manual publish) |
 
 News is published without individual human review (disclosed on `/news/` and in

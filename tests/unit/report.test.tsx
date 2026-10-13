@@ -21,6 +21,7 @@ import {
   editionHref,
   editionLabel,
   editionTitle,
+  nextEdition,
   licenseFamily,
   percent,
   releaseLicenseFamily,
@@ -282,6 +283,12 @@ describe("published editions", () => {
         expect(f.definition.length).toBeGreaterThan(40);
       }
     }
+  });
+
+  it("names the next monthly edition", () => {
+    expect(nextEdition("2026-10")).toBe("2026-11");
+    expect(nextEdition("2026-12")).toBe("2027-01");
+    expect(() => nextEdition("2026-13")).toThrow();
   });
 
   it("reproduces the latest edition from the catalog when the catalog has not changed, and says so when it has", () => {

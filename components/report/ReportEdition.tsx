@@ -10,6 +10,7 @@ import {
   editionDataHref,
   editionHref,
   editionLabel,
+  nextEdition,
   hasChanges,
   REPORT_HREF,
   REPORT_NAME,
@@ -127,6 +128,14 @@ export function ReportEdition({
           </dd>
           <dt className="text-muted">Published</dt>
           <dd className="text-text">{formatDate(s.published)}</dd>
+          {s.edition === latest.edition ? (
+            <>
+              <dt className="text-muted">Next edition</dt>
+              <dd className="text-text" data-testid="report-next">
+                Early {editionLabel(nextEdition(s.edition))} <span className="text-muted">(a new edition is published each month)</span>
+              </dd>
+            </>
+          ) : null}
           <dt className="text-muted">Permanent link</dt>
           <dd className="min-w-0 break-words">
             <Link href={permanent} className="link">

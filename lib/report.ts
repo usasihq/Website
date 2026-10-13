@@ -47,6 +47,13 @@ export function editionLabel(edition: string): string {
   if (!m) throw new Error(`Not an edition id (YYYY-MM): ${edition}`);
   return `${MONTH_NAMES[Number(m[2]) - 1]} ${m[1]}`;
 }
+/** "2026-10" → "2026-11": editions are published monthly. */
+export function nextEdition(edition: string): string {
+  const m = EDITION_RE.exec(edition);
+  if (!m) throw new Error(`Not an edition id (YYYY-MM): ${edition}`);
+  const [y, mo] = [Number(m[1]), Number(m[2])];
+  return mo === 12 ? `${y + 1}-01` : `${y}-${String(mo + 1).padStart(2, "0")}`;
+}
 export const editionTitle = (edition: string) => `${REPORT_NAME}, ${editionLabel(edition)}`;
 export const REPORT_HREF = "/report/";
 export const editionHref = (edition: string) => `/report/${edition}/`;

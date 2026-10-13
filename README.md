@@ -326,8 +326,10 @@ file, commit). The site renders editions only from these files, so later
 catalog changes never rewrite a published edition; `/report/` shows the latest
 edition and a "Since this edition" note when the live catalog differs.
 
-To publish a new edition: `npm run report:snapshot -- 2026-11`, review the
-file, commit it, and build. Each edition gets `/report/<YYYY-MM>/` with
+Editions are monthly: the daily automated update writes the current month's
+edition on its first run of the month (see `docs/AUTOMATION.md`). To publish one
+by hand: `npm run report:snapshot -- 2026-11`, review the file, commit it, and
+build. Each edition gets `/report/<YYYY-MM>/` with
 `data.csv` and `data.json` (CC BY 4.0), a preview card, a sitemap entry, and a
 "What changed since the previous edition" section.
 
