@@ -14,6 +14,7 @@ import path from "node:path";
 import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
 import { jobsDirectoryData } from "../lib/jobs/directory-data";
+import { jobLandingSearchEntries } from "../lib/jobs/landing-links";
 import { sourceLibrary } from "../lib/source-library";
 import { parseFaq, parseGlossary, referenceSearchEntries } from "../lib/reference-search";
 import { BASE_PATH, SITE_URL, siteConfig } from "../lib/site-config";
@@ -53,7 +54,7 @@ const faqPath = path.join(process.cwd(), "content", "pages", "faq.mdx");
 const faq = fs.existsSync(faqPath) ? parseFaq(fs.readFileSync(faqPath, "utf8")) : [];
 fs.writeFileSync(
   path.join(outDir, "search-index.json"),
-  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq)] }) + "\n",
+  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog)] }) + "\n",
 );
 // Full current Jobs list, loaded by the /jobs/ page after first paint (the page itself embeds only the first 30).
 const jobs = jobsDirectoryData(catalog);

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getCatalog } from "@/lib/catalog";
+import { jobLandingSitemap } from "@/lib/jobs/landing-links";
 import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
 import { EXPLAINERS, LEARNING_PATHS } from "@/lib/learn";
 import { absoluteUrl } from "@/lib/paths";
@@ -30,5 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...catalog.leaders.map((l) => ({ url: absoluteUrl(`/big-si/${l.slug}/`), lastModified: l.updated_at })),
     ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
+    // Jobs landing pages change daily; they carry the date of their listings' last successful check.
+    ...jobLandingSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
   ];
 }
