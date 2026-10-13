@@ -18,6 +18,8 @@ import { pageMetadata } from "@/lib/metadata";
 import { RUBRIC_LABEL } from "@/lib/openness";
 import { absoluteUrl, asset } from "@/lib/paths";
 import { artifactHref, orgHref } from "@/lib/routes";
+import { editionLabel } from "@/lib/report";
+import { latestEdition } from "@/lib/report-editions";
 import { siteConfig } from "@/lib/site-config";
 import { CATALOG_DATASET_ID, HF_DATASET_URL } from "@/lib/structured-data";
 
@@ -29,6 +31,8 @@ export const metadata = pageMetadata({
 
 export default function HomePage() {
   const siExplainer = EXPLAINERS.find((e) => e.slug === "what-super-intelligence-means");
+  const report = latestEdition();
+  const reportTotal = (k: string) => (report?.totals.find((t) => t.key === k)?.value ?? 0).toLocaleString("en-US");
   const catalog = getCatalog();
   const counts = catalog.counts();
   const featured = catalog.featured;
@@ -180,6 +184,27 @@ export default function HomePage() {
               <span className="mt-1 block text-lg font-semibold text-text">{siExplainer.title}</span>
               <span className="mt-1 block text-[0.9375rem] text-muted">
                 The federal term since Executive Order 14434, the older research meaning, and a dated, sourced timeline.
+              </span>
+            </span>
+            <ArrowRight aria-hidden="true" className="hidden h-5 w-5 shrink-0 text-cyan sm:block" />
+          </Link>
+        </div>
+      ) : null}
+
+      {/* The recurring research report: dated, defined, downloadable figures from the catalog. */}
+      {report ? (
+        <div className={`container-page pb-8 ${siExplainer ? "-mt-5" : ""}`}>
+          <Link
+            href="/report/"
+            className="card card-link flex flex-col gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-5"
+            data-testid="home-report"
+          >
+            <span className="min-w-0">
+              <span className="eyebrow text-[0.75rem]">Research report · {editionLabel(report.edition)} edition</span>
+              <span className="mt-1 block text-lg font-semibold text-text">The State of American AI</span>
+              <span className="mt-1 block text-[0.9375rem] text-muted">
+                Dated figures from the catalog: {reportTotal("organizations")} organization records, {reportTotal("model_releases")} model releases and their licenses,
+                local AI, jobs, and policy, each with its definition and a data download.
               </span>
             </span>
             <ArrowRight aria-hidden="true" className="hidden h-5 w-5 shrink-0 text-cyan sm:block" />
