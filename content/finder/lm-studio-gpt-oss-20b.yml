@@ -1,0 +1,179 @@
+slug: lm-studio-gpt-oss-20b
+title: LM Studio with gpt-oss-20b
+tasks: [chat-and-write, work-with-documents]
+runs: local
+summary:
+  text: >-
+    LM Studio is a desktop app for downloading and running language models on your computer, with
+    a chat interface and document attachments. OpenAI's guide to running its open-weight
+    gpt-oss-20b in LM Studio covers downloading the model as openai/gpt-oss-20b, chatting with it,
+    and connecting MCP servers as tools.
+  reviewed_at: 2026-10-13
+  source_ids: [lms-docs, lms-rag, oai-cookbook-lmstudio]
+components:
+  - role: app
+    name: LM Studio
+    record_slug: element-labs
+    url: https://lmstudio.ai/docs/app
+  - role: runtime
+    name: llama.cpp engine inside LM Studio
+    record_slug: llama-cpp
+    url: https://lmstudio.ai/docs/app
+  - role: model
+    name: gpt-oss-20b (LM Studio model openai/gpt-oss-20b)
+    record_slug: gpt-oss-20b
+    url: https://lmstudio.ai/models/openai/gpt-oss-20b
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [lms-sysreq, oai-cookbook-lmstudio]
+accelerators:
+  values: [apple-silicon, cpu-only]
+  source_ids: [lms-sysreq, lms-docs]
+memory:
+  variant: gpt-oss-20b with MXFP4-quantized MoE weights (LM Studio model openai/gpt-oss-20b)
+  gpu_gb: 16
+  system_gb: null
+  statement:
+    text: >-
+      OpenAI's guide to running gpt-oss with LM Studio says gpt-oss-20b only requires at least 16GB
+      of VRAM, and OpenAI's model card says MXFP4 quantization of the MoE weights lets it run within
+      16GB of memory. LM Studio's catalog page for openai/gpt-oss-20b lists a minimum system memory
+      of 12 GB.
+    reviewed_at: 2026-10-13
+    source_ids: [oai-cookbook-lmstudio, gptoss20b-card, lms-cat-gptoss20b]
+skill: beginner
+skill_note: >-
+  LM Studio is a graphical installer; you can download and load the model from its Discover and Chat
+  tabs, or with two lms commands in a terminal.
+account_required:
+  value: false
+  source_ids: [lms-offline, gptoss20b-api]
+cost_basis:
+  value: free-download
+  note: >-
+    LM Studio's Free plan includes running local models with llama.cpp and MLX, and OpenAI releases
+    gpt-oss-20b under Apache 2.0. Paid LM Studio plans add hosted open models and more included
+    usage.
+  source_ids: [lms-pricing, gptoss20b-card]
+data_location:
+  text: >-
+    On your machine. LM Studio's offline guide says a downloaded model runs locally, nothing you
+    enter in chats leaves your device, and attached documents are processed locally. Searching for
+    and downloading models needs an internet connection.
+  reviewed_at: 2026-10-13
+  source_ids: [lms-offline]
+getting_started:
+  - "Download and install LM Studio for Windows, macOS, or Linux."
+  - "Download the model with `lms get openai/gpt-oss-20b`, or search for gpt-oss in the Discover tab."
+  - "Load it with the model loader in the Chat tab, or with `lms load openai/gpt-oss-20b`, and start a chat."
+  - "To work with documents, attach .docx, .pdf, or .txt files to a chat message."
+getting_started_source_ids: [oai-cookbook-lmstudio, lms-basics, lms-rag]
+limitations:
+  - text: >-
+      OpenAI marks its LM Studio guide as archived and says it may reference outdated models or
+      APIs.
+    reviewed_at: 2026-10-13
+    source_ids: [oai-cookbook-lmstudio]
+  - text: >-
+      OpenAI says the gpt-oss models should only be used with its harmony response format; its guide
+      says LM Studio uses OpenAI's Harmony library to build gpt-oss prompts with both llama.cpp and
+      MLX.
+    reviewed_at: 2026-10-13
+    source_ids: [gptoss20b-card, oai-cookbook-lmstudio]
+  - text: >-
+      On macOS, LM Studio needs Apple Silicon and macOS 14 or newer; Intel-based Macs are not
+      supported. On Windows it needs an x64 CPU with AVX2 or an ARM (Snapdragon X Elite) system, and
+      16GB of RAM and 4GB of dedicated VRAM are recommended.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-sysreq]
+  - text: >-
+      LM Studio's terms of use license the software solely for personal or internal business
+      purposes and prohibit redistributing, modifying, or reverse engineering it.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-terms]
+unverified:
+  - USASI has not tested this configuration.
+  - The 16 GB figure is OpenAI's statement for the model; how much a longer context adds on your hardware is not documented.
+  - LM Studio's pages reviewed do not name supported NVIDIA, AMD, or Intel graphics on Windows or Linux, so GPU acceleration on those cards is not established here.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: lms-docs
+    title: Welcome to LM Studio Docs
+    url: https://lmstudio.ai/docs/app
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-basics
+    title: Get started with LM Studio
+    url: https://lmstudio.ai/docs/app/basics
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-sysreq
+    title: LM Studio system requirements
+    url: https://lmstudio.ai/docs/app/system-requirements
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-rag
+    title: Chat with Documents (LM Studio)
+    url: https://lmstudio.ai/docs/app/basics/rag
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-offline
+    title: Offline Operation (LM Studio)
+    url: https://lmstudio.ai/docs/app/offline
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-pricing
+    title: LM Studio pricing
+    url: https://lmstudio.ai/pricing
+    publisher: LM Studio (Element Labs)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-terms
+    title: LM Studio terms of use
+    url: https://lmstudio.ai/app-terms
+    publisher: LM Studio (Element Labs)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-cat-gptoss20b
+    title: openai/gpt-oss-20b (LM Studio model catalog)
+    url: https://lmstudio.ai/models/openai/gpt-oss-20b
+    publisher: LM Studio (Element Labs)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: oai-cookbook-lmstudio
+    title: How to run gpt-oss locally with LM Studio (OpenAI Cookbook)
+    url: https://cookbook.openai.com/articles/gpt-oss/run-locally-lmstudio
+    publisher: OpenAI
+    kind: documentation
+    published_at: 2025-08-07
+    accessed_at: 2026-10-13
+  - id: gptoss20b-card
+    title: gpt-oss-20b model card
+    url: https://huggingface.co/openai/gpt-oss-20b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gptoss20b-api
+    title: openai/gpt-oss-20b repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/openai/gpt-oss-20b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13

@@ -1,0 +1,170 @@
+slug: ollama-gpt-oss-120b
+title: Ollama with gpt-oss-120b
+tasks: [chat-and-write]
+runs: local
+summary:
+  text: >-
+    Ollama runs open models on your own computer from a desktop app or the command line. OpenAI's
+    larger open-weight model, gpt-oss-120b, is in Ollama's library as gpt-oss:120b, and OpenAI's
+    guide for running it with Ollama says the models ship with MXFP4-quantized weights.
+  reviewed_at: 2026-10-13
+  source_ids: [ollama-quickstart, ollama-lib-gptoss, oai-cookbook-ollama]
+components:
+  - role: app
+    name: Ollama (desktop app and command line)
+    record_slug: ollama
+    url: https://ollama.com/download
+  - role: model
+    name: gpt-oss-120b (Ollama tag gpt-oss:120b)
+    record_slug: gpt-oss-120b
+    url: https://ollama.com/library/gpt-oss
+platforms:
+  values: [macos, windows, linux]
+  source_ids: [ollama-quickstart, ollama-macos, ollama-windows, ollama-linux]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [ollama-gpu, ollama-macos]
+memory:
+  variant: gpt-oss-120b with MXFP4-quantized MoE weights (Ollama tag gpt-oss:120b)
+  gpu_gb: 60
+  system_gb: null
+  statement:
+    text: >-
+      OpenAI's guide to running gpt-oss with Ollama says gpt-oss-120b is best with 60GB or more of
+      VRAM or unified memory. It says the models ship MXFP4-quantized with no other quantization
+      available, and that you can offload to the CPU if you are short on VRAM, at slower speed.
+    reviewed_at: 2026-10-13
+    source_ids: [oai-cookbook-ollama]
+skill: beginner
+skill_note: >-
+  Ollama for macOS and Windows is a graphical app: you install it, pick a local model in the app or
+  run one command in a terminal, and chat; context length is a slider in its settings.
+account_required:
+  value: false
+  source_ids: [ollama-quickstart]
+cost_basis:
+  value: free-download
+  note: >-
+    Ollama's Free plan includes running models locally, and OpenAI releases gpt-oss-120b under Apache
+    2.0. Ollama's cloud models, including a separate gpt-oss:120b-cloud tag, draw on included or
+    purchased usage credits.
+  source_ids: [ollama-pricing, gptoss120b-card, ollama-lib-gptoss]
+data_location:
+  text: >-
+    On your machine. Ollama's FAQ says it runs locally and does not see your prompts or data when you
+    run locally; cloud-hosted models, if you choose them, are processed on Ollama's service, and
+    cloud features can be turned off.
+  reviewed_at: 2026-10-13
+  source_ids: [ollama-faq]
+getting_started:
+  - "Download Ollama for macOS, Windows, or Linux from ollama.com/download and open it."
+  - "Follow the setup prompts and choose a local model instead of signing in for cloud models."
+  - "Run `ollama pull gpt-oss:120b`, then `ollama run gpt-oss:120b`, or select the model in the app; the gpt-oss:120b-cloud tag runs on Ollama's servers instead."
+  - "OpenAI's guide says Ollama applies a chat template that mimics the harmony format, so you can chat in the app, in the terminal, or through Ollama's Chat Completions-compatible API."
+getting_started_source_ids: [ollama-quickstart, ollama-lib-gptoss, oai-cookbook-ollama]
+limitations:
+  - text: >-
+      Ollama's library lists the gpt-oss:120b download at 65GB.
+    reviewed_at: 2026-10-13
+    source_ids: [ollama-lib-gptoss]
+  - text: >-
+      Ollama sets its default context length from available VRAM: 4k tokens below 24 GiB, 32k from 24
+      to 48 GiB, and 256k at 48 GiB or more. A larger context needs more memory.
+    reviewed_at: 2026-10-13
+    source_ids: [ollama-ctx]
+  - text: >-
+      The macOS app needs macOS Sonoma (14) or newer; Apple M-series Macs get CPU and GPU support,
+      while Intel Macs run on the CPU only. The Windows app needs Windows 10 22H2 or newer.
+    reviewed_at: 2026-10-13
+    source_ids: [ollama-macos, ollama-windows]
+  - text: >-
+      OpenAI's model card describes gpt-oss-120b as fitting on a single 80GB GPU, such as an NVIDIA
+      H100 or AMD MI300X.
+    reviewed_at: 2026-10-13
+    source_ids: [gptoss120b-card]
+unverified:
+  - USASI has not tested this configuration.
+  - OpenAI's 60 GB figure is a recommendation, and Ollama lists the download at 65GB; whether a 64 GB Mac leaves room for the operating system and the context Ollama selects is not documented.
+  - Ollama names Intel GPUs only in its Linux Vulkan driver instructions and lists no supported Intel models; Intel GPU acceleration on Windows is not established here, and Intel-based Macs run on the CPU only.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: oai-cookbook-ollama
+    title: How to run gpt-oss locally with Ollama (OpenAI Cookbook)
+    url: https://cookbook.openai.com/articles/gpt-oss/run-locally-ollama
+    publisher: OpenAI
+    kind: documentation
+    published_at: 2025-08-05
+    accessed_at: 2026-10-13
+  - id: gptoss120b-card
+    title: gpt-oss-120b model card
+    url: https://huggingface.co/openai/gpt-oss-120b/raw/main/README.md
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-lib-gptoss
+    title: gpt-oss in the Ollama library
+    url: https://ollama.com/library/gpt-oss
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-quickstart
+    title: Ollama quickstart
+    url: https://docs.ollama.com/quickstart.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-macos
+    title: Ollama on macOS
+    url: https://docs.ollama.com/macos
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-windows
+    title: Ollama on Windows
+    url: https://docs.ollama.com/windows
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-linux
+    title: Ollama on Linux
+    url: https://docs.ollama.com/linux
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-gpu
+    title: Hardware support (Ollama documentation)
+    url: https://docs.ollama.com/gpu
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-ctx
+    title: Context length (Ollama documentation)
+    url: https://docs.ollama.com/context-length.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-faq
+    title: Ollama FAQ
+    url: https://docs.ollama.com/faq.md
+    publisher: Ollama
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ollama-pricing
+    title: Ollama pricing
+    url: https://ollama.com/pricing
+    publisher: Ollama
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13

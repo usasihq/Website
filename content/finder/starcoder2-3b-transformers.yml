@@ -1,0 +1,136 @@
+slug: starcoder2-3b-transformers
+title: StarCoder2-3B in bfloat16 with Hugging Face Transformers
+tasks: [write-code]
+runs: local
+summary:
+  text: >-
+    StarCoder2-3B is a 3-billion-parameter code model from the BigCode project, trained on 17
+    programming languages with a fill-in-the-middle objective. Its model card shows loading it with
+    Hugging Face Transformers in bfloat16 on a CUDA GPU and generating the continuation of a piece
+    of code.
+  reviewed_at: 2026-10-13
+  source_ids: [sc2-3b-card]
+components:
+  - role: model
+    name: StarCoder2-3B (bigcode/starcoder2-3b)
+    record_slug: starcoder2-3b
+    url: https://huggingface.co/bigcode/starcoder2-3b
+  - role: library
+    name: Hugging Face Transformers
+    record_slug: transformers
+    url: https://huggingface.co/docs/transformers/installation
+  - role: library
+    name: PyTorch with CUDA
+    record_slug: pytorch
+    url: https://pytorch.org/get-started/locally/
+platforms:
+  values: [linux, windows]
+  source_ids: [pytorch-start]
+accelerators:
+  values: [nvidia]
+  source_ids: [sc2-3b-card, pytorch-start]
+memory:
+  variant: starcoder2-3b loaded in torch.bfloat16 with Transformers
+  gpu_gb: 6.3
+  system_gb: null
+  statement:
+    text: >-
+      The model card reports a memory footprint of 6,312.41 MB (about 6.3 GB) for the model loaded
+      in torch.bfloat16 for a CUDA GPU, as printed by Transformers' get_memory_footprint. It lists
+      12,624.81 MB in full precision, 3,434.07 MB with 8-bit and 1,994.90 MB with 4-bit
+      bitsandbytes quantization.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-3b-card]
+skill: advanced
+skill_note: >-
+  Requires a Python environment with PyTorch for CUDA and Transformers, and a short Python script to
+  load the model and complete code.
+account_required:
+  value: false
+  source_ids: [sc2-3b-api, sc2-3b-card]
+cost_basis:
+  value: free-download
+  note: >-
+    The weights download from Hugging Face without gating under the BigCode OpenRAIL-M v1 license,
+    which carries use restrictions; Transformers is released under Apache 2.0.
+  source_ids: [sc2-3b-card, sc2-3b-api, bigcode-license, tf-license]
+data_location:
+  text: >-
+    On your machine. The model card's examples load the model into your own Python environment and
+    generate code on your own GPU.
+  reviewed_at: 2026-10-13
+  source_ids: [sc2-3b-card]
+getting_started:
+  - "Install PyTorch with CUDA support using the selector on pytorch.org; it offers CUDA builds for Linux and Windows."
+  - "Install Transformers and accelerate with pip; the model card's instructions install Transformers from its GitHub source."
+  - "In Python, load bigcode/starcoder2-3b with `AutoModelForCausalLM.from_pretrained(checkpoint, device_map=\"auto\", torch_dtype=torch.bfloat16)`, as on the model card."
+  - "Tokenize the start of some code, such as a function signature, move it to the GPU, and call `generate` to complete it."
+getting_started_source_ids: [pytorch-start, tf-install, sc2-3b-card]
+limitations:
+  - text: >-
+      The card says it is not an instruction model, so commands like "Write a function that
+      computes the square root." do not work well.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-3b-card]
+  - text: >-
+      The card says generated code is not guaranteed to work as intended and can be inefficient or
+      contain bugs or exploits.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-3b-card]
+  - text: >-
+      The model can reproduce code from its training data verbatim, which may carry license and
+      attribution requirements; the card points to a search index for tracing where generated code
+      came from.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-3b-card]
+unverified:
+  - USASI has not tested this configuration.
+  - The card's figure is the loaded model's footprint; memory used while generating, which grows with prompt and output length, is not stated.
+  - Running on AMD, Intel, or Apple GPUs is not documented on the model card.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: sc2-3b-card
+    title: starcoder2-3b model card
+    url: https://huggingface.co/bigcode/starcoder2-3b/raw/main/README.md
+    publisher: BigCode (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: sc2-3b-api
+    title: bigcode/starcoder2-3b repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/bigcode/starcoder2-3b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pytorch-start
+    title: Start Locally (PyTorch installation)
+    url: https://pytorch.org/get-started/locally/
+    publisher: PyTorch Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tf-install
+    title: Installation (Hugging Face Transformers documentation)
+    url: https://huggingface.co/docs/transformers/installation
+    publisher: Hugging Face
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: bigcode-license
+    title: BigCode Open RAIL-M v1 License Agreement (text in the license Space's app.py)
+    url: https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement/raw/main/app.py
+    publisher: BigCode project (Hugging Face Spaces)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tf-license
+    title: Transformers LICENSE
+    url: https://raw.githubusercontent.com/huggingface/transformers/main/LICENSE
+    publisher: Hugging Face (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

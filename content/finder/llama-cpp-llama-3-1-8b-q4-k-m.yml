@@ -1,0 +1,160 @@
+slug: llama-cpp-llama-3-1-8b-q4-k-m
+title: llama.cpp with Llama 3.1 8B Instruct quantized to Q4_K_M
+tasks: [chat-and-write]
+runs: local
+summary:
+  text: >-
+    llama.cpp includes a script to convert a Hugging Face model to GGUF, a llama-quantize tool to
+    shrink it, and llama-server to run it with a web chat interface. Meta's Llama 3.1 8B Instruct is
+    the instruction-tuned 8B model in the Llama 3.1 collection, which the model card says is intended
+    for assistant-like chat.
+  reviewed_at: 2026-10-13
+  source_ids: [lcpp-quant, lcpp-server, l31-card]
+components:
+  - role: runtime
+    name: llama.cpp (convert_hf_to_gguf.py, llama-quantize, llama-server)
+    record_slug: llama-cpp
+    url: https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md
+  - role: model
+    name: Llama 3.1 8B Instruct (meta-llama/Llama-3.1-8B-Instruct)
+    record_slug: llama-3-1-8b
+    url: https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [lcpp-install]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [lcpp-readme]
+memory:
+  variant: Llama 3.1 8B quantized to Q4_K_M with llama-quantize
+  gpu_gb: null
+  system_gb: 4.9
+  statement:
+    text: >-
+      llama.cpp's quantize README says models are currently fully loaded into memory, so you need
+      sufficient RAM to load them and memory and disk requirements are the same. Its example table
+      gives 4.9 GB for Llama 3.1 8B quantized to Q4_K_M, against 32.1 GB at its original size.
+    reviewed_at: 2026-10-13
+    source_ids: [lcpp-quant]
+skill: advanced
+skill_note: >-
+  Request access to Meta's weights, convert them to GGUF with llama.cpp's Python script, quantize
+  the file with llama-quantize, and run llama-server from a terminal.
+account_required:
+  value: true
+  source_ids: [l31-instruct-api]
+cost_basis:
+  value: free-download
+  note: >-
+    llama.cpp is MIT-licensed, and Meta grants a royalty-free license to Llama 3.1 under its Llama
+    3.1 Community License Agreement, a custom license with an acceptable use policy and additional
+    commercial terms for very large services.
+  source_ids: [lcpp-license, l31-license, l31-card]
+data_location:
+  text: >-
+    On your machine. llama-server listens on 127.0.0.1 by default, and its web UI keeps
+    conversations in your browser's IndexedDB storage. The weights are downloaded once from Hugging
+    Face after Meta approves your request.
+  reviewed_at: 2026-10-13
+  source_ids: [lcpp-server, lcpp-ui, l31-instruct-api]
+getting_started:
+  - "Request access to meta-llama/Llama-3.1-8B-Instruct on Hugging Face; the form asks for your name, date of birth, country, affiliation, and job title, and approval is manual."
+  - "Install llama.cpp's Python requirements, then run `python convert_hf_to_gguf.py --outfile llama-3.1-8b-instruct-bf16.gguf --outtype bf16` on the downloaded model directory."
+  - "Quantize it with `llama-quantize llama-3.1-8b-instruct-bf16.gguf llama-3.1-8b-instruct-Q4_K_M.gguf Q4_K_M`."
+  - "Start `llama-server -m llama-3.1-8b-instruct-Q4_K_M.gguf` and open http://127.0.0.1:9931 in a browser to chat."
+getting_started_source_ids: [l31-instruct-api, lcpp-quant, lcpp-server]
+limitations:
+  - text: >-
+      The quantize README says to make sure you have enough disk space for the intermediate files
+      that conversion and quantization create.
+    reviewed_at: 2026-10-13
+    source_ids: [lcpp-quant]
+  - text: >-
+      The Llama 3.1 license requires a copy of the agreement and a "Built with Llama" notice when you
+      distribute the model or a product containing it, and use must follow Meta's acceptable use
+      policy.
+    reviewed_at: 2026-10-13
+    source_ids: [l31-license]
+  - text: >-
+      The model card treats languages beyond the eight it supports as out of scope unless developers
+      fine-tune for them in line with the license and acceptable use policy.
+    reviewed_at: 2026-10-13
+    source_ids: [l31-card]
+  - text: >-
+      By default llama-server adjusts settings you leave unset, such as the context size, to fit in
+      device memory, with a minimum context of 4,096 tokens.
+    reviewed_at: 2026-10-13
+    source_ids: [lcpp-server]
+unverified:
+  - USASI has not tested this configuration.
+  - The README's 4.9 GB is given for Llama 3.1 8B in general; its detailed size table was measured on the pretrained meta-llama/Llama-3.1-8B, not the Instruct model.
+  - The README does not say how much memory the context window adds on top of the model file.
+  - Which pre-built llama.cpp packages include AMD or Intel GPU support is not established here.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: lcpp-readme
+    title: llama.cpp README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md
+    publisher: ggml-org (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-install
+    title: Install pre-built version of llama.cpp
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/docs/install.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-quant
+    title: llama.cpp quantize README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/quantize/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-server
+    title: LLaMA.cpp HTTP Server README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/server/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-ui
+    title: llama-ui README (llama-server web interface)
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/ui/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-license
+    title: llama.cpp LICENSE
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/LICENSE
+    publisher: ggml-org (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: l31-card
+    title: Llama 3.1 Model Card
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md
+    publisher: Meta (GitHub)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: l31-license
+    title: Llama 3.1 Community License Agreement
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/LICENSE
+    publisher: Meta (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: l31-instruct-api
+    title: meta-llama/Llama-3.1-8B-Instruct repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/meta-llama/Llama-3.1-8B-Instruct
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13
