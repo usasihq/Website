@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { KIND_LABELS, LEVEL_LABELS } from "@/lib/labels";
 import { AVAILABILITY_LABELS, CHECKLISTS, TIER_LABELS, type TierFilter } from "@/lib/openness";
 import {
@@ -17,11 +17,14 @@ import {
 } from "@/lib/search";
 import type { ArtifactKind, AvailabilityStatus, RecordLevel } from "@/lib/schema";
 import { ArtifactCard } from "./Cards";
-import { FilterChip, ResultSummary, SearchField, SelectField } from "./FilterControls";
-import { useDebounced, useQueryState } from "./useQueryState";
+import { FilterChip, ResultSummary, SearchField, SelectField, ShowMore } from "./FilterControls";
+import { useDebounced, useQueryState, useShowMore } from "./useQueryState";
 import { DownloadResults } from "./DownloadResults";
 import { artifactExport } from "@/lib/export";
 import { siteConfig } from "@/lib/site-config";
+
+/** Records shown per "Show more" step once the page is interactive. */
+const PAGE_SIZE = 48;
 
 const SORT_OPTIONS: Array<{ value: ArtifactSort; label: string }> = [
   { value: "reviewed", label: "Recently reviewed" },
@@ -55,6 +58,8 @@ export function ArtifactDirectory({ items, asOf }: { items: ArtifactListItem[]; 
   const { state: f, update } = useQueryState<ArtifactFilters>(parseArtifactFilters, serializeArtifactFilters);
   const results = useMemo(() => filterArtifacts(items, f), [items, f]);
   const announce = useDebounced(`${results.length} of ${items.length} records shown`);
+  const { limit, showMore } = useShowMore(PAGE_SIZE);
+  const listRef = useRef<HTMLUListElement>(null);
 
   const options = useMemo(() => {
     const kinds = [...new Set(items.map((i) => i.kind))].sort() as ArtifactKind[];
@@ -139,14 +144,24 @@ export function ArtifactDirectory({ items, asOf }: { items: ArtifactListItem[]; 
       ) : null}
 
       {results.length > 0 ? (
-        <ul className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {results.map((item) => (
-            <li key={item.slug}>
-              <ArtifactCard item={item} headingLevel={2} />
-              {f.license || f.licenseComponent ? <p className="mt-2 px-2 text-sm text-muted" data-license-match>License match: {matchedLicenses(item, f).map(l => `${l.label} (${l.appliesTo})`).join("; ")}. A component match does not license the whole artifact.</p> : null}
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul ref={listRef} className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {results.slice(0, limit).map((item) => (
+              <li key={item.slug}>
+                <ArtifactCard item={item} headingLevel={2} />
+                {f.license || f.licenseComponent ? <p className="mt-2 px-2 text-sm text-muted" data-license-match>License match: {matchedLicenses(item, f).map(l => `${l.label} (${l.appliesTo})`).join("; ")}. A component match does not license the whole artifact.</p> : null}
+              </li>
+            ))}
+          </ul>
+          <ShowMore
+            shown={Math.min(limit, results.length)}
+            total={results.length}
+            step={PAGE_SIZE}
+            noun={["record", "records"]}
+            listRef={listRef}
+            onMore={() => showMore(results.length)}
+          />
+        </>
       ) : (
         <div className="mt-6 rounded-xl border border-dashed border-line-strong p-8 text-center">
           <p className="text-lg text-text">No records match these filters.</p>

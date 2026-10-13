@@ -116,7 +116,7 @@ const STOP_WORDS = new Set(
 );
 
 /** The words a query is matched on: normalized, without stop words, at most 12. */
-function queryTokens(query: string): string[] {
+export function queryTokens(query: string): string[] {
   const all = normalize(query).split(" ").filter(Boolean);
   const meaningful = all.filter((t) => !STOP_WORDS.has(t));
   return (meaningful.length ? meaningful : all).slice(0, 12);

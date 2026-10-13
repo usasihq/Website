@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Coffee, Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { BrandMark } from "./BrandMark";
 import { SiteSearch } from "./SiteSearch";
+import { siteConfig, supportState } from "@/lib/site-config";
 
 /** Reference links: in the slim top bar from 640px, and in the mobile menu. */
 const REFERENCE = [
@@ -18,10 +19,11 @@ const REFERENCE = [
   { href: "/glossary/", label: "Glossary", bar: true },
   { href: "/kids/", label: "For kids", bar: false },
   { href: "/licenses/", label: "License guide", bar: false },
-  { href: "/policy/", label: "Policy tracker", bar: true },
+  // wide: in the top bar from lg only, so the independence line fits on tablets (all are in the menu).
+  { href: "/policy/", label: "Policy tracker", bar: true, wide: true },
   { href: "/reuse/", label: "Data & reuse", bar: false },
   { href: "/newsletter/", label: "Weekly email", bar: false },
-  { href: "/contribute/#corrections", label: "Corrections", bar: true },
+  { href: "/contribute/#corrections", label: "Corrections", bar: true, wide: true },
 ];
 
 const PEOPLE = [
@@ -136,6 +138,8 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
   const setOpen = (value: boolean) => setOpenedFor(value ? pathname : null);
   const panelId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
+  // The optional tip link in the top bar; hidden when tips are switched off in site-config.
+  const tipUrl = supportState(siteConfig.support).active ? siteConfig.support.tipUrl : null;
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -168,14 +172,30 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
       {/* Persistent independence line on every page. */}
       <div className="border-b border-line">
         <div className="container-page flex h-7 items-center justify-between gap-4 text-xs sm:text-[0.8125rem]">
-          <p className="truncate text-muted" data-testid="header-disclaimer">
+          <p className="min-w-0 truncate text-muted" data-testid="header-disclaimer">
             <span className="lg:hidden">Independent project. Not a U.S. government website.</span>
             <span className="hidden lg:inline">{disclaimer}</span>
           </p>
+          {tipUrl ? (
+            <a
+              href={tipUrl}
+              rel="noopener noreferrer"
+              className="inline-flex h-7 min-w-7 shrink-0 items-center justify-center gap-1.5 text-[#f3c969] hover:text-text"
+              title="Support our project on Buy Me a Coffee"
+              data-testid="header-support"
+            >
+              <Coffee aria-hidden="true" className="h-4 w-4 lg:h-3.5 lg:w-3.5" />
+              {/* Icon only below lg, so the independence line keeps its room. */}
+              <span className="sr-only lg:hidden">Support our project</span>
+              <span className="hidden lg:inline xl:hidden">Support us</span>
+              <span className="hidden xl:inline">Support our project · Buy me a coffee</span>
+              <span className="sr-only"> (opens {siteConfig.support.providerLabel ?? "the tip page"})</span>
+            </a>
+          ) : null}
           <nav aria-label="Reference" className="hidden shrink-0 sm:block">
             <ul className="flex items-center gap-4">
               {REFERENCE.filter((r) => r.bar).map((item) => (
-                <li key={item.href}>
+                <li key={item.href} className={"wide" in item && item.wide ? "hidden lg:block" : undefined}>
                   <Link href={item.href} prefetch={false} className="inline-flex h-7 items-center text-muted hover:text-text">
                     {item.label}
                   </Link>

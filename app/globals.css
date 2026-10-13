@@ -542,4 +542,10 @@ html:has(dialog.site-search[open]) {
   .prose-usasi {
     color: var(--text) !important;
   }
+  /* A printed source list is only useful with its addresses. */
+  [data-sources] a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    overflow-wrap: anywhere;
+  }
 }

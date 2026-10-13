@@ -8,8 +8,10 @@ import type { Catalog } from "./catalog";
 import { formatDate } from "./dates";
 import { ENTRY_TYPE_LABELS, NEWS_CATEGORY_LABELS, ROLE_LABELS } from "./labels";
 import { KID_LESSONS } from "./kids";
-import { EXPLAINERS, topic } from "./learn";
+import { EXPLAINERS, LEARNING_PATHS, topic } from "./learn";
 import { AVAILABILITY_LABELS } from "./openness";
+import { organizationsByState } from "./place-index";
+import { stateSlug } from "./places";
 import { artifactHref, orgHref } from "./routes";
 
 /** Bump when the card template changes, so every card is rendered again. */
@@ -156,6 +158,34 @@ export function pageCards(catalog: Catalog): PageCard[] {
   for (const l of catalog.licenses) {
     cards.push(
       card({ page: `/licenses/${l.slug}/`, image: `/og/licenses/${l.slug}.jpg`, template: "article", eyebrow: "License guide", title: l.name, subtitle: clip(l.summary.text, 160), facts: [] }),
+    );
+  }
+  for (const s of organizationsByState(catalog).states) {
+    const n = s.organizations.length;
+    const names = s.organizations.map((o) => o.name).sort((a, b) => a.localeCompare(b));
+    cards.push(
+      card({
+        page: `/places/${stateSlug(s.code)}/`,
+        image: `/og/places/${stateSlug(s.code)}.jpg`,
+        template: "article",
+        eyebrow: "Places · Headquarters",
+        title: s.name,
+        subtitle: clip(`${n} ${n === 1 ? "organization" : "organizations"} in this catalog with documented headquarters here, including ${listOf(names, 3)}.`, 160),
+        facts: [],
+      }),
+    );
+  }
+  for (const p of LEARNING_PATHS) {
+    cards.push(
+      card({
+        page: `/learn/paths/${p.id}/`,
+        image: `/og/paths/${p.id}.jpg`,
+        template: "article",
+        eyebrow: `Learning path · ${p.steps.length} steps`,
+        title: p.title,
+        subtitle: clip(p.description, 160),
+        facts: [],
+      }),
     );
   }
   for (const i of catalog.newsletter) {

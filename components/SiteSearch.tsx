@@ -87,6 +87,11 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
 
   const trimmed = query.trim();
   const matches = useMemo(() => (entries && trimmed ? searchEntries(entries, trimmed, 500) : []), [entries, trimmed]);
+  // True when the results are typo or partial matches only, so the list can say so.
+  const closeOnly = useMemo(
+    () => Boolean(entries && trimmed && matches.length && searchEntries(entries, trimmed, 1, { fuzzy: false }).length === 0),
+    [entries, trimmed, matches],
+  );
   const options: Option[] = useMemo(() => {
     if (!trimmed) {
       return [
@@ -216,6 +221,11 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
                   Open Models &amp; Tools
                 </Link>
                 .
+              </p>
+            ) : null}
+            {closeOnly ? (
+              <p className="px-3 pb-1 pt-2 text-sm text-muted" data-testid="close-matches">
+                No exact match for “{trimmed}”. Closest matches:
               </p>
             ) : null}
             <div role="listbox" id={listId} aria-label={trimmed ? "Search results" : "Suggested pages"}>

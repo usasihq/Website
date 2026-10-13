@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { OWNERSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import {
   DEFAULT_ORG_FILTERS,
@@ -13,8 +13,8 @@ import {
   type OrgSort,
 } from "@/lib/search";
 import { OrgCard } from "./Cards";
-import { FilterChip, ResultSummary, SearchField, SelectField } from "./FilterControls";
-import { useDebounced, useQueryState } from "./useQueryState";
+import { FilterChip, ResultSummary, SearchField, SelectField, ShowMore } from "./FilterControls";
+import { useDebounced, useQueryState, useShowMore } from "./useQueryState";
 import { DownloadResults } from "./DownloadResults";
 import { orgExport } from "@/lib/export";
 import { siteConfig } from "@/lib/site-config";
@@ -25,10 +25,15 @@ const SORT_LABELS: Record<OrgSort, string> = {
   artifacts: "Most open-artifact records in this catalog",
 };
 
+/** Organizations shown per "Show more" step once the page is interactive. */
+const PAGE_SIZE = 48;
+
 export function OrgDirectory({ items, asOf }: { items: OrgListItem[]; asOf?: string }) {
   const { state: f, update } = useQueryState<OrgFilters>(parseOrgFilters, serializeOrgFilters);
   const results = useMemo(() => filterOrganizations(items, f), [items, f]);
   const announce = useDebounced(`${results.length} of ${items.length} organizations shown`);
+  const { limit, showMore } = useShowMore(PAGE_SIZE);
+  const listRef = useRef<HTMLUListElement>(null);
 
   const options = useMemo(() => {
     const uniq = <T extends string>(values: T[]) => [...new Set(values)].sort();
@@ -115,13 +120,23 @@ export function OrgDirectory({ items, asOf }: { items: OrgListItem[]; asOf?: str
       ) : null}
 
       {results.length > 0 ? (
-        <ul className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {results.map((item) => (
-            <li key={item.slug}>
-              <OrgCard item={item} headingLevel={2} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul ref={listRef} className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {results.slice(0, limit).map((item) => (
+              <li key={item.slug}>
+                <OrgCard item={item} headingLevel={2} />
+              </li>
+            ))}
+          </ul>
+          <ShowMore
+            shown={Math.min(limit, results.length)}
+            total={results.length}
+            step={PAGE_SIZE}
+            noun={["organization", "organizations"]}
+            listRef={listRef}
+            onMore={() => showMore(results.length)}
+          />
+        </>
       ) : (
         <div className="mt-6 rounded-xl border border-dashed border-line-strong p-8 text-center">
           <p className="text-lg text-text">No organizations match these filters.</p>

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { BackToTop } from "@/components/BackToTop";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { PrintFooter } from "@/components/PrintFooter";
 import { absoluteUrl, asset } from "@/lib/paths";
 import { SITE_URL, BASE_PATH, siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader siteName={siteConfig.name} shortName={siteConfig.shortName} disclaimer={siteConfig.disclaimer} searchIndexUrl={asset("/data/search-index.json")} />
         <main id="main" tabIndex={-1} className="outline-none">
           {children}
+          <PrintFooter siteName={siteConfig.shortName} />
         </main>
         <SiteFooter />
         <BackToTop />

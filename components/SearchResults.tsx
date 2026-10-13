@@ -45,6 +45,7 @@ export function SearchResults({ indexUrl }: { indexUrl: string }) {
 
   const q = state.q.trim();
   const all = useMemo(() => (entries && q ? searchEntries(entries, q, 2000) : []), [entries, q]);
+  const closeOnly = useMemo(() => Boolean(entries && q && all.length && searchEntries(entries, q, 1, { fuzzy: false }).length === 0), [entries, q, all]);
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
     for (const e of all) c[groupOf(e.type)] = (c[groupOf(e.type)] ?? 0) + 1;
@@ -118,6 +119,11 @@ export function SearchResults({ indexUrl }: { indexUrl: string }) {
         </p>
       ) : (
         <>
+          {closeOnly ? (
+            <p className="mb-3 text-muted" data-testid="close-matches">
+              No exact match for “{q}”. These are the closest matches; check the spelling or try other words.
+            </p>
+          ) : null}
           <ol className="grid gap-3" data-testid="search-results">
             {shown.map((r) => (
               <li key={`${r.type}:${r.slug}`}>

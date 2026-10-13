@@ -1,7 +1,7 @@
 "use client";
 
 import { Search, X } from "lucide-react";
-import { useId } from "react";
+import { useId, type RefObject } from "react";
 
 export function SearchField({
   label,
@@ -106,5 +106,48 @@ export function ResultSummary({
         {announce}
       </p>
     </>
+  );
+}
+
+/**
+ * "Show more" under a long result list. Keyboard focus moves to the first
+ * newly shown record, so tabbing continues where the reader left off.
+ */
+export function ShowMore({
+  shown,
+  total,
+  step,
+  noun,
+  listRef,
+  onMore,
+}: {
+  shown: number;
+  total: number;
+  step: number;
+  noun: [string, string];
+  listRef: RefObject<HTMLUListElement | null>;
+  onMore: () => void;
+}) {
+  if (shown >= total) return null;
+  const next = Math.min(step, total - shown);
+  return (
+    <div className="mt-8 flex flex-col items-center gap-2 print:hidden" data-testid="show-more">
+      <p className="meta">
+        Showing {shown} of {total} {total === 1 ? noun[0] : noun[1]}
+      </p>
+      <button
+        type="button"
+        className="btn btn-secondary"
+        onClick={() => {
+          onMore();
+          window.requestAnimationFrame(() => {
+            const first = listRef.current?.children[shown]?.querySelector<HTMLElement>("a[href]");
+            first?.focus({ preventScroll: true });
+          });
+        }}
+      >
+        Show {next} more
+      </button>
+    </div>
   );
 }

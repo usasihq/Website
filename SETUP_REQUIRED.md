@@ -57,7 +57,9 @@ Remaining owner steps in the Cloudflare dashboard:
       addresses already serve the site; canonical URLs point to the apex.
 - [ ] Keep **Rocket Loader** and **Email Address Obfuscation** off: their injected
       scripts are not allowed by the per-page CSP.
-- [ ] Web Analytics: publish this analytics-only CSP/privacy update first. Then
+- [x] Web Analytics (verified 2026-10-13: Cloudflare's automatic setup injects the
+      beacon for browser requests; it reports to /cdn-cgi/rum with no CSP violations).
+      Original steps, kept for reference: publish this analytics-only CSP/privacy update first. Then
       open Cloudflare → Web Analytics and check for the existing USASI site.
       Use Manage site if present; add the proxied hostname only if absent.
       Selecting Done for a new proxied site enables injection immediately.

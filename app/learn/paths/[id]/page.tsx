@@ -7,6 +7,7 @@ import { getCatalog } from "@/lib/catalog";
 import { LEARNING_PATHS, availableSteps, explainer, learningPath } from "@/lib/learn";
 import { explainerOutline } from "@/lib/learn-outline";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 
 export const dynamicParams = false;
 
@@ -18,7 +19,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const p = learningPath((await params).id);
-  return pageMetadata({ title: p ? `${p.title}: a learning path` : "Learning path", description: p?.description ?? "", path: `/learn/paths/${(await params).id}/` });
+  return pageMetadata({ title: p ? `${p.title}: a learning path` : "Learning path", description: p?.description ?? "", path: `/learn/paths/${(await params).id}/`, image: cardImage(getCatalog(), `/learn/paths/${(await params).id}/`) });
 }
 
 export default async function LearningPathPage({ params }: { params: Promise<{ id: string }> }) {

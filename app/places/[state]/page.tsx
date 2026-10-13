@@ -6,6 +6,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { ROLE_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
+import { cardImage } from "@/lib/page-cards";
 import { organizationsByState } from "@/lib/place-index";
 import { stateFromSlug, stateSlug, US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     title: `${name}: organizations by headquarters`,
     description: `Organizations in the USASI catalog whose documented headquarters is in ${name}. Not a map of offices, facilities, or capacity.`,
     path: `/places/${(await params).state}/`,
+    image: cardImage(getCatalog(), `/places/${(await params).state}/`),
   });
 }
 

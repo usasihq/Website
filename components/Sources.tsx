@@ -46,7 +46,7 @@ export function SourceRefs({ ids, sources, idPrefix = "" }: { ids: string[]; sou
 
 export function SourcesList({ sources, idPrefix = "" }: { sources: Source[]; idPrefix?: string }) {
   return (
-    <ol className="space-y-3">
+    <ol className="space-y-3" data-sources>
       {sources.map((source, i) => (
         <li key={source.id} id={`src-${idPrefix}${source.id}`} className="grid scroll-mt-24 grid-cols-[2rem_1fr] gap-2 target:rounded-md target:bg-[rgba(76,201,255,0.07)]">
           <span className="meta pt-0.5 text-right">{i + 1}.</span>

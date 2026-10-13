@@ -53,3 +53,32 @@ export function useDebounced<T>(value: T, delay = 600): T {
   }, [value, delay]);
   return debounced;
 }
+
+const getHydrated = () => true;
+const getServerHydrated = () => false;
+
+/**
+ * How many results a long directory shows. The static HTML lists every
+ * record (no JavaScript needed, fully indexable); after hydration it shows
+ * `pageSize` at a time, and "Show more" raises `?n=` in the address so the
+ * back button returns to the same depth. Changing a filter rewrites the
+ * query without `n`, which starts again from the first page.
+ */
+export function useShowMore(pageSize: number) {
+  const search = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const hydrated = useSyncExternalStore(subscribe, getHydrated, getServerHydrated);
+  const requested = Number(new URLSearchParams(search).get("n"));
+  const limit = !hydrated ? Infinity : Number.isFinite(requested) && requested > pageSize ? Math.floor(requested) : pageSize;
+
+  const showMore = useCallback(
+    (total: number) => {
+      const params = new URLSearchParams(window.location.search);
+      params.set("n", String(Math.min(total, limit + pageSize)));
+      window.history.replaceState(null, "", `${window.location.pathname}?${params}`);
+      window.dispatchEvent(new Event(URL_CHANGE));
+    },
+    [limit, pageSize],
+  );
+
+  return { limit, showMore };
+}

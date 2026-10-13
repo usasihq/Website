@@ -1,7 +1,7 @@
 "use client";
 
 import { ARTIFACT_ENTRY_TYPES, type EntryType } from "@/lib/labels";
-import type { SearchEntry } from "@/lib/search";
+import { queryTokens, type SearchEntry } from "@/lib/search";
 
 /**
  * The site-wide search index (public/data/search-index.json), fetched from the
@@ -37,9 +37,8 @@ export const isRecord = (e: SearchEntry) => e.type === "organization" || ARTIFAC
 
 /** Splits `text` so the parts matching query words can be emphasized. */
 export function highlightParts(text: string, query: string): { text: string; hit: boolean }[] {
-  const words = query
-    .trim()
-    .split(/\s+/)
+  // Highlight the words the search actually matched on, not "what", "is" or "my".
+  const words = queryTokens(query)
     .filter((w) => w.length > 1)
     .map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
   if (!words.length) return [{ text, hit: false }];
