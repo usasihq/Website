@@ -1,0 +1,154 @@
+slug: starcoder2-15b-transformers-4bit
+title: StarCoder2-15B in 4-bit with Transformers and bitsandbytes
+tasks: [write-code]
+runs: local
+summary:
+  text: >-
+    StarCoder2-15B is a 15-billion-parameter code model from the BigCode project, trained on 600+
+    programming languages with a fill-in-the-middle objective. Its model card shows loading it with
+    Hugging Face Transformers and bitsandbytes 8-bit or 4-bit quantization and generating the
+    continuation of a piece of code on a CUDA GPU.
+  reviewed_at: 2026-10-13
+  source_ids: [sc2-15b-card]
+components:
+  - role: model
+    name: StarCoder2-15B (bigcode/starcoder2-15b)
+    record_slug: starcoder2-15b
+    url: https://huggingface.co/bigcode/starcoder2-15b
+  - role: library
+    name: Hugging Face Transformers
+    record_slug: transformers
+    url: https://huggingface.co/docs/transformers/installation
+  - role: library
+    name: bitsandbytes (4-bit quantization)
+    record_slug: null
+    url: https://huggingface.co/docs/bitsandbytes/main/en/installation
+  - role: library
+    name: PyTorch with CUDA
+    record_slug: pytorch
+    url: https://pytorch.org/get-started/locally/
+platforms:
+  values: [linux, windows]
+  source_ids: [bnb-install, pytorch-start]
+accelerators:
+  values: [nvidia]
+  source_ids: [sc2-15b-card, bnb-install]
+memory:
+  variant: starcoder2-15b loaded with bitsandbytes 4-bit quantization (load_in_4bit) in Transformers
+  gpu_gb: 9.23
+  system_gb: null
+  statement:
+    text: >-
+      The model card reports a memory footprint of 9,224.60 MB (about 9.2 GB) after loading the
+      model with bitsandbytes 4-bit quantization, as printed by Transformers' get_memory_footprint.
+      This is a footprint the card printed, not a stated minimum; the card states no memory
+      requirement. It also lists 16,900.18 MB with 8-bit quantization and 32,251.33 MB in
+      torch.bfloat16.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-15b-card]
+skill: advanced
+skill_note: >-
+  Requires a Python environment with PyTorch for CUDA, Transformers, and bitsandbytes, and a short
+  Python script to load the quantized model and complete code.
+account_required:
+  value: false
+  source_ids: [sc2-15b-api, sc2-15b-card]
+cost_basis:
+  value: free-download
+  note: >-
+    The weights download from Hugging Face without gating under the BigCode OpenRAIL-M v1 license,
+    which carries use restrictions; Transformers is Apache 2.0 and bitsandbytes is MIT-licensed.
+  source_ids: [sc2-15b-card, sc2-15b-api, bigcode-license, tf-license, bnb-readme]
+data_location:
+  text: >-
+    On your machine. The model card's examples load the model into your own Python environment and
+    generate code on your own GPU.
+  reviewed_at: 2026-10-13
+  source_ids: [sc2-15b-card]
+getting_started:
+  - "Install PyTorch with CUDA support using the selector on pytorch.org; it offers CUDA builds for Linux and Windows."
+  - "Install Transformers, accelerate, and bitsandbytes with pip; bitsandbytes publishes CUDA wheels for Linux and Windows and supports NVIDIA GPUs with compute capability 6.0 or newer."
+  - "Load bigcode/starcoder2-15b with `quantization_config=BitsAndBytesConfig(load_in_4bit=True)`; the card shows the 8-bit form and says to use load_in_4bit=True for 4-bit."
+  - "Tokenize the start of some code, such as a function signature, move it to the GPU, and call `generate` to complete it."
+getting_started_source_ids: [pytorch-start, bnb-install, sc2-15b-card]
+limitations:
+  - text: >-
+      The card says it is not an instruction model, so commands like "Write a function that
+      computes the square root." do not work well.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-15b-card]
+  - text: >-
+      The card says generated code is not guaranteed to work as intended and can be inefficient or
+      contain bugs or exploits.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-15b-card]
+  - text: >-
+      The model can reproduce code from its training data verbatim, which may carry license and
+      attribution requirements; the card points to a search index for tracing where generated code
+      came from.
+    reviewed_at: 2026-10-13
+    source_ids: [sc2-15b-card]
+  - text: >-
+      bitsandbytes' installation guide says its Linux build needs glibc 2.24 or newer, and its
+      README's support table lists Windows 11 or Windows Server 2022 and newer for Windows.
+    reviewed_at: 2026-10-13
+    source_ids: [bnb-readme, bnb-install]
+unverified:
+  - USASI has not tested this configuration.
+  - The card's figure is the loaded model's footprint; memory used while generating, which grows with prompt and output length, is not stated.
+  - The card prints the 4-bit footprint but shows the loading code only for 8-bit, so the 4-bit path is as described there, not checked by USASI.
+  - Running on AMD or Intel GPUs is not documented on the model card.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: sc2-15b-card
+    title: starcoder2-15b model card
+    url: https://huggingface.co/bigcode/starcoder2-15b/raw/main/README.md
+    publisher: BigCode (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: sc2-15b-api
+    title: bigcode/starcoder2-15b repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/bigcode/starcoder2-15b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: bigcode-license
+    title: BigCode Open RAIL-M v1 License Agreement (text in the license Space's app.py)
+    url: https://huggingface.co/spaces/bigcode/bigcode-model-license-agreement/raw/main/app.py
+    publisher: BigCode project (Hugging Face Spaces)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: bnb-install
+    title: Installation guide (bitsandbytes documentation)
+    url: https://huggingface.co/docs/bitsandbytes/main/en/installation
+    publisher: Hugging Face (bitsandbytes documentation)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: bnb-readme
+    title: bitsandbytes README
+    url: https://raw.githubusercontent.com/bitsandbytes-foundation/bitsandbytes/main/README.md
+    publisher: bitsandbytes-foundation (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pytorch-start
+    title: Start Locally (PyTorch installation)
+    url: https://pytorch.org/get-started/locally/
+    publisher: PyTorch Foundation
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tf-license
+    title: Transformers LICENSE
+    url: https://raw.githubusercontent.com/huggingface/transformers/main/LICENSE
+    publisher: Hugging Face (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

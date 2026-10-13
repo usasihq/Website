@@ -1,0 +1,170 @@
+slug: lm-studio-muse-glimmer-30b
+title: LM Studio with Muse Glimmer 30B
+tasks: [chat-and-write, work-with-documents]
+runs: local
+summary:
+  text: >-
+    LM Studio is a desktop app for downloading and running language models on your computer, with
+    a chat interface and document attachments. Its model catalog includes Meta's Muse Glimmer 30B as
+    meta/muse-glimmer, listed with vision input, tool use, and reasoning, and built from a 4-bit
+    KQuant-17GB GGUF.
+  reviewed_at: 2026-10-13
+  source_ids: [lms-docs, lms-rag, lms-cat-muse, muse-lmsc-api]
+components:
+  - role: app
+    name: LM Studio
+    record_slug: element-labs
+    url: https://lmstudio.ai/docs/app
+  - role: runtime
+    name: llama.cpp engine inside LM Studio
+    record_slug: llama-cpp
+    url: https://lmstudio.ai/docs/app
+  - role: model
+    name: Muse Glimmer 30B (LM Studio catalog entry meta/muse-glimmer)
+    record_slug: muse-glimmer-30b
+    url: https://lmstudio.ai/models/meta/muse-glimmer
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [lms-sysreq, lms-docs]
+accelerators:
+  values: [apple-silicon, cpu-only]
+  source_ids: [lms-sysreq, lms-docs]
+memory:
+  variant: LM Studio's meta/muse-glimmer entry (lmstudio-community KQuant-17GB Q4_K_M GGUF)
+  gpu_gb: null
+  system_gb: 26
+  statement:
+    text: >-
+      LM Studio's catalog page for meta/muse-glimmer lists a minimum system memory of 26 GB. The
+      entry is based on lmstudio-community's Muse-Glimmer-30B-GGUF repository, which holds the
+      KQuant-17GB Q4_K_M model file and a perception-encoder file for image input.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-cat-muse, muse-lmsc-api]
+skill: beginner
+skill_note: >-
+  LM Studio is a graphical installer; you find and download the model in its Discover tab and load
+  it from the Chat tab without using a command line.
+account_required:
+  value: false
+  source_ids: [lms-offline, muse-lmsc-api]
+cost_basis:
+  value: free-download
+  note: >-
+    LM Studio's Free plan includes running local models with llama.cpp and MLX, and Meta releases
+    Muse Glimmer's weights under Apache 2.0. Paid LM Studio plans add hosted open models and more
+    included usage.
+  source_ids: [lms-pricing, muse-card]
+data_location:
+  text: >-
+    On your machine. LM Studio's offline guide says a downloaded model runs locally, nothing you
+    enter in chats leaves your device, and attached documents are processed locally. Searching for
+    and downloading models needs an internet connection.
+  reviewed_at: 2026-10-13
+  source_ids: [lms-offline]
+getting_started:
+  - "Check the system requirements, then download and install LM Studio for your operating system."
+  - "In the Discover tab, search for Muse Glimmer and download the meta/muse-glimmer entry."
+  - "In the Chat tab, open the model loader and select the downloaded model."
+  - "To work with documents, attach .docx, .pdf, or .txt files to a chat message."
+getting_started_source_ids: [lms-sysreq, lms-basics, lms-cat-muse, lms-rag]
+limitations:
+  - text: >-
+      On macOS, LM Studio needs Apple Silicon and macOS 14 or newer; Intel-based Macs are not
+      supported. On Windows it needs an x64 CPU with AVX2 or an ARM (Snapdragon X Elite) system, and
+      16GB of RAM and 4GB of dedicated VRAM are recommended.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-sysreq]
+  - text: >-
+      Meta's model card says the model is not intended to be downloaded or used by individuals under
+      18, and that quantized inference may show minor quality differences from full precision.
+    reviewed_at: 2026-10-13
+    source_ids: [muse-card]
+  - text: >-
+      For documents too long to fit in the model's context, LM Studio uses retrieval, which it says
+      sometimes works well but sometimes requires tuning and experimentation.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-rag]
+  - text: >-
+      LM Studio's terms of use license the software solely for personal or internal business
+      purposes and prohibit redistributing, modifying, or reverse engineering it.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-terms]
+unverified:
+  - USASI has not tested this configuration.
+  - LM Studio's page does not say what context length its 26 GB minimum assumes or whether it includes the image encoder.
+  - LM Studio's pages reviewed do not name supported NVIDIA, AMD, or Intel graphics on Windows or Linux, so GPU acceleration on those cards is not established here.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: lms-docs
+    title: Welcome to LM Studio Docs
+    url: https://lmstudio.ai/docs/app
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-basics
+    title: Get started with LM Studio
+    url: https://lmstudio.ai/docs/app/basics
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-sysreq
+    title: LM Studio system requirements
+    url: https://lmstudio.ai/docs/app/system-requirements
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-rag
+    title: Chat with Documents (LM Studio)
+    url: https://lmstudio.ai/docs/app/basics/rag
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-offline
+    title: Offline Operation (LM Studio)
+    url: https://lmstudio.ai/docs/app/offline
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-pricing
+    title: LM Studio pricing
+    url: https://lmstudio.ai/pricing
+    publisher: LM Studio (Element Labs)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-terms
+    title: LM Studio terms of use
+    url: https://lmstudio.ai/app-terms
+    publisher: LM Studio (Element Labs)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-cat-muse
+    title: meta/muse-glimmer (LM Studio model catalog)
+    url: https://lmstudio.ai/models/meta/muse-glimmer
+    publisher: LM Studio (Element Labs)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: muse-lmsc-api
+    title: lmstudio-community/Muse-Glimmer-30B-GGUF repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/lmstudio-community/Muse-Glimmer-30B-GGUF
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: muse-card
+    title: Muse Glimmer model card (meta-models/Muse-Glimmer-30B)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B/raw/main/README.md
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

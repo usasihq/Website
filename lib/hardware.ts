@@ -86,8 +86,21 @@ const withFigure = (a: Assessment): MemoryEntry => {
 };
 const byFigure = (a: MemoryEntry, b: MemoryEntry) => a.figure.gb - b.figure.gb || a.config.title.localeCompare(b.config.title);
 
+/** Graphics hardware that has its own graphics memory (VRAM). */
+const DISCRETE_GPUS = new Set(["nvidia", "amd", "intel"]);
+
+/**
+ * Configurations a page considers. A VRAM page stands for a separate graphics
+ * card, so it only considers configurations whose documentation lists NVIDIA,
+ * AMD or Intel graphics; one documented only for Apple silicon or the
+ * processor is never listed against graphics memory.
+ */
+export const memoryPageCandidates = (configs: FinderConfig[], p: MemoryPage) =>
+  p.kind === "vram" ? configs.filter((c) => c.accelerators.values.some((v) => DISCRETE_GPUS.has(v))) : configs;
+
 export function memoryPageResults(configs: FinderConfig[], p: MemoryPage): MemoryPageResults {
   const input = memoryPageInput(p);
+  configs = memoryPageCandidates(configs, p);
   const fits: MemoryEntry[] = [];
   const needsMore: MemoryEntry[] = [];
   const systemFigure: MemoryEntry[] = [];

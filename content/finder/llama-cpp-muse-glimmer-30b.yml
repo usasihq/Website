@@ -1,0 +1,154 @@
+slug: llama-cpp-muse-glimmer-30b
+title: llama.cpp server with Muse Glimmer 30B (KQuant-17GB Q4_K_M GGUF)
+tasks: [write-code, chat-and-write, work-with-documents]
+runs: local
+summary:
+  text: >-
+    Muse Glimmer is Meta's open-weight 30B model built for agentic work on consumer hardware,
+    including coding agents, tool use, and reading screenshots, charts, and documents. Meta
+    publishes GGUF builds for llama.cpp, including a 4-bit KQuant-17GB text model and a separate
+    perception-encoder file for image input, which llama-server serves with a web chat interface and
+    an OpenAI-compatible API.
+  reviewed_at: 2026-10-13
+  source_ids: [muse-card, muse-gguf-card, lcpp-server]
+components:
+  - role: runtime
+    name: llama.cpp (llama-server and its web UI)
+    record_slug: llama-cpp
+    url: https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
+  - role: model
+    name: Muse Glimmer 30B, KQuant-17GB Q4_K_M GGUF
+    record_slug: muse-glimmer-30b
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [lcpp-install, muse-gguf-card]
+accelerators:
+  values: [nvidia, apple-silicon, cpu-only]
+  source_ids: [muse-gguf-card]
+memory:
+  variant: Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf, Meta's 4-bit GGUF build
+  gpu_gb: 24
+  system_gb: null
+  statement:
+    text: >-
+      Meta's GGUF model card says the KQuant-17GB build fits 24 GB VRAM, and the Muse Glimmer model
+      card lists 24GB VRAM as the target hardware for that quantization. The GGUF card puts rough
+      total memory, weights plus a working context, at about 17 GB for text only, 19 GB with the
+      perception encoder, and 20 GB with the speculative-decoding drafter as well.
+    reviewed_at: 2026-10-13
+    source_ids: [muse-gguf-card, muse-card]
+skill: intermediate
+skill_note: >-
+  Install a llama.cpp build b10353 or newer, download two files with the Hugging Face command-line
+  tool, and start llama-server from a terminal with the flags on Meta's card.
+account_required:
+  value: false
+  source_ids: [muse-gguf-api, muse-blog]
+cost_basis:
+  value: free-download
+  note: >-
+    Meta releases Muse Glimmer's weights, including the GGUF builds, under Apache 2.0, and llama.cpp
+    is open-source software under the MIT License.
+  source_ids: [muse-gguf-card, lcpp-license]
+data_location:
+  text: >-
+    On your machine. Meta says the quantized model runs with no API key and no request leaving your
+    machine; llama-server listens on 127.0.0.1 by default, and its web UI keeps conversations in
+    your browser's IndexedDB storage.
+  reviewed_at: 2026-10-13
+  source_ids: [muse-blog, lcpp-server, lcpp-ui]
+getting_started:
+  - "Install llama.cpp build b10353 or newer from a release, or build it from source with CUDA, Metal (the default on Apple silicon), or CPU only, as Meta's card describes."
+  - "Run `pip install huggingface_hub`, then use `hf download` to fetch Muse-Glimmer-30B-KQuant-17GB-Q4_K_M.gguf and mmproj-Muse-Glimmer-30B-Q4_K_M.gguf from meta-models/Muse-Glimmer-30B-GGUF."
+  - "Start `llama-server -m <model file> --mmproj <mmproj file> -ngl 99 --jinja` with the card's sampling settings: temperature 1.0, top-p 0.95, top-k 64."
+  - "Open the server address in a browser to chat and attach images or PDFs, or point a coding tool at its OpenAI-compatible /v1 endpoint."
+getting_started_source_ids: [muse-gguf-card, lcpp-server, lcpp-ui]
+limitations:
+  - text: >-
+      Meta's GGUF card says llama.cpp support first shipped in build b10353 and that builds b10344
+      and older refuse to load these files.
+    reviewed_at: 2026-10-13
+    source_ids: [muse-gguf-card]
+  - text: >-
+      The card says reasoning cannot be switched off, only set from low to xhigh or capped with a
+      thinking-token budget, and that llama-server divides the context size across its parallel
+      slots, so a long answer can run out of context without an error.
+    reviewed_at: 2026-10-13
+    source_ids: [muse-gguf-card]
+  - text: >-
+      Image input needs the 1.4 GB perception-encoder file; the optional DFlash drafter for faster
+      decoding adds about 1.6 GB. Audio input and output are not supported.
+    reviewed_at: 2026-10-13
+    source_ids: [muse-gguf-card, muse-card]
+  - text: >-
+      The model card says the model is not intended to be downloaded or used by individuals under 18,
+      and that quantized inference may show minor quality differences from full precision.
+    reviewed_at: 2026-10-13
+    source_ids: [muse-card]
+unverified:
+  - USASI has not tested this configuration.
+  - Meta's rough memory totals assume a working context; memory at the long context in the card's server example (131,072 tokens over four slots) is not stated.
+  - Meta's card documents CUDA, Apple Metal, and CPU-only builds; AMD and Intel GPUs are not documented for this model in the pages reviewed.
+  - How well the model works with a particular coding tool through llama-server is not documented.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: muse-card
+    title: Muse Glimmer model card (meta-models/Muse-Glimmer-30B)
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B/raw/main/README.md
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: muse-gguf-card
+    title: Muse-Glimmer-30B-GGUF model card
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF/raw/main/README.md
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: muse-gguf-api
+    title: meta-models/Muse-Glimmer-30B-GGUF repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/meta-models/Muse-Glimmer-30B-GGUF
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: muse-blog
+    title: "Muse Glimmer: an open-weight model built for local agents"
+    url: https://dev.meta.ai/resources/blog/build-with-muse-glimmer/
+    publisher: Meta
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-install
+    title: Install pre-built version of llama.cpp
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/docs/install.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-server
+    title: LLaMA.cpp HTTP Server README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/server/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-ui
+    title: llama-ui README (llama-server web interface)
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/ui/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-license
+    title: llama.cpp LICENSE
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/LICENSE
+    publisher: ggml-org (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

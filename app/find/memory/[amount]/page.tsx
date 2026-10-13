@@ -203,7 +203,7 @@ export default async function MemoryAmountPage({ params }: { params: Promise<{ a
             uses, not a separate estimate.{" "}
             {unified
               ? "Apple silicon shares one pool of unified memory, so a graphics-memory figure and a system-memory figure are both compared with it."
-              : "A graphics-memory figure is compared only with graphics memory; a figure stated as system memory is never counted against VRAM."}
+              : "Only configurations whose documentation lists NVIDIA, AMD or Intel graphics are considered, a graphics-memory figure is compared only with graphics memory, and a figure stated as system memory is never counted against VRAM."}
           </p>
           <p className="mt-3 font-semibold text-text">What this does not tell you</p>
           <ul className="mt-1 list-disc space-y-1 pl-5">

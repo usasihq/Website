@@ -1,0 +1,148 @@
+slug: llama-cpp-gemma-4-12b-qat
+title: llama.cpp server with Gemma 4 12B (QAT Q4_0 GGUF)
+tasks: [chat-and-write, work-with-documents]
+runs: local
+summary:
+  text: >-
+    llama.cpp's llama-server runs a GGUF model on your own computer and serves a built-in web chat
+    interface and an OpenAI-compatible API. Google publishes Gemma 4 12B as a Q4_0 GGUF built with
+    quantization-aware training and names this download format for local use in llama.cpp.
+  reviewed_at: 2026-10-13
+  source_ids: [lcpp-server, gemma-core, gemma12-qat-api]
+components:
+  - role: runtime
+    name: llama.cpp (llama-server and its web UI)
+    record_slug: llama-cpp
+    url: https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
+  - role: model
+    name: Gemma 4 12B instruction-tuned, QAT Q4_0 GGUF
+    record_slug: gemma-4-12b
+    url: https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [lcpp-install]
+accelerators:
+  values: [nvidia, amd, apple-silicon, intel, cpu-only]
+  source_ids: [lcpp-readme]
+memory:
+  variant: Gemma 4 12B at Q4_0 (4-bit), as in Google's gemma-4-12B-it-qat-q4_0-gguf
+  gpu_gb: 6.7
+  system_gb: null
+  statement:
+    text: >-
+      Google's Gemma 4 documentation lists about 6.7 GB of GPU or TPU memory to load Gemma 4 12B at
+      Q4_0 (4-bit), based on the model weights plus a 20% loading overhead. It says the figure does
+      not include memory for supporting software or the context window, which grows with the length
+      of prompts and responses.
+    reviewed_at: 2026-10-13
+    source_ids: [gemma-core]
+skill: intermediate
+skill_note: >-
+  Install llama.cpp from a package manager or a release, download one model file from Hugging Face,
+  and start llama-server from a terminal; the chat then runs in your web browser.
+account_required:
+  value: false
+  source_ids: [gemma12-qat-api, lcpp-install]
+cost_basis:
+  value: free-download
+  note: >-
+    llama.cpp is open-source software under the MIT License, and Google publishes the Gemma 4 12B
+    QAT GGUF under Apache 2.0 on Hugging Face without gating.
+  source_ids: [lcpp-license, gemma12-qat-card, gemma12-qat-api]
+data_location:
+  text: >-
+    On your machine. llama-server listens on 127.0.0.1 by default, and its web UI keeps
+    conversations in your browser's IndexedDB storage. The model file is downloaded once from
+    Hugging Face.
+  reviewed_at: 2026-10-13
+  source_ids: [lcpp-server, lcpp-ui, gemma12-qat-api]
+getting_started:
+  - "Install llama.cpp with Homebrew (macOS and Linux), Winget (Windows), conda-forge, or a pre-built release from GitHub."
+  - "Download gemma-4-12b-it-qat-q4_0.gguf from Google's google/gemma-4-12B-it-qat-q4_0-gguf repository on Hugging Face."
+  - "Start the server with `llama-server -m gemma-4-12b-it-qat-q4_0.gguf`; add `-c` to choose a context size instead of letting llama-server pick one."
+  - "Open http://127.0.0.1:9931 in a browser to chat; the web UI accepts PDF and text file attachments and extracts the text of PDFs."
+getting_started_source_ids: [lcpp-install, gemma12-qat-api, lcpp-server, lcpp-ui]
+limitations:
+  - text: >-
+      By default llama-server adjusts settings you leave unset, such as the context size, to fit in
+      device memory, with a minimum context of 4,096 tokens.
+    reviewed_at: 2026-10-13
+    source_ids: [lcpp-server]
+  - text: >-
+      The install page's conda-forge builds cover CUDA and Vulkan on Windows and Linux and Metal on
+      macOS; the README lists AMD (HIP) and Intel (SYCL) GPU backends with links to build
+      instructions.
+    reviewed_at: 2026-10-13
+    source_ids: [lcpp-install, lcpp-readme]
+  - text: >-
+      The server README recommends setting an API key and using a reverse proxy before exposing
+      llama-server publicly.
+    reviewed_at: 2026-10-13
+    source_ids: [lcpp-server]
+unverified:
+  - USASI has not tested this configuration.
+  - Google's memory figure excludes the context window; total memory at the context size llama-server chooses on your hardware is not documented.
+  - Google's repository also holds an mmproj file for 12B, but llama.cpp's multimodal page lists Gemma 4 E2B, E4B, 26B A4B, and 31B for image input and not 12B, so image input is not established here.
+  - Google's table does not name this file; the GGUF in Google's repository is 6,975,879,296 bytes on its own (Hugging Face metadata), slightly more than the table's approximate 6.7 GB.
+  - Which pre-built llama.cpp packages include AMD or Intel GPU support is not established here.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: lcpp-readme
+    title: llama.cpp README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md
+    publisher: ggml-org (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-install
+    title: Install pre-built version of llama.cpp
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/docs/install.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-server
+    title: LLaMA.cpp HTTP Server README
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/server/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-ui
+    title: llama-ui README (llama-server web interface)
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/tools/ui/README.md
+    publisher: ggml-org (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lcpp-license
+    title: llama.cpp LICENSE
+    url: https://raw.githubusercontent.com/ggml-org/llama.cpp/master/LICENSE
+    publisher: ggml-org (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gemma-core
+    title: Gemma 4 overview (Gemma documentation)
+    url: https://ai.google.dev/gemma/docs/core
+    publisher: Google
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gemma12-qat-card
+    title: gemma-4-12B-it-qat-q4_0-gguf model card
+    url: https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf/raw/main/README.md
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gemma12-qat-api
+    title: google/gemma-4-12B-it-qat-q4_0-gguf repository metadata (Hugging Face API)
+    url: https://huggingface.co/api/models/google/gemma-4-12B-it-qat-q4_0-gguf
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13

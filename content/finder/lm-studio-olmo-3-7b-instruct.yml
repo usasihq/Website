@@ -1,0 +1,174 @@
+slug: lm-studio-olmo-3-7b-instruct
+title: LM Studio with Olmo 3 7B Instruct
+tasks: [chat-and-write, work-with-documents]
+runs: local
+summary:
+  text: >-
+    LM Studio is a desktop app for downloading and running language models on your computer, with
+    a chat interface and document attachments. Its model catalog includes Ai2's Olmo 3 7B as
+    allenai/olmo-3-7b, built from Olmo-3-7B-Instruct, a chat model that Ai2 releases under Apache
+    2.0.
+  reviewed_at: 2026-10-13
+  source_ids: [lms-docs, lms-rag, lms-cat-olmo, olmo-card]
+components:
+  - role: app
+    name: LM Studio
+    record_slug: element-labs
+    url: https://lmstudio.ai/docs/app
+  - role: runtime
+    name: llama.cpp engine inside LM Studio
+    record_slug: llama-cpp
+    url: https://lmstudio.ai/docs/app
+  - role: runtime
+    name: MLX engine inside LM Studio (Apple silicon Macs)
+    record_slug: mlx
+    url: https://lmstudio.ai/docs/app
+  - role: model
+    name: Olmo 3 7B Instruct (LM Studio catalog entry allenai/olmo-3-7b)
+    record_slug: olmo-3-7b-instruct
+    url: https://lmstudio.ai/models/allenai/olmo-3-7b
+platforms:
+  values: [windows, macos, linux]
+  source_ids: [lms-sysreq, lms-docs]
+accelerators:
+  values: [apple-silicon, cpu-only]
+  source_ids: [lms-sysreq, lms-docs]
+memory:
+  variant: LM Studio's allenai/olmo-3-7b entry (lmstudio-community Olmo-3-7B-Instruct GGUF or MLX)
+  gpu_gb: null
+  system_gb: 6
+  statement:
+    text: >-
+      LM Studio's catalog page for allenai/olmo-3-7b lists a minimum system memory of 6 GB. The
+      entry is based on lmstudio-community's Olmo-3-7B-Instruct GGUF, offered as Q4_K_M, Q6_K, and
+      Q8_0 files, and on 4-bit, 6-bit, and 8-bit MLX builds.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-cat-olmo, olmo-lmsc-api]
+skill: beginner
+skill_note: >-
+  LM Studio is a graphical installer; you find and download the model in its Discover tab and load
+  it from the Chat tab without using a command line.
+account_required:
+  value: false
+  source_ids: [lms-offline, olmo-lmsc-api]
+cost_basis:
+  value: free-download
+  note: >-
+    LM Studio's Free plan includes running local models with llama.cpp and MLX, and Ai2 licenses Olmo
+    3 7B Instruct under Apache 2.0. Paid LM Studio plans add hosted open models and more included
+    usage.
+  source_ids: [lms-pricing, olmo-card]
+data_location:
+  text: >-
+    On your machine. LM Studio's offline guide says a downloaded model runs locally, nothing you
+    enter in chats leaves your device, and attached documents are processed locally. Searching for
+    and downloading models needs an internet connection.
+  reviewed_at: 2026-10-13
+  source_ids: [lms-offline]
+getting_started:
+  - "Check the system requirements, then download and install LM Studio for your operating system."
+  - "In the Discover tab, search for Olmo 3 and download the allenai/olmo-3-7b entry."
+  - "In the Chat tab, open the model loader and select the downloaded model."
+  - "To work with documents, attach .docx, .pdf, or .txt files to a chat message."
+getting_started_source_ids: [lms-sysreq, lms-basics, lms-cat-olmo, lms-rag]
+limitations:
+  - text: >-
+      On macOS, LM Studio needs Apple Silicon and macOS 14 or newer; Intel-based Macs are not
+      supported. On Windows it needs an x64 CPU with AVX2 or an ARM (Snapdragon X Elite) system, and
+      16GB of RAM and 4GB of dedicated VRAM are recommended.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-sysreq]
+  - text: >-
+      Ai2's model card says the model is intended for research and educational use in accordance
+      with Ai2's Responsible Use Guidelines.
+    reviewed_at: 2026-10-13
+    source_ids: [olmo-card]
+  - text: >-
+      For documents too long to fit in the model's context, LM Studio uses retrieval, which it says
+      sometimes works well but sometimes requires tuning and experimentation.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-rag]
+  - text: >-
+      LM Studio's terms of use license the software solely for personal or internal business
+      purposes and prohibit redistributing, modifying, or reverse engineering it.
+    reviewed_at: 2026-10-13
+    source_ids: [lms-terms]
+unverified:
+  - USASI has not tested this configuration.
+  - LM Studio's page does not say which download option its 6 GB minimum refers to; the Q8_0 GGUF alone is 7,759,251,776 bytes (Hugging Face file listing), so the minimum cannot cover that file.
+  - LM Studio's pages reviewed do not name supported NVIDIA, AMD, or Intel graphics on Windows or Linux, so GPU acceleration on those cards is not established here.
+tested: null
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: lms-docs
+    title: Welcome to LM Studio Docs
+    url: https://lmstudio.ai/docs/app
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-basics
+    title: Get started with LM Studio
+    url: https://lmstudio.ai/docs/app/basics
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-sysreq
+    title: LM Studio system requirements
+    url: https://lmstudio.ai/docs/app/system-requirements
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-rag
+    title: Chat with Documents (LM Studio)
+    url: https://lmstudio.ai/docs/app/basics/rag
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-offline
+    title: Offline Operation (LM Studio)
+    url: https://lmstudio.ai/docs/app/offline
+    publisher: LM Studio (Element Labs)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-pricing
+    title: LM Studio pricing
+    url: https://lmstudio.ai/pricing
+    publisher: LM Studio (Element Labs)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-terms
+    title: LM Studio terms of use
+    url: https://lmstudio.ai/app-terms
+    publisher: LM Studio (Element Labs)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lms-cat-olmo
+    title: allenai/olmo-3-7b (LM Studio model catalog)
+    url: https://lmstudio.ai/models/allenai/olmo-3-7b
+    publisher: LM Studio (Element Labs)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: olmo-lmsc-api
+    title: lmstudio-community/Olmo-3-7B-Instruct-GGUF repository metadata and file sizes (Hugging Face API)
+    url: https://huggingface.co/api/models/lmstudio-community/Olmo-3-7B-Instruct-GGUF?blobs=true
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: olmo-card
+    title: Olmo-3-7B-Instruct model card
+    url: https://huggingface.co/allenai/Olmo-3-7B-Instruct/raw/main/README.md
+    publisher: Ai2 (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
