@@ -8,6 +8,8 @@ import { absoluteUrl } from "@/lib/paths";
 import { organizationsByState } from "@/lib/place-index";
 import { stateSlug } from "@/lib/places";
 import { policyHref } from "@/lib/policy";
+import { editionHref } from "@/lib/report";
+import { reportEditions } from "@/lib/report-editions";
 import { artifactHref, orgHref } from "@/lib/routes";
 import { STATIC_ROUTES } from "@/lib/site-routes";
 
@@ -34,6 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
     ...catalog.policy.map((d) => ({ url: absoluteUrl(policyHref(d.slug)), lastModified: d.updated_at })),
+    // Report editions are permanent; each is dated by its publication.
+    ...reportEditions().map((e) => ({ url: absoluteUrl(editionHref(e.edition)), lastModified: e.published })),
     ...MEMORY_PAGES.filter((p) => memoryPageIndexable(catalog.finder, p)).map((p) => ({ url: absoluteUrl(memoryPageHref(p)) })),
     // Jobs landing pages change daily; they carry the date of their listings' last successful check.
     ...jobLandingSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),

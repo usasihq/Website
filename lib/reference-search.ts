@@ -12,6 +12,8 @@ import { EXPLAINERS, LEARNING_PATHS } from "./learn";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
 import { longIdentifier, policyHref } from "./policy";
+import { editionHref, editionLabel } from "./report";
+import { reportEditions } from "./report-editions";
 import { stateTitle } from "./seo";
 import type { SearchEntry } from "./search";
 import { plainText } from "./plain-text";
@@ -49,6 +51,7 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/compact/", name: "USASI Compact", summary: "What the project is, how it weighs American control and inspectability, and its draft editorial clauses.", keywords: "principles commitments compact editorial clauses" },
   { href: "/about/", name: "About", summary: "What USASI is and is not, who maintains it, and how to get in touch.", keywords: "about who contact project ownership" },
   { href: "/contribute/", name: "Contribute and corrections", summary: "Suggest a record or report an error.", keywords: "corrections errors suggest submit contribute report" },
+  { href: "/report/", name: "The State of American AI", summary: "A dated, data-driven report on what the catalog records: organizations, open models and licenses, local AI, jobs, and policy, with CSV and JSON downloads.", keywords: "report state of american ai statistics numbers figures data research edition annual monthly cite journalists" },
   { href: "/reuse/", name: "Data & reuse", summary: "Download the catalog and reuse it under CC BY 4.0.", keywords: "data download csv json api dataset license reuse" },
   { href: "/feeds/", name: "RSS feeds", summary: "Subscribe to news, changes, and topics in a feed reader.", keywords: "rss atom feeds subscribe" },
   { href: "/badges/", name: "Badges for maintainers", summary: "A badge maintainers can add to show their project is listed.", keywords: "badge maintainers readme listed" },
@@ -95,6 +98,9 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ...KID_LESSONS.map((l) => e("kids-lesson", l.slug, `/kids/${l.slug}/`, l.title, l.question, `kids children lesson ${l.number}`)),
     ...catalog.news.map((n) => e("news", n.slug, `/news/${n.slug}/`, n.title, plainText(n.summary.text), `news ${n.category} ${n.event_date}`)),
     ...catalog.newsletter.map((i) => e("newsletter", i.slug, `/newsletter/${i.slug}/`, `Issue ${i.number}: ${i.subject.replace(/^Issue \d+:\s*/i, "")}`, i.preview, "weekly email newsletter issue")),
+    ...reportEditions().map((r) =>
+      e("page", `report-${r.edition}`, editionHref(r.edition), r.title, `${editionLabel(r.edition)} edition, data cutoff ${r.data_cutoff}. ${r.findings[0]?.text ?? ""}`.trim(), "report state of american ai edition statistics figures data"),
+    ),
     ...SITE_PAGES.map((pg) => e("page", pg.href.replace(/^\/|\/$/g, "").replace(/\//g, "-"), pg.href, pg.name, pg.summary, pg.keywords)),
     ...MEMORY_PAGES.map((p) =>
       e(

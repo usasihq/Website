@@ -58,6 +58,8 @@ export interface RawContent {
   quizzes?: RawDocument[];
   finder?: RawDocument[];
   newsletter?: RawDocument[];
+  /** Published report editions (content/reports/<YYYY-MM>.json), by edition id. */
+  reports?: string[];
 }
 
 export interface ValidationIssue {
@@ -726,6 +728,7 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     paths: new Set(LEARNING_PATHS.map((p) => p.id)),
     issues: new Set(issueDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
     policy: new Set(policyDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
+    reports: new Set(raw.reports ?? []),
   };
   const issueNumbers = new Set<number>();
   for (const { file, value: n } of issueDocs) {

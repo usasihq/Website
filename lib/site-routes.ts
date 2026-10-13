@@ -43,6 +43,7 @@ export const STATIC_ROUTES = [
   "/kids/grown-ups/",
   "/kids/packet/",
   "/big-si/",
+  "/report/",
 ];
 
 /** Sets of slugs that make up the slugged sections of the site. */
@@ -57,6 +58,8 @@ export type SiteSlugs = {
   issues: Set<string>;
   /** Published policy documents, each with a page at /policy/<slug>/. */
   policy?: Set<string>;
+  /** Published editions of The State of American AI, each at /report/<YYYY-MM>/. */
+  reports?: Set<string>;
 };
 
 /** Whether an internal path (query and fragment ignored) names a page the site builds. */
@@ -73,6 +76,8 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
   if (p) return slugs.paths.has(p[1]);
   const pol = path.match(/^\/policy\/([a-z0-9-]+)\/$/);
   if (pol) return Boolean(slugs.policy?.has(pol[1]));
+  const rep = path.match(/^\/report\/(\d{4}-\d{2})\/$/);
+  if (rep) return Boolean(slugs.reports?.has(rep[1]));
   const mem = path.match(/^\/find\/memory\/([a-z0-9-]+)\/$/);
   if (mem) return MEMORY_PAGES.some((x) => x.slug === mem[1]);
   const k = path.match(/^\/kids\/([a-z0-9-]+)\/$/);

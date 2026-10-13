@@ -14,6 +14,8 @@ import { AVAILABILITY_LABELS } from "./openness";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
 import { DATE_LABEL_VERBS, policyHref, policyShortName, POLICY_STATUS_LABELS, POLICY_TYPE_LABELS } from "./policy";
+import { editionHref, editionLabel, REPORT_NAME, type ReportSnapshot } from "./report";
+import { reportEditions } from "./report-editions";
 import { artifactHref, orgHref } from "./routes";
 
 /** Bump when the card template changes, so every card is rendered again. */
@@ -222,6 +224,7 @@ export function pageCards(catalog: Catalog): PageCard[] {
       }),
     );
   }
+  for (const s of reportEditions()) cards.push(reportCard(s));
   const memoryCounts = MEMORY_PAGES.map((p) => [p, memoryPageResults(catalog.finder, p).fits.length] as const);
   cards.push(
     card({
@@ -248,6 +251,29 @@ export function pageCards(catalog: Catalog): PageCard[] {
     );
   }
   return cards;
+}
+
+const nf = (v: number) => v.toLocaleString("en-US");
+
+/** The card for one edition of The State of American AI, at /og/report/<edition>.jpg (also used by /report/). */
+export function reportCard(s: ReportSnapshot): PageCard {
+  const total = (k: string) => s.totals.find((t) => t.key === k)?.value ?? 0;
+  const facts: [string, string][] = [
+    ["Organizations", nf(total("organizations"))],
+    ["Model releases", nf(total("model_releases"))],
+    ["Downloadable weights", nf(total("open_weight_releases"))],
+  ];
+  if (s.totals.some((t) => t.key === "job_listings")) facts.push(["Job listings", nf(total("job_listings"))]);
+  facts.push(["Policy documents", nf(total("policy_documents"))]);
+  return card({
+    page: editionHref(s.edition),
+    image: `/og/report/${s.edition}.jpg`,
+    template: "record",
+    eyebrow: REPORT_NAME,
+    title: `${editionLabel(s.edition)} edition`,
+    subtitle: `Counted from the USASI catalog on ${formatDate(s.data_cutoff)}, with every definition and the data`,
+    facts,
+  });
 }
 
 const byCatalog = new WeakMap<Catalog, Map<string, PageCard>>();
