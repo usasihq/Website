@@ -1,0 +1,28 @@
+slug: nvidia-dynamo-1-5-0-released
+title: NVIDIA Dynamo 1.5.0 adds custom worker-selection policies and deprecates KVBM
+event_date: 2026-09-21
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    NVIDIA published Dynamo v1.5.0, a feature release of its open-source distributed inference
+    platform, on GitHub on September 21, 2026. The release notes say worker selection in Dynamo
+    Router is now pluggable through custom scoring and picking policies, and that KV indexing
+    extends to Mooncake and disk tiers. KVBM is deprecated, with removal targeted for v1.7.0. On
+    Kubernetes, nvidia.com/v1beta1 becomes the CRD storage version, the Rust Endpoint Picker
+    replaces the Go version, and Dynamo Snapshot moves to a standalone operator. The notes list
+    SGLang v0.5.18, TensorRT-LLM v1.3.0rc25 and vLLM v0.28.0 as the engine versions. USASI has not
+    tested this release.
+  source_ids: [dynamo-v1-5-0-release]
+related_organizations: [nvidia]
+related_artifacts: [nvidia-dynamo]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: dynamo-v1-5-0-release
+    title: Dynamo v1.5.0 (GitHub release notes)
+    url: https://github.com/ai-dynamo/dynamo/releases/tag/v1.5.0
+    publisher: NVIDIA (ai-dynamo on GitHub)
+    kind: release-notes
+    published_at: 2026-09-21
+    accessed_at: 2026-10-13

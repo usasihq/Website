@@ -1,0 +1,43 @@
+slug: google-deepmind-releases-synthid-bio
+title: Google DeepMind introduces SynthID Bio and open-sources code for watermarking AI-designed proteins
+event_date: 2026-09-30
+published_at: 2026-10-13
+category: research
+summary:
+  text: >-
+    On September 30, 2026 Google DeepMind introduced SynthID Bio, a family of watermarking methods
+    for AI-generated protein sequences and 3D structures, which it describes as a proof of concept.
+    The repository README says SynthID Bio-sequence adds watermarked sampling to ProteinMPNN, and
+    the announcement says SynthID Bio-structure fine-tunes a small part of AlphaFold 3's diffusion
+    network so that predicted coordinates carry a detectable signature. Google DeepMind says it is
+    publishing a methods paper, open-sourcing the code and in vitro data, and releasing weights to
+    the research community. In the public repository, the software is licensed under Apache 2.0,
+    the in vitro validation data supporting the paper is licensed under CC BY 4.0, and AlphaFold 3
+    model parameters remain under the AlphaFold 3 terms of use. USASI has not tested SynthID Bio.
+  source_ids: [deepmind-synthid-bio, synthidbio-readme, synthidbio-license]
+related_organizations: [google-deepmind]
+related_artifacts: [synthid-bio]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: deepmind-synthid-bio
+    title: "Introducing SynthID Bio"
+    url: https://deepmind.google/blog/introducing-synthid-bio/
+    publisher: Google DeepMind
+    kind: announcement
+    published_at: 2026-09-30
+    accessed_at: 2026-10-13
+  - id: synthidbio-readme
+    title: google-deepmind/synthidbio README
+    url: https://github.com/google-deepmind/synthidbio
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: synthidbio-license
+    title: google-deepmind/synthidbio LICENSE (Apache License 2.0)
+    url: https://github.com/google-deepmind/synthidbio/blob/main/LICENSE
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

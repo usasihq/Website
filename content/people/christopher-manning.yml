@@ -1,0 +1,90 @@
+slug: christopher-manning
+name: Christopher Manning
+initials: CM
+groups: [engineering, open-source]
+sector: academic
+specialties: [language-models, education]
+headline: Stanford professor of linguistics and computer science; co-author of GloVe and the Stanza NLP library
+bio:
+  text: >-
+    Christopher Manning is the Thomas M. Siebel Professor in Machine Learning in the Departments of
+    Linguistics and Computer Science at Stanford University, where Manning founded the Stanford NLP
+    Group, and a co-founder and Senior Fellow of the Stanford Institute for Human-Centered Artificial
+    Intelligence (HAI). Manning's homepage describes research on neural natural language
+    understanding, including the GloVe word vectors, attention, neural machine translation, question
+    answering, and dependency parsing, as well as work as a principal developer of Universal
+    Dependencies. Manning co-authored textbooks on statistical NLP and information retrieval, taught
+    CS224N, Natural Language Processing with Deep Learning, nearly every year from 2000 to 2024, and
+    co-authored the Stanza paper for the Stanford NLP Group's Apache-2.0 Python library. Manning held
+    faculty positions at Carnegie Mellon University and the University of Sydney before returning to
+    Stanford.
+  source_ids: [manning-site, glove-paper, stanza-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: Thomas M. Siebel Professor in Machine Learning, Professor of Linguistics and of Computer Science
+    current: true
+    source_ids: [manning-site]
+  - name: Carnegie Mellon University
+    organization_slug: carnegie-mellon-university
+    role: Assistant Professor, Computational Linguistics Program (1994–96)
+    current: false
+    source_ids: [manning-site]
+work:
+  - name: Stanza
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/stanfordnlp/stanza
+    contribution: >-
+      Co-author of the ACL 2020 system demonstration paper that the Stanza README gives as its citation.
+      The Stanford NLP Python library for tokenization, sentence segmentation, named entity
+      recognition, and parsing is released under the Apache License 2.0, and Manning's homepage names
+      Stanford CoreNLP and Stanza as the group's open-source NLP software.
+    source_ids: [stanza-repo, manning-site]
+  - name: "GloVe: Global Vectors for Word Representation"
+    artifact_slug: null
+    type: open-research
+    url: https://aclanthology.org/D14-1162/
+    contribution: >-
+      Co-author with Jeffrey Pennington and Richard Socher of the EMNLP 2014 paper that introduced the
+      GloVe word vectors.
+    source_ids: [glove-paper]
+  - name: "CS224N: Natural Language Processing with Deep Learning"
+    artifact_slug: null
+    type: open-research
+    url: https://web.stanford.edu/class/cs224n/
+    contribution: >-
+      Taught the Stanford course nearly every year from 2000 to 2024; the homepage links complete
+      lecture video playlists and slides from five editions of the course.
+    source_ids: [manning-site]
+links:
+  - label: Website
+    url: https://nlp.stanford.edu/~manning/
+  - label: Stanford NLP Group
+    url: https://nlp.stanford.edu/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: manning-site
+    title: Christopher Manning — homepage (bio and brief CV)
+    url: https://nlp.stanford.edu/~manning/
+    publisher: Christopher Manning (Stanford University)
+    kind: official-page
+    published_at: 2026-06-28
+    accessed_at: 2026-10-13
+  - id: glove-paper
+    title: "GloVe: Global Vectors for Word Representation (EMNLP 2014, ACL Anthology D14-1162)"
+    url: https://aclanthology.org/D14-1162/
+    publisher: ACL Anthology
+    kind: paper
+    published_at: 2014-10
+    accessed_at: 2026-10-13
+  - id: stanza-repo
+    title: stanfordnlp/stanza README (citation and Apache License 2.0)
+    url: https://github.com/stanfordnlp/stanza
+    publisher: Stanford NLP Group (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

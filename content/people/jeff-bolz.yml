@@ -1,0 +1,92 @@
+slug: jeff-bolz
+name: Jeff Bolz
+initials: JB
+groups: [open-source, engineering, local]
+sector: corporate
+specialties: [inference, hardware]
+headline: NVIDIA Distinguished Engineer and member of llama.cpp's Vulkan backend code-owner team
+bio:
+  text: >-
+    Jeff Bolz is a Distinguished Engineer at NVIDIA; NVIDIA's developer blog describes Bolz as a
+    contributor to Vulkan who designs API abstractions and shading language programming models. The
+    Vulkan registry lists Bolz as the contact for the VK_NV_cooperative_matrix2 extension, which
+    builds on cooperative matrix types to accelerate work beyond simple matrix-multiply kernels. In
+    llama.cpp, the C/C++ runtime for running language models on local hardware, CODEOWNERS lists
+    Bolz in the team that owns the Vulkan backend. Bolz's 2026 commits there optimize the backend's
+    matrix multiplication, FlashAttention, and operator fusion, and add support for more operators
+    and quantized formats.
+  source_ids: [nvidia-author-page, github-profile, vk-coopmat2, llama-cpp-codeowners, llama-cpp-commits]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: NVIDIA
+    organization_slug: nvidia
+    role: Distinguished Engineer
+    current: true
+    source_ids: [nvidia-author-page, github-profile]
+  - name: llama.cpp project
+    organization_slug: null
+    role: Member of the Vulkan backend code-owner team (ggml-org/ggml-vulkan)
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp Vulkan backend
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS lists Bolz in the ggml-org/ggml-vulkan team that owns the Vulkan backend. Commits
+      authored in 2026 cover matrix multiplication and FlashAttention (including cooperative-matrix
+      paths), topk_moe and rms_norm fusion, new operators such as CONV_3D, and quantized formats
+      including Q2_0, MXFP4 and NVFP4. The repository is MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+links:
+  - label: GitHub
+    url: https://github.com/jeffbolznv
+  - label: NVIDIA developer blog
+    url: https://developer.nvidia.com/blog/author/jbolz
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: nvidia-author-page
+    title: Jeff Bolz — author page, NVIDIA Technical Blog
+    url: https://developer.nvidia.com/blog/author/jbolz
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: jeffbolznv (Jeff Bolz) on GitHub
+    url: https://github.com/jeffbolznv
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: vk-coopmat2
+    title: VK_NV_cooperative_matrix2 — Vulkan reference page
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_NV_cooperative_matrix2.html
+    publisher: Khronos Group
+    kind: documentation
+    published_at: 2024-08-01
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by jeffbolznv
+    url: https://github.com/ggml-org/llama.cpp/commits?author=jeffbolznv
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

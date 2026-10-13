@@ -1,0 +1,32 @@
+slug: poolside-releases-laguna-s-2-1
+title: Poolside releases Laguna S 2.1, a 118B-parameter open-weight model with a 1M-token context
+event_date: 2026-07-21
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Poolside introduced Laguna S 2.1 on July 21, 2026, a Mixture-of-Experts model with 118B total
+    parameters and 8B activated per token that the model card says is designed for agentic coding
+    and long-horizon work. Poolside describes it as a scale-up of the Laguna XS family, and the
+    model card lists a 1,048,576-token context window. The weights are on Hugging Face under the
+    OpenMDW-1.1 license, with FP8, NVFP4, INT4, and GGUF variants and a DFlash draft model for
+    speculative decoding. USASI has not tested this model.
+  source_ids: [poolside-laguna-s-2-1-blog, laguna-s-2-1-card]
+related_organizations: [poolside]
+related_artifacts: [laguna]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: poolside-laguna-s-2-1-blog
+    title: Introducing Laguna S 2.1
+    url: https://poolside.ai/blog/introducing-laguna-s-2-1
+    publisher: Poolside
+    kind: announcement
+    published_at: 2026-07-21
+    accessed_at: 2026-10-13
+  - id: laguna-s-2-1-card
+    title: poolside/Laguna-S-2.1 model card
+    url: https://huggingface.co/poolside/Laguna-S-2.1
+    publisher: Poolside (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-13

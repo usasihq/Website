@@ -1,0 +1,85 @@
+slug: daniel-bevenius
+name: Daniel Bevenius
+initials: DB
+groups: [open-source, local]
+sector: corporate
+specialties: [inference, developer-tools]
+headline: llama.cpp code owner for model-conversion tooling and member of its CI team; Hugging Face
+bio:
+  text: >-
+    Daniel Bevenius contributes to llama.cpp, the C/C++ runtime for running language models on local
+    hardware; Bevenius's GitHub profile lists Hugging Face as company and links to ggml.ai, the
+    company behind the ggml library, which Hugging Face acquired in 2026. llama.cpp's CODEOWNERS
+    file names Bevenius as owner of the model-conversion example and the XCFramework build script,
+    co-owner of the debug example, and a member of the CI and shared-code (llama-common) teams.
+    Bevenius's recent commits cover build-time improvements, API and ABI checks in the release
+    workflow, parallel server tests, and model-conversion tooling.
+  source_ids: [github-profile, ggml-site, llama-cpp-codeowners, llama-cpp-commits]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Hugging Face is the company listed on Bevenius's GitHub profile
+    current: true
+    source_ids: [github-profile]
+  - name: llama.cpp project
+    organization_slug: null
+    role: Code owner for model-conversion and the XCFramework build; member of the CI and llama-common teams
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS names Bevenius for examples/model-conversion, build-xcframework.sh and (with Piotr
+      Wilkin) examples/debug, and lists Bevenius in the ggml-org/ci and ggml-org/llama-common teams.
+      Commits authored in August to October 2026 cover CMake build speedups, an API/ABI check in the
+      release workflow, pytest-xdist for server tests, and model-conversion recipes. The repository
+      is MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+links:
+  - label: GitHub
+    url: https://github.com/danbev
+  - label: Hugging Face
+    url: https://huggingface.co/danbev
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: danbev (Daniel Bevenius) on GitHub
+    url: https://github.com/danbev
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ggml-site
+    title: ggml.ai — about the company
+    url: https://ggml.ai
+    publisher: ggml.ai
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by danbev
+    url: https://github.com/ggml-org/llama.cpp/commits?author=danbev
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

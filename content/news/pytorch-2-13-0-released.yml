@@ -1,0 +1,27 @@
+slug: pytorch-2-13-0-released
+title: PyTorch 2.13.0 released with FlexAttention on Apple Silicon and the torchcomms backend
+event_date: 2026-07-08
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    PyTorch 2.13.0 was published on GitHub on July 8, 2026. The release notes highlight FlexAttention
+    support on Apple Silicon (MPS) and a deterministic FlexAttention backward path on CUDA, a prototype CuTeDSL "Native
+    DSL" backend for Inductor alongside Triton, and `nn.LinearCrossEntropyLoss`, which combines the
+    final prediction and loss computation to reduce peak GPU memory. They also introduce torchcomms,
+    a new communications backend for PyTorch Distributed, and Python 3.15 wheels on Linux, while
+    dropping free-threaded CPython 3.13t binaries and Bazel build support. USASI has not tested this
+    release.
+  source_ids: [pytorch-v2-13-0-release]
+related_organizations: [pytorch-foundation]
+related_artifacts: [pytorch]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: pytorch-v2-13-0-release
+    title: PyTorch 2.13.0 Release Notes (GitHub)
+    url: https://github.com/pytorch/pytorch/releases/tag/v2.13.0
+    publisher: PyTorch
+    kind: release-notes
+    published_at: 2026-07-08
+    accessed_at: 2026-10-13

@@ -1,0 +1,40 @@
+slug: fastvideo-releases-fasth3-preview-v1-open-weights
+title: FastVideo releases FastH3 Preview v1, an open-weight 4-step distillation of MiniMax H3
+event_date: 2026-08-27
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On August 27, 2026, the FastVideo project released FastH3 Preview v1, which its repository
+    describes as an open-weight, 4-step sparse-distilled MiniMax-H3 model for synchronized video and
+    audio generation, developed with Nuva Lab and the NVIDIA FastGen team. The recommended
+    checkpoint was trained with data-free DMD2 and VSA-H3 sparse attention, requires FastVideo's
+    VSA-H3 attention backend, and is also offered as a matching LoRA adapter. Its model card says
+    the checkpoint inherits the MiniMax H3 Community License. USASI has not tested FastH3.
+  source_ids: [fastvideo-readme, hao-lab-blog-index, fasth3-card]
+related_organizations: [university-of-california-san-diego]
+related_artifacts: [fastvideo]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: fastvideo-readme
+    title: hao-ai-lab/FastVideo (GitHub repository README, News)
+    url: https://github.com/hao-ai-lab/FastVideo
+    publisher: Hao AI Lab (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hao-lab-blog-index
+    title: Hao AI Lab blog
+    url: https://haoailab.com/blogs/
+    publisher: Hao AI Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: fasth3-card
+    title: FastVideo/FastVideo-FastH3-4-step-Preview-v1-VSA-DataFree model card
+    url: https://huggingface.co/FastVideo/FastVideo-FastH3-4-step-Preview-v1-VSA-DataFree
+    publisher: FastVideo (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

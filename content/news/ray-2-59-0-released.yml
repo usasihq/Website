@@ -1,0 +1,26 @@
+slug: ray-2-59-0-released
+title: Ray 2.59.0 makes Ray Data LLM and Ray Serve LLM generally available
+event_date: 2026-10-02
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    The Ray project published Ray 2.59.0 on GitHub on October 2, 2026. The release notes say the
+    Ray Data LLM and Ray Serve LLM APIs graduate to general availability in this release, alongside
+    an upgrade to vLLM 0.27.0. Ray now turns on token authentication by default for local
+    clusters, while remote and multi-node clusters are unchanged in this release; setting
+    RAY_AUTH_MODE=disabled opts out. The notes also list an external, disk-backed mode for the Ray
+    Data shuffle_v2 backend and native ORC file reading. USASI has not tested this release.
+  source_ids: [ray-2-59-0-release]
+related_organizations: [anyscale]
+related_artifacts: [ray]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: ray-2-59-0-release
+    title: Ray-2.59.0 (GitHub release notes)
+    url: https://github.com/ray-project/ray/releases/tag/ray-2.59.0
+    publisher: Ray project (GitHub)
+    kind: release-notes
+    published_at: 2026-10-02
+    accessed_at: 2026-10-13

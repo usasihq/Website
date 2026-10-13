@@ -1,0 +1,76 @@
+slug: paul-christiano
+name: Paul Christiano
+initials: PC
+groups: [leadership, engineering]
+sector: nonprofit
+specialties: [safety-alignment, reinforcement-learning]
+headline: Executive director of the Alignment Research Center and technical advisor at NIST's CAISI
+bio:
+  text: >-
+    Paul Christiano is the executive director of the Alignment Research Center (ARC), a nonprofit
+    developing methods for white-box analysis of neural networks, and a technical advisor at the
+    Center for AI Standards and Innovation within NIST. In April 2024 the U.S. Secretary of Commerce
+    named Christiano head of AI safety at the U.S. AI Safety Institute, housed at NIST. Before founding
+    ARC, Christiano ran the language model alignment team at OpenAI, and is first author of the 2017
+    paper on deep reinforcement learning from human preferences.
+  source_ids: [christiano-site, nist-aisi-2024, human-preferences-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Alignment Research Center
+    organization_slug: null
+    role: Executive Director
+    current: true
+    source_ids: [christiano-site]
+  - name: NIST (Center for AI Standards and Innovation)
+    organization_slug: nist
+    role: Technical Advisor
+    current: true
+    source_ids: [christiano-site]
+  - name: NIST (U.S. AI Safety Institute and Center for AI Standards and Innovation)
+    organization_slug: nist
+    role: Head of AI Safety
+    current: false
+    source_ids: [nist-aisi-2024, christiano-site]
+  - name: OpenAI
+    organization_slug: openai
+    role: Ran the language model alignment team
+    current: false
+    source_ids: [christiano-site]
+work:
+  - name: Deep reinforcement learning from human preferences
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1706.03741
+    contribution: >-
+      First author of the 2017 paper, which trains reinforcement learning agents on goals defined by
+      non-expert human preferences between pairs of trajectory segments, solving Atari games and
+      simulated robot locomotion tasks without access to the reward function.
+    source_ids: [human-preferences-paper]
+links:
+  - label: Website
+    url: https://paulfchristiano.com/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: christiano-site
+    title: Paul Christiano — homepage
+    url: https://paulfchristiano.com/
+    publisher: Paul Christiano
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: nist-aisi-2024
+    title: U.S. Commerce Secretary Gina Raimondo Announces Expansion of U.S. AI Safety Institute Leadership Team
+    url: https://www.nist.gov/news-events/news/2024/04/us-commerce-secretary-gina-raimondo-announces-expansion-us-ai-safety
+    publisher: National Institute of Standards and Technology
+    kind: announcement
+    published_at: 2024-04-16
+    accessed_at: 2026-10-13
+  - id: human-preferences-paper
+    title: Deep reinforcement learning from human preferences (arXiv 1706.03741)
+    url: https://arxiv.org/abs/1706.03741
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-06-12
+    accessed_at: 2026-10-13

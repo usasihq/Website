@@ -1,0 +1,35 @@
+slug: amd-releases-instella-moe
+title: AMD releases Instella-MoE, a 16B mixture-of-experts language model, under a research-only license
+event_date: 2026-07-24
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    AMD introduced Instella-MoE in a ROCm blog post dated July 24, 2026: a mixture-of-experts
+    language model with 16 billion total and 2.8 billion active parameters, trained from scratch
+    on AMD Instinct MI300X and MI325X GPUs with the Primus and Miles frameworks. AMD says it is
+    releasing model weights from every training stage, training configurations, data mixtures and
+    code, and the Hugging Face checkpoints run from Instella-MoE-16B-A3B-Pretrain to the
+    reinforcement-learning-tuned Instella-MoE-16B-A3B-Think. AMD calls the model fully open, but
+    the model card says the models are licensed for academic and research purposes under a
+    ResearchRAIL license and are released for research purposes only. USASI has not tested the
+    models.
+  source_ids: [instella-moe-blog, instella-moe-card]
+related_organizations: [amd]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: instella-moe-blog
+    title: "Introducing Instella-MoE: A State-of-the-Art Fully Open Mixture-of-Experts Language Model"
+    url: https://rocm.blogs.amd.com/artificial-intelligence/instella-moe/README.html
+    publisher: AMD (ROCm Blogs)
+    kind: announcement
+    published_at: 2026-07-24
+    accessed_at: 2026-10-13
+  - id: instella-moe-card
+    title: amd/Instella-MoE-16B-A3B-Think model card
+    url: https://huggingface.co/amd/Instella-MoE-16B-A3B-Think
+    publisher: AMD (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-13

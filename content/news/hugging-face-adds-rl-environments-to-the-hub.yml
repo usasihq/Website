@@ -1,0 +1,28 @@
+slug: hugging-face-adds-rl-environments-to-the-hub
+title: Hugging Face adds reinforcement learning environments to the Hub as tagged dataset repositories
+event_date: 2026-09-28
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Hugging Face announced RL Environments on the Hub on September 28, 2026. The post says there is no
+    new repository type, registry, or sign-up: an environment is published as a dataset repository
+    with the `rl-environment` tag plus a tag for each framework that can load its files, and the Hub
+    offers an RL Environments filter. The post says four environment frameworks are registered as
+    dataset libraries, each with its own tag: Harbor, Verifiers, OpenEnv, and NeMo Gym. The "Use this dataset" button provides a command to run an environment in a given
+    framework, and frameworks run environments locally or on a supported cloud backend such as
+    Hugging Face Jobs. The post says adding a tag does
+    not start a job or sandbox. USASI has not tested this feature.
+  source_ids: [hf-rl-environments-blog]
+related_organizations: [hugging-face]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: hf-rl-environments-blog
+    title: Welcome RL Environments to the hub
+    url: https://huggingface.co/blog/rl-environments
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2026-09-28
+    accessed_at: 2026-10-13

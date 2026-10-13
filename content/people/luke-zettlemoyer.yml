@@ -1,0 +1,98 @@
+slug: luke-zettlemoyer
+name: Luke Zettlemoyer
+initials: LZ
+groups: [engineering]
+sector: academic
+specialties: [language-models, training-systems]
+headline: University of Washington professor and Senior Research Director at Meta; co-author of RoBERTa and QLoRA
+bio:
+  text: >-
+    Luke Zettlemoyer is a Professor in the Paul G. Allen School of Computer Science & Engineering at
+    the University of Washington and a Senior Research Director at Meta FAIR. The Allen School's faculty page
+    describes research on empirical methods for natural language semantics, new tasks and datasets,
+    and how to train and deploy large language models, and notes that Zettlemoyer is a Fellow of the
+    Association for Computational Linguistics. Zettlemoyer co-authored the RoBERTa pretraining study,
+    the deep contextualized word representations paper, and QLoRA, a finetuning method that
+    backpropagates through a frozen 4-bit quantized model into low-rank adapters so that a 65B
+    parameter model can be finetuned on a single 48GB GPU.
+  source_ids: [lsz-site, uw-faculty, roberta-paper, elmo-paper, qlora-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: University of Washington
+    organization_slug: university-of-washington
+    role: Professor, Paul G. Allen School of Computer Science & Engineering
+    current: true
+    source_ids: [lsz-site, uw-faculty]
+  - name: Meta
+    organization_slug: meta
+    role: Senior Research Director, Meta FAIR
+    current: true
+    source_ids: [lsz-site]
+work:
+  - name: "QLoRA: Efficient Finetuning of Quantized LLMs"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2305.14314
+    contribution: >-
+      Co-author with Tim Dettmers, Artidoro Pagnoni, and Ari Holtzman of the QLoRA paper, which
+      introduces 4-bit NormalFloat, double quantization, and paged optimizers to cut finetuning memory.
+    source_ids: [qlora-paper]
+  - name: "RoBERTa: A Robustly Optimized BERT Pretraining Approach"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1907.11692
+    contribution: >-
+      Listed among the authors of the 2019 RoBERTa paper, a replication study of BERT pretraining.
+    source_ids: [roberta-paper]
+  - name: Deep contextualized word representations
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1802.05365
+    contribution: >-
+      Co-author of the 2018 paper introducing word vectors learned from the internal states of a deep
+      bidirectional language model.
+    source_ids: [elmo-paper]
+links:
+  - label: Website
+    url: https://homes.cs.washington.edu/~lsz/
+  - label: Allen School profile
+    url: https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: lsz-site
+    title: Luke Zettlemoyer — homepage
+    url: https://homes.cs.washington.edu/~lsz/
+    publisher: Luke Zettlemoyer (University of Washington)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: uw-faculty
+    title: Luke Zettlemoyer — Paul G. Allen School faculty profile
+    url: https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/
+    publisher: Paul G. Allen School of Computer Science & Engineering, University of Washington
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: qlora-paper
+    title: "QLoRA: Efficient Finetuning of Quantized LLMs (arXiv 2305.14314)"
+    url: https://arxiv.org/abs/2305.14314
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-23
+    accessed_at: 2026-10-13
+  - id: roberta-paper
+    title: "RoBERTa: A Robustly Optimized BERT Pretraining Approach (arXiv 1907.11692)"
+    url: https://arxiv.org/abs/1907.11692
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-07-26
+    accessed_at: 2026-10-13
+  - id: elmo-paper
+    title: Deep contextualized word representations (arXiv 1802.05365)
+    url: https://arxiv.org/abs/1802.05365
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-02-15
+    accessed_at: 2026-10-13

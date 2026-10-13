@@ -1,0 +1,109 @@
+slug: aaron-teo
+name: Aaron Teo
+initials: AT
+groups: [open-source, local]
+sector: corporate
+specialties: [inference, hardware]
+headline: IBM technology engineer and code owner for llama.cpp's zDNN backend for IBM Z and LinuxONE
+bio:
+  text: >-
+    Aaron Teo is a Technology Engineer in IBM Client Engineering whose GitHub profile lists AI on
+    IBM Z, inference engines, and IBM Z and LinuxONE as areas of work. llama.cpp's CODEOWNERS file
+    lists Teo, as the ggml-zdnn team, among the owners of the zDNN backend, which enables llama.cpp
+    on IBM z17 and later systems through IBM's zDNN acceleration library, and as a member of the CI
+    team. Teo last updated the
+    project's build guide for IBM Z and LinuxONE in September 2026, and Teo's commits add s390x CPU
+    optimizations, zDNN operations and CI coverage. Teo also publishes a Hugging Face collection of
+    big-endian GGUF models, including IBM Granite models, verified to run on IBM z15 and later
+    systems.
+  source_ids: [github-profile, llama-cpp-codeowners, zdnn-doc, s390x-doc, llama-cpp-commits, hf-collection]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: IBM
+    organization_slug: ibm
+    role: Technology Engineer, IBM Client Engineering
+    current: true
+    source_ids: [github-profile]
+  - name: llama.cpp project
+    organization_slug: null
+    role: Code owner for the zDNN backend; member of the CI team
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp support for IBM Z and LinuxONE
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS lists Teo as the ggml-org/ggml-zdnn team, which co-owns ggml/src/ggml-zdnn, and in
+      ggml-org/ci. The s390x build
+      guide credits Teo with its September 2026 update. Commits authored from July to October 2026
+      add Q8_0 matrix multiplication and memory fixes to the zDNN backend, s390x vector and repack
+      optimizations, CI coverage, and Granite parameter-count fixes. The repository is
+      MIT-licensed.
+    source_ids: [llama-cpp-codeowners, s390x-doc, llama-cpp-commits, llama-cpp-license]
+  - name: s390x Verified Models (Hugging Face collection)
+    artifact_slug: null
+    type: open-weights
+    url: https://huggingface.co/collections/taronaeo/s390x-verified-models-672765393af438d0ccb72a08
+    contribution: >-
+      A collection owned by Teo's Hugging Face account of big-endian GGUF models, including IBM
+      Granite and Qwen2.5 models, whose tokenizers were verified to run on IBM z15 and later
+      systems; the s390x build guide points to it for pre-converted models.
+    source_ids: [hf-collection, s390x-doc]
+links:
+  - label: GitHub
+    url: https://github.com/taronaeo
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: taronaeo (Aaron Teo) on GitHub
+    url: https://github.com/taronaeo
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: zdnn-doc
+    title: llama.cpp for IBM zDNN Accelerator (docs/backend/zDNN.md)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/docs/backend/zDNN.md
+    publisher: ggml-org (GitHub repository)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: s390x-doc
+    title: llama.cpp build guide for IBM Z and LinuxONE (docs/build-s390x.md)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/docs/build-s390x.md
+    publisher: ggml-org (GitHub repository)
+    kind: documentation
+    published_at: 2026-09-08
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by taronaeo
+    url: https://github.com/ggml-org/llama.cpp/commits?author=taronaeo
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hf-collection
+    title: s390x Verified Models — Hugging Face collection by taronaeo
+    url: https://huggingface.co/collections/taronaeo/s390x-verified-models-672765393af438d0ccb72a08
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13

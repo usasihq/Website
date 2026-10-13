@@ -1,0 +1,33 @@
+slug: reka-releases-inverse-dynamics-model
+title: Reka releases the Reka Inverse Dynamics Model for labeling video with camera motion under Apache 2.0
+event_date: 2026-10-02
+published_at: 2026-10-13
+category: research
+summary:
+  text: >-
+    Reka published the Reka Inverse Dynamics Model (RIDM) in a research post dated October 2, 2026.
+    The model card describes two compact models, a flow model and a pixel model, that predict camera
+    motion from video and were trained on game renders; Reka describes the aim as labeling real-world
+    footage with actions for interactive world models. The weights and inference code are on Hugging
+    Face under the Apache License 2.0, while the flow model relies on separately obtained RAFT-small
+    optical-flow weights from torchvision. The model card labels the release as preliminary. USASI
+    has not tested these models.
+  source_ids: [reka-ridm-post, reka-ridm-card]
+related_organizations: [reka]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: reka-ridm-post
+    title: Reka Inverse Dynamics Model for Interactive World Models
+    url: https://reka.ai/labs/research/reka-inverse-dynamics-model-for-interactive-world-models
+    publisher: Reka
+    kind: announcement
+    published_at: 2026-10-02
+    accessed_at: 2026-10-13
+  - id: reka-ridm-card
+    title: RekaAI/Reka-Inverse-Dynamics-Model model card
+    url: https://huggingface.co/RekaAI/Reka-Inverse-Dynamics-Model
+    publisher: Reka (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-13

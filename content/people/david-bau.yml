@@ -1,0 +1,91 @@
+slug: david-bau
+name: David Bau
+initials: DB
+groups: [engineering, open-source]
+sector: academic
+specialties: [interpretability, developer-tools, language-models]
+headline: Northeastern professor studying neural-network internals; Bau's lab launched the NDIF project
+bio:
+  text: >-
+    David Bau is an Assistant Professor of Computer Science at Northeastern University's Khoury
+    College, where Bau's lab studies the structure and interpretation of deep networks. The lab
+    launched the National Deep Inference Fabric (NDIF) project and points researchers to the
+    open-source nnsight library, which lets users read and edit a model's internals; Bau is also a
+    co-author of the ROME paper on locating and editing factual associations in GPT models. Bau's
+    earlier industry work includes heading the team that created Google Talk, contributing to Google
+    Image Search, and working on the Trident team for Microsoft Internet Explorer 4.
+  source_ids: [baulab, nnsight-repo, rome-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Northeastern University (Khoury College of Computer Sciences)
+    organization_slug: null
+    role: Assistant Professor of Computer Science
+    current: true
+    source_ids: [baulab]
+  - name: Google
+    organization_slug: google
+    role: Led the team that created Google Talk; contributed to Google Image Search
+    current: false
+    source_ids: [baulab]
+  - name: Microsoft
+    organization_slug: microsoft
+    role: Member of the Trident team for Internet Explorer 4
+    current: false
+    source_ids: [baulab]
+work:
+  - name: NDIF and nnsight
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/ndif-team/nnsight
+    contribution: >-
+      Bau's lab page announces the launch of the National Deep Inference Fabric (NDIF) and points to
+      nnsight for trying it; Bau is the last-listed author of the repository's citation for "NNsight
+      and NDIF: Democratizing Access to Foundation Model Internals". The nnsight repository is
+      released under the MIT license.
+    source_ids: [baulab, nnsight-repo, ndif-site]
+  - name: Locating and Editing Factual Associations in GPT (ROME)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2202.05262
+    contribution: >-
+      Co-author of the 2022 paper, which uses causal interventions to locate the computations that
+      mediate factual recall in autoregressive transformers and edits feed-forward weights to update
+      specific factual associations.
+    source_ids: [rome-paper]
+links:
+  - label: Lab website
+    url: https://baulab.info/
+  - label: Website
+    url: https://davidbau.com/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: baulab
+    title: "David Bau: Interpretation of Deep Networks (Bau Lab, Northeastern University)"
+    url: https://baulab.info/
+    publisher: David Bau
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: nnsight-repo
+    title: ndif-team/nnsight README and citation (MIT license)
+    url: https://github.com/ndif-team/nnsight
+    publisher: NDIF team (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ndif-site
+    title: National Deep Inference Fabric (NDIF) — homepage
+    url: https://ndif.us/
+    publisher: NDIF (Northeastern University)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: rome-paper
+    title: Locating and Editing Factual Associations in GPT (arXiv 2202.05262)
+    url: https://arxiv.org/abs/2202.05262
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-02-10
+    accessed_at: 2026-10-13

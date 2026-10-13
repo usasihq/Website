@@ -1,0 +1,36 @@
+slug: perplexity-releases-pplx-embed-v2-late
+title: Perplexity releases pplx-embed-v2-late multimodal late-interaction embedding models under MIT
+event_date: 2026-10-07
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Perplexity has published pplx-embed-v2-late, a family of multimodal late-interaction (ColBERT)
+    retrievers for text, images, and visual documents built on Qwen3.5 with bidirectional
+    attention, in 0.6B and 9B sizes on Hugging Face under the MIT license. The model card says both
+    models produce one 128-dimensional vector per token, share an embedding space so the 0.6B model
+    can query an index built with the 9B model, and were distilled from an internal 18B ColBERT
+    teacher. The card's citation dates the accompanying Perplexity blog post October 7, 2026.
+    Perplexity also published pplx-embed-v2-context-9b-preview, a contextual embedding model for
+    document chunks that its card labels a preview whose weights and interface may change. USASI
+    has not tested these models.
+  source_ids: [hf-pplx-embed-v2-late-9b, hf-pplx-embed-v2-context-preview]
+related_organizations: [perplexity]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: hf-pplx-embed-v2-late-9b
+    title: perplexity-ai/pplx-embed-v2-late-9b model card
+    url: https://huggingface.co/perplexity-ai/pplx-embed-v2-late-9b
+    publisher: Perplexity (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hf-pplx-embed-v2-context-preview
+    title: perplexity-ai/pplx-embed-v2-context-9b-preview model card
+    url: https://huggingface.co/perplexity-ai/pplx-embed-v2-context-9b-preview
+    publisher: Perplexity (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

@@ -1,0 +1,76 @@
+slug: johannes-gassler
+name: Johannes Gäßler
+initials: JG
+groups: [open-source, local, engineering]
+sector: academic
+specialties: [inference, hardware, ml-frameworks]
+headline: Member of llama.cpp's CUDA backend code-owner team; experimental particle physicist at KIT
+bio:
+  text: >-
+    Johannes Gäßler contributes to llama.cpp, the C/C++ runtime for running language models on
+    local hardware, and the project's CODEOWNERS file lists Gäßler in the team that owns its CUDA
+    backend. The same file names Gäßler as co-owner of the GGUF file code (gguf.cpp) and owner of
+    the ggml optimizer code (ggml-opt.cpp) and the lookup example. Gäßler's 2026 commits to the repository
+    cover CUDA matrix-multiplication and FlashAttention kernels, HIP tuning for AMD GPUs, and
+    tensor-parallel fixes. Gäßler's GitHub profile gives the Karlsruhe Institute of Technology as
+    company and describes Gäßler as an experimental particle physicist.
+  source_ids: [llama-cpp-codeowners, llama-cpp-commits, github-profile]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Karlsruhe Institute of Technology
+    organization_slug: null
+    role: Experimental particle physicist
+    current: true
+    source_ids: [github-profile]
+  - name: llama.cpp project
+    organization_slug: null
+    role: Member of the CUDA backend code-owner team (ggml-org/ggml-cuda)
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS lists Gäßler in the ggml-org/ggml-cuda team that owns the CUDA backend, as
+      co-owner of gguf.cpp, and as owner of ggml-opt.cpp, ggml-backend-meta.cpp, the lookup
+      example, and common/fit.
+      Commits authored in 2026 cover CUDA MMQ and FlashAttention kernels, HIP tuning for AMD GPUs,
+      and tensor parallelism. The repository is MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+links:
+  - label: GitHub
+    url: https://github.com/JohannesGaessler
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: JohannesGaessler (Johannes Gäßler) on GitHub
+    url: https://github.com/JohannesGaessler
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by JohannesGaessler
+    url: https://github.com/ggml-org/llama.cpp/commits?author=JohannesGaessler
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

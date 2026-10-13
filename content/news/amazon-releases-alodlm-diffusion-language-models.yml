@@ -1,0 +1,33 @@
+slug: amazon-releases-alodlm-diffusion-language-models
+title: Amazon releases ALoDLM-1.7B and ALoDLM-8B diffusion language models for non-commercial research
+event_date: 2026-10
+published_at: 2026-10-13
+category: research
+summary:
+  text: >-
+    Amazon has published ALoDLM-1.7B and ALoDLM-8B on Hugging Face, diffusion language models
+    initialized from the corresponding Qwen3 backbones that generate text and code by repeatedly applying
+    shared transformer layers and adaptively allocating computation across token positions. The model
+    card says the weights are released under the Creative Commons Attribution-NonCommercial 4.0 license
+    for non-commercial research, with code in the amazon-science/ALoDLM repository. The accompanying
+    paper, "ALoDLM: Adaptively Looped Diffusion Language Models," was submitted to arXiv on October 3,
+    2026. USASI has not tested either model.
+  source_ids: [alodlm-8b-card, alodlm-arxiv]
+related_organizations: [amazon]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: alodlm-8b-card
+    title: amazon/ALoDLM-8B model card
+    url: https://huggingface.co/amazon/ALoDLM-8B
+    publisher: Amazon (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-13
+  - id: alodlm-arxiv
+    title: "ALoDLM: Adaptively Looped Diffusion Language Models"
+    url: https://arxiv.org/abs/2610.04198
+    publisher: arXiv (paper by Amazon researchers)
+    kind: paper
+    published_at: 2026-10-03
+    accessed_at: 2026-10-13

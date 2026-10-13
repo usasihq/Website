@@ -1,0 +1,36 @@
+slug: scale-ai-releases-distressbench
+title: Scale AI releases DistressBench, a benchmark of crisis support in language models
+event_date: 2026-10-08
+published_at: 2026-10-13
+category: research
+summary:
+  text: >-
+    Scale AI has published DistressBench, a benchmark of whether a language model can sustain safe,
+    useful support across a crisis conversation; the accompanying paper was posted on arXiv on
+    October 8, 2026. The paper argues that safety benchmarks scoring models mainly on refusal do not
+    capture the support needed in suicide and self-harm crises, and describes 718 English
+    conversations with clinician-authored turns across 23 suicide and self-harm subcategories, each
+    with a task-specific rubric and a clinician reference response. Scale AI's gated Hugging Face
+    dataset publishes 359 of the tasks under the CC BY 4.0 license, withholds the other half as a
+    private holdout, and places full long-horizon transcripts, including the assistant turns, in a
+    separate annex released for safety research.
+  source_ids: [distressbench-arxiv, distressbench-card]
+related_organizations: [scale-ai]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: distressbench-arxiv
+    title: "DistressBench: Evaluating Multi-Dimensional Crisis Support in Large Language Models"
+    url: https://arxiv.org/abs/2610.12758
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-10-08
+    accessed_at: 2026-10-13
+  - id: distressbench-card
+    title: ScaleAI/DistressBench dataset card
+    url: https://huggingface.co/datasets/ScaleAI/DistressBench
+    publisher: Scale AI (Hugging Face)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13

@@ -1,0 +1,26 @@
+slug: onnx-runtime-1-30-0-released
+title: ONNX Runtime 1.30.0 adds Go bindings and expands CUDA and WebGPU generative AI support
+event_date: 2026-09-10
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Microsoft's ONNX Runtime project published version 1.30.0 on GitHub on September 10, 2026. The
+    release notes highlight Go bindings for the ONNX Runtime C API, expanded CUDA inference support
+    including speculative decoding in paged XQA and INT4 paged KV caches, WebGPU PagedAttention
+    improvements with GPT-OSS support, and fused CPU LinearAttention kernels for AVX-512, Arm64 NEON, and
+    SVE. The notes say FP4 QMoE kernels are now enabled by default in CUDA builds, and they list hardening
+    of model loading and input validation. USASI has not tested this release.
+  source_ids: [onnx-runtime-v1-30-0-release]
+related_organizations: [microsoft]
+related_artifacts: [onnx-runtime]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: onnx-runtime-v1-30-0-release
+    title: ONNX Runtime v1.30.0 (GitHub release notes)
+    url: https://github.com/microsoft/onnxruntime/releases/tag/v1.30.0
+    publisher: Microsoft (ONNX Runtime on GitHub)
+    kind: release-notes
+    published_at: 2026-09-10
+    accessed_at: 2026-10-13

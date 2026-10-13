@@ -1,0 +1,77 @@
+slug: sebastian-raschka
+name: Sebastian Raschka
+initials: SR
+groups: [open-source, engineering]
+sector: independent
+specialties: [language-models, education]
+headline: LLM research engineer and author of Build a Large Language Model (From Scratch); formerly at Lightning AI
+bio:
+  text: >-
+    Sebastian Raschka is an LLM research engineer whose recent work, according to Raschka's site,
+    centers on LLM architectures and small-scale training, with an interest in inference and
+    evaluation. Raschka is the author of Build a Large Language Model (From Scratch) and its sequel,
+    Build a Reasoning Model (From Scratch); the first book's official code repository implements,
+    pretrains and fine-tunes a GPT-like model in PyTorch and is designed to run on conventional
+    laptops. Raschka's site describes earlier roles as a senior engineer at Lightning AI and as a
+    statistics professor at the University of Wisconsin-Madison.
+  source_ids: [raschka-site, raschka-about, llms-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Lightning AI
+    organization_slug: lightning-ai
+    role: Senior engineer
+    current: false
+    source_ids: [raschka-site, raschka-about]
+  - name: University of Wisconsin-Madison
+    organization_slug: null
+    role: Statistics professor
+    current: false
+    source_ids: [raschka-site, raschka-about]
+work:
+  - name: LLMs-from-scratch
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/rasbt/LLMs-from-scratch
+    contribution: >-
+      Official code repository for Raschka's book Build a Large Language Model (From Scratch),
+      containing code for developing, pretraining and fine-tuning a GPT-like LLM in PyTorch without
+      external LLM libraries; the main chapter code is designed to run on conventional laptops.
+      Licensed under Apache-2.0.
+    source_ids: [llms-repo, llms-license, raschka-site]
+links:
+  - label: Website
+    url: https://sebastianraschka.com
+  - label: GitHub
+    url: https://github.com/rasbt
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: raschka-site
+    title: Sebastian Raschka — homepage
+    url: https://sebastianraschka.com
+    publisher: Sebastian Raschka
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: raschka-about
+    title: Sebastian Raschka — about
+    url: https://sebastianraschka.com/about/
+    publisher: Sebastian Raschka
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llms-repo
+    title: rasbt/LLMs-from-scratch README
+    url: https://github.com/rasbt/LLMs-from-scratch
+    publisher: Sebastian Raschka (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llms-license
+    title: rasbt/LLMs-from-scratch LICENSE.txt (Apache-2.0)
+    url: https://github.com/rasbt/LLMs-from-scratch/blob/main/LICENSE.txt
+    publisher: Sebastian Raschka (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

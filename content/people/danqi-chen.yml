@@ -1,0 +1,93 @@
+slug: danqi-chen
+name: Danqi Chen
+initials: DC
+groups: [engineering, open-source]
+sector: academic
+specialties: [language-models, training-systems]
+headline: Princeton associate professor co-leading the Princeton NLP Group; co-author of RoBERTa and SimCSE
+bio:
+  text: >-
+    Danqi Chen is an associate professor of computer science at Princeton University, where Chen
+    co-leads the Princeton NLP Group and is an associate director of Princeton Language and
+    Intelligence (PLI). Chen's homepage says Chen spent academic year 2025–26 as a member of technical
+    staff at Thinking Machines Lab and earlier spent time as a research scientist at Facebook AI
+    Research (FAIR) and Google DeepMind. Chen is a co-author of RoBERTa: A Robustly Optimized BERT
+    Pretraining Approach and of SimCSE: Simple Contrastive Learning of Sentence Embeddings, whose code
+    is released under the MIT license in the princeton-nlp/SimCSE repository.
+  source_ids: [chen-site, roberta-paper, simcse-paper, simcse-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Princeton University
+    organization_slug: princeton-university
+    role: Associate Professor of Computer Science; co-lead, Princeton NLP Group; associate director, Princeton Language and Intelligence
+    current: true
+    source_ids: [chen-site]
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    role: Member of technical staff (academic year 2025–26)
+    current: false
+    source_ids: [chen-site]
+  - name: Meta (Facebook AI Research)
+    organization_slug: meta
+    role: Research scientist, Facebook AI Research (FAIR)
+    current: false
+    source_ids: [chen-site]
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Research scientist
+    current: false
+    source_ids: [chen-site]
+work:
+  - name: SimCSE
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/princeton-nlp/SimCSE
+    contribution: >-
+      Co-author with Tianyu Gao and Xingcheng Yao of the EMNLP 2021 SimCSE paper on contrastive
+      learning of sentence embeddings; the princeton-nlp/SimCSE repository, released under the MIT
+      license, hosts the code and lists Chen in its citation.
+    source_ids: [simcse-paper, simcse-repo]
+  - name: "RoBERTa: A Robustly Optimized BERT Pretraining Approach"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1907.11692
+    contribution: >-
+      Listed among the authors of the 2019 RoBERTa paper, a replication study of BERT pretraining.
+    source_ids: [roberta-paper]
+links:
+  - label: Website
+    url: https://www.cs.princeton.edu/~danqic/
+  - label: GitHub
+    url: https://github.com/danqi
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: chen-site
+    title: Danqi Chen — homepage (Princeton Computer Science)
+    url: https://www.cs.princeton.edu/~danqic/
+    publisher: Danqi Chen (Princeton University)
+    kind: official-page
+    published_at: 2026-09
+    accessed_at: 2026-10-13
+  - id: roberta-paper
+    title: "RoBERTa: A Robustly Optimized BERT Pretraining Approach (arXiv 1907.11692)"
+    url: https://arxiv.org/abs/1907.11692
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-07-26
+    accessed_at: 2026-10-13
+  - id: simcse-paper
+    title: "SimCSE: Simple Contrastive Learning of Sentence Embeddings (arXiv 2104.08821)"
+    url: https://arxiv.org/abs/2104.08821
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-04-18
+    accessed_at: 2026-10-13
+  - id: simcse-repo
+    title: princeton-nlp/SimCSE README (MIT license)
+    url: https://github.com/princeton-nlp/SimCSE
+    publisher: Princeton NLP (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

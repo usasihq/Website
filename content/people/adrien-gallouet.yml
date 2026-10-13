@@ -1,0 +1,87 @@
+slug: adrien-gallouet
+name: Adrien Gallouët
+initials: AG
+groups: [open-source, local]
+sector: corporate
+specialties: [inference, developer-tools]
+headline: Member of llama.cpp's llama-server and shared-code code-owner teams; Hugging Face
+bio:
+  text: >-
+    Adrien Gallouët contributes to llama.cpp, the C/C++ runtime for running language models on local
+    hardware; Gallouët's GitHub profile lists Hugging Face as company and shows membership in the
+    huggingface and ggml-org organizations. llama.cpp's CODEOWNERS file includes Gallouët in the
+    teams that own llama-server, the project's HTTP server, and its shared common code. Gallouët's
+    recent commits add model input and output modalities to the server's model listing, rework
+    file-path and cache-directory handling across platforms, clean up compiler warnings in the CUDA
+    and Windows builds, and update the vendored HTTP library.
+  source_ids: [github-profile, hf-profile, llama-cpp-codeowners, llama-cpp-commits]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Hugging Face is the company listed on Gallouët's GitHub profile
+    current: true
+    source_ids: [github-profile, hf-profile]
+  - name: llama.cpp project
+    organization_slug: null
+    role: Member of the llama-server and llama-common code-owner teams
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS lists Gallouët in the ggml-org/llama-server and ggml-org/llama-common teams.
+      Commits authored in September and October 2026 report model modalities in the server's GET
+      /models endpoint, move common code to fs::path for config and cache directories, clean up
+      CUDA and Windows warnings, and update the vendored cpp-httplib. The repository is
+      MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+links:
+  - label: Website
+    url: https://angt.github.io
+  - label: GitHub
+    url: https://github.com/angt
+  - label: Hugging Face
+    url: https://huggingface.co/angt
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: angt (Adrien Gallouët) on GitHub
+    url: https://github.com/angt
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hf-profile
+    title: angt on Hugging Face (organizations include huggingface and ggml-org)
+    url: https://huggingface.co/angt
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by angt
+    url: https://github.com/ggml-org/llama.cpp/commits?author=angt
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

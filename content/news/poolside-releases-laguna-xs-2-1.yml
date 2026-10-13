@@ -1,0 +1,32 @@
+slug: poolside-releases-laguna-xs-2-1
+title: Poolside releases Laguna XS 2.1, a 33B-parameter open-weight coding model, under OpenMDW-1.1
+event_date: 2026-07-02
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Poolside introduced Laguna XS 2.1 on July 2, 2026, describing it as a Mixture-of-Experts model
+    with 33B total parameters and 3B activated per token. The model card calls it an upgraded
+    version of Laguna XS.2, designed for agentic coding and long-horizon work on a local machine.
+    Poolside licenses the weights under OpenMDW-1.1 and publishes them on Hugging Face in BF16, FP8,
+    NVFP4, and INT4 formats; the model is also offered through Poolside's API and OpenRouter. USASI
+    has not tested this model.
+  source_ids: [poolside-laguna-xs-2-1-blog, laguna-xs-2-1-card]
+related_organizations: [poolside]
+related_artifacts: [laguna]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: poolside-laguna-xs-2-1-blog
+    title: Introducing Laguna XS 2.1
+    url: https://poolside.ai/blog/introducing-laguna-xs-2-1
+    publisher: Poolside
+    kind: announcement
+    published_at: 2026-07-02
+    accessed_at: 2026-10-13
+  - id: laguna-xs-2-1-card
+    title: poolside/Laguna-XS-2.1 model card
+    url: https://huggingface.co/poolside/Laguna-XS-2.1
+    publisher: Poolside (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-13

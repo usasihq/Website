@@ -1,0 +1,34 @@
+slug: lemonade-2026-39-1-adopts-calendar-versioning
+title: Lemonade 2026.39.1 switches to calendar-based version numbers and adds image editing
+event_date: 2026-09-23
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    The Lemonade project published Lemonade Server version 2026.39.1 on GitHub on September 23,
+    2026, three weeks after version 11.9.0. The release notes list a
+    breaking change: the version format changed from X.Y.Z to YYYY.WW.N, so tools and scripts
+    that parse version output or compare version strings must be updated. The release updates
+    TheNoise to 0.7.1 with support for image editing and additional AMD GPUs, adds a /v1/docs
+    endpoint for API reference documentation, and makes VRAM auto-eviction configurable. USASI
+    has not tested this release.
+  source_ids: [lemonade-2026-39-1-release, lemonade-11-9-0-release]
+related_organizations: [amd]
+related_artifacts: [lemonade]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: lemonade-2026-39-1-release
+    title: Lemonade v2026.39.1 (GitHub release notes)
+    url: https://github.com/lemonade-sdk/lemonade/releases/tag/v2026.39.1
+    publisher: Lemonade project (GitHub)
+    kind: release-notes
+    published_at: 2026-09-23
+    accessed_at: 2026-10-13
+  - id: lemonade-11-9-0-release
+    title: Lemonade v11.9.0 (GitHub release notes)
+    url: https://github.com/lemonade-sdk/lemonade/releases/tag/v11.9.0
+    publisher: Lemonade project (GitHub)
+    kind: release-notes
+    published_at: 2026-09-02
+    accessed_at: 2026-10-13

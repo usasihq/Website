@@ -1,0 +1,35 @@
+slug: thinking-machines-lab-releases-inkling-small
+title: Thinking Machines Lab releases Inkling-Small, a smaller open-weight Inkling model
+event_date: 2026-07-30
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On July 30, 2026 Thinking Machines Lab released Inkling-Small, which it describes as a
+    mixture-of-experts transformer with 276B total and 12B active parameters, trained on NVIDIA
+    GB300 NVL72 systems. The announcement says that, like Inkling, it reasons natively over audio and
+    images, offers variable thinking effort, and supports a context window of up to 1M tokens, and
+    that an earlier checkpoint was post-trained partly through on-policy distillation with Inkling as
+    the teacher. The company says it is releasing the full weights and offering the model for
+    fine-tuning on Tinker; the Hugging Face listing is ungated and licensed under Apache 2.0. USASI
+    has not tested Inkling-Small.
+  source_ids: [tml-inkling-small, hf-inkling-small]
+related_organizations: [thinking-machines-lab]
+related_artifacts: [inkling, inkling-small]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: tml-inkling-small
+    title: Introducing Inkling-Small
+    url: https://thinkingmachines.ai/news/inkling-small/
+    publisher: Thinking Machines Lab
+    kind: announcement
+    published_at: 2026-07-30
+    accessed_at: 2026-10-13
+  - id: hf-inkling-small
+    title: thinkingmachines/Inkling-Small (Hugging Face model page and metadata)
+    url: https://huggingface.co/thinkingmachines/Inkling-Small
+    publisher: Thinking Machines Lab (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

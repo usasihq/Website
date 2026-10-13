@@ -1,0 +1,35 @@
+slug: mcp-specification-2026-07-28-released
+title: Model Context Protocol publishes its 2026-07-28 specification, removing protocol-level sessions
+event_date: 2026-07-28
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On July 28, 2026 the Model Context Protocol project published the stable release of the
+    `2026-07-28` revision of the MCP specification, which follows the `2025-11-25` revision. The
+    changelog lists removing protocol-level sessions and the `Mcp-Session-Id` header from the
+    Streamable HTTP transport, and removing the `initialize` handshake so that every request carries
+    its protocol version and client capabilities in `_meta`. It also adds a required
+    `server/discover` method and a Multi Round-Trip Requests pattern, and moves tasks into an
+    official `io.modelcontextprotocol/tasks` extension. The revision deprecates the Roots, Sampling,
+    and Logging features and adopts a feature lifecycle and deprecation policy with a minimum
+    twelve-month deprecation window. USASI has not tested implementations of this revision.
+  source_ids: [mcp-2026-07-28-release, mcp-2026-07-28-changelog]
+related_organizations: [agentic-ai-foundation]
+related_artifacts: [model-context-protocol]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: mcp-2026-07-28-release
+    title: Model Context Protocol 2026-07-28 (GitHub release)
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28
+    publisher: Model Context Protocol project
+    kind: release-notes
+    published_at: 2026-07-28
+    accessed_at: 2026-10-13
+  - id: mcp-2026-07-28-changelog
+    title: "Key Changes: Model Context Protocol specification 2026-07-28"
+    url: https://modelcontextprotocol.io/specification/2026-07-28/changelog
+    publisher: Model Context Protocol project
+    kind: documentation
+    accessed_at: 2026-10-13

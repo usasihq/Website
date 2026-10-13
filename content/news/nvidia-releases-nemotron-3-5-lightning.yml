@@ -1,0 +1,36 @@
+slug: nvidia-releases-nemotron-3-5-lightning
+title: NVIDIA releases Nemotron 3.5 Lightning, an open 30B mixture-of-experts model for agents
+event_date: 2026-08-11
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    NVIDIA's Hugging Face model card gives August 11, 2026 as the release date of
+    NVIDIA-Nemotron-3.5-Lightning-30B-A3B, a model with 30B total and 3B active parameters built
+    on a hybrid of Mamba-2, mixture-of-experts and attention layers, with reasoning that can be
+    switched on or off through the chat template. The card lists the OpenMDW License Agreement,
+    version 1.1, and points to a separate NVFP4 checkpoint for optimized inference. NVIDIA's
+    developer blog says the model is designed for the high-volume execution work of long-running
+    agents, ships with DFlash and DSpark draft models for speculative decoding, and is released
+    with an open reinforcement learning dataset, Nemotron-RL Agentic Terminal Pivot. USASI has not
+    tested the model.
+  source_ids: [nemotron-3-5-lightning-card, nemotron-3-5-lightning-blog]
+related_organizations: [nvidia]
+related_artifacts: [nemotron]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: nemotron-3-5-lightning-card
+    title: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-08-11
+    accessed_at: 2026-10-13
+  - id: nemotron-3-5-lightning-blog
+    title: NVIDIA Nemotron 3.5 Lightning Delivers Fast, Accurate Specialized Task Execution for Long-Running Agents
+    url: https://developer.nvidia.com/blog/nvidia-nemotron-3-5-lightning-delivers-fast-accurate-specialized-task-execution-for-long-running-agents/
+    publisher: NVIDIA Technical Blog
+    kind: announcement
+    published_at: 2026-08-11
+    accessed_at: 2026-10-13

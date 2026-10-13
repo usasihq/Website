@@ -1,0 +1,73 @@
+slug: radoslav-gerganov
+name: Radoslav Gerganov
+initials: RG
+groups: [open-source, local]
+sector: independent
+specialties: [inference, developer-tools]
+headline: Code owner for llama.cpp's RPC backend, which offloads computation to remote machines
+bio:
+  text: >-
+    Radoslav Gerganov is the code owner for llama.cpp's RPC backend, according to the project's
+    CODEOWNERS file, which lists Gerganov as the sole member of the ggml-rpc team covering the
+    backend and its server tool. The project's documentation says the RPC server exposes ggml
+    devices on a remote host and that the RPC backend offloads computations to one or several of
+    those servers. Gerganov's commits add multi-device support, compute-graph caching and reuse, a
+    refactored transport, and asynchronous backend APIs to the RPC backend, along with
+    request-handling changes in llama-server.
+  source_ids: [llama-cpp-codeowners, rpc-readme, llama-cpp-commits]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: llama.cpp project
+    organization_slug: null
+    role: Code owner for the RPC backend (ggml-org/ggml-rpc)
+    current: true
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits]
+work:
+  - name: llama.cpp RPC backend
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp/tree/master/tools/rpc
+    contribution: >-
+      CODEOWNERS lists Gerganov as the ggml-org/ggml-rpc team, which owns ggml/src/ggml-rpc and
+      tools/rpc; a September 2025 commit added Gerganov as RPC owner. Commits authored from
+      September 2025 to August 2026 add multi-device support, graph caching and reuse, a transport
+      refactor, and event and async backend APIs, plus llama-server changes such as returning HTTP
+      400 when a prompt exceeds the context length. The repository is MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, rpc-readme, llama-cpp-license]
+links:
+  - label: Website
+    url: https://xakcop.com
+  - label: GitHub
+    url: https://github.com/rgerganov
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: rpc-readme
+    title: llama.cpp tools/rpc README
+    url: https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md
+    publisher: ggml-org (GitHub repository)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by rgerganov
+    url: https://github.com/ggml-org/llama.cpp/commits?author=rgerganov
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

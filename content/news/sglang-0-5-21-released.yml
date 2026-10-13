@@ -1,0 +1,30 @@
+slug: sglang-0-5-21-released
+title: SGLang 0.5.21 adds a Decisions API and runtime prefill-decode role switching
+event_date: 2026-10-02
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    The SGLang project published v0.5.21 on GitHub on October 2, 2026. The release notes highlight
+    prefill-decode instances that can switch between prefill and decode without a restart, a Rust
+    core for the prefix cache by default, a new Decisions API (`/v1/decisions`) that lets an LLM or
+    VLM act as a low-latency classifier and scorer, and a Score API (`/v1/score`) that scores all
+    candidates in one request. Under breaking changes, request-supplied `chat_template` values are
+    rejected unless the server starts with `--trust-request-chat-template`, and deprecated
+    endpoints, environment variables, and aliases, along with legacy radix cache implementations,
+    were removed. The
+    release also adds support for models including DeepSeek-V4.1 Flash and MiMo-V2.6. USASI has not
+    tested these changes.
+  source_ids: [sglang-v0-5-21]
+related_organizations: [lmsys]
+related_artifacts: [sglang]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: sglang-v0-5-21
+    title: SGLang v0.5.21 (GitHub release notes)
+    url: https://github.com/sgl-project/sglang/releases/tag/v0.5.21
+    publisher: SGLang project
+    kind: release-notes
+    published_at: 2026-10-02
+    accessed_at: 2026-10-13

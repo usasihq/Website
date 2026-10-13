@@ -1,0 +1,89 @@
+slug: thebloke
+name: TheBloke
+initials: TB
+groups: [open-source, local]
+sector: independent
+specialties: [inference, language-models]
+headline: Published quantized GGUF, GPTQ and AWQ versions of open language models on Hugging Face
+bio:
+  text: >-
+    TheBloke is a public handle on Hugging Face, where the profile lists quantisation and fine
+    tuning as interests and hosts quantized versions of open language models in the GGUF, GPTQ and
+    AWQ formats. TheBloke's repository for Meta's Llama 2 7B, for example, offers GGUF files at
+    quantization levels from Q2_K to Q8_0 and lists llama.cpp among the local clients and libraries
+    that can run them. Earlier GGML repositories, such as the one for Koala 7B, say some of their
+    files were quantized with an older version of llama.cpp, and in May 2023 TheBloke authored a
+    merged commit to llama.cpp
+    that let its convert.py script handle models stored in a single pytorch_model.bin file.
+  source_ids: [hf-profile, llama2-gguf-card, koala-ggml-card, llama-cpp-commits]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: llama.cpp project
+    organization_slug: null
+    role: Contributor (convert.py, 2023)
+    current: false
+    source_ids: [llama-cpp-commits]
+work:
+  - name: llama.cpp
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      Authored the May 16, 2023 commit "convert.py: Support models which are stored in a single
+      pytorch_model.bin" (#1469). The repository is MIT-licensed.
+    source_ids: [llama-cpp-commits, llama-cpp-license]
+  - name: Quantized model repositories on Hugging Face
+    artifact_slug: null
+    type: open-weights
+    url: https://huggingface.co/TheBloke
+    contribution: >-
+      Publishes GGUF, GPTQ and AWQ quantizations of open models under the TheBloke account. The
+      Llama-2-7B-GGUF card says the repository contains GGUF files for Meta's Llama 2 7B under the
+      llama2 license, and lists llama.cpp, LM Studio and other clients that support the format.
+      The koala-7B-GGML card says its original quantisation methods were quantized using an older
+      version of llama.cpp so that they stay compatible with llama.cpp as of commit 2d5db48.
+    source_ids: [hf-profile, llama2-gguf-card, koala-ggml-card]
+links:
+  - label: Hugging Face
+    url: https://huggingface.co/TheBloke
+  - label: GitHub
+    url: https://github.com/TheBloke
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: hf-profile
+    title: TheBloke on Hugging Face
+    url: https://huggingface.co/TheBloke
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama2-gguf-card
+    title: TheBloke/Llama-2-7B-GGUF model card
+    url: https://huggingface.co/TheBloke/Llama-2-7B-GGUF
+    publisher: TheBloke (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: koala-ggml-card
+    title: TheBloke/koala-7B-GGML model card
+    url: https://huggingface.co/TheBloke/koala-7B-GGML
+    publisher: TheBloke (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by TheBloke
+    url: https://github.com/ggml-org/llama.cpp/commits?author=TheBloke
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

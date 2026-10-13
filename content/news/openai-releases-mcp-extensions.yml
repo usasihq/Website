@@ -1,0 +1,42 @@
+slug: openai-releases-mcp-extensions
+title: OpenAI publishes MCP Extensions, a specification and SDKs for ChatGPT plugins, under Apache 2.0
+event_date: 2026-09-29
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On September 29, 2026 OpenAI published the first releases, version 0.1.0, of the Python and
+    Node SDKs for OpenAI MCP Extensions, a project that adds ChatGPT-specific capabilities to the
+    Model Context Protocol so that plugins can work like native ChatGPT features. The repository's
+    README highlights sidebar entrypoints, file extension handlers, composer mentions, and extended
+    forms, and says the project is licensed under Apache 2.0. Version 0.2.0, released on October 10,
+    2026, adds editable chat drafts and forms that continue across multiple exchanges, and migrates
+    the TypeScript server helpers to MCP SDK 2. The extensions take effect in ChatGPT, OpenAI's
+    hosted product. USASI has not tested the SDKs.
+  source_ids: [mcpx-release-python-0-1-0, mcpx-readme, mcpx-changelog]
+related_organizations: [openai]
+related_artifacts: [openai-mcp-extensions]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: mcpx-release-python-0-1-0
+    title: "openai/mcp-extensions release python: v0.1.0"
+    url: https://github.com/openai/mcp-extensions/releases/tag/python-v0.1.0
+    publisher: OpenAI (GitHub)
+    kind: release-notes
+    published_at: 2026-09-29
+    accessed_at: 2026-10-13
+  - id: mcpx-readme
+    title: openai/mcp-extensions README
+    url: https://github.com/openai/mcp-extensions
+    publisher: OpenAI (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: mcpx-changelog
+    title: openai/mcp-extensions CHANGELOG
+    url: https://github.com/openai/mcp-extensions/blob/main/CHANGELOG.md
+    publisher: OpenAI (GitHub)
+    kind: release-notes
+    published_at: 2026-10-10
+    accessed_at: 2026-10-13

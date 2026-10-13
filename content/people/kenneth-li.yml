@@ -1,0 +1,76 @@
+slug: kenneth-li
+name: Kenneth Li
+initials: KL
+groups: [engineering]
+sector: corporate
+specialties: [interpretability, language-models, safety-alignment]
+headline: Thinking Machines Lab researcher; lead author of Othello world-model and Inference-Time Intervention papers
+bio:
+  text: >-
+    Kenneth Li is a researcher at Thinking Machines Lab. Li completed a PhD at Harvard advised by
+    Martin Wattenberg, Fernanda Viégas, and Hanspeter Pfister. Li's research looks inside language
+    models: as first author, Li showed that a GPT-style model trained only on Othello move sequences
+    forms an internal representation of the board, and introduced Inference-Time Intervention, which
+    shifts activations along directions in a few attention heads to make answers more truthful. Li's
+    later work covers instruction stability in long dialogs and lightweight probes for reward
+    maximization.
+  source_ids: [li-site, othello-paper, iti-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    role: Researcher
+    current: true
+    source_ids: [li-site]
+  - name: Harvard University
+    organization_slug: harvard-university
+    role: PhD student (completed; advised by Martin Wattenberg, Fernanda Viégas, and Hanspeter Pfister)
+    current: false
+    source_ids: [li-site]
+work:
+  - name: "Emergent World Representations: Exploring a Sequence Model Trained on a Synthetic Task"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2210.13382
+    contribution: >-
+      First author of the ICLR 2023 paper, which finds an emergent internal representation of the
+      Othello board state in a GPT variant trained to predict legal moves, and uses interventions to
+      test it.
+    source_ids: [othello-paper, li-site]
+  - name: "Inference-Time Intervention: Eliciting Truthful Answers from a Language Model"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2306.03341
+    contribution: >-
+      Co-first author of the NeurIPS 2023 paper introducing Inference-Time Intervention (ITI), which
+      shifts model activations during inference along directions in a limited number of attention
+      heads; the paper reports improved truthfulness for LLaMA models on TruthfulQA.
+    source_ids: [iti-paper, li-site]
+links:
+  - label: Website
+    url: https://likenneth.github.io/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: li-site
+    title: Kenneth Li — homepage (latest update June 2026)
+    url: https://likenneth.github.io/
+    publisher: Kenneth Li
+    kind: official-page
+    published_at: 2026-06
+    accessed_at: 2026-10-13
+  - id: othello-paper
+    title: "Emergent World Representations: Exploring a Sequence Model Trained on a Synthetic Task (arXiv 2210.13382)"
+    url: https://arxiv.org/abs/2210.13382
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-24
+    accessed_at: 2026-10-13
+  - id: iti-paper
+    title: "Inference-Time Intervention: Eliciting Truthful Answers from a Language Model (arXiv 2306.03341)"
+    url: https://arxiv.org/abs/2306.03341
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-06-06
+    accessed_at: 2026-10-13

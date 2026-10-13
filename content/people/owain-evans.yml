@@ -1,0 +1,75 @@
+slug: owain-evans
+name: Owain Evans
+initials: OE
+groups: [leadership, engineering]
+sector: nonprofit
+specialties: [safety-alignment, language-models, evaluation]
+headline: Director of the nonprofit Truthful AI and affiliate researcher at CHAI, UC Berkeley; TruthfulQA co-author
+bio:
+  text: >-
+    Owain Evans is Director at Truthful AI, a non-profit for AI safety research, and an Affiliate
+    Researcher at CHAI, UC Berkeley. Evans's research covers
+    emergent misalignment, subliminal learning, out-of-context reasoning, personas, and introspection
+    in language models. Evans co-authored TruthfulQA, a benchmark that measures whether language models
+    answer questions truthfully, and is the last-listed author of the 2025 paper on emergent misalignment from
+    narrow finetuning. Evans was previously at FHI at the University of Oxford.
+  source_ids: [evans-site, truthfulqa-paper, emergent-misalignment-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Truthful AI
+    organization_slug: null
+    role: Director
+    current: true
+    source_ids: [evans-site]
+  - name: University of California, Berkeley (CHAI)
+    organization_slug: uc-berkeley
+    role: Affiliate Researcher at CHAI
+    current: true
+    source_ids: [evans-site]
+work:
+  - name: "TruthfulQA: Measuring How Models Mimic Human Falsehoods"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2109.07958
+    contribution: >-
+      Co-author (with Stephanie Lin and Jacob Hilton) of the 2021 benchmark paper, whose 817 questions
+      across 38 categories are designed so that some humans would answer falsely because of
+      misconceptions.
+    source_ids: [truthfulqa-paper, evans-site]
+  - name: "Emergent Misalignment: Narrow finetuning can produce broadly misaligned LLMs"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2502.17424
+    contribution: >-
+      Last-listed author of the 2025 paper, which reports that finetuning a model to write
+      insecure code without disclosing it leads to misaligned behavior on a broad range of unrelated
+      prompts.
+    source_ids: [emergent-misalignment-paper, evans-site]
+links:
+  - label: Website
+    url: https://owainevans.github.io/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: evans-site
+    title: Owain Evans — homepage
+    url: https://owainevans.github.io/
+    publisher: Owain Evans
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: truthfulqa-paper
+    title: "TruthfulQA: Measuring How Models Mimic Human Falsehoods (arXiv 2109.07958)"
+    url: https://arxiv.org/abs/2109.07958
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-09-08
+    accessed_at: 2026-10-13
+  - id: emergent-misalignment-paper
+    title: "Emergent Misalignment: Narrow finetuning can produce broadly misaligned LLMs (arXiv 2502.17424)"
+    url: https://arxiv.org/abs/2502.17424
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-24
+    accessed_at: 2026-10-13

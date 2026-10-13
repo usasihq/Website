@@ -1,0 +1,87 @@
+slug: jason-wei
+name: Jason Wei
+initials: JW
+groups: [engineering]
+sector: corporate
+specialties: [language-models, agents]
+headline: AI researcher at Meta Superintelligence Labs; first author of the chain-of-thought prompting paper
+bio:
+  text: >-
+    Jason Wei works at Meta Superintelligence Labs; from 2023 to 2025 Wei was at OpenAI, working on
+    reasoning and agents, and before that Wei was a research scientist at Google Brain. Wei is first
+    author of Chain-of-Thought Prompting Elicits Reasoning in Large
+    Language Models and of Finetuned Language Models Are Zero-Shot Learners, which introduced the
+    instruction-tuned FLAN model, and a co-author of Scaling Instruction-Finetuned Language Models.
+    Wei's homepage also lists a 2024 paper on measuring short-form factuality in large language models
+    and a 2025 benchmark for browsing agents.
+  source_ids: [wei-site, cot-paper, flan-zeroshot-paper, flan-scaling-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Meta Superintelligence Labs
+    organization_slug: meta
+    role: Works at Meta Superintelligence Labs
+    current: true
+    source_ids: [wei-site]
+  - name: OpenAI
+    organization_slug: openai
+    role: Worked on reasoning and agents (2023–2025)
+    current: false
+    source_ids: [wei-site]
+  - name: Google Brain
+    organization_slug: google
+    role: Research Scientist
+    current: false
+    source_ids: [wei-site]
+work:
+  - name: Chain-of-thought prompting
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2201.11903
+    contribution: >-
+      First author of the 2022 paper showing that providing a few chain-of-thought demonstrations as
+      exemplars improves large language models on arithmetic, commonsense, and symbolic reasoning tasks.
+    source_ids: [cot-paper]
+  - name: FLAN instruction tuning
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2109.01652
+    contribution: >-
+      First author of Finetuned Language Models Are Zero-Shot Learners (2021), which instruction-tunes
+      a 137B parameter model on over 60 NLP tasks and evaluates the resulting FLAN model on unseen task
+      types; also a co-author of the 2022 follow-up on scaling instruction finetuning.
+    source_ids: [flan-zeroshot-paper, flan-scaling-paper]
+links:
+  - label: Website
+    url: https://www.jasonwei.net/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: wei-site
+    title: Jason Wei — homepage
+    url: https://www.jasonwei.net/
+    publisher: Jason Wei
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: cot-paper
+    title: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (arXiv 2201.11903)
+    url: https://arxiv.org/abs/2201.11903
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-01-28
+    accessed_at: 2026-10-13
+  - id: flan-zeroshot-paper
+    title: Finetuned Language Models Are Zero-Shot Learners (arXiv 2109.01652)
+    url: https://arxiv.org/abs/2109.01652
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-09-03
+    accessed_at: 2026-10-13
+  - id: flan-scaling-paper
+    title: Scaling Instruction-Finetuned Language Models (arXiv 2210.11416)
+    url: https://arxiv.org/abs/2210.11416
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-20
+    accessed_at: 2026-10-13

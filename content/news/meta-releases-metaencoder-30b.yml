@@ -1,0 +1,33 @@
+slug: meta-releases-metaencoder-30b
+title: Meta publishes MetaEncoder-30B, a gated Apache 2.0 multimodal encoder for decision tasks
+event_date: 2026-10-08
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Meta has published MetaEncoder-30B on Hugging Face as facebook/meta-encoder. The model card
+    describes it as a multimodal bi-encoder, a "Multimodal System One Encoder", in which both the task
+    and each candidate are written in natural language, with text, images, and video usable on either
+    side. The card says it was built by contrastively fine-tuning Muse-Glimmer-30B and is released under
+    Apache 2.0, inherited from the base model, with use also subject to the base model's Usage Policy;
+    the files can be downloaded only after accepting access conditions on Hugging Face. The accompanying paper was submitted to arXiv on October 8, 2026;
+    the model card does not give a release date. USASI has not tested MetaEncoder-30B.
+  source_ids: [meta-encoder-card, metaencoder-arxiv]
+related_organizations: [meta]
+related_artifacts: [meta-muse]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: meta-encoder-card
+    title: facebook/meta-encoder model card
+    url: https://huggingface.co/facebook/meta-encoder
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-13
+  - id: metaencoder-arxiv
+    title: "MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface"
+    url: https://arxiv.org/abs/2610.11316
+    publisher: arXiv (paper by Meta researchers)
+    kind: paper
+    published_at: 2026-10-08
+    accessed_at: 2026-10-13

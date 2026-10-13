@@ -1,0 +1,101 @@
+slug: collin-burns
+name: Collin Burns
+initials: CB
+groups: [engineering]
+sector: independent
+specialties: [safety-alignment, language-models, evaluation]
+headline: AI researcher formerly at OpenAI and Anthropic; first author of weak-to-strong generalization research
+bio:
+  text: >-
+    Collin Burns is an AI researcher who previously worked at OpenAI and Anthropic. Burns is first
+    author of "Weak-to-Strong Generalization", which studies whether supervision from a weaker model
+    can elicit the full capabilities of a much stronger one, as an analogy for humans supervising
+    future superhuman models. Burns was a PhD student at UC Berkeley co-advised by Jacob Steinhardt
+    and Dan Klein, and is also co-first author of "Discovering Latent Knowledge in Language Models Without
+    Supervision" and a co-author of the MMLU benchmark paper.
+  source_ids: [burns-site, steinhardt-site, w2s-paper, latent-knowledge-paper, mmlu-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: OpenAI
+    organization_slug: openai
+    role: Worked at OpenAI
+    current: false
+    source_ids: [burns-site, steinhardt-site]
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Worked at Anthropic
+    current: false
+    source_ids: [burns-site]
+  - name: University of California, Berkeley
+    organization_slug: uc-berkeley
+    role: PhD student (co-advised by Jacob Steinhardt and Dan Klein)
+    current: false
+    source_ids: [steinhardt-site]
+work:
+  - name: "Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2312.09390
+    contribution: >-
+      First-listed author and one of the paper's primary contributors; the 2023 study tests whether
+      weak model supervision can elicit the full capabilities of a much stronger pretrained language
+      model.
+    source_ids: [w2s-paper, burns-site]
+  - name: Discovering Latent Knowledge in Language Models Without Supervision
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2212.03827
+    contribution: >-
+      Co-first author of the ICLR 2023 paper, which introduces an unsupervised method for answering
+      yes-no questions from a language model's internal activations alone.
+    source_ids: [latent-knowledge-paper, burns-site]
+  - name: Measuring Massive Multitask Language Understanding (MMLU)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2009.03300
+    contribution: >-
+      Co-author of the 2020 paper proposing a test of a text model's multitask accuracy across 57
+      tasks.
+    source_ids: [mmlu-paper, burns-site]
+links:
+  - label: Website
+    url: https://collinpburns.com/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: burns-site
+    title: Collin Burns — homepage
+    url: https://collinpburns.com/
+    publisher: Collin Burns
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: steinhardt-site
+    title: Jacob Steinhardt — homepage (current and former PhD students)
+    url: https://jsteinhardt.stat.berkeley.edu/
+    publisher: Jacob Steinhardt (UC Berkeley)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: w2s-paper
+    title: "Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision (arXiv 2312.09390)"
+    url: https://arxiv.org/abs/2312.09390
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-14
+    accessed_at: 2026-10-13
+  - id: latent-knowledge-paper
+    title: Discovering Latent Knowledge in Language Models Without Supervision (arXiv 2212.03827)
+    url: https://arxiv.org/abs/2212.03827
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-12-07
+    accessed_at: 2026-10-13
+  - id: mmlu-paper
+    title: Measuring Massive Multitask Language Understanding (arXiv 2009.03300)
+    url: https://arxiv.org/abs/2009.03300
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-09-07
+    accessed_at: 2026-10-13

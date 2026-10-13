@@ -1,0 +1,108 @@
+slug: neel-nanda
+name: Neel Nanda
+initials: NN
+groups: [engineering, open-source]
+sector: corporate
+specialties: [interpretability, safety-alignment, developer-tools]
+headline: Runs the Google DeepMind mechanistic interpretability team; creator of the TransformerLens library
+bio:
+  text: >-
+    Neel Nanda runs the Google DeepMind mechanistic interpretability team, which works on reverse
+    engineering the algorithms and structures that trained neural networks have learned. Before that,
+    Nanda did independent interpretability research and worked at Anthropic as a language model
+    interpretability researcher, contributing as a core research contributor to Anthropic's 2021
+    "A Mathematical Framework for Transformer Circuits". Nanda created TransformerLens, an MIT-licensed
+    library for mechanistic interpretability of GPT-style language models, and is the last-listed author
+    of Gemma Scope, an open suite of sparse autoencoders trained on Gemma 2 models.
+  source_ids: [nanda-about, tc-framework, transformerlens-repo, gemma-scope-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Runs the mechanistic interpretability team
+    current: true
+    source_ids: [nanda-about, github-profile]
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Language model interpretability researcher
+    current: false
+    source_ids: [nanda-about, github-profile, tc-framework]
+work:
+  - name: TransformerLens
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/TransformerLensOrg/TransformerLens
+    contribution: >-
+      Created the library, which the repository README describes as a library for mechanistic
+      interpretability of generative language models, "created by Neel Nanda"; it is released under
+      the MIT license.
+    source_ids: [transformerlens-repo, nanda-about]
+  - name: "Gemma Scope: Open Sparse Autoencoders Everywhere All At Once on Gemma 2"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2408.05147
+    contribution: >-
+      Last-listed author of the 2024 report introducing Gemma Scope, an open suite of
+      JumpReLU sparse autoencoders trained on all layers and sub-layers of Gemma 2 2B and 9B and on
+      select layers of Gemma 2 27B.
+    source_ids: [gemma-scope-paper]
+  - name: Progress measures for grokking via mechanistic interpretability
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2301.05217
+    contribution: >-
+      First author of the 2023 paper, which reverse-engineers the algorithm learned by small
+      transformers trained on modular addition and uses that understanding to define progress
+      measures for studying grokking.
+    source_ids: [grokking-paper]
+links:
+  - label: Website
+    url: https://www.neelnanda.io/about
+  - label: GitHub
+    url: https://github.com/neelnanda-io
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: nanda-about
+    title: Neel Nanda — About
+    url: https://www.neelnanda.io/about
+    publisher: Neel Nanda
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: neelnanda-io (Neel Nanda) on GitHub
+    url: https://github.com/neelnanda-io
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: transformerlens-repo
+    title: TransformerLensOrg/TransformerLens README (MIT license)
+    url: https://github.com/TransformerLensOrg/TransformerLens
+    publisher: TransformerLensOrg (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tc-framework
+    title: A Mathematical Framework for Transformer Circuits (Transformer Circuits Thread, Anthropic)
+    url: https://transformer-circuits.pub/2021/framework/index.html
+    publisher: Anthropic
+    kind: paper
+    published_at: 2021-12-22
+    accessed_at: 2026-10-13
+  - id: gemma-scope-paper
+    title: "Gemma Scope: Open Sparse Autoencoders Everywhere All At Once on Gemma 2 (arXiv 2408.05147)"
+    url: https://arxiv.org/abs/2408.05147
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-08-09
+    accessed_at: 2026-10-13
+  - id: grokking-paper
+    title: Progress measures for grokking via mechanistic interpretability (arXiv 2301.05217)
+    url: https://arxiv.org/abs/2301.05217
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-01-12
+    accessed_at: 2026-10-13

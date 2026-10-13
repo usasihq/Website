@@ -1,0 +1,93 @@
+slug: dan-hendrycks
+name: Dan Hendrycks
+initials: DH
+groups: [leadership, engineering]
+sector: nonprofit
+specialties: [evaluation, safety-alignment]
+headline: Executive and Research Director of the Center for AI Safety; co-author of MMLU and Humanity's Last Exam
+bio:
+  text: >-
+    Dan Hendrycks directs the Center for AI Safety (CAIS); the organization's site lists Hendrycks as
+    Executive & Research Director. Hendrycks received a PhD from UC Berkeley advised
+    by Dawn Song and Jacob Steinhardt. Hendrycks is first author of the GELU activation function paper
+    and of "Measuring Massive Multitask Language Understanding" (MMLU), and the last-listed author of
+    Humanity's Last Exam, a multi-modal benchmark of expert-written questions across dozens of
+    subjects.
+  source_ids: [hendrycks-site, cais-about, gelu-paper, mmlu-paper, hle-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Center for AI Safety (CAIS)
+    organization_slug: center-for-ai-safety
+    role: Executive & Research Director
+    current: true
+    source_ids: [cais-about, hendrycks-site]
+work:
+  - name: Humanity's Last Exam (HLE)
+    artifact_slug: humanitys-last-exam
+    type: open-research
+    url: https://arxiv.org/abs/2501.14249
+    contribution: >-
+      Last-listed author of the paper introducing Humanity's Last Exam, a multi-modal
+      benchmark at the frontier of human knowledge designed as a closed-ended academic benchmark with
+      broad subject coverage.
+    source_ids: [hle-paper]
+  - name: Measuring Massive Multitask Language Understanding (MMLU)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2009.03300
+    contribution: >-
+      First author of the 2020 paper proposing a test of a text model's multitask accuracy across 57
+      tasks, including elementary mathematics, US history, computer science, and law.
+    source_ids: [mmlu-paper]
+  - name: Gaussian Error Linear Units (GELUs)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1606.08415
+    contribution: >-
+      First author (with Kevin Gimpel) of the 2016 paper proposing the GELU activation function, which
+      weights inputs by their value rather than gating them by their sign.
+    source_ids: [gelu-paper, hendrycks-site]
+links:
+  - label: Website
+    url: https://people.eecs.berkeley.edu/~hendrycks/
+  - label: CAIS
+    url: https://safe.ai/about
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: hendrycks-site
+    title: Dan Hendrycks — homepage
+    url: https://people.eecs.berkeley.edu/~hendrycks/
+    publisher: Dan Hendrycks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: cais-about
+    title: About — Center for AI Safety (leadership)
+    url: https://safe.ai/about
+    publisher: Center for AI Safety
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hle-paper
+    title: Humanity's Last Exam (arXiv 2501.14249)
+    url: https://arxiv.org/abs/2501.14249
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-01-24
+    accessed_at: 2026-10-13
+  - id: mmlu-paper
+    title: Measuring Massive Multitask Language Understanding (arXiv 2009.03300)
+    url: https://arxiv.org/abs/2009.03300
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-09-07
+    accessed_at: 2026-10-13
+  - id: gelu-paper
+    title: Gaussian Error Linear Units (GELUs) (arXiv 1606.08415)
+    url: https://arxiv.org/abs/1606.08415
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-06-27
+    accessed_at: 2026-10-13

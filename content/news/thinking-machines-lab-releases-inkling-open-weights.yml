@@ -1,0 +1,35 @@
+slug: thinking-machines-lab-releases-inkling-open-weights
+title: Thinking Machines Lab releases Inkling, its first open-weight model, under Apache 2.0
+event_date: 2026-07-15
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On July 15, 2026 Thinking Machines Lab released Inkling, a model it says it trained from scratch
+    and published with full weights. The announcement describes a mixture-of-experts transformer with
+    975B total and 41B active parameters, a context window of up to 1M tokens, and native reasoning
+    over text, images, and audio, and calls it the first in a family of models of different sizes.
+    The weights are published on Hugging Face without gating under the Apache 2.0 license, and the
+    model is also available for fine-tuning on the company's Tinker platform. The announcement says
+    some reported results came from a different checkpoint than the one released. USASI has not
+    tested Inkling.
+  source_ids: [tml-introducing-inkling, hf-inkling]
+related_organizations: [thinking-machines-lab]
+related_artifacts: [inkling, inkling-975b]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: tml-introducing-inkling
+    title: "Inkling: Our Open-Weights Model"
+    url: https://thinkingmachines.ai/news/introducing-inkling/
+    publisher: Thinking Machines Lab
+    kind: announcement
+    published_at: 2026-07-15
+    accessed_at: 2026-10-13
+  - id: hf-inkling
+    title: thinkingmachines/Inkling (Hugging Face model page and metadata)
+    url: https://huggingface.co/thinkingmachines/Inkling
+    publisher: Thinking Machines Lab (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

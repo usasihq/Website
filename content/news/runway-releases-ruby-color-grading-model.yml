@@ -1,0 +1,34 @@
+slug: runway-releases-ruby-color-grading-model
+title: Runway releases Ruby, a model that converts SDR video to HDR
+event_date: 2026-08-20
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Runway's changelog records that on August 20, 2026 it released Runway Ruby, which it describes
+    as a native color grading model that converts SDR video into HDR, available in Tool Mode,
+    Workflows, and Runway Dev. Runway's product page says Ruby accepts SDR clips up to 30 seconds and
+    up to 4K, including Runway generations, third-party model output, or existing footage, keeps the source
+    pixels and audio, and delivers HDR10, HLG, ProRes, or OpenEXR masters. Developers can call it
+    through a video_to_hdr endpoint in the Runway Dev API with the model set to ruby. Ruby is a
+    hosted model; Runway does not describe a release of weights. USASI has not tested Ruby.
+  source_ids: [runway-changelog, runway-ruby-page]
+related_organizations: [runway]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: runway-changelog
+    title: Runway changelog
+    url: https://runwayml.com/changelog
+    publisher: Runway
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: runway-ruby-page
+    title: Runway Ruby | SDR to HDR Video Conversion
+    url: https://runwayml.com/product/ruby
+    publisher: Runway
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13

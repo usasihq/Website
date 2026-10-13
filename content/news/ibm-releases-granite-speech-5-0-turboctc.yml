@@ -1,0 +1,27 @@
+slug: ibm-releases-granite-speech-5-0-turboctc
+title: IBM releases Granite Speech 5.0 TurboCTC, two compact English speech recognition models
+event_date: 2026-08-25
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On August 25, 2026 IBM's Granite team announced two 470M-parameter English speech recognition
+    models on Hugging Face, granite-speech-5.0-470m-turboctc and granite-speech-5.0-470m-turboctc-nc. The
+    first is released under Apache 2.0; the second, trained with additional data including GigaSpeech
+    and SPGI Speech, is under the non-commercial CC-BY-NC-SA-4.0 license. IBM describes an encoder-only
+    design with 16 Conformer blocks trained with CTC loss, and says that, unlike earlier Granite Speech
+    models, which included an LLM with LoRA adapters, the new models lack capabilities such as speech
+    translation and keyword biasing. USASI has not tested either model.
+  source_ids: [granite-speech-5-turboctc-blog]
+related_organizations: [ibm]
+related_artifacts: [granite]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: granite-speech-5-turboctc-blog
+    title: Extremely Fast and Accurate Transcription with Granite Speech 5.0 Turbo CTC
+    url: https://huggingface.co/blog/ibm-granite/granite-speech-5-0-470m-turboctc
+    publisher: IBM Granite (Hugging Face blog)
+    kind: announcement
+    published_at: 2026-08-25
+    accessed_at: 2026-10-13

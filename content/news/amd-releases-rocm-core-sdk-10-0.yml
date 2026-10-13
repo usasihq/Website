@@ -1,0 +1,35 @@
+slug: amd-releases-rocm-core-sdk-10-0
+title: AMD releases ROCm Core SDK 10.0.0 with updated framework support and breaking AMD SMI changes
+event_date: 2026-08-26
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    AMD published ROCm Core SDK 10.0.0 on August 26, 2026, as a release in the TheRock repository,
+    which the release notes say has been ROCm's build and release system since ROCm 7.14. The
+    notes say the release focuses on AI inference, developer tooling and profiling, and that it
+    enables support for PyTorch 2.13.0, JAX 0.11.0 and 0.10.2, vLLM 0.27.0, SGLang 0.5.15,
+    TensorFlow 2.21, MIGraphX 2.17 and ONNX Runtime 1.27.0. HIP adds inclusive and exclusive scan
+    APIs to its cooperative groups library. The AMD SMI library has breaking changes: its major
+    version is now 27.0.0, so software linked against libamd_smi.so.26 must be relinked. USASI
+    has not tested this release.
+  source_ids: [rocm-10-0-release-notes, therock-10-0-release]
+related_organizations: [amd]
+related_artifacts: [rocm]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: rocm-10-0-release-notes
+    title: ROCm Core SDK 10.0.0 release notes
+    url: https://rocm.docs.amd.com/en/docs-10.0.0/about/release-notes.html
+    publisher: AMD (ROCm documentation)
+    kind: release-notes
+    published_at: 2026-08-26
+    accessed_at: 2026-10-13
+  - id: therock-10-0-release
+    title: ROCm Core SDK 10.0.0 Release (GitHub release)
+    url: https://github.com/ROCm/TheRock/releases/tag/therock-10.0
+    publisher: AMD (ROCm/TheRock on GitHub)
+    kind: release-notes
+    published_at: 2026-08-26
+    accessed_at: 2026-10-13

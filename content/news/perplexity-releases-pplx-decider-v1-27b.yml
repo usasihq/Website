@@ -1,0 +1,43 @@
+slug: perplexity-releases-pplx-decider-v1-27b
+title: Perplexity releases pplx-decider open-weight decision models under Apache 2.0
+event_date: 2026-10
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    In October 2026 Perplexity published pplx-decider-v1-27b on Hugging Face, a decision model
+    fine-tuned from Qwen3.8-27B that returns a selected choice with calibrated probabilities for
+    text and image inputs; the weights are ungated and licensed under Apache 2.0. Perplexity's API
+    changelog says its new Decisions API answers questions about text, JSON, or images with
+    probabilities instead of generated text, using pplx-decider-v1-27b at POST /v1/decisions. A
+    later changelog entry says pplx-decider-v1.1-27b replaces v1 as the Decisions API model; its
+    model card says the update uses the same backbone, gets most of its gains from lifting the
+    causal mask and training on more data, and ships as a separate decision head rather than a
+    full-vocabulary language-model head. USASI has not tested these models.
+  source_ids: [hf-pplx-decider-v1, hf-pplx-decider-v1-1, pplx-api-changelog]
+related_organizations: [perplexity]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: hf-pplx-decider-v1
+    title: perplexity-ai/pplx-decider-v1-27b model card
+    url: https://huggingface.co/perplexity-ai/pplx-decider-v1-27b
+    publisher: Perplexity (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hf-pplx-decider-v1-1
+    title: perplexity-ai/pplx-decider-v1.1-27b model card
+    url: https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b
+    publisher: Perplexity (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pplx-api-changelog
+    title: Perplexity API changelog
+    url: https://docs.perplexity.ai/docs/resources/changelog
+    publisher: Perplexity
+    kind: release-notes
+    published_at: 2026-10
+    accessed_at: 2026-10-13

@@ -1,0 +1,69 @@
+slug: jacob-andreas
+name: Jacob Andreas
+initials: JA
+groups: [engineering]
+sector: academic
+specialties: [language-models, interpretability]
+headline: MIT associate professor in EECS and CSAIL studying language learning and how neural models represent meaning
+bio:
+  text: >-
+    Jacob Andreas is an associate professor at MIT in EECS and CSAIL. Andreas's research aims to
+    understand the computational foundations of language learning and to build systems that
+    communicate with people and learn from human guidance in natural language. One line of the work
+    asks what features and strategies black-box models learn: Andreas co-authored a study of
+    in-context learning in transformers using linear models, and MILAN, a procedure that labels
+    neurons in vision models with natural-language descriptions.
+  source_ids: [andreas-site, icl-paper, milan-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Massachusetts Institute of Technology (EECS and CSAIL)
+    organization_slug: mit
+    role: Associate Professor
+    current: true
+    source_ids: [andreas-site]
+work:
+  - name: "What learning algorithm is in-context learning? Investigations with linear models"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2211.15661
+    contribution: >-
+      Co-author of the ICLR 2023 paper, which tests the hypothesis that transformer in-context
+      learners implicitly implement standard learning algorithms, using linear regression as the
+      test problem.
+    source_ids: [icl-paper, andreas-site]
+  - name: Natural Language Descriptions of Deep Visual Features (MILAN)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2201.11114
+    contribution: >-
+      Last-listed author of the ICLR 2022 paper introducing MILAN, a procedure that
+      automatically labels neurons in deep vision networks with natural-language descriptions.
+    source_ids: [milan-paper, andreas-site]
+links:
+  - label: Website
+    url: https://www.mit.edu/~jda/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: andreas-site
+    title: Jacob Andreas @ MIT — homepage
+    url: https://www.mit.edu/~jda/
+    publisher: Jacob Andreas (MIT)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: icl-paper
+    title: "What learning algorithm is in-context learning? Investigations with linear models (arXiv 2211.15661)"
+    url: https://arxiv.org/abs/2211.15661
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-28
+    accessed_at: 2026-10-13
+  - id: milan-paper
+    title: Natural Language Descriptions of Deep Visual Features (arXiv 2201.11114)
+    url: https://arxiv.org/abs/2201.11114
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-01-26
+    accessed_at: 2026-10-13

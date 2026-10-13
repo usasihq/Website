@@ -1,0 +1,70 @@
+slug: max-krasnyansky
+name: Max Krasnyansky
+initials: MK
+groups: [open-source, local, engineering]
+sector: independent
+specialties: [inference, hardware]
+headline: Author of llama.cpp's Hexagon NPU backend; member of its Hexagon and OpenCL code-owner teams
+bio:
+  text: >-
+    Max Krasnyansky opened the pull request that added ggml-hexagon, an experimental llama.cpp
+    backend for the Hexagon NPU, which was merged in October 2025. llama.cpp's CODEOWNERS file
+    lists Krasnyansky in the teams that own the Hexagon and OpenCL backends; the Hexagon team also
+    owns the project's Snapdragon documentation and scripts. Krasnyansky's 2026 commits extend the Hexagon
+    backend with multi-NPU and multi-device support, reworked DMA, buffer and cache handling,
+    matrix-multiplication and FlashAttention updates, and a backend sampler.
+  source_ids: [hexagon-pr, llama-cpp-codeowners, llama-cpp-commits]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: llama.cpp project
+    organization_slug: null
+    role: Member of the Hexagon and OpenCL backend code-owner teams
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp Hexagon backend (ggml-hexagon)
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      Opened pull request #16547, "Add experimental ggml-hexagon backend for the Hexagon NPU,"
+      merged in October 2025. CODEOWNERS lists Krasnyansky in the ggml-org/ggml-hexagon and
+      ggml-org/ggml-opencl teams. Commits authored from July to October 2026 add multi-NPU and
+      multi-device support, DMA and L2-cache rework, MUL_MAT and FlashAttention updates, and backend
+      sampler support. The repository is MIT-licensed.
+    source_ids: [hexagon-pr, llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+links:
+  - label: GitHub
+    url: https://github.com/max-krasnyansky
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: hexagon-pr
+    title: "ggml-org/llama.cpp pull request #16547: Add experimental ggml-hexagon backend for the Hexagon NPU"
+    url: https://github.com/ggml-org/llama.cpp/pull/16547
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2025-10-22
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by max-krasnyansky
+    url: https://github.com/ggml-org/llama.cpp/commits?author=max-krasnyansky
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

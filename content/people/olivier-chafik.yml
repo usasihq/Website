@@ -1,0 +1,139 @@
+slug: olivier-chafik
+name: Olivier Chafik
+initials: OC
+groups: [open-source, engineering, local]
+sector: corporate
+specialties: [developer-tools, agents, inference]
+headline: MCP TypeScript SDK maintainer; added Jinja chat templates and tool calling to llama.cpp
+bio:
+  text: >-
+    Olivier Chafik is a software engineer whose GitHub profile lists Anthropic as company, and the
+    Model Context Protocol's maintainers file lists Chafik as a maintainer of the protocol's
+    TypeScript SDK. In January 2025 Chafik's pull request added Jinja chat-template support to
+    llama.cpp, using minja, a minimal C++ Jinja engine in Google's GitHub organization that the
+    pull request says was created for this purpose; minja's README notes that Chafik has since left
+    Google. Chafik's 2025 commits to llama.cpp fix and extend llama-server's tool-call support, add
+    streaming of tool calls and reasoning output, and keep the vendored minja in sync. Chafik's site describes earlier software engineering at Google on
+    YouTube for iOS, Swiffy and AdSense, and open-source Java and Scala libraries such as BridJ,
+    JavaCL and JNAerator.
+  source_ids: [github-profile, mcp-maintainers, jinja-pr, minja-readme, llama-cpp-commits, chafik-about, chafik-site]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Anthropic is the company listed on Chafik's GitHub profile
+    current: true
+    source_ids: [github-profile]
+  - name: Model Context Protocol
+    organization_slug: null
+    role: TypeScript SDK maintainer
+    current: true
+    source_ids: [mcp-maintainers]
+  - name: Google
+    organization_slug: google
+    role: Software engineer (YouTube for iOS, Swiffy, AdSense)
+    current: false
+    source_ids: [chafik-about, minja-readme]
+work:
+  - name: Model Context Protocol TypeScript SDK
+    artifact_slug: model-context-protocol
+    type: open-source
+    url: https://github.com/modelcontextprotocol/typescript-sdk
+    contribution: >-
+      Listed as one of the TypeScript SDK maintainers in the protocol's MAINTAINERS.md (last updated
+      October 1, 2026). The SDK's license file says the project is moving from MIT to Apache-2.0:
+      new contributions are licensed under Apache-2.0, and earlier contributions not yet relicensed
+      remain under MIT.
+    source_ids: [mcp-maintainers, mcp-ts-license]
+  - name: llama.cpp chat templates and tool calling
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      Opened pull request #11016, "Add Jinja template support," merged in January 2025, which copied
+      minja from google/minja into llama.cpp. Commits authored in 2025 fix and extend tool-call
+      support, add streaming of tool calls and thoughts with --jinja, reasoning-format options, a
+      --json-schema-file flag, and syncs of the vendored minja. The repository is MIT-licensed.
+    source_ids: [jinja-pr, llama-cpp-commits, llama-cpp-license]
+  - name: minja
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/google/minja
+    contribution: >-
+      A minimal C++ reimplementation of the Jinja templating engine for LLM chat templates, in
+      Google's GitHub organization under the MIT license. Chafik's llama.cpp pull request #11016
+      copied minja into llama.cpp and says minja was created for that purpose; the README says it
+      is used in llama.cpp and points readers to Chafik's fork after Chafik left Google.
+    source_ids: [minja-readme, jinja-pr]
+links:
+  - label: Website
+    url: https://ochafik.com
+  - label: GitHub
+    url: https://github.com/ochafik
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: ochafik (Olivier Chafik) on GitHub
+    url: https://github.com/ochafik
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: mcp-maintainers
+    title: Model Context Protocol MAINTAINERS.md
+    url: https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/MAINTAINERS.md
+    publisher: modelcontextprotocol (GitHub repository)
+    kind: repository
+    published_at: 2026-10-01
+    accessed_at: 2026-10-13
+  - id: mcp-ts-license
+    title: modelcontextprotocol/typescript-sdk LICENSE
+    url: https://github.com/modelcontextprotocol/typescript-sdk/blob/main/LICENSE
+    publisher: modelcontextprotocol (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: jinja-pr
+    title: "ggml-org/llama.cpp pull request #11016: Add Jinja template support"
+    url: https://github.com/ggml-org/llama.cpp/pull/11016
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2025-01-21
+    accessed_at: 2026-10-13
+  - id: minja-readme
+    title: google/minja README
+    url: https://github.com/google/minja
+    publisher: google (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by ochafik
+    url: https://github.com/ggml-org/llama.cpp/commits?author=ochafik
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: chafik-about
+    title: Olivier Chafik — about page
+    url: https://ochafik.com/about.html
+    publisher: Olivier Chafik
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: chafik-site
+    title: Olivier Chafik — homepage
+    url: https://ochafik.com
+    publisher: Olivier Chafik
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13

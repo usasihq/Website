@@ -1,0 +1,82 @@
+slug: cho-jui-hsieh
+name: Cho-Jui Hsieh
+initials: CJH
+groups: [engineering]
+sector: academic
+specialties: [training-systems, ml-theory]
+headline: UCLA associate professor of computer science; co-author of the LAMB and Lion optimizer papers
+bio:
+  text: >-
+    Cho-Jui Hsieh is an associate professor of computer science at UCLA; Hsieh's homepage says Hsieh
+    was previously an assistant professor of computer science and statistics at UC Davis for three
+    years and lists a visiting scholar role at Google beginning in summer 2018. Hsieh develops algorithms and
+    optimization techniques for large-scale machine learning, including work on model size, training
+    and prediction speed, and robustness of deep learning models. Hsieh is a co-author of Large Batch
+    Optimization for Deep Learning: Training BERT in 76 minutes, which introduces the LAMB optimizer,
+    and of Symbolic Discovery of Optimization Algorithms, which describes the Lion optimizer found
+    through program search. With Pin-Yu Chen, Hsieh co-authored the book Adversarial Robustness for
+    Machine Learning.
+  source_ids: [hsieh-site, lamb-paper, lion-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: University of California, Los Angeles
+    organization_slug: null
+    role: Associate Professor of Computer Science
+    current: true
+    source_ids: [hsieh-site]
+  - name: Google
+    organization_slug: google
+    role: Visiting scholar (from summer 2018)
+    current: false
+    source_ids: [hsieh-site]
+  - name: University of California, Davis
+    organization_slug: null
+    role: Assistant Professor, Computer Science and Statistics
+    current: false
+    source_ids: [hsieh-site]
+work:
+  - name: Lion optimizer (Symbolic Discovery of Optimization Algorithms)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2302.06675
+    contribution: >-
+      Co-author of the 2023 paper that formulates algorithm discovery as program search and reports the
+      Lion (EvoLved Sign Momentum) optimizer, which tracks only momentum and is more memory-efficient
+      than Adam.
+    source_ids: [lion-paper]
+  - name: LAMB optimizer (Large Batch Optimization for Deep Learning)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1904.00962
+    contribution: >-
+      Co-author of the 2019 paper that develops LAMB, a layerwise adaptive large batch optimization
+      technique, and provides convergence analysis for LAMB and LARS.
+    source_ids: [lamb-paper]
+links:
+  - label: Website
+    url: https://web.cs.ucla.edu/~chohsieh/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: hsieh-site
+    title: Cho-Jui Hsieh — homepage (UCLA Computer Science)
+    url: https://web.cs.ucla.edu/~chohsieh/
+    publisher: Cho-Jui Hsieh (UCLA)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lamb-paper
+    title: "Large Batch Optimization for Deep Learning: Training BERT in 76 minutes (arXiv 1904.00962)"
+    url: https://arxiv.org/abs/1904.00962
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-04-01
+    accessed_at: 2026-10-13
+  - id: lion-paper
+    title: Symbolic Discovery of Optimization Algorithms (arXiv 2302.06675)
+    url: https://arxiv.org/abs/2302.06675
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-02-13
+    accessed_at: 2026-10-13

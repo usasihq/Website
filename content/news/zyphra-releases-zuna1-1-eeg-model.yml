@@ -1,0 +1,33 @@
+slug: zyphra-releases-zuna1-1-eeg-model
+title: Zyphra releases ZUNA1.1, an open-weight EEG foundation model, under Apache 2.0
+event_date: 2026-07-16
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Zyphra released ZUNA1.1 on July 16, 2026, according to an update note on its post about the model,
+    which carries an August 3, 2026 dateline. Zyphra describes ZUNA1.1 as a 380M-parameter
+    diffusion autoencoder that reconstructs, denoises, and upsamples scalp-EEG signals, and says it
+    now accepts variable-length inputs from 0.5 to 30 seconds. The weights are on Hugging Face under
+    the Apache 2.0 license, with inference code on GitHub and a `zuna` pip package. Zyphra's
+    disclaimer says its services are for research use only and have not been validated for any
+    medical or clinical use. USASI has not tested this model.
+  source_ids: [zyphra-zuna1-1-post, zuna1-1-card]
+related_organizations: [zyphra]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: zyphra-zuna1-1-post
+    title: "ZUNA1.1: A More Flexible EEG Foundation Model for Denoising and Super-Resolution"
+    url: https://www.zyphra.com/our-work/zuna1.1
+    publisher: Zyphra
+    kind: announcement
+    published_at: 2026-08-03
+    accessed_at: 2026-10-13
+  - id: zuna1-1-card
+    title: Zyphra/ZUNA1.1 model card
+    url: https://huggingface.co/Zyphra/ZUNA1.1
+    publisher: Zyphra (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-13

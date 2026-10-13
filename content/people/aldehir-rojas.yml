@@ -1,0 +1,80 @@
+slug: aldehir-rojas
+name: Aldehir Rojas
+initials: AR
+groups: [open-source, local]
+sector: independent
+specialties: [inference, agents, developer-tools]
+headline: llama.cpp shared-code owner working on chat parsing, tool calls and JSON-schema grammars
+bio:
+  text: >-
+    Aldehir Rojas is a member of the team that owns llama.cpp's shared common code, according to
+    the project's CODEOWNERS file. Rojas's commits to llama.cpp add model-specific chat parsers
+    and tool-call fixes for model families including Qwen, MiniMax, Gemma and LFM2, along with
+    JSON-schema grammar handling, changes to the reasoning-budget sampler, and llama-server
+    checkpoint and batching changes. Rojas also publishes gpt-oss-adapter, an MIT-licensed proxy that sits between
+    client applications and the LM Studio or llama.cpp servers to manage chain-of-thought reasoning
+    for gpt-oss models.
+  source_ids: [llama-cpp-codeowners, llama-cpp-commits, gpt-oss-adapter]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: llama.cpp project
+    organization_slug: null
+    role: Member of the llama-common code-owner team
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS lists Rojas in the ggml-org/llama-common team, which owns common/. Commits
+      authored from June to October 2026 add specialized chat parsers (Qwen3, MiniMax M3, MiniCPM5),
+      fix tool-call grammars, implement an internal representation for JSON schemas, extend the
+      reasoning-budget sampler, refactor the chat API, and change llama-server checkpoint and batch
+      handling. The repository is MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+  - name: gpt-oss-adapter
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/aldehir/gpt-oss-adapter
+    contribution: >-
+      Published under Rojas's GitHub account as an MIT-licensed middleware proxy that manages
+      chain-of-thought reasoning for gpt-oss models, with provider support for LM Studio and
+      llama.cpp.
+    source_ids: [gpt-oss-adapter]
+links:
+  - label: GitHub
+    url: https://github.com/aldehir
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by aldehir
+    url: https://github.com/ggml-org/llama.cpp/commits?author=aldehir
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gpt-oss-adapter
+    title: aldehir/gpt-oss-adapter README and license (MIT)
+    url: https://github.com/aldehir/gpt-oss-adapter
+    publisher: Aldehir Rojas (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

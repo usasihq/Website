@@ -1,0 +1,101 @@
+slug: piotr-wilkin
+name: Piotr Wilkin
+initials: PW
+groups: [open-source, local]
+sector: corporate
+specialties: [inference, developer-tools]
+headline: Maintains llama.cpp's parser code and contributes to Lemonade; systems architect at Syndatis
+bio:
+  text: >-
+    Piotr Wilkin, who also uses the handle ilintar, describes Wilkin's work on GitHub as programmer
+    and systems architect at Syndatis, maintainer of llama.cpp's parser code, contributor to
+    Lemonade, and author of trellis.cpp. llama.cpp's CODEOWNERS file names Wilkin as owner of the
+    parser tool and the chat tests, co-owner of the debug example, and a member of the shared-code
+    (llama-common) team; Wilkin's commits there cover chat-template parsing and tool calls, support
+    for new models, and CUDA and Vulkan kernels. In Lemonade, an AMD-sponsored local AI server,
+    Wilkin's 2026 commits add asset- and audio-generation backends and a job engine, and fix its
+    llama.cpp integration.
+  source_ids: [github-profile, llama-cpp-codeowners, llama-cpp-commits, lemonade-commits, lemonade-readme]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Syndatis
+    organization_slug: null
+    role: Systems architect
+    current: true
+    source_ids: [github-profile]
+  - name: llama.cpp project
+    organization_slug: null
+    role: Parser code maintainer; code owner for tools/parser and the chat tests
+    current: true
+    source_ids: [github-profile, llama-cpp-codeowners]
+work:
+  - name: llama.cpp
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS names Wilkin for tools/parser and tests/test-chat, co-owner (with Daniel
+      Bevenius) of examples/debug, and a member of the ggml-org/llama-common team. Commits authored
+      from June to October 2026 split specialized chat parsers into common/parsers, fix DeepSeek and
+      other chat templates and tool calls, add model support such as Kimi-K3, and tune CUDA, HIP and
+      Vulkan kernels. The repository is MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+  - name: Lemonade
+    artifact_slug: lemonade
+    type: open-source
+    url: https://github.com/lemonade-sdk/lemonade
+    contribution: >-
+      Commits authored from July to September 2026 add asset generation (Trellis and OpenMOSS),
+      audio generation backends (ThinkSound and ACE-Step) and a job engine, and fix how Lemonade
+      finds and launches llama.cpp. The repository is Apache-2.0 licensed and states that the
+      project is sponsored by AMD.
+    source_ids: [lemonade-commits, lemonade-readme]
+links:
+  - label: GitHub
+    url: https://github.com/pwilkin
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: pwilkin (Piotr Wilkin) on GitHub
+    url: https://github.com/pwilkin
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by pwilkin
+    url: https://github.com/ggml-org/llama.cpp/commits?author=pwilkin
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lemonade-commits
+    title: lemonade-sdk/lemonade commits authored by pwilkin
+    url: https://github.com/lemonade-sdk/lemonade/commits?author=pwilkin
+    publisher: lemonade-sdk (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lemonade-readme
+    title: lemonade-sdk/lemonade README (sponsorship and Apache-2.0 license)
+    url: https://github.com/lemonade-sdk/lemonade
+    publisher: lemonade-sdk (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

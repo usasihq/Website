@@ -1,0 +1,28 @@
+slug: llm-d-0-10-0-released
+title: llm-d 0.10.0 focuses on operational hardening and deprecates its own CUDA and AWS images
+event_date: 2026-09-29
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    The llm-d project published version 0.10.0 on GitHub on September 29, 2026. The release notes name
+    operational hardening and production readiness as the main themes and describe a new image build
+    arrangement: images from main and official releases go to ghcr.io and are signed publicly with
+    cosign, while images built from open pull requests go to quay.io and are not signed. The notes
+    deprecate the ghcr.io/llm-d/llm-d-cuda image in favor of docker.io/vllm/vllm-openai and the llm-d-aws
+    image in favor of an AWS vLLM container, and say the llmd-fs-connector has been integrated into vLLM
+    as the OffloadingConnector. The llm-d-workload-variant-autoscaler repository has been renamed
+    llm-d-autoscaling. USASI has not tested this release.
+  source_ids: [llm-d-v0-10-0-release]
+related_organizations: [red-hat]
+related_artifacts: [llm-d, vllm]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: llm-d-v0-10-0-release
+    title: llm-d v0.10.0 (GitHub release notes)
+    url: https://github.com/llm-d/llm-d/releases/tag/v0.10.0
+    publisher: llm-d project
+    kind: release-notes
+    published_at: 2026-09-29
+    accessed_at: 2026-10-13

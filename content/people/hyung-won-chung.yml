@@ -1,0 +1,67 @@
+slug: hyung-won-chung
+name: Hyung Won Chung
+initials: HWC
+groups: [engineering]
+sector: null
+specialties: [language-models, agents, training-systems]
+headline: Researcher on reasoning and agents, formerly at Google Brain; first author of the Flan-T5 scaling paper
+bio:
+  text: >-
+    Hyung Won Chung's homepage describes research on reasoning and agents at OpenAI, including
+    Foundational Contributor credits on o1-preview, o1, and Deep Research and leading Codex mini model
+    training. Before OpenAI, Chung was at Google Brain, building the JAX-based large-scale training
+    system T5X, training large models such as PaLM, and working on instruction fine-tuning for the
+    Flan-PaLM and Flan-T5 model families. Chung is first author of Scaling Instruction-Finetuned
+    Language Models, which publicly released Flan-T5 checkpoints; the Flan-T5 XXL model card on
+    Hugging Face lists the Apache 2.0 license.
+  source_ids: [chung-site, flan-paper, flant5-card]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: OpenAI
+    organization_slug: openai
+    role: Research Scientist
+    current: false
+    source_ids: [chung-site]
+  - name: Google Brain
+    organization_slug: google
+    role: Researcher (T5X, PaLM, Flan-PaLM and Flan-T5)
+    current: false
+    source_ids: [chung-site]
+work:
+  - name: Flan-T5
+    artifact_slug: null
+    type: open-weights
+    url: https://huggingface.co/google/flan-t5-xxl
+    contribution: >-
+      First author of Scaling Instruction-Finetuned Language Models (2022), which studies instruction
+      finetuning across tasks, model sizes, and chain-of-thought data and publicly releases Flan-T5
+      checkpoints; the Flan-T5 XXL model card cites the paper and lists the Apache 2.0 license.
+    source_ids: [flan-paper, flant5-card]
+links:
+  - label: Website
+    url: https://hwchung2.github.io/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: chung-site
+    title: Hyung Won Chung — homepage
+    url: https://hwchung2.github.io/
+    publisher: Hyung Won Chung
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: flan-paper
+    title: Scaling Instruction-Finetuned Language Models (arXiv 2210.11416)
+    url: https://arxiv.org/abs/2210.11416
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-20
+    accessed_at: 2026-10-13
+  - id: flant5-card
+    title: google/flan-t5-xxl model card (license apache-2.0)
+    url: https://huggingface.co/google/flan-t5-xxl
+    publisher: Google (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

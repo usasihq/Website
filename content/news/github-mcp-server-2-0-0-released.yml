@@ -1,0 +1,27 @@
+slug: github-mcp-server-2-0-0-released
+title: GitHub MCP Server 2.0.0 adds structured outputs and output schemas for newer MCP clients
+event_date: 2026-10-06
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    GitHub published version 2.0.0 of the GitHub MCP Server on October 6, 2026. The release notes say
+    it adds support for structured outputs and output schemas to help agents that use Code Mode or
+    programmatic tool calling, and that these schemas are advertised only to clients that declare support
+    for the MCP 2026-07-28 specification or later. According to the notes, the server's compound tools
+    needed changes to their allowed output schemas, so those schemas are not returned to older clients.
+    The listed changes add typed outputs, and for some tools typed inputs, across issue, pull request,
+    repository, search, security alert, and Actions tools. USASI has not tested this release.
+  source_ids: [github-mcp-server-v2-0-0-release]
+related_organizations: [github]
+related_artifacts: [model-context-protocol]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: github-mcp-server-v2-0-0-release
+    title: GitHub MCP Server 2.0.0 (GitHub release notes)
+    url: https://github.com/github/github-mcp-server/releases/tag/v2.0.0
+    publisher: GitHub
+    kind: release-notes
+    published_at: 2026-10-06
+    accessed_at: 2026-10-13

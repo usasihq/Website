@@ -1,0 +1,98 @@
+slug: edward-beeching
+name: Edward Beeching
+initials: EB
+groups: [open-source, engineering]
+sector: corporate
+specialties: [language-models, reinforcement-learning, training-systems]
+headline: Hugging Face research scientist; credited author of the TRL library and co-first author of Zephyr
+bio:
+  text: >-
+    Edward Beeching is a Machine Learning Research Scientist at Hugging Face, where Beeching's recent
+    work covers reinforcement learning and post-training for language models, open reasoning systems,
+    and efficient training infrastructure. Beeching is one of the authors credited in the citation
+    file of TRL, Hugging Face's open-source post-training library, and co-first author of the Zephyr
+    paper on distilling alignment into a smaller open chat model. Beeching also co-authored Hugging
+    Face blog posts on TRL, including a 2023 guide to fine-tuning a 20B model with RLHF on a 24GB
+    consumer GPU, and is listed among the authors of the SmolLM3 release.
+  source_ids: [beeching-site, github-profile, trl-citation, zephyr-paper, smollm3-blog]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Machine Learning Research Scientist
+    current: true
+    source_ids: [beeching-site, github-profile]
+work:
+  - name: TRL (Transformers Reinforcement Learning)
+    artifact_slug: trl
+    type: open-source
+    url: https://github.com/huggingface/trl
+    contribution: >-
+      Listed among the authors in TRL's CITATION.cff, which describes the Apache-2.0 library as an
+      open-source toolkit for post-training with SFT, reward modeling, DPO, and GRPO. Beeching's site
+      also lists co-authored Hugging Face blog posts on TRL, such as "Fine-Tuning 20B LLMs with RLHF on
+      a 24GB Consumer GPU" (2023) and a 2026 post on delta weight sync in TRL.
+    source_ids: [trl-citation, beeching-site]
+  - name: SmolLM3
+    artifact_slug: smollm
+    type: open-weights
+    url: https://huggingface.co/blog/smollm3
+    contribution: >-
+      Listed among the authors of the Hugging Face blog post and citation for SmolLM3, which the post
+      describes as a fully open 3B multilingual, long-context reasoning model released with its
+      checkpoint and full training recipe.
+    source_ids: [smollm3-blog, beeching-site]
+  - name: "Zephyr: Direct Distillation of LM Alignment"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2310.16944
+    contribution: >-
+      Co-first author with Lewis Tunstall of the 2023 paper, which applies distilled direct preference
+      optimization with AI feedback to align a smaller open language model to user intent.
+    source_ids: [zephyr-paper, beeching-site]
+links:
+  - label: Website
+    url: https://edbeeching.github.io/
+  - label: GitHub
+    url: https://github.com/edbeeching
+  - label: Hugging Face
+    url: https://huggingface.co/edbeeching
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: beeching-site
+    title: Edward Beeching — homepage (research and writing)
+    url: https://edbeeching.github.io/
+    publisher: Edward Beeching
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: edbeeching (Edward Beeching) on GitHub
+    url: https://github.com/edbeeching
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: trl-citation
+    title: huggingface/trl CITATION.cff (authors, license Apache-2.0)
+    url: https://github.com/huggingface/trl/blob/main/CITATION.cff
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: smollm3-blog
+    title: "SmolLM3: smol, multilingual, long-context reasoner (Hugging Face blog)"
+    url: https://huggingface.co/blog/smollm3
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2025-07-08
+    accessed_at: 2026-10-13
+  - id: zephyr-paper
+    title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
+    url: https://arxiv.org/abs/2310.16944
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-25
+    accessed_at: 2026-10-13

@@ -1,0 +1,43 @@
+slug: google-deepmind-releases-alphaprotein-novo
+title: Google DeepMind releases AlphaProtein Novo code and non-commercial generator weights
+event_date: 2026-10-05
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    Google DeepMind published AlphaProtein Novo (AP Novo), a generative diffusion pipeline for de
+    novo enzyme design through structural motif scaffolding, in a GitHub repository whose commits
+    are dated from October 5, 2026. The README says the diffusion model co-generates protein
+    structures and sequences conditioned on a catalytic motif and ligand context, and that it can be
+    combined with LigandMPNN sequence redesign and AlphaFold 3 structure prediction; it points to a
+    bioRxiv preprint describing the work. The software is licensed under Apache 2.0, but the
+    generator weights are downloaded separately under terms of use, last modified October 5, 2026,
+    that allow only non-commercial use by, or on behalf of, non-commercial organizations. USASI has
+    not tested AlphaProtein Novo.
+  source_ids: [apnovo-readme, apnovo-weights-terms, apnovo-commits]
+related_organizations: [google-deepmind]
+related_artifacts: [alphaprotein-novo, alphaprotein-novo-generator]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: apnovo-readme
+    title: google-deepmind/alphaprotein-novo README
+    url: https://github.com/google-deepmind/alphaprotein-novo
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: apnovo-weights-terms
+    title: AlphaProtein Novo Generator Model Parameters Terms of Use
+    url: https://github.com/google-deepmind/alphaprotein-novo/blob/main/WEIGHTS_TERMS_OF_USE.md
+    publisher: Google DeepMind (GitHub)
+    kind: official-page
+    published_at: 2026-10-05
+    accessed_at: 2026-10-13
+  - id: apnovo-commits
+    title: Recent commits to google-deepmind/alphaprotein-novo (main, Atom feed)
+    url: https://github.com/google-deepmind/alphaprotein-novo/commits/main.atom
+    publisher: Google DeepMind (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

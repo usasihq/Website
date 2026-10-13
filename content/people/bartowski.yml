@@ -1,0 +1,94 @@
+slug: bartowski
+name: Bartowski
+initials: B
+groups: [open-source, local]
+sector: corporate
+specialties: [inference, language-models]
+headline: Publishes GGUF quantizations of open models and contributes to llama.cpp; ML engineer at Red Hat
+bio:
+  text: >-
+    Bartowski is a public handle; the Hugging Face profile under that name gives Bartowski's role
+    as Senior Machine Learning Engineer at Red Hat. The profile hosts GGUF quantizations of open
+    language models for llama.cpp and compatible runtimes; model cards such as the one for
+    Qwen3.8-27B name the llama.cpp release used for quantization and note imatrix calibration. In llama.cpp
+    itself, CODEOWNERS lists Bartowski as a co-owner of the tiled CPU code, and Bartowski's commits
+    cover IQ quantization fixes and speedups, imatrix tooling, and support for new model
+    architectures.
+  source_ids: [hf-profile, quant-card, llama-cpp-codeowners, llama-cpp-commits]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Red Hat
+    organization_slug: red-hat
+    role: Senior Machine Learning Engineer
+    current: true
+    source_ids: [hf-profile]
+  - name: llama.cpp project
+    organization_slug: null
+    role: Co-owner of the tiled CPU code (ggml/src/ggml-cpu/tiled)
+    current: true
+    source_ids: [llama-cpp-codeowners]
+work:
+  - name: llama.cpp
+    artifact_slug: llama-cpp
+    type: open-source
+    url: https://github.com/ggml-org/llama.cpp
+    contribution: >-
+      CODEOWNERS lists bartowski1182 with one other contributor for ggml/src/ggml-cpu/tiled.
+      Commits authored from September 2025 to September 2026 include IQ-quant correctness fixes and
+      AVX2 prompt-processing speedups, a shared imatrix loader, per-slot context for llama-server,
+      and support for architectures such as GLM 4.6 and AfmoeForCausalLM. The repository is
+      MIT-licensed.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+  - name: GGUF quantizations on Hugging Face
+    artifact_slug: null
+    type: open-weights
+    url: https://huggingface.co/bartowski
+    contribution: >-
+      Publishes quantized GGUF versions of open models under the bartowski account. The model card
+      for Qwen3.8-27B-GGUF, for example, says the quants were made with llama.cpp release b10896
+      using imatrix calibration, and gives the repository's license as Apache-2.0.
+    source_ids: [hf-profile, quant-card]
+links:
+  - label: Hugging Face
+    url: https://huggingface.co/bartowski
+  - label: GitHub
+    url: https://github.com/bartowski1182
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: hf-profile
+    title: bartowski (Bartowski) on Hugging Face
+    url: https://huggingface.co/bartowski
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: quant-card
+    title: bartowski/Qwen3.8-27B-GGUF model card
+    url: https://huggingface.co/bartowski/Qwen3.8-27B-GGUF
+    publisher: bartowski (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-codeowners
+    title: ggml-org/llama.cpp CODEOWNERS
+    url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-commits
+    title: ggml-org/llama.cpp commits authored by bartowski1182
+    url: https://github.com/ggml-org/llama.cpp/commits?author=bartowski1182
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama-cpp-license
+    title: ggml-org/llama.cpp LICENSE (MIT)
+    url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
+    publisher: ggml-org (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

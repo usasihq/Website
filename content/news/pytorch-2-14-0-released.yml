@@ -1,0 +1,26 @@
+slug: pytorch-2-14-0-released
+title: PyTorch 2.14.0 released with torch.switch, NVGEMM in Inductor, and a preview NCCL backend rewrite
+event_date: 2026-09-02
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    PyTorch 2.14.0 was published on GitHub on September 2, 2026. The release notes highlight NVGEMM,
+    which brings CuTeDSL-generated CUTLASS kernels to Inductor, and `torch.switch`, which generalizes
+    `torch.cond` to multi-way branching. Other highlights include declarative dynamic shapes via
+    `@dynamic_spec`, experimental `torch.compile` support for complex-valued tensors, a preview of a
+    rewritten NCCL backend ported from torchcomms, and native linear algebra on Apple Silicon. The
+    notes also say Inductor now targets Rubin (sm_107). USASI has not tested this release.
+  source_ids: [pytorch-v2-14-0-release]
+related_organizations: [pytorch-foundation]
+related_artifacts: [pytorch]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: pytorch-v2-14-0-release
+    title: PyTorch 2.14.0 Release Notes (GitHub)
+    url: https://github.com/pytorch/pytorch/releases/tag/v2.14.0
+    publisher: PyTorch
+    kind: release-notes
+    published_at: 2026-09-02
+    accessed_at: 2026-10-13

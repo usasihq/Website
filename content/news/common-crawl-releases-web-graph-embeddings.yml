@@ -1,0 +1,34 @@
+slug: common-crawl-releases-web-graph-embeddings
+title: Common Crawl releases experimental web graph embeddings for web hosts
+event_date: 2026-09-07
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On September 7, 2026, Common Crawl published an experimental dataset of 128-dimensional
+    embeddings for web hosts, learned from hyperlinks alone in its host-level web graph for the
+    November 2025, December 2025, and January 2026 crawls. The model uses no page text, metadata, or
+    hostnames and was trained only on hosts with at least eight links. The data is published as
+    Parquet files on Common Crawl's S3 bucket and on Hugging Face, where the dataset card says its
+    use is subject to the Common Crawl Terms of Use; the source code is on GitHub. Common Crawl says
+    it is yet to be seen whether it will publish graph embeddings on a regular basis.
+  source_ids: [cc-wge-blog, cc-wge-card]
+related_organizations: [common-crawl]
+related_artifacts: [common-crawl-corpus]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: cc-wge-blog
+    title: "Web Graph Embeddings: An Experimental Dataset Release"
+    url: https://commoncrawl.org/blog/web-graph-embeddings-an-experimental-dataset-release
+    publisher: Common Crawl Foundation
+    kind: announcement
+    published_at: 2026-09-07
+    accessed_at: 2026-10-13
+  - id: cc-wge-card
+    title: commoncrawl/web-graph-embeddings dataset card
+    url: https://huggingface.co/datasets/commoncrawl/web-graph-embeddings
+    publisher: Common Crawl Foundation (Hugging Face)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
