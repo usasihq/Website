@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Monogram } from "@/components/Badges";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
+import { JsonLd } from "@/components/JsonLd";
 import { HubIcon } from "@/components/learn/HubIcon";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PageHeader } from "@/components/PageHeader";
@@ -12,6 +13,8 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
+import { hubSeo } from "@/lib/seo";
+import { itemList } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
 import { artifactHref, orgHref } from "@/lib/routes";
 
@@ -20,11 +23,13 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const hub = getCatalog().hub((await params).slug);
+  const catalog = getCatalog();
+  const hub = catalog.hub((await params).slug);
   const path = `/hubs/${(await params).slug}/`;
+  const seo = hub ? hubSeo(catalog, hub) : { title: "Hub", description: "" };
   return pageMetadata({
-    title: hub?.title ?? "Hub",
-    description: hub?.summary ?? "",
+    title: seo.title,
+    description: seo.description,
     path,
     image: cardImage(getCatalog(), path),
     feeds: hub ? [{ path: `${path}feed.xml`, title: `${hub.title} — USASI news` }] : undefined,
@@ -40,6 +45,16 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
   const people = hub.people.map((s) => catalog.people.find((p) => p.slug === s)).filter((p) => p !== undefined);
   return (
     <>
+      <JsonLd
+        data={itemList({
+          name: `${hub.title}: featured records`,
+          path: `/hubs/${hub.slug}/`,
+          items: [
+            ...orgs.filter((o) => catalog.isActiveOrganization(o.slug)).map((o) => ({ name: o.name, href: orgHref(o.slug) })),
+            ...arts.filter((a) => catalog.isActiveArtifact(a.slug)).map((a) => ({ name: a.name, href: artifactHref(a.slug) })),
+          ],
+        })}
+      />
       <PageHeader
         eyebrow={
           <span className="inline-flex items-center gap-1.5">

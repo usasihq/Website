@@ -7,7 +7,7 @@ import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
-  title: "Latest news",
+  title: "U.S. AI news: releases, licenses & policy, with sources",
   description:
     "Dated, sourced updates about the U.S. AI organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.",
   path: "/news/",

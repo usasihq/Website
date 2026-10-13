@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHeader } from "@/components/PageHeader";
 import { StateTileMap } from "@/components/StateTileMap";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -6,10 +7,14 @@ import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
 import { organizationsByState } from "@/lib/place-index";
 import { stateSlug } from "@/lib/places";
+import { stateTitle } from "@/lib/seo";
+import { itemList } from "@/lib/structured-data";
+
+const { states: STATES } = organizationsByState(getCatalog());
 
 export const metadata = pageMetadata({
-  title: "Places",
-  description: "Organizations in the USASI catalog by the U.S. state named in their documented headquarters. Not a map of offices, facilities, or capacity.",
+  title: "AI companies & labs by U.S. state",
+  description: `Find AI companies, labs, and research organizations by the U.S. state of their documented headquarters: ${STATES.length} states and ${STATES.reduce((n, s) => n + s.organizations.length, 0)} organizations, with sources.`,
   path: "/places/",
 });
 
@@ -17,9 +22,10 @@ export default function PlacesPage() {
   const { states, unknown } = organizationsByState(getCatalog());
   return (
     <>
+      <JsonLd data={itemList({ name: "AI companies & labs by U.S. state", path: "/places/", items: states.map((s) => ({ name: stateTitle(s), href: `/places/${stateSlug(s.code)}/` })) })} />
       <PageHeader
-        eyebrow="Reference"
-        title="Organizations by headquarters state"
+        eyebrow="Places · by headquarters state"
+        title="AI companies & labs by U.S. state"
         description={
           <p>
             Each organization appears under the state named in its documented headquarters, as recorded with sources on its page. This is not a

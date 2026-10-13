@@ -5,7 +5,7 @@ import { getCatalog } from "@/lib/catalog";
 import { jobsDirectoryData } from "@/lib/jobs/directory-data";
 import { pageMetadata } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
-export const metadata = pageMetadata({ title: "Jobs", description: "Current positions at companies and labs documented by USASI, collected from authoritative employer career sources. Explore listings and apply directly with the employer.", path: "/jobs/" });
+export const metadata = pageMetadata({ title: "Jobs at U.S. AI companies & labs", description: "Current positions at U.S. AI companies and labs documented by USASI, collected from authoritative employer career sources. Apply directly with the employer.", path: "/jobs/" });
 export default function JobsPage() {
   const catalog = getCatalog(), data = jobsDirectoryData(catalog);
   return <><PageHeader eyebrow="The USASI catalog" title="Jobs" description="Current positions from organizations in the USASI catalog. Listings are collected from employer career sources and link to the employer for application." /><div className="container-page py-10 sm:py-12"><JobsDirectory

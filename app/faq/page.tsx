@@ -7,7 +7,7 @@ import { absoluteUrl } from "@/lib/paths";
 import { parseFaq } from "@/lib/reference-search";
 
 export const metadata = pageMetadata({
-  title: "Frequently asked questions",
+  title: "AI FAQ: open-source models, running AI locally & more",
   description: "Short, sourced answers to common questions about AI and about USASI, each linking to a longer explainer or the original documents.",
   path: "/faq/",
 });

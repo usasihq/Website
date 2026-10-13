@@ -19,6 +19,7 @@ import { RUBRIC_LABEL } from "@/lib/openness";
 import { absoluteUrl, asset } from "@/lib/paths";
 import { artifactHref, orgHref } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";
+import { CATALOG_DATASET_ID, HF_DATASET_URL } from "@/lib/structured-data";
 
 export const metadata = pageMetadata({
   description:
@@ -93,10 +94,12 @@ export default function HomePage() {
       },
       {
         "@type": "Dataset",
+        "@id": CATALOG_DATASET_ID(),
         name: "USASI catalog",
         description:
           "Published USASI records of U.S. AI organizations and U.S.-led open models, software, datasets, and evaluation tools, with sources for every claim.",
-        url: absoluteUrl("/open/"),
+        url: absoluteUrl("/reuse/"),
+        sameAs: HF_DATASET_URL,
         license: "https://creativecommons.org/licenses/by/4.0/",
         isAccessibleForFree: true,
         creator: { "@id": orgId },

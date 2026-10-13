@@ -7,8 +7,8 @@ import { absoluteUrl } from "@/lib/paths";
 import { parseGlossary } from "@/lib/reference-search";
 
 export const metadata = pageMetadata({
-  title: "Glossary",
-  description: "Plain-language definitions of terms used in the USASI catalog, each with how the catalog uses it and a real example.",
+  title: "AI glossary: open weights, quantization, RAG & more",
+  description: "Plain-language definitions of AI terms, from open weights and model cards to quantization and RAG, each with how the catalog uses it and a real example.",
   path: "/glossary/",
 });
 

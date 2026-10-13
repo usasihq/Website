@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { absoluteUrl } from "@/lib/paths";
 
 export const metadata = pageMetadata({
-  title: "People Behind Big SI",
+  title: "AI leaders: career profiles of founders, CEOs & builders",
   description:
     "Career profiles of the founders, executives, and builders behind the companies shaping AI, now called SI by U.S. agencies: what they built, with sources.",
   path: "/big-si/",
