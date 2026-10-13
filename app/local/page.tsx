@@ -1,13 +1,10 @@
 import Link from "next/link";
-import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
 import { PageHeader } from "@/components/PageHeader";
-import { SourceRefs, SourcesList } from "@/components/Sources";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
-import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
-import { artifactHref, orgHref } from "@/lib/routes";
+import { personHref } from "@/lib/routes";
 import { mailtoHref, siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
@@ -19,7 +16,7 @@ export const metadata = pageMetadata({
 
 export default function LocalCornerPage() {
   const catalog = getCatalog();
-  const people = catalog.people;
+  const people = catalog.people.filter((p) => p.groups.includes("local"));
   const email = siteConfig.contact.email;
 
   return (
@@ -30,8 +27,9 @@ export default function LocalCornerPage() {
         description={
           <p>
             People whose public work helps others run AI models on their own hardware: local runtimes, on-device frameworks, efficient
-            fine-tuning, and open-weight models. Listed alphabetically; each profile stays up until it is updated or removed. For the leaders of the
-            large AI companies, see <Link href="/big-si/" className="link">People Behind Big SI</Link>.
+            fine-tuning, and open-weight models. Listed alphabetically; each profile stays up until it is updated or removed. For everyone in the catalog, from founders to
+            open-source maintainers, see <Link href="/people/" className="link">all people</Link>; for the leaders of the large AI companies, see{" "}
+            <Link href="/big-si/" className="link">People Behind Big SI</Link>.
           </p>
         }
       />
@@ -39,110 +37,45 @@ export default function LocalCornerPage() {
         {people.length === 0 ? (
           <p className="text-muted">No profiles are published yet.</p>
         ) : (
-          <>
-            <nav aria-label="People on this page">
-              <h2 className="eyebrow">{people.length} people</h2>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {people.map((p) => (
-                  <li key={p.slug}>
-                    <a
-                      href={`#${p.slug}`}
-                      className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-[rgba(11,18,36,0.7)] py-1 pl-1 pr-3.5 text-[0.9375rem] text-text hover:border-cyan"
-                    >
-                      <InitialsTile initials={p.initials} />
-                      {p.name}
-                    </a>
+          <section aria-labelledby="local-people-heading">
+            <h2 id="local-people-heading" className="eyebrow">
+              {people.length} people
+            </h2>
+            <ul className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3" data-testid="local-people">
+              {people.map((p) => {
+                const role = p.affiliations.find((a) => a.current) ?? p.affiliations[0];
+                return (
+                  <li key={p.slug} id={p.slug} className="scroll-mt-24">
+                    <article className="card card-link relative flex h-full flex-col p-5">
+                      <div className="flex items-start gap-3">
+                        <InitialsTile initials={p.initials} />
+                        <div className="min-w-0">
+                          <h3 className="text-lg font-semibold leading-snug text-text">
+                            <Link prefetch={false} href={personHref(p.slug)} className="after:absolute after:inset-0 after:content-['']">
+                              {p.name}
+                            </Link>
+                          </h3>
+                          {role ? (
+                            <p className="mt-0.5 text-sm text-muted">
+                              {role.role}, {role.name}
+                              {role.current ? "" : " (earlier)"}
+                            </p>
+                          ) : null}
+                        </div>
+                      </div>
+                      <p className="mt-3 text-[0.9375rem] text-[#d5def2]">{p.headline}</p>
+                      <p className="mt-auto pt-3 text-sm text-muted">
+                        {p.work
+                          .slice(0, 3)
+                          .map((w) => w.name)
+                          .join(" · ")}
+                      </p>
+                    </article>
                   </li>
-                ))}
-              </ul>
-            </nav>
-            <ol className="grid gap-10">
-              {people.map((p) => (
-                <li key={p.slug}>
-                  <article id={p.slug} aria-labelledby={`${p.slug}-name`} className="card scroll-mt-24 p-5 sm:p-7">
-                    <div className="flex items-start gap-4">
-                      <InitialsTile initials={p.initials} size="lg" />
-                      <div className="min-w-0">
-                        <h2 id={`${p.slug}-name`} className="text-2xl font-semibold text-text">
-                          {p.name}
-                        </h2>
-                        <p className="mt-1 text-ice">{p.headline}</p>
-                      </div>
-                    </div>
-                    <p className="mt-5 max-w-3xl text-[#d5def2]">
-                      {p.bio.text}
-                      <SourceRefs ids={p.bio.source_ids} sources={p.sources} idPrefix={`${p.slug}-`} />
-                    </p>
-
-                    <div className="mt-6 grid gap-6 md:grid-cols-2">
-                      <div>
-                        <h3 className="eyebrow">Roles</h3>
-                        <ul className="mt-2 space-y-1.5 text-[0.9375rem]">
-                          {p.affiliations.map((a) => (
-                            <li key={`${a.name}-${a.role}`}>
-                              <span className="text-text">{a.role}</span>
-                              {a.organization_slug && catalog.isActiveOrganization(a.organization_slug) ? (
-                                <>
-                                  <span className="text-muted">, </span>
-                                  <Link prefetch={false} href={orgHref(a.organization_slug)} className="link">
-                                    {a.name}
-                                  </Link>
-                                </>
-                              ) : a.role.toLowerCase().includes(a.name.toLowerCase()) ? null : (
-                                <>
-                                  <span className="text-muted">, </span>
-                                  <span className="text-text">{a.name}</span>
-                                </>
-                              )}
-                              {a.current ? null : <span className="text-muted"> (past)</span>}
-                              <SourceRefs ids={a.source_ids} sources={p.sources} idPrefix={`${p.slug}-`} />
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="eyebrow">Work</h3>
-                        <ul className="mt-2 space-y-2 text-[0.9375rem]">
-                          {p.work.map((w) => (
-                            <li key={w.name}>
-                              {w.artifact_slug && catalog.isActiveArtifact(w.artifact_slug) ? (
-                                <Link prefetch={false} href={artifactHref(w.artifact_slug)} className="link font-medium">
-                                  {w.name}
-                                </Link>
-                              ) : w.url ? (
-                                <ExternalLink href={w.url}>{w.name}</ExternalLink>
-                              ) : (
-                                <span className="font-medium text-text">{w.name}</span>
-                              )}
-                              <span className="text-muted"> — {w.contribution}</span>
-                              <SourceRefs ids={w.source_ids} sources={p.sources} idPrefix={`${p.slug}-`} />
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {p.links.length > 0 ? (
-                      <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[0.9375rem]" aria-label={`${p.name}: public pages`}>
-                        {p.links.map((l) => (
-                          <li key={l.url}>
-                            <ExternalLink href={l.url}>{l.label}</ExternalLink>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-
-                    <div className="mt-6 border-t border-line pt-4 text-[0.9375rem]">
-                      <h3 className="eyebrow">Sources · reviewed {formatDate(p.last_reviewed)}</h3>
-                      <div className="mt-3">
-                        <SourcesList sources={p.sources} idPrefix={`${p.slug}-`} />
-                      </div>
-                    </div>
-                  </article>
-                </li>
-              ))}
-            </ol>
-          </>
+                );
+              })}
+            </ul>
+          </section>
         )}
 
         <section aria-labelledby="about-corner" className="max-w-3xl rounded-xl border border-line p-5 text-[0.9375rem] text-muted">

@@ -96,7 +96,8 @@ export class Catalog {
     this.leaders = (content.leaders ?? []).filter((p) => p.publication_status === "published").sort(byName);
     this.news = (content.news ?? [])
       .filter((n) => n.publication_status === "published")
-      .sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date) || a.title.localeCompare(b.title));
+      // Newest events first; an item written later about an older event sits at its event date.
+      .sort((a, b) => b.event_date.localeCompare(a.event_date) || b.published_at.localeCompare(a.published_at) || a.title.localeCompare(b.title));
     this.hubs = (content.hubs ?? []).filter((h) => h.publication_status === "published");
     this.licenses = (content.licenses ?? []).filter((l) => l.publication_status === "published");
     this.policy = (content.policy ?? []).filter((d) => d.publication_status === "published");
@@ -116,6 +117,10 @@ export class Catalog {
 
   artifact(slug: string): Artifact | undefined {
     return this.artifactMap.get(slug);
+  }
+
+  person(slug: string): Person | undefined {
+    return this.people.find((p) => p.slug === slug);
   }
 
   leader(slug: string): Leader | undefined {

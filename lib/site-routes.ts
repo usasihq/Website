@@ -20,6 +20,7 @@ export const STATIC_ROUTES = [
   "/support/",
   "/privacy/",
   "/local/",
+  "/people/",
   "/news/",
   "/newsletter/",
   "/badges/",
@@ -58,6 +59,8 @@ export type SiteSlugs = {
   issues: Set<string>;
   /** Published policy documents, each with a page at /policy/<slug>/. */
   policy?: Set<string>;
+  /** Published People profiles, each at /people/<slug>/. */
+  people?: Set<string>;
   /** Published editions of The State of American AI, each at /report/<YYYY-MM>/. */
   reports?: Set<string>;
 };
@@ -76,6 +79,8 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
   if (p) return slugs.paths.has(p[1]);
   const pol = path.match(/^\/policy\/([a-z0-9-]+)\/$/);
   if (pol) return Boolean(slugs.policy?.has(pol[1]));
+  const per = path.match(/^\/people\/([a-z0-9-]+)\/$/);
+  if (per) return Boolean(slugs.people?.has(per[1]));
   const rep = path.match(/^\/report\/(\d{4}-\d{2})\/$/);
   if (rep) return Boolean(slugs.reports?.has(rep[1]));
   const mem = path.match(/^\/find\/memory\/([a-z0-9-]+)\/$/);

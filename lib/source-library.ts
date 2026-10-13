@@ -30,7 +30,7 @@ export function sourceLibrary(catalog: Catalog): LibraryEntry[] {
   };
   for (const o of catalog.organizations) for (const s of o.sources) add(s, o.name, orgHref(o.slug));
   for (const a of catalog.artifacts) for (const s of a.sources) add(s, a.name, artifactHref(a.slug));
-  for (const p of catalog.people) for (const s of p.sources) add(s, p.name, `/local/#${p.slug}`);
+  for (const p of catalog.people) for (const s of p.sources) add(s, p.name, `/people/${p.slug}/`);
   for (const n of catalog.news) for (const s of n.sources) add(s, n.title, `/news/${n.slug}/`);
   for (const h of catalog.hubs) for (const s of h.sources) add(s, h.title, `/hubs/${h.slug}/`);
   return [...byUrl.values()].sort((a, b) => a.title.localeCompare(b.title, "en"));

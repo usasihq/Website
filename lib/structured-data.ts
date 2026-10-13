@@ -11,7 +11,7 @@ import { absoluteUrl } from "./paths";
 import { stateFromHeadquarters, US_STATES } from "./places";
 import { artifactHref, orgHref } from "./routes";
 import { COVERS, makersOf } from "./seo";
-import type { Artifact, Leader, LicenseRecord, Organization } from "./schema";
+import type { Artifact, Leader, LicenseRecord, Organization, Person } from "./schema";
 import { siteConfig } from "./site-config";
 
 export const SCHEMA_CONTEXT = "https://schema.org";
@@ -157,6 +157,31 @@ export function leaderLd(catalog: Catalog, l: Leader): JsonLdNode {
       ...(l.current_roles[0] ? { jobTitle: l.current_roles[0].role } : {}),
       worksFor,
       ...(l.links.length ? { sameAs: l.links.map((x) => x.url) } : {}),
+    },
+  };
+}
+
+/** A People directory profile as a ProfilePage about a Person, from the profile's own fields. */
+export function personLd(catalog: Catalog, p: Person): JsonLdNode {
+  const page = absoluteUrl(`/people/${p.slug}/`);
+  const current = p.affiliations.filter((a) => a.current);
+  const worksFor = current.map((a) => {
+    const org = a.organization_slug && catalog.isActiveOrganization(a.organization_slug) ? catalog.organization(a.organization_slug) : undefined;
+    return { "@type": "Organization", name: a.name, ...(org ? { url: org.website } : {}) };
+  });
+  return {
+    "@context": SCHEMA_CONTEXT,
+    "@type": "ProfilePage",
+    url: page,
+    dateModified: p.updated_at,
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${page}#person`,
+      name: p.name,
+      description: p.headline,
+      ...(current[0] ? { jobTitle: current[0].role } : {}),
+      ...(worksFor.length ? { worksFor } : {}),
+      ...(p.links.length ? { sameAs: p.links.map((x) => x.url) } : {}),
     },
   };
 }

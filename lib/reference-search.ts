@@ -115,7 +115,9 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ...catalog.leaders.map((l) =>
       e("leader", l.slug, `/big-si/${l.slug}/`, l.name, l.headline, [...l.current_roles, ...l.past_roles].map((r) => `${r.role} ${r.organization}`).join(" ")),
     ),
-    ...catalog.people.map((p) => e("person", p.slug, `/local/#${p.slug}`, p.name, p.headline, p.affiliations.map((a) => a.name).join(" "))),
+    ...catalog.people.map((p) =>
+      e("person", p.slug, `/people/${p.slug}/`, p.name, p.headline, [...p.affiliations.map((a) => `${a.role} ${a.name}`), ...p.work.map((w) => w.name)].join(" ")),
+    ),
     ...organizationsByState(catalog).states.map((s) =>
       e("place", stateSlug(s.code), `/places/${stateSlug(s.code)}/`, s.name, `${stateTitle(s)}: organizations headquartered there`, "state headquarters place ai companies labs"),
     ),

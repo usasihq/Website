@@ -146,10 +146,14 @@ is never typed by hand.
 
 `npm run report:reviews` lists records due for re-review.
 
-### People Behind Local AI (standing list)
+### People directory and People Behind Local AI
 
-`/local/` lists every published profile, alphabetically, and a quiet homepage
-strip links to each one. There is no monthly rotation: a profile stays up until
+`/people/` lists every published profile (and the People Behind Big SI leaders),
+alphabetically, with filters for group, organization, specialty, kind of
+organization, and contribution type; each profile has its own page at
+`/people/<slug>/`. A profile's `groups` decide where it is listed: `leadership`,
+`engineering`, `open-source`, and `local` (People Behind Local SI). `/local/`
+lists the `local` profiles, and a quiet homepage strip links to them. There is no monthly rotation: a profile stays up until
 it is updated, set to `draft`, or deleted. Profiles live in
 `content/people/<slug>.yml` (schema `Person` in `lib/schema.ts`; research rules in
 `research/PEOPLE_BRIEF.md`). They hold only sourced professional information —

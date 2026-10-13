@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...catalog.hubs.map((h) => ({ url: absoluteUrl(`/hubs/${h.slug}/`), lastModified: h.updated_at })),
     ...catalog.licenses.map((l) => ({ url: absoluteUrl(`/licenses/${l.slug}/`), lastModified: l.updated_at })),
     ...catalog.leaders.map((l) => ({ url: absoluteUrl(`/big-si/${l.slug}/`), lastModified: l.updated_at })),
+    ...catalog.people.map((p) => ({ url: absoluteUrl(`/people/${p.slug}/`), lastModified: p.updated_at })),
     ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
     ...catalog.policy.map((d) => ({ url: absoluteUrl(policyHref(d.slug)), lastModified: d.updated_at })),

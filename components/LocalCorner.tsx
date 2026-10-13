@@ -15,12 +15,13 @@ export function InitialsTile({ initials, size = "md" }: { initials: string; size
 
 /**
  * A quiet homepage strip listing everyone on the standing People Behind Local SI
- * list as compact links to their full profiles on /local/.
+ * list as compact links to their profile pages.
  */
 /** How many names the homepage strip shows before linking to the full list. */
 export const STRIP_LIMIT = 12;
 
-export function LocalCornerStrip({ people }: { people: Person[] }) {
+export function LocalCornerStrip({ people: everyone }: { people: Person[] }) {
+  const people = everyone.filter((p) => p.groups.includes("local"));
   if (people.length === 0) return null;
   const shown = people.slice(0, STRIP_LIMIT);
   return (
@@ -45,7 +46,7 @@ export function LocalCornerStrip({ people }: { people: Person[] }) {
             <li key={p.slug}>
               <Link
                 prefetch={false}
-                href={`/local/#${p.slug}`}
+                href={`/people/${p.slug}/`}
                 className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-[rgba(8,14,30,0.6)] py-1 pl-1 pr-3.5 text-[0.9375rem] text-text hover:border-line-strong"
               >
                 <InitialsTile initials={p.initials} />

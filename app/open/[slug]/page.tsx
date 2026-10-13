@@ -33,7 +33,7 @@ import {
   RUBRIC_LABEL,
   TIER_DESCRIPTIONS,
 } from "@/lib/openness";
-import { artifactHref, orgHref } from "@/lib/routes";
+import { artifactHref, orgHref, personHref } from "@/lib/routes";
 
 export const dynamicParams = false;
 
@@ -331,11 +331,11 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
             )}
             {people.length ? (
               <p className="mt-4 text-[0.9375rem] text-[#d5def2]">
-                <span className="text-muted">In People Behind Local SI: </span>
+                <span className="text-muted">People: </span>
                 {people.map((p, i) => (
                   <span key={p.slug}>
                     {i > 0 ? ", " : ""}
-                    <Link prefetch={false} href={`/local/#${p.slug}`} className="link">
+                    <Link prefetch={false} href={personHref(p.slug)} className="link">
                       {p.name}
                     </Link>
                   </span>

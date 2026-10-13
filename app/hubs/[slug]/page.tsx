@@ -16,7 +16,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { hubSeo } from "@/lib/seo";
 import { itemList } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
-import { artifactHref, orgHref } from "@/lib/routes";
+import { artifactHref, orgHref, personHref } from "@/lib/routes";
 
 export function generateStaticParams() {
   return getCatalog().hubs.map((h) => ({ slug: h.slug }));
@@ -132,9 +132,9 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
               ))}
               {people.map((p) => (
                 <li key={`p-${p.slug}`}>
-                  <Link prefetch={false} href={`/local/#${p.slug}`} className="card flex h-full items-start gap-3 p-4 hover:border-cyan">
+                  <Link prefetch={false} href={personHref(p.slug)} className="card flex h-full items-start gap-3 p-4 hover:border-cyan">
                     <InitialsTile initials={p.initials} />
-                    <span className="min-w-0"><span className="block font-medium text-text">{p.name}</span><span className="block text-sm text-muted">People Behind Local SI</span></span>
+                    <span className="min-w-0"><span className="block font-medium text-text">{p.name}</span><span className="block text-sm text-muted">{p.headline}</span></span>
                   </Link>
                 </li>
               ))}

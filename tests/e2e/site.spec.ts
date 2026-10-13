@@ -282,41 +282,49 @@ test.describe("contact and profiles", () => {
   });
 });
 
+/** Published profiles listed on /local/ (profiles without groups are Local SI profiles). */
+function localPeople() {
+  return (readRecordsFrom("people") as Array<ReturnType<typeof readRecordsFrom>[number] & { groups?: string[] }>).filter(
+    (p) => p.publication_status === "published" && (p.groups ?? ["local"]).includes("local"),
+  );
+}
+
 test.describe("Local corner", () => {
   const people = (() => {
     try {
-      return readRecordsFrom("people").filter((p) => p.publication_status === "published");
+      return localPeople();
     } catch {
       return [];
     }
   })();
 
-  test("lists every published profile with sources and the removal note", async ({ page }) => {
+  test("lists every Local SI profile, linking to its own sourced page, with the removal note", async ({ page }) => {
     test.skip(people.length === 0, "no published profiles yet");
     await page.goto("/local/");
-    const profiles = page.locator("main article[id]");
-    await expect(profiles).toHaveCount(people.length);
-    // The index at the top links to each profile on the page.
-    const index = page.getByRole("navigation", { name: "People on this page" });
-    await expect(index.getByRole("link")).toHaveCount(people.length);
+    const cards = page.getByTestId("local-people").locator(":scope > li");
+    await expect(cards).toHaveCount(people.length);
     await expect(page.getByText(/ask to be removed/)).toBeVisible();
-    // Every profile's first source marker jumps to that profile's own source list.
-    const firstMarker = profiles.first().locator("a[aria-label^='Source 1:']").first();
-    const href = await firstMarker.getAttribute("href");
-    await expect(page.locator(href!)).toHaveCount(1);
+    const first = cards.first().getByRole("link").first();
+    const href = await first.getAttribute("href");
+    expect(href).toMatch(/^\/people\/[a-z0-9-]+\/$/);
+    await first.click();
+    await expect(page).toHaveURL(new RegExp(`${href}$`));
+    // The profile's first source marker jumps to the profile's source list.
+    const marker = page.locator("main a[aria-label^='Source 1:']").first();
+    await expect(page.locator((await marker.getAttribute("href"))!)).toHaveCount(1);
     await page.goto("/");
     await expect(page.getByRole("heading", { name: "People behind local SI" })).toBeVisible();
   });
 });
 
 test("People Behind Local SI is a standing list, the same in any month", async ({ page }) => {
-  const people = readRecordsFrom("people").filter((p) => p.publication_status === "published");
+  const people = localPeople();
   test.skip(people.length === 0, "no published profiles yet");
   const ids: string[][] = [];
   for (const when of ["2026-10-15T12:00:00Z", "2027-03-15T12:00:00Z"]) {
     await page.clock.setFixedTime(new Date(when));
     await page.goto("/local/");
-    ids.push(await page.locator("main article[id]").evaluateAll((els) => els.map((e) => e.id)));
+    ids.push(await page.getByTestId("local-people").locator(":scope > li").evaluateAll((els) => els.map((e) => e.id)));
   }
   expect(ids[0]).toHaveLength(people.length);
   expect(ids[1]).toEqual(ids[0]);
@@ -527,7 +535,7 @@ test("people navigation order, keyboard activation and current-page semantics", 
     await page.getByRole("button", { name: "Menu", exact: true }).click();
     const nav = page.getByRole("navigation", { name: "Primary (mobile)", exact: true });
     const labels = await nav.getByRole("link").allTextContents();
-    expect(labels.slice(-4)).toEqual(["Methodology", "People Behind Big SI", "People Behind Local SI", "About"]);
+    expect(labels.slice(-5)).toEqual(["Methodology", "All people", "People Behind Big SI", "People Behind Local SI", "About"]);
     await nav.getByRole("link", { name: "People Behind Big SI", exact: true }).focus();
     await page.keyboard.press("Tab");
     await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toBeFocused();
@@ -544,6 +552,8 @@ test("people navigation order, keyboard activation and current-page semantics", 
     await expect(people).toHaveAttribute("aria-expanded", "false");
     await page.keyboard.press("Enter");
     await expect(people).toHaveAttribute("aria-expanded", "true");
+    await page.keyboard.press("Tab");
+    await expect(nav.getByRole("link", { name: /^All people/ })).toBeFocused();
     await page.keyboard.press("Tab");
     await expect(nav.getByRole("link", { name: /^People Behind Big SI/ })).toBeFocused();
     await page.keyboard.press("Tab");
@@ -562,12 +572,12 @@ test("people navigation order, keyboard activation and current-page semantics", 
 
 test("Mia's October profile keeps sourced deployment work and catalog links", async ({ page }) => {
   await page.clock.setFixedTime(new Date("2026-10-15T12:00:00Z"));
-  await page.goto("/local/#mia");
-  const card = page.locator("article#mia");
-  await expect(card.getByRole("heading", { name: "Mia", exact: true })).toBeVisible();
+  await page.goto("/people/mia/");
+  const card = page.locator("main article");
+  await expect(card.getByRole("heading", { name: "Mia", exact: true, level: 1 })).toBeVisible();
   await expect(card.getByRole("link", { name: /^Website \(external site:/ })).toHaveAttribute("href", "https://mia-ai.net/");
   await expect(card.getByRole("link", { name: /^GitHub \(external site:/ })).toHaveAttribute("href", "https://github.com/MiaAI-Lab");
-  await expect(card.locator('a[href="/open/vllm/"]')).toHaveCount(1);
+  await expect(card.locator('a[href="/open/vllm/"]').first()).toBeVisible();
   await expect(card).toContainText("independent deployment work using vLLM");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await card.screenshot({ path: `reports/screenshots/mia-${test.info().project.name}.png` });

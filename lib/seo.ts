@@ -17,7 +17,7 @@ import { LICENSE_CATEGORY_LABELS, usesOfLicense } from "./licenses";
 import { clipDescription, DESCRIPTION_MAX, TITLE_MAX } from "./metadata";
 import { checklistStatus, computeTier, isOsiApproved, type ModelTier } from "./openness";
 import type { StateGroup } from "./place-index";
-import type { Artifact, Hub, Leader, LicenseCategory, LicenseRecord, Organization, OrganizationRole } from "./schema";
+import type { Artifact, Hub, Leader, LicenseCategory, LicenseRecord, Organization, OrganizationRole, Person } from "./schema";
 
 export type SeoText = { title: string; description: string };
 
@@ -325,6 +325,23 @@ export function leaderOrganizations(catalog: Catalog, l: Leader): string[] {
   const roles = [...l.current_roles].sort((a, b) => Number(catalog.isActiveOrganization(b.organization_slug)) - Number(catalog.isActiveOrganization(a.organization_slug)));
   const linked = roles.filter((r) => catalog.isActiveOrganization(r.organization_slug));
   return [...new Set((linked.length ? linked : roles).map((r) => shortName(r.organization)))];
+}
+
+/** A People directory profile: name and current organization in the title, the headline as the description. */
+export function personSeo(catalog: Catalog, p: Person): SeoText {
+  const current = p.affiliations.filter((a) => a.current);
+  const orgs = [...new Set(current.map((a) => shortName(a.name)))];
+  const work = p.work.map((w) => w.name);
+  return {
+    title: fitTitle([
+      orgs.length > 0 && work.length > 0 && `${p.name}, ${orgs[0]}: ${work[0]} and career`,
+      orgs.length > 0 && `${p.name}, ${orgs[0]}: work and career`,
+      work.length > 0 && `${p.name}: ${work[0]} and career`,
+      `${p.name}: work and career`,
+      p.name,
+    ]),
+    description: composeDescription([/[.!?]$/.test(p.headline) ? p.headline : `${p.headline}.`], [work.length ? `Sourced profile: ${listJoin(work.slice(0, 3))}.` : "Sourced profile."]),
+  };
 }
 
 export function leaderSeo(catalog: Catalog, l: Leader): SeoText {

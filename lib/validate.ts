@@ -728,6 +728,7 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     paths: new Set(LEARNING_PATHS.map((p) => p.id)),
     issues: new Set(issueDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
     policy: new Set(policyDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
+    people: new Set(peopleDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
     reports: new Set(raw.reports ?? []),
   };
   const issueNumbers = new Set<number>();
@@ -770,7 +771,8 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     featured: featuredDoc?.value ?? null,
     people: peopleDocs.map((d) => d.value),
     leaders: leaderDocs.map((d) => d.value),
-    news: newsDocs.map((d) => d.value).sort((a, b) => b.published_at.localeCompare(a.published_at) || b.event_date.localeCompare(a.event_date)),
+    // Newest events first: an item written later about an older event sits at its event date, not at the top.
+    news: newsDocs.map((d) => d.value).sort((a, b) => b.event_date.localeCompare(a.event_date) || b.published_at.localeCompare(a.published_at) || a.slug.localeCompare(b.slug)),
     hubs: hubDocs.map((d) => d.value).sort((a, b) => a.title.localeCompare(b.title)),
     licenses: licenseDocs.map((d) => d.value).sort((a, b) => a.name.localeCompare(b.name)),
     policy: policyDocs.map((d) => d.value).sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title)),

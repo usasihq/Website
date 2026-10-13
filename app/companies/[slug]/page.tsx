@@ -19,6 +19,7 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { ShareCite } from "@/components/ShareCite";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
+import { peopleAtOrganization } from "@/lib/people-index";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_PLURAL, OWNERSHIP_LABELS, PRODUCT_KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
@@ -28,6 +29,9 @@ import { cardImage } from "@/lib/page-cards";
 import { computeTier } from "@/lib/openness";
 import { artifactHref, orgHref } from "@/lib/routes";
 import { HOSTED_MODEL_PRODUCT_KINDS, type Artifact, type Product } from "@/lib/schema";
+
+/** How many profiles the People box lists before linking to the filtered directory. */
+const ORG_PEOPLE_SHOWN = 8;
 
 export const dynamicParams = false;
 
@@ -121,7 +125,9 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
     catalog.isActiveOrganization(org.slug) ? { id: "jobs", label: "Jobs" } : null,
     { id: "sources", label: "Sources" },
   ].filter((x): x is { id: string; label: string } => Boolean(x));
-  const localPeople = catalog.peopleForOrganization(org.slug);
+  // People Behind Big SI leaders are listed above, so the People box lists the other profiles.
+  const leaderSlugs = new Set(leaders.map((l) => l.slug));
+  const orgPeople = peopleAtOrganization(catalog, org.slug).filter((p) => !leaderSlugs.has(p.slug));
   return (
     <>
       <JsonLd data={organizationLd(catalog, org)} />
@@ -216,18 +222,26 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                       ))}
                   </div>
                 ) : null}
-                {localPeople.length ? (
-                  <div className="mt-3 border-t border-line pt-3">
-                    <p className="text-xs uppercase tracking-[0.08em] text-muted">People Behind Local SI</p>
+                {orgPeople.length ? (
+                  <div className="mt-3 border-t border-line pt-3" data-testid="org-people">
+                    <p className="text-xs uppercase tracking-[0.08em] text-muted">People</p>
                     <ul className="mt-2 space-y-1.5 text-sm">
-                      {localPeople.map((p) => (
+                      {orgPeople.slice(0, ORG_PEOPLE_SHOWN).map((p) => (
                         <li key={p.slug}>
-                          <Link prefetch={false} href={`/local/#${p.slug}`} className="link">
+                          <Link prefetch={false} href={p.href} className="link">
                             {p.name}
                           </Link>
+                          {!p.organizations.some((o) => o.slug === org.slug && o.current) ? <span className="text-muted"> (earlier)</span> : null}
                         </li>
                       ))}
                     </ul>
+                    {orgPeople.length > ORG_PEOPLE_SHOWN ? (
+                      <p className="mt-2 text-sm">
+                        <Link prefetch={false} href={`/people/?org=${org.slug}`} className="link">
+                          All {orgPeople.length} people
+                        </Link>
+                      </p>
+                    ) : null}
                   </div>
                 ) : null}
               </aside>

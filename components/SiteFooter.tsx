@@ -36,6 +36,7 @@ const COLUMNS = [
   {
     heading: "People & news",
     links: [
+      { href: "/people/", label: "All people" },
       { href: "/big-si/", label: "People Behind Big SI" },
       { href: "/local/", label: "People Behind Local SI" },
       { href: "/news/", label: "Latest news" },

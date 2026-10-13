@@ -519,6 +519,53 @@ export type FeaturedSelection = z.infer<typeof FeaturedSelection>;
 /* ------------------------------------------------------------------ */
 
 /**
+ * Where a profile is listed in the People directory (a person can be in several):
+ * - local: People Behind Local SI (work that helps people run AI on their own hardware);
+ * - leadership: founders and executives of catalog organizations;
+ * - engineering: engineers and researchers who build catalog models, tools, and systems;
+ * - open-source: creators and maintainers of open-source projects in the catalog.
+ */
+export const PERSON_GROUPS = ["leadership", "engineering", "open-source", "local"] as const;
+export const PersonGroup = z.enum(PERSON_GROUPS);
+export type PersonGroup = z.infer<typeof PersonGroup>;
+
+/** The kind of organization of the person's current main role (independent: no current organizational role). */
+export const PERSON_SECTORS = ["corporate", "academic", "nonprofit", "government", "independent"] as const;
+export const PersonSector = z.enum(PERSON_SECTORS);
+export type PersonSector = z.infer<typeof PersonSector>;
+
+/** What a person's public work is mainly about (one to three per person), for the People directory's filters. */
+export const PERSON_SPECIALTIES = [
+  "language-models",
+  "multimodal",
+  "vision",
+  "generative-media",
+  "speech-audio",
+  "robotics",
+  "reinforcement-learning",
+  "agents",
+  "inference",
+  "training-systems",
+  "ml-frameworks",
+  "hardware",
+  "developer-tools",
+  "evaluation",
+  "safety-alignment",
+  "interpretability",
+  "ai-for-science",
+  "data",
+  "education",
+  "ml-theory",
+] as const;
+export const PersonSpecialty = z.enum(PERSON_SPECIALTIES);
+export type PersonSpecialty = z.infer<typeof PersonSpecialty>;
+
+/** How a piece of work is available: open-source code, open weights, open data, published research, or proprietary. */
+export const WORK_TYPES = ["open-source", "open-weights", "open-data", "open-research", "proprietary"] as const;
+export const WorkType = z.enum(WORK_TYPES);
+export type WorkType = z.infer<typeof WorkType>;
+
+/**
  * A person featured in the Local corner. Deliberately has no fields for
  * location, nationality, age, photos, or any personal detail: only public,
  * sourced professional information, tied to records in this catalog.
@@ -537,6 +584,7 @@ export const PersonWork = z
   .object({
     name: z.string().min(1),
     artifact_slug: Slug.nullable().default(null),
+    type: WorkType.nullable().default(null),
     url: HttpsUrl.nullable().default(null),
     contribution: z.string().trim().min(10),
     source_ids: z.array(SourceId).min(1),
@@ -548,6 +596,10 @@ export const Person = z
     slug: Slug,
     name: z.string().min(1),
     initials: z.string().regex(/^[A-Za-z]{1,3}$/, "1–3 letters for the initials tile"),
+    /** Profiles written before groups existed were all Local SI profiles. */
+    groups: z.array(PersonGroup).min(1).default(["local"]),
+    sector: PersonSector.nullable().default(null),
+    specialties: z.array(PersonSpecialty).max(3).default([]),
     headline: z.string().trim().min(10).max(110),
     bio: Claim,
     affiliations: z.array(PersonAffiliation).min(1),
