@@ -172,6 +172,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "Choosing a local model for your computer",
     question: "Which models can my computer run, and what should I check before downloading one?",
     reviewed: "2026-10-13",
+    factCheck: "round6-verify-guides.md",
     topic: "running-ai",
     level: "Beginner",
     takeaways: [
@@ -259,6 +260,7 @@ export const EXPLAINERS: Explainer[] = [
     title: "How to check an AI claim",
     question: "Where is the evidence behind a claim about an AI model, product, policy, or company?",
     reviewed: "2026-10-13",
+    factCheck: "round6-verify-guides.md",
     topic: "evidence",
     level: "Beginner",
     takeaways: [

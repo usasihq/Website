@@ -2,7 +2,7 @@ What you can run depends first on memory: a graphics card's own memory (VRAM) on
 
 <h2 id="your-memory">Step 1: Find out which memory you have</h2>
 
-- **A PC with a graphics card.** The vendor's specification page lists the card's memory, and one product name can come in two sizes: NVIDIA's [RTX 5060 family page](https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/) lists the RTX 5060 Ti with "16 GB / 8 GB GDDR7." On Windows, Task Manager's Performance pane shows dedicated GPU memory; Microsoft notes that some GPUs do not use it, and then the counter is missing or reads 0 ([Microsoft Learn](https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/gpu-process-memory-counters-report-wrong-value)).
+- **A PC with a graphics card.** The vendor's specification page lists the card's memory, and one product name can come in two sizes: NVIDIA's [RTX 5060 family page](https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/) lists the RTX 5060 Ti with "16 GB / 8 GB GDDR7." For Windows 10, Microsoft says Task Manager's Performance pane shows dedicated GPU memory, and notes that some GPUs do not use dedicated GPU memory, in which case the Dedicated GPU memory counter is not available or reads 0 ([Microsoft Learn](https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/gpu-process-memory-counters-report-wrong-value)).
 - **An Apple silicon Mac.** The [README](https://github.com/ml-explore/mlx/blob/main/README.md) for Apple's [MLX](/open/mlx/) framework says arrays "live in shared memory" and can be used on the CPU or GPU without transferring data. Apple's [MacBook Air specifications](https://www.apple.com/macbook-air/specs/) list memory as a configuration choice: 16GB of unified memory, configurable to 24GB or 32GB. In [Activity Monitor](https://support.apple.com/guide/activity-monitor/view-memory-usage-actmntr1004/mac), the Memory tab shows "Physical Memory," the amount of RAM installed.
 - **CPU only.** [llama.cpp](/open/llama-cpp/)'s [README](https://github.com/ggml-org/llama.cpp/blob/master/README.md) lists CPU support, including AVX, AVX2, AVX512, and AMX on x86 processors and optimizations for Apple silicon. [Ollama](/open/ollama/)'s [macOS page](https://docs.ollama.com/macos) lists Apple M-series Macs with "CPU and GPU support" and x86 Macs as "CPU only."
 
@@ -23,7 +23,7 @@ A figure is only as useful as its assumptions. Google's [Gemma 4 overview](https
 Other figures are framed differently:
 
 - **"Runs within."** The [gpt-oss-20b card](https://huggingface.co/openai/gpt-oss-20b) says MXFP4 quantization of its mixture-of-experts weights lets [gpt-oss-20b](/open/gpt-oss-20b/) "run within 16GB of memory." OpenAI's Ollama guide says the model is best with at least 16GB of VRAM or unified memory.
-- **Download size.** Ollama's [library page](https://ollama.com/library/gpt-oss) lists `gpt-oss:20b` at 14GB with a 128K context window. That is the download, not the memory needed once a long context is in use.
+- **Listed size.** Ollama's [library page](https://ollama.com/library/gpt-oss) lists `gpt-oss:20b` at 14GB, under "Size / Usage," with a 128K context window. That is the model's size, not the memory needed once a long context is in use.
 
 <h2 id="runtimes">Step 5: Match a runtime to your hardware</h2>
 
