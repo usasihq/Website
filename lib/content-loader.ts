@@ -44,6 +44,13 @@ export function readRawContent(root: string = DEFAULT_CONTENT_DIR): RawContent {
     quizzes: readYamlDir(root, "quizzes"),
     finder: readYamlDir(root, "finder"),
     newsletter: readYamlDir(root, "newsletter"),
+    reports: fs.existsSync(path.join(root, "reports"))
+      ? fs
+          .readdirSync(path.join(root, "reports"))
+          .filter((name) => /^\d{4}-\d{2}\.json$/.test(name))
+          .map((name) => name.slice(0, -5))
+          .sort()
+      : [],
   };
 }
 
