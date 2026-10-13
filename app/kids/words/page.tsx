@@ -23,7 +23,7 @@ export default function KidWordsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.14),transparent_60%)]">
         <div className="container-page pb-10 pt-10 sm:pt-12">
-          <Breadcrumbs items={[{ href: "/kids/", label: "For kids" }]} />
+          <Breadcrumbs items={[{ href: "/kids/", label: "For kids" }]} current={{ href: "/kids/words/", label: "Words to know" }} />
           <h1 className="text-4xl font-semibold text-text sm:text-5xl">Words to know</h1>
           <p className="mt-4 max-w-2xl text-xl leading-relaxed text-[#d5def2]">Simple meanings for words you will see in the lessons. Each word links to the lesson that uses it.</p>
         </div>

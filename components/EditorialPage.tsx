@@ -7,6 +7,7 @@ export function EditorialPage({
   title,
   description,
   crumbs,
+  current,
   serif = true,
   support = true,
   children,
@@ -17,6 +18,8 @@ export function EditorialPage({
   title: string;
   description?: React.ReactNode;
   crumbs?: Crumb[];
+  /** The page itself, for the structured breadcrumb trail. */
+  current?: Crumb;
   serif?: boolean;
   support?: boolean;
   children: React.ReactNode;
@@ -26,7 +29,7 @@ export function EditorialPage({
 }) {
   return (
     <>
-      <PageHeader eyebrow={eyebrow} title={title} description={description} crumbs={crumbs}>
+      <PageHeader eyebrow={eyebrow} title={title} description={description} crumbs={crumbs} current={current}>
         {headerExtra}
       </PageHeader>
       <div className="container-page py-12">

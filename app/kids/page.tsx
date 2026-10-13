@@ -35,7 +35,7 @@ export default function KidsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.18),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(167,139,250,0.14),transparent_55%)]">
         <div className="container-page pb-12 pt-10 sm:pt-14">
-          <Breadcrumbs items={[{ href: "/learn/", label: "Learn" }]} />
+          <Breadcrumbs items={[{ href: "/learn/", label: "Learn" }]} current={{ href: "/kids/", label: "For kids" }} />
           <p className="eyebrow">For kids</p>
           <h1 className="mt-2 max-w-3xl text-4xl font-semibold leading-tight text-text sm:text-5xl">AI and Super Intelligence, explained for kids</h1>
           <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#d5def2]">
