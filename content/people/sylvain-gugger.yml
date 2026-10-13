@@ -1,0 +1,100 @@
+slug: sylvain-gugger
+name: Sylvain Gugger
+initials: SG
+groups: [open-source, engineering]
+sector: null
+specialties: [ml-frameworks, training-systems, education]
+headline: Former core maintainer of Hugging Face Transformers and co-author of Deep Learning for Coders
+bio:
+  text: >-
+    Sylvain Gugger's GitHub profile lists past work at Hugging Face and fast.ai. Hugging Face's LLM
+    Course describes Gugger as a Research Engineer at Hugging Face and one of the core maintainers
+    of the Transformers library, and as a former Research Scientist at fast.ai who co-wrote Deep
+    Learning for Coders with fastai and PyTorch with Jeremy Howard. Gugger is a co-author of the
+    paper that introduced the Transformers library and is listed first in the citation for
+    Accelerate, Hugging Face's thin wrapper for running PyTorch training loops on multiple GPUs,
+    TPUs, or mixed precision without boilerplate code.
+  source_ids: [github-profile, hf-course, transformers-paper, accelerate-readme]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Research Engineer and one of the core maintainers of the Transformers library
+    current: false
+    source_ids: [hf-course, github-profile]
+  - name: fast.ai
+    organization_slug: null
+    role: Research Scientist
+    current: false
+    source_ids: [hf-course, github-profile]
+work:
+  - name: Transformers
+    artifact_slug: transformers
+    type: open-source
+    url: https://github.com/huggingface/transformers
+    contribution: >-
+      Co-author of the 2019 paper introducing Hugging Face's Transformers library (arXiv
+      1910.03771), and described on Hugging Face's LLM Course page as one of the library's core
+      maintainers. The repository is released under the Apache 2.0 license.
+    source_ids: [transformers-paper, hf-course, transformers-readme]
+  - name: Accelerate
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/huggingface/accelerate
+    contribution: >-
+      Listed first among the authors in the citation entry of the Accelerate README (2022). The
+      Apache-2.0 library lets people who write their own PyTorch training loops run them in
+      distributed or mixed-precision setups.
+    source_ids: [accelerate-readme]
+  - name: Deep Learning for Coders with fastai and PyTorch
+    artifact_slug: null
+    type: open-research
+    url: null
+    contribution: >-
+      Co-wrote the book with Jeremy Howard, according to the author biographies on Hugging Face's
+      LLM Course page.
+    source_ids: [hf-course]
+links:
+  - label: GitHub
+    url: https://github.com/sgugger
+  - label: Hugging Face
+    url: https://huggingface.co/sgugger
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: sgugger (Sylvain Gugger) on GitHub
+    url: https://github.com/sgugger
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hf-course
+    title: Hugging Face LLM Course, Chapter 1 introduction (About the authors)
+    url: https://huggingface.co/learn/llm-course/chapter1/1
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: transformers-paper
+    title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
+    url: https://arxiv.org/abs/1910.03771
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-09
+    accessed_at: 2026-10-13
+  - id: transformers-readme
+    title: huggingface/transformers README (citation) and LICENSE (Apache-2.0)
+    url: https://github.com/huggingface/transformers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: accelerate-readme
+    title: huggingface/accelerate README (purpose and citation) and LICENSE (Apache-2.0)
+    url: https://github.com/huggingface/accelerate
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

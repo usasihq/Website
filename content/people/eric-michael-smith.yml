@@ -1,0 +1,121 @@
+slug: eric-michael-smith
+name: Eric Michael Smith
+initials: EMS
+groups: [engineering]
+sector: corporate
+specialties: [safety-alignment, evaluation, language-models]
+headline: Research scientist at Meta; first author of HolisticBias and a core contributor to Llama 3
+bio:
+  text: >-
+    Eric Michael Smith is a research scientist at Meta; Meta's people page describes Smith as a
+    research engineer at Facebook AI Research (FAIR). Smith is first author of the HolisticBias paper
+    (2022), which presents a bias-measurement dataset of nearly 600 descriptor terms across 13
+    demographic axes, and co-authored Llama 2 (2023), Llama Guard 3 Vision (2024), and the open-domain
+    chatbot papers Recipes for Building an Open-Domain Chatbot (2020) and BlenderBot 3 (2022). Smith
+    is listed among the core contributors of The Llama 3 Herd of Models (2024) and among the authors of
+    Meta's Muse Spark Safety & Preparedness Report (2026).
+  source_ids: [meta-profile, holisticbias-paper, llama2-paper, llamaguard3v-paper, blender-paper, bb3-paper, llama3-paper, muse-report]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Meta (Facebook AI Research, FAIR)
+    organization_slug: meta
+    role: Research Scientist (the page's bio describes a Research Engineer role at FAIR)
+    current: true
+    source_ids: [meta-profile, muse-report]
+work:
+  - name: Llama 2, Llama 3, and Llama Guard 3 Vision
+    artifact_slug: llama
+    type: open-weights
+    url: https://arxiv.org/abs/2407.21783
+    contribution: >-
+      Co-author of Llama 2 (2023), listed among the core contributors of The Llama 3 Herd of Models
+      (2024), and co-author of Llama Guard 3 Vision (2024), a multimodal safeguard model fine-tuned on
+      Llama 3.2-Vision.
+    source_ids: [llama2-paper, llama3-paper, llamaguard3v-paper, meta-profile]
+  - name: Muse Spark Safety & Preparedness Report
+    artifact_slug: meta-muse
+    type: open-research
+    url: https://arxiv.org/abs/2606.12429
+    contribution: >-
+      Listed among the authors of the Muse Spark Safety & Preparedness Report (2026), which presents
+      Meta's catastrophic-risk evaluations and broader safety analysis for the Muse Spark model.
+    source_ids: [muse-report]
+  - name: HolisticBias
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/ResponsibleNLP
+    contribution: >-
+      First author of "I'm sorry to hear that": Finding New Biases in Language Models with a Holistic
+      Descriptor Dataset (2022), which introduces HolisticBias; the facebookresearch/ResponsibleNLP
+      license file publishes the HolisticBias code under the MIT License.
+    source_ids: [holisticbias-paper, responsiblenlp-license]
+links:
+  - label: Meta AI profile
+    url: https://ai.meta.com/people/381250488207240/eric-michael-smith/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: meta-profile
+    title: Eric Michael Smith — AI at Meta people page
+    url: https://ai.meta.com/people/381250488207240/eric-michael-smith/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: holisticbias-paper
+    title: "\"I'm sorry to hear that\": Finding New Biases in Language Models with a Holistic Descriptor Dataset (arXiv 2205.09209)"
+    url: https://arxiv.org/abs/2205.09209
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-05-18
+    accessed_at: 2026-10-13
+  - id: responsiblenlp-license
+    title: facebookresearch/ResponsibleNLP LICENSE (MIT for the HolisticBias code)
+    url: https://github.com/facebookresearch/ResponsibleNLP/blob/main/LICENSE
+    publisher: Meta (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: llama2-paper
+    title: "Llama 2: Open Foundation and Fine-Tuned Chat Models (arXiv 2307.09288)"
+    url: https://arxiv.org/abs/2307.09288
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-07-18
+    accessed_at: 2026-10-13
+  - id: llama3-paper
+    title: The Llama 3 Herd of Models (arXiv 2407.21783), including the contributor appendix
+    url: https://arxiv.org/abs/2407.21783
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-07-31
+    accessed_at: 2026-10-13
+  - id: llamaguard3v-paper
+    title: "Llama Guard 3 Vision: Safeguarding Human-AI Image Understanding Conversations (arXiv 2411.10414)"
+    url: https://arxiv.org/abs/2411.10414
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-11-15
+    accessed_at: 2026-10-13
+  - id: blender-paper
+    title: Recipes for building an open-domain chatbot (arXiv 2004.13637)
+    url: https://arxiv.org/abs/2004.13637
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-04-28
+    accessed_at: 2026-10-13
+  - id: bb3-paper
+    title: "BlenderBot 3: a deployed conversational agent that continually learns to responsibly engage (arXiv 2208.03188)"
+    url: https://arxiv.org/abs/2208.03188
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-08-05
+    accessed_at: 2026-10-13
+  - id: muse-report
+    title: Muse Spark Safety & Preparedness Report (arXiv 2606.12429)
+    url: https://arxiv.org/abs/2606.12429
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-05-14
+    accessed_at: 2026-10-13

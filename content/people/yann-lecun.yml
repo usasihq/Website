@@ -1,0 +1,74 @@
+slug: yann-lecun
+name: Yann LeCun
+initials: YL
+groups: [leadership, engineering]
+sector: corporate
+specialties: [vision, robotics, ml-theory]
+headline: Executive Chairman of AMI Labs and NYU professor; former Chief AI Scientist at Meta and co-author of V-JEPA 2
+bio:
+  text: >-
+    Yann LeCun is the Executive Chairman of Advanced Machine Intelligence (AMI Labs) and the Jacob T.
+    Schwartz Professor at New York University, affiliated with the Courant Institute. LeCun was the
+    Chief AI Scientist at Meta from 2018 to 2025, the founding Director of Facebook AI Research
+    (FAIR) from 2013 to 2017, and the founding Director of the NYU Center for Data Science from 2011
+    to 2014, after research positions at AT&T Bell Laboratories, AT&T Labs and the NEC Research
+    Institute. LeCun's bio credits LeCun with the convolutional network method, and LeCun is a
+    co-author of V-JEPA 2, a self-supervised video model for understanding, prediction and robot
+    planning.
+  source_ids: [lecun-bio, vjepa2-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Advanced Machine Intelligence (AMI Labs)
+    organization_slug: null
+    role: Executive Chairman
+    current: true
+    source_ids: [lecun-bio]
+  - name: New York University
+    organization_slug: new-york-university
+    role: Jacob T. Schwartz Professor, affiliated with the Courant Institute
+    current: true
+    source_ids: [lecun-bio]
+  - name: Meta
+    organization_slug: meta
+    role: Chief AI Scientist (2018–2025); founding Director of Facebook AI Research (2013–2017)
+    current: false
+    source_ids: [lecun-bio]
+work:
+  - name: V-JEPA 2
+    artifact_slug: v-jepa-2
+    type: open-research
+    url: https://arxiv.org/abs/2506.09985
+    contribution: >-
+      Co-author of "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and
+      Planning" (2025), which pre-trains a joint-embedding-predictive architecture on internet video
+      and post-trains an action-conditioned world model, V-JEPA 2-AC, for robot planning.
+    source_ids: [vjepa2-paper]
+  - name: Convolutional networks
+    artifact_slug: null
+    type: open-research
+    url: null
+    contribution: >-
+      LeCun's published bio credits LeCun with the convolutional network method, which it
+      describes as used for image, video and speech recognition.
+    source_ids: [lecun-bio]
+links:
+  - label: NYU Courant profile
+    url: https://cims.nyu.edu/people/profiles/LECUN_Yann.html
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: lecun-bio
+    title: Biographies of Yann LeCun (linked from LeCun's home page)
+    url: https://docs.google.com/document/d/1liH9utlyETxvywBQAaXWRcK-l-qV9SCFTEVG0QJLktI/edit?usp=sharing
+    publisher: Yann LeCun
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: vjepa2-paper
+    title: "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning (arXiv 2506.09985)"
+    url: https://arxiv.org/abs/2506.09985
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-11
+    accessed_at: 2026-10-13

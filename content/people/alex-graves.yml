@@ -1,0 +1,75 @@
+slug: alex-graves
+name: Alex Graves
+initials: AG
+groups: [engineering]
+sector: null
+specialties: [ml-theory, speech-audio]
+headline: First author of Neural Turing Machines and of the Google DeepMind differentiable neural computer paper
+bio:
+  text: >-
+    Alex Graves's University of Toronto homepage lists research interests in recurrent neural
+    networks, especially LSTM, supervised sequence labelling such as speech and handwriting
+    recognition, and unsupervised sequence learning, along with papers including "Generating
+    Sequences With Recurrent Neural Networks". The homepage describes a CIFAR Junior Fellowship in
+    the Department of Computer Science at the University of Toronto, supervised by Geoffrey Hinton. Graves is first author of "Neural Turing Machines" (2014), which couples
+    neural networks to an external memory, and of the 2016 Nature paper on the differentiable neural
+    computer, whose authors are listed with Google DeepMind affiliations.
+  source_ids: [graves-site, ntm-paper, dnc-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Author affiliated with Google DeepMind on the 2016 Nature paper on the differentiable neural computer
+    current: false
+    source_ids: [dnc-paper]
+  - name: University of Toronto (Department of Computer Science)
+    organization_slug: null
+    role: CIFAR Junior Fellow supervised by Geoffrey Hinton
+    current: false
+    source_ids: [graves-site]
+work:
+  - name: Differentiable neural computer
+    artifact_slug: null
+    type: open-research
+    url: https://www.nature.com/articles/nature20101
+    contribution: >-
+      First author of "Hybrid computing using a neural network with dynamic external memory" (Nature,
+      October 2016), whose authors are listed with Google DeepMind affiliations.
+    source_ids: [dnc-paper]
+  - name: Neural Turing Machines
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1410.5401
+    contribution: >-
+      First author, with Greg Wayne and Ivo Danihelka, of the 2014 paper that couples neural networks
+      to external memory resources through attention, giving a system that is differentiable end to
+      end and can infer simple algorithms such as copying and sorting.
+    source_ids: [ntm-paper]
+links:
+  - label: Website (University of Toronto)
+    url: https://www.cs.toronto.edu/~graves/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: graves-site
+    title: Home Page of Alex Graves
+    url: https://www.cs.toronto.edu/~graves/
+    publisher: Alex Graves (University of Toronto)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ntm-paper
+    title: Neural Turing Machines (arXiv 1410.5401)
+    url: https://arxiv.org/abs/1410.5401
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-10-20
+    accessed_at: 2026-10-13
+  - id: dnc-paper
+    title: Hybrid computing using a neural network with dynamic external memory (Nature 538)
+    url: https://www.nature.com/articles/nature20101
+    publisher: Nature
+    kind: paper
+    published_at: 2016-10
+    accessed_at: 2026-10-13

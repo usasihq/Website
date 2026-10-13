@@ -1,0 +1,88 @@
+slug: matei-zaharia
+name: Matei Zaharia
+initials: MZ
+groups: [leadership, open-source, engineering]
+sector: academic
+specialties: [training-systems, developer-tools, data]
+headline: Started Apache Spark, helped develop MLflow and co-authored DSPy; UC Berkeley professor and Databricks CTO
+bio:
+  text: >-
+    Matei Zaharia is an associate professor at UC Berkeley, working on computer systems and AI in the
+    Sky Lab, and a co-founder and the CTO of Databricks. During PhD work Zaharia started the Apache
+    Spark project and co-started Apache Mesos and Spark Streaming; at Databricks, Zaharia helped
+    develop MLflow and Delta Lake. Zaharia's recent projects include the DSPy framework for LLM
+    programs, the GEPA optimizer and the LOTUS engine for semantic queries, and Zaharia is a co-author
+    of the DSPy paper.
+  source_ids: [zaharia-site, dspy-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: University of California, Berkeley
+    organization_slug: uc-berkeley
+    role: Associate Professor of EECS
+    current: true
+    source_ids: [zaharia-site]
+  - name: Databricks
+    organization_slug: databricks
+    role: Co-founder and CTO
+    current: true
+    source_ids: [zaharia-site]
+work:
+  - name: MLflow
+    artifact_slug: mlflow
+    type: open-source
+    url: https://mlflow.org
+    contribution: >-
+      Zaharia's homepage says Zaharia helped develop MLflow at Databricks. The mlflow/mlflow
+      repository is published under the Apache-2.0 license.
+    source_ids: [zaharia-site, mlflow-repo]
+  - name: DSPy
+    artifact_slug: dspy
+    type: open-source
+    url: https://dspy.ai/
+    contribution: >-
+      Co-author of "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines"
+      (2023); Zaharia's homepage lists DSPy among Zaharia's recent projects. The DSPy repository is
+      MIT-licensed.
+    source_ids: [dspy-paper, zaharia-site, dspy-repo]
+  - name: Apache Spark
+    artifact_slug: null
+    type: open-source
+    url: https://spark.apache.org
+    contribution: >-
+      Started the Apache Spark project during PhD work, according to Zaharia's homepage.
+    source_ids: [zaharia-site]
+links:
+  - label: Website
+    url: https://people.eecs.berkeley.edu/~matei/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: zaharia-site
+    title: Matei Zaharia's Homepage
+    url: https://people.eecs.berkeley.edu/~matei/
+    publisher: Matei Zaharia (UC Berkeley EECS)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: dspy-paper
+    title: "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines (arXiv 2310.03714)"
+    url: https://arxiv.org/abs/2310.03714
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-05
+    accessed_at: 2026-10-13
+  - id: dspy-repo
+    title: stanfordnlp/dspy README and license (MIT)
+    url: https://github.com/stanfordnlp/dspy
+    publisher: stanfordnlp (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: mlflow-repo
+    title: mlflow/mlflow repository (Apache-2.0 license)
+    url: https://github.com/mlflow/mlflow
+    publisher: MLflow (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

@@ -1,0 +1,72 @@
+slug: aran-komatsuzaki
+name: Aran Komatsuzaki
+initials: AK
+groups: [open-source, engineering]
+sector: null
+specialties: [language-models, data]
+headline: Co-author of the GPT-J-6B open model; first author of the Sparse Upcycling paper from Google Research
+bio:
+  text: >-
+    Aran Komatsuzaki works on generative AI and, by Komatsuzaki's own account, co-led the
+    development of GPT-J in 2021 and of the LAION image-text datasets. The GPT-J repository's
+    citation entry for the GPT-J-6B weights, released under the Apache 2.0 license, names Ben Wang
+    and Komatsuzaki as authors. During a 2022 internship at Google Research, Komatsuzaki
+    co-proposed sparse upcycling, a way to turn a pretrained dense model into a mixture-of-experts
+    model, and is first author of the paper that introduced it.
+  source_ids: [aran-about, gptj-readme, upcycling-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google Research
+    organization_slug: google
+    role: Intern (2022)
+    current: false
+    source_ids: [aran-about]
+work:
+  - name: GPT-J-6B
+    artifact_slug: null
+    type: open-weights
+    url: https://github.com/kingoflolz/mesh-transformer-jax
+    contribution: >-
+      Named with Ben Wang as an author in the repository's citation entry for the GPT-J-6B weights,
+      which the README says are licensed under Apache 2.0, and thanked there for advice on
+      experiment design and for writing the blog posts.
+    source_ids: [gptj-readme, aran-about]
+  - name: Sparse Upcycling
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2212.05055
+    contribution: >-
+      First author of "Sparse Upcycling: Training Mixture-of-Experts from Dense Checkpoints"
+      (2022), which reuses a dense checkpoint to initialize a sparsely activated mixture-of-experts
+      model.
+    source_ids: [upcycling-paper, aran-about]
+links:
+  - label: Website
+    url: https://arankomatsuzaki.wordpress.com/about-me/
+  - label: GitHub
+    url: https://github.com/AranKomat
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: aran-about
+    title: About Me — Aran Komatsuzaki
+    url: https://arankomatsuzaki.wordpress.com/about-me/
+    publisher: Aran Komatsuzaki
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gptj-readme
+    title: kingoflolz/mesh-transformer-jax README (GPT-J-6B acknowledgments, license, and citation)
+    url: https://github.com/kingoflolz/mesh-transformer-jax
+    publisher: kingoflolz (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: upcycling-paper
+    title: "Sparse Upcycling: Training Mixture-of-Experts from Dense Checkpoints (arXiv 2212.05055)"
+    url: https://arxiv.org/abs/2212.05055
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-12-09
+    accessed_at: 2026-10-13

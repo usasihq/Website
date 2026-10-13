@@ -1,0 +1,74 @@
+slug: eric-mitchell
+name: Eric Mitchell
+initials: EM
+groups: [engineering]
+sector: corporate
+specialties: [language-models, reinforcement-learning]
+headline: Co-lead of OpenAI's Post-training Frontiers team; co-author of Direct Preference Optimization (DPO)
+bio:
+  text: >-
+    Eric Mitchell co-leads the Post-training Frontiers team at OpenAI with Yann Dubois, a team that
+    post-trains and deploys large models such as o1, o3, and GPT-5-Thinking. Mitchell earned a PhD
+    in computer science at Stanford, advised by Chelsea Finn and Christopher D. Manning, with work on
+    making language models more trustworthy and easier to use. During that time Mitchell co-authored
+    the Direct Preference Optimization (DPO) paper and was first author of DetectGPT, a zero-shot
+    method for detecting machine-generated text.
+  source_ids: [mitchell-site, dpo-paper, detectgpt-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: OpenAI
+    organization_slug: openai
+    role: Co-lead of the Post-training Frontiers team (with Yann Dubois)
+    current: true
+    source_ids: [mitchell-site]
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: PhD student in Computer Science, advised by Chelsea Finn and Christopher D. Manning
+    current: false
+    source_ids: [mitchell-site]
+work:
+  - name: Direct Preference Optimization (DPO)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2305.18290
+    contribution: >-
+      Co-author, with Rafael Rafailov, Archit Sharma, Stefano Ermon, Christopher D. Manning, and
+      Chelsea Finn, of the 2023 paper that introduced DPO for training language models directly from
+      preference data.
+    source_ids: [dpo-paper]
+  - name: DetectGPT
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2301.11305
+    contribution: >-
+      First author of the 2023 paper on zero-shot detection of machine-generated text using
+      probability curvature.
+    source_ids: [detectgpt-paper]
+links:
+  - label: Website
+    url: https://ericmitchell.ai
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: mitchell-site
+    title: Eric Mitchell — homepage
+    url: https://ericmitchell.ai
+    publisher: Eric Mitchell
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: dpo-paper
+    title: "Direct Preference Optimization: Your Language Model is Secretly a Reward Model (arXiv 2305.18290)"
+    url: https://arxiv.org/abs/2305.18290
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-29
+    accessed_at: 2026-10-13
+  - id: detectgpt-paper
+    title: "DetectGPT: Zero-Shot Machine-Generated Text Detection using Probability Curvature (arXiv 2301.11305)"
+    url: https://arxiv.org/abs/2301.11305
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-01-26
+    accessed_at: 2026-10-13

@@ -1,0 +1,95 @@
+slug: wei-ning-hsu
+name: Wei-Ning Hsu
+initials: WH
+groups: [engineering]
+sector: corporate
+specialties: [speech-audio, multimodal, generative-media]
+headline: Research scientist at Meta AI (formerly FAIR); first author of HuBERT
+bio:
+  text: >-
+    Wei-Ning Hsu is a research scientist at Meta AI (formerly FAIR), working on representation
+    learning, self-supervised learning, and generative modeling for speech, including multimodal
+    speech. Hsu is first author of HuBERT, a self-supervised speech representation model that
+    predicts hidden units for masked regions, and Hsu's homepage also highlights Audio-Visual HuBERT,
+    data2vec, wav2vec-U, and textless speech-to-speech translation. Meta's people page lists Hsu as
+    a co-author of more recent work such as SAM Audio: Segment Anything in Audio (2025).
+  source_ids: [meta-profile, hsu-site, hubert-paper, data2vec-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Meta AI (FAIR)
+    organization_slug: meta
+    role: Research Scientist
+    current: true
+    source_ids: [meta-profile, hsu-site, github-profile]
+work:
+  - name: HuBERT
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2106.07447
+    contribution: >-
+      First author of HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of
+      Hidden Units (2021), which uses an offline clustering step to provide target labels for a
+      BERT-like prediction loss over masked speech.
+    source_ids: [hubert-paper, hsu-site]
+  - name: data2vec
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2202.03555
+    contribution: >-
+      Co-author of data2vec (2022), a self-supervised learning framework that uses the same method
+      for speech, vision, and language; the paper says models and code are available in the fairseq
+      repository.
+    source_ids: [data2vec-paper, data2vec-pdf, hsu-site]
+links:
+  - label: Website
+    url: https://wnhsu.github.io/
+  - label: GitHub
+    url: https://github.com/wnhsu
+  - label: Meta AI profile
+    url: https://ai.meta.com/people/1121169632408298/wei-ning-hsu/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: meta-profile
+    title: Wei-Ning Hsu — AI at Meta people page
+    url: https://ai.meta.com/people/1121169632408298/wei-ning-hsu/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hsu-site
+    title: Wei-Ning Hsu — homepage
+    url: https://wnhsu.github.io/
+    publisher: Wei-Ning Hsu
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: wnhsu (Wei-Ning Hsu) on GitHub
+    url: https://github.com/wnhsu
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hubert-paper
+    title: "HuBERT: Self-Supervised Speech Representation Learning by Masked Prediction of Hidden Units (arXiv 2106.07447)"
+    url: https://arxiv.org/abs/2106.07447
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-06-14
+    accessed_at: 2026-10-13
+  - id: data2vec-paper
+    title: "data2vec: A General Framework for Self-supervised Learning in Speech, Vision and Language (arXiv 2202.03555)"
+    url: https://arxiv.org/abs/2202.03555
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-02-07
+    accessed_at: 2026-10-13
+  - id: data2vec-pdf
+    title: "data2vec — paper PDF (author affiliation: Meta AI; code statement)"
+    url: https://arxiv.org/pdf/2202.03555
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-02-07
+    accessed_at: 2026-10-13

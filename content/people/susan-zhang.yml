@@ -1,0 +1,85 @@
+slug: susan-zhang
+name: Susan Zhang
+initials: SZ
+groups: [engineering, open-source]
+sector: null
+specialties: [training-systems, language-models, reinforcement-learning]
+headline: Co-first author of Meta AI's OPT; built LLM training infrastructure at FAIR and RL systems for OpenAI Five
+bio:
+  text: >-
+    Susan Zhang's homepage describes work building large-scale systems for data and models, including
+    a reinforcement learning system at OpenAI for OpenAI Five and the LLM training infrastructure at
+    Meta AI / FAIR that created OPT-175B. Zhang is one of three equal-contribution first authors of OPT:
+    Open Pre-trained Transformer Language Models (2022), a suite of decoder-only models from 125M to
+    175B parameters; the release included a logbook of the training run and the full training
+    codebase, metaseq, which is published under the MIT License. Zhang is also a co-author of the
+    OpenAI paper Dota 2 with Large Scale Deep Reinforcement Learning (2019).
+  source_ids: [zhang-site, opt-paper, metaseq-license, dota-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Meta AI / FAIR
+    organization_slug: meta
+    role: Built the LLM training infrastructure that created OPT-175B
+    current: false
+    source_ids: [zhang-site, opt-paper]
+  - name: OpenAI
+    organization_slug: openai
+    role: Developed a reinforcement learning system for OpenAI Five
+    current: false
+    source_ids: [zhang-site, dota-paper]
+work:
+  - name: OPT and metaseq
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/metaseq
+    contribution: >-
+      One of three equal-contribution first authors of OPT (2022), with Stephen Roller and Naman Goyal.
+      Zhang's homepage says the OPT-175B release included the 175B research model, a 114-page training
+      logbook, the full training codebase, and smaller models from 125M to 66B parameters; the metaseq
+      repository is published under the MIT License.
+    source_ids: [opt-paper, zhang-site, metaseq-license]
+  - name: OpenAI Five
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1912.06680
+    contribution: >-
+      Co-author of Dota 2 with Large Scale Deep Reinforcement Learning (2019), which describes the
+      distributed training system used to train OpenAI Five.
+    source_ids: [dota-paper, zhang-site]
+links:
+  - label: Website
+    url: https://suchenzang.github.io/
+  - label: GitHub
+    url: https://github.com/suchenzang
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: zhang-site
+    title: Susan Zhang — about me (homepage)
+    url: https://suchenzang.github.io/
+    publisher: Susan Zhang
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: opt-paper
+    title: "OPT: Open Pre-trained Transformer Language Models (arXiv 2205.01068), author list and Meta AI affiliation"
+    url: https://arxiv.org/abs/2205.01068
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-05-02
+    accessed_at: 2026-10-13
+  - id: metaseq-license
+    title: facebookresearch/metaseq LICENSE (MIT)
+    url: https://github.com/facebookresearch/metaseq/blob/main/LICENSE
+    publisher: Meta (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: dota-paper
+    title: Dota 2 with Large Scale Deep Reinforcement Learning (arXiv 1912.06680)
+    url: https://arxiv.org/abs/1912.06680
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-13
+    accessed_at: 2026-10-13

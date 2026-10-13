@@ -1,0 +1,104 @@
+slug: lewis-tunstall
+name: Lewis Tunstall
+initials: LT
+groups: [open-source, engineering]
+sector: corporate
+specialties: [language-models, reinforcement-learning, ml-frameworks]
+headline: Works on post-training at Hugging Face; first author of Zephyr and a listed author of TRL
+bio:
+  text: >-
+    Lewis Tunstall works on post-training at Hugging Face, according to Tunstall's GitHub profile,
+    and Hugging Face's LLM Course describes Tunstall as a machine learning engineer focused on
+    developing open-source tools. Tunstall is first author of the Zephyr paper (2023), which
+    aligned a smaller chat model with distilled direct preference optimization on AI-feedback
+    data, and is listed first in the citation for the Alignment Handbook, a set of training
+    recipes for aligning language models. Tunstall is also listed among the authors of TRL,
+    Hugging Face's Apache-2.0 post-training library, and co-wrote the O'Reilly book Natural
+    Language Processing with Transformers.
+  source_ids: [github-profile, hf-course, zephyr-paper, alignment-handbook, trl-citation]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Machine learning engineer working on post-training
+    current: true
+    source_ids: [github-profile, hf-course]
+work:
+  - name: TRL (Transformers Reinforcement Learning)
+    artifact_slug: trl
+    type: open-source
+    url: https://github.com/huggingface/trl
+    contribution: >-
+      Listed among the authors in TRL's citation file. TRL is an Apache-2.0 toolkit for
+      post-training transformer models, with implementations of SFT, reward modeling, DPO, and
+      GRPO.
+    source_ids: [trl-citation]
+  - name: Zephyr
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2310.16944
+    contribution: >-
+      First author of "Zephyr: Direct Distillation of LM Alignment" (2023), which trained a smaller
+      chat model with distilled supervised fine-tuning and distilled direct preference
+      optimization on preference data ranked by a teacher model.
+    source_ids: [zephyr-paper]
+  - name: The Alignment Handbook
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/huggingface/alignment-handbook
+    contribution: >-
+      Listed first in the citation entry of the repository, which provides training recipes for
+      continued pretraining and for aligning language models with human and AI preferences.
+    source_ids: [alignment-handbook]
+  - name: Natural Language Processing with Transformers (O'Reilly)
+    artifact_slug: null
+    type: open-research
+    url: null
+    contribution: >-
+      Co-author of the O'Reilly book, according to the author biographies on Hugging Face's LLM
+      Course page.
+    source_ids: [hf-course]
+links:
+  - label: GitHub
+    url: https://github.com/lewtun
+  - label: Hugging Face
+    url: https://huggingface.co/lewtun
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: lewtun (Lewis Tunstall) on GitHub
+    url: https://github.com/lewtun
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: hf-course
+    title: Hugging Face LLM Course, Chapter 1 introduction (About the authors)
+    url: https://huggingface.co/learn/llm-course/chapter1/1
+    publisher: Hugging Face
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: zephyr-paper
+    title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
+    url: https://arxiv.org/abs/2310.16944
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-25
+    accessed_at: 2026-10-13
+  - id: alignment-handbook
+    title: huggingface/alignment-handbook README (citation) and LICENSE (Apache-2.0)
+    url: https://github.com/huggingface/alignment-handbook
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: trl-citation
+    title: huggingface/trl CITATION.cff (authors, license Apache-2.0)
+    url: https://github.com/huggingface/trl/blob/main/CITATION.cff
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

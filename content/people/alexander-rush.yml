@@ -1,0 +1,100 @@
+slug: alexander-rush
+name: Sasha Rush
+initials: SR
+groups: [engineering, open-source]
+sector: corporate
+specialties: [language-models, education]
+headline: ML researcher at Cursor; former Cornell and Harvard professor and Hugging Face researcher
+bio:
+  text: >-
+    Sasha Rush (Alexander M. Rush in paper bylines) is an ML researcher at Cursor who studies
+    post-training of AI systems for coding and related tasks. From 2016 to 2026 Rush was a
+    professor at Harvard and then Cornell, and from 2019 to 2024 Rush also worked as a researcher
+    at Hugging Face, helping on early open-source LLM projects. Rush is a co-author of the paper
+    that introduced Hugging Face's Transformers library and of the Zephyr alignment paper, wrote
+    The Annotated Transformer (2018), and helped start the Conference on Language Modeling in 2024.
+  source_ids: [rush-site, github-profile, transformers-paper, zephyr-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Cursor (Anysphere)
+    organization_slug: anysphere
+    role: ML Researcher
+    current: true
+    source_ids: [rush-site, github-profile]
+  - name: Cornell University
+    organization_slug: cornell-university
+    role: Professor
+    current: false
+    source_ids: [rush-site]
+  - name: Harvard University
+    organization_slug: harvard-university
+    role: Professor
+    current: false
+    source_ids: [rush-site]
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Researcher
+    current: false
+    source_ids: [rush-site]
+work:
+  - name: Transformers
+    artifact_slug: transformers
+    type: open-research
+    url: https://arxiv.org/abs/1910.03771
+    contribution: >-
+      Co-author of the paper introducing Hugging Face's Transformers library (arXiv 2019; EMNLP
+      2020 demos), listed on Rush's homepage.
+    source_ids: [transformers-paper, rush-site]
+  - name: Zephyr
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2310.16944
+    contribution: >-
+      Co-author of "Zephyr: Direct Distillation of LM Alignment" (2023; COLM 2024), on aligning a
+      smaller chat model with distilled direct preference optimization.
+    source_ids: [zephyr-paper, rush-site]
+  - name: The Annotated Transformer
+    artifact_slug: null
+    type: open-research
+    url: null
+    contribution: >-
+      Sole author of The Annotated Transformer, presented at the ACL 2018 NLP-OSS workshop, per
+      Rush's publication list.
+    source_ids: [rush-site]
+links:
+  - label: Website
+    url: https://rush-nlp.com
+  - label: GitHub
+    url: https://github.com/srush
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: rush-site
+    title: Sasha Rush — homepage (bio and selected publications)
+    url: https://rush-nlp.com/
+    publisher: Sasha Rush
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: srush (Sasha Rush) on GitHub
+    url: https://github.com/srush
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: transformers-paper
+    title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
+    url: https://arxiv.org/abs/1910.03771
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-09
+    accessed_at: 2026-10-13
+  - id: zephyr-paper
+    title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
+    url: https://arxiv.org/abs/2310.16944
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-25
+    accessed_at: 2026-10-13

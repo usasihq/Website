@@ -1,0 +1,105 @@
+slug: younes-belkada
+name: Younes Belkada
+initials: YB
+groups: [open-source, engineering]
+sector: null
+specialties: [language-models, inference, reinforcement-learning]
+headline: Listed author of Hugging Face's TRL library and co-author of the StarCoder2, Zephyr, and LLM.int8() papers
+bio:
+  text: >-
+    Younes Belkada is listed among the authors of TRL, Hugging Face's Apache-2.0 library for
+    post-training transformer models, and is a co-author of the Zephyr and StarCoder2 papers.
+    DeepLearning.AI's short course Quantization Fundamentals with Hugging Face names Belkada as an
+    instructor and a Machine Learning Engineer at Hugging Face. Belkada is also a co-author of
+    LLM.int8() (2022), which described 8-bit matrix multiplication that made inference with very
+    large transformer models possible on a single server with consumer GPUs. Belkada's 2026 paper
+    on learnable multipliers for language model matrix layers lists the Falcon LLM Team as
+    Belkada's affiliation.
+  source_ids: [trl-citation, zephyr-paper, starcoder2-paper, dlai-course, llm-int8-paper, learnable-multipliers-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Machine Learning Engineer
+    current: false
+    source_ids: [dlai-course]
+work:
+  - name: TRL (Transformers Reinforcement Learning)
+    artifact_slug: trl
+    type: open-source
+    url: https://github.com/huggingface/trl
+    contribution: >-
+      Listed among the authors in TRL's citation file; TRL is an Apache-2.0 toolkit for
+      post-training transformer models with SFT, reward modeling, DPO, and GRPO.
+    source_ids: [trl-citation]
+  - name: StarCoder2
+    artifact_slug: starcoder2
+    type: open-research
+    url: https://arxiv.org/abs/2402.19173
+    contribution: >-
+      Co-author of "StarCoder 2 and The Stack v2: The Next Generation" (2024).
+    source_ids: [starcoder2-paper]
+  - name: Zephyr
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2310.16944
+    contribution: >-
+      Co-author of "Zephyr: Direct Distillation of LM Alignment" (2023), on aligning a smaller chat
+      model with distilled direct preference optimization.
+    source_ids: [zephyr-paper]
+  - name: LLM.int8()
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2208.07339
+    contribution: >-
+      Co-author, with Tim Dettmers, Mike Lewis, and Luke Zettlemoyer, of "LLM.int8(): 8-bit Matrix
+      Multiplication for Transformers at Scale" (2022); the abstract says the software is open
+      source.
+    source_ids: [llm-int8-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: trl-citation
+    title: huggingface/trl CITATION.cff (authors, license Apache-2.0)
+    url: https://github.com/huggingface/trl/blob/main/CITATION.cff
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: zephyr-paper
+    title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
+    url: https://arxiv.org/abs/2310.16944
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-25
+    accessed_at: 2026-10-13
+  - id: starcoder2-paper
+    title: "StarCoder 2 and The Stack v2: The Next Generation (arXiv 2402.19173)"
+    url: https://arxiv.org/abs/2402.19173
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-02-29
+    accessed_at: 2026-10-13
+  - id: dlai-course
+    title: Quantization Fundamentals with Hugging Face — DeepLearning.AI short course (instructors)
+    url: https://www.deeplearning.ai/short-courses/quantization-fundamentals-with-hugging-face/
+    publisher: DeepLearning.AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: learnable-multipliers-paper
+    title: "Learnable Multipliers: Freeing the Scale of Language Model Matrix Layers (arXiv 2601.04890, HTML full text with affiliations)"
+    url: https://arxiv.org/html/2601.04890
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-01-08
+    accessed_at: 2026-10-13
+  - id: llm-int8-paper
+    title: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale (arXiv 2208.07339)"
+    url: https://arxiv.org/abs/2208.07339
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-08-15
+    accessed_at: 2026-10-13

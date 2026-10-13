@@ -1,0 +1,120 @@
+slug: alexandre-defossez
+name: Alexandre Défossez
+initials: AD
+groups: [open-source, engineering]
+sector: null
+specialties: [speech-audio, generative-media, multimodal]
+headline: Head of Research at Kyutai; former FAIR research scientist behind MusicGen, EnCodec, and AudioCraft
+bio:
+  text: >-
+    Alexandre Défossez is Head of Research at Kyutai, an open-science AI lab, and describes a
+    research focus on multimodal language models. Before Kyutai, Défossez spent three years as a
+    research scientist at FAIR at Meta, where Défossez led the music generation work behind
+    MusicGen and co-led development of the AudioCraft framework. Défossez is first author of the
+    EnCodec neural audio codec paper and of the Moshi speech-text foundation model paper; the Moshi
+    repository releases its code under MIT and Apache licenses and its model weights under CC-BY 4.0.
+  source_ids: [defossez-site, kyutai-team, encodec-paper, encodec-pdf, musicgen-paper, moshi-paper, moshi-repo, audiocraft-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Kyutai
+    organization_slug: null
+    role: Head of Research
+    current: true
+    source_ids: [kyutai-team]
+  - name: Meta (FAIR)
+    organization_slug: meta
+    role: Research scientist at FAIR for three years, leading the music generation effort (MusicGen)
+    current: false
+    source_ids: [defossez-site, encodec-pdf]
+work:
+  - name: AudioCraft (EnCodec and MusicGen)
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/audiocraft
+    contribution: >-
+      Co-led development of the AudioCraft framework, per Défossez's homepage. Défossez is first
+      author of the EnCodec paper (2022) and a core-team author of the MusicGen paper (2023); the
+      AudioCraft repository releases its code under the MIT license and its model weights under
+      CC-BY-NC 4.0.
+    source_ids: [defossez-site, encodec-paper, musicgen-paper, musicgen-pdf, audiocraft-repo]
+  - name: Moshi
+    artifact_slug: null
+    type: open-weights
+    url: https://github.com/kyutai-labs/moshi
+    contribution: >-
+      First author of the Moshi paper (2024), a speech-text foundation model for real-time dialogue.
+      The Moshi repository provides the code under MIT and Apache licenses and states that the model
+      weights are released under CC-BY 4.0.
+    source_ids: [moshi-paper, moshi-repo]
+links:
+  - label: Website
+    url: https://ai.honu.io/
+  - label: GitHub
+    url: https://github.com/adefossez
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: defossez-site
+    title: Alexandre Défossez — AI homepage
+    url: https://ai.honu.io/
+    publisher: Alexandre Défossez
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: kyutai-team
+    title: Kyutai — Team
+    url: https://kyutai.org/team/
+    publisher: Kyutai
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: encodec-paper
+    title: "High Fidelity Neural Audio Compression (arXiv 2210.13438)"
+    url: https://arxiv.org/abs/2210.13438
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-24
+    accessed_at: 2026-10-13
+  - id: encodec-pdf
+    title: "High Fidelity Neural Audio Compression — paper PDF (author affiliations: Meta AI, FAIR Team)"
+    url: https://arxiv.org/pdf/2210.13438
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-24
+    accessed_at: 2026-10-13
+  - id: musicgen-paper
+    title: "Simple and Controllable Music Generation (arXiv 2306.05284)"
+    url: https://arxiv.org/abs/2306.05284
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-06-08
+    accessed_at: 2026-10-13
+  - id: musicgen-pdf
+    title: "Simple and Controllable Music Generation — paper PDF (core-team markers; author affiliation: Meta AI)"
+    url: https://arxiv.org/pdf/2306.05284
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-06-08
+    accessed_at: 2026-10-13
+  - id: moshi-paper
+    title: "Moshi: a speech-text foundation model for real-time dialogue (arXiv 2410.00037)"
+    url: https://arxiv.org/abs/2410.00037
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-09-17
+    accessed_at: 2026-10-13
+  - id: moshi-repo
+    title: kyutai-labs/moshi README and license section
+    url: https://github.com/kyutai-labs/moshi
+    publisher: Kyutai (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: audiocraft-repo
+    title: facebookresearch/audiocraft README and license section
+    url: https://github.com/facebookresearch/audiocraft
+    publisher: Meta (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

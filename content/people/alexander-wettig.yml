@@ -1,0 +1,75 @@
+slug: alexander-wettig
+name: Alexander Wettig
+initials: AW
+groups: [engineering, open-source]
+sector: corporate
+specialties: [language-models, data, reinforcement-learning]
+headline: Researcher at Cursor; contributor to Ai2's OLMoE and co-author of SWE-bench
+bio:
+  text: >-
+    Alexander Wettig is a researcher at Cursor working on reinforcement learning for the Composer
+    models. Wettig was previously a PhD student at Princeton University advised by Danqi Chen, with
+    research on building better language models through training data, including pre-training data
+    selection, data mixtures, data repetition, and long-context recipes. The OLMoE paper credits
+    Wettig with advising on pretraining and analyzing load balancing, routing, and domain
+    specialization in Ai2's open mixture-of-experts model, and Wettig is a co-author of the SWE-bench
+    benchmark paper.
+  source_ids: [wettig-site, olmoe-pdf, swebench-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Cursor (Anysphere)
+    organization_slug: anysphere
+    role: Researcher working on RL for the Composer models
+    current: true
+    source_ids: [wettig-site]
+  - name: Princeton University
+    organization_slug: princeton-university
+    role: PhD student advised by Danqi Chen
+    current: false
+    source_ids: [wettig-site]
+work:
+  - name: OLMoE (OLMo family)
+    artifact_slug: olmo
+    type: open-weights
+    url: https://arxiv.org/abs/2409.02060
+    contribution: >-
+      Co-author of the OLMoE paper; its author-contributions section says Wettig advised on
+      pretraining, analyzed load balancing, routing, and domain specialization, and helped edit the
+      paper. The paper releases the model weights, training data, code, and logs.
+    source_ids: [olmoe-pdf]
+  - name: SWE-bench
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2310.06770
+    contribution: >-
+      Third author of "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" (2023);
+      Wettig's site says Wettig was part of the team that built SWE-bench and SWE-agent.
+    source_ids: [swebench-paper, wettig-site]
+links:
+  - label: Website
+    url: https://codecreator.github.io
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: wettig-site
+    title: Alexander Wettig — homepage
+    url: https://codecreator.github.io
+    publisher: Alexander Wettig
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: olmoe-pdf
+    title: "OLMoE: Open Mixture-of-Experts Language Models (arXiv 2409.02060, full text with Author Contributions)"
+    url: https://arxiv.org/pdf/2409.02060
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-09-03
+    accessed_at: 2026-10-13
+  - id: swebench-paper
+    title: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (arXiv 2310.06770)"
+    url: https://arxiv.org/abs/2310.06770
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-10
+    accessed_at: 2026-10-13

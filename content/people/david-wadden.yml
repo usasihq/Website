@@ -1,0 +1,89 @@
+slug: david-wadden
+name: David Wadden
+initials: DW
+groups: [engineering]
+sector: corporate
+specialties: [language-models, ai-for-science]
+headline: Research scientist at Google DeepMind on Gemini post-training; former Ai2 researcher on OLMo and Tülu
+bio:
+  text: >-
+    David Wadden is a research scientist at Google DeepMind, working on post-training for Gemini.
+    Before that, Wadden was a research scientist on the AllenNLP and Semantic Scholar teams at Ai2.
+    Wadden co-authored the Tülu 2 paper on adapting open language models, is credited with base-model
+    development in the OLMo 2 paper, which lists Wadden with an Ai2 affiliation, and ran DCLM
+    evaluations for OLMoE. Wadden's earlier research
+    includes SciFact and MultiVerS, work on verifying scientific claims.
+  source_ids: [wadden-site, tulu2-paper, olmo2-pdf, olmoe-pdf]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Research scientist, working on post-training for Gemini
+    current: true
+    source_ids: [wadden-site]
+  - name: Ai2 (Allen Institute for AI)
+    organization_slug: ai2
+    role: Research scientist on the AllenNLP and Semantic Scholar teams
+    current: false
+    source_ids: [wadden-site, olmo2-pdf]
+work:
+  - name: OLMo 2 and OLMoE (OLMo family)
+    artifact_slug: olmo
+    type: open-weights
+    url: https://github.com/allenai/OLMo
+    contribution: >-
+      Credited in the OLMo 2 paper with base-model development, including training and data
+      curation, and in the OLMoE paper with running DCLM evaluations and Weights & Biases reports.
+    source_ids: [olmo2-pdf, olmoe-pdf]
+  - name: Tülu 2
+    artifact_slug: tulu
+    type: open-research
+    url: https://arxiv.org/abs/2311.10702
+    contribution: >-
+      Co-author of "Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2" (2023).
+    source_ids: [tulu2-paper]
+  - name: SciFact and MultiVerS
+    artifact_slug: null
+    type: open-research
+    url: https://dwadden.github.io
+    contribution: >-
+      First author of the SciFact-Open and MultiVerS papers on scientific claim verification, as
+      listed on Wadden's homepage.
+    source_ids: [wadden-site]
+links:
+  - label: Website
+    url: https://dwadden.github.io
+  - label: GitHub
+    url: https://github.com/dwadden
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: wadden-site
+    title: David Wadden — homepage
+    url: https://dwadden.github.io
+    publisher: David Wadden
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tulu2-paper
+    title: "Camels in a Changing Climate: Enhancing LM Adaptation with Tulu 2 (arXiv 2311.10702)"
+    url: https://arxiv.org/abs/2311.10702
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-17
+    accessed_at: 2026-10-13
+  - id: olmo2-pdf
+    title: "2 OLMo 2 Furious (arXiv 2501.00656, full text with affiliations and Author Contributions)"
+    url: https://arxiv.org/pdf/2501.00656
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-31
+    accessed_at: 2026-10-13
+  - id: olmoe-pdf
+    title: "OLMoE: Open Mixture-of-Experts Language Models (arXiv 2409.02060, full text with Author Contributions)"
+    url: https://arxiv.org/pdf/2409.02060
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-09-03
+    accessed_at: 2026-10-13

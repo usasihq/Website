@@ -1,0 +1,106 @@
+slug: douwe-kiela
+name: Douwe Kiela
+initials: DK
+groups: [engineering, leadership]
+sector: corporate
+specialties: [language-models, evaluation, multimodal]
+headline: Researcher at Google DeepMind; co-founder and former CEO of Contextual AI; co-author of the RAG paper
+bio:
+  text: >-
+    Douwe Kiela is a researcher at Google DeepMind and an Adjunct Professor in Symbolic Systems at
+    Stanford University. Kiela co-founded Contextual AI and was its CEO, and earlier was Head of
+    Research at Hugging Face and a Research Scientist at Facebook AI Research. Kiela's site
+    describes research on retrieval-augmented, grounded, and multi-agent language understanding
+    and on tools for evaluation and benchmarking; Kiela is an author of the 2020 paper that
+    introduced retrieval-augmented generation (RAG), first author of the Dynabench paper on
+    dynamic dataset creation and benchmarking, and a co-author of the paper on the OLMoE open
+    mixture-of-experts models.
+  source_ids: [kiela-site, rag-paper, dynabench-paper, olmoe-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Researcher
+    current: true
+    source_ids: [kiela-site]
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: Adjunct Professor in Symbolic Systems
+    current: true
+    source_ids: [kiela-site]
+  - name: Contextual AI
+    organization_slug: contextual-ai
+    role: Co-founder and CEO
+    current: false
+    source_ids: [kiela-site]
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Head of Research
+    current: false
+    source_ids: [kiela-site]
+  - name: Facebook AI Research (Meta)
+    organization_slug: meta
+    role: Research Scientist
+    current: false
+    source_ids: [kiela-site]
+work:
+  - name: OLMoE
+    artifact_slug: olmo
+    type: open-weights
+    url: https://arxiv.org/abs/2409.02060
+    contribution: >-
+      Co-author of "OLMoE: Open Mixture-of-Experts Language Models" (2024); the abstract says the
+      team open-sourced the model weights, training data, code, and logs.
+    source_ids: [olmoe-paper]
+  - name: Retrieval-Augmented Generation (RAG)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2005.11401
+    contribution: >-
+      Co-author of "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" (2020), which
+      combined pre-trained language models with an explicit non-parametric memory for
+      knowledge-intensive tasks.
+    source_ids: [rag-paper]
+  - name: Dynabench
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2104.14337
+    contribution: >-
+      First author of "Dynabench: Rethinking Benchmarking in NLP" (2021), which introduced an
+      open-source platform for human-and-model-in-the-loop dataset creation and model benchmarking.
+    source_ids: [dynabench-paper]
+links:
+  - label: Website
+    url: https://douwekiela.github.io/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: kiela-site
+    title: Douwe Kiela — homepage
+    url: https://douwekiela.github.io/
+    publisher: Douwe Kiela
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: rag-paper
+    title: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (arXiv 2005.11401)
+    url: https://arxiv.org/abs/2005.11401
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-22
+    accessed_at: 2026-10-13
+  - id: dynabench-paper
+    title: "Dynabench: Rethinking Benchmarking in NLP (arXiv 2104.14337)"
+    url: https://arxiv.org/abs/2104.14337
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-04-07
+    accessed_at: 2026-10-13
+  - id: olmoe-paper
+    title: "OLMoE: Open Mixture-of-Experts Language Models (arXiv 2409.02060)"
+    url: https://arxiv.org/abs/2409.02060
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-09-03
+    accessed_at: 2026-10-13

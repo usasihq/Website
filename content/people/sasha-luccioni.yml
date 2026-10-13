@@ -1,0 +1,102 @@
+slug: sasha-luccioni
+name: Sasha Luccioni
+initials: SL
+groups: [engineering]
+sector: corporate
+specialties: [evaluation, data]
+headline: AI and climate researcher; co-founder and Chief Scientific Officer of Sustainable AI Group
+bio:
+  text: >-
+    Sasha Luccioni is an AI and climate researcher and the co-founder and Chief Scientific Officer
+    of Sustainable AI Group, a research and advisory firm, announced in May 2026, that helps
+    enterprises measure and act on the environmental impacts of AI. Luccioni was previously AI &
+    Climate Lead at Hugging Face; Luccioni's CV lists a Research Scientist role there starting in
+    2021, analyzing the data used to train large language models, quantifying the carbon footprint
+    of AI, and co-chairing the Carbon working group of the BigScience project. Luccioni is first
+    author of "Estimating the Carbon Footprint of BLOOM" (2022) and of "Power Hungry Processing"
+    (2023), with Yacine Jernite and Emma Strubell, which compared the inference energy and carbon
+    cost of task-specific and general-purpose models.
+  source_ids: [luccioni-site, saig-team, luccioni-cv, bloom-carbon-paper, power-hungry-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Sustainable AI Group
+    organization_slug: null
+    role: Co-Founder and Chief Scientific Officer
+    current: true
+    source_ids: [luccioni-site, saig-team]
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Research Scientist; AI & Climate Lead
+    current: false
+    source_ids: [saig-team, luccioni-cv, github-profile]
+work:
+  - name: Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2211.02001
+    contribution: >-
+      First author of the 2022 study estimating BLOOM's carbon footprint across its life cycle,
+      from equipment manufacturing to operational energy use, and of deploying it for inference
+      through an API endpoint.
+    source_ids: [bloom-carbon-paper]
+  - name: "Power Hungry Processing: Watts Driving the Cost of AI Deployment?"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2311.16863
+    contribution: >-
+      First author, with Yacine Jernite and Emma Strubell, of a systematic comparison of the
+      ongoing inference cost of task-specific and general-purpose ML models.
+    source_ids: [power-hungry-paper]
+links:
+  - label: Website
+    url: https://www.sashaluccioni.com/
+  - label: GitHub
+    url: https://github.com/sashavor
+  - label: Hugging Face
+    url: https://huggingface.co/sasha
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: luccioni-site
+    title: Dr Sasha Luccioni — homepage
+    url: https://www.sashaluccioni.com/
+    publisher: Sasha Luccioni
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: saig-team
+    title: Sustainable AI Group — homepage (Who we are)
+    url: https://sustainableaigroup.com/
+    publisher: Sustainable AI Group
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: luccioni-cv
+    title: Sasha Luccioni — Curriculum Vitae
+    url: https://www.sashaluccioni.com/cv/
+    publisher: Sasha Luccioni
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: sashavor (Sasha Luccioni) on GitHub
+    url: https://github.com/sashavor
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: bloom-carbon-paper
+    title: Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model (arXiv 2211.02001)
+    url: https://arxiv.org/abs/2211.02001
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-03
+    accessed_at: 2026-10-13
+  - id: power-hungry-paper
+    title: "Power Hungry Processing: Watts Driving the Cost of AI Deployment? (arXiv 2311.16863)"
+    url: https://arxiv.org/abs/2311.16863
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-28
+    accessed_at: 2026-10-13

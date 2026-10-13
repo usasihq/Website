@@ -1,0 +1,95 @@
+slug: yacine-jernite
+name: Yacine Jernite
+initials: YJ
+groups: [engineering, open-source]
+sector: corporate
+specialties: [data, language-models, evaluation]
+headline: Leads the ML and Society team at Hugging Face; co-author of the Transformers and StarCoder2 papers
+bio:
+  text: >-
+    Yacine Jernite leads the ML and Society team at Hugging Face, working on ML systems governance
+    at the intersection of regulatory and technical tools. Jernite's work has focused on NLP models
+    and on data curation, documentation, and governance, including serving as co-organizer and data
+    area chair for the BigScience workshop, whose ROOTS corpus was used to train the BLOOM model.
+    Jernite is a co-author of the paper that introduced Hugging Face's Transformers library, the
+    StarCoder2 paper, and "Power Hungry Processing" (2023), which compared the energy and carbon
+    cost of deploying task-specific and general-purpose ML models.
+  source_ids: [jernite-site, transformers-paper, starcoder2-paper, power-hungry-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Leads the ML and Society team
+    current: true
+    source_ids: [jernite-site]
+work:
+  - name: Transformers
+    artifact_slug: transformers
+    type: open-research
+    url: https://arxiv.org/abs/1910.03771
+    contribution: >-
+      Co-author of the 2019 paper introducing Hugging Face's Transformers library (arXiv
+      1910.03771).
+    source_ids: [transformers-paper]
+  - name: StarCoder2
+    artifact_slug: starcoder2
+    type: open-research
+    url: https://arxiv.org/abs/2402.19173
+    contribution: >-
+      Co-author of "StarCoder 2 and The Stack v2: The Next Generation" (2024).
+    source_ids: [starcoder2-paper]
+  - name: BigScience data curation and governance
+    artifact_slug: null
+    type: null
+    url: null
+    contribution: >-
+      Co-organizer and data area chair for the BigScience workshop on large language models, whose
+      ROOTS corpus was used to train BLOOM, according to Jernite's homepage.
+    source_ids: [jernite-site]
+  - name: "Power Hungry Processing: Watts Driving the Cost of AI Deployment?"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2311.16863
+    contribution: >-
+      Co-author, with Sasha Luccioni and Emma Strubell, of a systematic comparison of the inference
+      energy and carbon cost of task-specific and general-purpose ML models.
+    source_ids: [power-hungry-paper]
+links:
+  - label: Website
+    url: https://yjernite.github.io/
+  - label: Hugging Face
+    url: https://huggingface.co/yjernite
+  - label: GitHub
+    url: https://github.com/yjernite
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: jernite-site
+    title: Yacine Jernite — homepage
+    url: https://yjernite.github.io/
+    publisher: Yacine Jernite
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: transformers-paper
+    title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
+    url: https://arxiv.org/abs/1910.03771
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-09
+    accessed_at: 2026-10-13
+  - id: starcoder2-paper
+    title: "StarCoder 2 and The Stack v2: The Next Generation (arXiv 2402.19173)"
+    url: https://arxiv.org/abs/2402.19173
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-02-29
+    accessed_at: 2026-10-13
+  - id: power-hungry-paper
+    title: "Power Hungry Processing: Watts Driving the Cost of AI Deployment? (arXiv 2311.16863)"
+    url: https://arxiv.org/abs/2311.16863
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-28
+    accessed_at: 2026-10-13

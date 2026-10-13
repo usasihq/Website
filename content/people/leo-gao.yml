@@ -1,0 +1,81 @@
+slug: leo-gao
+name: Leo Gao
+initials: LG
+groups: [open-source, engineering]
+sector: null
+specialties: [language-models, evaluation, data]
+headline: First author of The Pile and first-listed author of EleutherAI's LM Evaluation Harness
+bio:
+  text: >-
+    Leo Gao is first author of The Pile, an 825 GiB English text corpus for training language
+    models that was published with an EleutherAI affiliation in 2020. Gao is the first-listed author
+    in the citation entry for EleutherAI's LM Evaluation Harness, an open framework for few-shot
+    evaluation of language models. Gao also co-authored the GPT-NeoX-20B paper, which credits Gao with work on
+    evaluations, the tokenizer, and the section on alignment implications.
+  source_ids: [pile-paper, pile-pdf, lmeval-readme, neox20b-pdf]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: EleutherAI
+    organization_slug: eleutherai
+    role: Lead author of The Pile (2020), published with an EleutherAI affiliation
+    current: false
+    source_ids: [pile-pdf]
+work:
+  - name: The Pile
+    artifact_slug: the-pile
+    type: open-research
+    url: https://arxiv.org/abs/2101.00027
+    contribution: >-
+      First author of The Pile paper (2020), which describes an 825 GiB English text corpus built
+      from 22 diverse subsets for training large-scale language models.
+    source_ids: [pile-paper, pile-pdf]
+  - name: LM Evaluation Harness
+    artifact_slug: lm-evaluation-harness
+    type: open-source
+    url: https://github.com/EleutherAI/lm-evaluation-harness
+    contribution: >-
+      First-listed author in the project's citation entry for the evaluation framework.
+    source_ids: [lmeval-readme]
+  - name: GPT-NeoX-20B
+    artifact_slug: gpt-neox
+    type: open-research
+    url: https://arxiv.org/abs/2204.06745
+    contribution: >-
+      Co-author of the GPT-NeoX-20B paper; its contributions appendix credits Gao with evaluations,
+      tokenizer experiments, and the alignment-implications section.
+    source_ids: [neox20b-pdf]
+links:
+  - label: GitHub
+    url: https://github.com/leogao2
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: pile-paper
+    title: "The Pile: An 800GB Dataset of Diverse Text for Language Modeling (arXiv 2101.00027)"
+    url: https://arxiv.org/abs/2101.00027
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-12-31
+    accessed_at: 2026-10-13
+  - id: pile-pdf
+    title: The Pile paper, full text (author block lists EleutherAI as the affiliation)
+    url: https://arxiv.org/pdf/2101.00027
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-12-31
+    accessed_at: 2026-10-13
+  - id: lmeval-readme
+    title: EleutherAI/lm-evaluation-harness README (Cite as)
+    url: https://github.com/EleutherAI/lm-evaluation-harness
+    publisher: EleutherAI
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: neox20b-pdf
+    title: "GPT-NeoX-20B: An Open-Source Autoregressive Language Model (arXiv 2204.06745, full text with Appendix A, Individual Contributions)"
+    url: https://arxiv.org/pdf/2204.06745
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-14
+    accessed_at: 2026-10-13

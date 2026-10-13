@@ -1,0 +1,98 @@
+slug: nils-reimers
+name: Nils Reimers
+initials: NR
+groups: [open-source, engineering]
+sector: corporate
+specialties: [language-models, ml-frameworks, evaluation]
+headline: Creator of the Sentence Transformers library and VP of AI Search at Cohere
+bio:
+  text: >-
+    Nils Reimers is VP of AI Search at Cohere, where Reimers's team develops search methods built
+    on transformer networks, including dense and sparse embeddings, neural re-ranking, and query
+    generation. Reimers created the Sentence Transformers library and, with Iryna Gurevych, wrote
+    the Sentence-BERT paper (2019), which adapted BERT with siamese and triplet network structures
+    to produce sentence embeddings for semantic similarity search. Reimers's vita lists a Research
+    Scientist role at Hugging Face from 2021 to 2022, building a neural search research team, and
+    earlier research positions at TU Darmstadt, whose UKP Lab first developed Sentence
+    Transformers. Reimers is also a co-author of the BEIR and MTEB benchmarks for retrieval and
+    text embeddings.
+  source_ids: [reimers-site, github-profile, reimers-vita, sbert-paper, st-readme]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Cohere
+    organization_slug: null
+    role: VP of AI Search
+    current: true
+    source_ids: [reimers-site, github-profile]
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Research Scientist
+    current: false
+    source_ids: [reimers-vita]
+  - name: Technical University of Darmstadt (UKP Lab)
+    organization_slug: null
+    role: Post-Doctoral Researcher
+    current: false
+    source_ids: [reimers-vita]
+work:
+  - name: Sentence Transformers
+    artifact_slug: sentence-transformers
+    type: open-source
+    url: https://github.com/huggingface/sentence-transformers
+    contribution: >-
+      Reimers's vita describes Reimers as the creator of sentence-transformers. The Apache-2.0
+      repository's README cites the Sentence-BERT papers by Reimers and Gurevych and
+      says the project was originally developed by the UKP Lab at TU Darmstadt.
+    source_ids: [reimers-vita, st-readme]
+  - name: "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1908.10084
+    contribution: >-
+      First author, with Iryna Gurevych, of the EMNLP 2019 paper that introduced SBERT, a
+      modification of BERT using siamese and triplet networks to derive sentence embeddings.
+    source_ids: [sbert-paper]
+links:
+  - label: Website
+    url: https://www.nils-reimers.de
+  - label: GitHub
+    url: https://github.com/nreimers
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: reimers-site
+    title: Nils Reimers — homepage (research and publications)
+    url: https://www.nils-reimers.de/
+    publisher: Nils Reimers
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: reimers-vita
+    title: Nils Reimers — Vita
+    url: https://www.nils-reimers.de/vita
+    publisher: Nils Reimers
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: nreimers (Nils Reimers) on GitHub
+    url: https://github.com/nreimers
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: sbert-paper
+    title: "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks (arXiv 1908.10084)"
+    url: https://arxiv.org/abs/1908.10084
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-08-27
+    accessed_at: 2026-10-13
+  - id: st-readme
+    title: huggingface/sentence-transformers README (citing, maintainers, origin) and LICENSE (Apache-2.0)
+    url: https://github.com/huggingface/sentence-transformers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
