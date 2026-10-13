@@ -103,6 +103,25 @@ export function memoryPageResults(configs: FinderConfig[], p: MemoryPage): Memor
   return { page: p, fits: fits.sort(byFigure), needsMore: needsMore.sort(byFigure), systemFigure: systemFigure.sort(byFigure), noFigure };
 }
 
+/** Fewest listed configurations before a memory page is offered to search engines. */
+export const MIN_INDEXABLE_FITS = 3;
+
+/**
+ * Whether a memory page should be indexed. A page that lists fewer than
+ * MIN_INDEXABLE_FITS configurations, or exactly the same ones as the next
+ * smaller amount of the same kind, would only duplicate another result, so it
+ * stays reachable (index page, finder links) but is marked noindex and left
+ * out of the sitemap until more finder records state a memory figure.
+ */
+export function memoryPageIndexable(configs: FinderConfig[], p: MemoryPage): boolean {
+  const fits = memoryPageResults(configs, p).fits;
+  if (fits.length < MIN_INDEXABLE_FITS) return false;
+  const smaller = MEMORY_PAGES.filter((q) => q.kind === p.kind && q.gb < p.gb).sort((x, y) => y.gb - x.gb)[0];
+  if (!smaller) return true;
+  const key = (list: MemoryEntry[]) => list.map((e) => e.config.slug).sort().join("|");
+  return key(memoryPageResults(configs, smaller).fits) !== key(fits);
+}
+
 const gbText = (n: number) => `${Number.isInteger(n) ? n : n.toFixed(1).replace(/\.0$/, "")} GB`;
 export const figureText = (e: MemoryEntry) => `about ${gbText(e.figure.gb)} of ${e.figure.unit}`;
 

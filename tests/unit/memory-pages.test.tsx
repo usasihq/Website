@@ -154,12 +154,32 @@ describe("memory pages use the finder's own fit logic", () => {
     const search = referenceSearchEntries(catalog, []);
     const cards = new Set(pageCards(catalog).map((c) => c.page));
     const none = { organizations: new Set<string>(), artifacts: new Set<string>(), news: new Set<string>(), hubs: new Set<string>(), licenses: new Set<string>(), explainers: new Set<string>(), paths: new Set<string>(), issues: new Set<string>() };
+    const { memoryPageIndexable } = await import("@/lib/hardware");
+    const indexable = new Set(["/find/memory/", ...MEMORY_PAGES.filter((p) => memoryPageIndexable(catalog.finder, p)).map((p) => `/find/memory/${p.slug}/`)]);
     for (const href of ["/find/memory/", ...MEMORY_PAGES.map((p) => `/find/memory/${p.slug}/`)]) {
-      expect(sitemap.some((u) => u.endsWith(href)), href).toBe(true);
+      // Pages that would duplicate another result are noindex and so stay out of the sitemap.
+      expect(sitemap.some((u) => u.endsWith(href)), href).toBe(indexable.has(href));
       expect(search.some((e) => e.href === href), href).toBe(true);
       expect(cards.has(href), href).toBe(true);
       expect(isKnownSitePath(href, none), href).toBe(true);
     }
     expect(cardImage(catalog, "/find/memory/8gb-vram/")!.path).toBe("/og/memory/8gb-vram.jpg");
+  });
+});
+
+describe("memory page indexing", () => {
+  it("indexes a page only when it lists enough configurations and differs from the next smaller amount", async () => {
+    const { getCatalog } = await import("@/lib/catalog");
+    const { MEMORY_PAGES, MIN_INDEXABLE_FITS, memoryPageIndexable, memoryPageResults } = await import("@/lib/hardware");
+    const catalog = getCatalog();
+    for (const p of MEMORY_PAGES) {
+      const fits = memoryPageResults(catalog.finder, p).fits;
+      if (fits.length < MIN_INDEXABLE_FITS) expect(memoryPageIndexable(catalog.finder, p)).toBe(false);
+    }
+    const indexed = MEMORY_PAGES.filter((p) => memoryPageIndexable(catalog.finder, p));
+    for (const kind of ["vram", "unified"] as const) {
+      const keys = indexed.filter((p) => p.kind === kind).map((p) => memoryPageResults(catalog.finder, p).fits.map((e) => e.config.slug).sort().join("|"));
+      expect(new Set(keys).size).toBe(keys.length);
+    }
   });
 });

@@ -14,6 +14,7 @@ import {
   memoryPage,
   memoryPageAnswer,
   memoryPageHref,
+  memoryPageIndexable,
   memoryPageResults,
   memoryPageTitle,
   memoryShortLabel,
@@ -44,7 +45,13 @@ export async function generateMetadata({ params }: { params: Promise<{ amount: s
   if (!p) return {};
   const catalog = getCatalog();
   const path = memoryPageHref(p);
-  return pageMetadata({ title: memoryPageTitle(p), description: description(p, memoryPageResults(catalog.finder, p).fits), path, image: cardImage(catalog, path) });
+  return pageMetadata({
+    title: memoryPageTitle(p),
+    description: description(p, memoryPageResults(catalog.finder, p).fits),
+    path,
+    image: cardImage(catalog, path),
+    noindex: !memoryPageIndexable(catalog.finder, p),
+  });
 }
 
 function OtherList({ id, title, intro, items, page, catalog }: { id: string; title: string; intro: React.ReactNode; items: (Assessment | MemoryEntry)[]; page: MemoryPage; catalog: Catalog }) {

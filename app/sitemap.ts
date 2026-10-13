@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getCatalog } from "@/lib/catalog";
-import { MEMORY_PAGES, memoryPageHref } from "@/lib/hardware";
+import { MEMORY_PAGES, memoryPageHref, memoryPageIndexable } from "@/lib/hardware";
 import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
 import { EXPLAINERS, LEARNING_PATHS } from "@/lib/learn";
 import { absoluteUrl } from "@/lib/paths";
@@ -33,6 +33,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
     ...catalog.policy.map((d) => ({ url: absoluteUrl(policyHref(d.slug)), lastModified: d.updated_at })),
-    ...MEMORY_PAGES.map((p) => ({ url: absoluteUrl(memoryPageHref(p)) })),
+    ...MEMORY_PAGES.filter((p) => memoryPageIndexable(catalog.finder, p)).map((p) => ({ url: absoluteUrl(memoryPageHref(p)) })),
   ];
 }
