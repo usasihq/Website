@@ -51,6 +51,7 @@ npm run preview:static  # serve out/ like a static host at http://localhost:4321
 | `npm run build` | `validate` → `prepare:data` → `next build` (static export) → `scripts/postbuild.mjs` (per-page CSP, leak checks). |
 | `npm run check:links` | Verifies every internal link, asset, and `#fragment` in `out/`. |
 | `npm run check:sources` | Requests every cited source URL and writes `reports/source-check.json`. Editorial tool only: never edits content and is not part of the build. |
+| `npm run report:snapshot -- <YYYY-MM>` | Computes an edition of The State of American AI from the catalog and jobs data and writes `content/reports/<YYYY-MM>.json`. Refuses to overwrite a published edition (`--force` only for an unpublished draft). |
 | `npm run report:reviews` | Lists records whose evidence review is older than 180 days (`-- --max-age N`), pending eligibility, and stale product reviews. Read-only. |
 | `npm run preview:static` | Dependency-free static server for `out/` that applies `_headers` and compression (`-- --base /usasi --dir .out-basepath` for base paths). |
 | `npm run preview:cloudflare` | Serves `out/` in Cloudflare's local Workers runtime (`wrangler dev`) with the real asset routing, `_headers`, and 404 handling. No account needed. |
@@ -314,6 +315,21 @@ and `index.html` for directory URLs; `_headers` is ignored there.
 - Original catalog prose: CC BY 4.0 ([CONTENT_LICENSE.md](CONTENT_LICENSE.md)).
 - Artwork: owner's, not licensed for reuse; fonts: SIL OFL 1.1; third-party names
   and marks belong to their owners ([THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
+
+## The State of American AI
+
+`/report/` is a recurring research report computed from the catalog
+(`lib/report.ts`). Each edition is frozen in `content/reports/<YYYY-MM>.json`:
+its figures, the caption and counting note of every figure, the headline
+findings, the record lists, and digests of the inputs (catalog records, jobs
+file, commit). The site renders editions only from these files, so later
+catalog changes never rewrite a published edition; `/report/` shows the latest
+edition and a "Since this edition" note when the live catalog differs.
+
+To publish a new edition: `npm run report:snapshot -- 2026-11`, review the
+file, commit it, and build. Each edition gets `/report/<YYYY-MM>/` with
+`data.csv` and `data.json` (CC BY 4.0), a preview card, a sitemap entry, and a
+"What changed since the previous edition" section.
 
 ## Jobs
 
