@@ -144,7 +144,7 @@ export const TIER_PHRASES: Record<ModelTier, { title: "downloads" | "access"; le
   "open-weight": { title: "downloads", lead: (n, f) => `${n} is an open-weight model${f}.` },
   "open-stack": { title: "downloads", lead: (n, f) => `${n} is an open-stack model${f}, with public weights, training code, and recipe.` },
   "fully-open": { title: "downloads", lead: (n, f) => `${n} is an open-system model${f}, with weights, code, and data information public.` },
-  "restricted-weights": { title: "access", lead: (n, f) => `${n} is a model${f}. Its weights are available only on request or with approval.` },
+  "restricted-weights": { title: "access", lead: (n, f) => `${n} is a model${f}. Its weights are gated: access by request or approval.` },
   "weights-not-public": { title: "access", lead: (n, f) => `${n} is a model${f}. Its weights are not public.` },
   unknown: { title: "access", lead: (n, f) => `${n} is a model release${f}.` },
 };
