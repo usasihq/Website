@@ -1,0 +1,96 @@
+What you can run depends first on memory: a graphics card's own memory (VRAM) on a PC, the unified memory that the processor (CPU) and graphics processor (GPU) share on an Apple silicon Mac, or system RAM if the CPU does the work alone. Find a published memory figure for the exact file you would download, including its quantization (how many bits store each weight), and note what the figure leaves out, such as the context window. Check that your runtime, the app that loads the model, supports your hardware, and read the license before you rely on the model. A model that fits can still run slowly. Speed and quality vary with hardware, settings, and task, and USASI does not benchmark, test, or rank models. This page is general information.
+
+<h2 id="your-memory">Step 1: Find out which memory you have</h2>
+
+- **A PC with a graphics card.** The vendor's specification page lists the card's memory, and one product name can come in two sizes: NVIDIA's [RTX 5060 family page](https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/) lists the RTX 5060 Ti with "16 GB / 8 GB GDDR7." On Windows, Task Manager's Performance pane shows dedicated GPU memory; Microsoft notes that some GPUs do not use it, and then the counter is missing or reads 0 ([Microsoft Learn](https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/gpu-process-memory-counters-report-wrong-value)).
+- **An Apple silicon Mac.** The [README](https://github.com/ml-explore/mlx/blob/main/README.md) for Apple's [MLX](/open/mlx/) framework says arrays "live in shared memory" and can be used on the CPU or GPU without transferring data. Apple's [MacBook Air specifications](https://www.apple.com/macbook-air/specs/) list memory as a configuration choice: 16GB of unified memory, configurable to 24GB or 32GB. In [Activity Monitor](https://support.apple.com/guide/activity-monitor/view-memory-usage-actmntr1004/mac), the Memory tab shows "Physical Memory," the amount of RAM installed.
+- **CPU only.** [llama.cpp](/open/llama-cpp/)'s [README](https://github.com/ggml-org/llama.cpp/blob/master/README.md) lists CPU support, including AVX, AVX2, AVX512, and AMX on x86 processors and optimizations for Apple silicon. [Ollama](/open/ollama/)'s [macOS page](https://docs.ollama.com/macos) lists Apple M-series Macs with "CPU and GPU support" and x86 Macs as "CPU only."
+
+<h2 id="memory-limits">Step 2: Why memory sets the limit</h2>
+
+The model's weights have to fit, plus working memory that grows with the conversation. Ollama's [context length page](https://docs.ollama.com/context-length) says "Setting a larger context length will increase the amount of memory required to run a model." Its default context depends on VRAM: 4k tokens below 24 GiB, 32k from 24 to 48 GiB, and 256k at 48 GiB or more. Its [FAQ](https://docs.ollama.com/faq) says required RAM scales with the number of parallel requests times the context length.
+
+When a model does not fit on the GPU, runtimes can split it: llama.cpp offers "CPU+GPU hybrid inference to partially accelerate models larger than the total VRAM capacity," and Ollama's `ollama ps` command shows where a model loaded: "100% GPU," "100% CPU," or a split such as "48%/52% CPU/GPU." Splitting costs speed. OpenAI's [guide to running gpt-oss with Ollama](https://developers.openai.com/cookbook/articles/gpt-oss/run-locally-ollama) says you can offload to the CPU when short on VRAM, "but expect it to run slower," and Ollama advises avoiding CPU offload for best performance.
+
+<h2 id="quantization">Step 3: What quantization trades</h2>
+
+LM Studio's [download guide](https://lmstudio.ai/docs/app/basics/download-model) calls the `Q` options for a model "copies of the same model, provided in varying degrees of fidelity": quantization compresses the files "while giving up some degree of quality." It suggests "a 4-bit option or higher if your machine is capable enough for running it." llama.cpp's [quantize README](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md) gives sizes for Meta's Llama 3.1 8B: 14.96 GiB at 16 bits (F16), 7.95 GiB for Q8_0, and 4.58 GiB for Q4_K_M. It says quantization "may introduce some accuracy loss," and warns that requantizing an already quantized file can severely reduce quality compared with starting from 16 or 32 bits. [Quantization](/learn/quantization/) explains the formats.
+
+<h2 id="published-figures">Step 4: Read the published figure, and what it leaves out</h2>
+
+A figure is only as useful as its assumptions. Google's [Gemma 4 overview](https://ai.google.dev/gemma/docs/core) (last updated July 8, 2026) gives the approximate GPU or TPU memory needed to load each model, including a "20% overhead of loading additional things." For [Gemma 4 12B](/open/gemma-4-12b/), it lists 26.7 GB at BF16 (16-bit), 13.4 GB at SFP8 (8-bit), and 6.7 GB at Q4_0 (4-bit). The page says these estimates "only account for the memory required to load the static model weights," without the VRAM needed for supporting software or the context window. Memory use grows with the total number of tokens in your prompt and the response, it adds, and the numbers may change with your inference tool and environment.
+
+Other figures are framed differently:
+
+- **"Runs within."** The [gpt-oss-20b card](https://huggingface.co/openai/gpt-oss-20b) says MXFP4 quantization of its mixture-of-experts weights lets [gpt-oss-20b](/open/gpt-oss-20b/) "run within 16GB of memory." OpenAI's Ollama guide says the model is best with at least 16GB of VRAM or unified memory.
+- **Download size.** Ollama's [library page](https://ollama.com/library/gpt-oss) lists `gpt-oss:20b` at 14GB with a 128K context window. That is the download, not the memory needed once a long context is in use.
+
+<h2 id="runtimes">Step 5: Match a runtime to your hardware</h2>
+
+Runtime requirements change, so check the current page:
+
+- **Ollama.** macOS Sonoma (14) or newer ([macOS](https://docs.ollama.com/macos)); Windows 10 22H2 or newer, with NVIDIA driver 551.61 or newer for NVIDIA cards ([Windows](https://docs.ollama.com/windows)). Its [hardware support page](https://docs.ollama.com/gpu) lists NVIDIA GPUs with compute capability 5.0 or higher, AMD GPUs through ROCm v7, Apple GPUs through Metal, and Vulkan. Its install pages say models "can be tens to hundreds of GB in size."
+- **LM Studio.** Its [system requirements](https://lmstudio.ai/docs/app/system-requirements) list Apple silicon (M1 to M4) with macOS 14.0 or newer and "16GB+ RAM recommended," adding that 8GB Macs may work with "smaller models and modest context sizes"; Intel-based Macs are not supported. On Windows, x64 processors need AVX2, with at least 16GB of RAM and 4GB of dedicated VRAM recommended. Its [terms of service](https://lmstudio.ai/app-terms) name the provider as [Element Labs](/companies/element-labs/), Inc.
+- **llama.cpp.** Its README lists backends including CUDA (NVIDIA), HIP (AMD), Metal (Apple silicon), Vulkan, and SYCL (Intel GPUs), alongside CPU support.
+- **MLX.** Its README calls MLX an array framework for machine learning on Apple silicon. Its text-generation package, [mlx-lm](https://github.com/ml-explore/mlx-lm/blob/main/README.md), says models large relative to the machine's total RAM "can be slow."
+
+Hugging Face's [GGUF documentation](https://huggingface.co/docs/hub/gguf) describes [GGUF](/glossary/#gguf) as a file format that "is designed for use with GGML and other executors," and lists llama.cpp, LM Studio, GPT4All, and Ollama under usage with open-source tools.
+
+<h2 id="licenses">Step 6: Check the license before you use it</h2>
+
+Read the license for the exact release you download, whoever made the copy. Three examples:
+
+- **gpt-oss-20b:** Apache 2.0, according to its [card](https://huggingface.co/openai/gpt-oss-20b).
+- **Gemma 4 12B:** the [instruction-tuned card](https://huggingface.co/google/gemma-4-12B-it) lists Apache 2.0 and links to Google's [license page](https://ai.google.dev/gemma/docs/gemma_4_license), which reproduces the Apache License 2.0.
+- **[Llama 3.1 8B](/open/llama-3-1-8b/):** the [Llama 3.1 Community License](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE), a custom license. It requires "Built with Llama" to be displayed when you distribute the model or a product containing it, requires a distributed model built with it to have a name beginning with "Llama," brings in an acceptable use policy, and sets a separate process for licensees above 700 million monthly active users.
+
+For a quantized copy uploaded by someone else, Hugging Face's [model card documentation](https://huggingface.co/docs/hub/model-cards) says the `base_model` field can name the original, with the relationship marked "quantized"; follow it back to the original license. A [gated download](https://huggingface.co/docs/hub/models-gated) asks you to share your username and email address with the authors. USASI's [license guide](/licenses/) summarizes common licenses.
+
+<h2 id="usasi-tools">Where the USASI finder and memory pages fit</h2>
+
+- The [finder](/find/) checks a small set of documented configurations against what you enter, explains why each matches or not, and shows what is unverified. "Estimated to fit" means a publisher's stated figure for one exact variant is within the amount you entered, not that USASI ran it. Where no figure is published, the result says the evidence is insufficient.
+- [Local AI by memory](/find/memory/) applies the same rule to fixed amounts: 8, 12, 16, and 24 GB of VRAM, and 8, 16, 24, 32, and 64 GB of Apple silicon unified memory. The VRAM pages compare only publishers' graphics-memory figures; the Apple silicon pages compare unified memory with graphics-memory and system-memory figures alike.
+- The [model size calculator](/learn/tools/model-size/) shows the storage arithmetic for weights at 32, 16, 8, or 4 bits each, and what it leaves out.
+- USASI does not benchmark or rank models, and no record or finder entry claims a hands-on test ([review levels](/methodology/#review-levels)).
+
+<h2 id="speed-and-quality">Fitting is not the same as running well</h2>
+
+Speed depends on more than memory. llama.cpp's [performance troubleshooting notes](https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md) show one 4-bit, 30-billion-parameter model on one machine generating anywhere from under 0.1 to 9.1 tokens per second, depending only on its thread-count and GPU-offload settings. Quality depends on the model, the quantized file, and your task. Test with your own prompts, and record the runtime version, the exact file, the context length, where the model loaded, and the date.
+
+<h2 id="worked-example">Worked example: a desktop with an 8 GB graphics card</h2>
+
+Jo is a fictional reader invented for this page, and the choices are Jo's, not a recommendation. Task Manager shows Jo's Windows desktop with 8 GB of dedicated GPU memory and 32 GB of system RAM; Jo wants a local model for drafting and summarizing. Steps are labeled **Stated** (by a publisher), **Estimated** (Jo's reasoning), or **Tested** (what Jo measures). Checked October 13, 2026; USASI did not run either model.
+
+1. **First candidate (Stated).** OpenAI's Ollama guide says gpt-oss-20b is best with at least 16GB of VRAM or unified memory. Jo has 8 GB.
+2. **Estimated.** It would probably be split between GPU and system memory, which the same guide says runs slower.
+3. **Second candidate (Stated).** Google's table lists 6.7 GB to load Gemma 4 12B at Q4_0, weights only. Google's [Hugging Face repository](https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf) offers a Q4_0 GGUF of the instruction-tuned model, made with quantization-aware training: a 6,975,879,296-byte file (about 7.0 GB), plus a smaller mmproj file.
+4. **Estimated.** That leaves little of the 8 GB for the context window and other software, so Jo plans a short context, expects part of the model may run on the CPU, and notes Gemma 4 E4B (4.5 GB at Q4_0 in the same table) as a fallback.
+5. **License (Stated).** The repository's card lists Apache 2.0.
+6. **Runtime (Stated).** LM Studio on Windows needs AVX2 on x64 processors, so Jo confirms the processor has it.
+7. **Tested.** Jo runs ten typical prompts and writes down the LM Studio version, the context length, how long answers take, whether they are usable, and the date.
+
+Jo's outcome: start with Gemma 4 12B at Q4_0 and a short context, and switch to the smaller model if answers are too slow. Another model whose published figure fits could serve as well.
+
+<h2 id="next">What you can do next</h2>
+
+- Read [understanding inference hardware](/learn/inference-hardware/), [quantization](/learn/quantization/), and [choosing hosted access or local inference](/learn/hosted-or-local/).
+- Open the [finder](/find/) or a memory page, such as [8 GB of VRAM](/find/memory/8gb-vram/) or [a 16 GB Apple silicon Mac](/find/memory/16gb-apple-silicon/).
+- Browse local runtimes in the catalog: [Ollama](/open/ollama/), [llama.cpp](/open/llama-cpp/), and [MLX](/open/mlx/).
+- Visit the [local AI hub](/hubs/local-ai/) and the [license guide](/licenses/).
+- Look up [quantization](/glossary/#quantization), [GGUF](/glossary/#gguf), [context window](/glossary/#context-window), and [GPU](/glossary/#gpu) in the glossary.
+- Before trusting any "runs on a laptop" claim, see [how to check an AI claim](/learn/how-to-check-an-ai-claim/).
+
+<h2 id="sources">Sources</h2>
+
+All read on October 13, 2026.
+
+- llama.cpp (ggml-org): [README](https://github.com/ggml-org/llama.cpp/blob/master/README.md); [quantize README](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md); [Token generation performance troubleshooting](https://github.com/ggml-org/llama.cpp/blob/master/docs/development/token_generation_performance_tips.md)
+- Ollama: [Hardware support](https://docs.ollama.com/gpu), [Context length](https://docs.ollama.com/context-length), [FAQ](https://docs.ollama.com/faq), [macOS](https://docs.ollama.com/macos), [Windows](https://docs.ollama.com/windows), [gpt-oss library page](https://ollama.com/library/gpt-oss)
+- LM Studio (Element Labs, Inc.): [System requirements](https://lmstudio.ai/docs/app/system-requirements); [Download an LLM](https://lmstudio.ai/docs/app/basics/download-model); [App Terms of Service](https://lmstudio.ai/app-terms) (version August 23, 2026)
+- Apple: [MLX README](https://github.com/ml-explore/mlx/blob/main/README.md); [mlx-lm README](https://github.com/ml-explore/mlx-lm/blob/main/README.md); [MacBook Air technical specifications](https://www.apple.com/macbook-air/specs/); [View memory usage in Activity Monitor on Mac](https://support.apple.com/guide/activity-monitor/view-memory-usage-actmntr1004/mac)
+- Google: [Gemma 4 model overview](https://ai.google.dev/gemma/docs/core) (last updated July 8, 2026); [gemma-4-12B-it card](https://huggingface.co/google/gemma-4-12B-it) (revision 707f0a3); [gemma-4-12B-it-qat-q4_0-gguf repository](https://huggingface.co/google/gemma-4-12B-it-qat-q4_0-gguf) (revision 29d0977) and its [file listing](https://huggingface.co/api/models/google/gemma-4-12B-it-qat-q4_0-gguf/tree/main); [Gemma 4 license](https://ai.google.dev/gemma/docs/gemma_4_license)
+- OpenAI: [gpt-oss-20b card](https://huggingface.co/openai/gpt-oss-20b) (revision 6cee5e8); [How to run gpt-oss locally with Ollama](https://developers.openai.com/cookbook/articles/gpt-oss/run-locally-ollama)
+- Meta: [Llama 3.1 Community License Agreement](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE) (version release date July 23, 2024)
+- NVIDIA: [GeForce RTX 5060 family](https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/)
+- Microsoft Learn: [GPU Process Memory counters report incorrect value](https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/gpu-process-memory-counters-report-wrong-value)
+- Hugging Face documentation: [GGUF](https://huggingface.co/docs/hub/gguf), [Model Cards](https://huggingface.co/docs/hub/model-cards), [Gated models](https://huggingface.co/docs/hub/models-gated)

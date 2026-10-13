@@ -5,11 +5,13 @@ import WhatSuperIntelligenceMeans from "@/content/pages/learn-what-super-intelli
 import AiContentProvenance from "@/content/pages/learn-ai-content-provenance.mdx";
 import AiHistory from "@/content/pages/learn-ai-history.mdx";
 import CareersInAi from "@/content/pages/learn-careers-in-ai.mdx";
+import ChoosingALocalModel from "@/content/pages/learn-choosing-a-local-model.mdx";
 import Ecosystem from "@/content/pages/learn-ecosystem.mdx";
 import Evaluations from "@/content/pages/learn-evaluations.mdx";
 import HostedOrLocal from "@/content/pages/learn-hosted-or-local.mdx";
 import HowLanguageModelsWork from "@/content/pages/learn-how-language-models-work.mdx";
 import HowModelsUseTools from "@/content/pages/learn-how-models-use-tools.mdx";
+import HowToCheckAnAiClaim from "@/content/pages/learn-how-to-check-an-ai-claim.mdx";
 import InferenceHardware from "@/content/pages/learn-inference-hardware.mdx";
 import InfrastructureClaims from "@/content/pages/learn-infrastructure-claims.mdx";
 import ModelCard from "@/content/pages/learn-model-card.mdx";
@@ -34,11 +36,13 @@ export const EXPLAINER_CONTENT: Record<string, ComponentType> = {
   "pretraining-and-post-training": PretrainingAndPostTraining,
   "training-data-disclosures": TrainingData,
   "hosted-or-local": HostedOrLocal,
+  "choosing-a-local-model": ChoosingALocalModel,
   "how-models-use-tools": HowModelsUseTools,
   "agents-and-robotics": AgentsRobotics,
   "retrieval-augmented-generation": RetrievalAugmentedGeneration,
   "inference-hardware": InferenceHardware,
   "quantization": Quantization,
+  "how-to-check-an-ai-claim": HowToCheckAnAiClaim,
   "ai-content-provenance": AiContentProvenance,
   "reading-evaluations": Evaluations,
   "safety-testing-and-frameworks": SafetyTestingAndFrameworks,
