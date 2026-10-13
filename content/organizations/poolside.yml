@@ -89,9 +89,18 @@ openness_summary:
     public release of the training data or training code.
   source_ids: [poolside-docs-overview, laguna-tech-report, hf-laguna-xs2, hf-laguna-m1, hf-laguna-xs-2-1, hf-laguna-s-2-1, poolside-laguna-s-release]
 hiring_url: https://poolside.ai/careers
+careers:
+  url: https://poolside.ai/careers
+  enabled: true
+  source:
+    type: ashby
+    identifier: poolside
+  posting_hosts: []
+  source_ids: [poolside-careers-jobs]
+  reviewed_at: 2026-10-13
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-13
 last_reviewed: 2026-09-29
 sources:
   - id: poolside-laguna-s-release
@@ -199,3 +208,11 @@ sources:
     kind: paper
     published_at: 2026-05-25
     accessed_at: 2026-09-29
+  - id: poolside-careers-jobs
+    title: Official careers directory and application links
+    url: https://poolside.ai/careers
+    publisher: Poolside
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+    reviewed_at: 2026-10-13

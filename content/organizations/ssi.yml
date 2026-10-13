@@ -60,9 +60,18 @@ openness_summary:
     or products from SSI.
   source_ids: [ssi-home, ssi-updates]
 hiring_url: https://jobs.ashbyhq.com/ssi/b91659e4-9352-46fa-b3c5-4fb28827eb2e
+careers:
+  url: https://ssi.inc/
+  enabled: true
+  source:
+    type: ashby
+    identifier: ssi
+  posting_hosts: []
+  source_ids: [ssi-careers-jobs]
+  reviewed_at: 2026-10-13
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-13
 last_reviewed: 2026-09-29
 sources:
   - id: ssi-home
@@ -86,3 +95,11 @@ sources:
     kind: announcement
     published_at: 2026-07-27
     accessed_at: 2026-09-29
+  - id: ssi-careers-jobs
+    title: Official careers directory and application links
+    url: https://ssi.inc/
+    publisher: Safe Superintelligence Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+    reviewed_at: 2026-10-13

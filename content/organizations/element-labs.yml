@@ -94,7 +94,15 @@ openness_summary:
   source_ids: [lms-app-terms, lms-cli-license, lmstudio-js-license, lmstudio-python-license, mlx-engine-license]
   reviewed_at: 2026-10-01
 hiring_url: https://lmstudio.ai/careers
-careers: null
+careers:
+  url: https://lmstudio.ai/careers
+  enabled: true
+  source:
+    type: ashby
+    identifier: lm-studio
+  posting_hosts: []
+  source_ids: [element-labs-careers-jobs]
+  reviewed_at: 2026-10-13
 profile:
   intended_users:
     text: >-
@@ -129,7 +137,7 @@ profile:
       reviewed_at: 2026-10-01
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-13
 last_reviewed: 2026-10-01
 sources:
   - id: lms-careers
@@ -244,3 +252,11 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-10-01
+  - id: element-labs-careers-jobs
+    title: Official careers directory and application links
+    url: https://lmstudio.ai/careers
+    publisher: Element Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+    reviewed_at: 2026-10-13

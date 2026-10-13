@@ -93,9 +93,18 @@ openness_summary:
     released, and this catalog has no record of public model weights from Waymo.
   source_ids: [wod-terms, wod-license-file, waymax-license, waymo-safe-ai]
 hiring_url: https://careers.withwaymo.com/
+careers:
+  url: https://careers.withwaymo.com/
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: waymo
+  posting_hosts: [careers.withwaymo.com]
+  source_ids: [waymo-careers-jobs]
+  reviewed_at: 2026-10-13
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-13
 last_reviewed: 2026-09-29
 sources:
   - id: waymo-home
@@ -210,3 +219,11 @@ sources:
     kind: license
     published_at: 2023-10-17
     accessed_at: 2026-09-29
+  - id: waymo-careers-jobs
+    title: Official careers directory and application links
+    url: https://careers.withwaymo.com/
+    publisher: Waymo
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+    reviewed_at: 2026-10-13

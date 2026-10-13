@@ -94,9 +94,18 @@ openness_summary:
   source_ids: [cline-readme, cline-license, cline-docs-overview]
   reviewed_at: 2026-10-01
 hiring_url: https://cline.bot/careers
+careers:
+  url: https://cline.bot/careers
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: cline
+  posting_hosts: [cline.bot]
+  source_ids: [cline-careers-jobs]
+  reviewed_at: 2026-10-13
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-13
 last_reviewed: 2026-10-01
 profile:
   intended_users:
@@ -211,3 +220,11 @@ sources:
     published_at: null
     accessed_at: 2026-10-01
     reviewed_at: 2026-10-01
+  - id: cline-careers-jobs
+    title: Official careers directory and application links
+    url: https://cline.bot/careers
+    publisher: Cline
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+    reviewed_at: 2026-10-13

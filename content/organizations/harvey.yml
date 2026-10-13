@@ -88,9 +88,18 @@ openness_summary:
   source_ids: [ harvey-company, harvey-lab-repo, harvey-lab-license ]
   reviewed_at: 2026-10-02
 hiring_url: https://www.harvey.ai/careers
+careers:
+  url: https://www.harvey.ai/careers
+  enabled: true
+  source:
+    type: ashby
+    identifier: harvey
+  posting_hosts: []
+  source_ids: [harvey-careers-jobs]
+  reviewed_at: 2026-10-13
 publication_status: published
 archive_note: null
-updated_at: 2026-10-02
+updated_at: 2026-10-13
 last_reviewed: 2026-10-02
 sources:
   - id: harvey-privacy
@@ -157,3 +166,11 @@ sources:
     published_at: null
     accessed_at: 2026-10-02
     reviewed_at: 2026-10-02
+  - id: harvey-careers-jobs
+    title: Official careers directory and application links
+    url: https://www.harvey.ai/careers
+    publisher: Harvey
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+    reviewed_at: 2026-10-13

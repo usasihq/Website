@@ -74,9 +74,18 @@ openness_summary:
     the organization as a whole.
   source_ids: [biohub-esm-repo, biohub-esm-license, biohub-ai]
 hiring_url: https://biohub.org/careers/
+careers:
+  url: https://biohub.org/careers/
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: biohub
+  posting_hosts: []
+  source_ids: [biohub-careers-jobs]
+  reviewed_at: 2026-10-13
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-13
 last_reviewed: 2026-09-29
 sources:
   - id: biohub-announcement
@@ -149,3 +158,11 @@ sources:
     kind: documentation
     published_at: null
     accessed_at: 2026-09-29
+  - id: biohub-careers-jobs
+    title: Official careers directory and application links
+    url: https://biohub.org/careers/
+    publisher: Biohub (Chan Zuckerberg Biohub)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+    reviewed_at: 2026-10-13
