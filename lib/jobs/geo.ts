@@ -5,11 +5,16 @@
  * Employers type locations freely: "Atlanta, GA", "Atlanta, Georgia, United
  * States", "Remote - US", "San Francisco". Nothing here geocodes or guesses.
  *
- * - A U.S. state is read only when the text names it: a postal code after a
- *   comma ("Atlanta, GA"), the full state name ("Atlanta, Georgia, United
- *   States", "Texas"), "New York City"/"NYC" for New York, or "Washington, DC"
- *   for the District of Columbia. A city alone ("San Francisco") names no
- *   state, and country-wide text ("Remote - US") is the United States, not a state.
+ * - A U.S. state is read when the text names it: a postal code after a comma
+ *   ("Atlanta, GA", "Mountain View, CA USA"), the full state name ("Atlanta,
+ *   Georgia, United States", "Texas"), "New York City"/"NYC" for New York, or
+ *   "Washington, DC" for the District of Columbia. A city given alone counts
+ *   only when it is in CITY_STATE, a short table of unambiguous U.S. city names
+ *   ("San Francisco", "SF Office", "Seattle"); names shared with other places
+ *   (Cambridge, Portland, Columbus, Arlington, Kansas City, Washington) are left
+ *   out. Country-wide text ("Remote - US") is the United States, not a state.
+ * - Each listing's cities are kept as "ST|City" (canonical names from
+ *   CITY_STATE, or the city as the employer wrote it before a postal code).
  * - A location is outside the United States only when it names a country,
  *   region, or well-known city outside it ("London, UK", "EMEA", "Toronto").
  * - Postal codes that are also country codes are guarded: "Toronto, CA" is
@@ -17,7 +22,76 @@
  */
 import { US_STATES } from "../places";
 
-export type PlaceGeo = { states: string[]; us: boolean; outside: boolean };
+export type PlaceGeo = { states: string[]; cities: string[]; us: boolean; outside: boolean };
+
+/**
+ * Unambiguous U.S. city names (lowercase, as employers write them alone) and
+ * the state and canonical name they stand for. Only names that no other
+ * well-known place shares; extend with care and add a test for each.
+ */
+const CITY_STATE: Record<string, [string, string]> = {
+  "san francisco": ["CA", "San Francisco"], "san fransisco": ["CA", "San Francisco"], sf: ["CA", "San Francisco"], "south san francisco": ["CA", "South San Francisco"],
+  "san jose": ["CA", "San Jose"], "san mateo": ["CA", "San Mateo"], "santa clara": ["CA", "Santa Clara"], "palo alto": ["CA", "Palo Alto"],
+  "mountain view": ["CA", "Mountain View"], fremont: ["CA", "Fremont"], sunnyvale: ["CA", "Sunnyvale"], "menlo park": ["CA", "Menlo Park"],
+  "redwood city": ["CA", "Redwood City"], cupertino: ["CA", "Cupertino"], oakland: ["CA", "Oakland"], berkeley: ["CA", "Berkeley"],
+  emeryville: ["CA", "Emeryville"], "foster city": ["CA", "Foster City"], "los angeles": ["CA", "Los Angeles"], "san diego": ["CA", "San Diego"],
+  irvine: ["CA", "Irvine"], "santa monica": ["CA", "Santa Monica"],
+  seattle: ["WA", "Seattle"], bellevue: ["WA", "Bellevue"], redmond: ["WA", "Redmond"], kirkland: ["WA", "Kirkland"],
+  "new york": ["NY", "New York"], "new york city": ["NY", "New York"], nyc: ["NY", "New York"], brooklyn: ["NY", "Brooklyn"],
+  boston: ["MA", "Boston"], chicago: ["IL", "Chicago"], chi: ["IL", "Chicago"],
+  austin: ["TX", "Austin"], dallas: ["TX", "Dallas"], houston: ["TX", "Houston"],
+  pittsburgh: ["PA", "Pittsburgh"], philadelphia: ["PA", "Philadelphia"], nashville: ["TN", "Nashville"],
+  "st. louis": ["MO", "St. Louis"], "st louis": ["MO", "St. Louis"], "saint louis": ["MO", "St. Louis"],
+  atlanta: ["GA", "Atlanta"], denver: ["CO", "Denver"], boulder: ["CO", "Boulder"], miami: ["FL", "Miami"],
+  "salt lake city": ["UT", "Salt Lake City"], raleigh: ["NC", "Raleigh"], minneapolis: ["MN", "Minneapolis"],
+  "ann arbor": ["MI", "Ann Arbor"], detroit: ["MI", "Detroit"], baltimore: ["MD", "Baltimore"], phoenix: ["AZ", "Phoenix"],
+};
+/** "San Francisco Bay Area" and "Bay Area" name California but no single city. */
+const BAY_AREA = /^(?:san francisco )?bay area$/i;
+
+/** A place part as a city: no "Any Office"/"USA:" prefix and no "Office"/"HQ" suffix. */
+const cityText = (part: string) =>
+  part
+    .replace(/^(?:any office|usa?|u\.s\.(?:a\.)?)\s*:?\s+/i, "")
+    .replace(/\s+(?:office|offices|hq|headquarters|campus)$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+/** Text in a city position that is not a city ("Remote, CA", "Multiple Locations, TX"). */
+const NOT_A_CITY = /^(?:remote|hybrid|in-office|on-?site|distributed|anywhere|multiple(?: locations)?|various|united states|usa?|u\.s\.(?:a\.)?)?$|\d/i;
+
+/** The table entry for a place part, also when a postal code that agrees follows it ("Mountain View CA", "Mountain View CA USA"). */
+function cityLookup(part: string): [string, string] | null {
+  const key = cityText(part).toLowerCase();
+  if (CITY_STATE[key]) return CITY_STATE[key];
+  const m = /^(.*?)\s+([a-z]{2})(?:\s+usa?)?$/.exec(key);
+  const hit = m ? CITY_STATE[m[1]] : undefined;
+  return hit && hit[0].toLowerCase() === m![2] ? hit : null;
+}
+
+/** The canonical name for a city written before a postal code ("san francisco, CA" → "San Francisco"). */
+function cityName(city: string, code: string): string {
+  const known = cityLookup(city);
+  if (known && known[0] === code) return known[1];
+  const trimmed = cityText(city);
+  return trimmed === trimmed.toLowerCase() || trimmed === trimmed.toUpperCase()
+    ? trimmed.toLowerCase().replace(/\b\p{L}/gu, (c) => c.toUpperCase())
+    : trimmed;
+}
+
+/** URL slug for a city name ("St. Louis" → "st-louis"). */
+export const citySlug = (name: string) =>
+  name
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+/** "CA|San Francisco" → "CA|san-francisco": what the directory's city filter and the city pages match on. */
+export const cityKey = (city: string) => `${city.slice(0, 2)}|${citySlug(city.slice(3))}`;
+/** "CA|San Francisco" → "San Francisco". */
+export const cityLabel = (city: string) => city.slice(3);
 
 /** State name for display; the District of Columbia reads as Washington, D.C. */
 export const stateDisplayName = (code: string) => (code === "DC" ? "Washington, D.C." : US_STATES[code]);
@@ -125,8 +199,8 @@ function segmentGeo(segment: string, usCountry: boolean): PlaceGeo {
   const found: { code: string; city: string }[] = [];
   cleaned.forEach((p, i) => {
     const city = i > 0 ? cleaned[i - 1] : "";
-    // Postal code after a comma: "Atlanta, GA", "Tulsa, OK - US (2)", "Austin, TX 78701".
-    const code = /^([A-Z]{2})(?:\s+\d{5}(?:-\d{4})?)?$/.exec(p)?.[1];
+    // Postal code after a comma: "Atlanta, GA", "Tulsa, OK - US (2)", "Austin, TX 78701", "Mountain View, CA USA".
+    const code = /^([A-Z]{2})(?:\s+(?:USA|US|U\.S\.A?\.?))?(?:\s+\d{5}(?:-\d{4})?)?$/.exec(p)?.[1];
     if (code && i > 0 && code in US_STATES) found.push({ code, city });
     // Full name as the last place part, optionally followed only by the country.
     const named = NAME_TO_CODE.get(p.toLowerCase());
@@ -136,8 +210,8 @@ function segmentGeo(segment: string, usCountry: boolean): PlaceGeo {
       found.push({ code: named, city });
     }
   });
-  if (DC.test(segment)) found.push({ code: "DC", city: "" });
-  if (NEW_YORK_CITY.test(segment)) found.push({ code: "NY", city: "" });
+  if (DC.test(segment)) found.push({ code: "DC", city: "Washington" });
+  if (NEW_YORK_CITY.test(segment)) found.push({ code: "NY", city: "New York" });
 
   // A country named in the place itself ("Toronto, ON, Canada"), not in a city position before a state ("Lebanon, NH").
   const countryNamed = cleaned.some((p, i) => {
@@ -146,24 +220,39 @@ function segmentGeo(segment: string, usCountry: boolean): PlaceGeo {
     return !beforeState && (COUNTRY_RE.test(p) || (i > 0 && COUNTRY_CODE_PART.test(p)));
   }) || DASH_COUNTRY.test(segment);
   const usNamed = hasUSMarker(segment);
-  let states = found.filter((f) => !(LOOKALIKE[f.code]?.test(f.city))).map((f) => f.code);
-  if (countryNamed && !usNamed) states = [];
-  const cityOutside = PLACES_OUTSIDE.test(segment) && states.length === 0;
-  return { states, us: usNamed || states.length > 0, outside: countryNamed || cityOutside };
+  // A city given without a state: only names in the unambiguous table, and never beside another country.
+  const explicit = found.length > 0;
+  if (!explicit && !(countryNamed && !usNamed)) {
+    for (const p of cleaned) {
+      const hit = cityLookup(p);
+      if (hit) found.push({ code: hit[0], city: hit[1] });
+      else if (BAY_AREA.test(p)) found.push({ code: "CA", city: "" });
+    }
+  }
+  let kept = found.filter((f) => !(LOOKALIKE[f.code]?.test(f.city)));
+  if (countryNamed && !usNamed) kept = [];
+  const states = [...new Set(kept.map((f) => f.code))];
+  const named = kept.map((f) => ({ code: f.code, city: f.city && cityName(f.city, f.code) })).filter((f) => f.city && !NOT_A_CITY.test(f.city));
+  const cities = [...new Set(named.map((f) => `${f.code}|${f.city}`))];
+  // A city outside the U.S. still counts beside a table city ("San Francisco, London"), not beside a written state ("Paris, TX").
+  const cityOutside = PLACES_OUTSIDE.test(segment) && (!explicit || states.length === 0);
+  return { states, cities, us: usNamed || states.length > 0, outside: countryNamed || cityOutside };
 }
 
 /** What one employer-supplied location string names. */
 export function placeGeography(location: string, usCountry = false): PlaceGeo {
   const states = new Set<string>();
+  const cities = new Set<string>();
   let us = false;
   let outside = false;
   for (const segment of segments(location)) {
     const g = segmentGeo(segment, usCountry);
     for (const s of g.states) states.add(s);
+    for (const c of g.cities) cities.add(c);
     us ||= g.us;
     outside ||= g.outside;
   }
-  return { states: [...states].sort(), us, outside };
+  return { states: [...states].sort(), cities: [...cities].sort(), us, outside };
 }
 
 export type JobGeo = PlaceGeo;
@@ -175,6 +264,7 @@ const cache = new WeakMap<object, JobGeo>();
  * Geography of a listing from all of its locations and its employer-supplied
  * countries (Ashby feeds list them; Greenhouse feeds do not).
  * - `states`: U.S. states the listing names.
+ * - `cities`: U.S. cities it names, as "ST|City".
  * - `us`: it names the United States or a U.S. state.
  * - `outside`: it names a place outside the United States (or a wider region).
  */
@@ -184,17 +274,22 @@ export function jobGeography(job: GeoJob): JobGeo {
   const usCountry = job.countries.some(isUSCountry);
   const otherCountry = job.countries.some((c) => !isUSCountry(c));
   const states = new Set<string>();
+  const cities = new Set<string>();
   let us = usCountry;
   let outside = otherCountry;
   for (const location of job.locations) {
     const g = placeGeography(location, usCountry);
     for (const s of g.states) states.add(s);
+    for (const c of g.cities) cities.add(c);
     us ||= g.us;
     outside ||= g.outside;
   }
   // When the employer's countries for the posting include no U.S. entry, state-like text is not read as a U.S. state.
-  if (job.countries.length > 0 && !usCountry) states.clear();
-  const result = { states: [...states].sort(), us: us || states.size > 0, outside };
+  if (job.countries.length > 0 && !usCountry) {
+    states.clear();
+    cities.clear();
+  }
+  const result = { states: [...states].sort(), cities: [...cities].sort(), us: us || states.size > 0, outside };
   cache.set(job, result);
   return result;
 }

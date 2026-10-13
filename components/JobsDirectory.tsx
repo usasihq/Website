@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { FeedHealth, Job } from "@/lib/jobs/schema";
 import { checkedLabel, currentJobs, DEFAULT_JOB_FILTERS, filterJobs, isDefaultJobView, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
 import { isExpressionOfInterest, jobTrack, JOB_TRACKS } from "@/lib/jobs/tracks";
-import { LOCATION_SCOPE_LABELS, LOCATION_SCOPES, stateDisplayName, type LocationScope } from "@/lib/jobs/geo";
+import { cityKey, cityLabel, jobGeography, LOCATION_SCOPE_LABELS, LOCATION_SCOPES, stateDisplayName, type LocationScope } from "@/lib/jobs/geo";
 import { US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
@@ -64,6 +64,13 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   const announce = useDebounced(waiting ? "Loading all positions." : `${total} matching positions. Page ${page} of ${pageCount}.`);
   const set = (patch: Partial<JobFilters>, mode: "push" | "replace" = "push") => update({ ...f, page: 1, ...patch }, mode);
   const departments = useMemo(() => summary.departments.map(value => ({ value, label: value })), [summary.departments]);
+  // The city filter has no menu (city pages link to it); its name comes from the listings that match it.
+  const cityName = useMemo(() => {
+    if (!f.city) return "";
+    const key = `${f.state}|${f.city}`;
+    for (const j of results) { const c = jobGeography(j).cities.find(c => cityKey(c) === key); if (c) return cityLabel(c); }
+    return f.city.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  }, [f.city, f.state, results]);
   return <>
     <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><p className="text-lg text-text"><strong>{currentCount.toLocaleString("en-US")}</strong> recently confirmed positions across <strong>{count}</strong> organizations</p><a href="#job-sources" className="link text-sm">Coverage & source health</a></div>
     <p className="mb-6 max-w-3xl text-sm text-muted">Coverage is limited to configured employer feeds. A current listing was present at its last successful check within 48 hours; the employer may have changed it since. USASI does not recruit, endorse employers, or collect applications.</p>
@@ -77,13 +84,14 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
         <SearchField label="Search jobs" value={f.q} onChange={q => set({ q }, "replace")} placeholder="Title, organization, team…" />
         <SelectField label="Company or lab" value={f.company} options={coverage.map(c => ({ value: c.slug, label: c.name }))} onChange={company => set({ company })} allLabel="All organizations" />
         <SearchField label="Location" value={f.location} onChange={location => set({ location }, "replace")} placeholder="Employer-supplied location…" />
-        <SelectField label="U.S. state named in location" value={f.state} options={STATE_OPTIONS} onChange={state => set({ state })} allLabel="Any location" />
+        <SelectField label="U.S. state named in location" value={f.state} options={STATE_OPTIONS} onChange={state => set({ state, city: "" })} allLabel="Any location" />
         <SelectField<LocationScope> label="Remote and U.S. locations" value={f.where} options={SCOPE_OPTIONS} onChange={where => set({ where })} allLabel="All listings" />
         <SelectField label="Department" value={f.department} options={departments} onChange={department => set({ department })} allLabel="All supplied departments" />
         <SelectField label="Workplace type" value={f.workplace} options={options(["remote", "hybrid", "on-site", "unknown"])} onChange={workplace => set({ workplace })} />
         <SelectField label="Employment type" value={f.employment} options={options(["full-time", "part-time", "contract", "temporary", "internship", "unknown"])} onChange={employment => set({ employment })} />
       </div>
-      {f.state || f.where ? <p className="mt-4 max-w-3xl text-sm text-muted"><strong className="text-text">How locations are read:</strong> {f.state ? `A listing matches ${stateDisplayName(f.state)} when one of its employer-supplied locations names it, for example “Atlanta, GA” or “Atlanta, Georgia, United States”; a city alone or “Remote - US” names no state. ` : ""}{f.where && f.where !== "us" ? "Remote means the employer marks the workplace as remote or a listed location says “Remote”. " : ""}{f.where === "us" || f.where === "remote-us" ? "U.S. locations only means the listing names the United States or a U.S. state and no place outside it. " : ""}It uses only what employers supply. <Link href="/jobs/remote-us/" className="link">About remote jobs with U.S. locations</Link></p> : null}
+      {f.city ? <p className="mt-4 text-sm text-text" data-testid="jobs-city-filter"><span className="badge mr-2 border-[rgba(76,201,255,0.45)]">City: {cityName}, {f.state}</span><button type="button" className="link min-h-11" onClick={() => set({ city: "" })}>Show all of {stateDisplayName(f.state)}</button></p> : null}
+      {f.state || f.where ? <p className="mt-4 max-w-3xl text-sm text-muted"><strong className="text-text">How locations are read:</strong> {f.state ? `A listing matches ${f.city ? `${cityName}, ${stateDisplayName(f.state)}` : stateDisplayName(f.state)} when one of its employer-supplied locations names it, for example “Atlanta, GA”, “Atlanta, Georgia, United States”, or a city on its own that has only one well-known U.S. match, such as “Atlanta” or “SF Office”; “Remote - US” names no state. ` : ""}{f.where && f.where !== "us" ? "Remote means the employer marks the workplace as remote or a listed location says “Remote”. " : ""}{f.where === "us" || f.where === "remote-us" ? "U.S. locations only means the listing names the United States or a U.S. state and no place outside it. " : ""}It uses only what employers supply. <Link href="/jobs/remote-us/" className="link">About remote jobs with U.S. locations</Link></p> : null}
       <details className="mt-4"><summary className="min-h-11 cursor-pointer text-sm text-ice">Salary and date filters</summary><div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <label className="flex min-h-11 items-center gap-2 text-sm"><input type="checkbox" checked={f.salary} onChange={e => set({ salary: e.target.checked })} className="h-5 w-5" />Employer supplies salary</label>
         <SelectField label="Salary currency" value={f.currency} options={options(summary.currencies)} onChange={currency => set({ currency, salary_min: "" })} />

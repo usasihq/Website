@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { JobsLanding } from "@/components/JobsLanding";
 import { getCatalog } from "@/lib/catalog";
-import { jobLandingImage, landingLinks } from "@/lib/jobs/landing-links";
+import { jobLandingImage, topicAndStateLinks } from "@/lib/jobs/landing-links";
 import { jobsLandingData, TOPIC_IDS } from "@/lib/jobs/landing";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -22,5 +22,5 @@ export async function generateMetadata({ params }: { params: Promise<{ topic: st
 export default async function JobsTopicPage({ params }: { params: Promise<{ topic: string }> }) {
   const page = topicPage((await params).topic);
   if (!page) notFound();
-  return <JobsLanding page={page} others={landingLinks(getCatalog()).filter((l) => l.path !== page.path)} />;
+  return <JobsLanding page={page} others={topicAndStateLinks(getCatalog(), page.path)} />;
 }

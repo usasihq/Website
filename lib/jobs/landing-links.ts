@@ -1,25 +1,42 @@
 /**
  * Where the Jobs landing pages appear besides their own routes: the /jobs/
- * "Browse by" links, other landing pages, /places/<state>/, the sitemap, site
+ * "Browse by" links, other landing pages (a state page lists its city pages),
+ * /places/<state>/, the sitemap, site
  * search, and per-page preview cards (/og/jobs/<slug>.jpg). Build-time only.
  */
 import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
 import { card, type PageCard } from "../page-cards";
 import type { SearchEntry } from "../search";
-import { jobsLandingData, stateDisplayName, type LandingPage } from "./landing";
+import { jobsLandingData, stateDisplayName, type LandingKind, type LandingPage } from "./landing";
 
-export type LandingLink = { path: string; name: string; count: number; kind: "state" | "topic" };
+export type LandingLink = { path: string; name: string; count: number; kind: LandingKind; state: string | null };
 
 const n = (v: number) => v.toLocaleString("en-US");
 
-/** Topic pages first, then states alphabetically. */
+const link = (p: LandingPage): LandingLink => ({ path: p.path, name: p.name, count: p.count, kind: p.kind, state: p.state });
+
+/** Topic pages first, then states alphabetically, then cities alphabetically. */
 export function landingLinks(catalog: Catalog): LandingLink[] {
-  return jobsLandingData(catalog).all.map((p) => ({ path: p.path, name: p.name, count: p.count, kind: p.kind }));
+  return jobsLandingData(catalog).all.map(link);
+}
+
+/** Topic and state pages, for "More job pages" (city pages are listed on their state's page). */
+export function topicAndStateLinks(catalog: Catalog, except: string): LandingLink[] {
+  return landingLinks(catalog).filter((l) => l.kind !== "city" && l.path !== except);
+}
+
+/** City pages in one state, by number of listings. */
+export function cityLinks(catalog: Catalog, state: string): LandingLink[] {
+  return jobsLandingData(catalog)
+    .cities.filter((p) => p.state === state)
+    .map(link)
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
 }
 
 function geographyLine(p: LandingPage): string {
   if (p.scope === "state") return `Every listing names a location in ${stateDisplayName(p.state!)}`;
+  if (p.scope === "city") return `Every listing names ${p.city!.label}, ${p.state}`;
   if (p.scope === "us-only") return "U.S. locations only";
   return p.geography.outside ? "Includes positions outside the United States" : "No positions outside the United States listed";
 }
@@ -30,7 +47,7 @@ export function jobLandingCard(p: LandingPage): PageCard {
     page: p.path,
     image: p.image,
     template: "article",
-    eyebrow: p.kind === "state" ? "Jobs · U.S. state" : "Jobs",
+    eyebrow: p.kind === "state" ? "Jobs · U.S. state" : p.kind === "city" ? "Jobs · U.S. city" : "Jobs",
     title: p.h1,
     subtitle: `${n(p.count)} open ${p.count === 1 ? "listing" : "listings"} from ${n(p.employers.length)} ${p.employers.length === 1 ? "employer" : "employers"} · ${geographyLine(p)} · Checked ${checked}`,
     facts: [],
@@ -56,7 +73,13 @@ export function jobLandingSearchEntries(catalog: Catalog): SearchEntry[] {
     href: p.path,
     name: p.h1,
     summary: p.description,
-    keywords: `jobs careers hiring openings ${p.kind === "state" ? `state ${stateDisplayName(p.state!)} ${p.state}` : p.id.replace(/-/g, " ")}`,
+    keywords: `jobs careers hiring openings ${
+      p.kind === "state"
+        ? `state ${stateDisplayName(p.state!)} ${p.state}`
+        : p.kind === "city"
+          ? `city ${p.city!.label} ${stateDisplayName(p.state!)} ${p.state}`
+          : p.id.replace(/-/g, " ")
+    }`,
   }));
 }
 

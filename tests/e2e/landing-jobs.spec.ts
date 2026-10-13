@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
 /**
- * Jobs landing pages (/jobs/in/<state>/ and the topic pages), built from the
+ * Jobs landing pages (/jobs/in/<state>/, /jobs/in/<state>/<city>/, and the topic pages), built from the
  * local jobs data at build time. Counts change daily, so the tests compare a
  * page with itself and with the directory rather than with fixed numbers.
  */
@@ -55,6 +55,32 @@ test("the full list in the directory is the same set of listings", async ({ page
   await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
 });
 
+test("a city page sits under its state, and its full list in the directory is the same set", async ({ page }) => {
+  await page.goto("/jobs/in/california/");
+  const stateCount = await countOnPage(page);
+  await expect(page.getByTestId("landing-cities").locator('a[href="/jobs/in/california/san-francisco/"]')).toBeVisible();
+  await page.goto("/jobs/in/california/san-francisco/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("AI jobs in San Francisco, California");
+  const count = await countOnPage(page);
+  expect(count).toBeGreaterThanOrEqual(10);
+  expect(count).toBeLessThan(stateCount);
+  await expect(page).toHaveTitle(new RegExp(`^AI jobs in San Francisco, CA: ${count.toLocaleString("en-US")} open listings`));
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description!.length).toBeLessThanOrEqual(160);
+  await expect(page.getByText("Location named: San Francisco, California")).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Breadcrumb" }).locator('a[href="/jobs/in/california/"]')).toBeVisible();
+  await expect(page.getByTestId("landing-cities").locator('a[href="/jobs/in/california/"]')).toBeVisible();
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/og\/jobs\/in-california-san-francisco\.jpg$/);
+  const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
+  await page.getByRole("link", { name: /^See all [\d,]+ in the Jobs directory$/ }).click();
+  await loaded;
+  await expect(page).toHaveURL(/\/jobs\/\?state=CA&city=san-francisco&sort=newest$/);
+  await expect(page.getByTestId("jobs-city-filter")).toContainText("City: San Francisco, CA");
+  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  await page.getByRole("button", { name: "Show all of California" }).click();
+  await expect(page).toHaveURL(/\/jobs\/\?state=CA&sort=newest$/);
+});
+
 for (const path of TOPICS) {
   test(`topic page ${path} documents its rule and its geography`, async ({ page }) => {
     await page.goto(path);
@@ -80,7 +106,7 @@ test("landing pages are linked from /jobs/ and /places/, listed in the sitemap, 
   await page.goto("/places/california/");
   await expect(page.locator('main a[href="/jobs/in/california/"]')).toBeVisible();
   const sitemap = await (await request.get("/sitemap.xml")).text();
-  for (const path of ["/jobs/in/california/", ...TOPICS]) expect(sitemap).toContain(`${path}</loc>`);
+  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", ...TOPICS]) expect(sitemap).toContain(`${path}</loc>`);
   expect(sitemap).not.toContain("?state=");
   const index = await (await request.get("/data/search-index.json")).json();
   expect(index.entries.some((e: { href: string }) => e.href === "/jobs/in/california/")).toBe(true);
@@ -92,10 +118,11 @@ test("only states at or above the listing threshold have a page", async ({ page,
   expect(await chips.count()).toBeGreaterThan(0);
   for (const text of await chips.allTextContents()) expect(Number(/\(([\d,]+)\)/.exec(text)![1].replace(/,/g, ""))).toBeGreaterThanOrEqual(10);
   expect((await request.get("/jobs/in/not-a-state/")).status()).toBe(404);
+  expect((await request.get("/jobs/in/california/not-a-city/")).status()).toBe(404);
 });
 
 test("landing pages pass axe and fit narrow screens", async ({ page }) => {
-  for (const path of ["/jobs/in/california/", "/jobs/remote-us/"]) {
+  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", "/jobs/remote-us/"]) {
     await page.goto(path);
     const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
     expect(axe.violations.map((v) => `${path}: ${v.id}`)).toEqual([]);

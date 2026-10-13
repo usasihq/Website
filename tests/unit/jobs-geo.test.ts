@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { inLocationScope, isRemoteListing, jobGeography, placeGeography } from "@/lib/jobs/geo";
+import { citySlug, inLocationScope, isRemoteListing, jobGeography, placeGeography } from "@/lib/jobs/geo";
 import { parseJobFilters, serializeJobFilters } from "@/lib/jobs/search";
 
 const states = (location: string, countries: string[] = []) => jobGeography({ locations: [location], countries }).states;
@@ -27,12 +27,33 @@ describe("U.S. states read from employer-supplied locations", () => {
     ["Delaware, OH", ["OH"]],
     ["Paris, TX", ["TX"]],
     ["Cambridge, MA", ["MA"]],
+    // Cities on their own, from the unambiguous table, with office suffixes and spelling variants.
+    ["San Francisco", ["CA"]],
+    ["SF Office", ["CA"]],
+    ["San Francisco HQ", ["CA"]],
+    ["San Jose Office", ["CA"]],
+    ["USA: San Francisco", ["CA"]],
+    ["San Francisco Bay Area", ["CA"]],
+    ["Mountain View, CA USA", ["CA"]],
+    ["Mountain View CA", ["CA"]],
+    ["Sunnyvale, Ca", ["CA"]],
+    ["Bellevue Office", ["WA"]],
+    ["CHI Office", ["IL"]],
+    ["NYC Office", ["NY"]],
+    ["St. Louis", ["MO"]],
+    ["Seattle; Remote - US", ["WA"]],
   ])("%s → %j", (location, expected) => {
     expect(states(location)).toEqual(expected);
   });
 
   it.each([
-    "San Francisco", // a city alone names no state
+    "Cambridge", // Massachusetts or England
+    "Portland", // Oregon or Maine
+    "Columbus", // Ohio, Georgia, or Indiana
+    "Kansas City", // Missouri or Kansas
+    "San Jose, Costa Rica", // a table city beside another country
+    "Boston, Lincolnshire, United Kingdom",
+    "Mountain View NY", // a code that disagrees with the table
     "Remote - US",
     "US - Remote",
     "United States",
@@ -46,7 +67,7 @@ describe("U.S. states read from employer-supplied locations", () => {
     "Perth, WA", // Australia, not Washington
     "Tbilisi, Georgia",
     "Toronto, ON, Canada",
-    "Sunnyvale, Ca", // postal codes must be written as codes
+    "Toronto, Ca", // a code in the wrong case is not read as a code
     "Dublin - IE",
     "Distributed",
   ])("%s names no U.S. state", (location) => {
@@ -60,15 +81,47 @@ describe("U.S. states read from employer-supplied locations", () => {
   });
 
   it("separates U.S., outside, and unreadable locations", () => {
-    expect(placeGeography("London, UK")).toEqual({ states: [], us: false, outside: true });
+    expect(placeGeography("London, UK")).toEqual({ states: [], cities: [], us: false, outside: true });
     expect(placeGeography("US, UK, Singapore, Remote")).toMatchObject({ us: true, outside: true });
-    expect(placeGeography("Remote - US")).toEqual({ states: [], us: true, outside: false });
-    expect(placeGeography("San Francisco")).toEqual({ states: [], us: false, outside: false });
+    expect(placeGeography("Remote - US")).toEqual({ states: [], cities: [], us: true, outside: false });
+    expect(placeGeography("San Francisco")).toEqual({ states: ["CA"], cities: ["CA|San Francisco"], us: true, outside: false });
+    expect(placeGeography("San Francisco, London")).toEqual({ states: ["CA"], cities: ["CA|San Francisco"], us: true, outside: true });
+    expect(placeGeography("Hybrid")).toEqual({ states: [], cities: [], us: false, outside: false });
     expect(placeGeography("Remote International").outside).toBe(true);
     expect(placeGeography("New Mexico").outside).toBe(false);
-    expect(placeGeography("Panama City, FL")).toEqual({ states: ["FL"], us: true, outside: false });
+    expect(placeGeography("Panama City, FL")).toEqual({ states: ["FL"], cities: ["FL|Panama City"], us: true, outside: false });
     expect(placeGeography("Mexico City, MX").outside).toBe(true);
     expect(jobGeography({ locations: ["London"], countries: ["United States"] })).toMatchObject({ us: true, outside: true });
+  });
+});
+
+describe("U.S. cities read from employer-supplied locations", () => {
+  const cities = (location: string, countries: string[] = []) => jobGeography({ locations: [location], countries }).cities;
+  it.each([
+    ["San Francisco, CA", ["CA|San Francisco"]],
+    ["san francisco, CA", ["CA|San Francisco"]],
+    ["SF Office", ["CA|San Francisco"]],
+    ["San Fransisco", ["CA|San Francisco"]],
+    ["San Francisco, California, United States", ["CA|San Francisco"]],
+    ["Hybrid- Any Office (Fremont, CA, Salem, OR, or Pittsburgh, PA)", ["CA|Fremont", "OR|Salem", "PA|Pittsburgh"]],
+    ["Livingston, NJ / New York, NY / Washington, D.C./ Philadelphia, PA", ["DC|Washington", "NJ|Livingston", "NY|New York", "PA|Philadelphia"]],
+    ["NYC Office", ["NY|New York"]],
+    ["Austin, TX 78701", ["TX|Austin"]],
+    ["Remote, CA", []], // a state, but no city
+    ["Texas", []],
+    ["San Francisco Bay Area", []], // California, but no single city
+    ["Toronto, CA", []],
+  ])("%s → %j", (location, expected) => {
+    expect(cities(location)).toEqual(expected);
+  });
+  it("drops cities when the employer's countries are all outside the U.S.", () => {
+    expect(cities("Seattle", ["Canada"])).toEqual([]);
+    expect(cities("Seattle", ["United States"])).toEqual(["WA|Seattle"]);
+  });
+  it("makes stable URL slugs", () => {
+    expect(citySlug("St. Louis")).toBe("st-louis");
+    expect(citySlug("San José")).toBe("san-jose");
+    expect(citySlug("Winston-Salem")).toBe("winston-salem");
   });
 });
 
@@ -99,6 +152,14 @@ describe("directory location filters", () => {
     expect(serializeJobFilters(f)).toBe("state=GA&where=remote-us");
     expect(parseJobFilters(new URLSearchParams("state=XX&where=moon")).state).toBe("");
     expect(parseJobFilters(new URLSearchParams("state=constructor&where=moon")).where).toBe("");
+  });
+  it("parses a city only within a state", () => {
+    const f = parseJobFilters(new URLSearchParams("state=ca&city=san-francisco"));
+    expect([f.state, f.city]).toEqual(["CA", "san-francisco"]);
+    expect(serializeJobFilters(f)).toBe("state=CA&city=san-francisco");
+    expect(parseJobFilters(new URLSearchParams("city=san-francisco")).city).toBe("");
+    expect(parseJobFilters(new URLSearchParams("state=CA&city=../etc")).city).toBe("");
+    expect(parseJobFilters(new URLSearchParams("state=CA&city=San%20Francisco")).city).toBe("");
   });
 });
 

@@ -1,7 +1,7 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
-import { computeLandingData, LISTINGS_SHOWN, MIN_STATE_LISTINGS, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { cityDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
 import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, type JobItem } from "@/lib/jobs/search";
 import type { FeedHealth } from "@/lib/jobs/schema";
 import { US_STATES } from "@/lib/places";
@@ -9,7 +9,8 @@ import { US_STATES } from "@/lib/places";
 describe("landing page text", () => {
   // Realistic upper bounds: 9,999 listings from 99 employers, and the longest date and state names.
   const worst: Facts = { count: 9999, employers: 99, soleEmployer: null, date: "Sep 30, 2026", usOnly: 9999, outside: 9999 };
-  const defs = [...Object.values(TOPICS), ...Object.keys(US_STATES).map(stateDefinition)];
+  const longCity = "X".repeat(MAX_CITY_NAME);
+  const defs = [...Object.values(TOPICS), ...Object.keys(US_STATES).map(stateDefinition), ...Object.keys(US_STATES).map((c) => cityDefinition(c, "x", longCity))];
   it("keeps titles and descriptions answer-first and within 160 characters", () => {
     for (const d of defs) {
       expect(d.description(worst).length, d.path).toBeLessThanOrEqual(160);
@@ -24,6 +25,11 @@ describe("landing page text", () => {
     expect(stateDefinition("MS").description(one)).toBe("12 open listings naming a location in Mississippi, at xAI in the USASI catalog. Listings last checked Oct 13, 2026.");
     expect(stateDefinition("DC").h1).toBe("AI jobs in Washington, D.C.");
     expect(stateDefinition("DC").path).toBe("/jobs/in/district-of-columbia/");
+    const sf = cityDefinition("CA", "san-francisco", "San Francisco");
+    expect(sf.path).toBe("/jobs/in/california/san-francisco/");
+    expect(sf.h1).toBe("AI jobs in San Francisco, California");
+    expect(sf.description(one)).toBe("12 open listings naming San Francisco, CA, at xAI in the USASI catalog. Listings last checked Oct 13, 2026.");
+    expect(sf.image).toBe("/og/jobs/in-california-san-francisco.jpg");
   });
 });
 
@@ -47,15 +53,36 @@ describe("landing pages from listings", () => {
     ...Array.from({ length: 3 }, () => item("anthropic", "Account Executive", ["Savannah, Georgia, United States", "London, UK"])),
     ...Array.from({ length: MIN_STATE_LISTINGS - 1 }, () => item("anthropic", "Recruiter", ["Boise, ID"])),
     ...Array.from({ length: 20 }, () => item("anthropic", "Recruiter", ["Toronto, CA"])),
+    // Washington: 11 in Seattle (named on its own) and 3 in Bellevue; Seattle gets a page, Bellevue does not.
+    ...Array.from({ length: 11 }, (_, i) => item("openai", "Research Engineer", [i % 2 ? "Seattle" : "Seattle, WA"])),
+    ...Array.from({ length: 3 }, () => item("openai", "Research Engineer", ["Bellevue Office"])),
+    // Every Mississippi listing is in Southaven, so a Southaven page would repeat the state page.
+    ...Array.from({ length: 12 }, () => item("openai", "Research Engineer", ["Southaven, MS"])),
     item("anthropic", "Stale listing", ["Atlanta, GA"], { last_seen: "2026-10-10T00:00:00.000Z" }),
   ];
   const data = computeLandingData(catalog, items, [feed("openai"), feed("anthropic")], now);
   const georgia = data.states.find((p) => p.state === "GA")!;
 
   it("generates state pages only at or above the threshold, from named states only", () => {
-    expect(data.states.map((p) => p.state)).toEqual(["GA"]);
+    expect(data.states.map((p) => p.state)).toEqual(["GA", "MS", "WA"]);
     expect(data.stateCounts.ID).toBe(MIN_STATE_LISTINGS - 1);
     expect(data.stateCounts.CA).toBeUndefined();
+    expect(data.stateCounts.WA).toBe(14);
+  });
+
+  it("generates city pages at or above the threshold, below their state's count, and matching the directory", () => {
+    expect(data.cities.map((p) => p.path)).toEqual(["/jobs/in/georgia/atlanta/", "/jobs/in/washington/seattle/"]);
+    expect(data.cityCounts["MS|southaven"]).toBe(12);
+    expect(data.cityCounts["WA|bellevue"]).toBeLessThan(MIN_CITY_LISTINGS);
+    const seattle = data.cities.find((p) => p.city?.slug === "seattle")!;
+    expect(seattle.count).toBe(11);
+    expect(seattle.kind).toBe("city");
+    expect(seattle.indexable).toBe(true);
+    expect(seattle.directoryHref).toBe("/jobs/?state=WA&city=seattle&sort=newest");
+    const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(seattle.directoryHref.split("?")[1])), now);
+    expect(directory.map((j) => j.id)).toEqual(seattle.listings.map((j) => j.id));
+    expect(seattle.geography.alsoElsewhere).toBe(0);
+    expect(data.all.map((p) => p.path)).toContain(seattle.path);
   });
 
   it("counts current listings, caps the embedded list, and matches the directory exactly", () => {

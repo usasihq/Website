@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { JobsLanding } from "@/components/JobsLanding";
 import { getCatalog } from "@/lib/catalog";
-import { jobLandingImage, landingLinks } from "@/lib/jobs/landing-links";
+import { cityLinks, jobLandingImage, topicAndStateLinks } from "@/lib/jobs/landing-links";
 import { jobsLandingData } from "@/lib/jobs/landing";
 import { pageMetadata } from "@/lib/metadata";
 import { organizationsByState } from "@/lib/place-index";
@@ -30,7 +30,8 @@ export default async function JobsStatePage({ params }: { params: Promise<{ stat
   return (
     <JobsLanding
       page={page}
-      others={landingLinks(catalog).filter((l) => l.path !== page.path)}
+      others={topicAndStateLinks(catalog, page.path)}
+      cities={cityLinks(catalog, page.state!)}
       headquartersHref={hq ? `/places/${stateSlug(hq.code)}/` : null}
       headquartersCount={hq?.organizations.length ?? 0}
     />

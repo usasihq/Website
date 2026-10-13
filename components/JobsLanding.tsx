@@ -4,7 +4,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { ExternalLink } from "@/components/ExternalLink";
 import { JobsFreshness } from "@/components/JobsFreshness";
 import { formatDate } from "@/lib/dates";
-import { stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
+import { MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
 import type { LandingLink } from "@/lib/jobs/landing-links";
 import { checkedLabel, DEFAULT_JOB_FILTERS, serializeJobFilters, type JobItem } from "@/lib/jobs/search";
 import { isExpressionOfInterest } from "@/lib/jobs/tracks";
@@ -17,6 +17,18 @@ const count = (v: number, one: string, many: string) => `${n(v)} ${v === 1 ? one
 /** The geography label every page carries, computed from the listings themselves. */
 function GeographyNote({ page }: { page: LandingPage }) {
   const g = page.geography;
+  if (page.scope === "city") {
+    const name = `${page.city!.label}, ${stateDisplayName(page.state!)}`;
+    return (
+      <p className="mt-5 max-w-3xl text-base text-muted">
+        <span className="badge mr-2 border-[rgba(76,201,255,0.45)]">Location named: {name}</span>
+        Every listing here names {name}.{" "}
+        {g.alsoElsewhere
+          ? `${count(g.alsoElsewhere, "listing also names", "listings also name")} other places, and ${g.outside ? `${count(g.outside, "names", "name")} a place outside the United States` : "none names a place outside the United States"}.`
+          : "None names another location."}
+      </p>
+    );
+  }
   if (page.scope === "state") {
     const name = stateDisplayName(page.state!);
     return (
@@ -44,7 +56,7 @@ function GeographyNote({ page }: { page: LandingPage }) {
       </span>
       {count(g.usOnly, "listing names", "listings name")} U.S. locations only; {count(g.outside, "names", "name")} a place outside the United States
       {g.outside - g.outsideOnly > 0 ? ` (${n(g.outside - g.outsideOnly)} of them alongside U.S. locations)` : ""}; {count(g.unclear, "names", "name")} no
-      country or state that can be read, such as &ldquo;San Francisco&rdquo; or &ldquo;Remote&rdquo;.
+      country or state that can be read, such as &ldquo;Remote&rdquo; or &ldquo;Hybrid&rdquo;.
     </p>
   );
 }
@@ -85,20 +97,25 @@ function Listing({ job }: { job: JobItem }) {
 }
 
 
-export function JobsLanding({ page, others, headquartersHref, headquartersCount }: { page: LandingPage; others: LandingLink[]; headquartersHref?: string | null; headquartersCount?: number }) {
+type Props = {
+  page: LandingPage;
+  others: LandingLink[];
+  /** City pages in the page's state (state pages: all of them; city pages: the other ones). */
+  cities?: LandingLink[];
+  /** The state page, for city pages. */
+  parent?: { href: string; label: string } | null;
+  headquartersHref?: string | null;
+  headquartersCount?: number;
+};
+
+export function JobsLanding({ page, others, cities = [], parent = null, headquartersHref, headquartersCount }: Props) {
   const shown = page.listings.length;
+  const trail = [{ href: "/jobs/", label: "Jobs" }, ...(parent ? [parent] : []), { href: page.path, label: page.name }];
   const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...DEFAULT_JOB_FILTERS, ...page.filters, sort: "newest", company: slug })}`;
+  // The BreadcrumbList comes from PageHeader's breadcrumbs.
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
-          { "@type": "ListItem", position: 2, name: "Jobs", item: absoluteUrl("/jobs/") },
-          { "@type": "ListItem", position: 3, name: page.h1, item: absoluteUrl(page.path) },
-        ],
-      },
       {
         "@type": "ItemList",
         name: `Employers with listings on “${page.h1}”`,
@@ -116,10 +133,7 @@ export function JobsLanding({ page, others, headquartersHref, headquartersCount 
       <PageHeader
         eyebrow={page.eyebrow}
         title={page.h1}
-        crumbs={[
-          { href: "/jobs/", label: "Jobs" },
-          { href: page.path, label: page.name },
-        ]}
+        crumbs={trail}
         description={<p>{page.intro}</p>}
       >
         <dl className="mt-6 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-3">
@@ -173,6 +187,37 @@ export function JobsLanding({ page, others, headquartersHref, headquartersCount 
             </p>
           ) : null}
         </section>
+
+        {cities.length || parent ? (
+          <nav aria-labelledby="cities-heading" className="mt-12" data-testid="landing-cities">
+            <h2 id="cities-heading" className="text-xl font-semibold text-text sm:text-2xl">
+              {page.kind === "city" ? `Other cities in ${stateDisplayName(page.state!)}` : `Cities in ${stateDisplayName(page.state!)}`}
+            </h2>
+            <p className="mt-2 max-w-3xl text-muted">
+              {page.kind === "city"
+                ? cities.length
+                  ? "Other cities in the state with their own page, by number of listings."
+                  : "No other city in the state has enough listings for its own page."
+                : `Cities with at least ${MIN_CITY_LISTINGS} current listings, by number of listings. A listing that names several cities counts in each.`}
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {parent ? (
+                <li>
+                  <Link prefetch={false} href={parent.href} className="badge min-h-11 px-3 hover:border-cyan">
+                    All of {stateDisplayName(page.state!)}
+                  </Link>
+                </li>
+              ) : null}
+              {cities.map((c) => (
+                <li key={c.path}>
+                  <Link prefetch={false} href={c.path} className="badge min-h-11 px-3 hover:border-cyan">
+                    {c.name} <span className="text-muted">({n(c.count)})</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
 
         <section id="employers" aria-labelledby="employers-heading" className="mt-12 scroll-mt-24">
           <h2 id="employers-heading" className="text-xl font-semibold text-text sm:text-2xl">

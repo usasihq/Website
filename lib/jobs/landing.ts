@@ -1,5 +1,5 @@
 /**
- * Jobs landing pages: /jobs/in/<state>/ and the topic pages (/jobs/entry-level/,
+ * Jobs landing pages: /jobs/in/<state>/, /jobs/in/<state>/<city>/, and the topic pages (/jobs/entry-level/,
  * /jobs/no-programming/, /jobs/data-center-infrastructure/, /jobs/remote-us/,
  * /jobs/remote/). Build-time only (reads data/jobs/current.json through
  * readJobs). Every count, list, and date is recomputed on each build from the
@@ -11,19 +11,24 @@ import { formatDate } from "../dates";
 import { stateSlug, US_STATES } from "../places";
 import { readJobs } from "./load";
 import type { FeedHealth } from "./schema";
-import { jobGeography, stateDisplayName } from "./geo";
+import { cityKey, cityLabel, jobGeography, stateDisplayName } from "./geo";
 import { DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
 import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, NO_PROGRAMMING_RULE } from "./tracks";
 
 /** A state page needs at least this many current listings; fewer would make a thin page. */
 export const MIN_STATE_LISTINGS = 10;
+/** A city page needs at least this many current listings, and fewer than its state page (otherwise it would repeat it). */
+export const MIN_CITY_LISTINGS = 10;
+/** Longer city names would push a city page's title past 90 characters or its description past 160. */
+export const MAX_CITY_NAME = 32;
 /** Topic pages below this are kept out of search engines (noindex) and the sitemap. */
 export const MIN_TOPIC_LISTINGS = 10;
 /** Listings embedded in a page's HTML; the rest are one link away in the directory. */
 export const LISTINGS_SHOWN = 100;
 
 /** How a page's listings relate to the United States. */
-export type GeographyScope = "state" | "us-only" | "includes-outside";
+export type GeographyScope = "state" | "city" | "us-only" | "includes-outside";
+export type LandingKind = "state" | "city" | "topic";
 
 export type TopicId = "data-center-infrastructure" | "no-programming" | "entry-level" | "remote-us" | "remote";
 
@@ -156,7 +161,7 @@ export function stateDefinition(code: string): LandingDefinition {
     scope: "state",
     filters: { state: code },
     intro: `Open positions at AI companies and labs in the USASI catalog whose listed location names ${name}. The catalog covers U.S. organizations, and a listing appears here only when one of its employer-supplied locations is in ${name}.`,
-    rule: `A listing counts when one of its employer-supplied locations names ${name}: by postal code after a city (“Atlanta, GA”), by full name (“Atlanta, Georgia, United States”), “New York City” or “NYC” for New York, or “Washington, DC” for the District of Columbia. Locations that give only a city (“San Francisco”), only the country (“Remote - US”, “United States”), or a code that belongs to another country’s city (“Toronto, CA” is Canada) are not counted.`,
+    rule: `A listing counts when one of its employer-supplied locations names ${name}: by postal code after a city (“Atlanta, GA”), by full name (“Atlanta, Georgia, United States”), “New York City” or “NYC” for New York, “Washington, DC” for the District of Columbia, or by a city given on its own that has only one well-known U.S. match (“San Francisco”, “SF Office”, “Seattle”). ${CITY_TABLE_NOTE} Locations that give only the country (“Remote - US”, “United States”) or a code that belongs to another country’s city (“Toronto, CA” is Canada) are not counted.`,
     title: (f) => `AI jobs in ${name}: ${listings(f.count)} at U.S. AI companies and labs`,
     description: (f) =>
       `${listings(f.count)} naming a location in ${name}, at ${at(f)} in the USASI catalog. Listings last checked ${f.date}.`,
@@ -164,12 +169,38 @@ export function stateDefinition(code: string): LandingDefinition {
   };
 }
 
+const CITY_TABLE_NOTE =
+  "Cities on their own are read from a short published table; names shared by several places, such as Cambridge, Portland, Columbus, or Kansas City, are not read without a state.";
+
+/** A city page: `key` is "ST|slug" (see cityKey), `label` the city as most listings spell it. */
+export function cityDefinition(code: string, slug: string, label: string): LandingDefinition {
+  const stateName = stateDisplayName(code);
+  const s = stateSlug(code);
+  return {
+    id: `in-${s}-${slug}`,
+    path: `/jobs/in/${s}/${slug}/`,
+    name: `Jobs in ${label}`,
+    h1: `AI jobs in ${label}, ${stateName}`,
+    eyebrow: "Jobs by U.S. city",
+    scope: "city",
+    filters: { state: code, city: slug },
+    intro: `Open positions at AI companies and labs in the USASI catalog whose listed location names ${label}, ${stateName}. A listing appears here only when one of its employer-supplied locations names the city.`,
+    rule: `A listing counts when one of its employer-supplied locations names ${label} with its state (“${label}, ${code}”, “${label}, ${stateName}, United States”), or names ${label} on its own or as an office (“${label} Office”) when the name has only one well-known U.S. match. ${CITY_TABLE_NOTE} Listings in nearby cities are not included here; they count on the ${stateName} page.`,
+    title: (f) => `AI jobs in ${label}, ${code}: ${listings(f.count)} at U.S. AI companies`,
+    description: (f) =>
+      `${listings(f.count)} naming ${label}, ${code}, at ${at(f)} in the USASI catalog. Listings last checked ${f.date}.`,
+    image: `/og/jobs/in-${s}-${slug}.jpg`,
+  };
+}
+
 export type LandingEmployer = { slug: string; name: string; headquarters: string | null; count: number };
 
 export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
-  kind: "state" | "topic";
-  /** The state's postal code, for state pages. */
+  kind: LandingKind;
+  /** The state's postal code, for state and city pages. */
   state: string | null;
+  /** The city, for city pages: its key ("CA|san-francisco") and name. */
+  city: { key: string; slug: string; label: string } | null;
   title: string;
   description: string;
   count: number;
@@ -190,13 +221,21 @@ export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
   buildAt: string;
 };
 
-export type JobsLandingData = { states: LandingPage[]; topics: LandingPage[]; all: LandingPage[]; stateCounts: Record<string, number> };
+export type JobsLandingData = {
+  states: LandingPage[];
+  cities: LandingPage[];
+  topics: LandingPage[];
+  all: LandingPage[];
+  stateCounts: Record<string, number>;
+  /** Current listings per city key ("CA|san-francisco"). */
+  cityCounts: Record<string, number>;
+};
 
 const memo = new WeakMap<Catalog, JobsLandingData>();
 
 type Source = { items: JobItem[]; feeds: FeedHealth[]; now: number };
 
-function build(catalog: Catalog, def: LandingDefinition, kind: "state" | "topic", src: Source, state: string | null): LandingPage {
+function build(catalog: Catalog, def: LandingDefinition, kind: LandingKind, src: Source, state: string | null, city: LandingPage["city"] = null): LandingPage {
   const filters: JobFilters = { ...DEFAULT_JOB_FILTERS, ...def.filters, sort: "newest" };
   const listings = filterJobs(src.items, src.feeds, filters, src.now);
   const byOrg = new Map<string, number>();
@@ -215,7 +254,7 @@ function build(catalog: Catalog, def: LandingDefinition, kind: "state" | "topic"
     if (g.outside) geo.outside += 1;
     if (g.outside && !g.us) geo.outsideOnly += 1;
     if (!g.us && !g.outside) geo.unclear += 1;
-    if (state && (g.outside || g.states.some((s) => s !== state))) geo.alsoElsewhere += 1;
+    if (state && (g.outside || g.states.some((s) => s !== state) || (city !== null && g.cities.some((c) => cityKey(c) !== city.key)))) geo.alsoElsewhere += 1;
   }
   const facts: Facts = {
     count: listings.length,
@@ -230,6 +269,7 @@ function build(catalog: Catalog, def: LandingDefinition, kind: "state" | "topic"
     ...def,
     kind,
     state,
+    city,
     title: def.title(facts),
     description: def.description(facts),
     count: listings.length,
@@ -241,7 +281,7 @@ function build(catalog: Catalog, def: LandingDefinition, kind: "state" | "topic"
     directoryHref: `/jobs/?${serializeJobFilters(filters)}`,
     usOnlyHref: usOnlyFilters ? `/jobs/?${serializeJobFilters(usOnlyFilters)}` : null,
     usOnlyCount: geo.usOnly,
-    indexable: kind === "state" || listings.length >= MIN_TOPIC_LISTINGS,
+    indexable: kind !== "topic" || listings.length >= MIN_TOPIC_LISTINGS,
     buildAt: new Date(src.now).toISOString(),
   };
 }
@@ -255,13 +295,39 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
   const src: Source = { items, feeds, now };
   const current = filterJobs(items, feeds, DEFAULT_JOB_FILTERS, now);
   const stateCounts: Record<string, number> = {};
-  for (const j of current) for (const s of jobGeography(j).states) stateCounts[s] = (stateCounts[s] ?? 0) + 1;
+  const cityCounts: Record<string, number> = {};
+  // Each city's most common spelling among its listings ("St. Louis" over "St Louis").
+  const spellings = new Map<string, Map<string, number>>();
+  for (const j of current) {
+    const g = jobGeography(j);
+    for (const s of g.states) stateCounts[s] = (stateCounts[s] ?? 0) + 1;
+    for (const key of new Set(g.cities.map(cityKey))) cityCounts[key] = (cityCounts[key] ?? 0) + 1;
+    for (const c of g.cities) {
+      const forms = spellings.get(cityKey(c)) ?? new Map<string, number>();
+      forms.set(cityLabel(c), (forms.get(cityLabel(c)) ?? 0) + 1);
+      spellings.set(cityKey(c), forms);
+    }
+  }
   const states = Object.keys(US_STATES)
     .filter((code) => (stateCounts[code] ?? 0) >= MIN_STATE_LISTINGS)
     .map((code) => build(catalog, stateDefinition(code), "state", src, code))
     .sort((a, b) => a.h1.localeCompare(b.h1, "en"));
+  const cities = Object.entries(cityCounts)
+    .filter(([key, count]) => {
+      const [code, slug] = key.split("|");
+      // D.C. is one city already; a city with every listing of its state would repeat the state page.
+      return code !== "DC" && slug !== "" && count >= MIN_CITY_LISTINGS && count < (stateCounts[code] ?? 0);
+    })
+    .map(([key]) => {
+      const [code, slug] = key.split("|");
+      const label = [...spellings.get(key)!].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "en"))[0][0];
+      return { code, slug, key, label };
+    })
+    .filter((c) => c.label.length <= MAX_CITY_NAME)
+    .map(({ code, slug, key, label }) => build(catalog, cityDefinition(code, slug, label), "city", src, code, { key, slug, label }))
+    .sort((a, b) => a.h1.localeCompare(b.h1, "en"));
   const topics = TOPIC_IDS.map((id) => build(catalog, TOPICS[id], "topic", src, null));
-  return { states, topics, all: [...topics, ...states], stateCounts };
+  return { states, cities, topics, all: [...topics, ...states, ...cities], stateCounts, cityCounts };
 }
 
 /** The site's landing pages, from data/jobs/current.json at this build's timestamp; computed once per catalog. */

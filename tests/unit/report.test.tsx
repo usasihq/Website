@@ -25,6 +25,7 @@ import {
   percent,
   releaseLicenseFamily,
   releaseQuarter,
+  REPORT_METHOD_VERSION,
   snapshotCsv,
   snapshotProblems,
   type ReportSnapshot,
@@ -295,7 +296,8 @@ describe("published editions", () => {
     } else {
       expect(since.status).not.toBe("unchanged");
     }
-    if (latest.inputs.jobs_digest === fileDigest(DATA_PATH) && catalogDigest(catalog) === latest.inputs.catalog_digest) {
+    // Jobs tables are reproducible only under the counting rules the edition was made with (older editions keep theirs).
+    if (latest.method_version === REPORT_METHOD_VERSION && latest.inputs.jobs_digest === fileDigest(DATA_PATH) && catalogDigest(catalog) === latest.inputs.catalog_digest) {
       const withJobs = computeFigures(catalog, { data: readJobs(catalog.organizations), now: Date.parse(latest.generated_at) }, latest.data_cutoff);
       expect(withJobs.tables).toEqual(latest.tables);
       expect(withJobs.findings).toEqual(latest.findings);

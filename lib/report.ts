@@ -28,8 +28,11 @@ import type { Artifact, LicenseRecord, PolicyDocumentType, PolicyStatus } from "
 export const REPORT_NAME = "The State of American AI";
 /** Shape of the edition files. Bump only with a migration for older editions. */
 export const REPORT_FORMAT_VERSION = 1;
-/** Counting rules. Bump when a definition changes; older editions keep theirs. */
-export const REPORT_METHOD_VERSION = 1;
+/**
+ * Counting rules. Bump when a definition changes; older editions keep theirs.
+ * 2 (from the November 2026 edition): a city given on its own counts in its state when it is in the jobs location table.
+ */
+export const REPORT_METHOD_VERSION = 2;
 export const REPORT_LICENSE = { name: "CC BY 4.0", url: "https://creativecommons.org/licenses/by/4.0/" } as const;
 export const REPORT_NOTICE =
   "Independent project. Not a United States government website. Every figure counts published records in the USASI catalog as of the data cutoff; coverage is selective, so counts are not a census, a ranking, or a measure of capability.";
@@ -648,7 +651,7 @@ export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff:
         section: "jobs",
         title: "Current job listings by location",
         caption: `The ${nf(J)} current listings by where their locations are.`,
-        counted: `${CURRENT_RULE} Locations are read from the employer's text without geocoding. U.S. locations only: names the United States or a U.S. state and no place outside it. U.S. and elsewhere: names both. Outside the U.S. only: names only places outside it. Not determinable: gives nothing the rules can place (for example a city without a state). Rows add up to the total.`,
+        counted: `${CURRENT_RULE} Locations are read from the employer's text without geocoding. U.S. locations only: names the United States or a U.S. state and no place outside it. U.S. and elsewhere: names both. Outside the U.S. only: names only places outside it. Not determinable: gives nothing the rules can place (for example “Remote” or “Hybrid” with no country). Rows add up to the total.`,
         unit: "job listings",
         universe: J,
         overlapping: false,
@@ -662,7 +665,7 @@ export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff:
         title: "Current job listings naming each U.S. state",
         caption: "Current listings with a location that names each U.S. state.",
         counted:
-          "A listing counts in a state when one of its employer-supplied locations names it: a postal code after a city (“Atlanta, GA”), the full state name, “New York City” or “NYC”, or “Washington, DC”. This is the rule of the Jobs by state pages. A listing that names several states counts in each, and listings that also name places outside the U.S. are included, so rows overlap. Locations that give only a city or only the country name no state and are not counted here.",
+          "A listing counts in a state when one of its employer-supplied locations names it: a postal code after a city (“Atlanta, GA”), the full state name, “New York City” or “NYC”, “Washington, DC”, or a city on its own that has only one well-known U.S. match (“San Francisco”, “SF Office”, “Seattle”), from a short published table that leaves out names shared by several places. This is the rule of the Jobs by state pages. A listing that names several states counts in each, and listings that also name places outside the U.S. are included, so rows overlap. Locations that give only the country name no state and are not counted here.",
         unit: "job listings",
         universe: J,
         overlapping: true,
