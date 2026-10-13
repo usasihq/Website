@@ -45,7 +45,7 @@ function leadSentences(s: string, n: number) {
 }
 const listOf = (items: string[], n = 2) => (items.length > n ? `${items.slice(0, n).join(", ")} +${items.length - n}` : items.join(", "));
 
-function card(c: Omit<PageCard, "alt">): PageCard {
+export function card(c: Omit<PageCard, "alt">): PageCard {
   const facts = c.facts.map(([k, v]) => `${k}: ${v}`).join("; ");
   const alt = clip(`USASI preview card. ${c.eyebrow}: ${c.title}.${c.subtitle ? ` ${c.subtitle}.` : ""}${facts ? ` ${facts}.` : ""}`.replace(/\.\./g, "."), 420);
   return { ...c, alt };

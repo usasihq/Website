@@ -1,5 +1,7 @@
 import type { Job, FeedHealth } from "./schema";
 import { JOB_TRACKS, jobTrack } from "./tracks";
+import { inLocationScope, jobGeography, LOCATION_SCOPES, type LocationScope } from "./geo";
+import { US_STATES } from "../places";
 export const STALE_MS = 48 * 3600000;
 /** The fields the Jobs directory reads. Reconciliation bookkeeping stays out of the page and its data file. */
 export type JobItem = Pick<Job, "id" | "organization_slug" | "source_type" | "source_identifier" | "source_job_id" | "source_url" | "title" |
@@ -18,7 +20,7 @@ export function isCurrent(job: Pick<Job, "status" | "last_seen">, feed: FeedHeal
 export function checkedLabel(value: string | null): string {
   return value ? new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(new Date(value)) + " UTC" : "Not yet successfully checked";
 }
-export const DEFAULT_JOB_FILTERS = { q: "", track: "", company: "", department: "", location: "", workplace: "", employment: "", salary: false,
+export const DEFAULT_JOB_FILTERS = { q: "", track: "", company: "", department: "", location: "", state: "", where: "" as LocationScope | "", workplace: "", employment: "", salary: false,
   currency: "", period: "", salary_min: "", posted: "", verified: "", view: "current", sort: "verified", page: 1 };
 export type JobFilters = typeof DEFAULT_JOB_FILTERS;
 const clean = (v: string | null, max = 120) => (v ?? "").trim().slice(0, max);
@@ -28,6 +30,8 @@ export function parseJobFilters(p: URLSearchParams): JobFilters {
   const period = choice(p.get("period"), ["hour", "day", "week", "month", "year"]);
   const min = p.get("salary_min") ?? "";
   return { q: clean(p.get("q"), 200), track: choice(p.get("track"), JOB_TRACKS.map(t => t.id)), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
+    state: choice((p.get("state") ?? "").toUpperCase(), Object.keys(US_STATES)),
+    where: choice(p.get("where"), [...LOCATION_SCOPES]) as LocationScope | "",
     workplace: p.get("remote") === "1" ? "remote" : choice(p.get("workplace"), ["remote", "hybrid", "on-site", "unknown"]),
     employment: choice(p.get("employment"), ["full-time", "part-time", "contract", "temporary", "internship", "unknown"]),
     salary: p.get("salary") === "1", currency, period,
@@ -60,6 +64,8 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     if (f.company && j.organization_slug !== f.company) return false;
     if (f.department && j.department !== f.department) return false;
     if (f.location && !j.locations.some(l => normalize(l).includes(normalize(f.location)))) return false;
+    if (f.state && !jobGeography(j).states.includes(f.state)) return false;
+    if (f.where && !inLocationScope(j, f.where)) return false;
     if (f.workplace && j.workplace !== f.workplace) return false;
     if (f.employment && j.employment_type !== f.employment) return false;
     if (f.salary && !j.salaries.length) return false;

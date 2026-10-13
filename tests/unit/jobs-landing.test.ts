@@ -1,0 +1,91 @@
+import path from "node:path";
+import { describe, expect, it } from "vitest";
+import { loadCatalog } from "@/lib/catalog";
+import { computeLandingData, LISTINGS_SHOWN, MIN_STATE_LISTINGS, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, type JobItem } from "@/lib/jobs/search";
+import type { FeedHealth } from "@/lib/jobs/schema";
+import { US_STATES } from "@/lib/places";
+
+describe("landing page text", () => {
+  // Realistic upper bounds: 9,999 listings from 99 employers, and the longest date and state names.
+  const worst: Facts = { count: 9999, employers: 99, soleEmployer: null, date: "Sep 30, 2026", usOnly: 9999, outside: 9999 };
+  const defs = [...Object.values(TOPICS), ...Object.keys(US_STATES).map(stateDefinition)];
+  it("keeps titles and descriptions answer-first and within 160 characters", () => {
+    for (const d of defs) {
+      expect(d.description(worst).length, d.path).toBeLessThanOrEqual(160);
+      expect(d.title(worst).length, d.path).toBeLessThanOrEqual(90);
+      expect(d.description(worst).startsWith("9,999"), d.path).toBe(true);
+    }
+  });
+  it("says whether non-U.S. roles are included from the data, and names a sole employer", () => {
+    const one: Facts = { count: 12, employers: 1, soleEmployer: "xAI", date: "Oct 13, 2026", usOnly: 12, outside: 0 };
+    expect(TOPICS["entry-level"].description(one)).toContain("No non-U.S. roles listed.");
+    expect(TOPICS["entry-level"].description({ ...one, outside: 2 })).toContain("Includes non-U.S. roles.");
+    expect(stateDefinition("MS").description(one)).toBe("12 open listings naming a location in Mississippi, at xAI in the USASI catalog. Listings last checked Oct 13, 2026.");
+    expect(stateDefinition("DC").h1).toBe("AI jobs in Washington, D.C.");
+    expect(stateDefinition("DC").path).toBe("/jobs/in/district-of-columbia/");
+  });
+});
+
+describe("landing pages from listings", () => {
+  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: "2026-10-13" });
+  const now = Date.parse("2026-10-13T12:00:00.000Z");
+  const seen = "2026-10-13T11:00:00.000Z";
+  const feed = (organization_slug: string): FeedHealth => ({ organization_slug, source_type: "greenhouse", source_identifier: organization_slug, last_attempted: seen,
+    last_successful: seen, result: "ok", consecutive_failures: 0, current_count: 0, pending_digest: null, pending_since: null });
+  let id = 0;
+  const item = (org: string, title: string, locations: string[], extra: Partial<JobItem> = {}): JobItem => {
+    id += 1;
+    return { id: `${org}:greenhouse:${org}:${id}`, organization_slug: org, source_type: "greenhouse", source_identifier: org, source_job_id: String(id),
+      source_url: `https://boards-api.greenhouse.io/v1/boards/${org}/jobs`, title, locations, countries: [], workplace: "unknown", employment_type: "unknown",
+      department: null, team: null, salaries: [], official_url: `https://job-boards.greenhouse.io/${org}/jobs/${id}`,
+      posted_at: `2026-09-${String((id % 28) + 1).padStart(2, "0")}T00:00:00.000Z`, posted_date_kind: "first-published", last_seen: seen, status: "open",
+      organization_name: catalog.organization(org)?.name ?? org, ...extra };
+  };
+  const items = [
+    ...Array.from({ length: 112 }, (_, i) => item("openai", `Data Center Technician ${i}`, ["Atlanta, GA"])),
+    ...Array.from({ length: 3 }, () => item("anthropic", "Account Executive", ["Savannah, Georgia, United States", "London, UK"])),
+    ...Array.from({ length: MIN_STATE_LISTINGS - 1 }, () => item("anthropic", "Recruiter", ["Boise, ID"])),
+    ...Array.from({ length: 20 }, () => item("anthropic", "Recruiter", ["Toronto, CA"])),
+    item("anthropic", "Stale listing", ["Atlanta, GA"], { last_seen: "2026-10-10T00:00:00.000Z" }),
+  ];
+  const data = computeLandingData(catalog, items, [feed("openai"), feed("anthropic")], now);
+  const georgia = data.states.find((p) => p.state === "GA")!;
+
+  it("generates state pages only at or above the threshold, from named states only", () => {
+    expect(data.states.map((p) => p.state)).toEqual(["GA"]);
+    expect(data.stateCounts.ID).toBe(MIN_STATE_LISTINGS - 1);
+    expect(data.stateCounts.CA).toBeUndefined();
+  });
+
+  it("counts current listings, caps the embedded list, and matches the directory exactly", () => {
+    expect(georgia.count).toBe(115);
+    expect(georgia.listings).toHaveLength(LISTINGS_SHOWN);
+    expect(georgia.title).toBe("AI jobs in Georgia: 115 open listings at U.S. AI companies and labs");
+    expect(georgia.directoryHref).toBe("/jobs/?state=GA&sort=newest");
+    const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(georgia.directoryHref.split("?")[1])), now);
+    expect(directory.map((j) => j.id)).toEqual(georgia.listings.map((j) => j.id).concat(directory.slice(LISTINGS_SHOWN).map((j) => j.id)));
+    expect(georgia.employers.map((e) => [e.slug, e.count])).toEqual([["openai", 112], ["anthropic", 3]]);
+    expect(georgia.geography).toMatchObject({ alsoElsewhere: 3, outside: 3 });
+    expect(georgia.lastChecked).toBe(seen);
+  });
+
+  it("labels topic geography from the data", () => {
+    const dc = data.topics.find((p) => p.id === "data-center-infrastructure")!;
+    expect(dc.count).toBe(112);
+    expect(dc.directoryHref).toBe("/jobs/?track=infrastructure&sort=newest");
+    expect(dc.usOnlyHref).toBe("/jobs/?track=infrastructure&where=us&sort=newest");
+    expect(dc.description).toContain("No non-U.S. roles listed.");
+    const noCode = data.topics.find((p) => p.id === "no-programming")!;
+    expect(noCode.geography).toMatchObject({ outsideOnly: 20, outside: 23 });
+    expect(noCode.description).toContain("Includes non-U.S. roles.");
+    const remote = data.topics.find((p) => p.id === "remote-us")!;
+    expect(remote.count).toBe(0);
+    expect(remote.indexable).toBe(false);
+  });
+
+  it("never emits JobPosting-style fields it does not have", () => {
+    expect(Object.keys(DEFAULT_JOB_FILTERS)).toContain("state");
+    expect(JSON.stringify(georgia)).not.toContain("JobPosting");
+  });
+});

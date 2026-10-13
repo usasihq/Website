@@ -6,6 +6,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { ROLE_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
+import { landingPage } from "@/lib/jobs/landing";
 import { cardImage } from "@/lib/page-cards";
 import { organizationsByState } from "@/lib/place-index";
 import { stateFromSlug, stateSlug, US_STATES } from "@/lib/places";
@@ -30,6 +31,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
   const code = stateFromSlug((await params).state);
   const group = code ? organizationsByState(getCatalog()).states.find((s) => s.code === code) : undefined;
   if (!code || !group) notFound();
+  const jobs = landingPage(getCatalog(), `/jobs/in/${stateSlug(code)}/`);
   return (
     <>
       <PageHeader
@@ -59,6 +61,15 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
             </li>
           ))}
         </ul>
+        {jobs ? (
+          <p className="mt-6 max-w-3xl text-muted">
+            Jobs are a different question from headquarters:{" "}
+            <Link prefetch={false} href={jobs.path} className="link">
+              {jobs.h1} ({jobs.count.toLocaleString("en-US")} open listings)
+            </Link>{" "}
+            lists current openings whose location names {group.name}, from any organization in the catalog.
+          </p>
+        ) : null}
         <p className="mt-6 text-sm text-muted">
           <Link href="/places/" className="link">All states</Link> · <Link href="/companies/" className="link">Companies &amp; Labs</Link>
         </p>
