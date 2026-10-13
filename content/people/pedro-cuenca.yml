@@ -1,0 +1,127 @@
+slug: pedro-cuenca
+name: Pedro Cuenca
+initials: PC
+groups: [open-source, local, engineering]
+sector: corporate
+specialties: [generative-media, inference, developer-tools]
+headline: Machine learning engineer at Hugging Face; Diffusers co-author and builder of on-device Swift tools
+bio:
+  text: >-
+    Pedro Cuenca is a machine learning engineer at Hugging Face, according to the author bio of the
+    book Hands-On Generative AI with Transformers and Diffusion Models, which Cuenca co-wrote, and a
+    co-author of a June 2026 Hugging Face blog post on profiling in PyTorch. Cuenca is listed among
+    the authors in the citation for Hugging Face's open-source Diffusers library. On Hugging Face's blog, Cuenca introduced swift-transformers, a
+    package for running language models on Apple devices, and co-wrote the post on the open-source
+    Diffusers app for Mac, which runs Stable Diffusion locally through Core ML. Cuenca also appears in
+    the author list of the DALL·E mini project.
+  source_ids: [genaibook-readme, hf-profiling-blog, diffusers-readme, swift-transformers-blog, mac-diffusers-blog, dalle-mini-readme]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Hugging Face
+    organization_slug: hugging-face
+    role: Machine learning engineer
+    current: true
+    source_ids: [genaibook-readme, hf-profiling-blog]
+  - name: LateNiteSoft
+    organization_slug: null
+    role: Co-founder and CTO
+    current: false
+    source_ids: [genaibook-readme]
+work:
+  - name: Diffusers
+    artifact_slug: diffusers
+    type: open-source
+    url: https://github.com/huggingface/diffusers
+    contribution: >-
+      Listed among the authors in the citation entry of the Diffusers README and its CITATION.cff
+      file; the library is released under the Apache 2.0 license.
+    source_ids: [diffusers-readme]
+  - name: swift-transformers
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/huggingface/swift-transformers
+    contribution: >-
+      Author of the 2023 Hugging Face blog post releasing swift-transformers, a Swift package with
+      tokenizers, Hub wrappers and generation algorithms for running language models on Apple devices
+      through Core ML; the repository is under the Apache 2.0 license.
+    source_ids: [swift-transformers-blog, swift-transformers-repo]
+  - name: Diffusers for Mac (swift-coreml-diffusers)
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/huggingface/swift-coreml-diffusers
+    contribution: >-
+      Co-author of the 2023 Hugging Face blog post on version 1.1 of the native Mac app, which runs
+      text-to-image models converted to Core ML on the user's own machine.
+    source_ids: [mac-diffusers-blog, swift-coreml-diffusers-repo]
+  - name: DALL·E mini
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/borisdayma/dalle-mini
+    contribution: >-
+      Listed in the README's author list and citation entry for the Apache-2.0 DALL·E mini project.
+    source_ids: [dalle-mini-readme]
+links:
+  - label: GitHub
+    url: https://github.com/pcuenca
+  - label: Hugging Face
+    url: https://huggingface.co/pcuenq
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: genaibook-readme
+    title: Hands-On Generative AI with Transformers and Diffusion Models — book repository README (About the Authors)
+    url: https://github.com/genaibook/genaibook
+    publisher: genaibook (GitHub repository)
+    kind: repository
+    published_at: 2024-12-15
+    accessed_at: 2026-10-13
+  - id: hf-profiling-blog
+    title: "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP (author byline)"
+    url: https://huggingface.co/blog/torch-mlp-fusion
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2026-06-11
+    accessed_at: 2026-10-13
+  - id: diffusers-readme
+    title: huggingface/diffusers README and CITATION.cff (citation author list; Apache-2.0)
+    url: https://github.com/huggingface/diffusers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: swift-transformers-blog
+    title: "Releasing Swift Transformers: Run On-Device LLMs in Apple Devices"
+    url: https://huggingface.co/blog/swift-coreml-llm
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2023-08-08
+    accessed_at: 2026-10-13
+  - id: swift-transformers-repo
+    title: huggingface/swift-transformers repository (Apache-2.0)
+    url: https://github.com/huggingface/swift-transformers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: mac-diffusers-blog
+    title: "Swift Diffusers: Fast Stable Diffusion for Mac"
+    url: https://huggingface.co/blog/fast-mac-diffusers
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2023-02-24
+    accessed_at: 2026-10-13
+  - id: swift-coreml-diffusers-repo
+    title: huggingface/swift-coreml-diffusers README
+    url: https://github.com/huggingface/swift-coreml-diffusers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: dalle-mini-readme
+    title: borisdayma/dalle-mini README (authors and citation; Apache-2.0)
+    url: https://github.com/borisdayma/dalle-mini
+    publisher: Boris Dayma (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

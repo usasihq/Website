@@ -1,0 +1,118 @@
+slug: mark-chen
+name: Mark Chen
+initials: MC
+groups: [leadership, engineering]
+sector: corporate
+specialties: [language-models, multimodal, evaluation]
+headline: Chief Research Officer at OpenAI; first author of the Codex paper that released HumanEval
+bio:
+  text: >-
+    Mark Chen is Chief Research Officer at OpenAI, as listed on an OpenAI Forum event page from March
+    2026. Chen is first author of "Evaluating Large Language Models Trained on Code" (2021), the Codex
+    paper that introduced and released the HumanEval benchmark, and a co-author of the DALL·E and
+    DALL·E 2 papers. The GPT-4 Technical Report credits Chen as vision team co-lead and deployment
+    lead, and the OpenAI o1 System Card lists Chen in the reasoning research leadership and in
+    executive leadership. Chen is also listed among the contributors to the gpt-oss-120b and
+    gpt-oss-20b model card.
+  source_ids: [oai-forum-event, codex-paper, humaneval-repo, dalle-paper, dalle2-paper, gpt4-report, o1-card, gpt-oss-card]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: OpenAI
+    organization_slug: openai
+    role: Chief Research Officer
+    current: true
+    source_ids: [oai-forum-event, gpt-oss-card]
+work:
+  - name: HumanEval
+    artifact_slug: humaneval
+    type: open-data
+    url: https://github.com/openai/human-eval
+    contribution: >-
+      First author and corresponding author of the Codex paper (2021), which introduced HumanEval, an
+      evaluation set for synthesizing programs from docstrings; the openai/human-eval repository cites
+      the paper and is under the MIT license.
+    source_ids: [codex-paper, humaneval-repo]
+  - name: gpt-oss
+    artifact_slug: gpt-oss
+    type: open-weights
+    url: https://arxiv.org/abs/2508.10925
+    contribution: >-
+      Listed among the contributors to the gpt-oss-120b and gpt-oss-20b model card (2025).
+    source_ids: [gpt-oss-card]
+  - name: GPT-4 vision and OpenAI o1
+    artifact_slug: null
+    type: proprietary
+    url: https://arxiv.org/abs/2303.08774
+    contribution: >-
+      Credited in the GPT-4 Technical Report (2023) as vision team co-lead and deployment lead, and in
+      the OpenAI o1 System Card (2024) under reasoning research leadership and executive leadership.
+    source_ids: [gpt4-report, o1-card]
+  - name: DALL·E and DALL·E 2
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2204.06125
+    contribution: >-
+      Co-author of "Zero-Shot Text-to-Image Generation" (2021) and last-listed author of "Hierarchical
+      Text-Conditional Image Generation with CLIP Latents" (2022).
+    source_ids: [dalle-paper, dalle2-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: oai-forum-event
+    title: "Accelerating Math and Theoretical Physics with AI: OpenAI × UCLA Institute for Pure & Applied Math (speaker listing)"
+    url: https://forum.openai.com/public/events/accelerating-math-and-theoretical-physics-with-ai-openai-ucla-institute-for-pure-and-applied-math-36g2dwti17
+    publisher: OpenAI Forum
+    kind: official-page
+    published_at: 2026-03-04
+    accessed_at: 2026-10-13
+  - id: codex-paper
+    title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
+    url: https://arxiv.org/abs/2107.03374
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-07-07
+    accessed_at: 2026-10-13
+  - id: humaneval-repo
+    title: openai/human-eval repository (README citation; MIT License)
+    url: https://github.com/openai/human-eval
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: dalle-paper
+    title: Zero-Shot Text-to-Image Generation (arXiv 2102.12092)
+    url: https://arxiv.org/abs/2102.12092
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-02-24
+    accessed_at: 2026-10-13
+  - id: dalle2-paper
+    title: Hierarchical Text-Conditional Image Generation with CLIP Latents (arXiv 2204.06125)
+    url: https://arxiv.org/abs/2204.06125
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-13
+    accessed_at: 2026-10-13
+  - id: gpt4-report
+    title: GPT-4 Technical Report (arXiv 2303.08774), authorship and credit attribution
+    url: https://arxiv.org/abs/2303.08774
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-15
+    accessed_at: 2026-10-13
+  - id: o1-card
+    title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
+    url: https://arxiv.org/abs/2412.16720
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-21
+    accessed_at: 2026-10-13
+  - id: gpt-oss-card
+    title: gpt-oss-120b & gpt-oss-20b Model Card (arXiv 2508.10925), contributors
+    url: https://arxiv.org/abs/2508.10925
+    publisher: arXiv
+    kind: model-card
+    published_at: 2025-08-08
+    accessed_at: 2026-10-13

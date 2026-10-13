@@ -1,0 +1,87 @@
+slug: tom-brown
+name: Tom Brown
+initials: TB
+groups: [leadership, engineering]
+sector: corporate
+specialties: [training-systems, language-models]
+headline: Anthropic co-founder and Chief Compute Officer; first author of the GPT-3 paper
+bio:
+  text: >-
+    Tom Brown co-founded Anthropic and is its Chief Compute Officer; Brown heads the technical
+    organization that secures, scales and uses the company's compute. According to Anthropic's leadership page,
+    Brown previously led the engineering of GPT-3 at OpenAI and, with Dario Amodei, co-invented deep
+    reinforcement learning from human feedback. Brown is first author of "Language Models are Few-Shot
+    Learners" (2020), the GPT-3 paper written with an OpenAI affiliation, and a co-author of the 2017
+    paper "Deep reinforcement learning from human preferences" and of Anthropic's Constitutional AI
+    paper.
+  source_ids: [anthropic-leadership, gpt3-paper, rlhp-paper, cai-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Co-Founder and Chief Compute Officer
+    current: true
+    source_ids: [anthropic-leadership]
+  - name: OpenAI
+    organization_slug: openai
+    role: Led the engineering of GPT-3
+    current: false
+    source_ids: [anthropic-leadership, gpt3-paper]
+work:
+  - name: GPT-3
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2005.14165
+    contribution: >-
+      Equal-contribution first author of "Language Models are Few-Shot Learners" (2020), which trains
+      the 175-billion-parameter GPT-3 model and studies its few-shot performance.
+    source_ids: [gpt3-paper]
+  - name: Deep reinforcement learning from human preferences
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1706.03741
+    contribution: >-
+      Co-author, as Tom B. Brown, of the 2017 paper on learning reward functions from human
+      preferences between trajectory segments; Anthropic's leadership page credits Brown and Dario
+      Amodei with co-inventing deep RLHF.
+    source_ids: [rlhp-paper, anthropic-leadership]
+  - name: Constitutional AI
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2212.08073
+    contribution: >-
+      Co-author of "Constitutional AI: Harmlessness from AI Feedback" (2022).
+    source_ids: [cai-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: anthropic-leadership
+    title: Leadership at Anthropic (Co-Founders, full bios)
+    url: https://www.anthropic.com/company/leadership
+    publisher: Anthropic
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gpt3-paper
+    title: Language Models are Few-Shot Learners (arXiv 2005.14165)
+    url: https://arxiv.org/abs/2005.14165
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-28
+    accessed_at: 2026-10-13
+  - id: rlhp-paper
+    title: Deep reinforcement learning from human preferences (arXiv 1706.03741)
+    url: https://arxiv.org/abs/1706.03741
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-06-12
+    accessed_at: 2026-10-13
+  - id: cai-paper
+    title: "Constitutional AI: Harmlessness from AI Feedback (arXiv 2212.08073)"
+    url: https://arxiv.org/abs/2212.08073
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-12-15
+    accessed_at: 2026-10-13

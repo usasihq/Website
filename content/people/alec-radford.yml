@@ -1,0 +1,132 @@
+slug: alec-radford
+name: Alec Radford
+initials: AR
+groups: [engineering, open-source]
+sector: independent
+specialties: [language-models, multimodal, speech-audio]
+headline: First author of GPT-2, CLIP and Whisper at OpenAI; independent researcher on 2026 papers
+bio:
+  text: >-
+    Alec Radford is a machine learning researcher who is first author of the papers behind GPT-2,
+    CLIP and Whisper, whose code and model weights OpenAI released publicly. CLIP learns image
+    representations by matching images with captions, and Whisper is a speech recognition model
+    trained on large-scale weak supervision; both repositories are under the MIT license. Radford also
+    co-authored the GPT-3 paper and the OpenAI scaling-laws paper, whose contribution statement says
+    Radford helped develop the optimized Transformer implementation and the text datasets. On two
+    papers from early 2026, on token-level pretraining data filtering and on generative models of
+    language-model activations, Radford is listed as independent.
+  source_ids: [gpt2-repo, clip-paper, clip-repo, whisper-paper, whisper-repo, gpt3-paper, scaling-laws-paper, token-filtering-paper, meta-model-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Independent researcher
+    organization_slug: null
+    role: Listed with an "Independent" affiliation on 2026 arXiv papers
+    current: true
+    source_ids: [token-filtering-paper, meta-model-paper]
+  - name: OpenAI
+    organization_slug: openai
+    role: Author affiliated with OpenAI on the scaling-laws (2020), CLIP (2021) and Whisper (2022) papers
+    current: false
+    source_ids: [scaling-laws-paper, clip-paper, whisper-paper]
+work:
+  - name: CLIP
+    artifact_slug: clip
+    type: open-weights
+    url: https://github.com/openai/CLIP
+    contribution: >-
+      Equal-contribution first author of "Learning Transferable Visual Models From Natural Language
+      Supervision" (2021), which releases code and pre-trained model weights; the repository is under
+      the MIT license.
+    source_ids: [clip-paper, clip-repo]
+  - name: Whisper
+    artifact_slug: whisper
+    type: open-weights
+    url: https://github.com/openai/whisper
+    contribution: >-
+      Equal-contribution first author of "Robust Speech Recognition via Large-Scale Weak Supervision"
+      (2022), which releases the models and inference code; the repository is under the MIT license.
+    source_ids: [whisper-paper, whisper-repo]
+  - name: GPT-2
+    artifact_slug: null
+    type: open-weights
+    url: https://github.com/openai/gpt-2
+    contribution: >-
+      First author of "Language Models are Unsupervised Multitask Learners" (2019), as cited in the
+      openai/gpt-2 repository, which publishes the code and models under a modified MIT license.
+    source_ids: [gpt2-repo]
+  - name: Scaling Laws for Neural Language Models
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2001.08361
+    contribution: >-
+      Co-author of the 2020 paper; its contribution statement credits Radford, with others, with
+      developing the optimized Transformer implementation and the text datasets.
+    source_ids: [scaling-laws-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: clip-paper
+    title: Learning Transferable Visual Models From Natural Language Supervision (arXiv 2103.00020)
+    url: https://arxiv.org/abs/2103.00020
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-02-26
+    accessed_at: 2026-10-13
+  - id: clip-repo
+    title: openai/CLIP repository (MIT License)
+    url: https://github.com/openai/CLIP
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: whisper-paper
+    title: Robust Speech Recognition via Large-Scale Weak Supervision (arXiv 2212.04356)
+    url: https://arxiv.org/abs/2212.04356
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-12-06
+    accessed_at: 2026-10-13
+  - id: whisper-repo
+    title: openai/whisper repository (MIT License)
+    url: https://github.com/openai/whisper
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gpt2-repo
+    title: openai/gpt-2 repository (README citation; Modified MIT License)
+    url: https://github.com/openai/gpt-2
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gpt3-paper
+    title: Language Models are Few-Shot Learners (arXiv 2005.14165)
+    url: https://arxiv.org/abs/2005.14165
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-28
+    accessed_at: 2026-10-13
+  - id: scaling-laws-paper
+    title: Scaling Laws for Neural Language Models (arXiv 2001.08361)
+    url: https://arxiv.org/abs/2001.08361
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-01-23
+    accessed_at: 2026-10-13
+  - id: token-filtering-paper
+    title: Shaping capabilities with token-level data filtering (arXiv 2601.21571)
+    url: https://arxiv.org/abs/2601.21571
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-01-29
+    accessed_at: 2026-10-13
+  - id: meta-model-paper
+    title: Learning a Generative Meta-Model of LLM Activations (arXiv 2602.06964)
+    url: https://arxiv.org/abs/2602.06964
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-06
+    accessed_at: 2026-10-13

@@ -1,0 +1,149 @@
+slug: ilya-sutskever
+name: Ilya Sutskever
+initials: IS
+groups: [leadership, engineering]
+sector: corporate
+specialties: [language-models, safety-alignment, multimodal]
+headline: Co-founder and CEO of Safe Superintelligence Inc.; co-author of the CLIP, Whisper and GPT-3 papers at OpenAI
+bio:
+  text: >-
+    Ilya Sutskever is the co-founder and CEO of Safe Superintelligence Inc. (SSI), a lab whose stated
+    goal and only product is a safe superintelligence. A July 2026 NVIDIA press release describing SSI
+    credits Sutskever's work as contributing to AlexNet, AlphaGo, sequence-to-sequence learning and
+    the GPT models, and as driving the research that led to reasoning models such as OpenAI o1, where the
+    o1 System Card lists Sutskever among the foundational contributors. With an OpenAI affiliation,
+    Sutskever co-authored the papers introducing GPT-3, CLIP, Codex with the HumanEval benchmark, and
+    the Whisper speech recognition models.
+  source_ids: [nvidia-release, ssi-updates, ssi-home, o1-card, gpt3-paper, clip-paper, codex-paper, whisper-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Safe Superintelligence Inc.
+    organization_slug: ssi
+    role: Co-founder and CEO
+    current: true
+    source_ids: [nvidia-release, ssi-updates]
+  - name: OpenAI
+    organization_slug: openai
+    role: Author affiliated with OpenAI on the GPT-3 (2020), CLIP (2021), Codex (2021) and Whisper (2022) papers
+    current: false
+    source_ids: [gpt3-paper, clip-paper, codex-paper, whisper-paper]
+work:
+  - name: Whisper
+    artifact_slug: whisper
+    type: open-weights
+    url: https://github.com/openai/whisper
+    contribution: >-
+      Last-listed author of "Robust Speech Recognition via Large-Scale Weak Supervision" (2022), which
+      trains speech recognition models on 680,000 hours of multilingual audio and releases the models
+      and inference code; the repository is under the MIT license.
+    source_ids: [whisper-paper, whisper-repo]
+  - name: CLIP
+    artifact_slug: clip
+    type: open-weights
+    url: https://github.com/openai/CLIP
+    contribution: >-
+      Last-listed author of "Learning Transferable Visual Models From Natural Language Supervision"
+      (2021), which trains image representations by predicting which caption goes with which image and
+      releases code and pre-trained weights; the repository is under the MIT license.
+    source_ids: [clip-paper, clip-repo]
+  - name: HumanEval
+    artifact_slug: humaneval
+    type: open-data
+    url: https://github.com/openai/human-eval
+    contribution: >-
+      Co-author of "Evaluating Large Language Models Trained on Code" (2021), the Codex paper that
+      introduced and released the HumanEval evaluation set; the repository's citation lists the full
+      author list.
+    source_ids: [codex-paper, humaneval-repo]
+  - name: OpenAI o1 reasoning research
+    artifact_slug: null
+    type: proprietary
+    url: https://arxiv.org/abs/2412.16720
+    contribution: >-
+      Listed among the foundational contributors to reasoning research in the authorship section of
+      the OpenAI o1 System Card (2024).
+    source_ids: [o1-card]
+links:
+  - label: SSI
+    url: https://ssi.inc
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: nvidia-release
+    title: Ilya Sutskever's Safe Superintelligence Inc. and NVIDIA Announce Long-Term Strategic Partnership (press release)
+    url: https://investor.nvidia.com/news/press-release-details/2026/Ilya-Sutskevers-Safe-Superintelligence-Inc--and-NVIDIA-Announce-Long-Term-Strategic-Partnership/default.aspx
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2026-07-27
+    accessed_at: 2026-10-13
+  - id: ssi-updates
+    title: Safe Superintelligence Inc. — Updates (July 3, 2025 message on the CEO role)
+    url: https://ssi.inc/updates
+    publisher: Safe Superintelligence Inc.
+    kind: announcement
+    published_at: 2025-07-03
+    accessed_at: 2026-10-13
+  - id: ssi-home
+    title: Safe Superintelligence Inc. — homepage
+    url: https://ssi.inc
+    publisher: Safe Superintelligence Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: o1-card
+    title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
+    url: https://arxiv.org/abs/2412.16720
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-21
+    accessed_at: 2026-10-13
+  - id: gpt3-paper
+    title: Language Models are Few-Shot Learners (arXiv 2005.14165)
+    url: https://arxiv.org/abs/2005.14165
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-28
+    accessed_at: 2026-10-13
+  - id: clip-paper
+    title: Learning Transferable Visual Models From Natural Language Supervision (arXiv 2103.00020)
+    url: https://arxiv.org/abs/2103.00020
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-02-26
+    accessed_at: 2026-10-13
+  - id: clip-repo
+    title: openai/CLIP repository (MIT License)
+    url: https://github.com/openai/CLIP
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: codex-paper
+    title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
+    url: https://arxiv.org/abs/2107.03374
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-07-07
+    accessed_at: 2026-10-13
+  - id: humaneval-repo
+    title: openai/human-eval repository (README citation; MIT License)
+    url: https://github.com/openai/human-eval
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: whisper-paper
+    title: Robust Speech Recognition via Large-Scale Weak Supervision (arXiv 2212.04356)
+    url: https://arxiv.org/abs/2212.04356
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-12-06
+    accessed_at: 2026-10-13
+  - id: whisper-repo
+    title: openai/whisper repository (MIT License)
+    url: https://github.com/openai/whisper
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

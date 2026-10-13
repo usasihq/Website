@@ -1,0 +1,141 @@
+slug: sebastien-bubeck
+name: Sébastien Bubeck
+initials: SB
+groups: [engineering, local]
+sector: corporate
+specialties: [language-models, ml-theory]
+headline: OpenAI author on gpt-oss and GPT-5 science work; earlier a Microsoft GenAI vice president and Phi co-author
+bio:
+  text: >-
+    Sébastien Bubeck is first author of "Early science acceleration experiments with GPT-5" (2025),
+    written with an OpenAI affiliation, and is among the authors of the 2025 model card for OpenAI's
+    open-weight gpt-oss models. Earlier, as a vice president in Microsoft GenAI, Bubeck co-authored the
+    technical reports for phi-1, phi-1.5, Phi-3, and Phi-4, Microsoft's small language models, and was a
+    listed contributor to Phi-2; the Phi-4 model card on Hugging Face lists the MIT license. Bubeck was
+    also first author of the 2023 "Sparks of Artificial General Intelligence" study of an early version
+    of GPT-4.
+  source_ids: [gpt5-science-paper, gptoss-card-paper, phi2-blog, phi1-paper, phi15-paper, phi3-paper, phi4-paper, phi4-card, sparks-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: OpenAI
+    organization_slug: openai
+    role: Listed with an OpenAI affiliation on the November 2025 paper "Early science acceleration experiments with GPT-5"
+    current: true
+    source_ids: [gpt5-science-paper, gptoss-card-paper]
+  - name: Microsoft
+    organization_slug: microsoft
+    role: Vice President, Microsoft GenAI
+    current: false
+    source_ids: [phi2-blog, phi4-paper]
+work:
+  - name: Phi small language models
+    artifact_slug: phi
+    type: open-weights
+    url: https://arxiv.org/abs/2404.14219
+    contribution: >-
+      Co-author of the phi-1 (2023), phi-1.5 (2023), Phi-3 (2024), and Phi-4 (2024) technical reports,
+      and a listed contributor and author of the Microsoft Research blog post announcing Phi-2. The
+      Phi-3 report describes phi-3-mini as small enough to be deployed on a phone, and the Phi-4 model
+      card on Hugging Face lists the MIT license.
+    source_ids: [phi1-paper, phi15-paper, phi3-paper, phi4-paper, phi2-blog, phi4-card]
+  - name: gpt-oss
+    artifact_slug: gpt-oss
+    type: open-weights
+    url: https://arxiv.org/abs/2508.10925
+    contribution: >-
+      Listed among the authors of the gpt-oss-120b and gpt-oss-20b model card (2025), which presents
+      two open-weight reasoning models; the gpt-oss-20b model card on Hugging Face lists the Apache 2.0
+      license.
+    source_ids: [gptoss-card-paper, gptoss-20b-card]
+  - name: Early science acceleration experiments with GPT-5
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2511.16072
+    contribution: >-
+      First author of the 2025 collection of case studies in which GPT-5 contributed concrete steps to
+      ongoing research in mathematics, physics, astronomy, computer science, biology, and materials
+      science.
+    source_ids: [gpt5-science-paper]
+  - name: Sparks of Artificial General Intelligence
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2303.12712
+    contribution: >-
+      First author of the 2023 paper reporting experiments with an early version of GPT-4 while it was
+      still in development by OpenAI.
+    source_ids: [sparks-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: gpt5-science-paper
+    title: "Early science acceleration experiments with GPT-5 (arXiv 2511.16072)"
+    url: https://arxiv.org/abs/2511.16072
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-11-20
+    accessed_at: 2026-10-13
+  - id: phi1-paper
+    title: "Textbooks Are All You Need (arXiv 2306.11644)"
+    url: https://arxiv.org/abs/2306.11644
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-06-20
+    accessed_at: 2026-10-13
+  - id: phi15-paper
+    title: "Textbooks Are All You Need II: phi-1.5 technical report (arXiv 2309.05463)"
+    url: https://arxiv.org/abs/2309.05463
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-09-11
+    accessed_at: 2026-10-13
+  - id: phi3-paper
+    title: "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone (arXiv 2404.14219)"
+    url: https://arxiv.org/abs/2404.14219
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-04-22
+    accessed_at: 2026-10-13
+  - id: phi4-paper
+    title: "Phi-4 Technical Report (arXiv 2412.08905)"
+    url: https://arxiv.org/abs/2412.08905
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-12
+    accessed_at: 2026-10-13
+  - id: phi2-blog
+    title: "Phi-2: The surprising power of small language models"
+    url: https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/
+    publisher: Microsoft Research
+    kind: announcement
+    published_at: 2023-12-12
+    accessed_at: 2026-10-13
+  - id: phi4-card
+    title: microsoft/phi-4 model card (license MIT)
+    url: https://huggingface.co/microsoft/phi-4
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: 2024-12-12
+    accessed_at: 2026-10-13
+  - id: sparks-paper
+    title: "Sparks of Artificial General Intelligence: Early experiments with GPT-4 (arXiv 2303.12712)"
+    url: https://arxiv.org/abs/2303.12712
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-22
+    accessed_at: 2026-10-13
+  - id: gptoss-card-paper
+    title: "gpt-oss-120b & gpt-oss-20b Model Card (arXiv 2508.10925)"
+    url: https://arxiv.org/abs/2508.10925
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-08-08
+    accessed_at: 2026-10-13
+  - id: gptoss-20b-card
+    title: openai/gpt-oss-20b model card (license apache-2.0)
+    url: https://huggingface.co/openai/gpt-oss-20b
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

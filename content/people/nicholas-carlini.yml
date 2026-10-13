@@ -1,0 +1,96 @@
+slug: nicholas-carlini
+name: Nicholas Carlini
+initials: NC
+groups: [engineering, open-source]
+sector: corporate
+specialties: [safety-alignment, evaluation, language-models]
+headline: Research scientist at Anthropic working on machine learning security; formerly at Google Brain and DeepMind
+bio:
+  text: >-
+    Nicholas Carlini is a research scientist at Anthropic who works at the intersection of machine
+    learning and computer security, studying what harmful things could be done with, or to, language
+    models. Carlini was previously a research scientist at Google Brain from 2018 to 2023 and at
+    DeepMind from 2023 to 2025. Carlini is first author of "Extracting Training Data from Large
+    Language Models" (2020) and "Stealing Part of a Production Language Model" (2024), and publishes
+    Yet Another Applied LLM Benchmark, a GPL-3.0 test suite built from tasks Carlini has asked
+    language models to do.
+  source_ids: [carlini-site, extraction-paper, stealing-paper, yaallmb-repo]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Research Scientist
+    current: true
+    source_ids: [carlini-site]
+  - name: DeepMind
+    organization_slug: google-deepmind
+    role: Research scientist (2023–2025)
+    current: false
+    source_ids: [carlini-site]
+  - name: Google Brain
+    organization_slug: google
+    role: Research scientist (2018–2023)
+    current: false
+    source_ids: [carlini-site]
+work:
+  - name: Extracting Training Data from Large Language Models
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2012.07805
+    contribution: >-
+      First author of the 2020 paper showing that individual training examples can be recovered from a
+      language model by querying it.
+    source_ids: [extraction-paper]
+  - name: Stealing Part of a Production Language Model
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2403.06634
+    contribution: >-
+      First author of the 2024 paper on a model-stealing attack that recovers precise information from
+      black-box production language models.
+    source_ids: [stealing-paper]
+  - name: Yet Another Applied LLM Benchmark
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/carlini/yet-another-applied-llm-benchmark
+    contribution: >-
+      Author of this GPL-3.0 benchmark, which uses a small dataflow domain-specific language to define
+      tests derived from tasks Carlini has asked language models to perform.
+    source_ids: [yaallmb-repo]
+links:
+  - label: Website
+    url: https://nicholas.carlini.com
+  - label: GitHub
+    url: https://github.com/carlini
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: carlini-site
+    title: Nicholas Carlini — homepage
+    url: https://nicholas.carlini.com
+    publisher: Nicholas Carlini
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: extraction-paper
+    title: Extracting Training Data from Large Language Models (arXiv 2012.07805)
+    url: https://arxiv.org/abs/2012.07805
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-12-14
+    accessed_at: 2026-10-13
+  - id: stealing-paper
+    title: Stealing Part of a Production Language Model (arXiv 2403.06634)
+    url: https://arxiv.org/abs/2403.06634
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-03-11
+    accessed_at: 2026-10-13
+  - id: yaallmb-repo
+    title: carlini/yet-another-applied-llm-benchmark README (GPL-3.0)
+    url: https://github.com/carlini/yet-another-applied-llm-benchmark
+    publisher: Nicholas Carlini (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

@@ -1,0 +1,82 @@
+slug: ming-zhou
+name: Ming Zhou
+initials: MZ
+groups: [leadership, engineering]
+sector: corporate
+specialties: [language-models]
+headline: Founder and CEO of Langboat; former Vice President of Microsoft Research Asia, where Zhou led NLP research
+bio:
+  text: >-
+    Ming Zhou is the founder and CEO of Langboat Technology, established in June 2021, which develops
+    the Mengzi series of language models. Zhou joined Microsoft Research Asia in 1999 and led its
+    natural language processing research for more than 20 years until the end of 2020, serving as a
+    vice president of Microsoft Research Asia. Langboat's biography credits Zhou's teams with work on
+    machine translation, the Windows Chinese-Japanese input method, Bing Dictionary, chatbot engines for
+    XiaoIce, and pre-trained models including UniLM. Zhou is an ACL Fellow and has served as president of
+    the ACL.
+  source_ids: [langboat-resume, langboat-about, unilm-paper, mengzi-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Langboat Technology
+    organization_slug: null
+    role: Founder and CEO
+    current: true
+    source_ids: [langboat-about, langboat-resume]
+  - name: Microsoft Research Asia
+    organization_slug: microsoft
+    role: Vice President; led natural language processing research (1999–2020)
+    current: false
+    source_ids: [langboat-resume, langboat-about]
+work:
+  - name: UniLM (Unified Language Model Pre-training)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1905.03197
+    contribution: >-
+      Co-author of the NeurIPS 2019 paper presenting UniLM, a pre-trained Transformer that can be
+      fine-tuned for both language understanding and generation; the paper links its code and
+      pre-trained models, and Langboat's biography describes UniLM as led by Zhou.
+    source_ids: [unilm-paper, langboat-resume]
+  - name: Mengzi
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2110.06696
+    contribution: >-
+      Co-author of the 2021 technical report releasing Mengzi, a family of lightweight discriminative,
+      generative, domain-specific, and multimodal pre-trained models for Chinese.
+    source_ids: [mengzi-paper]
+links:
+  - label: Langboat
+    url: https://www.langboat.com/en/about
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: langboat-resume
+    title: Dr. Ming Zhou — Founder/CEO, Langboat (biography)
+    url: https://www.langboat.com/en/about/resume
+    publisher: Langboat Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: langboat-about
+    title: About Langboat — Management
+    url: https://www.langboat.com/en/about
+    publisher: Langboat Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: unilm-paper
+    title: "Unified Language Model Pre-training for Natural Language Understanding and Generation (arXiv 1905.03197)"
+    url: https://arxiv.org/abs/1905.03197
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-05-08
+    accessed_at: 2026-10-13
+  - id: mengzi-paper
+    title: "Mengzi: Towards Lightweight yet Ingenious Pre-trained Models for Chinese (arXiv 2110.06696)"
+    url: https://arxiv.org/abs/2110.06696
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-10-13
+    accessed_at: 2026-10-13

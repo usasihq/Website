@@ -1,0 +1,124 @@
+slug: jim-fan
+name: Jim Fan
+initials: JF
+groups: [engineering, open-source]
+sector: corporate
+specialties: [robotics, agents, multimodal]
+headline: Co-leads NVIDIA's GEAR embodied-agents group; co-author of GR00T N1, Voyager and Eureka
+bio:
+  text: >-
+    Linxi "Jim" Fan co-leads NVIDIA's Generalist Embodied Agent Research (GEAR) group with Yuke Zhu;
+    the group builds foundation models for embodied agents in virtual and physical worlds and lists
+    GR00T, Eureka and Voyager among its projects. Fan's homepage describes a mission of building
+    generally capable agents across robotics, games and simulation, and lists Voyager, MineDojo,
+    Eureka and VIMA among Fan's research highlights; NVIDIA's research profile notes that MineDojo
+    received an Outstanding Paper Award at NeurIPS 2022. Fan is a co-author of the GR00T N1 paper,
+    which presents NVIDIA's open foundation model for generalist humanoid robots, and of the
+    Isaac Lab technical report. Fan's homepage also notes a 2016 research internship at OpenAI.
+  source_ids: [gear-page, homepage, nvidia-research-profile, gr00t-paper, isaaclab-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: NVIDIA
+    organization_slug: nvidia
+    role: Co-lead of the Generalist Embodied Agent Research (GEAR) group, with Yuke Zhu
+    current: true
+    source_ids: [gear-page, homepage]
+  - name: OpenAI
+    organization_slug: openai
+    role: Research intern (2016)
+    current: false
+    source_ids: [homepage]
+work:
+  - name: NVIDIA Isaac GR00T N1
+    artifact_slug: gr00t
+    type: open-research
+    url: https://arxiv.org/abs/2503.14734
+    contribution: >-
+      Listed among the authors of "GR00T N1: An Open Foundation Model for Generalist Humanoid
+      Robots" (March 2025); GR00T appears among the GEAR group's projects.
+    source_ids: [gr00t-paper, gear-page]
+  - name: NVIDIA Isaac Lab
+    artifact_slug: isaac-lab
+    type: open-source
+    url: https://github.com/isaac-sim/IsaacLab
+    contribution: >-
+      Co-author of "Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot
+      Learning" (November 2025), the technical report the BSD-3-Clause Isaac Lab repository asks
+      users to cite.
+    source_ids: [isaaclab-paper, isaaclab-readme]
+  - name: Voyager and Eureka
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2305.16291
+    contribution: >-
+      Co-author of Voyager (2023), an LLM-powered agent that learns continually in Minecraft, and
+      Eureka (2023), in which coding LLMs write reward functions for dexterous robot tasks; both
+      appear among the research highlights on Fan's homepage.
+    source_ids: [voyager-paper, eureka-paper, homepage]
+links:
+  - label: Website
+    url: https://jimfan.me
+  - label: NVIDIA Research profile
+    url: https://research.nvidia.com/person/linxi-jim-fan
+  - label: NVIDIA GEAR group
+    url: https://research.nvidia.com/labs/gear/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Jim Fan — homepage
+    url: https://jimfan.me
+    publisher: Jim Fan
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gear-page
+    title: NVIDIA GEAR — Generalist Embodied Agent Research
+    url: https://research.nvidia.com/labs/gear/
+    publisher: NVIDIA Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: nvidia-research-profile
+    title: Linxi "Jim" Fan — NVIDIA Research
+    url: https://research.nvidia.com/person/linxi-jim-fan
+    publisher: NVIDIA Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gr00t-paper
+    title: "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots (arXiv 2503.14734)"
+    url: https://arxiv.org/abs/2503.14734
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-03-18
+    accessed_at: 2026-10-13
+  - id: isaaclab-paper
+    title: "Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot Learning (arXiv 2511.04831)"
+    url: https://arxiv.org/abs/2511.04831
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-11-06
+    accessed_at: 2026-10-13
+  - id: isaaclab-readme
+    title: isaac-sim/IsaacLab README (citation) and LICENSE (BSD-3-Clause)
+    url: https://github.com/isaac-sim/IsaacLab
+    publisher: isaac-sim (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: voyager-paper
+    title: "Voyager: An Open-Ended Embodied Agent with Large Language Models (arXiv 2305.16291)"
+    url: https://arxiv.org/abs/2305.16291
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-25
+    accessed_at: 2026-10-13
+  - id: eureka-paper
+    title: "Eureka: Human-Level Reward Design via Coding Large Language Models (arXiv 2310.12931)"
+    url: https://arxiv.org/abs/2310.12931
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-19
+    accessed_at: 2026-10-13

@@ -1,0 +1,103 @@
+slug: jianfeng-gao
+name: Jianfeng Gao
+initials: JG
+groups: [engineering, leadership]
+sector: corporate
+specialties: [language-models, multimodal, agents]
+headline: Microsoft Technical Fellow and CVP setting direction for AI models; co-founder of MSR's Deep Learning Group
+bio:
+  text: >-
+    Jianfeng Gao is a Technical Fellow and Corporate Vice President at Microsoft. Gao's Microsoft
+    Research page describes Gao setting company-wide direction for the AI models behind Bing, Azure AI,
+    Microsoft 365, and Copilot, and heading a Microsoft Research-backed investment in core capabilities
+    such as multimodal reasoning, agentic coding, tool use, and long-context modeling. Gao was earlier a Distinguished Scientist and Vice President at
+    Microsoft Research and a co-founder of its Deep Learning Group, and co-invented the deep structured
+    semantic models (DSSM) used in web search. Gao is a co-author of the Phi-3 technical report and of
+    LLaVA-Med, a vision-language assistant for biomedicine, and also serves as an Adjunct Professor at
+    the University of Washington.
+  source_ids: [msr-profile, phi3-paper, dssm-pub, llava-med-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Microsoft
+    organization_slug: microsoft
+    role: Technical Fellow & Corporate Vice President
+    current: true
+    source_ids: [msr-profile]
+  - name: University of Washington
+    organization_slug: university-of-washington
+    role: Adjunct Professor
+    current: true
+    source_ids: [msr-profile]
+  - name: Microsoft Research
+    organization_slug: microsoft
+    role: Distinguished Scientist and Vice President; co-founder and long-time leader of the Deep Learning Group
+    current: false
+    source_ids: [msr-profile]
+work:
+  - name: Phi-3
+    artifact_slug: phi
+    type: open-weights
+    url: https://arxiv.org/abs/2404.14219
+    contribution: >-
+      Listed among the authors of the Phi-3 Technical Report (2024), which introduces phi-3-mini, a
+      3.8 billion parameter model small enough to be deployed on a phone. The phi-3-mini-4k-instruct
+      model card on Hugging Face lists the MIT license.
+    source_ids: [phi3-paper, phi3-mini-card]
+  - name: Deep Structured Semantic Models (DSSM)
+    artifact_slug: null
+    type: open-research
+    url: https://www.microsoft.com/en-us/research/publication/learning-deep-structured-semantic-models-for-web-search-using-clickthrough-data/
+    contribution: >-
+      Co-author of "Learning Deep Structured Semantic Models for Web Search using Clickthrough Data"
+      (CIKM 2013); Gao's Microsoft Research page describes Gao as a co-inventor of DSSM.
+    source_ids: [dssm-pub, msr-profile]
+  - name: LLaVA-Med
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2306.00890
+    contribution: >-
+      Co-author of the 2023 paper "LLaVA-Med: Training a Large Language-and-Vision Assistant for
+      Biomedicine in One Day".
+    source_ids: [llava-med-paper]
+links:
+  - label: Microsoft Research
+    url: https://www.microsoft.com/en-us/research/people/jfgao/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: msr-profile
+    title: Jianfeng Gao at Microsoft Research
+    url: https://www.microsoft.com/en-us/research/people/jfgao/
+    publisher: Microsoft Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: phi3-paper
+    title: "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone (arXiv 2404.14219)"
+    url: https://arxiv.org/abs/2404.14219
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-04-22
+    accessed_at: 2026-10-13
+  - id: phi3-mini-card
+    title: microsoft/Phi-3-mini-4k-instruct model card (license MIT)
+    url: https://huggingface.co/microsoft/Phi-3-mini-4k-instruct
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: dssm-pub
+    title: Learning Deep Structured Semantic Models for Web Search using Clickthrough Data
+    url: https://www.microsoft.com/en-us/research/publication/learning-deep-structured-semantic-models-for-web-search-using-clickthrough-data/
+    publisher: Microsoft Research
+    kind: paper
+    published_at: 2013-10
+    accessed_at: 2026-10-13
+  - id: llava-med-paper
+    title: "LLaVA-Med: Training a Large Language-and-Vision Assistant for Biomedicine in One Day (arXiv 2306.00890)"
+    url: https://arxiv.org/abs/2306.00890
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-06-01
+    accessed_at: 2026-10-13

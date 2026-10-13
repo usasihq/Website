@@ -1,0 +1,83 @@
+slug: bill-dolan
+name: Bill Dolan
+initials: BD
+groups: [engineering, open-source]
+sector: null
+specialties: [language-models, data]
+headline: Managed Microsoft Research's NLP group; co-author of DialoGPT and the Microsoft Research Paraphrase Corpus
+bio:
+  text: >-
+    Bill Dolan was described in 2022 as a Partner Researcher Manager at Microsoft Research managing its
+    Natural Language Processing group, with work on acquiring common-sense knowledge from text,
+    paraphrasing, text rewriting, and grounded approaches to dialog. With Chris Brockett, Dolan
+    described the creation of the Microsoft Research Paraphrase Corpus, a released set of 5,801
+    sentence pairs hand-labeled for whether they are paraphrases. Dolan is also a co-author of DialoGPT,
+    a large pre-trained conversational response generation model whose code and model weights
+    Microsoft released under the MIT license.
+  source_ids: [iglu-2022-paper, msrp-pub, dialogpt-paper, dialogpt-repo, dialogpt-card]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Microsoft Research
+    organization_slug: microsoft
+    role: Partner Researcher Manager, managing the Natural Language Processing group (as described in 2022)
+    current: false
+    source_ids: [iglu-2022-paper, dialogpt-paper]
+work:
+  - name: DialoGPT
+    artifact_slug: null
+    type: open-weights
+    url: https://github.com/microsoft/DialoGPT
+    contribution: >-
+      Co-author of "DialoGPT: Large-Scale Generative Pre-training for Conversational Response
+      Generation" (ACL 2020 system demonstrations), which publicly released the pre-trained model and
+      training pipeline; the repository lists the MIT license and the DialoGPT-medium model card on
+      Hugging Face lists MIT.
+    source_ids: [dialogpt-paper, dialogpt-repo, dialogpt-card]
+  - name: Microsoft Research Paraphrase Corpus
+    artifact_slug: null
+    type: open-data
+    url: https://www.microsoft.com/en-us/research/publication/automatically-constructing-a-corpus-of-sentential-paraphrases/
+    contribution: >-
+      First author, with Chris Brockett, of the 2005 paper describing the creation of the
+      recently released Microsoft Research Paraphrase Corpus of 5,801 hand-labeled sentence pairs.
+    source_ids: [msrp-pub]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: iglu-2022-paper
+    title: "IGLU 2022: Interactive Grounded Language Understanding in a Collaborative Environment at NeurIPS 2022 (arXiv 2205.13771), organizer biographies"
+    url: https://arxiv.org/abs/2205.13771
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-05-27
+    accessed_at: 2026-10-13
+  - id: msrp-pub
+    title: Automatically Constructing a Corpus of Sentential Paraphrases
+    url: https://www.microsoft.com/en-us/research/publication/automatically-constructing-a-corpus-of-sentential-paraphrases/
+    publisher: Microsoft Research
+    kind: paper
+    published_at: 2005-01
+    accessed_at: 2026-10-13
+  - id: dialogpt-paper
+    title: "DialoGPT: Large-Scale Generative Pre-training for Conversational Response Generation (arXiv 1911.00536)"
+    url: https://arxiv.org/abs/1911.00536
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-11-01
+    accessed_at: 2026-10-13
+  - id: dialogpt-repo
+    title: microsoft/DialoGPT repository (MIT license)
+    url: https://github.com/microsoft/DialoGPT
+    publisher: Microsoft (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: dialogpt-card
+    title: microsoft/DialoGPT-medium model card (license MIT)
+    url: https://huggingface.co/microsoft/DialoGPT-medium
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13

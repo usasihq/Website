@@ -1,0 +1,100 @@
+slug: jan-leike
+name: Jan Leike
+initials: JL
+groups: [engineering]
+sector: corporate
+specialties: [safety-alignment, reinforcement-learning]
+headline: Leads the Alignment Science team at Anthropic; formerly co-led Superalignment at OpenAI
+bio:
+  text: >-
+    Jan Leike is a machine learning and alignment researcher who leads the Alignment Science team at
+    Anthropic, where the team works on aligning an automated alignment researcher, scalable oversight,
+    weak-to-strong generalization and robustness to jailbreaks. Leike previously co-led the
+    Superalignment team at OpenAI and was involved in developing InstructGPT, ChatGPT and the alignment
+    of GPT-4; before that, Leike was an alignment researcher at DeepMind who prototyped reinforcement
+    learning from human feedback. Leike is second author of "Deep reinforcement learning from human
+    preferences" (2017) and first author of "Scalable agent alignment via reward modeling" (2018).
+  source_ids: [leike-site, rlhp-paper, reward-modeling-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Leads the Alignment Science team
+    current: true
+    source_ids: [leike-site]
+  - name: OpenAI
+    organization_slug: openai
+    role: Co-led the Superalignment team
+    current: false
+    source_ids: [leike-site, instructgpt-paper]
+  - name: DeepMind
+    organization_slug: google-deepmind
+    role: Alignment researcher
+    current: false
+    source_ids: [leike-site]
+work:
+  - name: Deep reinforcement learning from human preferences
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1706.03741
+    contribution: >-
+      Second-listed author of the 2017 paper that trains agents from human preferences between pairs
+      of trajectory segments.
+    source_ids: [rlhp-paper]
+  - name: Scalable agent alignment via reward modeling
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1811.07871
+    contribution: >-
+      First author of the 2018 research-direction paper on aligning agents through reward modeling.
+    source_ids: [reward-modeling-paper]
+  - name: InstructGPT and weak-to-strong generalization
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2203.02155
+    contribution: >-
+      Co-author of "Training language models to follow instructions with human feedback" (2022) and of
+      "Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision" (2023).
+    source_ids: [instructgpt-paper, w2s-paper]
+links:
+  - label: Website
+    url: https://jan.leike.name
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: leike-site
+    title: Jan Leike — homepage (About me)
+    url: https://jan.leike.name
+    publisher: Jan Leike
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: rlhp-paper
+    title: Deep reinforcement learning from human preferences (arXiv 1706.03741)
+    url: https://arxiv.org/abs/1706.03741
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-06-12
+    accessed_at: 2026-10-13
+  - id: reward-modeling-paper
+    title: "Scalable agent alignment via reward modeling: a research direction (arXiv 1811.07871)"
+    url: https://arxiv.org/abs/1811.07871
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-11-19
+    accessed_at: 2026-10-13
+  - id: instructgpt-paper
+    title: Training language models to follow instructions with human feedback (arXiv 2203.02155)
+    url: https://arxiv.org/abs/2203.02155
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-03-04
+    accessed_at: 2026-10-13
+  - id: w2s-paper
+    title: "Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision (arXiv 2312.09390)"
+    url: https://arxiv.org/abs/2312.09390
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-14
+    accessed_at: 2026-10-13

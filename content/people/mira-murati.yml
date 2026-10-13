@@ -1,0 +1,101 @@
+slug: mira-murati
+name: Mira Murati
+initials: MM
+groups: [leadership]
+sector: corporate
+specialties: [language-models, multimodal]
+headline: Co-founder and CEO of Thinking Machines Lab; previously in OpenAI's executive leadership
+bio:
+  text: >-
+    Mira Murati is the co-founder and CEO of Thinking Machines Lab, an AI research and product company
+    that has released the Inkling open-weights models and Tinker, a training API for researchers. Before
+    Thinking Machines, Murati worked at OpenAI: the OpenAI o1 System Card (2024) lists Murati under
+    executive leadership, the GPT-4 Technical Report lists Murati among additional contributors, and
+    Murati is a co-author, with an OpenAI affiliation, of the 2021 Codex paper that introduced the
+    HumanEval benchmark.
+  source_ids: [tml-nvidia, tml-home, tml-tinker, o1-card, gpt4-report, codex-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    role: Co-founder and CEO
+    current: true
+    source_ids: [tml-nvidia]
+  - name: OpenAI
+    organization_slug: openai
+    role: Listed under executive leadership in the OpenAI o1 System Card (2024)
+    current: false
+    source_ids: [o1-card, codex-paper]
+work:
+  - name: HumanEval
+    artifact_slug: humaneval
+    type: open-data
+    url: https://github.com/openai/human-eval
+    contribution: >-
+      Co-author, with an OpenAI affiliation, of "Evaluating Large Language Models Trained on Code"
+      (2021), the Codex paper that introduced and released the HumanEval evaluation set.
+    source_ids: [codex-paper, humaneval-repo]
+  - name: OpenAI o1 and GPT-4
+    artifact_slug: null
+    type: proprietary
+    url: https://arxiv.org/abs/2412.16720
+    contribution: >-
+      Listed under executive leadership in the OpenAI o1 System Card (2024) and among additional
+      contributors in the GPT-4 Technical Report (2023).
+    source_ids: [o1-card, gpt4-report]
+links:
+  - label: Thinking Machines Lab
+    url: https://thinkingmachines.ai
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: tml-nvidia
+    title: Thinking Machines Lab and NVIDIA Announce Long-Term Gigawatt-Scale Strategic Partnership
+    url: https://thinkingmachines.ai/news/nvidia-partnership/
+    publisher: Thinking Machines Lab
+    kind: announcement
+    published_at: 2026-03-10
+    accessed_at: 2026-10-13
+  - id: tml-home
+    title: Thinking Machines Lab — homepage (Inkling, Tinker)
+    url: https://thinkingmachines.ai
+    publisher: Thinking Machines Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tml-tinker
+    title: Tinker — Thinking Machines Lab
+    url: https://thinkingmachines.ai/tinker/
+    publisher: Thinking Machines Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: o1-card
+    title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
+    url: https://arxiv.org/abs/2412.16720
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-21
+    accessed_at: 2026-10-13
+  - id: gpt4-report
+    title: GPT-4 Technical Report (arXiv 2303.08774), authorship and credit attribution
+    url: https://arxiv.org/abs/2303.08774
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-15
+    accessed_at: 2026-10-13
+  - id: codex-paper
+    title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
+    url: https://arxiv.org/abs/2107.03374
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-07-07
+    accessed_at: 2026-10-13
+  - id: humaneval-repo
+    title: openai/human-eval repository (README citation; MIT License)
+    url: https://github.com/openai/human-eval
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

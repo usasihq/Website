@@ -1,0 +1,94 @@
+slug: mark-russinovich
+name: Mark Russinovich
+initials: MR
+groups: [engineering, leadership]
+sector: corporate
+specialties: [safety-alignment, developer-tools]
+headline: CTO, Deputy CISO, and Technical Fellow for Microsoft Azure; creator of Sysinternals
+bio:
+  text: >-
+    Mark Russinovich is CTO, Deputy CISO, and Technical Fellow for Microsoft Azure. In a 2025 Microsoft
+    Security blog profile, Russinovich describes a team focused on technical strategy, architecture,
+    and security risk management for the Azure platform, engineering systems, and core operating
+    systems. Russinovich created the Sysinternals web site in 1996 to host advanced system utilities;
+    Microsoft Learn now hosts the Sysinternals tools for troubleshooting Windows and Linux systems.
+    Russinovich is first author of the Crescendo paper on multi-turn jailbreak attacks against
+    language models, accepted at USENIX Security 2025, and co-authored "Who's Harry Potter?" with Ronen
+    Eldan on approximate unlearning in language models.
+  source_ids: [azure-blog-author, ms-security-blog, sysinternals, crescendo-paper, harry-potter-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Microsoft
+    organization_slug: microsoft
+    role: Chief Technology Officer, Deputy Chief Information Security Officer, and Technical Fellow, Microsoft Azure
+    current: true
+    source_ids: [azure-blog-author, ms-security-blog]
+work:
+  - name: Crescendo multi-turn jailbreak attack
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2404.01833
+    contribution: >-
+      First author of "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak
+      Attack" (2024, accepted at USENIX Security 2025), which introduces a multi-turn jailbreak that
+      starts with seemingly benign interactions.
+    source_ids: [crescendo-paper]
+  - name: "Who's Harry Potter? Approximate Unlearning in LLMs"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2310.02238
+    contribution: >-
+      Co-author with Ronen Eldan of a 2023 paper proposing a technique for unlearning a subset of a
+      language model's training data without retraining from scratch, demonstrated on Llama2-7b.
+    source_ids: [harry-potter-paper]
+  - name: Sysinternals
+    artifact_slug: null
+    type: null
+    url: https://learn.microsoft.com/en-us/sysinternals/
+    contribution: >-
+      Created the Sysinternals web site in 1996 to host advanced system utilities and technical
+      information; Microsoft Learn now hosts the utilities for managing, troubleshooting, and diagnosing
+      Windows and Linux systems and applications.
+    source_ids: [sysinternals]
+links:
+  - label: Sysinternals
+    url: https://learn.microsoft.com/en-us/sysinternals/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: azure-blog-author
+    title: Mark Russinovich — Microsoft Azure Blog author page
+    url: https://azure.microsoft.com/en-us/blog/author/mark-russinovich/
+    publisher: Microsoft Azure
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ms-security-blog
+    title: Meet the Deputy CISOs who help shape Microsoft's approach to cybersecurity
+    url: https://www.microsoft.com/en-us/security/blog/2025/04/08/meet-the-deputy-cisos-who-help-shape-microsofts-approach-to-cybersecurity/
+    publisher: Microsoft Security
+    kind: official-page
+    published_at: 2025-04-08
+    accessed_at: 2026-10-13
+  - id: sysinternals
+    title: Sysinternals — Microsoft Learn
+    url: https://learn.microsoft.com/en-us/sysinternals/
+    publisher: Microsoft
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: crescendo-paper
+    title: "Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack (arXiv 2404.01833)"
+    url: https://arxiv.org/abs/2404.01833
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-04-02
+    accessed_at: 2026-10-13
+  - id: harry-potter-paper
+    title: "Who's Harry Potter? Approximate Unlearning in LLMs (arXiv 2310.02238)"
+    url: https://arxiv.org/abs/2310.02238
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-03
+    accessed_at: 2026-10-13

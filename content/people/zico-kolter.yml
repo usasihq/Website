@@ -1,0 +1,77 @@
+slug: zico-kolter
+name: Zico Kolter
+initials: ZK
+groups: [engineering, leadership]
+sector: academic
+specialties: [safety-alignment, data]
+headline: Head of Carnegie Mellon's Machine Learning Department; chairs OpenAI's Safety and Security Committee
+bio:
+  text: >-
+    Zico Kolter is a Professor and Department Head of the Machine Learning Department at Carnegie
+    Mellon University. Kolter serves on the Board of OpenAI, where Kolter chairs the Safety and
+    Security Committee, and on the Board of Qualcomm, and is a co-founder and Chief Scientist of Gray
+    Swan AI, an AI security company. Kolter's group works on making deep learning more robust and safer
+    and on understanding how data affects how models function. Kolter is a co-author of the 2023 paper
+    "Universal and Transferable Adversarial Attacks on Aligned Language Models," which generates
+    adversarial prompt suffixes automatically and releases its code.
+  source_ids: [kolter-bio, kolter-home, gcg-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Carnegie Mellon University
+    organization_slug: carnegie-mellon-university
+    role: Professor and Department Head, Machine Learning Department
+    current: true
+    source_ids: [kolter-bio, kolter-home]
+  - name: OpenAI
+    organization_slug: openai
+    role: Member of the Board; chairs the Safety and Security Committee
+    current: true
+    source_ids: [kolter-bio]
+  - name: Qualcomm
+    organization_slug: qualcomm
+    role: Member of the Board
+    current: true
+    source_ids: [kolter-bio]
+  - name: Gray Swan AI
+    organization_slug: null
+    role: Co-founder and Chief Scientist
+    current: true
+    source_ids: [kolter-bio]
+work:
+  - name: Universal and Transferable Adversarial Attacks on Aligned Language Models
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2307.15043
+    contribution: >-
+      Co-author of the 2023 paper that finds adversarial suffixes through greedy and gradient-based
+      search, causing aligned language models to produce objectionable content, and shows that the
+      attacks transfer to other models; the paper releases code at github.com/llm-attacks/llm-attacks.
+    source_ids: [gcg-paper]
+links:
+  - label: Website
+    url: https://zicokolter.com/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: kolter-bio
+    title: Zico Kolter — Bio
+    url: https://zicokolter.com/bio/
+    publisher: Zico Kolter
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: kolter-home
+    title: Zico Kolter — homepage
+    url: https://zicokolter.com/
+    publisher: Zico Kolter
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: gcg-paper
+    title: "Universal and Transferable Adversarial Attacks on Aligned Language Models (arXiv 2307.15043)"
+    url: https://arxiv.org/abs/2307.15043
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-07-27
+    accessed_at: 2026-10-13
