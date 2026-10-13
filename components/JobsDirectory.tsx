@@ -5,6 +5,8 @@ import { useEffect, useMemo, useState } from "react";
 import type { FeedHealth, Job } from "@/lib/jobs/schema";
 import { checkedLabel, currentJobs, DEFAULT_JOB_FILTERS, filterJobs, isDefaultJobView, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
 import { isExpressionOfInterest, jobTrack, JOB_TRACKS } from "@/lib/jobs/tracks";
+import { LOCATION_SCOPE_LABELS, LOCATION_SCOPES, stateDisplayName, type LocationScope } from "@/lib/jobs/geo";
+import { US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
 import { ExternalLink } from "./ExternalLink";
@@ -31,6 +33,8 @@ function JobCard({ job, unverified }: { job: JobItem; unverified: boolean }) {
     <details className="mt-3 text-xs text-muted"><summary className="min-h-8 cursor-pointer">Source and corrections</summary><p className="mt-2">Collected from the employer’s {job.source_type === "ashby" ? "Ashby" : "Greenhouse"} feed. Posting ID: {job.source_job_id}. Unknown fields are not inferred.</p><ExternalLink href={job.source_url}>Source feed</ExternalLink>{siteConfig.contact.email ? <p className="mt-2"><a className="link" href={mailtoHref(siteConfig.contact.email, `Job correction: ${job.title}`, `Job: ${job.id}\nOfficial posting: ${job.official_url}\nDisputed field:\nProposed correction:\nSupporting source:\n`)}>Suggest a correction</a></p> : null}</details>
   </article>;
 }
+const STATE_OPTIONS = Object.keys(US_STATES).map(value => ({ value, label: stateDisplayName(value) })).sort((a,b) => a.label.localeCompare(b.label,"en"));
+const SCOPE_OPTIONS = LOCATION_SCOPES.map(value => ({ value, label: LOCATION_SCOPE_LABELS[value] }));
 const options = (values: string[]) => [...new Set(values)].sort((a,b) => a.localeCompare(b,"en")).map(value => ({ value, label: value }));
 export type JobsSummary = { currentCount: number; organizationCount: number; departments: string[]; currencies: string[]; periods: string[] };
 export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf }: { initial: JobItem[]; summary: JobsSummary; dataUrl: string; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string }) {
@@ -73,10 +77,13 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
         <SearchField label="Search jobs" value={f.q} onChange={q => set({ q }, "replace")} placeholder="Title, organization, team…" />
         <SelectField label="Company or lab" value={f.company} options={coverage.map(c => ({ value: c.slug, label: c.name }))} onChange={company => set({ company })} allLabel="All organizations" />
         <SearchField label="Location" value={f.location} onChange={location => set({ location }, "replace")} placeholder="Employer-supplied location…" />
+        <SelectField label="U.S. state named in location" value={f.state} options={STATE_OPTIONS} onChange={state => set({ state })} allLabel="Any location" />
+        <SelectField<LocationScope> label="Remote and U.S. locations" value={f.where} options={SCOPE_OPTIONS} onChange={where => set({ where })} allLabel="All listings" />
         <SelectField label="Department" value={f.department} options={departments} onChange={department => set({ department })} allLabel="All supplied departments" />
         <SelectField label="Workplace type" value={f.workplace} options={options(["remote", "hybrid", "on-site", "unknown"])} onChange={workplace => set({ workplace })} />
         <SelectField label="Employment type" value={f.employment} options={options(["full-time", "part-time", "contract", "temporary", "internship", "unknown"])} onChange={employment => set({ employment })} />
       </div>
+      {f.state || f.where ? <p className="mt-4 max-w-3xl text-sm text-muted"><strong className="text-text">How locations are read:</strong> {f.state ? `A listing matches ${stateDisplayName(f.state)} when one of its employer-supplied locations names it, for example “Atlanta, GA” or “Atlanta, Georgia, United States”; a city alone or “Remote - US” names no state. ` : ""}{f.where && f.where !== "us" ? "Remote means the employer marks the workplace as remote or a listed location says “Remote”. " : ""}{f.where === "us" || f.where === "remote-us" ? "U.S. locations only means the listing names the United States or a U.S. state and no place outside it. " : ""}It uses only what employers supply. <Link href="/jobs/remote-us/" className="link">About remote jobs with U.S. locations</Link></p> : null}
       <details className="mt-4"><summary className="min-h-11 cursor-pointer text-sm text-ice">Salary and date filters</summary><div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <label className="flex min-h-11 items-center gap-2 text-sm"><input type="checkbox" checked={f.salary} onChange={e => set({ salary: e.target.checked })} className="h-5 w-5" />Employer supplies salary</label>
         <SelectField label="Salary currency" value={f.currency} options={options(summary.currencies)} onChange={currency => set({ currency, salary_min: "" })} />
