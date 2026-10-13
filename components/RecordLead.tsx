@@ -89,10 +89,12 @@ function Maintainers({ catalog, a }: { catalog: Catalog; a: Artifact }) {
   );
 }
 
+/** Version and release date, then the sentence's full stop (none after a name that already ends in one, like "Inc."). */
 const when = (a: Artifact) => (
   <>
     {a.version ? `, version ${a.version}` : null}
     {a.released_at ? `, released ${formatDate(a.released_at)}` : null}
+    {!a.version && !a.released_at && /\.$/.test(a.maintainers[a.maintainers.length - 1]?.name ?? "") ? null : "."}
   </>
 );
 
@@ -157,7 +159,7 @@ export function ArtifactLead({ catalog, a }: { catalog: Catalog; a: Artifact }) 
           </>
         ) : null}{" "}
         from <Maintainers catalog={catalog} a={a} />
-        {when(a)}.{" "}
+        {when(a)}{" "}
         {tier === "open-weight" || tier === "fully-open" ? (
           <>
             Its weights can be downloaded by the public{weightRefs}
@@ -193,7 +195,7 @@ export function ArtifactLead({ catalog, a }: { catalog: Catalog; a: Artifact }) 
   return (
     <p className={CLASS} data-testid="record-lead">
       {a.name} is {article(kindNoun)} {kindNoun} {isDataset ? "from" : "maintained by"} <Maintainers catalog={catalog} a={a} />
-      {when(a)}.{" "}
+      {when(a)}{" "}
       {open === "public" ? (
         <>
           {subject} {isDataset ? "is publicly available" : "is public"}

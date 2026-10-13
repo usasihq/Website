@@ -70,7 +70,12 @@ export const firstSentence = (text: string) => sentences(text)[0] ?? squash(text
  * that still fits, in order.
  */
 export function composeDescription(required: Array<string | false | null | undefined>, optional: Array<string | false | null | undefined> = [], max = DESCRIPTION_MAX): string {
-  const keep = (parts: Array<string | false | null | undefined>) => parts.filter((p): p is string => Boolean(p)).map(squash).filter(Boolean);
+  // "Ollama Inc.." → "Ollama Inc.": a sentence that ends in an abbreviation keeps one period.
+  const keep = (parts: Array<string | false | null | undefined>) =>
+    parts
+      .filter((p): p is string => Boolean(p))
+      .map((p) => squash(p).replace(/([.!?])\.(?=\s|$)/g, "$1"))
+      .filter(Boolean);
   let out = clipDescription(keep(required).join(" "), max);
   for (const part of keep(optional)) {
     const next = out ? `${out} ${part}` : part;
@@ -125,9 +130,11 @@ export function orderedLicenses(a: Artifact, primary: keyof typeof COVERS): Lice
 export function licenseSentence(a: Artifact, primary: keyof typeof COVERS): string {
   const list = orderedLicenses(a, primary);
   if (list.length === 0) return "No license is recorded.";
-  const labels = [...new Set(list.map(licenseLabel))];
-  if (labels.length === 1) return `License: ${labels[0]}.`;
-  return `Licenses: ${listJoin(list.map((l) => (APPLIES_SHORT[l.applies_to] ? `${licenseLabel(l)} (${APPLIES_SHORT[l.applies_to]})` : licenseLabel(l))))}.`;
+  const components = new Map<string, string[]>();
+  for (const l of list) components.set(licenseLabel(l), [...(components.get(licenseLabel(l)) ?? []), APPLIES_SHORT[l.applies_to]]);
+  if (components.size === 1) return `License: ${[...components.keys()][0]}.`;
+  const named = [...components].map(([label, parts]) => (parts.every(Boolean) ? `${label} (${listJoin(parts)})` : label));
+  return `Licenses: ${listJoin(named)}.`;
 }
 
 const released = (a: Artifact) => (a.released_at ? `, released ${formatDate(a.released_at)}` : "");

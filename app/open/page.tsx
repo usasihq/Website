@@ -29,7 +29,7 @@ export default function OpenPage() {
       <PageHeader
         compact
         eyebrow="Directory · Open Models & Tools"
-        title="Open-source & open-weight AI models and tools"
+        title="U.S. open models & tools"
         description={
           <p>
             Find U.S.-led models, software, datasets, and evaluation tools by availability, license, and maintainer. Publicly downloadable does not always mean unrestricted.
