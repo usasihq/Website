@@ -6,6 +6,8 @@ import { GitBranch, Info } from "lucide-react";
 import { EntryTypeBadge, StatusBadge, TierBadge } from "@/components/Badges";
 import { ArchivedNotice, ClaimText, EligibilityBlock, ReviewDates } from "@/components/DetailParts";
 import { EntryActions } from "@/components/EntryActions";
+import { JsonLd } from "@/components/JsonLd";
+import { ArtifactLead } from "@/components/RecordLead";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Breadcrumbs, Section } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
@@ -18,6 +20,8 @@ import { formatDate } from "@/lib/dates";
 import { guideFor } from "@/lib/licenses";
 import { entryTypeFor, KIND_LABELS } from "@/lib/labels";
 import { pageMetadata, socialImages } from "@/lib/metadata";
+import { artifactSeo } from "@/lib/seo";
+import { softwareSourceCodeLd } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
 import {
   AVAILABILITY_DESCRIPTIONS,
@@ -40,14 +44,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const a = getCatalog().artifact(slug);
+  const catalog = getCatalog();
+  const a = catalog.artifact(slug);
   if (!a) return {};
+  const seo = artifactSeo(catalog, a);
   return pageMetadata({
-    title: a.name,
-    description: a.summary.text.slice(0, 200),
+    title: seo.title,
+    description: seo.description,
     path: artifactHref(a.slug),
     noindex: a.publication_status === "archived",
-    image: cardImage(getCatalog(), artifactHref(a.slug)) ?? socialImages.open,
+    image: cardImage(catalog, artifactHref(a.slug)) ?? socialImages.open,
     feeds: a.publication_status === "archived" ? undefined : [{ path: `${artifactHref(a.slug)}feed.xml`, title: `${a.name} — USASI news` }],
   });
 }
@@ -89,44 +95,23 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
   const crumbs = [{ href: "/open/", label: "Open Models & Tools" }];
   if (family) crumbs.push({ href: artifactHref(family.slug), label: family.name });
 
+  const people = catalog.peopleForArtifact(a.slug);
+
   return (
     <>
+      <JsonLd data={softwareSourceCodeLd(catalog, a)} />
       {a.publication_status === "archived" && a.archive_note ? <ArchivedNotice note={a.archive_note} /> : null}
       <article>
         <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
-            <Breadcrumbs items={crumbs} />
+            <Breadcrumbs items={crumbs} current={{ href: artifactHref(a.slug), label: a.name }} />
             <div className="flex flex-wrap items-center gap-2">
               <EntryTypeBadge type={type} />
               {a.kind !== "model" ? <span className="text-sm text-muted">{KIND_LABELS[a.kind]}</span> : null}
             </div>
             <h1 className="mt-3 text-3xl font-semibold text-text sm:text-4xl">{a.name}</h1>
-            <p className="mt-2 text-[0.9375rem] text-muted">
-              {a.record_level === "family"
-                ? "Family overview — summarizes releases; licenses and availability belong to each release."
-                : a.record_level === "release"
-                  ? `Release${family ? ` in the ${family.name} family` : ""}${a.version ? ` · version ${a.version}` : ""}`
-                  : a.version
-                    ? `Version ${a.version}`
-                    : "Project record"}
-            </p>
-            <p className="mt-2 text-[0.9375rem]">
-              <span className="text-muted">Maintained by </span>
-              {a.maintainers.map((m, i) => (
-                <span key={m.name}>
-                  {i > 0 ? ", " : ""}
-                  {m.organization_slug && catalog.isActiveOrganization(m.organization_slug) ? (
-                    <Link prefetch={false} href={orgHref(m.organization_slug)} className="link">
-                      {m.name}
-                    </Link>
-                  ) : (
-                    <span className="text-text">{m.name}</span>
-                  )}
-                  <SourceRefs ids={m.source_ids} sources={s} />
-                </span>
-              ))}
-            </p>
-            <ClaimText claim={a.summary} sources={s} className="mt-6 max-w-3xl text-lg text-[#d5def2]" />
+            <ArtifactLead catalog={catalog} a={a} />
+            <ClaimText claim={a.summary} sources={s} className="mt-5 max-w-3xl text-lg text-[#d5def2]" />
             {a.links.length > 0 ? (
               <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.9375rem]" aria-label="Official links">
                 {a.links.map((l) => (
@@ -344,6 +329,19 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                 })}
               </ul>
             )}
+            {people.length ? (
+              <p className="mt-4 text-[0.9375rem] text-[#d5def2]">
+                <span className="text-muted">In People Behind Local SI: </span>
+                {people.map((p, i) => (
+                  <span key={p.slug}>
+                    {i > 0 ? ", " : ""}
+                    <Link prefetch={false} href={`/local/#${p.slug}`} className="link">
+                      {p.name}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            ) : null}
           </Section>
 
           {a.provenance || derivatives.length > 0 ? (

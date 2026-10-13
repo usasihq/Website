@@ -8,6 +8,8 @@ import { Monogram, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/B
 import { DeepDive } from "@/components/DeepDive";
 import { ArchivedNotice, ClaimText, EligibilityBlock, FactList, ReviewDates } from "@/components/DetailParts";
 import { EntryActions } from "@/components/EntryActions";
+import { JsonLd } from "@/components/JsonLd";
+import { OrganizationLead } from "@/components/RecordLead";
 import { ExternalLink } from "@/components/ExternalLink";
 import { Breadcrumbs, Section } from "@/components/PageHeader";
 import { SectionJump } from "@/components/SectionJump";
@@ -20,6 +22,8 @@ import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_PLURAL, OWNERSHIP_LABELS, PRODUCT_KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
+import { organizationSeo } from "@/lib/seo";
+import { organizationLd } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
 import { computeTier } from "@/lib/openness";
 import { artifactHref, orgHref } from "@/lib/routes";
@@ -34,14 +38,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const org = getCatalog().organization(slug);
+  const catalog = getCatalog();
+  const org = catalog.organization(slug);
   if (!org) return {};
+  const seo = organizationSeo(catalog, org);
   return pageMetadata({
-    title: org.name,
-    description: org.summary.text.slice(0, 200),
+    title: seo.title,
+    description: seo.description,
     path: orgHref(org.slug),
     noindex: org.publication_status === "archived",
-    image: cardImage(getCatalog(), orgHref(org.slug)),
+    image: cardImage(catalog, orgHref(org.slug)),
     feeds: org.publication_status === "archived" ? undefined : [{ path: `${orgHref(org.slug)}feed.xml`, title: `${org.name} — USASI news` }],
   });
 }
@@ -115,13 +121,15 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
     catalog.isActiveOrganization(org.slug) ? { id: "jobs", label: "Jobs" } : null,
     { id: "sources", label: "Sources" },
   ].filter((x): x is { id: string; label: string } => Boolean(x));
+  const localPeople = catalog.peopleForOrganization(org.slug);
   return (
     <>
+      <JsonLd data={organizationLd(catalog, org)} />
       {org.publication_status === "archived" && org.archive_note ? <ArchivedNotice note={org.archive_note} /> : null}
       <article>
         <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
-            <Breadcrumbs items={[{ href: "/companies/", label: "Companies & Labs" }]} />
+            <Breadcrumbs items={[{ href: "/companies/", label: "Companies & Labs" }]} current={{ href: orgHref(org.slug), label: org.name }} />
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
               <div className="min-w-0">
                 <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
@@ -129,9 +137,10 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                   <div className="min-w-0">
                     <p className="eyebrow">Organization</p>
                     <h1 className="mt-1 text-3xl font-semibold text-text sm:text-4xl">{org.name}</h1>
+                    <OrganizationLead catalog={catalog} org={org} />
                     <p className="mt-2 text-[0.9375rem] text-muted">
+                      <span className="sr-only">Documented roles: </span>
                       {org.organization_roles.map((r) => ROLE_LABELS[r]).join(" · ")}
-                      {org.headquarters ? ` · ${org.headquarters.label}` : ""}
                     </p>
                     {org.parent_org_slug && org.parent_relationship ? (
                       <p className="mt-2 text-[0.9375rem] text-ice">
@@ -205,6 +214,20 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                           </ul>
                         </div>
                       ))}
+                  </div>
+                ) : null}
+                {localPeople.length ? (
+                  <div className="mt-3 border-t border-line pt-3">
+                    <p className="text-xs uppercase tracking-[0.08em] text-muted">People Behind Local SI</p>
+                    <ul className="mt-2 space-y-1.5 text-sm">
+                      {localPeople.map((p) => (
+                        <li key={p.slug}>
+                          <Link prefetch={false} href={`/local/#${p.slug}`} className="link">
+                            {p.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ) : null}
               </aside>
