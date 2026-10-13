@@ -29,6 +29,7 @@ const COLUMNS = [
       { href: "/glossary/", label: "Glossary" },
       { href: "/faq/", label: "FAQ" },
       { href: "/policy/", label: "Policy tracker" },
+      { href: "/report/", label: "State of American AI" },
       { href: "/sources/", label: "Source library" },
     ],
   },

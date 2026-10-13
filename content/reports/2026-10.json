@@ -6,12 +6,12 @@
   "title": "The State of American AI, October 2026",
   "published": "2026-10-13",
   "data_cutoff": "2026-10-13",
-  "generated_at": "2026-10-13T14:17:03.281Z",
-  "jobs_checked_at": "2026-10-13T11:12:27.314Z",
+  "generated_at": "2026-10-13T15:02:03.205Z",
+  "jobs_checked_at": "2026-10-13T14:04:38.762Z",
   "inputs": {
-    "catalog_digest": "466de18062e4490c26c481893daf9b19c1e670db58e9a435d1523bec01c7d2ee",
-    "jobs_digest": "331586ee1889568bfcc6c41a83d5d94e63afb274b4e2f05e3ed8343240a176c2",
-    "git_commit": "5e7e0b4630975be776041cbe84ef1ef1fee1e395",
+    "catalog_digest": "c78d5cf06ce224832d10f3c1cf8e4f2d2cb12bb99b73d6db4f1c1d8c72378831",
+    "jobs_digest": "4ce733937c8282459a6ac7122b48b07a126d1aa7bcb43e84d05432fdc892960c",
+    "git_commit": "d43bb551528c7e162b672670ece11c0de849f1f9",
     "content_clean": true,
     "schema_version": "0.2.0",
     "rubric_version": "0.2"
@@ -85,37 +85,37 @@
     {
       "key": "finder_configurations",
       "label": "Documented configurations",
-      "value": 17,
+      "value": 29,
       "section": "local"
     },
     {
       "key": "local_configurations",
       "label": "Local configurations",
-      "value": 9,
+      "value": 21,
       "section": "local"
     },
     {
       "key": "local_with_memory_figure",
       "label": "Local configurations with a publisher memory figure",
-      "value": 5,
+      "value": 17,
       "section": "local"
     },
     {
       "key": "job_listings",
       "label": "Current job listings",
-      "value": 5232,
+      "value": 7305,
       "section": "jobs"
     },
     {
       "key": "job_employers",
       "label": "Employers with current listings",
-      "value": 44,
+      "value": 64,
       "section": "jobs"
     },
     {
       "key": "job_listings_remote",
       "label": "Current listings marked remote",
-      "value": 478,
+      "value": 621,
       "section": "jobs"
     },
     {
@@ -1294,16 +1294,16 @@
       "id": "finder-runs",
       "section": "local",
       "title": "Documented configurations by where they run",
-      "caption": "The 17 configurations in the finder, by where the model runs.",
+      "caption": "The 29 configurations in the finder, by where the model runs.",
       "counted": "A configuration is one documented way to do a task: a specific combination of model, runtime, app, or hosted service, with requirements restated from the publisher's own documentation. Local: runs on your own computer. Hybrid: a tool on your computer that sends requests to a hosted model. Hosted: runs on the provider's servers. Rows add up to the total.",
       "unit": "configurations",
-      "universe": 17,
+      "universe": 29,
       "overlapping": false,
       "rows": [
         {
           "key": "local",
           "label": "Local",
-          "count": 9
+          "count": 21
         },
         {
           "key": "hybrid",
@@ -1323,26 +1323,41 @@
       "id": "local-memory",
       "section": "local",
       "title": "Memory the publisher documents",
-      "caption": "The 9 local configurations by the memory figure their publisher states.",
+      "caption": "The 21 local configurations by the memory figure their publisher states.",
       "counted": "The publisher's own memory statement for the exact variant named on each configuration, as recorded with its source. Graphics-memory (VRAM) and system-memory figures are kept apart, because they describe different memory. A figure is the publisher's estimate, not a USASI test, unless the record documents a test. Configurations without a stated figure are counted in the last row. Rows add up to the total.",
       "unit": "local configurations",
-      "universe": 9,
+      "universe": 21,
       "overlapping": false,
       "rows": [
         {
           "key": "vram-8",
           "label": "Graphics memory (VRAM): 8 GB or less",
+          "count": 4
+        },
+        {
+          "key": "vram-16",
+          "label": "Graphics memory (VRAM): more than 8, up to 16 GB",
+          "count": 4
+        },
+        {
+          "key": "vram-more",
+          "label": "Graphics memory (VRAM): more than 16 GB",
           "count": 2
         },
         {
           "key": "system-8",
           "label": "System memory: 8 GB or less",
-          "count": 1
+          "count": 4
         },
         {
           "key": "system-16",
           "label": "System memory: more than 8, up to 16 GB",
           "count": 2
+        },
+        {
+          "key": "system-more",
+          "label": "System memory: more than 16 GB",
+          "count": 1
         },
         {
           "key": "none",
@@ -1360,53 +1375,53 @@
       "caption": "How many local configurations fit each amount of graphics memory or Apple silicon unified memory.",
       "counted": "The same rule as the Local AI by memory pages: a configuration is listed when every finder requirement is met and the publisher's figure is within the amount. A configuration that fits 8 GB also fits larger amounts, so rows overlap; shares are out of all local configurations.",
       "unit": "local configurations",
-      "universe": 9,
+      "universe": 21,
       "overlapping": true,
       "rows": [
         {
           "key": "8gb-vram",
           "label": "8 GB of VRAM",
-          "count": 2
+          "count": 3
         },
         {
           "key": "12gb-vram",
           "label": "12 GB of VRAM",
-          "count": 2
+          "count": 5
         },
         {
           "key": "16gb-vram",
           "label": "16 GB of VRAM",
-          "count": 2
+          "count": 6
         },
         {
           "key": "24gb-vram",
           "label": "24 GB of VRAM",
-          "count": 2
+          "count": 7
         },
         {
           "key": "8gb-apple-silicon",
           "label": "8 GB of Apple silicon unified memory",
-          "count": 2
+          "count": 6
         },
         {
           "key": "16gb-apple-silicon",
           "label": "16 GB of Apple silicon unified memory",
-          "count": 4
+          "count": 11
         },
         {
           "key": "24gb-apple-silicon",
           "label": "24 GB of Apple silicon unified memory",
-          "count": 4
+          "count": 13
         },
         {
           "key": "32gb-apple-silicon",
           "label": "32 GB of Apple silicon unified memory",
-          "count": 4
+          "count": 14
         },
         {
           "key": "64gb-apple-silicon",
           "label": "64 GB of Apple silicon unified memory",
-          "count": 4
+          "count": 14
         }
       ]
     },
@@ -1416,31 +1431,31 @@
       "id": "jobs-geography",
       "section": "jobs",
       "title": "Current job listings by location",
-      "caption": "The 5,232 current listings by where their locations are.",
+      "caption": "The 7,305 current listings by where their locations are.",
       "counted": "Listings from employers' own job feeds that were open and confirmed within 48 hours of the snapshot time, the Jobs directory's default view. Applications are on employers' sites; job data are refreshed daily, so these counts are frozen with the edition. Locations are read from the employer's text without geocoding. U.S. locations only: names the United States or a U.S. state and no place outside it. U.S. and elsewhere: names both. Outside the U.S. only: names only places outside it. Not determinable: gives nothing the rules can place (for example a city without a state). Rows add up to the total.",
       "unit": "job listings",
-      "universe": 5232,
+      "universe": 7305,
       "overlapping": false,
       "rows": [
         {
           "key": "us-only",
           "label": "U.S. locations only",
-          "count": 3728
+          "count": 5141
         },
         {
           "key": "both",
           "label": "U.S. and elsewhere",
-          "count": 152
+          "count": 162
         },
         {
           "key": "outside-only",
           "label": "Outside the U.S. only",
-          "count": 795
+          "count": 1403
         },
         {
           "key": "unclear",
           "label": "Not determinable",
-          "count": 557
+          "count": 599
         }
       ]
     },
@@ -1453,33 +1468,33 @@
       "caption": "Current listings with a location that names each U.S. state.",
       "counted": "A listing counts in a state when one of its employer-supplied locations names it: a postal code after a city (“Atlanta, GA”), the full state name, “New York City” or “NYC”, or “Washington, DC”. This is the rule of the Jobs by state pages. A listing that names several states counts in each, and listings that also name places outside the U.S. are included, so rows overlap. Locations that give only a city or only the country name no state and are not counted here.",
       "unit": "job listings",
-      "universe": 5232,
+      "universe": 7305,
       "overlapping": true,
       "rows": [
         {
           "key": "CA",
           "label": "California",
-          "count": 1726
+          "count": 2275
         },
         {
           "key": "NY",
           "label": "New York",
-          "count": 1141
+          "count": 1468
         },
         {
           "key": "WA",
           "label": "Washington",
-          "count": 474
+          "count": 558
         },
         {
           "key": "TX",
           "label": "Texas",
-          "count": 206
+          "count": 238
         },
         {
           "key": "DC",
           "label": "Washington, D.C.",
-          "count": 183
+          "count": 229
         },
         {
           "key": "TN",
@@ -1489,12 +1504,12 @@
         {
           "key": "CO",
           "label": "Colorado",
-          "count": 127
+          "count": 147
         },
         {
           "key": "NJ",
           "label": "New Jersey",
-          "count": 127
+          "count": 134
         },
         {
           "key": "MS",
@@ -1504,32 +1519,47 @@
         {
           "key": "MA",
           "label": "Massachusetts",
-          "count": 45
+          "count": 68
         },
         {
           "key": "GA",
           "label": "Georgia",
-          "count": 41
-        },
-        {
-          "key": "PA",
-          "label": "Pennsylvania",
-          "count": 24
-        },
-        {
-          "key": "OR",
-          "label": "Oregon",
-          "count": 22
-        },
-        {
-          "key": "MO",
-          "label": "Missouri",
-          "count": 20
+          "count": 55
         },
         {
           "key": "IL",
           "label": "Illinois",
-          "count": 17
+          "count": 52
+        },
+        {
+          "key": "PA",
+          "label": "Pennsylvania",
+          "count": 38
+        },
+        {
+          "key": "OR",
+          "label": "Oregon",
+          "count": 30
+        },
+        {
+          "key": "VA",
+          "label": "Virginia",
+          "count": 25
+        },
+        {
+          "key": "MO",
+          "label": "Missouri",
+          "count": 23
+        },
+        {
+          "key": "NC",
+          "label": "North Carolina",
+          "count": 16
+        },
+        {
+          "key": "AZ",
+          "label": "Arizona",
+          "count": 15
         },
         {
           "key": "OK",
@@ -1537,8 +1567,23 @@
           "count": 12
         },
         {
+          "key": "MD",
+          "label": "Maryland",
+          "count": 10
+        },
+        {
+          "key": "MI",
+          "label": "Michigan",
+          "count": 9
+        },
+        {
           "key": "NV",
           "label": "Nevada",
+          "count": 9
+        },
+        {
+          "key": "OH",
+          "label": "Ohio",
           "count": 6
         },
         {
@@ -1552,13 +1597,18 @@
           "count": 5
         },
         {
-          "key": "NC",
-          "label": "North Carolina",
-          "count": 5
+          "key": "AL",
+          "label": "Alabama",
+          "count": 4
         },
         {
-          "key": "OH",
-          "label": "Ohio",
+          "key": "CT",
+          "label": "Connecticut",
+          "count": 4
+        },
+        {
+          "key": "FL",
+          "label": "Florida",
           "count": 4
         },
         {
@@ -1567,23 +1617,23 @@
           "count": 4
         },
         {
-          "key": "FL",
-          "label": "Florida",
-          "count": 3
-        },
-        {
           "key": "LA",
           "label": "Louisiana",
           "count": 3
         },
         {
-          "key": "MI",
-          "label": "Michigan",
-          "count": 3
+          "key": "DE",
+          "label": "Delaware",
+          "count": 2
         },
         {
-          "key": "AZ",
-          "label": "Arizona",
+          "key": "IN",
+          "label": "Indiana",
+          "count": 2
+        },
+        {
+          "key": "MN",
+          "label": "Minnesota",
           "count": 2
         },
         {
@@ -1592,33 +1642,23 @@
           "count": 2
         },
         {
-          "key": "VA",
-          "label": "Virginia",
+          "key": "UT",
+          "label": "Utah",
           "count": 2
         },
         {
-          "key": "AL",
-          "label": "Alabama",
+          "key": "NH",
+          "label": "New Hampshire",
           "count": 1
         },
         {
-          "key": "CT",
-          "label": "Connecticut",
+          "key": "RI",
+          "label": "Rhode Island",
           "count": 1
         },
         {
-          "key": "IN",
-          "label": "Indiana",
-          "count": 1
-        },
-        {
-          "key": "MN",
-          "label": "Minnesota",
-          "count": 1
-        },
-        {
-          "key": "UT",
-          "label": "Utah",
+          "key": "WV",
+          "label": "West Virginia",
           "count": 1
         }
       ]
@@ -1629,31 +1669,46 @@
       "id": "jobs-employers",
       "section": "jobs",
       "title": "Current job listings by employer",
-      "caption": "Current listings by the organization whose job feed published them (44 employers).",
+      "caption": "Current listings by the organization whose job feed published them (64 employers).",
       "counted": "Each listing counts once, for the organization whose official job feed published it. Only organizations whose feed the site reads are included. Counts describe open postings at one moment, not company size, growth, or hiring trends. Rows add up to the total.",
       "unit": "job listings",
-      "universe": 5232,
+      "universe": 7305,
       "overlapping": false,
       "rows": [
         {
+          "key": "databricks",
+          "label": "Databricks",
+          "count": 897
+        },
+        {
           "key": "openai",
           "label": "OpenAI",
-          "count": 808
+          "count": 807
         },
         {
           "key": "anthropic",
           "label": "Anthropic",
-          "count": 642
+          "count": 646
         },
         {
           "key": "cloudflare",
           "label": "Cloudflare",
-          "count": 434
+          "count": 436
+        },
+        {
+          "key": "waymo",
+          "label": "Waymo",
+          "count": 369
         },
         {
           "key": "crusoe",
           "label": "Crusoe",
           "count": 352
+        },
+        {
+          "key": "harvey",
+          "label": "Harvey",
+          "count": 348
         },
         {
           "key": "coreweave",
@@ -1683,6 +1738,11 @@
         {
           "key": "glean",
           "label": "Glean",
+          "count": 135
+        },
+        {
+          "key": "perplexity",
+          "label": "Perplexity",
           "count": 134
         },
         {
@@ -1719,6 +1779,16 @@
           "key": "lambda",
           "label": "Lambda",
           "count": 91
+        },
+        {
+          "key": "vercel",
+          "label": "Vercel",
+          "count": 90
+        },
+        {
+          "key": "fireworks-ai",
+          "label": "Fireworks AI",
+          "count": 83
         },
         {
           "key": "apptronik",
@@ -1783,7 +1853,7 @@
         {
           "key": "modal",
           "label": "Modal",
-          "count": 41
+          "count": 40
         },
         {
           "key": "physical-intelligence",
@@ -1801,6 +1871,11 @@
           "count": 35
         },
         {
+          "key": "prime-intellect",
+          "label": "Prime Intellect",
+          "count": 33
+        },
+        {
           "key": "cartesia",
           "label": "Cartesia",
           "count": 28
@@ -1816,9 +1891,19 @@
           "count": 22
         },
         {
+          "key": "chai-discovery",
+          "label": "Chai Discovery",
+          "count": 21
+        },
+        {
           "key": "anyscale",
           "label": "Anyscale",
           "count": 20
+        },
+        {
+          "key": "profluent",
+          "label": "Profluent",
+          "count": 16
         },
         {
           "key": "ai2",
@@ -1831,6 +1916,21 @@
           "count": 14
         },
         {
+          "key": "character-ai",
+          "label": "Character.AI",
+          "count": 13
+        },
+        {
+          "key": "biohub",
+          "label": "Biohub (Chan Zuckerberg Biohub)",
+          "count": 12
+        },
+        {
+          "key": "center-for-ai-safety",
+          "label": "Center for AI Safety (CAIS)",
+          "count": 12
+        },
+        {
           "key": "world-labs",
           "label": "World Labs",
           "count": 11
@@ -1841,14 +1941,54 @@
           "count": 10
         },
         {
+          "key": "typesafe-ai",
+          "label": "TypeSafe AI",
+          "count": 10
+        },
+        {
           "key": "reka",
           "label": "Reka",
           "count": 9
         },
         {
+          "key": "llamaindex",
+          "label": "LlamaIndex",
+          "count": 8
+        },
+        {
           "key": "weights-and-biases",
           "label": "Weights & Biases",
           "count": 8
+        },
+        {
+          "key": "element-labs",
+          "label": "Element Labs",
+          "count": 6
+        },
+        {
+          "key": "inflection-ai",
+          "label": "Inflection AI",
+          "count": 6
+        },
+        {
+          "key": "genmo",
+          "label": "Genmo",
+          "count": 5
+        },
+        {
+          "key": "cline",
+          "label": "Cline",
+          "count": 2
+        },
+        {
+          "key": "poolside",
+          "label": "Poolside",
+          "count": 2
+        },
+        {
+          "key": "all-hands-ai",
+          "label": "All Hands AI (OpenHands)",
+          "count": 1
         },
         {
           "key": "imbue",
@@ -1866,23 +2006,23 @@
       "caption": "Current listings that are remote, and whether a remote listing names only U.S. places.",
       "counted": "Remote: the employer marks the workplace as remote, or a listed location says “Remote” (for example “Remote - US”). Remote, U.S. locations only: also names only U.S. places, the rule of the Remote jobs, U.S. locations page. Rows add up to the total.",
       "unit": "job listings",
-      "universe": 5232,
+      "universe": 7305,
       "overlapping": false,
       "rows": [
         {
           "key": "remote-us",
           "label": "Remote, U.S. locations only",
-          "count": 308
+          "count": 423
         },
         {
           "key": "remote-other",
           "label": "Remote, other or mixed locations",
-          "count": 170
+          "count": 198
         },
         {
           "key": "not-remote",
           "label": "Not marked remote",
-          "count": 4754
+          "count": 6684
         }
       ]
     },
@@ -2022,13 +2162,13 @@
     {
       "id": "local-ai",
       "table": "local-memory",
-      "text": "9 of 17 documented configurations run on your own computer; 5 of those state a publisher memory figure, from 2 GB to 16 GB.",
+      "text": "21 of 29 documented configurations run on your own computer; 17 of those state a publisher memory figure, from 2 GB to 26 GB.",
       "definition": "Configurations: the finder's documented combinations of model, runtime, app, or service. Memory figure: the publisher's own statement for the named variant, not a USASI test."
     },
     {
       "id": "jobs",
       "table": "jobs-geography",
-      "text": "5,232 job listings from 44 employers were current at the snapshot; 9% are marked remote, and 71% list U.S. locations only.",
+      "text": "7,305 job listings from 64 employers were current at the snapshot; 9% are marked remote, and 70% list U.S. locations only.",
       "definition": "Current: open in the employer's own job feed and confirmed within 48 hours of the snapshot. Remote: marked remote by the employer or with a location that says “Remote”."
     }
   ],
@@ -2467,13 +2607,25 @@
       "github-copilot-vscode",
       "google-cloud-speech-to-text",
       "goose-ollama-granite-4-2-8b",
+      "llama-cpp-gemma-4-12b-qat",
+      "llama-cpp-gemma-4-26b-a4b-qat",
+      "llama-cpp-llama-3-1-8b-q4-k-m",
+      "llama-cpp-muse-glimmer-30b",
       "llamafile-gpt-oss-20b",
       "lm-studio-gemma-4-12b-qat",
+      "lm-studio-gemma-4-31b-qat",
+      "lm-studio-gpt-oss-20b",
+      "lm-studio-muse-glimmer-30b",
+      "lm-studio-olmo-3-7b-instruct",
+      "lm-studio-rnj-1-instruct",
       "microsoft-copilot-file-upload",
       "ollama-app-gpt-oss-20b",
       "open-webui-ollama-granite-4-2-8b",
       "openai-speech-to-text-api",
       "parakeet-tdt-0-6b-v3-nemo",
+      "starcoder2-15b-transformers-4bit",
+      "starcoder2-3b-transformers",
+      "whisper-large-v3-local",
       "whisper-turbo-local"
     ],
     "policy": [
