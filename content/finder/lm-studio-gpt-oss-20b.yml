@@ -30,15 +30,16 @@ accelerators:
   values: [apple-silicon, cpu-only]
   source_ids: [lms-sysreq, lms-docs]
 memory:
-  variant: gpt-oss-20b with MXFP4-quantized MoE weights (LM Studio model openai/gpt-oss-20b)
+  variant: LM Studio's openai/gpt-oss-20b entry (lmstudio-community gpt-oss-20b-MXFP4.gguf, or mlx-community MXFP4-Q8)
   gpu_gb: 16
   system_gb: null
   statement:
     text: >-
       OpenAI's guide to running gpt-oss with LM Studio says gpt-oss-20b only requires at least 16GB
       of VRAM, and OpenAI's model card says MXFP4 quantization of the MoE weights lets it run within
-      16GB of memory. LM Studio's catalog page for openai/gpt-oss-20b lists a minimum system memory
-      of 12 GB.
+      16GB of memory. LM Studio's catalog page for openai/gpt-oss-20b, based on
+      lmstudio-community/gpt-oss-20b-GGUF and mlx-community/gpt-oss-20b-MXFP4-Q8, lists a minimum
+      system memory of 12 GB.
     reviewed_at: 2026-10-13
     source_ids: [oai-cookbook-lmstudio, gptoss20b-card, lms-cat-gptoss20b]
 skill: beginner

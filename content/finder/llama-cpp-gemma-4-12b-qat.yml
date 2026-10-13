@@ -82,7 +82,8 @@ limitations:
 unverified:
   - USASI has not tested this configuration.
   - Google's memory figure excludes the context window; total memory at the context size llama-server chooses on your hardware is not documented.
-  - llama.cpp's multimodal page lists Gemma 4 E2B, E4B, 26B A4B, and 31B for image input but not 12B, so image input with this file is not established here.
+  - Google's repository also holds an mmproj file for 12B, but llama.cpp's multimodal page lists Gemma 4 E2B, E4B, 26B A4B, and 31B for image input and not 12B, so image input is not established here.
+  - Google's table does not name this file; the GGUF in Google's repository is 6,975,879,296 bytes on its own (Hugging Face metadata), slightly more than the table's approximate 6.7 GB.
   - Which pre-built llama.cpp packages include AMD or Intel GPU support is not established here.
 tested: null
 publication_status: published

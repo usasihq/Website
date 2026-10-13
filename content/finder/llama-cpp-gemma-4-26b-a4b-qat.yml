@@ -71,7 +71,8 @@ limitations:
     source_ids: [lcpp-server]
   - text: >-
       The server README describes multimodal (image) support as an experimental feature;
-      llama.cpp's multimodal page lists Gemma 4 26B A4B among the supported vision models.
+      llama.cpp's multimodal page lists ggml-org's Gemma 4 26B A4B GGUF among its pre-quantized
+      vision models, not Google's QAT build used here.
     reviewed_at: 2026-10-13
     source_ids: [lcpp-server, lcpp-multimodal]
   - text: >-
@@ -89,6 +90,7 @@ unverified:
   - USASI has not tested this configuration.
   - Google's figure covers the model weights only; memory for the image projector and for the context size llama-server chooses is not documented.
   - Google notes its memory numbers may change with the inference tool and environment.
+  - Google's table does not name this file; the GGUF in Google's repository is 14,439,363,584 bytes on its own (Hugging Face metadata), about the same as the table's approximate 14.4 GB.
   - Which pre-built llama.cpp packages include AMD or Intel GPU support is not established here.
 tested: null
 publication_status: published

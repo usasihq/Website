@@ -4,7 +4,7 @@ tasks: [write-code]
 runs: local
 summary:
   text: >-
-    StarCoder2-15B is the largest StarCoder2 code model from the BigCode project, trained on 600+
+    StarCoder2-15B is a 15-billion-parameter code model from the BigCode project, trained on 600+
     programming languages with a fill-in-the-middle objective. Its model card shows loading it with
     Hugging Face Transformers and bitsandbytes 8-bit or 4-bit quantization and generating the
     continuation of a piece of code on a CUDA GPU.
@@ -35,13 +35,15 @@ accelerators:
   source_ids: [sc2-15b-card, bnb-install]
 memory:
   variant: starcoder2-15b loaded with bitsandbytes 4-bit quantization (load_in_4bit) in Transformers
-  gpu_gb: 9.2
+  gpu_gb: 9.23
   system_gb: null
   statement:
     text: >-
-      The model card reports a memory footprint of 9,224.60 MB (about 9.2 GB) for the model loaded
-      with bitsandbytes 4-bit quantization, as printed by Transformers' get_memory_footprint. It
-      lists 16,900.18 MB with 8-bit quantization and 32,251.33 MB in torch.bfloat16.
+      The model card reports a memory footprint of 9,224.60 MB (about 9.2 GB) after loading the
+      model with bitsandbytes 4-bit quantization, as printed by Transformers' get_memory_footprint.
+      This is a footprint the card printed, not a stated minimum; the card states no memory
+      requirement. It also lists 16,900.18 MB with 8-bit quantization and 32,251.33 MB in
+      torch.bfloat16.
     reviewed_at: 2026-10-13
     source_ids: [sc2-15b-card]
 skill: advanced

@@ -26,14 +26,15 @@ accelerators:
   values: [nvidia, amd, apple-silicon, intel, cpu-only]
   source_ids: [lcpp-readme]
 memory:
-  variant: Llama 3.1 8B quantized to Q4_K_M with llama-quantize
+  variant: Llama 3.1 8B Instruct quantized to Q4_K_M with llama-quantize (llama-3.1-8b-instruct-Q4_K_M.gguf)
   gpu_gb: null
   system_gb: 4.9
   statement:
     text: >-
-      llama.cpp's quantize README says models are currently fully loaded into memory, so you need
-      sufficient RAM to load them and memory and disk requirements are the same. Its example table
-      gives 4.9 GB for Llama 3.1 8B quantized to Q4_K_M, against 32.1 GB at its original size.
+      llama.cpp's quantize README gives no memory figure of its own for running this file. Its
+      example table lists 4.9 GB as the quantized size (Q4_K_M) of Llama 3.1 8B, a file size,
+      against an original size of 32.1 GB, and it says that because models are currently fully
+      loaded into memory, memory and disk requirements are the same.
     reviewed_at: 2026-10-13
     source_ids: [lcpp-quant]
 skill: advanced
@@ -65,8 +66,9 @@ getting_started:
 getting_started_source_ids: [l31-instruct-api, lcpp-quant, lcpp-server]
 limitations:
   - text: >-
-      The quantize README says to make sure you have enough disk space for the intermediate files
-      that conversion and quantization create.
+      The quantize README asks for enough disk space for the intermediate files and, because models
+      are fully loaded into memory, sufficient RAM to load them; it gives no memory figure for the
+      conversion and quantization steps, which start from the unquantized model.
     reviewed_at: 2026-10-13
     source_ids: [lcpp-quant]
   - text: >-
@@ -87,7 +89,7 @@ limitations:
     source_ids: [lcpp-server]
 unverified:
   - USASI has not tested this configuration.
-  - The README's 4.9 GB is given for Llama 3.1 8B in general; its detailed size table was measured on the pretrained meta-llama/Llama-3.1-8B, not the Instruct model.
+  - The 4.9 GB is a file size for Llama 3.1 8B in general, not a measured memory use; the README's detailed table (4.58 GiB at Q4_K_M) was measured on the pretrained Llama-3.1-8B, not the Instruct model.
   - The README does not say how much memory the context window adds on top of the model file.
   - Which pre-built llama.cpp packages include AMD or Intel GPU support is not established here.
 tested: null

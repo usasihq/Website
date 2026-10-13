@@ -84,6 +84,7 @@ unverified:
   - USASI has not tested this configuration.
   - Speed on your hardware is not documented; the README's relative speeds were measured on an A100 GPU.
   - Acceleration on AMD, Intel, or Apple GPUs is not documented in the Whisper repository.
+  - The ~10 GB figure is stated as VRAM; on a Mac the package picks the CPU (it checks only for CUDA) and uses FP32, and memory use there is not documented.
 tested: null
 publication_status: published
 updated_at: 2026-10-13

@@ -86,7 +86,7 @@ limitations:
     source_ids: [lms-terms]
 unverified:
   - USASI has not tested this configuration.
-  - LM Studio's page does not say which download option its 6 GB minimum refers to; the larger Q6_K and Q8_0 files may need more memory.
+  - LM Studio's page does not say which download option its 6 GB minimum refers to; the Q6_K and Q8_0 files alone are 6,826,763,264 and 8,839,332,864 bytes (Hugging Face file listing), so the minimum cannot cover them.
   - How well Rnj-1 works with a coding tool connected to LM Studio's local server is not documented.
   - LM Studio's pages reviewed do not name supported NVIDIA, AMD, or Intel graphics on Windows or Linux, so GPU acceleration on those cards is not established here.
 tested: null
@@ -144,8 +144,8 @@ sources:
     published_at: null
     accessed_at: 2026-10-13
   - id: rnj-lmsc-api
-    title: lmstudio-community/rnj-1-instruct-GGUF repository metadata (Hugging Face API)
-    url: https://huggingface.co/api/models/lmstudio-community/rnj-1-instruct-GGUF
+    title: lmstudio-community/rnj-1-instruct-GGUF repository metadata and file sizes (Hugging Face API)
+    url: https://huggingface.co/api/models/lmstudio-community/rnj-1-instruct-GGUF?blobs=true
     publisher: Hugging Face
     kind: other
     published_at: null

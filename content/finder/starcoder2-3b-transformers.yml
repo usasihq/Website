@@ -31,12 +31,13 @@ accelerators:
   source_ids: [sc2-3b-card, pytorch-start]
 memory:
   variant: starcoder2-3b loaded in torch.bfloat16 with Transformers
-  gpu_gb: 6.3
+  gpu_gb: 6.32
   system_gb: null
   statement:
     text: >-
-      The model card reports a memory footprint of 6,312.41 MB (about 6.3 GB) for the model loaded
-      in torch.bfloat16 for a CUDA GPU, as printed by Transformers' get_memory_footprint. It lists
+      The model card reports a memory footprint of 6,312.41 MB (about 6.3 GB) after loading the
+      model in torch.bfloat16, as printed by Transformers' get_memory_footprint. This is a footprint
+      the card printed, not a stated minimum; the card states no memory requirement. It also lists
       12,624.81 MB in full precision, 3,434.07 MB with 8-bit and 1,994.90 MB with 4-bit
       bitsandbytes quantization.
     reviewed_at: 2026-10-13

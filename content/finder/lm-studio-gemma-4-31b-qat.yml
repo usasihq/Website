@@ -64,7 +64,7 @@ data_location:
   source_ids: [lms-offline]
 getting_started:
   - "Check the system requirements, then download and install LM Studio for your operating system."
-  - "In the Discover tab, search for google/gemma-4-31B-it-qat-q4_0-gguf; LM Studio's search accepts a user/model string or a Hugging Face URL. Download it."
+  - "In the Discover tab, search for google/gemma-4-31B-it-qat-q4_0-gguf (search accepts a user/model string or a Hugging Face URL) and download that repository, not the catalog entry google/gemma-4-31b-qat."
   - "In the Chat tab, open the model loader and select the downloaded model."
   - "To work with documents, attach .docx, .pdf, or .txt files to a chat message."
 getting_started_source_ids: [lms-sysreq, lms-download, lms-basics, lms-rag]
@@ -76,8 +76,9 @@ limitations:
     reviewed_at: 2026-10-13
     source_ids: [lms-sysreq]
   - text: >-
-      LM Studio's own catalog entry for a QAT build of this model (google/gemma-4-31b-qat) lists a
-      minimum system memory of 19 GB, above Google's weights-only figure.
+      LM Studio's own catalog entry google/gemma-4-31b-qat, which is based on a different download
+      (lmstudio-community/gemma-4-31B-it-QAT-GGUF), lists a minimum system memory of 19 GB, above
+      Google's weights-only figure for its own GGUF.
     reviewed_at: 2026-10-13
     source_ids: [lms-cat-gemma31-qat]
   - text: >-
@@ -95,6 +96,7 @@ unverified:
   - LM Studio's pages reviewed do not name supported NVIDIA, AMD, or Intel graphics on Windows or Linux, so GPU acceleration on those cards is not established here.
   - Google's memory figure excludes the context window; total memory at the context length you choose is not documented.
   - Whether LM Studio loads Google's separate image projector file for this GGUF is not documented in the pages reviewed.
+  - Google's table does not name this file; the GGUF in Google's repository is 17,651,001,568 bytes on its own (Hugging Face metadata), slightly more than the table's approximate 17.5 GB.
 tested: null
 publication_status: published
 updated_at: 2026-10-13

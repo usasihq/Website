@@ -95,7 +95,7 @@ limitations:
     source_ids: [lms-terms]
 unverified:
   - USASI has not tested this configuration.
-  - LM Studio's page does not say which download option its 6 GB minimum refers to; the larger Q8_0 and 8-bit files may need more memory.
+  - LM Studio's page does not say which download option its 6 GB minimum refers to; the Q8_0 GGUF alone is 7,759,251,776 bytes (Hugging Face file listing), so the minimum cannot cover that file.
   - LM Studio's pages reviewed do not name supported NVIDIA, AMD, or Intel graphics on Windows or Linux, so GPU acceleration on those cards is not established here.
 tested: null
 publication_status: published
@@ -159,8 +159,8 @@ sources:
     published_at: null
     accessed_at: 2026-10-13
   - id: olmo-lmsc-api
-    title: lmstudio-community/Olmo-3-7B-Instruct-GGUF repository metadata (Hugging Face API)
-    url: https://huggingface.co/api/models/lmstudio-community/Olmo-3-7B-Instruct-GGUF
+    title: lmstudio-community/Olmo-3-7B-Instruct-GGUF repository metadata and file sizes (Hugging Face API)
+    url: https://huggingface.co/api/models/lmstudio-community/Olmo-3-7B-Instruct-GGUF?blobs=true
     publisher: Hugging Face
     kind: other
     published_at: null
