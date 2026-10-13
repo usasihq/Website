@@ -4,6 +4,7 @@ import { BackToTop } from "@/components/BackToTop";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { PrintFooter } from "@/components/PrintFooter";
+import { INDEX_ROBOTS } from "@/lib/metadata";
 import { absoluteUrl, asset } from "@/lib/paths";
 import { SITE_URL, BASE_PATH, siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -50,6 +51,7 @@ export const metadata: Metadata = {
     "An independent, sourced directory of U.S. AI organizations and U.S.-led open models and tools. Not a United States government website.",
   applicationName: siteConfig.shortName,
   alternates: { canonical: absoluteUrl("/") },
+  robots: INDEX_ROBOTS,
   formatDetection: { telephone: false, address: false, email: false },
 };
 
