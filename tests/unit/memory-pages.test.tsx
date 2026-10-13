@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
 import { assess, DEFAULT_INPUT, findConfigs, memoryVerdict, parseInput } from "@/lib/finder";
-import { finderHref, MEMORY_PAGES, memoryPage, memoryPageAnswer, memoryPageInput, memoryPageResults, memoryPageTitle } from "@/lib/hardware";
+import { finderHref, MEMORY_PAGES, memoryPage, memoryPageAnswer, memoryPageCandidates, memoryPageInput, memoryPageResults, memoryPageTitle } from "@/lib/hardware";
 import { cardImage, pageCards } from "@/lib/page-cards";
 import { referenceSearchEntries } from "@/lib/reference-search";
 import { FINDER_TASKS, FinderConfig } from "@/lib/schema";
@@ -69,7 +69,7 @@ describe("memory pages use the finder's own fit logic", () => {
     for (const p of MEMORY_PAGES) {
       const listed = memoryPageResults(catalog.finder, p).fits;
       for (const task of FINDER_TASKS) {
-        const fromFinder = findConfigs(catalog.finder, memoryPageInput(p, task)).filter((a) => a.fit === "match" && a.memory.kind === "fits");
+        const fromFinder = findConfigs(memoryPageCandidates(catalog.finder, p), memoryPageInput(p, task)).filter((a) => a.fit === "match" && a.memory.kind === "fits");
         expect(slugs(listed.filter((e) => e.config.tasks.includes(task))), `${p.slug} ${task}`).toEqual(slugs(fromFinder));
       }
       for (const e of listed) {
@@ -180,6 +180,17 @@ describe("memory page indexing", () => {
     for (const kind of ["vram", "unified"] as const) {
       const keys = indexed.filter((p) => p.kind === kind).map((p) => memoryPageResults(catalog.finder, p).fits.map((e) => e.config.slug).sort().join("|"));
       expect(new Set(keys).size).toBe(keys.length);
+    }
+  });
+});
+
+describe("VRAM pages and graphics hardware", () => {
+  it("never list a configuration documented only for Apple silicon or the processor", async () => {
+    const { MEMORY_PAGES: pages, memoryPageResults: results } = await import("@/lib/hardware");
+    for (const p of pages.filter((q) => q.kind === "vram")) {
+      for (const e of results(catalog.finder, p).fits) {
+        expect(e.config.accelerators.values.some((v) => ["nvidia", "amd", "intel"].includes(v)), `${p.slug} ${e.config.slug}`).toBe(true);
+      }
     }
   });
 });
