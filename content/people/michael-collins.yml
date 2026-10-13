@@ -1,0 +1,88 @@
+slug: michael-collins
+name: Michael Collins
+initials: MC
+groups: [engineering]
+specialties: [language-models, ml-theory, evaluation]
+headline: Natural language processing researcher with a Google Research profile; former MIT faculty member
+bio:
+  text: >-
+    Michael Collins works on natural language processing and machine learning; Google Research's
+    profile describes a focus on statistical parsing, structured prediction, and applications such as
+    machine translation, dialog systems, and speech recognition, and notes that Collins is a fellow of
+    the Association for Computational Linguistics. Collins's Columbia homepage, which lists teaching
+    through Spring 2020, says Collins was a researcher at AT&T Labs-Research from 1999 to 2002 and an
+    assistant and then associate professor at MIT from 2003 to 2010, joined Columbia University in
+    January 2011, and is also a research scientist at Google. Collins is listed with Google DeepMind on
+    InfAlign, an ICML 2025 paper on inference-aware language model alignment, and is a co-author of
+    Measuring Attribution in Natural Language Generation Models, which presents the Attributable to
+    Identified Sources (AIS) evaluation framework. Collins also publishes lecture notes on statistical
+    NLP topics on the Columbia homepage.
+  source_ids: [collins-site, google-profile, infalign-paper, ais-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google
+    organization_slug: google
+    role: Research scientist
+    current: false
+    source_ids: [collins-site, google-profile, infalign-paper]
+  - name: Massachusetts Institute of Technology
+    organization_slug: mit
+    role: Assistant/associate professor (January 2003 – December 2010)
+    current: false
+    source_ids: [collins-site]
+work:
+  - name: Measuring Attribution in Natural Language Generation Models (AIS)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2112.12870
+    contribution: >-
+      Co-author of the paper that defines the Attributable to Identified Sources (AIS) framework and a
+      two-stage annotation pipeline for judging whether generated text is supported by underlying
+      sources; the Google Research profile lists the work among Collins's publications.
+    source_ids: [ais-paper, google-profile]
+  - name: Statistical NLP lecture notes
+    artifact_slug: null
+    type: open-research
+    url: https://www.cs.columbia.edu/~mcollins/
+    contribution: >-
+      Publishes notes on language models, hidden Markov models, PCFGs, IBM translation models,
+      log-linear models, and the EM algorithm, and taught an online natural language processing course
+      on Coursera in Spring 2013.
+    source_ids: [collins-site]
+links:
+  - label: Columbia homepage
+    url: https://www.cs.columbia.edu/~mcollins/
+  - label: Google Research profile
+    url: https://research.google/people/michaelcollins/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: collins-site
+    title: Michael Collins — Columbia CS homepage (affiliations and bio)
+    url: https://www.cs.columbia.edu/~mcollins/
+    publisher: Michael Collins (Columbia University)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: google-profile
+    title: Michael Collins — Google Research people profile
+    url: https://research.google/people/michaelcollins/
+    publisher: Google Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ais-paper
+    title: Measuring Attribution in Natural Language Generation Models (arXiv 2112.12870)
+    url: https://arxiv.org/abs/2112.12870
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-12-23
+    accessed_at: 2026-10-13
+  - id: infalign-paper
+    title: "InfAlign: Inference-aware language model alignment (arXiv 2412.19792, ICML 2025)"
+    url: https://arxiv.org/abs/2412.19792
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-27
+    accessed_at: 2026-10-13

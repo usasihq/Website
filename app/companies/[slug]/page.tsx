@@ -231,7 +231,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                           <Link prefetch={false} href={p.href} className="link">
                             {p.name}
                           </Link>
-                          {!p.organizations.some((o) => o.slug === org.slug && o.current) ? <span className="text-muted"> (earlier)</span> : null}
+                          {!p.organizations.some((o) => o.slug === org.slug && o.current) ? <span className="text-muted"> (not confirmed as current)</span> : null}
                         </li>
                       ))}
                     </ul>

@@ -1,0 +1,109 @@
+slug: patrick-von-platen
+name: Patrick von Platen
+initials: PVP
+groups: [open-source, engineering]
+sector: corporate
+specialties: [generative-media, ml-frameworks, inference]
+headline: First listed author of Hugging Face Diffusers; vLLM code owner for Mistral models
+bio:
+  text: >-
+    Patrick von Platen is the first listed author of Diffusers, Hugging Face's Apache-2.0 library
+    of pretrained diffusion models for inference and training, and a co-author of the 2019 paper
+    that introduced Hugging Face's Transformers library. Von Platen is listed in "The Mistral AI
+    Team" on the Mistral NeMo model card and among the contributors to Mistral AI's Ministral 3
+    technical report (2026). In vLLM's CODEOWNERS file, von Platen owns the Mistral-specific files,
+    including the model code for Mistral, Mixtral, Pixtral, and Voxtral.
+  source_ids: [diffusers-readme, diffusers-citation, transformers-paper, mistral-nemo-card, ministral3-paper, vllm-codeowners]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Mistral AI
+    organization_slug: null
+    role: >-
+      Listed in The Mistral AI Team on the Mistral NeMo model card and as a contributor to
+      the Ministral 3 report (2026)
+    current: false
+    source_ids: [mistral-nemo-card, ministral3-paper]
+work:
+  - name: Diffusers
+    artifact_slug: diffusers
+    type: open-source
+    url: https://github.com/huggingface/diffusers
+    contribution: >-
+      Listed first among the authors in the Diffusers README citation (2022) and in the
+      repository's CITATION.cff, which gives the license as Apache-2.0.
+    source_ids: [diffusers-readme, diffusers-citation]
+  - name: Transformers
+    artifact_slug: transformers
+    type: open-research
+    url: https://arxiv.org/abs/1910.03771
+    contribution: >-
+      Co-author of the 2019 paper introducing Hugging Face's Transformers library (arXiv
+      1910.03771).
+    source_ids: [transformers-paper]
+  - name: vLLM
+    artifact_slug: vllm
+    type: open-source
+    url: https://github.com/vllm-project/vllm
+    contribution: >-
+      Listed in vLLM's CODEOWNERS under "Mistral-specific files" as the owner of the Mistral,
+      Mixtral, Voxtral, and Pixtral model files, the Mistral tokenizer, and the Mistral config. The
+      repository is licensed under Apache 2.0.
+    source_ids: [vllm-codeowners, vllm-license]
+links:
+  - label: GitHub
+    url: https://github.com/patrickvonplaten
+  - label: Hugging Face
+    url: https://huggingface.co/patrickvonplaten
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: diffusers-readme
+    title: huggingface/diffusers README (citation)
+    url: https://github.com/huggingface/diffusers
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: diffusers-citation
+    title: huggingface/diffusers CITATION.cff (authors, license Apache-2.0)
+    url: https://github.com/huggingface/diffusers/blob/main/CITATION.cff
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: transformers-paper
+    title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
+    url: https://arxiv.org/abs/1910.03771
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-09
+    accessed_at: 2026-10-13
+  - id: mistral-nemo-card
+    title: mistralai/Mistral-Nemo-Instruct-2407 model card (The Mistral AI Team)
+    url: https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407
+    publisher: Mistral AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ministral3-paper
+    title: Ministral 3 (arXiv 2601.08584), contributor list
+    url: https://arxiv.org/abs/2601.08584
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-01-13
+    accessed_at: 2026-10-13
+  - id: vllm-codeowners
+    title: vllm-project/vllm CODEOWNERS (Mistral-specific files)
+    url: https://github.com/vllm-project/vllm/blob/main/.github/CODEOWNERS
+    publisher: vLLM project (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: vllm-license
+    title: vllm-project/vllm LICENSE (Apache-2.0)
+    url: https://github.com/vllm-project/vllm/blob/main/LICENSE
+    publisher: vLLM project (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

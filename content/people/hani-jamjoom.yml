@@ -1,0 +1,69 @@
+slug: hani-jamjoom
+name: Hani Jamjoom
+initials: HJ
+groups: [engineering]
+sector: null
+specialties: [hardware, inference]
+headline: Systems security researcher listed with IBM Research; co-author of confidential-computing studies for AI
+bio:
+  text: >-
+    Hani Jamjoom is listed with IBM Research as a co-author of papers on computing systems and their
+    security. These include "Blueprint, Bootstrap, and Bridge" (2025), a security study of NVIDIA GPU
+    Confidential Computing, which aims to provide secure execution for AI workloads, and "Confidential
+    Inference via Ternary Model Partitioning" (first submitted in 2018), which uses trusted execution
+    environments to limit information leakage from deep learning inference inputs. Jamjoom is also listed
+    with the IBM T.J. Watson Research Center as a co-author of a 2026 reference architecture for
+    quantum-centric supercomputers that combine quantum processors with GPUs and CPUs.
+  source_ids: [gpu-cc-paper, confidential-inference-paper, qcsc-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: IBM Research
+    organization_slug: ibm
+    role: Listed with IBM Research on the 2025 GPU confidential computing paper and with the IBM T.J. Watson Research Center on a 2026 arXiv paper
+    current: false
+    source_ids: [gpu-cc-paper, qcsc-paper]
+work:
+  - name: Security study of NVIDIA GPU Confidential Computing
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2507.02770
+    contribution: >-
+      Co-author of "Blueprint, Bootstrap, and Bridge: A Security Look at NVIDIA GPU Confidential
+      Computing" (2025), which reconstructs the architecture and bootstrap process of GPU confidential
+      computing and tests whether data transfers between trusted CPU and GPU domains stay protected.
+    source_ids: [gpu-cc-paper]
+  - name: Confidential Inference via Ternary Model Partitioning
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1807.00969
+    contribution: >-
+      Co-author of a 2018 paper that studies how inference inputs can leak in deep learning image
+      classification pipelines and proposes a ternary model partitioning mechanism that uses trusted
+      execution environments.
+    source_ids: [confidential-inference-paper]
+links: []
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: gpu-cc-paper
+    title: "Blueprint, Bootstrap, and Bridge: A Security Look at NVIDIA GPU Confidential Computing (arXiv 2507.02770)"
+    url: https://arxiv.org/abs/2507.02770
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-07-03
+    accessed_at: 2026-10-13
+  - id: confidential-inference-paper
+    title: Confidential Inference via Ternary Model Partitioning (arXiv 1807.00969)
+    url: https://arxiv.org/abs/1807.00969
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-07-03
+    accessed_at: 2026-10-13
+  - id: qcsc-paper
+    title: Reference Architecture of a Quantum-Centric Supercomputer (arXiv 2603.10970)
+    url: https://arxiv.org/abs/2603.10970
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-11
+    accessed_at: 2026-10-13

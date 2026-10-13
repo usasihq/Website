@@ -145,8 +145,9 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
               <section aria-labelledby="earlier-h">
                 <h2 id="earlier-h" className="flex items-center gap-2 text-2xl font-semibold text-text">
                   <Briefcase aria-hidden="true" className="h-6 w-6 text-cyan" />
-                  Earlier roles
+                  Other documented roles
                 </h2>
+                <p className="mt-2 max-w-3xl text-sm text-muted">Roles the sources document but that are not confirmed as current.</p>
                 <ul className="mt-4 max-w-3xl space-y-2 text-[1.0625rem]">
                   {earlier.map((a) => (
                     <li key={`${a.name}-${a.role}`}>

@@ -58,7 +58,7 @@ export default function LocalCornerPage() {
                           {role ? (
                             <p className="mt-0.5 text-sm text-muted">
                               {role.role}, {role.name}
-                              {role.current ? "" : " (earlier)"}
+                              {role.current ? "" : " (not confirmed as current)"}
                             </p>
                           ) : null}
                         </div>

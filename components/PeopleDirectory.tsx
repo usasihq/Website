@@ -42,7 +42,7 @@ function PersonCard({ item, org }: { item: PeopleListItem; org: string }) {
           {where.length ? (
             <p className="mt-0.5 line-clamp-2 text-sm text-muted">
               {where.map((o) => `${o.role}, ${o.name}`).join(" · ")}
-              {earlier ? " (earlier)" : ""}
+              {earlier ? " (not confirmed as current)" : ""}
             </p>
           ) : null}
         </div>
