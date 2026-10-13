@@ -27,6 +27,7 @@ export const metadata = pageMetadata({
 });
 
 export default function HomePage() {
+  const siExplainer = EXPLAINERS.find((e) => e.slug === "what-super-intelligence-means");
   const catalog = getCatalog();
   const counts = catalog.counts();
   const featured = catalog.featured;
@@ -162,6 +163,26 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* The site's name is now the federal word for AI; one sourced explainer answers that. */}
+      {siExplainer ? (
+        <div className="container-page pb-8">
+          <Link
+            href={`/learn/${siExplainer.slug}/`}
+            className="card card-link flex flex-col gap-1 border-[rgba(255,210,122,0.35)] p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-5"
+            data-testid="home-si-explainer"
+          >
+            <span className="min-w-0">
+              <span className="eyebrow text-[0.75rem]">Explainer · reviewed {formatDate(siExplainer.reviewed)}</span>
+              <span className="mt-1 block text-lg font-semibold text-text">{siExplainer.title}</span>
+              <span className="mt-1 block text-[0.9375rem] text-muted">
+                The federal term since Executive Order 14434, the older research meaning, and a dated, sourced timeline.
+              </span>
+            </span>
+            <ArrowRight aria-hidden="true" className="hidden h-5 w-5 shrink-0 text-cyan sm:block" />
+          </Link>
+        </div>
+      ) : null}
 
       {/* Task-based entry points: what a visitor wants to do, not just what to browse. */}
       <section aria-labelledby="actions-heading" className="container-page pb-8">

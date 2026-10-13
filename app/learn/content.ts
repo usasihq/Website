@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import AgentsRobotics from "@/content/pages/learn-agents-robotics.mdx";
 import AiAndYourData from "@/content/pages/learn-ai-and-your-data.mdx";
+import WhatSuperIntelligenceMeans from "@/content/pages/learn-what-super-intelligence-means.mdx";
 import AiContentProvenance from "@/content/pages/learn-ai-content-provenance.mdx";
 import AiHistory from "@/content/pages/learn-ai-history.mdx";
 import CareersInAi from "@/content/pages/learn-careers-in-ai.mdx";
@@ -45,5 +46,6 @@ export const EXPLAINER_CONTENT: Record<string, ComponentType> = {
   "careers-in-ai": CareersInAi,
   "infrastructure-and-energy-claims": InfrastructureClaims,
   "ai-and-your-data": AiAndYourData,
+  "what-super-intelligence-means": WhatSuperIntelligenceMeans,
   "policy-and-standards-sources": PolicySources,
 };

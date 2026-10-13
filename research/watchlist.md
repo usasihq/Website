@@ -66,6 +66,31 @@ as it is.
     move this item to "Resolved" with the source URL and the note "confirmed;
     no catalog record named"
   - do not edit organization records for this item
+- Status on 2026-10-13: still no whitehouse.gov page or Federal Register
+  document for either. CBS News and ABC News (October 4, 2026) report the Force
+  was announced in a Truth Social post; CBS describes the accord as voluntary
+  safety standards signed by AI companies. The only White House item dated
+  October 4 is the "Kyoto Vision" science declaration, which does not mention a
+  Force. The explainer /learn/what-super-intelligence-means/ lists both under
+  "What has not been confirmed"; update that section when an official page
+  appears.
+
+### State Department instruction to use "Super Intelligence"
+
+- Added: 2026-10-13
+- Claim to confirm: a State Department official emailed staff of the Bureau of
+  International Organization Affairs on September 22, 2026, telling them to use
+  "Super Intelligence" and "SI" (Associated Press, September 23, 2026).
+- Status on 2026-10-13: state.gov returned 403 to automated requests, so no
+  State Department page could be read. A White House release dated September
+  22, 2026 confirms the UN speech line "hereinafter officially called 'Super
+  Intelligence'". A search snippet suggests a Rubio press-conference transcript
+  on state.gov may mention a task force led by Jay Clayton; open it in a normal
+  browser before relying on it.
+- Official sources to check: https://www.state.gov/briefings-statements/ and
+  https://www.state.gov/remarks-and-releases-bureau-of-international-organization-affairs/
+- Update when confirmed: the explainer's "What has not been confirmed" section
+  and timeline in content/pages/learn-what-super-intelligence-means.mdx.
 
 ## Resolved
 
@@ -112,3 +137,6 @@ as it is.
   - News item: content/news/xai-developer-docs-adopt-spacexsi-name.yml.
 - Still worth checking: a legal name in a SpaceX filing or on x.ai's legal
   pages. If one appears, set `legal_name` in xai.yml with that source.
+- 2026-10-13: the Greenhouse board API (https://boards-api.greenhouse.io/v1/boards/xai)
+  now returns the board name "SpaceXSI"; the source in xai.yml titled
+  "SpaceXAI job board" can be retitled on the next review.
