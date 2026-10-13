@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { useQueryState } from "@/components/useQueryState";
-import { DATE_LABEL_VERBS, isInactive, POLICY_FILTERS, POLICY_STATUS_LABELS, POLICY_TYPE_LABELS } from "@/lib/policy";
+import { DATE_LABEL_VERBS, isInactive, POLICY_FILTERS, policyHref, POLICY_STATUS_LABELS, POLICY_TYPE_LABELS } from "@/lib/policy";
 import type { PolicyDocument } from "@/lib/schema";
 
 type Filters = { group: string; current: boolean };
@@ -73,12 +74,20 @@ export function PolicyTracker({ docs }: { docs: PolicyDocument[] }) {
                         </span>
                       </p>
                       <h3 className="mt-2 text-lg font-semibold leading-snug text-text">
-                        <ExternalLink href={d.official_url}>{d.title}</ExternalLink>
+                        <Link prefetch={false} href={policyHref(d.slug)} className="link">
+                          {d.title}
+                        </Link>
                       </h3>
                       <p className="mt-1 text-sm text-muted">
                         {DATE_LABEL_VERBS[d.date_label] ?? "Dated"} {formatLongDate(d.date)} · {d.issuer}
                       </p>
                       <p className="mt-3 text-[0.9875rem] leading-relaxed text-[#d5def2]">{d.summary.text}</p>
+                      <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+                        <Link prefetch={false} href={policyHref(d.slug)} className="link">
+                          Full page<span className="sr-only">: {d.title}</span>
+                        </Link>
+                        <ExternalLink href={d.official_url}>Official text</ExternalLink>
+                      </p>
                       {d.status_note ? <p className="mt-2 text-sm text-muted">{d.status_note.text}</p> : null}
                       {d.superseded_by && titles.has(d.superseded_by) ? (
                         <p className="mt-2 text-sm">

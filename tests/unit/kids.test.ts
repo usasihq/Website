@@ -64,6 +64,7 @@ describe("kids lessons", () => {
       explainers: new Set(EXPLAINERS.map((e) => e.slug)),
       paths: new Set(LEARNING_PATHS.map((p) => p.id)),
       issues: new Set(catalog.newsletter.map((n) => n.slug)),
+      policy: new Set(catalog.policy.map((d) => d.slug)),
     };
     const hrefs = KID_LESSONS.flatMap((l) => [...kidText(l).flatMap(inlineLinks), ...l.grownUps.links.map((x) => x.href)].map((h) => [l.slug, h] as const));
     for (const [slug, href] of hrefs) {

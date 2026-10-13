@@ -250,7 +250,7 @@ export const KID_LESSONS: KidLesson[] = [
     grownUps: {
       note: "Meaning 1 is Executive Order 14434, signed September 29, 2026 (91 FR 63129). To the extent the law allows, it applies to executive-branch documents, and it defines its terms by 15 U.S.C. 9401(3) unless and until that definition is superseded; it also asks for proposed legislative language for a federal definition within 60 days. Statutes themselves still say \"artificial intelligence.\" Meaning 2 follows Nick Bostrom's 1998 paper, which defines a superintelligence as \"an intellect that is much smarter than the best human brains in practically every field.\"",
       links: [
-        { label: "Executive Order 14434 in the policy tracker", href: "/policy/#eo-14434" },
+        { label: "Executive Order 14434 in the policy tracker", href: "/policy/eo-14434/" },
         { label: "Finding AI policy and standards sources", href: "/learn/policy-and-standards-sources/" },
         { label: "How Long Before Superintelligence? (Nick Bostrom, 1998)", href: "https://nickbostrom.com/superintelligence" },
         { label: "Safe Superintelligence Inc. in the catalog", href: "/companies/ssi/" },

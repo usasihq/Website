@@ -11,6 +11,7 @@ import { KID_LESSONS } from "./kids";
 import { EXPLAINERS, LEARNING_PATHS } from "./learn";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
+import { longIdentifier, policyHref } from "./policy";
 import type { SearchEntry } from "./search";
 import { plainText } from "./plain-text";
 
@@ -86,7 +87,7 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ...glossary.map((g) => e("glossary-term", g.id, `/glossary/#${g.id}`, g.term, g.definition, "glossary term definition")),
     ...catalog.licenses.map((l) => e("license", l.slug, `/licenses/${l.slug}/`, l.name, l.summary.text, `license ${l.spdx ?? ""}`)),
     ...catalog.policy.map((d) =>
-      e("policy", d.slug, `/policy/#${d.slug}`, d.short_title ?? d.title, d.summary.text, [d.identifier, d.title, d.issuer, "policy"].filter(Boolean).join(" ")),
+      e("policy", d.slug, policyHref(d.slug), d.short_title ?? d.title, d.summary.text, [d.identifier, longIdentifier(d), d.title, d.issuer, "policy"].filter(Boolean).join(" ")),
     ),
     ...faq.map((q) => e("faq", q.id, `/faq/#${q.id}`, q.term, q.definition, "question answer faq")),
     ...LEARNING_PATHS.map((p) => e("learning-path", p.id, `/learn/paths/${p.id}/`, p.title, p.description, `learning path ${p.audience}`)),
