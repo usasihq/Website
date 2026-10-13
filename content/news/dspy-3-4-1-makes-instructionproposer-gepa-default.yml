@@ -1,0 +1,26 @@
+slug: dspy-3-4-1-makes-instructionproposer-gepa-default
+title: DSPy 3.4.1 makes InstructionProposer the default for GEPA and adds Python 3.15 support
+event_date: 2026-10-12
+published_at: 2026-10-13
+category: release
+summary:
+  text: >-
+    On October 12, 2026 DSPy 3.4.1 was published on the project's GitHub repository. The release
+    notes say it makes GEPA's structured InstructionProposer the default instruction proposer, lets
+    dspy.RLM build DSPy sub-agents from inside its REPL, adds Python 3.15 support, and fixes a 3.4.0
+    import crash. The notes warn that GEPA's default reflection request changes shape, so
+    optimization results can differ from 3.4.0 even with the same seed, and that the reflection LM
+    must now be a dspy.LM that can return JSON. USASI has not tested this release.
+  source_ids: [dspy-3-4-1-release]
+related_organizations: [stanford-university]
+related_artifacts: [dspy]
+publication_status: published
+updated_at: 2026-10-13
+sources:
+  - id: dspy-3-4-1-release
+    title: DSPy 3.4.1 (GitHub release notes)
+    url: https://github.com/stanfordnlp/dspy/releases/tag/3.4.1
+    publisher: DSPy project (Stanford NLP)
+    kind: release-notes
+    published_at: 2026-10-12
+    accessed_at: 2026-10-13
