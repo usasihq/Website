@@ -1,3 +1,4 @@
+import { MEMORY_PAGES } from "./hardware";
 import { KID_LESSONS } from "./kids";
 
 /**
@@ -36,6 +37,7 @@ export const STATIC_ROUTES = [
   "/learn/tools/model-size/",
   "/faq/",
   "/find/",
+  "/find/memory/",
   "/kids/",
   "/kids/words/",
   "/kids/grown-ups/",
@@ -67,6 +69,8 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
   }
   const p = path.match(/^\/learn\/paths\/([a-z0-9-]+)\/$/);
   if (p) return slugs.paths.has(p[1]);
+  const mem = path.match(/^\/find\/memory\/([a-z0-9-]+)\/$/);
+  if (mem) return MEMORY_PAGES.some((x) => x.slug === mem[1]);
   const k = path.match(/^\/kids\/([a-z0-9-]+)\/$/);
   return Boolean(k && KID_LESSONS.some((l) => l.slug === k[1]));
 }
