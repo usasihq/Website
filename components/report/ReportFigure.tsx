@@ -130,7 +130,7 @@ function ColumnChart({ table }: { table: ReportTable }) {
       <div className="flex gap-2">
         <div className="relative h-40 w-6 flex-none text-right font-mono text-[0.6875rem] text-muted">
           {ticks.map((t) => (
-            <span key={t} className="absolute right-0 -translate-y-1/2" style={{ bottom: `${(100 * t) / top}%` }}>
+            <span key={t} className="absolute right-0 translate-y-1/2 leading-none" style={{ bottom: `${(100 * t) / top}%` }}>
               {t}
             </span>
           ))}
