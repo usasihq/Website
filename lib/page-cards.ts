@@ -6,12 +6,14 @@
  */
 import type { Catalog } from "./catalog";
 import { formatDate } from "./dates";
+import { MEMORY_INDEX_HREF, MEMORY_PAGES, memoryPageHref, memoryPageResults, memoryPageTitle } from "./hardware";
 import { ENTRY_TYPE_LABELS, NEWS_CATEGORY_LABELS, ROLE_LABELS } from "./labels";
 import { KID_LESSONS } from "./kids";
 import { EXPLAINERS, LEARNING_PATHS, topic } from "./learn";
 import { AVAILABILITY_LABELS } from "./openness";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
+import { DATE_LABEL_VERBS, policyHref, policyShortName, POLICY_STATUS_LABELS, POLICY_TYPE_LABELS } from "./policy";
 import { artifactHref, orgHref } from "./routes";
 
 /** Bump when the card template changes, so every card is rendered again. */
@@ -197,6 +199,50 @@ export function pageCards(catalog: Catalog): PageCard[] {
         eyebrow: `The USASI weekly · Issue ${i.number}`,
         title: i.subject,
         subtitle: i.preview,
+        facts: [],
+      }),
+    );
+  }
+  for (const d of catalog.policy) {
+    const facts: [string, string][] = [["Type", POLICY_TYPE_LABELS[d.document_type]]];
+    if (d.identifier) facts.push(["Identifier", clip(d.identifier, 32)]);
+    facts.push(["Status", POLICY_STATUS_LABELS[d.status]]);
+    facts.push([DATE_LABEL_VERBS[d.date_label] ?? "Dated", formatDate(d.date)]);
+    facts.push(["Reviewed", formatDate(d.last_reviewed)]);
+    const short = policyShortName(d);
+    cards.push(
+      card({
+        page: policyHref(d.slug),
+        image: `/og/policy/${d.slug}.jpg`,
+        template: "record",
+        eyebrow: "Policy tracker",
+        title: short,
+        subtitle: clip(short === d.title || short.startsWith(d.title) ? d.issuer : d.title, 150),
+        facts,
+      }),
+    );
+  }
+  const memoryCounts = MEMORY_PAGES.map((p) => [p, memoryPageResults(catalog.finder, p).fits.length] as const);
+  cards.push(
+    card({
+      page: MEMORY_INDEX_HREF,
+      image: "/og/memory/index.jpg",
+      template: "article",
+      eyebrow: "Local AI by memory",
+      title: "Local AI models by memory",
+      subtitle: "Documented configurations that fit 8 to 24 GB of VRAM or an Apple silicon Mac, by publishers' own memory figures",
+      facts: [],
+    }),
+  );
+  for (const [p, n] of memoryCounts) {
+    cards.push(
+      card({
+        page: memoryPageHref(p),
+        image: `/og/memory/${p.slug}.jpg`,
+        template: "article",
+        eyebrow: "Local AI by memory",
+        title: memoryPageTitle(p).replace(/ \(documented\)$/, ""),
+        subtitle: `${n} documented local ${n === 1 ? "configuration fits" : "configurations fit"}, by publishers' own memory figures, with sources`,
         facts: [],
       }),
     );

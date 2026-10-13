@@ -725,6 +725,7 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     explainers: new Set(EXPLAINERS.map((e) => e.slug)),
     paths: new Set(LEARNING_PATHS.map((p) => p.id)),
     issues: new Set(issueDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
+    policy: new Set(policyDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
   };
   const issueNumbers = new Set<number>();
   for (const { file, value: n } of issueDocs) {

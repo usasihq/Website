@@ -22,7 +22,8 @@ export default function PolicyPage() {
         description={
           <p>
             Federal laws, executive orders, memoranda, standards, and frameworks on AI, newest first. Each entry says what the document does in its own terms,
-            when it was issued, and whether an official source shows it was later revoked or replaced, with a link to the official text.
+            when it was issued, and whether an official source shows it was later revoked or replaced, with a link to the official text. Each entry also has
+            its own page with its provisions, status, related documents, and sources.
           </p>
         }
       />

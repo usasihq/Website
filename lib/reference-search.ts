@@ -5,11 +5,13 @@
  * well as the two directories. Only published content is indexed.
  */
 import type { Catalog } from "./catalog";
+import { appleMac, MEMORY_PAGES, memoryPageHref, memoryPageTitle } from "./hardware";
 import type { EntryType } from "./labels";
 import { KID_LESSONS } from "./kids";
 import { EXPLAINERS, LEARNING_PATHS } from "./learn";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
+import { longIdentifier, policyHref } from "./policy";
 import type { SearchEntry } from "./search";
 import { plainText } from "./plain-text";
 
@@ -38,6 +40,7 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/sources/", name: "Source library", summary: "Every source the catalog cites, with the records that cite it.", keywords: "sources citations references documents" },
   { href: "/licenses/", name: "License guide", summary: "Plain-language guides to the licenses open models and tools use.", keywords: "licenses apache mit llama terms legal" },
   { href: "/find/", name: "Model finder", summary: "Answer a few questions to find open models that fit your task and hardware.", keywords: "finder recommend choose pick gpu vram local" },
+  { href: "/find/memory/", name: "Local AI by memory", summary: "Documented local configurations that fit 8 to 24 GB of VRAM or an Apple silicon Mac's unified memory.", keywords: "vram gpu graphics memory ram unified apple silicon mac local run hardware 8gb 12gb 16gb 24gb 32gb 64gb" },
   { href: "/learn/tools/model-size/", name: "Model size calculator", summary: "Estimate the memory a model needs at different precisions.", keywords: "calculator vram memory gpu quantization size" },
   { href: "/big-si/", name: "People Behind Big SI", summary: "Career profiles of the founders, chief executives, and builders behind the companies shaping AI.", keywords: "leaders ceo founders executives people biography big tech" },
   { href: "/local/", name: "People Behind Local SI", summary: "Profiles of people who build tools for running AI on your own computer.", keywords: "people local ai profiles maintainers" },
@@ -84,7 +87,7 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ...glossary.map((g) => e("glossary-term", g.id, `/glossary/#${g.id}`, g.term, g.definition, "glossary term definition")),
     ...catalog.licenses.map((l) => e("license", l.slug, `/licenses/${l.slug}/`, l.name, l.summary.text, `license ${l.spdx ?? ""}`)),
     ...catalog.policy.map((d) =>
-      e("policy", d.slug, `/policy/#${d.slug}`, d.short_title ?? d.title, d.summary.text, [d.identifier, d.title, d.issuer, "policy"].filter(Boolean).join(" ")),
+      e("policy", d.slug, policyHref(d.slug), d.short_title ?? d.title, d.summary.text, [d.identifier, longIdentifier(d), d.title, d.issuer, "policy"].filter(Boolean).join(" ")),
     ),
     ...faq.map((q) => e("faq", q.id, `/faq/#${q.id}`, q.term, q.definition, "question answer faq")),
     ...LEARNING_PATHS.map((p) => e("learning-path", p.id, `/learn/paths/${p.id}/`, p.title, p.description, `learning path ${p.audience}`)),
@@ -92,6 +95,16 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ...catalog.news.map((n) => e("news", n.slug, `/news/${n.slug}/`, n.title, plainText(n.summary.text), `news ${n.category} ${n.event_date}`)),
     ...catalog.newsletter.map((i) => e("newsletter", i.slug, `/newsletter/${i.slug}/`, `Issue ${i.number}: ${i.subject.replace(/^Issue \d+:\s*/i, "")}`, i.preview, "weekly email newsletter issue")),
     ...SITE_PAGES.map((pg) => e("page", pg.href.replace(/^\/|\/$/g, "").replace(/\//g, "-"), pg.href, pg.name, pg.summary, pg.keywords)),
+    ...MEMORY_PAGES.map((p) =>
+      e(
+        "page",
+        `find-memory-${p.slug}`,
+        memoryPageHref(p),
+        memoryPageTitle(p).replace(/ \(documented\)$/, ""),
+        p.kind === "vram" ? `Documented local configurations that fit ${p.gb} GB of graphics memory.` : `Documented local configurations that fit ${appleMac(p.gb)}.`,
+        p.kind === "vram" ? `vram gpu graphics card memory local ${p.gb}gb ${p.gb} gb` : `apple silicon mac unified memory ram local ${p.gb}gb ${p.gb} gb`,
+      ),
+    ),
     ...catalog.leaders.map((l) =>
       e("leader", l.slug, `/big-si/${l.slug}/`, l.name, l.headline, [...l.current_roles, ...l.past_roles].map((r) => `${r.role} ${r.organization}`).join(" ")),
     ),

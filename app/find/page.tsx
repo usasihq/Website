@@ -4,6 +4,7 @@ import { Finder } from "@/components/Finder";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
+import { MEMORY_INDEX_HREF, MEMORY_PAGES, memoryPageHref } from "@/lib/hardware";
 import { pageMetadata } from "@/lib/metadata";
 import { artifactHref, orgHref } from "@/lib/routes";
 
@@ -30,10 +31,36 @@ export default function FindPage() {
         eyebrow="Tool"
         title="Find AI for my needs"
         description={
-          <p>
-            Tell us what you want to do and what you are working with. The finder checks a small set of carefully documented configurations, explains why each
-            one matches or does not, and shows what is still unverified. It is not a &ldquo;best AI&rdquo; ranking.
-          </p>
+          <>
+            <p>
+              Tell us what you want to do and what you are working with. The finder checks a small set of carefully documented configurations, explains why each
+              one matches or does not, and shows what is still unverified. It is not a &ldquo;best AI&rdquo; ranking.
+            </p>
+            <nav aria-label="Local AI by memory" className="mt-3 text-base">
+              <Link href={MEMORY_INDEX_HREF} className="link">
+                Browse by memory
+              </Link>
+              : VRAM{" "}
+              {MEMORY_PAGES.filter((p) => p.kind === "vram").map((p, i) => (
+                <span key={p.slug}>
+                  {i > 0 ? ", " : ""}
+                  <Link prefetch={false} href={memoryPageHref(p)} className="link" aria-label={`${p.gb} GB of VRAM`}>
+                    {p.gb} GB
+                  </Link>
+                </span>
+              ))}
+              ; Apple silicon{" "}
+              {MEMORY_PAGES.filter((p) => p.kind === "apple-silicon").map((p, i) => (
+                <span key={p.slug}>
+                  {i > 0 ? ", " : ""}
+                  <Link prefetch={false} href={memoryPageHref(p)} className="link" aria-label={`${p.gb} GB Apple silicon Mac`}>
+                    {p.gb} GB
+                  </Link>
+                </span>
+              ))}
+              .
+            </nav>
+          </>
         }
       />
       <div className="container-page grid gap-8 py-10">
