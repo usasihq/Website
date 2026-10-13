@@ -307,7 +307,10 @@ and `index.html` for directory URLs; `_headers` is ignored there.
 
 ## Licenses
 
-- Code: MIT ([LICENSE](LICENSE)).
+- Code: MIT ([LICENSE](LICENSE)). The MIT license covers source code written for this
+  project (for example app/, components/, lib/, scripts/, tests/, and configuration
+  files). It does not cover the artwork, fonts, catalog prose, or third-party material;
+  see CONTENT_LICENSE.md and THIRD_PARTY_NOTICES.md.
 - Original catalog prose: CC BY 4.0 ([CONTENT_LICENSE.md](CONTENT_LICENSE.md)).
 - Artwork: owner's, not licensed for reuse; fonts: SIL OFL 1.1; third-party names
   and marks belong to their owners ([THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)).
