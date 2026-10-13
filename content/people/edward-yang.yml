@@ -1,0 +1,98 @@
+slug: edward-yang
+name: Edward Yang
+initials: EY
+groups: [open-source, engineering]
+sector: corporate
+specialties: [ml-frameworks, training-systems]
+headline: PyTorch core maintainer and co-author of the PyTorch and PyTorch 2 papers; research engineer at Meta
+bio:
+  text: >-
+    Edward Yang is a Research Engineer at Meta and a PyTorch core maintainer. PyTorch's maintainers
+    page also lists Yang as a module maintainer for TorchDynamo, autograd, the PT2 dispatcher,
+    CUDA, and C10 utilities and operator dispatch. Yang co-authored the 2019 PyTorch paper and the
+    PyTorch 2 paper (ASPLOS 2024), which introduced TorchDynamo and TorchInductor, the extensions
+    that implement torch.compile. At PyTorch Conference Europe 2026, Yang gave the "PyTorch
+    Updates" keynote.
+  source_ids: [eu26-recap, keynote-na26, pytorch-maintainers, pytorch-paper, pt2-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Meta
+    organization_slug: meta
+    role: Research Engineer
+    current: true
+    source_ids: [eu26-recap, keynote-na26]
+  - name: PyTorch (open-source project)
+    organization_slug: null
+    role: Core Maintainer
+    current: true
+    source_ids: [pytorch-maintainers]
+work:
+  - name: PyTorch
+    artifact_slug: pytorch
+    type: open-source
+    url: https://github.com/pytorch/pytorch
+    contribution: >-
+      Listed as a PyTorch core maintainer and as a module maintainer for TorchDynamo,
+      torch.autograd, the PT2 dispatcher, CUDA, and C10 utils and operator dispatch; co-author of
+      the 2019 PyTorch paper. The repository is under a BSD-style license.
+    source_ids: [pytorch-maintainers, pytorch-paper, pytorch-license]
+  - name: "PyTorch 2: TorchDynamo and TorchInductor (torch.compile)"
+    artifact_slug: pytorch
+    type: open-research
+    url: https://docs.pytorch.org/assets/pytorch2-2.pdf
+    contribution: >-
+      Co-author, listed with Meta, of the ASPLOS 2024 paper introducing TorchDynamo and
+      TorchInductor, the two extensions that implement the torch.compile feature released in
+      PyTorch 2.
+    source_ids: [pt2-paper]
+links:
+  - label: Website
+    url: https://ezyang.com/
+  - label: GitHub
+    url: https://github.com/ezyang
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: eu26-recap
+    title: "PyTorch Conference Europe 2026: A Landmark Moment for Open Source AI in Paris"
+    url: https://pytorch.org/blog/pytorch-conference-europe-2026-a-landmark-moment-for-open-source-ai-in-paris/
+    publisher: PyTorch
+    kind: announcement
+    published_at: 2026-04-15
+    accessed_at: 2026-10-13
+  - id: keynote-na26
+    title: PyTorch Conference North America 2026 keynote speaker sessions announced
+    url: https://pytorch.org/blog/pytorch-conference-north-america-2026-keynote-speaker-sessions-announced/
+    publisher: PyTorch
+    kind: announcement
+    published_at: 2026-08-20
+    accessed_at: 2026-10-13
+  - id: pytorch-maintainers
+    title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
+    url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: 2026-06-05
+    accessed_at: 2026-10-13
+  - id: pytorch-paper
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library (arXiv 1912.01703)"
+    url: https://arxiv.org/abs/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-13
+  - id: pt2-paper
+    title: "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS '24)"
+    url: https://docs.pytorch.org/assets/pytorch2-2.pdf
+    publisher: PyTorch
+    kind: paper
+    published_at: 2024-04
+    accessed_at: 2026-10-13
+  - id: pytorch-license
+    title: pytorch/pytorch LICENSE (BSD-style license)
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    publisher: PyTorch (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

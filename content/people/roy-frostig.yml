@@ -1,0 +1,93 @@
+slug: roy-frostig
+name: Roy Frostig
+initials: RF
+groups: [open-source, engineering]
+sector: corporate
+specialties: [ml-frameworks, ml-theory]
+headline: Co-author and core developer of JAX; research scientist at Google DeepMind
+bio:
+  text: >-
+    Roy Frostig is a research scientist at Google DeepMind and a co-author and core developer of
+    JAX, which Frostig's homepage says Frostig created with a few colleagues in 2017. With Matthew
+    Johnson and Chris Leary, Frostig wrote the SysML 2018 paper "Compiling machine learning programs
+    via high-level tracing," which reported on an early version of JAX. Frostig's homepage describes
+    work on the foundations of machine learning through theory, systems, and programming languages,
+    and the JAX documentation lists Frostig as an author of design proposals including typed PRNG
+    keys and the jax.extend module.
+  source_ids: [homepage, jax-sysml, jax-readme, jep-typed-keys, jep-jex]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Research scientist
+    current: true
+    source_ids: [homepage, github-profile]
+work:
+  - name: JAX
+    artifact_slug: jax
+    type: open-source
+    url: https://github.com/jax-ml/jax
+    contribution: >-
+      Co-author and core developer of JAX according to Frostig's homepage; named in the "Citing JAX"
+      author list; co-author of the SysML 2018 paper on an early JAX; author or co-author of JAX
+      design proposals on typed keys and pluggable RNGs (August 2023) and on jax.extend. The
+      repository is released under the Apache License 2.0.
+    source_ids: [homepage, jax-readme, jax-sysml, jep-typed-keys, jep-jex, jax-license]
+links:
+  - label: Website
+    url: https://cs.stanford.edu/~rfrostig/
+  - label: GitHub
+    url: https://github.com/froystig
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Roy Frostig — homepage
+    url: https://cs.stanford.edu/~rfrostig/
+    publisher: Roy Frostig
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: froystig (Roy Frostig) on GitHub
+    url: https://github.com/froystig
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: jax-sysml
+    title: Compiling machine learning programs via high-level tracing (SysML 2018)
+    url: https://mlsys.org/Conferences/2019/doc/2018/146.pdf
+    publisher: MLSys
+    kind: paper
+    published_at: "2018"
+    accessed_at: 2026-10-13
+  - id: jax-readme
+    title: jax-ml/jax README ("Citing JAX" author list)
+    url: https://github.com/jax-ml/jax
+    publisher: jax-ml (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: jax-license
+    title: jax-ml/jax LICENSE (Apache License 2.0)
+    url: https://github.com/jax-ml/jax/blob/main/LICENSE
+    publisher: jax-ml (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: jep-typed-keys
+    title: "JEP 9263: Typed keys & pluggable RNGs"
+    url: https://docs.jax.dev/en/latest/jep/9263-typed-keys.html
+    publisher: JAX documentation
+    kind: documentation
+    published_at: 2023-08
+    accessed_at: 2026-10-13
+  - id: jep-jex
+    title: "jax.extend: a module for extensions (JAX design proposal)"
+    url: https://docs.jax.dev/en/latest/jep/15856-jex.html
+    publisher: JAX documentation
+    kind: documentation
+    published_at: 2023-05
+    accessed_at: 2026-10-13

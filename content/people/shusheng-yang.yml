@@ -1,0 +1,134 @@
+slug: shusheng-yang
+name: Shusheng Yang
+initials: SY
+groups: [engineering, open-source]
+sector: academic
+specialties: [multimodal, vision]
+headline: NYU Courant PhD student; first author of Cambrian-S and co-first author of Thinking in Space and Qwen-VL
+bio:
+  text: >-
+    Shusheng Yang is a PhD student at NYU Courant advised by Saining Xie, working where computer
+    vision meets multimodal learning, with a focus on representation learning, world modeling,
+    spatial intelligence and long-context modeling. Yang is first author of Cambrian-S (2025), which
+    introduces the VSI-SUPER benchmark and the VSI-590K training data for spatial supersensing in
+    video, and co-first author of Thinking in Space (CVPR 2025), which introduced the VSI-Bench
+    visual-spatial benchmark. Yang also co-authored Cambrian-1, a vision-centric family of multimodal
+    language models released with weights, code and data, and was a co-first author of the Qwen-VL
+    technical report.
+  source_ids: [homepage, cambrian-s-paper, tis-paper, cambrian1-paper, qwenvl-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: New York University (Courant Institute)
+    organization_slug: new-york-university
+    role: Ph.D. student at NYU Courant, advised by Prof. Saining Xie
+    current: true
+    source_ids: [homepage]
+work:
+  - name: Cambrian-S
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/cambrian-mllm/cambrian-s
+    contribution: >-
+      First author (equal contribution with Jihan Yang) of "Cambrian-S: Towards Spatial Supersensing
+      in Video" (2025; ICLR 2026), which presents the VSI-SUPER benchmark, curates the VSI-590K
+      dataset and trains Cambrian-S models; the code repository is licensed under Apache 2.0.
+    source_ids: [cambrian-s-paper, homepage, cambrian-s-license]
+  - name: Thinking in Space (VSI-Bench)
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/vision-x-nyu/thinking-in-space
+    contribution: >-
+      Co-first author of "Thinking in Space: How Multimodal Large Language Models See, Remember, and
+      Recall Spaces" (CVPR 2025 oral), which introduced VSI-Bench, a video-based visual-spatial
+      intelligence benchmark; the code repository is licensed under Apache 2.0.
+    source_ids: [tis-paper, homepage, tis-license]
+  - name: Cambrian-1
+    artifact_slug: null
+    type: open-weights
+    url: https://github.com/cambrian-mllm/cambrian
+    contribution: >-
+      Co-author of "Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs"
+      (NeurIPS 2024 oral), whose authors provide model weights, code, supporting tools and datasets;
+      the code repository is licensed under Apache 2.0.
+    source_ids: [cambrian1-paper, homepage, cambrian1-license]
+  - name: Qwen-VL
+    artifact_slug: null
+    type: open-weights
+    url: https://github.com/QwenLM/Qwen-VL
+    contribution: >-
+      Co-first author with Jinze Bai and Shuai Bai of the Qwen-VL technical report (2023), which
+      introduces the Qwen-VL and Qwen-VL-Chat vision-language models and says code, demo and models
+      are available; the repository's license file is the Tongyi Qianwen license agreement.
+    source_ids: [qwenvl-paper, homepage, qwenvl-license]
+links:
+  - label: Website
+    url: https://shushengyang.com/
+  - label: GitHub
+    url: https://github.com/vealocia
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Shusheng Yang — homepage (research and publications)
+    url: https://shushengyang.com/
+    publisher: Shusheng Yang
+    kind: official-page
+    published_at: 2026-09
+    accessed_at: 2026-10-13
+  - id: cambrian-s-paper
+    title: "Cambrian-S: Towards Spatial Supersensing in Video (arXiv 2511.04670)"
+    url: https://arxiv.org/abs/2511.04670
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-11-06
+    accessed_at: 2026-10-13
+  - id: cambrian-s-license
+    title: cambrian-mllm/cambrian-s LICENSE (Apache 2.0)
+    url: https://github.com/cambrian-mllm/cambrian-s/blob/main/LICENSE
+    publisher: cambrian-mllm (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: tis-paper
+    title: "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces (arXiv 2412.14171)"
+    url: https://arxiv.org/abs/2412.14171
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-18
+    accessed_at: 2026-10-13
+  - id: tis-license
+    title: vision-x-nyu/thinking-in-space LICENSE (Apache 2.0)
+    url: https://github.com/vision-x-nyu/thinking-in-space/blob/main/LICENSE
+    publisher: vision-x-nyu (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: cambrian1-paper
+    title: "Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs (arXiv 2406.16860)"
+    url: https://arxiv.org/abs/2406.16860
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-24
+    accessed_at: 2026-10-13
+  - id: cambrian1-license
+    title: cambrian-mllm/cambrian LICENSE (Apache 2.0)
+    url: https://github.com/cambrian-mllm/cambrian/blob/main/LICENSE
+    publisher: cambrian-mllm (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: qwenvl-paper
+    title: "Qwen-VL: A Versatile Vision-Language Model for Understanding, Localization, Text Reading, and Beyond (arXiv 2308.12966)"
+    url: https://arxiv.org/abs/2308.12966
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-08-24
+    accessed_at: 2026-10-13
+  - id: qwenvl-license
+    title: QwenLM/Qwen-VL LICENSE (Tongyi Qianwen license agreement)
+    url: https://github.com/QwenLM/Qwen-VL/blob/master/LICENSE
+    publisher: QwenLM (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

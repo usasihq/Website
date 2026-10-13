@@ -1,0 +1,87 @@
+slug: james-bradbury
+name: James Bradbury
+initials: JB
+groups: [open-source, engineering]
+sector: null
+specialties: [ml-frameworks, training-systems]
+headline: Named author of JAX and co-author of the original PyTorch paper
+bio:
+  text: >-
+    James Bradbury is one of the authors named in the JAX repository's citation entry and a
+    co-author of the 2019 PyTorch paper, where Bradbury is listed with Google. The JAX documentation
+    also credits Bradbury, under the handle jekbradbury, as a co-author of the January 2023 design
+    doc that proposed shard_map for per-device code.
+  source_ids: [jax-readme, pytorch-paper, pytorch-paper-pdf, jep-shard-map, github-profile]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google
+    organization_slug: google
+    role: Listed with Google as an author of the 2019 PyTorch paper
+    current: false
+    source_ids: [pytorch-paper-pdf]
+work:
+  - name: JAX
+    artifact_slug: jax
+    type: open-source
+    url: https://github.com/jax-ml/jax
+    contribution: >-
+      Named in the "Citing JAX" author list of the JAX README and credited as a co-author of the
+      shard_map design doc (January 2023) in the JAX documentation. The repository is released under
+      the Apache License 2.0.
+    source_ids: [jax-readme, jep-shard-map, jax-license]
+  - name: PyTorch
+    artifact_slug: pytorch
+    type: open-research
+    url: https://arxiv.org/abs/1912.01703
+    contribution: >-
+      Co-author of "PyTorch: An Imperative Style, High-Performance Deep Learning Library" (2019).
+    source_ids: [pytorch-paper]
+links:
+  - label: GitHub
+    url: https://github.com/jekbradbury
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: jax-readme
+    title: jax-ml/jax README ("Citing JAX" author list)
+    url: https://github.com/jax-ml/jax
+    publisher: jax-ml (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: jax-license
+    title: jax-ml/jax LICENSE (Apache License 2.0)
+    url: https://github.com/jax-ml/jax/blob/main/LICENSE
+    publisher: jax-ml (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: jep-shard-map
+    title: shmap (shard_map) for simple per-device code (JAX design doc, January 2023)
+    url: https://docs.jax.dev/en/latest/jep/14273-shard-map.html
+    publisher: JAX documentation
+    kind: documentation
+    published_at: 2023-01
+    accessed_at: 2026-10-13
+  - id: pytorch-paper
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library (arXiv 1912.01703)"
+    url: https://arxiv.org/abs/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-13
+  - id: pytorch-paper-pdf
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library, paper PDF with author affiliations (arXiv 1912.01703)"
+    url: https://arxiv.org/pdf/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-13
+  - id: github-profile
+    title: jekbradbury (James Bradbury) on GitHub
+    url: https://github.com/jekbradbury
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13

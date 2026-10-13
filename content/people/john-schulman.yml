@@ -1,0 +1,103 @@
+slug: john-schulman
+name: John Schulman
+initials: JS
+groups: [engineering, leadership]
+sector: corporate
+specialties: [reinforcement-learning, language-models]
+headline: Co-founder and chief scientist of Thinking Machines Lab; OpenAI co-founder and first author of PPO and TRPO
+bio:
+  text: >-
+    John Schulman is a co-founder and the chief scientist of Thinking Machines Lab. Before that,
+    Schulman did research on the Alignment Science team at Anthropic, and earlier co-founded OpenAI,
+    where Schulman led the creation of ChatGPT and from 2022 to 2024 co-led the post-training team.
+    Schulman completed a PhD thesis on deep reinforcement learning in Pieter Abbeel's group at UC
+    Berkeley and is first author of the Trust Region Policy Optimization (TRPO) and Proximal Policy
+    Optimization (PPO) papers. At Thinking Machines, Schulman wrote the 2025 research post "LoRA
+    Without Regret" in collaboration with colleagues.
+  source_ids: [homepage, abbeel-group, trpo-paper, ppo-paper, tml-lora]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    role: Cofounder and chief scientist
+    current: true
+    source_ids: [homepage, tml-lora]
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Research on the Alignment Science team
+    current: false
+    source_ids: [homepage]
+  - name: OpenAI
+    organization_slug: openai
+    role: Cofounder; co-led the post-training team (2022–2024)
+    current: false
+    source_ids: [homepage, abbeel-group]
+work:
+  - name: Proximal Policy Optimization (PPO)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1707.06347
+    contribution: >-
+      First author of the 2017 paper proposing a family of policy gradient methods that optimize a
+      surrogate objective with multiple epochs of minibatch updates.
+    source_ids: [ppo-paper]
+  - name: Trust Region Policy Optimization (TRPO)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1502.05477
+    contribution: >-
+      First author, with Sergey Levine, Philipp Moritz, Michael I. Jordan and Pieter Abbeel, of the
+      2015 paper describing the TRPO algorithm for optimizing large nonlinear policies.
+    source_ids: [trpo-paper]
+  - name: LoRA Without Regret
+    artifact_slug: null
+    type: open-research
+    url: https://thinkingmachines.ai/blog/lora/
+    contribution: >-
+      Credited author, "in collaboration with others at Thinking Machines", of the September 2025
+      Connectionism post studying whether and when LoRA can match full fine-tuning.
+    source_ids: [tml-lora]
+links:
+  - label: Website
+    url: https://people.eecs.berkeley.edu/~joschu/
+  - label: GitHub
+    url: https://github.com/joschu
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: John Schulman's Homepage (Berkeley address, redirects to joschu.net)
+    url: https://people.eecs.berkeley.edu/~joschu/
+    publisher: John Schulman
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: abbeel-group
+    title: Pieter Abbeel group page, UC Berkeley (alumni list)
+    url: https://people.eecs.berkeley.edu/~pabbeel/group.html
+    publisher: Pieter Abbeel (UC Berkeley EECS)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ppo-paper
+    title: "Proximal Policy Optimization Algorithms (arXiv 1707.06347)"
+    url: https://arxiv.org/abs/1707.06347
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-07-20
+    accessed_at: 2026-10-13
+  - id: trpo-paper
+    title: "Trust Region Policy Optimization (arXiv 1502.05477)"
+    url: https://arxiv.org/abs/1502.05477
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-02-19
+    accessed_at: 2026-10-13
+  - id: tml-lora
+    title: LoRA Without Regret — Thinking Machines Lab (Connectionism)
+    url: https://thinkingmachines.ai/blog/lora/
+    publisher: Thinking Machines Lab
+    kind: announcement
+    published_at: 2025-09-29
+    accessed_at: 2026-10-13

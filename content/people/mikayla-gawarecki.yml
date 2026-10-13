@@ -1,0 +1,77 @@
+slug: mikayla-gawarecki
+name: Mikayla Gawarecki
+initials: MG
+groups: [open-source, engineering]
+sector: null
+specialties: [ml-frameworks]
+headline: PyTorch module maintainer for torch.nn and the C++ API; author of PyTorch tutorials
+bio:
+  text: >-
+    Mikayla Gawarecki is listed on PyTorch's maintainers page as a module maintainer for the NN APIs
+    (torch.nn) and the C++ API (libtorch and StableABI), and as an emeritus maintainer of
+    NestedTensor (torch.nested). Gawarecki wrote the PyTorch tutorial "Accelerating PyTorch
+    Transformers by replacing nn.Transformer with Nested Tensors and torch.compile()," which covers
+    nested tensors, scaled_dot_product_attention, torch.compile, and FlexAttention, and the recipe
+    "Extension points in nn.Module for load_state_dict and tensor subclasses" (April 2024).
+  source_ids: [pytorch-maintainers, tutorial-transformer-blocks, recipe-swap-tensors]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: PyTorch (open-source project)
+    organization_slug: null
+    role: Module maintainer, NN APIs (torch.nn) and C++ API (libtorch + StableABI)
+    current: true
+    source_ids: [pytorch-maintainers]
+work:
+  - name: PyTorch (torch.nn and the C++ API)
+    artifact_slug: pytorch
+    type: open-source
+    url: https://github.com/pytorch/pytorch
+    contribution: >-
+      Listed as a maintainer of torch.nn and of the C++ API (libtorch + StableABI) and an emeritus
+      maintainer of torch.nested. The repository is under a BSD-style license.
+    source_ids: [pytorch-maintainers, pytorch-license]
+  - name: PyTorch tutorials on nested tensors and nn.Module extension points
+    artifact_slug: pytorch
+    type: open-research
+    url: https://docs.pytorch.org/tutorials/intermediate/transformer_building_blocks.html
+    contribution: >-
+      Credited author of the tutorial "Accelerating PyTorch Transformers by replacing
+      nn.Transformer with Nested Tensors and torch.compile()" and of the recipe "Extension points in
+      nn.Module for load_state_dict and tensor subclasses," which introduces
+      torch.utils.swap_tensors.
+    source_ids: [tutorial-transformer-blocks, recipe-swap-tensors]
+links:
+  - label: GitHub
+    url: https://github.com/mikaylagawarecki
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: pytorch-maintainers
+    title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
+    url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: 2026-06-05
+    accessed_at: 2026-10-13
+  - id: tutorial-transformer-blocks
+    title: Accelerating PyTorch Transformers by replacing nn.Transformer with Nested Tensors and torch.compile() (PyTorch Tutorials)
+    url: https://docs.pytorch.org/tutorials/intermediate/transformer_building_blocks.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: recipe-swap-tensors
+    title: Extension points in nn.Module for load_state_dict and tensor subclasses (PyTorch Recipes)
+    url: https://docs.pytorch.org/tutorials/recipes/recipes/swap_tensors.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: 2024-04-19
+    accessed_at: 2026-10-13
+  - id: pytorch-license
+    title: pytorch/pytorch LICENSE (BSD-style license)
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    publisher: PyTorch (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

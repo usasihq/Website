@@ -1,0 +1,122 @@
+slug: kaiming-he
+name: Kaiming He
+initials: KH
+groups: [engineering]
+sector: academic
+specialties: [vision, generative-media]
+headline: First author of ResNet, Mask R-CNN and MAE; MIT associate professor and part-time scientist at Google DeepMind
+bio:
+  text: >-
+    Kaiming He is an Associate Professor with tenure in the Department of EECS at MIT and also works
+    part-time as a Distinguished Scientist at Google DeepMind, with research in computer vision and
+    deep learning. Kaiming He is first author of the 2015 ResNet paper and of the Mask R-CNN, MoCo,
+    and Masked Autoencoders (MAE) papers, and Kaiming He's site also lists Faster R-CNN among this
+    work on visual perception. Before joining MIT in
+    2024, Kaiming He was a research scientist at Facebook AI Research (2016–2024) and a researcher
+    at Microsoft Research Asia (2011–2016). Courses taught at MIT include deep learning, computer
+    vision, and deep generative models.
+  source_ids: [homepage, resnet-paper, maskrcnn-paper, moco-paper, mae-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Massachusetts Institute of Technology
+    organization_slug: mit
+    role: Associate Professor with tenure, Department of EECS
+    current: true
+    source_ids: [homepage]
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Distinguished Scientist (part-time)
+    current: true
+    source_ids: [homepage]
+  - name: Meta (Facebook AI Research)
+    organization_slug: meta
+    role: Research scientist, FAIR (2016–2024)
+    current: false
+    source_ids: [homepage]
+  - name: Microsoft Research Asia
+    organization_slug: microsoft
+    role: Researcher (2011–2016)
+    current: false
+    source_ids: [homepage]
+work:
+  - name: ResNet
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1512.03385
+    contribution: >-
+      First author, with Xiangyu Zhang, Shaoqing Ren, and Jian Sun, of the 2015 paper that
+      introduced ResNets.
+    source_ids: [resnet-paper, homepage]
+  - name: Masked Autoencoders (MAE)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2111.06377
+    contribution: >-
+      First author of "Masked Autoencoders Are Scalable Vision Learners" (2021) with Xinlei Chen,
+      Saining Xie, Yanghao Li, Piotr Dollár, and Ross Girshick; the facebookresearch/mae repository,
+      a PyTorch re-implementation of the paper, is released under the CC-BY-NC 4.0 license.
+    source_ids: [mae-paper, mae-readme]
+  - name: Mask R-CNN and Detectron
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/Detectron
+    contribution: >-
+      First author of the Mask R-CNN paper (2017). Detectron, FAIR's Apache-2.0 object detection
+      system that implements Mask R-CNN, lists Kaiming He among the authors in its citation entry.
+    source_ids: [maskrcnn-paper, detectron-readme]
+links:
+  - label: Website
+    url: https://people.csail.mit.edu/kaiming/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Kaiming He — homepage (MIT CSAIL)
+    url: https://people.csail.mit.edu/kaiming/
+    publisher: Kaiming He
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: resnet-paper
+    title: Deep Residual Learning for Image Recognition (arXiv 1512.03385)
+    url: https://arxiv.org/abs/1512.03385
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-12-10
+    accessed_at: 2026-10-13
+  - id: maskrcnn-paper
+    title: Mask R-CNN (arXiv 1703.06870)
+    url: https://arxiv.org/abs/1703.06870
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-20
+    accessed_at: 2026-10-13
+  - id: moco-paper
+    title: Momentum Contrast for Unsupervised Visual Representation Learning (arXiv 1911.05722)
+    url: https://arxiv.org/abs/1911.05722
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-11-13
+    accessed_at: 2026-10-13
+  - id: mae-paper
+    title: Masked Autoencoders Are Scalable Vision Learners (arXiv 2111.06377)
+    url: https://arxiv.org/abs/2111.06377
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-11-11
+    accessed_at: 2026-10-13
+  - id: mae-readme
+    title: facebookresearch/mae README (citation and CC-BY-NC 4.0 license)
+    url: https://github.com/facebookresearch/mae
+    publisher: Meta (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: detectron-readme
+    title: facebookresearch/Detectron README (citation entry and license)
+    url: https://github.com/facebookresearch/Detectron
+    publisher: Meta (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

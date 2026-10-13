@@ -1,0 +1,100 @@
+slug: natalia-gimelshein
+name: Natalia Gimelshein
+initials: NG
+groups: [open-source, engineering]
+sector: null
+specialties: [ml-frameworks, hardware]
+headline: PyTorch core maintainer for CUDA; co-author of the PyTorch and PyTorch 2 papers
+bio:
+  text: >-
+    Natalia Gimelshein is a PyTorch core maintainer and a maintainer of PyTorch's CUDA support,
+    according to PyTorch's maintainers page, which also lists Gimelshein as an emeritus maintainer
+    of NestedTensor and of the profiling and monitoring tools. Gimelshein co-authored the 2019
+    PyTorch paper, listed there with NVIDIA, and the PyTorch 2 paper (ASPLOS 2024), listed with
+    OpenAI. At PyTorch Conference Europe 2026, Gimelshein took part in the "Meet the Developers"
+    session for PyTorch module maintainers.
+  source_ids: [pytorch-maintainers, pytorch-paper-pdf, pt2-paper, eu26-recap]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: PyTorch (open-source project)
+    organization_slug: null
+    role: Core Maintainer
+    current: true
+    source_ids: [pytorch-maintainers]
+  - name: OpenAI
+    organization_slug: openai
+    role: Listed with OpenAI as an author of the PyTorch 2 paper (2024)
+    current: false
+    source_ids: [pt2-paper]
+  - name: NVIDIA
+    organization_slug: nvidia
+    role: Listed with NVIDIA as an author of the 2019 PyTorch paper
+    current: false
+    source_ids: [pytorch-paper-pdf]
+work:
+  - name: PyTorch (CUDA)
+    artifact_slug: pytorch
+    type: open-source
+    url: https://github.com/pytorch/pytorch
+    contribution: >-
+      Listed as a PyTorch core maintainer and a CUDA maintainer; co-author of "PyTorch: An
+      Imperative Style, High-Performance Deep Learning Library" (2019). The repository is under a
+      BSD-style license.
+    source_ids: [pytorch-maintainers, pytorch-paper, pytorch-license]
+  - name: "PyTorch 2: TorchDynamo and TorchInductor (torch.compile)"
+    artifact_slug: pytorch
+    type: open-research
+    url: https://docs.pytorch.org/assets/pytorch2-2.pdf
+    contribution: >-
+      Co-author of the ASPLOS 2024 paper introducing TorchDynamo and TorchInductor, which implement
+      torch.compile in PyTorch 2.
+    source_ids: [pt2-paper]
+links:
+  - label: GitHub
+    url: https://github.com/ngimel
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: pytorch-maintainers
+    title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
+    url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: 2026-06-05
+    accessed_at: 2026-10-13
+  - id: pytorch-paper
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library (arXiv 1912.01703)"
+    url: https://arxiv.org/abs/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-13
+  - id: pytorch-paper-pdf
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library, paper PDF with author affiliations (arXiv 1912.01703)"
+    url: https://arxiv.org/pdf/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-13
+  - id: pt2-paper
+    title: "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS '24)"
+    url: https://docs.pytorch.org/assets/pytorch2-2.pdf
+    publisher: PyTorch
+    kind: paper
+    published_at: 2024-04
+    accessed_at: 2026-10-13
+  - id: eu26-recap
+    title: "PyTorch Conference Europe 2026: A Landmark Moment for Open Source AI in Paris"
+    url: https://pytorch.org/blog/pytorch-conference-europe-2026-a-landmark-moment-for-open-source-ai-in-paris/
+    publisher: PyTorch
+    kind: announcement
+    published_at: 2026-04-15
+    accessed_at: 2026-10-13
+  - id: pytorch-license
+    title: pytorch/pytorch LICENSE (BSD-style license)
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    publisher: PyTorch (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

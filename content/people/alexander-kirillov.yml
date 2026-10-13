@@ -1,0 +1,107 @@
+slug: alexander-kirillov
+name: Alexander Kirillov
+initials: AK
+groups: [engineering, open-source]
+sector: corporate
+specialties: [multimodal, vision]
+headline: First author of Segment Anything; works on multimodal models at Thinking Machines; formerly OpenAI and FAIR
+bio:
+  text: >-
+    Alexander Kirillov works on multimodal AI models at Thinking Machines. Before that, Kirillov led
+    the multimodal research group at OpenAI, working on Advanced Voice Mode and GPT-4o, and was a
+    research scientist at Facebook AI Research (FAIR), where Kirillov worked on Segment Anything.
+    Kirillov is first author of the 2023 Segment Anything paper, whose repository releases the model
+    under the Apache 2.0 license, is listed in the citation entry for the Detectron2 library, and is
+    a co-author of DETR (End-to-End Object Detection with Transformers).
+  source_ids: [homepage, sam-paper, sam-readme, detectron2-readme, detr-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    role: Works on multimodal AI models
+    current: true
+    source_ids: [homepage]
+  - name: OpenAI
+    organization_slug: openai
+    role: Led the multimodal research group (Advanced Voice Mode and GPT-4o)
+    current: false
+    source_ids: [homepage]
+  - name: Meta (Facebook AI Research)
+    organization_slug: meta
+    role: Research scientist, FAIR
+    current: false
+    source_ids: [homepage]
+work:
+  - name: Segment Anything (SAM)
+    artifact_slug: segment-anything
+    type: open-weights
+    url: https://github.com/facebookresearch/segment-anything
+    contribution: >-
+      First author of the Segment Anything paper (2023); the original repository lists Kirillov
+      first among its authors and releases the model under the Apache 2.0 license.
+    source_ids: [sam-paper, sam-readme]
+  - name: Detectron2
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/detectron2
+    contribution: >-
+      Listed among the authors in the citation entry of Detectron2, FAIR's detection and
+      segmentation library released under the Apache 2.0 license.
+    source_ids: [detectron2-readme]
+  - name: DETR
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/facebookresearch/detr
+    contribution: >-
+      Co-author of "End-to-End Object Detection with Transformers" (2020); the DETR repository is
+      released under the Apache 2.0 license.
+    source_ids: [detr-paper, detr-readme]
+links:
+  - label: Website
+    url: https://alexander-kirillov.github.io/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Alexander Kirillov — homepage
+    url: https://alexander-kirillov.github.io/
+    publisher: Alexander Kirillov
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: sam-paper
+    title: Segment Anything (arXiv 2304.02643)
+    url: https://arxiv.org/abs/2304.02643
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-04-05
+    accessed_at: 2026-10-13
+  - id: sam-readme
+    title: facebookresearch/segment-anything README (authors and Apache 2.0 license)
+    url: https://github.com/facebookresearch/segment-anything
+    publisher: Meta (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: detectron2-readme
+    title: facebookresearch/detectron2 README (citation entry and license)
+    url: https://github.com/facebookresearch/detectron2
+    publisher: Meta (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: detr-paper
+    title: End-to-End Object Detection with Transformers (arXiv 2005.12872)
+    url: https://arxiv.org/abs/2005.12872
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-26
+    accessed_at: 2026-10-13
+  - id: detr-readme
+    title: facebookresearch/detr README (license)
+    url: https://github.com/facebookresearch/detr
+    publisher: Meta (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

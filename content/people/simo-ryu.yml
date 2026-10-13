@@ -1,0 +1,108 @@
+slug: simo-ryu
+name: Simo Ryu
+initials: SR
+groups: [open-source, engineering]
+sector: null
+specialties: [generative-media, training-systems]
+headline: Author of the LoRA repository for diffusion fine-tuning; AuraFlow collaborator and Diffusers contributor
+bio:
+  text: >-
+    Simo Ryu, who publishes on GitHub as cloneofsimo, wrote the Apache-2.0-licensed lora repository,
+    which applies low-rank adaptation to quickly fine-tune text-to-image diffusion models, along with
+    minimal reference implementations such as minDiffusion and minRF. Ryu collaborated with fal on
+    AuraFlow v0.1, an Apache-2.0 open-weights flow-based text-to-image model whose model card credits
+    Ryu with bringing the project to life. Ryu has also contributed to Hugging Face Diffusers, including
+    a merged pull request adding learned positional-embedding selection for AuraFlow.
+  source_ids: [ryu-github, lora-repo, auraflow-card, fal-auraflow-blog, diffusers-pr-9182, diffusers-pr-4532]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: fal
+    organization_slug: null
+    role: Collaborator on AuraFlow v0.1, credited on fal's AuraFlow model card
+    current: false
+    source_ids: [auraflow-card, fal-auraflow-blog]
+work:
+  - name: Hugging Face Diffusers
+    artifact_slug: diffusers
+    type: open-source
+    url: https://github.com/huggingface/diffusers
+    contribution: >-
+      Authored merged pull requests to the Apache-2.0 Diffusers library, including #9182 (August 2024),
+      which adds learned positional-embedding selection for AuraFlow, and #4532 (August 2023), which
+      adds a section to the SDXL documentation pointing to minSDXL, a single-file implementation of
+      the SDXL UNet.
+    source_ids: [diffusers-pr-9182, diffusers-pr-4532, diffusers-license]
+  - name: LoRA for diffusion fine-tuning (cloneofsimo/lora)
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/cloneofsimo/lora
+    contribution: >-
+      Author of the repository "Using Low-rank adaptation to quickly fine-tune diffusion models",
+      released under the Apache License 2.0; fal's AuraFlow announcement points to it as Ryu's
+      adaptation of the LoRA paper for text-to-image models.
+    source_ids: [lora-repo, ryu-github, fal-auraflow-blog]
+  - name: AuraFlow v0.1
+    artifact_slug: null
+    type: open-weights
+    url: https://huggingface.co/fal/AuraFlow
+    contribution: >-
+      Credited, with fal's @isidentical, on the AuraFlow model card for bringing the project to life;
+      fal's announcement says the collaboration grew out of Ryu's minRF reimplementation of MMDiT. The
+      model card lists the apache-2.0 license.
+    source_ids: [auraflow-card, fal-auraflow-blog]
+links:
+  - label: GitHub
+    url: https://github.com/cloneofsimo
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: ryu-github
+    title: cloneofsimo (Simo Ryu) on GitHub
+    url: https://github.com/cloneofsimo
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: lora-repo
+    title: cloneofsimo/lora README and LICENSE (Apache-2.0)
+    url: https://github.com/cloneofsimo/lora
+    publisher: cloneofsimo (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: auraflow-card
+    title: fal/AuraFlow model card (license apache-2.0)
+    url: https://huggingface.co/fal/AuraFlow
+    publisher: fal (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: fal-auraflow-blog
+    title: Introducing AuraFlow v0.1, an Open Exploration of Large Rectified Flow Models — fal blog
+    url: https://blog.fal.ai/auraflow/
+    publisher: fal
+    kind: announcement
+    published_at: 2024-07-12
+    accessed_at: 2026-10-13
+  - id: diffusers-pr-9182
+    title: "huggingface/diffusers pull request #9182: Add Learned PE selection for Auraflow (merged)"
+    url: https://github.com/huggingface/diffusers/pull/9182
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: 2024-08-15
+    accessed_at: 2026-10-13
+  - id: diffusers-pr-4532
+    title: "huggingface/diffusers pull request #4532: introduce minimalistic reimplementation of SDXL on the SDXL doc (merged)"
+    url: https://github.com/huggingface/diffusers/pull/4532
+    publisher: Hugging Face (GitHub repository)
+    kind: repository
+    published_at: 2023-08-09
+    accessed_at: 2026-10-13
+  - id: diffusers-license
+    title: huggingface/diffusers LICENSE (Apache-2.0)
+    url: https://github.com/huggingface/diffusers/blob/main/LICENSE
+    publisher: Hugging Face (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

@@ -1,0 +1,112 @@
+slug: horace-he
+name: Horace He
+initials: HH
+groups: [open-source, engineering]
+sector: null
+specialties: [ml-frameworks, inference]
+headline: PyTorch core maintainer and torch.compile contributor; wrote a Thinking Machines post on LLM nondeterminism
+bio:
+  text: >-
+    Horace He is a PyTorch core maintainer, and PyTorch's maintainers page lists Horace He as an
+    emeritus maintainer of TorchInductor and the PT2 dispatcher. Horace He's homepage describes work
+    on PyTorch and torch.compile at Meta, including GPT-Fast, and Horace He co-authored the PyTorch 2
+    paper (ASPLOS 2024), listed with Meta. In September 2025, Thinking Machines Lab published
+    "Defeating Nondeterminism in LLM Inference," credited to Horace He in collaboration with others
+    at Thinking Machines.
+  source_ids: [pytorch-maintainers, homepage, pt2-paper, tml-nondeterminism]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Thinking Machines Lab
+    organization_slug: thinking-machines-lab
+    role: Credited "in collaboration with others at Thinking Machines" on a September 2025 research post
+    current: false
+    source_ids: [tml-nondeterminism]
+  - name: PyTorch (open-source project)
+    organization_slug: null
+    role: Core Maintainer
+    current: true
+    source_ids: [pytorch-maintainers]
+  - name: Meta
+    organization_slug: meta
+    role: Worked on PyTorch and torch.compile
+    current: false
+    source_ids: [homepage, pt2-paper]
+work:
+  - name: PyTorch (torch.compile)
+    artifact_slug: pytorch
+    type: open-source
+    url: https://github.com/pytorch/pytorch
+    contribution: >-
+      Listed as a PyTorch core maintainer and an emeritus maintainer of TorchInductor and the PT2
+      dispatcher; co-author of the PyTorch 2 paper introducing TorchDynamo and TorchInductor, which
+      implement torch.compile. The repository is under a BSD-style license.
+    source_ids: [pytorch-maintainers, pt2-paper, pytorch-license]
+  - name: Defeating Nondeterminism in LLM Inference
+    artifact_slug: null
+    type: open-research
+    url: https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/
+    contribution: >-
+      Credited author, with Thinking Machines Lab, of this Connectionism post, which examines why LLM inference results are not
+      reproducible in practice and describes batch-invariant kernels for RMSNorm, matrix
+      multiplication, and attention.
+    source_ids: [tml-nondeterminism]
+  - name: GPT-Fast
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/meta-pytorch/gpt-fast
+    contribution: >-
+      Horace He's homepage cites GPT-Fast as an example of Horace He's work on PyTorch and
+      torch.compile; the BSD-3-Clause repository provides simple, PyTorch-native transformer text
+      generation.
+    source_ids: [homepage, gpt-fast-repo]
+links:
+  - label: Website
+    url: https://horace.io/
+  - label: GitHub
+    url: https://github.com/Chillee
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: pytorch-maintainers
+    title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
+    url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: 2026-06-05
+    accessed_at: 2026-10-13
+  - id: homepage
+    title: Horace He — homepage
+    url: https://horace.io/
+    publisher: Horace He
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pt2-paper
+    title: "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS '24)"
+    url: https://docs.pytorch.org/assets/pytorch2-2.pdf
+    publisher: PyTorch
+    kind: paper
+    published_at: 2024-04
+    accessed_at: 2026-10-13
+  - id: tml-nondeterminism
+    title: Defeating Nondeterminism in LLM Inference (Connectionism)
+    url: https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/
+    publisher: Thinking Machines Lab
+    kind: paper
+    published_at: 2025-09-10
+    accessed_at: 2026-10-13
+  - id: gpt-fast-repo
+    title: meta-pytorch/gpt-fast README (BSD-3-Clause license)
+    url: https://github.com/meta-pytorch/gpt-fast
+    publisher: meta-pytorch (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pytorch-license
+    title: pytorch/pytorch LICENSE (BSD-style license)
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    publisher: PyTorch (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

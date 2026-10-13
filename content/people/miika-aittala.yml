@@ -1,0 +1,120 @@
+slug: miika-aittala
+name: Miika Aittala
+initials: MA
+groups: [engineering]
+sector: corporate
+specialties: [generative-media, vision]
+headline: Member of NVIDIA Research; co-author of the StyleGAN3, EDM, and EDM2 generative model papers
+bio:
+  text: >-
+    Miika Aittala joined NVIDIA Research in November 2019 after a postdoctoral position at MIT CSAIL,
+    where Aittala worked with Frédo Durand on computer graphics, computer vision, and machine learning.
+    Aittala's MIT page lists research interests in material appearance capture, rendering and light
+    transport, image processing, and deep learning. At NVIDIA, Aittala is the second author of the StyleGAN3, EDM,
+    and EDM2 papers, whose official implementations NVIDIA publishes in its NVlabs GitHub organization.
+    NVIDIA Research also lists Aittala as a co-author of a NeurIPS 2025 paper on rolling diffusion
+    models for probabilistic forecasting.
+  source_ids: [aittala-mit, nvidia-profile, stylegan3-paper, edm-paper, edm2-paper, edm2-readme, erdm-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: NVIDIA Research
+    organization_slug: nvidia
+    role: Member of NVIDIA Research (joined November 2019)
+    current: true
+    source_ids: [nvidia-profile, aittala-mit]
+  - name: MIT CSAIL
+    organization_slug: mit
+    role: Postdoctoral researcher, working with Frédo Durand
+    current: false
+    source_ids: [aittala-mit]
+work:
+  - name: EDM and EDM2 diffusion models
+    artifact_slug: null
+    type: open-research
+    url: https://github.com/NVlabs/edm2
+    contribution: >-
+      Second author, with Tero Karras, Timo Aila, Samuli Laine, and others, of "Elucidating the Design
+      Space of Diffusion-Based Generative Models" (EDM, 2022), "Analyzing and Improving the Training
+      Dynamics of Diffusion Models" (EDM2, 2023), and "Guiding a Diffusion Model with a Bad Version of
+      Itself" (2024). The EDM2 repository releases code and pretrained models under CC BY-NC-SA 4.0.
+    source_ids: [edm-paper, edm2-paper, autoguidance-paper, edm2-readme]
+  - name: StyleGAN3 (Alias-Free Generative Adversarial Networks)
+    artifact_slug: null
+    type: open-research
+    url: https://github.com/NVlabs/stylegan3
+    contribution: >-
+      Second author of the NeurIPS 2021 StyleGAN3 paper; the official implementation in NVlabs lists the
+      paper's authors and is released under the NVIDIA Source Code License.
+    source_ids: [stylegan3-paper, stylegan3-readme, nvidia-profile]
+links:
+  - label: NVIDIA Research
+    url: https://research.nvidia.com/person/miika-aittala
+  - label: MIT page
+    url: https://people.csail.mit.edu/miika/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: nvidia-profile
+    title: Miika Aittala — NVIDIA Research
+    url: https://research.nvidia.com/person/miika-aittala
+    publisher: NVIDIA Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: aittala-mit
+    title: Miika Aittala — MIT CSAIL page
+    url: https://people.csail.mit.edu/miika/
+    publisher: Miika Aittala (MIT CSAIL)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: stylegan3-paper
+    title: "Alias-Free Generative Adversarial Networks (arXiv 2106.12423)"
+    url: https://arxiv.org/abs/2106.12423
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-06-23
+    accessed_at: 2026-10-13
+  - id: stylegan3-readme
+    title: NVlabs/stylegan3 README (official PyTorch implementation; NVIDIA Source Code License)
+    url: https://github.com/NVlabs/stylegan3
+    publisher: NVlabs (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: edm-paper
+    title: "Elucidating the Design Space of Diffusion-Based Generative Models (arXiv 2206.00364)"
+    url: https://arxiv.org/abs/2206.00364
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-06-01
+    accessed_at: 2026-10-13
+  - id: edm2-paper
+    title: "Analyzing and Improving the Training Dynamics of Diffusion Models (arXiv 2312.02696)"
+    url: https://arxiv.org/abs/2312.02696
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-05
+    accessed_at: 2026-10-13
+  - id: autoguidance-paper
+    title: "Guiding a Diffusion Model with a Bad Version of Itself (arXiv 2406.02507)"
+    url: https://arxiv.org/abs/2406.02507
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-04
+    accessed_at: 2026-10-13
+  - id: edm2-readme
+    title: NVlabs/edm2 README (EDM2 and Autoguidance; CC BY-NC-SA 4.0)
+    url: https://github.com/NVlabs/edm2
+    publisher: NVlabs (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: erdm-paper
+    title: "Elucidated Rolling Diffusion Models for Probabilistic Forecasting of Complex Dynamics (arXiv 2506.20024)"
+    url: https://arxiv.org/abs/2506.20024
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-24
+    accessed_at: 2026-10-13

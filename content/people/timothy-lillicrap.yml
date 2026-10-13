@@ -1,0 +1,82 @@
+slug: timothy-lillicrap
+name: Timothy Lillicrap
+initials: TL
+groups: [engineering]
+sector: corporate
+specialties: [reinforcement-learning]
+headline: Director of Research at Google DeepMind and CIFAR program co-director; works on deep RL for control
+bio:
+  text: >-
+    Timothy Lillicrap is a Director of Research at Google DeepMind, which Lillicrap joined as a
+    research scientist in 2014, and a Program Co-Director of CIFAR's Learning in Machines & Brains
+    program. Lillicrap's research focuses on machine learning for optimal control and decision-making
+    and on using these frameworks to understand how the brain learns. Lillicrap is first author of
+    "Continuous control with deep reinforcement learning" (2015), which presents an actor-critic
+    algorithm based on the deterministic policy gradient for continuous action spaces, and a co-author of the AlphaZero and A3C papers.
+  source_ids: [cifar-bio, ddpg-paper, alphazero-paper, a3c-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Director of Research
+    current: true
+    source_ids: [cifar-bio]
+  - name: CIFAR
+    organization_slug: null
+    role: Program Co-Director, Learning in Machines & Brains
+    current: true
+    source_ids: [cifar-bio]
+work:
+  - name: Continuous control with deep reinforcement learning
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1509.02971
+    contribution: >-
+      First author of the 2015 paper presenting an actor-critic, model-free algorithm based on the
+      deterministic policy gradient that operates over continuous action spaces.
+    source_ids: [ddpg-paper]
+  - name: AlphaZero and A3C
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1712.01815
+    contribution: >-
+      Co-author of "Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning
+      Algorithm" (2017) and of "Asynchronous Methods for Deep Reinforcement Learning" (2016).
+    source_ids: [alphazero-paper, a3c-paper]
+links:
+  - label: Website
+    url: https://contrastiveconvergence.net/~timothylillicrap/index.php
+  - label: CIFAR
+    url: https://cifar.ca/bios/timothy-lillicrap/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: cifar-bio
+    title: Timothy Lillicrap — CIFAR bio
+    url: https://cifar.ca/bios/timothy-lillicrap/
+    publisher: CIFAR
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: ddpg-paper
+    title: "Continuous control with deep reinforcement learning (arXiv 1509.02971)"
+    url: https://arxiv.org/abs/1509.02971
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-09-09
+    accessed_at: 2026-10-13
+  - id: alphazero-paper
+    title: "Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm (arXiv 1712.01815)"
+    url: https://arxiv.org/abs/1712.01815
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-12-05
+    accessed_at: 2026-10-13
+  - id: a3c-paper
+    title: "Asynchronous Methods for Deep Reinforcement Learning (arXiv 1602.01783)"
+    url: https://arxiv.org/abs/1602.01783
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-02-04
+    accessed_at: 2026-10-13

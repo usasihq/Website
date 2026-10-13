@@ -1,0 +1,110 @@
+slug: yang-song
+name: Yang Song
+initials: YS
+groups: [engineering, open-source]
+sector: corporate
+specialties: [generative-media, ml-theory]
+headline: Research Principal at Meta Superintelligence Labs; first author of the score SDE and consistency models papers
+bio:
+  text: >-
+    Yang Song is the Research Principal at Meta Superintelligence Labs (MSL), working with the lab's
+    Chief Scientist to help shape its research direction. Before joining Meta, Song led the strategic
+    explorations team at OpenAI. During a PhD in computer science at Stanford University advised by
+    Stefano Ermon, Song developed core concepts and techniques behind score-based diffusion models,
+    including "Score-Based Generative Modeling through Stochastic Differential Equations", whose
+    official implementation is released under the Apache 2.0 license. Song is also first author of
+    "Consistency Models" and "Improved Techniques for Training Consistency Models", whose code OpenAI
+    publishes under the MIT License, and co-authored work on continuous-time consistency models with
+    Cheng Lu.
+  source_ids: [song-site, sde-paper, sde-repo, cm-paper, ict-paper, scm-paper, cm-readme]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Meta Superintelligence Labs (MSL)
+    organization_slug: meta
+    role: Research Principal
+    current: true
+    source_ids: [song-site]
+  - name: OpenAI
+    organization_slug: openai
+    role: Led the strategic explorations team
+    current: false
+    source_ids: [song-site]
+work:
+  - name: Score-based generative modeling through SDEs
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/yang-song/score_sde
+    contribution: >-
+      First author, with Jascha Sohl-Dickstein, Diederik P. Kingma, Abhishek Kumar, Stefano Ermon, and
+      Ben Poole, of the 2020 paper; the official implementation in yang-song/score_sde is licensed under
+      the Apache License 2.0.
+    source_ids: [sde-paper, sde-repo]
+  - name: Consistency models
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/openai/consistency_models
+    contribution: >-
+      First author of "Consistency Models" (2023, with Prafulla Dhariwal, Mark Chen, and Ilya
+      Sutskever) and "Improved Techniques for Training Consistency Models" (2023, with Prafulla
+      Dhariwal), and co-author with Cheng Lu of "Simplifying, Stabilizing and Scaling Continuous-Time
+      Consistency Models" (2024). OpenAI's consistency_models repository releases code and checkpoints
+      under the MIT License.
+    source_ids: [cm-paper, ict-paper, scm-paper, cm-readme, song-site]
+links:
+  - label: Website
+    url: https://yang-song.net/
+  - label: GitHub
+    url: https://github.com/yang-song
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: song-site
+    title: Yang Song — homepage
+    url: https://yang-song.net/
+    publisher: Yang Song
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: sde-paper
+    title: "Score-Based Generative Modeling through Stochastic Differential Equations (arXiv 2011.13456)"
+    url: https://arxiv.org/abs/2011.13456
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-11-26
+    accessed_at: 2026-10-13
+  - id: sde-repo
+    title: yang-song/score_sde README and LICENSE (Apache-2.0)
+    url: https://github.com/yang-song/score_sde
+    publisher: yang-song (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: cm-paper
+    title: "Consistency Models (arXiv 2303.01469)"
+    url: https://arxiv.org/abs/2303.01469
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-02
+    accessed_at: 2026-10-13
+  - id: ict-paper
+    title: "Improved Techniques for Training Consistency Models (arXiv 2310.14189)"
+    url: https://arxiv.org/abs/2310.14189
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-22
+    accessed_at: 2026-10-13
+  - id: scm-paper
+    title: "Simplifying, Stabilizing and Scaling Continuous-Time Consistency Models (arXiv 2410.11081)"
+    url: https://arxiv.org/abs/2410.11081
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-14
+    accessed_at: 2026-10-13
+  - id: cm-readme
+    title: openai/consistency_models README and LICENSE (MIT)
+    url: https://github.com/openai/consistency_models
+    publisher: OpenAI (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

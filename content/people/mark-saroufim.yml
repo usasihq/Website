@@ -1,0 +1,103 @@
+slug: mark-saroufim
+name: Mark Saroufim
+initials: MS
+groups: [open-source, engineering, local]
+sector: corporate
+specialties: [ml-frameworks, inference]
+headline: Co-founder of Core Automation and of GPU MODE; PyTorch maintainer whose work includes torchao
+bio:
+  text: >-
+    Mark Saroufim's homepage describes Saroufim as a co-founder of Core Automation, a PyTorch
+    maintainer, and a co-founder of GPU MODE (formerly CUDA MODE). The homepage lists torchao,
+    PyTorch's native quantization library, among Saroufim's PyTorch work, and PyTorch's maintainers
+    page lists Saroufim as an emeritus maintainer of quantization (torch/ao) and among the
+    maintainers of TorchServe, now grouped with sunsetted modules. Saroufim co-authored the PyTorch 2
+    paper (ASPLOS 2024), listed with Meta, and is on the keynote program for PyTorch Conference
+    North America 2026 with "Linear Algebra for the Age of Research."
+  source_ids: [homepage, pytorch-maintainers, pt2-paper, keynote-na26]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Core Automation
+    organization_slug: null
+    role: Cofounder
+    current: true
+    source_ids: [homepage, keynote-na26]
+  - name: GPU MODE
+    organization_slug: null
+    role: Cofounder
+    current: true
+    source_ids: [homepage]
+  - name: Meta
+    organization_slug: meta
+    role: Listed with Meta as an author of the PyTorch 2 paper (2024)
+    current: false
+    source_ids: [pt2-paper]
+work:
+  - name: PyTorch (quantization and TorchServe)
+    artifact_slug: pytorch
+    type: open-source
+    url: https://github.com/pytorch/pytorch
+    contribution: >-
+      Listed on PyTorch's maintainers page as an emeritus quantization (torch/ao) maintainer and
+      among the TorchServe maintainers; co-author, listed with Meta, of the PyTorch 2 paper
+      introducing TorchDynamo and TorchInductor. The repository is under a BSD-style license.
+    source_ids: [pytorch-maintainers, pt2-paper, pytorch-license]
+  - name: torchao
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/pytorch/ao
+    contribution: >-
+      Listed on Saroufim's homepage under "Work on PyTorch"; the repository describes torchao as
+      PyTorch-native quantization for training and inference, under a BSD-style license.
+    source_ids: [homepage, torchao-repo]
+links:
+  - label: Website
+    url: https://www.marksaroufim.com/
+  - label: GitHub
+    url: https://github.com/msaroufim
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Mark Saroufim — portfolio homepage
+    url: https://www.marksaroufim.com/
+    publisher: Mark Saroufim
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pytorch-maintainers
+    title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
+    url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: 2026-06-05
+    accessed_at: 2026-10-13
+  - id: pt2-paper
+    title: "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS '24)"
+    url: https://docs.pytorch.org/assets/pytorch2-2.pdf
+    publisher: PyTorch
+    kind: paper
+    published_at: 2024-04
+    accessed_at: 2026-10-13
+  - id: keynote-na26
+    title: PyTorch Conference North America 2026 keynote speaker sessions announced
+    url: https://pytorch.org/blog/pytorch-conference-north-america-2026-keynote-speaker-sessions-announced/
+    publisher: PyTorch
+    kind: announcement
+    published_at: 2026-08-20
+    accessed_at: 2026-10-13
+  - id: torchao-repo
+    title: pytorch/ao README and LICENSE (BSD-style)
+    url: https://github.com/pytorch/ao
+    publisher: PyTorch (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pytorch-license
+    title: pytorch/pytorch LICENSE (BSD-style license)
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    publisher: PyTorch (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13

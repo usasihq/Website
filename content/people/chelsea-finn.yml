@@ -1,0 +1,82 @@
+slug: chelsea-finn
+name: Chelsea Finn
+initials: CF
+groups: [engineering, leadership]
+sector: academic
+specialties: [robotics, reinforcement-learning]
+headline: Stanford assistant professor who runs the IRIS lab; co-founder of Physical Intelligence and co-author of π0
+bio:
+  text: >-
+    Chelsea Finn is an Assistant Professor in Computer Science and Electrical Engineering at Stanford
+    University and a co-founder of Physical Intelligence (Pi). Finn's IRIS lab studies intelligence
+    through robotic interaction at scale, and Finn's homepage notes earlier time at Google with the
+    Google Brain and Google DeepMind teams. Finn is first author of the Model-Agnostic Meta-Learning
+    (MAML) paper and a co-author of the π0 vision-language-action model paper, whose model is
+    published in Physical Intelligence's openpi repository. Finn teaches Stanford's CS224R Deep
+    Reinforcement Learning.
+  source_ids: [homepage, maml-paper, pi0-paper, openpi-readme]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: Assistant Professor in Computer Science and Electrical Engineering
+    current: true
+    source_ids: [homepage]
+  - name: Physical Intelligence
+    organization_slug: physical-intelligence
+    role: Co-founder
+    current: true
+    source_ids: [homepage]
+work:
+  - name: π0 (openpi)
+    artifact_slug: openpi
+    type: open-source
+    url: https://github.com/Physical-Intelligence/openpi
+    contribution: >-
+      Co-author of "π0: A Vision-Language-Action Flow Model for General Robot Control" (2024). The
+      Apache-2.0 openpi repository, published by the Physical Intelligence team, provides the π0 model
+      with base checkpoints for fine-tuning.
+    source_ids: [pi0-paper, openpi-readme]
+  - name: Model-Agnostic Meta-Learning (MAML)
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1703.03400
+    contribution: >-
+      First author, with Pieter Abbeel and Sergey Levine, of the 2017 paper proposing a model-agnostic
+      meta-learning algorithm that trains models to adapt to new tasks from a few examples.
+    source_ids: [maml-paper]
+links:
+  - label: Website
+    url: https://ai.stanford.edu/~cbfinn/
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: homepage
+    title: Chelsea Finn — homepage (Stanford University)
+    url: https://ai.stanford.edu/~cbfinn/
+    publisher: Chelsea Finn (Stanford AI Lab)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: maml-paper
+    title: "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks (arXiv 1703.03400)"
+    url: https://arxiv.org/abs/1703.03400
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-09
+    accessed_at: 2026-10-13
+  - id: pi0-paper
+    title: "π0: A Vision-Language-Action Flow Model for General Robot Control (arXiv 2410.24164)"
+    url: https://arxiv.org/abs/2410.24164
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-31
+    accessed_at: 2026-10-13
+  - id: openpi-readme
+    title: Physical-Intelligence/openpi README and license (Apache-2.0)
+    url: https://github.com/Physical-Intelligence/openpi
+    publisher: Physical Intelligence (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13

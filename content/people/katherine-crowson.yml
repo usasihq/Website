@@ -1,0 +1,93 @@
+slug: katherine-crowson
+name: Katherine Crowson
+initials: KC
+groups: [open-source, engineering]
+sector: null
+specialties: [generative-media]
+headline: Creator of the k-diffusion library and co-first author of VQGAN-CLIP
+bio:
+  text: >-
+    Katherine Crowson, whose GitHub profile reads "AI/generative artist", is the author of k-diffusion,
+    an MIT-licensed PyTorch implementation of Karras et al.'s EDM diffusion framework with
+    improved sampling algorithms and transformer-based diffusion models. Crowson is co-first author of
+    "VQGAN-CLIP: Open Domain Image Generation and Editing with Natural Language Guidance" (2022), listed
+    with an EleutherAI affiliation; the paper credits Crowson with originating the idea of combining
+    VQGAN with CLIP and with heading the approach's development. Crowson is also first author of
+    "Scalable High-Resolution Pixel-Space Image Synthesis with Hourglass Diffusion Transformers"
+    (2024), and the k-diffusion README documents an hourglass diffusion transformer model type.
+  source_ids: [crowson-github, kdiff-readme, kdiff-license, vqganclip-html, vqganclip-paper, hdit-paper]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: EleutherAI
+    organization_slug: eleutherai
+    role: Listed with an EleutherAI affiliation as co-first author of the VQGAN-CLIP paper (2022)
+    current: false
+    source_ids: [vqganclip-html]
+work:
+  - name: k-diffusion
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/crowsonkb/k-diffusion
+    contribution: >-
+      Author of the k-diffusion repository, whose MIT License names Crowson as copyright holder; the
+      README describes it as an implementation of "Elucidating the Design Space of Diffusion-Based
+      Generative Models" with additional sampling algorithms and an hourglass diffusion transformer model
+      type.
+    source_ids: [kdiff-readme, kdiff-license, hdit-paper]
+  - name: VQGAN-CLIP
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2204.08583
+    contribution: >-
+      Co-first author with Stella Biderman; the paper's author contributions credit Crowson with
+      originating the idea of combining VQGAN with CLIP and with heading the approach's development.
+    source_ids: [vqganclip-paper, vqganclip-html]
+links:
+  - label: GitHub
+    url: https://github.com/crowsonkb
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: crowson-github
+    title: crowsonkb (Katherine Crowson) on GitHub
+    url: https://github.com/crowsonkb
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: kdiff-readme
+    title: crowsonkb/k-diffusion README
+    url: https://github.com/crowsonkb/k-diffusion
+    publisher: crowsonkb (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: kdiff-license
+    title: crowsonkb/k-diffusion LICENSE (MIT)
+    url: https://github.com/crowsonkb/k-diffusion/blob/master/LICENSE
+    publisher: crowsonkb (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: vqganclip-paper
+    title: "VQGAN-CLIP: Open Domain Image Generation and Editing with Natural Language Guidance (arXiv 2204.08583)"
+    url: https://arxiv.org/abs/2204.08583
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-18
+    accessed_at: 2026-10-13
+  - id: vqganclip-html
+    title: "VQGAN-CLIP (arXiv HTML version: author affiliations and contributions)"
+    url: https://arxiv.org/html/2204.08583
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-04
+    accessed_at: 2026-10-13
+  - id: hdit-paper
+    title: "Scalable High-Resolution Pixel-Space Image Synthesis with Hourglass Diffusion Transformers (arXiv 2401.11605)"
+    url: https://arxiv.org/abs/2401.11605
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-01-21
+    accessed_at: 2026-10-13

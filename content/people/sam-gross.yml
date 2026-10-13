@@ -1,0 +1,94 @@
+slug: sam-gross
+name: Sam Gross
+initials: SG
+groups: [open-source, engineering]
+sector: corporate
+specialties: [ml-frameworks, developer-tools]
+headline: Co-author of the PyTorch paper and author of PEP 703, which makes CPython's GIL optional
+bio:
+  text: >-
+    Sam Gross is the second author of the 2019 PyTorch paper, listed there with Facebook AI
+    Research, and PyTorch's maintainers page lists Gross as an emeritus maintainer of torch.nn and
+    of the MKLDNN integration. Gross is the author of PEP 703, "Making the Global Interpreter Lock
+    Optional in CPython," whose status is Final. Gross's GitHub profile lists Thinking Machines as
+    their company.
+  source_ids: [pytorch-paper, pytorch-paper-pdf, pytorch-maintainers, pep-703, github-profile]
+  reviewed_at: 2026-10-13
+affiliations:
+  - name: Thinking Machines
+    organization_slug: thinking-machines-lab
+    role: Company listed on Sam Gross's GitHub profile
+    current: true
+    source_ids: [github-profile]
+  - name: Facebook AI Research (Meta)
+    organization_slug: meta
+    role: Listed with Facebook AI Research as an author of the 2019 PyTorch paper
+    current: false
+    source_ids: [pytorch-paper-pdf]
+work:
+  - name: PyTorch
+    artifact_slug: pytorch
+    type: open-source
+    url: https://github.com/pytorch/pytorch
+    contribution: >-
+      Second author of "PyTorch: An Imperative Style, High-Performance Deep Learning Library"
+      (2019); listed on PyTorch's maintainers page as an emeritus maintainer of torch.nn and
+      MKLDNN. The repository is under a BSD-style license.
+    source_ids: [pytorch-paper, pytorch-maintainers, pytorch-license]
+  - name: "PEP 703: Making the Global Interpreter Lock Optional in CPython"
+    artifact_slug: null
+    type: open-research
+    url: https://peps.python.org/pep-0703/
+    contribution: >-
+      Author of PEP 703 (created January 2023, status Final), the Python Enhancement Proposal for
+      making the global interpreter lock optional in CPython.
+    source_ids: [pep-703]
+links:
+  - label: GitHub
+    url: https://github.com/colesbury
+publication_status: published
+updated_at: 2026-10-13
+last_reviewed: 2026-10-13
+sources:
+  - id: github-profile
+    title: colesbury (Sam Gross) on GitHub
+    url: https://github.com/colesbury
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pytorch-paper
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library (arXiv 1912.01703)"
+    url: https://arxiv.org/abs/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-13
+  - id: pytorch-paper-pdf
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library, paper PDF with author affiliations (arXiv 1912.01703)"
+    url: https://arxiv.org/pdf/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-13
+  - id: pytorch-maintainers
+    title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
+    url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
+    publisher: PyTorch
+    kind: documentation
+    published_at: 2026-06-05
+    accessed_at: 2026-10-13
+  - id: pytorch-license
+    title: pytorch/pytorch LICENSE (BSD-style license)
+    url: https://github.com/pytorch/pytorch/blob/main/LICENSE
+    publisher: PyTorch (GitHub repository)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-13
+  - id: pep-703
+    title: "PEP 703 – Making the Global Interpreter Lock Optional in CPython"
+    url: https://peps.python.org/pep-0703/
+    publisher: Python Software Foundation (peps.python.org)
+    kind: documentation
+    published_at: 2023-01-09
+    accessed_at: 2026-10-13
