@@ -7,7 +7,7 @@ import { DEFAULT_NEWS_FILTERS, filterNews, parseNewsFilters, serializeNewsFilter
 import { personLd } from "@/lib/structured-data";
 import { personSeo } from "@/lib/seo";
 
-const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: "2026-10-13" });
+const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10) });
 const items = peopleListItems(catalog);
 
 describe("People directory", () => {

@@ -10,7 +10,7 @@ describe("landing page text", () => {
   // Realistic upper bounds: 9,999 listings from 99 employers, and the longest date and state names.
   const worst: Facts = { count: 9999, employers: 99, soleEmployer: null, date: "Sep 30, 2026", usOnly: 9999, outside: 9999 };
   const longCity = "X".repeat(MAX_CITY_NAME);
-  const employers = loadCatalog(path.join(process.cwd(), "content"), { today: "2026-10-13" }).organizations.map((o) =>
+  const employers = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10) }).organizations.map((o) =>
     companyDefinition({ slug: o.slug, name: o.name, provider: o.careers?.source.type ?? null }),
   );
   const defs = [
@@ -42,7 +42,7 @@ describe("landing page text", () => {
 });
 
 describe("landing pages from listings", () => {
-  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: "2026-10-13" });
+  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10) });
   const now = Date.parse("2026-10-13T12:00:00.000Z");
   const seen = "2026-10-13T11:00:00.000Z";
   const feed = (organization_slug: string): FeedHealth => ({ organization_slug, source_type: "greenhouse", source_identifier: organization_slug, last_attempted: seen,
