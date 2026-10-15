@@ -178,8 +178,10 @@ view, summary counts and filter options; the browser then loads the full open li
 Until it arrives, a filtered URL shows a loading state rather than a result computed from 30 rows. This kept
 the page at about 270 KB of HTML with 30 employer feeds. Company routes receive counts,
 not full feeds. Company links preserve catalog context. Home has a restrained entry point.
-No individual job pages, JobPosting structured data, or indexable facet routes are created.
-Every query view canonicals to `/jobs/`; only that path enters the sitemap. Static hosts
+Each current listing has its own page (`/jobs/at/<employer>/<slug>/`) with JobPosting
+JSON-LD when the listing has a description and a U.S. address or is fully remote and
+U.S.-only; see `reports/seo/jobs-structured-data.md`. Query views of `/jobs/` canonical
+to `/jobs/` and never carry JobPosting. Static hosts
 cannot vary metadata by query, so canonical consolidation is deliberate. No private job
 history is exported as standalone public data. Source/job links follow existing same-tab
 noopener/noreferrer conventions. React text rendering, strict URLs and existing CSP

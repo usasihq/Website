@@ -149,6 +149,8 @@ Difficulty: medium (general questions with many answers). Explainer H1s keep the
 | Open model & tool pages | BreadcrumbList; SoftwareSourceCode for frameworks, runtimes, and research stacks (repository, license URL, maintainers) |
 | People Behind Big SI profiles | ProfilePage with Person (employers' official websites), BreadcrumbList |
 | Directories, places, state pages, license guide index, hubs | ItemList (every entry with position, name, and URL) |
+| Job detail pages (`/jobs/at/<employer>/<slug>/`) | JobPosting (when the listing qualifies) and BreadcrumbList |
+| Jobs directory (`/jobs/`) and landing pages | CollectionPage and ItemList; never JobPosting |
 | Hub, license guide, explainer, news, kids, newsletter pages | BreadcrumbList (plus existing Article / LearningResource / Course where present) |
 | Glossary | DefinedTermSet (existing) |
 | FAQ | FAQPage (existing) |

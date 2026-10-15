@@ -1,16 +1,17 @@
 import Link from "next/link";
+import { ExternalLink } from "@/components/ExternalLink";
+import { JsonLd } from "@/components/JsonLd";
+import { JobsFreshness } from "@/components/JobsFreshness";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
-import { ExternalLink } from "@/components/ExternalLink";
-import { JobsFreshness } from "@/components/JobsFreshness";
 import { formatDate } from "@/lib/dates";
+import { jobHref } from "@/lib/jobs/job-url";
+import { jobsLandingJsonLd } from "@/lib/jobs/jsonld";
 import { MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
 import type { LandingLink } from "@/lib/jobs/landing-links";
 import { checkedLabel, DEFAULT_JOB_FILTERS, serializeJobFilters, type JobItem } from "@/lib/jobs/search";
 import { isExpressionOfInterest } from "@/lib/jobs/tracks";
-import { absoluteUrl } from "@/lib/paths";
 import { orgHref } from "@/lib/routes";
-import { jobHref } from "@/lib/jobs/job-url";
 
 const n = (v: number) => v.toLocaleString("en-US");
 const count = (v: number, one: string, many: string) => `${n(v)} ${v === 1 ? one : many}`;
@@ -121,24 +122,10 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
   const shown = page.listings.length;
   const trail = [{ href: "/jobs/", label: "Jobs" }, ...(parent ? [parent] : []), { href: page.path, label: page.name }];
   const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...DEFAULT_JOB_FILTERS, ...page.filters, sort: "newest", company: slug })}`;
-  // The BreadcrumbList comes from PageHeader's breadcrumbs.
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ItemList",
-        name: `Employers with listings on “${page.h1}”`,
-        description: `Organizations in the USASI catalog with current listings on this page, as of ${formatDate((page.lastChecked ?? page.buildAt).slice(0, 10))}.`,
-        url: absoluteUrl(page.path),
-        numberOfItems: page.employers.length,
-        itemListOrder: "https://schema.org/ItemListOrderDescending",
-        itemListElement: page.employers.map((e, i) => ({ "@type": "ListItem", position: i + 1, name: e.name, url: absoluteUrl(orgHref(e.slug)) })),
-      },
-    ],
-  };
+  // BreadcrumbList comes from PageHeader; CollectionPage / ItemList from jobsLandingJsonLd (never JobPosting).
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={jobsLandingJsonLd(page)} />
       <PageHeader
         eyebrow={page.eyebrow}
         title={page.h1}

@@ -1,7 +1,9 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
+import { jobsIndexJsonLd, jobsLandingJsonLd } from "@/lib/jobs/jsonld";
 import { cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { jobHref } from "@/lib/jobs/job-url";
 import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, type JobItem } from "@/lib/jobs/search";
 import type { FeedHealth } from "@/lib/jobs/schema";
 import { US_STATES } from "@/lib/places";
@@ -138,5 +140,32 @@ describe("landing pages from listings", () => {
   it("never emits JobPosting-style fields it does not have", () => {
     expect(Object.keys(DEFAULT_JOB_FILTERS)).toContain("state");
     expect(JSON.stringify(georgia)).not.toContain("JobPosting");
+  });
+
+  it("describes a landing page as a CollectionPage of the listings shown, not as JobPosting", () => {
+    const ld = jobsLandingJsonLd(georgia) as { "@graph": { "@type": string; numberOfItems?: number; itemListElement?: { url: string }[] }[] };
+    const types = ld["@graph"].map((n) => n["@type"]);
+    expect(types).toEqual(["CollectionPage", "ItemList", "ItemList"]);
+    expect(JSON.stringify(ld)).not.toContain("JobPosting");
+    const listings = ld["@graph"].find((n) => n["@type"] === "ItemList" && n.numberOfItems === LISTINGS_SHOWN)!;
+    expect(listings.numberOfItems).toBe(georgia.listings.length);
+    expect(listings.itemListElement![0].url).toContain(jobHref(georgia.listings[0]));
+  });
+});
+
+describe("jobs directory structured data", () => {
+  it("lists topic, state, and city pages and omits JobPosting and empty topic pages", () => {
+    const ld = jobsIndexJsonLd([
+      { path: "/jobs/remote/", name: "Remote jobs, all locations", count: 40, kind: "topic", state: null },
+      { path: "/jobs/remote-us/", name: "Remote jobs, U.S. locations", count: 0, kind: "topic", state: null },
+      { path: "/jobs/in/california/", name: "Jobs in California", count: 50, kind: "state", state: "CA" },
+      { path: "/jobs/at/openai/", name: "Jobs at OpenAI", count: 100, kind: "company", state: null },
+    ]) as { "@graph": { "@type": string; numberOfItems?: number; itemListElement?: { name: string }[] }[] };
+    expect(ld["@graph"][0]["@type"]).toBe("CollectionPage");
+    const list = ld["@graph"][1];
+    expect(list["@type"]).toBe("ItemList");
+    expect(list.numberOfItems).toBe(2);
+    expect(list.itemListElement!.map((i) => i.name)).toEqual(["Remote jobs, all locations", "Jobs in California"]);
+    expect(JSON.stringify(ld)).not.toContain("JobPosting");
   });
 });

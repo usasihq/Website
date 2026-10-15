@@ -82,9 +82,18 @@ describe("JobPosting data", () => {
     expect(remote.jobLocationType).toBe("TELECOMMUTE");
     expect(remote.applicantLocationRequirements).toEqual({ "@type": "Country", name: "US" });
     expect(remote.jobLocation).toBeUndefined();
+    expect(remote).not.toHaveProperty("validThrough");
     expect(jobPostingLd(page(job(), null))).toBeNull();
     expect(jobPostingLd(page(job({ locations: ["London, UK"] })))).toBeNull();
     expect(jobPostingLd(page(job({ posted_at: null })))!.datePosted).toBe("2026-10-02");
+  });
+
+  it("does not mark hybrid or remote-friendly jobs as TELECOMMUTE, and omits expressions of interest", () => {
+    const hybrid = jobPostingLd(page(job({ locations: ["San Francisco, CA", "Remote - US"], workplace: "hybrid", remote: true })))!;
+    expect(hybrid.jobLocationType).toBeUndefined();
+    expect(hybrid.jobLocation).toEqual([{ "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "San Francisco", addressRegion: "CA", addressCountry: "US" } }]);
+    expect(jobPostingLd(page(job({ locations: ["Remote - US"], workplace: "hybrid", remote: true })))).toBeNull();
+    expect(jobPostingLd(page(job({ title: "Talent Community (General Application)" })))).toBeNull();
   });
 
   it("reads addresses from location text without guessing", () => {
@@ -114,5 +123,21 @@ describe("job page HTML", () => {
     const html = renderJobPage(page(job(), null), { htmlClass: "", links: "" });
     expect(html).toContain('<meta name="robots" content="noindex, follow"/>');
     expect(html).not.toContain('"@type":"JobPosting"');
+  });
+
+  it("emits JobPosting JSON-LD on a complete listing page", () => {
+    const html = renderJobPage(page(job()), { htmlClass: "", links: "" });
+    const block = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+      .map((m) => JSON.parse(m[1]))
+      .find((d) => d["@type"] === "JobPosting");
+    expect(block).toMatchObject({
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      title: "Research Engineer",
+      datePosted: "2026-10-01",
+      directApply: false,
+      employmentType: "FULL_TIME",
+    });
+    expect(block).not.toHaveProperty("validThrough");
   });
 });

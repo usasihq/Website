@@ -14,6 +14,7 @@ import { jobSlug } from "./job-url";
 import { readJobs } from "./load";
 import type { Job } from "./schema";
 import { isCurrent } from "./search";
+import { isExpressionOfInterest } from "./tracks";
 
 export type JobPage = { job: Job; org: Organization; slug: string; path: string; description: Description | null };
 
@@ -74,16 +75,26 @@ export function postalAddresses(job: Pick<Job, "locations">): { addressLocality?
 /**
  * schema.org JobPosting for Google's job search, or null when the listing
  * lacks what the format requires (a description, and a U.S. address or a
- * remote listing open to U.S. applicants). Every field comes from the
- * employer's feed; nothing is inferred.
+ * fully remote listing open to U.S. applicants). Every field comes from the
+ * employer's feed; nothing is inferred. validThrough is omitted: feeds do not
+ * supply an expiration date. Stale listings never reach this function
+ * (`isCurrent`, seen within 48 hours), so their pages and markup are gone
+ * after the next refresh and deploy rather than given a guessed expiry.
+ *
+ * Applications happen on the employer's site (`directApply: false`). Google's
+ * JobPosting type has no field for "apply on the employer URL"; the visible
+ * apply links and this flag are the accurate signal.
  */
 export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
   const { job, org, description } = p;
   if (!description) return null;
+  if (isExpressionOfInterest(job.title)) return null;
   const addresses = postalAddresses(job);
-  const remote = job.workplace === "remote" || job.remote === true;
+  // Google's TELECOMMUTE value is only for jobs that are 100% remote, not hybrid
+  // or "remote-friendly". The employer workplace field is the only verified signal.
+  const fullyRemote = job.workplace === "remote";
   const usOnly = isUSOnly(job);
-  if (!addresses.length && !(remote && usOnly)) return null;
+  if (!addresses.length && !(fullyRemote && usOnly)) return null;
   const salary = job.salaries.find((s) => s.currency && (s.min !== null || s.max !== null));
   return {
     "@context": "https://schema.org",
@@ -99,7 +110,7 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
     ...(addresses.length
       ? { jobLocation: addresses.map((a) => ({ "@type": "Place", address: { "@type": "PostalAddress", ...a } })) }
       : {}),
-    ...(remote && usOnly ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "US" } } : {}),
+    ...(fullyRemote && usOnly ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "US" } } : {}),
     ...(salary
       ? {
           baseSalary: {

@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+import { isExpressionOfInterest } from "../../lib/jobs/tracks";
 
 /**
  * Jobs landing pages (/jobs/in/<state>/, /jobs/in/<state>/<city>/, and the topic pages), built from the
@@ -38,6 +39,7 @@ test("a state page answers first, labels geography, and links to employers and l
   await expect(posting).toHaveAttribute("href", /^https:\/\//);
   const ld = await jsonLd(page);
   expect(ld).toContain('"BreadcrumbList"');
+  expect(ld).toContain('"CollectionPage"');
   expect(ld).toContain('"ItemList"');
   expect(ld).not.toContain("JobPosting");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/in\/california\/$/);
@@ -182,6 +184,16 @@ test("each listing has its own page with the employer's description, an apply li
   await expect(page.getByTestId("header-disclaimer")).toContainText("Not a U.S. government website");
   const ld = await jsonLd(page);
   expect(ld).toContain('"BreadcrumbList"');
+  const fallback = page.getByTestId("job-description").getByText(/The full description is on/);
+  // JobPosting needs the stored employer description (operational, not in git) plus a U.S. address
+  // or fully remote U.S. listing. Expressions of interest are left unmarked.
+  if ((await fallback.count()) || isExpressionOfInterest(title)) {
+    expect(ld).not.toContain('"JobPosting"');
+  } else {
+    expect(ld).toContain('"@type":"JobPosting"');
+    expect(ld).toContain('"directApply":false');
+    expect(ld).not.toContain('"validThrough"');
+  }
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/at\/anthropic\/[a-z0-9-]+-[0-9a-z]{7}\/$/);
   // No script runs on a job page beyond the analytics beacon Cloudflare may add.
   expect(await page.locator("script:not([type='application/ld+json'])").count()).toBe(0);
