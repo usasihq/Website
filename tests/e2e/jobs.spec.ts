@@ -33,7 +33,10 @@ test("jobs accessibility, safe employer links and responsive width", async ({ pa
 test("metadata consolidates filters and no transient JobPosting markup", async ({ page }) => {
   await page.goto("/jobs/?company=openai&sort=newest");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/$/);
-  expect(await page.locator('script[type="application/ld+json"]').allTextContents()).not.toContain('"JobPosting"');
+  const ld = (await page.locator('script[type="application/ld+json"]').allTextContents()).join("\n");
+  expect(ld).toContain('"CollectionPage"');
+  expect(ld).toContain('"ItemList"');
+  expect(ld).not.toContain('"JobPosting"');
   const sitemap = await (await page.request.get("/sitemap.xml")).text();
   expect(sitemap).toContain("/jobs/"); expect(sitemap).not.toContain("?company=");
 });

@@ -212,6 +212,7 @@ for (const person of readDir("people")) {
 {
   const LD = /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
   const DETAIL = /^(?:(?:companies|open|big-si|licenses|places|hubs|news|newsletter|learn|kids)\/[^/]+|learn\/(?:paths|tools)\/[^/]+)\/index\.html$/;
+  const JOB_DETAIL = /^jobs\/at\/[^/]+\/[^/]+\/index\.html$/;
   const absolute = (u) => typeof u === "string" && /^https?:\/\/[^\s/]+\//.test(u);
   const nodesOf = (value, found = []) => {
     if (Array.isArray(value)) value.forEach((v) => nodesOf(v, found));
@@ -240,6 +241,20 @@ for (const person of readDir("people")) {
       for (const node of top) if (!node?.["@type"]) failures.push(`${rel}: JSON-LD node without @type`);
       for (const node of nodesOf(data)) {
         types.add(node["@type"]);
+        if (node["@type"] === "JobPosting") {
+          if (!node.title || !node.description || !node.datePosted || !node.hiringOrganization?.name) {
+            failures.push(`${rel}: JobPosting needs title, description, datePosted, and hiringOrganization.name`);
+          }
+          if (!node.jobLocation && node.jobLocationType !== "TELECOMMUTE") {
+            failures.push(`${rel}: JobPosting needs jobLocation or jobLocationType TELECOMMUTE`);
+          }
+          if (node.jobLocationType === "TELECOMMUTE" && !node.applicantLocationRequirements) {
+            failures.push(`${rel}: TELECOMMUTE JobPosting needs applicantLocationRequirements`);
+          }
+          if (node.directApply !== false) {
+            failures.push(`${rel}: JobPosting must set directApply false (applications are on the employer's site)`);
+          }
+        }
         if (node["@type"] !== "BreadcrumbList" && node["@type"] !== "ItemList") continue;
         const isTrail = node["@type"] === "BreadcrumbList";
         const items = node.itemListElement;
@@ -255,7 +270,10 @@ for (const person of readDir("people")) {
         });
       }
     }
-    if (DETAIL.test(rel) && !types.has("BreadcrumbList")) failures.push(`${rel}: detail page without a BreadcrumbList`);
+    if ((DETAIL.test(rel) || JOB_DETAIL.test(rel)) && !types.has("BreadcrumbList")) failures.push(`${rel}: detail page without a BreadcrumbList`);
+    if (rel.startsWith("jobs/") && !JOB_DETAIL.test(rel) && types.has("JobPosting")) {
+      failures.push(`${rel}: list page must not include JobPosting`);
+    }
   }
   console.log(`postbuild: ${blocks} JSON-LD blocks checked.`);
 }
