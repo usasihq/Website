@@ -148,3 +148,65 @@ test("screenshots of two landing pages at 375 and 1280 pixels", async ({ page },
     }
   }
 });
+
+test("an employer's jobs page is shareable and lists that employer's listings", async ({ page }) => {
+  await page.goto("/jobs/");
+  const employers = page.getByTestId("browse-employers");
+  const first = employers.locator('a[href^="/jobs/at/"]').first();
+  const href = (await first.getAttribute("href"))!;
+  await first.click();
+  await expect(page).toHaveURL(new RegExp(`${href}$`));
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/^Jobs at /);
+  const count = await countOnPage(page);
+  expect(count).toBeGreaterThan(0);
+  await expect(page.getByTestId("landing-employer")).toBeVisible();
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /from its own job board/);
+  const slug = href.split("/")[3];
+  const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
+  await page.getByRole("link", { name: /^See all [\d,]+ in the Jobs directory$|^Filter these in the Jobs directory$/ }).click();
+  await loaded;
+  await expect(page).toHaveURL(new RegExp(`/jobs/\\?company=${slug}&sort=newest$`));
+  await expect(page.getByTestId("jobs-company-page").locator(`a[href="/jobs/at/${slug}/"]`)).toBeVisible();
+});
+
+test("each listing has its own page with the employer's description, an apply link, and JobPosting data", async ({ page }) => {
+  await page.goto("/jobs/at/anthropic/");
+  const listing = page.locator('#listings h3 a[href^="/jobs/at/anthropic/"]').first();
+  const title = (await listing.textContent())!.replace(/ at Anthropic$/, "").trim();
+  await listing.click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);
+  await expect(page.getByTestId("job-description")).not.toBeEmpty();
+  const apply = page.getByTestId("job-apply").locator("a").first();
+  await expect(apply).toHaveAttribute("href", /^https:\/\/(job-boards|boards)\.greenhouse\.io\/anthropic\//);
+  await expect(apply).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(page.getByTestId("header-disclaimer")).toContainText("Not a U.S. government website");
+  const ld = await jsonLd(page);
+  expect(ld).toContain('"BreadcrumbList"');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/at\/anthropic\/[a-z0-9-]+-[0-9a-z]{7}\/$/);
+  // No script runs on a job page beyond the analytics beacon Cloudflare may add.
+  expect(await page.locator("script:not([type='application/ld+json'])").count()).toBe(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+});
+
+test("job pages pass axe", async ({ page }) => {
+  await page.goto("/jobs/at/anthropic/");
+  await page.locator('#listings h3 a[href^="/jobs/at/anthropic/"]').first().click();
+  const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+  expect(axe.violations.map((v) => v.id)).toEqual([]);
+});
+
+test("search understands abbreviations, offers popular searches, and narrows by city", async ({ page }) => {
+  const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
+  await page.goto("/jobs/");
+  await loaded;
+  await page.getByRole("group", { name: "Popular searches" }).getByRole("button", { name: "Machine learning" }).click();
+  await expect(page).toHaveURL(/q=Machine\+learning/);
+  const first = page.locator("main article h2").first();
+  await expect(first).toContainText(/machine learning|\bML\b/i);
+  await page.getByLabel("U.S. state named in location", { exact: true }).selectOption("CA");
+  const city = page.getByLabel("City", { exact: true });
+  await expect(city).toBeVisible();
+  await city.selectOption("san-francisco");
+  await expect(page).toHaveURL(/state=CA&city=san-francisco/);
+  await expect(page.getByTestId("jobs-city-filter")).toContainText("San Francisco");
+});

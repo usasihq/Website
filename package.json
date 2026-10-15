@@ -17,7 +17,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test --project=desktop --project=mobile",
     "test:basepath": "node scripts/test-basepath.mjs",
-    "build": "npm run validate && npm run prepare:data && npm run prepare:cards && next build && node scripts/postbuild.mjs",
+    "build": "npm run validate && npm run prepare:data && npm run prepare:cards && next build && tsx scripts/job-pages.ts && node scripts/postbuild.mjs",
     "prepare:data": "tsx scripts/generate-data.ts",
     "prepare:images": "node scripts/prepare-images.mjs",
     "prepare:social": "node scripts/social-cards.mjs",

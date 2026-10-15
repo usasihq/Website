@@ -49,6 +49,47 @@ export function serializeJobFilters(f: JobFilters): string {
   return p.toString();
 }
 const normalize = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+/** Lowercase words separated by single spaces, for whole-word matching. */
+const words = (s: string) => ` ${normalize(s).replace(/[^a-z0-9+#.]+/g, " ").trim()} `;
+
+/** Job-search abbreviations and the words they stand for; a query matches any form in its group. */
+export const JOB_SYNONYMS: string[][] = [
+  ["ml", "machine learning"], ["ai", "artificial intelligence"], ["swe", "software engineer"], ["sde", "software development engineer"],
+  ["pm", "product manager"], ["tpm", "technical program manager"], ["sre", "site reliability"], ["ux", "user experience"],
+  ["nlp", "natural language processing"], ["llm", "large language model"], ["gtm", "go to market"], ["hr", "human resources"],
+  ["mgr", "manager"], ["sr", "senior"], ["jr", "junior"], ["intern", "internship"], ["infra", "infrastructure"], ["mts", "member of technical staff"],
+  ["rl", "reinforcement learning"], ["cv", "computer vision"], ["ae", "account executive"], ["sdr", "sales development representative"],
+  ["bd", "business development"], ["qa", "quality assurance"], ["ds", "data scientist"], ["eng", "engineer", "engineering"],
+];
+
+/**
+ * A search query as groups of alternatives. Every group must match somewhere in a
+ * listing. Words of three letters or fewer match whole words only ("go" does not
+ * match "Chicago"); longer words match inside words ("engineer" matches
+ * "engineering"); phrases match from the start of a word ("software engineer"
+ * matches "Software Engineering Manager").
+ */
+export function jobQuery(q: string): string[][] {
+  let text = words(q);
+  const groups: string[][] = [];
+  // Spelled-out phrases first ("machine learning" also matches "ML"), longest first.
+  const forms = JOB_SYNONYMS.flatMap((g) => g.map((f) => ({ f, g }))).sort((a, b) => b.f.length - a.f.length);
+  for (const { f, g } of forms) {
+    if (!f.includes(" ")) continue;
+    if (text.includes(` ${f} `)) {
+      groups.push(g);
+      text = text.replace(` ${f} `, " ");
+    }
+  }
+  for (const w of text.trim().split(" ").filter(Boolean)) {
+    const g = JOB_SYNONYMS.find((group) => group.includes(w));
+    groups.push(g ?? [w]);
+  }
+  return groups;
+}
+const hasTerm = (text: string, term: string) =>
+  term.length <= 3 ? text.includes(` ${term} `) : term.includes(" ") ? text.includes(` ${term}`) : text.includes(term);
+const matchesGroup = (text: string, group: string[]) => group.some((t) => hasTerm(text, t));
 const collator = new Intl.Collator("en");
 const byCode = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 /** Currently confirmed rows, unsorted (for counts). */
@@ -58,7 +99,7 @@ export function currentJobs(items: JobItem[], feeds: FeedHealth[], now: number):
 }
 export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters, now: number): JobItem[] {
   const health = new Map(feeds.map(v => [`${v.organization_slug}:${v.source_type}:${v.source_identifier}`, v]));
-  const words = normalize(f.q).split(/\s+/).filter(Boolean);
+  const query = jobQuery(f.q);
   const city = f.city && f.state ? `${f.state}|${f.city}` : "";
   const rows = items.filter(j => {
     if (j.status !== "open") return false;
@@ -77,12 +118,23 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     if ((f.currency || f.period || f.salary_min) && !j.salaries.some(s => (!f.currency || s.currency === f.currency) && (!f.period || s.period === f.period) && (!f.salary_min || (s.min !== null && s.min >= Number(f.salary_min))))) return false;
     if (f.posted && (!j.posted_at || now < Date.parse(j.posted_at) || now - Date.parse(j.posted_at) > Number(f.posted) * 86400000)) return false;
     if (f.verified && now - Date.parse(j.last_seen) > Number(f.verified) * 3600000) return false;
-    if (!words.length) return true;
-    const text = normalize([j.title, j.organization_name, j.department, j.team, ...j.locations, ...j.countries].join(" "));
-    return words.every(w => text.includes(w));
+    if (!query.length) return true;
+    const text = words([j.title, j.organization_name, j.department, j.team, ...j.locations, ...j.countries].join(" "));
+    return query.every(g => matchesGroup(text, g));
   });
+  // With a search and the default order, listings whose title matches more of the query come first.
+  const relevance = new Map<string, number>();
+  if (query.length && f.sort === "verified") {
+    for (const j of rows) {
+      const title = words(j.title);
+      const hits = query.filter(g => matchesGroup(title, g)).length;
+      relevance.set(j.id, hits + (hits === query.length ? 1 : 0));
+    }
+  }
   // ISO timestamps and IDs sort correctly by code point; names use one shared collator (much faster than localeCompare per pair).
   return rows.sort((a,b) => {
+    const rel = (relevance.get(b.id) ?? 0) - (relevance.get(a.id) ?? 0);
+    if (rel) return rel;
     const order = f.sort === "newest" ? byCode(b.posted_at ?? "", a.posted_at ?? "") : f.sort === "verified" ? byCode(b.last_seen, a.last_seen) :
       f.sort === "company" ? collator.compare(a.organization_name, b.organization_name) : collator.compare(a.title, b.title);
     return order || collator.compare(a.title, b.title) || byCode(a.id, b.id);

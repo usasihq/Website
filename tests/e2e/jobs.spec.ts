@@ -40,8 +40,9 @@ test("metadata consolidates filters and no transient JobPosting markup", async (
 test("organization jobs and no-source states are distinct", async ({ page }) => {
   await page.goto("/companies/openai/");
   await expect(page.getByRole("heading", {name:"Open positions",exact:true})).toBeVisible();
-  await page.getByRole("link", {name:"Browse OpenAI jobs"}).click();
-  await expect(page).toHaveURL(/\/jobs\/\?company=openai/);
+  await page.getByRole("link", {name:"All OpenAI jobs"}).click();
+  await expect(page).toHaveURL(/\/jobs\/at\/openai\/$/);
+  await expect(page.getByRole("heading", {level:1})).toHaveText("Jobs at OpenAI");
   await page.goto("/companies/nvidia/");
   await expect(page.getByText("Automated job coverage is not configured for this organization.")).toBeVisible();
 });

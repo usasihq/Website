@@ -46,7 +46,7 @@ export const Job = z.object({
   workplace: z.enum(["remote", "hybrid", "on-site", "unknown"]), remote: z.boolean().nullable(),
   employment_type: z.enum(["full-time", "part-time", "contract", "temporary", "internship", "unknown"]),
   department: text().nullable(), team: text().nullable(),
-  // No inferred categories, skills, seniority or description copies.
+  // No inferred categories, skills, or seniority. Descriptions live apart, in data/jobs/descriptions.json (see descriptions-store.ts).
   salaries: z.array(Salary).max(30), official_url: JobUrl, apply_url: JobUrl.nullable(),
   posted_at: instant.nullable(), posted_date_kind: z.enum(["first-published", "last-published"]).nullable(),
   first_seen: instant, last_seen: instant, last_successfully_checked: instant,

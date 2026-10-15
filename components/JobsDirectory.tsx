@@ -10,6 +10,7 @@ import { US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
 import { ExternalLink } from "./ExternalLink";
+import { jobHref } from "@/lib/jobs/job-url";
 import { SearchField, SelectField, ResultSummary } from "./FilterControls";
 import { useDebounced, useQueryState } from "./useQueryState";
 export type CareerCoverage = { slug: string; name: string; url: string | null; mode: "automated" | "manual" | "unsupported" | "not-configured"; note: string | null };
@@ -19,8 +20,9 @@ function salaryText(s: Job["salaries"][number]): string {
 }
 function JobCard({ job, unverified }: { job: JobItem; unverified: boolean }) {
   return <article className="card h-full p-5">
-    <Link prefetch={false} href={orgHref(job.organization_slug)} className="link text-sm">{job.organization_name}</Link>
-    <h2 className="mt-2 text-lg font-semibold text-text break-words">{job.title}</h2>
+    <Link prefetch={false} href={`/jobs/at/${job.organization_slug}/`} className="link text-sm">{job.organization_name}</Link>
+    {/* Current listings have their own page; older, unverified ones only the employer's posting. */}
+    <h2 className="mt-2 text-lg font-semibold text-text break-words">{unverified ? job.title : <a href={jobHref(job)} className="hover:underline hover:decoration-cyan hover:underline-offset-4">{job.title}</a>}</h2>
     {isExpressionOfInterest(job.title) ? <p className="mt-2 text-sm text-ice">The employer&apos;s title presents this as a general expression of interest, not a specific vacancy.</p> : null}
     <p className="mt-3 text-sm text-muted">{job.locations.length ? job.locations.join(" · ") : "Location not supplied"}</p>
     <p className="mt-2 text-sm text-muted">{[job.employment_type !== "unknown" ? job.employment_type : null, job.workplace !== "unknown" ? job.workplace : "Workplace type not supplied"].filter(Boolean).join(" · ")}</p>
@@ -33,6 +35,8 @@ function JobCard({ job, unverified }: { job: JobItem; unverified: boolean }) {
     <details className="mt-3 text-xs text-muted"><summary className="min-h-8 cursor-pointer">Source and corrections</summary><p className="mt-2">Collected from the employer’s {job.source_type === "ashby" ? "Ashby" : "Greenhouse"} feed. Posting ID: {job.source_job_id}. Unknown fields are not inferred.</p><ExternalLink href={job.source_url}>Source feed</ExternalLink>{siteConfig.contact.email ? <p className="mt-2"><a className="link" href={mailtoHref(siteConfig.contact.email, `Job correction: ${job.title}`, `Job: ${job.id}\nOfficial posting: ${job.official_url}\nDisputed field:\nProposed correction:\nSupporting source:\n`)}>Suggest a correction</a></p> : null}</details>
   </article>;
 }
+/** One-tap searches for common roles; each runs the same text search as the box above. */
+const POPULAR = ["Machine learning", "Software engineer", "Research", "Product manager", "Data center", "Sales", "Security", "Internship", "Policy", "Design"];
 const STATE_OPTIONS = Object.keys(US_STATES).map(value => ({ value, label: stateDisplayName(value) })).sort((a,b) => a.label.localeCompare(b.label,"en"));
 const SCOPE_OPTIONS = LOCATION_SCOPES.map(value => ({ value, label: LOCATION_SCOPE_LABELS[value] }));
 const options = (values: string[]) => [...new Set(values)].sort((a,b) => a.localeCompare(b,"en")).map(value => ({ value, label: value }));
@@ -64,7 +68,22 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   const announce = useDebounced(waiting ? "Loading all positions." : `${total} matching positions. Page ${page} of ${pageCount}.`);
   const set = (patch: Partial<JobFilters>, mode: "push" | "replace" = "push") => update({ ...f, page: 1, ...patch }, mode);
   const departments = useMemo(() => summary.departments.map(value => ({ value, label: value })), [summary.departments]);
-  // The city filter has no menu (city pages link to it); its name comes from the listings that match it.
+  // Cities named by current listings in the chosen state, most listings first, for the city menu.
+  const cityOptions = useMemo(() => {
+    if (!f.state) return [];
+    const counts = new Map<string, { label: string; count: number }>();
+    for (const j of current) {
+      for (const c of jobGeography(j).cities) {
+        if (!c.startsWith(`${f.state}|`)) continue;
+        const key = cityKey(c).slice(3);
+        const hit = counts.get(key);
+        counts.set(key, { label: hit?.label ?? cityLabel(c), count: (hit?.count ?? 0) + 1 });
+      }
+    }
+    return [...counts].sort((a, b) => b[1].count - a[1].count || a[1].label.localeCompare(b[1].label, "en")).slice(0, 60)
+      .map(([value, v]) => ({ value, label: `${v.label} (${v.count.toLocaleString("en-US")})` }));
+  }, [current, f.state]);
+  // The city's name comes from the listings that match it (city pages link here before the menu exists).
   const cityName = useMemo(() => {
     if (!f.city) return "";
     const key = `${f.state}|${f.city}`;
@@ -81,15 +100,21 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
     </nav>
     <div role="search" aria-label="Filter jobs" className="card p-4 sm:p-5">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <SearchField label="Search jobs" value={f.q} onChange={q => set({ q }, "replace")} placeholder="Title, organization, team…" />
+        <SearchField label="Search jobs" value={f.q} onChange={q => set({ q }, "replace")} placeholder="Title, company, skill, city… (ML, SWE, PM work too)" />
         <SelectField label="Company or lab" value={f.company} options={coverage.map(c => ({ value: c.slug, label: c.name }))} onChange={company => set({ company })} allLabel="All organizations" />
         <SearchField label="Location" value={f.location} onChange={location => set({ location }, "replace")} placeholder="Employer-supplied location…" />
         <SelectField label="U.S. state named in location" value={f.state} options={STATE_OPTIONS} onChange={state => set({ state, city: "" })} allLabel="Any location" />
+        {f.state && cityOptions.length ? <SelectField label="City" value={f.city} options={cityOptions} onChange={city => set({ city })} allLabel={`Anywhere in ${stateDisplayName(f.state)}`} /> : null}
         <SelectField<LocationScope> label="Remote and U.S. locations" value={f.where} options={SCOPE_OPTIONS} onChange={where => set({ where })} allLabel="All listings" />
         <SelectField label="Department" value={f.department} options={departments} onChange={department => set({ department })} allLabel="All supplied departments" />
         <SelectField label="Workplace type" value={f.workplace} options={options(["remote", "hybrid", "on-site", "unknown"])} onChange={workplace => set({ workplace })} />
         <SelectField label="Employment type" value={f.employment} options={options(["full-time", "part-time", "contract", "temporary", "internship", "unknown"])} onChange={employment => set({ employment })} />
       </div>
+      <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="Popular searches" role="group">
+        <span className="text-sm text-muted">Popular:</span>
+        {POPULAR.map(q => <button key={q} type="button" aria-pressed={f.q.toLowerCase() === q.toLowerCase()} onClick={() => set({ q: f.q.toLowerCase() === q.toLowerCase() ? "" : q })} className={`inline-flex min-h-9 items-center rounded-full border px-3 text-sm ${f.q.toLowerCase() === q.toLowerCase() ? "border-cyan bg-cyan/10 text-text" : "border-line text-muted hover:border-line-strong hover:text-text"}`}>{q}</button>)}
+      </div>
+      {f.company && coverage.some(c => c.slug === f.company && c.mode === "automated") ? <p className="mt-4 text-sm text-muted" data-testid="jobs-company-page">Shareable page for this employer: <Link href={`/jobs/at/${f.company}/`} className="link">Jobs at {coverage.find(c => c.slug === f.company)!.name}</Link></p> : null}
       {f.city ? <p className="mt-4 text-sm text-text" data-testid="jobs-city-filter"><span className="badge mr-2 border-[rgba(76,201,255,0.45)]">City: {cityName}, {f.state}</span><button type="button" className="link min-h-11" onClick={() => set({ city: "" })}>Show all of {stateDisplayName(f.state)}</button></p> : null}
       {f.state || f.where ? <p className="mt-4 max-w-3xl text-sm text-muted"><strong className="text-text">How locations are read:</strong> {f.state ? `A listing matches ${f.city ? `${cityName}, ${stateDisplayName(f.state)}` : stateDisplayName(f.state)} when one of its employer-supplied locations names it, for example “Atlanta, GA”, “Atlanta, Georgia, United States”, or a city on its own that has only one well-known U.S. match, such as “Atlanta” or “SF Office”; “Remote - US” names no state. ` : ""}{f.where && f.where !== "us" ? "Remote means the employer marks the workplace as remote or a listed location says “Remote”. " : ""}{f.where === "us" || f.where === "remote-us" ? "U.S. locations only means the listing names the United States or a U.S. state and no place outside it. " : ""}It uses only what employers supply. <Link href="/jobs/remote-us/" className="link">About remote jobs with U.S. locations</Link></p> : null}
       <details className="mt-4"><summary className="min-h-11 cursor-pointer text-sm text-ice">Salary and date filters</summary><div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { citySlug, inLocationScope, isRemoteListing, jobGeography, placeGeography } from "@/lib/jobs/geo";
-import { parseJobFilters, serializeJobFilters } from "@/lib/jobs/search";
+import { filterJobs, parseJobFilters, serializeJobFilters } from "@/lib/jobs/search";
 
 const states = (location: string, countries: string[] = []) => jobGeography({ locations: [location], countries }).states;
 
@@ -163,3 +163,25 @@ describe("directory location filters", () => {
   });
 });
 
+
+describe("job search queries", () => {
+  const job = (title: string, extra: Partial<{ department: string; locations: string[] }> = {}) => ({
+    id: `x:ashby:x:${title.replace(/\W+/g, "-")}`, organization_slug: "x", source_type: "ashby", source_identifier: "x", source_job_id: "1",
+    source_url: "https://api.ashbyhq.com/posting-api/job-board/x", title, locations: extra.locations ?? ["Chicago, IL"], countries: [],
+    workplace: "unknown", employment_type: "unknown", department: extra.department ?? null, team: null, salaries: [],
+    official_url: "https://jobs.ashbyhq.com/x/1", posted_at: null, posted_date_kind: null, last_seen: "2026-10-14T00:00:00.000Z",
+    status: "open", organization_name: "Example",
+  }) as never;
+  const feeds = [{ organization_slug: "x", source_type: "ashby", source_identifier: "x", last_attempted: "2026-10-14T00:00:00.000Z",
+    last_successful: "2026-10-14T00:00:00.000Z", result: "ok", consecutive_failures: 0, current_count: 0, pending_digest: null, pending_since: null }] as never;
+  const items = [job("Machine Learning Engineer"), job("ML Infra Engineer"), job("Software Engineering Manager"), job("Go Developer"),
+    job("Account Executive", { department: "Sales" }), job("Research Scientist, ML Systems")];
+  const run = (q: string) => filterJobs(items, feeds, { ...parseJobFilters(new URLSearchParams()), q }, Date.parse("2026-10-14T12:00:00Z")).map((j: { title: string }) => j.title);
+  it("matches abbreviations both ways and ranks title matches first", () => {
+    expect(run("ML engineer")).toEqual(["Machine Learning Engineer", "ML Infra Engineer", "Research Scientist, ML Systems"].filter((t) => t !== "Research Scientist, ML Systems"));
+    expect(run("machine learning")).toEqual(expect.arrayContaining(["Machine Learning Engineer", "ML Infra Engineer", "Research Scientist, ML Systems"]));
+    expect(run("software engineer")).toEqual(["Software Engineering Manager"]);
+    expect(run("go")).toEqual(["Go Developer"]); // not "Chicago"
+    expect(run("AE")).toEqual(["Account Executive"]);
+  });
+});

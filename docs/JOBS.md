@@ -45,9 +45,12 @@ Provider documentation read for this implementation:
   values, latest publication, compensation components and intervals)
 
 These APIs are public reading endpoints; public availability is not an assertion of
-an unrestricted content license. We retain brief factual fields and outbound links,
-not full descriptions, applicant questions, benefits prose, contacts, or resumes.
-Employer material is not relicensed under USASI's original-prose license. Review
+an unrestricted content license. We retain factual fields, outbound links, and (since
+2026-10-14, by the owner's decision) each posting's description as the employer
+publishes it, so every current job can have its own page that qualifies for Google's
+job search. We never keep applicant questions, contacts, or resumes. Employer material
+is not relicensed under USASI's original-prose license; job pages say the description
+is the employer's text and link to the employer to apply. Review
 provider/employer terms again when expanding coverage; disable any disallowed source.
 
 ## Data and identity
@@ -69,8 +72,28 @@ URLs drop fragments and known tracking parameters but retain identity query para
 The adapter contracts return normalized fields; UI has no ATS parsing logic. Missing
 remote, workplace, employment, salary, and date fields stay unknown. No categories,
 skills, seniority, education, clearance, or visa flags are guessed from prose.
-Department/team facets use actual source fields. Greenhouse's basic public listing
-endpoint avoids downloading full descriptions; it may not supply departments or salary.
+Department/team facets use actual source fields. The Greenhouse listing is requested
+with `?content=true` so each posting's description arrives with it; it may not supply
+departments or salary.
+
+## Job pages and descriptions
+
+Descriptions are reduced at refresh time (`lib/jobs/description.ts`) to a validated
+structure: headings, paragraphs, and lists, with bold, italic, and HTTPS links. Scripts,
+styles, images, frames, forms, attributes, and anything else are dropped; employer HTML
+is never stored or rendered. They live in `data/jobs/descriptions.json` (operational,
+never committed) and follow the listing: replaced on a successful check, kept while a
+source fails, deleted when the posting closes.
+
+`scripts/job-pages.ts` writes one plain-HTML page per current listing after `next build`
+(`/jobs/at/<employer>/<title>-<code>/`), using the site's stylesheet and no JavaScript;
+a React page per job would multiply the export's size. Each page shows the employer's
+facts, the description, and links to apply on the employer's site, and carries
+schema.org JobPosting data when the listing has a description and either a U.S. address
+read from its location text or a remote location open to U.S. applicants; nothing else
+is guessed. A page exists only while its listing is current, so a closed posting's page
+is gone after the next refresh and deploy. `/jobs/at/<employer>/` lists every current
+listing from one employer's board.
 Greenhouse custom `Location Type` is mapped only for exact supported values. Ashby
 salary components retain each tier/label, currency and period. Equity/bonus is not
 misrepresented as salary; hidden compensation is omitted. No annualization, FX, or

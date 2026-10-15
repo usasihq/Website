@@ -1,7 +1,7 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
-import { cityDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
 import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, type JobItem } from "@/lib/jobs/search";
 import type { FeedHealth } from "@/lib/jobs/schema";
 import { US_STATES } from "@/lib/places";
@@ -10,7 +10,15 @@ describe("landing page text", () => {
   // Realistic upper bounds: 9,999 listings from 99 employers, and the longest date and state names.
   const worst: Facts = { count: 9999, employers: 99, soleEmployer: null, date: "Sep 30, 2026", usOnly: 9999, outside: 9999 };
   const longCity = "X".repeat(MAX_CITY_NAME);
-  const defs = [...Object.values(TOPICS), ...Object.keys(US_STATES).map(stateDefinition), ...Object.keys(US_STATES).map((c) => cityDefinition(c, "x", longCity))];
+  const employers = loadCatalog(path.join(process.cwd(), "content"), { today: "2026-10-13" }).organizations.map((o) =>
+    companyDefinition({ slug: o.slug, name: o.name, provider: o.careers?.source.type ?? null }),
+  );
+  const defs = [
+    ...Object.values(TOPICS),
+    ...Object.keys(US_STATES).map(stateDefinition),
+    ...Object.keys(US_STATES).map((c) => cityDefinition(c, "x", longCity)),
+    ...employers,
+  ];
   it("keeps titles and descriptions answer-first and within 160 characters", () => {
     for (const d of defs) {
       expect(d.description(worst).length, d.path).toBeLessThanOrEqual(160);
@@ -109,6 +117,22 @@ describe("landing pages from listings", () => {
     const remote = data.topics.find((p) => p.id === "remote-us")!;
     expect(remote.count).toBe(0);
     expect(remote.indexable).toBe(false);
+  });
+
+  it("gives every employer with an automated board a shareable page that matches the directory", () => {
+    const openai = data.companies.find((p) => p.organization?.slug === "openai")!;
+    expect(openai.path).toBe("/jobs/at/openai/");
+    expect(openai.kind).toBe("company");
+    expect(openai.count).toBe(112 + 11 + 3 + 12);
+    expect(openai.directoryHref).toBe("/jobs/?company=openai&sort=newest");
+    expect(openai.indexable).toBe(true);
+    const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(openai.directoryHref.split("?")[1])), now);
+    expect(directory).toHaveLength(openai.count);
+    expect(openai.title).toBe("OpenAI jobs: 138 open positions from its own job board");
+    // Employers whose feeds report no current listings keep a page, kept out of search engines.
+    const empty = data.companies.find((p) => p.count === 0);
+    if (empty) expect(empty.indexable).toBe(false);
+    expect(data.all.filter((p) => p.kind === "company")).toHaveLength(data.companies.length);
   });
 
   it("never emits JobPosting-style fields it does not have", () => {

@@ -8,6 +8,10 @@ export function endpoint(c: Careers): string {
   if (c.source.type === "ashby") return `https://api.ashbyhq.com/posting-api/job-board/${c.source.identifier}?includeCompensation=true`;
   throw new FeedError("payload");
 }
+/** What is requested: the source endpoint, plus Greenhouse's content flag so each posting's description comes with the listing. */
+export function feedUrl(c: Careers): string {
+  return c.source.type === "greenhouse" ? `${endpoint(c)}?content=true` : endpoint(c);
+}
 export function postingUrl(value: string, c: Careers): string {
   if (!safeJobUrl(value)) throw new FeedError("unsafe-url");
   const u = new URL(value);
@@ -29,7 +33,7 @@ export async function fetchFeed(c: Careers, fetcher: typeof fetch = fetch): Prom
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30000);
   try {
-    const response = await fetcher(endpoint(c), { redirect: "error", signal: controller.signal, credentials: "omit",
+    const response = await fetcher(feedUrl(c), { redirect: "error", signal: controller.signal, credentials: "omit",
       headers: { Accept: "application/json", "User-Agent": "USASI-Jobs/1.0 (+https://unitedstatesofamericasuperintelligence.com/jobs/)" } });
     if (response.status === 429) throw new FeedError("rate-limited");
     if (!response.ok) throw new FeedError("http");

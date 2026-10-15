@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { getCatalog } from "@/lib/catalog";
-import { formatDate } from "@/lib/dates";
+import { BuildDate } from "./BuildDate";
 import { asset, repositoryUrl } from "@/lib/paths";
 import { siteConfig } from "@/lib/site-config";
 import { BrandMark } from "./BrandMark";
@@ -67,7 +66,6 @@ const COLUMNS = [
 ];
 
 export function SiteFooter() {
-  const catalog = getCatalog();
   const repo = repositoryUrl();
   return (
     <footer className="border-t border-line bg-[#040613]">
@@ -120,9 +118,7 @@ export function SiteFooter() {
               Catalog data (JSON)
             </a>
             {repo ? <ExternalLink href={repo}>Source repository</ExternalLink> : null}
-            <p className="meta">
-              Site generated <time dateTime={catalog.buildAt}>{formatDate(catalog.buildAt.slice(0, 10))}</time>
-            </p>
+            <BuildDate />
           </div>
         </div>
       </div>

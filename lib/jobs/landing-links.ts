@@ -21,9 +21,17 @@ export function landingLinks(catalog: Catalog): LandingLink[] {
   return jobsLandingData(catalog).all.map(link);
 }
 
-/** Topic and state pages, for "More job pages" (city pages are listed on their state's page). */
+/** Topic and state pages, for "More job pages" (city pages are listed on their state's page, employer pages on /jobs/). */
 export function topicAndStateLinks(catalog: Catalog, except: string): LandingLink[] {
-  return landingLinks(catalog).filter((l) => l.kind !== "city" && l.path !== except);
+  return landingLinks(catalog).filter((l) => (l.kind === "topic" || l.kind === "state") && l.path !== except);
+}
+
+/** Employer pages with current listings, most listings first. */
+export function companyLinks(catalog: Catalog, except = ""): LandingLink[] {
+  return jobsLandingData(catalog)
+    .companies.filter((p) => p.count > 0 && p.path !== except)
+    .map(link)
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
 }
 
 /** City pages in one state, by number of listings. */
@@ -47,7 +55,7 @@ export function jobLandingCard(p: LandingPage): PageCard {
     page: p.path,
     image: p.image,
     template: "article",
-    eyebrow: p.kind === "state" ? "Jobs · U.S. state" : p.kind === "city" ? "Jobs · U.S. city" : "Jobs",
+    eyebrow: p.kind === "state" ? "Jobs · U.S. state" : p.kind === "city" ? "Jobs · U.S. city" : p.kind === "company" ? "Jobs · Employer" : "Jobs",
     title: p.h1,
     subtitle: `${n(p.count)} open ${p.count === 1 ? "listing" : "listings"} from ${n(p.employers.length)} ${p.employers.length === 1 ? "employer" : "employers"} · ${geographyLine(p)} · Checked ${checked}`,
     facts: [],
@@ -78,7 +86,9 @@ export function jobLandingSearchEntries(catalog: Catalog): SearchEntry[] {
         ? `state ${stateDisplayName(p.state!)} ${p.state}`
         : p.kind === "city"
           ? `city ${p.city!.label} ${stateDisplayName(p.state!)} ${p.state}`
-          : p.id.replace(/-/g, " ")
+          : p.kind === "company"
+            ? `employer company careers hiring ${p.organization!.name}`
+            : p.id.replace(/-/g, " ")
     }`,
   }));
 }

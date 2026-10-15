@@ -1,5 +1,5 @@
 /**
- * Jobs landing pages: /jobs/in/<state>/, /jobs/in/<state>/<city>/, and the topic pages (/jobs/entry-level/,
+ * Jobs landing pages: /jobs/at/<employer>/, /jobs/in/<state>/, /jobs/in/<state>/<city>/, and the topic pages (/jobs/entry-level/,
  * /jobs/no-programming/, /jobs/data-center-infrastructure/, /jobs/remote-us/,
  * /jobs/remote/). Build-time only (reads data/jobs/current.json through
  * readJobs). Every count, list, and date is recomputed on each build from the
@@ -28,7 +28,7 @@ export const LISTINGS_SHOWN = 100;
 
 /** How a page's listings relate to the United States. */
 export type GeographyScope = "state" | "city" | "us-only" | "includes-outside";
-export type LandingKind = "state" | "city" | "topic";
+export type LandingKind = "state" | "city" | "company" | "topic";
 
 export type TopicId = "data-center-infrastructure" | "no-programming" | "entry-level" | "remote-us" | "remote";
 
@@ -193,6 +193,45 @@ export function cityDefinition(code: string, slug: string, label: string): Landi
   };
 }
 
+const PROVIDER_LABELS: Record<string, string> = { greenhouse: "Greenhouse", ashby: "Ashby" };
+
+/** An employer's page: every current listing from that organization's own job board. */
+export function companyDefinition(org: { slug: string; name: string; provider: string | null }): LandingDefinition {
+  const board = org.provider && PROVIDER_LABELS[org.provider] ? `${PROVIDER_LABELS[org.provider]} job board` : "job board";
+  // "Ai2 (Allen Institute for AI)" → "Ai2": titles and descriptions stay within their limits.
+  const short = org.name.replace(/\s*\([^)]*\)\s*$/, "").trim();
+  return {
+    id: `at-${org.slug}`,
+    path: `/jobs/at/${org.slug}/`,
+    name: `Jobs at ${org.name}`,
+    h1: `Jobs at ${org.name}`,
+    eyebrow: "Jobs by employer",
+    scope: "includes-outside",
+    filters: { company: org.slug },
+    intro: `Current openings at ${org.name}, read from ${org.name}'s own ${board} and linking straight to each posting on the employer's site. Apply with ${org.name} directly; USASI does not collect applications.`,
+    rule: `Every posting on ${org.name}'s public ${board} that was present at its last successful check within the last 48 hours. Titles, locations, departments, and salary ranges are shown as ${org.name} supplies them.`,
+    title: (f) => {
+      const base = `${short} jobs: ${plural(f.count, "open position", "open positions")}`;
+      return `${base} from its own job board`.length <= 90 ? `${base} from its own job board` : base;
+    },
+    description: (f) => {
+      const lead = `${listings(f.count)} at ${short} from its own job board, ${n(f.usOnly)} in U.S. locations only. Checked ${f.date}`;
+      const full = `${lead}; each links to the employer's posting.`;
+      return full.length <= 160 ? full : `${lead}.`;
+    },
+    image: `/og/jobs/at-${org.slug}.jpg`,
+  };
+}
+
+/** The employer-supplied departments among some listings, most listings first, each linking to the directory view. */
+function departmentsOf(listings: JobItem[], filters: JobFilters): LandingPage["departments"] {
+  const counts = new Map<string, number>();
+  for (const j of listings) if (j.department) counts.set(j.department, (counts.get(j.department) ?? 0) + 1);
+  return [...counts]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "en"))
+    .map(([name, count]) => ({ name, count, href: `/jobs/?${serializeJobFilters({ ...filters, department: name })}` }));
+}
+
 export type LandingEmployer = { slug: string; name: string; headquarters: string | null; count: number };
 
 export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
@@ -201,6 +240,10 @@ export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
   state: string | null;
   /** The city, for city pages: its key ("CA|san-francisco") and name. */
   city: { key: string; slug: string; label: string } | null;
+  /** The employer, for employer pages. */
+  organization: { slug: string; name: string; careersUrl: string | null } | null;
+  /** Departments the employer supplies, by number of listings (employer pages link each to the directory). */
+  departments: { name: string; count: number; href: string }[];
   title: string;
   description: string;
   count: number;
@@ -224,6 +267,8 @@ export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
 export type JobsLandingData = {
   states: LandingPage[];
   cities: LandingPage[];
+  /** One page per employer with an automated job board. */
+  companies: LandingPage[];
   topics: LandingPage[];
   all: LandingPage[];
   stateCounts: Record<string, number>;
@@ -235,7 +280,15 @@ const memo = new WeakMap<Catalog, JobsLandingData>();
 
 type Source = { items: JobItem[]; feeds: FeedHealth[]; now: number };
 
-function build(catalog: Catalog, def: LandingDefinition, kind: LandingKind, src: Source, state: string | null, city: LandingPage["city"] = null): LandingPage {
+function build(
+  catalog: Catalog,
+  def: LandingDefinition,
+  kind: LandingKind,
+  src: Source,
+  state: string | null,
+  city: LandingPage["city"] = null,
+  organization: LandingPage["organization"] = null,
+): LandingPage {
   const filters: JobFilters = { ...DEFAULT_JOB_FILTERS, ...def.filters, sort: "newest" };
   const listings = filterJobs(src.items, src.feeds, filters, src.now);
   const byOrg = new Map<string, number>();
@@ -270,6 +323,8 @@ function build(catalog: Catalog, def: LandingDefinition, kind: LandingKind, src:
     kind,
     state,
     city,
+    organization,
+    departments: departmentsOf(listings, filters),
     title: def.title(facts),
     description: def.description(facts),
     count: listings.length,
@@ -281,7 +336,7 @@ function build(catalog: Catalog, def: LandingDefinition, kind: LandingKind, src:
     directoryHref: `/jobs/?${serializeJobFilters(filters)}`,
     usOnlyHref: usOnlyFilters ? `/jobs/?${serializeJobFilters(usOnlyFilters)}` : null,
     usOnlyCount: geo.usOnly,
-    indexable: kind !== "topic" || listings.length >= MIN_TOPIC_LISTINGS,
+    indexable: kind === "company" ? listings.length > 0 : kind !== "topic" || listings.length >= MIN_TOPIC_LISTINGS,
     buildAt: new Date(src.now).toISOString(),
   };
 }
@@ -327,7 +382,23 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
     .map(({ code, slug, key, label }) => build(catalog, cityDefinition(code, slug, label), "city", src, code, { key, slug, label }))
     .sort((a, b) => a.h1.localeCompare(b.h1, "en"));
   const topics = TOPIC_IDS.map((id) => build(catalog, TOPICS[id], "topic", src, null));
-  return { states, cities, topics, all: [...topics, ...states, ...cities], stateCounts, cityCounts };
+  // Every published employer with an automated board gets a page, even with no current listings (kept out of search engines then).
+  const withListings = new Set(current.map((j) => j.organization_slug));
+  const companies = catalog.organizations
+    .filter((o) => catalog.isActiveOrganization(o.slug) && (o.careers?.enabled || withListings.has(o.slug)))
+    .map((o) =>
+      build(
+        catalog,
+        companyDefinition({ slug: o.slug, name: o.name, provider: o.careers?.source.type ?? null }),
+        "company",
+        src,
+        null,
+        null,
+        { slug: o.slug, name: o.name, careersUrl: o.careers?.url ?? o.hiring_url ?? null },
+      ),
+    )
+    .sort((a, b) => a.organization!.name.localeCompare(b.organization!.name, "en"));
+  return { states, cities, companies, topics, all: [...topics, ...states, ...cities, ...companies], stateCounts, cityCounts };
 }
 
 /** The site's landing pages, from data/jobs/current.json at this build's timestamp; computed once per catalog. */

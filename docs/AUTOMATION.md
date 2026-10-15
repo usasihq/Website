@@ -1,17 +1,23 @@
 # Local automation
 
-The site is kept current by two scheduled Claude tasks on the owner's computer
+The site is kept current by scheduled Claude tasks on the owner's computer
 (Claude desktop app → Scheduled). They run only while that computer is on and
-the app is open; a missed run starts on the next launch. Both work in a
-permanent clone of this repository. The daily task deploys with the machine's
-existing Wrangler login; the weekly task opens a pull request for the owner's
-review and never deploys. The GitHub Actions deploy and Jobs-refresh workflows stay
-paused (`CLOUDFLARE_DEPLOY=false`), so there is no Cloudflare API token in GitHub.
+the app is open; a missed run starts on the next launch. They work in a
+permanent clone of this repository and deploy with the machine's existing
+Wrangler login; the Sunday catalog upkeep instead opens a pull request for the
+owner's review and never deploys. The GitHub Actions deploy and Jobs-refresh
+workflows stay paused (`CLOUDFLARE_DEPLOY=false`), so there is no Cloudflare
+API token in GitHub.
 
 | Task | When | What it does |
 |---|---|---|
-| Daily site update | every day, 7:00 local | refresh all Jobs feeds; on the first run of each month, write that month's edition of The State of American AI (`npm run report:snapshot -- YYYY-MM`, never replacing an existing one); research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy |
-| Weekly catalog upkeep | Sundays, 10:00 local | review a batch of cited sources for changes; apply supported corrections; add recent open releases from catalog organizations; draft the next weekly email issue; check, commit to a `weekly/YYYY-MM-DD` branch, and open a pull request. Merged changes go live on the next daily run (or a manual publish) |
+| All websites, daily upkeep | every day, 8:30 local | refresh all Jobs feeds; on the first run of each month, write that month's edition of The State of American AI (`npm run report:snapshot -- YYYY-MM`, never replacing an existing one); research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy. On Sundays it also runs the weekly catalog upkeep: review a batch of cited sources for changes, apply supported corrections, add recent open releases from catalog organizations, draft the next weekly email issue, and open a pull request on a `weekly/YYYY-MM-DD` branch (merged changes go live on the next deploy). It also checks the owner's other sites, read-only |
+| USASI evening jobs refresh | every day, 8:30 PM local | `scripts/automation/jobs-update.sh`: refresh all Jobs feeds, then check, build, and deploy. No editorial changes |
+
+Jobs are refreshed twice a day. A listing leaves the directory once its feed
+has not confirmed it for 48 hours, so one missed run never hides current
+postings, and two runs a day keep closed postings and their job pages from
+lingering.
 
 News is published without individual human review (disclosed on `/news/` and in
 the methodology). Every run must pass `npm run validate`, typecheck, lint, unit
@@ -34,6 +40,10 @@ committed or deployed. Tasks never edit code, tests, or validation rules.
   commits another run's unfinished edits.
 - `scripts/automation/unlock.sh` releases the lock when a run stops early. It
   leaves another run's lock in place.
+- `scripts/automation/jobs-update.sh` runs sync, `npm run jobs:refresh`, and
+  publish in one step, releasing the lock if anything fails. The employers'
+  job descriptions are kept in `data/jobs/descriptions.json`, which, like
+  `current.json`, stays local and is never committed.
 
 ## Watch list
 
@@ -60,6 +70,6 @@ Each issue of the USASI weekly is a file in `content/newsletter/` (schema `Newsl
 
 ## Pausing or changing it
 
-Pause or edit either task in the desktop app's Scheduled view. To publish by
+Pause or edit any task in the desktop app's Scheduled view. To publish by
 hand instead: `scripts/automation/sync.sh`, edit, then
 `scripts/automation/publish.sh "what changed"`.

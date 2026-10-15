@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
@@ -14,8 +15,22 @@ if (basePath && !/^\/[A-Za-z0-9._~-]+(\/[A-Za-z0-9._~-]+)*$/.test(basePath)) {
   throw new Error(`NEXT_PUBLIC_BASE_PATH must look like "/repo-name" (got "${basePath}")`);
 }
 
+/**
+ * The build ID is the code's commit, so rebuilding the same code with new data
+ * (the daily jobs refresh) leaves unchanged pages byte-identical and deploys
+ * upload only what changed. Outside a Git checkout Next.js picks a random ID.
+ */
+function commitBuildId(): string | null {
+  try {
+    return execFileSync("git", ["rev-parse", "--short=12", "HEAD"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim() || null;
+  } catch {
+    return null;
+  }
+}
+
 const nextConfig: NextConfig = {
   output: "export",
+  generateBuildId: async () => process.env.NEXT_BUILD_ID || commitBuildId(),
   // /companies/openai/ → /companies/openai/index.html, which static hosts
   // (including GitHub Pages) serve for deep links and refreshes.
   trailingSlash: true,
