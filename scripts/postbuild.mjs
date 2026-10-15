@@ -260,6 +260,19 @@ for (const person of readDir("people")) {
   console.log(`postbuild: ${blocks} JSON-LD blocks checked.`);
 }
 
+// Cloudflare Workers static assets: at most 20,000 files per deployment on the
+// Free plan (100,000 on Paid) and 25 MiB per file. Most files are job pages,
+// so the count moves with the number of open listings. ASSET_FILE_LIMIT
+// raises the limit after a plan change.
+{
+  const limit = Number(process.env.ASSET_FILE_LIMIT ?? 20000);
+  const all = walk(out);
+  if (all.length > limit) failures.push(`${all.length} files in ./out; Cloudflare accepts at most ${limit} per deployment`);
+  else if (all.length > limit * 0.9) console.warn(`postbuild: warning: ${all.length} files in ./out, close to the ${limit}-file deployment limit`);
+  for (const f of all) if (fs.statSync(f).size > 25 * 1024 * 1024) failures.push(`${path.relative(out, f)}: larger than 25 MiB`);
+  console.log(`postbuild: ${all.length} files to deploy (limit ${limit}).`);
+}
+
 for (const forbidden of ["research", "CONTENT_REVIEW.md", "tests", "content"]) {
   if (fs.existsSync(path.join(out, forbidden))) failures.push(`private path exported: ${forbidden}`);
 }
