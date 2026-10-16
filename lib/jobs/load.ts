@@ -54,8 +54,9 @@ export function latestSuccessfulCheck(data: Dataset): number | null {
  * `current.json` stays local). When that snapshot is older than the 48-hour
  * "current" window, a site build would otherwise emit zero city/state pages and
  * Next.js `output: export` would fail. Shift verification timestamps so the
- * snapshot is evaluated at `now`; production refreshes feeds first and never
- * takes this path. Does not rewrite the file.
+ * snapshot is evaluated at `now`. Used only when alignSnapshotEnabled();
+ * production refreshes feeds first and never takes this path. Does not rewrite
+ * the file.
  */
 export function alignJobsSnapshot(data: Dataset, now: number): Dataset {
   const last = latestSuccessfulCheck(data);
@@ -85,10 +86,19 @@ export function alignJobsSnapshot(data: Dataset, now: number): Dataset {
 
 let buildCache: { now: number; data: Dataset } | null = null;
 
+/**
+ * Opt-in only (`JOBS_SNAPSHOT_AT_BUILD=1`, set by CI): shifting timestamps makes
+ * old listings look freshly checked, so a production build must never do it. If
+ * the real feeds stop refreshing, stale listings have to age out of the site and
+ * a build that would publish none of them should fail, not relabel them current.
+ */
+export const alignSnapshotEnabled = () => process.env.JOBS_SNAPSHOT_AT_BUILD === "1";
+
 /** Jobs snapshot for website generation at `now` (usually `catalog.buildAt`). */
 export function readJobsForBuild(organizations: Organization[], now: number): Dataset {
   if (buildCache && buildCache.now === now) return buildCache.data;
-  const data = alignJobsSnapshot(readJobs(organizations), now);
+  const raw = readJobs(organizations);
+  const data = alignSnapshotEnabled() ? alignJobsSnapshot(raw, now) : raw;
   buildCache = { now, data };
   return data;
 }
