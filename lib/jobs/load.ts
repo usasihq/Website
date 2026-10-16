@@ -4,6 +4,7 @@ import { Dataset, type Careers } from "./schema";
 import type { Organization } from "../schema";
 import { endpoint, postingUrl } from "./security";
 import { jobSourceKey, sourceKey } from "./reconcile";
+import { STALE_MS } from "./search";
 export const DATA_PATH = path.join(process.cwd(), "data/jobs/current.json");
 export function validateDataset(input: unknown, organizations: Organization[]): Dataset {
   const data = Dataset.parse(input);
@@ -36,4 +37,58 @@ export function validateDataset(input: unknown, organizations: Organization[]): 
 export function readJobs(organizations: Organization[]): Dataset {
   // Missing/corrupted data is a build error, never silently interpreted as zero jobs.
   return validateDataset(JSON.parse(fs.readFileSync(DATA_PATH, "utf8")), organizations);
+}
+
+const shiftIso = (iso: string | null, delta: number) => (iso ? new Date(Date.parse(iso) + delta).toISOString() : iso);
+
+/**
+ * Latest successful feed check in a snapshot, or null when none has ever succeeded.
+ */
+export function latestSuccessfulCheck(data: Dataset): number | null {
+  const times = data.feeds.map((f) => f.last_successful).filter((v): v is string => Boolean(v)).map(Date.parse);
+  return times.length ? Math.max(...times) : null;
+}
+
+/**
+ * The committed bootstrap snapshot is not refreshed in Git (operational
+ * `current.json` stays local). When that snapshot is older than the 48-hour
+ * "current" window, a site build would otherwise emit zero city/state pages and
+ * Next.js `output: export` would fail. Shift verification timestamps so the
+ * snapshot is evaluated at `now`; production refreshes feeds first and never
+ * takes this path. Does not rewrite the file.
+ */
+export function alignJobsSnapshot(data: Dataset, now: number): Dataset {
+  const last = latestSuccessfulCheck(data);
+  if (last === null || now - last <= STALE_MS) return data;
+  const delta = now - last;
+  console.log(
+    `jobs: bootstrap snapshot last checked ${new Date(last).toISOString()}, ${Math.round((now - last) / 3600000)}h before this build; treating it as collected at build time`,
+  );
+  return {
+    ...data,
+    jobs: data.jobs.map((j) => ({
+      ...j,
+      first_seen: shiftIso(j.first_seen, delta)!,
+      last_seen: shiftIso(j.last_seen, delta)!,
+      last_successfully_checked: shiftIso(j.last_successfully_checked, delta)!,
+      missing_since: shiftIso(j.missing_since, delta),
+      closed_at: shiftIso(j.closed_at, delta),
+    })),
+    feeds: data.feeds.map((f) => ({
+      ...f,
+      last_attempted: shiftIso(f.last_attempted, delta)!,
+      last_successful: shiftIso(f.last_successful, delta),
+      pending_since: shiftIso(f.pending_since, delta),
+    })),
+  };
+}
+
+let buildCache: { now: number; data: Dataset } | null = null;
+
+/** Jobs snapshot for website generation at `now` (usually `catalog.buildAt`). */
+export function readJobsForBuild(organizations: Organization[], now: number): Dataset {
+  if (buildCache && buildCache.now === now) return buildCache.data;
+  const data = alignJobsSnapshot(readJobs(organizations), now);
+  buildCache = { now, data };
+  return data;
 }

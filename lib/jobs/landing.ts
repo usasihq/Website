@@ -3,19 +3,29 @@
  * /jobs/role/<slug>/, and the topic pages (/jobs/entry-level/,
  * /jobs/no-programming/, /jobs/data-center-infrastructure/, /jobs/remote-us/,
  * /jobs/remote/). Build-time only (reads data/jobs/current.json through
- * readJobs). Every count, list, and date is recomputed on each build from the
+ * readJobsForBuild). Every count, list, and date is recomputed on each build from the
  * same rules the /jobs/ directory filters use, so a page's "see all" link shows
  * exactly the same listings.
  */
 import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
 import { stateSlug, US_STATES } from "../places";
-import { readJobs } from "./load";
+import { readJobsForBuild } from "./load";
 import type { FeedHealth } from "./schema";
 import { cityKey, cityLabel, jobGeography, stateDisplayName } from "./geo";
 import { DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
 import { JOB_ROLES, type JobRole } from "./roles";
 import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, NO_PROGRAMMING_RULE } from "./tracks";
+
+/**
+ * Next.js `output: export` rejects an empty `generateStaticParams()`. City and
+ * state pages are omitted when no listing meets the threshold (for example a
+ * wholly stale snapshot); keep a dummy param so the export can finish, and let
+ * the page `notFound()`.
+ */
+export function atLeastOneParam<T>(params: T[], fallback: T): T[] {
+  return params.length > 0 ? params : [fallback];
+}
 
 /** A state page needs at least this many current listings; fewer would make a thin page. */
 export const MIN_STATE_LISTINGS = 10;
@@ -429,7 +439,7 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
 export function jobsLandingData(catalog: Catalog): JobsLandingData {
   const hit = memo.get(catalog);
   if (hit) return hit;
-  const data = readJobs(catalog.organizations);
+  const data = readJobsForBuild(catalog.organizations, Date.parse(catalog.buildAt));
   const names = new Map(catalog.organizations.map((o) => [o.slug, o.name]));
   const items = data.jobs.filter((j) => j.status === "open").map((j) => toJobItem(j, names.get(j.organization_slug)!));
   const result = computeLandingData(catalog, items, data.feeds, Date.parse(catalog.buildAt));

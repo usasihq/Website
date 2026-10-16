@@ -2,10 +2,11 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
 import { jobsIndexJsonLd, jobsLandingJsonLd } from "@/lib/jobs/jsonld";
-import { cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, roleDefinition, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { atLeastOneParam, cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, roleDefinition, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { alignJobsSnapshot, latestSuccessfulCheck, readJobs } from "@/lib/jobs/load";
 import { JOB_ROLES } from "@/lib/jobs/roles";
 import { jobHref } from "@/lib/jobs/job-url";
-import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, type JobItem } from "@/lib/jobs/search";
+import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, STALE_MS, toJobItem, type JobItem } from "@/lib/jobs/search";
 import type { FeedHealth } from "@/lib/jobs/schema";
 import { US_STATES } from "@/lib/places";
 
@@ -195,5 +196,38 @@ describe("jobs directory structured data", () => {
       "Jobs in California",
     ]);
     expect(JSON.stringify(ld)).not.toContain("JobPosting");
+  });
+});
+
+describe("offline bootstrap snapshot", () => {
+  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10), buildAt: "2026-10-16T18:00:00.000Z" });
+  const now = Date.parse(catalog.buildAt);
+
+  it("keeps generateStaticParams non-empty for Next.js export", () => {
+    expect(atLeastOneParam([], { state: "_" })).toEqual([{ state: "_" }]);
+    expect(atLeastOneParam([{ state: "california" }], { state: "_" })).toEqual([{ state: "california" }]);
+  });
+
+  it("aligns a stale committed snapshot so city, state, and role pages still generate", () => {
+    const raw = readJobs(catalog.organizations);
+    const last = latestSuccessfulCheck(raw);
+    const stale = last !== null && now - last > STALE_MS;
+    if (stale) {
+      expect(filterJobs(
+        raw.jobs.filter((j) => j.status === "open").map((j) => toJobItem(j, j.organization_slug)),
+        raw.feeds,
+        DEFAULT_JOB_FILTERS,
+        now,
+      )).toHaveLength(0);
+    }
+    const aligned = alignJobsSnapshot(raw, now);
+    expect(aligned === raw).toBe(!stale);
+    const names = new Map(catalog.organizations.map((o) => [o.slug, o.name]));
+    const items = aligned.jobs.filter((j) => j.status === "open").map((j) => toJobItem(j, names.get(j.organization_slug)!));
+    const data = computeLandingData(catalog, items, aligned.feeds, now);
+    expect(data.states.some((p) => p.state === "CA")).toBe(true);
+    expect(data.cities.some((p) => p.path === "/jobs/in/california/san-francisco/")).toBe(true);
+    expect(data.roles.find((p) => p.id === "forward-deployed-engineer")!.count).toBeGreaterThanOrEqual(10);
+    expect(alignJobsSnapshot(aligned, now)).toBe(aligned);
   });
 });

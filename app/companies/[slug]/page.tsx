@@ -3,7 +3,7 @@ import { RecordContext } from "@/components/RecordContext";
 import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
 import { OrganizationJobs } from "@/components/OrganizationJobs";
 import { roleLinksForEmployer } from "@/lib/jobs/landing-links";
-import { readJobs } from "@/lib/jobs/load";
+import { readJobsForBuild } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
 import { Monogram, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
 import { DeepDive } from "@/components/DeepDive";
@@ -106,7 +106,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
   const org = catalog.organization(slug);
   if (!org) notFound();
 
-  const jobData = readJobs(catalog.organizations);
+  const jobData = readJobsForBuild(catalog.organizations, Date.parse(catalog.buildAt));
   const s = org.sources;
   const parent = catalog.parentOrganization(org);
   const children = catalog.childOrganizations(org.slug);
