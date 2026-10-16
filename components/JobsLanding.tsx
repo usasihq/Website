@@ -114,11 +114,13 @@ type Props = {
   parent?: { href: string; label: string } | null;
   /** Other employers' pages (employer pages list them). */
   companies?: LandingLink[];
+  /** Role pages this employer has listings on (employer pages list them). */
+  roles?: LandingLink[];
   headquartersHref?: string | null;
   headquartersCount?: number;
 };
 
-export function JobsLanding({ page, others, cities = [], parent = null, companies = [], headquartersHref, headquartersCount }: Props) {
+export function JobsLanding({ page, others, cities = [], parent = null, companies = [], roles = [], headquartersHref, headquartersCount }: Props) {
   const shown = page.listings.length;
   const trail = [{ href: "/jobs/", label: "Jobs" }, ...(parent ? [parent] : []), { href: page.path, label: page.name }];
   const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...DEFAULT_JOB_FILTERS, ...page.filters, sort: "newest", company: slug })}`;
@@ -171,7 +173,9 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
           <p className="mt-3 text-muted">
             {page.kind === "company"
               ? ""
-              : "This is a best-effort match on what employers supply (title, department, team, and location), not a reading of the full job description: check the listing. "}
+              : page.kind === "role"
+                ? "This is a best-effort match on the employer-supplied title, not a reading of the full job description: check the listing. "
+                : "This is a best-effort match on what employers supply (title, department, team, and location), not a reading of the full job description: check the listing. "}
             Listings come from employers&rsquo; own job feeds and count as current when their feed was checked successfully and the
             listing was present within the last 48 hours. Counts were computed when this page was built
             {page.oldestChecked && page.lastChecked && page.oldestChecked.slice(0, 10) !== page.lastChecked.slice(0, 10)
@@ -292,6 +296,24 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
             </ul>
           </section>
         )}
+
+        {roles.length ? (
+          <nav aria-labelledby="roles-heading" className="mt-12" data-testid="landing-roles">
+            <h2 id="roles-heading" className="text-xl font-semibold text-text sm:text-2xl">
+              Roles at {page.organization?.name}
+            </h2>
+            <p className="mt-2 max-w-3xl text-muted">Current listings at this employer that match a role page, by number of listings here.</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {roles.map((r) => (
+                <li key={r.path}>
+                  <Link prefetch={false} href={r.path} className="badge min-h-11 px-3 hover:border-cyan">
+                    {r.name} <span className="text-muted">({n(r.count)})</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
 
         <section id="listings" aria-labelledby="listings-heading" className="mt-12 scroll-mt-24">
           <h2 id="listings-heading" className="text-xl font-semibold text-text sm:text-2xl">

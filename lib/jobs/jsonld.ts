@@ -1,7 +1,8 @@
 /**
  * JSON-LD for Jobs collection pages (/jobs/, /jobs/remote/, /jobs/in/<state>/,
- * /jobs/at/<employer>/, …). These pages list many openings, so they never
- * emit JobPosting (Google allows that type only on a page for one job).
+ * /jobs/at/<employer>/, /jobs/role/<slug>/, …). These pages list many openings,
+ * so they never emit JobPosting (Google allows that type only on a page for one
+ * job).
  *
  * ItemList entries are same-site URLs for pages that exist: job detail pages
  * on a landing page, and browse destinations on /jobs/. numberOfItems is the
@@ -22,9 +23,11 @@ const listItem = (position: number, name: string, href: string) => ({
   url: absoluteUrl(href),
 });
 
-/** /jobs/: the directory itself, plus the topic / state / city pages it links to. */
+/** /jobs/: the directory itself, plus the topic / role / state / city pages it links to. */
 export function jobsIndexJsonLd(links: LandingLink[]): object {
-  const items = links.filter((l) => (l.kind === "topic" ? l.count >= MIN_TOPIC_LISTINGS : l.kind === "state" || l.kind === "city"));
+  const items = links.filter((l) =>
+    (l.kind === "topic" || l.kind === "role" ? l.count >= MIN_TOPIC_LISTINGS : l.kind === "state" || l.kind === "city"),
+  );
   const url = absoluteUrl("/jobs/");
   return {
     "@context": SCHEMA_CONTEXT,
@@ -40,7 +43,7 @@ export function jobsIndexJsonLd(links: LandingLink[]): object {
       {
         "@type": "ItemList",
         "@id": `${url}#browse`,
-        name: "Jobs by topic, U.S. state, and city",
+        name: "Jobs by topic, role, U.S. state, and city",
         url,
         numberOfItems: items.length,
         itemListElement: items.map((l, i) => listItem(i + 1, l.name, l.path)),

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { JobsLanding } from "@/components/JobsLanding";
 import { getCatalog } from "@/lib/catalog";
-import { companyLinks, jobLandingImage, topicAndStateLinks } from "@/lib/jobs/landing-links";
+import { companyLinks, jobLandingImage, roleLinksForEmployer, topicAndStateLinks } from "@/lib/jobs/landing-links";
 import { jobsLandingData } from "@/lib/jobs/landing";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -35,6 +35,11 @@ export default async function JobsCompanyPage({ params }: { params: Promise<{ co
   if (!page) notFound();
   const catalog = getCatalog();
   return (
-    <JobsLanding page={page} others={topicAndStateLinks(catalog, page.path)} companies={companyLinks(catalog, page.path).slice(0, OTHER_EMPLOYERS)} />
+    <JobsLanding
+      page={page}
+      others={topicAndStateLinks(catalog, page.path)}
+      companies={companyLinks(catalog, page.path).slice(0, OTHER_EMPLOYERS)}
+      roles={roleLinksForEmployer(catalog, page.organization!.slug)}
+    />
   );
 }

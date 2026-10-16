@@ -1,8 +1,9 @@
 /**
  * Where the Jobs landing pages appear besides their own routes: the /jobs/
- * "Browse by" links, other landing pages (a state page lists its city pages),
- * /places/<state>/, the sitemap, site
- * search, and per-page preview cards (/og/jobs/<slug>.jpg). Build-time only.
+ * "Browse by" links, other landing pages (a state page lists its city pages,
+ * an employer page lists role pages it has listings on), /places/<state>/, the
+ * sitemap, site search, and per-page preview cards (/og/jobs/<slug>.jpg).
+ * Build-time only.
  */
 import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
@@ -21,9 +22,26 @@ export function landingLinks(catalog: Catalog): LandingLink[] {
   return jobsLandingData(catalog).all.map(link);
 }
 
-/** Topic and state pages, for "More job pages" (city pages are listed on their state's page, employer pages on /jobs/). */
+/** Topic, role, and state pages, for "More job pages" (city pages are listed on their state's page, employer pages on /jobs/). */
 export function topicAndStateLinks(catalog: Catalog, except: string): LandingLink[] {
-  return landingLinks(catalog).filter((l) => (l.kind === "topic" || l.kind === "state") && l.path !== except);
+  return landingLinks(catalog).filter((l) => (l.kind === "topic" || l.kind === "role" || l.kind === "state") && l.path !== except);
+}
+
+/** Role pages with current listings. */
+export function roleLinks(catalog: Catalog, except = ""): LandingLink[] {
+  return jobsLandingData(catalog)
+    .roles.filter((p) => p.count > 0 && p.path !== except)
+    .map(link);
+}
+
+/** Role pages that include listings from one employer, with that employer's count on each role. */
+export function roleLinksForEmployer(catalog: Catalog, slug: string): LandingLink[] {
+  return jobsLandingData(catalog)
+    .roles.filter((p) => p.employers.some((e) => e.slug === slug && e.count > 0))
+    .map((p) => {
+      const count = p.employers.find((e) => e.slug === slug)!.count;
+      return { path: p.path, name: p.name, count, kind: "role" as const, state: null };
+    });
 }
 
 /** Employer pages with current listings, most listings first. */
@@ -55,7 +73,7 @@ export function jobLandingCard(p: LandingPage): PageCard {
     page: p.path,
     image: p.image,
     template: "article",
-    eyebrow: p.kind === "state" ? "Jobs · U.S. state" : p.kind === "city" ? "Jobs · U.S. city" : p.kind === "company" ? "Jobs · Employer" : "Jobs",
+    eyebrow: p.kind === "state" ? "Jobs · U.S. state" : p.kind === "city" ? "Jobs · U.S. city" : p.kind === "company" ? "Jobs · Employer" : p.kind === "role" ? "Jobs · Role" : "Jobs",
     title: p.h1,
     subtitle: `${n(p.count)} open ${p.count === 1 ? "listing" : "listings"} from ${n(p.employers.length)} ${p.employers.length === 1 ? "employer" : "employers"} · ${geographyLine(p)} · Checked ${checked}`,
     facts: [],
@@ -88,7 +106,9 @@ export function jobLandingSearchEntries(catalog: Catalog): SearchEntry[] {
           ? `city ${p.city!.label} ${stateDisplayName(p.state!)} ${p.state}`
           : p.kind === "company"
             ? `employer company careers hiring ${p.organization!.name}`
-            : p.id.replace(/-/g, " ")
+            : p.kind === "role"
+              ? `role ${p.name} ${p.id.replace(/-/g, " ")}`
+              : p.id.replace(/-/g, " ")
     }`,
   }));
 }

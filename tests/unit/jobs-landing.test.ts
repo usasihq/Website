@@ -2,9 +2,11 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
 import { jobsIndexJsonLd, jobsLandingJsonLd } from "@/lib/jobs/jsonld";
-import { cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { atLeastOneParam, cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, roleDefinition, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { alignJobsSnapshot, latestSuccessfulCheck, readJobs } from "@/lib/jobs/load";
+import { JOB_ROLES } from "@/lib/jobs/roles";
 import { jobHref } from "@/lib/jobs/job-url";
-import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, type JobItem } from "@/lib/jobs/search";
+import { DEFAULT_JOB_FILTERS, filterJobs, parseJobFilters, STALE_MS, toJobItem, type JobItem } from "@/lib/jobs/search";
 import type { FeedHealth } from "@/lib/jobs/schema";
 import { US_STATES } from "@/lib/places";
 
@@ -17,6 +19,7 @@ describe("landing page text", () => {
   );
   const defs = [
     ...Object.values(TOPICS),
+    ...JOB_ROLES.map(roleDefinition),
     ...Object.keys(US_STATES).map(stateDefinition),
     ...Object.keys(US_STATES).map((c) => cityDefinition(c, "x", longCity)),
     ...employers,
@@ -40,6 +43,10 @@ describe("landing page text", () => {
     expect(sf.h1).toBe("AI jobs in San Francisco, California");
     expect(sf.description(one)).toBe("12 open listings naming San Francisco, CA, at xAI in the USASI catalog. Listings last checked Oct 13, 2026.");
     expect(sf.image).toBe("/og/jobs/in-california-san-francisco.jpg");
+    const fde = roleDefinition(JOB_ROLES[0]);
+    expect(fde.path).toBe("/jobs/role/forward-deployed-engineer/");
+    expect(fde.filters).toEqual({ role: "forward-deployed-engineer" });
+    expect(fde.image).toBe("/og/jobs/role-forward-deployed-engineer.jpg");
   });
 });
 
@@ -69,6 +76,9 @@ describe("landing pages from listings", () => {
     // Every Mississippi listing is in Southaven, so a Southaven page would repeat the state page.
     ...Array.from({ length: 12 }, () => item("openai", "Research Engineer", ["Southaven, MS"])),
     item("anthropic", "Stale listing", ["Atlanta, GA"], { last_seen: "2026-10-10T00:00:00.000Z" }),
+    ...Array.from({ length: 12 }, () => item("openai", "Forward Deployed Engineer", ["Atlanta, GA"])),
+    item("anthropic", "Deployed Engineer", ["Atlanta, GA"]),
+    item("anthropic", "Partner Deployed Engineer", ["Atlanta, GA"]),
   ];
   const data = computeLandingData(catalog, items, [feed("openai"), feed("anthropic")], now);
   const georgia = data.states.find((p) => p.state === "GA")!;
@@ -96,13 +106,13 @@ describe("landing pages from listings", () => {
   });
 
   it("counts current listings, caps the embedded list, and matches the directory exactly", () => {
-    expect(georgia.count).toBe(115);
+    expect(georgia.count).toBe(129);
     expect(georgia.listings).toHaveLength(LISTINGS_SHOWN);
-    expect(georgia.title).toBe("AI jobs in Georgia: 115 open listings at U.S. AI companies and labs");
+    expect(georgia.title).toBe("AI jobs in Georgia: 129 open listings at U.S. AI companies and labs");
     expect(georgia.directoryHref).toBe("/jobs/?state=GA&sort=newest");
     const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(georgia.directoryHref.split("?")[1])), now);
     expect(directory.map((j) => j.id)).toEqual(georgia.listings.map((j) => j.id).concat(directory.slice(LISTINGS_SHOWN).map((j) => j.id)));
-    expect(georgia.employers.map((e) => [e.slug, e.count])).toEqual([["openai", 112], ["anthropic", 3]]);
+    expect(georgia.employers.map((e) => [e.slug, e.count])).toEqual([["openai", 124], ["anthropic", 5]]);
     expect(georgia.geography).toMatchObject({ alsoElsewhere: 3, outside: 3 });
     expect(georgia.lastChecked).toBe(seen);
   });
@@ -125,16 +135,30 @@ describe("landing pages from listings", () => {
     const openai = data.companies.find((p) => p.organization?.slug === "openai")!;
     expect(openai.path).toBe("/jobs/at/openai/");
     expect(openai.kind).toBe("company");
-    expect(openai.count).toBe(112 + 11 + 3 + 12);
+    expect(openai.count).toBe(112 + 11 + 3 + 12 + 12);
     expect(openai.directoryHref).toBe("/jobs/?company=openai&sort=newest");
     expect(openai.indexable).toBe(true);
     const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(openai.directoryHref.split("?")[1])), now);
     expect(directory).toHaveLength(openai.count);
-    expect(openai.title).toBe("OpenAI jobs: 138 open positions from its own job board");
+    expect(openai.title).toBe("OpenAI jobs: 150 open positions from its own job board");
     // Employers whose feeds report no current listings keep a page, kept out of search engines.
     const empty = data.companies.find((p) => p.count === 0);
     if (empty) expect(empty.indexable).toBe(false);
     expect(data.all.filter((p) => p.kind === "company")).toHaveLength(data.companies.length);
+  });
+
+  it("builds a role page from title-matching rules and matches the directory", () => {
+    const fde = data.roles.find((p) => p.id === "forward-deployed-engineer")!;
+    expect(fde.path).toBe("/jobs/role/forward-deployed-engineer/");
+    expect(fde.kind).toBe("role");
+    expect(fde.count).toBe(12);
+    expect(fde.directoryHref).toBe("/jobs/?role=forward-deployed-engineer&sort=newest");
+    expect(fde.indexable).toBe(true);
+    expect(fde.listings.every((j) => /forward[\s\-–—]+deployed|\bFDE\b/i.test(j.title))).toBe(true);
+    const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(fde.directoryHref.split("?")[1])), now);
+    expect(directory).toHaveLength(fde.count);
+    expect(directory.some((j) => j.title === "Deployed Engineer" || j.title === "Partner Deployed Engineer")).toBe(false);
+    expect(data.all.map((p) => p.path)).toContain(fde.path);
   });
 
   it("never emits JobPosting-style fields it does not have", () => {
@@ -154,18 +178,56 @@ describe("landing pages from listings", () => {
 });
 
 describe("jobs directory structured data", () => {
-  it("lists topic, state, and city pages and omits JobPosting and empty topic pages", () => {
+  it("lists topic, role, state, and city pages and omits JobPosting and empty topic pages", () => {
     const ld = jobsIndexJsonLd([
       { path: "/jobs/remote/", name: "Remote jobs, all locations", count: 40, kind: "topic", state: null },
       { path: "/jobs/remote-us/", name: "Remote jobs, U.S. locations", count: 0, kind: "topic", state: null },
+      { path: "/jobs/role/forward-deployed-engineer/", name: "Forward Deployed Engineer jobs", count: 12, kind: "role", state: null },
       { path: "/jobs/in/california/", name: "Jobs in California", count: 50, kind: "state", state: "CA" },
       { path: "/jobs/at/openai/", name: "Jobs at OpenAI", count: 100, kind: "company", state: null },
     ]) as { "@graph": { "@type": string; numberOfItems?: number; itemListElement?: { name: string }[] }[] };
     expect(ld["@graph"][0]["@type"]).toBe("CollectionPage");
     const list = ld["@graph"][1];
     expect(list["@type"]).toBe("ItemList");
-    expect(list.numberOfItems).toBe(2);
-    expect(list.itemListElement!.map((i) => i.name)).toEqual(["Remote jobs, all locations", "Jobs in California"]);
+    expect(list.numberOfItems).toBe(3);
+    expect(list.itemListElement!.map((i) => i.name)).toEqual([
+      "Remote jobs, all locations",
+      "Forward Deployed Engineer jobs",
+      "Jobs in California",
+    ]);
     expect(JSON.stringify(ld)).not.toContain("JobPosting");
+  });
+});
+
+describe("offline bootstrap snapshot", () => {
+  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10), buildAt: "2026-10-16T18:00:00.000Z" });
+  const now = Date.parse(catalog.buildAt);
+
+  it("keeps generateStaticParams non-empty for Next.js export", () => {
+    expect(atLeastOneParam([], { state: "_" })).toEqual([{ state: "_" }]);
+    expect(atLeastOneParam([{ state: "california" }], { state: "_" })).toEqual([{ state: "california" }]);
+  });
+
+  it("aligns a stale committed snapshot so city, state, and role pages still generate", () => {
+    const raw = readJobs(catalog.organizations);
+    const last = latestSuccessfulCheck(raw);
+    const stale = last !== null && now - last > STALE_MS;
+    if (stale) {
+      expect(filterJobs(
+        raw.jobs.filter((j) => j.status === "open").map((j) => toJobItem(j, j.organization_slug)),
+        raw.feeds,
+        DEFAULT_JOB_FILTERS,
+        now,
+      )).toHaveLength(0);
+    }
+    const aligned = alignJobsSnapshot(raw, now);
+    expect(aligned === raw).toBe(!stale);
+    const names = new Map(catalog.organizations.map((o) => [o.slug, o.name]));
+    const items = aligned.jobs.filter((j) => j.status === "open").map((j) => toJobItem(j, names.get(j.organization_slug)!));
+    const data = computeLandingData(catalog, items, aligned.feeds, now);
+    expect(data.states.some((p) => p.state === "CA")).toBe(true);
+    expect(data.cities.some((p) => p.path === "/jobs/in/california/san-francisco/")).toBe(true);
+    expect(data.roles.find((p) => p.id === "forward-deployed-engineer")!.count).toBeGreaterThanOrEqual(10);
+    expect(alignJobsSnapshot(aligned, now)).toBe(aligned);
   });
 });

@@ -4,6 +4,7 @@ import { useJobsClock } from "./useJobsClock";
 import { useEffect, useMemo, useState } from "react";
 import type { FeedHealth, Job } from "@/lib/jobs/schema";
 import { checkedLabel, currentJobs, DEFAULT_JOB_FILTERS, filterJobs, isDefaultJobView, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
+import { JOB_ROLES, jobRole } from "@/lib/jobs/roles";
 import { isExpressionOfInterest, jobTrack, JOB_TRACKS } from "@/lib/jobs/tracks";
 import { cityKey, cityLabel, jobGeography, LOCATION_SCOPE_LABELS, LOCATION_SCOPES, stateDisplayName, type LocationScope } from "@/lib/jobs/geo";
 import { US_STATES } from "@/lib/places";
@@ -102,6 +103,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <SearchField label="Search jobs" value={f.q} onChange={q => set({ q }, "replace")} placeholder="Title, company, skill, city… (ML, SWE, PM work too)" />
         <SelectField label="Company or lab" value={f.company} options={coverage.map(c => ({ value: c.slug, label: c.name }))} onChange={company => set({ company })} allLabel="All organizations" />
+        {JOB_ROLES.length ? <SelectField label="Role" value={f.role} options={JOB_ROLES.map(r => ({ value: r.slug, label: r.name }))} onChange={role => set({ role })} allLabel="All roles" /> : null}
         <SearchField label="Location" value={f.location} onChange={location => set({ location }, "replace")} placeholder="Employer-supplied location…" />
         <SelectField label="U.S. state named in location" value={f.state} options={STATE_OPTIONS} onChange={state => set({ state, city: "" })} allLabel="Any location" />
         {f.state && cityOptions.length ? <SelectField label="City" value={f.city} options={cityOptions} onChange={city => set({ city })} allLabel={`Anywhere in ${stateDisplayName(f.state)}`} /> : null}
@@ -115,6 +117,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
         {POPULAR.map(q => <button key={q} type="button" aria-pressed={f.q.toLowerCase() === q.toLowerCase()} onClick={() => set({ q: f.q.toLowerCase() === q.toLowerCase() ? "" : q })} className={`inline-flex min-h-9 items-center rounded-full border px-3 text-sm ${f.q.toLowerCase() === q.toLowerCase() ? "border-cyan bg-cyan/10 text-text" : "border-line text-muted hover:border-line-strong hover:text-text"}`}>{q}</button>)}
       </div>
       {f.company && coverage.some(c => c.slug === f.company && c.mode === "automated") ? <p className="mt-4 text-sm text-muted" data-testid="jobs-company-page">Shareable page for this employer: <Link href={`/jobs/at/${f.company}/`} className="link">Jobs at {coverage.find(c => c.slug === f.company)!.name}</Link></p> : null}
+      {f.role && jobRole(f.role) ? <p className="mt-4 max-w-3xl text-sm text-muted" data-testid="jobs-role-filter"><span className="badge mr-2 border-[rgba(76,201,255,0.45)]">Role: {jobRole(f.role)!.name}</span>Shareable page: <Link href={`/jobs/role/${f.role}/`} className="link">{jobRole(f.role)!.h1}</Link>. {jobRole(f.role)!.rule} <button type="button" className="link min-h-11" onClick={() => set({ role: "" })}>Clear role</button></p> : null}
       {f.city ? <p className="mt-4 text-sm text-text" data-testid="jobs-city-filter"><span className="badge mr-2 border-[rgba(76,201,255,0.45)]">City: {cityName}, {f.state}</span><button type="button" className="link min-h-11" onClick={() => set({ city: "" })}>Show all of {stateDisplayName(f.state)}</button></p> : null}
       {f.state || f.where ? <p className="mt-4 max-w-3xl text-sm text-muted"><strong className="text-text">How locations are read:</strong> {f.state ? `A listing matches ${f.city ? `${cityName}, ${stateDisplayName(f.state)}` : stateDisplayName(f.state)} when one of its employer-supplied locations names it, for example “Atlanta, GA”, “Atlanta, Georgia, United States”, or a city on its own that has only one well-known U.S. match, such as “Atlanta” or “SF Office”; “Remote - US” names no state. ` : ""}{f.where && f.where !== "us" ? "Remote means the employer marks the workplace as remote or a listed location says “Remote”. " : ""}{f.where === "us" || f.where === "remote-us" ? "U.S. locations only means the listing names the United States or a U.S. state and no place outside it. " : ""}It uses only what employers supply. <Link href="/jobs/remote-us/" className="link">About remote jobs with U.S. locations</Link></p> : null}
       <details className="mt-4"><summary className="min-h-11 cursor-pointer text-sm text-ice">Salary and date filters</summary><div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

@@ -1,19 +1,31 @@
 /**
- * Jobs landing pages: /jobs/at/<employer>/, /jobs/in/<state>/, /jobs/in/<state>/<city>/, and the topic pages (/jobs/entry-level/,
+ * Jobs landing pages: /jobs/at/<employer>/, /jobs/in/<state>/, /jobs/in/<state>/<city>/,
+ * /jobs/role/<slug>/, and the topic pages (/jobs/entry-level/,
  * /jobs/no-programming/, /jobs/data-center-infrastructure/, /jobs/remote-us/,
  * /jobs/remote/). Build-time only (reads data/jobs/current.json through
- * readJobs). Every count, list, and date is recomputed on each build from the
+ * readJobsForBuild). Every count, list, and date is recomputed on each build from the
  * same rules the /jobs/ directory filters use, so a page's "see all" link shows
  * exactly the same listings.
  */
 import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
 import { stateSlug, US_STATES } from "../places";
-import { readJobs } from "./load";
+import { readJobsForBuild } from "./load";
 import type { FeedHealth } from "./schema";
 import { cityKey, cityLabel, jobGeography, stateDisplayName } from "./geo";
 import { DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
+import { JOB_ROLES, type JobRole } from "./roles";
 import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, NO_PROGRAMMING_RULE } from "./tracks";
+
+/**
+ * Next.js `output: export` rejects an empty `generateStaticParams()`. City and
+ * state pages are omitted when no listing meets the threshold (for example a
+ * wholly stale snapshot); keep a dummy param so the export can finish, and let
+ * the page `notFound()`.
+ */
+export function atLeastOneParam<T>(params: T[], fallback: T): T[] {
+  return params.length > 0 ? params : [fallback];
+}
 
 /** A state page needs at least this many current listings; fewer would make a thin page. */
 export const MIN_STATE_LISTINGS = 10;
@@ -28,7 +40,7 @@ export const LISTINGS_SHOWN = 100;
 
 /** How a page's listings relate to the United States. */
 export type GeographyScope = "state" | "city" | "us-only" | "includes-outside";
-export type LandingKind = "state" | "city" | "company" | "topic";
+export type LandingKind = "state" | "city" | "company" | "topic" | "role";
 
 export type TopicId = "data-center-infrastructure" | "no-programming" | "entry-level" | "remote-us" | "remote";
 
@@ -193,6 +205,25 @@ export function cityDefinition(code: string, slug: string, label: string): Landi
   };
 }
 
+/** A role page: listings whose titles match a published role's include/exclude rules. */
+export function roleDefinition(role: JobRole): LandingDefinition {
+  return {
+    id: role.slug,
+    path: `/jobs/role/${role.slug}/`,
+    name: `${role.name} jobs`,
+    h1: role.h1,
+    eyebrow: "Jobs by role",
+    scope: "includes-outside",
+    filters: { role: role.slug },
+    intro: role.intro,
+    rule: role.rule,
+    title: (f) => `${role.name} jobs: ${listings(f.count)} at U.S. AI companies`,
+    description: (f) =>
+      `${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} at ${at(f)}. ${abroad(f)} Checked ${f.date}.`,
+    image: `/og/jobs/role-${role.slug}.jpg`,
+  };
+}
+
 const PROVIDER_LABELS: Record<string, string> = { greenhouse: "Greenhouse", ashby: "Ashby" };
 
 /** An employer's page: every current listing from that organization's own job board. */
@@ -270,6 +301,8 @@ export type JobsLandingData = {
   /** One page per employer with an automated job board. */
   companies: LandingPage[];
   topics: LandingPage[];
+  /** One page per shipped role in JOB_ROLES. */
+  roles: LandingPage[];
   all: LandingPage[];
   stateCounts: Record<string, number>;
   /** Current listings per city key ("CA|san-francisco"). */
@@ -336,7 +369,7 @@ function build(
     directoryHref: `/jobs/?${serializeJobFilters(filters)}`,
     usOnlyHref: usOnlyFilters ? `/jobs/?${serializeJobFilters(usOnlyFilters)}` : null,
     usOnlyCount: geo.usOnly,
-    indexable: kind === "company" ? listings.length > 0 : kind !== "topic" || listings.length >= MIN_TOPIC_LISTINGS,
+    indexable: kind === "company" ? listings.length > 0 : kind === "topic" || kind === "role" ? listings.length >= MIN_TOPIC_LISTINGS : true,
     buildAt: new Date(src.now).toISOString(),
   };
 }
@@ -382,6 +415,7 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
     .map(({ code, slug, key, label }) => build(catalog, cityDefinition(code, slug, label), "city", src, code, { key, slug, label }))
     .sort((a, b) => a.h1.localeCompare(b.h1, "en"));
   const topics = TOPIC_IDS.map((id) => build(catalog, TOPICS[id], "topic", src, null));
+  const roles = JOB_ROLES.map((role) => build(catalog, roleDefinition(role), "role", src, null));
   // Every published employer with an automated board gets a page, even with no current listings (kept out of search engines then).
   const withListings = new Set(current.map((j) => j.organization_slug));
   const companies = catalog.organizations
@@ -398,14 +432,14 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
       ),
     )
     .sort((a, b) => a.organization!.name.localeCompare(b.organization!.name, "en"));
-  return { states, cities, companies, topics, all: [...topics, ...states, ...cities, ...companies], stateCounts, cityCounts };
+  return { states, cities, companies, topics, roles, all: [...roles, ...topics, ...states, ...cities, ...companies], stateCounts, cityCounts };
 }
 
 /** The site's landing pages, from data/jobs/current.json at this build's timestamp; computed once per catalog. */
 export function jobsLandingData(catalog: Catalog): JobsLandingData {
   const hit = memo.get(catalog);
   if (hit) return hit;
-  const data = readJobs(catalog.organizations);
+  const data = readJobsForBuild(catalog.organizations, Date.parse(catalog.buildAt));
   const names = new Map(catalog.organizations.map((o) => [o.slug, o.name]));
   const items = data.jobs.filter((j) => j.status === "open").map((j) => toJobItem(j, names.get(j.organization_slug)!));
   const result = computeLandingData(catalog, items, data.feeds, Date.parse(catalog.buildAt));

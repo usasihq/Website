@@ -11,7 +11,7 @@ import { descriptionHtml, descriptionText, type Description } from "./descriptio
 import { readDescriptions } from "./descriptions-store";
 import { isUSOnly, placeGeography } from "./geo";
 import { jobSlug } from "./job-url";
-import { readJobs } from "./load";
+import { readJobsForBuild } from "./load";
 import type { Job } from "./schema";
 import { isCurrent } from "./search";
 import { isExpressionOfInterest } from "./tracks";
@@ -23,9 +23,9 @@ const memo = new WeakMap<Catalog, JobPage[]>();
 export function jobPages(catalog: Catalog): JobPage[] {
   const hit = memo.get(catalog);
   if (hit) return hit;
-  const data = readJobs(catalog.organizations);
-  const descriptions = readDescriptions();
   const now = Date.parse(catalog.buildAt);
+  const data = readJobsForBuild(catalog.organizations, now);
+  const descriptions = readDescriptions();
   const health = new Map(data.feeds.map((f) => [`${f.organization_slug}:${f.source_type}:${f.source_identifier}`, f]));
   const taken = new Set<string>();
   const pages: JobPage[] = [];

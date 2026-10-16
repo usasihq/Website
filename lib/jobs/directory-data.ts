@@ -1,5 +1,5 @@
 import type { Catalog } from "../catalog";
-import { readJobs } from "./load";
+import { readJobsForBuild } from "./load";
 import { DEFAULT_JOB_FILTERS, filterJobs, toJobItem, type JobItem } from "./search";
 import type { FeedHealth } from "./schema";
 
@@ -16,10 +16,11 @@ export function jobsDirectoryData(catalog: Catalog): {
   initial: JobItem[];
   summary: { currentCount: number; organizationCount: number; departments: string[]; currencies: string[]; periods: string[] };
 } {
-  const data = readJobs(catalog.organizations);
+  const now = Date.parse(catalog.buildAt);
+  const data = readJobsForBuild(catalog.organizations, now);
   const names = new Map(catalog.organizations.map((o) => [o.slug, o.name]));
   const items = data.jobs.filter((j) => j.status === "open").map((j) => toJobItem(j, names.get(j.organization_slug)!));
-  const current = filterJobs(items, data.feeds, DEFAULT_JOB_FILTERS, Date.parse(catalog.buildAt));
+  const current = filterJobs(items, data.feeds, DEFAULT_JOB_FILTERS, now);
   return {
     items,
     feeds: data.feeds,
