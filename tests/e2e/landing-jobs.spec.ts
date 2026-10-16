@@ -8,6 +8,7 @@ import { isExpressionOfInterest } from "../../lib/jobs/tracks";
  * page with itself and with the directory rather than with fixed numbers.
  */
 const TOPICS = ["/jobs/data-center-infrastructure/", "/jobs/no-programming/", "/jobs/entry-level/", "/jobs/remote-us/", "/jobs/remote/"];
+const FDE = "/jobs/role/forward-deployed-engineer/";
 
 async function jsonLd(page: Page) {
   return (await page.locator('script[type="application/ld+json"]').allTextContents()).join("\n");
@@ -105,13 +106,15 @@ test("landing pages are linked from /jobs/ and /places/, listed in the sitemap, 
   const browse = page.getByRole("navigation", { name: "Browse by" });
   await expect(browse.locator('a[href="/jobs/entry-level/"]')).toBeVisible();
   await expect(browse.locator('a[href="/jobs/in/california/"]')).toBeVisible();
+  await expect(page.getByTestId("browse-roles").locator(`a[href="${FDE}"]`)).toBeVisible();
   await page.goto("/places/california/");
   await expect(page.locator('main a[href="/jobs/in/california/"]')).toBeVisible();
   const sitemap = await (await request.get("/sitemap.xml")).text();
-  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", ...TOPICS]) expect(sitemap).toContain(`${path}</loc>`);
+  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", FDE, ...TOPICS]) expect(sitemap).toContain(`${path}</loc>`);
   expect(sitemap).not.toContain("?state=");
   const index = await (await request.get("/data/search-index.json")).json();
   expect(index.entries.some((e: { href: string }) => e.href === "/jobs/in/california/")).toBe(true);
+  expect(index.entries.some((e: { href: string }) => e.href === FDE)).toBe(true);
 });
 
 test("only states at or above the listing threshold have a page", async ({ page, request }) => {
@@ -121,10 +124,11 @@ test("only states at or above the listing threshold have a page", async ({ page,
   for (const text of await chips.allTextContents()) expect(Number(/\(([\d,]+)\)/.exec(text)![1].replace(/,/g, ""))).toBeGreaterThanOrEqual(10);
   expect((await request.get("/jobs/in/not-a-state/")).status()).toBe(404);
   expect((await request.get("/jobs/in/california/not-a-city/")).status()).toBe(404);
+  expect((await request.get("/jobs/role/not-a-role/")).status()).toBe(404);
 });
 
 test("landing pages pass axe and fit narrow screens", async ({ page }) => {
-  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", "/jobs/remote-us/"]) {
+  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", "/jobs/remote-us/", FDE]) {
     await page.goto(path);
     const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
     expect(axe.violations.map((v) => `${path}: ${v.id}`)).toEqual([]);
@@ -137,9 +141,49 @@ test("the freshness notice appears once listings are more than 48 hours old", as
   await expect(page.getByRole("status").filter({ hasText: "more than 48 hours ago" })).toBeVisible();
 });
 
+test("a role page answers first, lists employers, and matches the directory", async ({ page, request }) => {
+  await page.goto(FDE);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Forward Deployed Engineer jobs");
+  const count = await countOnPage(page);
+  expect(count).toBeGreaterThanOrEqual(10);
+  await expect(page).toHaveTitle(new RegExp(`^Forward Deployed Engineer jobs: ${count.toLocaleString("en-US")} open listings`));
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description!.length).toBeLessThanOrEqual(160);
+  expect(description).toMatch(/^[\d,]+ open Forward Deployed Engineer listings/);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/role\/forward-deployed-engineer\/$/);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/og\/jobs\/role-forward-deployed-engineer\.jpg$/);
+  await expect(page.getByRole("heading", { name: "How this list is made" })).toBeVisible();
+  await expect(page.getByText(/best-effort match/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Employers" })).toBeVisible();
+  expect(await page.locator("#listings li").count()).toBeLessThanOrEqual(100);
+  const ld = await jsonLd(page);
+  expect(ld).toContain('"CollectionPage"');
+  expect(ld).toContain('"ItemList"');
+  expect(ld).not.toContain("JobPosting");
+  const titles = await page.locator("#listings h3 a").allTextContents();
+  for (const title of titles) {
+    expect(title).toMatch(/forward[\s\-–—]+deployed|(?<![A-Za-z0-9])FDE(?![A-Za-z0-9])/i);
+  }
+  const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
+  await page.getByRole("link", { name: /^See all [\d,]+ in the Jobs directory$|^Filter these in the Jobs directory$/ }).click();
+  await loaded;
+  await expect(page).toHaveURL(/\/jobs\/\?role=forward-deployed-engineer&sort=newest$/);
+  await expect(page.getByTestId("jobs-role-filter")).toContainText("Forward Deployed Engineer");
+  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  expect((await request.get("/jobs/role/not-a-role/")).status()).toBe(404);
+});
+
+test("an employer with matching listings links to the role page", async ({ page }) => {
+  await page.goto("/jobs/at/openai/");
+  const roles = page.getByTestId("landing-roles");
+  await expect(roles.locator(`a[href="${FDE}"]`)).toBeVisible();
+  const n = Number(/\(([\d,]+)\)/.exec((await roles.locator(`a[href="${FDE}"]`).textContent())!)![1].replace(/,/g, ""));
+  expect(n).toBeGreaterThan(0);
+});
+
 test("screenshots of two landing pages at 375 and 1280 pixels", async ({ page }, info) => {
   test.skip(info.project.name !== "desktop", "one set of screenshots is enough");
-  for (const [slug, path] of [["georgia", "/jobs/in/georgia/"], ["entry-level", "/jobs/entry-level/"]] as const) {
+  for (const [slug, path] of [["georgia", "/jobs/in/georgia/"], ["entry-level", "/jobs/entry-level/"], ["fde", FDE]] as const) {
     for (const width of [375, 1280]) {
       await page.setViewportSize({ width, height: width === 375 ? 812 : 900 });
       await page.goto(path);

@@ -10,8 +10,8 @@ Re-check that page before changing the markup.
 | Page | JSON-LD |
 | --- | --- |
 | `/jobs/at/<employer>/<slug>/` (one opening) | `JobPosting` when the listing qualifies, plus `BreadcrumbList` |
-| `/jobs/` | `CollectionPage` + `ItemList` of topic, state, and city landing pages. Query strings (`?company=`) canonicalise here and do not add `JobPosting`. |
-| `/jobs/remote/`, `/jobs/in/<state>/`, `/jobs/at/<employer>/`, other landings | `CollectionPage`, `ItemList` of the listings **shown on the page** (each URL is that job's USASI page), `ItemList` of employers, `BreadcrumbList`. Never `JobPosting`. |
+| `/jobs/` | `CollectionPage` + `ItemList` of topic, role, state, and city landing pages. Query strings (`?company=`) canonicalise here and do not add `JobPosting`. |
+| `/jobs/remote/`, `/jobs/in/<state>/`, `/jobs/at/<employer>/`, `/jobs/role/<slug>/`, other landings | `CollectionPage`, `ItemList` of the listings **shown on the page** (each URL is that job's USASI page), `ItemList` of employers, `BreadcrumbList`. Never `JobPosting`. |
 
 A listing qualifies for `JobPosting` only when it is current (`isCurrent`: open,
 feed healthy, seen within 48 hours at build time), has a stored description, is

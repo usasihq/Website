@@ -1,4 +1,5 @@
 import type { Job, FeedHealth } from "./schema";
+import { JOB_ROLES, jobRole } from "./roles";
 import { JOB_TRACKS, jobTrack } from "./tracks";
 import { cityKey, inLocationScope, jobGeography, LOCATION_SCOPES, type LocationScope } from "./geo";
 import { US_STATES } from "../places";
@@ -20,7 +21,7 @@ export function isCurrent(job: Pick<Job, "status" | "last_seen">, feed: FeedHeal
 export function checkedLabel(value: string | null): string {
   return value ? new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(new Date(value)) + " UTC" : "Not yet successfully checked";
 }
-export const DEFAULT_JOB_FILTERS = { q: "", track: "", company: "", department: "", location: "", state: "", city: "", where: "" as LocationScope | "", workplace: "", employment: "", salary: false,
+export const DEFAULT_JOB_FILTERS = { q: "", track: "", role: "", company: "", department: "", location: "", state: "", city: "", where: "" as LocationScope | "", workplace: "", employment: "", salary: false,
   currency: "", period: "", salary_min: "", posted: "", verified: "", view: "current", sort: "verified", page: 1 };
 export type JobFilters = typeof DEFAULT_JOB_FILTERS;
 const clean = (v: string | null, max = 120) => (v ?? "").trim().slice(0, max);
@@ -32,7 +33,7 @@ export function parseJobFilters(p: URLSearchParams): JobFilters {
   const state = choice((p.get("state") ?? "").toUpperCase(), Object.keys(US_STATES));
   // A city is a slug within a state ("state=CA&city=san-francisco"); without a state it means nothing.
   const city = state && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.get("city") ?? "") ? p.get("city")!.slice(0, 60) : "";
-  return { q: clean(p.get("q"), 200), track: choice(p.get("track"), JOB_TRACKS.map(t => t.id)), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
+  return { q: clean(p.get("q"), 200), track: choice(p.get("track"), JOB_TRACKS.map(t => t.id)), role: choice(p.get("role"), JOB_ROLES.map(r => r.slug)), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
     state, city,
     where: choice(p.get("where"), [...LOCATION_SCOPES]) as LocationScope | "",
     workplace: p.get("remote") === "1" ? "remote" : choice(p.get("workplace"), ["remote", "hybrid", "on-site", "unknown"]),
@@ -60,6 +61,7 @@ export const JOB_SYNONYMS: string[][] = [
   ["mgr", "manager"], ["sr", "senior"], ["jr", "junior"], ["intern", "internship"], ["infra", "infrastructure"], ["mts", "member of technical staff"],
   ["rl", "reinforcement learning"], ["cv", "computer vision"], ["ae", "account executive"], ["sdr", "sales development representative"],
   ["bd", "business development"], ["qa", "quality assurance"], ["ds", "data scientist"], ["eng", "engineer", "engineering"],
+  ["fde", "forward deployed", "forward deployed engineer"],
 ];
 
 /**
@@ -106,6 +108,7 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     const current = isCurrent(j, health.get(`${j.organization_slug}:${j.source_type}:${j.source_identifier}`), now);
     if (f.view === "current" ? !current : current) return false;
     if (f.track && !jobTrack(f.track)?.test(j)) return false;
+    if (f.role && !jobRole(f.role)?.test(j.title)) return false;
     if (f.company && j.organization_slug !== f.company) return false;
     if (f.department && j.department !== f.department) return false;
     if (f.location && !j.locations.some(l => normalize(l).includes(normalize(f.location)))) return false;

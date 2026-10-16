@@ -87,6 +87,9 @@ describe("URL filters and freshness", () => {
     const f = parseJobFilters(new URLSearchParams("company=employer&remote=1&salary_min=150000&sort=garbage&page=-1"));
     expect(f.workplace).toBe("remote"); expect(f.salary_min).toBe(""); expect(f.page).toBe(1); expect(f.sort).toBe("verified");
     expect(parseJobFilters(new URLSearchParams(serializeJobFilters(f)))).toEqual(f);
+    expect(parseJobFilters(new URLSearchParams("role=forward-deployed-engineer")).role).toBe("forward-deployed-engineer");
+    expect(parseJobFilters(new URLSearchParams("role=not-a-role")).role).toBe("");
+    expect(serializeJobFilters({ ...DEFAULT_JOB_FILTERS, role: "forward-deployed-engineer" })).toBe("role=forward-deployed-engineer");
   });
   it("ages current jobs and separates unknown remote without inventing locations", () => {
     const state = first(), jobs = state.jobs.map(j => ({...j,organization_name:"Employer"}));

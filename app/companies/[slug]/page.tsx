@@ -2,6 +2,7 @@ import Link from "next/link";
 import { RecordContext } from "@/components/RecordContext";
 import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
 import { OrganizationJobs } from "@/components/OrganizationJobs";
+import { roleLinksForEmployer } from "@/lib/jobs/landing-links";
 import { readJobs } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
 import { Monogram, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
@@ -450,7 +451,8 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
           {catalog.isActiveOrganization(org.slug) ? <OrganizationJobs slug={org.slug} name={org.name} url={org.careers?.url ?? org.hiring_url}
             enabled={Boolean(org.careers?.enabled)} asOf={catalog.buildAt}
             jobCount={jobData.jobs.filter(j => j.organization_slug === org.slug && j.status === "open").length}
-            feed={jobData.feeds.find(f => f.organization_slug === org.slug) ?? null} /> : null}
+            feed={jobData.feeds.find(f => f.organization_slug === org.slug) ?? null}
+            roles={roleLinksForEmployer(catalog, org.slug).map((r) => ({ href: r.path, name: r.name, count: r.count }))} /> : null}
 
           <RecordContext unknowns={organizationUnknowns(org, related.length)} related={organizationRelated(catalog, org)} />
 
