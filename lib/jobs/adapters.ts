@@ -3,6 +3,7 @@ import type { Careers, NormalizedJob, Job } from "./schema";
 import { Salary } from "./schema";
 import { decodeEntities } from "./description";
 import { endpoint, FeedError, postingUrl } from "./security";
+import { rowsUsaJobs } from "./usajobs";
 const short = z.string().max(1000);
 const id = z.union([z.number().int().nonnegative(), z.string().regex(/^[A-Za-z0-9_-]{1,100}$/)]);
 const greenhouse = z.object({ jobs: z.array(z.object({
@@ -52,7 +53,7 @@ function date(value?: string | null): string | null {
 }
 const uniq = (v: Array<string | null | undefined>) => [...new Set(v.filter((x): x is string => Boolean(x)))].sort();
 function base(org: string, c: Careers, sourceId: string, title: string, url: string): NormalizedJob {
-  if (c.source.type !== "ashby" && c.source.type !== "greenhouse" && c.source.type !== "lever") throw new FeedError("payload");
+  if (c.source.type !== "ashby" && c.source.type !== "greenhouse" && c.source.type !== "lever" && c.source.type !== "usajobs") throw new FeedError("payload");
   return { id: `${org}:${c.source.type}:${c.source.identifier}:${sourceId}`, source_job_id: sourceId,
     organization_slug: org, source_type: c.source.type, source_identifier: c.source.identifier, source_url: endpoint(c),
     title: plain(title) ?? "", official_url: postingUrl(url, c), apply_url: null, requisition_id: null,
@@ -127,8 +128,9 @@ const rowsLever = (payload: unknown, org: string, c: Careers): SourceRow[] =>
     const html = [r.description, sections, r.additional].filter(Boolean).join("");
     return { job, html: html || null };
   });
-export const adapters: Record<"greenhouse" | "ashby" | "lever", JobSourceAdapter> = {
+export const adapters: Record<"greenhouse" | "ashby" | "lever" | "usajobs", JobSourceAdapter> = {
   greenhouse: { rows: rowsGreenhouse, normalize: (payload, org, c) => rowsGreenhouse(payload, org, c).map((r) => r.job) },
   ashby: { rows: rowsAshby, normalize: (payload, org, c) => rowsAshby(payload, org, c).map((r) => r.job) },
   lever: { rows: rowsLever, normalize: (payload, org, c) => rowsLever(payload, org, c).map((r) => r.job) },
+  usajobs: { rows: rowsUsaJobs, normalize: (payload, org, c) => rowsUsaJobs(payload, org, c).map((r) => r.job) },
 };

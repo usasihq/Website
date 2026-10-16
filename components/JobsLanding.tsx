@@ -78,11 +78,22 @@ function Listing({ job }: { job: JobItem }) {
           <span className="sr-only"> at {job.organization_name}</span>
         </a>
       </h3>
-      <p className="mt-1 text-sm">
-        <Link prefetch={false} href={orgHref(job.organization_slug)} className="link">
-          {job.organization_name}
-        </Link>
-      </p>
+      {job.source_type === "usajobs" && job.department ? (
+        <>
+          <p className="mt-1 text-sm font-medium text-text">{job.department}</p>
+          <p className="text-sm">
+            <Link prefetch={false} href={orgHref(job.organization_slug)} className="link">
+              {job.organization_name}
+            </Link>
+          </p>
+        </>
+      ) : (
+        <p className="mt-1 text-sm">
+          <Link prefetch={false} href={orgHref(job.organization_slug)} className="link">
+            {job.organization_name}
+          </Link>
+        </p>
+      )}
       {isExpressionOfInterest(job.title) ? (
         <p className="mt-2 text-sm text-ice">The employer&rsquo;s title presents this as a general expression of interest, not a specific vacancy.</p>
       ) : null}
@@ -98,7 +109,8 @@ function Listing({ job }: { job: JobItem }) {
       </p>
       <p className="mt-2 text-sm">
         <ExternalLink href={job.official_url}>
-          Apply on the employer&rsquo;s site<span className="sr-only">: {job.title} at {job.organization_name}</span>
+          {job.source_type === "usajobs" ? "Apply on USAJOBS.gov" : "Apply on the employer\u2019s site"}
+          <span className="sr-only">: {job.title} at {job.source_type === "usajobs" && job.department ? job.department : job.organization_name}</span>
         </ExternalLink>
       </p>
     </li>
@@ -177,8 +189,13 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
               : page.kind === "role"
                 ? "This is a best-effort match on the employer-supplied title, not a reading of the full job description: check the listing. "
                 : "This is a best-effort match on what employers supply (title, department, team, and location), not a reading of the full job description: check the listing. "}
-            Listings come from employers&rsquo; own job feeds and count as current when their feed was checked successfully and the
-            listing was present within the last 48 hours. Counts were computed when this page was built
+            {page.organization?.sourceType === "usajobs"
+              ? "Listing data comes from USAJOBS.gov. "
+              : "Listings come from employers\u2019 own job feeds and count as current when their feed was checked successfully and the listing was present within the last 48 hours. "}
+            {page.organization?.sourceType === "usajobs"
+              ? "They count as current when this source was checked successfully and the listing was present within the last 48 hours. "
+              : null}
+            Counts were computed when this page was built
             {page.oldestChecked && page.lastChecked && page.oldestChecked.slice(0, 10) !== page.lastChecked.slice(0, 10)
               ? `, from checks between ${formatDate(page.oldestChecked.slice(0, 10))} and ${formatDate(page.lastChecked.slice(0, 10))}`
               : ""}
@@ -248,8 +265,12 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
             </ul>
             {page.departments.length ? (
               <>
-                <h3 className="mt-6 text-base font-semibold text-text">Departments</h3>
-                <p className="mt-1 max-w-3xl text-sm text-muted">As {page.organization.name} labels them, by number of listings. Each opens the directory filtered to that department.</p>
+                <h3 className="mt-6 text-base font-semibold text-text">{page.organization.sourceType === "usajobs" ? "Agencies" : "Departments"}</h3>
+                <p className="mt-1 max-w-3xl text-sm text-muted">
+                  {page.organization.sourceType === "usajobs"
+                    ? "Hiring agencies as USAJOBS names them, by number of listings. Each opens the directory filtered to that agency."
+                    : `As ${page.organization.name} labels them, by number of listings. Each opens the directory filtered to that department.`}
+                </p>
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {page.departments.slice(0, 24).map((d) => (
                     <li key={d.name}>

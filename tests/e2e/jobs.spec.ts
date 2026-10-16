@@ -8,7 +8,7 @@ async function openFilters(page: Page) {
 }
 test("jobs filters survive URL, history and reload without contacting ATS", async ({ page }) => {
   const external: string[] = [];
-  page.on("request", r => {if (/greenhouse|ashbyhq|lever\.co/.test(r.url())) external.push(r.url());});
+  page.on("request", r => {if (/greenhouse|ashbyhq|lever\.co|data\.usajobs\.gov/.test(r.url())) external.push(r.url());});
   await page.goto("/jobs/?company=openai");
   await openFilters(page);
   await expect(page.getByLabel("Company or lab", {exact:true})).toHaveValue("openai");
@@ -34,7 +34,7 @@ test("jobs accessibility, safe employer links and responsive width", async ({ pa
   const links = page.locator('article a.btn-primary[data-external="true"]').first();
   if (await links.count()) {
     await expect(links).toHaveAttribute("rel","noopener noreferrer");
-    // The job board itself, or an employer-owned posting host on the organization's editorial allow-list.
+    // The job board itself, USAJOBS.gov, or an employer-owned posting host on the organization's editorial allow-list.
     await expect(links).toHaveAttribute("href", /^https:\/\/[a-z0-9.-]+\.[a-z]{2,}\//);
   }
   await page.screenshot({path:`reports/screenshots/jobs-${test.info().project.name}.png`,fullPage:false});

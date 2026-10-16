@@ -47,6 +47,13 @@ describe("landing page text", () => {
     expect(fde.path).toBe("/jobs/role/forward-deployed-engineer/");
     expect(fde.filters).toEqual({ role: "forward-deployed-engineer" });
     expect(fde.image).toBe("/og/jobs/role-forward-deployed-engineer.jpg");
+    const federal = companyDefinition({ slug: "federal", name: "U.S. Federal Government", provider: "usajobs" });
+    expect(federal.path).toBe("/jobs/at/federal/");
+    expect(federal.h1).toBe("Federal AI jobs");
+    expect(federal.intro).toContain("Listing data comes from USAJOBS.gov.");
+    expect(federal.title(one).length).toBeLessThanOrEqual(90);
+    expect(federal.description(one).startsWith("12")).toBe(true);
+    expect(federal.description(one)).toContain("USAJOBS.gov");
   });
 });
 

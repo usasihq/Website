@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useJobsClock } from "./useJobsClock";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import type { FeedHealth, Job } from "@/lib/jobs/schema";
+import { JOB_SOURCE_LABELS, type FeedHealth, type Job } from "@/lib/jobs/schema";
 import { checkedLabel, currentJobs, postedTime, DEFAULT_JOB_FILTERS, filterJobs, isDefaultJobView, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
 import { JOB_ROLES, jobRole } from "@/lib/jobs/roles";
 import { annualUsdTop, jobCategory, jobLevel, JOB_CATEGORIES, JOB_LEVELS, PAY_THRESHOLDS } from "@/lib/jobs/levels";
@@ -44,6 +44,10 @@ function JobCard({ job, unverified, now }: { job: JobItem; unverified: boolean; 
   const fresh = now - posted <= 3 * 86400000 && now >= posted;
   const level = jobLevel(job.title);
   const remote = job.workplace === "remote" || job.locations.some(l => /\bremote\b/i.test(l));
+  const applyOn = job.source_type === "usajobs" ? "USAJOBS.gov" : "the employer's site";
+  const sourceLine = job.source_type === "usajobs"
+    ? "Collected from USAJOBS.gov."
+    : `Collected from the employer’s ${JOB_SOURCE_LABELS[job.source_type]} feed.`;
   return <article className="card flex h-full flex-col gap-3 p-5 sm:flex-row sm:items-start sm:justify-between" data-testid="job-card">
     <div className="min-w-0">
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
@@ -62,11 +66,11 @@ function JobCard({ job, unverified, now }: { job: JobItem; unverified: boolean; 
       </ul>
       {job.salaries.length ? <p className="mt-2.5 text-[0.9375rem] font-medium text-text">{job.salaries.slice(0, 2).map(payText).join(" · ")}<span className="sr-only"> (employer-disclosed base pay range)</span></p> : null}
       {unverified ? <p className="mt-2 text-sm text-ice">Not recently confirmed. Check the employer’s posting for availability.</p> : null}
-      <details className="mt-2 text-xs text-muted"><summary className="min-h-8 cursor-pointer">Source and corrections</summary><p className="mt-2">Collected from the employer’s {({ ashby: "Ashby", lever: "Lever", greenhouse: "Greenhouse" } as const)[job.source_type]} feed. Posting ID: {job.source_job_id}. Last seen in the feed: <time dateTime={job.last_seen}>{checkedLabel(job.last_seen)}</time>. {job.salaries.length ? "Pay is the employer-disclosed base range; compensation is not guaranteed. " : ""}Unknown fields are not inferred.</p><ExternalLink href={job.source_url}>Source feed</ExternalLink>{siteConfig.contact.email ? <p className="mt-2"><a className="link" href={mailtoHref(siteConfig.contact.email, `Job correction: ${job.title}`, `Job: ${job.id}\nOfficial posting: ${job.official_url}\nDisputed field:\nProposed correction:\nSupporting source:\n`)}>Suggest a correction</a></p> : null}</details>
+      <details className="mt-2 text-xs text-muted"><summary className="min-h-8 cursor-pointer">Source and corrections</summary><p className="mt-2">{sourceLine} Posting ID: {job.source_job_id}. Last seen in the feed: <time dateTime={job.last_seen}>{checkedLabel(job.last_seen)}</time>. {job.salaries.length ? "Pay is the employer-disclosed base range; compensation is not guaranteed. " : ""}Unknown fields are not inferred.</p><ExternalLink href={job.source_url}>Source feed</ExternalLink>{siteConfig.contact.email ? <p className="mt-2"><a className="link" href={mailtoHref(siteConfig.contact.email, `Job correction: ${job.title}`, `Job: ${job.id}\nOfficial posting: ${job.official_url}\nDisputed field:\nProposed correction:\nSupporting source:\n`)}>Suggest a correction</a></p> : null}</details>
     </div>
     <div className="flex shrink-0 flex-row items-center justify-between gap-3 sm:flex-col sm:items-end">
       <p className="text-sm text-muted"><time dateTime={new Date(posted).toISOString()} title={job.posted_at ? (job.posted_date_kind === "last-published" ? "Last published by the employer" : "Published by the employer") : "First seen in the employer's feed"}>{ageText(posted, now)}</time></p>
-      <a href={job.official_url} className="btn btn-primary min-h-10 px-4 text-sm" rel="noopener noreferrer" data-external="true">Apply<span aria-hidden="true">&nbsp;↗</span><span className="sr-only"> for {job.title} at {job.organization_name} on the employer&apos;s site (external site)</span></a>
+      <a href={job.official_url} className="btn btn-primary min-h-10 px-4 text-sm" rel="noopener noreferrer" data-external="true">Apply<span aria-hidden="true">&nbsp;↗</span><span className="sr-only"> for {job.title} at {job.organization_name} on {applyOn} (external site)</span></a>
     </div>
   </article>;
 }

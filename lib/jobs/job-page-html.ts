@@ -69,7 +69,7 @@ const shortOrg = (name: string) => name.replace(/\s*\([^)]*\)\s*$/, "").trim();
 
 /** The page title: role, employer, and first location when it fits. */
 export function jobPageTitle(p: JobPage): string {
-  const org = shortOrg(p.org.name);
+  const org = p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name);
   const where = p.job.locations[0];
   return [`${p.job.title} at ${org}${where ? `, ${where}` : ""}`, `${p.job.title} at ${org}`, p.job.title].find((t) => t.length <= 70) ?? p.job.title.slice(0, 70);
 }
@@ -94,17 +94,19 @@ function supportPanel(): string {
 export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] = []): string {
   const { job, org } = p;
   const name = shortOrg(org.name);
-  const board = ({ greenhouse: "Greenhouse", ashby: "Ashby", lever: "Lever" } as const)[job.source_type];
+  const board = ({ greenhouse: "Greenhouse", ashby: "Ashby", lever: "Lever", usajobs: "USAJOBS" } as const)[job.source_type];
+  const federal = job.source_type === "usajobs";
   const apply = job.apply_url ?? job.official_url;
+  const applyLabel = federal ? "Apply on USAJOBS.gov" : `Apply on ${esc(name)}&rsquo;s site`;
   const url = absoluteUrl(p.path);
   const title = `${jobPageTitle(p)} · ${siteConfig.shortName}`;
-  const meta = jobSnippet(p) ?? `${job.title} at ${name}${job.locations[0] ? ` in ${job.locations[0]}` : ""}. Apply on ${name}'s own job board.`;
+  const meta = jobSnippet(p) ?? `${job.title} at ${federal && job.department ? job.department : name}${job.locations[0] ? ` in ${job.locations[0]}` : ""}. ${federal ? "Apply on USAJOBS.gov." : `Apply on ${name}'s own job board.`}`;
   const image = absoluteUrl(`/og/jobs/at-${org.slug}.jpg`);
   const ld = jobPostingLd(p);
   const crumbs = [
     { name: "Home", item: absoluteUrl("/") },
     { name: "Jobs", item: absoluteUrl("/jobs/") },
-    { name: `Jobs at ${name}`, item: absoluteUrl(`/jobs/at/${org.slug}/`) },
+    { name: federal ? "Federal AI jobs" : `Jobs at ${name}`, item: absoluteUrl(`/jobs/at/${org.slug}/`) },
     { name: job.title, item: url },
   ];
   const breadcrumbLd = {
@@ -114,7 +116,9 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
   };
 
   const facts: [string, string][] = [
-    ["Employer", `<a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">${esc(org.name)}</a>`],
+    ["Employer", job.source_type === "usajobs" && job.department
+      ? `${esc(job.department)} <span class="text-muted">(${esc(org.name)})</span>`
+      : `<a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">${esc(org.name)}</a>`],
     ["Location", job.locations.length ? esc(job.locations.join(" · ")) : "Not supplied by the employer"],
     ["Workplace", job.workplace !== "unknown" ? esc(job.workplace) : "Not supplied"],
     ["Employment", job.employment_type !== "unknown" ? esc(job.employment_type) : "Not supplied"],
@@ -178,23 +182,23 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
     .slice(0, 3)
     .map((c, i) => `<li class="flex items-center gap-1">${i ? '<span aria-hidden="true">›</span>' : ""}<a href="${esc(c.item.replace(/^https?:\/\/[^/]+/, ""))}" class="hover:text-text">${esc(c.name)}</a></li>`)
     .join("")}</ol></nav>
-<p class="eyebrow">Job at ${esc(name)}</p>
+<p class="eyebrow">${federal && job.department ? `Job at ${esc(job.department)}` : `Job at ${esc(name)}`}</p>
 <h1 class="mt-2 text-3xl font-semibold text-text sm:text-4xl break-words">${esc(job.title)}</h1>
 <dl class="mt-6 grid max-w-3xl gap-x-6 gap-y-2 text-[0.9375rem] sm:grid-cols-[auto_1fr]" data-testid="job-facts">${facts
     .map(([k, v]) => `<dt class="text-muted">${k}</dt><dd class="min-w-0 text-text [overflow-wrap:anywhere]">${v}</dd>`)
     .join("")}</dl>
-<p class="mt-6 flex flex-wrap items-center gap-4" data-testid="job-apply">${external(apply, `Apply on ${esc(name)}&rsquo;s site`, "btn btn-primary")}${
-    job.apply_url && job.apply_url !== job.official_url ? external(job.official_url, `View the posting on ${esc(name)}&rsquo;s job board`) : ""
+<p class="mt-6 flex flex-wrap items-center gap-4" data-testid="job-apply">${external(apply, applyLabel, "btn btn-primary")}${
+    job.apply_url && job.apply_url !== job.official_url ? external(job.official_url, federal ? "View the posting on USAJOBS.gov" : `View the posting on ${esc(name)}&rsquo;s job board`) : ""
   }</p>
 </div></header>
 <div class="container-page grid gap-10 py-10 sm:py-12">
-<p class="max-w-3xl rounded-xl border border-line p-4 text-sm text-muted" role="note">This posting comes from ${esc(org.name)}&rsquo;s own ${board} job board. USASI checks that board twice a day and removes this page once the employer closes the posting. The description below is ${esc(name)}&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications. <a href="${asset("/methodology/#jobs")}" class="link">How jobs are collected</a>.</p>
+<p class="max-w-3xl rounded-xl border border-line p-4 text-sm text-muted" role="note">${job.source_type === "usajobs" ? `This posting comes from USAJOBS.gov, the U.S. federal government&rsquo;s official employment site.${job.department ? ` The hiring agency is ${esc(job.department)}.` : ""} USASI checks USAJOBS and removes this page once the announcement closes. The description below is the agency&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.` : `This posting comes from ${esc(org.name)}&rsquo;s own ${board} job board. USASI checks that board twice a day and removes this page once the employer closes the posting. The description below is ${esc(name)}&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.`} <a href="${asset("/methodology/#jobs")}" class="link">How jobs are collected</a>.</p>
 <section aria-labelledby="description-heading">
 <h2 id="description-heading" class="text-xl font-semibold text-text sm:text-2xl">Job description</h2>
 <div class="mt-4 max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-[#d5def2]" data-testid="job-description">
-${p.description ? description(p.description) : `<p class="text-muted">The full description is on ${external(job.official_url, `${esc(name)}&rsquo;s job board`)}.</p>`}
+${p.description ? description(p.description) : `<p class="text-muted">The full description is on ${external(job.official_url, federal ? "USAJOBS.gov" : `${esc(name)}&rsquo;s job board`)}.</p>`}
 </div>
-<p class="mt-8">${external(apply, `Apply on ${esc(name)}&rsquo;s site`, "btn btn-secondary")}</p>
+<p class="mt-8">${external(apply, applyLabel, "btn btn-secondary")}</p>
 </section>
 ${similar.length ? `<section aria-labelledby="similar-jobs-heading" class="border-t border-line pt-8" data-testid="similar-jobs">
 <h2 id="similar-jobs-heading" class="text-xl font-semibold text-text sm:text-2xl">Similar jobs</h2>
@@ -205,7 +209,7 @@ ${similar.length ? `<section aria-labelledby="similar-jobs-heading" class="borde
 <nav aria-labelledby="more-jobs-heading" class="border-t border-line pt-6">
 <h2 id="more-jobs-heading" class="eyebrow">More jobs</h2>
 <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
-<li><a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">All jobs at ${esc(name)}</a></li>
+<li><a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">${federal ? "All federal AI jobs" : `All jobs at ${esc(name)}`}</a></li>
 ${sameDepartment ? `<li><a href="${esc(asset(sameDepartment))}" class="link">${esc(job.department!)} jobs at ${esc(name)}</a></li>` : ""}
 ${JOB_ROLES.filter((r) => r.test(job.title)).slice(0, 2).map((r) => `<li><a href="${asset(`/jobs/role/${r.slug}/`)}" class="link">All ${esc(r.h1)}</a></li>`).join("")}
 <li><a href="${asset("/jobs/")}" class="link">Search all jobs</a></li>

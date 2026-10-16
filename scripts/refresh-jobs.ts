@@ -4,11 +4,12 @@ import { setTimeout as delay } from "node:timers/promises";
 import { loadCatalog } from "../lib/catalog";
 import { adapters } from "../lib/jobs/adapters";
 import { DATA_PATH, validateDataset } from "../lib/jobs/load";
-import { Dataset, EMPTY_DATASET, Job } from "../lib/jobs/schema";
+import { Dataset, EMPTY_DATASET, isAutomatedSource, Job } from "../lib/jobs/schema";
 import { fetchFeed, FeedError } from "../lib/jobs/security";
 import { reconcile, sourceKey, jobSourceKey, type FeedResult } from "../lib/jobs/reconcile";
 import { htmlToDescription } from "../lib/jobs/description";
 import { readDescriptions, writeDescriptions } from "../lib/jobs/descriptions-store";
+import { fetchUsaJobsItems, usaJobsPayload, usajobsCredentials } from "../lib/jobs/usajobs";
 const orgs = loadCatalog().organizations;
 const configs = orgs.filter(o => o.careers?.enabled);
 // State is trusted only after schema validation. Removed/disabled sources are intentionally pruned.
@@ -21,10 +22,16 @@ let failed = 0;
 const descriptions = readDescriptions();
 for (const org of configs) {
   const c = org.careers!;
-  if (c.source.type !== "greenhouse" && c.source.type !== "ashby" && c.source.type !== "lever") throw new Error("Invalid enabled source");
+  if (!isAutomatedSource(c.source.type)) throw new Error("Invalid enabled source");
+  const usajobs = c.source.type === "usajobs" ? usajobsCredentials() : null;
+  if (c.source.type === "usajobs" && !usajobs) {
+    // Missing key must not fail the refresh or the build; previous federal listings stay until a keyed run.
+    console.log(`jobs: ${org.slug}: skipped (USAJOBS_API_KEY not set)`);
+    continue;
+  }
   let result: FeedResult;
   try {
-    const payload = await fetchFeed(c);
+    const payload = usajobs ? usaJobsPayload(await fetchUsaJobsItems(usajobs)) : await fetchFeed(c);
     const rows = adapters[c.source.type].rows(payload, org.slug, c);
     const jobs = rows.map(r => r.job);
     // Validate every row before reconciliation. One poisoned row rejects the entire feed.

@@ -48,6 +48,9 @@ jobs:
       - name: Refresh Jobs before ordinary releases
         if: vars.JOBS_REFRESH == 'true'
         run: npm run jobs:refresh
+        env:
+          USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
+          USAJOBS_USER_AGENT: ${{ vars.USAJOBS_USER_AGENT }}
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test

@@ -77,6 +77,27 @@ describe("JobPosting data", () => {
     expect(ld.hiringOrganization).toEqual({ "@type": "Organization", name: "Acme AI (Example)", sameAs: "https://acme.example" });
   });
 
+  it("names the USAJOBS hiring agency with the federal government as parent", () => {
+    const federal = job({
+      id: "federal:usajobs:ai:21947200",
+      source_job_id: "21947200",
+      organization_slug: "federal",
+      source_type: "usajobs",
+      source_identifier: "ai",
+      source_url: "https://data.usajobs.gov/api/search",
+      official_url: "https://www.usajobs.gov/GetJob/ViewDetails/21947200",
+      department: "National Institute of Standards and Technology",
+      locations: ["Gaithersburg, MD"],
+    });
+    const parent = { slug: "federal", name: "U.S. Federal Government", website: "https://www.usa.gov" } as Organization;
+    const ld = jobPostingLd({ job: federal, org: parent, slug: "it-specialist-aaaaaaa", path: "/jobs/at/federal/it-specialist-aaaaaaa/", description: desc })!;
+    expect(ld.hiringOrganization).toEqual({
+      "@type": "Organization",
+      name: "National Institute of Standards and Technology",
+      parentOrganization: { "@type": "Organization", name: "U.S. Federal Government", sameAs: "https://www.usa.gov" },
+    });
+  });
+
   it("marks U.S.-only remote work as telecommute, and is omitted when it cannot be complete", () => {
     const remote = jobPostingLd(page(job({ locations: ["Remote - US"], workplace: "remote", remote: true })))!;
     expect(remote.jobLocationType).toBe("TELECOMMUTE");

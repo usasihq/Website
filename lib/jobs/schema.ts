@@ -14,6 +14,17 @@ const text = (max = 240) => z.string().trim().min(1).max(max).refine(v => !/[<>\
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const instant = z.iso.datetime({ offset: true });
 const identifier = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
+export const AUTOMATED_SOURCES = ["greenhouse", "ashby", "lever", "usajobs"] as const;
+export type AutomatedSource = (typeof AUTOMATED_SOURCES)[number];
+export const isAutomatedSource = (type: string): type is AutomatedSource =>
+  (AUTOMATED_SOURCES as readonly string[]).includes(type);
+export const JOB_SOURCE_LABELS: Record<AutomatedSource, string> = {
+  greenhouse: "Greenhouse",
+  ashby: "Ashby",
+  lever: "Lever",
+  usajobs: "USAJOBS",
+};
+export const JOB_ID = z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|lever|usajobs):[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$/);
 export const Careers = z.object({
   url: JobUrl,
   enabled: z.boolean(),
@@ -21,6 +32,7 @@ export const Careers = z.object({
     z.object({ type: z.literal("greenhouse"), identifier }).strict(),
     z.object({ type: z.literal("ashby"), identifier }).strict(),
     z.object({ type: z.literal("lever"), identifier }).strict(),
+    z.object({ type: z.literal("usajobs"), identifier }).strict(),
     z.object({ type: z.literal("manual"), note: text(400) }).strict(),
     z.object({ type: z.literal("unsupported"), note: text(400) }).strict(),
   ]),
@@ -40,9 +52,9 @@ export const Salary = z.object({
   label: text(160).nullable(), source_status: z.literal("employer-provided"),
 }).strict().refine(v => (v.min !== null || v.max !== null) && (v.min === null || v.max === null || v.min <= v.max), "Invalid salary range");
 export const Job = z.object({
-  id: z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|lever):[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$/),
+  id: JOB_ID,
   source_job_id: identifier, requisition_id: text(100).nullable(), organization_slug: slug,
-  source_type: z.enum(["greenhouse", "ashby", "lever"]), source_identifier: identifier, source_url: JobUrl,
+  source_type: z.enum(AUTOMATED_SOURCES), source_identifier: identifier, source_url: JobUrl,
   title: text(), locations: z.array(text()).max(50), countries: z.array(text(100)).max(50),
   workplace: z.enum(["remote", "hybrid", "on-site", "unknown"]), remote: z.boolean().nullable(),
   employment_type: z.enum(["full-time", "part-time", "contract", "temporary", "internship", "unknown"]),
@@ -57,7 +69,7 @@ export const Job = z.object({
 export type Job = z.infer<typeof Job>;
 export type NormalizedJob = Omit<Job, "first_seen" | "last_seen" | "last_successfully_checked" | "status" | "missing_since" | "missing_checks" | "closed_at">;
 export const FeedHealth = z.object({
-  organization_slug: slug, source_type: z.enum(["greenhouse", "ashby", "lever"]), source_identifier: identifier,
+  organization_slug: slug, source_type: z.enum(AUTOMATED_SOURCES), source_identifier: identifier,
   last_attempted: instant, last_successful: instant.nullable(),
   result: z.enum(["ok", "network", "http", "rate-limited", "payload", "unsafe-url", "anomaly"]),
   consecutive_failures: z.number().int().nonnegative(), current_count: z.number().int().nonnegative(),

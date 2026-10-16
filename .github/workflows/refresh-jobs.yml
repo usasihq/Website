@@ -35,6 +35,9 @@ jobs:
           restore-keys: jobs-v1-main-
       - name: Refresh supported official sources
         run: npm run jobs:refresh
+        env:
+          USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
+          USAJOBS_USER_AGENT: ${{ vars.USAJOBS_USER_AGENT }}
       - run: npm run validate
       - run: npm run typecheck
       - run: npm run lint
