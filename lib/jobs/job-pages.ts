@@ -15,6 +15,7 @@ import { readJobsForBuild } from "./load";
 import type { Job } from "./schema";
 import { isCurrent } from "./search";
 import { isExpressionOfInterest } from "./tracks";
+import { jobCategory, jobLevel } from "./levels";
 
 export type JobPage = { job: Job; org: Organization; slug: string; path: string; description: Description | null };
 
@@ -134,4 +135,51 @@ export function jobSnippet(p: JobPage): string | null {
   const text = descriptionText(p.description);
   if (text.length <= 150) return text;
   return `${text.slice(0, 147).replace(/\s+\S*$/, "")}…`;
+}
+
+/**
+ * Up to `limit` other current jobs like this one: the same job category from
+ * the title, preferring the same experience level, a shared U.S. state, and
+ * other employers, newest first. Built once for every page.
+ */
+export function similarJobs(pages: JobPage[], limit = 6): Map<string, JobPage[]> {
+  const meta = new Map(pages.map((p) => [p.path, {
+    category: jobCategory(p.job.title), level: jobLevel(p.job.title),
+    states: new Set(p.job.locations.flatMap((l) => placeGeography(l).states)),
+    time: Date.parse(p.job.posted_at ?? p.job.first_seen) || 0,
+  }]));
+  const byCategory = new Map<string, JobPage[]>();
+  for (const p of pages) {
+    const c = meta.get(p.path)!.category;
+    if (c === "other") continue;
+    (byCategory.get(c) ?? byCategory.set(c, []).get(c)!).push(p);
+  }
+  const result = new Map<string, JobPage[]>();
+  for (const p of pages) {
+    const m = meta.get(p.path)!;
+    const pool = byCategory.get(m.category);
+    if (!pool) { result.set(p.path, []); continue; }
+    const scored: { q: JobPage; score: number; time: number }[] = [];
+    for (const q of pool) {
+      if (q === p || isExpressionOfInterest(q.job.title)) continue;
+      const n = meta.get(q.path)!;
+      let score = 0;
+      if (n.level === m.level) score += 2;
+      for (const st of n.states) if (m.states.has(st)) { score += 1; break; }
+      if (q.org.slug !== p.org.slug) score += 1;
+      scored.push({ q, score, time: n.time });
+    }
+    scored.sort((a, b) => b.score - a.score || b.time - a.time || (a.q.path < b.q.path ? -1 : 1));
+    // At most two from any one employer, so the list shows a spread.
+    const picked: JobPage[] = [];
+    const perOrg = new Map<string, number>();
+    for (const { q } of scored) {
+      if ((perOrg.get(q.org.slug) ?? 0) >= 2) continue;
+      perOrg.set(q.org.slug, (perOrg.get(q.org.slug) ?? 0) + 1);
+      picked.push(q);
+      if (picked.length >= limit) break;
+    }
+    result.set(p.path, picked);
+  }
+  return result;
 }

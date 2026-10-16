@@ -62,7 +62,7 @@ describe("landing pages from listings", () => {
     return { id: `${org}:greenhouse:${org}:${id}`, organization_slug: org, source_type: "greenhouse", source_identifier: org, source_job_id: String(id),
       source_url: `https://boards-api.greenhouse.io/v1/boards/${org}/jobs`, title, locations, countries: [], workplace: "unknown", employment_type: "unknown",
       department: null, team: null, salaries: [], official_url: `https://job-boards.greenhouse.io/${org}/jobs/${id}`,
-      posted_at: `2026-09-${String((id % 28) + 1).padStart(2, "0")}T00:00:00.000Z`, posted_date_kind: "first-published", last_seen: seen, status: "open",
+      posted_at: `2026-09-${String((id % 28) + 1).padStart(2, "0")}T00:00:00.000Z`, posted_date_kind: "first-published", first_seen: seen, last_seen: seen, status: "open",
       organization_name: catalog.organization(org)?.name ?? org, ...extra };
   };
   const items = [
@@ -200,7 +200,7 @@ describe("jobs directory structured data", () => {
 });
 
 describe("offline bootstrap snapshot", () => {
-  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10), buildAt: "2026-10-16T18:00:00.000Z" });
+  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10), buildAt: new Date().toISOString() });
   const now = Date.parse(catalog.buildAt);
 
   it("keeps generateStaticParams non-empty for Next.js export", () => {

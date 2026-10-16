@@ -133,17 +133,16 @@ profile:
 hiring_url: null
 careers:
   url: https://block.xyz/careers/jobs
-  enabled: false
+  enabled: true
   source:
-    type: unsupported
-    note: >-
-      Block lists openings on its own job pages at block.xyz/careers/jobs and does not expose a public job board identifier, so automated collection is not configured.
-  posting_hosts: []
+    type: greenhouse
+    identifier: block
+  posting_hosts: [block.xyz]
   source_ids: [block-careers-jobs]
-  reviewed_at: 2026-10-01
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-16
 last_reviewed: 2026-10-01
 sources:
   - id: block-10k-2025

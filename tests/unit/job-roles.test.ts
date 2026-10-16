@@ -6,8 +6,14 @@ import { JOB_ROLES, jobRole, titleMatchesRole, type JobRole } from "@/lib/jobs/r
 const fde = jobRole("forward-deployed-engineer")!;
 
 describe("job role config", () => {
-  it("ships only Forward Deployed Engineer today, with include/exclude patterns", () => {
-    expect(JOB_ROLES.map((r) => r.slug)).toEqual(["forward-deployed-engineer"]);
+  it("ships Forward Deployed Engineer first, every role with include/exclude patterns and a unique slug", () => {
+    expect(JOB_ROLES[0].slug).toBe("forward-deployed-engineer");
+    expect(new Set(JOB_ROLES.map((r) => r.slug)).size).toBe(JOB_ROLES.length);
+    for (const r of JOB_ROLES) {
+      expect(r.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+      expect(r.include.length).toBeGreaterThan(0);
+      expect(r.h1.length).toBeLessThanOrEqual(60);
+    }
     expect(fde.name).toBe("Forward Deployed Engineer");
     expect(fde.include.length).toBeGreaterThan(0);
     expect(Array.isArray(fde.exclude)).toBe(true);
@@ -90,5 +96,27 @@ describe("matcher against the committed jobs snapshot", () => {
       expect(j.title).not.toMatch(/forward[\s\-_–—]+deployed/i);
       expect(j.title).not.toMatch(/(?<![A-Za-z0-9])FDE(?![A-Za-z0-9])/);
     }
+  });
+});
+
+describe("other role title matchers", () => {
+  const role = (slug: string) => jobRole(slug)!;
+  it.each([
+    ["software-engineer", "Senior Software Engineer, Storage", true],
+    ["software-engineer", "Engineering Manager, Software", false],
+    ["software-engineer", "Senior Technical Recruiter, Software Engineering", false],
+    ["machine-learning-engineer", "Machine Learning Engineer, Implicit Signals", true],
+    ["machine-learning-engineer", "Director, Machine Learning Engineering", false],
+    ["research-scientist", "Research Scientist (post-training)", true],
+    ["research-scientist", "User Research Lead", false],
+    ["product-manager", "Product Manager, Enterprise Intelligence", true],
+    ["product-manager", "Product Marketing Manager", false],
+    ["account-executive", "Enterprise Account Executive - Oregon", true],
+    ["designer", "Staff Product Designer", true],
+    ["designer", "Physical Design Engineer", false],
+    ["data-center-technician", "Data Center Fiber Technician", true],
+    ["recruiter", "Senior Technical Sourcer (Contract)", true],
+  ])("%s matches %s: %s", (slug, title, expected) => {
+    expect(role(slug).test(title)).toBe(expected);
   });
 });

@@ -27,6 +27,17 @@ const ashby = z.object({ apiVersion: z.literal("1"), jobs: z.array(z.object({
   shouldDisplayCompensationOnJobPostings: z.boolean().optional(),
   compensation: z.object({ compensationTiers: z.array(z.object({ title: short.nullable().optional(), components: z.array(salaryComponent) })).optional() }).nullable().optional(),
 })).max(20000) });
+// Lever's documented public postings API (mode=json): one array, descriptions as HTML.
+const leverId = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
+const lever = z.array(z.object({
+  id: leverId, text: short, hostedUrl: z.string(), applyUrl: z.string().optional(), createdAt: z.number().int().nonnegative().optional(),
+  categories: z.object({ location: short.optional(), team: short.optional(), department: short.optional(), commitment: short.optional(),
+    allLocations: z.array(short).max(50).optional() }).optional(),
+  country: short.nullable().optional(), workplaceType: short.nullable().optional(),
+  description: z.string().max(400000).optional(), additional: z.string().max(400000).optional(),
+  lists: z.array(z.object({ text: short, content: z.string().max(400000) })).max(50).optional(),
+  salaryRange: z.object({ min: z.number().nullable().optional(), max: z.number().nullable().optional(), currency: short.nullable().optional(), interval: short.nullable().optional() }).nullable().optional(),
+})).max(20000);
 /** Feed text is displayed only as React text nodes. Strip tags, never render source HTML. */
 export function plain(value: string | undefined | null): string | null {
   if (!value) return null;
@@ -41,7 +52,7 @@ function date(value?: string | null): string | null {
 }
 const uniq = (v: Array<string | null | undefined>) => [...new Set(v.filter((x): x is string => Boolean(x)))].sort();
 function base(org: string, c: Careers, sourceId: string, title: string, url: string): NormalizedJob {
-  if (c.source.type !== "ashby" && c.source.type !== "greenhouse") throw new FeedError("payload");
+  if (c.source.type !== "ashby" && c.source.type !== "greenhouse" && c.source.type !== "lever") throw new FeedError("payload");
   return { id: `${org}:${c.source.type}:${c.source.identifier}:${sourceId}`, source_job_id: sourceId,
     organization_slug: org, source_type: c.source.type, source_identifier: c.source.identifier, source_url: endpoint(c),
     title: plain(title) ?? "", official_url: postingUrl(url, c), apply_url: null, requisition_id: null,
@@ -94,7 +105,30 @@ const rowsAshby = (payload: unknown, org: string, c: Careers): SourceRow[] =>
       posted_at: date(r.publishedAt), posted_date_kind: r.publishedAt ? "last-published" : null };
     return { job, html: r.descriptionHtml ?? null };
   });
-export const adapters: Record<"greenhouse" | "ashby", JobSourceAdapter> = {
+const rowsLever = (payload: unknown, org: string, c: Careers): SourceRow[] =>
+  lever.parse(payload).map(r => {
+    const j = base(org, c, r.id, r.text, r.hostedUrl);
+    const workplace = ({ remote: "remote", hybrid: "hybrid", onsite: "on-site" } as const)[r.workplaceType as "remote"] ?? "unknown";
+    const commitment = (r.categories?.commitment ?? "").toLowerCase();
+    const employment = /intern/.test(commitment) ? "internship" : /part/.test(commitment) ? "part-time" : /contract/.test(commitment) ? "contract" :
+      /temp/.test(commitment) ? "temporary" : /full/.test(commitment) ? "full-time" : "unknown";
+    const salaries: Job["salaries"] = [];
+    const sr = r.salaryRange;
+    const period = sr?.interval ? ({ "per-year-salary": "year", "per-month-salary": "month", "per-week-salary": "week", "per-day-wage": "day", "per-hour-wage": "hour" } as const)[sr.interval as "per-year-salary"] : undefined;
+    if (sr && period && sr.currency && (sr.min != null || sr.max != null))
+      salaries.push(Salary.parse({ min: sr.min ?? null, max: sr.max ?? null, currency: sr.currency, period, label: null, source_status: "employer-provided" }));
+    const created = r.createdAt ? new Date(r.createdAt).toISOString() : null;
+    const job: NormalizedJob = { ...j, apply_url: r.applyUrl ? postingUrl(r.applyUrl, c) : null,
+      locations: uniq([plain(r.categories?.location), ...(r.categories?.allLocations ?? []).map(l => plain(l))]),
+      countries: uniq([plain(r.country)]), workplace, remote: workplace === "remote" ? true : workplace !== "unknown" ? false : null,
+      employment_type: employment, department: plain(r.categories?.department ?? r.categories?.team), team: plain(r.categories?.team), salaries,
+      posted_at: created, posted_date_kind: created ? "first-published" : null };
+    const sections = (r.lists ?? []).map(l => `<h3>${l.text.replace(/[<>&]/g, " ")}</h3><ul>${l.content}</ul>`).join("");
+    const html = [r.description, sections, r.additional].filter(Boolean).join("");
+    return { job, html: html || null };
+  });
+export const adapters: Record<"greenhouse" | "ashby" | "lever", JobSourceAdapter> = {
   greenhouse: { rows: rowsGreenhouse, normalize: (payload, org, c) => rowsGreenhouse(payload, org, c).map((r) => r.job) },
   ashby: { rows: rowsAshby, normalize: (payload, org, c) => rowsAshby(payload, org, c).map((r) => r.job) },
+  lever: { rows: rowsLever, normalize: (payload, org, c) => rowsLever(payload, org, c).map((r) => r.job) },
 };

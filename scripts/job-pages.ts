@@ -10,7 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { getCatalog } from "../lib/catalog";
 import { renderJobPage, type PageShell } from "../lib/jobs/job-page-html";
-import { jobPages } from "../lib/jobs/job-pages";
+import { jobPages, similarJobs } from "../lib/jobs/job-pages";
 
 const out = path.join(process.cwd(), "out");
 const template = fs.readFileSync(path.join(out, "jobs/index.html"), "utf8");
@@ -22,13 +22,14 @@ if (!links.some((l) => l.includes('rel="stylesheet"'))) throw new Error("job-pag
 const shell: PageShell = { htmlClass, links: links.join("\n") };
 
 const pages = jobPages(getCatalog());
+const similar = similarJobs(pages);
 let withDescription = 0;
 let withPosting = 0;
 for (const p of pages) {
   const dir = path.join(out, p.path);
   if (fs.existsSync(path.join(dir, "index.html"))) throw new Error(`job-pages: ${p.path} would overwrite an existing page`);
   fs.mkdirSync(dir, { recursive: true });
-  const html = renderJobPage(p, shell);
+  const html = renderJobPage(p, shell, similar.get(p.path) ?? []);
   fs.writeFileSync(path.join(dir, "index.html"), html);
   if (p.description) withDescription++;
   if (html.includes('"@type":"JobPosting"')) withPosting++;

@@ -1,18 +1,19 @@
 import type { Job, FeedHealth } from "./schema";
 import { JOB_ROLES, jobRole } from "./roles";
-import { JOB_TRACKS, jobTrack } from "./tracks";
+import { isExpressionOfInterest, JOB_TRACKS, jobTrack } from "./tracks";
+import { annualUsdTop, jobCategory, jobLevel, JOB_CATEGORIES, JOB_LEVELS, PAY_THRESHOLDS } from "./levels";
 import { cityKey, inLocationScope, jobGeography, LOCATION_SCOPES, type LocationScope } from "./geo";
 import { US_STATES } from "../places";
 export const STALE_MS = 48 * 3600000;
 /** The fields the Jobs directory reads. Reconciliation bookkeeping stays out of the page and its data file. */
 export type JobItem = Pick<Job, "id" | "organization_slug" | "source_type" | "source_identifier" | "source_job_id" | "source_url" | "title" |
   "locations" | "countries" | "workplace" | "employment_type" | "department" | "team" | "salaries" | "official_url" | "posted_at" |
-  "posted_date_kind" | "last_seen" | "status"> & { organization_name: string };
+  "posted_date_kind" | "first_seen" | "last_seen" | "status"> & { organization_name: string };
 export function toJobItem(j: Job, organization_name: string): JobItem {
   return { id: j.id, organization_slug: j.organization_slug, source_type: j.source_type, source_identifier: j.source_identifier,
     source_job_id: j.source_job_id, source_url: j.source_url, title: j.title, locations: j.locations, countries: j.countries,
     workplace: j.workplace, employment_type: j.employment_type, department: j.department, team: j.team, salaries: j.salaries,
-    official_url: j.official_url, posted_at: j.posted_at, posted_date_kind: j.posted_date_kind, last_seen: j.last_seen, status: j.status,
+    official_url: j.official_url, posted_at: j.posted_at, posted_date_kind: j.posted_date_kind, first_seen: j.first_seen, last_seen: j.last_seen, status: j.status,
     organization_name };
 }
 export function isCurrent(job: Pick<Job, "status" | "last_seen">, feed: FeedHealth | undefined, now: number): boolean {
@@ -21,7 +22,7 @@ export function isCurrent(job: Pick<Job, "status" | "last_seen">, feed: FeedHeal
 export function checkedLabel(value: string | null): string {
   return value ? new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(new Date(value)) + " UTC" : "Not yet successfully checked";
 }
-export const DEFAULT_JOB_FILTERS = { q: "", track: "", role: "", company: "", department: "", location: "", state: "", city: "", where: "" as LocationScope | "", workplace: "", employment: "", salary: false,
+export const DEFAULT_JOB_FILTERS = { q: "", track: "", role: "", level: "", category: "", pay: "", company: "", department: "", location: "", state: "", city: "", where: "" as LocationScope | "", workplace: "", employment: "", salary: false,
   currency: "", period: "", salary_min: "", posted: "", verified: "", view: "current", sort: "verified", page: 1 };
 export type JobFilters = typeof DEFAULT_JOB_FILTERS;
 const clean = (v: string | null, max = 120) => (v ?? "").trim().slice(0, max);
@@ -33,15 +34,15 @@ export function parseJobFilters(p: URLSearchParams): JobFilters {
   const state = choice((p.get("state") ?? "").toUpperCase(), Object.keys(US_STATES));
   // A city is a slug within a state ("state=CA&city=san-francisco"); without a state it means nothing.
   const city = state && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.get("city") ?? "") ? p.get("city")!.slice(0, 60) : "";
-  return { q: clean(p.get("q"), 200), track: choice(p.get("track"), JOB_TRACKS.map(t => t.id)), role: choice(p.get("role"), JOB_ROLES.map(r => r.slug)), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
+  return { q: clean(p.get("q"), 200), track: choice(p.get("track"), JOB_TRACKS.map(t => t.id)), role: choice(p.get("role"), JOB_ROLES.map(r => r.slug)), level: choice(p.get("level"), JOB_LEVELS.map(l => l.id)), category: choice(p.get("category"), JOB_CATEGORIES.map(c => c.id)), pay: choice(p.get("pay"), [...PAY_THRESHOLDS]), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
     state, city,
     where: choice(p.get("where"), [...LOCATION_SCOPES]) as LocationScope | "",
     workplace: p.get("remote") === "1" ? "remote" : choice(p.get("workplace"), ["remote", "hybrid", "on-site", "unknown"]),
     employment: choice(p.get("employment"), ["full-time", "part-time", "contract", "temporary", "internship", "unknown"]),
     salary: p.get("salary") === "1", currency, period,
     salary_min: currency && period && /^\d{1,9}(\.\d{1,2})?$/.test(min) ? min : "",
-    posted: choice(p.get("posted"), ["7", "30"]), verified: choice(p.get("verified"), ["24", "48"]),
-    view: choice(p.get("view"), ["current", "unverified"], "current"), sort: choice(p.get("sort"), ["verified", "newest", "company", "title"], "verified"),
+    posted: choice(p.get("posted"), ["1", "3", "7", "30"]), verified: choice(p.get("verified"), ["24", "48"]),
+    view: choice(p.get("view"), ["current", "unverified"], "current"), sort: choice(p.get("sort"), ["verified", "newest", "pay", "company", "title"], "verified"),
     page: /^\d{1,4}$/.test(p.get("page") ?? "") ? Math.max(1, Number(p.get("page"))) : 1 };
 }
 export function serializeJobFilters(f: JobFilters): string {
@@ -94,6 +95,15 @@ const hasTerm = (text: string, term: string) =>
 const matchesGroup = (text: string, group: string[]) => group.some((t) => hasTerm(text, t));
 const collator = new Intl.Collator("en");
 const byCode = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
+/**
+ * When the listing appeared: the employer's publication date when supplied and
+ * not in the future, otherwise when USASI first saw it in the feed.
+ */
+export function postedTime(j: Pick<JobItem, "posted_at" | "first_seen">): number {
+  const posted = j.posted_at ? Date.parse(j.posted_at) : NaN;
+  const seen = Date.parse(j.first_seen);
+  return Number.isFinite(posted) && posted <= seen + 86400000 ? posted : seen;
+}
 /** Currently confirmed rows, unsorted (for counts). */
 export function currentJobs(items: JobItem[], feeds: FeedHealth[], now: number): JobItem[] {
   const health = new Map(feeds.map(v => [`${v.organization_slug}:${v.source_type}:${v.source_identifier}`, v]));
@@ -109,6 +119,9 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     if (f.view === "current" ? !current : current) return false;
     if (f.track && !jobTrack(f.track)?.test(j)) return false;
     if (f.role && !jobRole(f.role)?.test(j.title)) return false;
+    if (f.level && jobLevel(j.title) !== f.level) return false;
+    if (f.category && jobCategory(j.title) !== f.category) return false;
+    if (f.pay && (annualUsdTop(j.salaries) ?? 0) < Number(f.pay)) return false;
     if (f.company && j.organization_slug !== f.company) return false;
     if (f.department && j.department !== f.department) return false;
     if (f.location && !j.locations.some(l => normalize(l).includes(normalize(f.location)))) return false;
@@ -119,7 +132,7 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     if (f.employment && j.employment_type !== f.employment) return false;
     if (f.salary && !j.salaries.length) return false;
     if ((f.currency || f.period || f.salary_min) && !j.salaries.some(s => (!f.currency || s.currency === f.currency) && (!f.period || s.period === f.period) && (!f.salary_min || (s.min !== null && s.min >= Number(f.salary_min))))) return false;
-    if (f.posted && (!j.posted_at || now < Date.parse(j.posted_at) || now - Date.parse(j.posted_at) > Number(f.posted) * 86400000)) return false;
+    if (f.posted && now - postedTime(j) > Number(f.posted) * 86400000) return false;
     if (f.verified && now - Date.parse(j.last_seen) > Number(f.verified) * 3600000) return false;
     if (!query.length) return true;
     const text = words([j.title, j.organization_name, j.department, j.team, ...j.locations, ...j.countries].join(" "));
@@ -138,7 +151,15 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
   return rows.sort((a,b) => {
     const rel = (relevance.get(b.id) ?? 0) - (relevance.get(a.id) ?? 0);
     if (rel) return rel;
-    const order = f.sort === "newest" ? byCode(b.posted_at ?? "", a.posted_at ?? "") : f.sort === "verified" ? byCode(b.last_seen, a.last_seen) :
+    // Equally good matches: newest listing first.
+    if (relevance.size) { const fresh = postedTime(b) - postedTime(a); if (fresh) return fresh; }
+    // General expressions of interest are not specific vacancies: they go last unless sorting by name.
+    if (f.sort !== "company" && f.sort !== "title") {
+      const eoi = Number(isExpressionOfInterest(a.title)) - Number(isExpressionOfInterest(b.title));
+      if (eoi) return eoi;
+    }
+    // The default order is newest first (the page and its links call it "Newest first").
+    const order = f.sort === "newest" || f.sort === "verified" ? postedTime(b) - postedTime(a) : f.sort === "pay" ? (annualUsdTop(b.salaries) ?? -1) - (annualUsdTop(a.salaries) ?? -1) : f.sort === "verified" ? byCode(b.last_seen, a.last_seen) :
       f.sort === "company" ? collator.compare(a.organization_name, b.organization_name) : collator.compare(a.title, b.title);
     return order || collator.compare(a.title, b.title) || byCode(a.id, b.id);
   });

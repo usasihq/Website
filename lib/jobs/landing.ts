@@ -224,7 +224,7 @@ export function roleDefinition(role: JobRole): LandingDefinition {
   };
 }
 
-const PROVIDER_LABELS: Record<string, string> = { greenhouse: "Greenhouse", ashby: "Ashby" };
+const PROVIDER_LABELS: Record<string, string> = { greenhouse: "Greenhouse", ashby: "Ashby", lever: "Lever" };
 
 /** An employer's page: every current listing from that organization's own job board. */
 export function companyDefinition(org: { slug: string; name: string; provider: string | null }): LandingDefinition {

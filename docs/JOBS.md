@@ -26,7 +26,7 @@ parent/subsidiary records). Reassigning a board requires review, not automatic s
 3. Record source evidence, actual review date, public HTTPS careers URL, provider and
    board identifier in the organization YAML. Do not change other editorial review
    dates merely because career configuration changed.
-4. Only `greenhouse` and `ashby` have implemented adapters. `manual` and `unsupported`
+4. `greenhouse`, `ashby`, and `lever` have implemented adapters (Lever: the documented public postings API, `https://api.lever.co/v0/postings/<company>?mode=json`, with `jobs.lever.co` posting links). `manual` and `unsupported`
    require an explanatory note and `enabled: false`; they display a careers link,
    not a zero count. No Workday/HTML scraping/aggregator adapters are claimed.
 5. `posting_hosts` is an exact, editor-reviewed allowlist for employer-owned custom
@@ -247,3 +247,11 @@ combined release succeeds; no GitHub repository variable was changed during inte
 GitHub write access, remote CI, full production publication, live Jobs verification and
 schedule activation remain pending. Dashboard analytics counts and the Exclude Bots
 setting have not been verified.
+
+## Directory search (2026-10-16)
+
+- The Jobs page leads with a "What" and "Where" search. "Where" accepts "Remote", "Remote (U.S.)", a state name or code, or "City, ST" (lib/jobs/where.ts); anything else matches the employer-supplied location text.
+- Job category, experience level, and the role pages (lib/jobs/levels.ts, lib/jobs/roles.ts) are title rules only. The rules are listed on the page; "not stated" is never guessed.
+- "Pay range reaches" and the highest-pay sort use the top of U.S.-dollar ranges (hourly × 2,080). Displayed pay is never converted.
+- Each job page lists up to six similar jobs: same category from the title, preferring the same level, a shared state, and other employers (at most two per employer).
+- Allow-listed employer posting hosts (`posting_hosts`) linked over plain http in a feed are upgraded to https (Block's Greenhouse feed does this).

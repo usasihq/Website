@@ -21,7 +21,7 @@ let failed = 0;
 const descriptions = readDescriptions();
 for (const org of configs) {
   const c = org.careers!;
-  if (c.source.type !== "greenhouse" && c.source.type !== "ashby") throw new Error("Invalid enabled source");
+  if (c.source.type !== "greenhouse" && c.source.type !== "ashby" && c.source.type !== "lever") throw new Error("Invalid enabled source");
   let result: FeedResult;
   try {
     const payload = await fetchFeed(c);

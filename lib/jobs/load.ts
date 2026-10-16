@@ -12,7 +12,7 @@ export function validateDataset(input: unknown, organizations: Organization[]): 
   const ids = new Set<string>(); const feeds = new Set<string>();
   const configFor = (slug: string): Careers => {
     const c = orgs.get(slug)?.careers;
-    if (!c?.enabled || !["greenhouse", "ashby"].includes(c.source.type)) throw new Error(`Jobs: ${slug} is not a published eligible organization with enabled source`);
+    if (!c?.enabled || !["greenhouse", "ashby", "lever"].includes(c.source.type)) throw new Error(`Jobs: ${slug} is not a published eligible organization with enabled source`);
     return c;
   };
   for (const f of data.feeds) {
