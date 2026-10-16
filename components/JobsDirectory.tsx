@@ -12,6 +12,7 @@ import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
 import { ExternalLink } from "./ExternalLink";
 import { jobHref } from "@/lib/jobs/job-url";
+import { asset } from "@/lib/paths";
 import { SearchField, SelectField, ResultSummary } from "./FilterControls";
 import { useDebounced, useQueryState } from "./useQueryState";
 export type CareerCoverage = { slug: string; name: string; url: string | null; mode: "automated" | "manual" | "unsupported" | "not-configured"; note: string | null };
@@ -23,7 +24,7 @@ function JobCard({ job, unverified }: { job: JobItem; unverified: boolean }) {
   return <article className="card h-full p-5">
     <Link prefetch={false} href={`/jobs/at/${job.organization_slug}/`} className="link text-sm">{job.organization_name}</Link>
     {/* Current listings have their own page; older, unverified ones only the employer's posting. */}
-    <h2 className="mt-2 text-lg font-semibold text-text break-words">{unverified ? job.title : <a href={jobHref(job)} className="hover:underline hover:decoration-cyan hover:underline-offset-4">{job.title}</a>}</h2>
+    <h2 className="mt-2 text-lg font-semibold text-text break-words">{unverified ? job.title : <a href={asset(jobHref(job))} className="hover:underline hover:decoration-cyan hover:underline-offset-4">{job.title}</a>}</h2>
     {isExpressionOfInterest(job.title) ? <p className="mt-2 text-sm text-ice">The employer&apos;s title presents this as a general expression of interest, not a specific vacancy.</p> : null}
     <p className="mt-3 text-sm text-muted">{job.locations.length ? job.locations.join(" · ") : "Location not supplied"}</p>
     <p className="mt-2 text-sm text-muted">{[job.employment_type !== "unknown" ? job.employment_type : null, job.workplace !== "unknown" ? job.workplace : "Workplace type not supplied"].filter(Boolean).join(" · ")}</p>

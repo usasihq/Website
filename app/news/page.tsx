@@ -6,6 +6,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
 import type { NewsListItem } from "@/lib/news-list";
+import { asset } from "@/lib/paths";
 import { artifactHref, orgHref } from "@/lib/routes";
 
 export const metadata = pageMetadata({
@@ -57,7 +58,7 @@ export default function NewsPage() {
                 How news works
               </Link>
               {" · "}
-              <a href="/news/feed.xml" className="link">
+              <a href={asset("/news/feed.xml")} className="link">
                 RSS feed
               </a>
               .

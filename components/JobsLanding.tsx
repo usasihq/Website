@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { formatDate } from "@/lib/dates";
 import { jobHref } from "@/lib/jobs/job-url";
+import { asset } from "@/lib/paths";
 import { jobsLandingJsonLd } from "@/lib/jobs/jsonld";
 import { MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
 import type { LandingLink } from "@/lib/jobs/landing-links";
@@ -71,8 +72,8 @@ function Listing({ job }: { job: JobItem }) {
   return (
     <li className="card flex h-full flex-col p-4 sm:p-5">
       <h3 className="text-base font-semibold text-text break-words">
-        {/* Job pages are plain HTML (scripts/job-pages.ts), so this is an ordinary link, not a client-side route. */}
-        <a href={jobHref(job)} className="hover:underline hover:decoration-cyan hover:underline-offset-4">
+        {/* Job pages are plain HTML (scripts/job-pages.ts), so this is an ordinary link, not a client-side route. asset() adds the deployment base path. */}
+        <a href={asset(jobHref(job))} className="hover:underline hover:decoration-cyan hover:underline-offset-4">
           {job.title}
           <span className="sr-only"> at {job.organization_name}</span>
         </a>

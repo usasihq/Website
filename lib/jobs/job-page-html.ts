@@ -9,7 +9,7 @@
  * in description.ts, never from employer HTML.
  */
 import { formatDate } from "../dates";
-import { absoluteUrl } from "../paths";
+import { absoluteUrl, asset } from "../paths";
 import { siteConfig, supportState } from "../site-config";
 import type { Description, Run } from "./description";
 import type { JobPage } from "./job-pages";
@@ -78,7 +78,7 @@ function supportPanel(): string {
     : `<p class="inline-flex items-center gap-2 rounded-lg border border-dashed border-line-strong px-4 py-2.5 text-[0.9375rem] text-ice" data-testid="support-unavailable">Tips will be available here soon.</p>`;
   return `<section aria-labelledby="support-heading" class="print:hidden py-10" data-support-panel="${active ? "active" : "unconfigured"}"><div class="container-page"><div class="relative overflow-hidden rounded-2xl border border-[rgba(76,201,255,0.28)] bg-[linear-gradient(135deg,#0b1428_0%,#081022_60%,#0a1530_100%)] p-5 sm:p-6"><div aria-hidden="true" class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(76,201,255,0.14),transparent_70%)]"></div><div class="relative grid gap-6 md:grid-cols-[1fr_auto] md:items-center md:gap-8"><div class="flex gap-4"><span aria-hidden="true" class="mt-1 inline-flex shrink-0 items-center justify-center rounded-full border border-[rgba(76,201,255,0.35)] text-cyan h-9 w-9">${heart}</span><div class="min-w-0"><h2 id="support-heading" class="font-semibold text-text text-lg">${esc(config.heading)}</h2><p class="mt-1 text-ice text-[0.9375rem]">${esc(config.subheading)}</p>${
     active ? "" : `<p class="mt-3 max-w-2xl text-muted text-[0.9375rem]">${esc(config.body)}</p>`
-  }</div></div><div class="flex flex-col gap-3 md:items-end">${actions}<a href="/support/" class="link inline-flex items-center gap-1 text-[0.9375rem]">About supporting this project<span aria-hidden="true">&nbsp;→</span></a></div></div></div></div></section>`;
+  }</div></div><div class="flex flex-col gap-3 md:items-end">${actions}<a href="${asset("/support/")}" class="link inline-flex items-center gap-1 text-[0.9375rem]">About supporting this project<span aria-hidden="true">&nbsp;→</span></a></div></div></div></div></section>`;
 }
 
 export function renderJobPage(p: JobPage, shell: PageShell): string {
@@ -104,7 +104,7 @@ export function renderJobPage(p: JobPage, shell: PageShell): string {
   };
 
   const facts: [string, string][] = [
-    ["Employer", `<a href="/jobs/at/${esc(org.slug)}/" class="link">${esc(org.name)}</a>`],
+    ["Employer", `<a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">${esc(org.name)}</a>`],
     ["Location", job.locations.length ? esc(job.locations.join(" · ")) : "Not supplied by the employer"],
     ["Workplace", job.workplace !== "unknown" ? esc(job.workplace) : "Not supplied"],
     ["Employment", job.employment_type !== "unknown" ? esc(job.employment_type) : "Not supplied"],
@@ -130,7 +130,7 @@ export function renderJobPage(p: JobPage, shell: PageShell): string {
     ["/people/", "People"],
     ["/about/", "About"],
   ]
-    .map(([href, label]) => `<li><a href="${href}" class="text-muted hover:text-text${href === "/jobs/" ? " text-text" : ""}"${href === "/jobs/" ? ' aria-current="true"' : ""}>${label}</a></li>`)
+    .map(([href, label]) => `<li><a href="${asset(href)}" class="text-muted hover:text-text${href === "/jobs/" ? " text-text" : ""}"${href === "/jobs/" ? ' aria-current="true"' : ""}>${label}</a></li>`)
     .join("");
 
   return `<!DOCTYPE html>
@@ -159,7 +159,7 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
 <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
 <div class="border-b border-line"><div class="container-page flex h-7 items-center text-xs sm:text-[0.8125rem]"><p class="min-w-0 truncate text-muted" data-testid="header-disclaimer">Independent project. Not a U.S. government website.</p></div></div>
 <header class="border-b border-line"><div class="container-page flex flex-wrap items-center gap-x-8 gap-y-3 py-4">
-<a href="/" class="text-lg font-semibold tracking-wide text-text">USASI</a>
+<a href="${asset("/")}" class="text-lg font-semibold tracking-wide text-text">USASI</a>
 <nav aria-label="Primary"><ul class="flex flex-wrap gap-x-5 gap-y-1 text-[0.9375rem]">${nav}</ul></nav>
 </div></header>
 <main id="main">
@@ -178,7 +178,7 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
   }</p>
 </div></header>
 <div class="container-page grid gap-10 py-10 sm:py-12">
-<p class="max-w-3xl rounded-xl border border-line p-4 text-sm text-muted" role="note">This posting comes from ${esc(org.name)}&rsquo;s own ${board} job board. USASI checks that board every day and removes this page once the employer closes the posting. The description below is ${esc(name)}&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications. <a href="/methodology/#jobs" class="link">How jobs are collected</a>.</p>
+<p class="max-w-3xl rounded-xl border border-line p-4 text-sm text-muted" role="note">This posting comes from ${esc(org.name)}&rsquo;s own ${board} job board. USASI checks that board every day and removes this page once the employer closes the posting. The description below is ${esc(name)}&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications. <a href="${asset("/methodology/#jobs")}" class="link">How jobs are collected</a>.</p>
 <section aria-labelledby="description-heading">
 <h2 id="description-heading" class="text-xl font-semibold text-text sm:text-2xl">Job description</h2>
 <div class="mt-4 max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-[#d5def2]" data-testid="job-description">
@@ -189,11 +189,11 @@ ${p.description ? description(p.description) : `<p class="text-muted">The full d
 <nav aria-labelledby="more-jobs-heading" class="border-t border-line pt-6">
 <h2 id="more-jobs-heading" class="eyebrow">More jobs</h2>
 <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
-<li><a href="/jobs/at/${esc(org.slug)}/" class="link">All jobs at ${esc(name)}</a></li>
-${sameDepartment ? `<li><a href="${esc(sameDepartment)}" class="link">${esc(job.department!)} jobs at ${esc(name)}</a></li>` : ""}
-<li><a href="/jobs/" class="link">Search all jobs</a></li>
-<li><a href="/companies/${esc(org.slug)}/" class="link">About ${esc(name)}</a></li>
-<li><a href="/contribute/#corrections" class="link">Report a problem with this listing</a></li>
+<li><a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">All jobs at ${esc(name)}</a></li>
+${sameDepartment ? `<li><a href="${esc(asset(sameDepartment))}" class="link">${esc(job.department!)} jobs at ${esc(name)}</a></li>` : ""}
+<li><a href="${asset("/jobs/")}" class="link">Search all jobs</a></li>
+<li><a href="${asset(`/companies/${esc(org.slug)}/`)}" class="link">About ${esc(name)}</a></li>
+<li><a href="${asset("/contribute/#corrections")}" class="link">Report a problem with this listing</a></li>
 </ul>
 </nav>
 </div>
@@ -201,7 +201,7 @@ ${supportPanel()}
 </main>
 <footer class="border-t border-line"><div class="container-page grid gap-4 py-10 text-sm text-muted">
 <p><strong class="text-text">${esc(siteConfig.name)}.</strong> Independent project. Not a United States government website.</p>
-<ul class="flex flex-wrap gap-x-5 gap-y-2"><li><a href="/jobs/" class="link">Jobs</a></li><li><a href="/methodology/#jobs" class="link">Jobs methodology</a></li><li><a href="/privacy/" class="link">Privacy</a></li><li><a href="/disclaimer/" class="link">Disclaimer</a></li><li><a href="/contribute/#corrections" class="link">Corrections</a></li></ul>
+<ul class="flex flex-wrap gap-x-5 gap-y-2"><li><a href="${asset("/jobs/")}" class="link">Jobs</a></li><li><a href="${asset("/methodology/#jobs")}" class="link">Jobs methodology</a></li><li><a href="${asset("/privacy/")}" class="link">Privacy</a></li><li><a href="${asset("/disclaimer/")}" class="link">Disclaimer</a></li><li><a href="${asset("/contribute/#corrections")}" class="link">Corrections</a></li></ul>
 <ul class="flex flex-wrap gap-x-5 gap-y-2" aria-label="USASI elsewhere">${socials}</ul>
 <p>Job titles and descriptions are the employers&rsquo; own text, shown as published on their job boards; they are not covered by USASI&rsquo;s CC BY 4.0 license.</p>
 </div></footer>
