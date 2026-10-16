@@ -18,6 +18,7 @@ describe("careers validation and trust boundary", () => {
     expect(Careers.safeParse({ ...config, source: { type: "workday", identifier: "x" } }).success).toBe(false);
     expect(Careers.safeParse({ ...config, source: { type: "greenhouse", identifier: "../x" } }).success).toBe(false);
     expect(Careers.safeParse({ ...config, source: { type: "manual", note: "Manual review" } }).success).toBe(false);
+    expect(Careers.safeParse({ ...config, source: { type: "usajobs", identifier: "ai" } }).success).toBe(true);
   });
   it("rejects hostile tenant/host and keeps identity parameters", () => {
     expect(() => postingUrl("https://job-boards.greenhouse.io/other/jobs/1", config)).toThrow();
@@ -119,6 +120,10 @@ describe("bounded fetch", () => {
     let opts: RequestInit | undefined;
     await fetchFeed(config,(async (_url, options) => {opts=options; return new Response('{}',{headers:{"content-type":"application/json"}});}) as typeof fetch);
     expect(opts?.redirect).toBe("error"); expect(opts?.credentials).toBe("omit");
+  });
+  it("does not fetch USAJOBS through the unauthenticated ATS helper", async () => {
+    const usajobs = Careers.parse({ url: "https://www.usajobs.gov", enabled: true, source: { type: "usajobs", identifier: "ai" }, source_ids: ["usajobs-home"], reviewed_at: "2026-10-16" });
+    await expect(fetchFeed(usajobs)).rejects.toMatchObject({ category: "payload" });
   });
 });
 

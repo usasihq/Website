@@ -76,7 +76,9 @@ export function jobsLandingJsonLd(page: LandingPage): object {
       url,
       numberOfItems: page.listings.length,
       itemListOrder: "https://schema.org/ItemListOrderDescending",
-      itemListElement: page.listings.map((j, i) => listItem(i + 1, `${j.title} at ${j.organization_name}`, jobHref(j))),
+      itemListElement: page.listings.map((j, i) =>
+        listItem(i + 1, `${j.title} at ${j.source_type === "usajobs" && j.department ? j.department : j.organization_name}`, jobHref(j)),
+      ),
     });
   }
   if (page.employers.length) {

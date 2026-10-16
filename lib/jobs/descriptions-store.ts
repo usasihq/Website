@@ -13,7 +13,7 @@ import { Description } from "./description";
 export const DESCRIPTIONS_PATH = path.join(process.cwd(), "data/jobs/descriptions.json");
 
 export const DescriptionStore = z
-  .object({ version: z.literal(1), descriptions: z.record(z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby):[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$/), Description) })
+  .object({ version: z.literal(1), descriptions: z.record(z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|usajobs):[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$/), Description) })
   .strict();
 export type DescriptionStore = z.infer<typeof DescriptionStore>;
 

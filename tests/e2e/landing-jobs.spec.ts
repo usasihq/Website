@@ -202,17 +202,32 @@ test("an employer's jobs page is shareable and lists that employer's listings", 
   const href = (await first.getAttribute("href"))!;
   await first.click();
   await expect(page).toHaveURL(new RegExp(`${href}$`));
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/^Jobs at /);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(/^(Jobs at |Federal AI jobs)/);
   const count = await countOnPage(page);
   expect(count).toBeGreaterThan(0);
   await expect(page.getByTestId("landing-employer")).toBeVisible();
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /from its own job board/);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /from (its own job board|USAJOBS\.gov)/);
   const slug = href.split("/")[3];
   const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
   await page.getByRole("link", { name: /^See all [\d,]+ in the Jobs directory$|^Filter these in the Jobs directory$/ }).click();
   await loaded;
   await expect(page).toHaveURL(new RegExp(`/jobs/\\?company=${slug}&sort=newest$`));
   await expect(page.getByTestId("jobs-company-page").locator(`a[href="/jobs/at/${slug}/"]`)).toBeVisible();
+});
+
+test("the federal AI jobs page is linked from /jobs/, names USAJOBS.gov, and carries collection markup", async ({ page }) => {
+  await page.goto("/jobs/");
+  await expect(page.getByTestId("browse-employers").locator('a[href="/jobs/at/federal/"]')).toBeVisible();
+  await page.goto("/jobs/at/federal/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Federal AI jobs");
+  await expect(page.locator("main")).toContainText("Listing data comes from USAJOBS.gov.");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/at\/federal\/$/);
+  const ld = await jsonLd(page);
+  expect(ld).toContain('"CollectionPage"');
+  expect(ld).not.toContain('"JobPosting"');
+  if ((await countOnPage(page)) > 0) expect(ld).toContain('"ItemList"');
+  await expect(page.getByRole("heading", { name: "How this list is made" })).toBeVisible();
+  await expect(page.getByTestId("landing-employer")).toBeVisible();
 });
 
 test("each listing has its own page with the employer's description, an apply link, and JobPosting data", async ({ page }) => {

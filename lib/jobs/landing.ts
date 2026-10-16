@@ -224,13 +224,38 @@ export function roleDefinition(role: JobRole): LandingDefinition {
   };
 }
 
-const PROVIDER_LABELS: Record<string, string> = { greenhouse: "Greenhouse", ashby: "Ashby" };
+const PROVIDER_LABELS: Record<string, string> = { greenhouse: "Greenhouse", ashby: "Ashby", usajobs: "USAJOBS" };
 
 /** An employer's page: every current listing from that organization's own job board. */
 export function companyDefinition(org: { slug: string; name: string; provider: string | null }): LandingDefinition {
   const board = org.provider && PROVIDER_LABELS[org.provider] ? `${PROVIDER_LABELS[org.provider]} job board` : "job board";
   // "Ai2 (Allen Institute for AI)" → "Ai2": titles and descriptions stay within their limits.
   const short = org.name.replace(/\s*\([^)]*\)\s*$/, "").trim();
+  if (org.provider === "usajobs") {
+    return {
+      id: `at-${org.slug}`,
+      path: `/jobs/at/${org.slug}/`,
+      name: `Jobs at ${org.name}`,
+      h1: `Federal AI jobs`,
+      eyebrow: "Jobs by employer",
+      scope: "includes-outside",
+      filters: { company: org.slug },
+      intro:
+        "Current federal civilian openings related to artificial intelligence, machine learning, and data science. Each listing names the hiring agency. Apply on USAJOBS.gov; USASI does not collect applications. Listing data comes from USAJOBS.gov.",
+      rule:
+        "Collected from the official USAJOBS Search API with keyword searches for “artificial intelligence”, “machine learning”, “data scientist”, and “AI”, then a title and description filter that drops unrelated matches (for example postings that only contain “AI” inside another word). Announcements past their USAJOBS application close date are omitted. Titles, agencies, locations, and pay ranges are shown as USAJOBS supplies them. A listing counts as current when this source was checked successfully and the posting was present within the last 48 hours.",
+      title: (f) => {
+        const base = `Federal AI jobs: ${plural(f.count, "open position", "open positions")}`;
+        return `${base} on USAJOBS.gov`.length <= 90 ? `${base} on USAJOBS.gov` : base;
+      },
+      description: (f) => {
+        const lead = `${listings(f.count)} at U.S. federal agencies from USAJOBS.gov, ${n(f.usOnly)} in U.S. locations only. Checked ${f.date}`;
+        const full = `${lead}.`;
+        return full.length <= 160 ? full : `${listings(f.count)} from USAJOBS.gov. Checked ${f.date}.`;
+      },
+      image: `/og/jobs/at-${org.slug}.jpg`,
+    };
+  }
   return {
     id: `at-${org.slug}`,
     path: `/jobs/at/${org.slug}/`,
@@ -272,7 +297,7 @@ export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
   /** The city, for city pages: its key ("CA|san-francisco") and name. */
   city: { key: string; slug: string; label: string } | null;
   /** The employer, for employer pages. */
-  organization: { slug: string; name: string; careersUrl: string | null } | null;
+  organization: { slug: string; name: string; careersUrl: string | null; sourceType: string | null } | null;
   /** Departments the employer supplies, by number of listings (employer pages link each to the directory). */
   departments: { name: string; count: number; href: string }[];
   title: string;
@@ -428,7 +453,7 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
         src,
         null,
         null,
-        { slug: o.slug, name: o.name, careersUrl: o.careers?.url ?? o.hiring_url ?? null },
+        { slug: o.slug, name: o.name, careersUrl: o.careers?.url ?? o.hiring_url ?? null, sourceType: o.careers?.source.type ?? null },
       ),
     )
     .sort((a, b) => a.organization!.name.localeCompare(b.organization!.name, "en"));

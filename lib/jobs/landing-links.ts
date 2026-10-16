@@ -52,6 +52,14 @@ export function companyLinks(catalog: Catalog, except = ""): LandingLink[] {
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
 }
 
+/** Employer browse on /jobs/: current listings, plus the federal USAJOBS page even when empty. */
+export function employerBrowseLinks(catalog: Catalog): LandingLink[] {
+  const links = companyLinks(catalog);
+  const federal = jobsLandingData(catalog).companies.find((p) => p.path === "/jobs/at/federal/");
+  if (federal && !links.some((l) => l.path === federal.path)) return [...links, link(federal)];
+  return links;
+}
+
 /** City pages in one state, by number of listings. */
 export function cityLinks(catalog: Catalog, state: string): LandingLink[] {
   return jobsLandingData(catalog)

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { Dataset, Job, type FeedHealth, type NormalizedJob, type Careers } from "./schema";
+import { Dataset, Job, isAutomatedSource, type FeedHealth, type NormalizedJob, type Careers } from "./schema";
 import { FeedError } from "./security";
 export const DAY = 86400000;
 export function sourceKey(org: string, c: Careers): string { return `${org}:${c.source.type}:${"identifier" in c.source ? c.source.identifier : ""}`; }
@@ -17,7 +17,7 @@ export function contentDigest(rows: unknown[]): string { return createHash("sha2
 export type FeedResult = { ok: true; jobs: NormalizedJob[] } | { ok: false; error: Exclude<FeedHealth["result"], "ok"> };
 /** Pure reconciliation; network and invalid payloads cannot remove jobs. */
 export function reconcile(previous: Dataset, org: string, c: Careers, result: FeedResult, now: string): Dataset {
-  if (c.source.type !== "greenhouse" && c.source.type !== "ashby") throw new FeedError("payload");
+  if (!isAutomatedSource(c.source.type) || !("identifier" in c.source)) throw new FeedError("payload");
   const key = sourceKey(org, c);
   const oldJobs = previous.jobs.filter(j => jobSourceKey(j) === key);
   const otherJobs = previous.jobs.filter(j => jobSourceKey(j) !== key);

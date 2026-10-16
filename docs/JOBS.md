@@ -26,9 +26,15 @@ parent/subsidiary records). Reassigning a board requires review, not automatic s
 3. Record source evidence, actual review date, public HTTPS careers URL, provider and
    board identifier in the organization YAML. Do not change other editorial review
    dates merely because career configuration changed.
-4. Only `greenhouse` and `ashby` have implemented adapters. `manual` and `unsupported`
+4. `greenhouse`, `ashby`, and `usajobs` have implemented adapters. `manual` and `unsupported`
    require an explanatory note and `enabled: false`; they display a careers link,
    not a zero count. No Workday/HTML scraping/aggregator adapters are claimed.
+   USAJOBS uses the official Search API (`https://data.usajobs.gov/api/search`) with
+   keyword queries, control-number de-duplication, a relevance filter, and the
+   announcement close date. Requests send `Host: data.usajobs.gov`, `User-Agent`
+   (registered email, default `shadowfetch@mail.grokbot.com`), and
+   `Authorization-Key` from `USAJOBS_API_KEY`. If that env var is missing, refresh
+   skips USAJOBS and does not fail. Never commit the key.
 5. `posting_hosts` is an exact, editor-reviewed allowlist for employer-owned custom
    posting destinations. Normally keep it empty; ATS-hosted links must match the
    configured tenant path. A malicious feed cannot grant itself an allowed host.
@@ -142,9 +148,29 @@ It is inactive until repository variable `JOBS_REFRESH=true` and the existing
 Cloudflare concurrency lock/environment. Both production workflows check out current
 main only after acquiring that shared lock, then refuse publication and cache writes
 if main advanced during validation. Deployment messages identify the actual checked-out
-commit. A queued older event cannot redeploy its older event revision. It reuses existing Cloudflare secrets;
-no new long-lived credentials or services are required. Do not expose token values.
+commit. A queued older event cannot redeploy its older event revision. It reuses existing Cloudflare secrets for deploy. USAJOBS needs an API key (never
+commit it). Do not expose token values.
 The release integrator activates only after merging and verifying the combined site.
+
+### USAJOBS API key (where to add `USAJOBS_API_KEY`)
+
+Refresh is a GitHub Actions job, not a Cloudflare Worker runtime fetch. Add the
+secret here:
+
+1. **GitHub Actions, production environment (required for live federal listings).**
+   Both `refresh-jobs.yml` and `deploy-cloudflare.yml` use `environment: production`
+   and pass `secrets.USAJOBS_API_KEY` into `npm run jobs:refresh`. In the GitHub
+   repo: **Settings → Environments → production → Environment secrets →
+   `USAJOBS_API_KEY`**. If environment secrets are not used, the same name can be a
+   repository secret under **Settings → Secrets and variables → Actions**.
+2. **Optional User-Agent.** Variable `USAJOBS_USER_AGENT` (registered email). If
+   unset, refresh uses `shadowfetch@mail.grokbot.com`.
+3. **Cloudflare dashboard / wrangler build env: not required.** The static site
+   does not call USAJOBS at build or request time. Only the GitHub Actions refresh
+   step needs the key. A missing key skips USAJOBS and leaves the rest of Jobs
+   working.
+
+Local `npm run jobs:refresh` reads the same env vars from the shell (see `.env.example`).
 
 State restores from an immutable GitHub Actions cache key scoped to this main-branch
 workflow family. Validation, type checking, lint, unit tests, production build and

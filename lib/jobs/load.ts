@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { Dataset, type Careers } from "./schema";
+import { Dataset, isAutomatedSource, type Careers } from "./schema";
 import type { Organization } from "../schema";
 import { endpoint, postingUrl } from "./security";
 import { jobSourceKey, sourceKey } from "./reconcile";
@@ -12,7 +12,7 @@ export function validateDataset(input: unknown, organizations: Organization[]): 
   const ids = new Set<string>(); const feeds = new Set<string>();
   const configFor = (slug: string): Careers => {
     const c = orgs.get(slug)?.careers;
-    if (!c?.enabled || !["greenhouse", "ashby"].includes(c.source.type)) throw new Error(`Jobs: ${slug} is not a published eligible organization with enabled source`);
+    if (!c?.enabled || !isAutomatedSource(c.source.type)) throw new Error(`Jobs: ${slug} is not a published eligible organization with enabled source`);
     return c;
   };
   for (const f of data.feeds) {

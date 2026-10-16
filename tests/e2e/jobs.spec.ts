@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 test("jobs filters survive URL, history and reload without contacting ATS", async ({ page }) => {
   const external: string[] = [];
-  page.on("request", r => {if (/greenhouse|ashbyhq/.test(r.url())) external.push(r.url());});
+  page.on("request", r => {if (/greenhouse|ashbyhq|data\.usajobs\.gov/.test(r.url())) external.push(r.url());});
   await page.goto("/jobs/?company=openai");
   await expect(page.getByLabel("Company or lab", {exact:true})).toHaveValue("openai");
   await page.getByLabel("Company or lab", {exact:true}).selectOption("anthropic");
@@ -26,7 +26,7 @@ test("jobs accessibility, safe employer links and responsive width", async ({ pa
   const links = page.locator('article a[data-external="true"]').first();
   if (await links.count()) {
     await expect(links).toHaveAttribute("rel","noopener noreferrer");
-    await expect(links).toHaveAttribute("href", /^https:\/\/(job-boards.greenhouse.io|jobs.ashbyhq.com)\//);
+    await expect(links).toHaveAttribute("href", /^https:\/\/(job-boards.greenhouse.io|jobs.ashbyhq.com|www.usajobs.gov)\//);
   }
   await page.screenshot({path:`reports/screenshots/jobs-${test.info().project.name}.png`,fullPage:false});
 });

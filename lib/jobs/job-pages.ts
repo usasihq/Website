@@ -102,7 +102,10 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
     title: job.title,
     description: descriptionHtml(description),
     datePosted: (job.posted_at ?? job.first_seen).slice(0, 10),
-    hiringOrganization: { "@type": "Organization", name: org.name, sameAs: org.website },
+    hiringOrganization:
+      job.source_type === "usajobs" && job.department
+        ? { "@type": "Organization", name: job.department, parentOrganization: { "@type": "Organization", name: org.name, sameAs: org.website } }
+        : { "@type": "Organization", name: org.name, sameAs: org.website },
     identifier: { "@type": "PropertyValue", name: org.name, value: job.requisition_id ?? job.source_job_id },
     directApply: false,
     url: absoluteUrl(p.path),
