@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { formatDate } from "@/lib/dates";
 import { KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { artifactHref, orgHref } from "@/lib/routes";

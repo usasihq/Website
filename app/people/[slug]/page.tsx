@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { Briefcase, Code2 } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";

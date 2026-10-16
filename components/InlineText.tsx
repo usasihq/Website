@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { parseInline, type InlineToken } from "@/lib/inline-text";
 import { ExternalLink } from "./ExternalLink";
 

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ChevronRight } from "lucide-react";
 import { breadcrumbList, breadcrumbTrail } from "@/lib/structured-data";
 import { JsonLd } from "./JsonLd";

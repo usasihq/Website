@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { RecordContext } from "@/components/RecordContext";
 import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
 import { OrganizationJobs } from "@/components/OrganizationJobs";

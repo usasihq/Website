@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowRight, Search, Shuffle } from "lucide-react";
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";

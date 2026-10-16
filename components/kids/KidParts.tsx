@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Brain, CircleCheck, Compass, ListChecks, Lock, NotebookPen, Rocket, Scale, ShieldCheck, Sparkles, type LucideIcon } from "lucide-react";
 import { InlineText } from "@/components/InlineText";
 import type { KidIcon as KidIconName, KidLesson } from "@/lib/kids";

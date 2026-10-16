@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { ClaimText } from "@/components/DetailParts";
 import { ExternalLink } from "@/components/ExternalLink";

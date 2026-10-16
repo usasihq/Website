@@ -278,6 +278,19 @@ for (const person of readDir("people")) {
   console.log(`postbuild: ${blocks} JSON-LD blocks checked.`);
 }
 
+// RSC payloads (index.txt, __next.*.txt) exist only for Next.js client-side
+// navigation and prefetching. Internal links are plain <a> (components/Link.tsx),
+// so every navigation is a full page load and these ~7,000 files are never
+// requested; removing them keeps the export inside the file limit below.
+{
+  const RSC = /(^|\/)(index\.txt|__next\.[^/]*\.txt)$/;
+  let removed = 0;
+  for (const f of walk(out)) {
+    if (RSC.test(path.relative(out, f).split(path.sep).join("/"))) { fs.unlinkSync(f); removed++; }
+  }
+  console.log(`postbuild: ${removed} RSC payload files removed (plain links never request them).`);
+}
+
 // Cloudflare Workers static assets: at most 20,000 files per deployment on the
 // Free plan (100,000 on Paid) and 25 MiB per file. Most files are job pages,
 // so the count moves with the number of open listings. ASSET_FILE_LIMIT

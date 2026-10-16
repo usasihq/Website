@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { checkedLabel } from "@/lib/jobs/search";
 import type { FeedHealth } from "@/lib/jobs/schema";
 import { useJobsClock } from "./useJobsClock";

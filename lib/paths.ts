@@ -1,6 +1,6 @@
 /**
  * URL helpers. Internal routes are written without the base path because
- * next/link adds it; raw asset URLs (images, JSON) need `asset()`.
+ * components/Link adds it; raw asset URLs (images, JSON) need `asset()`.
  */
 import { BASE_PATH, SITE_URL, siteConfig } from "./site-config";
 

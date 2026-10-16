@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { companiesHref, openHref } from "@/lib/routes";
 import {
   DEFAULT_ARTIFACT_FILTERS,

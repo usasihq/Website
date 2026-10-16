@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Rss, Share2 } from "lucide-react";
 import { absoluteUrl, asset } from "@/lib/paths";
 import { badgeSnippets, citations, shareLinks } from "@/lib/share";

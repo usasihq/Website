@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { EntryActions } from "@/components/EntryActions";
 import { NEWS_CATEGORY_LABELS, RelatedRecords, newsHref } from "@/components/NewsList";

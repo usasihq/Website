@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ArrowRight, BookOpenCheck, Briefcase, Building2, Boxes, Cpu, Landmark, Route, Scale, SlidersHorizontal, Sparkles } from "lucide-react";
 import { EntryTypeBadge, Monogram } from "@/components/Badges";
 import { CoverageTable } from "@/components/CoverageTable";

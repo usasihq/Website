@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { StateGroup } from "@/lib/place-index";
 import { stateSlug, US_STATES } from "@/lib/places";
 

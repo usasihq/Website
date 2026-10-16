@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ArrowRight, BookOpen, Calculator, Rocket, CircleHelp, CalendarClock, Landmark, Library, MapPin, Route, Scale, ScrollText, Search } from "lucide-react";
 import { ExplainerCard, TopicIcon } from "@/components/learn/LearnParts";
 import { PageHeader } from "@/components/PageHeader";

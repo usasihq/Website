@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ArrowRight, Search } from "lucide-react";
 import { useCallback, useId, useMemo, useRef, useState } from "react";
 import { ARTIFACT_ENTRY_TYPES, ENTRY_TYPE_LABELS } from "@/lib/labels";

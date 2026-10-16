@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { NewsDirectory } from "@/components/NewsDirectory";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PageHeader } from "@/components/PageHeader";

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useEffect, useMemo, useState } from "react";
 import type { LibraryEntry } from "@/lib/source-library";
 import { ExternalLink } from "./ExternalLink";

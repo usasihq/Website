@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Search } from "lucide-react";
 import { useSyncExternalStore } from "react";
 

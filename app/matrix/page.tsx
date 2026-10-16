@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { StatusBadge } from "@/components/Badges";
 import { ModelComparison } from "@/components/ModelComparison";
 import { CoverageTable } from "@/components/CoverageTable";

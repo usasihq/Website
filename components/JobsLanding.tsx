@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { JsonLd } from "@/components/JsonLd";
 import { JobsFreshness } from "@/components/JobsFreshness";

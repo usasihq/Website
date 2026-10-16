@@ -4,7 +4,7 @@
  * record's own fields. Facts keep their source markers; links lead to the
  * family, organization, license guide, and state pages they mention.
  */
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Fragment, type ReactNode } from "react";
 import type { Catalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ArrowUpRight, CalendarDays, Layers, ListTree, UserRound } from "lucide-react";
 import { formatDate } from "@/lib/dates";
 import type { DeepDive as DeepDiveT, Leader, Source } from "@/lib/schema";

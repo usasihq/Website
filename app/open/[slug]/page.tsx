@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { RecordContext } from "@/components/RecordContext";
 import { artifactRelated, artifactUnknowns } from "@/lib/record-context";
 import { notFound } from "next/navigation";

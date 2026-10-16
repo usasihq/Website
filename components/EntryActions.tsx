@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { FilePen, MessageSquareWarning } from "lucide-react";
 import { absoluteUrl, editUrl, issueUrl } from "@/lib/paths";
 import { mailtoHref, siteConfig } from "@/lib/site-config";

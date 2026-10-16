@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { CircleAlert, CircleCheck, Monitor } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";
 import type { Catalog } from "@/lib/catalog";

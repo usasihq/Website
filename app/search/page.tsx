@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { PageHeader } from "@/components/PageHeader";
 import { SearchResults } from "@/components/SearchResults";
 import { pageMetadata } from "@/lib/metadata";

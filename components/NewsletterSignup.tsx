@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Mail, Rss } from "lucide-react";
 import { siteConfig, type NewsletterConfig } from "@/lib/site-config";
 import { asset } from "@/lib/paths";

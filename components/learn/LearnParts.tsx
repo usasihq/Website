@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Building2, Clock, Cpu, Landmark, Lightbulb, Scale, ShieldCheck, type LucideIcon } from "lucide-react";
 import type { Explainer, Level, TopicId } from "@/lib/learn";
 import { topic as topicById } from "@/lib/learn";

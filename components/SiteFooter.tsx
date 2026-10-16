@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { BuildDate } from "./BuildDate";
 import { asset, repositoryUrl } from "@/lib/paths";
 import { siteConfig } from "@/lib/site-config";

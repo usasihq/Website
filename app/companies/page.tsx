@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { JsonLd } from "@/components/JsonLd";
 import { OrgDirectory } from "@/components/OrgDirectory";
 import { PageHeader } from "@/components/PageHeader";

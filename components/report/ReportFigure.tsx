@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { percent, type ReportRow, type ReportTable } from "@/lib/report";
 import type { ReportHref } from "@/lib/report-editions";
 

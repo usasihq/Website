@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ENTRY_TYPE_LABELS } from "@/lib/labels";
 import { searchEntries, type SearchEntry } from "@/lib/search";

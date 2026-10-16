@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { CoverageRow } from "@/lib/matrix";
 
 export function CoverageTable({ rows, caption }: { rows: CoverageRow[]; caption: string }) {

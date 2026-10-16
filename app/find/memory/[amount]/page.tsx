@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AmountPicker, ComponentLink, MemoryEntryCard } from "@/components/MemoryPages";
 import { PageHeader } from "@/components/PageHeader";

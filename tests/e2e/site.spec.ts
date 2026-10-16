@@ -787,8 +787,11 @@ test.describe("site search, places map, and printing", () => {
     await expect(page).toHaveURL(new RegExp(`${href!.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`));
     await expect(dialog).toBeHidden();
 
-    await page.keyboard.press("Control+k");
-    await expect(dialog).toBeVisible();
+    // Choosing a result is a full page load (plain links); the shortcut works once that page hydrates.
+    await expect(async () => {
+      await page.keyboard.press("Control+k");
+      await expect(dialog).toBeVisible({ timeout: 500 });
+    }).toPass();
     await page.keyboard.press("Escape");
     await expect(dialog).toBeHidden();
   });

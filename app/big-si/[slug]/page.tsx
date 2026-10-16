@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Award, Briefcase, CalendarDays, Sparkles } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";

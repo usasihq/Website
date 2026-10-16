@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useMemo, useRef } from "react";
 import { formatDate } from "@/lib/dates";
 import { NEWS_CATEGORY_LABELS } from "@/lib/labels";

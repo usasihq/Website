@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ArrowRight, Heart } from "lucide-react";
 import { siteConfig, supportState, type SupportConfig } from "@/lib/site-config";
 

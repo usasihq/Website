@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ArrowRight } from "lucide-react";
 import { HubIcon } from "@/components/learn/HubIcon";
 import { JsonLd } from "@/components/JsonLd";

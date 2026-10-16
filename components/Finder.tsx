@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useState } from "react";
 import { CircleAlert, CircleCheck, CircleX, Cpu, Globe, Link2, Monitor } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";

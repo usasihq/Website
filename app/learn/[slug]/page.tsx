@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Lightbulb, Route } from "lucide-react";
 import { ExplainerCard, LevelBadge, ReadingTime, TopicIcon } from "@/components/learn/LearnParts";

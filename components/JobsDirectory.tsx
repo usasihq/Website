@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useJobsClock } from "./useJobsClock";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { JOB_SOURCE_LABELS, type FeedHealth, type Job } from "@/lib/jobs/schema";

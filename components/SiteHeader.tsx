@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Coffee, Menu, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";

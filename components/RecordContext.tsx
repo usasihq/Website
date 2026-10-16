@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import type { RelatedLink } from "@/lib/record-context";
 import { Section } from "./PageHeader";
 

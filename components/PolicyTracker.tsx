@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { useQueryState } from "@/components/useQueryState";
 import { DATE_LABEL_VERBS, isInactive, POLICY_FILTERS, policyHref, POLICY_STATUS_LABELS, POLICY_TYPE_LABELS } from "@/lib/policy";

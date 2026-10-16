@@ -1,10 +1,10 @@
 import type { MDXComponents } from "mdx/types";
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ExternalLink } from "@/components/ExternalLink";
 
 /**
  * MDX is compiled at build time from trusted repository files only
- * (content/pages). Internal links use next/link so the base path applies;
+ * (content/pages). Internal links use components/Link so the base path applies;
  * external links are marked as external.
  */
 function MdxLink({ href = "", children }: { href?: string; children?: React.ReactNode }) {

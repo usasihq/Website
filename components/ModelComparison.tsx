@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { MODEL_COLUMNS, type MatrixCell, type ModelMatrixRow } from "@/lib/matrix";
 import { orgHref } from "@/lib/routes";
 import { siteConfig } from "@/lib/site-config";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Mail, Rss } from "lucide-react";
 import Content from "@/content/pages/newsletter.mdx";
 import { EditorialPage } from "@/components/EditorialPage";

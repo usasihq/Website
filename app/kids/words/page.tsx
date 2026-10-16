@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Breadcrumbs } from "@/components/PageHeader";
 import { KID_LESSONS, KID_WORDS } from "@/lib/kids";
 import { pageMetadata } from "@/lib/metadata";

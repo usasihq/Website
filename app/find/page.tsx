@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Finder } from "@/components/Finder";
 import { PageHeader } from "@/components/PageHeader";

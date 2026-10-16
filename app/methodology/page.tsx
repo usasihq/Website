@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import Content from "@/content/pages/methodology.mdx";
 import { EditorialPage } from "@/components/EditorialPage";
 import { pageMetadata } from "@/lib/metadata";

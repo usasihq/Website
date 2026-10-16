@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { PageHeader } from "@/components/PageHeader";
 import { SourceLibrary } from "@/components/SourceLibrary";

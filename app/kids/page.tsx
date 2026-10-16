@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { ArrowRight, BookA, Users } from "lucide-react";
 import { KidLessonCard } from "@/components/kids/KidParts";
 import { Breadcrumbs } from "@/components/PageHeader";

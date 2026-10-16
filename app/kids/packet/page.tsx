@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { Lightbulb } from "lucide-react";
 import { InlineText } from "@/components/InlineText";
 import { KidAnswerKey, KidLessonBody, KidQuizSheet } from "@/components/kids/KidParts";
