@@ -40,7 +40,8 @@ export function postingUrl(value: string, c: Careers): string {
   u.searchParams.sort();
   return u.href;
 }
-export const MAX_BYTES = 32 * 1024 * 1024;
+// Large boards with descriptions run to tens of megabytes (Anduril was 44 MB in October 2026).
+export const MAX_BYTES = 64 * 1024 * 1024;
 /** Bounded JSON body: no prototype-poisoning keys, no payloads over MAX_BYTES. */
 export async function readJsonBody(response: Response): Promise<unknown> {
   if (response.status === 429) throw new FeedError("rate-limited");

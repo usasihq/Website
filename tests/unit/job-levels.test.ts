@@ -122,3 +122,14 @@ describe("Lever adapter", () => {
     expect(() => adapters.lever.rows([{ ...posting, hostedUrl: "https://evil.example/acme/1" }], "acme", c)).toThrow();
   });
 });
+
+describe("Greenhouse locations", () => {
+  it("splits a semicolon-separated location field into separate locations", async () => {
+    const { adapters } = await import("@/lib/jobs/adapters");
+    const c = { url: "https://example.com/careers", enabled: true, source: { type: "greenhouse" as const, identifier: "acme" }, posting_hosts: [], source_ids: ["x"], reviewed_at: "2026-10-16" };
+    const many = Array.from({ length: 12 }, (_, i) => `City ${i}, Colorado, United States`).join("; ");
+    const [row] = adapters.greenhouse.rows({ jobs: [{ id: 1, internal_job_id: 2, title: "Engineer", absolute_url: "https://boards.greenhouse.io/acme/jobs/1", location: { name: many } }], meta: { total: 1 } }, "acme", c);
+    expect(row.job.locations).toHaveLength(12);
+    expect(row.job.locations[0]).toBe("City 0, Colorado, United States");
+  });
+});

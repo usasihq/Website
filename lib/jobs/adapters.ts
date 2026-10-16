@@ -74,7 +74,9 @@ const rowsGreenhouse = (payload: unknown, org: string, c: Careers): SourceRow[] 
     const j = base(org, c, String(r.id), r.title, r.absolute_url);
     const workplace = r.metadata?.find(m => m.name === "Location Type")?.value;
     const mapped = typeof workplace === "string" ? ({ "Remote": "remote", "Hybrid": "hybrid", "On-Site": "on-site", "On-site": "on-site" } as const)[workplace as "Remote"] : undefined;
-    const job: NormalizedJob = { ...j, locations: uniq([plain(r.location?.name)]), requisition_id: plain(r.requisition_id),
+    // Some boards list several offices in one location field, separated by semicolons.
+    const places = (r.location?.name ?? "").split(";").map(p => plain(p));
+    const job: NormalizedJob = { ...j, locations: uniq(places), requisition_id: plain(r.requisition_id),
       department: plain(r.departments?.map(d => d.name).join(" / ")), workplace: mapped ?? "unknown",
       remote: mapped === "remote" ? true : mapped ? false : null,
       posted_at: date(r.first_published), posted_date_kind: r.first_published ? "first-published" : null };

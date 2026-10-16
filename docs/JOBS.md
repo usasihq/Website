@@ -110,7 +110,7 @@ salary sorting. Minimum filters require currency + period and compare disclosed 
 Every six-hour check is a complete source snapshot and performs full reconciliation;
 there is no separate daily incremental path that could mistake a partial response for
 absence. This costs only one request per currently configured employer. Calls are
-serial, spaced by one second, time-limited to 30 seconds, bounded to 32 MiB decompressed
+serial, spaced by one second, time-limited to 30 seconds, bounded to 64 MiB decompressed
 JSON and 20,000 jobs per source. No source-controlled URL is fetched. Fetching uses only
 fixed HTTPS API hosts, refuses redirects, and sends no credentials/cookies. No retries
 or bypass after rate limits, bot protection, authentication, or malformed responses.
@@ -281,3 +281,9 @@ setting have not been verified.
 - "Pay range reaches" and the highest-pay sort use the top of U.S.-dollar ranges (hourly × 2,080). Displayed pay is never converted.
 - Each job page lists up to six similar jobs: same category from the title, preferring the same level, a shared state, and other employers (at most two per employer).
 - Allow-listed employer posting hosts (`posting_hosts`) linked over plain http in a feed are upgraded to https (Block's Greenhouse feed does this).
+
+## SpaceX and Anduril (2026-10-16)
+
+- SpaceX: spacex.com/careers/jobs links each opening to `boards.greenhouse.io/spacex` (seen in the rendered page; the list loads with JavaScript). The feed had been configured but disabled with no recorded reason; the owner asked for it on 2026-10-16.
+- Anduril: anduril.com renders its roles client-side from an endpoint that refuses outside requests, so its pages show no board link. Its Greenhouse board, `job-boards.greenhouse.io/andurilindustries` (board name "Anduril Industries"), redirects to `https://www.anduril.com/open-roles`, a setting only the board's owner controls; both pages are cited.
+- The two boards add about 5,300 listings. Anduril's feed with descriptions is about 44 MB, so the feed limit is 64 MiB.

@@ -31,7 +31,7 @@ describe("official adapters", () => {
   it("preserves unknowns and doesn't use updated_at as posting date", () => {
     const j = normalize()[0];
     expect(j.remote).toBeNull(); expect(j.workplace).toBe("unknown"); expect(j.posted_at).toBeNull(); expect(j.salaries).toEqual([]); expect(j.countries).toEqual([]);
-    expect(j.locations).toEqual(["Boston; New York"]);
+    expect(j.locations).toEqual(["Boston", "New York"]);
   });
   it("rejects partial pagination and malformed records instead of closing jobs", () => {
     expect(() => adapters.greenhouse.normalize({ ...gh(), meta: { total: 2 } }, "employer", config)).toThrow();

@@ -121,11 +121,34 @@ openness_summary:
   source_ids: [ lattice-sdk-license, lattice-sdk-python-repo ]
   reviewed_at: 2026-10-02
 hiring_url: https://www.anduril.com/careers
+careers:
+  url: https://www.anduril.com/open-roles
+  enabled: true
+  source:
+    type: greenhouse
+    identifier: andurilindustries
+  posting_hosts: []
+  source_ids: [anduril-open-roles, anduril-greenhouse-board]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-10-02
+updated_at: 2026-10-16
 last_reviewed: 2026-10-02
 sources:
+  - id: anduril-open-roles
+    title: Open Roles | Anduril
+    url: https://www.anduril.com/open-roles
+    publisher: Anduril Industries
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
+  - id: anduril-greenhouse-board
+    title: Anduril Industries job board on Greenhouse (redirects to anduril.com/open-roles)
+    url: https://job-boards.greenhouse.io/andurilindustries
+    publisher: Anduril Industries
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: lattice-sdk-license
     title: Anduril Lattice Software Development Kit License Agreement (lattice-sdk-python LICENSE)
     url: https://raw.githubusercontent.com/anduril/lattice-sdk-python/master/LICENSE
