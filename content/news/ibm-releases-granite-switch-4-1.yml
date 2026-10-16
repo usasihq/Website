@@ -1,0 +1,42 @@
+slug: ibm-releases-granite-switch-4-1
+title: IBM releases Granite Switch 4.1 models combining chat, decisions, and speech-to-text under Apache 2.0
+event_date: 2026-10-14
+published_at: 2026-10-16
+category: release
+summary:
+  text: >-
+    IBM's Granite team published Granite Switch 4.1 in two sizes, granite-switch-4.1-8b and
+    granite-switch-4.1-30b, whose model cards give a release date of October 14, 2026 and an
+    Apache 2.0 license. The model cards describe each one as a modular model that composes a base
+    model (granite-4.1-8b or granite-4.1-30b), multiple adapters, and an encoder so that chat,
+    decision, safety-detection, and speech-to-text tasks are served from one endpoint. A Granite
+    blog post on Hugging Face dated October 15, 2026 names the bundled parts as a Decision aLoRA, a
+    Guardian aLoRA, and Granite-Speech-5.0-Turbo-CTC; the 8b model card says the speech component
+    supports English only. USASI has not tested these models.
+  source_ids: [granite-switch-4-1-8b-card, granite-switch-4-1-30b-card, granite-switch-4-1-blog]
+related_organizations: [ibm]
+related_artifacts: [granite]
+publication_status: published
+updated_at: 2026-10-16
+sources:
+  - id: granite-switch-4-1-8b-card
+    title: ibm-granite/granite-switch-4.1-8b model card
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-8b
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-14
+    accessed_at: 2026-10-16
+  - id: granite-switch-4-1-30b-card
+    title: ibm-granite/granite-switch-4.1-30b model card
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-30b
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-14
+    accessed_at: 2026-10-16
+  - id: granite-switch-4-1-blog
+    title: "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint"
+    url: https://huggingface.co/blog/ibm-granite/granite-switch-4-1
+    publisher: IBM Granite (Hugging Face blog)
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-16

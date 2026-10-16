@@ -1,0 +1,42 @@
+slug: meta-releases-muse-spark-open-open-weight-model
+title: Meta releases Muse Spark Open, an open-weight version of Muse Spark, under the Muse Model License
+event_date: 2026-10-15
+published_at: 2026-10-16
+category: release
+summary:
+  text: >-
+    On October 15, 2026 Meta released Muse Spark Open, which its developer blog describes as the
+    open-weight version of Muse Spark, trained for long-horizon agentic work such as coding and
+    customer service agents. The model card lists 816B total and 42B active parameters, a
+    context window of 1M tokens, text, image, video, and audio input, and text output; BF16 and
+    NVFP4 checkpoints are on Hugging Face, and downloading them requires accepting the license
+    conditions and submitting an access form. The weights are released under the Muse Model
+    License, which requires a visible "Built with Muse Spark Open" attribution, incorporates a
+    Usage Policy, and requires some large API providers to sign a separate agreement with Meta;
+    the license does not describe itself as open source. USASI has not tested this model.
+  source_ids: [meta-build-with-muse-spark-open, muse-spark-open-card, muse-spark-open-license]
+related_organizations: [meta]
+related_artifacts: [meta-muse]
+publication_status: published
+updated_at: 2026-10-16
+sources:
+  - id: meta-build-with-muse-spark-open
+    title: Build with Muse Spark Open
+    url: https://dev.meta.ai/resources/blog/build-with-muse-spark-open
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-16
+  - id: muse-spark-open-card
+    title: meta-models/Muse-Spark-Open-816B-A42B model card
+    url: https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-16
+  - id: muse-spark-open-license
+    title: Muse Model License (Muse Spark Open)
+    url: https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B/blob/main/LICENSE.md
+    publisher: Meta (Hugging Face)
+    kind: license
+    published_at: 2026-10-15
+    accessed_at: 2026-10-16
