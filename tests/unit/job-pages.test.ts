@@ -113,6 +113,9 @@ describe("job page HTML", () => {
     expect(html).not.toContain('"><img');
     expect(html).toContain("&lt;script&gt;alert(&quot;x&quot;)&lt;/script&gt;Engineer");
     expect(html).toContain('href="https://job-boards.greenhouse.io/acme/jobs/1"');
+    expect(html).toContain('href="/jobs/at/acme-ai/"');
+    expect(html).toContain('href="/jobs/"');
+    expect(html).toContain('href="/companies/acme-ai/"');
     expect(html).toContain("Not a U.S. government website");
     expect(html).toContain('<link rel="canonical" href="https://unitedstatesofamericasuperintelligence.com/jobs/at/acme-ai/');
     // The JSON-LD cannot close its own script element.

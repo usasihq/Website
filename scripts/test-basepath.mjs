@@ -17,6 +17,7 @@ const hadOut = fs.existsSync("out");
 if (hadOut) fs.renameSync("out", ".out-main-tmp");
 try {
   run("npx next build", { NEXT_PUBLIC_BASE_PATH: BASE });
+  run("npx tsx scripts/job-pages.ts", { NEXT_PUBLIC_BASE_PATH: BASE });
   run("node scripts/postbuild.mjs", { NEXT_PUBLIC_BASE_PATH: BASE });
   fs.rmSync(".out-basepath", { recursive: true, force: true });
   fs.renameSync("out", ".out-basepath");
