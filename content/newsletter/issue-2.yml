@@ -1,0 +1,56 @@
+# The USASI weekly, issue 2. Links are site paths; the email uses absolute URLs.
+number: 2
+slug: issue-2
+subject: "Issue 2: Muse Spark Open, Granite Switch 4.1, and a page for every job"
+preview: "What changed in the USASI catalog from October 12 to 16, 2026. Every item links to its sources."
+sent_at: 2026-10-16
+covers:
+  from: 2026-10-12
+  to: 2026-10-16
+intro:
+  - "Welcome to issue 2 of the USASI weekly."
+  - "[USASI](/) is an independent catalog of U.S. AI organizations and U.S.-led open models and tools. Each issue sums up what changed on the site. Nothing in it is new: every item was already published on the site, and each link leads to a page that cites its sources. This issue covers October 12 to 16, 2026, plus a few items published on October 11 after issue 1 went out."
+sections:
+  - heading: Open models
+    items:
+      - "**Muse Spark Open.** [Meta released](/news/meta-releases-muse-spark-open-open-weight-model/) an open-weight version of Muse Spark under its own Muse Model License, which requires a \"Built with Muse Spark Open\" credit and does not call itself open source. Downloads require accepting the license and an access form."
+      - "**Granite Switch 4.1.** [IBM published](/news/ibm-releases-granite-switch-4-1/) 8b and 30b models under Apache 2.0 that serve chat, decisions, safety detection, and English speech-to-text from one endpoint."
+      - "**LFM2.5-24B-A2B.** [Liquid AI released](/news/liquid-ai-releases-lfm2-5-24b-a2b/) open weights for a mixture-of-experts reasoning model built for on-device agents, the last model in its LFM2.5 family."
+      - "**Encoders and decision models.** [Meta published MetaEncoder-30B](/news/meta-releases-metaencoder-30b/), a gated Apache 2.0 multimodal encoder, and [Cloudflare released Clef-omni](/news/cloudflare-releases-clef-omni/), an Apache 2.0 decision model that also accepts audio and video."
+      - "**HiRO-ACEv2.** [Ai2 released](/news/ai2-releases-hiro-acev2-climate-downscaling-model/) an updated climate emulator and a 3 km downscaling model for research and educational use under Apache 2.0."
+  - heading: Tool releases
+    items:
+      - "[Open WebUI 0.12.0](/news/open-webui-0-12-0-released/): Realtime voice calls and authenticator-app sign-in."
+      - "[DSPy 3.4.1](/news/dspy-3-4-1-makes-instructionproposer-gepa-default/): GEPA's structured InstructionProposer is now the default, so results can differ from 3.4.0."
+      - "[OpenHands 1.27.0](/news/openhands-1-27-0-adds-opencode-and-pi-acp-agents/): OpenCode and Pi as built-in ACP agents."
+      - "[Unsloth](/news/unsloth-adds-browser-use-and-text-diffusion-training/): browser use that asks before signing in, posting, or buying, and text-diffusion LLM training."
+      - "[ONNX Runtime CUDA Plugin EP 0.3.0](/news/onnx-runtime-cuda-plugin-ep-0-3-0-released/): sparse attention and INT2 QMoE support."
+      - "[Prime Agent](/news/prime-intellect-rewrites-prime-agent-in-rust/): rewritten in Rust, with Windows support in beta."
+    note: "USASI has not tested any of these releases."
+  - heading: Hosted models and policy
+    items:
+      - "[Gemini 4 Argon](/news/google-makes-gemini-4-argon-available-to-developers-and-subscribers/) is available on the paid Gemini API tier and to Google AI Pro and Ultra subscribers. Google's posts do not mention a release of weights."
+      - "[Meta announced Muse Wonder and Muse Wonder Full](/news/meta-releases-muse-wonder-and-muse-wonder-full/) through its Model API and Muse Code, with no license or weights named."
+      - "[Anthropic gave a METR team employee-like access](/news/anthropic-gives-metr-employee-like-access-for-risk-assessments/) for risk assessments that METR will publish. Anthropic says it cannot veto publication, only require narrow redactions. The post does not include METR's assessments."
+      - "Also from Anthropic: [election safeguards for the 2026 midterms](/news/anthropic-describes-election-safeguards-for-2026-us-midterms/), a [Singapore office and an MOU with Singapore's digital ministry](/news/anthropic-opens-singapore-office-and-signs-mou-with-singapore/), and [dynamic workflows in Claude Managed Agents](/news/anthropic-managed-agents-dynamic-workflows-beta/), in beta."
+      - "[A White House fact sheet](/news/white-house-science-summit-genesis-consortium-partners/) names eleven industry partners in the Genesis Mission Consortium."
+  - heading: Companies and infrastructure
+    items:
+      - "[Character.AI began a voluntary Chapter 11 process](/news/character-ai-begins-chapter-11-sale-process/) to pursue a court-supervised sale."
+      - "[The SEC declared the Agility Robotics and Churchill Capital Corp XI Form S-4 effective](/news/agility-robotics-churchill-s4-declared-effective/); shareholders vote November 2, and the deal has not closed."
+      - "[The Deno team is joining Cloudflare](/news/deno-team-joins-cloudflare/); Deno says the runtime stays open source."
+      - "NVIDIA [contributed Vera Rubin rack designs to the Open Compute Project](/news/nvidia-contributes-vera-rubin-designs-to-ocp/) and, with Cisco, [announced plans for USFP](/news/nvidia-and-cisco-announce-usfp-optics-form-factor/), a pluggable optics form factor with an open specification."
+      - "[Scale AI released DistressBench](/news/scale-ai-releases-distressbench/), a benchmark of crisis support in language models."
+  - heading: New on the site
+    items:
+      - "**[People](/people/):** a directory with a page for every profile of the founders, engineers, researchers, and open-source maintainers connected to the catalog, each from primary sources and checked by a separate fact-checking pass. [Linus Torvalds](/people/linus-torvalds/) is among the newest."
+      - "**[Jobs](/jobs/):** a shareable page for every employer, linked from its organization page, and a page for every current listing with the employer's description and a link to apply. Search now understands abbreviations like ML, SWE, and PM, and listings refresh twice a day."
+      - "**[The State of American AI](/report/):** a monthly report computed from the catalog and the Jobs data. The [October 2026 edition](/report/2026-10/) is the first."
+      - "**Reference:** a page for every document in the [U.S. AI policy tracker](/policy/), and [local AI by memory](/find/memory/) pages listing documented setups that fit 8 to 24 GB of graphics memory or an Apple silicon Mac."
+      - "**Also new:** [People Behind Big SI](/big-si/), [AI explained for kids](/kids/), search from any page, [RSS feeds](/feeds/) for every organization and model, and a [badge](/badges/) for listed projects."
+  - heading: Corrections
+    intro: "None this week. If you spot an error, reply to this email or use the [corrections page](/contribute/#corrections)."
+closing:
+  - "New here? [Start here](/start/) explains how the catalog works. This issue has no sponsor."
+web_url: https://usasihq.beehiiv.com/p/issue-2-muse-spark-open-granite-switch-4-1-and-a-page-for-every-job
+publication_status: published
