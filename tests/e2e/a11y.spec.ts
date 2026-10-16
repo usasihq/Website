@@ -83,7 +83,11 @@ test("filtered directory state stays accessible", async ({ page }) => {
 
 test("expanded comparison and directory controls stay accessible", async ({ page }) => {
   await page.goto("/matrix/?orgs=openai,ai2&detail=1");
+  // Let late content (the footer's build date) settle so target sizes are measured on the final layout.
+  await page.waitForLoadState("networkidle");
   await page.getByText("Column definitions and counting rules", { exact: true }).click();
+  // Opening the section scrolls the page; measure targets with nothing under the sticky header.
+  await page.evaluate(() => window.scrollTo(0, 0));
   let results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
   expect(results.violations.map((v) => v.id)).toEqual([]);
   await page.goto("/open/?q=gemma");

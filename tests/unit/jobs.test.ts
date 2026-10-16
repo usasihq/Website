@@ -18,6 +18,7 @@ describe("careers validation and trust boundary", () => {
     expect(Careers.safeParse({ ...config, source: { type: "workday", identifier: "x" } }).success).toBe(false);
     expect(Careers.safeParse({ ...config, source: { type: "greenhouse", identifier: "../x" } }).success).toBe(false);
     expect(Careers.safeParse({ ...config, source: { type: "manual", note: "Manual review" } }).success).toBe(false);
+    expect(Careers.safeParse({ ...config, source: { type: "lever", identifier: "acme" } }).success).toBe(true);
     expect(Careers.safeParse({ ...config, source: { type: "usajobs", identifier: "ai" } }).success).toBe(true);
   });
   it("rejects hostile tenant/host and keeps identity parameters", () => {

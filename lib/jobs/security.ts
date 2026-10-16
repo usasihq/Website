@@ -6,6 +6,7 @@ export class FeedError extends Error {
 export function endpoint(c: Careers): string {
   if (c.source.type === "greenhouse") return `https://boards-api.greenhouse.io/v1/boards/${c.source.identifier}/jobs`;
   if (c.source.type === "ashby") return `https://api.ashbyhq.com/posting-api/job-board/${c.source.identifier}?includeCompensation=true`;
+  if (c.source.type === "lever") return `https://api.lever.co/v0/postings/${c.source.identifier}?mode=json`;
   if (c.source.type === "usajobs") return "https://data.usajobs.gov/api/search";
   throw new FeedError("payload");
 }
@@ -15,6 +16,10 @@ export function feedUrl(c: Careers): string {
 }
 const USAJOBS_POSTING = /^\/GetJob\/ViewDetails\/[A-Za-z0-9_-]+\/?$/i;
 export function postingUrl(value: string, c: Careers): string {
+  // An employer-owned posting host (an editorial allow-list) may be linked over
+  // plain http in the feed; its pages are served over https, so upgrade it.
+  const plainHttp = /^http:\/\/([^/:?#]+)/i.exec(value);
+  if (plainHttp && c.posting_hosts.includes(plainHttp[1].toLowerCase())) value = `https://${value.slice(7)}`;
   if (!safeJobUrl(value)) throw new FeedError("unsafe-url");
   const u = new URL(value);
   const type = c.source.type;
@@ -23,7 +28,7 @@ export function postingUrl(value: string, c: Careers): string {
       if (!USAJOBS_POSTING.test(u.pathname)) throw new FeedError("unsafe-url");
     } else if (!c.posting_hosts.includes(u.hostname)) throw new FeedError("unsafe-url");
   } else {
-    const ats = type === "greenhouse" ? ["boards.greenhouse.io", "job-boards.greenhouse.io"] : type === "ashby" ? ["jobs.ashbyhq.com"] : [];
+    const ats = type === "greenhouse" ? ["boards.greenhouse.io", "job-boards.greenhouse.io"] : type === "lever" ? ["jobs.lever.co"] : type === "ashby" ? ["jobs.ashbyhq.com"] : [];
     const tenant = "identifier" in c.source ? c.source.identifier : "";
     if (ats.includes(u.hostname)) {
       if (decodeURIComponent(u.pathname.split("/")[1]) !== tenant) throw new FeedError("unsafe-url");

@@ -230,14 +230,14 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
             <ul className="mt-4 flex flex-wrap gap-2">
               {parent ? (
                 <li>
-                  <Link prefetch={false} href={parent.href} className="badge min-h-11 px-3 hover:border-cyan">
+                  <Link prefetch={false} href={parent.href} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
                     All of {stateDisplayName(page.state!)}
                   </Link>
                 </li>
               ) : null}
               {cities.map((c) => (
                 <li key={c.path}>
-                  <Link prefetch={false} href={c.path} className="badge min-h-11 px-3 hover:border-cyan">
+                  <Link prefetch={false} href={c.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
                     {c.name} <span className="text-muted">({n(c.count)})</span>
                   </Link>
                 </li>
@@ -274,7 +274,7 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {page.departments.slice(0, 24).map((d) => (
                     <li key={d.name}>
-                      <Link prefetch={false} href={d.href} className="badge min-h-11 px-3 hover:border-cyan">
+                      <Link prefetch={false} href={d.href} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
                         {d.name} <span className="text-muted">({n(d.count)})</span>
                       </Link>
                     </li>
@@ -328,7 +328,7 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
             <ul className="mt-4 flex flex-wrap gap-2">
               {roles.map((r) => (
                 <li key={r.path}>
-                  <Link prefetch={false} href={r.path} className="badge min-h-11 px-3 hover:border-cyan">
+                  <Link prefetch={false} href={r.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
                     {r.name} <span className="text-muted">({n(r.count)})</span>
                   </Link>
                 </li>
@@ -379,7 +379,7 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
             <ul className="mt-4 flex flex-wrap gap-2">
               {companies.map((c) => (
                 <li key={c.path}>
-                  <Link prefetch={false} href={c.path} className="badge min-h-11 px-3 hover:border-cyan">
+                  <Link prefetch={false} href={c.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
                     {c.name.replace(/^Jobs at /, "")} <span className="text-muted">({n(c.count)})</span>
                   </Link>
                 </li>
@@ -395,13 +395,13 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
           <ul className="mt-4 flex flex-wrap gap-2">
             {others.map((o) => (
               <li key={o.path}>
-                <Link prefetch={false} href={o.path} className="badge min-h-11 px-3 hover:border-cyan">
+                <Link prefetch={false} href={o.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
                   {o.name} <span className="text-muted">({n(o.count)})</span>
                 </Link>
               </li>
             ))}
             <li>
-              <Link prefetch={false} href="/jobs/" className="badge min-h-11 px-3 hover:border-cyan">
+              <Link prefetch={false} href="/jobs/" className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
                 All jobs
               </Link>
             </li>

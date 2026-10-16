@@ -14,22 +14,24 @@ const text = (max = 240) => z.string().trim().min(1).max(max).refine(v => !/[<>\
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const instant = z.iso.datetime({ offset: true });
 const identifier = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
-export const AUTOMATED_SOURCES = ["greenhouse", "ashby", "usajobs"] as const;
+export const AUTOMATED_SOURCES = ["greenhouse", "ashby", "lever", "usajobs"] as const;
 export type AutomatedSource = (typeof AUTOMATED_SOURCES)[number];
 export const isAutomatedSource = (type: string): type is AutomatedSource =>
   (AUTOMATED_SOURCES as readonly string[]).includes(type);
 export const JOB_SOURCE_LABELS: Record<AutomatedSource, string> = {
   greenhouse: "Greenhouse",
   ashby: "Ashby",
+  lever: "Lever",
   usajobs: "USAJOBS",
 };
-export const JOB_ID = z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|usajobs):[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$/);
+export const JOB_ID = z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|lever|usajobs):[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$/);
 export const Careers = z.object({
   url: JobUrl,
   enabled: z.boolean(),
   source: z.discriminatedUnion("type", [
     z.object({ type: z.literal("greenhouse"), identifier }).strict(),
     z.object({ type: z.literal("ashby"), identifier }).strict(),
+    z.object({ type: z.literal("lever"), identifier }).strict(),
     z.object({ type: z.literal("usajobs"), identifier }).strict(),
     z.object({ type: z.literal("manual"), note: text(400) }).strict(),
     z.object({ type: z.literal("unsupported"), note: text(400) }).strict(),

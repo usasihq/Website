@@ -188,8 +188,13 @@ test.describe("static hosting behavior", () => {
     // One request per sitemap page (500+), so allow more than the default 30 s.
     test.setTimeout(180_000);
     const sitemap = await (await request.get("/sitemap.xml")).text();
-    const paths = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
-    expect(paths.length).toBeGreaterThan(10);
+    const all = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
+    expect(all.length).toBeGreaterThan(10);
+    // Thousands of job pages share one template: check every other page and an even sample of 60 of them.
+    const isJob = (p: string) => /^\/jobs\/at\/[^/]+\/[^/]+\/$/.test(p);
+    const jobs = all.filter(isJob);
+    const step = Math.max(1, Math.floor(jobs.length / 60));
+    const paths = [...all.filter((p) => !isJob(p)), ...jobs.filter((_, i) => i % step === 0)];
     for (const path of paths) {
       const html = await (await request.get(path)).text();
       // Pages for children never ask for tips.

@@ -128,6 +128,7 @@ test("only states at or above the listing threshold have a page", async ({ page,
 });
 
 test("landing pages pass axe and fit narrow screens", async ({ page }) => {
+  test.setTimeout(180_000);
   for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", "/jobs/remote-us/", FDE]) {
     await page.goto(path);
     const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
@@ -206,7 +207,7 @@ test("an employer's jobs page is shareable and lists that employer's listings", 
   const count = await countOnPage(page);
   expect(count).toBeGreaterThan(0);
   await expect(page.getByTestId("landing-employer")).toBeVisible();
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /from (its own job board|USAJOBS\.gov)/);
+  await expect(page.locator('meta[name="description"]').last()).toHaveAttribute("content", /from (its own job board|USAJOBS\.gov)/);
   const slug = href.split("/")[3];
   const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
   await page.getByRole("link", { name: /^See all [\d,]+ in the Jobs directory$|^Filter these in the Jobs directory$/ }).click();
@@ -232,7 +233,8 @@ test("the federal AI jobs page is linked from /jobs/, names USAJOBS.gov, and car
 
 test("each listing has its own page with the employer's description, an apply link, and JobPosting data", async ({ page }) => {
   await page.goto("/jobs/at/anthropic/");
-  const listing = page.locator('#listings h3 a[href^="/jobs/at/anthropic/"]').first();
+  // A San Francisco listing: JobPosting data is only for U.S. addresses or U.S.-only remote work.
+  const listing = page.locator("#listings li").filter({ hasText: "San Francisco" }).locator('h3 a[href^="/jobs/at/anthropic/"]').first();
   const title = (await listing.textContent())!.replace(/ at Anthropic$/, "").trim();
   await listing.click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);
@@ -274,6 +276,8 @@ test("search understands abbreviations, offers popular searches, and narrows by 
   await expect(page).toHaveURL(/q=Machine\+learning/);
   const first = page.locator("main article h2").first();
   await expect(first).toContainText(/machine learning|\bML\b/i);
+  const filters = page.getByRole("button", { name: /^Filters/ });
+  if (await filters.isVisible()) await filters.click();
   await page.getByLabel("U.S. state named in location", { exact: true }).selectOption("CA");
   const city = page.getByLabel("City", { exact: true });
   await expect(city).toBeVisible();

@@ -15,6 +15,7 @@ import type { Description, Run } from "./description";
 import type { JobPage } from "./job-pages";
 import { jobPostingLd, jobSnippet } from "./job-pages";
 import { DEFAULT_JOB_FILTERS, serializeJobFilters } from "./search";
+import { JOB_ROLES } from "./roles";
 
 export type PageShell = {
   /** The <html> element's class (font variables), copied from a built page. */
@@ -55,6 +56,15 @@ function description(d: Description): string {
 
 const PERIOD: Record<string, string> = { hour: "per hour", day: "per day", week: "per week", month: "per month", year: "per year" };
 const money = (v: number, currency: string) => new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 0 }).format(v);
+/** One pay line for a similar-job card: "$180K–$250K a year" for U.S. dollars, otherwise the full range. */
+function payLine(s: JobPage["job"]["salaries"][number]): string {
+  const per = PERIOD[s.period] ?? `per ${s.period}`;
+  if (s.currency === "USD" && s.period === "year") {
+    const k = (n: number) => `$${Math.round(n / 1000)}K`;
+    return s.min !== null && s.max !== null ? `${k(s.min)}–${k(s.max)} a year` : `${k((s.min ?? s.max)!)} a year`;
+  }
+  return s.min !== null && s.max !== null ? `${money(s.min, s.currency)} to ${money(s.max, s.currency)} ${per}` : `${money((s.min ?? s.max)!, s.currency)} ${per}`;
+}
 const shortOrg = (name: string) => name.replace(/\s*\([^)]*\)\s*$/, "").trim();
 
 /** The page title: role, employer, and first location when it fits. */
@@ -81,10 +91,10 @@ function supportPanel(): string {
   }</div></div><div class="flex flex-col gap-3 md:items-end">${actions}<a href="${asset("/support/")}" class="link inline-flex items-center gap-1 text-[0.9375rem]">About supporting this project<span aria-hidden="true">&nbsp;→</span></a></div></div></div></div></section>`;
 }
 
-export function renderJobPage(p: JobPage, shell: PageShell): string {
+export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] = []): string {
   const { job, org } = p;
   const name = shortOrg(org.name);
-  const board = job.source_type === "greenhouse" ? "Greenhouse" : job.source_type === "usajobs" ? "USAJOBS" : "Ashby";
+  const board = ({ greenhouse: "Greenhouse", ashby: "Ashby", lever: "Lever", usajobs: "USAJOBS" } as const)[job.source_type];
   const federal = job.source_type === "usajobs";
   const apply = job.apply_url ?? job.official_url;
   const applyLabel = federal ? "Apply on USAJOBS.gov" : `Apply on ${esc(name)}&rsquo;s site`;
@@ -182,7 +192,7 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
   }</p>
 </div></header>
 <div class="container-page grid gap-10 py-10 sm:py-12">
-<p class="max-w-3xl rounded-xl border border-line p-4 text-sm text-muted" role="note">${job.source_type === "usajobs" ? `This posting comes from USAJOBS.gov, the U.S. federal government&rsquo;s official employment site.${job.department ? ` The hiring agency is ${esc(job.department)}.` : ""} USASI checks USAJOBS and removes this page once the announcement closes. The description below is the agency&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.` : `This posting comes from ${esc(org.name)}&rsquo;s own ${board} job board. USASI checks that board every day and removes this page once the employer closes the posting. The description below is ${esc(name)}&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.`} <a href="${asset("/methodology/#jobs")}" class="link">How jobs are collected</a>.</p>
+<p class="max-w-3xl rounded-xl border border-line p-4 text-sm text-muted" role="note">${job.source_type === "usajobs" ? `This posting comes from USAJOBS.gov, the U.S. federal government&rsquo;s official employment site.${job.department ? ` The hiring agency is ${esc(job.department)}.` : ""} USASI checks USAJOBS and removes this page once the announcement closes. The description below is the agency&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.` : `This posting comes from ${esc(org.name)}&rsquo;s own ${board} job board. USASI checks that board twice a day and removes this page once the employer closes the posting. The description below is ${esc(name)}&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.`} <a href="${asset("/methodology/#jobs")}" class="link">How jobs are collected</a>.</p>
 <section aria-labelledby="description-heading">
 <h2 id="description-heading" class="text-xl font-semibold text-text sm:text-2xl">Job description</h2>
 <div class="mt-4 max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-[#d5def2]" data-testid="job-description">
@@ -190,11 +200,18 @@ ${p.description ? description(p.description) : `<p class="text-muted">The full d
 </div>
 <p class="mt-8">${external(apply, applyLabel, "btn btn-secondary")}</p>
 </section>
+${similar.length ? `<section aria-labelledby="similar-jobs-heading" class="border-t border-line pt-8" data-testid="similar-jobs">
+<h2 id="similar-jobs-heading" class="text-xl font-semibold text-text sm:text-2xl">Similar jobs</h2>
+<ul class="mt-4 grid gap-3 md:grid-cols-2">${similar
+    .map((q) => `<li class="card p-4"><p class="text-sm text-muted">${esc(shortOrg(q.org.name))}</p><p class="mt-1 font-semibold text-text"><a href="${esc(asset(q.path))}" class="hover:underline hover:decoration-cyan hover:underline-offset-4">${esc(q.job.title)}</a></p><p class="mt-1 text-sm text-muted [overflow-wrap:anywhere]">${esc(q.job.locations.slice(0, 2).join(" · ") || "Location not supplied")}</p>${q.job.salaries[0] ? `<p class="mt-1 text-sm text-text">${esc(payLine(q.job.salaries[0]))}</p>` : ""}</li>`)
+    .join("")}</ul>
+</section>` : ""}
 <nav aria-labelledby="more-jobs-heading" class="border-t border-line pt-6">
 <h2 id="more-jobs-heading" class="eyebrow">More jobs</h2>
 <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
 <li><a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">${federal ? "All federal AI jobs" : `All jobs at ${esc(name)}`}</a></li>
 ${sameDepartment ? `<li><a href="${esc(asset(sameDepartment))}" class="link">${esc(job.department!)} jobs at ${esc(name)}</a></li>` : ""}
+${JOB_ROLES.filter((r) => r.test(job.title)).slice(0, 2).map((r) => `<li><a href="${asset(`/jobs/role/${r.slug}/`)}" class="link">All ${esc(r.h1)}</a></li>`).join("")}
 <li><a href="${asset("/jobs/")}" class="link">Search all jobs</a></li>
 <li><a href="${asset(`/companies/${esc(org.slug)}/`)}" class="link">About ${esc(name)}</a></li>
 <li><a href="${asset("/contribute/#corrections")}" class="link">Report a problem with this listing</a></li>
