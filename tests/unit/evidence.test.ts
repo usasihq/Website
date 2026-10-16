@@ -46,7 +46,7 @@ describe("component evidence", () => {
   });
   it("offers an account-free correction with the entry URL and evidence fields", () => {
     const html = renderToStaticMarkup(createElement(EntryActions, { contentPath: "content/organizations/openai.yml", title: "OpenAI" }));
-    expect(html).toContain("mailto:usasihq@gmail.com");
+    expect(html).toContain("mailto:usasi@usasihq.com");
     const decoded = decodeURIComponent(html);
     expect(decoded).toContain("https://unitedstatesofamericasuperintelligence.com/companies/openai/");
     expect(decoded).toContain("Disputed field:");

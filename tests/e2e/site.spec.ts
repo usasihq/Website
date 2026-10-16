@@ -245,7 +245,7 @@ test.describe("contact and profiles", () => {
   test("footer lists the contact email and official profiles as plain links", async ({ page }) => {
     await page.goto("/");
     const contact = page.getByRole("list", { name: "USASI contact and profiles" });
-    await expect(contact.getByRole("link", { name: "usasihq@gmail.com" })).toHaveAttribute("href", "mailto:usasihq@gmail.com");
+    await expect(contact.getByRole("link", { name: "usasi@usasihq.com" })).toHaveAttribute("href", "mailto:usasi@usasihq.com");
     for (const href of ["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ"]) {
       await expect(contact.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
@@ -273,12 +273,12 @@ test.describe("contact and profiles", () => {
   test("security.txt and structured data are published", async ({ request, page }) => {
     const sec = await request.get("/.well-known/security.txt");
     expect(sec.status()).toBe(200);
-    expect(await sec.text()).toContain("Contact: mailto:usasihq@gmail.com");
+    expect(await sec.text()).toContain("Contact: mailto:usasi@usasihq.com");
     await page.goto("/");
     const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
     const org = ld["@graph"].find((n: { "@type": string }) => n["@type"] === "Organization");
     expect(org.sameAs).toEqual(["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ"]);
-    expect(org.email).toBe("usasihq@gmail.com");
+    expect(org.email).toBe("usasi@usasihq.com");
   });
 });
 

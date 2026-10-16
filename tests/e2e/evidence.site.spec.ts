@@ -30,7 +30,7 @@ test("representative profiles and component evidence are accessible and wrap at 
     await expect(page.getByRole("navigation", { name: "On this company page" })).toBeVisible();
     const email = page.getByRole("link", { name: /Email a correction/ });
     const href = await email.getAttribute("href");
-    expect(href).toMatch(/^mailto:usasihq@gmail.com\?/);
+    expect(href).toMatch(/^mailto:usasi@usasihq.com\?/);
     expect(decodeURIComponent(href!)).toContain(`/companies/${slug}/`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();

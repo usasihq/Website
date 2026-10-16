@@ -46,7 +46,7 @@ const RAW_CONFIG = {
     tipUrl: "https://buymeacoffee.com/usasi" as string | null,
     providerLabel: "Buy Me a Coffee" as string | null,
     amountLinks: [] as Array<{ label: string; url: string }>,
-    contactUrl: "mailto:usasihq@gmail.com" as string | null,
+    contactUrl: "mailto:usasi@usasihq.com" as string | null,
   },
   newsletter: {
     enabled: true,
@@ -57,7 +57,7 @@ const RAW_CONFIG = {
   },
   homepageSponsor: null as HomepageSponsorConfig | null,
   contact: {
-    email: "usasihq@gmail.com" as string | null,
+    email: "usasi@usasihq.com" as string | null,
   },
   socials: [
     // Owner decision 2026-10-12: the same three profiles on every site the owner runs.
