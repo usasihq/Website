@@ -15,7 +15,7 @@ const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const instant = z.iso.datetime({ offset: true });
 // Board names may contain a period (Ashby boards such as "nomic.ai").
 const identifier = z.string().regex(/^[A-Za-z0-9_-][A-Za-z0-9._-]{0,99}$/);
-export const AUTOMATED_SOURCES = ["greenhouse", "ashby", "lever", "workable", "smartrecruiters", "usajobs"] as const;
+export const AUTOMATED_SOURCES = ["greenhouse", "ashby", "lever", "workable", "smartrecruiters", "workday", "usajobs"] as const;
 export type AutomatedSource = (typeof AUTOMATED_SOURCES)[number];
 export const isAutomatedSource = (type: string): type is AutomatedSource =>
   (AUTOMATED_SOURCES as readonly string[]).includes(type);
@@ -25,9 +25,10 @@ export const JOB_SOURCE_LABELS: Record<AutomatedSource, string> = {
   lever: "Lever",
   workable: "Workable",
   smartrecruiters: "SmartRecruiters",
+  workday: "Workday",
   usajobs: "USAJOBS",
 };
-export const JOB_ID = z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|lever|workable|smartrecruiters|usajobs):[A-Za-z0-9._-]+:[A-Za-z0-9_-]+$/);
+export const JOB_ID = z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|lever|workable|smartrecruiters|workday|usajobs):[A-Za-z0-9._-]+:[A-Za-z0-9_-]+$/);
 export const Careers = z.object({
   url: JobUrl,
   enabled: z.boolean(),
@@ -37,6 +38,8 @@ export const Careers = z.object({
     z.object({ type: z.literal("lever"), identifier }).strict(),
     z.object({ type: z.literal("workable"), identifier }).strict(),
     z.object({ type: z.literal("smartrecruiters"), identifier }).strict(),
+    // Workday: "<tenant>.<wdN>.<site>", for the career site https://<tenant>.<wdN>.myworkdayjobs.com/<site>.
+    z.object({ type: z.literal("workday"), identifier: identifier.regex(/^[a-z0-9-]+\.wd[0-9]{1,3}\.[A-Za-z0-9_-]+$/) }).strict(),
     z.object({ type: z.literal("usajobs"), identifier }).strict(),
     z.object({ type: z.literal("manual"), note: text(400) }).strict(),
     z.object({ type: z.literal("unsupported"), note: text(400) }).strict(),

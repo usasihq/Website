@@ -171,3 +171,33 @@ describe("Workable and SmartRecruiters adapters", () => {
     expect(Careers.safeParse({ ...cfg("workable", "x"), source: { type: "ashby", identifier: ".hidden" } }).success).toBe(false);
   });
 });
+
+describe("Workday adapter", () => {
+  const c = { url: "https://acme.wd5.myworkdayjobs.com/External", enabled: true, source: { type: "workday" as const, identifier: "acme.wd5.External" }, posting_hosts: [], source_ids: ["x"], reviewed_at: "2026-10-16" };
+  const posting = { title: "Senior GPU Engineer", externalPath: "/job/US-CA-Santa-Clara/Senior-GPU-Engineer_JR1", locationsText: "2 Locations", bulletFields: ["JR1"] };
+  it("uses cached details, builds the career-site link, and ignores location counts", async () => {
+    const { adapters } = await import("@/lib/jobs/adapters");
+    const meta = { "Senior-GPU-Engineer_JR1": { locations: ["US, CA, Santa Clara", "US, TX, Austin"], country: "US", startDate: "2026-10-01", timeType: "Full time", reqId: "JR1", remote: false } };
+    const [row] = adapters.workday.rows({ postings: [posting], meta, details: { "Senior-GPU-Engineer_JR1": "<p>Build GPUs</p>" } }, "acme", c);
+    expect(row.job.id).toBe("acme:workday:acme.wd5.External:Senior-GPU-Engineer_JR1");
+    expect(row.job.official_url).toBe("https://acme.wd5.myworkdayjobs.com/External/job/US-CA-Santa-Clara/Senior-GPU-Engineer_JR1");
+    expect(row.job.locations).toEqual(["US, CA, Santa Clara", "US, TX, Austin"]);
+    expect(row.job.employment_type).toBe("full-time");
+    expect(row.job.posted_at).toBe("2026-10-01T00:00:00.000Z");
+    expect(row.html).toBe("<p>Build GPUs</p>");
+    const [bare] = adapters.workday.rows({ postings: [posting], meta: {}, details: {} }, "acme", c);
+    expect(bare.job.locations).toEqual([]);
+    expect(bare.html).toBeUndefined();
+  });
+  it("rejects links off the employer's Workday host or outside /<site>/job/", async () => {
+    const { postingUrl } = await import("@/lib/jobs/security");
+    expect(() => postingUrl("https://evil.wd5.myworkdayjobs.com/External/job/x", c)).toThrow();
+    expect(() => postingUrl("https://acme.wd5.myworkdayjobs.com/Other/job/x", c)).toThrow();
+    expect(postingUrl("https://acme.wd5.myworkdayjobs.com/External/job/x?source=li", c)).toBe("https://acme.wd5.myworkdayjobs.com/External/job/x");
+  });
+  it("accepts only <tenant>.<wdN>.<site> identifiers", async () => {
+    const { Careers } = await import("@/lib/jobs/schema");
+    expect(Careers.safeParse(c).success).toBe(true);
+    expect(Careers.safeParse({ ...c, source: { type: "workday", identifier: "acme.External" } }).success).toBe(false);
+  });
+});

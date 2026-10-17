@@ -55,7 +55,7 @@ test("organization jobs and no-source states are distinct", async ({ page }) => 
   await page.getByRole("link", {name:"All OpenAI jobs"}).click();
   await expect(page).toHaveURL(/\/jobs\/at\/openai\/$/);
   await expect(page.getByRole("heading", {level:1})).toHaveText("Jobs at OpenAI");
-  await page.goto("/companies/nvidia/");
+  await page.goto("/companies/google/");
   await expect(page.getByText("Automated job coverage is not configured for this organization.")).toBeVisible();
 });
 test("malformed parameters and salary unit prerequisite are safe", async ({page}) => {
