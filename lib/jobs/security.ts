@@ -7,6 +7,8 @@ export function endpoint(c: Careers): string {
   if (c.source.type === "greenhouse") return `https://boards-api.greenhouse.io/v1/boards/${c.source.identifier}/jobs`;
   if (c.source.type === "ashby") return `https://api.ashbyhq.com/posting-api/job-board/${c.source.identifier}?includeCompensation=true`;
   if (c.source.type === "lever") return `https://api.lever.co/v0/postings/${c.source.identifier}?mode=json`;
+  if (c.source.type === "workable") return `https://apply.workable.com/api/v1/widget/accounts/${c.source.identifier}?details=true`;
+  if (c.source.type === "smartrecruiters") return `https://api.smartrecruiters.com/v1/companies/${c.source.identifier}/postings`;
   if (c.source.type === "usajobs") return "https://data.usajobs.gov/api/search";
   throw new FeedError("payload");
 }
@@ -28,7 +30,14 @@ export function postingUrl(value: string, c: Careers): string {
       if (!USAJOBS_POSTING.test(u.pathname)) throw new FeedError("unsafe-url");
     } else if (!c.posting_hosts.includes(u.hostname)) throw new FeedError("unsafe-url");
   } else {
-    const ats = type === "greenhouse" ? ["boards.greenhouse.io", "job-boards.greenhouse.io"] : type === "lever" ? ["jobs.lever.co"] : type === "ashby" ? ["jobs.ashbyhq.com"] : [];
+    // Workable's public posting links are apply.workable.com/j/<shortcode>, with no account in the path.
+    if (type === "workable" && u.hostname === "apply.workable.com") {
+      if (!/^\/j\/[A-Za-z0-9]{4,20}(\/apply)?\/?$/.test(u.pathname)) throw new FeedError("unsafe-url");
+      u.hash = "";
+      u.search = "";
+      return u.href;
+    }
+    const ats = type === "greenhouse" ? ["boards.greenhouse.io", "job-boards.greenhouse.io"] : type === "lever" ? ["jobs.lever.co"] : type === "ashby" ? ["jobs.ashbyhq.com"] : type === "smartrecruiters" ? ["jobs.smartrecruiters.com"] : [];
     const tenant = "identifier" in c.source ? c.source.identifier : "";
     if (ats.includes(u.hostname)) {
       if (decodeURIComponent(u.pathname.split("/")[1]) !== tenant) throw new FeedError("unsafe-url");
@@ -65,10 +74,14 @@ export async function readJsonBody(response: Response): Promise<unknown> {
 /** Fixed public ATS hosts, no redirects, credentials, cookies, custom URL, or retries. */
 export async function fetchFeed(c: Careers, fetcher: typeof fetch = fetch): Promise<unknown> {
   if (!isAutomatedSource(c.source.type) || c.source.type === "usajobs") throw new FeedError("payload");
+  return fetchJson(feedUrl(c), fetcher);
+}
+/** One bounded JSON request to a URL built from fixed ATS hosts (never from feed input). */
+export async function fetchJson(url: string, fetcher: typeof fetch = fetch): Promise<unknown> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30000);
   try {
-    const response = await fetcher(feedUrl(c), { redirect: "error", signal: controller.signal, credentials: "omit",
+    const response = await fetcher(url, { redirect: "error", signal: controller.signal, credentials: "omit",
       headers: { Accept: "application/json", "User-Agent": "USASI-Jobs/1.0 (+https://unitedstatesofamericasuperintelligence.com/jobs/)" } });
     return await readJsonBody(response);
   } catch (e) {

@@ -94,7 +94,7 @@ function supportPanel(): string {
 export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] = []): string {
   const { job, org } = p;
   const name = shortOrg(org.name);
-  const board = ({ greenhouse: "Greenhouse", ashby: "Ashby", lever: "Lever", usajobs: "USAJOBS" } as const)[job.source_type];
+  const board = ({ greenhouse: "Greenhouse", ashby: "Ashby", lever: "Lever", workable: "Workable", smartrecruiters: "SmartRecruiters", usajobs: "USAJOBS" } as const)[job.source_type];
   const federal = job.source_type === "usajobs";
   const apply = job.apply_url ?? job.official_url;
   const applyLabel = federal ? "Apply on USAJOBS.gov" : `Apply on ${esc(name)}&rsquo;s site`;

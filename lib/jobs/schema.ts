@@ -13,8 +13,9 @@ export const JobUrl = z.string().refine(safeJobUrl, "Expected a public HTTPS URL
 const text = (max = 240) => z.string().trim().min(1).max(max).refine(v => !/[<>\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(v), "Expected plain text");
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const instant = z.iso.datetime({ offset: true });
-const identifier = z.string().regex(/^[A-Za-z0-9_-]{1,100}$/);
-export const AUTOMATED_SOURCES = ["greenhouse", "ashby", "lever", "usajobs"] as const;
+// Board names may contain a period (Ashby boards such as "nomic.ai").
+const identifier = z.string().regex(/^[A-Za-z0-9_-][A-Za-z0-9._-]{0,99}$/);
+export const AUTOMATED_SOURCES = ["greenhouse", "ashby", "lever", "workable", "smartrecruiters", "usajobs"] as const;
 export type AutomatedSource = (typeof AUTOMATED_SOURCES)[number];
 export const isAutomatedSource = (type: string): type is AutomatedSource =>
   (AUTOMATED_SOURCES as readonly string[]).includes(type);
@@ -22,9 +23,11 @@ export const JOB_SOURCE_LABELS: Record<AutomatedSource, string> = {
   greenhouse: "Greenhouse",
   ashby: "Ashby",
   lever: "Lever",
+  workable: "Workable",
+  smartrecruiters: "SmartRecruiters",
   usajobs: "USAJOBS",
 };
-export const JOB_ID = z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|lever|usajobs):[A-Za-z0-9_-]+:[A-Za-z0-9_-]+$/);
+export const JOB_ID = z.string().regex(/^[a-z0-9-]+:(greenhouse|ashby|lever|workable|smartrecruiters|usajobs):[A-Za-z0-9._-]+:[A-Za-z0-9_-]+$/);
 export const Careers = z.object({
   url: JobUrl,
   enabled: z.boolean(),
@@ -32,6 +35,8 @@ export const Careers = z.object({
     z.object({ type: z.literal("greenhouse"), identifier }).strict(),
     z.object({ type: z.literal("ashby"), identifier }).strict(),
     z.object({ type: z.literal("lever"), identifier }).strict(),
+    z.object({ type: z.literal("workable"), identifier }).strict(),
+    z.object({ type: z.literal("smartrecruiters"), identifier }).strict(),
     z.object({ type: z.literal("usajobs"), identifier }).strict(),
     z.object({ type: z.literal("manual"), note: text(400) }).strict(),
     z.object({ type: z.literal("unsupported"), note: text(400) }).strict(),

@@ -10,6 +10,7 @@ import { reconcile, sourceKey, jobSourceKey, type FeedResult } from "../lib/jobs
 import { htmlToDescription } from "../lib/jobs/description";
 import { readDescriptions, writeDescriptions } from "../lib/jobs/descriptions-store";
 import { fetchUsaJobsItems, usaJobsPayload, usajobsCredentials } from "../lib/jobs/usajobs";
+import { fetchSmartRecruiters } from "../lib/jobs/smartrecruiters";
 const orgs = loadCatalog().organizations;
 const configs = orgs.filter(o => o.careers?.enabled);
 // State is trusted only after schema validation. Removed/disabled sources are intentionally pruned.
@@ -31,7 +32,9 @@ for (const org of configs) {
   }
   let result: FeedResult;
   try {
-    const payload = usajobs ? usaJobsPayload(await fetchUsaJobsItems(usajobs)) : await fetchFeed(c);
+    const payload = usajobs ? usaJobsPayload(await fetchUsaJobsItems(usajobs))
+      : c.source.type === "smartrecruiters" ? await fetchSmartRecruiters(c, (id) => descriptions.has(`${org.slug}:smartrecruiters:${c.source.type === "smartrecruiters" ? c.source.identifier : ""}:${id}`))
+      : await fetchFeed(c);
     const rows = adapters[c.source.type].rows(payload, org.slug, c);
     const jobs = rows.map(r => r.job);
     // Validate every row before reconciliation. One poisoned row rejects the entire feed.
@@ -39,6 +42,7 @@ for (const org of configs) {
       status: "open", missing_since: null, missing_checks: 0, closed_at: null });
     result = { ok: true, jobs };
     for (const r of rows) {
+      if (r.html === undefined) continue; // not fetched this time: keep the stored description
       const d = htmlToDescription(r.html);
       if (d) descriptions.set(r.job.id, d);
       else descriptions.delete(r.job.id);

@@ -287,3 +287,10 @@ setting have not been verified.
 - SpaceX: spacex.com/careers/jobs links each opening to `boards.greenhouse.io/spacex` (seen in the rendered page; the list loads with JavaScript). The feed had been configured but disabled with no recorded reason; the owner asked for it on 2026-10-16.
 - Anduril: anduril.com renders its roles client-side from an endpoint that refuses outside requests, so its pages show no board link. Its Greenhouse board, `job-boards.greenhouse.io/andurilindustries` (board name "Anduril Industries"), redirects to `https://www.anduril.com/open-roles`, a setting only the board's owner controls; both pages are cited.
 - The two boards add about 5,300 listings. Anduril's feed with descriptions is about 44 MB, so the feed limit is 64 MiB.
+
+## Workable and SmartRecruiters (2026-10-16)
+
+- Workable: `https://apply.workable.com/api/v1/widget/accounts/<account>?details=true`, one list with descriptions. Posting links are `apply.workable.com/j/<shortcode>` (no account in the path), so only that path shape is accepted. Hugging Face.
+- SmartRecruiters: the documented Posting API, `https://api.smartrecruiters.com/v1/companies/<id>/postings`, 100 per page (at most 50 pages), without descriptions. Each description is one request to `/postings/<id>`, made only for postings with no stored description (at most 1,500 a run, 250 ms apart); a posting whose description was not fetched keeps the stored one. The first run for ServiceNow and LLNL took about 12 minutes; later runs fetch only new postings. Public links are `jobs.smartrecruiters.com/<company>/<id>`. ServiceNow's careers site sends Apply to that host; LLNL's Find Your Job page links to it.
+- Board identifiers may contain a period (Ashby `nomic.ai`, `far.ai`).
+- Cloudflare: the account is on Workers Paid (100,000 files per deployment); `scripts/postbuild.mjs` enforces that limit.
