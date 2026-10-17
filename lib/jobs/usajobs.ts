@@ -45,27 +45,34 @@ const remuneration = z.object({
   Description: short.optional(),
 }).passthrough();
 const formatted = z.object({ Content: short.optional(), Label: short.optional() }).passthrough();
+/** Fields=Full returns some announcement sections as a string and others as a string array. */
+const longText = z.string().max(400000);
+const textBlock = z.union([longText, z.array(longText).max(200)]).transform((v) => (Array.isArray(v) ? v.filter(Boolean).join("\n") : v));
+const count = z.preprocess(
+  (v) => (v === "" || v == null ? undefined : typeof v === "string" ? Number(v) : v),
+  z.number().int().nonnegative().optional(),
+);
 export const usaJobsDescriptor = z.object({
   PositionID: short.optional(),
   PositionTitle: short,
   PositionURI: z.string().optional(),
   ApplyURI: z.array(z.string()).max(10).optional(),
   PositionLocationDisplay: short.optional(),
-  PositionLocation: z.array(location).max(50).optional(),
+  PositionLocation: z.array(location).max(200).optional(),
   OrganizationName: short.optional(),
   DepartmentName: short.optional(),
   PositionSchedule: z.array(named).max(10).optional(),
   PositionRemuneration: z.array(remuneration).max(10).optional(),
-  QualificationSummary: z.string().max(400000).optional(),
-  PositionFormattedDescription: z.array(formatted).max(20).optional(),
+  QualificationSummary: textBlock.optional(),
+  PositionFormattedDescription: z.array(formatted).max(50).optional(),
   PublicationStartDate: z.string().optional(),
   PositionStartDate: z.string().optional(),
   ApplicationCloseDate: z.string().optional(),
   PositionEndDate: z.string().optional(),
   UserArea: z.object({
     Details: z.object({
-      JobSummary: z.string().max(400000).optional(),
-      MajorDuties: z.string().max(400000).optional(),
+      JobSummary: textBlock.optional(),
+      MajorDuties: textBlock.optional(),
       SubAgencyName: short.optional(),
     }).passthrough().optional(),
   }).passthrough().optional(),
@@ -77,14 +84,26 @@ export const usaJobsItem = z.object({
 export type UsaJobsItem = z.infer<typeof usaJobsItem>;
 export const usaJobsSearch = z.object({
   SearchResult: z.object({
-    SearchResultCount: z.number().int().nonnegative().optional(),
-    SearchResultCountAll: z.number().int().nonnegative().optional(),
-    SearchResultItems: z.array(usaJobsItem).max(20000),
+    SearchResultCount: count,
+    SearchResultCountAll: count,
+    SearchResultItems: z.array(z.unknown()).max(20000).optional().default([]),
     UserArea: z.object({
       NumberOfPages: z.union([z.string(), z.number()]).optional(),
     }).passthrough().optional(),
   }).passthrough(),
 }).passthrough();
+function itemsFromPage(page: z.infer<typeof usaJobsSearch>): UsaJobsItem[] {
+  const items: UsaJobsItem[] = [];
+  for (const raw of page.SearchResult.SearchResultItems) {
+    const parsed = usaJobsItem.safeParse(raw);
+    if (parsed.success) items.push(parsed.data);
+  }
+  return items;
+}
+/** Keep a valid announcement when a sibling row in the same page is malformed. */
+export function usaJobsItems(payload: unknown): UsaJobsItem[] {
+  return itemsFromPage(usaJobsSearch.parse(payload));
+}
 
 const TITLE_TERMS = [
   /\bartificial intelligence\b/i,
@@ -288,10 +307,9 @@ export function mapUsaJobsItem(item: UsaJobsItem, org: string, c: Careers, now =
 
 /** Deduplicate by USAJOBS control number; first occurrence wins (earlier keyword). */
 export function rowsUsaJobs(payload: unknown, org: string, c: Careers, now = Date.now()): { job: NormalizedJob; html: string | null }[] {
-  const data = usaJobsSearch.parse(payload);
   const seen = new Set<string>();
   const rows: { job: NormalizedJob; html: string | null }[] = [];
-  for (const item of data.SearchResult.SearchResultItems) {
+  for (const item of usaJobsItems(payload)) {
     const mapped = mapUsaJobsItem(item, org, c, now);
     if (!mapped || seen.has(mapped.job.source_job_id)) continue;
     seen.add(mapped.job.source_job_id);
@@ -367,7 +385,7 @@ export async function fetchUsaJobsItems(
         totalPages = pagesOf(payload);
         if (totalAll > USAJOBS_RESULTS_PER_PAGE * USAJOBS_MAX_PAGES_PER_KEYWORD) throw new FeedError("payload");
       }
-      for (const item of payload.SearchResult.SearchResultItems) {
+      for (const item of itemsFromPage(payload)) {
         const id = controlNumber(item.MatchedObjectId);
         if (id && !byId.has(id)) byId.set(id, item);
       }
