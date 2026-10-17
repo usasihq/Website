@@ -30,6 +30,7 @@ const PEOPLE = [
   { href: "/people/", label: "All people", description: "Founders, engineers, researchers, and open-source maintainers, with sources" },
   { href: "/big-si/", label: "People Behind Big SI", description: "Founders, executives, and builders behind the companies shaping AI" },
   { href: "/local/", label: "People Behind Local SI", description: "People whose work helps you run AI on your own hardware" },
+  { href: "/voices/", label: "Voices of SI", description: "Tech creators and communicators who explain AI to the public" },
 ];
 
 type NavItem = { href: string; label: string } | { label: string; items: typeof PEOPLE };

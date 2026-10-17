@@ -322,6 +322,19 @@ test.describe("Local corner", () => {
   });
 });
 
+test("Voices of SI lists every creator profile and links to its sourced page", async ({ page }) => {
+  const creators = (readRecordsFrom("people") as Array<ReturnType<typeof readRecordsFrom>[number] & { groups?: string[] }>).filter(
+    (p) => p.publication_status === "published" && (p.groups ?? []).includes("creators"),
+  );
+  test.skip(creators.length === 0, "no published creator profiles yet");
+  await page.goto("/voices/");
+  await expect(page.getByRole("heading", { level: 1, name: "Voices of SI" })).toBeVisible();
+  const cards = page.getByTestId("voices-people").locator(":scope > li");
+  await expect(cards).toHaveCount(creators.length);
+  await page.goto("/people/cleo-abram/");
+  await expect(page.getByRole("link", { name: "Tech creators and communicators" }).first()).toHaveAttribute("href", "/voices/");
+});
+
 test("People Behind Local SI is a standing list, the same in any month", async ({ page }) => {
   const people = localPeople();
   test.skip(people.length === 0, "no published profiles yet");
@@ -541,7 +554,7 @@ test("people navigation order, keyboard activation and current-page semantics", 
     await page.getByRole("button", { name: "Menu", exact: true }).click();
     const nav = page.getByRole("navigation", { name: "Primary (mobile)", exact: true });
     const labels = await nav.getByRole("link").allTextContents();
-    expect(labels.slice(-5)).toEqual(["Methodology", "All people", "People Behind Big SI", "People Behind Local SI", "About"]);
+    expect(labels.slice(-6)).toEqual(["Methodology", "All people", "People Behind Big SI", "People Behind Local SI", "Voices of SI", "About"]);
     await nav.getByRole("link", { name: "People Behind Big SI", exact: true }).focus();
     await page.keyboard.press("Tab");
     await expect(nav.getByRole("link", { name: "People Behind Local SI", exact: true })).toBeFocused();

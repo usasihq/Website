@@ -21,6 +21,7 @@ export const STATIC_ROUTES = [
   "/support/",
   "/privacy/",
   "/local/",
+  "/voices/",
   "/people/",
   "/news/",
   "/newsletter/",

@@ -38,6 +38,7 @@ const COLUMNS = [
       { href: "/people/", label: "All people" },
       { href: "/big-si/", label: "People Behind Big SI" },
       { href: "/local/", label: "People Behind Local SI" },
+      { href: "/voices/", label: "Voices of SI" },
       { href: "/news/", label: "Latest news" },
       { href: "/newsletter/", label: "Weekly email" },
       { href: "/feeds/", label: "RSS feeds" },
