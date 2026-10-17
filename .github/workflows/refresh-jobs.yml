@@ -30,14 +30,26 @@ jobs:
       - name: Restore most recent validated operational state
         uses: actions/cache/restore@v4
         with:
-          path: data/jobs/current.json
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
+      - name: Keep previous jobs snapshot for Indexing API
+        run: |
+          if [ -f data/jobs/current.json ]; then
+            cp data/jobs/current.json data/jobs/previous.json
+          fi
       - name: Refresh supported official sources
         run: npm run jobs:refresh
         env:
           USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
           USAJOBS_USER_AGENT: ${{ vars.USAJOBS_USER_AGENT }}
+      - name: Notify Google Indexing API of added and removed job pages
+        run: npm run jobs:index
+        env:
+          GOOGLE_INDEXING_SA_JSON: ${{ secrets.GOOGLE_INDEXING_SA_JSON }}
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
       - run: npm run validate
       - run: npm run typecheck
       - run: npm run lint
@@ -61,7 +73,9 @@ jobs:
       - name: Preserve validated reconciliation state
         uses: actions/cache/save@v4
         with:
-          path: data/jobs/current.json
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Retain operational dataset for recovery
         uses: actions/upload-artifact@v7

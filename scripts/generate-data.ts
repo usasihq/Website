@@ -15,6 +15,8 @@ import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
 import { jobsDirectoryData } from "../lib/jobs/directory-data";
 import { jobLandingSearchEntries } from "../lib/jobs/landing-links";
+import { EMPTY_WARN_DATASET, layoffSearchEntries, readLayoffs, writeLayoffs } from "../lib/jobs/layoffs";
+import { mergeLayoffRefresh } from "../lib/jobs/layoffs-refresh";
 import { sourceLibrary } from "../lib/source-library";
 import { parseFaq, parseGlossary, referenceSearchEntries } from "../lib/reference-search";
 import { BASE_PATH, SITE_URL, siteConfig } from "../lib/site-config";
@@ -30,6 +32,20 @@ if (siteConfig.homepageSponsor) {
 }
 
 const buildAt = process.env.USASI_BUILD_AT ?? new Date().toISOString();
+// WARN notices: try the published warn-scraper CSVs; keep the last snapshot if a state fails.
+try {
+  const previous = readLayoffs();
+  const { dataset, counts, kept, skipped } = await mergeLayoffRefresh(
+    previous.states.length ? previous : EMPTY_WARN_DATASET,
+    (process.env.USASI_TODAY ?? buildAt).slice(0, 10),
+  );
+  writeLayoffs(dataset);
+  console.log(`layoffs: ${dataset.states.map((s) => `${s.code}=${s.notices.length}`).join(" ")} (${Object.keys(counts).length} states)`);
+  if (kept.length) console.log(`layoffs: kept previous notices for ${kept.join(", ")}`);
+  if (skipped.length) console.log(`layoffs: skipped ${skipped.join(", ")}`);
+} catch (error) {
+  console.warn(`layoffs: refresh failed; using the last snapshot (${error instanceof Error ? error.message : "unknown error"})`);
+}
 const catalog = loadCatalog(path.join(process.cwd(), "content"), { buildAt });
 const outDir = path.join(process.cwd(), "public", "data");
 fs.mkdirSync(outDir, { recursive: true });
@@ -54,7 +70,7 @@ const faqPath = path.join(process.cwd(), "content", "pages", "faq.mdx");
 const faq = fs.existsSync(faqPath) ? parseFaq(fs.readFileSync(faqPath, "utf8")) : [];
 fs.writeFileSync(
   path.join(outDir, "search-index.json"),
-  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog)] }) + "\n",
+  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog), ...layoffSearchEntries(catalog)] }) + "\n",
 );
 // Full current Jobs list, loaded by the /jobs/ page after first paint (the page itself embeds only the first 30).
 const jobs = jobsDirectoryData(catalog);

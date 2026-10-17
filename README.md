@@ -58,6 +58,8 @@ npm run preview:static  # serve out/ like a static host at http://localhost:4321
 | `npm run deploy:cloudflare` | `wrangler deploy` — requires your Cloudflare login or API token. Not run by anything automatically. |
 | `npm run prepare:images` | Regenerates hero derivatives, `og.png`, and the touch icon, using the branding derivative while preserving the original artwork. |
 | `npm run prepare:social` | Renders section social cards (`og-open.png` for Open Models & Tools) with the site's fonts and colors. Their alt text lives in `lib/metadata.ts`. |
+| `npm run jobs:index` | After a jobs refresh, notify the Google Indexing API of added or removed job pages. Skips if `GOOGLE_INDEXING_SA_JSON` is unset. |
+| `npm run layoffs:refresh` | Fetch recent WARN Act notices for CA, WA, NY, and TX. A failed state keeps its last snapshot or is skipped. |
 
 ## Repository layout
 
@@ -344,3 +346,35 @@ published organizations. See [Jobs architecture, source policy and operations](d
 for setup, refresh scheduling, validation, reconciliation, supported adapters and limits.
 Run `npm run jobs:refresh` to fetch and reconcile supported feeds; ordinary builds are
 offline and use the validated snapshot. Applications remain on the employer's site.
+
+### Google Indexing API (job pages)
+
+After `refresh-jobs.yml` rebuilds `data/jobs/current.json`, it compares job-page URLs
+(`/jobs/at/<employer>/<title>-<code>/`) with the previous snapshot and sends
+`URL_UPDATED` or `URL_DELETED` to the
+[Google Indexing API](https://developers.google.com/search/apis/indexing-api/v3/using-api).
+Newest postings are sent first. At most 200 notifications go out per Pacific-time day
+(Google's default publish quota). The day's count is cached with the jobs snapshot so
+the six-hour schedule cannot exceed the cap.
+
+Setup (optional; the step skips without an error if the secret is missing):
+
+1. In Google Cloud, create a service account, enable the Indexing API, and download a JSON key.
+2. Add that JSON as the GitHub Actions secret `GOOGLE_INDEXING_SA_JSON` (production environment
+   or repository secret). Never commit the key.
+3. In [Google Search Console](https://search.google.com/search-console), add the service
+   account email as an **Owner** of `unitedstatesofamericasuperintelligence.com`.
+   The Indexing API rejects notifications unless that Owner grant is in place.
+
+Locally, `npm run jobs:index` reads the same secret from the environment (see `.env.example`).
+Copy the previous snapshot to `data/jobs/previous.json` first if you want a real diff.
+
+### WARN Act layoff pages
+
+`/jobs/layoffs/` and `/jobs/layoffs/<state>/` list recent official WARN Act notices for
+California, Washington, New York, and Texas, and link to this site's existing state and
+city job pages with the open AI-job counts. Notices come from each state's labor department
+list, collected with [Big Local News warn-scraper](https://github.com/biglocalnews/warn-scraper)
+(or its published CSVs). Sources are cited on the page. `prepare:data` (part of `npm run build`)
+tries to refresh the snapshot; a failed state keeps the last file or is skipped. Run
+`npm run layoffs:refresh` on its own to update `data/layoffs/current.json`.
