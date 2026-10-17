@@ -172,6 +172,19 @@ secret here:
 
 Local `npm run jobs:refresh` reads the same env vars from the shell (see `.env.example`).
 
+### Google Indexing API (`GOOGLE_INDEXING_SA_JSON`)
+
+After refresh writes the new snapshot, `npm run jobs:index` diffs job-page URLs against
+`data/jobs/previous.json` (copied from the restored cache) and publishes
+`URL_UPDATED` / `URL_DELETED` to the Indexing API. Newest first; 200 calls per Pacific day.
+If `GOOGLE_INDEXING_SA_JSON` is missing or empty, the step logs a skip and exits 0.
+
+The service account JSON is a GitHub Actions secret (same production environment as
+USAJOBS). The service account email must be an **Owner** of the Search Console property
+or Google will reject every publish call. Do not commit the key. Ordinary Cloudflare
+deploys preserve `data/jobs/indexing-quota.json` in the jobs cache so a same-day
+refresh still sees the remaining quota.
+
 State restores from an immutable GitHub Actions cache key scoped to this main-branch
 workflow family. Validation, type checking, lint, unit tests, production build and
 internal-link checks gate deployment. Validated state is cached and a seven-day artifact

@@ -3,6 +3,7 @@ import { getCatalog } from "@/lib/catalog";
 import { MEMORY_PAGES, memoryPageHref, memoryPageIndexable } from "@/lib/hardware";
 import { jobLandingSitemap } from "@/lib/jobs/landing-links";
 import { jobPages } from "@/lib/jobs/job-pages";
+import { layoffSitemap } from "@/lib/jobs/layoffs";
 import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
 import { EXPLAINERS, LEARNING_PATHS } from "@/lib/learn";
 import { absoluteUrl } from "@/lib/paths";
@@ -43,6 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...MEMORY_PAGES.filter((p) => memoryPageIndexable(catalog.finder, p)).map((p) => ({ url: absoluteUrl(memoryPageHref(p)) })),
     // Jobs landing pages change daily; they carry the date of their listings' last successful check.
     ...jobLandingSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
+    // WARN Act layoff pages, dated by the last successful fetch of that state's notices.
+    ...layoffSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // Each current job with the employer's description; pages without one are kept out of search results.
     ...jobPages(catalog)
       .filter((p) => p.description)

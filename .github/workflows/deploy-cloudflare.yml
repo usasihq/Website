@@ -42,7 +42,9 @@ jobs:
         if: vars.JOBS_REFRESH == 'true'
         uses: actions/cache/restore@v4
         with:
-          path: data/jobs/current.json
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
       - name: Refresh Jobs before ordinary releases
@@ -71,7 +73,9 @@ jobs:
         if: vars.JOBS_REFRESH == 'true'
         uses: actions/cache/save@v4
         with:
-          path: data/jobs/current.json
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Deploy production
         run: npx wrangler deploy --message "${{ env.RELEASE_SHA }}"

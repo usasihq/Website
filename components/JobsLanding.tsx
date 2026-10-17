@@ -4,12 +4,15 @@ import { JsonLd } from "@/components/JsonLd";
 import { JobsFreshness } from "@/components/JobsFreshness";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
+import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { jobHref } from "@/lib/jobs/job-url";
 import { asset } from "@/lib/paths";
 import { jobsLandingJsonLd } from "@/lib/jobs/jsonld";
 import { MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
 import type { LandingLink } from "@/lib/jobs/landing-links";
+import { layoffHref, layoffStatePage } from "@/lib/jobs/layoffs";
+import { stateSlug } from "@/lib/places";
 import { checkedLabel, DEFAULT_JOB_FILTERS, serializeJobFilters, type JobItem } from "@/lib/jobs/search";
 import { isExpressionOfInterest } from "@/lib/jobs/tracks";
 import { orgHref } from "@/lib/routes";
@@ -137,6 +140,7 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
   const shown = page.listings.length;
   const trail = [{ href: "/jobs/", label: "Jobs" }, ...(parent ? [parent] : []), { href: page.path, label: page.name }];
   const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...DEFAULT_JOB_FILTERS, ...page.filters, sort: "newest", company: slug })}`;
+  const layoffs = page.kind === "state" && page.state ? layoffStatePage(getCatalog(), stateSlug(page.state)) : undefined;
   // BreadcrumbList comes from PageHeader; CollectionPage / ItemList from jobsLandingJsonLd (never JobPosting).
   return (
     <>
@@ -173,6 +177,15 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
           </div>
         </dl>
         <GeographyNote page={page} />
+        {layoffs ? (
+          <p className="mt-5 max-w-3xl text-base text-muted">
+            Recent official WARN Act notices in this state:{" "}
+            <Link prefetch={false} href={layoffHref(layoffs.meta.code)} className="link">
+              layoffs in {layoffs.meta.name} ({n(layoffs.file.notices.length)} notices)
+            </Link>
+            , with open AI-job counts on that page.
+          </p>
+        ) : null}
       </PageHeader>
 
       <div className="container-page py-10 sm:py-12">

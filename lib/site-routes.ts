@@ -10,6 +10,7 @@ export const STATIC_ROUTES = [
   "/companies/",
   "/open/",
   "/jobs/",
+  "/jobs/layoffs/",
   "/matrix/",
   "/methodology/",
   "/compact/",
@@ -85,6 +86,8 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
   if (rep) return Boolean(slugs.reports?.has(rep[1]));
   const mem = path.match(/^\/find\/memory\/([a-z0-9-]+)\/$/);
   if (mem) return MEMORY_PAGES.some((x) => x.slug === mem[1]);
+  const lay = path.match(/^\/jobs\/layoffs\/([a-z0-9-]+)\/$/);
+  if (lay) return ["california", "washington", "new-york", "texas"].includes(lay[1]);
   const k = path.match(/^\/kids\/([a-z0-9-]+)\/$/);
   return Boolean(k && KID_LESSONS.some((l) => l.slug === k[1]));
 }
