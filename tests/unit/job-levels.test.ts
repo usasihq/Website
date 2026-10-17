@@ -133,3 +133,71 @@ describe("Greenhouse locations", () => {
     expect(row.job.locations[0]).toBe("City 0, Colorado, United States");
   });
 });
+
+describe("Workable and SmartRecruiters adapters", () => {
+  const cfg = (type: "workable" | "smartrecruiters", identifier: string) => ({ url: "https://example.com/careers", enabled: true, source: { type, identifier }, posting_hosts: [], source_ids: ["x"], reviewed_at: "2026-10-16" });
+  it("Workable: one list with descriptions, /j/<shortcode> links only", async () => {
+    const { adapters } = await import("@/lib/jobs/adapters");
+    const job = { title: "ML Engineer", shortcode: "81B46579FE", url: "https://apply.workable.com/j/81B46579FE", application_url: "https://apply.workable.com/j/81B46579FE/apply",
+      employment_type: "Full-time", telecommuting: true, department: "Open Source", published_on: "2026-05-29", country: "France", city: "Paris", state: "Île-de-France",
+      locations: [{ country: "France", city: "Paris", region: "Île-de-France", hidden: false }], description: "<p>Hello</p>" };
+    const [row] = adapters.workable.rows({ jobs: [job] }, "hugging-face", cfg("workable", "huggingface"));
+    expect(row.job.id).toBe("hugging-face:workable:huggingface:81B46579FE");
+    expect(row.job.official_url).toBe("https://apply.workable.com/j/81B46579FE");
+    expect(row.job.workplace).toBe("remote");
+    expect(row.job.locations).toEqual(["Paris, Île-de-France, France"]);
+    expect(row.job.posted_at).toBe("2026-05-29T00:00:00.000Z");
+    expect(row.html).toBe("<p>Hello</p>");
+    expect(() => adapters.workable.rows({ jobs: [{ ...job, url: "https://apply.workable.com/other/81B46579FE" }] }, "hugging-face", cfg("workable", "huggingface"))).toThrow();
+  });
+  it("SmartRecruiters: builds the public posting URL and keeps a stored description when none was fetched", async () => {
+    const { adapters } = await import("@/lib/jobs/adapters");
+    const posting = { id: "744000156093019", name: "Principal Software Engineer", releasedDate: "2026-10-16T23:15:30.201Z", refNumber: "JB0076129",
+      location: { city: "San Diego", region: "CALIFORNIA", country: "us", remote: false, hybrid: true, fullLocation: "San Diego, CALIFORNIA, United States" },
+      department: { label: "Engineering" }, typeOfEmployment: { id: "permanent", label: "Full-time" } };
+    const c = cfg("smartrecruiters", "ServiceNow");
+    const [withHtml] = adapters.smartrecruiters.rows({ postings: [posting], details: { "744000156093019": "<p>Role</p>" } }, "servicenow", c);
+    expect(withHtml.job.official_url).toBe("https://jobs.smartrecruiters.com/ServiceNow/744000156093019");
+    expect(withHtml.job.workplace).toBe("hybrid");
+    expect(withHtml.job.employment_type).toBe("full-time");
+    expect(withHtml.job.countries).toEqual(["US"]);
+    expect(withHtml.html).toBe("<p>Role</p>");
+    const [kept] = adapters.smartrecruiters.rows({ postings: [posting], details: {} }, "servicenow", c);
+    expect(kept.html).toBeUndefined();
+  });
+  it("accepts board names with a period, as Ashby uses for nomic.ai", async () => {
+    const { Careers } = await import("@/lib/jobs/schema");
+    expect(Careers.safeParse({ ...cfg("workable", "x"), source: { type: "ashby", identifier: "nomic.ai" } }).success).toBe(true);
+    expect(Careers.safeParse({ ...cfg("workable", "x"), source: { type: "ashby", identifier: ".hidden" } }).success).toBe(false);
+  });
+});
+
+describe("Workday adapter", () => {
+  const c = { url: "https://acme.wd5.myworkdayjobs.com/External", enabled: true, source: { type: "workday" as const, identifier: "acme.wd5.External" }, posting_hosts: [], source_ids: ["x"], reviewed_at: "2026-10-16" };
+  const posting = { title: "Senior GPU Engineer", externalPath: "/job/US-CA-Santa-Clara/Senior-GPU-Engineer_JR1", locationsText: "2 Locations", bulletFields: ["JR1"] };
+  it("uses cached details, builds the career-site link, and ignores location counts", async () => {
+    const { adapters } = await import("@/lib/jobs/adapters");
+    const meta = { "Senior-GPU-Engineer_JR1": { locations: ["US, CA, Santa Clara", "US, TX, Austin"], country: "US", startDate: "2026-10-01", timeType: "Full time", reqId: "JR1", remote: false } };
+    const [row] = adapters.workday.rows({ postings: [posting], meta, details: { "Senior-GPU-Engineer_JR1": "<p>Build GPUs</p>" } }, "acme", c);
+    expect(row.job.id).toBe("acme:workday:acme.wd5.External:Senior-GPU-Engineer_JR1");
+    expect(row.job.official_url).toBe("https://acme.wd5.myworkdayjobs.com/External/job/US-CA-Santa-Clara/Senior-GPU-Engineer_JR1");
+    expect(row.job.locations).toEqual(["US, CA, Santa Clara", "US, TX, Austin"]);
+    expect(row.job.employment_type).toBe("full-time");
+    expect(row.job.posted_at).toBe("2026-10-01T00:00:00.000Z");
+    expect(row.html).toBe("<p>Build GPUs</p>");
+    const [bare] = adapters.workday.rows({ postings: [posting], meta: {}, details: {} }, "acme", c);
+    expect(bare.job.locations).toEqual([]);
+    expect(bare.html).toBeUndefined();
+  });
+  it("rejects links off the employer's Workday host or outside /<site>/job/", async () => {
+    const { postingUrl } = await import("@/lib/jobs/security");
+    expect(() => postingUrl("https://evil.wd5.myworkdayjobs.com/External/job/x", c)).toThrow();
+    expect(() => postingUrl("https://acme.wd5.myworkdayjobs.com/Other/job/x", c)).toThrow();
+    expect(postingUrl("https://acme.wd5.myworkdayjobs.com/External/job/x?source=li", c)).toBe("https://acme.wd5.myworkdayjobs.com/External/job/x");
+  });
+  it("accepts only <tenant>.<wdN>.<site> identifiers", async () => {
+    const { Careers } = await import("@/lib/jobs/schema");
+    expect(Careers.safeParse(c).success).toBe(true);
+    expect(Careers.safeParse({ ...c, source: { type: "workday", identifier: "acme.External" } }).success).toBe(false);
+  });
+});

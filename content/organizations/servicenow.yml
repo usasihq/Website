@@ -85,11 +85,27 @@ openness_summary:
     models release by release.
   source_ids: [now-pr-2026-04-09, hf-servicenow-ai, apriel-1-6-card, starcoder2-paper]
 hiring_url: null
+careers:
+  url: https://careers.servicenow.com/jobs/
+  enabled: true
+  source:
+    type: smartrecruiters
+    identifier: ServiceNow
+  posting_hosts: []
+  source_ids: [servicenow-careers-jobs]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-16
 last_reviewed: 2026-09-29
 sources:
+  - id: servicenow-careers-jobs
+    title: Explore Jobs | ServiceNow Careers
+    url: https://careers.servicenow.com/jobs/
+    publisher: ServiceNow
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: now-10k-2025
     title: ServiceNow, Inc. Form 10-K for the fiscal year ended December 31, 2025
     url: https://www.sec.gov/Archives/edgar/data/1373715/000137371526000007/now-20251231.htm

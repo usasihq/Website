@@ -76,11 +76,27 @@ openness_summary:
     public model weights from Adobe.
   source_ids: [adobe-firefly, adobe-firefly-services]
 hiring_url: https://careers.adobe.com/us/en
+careers:
+  url: https://adobe.wd5.myworkdayjobs.com/external_experienced
+  enabled: true
+  source:
+    type: workday
+    identifier: adobe.wd5.external_experienced
+  posting_hosts: []
+  source_ids: [adobe-workday-careers]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-16
 last_reviewed: 2026-09-29
 sources:
+  - id: adobe-workday-careers
+    title: Adobe careers on Workday
+    url: https://adobe.wd5.myworkdayjobs.com/external_experienced
+    publisher: Adobe Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: adbe-10k-fy2025
     title: Adobe Inc. Form 10-K for the fiscal year ended November 28, 2025
     url: https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm

@@ -92,17 +92,16 @@ openness_summary:
 hiring_url: https://www.nomic.ai/careers
 careers:
   url: https://www.nomic.ai/careers
-  enabled: false
+  enabled: true
   source:
-    type: unsupported
-    note: >-
-      The official careers page links to an Ashby board whose identifier contains a period, which the current board identifier format does not accept, so automated collection is not configured.
+    type: ashby
+    identifier: nomic.ai
   posting_hosts: []
   source_ids: [nomic-ai-careers-jobs]
-  reviewed_at: 2026-10-01
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-16
 last_reviewed: 2026-09-29
 sources:
   - id: nomic-home

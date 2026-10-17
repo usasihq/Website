@@ -291,12 +291,12 @@ for (const person of readDir("people")) {
   console.log(`postbuild: ${removed} RSC payload files removed (plain links never request them).`);
 }
 
-// Cloudflare Workers static assets: at most 20,000 files per deployment on the
-// Free plan (100,000 on Paid) and 25 MiB per file. Most files are job pages,
-// so the count moves with the number of open listings. ASSET_FILE_LIMIT
-// raises the limit after a plan change.
+// Cloudflare Workers static assets: at most 100,000 files per deployment on the
+// Workers Paid plan (the account's plan since 2026-10-16; Free allows 20,000)
+// and 25 MiB per file. Most files are job pages, so the count moves with the
+// number of open listings. ASSET_FILE_LIMIT overrides the limit.
 {
-  const limit = Number(process.env.ASSET_FILE_LIMIT ?? 20000);
+  const limit = Number(process.env.ASSET_FILE_LIMIT ?? 100000);
   const all = walk(out);
   if (all.length > limit) failures.push(`${all.length} files in ./out; Cloudflare accepts at most ${limit} per deployment`);
   else if (all.length > limit * 0.9) console.warn(`postbuild: warning: ${all.length} files in ./out, close to the ${limit}-file deployment limit`);

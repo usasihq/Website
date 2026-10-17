@@ -14,7 +14,7 @@ export function jobsDirectoryData(catalog: Catalog): {
   items: JobItem[];
   feeds: FeedHealth[];
   initial: JobItem[];
-  summary: { currentCount: number; organizationCount: number; departments: string[]; currencies: string[]; periods: string[] };
+  summary: { currentCount: number; organizationCount: number; currencies: string[]; periods: string[] };
 } {
   const now = Date.parse(catalog.buildAt);
   const data = readJobsForBuild(catalog.organizations, now);
@@ -28,7 +28,6 @@ export function jobsDirectoryData(catalog: Catalog): {
     summary: {
       currentCount: current.length,
       organizationCount: new Set(current.map((j) => j.organization_slug)).size,
-      departments: uniq(items.map((j) => j.department)),
       currencies: uniq(items.flatMap((j) => j.salaries.map((s) => s.currency))),
       periods: uniq(items.flatMap((j) => j.salaries.map((s) => s.period))),
     },

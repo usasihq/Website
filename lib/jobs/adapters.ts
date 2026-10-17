@@ -1,9 +1,12 @@
 import { z } from "../zod";
 import type { Careers, NormalizedJob, Job } from "./schema";
+import { isAutomatedSource } from "./schema";
 import { Salary } from "./schema";
 import { decodeEntities } from "./description";
 import { endpoint, FeedError, postingUrl } from "./security";
 import { rowsUsaJobs } from "./usajobs";
+import { SrPosting, type SrPayload } from "./smartrecruiters";
+import { WdMeta, workdayId, type WdPayload } from "./workday";
 const short = z.string().max(1000);
 const id = z.union([z.number().int().nonnegative(), z.string().regex(/^[A-Za-z0-9_-]{1,100}$/)]);
 const greenhouse = z.object({ jobs: z.array(z.object({
@@ -53,7 +56,7 @@ function date(value?: string | null): string | null {
 }
 const uniq = (v: Array<string | null | undefined>) => [...new Set(v.filter((x): x is string => Boolean(x)))].sort();
 function base(org: string, c: Careers, sourceId: string, title: string, url: string): NormalizedJob {
-  if (c.source.type !== "ashby" && c.source.type !== "greenhouse" && c.source.type !== "lever" && c.source.type !== "usajobs") throw new FeedError("payload");
+  if (!isAutomatedSource(c.source.type) || !("identifier" in c.source)) throw new FeedError("payload");
   return { id: `${org}:${c.source.type}:${c.source.identifier}:${sourceId}`, source_job_id: sourceId,
     organization_slug: org, source_type: c.source.type, source_identifier: c.source.identifier, source_url: endpoint(c),
     title: plain(title) ?? "", official_url: postingUrl(url, c), apply_url: null, requisition_id: null,
@@ -61,7 +64,8 @@ function base(org: string, c: Careers, sourceId: string, title: string, url: str
     team: null, salaries: [], posted_at: null, posted_date_kind: null };
 }
 /** A normalized posting and the employer's description HTML (reduced to a safe structure before storage). */
-export type SourceRow = { job: NormalizedJob; html: string | null };
+/** html: the description, null when the posting has none, undefined when this check did not fetch it (keep the stored one). */
+export type SourceRow = { job: NormalizedJob; html: string | null | undefined };
 export interface JobSourceAdapter {
   normalize(payload: unknown, org: string, config: Careers): NormalizedJob[];
   rows(payload: unknown, org: string, config: Careers): SourceRow[];
@@ -130,9 +134,80 @@ const rowsLever = (payload: unknown, org: string, c: Careers): SourceRow[] =>
     const html = [r.description, sections, r.additional].filter(Boolean).join("");
     return { job, html: html || null };
   });
-export const adapters: Record<"greenhouse" | "ashby" | "lever" | "usajobs", JobSourceAdapter> = {
+// Workable's public widget API (details=true): one list with descriptions.
+const workable = z.object({ jobs: z.array(z.object({
+  title: short, shortcode: z.string().regex(/^[A-Za-z0-9]{4,20}$/), url: z.string(), application_url: z.string().optional(),
+  employment_type: short.nullable().optional(), telecommuting: z.boolean().nullable().optional(), department: short.nullable().optional(),
+  published_on: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(), country: short.nullable().optional(),
+  city: short.nullable().optional(), state: short.nullable().optional(),
+  locations: z.array(z.object({ country: short.nullable().optional(), city: short.nullable().optional(), region: short.nullable().optional(), hidden: z.boolean().optional() })).max(50).optional(),
+  description: z.string().max(400000).nullable().optional(),
+})).max(20000) });
+const place = (...parts: Array<string | null | undefined>) => plain(parts.filter(Boolean).join(", "));
+const employmentOf = (label: string | null | undefined) => {
+  const t = (label ?? "").toLowerCase();
+  return /intern/.test(t) ? "internship" : /part/.test(t) ? "part-time" : /contract|freelance/.test(t) ? "contract" : /temp/.test(t) ? "temporary" : /full|permanent/.test(t) ? "full-time" : "unknown";
+};
+const rowsWorkable = (payload: unknown, org: string, c: Careers): SourceRow[] =>
+  workable.parse(payload).jobs.map(r => {
+    const j = base(org, c, r.shortcode, r.title, r.url);
+    const visible = (r.locations ?? []).filter(l => !l.hidden);
+    const locations = uniq(visible.length ? visible.map(l => place(l.city, l.region, l.country)) : [place(r.city, r.state, r.country)]);
+    const remote = r.telecommuting === true;
+    const job: NormalizedJob = { ...j, apply_url: r.application_url ? postingUrl(r.application_url, c) : null, locations,
+      countries: uniq([...(visible.map(l => plain(l.country))), plain(r.country)]), workplace: remote ? "remote" : "unknown", remote: remote ? true : null,
+      employment_type: employmentOf(r.employment_type), department: plain(r.department),
+      posted_at: r.published_on ? date(`${r.published_on}T00:00:00Z`) : null, posted_date_kind: r.published_on ? "first-published" : null };
+    return { job, html: r.description ?? null };
+  });
+const smartRecruiters = z.object({ postings: z.array(SrPosting).max(20000), details: z.record(z.string(), z.string().max(400000)) });
+const rowsSmartRecruiters = (payload: unknown, org: string, c: Careers): SourceRow[] => {
+  const data: SrPayload = smartRecruiters.parse(payload);
+  if (c.source.type !== "smartrecruiters") throw new FeedError("payload");
+  const company = c.source.identifier;
+  return data.postings.map(r => {
+    const j = base(org, c, r.id, r.name, `https://jobs.smartrecruiters.com/${encodeURIComponent(company)}/${encodeURIComponent(r.id)}`);
+    const l = r.location;
+    const workplace = l?.remote ? "remote" : l?.hybrid ? "hybrid" : l ? "on-site" : "unknown";
+    const job: NormalizedJob = { ...j, requisition_id: plain(r.refNumber),
+      locations: uniq([plain(l?.fullLocation) ?? place(l?.city, l?.region, l?.country)]), countries: uniq([plain(l?.country?.toUpperCase())]),
+      workplace, remote: l?.remote ? true : l ? false : null, employment_type: employmentOf(r.typeOfEmployment?.label), department: plain(r.department?.label),
+      posted_at: date(r.releasedDate), posted_date_kind: r.releasedDate ? "last-published" : null };
+    return { job, html: Object.hasOwn(data.details, r.id) ? data.details[r.id] : undefined };
+  });
+};
+const workdayPayload = z.object({
+  postings: z.array(z.object({ title: short, externalPath: z.string().max(500), locationsText: short.nullable().optional(), bulletFields: z.array(short).optional() })).max(20000),
+  meta: z.record(z.string(), WdMeta), details: z.record(z.string(), z.string().max(400000)) });
+const rowsWorkday = (payload: unknown, org: string, c: Careers): SourceRow[] => {
+  const data: WdPayload = workdayPayload.parse(payload);
+  if (c.source.type !== "workday") throw new FeedError("payload");
+  const host = `https://${c.source.identifier.split(".")[0]}.${c.source.identifier.split(".")[1]}.myworkdayjobs.com`;
+  const site = c.source.identifier.split(".").slice(2).join(".");
+  const seen = new Set<string>();
+  const rows: SourceRow[] = [];
+  for (const r of data.postings) {
+    const id = workdayId(r.externalPath);
+    if (seen.has(id)) continue; // the same posting can appear on two pages while the list changes
+    seen.add(id);
+    const m = data.meta[id];
+    const j = base(org, c, id, r.title, `${host}/${site}${r.externalPath}`);
+    // "2 Locations" in the list is a count, not a place.
+    const listed = r.locationsText && !/^\d+ Locations?$/i.test(r.locationsText) ? [plain(r.locationsText)] : [];
+    const locations = uniq(m ? m.locations.map(l => plain(l)) : listed);
+    const job: NormalizedJob = { ...j, requisition_id: plain(m?.reqId ?? null), locations, countries: uniq([m?.country]),
+      workplace: m?.remote ? "remote" : "unknown", remote: m?.remote ? true : null, employment_type: employmentOf(m?.timeType),
+      posted_at: m?.startDate ? date(`${m.startDate}T00:00:00Z`) : null, posted_date_kind: m?.startDate ? "first-published" : null };
+    rows.push({ job, html: Object.hasOwn(data.details, id) ? data.details[id] : undefined });
+  }
+  return rows;
+};
+export const adapters: Record<"greenhouse" | "ashby" | "lever" | "workable" | "smartrecruiters" | "workday" | "usajobs", JobSourceAdapter> = {
   greenhouse: { rows: rowsGreenhouse, normalize: (payload, org, c) => rowsGreenhouse(payload, org, c).map((r) => r.job) },
   ashby: { rows: rowsAshby, normalize: (payload, org, c) => rowsAshby(payload, org, c).map((r) => r.job) },
   lever: { rows: rowsLever, normalize: (payload, org, c) => rowsLever(payload, org, c).map((r) => r.job) },
+  workable: { rows: rowsWorkable, normalize: (payload, org, c) => rowsWorkable(payload, org, c).map((r) => r.job) },
+  smartrecruiters: { rows: rowsSmartRecruiters, normalize: (payload, org, c) => rowsSmartRecruiters(payload, org, c).map((r) => r.job) },
+  workday: { rows: rowsWorkday, normalize: (payload, org, c) => rowsWorkday(payload, org, c).map((r) => r.job) },
   usajobs: { rows: rowsUsaJobs, normalize: (payload, org, c) => rowsUsaJobs(payload, org, c).map((r) => r.job) },
 };

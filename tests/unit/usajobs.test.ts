@@ -31,7 +31,7 @@ describe("USAJOBS credentials", () => {
     expect(usajobsCredentials({ USAJOBS_API_KEY: "  " })).toBeNull();
     expect(usajobsCredentials({ USAJOBS_API_KEY: "test-key-not-a-secret" })).toEqual({
       key: "test-key-not-a-secret",
-      userAgent: "shadowfetch@mail.grokbot.com",
+      userAgent: "usasi@usasihq.com",
     });
     expect(usajobsCredentials({ USAJOBS_API_KEY: "test-key-not-a-secret", USAJOBS_USER_AGENT: "ops@example.com" })?.userAgent).toBe("ops@example.com");
   });
@@ -110,6 +110,35 @@ describe("USAJOBS mapper", () => {
     expect(rows.some((r) => r.job.source_job_id === "33001999")).toBe(false);
     expect(rows.filter((r) => r.job.source_job_id === "21947200")).toHaveLength(1);
   });
+  it("accepts Fields=Full MajorDuties as a string array and skips a sibling malformed item", () => {
+    const rows = rowsUsaJobs(
+      {
+        SearchResult: {
+          SearchResultCount: "2",
+          SearchResultCountAll: "2",
+          SearchResultItems: [
+            {
+              MatchedObjectId: "44001001",
+              MatchedObjectDescriptor: {
+                PositionTitle: "Machine Learning Engineer",
+                PositionURI: "https://www.usajobs.gov/GetJob/ViewDetails/44001001",
+                ApplicationCloseDate: "2026-12-01",
+                UserArea: { Details: { JobSummary: "Build models.", MajorDuties: ["Train models.", "Evaluate systems."] } },
+              },
+            },
+            { MatchedObjectId: "bad", MatchedObjectDescriptor: { PositionTitle: 1 } },
+          ],
+        },
+      },
+      "federal",
+      config,
+      NOW,
+    );
+    expect(rows).toHaveLength(1);
+    expect(rows[0].job.source_job_id).toBe("44001001");
+    expect(rows[0].html).toContain("Train models.");
+    expect(rows[0].html).toContain("Evaluate systems.");
+  });
   it("exposes the same rows through the adapter contract", () => {
     expect(adapters.usajobs.normalize(sample, "federal", config).map((j) => j.source_job_id).sort()).toEqual(
       ["21947200", "33001001", "33001003"],
@@ -156,7 +185,7 @@ describe("USAJOBS pagination fetch", () => {
       return new Response(JSON.stringify(body), { headers: { "content-type": "application/json" } });
     }) as typeof fetch;
     const items = await fetchUsaJobsItems(
-      { key: "test-key-not-a-secret", userAgent: "shadowfetch@mail.grokbot.com" },
+      { key: "test-key-not-a-secret", userAgent: "usasi@usasihq.com" },
       fetcher,
       async () => undefined,
     );
@@ -164,7 +193,7 @@ describe("USAJOBS pagination fetch", () => {
     expect(calls[0].url).toBe(searchUrl("artificial intelligence", 1));
     expect(calls.some((c) => c.url.includes("Keyword=AI") && c.url.includes("Page=2"))).toBe(true);
     expect(calls.every((c) => c.headers["Authorization-Key"] === "test-key-not-a-secret")).toBe(true);
-    expect(calls.every((c) => c.headers["User-Agent"] === "shadowfetch@mail.grokbot.com")).toBe(true);
+    expect(calls.every((c) => c.headers["User-Agent"] === "usasi@usasihq.com")).toBe(true);
     expect(calls.every((c) => c.headers.Host === "data.usajobs.gov")).toBe(true);
     expect(JSON.stringify(calls)).not.toMatch(/USAJOBS_API_KEY/);
     expect(items.map((i) => String(i.MatchedObjectId)).sort()).toEqual(["1", "2"]);
