@@ -89,7 +89,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Listed under">
               {p.groups.map((g) => (
                 <li key={g}>
-                  <Link prefetch={false} href={g === "local" ? "/local/" : `/people/?group=${g}`} className="badge min-h-9 hover:border-cyan">
+                  <Link prefetch={false} href={g === "local" ? "/local/" : g === "creators" ? "/voices/" : `/people/?group=${g}`} className="badge min-h-9 hover:border-cyan">
                     {PERSON_GROUP_LABELS[g]}
                   </Link>
                 </li>

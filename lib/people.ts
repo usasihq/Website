@@ -11,6 +11,7 @@ export const PERSON_GROUP_LABELS: Record<PersonGroup, string> = {
   engineering: "Engineers and researchers",
   "open-source": "Open-source maintainers",
   local: "Local SI",
+  creators: "Tech creators and communicators",
 };
 
 export const PERSON_SECTOR_LABELS: Record<PersonSector, string> = {
@@ -50,6 +51,7 @@ export const WORK_TYPE_LABELS: Record<WorkType, string> = {
   "open-data": "Open data",
   "open-research": "Published research",
   proprietary: "Proprietary product",
+  media: "Show, channel, or publication",
 };
 
 /** One row of the directory: a Person profile or a Big SI leader. */

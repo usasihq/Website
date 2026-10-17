@@ -68,7 +68,7 @@ test("the news list groups items by month and filters by category", async ({ pag
 });
 
 test("people and news pages pass axe", async ({ page }) => {
-  for (const path of ["/people/", "/people/tri-dao/", "/news/", "/local/"]) {
+  for (const path of ["/people/", "/people/tri-dao/", "/news/", "/local/", "/voices/"]) {
     await page.goto(path);
     const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
     expect(axe.violations.map((v) => `${path}: ${v.id}`)).toEqual([]);

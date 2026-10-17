@@ -21,6 +21,7 @@ const PAGES: Array<[string, string]> = [
   ["matrix", "/matrix/"],
   ["support", "/support/"],
   ["local", "/local/"],
+  ["voices", "/voices/"],
   ["start", "/start/"],
   ["glossary", "/glossary/"],
   ["explainer", "/learn/open-weight-vs-open-source/"],

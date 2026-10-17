@@ -525,7 +525,7 @@ export type FeaturedSelection = z.infer<typeof FeaturedSelection>;
  * - engineering: engineers and researchers who build catalog models, tools, and systems;
  * - open-source: creators and maintainers of open-source projects in the catalog.
  */
-export const PERSON_GROUPS = ["leadership", "engineering", "open-source", "local"] as const;
+export const PERSON_GROUPS = ["leadership", "engineering", "open-source", "local", "creators"] as const;
 export const PersonGroup = z.enum(PERSON_GROUPS);
 export type PersonGroup = z.infer<typeof PersonGroup>;
 
@@ -561,7 +561,7 @@ export const PersonSpecialty = z.enum(PERSON_SPECIALTIES);
 export type PersonSpecialty = z.infer<typeof PersonSpecialty>;
 
 /** How a piece of work is available: open-source code, open weights, open data, published research, or proprietary. */
-export const WORK_TYPES = ["open-source", "open-weights", "open-data", "open-research", "proprietary"] as const;
+export const WORK_TYPES = ["open-source", "open-weights", "open-data", "open-research", "proprietary", "media"] as const;
 export const WorkType = z.enum(WORK_TYPES);
 export type WorkType = z.infer<typeof WorkType>;
 

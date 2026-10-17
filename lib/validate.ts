@@ -491,7 +491,10 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
       const tied =
         person.affiliations.some((a) => a.organization_slug && publishedOrgs.has(a.organization_slug)) ||
         person.work.some((w) => w.artifact_slug && publishedArtifacts.has(w.artifact_slug));
-      if (!tied) push("error", "A published profile must link to at least one published catalog organization or artifact", "affiliations");
+      // Tech creators and communicators are profiled for their own shows, channels, and publications
+      // about technology, documented on official pages, rather than for a tie to a catalog record.
+      const creator = person.groups.includes("creators") && person.work.some((w) => w.type === "media" && w.url);
+      if (!tied && !creator) push("error", "A published profile must link to at least one published catalog organization or artifact", "affiliations");
     }
   }
 
