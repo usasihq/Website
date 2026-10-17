@@ -1,0 +1,28 @@
+slug: nvidia-releases-nemotron-labs-dory-1-0-4b
+title: NVIDIA releases Nemotron Labs Dory1.0-4B, a looped language model, under OpenMDW-1.1
+event_date: 2026-10-16
+published_at: 2026-10-17
+category: release
+summary:
+  text: >-
+    NVIDIA published NVIDIA-Nemotron-Labs-Dory1.0-4B on Hugging Face with a model card that gives a
+    release date of October 16, 2026 and the OpenMDW License Agreement, version 1.1 as its license.
+    The card describes a 4B-parameter looped (latent-recurrent) language model that applies a shared
+    block of layers repeatedly, so that a single checkpoint can serve different inference compute
+    budgets by changing the loop count. It says the model was pre-trained natively in NVFP4 before
+    continuing in BF16, supports up to 256K tokens of context, lists English as the supported
+    language, and is available in BF16, MXFP8, NVFP4, and Q5_K_M formats. USASI has not tested this
+    model.
+  source_ids: [dory-1-0-4b-card]
+related_organizations: [nvidia]
+related_artifacts: [nemotron]
+publication_status: published
+updated_at: 2026-10-17
+sources:
+  - id: dory-1-0-4b-card
+    title: nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-16
+    accessed_at: 2026-10-17

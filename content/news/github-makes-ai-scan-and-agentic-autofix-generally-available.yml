@@ -1,0 +1,36 @@
+slug: github-makes-ai-scan-and-agentic-autofix-generally-available
+title: GitHub makes AI Scan for pull requests and agentic autofix for code scanning alerts generally available
+event_date: 2026-10-15
+published_at: 2026-10-17
+category: release
+summary:
+  text: >-
+    In an October 15, 2026 changelog entry, GitHub said code scanning AI Scan for pull requests is
+    generally available; it looks for vulnerabilities in pull request changes for languages and
+    frameworks CodeQL does not currently cover, such as PHP, Shell/Bash, Terraform (HCL), and
+    Dockerfiles. GitHub says AI Scan findings are advisory, do not fail the code scanning check, and
+    cannot block merges, and that a GitHub Copilot license is not required. In a separate October
+    15 entry, GitHub said agentic autofix for code scanning alerts is generally available for GitHub
+    Code Security and GitHub Advanced Security customers on GitHub Enterprise Cloud: when an alert
+    is assigned to Copilot, it proposes a fix, reruns CodeQL to confirm the alert is closed, and
+    opens a draft pull request for review.
+  source_ids: [github-ai-scan-ga, github-agentic-autofix-ga]
+related_organizations: [github]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-17
+sources:
+  - id: github-ai-scan-ga
+    title: AI Scan for pull requests generally available
+    url: https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available
+    publisher: GitHub
+    kind: release-notes
+    published_at: 2026-10-15
+    accessed_at: 2026-10-17
+  - id: github-agentic-autofix-ga
+    title: Agentic autofix for code scanning alerts general availability
+    url: https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability
+    publisher: GitHub
+    kind: release-notes
+    published_at: 2026-10-15
+    accessed_at: 2026-10-17

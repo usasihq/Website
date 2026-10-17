@@ -1,0 +1,33 @@
+slug: reflection-ai-releases-beam-weights-apache-2-0
+title: Reflection AI releases the Beam model weights on Hugging Face under Apache 2.0
+event_date: 2026-10-16
+published_at: 2026-10-17
+category: release
+summary:
+  text: >-
+    On October 16, 2026 Reflection AI said it had released the weights of Beam, which it calls its
+    first open-weight model, on Hugging Face under an Apache 2.0 license. The Beam-1.0-501B-A23B model card
+    lists the apache-2.0 license, describes a sparse mixture-of-experts model with 501B total and
+    23B active parameters and a 1M-token context window, says Beam takes text input and generates
+    text output, and says it was developed predominantly for English. Reflection says the weights
+    come in BF16, FP8, and NVFP4 formats along with a speculative decoding drafter model. USASI has
+    not tested Beam.
+  source_ids: [reflection-beam-is-available, beam-1-0-card]
+related_organizations: [reflection-ai]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-17
+sources:
+  - id: reflection-beam-is-available
+    title: Beam is now available
+    url: https://reflection.ai/blog/beam-is-available
+    publisher: Reflection AI
+    kind: announcement
+    published_at: 2026-10-16
+    accessed_at: 2026-10-17
+  - id: beam-1-0-card
+    title: reflection/Beam-1.0-501B-A23B model card
+    url: https://huggingface.co/reflection/Beam-1.0-501B-A23B
+    publisher: Reflection AI (Hugging Face)
+    kind: model-card
+    accessed_at: 2026-10-17

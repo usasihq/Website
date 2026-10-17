@@ -1,0 +1,42 @@
+slug: nvidia-releases-nemotron-3-5-super-vl-and-bolt
+title: NVIDIA releases Nemotron 3.5 Super VL and Nemotron 3.5 Bolt 74B-A9B open models under OpenMDW-1.1
+event_date: 2026-10-15
+published_at: 2026-10-17
+category: release
+summary:
+  text: >-
+    On October 15, 2026 NVIDIA released Nemotron 3.5 Super VL and Nemotron 3.5 Bolt 74B-A9B 24GB,
+    and said a third model, Nemotron 3.5 Bolt E4B 4GB, is coming October 23. The Super VL model
+    card lists 120B total and 12B active parameters, a context length of up to 1M tokens, and text,
+    image, and video input with text output. The Bolt 74B-A9B 24GB model card describes a
+    vision-language model with 74B total and 9B active parameters that uses a native 2-bit
+    quantization to fit in 24GB of memory, with a context length of up to 256K tokens. Both model
+    cards give a Hugging Face release date of October 15, 2026 and name the OpenMDW License
+    Agreement, version 1.1 as the governing license. USASI has not tested these models.
+  source_ids: [nvidia-blog-super-vl-bolt, nemotron-3-5-super-vl-card, nemotron-3-5-bolt-card]
+related_organizations: [nvidia]
+related_artifacts: [nemotron]
+publication_status: published
+updated_at: 2026-10-17
+sources:
+  - id: nvidia-blog-super-vl-bolt
+    title: "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models"
+    url: https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-17
+  - id: nemotron-3-5-super-vl-card
+    title: nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-15
+    accessed_at: 2026-10-17
+  - id: nemotron-3-5-bolt-card
+    title: nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-15
+    accessed_at: 2026-10-17
