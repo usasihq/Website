@@ -68,20 +68,26 @@ eligibility:
 openness_summary: null
 hiring_url: null
 careers:
-  url: https://www.broadcom.com/company/careers
-  enabled: false
+  url: https://broadcom.wd1.myworkdayjobs.com/External_Career
+  enabled: true
   source:
-    type: unsupported
-    note: >-
-      The careers page links to Broadcom's Workday job site. No Workday adapter exists, so automated collection is not configured.
+    type: workday
+    identifier: broadcom.wd1.External_Career
   posting_hosts: []
-  source_ids: [broadcom-careers-jobs]
-  reviewed_at: 2026-10-01
+  source_ids: [broadcom-careers-jobs, broadcom-workday-careers]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-16
 last_reviewed: 2026-09-29
 sources:
+  - id: broadcom-workday-careers
+    title: Broadcom careers on Workday
+    url: https://broadcom.wd1.myworkdayjobs.com/External_Career
+    publisher: Broadcom
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: broadcom-10k-fy2025
     title: Broadcom Inc. Form 10-K for the fiscal year ended November 2, 2025
     url: https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm

@@ -94,20 +94,26 @@ openness_summary:
   source_ids: [nvidia-nemotron-page, tensorrt-llm-license]
 hiring_url: null
 careers:
-  url: https://www.nvidia.com/en-us/about-nvidia/careers/
-  enabled: false
+  url: https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+  enabled: true
   source:
-    type: unsupported
-    note: >-
-      The careers page links to jobs.nvidia.com, an Eightfold-powered job search whose applications run through Workday. No adapter exists for either, so automated collection is not configured.
+    type: workday
+    identifier: nvidia.wd5.NVIDIAExternalCareerSite
   posting_hosts: []
-  source_ids: [nvidia-careers-jobs]
-  reviewed_at: 2026-10-01
+  source_ids: [nvidia-careers-jobs, nvidia-workday-careers]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-16
 last_reviewed: 2026-09-29
 sources:
+  - id: nvidia-workday-careers
+    title: NVIDIA careers on Workday
+    url: https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: nvidia-10k-fy2026
     title: NVIDIA Corporation Form 10-K for the fiscal year ended January 25, 2026
     url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm

@@ -31,7 +31,7 @@ describe("USAJOBS credentials", () => {
     expect(usajobsCredentials({ USAJOBS_API_KEY: "  " })).toBeNull();
     expect(usajobsCredentials({ USAJOBS_API_KEY: "test-key-not-a-secret" })).toEqual({
       key: "test-key-not-a-secret",
-      userAgent: "shadowfetch@mail.grokbot.com",
+      userAgent: "usasi@usasihq.com",
     });
     expect(usajobsCredentials({ USAJOBS_API_KEY: "test-key-not-a-secret", USAJOBS_USER_AGENT: "ops@example.com" })?.userAgent).toBe("ops@example.com");
   });
@@ -156,7 +156,7 @@ describe("USAJOBS pagination fetch", () => {
       return new Response(JSON.stringify(body), { headers: { "content-type": "application/json" } });
     }) as typeof fetch;
     const items = await fetchUsaJobsItems(
-      { key: "test-key-not-a-secret", userAgent: "shadowfetch@mail.grokbot.com" },
+      { key: "test-key-not-a-secret", userAgent: "usasi@usasihq.com" },
       fetcher,
       async () => undefined,
     );
@@ -164,7 +164,7 @@ describe("USAJOBS pagination fetch", () => {
     expect(calls[0].url).toBe(searchUrl("artificial intelligence", 1));
     expect(calls.some((c) => c.url.includes("Keyword=AI") && c.url.includes("Page=2"))).toBe(true);
     expect(calls.every((c) => c.headers["Authorization-Key"] === "test-key-not-a-secret")).toBe(true);
-    expect(calls.every((c) => c.headers["User-Agent"] === "shadowfetch@mail.grokbot.com")).toBe(true);
+    expect(calls.every((c) => c.headers["User-Agent"] === "usasi@usasihq.com")).toBe(true);
     expect(calls.every((c) => c.headers.Host === "data.usajobs.gov")).toBe(true);
     expect(JSON.stringify(calls)).not.toMatch(/USAJOBS_API_KEY/);
     expect(items.map((i) => String(i.MatchedObjectId)).sort()).toEqual(["1", "2"]);

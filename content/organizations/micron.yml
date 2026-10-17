@@ -74,20 +74,26 @@ eligibility:
 openness_summary: null
 hiring_url: null
 careers:
-  url: https://www.micron.com/about/careers
-  enabled: false
+  url: https://micron.wd1.myworkdayjobs.com/External
+  enabled: true
   source:
-    type: unsupported
-    note: >-
-      The careers page links to careers.micron.com, an Eightfold-powered job search whose applications run through Workday. No adapter exists for either, so automated collection is not configured.
+    type: workday
+    identifier: micron.wd1.External
   posting_hosts: []
-  source_ids: [micron-careers-jobs]
-  reviewed_at: 2026-10-01
+  source_ids: [micron-careers-jobs, micron-workday-careers]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-16
 last_reviewed: 2026-09-29
 sources:
+  - id: micron-workday-careers
+    title: Micron careers on Workday
+    url: https://micron.wd1.myworkdayjobs.com/External
+    publisher: Micron Technology
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: mu-10k-fy2025
     title: Micron Technology, Inc. Form 10-K for the fiscal year ended August 28, 2025
     url: https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm

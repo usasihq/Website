@@ -73,11 +73,27 @@ openness_summary:
     assessed in this record.
   source_ids: [salesforce-hf-org, salesforce-blip-card, salesforce-moirai-agent-card]
 hiring_url: https://www.salesforce.com/company/careers/
+careers:
+  url: https://salesforce.wd12.myworkdayjobs.com/External_Career_Site
+  enabled: true
+  source:
+    type: workday
+    identifier: salesforce.wd12.External_Career_Site
+  posting_hosts: []
+  source_ids: [salesforce-workday-careers]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-09-29
+updated_at: 2026-10-16
 last_reviewed: 2026-09-29
 sources:
+  - id: salesforce-workday-careers
+    title: Salesforce careers on Workday
+    url: https://salesforce.wd12.myworkdayjobs.com/External_Career_Site
+    publisher: Salesforce, Inc.
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: crm-10k-fy2026
     title: Salesforce, Inc. Form 10-K for the fiscal year ended January 31, 2026
     url: https://www.sec.gov/Archives/edgar/data/1108524/000110852426000060/crm-20260131.htm

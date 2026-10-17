@@ -79,7 +79,7 @@ const POPULAR = ["Machine learning", "Software engineer", "Research", "Product m
 const STATE_OPTIONS = Object.keys(US_STATES).map(value => ({ value, label: stateDisplayName(value) })).sort((a,b) => a.label.localeCompare(b.label,"en"));
 const SCOPE_OPTIONS = LOCATION_SCOPES.map(value => ({ value, label: LOCATION_SCOPE_LABELS[value] }));
 const options = (values: string[]) => [...new Set(values)].sort((a,b) => a.localeCompare(b,"en")).map(value => ({ value, label: value }));
-export type JobsSummary = { currentCount: number; organizationCount: number; departments: string[]; currencies: string[]; periods: string[] };
+export type JobsSummary = { currentCount: number; organizationCount: number; currencies: string[]; periods: string[] };
 export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf, browse = null }: { initial: JobItem[]; summary: JobsSummary; dataUrl: string; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string; browse?: ReactNode }) {
   const now = useJobsClock(asOf);
   const { state: f, update } = useQueryState(parseJobFilters, serializeJobFilters);
@@ -106,7 +106,9 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   const visible = results.slice((page - 1) * 30, page * 30);
   const announce = useDebounced(waiting ? "Loading all positions." : `${total} matching positions. Page ${page} of ${pageCount}.`);
   const set = (patch: Partial<JobFilters>, mode: "push" | "replace" = "push") => update({ ...f, page: 1, ...patch }, mode);
-  const departments = useMemo(() => summary.departments.map(value => ({ value, label: value })), [summary.departments]);
+  // Departments mean something only within one employer, so the menu lists the chosen employer's.
+  const departments = useMemo(() => f.company ? [...new Set(items.filter(j => j.organization_slug === f.company && j.department).map(j => j.department!))]
+    .sort((a, b) => a.localeCompare(b, "en")).map(value => ({ value, label: value })) : [], [items, f.company]);
   // Cities named by current listings in the chosen state, most listings first, for the city menu.
   const cityOptions = useMemo(() => {
     if (!f.state) return [];
@@ -207,7 +209,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
           {f.state && cityOptions.length ? <SelectField label="City" value={f.city} options={cityOptions} onChange={city => set({ city })} allLabel={`Anywhere in ${stateDisplayName(f.state)}`} /> : null}
           <SelectField<LocationScope> label="Remote and U.S. locations" value={f.where} options={SCOPE_OPTIONS} onChange={where => set({ where })} allLabel="All listings" />
           <SelectField label="Employment type" value={f.employment} options={options(["full-time", "part-time", "contract", "temporary", "internship", "unknown"])} onChange={employment => set({ employment })} />
-          <SelectField label="Department" value={f.department} options={departments} onChange={department => set({ department })} allLabel="All supplied departments" />
+          {f.company && (departments.length || f.department) ? <SelectField label="Department" value={f.department} options={departments} onChange={department => set({ department })} allLabel="All supplied departments" /> : null}
           <details><summary className="min-h-11 cursor-pointer text-sm text-ice">Salary and date filters</summary><div className="mt-3 grid gap-4">
             <label className="flex min-h-11 items-center gap-2 text-sm"><input type="checkbox" checked={f.salary} onChange={e => set({ salary: e.target.checked })} className="h-6 w-6" />Employer supplies salary</label>
             <SelectField label="Salary currency" value={f.currency} options={options(summary.currencies)} onChange={currency => set({ currency, salary_min: "" })} />

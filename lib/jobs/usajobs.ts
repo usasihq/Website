@@ -8,7 +8,8 @@ import type { Careers, NormalizedJob } from "./schema";
 import { Salary } from "./schema";
 import { endpoint, FeedError, postingUrl, readJsonBody } from "./security";
 
-export const DEFAULT_USAJOBS_USER_AGENT = "shadowfetch@mail.grokbot.com";
+// The site's public contact address (lib/site-config.ts); USAJOBS asks for the email the API key was registered with.
+export const DEFAULT_USAJOBS_USER_AGENT = "usasi@usasihq.com";
 export const USAJOBS_HOST = "data.usajobs.gov";
 export const USAJOBS_SEARCH_URL = "https://data.usajobs.gov/api/search";
 /** Keyword searches that feed this board. Short "AI" is noisy; isRelevantAiJob drops false positives. */

@@ -89,20 +89,26 @@ eligibility:
 openness_summary: null
 hiring_url: null
 careers:
-  url: https://www.sifive.com/careers
-  enabled: false
+  url: https://sifive.wd1.myworkdayjobs.com/sifivecareers
+  enabled: true
   source:
-    type: unsupported
-    note: >-
-      The careers page links to SiFive's Workday job site. No Workday adapter exists, so automated collection is not configured.
+    type: workday
+    identifier: sifive.wd1.sifivecareers
   posting_hosts: []
-  source_ids: [sifive-careers-jobs]
-  reviewed_at: 2026-10-01
+  source_ids: [sifive-careers-jobs, sifive-workday-careers]
+  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
-updated_at: 2026-10-01
+updated_at: 2026-10-16
 last_reviewed: 2026-10-01
 sources:
+  - id: sifive-workday-careers
+    title: SiFive careers on Workday
+    url: https://sifive.wd1.myworkdayjobs.com/sifivecareers
+    publisher: SiFive
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-16
   - id: sf-locations
     title: SiFive, Inc. Locations
     url: https://www.sifive.com/locations

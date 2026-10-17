@@ -32,7 +32,7 @@ parent/subsidiary records). Reassigning a board requires review, not automatic s
    USAJOBS uses the official Search API (`https://data.usajobs.gov/api/search`) with
    keyword queries, control-number de-duplication, a relevance filter, and the
    announcement close date. Requests send `Host: data.usajobs.gov`, `User-Agent`
-   (registered email, default `shadowfetch@mail.grokbot.com`), and
+   (registered email, default `usasi@usasihq.com`), and
    `Authorization-Key` from `USAJOBS_API_KEY`. If that env var is missing, refresh
    skips USAJOBS and does not fail. Never commit the key.
 5. `posting_hosts` is an exact, editor-reviewed allowlist for employer-owned custom
@@ -164,7 +164,7 @@ secret here:
    `USAJOBS_API_KEY`**. If environment secrets are not used, the same name can be a
    repository secret under **Settings → Secrets and variables → Actions**.
 2. **Optional User-Agent.** Variable `USAJOBS_USER_AGENT` (registered email). If
-   unset, refresh uses `shadowfetch@mail.grokbot.com`.
+   unset, refresh uses `usasi@usasihq.com`.
 3. **Cloudflare dashboard / wrangler build env: not required.** The static site
    does not call USAJOBS at build or request time. Only the GitHub Actions refresh
    step needs the key. A missing key skips USAJOBS and leaves the rest of Jobs
@@ -294,3 +294,11 @@ setting have not been verified.
 - SmartRecruiters: the documented Posting API, `https://api.smartrecruiters.com/v1/companies/<id>/postings`, 100 per page (at most 50 pages), without descriptions. Each description is one request to `/postings/<id>`, made only for postings with no stored description (at most 1,500 a run, 250 ms apart); a posting whose description was not fetched keeps the stored one. The first run for ServiceNow and LLNL took about 12 minutes; later runs fetch only new postings. Public links are `jobs.smartrecruiters.com/<company>/<id>`. ServiceNow's careers site sends Apply to that host; LLNL's Find Your Job page links to it.
 - Board identifiers may contain a period (Ashby `nomic.ai`, `far.ai`).
 - Cloudflare: the account is on Workers Paid (100,000 files per deployment); `scripts/postbuild.mjs` enforces that limit.
+
+## Workday (2026-10-16, owner approved)
+
+- Workday has no documented job feed. Each employer's career site, `https://<tenant>.<wdN>.myworkdayjobs.com/<site>`, loads its openings from public JSON under `/wday/cxs/<tenant>/<site>/`; the sites' robots.txt does not disallow it. The owner approved reading it on 2026-10-16.
+- Identifier `<tenant>.<wdN>.<site>`. The list (`POST .../jobs`, 20 per page, 400 ms apart, at most 250 pages) gives title and path; a detail (`GET .../job/...`, 300 ms apart, at most 500 a site and 1,500 in all per run; `WORKDAY_DETAIL_BUDGET` overrides the total) gives the description, locations, country, start date, and time type. Details are fetched only for postings with no stored description; what a detail returned is kept in `data/jobs/workday-meta.json` (local, never committed), so later runs read only the list. Workday reports at most 2,000 as a site's total, so the list is read until a short page. A detail that fails with an HTTP error (a posting closed in between) is skipped, not the whole site. Until a posting's details arrive it has no location and no description (its page is noindex).
+- Posting links must be on the source's own Workday host under `/<site>/job/`.
+- Enabled: Adobe, Boston Dynamics, Broadcom, Intel, Marvell, Micron, NVIDIA, Red Hat, Salesforce, SiFive. Each site was matched to its company by the site's title or the hiring organization in a posting. Universities on Workday (CMU, Cornell, UT Austin, UW) are left out: their boards are mostly non-research campus staff roles.
+- The USAJOBS User-Agent default is the site's public contact address, usasi@usasihq.com (it must match the address the API key is registered with).
