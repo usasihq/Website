@@ -38,8 +38,8 @@ export const Careers = z.object({
     z.object({ type: z.literal("lever"), identifier }).strict(),
     z.object({ type: z.literal("workable"), identifier }).strict(),
     z.object({ type: z.literal("smartrecruiters"), identifier }).strict(),
-    // Workday: "<tenant>.<wdN>.<site>", for the career site https://<tenant>.<wdN>.myworkdayjobs.com/<site>.
-    z.object({ type: z.literal("workday"), identifier: identifier.regex(/^[a-z0-9-]+\.wd[0-9]{1,3}\.[A-Za-z0-9_-]+$/) }).strict(),
+    // Workday: "<tenant>.<wdN>.<site>" (myworkdayjobs.com) or "<tenant>.<wdN>site.<site>" (myworkdaysite.com); see workdaySite.
+    z.object({ type: z.literal("workday"), identifier: identifier.regex(/^[a-z0-9-]+\.wd[0-9]{1,3}(site)?\.[A-Za-z0-9_-]+$/) }).strict(),
     z.object({ type: z.literal("usajobs"), identifier }).strict(),
     z.object({ type: z.literal("manual"), note: text(400) }).strict(),
     z.object({ type: z.literal("unsupported"), note: text(400) }).strict(),

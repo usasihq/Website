@@ -7,7 +7,8 @@ import { DATA_PATH, validateDataset } from "../lib/jobs/load";
 import { Dataset, EMPTY_DATASET, isAutomatedSource, Job } from "../lib/jobs/schema";
 import { fetchFeed, FeedError } from "../lib/jobs/security";
 import { reconcile, sourceKey, jobSourceKey, type FeedResult } from "../lib/jobs/reconcile";
-import { htmlToDescription } from "../lib/jobs/description";
+import { descriptionText, htmlToDescription } from "../lib/jobs/description";
+import { allLocationsRemote, workplaceFromText } from "../lib/jobs/workplace-text";
 import { readDescriptions, writeDescriptions } from "../lib/jobs/descriptions-store";
 import { fetchUsaJobsItems, usaJobsPayload, usajobsCredentials } from "../lib/jobs/usajobs";
 import { fetchSmartRecruiters } from "../lib/jobs/smartrecruiters";
@@ -40,6 +41,14 @@ for (const org of configs) {
       : c.source.type === "smartrecruiters" ? await fetchSmartRecruiters(c, (id) => descriptions.has(`${org.slug}:smartrecruiters:${c.source.type === "smartrecruiters" ? c.source.identifier : ""}:${id}`))
       : await fetchFeed(c);
     const rows = adapters[c.source.type].rows(payload, org.slug, c);
+    // Fill an unknown workplace only from what the employer states: every location remote, or an
+    // explicit sentence in this or the stored description (lib/jobs/workplace-text.ts).
+    for (const r of rows) {
+      if (r.job.workplace !== "unknown") continue;
+      const text = r.html ? descriptionText(htmlToDescription(r.html) ?? []) : descriptions.has(r.job.id) ? descriptionText(descriptions.get(r.job.id)!) : "";
+      const w = allLocationsRemote(r.job.locations) ? "remote" : text ? workplaceFromText(text) : null;
+      if (w) r.job = { ...r.job, workplace: w, remote: w === "remote" };
+    }
     const jobs = rows.map(r => r.job);
     // Validate every row before reconciliation. One poisoned row rejects the entire feed.
     for (const j of jobs) Job.parse({ ...j, first_seen: now, last_seen: now, last_successfully_checked: now,

@@ -201,3 +201,34 @@ describe("Workday adapter", () => {
     expect(Careers.safeParse({ ...c, source: { type: "workday", identifier: "acme.External" } }).success).toBe(false);
   });
 });
+
+describe("workplace from the employer's own words", () => {
+  it("reads only explicit statements about the role", async () => {
+    const { workplaceFromText, allLocationsRemote, workplaceFromWorkdayType } = await import("@/lib/jobs/workplace-text");
+    expect(workplaceFromText("Location: This is a fully remote position open to U.S. candidates.")).toBe("remote");
+    expect(workplaceFromText("This is a hybrid role based in our Austin office.")).toBe("hybrid");
+    expect(workplaceFromText("You will work three days a week in the office.")).toBe("hybrid");
+    expect(workplaceFromText("This is an onsite position at our Salem office.")).toBe("on-site");
+    // Benefits, duties, slogans, and mixed statements stay unknown.
+    expect(workplaceFromText("Benefits: hybrid work model, wellness days.")).toBeNull();
+    expect(workplaceFromText("Run live and hybrid events for the company.")).toBeNull();
+    expect(workplaceFromText("We are a remote-first company.")).toBeNull();
+    expect(workplaceFromText("Work on remote sensing pipelines.")).toBeNull();
+    expect(workplaceFromText("This is a fully remote role. This is an onsite position.")).toBeNull();
+    expect(allLocationsRemote(["Remote - US", "Remote, Canada"])).toBe(true);
+    expect(allLocationsRemote(["Remote - US", "New York, NY"])).toBe(false);
+    expect(workplaceFromWorkdayType("Office - Flexible")).toBe("hybrid");
+    expect(workplaceFromWorkdayType("Remote")).toBe("remote");
+    expect(workplaceFromWorkdayType(null)).toBeNull();
+  });
+});
+
+describe("Workday myworkdaysite.com sites", () => {
+  it("builds and checks links under /recruiting/<tenant>/<site>/job/", async () => {
+    const { workdaySite, postingUrl } = await import("@/lib/jobs/security");
+    expect(workdaySite("uw.wd5site.UWHires")).toEqual({ tenant: "uw", host: "wd5.myworkdaysite.com", site: "UWHires", base: "/recruiting/uw/UWHires" });
+    const c = { url: "https://wd5.myworkdaysite.com/recruiting/uw/UWHires", enabled: true, source: { type: "workday" as const, identifier: "uw.wd5site.UWHires" }, posting_hosts: [], source_ids: ["x"], reviewed_at: "2026-10-17" };
+    expect(postingUrl("https://wd5.myworkdaysite.com/recruiting/uw/UWHires/job/Seattle-WA/Analyst_REQ-1", c)).toBe("https://wd5.myworkdaysite.com/recruiting/uw/UWHires/job/Seattle-WA/Analyst_REQ-1");
+    expect(() => postingUrl("https://wd5.myworkdaysite.com/recruiting/other/UWHires/job/x", c)).toThrow();
+  });
+});

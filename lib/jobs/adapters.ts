@@ -3,10 +3,11 @@ import type { Careers, NormalizedJob, Job } from "./schema";
 import { isAutomatedSource } from "./schema";
 import { Salary } from "./schema";
 import { decodeEntities } from "./description";
-import { endpoint, FeedError, postingUrl } from "./security";
+import { endpoint, FeedError, postingUrl, workdaySite } from "./security";
 import { rowsUsaJobs } from "./usajobs";
 import { SrPosting, type SrPayload } from "./smartrecruiters";
 import { WdMeta, workdayId, type WdPayload } from "./workday";
+import { workplaceFromWorkdayType } from "./workplace-text";
 const short = z.string().max(1000);
 const id = z.union([z.number().int().nonnegative(), z.string().regex(/^[A-Za-z0-9_-]{1,100}$/)]);
 const greenhouse = z.object({ jobs: z.array(z.object({
@@ -182,8 +183,7 @@ const workdayPayload = z.object({
 const rowsWorkday = (payload: unknown, org: string, c: Careers): SourceRow[] => {
   const data: WdPayload = workdayPayload.parse(payload);
   if (c.source.type !== "workday") throw new FeedError("payload");
-  const host = `https://${c.source.identifier.split(".")[0]}.${c.source.identifier.split(".")[1]}.myworkdayjobs.com`;
-  const site = c.source.identifier.split(".").slice(2).join(".");
+  const w = workdaySite(c.source.identifier);
   const seen = new Set<string>();
   const rows: SourceRow[] = [];
   for (const r of data.postings) {
@@ -191,12 +191,14 @@ const rowsWorkday = (payload: unknown, org: string, c: Careers): SourceRow[] => 
     if (seen.has(id)) continue; // the same posting can appear on two pages while the list changes
     seen.add(id);
     const m = data.meta[id];
-    const j = base(org, c, id, r.title, `${host}/${site}${r.externalPath}`);
+    const j = base(org, c, id, r.title, `https://${w.host}${w.base}${r.externalPath}`);
     // "2 Locations" in the list is a count, not a place.
     const listed = r.locationsText && !/^\d+ Locations?$/i.test(r.locationsText) ? [plain(r.locationsText)] : [];
     const locations = uniq(m ? m.locations.map(l => plain(l)) : listed);
     const job: NormalizedJob = { ...j, requisition_id: plain(m?.reqId ?? null), locations, countries: uniq([m?.country]),
-      workplace: m?.remote ? "remote" : "unknown", remote: m?.remote ? true : null, employment_type: employmentOf(m?.timeType),
+      workplace: workplaceFromWorkdayType(m?.remoteType) ?? (m?.remote ? "remote" : "unknown"),
+      remote: (workplaceFromWorkdayType(m?.remoteType) ?? (m?.remote ? "remote" : null)) === "remote" ? true : m?.remoteType ? false : null,
+      employment_type: employmentOf(m?.timeType),
       posted_at: m?.startDate ? date(`${m.startDate}T00:00:00Z`) : null, posted_date_kind: m?.startDate ? "first-published" : null };
     rows.push({ job, html: Object.hasOwn(data.details, id) ? data.details[id] : undefined });
   }

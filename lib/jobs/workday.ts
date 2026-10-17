@@ -18,7 +18,12 @@ import { endpoint, fetchJson, FeedError, workdaySite } from "./security";
 
 const short = z.string().max(1000);
 const ListPosting = z.object({ title: short, externalPath: z.string().max(500).regex(/^\/job\/[^\s?#]+$/), locationsText: short.nullable().optional(), bulletFields: z.array(short).max(10).optional() });
-const ListPage = z.object({ total: z.number().int().nonnegative(), jobPostings: z.array(ListPosting).max(20) });
+type FacetValue = { id?: string; descriptor?: string; count?: number; values?: FacetValue[] };
+const FacetValueS: z.ZodType<FacetValue> = z.lazy(() => z.object({ id: z.string().max(200).optional(), descriptor: short.optional(), count: z.number().int().nonnegative().optional(), values: z.array(FacetValueS).max(500).optional() }));
+// Some sites mix non-job tiles into the list; entries without a title and job path are skipped, not fatal.
+const ListPage = z.object({ total: z.number().int().nonnegative(),
+  jobPostings: z.array(z.unknown()).max(20),
+  facets: z.array(z.object({ facetParameter: z.string().max(100), values: z.array(FacetValueS).max(500).optional() })).max(30).optional() });
 const Detail = z.object({ jobPostingInfo: z.object({
   title: short, jobDescription: z.string().max(400000).nullable().optional(), location: short.nullable().optional(),
   additionalLocations: z.array(short).max(1000).nullable().optional(), startDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
@@ -28,7 +33,7 @@ const Detail = z.object({ jobPostingInfo: z.object({
 }) });
 
 export const WdMeta = z.object({ locations: z.array(short).max(50), country: z.string().regex(/^[A-Z]{2}$/).nullable(), startDate: z.string().nullable(),
-  timeType: short.nullable(), reqId: short.nullable(), remote: z.boolean() }).strict();
+  timeType: short.nullable(), reqId: short.nullable(), remote: z.boolean(), remoteType: short.nullable().optional() }).strict();
 export type WdMeta = z.infer<typeof WdMeta>;
 export type WdPayload = { postings: z.infer<typeof ListPosting>[]; meta: Record<string, WdMeta>; details: Record<string, string> };
 
@@ -51,16 +56,45 @@ export async function fetchWorkday(c: Careers, known: (id: string) => WdMeta | u
   const w = workdaySite(c.source.identifier);
   const list = endpoint(c);
   const postings: WdPayload["postings"] = [];
-  let total = 0;
-  for (let page = 0; page < MAX_PAGES; page++) {
-    const data = ListPage.parse(await fetchJson(list, fetcher, { appliedFacets: {}, limit: PAGE, offset: page * PAGE, searchText: "" }));
-    // Workday reports the total on the first page; later pages may say 0.
-    if (page === 0) total = data.total;
-    postings.push(...data.jobPostings);
-    if (data.jobPostings.length < PAGE || (total < TOTAL_CAP && postings.length >= total)) break;
-    await delay(400);
+  const seenPaths = new Set<string>();
+  /** Every posting for one set of facet filters; returns the first page (for its facets and total). */
+  const readAll = async (appliedFacets: Record<string, string[]>) => {
+    let first: z.infer<typeof ListPage> | null = null;
+    let total = 0, got = 0;
+    for (let page = 0; page < MAX_PAGES; page++) {
+      const data = ListPage.parse(await fetchJson(list, fetcher, { appliedFacets, limit: PAGE, offset: page * PAGE, searchText: "" }));
+      // Workday reports the total on the first page; later pages may say 0.
+      if (page === 0) { first = data; total = data.total; }
+      got += data.jobPostings.length;
+      for (const raw of data.jobPostings) {
+        const parsed = ListPosting.safeParse(raw);
+        if (!parsed.success) continue;
+        const p = parsed.data;
+        if (!seenPaths.has(p.externalPath)) { seenPaths.add(p.externalPath); postings.push(p); }
+      }
+      // Past the 2,000 cap Workday repeats earlier pages; stop there and split instead.
+      if (data.jobPostings.length < PAGE || got >= Math.min(total, TOTAL_CAP)) break;
+      await delay(400);
+    }
+    return first;
+  };
+  const first = await readAll({});
+  if (!first) throw new FeedError("payload");
+  if (first.total >= TOTAL_CAP) {
+    // A capped list: read it again split by a facet whose groups are each under the cap and add up
+    // to the whole list (job family first), so postings past 2,000 are not left out.
+    const flat = (vals: FacetValue[] = []): FacetValue[] => vals.flatMap((v) => (v.values ? flat(v.values) : [v]));
+    const options = (first.facets ?? []).map((f) => ({ param: f.facetParameter, values: flat(f.values).filter((v) => v.id && v.count) }))
+      .filter((f) => f.values.length > 1 && f.values.every((v) => v.count! < TOTAL_CAP))
+      .map((f) => ({ ...f, sum: f.values.reduce((n, v) => n + v.count!, 0) }));
+    const pick = options.find((f) => /jobfamily/i.test(f.param) && f.sum >= first.total) ?? options.filter((f) => !/location/i.test(f.param)).sort((a, b) => b.sum - a.sum)[0];
+    if (!pick) throw new FeedError("anomaly");
+    const expected = pick.sum;
+    for (const v of pick.values) { await delay(400); await readAll({ [pick.param]: [v.id!] }); }
+    // A split that misses more than a few percent of postings is not trusted.
+    if (postings.length < expected * 0.97) throw new FeedError("anomaly");
   }
-  if (!postings.length && total > 0) throw new FeedError("payload");
+  if (!postings.length && first.total > 0) throw new FeedError("payload");
   const meta: Record<string, WdMeta> = {};
   const details: Record<string, string> = {};
   let fetched = 0;
@@ -85,7 +119,7 @@ export async function fetchWorkday(c: Careers, known: (id: string) => WdMeta | u
     const d = parsed.data.jobPostingInfo;
     const locations = [d.location, ...(d.additionalLocations ?? [])].filter((l): l is string => Boolean(l)).slice(0, 50);
     meta[id] = WdMeta.parse({ locations, country: d.jobRequisitionLocation?.country?.alpha2Code ?? null, startDate: d.startDate ?? null,
-      timeType: d.timeType ?? null, reqId: d.jobReqId ?? null, remote: /remote/i.test(`${d.remoteType ?? ""} ${locations.join(" ")}`) });
+      timeType: d.timeType ?? null, reqId: d.jobReqId ?? null, remote: /remote/i.test(`${d.remoteType ?? ""} ${locations.join(" ")}`), remoteType: d.remoteType ?? null });
     if (d.jobDescription) details[id] = d.jobDescription;
     await delay(300);
   }

@@ -315,3 +315,9 @@ setting have not been verified.
 - Posting links must be on the source's own Workday host under `/<site>/job/`.
 - Enabled: Adobe, Boston Dynamics, Broadcom, Intel, Marvell, Micron, NVIDIA, Red Hat, Salesforce, SiFive. Each site was matched to its company by the site's title or the hiring organization in a posting. Universities on Workday (CMU, Cornell, UT Austin, UW) are left out: their boards are mostly non-research campus staff roles.
 - The USAJOBS User-Agent default is the site's public contact address, usasi@usasihq.com (it must match the address the API key is registered with).
+
+## Workplace labels and capped Workday lists (2026-10-17)
+
+- An unknown workplace is filled at refresh only from the employer: every location "Remote", Workday's own remote-type field ("Office - Flexible" is hybrid), or an explicit sentence in the description (lib/jobs/workplace-text.ts). Each pattern was checked against listings whose feed gives the workplace; loose ones (benefit lists, "remote-first", "hybrid role" describing duties) were dropped because they disagreed with the feeds. About three quarters of listings still give no workplace; nothing is guessed.
+- Workday lists reported at 2,000 (Workday's cap) are read again split by a facet whose groups are each under the cap, job family first; a split that recovers less than 97% of the facet total fails the source. NVIDIA: 2,735 postings.
+- Universities on Workday are now included: Carnegie Mellon (cmu.wd115.CMU), Cornell, UT Austin, and the University of Washington (uw.wd5site.UWHires, on myworkdaysite.com).

@@ -3,11 +3,18 @@ import { isAutomatedSource, safeJobUrl } from "./schema";
 export class FeedError extends Error {
   constructor(public category: "network" | "http" | "rate-limited" | "payload" | "unsafe-url" | "anomaly") { super(category); }
 }
-/** A Workday career site from its "<tenant>.<wdN>.<site>" identifier. */
-export function workdaySite(identifier: string): { tenant: string; host: string; site: string } {
-  const m = /^([a-z0-9-]+)\.(wd[0-9]{1,3})\.([A-Za-z0-9_-]+)$/.exec(identifier);
+/**
+ * A Workday career site from its identifier: "<tenant>.<wdN>.<site>" for
+ * https://<tenant>.<wdN>.myworkdayjobs.com/<site>, or "<tenant>.<wdN>site.<site>"
+ * for https://<wdN>.myworkdaysite.com/recruiting/<tenant>/<site> (the other
+ * domain Workday hosts career sites on). `base` is the public path before /job/.
+ */
+export function workdaySite(identifier: string): { tenant: string; host: string; site: string; base: string } {
+  const m = /^([a-z0-9-]+)\.(wd[0-9]{1,3})(site)?\.([A-Za-z0-9_-]+)$/.exec(identifier);
   if (!m) throw new FeedError("payload");
-  return { tenant: m[1], host: `${m[1]}.${m[2]}.myworkdayjobs.com`, site: m[3] };
+  return m[3]
+    ? { tenant: m[1], host: `${m[2]}.myworkdaysite.com`, site: m[4], base: `/recruiting/${m[1]}/${m[4]}` }
+    : { tenant: m[1], host: `${m[1]}.${m[2]}.myworkdayjobs.com`, site: m[4], base: `/${m[4]}` };
 }
 export function endpoint(c: Careers): string {
   if (c.source.type === "greenhouse") return `https://boards-api.greenhouse.io/v1/boards/${c.source.identifier}/jobs`;
@@ -40,7 +47,7 @@ export function postingUrl(value: string, c: Careers): string {
     // Workday posting links live on the employer's own career site host, under /<site>/job/.
     if (type === "workday" && "identifier" in c.source) {
       const w = workdaySite(c.source.identifier);
-      if (u.hostname !== w.host || !u.pathname.startsWith(`/${w.site}/job/`)) throw new FeedError("unsafe-url");
+      if (u.hostname !== w.host || !u.pathname.startsWith(`${w.base}/job/`)) throw new FeedError("unsafe-url");
       u.hash = "";
       u.search = "";
       return u.href;
