@@ -1,0 +1,41 @@
+# The USASI weekly, issue 3. Links are site paths; the email uses absolute URLs.
+number: 3
+slug: issue-3
+subject: "Issue 3: Reflection's Beam weights, Nemotron 3.5 Super VL, and Voices of SI"
+preview: "What changed in the USASI catalog from October 17 to 18, 2026. Every item links to its sources."
+sent_at: 2026-10-18
+covers:
+  from: 2026-10-17
+  to: 2026-10-18
+intro:
+  - "Welcome to issue 3 of the USASI weekly."
+  - "[USASI](/) is an independent catalog of U.S. AI organizations and U.S.-led open models and tools. Each issue sums up what changed on the site. Nothing in it is new: every item was already published on the site, and each link leads to a page that cites its sources. Issue 2 went out on October 16, so this short issue covers October 17 and 18, 2026, plus Jobs changes published on October 16 after issue 2 went out."
+sections:
+  - heading: Open models
+    items:
+      - "**Beam.** [Reflection AI released the weights](/news/reflection-ai-releases-beam-weights-apache-2-0/) of Beam, which it calls its first open-weight model, on Hugging Face under Apache 2.0. The model card describes a sparse mixture-of-experts model with 501B total and 23B active parameters."
+      - "**Nemotron 3.5 Super VL and Bolt.** [NVIDIA released](/news/nvidia-releases-nemotron-3-5-super-vl-and-bolt/) a 120B-A12B vision-language model and a 74B-A9B model quantized to fit in 24GB of memory, both under the OpenMDW License 1.1. NVIDIA says a smaller Bolt model is coming October 23."
+      - "**Dory1.0-4B.** [NVIDIA's Nemotron Labs published](/news/nvidia-releases-nemotron-labs-dory-1-0-4b/) a 4B looped language model that reuses a shared block of layers, so one checkpoint can run at different compute levels."
+    note: "USASI has not tested any of these releases."
+  - heading: Tool releases
+    items:
+      - "GitHub made [AI Scan for pull requests and agentic autofix for code scanning alerts](/news/github-makes-ai-scan-and-agentic-autofix-generally-available/) generally available. AI Scan findings are advisory and cannot block merges."
+      - "GitHub also made [open source license compliance checks](/news/github-makes-open-source-license-compliance-generally-available/) generally available for GitHub Enterprise Cloud, with an API that coding agents can use to check packages against an organization's license policy."
+    note: "USASI has not tested any of these releases."
+  - heading: Hosted models and policy
+    items:
+      - "[NIST's CAISSI, the NSA, and CISA published ten voluntary practices](/news/nist-caissi-nsa-cisa-publish-si-incident-response-practices/) for managing incidents during super intelligence training and evaluation, in five stages from preparation to reporting."
+  - heading: New in the catalog
+    items:
+      - "**[T3 Code](/open/t3-code/)**, the MIT-licensed app from [Ping Labs](/companies/ping-labs/) (T3 Tools, Inc.) for running coding agents such as Claude Code, Codex, and OpenCode from desktop, web, and mobile, now has its own record. [TypeSafe AI's record](/companies/typesafe-ai/) now lists its Jev 1.14 preview model and agent skill."
+  - heading: New on the site
+    items:
+      - "**[Voices of SI](/voices/):** profiles of 113 YouTube hosts, podcasters, newsletter writers, and technology journalists who explain AI to the public, including [Cleo Abram](/people/cleo-abram/), [Jesse Genet](/people/jesse-genet/), and [Kim Isenberg](/people/kim-isenberg/) of Superintelligence. Each reports what the person makes, from their own pages or their publisher's, and leaves out opinions and audience counts."
+      - "**[Jobs](/jobs/):** search by what and where, filters for remote U.S. work, entry-level roles, internships, and disclosed pay, and pages by role such as Forward Deployed Engineer. Listings now come from Workday career sites too, including all of NVIDIA's openings, and from SpaceX, Anduril, and four universities. Remote and hybrid labels are filled only from what the employer states. The board now opens on U.S. jobs, with a switch for listings elsewhere, and shows pay that employers state in the job description, labelled as such, so 11,021 of about 25,000 listings now show pay."
+      - "**A lighter look:** the site moved to a light design with the earlier dark colors kept for visitors whose device is set to dark mode."
+  - heading: Corrections
+    intro: "None this week. If you spot an error, reply to this email or use the [corrections page](/contribute/#corrections)."
+closing:
+  - "New here? [Start here](/start/) explains how the catalog works. This issue has no sponsor."
+web_url: https://usasihq.beehiiv.com/p/issue-3-reflection-s-beam-weights-nemotron-3-5-super-vl-and-voices-of-si
+publication_status: published
