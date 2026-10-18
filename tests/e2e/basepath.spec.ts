@@ -27,7 +27,7 @@ test("assets, navigation, deep links, and 404 work under a base path", async ({ 
   await page.reload();
   await expect(page.locator("h1")).toHaveText(org.name);
 
-  const sitemap = await (await page.request.get("/usasi/sitemap.xml")).text();
+  const sitemap = await (await page.request.get("/usasi/sitemap-pages.xml")).text();
   expect(sitemap).toContain(`/usasi/companies/${org.slug}/`);
 
   const notFound = await page.goto("/usasi/does-not-exist/");

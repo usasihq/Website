@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { getCatalog } from "@/lib/catalog";
 import { MEMORY_PAGES, memoryPageHref, memoryPageIndexable } from "@/lib/hardware";
 import { jobLandingSitemap } from "@/lib/jobs/landing-links";
-import { jobPages } from "@/lib/jobs/job-pages";
 import { layoffSitemap } from "@/lib/jobs/layoffs";
 import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
 import { EXPLAINERS, LEARNING_PATHS } from "@/lib/learn";
@@ -18,6 +17,11 @@ import { STATIC_ROUTES } from "@/lib/site-routes";
 export const dynamic = "force-static";
 
 /**
+ * The site's pages except individual job pages. The build renames this file to
+ * /sitemap-pages.xml and writes /sitemap.xml as a sitemap index of it and the
+ * job-page sitemaps (/sitemaps/jobs-<n>.xml, 10,000 URLs each; see
+ * scripts/job-pages.ts), so no file nears the 50,000-URL limit.
+ *
  * Only active (published + eligible) records. Drafts never exist as pages;
  * archived pages exist but are noindex and excluded here. Record entries use
  * `updated_at`, the date of the last substantive edit — never the build date.
@@ -46,9 +50,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...jobLandingSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // WARN Act layoff pages, dated by the last successful fetch of that state's notices.
     ...layoffSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
-    // Each current job with the employer's description; pages without one are kept out of search results.
-    ...jobPages(catalog)
-      .filter((p) => p.description)
-      .map((p) => ({ url: absoluteUrl(p.path), lastModified: (p.job.posted_at ?? p.job.first_seen).slice(0, 10) })),
   ];
 }

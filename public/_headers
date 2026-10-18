@@ -40,6 +40,16 @@
   Cache-Control: public, max-age=300, stale-while-revalidate=3600
   Access-Control-Allow-Origin: *
 
+# Sitemap index and its sitemaps (job sitemaps change with every Jobs refresh).
+/sitemap.xml
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/sitemap-pages.xml
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/sitemaps/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
 /opensearch.xml
   Content-Type: application/opensearchdescription+xml; charset=utf-8
   Cache-Control: public, max-age=86400
