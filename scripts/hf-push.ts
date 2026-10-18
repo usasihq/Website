@@ -31,12 +31,14 @@ async function hubFetch(url: string, token: string, init: RequestInit & { timeou
   }
 }
 
+type HubSpaceSdk = "static" | "gradio";
+
 /** Create a public Hub repo if it is missing. 409 / already-exists is success. */
 export async function ensureHubRepo(opts: {
   type: HubRepoType;
   name: string;
   token: string;
-  sdk?: "gradio";
+  sdk?: HubSpaceSdk;
 }): Promise<"created" | "exists"> {
   const [organization, repoName] = opts.name.split("/");
   if (!organization || !repoName) throw new Error(`invalid Hub repo id ${opts.name}`);
@@ -48,13 +50,30 @@ export async function ensureHubRepo(opts: {
       name: repoName,
       organization,
       private: false,
-      ...(opts.type === "space" ? { sdk: opts.sdk ?? "gradio" } : {}),
+      ...(opts.type === "space" ? { sdk: opts.sdk ?? "static" } : {}),
     }),
   });
   if (res.ok) return "created";
   const text = await res.text();
   if (res.status === 409 || /already been created|already exists/i.test(text)) return "exists";
   throw new Error(`create ${opts.type} ${opts.name}: ${res.status} ${text.slice(0, 240)}`);
+}
+
+/** Convert an existing Space to static (free) or another SDK. */
+export async function setHubSpaceSdk(opts: {
+  name: string;
+  token: string;
+  sdk: HubSpaceSdk;
+}): Promise<void> {
+  const res = await hubFetch(`${HUB}/api/spaces/${opts.name}/settings`, opts.token, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sdk: opts.sdk }),
+  });
+  if (res.ok) return;
+  const text = await res.text();
+  if (res.status === 400 && /already|same|static/i.test(text)) return;
+  throw new Error(`set ${opts.name} sdk=${opts.sdk}: ${res.status} ${text.slice(0, 240)}`);
 }
 
 export async function commitHubFiles(opts: {

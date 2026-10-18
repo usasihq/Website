@@ -83,7 +83,7 @@ describe("Hugging Face jobs dataset rows", () => {
 });
 
 describe("job page codes the Space app copies", () => {
-  it("are stable values the Python explorer can match when page is missing", () => {
+  it("are stable values the static explorer can match when page is missing", () => {
     expect(titleSlug("Senior Software Engineer, Inference (C++/CUDA)")).toBe("senior-software-engineer-inference-c-cuda");
     expect(titleSlug("R&D Lead")).toBe("r-and-d-lead");
     expect(shortCode("openai:ashby:openai:abc")).toBe("0e1cf02");

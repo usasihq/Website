@@ -187,7 +187,7 @@ refresh still sees the remaining quota.
 
 ### Hugging Face jobs dataset and Space (`HF_TOKEN`)
 
-After refresh writes the new snapshot, `npm run jobs:hf-dataset` builds a CSV of open listings (the same columns as `usasihq/usasi-ai-jobs`, plus a `page` URL on this site) and uploads it to that Hugging Face dataset. `scripts/automation/jobs-update.sh` runs the same command after a successful local publish. The Gradio explorer in `hf-space/` reads the dataset; `.github/workflows/deploy-hf-space.yml` uploads that folder to the `usasihq/usasi-ai-jobs` Space when `hf-space/` changes.
+After refresh writes the new snapshot, `npm run jobs:hf-dataset` builds a CSV of open listings (the same columns as `usasihq/usasi-ai-jobs`, plus a `page` URL on this site) and uploads it to that Hugging Face dataset. `scripts/automation/jobs-update.sh` runs the same command after a successful local publish. The static explorer in `hf-space/` (`sdk: static`, HTML/JS in the browser) reads the dataset; `.github/workflows/deploy-hf-space.yml` uploads that folder to the `usasihq/usasi-ai-jobs` Space when `hf-space/` changes. Static Spaces are free; Gradio and Docker Spaces on `cpu-basic` require a Hugging Face PRO subscription.
 
 If `HF_TOKEN` is missing or empty, both commands log a skip and exit 0. A Hub outage during the jobs refresh is also a skip: the site deploy is not rolled back or delayed. Do not commit the token.
 
