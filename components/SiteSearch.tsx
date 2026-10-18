@@ -161,14 +161,14 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
       <dialog
         ref={dialogRef}
         aria-label="Search the site"
-        className="site-search fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none bg-transparent p-0 text-text backdrop:bg-[rgba(2,4,12,0.72)] backdrop:backdrop-blur-sm"
+        className="site-search fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none bg-transparent p-0 text-text backdrop:bg-scrim backdrop:backdrop-blur-sm"
         onClick={(event) => {
           if (event.target === event.currentTarget) close();
         }}
         onClose={() => setActive(0)}
         data-testid="site-search"
       >
-        <div className="mx-auto mt-[6vh] flex max-h-[86dvh] w-[min(42rem,calc(100%-2rem))] flex-col overflow-hidden rounded-2xl border border-line-strong bg-[#0a1024] shadow-[0_24px_80px_rgba(0,0,0,0.6)]">
+        <div className="mx-auto mt-[6vh] flex max-h-[86dvh] w-[min(42rem,calc(100%-2rem))] flex-col overflow-hidden rounded-2xl border border-line-strong bg-elev shadow-pop">
           <div className="flex items-center gap-3 border-b border-line px-4">
             <Search aria-hidden="true" className="h-5 w-5 flex-none text-cyan" />
             <input
@@ -261,7 +261,7 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
                     )}
                   </>
                 );
-                const className = `flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left ${selected ? "bg-[rgba(76,201,255,0.12)]" : ""}`;
+                const className = `flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left ${selected ? "bg-cyan/12" : ""}`;
                 return o.random ? (
                   <div
                     key={o.key}

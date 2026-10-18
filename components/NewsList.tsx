@@ -47,7 +47,7 @@ export function NewsCard({ item, catalog, headingLevel = 3 }: { item: NewsItem; 
           {item.title}
         </Link>
       </Heading>
-      <p className="mt-2 max-w-[68ch] text-base text-[#c7d2ea]"><CodeText text={item.summary.text} /></p>
+      <p className="mt-2 max-w-[68ch] text-base text-body-2"><CodeText text={item.summary.text} /></p>
       <div className="mt-3">
         <RelatedRecords item={item} catalog={catalog} />
       </div>

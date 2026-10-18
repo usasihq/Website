@@ -57,8 +57,8 @@ export default function KidsPacketPage() {
               <h2 id={`${l.slug}-title`} className="mt-2 text-3xl font-semibold text-text">
                 {l.title}
               </h2>
-              <p className="mt-4 flex gap-3 rounded-2xl border border-[rgba(251,191,36,0.4)] bg-[rgba(251,191,36,0.08)] p-5 text-xl leading-relaxed text-text">
-                <Lightbulb aria-hidden="true" className="mt-1 h-6 w-6 flex-none text-[#fcd34d]" />
+              <p className="mt-4 flex gap-3 rounded-2xl border border-tone-amber/40 bg-tone-amber/8 p-5 text-xl leading-relaxed text-text">
+                <Lightbulb aria-hidden="true" className="mt-1 h-6 w-6 flex-none text-tone-amber" />
                 <span>
                   <span className="sr-only">The big idea: </span>
                   <InlineText text={l.bigIdea} />
@@ -78,7 +78,7 @@ export default function KidsPacketPage() {
             {KID_WORDS.map((w) => (
               <div key={w.id} className="break-inside-avoid">
                 <dt className="font-semibold text-text">{w.term}</dt>
-                <dd className="mt-1 text-[#d5def2]">{w.meaning}</dd>
+                <dd className="mt-1 text-body">{w.meaning}</dd>
               </div>
             ))}
           </dl>

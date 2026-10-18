@@ -67,7 +67,7 @@ export function OrgDirectory({ items, asOf }: { items: OrgListItem[]; asOf?: str
           <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
               <label className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-[0.9375rem]">
-                <input type="checkbox" className="h-6 w-6 accent-[#4cc9ff]" checked={f.open} onChange={(e) => set({ open: e.target.checked })} />
+                <input type="checkbox" className="h-6 w-6 accent-[var(--cyan)]" checked={f.open} onChange={(e) => set({ open: e.target.checked })} />
                 Has cataloged artifact records
               </label>
               <SelectField

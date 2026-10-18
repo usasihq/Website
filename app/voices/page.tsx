@@ -63,7 +63,7 @@ export default function VoicesPage() {
                           ) : null}
                         </div>
                       </div>
-                      <p className="mt-3 text-[0.9375rem] text-[#d5def2]">{p.headline}</p>
+                      <p className="mt-3 text-[0.9375rem] text-body">{p.headline}</p>
                       <p className="mt-auto pt-3 text-sm text-muted">
                         {p.work
                           .slice(0, 3)

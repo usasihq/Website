@@ -42,7 +42,7 @@ export default function HubsPage() {
                     <HubIcon slug={h.slug} className="h-5 w-5" />
                   </span>
                   <span className="flex min-w-0 flex-1 flex-col">
-                    <span className="text-lg font-semibold text-text group-hover:text-white">{h.title}</span>
+                    <span className="text-lg font-semibold text-text group-hover:text-strong">{h.title}</span>
                     <span className="mt-2 text-[0.9375rem] text-muted">{h.summary}</span>
                     <span className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-4 text-sm text-muted">
                       <span>

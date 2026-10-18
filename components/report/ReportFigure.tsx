@@ -37,7 +37,7 @@ export function ReportFigure({ table, hrefFor, wide = false }: { table: ReportTa
       )}
       {limited && !table.series ? (
         <details className="group">
-          <summary className="cursor-pointer text-[0.9375rem] text-ice hover:text-white">
+          <summary className="cursor-pointer text-[0.9375rem] text-ice hover:text-strong">
             Show all {nf(table.rows.length)} rows
           </summary>
           <div className="mt-3">
@@ -89,7 +89,7 @@ function RowsTable({ table, rows, hrefFor, label }: { table: ReportTable; rows: 
                   ) : (
                     r.label
                   )}
-                  <span aria-hidden="true" className="mt-1.5 block h-1.5 w-full rounded-r-[3px] bg-[rgba(120,180,255,0.1)]">
+                  <span aria-hidden="true" className="mt-1.5 block h-1.5 w-full rounded-r-[3px] bg-cyan/10">
                     <span
                       className="block h-full rounded-r-[3px] bg-cyan"
                       style={{ width: `${r.count > 0 ? Math.max(share, 0.8).toFixed(2) : 0}%` }}
@@ -126,7 +126,7 @@ function ColumnChart({ table }: { table: ReportTable }) {
   const ticks = Array.from({ length: top / step + 1 }, (_, i) => i * step);
   const years = [...new Set(rows.map((r) => r.key.slice(0, 4)))];
   return (
-    <div aria-hidden="true" className="rounded-[0.875rem] border border-line bg-[rgba(8,14,30,0.7)] px-3 pb-3 pt-5 sm:px-4 sm:pb-4" data-chart={table.id}>
+    <div aria-hidden="true" className="rounded-[0.875rem] border border-line bg-surface/70 px-3 pb-3 pt-5 sm:px-4 sm:pb-4" data-chart={table.id}>
       <div className="flex gap-2">
         <div className="relative h-40 w-6 flex-none text-right font-mono text-[0.6875rem] text-muted">
           {ticks.map((t) => (

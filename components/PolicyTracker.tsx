@@ -30,7 +30,7 @@ export function PolicyTracker({ docs }: { docs: PolicyDocument[] }) {
   const years = [...new Set(shown.map((d) => d.date.slice(0, 4)))];
 
   const chip = (active: boolean) =>
-    `badge px-3 py-1.5 text-[0.875rem] ${active ? "border-cyan bg-cyan/10 text-white" : "hover:border-cyan hover:text-white"}`;
+    `badge px-3 py-1.5 text-[0.875rem] ${active ? "border-cyan bg-cyan/10 text-strong" : "hover:border-cyan hover:text-strong"}`;
 
   return (
     <div>
@@ -65,11 +65,11 @@ export function PolicyTracker({ docs }: { docs: PolicyDocument[] }) {
                 return (
                   <li key={d.slug} id={d.slug} className="relative scroll-mt-32">
                     <span aria-hidden="true" className={`absolute -left-[1.6rem] top-6 h-2.5 w-2.5 rounded-full ${inactive ? "bg-muted/60" : "bg-cyan"}`} />
-                    <article className={`card p-5 ${inactive ? "opacity-85" : ""}`}>
+                    <article className={`card p-5 ${inactive ? "bg-fog/40 dark:opacity-85" : ""}`}>
                       <p className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.06em] text-muted">
                         <span className="text-ice">{POLICY_TYPE_LABELS[d.document_type]}</span>
                         {d.identifier ? <span className="badge max-w-full whitespace-normal font-mono normal-case tracking-normal">{d.identifier}</span> : null}
-                        <span className={`badge normal-case tracking-normal ${inactive ? "border-arc/40 text-[#ffb3c0]" : d.status === "in-effect" || d.status === "final" ? "border-cyan/40 text-cyan" : ""}`}>
+                        <span className={`badge normal-case tracking-normal ${inactive ? "border-arc/40 text-tone-rose-2" : d.status === "in-effect" || d.status === "final" ? "border-cyan/40 text-cyan" : ""}`}>
                           {POLICY_STATUS_LABELS[d.status]}
                         </span>
                       </p>
@@ -81,7 +81,7 @@ export function PolicyTracker({ docs }: { docs: PolicyDocument[] }) {
                       <p className="mt-1 text-sm text-muted">
                         {DATE_LABEL_VERBS[d.date_label] ?? "Dated"} {formatLongDate(d.date)} · {d.issuer}
                       </p>
-                      <p className="mt-3 text-[0.9875rem] leading-relaxed text-[#d5def2]">{d.summary.text}</p>
+                      <p className="mt-3 text-[0.9875rem] leading-relaxed text-body">{d.summary.text}</p>
                       <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
                         <Link prefetch={false} href={policyHref(d.slug)} className="link">
                           Full page<span className="sr-only">: {d.title}</span>

@@ -53,7 +53,7 @@ export function QuizCard({ quiz }: { quiz: Quiz }) {
                           {state === "right" ? (
                             <CircleCheck className="h-5 w-5 text-cyan" />
                           ) : state === "wrong" ? (
-                            <CircleX className="h-5 w-5 text-[#ff8fa3]" />
+                            <CircleX className="h-5 w-5 text-tone-red" />
                           ) : (
                             <span className="h-3.5 w-3.5 rounded-full border border-muted" />
                           )}
@@ -69,8 +69,8 @@ export function QuizCard({ quiz }: { quiz: Quiz }) {
                 </div>
                 <div aria-live="polite">
                   {done ? (
-                    <p className="mt-4 text-[0.9375rem] leading-relaxed text-[#d5def2]">
-                      <span className={`font-semibold ${choice === q.answer ? "text-cyan" : "text-[#ff8fa3]"}`}>
+                    <p className="mt-4 text-[0.9375rem] leading-relaxed text-body">
+                      <span className={`font-semibold ${choice === q.answer ? "text-cyan" : "text-tone-red"}`}>
                         {choice === q.answer ? "Correct. " : "Not quite. "}
                       </span>
                       {q.explanation}

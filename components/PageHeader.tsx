@@ -57,7 +57,7 @@ export function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
+    <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
       <div className={`container-page ${compact ? "py-6" : "pb-10 pt-10 sm:pt-14"}`}>
         {crumbs ? <Breadcrumbs items={crumbs} current={current} /> : null}
         {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}

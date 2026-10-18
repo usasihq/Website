@@ -28,7 +28,7 @@ export function OrgCard({ item, headingLevel = 3 }: { item: OrgListItem; heading
           {item.parent.relationship ? RELATIONSHIP_LABELS[item.parent.relationship] : "Part"} of {item.parent.name ?? "an organization not listed in this catalog"}
         </p>
       ) : null}
-      <p className="mt-3 line-clamp-3 text-[0.9375rem] text-[#c7d2ea]">{item.summary}</p>
+      <p className="mt-3 line-clamp-3 text-[0.9375rem] text-body-2">{item.summary}</p>
       {item.sectors.length > 0 ? (
         <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Sectors">
           {item.sectors.map((s) => (
@@ -68,7 +68,7 @@ export function ArtifactCard({ item, headingLevel = 3 }: { item: ArtifactListIte
         {item.maintainers.join(", ")}
         {item.familyName ? ` · ${item.familyName} family` : ""}
       </p>
-      <p className="mt-3 line-clamp-3 text-[0.9375rem] text-[#c7d2ea]">{item.summary}</p>
+      <p className="mt-3 line-clamp-3 text-[0.9375rem] text-body-2">{item.summary}</p>
       <div className="mt-4 flex flex-wrap items-center gap-1.5">
         {item.level !== "family" ? <StatusBadge status={item.availability} label="Availability" /> : null}
         {item.tier ? <TierBadge tier={item.tier} withRubric /> : null}

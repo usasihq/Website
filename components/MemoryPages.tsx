@@ -48,7 +48,7 @@ export function AmountPicker({ current, counts }: { current?: MemoryPage; counts
                     prefetch={false}
                     href={memoryPageHref(p)}
                     aria-current={active ? "page" : undefined}
-                    className={`inline-flex min-h-10 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm ${active ? "border-cyan bg-cyan/10 text-white" : "border-line-strong text-text hover:border-cyan"}`}
+                    className={`inline-flex min-h-10 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm ${active ? "border-cyan bg-cyan/10 text-strong" : "border-line-strong text-text hover:border-cyan"}`}
                   >
                     {p.gb} GB<span className="sr-only">{p.kind === "vram" ? " of VRAM" : " of Apple silicon unified memory"}</span>
                     <span className="text-xs text-muted">
@@ -107,7 +107,7 @@ export function MemoryEntryCard({ entry, page, catalog }: { entry: MemoryEntry; 
       <h3 id={`${c.slug}-title`} className="mt-3 text-lg font-semibold text-text">
         {c.title}
       </h3>
-      <p className="mt-2 text-[0.9375rem] text-[#d5def2]">{c.summary.text}</p>
+      <p className="mt-2 text-[0.9375rem] text-body">{c.summary.text}</p>
 
       <dl className="mt-4 grid gap-x-6 gap-y-3 text-sm sm:grid-cols-[10rem_minmax(0,1fr)]">
         {model ? (

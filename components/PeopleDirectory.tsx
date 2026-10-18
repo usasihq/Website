@@ -47,9 +47,9 @@ function PersonCard({ item, org }: { item: PeopleListItem; org: string }) {
           ) : null}
         </div>
       </div>
-      <p className="mt-3 text-[0.9375rem] text-[#d5def2]">{item.headline}</p>
+      <p className="mt-3 text-[0.9375rem] text-body">{item.headline}</p>
       <p className="mt-auto flex flex-wrap gap-1.5 pt-3">
-        {item.kind === "leader" ? <span className="badge border-[rgba(251,191,36,0.4)] text-xs">People Behind Big SI</span> : null}
+        {item.kind === "leader" ? <span className="badge border-tone-amber/40 text-xs">People Behind Big SI</span> : null}
         {item.groups.includes("local") ? <span className="badge text-xs">Local SI</span> : null}
         {item.specialties.slice(0, 2).map((s) => (
           <span key={s} className="badge text-xs">

@@ -86,7 +86,7 @@ function supportPanel(): string {
         .map((l) => `<a href="${esc(l.url)}" class="btn btn-secondary" rel="noopener noreferrer">${esc(l.label)}<span class="sr-only"> tip (external site)</span></a>`)
         .join("")}</div><p class="max-w-xs text-sm text-muted md:text-right">Optional. No USASI account required. Payment takes place on the linked provider&rsquo;s website${esc(config.providerLabel ? ` (${config.providerLabel})` : "")}.</p>`
     : `<p class="inline-flex items-center gap-2 rounded-lg border border-dashed border-line-strong px-4 py-2.5 text-[0.9375rem] text-ice" data-testid="support-unavailable">Tips will be available here soon.</p>`;
-  return `<section aria-labelledby="support-heading" class="print:hidden py-10" data-support-panel="${active ? "active" : "unconfigured"}"><div class="container-page"><div class="relative overflow-hidden rounded-2xl border border-[rgba(76,201,255,0.28)] bg-[linear-gradient(135deg,#0b1428_0%,#081022_60%,#0a1530_100%)] p-5 sm:p-6"><div aria-hidden="true" class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(76,201,255,0.14),transparent_70%)]"></div><div class="relative grid gap-6 md:grid-cols-[1fr_auto] md:items-center md:gap-8"><div class="flex gap-4"><span aria-hidden="true" class="mt-1 inline-flex shrink-0 items-center justify-center rounded-full border border-[rgba(76,201,255,0.35)] text-cyan h-9 w-9">${heart}</span><div class="min-w-0"><h2 id="support-heading" class="font-semibold text-text text-lg">${esc(config.heading)}</h2><p class="mt-1 text-ice text-[0.9375rem]">${esc(config.subheading)}</p>${
+  return `<section aria-labelledby="support-heading" class="print:hidden py-10" data-support-panel="${active ? "active" : "unconfigured"}"><div class="container-page"><div class="relative overflow-hidden rounded-2xl border border-cyan/28 bg-[linear-gradient(135deg,var(--panel-a)_0%,var(--panel-b)_100%)] p-5 sm:p-6"><div aria-hidden="true" class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgb(var(--cyan-rgb)/0.14),transparent_70%)]"></div><div class="relative grid gap-6 md:grid-cols-[1fr_auto] md:items-center md:gap-8"><div class="flex gap-4"><span aria-hidden="true" class="mt-1 inline-flex shrink-0 items-center justify-center rounded-full border border-cyan/35 text-cyan h-9 w-9">${heart}</span><div class="min-w-0"><h2 id="support-heading" class="font-semibold text-text text-lg">${esc(config.heading)}</h2><p class="mt-1 text-ice text-[0.9375rem]">${esc(config.subheading)}</p>${
     active ? "" : `<p class="mt-3 max-w-2xl text-muted text-[0.9375rem]">${esc(config.body)}</p>`
   }</div></div><div class="flex flex-col gap-3 md:items-end">${actions}<a href="${asset("/support/")}" class="link inline-flex items-center gap-1 text-[0.9375rem]">About supporting this project<span aria-hidden="true">&nbsp;→</span></a></div></div></div></div></section>`;
 }
@@ -152,8 +152,9 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="theme-color" content="#050816"/>
-<meta name="color-scheme" content="dark"/>
+<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#050816" media="(prefers-color-scheme: dark)"/>
+<meta name="color-scheme" content="light dark"/>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(meta)}"/>
 <meta name="robots" content="${p.description ? "index, follow, max-image-preview:large, max-snippet:-1" : "noindex, follow"}"/>
@@ -171,13 +172,13 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
-<div class="border-b border-line"><div class="container-page flex h-7 items-center text-xs sm:text-[0.8125rem]"><p class="min-w-0 truncate text-muted" data-testid="header-disclaimer">Independent project. Not a U.S. government website.</p></div></div>
+<div class="border-b border-t-4 border-b-line border-t-gold bg-fog/50"><div class="container-page flex h-7 items-center text-xs sm:text-[0.8125rem]"><p class="min-w-0 truncate text-muted" data-testid="header-disclaimer">Independent project. Not a U.S. government website.</p></div></div>
 <header class="border-b border-line"><div class="container-page flex flex-wrap items-center gap-x-8 gap-y-3 py-4">
 <a href="${asset("/")}" class="text-lg font-semibold tracking-wide text-text">USASI</a>
 <nav aria-label="Primary"><ul class="flex flex-wrap gap-x-5 gap-y-1 text-[0.9375rem]">${nav}</ul></nav>
 </div></header>
 <main id="main">
-<header class="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]"><div class="container-page pb-10 pt-10 sm:pt-14">
+<header class="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]"><div class="container-page pb-10 pt-10 sm:pt-14">
 <nav aria-label="Breadcrumb" class="mb-5"><ol class="flex flex-wrap items-center gap-1 text-sm text-muted">${crumbs
     .slice(0, 3)
     .map((c, i) => `<li class="flex items-center gap-1">${i ? '<span aria-hidden="true">›</span>' : ""}<a href="${esc(c.item.replace(/^https?:\/\/[^/]+/, ""))}" class="hover:text-text">${esc(c.name)}</a></li>`)
@@ -195,7 +196,7 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
 <p class="max-w-3xl rounded-xl border border-line p-4 text-sm text-muted" role="note">${job.source_type === "usajobs" ? `This posting comes from USAJOBS.gov, the U.S. federal government&rsquo;s official employment site.${job.department ? ` The hiring agency is ${esc(job.department)}.` : ""} USASI checks USAJOBS and removes this page once the announcement closes. The description below is the agency&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.` : `This posting comes from ${esc(org.name)}&rsquo;s own ${board} job board. USASI checks that board twice a day and removes this page once the employer closes the posting. The description below is ${esc(name)}&rsquo;s text as published; USASI does not edit it, does not recruit, and does not take applications.`} <a href="${asset("/methodology/#jobs")}" class="link">How jobs are collected</a>.</p>
 <section aria-labelledby="description-heading">
 <h2 id="description-heading" class="text-xl font-semibold text-text sm:text-2xl">Job description</h2>
-<div class="mt-4 max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-[#d5def2]" data-testid="job-description">
+<div class="mt-4 max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-body" data-testid="job-description">
 ${p.description ? description(p.description) : `<p class="text-muted">The full description is on ${external(job.official_url, federal ? "USAJOBS.gov" : `${esc(name)}&rsquo;s job board`)}.</p>`}
 </div>
 <p class="mt-8">${external(apply, applyLabel, "btn btn-secondary")}</p>
@@ -220,7 +221,7 @@ ${JOB_ROLES.filter((r) => r.test(job.title)).slice(0, 2).map((r) => `<li><a href
 </div>
 ${supportPanel()}
 </main>
-<footer class="border-t border-line"><div class="container-page grid gap-4 py-10 text-sm text-muted">
+<footer class="theme-dark border-t-4 border-gold bg-[var(--footer-bg)]"><div class="container-page grid gap-4 py-10 text-sm text-muted">
 <p><strong class="text-text">${esc(siteConfig.name)}.</strong> Independent project. Not a United States government website.</p>
 <ul class="flex flex-wrap gap-x-5 gap-y-2"><li><a href="${asset("/jobs/")}" class="link">Jobs</a></li><li><a href="${asset("/methodology/#jobs")}" class="link">Jobs methodology</a></li><li><a href="${asset("/privacy/")}" class="link">Privacy</a></li><li><a href="${asset("/disclaimer/")}" class="link">Disclaimer</a></li><li><a href="${asset("/contribute/#corrections")}" class="link">Corrections</a></li></ul>
 <ul class="flex flex-wrap gap-x-5 gap-y-2" aria-label="USASI elsewhere">${socials}</ul>

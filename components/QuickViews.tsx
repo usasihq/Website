@@ -49,7 +49,7 @@ function Chips({ items, label }: { items: Array<{ label: string; href: string; c
             <Link
               prefetch={false}
               href={v.href}
-              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-[rgba(11,18,36,0.7)] px-3.5 text-[0.9375rem] text-text hover:border-cyan"
+              className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 text-[0.9375rem] text-text hover:border-cyan"
             >
               {v.label}
               {v.count !== null ? <span className="font-mono text-[0.8125rem] text-muted">{v.count}</span> : null}

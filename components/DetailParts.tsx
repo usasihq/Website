@@ -30,9 +30,9 @@ export function FactList({ facts }: { facts: Array<{ label: string; value: React
 
 export function ArchivedNotice({ note }: { note: string }) {
   return (
-    <div className="border-b border-[rgba(255,77,109,0.35)] bg-[rgba(255,77,109,0.07)]" role="note" data-testid="archived-notice">
+    <div className="border-b border-arc/35 bg-arc/7" role="note" data-testid="archived-notice">
       <div className="container-page flex gap-3 py-4 text-[0.9375rem]">
-        <Archive aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-[#ffc2cd]" />
+        <Archive aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-tone-rose" />
         <p>
           <strong className="font-semibold text-text">Archived — historical record.</strong> This entry is kept for reference and is excluded from
           directories, search, counts, and exports. {note}
@@ -49,7 +49,7 @@ export function EligibilityBlock({ eligibility, sources }: { eligibility: Eligib
         <span className="font-semibold text-text">{ELIGIBILITY_STATUS_LABELS[eligibility.status]}</span>
         <span className="text-muted"> · basis: {BASIS_LABELS[eligibility.basis]}</span>
       </p>
-      <p className="mt-2 text-[0.9375rem] text-[#d5def2]">
+      <p className="mt-2 text-[0.9375rem] text-body">
         {eligibility.explanation}
         <SourceRefs ids={eligibility.source_ids} sources={sources} />
       </p>

@@ -54,7 +54,7 @@ export default function BigSiPage() {
                   <span className="flex items-center gap-4">
                     <InitialsTile initials={l.initials} size="lg" />
                     <span className="min-w-0">
-                      <span className="block text-xl font-semibold text-text group-hover:text-white">{l.name}</span>
+                      <span className="block text-xl font-semibold text-text group-hover:text-strong">{l.name}</span>
                       <span className="mt-0.5 block text-sm text-cyan">
                         {l.current_roles
                           .slice(0, 2)
@@ -63,7 +63,7 @@ export default function BigSiPage() {
                       </span>
                     </span>
                   </span>
-                  <span className="mt-4 block text-[0.9375rem] text-[#d5def2]">{l.headline}</span>
+                  <span className="mt-4 block text-[0.9375rem] text-body">{l.headline}</span>
                   <span className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-semibold text-cyan">
                     Read the profile <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>

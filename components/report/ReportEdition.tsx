@@ -342,7 +342,7 @@ function CitationBlock({ label, text }: { label: string; text: string }) {
         <p className="eyebrow">{label}</p>
         <CopyButton text={text} label={`Copy ${label.split(" ")[0]}`} />
       </div>
-      <pre tabIndex={0} className="max-w-full overflow-x-auto whitespace-pre-wrap break-words rounded-lg border border-line bg-[rgba(5,8,22,0.8)] p-3 font-mono text-[0.8125rem] text-ice">
+      <pre tabIndex={0} className="max-w-full overflow-x-auto whitespace-pre-wrap break-words rounded-lg border border-line bg-[var(--field-bg)] p-3 font-mono text-[0.8125rem] text-ice">
         {text}
       </pre>
     </div>
@@ -358,7 +358,7 @@ function PolicyList({ snapshot, policyHrefFor }: { snapshot: ReportSnapshot; pol
       </h3>
       <p className="text-[0.9375rem] text-muted">Every tracked document in this edition, by type, with its status at the cutoff. Each links to its page.</p>
       <details className="card p-4">
-        <summary className="cursor-pointer font-medium text-ice hover:text-white">Show all {snapshot.records.policy.length} documents</summary>
+        <summary className="cursor-pointer font-medium text-ice hover:text-strong">Show all {snapshot.records.policy.length} documents</summary>
         <div className="mt-4 grid gap-5 md:grid-cols-2">
           {types.map((t) => {
             const docs = snapshot.records.policy.filter((d) => d.type === t).sort((a, b) => b.date.localeCompare(a.date) || a.name.localeCompare(b.name));
@@ -398,7 +398,7 @@ function PolicyList({ snapshot, policyHrefFor }: { snapshot: ReportSnapshot; pol
 function SinceNote({ snapshot, since, names }: { snapshot: ReportSnapshot; since: SinceEdition; names: ReportNames }) {
   if (since.status === "unchanged") return null;
   return (
-    <aside aria-labelledby="since-heading" className="card max-w-3xl border-[rgba(255,210,122,0.35)] p-5" data-testid="report-since">
+    <aside aria-labelledby="since-heading" className="card max-w-3xl border-gold/35 p-5" data-testid="report-since">
       <h2 id="since-heading" className="flex items-center gap-2 text-lg font-semibold text-text">
         <Info aria-hidden="true" className="h-5 w-5 text-cyan" />
         Since this edition

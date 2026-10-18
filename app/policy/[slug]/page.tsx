@@ -140,7 +140,7 @@ export default async function PolicyDocumentPage({ params }: { params: Promise<{
           <span className="inline-flex flex-wrap items-center gap-2">
             {POLICY_TYPE_LABELS[d.document_type]}
             <span
-              className={`badge normal-case tracking-normal ${inactive ? "border-arc/40 text-[#ffb3c0]" : d.status === "in-effect" || d.status === "final" ? "border-cyan/40 text-cyan" : ""}`}
+              className={`badge normal-case tracking-normal ${inactive ? "border-arc/40 text-tone-rose-2" : d.status === "in-effect" || d.status === "final" ? "border-cyan/40 text-cyan" : ""}`}
             >
               {POLICY_STATUS_LABELS[d.status]}
             </span>
@@ -150,7 +150,7 @@ export default async function PolicyDocumentPage({ params }: { params: Promise<{
         crumbs={crumbs}
         description={
           <>
-            <p className="text-[#d5def2]" data-testid="policy-answer">
+            <p className="text-body" data-testid="policy-answer">
               {lead}
               <SourceRefs ids={d.summary.source_ids} sources={d.sources} />
             </p>
@@ -169,7 +169,7 @@ export default async function PolicyDocumentPage({ params }: { params: Promise<{
                 {isLegislation(d) ? "Key provisions" : "More on what it covers"}
               </h2>
               <p className="mt-1 text-sm text-muted">The rest of this tracker&apos;s summary, one point per line, with its source.</p>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-[1.0625rem] leading-relaxed text-[#d5def2]">
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-[1.0625rem] leading-relaxed text-body">
                 {rest.map((s, k) => (
                   <li key={k}>
                     {s}
@@ -185,7 +185,7 @@ export default async function PolicyDocumentPage({ params }: { params: Promise<{
               Status: {POLICY_STATUS_LABELS[d.status]}
             </h2>
             {d.status_note ? (
-              <p className="mt-3 text-[1.0625rem] leading-relaxed text-[#d5def2]">
+              <p className="mt-3 text-[1.0625rem] leading-relaxed text-body">
                 {d.status_note.text}
                 <SourceRefs ids={d.status_note.source_ids} sources={d.sources} />
               </p>

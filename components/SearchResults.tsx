@@ -129,7 +129,7 @@ export function SearchResults({ indexUrl }: { indexUrl: string }) {
               <li key={`${r.type}:${r.slug}`}>
                 <Link prefetch={false} href={r.href} className="card card-link group flex items-start justify-between gap-4 p-4">
                   <span className="min-w-0">
-                    <span className="block font-semibold text-text group-hover:text-white">
+                    <span className="block font-semibold text-text group-hover:text-strong">
                       {highlightParts(r.name, q).map((p, i) =>
                         p.hit ? (
                           <mark key={i} className="bg-transparent text-cyan">

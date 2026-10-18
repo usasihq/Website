@@ -30,7 +30,7 @@ export function Hero() {
 
   return (
     <figure className="relative -mx-4 sm:-mx-6 lg:mx-0" aria-labelledby="hero-note">
-      <div className="relative overflow-hidden lg:rounded-2xl lg:border lg:border-line-strong lg:shadow-[0_30px_80px_-20px_rgba(76,201,255,0.25)]">
+      <div className="relative overflow-hidden lg:rounded-2xl lg:border lg:border-line-strong lg:shadow-hero">
         <picture>
           <source type="image/avif" srcSet={srcSet("avif")} sizes={SIZES} />
           <source type="image/webp" srcSet={srcSet("webp")} sizes={SIZES} />

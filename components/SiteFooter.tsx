@@ -69,7 +69,7 @@ const COLUMNS = [
 export function SiteFooter() {
   const repo = repositoryUrl();
   return (
-    <footer className="border-t border-line bg-[#040613]">
+    <footer className="theme-dark border-t-4 border-gold bg-[var(--footer-bg)]">
       <div className="container-page pb-20 pt-12">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-[1.5fr_repeat(5,minmax(0,1fr))] lg:gap-x-8">
           <div className="col-span-2 max-w-sm sm:col-span-3 lg:col-span-1">
@@ -78,7 +78,7 @@ export function SiteFooter() {
               <p className="font-semibold tracking-[0.06em]">{siteConfig.shortName}</p>
             </div>
             <p className="mt-3 text-[0.9375rem] text-muted">{siteConfig.name}. {siteConfig.tagline}</p>
-            <p className="mt-4 rounded-lg border border-line bg-[rgba(11,18,36,0.6)] px-3 py-2 text-sm font-medium text-text" data-testid="footer-disclaimer">
+            <p className="mt-4 rounded-lg border border-line bg-surface/60 px-3 py-2 text-sm font-medium text-text" data-testid="footer-disclaimer">
               {siteConfig.disclaimer}
             </p>
           </div>

@@ -9,7 +9,7 @@ export function Monogram({ text, size = "md" }: { text: string; size?: "sm" | "m
   return (
     <span
       aria-hidden="true"
-      className={`${dims} inline-flex shrink-0 select-none items-center justify-center rounded-xl border border-[rgba(76,201,255,0.3)] bg-[linear-gradient(160deg,#0f1c3a,#081024)] font-mono font-medium tracking-[0.02em] text-ice`}
+      className={`${dims} inline-flex shrink-0 select-none items-center justify-center rounded-xl border border-cyan/30 bg-[linear-gradient(160deg,var(--panel-deep-a),var(--panel-deep-b))] font-mono font-medium tracking-[0.02em] text-ice`}
     >
       {text}
     </span>
@@ -25,9 +25,9 @@ const AVAILABILITY_ICON: Record<AvailabilityStatus, typeof Check> = {
 };
 
 const AVAILABILITY_TONE: Record<AvailabilityStatus, string> = {
-  public: "border-[rgba(76,201,255,0.45)] text-[#c9ecff]",
-  partial: "border-[rgba(183,215,255,0.35)] text-ice",
-  not_public: "border-[rgba(255,77,109,0.4)] text-[#ffc2cd]",
+  public: "border-cyan/45 text-tone-sky",
+  partial: "border-ice/35 text-ice",
+  not_public: "border-arc/40 text-tone-rose",
   unknown: "border-line-strong text-muted",
   not_applicable: "border-line text-muted",
 };
@@ -47,9 +47,9 @@ export function StatusBadge({ status, label }: { status: AvailabilityStatus; lab
 export function TierBadge({ tier, withRubric = false }: { tier: ModelTier; withRubric?: boolean }) {
   const tone =
     tier === "fully-open" || tier === "open-stack" || tier === "open-weight"
-      ? "border-[rgba(76,201,255,0.45)] text-[#c9ecff]"
+      ? "border-cyan/45 text-tone-sky"
       : tier === "weights-not-public" || tier === "restricted-weights"
-        ? "border-[rgba(255,77,109,0.4)] text-[#ffc2cd]"
+        ? "border-arc/40 text-tone-rose"
         : "border-line-strong text-muted";
   return (
     <span className={`badge ${tone}`}>

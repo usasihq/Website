@@ -46,18 +46,18 @@ export function SectionJump({ sections }: { sections: { id: string; label: strin
     >
       <summary
         tabIndex={visible ? 0 : -1}
-        className="inline-flex h-11 cursor-pointer list-none items-center gap-1.5 rounded-full border border-line-strong bg-[rgba(10,16,36,0.92)] px-4 text-sm text-text shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur hover:border-cyan [&::-webkit-details-marker]:hidden"
+        className="inline-flex h-11 cursor-pointer list-none items-center gap-1.5 rounded-full border border-line-strong bg-float px-4 text-sm text-text shadow-float backdrop-blur hover:border-cyan [&::-webkit-details-marker]:hidden"
       >
         <List aria-hidden="true" className="h-4 w-4" />
         Sections
       </summary>
-      <nav aria-label="Jump to a section" className="absolute bottom-full left-0 mb-2 w-56 rounded-xl border border-line-strong bg-[rgba(10,16,36,0.97)] p-2 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+      <nav aria-label="Jump to a section" className="absolute bottom-full left-0 mb-2 w-56 rounded-xl border border-line-strong bg-float p-2 shadow-float">
         <ul>
           {sections.map((s) => (
             <li key={s.id}>
               <a
                 href={`#${s.id}`}
-                className="flex min-h-11 items-center rounded-md px-3 text-sm text-muted hover:bg-[rgba(76,201,255,0.08)] hover:text-text"
+                className="flex min-h-11 items-center rounded-md px-3 text-sm text-muted hover:bg-cyan/8 hover:text-text"
                 onClick={() => {
                   if (detailsRef.current) detailsRef.current.open = false;
                 }}

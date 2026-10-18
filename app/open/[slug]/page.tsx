@@ -102,7 +102,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
       <JsonLd data={softwareSourceCodeLd(catalog, a)} />
       {a.publication_status === "archived" && a.archive_note ? <ArchivedNotice note={a.archive_note} /> : null}
       <article>
-        <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
+        <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={crumbs} current={{ href: artifactHref(a.slug), label: a.name }} />
             <div className="flex flex-wrap items-center gap-2">
@@ -111,7 +111,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
             </div>
             <h1 className="mt-3 text-3xl font-semibold text-text sm:text-4xl">{a.name}</h1>
             <ArtifactLead catalog={catalog} a={a} />
-            <ClaimText claim={a.summary} sources={s} className="mt-5 max-w-3xl text-lg text-[#d5def2]" />
+            <ClaimText claim={a.summary} sources={s} className="mt-5 max-w-3xl text-lg text-body" />
             {a.links.length > 0 ? (
               <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.9375rem]" aria-label="Official links">
                 {a.links.map((l) => (
@@ -185,7 +185,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                     <div className="mt-2">
                       <StatusBadge status={a.availability.status} />
                     </div>
-                    <p className="mt-3 text-[0.9375rem] text-[#d5def2]">
+                    <p className="mt-3 text-[0.9375rem] text-body">
                       {a.availability.access_conditions ?? AVAILABILITY_DESCRIPTIONS[a.availability.status]}
                       <SourceRefs ids={a.availability.source_ids} sources={s} />
                     </p>
@@ -222,7 +222,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                         ))}
                       </ul>
                     )}
-                    {a.license_notes ? <ClaimText claim={a.license_notes} sources={s} className="mt-4 text-[0.9375rem] text-[#d5def2]" /> : null}
+                    {a.license_notes ? <ClaimText claim={a.license_notes} sources={s} className="mt-4 text-[0.9375rem] text-body" /> : null}
                   </div>
                 </div>
               </Section>
@@ -239,7 +239,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                 <Section id="tier" title="Model-disclosure tier" description={`Computed from the checklist below using ${RUBRIC_LABEL}. An editorial category, not a certification.`}>
                   <div className="card p-5">
                     <TierBadge tier={tier} withRubric />
-                    <p className="mt-3 max-w-3xl text-[0.9375rem] text-[#d5def2]">{TIER_DESCRIPTIONS[tier]}</p>
+                    <p className="mt-3 max-w-3xl text-[0.9375rem] text-body">{TIER_DESCRIPTIONS[tier]}</p>
                     {caveats.map((c) => (
                       <p key={c} className="mt-3 flex gap-2 text-[0.9375rem] text-ice">
                         <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
@@ -276,7 +276,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                           <td>
                             <StatusBadge status={row.item.status} />
                           </td>
-                          <td className="min-w-[14rem] text-[0.9375rem] text-[#d5def2]">
+                          <td className="min-w-[14rem] text-[0.9375rem] text-body">
                             {row.item.note ?? (row.item.status === "unknown" ? <span className="text-muted">Not assessed.</span> : null)}
                             <SourceRefs ids={row.item.source_ids} sources={s} />
                           </td>
@@ -291,13 +291,13 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
 
           {a.useful_for ? (
             <Section id="use" title="What it is useful for">
-              <ClaimText claim={a.useful_for} sources={s} className="max-w-3xl text-[#d5def2]" />
+              <ClaimText claim={a.useful_for} sources={s} className="max-w-3xl text-body" />
             </Section>
           ) : null}
 
           {a.run_notes.length > 0 ? (
             <Section id="run-notes" title="Run and use notes" description="Documented facts only. No hardware or performance claims are made without a cited source and stated assumptions.">
-              <ul className="max-w-3xl list-disc space-y-2 pl-5 text-[#d5def2] marker:text-muted">
+              <ul className="max-w-3xl list-disc space-y-2 pl-5 text-body marker:text-muted">
                 {a.run_notes.map((n) => (
                   <li key={n.text}>
                     {n.text}
@@ -310,7 +310,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
 
           <Section id="context" title="Organization context">
             {a.organization_slugs.length === 0 ? (
-              <p className="text-[#d5def2]">Independent project: no organization record is linked to this entry.</p>
+              <p className="text-body">Independent project: no organization record is linked to this entry.</p>
             ) : (
               <ul className="space-y-2">
                 {a.organization_slugs.map((slug) => {
@@ -330,7 +330,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
               </ul>
             )}
             {people.length ? (
-              <p className="mt-4 text-[0.9375rem] text-[#d5def2]">
+              <p className="mt-4 text-[0.9375rem] text-body">
                 <span className="text-muted">People: </span>
                 {people.map((p, i) => (
                   <span key={p.slug}>
@@ -350,7 +350,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                 <div className="card flex gap-3 p-5">
                   <GitBranch aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-cyan" />
                   <div className="min-w-0">
-                    <p className="text-[0.9375rem] text-[#d5def2]">
+                    <p className="text-[0.9375rem] text-body">
                       {a.provenance.text}
                       <SourceRefs ids={a.provenance.source_ids} sources={s} />
                     </p>
@@ -398,7 +398,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
               {siblings.length === 0 ? (
                 <p className="text-muted">No other releases in this family have been assessed.</p>
               ) : (
-                <ul className="divide-y divide-[rgba(120,180,255,0.12)] border-y border-line">
+                <ul className="divide-y divide-line border-y border-line">
                   {siblings.map((r) => {
                     const rt = computeTier(r);
                     return (

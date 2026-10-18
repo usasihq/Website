@@ -34,7 +34,7 @@ export default function FaqPage() {
             <ul className="flex flex-wrap gap-2">
               {groups.map((g) => (
                 <li key={g.id}>
-                  <a href={`#${g.id}`} className="badge px-3 py-1.5 text-[0.875rem] hover:border-cyan hover:text-white">
+                  <a href={`#${g.id}`} className="badge px-3 py-1.5 text-[0.875rem] hover:border-cyan hover:text-strong">
                     {g.title}
                   </a>
                 </li>

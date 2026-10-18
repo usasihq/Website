@@ -62,7 +62,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
     <>
       <JsonLd data={personLd(catalog, p)} />
       <article>
-        <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.12),transparent_60%)]">
+        <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgb(var(--cyan-rgb)/0.12),transparent_60%)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={[{ href: "/people/", label: "People" }]} current={{ href: personHref(p.slug), label: p.name }} />
             <div className="flex flex-wrap items-center gap-5">
@@ -75,14 +75,14 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
             {current.length ? (
               <ul className="mt-6 flex flex-wrap gap-2" aria-label="Current roles">
                 {current.map((a) => (
-                  <li key={`${a.name}-${a.role}`} className="max-w-full rounded-2xl border border-line bg-[rgba(11,22,44,0.6)] px-3 py-1.5 text-sm text-text">
+                  <li key={`${a.name}-${a.role}`} className="max-w-full rounded-2xl border border-line bg-surface/60 px-3 py-1.5 text-sm text-text">
                     {a.role}, {orgLink(a.organization_slug, a.name)}
                     <SourceRefs ids={a.source_ids} sources={s} />
                   </li>
                 ))}
               </ul>
             ) : null}
-            <p className="mt-6 max-w-3xl text-xl leading-relaxed text-[#d5def2]" data-testid="person-bio">
+            <p className="mt-6 max-w-3xl text-xl leading-relaxed text-body" data-testid="person-bio">
               {p.bio.text}
               <SourceRefs ids={p.bio.source_ids} sources={s} />
             </p>
@@ -96,7 +96,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
               ))}
               {p.specialties.map((sp) => (
                 <li key={sp}>
-                  <Link prefetch={false} href={`/people/?specialty=${sp}`} className="badge min-h-9 border-[rgba(167,139,250,0.4)] hover:border-cyan">
+                  <Link prefetch={false} href={`/people/?specialty=${sp}`} className="badge min-h-9 border-tone-violet/40 hover:border-cyan">
                     {PERSON_SPECIALTY_LABELS[sp]}
                   </Link>
                 </li>
@@ -127,7 +127,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                       )}
                       {w.type ? <span className="badge text-xs font-normal">{WORK_TYPE_LABELS[w.type]}</span> : null}
                     </h3>
-                    <p className="mt-2 text-[#d5def2]">
+                    <p className="mt-2 text-body">
                       {w.contribution}
                       <SourceRefs ids={w.source_ids} sources={s} />
                     </p>

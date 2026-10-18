@@ -26,7 +26,7 @@ function NewsRow({ item }: { item: NewsListItem }) {
           {item.title}
         </Link>
       </h3>
-      <p className="mt-2 max-w-[68ch] text-base text-[#c7d2ea]">
+      <p className="mt-2 max-w-[68ch] text-base text-body-2">
         <CodeText text={item.summary} />
       </p>
       {item.related.length ? (

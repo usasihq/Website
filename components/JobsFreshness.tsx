@@ -10,7 +10,7 @@ export function JobsFreshness({ asOf, lastChecked }: { asOf: string; lastChecked
   const now = useJobsClock(asOf);
   if (!lastChecked || now - Date.parse(lastChecked) <= STALE_MS) return null;
   return (
-    <p role="status" className="card mb-8 border-[rgba(255,196,77,0.45)] p-4 text-sm text-text">
+    <p role="status" className="card mb-8 border-tone-amber/45 p-4 text-sm text-text">
       These listings were last checked more than 48 hours ago, so some may have changed or closed. Check each employer&rsquo;s posting before
       applying.
     </p>

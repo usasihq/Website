@@ -6,7 +6,7 @@ export function InitialsTile({ initials, size = "md" }: { initials: string; size
   return (
     <span
       aria-hidden="true"
-      className={`${size === "lg" ? "h-14 w-14 text-lg" : "h-10 w-10 text-[0.875rem]"} inline-flex shrink-0 select-none items-center justify-center rounded-full border border-[rgba(183,215,255,0.3)] bg-[radial-gradient(circle_at_30%_25%,#16264a,#070d1d)] font-mono text-ice`}
+      className={`${size === "lg" ? "h-14 w-14 text-lg" : "h-10 w-10 text-[0.875rem]"} inline-flex shrink-0 select-none items-center justify-center rounded-full border border-ice/30 bg-[radial-gradient(circle_at_30%_25%,var(--panel-deep-a),var(--panel-deep-b))] font-mono text-ice`}
     >
       {initials.toUpperCase()}
     </span>
@@ -47,7 +47,7 @@ export function LocalCornerStrip({ people: everyone }: { people: Person[] }) {
               <Link
                 prefetch={false}
                 href={`/people/${p.slug}/`}
-                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-[rgba(8,14,30,0.6)] py-1 pl-1 pr-3.5 text-[0.9375rem] text-text hover:border-line-strong"
+                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-surface/60 py-1 pl-1 pr-3.5 text-[0.9375rem] text-text hover:border-line-strong"
               >
                 <InitialsTile initials={p.initials} />
                 {p.name}
@@ -93,7 +93,7 @@ export function BigSiStrip({ leaders }: { leaders: Leader[] }) {
               <Link
                 prefetch={false}
                 href={`/big-si/${l.slug}/`}
-                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-[rgba(8,14,30,0.6)] py-1 pl-1 pr-3.5 text-[0.9375rem] text-text hover:border-line-strong"
+                className="inline-flex min-h-10 items-center gap-2 rounded-full border border-line bg-surface/60 py-1 pl-1 pr-3.5 text-[0.9375rem] text-text hover:border-line-strong"
               >
                 <InitialsTile initials={l.initials} />
                 {l.name}

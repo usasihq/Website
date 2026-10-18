@@ -105,7 +105,7 @@ function PeopleMenu({ pathname }: { pathname: string }) {
       <div
         id={panelId}
         hidden={!open}
-        className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border border-line-strong bg-[#0a1024] p-2 shadow-[0_20px_60px_rgba(0,0,0,0.55)]"
+        className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border border-line-strong bg-elev p-2 shadow-pop"
       >
         <ul>
           {PEOPLE.map((p) => (
@@ -113,7 +113,7 @@ function PeopleMenu({ pathname }: { pathname: string }) {
               <Link
                 href={p.href}
                 aria-current={isCurrent(pathname, p.href) ? "page" : undefined}
-                className="block rounded-lg px-3 py-2.5 hover:bg-[rgba(76,201,255,0.08)] aria-[current=page]:bg-[rgba(76,201,255,0.1)]"
+                className="block rounded-lg px-3 py-2.5 hover:bg-cyan/8 aria-[current=page]:bg-cyan/10"
               >
                 <span className="block text-[0.9375rem] font-medium text-text">{p.label}</span>
                 <span className="mt-0.5 block text-[0.8125rem] leading-snug text-muted">{p.description}</span>
@@ -170,9 +170,9 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-[rgba(5,8,22,0.82)] backdrop-blur-md supports-[backdrop-filter]:bg-[rgba(5,8,22,0.7)]">
+    <header className="sticky top-0 z-40 border-b border-t-4 border-b-line border-t-gold bg-[var(--header-bg)] backdrop-blur-md supports-[backdrop-filter]:bg-[var(--header-bg-blur)]">
       {/* Persistent independence line on every page. */}
-      <div className="border-b border-line">
+      <div className="border-b border-line bg-fog/50">
         <div className="container-page flex h-7 items-center justify-between gap-4 text-xs sm:text-[0.8125rem]">
           <p className="min-w-0 truncate text-muted" data-testid="header-disclaimer">
             <span className="lg:hidden">Independent project. Not a U.S. government website.</span>
@@ -182,7 +182,7 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
             <a
               href={tipUrl}
               rel="noopener noreferrer"
-              className="inline-flex h-7 min-w-7 shrink-0 items-center justify-center gap-1.5 text-[#f3c969] hover:text-text"
+              className="inline-flex h-7 min-w-7 shrink-0 items-center justify-center gap-1.5 text-tone-gold hover:text-text"
               title="Support our project on Buy Me a Coffee"
               data-testid="header-support"
             >
