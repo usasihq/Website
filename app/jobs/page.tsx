@@ -29,7 +29,7 @@ export default function JobsPage() {
   // Shortcuts above the results: the topic pages and the three largest role pages, each with its own (all-country) count.
   const layoffCount = layoffs.states.reduce((s, p) => s + p.file.notices.length, 0);
   const shortcuts = [
-    ...pages.filter(p => p.kind === "topic" && p.path !== "/jobs/remote/" && p.count > 0).map(p => ({ href: p.path, label: SHORTCUT_LABELS[p.path] ?? p.name, count: p.count })),
+    ...Object.keys(SHORTCUT_LABELS).map(path => pages.find(p => p.path === path)).filter(p => p && p.count > 0).map(p => ({ href: p!.path, label: SHORTCUT_LABELS[p!.path], count: p!.count })),
     ...pages.filter(p => p.kind === "role" && p.count > 0).sort((a, b) => b.count - a.count).slice(0, 3).map(p => ({ href: p.path, label: p.name.replace(/ jobs$/, ""), count: p.count })),
     ...(layoffs.states.length ? [{ href: "/jobs/layoffs/", label: "WARN Act layoffs", count: layoffCount }] : []),
   ];

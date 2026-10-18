@@ -12,7 +12,7 @@ test("navigation and filter history never request RSC payloads", async ({ page, 
   await page.goto("/");
   await page.getByRole("navigation", { name: "Primary", exact: true }).getByRole("link", { name: "Jobs" }).click();
   await expect(page).toHaveURL(/\/jobs\/$/);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Jobs");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Jobs at U.S. AI companies and labs");
   await page.getByRole("group", { name: "Quick filters" }).getByRole("button", { name: "Internships" }).click();
   await expect(page).toHaveURL(/level=intern/);
   await page.goBack();

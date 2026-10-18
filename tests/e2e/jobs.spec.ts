@@ -27,7 +27,7 @@ test("jobs filters survive URL, history and reload without contacting ATS", asyn
 });
 test("jobs accessibility, safe employer links and responsive width", async ({ page }) => {
   await page.goto("/jobs/");
-  await expect(page.getByRole("heading", {level:1})).toHaveText("Jobs");
+  await expect(page.getByRole("heading", {level:1})).toHaveText("Jobs at U.S. AI companies and labs");
   const axe = await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21aa","wcag22aa"]).analyze();
   expect(axe.violations.map(v=>v.id)).toEqual([]);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
@@ -95,9 +95,15 @@ test("Jobs remains usable without JavaScript through official careers", async ({
   const context=await browser.newContext({javaScriptEnabled:false});
   const page=await context.newPage();
   await page.goto(`${baseURL}/jobs/`);
-  await expect(page.getByRole("heading",{level:1})).toHaveText("Jobs");
-  await expect(page.getByText(/Filtering and paging require JavaScript/)).toBeVisible();
-  await expect(page.getByRole("link",{name:/Official careers/}).first()).toHaveAttribute("href",/^https:/);
+  await expect(page.getByRole("heading",{level:1})).toHaveText("Jobs at U.S. AI companies and labs");
+  await expect(page.getByText(/filtering and paging need JavaScript/)).toBeVisible();
+  // Server-rendered Browse pages and the employers' careers links (under Coverage & source health) work without JavaScript.
+  await expect(page.getByTestId("browse-roles").getByRole("link").first()).toHaveAttribute("href",/^\/jobs\/role\//);
+  await expect(page.locator("#job-sources a[data-external]").first()).toHaveAttribute("href",/^https:/);
+  // The search form submits as a plain GET form.
+  await expect(page.locator('form[role="search"]')).toHaveAttribute("method","get");
+  await expect(page.locator('form[role="search"] input[name="q"]')).toHaveCount(1);
+  await expect(page.locator('form[role="search"] input[name="w"]')).toHaveCount(1);
   await context.close();
 });
 for (const width of [320,768,1024]) test(`Jobs fits ${width}px and renders at most 30 cards`, async ({page}) => {
