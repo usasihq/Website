@@ -9,8 +9,10 @@ import path from "node:path";
 import { HF_JOBS_SPACE } from "../lib/jobs/hf-dataset";
 import { commitHubFiles, ensureHubRepo, hfAccessToken, readUploadFiles, setHubSpaceSdk } from "./hf-push";
 
+# Always addOrUpdate these so a failed first commit still overwrites the
+# default static-Space template (index.html + style.css). style.css is used.
 const SPACE_FILES = ["README.md", "index.html", "app.js", "style.css"] as const;
-const REMOVE_GRADIO_FILES = ["app.py", "requirements.txt"];
+const REMOVE_STALE_FILES = ["app.py", "requirements.txt"];
 
 const token = hfAccessToken();
 if (!token) {
@@ -30,7 +32,7 @@ await commitHubFiles({
   name: HF_JOBS_SPACE,
   token,
   files: readUploadFiles(dir, [...SPACE_FILES]),
-  deletePaths: REMOVE_GRADIO_FILES,
+  deletePaths: REMOVE_STALE_FILES,
   title: "Deploy USASI AI Jobs static explorer",
 });
-console.log(`hf-space: uploaded ${HF_JOBS_SPACE}`);
+console.log(`hf-space: uploaded ${SPACE_FILES.join(", ")} to ${HF_JOBS_SPACE} (overwrite)`);
