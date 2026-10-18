@@ -12,6 +12,7 @@ const COLUMNS = [
     links: [
       { href: "/companies/", label: "Companies & Labs" },
       { href: "/open/", label: "Open Models & Tools" },
+      { href: "/github/", label: "AI on GitHub" },
       { href: "/matrix/", label: "Compare" },
       { href: "/jobs/", label: "Jobs" },
       { href: "/hubs/", label: "Hubs" },

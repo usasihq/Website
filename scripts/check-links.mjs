@@ -51,6 +51,10 @@ const problems = [];
 let checked = 0;
 for (const page of pages) {
   const html = fs.readFileSync(page, "utf8");
+  // Fragments on the page itself (the skip link on every page) are checked without caching
+  // every page's ids, which would hold tens of thousands of sets in memory.
+  let ownIds = null;
+  const idsOf = (file) => (file === page ? (ownIds ??= new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]))) : idsFor(file));
   const pageUrl = "/" + path.relative(out, page).replace(/index\.html$/, "").replace(/\\/g, "/");
   const refs = [...html.matchAll(/\s(?:href|src)="([^"]+)"/g)].map((m) => m[1]);
   const srcsets = [...html.matchAll(/\s(?:srcSet|srcset|imageSrcSet|imagesrcset)="([^"]+)"/g)].flatMap((m) => m[1].split(",").map((s) => s.trim().split(/\s+/)[0]));
@@ -79,7 +83,7 @@ for (const page of pages) {
       }
       file = r.file;
     }
-    if (fragment && file.endsWith(".html") && !idsFor(file).has(fragment)) problems.push(`${pageUrl}: missing anchor ${ref}`);
+    if (fragment && file.endsWith(".html") && !idsOf(file).has(fragment)) problems.push(`${pageUrl}: missing anchor ${ref}`);
   }
 }
 

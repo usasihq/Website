@@ -33,11 +33,16 @@ const PEOPLE = [
   { href: "/voices/", label: "Voices of SI", description: "Tech creators and communicators who explain AI to the public" },
 ];
 
+const OPEN_SOURCE = [
+  { href: "/open/", label: "Open Models & Tools", description: "U.S.-led open models, software, datasets, and evaluation tools, with sources" },
+  { href: "/github/", label: "AI on GitHub", description: "The most-starred open-source AI projects on GitHub, ranked by stars" },
+];
+
 type NavItem = { href: string; label: string } | { label: string; items: typeof PEOPLE };
 
 const NAV: NavItem[] = [
   { href: "/companies/", label: "Companies & Labs" },
-  { href: "/open/", label: "Open Models & Tools" },
+  { label: "Open source", items: OPEN_SOURCE },
   { href: "/learn/", label: "Learn" },
   { href: "/jobs/", label: "Jobs" },
   { href: "/matrix/", label: "Compare" },
@@ -47,20 +52,20 @@ const NAV: NavItem[] = [
   { href: "/about/", label: "About" },
 ];
 
-/** Mobile menu: the People group is listed as its links. */
+/** Mobile menu: each group (Open source, People) is listed as its links. */
 const MOBILE_NAV = NAV.flatMap((item) => ("items" in item ? item.items : [item]));
 
 /**
- * A disclosure (button plus a short list of links) for the People pages.
- * It closes on Escape, on a click outside, and after any navigation.
+ * A disclosure (button plus a short list of links) for a group of pages,
+ * such as People. It closes on Escape, on a click outside, and after any navigation.
  */
-function PeopleMenu({ pathname }: { pathname: string }) {
+function NavMenu({ pathname, label, items }: { pathname: string; label: string; items: typeof PEOPLE }) {
   const [openedFor, setOpenedFor] = useState<string | null>(null);
   const open = openedFor === pathname;
   const panelId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const current = PEOPLE.some((p) => isCurrent(pathname, p.href));
+  const current = items.some((p) => isCurrent(pathname, p.href));
 
   useEffect(() => {
     if (!open) return;
@@ -99,7 +104,7 @@ function PeopleMenu({ pathname }: { pathname: string }) {
           current ? "text-text underline decoration-cyan decoration-2 underline-offset-[10px]" : "text-muted hover:text-text"
         }`}
       >
-        People
+        {label}
         <ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       <div
@@ -108,7 +113,7 @@ function PeopleMenu({ pathname }: { pathname: string }) {
         className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border border-line-strong bg-elev p-2 shadow-pop"
       >
         <ul>
-          {PEOPLE.map((p) => (
+          {items.map((p) => (
             <li key={p.href}>
               <Link
                 href={p.href}
@@ -219,7 +224,7 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
               if ("items" in item) {
                 return (
                   <li key={item.label}>
-                    <PeopleMenu pathname={pathname} />
+                    <NavMenu pathname={pathname} label={item.label} items={item.items} />
                   </li>
                 );
               }

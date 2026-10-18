@@ -60,6 +60,7 @@ npm run preview:static  # serve out/ like a static host at http://localhost:4321
 | `npm run prepare:social` | Renders section social cards (`og-open.png` for Open Models & Tools) with the site's fonts and colors. Their alt text lives in `lib/metadata.ts`. |
 | `npm run jobs:index` | After a jobs refresh, notify the Google Indexing API of added or removed job pages. Skips if `GOOGLE_INDEXING_SA_JSON` is unset. |
 | `npm run layoffs:refresh` | Fetch recent WARN Act notices for CA, WA, NY, and TX. A failed state keeps its last snapshot or is skipped. |
+| `npm run github:refresh` | Refresh `data/github/projects.json` (AI on GitHub, `/github/`) from the public GitHub search API: no token, about 45 minutes at the unauthenticated rate limit. `-- --offline` re-applies the inclusion rules to the cached results. See `docs/AUTOMATION.md`. |
 
 ## Repository layout
 

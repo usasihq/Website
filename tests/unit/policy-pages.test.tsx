@@ -51,7 +51,8 @@ describe("policy document pages", () => {
       expect(cardImage(catalog, policyHref(slug))!.path).toBe(`/og/policy/${slug}.jpg`);
       expect(isKnownSitePath(`/policy/${slug}/`, { organizations: new Set(), artifacts: new Set(), news: new Set(), hubs: new Set(), licenses: new Set(), explainers: new Set(), paths: new Set(), issues: new Set(), policy: new Set(publishedPolicy) })).toBe(true);
     }
-  });
+    // The sitemap now holds tens of thousands of pages (jobs, AI on GitHub); allow for a busy machine.
+  }, 90_000);
 
   it("renders each page from the record: heading with identifier, provisions, sources, and a way back to the tracker", async () => {
     const mod = await import("@/app/policy/[slug]/page");

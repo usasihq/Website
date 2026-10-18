@@ -138,6 +138,7 @@ export type EntryType =
   | "learning-path"
   | "kids-lesson"
   | "leader"
+  | "github-project"
   | "page";
 
 export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
@@ -160,6 +161,7 @@ export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   "learning-path": "Learning path",
   "kids-lesson": "For kids",
   leader: "Big SI profile",
+  "github-project": "AI on GitHub",
   page: "Page",
 };
 

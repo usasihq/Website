@@ -353,6 +353,8 @@ export function scoreEntry(entry: SearchEntry, tokens: string[]): number {
  * every word must appear, the way the directory pages filter. Counts that
  * link to a directory use this, so the number shown is the number found there.
  */
+const secondary = (e: SearchEntry) => (e.type === "github-project" ? 1 : 0);
+
 export function searchEntries(entries: SearchEntry[], query: string, limit = 12, { fuzzy = true }: { fuzzy?: boolean } = {}): SearchEntry[] {
   const tokens = queryTokens(query);
   if (tokens.length === 0) return [];
@@ -394,6 +396,8 @@ export function searchEntries(entries: SearchEntry[], query: string, limit = 12,
   return kept
     .sort(
       (a, b) =>
+        // AI on GitHub's thousands of third-party projects come after the site's own records and pages.
+        secondary(a.p.entry) - secondary(b.p.entry) ||
         b.relevance - a.relevance ||
         b.matched.length - a.matched.length ||
         a.fuzzy - b.fuzzy ||

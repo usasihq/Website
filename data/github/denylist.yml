@@ -1,0 +1,121 @@
+# Reviewed exclusions for AI on GitHub (/github/) that the automatic rules in
+# lib/github/filters.ts miss. One entry per repository, with a reason
+# (list | education | prompts | deepfake | non-ai | other) and a short note.
+# Matching is case-insensitive on full_name. Keep this list small and explain
+# every entry; it is summarized in the methodology. Reviewed 2026-10-18 against
+# the top 600 of that day's ranking; projects below that were not reviewed
+# individually.
+entries:
+  # Unauthorized or resold access to commercial AI services, or removal of safety measures
+  - { full_name: xtekky/gpt4free, reason: other, note: "Unofficial access to commercial AI services without their keys or terms" }
+  - { full_name: chatanywhere/GPT_API_free, reason: other, note: "Resold or free access to commercial model APIs" }
+  - { full_name: Ebony-Vinyl/dsh-our-free-model, reason: other, note: "Use of commercial models without an account or API key" }
+  - { full_name: p-e-w/heretic, reason: prompts, note: "Removes language models' safety training (like a jailbreak)" }
+  - { full_name: guillaumemeyer/watermarks-remover, reason: other, note: "Strips AI-content watermarks, which exist for provenance" }
+  - { full_name: CloakHQ/CloakBrowser, reason: other, note: "Browser built to evade bot detection" }
+  # Learning material the rules miss
+  - { full_name: rasbt/LLMs-from-scratch, reason: education, note: "Code companion to a book" }
+  - { full_name: GokuMohandas/Made-With-ML, reason: education, note: "Course material" }
+  - { full_name: apachecn/ailearning, reason: education, note: "Learning notes and exercises" }
+  - { full_name: ShangtongZhang/reinforcement-learning-an-introduction, reason: education, note: "Code for a textbook" }
+  - { full_name: ShusenTang/Dive-into-DL-PyTorch, reason: education, note: "Code for a textbook" }
+  - { full_name: nndl/nndl, reason: education, note: "Textbook" }
+  - { full_name: spmallick/learnopencv, reason: education, note: "Tutorial examples" }
+  - { full_name: GoogleCloudPlatform/generative-ai, reason: education, note: "Sample code and notebooks" }
+  - { full_name: humanlayer/12-factor-agents, reason: education, note: "Principles essay, not software" }
+  - { full_name: liguodongiot/llm-action, reason: education, note: "Shared notes on techniques" }
+  - { full_name: virgili0/Virgilio, reason: education, note: "E-learning mentor guide" }
+  - { full_name: shanraisshan/claude-code-best-practice, reason: education, note: "Best-practice guide" }
+  - { full_name: thedaviddias/Front-End-Checklist, reason: education, note: "Web development checklist" }
+  - { full_name: halfrost/Halfrost-Field, reason: education, note: "Engineering blog" }
+  # Lists and paper trackers
+  - { full_name: eugeneyan/applied-ml, reason: list, note: "List of papers and blogs" }
+  - { full_name: sebastianruder/NLP-progress, reason: list, note: "Tracker of results from papers" }
+  - { full_name: dair-ai/AI-Papers-of-the-Week, reason: list, note: "Weekly paper list" }
+  - { full_name: mli/paper-reading, reason: list, note: "Paper reading videos index" }
+  - { full_name: davideuler/architecture.of.internet-product, reason: list, note: "Collection of architecture articles" }
+  - { full_name: dair-ai/ml-visuals, reason: list, note: "Figure templates, not software" }
+  # General-purpose software tagged with AI topics
+  - { full_name: shadcn-ui/ui, reason: non-ai, note: "UI component library" }
+  - { full_name: supabase/supabase, reason: non-ai, note: "Database platform" }
+  - { full_name: dbeaver/dbeaver, reason: non-ai, note: "Database client" }
+  - { full_name: ClickHouse/ClickHouse, reason: non-ai, note: "Analytics database" }
+  - { full_name: JuliaLang/julia, reason: non-ai, note: "Programming language" }
+  - { full_name: apache/airflow, reason: non-ai, note: "Workflow scheduler" }
+  - { full_name: paperless-ngx/paperless-ngx, reason: non-ai, note: "Document management system" }
+  - { full_name: reactive-resume/reactive-resume, reason: non-ai, note: "Resume builder" }
+  - { full_name: pingcap/tidb, reason: non-ai, note: "Database" }
+  - { full_name: netdata/netdata, reason: non-ai, note: "Infrastructure monitoring" }
+  - { full_name: Dokploy/dokploy, reason: non-ai, note: "Deployment platform" }
+  - { full_name: jumpserver/jumpserver, reason: non-ai, note: "Access management" }
+  - { full_name: gitleaks/gitleaks, reason: non-ai, note: "Secret scanner" }
+  - { full_name: Infisical/infisical, reason: non-ai, note: "Secrets management" }
+  - { full_name: kestra-io/kestra, reason: non-ai, note: "Workflow orchestration" }
+  - { full_name: dapr/dapr, reason: non-ai, note: "Distributed application runtime" }
+  - { full_name: go-kratos/kratos, reason: non-ai, note: "Go microservices framework" }
+  - { full_name: dolthub/dolt, reason: non-ai, note: "Versioned database" }
+  - { full_name: docmost/docmost, reason: non-ai, note: "Wiki software" }
+  - { full_name: qax-os/excelize, reason: non-ai, note: "Spreadsheet library" }
+  - { full_name: dailydotdev/daily, reason: non-ai, note: "Developer news feed" }
+  - { full_name: amark/gun, reason: non-ai, note: "Data sync protocol" }
+  - { full_name: electerm/electerm, reason: non-ai, note: "Terminal client" }
+  - { full_name: theonedev/onedev, reason: non-ai, note: "Git server and CI" }
+  - { full_name: gvergnaud/ts-pattern, reason: non-ai, note: "TypeScript library" }
+  - { full_name: puckeditor/puck, reason: non-ai, note: "Visual page editor" }
+  - { full_name: doocs/md, reason: non-ai, note: "Markdown editor" }
+  - { full_name: bulletphysics/bullet3, reason: non-ai, note: "Physics engine" }
+  - { full_name: nmap/nmap, reason: non-ai, note: "Network scanner" }
+  - { full_name: kubesphere/kubesphere, reason: non-ai, note: "Kubernetes platform" }
+  - { full_name: argoproj/argo-workflows, reason: non-ai, note: "Kubernetes workflow engine" }
+  - { full_name: apache/doris, reason: non-ai, note: "Analytics database" }
+  - { full_name: wasp-lang/open-saas, reason: non-ai, note: "SaaS boilerplate" }
+  - { full_name: dagger/dagger, reason: non-ai, note: "Build automation" }
+  - { full_name: oblien/openship, reason: non-ai, note: "Deployment platform" }
+  - { full_name: conwnet/github1s, reason: non-ai, note: "Code browser" }
+  - { full_name: t8y2/dbx, reason: non-ai, note: "Database client" }
+  - { full_name: tw93/Pake, reason: non-ai, note: "Website-to-desktop-app packager" }
+  - { full_name: LC044/WeChatMsg, reason: non-ai, note: "Chat history exporter" }
+  - { full_name: pppscn/SmsForwarder, reason: non-ai, note: "SMS forwarder" }
+  - { full_name: Evil0ctal/Douyin_TikTok_Download_API, reason: non-ai, note: "Video downloader" }
+  - { full_name: mxgmn/WaveFunctionCollapse, reason: non-ai, note: "Procedural generation algorithm" }
+  - { full_name: nautechsystems/nautilus_trader, reason: non-ai, note: "Trading engine" }
+  - { full_name: Fincept-Corporation/FinceptTerminal, reason: non-ai, note: "Finance terminal" }
+  - { full_name: corsairdev/corsair, reason: non-ai, note: "App integration service" }
+  - { full_name: zoicware/RemoveWindowsAI, reason: non-ai, note: "Removes AI features from Windows" }
+  # Second review (2026-10-18), after the name and description searches were added
+  - { full_name: NopeCHALLC/nopecha-extension, reason: other, note: "CAPTCHA solver (bypasses bot detection)" }
+  - { full_name: alex000kim/nsfw_data_scraper, reason: other, note: "Scrapes explicit images" }
+  - { full_name: extreme-assistant/CVPR2024-Paper-Code-Interpretation, reason: list, note: "Paper list" }
+  - { full_name: ZHO-ZHO-ZHO/ComfyUI-Workflows-ZHO, reason: list, note: "Collection of workflow files" }
+  - { full_name: zziz/pwc, reason: list, note: "Unmaintained paper list" }
+  - { full_name: lyhue1991/eat_tensorflow2_in_30_days, reason: education, note: "Tutorial" }
+  - { full_name: CarterPerez-dev/Cybersecurity-Projects, reason: education, note: "Practice projects" }
+  - { full_name: ccfddl/ccf-deadlines, reason: non-ai, note: "Conference deadline tracker" }
+  - { full_name: drawdb-io/drawdb, reason: non-ai, note: "Database diagram editor" }
+  - { full_name: pbatard/rufus, reason: non-ai, note: "USB formatting utility" }
+  - { full_name: every-app/open-seo, reason: non-ai, note: "SEO tool" }
+  - { full_name: alyssaxuu/screenity, reason: non-ai, note: "Screen recorder" }
+  - { full_name: nukeop/nuclear, reason: non-ai, note: "Music player" }
+  - { full_name: DuarteSantos8/openGym, reason: non-ai, note: "Workout tracker" }
+  - { full_name: 0xJacky/nginx-ui, reason: non-ai, note: "Web server admin UI" }
+  - { full_name: x-hw/amazing-qr, reason: non-ai, note: "QR code generator" }
+  - { full_name: usekaneo/kaneo, reason: non-ai, note: "Project management" }
+  - { full_name: openstatusHQ/openstatus, reason: non-ai, note: "Status page and uptime monitoring" }
+  - { full_name: vastsa/FileCodeBox, reason: non-ai, note: "File sharing" }
+  - { full_name: recastnavigation/recastnavigation, reason: non-ai, note: "Game navigation meshes" }
+  - { full_name: chthollyphile/folia-major, reason: non-ai, note: "Music player" }
+  - { full_name: datahaven-xyz/datahaven, reason: non-ai, note: "Blockchain" }
+  - { full_name: devlikeapro/waha, reason: non-ai, note: "WhatsApp HTTP API" }
+  - { full_name: evolution-foundation/evolution-api, reason: non-ai, note: "WhatsApp integration API" }
+  - { full_name: Blazity/next-enterprise, reason: non-ai, note: "Next.js boilerplate" }
+  - { full_name: spiritLHLS/ecs, reason: non-ai, note: "Server benchmark script" }
+  - { full_name: firebase/firebase-ios-sdk, reason: non-ai, note: "Mobile app SDK" }
+  - { full_name: gcanti/io-ts, reason: non-ai, note: "TypeScript runtime types" }
+  - { full_name: GreptimeTeam/greptimedb, reason: non-ai, note: "Observability database" }
+  - { full_name: pig-mesh/pig, reason: non-ai, note: "Access management system" }
+  - { full_name: j3ssie/osmedeus, reason: non-ai, note: "Security scanning orchestration" }
+  - { full_name: pixie-io/pixie, reason: non-ai, note: "Kubernetes observability" }
+  - { full_name: apache/camel, reason: non-ai, note: "Integration framework" }
+  - { full_name: pbek/QOwnNotes, reason: non-ai, note: "Notes app" }
+  - { full_name: zxlie/FeHelper, reason: non-ai, note: "Front-end browser extension" }
+  - { full_name: houbb/sensitive-word, reason: non-ai, note: "Word filter (rule-based)" }

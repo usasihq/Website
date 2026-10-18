@@ -193,7 +193,9 @@ describe("search on the published index", () => {
     expect(top("ollama", 1)).toEqual(["software:ollama"]);
     expect(top("about", 1)).toEqual(["page:about"]);
     // The only entry with both words; partial matches are not mixed in when full matches exist.
-    expect(top("coding assistant", 3)).toEqual(["organization:github"]);
+    // (AI on GitHub projects that match come after it.)
+    expect(top("coding assistant", 3).filter((x) => !x.startsWith("github-project:"))).toEqual(["organization:github"]);
+    expect(top("coding assistant", 3)[0]).toBe("organization:github");
   });
 });
 
