@@ -251,11 +251,12 @@ test.describe("contact and profiles", () => {
     await page.goto("/");
     const contact = page.getByRole("list", { name: "USASI contact and profiles" });
     await expect(contact.getByRole("link", { name: "usasi@usasihq.com" })).toHaveAttribute("href", "mailto:usasi@usasihq.com");
-    for (const href of ["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ"]) {
+    for (const href of ["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ",
+      "https://huggingface.co/usasihq", "https://www.linkedin.com/in/robert-corbin-239761410/", "https://apps.apple.com/ie/developer/robert-corbin/id1890247992"]) {
       await expect(contact.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
-    // Exactly those three profiles, nothing retired.
-    for (const host of ["huggingface.co/usasihq", "x.com/usasihq", "bsky.app/profile", "truthsocial.com"]) {
+    // Only those profiles (owner decisions 2026-10-12 and 2026-10-18), nothing retired.
+    for (const host of ["x.com/usasihq", "bsky.app/profile", "truthsocial.com"]) {
       await expect(page.locator(`a[href*="${host}"]`)).toHaveCount(0);
     }
     // No third-party embeds or scripts.
