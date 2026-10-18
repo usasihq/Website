@@ -57,7 +57,8 @@ export type Careers = z.infer<typeof Careers>;
 export const Salary = z.object({
   min: z.number().finite().nonnegative().nullable(), max: z.number().finite().nonnegative().nullable(),
   currency: z.string().regex(/^[A-Z]{3}$/), period: z.enum(["hour", "day", "week", "month", "year"]),
-  label: text(160).nullable(), source_status: z.literal("employer-provided"),
+  // "employer-description": read from the employer's own description text (lib/jobs/pay-text.ts) when the feed gives no salary.
+  label: text(160).nullable(), source_status: z.enum(["employer-provided", "employer-description"]),
 }).strict().refine(v => (v.min !== null || v.max !== null) && (v.min === null || v.max === null || v.min <= v.max), "Invalid salary range");
 export const Job = z.object({
   id: JOB_ID,
@@ -73,6 +74,8 @@ export const Job = z.object({
   first_seen: instant, last_seen: instant, last_successfully_checked: instant,
   status: z.enum(["open", "possibly_closed", "closed"]), missing_since: instant.nullable(),
   missing_checks: z.number().int().nonnegative(), closed_at: instant.nullable(),
+  // When applications close, only where the source states it (USAJOBS ApplicationCloseDate). Never guessed.
+  valid_through: instant.nullable().optional(),
 }).strict();
 export type Job = z.infer<typeof Job>;
 export type NormalizedJob = Omit<Job, "first_seen" | "last_seen" | "last_successfully_checked" | "status" | "missing_since" | "missing_checks" | "closed_at">;

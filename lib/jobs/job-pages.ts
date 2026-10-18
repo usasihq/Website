@@ -77,8 +77,8 @@ export function postalAddresses(job: Pick<Job, "locations">): { addressLocality?
  * schema.org JobPosting for Google's job search, or null when the listing
  * lacks what the format requires (a description, and a U.S. address or a
  * fully remote listing open to U.S. applicants). Every field comes from the
- * employer's feed; nothing is inferred. validThrough is omitted: feeds do not
- * supply an expiration date. Stale listings never reach this function
+ * employer's feed; nothing is inferred. validThrough is included only where the
+ * source states a closing date (USAJOBS); other feeds do not supply one. Stale listings never reach this function
  * (`isCurrent`, seen within 48 hours), so their pages and markup are gone
  * after the next refresh and deploy rather than given a guessed expiry.
  *
@@ -96,7 +96,9 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
   const fullyRemote = job.workplace === "remote";
   const usOnly = isUSOnly(job);
   if (!addresses.length && !(fullyRemote && usOnly)) return null;
-  const salary = job.salaries.find((s) => s.currency && (s.min !== null || s.max !== null));
+  // The feed's own salary first; a range read from the description text only when the feed gives none.
+  const usable = job.salaries.filter((s) => s.currency && (s.min !== null || s.max !== null));
+  const salary = usable.find((s) => s.source_status === "employer-provided") ?? usable[0];
   return {
     "@context": "https://schema.org",
     "@type": "JobPosting",
@@ -114,6 +116,7 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
     ...(addresses.length
       ? { jobLocation: addresses.map((a) => ({ "@type": "Place", address: { "@type": "PostalAddress", ...a } })) }
       : {}),
+    ...(job.valid_through ? { validThrough: job.valid_through } : {}),
     ...(fullyRemote && usOnly ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "US" } } : {}),
     ...(salary
       ? {

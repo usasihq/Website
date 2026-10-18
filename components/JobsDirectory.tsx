@@ -33,7 +33,7 @@ function payText(s: Job["salaries"][number]): string {
   const k = (n: number) => (s.period === "year" && n >= 1000 ? `$${Math.round(n / 1000)}K` : `$${n.toLocaleString("en-US", { maximumFractionDigits: 2 })}`);
   const per = { year: "a year", hour: "an hour", month: "a month", week: "a week", day: "a day" }[s.period] ?? `/ ${s.period}`;
   const range = s.min !== null && s.max !== null && s.min !== s.max ? `${k(s.min)}–${k(s.max)}` : s.min !== null ? `${k(s.min)}${s.max === null ? "+" : ""}` : `up to ${k(s.max!)}`;
-  return `${range} ${per}`;
+  return `${range} ${per}${s.label ? ` · ${s.label}` : ""}`;
 }
 /** "Today", "3 days ago", "2 weeks ago", or the date. */
 function ageText(t: number, now: number): string {
@@ -50,6 +50,7 @@ function JobCard({ job, unverified, now, careersUrl }: { job: JobItem; unverifie
   const level = jobLevel(job.title);
   const remote = job.workplace === "remote" || job.locations.some(l => /\bremote\b/i.test(l));
   const applyOn = job.source_type === "usajobs" ? "USAJOBS.gov" : "the employer's site";
+  const fromText = job.salaries.length > 0 && job.salaries.every(s => s.source_status === "employer-description");
   const sourceLine = job.source_type === "usajobs"
     ? "Collected from USAJOBS.gov."
     : `Collected from the employer’s ${JOB_SOURCE_LABELS[job.source_type]} feed.`;
@@ -69,9 +70,9 @@ function JobCard({ job, unverified, now, careersUrl }: { job: JobItem; unverifie
         {level !== "not-stated" ? <li className="badge">{JOB_LEVELS.find(l => l.id === level)!.label}</li> : null}
         {job.department ? <li className="badge max-w-full truncate">{job.department}</li> : null}
       </ul>
-      {job.salaries.length ? <p className="mt-2.5 text-[0.9375rem] font-medium text-text">{job.salaries.slice(0, 2).map(payText).join(" · ")}<span className="sr-only"> (employer-disclosed base pay range)</span></p> : null}
+      {job.salaries.length ? <p className="mt-2.5 text-[0.9375rem] font-medium text-text">{job.salaries.slice(0, 2).map(payText).join(" · ")}{fromText ? <span className="font-normal text-muted"> (from the employer&rsquo;s job description)</span> : <span className="sr-only"> (employer-disclosed base pay range)</span>}</p> : null}
       {unverified ? <p className="mt-2 text-sm text-ice">Not recently confirmed. Check the employer’s posting for availability.</p> : null}
-      <details className="mt-2 text-xs text-muted"><summary className="min-h-8 cursor-pointer">Source and corrections</summary><p className="mt-2">{sourceLine} Posting ID: {job.source_job_id}. Last seen in the feed: <time dateTime={job.last_seen}>{checkedLabel(job.last_seen)}</time>. {job.salaries.length ? "Pay is the employer-disclosed base range; compensation is not guaranteed. " : ""}Unknown fields are not inferred.</p>{careersUrl ? <ExternalLink href={careersUrl}>Employer&rsquo;s job board</ExternalLink> : null}<p className="mt-1">Feed type: {JOB_SOURCE_LABELS[job.source_type]} (machine-readable; read automatically)</p>{siteConfig.contact.email ? <p className="mt-2"><a className="link" href={mailtoHref(siteConfig.contact.email, `Job correction: ${job.title}`, `Job: ${job.id}\nOfficial posting: ${job.official_url}\nDisputed field:\nProposed correction:\nSupporting source:\n`)}>Suggest a correction</a></p> : null}</details>
+      <details className="mt-2 text-xs text-muted"><summary className="min-h-8 cursor-pointer">Source and corrections</summary><p className="mt-2">{sourceLine} Posting ID: {job.source_job_id}. Last seen in the feed: <time dateTime={job.last_seen}>{checkedLabel(job.last_seen)}</time>. {job.salaries.length ? fromText ? "Pay is the range stated in the employer’s job description (the feed gives none); compensation is not guaranteed. " : "Pay is the employer-disclosed base range; compensation is not guaranteed. " : ""}Unknown fields are not inferred.</p>{careersUrl ? <ExternalLink href={careersUrl}>Employer&rsquo;s job board</ExternalLink> : null}<p className="mt-1">Feed type: {JOB_SOURCE_LABELS[job.source_type]} (machine-readable; read automatically)</p>{siteConfig.contact.email ? <p className="mt-2"><a className="link" href={mailtoHref(siteConfig.contact.email, `Job correction: ${job.title}`, `Job: ${job.id}\nOfficial posting: ${job.official_url}\nDisputed field:\nProposed correction:\nSupporting source:\n`)}>Suggest a correction</a></p> : null}</details>
     </div>
     <div className="flex shrink-0 flex-row items-center justify-between gap-3 sm:flex-col sm:items-end">
       <p className="text-sm text-muted"><time dateTime={new Date(posted).toISOString()} title={job.posted_at ? (job.posted_date_kind === "last-published" ? "Last published by the employer" : "Published by the employer") : "First seen in the employer's feed"}>{ageText(posted, now)}</time></p>

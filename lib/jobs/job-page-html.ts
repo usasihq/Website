@@ -127,7 +127,7 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
   if (job.team && job.team !== job.department) facts.push(["Team", esc(job.team)]);
   for (const s of job.salaries.slice(0, 4)) {
     const range = s.min !== null && s.max !== null ? `${money(s.min, s.currency)} to ${money(s.max, s.currency)}` : money((s.min ?? s.max)!, s.currency);
-    facts.push([s.label ? `Salary (${esc(s.label)})` : "Salary", `${esc(range)} ${PERIOD[s.period]}, as the employer lists it`]);
+    facts.push([s.label ? `Salary (${esc(s.label)})` : "Salary", `${esc(range)} ${PERIOD[s.period]}, ${s.source_status === "employer-description" ? "as stated in the employer&rsquo;s job description" : "as the employer lists it"}`]);
   }
   if (job.posted_at) facts.push([job.posted_date_kind === "last-published" ? "Last published" : "Published", `<time datetime="${esc(job.posted_at)}">${formatDate(job.posted_at.slice(0, 10))}</time>`]);
   facts.push(["First listed on USASI", `<time datetime="${esc(job.first_seen)}">${formatDate(job.first_seen.slice(0, 10))}</time>`]);
@@ -204,7 +204,7 @@ ${p.description ? description(p.description) : `<p class="text-muted">The full d
 ${similar.length ? `<section aria-labelledby="similar-jobs-heading" class="border-t border-line pt-8" data-testid="similar-jobs">
 <h2 id="similar-jobs-heading" class="text-xl font-semibold text-text sm:text-2xl">Similar jobs</h2>
 <ul class="mt-4 grid gap-3 md:grid-cols-2">${similar
-    .map((q) => `<li class="card p-4"><p class="text-sm text-muted">${esc(shortOrg(q.org.name))}</p><p class="mt-1 font-semibold text-text"><a href="${esc(asset(q.path))}" class="hover:underline hover:decoration-cyan hover:underline-offset-4">${esc(q.job.title)}</a></p><p class="mt-1 text-sm text-muted [overflow-wrap:anywhere]">${esc(q.job.locations.slice(0, 2).join(" · ") || "Location not supplied")}</p>${q.job.salaries[0] ? `<p class="mt-1 text-sm text-text">${esc(payLine(q.job.salaries[0]))}</p>` : ""}</li>`)
+    .map((q) => `<li class="card p-4"><p class="text-sm text-muted">${esc(shortOrg(q.org.name))}</p><p class="mt-1 font-semibold text-text"><a href="${esc(asset(q.path))}" class="hover:underline hover:decoration-cyan hover:underline-offset-4">${esc(q.job.title)}</a></p><p class="mt-1 text-sm text-muted [overflow-wrap:anywhere]">${esc(q.job.locations.slice(0, 2).join(" · ") || "Location not supplied")}</p>${q.job.salaries[0] ? `<p class="mt-1 text-sm text-text">${esc(payLine(q.job.salaries[0]))}${q.job.salaries[0].source_status === "employer-description" ? ' <span class="text-muted">(from the job description)</span>' : ""}</p>` : ""}</li>`)
     .join("")}</ul>
 </section>` : ""}
 <nav aria-labelledby="more-jobs-heading" class="border-t border-line pt-6">

@@ -9,6 +9,7 @@ import { fetchFeed, FeedError } from "../lib/jobs/security";
 import { reconcile, sourceKey, jobSourceKey, type FeedResult } from "../lib/jobs/reconcile";
 import { descriptionText, htmlToDescription } from "../lib/jobs/description";
 import { allLocationsRemote, workplaceFromText } from "../lib/jobs/workplace-text";
+import { withDescriptionPay } from "../lib/jobs/pay-text";
 import { readDescriptions, writeDescriptions } from "../lib/jobs/descriptions-store";
 import { fetchUsaJobsItems, usaJobsPayload, usajobsCredentials } from "../lib/jobs/usajobs";
 import { fetchSmartRecruiters } from "../lib/jobs/smartrecruiters";
@@ -42,12 +43,17 @@ for (const org of configs) {
       : await fetchFeed(c);
     const rows = adapters[c.source.type].rows(payload, org.slug, c);
     // Fill an unknown workplace only from what the employer states: every location remote, or an
-    // explicit sentence in this or the stored description (lib/jobs/workplace-text.ts).
+    // explicit sentence in this or the stored description (lib/jobs/workplace-text.ts). Then, for
+    // listings whose feed gives no salary, a pay range the description states (lib/jobs/pay-text.ts).
+    // A posting not fetched again this run (r.html undefined) uses its stored description.
     for (const r of rows) {
-      if (r.job.workplace !== "unknown") continue;
+      if (r.job.workplace !== "unknown" && r.job.salaries.length) continue;
       const text = r.html ? descriptionText(htmlToDescription(r.html) ?? []) : descriptions.has(r.job.id) ? descriptionText(descriptions.get(r.job.id)!) : "";
-      const w = allLocationsRemote(r.job.locations) ? "remote" : text ? workplaceFromText(text) : null;
-      if (w) r.job = { ...r.job, workplace: w, remote: w === "remote" };
+      if (r.job.workplace === "unknown") {
+        const w = allLocationsRemote(r.job.locations) ? "remote" : text ? workplaceFromText(text) : null;
+        if (w) r.job = { ...r.job, workplace: w, remote: w === "remote" };
+      }
+      r.job = withDescriptionPay(r.job, text);
     }
     const jobs = rows.map(r => r.job);
     // Validate every row before reconciliation. One poisoned row rejects the entire feed.
@@ -85,4 +91,7 @@ fs.writeFileSync(`${DATA_PATH}.tmp`, JSON.stringify(state) + "\n");
 fs.renameSync(`${DATA_PATH}.tmp`, DATA_PATH);
 console.log(`jobs: ${configs.length} sources checked, ${failed} need attention. Failure preserves previous job state.`);
 console.log(`jobs: ${descriptions.size} descriptions stored for ${live.size} open or possibly closed postings.`);
+const open = state.jobs.filter(j => j.status === "open");
+const paid = open.filter(j => j.salaries.length);
+console.log(`jobs: ${paid.length} of ${open.length} open postings show pay (${paid.filter(j => j.salaries.every(s => s.source_status === "employer-description")).length} from the description text).`);
 // A total outage still writes health for transparency. Workflow publishes stale warnings, not false closures.
