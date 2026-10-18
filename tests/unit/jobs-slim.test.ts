@@ -26,7 +26,9 @@ describe("compact /data/jobs.json", () => {
   const decoded = decodeJobs(slim);
 
   it("has current listings to compare", () => {
-    if (data.items.length) expect(filterJobs(data.items, data.feeds, parseJobFilters(new URLSearchParams("")), now).length).toBeGreaterThan(0);
+    // Judged an hour after the newest listing, so an old committed snapshot (as in CI) still counts as current.
+    const latest = Math.max(...data.items.map((j) => Date.parse(j.last_seen))) + 3600000;
+    if (data.items.length) expect(filterJobs(data.items, data.feeds, parseJobFilters(new URLSearchParams("where=all")), latest).length).toBeGreaterThan(0);
   });
 
   it("decodes to exactly the directory's listings", () => {
