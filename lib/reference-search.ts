@@ -18,6 +18,7 @@ import { stateTitle } from "./seo";
 import type { SearchEntry } from "./search";
 import { plainText } from "./plain-text";
 import { githubSearchEntries } from "./github/projects";
+import { hfSearchEntries } from "./huggingface/items";
 
 export type GlossaryTerm = { id: string; term: string; definition: string };
 
@@ -26,6 +27,8 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/start/", name: "Start here", summary: "Four ways into the catalog, and a checklist before you use a model or tool.", keywords: "new begin intro overview guide tour" },
   { href: "/companies/", name: "Companies & Labs", summary: "Directory of U.S. AI organizations: labs, companies, universities, agencies, and nonprofits.", keywords: "organizations directory labs list" },
   { href: "/github/", name: "AI on GitHub", summary: "The most-starred open-source AI projects on GitHub, ranked by stars, each with its own page.", keywords: "github repositories repos open source projects stars popular llm agents frameworks code" },
+  { href: "/huggingface/", name: "AI on Hugging Face", summary: "The most-liked open models on the Hugging Face Hub, ranked by likes, each with its own page.", keywords: "hugging face huggingface hub models open weights likes popular llm gguf quantized checkpoints" },
+  { href: "/huggingface/datasets/", name: "AI on Hugging Face: datasets", summary: "The most-liked datasets on the Hugging Face Hub, ranked by likes, each with its own page.", keywords: "hugging face huggingface hub datasets training data benchmarks corpora likes" },
   { href: "/open/", name: "Open Models & Tools", summary: "Directory of U.S.-led open models, software, datasets, and evaluation tools.", keywords: "models tools directory open weights list" },
   { href: "/learn/", name: "Learn", summary: "Plain-language explainers, learning paths, and tools about how AI works.", keywords: "explainers guides education courses" },
   { href: "/kids/", name: "AI and Super Intelligence for kids", summary: "Seven short lessons for readers about 8 to 12, with activities and quizzes.", keywords: "children kids students school lessons classroom teachers parents" },
@@ -122,6 +125,7 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
       e("person", p.slug, `/people/${p.slug}/`, p.name, p.headline, [...p.affiliations.map((a) => `${a.role} ${a.name}`), ...p.work.map((w) => w.name)].join(" ")),
     ),
     ...githubSearchEntries(),
+    ...hfSearchEntries(),
     ...organizationsByState(catalog).states.map((s) =>
       e("place", stateSlug(s.code), `/places/${stateSlug(s.code)}/`, s.name, `${stateTitle(s)}: organizations headquartered there`, "state headquarters place ai companies labs"),
     ),

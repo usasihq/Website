@@ -10,6 +10,7 @@ import { formatDate } from "@/lib/dates";
 import { OWNER_TYPE_LABELS } from "@/lib/github/directory";
 import { catalogMatch, githubEntries, githubEntry, githubFetchedLabel, githubPageHref, GITHUB_PAGE_SIZE, githubProjectLd, licenseLabel, projectHero, relatedProjects, toListItem } from "@/lib/github/projects";
 import { licenseKey } from "@/lib/github/directory";
+import { hfForGithub } from "@/lib/huggingface/items";
 import { clipDescription, pageMetadata } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
 
@@ -42,6 +43,7 @@ export default async function GithubProjectPage({ params }: { params: Promise<{ 
   const catalog = getCatalog();
   const hero = projectHero(e);
   const inCatalog = catalogMatch(catalog, e);
+  const onHf = hfForGithub(e.full_name);
   const related = relatedProjects(e);
   const page = Math.ceil(e.rank / GITHUB_PAGE_SIZE);
   const license = licenseKey(e);
@@ -99,6 +101,13 @@ export default async function GithubProjectPage({ params }: { params: Promise<{ 
               <p className="mt-5">
                 <Link href={inCatalog.href} className="link inline-flex items-center gap-1 font-medium">
                   In the USASI catalog: {inCatalog.name} <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </Link>
+              </p>
+            ) : null}
+            {onHf ? (
+              <p className={inCatalog ? "mt-2" : "mt-5"}>
+                <Link href={onHf.href} className="link inline-flex items-center gap-1 font-medium">
+                  On AI on Hugging Face: {onHf.id} <ArrowRight aria-hidden="true" className="h-4 w-4" />
                 </Link>
               </p>
             ) : null}

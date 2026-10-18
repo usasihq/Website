@@ -24,7 +24,7 @@ export function loadSearchIndex(url: string): Promise<SearchEntry[]> {
 /** Result groups shown as filters on /search/. */
 export const SEARCH_GROUPS: { id: string; label: string; types: EntryType[] }[] = [
   { id: "organizations", label: "Organizations", types: ["organization"] },
-  { id: "tools", label: "Models & tools", types: [...ARTIFACT_ENTRY_TYPES, "github-project"] },
+  { id: "tools", label: "Models & tools", types: [...ARTIFACT_ENTRY_TYPES, "github-project", "huggingface-item"] },
   { id: "learn", label: "Learn", types: ["explainer", "learning-path", "kids-lesson", "hub", "glossary-term", "faq"] },
   { id: "news", label: "News", types: ["news", "newsletter"] },
   { id: "more", label: "Policy, licenses, and more", types: ["policy", "license", "person", "leader", "place", "page"] },

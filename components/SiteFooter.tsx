@@ -13,6 +13,7 @@ const COLUMNS = [
       { href: "/companies/", label: "Companies & Labs" },
       { href: "/open/", label: "Open Models & Tools" },
       { href: "/github/", label: "AI on GitHub" },
+      { href: "/huggingface/", label: "AI on Hugging Face" },
       { href: "/matrix/", label: "Compare" },
       { href: "/jobs/", label: "Jobs" },
       { href: "/hubs/", label: "Hubs" },

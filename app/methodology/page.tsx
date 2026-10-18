@@ -24,6 +24,7 @@ const TOC = [
   ["news", "News"],
   ["badges", "Reading the badges"],
   ["github", "AI on GitHub"],
+  ["huggingface", "AI on Hugging Face"],
 ];
 
 export default function MethodologyPage() {

@@ -3,8 +3,9 @@
  *
  * Renders a 1200×630 JPEG social preview card for each record, news item,
  * explainer, hub, license guide, and weekly issue into public/og/ (not
- * committed). Cards are defined in lib/page-cards.ts. AI on GitHub hero
- * images (lib/github/hero.ts, scripts/github-heroes.ts) share the cache. Only cards whose content
+ * committed). Cards are defined in lib/page-cards.ts. AI on GitHub and AI on
+ * Hugging Face hero images (lib/github/hero.ts, lib/huggingface/hero.ts,
+ * rendered by scripts/hero-render.ts) share the cache. Only cards whose content
  * or template changed are rendered again; cards for removed pages are deleted.
  */
 import crypto from "node:crypto";
@@ -18,6 +19,9 @@ import { CARD_TEMPLATE_VERSION, pageCards, type PageCard } from "../lib/page-car
 import { GITHUB_HERO_VERSION, type GithubHero } from "../lib/github/hero";
 import { githubHeroes } from "../lib/github/projects";
 import { renderGithubHeroes } from "./github-heroes";
+import { HF_HERO_VERSION, type HfHero } from "../lib/huggingface/hero";
+import { hfHeroes } from "../lib/huggingface/items";
+import { renderHfHeroes } from "./hf-heroes";
 
 const root = process.cwd();
 const outRoot = path.join(root, "public", "og");
@@ -38,9 +42,13 @@ const todo = cards.filter((c) => manifest[c.image] !== hashOf(c) || !fs.existsSy
 const heroes = githubHeroes();
 const heroHashOf = (h: GithubHero) => crypto.createHash("sha256").update(JSON.stringify({ v: GITHUB_HERO_VERSION, h: { ...h, alt: undefined } })).digest("hex").slice(0, 16);
 const heroTodo = heroes.filter((h) => manifest[h.image] !== heroHashOf(h) || !fs.existsSync(path.join(root, "public", h.image)));
+// Stable key: the hero's own fields (no counts, ranks, or dates) and the template version.
+const hf = hfHeroes();
+const hfHashOf = (h: HfHero) => crypto.createHash("sha256").update(JSON.stringify({ v: HF_HERO_VERSION, h: { ...h, alt: undefined } })).digest("hex").slice(0, 16);
+const hfTodo = hf.filter((h) => manifest[h.image] !== hfHashOf(h) || !fs.existsSync(path.join(root, "public", h.image)));
 
 // Remove cards for pages that no longer exist.
-const wanted = new Set([...cards.map((c) => c.image), ...heroes.map((h) => h.image)]);
+const wanted = new Set([...cards.map((c) => c.image), ...heroes.map((h) => h.image), ...hf.map((h) => h.image)]);
 let removed = 0;
 for (const image of Object.keys(manifest)) {
   if (!wanted.has(image)) {
@@ -133,8 +141,14 @@ if (heroTodo.length > 0) {
     manifest[h.image] = heroHashOf(h);
   });
 }
+if (hfTodo.length > 0) {
+  await renderHfHeroes(hfTodo, (h) => path.join(root, "public", h.image), (h) => {
+    manifest[h.image] = hfHashOf(h);
+  });
+}
 fs.mkdirSync(outRoot, { recursive: true });
 fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
 fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 0));
 console.log(`page cards: ${cards.length} total, ${todo.length} rendered, ${removed} removed`);
 console.log(`github heroes: ${heroes.length} total, ${heroTodo.length} rendered`);
+console.log(`huggingface heroes: ${hf.length} total, ${hfTodo.length} rendered`);

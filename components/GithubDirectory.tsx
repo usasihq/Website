@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import { useMemo, useRef, useState, type RefObject } from "react";
 import {
   DEFAULT_GITHUB_FILTERS,
   OWNER_TYPE_LABELS,
@@ -15,6 +15,7 @@ import {
 } from "@/lib/github/directory";
 import { FilterChip, ResultSummary, SearchField, SelectField, ShowMore } from "./FilterControls";
 import { GithubRow } from "./GithubList";
+import { useLazyList } from "./useLazyList";
 import { useDebounced, useQueryState, useShowMore } from "./useQueryState";
 
 const PAGE_SIZE = 100;
@@ -41,27 +42,11 @@ export function GithubDirectory({
   licenses: Option[];
 }) {
   const { state: f, update } = useQueryState<GithubFilters>(parseGithubFilters, serializeGithubFilters);
-  const [all, setAll] = useState<GithubListItem[] | null>(null);
-  const [failed, setFailed] = useState(false);
   // The full list is fetched only once someone filters, searches, or asks for more.
   const [wanted, setWanted] = useState(false);
   const { limit, showMore } = useShowMore(PAGE_SIZE);
   const needed = wanted || !isDefaultGithubView(f) || (Number.isFinite(limit) && limit > PAGE_SIZE);
-  useEffect(() => {
-    if (!needed) return;
-    let live = true;
-    fetch(dataUrl)
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
-      .then((d: { projects: GithubListItem[] }) => {
-        if (live) setAll(d.projects);
-      })
-      .catch(() => {
-        if (live) setFailed(true);
-      });
-    return () => {
-      live = false;
-    };
-  }, [dataUrl, needed]);
+  const { all, failed } = useLazyList<GithubListItem>(dataUrl, needed, (d) => (d as { projects: GithubListItem[] }).projects);
   const items = all ?? initial;
   const waiting = all === null && !failed && !isDefaultGithubView(f);
   const results = useMemo(() => filterGithub(items, f), [items, f]);

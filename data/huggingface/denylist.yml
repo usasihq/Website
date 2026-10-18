@@ -1,0 +1,20 @@
+# Reviewed exclusions for AI on Hugging Face (/huggingface/) that the
+# automatic rules in lib/huggingface/filters.ts miss. One entry per item, with
+# its kind (model | dataset), a reason (nsfw | deepfake | safety-removed |
+# jailbreak | personal-data | spam | other) and a short note. Matching is
+# case-insensitive on the id. Keep this list small and explain every entry;
+# it is summarized in the methodology. Reviewed 2026-10-18 against the top 300
+# models and top 400 datasets of that day's ranking; items below that were not
+# reviewed individually.
+entries:
+  # Explicit content without the not-for-all-audiences tag
+  - { kind: dataset, id: nyanko7/danbooru2023, reason: nsfw, note: "Image-board scrape that includes explicit images; not tagged not-for-all-audiences" }
+  - { kind: dataset, id: b3x0m/Chinese-H-Novels, reason: nsfw, note: "Corpus of adult fiction, described by its author as 18+" }
+  - { kind: dataset, id: a686d380/h-corpus-2023, reason: nsfw, note: "Corpus of adult fiction" }
+  # Face swapping
+  - { kind: dataset, id: Gourieff/ReActor, reason: deepfake, note: "Model files for the ReActor face-swap extension" }
+  # Scraped personal data
+  - { kind: dataset, id: alpindale/two-million-bluesky-posts, reason: personal-data, note: "Posts scraped from Bluesky users' accounts without their consent" }
+  - { kind: dataset, id: datasocial/tiktok-5.6B-videos, reason: personal-data, note: "Scraped records of TikTok creators' videos and accounts" }
+  # Safety removal the name and tags do not show
+  - { kind: model, id: AiCloser/Qwen2.5-32B-AGI, reason: safety-removed, note: "Fine-tuned on toxic-DPO and no-refusal data to remove refusals (per its Hub dataset tags)" }

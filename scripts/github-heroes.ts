@@ -1,17 +1,12 @@
 /**
  * Renders AI on GitHub hero images (1200×630 JPEG, light theme) with the
- * site's fonts. Called by scripts/page-cards.ts, which owns the cache. The
+ * site's fonts, through the shared renderer in scripts/hero-render.ts. Called
+ * by scripts/page-cards.ts, which owns the cache. The
  * artwork comes from lib/github/hero.ts; repository names are set with
  * textContent, never as markup.
  */
-import fs from "node:fs";
-import path from "node:path";
-import { chromium } from "@playwright/test";
-import sharp from "sharp";
 import { heroArt, heroInk, type GithubHero } from "../lib/github/hero";
-
-const root = process.cwd();
-const fontUrl = (file: string) => `data:font/woff2;base64,${fs.readFileSync(path.join(root, "app/fonts", file)).toString("base64")}`;
+import { fontUrl, renderHeroImages } from "./hero-render";
 
 const template = () => `<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face { font-family: "Instrument Sans"; src: url("${fontUrl("InstrumentSans-latin-wght.woff2")}") format("woff2"); font-weight: 400 700; }
@@ -70,29 +65,14 @@ window.fill = function (c) {
 </script></body></html>`;
 
 export async function renderGithubHeroes(heroes: GithubHero[], fileOf: (h: GithubHero) => string, done: (h: GithubHero) => void): Promise<void> {
-  const browser = await chromium.launch();
-  try {
-    // Four pages in parallel; each renders every fourth hero.
-    const LANES = 4;
-    let n = 0;
-    await Promise.all(
-      Array.from({ length: LANES }, async (_, lane) => {
-        const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
-        await page.setContent(template(), { waitUntil: "load" });
-        await page.evaluate(() => document.fonts.ready);
-        for (let i = lane; i < heroes.length; i += LANES) {
-          const h = heroes[i];
-          const ink = heroInk(h.seed);
-          await page.evaluate((c) => (window as unknown as { fill: (c: unknown) => void }).fill(c), { ...h, art: heroArt(h.seed), accent: ink.accent, bar: ink.bar });
-          const shot = await page.screenshot({ type: "png" });
-          fs.mkdirSync(path.dirname(fileOf(h)), { recursive: true });
-          await sharp(shot).jpeg({ quality: 80, mozjpeg: true }).toFile(fileOf(h));
-          done(h);
-          if (++n % 500 === 0) console.log(`github heroes: ${n} of ${heroes.length} rendered`);
-        }
-      }),
-    );
-  } finally {
-    await browser.close();
-  }
+  await renderHeroImages(heroes, {
+    label: "github heroes",
+    template: template(),
+    payload: (h) => {
+      const ink = heroInk(h.seed);
+      return { ...h, art: heroArt(h.seed), accent: ink.accent, bar: ink.bar };
+    },
+    fileOf,
+    done,
+  });
 }

@@ -36,6 +36,7 @@ const PEOPLE = [
 const OPEN_SOURCE = [
   { href: "/open/", label: "Open Models & Tools", description: "U.S.-led open models, software, datasets, and evaluation tools, with sources" },
   { href: "/github/", label: "AI on GitHub", description: "The most-starred open-source AI projects on GitHub, ranked by stars" },
+  { href: "/huggingface/", label: "AI on Hugging Face", description: "The most-liked open models and datasets on the Hugging Face Hub, ranked by likes" },
 ];
 
 type NavItem = { href: string; label: string } | { label: string; items: typeof PEOPLE };
