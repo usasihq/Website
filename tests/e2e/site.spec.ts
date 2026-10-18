@@ -282,7 +282,7 @@ test.describe("contact and profiles", () => {
     await page.goto("/");
     const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent())!);
     const org = ld["@graph"].find((n: { "@type": string }) => n["@type"] === "Organization");
-    expect(org.sameAs).toEqual(["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ"]);
+    expect(org.sameAs).toEqual(["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ", "https://huggingface.co/usasihq", "https://www.linkedin.com/in/robert-corbin-239761410/", "https://apps.apple.com/ie/developer/robert-corbin/id1890247992"]);
     expect(org.email).toBe("usasi@usasihq.com");
   });
 });

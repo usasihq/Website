@@ -60,10 +60,13 @@ const RAW_CONFIG = {
     email: "usasi@usasihq.com" as string | null,
   },
   socials: [
-    // Owner decision 2026-10-12: the same three profiles on every site the owner runs.
+    // Owner decisions 2026-10-12 and 2026-10-18: the same profiles on every site the owner runs.
     { label: "GitHub", handle: "ShadowfetchStudio", url: "https://github.com/ShadowfetchStudio" },
     { label: "X", handle: "@Shadowfetch", url: "https://x.com/Shadowfetch" },
     { label: "YouTube", handle: "@USASIHQ", url: "https://www.youtube.com/@USASIHQ" },
+    { label: "Hugging Face", handle: "usasihq", url: "https://huggingface.co/usasihq" },
+    { label: "LinkedIn", handle: "Robert Corbin", url: "https://www.linkedin.com/in/robert-corbin-239761410/" },
+    { label: "App Store", handle: "Robert Corbin", url: "https://apps.apple.com/ie/developer/robert-corbin/id1890247992" },
   ] as Array<{ label: string; handle: string; url: string }>,
   repository: {
     url: "https://github.com/usasihq/Website" as string | null,
