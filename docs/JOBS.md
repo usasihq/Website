@@ -185,6 +185,15 @@ or Google will reject every publish call. Do not commit the key. Ordinary Cloudf
 deploys preserve `data/jobs/indexing-quota.json` in the jobs cache so a same-day
 refresh still sees the remaining quota.
 
+`data/jobs/hiring-index.json` is a small weekly count file (open listings by
+employer and by U.S. state named in a location). `npm run jobs:snapshot` writes
+it from `current.json` in a few milliseconds and is a separate workflow step
+before the slow feed refresh, then again after each source inside
+`scripts/refresh-jobs.ts`, so a later timeout still leaves this week's bucket.
+One ISO week (Monday UTC) per bucket; a later check in the same week replaces
+it. The committed file is the bootstrap seed; operational history lives in the
+same jobs cache as `current.json`. `/jobs/index/` reads that file at build time.
+
 ### Hugging Face jobs dataset and Space (`HF_TOKEN`)
 
 After refresh writes the new snapshot, `npm run jobs:hf-dataset` builds a CSV of open listings (the same columns as `usasihq/usasi-ai-jobs`, plus a `page` URL on this site) and uploads it to that Hugging Face dataset. `scripts/automation/jobs-update.sh` runs the same command after a successful local publish. The static explorer in `hf-space/` (`sdk: static`, HTML/JS in the browser) reads the dataset; `.github/workflows/deploy-hf-space.yml` uploads that folder to the `usasihq/usasi-ai-jobs` Space when `hf-space/` changes. Static Spaces are free; Gradio and Docker Spaces on `cpu-basic` require a Hugging Face PRO subscription.

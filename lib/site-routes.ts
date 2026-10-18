@@ -12,6 +12,7 @@ export const STATIC_ROUTES = [
   "/github/",
   "/huggingface/",
   "/jobs/",
+  "/jobs/index/",
   "/jobs/layoffs/",
   "/matrix/",
   "/methodology/",

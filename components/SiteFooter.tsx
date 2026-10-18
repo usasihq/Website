@@ -16,6 +16,7 @@ const COLUMNS = [
       { href: "/huggingface/", label: "AI on Hugging Face" },
       { href: "/matrix/", label: "Compare" },
       { href: "/jobs/", label: "Jobs" },
+      { href: "/jobs/index/", label: "AI Hiring Index" },
       { href: "/hubs/", label: "Hubs" },
       { href: "/places/", label: "Places" },
       { href: "/timeline/", label: "Timeline" },

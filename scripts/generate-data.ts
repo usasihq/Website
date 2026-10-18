@@ -16,6 +16,7 @@ import { loadCatalog } from "../lib/catalog";
 import { jobsDirectoryData } from "../lib/jobs/directory-data";
 import { encodeJobs } from "../lib/jobs/slim";
 import { jobLandingSearchEntries } from "../lib/jobs/landing-links";
+import { hiringIndexSearchEntry } from "../lib/jobs/hiring-index";
 import { EMPTY_WARN_DATASET, layoffSearchEntries, readLayoffs, writeLayoffs } from "../lib/jobs/layoffs";
 import { mergeLayoffRefresh } from "../lib/jobs/layoffs-refresh";
 import { sourceLibrary } from "../lib/source-library";
@@ -73,7 +74,7 @@ const faqPath = path.join(process.cwd(), "content", "pages", "faq.mdx");
 const faq = fs.existsSync(faqPath) ? parseFaq(fs.readFileSync(faqPath, "utf8")) : [];
 fs.writeFileSync(
   path.join(outDir, "search-index.json"),
-  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog), ...layoffSearchEntries(catalog)] }) + "\n",
+  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog), ...layoffSearchEntries(catalog), hiringIndexSearchEntry(catalog)] }) + "\n",
 );
 // AI on GitHub: the full ranked list, loaded by /github/ when someone searches, filters, or shows more (the page embeds the first 100).
 fs.writeFileSync(path.join(outDir, "github.json"), JSON.stringify({ build_at: buildAt, projects: githubEntries().map(toListItem) }) + "\n");

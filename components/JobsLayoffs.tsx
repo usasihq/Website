@@ -1,5 +1,6 @@
 import Link from "@/components/Link";
 import { ExternalLink } from "@/components/ExternalLink";
+import { JobsSectionNav } from "@/components/JobsSectionNav";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { formatDate } from "@/lib/dates";
@@ -119,7 +120,9 @@ export function JobsLayoffsIndex({ index }: { index: LayoffsIndex }) {
             publish, not only AI employers.
           </p>
         }
-      />
+      >
+        <JobsSectionNav current="/jobs/layoffs/" />
+      </PageHeader>
       <div className="container-page py-10 sm:py-12">
         <p className="max-w-3xl text-muted">
           {total
@@ -146,6 +149,12 @@ export function JobsLayoffsIndex({ index }: { index: LayoffsIndex }) {
             </li>
           ))}
         </ul>
+        <p className="mt-10">
+          <Link prefetch={false} href="/jobs/index/" className="link">
+            Weekly AI Hiring Index
+          </Link>
+          <span className="text-muted"> — open listings by employer and state, week over week</span>
+        </p>
         <Sources page={index} />
       </div>
       <SupportPanel variant="compact" />

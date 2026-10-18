@@ -33,6 +33,7 @@ jobs:
           path: |
             data/jobs/current.json
             data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
       - name: Keep previous jobs snapshot for Indexing API
@@ -40,11 +41,31 @@ jobs:
           if [ -f data/jobs/current.json ]; then
             cp data/jobs/current.json data/jobs/previous.json
           fi
+      - name: Record hiring-index snapshot from current listings
+        run: npm run jobs:snapshot
+      - name: Preserve hiring-index if refresh does not finish
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-early
       - name: Refresh supported official sources
+        timeout-minutes: 22
         run: npm run jobs:refresh
         env:
           USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
           USAJOBS_USER_AGENT: ${{ vars.USAJOBS_USER_AGENT }}
+      - name: Preserve hiring-index after any refresh outcome
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-snap
       - name: Notify Google Indexing API of added and removed job pages
         run: npm run jobs:index
         env:
@@ -82,6 +103,7 @@ jobs:
           path: |
             data/jobs/current.json
             data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Retain operational dataset for recovery
         uses: actions/upload-artifact@v7
