@@ -14,6 +14,17 @@ import { readDescriptions, writeDescriptions } from "../lib/jobs/descriptions-st
 import { fetchUsaJobsItems, usaJobsPayload, usajobsCredentials } from "../lib/jobs/usajobs";
 import { fetchSmartRecruiters } from "../lib/jobs/smartrecruiters";
 import { fetchWorkday, readWorkdayMeta, writeWorkdayMeta, type WdPayload } from "../lib/jobs/workday";
+import { recordHiringIndex } from "../lib/jobs/hiring-index";
+
+/** Counts only. Must stay cheap and must not fail the refresh. */
+function snapshotHiring(data: Dataset, at: string) {
+  try {
+    const week = recordHiringIndex(at, data);
+    if (week) console.log(`jobs: hiring-index: week ${week.week_start} · ${week.open_count} open · ${week.companies.length} employers · ${week.states.length} states`);
+  } catch (e) {
+    console.warn(`jobs: hiring-index snapshot skipped (${e instanceof Error ? e.message : "error"})`);
+  }
+}
 const orgs = loadCatalog().organizations;
 const configs = orgs.filter(o => o.careers?.enabled);
 // State is trusted only after schema validation. Removed/disabled sources are intentionally pruned.
@@ -21,6 +32,9 @@ let state = fs.existsSync(DATA_PATH) ? Dataset.parse(JSON.parse(fs.readFileSync(
 const keys = new Set(configs.map(o => sourceKey(o.slug, o.careers!)));
 state = validateDataset({ ...state, jobs: state.jobs.filter(j => keys.has(jobSourceKey(j))), feeds: state.feeds.filter(f => keys.has(jobSourceKey(f))) }, orgs);
 const now = new Date().toISOString();
+// Record this week's counts from whatever is already on disk, then again after
+// each source, so a slow later feed still leaves a snapshot for the page.
+snapshotHiring(state, now);
 let failed = 0;
 // Descriptions follow the listings: replaced on a successful check, kept when a source fails, dropped when a posting closes.
 const descriptions = readDescriptions();
@@ -74,6 +88,7 @@ for (const org of configs) {
     result = { ok: false, error: e instanceof FeedError ? e.category : "payload" };
   }
   state = reconcile(state, org.slug, c, result, now);
+  snapshotHiring(state, now);
   const health = state.feeds.find(f => f.organization_slug === org.slug)!;
   if (health.result !== "ok") failed++;
   // Never print source payloads, stack traces, URLs, or potentially sensitive errors.

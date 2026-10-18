@@ -185,6 +185,15 @@ or Google will reject every publish call. Do not commit the key. Ordinary Cloudf
 deploys preserve `data/jobs/indexing-quota.json` in the jobs cache so a same-day
 refresh still sees the remaining quota.
 
+`data/jobs/hiring-index.json` is a small weekly count file (open listings by
+employer and by U.S. state named in a location). `npm run jobs:snapshot` writes
+it from `current.json` in a few milliseconds and is a separate workflow step
+before the slow feed refresh, then again after each source inside
+`scripts/refresh-jobs.ts`, so a later timeout still leaves this week's bucket.
+One ISO week (Monday UTC) per bucket; a later check in the same week replaces
+it. The committed file is the bootstrap seed; operational history lives in the
+same jobs cache as `current.json`. `/jobs/index/` reads that file at build time.
+
 State restores from an immutable GitHub Actions cache key scoped to this main-branch
 workflow family. Validation, type checking, lint, unit tests, production build and
 internal-link checks gate deployment. Validated state is cached and a seven-day artifact

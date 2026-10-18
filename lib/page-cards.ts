@@ -17,6 +17,7 @@ import { DATE_LABEL_VERBS, policyHref, policyShortName, POLICY_STATUS_LABELS, PO
 import { editionHref, editionLabel, REPORT_NAME, type ReportSnapshot } from "./report";
 import { reportEditions } from "./report-editions";
 import { artifactHref, orgHref } from "./routes";
+import { HIRING_INDEX_HREF, hiringIndexPage } from "./jobs/hiring-index";
 
 /** Bump when the card template changes, so every card is rendered again. */
 export const CARD_TEMPLATE_VERSION = 2;
@@ -263,6 +264,27 @@ export function pageCards(catalog: Catalog): PageCard[] {
       }),
     );
   }
+  const hiring = hiringIndexPage(catalog);
+  const hiringFacts: [string, string][] = hiring.current
+    ? [
+        ["Open listings", nf(hiring.openCount)],
+        ["Employers", nf(hiring.current.companies.length)],
+        ["Week of", hiring.weekLabel ?? "This week"],
+      ]
+    : [];
+  cards.push(
+    card({
+      page: HIRING_INDEX_HREF,
+      image: "/og/jobs/hiring-index.jpg",
+      template: hiring.current ? "record" : "article",
+      eyebrow: "AI Hiring Index",
+      title: "Weekly AI hiring in the United States",
+      subtitle: hiring.coldStart
+        ? "First weekly open-job counts by employer and state. Week-over-week change starts next week."
+        : `Open listings the week of ${hiring.weekLabel}, compared with the week before, next to official WARN Act notices.`,
+      facts: hiringFacts,
+    }),
+  );
   return cards;
 }
 

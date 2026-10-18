@@ -8,6 +8,8 @@ import { jobsDirectoryData } from "@/lib/jobs/directory-data";
 import { jobsIndexJsonLd } from "@/lib/jobs/jsonld";
 import { MIN_CITY_LISTINGS, MIN_STATE_LISTINGS } from "@/lib/jobs/landing";
 import { employerBrowseLinks, landingLinks, type LandingLink } from "@/lib/jobs/landing-links";
+import { JobsSectionNav } from "@/components/JobsSectionNav";
+import { HIRING_INDEX_HREF } from "@/lib/jobs/hiring-index";
 import { layoffHref, layoffsIndex } from "@/lib/jobs/layoffs";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
@@ -31,9 +33,10 @@ export default function JobsPage() {
   const shortcuts = [
     ...Object.keys(SHORTCUT_LABELS).map(path => pages.find(p => p.path === path)).filter(p => p && p.count > 0).map(p => ({ href: p!.path, label: SHORTCUT_LABELS[p!.path], count: p!.count })),
     ...pages.filter(p => p.kind === "role" && p.count > 0).sort((a, b) => b.count - a.count).slice(0, 3).map(p => ({ href: p.path, label: p.name.replace(/ jobs$/, ""), count: p.count })),
+    { href: HIRING_INDEX_HREF, label: "Hiring Index", count: data.summary.currentCount },
     ...(layoffs.states.length ? [{ href: "/jobs/layoffs/", label: "WARN Act layoffs", count: layoffCount }] : []),
   ];
-  return <><JsonLd data={jobsIndexJsonLd(pages)} /><PageHeader eyebrow="The USASI catalog" compact title="Jobs at U.S. AI companies and labs" description={hasFederal(data.items) ? "Open jobs at U.S. AI companies and labs, plus federal AI roles from USAJOBS.gov. Search by title, skill, and place; apply on the employer’s site." : "Open jobs at U.S. AI companies, labs, and research universities. Search by title, skill, and place; apply on the employer’s site."} /><div className="container-page py-5 sm:py-10">
+  return <><JsonLd data={jobsIndexJsonLd(pages)} /><PageHeader eyebrow="The USASI catalog" compact title="Jobs at U.S. AI companies and labs" description={hasFederal(data.items) ? "Open jobs at U.S. AI companies and labs, plus federal AI roles from USAJOBS.gov. Search by title, skill, and place; apply on the employer’s site." : "Open jobs at U.S. AI companies, labs, and research universities. Search by title, skill, and place; apply on the employer’s site."}><JobsSectionNav current="/jobs/" /></PageHeader><div className="container-page py-5 sm:py-10">
     <JobsDirectory
     initial={data.initial} summary={data.summary} dataUrl={asset("/data/jobs.json")}
     feeds={data.feeds} asOf={catalog.buildAt}
@@ -51,6 +54,7 @@ export default function JobsPage() {
         <div><h3 className="text-sm font-medium text-muted">U.S. state named in the listing&rsquo;s location <span className="font-normal">(states with at least {MIN_STATE_LISTINGS} listings)</span></h3><BrowseLinks links={pages.filter(p => p.kind === "state")} /></div>
         <div className="lg:col-span-2"><h3 className="text-sm font-medium text-muted">U.S. city named in the listing&rsquo;s location <span className="font-normal">(cities with at least {MIN_CITY_LISTINGS} listings)</span></h3><BrowseLinks links={pages.filter(p => p.kind === "city").sort((a, b) => b.count - a.count)} /></div>
         <div className="lg:col-span-2" data-testid="browse-employers"><h3 className="text-sm font-medium text-muted">Employer <span className="font-normal">(each page has a shareable link)</span></h3><BrowseLinks links={employerBrowseLinks(catalog)} /></div>
+        <div className="lg:col-span-2" data-testid="browse-index"><h3 className="text-sm font-medium text-muted">Weekly hiring index</h3><ul className="mt-2 flex flex-wrap gap-2"><li><Link prefetch={false} href={HIRING_INDEX_HREF} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">AI Hiring Index <span className="text-muted">({data.summary.currentCount.toLocaleString("en-US")})</span></Link></li></ul></div>
         {layoffs.states.length ? <div className="lg:col-span-2" data-testid="browse-layoffs"><h3 className="text-sm font-medium text-muted">WARN Act layoffs and nearby AI jobs</h3><ul className="mt-2 flex flex-wrap gap-2"><li><Link prefetch={false} href="/jobs/layoffs/" className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">All layoff pages <span className="text-muted">({layoffCount.toLocaleString("en-US")})</span></Link></li>{layoffs.states.map(s => <li key={s.meta.code}><Link prefetch={false} href={layoffHref(s.meta.code)} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">{s.meta.name} <span className="text-muted">({s.file.notices.length.toLocaleString("en-US")})</span></Link></li>)}</ul></div> : null}
       </div>
     </nav>

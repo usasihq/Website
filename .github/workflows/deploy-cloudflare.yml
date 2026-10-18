@@ -45,10 +45,24 @@ jobs:
           path: |
             data/jobs/current.json
             data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
+      - name: Record hiring-index snapshot from current listings
+        if: vars.JOBS_REFRESH == 'true'
+        run: npm run jobs:snapshot
+      - name: Preserve hiring-index if refresh does not finish
+        if: vars.JOBS_REFRESH == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-early
       - name: Refresh Jobs before ordinary releases
         if: vars.JOBS_REFRESH == 'true'
+        timeout-minutes: 22
         run: npm run jobs:refresh
         env:
           USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
@@ -69,6 +83,15 @@ jobs:
           current_sha=$(git ls-remote origin refs/heads/main | cut -f1)
           test -n "$current_sha" && test "$release_sha" = "$current_sha"
           echo "RELEASE_SHA=$release_sha" >> "$GITHUB_ENV"
+      - name: Preserve hiring-index after any refresh outcome
+        if: always() && vars.JOBS_REFRESH == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-snap
       - name: Preserve validated Jobs state
         if: vars.JOBS_REFRESH == 'true'
         uses: actions/cache/save@v4
@@ -76,6 +99,7 @@ jobs:
           path: |
             data/jobs/current.json
             data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Deploy production
         run: npx wrangler deploy --message "${{ env.RELEASE_SHA }}"

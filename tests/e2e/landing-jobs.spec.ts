@@ -110,7 +110,7 @@ test("landing pages are linked from /jobs/ and /places/, listed in the sitemap, 
   await page.goto("/places/california/");
   await expect(page.locator('main a[href="/jobs/in/california/"]')).toBeVisible();
   const sitemap = await (await request.get("/sitemap-pages.xml")).text();
-  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", FDE, "/jobs/layoffs/", "/jobs/layoffs/california/", ...TOPICS]) expect(sitemap).toContain(`${path}</loc>`);
+  for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", FDE, "/jobs/index/", "/jobs/layoffs/", "/jobs/layoffs/california/", ...TOPICS]) expect(sitemap).toContain(`${path}</loc>`);
   expect(sitemap).not.toContain("?state=");
   const index = await (await request.get("/data/search-index.json")).json();
   expect(index.entries.some((e: { href: string }) => e.href === "/jobs/in/california/")).toBe(true);
