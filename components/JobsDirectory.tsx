@@ -14,6 +14,7 @@ import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
 import { ExternalLink } from "./ExternalLink";
 import { jobHref } from "@/lib/jobs/job-url";
+import { decodeJobs, type SlimJobs } from "@/lib/jobs/slim";
 import { asset } from "@/lib/paths";
 import { FilterChip, SearchField, SelectField, ResultSummary } from "./FilterControls";
 import { useDebounced, useQueryState } from "./useQueryState";
@@ -97,7 +98,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   useEffect(() => {
     let live = true;
     fetch(dataUrl).then(r => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
-      .then((d: { jobs: JobItem[] }) => { if (live) setAll(d.jobs); })
+      .then((d: SlimJobs) => { if (live) setAll(decodeJobs(d)); })
       .catch(() => { if (live) setFailed(true); });
     return () => { live = false; };
   }, [dataUrl]);
@@ -143,8 +144,8 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   }, [f.city, f.state, results]);
   // Facet counts: each list counts the listings that match every other filter.
   const tally = (rows: JobItem[], key: (j: JobItem) => string) => { const m = new Map<string, number>(); for (const j of rows) { const k = key(j); m.set(k, (m.get(k) ?? 0) + 1); } return m; };
-  const levelCounts = useMemo(() => (all ? tally(filterJobs(items, feeds, { ...f, level: "" }, now), j => jobLevel(j.title)) : null), [all, items, feeds, f, now]);
-  const categoryCounts = useMemo(() => (all ? tally(filterJobs(items, feeds, { ...f, category: "" }, now), j => jobCategory(j.title)) : null), [all, items, feeds, f, now]);
+  const levelCounts = useMemo(() => (all ? tally(filterJobs(items, feeds, { ...f, level: "" }, now, false), j => jobLevel(j.title)) : null), [all, items, feeds, f, now]);
+  const categoryCounts = useMemo(() => (all ? tally(filterJobs(items, feeds, { ...f, category: "" }, now, false), j => jobCategory(j.title)) : null), [all, items, feeds, f, now]);
   const withPay = useMemo(() => results.filter(j => annualUsdTop(j.salaries) !== null).length, [results]);
   // The "Where" box keeps what is typed until it is applied (Enter, Search, or leaving the box).
   const [whereInput, setWhereInput] = useState<string | null>(null);

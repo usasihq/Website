@@ -4,7 +4,8 @@ The catalog behind this site is published as static files you can download and r
 
 - [`/data/catalog.json`](/data/catalog.json): every published organization, open artifact, news item, and People Behind Local SI profile, with sources and dates. Also `schema_version`, `rubric_version`, `build_at`, and catalog `counts`.
 - [`/data/search-index.json`](/data/search-index.json): the compact index behind site search, with the name, type, summary, keywords, and page link for each published record.
-- [`/data/jobs.json`](/data/jobs.json): currently open job postings from the employer feeds the site covers, with when each was last seen.
+- [`/data/jobs-full.json`](/data/jobs-full.json): currently open job postings from the employer feeds the site covers, one object per posting with every field, including when each was last seen. Pay marked `"source_status": "employer-description"` was read from the employer's job description because the feed gives none.
+- [`/data/jobs.json`](/data/jobs.json): the same postings in the compact form the Jobs page loads (tables of repeated text and arrays instead of objects; the format is described in the site's source, `lib/jobs/slim.ts`). Before October 18, 2026 this file had the full format; use `jobs-full.json` for that.
 - [The State of American AI](/report/): each edition's figures as CSV and JSON, for example [`/report/2026-10/data.csv`](/report/2026-10/data.csv) and [`/report/2026-10/data.json`](/report/2026-10/data.json). Editions are frozen when published, include the definition of every figure, and are CC BY 4.0.
 - [`/news/feed.xml`](/news/feed.xml): Latest news as an RSS 2.0 feed.
 - [`/sitemap.xml`](/sitemap.xml): every public page.

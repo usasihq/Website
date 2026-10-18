@@ -213,7 +213,8 @@ survive reload/back/forward; malformed parameters are bounded and ignored safely
 Results page at 30 cards to bound DOM work while searching the full normalized dataset.
 Only currently open records are sent to the directory. The page embeds the first 30 listings of the default
 view, summary counts and filter options; the browser then loads the full open list from the site's own
-`/data/jobs.json` (written by `prepare:data`, same validated fields, no bookkeeping such as closure state).
+`/data/jobs.json` (written by `prepare:data`, same validated fields, no bookkeeping such as closure state; since
+2026-10-18 in the compact form of `lib/jobs/slim.ts`, with the one-object-per-listing file at `/data/jobs-full.json`).
 Until it arrives, a filtered URL shows a loading state rather than a result computed from 30 rows. This kept
 the page at about 270 KB of HTML with 30 employer feeds. Company routes receive counts,
 not full feeds. Company links preserve catalog context. Home has a restrained entry point.
@@ -333,3 +334,4 @@ From an independent audit, each item checked against the code and the live site 
 - **Company menu** lists only organizations with an automated source; `?company=<uncollected>` explains that and links its careers page. "unknown" reads "Not stated".
 - **No-JS search:** the form is `GET /jobs/` with `q` and `w`; `w` is read like the Where box.
 - **Federal:** `/jobs/at/federal/` was already noindex and out of the sitemap while empty; it is now also out of Browse, says listings aren't collected yet, and the coverage card says "Not configured (API key pending)" until USAJOBS succeeds once.
+- **Compact jobs.json.** `/data/jobs.json` is the compact form the directory loads (tables of repeated text, arrays, epoch-ms timestamps, URL prefixes per feed, and each listing's geography computed at build); `/data/jobs-full.json` keeps the full format for reuse. `tests/unit/jobs-slim.test.ts` checks the round trip and that 24 filter URLs give identical results. Sorting computes its keys once per row, and facet counts skip sorting.

@@ -305,6 +305,11 @@ export function jobGeography(job: GeoJob): JobGeo {
   return result;
 }
 
+/** Seeds the cache with geography computed at build time (the compact /data/jobs.json carries it). */
+export function primeJobGeography(job: GeoJob, geo: JobGeo): void {
+  cache.set(job, geo);
+}
+
 /** "U.S. locations only": names the United States or a state, and nothing outside it. */
 export const isUSOnly = (job: GeoJob) => {
   const g = jobGeography(job);

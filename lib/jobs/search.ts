@@ -125,7 +125,8 @@ export function currentJobs(items: JobItem[], feeds: FeedHealth[], now: number):
   const health = new Map(feeds.map(v => [`${v.organization_slug}:${v.source_type}:${v.source_identifier}`, v]));
   return items.filter(j => isCurrent(j, health.get(`${j.organization_slug}:${j.source_type}:${j.source_identifier}`), now));
 }
-export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters, now: number): JobItem[] {
+/** The listings matching `f`, in the directory's order (`sorted: false` skips ordering, for counts). */
+export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters, now: number, sorted = true): JobItem[] {
   const health = new Map(feeds.map(v => [`${v.organization_slug}:${v.source_type}:${v.source_identifier}`, v]));
   const query = jobQuery(f.q);
   const city = f.city && f.state ? `${f.state}|${f.city}` : "";
@@ -154,6 +155,7 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     const text = words([j.title, j.organization_name, j.department, j.team, ...j.locations, ...j.countries].join(" "));
     return query.every(g => matchesGroup(text, g));
   });
+  if (!sorted) return rows;
   // With a search and the default order, listings whose title matches more of the query come first.
   const relevance = new Map<string, number>();
   if (query.length && f.sort === "verified") {
@@ -164,18 +166,21 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     }
   }
   // ISO timestamps and IDs sort correctly by code point; names use one shared collator (much faster than localeCompare per pair).
+  // Sort keys are computed once per row, not once per comparison.
+  const keys = new Map(rows.map(j => [j, { posted: postedTime(j), eoi: Number(isExpressionOfInterest(j.title)), pay: annualUsdTop(j.salaries) ?? -1 }]));
   return rows.sort((a,b) => {
+    const ka = keys.get(a)!, kb = keys.get(b)!;
     const rel = (relevance.get(b.id) ?? 0) - (relevance.get(a.id) ?? 0);
     if (rel) return rel;
     // Equally good matches: newest listing first.
-    if (relevance.size) { const fresh = postedTime(b) - postedTime(a); if (fresh) return fresh; }
+    if (relevance.size) { const fresh = kb.posted - ka.posted; if (fresh) return fresh; }
     // General expressions of interest are not specific vacancies: they go last unless sorting by name.
     if (f.sort !== "company" && f.sort !== "title") {
-      const eoi = Number(isExpressionOfInterest(a.title)) - Number(isExpressionOfInterest(b.title));
+      const eoi = ka.eoi - kb.eoi;
       if (eoi) return eoi;
     }
     // The default order is newest first (the page and its links call it "Newest first").
-    const order = f.sort === "newest" || f.sort === "verified" ? postedTime(b) - postedTime(a) : f.sort === "pay" ? (annualUsdTop(b.salaries) ?? -1) - (annualUsdTop(a.salaries) ?? -1) : f.sort === "verified" ? byCode(b.last_seen, a.last_seen) :
+    const order = f.sort === "newest" || f.sort === "verified" ? kb.posted - ka.posted : f.sort === "pay" ? kb.pay - ka.pay : f.sort === "verified" ? byCode(b.last_seen, a.last_seen) :
       f.sort === "company" ? collator.compare(a.organization_name, b.organization_name) : collator.compare(a.title, b.title);
     return order || collator.compare(a.title, b.title) || byCode(a.id, b.id);
   });
