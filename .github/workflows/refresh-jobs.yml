@@ -71,6 +71,12 @@ jobs:
         env:
           GOOGLE_INDEXING_SA_JSON: ${{ secrets.GOOGLE_INDEXING_SA_JSON }}
           NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
+      # Cheap Hub upload (~seconds). Missing HF_TOKEN skips; Hub errors do not fail the refresh.
+      - name: Push jobs snapshot to Hugging Face
+        run: npm run jobs:hf-dataset
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
       - run: npm run validate
       - run: npm run typecheck
       - run: npm run lint

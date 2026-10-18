@@ -34,6 +34,8 @@
     "jobs:index": "tsx scripts/ping-indexing.ts",
     "jobs:validate": "tsx scripts/validate-jobs.ts",
     "jobs:backfill-pay": "tsx scripts/backfill-description-pay.ts",
+    "jobs:hf-dataset": "tsx --env-file-if-exists=.env.jobs scripts/hf-jobs-dataset.ts",
+    "hf:space-deploy": "tsx --env-file-if-exists=.env.jobs scripts/hf-space-deploy.ts",
     "layoffs:refresh": "tsx scripts/refresh-layoffs.ts",
     "github:refresh": "tsx scripts/refresh-github.ts",
     "hf:refresh": "tsx scripts/refresh-huggingface.ts",
@@ -54,6 +56,7 @@
     "zod": "4.6.5"
   },
   "devDependencies": {
+    "@huggingface/hub": "2.17.8",
     "@axe-core/playwright": "4.13.0",
     "@playwright/test": "1.63.0",
     "@tailwindcss/postcss": "4.3.3",

@@ -5,7 +5,7 @@ import nextTs from "eslint-config-next/typescript";
 export default defineConfig([
   ...nextVitals,
   ...nextTs,
-  globalIgnores([".next/**", "out/**", ".out-basepath/**", ".out-main-tmp/**", ".wrangler/**", "reports/**", "node_modules/**", "next-env.d.ts", "test-results/**", "playwright-report/**", "public/data/**"]),
+  globalIgnores([".next/**", "out/**", ".out-basepath/**", ".out-main-tmp/**", ".wrangler/**", "reports/**", "node_modules/**", "next-env.d.ts", "test-results/**", "playwright-report/**", "public/data/**", "hf-space/**"]),
   {
     rules: {
       // Raw <img>/<picture> is intentional: the static export uses prebuilt responsive derivatives.

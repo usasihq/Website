@@ -1,0 +1,36 @@
+# Uploads hf-space/ to the usasihq/usasi-ai-jobs static Space.
+# Skips cleanly when HF_TOKEN is missing so CI and forks stay green.
+name: Deploy Hugging Face Space
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - hf-space/**
+      - scripts/hf-space-deploy.ts
+      - scripts/hf-push.ts
+      - .github/workflows/deploy-hf-space.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hf-space-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Upload Space
+        run: npm run hf:space-deploy
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
