@@ -77,7 +77,8 @@ export const MAX_BYTES = 64 * 1024 * 1024;
 export async function readJsonBody(response: Response): Promise<unknown> {
   if (response.status === 429) throw new FeedError("rate-limited");
   if (!response.ok) throw new FeedError("http");
-  if (!response.headers.get("content-type")?.includes("application/json")) throw new FeedError("payload");
+  // JSON or a JSON-suffixed type: USAJOBS answers with "application/hr+json".
+  if (!/^application\/(?:[\w.-]+\+)?json\b/i.test(response.headers.get("content-type")?.trim() ?? "")) throw new FeedError("payload");
   if (Number(response.headers.get("content-length")) > MAX_BYTES || !response.body) throw new FeedError("payload");
   const reader = response.body.getReader();
   const chunks: Uint8Array[] = []; let size = 0;
