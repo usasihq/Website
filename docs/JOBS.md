@@ -185,6 +185,18 @@ or Google will reject every publish call. Do not commit the key. Ordinary Cloudf
 deploys preserve `data/jobs/indexing-quota.json` in the jobs cache so a same-day
 refresh still sees the remaining quota.
 
+### Hugging Face jobs dataset and Space (`HF_TOKEN`)
+
+After refresh writes the new snapshot, `npm run jobs:hf-dataset` builds a CSV of open listings (the same columns as `usasihq/usasi-ai-jobs`, plus a `page` URL on this site) and uploads it to that Hugging Face dataset. `scripts/automation/jobs-update.sh` runs the same command after a successful local publish. The Gradio explorer in `hf-space/` reads the dataset; `.github/workflows/deploy-hf-space.yml` uploads that folder to the `usasihq/usasi-ai-jobs` Space when `hf-space/` changes.
+
+If `HF_TOKEN` is missing or empty, both commands log a skip and exit 0. A Hub outage during the jobs refresh is also a skip: the site deploy is not rolled back or delayed. Do not commit the token.
+
+Add the secret here:
+
+1. **GitHub Actions repository secret (required for the scheduled refresh and the Space deploy).** Repo **Settings → Secrets and variables → Actions → Repository secrets → `HF_TOKEN`**. A repository secret is visible to `refresh-jobs.yml` (which uses the `production` environment) and to `deploy-hf-space.yml` (which does not).
+2. **Token.** A Hugging Face [access token](https://huggingface.co/settings/tokens) for an account that can write to the `usasihq` org. Fine-grained: write access to the `usasihq/usasi-ai-jobs` **dataset** and the `usasihq/usasi-ai-jobs` **Space**, plus permission to create a Space if it does not exist yet. A classic write token on that account also works.
+3. **Local automation.** Put `HF_TOKEN=` in `.env.jobs` (git-ignored). `npm run jobs:hf-dataset` already reads that file.
+
 State restores from an immutable GitHub Actions cache key scoped to this main-branch
 workflow family. Validation, type checking, lint, unit tests, production build and
 internal-link checks gate deployment. Validated state is cached and a seven-day artifact
