@@ -190,11 +190,12 @@ test.describe("static hosting behavior", () => {
     const sitemap = await (await request.get("/sitemap-pages.xml")).text();
     const all = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
     expect(all.length).toBeGreaterThan(10);
-    // Thousands of job pages share one template: check every other page and an even sample of 60 of them.
+    // Thousands of job pages and AI on GitHub project pages share one template each:
+    // check every other page and an even sample of 60 of each.
     const isJob = (p: string) => /^\/jobs\/at\/[^/]+\/[^/]+\/$/.test(p);
-    const jobs = all.filter(isJob);
-    const step = Math.max(1, Math.floor(jobs.length / 60));
-    const paths = [...all.filter((p) => !isJob(p)), ...jobs.filter((_, i) => i % step === 0)];
+    const isGithub = (p: string) => /^\/github\/[a-z0-9-]+--[a-z0-9-]+\/$/.test(p);
+    const sample = (list: string[]) => list.filter((_, i) => i % Math.max(1, Math.floor(list.length / 60)) === 0);
+    const paths = [...all.filter((p) => !isJob(p) && !isGithub(p)), ...sample(all.filter(isJob)), ...sample(all.filter(isGithub))];
     for (const path of paths) {
       const html = await (await request.get(path)).text();
       // Pages for children never ask for tips.

@@ -12,6 +12,7 @@
 import path from "node:path";
 import { readRawContent, todayIso } from "../lib/content-loader";
 import { validateContent } from "../lib/validate";
+import { validateGithubData } from "../lib/github/validate";
 
 const args = process.argv.slice(2);
 const strict = args.includes("--strict");
@@ -39,4 +40,9 @@ console.log(
     `${errors.length} error(s), ${warnings.length} warning(s)`,
 );
 
-if (errors.length > 0 || (strict && warnings.length > 0)) process.exit(1);
+// AI on GitHub snapshot (data/github/projects.json) and its reviewed denylist; only for the real content root.
+const githubProblems = dirArg ? [] : validateGithubData();
+for (const p of githubProblems) console.log(`ERROR   data/github › ${p}`);
+if (!dirArg) console.log(`AI on GitHub: ${githubProblems.length} error(s)`);
+
+if (errors.length > 0 || githubProblems.length > 0 || (strict && warnings.length > 0)) process.exit(1);

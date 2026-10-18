@@ -20,6 +20,7 @@ import { EMPTY_WARN_DATASET, layoffSearchEntries, readLayoffs, writeLayoffs } fr
 import { mergeLayoffRefresh } from "../lib/jobs/layoffs-refresh";
 import { sourceLibrary } from "../lib/source-library";
 import { parseFaq, parseGlossary, referenceSearchEntries } from "../lib/reference-search";
+import { githubEntries, toListItem } from "../lib/github/projects";
 import { BASE_PATH, SITE_URL, siteConfig } from "../lib/site-config";
 import { computeTier, RUBRIC_VERSION } from "../lib/openness";
 import { SCHEMA_VERSION } from "../lib/schema";
@@ -73,6 +74,8 @@ fs.writeFileSync(
   path.join(outDir, "search-index.json"),
   JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog), ...layoffSearchEntries(catalog)] }) + "\n",
 );
+// AI on GitHub: the full ranked list, loaded by /github/ when someone searches, filters, or shows more (the page embeds the first 100).
+fs.writeFileSync(path.join(outDir, "github.json"), JSON.stringify({ build_at: buildAt, projects: githubEntries().map(toListItem) }) + "\n");
 // Current Jobs list. jobs.json is the compact form the /jobs/ page loads after first paint (the page
 // itself embeds only the first 30; lib/jobs/slim.ts); jobs-full.json has every field, for reuse.
 const jobs = jobsDirectoryData(catalog);

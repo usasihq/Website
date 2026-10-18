@@ -9,6 +9,7 @@ export const STATIC_ROUTES = [
   "/",
   "/companies/",
   "/open/",
+  "/github/",
   "/jobs/",
   "/jobs/layoffs/",
   "/matrix/",
@@ -65,6 +66,8 @@ export type SiteSlugs = {
   people?: Set<string>;
   /** Published editions of The State of American AI, each at /report/<YYYY-MM>/. */
   reports?: Set<string>;
+  /** AI on GitHub project slugs (owner--repo), each at /github/<slug>/. */
+  github?: Set<string>;
 };
 
 /** Whether an internal path (query and fragment ignored) names a page the site builds. */
@@ -83,6 +86,8 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
   if (pol) return Boolean(slugs.policy?.has(pol[1]));
   const per = path.match(/^\/people\/([a-z0-9-]+)\/$/);
   if (per) return Boolean(slugs.people?.has(per[1]));
+  const gh = path.match(/^\/github\/([a-z0-9-]+)\/$/);
+  if (gh) return Boolean(slugs.github?.has(gh[1]));
   const rep = path.match(/^\/report\/(\d{4}-\d{2})\/$/);
   if (rep) return Boolean(slugs.reports?.has(rep[1]));
   const mem = path.match(/^\/find\/memory\/([a-z0-9-]+)\/$/);

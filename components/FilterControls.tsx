@@ -137,7 +137,7 @@ export function ShowMore({
   return (
     <div className="mt-8 flex flex-col items-center gap-2 print:hidden" data-testid="show-more">
       <p className="meta">
-        Showing {shown} of {total} {total === 1 ? noun[0] : noun[1]}
+        Showing {shown.toLocaleString("en-US")} of {total.toLocaleString("en-US")} {total === 1 ? noun[0] : noun[1]}
       </p>
       <button
         type="button"

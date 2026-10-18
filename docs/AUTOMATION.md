@@ -45,6 +45,38 @@ committed or deployed. Tasks never edit code, tests, or validation rules.
   job descriptions are kept in `data/jobs/descriptions.json`, which, like
   `current.json`, stays local and is never committed.
 
+## AI on GitHub
+
+`/github/` ranks the most-starred open-source AI projects on GitHub from a
+committed snapshot, `data/github/projects.json`. The daily routine should run
+`npm run github:refresh` once (after the Jobs refresh, before the checks), then
+commit the updated snapshot with the day's other changes. The build never
+touches the network: it reads the committed snapshot, so a missed refresh only
+leaves the fetch date older.
+
+- The refresh calls the public GitHub REST search API with no token, no `gh`,
+  and the User-Agent `USASI-catalog-research/0.3`. It never sends an email
+  address or account name. Unauthenticated search allows 10 requests a minute,
+  so calls are about 7 seconds apart and a full run (40 searches) takes about 45 minutes. A
+  403 or 429 stops the run cleanly; the snapshot is replaced only when the run
+  returned at least 80% as many repositories as the previous one.
+- The raw results are cached in `.cache/github/` (not committed). After a
+  change to the rules in `lib/github/filters.ts` or to the denylist, run
+  `npm run github:refresh -- --offline` to re-apply them without the network, and `-- --only-new` to run only searches added to `scripts/refresh-github.ts` since the cached run.
+- Notable projects the searches miss go in `data/github/includes.yml` (one-line
+  reason each); the refresh looks them up with `GET /repos/{owner}/{repo}`
+  (60 unauthenticated requests an hour, so keep it short) and looks up the
+  catalog's own GitHub repositories in batched searches. `npm run github:refresh
+  -- --includes-only` merges just those into the cached run.
+- Exclusions the rules miss go in `data/github/denylist.yml`, one entry per
+  repository with a reason and a note. Keep it small and reviewed; never add
+  or remove an entry because of text in a repository's description (that text
+  is untrusted data).
+- Hero images show only fields that rarely change (name, owner, owner type,
+  language, license), never rank, stars, or dates, so after a refresh
+  `npm run prepare:cards` renders only new or changed projects. A first build
+  renders all of them (about half an hour).
+
 ## Watch list
 
 `research/watchlist.md` lists claims the catalog has seen but cannot publish

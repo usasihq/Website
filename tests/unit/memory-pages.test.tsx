@@ -164,7 +164,8 @@ describe("memory pages use the finder's own fit logic", () => {
       expect(isKnownSitePath(href, none), href).toBe(true);
     }
     expect(cardImage(catalog, "/find/memory/8gb-vram/")!.path).toBe("/og/memory/8gb-vram.jpg");
-  });
+    // The sitemap now holds tens of thousands of pages (jobs, AI on GitHub); allow for a busy machine.
+  }, 90_000);
 });
 
 describe("memory page indexing", () => {

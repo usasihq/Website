@@ -1,0 +1,24 @@
+# Reviewed must-include list for AI on GitHub (/github/): notable AI projects
+# the topic and keyword searches can miss. Each is fetched on its own
+# (GET /repos/{owner}/{repo}, unauthenticated) and then passes through the
+# same rules and denylist as every other project; being listed here only
+# guarantees it is looked at, not that it is shown. One line of reason each.
+# The refresh also looks up every public GitHub repository that USASI catalog
+# records link to (content/artifacts/*.yml), so those need no entry here.
+entries:
+  - { full_name: anthropics/claude-code, reason: "Anthropic's coding agent for the terminal" }
+  - { full_name: openai/codex, reason: "OpenAI's coding agent for the terminal" }
+  - { full_name: google-gemini/gemini-cli, reason: "Google's Gemini agent for the terminal" }
+  - { full_name: openai/openai-agents-python, reason: "OpenAI's agents SDK" }
+  - { full_name: anthropics/anthropic-sdk-python, reason: "Anthropic's official Python SDK" }
+  - { full_name: openai/openai-python, reason: "OpenAI's official Python SDK" }
+  - { full_name: modelcontextprotocol/servers, reason: "Reference Model Context Protocol servers" }
+  - { full_name: microsoft/autogen, reason: "Microsoft's multi-agent framework" }
+  - { full_name: huggingface/smolagents, reason: "Hugging Face's agents library" }
+  - { full_name: pytorch/pytorch, reason: "Deep learning framework" }
+  - { full_name: ollama/ollama, reason: "Local model runtime" }
+  - { full_name: ggml-org/llama.cpp, reason: "Local LLM inference in C/C++" }
+  - { full_name: vllm-project/vllm, reason: "LLM inference and serving engine" }
+  - { full_name: langchain-ai/langgraph, reason: "Agent orchestration framework" }
+  - { full_name: NousResearch/hermes-agent, reason: "Open agent from Nous Research" }
+  - { full_name: pingdotgg/t3code, reason: "Coding-agent app" }

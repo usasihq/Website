@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getCatalog } from "@/lib/catalog";
 import { MEMORY_PAGES, memoryPageHref, memoryPageIndexable } from "@/lib/hardware";
+import { githubSitemap } from "@/lib/github/projects";
 import { jobLandingSitemap } from "@/lib/jobs/landing-links";
 import { layoffSitemap } from "@/lib/jobs/layoffs";
 import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
@@ -20,7 +21,10 @@ export const dynamic = "force-static";
  * The site's pages except individual job pages. The build renames this file to
  * /sitemap-pages.xml and writes /sitemap.xml as a sitemap index of it and the
  * job-page sitemaps (/sitemaps/jobs-<n>.xml, 10,000 URLs each; see
- * scripts/job-pages.ts), so no file nears the 50,000-URL limit.
+ * scripts/job-pages.ts), so no file nears the 50,000-URL limit. AI on GitHub's
+ * project pages (about 9,500) stay in this file, which keeps it near 11,000
+ * URLs; give them their own chunk under /sitemaps/ if the list ever passes
+ * about 30,000.
  *
  * Only active (published + eligible) records. Drafts never exist as pages;
  * archived pages exist but are noindex and excluded here. Record entries use
@@ -46,6 +50,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Report editions are permanent; each is dated by its publication.
     ...reportEditions().map((e) => ({ url: absoluteUrl(editionHref(e.edition)), lastModified: e.published })),
     ...MEMORY_PAGES.filter((p) => memoryPageIndexable(catalog.finder, p)).map((p) => ({ url: absoluteUrl(memoryPageHref(p)) })),
+    // AI on GitHub ranking pages and project pages, dated by the last GitHub API fetch.
+    ...githubSitemap().map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // Jobs landing pages change daily; they carry the date of their listings' last successful check.
     ...jobLandingSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // WARN Act layoff pages, dated by the last successful fetch of that state's notices.
