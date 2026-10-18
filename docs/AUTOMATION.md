@@ -41,9 +41,12 @@ committed or deployed. Tasks never edit code, tests, or validation rules.
 - `scripts/automation/unlock.sh` releases the lock when a run stops early. It
   leaves another run's lock in place.
 - `scripts/automation/jobs-update.sh` runs sync, `npm run jobs:refresh`, and
-  publish in one step, releasing the lock if anything fails. The employers'
-  job descriptions are kept in `data/jobs/descriptions.json`, which, like
-  `current.json`, stays local and is never committed.
+  publish in one step, releasing the lock if anything fails. After a successful
+  publish it runs `npm run jobs:hf-dataset`, which uploads the open listings to
+  Hugging Face (`usasihq/usasi-ai-jobs`) when `HF_TOKEN` is set and skips if it
+  is not. The employers' job descriptions are kept in
+  `data/jobs/descriptions.json`, which, like `current.json`, stays local and is
+  never committed.
 
 ## AI on GitHub
 

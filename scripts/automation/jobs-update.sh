@@ -17,3 +17,8 @@ if ! bash scripts/automation/publish.sh "Jobs refresh $(date +%F)"; then
   bash scripts/automation/unlock.sh
   exit 1
 fi
+# Optional Hugging Face dataset copy. Missing HF_TOKEN skips; a Hub failure
+# must not undo the deploy (the Node script also exits 0 in that case).
+if ! npm run jobs:hf-dataset; then
+  echo "jobs-update: Hugging Face dataset push did not finish; the site was still published" >&2
+fi
