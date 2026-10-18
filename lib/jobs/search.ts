@@ -2,7 +2,7 @@ import type { Job, FeedHealth } from "./schema";
 import { JOB_ROLES, jobRole } from "./roles";
 import { isExpressionOfInterest, JOB_TRACKS, jobTrack } from "./tracks";
 import { annualUsdTop, jobCategory, jobLevel, JOB_CATEGORIES, JOB_LEVELS, PAY_THRESHOLDS } from "./levels";
-import { cityKey, DEFAULT_LOCATION_SCOPE, inLocationScope, jobGeography, LOCATION_SCOPES, type LocationScope } from "./geo";
+import { CITY_SLUG_ALIASES, cityKey, DEFAULT_LOCATION_SCOPE, inLocationScope, jobGeography, LOCATION_SCOPES, type LocationScope } from "./geo";
 import { parseWhere } from "./where";
 import { US_STATES } from "../places";
 export const STALE_MS = 48 * 3600000;
@@ -39,7 +39,9 @@ export function parseJobFilters(p: URLSearchParams): JobFilters {
   const min = p.get("salary_min") ?? "";
   const state = choice((p.get("state") ?? "").toUpperCase(), Object.keys(US_STATES));
   // A city is a slug within a state ("state=CA&city=san-francisco"); without a state it means nothing.
-  const city = state && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.get("city") ?? "") ? p.get("city")!.slice(0, 60) : "";
+  const rawCity = state && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.get("city") ?? "") ? p.get("city")!.slice(0, 60) : "";
+  // A renamed city slug ("longmont-max") still selects the city.
+  const city = rawCity && CITY_SLUG_ALIASES[`${state}|${rawCity}`] ? CITY_SLUG_ALIASES[`${state}|${rawCity}`].slice(3) : rawCity;
   // "w" is the search form's "Where" box submitted without JavaScript (method="get"); it reads like typing it in.
   const typed = !p.has("where") && !state && !p.get("location") && p.get("w")?.trim() ? parseWhere(p.get("w")!.slice(0, 120)) : null;
   if (typed) {

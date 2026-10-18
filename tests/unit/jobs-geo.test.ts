@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { citySlug, inLocationScope, isRemoteListing, jobGeography, placeGeography } from "@/lib/jobs/geo";
+import { citySlug, displayLocation, inLocationScope, isRemoteListing, jobGeography, placeGeography } from "@/lib/jobs/geo";
 import { filterJobs, parseJobFilters, serializeJobFilters } from "@/lib/jobs/search";
 
 const states = (location: string, countries: string[] = []) => jobGeography({ locations: [location], countries }).states;
@@ -207,5 +207,41 @@ describe("job search queries", () => {
     expect(run("software engineer")).toEqual(["Software Engineering Manager"]);
     expect(run("go")).toEqual(["Go Developer"]); // not "Chicago"
     expect(run("AE")).toEqual(["Account Executive"]);
+  });
+});
+
+describe("displayLocation", () => {
+  it.each([
+    ["Aarhus, , Denmark", "Aarhus, Denmark"],
+    ["London, , United Kingdom", "London, United Kingdom"],
+    ["Seoul, , Korea, republic of", "Seoul, Korea, republic of"],
+    ["San Diego, CALIFORNIA, United States", "San Diego, California, United States"],
+    ["London, GREATER LONDON, United Kingdom", "London, Greater London, United Kingdom"],
+    ["AUSTIN, TX", "Austin, TX"],
+    ["India, Bengaluru", "Bengaluru, India"],
+    ["Netherlands - Amsterdam", "Amsterdam, Netherlands"],
+    ["Israel, Raanana", "Raanana, Israel"],
+    ["United Kingdom - London", "London, United Kingdom"],
+    ["Mexico - Mexico City", "Mexico City, Mexico"],
+    ["Yokneam", "Yokneam"],
+    ["UT MAIN CAMPUS", "UT MAIN CAMPUS"],
+    ["Remote - EMEA, EMEA", "Remote - EMEA, EMEA"],
+    ["Singapore, , Singapore", "Singapore, Singapore"],
+    ["Georgia, Atlanta", "Georgia, Atlanta"],
+    ["San Francisco, CA", "San Francisco, CA"],
+    ["Canada - Remote", "Canada - Remote"],
+  ])("%s → %s", (raw, shown) => {
+    expect(displayLocation(raw)).toBe(shown);
+  });
+  it("never renders an empty part", () => {
+    expect(displayLocation(", , ")).not.toMatch(/, ,/);
+  });
+});
+
+describe("Workday site codes in city names", () => {
+  it("strips the site code and keeps the old city slug working", () => {
+    expect(jobGeography({ locations: ["Longmont-MAX- Office, CO"], countries: [] }).cities).toEqual(["CO|Longmont"]);
+    expect(jobGeography({ locations: ["Winston-Salem, NC"], countries: [] }).cities).toEqual(["NC|Winston-Salem"]);
+    expect(parseJobFilters(new URLSearchParams("state=CO&city=longmont-max")).city).toBe("longmont");
   });
 });

@@ -8,7 +8,7 @@ import { JOB_ROLES, jobRole } from "@/lib/jobs/roles";
 import { annualUsdTop, jobCategory, jobLevel, JOB_CATEGORIES, JOB_LEVELS, PAY_THRESHOLDS } from "@/lib/jobs/levels";
 import { parseWhere, whereText } from "@/lib/jobs/where";
 import { isExpressionOfInterest, jobTrack, JOB_TRACKS } from "@/lib/jobs/tracks";
-import { cityKey, cityLabel, DEFAULT_LOCATION_SCOPE, inLocationScope, jobGeography, LOCATION_SCOPE_LABELS, LOCATION_SCOPES, stateDisplayName, type LocationScope } from "@/lib/jobs/geo";
+import { cityKey, cityLabel, DEFAULT_LOCATION_SCOPE, displayLocation, inLocationScope, jobGeography, LOCATION_SCOPE_LABELS, LOCATION_SCOPES, stateDisplayName, type LocationScope } from "@/lib/jobs/geo";
 import { US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
@@ -63,7 +63,7 @@ function JobCard({ job, unverified, now, careersUrl }: { job: JobItem; unverifie
       {/* Current listings have their own page; older, unverified ones only the employer's posting. */}
       <h2 className="mt-1.5 text-lg font-semibold leading-snug text-text break-words">{unverified ? job.title : <a href={asset(jobHref(job))} className="hover:underline hover:decoration-cyan hover:underline-offset-4">{job.title}</a>}</h2>
       {isExpressionOfInterest(job.title) ? <p className="mt-1 text-sm text-ice">The employer&apos;s title presents this as a general expression of interest, not a specific vacancy.</p> : null}
-      <p className="mt-2 text-[0.9375rem] text-muted [overflow-wrap:anywhere]">{job.locations.length ? job.locations.slice(0, 3).join(" · ") + (job.locations.length > 3 ? ` · +${job.locations.length - 3} more` : "") : "Location not supplied"}</p>
+      <p className="mt-2 text-[0.9375rem] text-muted [overflow-wrap:anywhere]">{job.locations.length ? job.locations.slice(0, 3).map(displayLocation).join(" · ") + (job.locations.length > 3 ? ` · +${job.locations.length - 3} more` : "") : "Location not supplied"}</p>
       <ul className="mt-2 flex flex-wrap gap-1.5 text-xs" aria-label="Details">
         {remote ? <li className="badge">Remote</li> : job.workplace !== "unknown" ? <li className="badge">{WORKPLACE_LABELS[job.workplace]}</li> : null}
         {job.employment_type !== "unknown" && job.employment_type !== "full-time" ? <li className="badge">{EMPLOYMENT_LABELS[job.employment_type]}</li> : null}

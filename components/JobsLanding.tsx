@@ -7,6 +7,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { jobHref } from "@/lib/jobs/job-url";
+import { displayLocation } from "@/lib/jobs/geo";
 import { asset } from "@/lib/paths";
 import { jobsLandingJsonLd } from "@/lib/jobs/jsonld";
 import { MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
@@ -100,7 +101,7 @@ function Listing({ job }: { job: JobItem }) {
       {isExpressionOfInterest(job.title) ? (
         <p className="mt-2 text-sm text-ice">The employer&rsquo;s title presents this as a general expression of interest, not a specific vacancy.</p>
       ) : null}
-      <p className="mt-2 text-sm text-muted [overflow-wrap:anywhere]">{job.locations.length ? job.locations.join(" · ") : "Location not supplied"}</p>
+      <p className="mt-2 text-sm text-muted [overflow-wrap:anywhere]">{job.locations.length ? job.locations.map(displayLocation).join(" · ") : "Location not supplied"}</p>
       <p className="mt-1 text-sm text-muted">{details.join(" · ")}</p>
       <p className="mt-auto pt-2 text-xs text-muted">
         {job.posted_at ? (

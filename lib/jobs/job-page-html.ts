@@ -16,6 +16,7 @@ import type { JobPage } from "./job-pages";
 import { jobPostingLd, jobSnippet } from "./job-pages";
 import { ALL_JOB_FILTERS, serializeJobFilters } from "./search";
 import { JOB_ROLES } from "./roles";
+import { displayLocation } from "./geo";
 
 export type PageShell = {
   /** The <html> element's class (font variables), copied from a built page. */
@@ -70,7 +71,7 @@ const shortOrg = (name: string) => name.replace(/\s*\([^)]*\)\s*$/, "").trim();
 /** The page title: role, employer, and first location when it fits. */
 export function jobPageTitle(p: JobPage): string {
   const org = p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name);
-  const where = p.job.locations[0];
+  const where = p.job.locations[0] ? displayLocation(p.job.locations[0]) : undefined;
   return [`${p.job.title} at ${org}${where ? `, ${where}` : ""}`, `${p.job.title} at ${org}`, p.job.title].find((t) => t.length <= 70) ?? p.job.title.slice(0, 70);
 }
 
@@ -100,7 +101,7 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
   const applyLabel = federal ? "Apply on USAJOBS.gov" : `Apply on ${esc(name)}&rsquo;s site`;
   const url = absoluteUrl(p.path);
   const title = `${jobPageTitle(p)} · ${siteConfig.shortName}`;
-  const meta = jobSnippet(p) ?? `${job.title} at ${federal && job.department ? job.department : name}${job.locations[0] ? ` in ${job.locations[0]}` : ""}. ${federal ? "Apply on USAJOBS.gov." : `Apply on ${name}'s own job board.`}`;
+  const meta = jobSnippet(p) ?? `${job.title} at ${federal && job.department ? job.department : name}${job.locations[0] ? ` in ${displayLocation(job.locations[0])}` : ""}. ${federal ? "Apply on USAJOBS.gov." : `Apply on ${name}'s own job board.`}`;
   const image = absoluteUrl(`/og/jobs/at-${org.slug}.jpg`);
   const ld = jobPostingLd(p);
   const crumbs = [
@@ -119,7 +120,7 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
     ["Employer", job.source_type === "usajobs" && job.department
       ? `${esc(job.department)} <span class="text-muted">(${esc(org.name)})</span>`
       : `<a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">${esc(org.name)}</a>`],
-    ["Location", job.locations.length ? esc(job.locations.join(" · ")) : "Not supplied by the employer"],
+    ["Location", job.locations.length ? esc(job.locations.map(displayLocation).join(" · ")) : "Not supplied by the employer"],
     ["Workplace", job.workplace !== "unknown" ? esc(job.workplace) : "Not supplied"],
     ["Employment", job.employment_type !== "unknown" ? esc(job.employment_type) : "Not supplied"],
   ];
@@ -204,7 +205,7 @@ ${p.description ? description(p.description) : `<p class="text-muted">The full d
 ${similar.length ? `<section aria-labelledby="similar-jobs-heading" class="border-t border-line pt-8" data-testid="similar-jobs">
 <h2 id="similar-jobs-heading" class="text-xl font-semibold text-text sm:text-2xl">Similar jobs</h2>
 <ul class="mt-4 grid gap-3 md:grid-cols-2">${similar
-    .map((q) => `<li class="card p-4"><p class="text-sm text-muted">${esc(shortOrg(q.org.name))}</p><p class="mt-1 font-semibold text-text"><a href="${esc(asset(q.path))}" class="hover:underline hover:decoration-cyan hover:underline-offset-4">${esc(q.job.title)}</a></p><p class="mt-1 text-sm text-muted [overflow-wrap:anywhere]">${esc(q.job.locations.slice(0, 2).join(" · ") || "Location not supplied")}</p>${q.job.salaries[0] ? `<p class="mt-1 text-sm text-text">${esc(payLine(q.job.salaries[0]))}${q.job.salaries[0].source_status === "employer-description" ? ' <span class="text-muted">(from the job description)</span>' : ""}</p>` : ""}</li>`)
+    .map((q) => `<li class="card p-4"><p class="text-sm text-muted">${esc(shortOrg(q.org.name))}</p><p class="mt-1 font-semibold text-text"><a href="${esc(asset(q.path))}" class="hover:underline hover:decoration-cyan hover:underline-offset-4">${esc(q.job.title)}</a></p><p class="mt-1 text-sm text-muted [overflow-wrap:anywhere]">${esc(q.job.locations.slice(0, 2).map(displayLocation).join(" · ") || "Location not supplied")}</p>${q.job.salaries[0] ? `<p class="mt-1 text-sm text-text">${esc(payLine(q.job.salaries[0]))}${q.job.salaries[0].source_status === "employer-description" ? ' <span class="text-muted">(from the job description)</span>' : ""}</p>` : ""}</li>`)
     .join("")}</ul>
 </section>` : ""}
 <nav aria-labelledby="more-jobs-heading" class="border-t border-line pt-6">
