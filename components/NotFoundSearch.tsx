@@ -11,7 +11,7 @@ function guess(pathname: string) {
   return pathname
     .split("/")
     .filter(Boolean)
-    .filter((part) => !["companies", "open", "learn", "news", "hubs", "licenses", "kids", "newsletter", "places", "usasi"].includes(part))
+    .filter((part) => !["companies", "open", "learn", "news", "hubs", "licenses", "kids", "newsletter", "places", "usasi", "jobs", "at"].includes(part))
     .join(" ")
     .replace(/[-_.+]+/g, " ")
     .replace(/[^a-z0-9 ]/gi, "")

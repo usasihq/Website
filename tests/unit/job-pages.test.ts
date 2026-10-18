@@ -173,3 +173,14 @@ describe("job page HTML", () => {
     expect(block).not.toHaveProperty("validThrough");
   });
 });
+
+describe("closed job addresses on the 404 page", () => {
+  it("reads the employer and title words, and ignores other addresses", async () => {
+    const { missingJob } = await import("@/components/JobNotFound");
+    expect(missingJob("/jobs/at/anthropic/research-engineer-interpretability-1a2b3c4/")).toEqual({ org: "anthropic", words: "research engineer interpretability" });
+    expect(missingJob("/jobs/at/anthropic/does-not-exist-zzz/")).toEqual({ org: "anthropic", words: "does not exist zzz" });
+    expect(missingJob("/jobs/at/anthropic/")).toBeNull();
+    expect(missingJob("/companies/anthropic/")).toBeNull();
+    expect(missingJob("/jobs/in/california/")).toBeNull();
+  });
+});
