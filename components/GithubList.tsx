@@ -59,13 +59,30 @@ export function GithubRows({ items, start }: { items: GithubListItem[]; start?: 
   );
 }
 
-/** Links to every page of the ranking, so each project is reachable without JavaScript. */
-export function GithubPagination({ current, count, total, pageSize }: { current: number; count: number; total: number; pageSize: number }) {
+/** Links to every page of a ranking, so each item is reachable without JavaScript. */
+export function GithubPagination({
+  current,
+  count,
+  total,
+  pageSize,
+  base = "/github/",
+  noun = "projects",
+}: {
+  current: number;
+  count: number;
+  total: number;
+  pageSize: number;
+  /** The section index; page n is at <base>page/<n>/. Shared with AI on Hugging Face. */
+  base?: string;
+  noun?: string;
+}) {
   if (count <= 1) return null;
-  const href = (n: number) => (n <= 1 ? "/github/" : `/github/page/${n}/`);
+  const href = (n: number) => (n <= 1 ? base : `${base}page/${n}/`);
   return (
     <nav aria-label="Ranking pages" className="mt-8">
-      <p className="meta">All {nf(total)} projects, {pageSize} per page:</p>
+      <p className="meta">
+        All {nf(total)} {noun}, {pageSize} per page:
+      </p>
       <ul className="mt-2 flex flex-wrap gap-2">
         {Array.from({ length: count }, (_, i) => i + 1).map((n) => {
           const from = (n - 1) * pageSize + 1;

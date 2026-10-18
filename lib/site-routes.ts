@@ -10,6 +10,7 @@ export const STATIC_ROUTES = [
   "/companies/",
   "/open/",
   "/github/",
+  "/huggingface/",
   "/jobs/",
   "/jobs/layoffs/",
   "/matrix/",
@@ -68,6 +69,10 @@ export type SiteSlugs = {
   reports?: Set<string>;
   /** AI on GitHub project slugs (owner--repo), each at /github/<slug>/. */
   github?: Set<string>;
+  /** AI on Hugging Face model slugs (author--name), each at /huggingface/<slug>/. */
+  huggingfaceModels?: Set<string>;
+  /** AI on Hugging Face dataset slugs, each at /huggingface/datasets/<slug>/. */
+  huggingfaceDatasets?: Set<string>;
 };
 
 /** Whether an internal path (query and fragment ignored) names a page the site builds. */
@@ -88,6 +93,11 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
   if (per) return Boolean(slugs.people?.has(per[1]));
   const gh = path.match(/^\/github\/([a-z0-9-]+)\/$/);
   if (gh) return Boolean(slugs.github?.has(gh[1]));
+  if (path === "/huggingface/datasets/") return true;
+  const hfd = path.match(/^\/huggingface\/datasets\/([a-z0-9-]+)\/$/);
+  if (hfd) return Boolean(slugs.huggingfaceDatasets?.has(hfd[1]));
+  const hfm = path.match(/^\/huggingface\/([a-z0-9-]+)\/$/);
+  if (hfm) return Boolean(slugs.huggingfaceModels?.has(hfm[1]));
   const rep = path.match(/^\/report\/(\d{4}-\d{2})\/$/);
   if (rep) return Boolean(slugs.reports?.has(rep[1]));
   const mem = path.match(/^\/find\/memory\/([a-z0-9-]+)\/$/);

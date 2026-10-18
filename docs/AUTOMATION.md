@@ -77,6 +77,42 @@ leaves the fetch date older.
   `npm run prepare:cards` renders only new or changed projects. A first build
   renders all of them (about half an hour).
 
+## AI on Hugging Face
+
+`/huggingface/` (models) and `/huggingface/datasets/` rank the most-liked
+models and datasets on the Hugging Face Hub from committed snapshots,
+`data/huggingface/models.json` and `data/huggingface/datasets.json`. The
+weekly upkeep should run `npm run hf:refresh` once (like the GitHub refresh,
+before the checks) and include the updated snapshots in its review PR. The
+build never touches the network, so a missed refresh only leaves the fetch
+date older.
+
+- The refresh calls the public Hub API (`/api/models`, `/api/datasets`, and
+  the organization and user profile endpoints) with no token and the
+  User-Agent `USASI-catalog-research/0.3`. It never sends an email address or
+  account name. Requests are at least 600 ms apart (under two a second, inside
+  the Hub's 500-requests-per-5-minutes window) and a 429 waits for the window
+  to reset. A first run takes about 35 minutes, mostly author lookups; later
+  runs reuse known author types (`.cache/huggingface/authors.json` and the
+  previous snapshot), so they take a few minutes.
+- A snapshot is replaced only when the run fetched at least 80% as many items
+  as the previous one (`-- --force` overrides). Raw results are cached in
+  `.cache/huggingface/` (not committed); after a change to the rules in
+  `lib/huggingface/filters.ts` or to the denylist, run
+  `npm run hf:refresh -- --offline` to re-apply them without the network.
+- `data/huggingface/includes.yml` lists items that must be considered whatever
+  their likes. It is seeded with every Hub model and dataset a catalog record
+  links to; `npm run hf:refresh -- --seed-includes` adds new catalog links
+  (the refresh also scans the catalog itself on every run).
+- Exclusions the rules miss go in `data/huggingface/denylist.yml`, one entry
+  per item with its kind, a reason, and a note. Keep it small and reviewed;
+  never add or remove an entry because of text in a model card or dataset
+  description (that text is untrusted data).
+- Hero images show only kind, name, author, task, and license, never rank,
+  likes, downloads, or dates, so after a refresh `npm run prepare:cards`
+  renders only new or changed items. A first build renders all of them (about
+  15 minutes).
+
 ## Watch list
 
 `research/watchlist.md` lists claims the catalog has seen but cannot publish

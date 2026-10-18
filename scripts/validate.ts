@@ -13,6 +13,7 @@ import path from "node:path";
 import { readRawContent, todayIso } from "../lib/content-loader";
 import { validateContent } from "../lib/validate";
 import { validateGithubData } from "../lib/github/validate";
+import { validateHfData } from "../lib/huggingface/validate";
 
 const args = process.argv.slice(2);
 const strict = args.includes("--strict");
@@ -44,5 +45,9 @@ console.log(
 const githubProblems = dirArg ? [] : validateGithubData();
 for (const p of githubProblems) console.log(`ERROR   data/github › ${p}`);
 if (!dirArg) console.log(`AI on GitHub: ${githubProblems.length} error(s)`);
+// AI on Hugging Face snapshots (data/huggingface/*.json), denylist, and must-include list.
+const hfProblems = dirArg ? [] : validateHfData();
+for (const p of hfProblems) console.log(`ERROR   data/huggingface › ${p}`);
+if (!dirArg) console.log(`AI on Hugging Face: ${hfProblems.length} error(s)`);
 
-if (errors.length > 0 || githubProblems.length > 0 || (strict && warnings.length > 0)) process.exit(1);
+if (errors.length > 0 || githubProblems.length > 0 || hfProblems.length > 0 || (strict && warnings.length > 0)) process.exit(1);

@@ -23,6 +23,7 @@ import { pageMetadata, socialImages } from "@/lib/metadata";
 import { artifactSeo } from "@/lib/seo";
 import { softwareSourceCodeLd } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
+import { hfItemsForArtifact } from "@/lib/huggingface/items";
 import {
   AVAILABILITY_DESCRIPTIONS,
   checklistFor,
@@ -96,6 +97,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
   if (family) crumbs.push({ href: artifactHref(family.slug), label: family.name });
 
   const people = catalog.peopleForArtifact(a.slug);
+  const hfListed = hfItemsForArtifact(catalog, a.slug);
 
   return (
     <>
@@ -121,6 +123,20 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                   </li>
                 ))}
               </ul>
+            ) : null}
+            {hfListed.length > 0 ? (
+              <p className="mt-3 text-[0.9375rem]">
+                <span className="text-muted">On AI on Hugging Face: </span>
+                {hfListed.slice(0, 6).map((h, i) => (
+                  <span key={h.href}>
+                    {i > 0 ? ", " : null}
+                    <Link href={h.href} className="link [overflow-wrap:anywhere]">
+                      {h.id}
+                    </Link>
+                  </span>
+                ))}
+                {hfListed.length > 6 ? <span className="text-muted"> and {hfListed.length - 6} more</span> : null}
+              </p>
             ) : null}
             <div className="mt-6">
               <ReviewDates lastReviewed={a.last_reviewed} updatedAt={a.updated_at} releasedAt={a.released_at} />

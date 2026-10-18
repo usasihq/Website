@@ -130,6 +130,28 @@ A short reviewed denylist covers projects the rules miss; each entry names its r
 
 **Hero images.** Each project page has a generated image: abstract artwork drawn from the repository's name (the same name always draws the same picture), with the project's name, owner, owner type, language, and license. It leaves out rank and star counts, which change daily; the page shows the current ones. It is not the project's logo, and no project logos or avatars are used.
 
+<h2 id="huggingface">AI on Hugging Face: source, ranking, and exclusions</h2>
+
+[AI on Hugging Face](/huggingface/) ranks the most-liked models and [datasets](/huggingface/datasets/) on the Hugging Face Hub. Like [AI on GitHub](/github/), it is a separate, machine-collected list, not part of the catalog's reviewed directories: entries are not checked for U.S. eligibility, openness, or sources the way catalog records are, and a listing is not an endorsement. Where a model or dataset is also linked from a record in [Open Models & Tools](/open/), its page links to that record and the record links back; where the same owner and name are listed in AI on GitHub, the two pages link to each other.
+
+**Source.** The lists come from the public Hugging Face Hub API (`/api/models` and `/api/datasets`, sorted by likes), called without an account or token. A refresh takes the 5,000 most-liked models and the 1,000 most-liked datasets, stopping early where likes fall below 100. Every Hub model and dataset that a record in the USASI catalog links to is also looked up one by one, so catalog items are always considered whatever their likes; they then pass the same rules and denylist. Whether an author is an organization or a personal account comes from the Hub's own organization and user profile endpoints; when neither answers, the page says nothing about it. Only factual fields are stored: the id and author, likes, downloads in the last 30 days as the Hub reports them, the task (pipeline tag) and library, the license from the Hub's license tag or the card's license field, language tags, base-model tags, whether access is gated, creation and last-modified dates, and, for models, a parameter count only when the Hub's safetensors metadata gives one. The only prose is a dataset's short description, the excerpt of its card that the Hub API returns, shown as plain text; model cards are not copied. Each page shows the date of the fetch. The refresh is meant to run weekly.
+
+**Ranking.** Models and datasets are ranked separately by likes, highest first, with ties in alphabetical order. Likes measure popularity on the Hub, not quality, safety, licensing terms, or how widely something is used, and they can be inflated. Downloads cover the last 30 days and count file requests, not people.
+
+**What is left out, and why.** These are excluded by published rules that read only the item's own id and Hub tags:
+
+- private, disabled, or removed repositories;
+- items tagged not-for-all-audiences, or whose name or tags mark them as explicit content;
+- deepfake, face-swap, and undressing tools (deepfake detectors stay);
+- fine-tunes that remove safety training, named or tagged "uncensored", "abliterated", or the like, consistent with AI on GitHub leaving out tools that strip models' safety training;
+- jailbreak and leaked-prompt collections; datasets and models for detecting, classifying, or evaluating jailbreaks stay.
+
+A short reviewed denylist covers what the rules miss, such as datasets of scraped personal data, explicit content without the tag, and spam or duplicate uploads; each entry names its reason. Rules can misfire in both directions.
+
+**Derived models.** Quantized re-uploads (GGUF, AWQ, GPTQ, and other formats of another model) stay in the list, because many people run models that way; their pages say "Quantized version of" the base model, from the Hub's base-model tags, and link to the base model's page when it is listed. Fine-tunes, adapters, and merges are labeled the same way, and a base model's page lists the derived models that are in the list. Gated items stay too, marked "Access requires accepting terms on Hugging Face"; a few authors review each request by hand.
+
+**Hero images.** Each page has a generated image: abstract tile and lattice artwork drawn from the item's kind and id (the same id always draws the same picture), with its name, author, task, and license. It leaves out rank, likes, and downloads, which change daily; the page shows the current ones. It is not the item's or Hugging Face's logo, and no logos or avatars are used.
+
 <h2 id="jobs">Jobs: employer sources and freshness</h2>
 
 Jobs are machine-collected, transient records, separate from editorial catalog entries. Only published, eligible organizations already in Companies & Labs can supply jobs. Official employer career pages establish which ATS board belongs to each organization. Automated adapters support the public Greenhouse, Ashby, Lever, Workable, and SmartRecruiters job-board APIs, employers' Workday career sites (through the public data those sites load), and the official USAJOBS Search API for federal civilian openings (keyword searches for artificial intelligence, machine learning, data scientist, and AI, with a title and description filter and closed announcements dropped). Other organizations retain their official careers links without fabricated counts. Feeds are checked twice a day. Federal listing data comes from USAJOBS.gov.
