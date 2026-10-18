@@ -30,12 +30,15 @@ export function endpoint(c: Careers): string {
 export function feedUrl(c: Careers): string {
   return c.source.type === "greenhouse" ? `${endpoint(c)}?content=true` : endpoint(c);
 }
-const USAJOBS_POSTING = /^\/GetJob\/ViewDetails\/[A-Za-z0-9_-]+\/?$/i;
+// USAJOBS posting pages: the current /job/<control number> form and the older /GetJob/ViewDetails/<id>.
+const USAJOBS_POSTING = /^\/(?:job\/\d{5,12}|GetJob\/ViewDetails\/[A-Za-z0-9_-]+)\/?$/i;
 export function postingUrl(value: string, c: Careers): string {
   // An employer-owned posting host (an editorial allow-list) may be linked over
   // plain http in the feed; its pages are served over https, so upgrade it.
   const plainHttp = /^http:\/\/([^/:?#]+)/i.exec(value);
   if (plainHttp && c.posting_hosts.includes(plainHttp[1].toLowerCase())) value = `https://${value.slice(7)}`;
+  // USAJOBS writes its default port explicitly (https://www.usajobs.gov:443/job/…); drop it.
+  if (c.source.type === "usajobs") value = value.replace(/^https:\/\/www\.usajobs\.gov:443\//i, "https://www.usajobs.gov/");
   if (!safeJobUrl(value)) throw new FeedError("unsafe-url");
   const u = new URL(value);
   const type = c.source.type;

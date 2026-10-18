@@ -150,6 +150,10 @@ describe("USAJOBS mapper", () => {
     expect(postingUrl("https://www.usajobs.gov/GetJob/ViewDetails/21947200?utm_source=x&PostingChannelID=RESTAPI", config))
       .toBe("https://www.usajobs.gov/GetJob/ViewDetails/21947200?PostingChannelID=RESTAPI");
     expect(() => postingUrl("https://www.usajobs.gov.evil.com/GetJob/ViewDetails/1", config)).toThrow();
+    // The live API's current form: explicit :443 and /job/<control number>.
+    expect(postingUrl("https://www.usajobs.gov:443/job/888462400", config)).toBe("https://www.usajobs.gov/job/888462400");
+    expect(() => postingUrl("https://www.usajobs.gov:8443/job/888462400", config)).toThrow();
+    expect(() => postingUrl("https://www.usajobs.gov/job/abc", config)).toThrow();
     expect(() => postingUrl("https://www.usajobs.gov/Apply/Other/1", config)).toThrow();
   });
 });
