@@ -1,0 +1,203 @@
+slug: nemotron-labs-dory-1-0-4b
+name: NVIDIA Nemotron Labs Dory1.0-4B
+kind: model
+record_level: release
+family_slug: nemotron
+version: "Dory1.0-4B, GA (10/16/2026)"
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [dory-model-card]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (BF16)
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16
+    kind: model-hub
+  - label: MXFP8 checkpoint
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-MXFP8
+    kind: model-hub
+  - label: NVFP4 checkpoint
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4
+    kind: model-hub
+  - label: GGUF (Q5_K_M) export
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-GGUF
+    kind: model-hub
+  - label: OpenMDW License Agreement, version 1.1
+    url: https://openmdw.ai/license/1-1/
+    kind: license
+summary:
+  text: >-
+    Dory1.0-4B is a 4B-parameter looped (latent-recurrent) language model from NVIDIA's Nemotron
+    Labs. It reuses a shared block of layers several times per token, so one checkpoint can run at
+    different compute levels by changing the loop count. The card lists English as the supported
+    language and a context of up to 256K tokens, and NVIDIA publishes BF16, MXFP8, NVFP4, and GGUF
+    (Q5_K_M) versions.
+  source_ids: [dory-model-card, dory-hf-metadata, dory-mxfp8-metadata, dory-nvfp4-metadata, dory-gguf-metadata]
+useful_for:
+  text: >-
+    The model card describes it as aimed at general-purpose reasoning on a small footprint, with
+    the loop count adjustable to trade inference compute against accuracy, and says it is ready for
+    commercial or non-commercial use.
+  source_ids: [dory-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card states the model was trained by NVIDIA. NVIDIA Corporation's principal
+    executive offices are in Santa Clara, California, per its Form 10-Q for the quarter ended
+    July 26, 2026.
+  source_ids: [dory-model-card, nvidia-10q-q2fy2027]
+  assessed_at: 2026-10-18
+availability:
+  status: public
+  access_conditions: >-
+    Weights are downloadable from Hugging Face under OpenMDW-1.1; the repository metadata for the
+    BF16, MXFP8, NVFP4, and GGUF repositories showed no access gate when checked.
+  source_ids: [dory-model-card, dory-hf-metadata, dory-mxfp8-metadata, dory-nvfp4-metadata, dory-gguf-metadata]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1
+    spdx: null
+    url: https://openmdw.ai/license/1-1/
+    applies_to: weights
+    source_ids: [dory-model-card, dory-hf-metadata, openmdw-1-1-text]
+    reviewed_at: 2026-10-18
+license_notes:
+  text: >-
+    The card's license field and its terms-of-use section name OpenMDW-1.1; the BF16 repository
+    has no separate LICENSE file. OpenMDW-1.1 permits use, modification, and sharing of the model
+    materials without restriction, including under copyright, patent, database, and trade secret
+    rights. Redistributors must include the agreement and keep applicable origin notices, and
+    rights end for anyone who brings a patent or copyright suit over the materials unless
+    responding to one filed first. It places no conditions on outputs and disclaims warranties.
+    SPDX list version 3.29.0 includes OpenMDW-1.0 but not 1.1, so no SPDX ID is recorded.
+  source_ids: [dory-model-card, dory-hf-metadata, openmdw-1-1-text, spdx-license-list]
+checklist:
+  weights:
+    status: public
+    note: BF16, MXFP8, NVFP4, and GGUF (Q5_K_M) checkpoints are published on Hugging Face.
+    source_ids: [dory-model-card, dory-hf-metadata, dory-mxfp8-metadata, dory-nvfp4-metadata, dory-gguf-metadata]
+    reviewed_at: 2026-10-18
+  inference_code:
+    status: partial
+    note: >-
+      The card gives serving instructions for vLLM and llama.cpp, but at release support in both
+      came from pull requests not yet in a tagged release of either project.
+    source_ids: [dory-model-card]
+    reviewed_at: 2026-10-18
+  training_code:
+    status: unknown
+    note: >-
+      The card names Megatron-LM, NeMo RL, and NeMo Gym as the software used, but no
+      Dory-specific training code was found.
+    source_ids: []
+  training_data_information:
+    status: partial
+    note: >-
+      The card describes data types, domains, languages, token counts, collection periods, and
+      post-training synthetic-data and filtering methods at a high level, and refers to the
+      Nemotron 3.5 Lightning card for pre-training and RL dataset details.
+    source_ids: [dory-model-card]
+    reviewed_at: 2026-10-18
+  training_data_access:
+    status: unknown
+    note: >-
+      The repository metadata tags NVIDIA's pre-training and post-training dataset collections,
+      but the card does not state which of the data used is downloadable.
+    source_ids: []
+  training_pipeline:
+    status: unknown
+    note: null
+    source_ids: []
+  training_recipe:
+    status: partial
+    note: >-
+      The card outlines the stages: 6T tokens of pre-training (NVFP4 for roughly the first 4.5T,
+      then BF16), 300B tokens of context extension, SFT, and GRPO reinforcement learning. No
+      configurations are published with it.
+    source_ids: [dory-model-card]
+    reviewed_at: 2026-10-18
+  evaluation_materials:
+    status: partial
+    note: >-
+      The card reports results measured with NeMo Gym and the NeMo Evaluator SDK but does not
+      publish model-specific commands for re-running them.
+    source_ids: [dory-model-card]
+    reviewed_at: 2026-10-18
+run_notes:
+  - text: >-
+      The card documents serving with vLLM (validated at a 256K-token context) and with llama.cpp
+      on Apple Silicon Macs using the Q5_K_M GGUF export, and lists NVIDIA H100, B200, B300, and
+      DGX Spark as test hardware. It recommends two loops as the default and describes a
+      last-loop KV-cache mode that keeps cache size at the one-loop level regardless of loop count.
+    source_ids: [dory-model-card]
+provenance:
+  text: >-
+    Trained by NVIDIA from pre-training onward; the card and repository metadata name no base
+    model. The MXFP8, NVFP4, and GGUF repositories are quantized versions of the BF16 checkpoint.
+    The card says post-training synthetic data was generated with teacher models, including
+    third-party open models such as GPT-OSS-120B.
+  derived_from: []
+  source_ids: [dory-model-card, dory-hf-metadata]
+tags: [language-model, reasoning, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2026-10-16
+updated_at: 2026-10-18
+last_reviewed: 2026-10-18
+sources:
+  - id: dory-model-card
+    title: NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-16
+    accessed_at: 2026-10-18
+  - id: dory-hf-metadata
+    title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16
+    url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: dory-mxfp8-metadata
+    title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-MXFP8
+    url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-MXFP8
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: dory-nvfp4-metadata
+    title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4
+    url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: dory-gguf-metadata
+    title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-GGUF
+    url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-GGUF
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: openmdw-1-1-text
+    title: OpenMDW License Agreement, version 1.1 (OpenMDW-1.1)
+    url: https://openmdw.ai/license/1-1/
+    publisher: OpenMDW
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: spdx-license-list
+    title: SPDX License List data (licenses.json, version 3.29.0)
+    url: https://raw.githubusercontent.com/spdx/license-list-data/main/json/licenses.json
+    publisher: SPDX
+    kind: other
+    published_at: 2026-09-16
+    accessed_at: 2026-10-18
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-18

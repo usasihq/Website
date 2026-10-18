@@ -1,0 +1,206 @@
+slug: muse-spark-open-816b-a42b
+name: Muse Spark Open 816B-A42B
+kind: model
+record_level: release
+family_slug: meta-muse
+version: "Muse-Spark-Open-816B-A42B"
+maintainers:
+  - name: Meta (Meta Superintelligence Labs)
+    organization_slug: meta
+    source_ids: [muse-spark-open-card, muse-spark-open-dev-blog]
+organization_slugs: [meta]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B
+    kind: model-hub
+  - label: Muse Spark Open collection (BF16 and NVFP4)
+    url: https://huggingface.co/collections/meta-models/muse-spark-open
+    kind: model-hub
+  - label: License (Muse Model License)
+    url: https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B/blob/main/LICENSE.md
+    kind: license
+  - label: Meta developer blog post
+    url: https://dev.meta.ai/resources/blog/build-with-muse-spark-open
+    kind: release-notes
+summary:
+  text: >-
+    Muse Spark Open is the open-weight version of Meta's Muse Spark, released on October 15,
+    2026. The model card describes a mixture-of-experts transformer with 816B total and 42B active
+    parameters (256 experts, 8 active per token, 62 layers) plus a 1.8B-parameter perception
+    encoder. It accepts text, image, video, and audio input, produces text, and supports a 1M-token
+    context at inference. Meta says this version received additional safety post-training for use
+    as a standalone model.
+  source_ids: [muse-spark-open-card, muse-spark-open-dev-blog]
+useful_for:
+  text: >-
+    The model card lists long-horizon reasoning, agentic task completion, coding agents, tool use,
+    multimodal reasoning over screenshots, documents, images, audio, and video, synthetic data
+    generation, and LLM-as-a-judge evaluation. Meta recommends deploying it inside a larger system
+    with guardrails suited to the use case.
+  source_ids: [muse-spark-open-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names Meta Superintelligence Labs as author and Meta Platforms, Inc. or Meta
+    Platforms Ireland Limited as model provider; the license names Meta Platforms, Inc. as
+    copyright holder. Meta Platforms, Inc. is a Delaware company whose principal executive offices
+    are in Menlo Park, California, per its Form 10-K. The Irish entity acts as licensor only for
+    licensees in the European region.
+  source_ids: [muse-spark-open-card, muse-spark-open-hf-api, meta-10k-2025]
+  assessed_at: 2026-10-18
+availability:
+  status: partial
+  reviewed_at: 2026-10-18
+  access_conditions: >-
+    The Hugging Face repositories are gated with manual approval: downloading requires accepting
+    the Muse Model License and submitting a form asking for name, date of birth, country,
+    affiliation, and job title. The model card says the model is also offered through third-party
+    inference providers.
+  source_ids: [muse-spark-open-hf-api, muse-spark-open-collection, muse-spark-open-card]
+licenses:
+  - name: Muse Model License (version Muse Spark Open)
+    spdx: null
+    url: https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B/blob/main/LICENSE.md
+    applies_to: all
+    reviewed_at: 2026-10-18
+    effective_at: 2026-10-15
+    source_ids: [muse-spark-open-hf-api, muse-spark-open-card]
+license_notes:
+  text: >-
+    Custom Meta license (card license field "other", license_name "muse-model-license"). The
+    LICENSE.md file is behind the access gate and was not fetched; the terms here are from the
+    license text Meta publishes in the repository's gating prompt, dated October 15, 2026. It
+    covers the model, code, weights, configuration, and documentation and grants broad rights to
+    use, modify, fine-tune, distill, distribute, and sell, subject to conditions: copies must
+    include the license and the incorporated Usage Policy (Exhibit A), and products using the
+    model or its derivatives must prominently display "Built with Muse Spark Open". A licensee
+    offering models to third parties as an API service, whose group gross revenue exceeds US$20
+    million in any 12-month period, must notify Meta and sign a separate agreement first; internal
+    use, research, and use inside the licensee's own non-API products are exempt. Meta claims no
+    ownership of outputs. The Usage Policy prohibits uses including military and weapons
+    applications, and the model is not intended for people under 18.
+  source_ids: [muse-spark-open-hf-api, muse-spark-open-card]
+checklist:
+  weights:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      BF16 weights (Muse-Spark-Open-816B-A42B) and an NVFP4 checkpoint
+      (Muse-Spark-Open-816B-A42B-NVFP4) are on Hugging Face behind a manually approved access
+      gate.
+    source_ids: [muse-spark-open-hf-api, muse-spark-open-collection, muse-spark-open-card]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card lists support in SGLang, vLLM, Hugging Face Transformers, TensorRT-LLM,
+      Unsloth, llama.cpp, and MLX, and Meta's developer blog gives serving commands for several
+      of them. No separate Meta reference inference repository was found.
+    source_ids: [muse-spark-open-card, muse-spark-open-dev-blog]
+  training_code:
+    status: unknown
+    note: >-
+      Meta points to fine-tuning and reinforcement-learning tooling (including TorchTitan and
+      Hugging Face TRL); no code used to train this model was found.
+    source_ids: []
+  training_data_information:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card describes text, image, audio, and video data from public sources, web
+      crawls, third parties, Meta products and services, and synthetic generation, cleaned,
+      deduplicated, and filtered, covering more than 100 languages. No dataset listing is given.
+    source_ids: [muse-spark-open-card]
+  training_data_access:
+    status: unknown
+    note: null
+    source_ids: []
+  training_pipeline:
+    status: unknown
+    note: null
+    source_ids: []
+  training_recipe:
+    status: unknown
+    note: >-
+      The sources say only that this version shares its base model with Muse Spark 1.3 and has
+      additional safety post-training; no recipe details were found.
+    source_ids: []
+  evaluation_materials:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card reports benchmark and safety evaluation results and links an evaluation
+      methodology report, which was not reviewed here. Evaluation code was not located.
+    source_ids: [muse-spark-open-card]
+run_notes:
+  - text: >-
+      The model card states that running the model locally requires at least 700GB of GPU memory
+      for the NVFP4 checkpoint and 2TB for BF16, plus a supported inference framework. Meta's
+      developer blog says MLX can serve the NVFP4 checkpoint across two Mac Studios with M5 Ultra
+      and 512GB of unified memory each, or four with 256GB each.
+    source_ids: [muse-spark-open-card, muse-spark-open-dev-blog]
+  - text: >-
+      The model card recommends temperature 1.0, top_p 1.0, and top_k disabled, and documents a
+      reasoning_effort setting (low, medium, high, or xhigh; default xhigh).
+    source_ids: [muse-spark-open-card]
+provenance:
+  text: >-
+    Meta's PyTorch team says Muse Spark Open shares its base model with Muse Spark 1.3, a Meta
+    model offered without public weights; the model card says the open version adds safety
+    post-training.
+  derived_from:
+    - name: Muse Spark 1.3
+      artifact_slug: null
+      url: null
+      note: Same organization; shared base model, weights not public.
+  source_ids: [pytorch-muse-spark-open, muse-spark-open-card]
+tags: [language-model, multimodal, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2026-10-15
+updated_at: 2026-10-18
+last_reviewed: 2026-10-18
+sources:
+  - id: muse-spark-open-card
+    title: Muse Spark Open Model Card (meta-models/Muse-Spark-Open-816B-A42B)
+    url: https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B
+    publisher: Meta (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-15
+    accessed_at: 2026-10-18
+  - id: muse-spark-open-hf-api
+    title: meta-models/Muse-Spark-Open-816B-A42B repository metadata (license fields and gating terms)
+    url: https://huggingface.co/api/models/meta-models/Muse-Spark-Open-816B-A42B
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: muse-spark-open-collection
+    title: Muse Spark Open collection (meta-models) repository metadata
+    url: https://huggingface.co/api/collections/meta-models/muse-spark-open
+    publisher: Hugging Face
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: muse-spark-open-dev-blog
+    title: Build with Muse Spark Open
+    url: https://dev.meta.ai/resources/blog/build-with-muse-spark-open
+    publisher: Meta
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-18
+  - id: pytorch-muse-spark-open
+    title: Muse Spark Is Now an Open-Weights Model
+    url: https://pytorch.org/blog/muse-spark-open/
+    publisher: PyTorch Team at Meta
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-18
+  - id: meta-10k-2025
+    title: Meta Platforms, Inc. Form 10-K for the fiscal year ended December 31, 2025
+    url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm
+    publisher: Meta Platforms, Inc. (U.S. SEC filing)
+    kind: filing
+    published_at: 2026-01-29
+    accessed_at: 2026-10-18
