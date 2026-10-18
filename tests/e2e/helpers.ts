@@ -44,6 +44,6 @@ export function watchErrors(page: Page) {
 
 /** The "Showing N of M" count rendered by a directory page. */
 export async function shownCount(page: Page): Promise<number> {
-  const text = await page.locator("p.meta", { hasText: /^Showing \d+ of \d+/ }).first().innerText();
-  return Number(text.match(/Showing (\d+)/)![1]);
+  const text = await page.locator("p.meta", { hasText: /^Showing [\d,]+ of [\d,]+/ }).first().innerText();
+  return Number(text.match(/Showing ([\d,]+)/)![1].replace(/,/g, ""));
 }

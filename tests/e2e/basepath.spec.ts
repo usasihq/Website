@@ -27,7 +27,7 @@ test("assets, navigation, deep links, and 404 work under a base path", async ({ 
   await page.reload();
   await expect(page.locator("h1")).toHaveText(org.name);
 
-  const sitemap = await (await page.request.get("/usasi/sitemap.xml")).text();
+  const sitemap = await (await page.request.get("/usasi/sitemap-pages.xml")).text();
   expect(sitemap).toContain(`/usasi/companies/${org.slug}/`);
 
   const notFound = await page.goto("/usasi/does-not-exist/");
@@ -37,7 +37,7 @@ test("assets, navigation, deep links, and 404 work under a base path", async ({ 
 
 test("Jobs links and filters preserve the base path", async ({page}) => {
   await page.goto("/usasi/jobs/?company=openai");
-  await expect(page.getByRole("heading",{level:1})).toHaveText("Jobs");
+  await expect(page.getByRole("heading",{level:1})).toHaveText("Jobs at U.S. AI companies and labs");
   await expect(page.getByLabel("Company or lab",{exact:true})).toHaveValue("openai");
   await page.getByLabel("Company or lab",{exact:true}).selectOption("anthropic");
   await expect(page).toHaveURL(/\/usasi\/jobs\/\?company=anthropic/);

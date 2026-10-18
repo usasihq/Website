@@ -190,6 +190,11 @@ function clip(value: string | undefined | null, max = 240): string | null {
   return s || null;
 }
 
+function closeIso(value?: string | null): string | null {
+  const t = usajobsCloseMs(value);
+  return t === null ? null : new Date(t).toISOString();
+}
+
 function isoDate(value?: string | null): string | null {
   const t = parseUsaJobsInstant(value);
   return t === null ? null : new Date(t).toISOString();
@@ -302,6 +307,8 @@ export function mapUsaJobsItem(item: UsaJobsItem, org: string, c: Careers, now =
     salaries: salaries(d.PositionRemuneration),
     posted_at: isoDate(d.PublicationStartDate ?? d.PositionStartDate),
     posted_date_kind: d.PublicationStartDate || d.PositionStartDate ? "first-published" : null,
+    // The announcement's stated application close date, emitted as JobPosting validThrough.
+    valid_through: closeIso(d.ApplicationCloseDate),
   };
   return { job, html: descriptionHtml(d) };
 }

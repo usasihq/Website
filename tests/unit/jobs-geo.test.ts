@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { citySlug, inLocationScope, isRemoteListing, jobGeography, placeGeography } from "@/lib/jobs/geo";
+import { citySlug, displayLocation, inLocationScope, isRemoteListing, jobGeography, placeGeography } from "@/lib/jobs/geo";
 import { filterJobs, parseJobFilters, serializeJobFilters } from "@/lib/jobs/search";
 
 const states = (location: string, countries: string[] = []) => jobGeography({ locations: [location], countries }).states;
@@ -151,7 +151,31 @@ describe("directory location filters", () => {
     expect(f.where).toBe("remote-us");
     expect(serializeJobFilters(f)).toBe("state=GA&where=remote-us");
     expect(parseJobFilters(new URLSearchParams("state=XX&where=moon")).state).toBe("");
-    expect(parseJobFilters(new URLSearchParams("state=constructor&where=moon")).where).toBe("");
+    expect(parseJobFilters(new URLSearchParams("state=constructor&where=moon")).where).toBe("us-or-unstated");
+  });
+  it("defaults to the U.S. (and location not stated); where=all shows every country", () => {
+    const job = (locations: string[]) => ({ locations, workplace: "unknown", countries: [] as string[] });
+    expect(parseJobFilters(new URLSearchParams("")).where).toBe("us-or-unstated");
+    expect(serializeJobFilters(parseJobFilters(new URLSearchParams("")))).toBe("");
+    const all = parseJobFilters(new URLSearchParams("where=all&company=openai"));
+    expect(all.where).toBe("all");
+    expect(serializeJobFilters(all)).toBe("company=openai&where=all");
+    expect(inLocationScope(job(["Atlanta, GA"]), "us-or-unstated")).toBe(true);
+    expect(inLocationScope(job(["Remote"]), "us-or-unstated")).toBe(true); // no place stated
+    expect(inLocationScope(job(["San Francisco, CA", "London, UK"]), "us-or-unstated")).toBe(true); // names a U.S. place
+    expect(inLocationScope(job(["Aarhus, , Denmark"]), "us-or-unstated")).toBe(false);
+    expect(inLocationScope(job(["Bengaluru, India"]), "us-or-unstated")).toBe(false);
+    expect(inLocationScope(job(["Bengaluru, India"]), "all")).toBe(true);
+  });
+  it("reads the search form's no-JavaScript Where box (w=)", () => {
+    expect(parseJobFilters(new URLSearchParams("q=ml&w=Seattle%2C+WA"))).toMatchObject({ q: "ml", state: "WA", city: "seattle", where: "us-or-unstated" });
+    expect(parseJobFilters(new URLSearchParams("w=Remote+US"))).toMatchObject({ where: "remote-us" });
+    expect(parseJobFilters(new URLSearchParams("w=London"))).toMatchObject({ where: "all", location: "London" });
+    expect(parseJobFilters(new URLSearchParams("w=Texas"))).toMatchObject({ state: "TX" });
+    expect(parseJobFilters(new URLSearchParams("w="))).toEqual(parseJobFilters(new URLSearchParams("")));
+    // Explicit filters win over the typed box.
+    expect(parseJobFilters(new URLSearchParams("state=CA&w=Texas")).state).toBe("CA");
+    expect(serializeJobFilters(parseJobFilters(new URLSearchParams("w=Texas")))).toBe("state=TX");
   });
   it("parses a city only within a state", () => {
     const f = parseJobFilters(new URLSearchParams("state=ca&city=san-francisco"));
@@ -183,5 +207,41 @@ describe("job search queries", () => {
     expect(run("software engineer")).toEqual(["Software Engineering Manager"]);
     expect(run("go")).toEqual(["Go Developer"]); // not "Chicago"
     expect(run("AE")).toEqual(["Account Executive"]);
+  });
+});
+
+describe("displayLocation", () => {
+  it.each([
+    ["Aarhus, , Denmark", "Aarhus, Denmark"],
+    ["London, , United Kingdom", "London, United Kingdom"],
+    ["Seoul, , Korea, republic of", "Seoul, Korea, republic of"],
+    ["San Diego, CALIFORNIA, United States", "San Diego, California, United States"],
+    ["London, GREATER LONDON, United Kingdom", "London, Greater London, United Kingdom"],
+    ["AUSTIN, TX", "Austin, TX"],
+    ["India, Bengaluru", "Bengaluru, India"],
+    ["Netherlands - Amsterdam", "Amsterdam, Netherlands"],
+    ["Israel, Raanana", "Raanana, Israel"],
+    ["United Kingdom - London", "London, United Kingdom"],
+    ["Mexico - Mexico City", "Mexico City, Mexico"],
+    ["Yokneam", "Yokneam"],
+    ["UT MAIN CAMPUS", "UT MAIN CAMPUS"],
+    ["Remote - EMEA, EMEA", "Remote - EMEA, EMEA"],
+    ["Singapore, , Singapore", "Singapore, Singapore"],
+    ["Georgia, Atlanta", "Georgia, Atlanta"],
+    ["San Francisco, CA", "San Francisco, CA"],
+    ["Canada - Remote", "Canada - Remote"],
+  ])("%s → %s", (raw, shown) => {
+    expect(displayLocation(raw)).toBe(shown);
+  });
+  it("never renders an empty part", () => {
+    expect(displayLocation(", , ")).not.toMatch(/, ,/);
+  });
+});
+
+describe("Workday site codes in city names", () => {
+  it("strips the site code and keeps the old city slug working", () => {
+    expect(jobGeography({ locations: ["Longmont-MAX- Office, CO"], countries: [] }).cities).toEqual(["CO|Longmont"]);
+    expect(jobGeography({ locations: ["Winston-Salem, NC"], countries: [] }).cities).toEqual(["NC|Winston-Salem"]);
+    expect(parseJobFilters(new URLSearchParams("state=CO&city=longmont-max")).city).toBe("longmont");
   });
 });

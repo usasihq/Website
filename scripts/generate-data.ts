@@ -14,6 +14,7 @@ import path from "node:path";
 import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
 import { jobsDirectoryData } from "../lib/jobs/directory-data";
+import { encodeJobs } from "../lib/jobs/slim";
 import { jobLandingSearchEntries } from "../lib/jobs/landing-links";
 import { EMPTY_WARN_DATASET, layoffSearchEntries, readLayoffs, writeLayoffs } from "../lib/jobs/layoffs";
 import { mergeLayoffRefresh } from "../lib/jobs/layoffs-refresh";
@@ -72,9 +73,11 @@ fs.writeFileSync(
   path.join(outDir, "search-index.json"),
   JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog), ...layoffSearchEntries(catalog)] }) + "\n",
 );
-// Full current Jobs list, loaded by the /jobs/ page after first paint (the page itself embeds only the first 30).
+// Current Jobs list. jobs.json is the compact form the /jobs/ page loads after first paint (the page
+// itself embeds only the first 30; lib/jobs/slim.ts); jobs-full.json has every field, for reuse.
 const jobs = jobsDirectoryData(catalog);
-fs.writeFileSync(path.join(outDir, "jobs.json"), JSON.stringify({ build_at: buildAt, jobs: jobs.items }) + "\n");
+fs.writeFileSync(path.join(outDir, "jobs.json"), JSON.stringify(encodeJobs(jobs.items, buildAt)) + "\n");
+fs.writeFileSync(path.join(outDir, "jobs-full.json"), JSON.stringify({ build_at: buildAt, jobs: jobs.items }) + "\n");
 // Every cited source, with the published records that cite it (loaded by /sources/).
 fs.writeFileSync(path.join(outDir, "sources.json"), JSON.stringify({ build_at: buildAt, entries: sourceLibrary(catalog) }) + "\n");
 // OpenSearch description, so browsers can add site search (linked from every page's <head>).

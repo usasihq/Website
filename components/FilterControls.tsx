@@ -8,11 +8,14 @@ export function SearchField({
   value,
   onChange,
   placeholder,
+  name,
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  /** Form field name, so a search form also works as a plain GET form. */
+  name?: string;
 }) {
   const id = useId();
   return (
@@ -25,6 +28,7 @@ export function SearchField({
         <input
           id={id}
           type="search"
+          name={name}
           className="field pl-9"
           value={value}
           placeholder={placeholder}
@@ -100,7 +104,7 @@ export function ResultSummary({
   return (
     <>
       <p className="meta" aria-hidden="true">
-        {pending ? `Loading all ${noun[1]}…` : `Showing ${visible} of ${total} ${total === 1 ? noun[0] : noun[1]}`}
+        {pending ? `Loading all ${noun[1]}…` : `Showing ${visible.toLocaleString("en-US")} of ${total.toLocaleString("en-US")} ${total === 1 ? noun[0] : noun[1]}`}
       </p>
       <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {announce}

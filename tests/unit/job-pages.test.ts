@@ -98,6 +98,14 @@ describe("JobPosting data", () => {
     });
   });
 
+  it("prefers the feed's salary over a range read from the description, and states validThrough only when the source gives it", () => {
+    const text = { min: 150000, max: 200000, currency: "USD", period: "year" as const, label: "Level 1", source_status: "employer-description" as const };
+    const feed = { min: 210000, max: 260000, currency: "USD", period: "year" as const, label: null, source_status: "employer-provided" as const };
+    expect((jobPostingLd(page(job({ salaries: [text, feed] })))!.baseSalary as { value: { minValue: number } }).value.minValue).toBe(210000);
+    expect((jobPostingLd(page(job({ salaries: [text] })))!.baseSalary as { value: { minValue: number } }).value.minValue).toBe(150000);
+    expect(jobPostingLd(page(job()))).not.toHaveProperty("validThrough");
+    expect(jobPostingLd(page(job({ valid_through: "2026-12-01T23:59:59.999Z" })))!.validThrough).toBe("2026-12-01T23:59:59.999Z");
+  });
   it("marks U.S.-only remote work as telecommute, and is omitted when it cannot be complete", () => {
     const remote = jobPostingLd(page(job({ locations: ["Remote - US"], workplace: "remote", remote: true })))!;
     expect(remote.jobLocationType).toBe("TELECOMMUTE");
@@ -163,5 +171,16 @@ describe("job page HTML", () => {
       employmentType: "FULL_TIME",
     });
     expect(block).not.toHaveProperty("validThrough");
+  });
+});
+
+describe("closed job addresses on the 404 page", () => {
+  it("reads the employer and title words, and ignores other addresses", async () => {
+    const { missingJob } = await import("@/components/JobNotFound");
+    expect(missingJob("/jobs/at/anthropic/research-engineer-interpretability-1a2b3c4/")).toEqual({ org: "anthropic", words: "research engineer interpretability" });
+    expect(missingJob("/jobs/at/anthropic/does-not-exist-zzz/")).toEqual({ org: "anthropic", words: "does not exist zzz" });
+    expect(missingJob("/jobs/at/anthropic/")).toBeNull();
+    expect(missingJob("/companies/anthropic/")).toBeNull();
+    expect(missingJob("/jobs/in/california/")).toBeNull();
   });
 });

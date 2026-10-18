@@ -11,6 +11,9 @@ import path from "node:path";
 import { getCatalog } from "../lib/catalog";
 import { renderJobPage, type PageShell } from "../lib/jobs/job-page-html";
 import { jobPages, similarJobs } from "../lib/jobs/job-pages";
+import { CITY_SLUG_ALIASES } from "../lib/jobs/geo";
+import { stateSlug } from "../lib/places";
+import { absoluteUrl, asset } from "../lib/paths";
 
 const out = path.join(process.cwd(), "out");
 const template = fs.readFileSync(path.join(out, "jobs/index.html"), "utf8");
@@ -35,3 +38,39 @@ for (const p of pages) {
   if (html.includes('"@type":"JobPosting"')) withPosting++;
 }
 console.log(`job-pages: ${pages.length} pages written (${withDescription} with the employer's description, ${withPosting} with JobPosting data).`);
+
+// Sitemaps: Next writes the site's other pages to out/sitemap.xml (app/sitemap.ts). That file becomes
+// /sitemap-pages.xml, job pages with the employer's description go into /sitemaps/jobs-<n>.xml
+// (10,000 each), and /sitemap.xml becomes the index of all of them (robots.txt already names it).
+const xmlEsc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const pagesMap = path.join(out, "sitemap.xml");
+if (!fs.readFileSync(pagesMap, "utf8").includes("<urlset")) throw new Error("job-pages: out/sitemap.xml is not the page sitemap");
+fs.renameSync(pagesMap, path.join(out, "sitemap-pages.xml"));
+const listed = pages.filter((p) => p.description);
+const CHUNK = 10000;
+fs.mkdirSync(path.join(out, "sitemaps"), { recursive: true });
+const children = [absoluteUrl("/sitemap-pages.xml")];
+for (let i = 0, n = 0; i < listed.length; i += CHUNK, n++) {
+  const urls = listed.slice(i, i + CHUNK).map((p) => `<url>\n<loc>${xmlEsc(absoluteUrl(p.path))}</loc>\n<lastmod>${(p.job.posted_at ?? p.job.first_seen).slice(0, 10)}</lastmod>\n</url>`);
+  fs.writeFileSync(path.join(out, `sitemaps/jobs-${n}.xml`), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
+  children.push(absoluteUrl(`/sitemaps/jobs-${n}.xml`));
+}
+fs.writeFileSync(pagesMap, `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${children.map((c) => `<sitemap><loc>${xmlEsc(c)}</loc></sitemap>`).join("\n")}\n</sitemapindex>\n`);
+console.log(`job-pages: sitemap index with ${children.length} sitemaps (${listed.length} job pages in ${children.length - 1} files).`);
+
+// Renamed city pages: the old address points to the new one (no script; a plain refresh and link).
+for (const [from, to] of Object.entries(CITY_SLUG_ALIASES)) {
+  const [code, oldSlug] = from.split("|");
+  const target = `/jobs/in/${stateSlug(code)}/${to.slice(3)}/`;
+  const dir = path.join(out, `jobs/in/${stateSlug(code)}/${oldSlug}`);
+  if (!fs.existsSync(path.join(out, target, "index.html")) || fs.existsSync(path.join(dir, "index.html"))) continue;
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "index.html"), `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>This page moved</title><meta name="robots" content="noindex, follow"/>
+<link rel="canonical" href="${absoluteUrl(target)}"/><meta http-equiv="refresh" content="0; url=${asset(target)}"/>
+${shell.links}</head>
+<body><main class="container-page py-16"><p>This page moved to <a class="link" href="${asset(target)}">${target}</a>.</p></main></body></html>
+`);
+  console.log(`job-pages: ${oldSlug} now points to ${target}`);
+}

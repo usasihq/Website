@@ -170,7 +170,7 @@ test.describe("static hosting behavior", () => {
   });
 
   test("drafts and non-eligible records have no page and are not in the sitemap", async ({ request }) => {
-    const sitemap = await (await request.get("/sitemap.xml")).text();
+    const sitemap = await (await request.get("/sitemap-pages.xml")).text();
     const hidden = [
       ...orgs.filter((o) => !isActive(o) && o.publication_status !== "archived").map((o) => `/companies/${o.slug}/`),
       ...artifacts.filter((a) => !isActive(a) && a.publication_status !== "archived").map((a) => `/open/${a.slug}/`),
@@ -187,7 +187,7 @@ test.describe("static hosting behavior", () => {
   test("every sitemap page carries Support Us (except the kids section) and the footer disclaimer", async ({ request }) => {
     // One request per sitemap page (500+), so allow more than the default 30 s.
     test.setTimeout(180_000);
-    const sitemap = await (await request.get("/sitemap.xml")).text();
+    const sitemap = await (await request.get("/sitemap-pages.xml")).text();
     const all = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
     expect(all.length).toBeGreaterThan(10);
     // Thousands of job pages share one template: check every other page and an even sample of 60 of them.
@@ -251,11 +251,12 @@ test.describe("contact and profiles", () => {
     await page.goto("/");
     const contact = page.getByRole("list", { name: "USASI contact and profiles" });
     await expect(contact.getByRole("link", { name: "usasi@usasihq.com" })).toHaveAttribute("href", "mailto:usasi@usasihq.com");
-    for (const href of ["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ"]) {
+    for (const href of ["https://github.com/ShadowfetchStudio", "https://x.com/Shadowfetch", "https://www.youtube.com/@USASIHQ",
+      "https://huggingface.co/usasihq", "https://www.linkedin.com/in/robert-corbin-239761410/", "https://apps.apple.com/ie/developer/robert-corbin/id1890247992"]) {
       await expect(contact.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
-    // Exactly those three profiles, nothing retired.
-    for (const host of ["huggingface.co/usasihq", "x.com/usasihq", "bsky.app/profile", "truthsocial.com"]) {
+    // Only those profiles (owner decisions 2026-10-12 and 2026-10-18), nothing retired.
+    for (const host of ["x.com/usasihq", "bsky.app/profile", "truthsocial.com"]) {
       await expect(page.locator(`a[href*="${host}"]`)).toHaveCount(0);
     }
     // No third-party embeds or scripts.

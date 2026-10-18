@@ -49,13 +49,24 @@ const CITY_STATE: Record<string, [string, string]> = {
 /** "San Francisco Bay Area" and "Bay Area" name California but no single city. */
 const BAY_AREA = /^(?:san francisco )?bay area$/i;
 
-/** A place part as a city: no "Any Office"/"USA:" prefix and no "Office"/"HQ" suffix. */
+/**
+ * A place part as a city: no "Any Office"/"USA:" prefix, no "Office"/"HQ" suffix, and no
+ * Workday site code after a hyphen ("Longmont-MAX- Office" → "Longmont"; "Winston-Salem" stays).
+ */
 const cityText = (part: string) =>
   part
     .replace(/^(?:any office|usa?|u\.s\.(?:a\.)?)\s*:?\s+/i, "")
     .replace(/\s+(?:office|offices|hq|headquarters|campus)$/i, "")
+    .replace(/-[A-Z]{2,5}-?$/, "")
     .replace(/\s+/g, " ")
     .trim();
+
+/**
+ * City page slugs that changed when city names were cleaned up, old → new ("ST|slug"). The old
+ * address keeps working: the build writes a redirect page there, and the directory reads the old
+ * slug as the new one.
+ */
+export const CITY_SLUG_ALIASES: Record<string, string> = { "CO|longmont-max": "CO|longmont" };
 
 /** Text in a city position that is not a city ("Remote, CA", "Multiple Locations, TX"). */
 const NOT_A_CITY = /^(?:remote|hybrid|in-office|on-?site|distributed|anywhere|multiple(?: locations)?|various|united states|usa?|u\.s\.(?:a\.)?)?$|\d/i;
@@ -294,6 +305,11 @@ export function jobGeography(job: GeoJob): JobGeo {
   return result;
 }
 
+/** Seeds the cache with geography computed at build time (the compact /data/jobs.json carries it). */
+export function primeJobGeography(job: GeoJob, geo: JobGeo): void {
+  cache.set(job, geo);
+}
+
 /** "U.S. locations only": names the United States or a state, and nothing outside it. */
 export const isUSOnly = (job: GeoJob) => {
   const g = jobGeography(job);
@@ -305,16 +321,55 @@ export const REMOTE_LOCATION = /\bremote\b/i;
 export const isRemoteListing = (job: { workplace: string; locations: string[] }) =>
   job.workplace === "remote" || job.locations.some((l) => REMOTE_LOCATION.test(l));
 
-/** Location scopes offered by the Jobs directory (`where=`) and used by the remote landing pages. */
-export const LOCATION_SCOPES = ["us", "remote", "remote-us"] as const;
+/**
+ * Location scopes offered by the Jobs directory (`where=`) and used by the remote landing pages.
+ * "us-or-unstated" is the directory's default: listings that name a U.S. place, or name no place
+ * at all that can be read ("Remote", "Hybrid"). Only listings located solely outside the United
+ * States are left out; "all" shows every listing.
+ */
+export const LOCATION_SCOPES = ["us-or-unstated", "us", "remote", "remote-us", "all"] as const;
 export type LocationScope = (typeof LOCATION_SCOPES)[number];
+export const DEFAULT_LOCATION_SCOPE: LocationScope = "us-or-unstated";
 export const LOCATION_SCOPE_LABELS: Record<LocationScope, string> = {
+  "us-or-unstated": "U.S. (and location not stated)",
   us: "U.S. locations only",
   remote: "Remote, any location",
   "remote-us": "Remote, U.S. locations only",
+  all: "All countries",
 };
 export function inLocationScope(job: GeoJob & { workplace: string }, scope: LocationScope): boolean {
+  if (scope === "all") return true;
+  if (scope === "us-or-unstated") {
+    const g = jobGeography(job);
+    return g.us || !g.outside;
+  }
   if (scope === "us") return isUSOnly(job);
   if (scope === "remote") return isRemoteListing(job);
   return isRemoteListing(job) && isUSOnly(job);
+}
+
+/** Country names as plain text, for reordering "Israel, Tel Aviv" in displayLocation. */
+const COUNTRY_NAMES = new Set(COUNTRIES.map((c) => c.replace(/\(\?<?[!=][^)]*\)/g, "")));
+/** Short all-caps region names that are not words to recase. */
+const KEEP_CAPS = new Set(["EMEA", "EMEIA", "APAC", "APJC", "LATAM", "AMER", "AMERICAS", "NORAM", "DACH", "CEMEA"]);
+const titleCase = (s: string) => s.toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (_, a: string, b: string) => a + b.toUpperCase());
+
+/**
+ * An employer-supplied location tidied for display only; matching and filters
+ * keep the raw text. Empty parts are dropped ("Aarhus, , Denmark" → "Aarhus,
+ * Denmark"), all-capital place names beside other parts are recased ("San
+ * Diego, CALIFORNIA, United States" → "San Diego, California, United States";
+ * "AUSTIN, TX" → "Austin, TX"), and a country given first is moved last
+ * ("India, Bengaluru" and "Netherlands - Amsterdam" → "Bengaluru, India").
+ * Nothing is added: a place without a country ("Yokneam") stays as written.
+ */
+export function displayLocation(location: string): string {
+  let parts = location.split(",").map((p) => p.trim()).filter(Boolean);
+  if (parts.length > 1) {
+    parts = parts.map((p) => (/^[A-Z][A-Z .'-]{3,}$/.test(p) && !KEEP_CAPS.has(p) && p.replace(/[^A-Z]/g, "").length >= 4 ? titleCase(p) : p));
+  }
+  let t = parts.join(", ");
+  const m = /^([A-Za-z][A-Za-z .'-]*?)\s*(?:,|\s[-–]\s)\s*([^,]+)$/.exec(t);
+  if (m && COUNTRY_NAMES.has(m[1].toLowerCase()) && !COUNTRY_NAMES.has(m[2].trim().toLowerCase()) && !/\bremote\b/i.test(m[2])) t = `${m[2].trim()}, ${m[1]}`;
+  return t || location.replace(/[\s,]+/g, " ").trim();
 }

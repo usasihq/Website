@@ -81,6 +81,7 @@ const required = [
   "index.html",
   "404.html",
   "sitemap.xml",
+  "sitemap-pages.xml",
   "robots.txt",
   "_headers",
   "og.png",
@@ -119,7 +120,20 @@ const readDir = (sub) => {
     .filter((n) => n.endsWith(".yml") || n.endsWith(".yaml"))
     .map((n) => YAML.parse(fs.readFileSync(path.join(dir, n), "utf8")));
 };
-const sitemap = fs.existsSync(path.join(out, "sitemap.xml")) ? fs.readFileSync(path.join(out, "sitemap.xml"), "utf8") : "";
+// /sitemap.xml is an index (scripts/job-pages.ts); the checks below read every sitemap it lists.
+const BASE_PATH_RE = new RegExp(`^${(process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`);
+const sitemapIndex = fs.existsSync(path.join(out, "sitemap.xml")) ? fs.readFileSync(path.join(out, "sitemap.xml"), "utf8") : "";
+const sitemapFiles = [...sitemapIndex.matchAll(/<sitemap><loc>([^<]+)<\/loc><\/sitemap>/g)].map((m) => new URL(m[1]).pathname.replace(BASE_PATH_RE, "").replace(/^\//, ""));
+if (!sitemapIndex.includes("<sitemapindex") || !sitemapFiles.includes("sitemap-pages.xml")) failures.push("sitemap.xml is not a sitemap index listing sitemap-pages.xml");
+let sitemap = "";
+for (const file of sitemapFiles) {
+  const full = path.join(out, file);
+  if (!fs.existsSync(full)) { failures.push(`sitemap index lists missing ${file}`); continue; }
+  const text = fs.readFileSync(full, "utf8");
+  const urls = (text.match(/<loc>/g) ?? []).length;
+  if (urls > 50000 || Buffer.byteLength(text) > 50 * 1024 * 1024) failures.push(`${file} exceeds the sitemap limits (${urls} URLs)`);
+  sitemap += text;
+}
 const catalogJson = fs.existsSync(path.join(out, "data/catalog.json")) ? JSON.parse(fs.readFileSync(path.join(out, "data/catalog.json"), "utf8")) : null;
 const searchJson = fs.existsSync(path.join(out, "data/search-index.json")) ? JSON.parse(fs.readFileSync(path.join(out, "data/search-index.json"), "utf8")) : null;
 

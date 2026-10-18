@@ -55,7 +55,7 @@ test("the full list in the directory is the same set of listings", async ({ page
   await loaded;
   await expect(page).toHaveURL(/\/jobs\/\?state=CA&sort=newest$/);
   await expect(page.getByLabel("U.S. state named in location", { exact: true })).toHaveValue("CA");
-  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  await expect(page.getByText(new RegExp(`^Showing [\\d,]+ of ${count.toLocaleString("en-US")} matching positions?$`))).toBeVisible();
 });
 
 test("a city page sits under its state, and its full list in the directory is the same set", async ({ page }) => {
@@ -79,7 +79,7 @@ test("a city page sits under its state, and its full list in the directory is th
   await loaded;
   await expect(page).toHaveURL(/\/jobs\/\?state=CA&city=san-francisco&sort=newest$/);
   await expect(page.getByTestId("jobs-city-filter")).toContainText("City: San Francisco, CA");
-  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  await expect(page.getByText(new RegExp(`^Showing [\\d,]+ of ${count.toLocaleString("en-US")} matching positions?$`))).toBeVisible();
   await page.getByRole("button", { name: "Show all of California" }).click();
   await expect(page).toHaveURL(/\/jobs\/\?state=CA&sort=newest$/);
 });
@@ -109,7 +109,7 @@ test("landing pages are linked from /jobs/ and /places/, listed in the sitemap, 
   await expect(page.getByTestId("browse-roles").locator(`a[href="${FDE}"]`)).toBeVisible();
   await page.goto("/places/california/");
   await expect(page.locator('main a[href="/jobs/in/california/"]')).toBeVisible();
-  const sitemap = await (await request.get("/sitemap.xml")).text();
+  const sitemap = await (await request.get("/sitemap-pages.xml")).text();
   for (const path of ["/jobs/in/california/", "/jobs/in/california/san-francisco/", FDE, "/jobs/layoffs/", "/jobs/layoffs/california/", ...TOPICS]) expect(sitemap).toContain(`${path}</loc>`);
   expect(sitemap).not.toContain("?state=");
   const index = await (await request.get("/data/search-index.json")).json();
@@ -168,9 +168,9 @@ test("a role page answers first, lists employers, and matches the directory", as
   const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
   await page.getByRole("link", { name: /^See all [\d,]+ in the Jobs directory$|^Filter these in the Jobs directory$/ }).click();
   await loaded;
-  await expect(page).toHaveURL(/\/jobs\/\?role=forward-deployed-engineer&sort=newest$/);
+  await expect(page).toHaveURL(/\/jobs\/\?role=forward-deployed-engineer&where=all&sort=newest$/);
   await expect(page.getByTestId("jobs-role-filter")).toContainText("Forward Deployed Engineer");
-  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  await expect(page.getByText(new RegExp(`^Showing [\\d,]+ of ${count.toLocaleString("en-US")} matching positions?$`))).toBeVisible();
   expect((await request.get("/jobs/role/not-a-role/")).status()).toBe(404);
 });
 
@@ -212,14 +212,22 @@ test("an employer's jobs page is shareable and lists that employer's listings", 
   const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
   await page.getByRole("link", { name: /^See all [\d,]+ in the Jobs directory$|^Filter these in the Jobs directory$/ }).click();
   await loaded;
-  await expect(page).toHaveURL(new RegExp(`/jobs/\\?company=${slug}&sort=newest$`));
+  // Employer pages count every country, so their directory link includes jobs outside the U.S.
+  await expect(page).toHaveURL(new RegExp(`/jobs/\\?company=${slug}&where=all&sort=newest$`));
   await expect(page.getByTestId("jobs-company-page").locator(`a[href="/jobs/at/${slug}/"]`)).toBeVisible();
 });
 
-test("the federal AI jobs page is linked from /jobs/, names USAJOBS.gov, and carries collection markup", async ({ page }) => {
-  await page.goto("/jobs/");
-  await expect(page.getByTestId("browse-employers").locator('a[href="/jobs/at/federal/"]')).toBeVisible();
+test("the federal AI jobs page is linked from /jobs/ once it has listings, names USAJOBS.gov, and carries collection markup", async ({ page }) => {
   await page.goto("/jobs/at/federal/");
+  const listed = (await countOnPage(page)) > 0;
+  await page.goto("/jobs/");
+  await expect(page.getByTestId("browse-employers").locator('a[href="/jobs/at/federal/"]')).toHaveCount(listed ? 1 : 0);
+  await page.goto("/jobs/at/federal/");
+  // While the USAJOBS source has never run (it needs an API key), the page says so and stays out of search engines.
+  if (!listed) {
+    await expect(page.getByTestId("federal-not-collected")).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  }
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Federal AI jobs");
   await expect(page.locator("main")).toContainText("Listing data comes from USAJOBS.gov.");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/at\/federal\/$/);
@@ -272,6 +280,9 @@ test("search understands abbreviations, offers popular searches, and narrows by 
   const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
   await page.goto("/jobs/");
   await loaded;
+  // Phones keep popular searches behind a disclosure.
+  const more = page.locator("summary", { hasText: "Popular searches" });
+  if (await more.isVisible()) await more.click();
   await page.getByRole("group", { name: "Popular searches" }).getByRole("button", { name: "Machine learning" }).click();
   await expect(page).toHaveURL(/q=Machine\+learning/);
   const first = page.locator("main article h2").first();

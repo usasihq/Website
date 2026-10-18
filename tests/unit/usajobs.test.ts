@@ -101,6 +101,8 @@ describe("USAJOBS mapper", () => {
     expect(ai.posted_at).toBe("2026-10-01T00:00:00.000Z");
     expect(ai.posted_date_kind).toBe("first-published");
     expect(ai.source_url).toBe("https://data.usajobs.gov/api/search");
+    // The stated application close date is kept for JobPosting validThrough (a date-only close runs through that UTC day).
+    expect(ai.valid_through).toBe("2026-12-01T23:59:59.999Z");
     const hourly = rows.find((r) => r.job.source_job_id === "33001001")!.job;
     expect(hourly.title).toBe("Data Scientist");
     expect(hourly.workplace).toBe("remote");

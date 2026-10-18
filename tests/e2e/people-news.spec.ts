@@ -9,8 +9,8 @@ import { expect, test } from "@playwright/test";
 const jsonLd = async (page: import("@playwright/test").Page) => (await page.locator('script[type="application/ld+json"]').allTextContents()).join("\n");
 /** The visible "Showing N of M news items" line. */
 const summaryCount = async (page: import("@playwright/test").Page) => {
-  const text = (await page.getByText(/^Showing \d+ of \d+ news items?$/).first().textContent()) ?? "";
-  return Number(/^Showing (\d+)/.exec(text)?.[1] ?? "NaN");
+  const text = (await page.getByText(/^Showing [\d,]+ of [\d,]+ news items?$/).first().textContent()) ?? "";
+  return Number((/^Showing ([\d,]+)/.exec(text)?.[1] ?? "NaN").replace(/,/g, ""));
 };
 
 test("the People directory lists profiles and filters them by group and organization", async ({ page }) => {

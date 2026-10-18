@@ -31,12 +31,18 @@ Populated from the employer feed and catalog, never guessed:
 - `jobLocation` for U.S. city/state addresses the location text actually names
 - `jobLocationType: TELECOMMUTE` and `applicantLocationRequirements` only when
   `workplace` is `remote` (100% remote) and the listing is U.S.-only
-- `baseSalary` when the employer disclosed a range
+- `baseSalary` when the employer disclosed a range: the feed's salary first; when
+  the feed gives none, a U.S.-dollar range stated in the employer's description
+  (`source_status: "employer-description"`, `lib/jobs/pay-text.ts`; the page says
+  so next to the figure)
+- `validThrough` only for USAJOBS listings, from the announcement's
+  `ApplicationCloseDate` (stored as `valid_through`)
 
 Omitted because the feeds do not supply them:
 
-- `validThrough` (no expiration date). Stale jobs are dropped: their pages are
-  not generated, so the markup is gone after the next refresh and deploy.
+- `validThrough` for employer feeds (no expiration date). Stale jobs are dropped:
+  their pages are not generated, so the markup is gone after the next refresh and
+  deploy, and the Indexing API gets `URL_DELETED`.
 - `hiringOrganization.logo` (the site uses monograms, not employer logos)
 - Street address and postal code (location text is city/state, not a street)
 - `educationRequirements` / `experienceRequirements` (not structured in feeds)

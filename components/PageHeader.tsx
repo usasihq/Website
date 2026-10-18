@@ -58,11 +58,12 @@ export function PageHeader({
 }) {
   return (
     <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
-      <div className={`container-page ${compact ? "py-6" : "pb-10 pt-10 sm:pt-14"}`}>
+      <div className={`container-page ${compact ? "py-4 sm:py-8" : "pb-10 pt-10 sm:pt-14"}`}>
         {crumbs ? <Breadcrumbs items={crumbs} current={current} /> : null}
-        {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-        <h1 className="mt-2 text-3xl font-semibold text-text sm:text-4xl">{title}</h1>
-        {description ? <div className={`${compact ? "mt-2 text-base" : "mt-4 text-lg"} max-w-3xl text-muted`}>{description}</div> : null}
+        {eyebrow ? <p className={`eyebrow${compact ? " hidden sm:block" : ""}`}>{eyebrow}</p> : null}
+        <h1 className={`font-semibold text-text sm:text-4xl ${compact ? "text-[1.75rem] leading-tight sm:mt-2" : "mt-2 text-3xl"}`}>{title}</h1>
+        {/* Compact headers (the Jobs search) keep the first results on a phone's first screen; the description shows from the sm breakpoint. */}
+        {description ? <div className={`${compact ? "mt-2 hidden text-base sm:block" : "mt-4 text-lg"} max-w-3xl text-muted`}>{description}</div> : null}
         {children}
       </div>
     </header>
