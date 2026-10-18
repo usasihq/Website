@@ -9,6 +9,7 @@
  *
  * Outputs (committed to the repository):
  *   public/og-open.png   Open Models & Tools (/open/ and its record pages)
+ *   public/og-jobs.png   Jobs (/jobs/), in the light site theme
  *
  * Alt text for each card lives in lib/metadata.ts; update it when a card changes.
  */
@@ -77,6 +78,50 @@ p { margin-top: 28px; font-size: 30px; line-height: 1.35; color: #b7d7ff; max-wi
   <div class="url">${card.url}</div>
 </div></body></html>`;
 
+
+// The Jobs card uses the light theme (soft white, navy type, gold top bar, red
+// eyebrow) so a shared /jobs/ link looks unlike the homepage and Open cards.
+// It shows how the board works, not counts, so it never goes out of date.
+const jobsHtml = () => `<!doctype html>
+<html><head><meta charset="utf-8"><style>
+@font-face { font-family: "Instrument Sans"; src: url("${fontUrl("InstrumentSans-latin-wght.woff2")}") format("woff2"); font-weight: 400 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("${fontUrl("IBMPlexMono-latin-500.woff2")}") format("woff2"); font-weight: 500; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 630px; background: #F7F8FA; overflow: hidden; }
+.card { position: relative; width: 1200px; height: 630px; color: #24374A; font-family: "Instrument Sans", sans-serif; }
+.top { position: absolute; left: 0; right: 0; top: 0; height: 12px; background: #D3A552; }
+.dots { position: absolute; inset: 0; opacity: .55; background-image: radial-gradient(#DAE2E9 1.6px, transparent 1.6px); background-size: 28px 28px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 35%, #000 100%); }
+.content { position: absolute; left: 76px; top: 86px; width: 560px; }
+.eyebrow { display: flex; align-items: center; gap: 14px; font-size: 22px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #9E3F46; }
+.eyebrow::before { content: ""; width: 36px; height: 3px; background: #B9545A; }
+h1 { margin-top: 26px; font-size: 88px; line-height: 1.0; font-weight: 700; letter-spacing: -0.025em; color: #1B2A38; }
+p { margin-top: 26px; font-size: 29px; line-height: 1.38; color: #41566B; }
+.url { position: absolute; left: 76px; bottom: 52px; font-family: "IBM Plex Mono", monospace; font-size: 20px; color: #5B6B7C; }
+.search { position: absolute; right: 64px; top: 92px; width: 452px; padding: 18px 20px; border-radius: 14px; background: #fff; border: 1.5px solid #DAE2E9;
+  box-shadow: 0 8px 24px rgba(36,55,74,.09); display: flex; align-items: center; gap: 14px; font-size: 25px; color: #5B6B7C; }
+.glass { flex: none; width: 24px; height: 24px; border: 3.5px solid #2D6DAA; border-radius: 50%; position: relative; }
+.glass::after { content: ""; position: absolute; width: 4px; height: 11px; background: #2D6DAA; right: -7px; bottom: -9px; transform: rotate(-45deg); border-radius: 2px; }
+.btn { margin-left: auto; padding: 9px 16px; border-radius: 10px; background: #2D6DAA; color: #fff; font-size: 21px; font-weight: 700; }
+.panel { position: absolute; right: 64px; top: 196px; width: 452px; padding: 22px 26px 12px; border-radius: 14px; background: #fff; border: 1.5px solid #DAE2E9;
+  border-top: 4px solid #B9545A; box-shadow: 0 8px 24px rgba(36,55,74,.07); }
+.panel h2 { font-size: 17px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #9E3F46; margin-bottom: 6px; }
+.row { display: flex; align-items: center; gap: 16px; padding: 12px 0; font-size: 25px; font-weight: 600; color: #24374A; border-top: 1px solid #E8EEF3; }
+.row:first-of-type { border-top: 0; }
+.chip { flex: none; width: 26px; height: 26px; border-radius: 8px; background: #E8EEF3; border: 1.5px solid #2D6DAA; position: relative; }
+.chip::after { content: ""; position: absolute; left: 8px; top: 3px; width: 6px; height: 13px; border: solid #2D6DAA; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+</style></head><body><div class="card">
+  <div class="dots"></div><div class="top"></div>
+  <div class="content">
+    <div class="eyebrow">USASI Jobs</div>
+    <h1>Jobs in<br>American AI</h1>
+    <p>Open roles at U.S. AI companies, labs, and research universities. Apply with the employer.</p>
+  </div>
+  <div class="search"><span class="glass"></span>Title, skill, or place<span class="btn">Search</span></div>
+  <div class="panel"><h2>Filter by</h2>${["Role and experience level", "City, state, or remote", "Pay range", "Employer"].map((r) => `<div class="row"><span class="chip"></span>${r}</div>`).join("")}</div>
+  <div class="url">unitedstatesofamericasuperintelligence.com/jobs/</div>
+</div></body></html>`;
+
 const browser = await chromium.launch();
 try {
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
@@ -88,6 +133,11 @@ try {
     await sharp(shot).png({ compressionLevel: 9, palette: true, quality: 90, effort: 10 }).toFile(out);
     console.log(`${card.file.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} KiB`);
   }
+  await page.setContent(jobsHtml(), { waitUntil: "load" });
+  await page.evaluate(() => document.fonts.ready);
+  const jobsOut = path.join(root, "public", "og-jobs.png");
+  await sharp(await page.screenshot({ type: "png" })).png({ compressionLevel: 9, palette: true, quality: 90, effort: 10 }).toFile(jobsOut);
+  console.log(`og-jobs.png    ${(fs.statSync(jobsOut).size / 1024).toFixed(0).padStart(5)} KiB`);
 } finally {
   await browser.close();
 }
