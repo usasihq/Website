@@ -13,7 +13,7 @@ import { stateSlug, US_STATES } from "../places";
 import { readJobsForBuild } from "./load";
 import type { FeedHealth } from "./schema";
 import { cityKey, cityLabel, jobGeography, stateDisplayName } from "./geo";
-import { DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
+import { ALL_JOB_FILTERS, DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
 import { JOB_ROLES, type JobRole } from "./roles";
 import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, NO_PROGRAMMING_RULE } from "./tracks";
 
@@ -347,7 +347,8 @@ function build(
   city: LandingPage["city"] = null,
   organization: LandingPage["organization"] = null,
 ): LandingPage {
-  const filters: JobFilters = { ...DEFAULT_JOB_FILTERS, ...def.filters, sort: "newest" };
+  // Every country unless the page picks a scope; a state already implies the U.S. (the directory's default covers it).
+  const filters: JobFilters = { ...(def.filters.state ? DEFAULT_JOB_FILTERS : ALL_JOB_FILTERS), ...def.filters, sort: "newest" };
   const listings = filterJobs(src.items, src.feeds, filters, src.now);
   const byOrg = new Map<string, number>();
   for (const j of listings) byOrg.set(j.organization_slug, (byOrg.get(j.organization_slug) ?? 0) + 1);
@@ -406,7 +407,7 @@ function build(
  */
 export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: FeedHealth[], now: number): JobsLandingData {
   const src: Source = { items, feeds, now };
-  const current = filterJobs(items, feeds, DEFAULT_JOB_FILTERS, now);
+  const current = filterJobs(items, feeds, ALL_JOB_FILTERS, now);
   const stateCounts: Record<string, number> = {};
   const cityCounts: Record<string, number> = {};
   // Each city's most common spelling among its listings ("St. Louis" over "St Louis").

@@ -14,7 +14,7 @@ import { siteConfig, supportState } from "../site-config";
 import type { Description, Run } from "./description";
 import type { JobPage } from "./job-pages";
 import { jobPostingLd, jobSnippet } from "./job-pages";
-import { DEFAULT_JOB_FILTERS, serializeJobFilters } from "./search";
+import { ALL_JOB_FILTERS, serializeJobFilters } from "./search";
 import { JOB_ROLES } from "./roles";
 
 export type PageShell = {
@@ -132,7 +132,7 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
   if (job.posted_at) facts.push([job.posted_date_kind === "last-published" ? "Last published" : "Published", `<time datetime="${esc(job.posted_at)}">${formatDate(job.posted_at.slice(0, 10))}</time>`]);
   facts.push(["First listed on USASI", `<time datetime="${esc(job.first_seen)}">${formatDate(job.first_seen.slice(0, 10))}</time>`]);
   const sameDepartment = job.department
-    ? `/jobs/?${serializeJobFilters({ ...DEFAULT_JOB_FILTERS, company: org.slug, department: job.department, sort: "newest" })}`
+    ? `/jobs/?${serializeJobFilters({ ...ALL_JOB_FILTERS, company: org.slug, department: job.department, sort: "newest" })}`
     : null;
   const socials = siteConfig.socials.map((s) => `<li>${external(s.url, esc(s.label))}</li>`).join("");
   const nav = [

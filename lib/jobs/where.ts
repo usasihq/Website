@@ -2,7 +2,9 @@
  * The Jobs search box's "Where" field: plain words become the directory's
  * location filters. "Remote" and "Remote US" pick the remote scopes, a state
  * name or code picks the state, "City, ST" picks a city in that state, and
- * anything else is matched against the employer-supplied location text.
+ * anything else is matched against the employer-supplied location text, in every
+ * country (the directory's default shows U.S. listings only, which would hide
+ * "London" or "Toronto").
  */
 import { US_STATES } from "../places";
 import { citySlug, stateDisplayName, type LocationScope } from "./geo";
@@ -40,7 +42,7 @@ export function parseWhere(text: string): WhereFilters {
     const st = stateCode(t.slice(comma + 1));
     if (st && cityPart) return { ...EMPTY_WHERE, state: st, city: citySlug(cityPart) };
   }
-  return { ...EMPTY_WHERE, location: t.slice(0, 120) };
+  return { ...EMPTY_WHERE, where: "all", location: t.slice(0, 120) };
 }
 
 /** The text a set of location filters reads as in the "Where" box. */

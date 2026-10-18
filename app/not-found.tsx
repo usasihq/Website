@@ -6,6 +6,8 @@ import { SupportPanel } from "@/components/SupportPanel";
 export const metadata = {
   title: "Page not found",
   robots: { index: false, follow: true },
+  // The root layout's canonical is the homepage; a missing page must not claim it.
+  alternates: { canonical: null },
 };
 
 export default function NotFound() {

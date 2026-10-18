@@ -127,7 +127,7 @@ describe("landing pages from listings", () => {
   it("labels topic geography from the data", () => {
     const dc = data.topics.find((p) => p.id === "data-center-infrastructure")!;
     expect(dc.count).toBe(112);
-    expect(dc.directoryHref).toBe("/jobs/?track=infrastructure&sort=newest");
+    expect(dc.directoryHref).toBe("/jobs/?track=infrastructure&where=all&sort=newest");
     expect(dc.usOnlyHref).toBe("/jobs/?track=infrastructure&where=us&sort=newest");
     expect(dc.description).toContain("No non-U.S. roles listed.");
     const noCode = data.topics.find((p) => p.id === "no-programming")!;
@@ -143,7 +143,7 @@ describe("landing pages from listings", () => {
     expect(openai.path).toBe("/jobs/at/openai/");
     expect(openai.kind).toBe("company");
     expect(openai.count).toBe(112 + 11 + 3 + 12 + 12);
-    expect(openai.directoryHref).toBe("/jobs/?company=openai&sort=newest");
+    expect(openai.directoryHref).toBe("/jobs/?company=openai&where=all&sort=newest");
     expect(openai.indexable).toBe(true);
     const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(openai.directoryHref.split("?")[1])), now);
     expect(directory).toHaveLength(openai.count);
@@ -159,7 +159,7 @@ describe("landing pages from listings", () => {
     expect(fde.path).toBe("/jobs/role/forward-deployed-engineer/");
     expect(fde.kind).toBe("role");
     expect(fde.count).toBe(12);
-    expect(fde.directoryHref).toBe("/jobs/?role=forward-deployed-engineer&sort=newest");
+    expect(fde.directoryHref).toBe("/jobs/?role=forward-deployed-engineer&where=all&sort=newest");
     expect(fde.indexable).toBe(true);
     expect(fde.listings.every((j) => /forward[\s\-–—]+deployed|\bFDE\b/i.test(j.title))).toBe(true);
     const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(fde.directoryHref.split("?")[1])), now);

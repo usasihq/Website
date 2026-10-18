@@ -8,11 +8,14 @@ export function SearchField({
   value,
   onChange,
   placeholder,
+  name,
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  /** Form field name, so a search form also works as a plain GET form. */
+  name?: string;
 }) {
   const id = useId();
   return (
@@ -25,6 +28,7 @@ export function SearchField({
         <input
           id={id}
           type="search"
+          name={name}
           className="field pl-9"
           value={value}
           placeholder={placeholder}

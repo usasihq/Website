@@ -13,7 +13,7 @@ import { MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/job
 import type { LandingLink } from "@/lib/jobs/landing-links";
 import { layoffHref, layoffStatePage } from "@/lib/jobs/layoffs";
 import { stateSlug } from "@/lib/places";
-import { checkedLabel, DEFAULT_JOB_FILTERS, serializeJobFilters, type JobItem } from "@/lib/jobs/search";
+import { ALL_JOB_FILTERS, checkedLabel, DEFAULT_JOB_FILTERS, serializeJobFilters, type JobItem } from "@/lib/jobs/search";
 import { isExpressionOfInterest } from "@/lib/jobs/tracks";
 import { orgHref } from "@/lib/routes";
 
@@ -139,7 +139,7 @@ type Props = {
 export function JobsLanding({ page, others, cities = [], parent = null, companies = [], roles = [], headquartersHref, headquartersCount }: Props) {
   const shown = page.listings.length;
   const trail = [{ href: "/jobs/", label: "Jobs" }, ...(parent ? [parent] : []), { href: page.path, label: page.name }];
-  const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...DEFAULT_JOB_FILTERS, ...page.filters, sort: "newest", company: slug })}`;
+  const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...(page.filters.state ? DEFAULT_JOB_FILTERS : ALL_JOB_FILTERS), ...page.filters, sort: "newest", company: slug })}`;
   const layoffs = page.kind === "state" && page.state ? layoffStatePage(getCatalog(), stateSlug(page.state)) : undefined;
   // BreadcrumbList comes from PageHeader; CollectionPage / ItemList from jobsLandingJsonLd (never JobPosting).
   return (
@@ -177,6 +177,13 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
           </div>
         </dl>
         <GeographyNote page={page} />
+        {page.organization?.sourceType === "usajobs" && page.count === 0 && !page.lastChecked ? (
+          <p className="mt-5 max-w-3xl rounded-xl border border-line p-4 text-base text-muted" role="note" data-testid="federal-not-collected">
+            Federal listings aren&rsquo;t being collected yet: the USAJOBS source needs an API key that hasn&rsquo;t been configured. This page is kept out of search
+            engines until it has listings. Search{" "}
+            <ExternalLink href="https://www.usajobs.gov/">USAJOBS.gov</ExternalLink> directly for federal AI roles.
+          </p>
+        ) : null}
         {layoffs ? (
           <p className="mt-5 max-w-3xl text-base text-muted">
             Recent official WARN Act notices in this state:{" "}

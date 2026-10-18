@@ -60,7 +60,7 @@ describe("the Where box", () => {
     ["San Francisco, CA", { state: "CA", city: "san-francisco" }],
     ["New York, New York", { state: "NY", city: "new-york" }],
     ["Washington, DC", { state: "DC" }],
-    ["London", { location: "London" }],
+    ["London", { where: "all", location: "London" }],
   ])("%s", (text, expected) => {
     expect(parseWhere(text)).toEqual({ where: "", state: "", city: "", location: "", ...expected });
   });

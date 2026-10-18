@@ -305,15 +305,28 @@ export const REMOTE_LOCATION = /\bremote\b/i;
 export const isRemoteListing = (job: { workplace: string; locations: string[] }) =>
   job.workplace === "remote" || job.locations.some((l) => REMOTE_LOCATION.test(l));
 
-/** Location scopes offered by the Jobs directory (`where=`) and used by the remote landing pages. */
-export const LOCATION_SCOPES = ["us", "remote", "remote-us"] as const;
+/**
+ * Location scopes offered by the Jobs directory (`where=`) and used by the remote landing pages.
+ * "us-or-unstated" is the directory's default: listings that name a U.S. place, or name no place
+ * at all that can be read ("Remote", "Hybrid"). Only listings located solely outside the United
+ * States are left out; "all" shows every listing.
+ */
+export const LOCATION_SCOPES = ["us-or-unstated", "us", "remote", "remote-us", "all"] as const;
 export type LocationScope = (typeof LOCATION_SCOPES)[number];
+export const DEFAULT_LOCATION_SCOPE: LocationScope = "us-or-unstated";
 export const LOCATION_SCOPE_LABELS: Record<LocationScope, string> = {
+  "us-or-unstated": "U.S. (and location not stated)",
   us: "U.S. locations only",
   remote: "Remote, any location",
   "remote-us": "Remote, U.S. locations only",
+  all: "All countries",
 };
 export function inLocationScope(job: GeoJob & { workplace: string }, scope: LocationScope): boolean {
+  if (scope === "all") return true;
+  if (scope === "us-or-unstated") {
+    const g = jobGeography(job);
+    return g.us || !g.outside;
+  }
   if (scope === "us") return isUSOnly(job);
   if (scope === "remote") return isRemoteListing(job);
   return isRemoteListing(job) && isUSOnly(job);

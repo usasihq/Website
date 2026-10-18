@@ -16,7 +16,7 @@ import type { Catalog } from "./catalog";
 import { MEMORY_PAGES, memoryLabel, memoryPageResults } from "./hardware";
 import { inLocationScope, isRemoteListing, jobGeography, stateDisplayName } from "./jobs/geo";
 import type { Dataset as JobsDataset } from "./jobs/schema";
-import { DEFAULT_JOB_FILTERS, filterJobs, toJobItem } from "./jobs/search";
+import { ALL_JOB_FILTERS, filterJobs, toJobItem } from "./jobs/search";
 import { KIND_PLURAL, OWNERSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "./labels";
 import { guideFor } from "./licenses";
 import { checklistStatus, computeTier, RUBRIC_LABEL, TIER_LABELS, type ModelTier } from "./openness";
@@ -635,7 +635,7 @@ export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff:
   if (jobs) {
     const names = new Map(orgs.map((o) => [o.slug, o.name]));
     const items = jobs.data.jobs.filter((j) => j.status === "open" && names.has(j.organization_slug)).map((j) => toJobItem(j, names.get(j.organization_slug)!));
-    const current = filterJobs(items, jobs.data.feeds, DEFAULT_JOB_FILTERS, jobs.now);
+    const current = filterJobs(items, jobs.data.feeds, ALL_JOB_FILTERS, jobs.now);
     const J = current.length;
     const geo = tally(current, (j) => {
       const g = jobGeography(j);

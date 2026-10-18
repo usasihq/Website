@@ -2,7 +2,8 @@ import type { Job, FeedHealth } from "./schema";
 import { JOB_ROLES, jobRole } from "./roles";
 import { isExpressionOfInterest, JOB_TRACKS, jobTrack } from "./tracks";
 import { annualUsdTop, jobCategory, jobLevel, JOB_CATEGORIES, JOB_LEVELS, PAY_THRESHOLDS } from "./levels";
-import { cityKey, inLocationScope, jobGeography, LOCATION_SCOPES, type LocationScope } from "./geo";
+import { cityKey, DEFAULT_LOCATION_SCOPE, inLocationScope, jobGeography, LOCATION_SCOPES, type LocationScope } from "./geo";
+import { parseWhere } from "./where";
 import { US_STATES } from "../places";
 export const STALE_MS = 48 * 3600000;
 /** The fields the Jobs directory reads. Reconciliation bookkeeping stays out of the page and its data file. */
@@ -22,9 +23,14 @@ export function isCurrent(job: Pick<Job, "status" | "last_seen">, feed: FeedHeal
 export function checkedLabel(value: string | null): string {
   return value ? new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(new Date(value)) + " UTC" : "Not yet successfully checked";
 }
-export const DEFAULT_JOB_FILTERS = { q: "", track: "", role: "", level: "", category: "", pay: "", company: "", department: "", location: "", state: "", city: "", where: "" as LocationScope | "", workplace: "", employment: "", salary: false,
+export const DEFAULT_JOB_FILTERS = { q: "", track: "", role: "", level: "", category: "", pay: "", company: "", department: "", location: "", state: "", city: "", where: DEFAULT_LOCATION_SCOPE as LocationScope, workplace: "", employment: "", salary: false,
   currency: "", period: "", salary_min: "", posted: "", verified: "", view: "current", sort: "verified", page: 1 };
 export type JobFilters = typeof DEFAULT_JOB_FILTERS;
+/**
+ * Every current listing, in every country. Landing pages, reports, and links that mean "all of
+ * this employer's or role's listings" start here, so the directory's U.S. default never narrows them.
+ */
+export const ALL_JOB_FILTERS: JobFilters = { ...DEFAULT_JOB_FILTERS, where: "all" };
 const clean = (v: string | null, max = 120) => (v ?? "").trim().slice(0, max);
 const choice = (v: string | null, values: string[], fallback = "") => v && values.includes(v) ? v : fallback;
 export function parseJobFilters(p: URLSearchParams): JobFilters {
@@ -34,9 +40,17 @@ export function parseJobFilters(p: URLSearchParams): JobFilters {
   const state = choice((p.get("state") ?? "").toUpperCase(), Object.keys(US_STATES));
   // A city is a slug within a state ("state=CA&city=san-francisco"); without a state it means nothing.
   const city = state && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(p.get("city") ?? "") ? p.get("city")!.slice(0, 60) : "";
+  // "w" is the search form's "Where" box submitted without JavaScript (method="get"); it reads like typing it in.
+  const typed = !p.has("where") && !state && !p.get("location") && p.get("w")?.trim() ? parseWhere(p.get("w")!.slice(0, 120)) : null;
+  if (typed) {
+    const rest = new URLSearchParams(p);
+    rest.delete("w");
+    for (const [k, v] of Object.entries(typed)) if (v) rest.set(k, v);
+    return parseJobFilters(rest);
+  }
   return { q: clean(p.get("q"), 200), track: choice(p.get("track"), JOB_TRACKS.map(t => t.id)), role: choice(p.get("role"), JOB_ROLES.map(r => r.slug)), level: choice(p.get("level"), JOB_LEVELS.map(l => l.id)), category: choice(p.get("category"), JOB_CATEGORIES.map(c => c.id)), pay: choice(p.get("pay"), [...PAY_THRESHOLDS]), company: clean(p.get("company")), department: clean(p.get("department")), location: clean(p.get("location")),
     state, city,
-    where: choice(p.get("where"), [...LOCATION_SCOPES]) as LocationScope | "",
+    where: choice(p.get("where"), [...LOCATION_SCOPES], DEFAULT_LOCATION_SCOPE) as LocationScope,
     workplace: p.get("remote") === "1" ? "remote" : choice(p.get("workplace"), ["remote", "hybrid", "on-site", "unknown"]),
     employment: choice(p.get("employment"), ["full-time", "part-time", "contract", "temporary", "internship", "unknown"]),
     salary: p.get("salary") === "1", currency, period,
@@ -127,7 +141,7 @@ export function filterJobs(items: JobItem[], feeds: FeedHealth[], f: JobFilters,
     if (f.location && !j.locations.some(l => normalize(l).includes(normalize(f.location)))) return false;
     if (f.state && !jobGeography(j).states.includes(f.state)) return false;
     if (city && !jobGeography(j).cities.some(c => cityKey(c) === city)) return false;
-    if (f.where && !inLocationScope(j, f.where)) return false;
+    if (f.where !== "all" && !inLocationScope(j, f.where)) return false;
     if (f.workplace && j.workplace !== f.workplace) return false;
     if (f.employment && j.employment_type !== f.employment) return false;
     if (f.salary && !j.salaries.length) return false;
