@@ -44,7 +44,7 @@ export function ExplainerCard({ e, minutes, showTopic = false }: { e: Explainer;
           {topicById(e.topic).title}
         </span>
       ) : null}
-      <span className={`${showTopic ? "mt-2" : ""} font-semibold leading-snug text-text group-hover:text-white`}>{e.title}</span>
+      <span className={`${showTopic ? "mt-2" : ""} font-semibold leading-snug text-text group-hover:text-strong`}>{e.title}</span>
       <span className="mt-1.5 text-sm text-muted">{e.question}</span>
       <span className="mt-auto flex flex-wrap items-center gap-3 pt-4">
         <LevelBadge level={e.level} />

@@ -74,7 +74,7 @@ export function FilterChip({ label, onRemove }: { label: string; onRemove: () =>
       <button
         type="button"
         onClick={onRemove}
-        className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[rgba(76,201,255,0.4)] bg-[rgba(76,201,255,0.08)] px-3 text-sm text-text hover:border-cyan"
+        className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-cyan/40 bg-cyan/8 px-3 text-sm text-text hover:border-cyan"
       >
         {label}
         <X aria-hidden="true" className="h-3.5 w-3.5" />

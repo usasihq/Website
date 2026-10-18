@@ -48,7 +48,7 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <article>
-        <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.14),transparent_60%)]">
+        <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgb(var(--cyan-rgb)/0.14),transparent_60%)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={[{ href: "/kids/", label: "For kids" }]} current={{ href: `/kids/${l.slug}/`, label: l.title }} />
             <div className="flex flex-wrap items-center gap-4">
@@ -65,8 +65,8 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
               <span>Date: ____________</span>
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-text sm:text-5xl">{l.title}</h1>
-            <div className="mt-6 flex max-w-3xl gap-3 rounded-2xl border border-[rgba(251,191,36,0.4)] bg-[rgba(251,191,36,0.08)] p-5">
-              <Lightbulb aria-hidden="true" className="mt-1 h-6 w-6 flex-none text-[#fcd34d]" />
+            <div className="mt-6 flex max-w-3xl gap-3 rounded-2xl border border-tone-amber/40 bg-tone-amber/8 p-5">
+              <Lightbulb aria-hidden="true" className="mt-1 h-6 w-6 flex-none text-tone-amber" />
               <p className="text-xl leading-relaxed text-text">
                 <span className="sr-only">The big idea: </span>
                 <InlineText text={l.bigIdea} />
@@ -126,7 +126,7 @@ export default async function KidLessonPage({ params }: { params: Promise<{ slug
           </nav>
 
           <details className="max-w-2xl rounded-2xl border border-line p-5" data-testid="kid-grownups">
-            <summary className="cursor-pointer text-[1.0625rem] font-semibold text-ice hover:text-white">For grown-ups: sources and going further</summary>
+            <summary className="cursor-pointer text-[1.0625rem] font-semibold text-ice hover:text-strong">For grown-ups: sources and going further</summary>
             <div className="mt-3 space-y-3 text-[0.9375rem] text-muted">
               <p>{l.grownUps.note}</p>
               <ul className="space-y-1.5">

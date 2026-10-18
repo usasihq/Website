@@ -17,7 +17,7 @@ test("assets, navigation, deep links, and 404 work under a base path", async ({ 
   const hero = page.locator("figure img").first();
   expect(await hero.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   const stylesheet = await page.evaluate(() => getComputedStyle(document.documentElement).backgroundColor);
-  expect(stylesheet).toBe("rgb(5, 8, 22)");
+  expect(stylesheet).toBe("rgb(247, 248, 250)");
 
   await page.getByRole("link", { name: "Explore Companies & Labs" }).click();
   await expect(page).toHaveURL(/\/usasi\/companies\/$/);

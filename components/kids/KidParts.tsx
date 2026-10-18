@@ -15,13 +15,13 @@ const ICONS: Record<KidIconName, LucideIcon> = {
 
 /** Lesson colors cycle through the site's accent family so cards are easy to tell apart. */
 const TINTS = [
-  "from-[#4cc9ff]/25 to-[#2f6bff]/10 text-[#7ad7ff]",
-  "from-[#a78bfa]/25 to-[#6d28d9]/10 text-[#c4b5fd]",
-  "from-[#34d399]/25 to-[#047857]/10 text-[#6ee7b7]",
-  "from-[#fbbf24]/25 to-[#b45309]/10 text-[#fcd34d]",
-  "from-[#f472b6]/25 to-[#be185d]/10 text-[#f9a8d4]",
-  "from-[#60a5fa]/25 to-[#1d4ed8]/10 text-[#93c5fd]",
-  "from-[#2dd4bf]/25 to-[#0f766e]/10 text-[#5eead4]",
+  "from-[#4cc9ff]/25 to-[#2f6bff]/10 text-tone-sky-2",
+  "from-[#a78bfa]/25 to-[#6d28d9]/10 text-tone-violet",
+  "from-[#34d399]/25 to-[#047857]/10 text-tone-green",
+  "from-[#fbbf24]/25 to-[#b45309]/10 text-tone-amber",
+  "from-[#f472b6]/25 to-[#be185d]/10 text-tone-pink",
+  "from-[#60a5fa]/25 to-[#1d4ed8]/10 text-tone-blue",
+  "from-[#2dd4bf]/25 to-[#0f766e]/10 text-tone-teal",
 ];
 
 export const kidTint = (n: number) => TINTS[(n - 1) % TINTS.length];
@@ -48,7 +48,7 @@ export function KidLessonCard({ lesson }: { lesson: KidLesson }) {
         </span>
       </span>
       <span>
-        <span className="block text-xl font-semibold leading-snug text-text group-hover:text-white">{lesson.title}</span>
+        <span className="block text-xl font-semibold leading-snug text-text group-hover:text-strong">{lesson.title}</span>
         <span className="mt-1.5 block text-[1.0625rem] text-muted">{lesson.question}</span>
       </span>
     </Link>
@@ -63,7 +63,7 @@ export function KidLessonBody({ lesson: l, level = 2 }: { lesson: KidLesson; lev
   const id = (part: string) => (level === 2 ? part : `${l.slug}-${part}`);
   return (
     <>
-      <div className="max-w-2xl space-y-9 text-[1.1875rem] leading-relaxed text-[#d5def2]">
+      <div className="max-w-2xl space-y-9 text-[1.1875rem] leading-relaxed text-body">
         {l.sections.map((s, i) => (
           <section key={s.heading} aria-labelledby={id(`part-${i}`)}>
             <H id={id(`part-${i}`)} className="text-2xl font-semibold text-text">
@@ -87,24 +87,24 @@ export function KidLessonBody({ lesson: l, level = 2 }: { lesson: KidLesson; lev
         ))}
       </div>
 
-      <section aria-labelledby={id("try-heading")} className="max-w-2xl rounded-2xl border border-[rgba(52,211,153,0.4)] bg-[rgba(52,211,153,0.07)] p-6">
+      <section aria-labelledby={id("try-heading")} className="max-w-2xl rounded-2xl border border-tone-green/40 bg-tone-green/7 p-6">
         <H id={id("try-heading")} className="flex items-center gap-2 text-2xl font-semibold text-text">
-          <NotebookPen aria-hidden="true" className="h-6 w-6 text-[#6ee7b7]" />
+          <NotebookPen aria-hidden="true" className="h-6 w-6 text-tone-green" />
           Try this: {l.tryThis.title}
         </H>
-        <ol className="mt-4 list-decimal space-y-2 pl-6 text-[1.1875rem] leading-relaxed text-[#d5def2] marker:font-semibold marker:text-[#6ee7b7]">
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-[1.1875rem] leading-relaxed text-body marker:font-semibold marker:text-tone-green">
           {l.tryThis.steps.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ol>
       </section>
 
-      <section aria-labelledby={id("remember-heading")} className="max-w-2xl rounded-2xl border border-line-strong bg-[rgba(76,201,255,0.06)] p-6">
+      <section aria-labelledby={id("remember-heading")} className="max-w-2xl rounded-2xl border border-line-strong bg-cyan/6 p-6">
         <H id={id("remember-heading")} className="flex items-center gap-2 text-2xl font-semibold text-text">
           <ListChecks aria-hidden="true" className="h-6 w-6 text-cyan" />
           Remember
         </H>
-        <ul className="mt-4 space-y-3 text-[1.1875rem] leading-relaxed text-[#d5def2]">
+        <ul className="mt-4 space-y-3 text-[1.1875rem] leading-relaxed text-body">
           {l.remember.map((r, i) => (
             <li key={i} className="flex gap-3">
               <CircleCheck aria-hidden="true" className="mt-1 h-5 w-5 flex-none text-cyan" />

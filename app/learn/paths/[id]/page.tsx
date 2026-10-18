@@ -75,7 +75,7 @@ export default async function LearningPathPage({ params }: { params: Promise<{ i
                     Step {i + 1} · {s.kind}
                     {s.detail ? ` · ${s.detail}` : ""}
                   </span>
-                  <span className="mt-1 inline-flex items-center gap-1.5 text-lg font-semibold text-text group-hover:text-white">
+                  <span className="mt-1 inline-flex items-center gap-1.5 text-lg font-semibold text-text group-hover:text-strong">
                     {s.title}
                     <ArrowRight aria-hidden="true" className="h-4 w-4 text-cyan transition-transform group-hover:translate-x-0.5" />
                   </span>

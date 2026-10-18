@@ -63,7 +63,7 @@ export default function LicensesPage() {
                   <Link prefetch={false} href={`/licenses/${g.slug}/`} className="card card-link group flex h-full flex-col p-5">
                     <span className="flex items-start gap-3">
                       <Scale aria-hidden="true" className="mt-0.5 h-5 w-5 flex-none text-cyan" />
-                      <span className="font-semibold text-text group-hover:text-white">{g.name}</span>
+                      <span className="font-semibold text-text group-hover:text-strong">{g.name}</span>
                     </span>
                     <span className="mt-2 line-clamp-3 text-sm text-muted">{g.summary.text}</span>
                     <span className="mt-auto flex items-center justify-between gap-3 pt-4 text-sm">

@@ -55,7 +55,7 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
     <>
       <JsonLd data={leaderLd(catalog, l)} />
       <article>
-        <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.14),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(167,139,250,0.1),transparent_55%)]">
+        <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgb(var(--cyan-rgb)/0.14),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgb(var(--glow2-rgb)/0.1),transparent_55%)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={[{ href: "/big-si/", label: "People Behind Big SI" }]} current={{ href: `/big-si/${l.slug}/`, label: l.name }} />
             <div className="flex flex-wrap items-center gap-5">
@@ -67,14 +67,14 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
             </div>
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="Current roles">
               {l.current_roles.map((r) => (
-                <li key={`${r.organization}-${r.role}`} className="max-w-full rounded-2xl border border-line bg-[rgba(11,22,44,0.6)] px-3 py-1.5 text-sm text-text">
+                <li key={`${r.organization}-${r.role}`} className="max-w-full rounded-2xl border border-line bg-surface/60 px-3 py-1.5 text-sm text-text">
                   {r.role}, {orgLink(r.organization_slug, r.organization)}
                   {r.since ? <span className="text-muted"> since {formatDate(r.since)}</span> : null}
                   <SourceRefs ids={r.source_ids} sources={s} />
                 </li>
               ))}
             </ul>
-            <p className="mt-6 max-w-3xl text-xl leading-relaxed text-[#d5def2]">
+            <p className="mt-6 max-w-3xl text-xl leading-relaxed text-body">
               {l.summary.text}
               <SourceRefs ids={l.summary.source_ids} sources={s} />
             </p>
@@ -86,12 +86,12 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
             {l.highlights.length ? (
               <section aria-labelledby="highlights-h">
                 <h2 id="highlights-h" className="flex items-center gap-2 text-2xl font-semibold text-text">
-                  <Sparkles aria-hidden="true" className="h-6 w-6 text-[#fcd34d]" />
+                  <Sparkles aria-hidden="true" className="h-6 w-6 text-tone-amber" />
                   Accomplishments
                 </h2>
                 <ul className="mt-5 grid gap-3 sm:grid-cols-2" data-testid="leader-highlights">
                   {l.highlights.map((h, hi) => (
-                    <li key={hi} className="rounded-2xl border border-[rgba(251,191,36,0.3)] bg-[rgba(251,191,36,0.05)] p-4 text-[#d5def2]">
+                    <li key={hi} className="rounded-2xl border border-tone-amber/30 bg-tone-amber/5 p-4 text-body">
                       {h.text}
                       <SourceRefs ids={h.source_ids} sources={s} />
                     </li>
@@ -105,7 +105,7 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
                 <h2 id={`bio-${si}`} className="text-2xl font-semibold text-text">
                   {sec.heading}
                 </h2>
-                <div className="mt-3 space-y-4 text-[1.0625rem] leading-relaxed text-[#d5def2]">
+                <div className="mt-3 space-y-4 text-[1.0625rem] leading-relaxed text-body">
                   {sec.paragraphs.map((p, pi) => (
                     <p key={pi}>
                       {p.text}
@@ -127,7 +127,7 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
                     <li key={ti} className="relative pb-5 last:pb-0">
                       <span aria-hidden="true" className="absolute -left-[1.86rem] top-1.5 h-3 w-3 rounded-full border-2 border-cyan bg-bg" />
                       <p className="font-mono text-sm text-cyan">{formatDate(t.date)}</p>
-                      <p className="mt-0.5 text-[#d5def2]">
+                      <p className="mt-0.5 text-body">
                         {t.text}
                         <SourceRefs ids={t.source_ids} sources={s} />
                       </p>
@@ -161,7 +161,7 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
             {l.honors.length ? (
               <div className="card p-5">
                 <h2 className="flex items-center gap-2 font-semibold text-text">
-                  <Award aria-hidden="true" className="h-4 w-4 text-[#fcd34d]" />
+                  <Award aria-hidden="true" className="h-4 w-4 text-tone-amber" />
                   Honors and recognition
                 </h2>
                 <ul className="mt-3 space-y-2.5 text-[0.9375rem]" data-testid="leader-honors">

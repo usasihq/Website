@@ -19,10 +19,10 @@ const KIND_LABELS: Record<DeepDiveT["lineup"][number]["kind"], string> = {
 };
 
 const STATUS_LABELS: Record<DeepDiveT["lineup"][number]["status"], { label: string; className: string }> = {
-  current: { label: "Current", className: "border-[rgba(52,211,153,0.5)] text-[#6ee7b7]" },
-  preview: { label: "Preview", className: "border-[rgba(76,201,255,0.5)] text-cyan" },
-  limited: { label: "Limited access", className: "border-[rgba(251,191,36,0.5)] text-[#fcd34d]" },
-  announced: { label: "Announced", className: "border-[rgba(167,139,250,0.5)] text-[#c4b5fd]" },
+  current: { label: "Current", className: "border-tone-green/50 text-tone-green" },
+  preview: { label: "Preview", className: "border-cyan/50 text-cyan" },
+  limited: { label: "Limited access", className: "border-tone-amber/50 text-tone-amber" },
+  announced: { label: "Announced", className: "border-tone-violet/50 text-tone-violet" },
   legacy: { label: "Legacy", className: "border-line-strong text-muted" },
   retired: { label: "Retired", className: "border-line text-muted" },
 };
@@ -68,7 +68,7 @@ export function DeepDive({ name, deep, sources, leaders }: { name: string; deep:
         </ul>
       </nav>
 
-      <div className="max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-[#d5def2]" data-testid="deep-dive-overview">
+      <div className="max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-body" data-testid="deep-dive-overview">
         {deep.overview.map((c, i) => (
           <p key={i}>
             {c.text}
@@ -92,7 +92,7 @@ export function DeepDive({ name, deep, sources, leaders }: { name: string; deep:
             ) : null}
             <ul className="mt-4 grid max-w-3xl gap-3">
               {sec.items.map((item, i) => (
-                <li key={i} className="flex gap-3 text-[#d5def2]">
+                <li key={i} className="flex gap-3 text-body">
                   <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 flex-none rounded-full bg-cyan" />
                   <span>
                     {item.text}
@@ -136,7 +136,7 @@ export function DeepDive({ name, deep, sources, leaders }: { name: string; deep:
                         <span className={`badge ${STATUS_LABELS[l.status].className}`}>{STATUS_LABELS[l.status].label}</span>
                       </td>
                       <td className="meta whitespace-nowrap">{l.released ? formatDate(l.released) : "Not stated"}</td>
-                      <td className="min-w-[18rem] text-[#d5def2]">
+                      <td className="min-w-[18rem] text-body">
                         {l.description}
                         <SourceRefs ids={l.source_ids} sources={sources} />
                       </td>
@@ -159,7 +159,7 @@ export function DeepDive({ name, deep, sources, leaders }: { name: string; deep:
                 <li key={i} className="relative pb-5 last:pb-0">
                   <span aria-hidden="true" className="absolute -left-[1.86rem] top-1.5 h-3 w-3 rounded-full border-2 border-cyan bg-bg" />
                   <p className="font-mono text-sm text-cyan">{formatDate(t.date)}</p>
-                  <p className="mt-0.5 text-[#d5def2]">
+                  <p className="mt-0.5 text-body">
                     {t.text}
                     <SourceRefs ids={t.source_ids} sources={sources} />
                   </p>

@@ -54,7 +54,7 @@ export function ModelSizeCalculator() {
           </p>
           <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Example sizes">
             {EXAMPLE_SIZES.map((n) => (
-              <button key={n} type="button" className={`badge px-3 py-1 ${billions === String(n) ? "border-cyan text-white" : "hover:border-cyan"}`} onClick={() => setBillions(String(n))}>
+              <button key={n} type="button" className={`badge px-3 py-1 ${billions === String(n) ? "border-cyan text-strong" : "hover:border-cyan"}`} onClick={() => setBillions(String(n))}>
                 {n}B
               </button>
             ))}
@@ -86,7 +86,7 @@ export function ModelSizeCalculator() {
         </fieldset>
       </div>
 
-      <div className="mt-6 rounded-xl border border-cyan/30 bg-[linear-gradient(135deg,rgba(76,201,255,0.08),rgba(11,22,44,0.72))] p-5" aria-live="polite">
+      <div className="mt-6 rounded-xl border border-cyan/30 bg-[linear-gradient(135deg,rgb(var(--cyan-rgb)/0.08),var(--bg-card))] p-5" aria-live="polite">
         {valid ? (
           <>
             <p className="text-sm text-muted">

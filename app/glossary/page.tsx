@@ -49,7 +49,7 @@ export default function GlossaryPage() {
                   {first ? (
                     <a
                       href={`#${first}`}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-line-strong bg-elev/60 font-mono text-sm text-text hover:border-cyan hover:text-white"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-line-strong bg-elev/60 font-mono text-sm text-text hover:border-cyan hover:text-strong"
                     >
                       {letter}
                     </a>

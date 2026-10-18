@@ -31,7 +31,7 @@ export function ShareCite({
   const snippets = badgeSnippets(url, absoluteUrl("/badges/listed.svg"));
   const pill = "inline-flex min-h-11 items-center rounded-lg border border-line px-3 text-sm text-text hover:border-cyan";
   return (
-    <section aria-labelledby="share-heading" className="grid gap-4 rounded-2xl border border-line bg-[rgba(8,14,30,0.5)] p-5 print:hidden" data-testid="share-cite">
+    <section aria-labelledby="share-heading" className="grid gap-4 rounded-2xl border border-line bg-surface/50 p-5 print:hidden" data-testid="share-cite">
       <h2 id="share-heading" className="flex items-center gap-2 text-base font-semibold text-text">
         <Share2 aria-hidden="true" className="h-4 w-4 text-cyan" />
         Share or cite this page
@@ -58,7 +58,7 @@ export function ShareCite({
         ) : null}
       </ul>
       <details className="group">
-        <summary className="cursor-pointer text-[0.9375rem] text-ice hover:text-white">Cite this page</summary>
+        <summary className="cursor-pointer text-[0.9375rem] text-ice hover:text-strong">Cite this page</summary>
         <div className="mt-3 grid gap-3">
           <CitationBlock label="APA style" text={cite.apa} />
           <CitationBlock label="BibTeX" text={cite.bibtex} />
@@ -69,7 +69,7 @@ export function ShareCite({
       </details>
       {badge ? (
         <details>
-          <summary className="cursor-pointer text-[0.9375rem] text-ice hover:text-white">For maintainers: a &ldquo;Listed in USASI&rdquo; badge</summary>
+          <summary className="cursor-pointer text-[0.9375rem] text-ice hover:text-strong">For maintainers: a &ldquo;Listed in USASI&rdquo; badge</summary>
           <div className="mt-3 grid gap-3">
             <p className="text-[0.9375rem] text-muted">
               <img src={asset("/badges/listed.svg")} alt="Listed in the USASI catalog" width={96} height={20} className="mr-2 inline-block align-middle" />
@@ -94,7 +94,7 @@ function CitationBlock({ label, text }: { label: string; text: string }) {
         <p className="eyebrow">{label}</p>
         <CopyButton text={text} label={`Copy ${label.split(" ")[0]}`} />
       </div>
-      <pre tabIndex={0} className="max-w-full overflow-x-auto whitespace-pre-wrap break-words rounded-lg border border-line bg-[rgba(5,8,22,0.8)] p-3 font-mono text-[0.8125rem] text-ice">
+      <pre tabIndex={0} className="max-w-full overflow-x-auto whitespace-pre-wrap break-words rounded-lg border border-line bg-[var(--field-bg)] p-3 font-mono text-[0.8125rem] text-ice">
         {text}
       </pre>
     </div>

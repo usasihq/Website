@@ -108,7 +108,7 @@ export default async function ExplainerPage({ params }: { params: Promise<{ slug
       <div className="container-page py-10 lg:py-12">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,44rem)_15rem] lg:justify-between xl:gap-16">
           <article className="min-w-0">
-            <section aria-labelledby="takeaways-heading" className="card mb-10 border-cyan/30 bg-[linear-gradient(135deg,rgba(76,201,255,0.08),rgba(11,22,44,0.72))] p-5 sm:p-6">
+            <section aria-labelledby="takeaways-heading" className="card mb-10 border-cyan/30 bg-[linear-gradient(135deg,rgb(var(--cyan-rgb)/0.08),var(--bg-card))] p-5 sm:p-6">
               <h2 id="takeaways-heading" className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-ice">
                 <Lightbulb aria-hidden="true" className="h-4 w-4 text-cyan" />
                 Key takeaways

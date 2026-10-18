@@ -10,7 +10,7 @@ export function CodeText({ text }: { text: string }) {
     <>
       {parts.map((part, i) =>
         i % 2 === 1 ? (
-          <code key={i} className="rounded bg-[rgba(120,150,210,0.12)] px-1 font-mono text-[0.9em] [overflow-wrap:anywhere]">
+          <code key={i} className="rounded bg-muted/12 px-1 font-mono text-[0.9em] [overflow-wrap:anywhere]">
             {part}
           </code>
         ) : (

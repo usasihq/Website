@@ -20,14 +20,14 @@ export function SupportPanel({ variant = "standard", config = siteConfig.support
     <section aria-labelledby="support-heading" className={`print:hidden ${home ? "py-16 sm:py-20" : compact ? "py-10" : "py-14"}`} data-support-panel={active ? "active" : "unconfigured"}>
       <div className="container-page">
         <div
-          className={`relative overflow-hidden rounded-2xl border border-[rgba(76,201,255,0.28)] bg-[linear-gradient(135deg,#0b1428_0%,#081022_60%,#0a1530_100%)] ${
+          className={`relative overflow-hidden rounded-2xl border border-cyan/28 bg-[linear-gradient(135deg,var(--panel-a)_0%,var(--panel-b)_100%)] ${
             home ? "p-6 sm:p-10 lg:p-12" : compact ? "p-5 sm:p-6" : "p-6 sm:p-8"
           }`}
         >
-          <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(76,201,255,0.14),transparent_70%)]" />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgb(var(--cyan-rgb)/0.14),transparent_70%)]" />
           <div className={`relative grid gap-6 ${home ? "lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12" : "md:grid-cols-[1fr_auto] md:items-center md:gap-8"}`}>
             <div className="flex gap-4">
-              <span aria-hidden="true" className={`mt-1 inline-flex shrink-0 items-center justify-center rounded-full border border-[rgba(76,201,255,0.35)] text-cyan ${compact ? "h-9 w-9" : "h-11 w-11"}`}>
+              <span aria-hidden="true" className={`mt-1 inline-flex shrink-0 items-center justify-center rounded-full border border-cyan/35 text-cyan ${compact ? "h-9 w-9" : "h-11 w-11"}`}>
                 <Heart className={compact ? "h-4 w-4" : "h-5 w-5"} strokeWidth={1.75} />
               </span>
               <div className="min-w-0">

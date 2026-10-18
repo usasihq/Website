@@ -15,7 +15,7 @@ export function NewsletterSignup({ variant = "block", config = siteConfig.newsle
   return (
     <aside
       aria-labelledby="newsletter-heading"
-      className={`@container rounded-2xl border border-line bg-[rgba(8,14,30,0.7)] print:hidden ${compact ? "p-4" : "p-5 sm:p-6"}`}
+      className={`@container rounded-2xl border border-line bg-surface/70 print:hidden ${compact ? "p-4" : "p-5 sm:p-6"}`}
       data-newsletter={active ? "active" : "unconfigured"}
     >
       {/* Lays out by its own width (container query), so it stacks in narrow sidebars. */}

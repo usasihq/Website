@@ -40,7 +40,7 @@ export default async function NewsletterIssuePage({ params }: { params: Promise<
   return (
     <>
       <article>
-        <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
+        <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={[{ href: "/newsletter/", label: "The USASI weekly" }]} current={{ href: `/newsletter/${issue.slug}/`, label: issue.subject }} />
             <p className="eyebrow">The USASI weekly · Issue {issue.number}</p>
@@ -53,7 +53,7 @@ export default async function NewsletterIssuePage({ params }: { params: Promise<
           </div>
         </header>
         <div className="container-page grid gap-10 py-10">
-          <div className="max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-[#d5def2]">
+          <div className="max-w-3xl space-y-4 text-[1.0625rem] leading-relaxed text-body">
             {issue.intro.map((t, i) => (
               <p key={i}>
                 <InlineText text={t} />

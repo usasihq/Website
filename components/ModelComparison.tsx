@@ -86,7 +86,7 @@ export function ModelComparison({ rows, asOf }: { rows: ModelMatrixRow[]; asOf: 
           options={selected.length < 4 ? rows.filter((r) => !selected.includes(r.org.slug)).map((r) => ({ value: r.org.slug, label: r.org.name })) : []}
           onChange={(slug) => { if (slug && selected.length < 4) update({ ...state, orgs: [...selected, slug] }); }} />
         <label className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm">
-          <input type="checkbox" className="h-6 w-6 accent-[#4cc9ff]" checked={state.detail}
+          <input type="checkbox" className="h-6 w-6 accent-[var(--cyan)]" checked={state.detail}
             onChange={(e) => update({ ...state, detail: e.target.checked })} />Show all comparison columns
         </label>
       </div>

@@ -31,7 +31,7 @@ export function BackToTop() {
         window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
         document.getElementById("main")?.focus({ preventScroll: true });
       }}
-      className={`fixed bottom-5 right-5 z-30 inline-flex h-11 items-center gap-1.5 rounded-full border border-line-strong bg-[rgba(10,16,36,0.92)] px-4 text-sm text-text shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur transition-all duration-200 hover:border-cyan print:hidden ${
+      className={`fixed bottom-5 right-5 z-30 inline-flex h-11 items-center gap-1.5 rounded-full border border-line-strong bg-float px-4 text-sm text-text shadow-float backdrop-blur transition-all duration-200 hover:border-cyan print:hidden ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       }`}
       aria-hidden={!visible}

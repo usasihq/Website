@@ -43,7 +43,7 @@ export default function ChangelogPage() {
                   <time dateTime={entry.date}>{formatDate(entry.date)}</time>
                 </p>
                 <h2 className="mt-1 text-xl font-semibold text-text">{entry.title}</h2>
-                <p className="mt-2 text-[#d5def2]">{entry.summary}</p>
+                <p className="mt-2 text-body">{entry.summary}</p>
                 {entry.changes.length > 0 ? (
                   <ul className="mt-4 grid gap-1.5 text-[0.9375rem] sm:grid-cols-2">
                     {entry.changes.map((c, i) => {

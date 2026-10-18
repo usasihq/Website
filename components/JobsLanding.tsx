@@ -27,7 +27,7 @@ function GeographyNote({ page }: { page: LandingPage }) {
     const name = `${page.city!.label}, ${stateDisplayName(page.state!)}`;
     return (
       <p className="mt-5 max-w-3xl text-base text-muted">
-        <span className="badge mr-2 border-[rgba(76,201,255,0.45)]">Location named: {name}</span>
+        <span className="badge mr-2 border-cyan/45">Location named: {name}</span>
         Every listing here names {name}.{" "}
         {g.alsoElsewhere
           ? `${count(g.alsoElsewhere, "listing also names", "listings also name")} other places, and ${g.outside ? `${count(g.outside, "names", "name")} a place outside the United States` : "none names a place outside the United States"}.`
@@ -39,7 +39,7 @@ function GeographyNote({ page }: { page: LandingPage }) {
     const name = stateDisplayName(page.state!);
     return (
       <p className="mt-5 max-w-3xl text-base text-muted">
-        <span className="badge mr-2 border-[rgba(76,201,255,0.45)]">Location named: {name}</span>
+        <span className="badge mr-2 border-cyan/45">Location named: {name}</span>
         Every listing here names a location in {name}.{" "}
         {g.alsoElsewhere
           ? `${count(g.alsoElsewhere, "listing also names", "listings also name")} other places, and ${g.outside ? `${count(g.outside, "names", "name")} a place outside the United States` : "none names a place outside the United States"}.`
@@ -50,14 +50,14 @@ function GeographyNote({ page }: { page: LandingPage }) {
   if (page.scope === "us-only") {
     return (
       <p className="mt-5 max-w-3xl text-base text-muted">
-        <span className="badge mr-2 border-[rgba(76,201,255,0.45)]">U.S. locations only</span>
+        <span className="badge mr-2 border-cyan/45">U.S. locations only</span>
         Every listing here names the United States or a U.S. state and no place outside the United States.
       </p>
     );
   }
   return (
     <p className="mt-5 max-w-3xl text-base text-muted">
-      <span className="badge mr-2 border-[rgba(255,196,77,0.45)]">
+      <span className="badge mr-2 border-tone-amber/45">
         {g.outside ? "Includes positions outside the United States" : "No positions outside the United States listed today"}
       </span>
       {count(g.usOnly, "listing names", "listings name")} U.S. locations only; {count(g.outside, "names", "name")} a place outside the United States

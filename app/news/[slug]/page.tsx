@@ -41,7 +41,7 @@ export default async function NewsItemPage({ params }: { params: Promise<{ slug:
   return (
     <>
       <article>
-        <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
+        <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={[{ href: "/news/", label: "Latest news" }]} current={{ href: newsHref(item.slug), label: item.title }} />
             <p className="eyebrow">{NEWS_CATEGORY_LABELS[item.category]}</p>
@@ -53,7 +53,7 @@ export default async function NewsItemPage({ params }: { params: Promise<{ slug:
           </div>
         </header>
         <div className="container-page grid gap-10 py-10">
-          <p className="max-w-3xl break-words text-lg text-[#d5def2]">
+          <p className="max-w-3xl break-words text-lg text-body">
             <CodeText text={item.summary.text} />
             <SourceRefs ids={item.summary.source_ids} sources={item.sources} />
           </p>

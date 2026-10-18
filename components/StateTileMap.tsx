@@ -19,11 +19,11 @@ export const TILE_POSITIONS: Record<string, [col: number, row: number]> = {
 };
 
 export const TILE_BUCKETS: { min: number; label: string; className: string }[] = [
-  { min: 25, label: "25 or more", className: "border-[#9be3ff] bg-[rgba(120,214,255,0.88)] text-[#04101f]" },
-  { min: 10, label: "10 to 24", className: "border-cyan bg-[rgba(76,201,255,0.55)] text-white" },
-  { min: 5, label: "5 to 9", className: "border-cyan bg-[rgba(76,201,255,0.36)] text-text" },
-  { min: 2, label: "2 to 4", className: "border-[rgba(76,201,255,0.6)] bg-[rgba(76,201,255,0.2)] text-text" },
-  { min: 1, label: "1", className: "border-[rgba(76,201,255,0.45)] bg-[rgba(76,201,255,0.09)] text-text" },
+  { min: 25, label: "25 or more", className: "border-cyan bg-cyan text-on-cyan" },
+  { min: 10, label: "10 to 24", className: "border-cyan bg-cyan/55 text-strong" },
+  { min: 5, label: "5 to 9", className: "border-cyan bg-cyan/36 text-text" },
+  { min: 2, label: "2 to 4", className: "border-cyan/60 bg-cyan/20 text-text" },
+  { min: 1, label: "1", className: "border-cyan/45 bg-cyan/9 text-text" },
 ];
 
 const bucketFor = (n: number) => TILE_BUCKETS.find((b) => n >= b.min);

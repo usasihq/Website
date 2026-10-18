@@ -33,12 +33,12 @@ export default function KidsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.18),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(167,139,250,0.14),transparent_55%)]">
+      <header className="border-b border-line bg-[radial-gradient(ellipse_at_top_left,rgb(var(--cyan-rgb)/0.18),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgb(var(--glow2-rgb)/0.14),transparent_55%)]">
         <div className="container-page pb-12 pt-10 sm:pt-14">
           <Breadcrumbs items={[{ href: "/learn/", label: "Learn" }]} current={{ href: "/kids/", label: "For kids" }} />
           <p className="eyebrow">For kids</p>
           <h1 className="mt-2 max-w-3xl text-4xl font-semibold leading-tight text-text sm:text-5xl">AI and Super Intelligence, explained for kids</h1>
-          <p className="mt-5 max-w-2xl text-xl leading-relaxed text-[#d5def2]">
+          <p className="mt-5 max-w-2xl text-xl leading-relaxed text-body">
             What is AI? How does it learn? What do people mean by super intelligence? Seven short lessons for readers {KIDS_AGES}. Read them with a
             grown-up, try the activities, and take the quick quizzes.
           </p>
@@ -76,7 +76,7 @@ export default function KidsPage() {
             More for kids and grown-ups
           </h2>
           <Link prefetch={false} href="/kids/words/" className="card card-link flex items-start gap-4 rounded-2xl p-6">
-            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-[rgba(76,201,255,0.15)] text-cyan">
+            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-cyan/15 text-cyan">
               <BookA aria-hidden="true" className="h-6 w-6" />
             </span>
             <span>
@@ -85,7 +85,7 @@ export default function KidsPage() {
             </span>
           </Link>
           <Link prefetch={false} href="/kids/grown-ups/" className="card card-link flex items-start gap-4 rounded-2xl p-6">
-            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-[rgba(167,139,250,0.15)] text-[#c4b5fd]">
+            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-tone-violet/15 text-tone-violet">
               <Users aria-hidden="true" className="h-6 w-6" />
             </span>
             <span>

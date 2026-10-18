@@ -81,15 +81,15 @@ export default function LearnPage() {
         <Link
           prefetch={false}
           href="/kids/"
-          className="card card-link group flex flex-col gap-4 rounded-2xl border-[rgba(167,139,250,0.35)] bg-[radial-gradient(ellipse_at_top_left,rgba(76,201,255,0.12),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgba(167,139,250,0.12),transparent_55%)] p-5 sm:flex-row sm:items-center sm:p-6"
+          className="card card-link group flex flex-col gap-4 rounded-2xl border-tone-violet/35 bg-[radial-gradient(ellipse_at_top_left,rgb(var(--cyan-rgb)/0.12),transparent_60%),radial-gradient(ellipse_at_bottom_right,rgb(var(--glow2-rgb)/0.12),transparent_55%)] p-5 sm:flex-row sm:items-center sm:p-6"
           data-testid="learn-kids-card"
         >
-          <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-[rgba(76,201,255,0.15)] text-cyan">
+          <span className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-cyan/15 text-cyan">
             <Rocket aria-hidden="true" className="h-6 w-6" />
           </span>
           <span className="flex-1">
             <span className="block text-xs font-medium uppercase tracking-[0.08em] text-cyan">For kids</span>
-            <span className="mt-1 block text-lg font-semibold text-text group-hover:text-white">AI and Super Intelligence, explained for kids</span>
+            <span className="mt-1 block text-lg font-semibold text-text group-hover:text-strong">AI and Super Intelligence, explained for kids</span>
             <span className="mt-1 block text-sm text-muted">
               {KID_LESSONS.length} short lessons for readers {KIDS_AGES}, with activities and quick quizzes. Made to read together with a grown-up.
             </span>
@@ -117,7 +117,7 @@ export default function LearnPage() {
                 <li key={p.id}>
                   <Link prefetch={false} href={`/learn/paths/${p.id}/`} className="card card-link group flex h-full flex-col p-5">
                     <span className="text-xs font-medium uppercase tracking-[0.08em] text-cyan">{p.audience}</span>
-                    <span className="mt-2 text-lg font-semibold text-text group-hover:text-white">{p.title}</span>
+                    <span className="mt-2 text-lg font-semibold text-text group-hover:text-strong">{p.title}</span>
                     <span className="mt-2 text-sm text-muted">{p.description}</span>
                     <ol className="mt-4 space-y-1.5 text-sm">
                       {steps.slice(0, 4).map((s, i) => (
@@ -195,7 +195,7 @@ export default function LearnPage() {
             <ul className="mt-5 flex flex-wrap gap-2">
               {starter.map((id) => (
                 <li key={id}>
-                  <Link prefetch={false} href={`/glossary/#${id}`} className="badge px-3 py-1.5 text-[0.875rem] hover:border-cyan hover:text-white">
+                  <Link prefetch={false} href={`/glossary/#${id}`} className="badge px-3 py-1.5 text-[0.875rem] hover:border-cyan hover:text-strong">
                     {glossaryIds.get(id)}
                   </Link>
                 </li>

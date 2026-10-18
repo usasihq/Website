@@ -86,12 +86,12 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
         </p>
       ) : null}
       {trimmed && entries ? (
-        <div className="mt-4 rounded-xl border border-line bg-[rgba(5,8,22,0.85)]">
+        <div className="mt-4 rounded-xl border border-line bg-[var(--field-bg)]">
           {results.length > 0 ? (
-            <ul className="divide-y divide-[rgba(120,180,255,0.12)]" aria-label="Search results">
+            <ul className="divide-y divide-line" aria-label="Search results">
               {results.map((r) => (
                 <li key={`${r.type}-${r.slug}`}>
-                  <Link prefetch={false} href={r.href} className="flex items-start justify-between gap-4 px-4 py-3 hover:bg-[rgba(76,201,255,0.06)]">
+                  <Link prefetch={false} href={r.href} className="flex items-start justify-between gap-4 px-4 py-3 hover:bg-cyan/6">
                     <span className="min-w-0">
                       <span className="block font-medium text-text">{r.name}</span>
                       <span className="line-clamp-1 text-sm text-muted">{r.summary}</span>

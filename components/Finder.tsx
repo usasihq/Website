@@ -30,7 +30,7 @@ function Choice<T extends string>({ label, value, options, onChange }: { label: 
             type="button"
             aria-pressed={value === o.value}
             onClick={() => onChange(o.value)}
-            className={`rounded-lg border px-3 py-2 text-sm transition-colors ${value === o.value ? "border-cyan bg-cyan/10 text-white" : "border-line-strong text-text hover:border-cyan"}`}
+            className={`rounded-lg border px-3 py-2 text-sm transition-colors ${value === o.value ? "border-cyan bg-cyan/10 text-strong" : "border-line-strong text-text hover:border-cyan"}`}
           >
             {o.label}
           </button>
@@ -82,7 +82,7 @@ function Result({ a, names }: { a: Assessment; names: Record<string, string> }) 
         <span className="badge border-line text-muted">{c.tested ? `Tested by USASI ${c.tested.date}` : "Not tested by USASI"}</span>
       </div>
       <h3 className="mt-3 text-lg font-semibold text-text">{c.title}</h3>
-      <p className="mt-2 text-[0.9375rem] text-[#d5def2]">{c.summary.text}</p>
+      <p className="mt-2 text-[0.9375rem] text-body">{c.summary.text}</p>
       <p className="mt-3 text-sm text-muted">
         Uses:{" "}
         {c.components.map((comp, i) => (
@@ -111,7 +111,7 @@ function Result({ a, names }: { a: Assessment; names: Record<string, string> }) 
             ))}
             {a.blockers.map((r) => (
               <li key={r} className="flex gap-2 text-text">
-                <CircleX aria-hidden="true" className="mt-0.5 h-4 w-4 flex-none text-[#ff8fa3]" />
+                <CircleX aria-hidden="true" className="mt-0.5 h-4 w-4 flex-none text-tone-red" />
                 <span>
                   <span className="sr-only">Does not fit: </span>
                   {r}
@@ -290,7 +290,7 @@ export function Finder({ configs, recordHrefs }: { configs: FinderConfig[]; reco
             stays in view while answering and jumps to the results below. */}
         <p
           role="status"
-          className={`sticky bottom-3 z-10 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-line-strong bg-[rgba(5,8,22,0.94)] px-4 py-3 text-sm text-text lg:static lg:bg-transparent ${
+          className={`sticky bottom-3 z-10 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-line-strong bg-float px-4 py-3 text-sm text-text lg:static lg:bg-transparent ${
             state.task ? "" : "sr-only"
           }`}
         >

@@ -77,7 +77,7 @@ function ProductsTable({ products, sources, caption }: { products: Product[]; so
                 <ExternalLink href={p.url}>{p.name}</ExternalLink>
               </th>
               <td className="whitespace-nowrap text-muted">{PRODUCT_KIND_LABELS[p.kind]}</td>
-              <td className="min-w-[16rem] text-[#d5def2]">
+              <td className="min-w-[16rem] text-body">
                 {p.access}
                 <SourceRefs ids={p.source_ids} sources={sources} />
               </td>
@@ -134,7 +134,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
       <JsonLd data={organizationLd(catalog, org)} />
       {org.publication_status === "archived" && org.archive_note ? <ArchivedNotice note={org.archive_note} /> : null}
       <article>
-        <header className="border-b border-line bg-[linear-gradient(180deg,rgba(11,18,36,0.6),transparent)]">
+        <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
             <Breadcrumbs items={[{ href: "/companies/", label: "Companies & Labs" }]} current={{ href: orgHref(org.slug), label: org.name }} />
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
@@ -163,12 +163,12 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                     ) : null}
                   </div>
                 </div>
-                <ClaimText claim={org.summary} sources={s} className="mt-6 max-w-3xl text-lg text-[#d5def2]" />
+                <ClaimText claim={org.summary} sources={s} className="mt-6 max-w-3xl text-lg text-body" />
                 <nav aria-label="On this company page" className="mt-6">
                   <ul className="flex flex-wrap gap-2">
                     {jumpLinks.map((x) => (
                       <li key={x.id}>
-                        <a href={`#${x.id}`} className="badge px-3 py-1 text-sm text-ice hover:border-cyan hover:text-white">
+                        <a href={`#${x.id}`} className="badge px-3 py-1 text-sm text-ice hover:border-cyan hover:text-strong">
                           {x.label}
                         </a>
                       </li>
@@ -182,7 +182,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
 
               <aside aria-label={`${org.name} at a glance`} className="card self-start p-5">
                 <h2 className="eyebrow text-[0.75rem]">At a glance</h2>
-                <dl className="mt-3 divide-y divide-[rgba(120,180,255,0.12)] text-sm">
+                <dl className="mt-3 divide-y divide-line text-sm">
                   {([
                     { label: "Website", value: <ExternalLink href={org.website}>{new URL(org.website).hostname.replace(/^www\./, "")}</ExternalLink> },
                     org.headquarters ? { label: "Headquarters", value: org.headquarters.label } : null,
@@ -252,7 +252,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
 
         <div className="container-page grid gap-12 py-12">
           {org.status_note ? (
-            <div className="rounded-xl border border-[rgba(183,215,255,0.35)] bg-[rgba(183,215,255,0.05)] p-4" role="note">
+            <div className="rounded-xl border border-ice/35 bg-ice/5 p-4" role="note">
               <p className="text-[0.9375rem]">
                 <strong className="font-semibold text-text">Status: </strong>
                 {org.status_note.text}
@@ -325,7 +325,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
             description="An evidence-based summary of what this catalog has documented. It is not a verdict on the organization as a whole."
           >
             {org.openness_summary ? (
-              <ClaimText claim={org.openness_summary} sources={s} className="max-w-3xl text-[#d5def2]" />
+              <ClaimText claim={org.openness_summary} sources={s} className="max-w-3xl text-body" />
             ) : (
               <p className="text-muted">No openness summary has been written for this organization yet.</p>
             )}
@@ -373,7 +373,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                       <h3 className="text-lg font-semibold text-text">
                         {group.label} <span className="meta">({list.length})</span>
                       </h3>
-                      <ul className="mt-3 divide-y divide-[rgba(120,180,255,0.12)] border-y border-line">
+                      <ul className="mt-3 divide-y divide-line border-y border-line">
                         {list.map((a) => {
                           const tier = computeTier(a);
                           return (
@@ -425,7 +425,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
 
           {org.notable_facts.length > 0 ? (
             <Section id="notable" title="Notable documented facts">
-              <ul className="max-w-3xl list-disc space-y-2 pl-5 text-[#d5def2] marker:text-muted">
+              <ul className="max-w-3xl list-disc space-y-2 pl-5 text-body marker:text-muted">
                 {org.notable_facts.map((fact) => (
                   <li key={fact.text}>
                     {fact.text}

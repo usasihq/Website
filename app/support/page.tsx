@@ -16,11 +16,11 @@ function TipAction() {
   const { active, amountLinks } = supportState(config);
   return (
     <div
-      className="mb-10 max-w-3xl rounded-2xl border border-[rgba(76,201,255,0.28)] bg-[linear-gradient(135deg,#0b1428_0%,#081022_100%)] p-6 font-sans"
+      className="mb-10 max-w-3xl rounded-2xl border border-cyan/28 bg-[linear-gradient(135deg,var(--panel-a)_0%,var(--panel-b)_100%)] p-6 font-sans"
       data-support-panel={active ? "active" : "unconfigured"}
     >
       <div className="flex gap-4">
-        <span aria-hidden="true" className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[rgba(76,201,255,0.35)] text-cyan">
+        <span aria-hidden="true" className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cyan/35 text-cyan">
           <Heart className="h-5 w-5" strokeWidth={1.75} />
         </span>
         <div>

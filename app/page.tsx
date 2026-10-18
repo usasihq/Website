@@ -122,7 +122,7 @@ export default function HomePage() {
       <section aria-labelledby="intro-heading" className="relative overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_at_78%_35%,rgba(76,201,255,0.13),transparent_55%)] lg:block"
+          className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_at_78%_35%,rgb(var(--cyan-rgb)/0.13),transparent_55%)] lg:block"
         />
         <div className="container-page relative pb-8 lg:pb-14 lg:pt-12">
           <div className="grid gap-4 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
@@ -176,7 +176,7 @@ export default function HomePage() {
         <div className="container-page pb-8">
           <Link
             href={`/learn/${siExplainer.slug}/`}
-            className="card card-link flex flex-col gap-1 border-[rgba(255,210,122,0.35)] p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-5"
+            className="card card-link flex flex-col gap-1 border-gold/35 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-5"
             data-testid="home-si-explainer"
           >
             <span className="min-w-0">
@@ -230,7 +230,7 @@ export default function HomePage() {
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <span>
-                  <span className="block font-semibold text-text group-hover:text-white">{title}</span>
+                  <span className="block font-semibold text-text group-hover:text-strong">{title}</span>
                   <span className="mt-1 block text-sm text-muted">{text}</span>
                 </span>
               </Link>
@@ -296,7 +296,7 @@ export default function HomePage() {
                 U.S. AI organizations, labs, research units, and foundations: what they build and how their products are delivered.
               </p>
               <p className="meta mt-3">{counts.organizations} organization records</p>
-              <ul className="mt-5 divide-y divide-[rgba(120,180,255,0.12)] border-y border-line">
+              <ul className="mt-5 divide-y divide-line border-y border-line">
                 {pickOrgs.map((o) => (
                   <li key={o.slug}>
                     <Link prefetch={false} href={orgHref(o.slug)} className="flex items-center gap-3 py-3 hover:text-text">
@@ -327,7 +327,7 @@ export default function HomePage() {
                 {counts.modelFamilies} model families · {counts.modelReleases} releases · {counts.software} software · {counts.datasets} datasets · {counts.evals} evaluation
                 tools
               </p>
-              <ul className="mt-5 divide-y divide-[rgba(120,180,255,0.12)] border-y border-line">
+              <ul className="mt-5 divide-y divide-line border-y border-line">
                 {pickArtifacts.map((a) => (
                   <li key={a.slug}>
                     <Link prefetch={false} href={artifactHref(a.slug)} className="flex items-center justify-between gap-3 py-3">
@@ -375,7 +375,7 @@ export default function HomePage() {
               <li key={p.id}>
                 <Link prefetch={false} href={`/learn/paths/${p.id}/`} className="card card-link group flex h-full flex-col p-4">
                   <Route aria-hidden="true" className="h-5 w-5 text-cyan" />
-                  <span className="mt-3 font-semibold text-text group-hover:text-white">{p.title}</span>
+                  <span className="mt-3 font-semibold text-text group-hover:text-strong">{p.title}</span>
                   <span className="mt-1 text-sm text-muted">{p.audience}</span>
                   <span className="mt-auto pt-4 text-xs uppercase tracking-[0.08em] text-ice">
                     {availableSteps(p, new Set(catalog.hubs.map((h) => h.slug))).length} steps
