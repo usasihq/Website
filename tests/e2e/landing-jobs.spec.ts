@@ -55,7 +55,7 @@ test("the full list in the directory is the same set of listings", async ({ page
   await loaded;
   await expect(page).toHaveURL(/\/jobs\/\?state=CA&sort=newest$/);
   await expect(page.getByLabel("U.S. state named in location", { exact: true })).toHaveValue("CA");
-  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  await expect(page.getByText(new RegExp(`^Showing [\\d,]+ of ${count.toLocaleString("en-US")} matching positions?$`))).toBeVisible();
 });
 
 test("a city page sits under its state, and its full list in the directory is the same set", async ({ page }) => {
@@ -79,7 +79,7 @@ test("a city page sits under its state, and its full list in the directory is th
   await loaded;
   await expect(page).toHaveURL(/\/jobs\/\?state=CA&city=san-francisco&sort=newest$/);
   await expect(page.getByTestId("jobs-city-filter")).toContainText("City: San Francisco, CA");
-  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  await expect(page.getByText(new RegExp(`^Showing [\\d,]+ of ${count.toLocaleString("en-US")} matching positions?$`))).toBeVisible();
   await page.getByRole("button", { name: "Show all of California" }).click();
   await expect(page).toHaveURL(/\/jobs\/\?state=CA&sort=newest$/);
 });
@@ -170,7 +170,7 @@ test("a role page answers first, lists employers, and matches the directory", as
   await loaded;
   await expect(page).toHaveURL(/\/jobs\/\?role=forward-deployed-engineer&where=all&sort=newest$/);
   await expect(page.getByTestId("jobs-role-filter")).toContainText("Forward Deployed Engineer");
-  await expect(page.getByText(new RegExp(`^Showing \\d+ of ${count} matching positions?$`))).toBeVisible();
+  await expect(page.getByText(new RegExp(`^Showing [\\d,]+ of ${count.toLocaleString("en-US")} matching positions?$`))).toBeVisible();
   expect((await request.get("/jobs/role/not-a-role/")).status()).toBe(404);
 });
 

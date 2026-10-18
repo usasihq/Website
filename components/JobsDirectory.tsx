@@ -115,7 +115,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   const pageCount = all ? Math.max(1, Math.ceil(results.length / 30)) : 1, page = Math.min(f.page, pageCount);
   const visible = results.slice((page - 1) * 30, page * 30);
   // Until the full list arrives there is only one page of 30, so the page count is not announced yet.
-  const announce = useDebounced(waiting ? "Loading all positions." : all ? `${total} matching positions. Page ${page} of ${pageCount}.` : `Showing the newest ${visible.length} of ${total} positions. Loading the full list.`);
+  const announce = useDebounced(waiting ? "Loading all positions." : all ? `${total.toLocaleString("en-US")} matching positions. Page ${page} of ${pageCount}.` : `Showing the newest ${visible.length} of ${total.toLocaleString("en-US")} positions. Loading the full list.`);
   const set = (patch: Partial<JobFilters>, mode: "push" | "replace" = "push") => update({ ...f, page: 1, ...patch }, mode);
   // Departments mean something only within one employer, so the menu lists the chosen employer's.
   const departments = useMemo(() => f.company ? [...new Set(items.filter(j => j.organization_slug === f.company && j.department).map(j => j.department!))]
