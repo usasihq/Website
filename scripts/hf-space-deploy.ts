@@ -9,8 +9,8 @@ import path from "node:path";
 import { HF_JOBS_SPACE } from "../lib/jobs/hf-dataset";
 import { commitHubFiles, ensureHubRepo, hfAccessToken, readUploadFiles, setHubSpaceSdk } from "./hf-push";
 
-# Always addOrUpdate these so a failed first commit still overwrites the
-# default static-Space template (index.html + style.css). style.css is used.
+// Always addOrUpdate these so a failed first commit still overwrites the
+// default static-Space template (index.html + style.css). style.css is used.
 const SPACE_FILES = ["README.md", "index.html", "app.js", "style.css"] as const;
 const REMOVE_STALE_FILES = ["app.py", "requirements.txt"];
 
