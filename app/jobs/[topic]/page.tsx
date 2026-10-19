@@ -4,6 +4,7 @@ import { getCatalog } from "@/lib/catalog";
 import { jobLandingImage, topicAndStateLinks } from "@/lib/jobs/landing-links";
 import { jobsLandingData, TOPIC_IDS } from "@/lib/jobs/landing";
 import { pageMetadata } from "@/lib/metadata";
+import { jobFeedPath } from "@/lib/jobs/feeds";
 
 export const dynamicParams = false;
 
@@ -16,7 +17,7 @@ const topicPage = (topic: string) => jobsLandingData(getCatalog()).topics.find((
 export async function generateMetadata({ params }: { params: Promise<{ topic: string }> }) {
   const page = topicPage((await params).topic);
   if (!page) return {};
-  return pageMetadata({ title: page.title, description: page.description, path: page.path, noindex: !page.indexable, image: jobLandingImage(page) });
+  return pageMetadata({ title: page.title, description: page.description, path: page.path, noindex: !page.indexable, image: jobLandingImage(page), feeds: [{ path: jobFeedPath(page.path), title: `USASI — ${page.h1}` }] });
 }
 
 export default async function JobsTopicPage({ params }: { params: Promise<{ topic: string }> }) {

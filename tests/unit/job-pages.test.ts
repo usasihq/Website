@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { decodeEntities, descriptionHtml, htmlToDescription, type Description } from "@/lib/jobs/description";
 import { JOB_META_MAX, jobMetaDescription, jobPageTitle, renderJobPage } from "@/lib/jobs/job-page-html";
-import { assignTitleSuffixes, jobPostingLd, postalAddresses, type JobPage } from "@/lib/jobs/job-pages";
+import { assignTitleSuffixes, clipWords, jobPostingLd, locationLabel, postalAddresses, titlePlaces, type JobPage } from "@/lib/jobs/job-pages";
 import { jobHref, jobSlug, shortCode, titleSlug } from "@/lib/jobs/job-url";
 import type { Job } from "@/lib/jobs/schema";
 import type { Organization } from "@/lib/schema";
@@ -218,34 +218,62 @@ describe("job page meta description", () => {
   });
 });
 
-describe("duplicate job titles", () => {
-  it("adds the location (and the posting ID when locations match) so titles at one employer are unique", () => {
+describe("job page titles", () => {
+  it("read \"{Title} at {Employer} ({City, ST})\", with Remote and +N locations", () => {
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["San Francisco, California, United States"] })))).toBe("Research Engineer at Acme AI (San Francisco, CA)");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["San Francisco, CA", "New York, NY", "Seattle, WA"] })))).toBe(
+      "Research Engineer at Acme AI (San Francisco, CA +2 locations)",
+    );
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["Remote - US"], workplace: "remote" })))).toBe("Research Engineer at Acme AI (Remote)");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: [], workplace: "remote" })))).toBe("Research Engineer at Acme AI (Remote)");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: [], workplace: "unknown" })))).toBe("Research Engineer at Acme AI");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["California"] })))).toBe("Research Engineer at Acme AI (California)");
+  });
+
+  it("shortens by dropping parts, and cuts a long title only at a word, never leaving half a parenthesis", () => {
+    const long = page(job({ title: "Senior Staff Platform Engineer, Machine Learning Infrastructure and Developer Productivity", locations: ["San Diego, California, United States"] }));
+    const t = jobPageTitle(long);
+    expect(t.length).toBeLessThanOrEqual(70);
+    expect(t).not.toMatch(/ref\./);
+    expect(t).toMatch(/…/);
+    const words = long.job.title.split(" ");
+    const kept = t.replace(/… at Acme AI$/, "").replace(/…$/, "").split(" ");
+    // Every kept word is a whole word of the original title.
+    kept.forEach((w, i) => expect(w).toBe(words[i]));
+    expect(clipWords("Senior Solutions Architect (EDW Enterprise Data Warehouse) Team Lead", 45)).toBe("Senior Solutions Architect…");
+    expect(clipWords("Short", 45)).toBe("Short");
+    expect(locationLabel(["Remote", "Austin, TX"])).toBe("Remote +1 location");
+    expect(titlePlaces({ locations: ["Austin, TX", "Austin, Texas"], workplace: "on-site" })).toEqual(["Austin, TX"]);
+  });
+
+  it("are unique at one employer: every place first, then the requisition or posting ID", () => {
     const a = page(job({ id: "acme-ai:greenhouse:acme:1", source_job_id: "1", title: "Account Executive", locations: ["New York, NY"] }));
     const b = page(job({ id: "acme-ai:greenhouse:acme:2", source_job_id: "2", title: "Account Executive", locations: ["Austin, TX"] }));
     const c = page(job({ id: "acme-ai:greenhouse:acme:3", source_job_id: "3", title: "Account Executive", locations: ["Austin, TX"] }));
+    const d = page(job({ id: "acme-ai:greenhouse:acme:5", source_job_id: "5", title: "Engineer", locations: ["Austin, TX", "Boston, MA"] }));
+    const e = page(job({ id: "acme-ai:greenhouse:acme:6", source_job_id: "6", title: "Engineer", locations: ["Austin, TX", "Denver, CO"] }));
     const solo = page(job({ id: "acme-ai:greenhouse:acme:4", source_job_id: "4", title: "Researcher" }));
-    const pages = [a, b, c, solo];
-    const slugs = pages.map((p) => p.slug);
+    const pages = [a, b, c, d, e, solo];
     assignTitleSuffixes(pages);
-    expect(pages.map((p) => p.slug)).toEqual(slugs);
-    expect(a.titleSuffix).toBe("New York, NY");
-    expect(b.titleSuffix).toBe("Austin, TX");
-    expect(b.titleId).toBe("ID 2");
+    expect(jobPageTitle(a)).toBe("Account Executive at Acme AI (New York, NY)");
     expect(a.titleId).toBeNull();
-    expect(solo.titleSuffix).toBeNull();
+    expect(b.titleId).toBe("ID 2");
+    expect(jobPageTitle(b)).toBe("Account Executive at Acme AI (Austin, TX) · ID 2");
+    expect(jobPageTitle(d)).toBe("Engineer at Acme AI (Austin, TX · Boston, MA)");
+    expect(jobPageTitle(e)).toBe("Engineer at Acme AI (Austin, TX · Denver, CO)");
+    expect(solo.titleText).toBeNull();
     const titles = pages.map(jobPageTitle);
     expect(new Set(titles).size).toBe(titles.length);
-    expect(jobPageTitle(a)).toBe("Account Executive at Acme AI, New York, NY");
     for (const t of titles) expect(t.length).toBeLessThanOrEqual(70);
   });
 
   it("prefers the requisition, and falls back to the page code for long posting IDs", () => {
-    const wd = (n: number, req: string | null) =>
+    const make = (n: number, req: string | null) =>
       page(job({ id: `acme-ai:workday:acme:Engineer_R${n}`, source_job_id: `Very-Long-Workday-Posting-Name_R${n}`, requisition_id: req, title: "Engineer", locations: ["Austin, TX"] }));
-    const withReq = [wd(1, "R1"), wd(2, "R2")];
+    const withReq = [make(1, "R1"), make(2, "R2")];
     assignTitleSuffixes(withReq);
     expect(withReq.map((p) => p.titleId)).toEqual(["Req. R1", "Req. R2"]);
-    const noReq = [wd(3, null), wd(4, null)];
+    const noReq = [make(1, null), make(2, null)];
     assignTitleSuffixes(noReq);
     expect(noReq.every((p) => /^ref\. [0-9a-z]{7}$/.test(p.titleId!))).toBe(true);
     expect(noReq[0].slug.endsWith(noReq[0].titleId!.slice(5))).toBe(true);
@@ -264,16 +292,6 @@ describe("duplicate job titles", () => {
     const titles = all.map(jobPageTitle);
     expect(new Set(titles).size).toBe(titles.length);
     for (const t of titles) expect(t.length).toBeLessThanOrEqual(70);
-  });
-
-  it("keeps the suffix when the title is long", () => {
-    const t = "Senior Staff Software Engineer, Machine Learning Infrastructure and Developer Productivity";
-    const a = page(job({ id: "acme-ai:greenhouse:acme:1", title: t, locations: ["San Francisco, CA"] }));
-    const b = page(job({ id: "acme-ai:greenhouse:acme:2", title: t, locations: ["Seattle, WA"] }));
-    assignTitleSuffixes([a, b]);
-    expect(jobPageTitle(a)).toMatch(/, San Francisco, CA$/);
-    expect(jobPageTitle(b)).toMatch(/, Seattle, WA$/);
-    expect(jobPageTitle(a).length).toBeLessThanOrEqual(70);
   });
 });
 

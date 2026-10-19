@@ -13,6 +13,8 @@ import { US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
 import { siteConfig, mailtoHref } from "@/lib/site-config";
 import { ExternalLink } from "./ExternalLink";
+import { JobsFollow } from "./JobsFollow";
+import type { FollowFeed } from "@/lib/jobs/feed-match";
 import { jobHref } from "@/lib/jobs/job-url";
 import { decodeJobs, type SlimJobs } from "@/lib/jobs/slim";
 import { asset } from "@/lib/paths";
@@ -89,7 +91,7 @@ const SCOPE_OPTIONS = LOCATION_SCOPES.filter(v => v !== DEFAULT_LOCATION_SCOPE).
 const options = (values: string[], labels?: Record<string, string>) => [...new Set(values)].sort((a,b) => a.localeCompare(b,"en")).map(value => ({ value, label: labels?.[value] ?? value }));
 /** currentCount: every current listing (all countries); defaultCount: the default view (U.S. or location not stated). */
 export type JobsSummary = { currentCount: number; defaultCount: number; organizationCount: number; currencies: string[]; periods: string[] };
-export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf, browse = null, shortcuts = [] }: { initial: JobItem[]; summary: JobsSummary; dataUrl: string; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string; browse?: ReactNode; shortcuts?: JobShortcut[] }) {
+export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf, browse = null, shortcuts = [], follow = null }: { initial: JobItem[]; summary: JobsSummary; dataUrl: string; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string; browse?: ReactNode; shortcuts?: JobShortcut[]; follow?: { feeds: FollowFeed[]; fallback: FollowFeed } | null }) {
   const now = useJobsClock(asOf);
   const { state: f, update } = useQueryState(parseJobFilters, serializeJobFilters);
   // The page embeds the first 30 listings; the full list loads after first paint.
@@ -273,6 +275,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
         {uncollected ? <div className="card mt-4 p-6" data-testid="jobs-uncollected" role="note"><h2 className="text-lg font-semibold text-text">{uncollected.name}&rsquo;s jobs aren&rsquo;t collected automatically</h2><p className="mt-2 text-muted">{uncollected.note ?? "USASI has no automated source for this organization's job board."} Its openings are on its own careers page{uncollected.url ? <>: <ExternalLink href={uncollected.url}>{uncollected.name} careers</ExternalLink></> : "."}</p></div> : null}
         <div className="mt-4">{waiting ? <div className="card p-8 text-muted" aria-busy="true">Loading all positions…</div> : visible.length ? <ul className="grid gap-3">{visible.map(job => <li key={job.id}><JobCard job={job} unverified={f.view === "unverified"} now={now} careersUrl={careers.get(job.organization_slug) ?? null} /></li>)}</ul> : uncollected ? null : <div className="card p-8"><h2 className="text-xl text-text">No positions match this view</h2><p className="mt-3 text-muted">This does not mean the organization has no openings. It may have no automated source, a source needing attention, or no matching listings. Try removing a filter, or use the official careers links below.</p></div>}</div>
         {pageCount > 1 ? <nav aria-label="Job results pages" className="my-6 flex flex-wrap items-center justify-center gap-4"><button className="btn btn-secondary" disabled={page === 1} onClick={() => { set({page: page-1}); document.getElementById("job-results")?.scrollIntoView({ block: "start" }); }}>Previous</button><span className="text-sm text-muted">Page {page} of {pageCount}</span><button className="btn btn-secondary" disabled={page === pageCount} onClick={() => { set({page: page+1}); document.getElementById("job-results")?.scrollIntoView({ block: "start" }); }}>Next</button></nav> : null}
+        {follow ? <JobsFollow filters={f} feeds={follow.feeds} fallback={follow.fallback} /> : null}
       </section>
     </div>
     {browse}

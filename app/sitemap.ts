@@ -5,6 +5,7 @@ import { githubSitemap } from "@/lib/github/projects";
 import { hfSitemap } from "@/lib/huggingface/items";
 import { jobLandingSitemap } from "@/lib/jobs/landing-links";
 import { layoffSitemap } from "@/lib/jobs/layoffs";
+import { paySitemap } from "@/lib/jobs/pay";
 import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
 import { EXPLAINERS, LEARNING_PATHS } from "@/lib/learn";
 import { absoluteUrl } from "@/lib/paths";
@@ -55,8 +56,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...githubSitemap().map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // AI on Hugging Face: the datasets index, ranking pages, and item pages, dated by the last Hub API fetch.
     ...hfSitemap().map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
-    // Jobs landing pages change daily; they carry the date of their listings' last successful check.
+    // Jobs landing pages (only those with enough listings to index), dated by the newest listing they gained.
     ...jobLandingSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
+    // AI pay role pages, dated by the newest listing with pay.
+    ...paySitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // WARN Act layoff pages, dated by the last successful fetch of that state's notices.
     ...layoffSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
   ];

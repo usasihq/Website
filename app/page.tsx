@@ -407,9 +407,14 @@ export default function HomePage() {
                   </li>
                 ))}
               </ol>
-              <Link prefetch={false} href="/news/" className="link mt-4 inline-flex items-center gap-1">
-                All news <ArrowRight aria-hidden="true" className="h-4 w-4" />
-              </Link>
+              <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                <Link prefetch={false} href="/news/" className="link inline-flex items-center gap-1">
+                  All news <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </Link>
+                <Link prefetch={false} href="/new/" className="link inline-flex items-center gap-1" data-testid="home-new-link">
+                  New this week <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                </Link>
+              </p>
             </div>
             <div className="lg:pt-10">
               <NewsletterSignup />

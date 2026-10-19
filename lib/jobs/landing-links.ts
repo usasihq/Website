@@ -121,9 +121,12 @@ export function jobLandingSearchEntries(catalog: Catalog): SearchEntry[] {
   }));
 }
 
-/** Sitemap entries for the indexable landing pages, dated by their last successful check. */
+/**
+ * Sitemap entries for the indexable landing pages, dated by the newest first_seen among their
+ * listings (when the page last gained a listing), never by the build or the last check.
+ */
 export function jobLandingSitemap(catalog: Catalog): { path: string; lastModified: string | undefined }[] {
   return jobsLandingData(catalog)
     .all.filter((p) => p.indexable)
-    .map((p) => ({ path: p.path, lastModified: p.lastChecked?.slice(0, 10) }));
+    .map((p) => ({ path: p.path, lastModified: p.newestFirstSeen?.slice(0, 10) }));
 }
