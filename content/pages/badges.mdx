@@ -1,22 +1,31 @@
-<h2 id="what">What the badge says</h2>
+<h2 id="what">What the badges say</h2>
 
-The badge says that a project or organization has an entry in the USASI catalog, an independent, sourced reference on U.S. AI organizations and U.S.-led open models and tools. Clicking it opens that entry, where every statement cites its source.
+There are two kinds.
 
-It is not an endorsement, a rating, a certification, a safety assessment, or a federal approval. It does not show an openness tier or a license, and it looks the same for every entry. USASI is an independent project and is not a United States government website.
+The **listed** badge says that a project or organization has an entry in the USASI catalog, an independent, sourced reference on U.S. AI organizations and U.S.-led open models and tools. Clicking it opens that entry, where every statement cites its source. It is not an endorsement, a rating, a certification, a safety assessment, or a federal approval. It does not show an openness tier or a license, and it looks the same for every entry.
+
+The **rank** badge shows a project's place on [AI on GitHub](/github/) or a model's place on [AI on Hugging Face](/huggingface/), for example "USASI · GitHub #104". Clicking it opens that exact page. Ranks are by GitHub stars or Hub likes, which measure popularity, not quality or safety, and they change when the lists are refreshed. A listing is not an endorsement. USASI is an independent project and is not a United States government website.
 
 <h2 id="get">Getting the code</h2>
 
-Every organization and open model or tool page has a "Share or cite this page" box near the end. Open "For maintainers" there to copy Markdown for a README or HTML for a website. Both link the badge to that page. Please use the code from your own entry, so the badge leads readers to the right record.
+**Catalog records.** Every organization and open model or tool page has a "Share or cite this page" box near the end. Open "For maintainers" there to copy Markdown for a README or HTML for a website. Both link the listed badge to that page.
+
+**GitHub projects and Hugging Face models.** Every [AI on GitHub](/github/) project page and every [AI on Hugging Face](/huggingface/) model page has an "Add this badge to your README" box with a preview and the same Markdown and HTML snippets. The image is a static SVG at a stable address:
+
+- GitHub: `https://unitedstatesofamericasuperintelligence.com/badges/github/<owner>--<repo>.svg`
+- Hugging Face models: `https://unitedstatesofamericasuperintelligence.com/badges/huggingface/<author>--<name>.svg`
+
+The slug is the same as the page URL (`/github/openai--codex/` uses `/badges/github/openai--codex.svg`). Please use the code from your own page, so the badge leads readers to the right record.
 
 <h2 id="rules">A few rules</h2>
 
-- Use the badge only for the entry it links to.
-- If the entry is archived or removed, please remove the badge.
-- If something in the entry is wrong, [send a correction](/contribute/#corrections) with a primary source. Corrections never depend on whether a project shows the badge.
-- Showing the badge has no effect on whether or how anything is listed. See [how entries are chosen](/methodology/).
+- Use a badge only for the page it links to.
+- If the entry is archived or removed, or a project or model leaves the ranking, please remove the badge.
+- If something in a catalog entry is wrong, [send a correction](/contribute/#corrections) with a primary source. Corrections never depend on whether a project shows the badge.
+- Showing a badge has no effect on whether or how anything is listed. See [how entries are chosen](/methodology/).
 
-Not listed yet? See [how to suggest an entry](/contribute/).
+Not listed yet? See [how to suggest an entry](/contribute/). GitHub and Hugging Face pages are machine-collected rankings, not catalog reviews; [how those lists are made](/methodology/#github).
 
 <h2 id="privacy">Privacy</h2>
 
-The badge is a small image file served from this site. When someone views a page that shows it, their browser requests the image from this site's host like any other file. On GitHub, GitHub's own image proxy makes that request instead. USASI keeps no separate record of these requests. See the [privacy page](/privacy/#share).
+Each badge is a small image file served from this site. When someone views a page that shows it, their browser requests the image from this site's host like any other file. On GitHub, GitHub's own image proxy makes that request instead. USASI keeps no separate record of these requests. See the [privacy page](/privacy/#share).

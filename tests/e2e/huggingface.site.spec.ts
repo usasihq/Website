@@ -80,6 +80,13 @@ test("a model page has its hero image, facts, Hub link, and structured data", as
   await expect(page.getByRole("heading", { name: "Model facts" })).toBeVisible();
   await expect(page.locator("main")).toContainText("Downloads (last 30 days)");
   await expect(page.locator("main")).toContainText(top.downloads_30d.toLocaleString("en-US"));
+  const badge = page.getByTestId("rank-badge");
+  await expect(badge.getByRole("heading", { name: "Add this badge to your README" })).toBeVisible();
+  await expect(badge.locator("img").first()).toHaveAttribute("src", `/badges/huggingface/${slug}.svg`);
+  await expect(badge.locator("pre").first()).toContainText(`/badges/huggingface/${slug}.svg`);
+  const svg = await page.request.get(`/badges/huggingface/${slug}.svg`);
+  expect(svg.status()).toBe(200);
+  expect(await svg.text()).toContain("Models #1");
   const ld = await page.locator('script[type="application/ld+json"]').allTextContents();
   const code = ld.map((t) => JSON.parse(t)).find((d) => d["@type"] === "SoftwareSourceCode");
   expect(code.codeRepository).toBe(`https://huggingface.co/${top.id}`);
@@ -99,6 +106,7 @@ test("a dataset page has Dataset structured data and its Hub link", async ({ pag
   await expect(page.locator("h1")).toHaveText(topDataset.name);
   await expect(page.locator("main figure img")).toHaveAttribute("src", `/og/huggingface/datasets/${slug}.jpg`);
   await expect(page.getByRole("link", { name: /^View on Hugging Face/ })).toHaveAttribute("href", `https://huggingface.co/datasets/${topDataset.id}`);
+  await expect(page.getByTestId("rank-badge")).toHaveCount(0);
   const ld = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((t) => JSON.parse(t));
   const ds = ld.find((d) => d["@type"] === "Dataset");
   expect(ds.url).toBe(`https://huggingface.co/datasets/${topDataset.id}`);

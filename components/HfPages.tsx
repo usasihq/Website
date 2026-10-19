@@ -4,6 +4,7 @@ import { GithubPagination } from "@/components/GithubList";
 import { HfDirectory } from "@/components/HfDirectory";
 import { HfRow, HfRows, HfTabs } from "@/components/HfList";
 import { JsonLd } from "@/components/JsonLd";
+import { RankBadgeBox } from "@/components/RankBadgeBox";
 import { Breadcrumbs, PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
@@ -399,6 +400,8 @@ export function HfItemPage({ e }: { e: HfEntry }) {
               </Link>
             </p>
           </section>
+
+          {e.kind === "model" ? <RankBadgeBox kind="huggingface" slug={e.slug} rank={e.rank} pagePath={e.href} /> : null}
 
           {derived.length ? (
             <section aria-labelledby="derived-heading">

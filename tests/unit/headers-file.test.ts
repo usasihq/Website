@@ -38,7 +38,7 @@ describe("_headers content types", () => {
   });
 
   it("leaves files with their own types alone", () => {
-    for (const url of ["/data/jobs.json", "/data/search-index.json", "/og/jobs/hiring-index.jpg", "/og.png", "/sitemap.xml", "/sitemaps/jobs-1.xml", "/robots.txt", "/_next/static/chunks/a.css", "/news/feed.xml"]) {
+    for (const url of ["/data/jobs.json", "/data/search-index.json", "/og/jobs/hiring-index.jpg", "/og.png", "/sitemap.xml", "/sitemaps/jobs-1.xml", "/robots.txt", "/_next/static/chunks/a.css", "/news/feed.xml", "/badges/listed.svg", "/badges/github/openai--codex.svg"]) {
       expect(contentTypes(url), url).toEqual([]);
     }
     expect(contentTypes("/opensearch.xml")).toEqual(["application/opensearchdescription+xml; charset=utf-8"]);

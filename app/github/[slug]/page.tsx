@@ -4,6 +4,7 @@ import { ArrowRight, Star } from "lucide-react";
 import { GithubRow } from "@/components/GithubList";
 import { JsonLd } from "@/components/JsonLd";
 import { Breadcrumbs } from "@/components/PageHeader";
+import { RankBadgeBox } from "@/components/RankBadgeBox";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
@@ -153,6 +154,8 @@ export default async function GithubProjectPage({ params }: { params: Promise<{ 
               </Link>
             </p>
           </section>
+
+          <RankBadgeBox kind="github" slug={e.slug} rank={e.rank} pagePath={e.href} />
 
           {related.length ? (
             <section aria-labelledby="related-heading">

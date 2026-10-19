@@ -65,6 +65,14 @@ test("a project page has its hero image, facts, GitHub link, and structured data
   await expect(page.getByRole("link", { name: /^View on GitHub/ })).toHaveAttribute("href", `https://github.com/${top.full_name}`);
   await expect(page.getByRole("heading", { name: "Repository facts" })).toBeVisible();
   await expect(page.locator("main")).toContainText(top.stars.toLocaleString("en-US"));
+  const badge = page.getByTestId("rank-badge");
+  await expect(badge.getByRole("heading", { name: "Add this badge to your README" })).toBeVisible();
+  await expect(badge.locator("img").first()).toHaveAttribute("src", `/badges/github/${slug}.svg`);
+  await expect(badge.locator("pre").first()).toContainText(`/badges/github/${slug}.svg`);
+  await expect(badge.locator("pre").first()).toContainText(`/github/${slug}/`);
+  const svg = await page.request.get(`/badges/github/${slug}.svg`);
+  expect(svg.status()).toBe(200);
+  expect(await svg.text()).toContain("GitHub #1");
   await expect(page.getByRole("heading", { name: "Related projects" })).toBeVisible();
   const ld = await page.locator('script[type="application/ld+json"]').allTextContents();
   const code = ld.map((t) => JSON.parse(t)).find((d) => d["@type"] === "SoftwareSourceCode");

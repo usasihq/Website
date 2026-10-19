@@ -101,12 +101,25 @@ const required = [
   "contribute/index.html",
   "support/index.html",
   "privacy/index.html",
+  "badges/index.html",
+  "badges/listed.svg",
   "local/index.html",
   "news/index.html",
   "news/feed.xml",
 ];
 for (const rel of required) {
   if (!fs.existsSync(path.join(out, rel))) failures.push(`missing ${rel}`);
+}
+
+{
+  const countSvg = (sub) => {
+    const dir = path.join(out, "badges", sub);
+    return fs.existsSync(dir) ? fs.readdirSync(dir).filter((n) => n.endsWith(".svg")).length : 0;
+  };
+  const gh = countSvg("github");
+  const hf = countSvg("huggingface");
+  if (gh < 500) failures.push(`expected hundreds of GitHub rank badges, found ${gh}`);
+  if (hf < 500) failures.push(`expected hundreds of Hugging Face rank badges, found ${hf}`);
 }
 
 // Any record that is not active (published + eligible) must not appear as a

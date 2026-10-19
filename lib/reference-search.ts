@@ -61,7 +61,7 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/report/", name: "The State of American AI", summary: "A dated, data-driven report on what the catalog records: organizations, open models and licenses, local AI, jobs, and policy, with CSV and JSON downloads.", keywords: "report state of american ai statistics numbers figures data research edition annual monthly cite journalists" },
   { href: "/reuse/", name: "Data & reuse", summary: "Download the catalog and reuse it under CC BY 4.0.", keywords: "data download csv json api dataset license reuse" },
   { href: "/feeds/", name: "RSS feeds", summary: "Subscribe to news, changes, and topics in a feed reader.", keywords: "rss atom feeds subscribe" },
-  { href: "/badges/", name: "Badges for maintainers", summary: "A badge maintainers can add to show their project is listed.", keywords: "badge maintainers readme listed" },
+  { href: "/badges/", name: "Badges for maintainers", summary: "Badges maintainers can add to a README: listed in the catalog, or a rank on AI on GitHub or Hugging Face.", keywords: "badge maintainers readme listed rank github huggingface" },
   { href: "/changelog/", name: "Changelog", summary: "What changed in the catalog and on the site, by date.", keywords: "changes updates history log" },
   { href: "/support/", name: "Support USASI", summary: "Optional tips, the sponsorship policy, and other ways to help.", keywords: "support tip donate help sponsorship" },
   { href: "/privacy/", name: "Privacy", summary: "What the site does with information: no cookies, no accounts.", keywords: "privacy cookies tracking analytics data" },
