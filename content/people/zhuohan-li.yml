@@ -1,0 +1,95 @@
+slug: zhuohan-li
+name: Zhuohan Li
+initials: ZL
+groups: [open-source, engineering]
+sector: corporate
+specialties: [inference, training-systems]
+headline: Co-creator and lead maintainer of vLLM; AI Research Scientist at Meta focusing on inference
+bio:
+  text: >-
+    Zhuohan Li co-created vLLM, the open-source engine for serving large language models, and co-leads
+    its development; the project's governance document lists Zhuohan Li among the lead maintainers
+    responsible for its overall direction. Zhuohan Li is the second author of the paper that introduced
+    vLLM and its PagedAttention approach to KV cache memory. Zhuohan Li is an AI Research Scientist at
+    Meta focusing on inference, and was previously a Member of Technical Staff at OpenAI, where
+    Zhuohan Li led infrastructure and inference work for gpt-oss.
+  source_ids: [personal-site, vllm-governance, pagedattention-paper]
+  reviewed_at: 2026-10-19
+affiliations:
+  - name: Meta
+    organization_slug: meta
+    role: AI Research Scientist
+    current: true
+    source_ids: [personal-site, github-profile]
+  - name: vLLM project
+    organization_slug: null
+    role: Lead maintainer and project lead (RL integration, numerics)
+    current: true
+    source_ids: [vllm-governance, vllm-committers]
+  - name: OpenAI
+    organization_slug: openai
+    role: Member of Technical Staff
+    current: false
+    source_ids: [personal-site]
+work:
+  - name: vLLM
+    artifact_slug: vllm
+    type: open-source
+    url: https://github.com/vllm-project/vllm
+    contribution: >-
+      Co-created vLLM and co-leads its development; second author of the PagedAttention paper that
+      introduced the system, and listed as a lead maintainer and project lead in the project's
+      governance and committers documents.
+    source_ids: [personal-site, pagedattention-paper, vllm-governance, vllm-committers]
+  - name: gpt-oss
+    artifact_slug: gpt-oss
+    type: open-weights
+    url: https://github.com/openai/gpt-oss
+    contribution: >-
+      Led infrastructure and inference work for gpt-oss while a Member of Technical Staff at OpenAI,
+      according to Zhuohan Li's homepage.
+    source_ids: [personal-site]
+links:
+  - label: Website
+    url: https://zhuohan.li
+  - label: GitHub
+    url: https://github.com/zhuohan123
+publication_status: published
+updated_at: 2026-10-19
+last_reviewed: 2026-10-19
+sources:
+  - id: personal-site
+    title: Zhuohan Li — homepage (about, projects, experience)
+    url: https://zhuohan.li
+    publisher: Zhuohan Li
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-19
+  - id: github-profile
+    title: zhuohan123 (Zhuohan Li) on GitHub
+    url: https://github.com/zhuohan123
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-19
+  - id: vllm-governance
+    title: vLLM governance process (project leads and lead maintainers)
+    url: https://github.com/vllm-project/vllm/blob/main/docs/governance/process.md
+    publisher: vLLM project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-19
+  - id: vllm-committers
+    title: vLLM committers and areas of expertise
+    url: https://github.com/vllm-project/vllm/blob/main/docs/governance/committers.md
+    publisher: vLLM project
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-19
+  - id: pagedattention-paper
+    title: Efficient Memory Management for Large Language Model Serving with PagedAttention (arXiv 2309.06180)
+    url: https://arxiv.org/abs/2309.06180
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-09-12
+    accessed_at: 2026-10-19

@@ -1,0 +1,81 @@
+slug: ian-buck
+name: Ian Buck
+initials: IB
+groups: [leadership, engineering]
+sector: corporate
+specialties: [hardware, ml-frameworks, inference]
+headline: Vice president of hyperscale and HPC at NVIDIA; described by NVIDIA as the inventor of CUDA
+bio:
+  text: >-
+    Ian Buck is vice president of hyperscale and high-performance computing at NVIDIA, where, as head of
+    product for hyperscale AI, Buck manages NVIDIA's AI hardware and software products. NVIDIA's author
+    page describes Buck as the inventor of CUDA and says Buck joined NVIDIA in 2004 after completing a
+    PhD in computer science at Stanford University, where Buck was development lead for Brook, the
+    forerunner to generalized computing on GPUs. Buck is the first author of the 2004 paper Brook for
+    GPUs, which presents a compiler and runtime for general-purpose computation on programmable graphics
+    hardware.
+  source_ids: [nvidia-author, nvidia-vera-2026, brook-paper, brook-project]
+  reviewed_at: 2026-10-19
+affiliations:
+  - name: NVIDIA
+    organization_slug: nvidia
+    role: Vice President of Hyperscale and High-Performance Computing
+    current: true
+    source_ids: [nvidia-author, nvidia-vera-2026]
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: PhD student in computer science; development lead for Brook
+    current: false
+    source_ids: [nvidia-author, brook-project]
+work:
+  - name: CUDA
+    artifact_slug: null
+    type: null
+    url: null
+    contribution: >-
+      NVIDIA's author page describes Buck as the inventor of CUDA and says Buck helped kickstart the use of graphics processors for general-purpose computing.
+    source_ids: [nvidia-author]
+  - name: Brook for GPUs (BrookGPU)
+    artifact_slug: null
+    type: open-research
+    url: https://graphics.stanford.edu/papers/brookgpu/
+    contribution: >-
+      First author of "Brook for GPUs: Stream Computing on Graphics Hardware" (SIGGRAPH 2004), which
+      extends C with data-parallel constructs and presents a compiler and runtime that use the GPU as a
+      streaming coprocessor; NVIDIA's page says Buck was the development lead for Brook at Stanford.
+    source_ids: [brook-paper, brook-project, nvidia-author]
+links:
+  - label: NVIDIA Blog author page
+    url: https://blogs.nvidia.com/blog/author/ian-buck/
+publication_status: published
+updated_at: 2026-10-19
+last_reviewed: 2026-10-19
+sources:
+  - id: nvidia-author
+    title: Ian Buck — author page on the NVIDIA Blog
+    url: https://blogs.nvidia.com/blog/author/ian-buck/
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-19
+  - id: nvidia-vera-2026
+    title: "AI Innovators Adopt NVIDIA Vera — Why Max Single-Threaded CPU at Scale Matters (byline Ian Buck)"
+    url: https://blogs.nvidia.com/blog/nvidia-vera-max-single-threaded-cpu-at-scale/
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2026-07-07
+    accessed_at: 2026-10-19
+  - id: brook-paper
+    title: "Brook for GPUs: Stream Computing on Graphics Hardware (Stanford Graphics Lab paper page)"
+    url: https://graphics.stanford.edu/papers/brookgpu/
+    publisher: Stanford University Computer Graphics Laboratory
+    kind: paper
+    published_at: "2004"
+    accessed_at: 2026-10-19
+  - id: brook-project
+    title: BrookGPU project page (Stanford University Graphics Lab)
+    url: https://graphics.stanford.edu/projects/brookgpu/
+    publisher: Stanford University Computer Graphics Laboratory
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-19

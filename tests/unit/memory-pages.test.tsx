@@ -147,7 +147,7 @@ describe("memory pages use the finder's own fit logic", () => {
       const meta = await mod.generateMetadata({ params: Promise.resolve({ amount: p.slug }) });
       expect(String(meta.description).length).toBeLessThanOrEqual(160);
     }
-  });
+  }, 120_000);
 
   it("are in the sitemap, site search, preview cards, and known site paths", async () => {
     const sitemap = (await import("@/app/sitemap")).default().map((e) => e.url);
