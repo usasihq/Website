@@ -16,7 +16,9 @@ jobs:
   refresh:
     if: github.ref == 'refs/heads/main' && vars.JOBS_REFRESH == 'true' && vars.CLOUDFLARE_DEPLOY == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Same budget as CI. A cache miss redraws ~15,000 GitHub/Hugging Face
+    # heroes in Chromium (~50 minutes); the jobs refresh can take 22.
+    timeout-minutes: 120
     environment: production
     steps:
       - uses: actions/checkout@v7
@@ -91,10 +93,19 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
-      # prepare:cards (part of `npm run build`) launches Chromium to render OG
-      # cards when job counts or landing pages change after a refresh.
+      # prepare:cards launches Chromium. Job-landing cards change after a
+      # refresh; the ~15,000 GitHub/Hugging Face heroes do not, and must come
+      # from the same Actions cache as ci.yml or a cold build takes ~50 minutes.
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
+      - name: Restore rendered cards and hero images
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache
+            public/og
+          key: og-${{ hashFiles('lib/page-cards.ts', 'scripts/page-cards.ts', 'scripts/hero-render.ts', 'scripts/github-heroes.ts', 'scripts/hf-heroes.ts', 'data/github/projects.json', 'data/huggingface/*.json') }}
+          restore-keys: og-
       - name: Build static production snapshot
         run: npm run build
         env:
