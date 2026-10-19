@@ -52,9 +52,8 @@ export function citations({ title, url, date, key }: { title: string; url: strin
   return { apa, bibtex };
 }
 
-/** Markdown and HTML snippets for the "Listed in USASI" badge, linking to a record page. */
-export function badgeSnippets(recordUrl: string, badgeUrl: string): { markdown: string; html: string } {
-  const alt = "Listed in the USASI catalog";
+/** Markdown and HTML snippets for a badge image that links to a page. */
+export function badgeSnippets(recordUrl: string, badgeUrl: string, alt = "Listed in the USASI catalog"): { markdown: string; html: string } {
   return {
     markdown: `[![${alt}](${badgeUrl})](${recordUrl})`,
     html: `<a href="${recordUrl}"><img src="${badgeUrl}" alt="${alt}" height="20"></a>`,
