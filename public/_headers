@@ -15,6 +15,17 @@
   Cross-Origin-Opener-Policy: same-origin
   X-Permitted-Cross-Domain-Policies: none
 
+# HTML pages are directory URLs (trailingSlash export), so a path ending in "/" is
+# always an index.html or the 404 page; "/*/" never matches a file such as
+# /data/jobs.json or /og/x.jpg, whose types stay as served. Cloudflare's asset
+# worker turns "*" into ".*", sets the first matching value, and appends any
+# later one, so keep these the only Content-Type rules for these paths.
+/
+  Content-Type: text/html; charset=utf-8
+
+/*/
+  Content-Type: text/html; charset=utf-8
+
 # Content-hashed build output: cache forever.
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable

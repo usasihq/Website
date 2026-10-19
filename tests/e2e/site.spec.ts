@@ -209,6 +209,12 @@ test.describe("static hosting behavior", () => {
     const response = await request.get("/");
     expect(response.headers()["content-security-policy"]).toContain("frame-ancestors 'none'");
     expect(response.headers()["x-content-type-options"]).toBe("nosniff");
+    // HTML pages (directory URLs) declare UTF-8; other files keep their own types.
+    expect(response.headers()["content-type"]).toBe("text/html; charset=utf-8");
+    expect((await request.get("/jobs/")).headers()["content-type"]).toBe("text/html; charset=utf-8");
+    expect((await request.get("/data/search-index.json")).headers()["content-type"]).toMatch(/^application\/json/);
+    expect((await request.get("/sitemap.xml")).headers()["content-type"]).toMatch(/xml/);
+    expect((await request.get("/og.png")).headers()["content-type"]).toBe("image/png");
     expect(await response.text()).toMatch(/<meta http-equiv="Content-Security-Policy" content="[^"]*script-src 'self' https:\/\/static\.cloudflareinsights\.com 'sha256-/);
   });
 });
