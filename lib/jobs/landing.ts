@@ -35,6 +35,13 @@ export const MIN_CITY_LISTINGS = 10;
 export const MAX_CITY_NAME = 32;
 /** Topic pages below this are kept out of search engines (noindex) and the sitemap. */
 export const MIN_TOPIC_LISTINGS = 10;
+/**
+ * Quality gate: an employer page with fewer current listings than this stays reachable (every link
+ * still works) but is noindex and out of the sitemap. State and city pages exist only from
+ * MIN_STATE_LISTINGS / MIN_CITY_LISTINGS, and topic and role pages use MIN_TOPIC_LISTINGS, so every
+ * indexed landing page has at least this many listings.
+ */
+export const MIN_INDEX_LISTINGS = 5;
 /** Listings embedded in a page's HTML; the rest are one link away in the directory. */
 export const LISTINGS_SHOWN = 100;
 
@@ -309,6 +316,8 @@ export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
   /** Most recent and oldest successful check among the listings. */
   lastChecked: string | null;
   oldestChecked: string | null;
+  /** Newest first_seen among the page's listings: when its set of listings last gained one (the sitemap's lastmod). */
+  newestFirstSeen: string | null;
   geography: { usOnly: number; outside: number; outsideOnly: number; unclear: number; alsoElsewhere: number };
   /** /jobs/?… that shows exactly these listings, newest first. */
   directoryHref: string;
@@ -391,11 +400,12 @@ function build(
     employers,
     lastChecked: seen.at(-1) ?? null,
     oldestChecked: seen[0] ?? null,
+    newestFirstSeen: listings.reduce<string | null>((a, j) => (a === null || j.first_seen > a ? j.first_seen : a), null),
     geography: geo,
     directoryHref: `/jobs/?${serializeJobFilters(filters)}`,
     usOnlyHref: usOnlyFilters ? `/jobs/?${serializeJobFilters(usOnlyFilters)}` : null,
     usOnlyCount: geo.usOnly,
-    indexable: kind === "company" ? listings.length > 0 : kind === "topic" || kind === "role" ? listings.length >= MIN_TOPIC_LISTINGS : true,
+    indexable: kind === "topic" || kind === "role" ? listings.length >= MIN_TOPIC_LISTINGS : listings.length >= MIN_INDEX_LISTINGS,
     buildAt: new Date(src.now).toISOString(),
   };
 }

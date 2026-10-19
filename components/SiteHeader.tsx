@@ -10,6 +10,7 @@ import { siteConfig, supportState } from "@/lib/site-config";
 
 /** Reference links: in the slim top bar from 640px, and in the mobile menu. */
 const REFERENCE = [
+  { href: "/new/", label: "New this week", bar: true },
   { href: "/start/", label: "Start here", bar: true },
   { href: "/faq/", label: "FAQ", bar: true },
   { href: "/hubs/", label: "Hubs", bar: true },

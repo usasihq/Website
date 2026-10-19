@@ -4,6 +4,8 @@ import { getCatalog } from "@/lib/catalog";
 import { companyLinks, jobLandingImage, roleLinksForEmployer, topicAndStateLinks } from "@/lib/jobs/landing-links";
 import { jobsLandingData } from "@/lib/jobs/landing";
 import { pageMetadata } from "@/lib/metadata";
+import { jobFeedPath } from "@/lib/jobs/feeds";
+import { payEmployer } from "@/lib/jobs/pay";
 
 export const dynamicParams = false;
 
@@ -22,7 +24,8 @@ export async function generateMetadata({ params }: { params: Promise<{ company: 
     description: page.description,
     path: page.path,
     image: jobLandingImage(page),
-    // An employer with no current listings keeps its page (links still work) but stays out of search results.
+    feeds: [{ path: jobFeedPath(page.path), title: `USASI — ${page.h1}` }],
+    // An employer with fewer than MIN_INDEX_LISTINGS current listings keeps its page (links still work) but stays out of search results.
     ...(page.indexable ? {} : { noindex: true }),
   });
 }
@@ -40,6 +43,7 @@ export default async function JobsCompanyPage({ params }: { params: Promise<{ co
       others={topicAndStateLinks(catalog, page.path)}
       companies={companyLinks(catalog, page.path).slice(0, OTHER_EMPLOYERS)}
       roles={roleLinksForEmployer(catalog, page.organization!.slug)}
+      pay={payEmployer(catalog, page.organization!.slug) ?? null}
     />
   );
 }

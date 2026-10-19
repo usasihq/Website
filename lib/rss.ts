@@ -3,10 +3,12 @@ import { absoluteUrl } from "./paths";
 import type { NewsItem } from "./schema";
 import { plainText } from "./plain-text";
 
-export type RssItem = { title: string; path: string; date: string; category?: string; description: string };
+/** `date` is a calendar date (published at noon UTC) unless `exact` is set, when it is a full ISO timestamp used as given. */
+export type RssItem = { title: string; path: string; date: string; exact?: boolean; category?: string; description: string };
 
 const escape = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const rfc822 = (isoDate: string) => new Date(`${isoDate.length === 10 ? isoDate : isoDate.slice(0, 10)}T12:00:00Z`).toUTCString();
+const rfc822 = (isoDate: string, exact = false) =>
+  (exact ? new Date(isoDate) : new Date(`${isoDate.length === 10 ? isoDate : isoDate.slice(0, 10)}T12:00:00Z`)).toUTCString();
 
 export const FEED_FOOTER = "Independent project. Not a United States government website.";
 
@@ -18,12 +20,12 @@ export function rssDocument({ title, path, selfPath, description, items }: { tit
       <title>${escape(i.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <pubDate>${rfc822(i.date)}</pubDate>${i.category ? `\n      <category>${escape(i.category)}</category>` : ""}
+      <pubDate>${rfc822(i.date, i.exact)}</pubDate>${i.category ? `\n      <category>${escape(i.category)}</category>` : ""}
       <description>${escape(i.description)}</description>
     </item>`;
     })
     .join("\n");
-  const latest = items.map((i) => i.date).sort().at(-1);
+  const latest = items.reduce<RssItem | undefined>((a, i) => (!a || Date.parse(rfc822(i.date, i.exact)) > Date.parse(rfc822(a.date, a.exact)) ? i : a), undefined);
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -31,7 +33,7 @@ export function rssDocument({ title, path, selfPath, description, items }: { tit
     <link>${absoluteUrl(path)}</link>
     <atom:link href="${absoluteUrl(selfPath)}" rel="self" type="application/rss+xml"/>
     <description>${escape(`${description} ${FEED_FOOTER}`)}</description>
-    <language>en-us</language>${latest ? `\n    <lastBuildDate>${rfc822(latest)}</lastBuildDate>` : ""}
+    <language>en-us</language>${latest ? `\n    <lastBuildDate>${rfc822(latest.date, latest.exact)}</lastBuildDate>` : ""}
 ${body}
   </channel>
 </rss>

@@ -34,6 +34,8 @@ const common = {
   gated: z.union([z.literal(false), z.literal("auto"), z.literal("manual")]),
   created_at: z.iso.datetime(),
   last_modified: z.iso.datetime(),
+  /** When the item first appeared in the snapshot (the fetch that added it); only recorded since the snapshot's tracking_since. */
+  first_seen: z.iso.datetime().optional(),
 };
 
 export const HfModel = z
@@ -74,6 +76,8 @@ const head = {
   /** Unique items fetched (top list plus includes), before filtering. */
   fetched_count: z.number().int().nonnegative(),
   excluded: z.record(z.string(), z.number().int().nonnegative()),
+  /** The fetch from which new items get first_seen ("New this week"); items already present then have none. */
+  tracking_since: z.iso.datetime({ offset: true }).optional(),
 };
 
 export const HfModelSnapshot = z.object({ ...head, source: z.literal("https://huggingface.co/api/models"), items: z.array(HfModel) }).strict();

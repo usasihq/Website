@@ -80,6 +80,8 @@ leaves the fetch date older.
   `npm run prepare:cards` renders only new or changed projects. A first build
   renders all of them (about half an hour).
 
+- "New this week" (`/new/`): each project gets `first_seen` (the fetch that added it) when it is absent from the previous snapshot; the dataset's `tracking_since` (2026-10-18) marks when tracking began. Projects present before then have none (`lib/first-seen.ts`).
+
 ## AI on Hugging Face
 
 `/huggingface/` (models) and `/huggingface/datasets/` rank the most-liked
@@ -115,6 +117,8 @@ date older.
   likes, downloads, or dates, so after a refresh `npm run prepare:cards`
   renders only new or changed items. A first build renders all of them (about
   15 minutes).
+
+- Models and datasets carry `first_seen` and the snapshots `tracking_since` the same way as AI on GitHub, for `/new/`.
 
 ## Watch list
 

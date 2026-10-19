@@ -17,6 +17,10 @@ import { stateSlug } from "@/lib/places";
 import { ALL_JOB_FILTERS, checkedLabel, DEFAULT_JOB_FILTERS, serializeJobFilters, type JobItem } from "@/lib/jobs/search";
 import { isExpressionOfInterest } from "@/lib/jobs/tracks";
 import { orgHref } from "@/lib/routes";
+import { Rss } from "lucide-react";
+import { EmployerPaySection } from "@/components/JobsPay";
+import { hasJobFeed, jobFeedPath } from "@/lib/jobs/feeds";
+import { kUsd, type PayGroup } from "@/lib/jobs/pay";
 
 const n = (v: number) => v.toLocaleString("en-US");
 const count = (v: number, one: string, many: string) => `${n(v)} ${v === 1 ? one : many}`;
@@ -135,9 +139,11 @@ type Props = {
   roles?: LandingLink[];
   headquartersHref?: string | null;
   headquartersCount?: number;
+  /** Employer pages: the pay summary, when the employer has enough listings with pay. Role pages: the role's pay page. */
+  pay?: PayGroup | null;
 };
 
-export function JobsLanding({ page, others, cities = [], parent = null, companies = [], roles = [], headquartersHref, headquartersCount }: Props) {
+export function JobsLanding({ page, others, cities = [], parent = null, companies = [], roles = [], headquartersHref, headquartersCount, pay = null }: Props) {
   const shown = page.listings.length;
   const trail = [{ href: "/jobs/", label: "Jobs" }, ...(parent ? [parent] : []), { href: page.path, label: page.name }];
   const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...(page.filters.state ? DEFAULT_JOB_FILTERS : ALL_JOB_FILTERS), ...page.filters, sort: "newest", company: slug })}`;
@@ -358,6 +364,18 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
           </nav>
         ) : null}
 
+        {pay && page.kind === "company" && page.organization ? <EmployerPaySection group={pay} name={page.organization.name} /> : null}
+
+        {pay && page.kind === "role" ? (
+          <p className="mt-12 max-w-3xl rounded-xl border border-line p-4 text-muted" data-testid="landing-pay">
+            <strong className="text-text">Pay:</strong> {pay.stats.count.toLocaleString("en-US")} of these listings with a U.S. or unstated location disclose a
+            yearly U.S.-dollar base range; the median of their midpoints is {kUsd(pay.stats.median)}.{" "}
+            <Link prefetch={false} href={pay.path} className="link">
+              {pay.name} pay, with the listings behind it
+            </Link>
+          </p>
+        ) : null}
+
         <section id="listings" aria-labelledby="listings-heading" className="mt-12 scroll-mt-24">
           <h2 id="listings-heading" className="text-xl font-semibold text-text sm:text-2xl">
             Listings
@@ -372,6 +390,18 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
               {shown < page.count ? `See all ${n(page.count)} in the Jobs directory` : "Filter these in the Jobs directory"}
             </Link>
           </p>
+          {hasJobFeed(page) ? (
+            <p className="mt-3 text-sm text-muted" data-testid="landing-feed">
+              <a href={asset(jobFeedPath(page.path))} className="link inline-flex items-center gap-1" type="application/rss+xml">
+                <Rss aria-hidden="true" className="h-3.5 w-3.5" />
+                Follow this page by RSS
+              </a>{" "}
+              (the 100 newest listings; no account needed).{" "}
+              <Link prefetch={false} href="/feeds/#job-feeds" className="link">
+                What RSS is, and every job feed
+              </Link>
+            </p>
+          ) : null}
           {shown ? (
             <ul className="mt-6 grid gap-3 md:grid-cols-2">
               {page.listings.map((job) => (

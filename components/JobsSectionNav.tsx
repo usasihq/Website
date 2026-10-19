@@ -4,10 +4,11 @@ import { HIRING_INDEX_HREF } from "@/lib/jobs/hiring-index";
 const ITEMS = [
   { href: "/jobs/", label: "All jobs" },
   { href: HIRING_INDEX_HREF, label: "Hiring Index" },
+  { href: "/jobs/pay/", label: "AI pay" },
   { href: "/jobs/layoffs/", label: "WARN layoffs" },
 ] as const;
 
-/** Jobs / Hiring Index / WARN — the jobs-area nav on those three pages. */
+/** Jobs / Hiring Index / AI pay / WARN — the jobs-area nav on those pages. */
 export function JobsSectionNav({ current }: { current: (typeof ITEMS)[number]["href"] }) {
   return (
     <nav aria-label="Jobs pages" className="mt-5" data-testid="jobs-section-nav">

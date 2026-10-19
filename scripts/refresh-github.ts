@@ -14,6 +14,7 @@
  * own GitHub repositories (`--includes-only` does just that, merged into the
  * cached run).
  */
+import { markFirstSeen } from "../lib/first-seen";
 import fs from "node:fs";
 import path from "node:path";
 import { compareProjects, exclusionReason, toProject, type ExclusionReason, type RawRepo } from "../lib/github/filters";
@@ -223,6 +224,11 @@ if (cache.queries.length === 0) {
   process.exit(0);
 }
 
+// "New this week": a project absent from the previous snapshot gets this fetch as its first_seen; one
+// already present keeps its first_seen (or none, if it predates tracking). The first run with this
+// code starts tracking (tracking_since) without marking anything new.
+const { tracking_since: trackingSince } = markFirstSeen(kept, previous && { tracking_since: previous.tracking_since, items: previous.projects }, (p) => p.id, cache.fetched_at);
+
 const dataset: GithubDataset = {
   fetched_at: cache.fetched_at,
   source: "https://api.github.com/search/repositories",
@@ -230,6 +236,7 @@ const dataset: GithubDataset = {
   min_stars: MIN_STARS,
   fetched_count: fetchedCount,
   excluded: Object.fromEntries(Object.entries(excluded).sort(([a], [b]) => a.localeCompare(b))),
+  tracking_since: trackingSince,
   projects: kept,
 };
 writeGithubDataset(dataset);

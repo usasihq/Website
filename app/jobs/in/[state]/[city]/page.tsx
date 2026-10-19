@@ -29,7 +29,7 @@ const cityPage = async ({ params }: Params) => {
 export async function generateMetadata(props: Params) {
   const page = await cityPage(props);
   if (!page) return {};
-  return pageMetadata({ title: page.title, description: page.description, path: page.path, image: jobLandingImage(page) });
+  return pageMetadata({ title: page.title, description: page.description, path: page.path, noindex: !page.indexable, image: jobLandingImage(page) });
 }
 
 export default async function JobsCityPage(props: Params) {

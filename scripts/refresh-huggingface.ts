@@ -23,6 +23,7 @@
  * (pass --force to write). `--seed-includes` adds every catalog Hub URL to
  * includes.yml and exits.
  */
+import { markFirstSeen } from "../lib/first-seen";
 import fs from "node:fs";
 import path from "node:path";
 import { stringify } from "yaml";
@@ -259,6 +260,10 @@ const types = await authorTypes(names, known);
 fs.mkdirSync(CACHE_DIR, { recursive: true });
 fs.writeFileSync(AUTHORS, JSON.stringify(types));
 
+/** "New this week": see lib/first-seen.ts. */
+const withFirstSeen = <T extends { id: string; first_seen?: string }>(items: T[], prev: { tracking_since?: string; items: T[] } | undefined) =>
+  markFirstSeen(items, prev, (x) => x.id.toLowerCase(), cache.fetched_at).items;
+
 const exclusions = (e: Partial<Record<HfExclusionReason, number>>) => Object.fromEntries(Object.entries(e).sort(([a], [b]) => a.localeCompare(b)));
 const modelSnap: HfModelSnapshot = {
   fetched_at: cache.fetched_at,
@@ -267,7 +272,8 @@ const modelSnap: HfModelSnapshot = {
   min_likes: HF_MIN_LIKES,
   fetched_count: m.fetched,
   excluded: exclusions(m.excluded),
-  items: m.kept.map((r) => toHfModel(r, types[r.id.split("/")[0]] ?? null)).sort(compareHf),
+  tracking_since: prevModels?.tracking_since ?? cache.fetched_at,
+  items: withFirstSeen(m.kept.map((r) => toHfModel(r, types[r.id.split("/")[0]] ?? null)), prevModels).sort(compareHf),
 };
 const datasetSnap: HfDatasetSnapshot = {
   fetched_at: cache.fetched_at,
@@ -276,7 +282,8 @@ const datasetSnap: HfDatasetSnapshot = {
   min_likes: HF_MIN_LIKES,
   fetched_count: d.fetched,
   excluded: exclusions(d.excluded),
-  items: d.kept.map((r) => toHfDataset(r, types[r.id.split("/")[0]] ?? null)).sort(compareHf),
+  tracking_since: prevDatasets?.tracking_since ?? cache.fetched_at,
+  items: withFirstSeen(d.kept.map((r) => toHfDataset(r, types[r.id.split("/")[0]] ?? null)), prevDatasets).sort(compareHf),
 };
 
 for (const [kind, snap, prev] of [

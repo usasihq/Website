@@ -14,6 +14,8 @@ export const STATIC_ROUTES = [
   "/jobs/",
   "/jobs/index/",
   "/jobs/layoffs/",
+  "/jobs/pay/",
+  "/new/",
   "/matrix/",
   "/methodology/",
   "/compact/",

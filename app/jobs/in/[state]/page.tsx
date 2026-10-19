@@ -4,6 +4,7 @@ import { getCatalog } from "@/lib/catalog";
 import { cityLinks, jobLandingImage, topicAndStateLinks } from "@/lib/jobs/landing-links";
 import { atLeastOneParam, jobsLandingData } from "@/lib/jobs/landing";
 import { pageMetadata } from "@/lib/metadata";
+import { jobFeedPath } from "@/lib/jobs/feeds";
 import { organizationsByState } from "@/lib/place-index";
 import { stateSlug } from "@/lib/places";
 
@@ -22,7 +23,7 @@ const statePage = (slug: string) => jobsLandingData(getCatalog()).states.find((p
 export async function generateMetadata({ params }: { params: Promise<{ state: string }> }) {
   const page = statePage((await params).state);
   if (!page) return {};
-  return pageMetadata({ title: page.title, description: page.description, path: page.path, image: jobLandingImage(page) });
+  return pageMetadata({ title: page.title, description: page.description, path: page.path, noindex: !page.indexable, image: jobLandingImage(page), feeds: [{ path: jobFeedPath(page.path), title: `USASI — ${page.h1}` }] });
 }
 
 export default async function JobsStatePage({ params }: { params: Promise<{ state: string }> }) {

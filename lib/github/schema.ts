@@ -46,6 +46,8 @@ export const GithubProject = z
     created_at: z.iso.datetime(),
     pushed_at: z.iso.datetime(),
     default_branch: plain(100).min(1),
+    /** When the project first appeared in the snapshot (the fetch that added it); only recorded since the dataset's tracking_since. */
+    first_seen: z.iso.datetime().optional(),
   })
   .strict();
 export type GithubProject = z.infer<typeof GithubProject>;
@@ -61,6 +63,8 @@ export const GithubDataset = z
     /** Unique repositories returned by the queries, before filtering. */
     fetched_count: z.number().int().nonnegative(),
     excluded: GithubExclusionCounts,
+    /** The fetch from which new projects get first_seen ("New this week"); projects already present then have none. */
+    tracking_since: z.iso.datetime({ offset: true }).optional(),
     projects: z.array(GithubProject),
   })
   .strict();

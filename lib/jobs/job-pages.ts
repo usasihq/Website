@@ -9,7 +9,7 @@ import { absoluteUrl } from "../paths";
 import type { Organization } from "../schema";
 import { descriptionHtml, type Description } from "./description";
 import { readDescriptions } from "./descriptions-store";
-import { displayLocation, isUSOnly, placeGeography } from "./geo";
+import { displayLocation, isUSOnly, placeGeography, REMOTE_LOCATION, stateDisplayName } from "./geo";
 import { jobSlug, shortCode } from "./job-url";
 import { readJobsForBuild } from "./load";
 import type { Job } from "./schema";
@@ -24,11 +24,11 @@ export type JobPage = {
   path: string;
   description: Description | null;
   /**
-   * Set only when another current posting at the same employer has the identical title: the
-   * posting's own location(s), so each page's <title> is distinct. Slugs and URLs are unaffected.
+   * Set by assignTitleSuffixes only when another current posting at the same employer would get the
+   * same title: the page's distinct title. Slugs and URLs are unaffected.
    */
-  titleSuffix?: string | null;
-  /** When those postings also share their locations: the requisition or posting ID (or the page's own code). */
+  titleText?: string | null;
+  /** When those postings also share their places: the requisition or posting ID (or the page's own code) in the title. */
   titleId?: string | null;
 };
 
@@ -59,33 +59,92 @@ export function jobPages(catalog: Catalog): JobPage[] {
   return pages;
 }
 
-/** The location part of a duplicate title: up to two display locations, or the first and a count. */
-export function locationSuffix(locations: string[]): string {
-  const shown = locations.map(displayLocation);
-  if (!shown.length) return "location not stated";
-  return shown.length > 2 ? `${shown[0]} +${shown.length - 1} more` : shown.join(" · ");
+export const shortOrg = (name: string) => name.replace(/\s*\([^)]*\)\s*$/, "").trim();
+export const TITLE_LIMIT = 70;
+
+/** Shortens text to at most `max` characters at a word boundary, marking the cut with "…"; never cuts inside a word. */
+export function clipWords(t: string, max: number): string {
+  if (t.length <= max) return t;
+  const room = t.slice(0, Math.max(0, max - 1));
+  const cut = room.lastIndexOf(" ");
+  const trim = (v: string) => v.replace(/[\s,;:·|–—(/&+-]+$/, "");
+  let head = trim(cut > 0 ? room.slice(0, cut) : "");
+  // A cut inside a parenthesis drops the unfinished parenthesis.
+  if ((head.match(/\(/g) ?? []).length > (head.match(/\)/g) ?? []).length) head = trim(head.slice(0, head.lastIndexOf("(")));
+  return head ? `${head}…` : "";
 }
 
-export const shortOrg = (name: string) => name.replace(/\s*\([^)]*\)\s*$/, "").trim();
-const TITLE_LIMIT = 70;
-const clipTitle = (t: string, max: number) => (t.length <= max ? t : `${t.slice(0, max - 1).replace(/[\s,;:·-]+$/, "")}…`);
+/**
+ * One location, short: "San Francisco, CA" for a U.S. city, "Remote" for a remote location, a state's
+ * name for a state alone, otherwise the employer's text with middle parts dropped ("London, United
+ * Kingdom") and cut to whole words. Nothing is guessed beyond lib/jobs/geo.ts's published rules.
+ */
+export function shortPlaces(location: string): string[] {
+  const g = placeGeography(location);
+  if (g.cities.length) return g.cities.map((c) => `${c.slice(3)}, ${c.slice(0, 2)}`);
+  if (REMOTE_LOCATION.test(location)) return ["Remote"];
+  if (g.states.length === 1) return [stateDisplayName(g.states[0])];
+  const parts = displayLocation(location).replace(/\s*\([^)]*\)/g, "").split(/\s*[,;|·]\s*/).filter(Boolean);
+  const text = parts.length > 2 ? `${parts[0]}, ${parts[parts.length - 1]}` : parts.join(", ");
+  const clipped = clipWords(text, 28) || clipWords(parts[0] ?? "", 28);
+  return clipped ? [clipped] : [];
+}
+
+/** The listing's short places, distinct, in the employer's order; "Remote" first for a remote listing. */
+export function titlePlaces(job: Pick<Job, "locations" | "workplace">): string[] {
+  const places = [...new Set(job.locations.flatMap(shortPlaces))];
+  if (job.workplace === "remote" && !places.includes("Remote")) places.unshift("Remote");
+  return places;
+}
+
+/** "San Francisco, CA", "Remote", or "San Francisco, CA +2 locations"; null when the listing names no place. */
+export function locationLabel(places: string[], all = false): string | null {
+  if (!places.length) return null;
+  if (all || places.length === 1) return places.join(" · ");
+  const more = places.length - 1;
+  return `${places[0]} +${more} ${more === 1 ? "location" : "locations"}`;
+}
+
+const employerFor = (p: JobPage) => (p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name));
 
 /**
- * The page title: role, employer, and first location when it fits. When the
- * employer has another current posting with the same title, the posting's
- * location suffix (see assignTitleSuffixes) is always kept, so titles differ.
+ * Title candidates, best first: "{Title} at {Employer} ({place})", then shorter forms (first place
+ * only, no place, no employer). `allPlaces` lists every place (to tell apart same-titled postings);
+ * `ref` (a requisition or posting ID) is appended when even that does not.
+ */
+function titleCandidates(p: JobPage, allPlaces = false, ref: string | null = null): string[] {
+  const t = p.job.title.trim().replace(/\s+/g, " ");
+  const org = employerFor(p);
+  const places = titlePlaces(p.job);
+  const label = locationLabel(places, allPlaces);
+  const first = places[0] ?? null;
+  const tail = ref ? ` · ${ref}` : "";
+  const atOrg = ` at ${org}`;
+  const forms = [
+    label ? `${t}${atOrg} (${label})` : null,
+    first && places.length > 1 && !allPlaces ? `${t}${atOrg} (${first} +${places.length - 1})` : null,
+    first && places.length > 1 ? `${t}${atOrg} (${first})` : null,
+    label && allPlaces ? `${t} (${label})` : null,
+    `${t}${atOrg}`,
+    label ? `${t} (${label})` : null,
+    first && places.length > 1 ? `${t} (${first})` : null,
+    t,
+  ].filter((v): v is string => Boolean(v));
+  // A title too long on its own is cut at a word, keeping the employer when the cut leaves enough of it.
+  const clippedWithOrg = clipWords(t, TITLE_LIMIT - atOrg.length - tail.length);
+  if (clippedWithOrg.length >= 32) forms.push(`${clippedWithOrg}${atOrg}`);
+  return [...forms.map((f) => `${f}${tail}`), `${clipWords(t, TITLE_LIMIT - tail.length) || t.slice(0, TITLE_LIMIT - tail.length)}${tail}`];
+}
+
+const firstFitting = (forms: string[]) => forms.find((f) => f.length <= TITLE_LIMIT) ?? forms[forms.length - 1];
+
+/**
+ * The page title: "{Title} at {Employer} ({City, ST} | Remote | "+N locations")", at most about 70
+ * characters, shortened by dropping parts (extra places, the place, the employer) and only then
+ * by cutting the job title at a word. assignTitleSuffixes makes titles at one employer distinct.
  */
 export function jobPageTitle(p: JobPage): string {
-  const org = p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name);
-  if (p.titleSuffix) {
-    // The posting reference is never shortened; the location is, when space runs out.
-    const id = p.titleId ? `, ${p.titleId}` : "";
-    const suffix = `${clipTitle(p.titleSuffix, 40 - id.length)}${id}`;
-    const full = [`${p.job.title} at ${org}, ${suffix}`, `${p.job.title}, ${suffix}`].find((t) => t.length <= TITLE_LIMIT);
-    return full ?? `${clipTitle(p.job.title, TITLE_LIMIT - suffix.length - 2)}, ${suffix}`;
-  }
-  const where = p.job.locations[0] ? displayLocation(p.job.locations[0]) : undefined;
-  return [`${p.job.title} at ${org}${where ? `, ${where}` : ""}`, `${p.job.title} at ${org}`, p.job.title].find((t) => t.length <= TITLE_LIMIT) ?? p.job.title.slice(0, TITLE_LIMIT);
+  return p.titleText ?? firstFitting(titleCandidates(p));
 }
 
 /** A short, distinguishing reference for a posting: its requisition, its posting ID, or its page code. */
@@ -95,53 +154,44 @@ function postingRef(p: JobPage, kind: "req" | "id" | "code"): string | null {
   return `ref. ${shortCode(p.job.id)}`;
 }
 
-/** Gives every page whose employer has another current posting with the same title a distinguishing suffix. */
+/**
+ * Makes every page title unique among one employer's current postings. A title shared with another
+ * posting first lists every place; postings that still match get a reference (requisition, then
+ * posting ID, then the page's own code, which is unique per posting).
+ */
 export function assignTitleSuffixes(pages: JobPage[]): void {
-  const groups = new Map<string, JobPage[]>();
-  for (const p of pages) {
-    const k = `${p.org.slug}\u0000${p.job.title.trim().replace(/\s+/g, " ").toLowerCase()}`;
-    const list = groups.get(k) ?? [];
-    list.push(p);
-    groups.set(k, list);
-  }
-  for (const list of groups.values()) {
+  const groupBy = (list: JobPage[]) => {
+    const groups = new Map<string, JobPage[]>();
     for (const p of list) {
-      p.titleSuffix = list.length > 1 ? locationSuffix(p.job.locations) : null;
-      p.titleId = null;
+      const k = `${p.org.slug}\u0000${jobPageTitle(p).toLowerCase()}`;
+      (groups.get(k) ?? groups.set(k, []).get(k)!).push(p);
     }
-    if (list.length < 2) continue;
-    const byWhere = new Map<string, JobPage[]>();
-    for (const p of list) byWhere.set(p.titleSuffix!, [...(byWhere.get(p.titleSuffix!) ?? []), p]);
-    for (const same of byWhere.values()) {
-      if (same.length < 2) continue;
-      // The first kind of reference every posting has, distinct across them; the page code always is.
-      for (const kind of ["req", "id", "code"] as const) {
-        const refs = same.map((p) => postingRef(p, kind));
-        if (refs.every(Boolean) && new Set(refs).size === refs.length) {
-          same.forEach((p, i) => (p.titleId = refs[i]));
-          break;
-        }
+    return [...groups.values()].filter((g) => g.length > 1);
+  };
+  for (const p of pages) {
+    p.titleText = null;
+    p.titleId = null;
+  }
+  for (const same of groupBy(pages)) for (const p of same) p.titleText = firstFitting(titleCandidates(p, true));
+  for (const same of groupBy(pages)) {
+    // The first kind of reference every posting has, distinct across them; the page code always is.
+    for (const kind of ["req", "id", "code"] as const) {
+      const refs = same.map((p) => postingRef(p, kind));
+      if (refs.every(Boolean) && new Set(refs).size === refs.length) {
+        same.forEach((p, i) => {
+          p.titleId = refs[i];
+          p.titleText = firstFitting(titleCandidates(p, false, refs[i]));
+        });
+        break;
       }
     }
   }
-  // Shortening can still make two titles at one employer read the same (long titles or long
-  // locations). Those pages get the location and the page's own code, which is unique per posting.
-  for (let pass = 0; pass < 2; pass++) {
-    const byTitle = new Map<string, JobPage[]>();
-    for (const p of pages) {
-      const k = `${p.org.slug}\u0000${jobPageTitle(p)}`;
-      byTitle.set(k, [...(byTitle.get(k) ?? []), p]);
+  // Shortening can still make two titles read the same; those get the page's own code.
+  for (const same of groupBy(pages)) {
+    for (const p of same) {
+      p.titleId = postingRef(p, "code");
+      p.titleText = firstFitting(titleCandidates(p, false, p.titleId));
     }
-    let clashes = 0;
-    for (const same of byTitle.values()) {
-      if (same.length < 2) continue;
-      clashes++;
-      for (const p of same) {
-        p.titleSuffix ??= locationSuffix(p.job.locations);
-        p.titleId = postingRef(p, "code");
-      }
-    }
-    if (!clashes) break;
   }
 }
 
