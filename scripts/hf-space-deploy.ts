@@ -24,8 +24,14 @@ const dir = path.join(process.cwd(), "hf-space");
 const created = await ensureHubRepo({ type: "space", name: HF_JOBS_SPACE, token, sdk: "static" });
 if (created === "created") console.log(`hf-space: created ${HF_JOBS_SPACE} (sdk: static)`);
 if (created === "exists") {
-  await setHubSpaceSdk({ name: HF_JOBS_SPACE, token, sdk: "static" });
-  console.log(`hf-space: ${HF_JOBS_SPACE} sdk set to static`);
+  // The README's `sdk: static` front matter sets the Space type on upload, so a failed
+  // settings call (the Hub answers 404 for it) must not stop the files from being uploaded.
+  try {
+    await setHubSpaceSdk({ name: HF_JOBS_SPACE, token, sdk: "static" });
+    console.log(`hf-space: ${HF_JOBS_SPACE} sdk set to static`);
+  } catch (e) {
+    console.warn(`hf-space: could not set sdk via settings (${e instanceof Error ? e.message.split(":").slice(0, 2).join(":") : "error"}); README front matter sets it`);
+  }
 }
 await commitHubFiles({
   type: "space",
