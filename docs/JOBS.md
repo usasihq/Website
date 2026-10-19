@@ -222,7 +222,11 @@ Add the secret here:
 
 State restores from an immutable GitHub Actions cache key scoped to this main-branch
 workflow family (`current.json`, the hiring index, Indexing API quota, job
-descriptions, and Workday detail meta). Validation, type checking, lint, unit tests, production build and
+descriptions, and Workday detail meta). Production builds also restore the same
+Chromium card cache as CI (`.cache` and `public/og`: about 15,000 GitHub and
+Hugging Face heroes). Without that cache a cold `prepare:cards` takes about 50
+minutes and a 30-minute job limit cancels the build before deploy. Both
+production jobs allow 120 minutes so a cache miss still publishes. Validation, type checking, lint, unit tests, production build and
 internal-link checks gate deployment. Validated state is cached and a seven-day artifact
 supports recovery. The build contains real observation timestamps but does not commit
 on timestamp changes. Each scheduled run intentionally republishes verification/health
