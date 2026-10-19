@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { decodeEntities, descriptionHtml, htmlToDescription, type Description } from "@/lib/jobs/description";
-import { renderJobPage } from "@/lib/jobs/job-page-html";
-import { jobPostingLd, postalAddresses, type JobPage } from "@/lib/jobs/job-pages";
+import { JOB_META_MAX, jobMetaDescription, jobPageTitle, renderJobPage } from "@/lib/jobs/job-page-html";
+import { assignTitleSuffixes, jobPostingLd, postalAddresses, type JobPage } from "@/lib/jobs/job-pages";
 import { jobHref, jobSlug, shortCode, titleSlug } from "@/lib/jobs/job-url";
 import type { Job } from "@/lib/jobs/schema";
 import type { Organization } from "@/lib/schema";
@@ -182,5 +182,108 @@ describe("closed job addresses on the 404 page", () => {
     expect(missingJob("/jobs/at/anthropic/")).toBeNull();
     expect(missingJob("/companies/anthropic/")).toBeNull();
     expect(missingJob("/jobs/in/california/")).toBeNull();
+  });
+});
+
+describe("job page meta description", () => {
+  const boilerplate: Description = [{ type: "p", runs: [{ t: "Acme AI is a company that builds AI for everyone. ".repeat(6) }] }];
+
+  it("is built from the listing's facts, not the employer's boilerplate", () => {
+    const meta = jobMetaDescription(page(job({ team: "Inference" }), boilerplate));
+    expect(meta).toBe("Research Engineer at Acme AI in San Francisco, CA; London, UK (on-site). Pay: $200K–$300K a year. Department: Research, Inference.");
+    expect(meta).not.toContain("builds AI for everyone");
+    const html = renderJobPage(page(job(), boilerplate), { htmlClass: "", links: "" });
+    expect(html).toContain('<meta name="description" content="Research Engineer at Acme AI in San Francisco, CA; London, UK (on-site). Pay: $200K–$300K a year. Department: Research."/>');
+  });
+
+  it("states pay labels and description-stated pay, and leaves out unknown facts", () => {
+    const meta = jobMetaDescription(
+      page(job({ workplace: "unknown", department: null, locations: [], salaries: [{ min: 50, max: 70, currency: "USD", period: "hour", label: "Zone A", source_status: "employer-description" }] })),
+    );
+    expect(meta).toBe("Research Engineer at Acme AI. Pay (Zone A): $50 to $70 per hour, as stated in the job description.");
+  });
+
+  it("never exceeds 160 characters and drops the least important facts first", () => {
+    const many = Array.from({ length: 12 }, (_, i) => `Very Long City Name Number ${i}, CA`);
+    const meta = jobMetaDescription(page(job({ title: "Principal Machine Learning Engineer, Distributed Training Infrastructure", locations: many, team: "Pretraining Systems and Reliability" })));
+    expect(meta.length).toBeLessThanOrEqual(JOB_META_MAX);
+    expect(meta).toContain("Principal Machine Learning Engineer, Distributed Training Infrastructure at Acme AI in Very Long City Name Number 0, CA and 11 more");
+    const long = jobMetaDescription(page(job({ title: "x".repeat(300) })));
+    expect(long.length).toBeLessThanOrEqual(JOB_META_MAX);
+  });
+
+  it("does not repeat a federal agency as both employer and department", () => {
+    const federal = job({ source_type: "usajobs", department: "Department of Energy", team: null });
+    expect(jobMetaDescription(page(federal))).not.toContain("Department: Department of Energy");
+  });
+});
+
+describe("duplicate job titles", () => {
+  it("adds the location (and the posting ID when locations match) so titles at one employer are unique", () => {
+    const a = page(job({ id: "acme-ai:greenhouse:acme:1", source_job_id: "1", title: "Account Executive", locations: ["New York, NY"] }));
+    const b = page(job({ id: "acme-ai:greenhouse:acme:2", source_job_id: "2", title: "Account Executive", locations: ["Austin, TX"] }));
+    const c = page(job({ id: "acme-ai:greenhouse:acme:3", source_job_id: "3", title: "Account Executive", locations: ["Austin, TX"] }));
+    const solo = page(job({ id: "acme-ai:greenhouse:acme:4", source_job_id: "4", title: "Researcher" }));
+    const pages = [a, b, c, solo];
+    const slugs = pages.map((p) => p.slug);
+    assignTitleSuffixes(pages);
+    expect(pages.map((p) => p.slug)).toEqual(slugs);
+    expect(a.titleSuffix).toBe("New York, NY");
+    expect(b.titleSuffix).toBe("Austin, TX");
+    expect(b.titleId).toBe("ID 2");
+    expect(a.titleId).toBeNull();
+    expect(solo.titleSuffix).toBeNull();
+    const titles = pages.map(jobPageTitle);
+    expect(new Set(titles).size).toBe(titles.length);
+    expect(jobPageTitle(a)).toBe("Account Executive at Acme AI, New York, NY");
+    for (const t of titles) expect(t.length).toBeLessThanOrEqual(70);
+  });
+
+  it("prefers the requisition, and falls back to the page code for long posting IDs", () => {
+    const wd = (n: number, req: string | null) =>
+      page(job({ id: `acme-ai:workday:acme:Engineer_R${n}`, source_job_id: `Very-Long-Workday-Posting-Name_R${n}`, requisition_id: req, title: "Engineer", locations: ["Austin, TX"] }));
+    const withReq = [wd(1, "R1"), wd(2, "R2")];
+    assignTitleSuffixes(withReq);
+    expect(withReq.map((p) => p.titleId)).toEqual(["Req. R1", "Req. R2"]);
+    const noReq = [wd(3, null), wd(4, null)];
+    assignTitleSuffixes(noReq);
+    expect(noReq.every((p) => /^ref\. [0-9a-z]{7}$/.test(p.titleId!))).toBe(true);
+    expect(noReq[0].slug.endsWith(noReq[0].titleId!.slice(5))).toBe(true);
+    const titles = noReq.map(jobPageTitle);
+    expect(new Set(titles).size).toBe(2);
+  });
+
+  it("stays unique when shortening would make long titles or locations read the same", () => {
+    const loc = (n: number) => `USA-California-San Jose-1320 Ridder Park Drive Building ${n}`;
+    const same = [1, 2, 3].map((n) => page(job({ id: `acme-ai:greenhouse:acme:${n}`, source_job_id: String(n), title: "ASIC Design Engineer", locations: [loc(n)] })));
+    const long = [1, 2].map((n) =>
+      page(job({ id: `acme-ai:greenhouse:acme:L${n}`, source_job_id: `L${n}`, title: `Senior Technical Program Manager, Connected Warfare and Mission Autonomy ${n}`, locations: [] })),
+    );
+    const all = [...same, ...long];
+    assignTitleSuffixes(all);
+    const titles = all.map(jobPageTitle);
+    expect(new Set(titles).size).toBe(titles.length);
+    for (const t of titles) expect(t.length).toBeLessThanOrEqual(70);
+  });
+
+  it("keeps the suffix when the title is long", () => {
+    const t = "Senior Staff Software Engineer, Machine Learning Infrastructure and Developer Productivity";
+    const a = page(job({ id: "acme-ai:greenhouse:acme:1", title: t, locations: ["San Francisco, CA"] }));
+    const b = page(job({ id: "acme-ai:greenhouse:acme:2", title: t, locations: ["Seattle, WA"] }));
+    assignTitleSuffixes([a, b]);
+    expect(jobPageTitle(a)).toMatch(/, San Francisco, CA$/);
+    expect(jobPageTitle(b)).toMatch(/, Seattle, WA$/);
+    expect(jobPageTitle(a).length).toBeLessThanOrEqual(70);
+  });
+});
+
+describe("job page landmarks", () => {
+  it("puts the independence line inside the banner, not outside any landmark", () => {
+    const html = renderJobPage(page(job()), { htmlClass: "", links: "" });
+    const body = html.slice(html.indexOf("<body>"));
+    const header = body.indexOf("<header>");
+    expect(header).toBeGreaterThan(-1);
+    expect(body.indexOf('data-testid="header-disclaimer"')).toBeGreaterThan(header);
+    expect(body.indexOf('data-testid="header-disclaimer"')).toBeLessThan(body.indexOf("</header>"));
   });
 });

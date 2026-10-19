@@ -193,6 +193,14 @@ before the slow feed refresh, then again after each source inside
 One ISO week (Monday UTC) per bucket; a later check in the same week replaces
 it. The committed file is the bootstrap seed; operational history lives in the
 same jobs cache as `current.json`. `/jobs/index/` reads that file at build time.
+Since 2026-10-19 a bucket counts only *current* listings, by the directory's rule
+(`isCurrent`: open, latest feed check ok, seen within 48 hours of the snapshot), and
+records `checked`/`unchecked` employers and per-employer state counts
+(`employer_states`); these fields are optional so older buckets still parse. The page
+computes week-over-week change only over employers checked successfully in both
+weeks, marks sources new this week as "New source", shows state change only when
+both weeks have per-employer state counts, links no employer with zero current
+listings, and notes any shown week counted under the earlier all-open-rows rule.
 
 ### Hugging Face jobs dataset and Space (`HF_TOKEN`)
 

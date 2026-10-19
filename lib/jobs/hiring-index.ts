@@ -21,6 +21,7 @@ import { layoffHref, layoffsIndex, type LayoffsIndex } from "./layoffs";
 import { DATA_PATH } from "./load";
 import type { Dataset } from "./schema";
 import { Dataset as DatasetSchema } from "./schema";
+import { isCurrent } from "./search";
 
 export const HIRING_INDEX_PATH = path.join(process.cwd(), "data/jobs/hiring-index.json");
 export const HIRING_INDEX_HREF = "/jobs/index/";
@@ -40,6 +41,22 @@ export const CountRow = z
   .strict();
 export type CountRow = z.infer<typeof CountRow>;
 
+export const EmployerStates = z
+  .object({
+    key,
+    states: z.array(CountRow).max(60),
+  })
+  .strict();
+export type EmployerStates = z.infer<typeof EmployerStates>;
+
+/**
+ * One week's counts. `checked`, `unchecked`, and `employer_states` were added
+ * on 2026-10-19 and are optional so older buckets still parse. A bucket with
+ * `checked` was counted with the Jobs directory's "current" rule (open, from a
+ * source whose latest check succeeded, seen within 48 hours); a bucket without
+ * it was counted from every open-state row, including rows from sources whose
+ * latest check had failed.
+ */
 export const WeekSnapshot = z
   .object({
     week_start: z.iso.date(),
@@ -47,6 +64,12 @@ export const WeekSnapshot = z
     open_count: z.number().int().nonnegative(),
     companies: z.array(CountRow).max(500),
     states: z.array(CountRow).max(60),
+    /** Employers whose career source's latest check succeeded at capture time. */
+    checked: z.array(key).max(500).optional(),
+    /** Employers with a configured source whose latest check had not succeeded. */
+    unchecked: z.array(key).max(500).optional(),
+    /** Per-employer state counts, so state change can be limited to employers counted in both weeks. */
+    employer_states: z.array(EmployerStates).max(500).optional(),
   })
   .strict();
 export type WeekSnapshot = z.infer<typeof WeekSnapshot>;
@@ -98,15 +121,39 @@ function tally(rows: Iterable<string>): CountRow[] {
 }
 
 /**
- * Open listings only. A listing that names several U.S. states counts once per
- * state; a listing that names none is in the employer total only.
+ * Current listings only, by the same rule the Jobs directory, employer pages,
+ * and job pages use (`isCurrent` in ./search): open, from a source whose latest
+ * check succeeded, and seen within 48 hours of `now`. A listing that names
+ * several U.S. states counts once per state; a listing that names none is in
+ * the employer total only.
  */
-export function countOpenJobs(data: Dataset): { open_count: number; companies: CountRow[]; states: CountRow[] } {
-  const open = data.jobs.filter((j) => j.status === "open");
+export function countOpenJobs(
+  data: Dataset,
+  now: number,
+): Pick<WeekSnapshot, "open_count" | "companies" | "states" | "checked" | "unchecked" | "employer_states"> {
+  const health = new Map(data.feeds.map((f) => [`${f.organization_slug}:${f.source_type}:${f.source_identifier}`, f]));
+  const open = data.jobs.filter((j) => isCurrent(j, health.get(`${j.organization_slug}:${j.source_type}:${j.source_identifier}`), now));
+  const ok = new Set<string>();
+  const failed = new Set<string>();
+  for (const f of data.feeds) (f.result === "ok" ? ok : failed).add(f.organization_slug);
+  // An employer counts as checked only when every one of its sources succeeded.
+  for (const slug of failed) ok.delete(slug);
+  const byEmployer = new Map<string, string[]>();
+  for (const j of open) {
+    const list = byEmployer.get(j.organization_slug) ?? [];
+    list.push(...jobGeography(j).states);
+    byEmployer.set(j.organization_slug, list);
+  }
   return {
     open_count: open.length,
     companies: tally(open.map((j) => j.organization_slug)),
     states: tally(open.flatMap((j) => jobGeography(j).states)),
+    checked: [...ok].sort(),
+    unchecked: [...failed].sort(),
+    employer_states: [...byEmployer]
+      .map(([k, states]) => ({ key: k, states: tally(states) }))
+      .filter((e) => e.states.length)
+      .sort((a, b) => a.key.localeCompare(b.key, "en")),
   };
 }
 
@@ -114,7 +161,7 @@ export function snapshotFromDataset(data: Dataset, at: string): WeekSnapshot {
   const captured = new Date(Date.parse(at));
   if (!Number.isFinite(captured.getTime())) throw new Error("hiring-index: invalid snapshot time");
   const captured_at = captured.toISOString();
-  return { week_start: weekStartUtc(captured_at), captured_at, ...countOpenJobs(data) };
+  return { week_start: weekStartUtc(captured_at), captured_at, ...countOpenJobs(data, captured.getTime()) };
 }
 
 /** Replace this week's bucket (or append it); keep the newest `HIRING_INDEX_MAX_WEEKS` weeks. */
@@ -154,13 +201,26 @@ export function recordHiringIndex(at: string, data?: Dataset, file = HIRING_INDE
   return week;
 }
 
+/**
+ * How a row's week-over-week change was found:
+ * - `compared`: the employer's source was checked successfully in both weeks
+ *   (for states: the change counts only those employers);
+ * - `new`: the employer was not in last week's index at all (a source added this week);
+ * - `unchecked`: the employer's source was not checked successfully this week;
+ * - `unchecked-before`: it was not checked successfully last week;
+ * - `none`: no comparison (first week, or no per-employer state counts last week).
+ */
+export type ChangeStatus = "compared" | "new" | "unchecked" | "unchecked-before" | "none";
+
 export type ChangeRow = {
   key: string;
   name: string;
-  href: string;
+  /** Null when there is nothing current to link to (an employer with no current listings). */
+  href: string | null;
   count: number;
   previous: number | null;
   delta: number | null;
+  status: ChangeStatus;
 };
 
 export type WarnPairing = {
@@ -188,8 +248,22 @@ export type HiringIndexPage = {
   previousLabel: string | null;
   capturedAt: string | null;
   openCount: number;
-  previousOpen: number | null;
+  /** Employers with at least one current listing this week. */
+  employerCount: number;
+  /** "50 U.S. states and D.C." style label for the states named this week. */
+  statesLabel: string;
+  /** Employers counted (source checked successfully) in both weeks, and their totals each week. */
+  compared: { employers: number; previous: number; current: number } | null;
+  /** Change at employers counted in both weeks; null in the first week. Newly added sources are not part of it. */
   openDelta: number | null;
+  /** Sources that first appear this week. */
+  newSources: { employers: number; listings: number };
+  /** Employers whose source was not checked successfully this week. */
+  uncheckedNow: number;
+  /** State change is shown only when both weeks have per-employer state counts. */
+  stateCompare: boolean;
+  /** Labels of shown weeks counted before the "current" rule (they may include listings from failing sources). */
+  earlierRuleWeeks: string[];
   companies: ChangeRow[];
   states: ChangeRow[];
   rising: ChangeRow[];
@@ -202,27 +276,90 @@ export type HiringIndexPage = {
 
 const countOf = (rows: CountRow[], key: string) => rows.find((r) => r.key === key)?.count ?? 0;
 
-function changeRows(
-  current: CountRow[],
-  previous: CountRow[] | null,
-  nameOf: (key: string) => string,
-  hrefOf: (key: string) => string,
+/** "50 U.S. states and D.C.", "3 U.S. states", "D.C." — D.C. is never counted as a state. */
+export function statesLabel(codes: string[]): string {
+  const dc = codes.includes("DC");
+  const states = codes.filter((c) => c !== "DC").length;
+  const label = `${states.toLocaleString("en-US")} U.S. ${states === 1 ? "state" : "states"}`;
+  if (!dc) return label;
+  return states ? `${label} and D.C.` : "D.C.";
+}
+
+function employerSets(w: WeekSnapshot) {
+  const counted = new Set(w.companies.filter((r) => r.count > 0).map((r) => r.key));
+  // Older buckets (no `checked`) only tell us which employers had listings.
+  const checked = w.checked ? new Set(w.checked) : counted;
+  const unchecked = new Set(w.unchecked ?? []);
+  return { checked, unchecked, known: new Set([...checked, ...unchecked, ...counted]) };
+}
+
+/** Employer rows with each change limited to employers whose sources were checked successfully in both weeks. */
+export function companyChanges(
+  current: WeekSnapshot,
+  previous: WeekSnapshot | null,
+  nameOf: (key: string) => string = (k) => k,
+  hrefOf: (key: string) => string | null = companyHref,
 ): ChangeRow[] {
-  const keys = new Set([...current.map((r) => r.key), ...(previous ?? []).map((r) => r.key)]);
+  const cur = employerSets(current);
+  const prev = previous ? employerSets(previous) : null;
+  const keys = new Set([
+    ...current.companies.map((r) => r.key),
+    ...(previous?.companies ?? []).map((r) => r.key),
+    ...(prev ? [...cur.checked].filter((k) => prev.checked.has(k) && !prev.unchecked.has(k) && !cur.unchecked.has(k)) : []),
+  ]);
   return [...keys]
-    .map((key) => {
-      const count = countOf(current, key);
-      const prev = previous ? countOf(previous, key) : null;
+    .map((key): ChangeRow => {
+      const count = countOf(current.companies, key);
+      const before = previous ? countOf(previous.companies, key) : null;
+      let status: ChangeStatus = "none";
+      if (prev) {
+        // An older bucket kept failing sources' listings open, so an employer missing from it had a successful check.
+        if (cur.unchecked.has(key) || (current.checked && !cur.checked.has(key))) status = "unchecked";
+        else if (prev.unchecked.has(key)) status = "unchecked-before";
+        else if (!prev.known.has(key)) status = "new";
+        else status = "compared";
+      }
+      return {
+        key,
+        name: nameOf(key),
+        href: count > 0 ? hrefOf(key) : null,
+        count,
+        previous: before,
+        delta: status === "compared" && before !== null ? count - before : null,
+        status,
+      };
+    })
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
+}
+
+/** State rows; change only over employers compared in both weeks, and only when both weeks have per-employer state counts. */
+export function stateChanges(
+  current: WeekSnapshot,
+  previous: WeekSnapshot | null,
+  comparedEmployers: Set<string>,
+  nameOf: (key: string) => string = (k) => k,
+  hrefOf: (key: string) => string = (k) => k,
+): { rows: ChangeRow[]; compared: boolean } {
+  const compared = Boolean(previous && current.employer_states && previous.employer_states);
+  const sum = (w: WeekSnapshot, code: string) =>
+    (w.employer_states ?? []).reduce((s, e) => (comparedEmployers.has(e.key) ? s + countOf(e.states, code) : s), 0);
+  const keys = new Set([...current.states.map((r) => r.key), ...(compared ? previous!.states.map((r) => r.key) : [])]);
+  const rows = [...keys]
+    .map((key): ChangeRow => {
+      const count = countOf(current.states, key);
+      const delta = compared ? sum(current, key) - sum(previous!, key) : null;
       return {
         key,
         name: nameOf(key),
         href: hrefOf(key),
         count,
-        previous: prev,
-        delta: prev === null ? null : count - prev,
+        previous: previous ? countOf(previous.states, key) : null,
+        delta,
+        status: compared ? "compared" : "none",
       };
     })
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
+  return { rows, compared };
 }
 
 function companyName(catalog: Catalog, slug: string): string {
@@ -243,22 +380,25 @@ function clipMeta(text: string, max: number): string {
   if (text.length <= max) return text;
   const cut = text.slice(0, max - 1);
   const at = cut.lastIndexOf(" ");
-  return `${(at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[\s,;:.\u2014-]+$/, "")}\u2026`;
+  return `${(at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[\s,;:.—-]+$/, "")}…`;
 }
+
+const fmt = (v: number) => v.toLocaleString("en-US");
 
 function pageDescription(page: Omit<HiringIndexPage, "title" | "description">): string {
   if (!page.current) {
     return "Weekly open AI job counts by employer and U.S. state, shown next to official WARN Act layoff notices. The first week of the index starts when Jobs next refreshes.";
   }
-  const n = page.openCount.toLocaleString("en-US");
+  const n = fmt(page.openCount);
   const week = page.weekLabel ?? "this week";
   if (page.coldStart) {
     return `${n} open AI listings the week of ${week}, by employer and U.S. state. Week-over-week change starts next week.`;
   }
   const delta = page.openDelta ?? 0;
-  const change =
-    delta === 0 ? "unchanged from last week" : delta > 0 ? `up ${delta.toLocaleString("en-US")} from last week` : `down ${Math.abs(delta).toLocaleString("en-US")} from last week`;
-  return `${n} open AI listings the week of ${week}, ${change}. Counts by employer and U.S. state, next to official WARN Act notices.`;
+  const k = page.compared?.employers ?? 0;
+  const change = delta === 0 ? "unchanged" : delta > 0 ? `up ${fmt(delta)}` : `down ${fmt(Math.abs(delta))}`;
+  const newer = page.newSources.employers ? `; ${fmt(page.newSources.employers)} new ${page.newSources.employers === 1 ? "source" : "sources"}` : "";
+  return `${n} open AI listings the week of ${week}, ${change} at the ${fmt(k)} ${k === 1 ? "employer" : "employers"} counted both weeks${newer}. By employer and U.S. state.`;
 }
 
 function pageTitle(page: Omit<HiringIndexPage, "title" | "description">): string {
@@ -274,12 +414,13 @@ export function hiringIndexPage(catalog: Catalog, data = readHiringIndex(), layo
   const weeks = data.weeks;
   const current = weeks.at(-1) ?? null;
   const previous = weeks.length > 1 ? weeks[weeks.length - 2]! : null;
-  const companies = current
-    ? changeRows(current.companies, previous?.companies ?? null, (k) => companyName(catalog, k), companyHref)
-    : [];
-  const states = current
-    ? changeRows(current.states, previous?.states ?? null, (k) => stateDisplayName(k) ?? k, (k) => stateHref(catalog, k))
-    : [];
+  const allCompanies = current ? companyChanges(current, previous, (k) => companyName(catalog, k), companyHref) : [];
+  const comparedRows = allCompanies.filter((r) => r.status === "compared");
+  const comparedKeys = new Set(comparedRows.map((r) => r.key));
+  const { rows: states, compared: stateCompare } = current
+    ? stateChanges(current, previous, comparedKeys, (k) => stateDisplayName(k) ?? k, (k) => stateHref(catalog, k))
+    : { rows: [], compared: false };
+  const stateDelta = new Map(states.map((r) => [r.key, r.delta]));
   const byDelta = (rows: ChangeRow[], sign: 1 | -1) =>
     rows
       .filter((r) => r.delta !== null && r.delta * sign > 0)
@@ -296,12 +437,22 @@ export function hiringIndexPage(catalog: Catalog, data = readHiringIndex(), layo
       jobsHref: s.jobState?.path ?? (jobs > 0 ? stateHref(catalog, s.meta.code) : null),
       jobs,
       previousJobs,
-      delta: previousJobs === null ? null : jobs - previousJobs,
+      delta: stateDelta.get(s.meta.code) ?? (stateCompare ? 0 : null),
       notices: s.file.notices.length,
       employees,
       layoffHref: layoffHref(s.meta.code),
     };
   });
+  const newRows = allCompanies.filter((r) => r.status === "new");
+  const compared =
+    current && previous
+      ? {
+          employers: comparedRows.length,
+          previous: comparedRows.reduce((s, r) => s + (r.previous ?? 0), 0),
+          current: comparedRows.reduce((s, r) => s + r.count, 0),
+        }
+      : null;
+  const shownWeeks = weeks.filter((w) => w === current || w === previous);
   const draft = {
     path: HIRING_INDEX_HREF,
     weeks,
@@ -312,12 +463,18 @@ export function hiringIndexPage(catalog: Catalog, data = readHiringIndex(), layo
     previousLabel: previous ? weekLabel(previous.week_start) : null,
     capturedAt: current?.captured_at ?? null,
     openCount: current?.open_count ?? 0,
-    previousOpen: previous?.open_count ?? null,
-    openDelta: current && previous ? current.open_count - previous.open_count : null,
-    companies: companies.slice(0, HIRING_INDEX_TOP_COMPANIES),
+    employerCount: current ? current.companies.filter((r) => r.count > 0).length : 0,
+    statesLabel: statesLabel(current?.states.map((r) => r.key) ?? []),
+    compared,
+    openDelta: compared ? compared.current - compared.previous : null,
+    newSources: { employers: newRows.length, listings: newRows.reduce((s, r) => s + r.count, 0) },
+    uncheckedNow: current?.unchecked?.length ?? 0,
+    stateCompare,
+    earlierRuleWeeks: shownWeeks.filter((w) => !w.checked).map((w) => weekLabel(w.week_start)),
+    companies: allCompanies.filter((r) => r.count > 0).slice(0, HIRING_INDEX_TOP_COMPANIES),
     states: states.slice(0, HIRING_INDEX_TOP_STATES),
-    rising: byDelta(companies, 1),
-    fewer: byDelta(companies, -1),
+    rising: byDelta(comparedRows, 1),
+    fewer: byDelta(comparedRows, -1),
     risingStates: byDelta(states, 1),
     fewerStates: byDelta(states, -1),
     warn,
@@ -378,7 +535,7 @@ export function hiringIndexJsonLd(page: HiringIndexPage): object {
         "@type": "ListItem",
         position: i + 1,
         name: r.name,
-        url: absoluteUrl(r.href),
+        ...(r.href ? { url: absoluteUrl(r.href) } : {}),
       })),
     });
   }

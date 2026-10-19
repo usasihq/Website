@@ -10,6 +10,8 @@ import { NewsCard } from "@/components/NewsList";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
+import { GITHUB_SEARCH_LIMIT } from "@/lib/github/projects";
+import { HF_SEARCH_LIMIT } from "@/lib/huggingface/items";
 import { formatDate } from "@/lib/dates";
 import { EXPLAINERS, LEARNING_PATHS, availableSteps } from "@/lib/learn";
 import { ENTRY_TYPE_LABELS, entryTypeFor, ROLE_LABELS } from "@/lib/labels";
@@ -142,7 +144,7 @@ export default function HomePage() {
                 available, and where to find the original sources.
               </p>
               <div className="order-3 mx-auto mt-4 w-full max-w-3xl text-left lg:order-4 lg:mx-0 lg:mt-6">
-                <HomeSearch indexUrl={asset("/data/search-index.json")} />
+                <HomeSearch indexUrl={asset("/data/search-index.json")} githubLimit={GITHUB_SEARCH_LIMIT} hfLimit={HF_SEARCH_LIMIT} />
               </div>
               {/* Two-up at every size, so both fit on the first screen; "Explore" stays in the accessible name. */}
               <div className="order-4 mt-4 grid grid-cols-2 gap-3 lg:order-5">
@@ -203,7 +205,7 @@ export default function HomePage() {
               <span className="eyebrow text-[0.75rem]">Research report · {editionLabel(report.edition)} edition</span>
               <span className="mt-1 block text-lg font-semibold text-text">The State of American AI</span>
               <span className="mt-1 block text-[0.9375rem] text-muted">
-                Dated figures from the catalog: {reportTotal("organizations")} organization records, {reportTotal("model_releases")} model releases and their licenses,
+                Dated figures from the catalog as of {formatDate(report.data_cutoff)}: {reportTotal("organizations")} organization records, {reportTotal("model_releases")} model releases and their licenses,
                 local AI, jobs, and policy, each with its definition and a data download.
               </span>
             </span>

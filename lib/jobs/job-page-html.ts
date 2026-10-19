@@ -13,10 +13,12 @@ import { absoluteUrl, asset } from "../paths";
 import { siteConfig, supportState } from "../site-config";
 import type { Description, Run } from "./description";
 import type { JobPage } from "./job-pages";
-import { jobPostingLd, jobSnippet } from "./job-pages";
+import { jobPageTitle, jobPostingLd, shortOrg } from "./job-pages";
 import { ALL_JOB_FILTERS, serializeJobFilters } from "./search";
 import { JOB_ROLES } from "./roles";
 import { displayLocation } from "./geo";
+
+export { jobPageTitle };
 
 export type PageShell = {
   /** The <html> element's class (font variables), copied from a built page. */
@@ -66,13 +68,62 @@ function payLine(s: JobPage["job"]["salaries"][number]): string {
   }
   return s.min !== null && s.max !== null ? `${money(s.min, s.currency)} to ${money(s.max, s.currency)} ${per}` : `${money((s.min ?? s.max)!, s.currency)} ${per}`;
 }
-const shortOrg = (name: string) => name.replace(/\s*\([^)]*\)\s*$/, "").trim();
 
-/** The page title: role, employer, and first location when it fits. */
-export function jobPageTitle(p: JobPage): string {
-  const org = p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name);
-  const where = p.job.locations[0] ? displayLocation(p.job.locations[0]) : undefined;
-  return [`${p.job.title} at ${org}${where ? `, ${where}` : ""}`, `${p.job.title} at ${org}`, p.job.title].find((t) => t.length <= 70) ?? p.job.title.slice(0, 70);
+const employerName = (p: JobPage) => (p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name));
+const clip = (t: string, max: number) => (t.length <= max ? t : `${t.slice(0, max - 1).replace(/[\s,;:·-]+$/, "")}…`);
+
+const WORKPLACE: Record<string, string> = { remote: "remote", hybrid: "hybrid", "on-site": "on-site" };
+export const JOB_META_MAX = 160;
+
+/**
+ * The meta description: facts from the listing only (title, employer, locations, workplace, the first
+ * stated pay with its label, department and team), never the employer's boilerplate. At most 160
+ * characters; lower-priority facts drop first.
+ */
+export function jobMetaDescription(p: JobPage): string {
+  const { job } = p;
+  const locations = job.locations.map(displayLocation);
+  const workplace = WORKPLACE[job.workplace];
+  const pay = job.salaries[0];
+  const payText = pay ? `${payLine(pay)}${pay.source_status === "employer-description" ? ", as stated in the job description" : ""}` : null;
+  const payLabel = pay?.label ? ` (${pay.label})` : "";
+  const team = job.team && job.team !== job.department ? job.team : null;
+  // Optional facts, most important first; the sentence keeps the first ones that fit.
+  type Opt = { key: "where" | "more" | "workplace" | "pay" | "label" | "dept" | "team"; on: boolean };
+  const opts: Opt[] = [
+    { key: "where", on: locations.length > 0 },
+    { key: "workplace", on: Boolean(workplace) },
+    { key: "pay", on: Boolean(payText) },
+    // A federal listing already names its agency (the department) as the employer.
+    { key: "dept", on: Boolean(job.department) && employerName(p) !== job.department },
+    { key: "more", on: locations.length > 1 },
+    { key: "team", on: Boolean(team) },
+    { key: "label", on: Boolean(payLabel) },
+  ];
+  const build = (keep: Set<Opt["key"]>, title = job.title) => {
+    let where = "";
+    if (keep.has("where")) {
+      if (keep.has("more") && locations.length > 1) {
+        where = locations.length > 3 ? ` in ${locations.slice(0, 2).join("; ")} and ${locations.length - 2} more` : ` in ${locations.join("; ")}`;
+      } else where = ` in ${locations[0]}${locations.length > 1 ? ` and ${locations.length - 1} more` : ""}`;
+    }
+    const parts = [`${title} at ${employerName(p)}${where}${keep.has("workplace") ? ` (${workplace})` : ""}.`];
+    if (keep.has("pay")) parts.push(`Pay${keep.has("label") ? payLabel : ""}: ${payText}.`);
+    const unit = [keep.has("dept") && employerName(p) !== job.department ? job.department : null, keep.has("team") ? team : null].filter(Boolean).join(", ");
+    if (unit) parts.push(`${keep.has("team") && !keep.has("dept") ? "Team" : "Department"}: ${unit}.`);
+    return parts.join(" ").replace(/\.\./g, ".");
+  };
+  const keep = new Set<Opt["key"]>();
+  for (const o of opts) {
+    if (!o.on) continue;
+    keep.add(o.key);
+    if (build(keep).length > JOB_META_MAX) keep.delete(o.key);
+  }
+  const text = build(keep);
+  if (text.length <= JOB_META_MAX) return text;
+  // Only an extremely long title gets here: shorten the title itself.
+  const over = text.length - JOB_META_MAX;
+  return build(keep, clip(job.title, Math.max(20, job.title.length - over)));
 }
 
 /** The compact "Support Us" panel, as components/SupportPanel.tsx renders it. */
@@ -101,7 +152,7 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
   const applyLabel = federal ? "Apply on USAJOBS.gov" : `Apply on ${esc(name)}&rsquo;s site`;
   const url = absoluteUrl(p.path);
   const title = `${jobPageTitle(p)} · ${siteConfig.shortName}`;
-  const meta = jobSnippet(p) ?? `${job.title} at ${federal && job.department ? job.department : name}${job.locations[0] ? ` in ${displayLocation(job.locations[0])}` : ""}. ${federal ? "Apply on USAJOBS.gov." : `Apply on ${name}'s own job board.`}`;
+  const meta = jobMetaDescription(p);
   const image = absoluteUrl(`/og/jobs/at-${org.slug}.jpg`);
   const ld = jobPostingLd(p);
   const crumbs = [
@@ -173,11 +224,13 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+<header>
 <div class="border-b border-t-4 border-b-line border-t-gold bg-fog/50"><div class="container-page flex h-7 items-center text-xs sm:text-[0.8125rem]"><p class="min-w-0 truncate text-muted" data-testid="header-disclaimer">Independent project. Not a U.S. government website.</p></div></div>
-<header class="border-b border-line"><div class="container-page flex flex-wrap items-center gap-x-8 gap-y-3 py-4">
+<div class="border-b border-line"><div class="container-page flex flex-wrap items-center gap-x-8 gap-y-3 py-4">
 <a href="${asset("/")}" class="text-lg font-semibold tracking-wide text-text">USASI</a>
 <nav aria-label="Primary"><ul class="flex flex-wrap gap-x-5 gap-y-1 text-[0.9375rem]">${nav}</ul></nav>
-</div></header>
+</div></div>
+</header>
 <main id="main">
 <header class="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]"><div class="container-page pb-10 pt-10 sm:pt-14">
 <nav aria-label="Breadcrumb" class="mb-5"><ol class="flex flex-wrap items-center gap-1 text-sm text-muted">${crumbs

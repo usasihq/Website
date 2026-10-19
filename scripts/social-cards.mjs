@@ -10,6 +10,11 @@
  * Outputs (committed to the repository):
  *   public/og-open.png   Open Models & Tools (/open/ and its record pages)
  *   public/og-jobs.png   Jobs (/jobs/), in the light site theme
+ *   public/og-people.png, og-voices.png, og-news.png, og-changelog.png,
+ *   og-newsletter.png    section index pages, in the same light theme
+ *
+ * `npm run prepare:social -- og-people.png og-news.png` renders only the named
+ * cards, so existing PNGs are not rewritten.
  *
  * Alt text for each card lives in lib/metadata.ts; update it when a card changes.
  */
@@ -82,7 +87,67 @@ p { margin-top: 28px; font-size: 30px; line-height: 1.35; color: #b7d7ff; max-wi
 // The Jobs card uses the light theme (soft white, navy type, gold top bar, red
 // eyebrow) so a shared /jobs/ link looks unlike the homepage and Open cards.
 // It shows how the board works, not counts, so it never goes out of date.
-const jobsHtml = () => `<!doctype html>
+// The section cards below reuse it; none of them shows a count either.
+const JOBS_CARD = {
+  file: "og-jobs.png",
+  eyebrow: "USASI Jobs",
+  title: ["Jobs in", "American AI"],
+  description: "Open roles at U.S. AI companies, labs, and research universities. Apply with the employer.",
+  search: "Title, skill, or place",
+  panelTitle: "Filter by",
+  rows: ["Role and experience level", "City, state, or remote", "Pay range", "Employer"],
+  url: "unitedstatesofamericasuperintelligence.com/jobs/",
+};
+const LIGHT_CARDS = [
+  JOBS_CARD,
+  {
+    file: "og-people.png",
+    eyebrow: "USASI People",
+    title: ["People in", "U.S. AI"],
+    description: "Sourced profiles of the founders, engineers, researchers, and open-source maintainers in the catalog.",
+    panelTitle: "Each profile links",
+    rows: ["Roles and affiliations", "Organizations", "Projects and releases", "Sources"],
+    url: "unitedstatesofamericasuperintelligence.com/people/",
+  },
+  {
+    file: "og-voices.png",
+    eyebrow: "USASI People",
+    title: ["Voices of SI"],
+    description: "Tech creators and communicators who explain AI and superintelligence to the public.",
+    panelTitle: "Their work",
+    rows: ["Shows and channels", "Podcasts", "Newsletters", "Reporting"],
+    url: "unitedstatesofamericasuperintelligence.com/voices/",
+  },
+  {
+    file: "og-news.png",
+    eyebrow: "USASI News",
+    title: ["U.S. AI news,", "with sources"],
+    description: "Dated updates about the organizations and open artifacts in the USASI catalog.",
+    panelTitle: "Updates on",
+    rows: ["Releases", "License changes", "Ownership", "Governance"],
+    url: "unitedstatesofamericasuperintelligence.com/news/",
+  },
+  {
+    file: "og-changelog.png",
+    eyebrow: "USASI Editorial log",
+    title: ["Catalog", "changelog"],
+    description: "Substantive changes to the USASI catalog and its policies, with dates.",
+    panelTitle: "Entries record",
+    rows: ["Added", "Updated", "Corrected", "Policy changes"],
+    url: "unitedstatesofamericasuperintelligence.com/changelog/",
+  },
+  {
+    file: "og-newsletter.png",
+    eyebrow: "Weekly email",
+    title: ["The USASI", "weekly"],
+    description: "One email a week on what changed in the catalog, each item linked to its sourced page.",
+    panelTitle: "Each issue sums up",
+    rows: ["New catalog records", "Releases", "License changes", "Corrections"],
+    url: "unitedstatesofamericasuperintelligence.com/newsletter/",
+  },
+];
+
+const lightHtml = (card) => `<!doctype html>
 <html><head><meta charset="utf-8"><style>
 @font-face { font-family: "Instrument Sans"; src: url("${fontUrl("InstrumentSans-latin-wght.woff2")}") format("woff2"); font-weight: 400 700; }
 @font-face { font-family: "IBM Plex Mono"; src: url("${fontUrl("IBMPlexMono-latin-500.woff2")}") format("woff2"); font-weight: 500; }
@@ -113,31 +178,32 @@ p { margin-top: 26px; font-size: 29px; line-height: 1.38; color: #41566B; }
 </style></head><body><div class="card">
   <div class="dots"></div><div class="top"></div>
   <div class="content">
-    <div class="eyebrow">USASI Jobs</div>
-    <h1>Jobs in<br>American AI</h1>
-    <p>Open roles at U.S. AI companies, labs, and research universities. Apply with the employer.</p>
+    <div class="eyebrow">${card.eyebrow}</div>
+    <h1>${card.title.join("<br>")}</h1>
+    <p>${card.description}</p>
   </div>
-  <div class="search"><span class="glass"></span>Title, skill, or place<span class="btn">Search</span></div>
-  <div class="panel"><h2>Filter by</h2>${["Role and experience level", "City, state, or remote", "Pay range", "Employer"].map((r) => `<div class="row"><span class="chip"></span>${r}</div>`).join("")}</div>
-  <div class="url">unitedstatesofamericasuperintelligence.com/jobs/</div>
+  ${card.search ? `<div class="search"><span class="glass"></span>${card.search}<span class="btn">Search</span></div>` : ""}
+  <div class="panel"${card.search ? "" : ' style="top: 112px"'}><h2>${card.panelTitle}</h2>${card.rows.map((r) => `<div class="row"><span class="chip"></span>${r}</div>`).join("")}</div>
+  <div class="url">${card.url}</div>
 </div></body></html>`;
+
+// With file names on the command line, render only those cards.
+const only = new Set(process.argv.slice(2));
+const wanted = (file) => only.size === 0 || only.has(file);
 
 const browser = await chromium.launch();
 try {
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
-  for (const card of CARDS) {
-    await page.setContent(html(card), { waitUntil: "load" });
+  const render = async (file, markup) => {
+    await page.setContent(markup, { waitUntil: "load" });
     await page.evaluate(() => document.fonts.ready);
     const shot = await page.screenshot({ type: "png" });
-    const out = path.join(root, "public", card.file);
+    const out = path.join(root, "public", file);
     await sharp(shot).png({ compressionLevel: 9, palette: true, quality: 90, effort: 10 }).toFile(out);
-    console.log(`${card.file.padEnd(14)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} KiB`);
-  }
-  await page.setContent(jobsHtml(), { waitUntil: "load" });
-  await page.evaluate(() => document.fonts.ready);
-  const jobsOut = path.join(root, "public", "og-jobs.png");
-  await sharp(await page.screenshot({ type: "png" })).png({ compressionLevel: 9, palette: true, quality: 90, effort: 10 }).toFile(jobsOut);
-  console.log(`og-jobs.png    ${(fs.statSync(jobsOut).size / 1024).toFixed(0).padStart(5)} KiB`);
+    console.log(`${file.padEnd(18)} ${(fs.statSync(out).size / 1024).toFixed(0).padStart(5)} KiB`);
+  };
+  for (const card of CARDS) if (wanted(card.file)) await render(card.file, html(card));
+  for (const card of LIGHT_CARDS) if (wanted(card.file)) await render(card.file, lightHtml(card));
 } finally {
   await browser.close();
 }

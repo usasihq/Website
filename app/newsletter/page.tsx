@@ -4,7 +4,7 @@ import Content from "@/content/pages/newsletter.mdx";
 import { EditorialPage } from "@/components/EditorialPage";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, socialImages } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
 import { siteConfig } from "@/lib/site-config";
 
@@ -13,6 +13,7 @@ export const metadata = pageMetadata({
   description:
     "A weekly email summing up new catalog records, releases, license changes, corrections, and new explainers, each linked to its sourced page.",
   path: "/newsletter/",
+  image: socialImages.newsletter,
   feeds: [{ path: "/newsletter/feed.xml", title: "The USASI weekly" }],
 });
 
