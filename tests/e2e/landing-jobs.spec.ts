@@ -274,6 +274,12 @@ test("job pages pass axe", async ({ page }) => {
   await page.locator('#listings h3 a[href^="/jobs/at/anthropic/"]').first().click();
   const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
   expect(axe.violations.map((v) => v.id)).toEqual([]);
+  // Best practice: all content sits inside a landmark (the independence line is in the banner).
+  const regions = await new AxeBuilder({ page }).withRules(["region", "landmark-one-main", "landmark-unique"]).analyze();
+  expect(regions.violations.map((v) => v.id)).toEqual([]);
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description!.length).toBeLessThanOrEqual(160);
+  expect(description).toContain(" at ");
 });
 
 test("search understands abbreviations, offers popular searches, and narrows by city", async ({ page }) => {

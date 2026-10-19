@@ -7,17 +7,30 @@
 import type { Catalog } from "../catalog";
 import { absoluteUrl } from "../paths";
 import type { Organization } from "../schema";
-import { descriptionHtml, descriptionText, type Description } from "./description";
+import { descriptionHtml, type Description } from "./description";
 import { readDescriptions } from "./descriptions-store";
-import { isUSOnly, placeGeography } from "./geo";
-import { jobSlug } from "./job-url";
+import { displayLocation, isUSOnly, placeGeography } from "./geo";
+import { jobSlug, shortCode } from "./job-url";
 import { readJobsForBuild } from "./load";
 import type { Job } from "./schema";
 import { isCurrent } from "./search";
 import { isExpressionOfInterest } from "./tracks";
 import { jobCategory, jobLevel } from "./levels";
 
-export type JobPage = { job: Job; org: Organization; slug: string; path: string; description: Description | null };
+export type JobPage = {
+  job: Job;
+  org: Organization;
+  slug: string;
+  path: string;
+  description: Description | null;
+  /**
+   * Set only when another current posting at the same employer has the identical title: the
+   * posting's own location(s), so each page's <title> is distinct. Slugs and URLs are unaffected.
+   */
+  titleSuffix?: string | null;
+  /** When those postings also share their locations: the requisition or posting ID (or the page's own code). */
+  titleId?: string | null;
+};
 
 const memo = new WeakMap<Catalog, JobPage[]>();
 
@@ -41,8 +54,95 @@ export function jobPages(catalog: Catalog): JobPage[] {
     pages.push({ job, org, slug, path: `/jobs/at/${org.slug}/${slug}/`, description: descriptions.get(job.id) ?? null });
   }
   pages.sort((a, b) => (a.path < b.path ? -1 : 1));
+  assignTitleSuffixes(pages);
   memo.set(catalog, pages);
   return pages;
+}
+
+/** The location part of a duplicate title: up to two display locations, or the first and a count. */
+export function locationSuffix(locations: string[]): string {
+  const shown = locations.map(displayLocation);
+  if (!shown.length) return "location not stated";
+  return shown.length > 2 ? `${shown[0]} +${shown.length - 1} more` : shown.join(" · ");
+}
+
+export const shortOrg = (name: string) => name.replace(/\s*\([^)]*\)\s*$/, "").trim();
+const TITLE_LIMIT = 70;
+const clipTitle = (t: string, max: number) => (t.length <= max ? t : `${t.slice(0, max - 1).replace(/[\s,;:·-]+$/, "")}…`);
+
+/**
+ * The page title: role, employer, and first location when it fits. When the
+ * employer has another current posting with the same title, the posting's
+ * location suffix (see assignTitleSuffixes) is always kept, so titles differ.
+ */
+export function jobPageTitle(p: JobPage): string {
+  const org = p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name);
+  if (p.titleSuffix) {
+    // The posting reference is never shortened; the location is, when space runs out.
+    const id = p.titleId ? `, ${p.titleId}` : "";
+    const suffix = `${clipTitle(p.titleSuffix, 40 - id.length)}${id}`;
+    const full = [`${p.job.title} at ${org}, ${suffix}`, `${p.job.title}, ${suffix}`].find((t) => t.length <= TITLE_LIMIT);
+    return full ?? `${clipTitle(p.job.title, TITLE_LIMIT - suffix.length - 2)}, ${suffix}`;
+  }
+  const where = p.job.locations[0] ? displayLocation(p.job.locations[0]) : undefined;
+  return [`${p.job.title} at ${org}${where ? `, ${where}` : ""}`, `${p.job.title} at ${org}`, p.job.title].find((t) => t.length <= TITLE_LIMIT) ?? p.job.title.slice(0, TITLE_LIMIT);
+}
+
+/** A short, distinguishing reference for a posting: its requisition, its posting ID, or its page code. */
+function postingRef(p: JobPage, kind: "req" | "id" | "code"): string | null {
+  if (kind === "req") return p.job.requisition_id && p.job.requisition_id.length <= 20 ? `Req. ${p.job.requisition_id}` : null;
+  if (kind === "id") return p.job.source_job_id.length <= 16 ? `ID ${p.job.source_job_id}` : null;
+  return `ref. ${shortCode(p.job.id)}`;
+}
+
+/** Gives every page whose employer has another current posting with the same title a distinguishing suffix. */
+export function assignTitleSuffixes(pages: JobPage[]): void {
+  const groups = new Map<string, JobPage[]>();
+  for (const p of pages) {
+    const k = `${p.org.slug}\u0000${p.job.title.trim().replace(/\s+/g, " ").toLowerCase()}`;
+    const list = groups.get(k) ?? [];
+    list.push(p);
+    groups.set(k, list);
+  }
+  for (const list of groups.values()) {
+    for (const p of list) {
+      p.titleSuffix = list.length > 1 ? locationSuffix(p.job.locations) : null;
+      p.titleId = null;
+    }
+    if (list.length < 2) continue;
+    const byWhere = new Map<string, JobPage[]>();
+    for (const p of list) byWhere.set(p.titleSuffix!, [...(byWhere.get(p.titleSuffix!) ?? []), p]);
+    for (const same of byWhere.values()) {
+      if (same.length < 2) continue;
+      // The first kind of reference every posting has, distinct across them; the page code always is.
+      for (const kind of ["req", "id", "code"] as const) {
+        const refs = same.map((p) => postingRef(p, kind));
+        if (refs.every(Boolean) && new Set(refs).size === refs.length) {
+          same.forEach((p, i) => (p.titleId = refs[i]));
+          break;
+        }
+      }
+    }
+  }
+  // Shortening can still make two titles at one employer read the same (long titles or long
+  // locations). Those pages get the location and the page's own code, which is unique per posting.
+  for (let pass = 0; pass < 2; pass++) {
+    const byTitle = new Map<string, JobPage[]>();
+    for (const p of pages) {
+      const k = `${p.org.slug}\u0000${jobPageTitle(p)}`;
+      byTitle.set(k, [...(byTitle.get(k) ?? []), p]);
+    }
+    let clashes = 0;
+    for (const same of byTitle.values()) {
+      if (same.length < 2) continue;
+      clashes++;
+      for (const p of same) {
+        p.titleSuffix ??= locationSuffix(p.job.locations);
+        p.titleId = postingRef(p, "code");
+      }
+    }
+    if (!clashes) break;
+  }
 }
 
 export function jobPage(catalog: Catalog, company: string, slug: string): JobPage | undefined {
@@ -133,14 +233,6 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
         }
       : {}),
   };
-}
-
-/** About 150 characters of the description, for the page's meta description. */
-export function jobSnippet(p: JobPage): string | null {
-  if (!p.description) return null;
-  const text = descriptionText(p.description);
-  if (text.length <= 150) return text;
-  return `${text.slice(0, 147).replace(/\s+\S*$/, "")}…`;
 }
 
 /**
