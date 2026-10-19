@@ -15,7 +15,7 @@ import { useDebounced } from "./useQueryState";
  * records as the pages) is fetched from the site itself on first use, so the
  * homepage stays light; nothing is sent anywhere else.
  */
-export function HomeSearch({ indexUrl }: { indexUrl: string }) {
+export function HomeSearch({ indexUrl, githubLimit, hfLimit }: { indexUrl: string; githubLimit: number; hfLimit: number }) {
   const [query, setQuery] = useState("");
   const [entries, setEntries] = useState<SearchEntry[] | null>(null);
   const [loadError, setLoadError] = useState(false);
@@ -69,7 +69,8 @@ export function HomeSearch({ indexUrl }: { indexUrl: string }) {
         </div>
         {/* Visible from 640px; on phones it stays available to screen readers so the first screen fits. */}
         <p id={hintId} className="text-sm text-muted max-sm:sr-only sm:mt-2">
-          Searches organizations, open models and tools, people, hubs, explainers, glossary terms, license guides, policy documents, and states.
+          Searches organizations, open models and tools, people and Voices of SI, hubs, explainers, glossary terms, license guides, policy documents,
+          states, the top {githubLimit.toLocaleString("en-US")} projects on AI on GitHub, and the top {hfLimit.toLocaleString("en-US")} on AI on Hugging Face.
         </p>
         <noscript>
           <p className="mt-2 text-sm text-muted">Search needs JavaScript. You can browse both directories with the links below.</p>
