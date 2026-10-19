@@ -59,6 +59,7 @@ npm run preview:static  # serve out/ like a static host at http://localhost:4321
 | `npm run prepare:images` | Regenerates hero derivatives, `og.png`, and the touch icon, using the branding derivative while preserving the original artwork. |
 | `npm run prepare:social` | Renders section social cards (`og-open.png` for Open Models & Tools) with the site's fonts and colors. Their alt text lives in `lib/metadata.ts`. |
 | `npm run jobs:index` | After a jobs refresh, notify the Google Indexing API of added or removed job pages. Skips if `GOOGLE_INDEXING_SA_JSON` is unset. |
+| `npm run jobs:indexnow` | After a jobs refresh is live, notify IndexNow (Bing/Yandex) of added or removed job pages. Skips when nothing changed; IndexNow errors do not fail the refresh. |
 | `npm run layoffs:refresh` | Fetch recent WARN Act notices for CA, WA, NY, and TX. A failed state keeps its last snapshot or is skipped. |
 | `npm run github:refresh` | Refresh `data/github/projects.json` (AI on GitHub, `/github/`) from the public GitHub search API: no token, about 45 minutes at the unauthenticated rate limit. `-- --offline` re-applies the inclusion rules to the cached results. See `docs/AUTOMATION.md`. |
 
@@ -369,6 +370,20 @@ Setup (optional; the step skips without an error if the secret is missing):
 
 Locally, `npm run jobs:index` reads the same secret from the environment (see `.env.example`).
 Copy the previous snapshot to `data/jobs/previous.json` first if you want a real diff.
+
+### IndexNow (Bing and Yandex)
+
+`npm run jobs:indexnow` uses the same `previous.json` diff, plus `/`, `/jobs/`,
+and `/jobs/index/` when any job URL changed, and POSTs to
+[IndexNow](https://www.indexnow.org/documentation). The key file
+`public/745c203344b0b6686f92c9a3e457671d.txt` ships at the site root with the
+static export. Ping only after deploy (`refresh-jobs.yml` and
+`scripts/automation/jobs-update.sh`). No secret is required.
+
+`/llms.txt` is generated at build time from the same sections as the sitemap
+([llms.txt](https://llmstxt.org)): jobs by state/role/company, the weekly AI
+Hiring Index, companies, Big SI people, open-source people, Voices of SI, and
+the other main routes.
 
 ### WARN Act layoff pages
 

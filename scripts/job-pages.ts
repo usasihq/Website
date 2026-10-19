@@ -13,6 +13,7 @@ import { renderJobPage, type PageShell } from "../lib/jobs/job-page-html";
 import { jobPages, similarJobs } from "../lib/jobs/job-pages";
 import { CITY_SLUG_ALIASES } from "../lib/jobs/geo";
 import { stateSlug } from "../lib/places";
+import { renderLlmsTxt } from "../lib/llms-txt";
 import { absoluteUrl, asset } from "../lib/paths";
 
 const out = path.join(process.cwd(), "out");
@@ -57,6 +58,14 @@ for (let i = 0, n = 0; i < listed.length; i += CHUNK, n++) {
 }
 fs.writeFileSync(pagesMap, `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${children.map((c) => `<sitemap><loc>${xmlEsc(c)}</loc></sitemap>`).join("\n")}\n</sitemapindex>\n`);
 console.log(`job-pages: sitemap index with ${children.length} sitemaps (${listed.length} job pages in ${children.length - 1} files).`);
+
+// /llms.txt: rewrite whatever Next emitted so the file is always a markdown
+// document at the site root (not a directory), using the current sitemap sections.
+{
+  const llmsPath = path.join(out, "llms.txt");
+  if (fs.existsSync(llmsPath) && fs.lstatSync(llmsPath).isDirectory()) fs.rmSync(llmsPath, { recursive: true });
+  fs.writeFileSync(llmsPath, renderLlmsTxt(getCatalog()));
+}
 
 // Renamed city pages: the old address points to the new one (no script; a plain refresh and link).
 for (const [from, to] of Object.entries(CITY_SLUG_ALIASES)) {

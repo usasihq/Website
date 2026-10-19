@@ -32,6 +32,7 @@
     "jobs:refresh": "tsx --env-file-if-exists=.env.jobs scripts/refresh-jobs.ts",
     "jobs:snapshot": "tsx scripts/snapshot-jobs.ts",
     "jobs:index": "tsx scripts/ping-indexing.ts",
+    "jobs:indexnow": "tsx scripts/ping-indexnow.ts",
     "jobs:validate": "tsx scripts/validate-jobs.ts",
     "jobs:backfill-pay": "tsx scripts/backfill-description-pay.ts",
     "jobs:hf-dataset": "tsx --env-file-if-exists=.env.jobs scripts/hf-jobs-dataset.ts",

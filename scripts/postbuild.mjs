@@ -83,6 +83,8 @@ const required = [
   "sitemap.xml",
   "sitemap-pages.xml",
   "robots.txt",
+  "llms.txt",
+  "745c203344b0b6686f92c9a3e457671d.txt",
   "_headers",
   "og.png",
   "og-open.png",
@@ -107,6 +109,18 @@ const required = [
 ];
 for (const rel of required) {
   if (!fs.existsSync(path.join(out, rel))) failures.push(`missing ${rel}`);
+}
+
+{
+  const keyFile = "745c203344b0b6686f92c9a3e457671d.txt";
+  const keyPath = path.join(out, keyFile);
+  if (fs.existsSync(keyPath) && fs.readFileSync(keyPath, "utf8").trim() !== keyFile.slice(0, -4)) {
+    failures.push(`IndexNow key file ${keyFile} does not contain the key`);
+  }
+  const llms = fs.existsSync(path.join(out, "llms.txt")) ? fs.readFileSync(path.join(out, "llms.txt"), "utf8") : "";
+  if (llms && (!llms.startsWith("# ") || !llms.includes("> ") || !llms.includes("https://") || !llms.includes("/jobs/index/"))) {
+    failures.push("llms.txt is missing the title, summary, absolute URLs, or /jobs/index/");
+  }
 }
 
 // Any record that is not active (published + eligible) must not appear as a

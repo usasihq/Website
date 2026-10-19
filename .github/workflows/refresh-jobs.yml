@@ -116,3 +116,9 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # After deploy so the URLs are live. The script exits 0 on IndexNow errors.
+      - name: Notify IndexNow of added and removed job pages
+        continue-on-error: true
+        run: npm run jobs:indexnow
+        env:
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com

@@ -185,6 +185,21 @@ or Google will reject every publish call. Do not commit the key. Ordinary Cloudf
 deploys preserve `data/jobs/indexing-quota.json` in the jobs cache so a same-day
 refresh still sees the remaining quota.
 
+### IndexNow (`npm run jobs:indexnow`)
+
+After the refreshed site is deployed, `npm run jobs:indexnow` diffs job-page URLs
+against `data/jobs/previous.json` (the same snapshot `jobs:index` uses), adds
+`/`, `/jobs/`, and `/jobs/index/` when anything changed, and POSTs them in
+batches of at most 10,000 to `https://api.indexnow.org/indexnow`. Ownership is
+the key file at the site root (`/<key>.txt`, committed in `public/` and copied
+into the static export). The step is a skip when there are no changes. IndexNow
+errors log a warning and do not fail the refresh.
+
+`refresh-jobs.yml` runs it after `wrangler deploy`. The local evening path
+(`scripts/automation/jobs-update.sh`) copies `current.json` to `previous.json`
+before the refresh and pings IndexNow after `publish.sh` (URLs are live). No
+secret is required.
+
 `data/jobs/hiring-index.json` is a small weekly count file (open listings by
 employer and by U.S. state named in a location). `npm run jobs:snapshot` writes
 it from `current.json` in a few milliseconds and is a separate workflow step
@@ -356,7 +371,7 @@ From an independent audit, each item checked against the code and the live site 
 - **No-JS search:** the form is `GET /jobs/` with `q` and `w`; `w` is read like the Where box.
 - **Federal:** `/jobs/at/federal/` was already noindex and out of the sitemap while empty; it is now also out of Browse, says listings aren't collected yet, and the coverage card says "Not configured (API key pending)" until USAJOBS succeeds once.
 - **Compact jobs.json.** `/data/jobs.json` is the compact form the directory loads (tables of repeated text, arrays, epoch-ms timestamps, URL prefixes per feed, and each listing's geography computed at build); `/data/jobs-full.json` keeps the full format for reuse. `tests/unit/jobs-slim.test.ts` checks the round trip and that 24 filter URLs give identical results. Sorting computes its keys once per row, and facet counts skip sorting.
-- **Sitemap index.** `app/sitemap.ts` lists every page except job pages; `scripts/job-pages.ts` renames Next's output to `/sitemap-pages.xml`, writes job pages (those with a description) to `/sitemaps/jobs-<n>.xml` in files of 10,000, and writes `/sitemap.xml` as the index, which `robots.txt` already names. `scripts/postbuild.mjs` reads every listed sitemap and checks the 50,000-URL / 50 MB limits.
+- **Sitemap index.** `app/sitemap.ts` lists every page except job pages; `scripts/job-pages.ts` renames Next's output to `/sitemap-pages.xml`, writes job pages (those with a description) to `/sitemaps/jobs-<n>.xml` in files of 10,000, and writes `/sitemap.xml` as the index, which `robots.txt` already names. `scripts/postbuild.mjs` reads every listed sitemap and checks the 50,000-URL / 50 MB limits. `/llms.txt` is generated from those same sections at build time (jobs by state/role/company, the weekly AI Hiring Index, companies, people, Voices of SI, resources).
 - **Page layout.** h1 "Jobs at U.S. AI companies and labs"; a shortcuts row (topic pages, the three largest role pages, WARN Act layoffs, each with its count) before the first card; "Coverage & source health" shows a one-line summary with the per-source cards in a disclosure (card titles are no longer headings). "Skip to results" / "Skip to filters" are the first links in the page's main content. On a 390×844 phone the first job card starts within the first screen.
 - **404 for closed jobs.** A missing `/jobs/at/<employer>/<title>-<code>/` shows that the posting is no longer listed, with "Jobs at <employer>", "Similar roles", and "Search all jobs" (client component; still a 404).
 - **Not done here:** times stay in UTC (job pages have no JavaScript, so local times would differ between the directory and job pages); the usasihq.com redirect chain is a Cloudflare dashboard rule (owner).
