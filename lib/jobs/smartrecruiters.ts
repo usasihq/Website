@@ -4,10 +4,9 @@
  * more request. Descriptions are fetched only for postings USASI has not
  * stored yet, so after the first run a refresh makes a few requests a day.
  */
-import { setTimeout as delay } from "node:timers/promises";
 import { z } from "../zod";
 import type { Careers } from "./schema";
-import { endpoint, fetchJson, FeedError } from "./security";
+import { abortableDelay, endpoint, fetchJson, FeedError, throwIfAborted } from "./security";
 
 const short = z.string().max(1000);
 export const SrPosting = z.object({
@@ -28,31 +27,33 @@ const Detail = z.object({
 export type SrPayload = { postings: z.infer<typeof SrPosting>[]; details: Record<string, string> };
 
 const MAX_PAGES = 50;
-const MAX_DETAILS = 1500;
+export const MAX_DETAILS = Number(process.env.SMARTRECRUITERS_MAX_DETAILS ?? 100);
 
-export async function fetchSmartRecruiters(c: Careers, hasDescription: (postingId: string) => boolean, fetcher: typeof fetch = fetch): Promise<SrPayload> {
+export async function fetchSmartRecruiters(c: Careers, hasDescription: (postingId: string) => boolean, fetcher: typeof fetch = fetch, signal?: AbortSignal): Promise<SrPayload> {
   if (c.source.type !== "smartrecruiters") throw new FeedError("payload");
   const base = endpoint(c);
   const postings: SrPayload["postings"] = [];
   for (let page = 0; page < MAX_PAGES; page++) {
-    const data = Page.parse(await fetchJson(`${base}?limit=100&offset=${page * 100}`, fetcher));
+    throwIfAborted(signal);
+    const data = Page.parse(await fetchJson(`${base}?limit=100&offset=${page * 100}`, fetcher, undefined, signal));
     postings.push(...data.content);
     if (postings.length >= data.totalFound || data.content.length === 0) {
       if (postings.length !== data.totalFound) throw new FeedError("payload");
       break;
     }
     if (page === MAX_PAGES - 1) throw new FeedError("payload");
-    await delay(500);
+    await abortableDelay(500, signal);
   }
   const details: Record<string, string> = {};
   let fetched = 0;
   for (const p of postings) {
+    throwIfAborted(signal);
     if (hasDescription(p.id) || fetched >= MAX_DETAILS) continue;
-    const d = Detail.parse(await fetchJson(`${base}/${encodeURIComponent(p.id)}`, fetcher));
+    const d = Detail.parse(await fetchJson(`${base}/${encodeURIComponent(p.id)}`, fetcher, undefined, signal));
     fetched++;
     const sections = Object.values(d.jobAd?.sections ?? {}).filter((s) => s.text);
     if (sections.length) details[p.id] = sections.map((s) => `${s.title ? `<h3>${s.title.replace(/[<>&]/g, " ")}</h3>` : ""}${s.text}`).join("");
-    await delay(250);
+    await abortableDelay(250, signal);
   }
   return { postings, details };
 }

@@ -46,6 +46,8 @@ jobs:
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
       - name: Record hiring-index snapshot from current listings
@@ -59,6 +61,8 @@ jobs:
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-early
       - name: Refresh Jobs before ordinary releases
         if: vars.JOBS_REFRESH == 'true'
@@ -67,6 +71,8 @@ jobs:
         env:
           USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
           USAJOBS_USER_AGENT: ${{ vars.USAJOBS_USER_AGENT }}
+          JOBS_REFRESH_CONCURRENCY: "4"
+          JOBS_SOURCE_TIMEOUT_MS: "180000"
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
@@ -91,6 +97,8 @@ jobs:
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-snap
       - name: Preserve validated Jobs state
         if: vars.JOBS_REFRESH == 'true'
@@ -100,6 +108,8 @@ jobs:
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Deploy production
         run: npx wrangler deploy --message "${{ env.RELEASE_SHA }}"

@@ -109,9 +109,15 @@ salary sorting. Minimum filters require currency + period and compare disclosed 
 
 Every six-hour check is a complete source snapshot and performs full reconciliation;
 there is no separate daily incremental path that could mistake a partial response for
-absence. This costs only one request per currently configured employer. Calls are
-serial, spaced by one second, time-limited to 30 seconds, bounded to 64 MiB decompressed
-JSON and 20,000 jobs per source. No source-controlled URL is fetched. Fetching uses only
+absence. Independent employers are fetched with bounded concurrency (default 4;
+`JOBS_REFRESH_CONCURRENCY`). Each source has a time budget (default 180 seconds;
+`JOBS_SOURCE_TIMEOUT_MS`): a timeout or network error keeps that employer's previous
+listings, logs the failure, and does not fail the whole run. One retry is used only
+for a short network error, never for a timeout, 429, HTTP error, or malformed payload.
+Each HTTP request is still time-limited to 30 seconds, bounded to 64 MiB decompressed
+JSON and 20,000 jobs per source. Progress (`current.json`, descriptions, Workday meta)
+is written after each source so a later workflow timeout still leaves a usable snapshot.
+No source-controlled URL is fetched. Fetching uses only
 fixed HTTPS API hosts, refuses redirects, and sends no credentials/cookies. No retries
 or bypass after rate limits, bot protection, authentication, or malformed responses.
 
@@ -215,7 +221,8 @@ Add the secret here:
 3. **Local automation.** Put `HF_TOKEN=` in `.env.jobs` (git-ignored). `npm run jobs:hf-dataset` already reads that file.
 
 State restores from an immutable GitHub Actions cache key scoped to this main-branch
-workflow family. Validation, type checking, lint, unit tests, production build and
+workflow family (`current.json`, the hiring index, Indexing API quota, job
+descriptions, and Workday detail meta). Validation, type checking, lint, unit tests, production build and
 internal-link checks gate deployment. Validated state is cached and a seven-day artifact
 supports recovery. The build contains real observation timestamps but does not commit
 on timestamp changes. Each scheduled run intentionally republishes verification/health
@@ -334,14 +341,14 @@ setting have not been verified.
 ## Workable and SmartRecruiters (2026-10-16)
 
 - Workable: `https://apply.workable.com/api/v1/widget/accounts/<account>?details=true`, one list with descriptions. Posting links are `apply.workable.com/j/<shortcode>` (no account in the path), so only that path shape is accepted. Hugging Face.
-- SmartRecruiters: the documented Posting API, `https://api.smartrecruiters.com/v1/companies/<id>/postings`, 100 per page (at most 50 pages), without descriptions. Each description is one request to `/postings/<id>`, made only for postings with no stored description (at most 1,500 a run, 250 ms apart); a posting whose description was not fetched keeps the stored one. The first run for ServiceNow and LLNL took about 12 minutes; later runs fetch only new postings. Public links are `jobs.smartrecruiters.com/<company>/<id>`. ServiceNow's careers site sends Apply to that host; LLNL's Find Your Job page links to it.
+- SmartRecruiters: the documented Posting API, `https://api.smartrecruiters.com/v1/companies/<id>/postings`, 100 per page (at most 50 pages), without descriptions. Each description is one request to `/postings/<id>`, made only for postings with no stored description (at most 100 a company per run, 250 ms apart; `SMARTRECRUITERS_MAX_DETAILS` overrides); a posting whose description was not fetched keeps the stored one. Descriptions fill in over later runs. Public links are `jobs.smartrecruiters.com/<company>/<id>`. ServiceNow's careers site sends Apply to that host; LLNL's Find Your Job page links to it.
 - Board identifiers may contain a period (Ashby `nomic.ai`, `far.ai`).
 - Cloudflare: the account is on Workers Paid (100,000 files per deployment); `scripts/postbuild.mjs` enforces that limit.
 
 ## Workday (2026-10-16, owner approved)
 
 - Workday has no documented job feed. Each employer's career site, `https://<tenant>.<wdN>.myworkdayjobs.com/<site>`, loads its openings from public JSON under `/wday/cxs/<tenant>/<site>/`; the sites' robots.txt does not disallow it. The owner approved reading it on 2026-10-16.
-- Identifier `<tenant>.<wdN>.<site>`. The list (`POST .../jobs`, 20 per page, 400 ms apart, at most 250 pages) gives title and path; a detail (`GET .../job/...`, 300 ms apart, at most 500 a site and 1,500 in all per run; `WORKDAY_DETAIL_BUDGET` overrides the total) gives the description, locations, country, start date, and time type. Details are fetched only for postings with no stored description; what a detail returned is kept in `data/jobs/workday-meta.json` (local, never committed), so later runs read only the list. Workday reports at most 2,000 as a site's total, so the list is read until a short page. A detail that fails with an HTTP error (a posting closed in between) is skipped, not the whole site. Until a posting's details arrive it has no location and no description (its page is noindex).
+- Identifier `<tenant>.<wdN>.<site>`. The list (`POST .../jobs`, 20 per page, 400 ms apart, at most 250 pages) gives title and path; a detail (`GET .../job/...`, 300 ms apart, at most 100 a site and 1,500 in all per run; `WORKDAY_MAX_DETAILS_PER_SITE` and `WORKDAY_DETAIL_BUDGET` override) gives the description, locations, country, start date, and time type. Details are fetched only for postings with no stored description; what a detail returned is kept in `data/jobs/workday-meta.json` (local, never committed; cached in the GitHub Actions jobs cache), so later runs read only the list. Workday reports at most 2,000 as a site's total. When the reported total is at that cap, the unfiltered list is not paginated (those pages repeat); the list is split by a facet instead. A detail that fails with an HTTP error (a posting closed in between) is skipped, not the whole site. Until a posting's details arrive it has no location and no description (its page is noindex).
 - Posting links must be on the source's own Workday host under `/<site>/job/`.
 - Enabled: Adobe, Boston Dynamics, Broadcom, Intel, Marvell, Micron, NVIDIA, Red Hat, Salesforce, SiFive. Each site was matched to its company by the site's title or the hiring organization in a posting. Universities on Workday (CMU, Cornell, UT Austin, UW) are left out: their boards are mostly non-research campus staff roles.
 - The USAJOBS User-Agent default is the site's public contact address, usasi@usasihq.com (it must match the address the API key is registered with).

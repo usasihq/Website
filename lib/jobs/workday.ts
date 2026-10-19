@@ -11,10 +11,9 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { setTimeout as delay } from "node:timers/promises";
 import { z } from "../zod";
 import type { Careers } from "./schema";
-import { endpoint, fetchJson, FeedError, workdaySite } from "./security";
+import { abortableDelay, endpoint, fetchJson, FeedError, throwIfAborted, workdaySite } from "./security";
 
 const short = z.string().max(1000);
 const ListPosting = z.object({ title: short, externalPath: z.string().max(500).regex(/^\/job\/[^\s?#]+$/), locationsText: short.nullable().optional(), bulletFields: z.array(short).max(10).optional() });
@@ -40,48 +39,57 @@ export type WdPayload = { postings: z.infer<typeof ListPosting>[]; meta: Record<
 /** The posting's source ID: the last path segment (title and requisition), kept to safe characters. */
 export const workdayId = (externalPath: string) => externalPath.split("/").at(-1)!.replace(/[^A-Za-z0-9_-]/g, "-").slice(-100);
 
-const PAGE = 20;
+export const PAGE = 20;
 const MAX_PAGES = 250;
 // Workday reports at most 2,000 as a site's total, though the list continues past it.
-const TOTAL_CAP = 2000;
+export const TOTAL_CAP = 2000;
 // Details are the slow part (about 1.5 s each with pacing). Each run fetches at most this many per
 // site and across all sites, so a refresh stays well inside the routines' time; new postings fill in
 // over the next runs and meanwhile show the list's location text.
-const MAX_DETAILS_PER_SITE = 500;
+export const MAX_DETAILS_PER_SITE = Number(process.env.WORKDAY_MAX_DETAILS_PER_SITE ?? 100);
 let detailBudget = Number(process.env.WORKDAY_DETAIL_BUDGET ?? 1500);
 
 export async function fetchWorkday(c: Careers, known: (id: string) => WdMeta | undefined, hasDescription: (id: string) => boolean,
-  fetcher: typeof fetch = fetch): Promise<WdPayload> {
+  fetcher: typeof fetch = fetch, signal?: AbortSignal): Promise<WdPayload> {
   if (c.source.type !== "workday") throw new FeedError("payload");
   const w = workdaySite(c.source.identifier);
   const list = endpoint(c);
   const postings: WdPayload["postings"] = [];
   const seenPaths = new Set<string>();
+  const ingest = (data: z.infer<typeof ListPage>) => {
+    for (const raw of data.jobPostings) {
+      const parsed = ListPosting.safeParse(raw);
+      if (!parsed.success) continue;
+      const p = parsed.data;
+      if (!seenPaths.has(p.externalPath)) { seenPaths.add(p.externalPath); postings.push(p); }
+    }
+  };
+  const readPage = async (appliedFacets: Record<string, string[]>, page: number) => {
+    throwIfAborted(signal);
+    return ListPage.parse(await fetchJson(list, fetcher, { appliedFacets, limit: PAGE, offset: page * PAGE, searchText: "" }, signal));
+  };
   /** Every posting for one set of facet filters; returns the first page (for its facets and total). */
   const readAll = async (appliedFacets: Record<string, string[]>) => {
     let first: z.infer<typeof ListPage> | null = null;
     let total = 0, got = 0;
     for (let page = 0; page < MAX_PAGES; page++) {
-      const data = ListPage.parse(await fetchJson(list, fetcher, { appliedFacets, limit: PAGE, offset: page * PAGE, searchText: "" }));
+      const data = await readPage(appliedFacets, page);
       // Workday reports the total on the first page; later pages may say 0.
       if (page === 0) { first = data; total = data.total; }
       got += data.jobPostings.length;
-      for (const raw of data.jobPostings) {
-        const parsed = ListPosting.safeParse(raw);
-        if (!parsed.success) continue;
-        const p = parsed.data;
-        if (!seenPaths.has(p.externalPath)) { seenPaths.add(p.externalPath); postings.push(p); }
-      }
+      ingest(data);
       // Past the 2,000 cap Workday repeats earlier pages; stop there and split instead.
       if (data.jobPostings.length < PAGE || got >= Math.min(total, TOTAL_CAP)) break;
-      await delay(400);
+      await abortableDelay(400, signal);
     }
     return first;
   };
-  const first = await readAll({});
-  if (!first) throw new FeedError("payload");
+  // Page 0 first: a capped total means split by facet instead of walking 100 unfiltered pages
+  // that Workday will only repeat (NVIDIA reports 2,735 and the unfiltered walk is wasted).
+  const first = await readPage({}, 0);
+  ingest(first);
   if (first.total >= TOTAL_CAP) {
-    // A capped list: read it again split by a facet whose groups are each under the cap and add up
+    // A capped list: read it split by a facet whose groups are each under the cap and add up
     // to the whole list (job family first), so postings past 2,000 are not left out.
     const flat = (vals: FacetValue[] = []): FacetValue[] => vals.flatMap((v) => (v.values ? flat(v.values) : [v]));
     const options = (first.facets ?? []).map((f) => ({ param: f.facetParameter, values: flat(f.values).filter((v) => v.id && v.count) }))
@@ -90,22 +98,32 @@ export async function fetchWorkday(c: Careers, known: (id: string) => WdMeta | u
     const pick = options.find((f) => /jobfamily/i.test(f.param) && f.sum >= first.total) ?? options.filter((f) => !/location/i.test(f.param)).sort((a, b) => b.sum - a.sum)[0];
     if (!pick) throw new FeedError("anomaly");
     const expected = pick.sum;
-    for (const v of pick.values) { await delay(400); await readAll({ [pick.param]: [v.id!] }); }
+    for (const v of pick.values) { await abortableDelay(400, signal); await readAll({ [pick.param]: [v.id!] }); }
     // A split that misses more than a few percent of postings is not trusted.
     if (postings.length < expected * 0.97) throw new FeedError("anomaly");
+  } else {
+    let got = first.jobPostings.length;
+    for (let page = 1; page < MAX_PAGES && got < first.total && first.jobPostings.length >= PAGE; page++) {
+      await abortableDelay(400, signal);
+      const data = await readPage({}, page);
+      got += data.jobPostings.length;
+      ingest(data);
+      if (data.jobPostings.length < PAGE) break;
+    }
   }
   if (!postings.length && first.total > 0) throw new FeedError("payload");
   const meta: Record<string, WdMeta> = {};
   const details: Record<string, string> = {};
   let fetched = 0;
   for (const p of postings) {
+    throwIfAborted(signal);
     const id = workdayId(p.externalPath);
     const cached = known(id);
     if (cached && hasDescription(id)) { meta[id] = cached; continue; }
     if (fetched >= MAX_DETAILS_PER_SITE || detailBudget <= 0) { if (cached) meta[id] = cached; continue; }
     let raw: unknown;
     try {
-      raw = await fetchJson(`https://${w.host}/wday/cxs/${w.tenant}/${w.site}${p.externalPath}`, fetcher);
+      raw = await fetchJson(`https://${w.host}/wday/cxs/${w.tenant}/${w.site}${p.externalPath}`, fetcher, undefined, signal);
     } catch (e) {
       // A posting can close between the list and its detail; skip it rather than fail the site.
       // Rate limits and network failures still stop the run for this site.
@@ -121,7 +139,7 @@ export async function fetchWorkday(c: Careers, known: (id: string) => WdMeta | u
     meta[id] = WdMeta.parse({ locations, country: d.jobRequisitionLocation?.country?.alpha2Code ?? null, startDate: d.startDate ?? null,
       timeType: d.timeType ?? null, reqId: d.jobReqId ?? null, remote: /remote/i.test(`${d.remoteType ?? ""} ${locations.join(" ")}`), remoteType: d.remoteType ?? null });
     if (d.jobDescription) details[id] = d.jobDescription;
-    await delay(300);
+    await abortableDelay(300, signal);
   }
   return { postings, meta, details };
 }

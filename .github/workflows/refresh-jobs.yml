@@ -30,10 +30,14 @@ jobs:
       - name: Restore most recent validated operational state
         uses: actions/cache/restore@v4
         with:
+          # descriptions.json and workday-meta.json skip Workday/SmartRecruiters
+          # detail refetches; without them a run spends minutes per large board.
           path: |
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
       - name: Keep previous jobs snapshot for Indexing API
@@ -50,6 +54,8 @@ jobs:
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-early
       - name: Refresh supported official sources
         timeout-minutes: 22
@@ -57,6 +63,8 @@ jobs:
         env:
           USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
           USAJOBS_USER_AGENT: ${{ vars.USAJOBS_USER_AGENT }}
+          JOBS_REFRESH_CONCURRENCY: "4"
+          JOBS_SOURCE_TIMEOUT_MS: "180000"
       - name: Preserve hiring-index after any refresh outcome
         if: always()
         uses: actions/cache/save@v4
@@ -65,6 +73,8 @@ jobs:
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-snap
       - name: Notify Google Indexing API of added and removed job pages
         run: npm run jobs:index
@@ -104,6 +114,8 @@ jobs:
             data/jobs/current.json
             data/jobs/indexing-quota.json
             data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Retain operational dataset for recovery
         uses: actions/upload-artifact@v7
