@@ -16,6 +16,7 @@ import { stateSlug, US_STATES } from "../places";
 import { SCHEMA_CONTEXT } from "../structured-data";
 import { z } from "../zod";
 import { jobGeography, stateDisplayName } from "./geo";
+import { landingPage } from "./landing";
 import { layoffHref, layoffsIndex, type LayoffsIndex } from "./layoffs";
 import { DATA_PATH } from "./load";
 import type { Dataset } from "./schema";
@@ -232,8 +233,10 @@ function companyHref(slug: string): string {
   return `/jobs/at/${slug}/`;
 }
 
-function stateHref(code: string): string {
-  return code in US_STATES ? `/jobs/in/${stateSlug(code)}/` : `/jobs/?state=${code}`;
+/** A state's jobs page exists only with enough listings (MIN_STATE_LISTINGS); otherwise link the filtered search. */
+function stateHref(catalog: Catalog, code: string): string {
+  const path = code in US_STATES ? `/jobs/in/${stateSlug(code)}/` : null;
+  return path && landingPage(catalog, path) ? path : `/jobs/?state=${code}&where=all`;
 }
 
 function clipMeta(text: string, max: number): string {
@@ -275,7 +278,7 @@ export function hiringIndexPage(catalog: Catalog, data = readHiringIndex(), layo
     ? changeRows(current.companies, previous?.companies ?? null, (k) => companyName(catalog, k), companyHref)
     : [];
   const states = current
-    ? changeRows(current.states, previous?.states ?? null, (k) => stateDisplayName(k) ?? k, stateHref)
+    ? changeRows(current.states, previous?.states ?? null, (k) => stateDisplayName(k) ?? k, (k) => stateHref(catalog, k))
     : [];
   const byDelta = (rows: ChangeRow[], sign: 1 | -1) =>
     rows
@@ -289,8 +292,8 @@ export function hiringIndexPage(catalog: Catalog, data = readHiringIndex(), layo
     return {
       code: s.meta.code,
       name: s.meta.name,
-      href: s.jobState?.path ?? stateHref(s.meta.code),
-      jobsHref: s.jobState?.path ?? (jobs > 0 ? stateHref(s.meta.code) : null),
+      href: s.jobState?.path ?? stateHref(catalog, s.meta.code),
+      jobsHref: s.jobState?.path ?? (jobs > 0 ? stateHref(catalog, s.meta.code) : null),
       jobs,
       previousJobs,
       delta: previousJobs === null ? null : jobs - previousJobs,
