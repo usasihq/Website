@@ -6,7 +6,7 @@
 import { z } from "../zod";
 import type { Careers, NormalizedJob } from "./schema";
 import { Salary } from "./schema";
-import { endpoint, FeedError, postingUrl, readJsonBody } from "./security";
+import { abortableDelay, endpoint, FeedError, postingUrl, readJsonBody, throwIfAborted } from "./security";
 
 // The site's public contact address (lib/site-config.ts); USAJOBS asks for the email the API key was registered with.
 export const DEFAULT_USAJOBS_USER_AGENT = "usasi@usasihq.com";
@@ -348,9 +348,13 @@ async function getJson(
   url: string,
   creds: UsaJobsCredentials,
   fetcher: typeof fetch,
+  signal?: AbortSignal,
 ): Promise<unknown> {
+  throwIfAborted(signal);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30000);
+  const onAbort = () => controller.abort();
+  if (signal) signal.addEventListener("abort", onAbort, { once: true });
   try {
     const response = await fetcher(url, {
       redirect: "error",
@@ -366,9 +370,11 @@ async function getJson(
     return await readJsonBody(response);
   } catch (e) {
     if (e instanceof FeedError) throw e;
+    if (signal?.aborted) throw new FeedError("network", "timeout");
     throw new FeedError(e instanceof SyntaxError ? "payload" : "network");
   } finally {
     clearTimeout(timer);
+    signal?.removeEventListener("abort", onAbort);
   }
 }
 
@@ -380,14 +386,17 @@ export async function fetchUsaJobsItems(
   creds: UsaJobsCredentials,
   fetcher: typeof fetch = fetch,
   delayMs: (ms: number) => Promise<void> = (ms) => new Promise((r) => setTimeout(r, ms)),
+  signal?: AbortSignal,
 ): Promise<UsaJobsItem[]> {
   const byId = new Map<string, UsaJobsItem>();
+  const wait = (ms: number) => (signal ? abortableDelay(ms, signal) : delayMs(ms));
   for (const keyword of USAJOBS_KEYWORDS) {
     let page = 1;
     let totalPages = 1;
     while (page <= totalPages) {
-      if (byId.size || page > 1) await delayMs(1000);
-      const payload = usaJobsSearch.parse(await getJson(searchUrl(keyword, page), creds, fetcher));
+      throwIfAborted(signal);
+      if (byId.size || page > 1) await wait(1000);
+      const payload = usaJobsSearch.parse(await getJson(searchUrl(keyword, page), creds, fetcher, signal));
       const totalAll = payload.SearchResult.SearchResultCountAll ?? 0;
       if (page === 1) {
         totalPages = pagesOf(payload);

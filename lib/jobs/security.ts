@@ -1,7 +1,32 @@
 import type { Careers } from "./schema";
 import { isAutomatedSource, safeJobUrl } from "./schema";
 export class FeedError extends Error {
-  constructor(public category: "network" | "http" | "rate-limited" | "payload" | "unsafe-url" | "anomaly") { super(category); }
+  constructor(
+    public category: "network" | "http" | "rate-limited" | "payload" | "unsafe-url" | "anomaly",
+    public reason?: "timeout" | "aborted",
+  ) { super(category); }
+}
+
+/** Reject if this source's time budget ran out so Workday/SR loops stop between pages. */
+export function throwIfAborted(signal?: AbortSignal): void {
+  if (signal?.aborted) throw new FeedError("network", "timeout");
+}
+
+/** `setTimeout` that stops when the source is aborted. */
+export function abortableDelay(ms: number, signal?: AbortSignal): Promise<void> {
+  if (!signal) return new Promise((resolve) => setTimeout(resolve, ms));
+  throwIfAborted(signal);
+  return new Promise((resolve, reject) => {
+    const onAbort = () => {
+      clearTimeout(timer);
+      reject(new FeedError("network", "timeout"));
+    };
+    const timer = setTimeout(() => {
+      signal.removeEventListener("abort", onAbort);
+      resolve();
+    }, ms);
+    signal.addEventListener("abort", onAbort, { once: true });
+  });
 }
 /**
  * A Workday career site from its identifier: "<tenant>.<wdN>.<site>" for
@@ -98,14 +123,17 @@ export async function readJsonBody(response: Response): Promise<unknown> {
   });
 }
 /** Fixed public ATS hosts, no redirects, credentials, cookies, custom URL, or retries. */
-export async function fetchFeed(c: Careers, fetcher: typeof fetch = fetch): Promise<unknown> {
+export async function fetchFeed(c: Careers, fetcher: typeof fetch = fetch, signal?: AbortSignal): Promise<unknown> {
   if (!isAutomatedSource(c.source.type) || c.source.type === "usajobs") throw new FeedError("payload");
-  return fetchJson(feedUrl(c), fetcher);
+  return fetchJson(feedUrl(c), fetcher, undefined, signal);
 }
 /** One bounded JSON request to a URL built from fixed ATS hosts (never from feed input). */
-export async function fetchJson(url: string, fetcher: typeof fetch = fetch, body?: unknown): Promise<unknown> {
+export async function fetchJson(url: string, fetcher: typeof fetch = fetch, body?: unknown, signal?: AbortSignal): Promise<unknown> {
+  throwIfAborted(signal);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 30000);
+  const onAbort = () => controller.abort();
+  if (signal) signal.addEventListener("abort", onAbort, { once: true });
   try {
     const headers: Record<string, string> = { Accept: "application/json", "User-Agent": "USASI-Jobs/1.0 (+https://unitedstatesofamericasuperintelligence.com/jobs/)" };
     if (body !== undefined) headers["Content-Type"] = "application/json";
@@ -114,6 +142,10 @@ export async function fetchJson(url: string, fetcher: typeof fetch = fetch, body
     return await readJsonBody(response);
   } catch (e) {
     if (e instanceof FeedError) throw e;
+    if (signal?.aborted) throw new FeedError("network", "timeout");
     throw new FeedError(e instanceof SyntaxError ? "payload" : "network");
-  } finally { clearTimeout(timer); }
+  } finally {
+    clearTimeout(timer);
+    signal?.removeEventListener("abort", onAbort);
+  }
 }
