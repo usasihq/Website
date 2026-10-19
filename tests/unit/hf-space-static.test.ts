@@ -23,6 +23,34 @@ type Job = Record<string, unknown> & {
 const loadSpace = async (): Promise<SpaceApp> =>
   import(pathToFileURL(path.resolve("hf-space/app.js")).href) as Promise<SpaceApp>;
 
+const SPACE_COLORS = new Set(["red", "yellow", "green", "blue", "indigo", "purple", "pink", "gray"]);
+const PICTOGRAPHIC = /^\p{Extended_Pictographic}$/u;
+
+function spaceYaml(readme: string): Record<string, string | string[]> {
+  const block = readme.match(/^---\n([\s\S]*?)\n---/)?.[1];
+  if (!block) throw new Error("missing README YAML header");
+  const out: Record<string, string | string[]> = {};
+  let listKey: string | null = null;
+  for (const line of block.split("\n")) {
+    const listItem = line.match(/^  - (.+)$/);
+    if (listItem && listKey) {
+      (out[listKey] as string[]).push(listItem[1].trim());
+      continue;
+    }
+    const field = line.match(/^([A-Za-z_]+):\s*(.*)$/);
+    if (!field) continue;
+    listKey = null;
+    const [, key, raw] = field;
+    if (raw === "") {
+      listKey = key;
+      out[key] = [];
+    } else {
+      out[key] = raw.replace(/^['"]|['"]$/g, "");
+    }
+  }
+  return out;
+}
+
 describe("static Hugging Face Space", () => {
   it("is a free static Space, not Gradio", () => {
     const readme = readFileSync("hf-space/README.md", "utf8");
@@ -38,7 +66,26 @@ describe("static Hugging Face Space", () => {
     expect(deploy).toContain("index.html");
     expect(deploy).toContain("app.js");
     expect(deploy).toContain("style.css");
-    expect(deploy).toContain("deletePaths: REMOVE_GRADIO_FILES");
+    expect(deploy).toContain("deletePaths: REMOVE_STALE_FILES");
+  });
+
+  it("uses README YAML that Hugging Face Space config will accept", () => {
+    const yaml = spaceYaml(readFileSync("hf-space/README.md", "utf8"));
+    expect(typeof yaml.title).toBe("string");
+    expect(String(yaml.title).length).toBeGreaterThan(0);
+    expect(String(yaml.title).length).toBeLessThanOrEqual(40);
+    expect(yaml.emoji).toMatch(PICTOGRAPHIC);
+    expect(yaml.emoji).not.toBe("🇺🇸");
+    expect(SPACE_COLORS.has(String(yaml.colorFrom))).toBe(true);
+    expect(SPACE_COLORS.has(String(yaml.colorTo))).toBe(true);
+    expect(yaml.sdk).toBe("static");
+    expect(yaml.app_file).toBe("index.html");
+    expect(yaml.pinned).toBe("false");
+    expect(yaml.license).toBe("mit");
+    expect(String(yaml.short_description).length).toBeGreaterThan(0);
+    expect(String(yaml.short_description).length).toBeLessThanOrEqual(60);
+    expect(Array.isArray(yaml.tags) && yaml.tags.length).toBeGreaterThan(0);
+    expect(readFileSync("hf-space/index.html", "utf8")).toContain("style.css");
   });
 
   it("matches the site's job-page codes when the dataset has no page column", async () => {

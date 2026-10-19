@@ -1,9 +1,10 @@
 ---
 title: USASI AI Jobs
-emoji: 🇺🇸
+emoji: 💼
 colorFrom: blue
 colorTo: red
 sdk: static
+app_file: index.html
 pinned: false
 license: mit
 short_description: Search AI jobs from the USASI jobs board

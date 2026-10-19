@@ -96,6 +96,7 @@ export async function commitHubFiles(opts: {
     | { operation: "addOrUpdate"; path: string; content: Blob }
     | { operation: "delete"; path: string }
   > = opts.files.map((file) => ({
+    // addOrUpdate replaces Hub copies, including the default static template.
     operation: "addOrUpdate" as const,
     path: file.path,
     content: new Blob([new Uint8Array(file.content)]),
