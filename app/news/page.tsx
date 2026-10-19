@@ -4,7 +4,7 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, socialImages } from "@/lib/metadata";
 import type { NewsListItem } from "@/lib/news-list";
 import { asset } from "@/lib/paths";
 import { artifactHref, orgHref } from "@/lib/routes";
@@ -14,6 +14,7 @@ export const metadata = pageMetadata({
   description:
     "Dated, sourced updates about the U.S. AI organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.",
   path: "/news/",
+  image: socialImages.news,
   feeds: [{ path: "/news/feed.xml", title: "USASI — Latest news" }],
 });
 

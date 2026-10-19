@@ -3,7 +3,7 @@ import { InitialsTile } from "@/components/LocalCorner";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, socialImages } from "@/lib/metadata";
 import { personHref } from "@/lib/routes";
 import { mailtoHref, siteConfig } from "@/lib/site-config";
 
@@ -12,6 +12,7 @@ export const metadata = pageMetadata({
   description:
     "The people whose shows, channels, podcasts, newsletters, and reporting explain AI and superintelligence to the public, each profiled from their own official pages.",
   path: "/voices/",
+  image: socialImages.voices,
 });
 
 export default function VoicesPage() {

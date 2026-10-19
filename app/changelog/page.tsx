@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, socialImages } from "@/lib/metadata";
 import { changelogAnchor } from "@/lib/rss";
 import { artifactHref, orgHref } from "@/lib/routes";
 
@@ -11,6 +11,7 @@ export const metadata = pageMetadata({
   title: "Changelog",
   description: "Substantive changes to the USASI catalog and its policies, with dates. Rebuilds of the site are not recorded as changes.",
   path: "/changelog/",
+  image: socialImages.changelog,
   feeds: [{ path: "/changelog/feed.xml", title: "USASI — Changelog" }],
 });
 

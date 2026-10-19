@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { PeopleDirectory } from "@/components/PeopleDirectory";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
-import { pageMetadata } from "@/lib/metadata";
+import { pageMetadata, socialImages } from "@/lib/metadata";
 import { absoluteUrl } from "@/lib/paths";
 import { peopleListItems } from "@/lib/people-index";
 
@@ -13,6 +13,7 @@ export const metadata = pageMetadata({
   description:
     "Sourced profiles of the founders, engineers, researchers, and open-source maintainers behind the organizations and open models in the USASI catalog.",
   path: "/people/",
+  image: socialImages.people,
 });
 
 export default function PeoplePage() {

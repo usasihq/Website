@@ -24,6 +24,27 @@ export const socialImages = {
     path: "/og-jobs.png",
     alt: "USASI Jobs: Jobs in American AI. Open roles at U.S. AI companies, labs, and research universities; search by title, skill, or place and filter by role and level, location or remote, pay, and employer.",
   },
+  /** Section cards from scripts/social-cards.mjs (light theme, no counts). */
+  people: {
+    path: "/og-people.png",
+    alt: "USASI People: People in U.S. AI. Sourced profiles of the founders, engineers, researchers, and open-source maintainers in the catalog; each profile links roles and affiliations, organizations, projects and releases, and sources.",
+  },
+  voices: {
+    path: "/og-voices.png",
+    alt: "USASI People: Voices of SI. Tech creators and communicators who explain AI and superintelligence to the public, through shows and channels, podcasts, newsletters, and reporting.",
+  },
+  news: {
+    path: "/og-news.png",
+    alt: "USASI News: U.S. AI news, with sources. Dated updates about the organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.",
+  },
+  changelog: {
+    path: "/og-changelog.png",
+    alt: "USASI Editorial log: Catalog changelog. Substantive changes to the USASI catalog and its policies, with dates; entries record additions, updates, corrections, and policy changes.",
+  },
+  newsletter: {
+    path: "/og-newsletter.png",
+    alt: "Weekly email: The USASI weekly. One email a week on what changed in the catalog, each item linked to its sourced page; each issue sums up new catalog records, releases, license changes, and corrections.",
+  },
 } satisfies Record<string, SocialImage>;
 
 interface PageMeta {
