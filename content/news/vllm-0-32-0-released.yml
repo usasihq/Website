@@ -1,0 +1,28 @@
+slug: vllm-0-32-0-released
+title: vLLM 0.32.0 released with a structured decisions endpoint and wider low-precision KV cache support
+event_date: 2026-10-18
+published_at: 2026-10-19
+category: release
+summary:
+  text: >-
+    On October 18, 2026 the vLLM project published version 0.32.0 on GitHub. The release notes
+    highlight a new `POST /v1/systemone` endpoint that answers `choice`, `noul` and `score` questions
+    over a structured state, and a new `hf` tool and reasoning parser that reads a checkpoint's
+    `response_template` so models that ship it need no model-specific parser. The notes also describe
+    NVFP4 KV cache support on more GPU architectures and new model support, including EmbeddingGemma 2,
+    MiniCPM-V 4.7 and Nemotron 3.5 ASR. Under security, they list fixes for three advisories and say
+    CORS no longer allows every origin by default; breaking changes include dropping Python 3.10 and
+    removing cascade attention. USASI has not tested any of these changes.
+  source_ids: [vllm-v0-32-0-release]
+related_organizations: [pytorch-foundation]
+related_artifacts: [vllm]
+publication_status: published
+updated_at: 2026-10-19
+sources:
+  - id: vllm-v0-32-0-release
+    title: vLLM v0.32.0 (GitHub release notes)
+    url: https://github.com/vllm-project/vllm/releases/tag/v0.32.0
+    publisher: vLLM project
+    kind: release-notes
+    published_at: 2026-10-18
+    accessed_at: 2026-10-19
