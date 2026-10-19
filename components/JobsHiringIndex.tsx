@@ -15,6 +15,8 @@ import {
 
 const n = (v: number) => v.toLocaleString("en-US");
 const count = (v: number, one: string, many: string) => `${n(v)} ${v === 1 ? one : many}`;
+const listOf = (items: string[]) =>
+  items.length <= 1 ? (items[0] ?? "") : `${items.slice(0, -1).join(", ")}${items.length > 2 ? "," : ""} and ${items.at(-1)}`;
 
 function signed(delta: number | null): string {
   if (delta === null) return "—";
@@ -22,7 +24,15 @@ function signed(delta: number | null): string {
   return `${delta > 0 ? "+" : "−"}${n(Math.abs(delta))}`;
 }
 
-function Change({ delta }: { delta: number | null }) {
+const STATUS_LABEL: Partial<Record<ChangeRow["status"], string>> = {
+  new: "New source",
+  unchecked: "Not checked",
+  "unchecked-before": "Not checked last week",
+};
+
+function Change({ delta, status }: { delta: number | null; status?: ChangeRow["status"] }) {
+  const label = status ? STATUS_LABEL[status] : undefined;
+  if (label) return <span className="text-muted">{label}</span>;
   if (delta === null) return <span className="text-muted">—</span>;
   if (delta === 0) return <span className="text-muted">0</span>;
   return <span className={delta > 0 ? "text-tone-green" : "text-muted"}>{signed(delta)}</span>;
@@ -91,22 +101,31 @@ function CountTable({
           {rows.map((r) => (
             <tr key={r.key}>
               <th scope="row" className="w-full font-normal text-text">
-                <Link prefetch={false} href={r.href} className="link">
-                  {r.name}
-                </Link>
+                <RowName row={r} />
                 <span aria-hidden="true" className="mt-1.5 block h-1.5 w-full rounded-r-[3px] bg-cyan/10">
                   <span className="block h-full rounded-r-[3px] bg-cyan" style={{ width: `${r.count > 0 ? Math.max((100 * r.count) / max, 0.8).toFixed(2) : 0}%` }} />
                 </span>
               </th>
               <td className="num whitespace-nowrap">{n(r.count)}</td>
               <td className="num whitespace-nowrap">
-                <Change delta={r.delta} />
+                <Change delta={r.delta} status={r.status} />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
+  );
+}
+
+/** Employers with no current listings are named without a link: their jobs page would show none. */
+function RowName({ row, extra = "" }: { row: ChangeRow; extra?: string }) {
+  return row.href ? (
+    <Link prefetch={false} href={row.href} className={`link ${extra}`.trim()}>
+      {row.name}
+    </Link>
+  ) : (
+    <span className={extra || undefined}>{row.name}</span>
   );
 }
 
@@ -120,9 +139,7 @@ function Movers({ title, rows, empty, testId }: { title: string; rows: ChangeRow
         <ol className="mt-3 divide-y divide-line">
           {rows.map((r) => (
             <li key={r.key} className="flex items-baseline justify-between gap-3 py-2.5">
-              <Link prefetch={false} href={r.href} className="link min-w-0">
-                {r.name}
-              </Link>
+              <RowName row={r} extra="min-w-0" />
               <span className="shrink-0 font-mono text-sm">
                 <Change delta={r.delta} />
                 <span className="text-muted"> · {n(r.count)}</span>
@@ -190,8 +207,7 @@ function WarnTable({ rows, coldStart }: { rows: WarnPairing[]; coldStart: boolea
 }
 
 export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
-  const employers = page.current?.companies.length ?? 0;
-  const states = page.current?.states.length ?? 0;
+  const employers = page.employerCount;
   return (
     <>
       <JsonLd data={hiringIndexJsonLd(page)} />
@@ -213,9 +229,25 @@ export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
           <>
             <p className="max-w-3xl text-muted" data-testid="hiring-summary">
               {page.coldStart
-                ? `The index begins the week of ${page.weekLabel}: ${count(page.openCount, "open listing", "open listings")} at ${count(employers, "employer", "employers")}, naming ${count(states, "U.S. state", "U.S. states")}. Week-over-week change starts next week.`
-                : `${count(page.openCount, "open listing", "open listings")} the week of ${page.weekLabel} (${signed(page.openDelta)} from the week of ${page.previousLabel}) at ${count(employers, "employer", "employers")}, naming ${count(states, "U.S. state", "U.S. states")}.`}
+                ? `The index begins the week of ${page.weekLabel}: ${count(page.openCount, "open listing", "open listings")} at ${count(employers, "employer", "employers")}, naming ${page.statesLabel}. Week-over-week change starts next week.`
+                : `${count(page.openCount, "open listing", "open listings")} the week of ${page.weekLabel} at ${count(employers, "employer", "employers")}, naming ${page.statesLabel}.`}
+              {page.compared
+                ? ` At the ${count(page.compared.employers, "employer", "employers")} counted in both weeks, listings went from ${n(page.compared.previous)} the week of ${page.previousLabel} to ${n(page.compared.current)} (${signed(page.openDelta)}).`
+                : null}
+              {page.compared && page.newSources.employers
+                ? ` ${count(page.newSources.employers, "source was", "sources were")} added this week with ${count(page.newSources.listings, "listing", "listings")}; ${page.newSources.employers === 1 ? "it is" : "they are"} marked “New source” and left out of the change.`
+                : null}
+              {page.uncheckedNow
+                ? ` ${count(page.uncheckedNow, "employer’s source", "employers’ sources")} could not be checked this week, so ${page.uncheckedNow === 1 ? "its" : "their"} listings are not counted.`
+                : null}
             </p>
+            {page.earlierRuleWeeks.length ? (
+              <p className="mt-2 max-w-3xl text-sm text-muted" data-testid="hiring-rule-note">
+                {listOf(page.earlierRuleWeeks.map((w) => `the week of ${w}`)).replace(/^t/, "T")} {page.earlierRuleWeeks.length === 1 ? "was" : "were"}{" "}
+                counted before October 19, 2026, from every open listing on file, including listings from sources whose
+                latest check had failed. Later weeks count only the listings the Jobs directory shows as current.
+              </p>
+            ) : null}
             {page.capturedAt ? (
               <p className="mt-2 text-sm text-muted">
                 Latest count {formatDate(page.capturedAt.slice(0, 10))}
@@ -230,7 +262,7 @@ export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
               <p className="mt-2 max-w-3xl text-muted">
                 {page.coldStart
                   ? "One week is on file so far. The next refresh in a later week will add the first comparison."
-                  : "Each bar is one Monday-to-Sunday week (UTC). A later refresh in the same week updates that bar."}
+                  : "Each bar is one Monday-to-Sunday week (UTC). A later refresh in the same week updates that bar. A bar also grows when new employer sources are added, so use the change at employers counted both weeks for the trend."}
               </p>
               <div className="mt-6">
                 <WeekChart page={page} />
@@ -244,7 +276,7 @@ export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
               <p className="mt-2 max-w-3xl text-muted">
                 {page.coldStart
                   ? "Employers with the most open listings this first week. Change columns stay blank until next week."
-                  : "Employers with the most open listings this week, and how that count moved from last week."}{" "}
+                  : "Employers with the most open listings this week, and how that count moved from last week. Change is shown only when the employer’s source was checked successfully in both weeks; a source added this week is marked “New source”."}{" "}
                 Each name opens that employer&rsquo;s jobs page.
               </p>
               <CountTable
@@ -279,7 +311,13 @@ export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
               </h2>
               <p className="mt-2 max-w-3xl text-muted">
                 A listing counts for a state when the employer-supplied location names that state. One posting can count
-                in more than one state. Remote-only or country-only locations are not assigned a state.
+                in more than one state. Remote-only or country-only locations are not assigned a state; D.C. is listed
+                with the states.{" "}
+                {page.coldStart
+                  ? null
+                  : page.stateCompare
+                    ? "Change counts only employers whose sources were checked in both weeks."
+                    : "State change starts next week: last week’s file has no per-employer state counts, so new sources can’t be separated out."}
               </p>
               <CountTable
                 rows={page.states}
@@ -290,7 +328,7 @@ export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
               />
             </section>
 
-            {page.coldStart ? null : (
+            {page.coldStart || !page.stateCompare ? null : (
               <div className="mt-10 grid gap-10 md:grid-cols-2">
                 <Movers
                   title="States with more listings"
@@ -341,9 +379,12 @@ export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
           </h2>
           <p className="mt-2 max-w-3xl text-muted">
             Every six hours the Jobs refresh reads each employer&rsquo;s official career feed. This index stores the
-            number of <em>open</em> listings per employer and per U.S. state named in a location, then keeps one bucket
-            per Monday-to-Sunday week (UTC). A later check in the same week replaces that bucket, so the bar is the
-            latest count for the week, not a daily average. Closed or unconfirmed postings are not counted. USASI does
+            number of <em>current</em> listings per employer and per U.S. state named in a location (the same rule as
+            the Jobs directory: open, from a source whose latest check succeeded, and seen in the last 48 hours), then
+            keeps one bucket per Monday-to-Sunday week (UTC). A later check in the same week replaces that bucket, so
+            the bar is the latest count for the week, not a daily average. Closed or unconfirmed postings are not
+            counted. Week-over-week change compares only employers whose sources were checked successfully in both
+            weeks, so adding a new source does not read as hiring growth. USASI does
             not collect applications and does not infer layoffs from a falling job count.
           </p>
         </section>

@@ -4,7 +4,10 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
 import {
+  companyChanges,
   countOpenJobs,
+  stateChanges,
+  statesLabel,
   EMPTY_HIRING_INDEX,
   HIRING_INDEX_HREF,
   hiringIndexJsonLd,
@@ -20,7 +23,7 @@ import {
   type HiringIndex,
   type WeekSnapshot,
 } from "@/lib/jobs/hiring-index";
-import type { Dataset, Job } from "@/lib/jobs/schema";
+import type { Dataset, FeedHealth, Job } from "@/lib/jobs/schema";
 import { clipDescription, DESCRIPTION_MAX, documentTitle, pageMetadata, TITLE_MAX } from "@/lib/metadata";
 import { cardImage, pageCards } from "@/lib/page-cards";
 import { isKnownSitePath, STATIC_ROUTES } from "@/lib/site-routes";
@@ -55,7 +58,24 @@ const job = (over: Partial<Job> & Pick<Job, "id" | "organization_slug" | "locati
   ...over,
 });
 
-const dataset = (jobs: Job[]): Dataset => ({ version: 1, jobs, feeds: [] });
+const feed = (slug: string, result: FeedHealth["result"] = "ok"): FeedHealth => ({
+  organization_slug: slug,
+  source_type: "greenhouse",
+  source_identifier: "board",
+  last_attempted: "2026-10-18T00:00:00.000Z",
+  last_successful: result === "ok" ? "2026-10-18T00:00:00.000Z" : "2026-10-10T00:00:00.000Z",
+  result,
+  consecutive_failures: result === "ok" ? 0 : 1,
+  current_count: 0,
+  pending_digest: null,
+  pending_since: null,
+});
+
+/** Every employer in `jobs` gets a successful feed unless `feeds` overrides it. */
+const dataset = (jobs: Job[], feeds: FeedHealth[] = []): Dataset => {
+  const given = new Set(feeds.map((f) => f.organization_slug));
+  return { version: 1, jobs, feeds: [...feeds, ...[...new Set(jobs.map((j) => j.organization_slug))].filter((s) => !given.has(s)).map((s) => feed(s))] };
+};
 
 const week = (start: string, over: Partial<WeekSnapshot> = {}): WeekSnapshot => ({
   week_start: start,
@@ -82,7 +102,7 @@ describe("open-job counts", () => {
       job({ id: "openai:greenhouse:board:2", organization_slug: "openai", locations: ["Remote - US"] }),
       job({ id: "anthropic:greenhouse:board:3", organization_slug: "anthropic", locations: ["San Francisco, CA"], status: "closed", closed_at: "2026-10-17T00:00:00.000Z" }),
     ]);
-    const counts = countOpenJobs(data);
+    const counts = countOpenJobs(data, Date.parse("2026-10-18T12:00:00.000Z"));
     expect(counts.open_count).toBe(2);
     expect(counts.companies).toEqual([{ key: "openai", count: 2 }]);
     expect(counts.states).toEqual([
@@ -92,18 +112,125 @@ describe("open-job counts", () => {
   });
 });
 
+describe("current rule (same as the Jobs directory)", () => {
+  const at = Date.parse("2026-10-19T00:00:00.000Z");
+  it("leaves out listings from failed or anomalous sources and listings not seen in 48 hours", () => {
+    const data = dataset(
+      [
+        job({ id: "openai:greenhouse:board:1", organization_slug: "openai", locations: ["San Francisco, CA"] }),
+        job({ id: "openai:greenhouse:board:2", organization_slug: "openai", locations: ["Austin, TX"], last_seen: "2026-10-16T00:00:00.000Z" }),
+        job({ id: "micron:greenhouse:board:3", organization_slug: "micron", locations: ["Boise, ID"] }),
+        job({ id: "salesforce:greenhouse:board:4", organization_slug: "salesforce", locations: ["Seattle, WA"] }),
+      ],
+      [feed("micron", "anomaly"), feed("salesforce", "rate-limited")],
+    );
+    const counts = countOpenJobs(data, at);
+    expect(counts.open_count).toBe(1);
+    expect(counts.companies).toEqual([{ key: "openai", count: 1 }]);
+    expect(counts.states).toEqual([{ key: "CA", count: 1 }]);
+    expect(counts.checked).toEqual(["openai"]);
+    expect(counts.unchecked).toEqual(["micron", "salesforce"]);
+    expect(counts.employer_states).toEqual([{ key: "openai", states: [{ key: "CA", count: 1 }] }]);
+  });
+
+  it("does not link an employer with no current listings", () => {
+    const now = week("2026-10-19", { companies: [{ key: "openai", count: 3 }], checked: ["openai"], unchecked: ["micron"] });
+    const before = week("2026-10-12", { companies: [{ key: "openai", count: 2 }, { key: "micron", count: 5 }] });
+    const rows = companyChanges(now, before);
+    expect(rows.find((r) => r.key === "openai")).toMatchObject({ href: "/jobs/at/openai/", delta: 1, status: "compared" });
+    expect(rows.find((r) => r.key === "micron")).toMatchObject({ href: null, count: 0, delta: null, status: "unchecked" });
+  });
+});
+
+describe("week-over-week change", () => {
+  const before = week("2026-10-12", {
+    open_count: 30,
+    companies: [{ key: "openai", count: 20 }, { key: "anthropic", count: 10 }],
+    states: [{ key: "CA", count: 30 }],
+    checked: ["anthropic", "openai"],
+    unchecked: [],
+    employer_states: [
+      { key: "anthropic", states: [{ key: "CA", count: 10 }] },
+      { key: "openai", states: [{ key: "CA", count: 20 }] },
+    ],
+  });
+  const now = week("2026-10-19", {
+    open_count: 1030,
+    companies: [{ key: "nvidia", count: 1000 }, { key: "openai", count: 25 }, { key: "anthropic", count: 5 }],
+    states: [{ key: "CA", count: 1030 }],
+    checked: ["anthropic", "nvidia", "openai"],
+    unchecked: [],
+    employer_states: [
+      { key: "anthropic", states: [{ key: "CA", count: 5 }] },
+      { key: "nvidia", states: [{ key: "CA", count: 1000 }] },
+      { key: "openai", states: [{ key: "CA", count: 25 }] },
+    ],
+  });
+
+  it("counts change only at employers checked both weeks and marks new sources", () => {
+    const page = hiringIndexPage(catalog, { version: 1, weeks: [before, now] });
+    expect(page.openCount).toBe(1030);
+    expect(page.compared).toEqual({ employers: 2, previous: 30, current: 30 });
+    expect(page.openDelta).toBe(0);
+    expect(page.newSources).toEqual({ employers: 1, listings: 1000 });
+    const nvidia = page.companies.find((c) => c.key === "nvidia")!;
+    expect(nvidia.status).toBe("new");
+    expect(nvidia.delta).toBeNull();
+    expect(page.rising.map((r) => r.key)).toEqual(["openai"]);
+    expect(page.fewer.map((r) => r.key)).toEqual(["anthropic"]);
+    expect(page.description).not.toMatch(/up 1,000/);
+    expect(page.description).toMatch(/unchanged at the 2 employers counted both weeks; 1 new source/);
+    expect(page.description.length).toBeLessThanOrEqual(DESCRIPTION_MAX);
+    expect(page.earlierRuleWeeks).toEqual([]);
+  });
+
+  it("limits state change to the same employers", () => {
+    const { rows, compared } = stateChanges(now, before, new Set(["openai", "anthropic"]));
+    expect(compared).toBe(true);
+    expect(rows[0]).toMatchObject({ key: "CA", count: 1030, delta: 0 });
+  });
+
+  it("shows no state change, and notes the earlier rule, when last week predates per-employer counts", () => {
+    const old = week("2026-10-12");
+    const page = hiringIndexPage(catalog, { version: 1, weeks: [old, now] });
+    expect(page.stateCompare).toBe(false);
+    expect(page.states.every((r) => r.delta === null)).toBe(true);
+    expect(page.risingStates).toEqual([]);
+    expect(page.earlierRuleWeeks).toEqual(["Oct 12–18, 2026"]);
+    // openai and anthropic had listings in the old week, so they compare; nvidia is new.
+    expect(page.companies.find((c) => c.key === "nvidia")?.status).toBe("new");
+    expect(page.compared?.employers).toBe(2);
+  });
+
+  it("marks a source that failed last week instead of showing its jump", () => {
+    const failedBefore = { ...before, companies: [{ key: "anthropic", count: 10 }], checked: ["anthropic"], unchecked: ["openai"] };
+    const rows = companyChanges(now, failedBefore);
+    expect(rows.find((r) => r.key === "openai")).toMatchObject({ status: "unchecked-before", delta: null });
+  });
+});
+
+describe("state count label", () => {
+  it("never counts D.C. as a state", () => {
+    expect(statesLabel(["CA", "DC", "NY"])).toBe("2 U.S. states and D.C.");
+    expect(statesLabel(["CA"])).toBe("1 U.S. state");
+    expect(statesLabel(["DC"])).toBe("D.C.");
+    const fifty = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
+    expect(statesLabel([...fifty, "DC"])).toBe("50 U.S. states and D.C.");
+  });
+});
+
 describe("weekly merge", () => {
   it("replaces the same week and keeps later weeks", () => {
     const first = snapshotFromDataset(
       dataset([job({ id: "openai:greenhouse:board:1", organization_slug: "openai", locations: ["San Francisco, CA"] })]),
-      "2026-10-14T12:00:00.000Z",
+      "2026-10-18T06:00:00.000Z",
     );
     const second = snapshotFromDataset(
       dataset([
         job({ id: "openai:greenhouse:board:1", organization_slug: "openai", locations: ["San Francisco, CA"] }),
         job({ id: "anthropic:greenhouse:board:2", organization_slug: "anthropic", locations: ["Seattle, WA"] }),
       ]),
-      "2026-10-16T18:00:00.000Z",
+      "2026-10-18T18:00:00.000Z",
     );
     expect(first.week_start).toBe(second.week_start);
     const merged = mergeSnapshot(mergeSnapshot(EMPTY_HIRING_INDEX, first), second);
@@ -119,11 +246,15 @@ describe("weekly merge", () => {
     expect(page.openCount).toBe(12);
     expect(page.openDelta).toBe(2);
     expect(page.companies.find((c) => c.key === "openai")?.delta).toBe(6);
-    expect(page.companies.find((c) => c.key === "anthropic")?.delta).toBe(-4);
+    // An employer with no listings this week is left out of the top table but still listed under "fewer" (unlinked).
+    expect(page.companies.find((c) => c.key === "anthropic")).toBeUndefined();
+    expect(page.fewer.find((c) => c.key === "anthropic")).toMatchObject({ delta: -4, href: null });
     expect(page.rising[0]?.key).toBe("openai");
     expect(page.fewer[0]?.key).toBe("anthropic");
-    expect(page.risingStates[0]?.key).toBe("CA");
-    expect(page.fewerStates[0]?.key).toBe("NY");
+    // Weeks without per-employer state counts can't separate new sources, so no state change is shown.
+    expect(page.stateCompare).toBe(false);
+    expect(page.risingStates).toEqual([]);
+    expect(page.fewerStates).toEqual([]);
   });
 
   it("says the trend starts this week when only one bucket exists", () => {
