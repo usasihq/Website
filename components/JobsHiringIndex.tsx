@@ -15,6 +15,8 @@ import {
 
 const n = (v: number) => v.toLocaleString("en-US");
 const count = (v: number, one: string, many: string) => `${n(v)} ${v === 1 ? one : many}`;
+/** End a sentence without doubling the period of "D.C.". */
+const sentence = (s: string) => (s.endsWith(".") ? s : `${s}.`);
 const listOf = (items: string[]) =>
   items.length <= 1 ? (items[0] ?? "") : `${items.slice(0, -1).join(", ")}${items.length > 2 ? "," : ""} and ${items.at(-1)}`;
 
@@ -229,8 +231,8 @@ export function JobsHiringIndex({ page }: { page: HiringIndexPage }) {
           <>
             <p className="max-w-3xl text-muted" data-testid="hiring-summary">
               {page.coldStart
-                ? `The index begins the week of ${page.weekLabel}: ${count(page.openCount, "open listing", "open listings")} at ${count(employers, "employer", "employers")}, naming ${page.statesLabel}. Week-over-week change starts next week.`
-                : `${count(page.openCount, "open listing", "open listings")} the week of ${page.weekLabel} at ${count(employers, "employer", "employers")}, naming ${page.statesLabel}.`}
+                ? `The index begins the week of ${page.weekLabel}: ${count(page.openCount, "open listing", "open listings")} at ${count(employers, "employer", "employers")}, naming ${sentence(page.statesLabel)} Week-over-week change starts next week.`
+                : `${count(page.openCount, "open listing", "open listings")} the week of ${page.weekLabel} at ${count(employers, "employer", "employers")}, naming ${sentence(page.statesLabel)}`}
               {page.compared
                 ? ` At the ${count(page.compared.employers, "employer", "employers")} counted in both weeks, listings went from ${n(page.compared.previous)} the week of ${page.previousLabel} to ${n(page.compared.current)} (${signed(page.openDelta)}).`
                 : null}
