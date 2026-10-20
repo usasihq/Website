@@ -1,0 +1,40 @@
+slug: amazon-open-sources-torchneuron-for-trainium
+title: Amazon announces an Apache 2.0 release of TorchNeuron, a native PyTorch backend for AWS Trainium
+event_date: 2026-10-20
+published_at: 2026-10-20
+category: release
+summary:
+  text: >-
+    Amazon said TorchNeuron, which it describes as running existing PyTorch code on its Trainium
+    chips without a rewrite by plugging into PyTorch's standard mechanism for registering new
+    hardware, would be released under the Apache 2.0 license at PyTorch Conference North America
+    on October 20, 2026. Amazon says TorchNeuron supports Trainium2 and Trainium3 and that it is
+    contributing changes upstream to PyTorch. The aws-neuron/torch-neuronx repository on GitHub is
+    public, lists the Apache License 2.0, and describes itself as a native PyTorch backend for AWS
+    Trainium. A Hugging Face blog post dated October 19 describes running Hugging Face models with
+    it. USASI has not tested TorchNeuron.
+  source_ids: [amazon-torchneuron, torch-neuronx-repo, hf-torchneuron-blog]
+related_organizations: [amazon, hugging-face]
+related_artifacts: [pytorch]
+publication_status: published
+updated_at: 2026-10-20
+sources:
+  - id: amazon-torchneuron
+    title: Amazon opens its AWS Trainium AI chips to every PyTorch developer, no rewrite needed
+    url: https://www.aboutamazon.com/news/innovation-at-amazon/torchneuron-pytorch-aws-trainium-chips-ai
+    publisher: Amazon
+    kind: announcement
+    accessed_at: 2026-10-20
+  - id: torch-neuronx-repo
+    title: aws-neuron/torch-neuronx (GitHub repository)
+    url: https://github.com/aws-neuron/torch-neuronx
+    publisher: Amazon Web Services
+    kind: repository
+    accessed_at: 2026-10-20
+  - id: hf-torchneuron-blog
+    title: "TorchNeuron: running HF models on AWS Trainium is easier than ever"
+    url: https://huggingface.co/blog/hf-torchneuron
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2026-10-19
+    accessed_at: 2026-10-20

@@ -1,0 +1,27 @@
+slug: amazon-bedrock-structured-outputs-for-claude-generally-available
+title: Structured outputs for Anthropic Claude models become generally available on Amazon Bedrock
+event_date: 2026-10-19
+published_at: 2026-10-20
+category: release
+summary:
+  text: >-
+    In an October 19, 2026 post on the AWS Machine Learning Blog, AWS said structured outputs for
+    Claude on Amazon Bedrock is now generally available for all Anthropic Claude models, on both the
+    bedrock-runtime and bedrock-mantle endpoints. AWS says the feature uses constrained decoding to
+    enforce a developer's JSON schema during token generation, and that setting `strict: true` on a
+    tool constrains the model's tool input to match its schema. The post also says some JSON Schema
+    keywords, including numeric and string length constraints, are accepted but not enforced, so
+    applications should validate those values themselves.
+  source_ids: [aws-bedrock-claude-structured-outputs]
+related_organizations: [amazon, anthropic]
+related_artifacts: []
+publication_status: published
+updated_at: 2026-10-20
+sources:
+  - id: aws-bedrock-claude-structured-outputs
+    title: Structured outputs for Anthropic Claude models on Amazon Bedrock
+    url: https://aws.amazon.com/blogs/machine-learning/structured-outputs-for-anthropic-claude-models-on-amazon-bedrock/
+    publisher: Amazon Web Services
+    kind: announcement
+    published_at: 2026-10-19
+    accessed_at: 2026-10-20

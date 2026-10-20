@@ -1,0 +1,28 @@
+slug: sglang-0-5-22-released
+title: SGLang 0.5.22 adds Apple Silicon support with the PyTorch backend and an InstantTensor loader
+event_date: 2026-10-19
+published_at: 2026-10-20
+category: release
+summary:
+  text: >-
+    The SGLang project published v0.5.22 on GitHub on October 19, 2026. The release notes say
+    SGLang now runs on Apple Silicon Macs with the standard PyTorch backend, alongside MLX, that a
+    new InstantTensor loader speeds up model loading, and that HiSparse now supports EAGLE and MTP
+    for long-context serving with the KV cache in CPU memory. Newly supported models listed include
+    Clef / Clef Flash, PPLX-Decider v1 / v1.1, EmbeddingGemma 2, Kandinsky 6 and SANA-Video 2.0.
+    The notes say SGLang now requires Python 3.11 or newer, and describe a fix for hybrid linear
+    models that could resume from wrong mamba states when speculative decoding and structured
+    output were used together. USASI has not tested these changes.
+  source_ids: [sglang-v0-5-22]
+related_organizations: [lmsys]
+related_artifacts: [sglang]
+publication_status: published
+updated_at: 2026-10-20
+sources:
+  - id: sglang-v0-5-22
+    title: SGLang v0.5.22 (GitHub release notes)
+    url: https://github.com/sgl-project/sglang/releases/tag/v0.5.22
+    publisher: SGLang project
+    kind: release-notes
+    published_at: 2026-10-19
+    accessed_at: 2026-10-20
