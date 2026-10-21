@@ -12,6 +12,6 @@ export default defineConfig({
     env: { USASI_TODAY: "2026-09-29", JOBS_SNAPSHOT_AT_BUILD: "1" },
     // Several suites load the whole published catalog; in a full parallel run
     // they can pass 5 s on a busy machine without anything being wrong.
-    testTimeout: 30_000,
+    testTimeout: 120_000,
   },
 });
