@@ -15,12 +15,12 @@ bio:
     also first author of the 2023 "Sparks of Artificial General Intelligence" study of an early version
     of GPT-4.
   source_ids: [gpt5-science-paper, gptoss-card-paper, phi2-blog, phi1-paper, phi15-paper, phi3-paper, phi4-paper, phi4-card, sparks-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: OpenAI
     organization_slug: openai
     role: Listed with an OpenAI affiliation on the November 2025 paper "Early science acceleration experiments with GPT-5"
-    current: true
+    current: false
     source_ids: [gpt5-science-paper, gptoss-card-paper]
   - name: Microsoft
     organization_slug: microsoft
@@ -65,9 +65,68 @@ work:
       still in development by OpenAI.
     source_ids: [sparks-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Bubeck's early work was in learning theory and optimization. With Nicolò Cesa-Bianchi, Bubeck wrote
+          "Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems" (2012), a survey of
+          bandit algorithms, and as sole author wrote "Convex Optimization: Algorithms and Complexity" (2014), a
+          monograph on optimization methods and their complexity. "A Universal Law of Robustness via
+          Isoperimetry" (2021), with Mark Sellke, offered a theoretical account of why deep networks need many
+          more parameters than required to fit data smoothly, and received a NeurIPS 2021 Outstanding Paper Award.
+        source_ids: [bandits-survey, convex-optimization-monograph, robustness-law-paper, neurips-2021-awards]
+      - text: >-
+          Bubeck's later work turned to large language models. In 2023 Bubeck was first author of "Sparks of
+          Artificial General Intelligence", a study of an early version of GPT-4, and co-authored the "Textbooks
+          Are All You Need" reports on phi-1 and phi-1.5 and the later Phi-3 and Phi-4 reports on Microsoft's
+          small Phi models, which emphasize training on carefully selected web data and synthetic data.
+        source_ids: [sparks-paper, phi15-paper, phi1-paper, phi3-paper, phi4-paper]
+  - heading: Career
+    paragraphs:
+      - text: >-
+          As a vice president in Microsoft GenAI, Bubeck co-authored the technical reports for phi-1, phi-1.5,
+          Phi-3 and Phi-4 and contributed to Phi-2. With an OpenAI affiliation, Bubeck is among the authors of
+          the 2025 model card for the open-weight gpt-oss models and first author of "Early science acceleration
+          experiments with GPT-5" (2025), a collection of case studies in which GPT-5 contributed to research in
+          mathematics, physics, astronomy, computer science, biology and materials science.
+        source_ids: [phi2-blog, phi4-paper, gptoss-card-paper, gpt5-science-paper]
+timeline:
+  - date: "2012-04"
+    text: Posted a survey of regret analysis for multi-armed bandit problems with Nicolò Cesa-Bianchi.
+    source_ids: [bandits-survey]
+  - date: "2014-05"
+    text: 'Posted the monograph "Convex Optimization: Algorithms and Complexity" as sole author.'
+    source_ids: [convex-optimization-monograph]
+  - date: "2021-05"
+    text: Posted "A Universal Law of Robustness via Isoperimetry" with Mark Sellke.
+    source_ids: [robustness-law-paper]
+  - date: "2023-03"
+    text: 'Posted "Sparks of Artificial General Intelligence: Early experiments with GPT-4" as first author.'
+    source_ids: [sparks-paper]
+  - date: "2023-06"
+    text: Co-authored "Textbooks Are All You Need", the phi-1 technical report.
+    source_ids: [phi1-paper]
+  - date: "2024-04"
+    text: Co-authored the Phi-3 technical report on small language models that run on a phone.
+    source_ids: [phi3-paper]
+  - date: "2024-12"
+    text: Co-authored the Phi-4 technical report.
+    source_ids: [phi4-paper]
+  - date: "2025-08"
+    text: Listed among the authors of the gpt-oss-120b and gpt-oss-20b model card.
+    source_ids: [gptoss-card-paper]
+  - date: "2025-11"
+    text: Posted "Early science acceleration experiments with GPT-5" as first author.
+    source_ids: [gpt5-science-paper]
+honors:
+  - name: NeurIPS 2021 Outstanding Paper Award ("A Universal Law of Robustness via Isoperimetry")
+    year: 2021
+    awarded_by: NeurIPS
+    source_ids: [neurips-2021-awards]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gpt5-science-paper
     title: "Early science acceleration experiments with GPT-5 (arXiv 2511.16072)"
@@ -75,67 +134,95 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2025-11-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi1-paper
     title: "Textbooks Are All You Need (arXiv 2306.11644)"
     url: https://arxiv.org/abs/2306.11644
     publisher: arXiv
     kind: paper
     published_at: 2023-06-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi15-paper
     title: "Textbooks Are All You Need II: phi-1.5 technical report (arXiv 2309.05463)"
     url: https://arxiv.org/abs/2309.05463
     publisher: arXiv
     kind: paper
     published_at: 2023-09-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi3-paper
     title: "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone (arXiv 2404.14219)"
     url: https://arxiv.org/abs/2404.14219
     publisher: arXiv
     kind: paper
     published_at: 2024-04-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi4-paper
     title: "Phi-4 Technical Report (arXiv 2412.08905)"
     url: https://arxiv.org/abs/2412.08905
     publisher: arXiv
     kind: paper
     published_at: 2024-12-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi2-blog
     title: "Phi-2: The surprising power of small language models"
     url: https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/
     publisher: Microsoft Research
     kind: announcement
     published_at: 2023-12-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi4-card
     title: microsoft/phi-4 model card (license MIT)
     url: https://huggingface.co/microsoft/phi-4
     publisher: Microsoft (Hugging Face)
     kind: model-card
     published_at: 2024-12-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sparks-paper
     title: "Sparks of Artificial General Intelligence: Early experiments with GPT-4 (arXiv 2303.12712)"
     url: https://arxiv.org/abs/2303.12712
     publisher: arXiv
     kind: paper
     published_at: 2023-03-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gptoss-card-paper
     title: "gpt-oss-120b & gpt-oss-20b Model Card (arXiv 2508.10925)"
     url: https://arxiv.org/abs/2508.10925
     publisher: arXiv
     kind: paper
     published_at: 2025-08-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gptoss-20b-card
     title: openai/gpt-oss-20b model card (license apache-2.0)
     url: https://huggingface.co/openai/gpt-oss-20b
     publisher: OpenAI (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: bandits-survey
+    title: "Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems (arXiv 1204.5721)"
+    url: https://arxiv.org/abs/1204.5721
+    publisher: arXiv
+    kind: paper
+    published_at: 2012-04-25
+    accessed_at: 2026-10-21
+  - id: convex-optimization-monograph
+    title: "Convex Optimization: Algorithms and Complexity (arXiv 1405.4980)"
+    url: https://arxiv.org/abs/1405.4980
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-05-20
+    accessed_at: 2026-10-21
+  - id: robustness-law-paper
+    title: "A Universal Law of Robustness via Isoperimetry (arXiv 2105.12806)"
+    url: https://arxiv.org/abs/2105.12806
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-05-26
+    accessed_at: 2026-10-21
+  - id: neurips-2021-awards
+    title: Announcing the NeurIPS 2021 Award Recipients
+    url: https://blog.neurips.cc/2021/11/30/announcing-the-neurips-2021-award-recipients/
+    publisher: NeurIPS
+    kind: announcement
+    published_at: 2021-11-30
+    accessed_at: 2026-10-21

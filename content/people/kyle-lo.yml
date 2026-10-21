@@ -14,7 +14,7 @@ bio:
     the original OLMo paper, and is credited in OLMo 2 with base-model development and in OLMoE with
     pretraining dataset creation and data experiments.
   source_ids: [lo-site, dolma-paper, olmo-paper, olmo2-pdf, olmoe-pdf]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Ai2 (Allen Institute for AI)
     organization_slug: ai2
@@ -44,9 +44,77 @@ links:
     url: https://kyleclo.com
   - label: GitHub
     url: https://github.com/kyleclo
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Lo's earlier work focused on scientific text and reading. Lo co-authored SciBERT (2019), a
+          language model pretrained on scientific papers, and was first author of S2ORC, the Semantic Scholar
+          Open Research Corpus. Lo also worked on specializing language models to domains, human-AI interaction
+          for sensemaking over large document collections, and augmented reading interfaces, including the
+          Semantic Reader project summarized in Communications of the ACM in 2024.
+        source_ids: [scibert-paper, s2orc-paper, lo-site]
+      - text: >-
+          Lo's current research centers on large-scale pretraining, with emphasis on data curation, data mixing,
+          benchmark validity, efficient experimentation and generalization across model scales. Recent papers
+          listed on Lo's site include Signal and Noise, on why some benchmarks make task scaling laws hard to
+          fit, FlexOlmo, a mixture-of-experts model whose experts are trained on separate data sources, and
+          Olmix, the data mixing framework used for OLMo 3.
+        source_ids: [lo-site]
+  - heading: Open models and data
+    paragraphs:
+      - text: >-
+          Lo co-led Ai2's OLMo project on fully open language models. Lo was the last-listed author of the
+          Dolma pretraining corpus paper and a co-author of the original OLMo paper, both released in early
+          2024 and both given best paper awards at ACL 2024. Lo then contributed to OLMoE, the family's first
+          mixture-of-experts model, to OLMo 2 and its paper "2 OLMo 2 Furious", and to OLMo 3, released in
+          November 2025 with its training datasets.
+        source_ids: [lo-site, dolma-paper, olmo-paper, olmoe-pdf, olmo2-pdf]
+      - text: >-
+          Lo has also co-authored data tools that support this work, such as olmOCR (2025), which uses vision
+          language models to turn PDFs into text for training corpora. In December 2024 Lo co-presented a
+          NeurIPS tutorial, "Opening the Language Model Pipeline", with Akshita Bhagia and Nathan Lambert. Lo's
+          site marks a farewell to Ai2 in March 2026.
+        source_ids: [olmocr-paper, lo-site]
+timeline:
+  - date: "2019-03"
+    text: Co-authored SciBERT, a pretrained language model for scientific text.
+    source_ids: [scibert-paper]
+  - date: "2019-11"
+    text: Posted S2ORC, the Semantic Scholar Open Research Corpus, as first author.
+    source_ids: [s2orc-paper]
+  - date: "2024-01"
+    text: Posted the Dolma corpus paper as last-listed author.
+    source_ids: [dolma-paper]
+  - date: "2024-02"
+    text: 'Co-authored "OLMo: Accelerating the Science of Language Models".'
+    source_ids: [olmo-paper]
+  - date: "2024-08"
+    text: The OLMo and Dolma papers received best paper awards at ACL 2024.
+    source_ids: [lo-site]
+  - date: "2024-09"
+    text: Co-authored OLMoE, the first mixture-of-experts model in the OLMo family.
+    source_ids: [olmoe-pdf, lo-site]
+  - date: "2024-12"
+    text: Co-presented the NeurIPS 2024 tutorial "Opening the Language Model Pipeline" and co-authored "2 OLMo 2 Furious".
+    source_ids: [lo-site, olmo2-pdf]
+  - date: "2025-02"
+    text: Co-authored olmOCR, on converting PDFs to text with vision language models.
+    source_ids: [olmocr-paper]
+  - date: "2025-11-20"
+    text: Announced on Lo's site the release of OLMo 3 by the Ai2 team, along with its training datasets.
+    source_ids: [lo-site]
+  - date: "2026-03-26"
+    text: Announced on Lo's site a farewell to Ai2.
+    source_ids: [lo-site]
+honors:
+  - name: ACL 2024 Best Paper Award (OLMo; Dolma)
+    year: 2024
+    awarded_by: Association for Computational Linguistics
+    source_ids: [lo-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: lo-site
     title: Kyle Lo — homepage (about and news)
@@ -54,7 +122,7 @@ sources:
     publisher: Kyle Lo
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: kyleclo (Kyle Lo) on GitHub
     url: https://github.com/kyleclo
@@ -68,25 +136,46 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2024-01-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: olmo-paper
     title: "OLMo: Accelerating the Science of Language Models (arXiv 2402.00838)"
     url: https://arxiv.org/abs/2402.00838
     publisher: arXiv
     kind: paper
     published_at: 2024-02-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: olmo2-pdf
     title: "2 OLMo 2 Furious (arXiv 2501.00656, full text with affiliations and Author Contributions)"
     url: https://arxiv.org/pdf/2501.00656
     publisher: arXiv
     kind: paper
     published_at: 2024-12-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: olmoe-pdf
     title: "OLMoE: Open Mixture-of-Experts Language Models (arXiv 2409.02060, full text with Author Contributions)"
     url: https://arxiv.org/pdf/2409.02060
     publisher: arXiv
     kind: paper
     published_at: 2024-09-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: scibert-paper
+    title: "SciBERT: A Pretrained Language Model for Scientific Text (arXiv 1903.10676)"
+    url: https://arxiv.org/abs/1903.10676
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-03-26
+    accessed_at: 2026-10-21
+  - id: s2orc-paper
+    title: "S2ORC: The Semantic Scholar Open Research Corpus (arXiv 1911.02782)"
+    url: https://arxiv.org/abs/1911.02782
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-11-07
+    accessed_at: 2026-10-21
+  - id: olmocr-paper
+    title: "olmOCR: Unlocking Trillions of Tokens in PDFs with Vision Language Models (arXiv 2502.18443)"
+    url: https://arxiv.org/abs/2502.18443
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-25
+    accessed_at: 2026-10-21

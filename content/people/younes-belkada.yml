@@ -16,13 +16,18 @@ bio:
     on learnable multipliers for language model matrix layers lists the Falcon LLM Team as
     Belkada's affiliation.
   source_ids: [trl-citation, zephyr-paper, starcoder2-paper, dlai-course, llm-int8-paper, learnable-multipliers-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
     role: Machine Learning Engineer
     current: false
     source_ids: [dlai-course]
+  - name: Falcon LLM Team
+    organization_slug: null
+    role: Listed affiliation on the 2026 paper on learnable multipliers for language model matrix layers
+    current: false
+    source_ids: [learnable-multipliers-paper]
 work:
   - name: TRL (Transformers Reinforcement Learning)
     artifact_slug: trl
@@ -57,9 +62,56 @@ work:
       source.
     source_ids: [llm-int8-paper]
 links: []
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Several of Belkada's papers concern running and fine-tuning large models with fewer resources. Belkada
+          co-authored LLM.int8() (2022) with Tim Dettmers, Mike Lewis and Luke Zettlemoyer, which introduced
+          8-bit matrix multiplication for transformer inference, and Petals (2022), a system for running and
+          fine-tuning large models collaboratively across many machines. Belkada also co-taught the
+          DeepLearning.AI short course "Quantization Fundamentals with Hugging Face" with Marc Sun.
+        source_ids: [llm-int8-paper, petals-paper, dlai-course]
+      - text: >-
+          Belkada is listed among the authors of TRL, Hugging Face's library for post-training transformer
+          models with methods such as supervised fine-tuning, reward modeling, DPO and GRPO, and co-authored the
+          Zephyr paper (2023), which aligned a smaller chat model using distilled direct preference
+          optimization. Belkada was also a co-author of "StarCoder 2 and The Stack v2" (2024), on open code
+          models and their training data.
+        source_ids: [trl-citation, zephyr-paper, starcoder2-paper]
+  - heading: Falcon models
+    paragraphs:
+      - text: >-
+          Later papers concern the Falcon family of language models. Belkada co-authored the technical reports
+          for Falcon Mamba 7B (2024), a base model built on the Mamba architecture without attention, and
+          Falcon-H1 (2025), a series of models with a parallel hybrid of attention and state-space layers. A
+          2026 paper on learnable multipliers for matrix layers lists Belkada with the Falcon LLM Team.
+        source_ids: [falcon-mamba-paper, falcon-h1-paper, learnable-multipliers-paper]
+timeline:
+  - date: "2022-08"
+    text: 'Co-authored "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale".'
+    source_ids: [llm-int8-paper]
+  - date: "2022-09"
+    text: Co-authored "Petals", on collaborative inference and fine-tuning of large models.
+    source_ids: [petals-paper]
+  - date: "2023-10"
+    text: 'Co-authored "Zephyr: Direct Distillation of LM Alignment".'
+    source_ids: [zephyr-paper]
+  - date: "2024-02"
+    text: 'Co-authored "StarCoder 2 and The Stack v2: The Next Generation".'
+    source_ids: [starcoder2-paper]
+  - date: "2024-10"
+    text: Co-authored the Falcon Mamba 7B technical report.
+    source_ids: [falcon-mamba-paper]
+  - date: "2025-07"
+    text: Co-authored the Falcon-H1 technical report on hybrid-head language models.
+    source_ids: [falcon-h1-paper]
+  - date: "2026-01"
+    text: Co-authored "Learnable Multipliers" with a Falcon LLM Team affiliation.
+    source_ids: [learnable-multipliers-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: trl-citation
     title: huggingface/trl CITATION.cff (authors, license Apache-2.0)
@@ -67,39 +119,60 @@ sources:
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: zephyr-paper
     title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
     url: https://arxiv.org/abs/2310.16944
     publisher: arXiv
     kind: paper
     published_at: 2023-10-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: starcoder2-paper
     title: "StarCoder 2 and The Stack v2: The Next Generation (arXiv 2402.19173)"
     url: https://arxiv.org/abs/2402.19173
     publisher: arXiv
     kind: paper
     published_at: 2024-02-29
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dlai-course
     title: Quantization Fundamentals with Hugging Face — DeepLearning.AI short course (instructors)
     url: https://www.deeplearning.ai/short-courses/quantization-fundamentals-with-hugging-face/
     publisher: DeepLearning.AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: learnable-multipliers-paper
     title: "Learnable Multipliers: Freeing the Scale of Language Model Matrix Layers (arXiv 2601.04890, HTML full text with affiliations)"
     url: https://arxiv.org/html/2601.04890
     publisher: arXiv
     kind: paper
     published_at: 2026-01-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llm-int8-paper
     title: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale (arXiv 2208.07339)"
     url: https://arxiv.org/abs/2208.07339
     publisher: arXiv
     kind: paper
     published_at: 2022-08-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: petals-paper
+    title: "Petals: Collaborative Inference and Fine-tuning of Large Models (arXiv 2209.01188)"
+    url: https://arxiv.org/abs/2209.01188
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-02
+    accessed_at: 2026-10-21
+  - id: falcon-mamba-paper
+    title: "Falcon Mamba: The First Competitive Attention-free 7B Language Model (arXiv 2410.05355)"
+    url: https://arxiv.org/abs/2410.05355
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-07
+    accessed_at: 2026-10-21
+  - id: falcon-h1-paper
+    title: "Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance (arXiv 2507.22448)"
+    url: https://arxiv.org/abs/2507.22448
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-07-30
+    accessed_at: 2026-10-21

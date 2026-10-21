@@ -17,7 +17,7 @@ bio:
   - llama-cpp-codeowners
   - hf-ollama-docs
   - wllama-repo
-  reviewed_at: 2026-10-01
+  reviewed_at: 2026-10-21
 affiliations:
 - name: Hugging Face
   organization_slug: hugging-face
@@ -58,9 +58,56 @@ links:
   url: https://ngxson.com
 - label: GitHub
   url: https://github.com/ngxson
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Nguyen's llama.cpp contributions include work on its HTTP server, such as a January 2024
+          change that defers requests when no processing slot is free. The project's CODEOWNERS file now lists Nguyen as an owner of llama-server,
+          shared common code, CI and Dockerfiles.
+        source_ids: [pr-server-defer, llama-cpp-codeowners]
+      - text: >-
+          In April 2025 Nguyen consolidated llama.cpp's separate vision command-line tools into a
+          single multimodal tool, llama-mtmd-cli, merging the LLaVA, Gemma 3 and MiniCPM-V command-line
+          programs. In May 2025 Nguyen added audio input, starting with the Ultravox model, and brought audio
+          input to llama-server. CODEOWNERS lists Nguyen as the owner of the multimodal library, and Nguyen's
+          site credits Nguyen with adding vision and audio support to llama.cpp.
+        source_ids: [pr-mtmd-cli, pr-ultravox-audio, pr-server-audio, llama-cpp-codeowners, personal-site]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          At Hugging Face, Nguyen worked on the Hub's Ollama integration, which lets Ollama run public GGUF
+          checkpoints from the Hub with a single command, and co-wrote the February 2026 announcement that the
+          ggml and llama.cpp team was joining Hugging Face. Under Nguyen's own GitHub account, wllama provides a
+          WebAssembly binding that runs llama.cpp inference in the browser.
+        source_ids: [personal-site, hf-ollama-docs, hf-announcement, wllama-repo]
+      - text: >-
+          Nguyen has written a personal blog since 2016. Recent machine learning posts include "Introducing:
+          ggml-easy" (April 2025), a wrapper that simplifies working with GGML, an explainer on RoPE variants
+          (April 2025), and a guide to using OCR models with llama.cpp (April 2026).
+        source_ids: [ngxson-blog, ggml-easy-post]
+timeline:
+  - date: "2024-01-18"
+    text: Opened a llama.cpp server pull request to defer tasks when no slot is available.
+    source_ids: [pr-server-defer]
+  - date: "2025-04-21"
+    text: Had a pull request merged that combined the LLaVA, Gemma 3 and MiniCPM-V command-line tools into llama-mtmd-cli.
+    source_ids: [pr-mtmd-cli]
+  - date: "2025-04-20"
+    text: Introduced ggml-easy, a simple wrapper for working with GGML, on Nguyen's blog.
+    source_ids: [ggml-easy-post]
+  - date: "2025-05-22"
+    text: Added Ultravox audio input to llama.cpp's multimodal library.
+    source_ids: [pr-ultravox-audio]
+  - date: "2025-05-23"
+    text: Added audio input support to llama-server.
+    source_ids: [pr-server-audio]
+  - date: "2026-02-20"
+    text: Co-wrote Hugging Face's announcement that ggml and llama.cpp were joining the company.
+    source_ids: [hf-announcement]
 publication_status: published
-updated_at: 2026-10-01
-last_reviewed: 2026-10-01
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
 - id: personal-site
   title: Xuan-Son Nguyen — about and work
@@ -68,45 +115,87 @@ sources:
   publisher: Xuan-Son Nguyen
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: github-profile
   title: ngxson (Xuan-Son Nguyen) on GitHub
   url: https://github.com/ngxson
   publisher: GitHub
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: llama-cpp-codeowners
   title: ggml-org/llama.cpp CODEOWNERS
   url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
   publisher: ggml-org (GitHub repository)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: hf-announcement
   title: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
   url: https://huggingface.co/blog/ggml-joins-hf
   publisher: Hugging Face
   kind: announcement
   published_at: 2026-02-20
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: hf-ollama-docs
   title: Use Ollama with any GGUF Model on Hugging Face Hub
   url: https://huggingface.co/docs/hub/en/ollama
   publisher: Hugging Face
   kind: documentation
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: wllama-repo
   title: ngxson/wllama README
   url: https://github.com/ngxson/wllama
   publisher: Xuan-Son Nguyen (GitHub repository)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
+- id: pr-server-defer
+  title: 'ggml-org/llama.cpp pull request #5018: Server: when no slot is available, defer the task'
+  url: https://github.com/ggml-org/llama.cpp/pull/5018
+  publisher: GitHub
+  kind: repository
+  published_at: 2024-01-18
+  accessed_at: 2026-10-21
+- id: pr-mtmd-cli
+  title: 'ggml-org/llama.cpp pull request #13012: mtmd: merge llava, gemma3 and minicpmv CLI into single llama-mtmd-cli'
+  url: https://github.com/ggml-org/llama.cpp/pull/13012
+  publisher: GitHub
+  kind: repository
+  published_at: 2025-04-18
+  accessed_at: 2026-10-21
+- id: pr-ultravox-audio
+  title: 'ggml-org/llama.cpp pull request #13623: mtmd: add ultravox audio input'
+  url: https://github.com/ggml-org/llama.cpp/pull/13623
+  publisher: GitHub
+  kind: repository
+  published_at: 2025-05-18
+  accessed_at: 2026-10-21
+- id: pr-server-audio
+  title: 'ggml-org/llama.cpp pull request #13714: server: support audio input'
+  url: https://github.com/ggml-org/llama.cpp/pull/13714
+  publisher: GitHub
+  kind: repository
+  published_at: 2025-05-22
+  accessed_at: 2026-10-21
+- id: ngxson-blog
+  title: ngxson's blog
+  url: https://blog.ngxson.com
+  publisher: Xuan-Son Nguyen
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-21
+- id: ggml-easy-post
+  title: 'Introducing: ggml-easy — ngxson''s blog'
+  url: https://blog.ngxson.com/introducing-ggml-easy
+  publisher: Xuan-Son Nguyen
+  kind: announcement
+  published_at: 2025-04-20
+  accessed_at: 2026-10-21

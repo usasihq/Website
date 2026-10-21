@@ -15,7 +15,7 @@ bio:
     on scaling speech technology to more than 1,000 languages. Baevski's GitHub profile lists Google
     as the current company.
   source_ids: [wav2vec2-paper, wav2vec2-pdf, data2vec-paper, data2vec-pdf, fairseq-paper, fairseq-repo, mms-paper, github-profile]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -56,9 +56,62 @@ work:
 links:
   - label: GitHub
     url: https://github.com/alexeib
+sections:
+  - heading: Language modeling
+    paragraphs:
+      - text: >-
+          Baevski's early papers with Michael Auli were on neural language modeling. "Adaptive Input
+          Representations for Neural Language Modeling" (2018) extended the adaptive softmax to input
+          representations of variable capacity, and Baevski was a co-author of the fairseq toolkit paper in
+          2019, which describes an open-source PyTorch library for translation, summarization and language
+          modeling.
+        source_ids: [adaptive-input-paper, fairseq-paper]
+  - heading: Speech representation learning
+    paragraphs:
+      - text: >-
+          From 2019 Baevski's work turned to self-supervised learning from raw audio. Baevski co-authored the
+          original wav2vec paper and was first author of vq-wav2vec, which learns discrete speech units, and
+          of wav2vec 2.0, which masks speech in a latent space and solves a contrastive task over quantized
+          representations. Follow-up work included XLSR, a cross-lingual version of wav2vec 2.0 pre-trained on
+          many languages, and wav2vec-U (2021), a method for training speech recognition without labeled data.
+        source_ids: [wav2vec-paper, vq-wav2vec-paper, wav2vec2-paper, xlsr-paper, wav2vec-u-paper]
+  - heading: Self-supervised learning across modalities
+    paragraphs:
+      - text: >-
+          The data2vec paper (2022) applied a single self-supervised objective, predicting latent
+          representations of the full input from a masked view, to speech, images and text. Its successor,
+          data2vec 2.0, made that training more efficient by not encoding masked tokens and by using a fast
+          convolutional decoder. Baevski was also a co-author of the Massively Multilingual Speech paper on
+          extending speech technology to more than 1,000 languages.
+        source_ids: [data2vec-paper, data2vec2-paper, mms-paper]
+timeline:
+  - date: "2018-09"
+    text: Posted "Adaptive Input Representations for Neural Language Modeling" with Michael Auli as first author.
+    source_ids: [adaptive-input-paper]
+  - date: "2019-04"
+    text: Co-authored the fairseq toolkit paper and the original wav2vec speech pre-training paper.
+    source_ids: [fairseq-paper, wav2vec-paper]
+  - date: "2019-10"
+    text: Posted vq-wav2vec, on self-supervised learning of discrete speech representations, as first author.
+    source_ids: [vq-wav2vec-paper]
+  - date: "2020-06"
+    text: Posted wav2vec 2.0 as first author and co-authored the XLSR cross-lingual speech paper.
+    source_ids: [wav2vec2-paper, xlsr-paper]
+  - date: "2021-05"
+    text: Posted "Unsupervised Speech Recognition", describing wav2vec-U, as first author.
+    source_ids: [wav2vec-u-paper]
+  - date: "2022-02"
+    text: Posted data2vec, a shared self-supervised framework for speech, vision and language, as first author.
+    source_ids: [data2vec-paper]
+  - date: "2022-12"
+    text: Posted data2vec 2.0, a more efficient version of the data2vec objective, as first author.
+    source_ids: [data2vec2-paper]
+  - date: "2023-05"
+    text: Co-authored "Scaling Speech Technology to 1,000+ Languages", the Massively Multilingual Speech paper.
+    source_ids: [mms-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: alexeib (Alexei Baevski) on GitHub
@@ -66,14 +119,14 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: wav2vec2-paper
     title: "wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations (arXiv 2006.11477)"
     url: https://arxiv.org/abs/2006.11477
     publisher: arXiv
     kind: paper
     published_at: 2020-06-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: wav2vec2-pdf
     title: "wav2vec 2.0 — paper PDF (author affiliation: Facebook AI)"
     url: https://arxiv.org/pdf/2006.11477
@@ -87,7 +140,7 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2022-02-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: data2vec-pdf
     title: "data2vec — paper PDF (author affiliation: Meta AI; code statement)"
     url: https://arxiv.org/pdf/2202.03555
@@ -101,18 +154,60 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2019-04-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fairseq-repo
     title: facebookresearch/fairseq README and license
     url: https://github.com/facebookresearch/fairseq
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mms-paper
     title: "Scaling Speech Technology to 1,000+ Languages (arXiv 2305.13516)"
     url: https://arxiv.org/abs/2305.13516
     publisher: arXiv
     kind: paper
     published_at: 2023-05-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: adaptive-input-paper
+    title: "Adaptive Input Representations for Neural Language Modeling (arXiv 1809.10853)"
+    url: https://arxiv.org/abs/1809.10853
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-09-28
+    accessed_at: 2026-10-21
+  - id: wav2vec-paper
+    title: "wav2vec: Unsupervised Pre-training for Speech Recognition (arXiv 1904.05862)"
+    url: https://arxiv.org/abs/1904.05862
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-04-11
+    accessed_at: 2026-10-21
+  - id: vq-wav2vec-paper
+    title: "vq-wav2vec: Self-Supervised Learning of Discrete Speech Representations (arXiv 1910.05453)"
+    url: https://arxiv.org/abs/1910.05453
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-12
+    accessed_at: 2026-10-21
+  - id: xlsr-paper
+    title: "Unsupervised Cross-lingual Representation Learning for Speech Recognition (arXiv 2006.13979)"
+    url: https://arxiv.org/abs/2006.13979
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-06-24
+    accessed_at: 2026-10-21
+  - id: wav2vec-u-paper
+    title: "Unsupervised Speech Recognition (arXiv 2105.11084)"
+    url: https://arxiv.org/abs/2105.11084
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-05-24
+    accessed_at: 2026-10-21
+  - id: data2vec2-paper
+    title: "Efficient Self-supervised Learning with Contextualized Target Representations for Vision, Speech and Language (arXiv 2212.07525)"
+    url: https://arxiv.org/abs/2212.07525
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-12-14
+    accessed_at: 2026-10-21

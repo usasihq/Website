@@ -15,7 +15,7 @@ bio:
     Karras's current research interests, per NVIDIA, are deep learning, generative models, and digital
     content creation.
   source_ids: [nvidia-profile, nvidia-blog-author, stylegan-paper, stylegan3-readme, edm-paper, edm2-readme]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: NVIDIA Research
     organization_slug: nvidia
@@ -48,9 +48,70 @@ links:
     url: https://research.nvidia.com/person/tero-karras
   - label: GitHub
     url: https://github.com/tkarras
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Karras worked for three years in NVIDIA's Tegra business before joining NVIDIA Research in 2009, where
+          Karras is now a Senior Distinguished Research Scientist. NVIDIA credits Karras with a central role in
+          developing its RTX technology, covering both hardware and software design, and lists Karras's
+          research areas as computer graphics, generative AI and real-time rendering.
+        source_ids: [nvidia-blog-author, nvidia-profile]
+      - text: >-
+          Karras's earlier interests, per the NVIDIA Technical Blog, included real-time ray tracing,
+          representations for detailed 3D content, parallel algorithms and GPU computing. In late 2012 Karras
+          wrote the blog's three-part "Thinking Parallel" series on collision detection, tree traversal and
+          tree construction on the GPU.
+        source_ids: [nvidia-blog-author]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Karras's generative modeling work began with "Progressive Growing of GANs" (2017), which trains
+          generator and discriminator progressively from low to high resolution. The StyleGAN line followed:
+          the style-based generator (2018), StyleGAN2 (2019), adaptive discriminator augmentation for training
+          GANs with limited data (2020) and the alias-free StyleGAN3 (2021), each with Karras as first author.
+        source_ids: [progan-paper, stylegan-paper, stylegan2-paper, ada-paper, stylegan3-paper, nvidia-profile]
+      - text: >-
+          Karras then turned to diffusion models. "Elucidating the Design Space of Diffusion-Based Generative
+          Models" (EDM, 2022) separated the design choices in diffusion samplers and training, EDM2 (2023)
+          analyzed and improved their training dynamics, and the 2024 autoguidance paper showed that guiding a
+          diffusion model with a weaker version of itself can improve image quality. NVIDIA publishes the
+          official implementations in its NVlabs GitHub organization.
+        source_ids: [edm-paper, edm2-paper, autoguidance-paper, edm2-readme, stylegan3-readme]
+timeline:
+  - date: "2009"
+    text: Joined NVIDIA Research after three years with NVIDIA's Tegra business.
+    source_ids: [nvidia-blog-author, nvidia-profile]
+  - date: "2012-11"
+    text: Began the "Thinking Parallel" series on GPU algorithms on the NVIDIA developer blog.
+    source_ids: [nvidia-blog-author]
+  - date: "2017-10"
+    text: Posted "Progressive Growing of GANs for Improved Quality, Stability, and Variation" as first author.
+    source_ids: [progan-paper]
+  - date: "2018-12"
+    text: Posted the StyleGAN paper, "A Style-Based Generator Architecture for Generative Adversarial Networks".
+    source_ids: [stylegan-paper]
+  - date: "2019-12"
+    text: Posted StyleGAN2, "Analyzing and Improving the Image Quality of StyleGAN", as first author.
+    source_ids: [stylegan2-paper]
+  - date: "2020-06"
+    text: Posted "Training Generative Adversarial Networks with Limited Data" as first author.
+    source_ids: [ada-paper]
+  - date: "2021-06"
+    text: Posted StyleGAN3, "Alias-Free Generative Adversarial Networks", as first author.
+    source_ids: [stylegan3-paper]
+  - date: "2022-06"
+    text: Posted EDM, on the design space of diffusion-based generative models, as first author.
+    source_ids: [edm-paper]
+  - date: "2023-12"
+    text: Posted EDM2, on the training dynamics of diffusion models, as first author.
+    source_ids: [edm2-paper]
+  - date: "2024-06"
+    text: Posted "Guiding a Diffusion Model with a Bad Version of Itself" as first author.
+    source_ids: [autoguidance-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nvidia-profile
     title: Tero Karras — NVIDIA Research
@@ -58,60 +119,81 @@ sources:
     publisher: NVIDIA Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvidia-blog-author
     title: "Author: Tero Karras — NVIDIA Technical Blog"
     url: https://developer.nvidia.com/blog/author/tkarras/
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stylegan-paper
     title: "A Style-Based Generator Architecture for Generative Adversarial Networks (arXiv 1812.04948)"
     url: https://arxiv.org/abs/1812.04948
     publisher: arXiv
     kind: paper
     published_at: 2018-12-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stylegan3-paper
     title: "Alias-Free Generative Adversarial Networks (arXiv 2106.12423)"
     url: https://arxiv.org/abs/2106.12423
     publisher: arXiv
     kind: paper
     published_at: 2021-06-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stylegan3-readme
     title: NVlabs/stylegan3 README (official PyTorch implementation; NVIDIA Source Code License)
     url: https://github.com/NVlabs/stylegan3
     publisher: NVlabs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: edm-paper
     title: "Elucidating the Design Space of Diffusion-Based Generative Models (arXiv 2206.00364)"
     url: https://arxiv.org/abs/2206.00364
     publisher: arXiv
     kind: paper
     published_at: 2022-06-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: edm2-paper
     title: "Analyzing and Improving the Training Dynamics of Diffusion Models (arXiv 2312.02696)"
     url: https://arxiv.org/abs/2312.02696
     publisher: arXiv
     kind: paper
     published_at: 2023-12-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: autoguidance-paper
     title: "Guiding a Diffusion Model with a Bad Version of Itself (arXiv 2406.02507)"
     url: https://arxiv.org/abs/2406.02507
     publisher: arXiv
     kind: paper
     published_at: 2024-06-04
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: edm2-readme
     title: NVlabs/edm2 README (EDM2 and Autoguidance; CC BY-NC-SA 4.0)
     url: https://github.com/NVlabs/edm2
     publisher: NVlabs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: progan-paper
+    title: "Progressive Growing of GANs for Improved Quality, Stability, and Variation (arXiv 1710.10196)"
+    url: https://arxiv.org/abs/1710.10196
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-10-27
+    accessed_at: 2026-10-21
+  - id: stylegan2-paper
+    title: "Analyzing and Improving the Image Quality of StyleGAN (arXiv 1912.04958)"
+    url: https://arxiv.org/abs/1912.04958
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-21
+  - id: ada-paper
+    title: "Training Generative Adversarial Networks with Limited Data (arXiv 2006.06676)"
+    url: https://arxiv.org/abs/2006.06676
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-06-11
+    accessed_at: 2026-10-21

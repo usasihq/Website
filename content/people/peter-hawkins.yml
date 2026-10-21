@@ -12,7 +12,7 @@ bio:
     transformation, released under the Apache License 2.0. Hawkins's GitHub profile lists Google as
     their company and sums up their work as "JAX @ Google."
   source_ids: [jax-readme, jax-license, github-profile]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -31,9 +31,36 @@ work:
 links:
   - label: GitHub
     url: https://github.com/hawkinsp
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Hawkins is one of the twelve authors, listed alphabetically, in the citation entry that the JAX README
+          asks users to cite, alongside James Bradbury, Roy Frostig, Matthew James Johnson, Dougal Maclaurin and
+          others. Hawkins's commits in the JAX repository date back at least to November 2018, and Hawkins's GitHub profile summarizes the work as JAX at Google.
+        source_ids: [jax-readme, jax-first-commit, github-profile]
+      - text: >-
+          Much of Hawkins's recent JAX work concerns building and packaging the library. Pull requests from
+          September and October 2026 include making the build script detect free-threaded Python builds,
+          and raising the minimum x86-64 CPU requirement to Intel Haswell. Hawkins has also committed to ml_dtypes, a stand-alone implementation of NumPy dtype
+          extensions used in machine learning such as bfloat16 and float8 formats.
+        source_ids: [jax-pr-free-threaded, jax-pr-haswell, ml-dtypes-repo, ml-dtypes-commit]
+timeline:
+  - date: "2018-11-20"
+    text: Committed a source sync to the JAX repository.
+    source_ids: [jax-first-commit]
+  - date: "2023-03-07"
+    text: Committed build changes to the ml_dtypes repository, including adding an Eigen submodule.
+    source_ids: [ml-dtypes-commit]
+  - date: "2026-09-22"
+    text: Opened a JAX pull request raising the minimum x86-64 CPU requirement to Intel Haswell.
+    source_ids: [jax-pr-haswell]
+  - date: "2026-09-28"
+    text: Opened a JAX pull request making the build script detect free-threaded Python builds.
+    source_ids: [jax-pr-free-threaded]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: hawkinsp (Peter Hawkins) on GitHub
@@ -41,18 +68,53 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-readme
     title: jax-ml/jax README ("Citing JAX" author list)
     url: https://github.com/jax-ml/jax
     publisher: jax-ml (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-license
     title: jax-ml/jax LICENSE (Apache License 2.0)
     url: https://github.com/jax-ml/jax/blob/main/LICENSE
     publisher: jax-ml (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: jax-first-commit
+    title: jax-ml/jax commit 065bb0b (source sync, November 2018)
+    url: https://github.com/jax-ml/jax/commit/065bb0baa2a397c6bac0eb844e7f9c20aa6f0da7
+    publisher: GitHub
+    kind: repository
+    published_at: 2018-11-20
+    accessed_at: 2026-10-21
+  - id: jax-pr-haswell
+    title: "jax-ml/jax pull request #40885: Increase the minimum x86-64 CPU requirement to Intel Haswell"
+    url: https://github.com/jax-ml/jax/pull/40885
+    publisher: GitHub
+    kind: repository
+    published_at: 2026-09-22
+    accessed_at: 2026-10-21
+  - id: jax-pr-free-threaded
+    title: "jax-ml/jax pull request #41056: Make build.py autodetect free threaded builds"
+    url: https://github.com/jax-ml/jax/pull/41056
+    publisher: GitHub
+    kind: repository
+    published_at: 2026-09-28
+    accessed_at: 2026-10-21
+  - id: ml-dtypes-repo
+    title: jax-ml/ml_dtypes README
+    url: https://github.com/jax-ml/ml_dtypes
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: ml-dtypes-commit
+    title: jax-ml/ml_dtypes commit a95efe0 (Add Eigen submodule)
+    url: https://github.com/jax-ml/ml_dtypes/commit/a95efe0fb33eaca837a90d85e17b82be2da64cde
+    publisher: GitHub
+    kind: repository
+    published_at: 2023-03-07
+    accessed_at: 2026-10-21

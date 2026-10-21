@@ -14,13 +14,18 @@ bio:
     (2015), which replays important transitions more often than uniform sampling would, and of "The
     Phenomenon of Policy Churn" (NeurIPS 2022).
   source_ids: [homepage, per-paper, github-profile]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
     role: Senior staff research scientist; leads a reinforcement learning team
     current: true
     source_ids: [homepage, github-profile]
+  - name: New York University (Courant Institute)
+    organization_slug: new-york-university
+    role: Postdoc in Yann LeCun's lab (2011–2013)
+    current: false
+    source_ids: [homepage]
 work:
   - name: Prioritized Experience Replay
     artifact_slug: null
@@ -30,14 +35,80 @@ work:
       First author, with John Quan, Ioannis Antonoglou and David Silver, of the 2015 paper developing a
       framework for prioritizing experience in replay memory.
     source_ids: [per-paper]
+  - name: PyBrain
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/pybrain/pybrain/
+    contribution: >-
+      Contributed recurrent neural network, reinforcement learning and black-box optimization code to
+      the PyBrain Python machine learning library, through which Schaul releases many research
+      algorithms and benchmarks.
+    source_ids: [software-page]
 links:
   - label: Website
     url: https://schaul.site44.com/
   - label: GitHub
     url: https://github.com/schaul
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Schaul completed a PhD from TU Munich in 2011 under the supervision of Jürgen Schmidhuber at the
+          Swiss AI Lab IDSIA. From 2011 to 2013 Schaul was a postdoc
+          in Yann LeCun's lab at New York University's Courant Institute, and in 2013 joined DeepMind while it
+          was a start-up. Schaul is now a senior staff research scientist who heads a reinforcement learning team
+          at Google DeepMind.
+        source_ids: [homepage]
+      - text: >-
+          Schaul's service to the field includes serving as program chair for the Reinforcement Learning
+          Conference (RLC) 2026, keynote chair and senior area chair for RLC 2025, and area chair for ICML and
+          NeurIPS 2024. Schaul has also co-organized a Dagstuhl workshop on AI for the social good and taught at the
+          International Summer School on Artificial Intelligence and Games.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Schaul's research covers many aspects of deep reinforcement learning, including exploration,
+          hierarchy, goal discovery, learning dynamics, generalization and credit assignment, as well as
+          black-box optimization and minimal hyperparameter tuning, with games as a favorite application area.
+          Papers include Universal Value Function Approximators (ICML 2015), Prioritized Experience Replay (ICLR
+          2016), "Ray Interference" (RLDM 2019) on plateaus in deep RL, and "The Phenomenon of Policy Churn"
+          (NeurIPS 2022).
+        source_ids: [homepage, per-paper, policy-churn-paper]
+      - text: >-
+          Schaul also co-authored DeepMind's 2019 Nature paper on reaching grandmaster level in StarCraft II
+          with multi-agent reinforcement learning, a 2020 Nature Communications perspective on AI for social
+          good, a 2024 ICML position paper on open-endedness presented as an oral, and the Gemini 2.5 technical
+          report in 2025.
+        source_ids: [homepage]
+timeline:
+  - date: "2011"
+    text: Completed a PhD at TU Munich under Jürgen Schmidhuber at IDSIA, then began a postdoc at NYU's Courant Institute.
+    source_ids: [homepage]
+  - date: "2013"
+    text: Joined DeepMind while it was a start-up.
+    source_ids: [homepage]
+  - date: "2015"
+    text: Presented "Universal Value Function Approximators" at ICML 2015.
+    source_ids: [homepage]
+  - date: "2015-11"
+    text: Posted "Prioritized Experience Replay" as first author.
+    source_ids: [per-paper]
+  - date: "2019-10"
+    text: Co-authored the Nature paper on grandmaster-level StarCraft II play with multi-agent reinforcement learning.
+    source_ids: [homepage]
+  - date: "2022-06"
+    text: Posted "The Phenomenon of Policy Churn" as first author.
+    source_ids: [policy-churn-paper]
+  - date: "2024-07"
+    text: Presented a position paper on open-endedness as an oral at ICML 2024.
+    source_ids: [homepage]
+  - date: "2025"
+    text: Began serving as program chair for the Reinforcement Learning Conference 2026.
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Tom Schaul, PhD — Google DeepMind (homepage)
@@ -45,18 +116,32 @@ sources:
     publisher: Tom Schaul
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: schaul (Tom Schaul) on GitHub
     url: https://github.com/schaul
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: per-paper
     title: "Prioritized Experience Replay (arXiv 1511.05952)"
     url: https://arxiv.org/abs/1511.05952
     publisher: arXiv
     kind: paper
     published_at: 2015-11-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: policy-churn-paper
+    title: "The Phenomenon of Policy Churn (arXiv 2206.00730)"
+    url: https://arxiv.org/abs/2206.00730
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-06-01
+    accessed_at: 2026-10-21
+  - id: software-page
+    title: Software — Tom Schaul
+    url: https://schaul.site44.com/software.html
+    publisher: Tom Schaul
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
