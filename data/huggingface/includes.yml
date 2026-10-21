@@ -6,246 +6,771 @@
 # record links to (npm run hf:refresh -- --seed-includes adds new ones); the
 # refresh also scans the catalog on every run. One line of reason each.
 entries:
-  - { kind: dataset, id: allenai/Dolci-Instruct-DPO, reason: "Linked from the USASI catalog record olmo-3-7b-instruct" }
-  - { kind: dataset, id: allenai/Dolci-Instruct-RL, reason: "Linked from the USASI catalog record olmo-3-7b-instruct" }
-  - { kind: dataset, id: allenai/Dolci-Instruct-SFT, reason: "Linked from the USASI catalog record olmo-3-7b-instruct" }
-  - { kind: dataset, id: allenai/Dolci-Think-DPO-32B, reason: "Linked from the USASI catalog record olmo-3-1-32b-think" }
-  - { kind: dataset, id: allenai/Dolci-Think-RL-32B, reason: "Linked from the USASI catalog record olmo-3-1-32b-think" }
-  - { kind: dataset, id: allenai/Dolci-Think-SFT-32B, reason: "Linked from the USASI catalog record olmo-3-1-32b-think" }
-  - { kind: dataset, id: allenai/dolma, reason: "Linked from the USASI catalog record common-crawl-corpus" }
-  - { kind: dataset, id: allenai/dolma3_dolmino_mix-100B-1025, reason: "Linked from the USASI catalog record olmo-3-1025-7b" }
-  - { kind: dataset, id: allenai/dolma3_dolmino_mix-100B-1125, reason: "Linked from the USASI catalog record olmo-3-1-32b-think" }
-  - { kind: dataset, id: allenai/dolma3_longmino_mix-100B-1125, reason: "Linked from the USASI catalog record olmo-3-1-32b-think" }
-  - { kind: dataset, id: allenai/dolma3_longmino_mix-50B-1025, reason: "Linked from the USASI catalog record olmo-3-1025-7b" }
-  - { kind: dataset, id: allenai/dolma3_mix-6T, reason: "Linked from the USASI catalog record dolma" }
-  - { kind: dataset, id: allenai/dolma3_mix-6T-1025-7B, reason: "Linked from the USASI catalog record dolma" }
-  - { kind: dataset, id: allenai/dolma3_pool, reason: "Linked from the USASI catalog record dolma" }
-  - { kind: dataset, id: allenai/dolma3.5_pool, reason: "Linked from the USASI catalog record dolma" }
-  - { kind: dataset, id: allenai/Molmo2-Cap, reason: "Linked from the USASI catalog record molmo2-o-7b" }
-  - { kind: dataset, id: allenai/tulu-3-sft-mixture, reason: "Linked from the USASI catalog record llama-3-1-tulu-3-1-8b" }
-  - { kind: dataset, id: arcinstitute/opengenome2, reason: "Linked from the USASI catalog record evo-2-20b" }
-  - { kind: dataset, id: bigcode/bigcodebench, reason: "Linked from the USASI catalog record bigcodebench" }
-  - { kind: dataset, id: bigcode/the-stack-v2, reason: "Linked from the USASI catalog record starcoder2-15b" }
-  - { kind: dataset, id: bigcode/the-stack-v2-train, reason: "Linked from the USASI catalog record starcoder2-15b" }
-  - { kind: dataset, id: cais/hle, reason: "Linked from the USASI catalog record humanitys-last-exam" }
-  - { kind: dataset, id: cais/hle-diamond, reason: "Linked from the USASI catalog record humanitys-last-exam" }
-  - { kind: dataset, id: cais/mmlu, reason: "Linked from the USASI catalog record mmlu" }
-  - { kind: dataset, id: EleutherAI/pile, reason: "Linked from the USASI catalog record pythia-12b" }
-  - { kind: dataset, id: EleutherAI/pile_val_test, reason: "Linked from the USASI catalog record the-pile" }
-  - { kind: dataset, id: EleutherAI/pile-standard-pythia-preshuffled, reason: "Linked from the USASI catalog record pythia-12b" }
-  - { kind: dataset, id: EleutherAI/the_pile_deduplicated, reason: "Linked from the USASI catalog record the-pile" }
-  - { kind: dataset, id: EssentialAI/essential-web-v1.0, reason: "Linked from the USASI catalog record essential-web" }
-  - { kind: dataset, id: EssentialAI/rnj-1-instruct-evals, reason: "Linked from the USASI catalog record rnj-1-instruct" }
-  - { kind: dataset, id: futurehouse/ether0-benchmark, reason: "Linked from the USASI catalog record ether0-24b" }
-  - { kind: dataset, id: gorilla-llm/Berkeley-Function-Calling-Leaderboard, reason: "Linked from the USASI catalog record berkeley-function-calling-leaderboard" }
-  - { kind: dataset, id: HuggingFaceFW/fineweb, reason: "Linked from the USASI catalog record fineweb" }
-  - { kind: dataset, id: HuggingFaceFW/fineweb-edu, reason: "Linked from the USASI catalog record smollm" }
-  - { kind: dataset, id: HuggingFaceTB/finemath, reason: "Linked from the USASI catalog record dolma" }
-  - { kind: dataset, id: HuggingFaceTB/smoltalk2, reason: "Linked from the USASI catalog record smollm3-3b" }
-  - { kind: dataset, id: HuggingFaceTB/stack-edu, reason: "Linked from the USASI catalog record dolma" }
-  - { kind: dataset, id: Idavidrein/gpqa, reason: "Linked from the USASI catalog record gpqa" }
-  - { kind: dataset, id: meta-llama/Llama-3.1-8B-evals, reason: "Linked from the USASI catalog record llama-3-1-8b" }
-  - { kind: dataset, id: microsoft/bleeding-edge-gameplay-sample, reason: "Linked from the USASI catalog record wham-1-6b" }
-  - { kind: dataset, id: mit-han-lab/awq-model-zoo, reason: "Linked from the USASI catalog record awq" }
-  - { kind: dataset, id: mlfoundations/dclm-baseline-1.0, reason: "Linked from the USASI catalog record dclm" }
-  - { kind: dataset, id: NousResearch/eval-Hermes-4-70B-reasoning, reason: "Linked from the USASI catalog record hermes-4-70b" }
-  - { kind: dataset, id: NousResearch/eval-Hermes-4.3-36B, reason: "Linked from the USASI catalog record hermes-4-3-36b" }
-  - { kind: dataset, id: nvidia/Granary, reason: "Linked from the USASI catalog record parakeet-tdt-0-6b-v3" }
-  - { kind: dataset, id: nvidia/Nemotron-CC-v2, reason: "Linked from the USASI catalog record nemotron-cc" }
-  - { kind: dataset, id: nvidia/Nemotron-CC-v2.1, reason: "Linked from the USASI catalog record nemotron-cc" }
-  - { kind: dataset, id: nvidia/Nemotron-Pretraining-Dataset-sample, reason: "Linked from the USASI catalog record nemotron-cc" }
-  - { kind: dataset, id: open-thoughts/OpenThoughts3-1.2M, reason: "Linked from the USASI catalog record openthoughts" }
-  - { kind: dataset, id: openai/openai_humaneval, reason: "Linked from the USASI catalog record humaneval" }
-  - { kind: dataset, id: princeton-nlp/SWE-bench, reason: "Linked from the USASI catalog record swe-bench" }
-  - { kind: dataset, id: SWE-bench/SWE-bench_Verified, reason: "Linked from the USASI catalog record swe-bench" }
-  - { kind: dataset, id: togethercomputer/RedPajama-Data-1T, reason: "Linked from the USASI catalog record redpajama" }
-  - { kind: dataset, id: togethercomputer/RedPajama-Data-V2, reason: "Linked from the USASI catalog record redpajama" }
-  - { kind: dataset, id: typesafe/evalsafe-agent-trace-observability, reason: "Linked from the USASI catalog record typesafe-ai-workflowevals" }
-  - { kind: dataset, id: typesafe/evalsafe-customer-service, reason: "Linked from the USASI catalog record typesafe-ai-workflowevals" }
-  - { kind: dataset, id: typesafe/evalsafe-invoice-processing, reason: "Linked from the USASI catalog record typesafe-ai-workflowevals" }
-  - { kind: dataset, id: typesafe/evalsafe-security-incidents, reason: "Linked from the USASI catalog record typesafe-ai-workflowevals" }
-  - { kind: dataset, id: Zyphra/Zyda, reason: "Linked from the USASI catalog record zamba" }
-  - { kind: model, id: allenai/Llama-3.1-Tulu-3-8B-DPO, reason: "Linked from the USASI catalog record llama-3-1-tulu-3-1-8b" }
-  - { kind: model, id: allenai/Llama-3.1-Tulu-3-8B-SFT, reason: "Linked from the USASI catalog record llama-3-1-tulu-3-1-8b" }
-  - { kind: model, id: allenai/Llama-3.1-Tulu-3.1-8B, reason: "Linked from the USASI catalog record llama-3-1-8b" }
-  - { kind: model, id: allenai/Molmo2-8B, reason: "Linked from the USASI catalog record molmo" }
-  - { kind: model, id: allenai/Molmo2-O-7B, reason: "Linked from the USASI catalog record molmo" }
-  - { kind: model, id: allenai/Olmo-3-1025-7B, reason: "Linked from the USASI catalog record olmo-3-1025-7b" }
-  - { kind: model, id: allenai/Olmo-3-1125-32B, reason: "Linked from the USASI catalog record olmo-3-1-32b-think" }
-  - { kind: model, id: allenai/Olmo-3-7B-Instruct, reason: "Linked from the USASI catalog record molmo" }
-  - { kind: model, id: allenai/Olmo-3.1-32B-Think, reason: "Linked from the USASI catalog record olmo-3-1-32b-think" }
-  - { kind: model, id: amazon/chronos-2, reason: "Linked from the USASI catalog record chronos-2" }
-  - { kind: model, id: apple/FastVLM-7B, reason: "Linked from the USASI catalog record fastvlm-7b" }
-  - { kind: model, id: apple/OpenELM-3B, reason: "Linked from the USASI catalog record openelm-3b-instruct" }
-  - { kind: model, id: apple/OpenELM-3B-Instruct, reason: "Linked from the USASI catalog record openelm-3b-instruct" }
-  - { kind: model, id: arcee-ai/Trinity-Large-Base, reason: "Linked from the USASI catalog record trinity-large-thinking" }
-  - { kind: model, id: arcee-ai/Trinity-Large-Thinking, reason: "Linked from the USASI catalog record trinity-large-thinking" }
-  - { kind: model, id: arcee-ai/Trinity-Mini, reason: "Linked from the USASI catalog record trinity-mini" }
-  - { kind: model, id: arcee-ai/Trinity-Mini-Base, reason: "Linked from the USASI catalog record trinity-mini" }
-  - { kind: model, id: arcinstitute/evo2_20b, reason: "Linked from the USASI catalog record evo-2-20b" }
-  - { kind: model, id: arcinstitute/evo2_40b, reason: "Linked from the USASI catalog record evo-2-20b" }
-  - { kind: model, id: bigcode/starcoder2-15b, reason: "Linked from the USASI catalog record starcoder2-15b" }
-  - { kind: model, id: bigcode/starcoder2-3b, reason: "Linked from the USASI catalog record starcoder2-3b" }
-  - { kind: model, id: biohub/esm3-sm-open-v1, reason: "Linked from the USASI catalog record esm3-sm-open-v1" }
-  - { kind: model, id: biohub/ESMC-6B, reason: "Linked from the USASI catalog record esmc-6b" }
-  - { kind: model, id: biohub/ESMFold2, reason: "Linked from the USASI catalog record esm" }
-  - { kind: model, id: boltz-community/boltz-1, reason: "Linked from the USASI catalog record boltz-2-v2" }
-  - { kind: model, id: boltz-community/boltz-2, reason: "Linked from the USASI catalog record boltz-2-v2" }
-  - { kind: model, id: ByteDance-Seed/Seed-OSS-36B-Base, reason: "Linked from the USASI catalog record hermes-4-3-36b" }
-  - { kind: model, id: chaidiscovery/chai-1, reason: "Linked from the USASI catalog record chai-1-v0-6" }
-  - { kind: model, id: ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b, reason: "Linked from the USASI catalog record contextual-reranker-v2-2b" }
-  - { kind: model, id: deepcogito/cogito-671b-v2.1, reason: "Linked from the USASI catalog record cogito-v2-1-671b" }
-  - { kind: model, id: deepcogito/cogito-v2-preview-deepseek-671B-MoE, reason: "Linked from the USASI catalog record cogito" }
-  - { kind: model, id: deepcogito/cogito-v2-preview-llama-109B-MoE, reason: "Linked from the USASI catalog record cogito" }
-  - { kind: model, id: deepcogito/cogito-v2-preview-llama-405B, reason: "Linked from the USASI catalog record cogito-v2-preview-llama-405b" }
-  - { kind: model, id: deepcogito/cogito-v2-preview-llama-70B, reason: "Linked from the USASI catalog record cogito" }
-  - { kind: model, id: deepseek-ai/DeepSeek-V3-Base, reason: "Linked from the USASI catalog record cogito-v2-1-671b" }
-  - { kind: model, id: EleutherAI/pythia-12b, reason: "Linked from the USASI catalog record pythia-12b" }
-  - { kind: model, id: EssentialAI/eai-distill-0.5b, reason: "Linked from the USASI catalog record essential-web" }
-  - { kind: model, id: EssentialAI/rnj-1, reason: "Linked from the USASI catalog record rnj-1-5-instruct" }
-  - { kind: model, id: EssentialAI/rnj-1-instruct, reason: "Linked from the USASI catalog record rnj-1-5-instruct" }
-  - { kind: model, id: EssentialAI/rnj-1-instruct-GGUF, reason: "Linked from the USASI catalog record rnj-1-instruct" }
-  - { kind: model, id: EssentialAI/rnj-1.5-instruct, reason: "Linked from the USASI catalog record rnj-1-5-instruct" }
-  - { kind: model, id: facebook/dinov3-vit7b16-pretrain-lvd1689m, reason: "Linked from the USASI catalog record dinov3-vit7b16" }
-  - { kind: model, id: facebook/sam2.1-hiera-large, reason: "Linked from the USASI catalog record sam-2-1-hiera-large" }
-  - { kind: model, id: facebook/sam3, reason: "Linked from the USASI catalog record sam-3-1" }
-  - { kind: model, id: facebook/sam3.1, reason: "Linked from the USASI catalog record sam-3-1" }
-  - { kind: model, id: facebook/vjepa2-vitg-fpc64-384, reason: "Linked from the USASI catalog record v-jepa-2-vitg-384" }
-  - { kind: model, id: futurehouse/ether0, reason: "Linked from the USASI catalog record ether0-24b" }
-  - { kind: model, id: genmo/mochi-1-preview, reason: "Linked from the USASI catalog record mochi-1-preview" }
-  - { kind: model, id: google/embeddinggemma-2, reason: "Linked from the USASI catalog record embeddinggemma-2" }
-  - { kind: model, id: google/embeddinggemma-300m, reason: "Linked from the USASI catalog record embeddinggemma-300m" }
-  - { kind: model, id: google/gemma-4-12B, reason: "Linked from the USASI catalog record gemma-4-12b" }
-  - { kind: model, id: google/gemma-4-12B-it, reason: "Linked from the USASI catalog record gemma-4-12b" }
-  - { kind: model, id: google/gemma-4-26B-A4B, reason: "Linked from the USASI catalog record gemma-4-26b-a4b" }
-  - { kind: model, id: google/gemma-4-26B-A4B-it, reason: "Linked from the USASI catalog record gemma-4-26b-a4b" }
-  - { kind: model, id: google/gemma-4-31B, reason: "Linked from the USASI catalog record gemma-4-31b" }
-  - { kind: model, id: google/gemma-4-31B-it, reason: "Linked from the USASI catalog record gemma-4-31b" }
-  - { kind: model, id: google/medgemma-1.5-4b-it, reason: "Linked from the USASI catalog record medgemma-1-5-4b-it" }
-  - { kind: model, id: google/medgemma-27b-it, reason: "Linked from the USASI catalog record medgemma-27b-it" }
-  - { kind: model, id: google/siglip-so400m-patch14-384, reason: "Linked from the USASI catalog record molmo2-o-7b" }
-  - { kind: model, id: google/timesfm-2.5-200m-flax, reason: "Linked from the USASI catalog record timesfm-2-5-200m" }
-  - { kind: model, id: google/timesfm-2.5-200m-pytorch, reason: "Linked from the USASI catalog record timesfm-2-5-200m" }
-  - { kind: model, id: google/timesfm-3.0-pytorch, reason: "Linked from the USASI catalog record timesfm-3-0" }
-  - { kind: model, id: HuggingFaceTB/SmolLM3-3B, reason: "Linked from the USASI catalog record smollm3-3b" }
-  - { kind: model, id: HuggingFaceTB/SmolLM3-3B-Base, reason: "Linked from the USASI catalog record smollm3-3b" }
-  - { kind: model, id: HuggingFaceTB/SmolLM3-3B-checkpoints, reason: "Linked from the USASI catalog record smollm3-3b" }
-  - { kind: model, id: ibm-granite/granite-4.1-30b-base, reason: "Linked from the USASI catalog record granite-4-2-30b" }
-  - { kind: model, id: ibm-granite/granite-4.1-3b-base, reason: "Linked from the USASI catalog record granite-4-2-3b" }
-  - { kind: model, id: ibm-granite/granite-4.1-8b-base, reason: "Linked from the USASI catalog record granite-4-2-8b" }
-  - { kind: model, id: ibm-granite/granite-4.2-30b, reason: "Linked from the USASI catalog record granite-4-2-30b" }
-  - { kind: model, id: ibm-granite/granite-4.2-3b, reason: "Linked from the USASI catalog record granite-4-2-3b" }
-  - { kind: model, id: ibm-granite/granite-4.2-8b, reason: "Linked from the USASI catalog record granite-4-2-8b" }
-  - { kind: model, id: LiquidAI/d1-3B, reason: "Linked from the USASI catalog record liquid-d1-3b" }
-  - { kind: model, id: LiquidAI/LFM2.5-2.6B, reason: "Linked from the USASI catalog record lfm" }
-  - { kind: model, id: LiquidAI/LFM2.5-2.6B-Base, reason: "Linked from the USASI catalog record lfm2-5-2-6b" }
-  - { kind: model, id: LiquidAI/LFM2.5-8B-A1B, reason: "Linked from the USASI catalog record lfm" }
-  - { kind: model, id: LiquidAI/LFM2.5-8B-A1B-Base, reason: "Linked from the USASI catalog record lfm2-5-8b-a1b" }
-  - { kind: model, id: LiquidAI/LFM2.5-VL-3B, reason: "Linked from the USASI catalog record lfm" }
-  - { kind: model, id: marin-community/marin-8b-base, reason: "Linked from the USASI catalog record marin" }
-  - { kind: model, id: meta-llama/Llama-3.1-405B, reason: "Linked from the USASI catalog record cogito-v2-preview-llama-405b" }
-  - { kind: model, id: meta-llama/Llama-3.1-70B, reason: "Linked from the USASI catalog record hermes-4-70b" }
-  - { kind: model, id: meta-llama/Llama-3.1-8B, reason: "Linked from the USASI catalog record llama-3-1-8b" }
-  - { kind: model, id: meta-llama/Llama-3.1-8B-Instruct, reason: "Linked from the USASI catalog record llama-3-1-8b" }
-  - { kind: model, id: meta-llama/Llama-4-Maverick-17B-128E, reason: "Linked from the USASI catalog record llama-4-maverick-17b-128e" }
-  - { kind: model, id: meta-llama/Llama-4-Maverick-17B-128E-Instruct, reason: "Linked from the USASI catalog record llama-4-maverick-17b-128e" }
-  - { kind: model, id: meta-llama/Llama-4-Scout-17B-16E, reason: "Linked from the USASI catalog record llama-4-scout-17b-16e" }
-  - { kind: model, id: meta-llama/Llama-4-Scout-17B-16E-Instruct, reason: "Linked from the USASI catalog record llama-4-scout-17b-16e" }
-  - { kind: model, id: meta-llama/Llama-Guard-4-12B, reason: "Linked from the USASI catalog record llama-guard-4-12b" }
-  - { kind: model, id: meta-models/Muse-Glimmer-30B, reason: "Linked from the USASI catalog record meta-muse" }
-  - { kind: model, id: microsoft/bitnet-b1.58-2B-4T, reason: "Linked from the USASI catalog record bitnet" }
-  - { kind: model, id: microsoft/Florence-2-base, reason: "Linked from the USASI catalog record florence-2" }
-  - { kind: model, id: microsoft/Florence-2-base-ft, reason: "Linked from the USASI catalog record florence-2" }
-  - { kind: model, id: microsoft/Florence-2-large, reason: "Linked from the USASI catalog record florence-2-large" }
-  - { kind: model, id: microsoft/Florence-2-large-ft, reason: "Linked from the USASI catalog record florence-2" }
-  - { kind: model, id: microsoft/Phi-4-mini-flash-reasoning, reason: "Linked from the USASI catalog record phi-4-mini-flash-reasoning" }
-  - { kind: model, id: microsoft/Phi-4-reasoning, reason: "Linked from the USASI catalog record phi-4-reasoning-vision-15b" }
-  - { kind: model, id: microsoft/Phi-4-reasoning-vision-15B, reason: "Linked from the USASI catalog record phi-4-reasoning-vision-15b" }
-  - { kind: model, id: microsoft/wham, reason: "Linked from the USASI catalog record microsoft-muse" }
-  - { kind: model, id: mistralai/Mistral-Small-24B-Instruct-2501, reason: "Linked from the USASI catalog record ether0-24b" }
-  - { kind: model, id: mistralai/Pixtral-12B-Base-2409, reason: "Linked from the USASI catalog record apriel-1-6-15b-thinker" }
-  - { kind: model, id: nomic-ai/nomic-bert-2048, reason: "Linked from the USASI catalog record nomic-embed-text-v1-5" }
-  - { kind: model, id: nomic-ai/nomic-embed-code, reason: "Linked from the USASI catalog record nomic-embed" }
-  - { kind: model, id: nomic-ai/nomic-embed-text-v1, reason: "Linked from the USASI catalog record nomic-embed-text-v1-5" }
-  - { kind: model, id: nomic-ai/nomic-embed-text-v1.5, reason: "Linked from the USASI catalog record nomic-embed-text-v1-5" }
-  - { kind: model, id: nomic-ai/nomic-embed-text-v1.5-GGUF, reason: "Linked from the USASI catalog record nomic-embed-text-v1-5" }
-  - { kind: model, id: nomic-ai/nomic-embed-text-v2-moe, reason: "Linked from the USASI catalog record nomic-embed-text-v2-moe" }
-  - { kind: model, id: nomic-ai/nomic-embed-text-v2-moe-GGUF, reason: "Linked from the USASI catalog record nomic-embed-text-v2-moe" }
-  - { kind: model, id: nomic-ai/nomic-embed-text-v2-moe-unsupervised, reason: "Linked from the USASI catalog record nomic-embed-text-v2-moe" }
-  - { kind: model, id: nomic-ai/nomic-xlm-2048, reason: "Linked from the USASI catalog record nomic-embed-text-v2-moe" }
-  - { kind: model, id: NousResearch/Hermes-4-70B, reason: "Linked from the USASI catalog record hermes-4-70b" }
-  - { kind: model, id: NousResearch/Hermes-4.3-36B, reason: "Linked from the USASI catalog record hermes-4-3-36b" }
-  - { kind: model, id: nvidia/Cosmos-Predict2.5-2B, reason: "Linked from the USASI catalog record cosmos" }
-  - { kind: model, id: nvidia/Cosmos-Reason2-2B, reason: "Linked from the USASI catalog record gr00t-n1-7-3b" }
-  - { kind: model, id: nvidia/Cosmos-Reason2-8B, reason: "Linked from the USASI catalog record cosmos" }
-  - { kind: model, id: nvidia/Cosmos-Transfer2.5-2B, reason: "Linked from the USASI catalog record cosmos" }
-  - { kind: model, id: nvidia/Cosmos3-Nano, reason: "Linked from the USASI catalog record cosmos3-nano" }
-  - { kind: model, id: nvidia/Cosmos3-Super, reason: "Linked from the USASI catalog record cosmos3-super" }
-  - { kind: model, id: nvidia/GR00T-H, reason: "Linked from the USASI catalog record gr00t" }
-  - { kind: model, id: nvidia/GR00T-N1.7-3B, reason: "Linked from the USASI catalog record gr00t-n1-7-3b" }
-  - { kind: model, id: nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-Base-BF16, reason: "Linked from the USASI catalog record nemotron-3-super-120b-a12b" }
-  - { kind: model, id: nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16, reason: "Linked from the USASI catalog record nemotron-3-super-120b-a12b" }
-  - { kind: model, id: nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-Base-BF16, reason: "Linked from the USASI catalog record nemotron-3-ultra-550b-a55b" }
-  - { kind: model, id: nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16, reason: "Linked from the USASI catalog record nemotron-3-ultra-550b-a55b" }
-  - { kind: model, id: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Base-BF16, reason: "Linked from the USASI catalog record nemotron-3-5-lightning-30b-a3b" }
-  - { kind: model, id: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16, reason: "Linked from the USASI catalog record nemotron-3-5-lightning-30b-a3b" }
-  - { kind: model, id: nvidia/OpenReasoning-Nemotron-1.5B, reason: "Linked from the USASI catalog record palmyra-mini-thinking-b" }
-  - { kind: model, id: nvidia/parakeet-rnnt-1.1b, reason: "Linked from the USASI catalog record parakeet" }
-  - { kind: model, id: nvidia/parakeet-tdt-0.6b-v3, reason: "Linked from the USASI catalog record parakeet-tdt-0-6b-v3" }
-  - { kind: model, id: nvidia/parakeet-unified-en-0.6b, reason: "Linked from the USASI catalog record parakeet-unified-en-0-6b" }
-  - { kind: model, id: openai/clip-vit-large-patch14, reason: "Linked from the USASI catalog record clip-vit-large-patch14" }
-  - { kind: model, id: openai/gpt-oss-120b, reason: "Linked from the USASI catalog record gpt-oss-120b" }
-  - { kind: model, id: openai/gpt-oss-20b, reason: "Linked from the USASI catalog record gpt-oss-20b" }
-  - { kind: model, id: openai/gpt-oss-safeguard-120b, reason: "Linked from the USASI catalog record gpt-oss-safeguard-120b" }
-  - { kind: model, id: openai/gpt-oss-safeguard-20b, reason: "Linked from the USASI catalog record gpt-oss-safeguard-20b" }
-  - { kind: model, id: openai/whisper-large-v2, reason: "Linked from the USASI catalog record whisper-large-v3" }
-  - { kind: model, id: openai/whisper-large-v3, reason: "Linked from the USASI catalog record whisper-large-v3-turbo" }
-  - { kind: model, id: openai/whisper-large-v3-turbo, reason: "Linked from the USASI catalog record whisper-large-v3-turbo" }
-  - { kind: model, id: poolside/Laguna-M.1, reason: "Linked from the USASI catalog record laguna" }
-  - { kind: model, id: poolside/Laguna-S-2.1, reason: "Linked from the USASI catalog record laguna-s-2-1" }
-  - { kind: model, id: poolside/Laguna-XS-2.1, reason: "Linked from the USASI catalog record laguna-xs-2-1" }
-  - { kind: model, id: poolside/Laguna-XS.2, reason: "Linked from the USASI catalog record laguna-xs-2-1" }
-  - { kind: model, id: PrimeIntellect/INTELLECT-1, reason: "Linked from the USASI catalog record intellect" }
-  - { kind: model, id: PrimeIntellect/INTELLECT-2, reason: "Linked from the USASI catalog record intellect" }
-  - { kind: model, id: PrimeIntellect/INTELLECT-3, reason: "Linked from the USASI catalog record intellect-3-1" }
-  - { kind: model, id: PrimeIntellect/INTELLECT-3.1, reason: "Linked from the USASI catalog record intellect-3-1" }
-  - { kind: model, id: Profluent-Bio/E1-150m, reason: "Linked from the USASI catalog record e1-150m" }
-  - { kind: model, id: Profluent-Bio/E1-300m, reason: "Linked from the USASI catalog record e1-300m" }
-  - { kind: model, id: Profluent-Bio/E1-600m, reason: "Linked from the USASI catalog record e1-600m" }
-  - { kind: model, id: Qwen/Qwen2-7B, reason: "Linked from the USASI catalog record fastvlm-7b" }
-  - { kind: model, id: Qwen/Qwen2.5-1.5B, reason: "Linked from the USASI catalog record palmyra-mini-thinking-b" }
-  - { kind: model, id: Qwen/Qwen2.5-Coder-7B-Instruct, reason: "Linked from the USASI catalog record nomic-embed" }
-  - { kind: model, id: Qwen/Qwen3-14B, reason: "Linked from the USASI catalog record hermes" }
-  - { kind: model, id: Qwen/Qwen3-8B, reason: "Linked from the USASI catalog record molmo" }
-  - { kind: model, id: Qwen/QwQ-32B, reason: "Linked from the USASI catalog record intellect" }
-  - { kind: model, id: RekaAI/reka-flash-3, reason: "Linked from the USASI catalog record reka-flash-3-1" }
-  - { kind: model, id: RekaAI/reka-flash-3.1, reason: "Linked from the USASI catalog record reka-flash-3-1" }
-  - { kind: model, id: RekaAI/reka-flash-3.1-rekaquant-q3_k_s, reason: "Linked from the USASI catalog record reka-flash-3-1" }
-  - { kind: model, id: ServiceNow-AI/Apriel-1.5-15b-Thinker, reason: "Linked from the USASI catalog record apriel-1-6-15b-thinker" }
-  - { kind: model, id: ServiceNow-AI/Apriel-1.6-15b-Thinker, reason: "Linked from the USASI catalog record apriel-1-6-15b-thinker" }
-  - { kind: model, id: ServiceNow-AI/Apriel-5B-Instruct, reason: "Linked from the USASI catalog record apriel" }
-  - { kind: model, id: ServiceNow-AI/Apriel-Nemotron-15b-Thinker, reason: "Linked from the USASI catalog record apriel" }
-  - { kind: model, id: ServiceNow-AI/SuperApriel-15b-Base, reason: "Linked from the USASI catalog record superapriel-15b-instruct" }
-  - { kind: model, id: ServiceNow-AI/SuperApriel-15B-Instruct, reason: "Linked from the USASI catalog record apriel" }
-  - { kind: model, id: Snowflake/snowflake-arctic-base, reason: "Linked from the USASI catalog record snowflake-arctic-base" }
-  - { kind: model, id: Snowflake/snowflake-arctic-instruct, reason: "Linked from the USASI catalog record snowflake-arctic-instruct" }
-  - { kind: model, id: thinkingmachines/Inkling, reason: "Linked from the USASI catalog record inkling-975b" }
-  - { kind: model, id: thinkingmachines/Inkling-NVFP4, reason: "Linked from the USASI catalog record inkling-975b" }
-  - { kind: model, id: thinkingmachines/Inkling-Small, reason: "Linked from the USASI catalog record inkling-small" }
-  - { kind: model, id: thinkingmachines/Inkling-Small-NVFP4, reason: "Linked from the USASI catalog record inkling-small" }
-  - { kind: model, id: Wan-AI/Wan2.2-TI2V-5B, reason: "Linked from the USASI catalog record cosmos3-nano" }
-  - { kind: model, id: Writer/Palmyra-Fin-70B-32K, reason: "Linked from the USASI catalog record palmyra" }
-  - { kind: model, id: Writer/Palmyra-Med-70B-32K, reason: "Linked from the USASI catalog record palmyra" }
-  - { kind: model, id: Writer/palmyra-mini, reason: "Linked from the USASI catalog record palmyra-mini" }
-  - { kind: model, id: Writer/palmyra-mini-GGUF, reason: "Linked from the USASI catalog record palmyra-mini" }
-  - { kind: model, id: Writer/palmyra-mini-MLX-BF16, reason: "Linked from the USASI catalog record palmyra-mini" }
-  - { kind: model, id: Writer/palmyra-mini-thinking-a, reason: "Linked from the USASI catalog record palmyra" }
-  - { kind: model, id: Writer/palmyra-mini-thinking-b, reason: "Linked from the USASI catalog record palmyra-mini-thinking-b" }
-  - { kind: model, id: Writer/palmyra-mini-thinking-b-GGUF, reason: "Linked from the USASI catalog record palmyra-mini-thinking-b" }
-  - { kind: model, id: Writer/palmyra-mini-thinking-b-MLX-BF16, reason: "Linked from the USASI catalog record palmyra-mini-thinking-b" }
-  - { kind: model, id: Writer/Palmyra-X-4.3-73B, reason: "Linked from the USASI catalog record palmyra" }
-  - { kind: model, id: xai-org/grok-1, reason: "Linked from the USASI catalog record grok-1" }
-  - { kind: model, id: xai-org/grok-2, reason: "Linked from the USASI catalog record grok-2" }
-  - { kind: model, id: zai-org/GLM-4.5-Air-Base, reason: "Linked from the USASI catalog record intellect-3-1" }
-  - { kind: model, id: Zyphra/Zamba2-7B, reason: "Linked from the USASI catalog record zamba" }
-  - { kind: model, id: Zyphra/Zamba2-VL-7B, reason: "Linked from the USASI catalog record zamba" }
+  - kind: dataset
+    id: allenai/Dolci-Instruct-DPO
+    reason: Linked from the USASI catalog record olmo-3-7b-instruct
+  - kind: dataset
+    id: allenai/Dolci-Instruct-RL
+    reason: Linked from the USASI catalog record olmo-3-7b-instruct
+  - kind: dataset
+    id: allenai/Dolci-Instruct-SFT
+    reason: Linked from the USASI catalog record olmo-3-7b-instruct
+  - kind: dataset
+    id: allenai/Dolci-Think-DPO-32B
+    reason: Linked from the USASI catalog record olmo-3-1-32b-think
+  - kind: dataset
+    id: allenai/Dolci-Think-RL-32B
+    reason: Linked from the USASI catalog record olmo-3-1-32b-think
+  - kind: dataset
+    id: allenai/Dolci-Think-SFT-32B
+    reason: Linked from the USASI catalog record olmo-3-1-32b-think
+  - kind: dataset
+    id: allenai/dolma
+    reason: Linked from the USASI catalog record common-crawl-corpus
+  - kind: dataset
+    id: allenai/dolma3_dolmino_mix-100B-1025
+    reason: Linked from the USASI catalog record olmo-3-1025-7b
+  - kind: dataset
+    id: allenai/dolma3_dolmino_mix-100B-1125
+    reason: Linked from the USASI catalog record olmo-3-1-32b-think
+  - kind: dataset
+    id: allenai/dolma3_longmino_mix-100B-1125
+    reason: Linked from the USASI catalog record olmo-3-1-32b-think
+  - kind: dataset
+    id: allenai/dolma3_longmino_mix-50B-1025
+    reason: Linked from the USASI catalog record olmo-3-1025-7b
+  - kind: dataset
+    id: allenai/dolma3_mix-6T
+    reason: Linked from the USASI catalog record dolma
+  - kind: dataset
+    id: allenai/dolma3_mix-6T-1025-7B
+    reason: Linked from the USASI catalog record dolma
+  - kind: dataset
+    id: allenai/dolma3_pool
+    reason: Linked from the USASI catalog record dolma
+  - kind: dataset
+    id: allenai/dolma3.5_pool
+    reason: Linked from the USASI catalog record dolma
+  - kind: dataset
+    id: allenai/Molmo2-Cap
+    reason: Linked from the USASI catalog record molmo2-o-7b
+  - kind: dataset
+    id: allenai/tulu-3-sft-mixture
+    reason: Linked from the USASI catalog record llama-3-1-tulu-3-1-8b
+  - kind: dataset
+    id: arcinstitute/opengenome2
+    reason: Linked from the USASI catalog record evo-2-20b
+  - kind: dataset
+    id: bigcode/bigcodebench
+    reason: Linked from the USASI catalog record bigcodebench
+  - kind: dataset
+    id: bigcode/the-stack-v2
+    reason: Linked from the USASI catalog record starcoder2-15b
+  - kind: dataset
+    id: bigcode/the-stack-v2-train
+    reason: Linked from the USASI catalog record starcoder2-15b
+  - kind: dataset
+    id: cais/hle
+    reason: Linked from the USASI catalog record humanitys-last-exam
+  - kind: dataset
+    id: cais/hle-diamond
+    reason: Linked from the USASI catalog record humanitys-last-exam
+  - kind: dataset
+    id: cais/mmlu
+    reason: Linked from the USASI catalog record mmlu
+  - kind: dataset
+    id: EleutherAI/pile
+    reason: Linked from the USASI catalog record pythia-12b
+  - kind: dataset
+    id: EleutherAI/pile_val_test
+    reason: Linked from the USASI catalog record the-pile
+  - kind: dataset
+    id: EleutherAI/pile-standard-pythia-preshuffled
+    reason: Linked from the USASI catalog record pythia-12b
+  - kind: dataset
+    id: EleutherAI/the_pile_deduplicated
+    reason: Linked from the USASI catalog record the-pile
+  - kind: dataset
+    id: EssentialAI/essential-web-v1.0
+    reason: Linked from the USASI catalog record essential-web
+  - kind: dataset
+    id: EssentialAI/rnj-1-instruct-evals
+    reason: Linked from the USASI catalog record rnj-1-instruct
+  - kind: dataset
+    id: futurehouse/ether0-benchmark
+    reason: Linked from the USASI catalog record ether0-24b
+  - kind: dataset
+    id: gorilla-llm/Berkeley-Function-Calling-Leaderboard
+    reason: Linked from the USASI catalog record berkeley-function-calling-leaderboard
+  - kind: dataset
+    id: HuggingFaceFW/fineweb
+    reason: Linked from the USASI catalog record fineweb
+  - kind: dataset
+    id: HuggingFaceFW/fineweb-edu
+    reason: Linked from the USASI catalog record smollm
+  - kind: dataset
+    id: HuggingFaceTB/finemath
+    reason: Linked from the USASI catalog record dolma
+  - kind: dataset
+    id: HuggingFaceTB/smoltalk2
+    reason: Linked from the USASI catalog record smollm3-3b
+  - kind: dataset
+    id: HuggingFaceTB/stack-edu
+    reason: Linked from the USASI catalog record dolma
+  - kind: dataset
+    id: Idavidrein/gpqa
+    reason: Linked from the USASI catalog record gpqa
+  - kind: dataset
+    id: meta-llama/Llama-3.1-8B-evals
+    reason: Linked from the USASI catalog record llama-3-1-8b
+  - kind: dataset
+    id: microsoft/bleeding-edge-gameplay-sample
+    reason: Linked from the USASI catalog record wham-1-6b
+  - kind: dataset
+    id: mit-han-lab/awq-model-zoo
+    reason: Linked from the USASI catalog record awq
+  - kind: dataset
+    id: mlfoundations/dclm-baseline-1.0
+    reason: Linked from the USASI catalog record dclm
+  - kind: dataset
+    id: NousResearch/eval-Hermes-4-70B-reasoning
+    reason: Linked from the USASI catalog record hermes-4-70b
+  - kind: dataset
+    id: NousResearch/eval-Hermes-4.3-36B
+    reason: Linked from the USASI catalog record hermes-4-3-36b
+  - kind: dataset
+    id: nvidia/Granary
+    reason: Linked from the USASI catalog record parakeet-tdt-0-6b-v3
+  - kind: dataset
+    id: nvidia/Nemotron-CC-v2
+    reason: Linked from the USASI catalog record nemotron-cc
+  - kind: dataset
+    id: nvidia/Nemotron-CC-v2.1
+    reason: Linked from the USASI catalog record nemotron-cc
+  - kind: dataset
+    id: nvidia/Nemotron-Pretraining-Dataset-sample
+    reason: Linked from the USASI catalog record nemotron-cc
+  - kind: dataset
+    id: open-thoughts/OpenThoughts3-1.2M
+    reason: Linked from the USASI catalog record openthoughts
+  - kind: dataset
+    id: openai/openai_humaneval
+    reason: Linked from the USASI catalog record humaneval
+  - kind: dataset
+    id: princeton-nlp/SWE-bench
+    reason: Linked from the USASI catalog record swe-bench
+  - kind: dataset
+    id: SWE-bench/SWE-bench_Verified
+    reason: Linked from the USASI catalog record swe-bench
+  - kind: dataset
+    id: togethercomputer/RedPajama-Data-1T
+    reason: Linked from the USASI catalog record redpajama
+  - kind: dataset
+    id: togethercomputer/RedPajama-Data-V2
+    reason: Linked from the USASI catalog record redpajama
+  - kind: dataset
+    id: typesafe/evalsafe-agent-trace-observability
+    reason: Linked from the USASI catalog record typesafe-ai-workflowevals
+  - kind: dataset
+    id: typesafe/evalsafe-customer-service
+    reason: Linked from the USASI catalog record typesafe-ai-workflowevals
+  - kind: dataset
+    id: typesafe/evalsafe-invoice-processing
+    reason: Linked from the USASI catalog record typesafe-ai-workflowevals
+  - kind: dataset
+    id: typesafe/evalsafe-security-incidents
+    reason: Linked from the USASI catalog record typesafe-ai-workflowevals
+  - kind: dataset
+    id: Zyphra/Zyda
+    reason: Linked from the USASI catalog record zamba
+  - kind: model
+    id: allenai/Llama-3.1-Tulu-3-8B-DPO
+    reason: Linked from the USASI catalog record llama-3-1-tulu-3-1-8b
+  - kind: model
+    id: allenai/Llama-3.1-Tulu-3-8B-SFT
+    reason: Linked from the USASI catalog record llama-3-1-tulu-3-1-8b
+  - kind: model
+    id: allenai/Llama-3.1-Tulu-3.1-8B
+    reason: Linked from the USASI catalog record llama-3-1-8b
+  - kind: model
+    id: allenai/Molmo2-8B
+    reason: Linked from the USASI catalog record molmo
+  - kind: model
+    id: allenai/Molmo2-O-7B
+    reason: Linked from the USASI catalog record molmo
+  - kind: model
+    id: allenai/Olmo-3-1025-7B
+    reason: Linked from the USASI catalog record olmo-3-1025-7b
+  - kind: model
+    id: allenai/Olmo-3-1125-32B
+    reason: Linked from the USASI catalog record olmo-3-1-32b-think
+  - kind: model
+    id: allenai/Olmo-3-7B-Instruct
+    reason: Linked from the USASI catalog record molmo
+  - kind: model
+    id: allenai/Olmo-3.1-32B-Think
+    reason: Linked from the USASI catalog record olmo-3-1-32b-think
+  - kind: model
+    id: amazon/chronos-2
+    reason: Linked from the USASI catalog record chronos-2
+  - kind: model
+    id: apple/FastVLM-7B
+    reason: Linked from the USASI catalog record fastvlm-7b
+  - kind: model
+    id: apple/OpenELM-3B
+    reason: Linked from the USASI catalog record openelm-3b-instruct
+  - kind: model
+    id: apple/OpenELM-3B-Instruct
+    reason: Linked from the USASI catalog record openelm-3b-instruct
+  - kind: model
+    id: arcee-ai/Trinity-Large-Base
+    reason: Linked from the USASI catalog record trinity-large-thinking
+  - kind: model
+    id: arcee-ai/Trinity-Large-Thinking
+    reason: Linked from the USASI catalog record trinity-large-thinking
+  - kind: model
+    id: arcee-ai/Trinity-Mini
+    reason: Linked from the USASI catalog record trinity-mini
+  - kind: model
+    id: arcee-ai/Trinity-Mini-Base
+    reason: Linked from the USASI catalog record trinity-mini
+  - kind: model
+    id: arcinstitute/evo2_20b
+    reason: Linked from the USASI catalog record evo-2-20b
+  - kind: model
+    id: arcinstitute/evo2_40b
+    reason: Linked from the USASI catalog record evo-2-20b
+  - kind: model
+    id: bigcode/starcoder2-15b
+    reason: Linked from the USASI catalog record starcoder2-15b
+  - kind: model
+    id: bigcode/starcoder2-3b
+    reason: Linked from the USASI catalog record starcoder2-3b
+  - kind: model
+    id: biohub/esm3-sm-open-v1
+    reason: Linked from the USASI catalog record esm3-sm-open-v1
+  - kind: model
+    id: biohub/ESMC-6B
+    reason: Linked from the USASI catalog record esmc-6b
+  - kind: model
+    id: biohub/ESMFold2
+    reason: Linked from the USASI catalog record esm
+  - kind: model
+    id: boltz-community/boltz-1
+    reason: Linked from the USASI catalog record boltz-2-v2
+  - kind: model
+    id: boltz-community/boltz-2
+    reason: Linked from the USASI catalog record boltz-2-v2
+  - kind: model
+    id: ByteDance-Seed/Seed-OSS-36B-Base
+    reason: Linked from the USASI catalog record hermes-4-3-36b
+  - kind: model
+    id: chaidiscovery/chai-1
+    reason: Linked from the USASI catalog record chai-1-v0-6
+  - kind: model
+    id: ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b
+    reason: Linked from the USASI catalog record contextual-reranker-v2-2b
+  - kind: model
+    id: deepcogito/cogito-671b-v2.1
+    reason: Linked from the USASI catalog record cogito-v2-1-671b
+  - kind: model
+    id: deepcogito/cogito-v2-preview-deepseek-671B-MoE
+    reason: Linked from the USASI catalog record cogito
+  - kind: model
+    id: deepcogito/cogito-v2-preview-llama-109B-MoE
+    reason: Linked from the USASI catalog record cogito
+  - kind: model
+    id: deepcogito/cogito-v2-preview-llama-405B
+    reason: Linked from the USASI catalog record cogito-v2-preview-llama-405b
+  - kind: model
+    id: deepcogito/cogito-v2-preview-llama-70B
+    reason: Linked from the USASI catalog record cogito
+  - kind: model
+    id: deepseek-ai/DeepSeek-V3-Base
+    reason: Linked from the USASI catalog record cogito-v2-1-671b
+  - kind: model
+    id: EleutherAI/pythia-12b
+    reason: Linked from the USASI catalog record pythia-12b
+  - kind: model
+    id: EssentialAI/eai-distill-0.5b
+    reason: Linked from the USASI catalog record essential-web
+  - kind: model
+    id: EssentialAI/rnj-1
+    reason: Linked from the USASI catalog record rnj-1-5-instruct
+  - kind: model
+    id: EssentialAI/rnj-1-instruct
+    reason: Linked from the USASI catalog record rnj-1-5-instruct
+  - kind: model
+    id: EssentialAI/rnj-1-instruct-GGUF
+    reason: Linked from the USASI catalog record rnj-1-instruct
+  - kind: model
+    id: EssentialAI/rnj-1.5-instruct
+    reason: Linked from the USASI catalog record rnj-1-5-instruct
+  - kind: model
+    id: facebook/dinov3-vit7b16-pretrain-lvd1689m
+    reason: Linked from the USASI catalog record dinov3-vit7b16
+  - kind: model
+    id: facebook/sam2.1-hiera-large
+    reason: Linked from the USASI catalog record sam-2-1-hiera-large
+  - kind: model
+    id: facebook/sam3
+    reason: Linked from the USASI catalog record sam-3-1
+  - kind: model
+    id: facebook/sam3.1
+    reason: Linked from the USASI catalog record sam-3-1
+  - kind: model
+    id: facebook/vjepa2-vitg-fpc64-384
+    reason: Linked from the USASI catalog record v-jepa-2-vitg-384
+  - kind: model
+    id: futurehouse/ether0
+    reason: Linked from the USASI catalog record ether0-24b
+  - kind: model
+    id: genmo/mochi-1-preview
+    reason: Linked from the USASI catalog record mochi-1-preview
+  - kind: model
+    id: google/embeddinggemma-2
+    reason: Linked from the USASI catalog record embeddinggemma-2
+  - kind: model
+    id: google/embeddinggemma-300m
+    reason: Linked from the USASI catalog record embeddinggemma-300m
+  - kind: model
+    id: google/gemma-4-12B
+    reason: Linked from the USASI catalog record gemma-4-12b
+  - kind: model
+    id: google/gemma-4-12B-it
+    reason: Linked from the USASI catalog record gemma-4-12b
+  - kind: model
+    id: google/gemma-4-26B-A4B
+    reason: Linked from the USASI catalog record gemma-4-26b-a4b
+  - kind: model
+    id: google/gemma-4-26B-A4B-it
+    reason: Linked from the USASI catalog record gemma-4-26b-a4b
+  - kind: model
+    id: google/gemma-4-31B
+    reason: Linked from the USASI catalog record gemma-4-31b
+  - kind: model
+    id: google/gemma-4-31B-it
+    reason: Linked from the USASI catalog record gemma-4-31b
+  - kind: model
+    id: google/medgemma-1.5-4b-it
+    reason: Linked from the USASI catalog record medgemma-1-5-4b-it
+  - kind: model
+    id: google/medgemma-27b-it
+    reason: Linked from the USASI catalog record medgemma-27b-it
+  - kind: model
+    id: google/siglip-so400m-patch14-384
+    reason: Linked from the USASI catalog record molmo2-o-7b
+  - kind: model
+    id: google/timesfm-2.5-200m-flax
+    reason: Linked from the USASI catalog record timesfm-2-5-200m
+  - kind: model
+    id: google/timesfm-2.5-200m-pytorch
+    reason: Linked from the USASI catalog record timesfm-2-5-200m
+  - kind: model
+    id: google/timesfm-3.0-pytorch
+    reason: Linked from the USASI catalog record timesfm-3-0
+  - kind: model
+    id: HuggingFaceTB/SmolLM3-3B
+    reason: Linked from the USASI catalog record smollm3-3b
+  - kind: model
+    id: HuggingFaceTB/SmolLM3-3B-Base
+    reason: Linked from the USASI catalog record smollm3-3b
+  - kind: model
+    id: HuggingFaceTB/SmolLM3-3B-checkpoints
+    reason: Linked from the USASI catalog record smollm3-3b
+  - kind: model
+    id: ibm-granite/granite-4.1-30b-base
+    reason: Linked from the USASI catalog record granite-4-2-30b
+  - kind: model
+    id: ibm-granite/granite-4.1-3b-base
+    reason: Linked from the USASI catalog record granite-4-2-3b
+  - kind: model
+    id: ibm-granite/granite-4.1-8b
+    reason: Linked from the USASI catalog record granite-switch-4-1-8b
+  - kind: model
+    id: ibm-granite/granite-4.1-8b-base
+    reason: Linked from the USASI catalog record granite-4-2-8b
+  - kind: model
+    id: ibm-granite/granite-4.2-30b
+    reason: Linked from the USASI catalog record granite-4-2-30b
+  - kind: model
+    id: ibm-granite/granite-4.2-3b
+    reason: Linked from the USASI catalog record granite-4-2-3b
+  - kind: model
+    id: ibm-granite/granite-4.2-8b
+    reason: Linked from the USASI catalog record granite-4-2-8b
+  - kind: model
+    id: ibm-granite/granite-speech-5.0-470m-turboctc
+    reason: Linked from the USASI catalog record granite-switch-4-1-8b
+  - kind: model
+    id: ibm-granite/granite-switch-4.1-8b
+    reason: Linked from the USASI catalog record granite-switch-4-1-8b
+  - kind: model
+    id: ibm-granite/granitelib-core-r1.0
+    reason: Linked from the USASI catalog record granite-switch-4-1-8b
+  - kind: model
+    id: ibm-granite/granitelib-guardian-r1.0
+    reason: Linked from the USASI catalog record granite-switch-4-1-8b
+  - kind: model
+    id: LiquidAI/d1-3B
+    reason: Linked from the USASI catalog record liquid-d1-3b
+  - kind: model
+    id: LiquidAI/LFM2.5-2.6B
+    reason: Linked from the USASI catalog record lfm
+  - kind: model
+    id: LiquidAI/LFM2.5-2.6B-Base
+    reason: Linked from the USASI catalog record lfm2-5-2-6b
+  - kind: model
+    id: LiquidAI/LFM2.5-24B-A2B
+    reason: Linked from the USASI catalog record lfm2-5-24b-a2b
+  - kind: model
+    id: LiquidAI/LFM2.5-24B-A2B-Base
+    reason: Linked from the USASI catalog record lfm2-5-24b-a2b
+  - kind: model
+    id: LiquidAI/LFM2.5-8B-A1B
+    reason: Linked from the USASI catalog record lfm
+  - kind: model
+    id: LiquidAI/LFM2.5-8B-A1B-Base
+    reason: Linked from the USASI catalog record lfm2-5-8b-a1b
+  - kind: model
+    id: LiquidAI/LFM2.5-VL-3B
+    reason: Linked from the USASI catalog record lfm
+  - kind: model
+    id: marin-community/marin-8b-base
+    reason: Linked from the USASI catalog record marin
+  - kind: model
+    id: meta-llama/Llama-3.1-405B
+    reason: Linked from the USASI catalog record cogito-v2-preview-llama-405b
+  - kind: model
+    id: meta-llama/Llama-3.1-70B
+    reason: Linked from the USASI catalog record hermes-4-70b
+  - kind: model
+    id: meta-llama/Llama-3.1-8B
+    reason: Linked from the USASI catalog record llama-3-1-8b
+  - kind: model
+    id: meta-llama/Llama-3.1-8B-Instruct
+    reason: Linked from the USASI catalog record llama-3-1-8b
+  - kind: model
+    id: meta-llama/Llama-4-Maverick-17B-128E
+    reason: Linked from the USASI catalog record llama-4-maverick-17b-128e
+  - kind: model
+    id: meta-llama/Llama-4-Maverick-17B-128E-Instruct
+    reason: Linked from the USASI catalog record llama-4-maverick-17b-128e
+  - kind: model
+    id: meta-llama/Llama-4-Scout-17B-16E
+    reason: Linked from the USASI catalog record llama-4-scout-17b-16e
+  - kind: model
+    id: meta-llama/Llama-4-Scout-17B-16E-Instruct
+    reason: Linked from the USASI catalog record llama-4-scout-17b-16e
+  - kind: model
+    id: meta-llama/Llama-Guard-4-12B
+    reason: Linked from the USASI catalog record llama-guard-4-12b
+  - kind: model
+    id: meta-models/Muse-Glimmer-30B
+    reason: Linked from the USASI catalog record meta-muse
+  - kind: model
+    id: meta-models/Muse-Spark-Open-816B-A42B
+    reason: Linked from the USASI catalog record muse-spark-open-816b-a42b
+  - kind: model
+    id: microsoft/bitnet-b1.58-2B-4T
+    reason: Linked from the USASI catalog record bitnet
+  - kind: model
+    id: microsoft/Florence-2-base
+    reason: Linked from the USASI catalog record florence-2
+  - kind: model
+    id: microsoft/Florence-2-base-ft
+    reason: Linked from the USASI catalog record florence-2
+  - kind: model
+    id: microsoft/Florence-2-large
+    reason: Linked from the USASI catalog record florence-2-large
+  - kind: model
+    id: microsoft/Florence-2-large-ft
+    reason: Linked from the USASI catalog record florence-2
+  - kind: model
+    id: microsoft/Phi-4-mini-flash-reasoning
+    reason: Linked from the USASI catalog record phi-4-mini-flash-reasoning
+  - kind: model
+    id: microsoft/Phi-4-reasoning
+    reason: Linked from the USASI catalog record phi-4-reasoning-vision-15b
+  - kind: model
+    id: microsoft/Phi-4-reasoning-vision-15B
+    reason: Linked from the USASI catalog record phi-4-reasoning-vision-15b
+  - kind: model
+    id: microsoft/wham
+    reason: Linked from the USASI catalog record microsoft-muse
+  - kind: model
+    id: mistralai/Mistral-Small-24B-Instruct-2501
+    reason: Linked from the USASI catalog record ether0-24b
+  - kind: model
+    id: mistralai/Pixtral-12B-Base-2409
+    reason: Linked from the USASI catalog record apriel-1-6-15b-thinker
+  - kind: model
+    id: nomic-ai/nomic-bert-2048
+    reason: Linked from the USASI catalog record nomic-embed-text-v1-5
+  - kind: model
+    id: nomic-ai/nomic-embed-code
+    reason: Linked from the USASI catalog record nomic-embed
+  - kind: model
+    id: nomic-ai/nomic-embed-text-v1
+    reason: Linked from the USASI catalog record nomic-embed-text-v1-5
+  - kind: model
+    id: nomic-ai/nomic-embed-text-v1.5
+    reason: Linked from the USASI catalog record nomic-embed-text-v1-5
+  - kind: model
+    id: nomic-ai/nomic-embed-text-v1.5-GGUF
+    reason: Linked from the USASI catalog record nomic-embed-text-v1-5
+  - kind: model
+    id: nomic-ai/nomic-embed-text-v2-moe
+    reason: Linked from the USASI catalog record nomic-embed-text-v2-moe
+  - kind: model
+    id: nomic-ai/nomic-embed-text-v2-moe-GGUF
+    reason: Linked from the USASI catalog record nomic-embed-text-v2-moe
+  - kind: model
+    id: nomic-ai/nomic-embed-text-v2-moe-unsupervised
+    reason: Linked from the USASI catalog record nomic-embed-text-v2-moe
+  - kind: model
+    id: nomic-ai/nomic-xlm-2048
+    reason: Linked from the USASI catalog record nomic-embed-text-v2-moe
+  - kind: model
+    id: NousResearch/Hermes-4-70B
+    reason: Linked from the USASI catalog record hermes-4-70b
+  - kind: model
+    id: NousResearch/Hermes-4.3-36B
+    reason: Linked from the USASI catalog record hermes-4-3-36b
+  - kind: model
+    id: nvidia/Cosmos-Predict2.5-2B
+    reason: Linked from the USASI catalog record cosmos
+  - kind: model
+    id: nvidia/Cosmos-Reason2-2B
+    reason: Linked from the USASI catalog record gr00t-n1-7-3b
+  - kind: model
+    id: nvidia/Cosmos-Reason2-8B
+    reason: Linked from the USASI catalog record cosmos
+  - kind: model
+    id: nvidia/Cosmos-Transfer2.5-2B
+    reason: Linked from the USASI catalog record cosmos
+  - kind: model
+    id: nvidia/Cosmos3-Nano
+    reason: Linked from the USASI catalog record cosmos3-nano
+  - kind: model
+    id: nvidia/Cosmos3-Super
+    reason: Linked from the USASI catalog record cosmos3-super
+  - kind: model
+    id: nvidia/GR00T-H
+    reason: Linked from the USASI catalog record gr00t
+  - kind: model
+    id: nvidia/GR00T-N1.7-3B
+    reason: Linked from the USASI catalog record gr00t-n1-7-3b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-Base-BF16
+    reason: Linked from the USASI catalog record nemotron-3-super-120b-a12b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16
+    reason: Linked from the USASI catalog record nemotron-3-super-120b-a12b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-Base-BF16
+    reason: Linked from the USASI catalog record nemotron-3-ultra-550b-a55b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16
+    reason: Linked from the USASI catalog record nemotron-3-ultra-550b-a55b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Base-BF16
+    reason: Linked from the USASI catalog record nemotron-3-5-lightning-30b-a3b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16
+    reason: Linked from the USASI catalog record nemotron-3-5-lightning-30b-a3b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16
+    reason: Linked from the USASI catalog record nemotron-3-5-super-vl-120b-a12b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16
+    reason: Linked from the USASI catalog record nemotron-labs-dory-1-0-4b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-GGUF
+    reason: Linked from the USASI catalog record nemotron-labs-dory-1-0-4b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-MXFP8
+    reason: Linked from the USASI catalog record nemotron-labs-dory-1-0-4b
+  - kind: model
+    id: nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4
+    reason: Linked from the USASI catalog record nemotron-labs-dory-1-0-4b
+  - kind: model
+    id: nvidia/OpenReasoning-Nemotron-1.5B
+    reason: Linked from the USASI catalog record palmyra-mini-thinking-b
+  - kind: model
+    id: nvidia/parakeet-rnnt-1.1b
+    reason: Linked from the USASI catalog record parakeet
+  - kind: model
+    id: nvidia/parakeet-tdt-0.6b-v3
+    reason: Linked from the USASI catalog record parakeet-tdt-0-6b-v3
+  - kind: model
+    id: nvidia/parakeet-unified-en-0.6b
+    reason: Linked from the USASI catalog record parakeet-unified-en-0-6b
+  - kind: model
+    id: openai/clip-vit-large-patch14
+    reason: Linked from the USASI catalog record clip-vit-large-patch14
+  - kind: model
+    id: openai/gpt-oss-120b
+    reason: Linked from the USASI catalog record gpt-oss-120b
+  - kind: model
+    id: openai/gpt-oss-20b
+    reason: Linked from the USASI catalog record gpt-oss-20b
+  - kind: model
+    id: openai/gpt-oss-safeguard-120b
+    reason: Linked from the USASI catalog record gpt-oss-safeguard-120b
+  - kind: model
+    id: openai/gpt-oss-safeguard-20b
+    reason: Linked from the USASI catalog record gpt-oss-safeguard-20b
+  - kind: model
+    id: openai/whisper-large-v2
+    reason: Linked from the USASI catalog record whisper-large-v3
+  - kind: model
+    id: openai/whisper-large-v3
+    reason: Linked from the USASI catalog record whisper-large-v3-turbo
+  - kind: model
+    id: openai/whisper-large-v3-turbo
+    reason: Linked from the USASI catalog record whisper-large-v3-turbo
+  - kind: model
+    id: poolside/Laguna-M.1
+    reason: Linked from the USASI catalog record laguna
+  - kind: model
+    id: poolside/Laguna-S-2.1
+    reason: Linked from the USASI catalog record laguna-s-2-1
+  - kind: model
+    id: poolside/Laguna-XS-2.1
+    reason: Linked from the USASI catalog record laguna-xs-2-1
+  - kind: model
+    id: poolside/Laguna-XS.2
+    reason: Linked from the USASI catalog record laguna-xs-2-1
+  - kind: model
+    id: PrimeIntellect/INTELLECT-1
+    reason: Linked from the USASI catalog record intellect
+  - kind: model
+    id: PrimeIntellect/INTELLECT-2
+    reason: Linked from the USASI catalog record intellect
+  - kind: model
+    id: PrimeIntellect/INTELLECT-3
+    reason: Linked from the USASI catalog record intellect-3-1
+  - kind: model
+    id: PrimeIntellect/INTELLECT-3.1
+    reason: Linked from the USASI catalog record intellect-3-1
+  - kind: model
+    id: Profluent-Bio/E1-150m
+    reason: Linked from the USASI catalog record e1-150m
+  - kind: model
+    id: Profluent-Bio/E1-300m
+    reason: Linked from the USASI catalog record e1-300m
+  - kind: model
+    id: Profluent-Bio/E1-600m
+    reason: Linked from the USASI catalog record e1-600m
+  - kind: model
+    id: Qwen/Qwen2-7B
+    reason: Linked from the USASI catalog record fastvlm-7b
+  - kind: model
+    id: Qwen/Qwen2.5-1.5B
+    reason: Linked from the USASI catalog record palmyra-mini-thinking-b
+  - kind: model
+    id: Qwen/Qwen2.5-Coder-7B-Instruct
+    reason: Linked from the USASI catalog record nomic-embed
+  - kind: model
+    id: Qwen/Qwen3-14B
+    reason: Linked from the USASI catalog record hermes
+  - kind: model
+    id: Qwen/Qwen3-8B
+    reason: Linked from the USASI catalog record molmo
+  - kind: model
+    id: Qwen/QwQ-32B
+    reason: Linked from the USASI catalog record intellect
+  - kind: model
+    id: RekaAI/reka-flash-3
+    reason: Linked from the USASI catalog record reka-flash-3-1
+  - kind: model
+    id: RekaAI/reka-flash-3.1
+    reason: Linked from the USASI catalog record reka-flash-3-1
+  - kind: model
+    id: RekaAI/reka-flash-3.1-rekaquant-q3_k_s
+    reason: Linked from the USASI catalog record reka-flash-3-1
+  - kind: model
+    id: ServiceNow-AI/Apriel-1.5-15b-Thinker
+    reason: Linked from the USASI catalog record apriel-1-6-15b-thinker
+  - kind: model
+    id: ServiceNow-AI/Apriel-1.6-15b-Thinker
+    reason: Linked from the USASI catalog record apriel-1-6-15b-thinker
+  - kind: model
+    id: ServiceNow-AI/Apriel-5B-Instruct
+    reason: Linked from the USASI catalog record apriel
+  - kind: model
+    id: ServiceNow-AI/Apriel-Nemotron-15b-Thinker
+    reason: Linked from the USASI catalog record apriel
+  - kind: model
+    id: ServiceNow-AI/SuperApriel-15b-Base
+    reason: Linked from the USASI catalog record superapriel-15b-instruct
+  - kind: model
+    id: ServiceNow-AI/SuperApriel-15B-Instruct
+    reason: Linked from the USASI catalog record apriel
+  - kind: model
+    id: Snowflake/snowflake-arctic-base
+    reason: Linked from the USASI catalog record snowflake-arctic-base
+  - kind: model
+    id: Snowflake/snowflake-arctic-instruct
+    reason: Linked from the USASI catalog record snowflake-arctic-instruct
+  - kind: model
+    id: thinkingmachines/Inkling
+    reason: Linked from the USASI catalog record inkling-975b
+  - kind: model
+    id: thinkingmachines/Inkling-NVFP4
+    reason: Linked from the USASI catalog record inkling-975b
+  - kind: model
+    id: thinkingmachines/Inkling-Small
+    reason: Linked from the USASI catalog record inkling-small
+  - kind: model
+    id: thinkingmachines/Inkling-Small-NVFP4
+    reason: Linked from the USASI catalog record inkling-small
+  - kind: model
+    id: Wan-AI/Wan2.2-TI2V-5B
+    reason: Linked from the USASI catalog record cosmos3-nano
+  - kind: model
+    id: Writer/Palmyra-Fin-70B-32K
+    reason: Linked from the USASI catalog record palmyra
+  - kind: model
+    id: Writer/Palmyra-Med-70B-32K
+    reason: Linked from the USASI catalog record palmyra
+  - kind: model
+    id: Writer/palmyra-mini
+    reason: Linked from the USASI catalog record palmyra-mini
+  - kind: model
+    id: Writer/palmyra-mini-GGUF
+    reason: Linked from the USASI catalog record palmyra-mini
+  - kind: model
+    id: Writer/palmyra-mini-MLX-BF16
+    reason: Linked from the USASI catalog record palmyra-mini
+  - kind: model
+    id: Writer/palmyra-mini-thinking-a
+    reason: Linked from the USASI catalog record palmyra
+  - kind: model
+    id: Writer/palmyra-mini-thinking-b
+    reason: Linked from the USASI catalog record palmyra-mini-thinking-b
+  - kind: model
+    id: Writer/palmyra-mini-thinking-b-GGUF
+    reason: Linked from the USASI catalog record palmyra-mini-thinking-b
+  - kind: model
+    id: Writer/palmyra-mini-thinking-b-MLX-BF16
+    reason: Linked from the USASI catalog record palmyra-mini-thinking-b
+  - kind: model
+    id: Writer/Palmyra-X-4.3-73B
+    reason: Linked from the USASI catalog record palmyra
+  - kind: model
+    id: xai-org/grok-1
+    reason: Linked from the USASI catalog record grok-1
+  - kind: model
+    id: xai-org/grok-2
+    reason: Linked from the USASI catalog record grok-2
+  - kind: model
+    id: zai-org/GLM-4.5-Air-Base
+    reason: Linked from the USASI catalog record intellect-3-1
+  - kind: model
+    id: Zyphra/Zamba2-7B
+    reason: Linked from the USASI catalog record zamba
+  - kind: model
+    id: Zyphra/Zamba2-VL-7B
+    reason: Linked from the USASI catalog record zamba
