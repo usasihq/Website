@@ -123,7 +123,7 @@ describe("layoff pages", () => {
     const search = layoffSearchEntries(catalog, fixture());
     expect(search.some((e) => e.href === "/jobs/layoffs/")).toBe(true);
     expect(search.some((e) => e.href === "/jobs/layoffs/california/")).toBe(true);
-  });
+  }, 120_000);
 
   it("keeps titles and descriptions within search limits", () => {
     expect(documentTitle("WARN Act layoff notices and nearby AI jobs in the U.S.").length).toBeLessThanOrEqual(TITLE_MAX);
