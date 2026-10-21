@@ -29,3 +29,24 @@ describe("production workflows share CI's OG card cache", () => {
     expect(jobTimeoutMinutes(read("deploy-cloudflare.yml"))).toBeGreaterThanOrEqual(90);
   });
 });
+
+describe("post-deploy indexing", () => {
+  it("runs Google Indexing and IndexNow after a successful Refresh Jobs deploy", () => {
+    const yaml = read("refresh-jobs.yml");
+    const deploy = yaml.indexOf("npx wrangler deploy");
+    const google = yaml.indexOf("npm run jobs:index");
+    const indexnow = yaml.indexOf("npm run indexnow");
+    expect(deploy).toBeGreaterThan(-1);
+    expect(google).toBeGreaterThan(deploy);
+    expect(indexnow).toBeGreaterThan(deploy);
+    expect(yaml).toContain("continue-on-error: true");
+  });
+
+  it("runs IndexNow after a successful Cloudflare deploy", () => {
+    const yaml = read("deploy-cloudflare.yml");
+    const deploy = yaml.indexOf("npx wrangler deploy");
+    const indexnow = yaml.indexOf("npm run indexnow");
+    expect(deploy).toBeGreaterThan(-1);
+    expect(indexnow).toBeGreaterThan(deploy);
+  });
+});

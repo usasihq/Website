@@ -1,7 +1,7 @@
 "use client";
 import Link from "@/components/Link";
 import { useJobsClock } from "./useJobsClock";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { JOB_SOURCE_LABELS, type FeedHealth, type Job } from "@/lib/jobs/schema";
 import { checkedLabel, currentJobs, postedTime, DEFAULT_JOB_FILTERS, filterJobs, isDefaultJobView, parseJobFilters, serializeJobFilters, type JobFilters, type JobItem } from "@/lib/jobs/search";
 import { JOB_ROLES, jobRole } from "@/lib/jobs/roles";
@@ -91,7 +91,7 @@ const SCOPE_OPTIONS = LOCATION_SCOPES.filter(v => v !== DEFAULT_LOCATION_SCOPE).
 const options = (values: string[], labels?: Record<string, string>) => [...new Set(values)].sort((a,b) => a.localeCompare(b,"en")).map(value => ({ value, label: labels?.[value] ?? value }));
 /** currentCount: every current listing (all countries); defaultCount: the default view (U.S. or location not stated). */
 export type JobsSummary = { currentCount: number; defaultCount: number; organizationCount: number; currencies: string[]; periods: string[] };
-export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf, browse = null, shortcuts = [], follow = null }: { initial: JobItem[]; summary: JobsSummary; dataUrl: string; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string; browse?: ReactNode; shortcuts?: JobShortcut[]; follow?: { feeds: FollowFeed[]; fallback: FollowFeed } | null }) {
+export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf, shortcuts = [], follow = null }: { initial: JobItem[]; summary: JobsSummary; dataUrl: string; feeds: FeedHealth[]; coverage: CareerCoverage[]; asOf: string; shortcuts?: JobShortcut[]; follow?: { feeds: FollowFeed[]; fallback: FollowFeed } | null }) {
   const now = useJobsClock(asOf);
   const { state: f, update } = useQueryState(parseJobFilters, serializeJobFilters);
   // The page embeds the first 30 listings; the full list loads after first paint.
@@ -278,7 +278,6 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
         {follow ? <JobsFollow filters={f} feeds={follow.feeds} fallback={follow.fallback} /> : null}
       </section>
     </div>
-    {browse}
     <section id="job-sources" className="mt-14 scroll-mt-24"><h2 className="text-2xl font-semibold text-text">Coverage & source health</h2><p className="mt-3 max-w-3xl text-muted">Only organizations already published in USASI can appear. Automated coverage begins with verified, supported employer feeds and is not a complete employment census. No count is supplied for an unconfigured source.</p>
       <p className="mt-3 text-sm text-text" data-testid="jobs-coverage-summary">{health.automated} automated sources · {health.ok} checked successfully · {health.attention} {health.attention === 1 ? "needs" : "need"} attention{health.pending ? ` · ${health.pending} not configured` : ""} · {coverage.length - automated.length} other organizations not collected</p>
       <details className="mt-4"><summary className="min-h-11 cursor-pointer text-ice">Every automated source and its last successful check</summary><ul className="mt-4 grid gap-3 md:grid-cols-2">{health.rows.map(({ c, h, status }) =>

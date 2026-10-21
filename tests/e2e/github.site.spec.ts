@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { getCatalog } from "../../lib/catalog";
+import { githubEntries, githubIndexed } from "../../lib/github/projects";
 
 /** AI on GitHub: /github/, its ranking pages, and per-project pages. */
 type Project = { full_name: string; name: string; owner: string; stars: number; topics: string[]; homepage: string | null };
@@ -44,9 +46,17 @@ test("a topic link from a project page opens the filtered list", async ({ page }
   await expect(page.getByRole("list", { name: "Active filters" })).toContainText(`Topic: ${topic}`);
 });
 
-test("a ranking page lists projects 101 onward, and every project is in the sitemap", async ({ page, request }) => {
+test("a ranking page lists projects 101 onward; indexed projects are in the sitemap", async ({ page, request }) => {
   const sitemap = await (await request.get("/sitemap-pages.xml")).text();
-  for (const p of [top, data.projects[data.projects.length - 1]]) expect(sitemap).toContain(`/github/${slugOf(p.full_name)}/</loc>`);
+  const catalog = getCatalog();
+  const indexed = githubEntries().filter((e) => githubIndexed(e, catalog));
+  const omitted = githubEntries().filter((e) => !githubIndexed(e, catalog));
+  expect(indexed.length).toBeGreaterThan(0);
+  expect(omitted.length).toBeGreaterThan(0);
+  for (const e of indexed) expect(sitemap).toContain(`${e.href}</loc>`);
+  for (const e of omitted) expect(sitemap).not.toContain(`${e.href}</loc>`);
+  await page.goto(omitted[omitted.length - 1]!.href);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   expect(sitemap).toContain("/github/page/2/</loc>");
   await page.goto("/github/page/2/");
   await expect(page.locator("h1")).toContainText("ranked 101–");

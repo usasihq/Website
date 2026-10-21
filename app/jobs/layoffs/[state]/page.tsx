@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   if (!page) return {};
   const n = page.file.notices.length.toLocaleString("en-US");
   return pageMetadata({
-    title: `Layoffs in ${page.meta.name}`,
+    title: `WARN Act layoffs in ${page.meta.name} and nearby AI jobs`,
     description: `${n} recent WARN Act notices in ${page.meta.name} from the ${page.file.source_name}, with links to open AI jobs in the state and its cities.`,
     path: `/jobs/layoffs/${page.meta.slug}/`,
   });

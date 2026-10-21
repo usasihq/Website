@@ -9,6 +9,7 @@
  * in description.ts, never from employer HTML.
  */
 import { formatDate } from "../dates";
+import { documentTitle } from "../metadata";
 import { absoluteUrl, asset } from "../paths";
 import { siteConfig, supportState } from "../site-config";
 import type { Description, Run } from "./description";
@@ -151,7 +152,7 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
   const apply = job.apply_url ?? job.official_url;
   const applyLabel = federal ? "Apply on USAJOBS.gov" : `Apply on ${esc(name)}&rsquo;s site`;
   const url = absoluteUrl(p.path);
-  const title = `${jobPageTitle(p)} · ${siteConfig.shortName}`;
+  const title = documentTitle(jobPageTitle(p));
   const meta = jobMetaDescription(p);
   const image = absoluteUrl(`/og/jobs/at-${org.slug}.jpg`);
   const ld = jobPostingLd(p);

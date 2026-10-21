@@ -10,8 +10,9 @@ import { jobHref } from "@/lib/jobs/job-url";
 import { displayLocation } from "@/lib/jobs/geo";
 import { asset } from "@/lib/paths";
 import { jobsLandingJsonLd } from "@/lib/jobs/jsonld";
-import { MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
+import { LISTINGS_SHOWN, MIN_CITY_LISTINGS, stateDisplayName, type LandingPage } from "@/lib/jobs/landing";
 import type { LandingLink } from "@/lib/jobs/landing-links";
+import { landingPageHref, landingView, pageWindow } from "@/lib/jobs/pagination";
 import { layoffHref, layoffStatePage } from "@/lib/jobs/layoffs";
 import { stateSlug } from "@/lib/places";
 import { ALL_JOB_FILTERS, checkedLabel, DEFAULT_JOB_FILTERS, serializeJobFilters, type JobItem } from "@/lib/jobs/search";
@@ -19,7 +20,7 @@ import { isExpressionOfInterest } from "@/lib/jobs/tracks";
 import { orgHref } from "@/lib/routes";
 import { Rss } from "lucide-react";
 import { EmployerPaySection } from "@/components/JobsPay";
-import { hasJobFeed, jobFeedPath } from "@/lib/jobs/feeds";
+import { hasJobFeed, landingFeedPath } from "@/lib/jobs/feeds";
 import { kUsd, type PayGroup } from "@/lib/jobs/pay";
 
 const n = (v: number) => v.toLocaleString("en-US");
@@ -137,15 +138,69 @@ type Props = {
   companies?: LandingLink[];
   /** Role pages this employer has listings on (employer pages list them). */
   roles?: LandingLink[];
+  /** Role × state pages (role and state landings list them). */
+  roleStates?: LandingLink[];
+  /** People profiles tied to this employer (employer pages list them). */
+  people?: { href: string; name: string }[];
+  peopleHref?: string | null;
   headquartersHref?: string | null;
   headquartersCount?: number;
   /** Employer pages: the pay summary, when the employer has enough listings with pay. Role pages: the role's pay page. */
   pay?: PayGroup | null;
 };
 
-export function JobsLanding({ page, others, cities = [], parent = null, companies = [], roles = [], headquartersHref, headquartersCount, pay = null }: Props) {
+function PaginationNav({ page }: { page: LandingPage }) {
+  if (page.pageCount <= 1) return null;
+  const prev = page.pageNumber > 1 ? landingPageHref(page.basePath, page.pageNumber - 1) : null;
+  const next = page.pageNumber < page.pageCount ? landingPageHref(page.basePath, page.pageNumber + 1) : null;
+  return (
+    <nav aria-label="Listing pages" className="mt-6 flex flex-wrap items-center justify-center gap-2" data-testid="landing-pagination">
+      {prev ? (
+        <Link prefetch={false} href={prev} rel="prev" className="btn btn-secondary">
+          Previous
+        </Link>
+      ) : (
+        <span className="btn btn-inactive" aria-disabled="true">Previous</span>
+      )}
+      {pageWindow(page.pageNumber, page.pageCount).map((item, i) =>
+        item === "…" ? (
+          <span key={`gap-${i}`} className="px-1 text-muted">
+            …
+          </span>
+        ) : (
+          <Link
+            key={item}
+            prefetch={false}
+            href={landingPageHref(page.basePath, item)}
+            aria-current={item === page.pageNumber ? "page" : undefined}
+            className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border px-3 text-sm ${item === page.pageNumber ? "border-cyan bg-cyan/10 text-text" : "border-line text-muted hover:border-cyan"}`}
+          >
+            {item}
+          </Link>
+        ),
+      )}
+      {next ? (
+        <Link prefetch={false} href={next} rel="next" className="btn btn-secondary">
+          Next
+        </Link>
+      ) : (
+        <span className="btn btn-inactive" aria-disabled="true">Next</span>
+      )}
+    </nav>
+  );
+}
+
+export function JobsLanding({ page: raw, others, cities = [], parent = null, companies = [], roles = [], roleStates = [], people = [], peopleHref = null, headquartersHref, headquartersCount, pay = null }: Props) {
+  const page = landingView(raw);
   const shown = page.listings.length;
-  const trail = [{ href: "/jobs/", label: "Jobs" }, ...(parent ? [parent] : []), { href: page.path, label: page.name }];
+  const from = (page.pageNumber - 1) * LISTINGS_SHOWN + (shown ? 1 : 0);
+  const to = (page.pageNumber - 1) * LISTINGS_SHOWN + shown;
+  const trail = [
+    { href: "/jobs/", label: "Jobs" },
+    ...(parent ? [parent] : []),
+    { href: page.basePath, label: page.name },
+    ...(page.pageNumber > 1 ? [{ href: page.path, label: `Page ${page.pageNumber}` }] : []),
+  ];
   const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...(page.filters.state ? DEFAULT_JOB_FILTERS : ALL_JOB_FILTERS), ...page.filters, sort: "newest", company: slug })}`;
   const layoffs = page.kind === "state" && page.state ? layoffStatePage(getCatalog(), stateSlug(page.state)) : undefined;
   // BreadcrumbList comes from PageHeader; CollectionPage / ItemList from jobsLandingJsonLd (never JobPosting).
@@ -346,6 +401,52 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
           </section>
         )}
 
+        {people.length && page.organization ? (
+          <nav aria-labelledby="people-heading" className="mt-12" data-testid="landing-people">
+            <h2 id="people-heading" className="text-xl font-semibold text-text sm:text-2xl">
+              People at {page.organization.name}
+            </h2>
+            <p className="mt-2 max-w-3xl text-muted">
+              Sourced profiles in the catalog tied to this employer.
+              {peopleHref ? (
+                <>
+                  {" "}
+                  <Link prefetch={false} href={peopleHref} className="link">
+                    People at {page.organization.name} ({n(people.length)})
+                  </Link>
+                </>
+              ) : null}
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {people.slice(0, 12).map((p) => (
+                <li key={p.href}>
+                  <Link prefetch={false} href={p.href} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
+
+        {roleStates.length ? (
+          <nav aria-labelledby="role-states-heading" className="mt-12" data-testid="landing-role-states">
+            <h2 id="role-states-heading" className="text-xl font-semibold text-text sm:text-2xl">
+              {page.kind === "role" ? `${page.name} by state` : page.kind === "state" ? `Roles in ${stateDisplayName(page.state!)}` : "Jobs by role and state"}
+            </h2>
+            <p className="mt-2 max-w-3xl text-muted">Pages with at least 10 current listings, by number of listings.</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {roleStates.map((r) => (
+                <li key={r.path}>
+                  <Link prefetch={false} href={r.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
+                    {r.name} <span className="text-muted">({n(r.count)})</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
+
         {roles.length ? (
           <nav aria-labelledby="roles-heading" className="mt-12" data-testid="landing-roles">
             <h2 id="roles-heading" className="text-xl font-semibold text-text sm:text-2xl">
@@ -381,8 +482,8 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
             Listings
           </h2>
           <p className="mt-2 max-w-3xl text-muted" data-testid="landing-shown">
-            {shown < page.count
-              ? `Showing the ${n(shown)} most recently published of ${n(page.count)} listings. Each title opens the listing’s page, with the employer’s description and a link to apply.`
+            {page.pageCount > 1
+              ? `Showing listings ${n(from)}–${n(to)} of ${n(page.count)}, most recently published first. Each title opens the listing’s page, with the employer’s description and a link to apply.`
               : `All ${count(page.count, "listing", "listings")}, most recently published first. Each title opens the listing’s page, with the employer’s description and a link to apply.`}
           </p>
           <p className="mt-3">
@@ -392,7 +493,7 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
           </p>
           {hasJobFeed(page) ? (
             <p className="mt-3 text-sm text-muted" data-testid="landing-feed">
-              <a href={asset(jobFeedPath(page.path))} className="link inline-flex items-center gap-1" type="application/rss+xml">
+              <a href={asset(landingFeedPath(page))} className="link inline-flex items-center gap-1" type="application/rss+xml">
                 <Rss aria-hidden="true" className="h-3.5 w-3.5" />
                 Follow this page by RSS
               </a>{" "}
@@ -413,10 +514,11 @@ export function JobsLanding({ page, others, cities = [], parent = null, companie
               No current listings match today. This does not mean these employers have no openings; their careers pages list every opening.
             </div>
           )}
-          {shown < page.count ? (
+          <PaginationNav page={page} />
+          {page.pageCount > 1 ? (
             <p className="mt-6">
               <Link prefetch={false} href={page.directoryHref} className="link">
-                See all {n(page.count)} listings in the Jobs directory
+                Filter all {n(page.count)} listings in the Jobs directory
               </Link>
             </p>
           ) : null}

@@ -17,6 +17,7 @@ import { jobsDirectoryData } from "../lib/jobs/directory-data";
 import { encodeJobs } from "../lib/jobs/slim";
 import { jobLandingSearchEntries } from "../lib/jobs/landing-links";
 import { hiringIndexSearchEntry } from "../lib/jobs/hiring-index";
+import { peopleListItems } from "../lib/people-index";
 import { EMPTY_WARN_DATASET, layoffSearchEntries, readLayoffs, writeLayoffs } from "../lib/jobs/layoffs";
 import { mergeLayoffRefresh } from "../lib/jobs/layoffs-refresh";
 import { sourceLibrary } from "../lib/source-library";
@@ -85,6 +86,7 @@ fs.writeFileSync(path.join(outDir, "huggingface-datasets.json"), JSON.stringify(
 // itself embeds only the first 30; lib/jobs/slim.ts); jobs-full.json has every field, for reuse.
 const jobs = jobsDirectoryData(catalog);
 fs.writeFileSync(path.join(outDir, "jobs.json"), JSON.stringify(encodeJobs(jobs.items, buildAt)) + "\n");
+fs.writeFileSync(path.join(outDir, "people.json"), JSON.stringify({ build_at: buildAt, items: peopleListItems(catalog) }) + "\n");
 fs.writeFileSync(path.join(outDir, "jobs-full.json"), JSON.stringify({ build_at: buildAt, jobs: jobs.items }) + "\n");
 // Every cited source, with the published records that cite it (loaded by /sources/).
 fs.writeFileSync(path.join(outDir, "sources.json"), JSON.stringify({ build_at: buildAt, entries: sourceLibrary(catalog) }) + "\n");

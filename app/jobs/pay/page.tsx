@@ -3,10 +3,12 @@ import { JobsSectionNav } from "@/components/JobsSectionNav";
 import { PayFigures, PayMethod } from "@/components/JobsPay";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
+import { JsonLd } from "@/components/JsonLd";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { kUsd, MIN_PAY_LISTINGS, PAY_INDEX, payData, pct, type PayGroup } from "@/lib/jobs/pay";
 import { pageMetadata, socialImages } from "@/lib/metadata";
+import { collectionPage } from "@/lib/structured-data";
 
 const n = (v: number) => v.toLocaleString("en-US");
 
@@ -64,6 +66,13 @@ export default function JobsPayPage() {
   const s = d.all.stats;
   return (
     <>
+      <JsonLd
+        data={collectionPage({
+          name: "AI pay by role",
+          path: PAY_INDEX,
+          items: d.roles.map((g) => ({ name: `${g.name} pay`, href: g.path })),
+        })}
+      />
       <PageHeader
         eyebrow="Jobs"
         title="AI pay, from disclosed salary ranges"

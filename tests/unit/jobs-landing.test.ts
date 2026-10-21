@@ -2,7 +2,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
 import { jobsIndexJsonLd, jobsLandingJsonLd } from "@/lib/jobs/jsonld";
-import { atLeastOneParam, cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, roleDefinition, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { atLeastOneParam, cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, roleDefinition, roleStateDefinition, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
 import { alignJobsSnapshot, latestSuccessfulCheck, readJobs } from "@/lib/jobs/load";
 import { JOB_ROLES } from "@/lib/jobs/roles";
 import { jobHref } from "@/lib/jobs/job-url";
@@ -20,6 +20,7 @@ describe("landing page text", () => {
   const defs = [
     ...Object.values(TOPICS),
     ...JOB_ROLES.map(roleDefinition),
+    ...JOB_ROLES.flatMap((role) => Object.keys(US_STATES).map((c) => roleStateDefinition(role, c))),
     ...Object.keys(US_STATES).map(stateDefinition),
     ...Object.keys(US_STATES).map((c) => cityDefinition(c, "x", longCity)),
     ...employers,
@@ -115,7 +116,10 @@ describe("landing pages from listings", () => {
   it("counts current listings, caps the embedded list, and matches the directory exactly", () => {
     expect(georgia.count).toBe(129);
     expect(georgia.listings).toHaveLength(LISTINGS_SHOWN);
-    expect(georgia.title).toBe("AI jobs in Georgia: 129 open listings at U.S. AI companies and labs");
+    expect(georgia.allListings).toHaveLength(129);
+    expect(georgia.pageCount).toBe(2);
+    expect(georgia.basePath).toBe("/jobs/in/georgia/");
+    expect(georgia.title).toBe("AI jobs in Georgia (129)");
     expect(georgia.directoryHref).toBe("/jobs/?state=GA&sort=newest");
     const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(georgia.directoryHref.split("?")[1])), now);
     expect(directory.map((j) => j.id)).toEqual(georgia.listings.map((j) => j.id).concat(directory.slice(LISTINGS_SHOWN).map((j) => j.id)));
@@ -136,6 +140,10 @@ describe("landing pages from listings", () => {
     const remote = data.topics.find((p) => p.id === "remote-us")!;
     expect(remote.count).toBe(0);
     expect(remote.indexable).toBe(false);
+    expect(data.topics.map((p) => p.id)).toEqual(expect.arrayContaining(["internships", "summer-2027"]));
+    const fdeGa = data.roleStates.find((p) => p.path === "/jobs/role/forward-deployed-engineer/georgia/");
+    expect(fdeGa?.count).toBe(12);
+    expect(data.roleStates.every((p) => p.count >= 10)).toBe(true);
   });
 
   it("gives every employer with an automated board a shareable page that matches the directory", () => {

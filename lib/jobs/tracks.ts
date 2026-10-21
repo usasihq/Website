@@ -117,8 +117,18 @@ const SENIOR = /\b(senior|sr\.?|staff|principal|lead|leader|manager|director|hea
 const RECRUITING = /\b(recruit\w*|sourcer|talent|university relations|programs? (manager|lead|coordinator|partner|specialist))\b/i;
 const PROGRAM_TEAM = /\b(early[- ]career|new grads?|interns?|internships?|emerging talent|campus)\b/i;
 
+/** Internship by the employer's employment type or a whole-word “intern” in the title. */
+export function isInternshipJob(j: TrackJob): boolean {
+  return j.employment_type === "internship" || INTERN.test(j.title);
+}
+
+/** Internship listings whose title names 2027 (typically “Summer 2027 Intern”). */
+export function isSummer2027Internship(j: TrackJob): boolean {
+  return isInternshipJob(j) && /\b2027\b/.test(j.title);
+}
+
 export function isEntryLevelJob(j: TrackJob): boolean {
-  if (j.employment_type === "internship" || INTERN.test(j.title)) return true;
+  if (isInternshipJob(j)) return true;
   const recruiting = RECRUITING.test(j.title);
   const associate = ASSOCIATE_ENTRY.exec(j.title)?.[0];
   const signal =
@@ -147,6 +157,10 @@ export const DATA_CENTER_RULE =
   "Titles, or the employer-supplied team (or department, when no team is given), that name data centers, critical facilities, power distribution, generation, or power systems, low-, medium-, or high-voltage and electrical infrastructure work, energy markets and development, cooling, HVAC, MEP, commissioning, building controls, construction, electricians, facilities maintenance, physical infrastructure, racks and server fleets, capacity delivery and planning, site selection or site operations, digital infrastructure, facilities engineering, network deployment, or fiber. Software infrastructure is left out unless the title or team names one of these (so “Infrastructure Software Engineer” is not included), and so are sales roles that sell to the energy or construction industries.";
 export const ENTRY_LEVEL_RULE =
   "Listings the employer marks as internships, and titles that say intern, new grad, recent or university graduate, early career, entry level, junior, apprentice, residency, fellowship or fellows program, co-op, student, trainee, campus, sales or business development representative, level I (for example “Mechanical Engineer I”), or “associate” where it names an entry rung (“Associate Product Manager”, “Account Associate”; never “Associate General Counsel” or “Associate Director”). Titles with a seniority word such as senior, staff, lead, manager, director, or II are left out unless they are internships, and recruiter titles such as “University Recruiter” are left out because they hire for early-career programs rather than being one.";
+export const INTERNSHIP_RULE =
+  "Listings the employer marks as internships, and titles that say intern or internship as a whole word. New-graduate, apprentice, and other early-career titles that do not say intern are on the entry-level page.";
+export const SUMMER_2027_RULE =
+  "Internship listings whose title names 2027 (for example “Summer 2027 Intern” or “2027 Internship”). Matching is on the title and the employer’s employment type only.";
 
 export const JOB_TRACKS: JobTrack[] = [
   {
@@ -176,6 +190,20 @@ export const JOB_TRACKS: JobTrack[] = [
     description: "Internships, new-graduate roles, apprenticeships, residencies, fellowships, and other entry points.",
     rule: ENTRY_LEVEL_RULE,
     test: isEntryLevelJob,
+  },
+  {
+    id: "internships",
+    title: "Internships",
+    description: "Open internships at AI companies and labs, matched on the employer’s title or employment type.",
+    rule: INTERNSHIP_RULE,
+    test: isInternshipJob,
+  },
+  {
+    id: "summer-2027",
+    title: "Summer 2027 internships",
+    description: "Internship listings whose title names 2027.",
+    rule: SUMMER_2027_RULE,
+    test: isSummer2027Internship,
   },
 ];
 

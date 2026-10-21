@@ -2,9 +2,11 @@ import Link from "@/components/Link";
 import { InitialsTile } from "@/components/LocalCorner";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
+import { JsonLd } from "@/components/JsonLd";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { personHref } from "@/lib/routes";
+import { collectionPage } from "@/lib/structured-data";
 import { mailtoHref, siteConfig } from "@/lib/site-config";
 
 export const metadata = pageMetadata({
@@ -22,6 +24,13 @@ export default function VoicesPage() {
 
   return (
     <>
+      <JsonLd
+        data={collectionPage({
+          name: "Voices of SI",
+          path: "/voices/",
+          items: people.map((p) => ({ name: p.name, href: personHref(p.slug) })),
+        })}
+      />
       <PageHeader
         eyebrow="People"
         title="Voices of SI"

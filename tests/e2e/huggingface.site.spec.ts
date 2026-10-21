@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { getCatalog } from "../../lib/catalog";
+import { hfEntries, hfIndexed } from "../../lib/huggingface/items";
 
 /** AI on Hugging Face: /huggingface/ (models), /huggingface/datasets/, ranking pages, and item pages. */
 type Item = { id: string; name: string; author: string; likes: number; downloads_30d: number; gated: false | string; base_models?: { id: string; relation: string }[]; pipeline_tag?: string | null };
@@ -56,10 +58,18 @@ test("the datasets tab lists datasets and filters by author type", async ({ page
   await expect(page.getByRole("list", { name: "Active filters" })).toContainText("Author: Organization");
 });
 
-test("ranking pages list items 101 onward, and every item is in the sitemap", async ({ page, request }) => {
+test("ranking pages list items 101 onward; indexed items are in the sitemap", async ({ page, request }) => {
   const sitemap = await (await request.get("/sitemap-pages.xml")).text();
-  for (const m of [top, models[models.length - 1]]) expect(sitemap).toContain(`/huggingface/${slugOf(m.id)}/</loc>`);
-  for (const d of [topDataset, datasets[datasets.length - 1]]) expect(sitemap).toContain(`/huggingface/datasets/${slugOf(d.id)}/</loc>`);
+  const catalog = getCatalog();
+  const listed = [...hfEntries("model"), ...hfEntries("dataset")];
+  const indexed = listed.filter((e) => hfIndexed(e, catalog));
+  const omitted = listed.filter((e) => !hfIndexed(e, catalog));
+  expect(indexed.length).toBeGreaterThan(0);
+  expect(omitted.length).toBeGreaterThan(0);
+  for (const e of indexed) expect(sitemap).toContain(`${e.href}</loc>`);
+  for (const e of omitted) expect(sitemap).not.toContain(`${e.href}</loc>`);
+  await page.goto(omitted[omitted.length - 1]!.href);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   expect(sitemap).toContain("/huggingface/page/2/</loc>");
   expect(sitemap).toContain("/huggingface/datasets/</loc>");
   await page.goto("/huggingface/page/2/");

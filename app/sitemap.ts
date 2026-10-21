@@ -3,7 +3,7 @@ import { getCatalog } from "@/lib/catalog";
 import { MEMORY_PAGES, memoryPageHref, memoryPageIndexable } from "@/lib/hardware";
 import { githubSitemap } from "@/lib/github/projects";
 import { hfSitemap } from "@/lib/huggingface/items";
-import { jobLandingSitemap } from "@/lib/jobs/landing-links";
+import { jobLandingSitemap, jobsDirectorySitemap } from "@/lib/jobs/landing-links";
 import { layoffSitemap } from "@/lib/jobs/layoffs";
 import { paySitemap } from "@/lib/jobs/pay";
 import { KID_LESSONS, KIDS_REVIEWED } from "@/lib/kids";
@@ -24,9 +24,10 @@ export const dynamic = "force-static";
  * /sitemap-pages.xml and writes /sitemap.xml as a sitemap index of it and the
  * job-page sitemaps (/sitemaps/jobs-<n>.xml, 10,000 URLs each; see
  * scripts/job-pages.ts), so no file nears the 50,000-URL limit. AI on GitHub's
- * project pages (about 9,500) and AI on Hugging Face's model and dataset pages
- * (about 5,700) stay in this file, which keeps it near 17,000 URLs; give them
- * their own chunk under /sitemaps/ if the total ever passes about 30,000.
+ * indexed project pages (GITHUB_INDEX_LIMIT by stars, plus catalog matches)
+ * and Hugging Face indexed model and dataset pages (HF_MODEL_INDEX_LIMIT and
+ * HF_DATASET_INDEX_LIMIT, plus catalog matches) stay in this file. Thin
+ * mirrors are noindex and omitted here.
  *
  * Only active (published + eligible) records. Drafts never exist as pages;
  * archived pages exist but are noindex and excluded here. Record entries use
@@ -53,11 +54,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...reportEditions().map((e) => ({ url: absoluteUrl(editionHref(e.edition)), lastModified: e.published })),
     ...MEMORY_PAGES.filter((p) => memoryPageIndexable(catalog.finder, p)).map((p) => ({ url: absoluteUrl(memoryPageHref(p)) })),
     // AI on GitHub ranking pages and project pages, dated by the last GitHub API fetch.
-    ...githubSitemap().map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
+    ...githubSitemap(undefined, catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // AI on Hugging Face: the datasets index, ranking pages, and item pages, dated by the last Hub API fetch.
-    ...hfSitemap().map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
+    ...hfSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // Jobs landing pages (only those with enough listings to index), dated by the newest listing they gained.
     ...jobLandingSitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
+    ...jobsDirectorySitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // AI pay role pages, dated by the newest listing with pay.
     ...paySitemap(catalog).map((p) => ({ url: absoluteUrl(p.path), lastModified: p.lastModified })),
     // WARN Act layoff pages, dated by the last successful fetch of that state's notices.

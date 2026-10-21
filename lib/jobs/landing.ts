@@ -1,11 +1,13 @@
 /**
  * Jobs landing pages: /jobs/at/<employer>/, /jobs/in/<state>/, /jobs/in/<state>/<city>/,
- * /jobs/role/<slug>/, and the topic pages (/jobs/entry-level/,
+ * /jobs/role/<slug>/, /jobs/role/<slug>/<state>/, and the topic pages
+ * (/jobs/entry-level/, /jobs/internships/, /jobs/summer-2027/,
  * /jobs/no-programming/, /jobs/data-center-infrastructure/, /jobs/remote-us/,
  * /jobs/remote/). Build-time only (reads data/jobs/current.json through
  * readJobsForBuild). Every count, list, and date is recomputed on each build from the
  * same rules the /jobs/ directory filters use, so a page's "see all" link shows
- * exactly the same listings.
+ * exactly the same listings. Landings with more than LISTINGS_SHOWN jobs also
+ * get static /page/<n>/ pages so every job page is linked from a listing.
  */
 import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
@@ -15,7 +17,7 @@ import type { FeedHealth } from "./schema";
 import { cityKey, cityLabel, jobGeography, stateDisplayName } from "./geo";
 import { ALL_JOB_FILTERS, DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
 import { JOB_ROLES, type JobRole } from "./roles";
-import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, NO_PROGRAMMING_RULE } from "./tracks";
+import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, INTERNSHIP_RULE, NO_PROGRAMMING_RULE, SUMMER_2027_RULE } from "./tracks";
 
 /**
  * Next.js `output: export` rejects an empty `generateStaticParams()`. City and
@@ -42,14 +44,23 @@ export const MIN_TOPIC_LISTINGS = 10;
  * indexed landing page has at least this many listings.
  */
 export const MIN_INDEX_LISTINGS = 5;
-/** Listings embedded in a page's HTML; the rest are one link away in the directory. */
+/** Listings embedded in a page's HTML; further pages live at <path>page/<n>/. */
 export const LISTINGS_SHOWN = 100;
+/** A role × state page needs at least this many current listings. */
+export const MIN_ROLE_STATE_LISTINGS = 10;
 
 /** How a page's listings relate to the United States. */
 export type GeographyScope = "state" | "city" | "us-only" | "includes-outside";
-export type LandingKind = "state" | "city" | "company" | "topic" | "role";
+export type LandingKind = "state" | "city" | "company" | "topic" | "role" | "role-state";
 
-export type TopicId = "data-center-infrastructure" | "no-programming" | "entry-level" | "remote-us" | "remote";
+export type TopicId =
+  | "data-center-infrastructure"
+  | "no-programming"
+  | "entry-level"
+  | "internships"
+  | "summer-2027"
+  | "remote-us"
+  | "remote";
 
 export type Facts = { count: number; employers: number; soleEmployer: string | null; date: string; usOnly: number; outside: number };
 
@@ -128,10 +139,42 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Internships, new-graduate roles, apprenticeships, residencies, fellowships, and other entry points at AI companies and labs in the USASI catalog, found from the employer’s own title and employment type.",
     rule: ENTRY_LEVEL_RULE,
-    title: (f) => `Entry-level AI jobs: ${plural(f.count, "internship or early-career listing", "internships and early-career listings")}`,
+    title: (f) => `Entry-level AI jobs (${n(f.count)})`,
     description: (f) =>
       `${plural(f.count, "internship, new-grad, or early-career listing", "internships, new-grad, and early-career listings")} at ${at(f)}, matched by job title. ${abroad(f)} Checked ${f.date}.`,
     image: "/og/jobs/entry-level.jpg",
+  },
+  internships: {
+    id: "internships",
+    path: "/jobs/internships/",
+    name: "Internships",
+    h1: "AI internships",
+    eyebrow: "Jobs by topic",
+    scope: "includes-outside",
+    filters: { track: "internships" },
+    intro:
+      "Open internships at AI companies and labs in the USASI catalog, found from the employer’s own title (“intern”, “internship”) or an employment type of internship. New-graduate and other early-career roles that do not say intern are on the entry-level page.",
+    rule: INTERNSHIP_RULE,
+    title: (f) => `AI internships (${n(f.count)})`,
+    description: (f) =>
+      `${plural(f.count, "open internship", "open internships")} at ${at(f)}, matched by job title or employment type. ${abroad(f)} Checked ${f.date}.`,
+    image: "/og/jobs/internships.jpg",
+  },
+  "summer-2027": {
+    id: "summer-2027",
+    path: "/jobs/summer-2027/",
+    name: "Summer 2027 internships",
+    h1: "Summer 2027 AI internships",
+    eyebrow: "Jobs by topic",
+    scope: "includes-outside",
+    filters: { track: "summer-2027" },
+    intro:
+      "Internship listings at AI companies and labs whose titles name 2027 — typically summer or fall 2027 intern programs. The full internships page lists every current internship, including those that do not name a year.",
+    rule: SUMMER_2027_RULE,
+    title: (f) => `Summer 2027 AI internships (${n(f.count)})`,
+    description: (f) =>
+      `${plural(f.count, "internship naming 2027", "internships naming 2027")} at ${at(f)}. ${abroad(f)} Checked ${f.date}.`,
+    image: "/og/jobs/summer-2027.jpg",
   },
   "remote-us": {
     id: "remote-us",
@@ -181,7 +224,7 @@ export function stateDefinition(code: string): LandingDefinition {
     filters: { state: code },
     intro: `Open positions at AI companies and labs in the USASI catalog whose listed location names ${name}. The catalog covers U.S. organizations, and a listing appears here only when one of its employer-supplied locations is in ${name}.`,
     rule: `A listing counts when one of its employer-supplied locations names ${name}: by postal code after a city (“Atlanta, GA”), by full name (“Atlanta, Georgia, United States”), “New York City” or “NYC” for New York, “Washington, DC” for the District of Columbia, or by a city given on its own that has only one well-known U.S. match (“San Francisco”, “SF Office”, “Seattle”). ${CITY_TABLE_NOTE} Locations that give only the country (“Remote - US”, “United States”) or a code that belongs to another country’s city (“Toronto, CA” is Canada) are not counted.`,
-    title: (f) => `AI jobs in ${name}: ${listings(f.count)} at U.S. AI companies and labs`,
+    title: (f) => `AI jobs in ${name} (${n(f.count)})`,
     description: (f) =>
       `${listings(f.count)} naming a location in ${name}, at ${at(f)} in the USASI catalog. Listings last checked ${f.date}.`,
     image: `/og/jobs/in-${slug}.jpg`,
@@ -205,10 +248,31 @@ export function cityDefinition(code: string, slug: string, label: string): Landi
     filters: { state: code, city: slug },
     intro: `Open positions at AI companies and labs in the USASI catalog whose listed location names ${label}, ${stateName}. A listing appears here only when one of its employer-supplied locations names the city.`,
     rule: `A listing counts when one of its employer-supplied locations names ${label} with its state (“${label}, ${code}”, “${label}, ${stateName}, United States”), or names ${label} on its own or as an office (“${label} Office”) when the name has only one well-known U.S. match. ${CITY_TABLE_NOTE} Listings in nearby cities are not included here; they count on the ${stateName} page.`,
-    title: (f) => `AI jobs in ${label}, ${code}: ${listings(f.count)} at U.S. AI companies`,
+    title: (f) => `AI jobs in ${label}, ${code} (${n(f.count)})`,
     description: (f) =>
       `${listings(f.count)} naming ${label}, ${code}, at ${at(f)} in the USASI catalog. Listings last checked ${f.date}.`,
     image: `/og/jobs/in-${s}-${slug}.jpg`,
+  };
+}
+
+/** A role × state page: the role's title rules, limited to listings that name the state. */
+export function roleStateDefinition(role: JobRole, code: string): LandingDefinition {
+  const name = stateDisplayName(code);
+  const slug = stateSlug(code);
+  return {
+    id: `${role.slug}-${slug}`,
+    path: `/jobs/role/${role.slug}/${slug}/`,
+    name: `${role.name} jobs in ${name}`,
+    h1: `${role.h1} in ${name}`,
+    eyebrow: "Jobs by role and state",
+    scope: "state",
+    filters: { role: role.slug, state: code },
+    intro: `Open ${role.name} positions at AI companies and labs in the USASI catalog whose listed location names ${name}. Titles match the ${role.name} role page; a listing appears here only when one of its employer-supplied locations is in ${name}.`,
+    rule: `${role.rule} A listing also has to name ${name} in an employer-supplied location, using the same state-reading rules as the ${name} jobs page.`,
+    title: (f) => `${role.name} jobs in ${name} (${n(f.count)})`,
+    description: (f) =>
+      `${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} naming a location in ${name}, at ${at(f)}. Checked ${f.date}.`,
+    image: `/og/jobs/role-${role.slug}.jpg`,
   };
 }
 
@@ -224,7 +288,7 @@ export function roleDefinition(role: JobRole): LandingDefinition {
     filters: { role: role.slug },
     intro: role.intro,
     rule: role.rule,
-    title: (f) => `${role.name} jobs: ${listings(f.count)} at U.S. AI companies`,
+    title: (f) => `${role.name} jobs (${n(f.count)})`,
     description: (f) =>
       `${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} at ${at(f)}. ${abroad(f)} Checked ${f.date}.`,
     image: `/og/jobs/role-${role.slug}.jpg`,
@@ -310,8 +374,15 @@ export type LandingPage = Omit<LandingDefinition, "title" | "description"> & {
   title: string;
   description: string;
   count: number;
-  /** The listings embedded in the page (newest first, at most LISTINGS_SHOWN). */
+  /** The listings embedded on this page (newest first, one LISTINGS_SHOWN slice). */
   listings: JobItem[];
+  /** Every current listing for this landing, newest first (used to build /page/n/). */
+  allListings: JobItem[];
+  /** 1-based page number; page 1 is the landing's own path. */
+  pageNumber: number;
+  pageCount: number;
+  /** The first page's path (`/jobs/at/<slug>/`), even on `/page/n/`. */
+  basePath: string;
   employers: LandingEmployer[];
   /** Most recent and oldest successful check among the listings. */
   lastChecked: string | null;
@@ -337,6 +408,8 @@ export type JobsLandingData = {
   topics: LandingPage[];
   /** One page per shipped role in JOB_ROLES. */
   roles: LandingPage[];
+  /** Role × state pages at or above MIN_ROLE_STATE_LISTINGS. */
+  roleStates: LandingPage[];
   all: LandingPage[];
   stateCounts: Record<string, number>;
   /** Current listings per city key ("CA|san-francisco"). */
@@ -397,6 +470,10 @@ function build(
     description: def.description(facts),
     count: listings.length,
     listings: listings.slice(0, LISTINGS_SHOWN),
+    allListings: listings,
+    pageNumber: 1,
+    pageCount: Math.max(1, Math.ceil(listings.length / LISTINGS_SHOWN)),
+    basePath: def.path,
     employers,
     lastChecked: seen.at(-1) ?? null,
     oldestChecked: seen[0] ?? null,
@@ -452,6 +529,18 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
     .sort((a, b) => a.h1.localeCompare(b.h1, "en"));
   const topics = TOPIC_IDS.map((id) => build(catalog, TOPICS[id], "topic", src, null));
   const roles = JOB_ROLES.map((role) => build(catalog, roleDefinition(role), "role", src, null));
+  const roleStates = roles.flatMap((rolePage) => {
+    const role = JOB_ROLES.find((r) => r.slug === rolePage.id);
+    if (!role) return [];
+    const counts = new Map<string, number>();
+    for (const j of rolePage.allListings) {
+      for (const code of jobGeography(j).states) counts.set(code, (counts.get(code) ?? 0) + 1);
+    }
+    return [...counts]
+      .filter(([, count]) => count >= MIN_ROLE_STATE_LISTINGS)
+      .map(([code]) => build(catalog, roleStateDefinition(role, code), "role-state", src, code))
+      .sort((a, b) => a.h1.localeCompare(b.h1, "en"));
+  });
   // Every published employer with an automated board gets a page, even with no current listings (kept out of search engines then).
   const withListings = new Set(current.map((j) => j.organization_slug));
   const companies = catalog.organizations
@@ -468,7 +557,17 @@ export function computeLandingData(catalog: Catalog, items: JobItem[], feeds: Fe
       ),
     )
     .sort((a, b) => a.organization!.name.localeCompare(b.organization!.name, "en"));
-  return { states, cities, companies, topics, roles, all: [...roles, ...topics, ...states, ...cities, ...companies], stateCounts, cityCounts };
+  return {
+    states,
+    cities,
+    companies,
+    topics,
+    roles,
+    roleStates,
+    all: [...roles, ...roleStates, ...topics, ...states, ...cities, ...companies],
+    stateCounts,
+    cityCounts,
+  };
 }
 
 /** The site's landing pages, from data/jobs/current.json at this build's timestamp; computed once per catalog. */

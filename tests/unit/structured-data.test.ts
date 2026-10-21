@@ -7,8 +7,10 @@ import {
   breadcrumbTrail,
   catalogDatasetLd,
   HF_DATASET_URL,
+  collectionPage,
   itemList,
   leaderLd,
+  newsArticleLd,
   organizationLd,
   serializeJsonLd,
   softwareSourceCodeLd,
@@ -58,6 +60,29 @@ describe("item lists", () => {
       { "@type": "ListItem", position: 1, name: "a", url: absoluteUrl("/a/") },
       { "@type": "ListItem", position: 2, name: "b", url: absoluteUrl("/b/") },
     ]);
+  });
+
+  it("wraps a directory as CollectionPage whose main entity is the ItemList", () => {
+    const ld = collectionPage({ name: "Voices of SI", path: "/voices/", items: [{ name: "a", href: "/people/a/" }] });
+    expect(ld["@type"]).toBe("CollectionPage");
+    expect(ld.url).toBe(absoluteUrl("/voices/"));
+    expect((ld.mainEntity as { "@type": string })["@type"]).toBe("ItemList");
+  });
+});
+
+describe("news articles", () => {
+  it("emit NewsArticle with the record's headline and dates", () => {
+    const item = catalog.news[0];
+    expect(item).toBeDefined();
+    const ld = newsArticleLd(item);
+    expectCleanNode(ld, item.slug);
+    expect(ld).toMatchObject({
+      "@type": "NewsArticle",
+      headline: item.title,
+      datePublished: item.published_at.slice(0, 10),
+      dateModified: item.updated_at.slice(0, 10),
+      url: absoluteUrl(`/news/${item.slug}/`),
+    });
   });
 });
 

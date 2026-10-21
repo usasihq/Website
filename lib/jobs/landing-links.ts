@@ -9,7 +9,10 @@ import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
 import { card, type PageCard } from "../page-cards";
 import type { SearchEntry } from "../search";
+import { jobsDirectoryData } from "./directory-data";
 import { jobsLandingData, stateDisplayName, type LandingKind, type LandingPage } from "./landing";
+import { landingPageHref, landingPageCount } from "./pagination";
+import { ALL_JOB_FILTERS, filterJobs } from "./search";
 
 export type LandingLink = { path: string; name: string; count: number; kind: LandingKind; state: string | null };
 
@@ -32,6 +35,22 @@ export function roleLinks(catalog: Catalog, except = ""): LandingLink[] {
   return jobsLandingData(catalog)
     .roles.filter((p) => p.count > 0 && p.path !== except)
     .map(link);
+}
+
+/** Role × state pages for one role, by number of listings. */
+export function roleStateLinksForRole(catalog: Catalog, roleSlug: string): LandingLink[] {
+  return jobsLandingData(catalog)
+    .roleStates.filter((p) => p.filters.role === roleSlug)
+    .map(link)
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
+}
+
+/** Role × state pages in one state, by number of listings. */
+export function roleStateLinksForState(catalog: Catalog, state: string): LandingLink[] {
+  return jobsLandingData(catalog)
+    .roleStates.filter((p) => p.state === state)
+    .map(link)
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
 }
 
 /** Role pages that include listings from one employer, with that employer's count on each role. */
@@ -81,7 +100,18 @@ export function jobLandingCard(p: LandingPage): PageCard {
     page: p.path,
     image: p.image,
     template: "article",
-    eyebrow: p.kind === "state" ? "Jobs · U.S. state" : p.kind === "city" ? "Jobs · U.S. city" : p.kind === "company" ? "Jobs · Employer" : p.kind === "role" ? "Jobs · Role" : "Jobs",
+    eyebrow:
+      p.kind === "state"
+        ? "Jobs · U.S. state"
+        : p.kind === "city"
+          ? "Jobs · U.S. city"
+          : p.kind === "company"
+            ? "Jobs · Employer"
+            : p.kind === "role"
+              ? "Jobs · Role"
+              : p.kind === "role-state"
+                ? "Jobs · Role and state"
+                : "Jobs",
     title: p.h1,
     subtitle: `${n(p.count)} open ${p.count === 1 ? "listing" : "listings"} from ${n(p.employers.length)} ${p.employers.length === 1 ? "employer" : "employers"} · ${geographyLine(p)} · Checked ${checked}`,
     facts: [],
@@ -114,7 +144,7 @@ export function jobLandingSearchEntries(catalog: Catalog): SearchEntry[] {
           ? `city ${p.city!.label} ${stateDisplayName(p.state!)} ${p.state}`
           : p.kind === "company"
             ? `employer company careers hiring ${p.organization!.name}`
-            : p.kind === "role"
+            : p.kind === "role" || p.kind === "role-state"
               ? `role ${p.name} ${p.id.replace(/-/g, " ")}`
               : p.id.replace(/-/g, " ")
     }`,
@@ -126,7 +156,33 @@ export function jobLandingSearchEntries(catalog: Catalog): SearchEntry[] {
  * listings (when the page last gained a listing), never by the build or the last check.
  */
 export function jobLandingSitemap(catalog: Catalog): { path: string; lastModified: string | undefined }[] {
-  return jobsLandingData(catalog)
-    .all.filter((p) => p.indexable)
-    .map((p) => ({ path: p.path, lastModified: p.newestFirstSeen?.slice(0, 10) }));
+  const lastmod = (p: LandingPage) => p.newestFirstSeen?.slice(0, 10);
+  const rows: { path: string; lastModified: string | undefined }[] = [];
+  for (const p of jobsLandingData(catalog).all) {
+    if (!p.indexable) continue;
+    rows.push({ path: p.path, lastModified: lastmod(p) });
+    const pages = landingPageCount(p.count);
+    for (let n = 2; n <= pages; n++) {
+      rows.push({ path: landingPageHref(p.basePath, n), lastModified: lastmod(p) });
+    }
+  }
+  return rows;
+}
+
+/** The employer jobs page when it has current listings (for people / Big SI profiles). */
+export function companyJobsLink(catalog: Catalog, slug: string): LandingLink | null {
+  const page = jobsLandingData(catalog).companies.find((p) => p.organization?.slug === slug && p.count > 0);
+  return page ? link(page) : null;
+}
+
+/** Numbered /jobs/page/n/ entries so crawlers can walk every current listing from /jobs/. */
+export function jobsDirectorySitemap(catalog: Catalog): { path: string; lastModified: string | undefined }[] {
+  const data = jobsDirectoryData(catalog);
+  const now = Date.parse(catalog.buildAt);
+  const current = filterJobs(data.items, data.feeds, ALL_JOB_FILTERS, now);
+  const lastmod = current.reduce<string | null>((a, j) => (a === null || j.first_seen > a ? j.first_seen : a), null)?.slice(0, 10);
+  const pages = landingPageCount(current.length);
+  const rows: { path: string; lastModified: string | undefined }[] = [];
+  for (let n = 2; n <= pages; n++) rows.push({ path: landingPageHref("/jobs/", n), lastModified: lastmod });
+  return rows;
 }

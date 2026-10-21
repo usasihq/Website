@@ -12,6 +12,7 @@ import { formatDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/metadata";
 import { cardImage } from "@/lib/page-cards";
 import { PERSON_GROUP_LABELS, PERSON_SPECIALTY_LABELS, WORK_TYPE_LABELS } from "@/lib/people";
+import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { peopleAtOrganization } from "@/lib/people-index";
 import { artifactHref, orgHref, personHref } from "@/lib/routes";
 import { personSeo } from "@/lib/seo";
@@ -57,6 +58,15 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
     ...p.affiliations.filter((a) => a.organization_slug).map((a) => ({ href: orgHref(a.organization_slug!), label: a.name, kind: "Organization" })),
     ...p.work.filter((w) => w.artifact_slug).map((w) => ({ href: artifactHref(w.artifact_slug!), label: catalog.artifact(w.artifact_slug!)?.name ?? w.name, kind: "Open model or tool" })),
   ].filter((l, i, all) => all.findIndex((x) => x.href === l.href) === i);
+  const jobLinks: { path: string; count: number; orgName: string }[] = [];
+  const seenJobs = new Set<string>();
+  for (const a of p.affiliations) {
+    if (!a.organization_slug) continue;
+    const jobs = companyJobsLink(catalog, a.organization_slug);
+    if (!jobs || seenJobs.has(jobs.path)) continue;
+    seenJobs.add(jobs.path);
+    jobLinks.push({ path: jobs.path, count: jobs.count, orgName: a.name });
+  }
 
   return (
     <>
@@ -173,6 +183,20 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                         {l.label}
                       </Link>
                       <span className="block text-xs text-muted">{l.kind}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {jobLinks.length ? (
+              <div className="card p-5" data-testid="person-jobs">
+                <h2 className="font-semibold text-text">Open jobs</h2>
+                <ul className="mt-3 space-y-2 text-[0.9375rem]">
+                  {jobLinks.map((j) => (
+                    <li key={j.path}>
+                      <Link prefetch={false} href={j.path} className="link">
+                        Open jobs at {j.orgName} ({j.count.toLocaleString("en-US")})
+                      </Link>
                     </li>
                   ))}
                 </ul>

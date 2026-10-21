@@ -126,8 +126,8 @@ describe("layoff pages", () => {
   });
 
   it("keeps titles and descriptions within search limits", () => {
-    expect(documentTitle("WARN Act layoffs and nearby AI jobs").length).toBeLessThanOrEqual(TITLE_MAX);
-    expect(documentTitle("Layoffs in California").length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(documentTitle("WARN Act layoff notices and nearby AI jobs in the U.S.").length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(documentTitle("WARN Act layoffs in California and nearby AI jobs").length).toBeLessThanOrEqual(TITLE_MAX);
     const description =
       "Recent official WARN Act layoff notices in California, Washington, New York, and Texas, with links to open AI jobs in those places.";
     expect(clipDescription(description).length).toBeLessThanOrEqual(DESCRIPTION_MAX);
