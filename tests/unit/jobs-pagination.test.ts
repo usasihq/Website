@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { landingFeedPath } from "@/lib/jobs/feeds";
 import { landingPageCount, landingPageHref, landingView, pageSlice, pageWindow, paginatedTitle } from "@/lib/jobs/pagination";
 import { INDEXNOW_KEY, INDEXNOW_KEY_PATH, INDEXNOW_MAX_URLS } from "@/lib/indexnow";
 import { GITHUB_INDEX_LIMIT } from "@/lib/github/projects";
@@ -17,6 +18,12 @@ describe("job listing pagination", () => {
     expect(landingView({ allListings: [{ id: "x" }] } as never).allListings).toEqual([]);
     expect(pageWindow(1, 4)).toEqual([1, 2, 3, 4]);
     expect(pageWindow(12, 28)).toContain("…");
+  });
+
+  it("points RSS at the first-page feed, not a /page/n/feed.xml that is never written", () => {
+    expect(landingFeedPath({ basePath: "/jobs/at/openai/" })).toBe("/jobs/at/openai/feed.xml");
+    expect(landingFeedPath({ basePath: "/jobs/in/california/" })).toBe("/jobs/in/california/feed.xml");
+    expect(landingFeedPath({ basePath: "/jobs/role/software-engineer/" })).not.toContain("/page/");
   });
 });
 

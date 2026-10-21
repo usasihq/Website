@@ -20,7 +20,7 @@ import { isExpressionOfInterest } from "@/lib/jobs/tracks";
 import { orgHref } from "@/lib/routes";
 import { Rss } from "lucide-react";
 import { EmployerPaySection } from "@/components/JobsPay";
-import { hasJobFeed, jobFeedPath } from "@/lib/jobs/feeds";
+import { hasJobFeed, landingFeedPath } from "@/lib/jobs/feeds";
 import { kUsd, type PayGroup } from "@/lib/jobs/pay";
 
 const n = (v: number) => v.toLocaleString("en-US");
@@ -493,7 +493,7 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, com
           </p>
           {hasJobFeed(page) ? (
             <p className="mt-3 text-sm text-muted" data-testid="landing-feed">
-              <a href={asset(jobFeedPath(page.path))} className="link inline-flex items-center gap-1" type="application/rss+xml">
+              <a href={asset(landingFeedPath(page))} className="link inline-flex items-center gap-1" type="application/rss+xml">
                 <Rss aria-hidden="true" className="h-3.5 w-3.5" />
                 Follow this page by RSS
               </a>{" "}

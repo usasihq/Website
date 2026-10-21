@@ -22,6 +22,8 @@ import { DEFAULT_JOB_FILTERS, filterJobs, toJobItem, type JobItem } from "./sear
 export const JOB_FEED_LIMIT = LISTINGS_SHOWN;
 export const ALL_JOBS_FEED = "/jobs/feed.xml";
 export const jobFeedPath = (pagePath: string) => `${pagePath}feed.xml`;
+/** Feeds are written only at the landing's first-page path, never at `/page/n/feed.xml`. */
+export const landingFeedPath = (page: Pick<LandingPage, "basePath">) => jobFeedPath(page.basePath);
 
 const PER: Record<string, string> = { hour: "an hour", day: "a day", week: "a week", month: "a month", year: "a year" };
 const money = (v: number, currency: string) =>
