@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import path from "node:path";
 import { loadCatalog } from "@/lib/catalog";
 import { EXPLAINERS } from "@/lib/learn";
-import { DESCRIPTION_MAX, documentTitle, INDEX_ROBOTS, pageMetadata, TITLE_MAX } from "@/lib/metadata";
+import { clipTitle, DESCRIPTION_MAX, documentTitle, INDEX_ROBOTS, pageMetadata, TITLE_MAX } from "@/lib/metadata";
 import { computeTier } from "@/lib/openness";
 import { organizationsByState } from "@/lib/place-index";
 import {
@@ -37,6 +37,9 @@ describe("title and description helpers", () => {
     const long = "Compare U.S. AI labs: open-weight models & openness, more";
     expect(documentTitle(long)).toBe(long);
     expect(documentTitle("x".repeat(TITLE_MAX - " · USASI".length))).toMatch(/ · USASI$/);
+    expect(clipTitle("Short headline")).toBe("Short headline");
+    expect(clipTitle("OpenAI ships a new model: longer words that would overflow a search-result title").length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(clipTitle("OpenAI ships a new model: longer words that would overflow a search-result title")).toBe("OpenAI ships a new model");
   });
 
   it("drops a trailing note from a name", () => {

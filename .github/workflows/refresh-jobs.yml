@@ -40,6 +40,7 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
       - name: Keep previous jobs snapshot for Indexing API
@@ -58,6 +59,7 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-early
       - name: Refresh supported official sources
         timeout-minutes: 22
@@ -77,12 +79,8 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-snap
-      - name: Notify Google Indexing API of added and removed job pages
-        run: npm run jobs:index
-        env:
-          GOOGLE_INDEXING_SA_JSON: ${{ secrets.GOOGLE_INDEXING_SA_JSON }}
-          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
       # Cheap Hub upload (~seconds). Missing HF_TOKEN skips; Hub errors do not fail the refresh.
       - name: Push jobs snapshot to Hugging Face
         run: npm run jobs:hf-dataset
@@ -127,6 +125,7 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Retain operational dataset for recovery
         uses: actions/upload-artifact@v7
@@ -139,3 +138,27 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Notify Google Indexing API of added and removed job pages
+        if: success()
+        run: npm run jobs:index
+        env:
+          GOOGLE_INDEXING_SA_JSON: ${{ secrets.GOOGLE_INDEXING_SA_JSON }}
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
+      - name: Notify IndexNow of new and changed sitemap URLs
+        if: success()
+        continue-on-error: true
+        run: npm run indexnow
+        env:
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
+      - name: Preserve IndexNow last URL set
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-post

@@ -99,7 +99,7 @@ export function feedLandingPages(catalog: Catalog): LandingPage[] {
   return [...d.roles, ...d.topics, ...d.states, ...d.companies];
 }
 
-export const hasJobFeed = (page: Pick<LandingPage, "kind">) => page.kind !== "city";
+export const hasJobFeed = (page: Pick<LandingPage, "kind">) => page.kind !== "city" && page.kind !== "role-state";
 
 export const ALL_JOBS_FOLLOW: FollowFeed = { path: ALL_JOBS_FEED, page: "/jobs/", title: "New AI jobs in the U.S.", filters: {}, includesOutside: false };
 

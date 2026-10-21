@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isDataCenterJob, isEntryLevelJob, isExpressionOfInterest, isNonProgrammingTitle, jobTrack, mainTitle } from "@/lib/jobs/tracks";
+import { isDataCenterJob, isEntryLevelJob, isExpressionOfInterest, isInternshipJob, isNonProgrammingTitle, isSummer2027Internship, jobTrack, mainTitle } from "@/lib/jobs/tracks";
 
 const job = (title: string, department: string | null = null, employment_type = "full-time") => ({ title, department, employment_type });
 const inTrack = (id: string, j: ReturnType<typeof job>) => jobTrack(id)!.test(j);
@@ -27,6 +27,16 @@ describe("job tracks", () => {
     expect(inTrack("early-career", job("Research Intern, Inference"))).toBe(true);
     expect(inTrack("early-career", job("Anything", null, "internship"))).toBe(true);
     expect(inTrack("early-career", job("Senior Early Career Recruiter"))).toBe(false);
+  });
+
+  it("internships match intern titles or employment type, and summer-2027 needs 2027 in the title", () => {
+    expect(isInternshipJob(job("Research Intern, Inference"))).toBe(true);
+    expect(isInternshipJob(job("Software Engineer", null, "internship"))).toBe(true);
+    expect(isInternshipJob(job("Software Engineer, New Grad"))).toBe(false);
+    expect(inTrack("internships", job("Summer 2027 Intern"))).toBe(true);
+    expect(isSummer2027Internship(job("Summer 2027 Intern"))).toBe(true);
+    expect(isSummer2027Internship(job("Research Intern"))).toBe(false);
+    expect(inTrack("summer-2027", job("Fall 2027 Internship"))).toBe(true);
   });
 
   it("flags expressions of interest from the title only", () => {

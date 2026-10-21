@@ -9,7 +9,7 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { OWNER_TYPE_LABELS } from "@/lib/github/directory";
-import { catalogMatch, githubEntries, githubEntry, githubFetchedLabel, githubPageHref, GITHUB_PAGE_SIZE, githubProjectLd, licenseLabel, projectHero, relatedProjects, toListItem } from "@/lib/github/projects";
+import { catalogMatch, githubEntries, githubEntry, githubFetchedLabel, githubIndexed, githubPageHref, GITHUB_PAGE_SIZE, githubProjectLd, licenseLabel, projectHero, relatedProjects, toListItem } from "@/lib/github/projects";
 import { licenseKey } from "@/lib/github/directory";
 import { hfForGithub } from "@/lib/huggingface/items";
 import { clipDescription, pageMetadata } from "@/lib/metadata";
@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: `${lead} Ranked #${e.rank} in AI on GitHub with ${nf(e.stars)} stars${e.language ? `; ${e.language}` : ""}.`,
     path: e.href,
     image: { path: hero.image, alt: hero.alt },
+    ...(githubIndexed(e, getCatalog()) ? {} : { noindex: true }),
   });
 }
 

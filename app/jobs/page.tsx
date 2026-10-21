@@ -7,7 +7,9 @@ import { getCatalog } from "@/lib/catalog";
 import { jobsDirectoryData } from "@/lib/jobs/directory-data";
 import { jobsIndexJsonLd } from "@/lib/jobs/jsonld";
 import { MIN_CITY_LISTINGS, MIN_STATE_LISTINGS } from "@/lib/jobs/landing";
+import { jobsDirectoryPages } from "@/lib/jobs/directory-pages";
 import { employerBrowseLinks, landingLinks, type LandingLink } from "@/lib/jobs/landing-links";
+import { landingPageHref, pageWindow } from "@/lib/jobs/pagination";
 import { JobsSectionNav } from "@/components/JobsSectionNav";
 import { HIRING_INDEX_HREF } from "@/lib/jobs/hiring-index";
 import { layoffHref, layoffsIndex } from "@/lib/jobs/layoffs";
@@ -25,12 +27,13 @@ export function generateMetadata() {
     : "Current positions at U.S. AI companies, labs, and research universities. Collected from employer career sources. Apply with the employer.",
     path: "/jobs/", image: socialImages.jobs, feeds: [{ path: ALL_JOBS_FEED, title: "USASI — New AI jobs in the U.S." }] });
 }
-const SHORTCUT_LABELS: Record<string, string> = { "/jobs/remote-us/": "Remote (U.S.)", "/jobs/entry-level/": "Entry-level", "/jobs/no-programming/": "No programming", "/jobs/data-center-infrastructure/": "Data center" };
+const SHORTCUT_LABELS: Record<string, string> = { "/jobs/remote-us/": "Remote (U.S.)", "/jobs/internships/": "Internships", "/jobs/entry-level/": "Entry-level", "/jobs/no-programming/": "No programming", "/jobs/data-center-infrastructure/": "Data center" };
 function BrowseLinks({ links }: { links: LandingLink[] }) {
   return <ul className="mt-2 flex flex-wrap gap-2">{links.map(l => <li key={l.path}><Link prefetch={false} href={l.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">{l.kind === "company" ? <><span className="sr-only">Jobs at </span>{l.name.replace(/^Jobs at /, "")}</> : l.kind === "state" || l.kind === "city" ? <><span className="sr-only">Jobs in </span>{l.name.replace(/^Jobs in /, "")}{l.kind === "city" ? <span className="text-muted">, {l.state}</span> : null}</> : l.name} <span className="text-muted">({l.count.toLocaleString("en-US")})</span></Link></li>)}</ul>;
 }
 export default function JobsPage() {
   const catalog = getCatalog(), data = jobsDirectoryData(catalog), pages = landingLinks(catalog), layoffs = layoffsIndex(catalog);
+  const directoryPages = jobsDirectoryPages(catalog);
   // Shortcuts above the results: the topic pages and the three largest role pages, each with its own (all-country) count.
   const pay = payData(catalog);
   const layoffCount = layoffs.states.reduce((s, p) => s + p.file.notices.length, 0);
@@ -50,7 +53,26 @@ export default function JobsPage() {
       note: o.careers && "note" in o.careers.source ? o.careers.source.note : null, source: o.careers?.source.type ?? null }))}
     shortcuts={shortcuts}
     follow={{ feeds: followFeeds(catalog), fallback: ALL_JOBS_FOLLOW }}
-    browse={<>
+    />
+    {directoryPages.pageCount > 1 ? (
+      <nav aria-label="All current listings" className="mt-10" data-testid="jobs-directory-pages">
+        <h2 className="text-lg font-semibold text-text">All current listings</h2>
+        <p className="mt-1 text-sm text-muted">Static pages that list every current opening, 100 per page, so every job page is linked without JavaScript.</p>
+        <ul className="mt-3 flex flex-wrap items-center gap-2">
+          {pageWindow(1, directoryPages.pageCount).map((item, i) =>
+            item === "…" ? (
+              <li key={`gap-${i}`} className="px-1 text-muted">…</li>
+            ) : (
+              <li key={item}>
+                <Link prefetch={false} href={landingPageHref("/jobs/", item)} className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border px-3 text-sm ${item === 1 ? "border-cyan bg-cyan/10 text-text" : "border-line text-muted hover:border-cyan"}`}>
+                  {item}
+                </Link>
+              </li>
+            ),
+          )}
+        </ul>
+      </nav>
+    ) : null}
     <nav aria-labelledby="browse-jobs-heading" className="mt-14 border-t border-line pt-10">
       <h2 id="browse-jobs-heading" className="text-lg font-semibold text-text">Browse by</h2>
       <p className="mt-1 text-sm text-muted">Every page below is a shareable list that stays up to date.</p>
@@ -65,7 +87,6 @@ export default function JobsPage() {
         {layoffs.states.length ? <div className="lg:col-span-2" data-testid="browse-layoffs"><h3 className="text-sm font-medium text-muted">WARN Act layoffs and nearby AI jobs</h3><ul className="mt-2 flex flex-wrap gap-2"><li><Link prefetch={false} href="/jobs/layoffs/" className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">All layoff pages <span className="text-muted">({layoffCount.toLocaleString("en-US")})</span></Link></li>{layoffs.states.map(s => <li key={s.meta.code}><Link prefetch={false} href={layoffHref(s.meta.code)} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">{s.meta.name} <span className="text-muted">({s.file.notices.length.toLocaleString("en-US")})</span></Link></li>)}</ul></div> : null}
       </div>
     </nav>
-    </>} />
     <div className="mt-14 max-w-3xl" data-testid="jobs-newsletter"><NewsletterSignup /></div>
   </div><SupportPanel variant="compact" /></>;
 }

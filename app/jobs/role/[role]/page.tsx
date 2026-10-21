@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import { JobsLanding } from "@/components/JobsLanding";
 import { getCatalog } from "@/lib/catalog";
-import { jobLandingImage, topicAndStateLinks } from "@/lib/jobs/landing-links";
+import { jobLandingImage } from "@/lib/jobs/landing-links";
 import { jobsLandingData } from "@/lib/jobs/landing";
+import { landingExtras } from "@/lib/jobs/landing-ui";
 import { ROLE_SLUGS } from "@/lib/jobs/roles";
 import { pageMetadata } from "@/lib/metadata";
 import { jobFeedPath } from "@/lib/jobs/feeds";
-import { payRole } from "@/lib/jobs/pay";
 
 export const dynamicParams = false;
 
@@ -25,5 +25,5 @@ export async function generateMetadata({ params }: { params: Promise<{ role: str
 export default async function JobsRolePage({ params }: { params: Promise<{ role: string }> }) {
   const page = rolePage((await params).role);
   if (!page) notFound();
-  return <JobsLanding page={page} others={topicAndStateLinks(getCatalog(), page.path)} pay={payRole(getCatalog(), page.id) ?? null} />;
+  return <JobsLanding page={page} {...landingExtras(getCatalog(), page)} />;
 }

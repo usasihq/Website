@@ -23,6 +23,7 @@ import {
   hfFetchedLabel,
   hfGithubMatch,
   hfHubUrl,
+  hfIndexed,
   hfItemHero,
   hfItemLd,
   hfLicenseLabel,
@@ -208,6 +209,7 @@ export function hfItemMetadata(e: HfEntry) {
     description: `${lead} Ranked #${nf(e.rank)} among Hugging Face ${what}s with ${nf(e.likes)} likes; ${hfLicenseLabel(e.license ?? "none", e.license_name)}.`,
     path: e.href,
     image: { path: hero.image, alt: hero.alt },
+    ...(hfIndexed(e, getCatalog()) ? {} : { noindex: true }),
   });
 }
 

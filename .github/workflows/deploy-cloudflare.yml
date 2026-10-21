@@ -51,6 +51,7 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: jobs-v1-main-
       - name: Record hiring-index snapshot from current listings
@@ -66,6 +67,7 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-early
       - name: Refresh Jobs before ordinary releases
         if: vars.JOBS_REFRESH == 'true'
@@ -114,6 +116,7 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-snap
       - name: Preserve validated Jobs state
         if: vars.JOBS_REFRESH == 'true'
@@ -125,9 +128,28 @@ jobs:
             data/jobs/hiring-index.json
             data/jobs/descriptions.json
             data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
           key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Deploy production
         run: npx wrangler deploy --message "${{ env.RELEASE_SHA }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Notify IndexNow of new and changed sitemap URLs
+        if: success()
+        continue-on-error: true
+        run: npm run indexnow
+        env:
+          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
+      - name: Preserve IndexNow last URL set
+        if: always() && vars.JOBS_REFRESH == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/jobs/current.json
+            data/jobs/indexing-quota.json
+            data/jobs/hiring-index.json
+            data/jobs/descriptions.json
+            data/jobs/workday-meta.json
+            data/jobs/indexnow-last.json
+          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-post

@@ -21,11 +21,20 @@ export const HF_INDEX = "/huggingface/";
 export const HF_DATASETS_INDEX = "/huggingface/datasets/";
 /** Items per page on the indexes and their /page/<n>/ ranking pages. */
 export const HF_PAGE_SIZE = 100;
+/** Model pages kept in the sitemap and indexed (by likes rank), plus catalog matches. */
+export const HF_MODEL_INDEX_LIMIT = 400;
+/** Dataset pages kept in the sitemap and indexed (by likes rank), plus catalog matches. */
+export const HF_DATASET_INDEX_LIMIT = 100;
 
 type Extra = { rank: number; slug: string; href: string; image: string };
 export type HfModelEntry = HfModel & Extra & { kind: "model" };
 export type HfDatasetEntry = HfDataset & Extra & { kind: "dataset" };
 export type HfEntry = HfModelEntry | HfDatasetEntry;
+
+export function hfIndexed(e: HfEntry, catalog?: Catalog): boolean {
+  const limit = e.kind === "model" ? HF_MODEL_INDEX_LIMIT : HF_DATASET_INDEX_LIMIT;
+  return e.rank <= limit || Boolean(catalog && hfCatalogMatch(catalog, e));
+}
 
 export const hfIndexOf = (kind: HfKind) => (kind === "model" ? HF_INDEX : HF_DATASETS_INDEX);
 export const hfHref = (kind: HfKind, slug: string) => `${hfIndexOf(kind)}${slug}/`;
@@ -289,15 +298,15 @@ export function hfSearchEntries(): SearchEntry[] {
   });
 }
 
-export function hfSitemap(): { path: string; lastModified: string }[] {
+export function hfSitemap(catalog?: Catalog): { path: string; lastModified: string }[] {
   const day = readHfModels().fetched_at.slice(0, 10);
   const pages = (kind: HfKind) => Array.from({ length: hfPageCount(kind) - 1 }, (_, i) => ({ path: hfPageHref(kind, i + 2), lastModified: day }));
   return [
     { path: HF_DATASETS_INDEX, lastModified: day },
     ...pages("model"),
     ...pages("dataset"),
-    ...hfModelEntries().map((e) => ({ path: e.href, lastModified: day })),
-    ...hfDatasetEntries().map((e) => ({ path: e.href, lastModified: day })),
+    ...hfModelEntries().filter((e) => hfIndexed(e, catalog)).map((e) => ({ path: e.href, lastModified: day })),
+    ...hfDatasetEntries().filter((e) => hfIndexed(e, catalog)).map((e) => ({ path: e.href, lastModified: day })),
   ];
 }
 

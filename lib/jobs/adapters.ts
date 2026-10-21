@@ -8,6 +8,7 @@ import { rowsUsaJobs } from "./usajobs";
 import { SrPosting, type SrPayload } from "./smartrecruiters";
 import { WdMeta, workdayId, type WdPayload } from "./workday";
 import { workplaceFromWorkdayType } from "./workplace-text";
+import { WORKPLACE_ONLY_LOCATION } from "./geo";
 const short = z.string().max(1000);
 const id = z.union([z.number().int().nonnegative(), z.string().regex(/^[A-Za-z0-9_-]{1,100}$/)]);
 const greenhouse = z.object({ jobs: z.array(z.object({
@@ -21,11 +22,23 @@ const greenhouse = z.object({ jobs: z.array(z.object({
 })).max(20000), meta: z.object({ total: z.number().int().nonnegative() }) });
 const salaryComponent = z.object({ compensationType: z.string(), interval: z.string(), currencyCode: z.string().nullable(),
   minValue: z.number().nullable(), maxValue: z.number().nullable() });
+const ashbyPostal = z.object({ addressCountry: short.optional(), addressLocality: short.optional(), addressRegion: short.optional() });
+const ashbyAddress = z.object({ postalAddress: ashbyPostal.optional(), addressCountry: short.optional() });
+/** Ashby's structured office when the location field is only a workplace label ("Distributed", "Remote"). */
+function ashbyOffice(address: { postalAddress?: { addressCountry?: string; addressLocality?: string; addressRegion?: string }; addressCountry?: string } | null | undefined): string | null {
+  const pa = address?.postalAddress;
+  const parts = [plain(pa?.addressLocality), plain(pa?.addressRegion), plain(pa?.addressCountry ?? address?.addressCountry)].filter((v): v is string => Boolean(v));
+  return parts.length ? parts.join(", ") : null;
+}
+function ashbyPlace(name: string | null, address: { postalAddress?: { addressCountry?: string; addressLocality?: string; addressRegion?: string }; addressCountry?: string } | null | undefined): string | null {
+  if (name && !WORKPLACE_ONLY_LOCATION.test(name.trim())) return name;
+  return ashbyOffice(address) ?? name;
+}
 const ashby = z.object({ apiVersion: z.literal("1"), jobs: z.array(z.object({
   id: z.string().regex(/^[A-Za-z0-9_-]{1,100}$/).optional(), title: short, jobUrl: z.string(), applyUrl: z.string().optional(),
   isListed: z.boolean(), location: short.optional(),
-  secondaryLocations: z.array(z.object({ location: short, address: z.object({ addressCountry: short.optional() }).nullable().optional() })).max(50).optional(),
-  address: z.object({ postalAddress: z.object({ addressCountry: short.optional() }).optional() }).nullable().optional(),
+  secondaryLocations: z.array(z.object({ location: short, address: ashbyAddress.nullable().optional() })).max(50).optional(),
+  address: ashbyAddress.nullable().optional(),
   department: short.optional(), team: short.optional(), isRemote: z.boolean().nullable().optional(), workplaceType: short.nullable().optional(),
   employmentType: short.optional(), publishedAt: z.string().nullable().optional(),
   descriptionHtml: z.string().max(400000).nullable().optional(),
@@ -106,8 +119,8 @@ const rowsAshby = (payload: unknown, org: string, c: Careers): SourceRow[] =>
       }
     }
     const job: NormalizedJob = { ...j, apply_url: r.applyUrl ? postingUrl(r.applyUrl, c) : null,
-      locations: uniq([plain(r.location), ...(r.secondaryLocations ?? []).map(l => plain(l.location))]),
-      countries: uniq([plain(r.address?.postalAddress?.addressCountry), ...(r.secondaryLocations ?? []).map(l => plain(l.address?.addressCountry))]),
+      locations: uniq([ashbyPlace(plain(r.location), r.address), ...(r.secondaryLocations ?? []).map(l => ashbyPlace(plain(l.location), l.address))]),
+      countries: uniq([plain(r.address?.postalAddress?.addressCountry ?? r.address?.addressCountry), ...(r.secondaryLocations ?? []).map(l => plain(l.address?.postalAddress?.addressCountry ?? l.address?.addressCountry))]),
       workplace, remote: r.isRemote ?? (workplace === "remote" ? true : workplace !== "unknown" ? false : null),
       employment_type: employment, department: plain(r.department), team: plain(r.team), salaries,
       posted_at: date(r.publishedAt), posted_date_kind: r.publishedAt ? "last-published" : null };

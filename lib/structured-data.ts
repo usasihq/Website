@@ -11,7 +11,7 @@ import { absoluteUrl } from "./paths";
 import { stateFromHeadquarters, US_STATES } from "./places";
 import { artifactHref, orgHref } from "./routes";
 import { COVERS, makersOf } from "./seo";
-import type { Artifact, Leader, LicenseRecord, Organization, Person } from "./schema";
+import type { Artifact, Leader, LicenseRecord, NewsItem, Organization, Person } from "./schema";
 import { siteConfig } from "./site-config";
 
 export const SCHEMA_CONTEXT = "https://schema.org";
@@ -44,6 +44,17 @@ export function itemList({ name, path, items }: { name: string; path: string; it
     url: absoluteUrl(path),
     numberOfItems: items.length,
     itemListElement: items.map((x, i) => ({ "@type": "ListItem", position: i + 1, name: x.name, url: absoluteUrl(x.href) })),
+  };
+}
+
+/** A directory page whose main entity is the list of items on it. */
+export function collectionPage({ name, path, items }: { name: string; path: string; items: { name: string; href: string }[] }): JsonLdNode {
+  return {
+    "@context": SCHEMA_CONTEXT,
+    "@type": "CollectionPage",
+    name,
+    url: absoluteUrl(path),
+    mainEntity: itemList({ name, path, items }),
   };
 }
 
@@ -212,6 +223,23 @@ export function catalogDatasetLd(catalog: Catalog): JsonLdNode {
       { "@type": "DataDownload", name: "catalog.json", encodingFormat: "application/json", contentUrl: absoluteUrl("/data/catalog.json") },
       ...HF_CSV_FILES.map((f) => ({ "@type": "DataDownload", name: f, encodingFormat: "text/csv", contentUrl: `${HF_DATASET_URL}/resolve/main/${f}` })),
     ],
+  };
+}
+
+/** A dated news item as NewsArticle: headline, dates, and the page URL. */
+export function newsArticleLd(item: NewsItem): JsonLdNode {
+  const page = absoluteUrl(`/news/${item.slug}/`);
+  return {
+    "@context": SCHEMA_CONTEXT,
+    "@type": "NewsArticle",
+    headline: item.title,
+    datePublished: item.published_at.slice(0, 10),
+    dateModified: item.updated_at.slice(0, 10),
+    description: item.summary.text,
+    mainEntityOfPage: page,
+    url: page,
+    author: siteOrganization(),
+    publisher: siteOrganization(),
   };
 }
 

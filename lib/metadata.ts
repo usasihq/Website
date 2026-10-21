@@ -96,6 +96,17 @@ export function clipDescription(text: string, max = DESCRIPTION_MAX): string {
   return `${(at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[\s,;:.\u2014-]+$/, "")}\u2026`;
 }
 
+/** Search results cut titles around TITLE_MAX; prefer a colon or dash, else a word boundary. */
+export function clipTitle(text: string, max = TITLE_MAX): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  for (const sep of [": ", " — ", " – ", " - "]) {
+    const i = clean.indexOf(sep);
+    if (i >= 20 && i <= max) return clean.slice(0, i);
+  }
+  return clipDescription(clean, max);
+}
+
 /** Route-specific title, description, canonical URL, and social metadata. */
 export function pageMetadata({ title, description: rawDescription, path, noindex, image = socialImages.site, feeds }: PageMeta): Metadata {
   const description = clipDescription(rawDescription);

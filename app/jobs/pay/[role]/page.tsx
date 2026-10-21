@@ -4,11 +4,13 @@ import { JobsSectionNav } from "@/components/JobsSectionNav";
 import { PayFigures, PayMethod, PayTable } from "@/components/JobsPay";
 import { PageHeader } from "@/components/PageHeader";
 import { SupportPanel } from "@/components/SupportPanel";
+import { JsonLd } from "@/components/JsonLd";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { atLeastOneParam } from "@/lib/jobs/landing";
 import { kUsd, PAY_INDEX, payData, payRole, pct } from "@/lib/jobs/pay";
 import { pageMetadata, socialImages } from "@/lib/metadata";
+import { collectionPage } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -41,6 +43,13 @@ export default async function JobsPayRolePage({ params }: { params: Promise<{ ro
   const others = payData(catalog).roles.filter((r) => r.slug !== g.slug);
   return (
     <>
+      <JsonLd
+        data={collectionPage({
+          name: `${g.name} listings with disclosed pay`,
+          path: g.path,
+          items: g.stats.rows.slice(0, 100).map((r) => ({ name: r.job.title, href: r.path ?? `/jobs/at/${r.job.organization_slug}/` })),
+        })}
+      />
       <PageHeader
         eyebrow="AI pay"
         title={`${g.name} pay`}

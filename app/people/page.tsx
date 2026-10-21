@@ -7,6 +7,8 @@ import { getCatalog } from "@/lib/catalog";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { absoluteUrl } from "@/lib/paths";
 import { peopleListItems } from "@/lib/people-index";
+import { asset } from "@/lib/paths";
+import { itemList } from "@/lib/structured-data";
 
 export const metadata = pageMetadata({
   title: "People in U.S. AI: founders, engineers & open-source maintainers",
@@ -29,7 +31,11 @@ export default function PeoplePage() {
           "@type": "CollectionPage",
           name: "People",
           url: absoluteUrl("/people/"),
-          hasPart: items.map((i) => ({ "@type": "ProfilePage", name: i.name, url: absoluteUrl(i.href) })),
+          mainEntity: itemList({
+            name: "People in U.S. AI",
+            path: "/people/",
+            items: items.slice(0, 48).map((i) => ({ name: i.name, href: i.href })),
+          }),
         }}
       />
       <PageHeader
@@ -61,7 +67,7 @@ export default function PeoplePage() {
         }
       />
       <div className="container-page py-10 sm:py-12">
-        <PeopleDirectory items={items} organizations={organizations} />
+        <PeopleDirectory items={items.slice(0, 48)} organizations={organizations} dataUrl={asset("/data/people.json")} total={items.length} />
       </div>
       <SupportPanel variant="compact" />
     </>

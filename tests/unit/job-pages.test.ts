@@ -72,7 +72,10 @@ describe("JobPosting data", () => {
     expect(ld.datePosted).toBe("2026-10-01");
     expect(ld.employmentType).toBe("FULL_TIME");
     expect(ld.directApply).toBe(false);
-    expect(ld.jobLocation).toEqual([{ "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "San Francisco", addressRegion: "CA", addressCountry: "US" } }]);
+    expect(ld.jobLocation).toEqual([
+      { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "San Francisco", addressRegion: "CA", addressCountry: "US" } },
+      { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" } },
+    ]);
     expect(ld.baseSalary).toEqual({ "@type": "MonetaryAmount", currency: "USD", value: { "@type": "QuantitativeValue", minValue: 200000, maxValue: 300000, unitText: "YEAR" } });
     expect(ld.hiringOrganization).toEqual({ "@type": "Organization", name: "Acme AI (Example)", sameAs: "https://acme.example" });
   });
@@ -113,7 +116,9 @@ describe("JobPosting data", () => {
     expect(remote.jobLocation).toBeUndefined();
     expect(remote).not.toHaveProperty("validThrough");
     expect(jobPostingLd(page(job(), null))).toBeNull();
-    expect(jobPostingLd(page(job({ locations: ["London, UK"] })))).toBeNull();
+    expect(jobPostingLd(page(job({ locations: ["London, UK"] })))).toMatchObject({
+      jobLocation: [{ "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" } }],
+    });
     expect(jobPostingLd(page(job({ posted_at: null })))!.datePosted).toBe("2026-10-02");
   });
 
@@ -127,7 +132,7 @@ describe("JobPosting data", () => {
 
   it("reads addresses from location text without guessing", () => {
     expect(postalAddresses({ locations: ["Austin, TX; Remote - US", "Texas"] })).toEqual([{ addressLocality: "Austin", addressRegion: "TX", addressCountry: "US" }]);
-    expect(postalAddresses({ locations: ["Remote", "Toronto, CA"] })).toEqual([]);
+    expect(postalAddresses({ locations: ["Remote", "Toronto, CA"] })).toEqual([{ addressLocality: "Toronto", addressCountry: "CA" }]);
   });
 });
 

@@ -13,6 +13,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { cardImage } from "@/lib/page-cards";
 import { leaderSeo } from "@/lib/seo";
 import { leaderLd } from "@/lib/structured-data";
+import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { orgHref } from "@/lib/routes";
 
 export const dynamicParams = false;
@@ -42,6 +43,15 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
   const i = all.findIndex((x) => x.slug === l.slug);
   const prev = i > 0 ? all[i - 1] : undefined;
   const next = i < all.length - 1 ? all[i + 1] : undefined;
+  const jobLinks: { path: string; count: number; orgName: string }[] = [];
+  const seenJobs = new Set<string>();
+  for (const r of l.current_roles) {
+    if (!r.organization_slug) continue;
+    const jobs = companyJobsLink(catalog, r.organization_slug);
+    if (!jobs || seenJobs.has(jobs.path)) continue;
+    seenJobs.add(jobs.path);
+    jobLinks.push({ path: jobs.path, count: jobs.count, orgName: r.organization });
+  }
   const orgLink = (slug: string | null, name: string) =>
     slug && catalog.isActiveOrganization(slug) ? (
       <Link prefetch={false} href={orgHref(slug)} className="link">
@@ -173,6 +183,20 @@ export default async function LeaderPage({ params }: { params: Promise<{ slug: s
                         {h.year ? `, ${h.year}` : ""}
                         <SourceRefs ids={h.source_ids} sources={s} />
                       </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {jobLinks.length ? (
+              <div className="card p-5" data-testid="leader-jobs">
+                <h2 className="font-semibold text-text">Open jobs</h2>
+                <ul className="mt-3 space-y-2 text-[0.9375rem]">
+                  {jobLinks.map((j) => (
+                    <li key={j.path}>
+                      <Link prefetch={false} href={j.path} className="link">
+                        Open jobs at {j.orgName} ({j.count.toLocaleString("en-US")})
+                      </Link>
                     </li>
                   ))}
                 </ul>

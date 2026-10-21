@@ -9,7 +9,7 @@ import { absoluteUrl } from "../paths";
 import type { Organization } from "../schema";
 import { descriptionHtml, type Description } from "./description";
 import { readDescriptions } from "./descriptions-store";
-import { displayLocation, isUSOnly, placeGeography, REMOTE_LOCATION, stateDisplayName } from "./geo";
+import { countryCode, displayLocation, DISTRIBUTED_LOCATION, internationalAddress, isUSCountry, isUSOnly, jobGeography, placeGeography, REMOTE_LOCATION, WORKPLACE_ONLY_LOCATION, stateDisplayName } from "./geo";
 import { jobSlug, shortCode } from "./job-url";
 import { readJobsForBuild } from "./load";
 import type { Job } from "./schema";
@@ -208,25 +208,54 @@ const EMPLOYMENT: Record<string, string> = {
 };
 const UNIT: Record<string, string> = { hour: "HOUR", day: "DAY", week: "WEEK", month: "MONTH", year: "YEAR" };
 
-/** U.S. addresses the listing's own location text names (city and state, or state alone). Nothing is guessed. */
-export function postalAddresses(job: Pick<Job, "locations">): { addressLocality?: string; addressRegion: string; addressCountry: "US" }[] {
-  const cities = new Map<string, { addressLocality: string; addressRegion: string; addressCountry: "US" }>();
+export type JobPostalAddress = { addressLocality?: string; addressRegion?: string; addressCountry: string };
+
+/** Addresses the listing names: U.S. city/state, or a non-U.S. locality and country. Workplace-only labels are skipped. */
+export function postalAddresses(job: Pick<Job, "locations"> & { countries?: string[] }): JobPostalAddress[] {
+  const cities = new Map<string, JobPostalAddress>();
   const states = new Set<string>();
+  const abroad = new Map<string, JobPostalAddress>();
   for (const location of job.locations) {
-    const g = placeGeography(location);
+    if (WORKPLACE_ONLY_LOCATION.test(location.trim())) continue;
+    const g = placeGeography(location, (job.countries ?? []).some(isUSCountry));
     for (const c of g.cities) cities.set(c, { addressLocality: c.slice(3), addressRegion: c.slice(0, 2), addressCountry: "US" });
     for (const s of g.states) states.add(s);
+    if (!g.cities.length && !g.states.length) {
+      const intl = internationalAddress(location);
+      if (intl) abroad.set(`${intl.addressLocality ?? ""}|${intl.addressCountry}`, intl);
+    }
   }
-  // A state named without a city becomes a state-level address only when no city in that state is listed.
-  const withCity = new Set([...cities.values()].map((c) => c.addressRegion));
-  const stateOnly = [...states].filter((s) => !withCity.has(s)).map((s) => ({ addressRegion: s, addressCountry: "US" as const }));
-  return [...cities.values(), ...stateOnly].slice(0, 20);
+  const withCity = new Set([...cities.values()].map((c) => c.addressRegion).filter(Boolean));
+  const stateOnly = [...states].filter((s) => !withCity.has(s)).map((s) => ({ addressRegion: s, addressCountry: "US" }));
+  if (!cities.size && !stateOnly.length && !abroad.size) {
+    for (const raw of job.countries ?? []) {
+      const code = countryCode(raw);
+      if (code && code !== "US") abroad.set(`|${code}`, { addressCountry: code });
+    }
+  }
+  return [...cities.values(), ...stateOnly, ...abroad.values()].slice(0, 20);
+}
+
+/** Fully remote: the employer marks remote, or every listed place is Remote/Distributed (not hybrid or in-office). */
+export function isFullyRemoteJob(job: Pick<Job, "workplace" | "locations">): boolean {
+  if (job.workplace === "remote") return true;
+  if (job.workplace === "hybrid" || job.workplace === "on-site") return false;
+  const places = job.locations.filter((l) => l.trim());
+  return places.length > 0 && places.every((l) => REMOTE_LOCATION.test(l) || DISTRIBUTED_LOCATION.test(l.trim()));
+}
+
+/** The listing is open to U.S. applicants: it names the U.S., or is remote with no country outside it. */
+export function hasUSApplicantContext(job: Pick<Job, "locations" | "countries" | "workplace">): boolean {
+  if (isUSOnly(job)) return true;
+  if ((job.countries ?? []).some(isUSCountry)) return true;
+  const g = jobGeography(job);
+  return g.us || (!g.outside && isFullyRemoteJob(job));
 }
 
 /**
  * schema.org JobPosting for Google's job search, or null when the listing
- * lacks what the format requires (a description, and a U.S. address or a
- * fully remote listing open to U.S. applicants). Every field comes from the
+ * lacks what the format requires (a description, and a postal address or a
+ * fully remote listing with a country for applicants). Every field comes from the
  * employer's feed; nothing is inferred. validThrough is included only where the
  * source states a closing date (USAJOBS); other feeds do not supply one. Stale listings never reach this function
  * (`isCurrent`, seen within 48 hours), so their pages and markup are gone
@@ -242,10 +271,11 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
   if (isExpressionOfInterest(job.title)) return null;
   const addresses = postalAddresses(job);
   // Google's TELECOMMUTE value is only for jobs that are 100% remote, not hybrid
-  // or "remote-friendly". The employer workplace field is the only verified signal.
-  const fullyRemote = job.workplace === "remote";
-  const usOnly = isUSOnly(job);
-  if (!addresses.length && !(fullyRemote && usOnly)) return null;
+  // or "remote-friendly". Workplace "remote", or Remote/Distributed locations with
+  // no on-site workplace, count; hybrid does not.
+  const fullyRemote = isFullyRemoteJob(job);
+  const usApplicants = hasUSApplicantContext(job);
+  if (!addresses.length && !(fullyRemote && usApplicants)) return null;
   // The feed's own salary first; a range read from the description text only when the feed gives none.
   const usable = job.salaries.filter((s) => s.currency && (s.min !== null || s.max !== null));
   const salary = usable.find((s) => s.source_status === "employer-provided") ?? usable[0];
@@ -267,7 +297,7 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
       ? { jobLocation: addresses.map((a) => ({ "@type": "Place", address: { "@type": "PostalAddress", ...a } })) }
       : {}),
     ...(job.valid_through ? { validThrough: job.valid_through } : {}),
-    ...(fullyRemote && usOnly ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "US" } } : {}),
+    ...(fullyRemote && usApplicants ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "US" } } : {}),
     ...(salary
       ? {
           baseSalary: {

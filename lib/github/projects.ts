@@ -19,6 +19,11 @@ import type { GithubDataset, GithubProject } from "./schema";
 export const GITHUB_INDEX = "/github/";
 /** Projects per page on /github/ and /github/page/<n>/. */
 export const GITHUB_PAGE_SIZE = 100;
+/**
+ * Project pages kept in the sitemap and indexed. Rank is by stars (already
+ * the list order). Catalog matches stay indexed even below this rank.
+ */
+export const GITHUB_INDEX_LIMIT = 1000;
 
 export type GithubEntry = GithubProject & {
   rank: number;
@@ -29,6 +34,10 @@ export type GithubEntry = GithubProject & {
 
 export const githubHref = (slug: string) => `/github/${slug}/`;
 export const githubPageHref = (n: number) => (n <= 1 ? GITHUB_INDEX : `/github/page/${n}/`);
+
+export function githubIndexed(e: GithubEntry, catalog?: Catalog): boolean {
+  return e.rank <= GITHUB_INDEX_LIMIT || Boolean(catalog && catalogMatch(catalog, e));
+}
 
 const entriesCache = new WeakMap<GithubDataset, GithubEntry[]>();
 
@@ -189,10 +198,11 @@ export function githubSearchEntries(data: GithubDataset = readGithubDataset()): 
   }));
 }
 
-export function githubSitemap(data: GithubDataset = readGithubDataset()): { path: string; lastModified: string }[] {
-  const day = data.fetched_at.slice(0, 10);
-  const pages = Array.from({ length: githubPageCount(data) - 1 }, (_, i) => ({ path: githubPageHref(i + 2), lastModified: day }));
-  return [...pages, ...githubEntries(data).map((e) => ({ path: e.href, lastModified: day }))];
+export function githubSitemap(data?: GithubDataset, catalog?: Catalog): { path: string; lastModified: string }[] {
+  const src = data ?? readGithubDataset();
+  const day = src.fetched_at.slice(0, 10);
+  const pages = Array.from({ length: githubPageCount(src) - 1 }, (_, i) => ({ path: githubPageHref(i + 2), lastModified: day }));
+  return [...pages, ...githubEntries(src).filter((e) => githubIndexed(e, catalog)).map((e) => ({ path: e.href, lastModified: day }))];
 }
 
 export function githubProjectLd(e: GithubEntry): JsonLdNode {

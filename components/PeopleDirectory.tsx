@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "@/components/Link";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   DEFAULT_PEOPLE_FILTERS,
   PERSON_GROUP_LABELS,
@@ -61,9 +61,25 @@ function PersonCard({ item, org }: { item: PeopleListItem; org: string }) {
   );
 }
 
-export function PeopleDirectory({ items, organizations }: { items: PeopleListItem[]; organizations: { slug: string; name: string }[] }) {
+export function PeopleDirectory({ items: initial, organizations, dataUrl, total }: { items: PeopleListItem[]; organizations: { slug: string; name: string }[]; dataUrl?: string; total?: number }) {
+  const [all, setAll] = useState<PeopleListItem[] | null>(null);
+  useEffect(() => {
+    if (!dataUrl) return;
+    let live = true;
+    fetch(dataUrl)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((d: { items: PeopleListItem[] }) => {
+        if (live) setAll(d.items);
+      })
+      .catch(() => undefined);
+    return () => {
+      live = false;
+    };
+  }, [dataUrl]);
+  const items = all ?? initial;
   const { state: f, update } = useQueryState<PeopleFilters>(parsePeopleFilters, serializePeopleFilters);
   const results = useMemo(() => filterPeople(items, f), [items, f]);
+  const listed = total ?? items.length;
   const announce = useDebounced(`${results.length} of ${items.length} people shown`);
   const { limit, showMore } = useShowMore(PAGE_SIZE);
   const listRef = useRef<HTMLUListElement>(null);
@@ -145,7 +161,7 @@ export function PeopleDirectory({ items, organizations }: { items: PeopleListIte
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-        <ResultSummary visible={results.length} total={items.length} noun={["person", "people"]} announce={announce} />
+        <ResultSummary visible={results.length} total={all ? items.length : listed} noun={["person", "people"]} announce={announce} />
         {activePeopleFilters(f) > 0 ? (
           <button type="button" className="link min-h-11 text-sm" onClick={() => update({ ...DEFAULT_PEOPLE_FILTERS })}>
             Clear all filters

@@ -45,6 +45,8 @@ const CITY_STATE: Record<string, [string, string]> = {
   atlanta: ["GA", "Atlanta"], denver: ["CO", "Denver"], boulder: ["CO", "Boulder"], miami: ["FL", "Miami"],
   "salt lake city": ["UT", "Salt Lake City"], raleigh: ["NC", "Raleigh"], minneapolis: ["MN", "Minneapolis"],
   "ann arbor": ["MI", "Ann Arbor"], detroit: ["MI", "Detroit"], baltimore: ["MD", "Baltimore"], phoenix: ["AZ", "Phoenix"],
+  // Campus names employers use instead of the city (UT Austin's "UT MAIN CAMPUS").
+  "ut main campus": ["TX", "Austin"], "utaustin": ["TX", "Austin"], "ut austin": ["TX", "Austin"],
 };
 /** "San Francisco Bay Area" and "Bay Area" name California but no single city. */
 const BAY_AREA = /^(?:san francisco )?bay area$/i;
@@ -69,7 +71,9 @@ const cityText = (part: string) =>
 export const CITY_SLUG_ALIASES: Record<string, string> = { "CO|longmont-max": "CO|longmont" };
 
 /** Text in a city position that is not a city ("Remote, CA", "Multiple Locations, TX"). */
-const NOT_A_CITY = /^(?:remote|hybrid|in-office|on-?site|distributed|anywhere|multiple(?: locations)?|various|united states|usa?|u\.s\.(?:a\.)?)?$|\d/i;
+export const NOT_A_CITY = /^(?:remote|hybrid|in-office|on-?site|distributed|anywhere|multiple(?: locations)?|various|united states|usa?|u\.s\.(?:a\.)?)?$|\d/i;
+/** A location that is only a workplace label (Cloudflare's "Distributed", "In-Office", "Hybrid", bare "Remote"). */
+export const WORKPLACE_ONLY_LOCATION = /^(?:remote|hybrid|in-office|on-?site|distributed|anywhere)(?:[- ](?:friendly|only))?$/i;
 
 /** The table entry for a place part, also when a postal code that agrees follows it ("Mountain View CA", "Mountain View CA USA"). */
 function cityLookup(part: string): [string, string] | null {
@@ -317,6 +321,67 @@ export const isUSOnly = (job: GeoJob) => {
 };
 
 export const REMOTE_LOCATION = /\bremote\b/i;
+/** "Distributed" is how some employers (Cloudflare) mark fully remote work. */
+export const DISTRIBUTED_LOCATION = /^(?:distributed|anywhere)(?:[- ](?:us|u\.s\.|united states))?$/i;
+
+/** ISO 3166-1 alpha-2 for a country name or code as feeds write it. */
+export function countryCode(value: string): string | null {
+  const v = value.trim();
+  if (isUSCountry(v) || /^(US|USA)$/i.test(v)) return "US";
+  const key = v.toLowerCase().replace(/\./g, "");
+  return COUNTRY_ISO[key] ?? (COUNTRY_CODE_ISO[v.toUpperCase()] ?? null);
+}
+
+const COUNTRY_ISO: Record<string, string> = {
+  "united kingdom": "GB", uk: "GB", "great britain": "GB", england: "GB", scotland: "GB", wales: "GB",
+  canada: "CA", australia: "AU", germany: "DE", france: "FR", india: "IN", israel: "IL", ireland: "IE",
+  japan: "JP", "south korea": "KR", korea: "KR", singapore: "SG", netherlands: "NL", "the netherlands": "NL",
+  spain: "ES", italy: "IT", sweden: "SE", switzerland: "CH", brazil: "BR", brasil: "BR", mexico: "MX",
+  "united arab emirates": "AE", uae: "AE", poland: "PL", portugal: "PT", denmark: "DK", norway: "NO",
+  finland: "FI", austria: "AT", belgium: "BE", "czech republic": "CZ", czechia: "CZ", taiwan: "TW",
+  "hong kong": "HK", china: "CN", "new zealand": "NZ", "south africa": "ZA",
+};
+
+const COUNTRY_CODE_ISO: Record<string, string> = {
+  UK: "GB", "U.K.": "GB", GBR: "GB", CAN: "CA", AUS: "AU", DEU: "DE", GER: "DE", FRA: "FR", IND: "IN",
+  ISR: "IL", IRL: "IE", JPN: "JP", KOR: "KR", SGP: "SG", NLD: "NL", ESP: "ES", ITA: "IT", SWE: "SE",
+  CHE: "CH", BRA: "BR", MEX: "MX", UAE: "AE", POL: "PL", PRT: "PT", DNK: "DK", NOR: "NO", FIN: "FI",
+  AUT: "AT", BEL: "BE", CZE: "CZ", TWN: "TW", HKG: "HK", CHN: "CN", NZL: "NZ", ZAF: "ZA",
+  GB: "GB", CA: "CA", AU: "AU", DE: "DE", FR: "FR", IN: "IN", IL: "IL", IE: "IE", JP: "JP", KR: "KR",
+  SG: "SG", NL: "NL", ES: "ES", IT: "IT", SE: "SE", CH: "CH", BR: "BR", MX: "MX", AE: "AE", PL: "PL",
+  PT: "PT", DK: "DK", NO: "NO", FI: "FI", AT: "AT", BE: "BE", CZ: "CZ", TW: "TW", HK: "HK", CN: "CN",
+  NZ: "NZ", ZA: "ZA",
+};
+
+/**
+ * A non-U.S. postal address the location text names (city + country), or null.
+ * Used for JobPosting when the listing is outside the United States.
+ */
+export function internationalAddress(location: string): { addressLocality?: string; addressRegion?: string; addressCountry: string } | null {
+  if (WORKPLACE_ONLY_LOCATION.test(location.trim())) return null;
+  const parts = location.split(",").map((p) => p.trim()).filter(Boolean);
+  const cleaned = parts.map((p) => p.replace(/^\s*\*?\s*(?:hq|remote|hybrid|on-?site|in-office|distributed)\s*[-–:]\s*/i, "").trim());
+  for (let i = cleaned.length - 1; i >= 0; i--) {
+    const raw = cleaned[i];
+    const stateLike = /^[A-Z]{2}$/.test(raw) && raw in US_STATES;
+    // "San Francisco, CA" is California; "Toronto, CA" is Canada (lookalike cities).
+    if (stateLike && !LOOKALIKE[raw]?.test(cleaned.slice(0, i).join(" "))) continue;
+    const code = countryCode(raw);
+    if (code && code !== "US") {
+      const locality = cleaned.slice(0, i).find((p) => p && !WORKPLACE_ONLY_LOCATION.test(p) && !NOT_A_CITY.test(p));
+      return { ...(locality ? { addressLocality: locality } : {}), addressCountry: code };
+    }
+  }
+  const named = COUNTRY_RE.exec(location);
+  if (named) {
+    const code = countryCode(named[0]);
+    if (code && code !== "US") {
+      const locality = cleaned.find((p) => p && !WORKPLACE_ONLY_LOCATION.test(p) && countryCode(p) !== code && !NOT_A_CITY.test(p));
+      return { ...(locality ? { addressLocality: locality } : {}), addressCountry: code };
+    }
+  }
+  return null;
+}
 /** The employer marks the workplace as remote, or a listed location says "Remote" ("Remote - US", "Remote-Friendly"). */
 export const isRemoteListing = (job: { workplace: string; locations: string[] }) =>
   job.workplace === "remote" || job.locations.some((l) => REMOTE_LOCATION.test(l));

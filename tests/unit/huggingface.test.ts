@@ -27,8 +27,11 @@ import {
   hfItemHero,
   hfItemLd,
   hfModelEntries,
+  hfIndexed,
   hfSearchEntries,
   hfSitemap,
+  HF_DATASET_INDEX_LIMIT,
+  HF_MODEL_INDEX_LIMIT,
   toHfListItem,
   type HfModelEntry,
 } from "@/lib/huggingface/items";
@@ -323,7 +326,7 @@ describe("AI on Hugging Face snapshot", () => {
     expect(derivedModels(base, 1000).some((x) => x.entry.slug === q.slug)).toBe(true);
   });
 
-  it("builds honest JSON-LD, search entries for the top 1,000, and a sitemap of every page", () => {
+  it("builds honest JSON-LD, search entries for the top 1,000, and a sitemap of indexed pages", () => {
     const m = hfModelEntries()[0];
     const d = hfDatasetEntries()[0];
     expect(hfItemLd(m)).toMatchObject({ "@type": "SoftwareSourceCode", codeRepository: `https://huggingface.co/${m.id}` });
@@ -334,6 +337,10 @@ describe("AI on Hugging Face snapshot", () => {
     expect(search.every((s) => s.type === "huggingface-item" && s.href.startsWith("/huggingface/"))).toBe(true);
     const paths = new Set(hfSitemap().map((p) => p.path));
     expect(paths.has(m.href) && paths.has(d.href) && paths.has("/huggingface/page/2/")).toBe(true);
-    expect(paths.size).toBe(hfModelEntries().length + hfDatasetEntries().length + 1 + Math.ceil(hfModelEntries().length / 100) - 1 + Math.ceil(hfDatasetEntries().length / 100) - 1);
+    const indexedModels = hfModelEntries().filter((e) => hfIndexed(e)).length;
+    const indexedDatasets = hfDatasetEntries().filter((e) => hfIndexed(e)).length;
+    expect(indexedModels).toBeLessThanOrEqual(HF_MODEL_INDEX_LIMIT);
+    expect(indexedDatasets).toBeLessThanOrEqual(HF_DATASET_INDEX_LIMIT);
+    expect(paths.size).toBe(indexedModels + indexedDatasets + 1 + Math.ceil(hfModelEntries().length / 100) - 1 + Math.ceil(hfDatasetEntries().length / 100) - 1);
   });
 });

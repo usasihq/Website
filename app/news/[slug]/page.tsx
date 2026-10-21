@@ -9,7 +9,9 @@ import { ShareCite } from "@/components/ShareCite";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
-import { pageMetadata } from "@/lib/metadata";
+import { clipTitle, pageMetadata } from "@/lib/metadata";
+import { newsArticleLd } from "@/lib/structured-data";
+import { JsonLd } from "@/components/JsonLd";
 import { cardImage } from "@/lib/page-cards";
 import { CodeText } from "@/components/CodeText";
 import { plainText } from "@/lib/plain-text";
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const item = getCatalog().newsItem(slug);
   if (!item) return {};
   return pageMetadata({
-    title: item.title,
+    title: clipTitle(item.title),
     description: plainText(item.summary.text).slice(0, 200),
     path: newsHref(item.slug),
     image: cardImage(getCatalog(), newsHref(item.slug)),
@@ -40,6 +42,7 @@ export default async function NewsItemPage({ params }: { params: Promise<{ slug:
   if (!item) notFound();
   return (
     <>
+      <JsonLd data={newsArticleLd(item)} />
       <article>
         <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
           <div className="container-page pb-10 pt-10 sm:pt-12">
