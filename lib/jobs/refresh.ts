@@ -20,6 +20,17 @@ import { fetchWorkday, writeWorkdayMeta, type WdMeta, type WdPayload } from "./w
 
 export const DEFAULT_CONCURRENCY = 4;
 export const DEFAULT_SOURCE_TIMEOUT_MS = 180_000;
+/**
+ * Workday career sites are read page by page and, past 2,000 postings, split by facet;
+ * the largest (NVIDIA, Micron) need about 3 minutes for the list alone, before details.
+ * They get a longer budget so they are not cut off on every run.
+ */
+export const WORKDAY_SOURCE_TIMEOUT_MS = 720_000;
+
+/** The time budget for one source: the base budget, or longer for Workday sites. */
+export function sourceTimeoutMs(org: { careers: { source: { type: string } } }, base: number): number {
+  return org.careers.source.type === "workday" ? Math.max(base, WORKDAY_SOURCE_TIMEOUT_MS) : base;
+}
 const MAX_CONCURRENCY = 8;
 
 export type EnabledOrg = { slug: string; careers: Careers };
@@ -261,8 +272,10 @@ export async function refreshJobs(opts: RefreshOptions): Promise<{
   const timings: { slug: string; result: string; durationMs: number; timedOut: boolean }[] = [];
   let failed = 0;
 
-  await mapPool(opts.orgs, concurrency, async (org) => {
-    const checked = await checkSource(org, { descriptions, workdayMeta }, timeoutMs);
+  // Long-running Workday sites start first so the pool finishes as early as possible.
+  const ordered = [...opts.orgs].sort((a, b) => sourceTimeoutMs(b, timeoutMs) - sourceTimeoutMs(a, timeoutMs));
+  await mapPool(ordered, concurrency, async (org) => {
+    const checked = await checkSource(org, { descriptions, workdayMeta }, sourceTimeoutMs(org, timeoutMs));
     await lock(() => {
       if (checked.skipped) {
         log(`jobs: ${org.slug}: skipped (USAJOBS_API_KEY not set)`);
@@ -288,7 +301,7 @@ export async function refreshJobs(opts: RefreshOptions): Promise<{
   const slowest = [...timings].sort((a, b) => b.durationMs - a.durationMs).slice(0, 8)
     .map((t) => `${t.slug} ${formatSeconds(t.durationMs)}`).join(", ");
   log(`jobs: ${opts.orgs.length} sources checked, ${failed} need attention. Failure preserves previous job state.`);
-  log(`jobs: elapsed ${formatSeconds(elapsedMs)} (concurrency ${concurrency}, per-source budget ${formatSeconds(timeoutMs)})`);
+  log(`jobs: elapsed ${formatSeconds(elapsedMs)} (concurrency ${concurrency}, per-source budget ${formatSeconds(timeoutMs)}, Workday ${formatSeconds(Math.max(timeoutMs, WORKDAY_SOURCE_TIMEOUT_MS))})`);
   if (slowest) log(`jobs: slowest: ${slowest}`);
   return { state, failed, timings, elapsedMs };
 }

@@ -3,6 +3,8 @@ import { Careers, EMPTY_DATASET, type NormalizedJob } from "@/lib/jobs/schema";
 import { reconcile } from "@/lib/jobs/reconcile";
 import { FeedError } from "@/lib/jobs/security";
 import {
+  sourceTimeoutMs,
+  WORKDAY_SOURCE_TIMEOUT_MS,
   checkSource,
   createLock,
   mapPool,
@@ -170,5 +172,13 @@ describe("refreshJobs keeps previous listings on timeout", () => {
     expect(result.state.jobs[0].title).toBe("Research Engineer");
     expect(result.state.feeds[0].result).toBe("network");
     expect(lines.some((l) => l.includes("timed out") && l.includes("previous listings kept"))).toBe(true);
+  });
+});
+
+describe("per-source time budget", () => {
+  it("gives Workday sites a longer budget than the base, and others the base", () => {
+    expect(sourceTimeoutMs({ careers: { source: { type: "workday" } } }, 180_000)).toBe(WORKDAY_SOURCE_TIMEOUT_MS);
+    expect(sourceTimeoutMs({ careers: { source: { type: "greenhouse" } } }, 180_000)).toBe(180_000);
+    expect(sourceTimeoutMs({ careers: { source: { type: "workday" } } }, 900_000)).toBe(900_000);
   });
 });
