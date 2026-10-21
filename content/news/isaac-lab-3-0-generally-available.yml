@@ -1,0 +1,29 @@
+slug: isaac-lab-3-0-generally-available
+title: NVIDIA's Isaac Lab 3.0 is generally available with Newton and standalone OV library backends
+event_date: 2026-10-20
+published_at: 2026-10-21
+category: release
+summary:
+  text: >-
+    The Isaac Lab project published v3.0.0 on GitHub on October 20, 2026, and the release notes say
+    Isaac Lab 3.0 is now generally available and is the recommended baseline for new projects and
+    for migrations from Isaac Lab 2.x. The notes describe one task API across multiple physics,
+    rendering and visualization backends, including Newton, a Warp-native physics backend with
+    MuJoCo-Warp, VBD and MPM solver paths, and OV libraries that provide OVPhysX for PhysX and
+    OVRTX for RTX rendering as standalone libraries. They say Isaac Sim remains available for
+    workflows that need the full PhysX/RTX stack, ROS bridge, XR, livestreaming or Kit tooling, but
+    is now fully optional. The release targets Isaac Sim 6.2, Python 3.12 and PyTorch 2.11 with CUDA
+    13.0. USASI has not tested this release.
+  source_ids: [isaac-lab-v3-0-0]
+related_organizations: [nvidia]
+related_artifacts: [isaac-lab]
+publication_status: published
+updated_at: 2026-10-21
+sources:
+  - id: isaac-lab-v3-0-0
+    title: Isaac Lab v3.0.0 (GitHub release notes)
+    url: https://github.com/isaac-sim/IsaacLab/releases/tag/v3.0.0
+    publisher: Isaac Lab project (NVIDIA)
+    kind: release-notes
+    published_at: 2026-10-20
+    accessed_at: 2026-10-21

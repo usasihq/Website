@@ -1,0 +1,27 @@
+slug: jax-0-12-0-released
+title: JAX 0.12.0 adds a proxy backend and removes jax.custom_remat
+event_date: 2026-10-19
+published_at: 2026-10-21
+category: release
+summary:
+  text: >-
+    The JAX project published JAX v0.12.0 on GitHub on October 19, 2026. The release notes list new
+    features including `jax.lax.polynomial` for polynomial evaluation, `jax.custom_vjp.defremat`
+    for customizing rematerialization, a registered `proxy` backend that connects to an IFRT Proxy
+    server such as Pathways on Cloud, `jax.sharding.no_collectives`, and support for DLPack 1.0.
+    Breaking changes listed include the removal of `jax.custom_remat` in favor of
+    `jax.custom_vjp.defremat`, a requirement on x86-64 for an Intel Haswell or newer CPU with AVX2
+    and FMA support, and a minimum of NumPy 2.2. USASI has not tested this release.
+  source_ids: [jax-v0-12-0]
+related_organizations: [google]
+related_artifacts: [jax]
+publication_status: published
+updated_at: 2026-10-21
+sources:
+  - id: jax-v0-12-0
+    title: JAX v0.12.0 (GitHub release notes)
+    url: https://github.com/jax-ml/jax/releases/tag/jax-v0.12.0
+    publisher: JAX project
+    kind: release-notes
+    published_at: 2026-10-19
+    accessed_at: 2026-10-21

@@ -1,0 +1,38 @@
+slug: nvidia-releases-cosmos3-h-surgical-world-models
+title: NVIDIA releases Cosmos3-H-Embodied-Nano and Cosmos3-H-Dreams surgical robotics world models
+event_date: 2026-10-20
+published_at: 2026-10-21
+category: release
+summary:
+  text: >-
+    NVIDIA published two surgical robotics models on Hugging Face whose model cards give a release
+    date of October 20, 2026, both under the NVIDIA Open Model License Agreement. The
+    Cosmos3-H-Embodied-Nano card describes Cosmos3-Nano post-trained on the Open-H-Embodiment
+    surgical robotics data jointly for forward dynamics, inverse dynamics and policy, so one
+    checkpoint can predict robot actions and endoscopic video. The Cosmos3-H-Dreams card describes
+    a real-time, action-conditioned surgical world model for the CMR Surgical Versius system, built
+    on Cosmos3-H-Embodied-Nano and distilled into a few-step autoregressive student that generates
+    endoscopic video from a camera frame and robot commands. Both cards say the Cosmos3-Nano
+    architecture they inherit includes a Qwen3-VL-8B reasoning tower, and the cards
+    describe intended uses in simulation, policy evaluation and synthetic data generation before
+    use on a physical system. USASI has not tested these models.
+  source_ids: [cosmos3-h-embodied-nano-card, cosmos3-h-dreams-card]
+related_organizations: [nvidia]
+related_artifacts: [cosmos, cosmos3-nano]
+publication_status: published
+updated_at: 2026-10-21
+sources:
+  - id: cosmos3-h-embodied-nano-card
+    title: Cosmos3-H-Embodied-Nano (Hugging Face model card)
+    url: https://huggingface.co/nvidia/Cosmos3-H-Embodied-Nano
+    publisher: NVIDIA
+    kind: model-card
+    published_at: 2026-10-20
+    accessed_at: 2026-10-21
+  - id: cosmos3-h-dreams-card
+    title: Cosmos3-H-Dreams (Hugging Face model card)
+    url: https://huggingface.co/nvidia/Cosmos3-H-Dreams
+    publisher: NVIDIA
+    kind: model-card
+    published_at: 2026-10-20
+    accessed_at: 2026-10-21
