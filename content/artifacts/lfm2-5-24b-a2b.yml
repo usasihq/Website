@@ -1,0 +1,171 @@
+slug: lfm2-5-24b-a2b
+name: LFM2.5-24B-A2B
+kind: model
+record_level: release
+family_slug: lfm
+version: "LFM2.5-24B-A2B"
+maintainers:
+  - name: Liquid AI
+    organization_slug: liquid-ai
+    source_ids: [mc-lfm25-24b-a2b, lfm25-24b-blog]
+organization_slugs: [liquid-ai]
+links:
+  - label: Model card (Hugging Face)
+    url: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B
+    kind: model-hub
+  - label: License (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B/blob/main/LICENSE
+    kind: license
+  - label: Release post
+    url: https://www.liquid.ai/blog/lfm2-5-24b-a2b
+    kind: release-notes
+summary:
+  text: >-
+    A text-only reasoning mixture-of-experts model with 24.0B total and 2.45B active parameters,
+    built from 30 double-gated short-convolution blocks and 10 grouped-query attention blocks,
+    with 64 experts per MoE block and top-4 routing. It keeps the LFM2-24B-A2B architecture but
+    extends the context window to 131,072 tokens and doubles the vocabulary to 128,000 tokens;
+    unlike its predecessor, it always writes a chain of thought before answering. Liquid AI
+    describes it as the final model in the LFM2.5 family.
+  source_ids: [mc-lfm25-24b-a2b, lfm25-24b-blog]
+useful_for:
+  text: >-
+    The model card recommends it for on-device agents that reason and call tools, and says it is
+    not recommended on its own for knowledge-heavy tasks, suggesting it be paired with retrieval
+    or web search instead.
+  source_ids: [mc-lfm25-24b-a2b, lfm25-24b-blog]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Developed and published by Liquid AI, Inc., the licensor named in the model's license file.
+    Liquid AI gives its address as Cambridge, Massachusetts (see the liquid-ai record).
+  source_ids: [mc-lfm25-24b-a2b, lfm25-24b-license-file, liquid-privacy]
+  assessed_at: 2026-10-18
+availability:
+  status: public
+  access_conditions: >-
+    Weights download from Hugging Face without an access gate; use is governed by the LFM Open
+    License v1.0, which conditions commercial-use rights on the licensee's legal entity not
+    exceeding a threshold defined as annual revenue of US$10,000,000 or more. Liquid also offers
+    the model in its Playground and through its paid Liquid Console API.
+  source_ids: [mc-lfm25-24b-a2b, lfm25-24b-license-file, lfm25-24b-blog]
+licenses:
+  - name: LFM Open License v1.0
+    spdx: null
+    url: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B/blob/main/LICENSE
+    applies_to: weights
+    source_ids: [lfm25-24b-license-file, mc-lfm25-24b-a2b]
+license_notes:
+  text: >-
+    Custom Liquid AI license (card license field "lfm1.0") modeled on Apache 2.0. It grants
+    perpetual, royalty-free copyright and patent licenses, requires redistributors to include
+    the license and mark modified files, and ends patent rights for anyone who files patent
+    litigation over the work. Section 5 makes commercial rights conditional on the licensee's
+    legal entity not exceeding a "Threshold" defined as annual revenue of US$10,000,000 or more,
+    and states that commercial use by a legal entity that exceeds the Threshold is not licensed.
+    The Threshold does not apply to a qualified non-profit organization's use for non-commercial
+    or research purposes. Liquid's license page FAQ says fine-tuned models may be kept
+    proprietary and that hosting platforms may host and distribute the models.
+  source_ids: [lfm25-24b-license-file, liquid-lfm-license]
+checklist:
+  weights:
+    status: public
+    note: >-
+      Ungated safetensors weights on Hugging Face; a base checkpoint and FP8, GGUF, ONNX, and
+      MLX 4-bit versions are published as separate repositories.
+    source_ids: [mc-lfm25-24b-a2b, lfm25-24b-blog]
+  inference_code:
+    status: public
+    note: >-
+      The model card documents inference with Hugging Face Transformers (5.0.0 or later), vLLM,
+      SGLang, llama.cpp, MLX, and LM Studio, and gives setup examples for several agent harnesses;
+      no custom modeling code is needed in the repository.
+    source_ids: [mc-lfm25-24b-a2b]
+  training_code:
+    status: unknown
+    note: >-
+      No training code release was found in the model card or release post. Liquid documents
+      fine-tuning with third-party tools (Unsloth, TRL), which is not training code for this
+      release.
+    source_ids: []
+  legacy_training_data_information:
+    status: unknown
+    note: >-
+      The model card and release post give token budgets (about 33T pretraining tokens plus
+      mid-training phases) and broad data emphases, but do not describe data sources or
+      composition.
+    source_ids: []
+  training_recipe:
+    status: partial
+    note: >-
+      The model card and release post describe the stages at a high level: pretraining, two
+      mid-training phases (2T tokens at 32K context, then 300B tokens at 131K context), and a
+      five-stage post-training pipeline of supervised fine-tuning, teacher specialization, two
+      on-policy distillation stages, and agentic reinforcement learning inside agent harnesses.
+      Hyperparameters and data mixes are not given.
+    source_ids: [mc-lfm25-24b-a2b, lfm25-24b-blog]
+  evaluation_materials:
+    status: partial
+    note: >-
+      The model card and release post report benchmark tables and the release post lists
+      generation settings used; evaluation code or prompts are not linked.
+    source_ids: [mc-lfm25-24b-a2b, lfm25-24b-blog]
+run_notes:
+  - text: >-
+      The model card recommends temperature 0.1, top_k 50, and repetition_penalty 1.05, and
+      shows Transformers loading in bfloat16. It lists a DSpark speculative-decoding drafter for
+      SGLang as coming soon.
+    source_ids: [mc-lfm25-24b-a2b]
+provenance:
+  text: >-
+    Post-trained by Liquid AI from its own LFM2.5-24B-A2B-Base checkpoint, which it pretrained
+    itself and released alongside this model; no third-party base model is involved.
+  derived_from:
+    - name: LFM2.5-24B-A2B-Base
+      artifact_slug: null
+      url: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-Base
+      note: Same organization; pretrained base checkpoint.
+  source_ids: [mc-lfm25-24b-a2b, lfm25-24b-blog]
+tags: [language-model, reasoning, mixture-of-experts, local-inference]
+publication_status: published
+archive_note: null
+released_at: 2026-10-13
+updated_at: 2026-10-18
+last_reviewed: 2026-10-18
+sources:
+  - id: mc-lfm25-24b-a2b
+    title: LiquidAI/LFM2.5-24B-A2B model card
+    url: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B
+    publisher: Liquid AI
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: lfm25-24b-license-file
+    title: LFM2.5-24B-A2B LICENSE (LFM Open License v1.0)
+    url: https://huggingface.co/LiquidAI/LFM2.5-24B-A2B/raw/main/LICENSE
+    publisher: Liquid AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: liquid-lfm-license
+    title: LFM License
+    url: https://www.liquid.ai/lfm-license
+    publisher: Liquid AI
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: lfm25-24b-blog
+    title: "LFM2.5-24B-A2B: Built for Fast On-Device Agents"
+    url: https://www.liquid.ai/blog/lfm2-5-24b-a2b
+    publisher: Liquid AI
+    kind: announcement
+    published_at: 2026-10-13
+    accessed_at: 2026-10-18
+  - id: liquid-privacy
+    title: Liquid AI Privacy Policy
+    url: https://www.liquid.ai/privacy-policy
+    publisher: Liquid AI
+    kind: official-page
+    published_at: 2026-09-30
+    accessed_at: 2026-10-18

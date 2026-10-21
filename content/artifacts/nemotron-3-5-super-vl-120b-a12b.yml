@@ -1,0 +1,224 @@
+slug: nemotron-3-5-super-vl-120b-a12b
+name: NVIDIA Nemotron 3.5 Super VL 120B-A12B
+kind: model
+record_level: release
+family_slug: nemotron
+version: "3.5 Super VL (120B-A12B), v1.0 GA"
+maintainers:
+  - name: NVIDIA
+    organization_slug: nvidia
+    source_ids: [super-vl-model-card]
+organization_slugs: [nvidia]
+links:
+  - label: Model card (BF16)
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16
+    kind: model-hub
+  - label: OpenMDW License Agreement, version 1.1
+    url: https://openmdw.ai/license/1-1/
+    kind: license
+  - label: Nemotron 3.5 Super training recipe
+    url: https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/super35/README.md
+    kind: documentation
+  - label: Release announcement
+    url: https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/
+    kind: release-notes
+summary:
+  text: >-
+    Nemotron 3.5 Super VL is an NVIDIA vision-language model with 120B total and 12B active
+    parameters. It pairs a hybrid Mamba-2 and attention mixture-of-experts language backbone
+    with a C-RADIO vision encoder, accepts text, image, and video input with text output,
+    supports a context of up to 1M tokens, and includes a multi-token prediction head for
+    speculative decoding. NVIDIA published BF16 and NVFP4 post-trained checkpoints and a
+    text-only base checkpoint.
+  source_ids: [super-vl-model-card, super35-recipe-doc, nvidia-blog-super-vl]
+useful_for:
+  text: >-
+    The model card lists reasoning, coding, tool use, document understanding, and video
+    understanding, and describes the BF16 weights as intended for customization, domain
+    adaptation, quantized variants, and full-precision evaluation. It states the model is ready
+    for commercial or non-commercial use.
+  source_ids: [super-vl-model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    The model card names NVIDIA Corporation as the model developer. NVIDIA's principal
+    executive offices are in Santa Clara, California, per its Form 10-Q for the quarter ended
+    July 26, 2026.
+  source_ids: [super-vl-model-card, nvidia-10q-q2fy2027]
+  assessed_at: 2026-10-18
+availability:
+  status: public
+  reviewed_at: 2026-10-18
+  access_conditions: >-
+    Weights are downloadable from Hugging Face under the OpenMDW-1.1 license named in the model
+    card; the repository metadata showed the repository as public with no access gate when
+    checked.
+  source_ids: [super-vl-model-card, super-vl-hf-metadata]
+licenses:
+  - name: OpenMDW License Agreement, version 1.1
+    spdx: null
+    url: https://openmdw.ai/license/1-1/
+    applies_to: weights
+    reviewed_at: 2026-10-18
+    source_ids: [super-vl-model-card, openmdw-1-1]
+  - name: Apache License 2.0 (Nemotron Developer Repository training recipes)
+    spdx: Apache-2.0
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/LICENSE
+    applies_to: code
+    reviewed_at: 2026-10-18
+    source_ids: [nemotron-repo-license]
+license_notes:
+  text: >-
+    The model card's license field and its terms-of-use section name OpenMDW-1.1 and link to the
+    text on openmdw.ai; no separate LICENSE file was present in the model repository when
+    checked. OpenMDW-1.1 grants free permission to use, modify, and share the model materials
+    without restriction, including under copyright, patent, database, and trade secret rights.
+    Redistributors must include a copy of the agreement and keep applicable notices of origin.
+    Rights end for anyone who sues claiming the materials infringe a patent or copyright, unless
+    responding to a suit brought first. It places no conditions on outputs, disclaims
+    warranties, and leaves clearing third-party rights to the user. No SPDX ID is recorded for
+    version 1.1.
+  source_ids: [super-vl-model-card, super-vl-hf-metadata, openmdw-1-1]
+checklist:
+  weights:
+    status: public
+    reviewed_at: 2026-10-18
+    note: >-
+      The BF16 post-trained weights are published on Hugging Face; NVIDIA's recipe also lists
+      NVFP4 and text-only base BF16 checkpoints.
+    source_ids: [super-vl-model-card, super-vl-hf-metadata, super35-recipe-doc]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-18
+    note: The model card gives serving instructions for vLLM and SGLang; the repository includes custom Transformers modeling code.
+    source_ids: [super-vl-model-card, super-vl-hf-metadata]
+  training_code:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The Apache-2.0 Nemotron Developer Repository provides SFT, RL, and evaluation recipes. NVIDIA
+      states the text-only pretraining pipeline is not reproduced there, and that the agentic
+      teacher and one vision-reasoning stage depend on NeMo Gym components that are not public.
+    source_ids: [super35-recipe-doc, nemotron-repo-license]
+  training_pipeline:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      Post-training stages are published as reference recipes; the base pretraining pipeline is
+      not, because it depends on teacher logits and data that NVIDIA says are not public.
+    source_ids: [super35-recipe-doc]
+  training_recipe:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card and recipe describe each training stage; NVIDIA links a technical report.
+      The recipe says the SFT and RL data are not yet published and that MTP boosting is not
+      included, so recipes run on the user's own data.
+    source_ids: [super-vl-model-card, super35-recipe-doc]
+  training_data_information:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card lists pre- and post-training datasets with collection periods, sources, and
+      the models used to generate synthetic data, and links a public training content summary.
+      Several third-party and NVIDIA datasets are listed as private, some with undisclosed
+      sizes or generation models.
+    source_ids: [super-vl-model-card]
+  training_data_access:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The pretraining corpus is drawn from NVIDIA's public Nemotron pretraining dataset
+      collection, while the SFT and RL data used for this release are not yet published and some
+      listed datasets are private.
+    source_ids: [super-vl-model-card, super35-recipe-doc]
+  evaluation_materials:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card publishes benchmark results collected via NeMo Gym and points to its
+      reproducibility recipes; it says several vision benchmarks used official implementations or
+      internal scaffolding not yet open-sourced.
+    source_ids: [super-vl-model-card]
+run_notes:
+  - text: >-
+      The model card documents serving the BF16 checkpoint with vLLM or SGLang on 4x H100 (tensor
+      parallel 4) or 2x GB200 (tensor parallel 2), with native MTP speculative decoding, and
+      points to the NVFP4 checkpoint for DGX Spark or more efficient data-center inference. It
+      lists Linux as the operating system and NVIDIA Hopper and Blackwell as supported hardware.
+    source_ids: [super-vl-model-card]
+provenance:
+  text: >-
+    NVIDIA initialized the language backbone from its Nemotron 3 Super Base model, distilled it
+    from Nemotron 3 Ultra Base, and added NVIDIA's C-RADIO vision encoder and a connector during
+    supervised fine-tuning; the card does not state the encoder's version or lineage. The model
+    card says synthetic training data was generated or filtered with many third-party models,
+    including non-U.S. models such as Qwen, DeepSeek, Kimi, and GLM releases, alongside U.S.
+    models such as gpt-oss-120b and Gemma. These were data-generation tools, not base weights.
+  derived_from:
+    - name: Nemotron 3 Super Base
+      artifact_slug: null
+      url: null
+      note: NVIDIA base model used to initialize the language backbone.
+    - name: C-RADIO vision encoder
+      artifact_slug: null
+      url: null
+      note: NVIDIA vision encoder named in the model card; version not stated.
+  source_ids: [super-vl-model-card, super35-recipe-doc]
+tags: [vision-language, multimodal, reasoning, mixture-of-experts]
+publication_status: published
+archive_note: null
+released_at: 2026-10-15
+updated_at: 2026-10-18
+last_reviewed: 2026-10-18
+sources:
+  - id: super-vl-model-card
+    title: NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16 model card
+    url: https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16/raw/main/README.md
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-15
+    accessed_at: 2026-10-18
+  - id: super-vl-hf-metadata
+    title: Hugging Face model metadata for nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16
+    url: https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: openmdw-1-1
+    title: OpenMDW License Agreement, version 1.1 (OpenMDW-1.1)
+    url: https://openmdw.ai/license/1-1/
+    publisher: OpenMDW (The Linux Foundation)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: nemotron-repo-license
+    title: NVIDIA Nemotron Developer Repository LICENSE (Apache License 2.0)
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/LICENSE
+    publisher: NVIDIA (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: super35-recipe-doc
+    title: Nemotron 3.5 Super Training Recipe
+    url: https://raw.githubusercontent.com/NVIDIA-NeMo/Nemotron/main/docs/nemotron/super35/README.md
+    publisher: NVIDIA (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: nvidia-blog-super-vl
+    title: "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models"
+    url: https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-18
+  - id: nvidia-10q-q2fy2027
+    title: NVIDIA Corporation Form 10-Q for the quarter ended July 26, 2026
+    url: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm
+    publisher: U.S. Securities and Exchange Commission (EDGAR)
+    kind: filing
+    published_at: null
+    accessed_at: 2026-10-18

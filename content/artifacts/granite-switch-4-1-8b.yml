@@ -1,0 +1,262 @@
+slug: granite-switch-4-1-8b
+name: Granite Switch 4.1 8B
+kind: model
+record_level: release
+family_slug: granite
+version: "Switch 4.1 (8B)"
+maintainers:
+  - name: IBM (Granite Team)
+    organization_slug: ibm
+    source_ids: [model-card, launch-blog]
+organization_slugs: [ibm]
+links:
+  - label: Model card
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-8b
+    kind: model-hub
+  - label: Granite Switch repository
+    url: https://github.com/generative-computing/granite-switch
+    kind: repository
+  - label: Launch blog
+    url: https://huggingface.co/blog/ibm-granite/granite-switch-4-1
+    kind: release-notes
+  - label: Apache License 2.0 (Granite Switch repository)
+    url: https://github.com/generative-computing/granite-switch/blob/main/LICENSE
+    kind: license
+summary:
+  text: >-
+    Granite Switch 4.1 8B is a composed checkpoint from IBM that pairs the Granite 4.1 8B language
+    model with two activated-LoRA adapters (a general decision adapter and a Guardian safety-risk
+    detector) and a speech-to-text cascade, so chat, decision, safety-check, and transcription
+    requests can be served from one endpoint. Adapters are switched on through control tokens in
+    the chat template.
+  source_ids: [model-card, launch-blog, build-md]
+  reviewed_at: 2026-10-18
+useful_for:
+  text: >-
+    The model card describes chat responses, multiple-choice decisions returned as probabilities
+    over option labels, detection of safety risks such as harm or jailbreaking, and English
+    speech transcription on the same endpoint.
+  source_ids: [model-card]
+eligibility:
+  status: eligible
+  basis: us-headquarters
+  explanation: >-
+    Published by IBM's Granite organization on Hugging Face and announced on IBM's Granite blog.
+    IBM's corporate address is in Armonk, New York, per its U.S. contact page. The base model,
+    both adapters, and the speech model are IBM releases; no other developer's weights are
+    included by default.
+  source_ids: [model-card, launch-blog, base-model-card, speech-model-card, ibm-contact]
+  assessed_at: 2026-10-18
+availability:
+  status: public
+  reviewed_at: 2026-10-18
+  access_conditions: >-
+    Weights are downloadable from Hugging Face; the repository is not gated. Apache 2.0 terms
+    apply.
+  source_ids: [model-card, hf-api]
+licenses:
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+    applies_to: weights
+    reviewed_at: 2026-10-18
+    source_ids: [model-card]
+  - name: Apache License 2.0
+    spdx: Apache-2.0
+    url: https://github.com/generative-computing/granite-switch/blob/main/LICENSE
+    applies_to: code
+    reviewed_at: 2026-10-18
+    source_ids: [switch-license]
+license_notes:
+  text: >-
+    The model card metadata and summary list Apache 2.0 for the checkpoint. The Granite Switch
+    composition and inference code is published under Apache 2.0 in its repository LICENSE file.
+  source_ids: [model-card, switch-license]
+  reviewed_at: 2026-10-18
+checklist:
+  weights:
+    status: public
+    reviewed_at: 2026-10-18
+    note: >-
+      Bfloat16 safetensors shards with the adapters embedded are published in the Hugging Face
+      repository.
+    source_ids: [model-card, hf-api, hf-config]
+  inference_code:
+    status: public
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card documents inference with Hugging Face Transformers and vLLM through the
+      open Granite Switch package, and the repository ships the chat template with the adapter
+      activation logic.
+    source_ids: [model-card, switch-readme]
+  training_code:
+    status: unknown
+    note: >-
+      The composition script that rebuilds this checkpoint from the base model and adapters is
+      public, but this review did not assess training code for the base model, adapters, or
+      speech model.
+    source_ids: []
+  training_data_information:
+    status: unknown
+    note: null
+    source_ids: []
+  training_recipe:
+    status: unknown
+    note: >-
+      BUILD.md documents the composition (adapter ranks, alpha values, and target modules). The
+      training procedures of the composed components were not assessed in this review.
+    source_ids: []
+  evaluation_materials:
+    status: partial
+    reviewed_at: 2026-10-18
+    note: >-
+      The model card reports results for the decision adapter on a public decision benchmark and
+      describes the invocation recipe; no evaluation code or configurations were found for this
+      release.
+    source_ids: [model-card]
+run_notes:
+  - text: >-
+      The model card lists Python 3.9 or later, PyTorch 2.11.0 or later, Transformers 5.16 to
+      5.17.0, and optionally vLLM 0.26.0 up to (not including) 0.28.0, and documents serving the
+      checkpoint with the vLLM OpenAI-compatible server.
+    source_ids: [model-card]
+    reviewed_at: 2026-10-18
+  - text: >-
+      The model card describes the base model as having 8 billion parameters and a context length
+      of 131,072 tokens; config.json sets max_position_embeddings to 131,072. BUILD.md reports
+      8,776,400,896 parameters after composing the base model with the two adapters.
+    source_ids: [model-card, hf-config, build-md]
+    reviewed_at: 2026-10-18
+  - text: >-
+      The speech-to-text cascade is English-only and returns lowercase, unpunctuated transcripts;
+      the card notes the speech model and the language model are not jointly trained, so a
+      mistranscription can change the response. The checkpoint's config.json leaves asr_model_id
+      unset, which per the Granite Switch audio documentation selects
+      ibm-granite/granite-speech-5.0-470m-turboctc and can be overridden.
+    source_ids: [model-card, hf-config, audio-doc]
+    reviewed_at: 2026-10-18
+provenance:
+  text: >-
+    Composed by IBM, without joint training, from its own Granite 4.1 8B instruct model, the
+    guardian-core aLoRA from IBM's Granite Guardian Library r1.0, the decision aLoRA from IBM's
+    Granite Core Library r1.0, and IBM's Granite Speech 5.0 470M TurboCTC speech model. Granite
+    4.1 8B is fine-tuned from IBM's Granite 4.1 8B Base.
+  derived_from:
+    - name: Granite 4.1 8B
+      artifact_slug: null
+      url: https://huggingface.co/ibm-granite/granite-4.1-8b
+      note: IBM base language model; its card names the Granite Team, IBM as developer.
+    - name: Granite Guardian Library r1.0 (guardian-core aLoRA)
+      artifact_slug: null
+      url: https://huggingface.co/ibm-granite/granitelib-guardian-r1.0
+      note: IBM adapter library with adapters for Granite 4.0 and 4.1 models.
+    - name: Granite Core Library r1.0 (decision aLoRA)
+      artifact_slug: null
+      url: https://huggingface.co/ibm-granite/granitelib-core-r1.0
+      note: IBM adapter library with adapters for Granite 4.0 and 4.1 models.
+    - name: Granite Speech 5.0 470M TurboCTC
+      artifact_slug: null
+      url: https://huggingface.co/ibm-granite/granite-speech-5.0-470m-turboctc
+      note: >-
+        IBM English speech-recognition model (conformer CTC encoder); its card says it was
+        trained by IBM on public English audio corpora.
+  source_ids: [model-card, build-md, base-model-card, guardian-lib-card, core-lib-card, speech-model-card]
+tags: [language-model, speech, multimodal]
+publication_status: published
+archive_note: null
+released_at: 2026-10-14
+updated_at: 2026-10-18
+last_reviewed: 2026-10-18
+sources:
+  - id: model-card
+    title: ibm-granite/granite-switch-4.1-8b model card
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-8b
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: 2026-10-14
+    accessed_at: 2026-10-18
+    reviewed_at: 2026-10-18
+  - id: hf-api
+    title: Hugging Face API metadata for ibm-granite/granite-switch-4.1-8b
+    url: https://huggingface.co/api/models/ibm-granite/granite-switch-4.1-8b
+    publisher: Hugging Face
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: hf-config
+    title: ibm-granite/granite-switch-4.1-8b config.json
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-8b/raw/main/config.json
+    publisher: IBM (Hugging Face)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: build-md
+    title: ibm-granite/granite-switch-4.1-8b BUILD.md
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-8b/blob/main/BUILD.md
+    publisher: IBM (Hugging Face)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: launch-blog
+    title: "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint"
+    url: https://huggingface.co/blog/ibm-granite/granite-switch-4-1
+    publisher: IBM Granite (Hugging Face blog)
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-18
+  - id: switch-readme
+    title: Granite Switch repository README
+    url: https://github.com/generative-computing/granite-switch
+    publisher: Generative Computing (GitHub)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: switch-license
+    title: granite-switch LICENSE
+    url: https://github.com/generative-computing/granite-switch/blob/main/LICENSE
+    publisher: Generative Computing (GitHub)
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: audio-doc
+    title: Granite Switch audio documentation (docs/AUDIO.md)
+    url: https://github.com/generative-computing/granite-switch/blob/main/docs/AUDIO.md
+    publisher: Generative Computing (GitHub)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: base-model-card
+    title: ibm-granite/granite-4.1-8b model card
+    url: https://huggingface.co/ibm-granite/granite-4.1-8b
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: 2026-04-29
+    accessed_at: 2026-10-18
+  - id: guardian-lib-card
+    title: ibm-granite/granitelib-guardian-r1.0 model card
+    url: https://huggingface.co/ibm-granite/granitelib-guardian-r1.0
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: core-lib-card
+    title: ibm-granite/granitelib-core-r1.0 model card
+    url: https://huggingface.co/ibm-granite/granitelib-core-r1.0
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-18
+  - id: speech-model-card
+    title: ibm-granite/granite-speech-5.0-470m-turboctc model card
+    url: https://huggingface.co/ibm-granite/granite-speech-5.0-470m-turboctc
+    publisher: IBM (Hugging Face)
+    kind: model-card
+    published_at: 2026-08-25
+    accessed_at: 2026-10-18
+  - id: ibm-contact
+    title: IBM contact page (United States)
+    url: https://www.ibm.com/contact/us/en
+    publisher: IBM
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-18
