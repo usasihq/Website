@@ -428,6 +428,13 @@
     border-color: var(--cyan);
     background: rgb(var(--cyan-rgb) / 0.08);
   }
+  /* Inactive prev/next: muted text, no opacity fade (opacity fails WCAG contrast). */
+  .btn-inactive {
+    background: var(--field-bg);
+    color: var(--muted);
+    border: 1px solid var(--line);
+    pointer-events: none;
+  }
 
   .badge {
     display: inline-flex;

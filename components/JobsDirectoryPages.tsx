@@ -17,7 +17,7 @@ function PaginationNav({ current, count }: { current: number; count: number }) {
           Previous
         </Link>
       ) : (
-        <span className="btn btn-secondary pointer-events-none opacity-50">Previous</span>
+        <span className="btn btn-inactive" aria-disabled="true">Previous</span>
       )}
       {pageWindow(current, count).map((item, i) =>
         item === "…" ? (
@@ -41,7 +41,7 @@ function PaginationNav({ current, count }: { current: number; count: number }) {
           Next
         </Link>
       ) : (
-        <span className="btn btn-secondary pointer-events-none opacity-50">Next</span>
+        <span className="btn btn-inactive" aria-disabled="true">Next</span>
       )}
     </nav>
   );
