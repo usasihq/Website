@@ -122,14 +122,29 @@ window.fill = function (c) {
 </script></body></html>`;
 
   const browser = await chromium.launch();
+  const openPage = async () => {
+    const p = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
+    await p.setContent(template, { waitUntil: "load" });
+    await p.evaluate(() => document.fonts.ready);
+    return p;
+  };
   try {
-    const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
-    await page.setContent(template, { waitUntil: "load" });
-    await page.evaluate(() => document.fonts.ready);
+    let page = await openPage();
     for (const c of todo) {
-      await page.evaluate((card) => (window as unknown as { fill: (c: unknown) => void }).fill(card), c);
       fs.mkdirSync(path.dirname(fileOf(c)), { recursive: true });
-      await page.screenshot({ type: "jpeg", quality: 82, path: fileOf(c) });
+      // Chromium occasionally fails one capture on long runs; reopen the page and retry instead of losing the batch.
+      for (let attempt = 1; ; attempt++) {
+        try {
+          await page.evaluate((card) => (window as unknown as { fill: (c: unknown) => void }).fill(card), c);
+          await page.screenshot({ type: "jpeg", quality: 82, path: fileOf(c) });
+          break;
+        } catch (err) {
+          if (attempt >= 3) throw err;
+          console.warn(`page-cards: retrying ${c.image} after: ${(err as Error).message.split("\n")[0]}`);
+          await page.close().catch(() => {});
+          page = await openPage();
+        }
+      }
       manifest[c.image] = hashOf(c);
     }
   } finally {
