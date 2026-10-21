@@ -15,7 +15,7 @@ bio:
     vision-language assistant for biomedical images, and of the Medprompt study of prompting generalist
     foundation models on medical benchmarks.
   source_ids: [msr-forum-keynote, llava-med-paper, medprompt-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Microsoft Health Futures (Microsoft Research)
     organization_slug: microsoft
@@ -51,9 +51,55 @@ work:
       dilated attention to whole-slide images, and published in Nature.
     source_ids: [msr-forum-keynote]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Poon's early work with Pedro Domingos introduced sum-product networks, a deep probabilistic
+          architecture that grew out of asking when the partition function of a graphical model is tractable.
+          The paper showed that essentially all tractable graphical models can be cast as sum-product networks.
+        source_ids: [spn-paper]
+      - text: >-
+          Later research turned to biomedicine. Poon co-authored PubMedBERT, which showed the value
+          of pretraining language models from scratch on biomedical text, and BioGPT, a generative transformer
+          for biomedical text generation and mining. Multimodal follow-ups included BiomedCLIP, trained on
+          image-text pairs from scientific articles, the LLaVA-Med assistant and BiomedParse for parsing
+          biomedical images.
+        source_ids: [pubmedbert-paper, biogpt-paper, biomedclip-paper, llava-med-paper, biomedparse-paper]
+      - text: >-
+          In a February 2025 Microsoft Research Forum keynote, Poon set out an agenda for precision health that
+          uses generative AI to learn patient embeddings from multimodal, longitudinal patient records. The talk
+          described GigaPath, a digital pathology foundation model developed with Providence Health System and
+          the University of Washington.
+        source_ids: [msr-forum-keynote]
+timeline:
+  - date: "2012-02"
+    text: Posted "Sum-Product Networks, A New Deep Architecture" with Pedro Domingos as first author.
+    source_ids: [spn-paper]
+  - date: "2020-07"
+    text: Co-authored PubMedBERT, on domain-specific language model pretraining for biomedical NLP.
+    source_ids: [pubmedbert-paper]
+  - date: "2022-10"
+    text: Co-authored BioGPT, a generative pre-trained transformer for biomedical text.
+    source_ids: [biogpt-paper]
+  - date: "2023-03"
+    text: Co-authored BiomedCLIP, a multimodal biomedical foundation model.
+    source_ids: [biomedclip-paper]
+  - date: "2023-06"
+    text: Co-authored LLaVA-Med, a language-and-vision assistant for biomedicine.
+    source_ids: [llava-med-paper]
+  - date: "2023-11"
+    text: Co-authored the Medprompt study of generalist foundation models in medicine.
+    source_ids: [medprompt-paper]
+  - date: "2024-05"
+    text: Co-authored BiomedParse, a biomedical foundation model for image parsing.
+    source_ids: [biomedparse-paper]
+  - date: "2025-02"
+    text: Gave a Microsoft Research Forum keynote on multimodal generative AI for precision health.
+    source_ids: [msr-forum-keynote]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: msr-forum-keynote
     title: "Keynote: Multimodal Generative AI for Precision Health — Microsoft Research Forum"
@@ -61,18 +107,53 @@ sources:
     publisher: Microsoft Research
     kind: official-page
     published_at: 2025-02-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llava-med-paper
     title: "LLaVA-Med: Training a Large Language-and-Vision Assistant for Biomedicine in One Day (arXiv 2306.00890)"
     url: https://arxiv.org/abs/2306.00890
     publisher: arXiv
     kind: paper
     published_at: 2023-06-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: medprompt-paper
     title: "Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study in Medicine (arXiv 2311.16452)"
     url: https://arxiv.org/abs/2311.16452
     publisher: arXiv
     kind: paper
     published_at: 2023-11-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: spn-paper
+    title: "Sum-Product Networks: A New Deep Architecture (arXiv 1202.3732)"
+    url: https://arxiv.org/abs/1202.3732
+    publisher: arXiv
+    kind: paper
+    published_at: 2012-02-14
+    accessed_at: 2026-10-21
+  - id: pubmedbert-paper
+    title: Domain-Specific Language Model Pretraining for Biomedical Natural Language Processing (arXiv 2007.15779)
+    url: https://arxiv.org/abs/2007.15779
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-07-31
+    accessed_at: 2026-10-21
+  - id: biogpt-paper
+    title: "BioGPT: Generative Pre-trained Transformer for Biomedical Text Generation and Mining (arXiv 2210.10341)"
+    url: https://arxiv.org/abs/2210.10341
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-19
+    accessed_at: 2026-10-21
+  - id: biomedclip-paper
+    title: "BiomedCLIP: a multimodal biomedical foundation model pretrained from fifteen million scientific image-text pairs (arXiv 2303.00915)"
+    url: https://arxiv.org/abs/2303.00915
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-02
+    accessed_at: 2026-10-21
+  - id: biomedparse-paper
+    title: "BiomedParse: a biomedical foundation model for image parsing of everything everywhere all at once (arXiv 2405.12971)"
+    url: https://arxiv.org/abs/2405.12971
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-21
+    accessed_at: 2026-10-21

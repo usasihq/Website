@@ -17,7 +17,7 @@ bio:
     big-endian GGUF models, including IBM Granite models, verified to run on IBM z15 and later
     systems.
   source_ids: [github-profile, llama-cpp-codeowners, zdnn-doc, s390x-doc, llama-cpp-commits, hf-collection]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM
     organization_slug: ibm
@@ -54,9 +54,43 @@ work:
 links:
   - label: GitHub
     url: https://github.com/taronaeo
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Aaron Teo's work on llama.cpp brings the inference engine to IBM Z and LinuxONE mainframes.
+          Teo's first merged pull request, in February 2025, added support for the s390x SIMD
+          instruction set to the ggml CPU backend, followed by changes such as big-endian model
+          conversion and z17 compile detection.
+        source_ids: [pr-s390x-simd, teo-merged-prs, llama-cpp-commits]
+      - text: >-
+          In August 2025 Teo's pull request introducing an initial IBM zDNN backend was merged. The
+          backend uses IBM's zDNN library to run inference on the Neural Network Processor Assist
+          accelerator in IBM Telum processors, and llama.cpp's CODEOWNERS file lists Teo, as the
+          ggml-zdnn team, among its owners and as a member of the CI team.
+        source_ids: [pr-zdnn, zdnn-doc, llama-cpp-codeowners]
+      - text: >-
+          Teo's recent commits, through October 2026, add operations to the zDNN backend such as flash
+          attention and Q8_0 matrix multiplication, vectorize CPU activation functions, and update the
+          zDNN and s390x build documentation. Teo also maintains a Hugging Face collection of
+          big-endian GGUF models verified to run on IBM z15 and later systems.
+        source_ids: [llama-cpp-commits, s390x-doc, hf-collection]
+timeline:
+  - date: 2025-02-22
+    text: Added s390x SIMD instruction set support to the llama.cpp CPU backend.
+    source_ids: [pr-s390x-simd, teo-merged-prs]
+  - date: 2025-04-30
+    text: Added z17 compile detection to the ggml CPU backend.
+    source_ids: [teo-merged-prs]
+  - date: 2025-08-15
+    text: Merged the initial IBM zDNN backend into llama.cpp.
+    source_ids: [pr-zdnn, teo-merged-prs]
+  - date: 2026-10-20
+    text: Added a flash attention operation to the llama.cpp zDNN backend.
+    source_ids: [llama-cpp-commits]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: taronaeo (Aaron Teo) on GitHub
@@ -64,46 +98,67 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: zdnn-doc
     title: llama.cpp for IBM zDNN Accelerator (docs/backend/zDNN.md)
     url: https://github.com/ggml-org/llama.cpp/blob/master/docs/backend/zDNN.md
     publisher: ggml-org (GitHub repository)
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: s390x-doc
     title: llama.cpp build guide for IBM Z and LinuxONE (docs/build-s390x.md)
     url: https://github.com/ggml-org/llama.cpp/blob/master/docs/build-s390x.md
     publisher: ggml-org (GitHub repository)
     kind: documentation
     published_at: 2026-09-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by taronaeo
     url: https://github.com/ggml-org/llama.cpp/commits?author=taronaeo
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-collection
     title: s390x Verified Models — Hugging Face collection by taronaeo
     url: https://huggingface.co/collections/taronaeo/s390x-verified-models-672765393af438d0ccb72a08
     publisher: Hugging Face
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: pr-s390x-simd
+    title: "ggml-cpu: Support s390x SIMD Instruction Set (ggml-org/llama.cpp pull request #12019)"
+    url: https://github.com/ggml-org/llama.cpp/pull/12019
+    publisher: ggml-org/llama.cpp (GitHub repository)
+    kind: repository
+    published_at: 2025-02-22
+    accessed_at: 2026-10-21
+  - id: pr-zdnn
+    title: "ggml: initial IBM zDNN backend (ggml-org/llama.cpp pull request #14975)"
+    url: https://github.com/ggml-org/llama.cpp/pull/14975
+    publisher: ggml-org/llama.cpp (GitHub repository)
+    kind: repository
+    published_at: 2025-08-15
+    accessed_at: 2026-10-21
+  - id: teo-merged-prs
+    title: ggml-org/llama.cpp merged pull requests authored by taronaeo
+    url: https://github.com/ggml-org/llama.cpp/pulls?q=is%3Apr+author%3Ataronaeo+is%3Amerged+sort%3Acreated-asc
+    publisher: ggml-org/llama.cpp (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

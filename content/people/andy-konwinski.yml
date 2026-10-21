@@ -16,7 +16,7 @@ bio:
     co-created the Terminal-Bench benchmark with Ludwig Schmidt's group at Stanford, and Konwinski is
     a co-author of the Terminal-Bench paper.
   source_ids: [konwinski-about, laude-site, spark-committers, mesos-paper, tb-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Laude Institute and Laude Ventures
     organization_slug: null
@@ -71,9 +71,76 @@ links:
     url: https://andykonwinski.com
   - label: GitHub
     url: https://github.com/andyk
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Konwinski completed a PhD in computer science at UC Berkeley, where Konwinski contributed to Hadoop,
+          co-created the Mesos cluster manager and was part of the team that created Spark. During graduate
+          school Konwinski also worked at Google on the Omega cluster scheduler. Konwinski then co-founded
+          Databricks, serving as VP Product AI/ML, creating the Data + AI Summit and co-writing the O'Reilly
+          book Learning Spark.
+        source_ids: [konwinski-about, mesos-paper]
+      - text: >-
+          AWS's startup profile of Perplexity names Konwinski as one of its four founding engineers in 2022,
+          and Konwinski's site says Konwinski was the company's founding President. Konwinski later co-founded
+          Laude Institute, which gives grants and support to computer scientists turning research into startups
+          or open-source infrastructure, and Laude Ventures. Konwinski also teaches a Berkeley PhD seminar
+          called Research to Startups.
+        source_ids: [aws-perplexity-article, konwinski-about, laude-site, laude-ventures-post]
+  - heading: Agents and benchmarks
+    paragraphs:
+      - text: >-
+          In May 2024 Konwinski introduced Headless Terminal (ht), an open-source program built with the
+          creator of asciinema that wraps a terminal so that language-model agents can send it input and read
+          text screenshots of its state. In December 2024 Konwinski announced the K Prize, a competition run at
+          Laude for open-source AI that can solve a contamination-free version of the SWE-bench coding
+          benchmark, with a new test set collected after the submission deadline.
+        source_ids: [headless-terminal-post, ht-repo, k-prize-post, konwinski-about]
+      - text: >-
+          At Laude, Konwinski's team co-created the Terminal-Bench benchmark and the Harbor framework with
+          Ludwig Schmidt's group at Stanford. The Terminal-Bench paper, posted in January 2026 with Konwinski
+          among the authors, presents Terminal-Bench 2.0, a set of hard tasks in computer terminal environments
+          for evaluating AI agents.
+        source_ids: [konwinski-about, tb-paper, laude-site]
+timeline:
+  - date: "2011-03"
+    text: Mesos, co-authored by Konwinski, was published at the 8th USENIX NSDI symposium.
+    source_ids: [mesos-paper, nsdi-test-of-time]
+  - date: "2013"
+    text: The Omega cluster scheduler paper from Konwinski's work at Google received the EuroSys Best Student Paper award.
+    source_ids: [konwinski-about]
+  - date: "2022"
+    text: Co-founded Perplexity with Aravind Srinivas, Denis Yarats and Johnny Ho.
+    source_ids: [aws-perplexity-article]
+  - date: "2024-05-31"
+    text: Introduced Headless Terminal, an open-source tool that lets agents operate terminal programs.
+    source_ids: [headless-terminal-post, ht-repo]
+  - date: "2024-12-10"
+    text: Announced Laude Ventures on Konwinski's site.
+    source_ids: [laude-ventures-post]
+  - date: "2024-12-12"
+    text: Announced the K Prize, a contamination-free SWE-bench competition for open-source AI.
+    source_ids: [k-prize-post]
+  - date: "2026-01"
+    text: Co-authored the Terminal-Bench paper on benchmarking agents in command-line interfaces.
+    source_ids: [tb-paper]
+honors:
+  - name: NSDI Test of Time Award (Mesos)
+    year: 2021
+    awarded_by: USENIX
+    source_ids: [nsdi-test-of-time, konwinski-about]
+  - name: EuroSys Best Student Paper (Omega)
+    year: 2013
+    awarded_by: EuroSys
+    source_ids: [konwinski-about]
+  - name: EuroSys Test of Time Award (Omega)
+    year: 2023
+    awarded_by: EuroSys
+    source_ids: [konwinski-about]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: konwinski-about
     title: About Me | Andy Konwinski
@@ -81,46 +148,81 @@ sources:
     publisher: Andy Konwinski
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: laude-site
     title: Laude — homepage and team listing
     url: https://www.laude.org/
     publisher: Laude
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: aws-perplexity-article
     title: "Reimagining search: Perplexity drives productivity with generative AI-powered answer engine (AWS Startups)"
     url: https://aws.amazon.com/aws-startups/learn/reimagining-search-perplexity-drives-productivity-with-generative-ai-powered-answer-engine/
     publisher: Amazon Web Services (byline Denis Yarats and Marcos Boaglio)
     kind: official-page
     published_at: 2024-11-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: spark-committers
     title: Committers | Apache Spark
     url: https://spark.apache.org/committers.html
     publisher: Apache Spark (Apache Software Foundation)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: spark-repo
     title: apache/spark repository (Apache-2.0 license)
     url: https://github.com/apache/spark
     publisher: Apache Software Foundation (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mesos-paper
     title: "Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center (NSDI '11)"
     url: https://www.usenix.org/conference/nsdi11/mesos-platform-fine-grained-resource-sharing-data-center
     publisher: USENIX
     kind: paper
     published_at: 2011-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tb-paper
     title: "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces (arXiv 2601.11868)"
     url: https://arxiv.org/abs/2601.11868
     publisher: arXiv
     kind: paper
     published_at: 2026-01-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: nsdi-test-of-time
+    title: USENIX Test of Time Awards
+    url: https://www.usenix.org/conferences/test-of-time-awards
+    publisher: USENIX
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: headless-terminal-post
+    title: Introducing Headless Terminal — Andy Konwinski
+    url: https://andykonwinski.com/2024/05/31/introducing-headless-terminal.html
+    publisher: Andy Konwinski
+    kind: announcement
+    published_at: 2024-05-31
+    accessed_at: 2026-10-21
+  - id: ht-repo
+    title: andyk/ht — headless terminal (GitHub repository)
+    url: https://github.com/andyk/ht
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: k-prize-post
+    title: Why I built the Konwinski Prize — Andy Konwinski
+    url: https://andykonwinski.com/2024/12/12/konwinski-prize.html
+    publisher: Andy Konwinski
+    kind: announcement
+    published_at: 2024-12-12
+    accessed_at: 2026-10-21
+  - id: laude-ventures-post
+    title: Laude Ventures — Andy Konwinski
+    url: https://andykonwinski.com/2024/12/10/introducing-laude-ventures.html
+    publisher: Andy Konwinski
+    kind: announcement
+    published_at: 2024-12-10
+    accessed_at: 2026-10-21

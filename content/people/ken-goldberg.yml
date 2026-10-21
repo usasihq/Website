@@ -31,6 +31,11 @@ affiliations:
     role: President
     current: true
     source_ids: [homepage]
+  - name: Jacobi Robotics
+    organization_slug: null
+    role: Co-Founder (since 2024)
+    current: true
+    source_ids: [homepage, cv]
 work:
   - name: Dex-Net 2.0
     artifact_slug: null
@@ -43,9 +48,86 @@ work:
 links:
   - label: Website
     url: https://goldberg.berkeley.edu/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Ken Goldberg completed an MS and PhD at Carnegie Mellon University's School of Computer Science with
+          a dissertation on stochastic plans for robotic manipulation. Goldberg taught computer science at the
+          University of Southern California from 1991 to 1995 and then joined UC Berkeley's Industrial
+          Engineering and Operations Research department, becoming a full professor in 2002 and a
+          Distinguished Professor in 2018.
+        source_ids: [cv]
+      - text: >-
+          Goldberg has directed the Berkeley Automation Sciences Laboratory since 1995, has held secondary
+          appointments in EECS since 2001 and in Art Practice since 2012, and has held the William S. Floyd Jr.
+          Distinguished Chair of Engineering since 2017. Outside the university Goldberg co-founded Ambi
+          Robotics in 2018, serving as Chief Scientist, co-founded Jacobi Robotics in 2024, and is President of
+          the Robot Learning Foundation, which organizes the Conference on Robot Learning.
+        source_ids: [cv, homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Goldberg's research interests listed on the CV include algorithms for feeding, fixturing, grasping
+          and assembly in manufacturing and surgery, cloud and fog robotics, automated agriculture and deep
+          learning for robots. The Dex-Net 2.0 paper, which Goldberg co-authored, trained a Grasp Quality
+          Convolutional Neural Network on a synthetic dataset of point clouds and analytic grasp metrics to
+          plan robust grasps.
+        source_ids: [cv, dexnet2-paper]
+      - text: >-
+          Goldberg also works in art and new media, with an appointment in Art Practice and earlier service as
+          director of the Berkeley Center for New Media from 2007 to 2010; the homepage lists projects such as
+          the Telegarden and AlphaGarden.
+        source_ids: [cv, homepage]
+timeline:
+  - date: "1991"
+    text: Became an assistant professor of computer science at the University of Southern California.
+    source_ids: [cv]
+  - date: "1995"
+    text: Joined UC Berkeley's IEOR department and began directing the Berkeley Automation Sciences Laboratory.
+    source_ids: [cv]
+  - date: "2002"
+    text: Became a professor of Industrial Engineering and Operations Research at UC Berkeley.
+    source_ids: [cv]
+  - date: "2017"
+    text: Was named to the William S. Floyd Jr. Distinguished Chair of Engineering at UC Berkeley.
+    source_ids: [cv]
+  - date: "2017-03"
+    text: Co-authored the Dex-Net 2.0 paper on learning robust grasps from synthetic point clouds.
+    source_ids: [dexnet2-paper]
+  - date: "2018"
+    text: Co-founded Ambi Robotics and became its Chief Scientist.
+    source_ids: [cv]
+  - date: "2024"
+    text: Co-founded Jacobi Robotics.
+    source_ids: [cv]
+  - date: "2026-02"
+    text: Was elected to the U.S. National Academy of Engineering.
+    source_ids: [homepage, cv]
+honors:
+  - name: Presidential Faculty Fellowship
+    year: 1995
+    awarded_by: The White House and the National Science Foundation
+    source_ids: [cv]
+  - name: IEEE Fellow
+    year: 2005
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [cv]
+  - name: IEEE RAS George Saridis Leadership Award in Robotics and Automation
+    year: 2016
+    awarded_by: IEEE Robotics and Automation Society
+    source_ids: [cv]
+  - name: Best Paper Award, ICRA 2024
+    year: 2024
+    awarded_by: IEEE International Conference on Robotics and Automation
+    source_ids: [cv]
+  - name: Member, National Academy of Engineering
+    year: 2026
+    awarded_by: U.S. National Academy of Engineering
+    source_ids: [homepage, cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Ken Goldberg — homepage (UC Berkeley)
@@ -53,11 +135,18 @@ sources:
     publisher: Ken Goldberg (UC Berkeley)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dexnet2-paper
     title: "Dex-Net 2.0: Deep Learning to Plan Robust Grasps with Synthetic Point Clouds and Analytic Grasp Metrics (arXiv 1703.09312)"
     url: https://arxiv.org/abs/1703.09312
     publisher: arXiv
     kind: paper
     published_at: 2017-03-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: cv
+    title: "Ken Goldberg — Curriculum Vitae"
+    url: https://goldberg.berkeley.edu/cv.html
+    publisher: Ken Goldberg, UC Berkeley
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

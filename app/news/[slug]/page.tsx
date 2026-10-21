@@ -9,12 +9,12 @@ import { ShareCite } from "@/components/ShareCite";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
-import { clipTitle, pageMetadata } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/metadata";
+import { newsItemSeo } from "@/lib/seo";
 import { newsArticleLd } from "@/lib/structured-data";
 import { JsonLd } from "@/components/JsonLd";
 import { cardImage } from "@/lib/page-cards";
 import { CodeText } from "@/components/CodeText";
-import { plainText } from "@/lib/plain-text";
 
 export const dynamicParams = false;
 
@@ -26,9 +26,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const item = getCatalog().newsItem(slug);
   if (!item) return {};
+  const seo = newsItemSeo(item);
   return pageMetadata({
-    title: clipTitle(item.title),
-    description: plainText(item.summary.text).slice(0, 200),
+    title: seo.title,
+    description: seo.description,
     path: newsHref(item.slug),
     image: cardImage(getCatalog(), newsHref(item.slug)),
     feeds: [{ path: "/news/feed.xml", title: "USASI — Latest news" }],

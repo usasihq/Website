@@ -152,6 +152,8 @@ describe("job page HTML", () => {
     expect(html).toContain('href="/companies/acme-ai/"');
     expect(html).toContain("Not a U.S. government website");
     expect(html).toContain('<link rel="canonical" href="https://unitedstatesofamericasuperintelligence.com/jobs/at/acme-ai/');
+    expect(html).toContain('<meta name="twitter:title"');
+    expect(html).toMatch(/<link rel="canonical" href="https:\/\/unitedstatesofamericasuperintelligence\.com\/jobs\/at\/acme-ai\/[^"?#]+\/"/);
     // The JSON-LD cannot close its own script element.
     for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) expect(() => JSON.parse(m[1])).not.toThrow();
   });
@@ -225,14 +227,16 @@ describe("job page meta description", () => {
 
 describe("job page titles", () => {
   it("read \"{Title} at {Employer} ({City, ST})\", with Remote and +N locations", () => {
-    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["San Francisco, California, United States"] })))).toBe("Research Engineer at Acme AI (San Francisco, CA)");
-    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["San Francisco, CA", "New York, NY", "Seattle, WA"] })))).toBe(
-      "Research Engineer at Acme AI (San Francisco, CA +2 locations)",
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["San Francisco, California, United States"] })))).toBe(
+      "Research Engineer at Acme AI (San Francisco, CA, $200K–$300K)",
     );
-    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["Remote - US"], workplace: "remote" })))).toBe("Research Engineer at Acme AI (Remote)");
-    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: [], workplace: "remote" })))).toBe("Research Engineer at Acme AI (Remote)");
-    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: [], workplace: "unknown" })))).toBe("Research Engineer at Acme AI");
-    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["California"] })))).toBe("Research Engineer at Acme AI (California)");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["San Francisco, CA", "New York, NY", "Seattle, WA"] })))).toBe(
+      "Research Engineer at Acme AI (San Francisco, CA, $200K–$300K)",
+    );
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["Remote - US"], workplace: "remote" })))).toBe("Research Engineer at Acme AI (Remote, $200K–$300K)");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: [], workplace: "remote" })))).toBe("Research Engineer at Acme AI (Remote, $200K–$300K)");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: [], workplace: "unknown" })))).toBe("Research Engineer at Acme AI ($200K–$300K)");
+    expect(jobPageTitle(page(job({ title: "Research Engineer", locations: ["California"] })))).toBe("Research Engineer at Acme AI (California, $200K–$300K)");
   });
 
   it("shortens by dropping parts, and cuts a long title only at a word, never leaving half a parenthesis", () => {
@@ -260,12 +264,12 @@ describe("job page titles", () => {
     const solo = page(job({ id: "acme-ai:greenhouse:acme:4", source_job_id: "4", title: "Researcher" }));
     const pages = [a, b, c, d, e, solo];
     assignTitleSuffixes(pages);
-    expect(jobPageTitle(a)).toBe("Account Executive at Acme AI (New York, NY)");
+    expect(jobPageTitle(a)).toBe("Account Executive at Acme AI (New York, NY, $200K–$300K)");
     expect(a.titleId).toBeNull();
     expect(b.titleId).toBe("ID 2");
-    expect(jobPageTitle(b)).toBe("Account Executive at Acme AI (Austin, TX) · ID 2");
-    expect(jobPageTitle(d)).toBe("Engineer at Acme AI (Austin, TX · Boston, MA)");
-    expect(jobPageTitle(e)).toBe("Engineer at Acme AI (Austin, TX · Denver, CO)");
+    expect(jobPageTitle(b)).toBe("Account Executive at Acme AI (Austin, TX, $200K–$300K) · ID 2");
+    expect(jobPageTitle(d)).toBe("Engineer at Acme AI (Austin, TX · Boston, MA, $200K–$300K)");
+    expect(jobPageTitle(e)).toBe("Engineer at Acme AI (Austin, TX · Denver, CO, $200K–$300K)");
     expect(solo.titleText).toBeNull();
     const titles = pages.map(jobPageTitle);
     expect(new Set(titles).size).toBe(titles.length);

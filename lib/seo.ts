@@ -14,7 +14,7 @@ import { formatDate } from "./dates";
 import { EXPLAINERS, type Explainer } from "./learn";
 import { KIND_LABELS } from "./labels";
 import { LICENSE_CATEGORY_LABELS, usesOfLicense } from "./licenses";
-import { clipDescription, DESCRIPTION_MAX, TITLE_MAX } from "./metadata";
+import { clipDescription, clipTitle, DESCRIPTION_MAX, TITLE_MAX } from "./metadata";
 import { checklistStatus, computeTier, isOsiApproved, type ModelTier } from "./openness";
 import type { StateGroup } from "./place-index";
 import type { Artifact, Hub, Leader, LicenseCategory, LicenseRecord, Organization, OrganizationRole, Person } from "./schema";
@@ -293,7 +293,7 @@ export function organizationOutput(catalog: Catalog, org: Organization) {
   return { related, releases, families, software, datasets, evals, parts, licenses };
 }
 
-export function organizationSeo(catalog: Catalog, org: Organization): SeoText {
+export function organizationSeo(catalog: Catalog, org: Organization, extras?: { jobCount?: number }): SeoText {
   const name = org.name;
   const short = shortName(name);
   const out = organizationOutput(catalog, org);
@@ -302,10 +302,11 @@ export function organizationSeo(catalog: Catalog, org: Organization): SeoText {
   const osi = tools.some((a) => a.licenses.some((l) => isOsiApproved(l.spdx)));
   const noun = hasModels ? "open models" : !tools.length ? null : out.datasets.length === tools.length ? "open datasets" : osi ? "open-source tools" : "open tools";
   const products = org.products.length > 0;
+  const jobs = extras?.jobCount && extras.jobCount > 0 ? extras.jobCount : null;
   const variants = (n: string) =>
     noun
-      ? [products && `${n}: ${noun}, products & key facts`, `${n}: ${noun} & key facts`]
-      : [products ? `${n}: AI products & key facts` : `${n}: AI profile & key facts`];
+      ? [jobs ? `${n}: ${noun}, jobs & key facts` : null, products && `${n}: ${noun}, products & key facts`, `${n}: ${noun} & key facts`]
+      : [jobs ? `${n}: AI jobs & key facts` : null, products ? `${n}: AI products & key facts` : `${n}: AI profile & key facts`];
   const title = fitTitle([...variants(name), ...variants(short), `${name}: key facts`, name, short]);
 
   const hq = org.headquarters ? headquartersPhrase(org.headquarters.label) : null;
@@ -317,7 +318,8 @@ export function organizationSeo(catalog: Catalog, org: Organization): SeoText {
   // Lead with the record's own summary when it fits beside the catalog facts; otherwise describe it from its roles.
   const opening = [firstSentence(org.summary.text), lead, shortLead].find((o) => `${o} ${records}`.length <= DESCRIPTION_MAX) ?? shortLead;
   const hqSentence = hq && opening !== lead ? `${hq.verb === "based in" ? "Based in" : "Headquarters:"} ${hq.place}.` : null;
-  return { title, description: composeDescription([opening, records], [hqSentence, licenses, productList]) };
+  const jobsLine = jobs ? `${jobs.toLocaleString("en-US")} open jobs on USASI.` : null;
+  return { title, description: composeDescription([opening, records], [hqSentence, licenses, productList, jobsLine]) };
 }
 
 /** Distinct current organizations for a leader, preferring ones with a catalog page. */
@@ -327,21 +329,72 @@ export function leaderOrganizations(catalog: Catalog, l: Leader): string[] {
   return [...new Set((linked.length ? linked : roles).map((r) => shortName(r.organization)))];
 }
 
-/** A People directory profile: name and current organization in the title, the headline as the description. */
-export function personSeo(catalog: Catalog, p: Person): SeoText {
+/** A short work or paper name for titles: keep parenthetical nicknames, drop a long subtitle. */
+export function shortWorkName(name: string, max = 28): string {
+  return wholeWorkName(name, max) ?? clipDescription(shortName(name), max).replace(/\u2026$/, "").trim();
+}
+
+/** The work name or its part before a subtitle, but never a name cut mid-phrase ("Random-Access Neural"). */
+export function wholeWorkName(name: string, max = 28): string | null {
+  const s = shortName(name);
+  if (s.length <= max) return s;
+  const cut = s.split(/[:—–,]/)[0]!.trim();
+  return cut.length >= 4 && cut.length <= max ? cut : null;
+}
+
+function shortRole(role: string, max = 28): string | null {
+  const s = role.replace(/\s*\([^)]*\)\s*$/, "").trim();
+  if (s.length <= max) return s;
+  const cut = s.split(/[,:—]/)[0]!.trim();
+  if (cut.length >= 3 && cut.length <= max) return cut;
+  return null;
+}
+
+/** Optional USASI-only facts already shown on the profile (jobs, news mentions). */
+export type PersonSeoExtras = {
+  openJobs?: { orgName: string; count: number }[];
+  newsHeadlines?: string[];
+};
+
+/**
+ * A People directory profile. Title leads with the name, then a current org
+ * and what they are known for. Description is the sourced headline plus
+ * distinctive catalog facts (open jobs, a news mention, their links).
+ */
+export function personSeo(catalog: Catalog, p: Person, extras?: PersonSeoExtras): SeoText {
   const current = p.affiliations.filter((a) => a.current);
-  const orgs = [...new Set(current.map((a) => shortName(a.name)))];
-  const work = p.work.map((w) => w.name);
+  const org = current[0] ? shortName(current[0].name) : null;
+  const role = current[0] ? shortRole(current[0].role) : null;
+  const works = p.work.map((w) => wholeWorkName(w.name)).filter((w): w is string => w !== null);
+  const known = works[0];
+  const known2 = works[1];
+  const links = p.links.map((l) => l.label);
   return {
     title: fitTitle([
-      orgs.length > 0 && work.length > 0 && `${p.name}, ${orgs[0]}: ${work[0]} and career`,
-      orgs.length > 0 && `${p.name}, ${orgs[0]}: work and career`,
-      work.length > 0 && `${p.name}: ${work[0]} and career`,
-      `${p.name}: work and career`,
+      org && known && `${p.name} at ${org} — ${known}`,
+      org && role && `${p.name}, ${role} at ${org}`,
+      org && `${p.name} at ${org}`,
+      known && known2 && `${p.name} — ${known} & ${known2}`,
+      known && `${p.name} — ${known}`,
+      `${p.name} — sourced AI profile`,
       p.name,
     ]),
-    description: composeDescription([/[.!?]$/.test(p.headline) ? p.headline : `${p.headline}.`], [work.length ? `Sourced profile: ${listJoin(work.slice(0, 3))}.` : "Sourced profile."]),
+    description: composeDescription(
+      [/[.!?]$/.test(p.headline) ? p.headline : `${p.headline}.`],
+      [
+        extras?.openJobs?.[0] && `${extras.openJobs[0].count.toLocaleString("en-US")} open jobs at ${shortName(extras.openJobs[0].orgName)} on USASI.`,
+        extras?.newsHeadlines?.[0] && `Recent catalog news: ${shortWorkName(extras.newsHeadlines[0], 70)}.`,
+        links.length ? `Links: ${listJoin(links.slice(0, 3))}.` : null,
+        works.length ? `Known for ${listJoin(works.slice(0, 3))}.` : null,
+      ],
+    ),
   };
+}
+
+/** News story: the headline as the title, a one-sentence summary as the description. */
+export function newsItemSeo(item: { title: string; summary: { text: string } }): SeoText {
+  const parts = sentences(item.summary.text);
+  return { title: clipTitle(item.title), description: composeDescription([parts[0]], parts.slice(1)) };
 }
 
 export function leaderSeo(catalog: Catalog, l: Leader): SeoText {

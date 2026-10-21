@@ -7,12 +7,12 @@ specialties: [inference, ml-frameworks]
 headline: Works on Transformers.js at Hugging Face, a library for running Transformers models in the browser
 bio:
   text: >-
-    Joshua Lochner works on Transformers.js at Hugging Face, a library that runs
-    Transformers models directly in the browser with no server required. He is a
-    byline author of Hugging Face's release announcements for Transformers.js v3
-    in 2024, which added WebGPU support, and v4 in 2026. His GitHub profile
-    describes his work as bringing machine learning to the web.
+    Joshua Lochner works on Transformers.js at Hugging Face, a library that runs Transformers models
+    directly in the browser without a server. Lochner wrote Hugging Face's announcement of
+    Transformers.js v3 in 2024, which added WebGPU support, and co-wrote the v4 announcement in 2026.
+    Lochner's GitHub profile describes the work as bringing machine learning to the web.
   source_ids: [github-profile, transformersjs-repo, hf-blog-v3, hf-blog-v4]
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
@@ -32,9 +32,46 @@ links:
     url: https://github.com/xenova
   - label: Hugging Face
     url: https://huggingface.co/Xenova
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Transformers.js, whose repository was created in February 2023 and is released under the Apache-2.0
+          license, lets developers run Hugging Face Transformers models directly in the browser with no need for a
+          server. Lochner published releases ranging from the 2.0 alphas in May 2023 to the 4.3 releases
+          in 2026, and wrote the Hugging Face blog posts announcing version 3,
+          with WebGPU support and new models and tasks, and version 4.
+        source_ids: [transformersjs-repo, transformersjs-releases, hf-blog-v3, hf-blog-v4]
+  - heading: Browser demos and other projects
+    paragraphs:
+      - text: >-
+          Lochner's own GitHub repositories include browser demos built on these tools. Whisper Web runs
+          speech recognition entirely in the browser, and Kokoro Web does the same for speech synthesis.
+          Earlier projects include sponsorblock-ml, a model that detects sponsored segments and self-promotion
+          in YouTube videos.
+        source_ids: [whisper-web-repo, kokoro-web-repo, sponsorblock-ml-repo]
+timeline:
+  - date: "2021-12"
+    text: Created sponsorblock-ml, a model for detecting sponsorships and promotions in YouTube videos.
+    source_ids: [sponsorblock-ml-repo]
+  - date: "2023-03"
+    text: Created Whisper Web, in-browser speech recognition built with Transformers.js.
+    source_ids: [whisper-web-repo]
+  - date: "2023-05-15"
+    text: Published the first Transformers.js 2.0 alpha releases.
+    source_ids: [transformersjs-releases]
+  - date: "2024-10-22"
+    text: Announced Transformers.js v3 with WebGPU support on the Hugging Face blog.
+    source_ids: [hf-blog-v3]
+  - date: "2025-02"
+    text: Created Kokoro Web for in-browser speech synthesis.
+    source_ids: [kokoro-web-repo]
+  - date: "2026-02-09"
+    text: Co-wrote the Hugging Face announcement of Transformers.js v4.
+    source_ids: [hf-blog-v4]
 publication_status: published
-updated_at: 2026-09-29
-last_reviewed: 2026-09-29
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: xenova (Joshua Lochner) on GitHub
@@ -42,25 +79,53 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: transformersjs-repo
     title: huggingface/transformers.js README
     url: https://github.com/huggingface/transformers.js
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: hf-blog-v3
     title: "Transformers.js v3: WebGPU Support, New Models & Tasks, and More…"
     url: https://huggingface.co/blog/transformersjs-v3
     publisher: Hugging Face
     kind: announcement
     published_at: 2024-10-22
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: hf-blog-v4
     title: "Transformers.js v4: Now Available on NPM!"
     url: https://huggingface.co/blog/transformersjs-v4
     publisher: Hugging Face
     kind: announcement
     published_at: 2026-02-09
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
+  - id: transformersjs-releases
+    title: huggingface/transformers.js releases
+    url: https://github.com/huggingface/transformers.js/releases
+    publisher: Hugging Face (GitHub repository)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: whisper-web-repo
+    title: xenova/whisper-web (GitHub repository)
+    url: https://github.com/xenova/whisper-web
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: kokoro-web-repo
+    title: xenova/kokoro-web (GitHub repository)
+    url: https://github.com/xenova/kokoro-web
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: sponsorblock-ml-repo
+    title: xenova/sponsorblock-ml (GitHub repository)
+    url: https://github.com/xenova/sponsorblock-ml
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

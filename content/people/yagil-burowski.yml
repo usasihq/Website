@@ -15,7 +15,7 @@ bio:
     shipped the MLX engine and wrote the July 2025 post announcing that the app had become free to
     use at work.
   source_ids: [lms-hub-profile, lms-careers, lms-docs-app, lms-initial-commit, mlx-engine-initial-commit, lms-readme, mlx-engine-readme, blog-0-3-4, blog-free-for-work]
-  reviewed_at: 2026-10-02
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Element Labs (LM Studio)
     organization_slug: element-labs
@@ -44,9 +44,51 @@ links:
     url: https://github.com/yagil
   - label: LM Studio Hub
     url: https://lmstudio.ai/yagil
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Yagil Burowski made the initial commit to lms, LM Studio's MIT-licensed command-line tool, in
+          April 2024. The README describes lms as the CLI that ships with LM Studio 0.2.22 and newer for
+          managing models and the local server from a terminal.
+        source_ids: [lms-initial-commit, lms-readme]
+      - text: >-
+          In October 2024 Burowski made the initial commit to mlx-engine, the MIT-licensed engine that
+          LM Studio uses to run models with Apple's MLX on Apple silicon Macs. Burowski was one of four
+          authors of the post announcing that LM Studio 0.3.4 shipped with this engine.
+        source_ids: [mlx-engine-initial-commit, mlx-engine-readme, blog-0-3-4]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Burowski wrote the July 2025 post announcing that LM Studio became free to use at work as well
+          as at home, and the April 2026 post announcing that Locally AI, an app for running models on
+          iPhone, iPad, and Mac, was joining LM Studio. LM Studio's documentation describes the app as a
+          desktop tool for downloading and running language models locally.
+        source_ids: [blog-free-for-work, lms-blog-locally, lms-docs-app]
+      - text: >-
+          On LM Studio Hub, Burowski's profile carries the LM Studio Team badge, links to the company's
+          jobs page, and lists published plugins, presets, and skills, such as a plugin for using an API
+          model inside LM Studio and a preset that shows a model how to write tools with lmstudio-js.
+        source_ids: [lms-hub-profile, lms-careers, github-profile]
+timeline:
+  - date: "2024-04-15"
+    text: Made the initial commit to lms, the LM Studio command-line tool.
+    source_ids: [lms-initial-commit]
+  - date: "2024-10-07"
+    text: Made the initial commit to mlx-engine, LM Studio's Apple MLX engine.
+    source_ids: [mlx-engine-initial-commit]
+  - date: "2024-10-08"
+    text: Co-wrote the announcement that LM Studio 0.3.4 ships with Apple MLX.
+    source_ids: [blog-0-3-4]
+  - date: "2025-07-08"
+    text: Wrote the announcement that LM Studio is free for use at work.
+    source_ids: [blog-free-for-work]
+  - date: "2026-04-08"
+    text: Wrote the announcement that Locally AI was joining LM Studio.
+    source_ids: [lms-blog-locally]
 publication_status: published
-updated_at: 2026-10-02
-last_reviewed: 2026-10-02
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: lms-hub-profile
     title: Yagil Burowski • LM Studio Hub
@@ -54,7 +96,7 @@ sources:
     publisher: Element Labs (LM Studio)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: github-profile
     title: yagil (Yagil Burowski) on GitHub
@@ -62,7 +104,7 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: lms-careers
     title: Careers at LM Studio ("LM Studio is built by Element Labs")
@@ -70,7 +112,7 @@ sources:
     publisher: Element Labs (LM Studio)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: lms-docs-app
     title: Welcome to LM Studio Docs! | LM Studio
@@ -78,7 +120,7 @@ sources:
     publisher: Element Labs (LM Studio)
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: lms-readme
     title: lmstudio-ai/lms README and license (MIT)
@@ -86,7 +128,7 @@ sources:
     publisher: Element Labs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: lms-initial-commit
     title: lmstudio-ai/lms — initial commit (2024-04-15)
@@ -94,7 +136,7 @@ sources:
     publisher: Element Labs (GitHub repository)
     kind: repository
     published_at: 2024-04-15
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: lms-commits
     title: lmstudio-ai/lms commits authored by yagil
@@ -102,7 +144,7 @@ sources:
     publisher: Element Labs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: mlx-engine-readme
     title: lmstudio-ai/mlx-engine README and license (MIT)
@@ -110,7 +152,7 @@ sources:
     publisher: Element Labs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: mlx-engine-initial-commit
     title: lmstudio-ai/mlx-engine — initial commit (2024-10-07)
@@ -118,7 +160,7 @@ sources:
     publisher: Element Labs (GitHub repository)
     kind: repository
     published_at: 2024-10-07
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: blog-0-3-4
     title: LM Studio 0.3.4 ships with Apple MLX
@@ -126,7 +168,7 @@ sources:
     publisher: Element Labs (LM Studio)
     kind: announcement
     published_at: 2024-10-08
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
   - id: blog-free-for-work
     title: LM Studio is free for use at work
@@ -134,5 +176,12 @@ sources:
     publisher: Element Labs (LM Studio)
     kind: announcement
     published_at: 2025-07-08
-    accessed_at: 2026-10-02
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-02
+  - id: lms-blog-locally
+    title: Locally AI joins LM Studio
+    url: https://lmstudio.ai/blog/locally-ai-joins-lm-studio
+    publisher: LM Studio
+    kind: announcement
+    published_at: 2026-04-08
+    accessed_at: 2026-10-21

@@ -60,9 +60,53 @@ work:
 links:
   - label: GitHub
     url: https://github.com/ruomingp
+sections:
+  - heading: Research at Google
+    paragraphs:
+      - text: >-
+          Ruoming Pang's earlier papers, written at Google, centre on speech recognition and sequence-model
+          infrastructure. Pang is among the authors of the 2019 paper describing Lingvo, a modular and scalable
+          TensorFlow framework for sequence-to-sequence modeling, and co-authored the 2020 ContextNet and
+          Conformer papers, which improve speech recognition with global context in convolutional networks and
+          by combining convolution with Transformer self-attention.
+        source_ids: [lingvo-paper, contextnet-paper, conformer-paper]
+  - heading: Foundation models and training systems
+    paragraphs:
+      - text: >-
+          At Apple, Pang was the overall lead of the foundation models contributors on the July 2024 Apple
+          Intelligence Foundation Language Models report, which describes an on-device model of about 3
+          billion parameters and a larger server model. Pang is also the corresponding author of the 2025
+          paper on AXLearn, Apple's open-source library for modular, hardware-agnostic training of large
+          models.
+        source_ids: [apple-fm-paper, axlearn-paper, axlearn-license]
+      - text: >-
+          Pang's recent papers address the systems cost of large models. Parallel Track Transformers (2026)
+          reduces synchronization in multi-GPU inference, and ScaleAcross Explorer (May 2026), on which Pang is
+          listed with Meta Platforms, studies communication optimization for training spread across data
+          center buildings and regions.
+        source_ids: [parallel-track-paper, scaleacross-paper, github-profile]
+timeline:
+  - date: "2019-02"
+    text: Co-authored the Lingvo framework paper on sequence-to-sequence modeling.
+    source_ids: [lingvo-paper]
+  - date: "2020-05"
+    text: Co-authored the ContextNet and Conformer speech recognition papers.
+    source_ids: [contextnet-paper, conformer-paper]
+  - date: "2024-07"
+    text: Led the foundation models contributors on the Apple Intelligence Foundation Language Models report.
+    source_ids: [apple-fm-paper]
+  - date: "2025-07"
+    text: Was corresponding author of the AXLearn paper on modular large-model training.
+    source_ids: [axlearn-paper]
+  - date: "2026-02"
+    text: Co-authored Parallel Track Transformers on fast GPU inference with reduced synchronization.
+    source_ids: [parallel-track-paper]
+  - date: "2026-05"
+    text: Co-authored the ScaleAcross Explorer paper, listed with Meta Platforms.
+    source_ids: [scaleacross-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: ruomingp (Ruoming Pang) on GitHub
@@ -70,46 +114,60 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: scaleacross-paper
     title: "ScaleAcross Explorer: Exploring Communication Optimization for Scale-Across AI Model Training (arXiv 2605.24326)"
     url: https://arxiv.org/abs/2605.24326
     publisher: arXiv
     kind: paper
     published_at: 2026-05-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: apple-fm-paper
     title: Apple Intelligence Foundation Language Models (arXiv 2407.21075)
     url: https://arxiv.org/abs/2407.21075
     publisher: arXiv
     kind: paper
     published_at: 2024-07-29
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: axlearn-paper
     title: "AXLearn: Modular, Hardware-Agnostic Large Model Training (arXiv 2507.05411)"
     url: https://arxiv.org/abs/2507.05411
     publisher: arXiv
     kind: paper
     published_at: 2025-07-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: axlearn-license
     title: apple/axlearn LICENSE (Apache 2.0)
     url: https://github.com/apple/axlearn/blob/main/LICENSE
     publisher: apple (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: parallel-track-paper
     title: "Parallel Track Transformers: Enabling Fast GPU Inference with Reduced Synchronization (arXiv 2602.07306)"
     url: https://arxiv.org/abs/2602.07306
     publisher: arXiv
     kind: paper
     published_at: 2026-02-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: conformer-paper
     title: "Conformer: Convolution-augmented Transformer for Speech Recognition (arXiv 2005.08100)"
     url: https://arxiv.org/abs/2005.08100
     publisher: arXiv
     kind: paper
     published_at: 2020-05-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: lingvo-paper
+    title: "Lingvo: a Modular and Scalable Framework for Sequence-to-Sequence Modeling (arXiv 1902.08295)"
+    url: https://arxiv.org/abs/1902.08295
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-02-21
+    accessed_at: 2026-10-21
+  - id: contextnet-paper
+    title: "ContextNet: Improving Convolutional Neural Networks for Automatic Speech Recognition with Global Context (arXiv 2005.03191)"
+    url: https://arxiv.org/abs/2005.03191
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-07
+    accessed_at: 2026-10-21

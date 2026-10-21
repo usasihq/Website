@@ -7,13 +7,15 @@ import { getCatalog } from "@/lib/catalog";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { absoluteUrl } from "@/lib/paths";
 import { peopleListItems } from "@/lib/people-index";
+import { fieldPeopleLists, organizationPeopleLists } from "@/lib/people-lists";
 import { asset } from "@/lib/paths";
 import { itemList } from "@/lib/structured-data";
 
+const PEOPLE_COUNT = peopleListItems(getCatalog()).length;
+
 export const metadata = pageMetadata({
-  title: "People in U.S. AI: founders, engineers & open-source maintainers",
-  description:
-    "Sourced profiles of the founders, engineers, researchers, and open-source maintainers behind the organizations and open models in the USASI catalog.",
+  title: "People in U.S. AI — founders, engineers, maintainers",
+  description: `${PEOPLE_COUNT.toLocaleString("en-US")} sourced profiles of founders, engineers, researchers, and open-source maintainers behind U.S. AI organizations and open models in the USASI catalog.`,
   path: "/people/",
   image: socialImages.people,
 });
@@ -68,6 +70,30 @@ export default function PeoplePage() {
       />
       <div className="container-page py-10 sm:py-12">
         <PeopleDirectory items={items.slice(0, 48)} organizations={organizations} dataUrl={asset("/data/people.json")} total={items.length} />
+        <nav aria-labelledby="browse-orgs-h" className="mt-12 border-t border-line pt-8" data-testid="people-browse">
+          <h2 id="browse-orgs-h" className="text-xl font-semibold text-text">
+            People by organization
+          </h2>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {organizationPeopleLists(catalog).map((l) => (
+              <li key={l.path}>
+                <Link prefetch={false} href={l.path} className="badge min-h-9 hover:border-cyan">
+                  {l.name} ({l.items.length})
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h2 className="mt-8 text-xl font-semibold text-text">People by field</h2>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {fieldPeopleLists(catalog).map((l) => (
+              <li key={l.path}>
+                <Link prefetch={false} href={l.path} className="badge min-h-9 border-tone-violet/40 hover:border-cyan">
+                  {l.name} ({l.items.length})
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
       <SupportPanel variant="compact" />
     </>

@@ -15,7 +15,7 @@ bio:
     Evolution through Large Models (ELM), and co-wrote "Why Greatness Cannot Be Planned" with Joel
     Lehman.
   source_ids: [lila-stanley, stanley-site, elm-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Lila Sciences
     organization_slug: null
@@ -59,9 +59,57 @@ work:
 links:
   - label: Website
     url: https://www.kenstanley.net/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Stanley was a professor of computer science at the University of Central Florida, where Stanley held
+          the Charles Millican Professorship. Stanley co-founded Geometric Intelligence with Gary Marcus, Zoubin Ghahramani and Doug
+          Bemis, serving as co-chief scientist; after Uber acquired the company and rebranded it as Uber AI Labs,
+          Stanley led its core research.
+        source_ids: [lila-stanley, stanley-site]
+      - text: >-
+          Stanley later led the Open-Endedness team at OpenAI and served as CEO of Maven. At Lila Sciences,
+          Stanley is Senior Vice President of Open-Endedness, leading work on methods for continual, open-ended
+          discovery and creativity in AI systems.
+        source_ids: [stanley-site, lila-stanley]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Stanley's research centers on neuroevolution and open-ended search. With colleagues, Stanley created
+          NeuroEvolution of Augmenting Topologies (NEAT) and its HyperNEAT and ES-HyperNEAT extensions,
+          compositional pattern producing networks, novelty search and minimal criterion coevolution, along
+          with interactive systems such as Picbreeder, NERO and Galactic Arms Race.
+        source_ids: [stanley-site, lila-stanley]
+      - text: >-
+          In 2019, with Jeff Clune, Joel Lehman and others, Stanley co-authored Go-Explore, an approach
+          to hard-exploration problems in reinforcement learning, and POET, which generates increasingly complex
+          learning environments together with their solutions. The 2022 Evolution through Large Models paper
+          applied code-generating language models as mutation operators in genetic programming.
+        source_ids: [ks-goexplore, ks-poet, elm-paper]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          With Joel Lehman, Stanley wrote Why Greatness Cannot Be Planned: The Myth of the Objective, which
+          examines open-ended exploration, rather than fixed objectives, as a route to discovery. Springer
+          published the book in 2015, and its argument starts from a finding in artificial intelligence research.
+        source_ids: [lila-stanley, stanley-site, ks-book]
+timeline:
+  - date: "2015"
+    text: Published Why Greatness Cannot Be Planned, co-written with Joel Lehman, with Springer.
+    source_ids: [ks-book]
+  - date: "2019-01-07"
+    text: Co-authored POET, a method for generating learning environments and their solutions together.
+    source_ids: [ks-poet]
+  - date: "2019-01-30"
+    text: Co-authored Go-Explore, a new approach to hard-exploration problems in reinforcement learning.
+    source_ids: [ks-goexplore]
+  - date: "2022-06-17"
+    text: Co-authored "Evolution through Large Models" on language models as mutation operators.
+    source_ids: [elm-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: lila-stanley
     title: Kenneth Stanley, PhD — Lila Sciences team
@@ -69,18 +117,39 @@ sources:
     publisher: Lila Sciences
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stanley-site
     title: Kenneth O. Stanley — home page
     url: https://www.kenstanley.net/
     publisher: Kenneth O. Stanley
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: elm-paper
     title: Evolution through Large Models (arXiv 2206.08896)
     url: https://arxiv.org/abs/2206.08896
     publisher: arXiv
     kind: paper
     published_at: 2022-06-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: ks-goexplore
+    title: "Go-Explore: a New Approach for Hard-Exploration Problems"
+    url: https://arxiv.org/abs/1901.10995
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-01-30
+    accessed_at: 2026-10-21
+  - id: ks-poet
+    title: "Paired Open-Ended Trailblazer (POET): Endlessly Generating Increasingly Complex and Diverse Learning Environments and Their Solutions"
+    url: https://arxiv.org/abs/1901.01753
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-01-07
+    accessed_at: 2026-10-21
+  - id: ks-book
+    title: "Why Greatness Cannot Be Planned: The Myth of the Objective"
+    url: https://link.springer.com/book/10.1007/978-3-319-15524-1
+    publisher: Springer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

@@ -16,7 +16,7 @@ bio:
     foundational discoveries and inventions that enable machine learning with artificial neural
     networks".
   source_ids: [hinton-site, alexnet-paper, distill-paper, nobel-summary, nobel-facts]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of Toronto
     organization_slug: null
@@ -28,6 +28,21 @@ affiliations:
     role: Vice President and Engineering Fellow (half-time, 2013–2023)
     current: false
     source_ids: [hinton-site]
+  - name: Vector Institute
+    organization_slug: null
+    role: Chief Scientific Adviser (pro bono, since 2017)
+    current: true
+    source_ids: [hinton-cv]
+  - name: Gatsby Computational Neuroscience Unit, University College London
+    organization_slug: null
+    role: Founding Director (1998–2001)
+    current: false
+    source_ids: [hinton-cv, hinton-site]
+  - name: Carnegie Mellon University
+    organization_slug: carnegie-mellon-university
+    role: Assistant Professor then Associate Professor of Computer Science (1982–1987)
+    current: false
+    source_ids: [hinton-cv]
 work:
   - name: ImageNet Classification with Deep Convolutional Neural Networks (AlexNet)
     artifact_slug: null
@@ -48,9 +63,133 @@ work:
 links:
   - label: Website
     url: https://www.cs.toronto.edu/~hinton/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Hinton received a PhD in artificial intelligence from Edinburgh in 1978 and held research posts at
+          Sussex University, the University of California San Diego and the MRC Applied Psychology Unit.
+          From 1982 to 1987 Hinton was on the computer science faculty at Carnegie Mellon University,
+          then joined the University of Toronto as a professor and became a fellow of the Canadian Institute
+          for Advanced Research.
+        source_ids: [hinton-cv, hinton-site]
+      - text: >-
+          From 1998 to 2001 Hinton set up and directed the Gatsby Computational Neuroscience Unit at University
+          College London before returning to the University of Toronto, where Hinton has been an emeritus professor since 2014.
+          Hinton directed CIFAR's program on Neural Computation and Adaptive Perception from 2004 to 2013. At
+          Google, Hinton was a half-time Distinguished Researcher from 2013 and a Vice President and Engineering
+          Fellow from 2016 to 2023, and since 2017 Hinton has been chief scientific adviser to the Vector
+          Institute on a pro bono basis.
+        source_ids: [hinton-cv, hinton-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hinton's stated aim is to find learning procedures that efficiently discover complex structure in
+          large, high-dimensional datasets, and to show that this is how the brain learns to see. Hinton was one
+          of the researchers who introduced the back-propagation algorithm, was the first to use it to learn
+          word embeddings, and contributed Boltzmann machines, distributed representations, time-delay neural
+          networks, mixtures of experts, variational learning, products of experts and deep belief nets.
+        source_ids: [hinton-site]
+      - text: >-
+          Hinton's Toronto group made advances in deep learning for speech recognition and object
+          classification, including the 2012 AlexNet paper with Alex Krizhevsky and Ilya Sutskever, which
+          trained a large convolutional network on ImageNet. With Oriol Vinyals and Jeff Dean, Hinton wrote the
+          2015 paper on knowledge distillation, which compresses an ensemble of models into a single smaller
+          model.
+        source_ids: [hinton-site, alexnet-paper, distill-paper]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          Hinton's homepage links a Coursera course on machine learning as well as 2013 undergraduate and
+          graduate courses at the University of Toronto. Named lectures listed in Hinton's CV include the ACM
+          Turing Lecture in 2019 and the Romanes Lecture in 2024.
+        source_ids: [hinton-site, hinton-cv]
+timeline:
+  - date: "1978"
+    text: Received a PhD in artificial intelligence from Edinburgh University.
+    source_ids: [hinton-cv, hinton-site]
+  - date: "1982-10"
+    text: Joined the Computer Science Department at Carnegie Mellon University as an assistant professor.
+    source_ids: [hinton-cv]
+  - date: "1987-07"
+    text: Became a professor of computer science at the University of Toronto.
+    source_ids: [hinton-cv]
+  - date: "1998-07"
+    text: Became founding director of the Gatsby Computational Neuroscience Unit at University College London.
+    source_ids: [hinton-cv]
+  - date: "2004"
+    text: Began directing CIFAR's Neural Computation and Adaptive Perception program, through 2013.
+    source_ids: [hinton-site]
+  - date: "2012"
+    text: Co-authored the AlexNet paper on ImageNet classification with deep convolutional networks.
+    source_ids: [alexnet-paper]
+  - date: "2013-03"
+    text: Joined Google half-time as a Distinguished Researcher.
+    source_ids: [hinton-cv]
+  - date: "2015-03"
+    text: Posted "Distilling the Knowledge in a Neural Network" with Oriol Vinyals and Jeff Dean.
+    source_ids: [distill-paper]
+  - date: "2016-10"
+    text: Became a Vice President and Engineering Fellow at Google, a role held until 2023.
+    source_ids: [hinton-cv]
+  - date: "2017-01"
+    text: Became chief scientific adviser to the Vector Institute.
+    source_ids: [hinton-cv]
+  - date: "2024"
+    text: Shared the Nobel Prize in Physics with John J. Hopfield.
+    source_ids: [nobel-summary, nobel-facts]
+honors:
+  - name: Nobel Prize in Physics
+    year: 2024
+    awarded_by: Royal Swedish Academy of Sciences
+    source_ids: [nobel-summary, nobel-facts, hinton-cv]
+  - name: Royal Medal
+    year: 2023
+    awarded_by: Royal Society
+    source_ids: [hinton-cv]
+  - name: Princess of Asturias Award
+    year: 2022
+    awarded_by: Princess of Asturias Foundation
+    source_ids: [hinton-cv, hinton-site]
+  - name: ACM A. M. Turing Award
+    year: 2019
+    awarded_by: Association for Computing Machinery
+    source_ids: [hinton-cv, hinton-site]
+  - name: Honda Prize
+    year: 2019
+    awarded_by: Honda Foundation
+    source_ids: [hinton-cv]
+  - name: BBVA Foundation Frontiers of Knowledge Award
+    year: 2017
+    awarded_by: BBVA Foundation
+    source_ids: [hinton-cv]
+  - name: IEEE/RSE James Clerk Maxwell Medal
+    year: 2016
+    awarded_by: IEEE and the Royal Society of Edinburgh
+    source_ids: [hinton-cv]
+  - name: IEEE Frank Rosenblatt Medal
+    year: 2014
+    awarded_by: IEEE
+    source_ids: [hinton-cv]
+  - name: Killam Prize in Engineering
+    year: 2012
+    awarded_by: Canada Council for the Arts
+    source_ids: [hinton-cv]
+  - name: Gerhard Herzberg Canada Gold Medal
+    year: 2010
+    awarded_by: Natural Sciences and Engineering Research Council of Canada
+    source_ids: [hinton-cv, hinton-site]
+  - name: David E. Rumelhart Prize
+    year: 2001
+    awarded_by: Cognitive Science Society
+    source_ids: [hinton-cv]
+  - name: Fellow of the Royal Society
+    year: 1998
+    awarded_by: Royal Society
+    source_ids: [hinton-cv, hinton-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: hinton-site
     title: Geoffrey E. Hinton — home page and brief biography
@@ -58,32 +197,39 @@ sources:
     publisher: Geoffrey Hinton (University of Toronto)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nobel-summary
     title: The Nobel Prize in Physics 2024 — summary
     url: https://www.nobelprize.org/prizes/physics/2024/summary/
     publisher: Nobel Prize Outreach
     kind: official-page
     published_at: "2024"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nobel-facts
     title: Geoffrey Hinton — Facts — 2024 (Nobel Prize in Physics)
     url: https://www.nobelprize.org/prizes/physics/2024/hinton/facts/
     publisher: Nobel Prize Outreach
     kind: official-page
     published_at: "2024"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: alexnet-paper
     title: ImageNet Classification with Deep Convolutional Neural Networks (NIPS 2012 proceedings)
     url: https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html
     publisher: NeurIPS Proceedings
     kind: paper
     published_at: "2012"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: distill-paper
     title: Distilling the Knowledge in a Neural Network (arXiv 1503.02531)
     url: https://arxiv.org/abs/1503.02531
     publisher: arXiv
     kind: paper
     published_at: 2015-03-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: hinton-cv
+    title: Curriculum Vitae — Geoffrey E. Hinton (January 2025)
+    url: https://www.cs.toronto.edu/~hinton/shortcv.pdf
+    publisher: University of Toronto
+    kind: official-page
+    published_at: 2025-01-06
+    accessed_at: 2026-10-21

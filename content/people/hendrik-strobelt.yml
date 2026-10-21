@@ -27,6 +27,11 @@ affiliations:
     role: Postdoctoral position at Harvard SEAS (before joining IBM in 2017)
     current: false
     source_ids: [ibm-research-profile]
+  - name: NYU Tandon School of Engineering
+    organization_slug: null
+    role: Postdoctoral position at NYU Tandon (before joining IBM in 2017)
+    current: false
+    source_ids: [ibm-research-profile]
 work:
   - name: GLTR (Giant Language Model Test Room)
     artifact_slug: null
@@ -48,9 +53,65 @@ work:
 links:
   - label: IBM Research profile
     url: https://research.ibm.com/people/hendrik-strobelt
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Strobelt holds a doctorate in computer science, in visualization, from the University of Konstanz,
+          and held postdoctoral positions at Harvard SEAS and NYU Tandon before joining IBM in 2017. Strobelt
+          is a Senior Research Scientist at IBM Research and the Explainability Lead for the MIT-IBM Watson AI
+          Lab, and is a visiting researcher at MIT CSAIL. IBM Research's profile also notes temporary faculty
+          positions at Carnegie Mellon University and the University of Konstanz.
+        source_ids: [ibm-research-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Strobelt's research centers on visualization for, and human collaboration with, AI models, aimed at
+          explainability and intuition; earlier work concerned NLP and generative models, and the methods have
+          been applied in machine learning, biomedicine, and chemistry. Recent co-authored papers listed by IBM
+          Research include work on multi-level explanations for generative language models (ACL 2025) and on
+          interactive counterfactual analysis of large language model behavior (IEEE TVCG 2025).
+        source_ids: [ibm-research-profile]
+      - text: >-
+          In chemistry, Strobelt co-authored a 2021 IBM Research post on RXNMapper, an open-source atom-mapping
+          tool that learned the grammar of organic chemistry reactions without human supervision, developed by
+          IBM Research Europe, the MIT-IBM Watson AI Lab, and the University of Bern.
+        source_ids: [rxnmapper-post]
+  - heading: Open-source work and tools
+    paragraphs:
+      - text: >-
+          Strobelt is first author of LSTMVis (2016), a tool for exploring hidden-state dynamics in recurrent
+          neural networks, and a co-author of GLTR (2019), an open-source tool that uses a language model's own
+          statistics to help people spot generated text. In 2020 Strobelt built a NeurIPS paper visualization
+          tool, built with Benjamin Hoover, that clusters accepted papers by theme using language-model
+          embeddings and UMAP.
+        source_ids: [lstmvis-paper, gltr-paper, gltr-repo, neurips-viz-post]
+  - heading: Scientific service
+    paragraphs:
+      - text: >-
+          Strobelt's work has appeared at venues including IEEE VIS, ICLR, ACL, NeurIPS, and ICCV, and in
+          journals such as PNAS and Science Advances. Strobelt has served on organizing committees for IEEE VIS,
+          VISxAI, ICLR, ICML, and NeurIPS.
+        source_ids: [ibm-research-profile]
+timeline:
+  - date: "2016-06-23"
+    text: Released LSTMVis, a visual analysis tool for recurrent neural networks, as first author.
+    source_ids: [lstmvis-paper]
+  - date: "2017"
+    text: Joined IBM after postdoctoral positions at Harvard SEAS and NYU Tandon.
+    source_ids: [ibm-research-profile]
+  - date: "2019-06-10"
+    text: Co-authored GLTR, a tool for statistical detection and visualization of generated text.
+    source_ids: [gltr-paper]
+  - date: "2020"
+    text: Built a visualization tool for finding and presenting NeurIPS papers.
+    source_ids: [neurips-viz-post]
+  - date: "2021-04-07"
+    text: Co-authored IBM Research's post on RXNMapper and the grammar of organic chemistry.
+    source_ids: [rxnmapper-post]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ibm-research-profile
     title: Hendrik Strobelt — IBM Research
@@ -58,25 +119,39 @@ sources:
     publisher: IBM Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gltr-paper
     title: "GLTR: Statistical Detection and Visualization of Generated Text (arXiv 1906.04043)"
     url: https://arxiv.org/abs/1906.04043
     publisher: arXiv
     kind: paper
     published_at: 2019-06-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gltr-repo
     title: HendrikStrobelt/detecting-fake-text README and license (Apache-2.0)
     url: https://github.com/HendrikStrobelt/detecting-fake-text
     publisher: Hendrik Strobelt (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lstmvis-paper
     title: "LSTMVis: A Tool for Visual Analysis of Hidden State Dynamics in Recurrent Neural Networks (arXiv 1606.07461)"
     url: https://arxiv.org/abs/1606.07461
     publisher: arXiv
     kind: paper
     published_at: 2016-06-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: neurips-viz-post
+    title: How to visualize modern AI research (IBM Research blog)
+    url: https://research.ibm.com/blog/visualizing-neurips-2024
+    publisher: IBM Research
+    kind: official-page
+    published_at: 2024-12-10
+    accessed_at: 2026-10-21
+  - id: rxnmapper-post
+    title: "IBM RXN for Chemistry: Unveiling the grammar of the organic chemistry language (IBM Research blog)"
+    url: https://research.ibm.com/blog/rxnmapper-chemistry-grammar
+    publisher: IBM Research
+    kind: official-page
+    published_at: 2021-04-07
+    accessed_at: 2026-10-21

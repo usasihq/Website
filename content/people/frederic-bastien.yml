@@ -44,9 +44,34 @@ work:
 links:
   - label: GitHub
     url: https://github.com/nouiz
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Frédéric Bastien was first author of the 2012 paper "Theano: new features and speed improvements,"
+          which describes Theano, a compiler that turns symbolic mathematical expressions into efficient code
+          for CPUs and GPUs. Bastien is also listed among the Theano Development Team authors of the 2016 paper
+          presenting Theano as a Python framework for defining, optimizing and evaluating expressions over
+          multi-dimensional arrays.
+        source_ids: [theano-paper, theano2016-paper, theano-license]
+      - text: >-
+          In 2013 Bastien co-authored the paper introducing Pylearn2, a machine learning research library
+          designed for flexibility and extensibility. Bastien's GitHub profile now describes membership of the
+          JAX team at NVIDIA.
+        source_ids: [pylearn2-paper, github-profile]
+timeline:
+  - date: "2012-11"
+    text: 'Posted "Theano: new features and speed improvements" as first author.'
+    source_ids: [theano-paper]
+  - date: "2013-08"
+    text: Co-authored the paper introducing the Pylearn2 machine learning research library.
+    source_ids: [pylearn2-paper]
+  - date: "2016-05"
+    text: Listed as an author of the Theano Development Team paper on the Theano Python framework.
+    source_ids: [theano2016-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: nouiz (Frédéric Bastien) on GitHub
@@ -54,7 +79,7 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-commits
     title: jax-ml/jax commits authored by nouiz
     url: https://github.com/jax-ml/jax/commits?author=nouiz
@@ -68,14 +93,14 @@ sources:
     publisher: jax-ml (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: theano-paper
     title: "Theano: new features and speed improvements (arXiv 1211.5590)"
     url: https://arxiv.org/abs/1211.5590
     publisher: arXiv
     kind: paper
     published_at: 2012-11-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: theano-commits
     title: Theano/Theano commits authored by nouiz
     url: https://github.com/Theano/Theano/commits?author=nouiz
@@ -89,4 +114,18 @@ sources:
     publisher: Theano (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: theano2016-paper
+    title: "Theano: A Python framework for fast computation of mathematical expressions (arXiv 1605.02688)"
+    url: https://arxiv.org/abs/1605.02688
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-05-09
+    accessed_at: 2026-10-21
+  - id: pylearn2-paper
+    title: "Pylearn2: a machine learning research library (arXiv 1308.4214)"
+    url: https://arxiv.org/abs/1308.4214
+    publisher: arXiv
+    kind: paper
+    published_at: 2013-08-20
+    accessed_at: 2026-10-21

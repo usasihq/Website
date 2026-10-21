@@ -5,6 +5,7 @@
  */
 import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
+import { clipDescription, listingTitle } from "../metadata";
 import { artifactHref } from "../routes";
 import type { SearchEntry } from "../search";
 import { absoluteUrl } from "../paths";
@@ -203,6 +204,16 @@ export function githubSitemap(data?: GithubDataset, catalog?: Catalog): { path: 
   const day = src.fetched_at.slice(0, 10);
   const pages = Array.from({ length: githubPageCount(src) - 1 }, (_, i) => ({ path: githubPageHref(i + 2), lastModified: day }));
   return [...pages, ...githubEntries(src).filter((e) => githubIndexed(e, catalog)).map((e) => ({ path: e.href, lastModified: day }))];
+}
+
+/** Search title and description for a project page, clipped to result limits. */
+export function githubProjectSeo(e: GithubEntry): { title: string; description: string } {
+  const lead = e.description ? clipDescription(e.description, 110) : `${e.name} by ${e.owner}`;
+  const stars = e.stars.toLocaleString("en-US");
+  return {
+    title: listingTitle(e.full_name, "GitHub"),
+    description: `${lead} Ranked #${e.rank} in AI on GitHub with ${stars} stars${e.language ? `; ${e.language}` : ""}.`,
+  };
 }
 
 export function githubProjectLd(e: GithubEntry): JsonLdNode {

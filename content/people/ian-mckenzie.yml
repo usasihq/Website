@@ -4,17 +4,23 @@ initials: IM
 groups: [engineering]
 sector: null
 specialties: [safety-alignment, evaluation, language-models]
-headline: Lead author of the Inverse Scaling paper and of FAR.AI's STACK study of attacks on LLM safeguards
+headline: Google DeepMind research engineer; lead author of the Inverse Scaling paper and FAR.AI's STACK study
 bio:
   text: >-
-    Ian R. McKenzie is first author of "Inverse Scaling: When Bigger Isn't Better," which reports
+    Ian R. McKenzie is a Research Engineer at Google DeepMind, a role McKenzie's own site dates to
+    September 2025. McKenzie is first author of "Inverse Scaling: When Bigger Isn't Better," which reports
     tasks where language models get worse as they grow, drawn from the public Inverse Scaling Prize
     contest, and which released the winning datasets. McKenzie's papers from 2023 to 2025 list a
     FAR.AI affiliation, including "Scaling Trends in Language Model Robustness" and "STACK," a study
     that builds and red-teams an open-source safeguard pipeline for large language models.
-  source_ids: [invscale-paper, invscale-pdf, robustness-paper, robustness-pdf, stack-paper, stack-pdf]
-  reviewed_at: 2026-10-13
+  source_ids: [mckenzie-site, invscale-paper, invscale-pdf, robustness-paper, robustness-pdf, stack-paper, stack-pdf]
+  reviewed_at: 2026-10-21
 affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Research Engineer (since September 2025)
+    current: true
+    source_ids: [mckenzie-site]
   - name: FAR.AI
     organization_slug: far-ai
     role: Researcher, listed with a FAR.AI affiliation on papers from 2023 to 2025
@@ -45,10 +51,57 @@ work:
       Co-author, marked as an equal contributor with Nikolaus Howe, of the 2024 paper studying how
       attack and defense compute affect the robustness of language models as they scale.
     source_ids: [robustness-paper, robustness-pdf]
-links: []
+links:
+  - label: Website
+    url: https://irmckenzie.co.uk/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          McKenzie was a software engineering intern at Ought and later a Research Engineer at FAR.AI, where McKenzie ran the Inverse
+          Scaling Prize and, under contract with OpenAI, built evaluations of dangerous capabilities and AI
+          research and development.
+        source_ids: [mckenzie-site]
+      - text: >-
+          Since September 2025 McKenzie has been a Research Engineer at Google DeepMind.
+        source_ids: [mckenzie-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          The Inverse Scaling Prize, which opened on June 27, 2022 and ran two rounds of submissions, invited
+          tasks on which larger language models perform worse than smaller ones. The organizers' first-round
+          write-up, published on McKenzie's site, presented the winning tasks, such as a negation benchmark, and
+          common mistakes seen while reviewing submissions, and the resulting paper, Inverse Scaling: When Bigger Isn't Better, analyzed the winning
+          datasets and released them.
+        source_ids: [prize-repo, round1-post, invscale-paper]
+      - text: >-
+          McKenzie's later work at FAR.AI studied the robustness of language models: Scaling Trends in Language
+          Model Robustness (2024) examined how attack and defense compute affect robustness as models grow, and
+          STACK (2025) built an open-source safeguard pipeline and attacked it with a staged procedure aimed at
+          classifier-based defenses.
+        source_ids: [robustness-paper, stack-paper]
+timeline:
+  - date: "2022-06-27"
+    text: The Inverse Scaling Prize, run by McKenzie, opened for submissions.
+    source_ids: [prize-repo, mckenzie-site]
+  - date: "2022-08-27"
+    text: The first round of the Inverse Scaling Prize closed for submissions.
+    source_ids: [round1-post, prize-repo]
+  - date: "2023-06-15"
+    text: "Released \"Inverse Scaling: When Bigger Isn't Better\" as first author."
+    source_ids: [invscale-paper]
+  - date: "2024-07-25"
+    text: Released Scaling Trends in Language Model Robustness as an equal-contribution author.
+    source_ids: [robustness-paper, robustness-pdf]
+  - date: "2025-06-30"
+    text: Released STACK, Adversarial Attacks on LLM Safeguard Pipelines, as first author.
+    source_ids: [stack-paper]
+  - date: "2025-09"
+    text: Became a Research Engineer at Google DeepMind.
+    source_ids: [mckenzie-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: invscale-paper
     title: "Inverse Scaling: When Bigger Isn't Better (arXiv 2306.09479)"
@@ -56,39 +109,60 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2023-06-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: invscale-pdf
     title: Inverse Scaling paper, full text (author affiliations)
     url: https://arxiv.org/pdf/2306.09479
     publisher: arXiv
     kind: paper
     published_at: 2023-06-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: robustness-paper
     title: Scaling Trends in Language Model Robustness (arXiv 2407.18213)
     url: https://arxiv.org/abs/2407.18213
     publisher: arXiv
     kind: paper
     published_at: 2024-07-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: robustness-pdf
     title: Scaling Trends in Language Model Robustness, full text (author affiliations)
     url: https://arxiv.org/pdf/2407.18213
     publisher: arXiv
     kind: paper
     published_at: 2024-07-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stack-paper
     title: "STACK: Adversarial Attacks on LLM Safeguard Pipelines (arXiv 2506.24068)"
     url: https://arxiv.org/abs/2506.24068
     publisher: arXiv
     kind: paper
     published_at: 2025-06-30
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stack-pdf
     title: STACK paper, full text (author affiliations)
     url: https://arxiv.org/pdf/2506.24068
     publisher: arXiv
     kind: paper
     published_at: 2025-06-30
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: mckenzie-site
+    title: Ian McKenzie — personal site (About me)
+    url: https://irmckenzie.co.uk/
+    publisher: Ian McKenzie
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: prize-repo
+    title: inverse-scaling/prize README (contest timeline and results)
+    url: https://github.com/inverse-scaling/prize
+    publisher: Inverse Scaling Prize (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: round1-post
+    title: "Inverse Scaling Prize: First Round Winners"
+    url: https://irmckenzie.co.uk/round1/
+    publisher: Ian McKenzie
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-21

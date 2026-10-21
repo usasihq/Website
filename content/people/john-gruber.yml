@@ -11,7 +11,7 @@ bio:
     Daring Fireball Company. John Gruber also hosts The Talk Show, a podcast in which guests discuss
     Apple's products and platforms, software design, and technology industry news.
   source_ids: [df-colophon, talk-show]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Daring Fireball
     organization_slug: null
@@ -34,14 +34,72 @@ work:
       Hosts The Talk Show, a podcast with guests on Apple events and products, operating-system betas,
       and interface design.
     source_ids: [talk-show]
+  - name: Markdown
+    artifact_slug: null
+    type: open-source
+    url: https://daringfireball.net/projects/markdown/
+    contribution: >-
+      Wrote Markdown, a plain-text formatting syntax and a Perl tool that converts it to HTML, released
+      as free software under a BSD-style license that carries John Gruber's 2004 copyright notice.
+    source_ids: [markdown, markdown-license]
+  - name: SmartyPants
+    artifact_slug: null
+    type: open-source
+    url: https://daringfireball.net/projects/smartypants/
+    contribution: >-
+      Wrote SmartyPants, a free web publishing plug-in for Movable Type, Blosxom, and BBEdit that turns
+      plain ASCII punctuation into typographic punctuation HTML entities.
+    source_ids: [smartypants]
 links:
   - label: Daring Fireball
     url: https://daringfireball.net/
   - label: The Talk Show
     url: https://daringfireball.net/thetalkshow/
+sections:
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Daring Fireball's archive runs back to August 2002, and the site's copyright line covers 2002
+          to 2026 under The Daring Fireball Company LLC. The colophon credits John Gruber as the site's
+          writer and producer and notes that its articles and links are still published through Movable
+          Type.
+        source_ids: [df-archive, df-colophon]
+      - text: >-
+          The Talk Show page lists recent episodes in which John Gruber and returning guests discuss
+          Apple's product events, operating-system betas, and interface and icon design on Apple's
+          platforms.
+        source_ids: [talk-show]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          John Gruber wrote Markdown, which the project page describes as both a plain-text formatting
+          syntax and a Perl tool that converts that syntax into structurally valid HTML. The page says
+          the syntax was designed to stay readable as plain text, drew its main inspiration from the
+          conventions of plain-text email, and credits Aaron Swartz for feedback on its design. Markdown
+          is distributed under a BSD-style open-source license, and version 1.0.1 was released in
+          December 2004.
+        source_ids: [markdown, markdown-license]
+      - text: >-
+          John Gruber also wrote SmartyPants, a free plug-in for Movable Type, Blosxom, and BBEdit that
+          converts straight quotes, dashes, and ellipses into typographic punctuation entities. Version
+          1.5.1 was released in March 2004.
+        source_ids: [smartypants]
+timeline:
+  - date: "2002-08"
+    text: Began publishing articles on Daring Fireball, according to the site's archive.
+    source_ids: [df-archive]
+  - date: "2004-03-12"
+    text: Released SmartyPants 1.5.1, a typographic punctuation plug-in for web publishing tools.
+    source_ids: [smartypants]
+  - date: "2004"
+    text: Published Markdown as free software under a BSD-style open-source license.
+    source_ids: [markdown-license]
+  - date: "2004-12-17"
+    text: Released Markdown 1.0.1, the current download on the project page.
+    source_ids: [markdown]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: df-colophon
     title: "Daring Fireball: Colophon"
@@ -49,11 +107,39 @@ sources:
     publisher: Daring Fireball
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: talk-show
     title: "Daring Fireball: The Talk Show"
     url: https://daringfireball.net/thetalkshow/
     publisher: Daring Fireball
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: df-archive
+    title: "Daring Fireball: Archive"
+    url: https://daringfireball.net/archive/
+    publisher: Daring Fireball
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: markdown
+    title: "Daring Fireball: Markdown"
+    url: https://daringfireball.net/projects/markdown/
+    publisher: Daring Fireball
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: markdown-license
+    title: "Daring Fireball: Markdown: License"
+    url: https://daringfireball.net/projects/markdown/license
+    publisher: Daring Fireball
+    kind: license
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: smartypants
+    title: "Daring Fireball Projects: SmartyPants"
+    url: https://daringfireball.net/projects/smartypants/
+    publisher: Daring Fireball
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-21

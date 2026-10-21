@@ -16,7 +16,7 @@ bio:
     describes the implicit differentiation framework of JAXopt, a library of differentiable
     optimizers built on JAX.
   source_ids: [homepage, sklearn-about, sklearn-jmlr, jaxopt-paper, jaxopt-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -58,9 +58,65 @@ work:
 links:
   - label: Website
     url: https://fa.bianp.net/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Fabian Pedregosa started in open source as a core contributor to the SymPy computer algebra system, then
+          worked at INRIA on scikit-learn. Pedregosa went on to a PhD applying machine learning to brain imaging,
+          followed by postdoctoral work on mathematical optimization at INRIA with Alexandre d'Aspremont and at UC
+          Berkeley with Laurent El Ghaoui.
+        source_ids: [homepage]
+      - text: >-
+          Pedregosa then joined Google Research, where the work focused on mathematical optimization until 2022
+          and on AI for mathematics afterwards. Pedregosa's homepage describes being part of the team behind the
+          International Mathematical Olympiad results of 2024 and 2025, and current work on the Gemini Core team on
+          math, code and related topics.
+        source_ids: [homepage]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          David Cournapeau started scikit-learn in 2007; Pedregosa took over the project in January 2010, made its
+          first public release on 1 February 2010 and served as developer, maintainer and release manager until
+          January 2012. Pedregosa is first author of the 2011 JMLR paper introducing the library and is listed
+          among its emeritus maintainers.
+        source_ids: [homepage, sklearn-jmlr, sklearn-about]
+      - text: >-
+          Pedregosa started memory-profiler, a line-by-line memory profiler for Python, in 2012 and remains its
+          lead developer. At Google, Pedregosa co-authored the implicit differentiation framework behind JAXopt, a
+          differentiable optimization library for JAX that was discontinued in December 2023 in favor of Optax, and
+          also contributes to Optax.
+        source_ids: [homepage, jaxopt-paper, jaxopt-repo]
+timeline:
+  - date: "2010"
+    text: Received a Google Summer of Code scholarship to improve the SymPy logic module.
+    source_ids: [homepage]
+  - date: "2010-02-01"
+    text: Made the first public release of scikit-learn after taking over the project in January 2010.
+    source_ids: [homepage]
+  - date: "2011"
+    text: Published "Scikit-learn, Machine Learning in Python" in JMLR as first author.
+    source_ids: [sklearn-jmlr]
+  - date: "2012"
+    text: Started the memory-profiler project and handed off scikit-learn release management.
+    source_ids: [homepage]
+  - date: "2021-05-31"
+    text: Co-authored "Efficient and Modular Implicit Differentiation", the framework behind JAXopt.
+    source_ids: [jaxopt-paper]
+  - date: "2023-12"
+    text: JAXopt was discontinued in favor of Optax.
+    source_ids: [homepage]
+  - date: "2024"
+    text: Was part of the Google team whose language model took part in the International Mathematical Olympiad.
+    source_ids: [homepage]
+honors:
+  - name: EuroSciPy Best Poster Award (memory-profiler)
+    year: 2012
+    awarded_by: EuroSciPy 2012 conference
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Fabian Pedregosa — About
@@ -68,46 +124,46 @@ sources:
     publisher: Fabian Pedregosa
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-about
     title: scikit-learn — About us (maintainers and history)
     url: https://scikit-learn.org/stable/about.html
     publisher: scikit-learn
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-jmlr
     title: "Scikit-learn: Machine Learning in Python (JMLR 12, 2011)"
     url: https://jmlr.org/papers/v12/pedregosa11a.html
     publisher: Journal of Machine Learning Research
     kind: paper
     published_at: "2011"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jaxopt-paper
     title: "Efficient and Modular Implicit Differentiation (arXiv 2105.15183)"
     url: https://arxiv.org/abs/2105.15183
     publisher: arXiv
     kind: paper
     published_at: 2021-05-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jaxopt-repo
     title: google/jaxopt README (status and "Cite us")
     url: https://github.com/google/jaxopt
     publisher: google (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-license
     title: scikit-learn/scikit-learn COPYING (BSD 3-Clause License)
     url: https://github.com/scikit-learn/scikit-learn/blob/main/COPYING
     publisher: scikit-learn (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: memprof-license
     title: pythonprofilers/memory_profiler COPYING (New BSD License)
     url: https://github.com/pythonprofilers/memory_profiler/blob/master/COPYING
     publisher: pythonprofilers (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

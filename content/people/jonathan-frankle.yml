@@ -15,7 +15,7 @@ bio:
     can be during training. Frankle is a bylined author of Databricks' March 2024 post announcing the
     DBRX model and a co-author of the MosaicBERT paper on fast pretraining of a bidirectional encoder.
   source_ids: [frankle-site, dais-frankle, lth-paper, dbrx-post, mosaicbert-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Databricks
     organization_slug: databricks
@@ -30,6 +30,11 @@ affiliations:
   - name: Massachusetts Institute of Technology
     organization_slug: mit
     role: PhD student in computer science (completed 2023)
+    current: false
+    source_ids: [frankle-site]
+  - name: Center on Privacy and Technology, Georgetown Law
+    organization_slug: null
+    role: Inaugural Staff Technologist
     current: false
     source_ids: [frankle-site]
 work:
@@ -62,9 +67,68 @@ links:
     url: https://www.jfrankle.com/
   - label: GitHub
     url: https://github.com/jfrankle
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Jonathan Frankle completed a PhD in computer science at MIT in 2023, where the main line of
+          research was the lottery ticket hypothesis. Frankle was a member of MosaicML's founding team and
+          joined Databricks when it acquired MosaicML.
+        source_ids: [frankle-site, dais-frankle]
+      - text: >-
+          As Chief AI Scientist at Databricks, Frankle leads research projects on reinforcement learning,
+          model training, and agent evaluation. Frankle's homepage describes Mosaic Research at Databricks
+          as sharing its work through blog posts, open-source repositories such as Composer, Streaming,
+          LLM Foundry, and MegaBlocks, and open models such as DBRX and MPT.
+        source_ids: [frankle-site]
+      - text: >-
+          Frankle also works on technology policy, including with the OECD on implementing the AI
+          Principles developed in 2019. Earlier, Frankle was the inaugural Staff Technologist at the
+          Center on Privacy and Technology at Georgetown Law and co-developed a course on Computer
+          Programming for Lawyers with Paul Ohm.
+        source_ids: [frankle-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          The lottery ticket hypothesis, introduced in a March 2018 paper with Michael Carbin, studies how
+          large neural networks need to be in order to train. Frankle's homepage summarizes the finding
+          that networks can be as small for much or all of training as they can be made after training.
+          Follow-up work includes Linear Mode Connectivity and the Lottery Ticket Hypothesis (2019) and
+          The Early Phase of Neural Network Training (2020).
+        source_ids: [lth-paper, frankle-site, lmc-paper, early-phase-paper]
+      - text: >-
+          More broadly, Frankle studies the behavior of practical neural networks empirically, posing
+          hypotheses and testing them with large-scale experiments. At Databricks, Frankle is the
+          first-listed author of the March 2024 post announcing DBRX, and co-authored the December 2023
+          MosaicBERT paper on a bidirectional encoder optimized for fast pretraining.
+        source_ids: [frankle-site, dbrx-post, mosaicbert-paper]
+timeline:
+  - date: "2018-03-09"
+    text: Introduced the lottery ticket hypothesis in a paper with Michael Carbin.
+    source_ids: [lth-paper]
+  - date: "2019-12-11"
+    text: Co-authored Linear Mode Connectivity and the Lottery Ticket Hypothesis.
+    source_ids: [lmc-paper]
+  - date: "2020-02-24"
+    text: Published The Early Phase of Neural Network Training with David Schwab and Ari Morcos.
+    source_ids: [early-phase-paper]
+  - date: "2023"
+    text: Completed a PhD in computer science at MIT.
+    source_ids: [frankle-site]
+  - date: "2023-12-29"
+    text: Co-authored MosaicBERT, a bidirectional encoder optimized for fast pretraining.
+    source_ids: [mosaicbert-paper]
+  - date: "2024-03-27"
+    text: Co-authored Databricks' announcement of the DBRX open language model.
+    source_ids: [dbrx-post]
+honors:
+  - name: ICLR Best Paper Award (The Lottery Ticket Hypothesis)
+    year: null
+    awarded_by: International Conference on Learning Representations (ICLR)
+    source_ids: [dais-frankle]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: frankle-site
     title: Jonathan Frankle — homepage
@@ -72,39 +136,53 @@ sources:
     publisher: Jonathan Frankle
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: jfrankle (Jonathan Frankle) on GitHub
     url: https://github.com/jfrankle
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dais-frankle
     title: Jonathan Frankle — Data + AI Summit 2026 speaker page
     url: https://www.databricks.com/dataaisummit/speaker/jonathan-frankle
     publisher: Databricks
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lth-paper
     title: "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks (arXiv 1803.03635)"
     url: https://arxiv.org/abs/1803.03635
     publisher: arXiv
     kind: paper
     published_at: 2018-03-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dbrx-post
     title: "Announcing DBRX: A new standard for efficient open source LLMs"
     url: https://www.databricks.com/blog/announcing-dbrx-new-standard-efficient-open-source-customizable-llms
     publisher: Databricks
     kind: announcement
     published_at: 2024-03-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mosaicbert-paper
     title: "MosaicBERT: A Bidirectional Encoder Optimized for Fast Pretraining (arXiv 2312.17482)"
     url: https://arxiv.org/abs/2312.17482
     publisher: arXiv
     kind: paper
     published_at: 2023-12-29
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: lmc-paper
+    title: Linear Mode Connectivity and the Lottery Ticket Hypothesis
+    url: https://arxiv.org/abs/1912.05671
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-11
+    accessed_at: 2026-10-21
+  - id: early-phase-paper
+    title: The Early Phase of Neural Network Training
+    url: https://arxiv.org/abs/2002.10365
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-02-24
+    accessed_at: 2026-10-21

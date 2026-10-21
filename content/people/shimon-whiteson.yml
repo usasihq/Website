@@ -11,10 +11,10 @@ bio:
     Director at Google DeepMind, with research on deep reinforcement learning and imitation learning
     applied to robotics and video games. Before Oxford, Whiteson was an Assistant and then Associate
     Professor at the University of Amsterdam, and Whiteson's spin-out company Latent Logic was acquired
-    by Waymo in 2019. Whiteson is the senior author of the multi-agent reinforcement learning papers
+    by Waymo in 2019. Whiteson is the last-listed author of the multi-agent reinforcement learning papers
     QMIX (2018) and Counterfactual Multi-Agent Policy Gradients (COMA, 2017).
   source_ids: [lab-page, qmix-paper, coma-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of Oxford
     organization_slug: null
@@ -25,6 +25,16 @@ affiliations:
     organization_slug: google-deepmind
     role: Research Director
     current: true
+    source_ids: [lab-page]
+  - name: University of Amsterdam
+    organization_slug: null
+    role: Assistant, then Associate Professor (eight years before 2015)
+    current: false
+    source_ids: [lab-page]
+  - name: Latent Logic
+    organization_slug: null
+    role: Whiteson's spin-out company (acquired by Waymo in 2019)
+    current: false
     source_ids: [lab-page]
 work:
   - name: "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning"
@@ -46,9 +56,71 @@ work:
 links:
   - label: Lab
     url: https://whirl.cs.ox.ac.uk/pages/people/shimon.html
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Shimon Whiteson completed a doctorate at the University of Texas at Austin in 2007 and spent
+          eight years as an assistant and then associate professor at the University of Amsterdam.
+          Whiteson joined the University of Oxford as an associate professor in 2015 and is now a
+          Professor of Computer Science there, where Whiteson heads the Whiteson Research Lab.
+        source_ids: [lab-page]
+      - text: >-
+          Whiteson's spin-out company, Latent Logic, was acquired by Waymo in 2019. Whiteson
+          is also a Research Director at Google DeepMind.
+        source_ids: [lab-page]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Whiteson's research centres on deep reinforcement learning and imitation learning, with
+          applications in robotics and video games. Several of Whiteson's papers address cooperative
+          multi-agent learning: Whiteson is last-listed author of a 2016 paper in which agents learn
+          communication protocols with deep reinforcement learning, of the COMA counterfactual policy
+          gradient method (2017), and of the QMIX value-factorisation method (2018).
+        source_ids: [lab-page, comm-paper, coma-paper, qmix-paper]
+      - text: >-
+          Whiteson is also last-listed author of the StarCraft Multi-Agent Challenge (2019), a benchmark
+          for cooperative multi-agent reinforcement learning built on StarCraft II micromanagement
+          scenarios.
+        source_ids: [smac-paper]
+timeline:
+  - date: "2007"
+    text: Completed a doctorate at the University of Texas at Austin.
+    source_ids: [lab-page]
+  - date: "2015"
+    text: Joined the University of Oxford as an associate professor after eight years at the University of Amsterdam.
+    source_ids: [lab-page]
+  - date: 2016-05
+    text: Co-authored "Learning to Communicate with Deep Multi-Agent Reinforcement Learning".
+    source_ids: [comm-paper]
+  - date: 2017-05
+    text: Co-authored "Counterfactual Multi-Agent Policy Gradients" (COMA) as last-listed author.
+    source_ids: [coma-paper]
+  - date: 2018-03
+    text: Co-authored the QMIX paper on monotonic value function factorisation as last-listed author.
+    source_ids: [qmix-paper]
+  - date: 2019-02
+    text: Co-authored "The StarCraft Multi-Agent Challenge" benchmark paper.
+    source_ids: [smac-paper]
+  - date: "2019"
+    text: Latent Logic, Whiteson's spin-out company, was acquired by Waymo.
+    source_ids: [lab-page]
+honors:
+  - name: ERC Starting Grant
+    year: 2014
+    awarded_by: European Research Council
+    source_ids: [lab-page]
+  - name: Google Faculty Research Award
+    year: 2017
+    awarded_by: Google
+    source_ids: [lab-page]
+  - name: JPMorgan Faculty Award
+    year: 2019
+    awarded_by: JPMorgan Chase
+    source_ids: [lab-page]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: lab-page
     title: Shimon Whiteson — Whiteson Research Lab, University of Oxford
@@ -56,18 +128,32 @@ sources:
     publisher: Whiteson Research Lab (University of Oxford)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: qmix-paper
     title: "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning (arXiv 1803.11485)"
     url: https://arxiv.org/abs/1803.11485
     publisher: arXiv
     kind: paper
     published_at: 2018-03-30
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: coma-paper
     title: "Counterfactual Multi-Agent Policy Gradients (arXiv 1705.08926)"
     url: https://arxiv.org/abs/1705.08926
     publisher: arXiv
     kind: paper
     published_at: 2017-05-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: comm-paper
+    title: Learning to Communicate with Deep Multi-Agent Reinforcement Learning (arXiv 1605.06676)
+    url: https://arxiv.org/abs/1605.06676
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-05-21
+    accessed_at: 2026-10-21
+  - id: smac-paper
+    title: The StarCraft Multi-Agent Challenge (arXiv 1902.04043)
+    url: https://arxiv.org/abs/1902.04043
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-02-11
+    accessed_at: 2026-10-21

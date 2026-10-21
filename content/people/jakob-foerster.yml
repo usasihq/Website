@@ -13,7 +13,7 @@ bio:
     multi-agent reinforcement learning: Foerster is first author of "Counterfactual Multi-Agent Policy
     Gradients" (COMA, 2017) and a co-author of QMIX (2018), both with Shimon Whiteson.
   source_ids: [homepage, coma-paper, qmix-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of Oxford
     organization_slug: null
@@ -28,6 +28,11 @@ affiliations:
   - name: British Open-ended Learning and Discovery Lab (BOLD)
     organization_slug: null
     role: Founding Director
+    current: true
+    source_ids: [homepage]
+  - name: St Anne's College, Oxford
+    organization_slug: null
+    role: Supernumerary Fellow
     current: true
     source_ids: [homepage]
 work:
@@ -50,9 +55,58 @@ work:
 links:
   - label: Website
     url: https://www.jakobfoerster.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Foerster is an associate professor in Oxford's Department of Engineering Science and a supernumerary
+          fellow of St Anne's College, and the homepage says Foerster now splits time equally between Oxford and
+          FAIR at Meta. Foerster is also founding director of the British Open-ended Learning and Discovery
+          (BOLD) lab, and the homepage notes regular service as a senior area chair for machine learning
+          conferences.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Foerster's early papers, several written with Shimon Whiteson, focused on deep multi-agent
+          reinforcement learning. "Learning to Communicate with Deep Multi-Agent Reinforcement Learning" (2016)
+          showed agents learning communication protocols, COMA (2017) used a centralized critic with a
+          counterfactual baseline to train decentralized policies, and QMIX (2018) factorized joint
+          action-values. LOLA (2017) introduced agents that account for how their opponents learn.
+        source_ids: [dial-paper, coma-paper, qmix-paper, lola-paper]
+      - text: >-
+          Later work turned to coordination with other agents and with people. Foerster co-authored "The Hanabi
+          Challenge" (2019), which proposed the cooperative card game as a benchmark, and "Other-Play" (2020),
+          a method for zero-shot coordination with unseen partners. Foerster's listed interests now include
+          compute-only scaling and self-improvement, multi-agent RL in real-world settings, human-AI
+          coordination, and AI for science; in 2024 Foerster co-authored "The AI Scientist", on automating
+          open-ended scientific discovery with language models.
+        source_ids: [hanabi-paper, other-play-paper, homepage, ai-scientist-paper]
+timeline:
+  - date: "2016-05"
+    text: Posted "Learning to Communicate with Deep Multi-Agent Reinforcement Learning" as first author.
+    source_ids: [dial-paper]
+  - date: "2017-05"
+    text: Posted "Counterfactual Multi-Agent Policy Gradients" (COMA) as first author.
+    source_ids: [coma-paper]
+  - date: "2017-09"
+    text: Posted "Learning with Opponent-Learning Awareness" (LOLA) as first author.
+    source_ids: [lola-paper]
+  - date: "2018-03"
+    text: Co-authored QMIX, a value factorization method for multi-agent reinforcement learning.
+    source_ids: [qmix-paper]
+  - date: "2019-02"
+    text: Co-authored "The Hanabi Challenge", proposing Hanabi as a benchmark for AI research.
+    source_ids: [hanabi-paper]
+  - date: "2020-03"
+    text: Co-authored "Other-Play" for zero-shot coordination.
+    source_ids: [other-play-paper]
+  - date: "2024-08"
+    text: Co-authored "The AI Scientist", on fully automated open-ended scientific discovery.
+    source_ids: [ai-scientist-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Jakob N. Foerster — homepage
@@ -60,18 +114,53 @@ sources:
     publisher: Jakob N. Foerster
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: coma-paper
     title: "Counterfactual Multi-Agent Policy Gradients (arXiv 1705.08926)"
     url: https://arxiv.org/abs/1705.08926
     publisher: arXiv
     kind: paper
     published_at: 2017-05-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: qmix-paper
     title: "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning (arXiv 1803.11485)"
     url: https://arxiv.org/abs/1803.11485
     publisher: arXiv
     kind: paper
     published_at: 2018-03-30
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: dial-paper
+    title: "Learning to Communicate with Deep Multi-Agent Reinforcement Learning (arXiv 1605.06676)"
+    url: https://arxiv.org/abs/1605.06676
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-05-21
+    accessed_at: 2026-10-21
+  - id: lola-paper
+    title: "Learning with Opponent-Learning Awareness (arXiv 1709.04326)"
+    url: https://arxiv.org/abs/1709.04326
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-09-13
+    accessed_at: 2026-10-21
+  - id: hanabi-paper
+    title: "The Hanabi Challenge: A New Frontier for AI Research (arXiv 1902.00506)"
+    url: https://arxiv.org/abs/1902.00506
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-02-01
+    accessed_at: 2026-10-21
+  - id: other-play-paper
+    title: "\"Other-Play\" for Zero-Shot Coordination (arXiv 2003.02979)"
+    url: https://arxiv.org/abs/2003.02979
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-03-06
+    accessed_at: 2026-10-21
+  - id: ai-scientist-paper
+    title: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery (arXiv 2408.06292)"
+    url: https://arxiv.org/abs/2408.06292
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-08-12
+    accessed_at: 2026-10-21

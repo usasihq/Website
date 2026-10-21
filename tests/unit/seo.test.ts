@@ -15,6 +15,7 @@ import {
   leaderSeo,
   licenseGuideSeo,
   listJoin,
+  newsItemSeo,
   organizationSeo,
   roleDescription,
   sentences,
@@ -33,10 +34,10 @@ describe("title and description helpers", () => {
   });
 
   it("keeps the site suffix only while the whole title fits", () => {
-    expect(documentTitle("Jobs")).toBe("Jobs · USASI");
+    expect(documentTitle("Jobs")).toBe("Jobs | USASI");
     const long = "Compare U.S. AI labs: open-weight models & openness, more";
     expect(documentTitle(long)).toBe(long);
-    expect(documentTitle("x".repeat(TITLE_MAX - " · USASI".length))).toMatch(/ · USASI$/);
+    expect(documentTitle("x".repeat(TITLE_MAX - " | USASI".length))).toMatch(/ \| USASI$/);
     expect(clipTitle("Short headline")).toBe("Short headline");
     expect(clipTitle("OpenAI ships a new model: longer words that would overflow a search-result title").length).toBeLessThanOrEqual(TITLE_MAX);
     expect(clipTitle("OpenAI ships a new model: longer words that would overflow a search-result title")).toBe("OpenAI ships a new model");
@@ -62,6 +63,16 @@ describe("title and description helpers", () => {
   it("describes roles as nouns", () => {
     const mit = catalog.organization("mit");
     if (mit) expect(roleDescription(mit)).toBe("a university");
+  });
+
+  it("uses a news headline as the title and the first summary sentence as the description", () => {
+    const item = catalog.news[0];
+    const seo = newsItemSeo(item);
+    expect(seo.title.length).toBeGreaterThan(0);
+    expect(seo.title.length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(seo.description.length).toBeGreaterThan(0);
+    expect(seo.description.length).toBeLessThanOrEqual(DESCRIPTION_MAX);
+    expect(seo.description.startsWith(sentences(item.summary.text)[0]!.slice(0, 24))).toBe(true);
   });
 });
 

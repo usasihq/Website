@@ -1,0 +1,107 @@
+slug: sid-sheth
+name: Sid Sheth
+initials: SS
+groups: [leadership]
+sector: corporate
+specialties: [hardware, inference]
+headline: Founder and CEO of d-Matrix, which builds memory-centric inference accelerators and racks for AI
+bio:
+  text: >-
+    Sid Sheth is the founder and CEO of d-Matrix, a company that builds memory-centric compute
+    hardware for generative AI inference, including the Corsair accelerator and the Squadron
+    multi-rack systems. Sheth describes d-Matrix as evolving from a specialized chip company into a
+    data center compute infrastructure business.
+  source_ids: [dm-about, dm-squadron]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: d-Matrix
+    organization_slug: d-matrix
+    role: Founder and CEO
+    current: true
+    source_ids: [dm-about, dm-squadron, dm-nvidia]
+work:
+  - name: d-Matrix Squadron
+    artifact_slug: null
+    url: https://www.d-matrix.ai/announcements/squadron-compute-clusters/
+    contribution: >-
+      Unveiled Squadron, a fleet of multi-rack inference systems, in a keynote at the 2026 OCP
+      Global Summit, where Sheth also described d-Matrix's implementation of attention-FFN
+      disaggregation with GPU servers.
+    source_ids: [dm-squadron]
+links:
+  - label: d-Matrix
+    url: https://www.d-matrix.ai/about/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          d-Matrix's about page lists Sheth as founder and CEO, alongside co-founder and CTO Sudeep
+          Bhoja. The company says its leadership team has a long history of building chip
+          businesses and that it made an early bet on accelerating transformer inference.
+        source_ids: [dm-about, dm-3dimc]
+      - text: >-
+          Sheth speaks for the company in its announcements, including the September 2026 NVIDIA
+          collaboration and the October 2026 keynote at the OCP Global Summit where Sheth unveiled
+          Squadron.
+        source_ids: [dm-nvidia, dm-squadron]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          d-Matrix builds memory-centric hardware for AI inference. Its Corsair accelerator uses a
+          chiplet-based digital in-memory compute design, and in August 2025 the company added 3D
+          stacked digital in-memory compute (3DIMC) to its roadmap with Pavehawk, its first
+          3DIMC silicon.
+        source_ids: [dm-3dimc]
+      - text: >-
+          In September 2026 d-Matrix announced a collaboration with NVIDIA built around an NVLink
+          Fusion rack-level system and introduced Raptor, a follow-on platform that stacks DRAM on
+          an SRAM compute chip. In October 2026 it announced Squadron, a fleet of multi-rack
+          inference systems, and said its Corsair servers and SquadRacks were generally available.
+        source_ids: [dm-nvidia, dm-squadron]
+timeline:
+  - date: "2025-08-25"
+    text: d-Matrix added 3D stacked digital in-memory compute to its roadmap with Pavehawk silicon.
+    source_ids: [dm-3dimc]
+  - date: "2026-09-10"
+    text: d-Matrix announced a collaboration with NVIDIA on NVLink Fusion rack-scale inference.
+    source_ids: [dm-nvidia]
+  - date: "2026-10-12"
+    text: d-Matrix unveiled Squadron multi-rack inference systems at the OCP Global Summit.
+    source_ids: [dm-squadron]
+honors: []
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: dm-about
+    title: About d-Matrix — leadership
+    url: https://www.d-matrix.ai/about/
+    publisher: d-Matrix
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: dm-3dimc
+    title: Scaling AI inference with 3DIMC (d-Matrix blog, by Sudeep Bhoja)
+    url: https://www.d-matrix.ai/scaling-ai-inference-with-3dimc/
+    publisher: d-Matrix
+    kind: announcement
+    published_at: 2025-08-25
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: dm-nvidia
+    title: d-Matrix announces collaboration with NVIDIA on NVLink Fusion rack-scale inference
+    url: https://www.d-matrix.ai/announcements/d-matrix-rackscale-nvidia/
+    publisher: d-Matrix
+    kind: announcement
+    published_at: 2026-09-10
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: dm-squadron
+    title: d-Matrix announces Squadron multi-rack inference compute clusters
+    url: https://www.d-matrix.ai/announcements/squadron-compute-clusters/
+    publisher: d-Matrix
+    kind: announcement
+    published_at: 2026-10-12
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

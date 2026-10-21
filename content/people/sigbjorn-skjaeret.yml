@@ -15,7 +15,7 @@ bio:
     is a member of the CI team. Skjæret's recent commits cover the project's CI and release
     workflows, Jinja template support, GGUF tokenizer handling, and model fixes.
   source_ids: [github-profile, llama-cpp-codeowners, llama-cpp-commits]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
@@ -42,9 +42,42 @@ work:
 links:
   - label: GitHub
     url: https://github.com/CISC
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Skjæret, who works on GitHub as CISC, is a code owner in llama.cpp, the MIT-licensed C/C++ project for
+          running language models on local hardware. The project's CODEOWNERS file assigns Skjæret ownership of the
+          Python model conversion scripts and the gguf-py package, of core model code including the architecture,
+          graph, vocabulary, adapter and per-model source files, of the Jinja template code in common, and of the
+          Python requirements files. Skjæret is also listed in the project's CI team.
+        source_ids: [llama-cpp-codeowners, llama-cpp-license, github-profile]
+      - text: >-
+          Skjæret's commits from September and October 2026 show much of this work. They include refactoring the
+          continuous integration and release workflows, adding a Windows Arm64 Vulkan release build, extending the
+          built-in Jinja template engine with features such as dict support and new test statements, refining how
+          gguf-py handles tokenizer special tokens and normalization, adding fill-in-the-middle tokens for PLaMo
+          models, and a CUDA fusion for grouped experts top-k selection.
+        source_ids: [llama-cpp-commits]
+timeline:
+  - date: "2026-09-21"
+    text: Refactored llama.cpp's self-hosted CI builds into backend-specific workflows.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-09-27"
+    text: Added support for the dict builtin to llama.cpp's Jinja template engine.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-10-04"
+    text: Improved llama.cpp's release flow and added a Windows Arm64 Vulkan release.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-10-14"
+    text: Added detection of NFC normalization to the gguf-py package.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-10-17"
+    text: Added a grouped experts top-k fusion to llama.cpp's CUDA backend.
+    source_ids: [llama-cpp-commits]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: CISC (Sigbjørn Skjæret) on GitHub
@@ -52,25 +85,25 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by CISC
     url: https://github.com/ggml-org/llama.cpp/commits?author=CISC
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

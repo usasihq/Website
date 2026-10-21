@@ -30,9 +30,41 @@ work:
 links:
   - label: Lambda blog author page
     url: https://lambda.ai/blog/author/mitesh-agrawal
+sections:
+  - heading: Lambda
+    paragraphs:
+      - text: >-
+          Mitesh Agrawal served as Head of Cloud at Lambda, the AI compute company, and was quoted in
+          that role in Lambda's March 2023 announcement that NVIDIA H100 Tensor Core GPUs would arrive
+          on Lambda Cloud in early April 2023.
+        source_ids: [lambda-h100-post]
+      - text: >-
+          Agrawal's 2024 posts on Lambda's blog announced several cloud products. In June 2024 Agrawal
+          introduced 1-Click Clusters, on-demand clusters of 16 to 512 interconnected NVIDIA H100 GPUs
+          for training large AI models without long-term contracts. Later posts covered the availability
+          of the Hermes 3 model on Lambda's cloud with a chat completions API (August 2024),
+          Kubernetes cluster deployment with SkyPilot (September 2024), and smaller on-demand 1x, 2x
+          and 4x H100 SXM instances (October 2024).
+        source_ids: [lambda-1cc-post, lambda-author]
+timeline:
+  - date: "2023-03-21"
+    text: Quoted as Lambda's Head of Cloud in the announcement of NVIDIA H100 GPUs coming to Lambda Cloud.
+    source_ids: [lambda-h100-post]
+  - date: "2024-06-03"
+    text: Introduced Lambda 1-Click Clusters of interconnected NVIDIA H100 GPUs for training large models.
+    source_ids: [lambda-1cc-post, lambda-author]
+  - date: "2024-08-15"
+    text: Announced Hermes 3 availability on Lambda's cloud with the Lambda Chat Completions API.
+    source_ids: [lambda-author]
+  - date: "2024-09-12"
+    text: Wrote about Kubernetes cluster deployment with Lambda and SkyPilot.
+    source_ids: [lambda-author]
+  - date: "2024-10-07"
+    text: Announced on-demand 1x, 2x and 4x NVIDIA H100 SXM instances in Lambda's cloud.
+    source_ids: [lambda-author]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: lambda-h100-post
     title: Lambda Cloud Adding NVIDIA H100 Tensor Core GPUs in Early April
@@ -40,18 +72,18 @@ sources:
     publisher: Lambda
     kind: announcement
     published_at: 2023-03-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lambda-author
     title: The Lambda deep learning blog — posts by Mitesh Agrawal
     url: https://lambda.ai/blog/author/mitesh-agrawal
     publisher: Lambda
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lambda-1cc-post
     title: Introducing Lambda 1-Click Clusters, a new way to train large AI models
     url: https://lambda.ai/blog/introducing-lambda-1-click-clusters-a-new-way-to-train-large-ai-models
     publisher: Lambda
     kind: announcement
     published_at: 2024-06-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

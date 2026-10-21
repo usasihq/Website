@@ -14,7 +14,7 @@ bio:
     integration. The page for the PyTorch 2.14 release Q&A in September 2026 lists Shulga with
     Thinking Machines Lab.
   source_ids: [pytorch-maintainers, pt211-qa, pt27-qa, pt214-qa]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Thinking Machines Lab
     organization_slug: thinking-machines-lab
@@ -44,9 +44,42 @@ work:
 links:
   - label: GitHub
     url: https://github.com/malfet
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Shulga is one of PyTorch's core maintainers, and the project's governance documentation also names
+          Shulga as a maintainer for two areas: the Apple M1/MPS/Metal backend and Build + CI. The repository's CODEOWNERS file assigns Shulga ownership of the MPS and
+          Metal source directories.
+        source_ids: [pytorch-maintainers, pytorch-codeowners]
+      - text: >-
+          A 2025 PyTorch event page described Shulga as a software engineer at Meta responsible, among other
+          things, for PyTorch releases and continuous integration, and as a core maintainer.
+        source_ids: [pt27-qa]
+  - heading: Releases and community
+    paragraphs:
+      - text: >-
+          Shulga has presented PyTorch releases to the community in live question-and-answer sessions,
+          including PyTorch 2.7 in April 2025, PyTorch 2.10 in January 2026 and PyTorch 2.11 in March 2026. For the
+          PyTorch 2.14 session in September 2026, which covered updates to Inductor, distributed training, dynamic
+          shapes and Apple Silicon support, the event page lists Shulga with Thinking Machines Lab.
+        source_ids: [pt27-qa, pt210-qa, pt211-qa, pt214-qa]
+timeline:
+  - date: "2025-04-28"
+    text: Presented the PyTorch 2.7 release live Q&A as a core maintainer at Meta.
+    source_ids: [pt27-qa]
+  - date: "2026-01-28"
+    text: Presented the PyTorch 2.10 release live Q&A with Andrey Talman and other speakers.
+    source_ids: [pt210-qa]
+  - date: "2026-03-31"
+    text: Presented the PyTorch 2.11 release live Q&A with Andrey Talman.
+    source_ids: [pt211-qa]
+  - date: "2026-09-17"
+    text: Presented the PyTorch 2.14 release live Q&A, listed with Thinking Machines Lab.
+    source_ids: [pt214-qa]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: pytorch-maintainers
     title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
@@ -54,39 +87,46 @@ sources:
     publisher: PyTorch
     kind: documentation
     published_at: 2026-06-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pt211-qa
     title: PyTorch 2.11 Release Live Q&A (March 31, 2026) — event page
     url: https://pytorch.org/event/pytorch-2-11-release-live-qa/
     publisher: PyTorch
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pt27-qa
     title: PyTorch 2.7 Release Live Q&A (April 28, 2025) — event page
     url: https://pytorch.org/event/pytorch-2-7-release-live-qa/
     publisher: PyTorch
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pt214-qa
     title: PyTorch 2.14 Release Live Q&A (September 17, 2026) — event page
     url: https://pytorch.org/event/pytorch-2-14-release-live-qa/
     publisher: PyTorch
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-codeowners
     title: pytorch/pytorch CODEOWNERS
     url: https://github.com/pytorch/pytorch/blob/main/CODEOWNERS
     publisher: PyTorch (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-license
     title: pytorch/pytorch LICENSE (BSD-style license)
     url: https://github.com/pytorch/pytorch/blob/main/LICENSE
     publisher: PyTorch (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: pt210-qa
+    title: PyTorch 2.10 Release Live Q&A (January 28, 2026) — event page
+    url: https://pytorch.org/event/pytorch-2-10-release-live-qa/
+    publisher: PyTorch
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

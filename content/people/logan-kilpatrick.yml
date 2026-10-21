@@ -12,16 +12,26 @@ bio:
     podcast with Nolan Fortman, which features conversations with AI practitioners. Earlier work
     included lunar rover software at NASA and training machine learning models at Apple.
   source_ids: [site]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
-    role: Works on enabling developers to build with Gemini
+    role: Works on Google AI Studio and the Gemini API, enabling developers to build with Gemini
     current: true
-    source_ids: [site]
+    source_ids: [site, google-author]
   - name: OpenAI
     organization_slug: openai
     role: Led developer relations
+    current: false
+    source_ids: [site]
+  - name: Apple
+    organization_slug: apple
+    role: Trained machine learning models (early career)
+    current: false
+    source_ids: [site]
+  - name: NASA
+    organization_slug: null
+    role: Built lunar rover software (early career)
     current: false
     source_ids: [site]
 work:
@@ -37,9 +47,55 @@ links:
     url: https://logank.ai/
   - label: Around the Prompt (YouTube)
     url: "https://www.youtube.com/playlist?list=PLTx3b9n8davxZz_tV1bMol0fvWGyEsegM"
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kilpatrick's early career included building lunar rover software at NASA and training machine
+          learning models at Apple. Kilpatrick then led developer relations at OpenAI from 2022 through early
+          2024.
+        source_ids: [site]
+      - text: >-
+          At Google DeepMind, Kilpatrick works on Google AI Studio and the Gemini API, leading the team that
+          helps developers build with Gemini, Veo, Imagen and other Google models. Google's author page gives
+          the title Product Lead, Google AI Studio and the Gemini API, while the May 2026 I/O post lists
+          Kilpatrick as Member of the Technical Staff, Google DeepMind.
+        source_ids: [google-author, site, io-2026-post]
+  - heading: Developer launches and writing
+    paragraphs:
+      - text: >-
+          On the Google Developers Blog, Kilpatrick has written launch posts for the Gemini API, including
+          Gemini 2.0 Flash and Flash-Lite in February 2025, the Gemini Embedding text model in March 2025,
+          implicit caching for Gemini 2.5 models in May 2025 and the general availability of Gemini 2.5
+          Flash-Lite in July 2025. In May 2026 Kilpatrick wrote Google's summary of developer announcements
+          from I/O 2026, covering Google Antigravity, the Gemini API and Google AI Studio.
+        source_ids: [dev-blog-posts, io-2026-post]
+      - text: >-
+          Kilpatrick also co-hosts the Around the Prompt podcast with Nolan Fortman, which features
+          conversations with AI practitioners.
+        source_ids: [site]
+timeline:
+  - date: "2022"
+    text: Began leading developer relations at OpenAI, a role held through early 2024.
+    source_ids: [site]
+  - date: "2024-11-25"
+    text: Published a Google Developers Blog post with examples of Gemini's multimodal capabilities.
+    source_ids: [dev-blog-posts]
+  - date: "2025-02-05"
+    text: Announced updates to the Gemini 2.0 model family for developers, including Gemini 2.0 Flash.
+    source_ids: [dev-blog-posts]
+  - date: "2025-03-07"
+    text: Announced the experimental Gemini Embedding text model in the Gemini API.
+    source_ids: [dev-blog-posts]
+  - date: "2025-07-22"
+    text: Announced that Gemini 2.5 Flash-Lite was stable and generally available.
+    source_ids: [dev-blog-posts]
+  - date: "2026-05-19"
+    text: Wrote Google's developer highlights post for I/O 2026.
+    source_ids: [io-2026-post]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: site
     title: Logan Kilpatrick
@@ -47,4 +103,25 @@ sources:
     publisher: Logan Kilpatrick
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: google-author
+    title: Logan Kilpatrick — Google blog author page
+    url: https://blog.google/authors/logan-kilpatrick/
+    publisher: Google
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: io-2026-post
+    title: "Building the agentic future: Developer highlights from I/O 2026"
+    url: https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
+    publisher: Google
+    kind: announcement
+    published_at: 2026-05-19
+    accessed_at: 2026-10-21
+  - id: dev-blog-posts
+    title: Posts by Logan Kilpatrick — Google Developers Blog
+    url: "https://developers.googleblog.com/en/search/?author=Logan+Kilpatrick"
+    publisher: Google
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

@@ -20,6 +20,11 @@ affiliations:
     role: Co-founder & SVP of Field Engineering
     current: true
     source_ids: [dais-tavakoli]
+  - name: McKinsey & Company
+    organization_slug: null
+    role: Associate Principal, before joining Databricks
+    current: false
+    source_ids: [db-author]
 work:
   - name: Unity Catalog
     artifact_slug: null
@@ -30,12 +35,66 @@ work:
       being open-sourced under the Apache 2.0 license and hosted at LF AI & Data. The
       unitycatalog/unitycatalog repository is Apache-2.0.
     source_ids: [uc-post, uc-repo]
+  - name: Delta Lake 2.0 open-source release
+    artifact_slug: null
+    type: open-source
+    url: https://www.databricks.com/blog/2022/06/30/open-sourcing-all-of-delta-lake.html
+    contribution: >-
+      Co-author, with Michael Armbrust, Ali Ghodsi, Reynold Xin, and Matei Zaharia, of the June 2022
+      post announcing that all Delta Lake APIs, including features previously limited to Databricks,
+      were being open-sourced with Delta Lake 2.0.
+    source_ids: [delta-post, db-author]
 links:
   - label: Databricks speaker page
     url: https://www.databricks.com/dataaisummit/speaker/arsalan-tavakoli-shiraji
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Arsalan Tavakoli-Shiraji earned a PhD in computer science at UC Berkeley in networking and
+          distributed systems. Before joining Databricks, Tavakoli-Shiraji was an Associate Principal
+          at McKinsey & Company, advising enterprises, vendors, and the public sector on topics
+          including next-generation IT, cloud computing, and corporate strategy.
+        source_ids: [db-author]
+      - text: >-
+          Databricks lists Tavakoli-Shiraji among its seven founders, with Ali Ghodsi, Ion Stoica,
+          Matei Zaharia, Patrick Wendell, Reynold Xin, and Andy Konwinski. Tavakoli-Shiraji is now
+          Databricks' SVP of Field Engineering and spoke in the Tuesday keynote of the Data + AI
+          Summit 2026.
+        source_ids: [db-founders, dais-tavakoli]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Tavakoli-Shiraji has co-written several Databricks announcements about opening its
+          platform. A June 2022 post announced that Delta Lake 2.0 would make all Delta Lake APIs open
+          source, and a June 2024 post announced the open-sourcing of Unity Catalog under the Apache
+          2.0 license, hosted at LF AI & Data.
+        source_ids: [delta-post, uc-post, db-author]
+      - text: >-
+          In June 2025, Tavakoli-Shiraji co-wrote the post introducing the lakebase, a database design
+          that runs a managed Postgres engine over data kept in open formats in cloud object storage,
+          and co-wrote the introduction of Lakebridge, a free tool for migrating legacy data warehouses to
+          Databricks SQL.
+        source_ids: [lakebase-post, lakebridge-post, db-author]
+timeline:
+  - date: 2022-06-30
+    text: Co-wrote the Databricks post announcing the fully open-source Delta Lake 2.0.
+    source_ids: [delta-post]
+  - date: 2024-06-13
+    text: Co-wrote the Databricks post announcing the open-sourcing of Unity Catalog.
+    source_ids: [uc-post]
+  - date: 2025-02-13
+    text: Co-wrote the Databricks post introducing SAP Databricks within SAP Business Data Cloud.
+    source_ids: [sap-post]
+  - date: 2025-06-12
+    text: Co-wrote the Databricks post introducing the lakebase database design.
+    source_ids: [lakebase-post]
+  - date: 2025-06-12
+    text: Co-wrote the Databricks post introducing the Lakebridge data migration tool.
+    source_ids: [lakebridge-post]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: dais-tavakoli
     title: Arsalan Tavakoli-Shiraji — Data + AI Summit 2026 speaker page
@@ -43,18 +102,60 @@ sources:
     publisher: Databricks
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: uc-post
     title: Open sourcing Unity Catalog (Databricks blog)
     url: https://www.databricks.com/blog/open-sourcing-unity-catalog
     publisher: Databricks
     kind: announcement
     published_at: 2024-06-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: uc-repo
     title: unitycatalog/unitycatalog repository (Apache-2.0 license)
     url: https://github.com/unitycatalog/unitycatalog
     publisher: Unity Catalog (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: db-author
+    title: Articles by Arsalan Tavakoli-Shiraji (author bio and posts)
+    url: https://www.databricks.com/blog/author/arsalan-tavakoli-shiraji
+    publisher: Databricks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: db-founders
+    title: Databricks — Founders
+    url: https://www.databricks.com/company/founders
+    publisher: Databricks
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: delta-post
+    title: "Delta Lake 2.0: Open Source Release (Open Sourcing All of Delta Lake)"
+    url: https://www.databricks.com/blog/2022/06/30/open-sourcing-all-of-delta-lake.html
+    publisher: Databricks
+    kind: announcement
+    published_at: 2022-06-30
+    accessed_at: 2026-10-21
+  - id: lakebase-post
+    title: "A New Era of Databases: Lakebase"
+    url: https://www.databricks.com/blog/what-is-a-lakebase
+    publisher: Databricks
+    kind: announcement
+    published_at: 2025-06-12
+    accessed_at: 2026-10-21
+  - id: lakebridge-post
+    title: "Introducing Lakebridge: Free, Open Data Migration to Databricks SQL"
+    url: https://www.databricks.com/blog/introducing-lakebridge-free-open-data-migration-databricks-sql
+    publisher: Databricks
+    kind: announcement
+    published_at: 2025-06-12
+    accessed_at: 2026-10-21
+  - id: sap-post
+    title: Introducing SAP Databricks
+    url: https://www.databricks.com/blog/introducing-sap-databricks
+    publisher: Databricks
+    kind: announcement
+    published_at: 2025-02-13
+    accessed_at: 2026-10-21

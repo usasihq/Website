@@ -20,7 +20,7 @@ bio:
   - sglang-maintainers
   - lmsys-about
   - sglang-repo
-  reviewed_at: 2026-10-01
+  reviewed_at: 2026-10-21
 affiliations:
 - name: LMSYS
   organization_slug: lmsys
@@ -66,9 +66,85 @@ links:
   url: https://sites.google.com/view/yingsheng/home
 - label: GitHub
   url: https://github.com/Ying1123
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Ying Sheng completed a PhD in computer science at Stanford University in the Centaur group,
+          advised by Clark Barrett. Along the way Sheng was a research intern at Microsoft Research Asia
+          (2015), a quantitative software engineer at Two Sigma (2018), a research intern at Facebook Novi
+          working on smart contract verification (2021), and spent 2022 at X, the moonshot factory,
+          working on AI for code.
+        source_ids: [personal-site]
+      - text: >-
+          Sheng was a visiting researcher with Ion Stoica and Joseph E. Gonzalez at UC Berkeley's Sky lab
+          (2023–2024) and then a member of technical staff at xAI from October 2024 to August 2025, where
+          Sheng co-led the inference team. Sheng's homepage notes that it is no longer kept up to date.
+        source_ids: [personal-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Sheng's early research was in formal methods and automated reasoning: "Politeness for the Theory
+          of Algebraic Datatypes" received a best paper award at IJCAR 2020, and Sheng is a co-author of
+          cvc5, an open-source SMT solver whose paper received the TACAS 2022 best tool paper award.
+        source_ids: [publications-page]
+      - text: >-
+          Sheng's language model systems work includes FlexGen (2023), for high-throughput inference with
+          limited GPU memory; S-LoRA (2023), for serving thousands of LoRA adapters concurrently; and
+          SGLang (2023), a language and runtime for structured language model programs. Sheng also
+          co-authored "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" (2023) and contributed to
+          the FastChat platform and the Vicuna chatbot.
+        source_ids: [flexgen-paper, s-lora-paper, sglang-paper, llm-judge-paper, personal-site]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Sheng is an officer of LMSYS, a nonprofit founded to incubate early-stage open-source projects,
+          and a codeowner of the SGLang repository. SGLang's maintenance guide names Sheng and Lianmin
+          Zheng as the contacts who start nomination and review for new maintainers and CI on-call
+          volunteers.
+        source_ids: [lmsys-about, personal-site, sglang-codeowners, sglang-maintainers, sglang-repo]
+timeline:
+  - date: "2020"
+    text: Received the IJCAR 2020 best paper award for work on politeness for the theory of algebraic datatypes.
+    source_ids: [publications-page]
+  - date: "2022"
+    text: Co-authored the cvc5 SMT solver paper, which won the TACAS 2022 best tool paper award.
+    source_ids: [publications-page]
+  - date: 2023-03-13
+    text: Posted FlexGen as first author, on running large language models with a single GPU.
+    source_ids: [flexgen-paper]
+  - date: 2023-06-09
+    text: Co-authored "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena".
+    source_ids: [llm-judge-paper]
+  - date: 2023-11-06
+    text: Posted S-LoRA as first author, on serving thousands of concurrent LoRA adapters.
+    source_ids: [s-lora-paper]
+  - date: 2023-12-12
+    text: Co-authored the SGLang paper on efficient execution of structured language model programs.
+    source_ids: [sglang-paper]
+  - date: 2024-10
+    text: Joined xAI as a member of technical staff and co-led the inference team until August 2025.
+    source_ids: [personal-site]
+honors:
+  - name: Best Paper Award, IJCAR 2020
+    year: 2020
+    awarded_by: International Joint Conference on Automated Reasoning
+    source_ids: [publications-page, personal-site]
+  - name: Best Tool Paper Award, TACAS 2022 (cvc5)
+    year: 2022
+    awarded_by: International Conference on Tools and Algorithms for the Construction and Analysis of Systems
+    source_ids: [publications-page, personal-site]
+  - name: HAI Graduate Fellowship
+    year: 2022
+    awarded_by: Stanford Institute for Human-Centered Artificial Intelligence
+    source_ids: [personal-site]
+  - name: ML and Systems Rising Stars
+    year: 2023
+    awarded_by: MLCommons
+    source_ids: [personal-site]
 publication_status: published
-updated_at: 2026-10-01
-last_reviewed: 2026-10-01
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
 - id: personal-site
   title: Ying Sheng — homepage (marked by its author as outdated)
@@ -76,48 +152,48 @@ sources:
   publisher: Ying Sheng
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: lmsys-about
   title: About — LMSYS
   url: https://lmsys.org/about/
   publisher: LMSYS
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: sglang-repo
   title: sgl-project/sglang README
   url: https://github.com/sgl-project/sglang
   publisher: SGLang project (GitHub repository)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: sglang-codeowners
   title: sgl-project/sglang CODEOWNERS
   url: https://github.com/sgl-project/sglang/blob/main/.github/CODEOWNERS
   publisher: SGLang project (GitHub repository)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: sglang-maintainers
   title: SGLang Code Maintenance Model (MAINTAINER.md)
   url: https://github.com/sgl-project/sglang/blob/main/.github/MAINTAINER.md
   publisher: SGLang project (GitHub repository)
   kind: documentation
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: sglang-paper
   title: 'SGLang: Efficient Execution of Structured Language Model Programs (arXiv 2312.07104)'
   url: https://arxiv.org/abs/2312.07104
   publisher: arXiv
   kind: paper
   published_at: 2023-12-12
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: flexgen-paper
   title: 'FlexGen: High-Throughput Generative Inference of Large Language Models with a Single GPU (arXiv
     2303.06865)'
@@ -125,13 +201,34 @@ sources:
   publisher: arXiv
   kind: paper
   published_at: 2023-03-13
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: flexgen-repo
   title: FMInference/FlexLLMGen README (archived repository)
   url: https://github.com/FMInference/FlexLLMGen
   publisher: FMInference (GitHub repository)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
+- id: publications-page
+  title: Ying Sheng — Publications
+  url: https://sites.google.com/view/yingsheng/publications
+  publisher: Ying Sheng
+  kind: official-page
+  published_at: null
+  accessed_at: 2026-10-21
+- id: s-lora-paper
+  title: "S-LoRA: Serving Thousands of Concurrent LoRA Adapters (arXiv 2311.03285)"
+  url: https://arxiv.org/abs/2311.03285
+  publisher: arXiv
+  kind: paper
+  published_at: 2023-11-06
+  accessed_at: 2026-10-21
+- id: llm-judge-paper
+  title: Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (arXiv 2306.05685)
+  url: https://arxiv.org/abs/2306.05685
+  publisher: arXiv
+  kind: paper
+  published_at: 2023-06-09
+  accessed_at: 2026-10-21

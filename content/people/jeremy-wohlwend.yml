@@ -1,0 +1,111 @@
+slug: jeremy-wohlwend
+name: Jeremy Wohlwend
+initials: JW
+groups: [open-source, engineering, leadership]
+sector: corporate
+specialties: [ai-for-science]
+headline: Co-founder of Boltz and first author of Boltz-1, an open model for biomolecular interaction prediction
+bio:
+  text: >-
+    Jeremy Wohlwend is a co-founder of Boltz, a public benefit corporation that develops open models
+    and agents for AI-driven drug discovery. Wohlwend is first author of the Boltz-1 technical
+    report and co-author of Boltz-2, and the open-source Boltz repository is hosted under
+    Wohlwend's GitHub account.
+  source_ids: [boltz-manifesto, boltz-readme, boltz1-report]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: Boltz
+    organization_slug: boltz
+    role: Co-founder
+    current: true
+    source_ids: [boltz-manifesto, boltz-launch]
+work:
+  - name: Boltz-1 and Boltz-2
+    artifact_slug: boltz-2
+    url: https://github.com/jwohlwend/boltz
+    type: open-weights
+    contribution: >-
+      First author of the Boltz-1 report and co-author of Boltz-2; the repository releases code and
+      weights for both under the MIT license.
+    source_ids: [boltz-readme, boltz1-report, boltz2-report]
+links:
+  - label: GitHub repository
+    url: https://github.com/jwohlwend/boltz
+sections:
+  - heading: Boltz models
+    paragraphs:
+      - text: >-
+          Boltz is a family of open models for predicting biomolecular interactions, released with
+          code and weights under the MIT license. The Boltz-1 technical report appeared in November
+          2024, and Boltz-2, which jointly models complex structures and binding affinities,
+          followed in June 2025.
+        source_ids: [boltz-readme, boltz1-report, boltz2-report]
+  - heading: Boltz PBC
+    paragraphs:
+      - text: >-
+          The Boltz models began as research at MIT. In January 2026, Gabriele Corso, Jeremy
+          Wohlwend and Saro Passaro announced that they had founded Boltz as a public benefit
+          corporation to keep releasing open models while building products for drug discovery.
+        source_ids: [boltz-manifesto]
+      - text: >-
+          The launch introduced a preview of Boltz Lab, a platform for running the models and new
+          small-molecule and protein design agents, along with a partnership with Pfizer.
+        source_ids: [boltz-launch]
+timeline:
+  - date: "2024-11-20"
+    text: Posted the Boltz-1 technical report on democratizing biomolecular interaction modeling.
+    source_ids: [boltz1-report]
+  - date: "2025-06-18"
+    text: Posted the Boltz-2 technical report on structure and binding affinity prediction.
+    source_ids: [boltz2-report]
+  - date: "2026-01-08"
+    text: Announced the founding of Boltz as a public benefit corporation with co-founders.
+    source_ids: [boltz-manifesto, boltz-launch]
+  - date: "2026-01-08"
+    text: Boltz launched a preview of the Boltz Lab platform and its first design agents.
+    source_ids: [boltz-launch]
+honors: []
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: boltz-manifesto
+    title: "Our Vision: The Future We Are Building at Boltz"
+    url: https://boltz.com/manifesto
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-01-08
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz-launch
+    title: "Announcing Boltz: A Public Benefit Corporation for AI-Driven Drug Discovery"
+    url: https://boltz.com/launch
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-01-08
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz-readme
+    title: jwohlwend/boltz README (models, MIT license, citations)
+    url: https://github.com/jwohlwend/boltz
+    publisher: GitHub repository
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz1-report
+    title: "Boltz-1: Democratizing Biomolecular Interaction Modeling (bioRxiv)"
+    url: https://www.biorxiv.org/content/10.1101/2024.11.19.624167v1
+    publisher: bioRxiv
+    kind: paper
+    published_at: 2024-11-20
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz2-report
+    title: "Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction (bioRxiv)"
+    url: https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1
+    publisher: bioRxiv
+    kind: paper
+    published_at: 2025-06-18
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

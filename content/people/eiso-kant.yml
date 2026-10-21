@@ -1,0 +1,136 @@
+slug: eiso-kant
+name: Eiso Kant
+initials: EK
+groups: [leadership, engineering]
+sector: corporate
+specialties: [language-models, developer-tools, reinforcement-learning]
+headline: Co-founder and co-CEO of Poolside, which builds open-weight foundation models for agentic coding
+bio:
+  text: >-
+    Eiso Kant is a co-founder and co-CEO of Poolside, which builds foundation models and agents for
+    software development, including the open-weight Laguna models. Poolside traces its training
+    approach, Reinforcement Learning from Code Execution Feedback (RLCEF), to source{d}, the company
+    Kant built in 2016 to apply AI to code.
+  source_ids: [poolside-laguna-launch, poolside-agi-post, poolside-home]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: Poolside
+    organization_slug: poolside
+    role: Co-founder and co-CEO
+    current: true
+    source_ids: [poolside-laguna-launch, poolside-fern-labs]
+  - name: source{d}
+    organization_slug: null
+    role: Founder (2016), a company applying AI to code
+    current: false
+    source_ids: [poolside-agi-post]
+work:
+  - name: Laguna
+    artifact_slug: laguna
+    type: open-weights
+    url: https://poolside.ai/blog/introducing-laguna-xs2-m1
+    contribution: >-
+      Co-signed the April 2026 post releasing Laguna M.1, Poolside's 225B-parameter model, and
+      Laguna XS.2, its first open-weight model, with 33B total and 3B active parameters, under
+      Apache 2.0.
+    source_ids: [poolside-laguna-launch]
+  - name: Model Factory
+    artifact_slug: null
+    type: proprietary
+    url: https://poolside.ai/blog/introducing-the-model-factory
+    contribution: >-
+      Listed as an author of the 2025 post introducing the Model Factory, Poolside's internal
+      framework for training, scaling and experimenting with foundation models.
+    source_ids: [poolside-model-factory]
+links:
+  - label: Poolside
+    url: https://poolside.ai
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kant built source{d} in 2016, a company dedicated to applying AI to code, and where the idea behind RLCEF first arose. Kant later
+          co-founded Poolside with Jason Warner, and Poolside's blog posts list both as co-CEO and
+          co-founder.
+        source_ids: [poolside-agi-post, poolside-laguna-launch, poolside-fern-labs]
+  - heading: Research and products
+    paragraphs:
+      - text: >-
+          Poolside's research centers on training models for software development with execution
+          feedback: in RLCEF, models attempt tasks across many real code bases and learn from the
+          result of running their solutions. The Model Factory, introduced in a 2025 post that lists
+          Kant as an author, is the internal system Poolside uses to train and evaluate models.
+        source_ids: [poolside-agi-post, poolside-model-factory]
+      - text: >-
+          In April 2026 Kant and Warner announced Laguna M.1 and Laguna XS.2, the latter released as
+          open weights on Hugging Face under Apache 2.0. Poolside's site now offers the Laguna family
+          for agentic coding, including the on-device XS 2.1 model.
+        source_ids: [poolside-laguna-launch, poolside-home]
+timeline:
+  - date: "2016"
+    text: Built source{d}, a company dedicated to applying AI to code.
+    source_ids: [poolside-agi-post]
+  - date: "2024-12-04"
+    text: Co-signed Poolside's announcement of a first-party partnership with AWS.
+    source_ids: [poolside-aws]
+  - date: "2025-07-17"
+    text: Co-authored Poolside's post introducing the Model Factory training framework.
+    source_ids: [poolside-model-factory]
+  - date: "2025-11-18"
+    text: Co-signed Poolside's announcement of its acquisition of Fern Labs.
+    source_ids: [poolside-fern-labs]
+  - date: "2026-04-28"
+    text: Co-announced Laguna M.1 and Poolside's first open-weight model, Laguna XS.2.
+    source_ids: [poolside-laguna-launch]
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: poolside-home
+    title: Poolside — home page
+    url: https://poolside.ai/
+    publisher: Poolside
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: poolside-laguna-launch
+    title: Introducing Laguna XS.2 and Laguna M.1
+    url: https://poolside.ai/blog/introducing-laguna-xs2-m1
+    publisher: Poolside
+    kind: announcement
+    published_at: 2026-04-28
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: poolside-agi-post
+    title: Poolside blog post on its research direction and RLCEF (2024-10-02)
+    url: https://poolside.ai/blog/announcing-our-500-million-fundraise-to-make-progress-towards-agi
+    publisher: Poolside
+    kind: announcement
+    published_at: 2024-10-02
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: poolside-model-factory
+    title: The hidden engineering behind foundation model building (Introducing the Model Factory)
+    url: https://poolside.ai/blog/introducing-the-model-factory
+    publisher: Poolside
+    kind: announcement
+    published_at: 2025-07-17
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: poolside-fern-labs
+    title: Announcing the acquisition of Fern Labs
+    url: https://poolside.ai/blog/fern-labs-acquisition
+    publisher: Poolside
+    kind: announcement
+    published_at: 2025-11-18
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: poolside-aws
+    title: Unveiling Poolside's first-party partnership with AWS
+    url: https://poolside.ai/blog/unveiling-our-partnership-with-aws
+    publisher: Poolside
+    kind: announcement
+    published_at: 2024-12-04
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

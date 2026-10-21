@@ -14,7 +14,7 @@ bio:
     retrieval models are released under the Apache 2.0 license, and of papers on enterprise benchmarks
     for LLM evaluation and on routing among LLMs using benchmark datasets.
   source_ids: [ibm-research-profile, granite-embedding-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM Research
     organization_slug: ibm
@@ -39,9 +39,55 @@ work:
 links:
   - label: IBM Research profile
     url: https://research.ibm.com/people/kate-soule
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Soule's IBM Research biography describes a career at the intersection of business and AI. Soule
+          previously worked as a senior consultant in Deloitte Consulting's Strategy and Analytics practice, and
+          before the current role was a leader at the MIT-IBM Watson AI Lab, where Soule ran the lab's corporate
+          membership program.
+        source_ids: [ibm-research-profile]
+      - text: >-
+          As a Director at IBM Research, Soule now leads Technical Product Management for Granite, IBM's family
+          of large language models. Soule also explains generative AI through IBM videos such as "What are
+          Generative AI Models?", courses on IBM's AI Academy and regular appearances on IBM's "Mixture of
+          Experts" podcast.
+        source_ids: [ibm-research-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Soule's papers concern evaluating and choosing language models. A 2023 study repurposed benchmark
+          datasets to learn a router model that selects an LLM for a new task, and a 2024 paper proposed enterprise
+          benchmarks for evaluating LLMs on domain tasks.
+        source_ids: [routing-paper, enterprise-benchmarks-paper]
+      - text: >-
+          Soule is also listed on technical reports for IBM's open Granite models, including Granite Vision,
+          Granite Embedding and Granite-speech (all 2025), and co-authored "Granite.Trust Policy Tools" (2026),
+          which describes a YAML-based schema for specifying safety policies for generative AI applications.
+        source_ids: [granite-vision-paper, granite-embedding-paper, granite-speech-paper, trust-policy-paper]
+timeline:
+  - date: "2023-09"
+    text: Co-authored "Large Language Model Routing with Benchmark Datasets".
+    source_ids: [routing-paper]
+  - date: "2024-10"
+    text: Co-authored "Enterprise Benchmarks for Large Language Model Evaluation".
+    source_ids: [enterprise-benchmarks-paper]
+  - date: "2025-02"
+    text: Listed among the authors of the Granite Vision technical report.
+    source_ids: [granite-vision-paper]
+  - date: "2025-02"
+    text: Co-authored the Granite Embedding Models report.
+    source_ids: [granite-embedding-paper]
+  - date: "2025-05"
+    text: Co-authored the Granite-speech report on open-source speech-aware language models.
+    source_ids: [granite-speech-paper]
+  - date: "2026-08"
+    text: Co-authored "Granite.Trust Policy Tools" on shareable, actionable policies for generative AI applications.
+    source_ids: [trust-policy-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ibm-research-profile
     title: Kate Soule — IBM Research
@@ -49,11 +95,46 @@ sources:
     publisher: IBM Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: granite-embedding-paper
     title: Granite Embedding Models (arXiv 2502.20204)
     url: https://arxiv.org/abs/2502.20204
     publisher: arXiv
     kind: paper
     published_at: 2025-02-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: routing-paper
+    title: Large Language Model Routing with Benchmark Datasets (arXiv 2309.15789)
+    url: https://arxiv.org/abs/2309.15789
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-09-27
+    accessed_at: 2026-10-21
+  - id: enterprise-benchmarks-paper
+    title: Enterprise Benchmarks for Large Language Model Evaluation (arXiv 2410.12857)
+    url: https://arxiv.org/abs/2410.12857
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-11
+    accessed_at: 2026-10-21
+  - id: granite-vision-paper
+    title: "Granite Vision: a lightweight, open-source multimodal model for enterprise Intelligence (arXiv 2502.09927)"
+    url: https://arxiv.org/abs/2502.09927
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-14
+    accessed_at: 2026-10-21
+  - id: granite-speech-paper
+    title: "Granite-speech: open-source speech-aware LLMs with strong English ASR capabilities (arXiv 2505.08699)"
+    url: https://arxiv.org/abs/2505.08699
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-13
+    accessed_at: 2026-10-21
+  - id: trust-policy-paper
+    title: "Granite.Trust Policy Tools: Shareable, Actionable Policies for Generative AI Applications (arXiv 2608.23870)"
+    url: https://arxiv.org/abs/2608.23870
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-08-24
+    accessed_at: 2026-10-21

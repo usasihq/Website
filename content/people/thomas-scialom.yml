@@ -51,10 +51,70 @@ work:
       Co-author of GAIA: a benchmark for General AI Assistants (2023), with Grégoire Mialon, Clémentine
       Fourrier, Craig Swift, Thomas Wolf and Yann LeCun.
     source_ids: [gaia-paper]
+  - name: Toolformer
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2302.04761
+    contribution: >-
+      Last-listed author, with Timo Schick and colleagues, of the 2023 paper showing how a language
+      model can teach itself to call external tools through simple APIs.
+    source_ids: [toolformer-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Thomas Scialom co-authored several language model papers in 2022 and 2023. These
+          include Galactica, a large language model for science, and Toolformer, in which a language
+          model learns to decide when and how to call external tools. Scialom is also a co-author of
+          the BLOOM open-access multilingual model paper.
+        source_ids: [galactica-paper, toolformer-paper, bloom-paper]
+      - text: >-
+          Scialom was one of the two corresponding authors of the Llama 2 paper (2023) and is listed
+          in its science and engineering leadership group. Scialom also co-authored Code Llama, a
+          family of Llama 2-based models for code, and is among the core contributors to The Llama 3
+          Herd of Models (2024).
+        source_ids: [llama2-paper, codellama-paper, llama3-paper]
+  - heading: Agents and evaluation
+    paragraphs:
+      - text: >-
+          Scialom co-authored GAIA (2023), a benchmark of real-world questions for general AI
+          assistants. With Meta Superintelligence Labs, Scialom is one of the lead authors of ARE
+          (2025), which introduces the Meta Agents Research Environments platform for building agent
+          environments, and is an author of the Gaia2 benchmark paper (2026) on evaluating language
+          model agents in dynamic, asynchronous settings.
+        source_ids: [gaia-paper, are-paper, gaia2-paper]
+timeline:
+  - date: 2022-11-09
+    text: Co-authored the BLOOM open-access multilingual language model paper.
+    source_ids: [bloom-paper]
+  - date: 2022-11-16
+    text: Co-authored Galactica, a large language model for science.
+    source_ids: [galactica-paper]
+  - date: 2023-02-09
+    text: Co-authored Toolformer on language models that teach themselves to use tools.
+    source_ids: [toolformer-paper]
+  - date: 2023-07-18
+    text: Released Llama 2 as one of the paper's two corresponding authors.
+    source_ids: [llama2-paper]
+  - date: 2023-08-24
+    text: Co-authored Code Llama, open foundation models for code.
+    source_ids: [codellama-paper]
+  - date: 2023-11-21
+    text: Co-authored the GAIA benchmark for general AI assistants.
+    source_ids: [gaia-paper]
+  - date: 2024-07-31
+    text: Listed among the core contributors of The Llama 3 Herd of Models.
+    source_ids: [llama3-paper]
+  - date: 2025-09-21
+    text: Released ARE, the Meta Agents Research Environments platform, as a lead author.
+    source_ids: [are-paper]
+  - date: 2026-02-12
+    text: Co-authored the Gaia2 benchmark paper on dynamic, asynchronous agent environments.
+    source_ids: [gaia2-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: llama2-paper
     title: "Llama 2: Open Foundation and Fine-Tuned Chat Models (arXiv 2307.09288), author list, equal-contribution note and contributions section"
@@ -62,32 +122,60 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2023-07-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama3-paper
     title: The Llama 3 Herd of Models (arXiv 2407.21783), contributor list
     url: https://arxiv.org/abs/2407.21783
     publisher: arXiv
     kind: paper
     published_at: 2024-07-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: are-paper
     title: "ARE: Scaling Up Agent Environments and Evaluations (arXiv 2509.17158), authorship section"
     url: https://arxiv.org/abs/2509.17158
     publisher: arXiv
     kind: paper
     published_at: 2025-09-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gaia2-paper
     title: "Gaia2: Benchmarking LLM Agents on Dynamic and Asynchronous Environments (arXiv 2602.11964), ICLR 2026"
     url: https://arxiv.org/abs/2602.11964
     publisher: arXiv
     kind: paper
     published_at: 2026-02-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gaia-paper
     title: "GAIA: a benchmark for General AI Assistants (arXiv 2311.12983), author affiliations"
     url: https://arxiv.org/abs/2311.12983
     publisher: arXiv
     kind: paper
     published_at: 2023-11-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: bloom-paper
+    title: "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model (arXiv 2211.05100)"
+    url: https://arxiv.org/abs/2211.05100
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-09
+    accessed_at: 2026-10-21
+  - id: galactica-paper
+    title: "Galactica: A Large Language Model for Science (arXiv 2211.09085)"
+    url: https://arxiv.org/abs/2211.09085
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-16
+    accessed_at: 2026-10-21
+  - id: toolformer-paper
+    title: "Toolformer: Language Models Can Teach Themselves to Use Tools (arXiv 2302.04761)"
+    url: https://arxiv.org/abs/2302.04761
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-02-09
+    accessed_at: 2026-10-21
+  - id: codellama-paper
+    title: "Code Llama: Open Foundation Models for Code (arXiv 2308.12950)"
+    url: https://arxiv.org/abs/2308.12950
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-08-24
+    accessed_at: 2026-10-21

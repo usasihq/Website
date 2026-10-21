@@ -39,14 +39,85 @@ work:
   - mlx-repo
   - mlx-commits
   - mlx-distributed-docs
+- name: "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention"
+  artifact_slug: null
+  type: open-research
+  url: https://arxiv.org/abs/2006.16236
+  contribution: >-
+    First author of the ICML 2020 paper that expresses self-attention as a linear dot product of
+    kernel feature maps, reducing its cost from quadratic to linear in sequence length.
+  source_ids: [linear-attention-paper, personal-site]
+- name: Fast Transformers
+  artifact_slug: null
+  type: open-source
+  url: https://angeloskath.github.io/
+  contribution: >-
+    Listed on Katharopoulos's homepage as a PyTorch library of efficient transformer
+    implementations focused on efficient self-attention.
+  source_ids: [personal-site]
 links:
 - label: Website
   url: https://angeloskath.github.io/
 - label: GitHub
   url: https://github.com/angeloskath
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Angelos Katharopoulos's research interest, as stated on the homepage, is training deep
+          neural networks with less compute, less memory and fewer samples. Katharopoulos completed a
+          PhD at the Idiap Research Institute and EPFL under the supervision of François Fleuret, and
+          earlier worked with Christos Diou and Anastasios Delopoulos while studying electrical
+          engineering.
+        source_ids: [personal-site]
+      - text: >-
+          With Fleuret, Katharopoulos published ICML papers on importance sampling for deep learning
+          (2018) and on attention sampling for processing megapixel images (2019). The 2020 ICML paper
+          "Transformers are RNNs" introduced linear attention, showing that autoregressive transformers
+          can run as recurrent networks, and a NeurIPS 2020 paper with Apoorv Vyas and Fleuret proposed
+          clustered attention. Later co-authored work includes Neural Parts (CVPR 2021) on 3D shape
+          abstractions and a CVPR 2023 study of self supervision in large-scale image-text training.
+        source_ids: [personal-site, linear-attention-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          The MLX README credits Katharopoulos, with Awni Hannun, Jagrit Digani and Ronan Collobert,
+          with the initial development of the MLX software suite, and its 2023 citation entry lists
+          the four as authors. Katharopoulos's commits to MLX in 2026 include work on JACCL, the
+          distributed backend that the MLX documentation describes for low-latency communication
+          using RDMA over Thunderbolt.
+        source_ids: [mlx-repo, mlx-commits, mlx-distributed-docs]
+      - text: >-
+          Katharopoulos's homepage lists further open-source projects that Katharopoulos started or
+          contributes to: Fast Transformers for PyTorch, the simple-3dviz visualization library,
+          attention-sampling and Keras importance-sampling libraries, the LDA++ topic-modeling
+          library, and NlpTools, a PHP natural language processing library.
+        source_ids: [personal-site]
+timeline:
+  - date: 2016-10
+    text: Presented fsLDA, a fast supervised LDA method for video datasets, at ACM Multimedia 2016.
+    source_ids: [personal-site]
+  - date: "2018"
+    text: Published "Not All Samples Are Created Equal" on importance sampling for deep learning at ICML 2018.
+    source_ids: [personal-site]
+  - date: "2019"
+    text: Published the attention-sampling paper on processing megapixel images at ICML 2019.
+    source_ids: [personal-site]
+  - date: 2020-06-29
+    text: Posted "Transformers are RNNs," the linear attention paper later presented at ICML 2020.
+    source_ids: [linear-attention-paper]
+  - date: "2020"
+    text: Co-authored "Fast Transformers with Clustered Attention" at NeurIPS 2020.
+    source_ids: [personal-site]
+  - date: "2021"
+    text: Co-authored Neural Parts, on 3D shape abstractions with invertible neural networks, at CVPR 2021.
+    source_ids: [personal-site]
+  - date: "2023"
+    text: MLX, initially developed by Katharopoulos with Awni Hannun, Jagrit Digani and Ronan Collobert, carries a 2023 citation entry.
+    source_ids: [mlx-repo]
 publication_status: published
-updated_at: 2026-10-01
-last_reviewed: 2026-10-01
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
 - id: personal-site
   title: Angelos Katharopoulos — homepage
@@ -54,7 +125,7 @@ sources:
   publisher: Angelos Katharopoulos
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
+  accessed_at: 2026-10-21
   reviewed_at: 2026-10-01
 - id: github-profile
   title: angeloskath (Angelos Katharopoulos) on GitHub
@@ -62,7 +133,7 @@ sources:
   publisher: GitHub
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
+  accessed_at: 2026-10-21
   reviewed_at: 2026-10-01
 - id: mlx-repo
   title: ml-explore/mlx README
@@ -70,7 +141,7 @@ sources:
   publisher: Apple (ml-explore)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
+  accessed_at: 2026-10-21
   reviewed_at: 2026-10-01
 - id: mlx-commits
   title: ml-explore/mlx commits authored by angeloskath
@@ -78,7 +149,7 @@ sources:
   publisher: Apple (ml-explore)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
+  accessed_at: 2026-10-21
   reviewed_at: 2026-10-01
 - id: mlx-distributed-docs
   title: MLX documentation — Distributed communication
@@ -86,5 +157,12 @@ sources:
   publisher: Apple (ml-explore)
   kind: documentation
   published_at: null
-  accessed_at: 2026-10-01
+  accessed_at: 2026-10-21
   reviewed_at: 2026-10-01
+- id: linear-attention-paper
+  title: "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention (arXiv 2006.16236)"
+  url: https://arxiv.org/abs/2006.16236
+  publisher: arXiv
+  kind: paper
+  published_at: 2020-06-29
+  accessed_at: 2026-10-21

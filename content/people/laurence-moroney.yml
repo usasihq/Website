@@ -3,30 +3,34 @@ name: Laurence Moroney
 initials: LM
 groups: [open-source]
 specialties: [education, ml-frameworks]
-headline: Author and educator who led AI Advocacy at Google and taught TensorFlow specializations with DeepLearning.AI
+headline: Director of AI at Arm; author and educator who led AI Advocacy at Google
 bio:
   text: >-
     Laurence Moroney is an AI author and educator whose site says Moroney led AI Advocacy at Google for
-    many years, ran the TensorFlow YouTube channel, and designed the TensorFlow certificate curriculum
-    and test. Moroney's teaching page lists the TensorFlow: In Practice, TensorFlow: Data and Deployment,
+    many years, ran the TensorFlow YouTube channel, and designed a certificate curriculum and test. Moroney's teaching page lists the TensorFlow: In Practice, TensorFlow: Data and Deployment,
     and TensorFlow: Advanced Techniques specializations taught with DeepLearning.AI, as well as a PyTorch
     for Deep Learning professional certificate. Moroney's books include AI and Machine Learning for
     Coders (O'Reilly, 2020) and AI and Machine Learning for On-Device Developers (O'Reilly, 2021).
   source_ids: [moroney-site, moroney-teaching, moroney-writing, tf-blog-toolbox]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
     role: Led AI Advocacy
     current: false
     source_ids: [moroney-site, tf-blog-toolbox]
+  - name: Arm
+    organization_slug: null
+    role: Director of AI
+    current: true
+    source_ids: [moroney-site]
 work:
   - name: TensorFlow
     artifact_slug: tensorflow
     type: open-source
     url: https://www.tensorflow.org/
     contribution: >-
-      Ran the TensorFlow YouTube channel, designed the TensorFlow certificate curriculum and test, taught
+      Ran the TensorFlow YouTube channel, designed a certificate curriculum and test, taught
       TensorFlow specializations on Coursera, and co-wrote a 2022 TensorFlow Blog post, for the
       TensorFlow team, on developing TensorFlow side by side with JAX.
     source_ids: [moroney-site, moroney-teaching, tf-blog-toolbox]
@@ -43,9 +47,65 @@ links:
     url: https://laurencemoroney.com/
   - label: GitHub
     url: https://github.com/lmoroney
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Moroney's website gives a current role as Director of AI at Arm, with a focus on bringing AI to every
+          possible device. Earlier, Moroney led AI Advocacy at Google for many years, educating developers
+          through the TensorFlow YouTube channel, talks at Google I/O and the TensorFlow Dev Summit, the
+          TensorFlow blog, and work with Google Developer Groups and TensorFlow user groups.
+        source_ids: [moroney-site, tf-blog-toolbox]
+      - text: >-
+          At Google, Moroney also designed the curriculum and test for a certificate covering
+          computer vision, natural language processing and sequence modelling, and helped universities create
+          curricula on building AI systems.
+        source_ids: [moroney-site]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          Moroney has taught several online specializations with DeepLearning.AI and Andrew Ng, starting with
+          TensorFlow in Practice and TensorFlow Data and Deployment, followed by TensorFlow Advanced Techniques.
+          More recent courses include a short course on pair-programming with large language models, a
+          Generative AI for Software Development certificate, and a three-course PyTorch for Deep Learning
+          professional certificate.
+        source_ids: [moroney-teaching]
+      - text: >-
+          Moroney also contributed to Google AI for Anyone on edX with HarvardX and to Harvard's Tiny ML
+          specialization on edX, which teaches machine learning on mobile and embedded devices with TensorFlow
+          Lite for Microcontrollers.
+        source_ids: [moroney-teaching]
+  - heading: Writing
+    paragraphs:
+      - text: >-
+          Moroney's programming books run from Expert Web Services in the .NET Platform (2004) and a series of
+          Microsoft Press titles on Silverlight and Windows development to The Definitive Guide to Firebase
+          (2017) and two O'Reilly books on machine learning, AI and Machine Learning for Coders (2020) and AI and
+          Machine Learning for On-Device Developers (2021). Moroney has also written science fiction novels,
+          comic books including Stargate Universe: Icarus, and a television pilot.
+        source_ids: [moroney-writing]
+timeline:
+  - date: "2004"
+    text: Published Expert Web Services in the .NET Platform with Apress.
+    source_ids: [moroney-writing]
+  - date: "2009"
+    text: Published Introducing Windows 7 for Developers with Microsoft Press.
+    source_ids: [moroney-writing]
+  - date: "2017"
+    text: Published The Definitive Guide to Firebase with Apress.
+    source_ids: [moroney-writing]
+  - date: "2020"
+    text: Published AI and Machine Learning for Coders with O'Reilly.
+    source_ids: [moroney-writing]
+  - date: "2021"
+    text: Published AI and Machine Learning for On-Device Developers with O'Reilly.
+    source_ids: [moroney-writing]
+  - date: "2022-06-27"
+    text: Co-wrote a TensorFlow blog post on bringing machine learning to every developer's toolbox.
+    source_ids: [tf-blog-toolbox]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: moroney-site
     title: Laurence Moroney — homepage
@@ -53,25 +113,25 @@ sources:
     publisher: Laurence Moroney
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: moroney-teaching
     title: Laurence Moroney — My Teaching
     url: https://laurencemoroney.com/teaching.html
     publisher: Laurence Moroney
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: moroney-writing
     title: Laurence Moroney — My Writing
     url: https://laurencemoroney.com/writing.html
     publisher: Laurence Moroney
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tf-blog-toolbox
     title: Bringing Machine Learning to every developer's toolbox — The TensorFlow Blog
     url: https://blog.tensorflow.org/2022/06/%20bringing-machine-learning-to-every-developers-toolbox.html
     publisher: TensorFlow (Google)
     kind: announcement
     published_at: 2022-06-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

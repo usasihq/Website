@@ -16,7 +16,7 @@ bio:
     first author of Recipes for Building an Open-Domain Chatbot (2020), which made its models and code
     publicly available; Roller also co-authored BlenderBot 3 (2022).
   source_ids: [roller-site, opt-paper, blender-paper, bb3-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Thinking Machines Lab
     organization_slug: thinking-machines-lab
@@ -58,14 +58,85 @@ work:
       BlenderBot 3 (2022), a 175B parameter dialogue model whose paper says the weights and code were
       released.
     source_ids: [blender-paper, bb3-paper, roller-site]
+  - name: Hash Layers for Large Sparse Models
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2106.04426
+    contribution: >-
+      First author of a 2021 NeurIPS paper that routes each token to a set of feedforward weights by
+      hashing, as an alternative to learned mixture-of-experts routing.
+    source_ids: [hash-layers, roller-site]
 links:
   - label: Website
     url: https://stephenroller.com/
   - label: GitHub
     url: https://github.com/stephenroller
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Stephen Roller's homepage divides Roller's publications into undergraduate work, a PhD period
+          from 2010 to 2017, and a period at Meta's Fundamental AI Research team from 2017 to 2023. The
+          PhD in Computer Science was completed at the University of Texas at Austin under the
+          supervision of Katrin Erk, with a 2017 dissertation on identifying lexical relationships and
+          entailments with distributional semantics.
+        source_ids: [roller-site]
+      - text: >-
+          After FAIR, Roller led pretraining and training infrastructure work at Character.AI and then
+          worked as a Senior Staff Research Scientist at Google DeepMind. The homepage now lists a role
+          as a Member of the Technical Staff at Thinky, linking to Thinking Machines Lab, and notes that Roller's pretraining
+          work since leaving FAIR has not been published.
+        source_ids: [roller-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Roller's doctoral research, much of it with Katrin Erk, studied distributional semantics,
+          including hypernymy detection, lexical substitution, and lexical entailment. At FAIR, Roller
+          continued this line with the 2018 ACL paper on Hearst patterns for hypernym detection before
+          moving into open-domain dialogue.
+        source_ids: [roller-site]
+      - text: >-
+          Roller was first author of Recipes for Building an Open-Domain Chatbot, submitted in April
+          2020, which describes building chatbots at several model sizes and releases the models and
+          code. Roller later co-authored the BlenderBot 3 paper in August 2022 and the Science paper on
+          playing the game Diplomacy by combining language models with strategic reasoning.
+        source_ids: [blender-paper, bb3-paper, roller-site]
+      - text: >-
+          On large language models, Roller was a joint first author of OPT: Open Pre-trained Transformer
+          Language Models, submitted in May 2022, whose code is published in the MIT-licensed metaseq
+          repository. Roller was also first author of Hash Layers for Large Sparse Models, a 2021 NeurIPS
+          paper that replaces learned mixture-of-experts routing with token hashing.
+        source_ids: [opt-paper, metaseq-license, hash-layers, roller-site]
+timeline:
+  - date: "2010"
+    text: Began doctoral studies in computer science, according to Roller's publication list.
+    source_ids: [roller-site]
+  - date: "2017"
+    text: Completed a PhD dissertation on lexical relationships and entailments with distributional semantics.
+    source_ids: [roller-site]
+  - date: "2017"
+    text: Joined Meta's Fundamental AI Research team, where Roller worked until 2023.
+    source_ids: [roller-site]
+  - date: "2020-04-28"
+    text: Submitted Recipes for Building an Open-Domain Chatbot as first author.
+    source_ids: [blender-paper]
+  - date: "2021-06-08"
+    text: Submitted Hash Layers for Large Sparse Models, later presented at NeurIPS 2021.
+    source_ids: [hash-layers, roller-site]
+  - date: "2022-05-02"
+    text: Submitted OPT, Open Pre-trained Transformer Language Models, as a joint first author.
+    source_ids: [opt-paper]
+  - date: "2022-08-05"
+    text: Co-authored the BlenderBot 3 paper on a deployed conversational agent.
+    source_ids: [bb3-paper]
+honors:
+  - name: Best paper award, NLP for Conversational AI Workshop (Human Evaluation of Conversations is an Open Problem)
+    year: null
+    awarded_by: NLP for Conversational AI Workshop
+    source_ids: [roller-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: roller-site
     title: Stephen Roller — homepage (about and publications)
@@ -73,32 +144,39 @@ sources:
     publisher: Stephen Roller
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: opt-paper
     title: "OPT: Open Pre-trained Transformer Language Models (arXiv 2205.01068)"
     url: https://arxiv.org/abs/2205.01068
     publisher: arXiv
     kind: paper
     published_at: 2022-05-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: metaseq-license
     title: facebookresearch/metaseq LICENSE (MIT)
     url: https://github.com/facebookresearch/metaseq/blob/main/LICENSE
     publisher: Meta (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: blender-paper
     title: Recipes for building an open-domain chatbot (arXiv 2004.13637)
     url: https://arxiv.org/abs/2004.13637
     publisher: arXiv
     kind: paper
     published_at: 2020-04-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: bb3-paper
     title: "BlenderBot 3: a deployed conversational agent that continually learns to responsibly engage (arXiv 2208.03188)"
     url: https://arxiv.org/abs/2208.03188
     publisher: arXiv
     kind: paper
     published_at: 2022-08-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: hash-layers
+    title: Hash Layers For Large Sparse Models
+    url: https://arxiv.org/abs/2106.04426
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-06-08
+    accessed_at: 2026-10-21

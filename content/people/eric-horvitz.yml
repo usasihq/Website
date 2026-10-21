@@ -16,7 +16,7 @@ bio:
     on Medical Challenge Problems" and the Medprompt paper on steering generalist foundation models in
     medicine, and has received the Feigenbaum Prize and the Allen Newell Prize.
   source_ids: [msr-profile, horvitz-home, gpt4-medical-paper, medprompt-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Microsoft
     organization_slug: microsoft
@@ -26,6 +26,11 @@ affiliations:
   - name: Microsoft Research
     organization_slug: microsoft
     role: Director of Microsoft Research
+    current: false
+    source_ids: [msr-profile]
+  - name: Partnership on AI
+    organization_slug: null
+    role: Co-founder and former board chair
     current: false
     source_ids: [msr-profile]
 work:
@@ -50,9 +55,84 @@ links:
     url: https://erichorvitz.com/
   - label: Microsoft Research
     url: https://www.microsoft.com/en-us/research/people/horvitz/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before moving into the role of Chief Scientific Officer, Horvitz served as director of Microsoft
+          Research, overseeing its research labs. As Microsoft's
+          Chief Scientific Officer, Horvitz now leads initiatives that connect science, technology and society,
+          with emphases on AI, the biosciences and healthcare.
+        source_ids: [msr-profile, horvitz-home]
+      - text: >-
+          Horvitz founded and chairs Microsoft's Aether committee on AI, effects and ethics in engineering and
+          research. Outside Microsoft, Horvitz established the One Hundred Year Study on AI (AI100) at Stanford
+          University, co-founded the Partnership on AI and served as its board chair, served as president of
+          AAAI, and sits on the advisory boards of the Allen Institute for AI and Stanford's Institute for
+          Human-Centered AI.
+        source_ids: [msr-profile, horvitz-home]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Horvitz's research has used probability and utility in machine learning and reasoning, developed
+          models of bounded rationality, and built systems that perceive and act by interpreting streams of
+          multisensory information. Horvitz has also written on principles of human-AI collaboration, and the
+          work has led to fielded systems in healthcare, transportation, e-commerce, operating systems and
+          aerospace.
+        source_ids: [msr-profile, horvitz-home]
+      - text: >-
+          In 2023, Horvitz co-authored studies of large language models in medicine. One evaluated GPT-4 on
+          medical competency examinations and benchmark datasets, and the Medprompt paper showed how prompting
+          strategies can unlock specialist capabilities in a generalist foundation model on medical benchmarks.
+        source_ids: [gpt4-medical-paper, medprompt-paper]
+timeline:
+  - date: "2014"
+    text: Wrote the framing memo for the One Hundred Year Study on Artificial Intelligence (AI100).
+    source_ids: [horvitz-home]
+  - date: "2022-11"
+    text: Delivered a Tanner Lecture titled "Humanity and its Tools of Reason and Imagination".
+    source_ids: [horvitz-home]
+  - date: "2023-03"
+    text: Co-authored "Capabilities of GPT-4 on Medical Challenge Problems".
+    source_ids: [gpt4-medical-paper]
+  - date: "2023-05"
+    text: Published the AI Anthology on AI and the future of human flourishing.
+    source_ids: [horvitz-home]
+  - date: "2023-11"
+    text: Co-authored the Medprompt paper on steering generalist foundation models for medicine.
+    source_ids: [medprompt-paper]
+honors:
+  - name: Member of the National Academy of Engineering
+    year: null
+    awarded_by: National Academy of Engineering
+    source_ids: [msr-profile]
+  - name: ACM Fellow
+    year: null
+    awarded_by: Association for Computing Machinery
+    source_ids: [msr-profile]
+  - name: AAAI Fellow
+    year: null
+    awarded_by: Association for the Advancement of Artificial Intelligence
+    source_ids: [msr-profile]
+  - name: AAAS Fellow
+    year: null
+    awarded_by: American Association for the Advancement of Science
+    source_ids: [msr-profile]
+  - name: Fellow of the American Academy of Arts and Sciences
+    year: null
+    awarded_by: American Academy of Arts and Sciences
+    source_ids: [msr-profile]
+  - name: Fellow of the American College of Medical Informatics
+    year: null
+    awarded_by: American College of Medical Informatics
+    source_ids: [msr-profile]
+  - name: Member of the American Philosophical Society
+    year: null
+    awarded_by: American Philosophical Society
+    source_ids: [msr-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: msr-profile
     title: Eric Horvitz, Chief Scientific Officer — Microsoft Research
@@ -60,25 +140,25 @@ sources:
     publisher: Microsoft Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: horvitz-home
     title: Eric Horvitz — home page
     url: https://erichorvitz.com/
     publisher: Eric Horvitz
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: medprompt-paper
     title: "Can Generalist Foundation Models Outcompete Special-Purpose Tuning? Case Study in Medicine (arXiv 2311.16452)"
     url: https://arxiv.org/abs/2311.16452
     publisher: arXiv
     kind: paper
     published_at: 2023-11-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt4-medical-paper
     title: "Capabilities of GPT-4 on Medical Challenge Problems (arXiv 2303.13375)"
     url: https://arxiv.org/abs/2303.13375
     publisher: arXiv
     kind: paper
     published_at: 2023-03-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

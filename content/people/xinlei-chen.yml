@@ -53,9 +53,58 @@ links:
     url: https://xinleic.xyz/
   - label: GitHub
     url: https://github.com/endernewton
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Xinlei Chen received a PhD from the Language Technologies Institute at Carnegie Mellon
+          University while working at the Robotics Institute, where Chen's projects included the Never Ending Image Learner, web-scale
+          ConvNet training, and object and sense discovery.
+        source_ids: [homepage]
+      - text: >-
+          Chen then became a research scientist at Meta FAIR, working on pre-training and
+          understanding visual representations, and later a Member of Technical Staff at xAI working
+          on multimodal understanding and generation. Chen's site says Chen is now at OpenAI,
+          contributing to its multimodal work.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Chen was first author of "Microsoft COCO Captions: Data Collection and Evaluation Server"
+          (2015), which describes the caption annotations and evaluation server for the COCO dataset.
+          Chen's work with Kaiming He on self-supervised learning includes MoCo v2
+          (2020), which improved baselines for momentum contrastive learning; SimSiam (2020), a simple
+          Siamese method that learns representations without negative pairs; and a 2021 empirical
+          study of training self-supervised Vision Transformers that benchmarks MoCo v3.
+        source_ids: [coco-captions-paper, mocov2-paper, simsiam-paper, ssl-vit-paper]
+      - text: >-
+          Chen co-authored Masked Autoencoders (2021), which pre-train Vision Transformers by
+          reconstructing masked image patches, and was first author of "Deconstructing Denoising
+          Diffusion Models for Self-Supervised Learning" (2024), which studies the representation
+          learning abilities of diffusion models.
+        source_ids: [mae-paper, ddae-paper]
+timeline:
+  - date: "2015-04-01"
+    text: First author of "Microsoft COCO Captions - Data Collection and Evaluation Server".
+    source_ids: [coco-captions-paper]
+  - date: "2020-03-09"
+    text: First author of "Improved Baselines with Momentum Contrastive Learning" (MoCo v2).
+    source_ids: [mocov2-paper]
+  - date: "2020-11-20"
+    text: First author with Kaiming He of SimSiam, "Exploring Simple Siamese Representation Learning".
+    source_ids: [simsiam-paper]
+  - date: "2021-04-05"
+    text: First author of "An Empirical Study of Training Self-Supervised Vision Transformers", which benchmarks MoCo v3.
+    source_ids: [ssl-vit-paper]
+  - date: "2021-11-11"
+    text: "Co-authored \"Masked Autoencoders Are Scalable Vision Learners\"."
+    source_ids: [mae-paper]
+  - date: "2024-01-25"
+    text: First author of "Deconstructing Denoising Diffusion Models for Self-Supervised Learning".
+    source_ids: [ddae-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Xinlei Chen — homepage
@@ -63,25 +112,46 @@ sources:
     publisher: Xinlei Chen
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: simsiam-paper
     title: Exploring Simple Siamese Representation Learning (arXiv 2011.10566)
     url: https://arxiv.org/abs/2011.10566
     publisher: arXiv
     kind: paper
     published_at: 2020-11-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ssl-vit-paper
     title: An Empirical Study of Training Self-Supervised Vision Transformers (arXiv 2104.02057)
     url: https://arxiv.org/abs/2104.02057
     publisher: arXiv
     kind: paper
     published_at: 2021-04-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mae-paper
     title: Masked Autoencoders Are Scalable Vision Learners (arXiv 2111.06377)
     url: https://arxiv.org/abs/2111.06377
     publisher: arXiv
     kind: paper
     published_at: 2021-11-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: coco-captions-paper
+    title: "Microsoft COCO Captions: Data Collection and Evaluation Server (arXiv 1504.00325)"
+    url: https://arxiv.org/abs/1504.00325
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-04-01
+    accessed_at: 2026-10-21
+  - id: mocov2-paper
+    title: Improved Baselines with Momentum Contrastive Learning (arXiv 2003.04297)
+    url: https://arxiv.org/abs/2003.04297
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-03-09
+    accessed_at: 2026-10-21
+  - id: ddae-paper
+    title: Deconstructing Denoising Diffusion Models for Self-Supervised Learning (arXiv 2401.14404)
+    url: https://arxiv.org/abs/2401.14404
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-01-25
+    accessed_at: 2026-10-21

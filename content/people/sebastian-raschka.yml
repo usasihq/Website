@@ -15,7 +15,7 @@ bio:
     laptops. Raschka's site describes earlier roles as a senior engineer at Lightning AI and as a
     statistics professor at the University of Wisconsin-Madison.
   source_ids: [raschka-site, raschka-about, llms-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Lightning AI
     organization_slug: lightning-ai
@@ -43,9 +43,57 @@ links:
     url: https://sebastianraschka.com
   - label: GitHub
     url: https://github.com/rasbt
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Raschka was a professor in the Department of Statistics at the University of Wisconsin-Madison, teaching
+          statistics, machine learning and deep learning and doing research on deep neural networks. Raschka later
+          worked as a senior engineer at Lightning AI and now describes the current work as that of an LLM
+          research engineer, focused on LLM architectures and small-scale training.
+        source_ids: [raschka-about, raschka-site]
+      - text: >-
+          Raschka's research publications include work on rank-consistent ordinal regression with deep neural
+          networks and machine learning classifiers for predicting protein–protein interaction hot spots, and a
+          2026 preprint with Sten Rüdiger comparing a fine-tuning method called MiCA with LoRA and full
+          fine-tuning.
+        source_ids: [sr-research]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Raschka's book Python Machine Learning was published by Packt in 2015 and
+          followed by second and third editions with Vahid Mirjalili, and by Machine Learning with PyTorch and
+          Scikit-Learn in 2022 with Yuxi (Hayden) Liu and Mirjalili. In 2024 Raschka published Machine Learning
+          Q and AI with No Starch Press and Build a Large Language Model (From Scratch) with Manning.
+        source_ids: [sr-research, sr-books]
+      - text: >-
+          The Manning sequel, Build a Reasoning Model (From Scratch), starts from a pretrained model and implements
+          inference-time scaling, reinforcement learning training and distillation in code. Each of the
+          from-scratch books has an official code repository on GitHub, and Raschka's site also hosts
+          a blog, course materials and an LLM Gallery.
+        source_ids: [sr-books, sr-reasoning-repo, llms-repo, raschka-site]
+timeline:
+  - date: "2015"
+    text: Published Python Machine Learning with Packt Publishing.
+    source_ids: [sr-research]
+  - date: "2017"
+    text: Published the second edition of Python Machine Learning with Vahid Mirjalili.
+    source_ids: [sr-research]
+  - date: "2019"
+    text: Published the third edition of Python Machine Learning with Vahid Mirjalili.
+    source_ids: [sr-research]
+  - date: "2022"
+    text: Published Machine Learning with PyTorch and Scikit-Learn with Packt Publishing.
+    source_ids: [sr-research]
+  - date: "2024"
+    text: Published Machine Learning Q and AI with No Starch Press.
+    source_ids: [sr-research]
+  - date: "2024"
+    text: Published Build a Large Language Model (From Scratch) with Manning Publications.
+    source_ids: [sr-research]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: raschka-site
     title: Sebastian Raschka — homepage
@@ -53,25 +101,46 @@ sources:
     publisher: Sebastian Raschka
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: raschka-about
     title: Sebastian Raschka — about
     url: https://sebastianraschka.com/about/
     publisher: Sebastian Raschka
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llms-repo
     title: rasbt/LLMs-from-scratch README
     url: https://github.com/rasbt/LLMs-from-scratch
     publisher: Sebastian Raschka (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llms-license
     title: rasbt/LLMs-from-scratch LICENSE.txt (Apache-2.0)
     url: https://github.com/rasbt/LLMs-from-scratch/blob/main/LICENSE.txt
     publisher: Sebastian Raschka (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: sr-research
+    title: Publications & Research — Sebastian Raschka
+    url: https://sebastianraschka.com/publications/
+    publisher: Sebastian Raschka
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: sr-books
+    title: Books — Sebastian Raschka
+    url: https://sebastianraschka.com/books/
+    publisher: Sebastian Raschka
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: sr-reasoning-repo
+    title: rasbt/reasoning-from-scratch
+    url: https://github.com/rasbt/reasoning-from-scratch
+    publisher: Sebastian Raschka
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

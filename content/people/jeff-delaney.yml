@@ -13,7 +13,7 @@ bio:
     January 2026 Fireship announced that ui.dev and Fireship had joined forces, with Jeff continuing
     to work on and voice every Fireship video.
   source_ids: [youtube, fireship-about, join-forces]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Fireship
     organization_slug: null
@@ -36,9 +36,39 @@ links:
     url: https://www.youtube.com/@Fireship
   - label: Bytes newsletter
     url: https://bytes.dev/
+sections:
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Jeff Delaney created the Fireship YouTube channel, which joined YouTube in April 2017 and
+          describes itself as high-intensity code tutorials and tech news for programmers. The channel is
+          the original home of the series 100 Seconds of Code, The Code Report and Code This Not That, and
+          its 2026 uploads often cover AI models, AI companies and developer tools.
+        source_ids: [youtube, channel-feed]
+      - text: >-
+          The Fireship channel page also features a companion channel, Beyond Fireship, which dates from
+          September 2022 and has published build and first-look videos such as a January 2025 video on a
+          VS Code extension powered by DeepSeek R1. Fireship's about page lists Delaney on a small remote team that also produces
+          courses, the Bytes newsletter and microsites such as npmtrends and useHooks.
+        source_ids: [youtube, beyond-fireship-feed, fireship-about]
+  - heading: Fireship and ui.dev
+    paragraphs:
+      - text: >-
+          In January 2026 Fireship and ui.dev announced that they were joining forces to work together on
+          Fireship videos, courses and the Bytes newsletter, with ui.dev courses such as react.gg and
+          query.gg moving to the fireship.dev platform. The announcement states that Delaney keeps
+          creative control and continues to work on and voice every video.
+        source_ids: [join-forces]
+timeline:
+  - date: 2017-04-07
+    text: Started the Fireship YouTube channel.
+    source_ids: [youtube]
+  - date: 2026-01-14
+    text: Announced that ui.dev and Fireship were joining forces on videos, courses and the Bytes newsletter.
+    source_ids: [join-forces]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: youtube
     title: Fireship on YouTube (About)
@@ -46,18 +76,32 @@ sources:
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: fireship-about
     title: About Fireship
     url: https://fireship.io/about/
     publisher: Fireship
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: join-forces
     title: ui.dev and Fireship join forces
     url: https://fireship.io/uidotdev-and-fireship-join-forces
     publisher: Fireship
     kind: announcement
     published_at: 2026-01-14
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: channel-feed
+    title: Fireship YouTube channel video feed
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA
+    publisher: YouTube
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: beyond-fireship-feed
+    title: Beyond Fireship YouTube channel video feed
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UC2Xd-TjJByJyK2w1zNwY0zQ
+    publisher: YouTube
+    kind: other
+    published_at: null
+    accessed_at: 2026-10-21

@@ -15,7 +15,7 @@ bio:
     builds narrative language technologies. Sap is a co-author of SOTOPIA, an open-ended environment in
     which language agents role-play social scenarios and are evaluated on their social intelligence.
   source_ids: [sap-site, sotopia-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Carnegie Mellon University
     organization_slug: carnegie-mellon-university
@@ -39,9 +39,83 @@ work:
 links:
   - label: Website
     url: https://maartensap.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Sap completed a PhD in computer science and engineering at the University of Washington from 2015 to
+          2022, advised by Yejin Choi and Noah Smith, with a thesis titled "Positive AI with Social Commonsense
+          Models". During and after the PhD, Sap was a research intern, postdoctoral researcher and Young
+          Investigator at the Allen Institute for AI, and interned at Microsoft Research in 2019.
+        source_ids: [sap-cv]
+      - text: >-
+          Sap joined Carnegie Mellon's Language Technologies Institute as an assistant professor in 2022 and has
+          been affiliated faculty in the Human-Computer Interaction Institute since 2024. At Ai2, Sap's
+          visiting role has grown from research scientist to senior research scientist and AI safety lead. At
+          CMU, Sap teaches courses including Ethics, Safety, and Social Impact in NLP and LLMs.
+        source_ids: [sap-cv, sap-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Sap's doctoral work built resources for social commonsense reasoning. ATOMIC (2018) is an atlas of
+          if-then knowledge about everyday events, SocialIQA (2019) is a benchmark for reasoning about social
+          interactions, and Social Bias Frames (2019) models the social and power implications of language.
+        source_ids: [atomic-paper, socialiqa-paper, social-bias-frames-paper]
+      - text: >-
+          Sap's group at CMU studies the social intelligence of AI systems, including theory of mind and
+          pragmatic understanding, the safety of AI agents and people's reliance on them, cultural adaptability,
+          and narrative understanding. SOTOPIA (2023) evaluates language agents as they role-play social
+          scenarios, and "Artificial Hivemind" (2025) studies the homogeneity of open-ended language model
+          outputs.
+        source_ids: [sap-site, sotopia-paper, hivemind-paper]
+timeline:
+  - date: "2015"
+    text: Began a PhD at the University of Washington advised by Yejin Choi and Noah Smith.
+    source_ids: [sap-cv]
+  - date: "2018-10"
+    text: Posted ATOMIC, an atlas of machine commonsense for if-then reasoning, as first author.
+    source_ids: [atomic-paper]
+  - date: "2019-04"
+    text: Posted SocialIQA, a benchmark for commonsense reasoning about social interactions, as first author.
+    source_ids: [socialiqa-paper]
+  - date: "2019-11"
+    text: Posted Social Bias Frames as first author.
+    source_ids: [social-bias-frames-paper]
+  - date: "2021"
+    text: Became a postdoctoral researcher and Young Investigator at the Allen Institute for AI.
+    source_ids: [sap-cv]
+  - date: "2022"
+    text: Joined Carnegie Mellon University's Language Technologies Institute as an assistant professor.
+    source_ids: [sap-cv]
+  - date: "2023-10"
+    text: Co-authored SOTOPIA, an environment for evaluating social intelligence in language agents.
+    source_ids: [sotopia-paper]
+  - date: "2025-10"
+    text: Co-authored "Artificial Hivemind", later selected for a NeurIPS 2025 Best Paper Award.
+    source_ids: [hivemind-paper, sap-cv]
+  - date: "2026"
+    text: Became visiting senior research scientist and AI safety lead at the Allen Institute for AI.
+    source_ids: [sap-cv]
+honors:
+  - name: Packard Fellowship for Science and Engineering
+    year: 2025
+    awarded_by: David and Lucile Packard Foundation
+    source_ids: [sap-cv, sap-site]
+  - name: Okawa Research Award
+    year: 2025
+    awarded_by: Okawa Foundation
+    source_ids: [sap-cv, sap-site]
+  - name: NeurIPS Best Paper Award (Datasets and Benchmarks Track)
+    year: 2025
+    awarded_by: NeurIPS
+    source_ids: [sap-cv, sap-site]
+  - name: ACL Outstanding Paper Award
+    year: 2023
+    awarded_by: Association for Computational Linguistics
+    source_ids: [sap-cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: sap-site
     title: Maarten Sap — homepage
@@ -49,11 +123,46 @@ sources:
     publisher: Maarten Sap
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sotopia-paper
     title: "SOTOPIA: Interactive Evaluation for Social Intelligence in Language Agents (arXiv 2310.11667)"
     url: https://arxiv.org/abs/2310.11667
     publisher: arXiv
     kind: paper
     published_at: 2023-10-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: sap-cv
+    title: Maarten Sap — CV
+    url: https://maartensap.com/cv.html
+    publisher: Maarten Sap
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: atomic-paper
+    title: "ATOMIC: An Atlas of Machine Commonsense for If-Then Reasoning (arXiv 1811.00146)"
+    url: https://arxiv.org/abs/1811.00146
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-10-31
+    accessed_at: 2026-10-21
+  - id: socialiqa-paper
+    title: "SocialIQA: Commonsense Reasoning about Social Interactions (arXiv 1904.09728)"
+    url: https://arxiv.org/abs/1904.09728
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-04-22
+    accessed_at: 2026-10-21
+  - id: social-bias-frames-paper
+    title: "Social Bias Frames: Reasoning about Social and Power Implications of Language (arXiv 1911.03891)"
+    url: https://arxiv.org/abs/1911.03891
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-11-10
+    accessed_at: 2026-10-21
+  - id: hivemind-paper
+    title: "Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond) (arXiv 2510.22954)"
+    url: https://arxiv.org/abs/2510.22954
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-10-27
+    accessed_at: 2026-10-21

@@ -3,7 +3,7 @@ name: Michael Collins
 initials: MC
 groups: [engineering]
 specialties: [language-models, ml-theory, evaluation]
-headline: Natural language processing researcher with a Google Research profile; former MIT faculty member
+headline: Natural language processing researcher and research scientist at Google; former MIT faculty member
 bio:
   text: >-
     Michael Collins works on natural language processing and machine learning; Google Research's
@@ -23,7 +23,7 @@ affiliations:
   - name: Google
     organization_slug: google
     role: Research scientist
-    current: false
+    current: true
     source_ids: [collins-site, google-profile, infalign-paper]
   - name: Massachusetts Institute of Technology
     organization_slug: mit
@@ -54,9 +54,100 @@ links:
     url: https://www.cs.columbia.edu/~mcollins/
   - label: Google Research profile
     url: https://research.google/people/michaelcollins/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Michael Collins completed a PhD in computer science at the University of Pennsylvania in December
+          1998. Collins was then a researcher at AT&T
+          Labs-Research from January 1999 to November 2002 and an assistant and then associate professor at
+          MIT from January 2003 to December 2010.
+        source_ids: [collins-site]
+      - text: >-
+          Collins joined Columbia University in January 2011, where the homepage gives the title Vikram S.
+          Pandit Professor of Computer Science, and says Collins is also a research scientist at Google. Google
+          Research's profile describes Collins's research on statistical parsing, structured prediction and
+          applications including machine translation, dialog systems and speech recognition.
+        source_ids: [collins-site, google-profile]
+  - heading: Research and teaching
+    paragraphs:
+      - text: >-
+          Collins's papers have received best paper awards at EMNLP, UAI and CoNLL, and a test of time award
+          at NAACL 2018. More recent work with Google colleagues includes the Attributable to Identified
+          Sources (AIS) framework for judging whether generated text is supported by sources, and InfAlign, a
+          method for aligning language models with the inference-time procedure in mind.
+        source_ids: [collins-site, google-profile, ais-paper, infalign-paper]
+      - text: >-
+          At Columbia, Collins taught the Natural Language Processing course COMS W4705, most recently listed
+          for Spring 2020. In Spring 2013 Collins taught an online course on natural language processing on
+          Coursera, and the notes for that class are posted on the Columbia homepage.
+        source_ids: [collins-site]
+timeline:
+  - date: "1998-12"
+    text: Completed a PhD in computer science at the University of Pennsylvania.
+    source_ids: [collins-site]
+  - date: "1999-01"
+    text: Joined AT&T Labs-Research as a researcher.
+    source_ids: [collins-site]
+  - date: "2003-01"
+    text: Joined the MIT faculty as an assistant/associate professor.
+    source_ids: [collins-site]
+  - date: "2011-01"
+    text: Joined Columbia University as a faculty member.
+    source_ids: [collins-site]
+  - date: "2013"
+    text: Taught an online course on natural language processing on Coursera.
+    source_ids: [collins-site]
+  - date: "2021-12"
+    text: Co-authored the paper introducing the Attributable to Identified Sources (AIS) evaluation framework.
+    source_ids: [ais-paper]
+  - date: "2024-12"
+    text: Co-authored InfAlign, a paper on inference-aware alignment of language models.
+    source_ids: [infalign-paper]
+honors:
+  - name: NSF CAREER Award
+    year: null
+    awarded_by: U.S. National Science Foundation
+    source_ids: [collins-site, google-profile]
+  - name: Sloan Research Fellowship
+    year: null
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [collins-site, google-profile]
+  - name: ACL Fellow
+    year: null
+    awarded_by: Association for Computational Linguistics
+    source_ids: [collins-site, google-profile]
+  - name: Best Paper Award, EMNLP 2002
+    year: 2002
+    awarded_by: Conference on Empirical Methods in Natural Language Processing
+    source_ids: [collins-site, google-profile]
+  - name: Best Paper Award, EMNLP 2004
+    year: 2004
+    awarded_by: Conference on Empirical Methods in Natural Language Processing
+    source_ids: [collins-site, google-profile]
+  - name: Best Paper Award, UAI 2004
+    year: 2004
+    awarded_by: Conference on Uncertainty in Artificial Intelligence
+    source_ids: [collins-site, google-profile]
+  - name: Best Paper Award, UAI 2005
+    year: 2005
+    awarded_by: Conference on Uncertainty in Artificial Intelligence
+    source_ids: [collins-site, google-profile]
+  - name: Best Paper Award, CoNLL 2008
+    year: 2008
+    awarded_by: Conference on Computational Natural Language Learning
+    source_ids: [collins-site, google-profile]
+  - name: Best Paper Award, EMNLP 2010
+    year: 2010
+    awarded_by: Conference on Empirical Methods in Natural Language Processing
+    source_ids: [collins-site, google-profile]
+  - name: Test of Time Award, NAACL 2018
+    year: 2018
+    awarded_by: North American Chapter of the Association for Computational Linguistics
+    source_ids: [collins-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: collins-site
     title: Michael Collins — Columbia CS homepage (affiliations and bio)
@@ -64,25 +155,25 @@ sources:
     publisher: Michael Collins (Columbia University)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: google-profile
     title: Michael Collins — Google Research people profile
     url: https://research.google/people/michaelcollins/
     publisher: Google Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ais-paper
     title: Measuring Attribution in Natural Language Generation Models (arXiv 2112.12870)
     url: https://arxiv.org/abs/2112.12870
     publisher: arXiv
     kind: paper
     published_at: 2021-12-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: infalign-paper
     title: "InfAlign: Inference-aware language model alignment (arXiv 2412.19792, ICML 2025)"
     url: https://arxiv.org/abs/2412.19792
     publisher: arXiv
     kind: paper
     published_at: 2024-12-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

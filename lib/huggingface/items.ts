@@ -6,6 +6,7 @@
 import type { Catalog } from "../catalog";
 import { formatDate } from "../dates";
 import { githubEntries } from "../github/projects";
+import { clipDescription, listingTitle } from "../metadata";
 import { absoluteUrl } from "../paths";
 import { artifactHref } from "../routes";
 import type { SearchEntry } from "../search";
@@ -168,6 +169,17 @@ export function catalogHfIndex(catalog: Catalog): Map<string, { slug: string; na
 export function hfCatalogMatch(catalog: Catalog, e: Pick<HfEntry, "kind" | "id">): { slug: string; name: string; href: string } | null {
   const hit = catalogHfIndex(catalog).get(`${e.kind}:${e.id.toLowerCase()}`);
   return hit ? { ...hit, href: artifactHref(hit.slug) } : null;
+}
+
+/** Search title and description for a model or dataset page, clipped to result limits. */
+export function hfItemSeo(e: HfEntry): { title: string; description: string } {
+  const what = e.kind === "model" ? "model" : "dataset";
+  const task = e.kind === "model" ? e.pipeline_tag : e.task_categories[0];
+  const lead = e.kind === "dataset" && e.description ? clipDescription(e.description, 110) : `${e.name}, a ${task ? `${taskLabel(task).toLowerCase()} ` : ""}${what} by ${e.author}.`;
+  return {
+    title: listingTitle(e.kind === "dataset" ? `${e.id} dataset` : e.id, "Hugging Face"),
+    description: `${lead} Ranked #${e.rank.toLocaleString("en-US")} among Hugging Face ${what}s with ${e.likes.toLocaleString("en-US")} likes; ${hfLicenseLabel(e.license ?? "none", e.license_name)}.`,
+  };
 }
 
 /** Listed Hugging Face items that a catalog artifact links to, models first, by likes. */

@@ -15,7 +15,7 @@ bio:
     which proposes drawing on cognitive theories of human decision making to advance AI. The profile
     notes that Rossi has served as president of IJCAI and of AAAI and is a fellow of AAAI and EurAI.
   source_ids: [ibm-research-profile, fast-slow-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM Research
     organization_slug: ibm
@@ -40,9 +40,75 @@ work:
 links:
   - label: IBM Research profile
     url: https://research.ibm.com/people/francesca-rossi
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Rossi was a professor of computer science at the University of Padova for 20 years before joining IBM,
+          where Rossi works at the T.J. Watson IBM Research Lab. IBM Research lists Rossi as an IBM Fellow and as
+          IBM's Global Leader for Responsible AI and AI Governance. Rossi's IBM profile also lists patents on
+          topics such as constrained decision-making with explanations and an operating system based on a dual
+          system paradigm.
+        source_ids: [ibm-research-profile]
+      - text: >-
+          Rossi has served as president of both IJCAI and AAAI and as Editor in Chief of the Journal of Artificial
+          Intelligence Research. Rossi chaired the AAAI conference in 2020 and the AAAI/ACM Conference on AI,
+          Ethics, and Society in 2023, and sits on that conference's steering committee.
+        source_ids: [ibm-research-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Rossi's research covers constraint reasoning, preferences, multi-agent systems, computational social
+          choice, collective decision making and AI value alignment, along with ethical questions in how AI
+          systems are built and behave. Rossi has co-authored a book and edited 17 volumes, including conference
+          proceedings, special journal issues and a handbook.
+        source_ids: [ibm-research-profile]
+      - text: >-
+          A recurring theme in Rossi's recent work is combining fast and slow modes of reasoning. "Thinking Fast and
+          Slow in AI" (2020) proposed drawing on cognitive theories of human decision making, and a 2021 follow-up
+          examined the role of metacognition in such systems. Later co-authored papers study the use of
+          large language models in automated planning and scheduling, and Rossi's IBM profile lists an AAAI 2026
+          tutorial on SOFAI-LM, an architecture for reasoning systems built with language models.
+        source_ids: [fast-slow-paper, metacognition-paper, llm-planning-paper, ibm-research-profile]
+  - heading: AI ethics and governance
+    paragraphs:
+      - text: >-
+          Rossi has been a member of the European Commission's High Level Expert Group on AI. Rossi is a member
+          of the scientific advisory board of the Future of Life Institute and of the board of the Partnership on
+          AI, and co-chairs the Responsible AI working group of the Global Partnership on AI and the OECD Expert
+          Group on AI Futures.
+        source_ids: [ibm-research-profile]
+timeline:
+  - date: "2020"
+    text: Chaired the AAAI Conference on Artificial Intelligence.
+    source_ids: [ibm-research-profile]
+  - date: "2020-10"
+    text: Co-authored "Thinking Fast and Slow in AI".
+    source_ids: [fast-slow-paper]
+  - date: "2021-10"
+    text: Co-authored a paper on the role of metacognition in fast-and-slow AI systems.
+    source_ids: [metacognition-paper]
+  - date: "2023"
+    text: Chaired the AAAI/ACM Conference on AI, Ethics, and Society.
+    source_ids: [ibm-research-profile]
+  - date: "2024-01"
+    text: Co-authored a study of incorporating large language models in automated planning and scheduling.
+    source_ids: [llm-planning-paper]
+  - date: "2026"
+    text: Co-authored an AAAI 2026 tutorial on SOFAI-LM, a cognitive architecture for reasoning systems with language models.
+    source_ids: [ibm-research-profile]
+honors:
+  - name: AAAI Fellow
+    year: null
+    awarded_by: Association for the Advancement of Artificial Intelligence
+    source_ids: [ibm-research-profile]
+  - name: EurAI Fellow
+    year: null
+    awarded_by: European Association for Artificial Intelligence
+    source_ids: [ibm-research-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ibm-research-profile
     title: Francesca Rossi — IBM Research
@@ -50,11 +116,25 @@ sources:
     publisher: IBM Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fast-slow-paper
     title: Thinking Fast and Slow in AI (arXiv 2010.06002)
     url: https://arxiv.org/abs/2010.06002
     publisher: arXiv
     kind: paper
     published_at: 2020-10-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: metacognition-paper
+    title: "Thinking Fast and Slow in AI: the Role of Metacognition (arXiv 2110.01834)"
+    url: https://arxiv.org/abs/2110.01834
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-10-05
+    accessed_at: 2026-10-21
+  - id: llm-planning-paper
+    title: "On the Prospects of Incorporating Large Language Models (LLMs) in Automated Planning and Scheduling (APS) (arXiv 2401.02500)"
+    url: https://arxiv.org/abs/2401.02500
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-01-04
+    accessed_at: 2026-10-21

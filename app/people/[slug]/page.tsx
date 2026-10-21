@@ -1,9 +1,10 @@
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
-import { Briefcase, Code2 } from "lucide-react";
+import { Award, Briefcase, CalendarDays, Code2, Newspaper } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
 import { JsonLd } from "@/components/JsonLd";
+import { PersonClaimBox } from "@/components/PersonClaimBox";
 import { Breadcrumbs } from "@/components/PageHeader";
 import { SourceRefs, SourcesList } from "@/components/Sources";
 import { SupportPanel } from "@/components/SupportPanel";
@@ -14,8 +15,9 @@ import { cardImage } from "@/lib/page-cards";
 import { PERSON_GROUP_LABELS, PERSON_SPECIALTY_LABELS, WORK_TYPE_LABELS } from "@/lib/people";
 import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { peopleAtOrganization } from "@/lib/people-index";
+import { fieldPeopleLists, peopleAtHref, peopleFieldHref } from "@/lib/people-lists";
 import { artifactHref, orgHref, personHref } from "@/lib/routes";
-import { personSeo } from "@/lib/seo";
+import { personNews, personPageSeo } from "@/lib/people-seo";
 import { personLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = catalog.person((await params).slug);
   if (!p) return {};
   const path = personHref(p.slug);
-  const seo = personSeo(catalog, p);
+  const seo = personPageSeo(catalog, p);
   return pageMetadata({ title: seo.title, description: seo.description, path, image: cardImage(catalog, path) });
 }
 
@@ -67,6 +69,19 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
     seenJobs.add(jobs.path);
     jobLinks.push({ path: jobs.path, count: jobs.count, orgName: a.name });
   }
+  const news = personNews(catalog, found, 5);
+  const fieldPages = new Set(fieldPeopleLists(catalog).map((l) => l.slug));
+  const known = p.work.slice(0, 3);
+  // Wiki-style contents: only sections that render on this profile.
+  const contents = [
+    ...p.sections.map((sec, i) => ({ id: `sec-${i}`, label: sec.heading })),
+    { id: "work-h", label: "Work" },
+    ...(p.timeline.length ? [{ id: "timeline-h", label: "Career timeline" }] : []),
+    ...(earlier.length ? [{ id: "earlier-h", label: "Other documented roles" }] : []),
+    ...(p.honors.length ? [{ id: "honors-h", label: "Honors and recognition" }] : []),
+    ...(news.length ? [{ id: "news-h", label: "In the news" }] : []),
+    { id: "sources-h", label: "References" },
+  ];
 
   return (
     <>
@@ -106,7 +121,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
               ))}
               {p.specialties.map((sp) => (
                 <li key={sp}>
-                  <Link prefetch={false} href={`/people/?specialty=${sp}`} className="badge min-h-9 border-tone-violet/40 hover:border-cyan">
+                  <Link prefetch={false} href={fieldPages.has(sp) ? peopleFieldHref(sp) : `/people/?specialty=${sp}`} className="badge min-h-9 border-tone-violet/40 hover:border-cyan">
                     {PERSON_SPECIALTY_LABELS[sp]}
                   </Link>
                 </li>
@@ -117,8 +132,41 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
 
         <div className="container-page grid gap-12 py-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="grid min-w-0 content-start gap-12">
+            {contents.length >= 4 ? (
+              <nav aria-labelledby="contents-h" className="max-w-md rounded-2xl border border-line bg-surface/60 p-5" data-testid="person-contents">
+                <h2 id="contents-h" className="eyebrow">
+                  Contents
+                </h2>
+                <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-[0.9375rem]">
+                  {contents.map((c) => (
+                    <li key={c.id}>
+                      <a href={`#${c.id}`} className="link">
+                        {c.label}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            ) : null}
+
+            {p.sections.map((sec, si) => (
+              <section key={sec.heading} aria-labelledby={`sec-${si}`} className="max-w-3xl" data-testid="person-section">
+                <h2 id={`sec-${si}`} className="scroll-mt-24 text-2xl font-semibold text-text">
+                  {sec.heading}
+                </h2>
+                <div className="mt-3 space-y-4 text-[1.0625rem] leading-relaxed text-body">
+                  {sec.paragraphs.map((para, pi) => (
+                    <p key={pi}>
+                      {para.text}
+                      <SourceRefs ids={para.source_ids} sources={s} />
+                    </p>
+                  ))}
+                </div>
+              </section>
+            ))}
+
             <section aria-labelledby="work-h">
-              <h2 id="work-h" className="flex items-center gap-2 text-2xl font-semibold text-text">
+              <h2 id="work-h" className="flex scroll-mt-24 items-center gap-2 text-2xl font-semibold text-text">
                 <Code2 aria-hidden="true" className="h-6 w-6 text-cyan" />
                 Work
               </h2>
@@ -151,9 +199,32 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
               </ul>
             </section>
 
+            {p.timeline.length ? (
+              <section aria-labelledby="timeline-h">
+                <h2 id="timeline-h" className="flex scroll-mt-24 items-center gap-2 text-2xl font-semibold text-text">
+                  <CalendarDays aria-hidden="true" className="h-6 w-6 text-cyan" />
+                  Career timeline
+                </h2>
+                <ol className="mt-5 max-w-3xl border-l border-line-strong pl-6" data-testid="person-timeline">
+                  {[...p.timeline]
+                    .sort((a, b) => a.date.localeCompare(b.date))
+                    .map((t, ti) => (
+                      <li key={ti} className="relative pb-5 last:pb-0">
+                        <span aria-hidden="true" className="absolute -left-[1.86rem] top-1.5 h-3 w-3 rounded-full border-2 border-cyan bg-bg" />
+                        <p className="font-mono text-sm text-cyan">{formatDate(t.date)}</p>
+                        <p className="mt-0.5 text-body">
+                          {t.text}
+                          <SourceRefs ids={t.source_ids} sources={s} />
+                        </p>
+                      </li>
+                    ))}
+                </ol>
+              </section>
+            ) : null}
+
             {earlier.length ? (
               <section aria-labelledby="earlier-h">
-                <h2 id="earlier-h" className="flex items-center gap-2 text-2xl font-semibold text-text">
+                <h2 id="earlier-h" className="flex scroll-mt-24 items-center gap-2 text-2xl font-semibold text-text">
                   <Briefcase aria-hidden="true" className="h-6 w-6 text-cyan" />
                   Other documented roles
                 </h2>
@@ -170,9 +241,101 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                 </ul>
               </section>
             ) : null}
+
+            {p.honors.length ? (
+              <section aria-labelledby="honors-h">
+                <h2 id="honors-h" className="flex scroll-mt-24 items-center gap-2 text-2xl font-semibold text-text">
+                  <Award aria-hidden="true" className="h-6 w-6 text-tone-amber" />
+                  Honors and recognition
+                </h2>
+                <ul className="mt-4 max-w-3xl space-y-2.5 text-[1.0625rem]" data-testid="person-honors">
+                  {p.honors.map((h) => (
+                    <li key={`${h.name}-${h.year}`}>
+                      <span className="text-text">{h.name}</span>
+                      <span className="text-muted">
+                        {" "}
+                        · {h.awarded_by}
+                        {h.year ? `, ${h.year}` : ""}
+                      </span>
+                      <SourceRefs ids={h.source_ids} sources={s} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+
+            {news.length ? (
+              <section aria-labelledby="news-h">
+                <h2 id="news-h" className="flex scroll-mt-24 items-center gap-2 text-2xl font-semibold text-text">
+                  <Newspaper aria-hidden="true" className="h-6 w-6 text-cyan" />
+                  In the news
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm text-muted">USASI news stories that name {p.name}.</p>
+                <ul className="mt-4 max-w-3xl space-y-3" data-testid="person-news">
+                  {news.map((n) => (
+                    <li key={n.slug}>
+                      <Link prefetch={false} href={`/news/${n.slug}/`} className="link">
+                        {n.title}
+                      </Link>
+                      <span className="block text-sm text-muted">{formatDate(n.event_date)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
           </div>
 
           <aside className="grid content-start gap-6" aria-label={`${p.name} at a glance`}>
+            <div className="card p-5" data-testid="person-infobox">
+              <h2 className="font-semibold text-text">{p.name}</h2>
+              <dl className="mt-3 grid gap-3 text-[0.9375rem]">
+                {current.length ? (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wide text-muted">{current.length > 1 ? "Current roles" : "Current role"}</dt>
+                    {current.map((a) => (
+                      <dd key={`${a.name}-${a.role}`} className="text-text">
+                        {a.role}, {orgLink(a.organization_slug, a.name)}
+                      </dd>
+                    ))}
+                  </div>
+                ) : null}
+                {known.length ? (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wide text-muted">Known for</dt>
+                    <dd className="text-text">
+                      {known.map((w, i) => (
+                        <span key={w.name}>
+                          {i ? ", " : ""}
+                          {w.artifact_slug ? (
+                            <Link prefetch={false} href={artifactHref(w.artifact_slug)} className="link">
+                              {w.name}
+                            </Link>
+                          ) : (
+                            w.name
+                          )}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                ) : null}
+                {p.specialties.length ? (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wide text-muted">Fields</dt>
+                    <dd className="text-text">{p.specialties.map((sp) => PERSON_SPECIALTY_LABELS[sp]).join(", ")}</dd>
+                  </div>
+                ) : null}
+                {p.honors.length ? (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wide text-muted">Honors</dt>
+                    <dd className="text-text">{p.honors.length}</dd>
+                  </div>
+                ) : null}
+                <div>
+                  <dt className="text-xs uppercase tracking-wide text-muted">Profile reviewed</dt>
+                  <dd className="text-text">{formatDate(p.last_reviewed ?? p.updated_at)}</dd>
+                </div>
+              </dl>
+            </div>
             {catalogLinks.length ? (
               <div className="card p-5">
                 <h2 className="font-semibold text-text">In the catalog</h2>
@@ -228,7 +391,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                 </ul>
                 {colleagues.length > COLLEAGUES ? (
                   <p className="mt-3 text-sm">
-                    <Link prefetch={false} href={`/people/?org=${home.organization_slug}`} className="link">
+                    <Link prefetch={false} href={peopleAtHref(home.organization_slug!)} className="link">
                       All {colleagues.length + 1} people tied to {home.name}
                     </Link>
                   </p>
@@ -239,6 +402,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
         </div>
 
         <div className="container-page grid gap-6 pb-14">
+          <PersonClaimBox name={p.name} pagePath={personHref(p.slug)} />
           <p className="max-w-3xl text-sm text-muted">
             This profile covers public professional work only, from the sources below. It is not an endorsement or a ranking. To correct or remove
             it,{" "}
@@ -248,8 +412,8 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
             .
           </p>
           <section aria-labelledby="sources-h" className="border-t border-line pt-6">
-            <h2 id="sources-h" className="eyebrow">
-              Sources · reviewed {formatDate(p.last_reviewed ?? p.updated_at)}
+            <h2 id="sources-h" className="eyebrow scroll-mt-24">
+              References · reviewed {formatDate(p.last_reviewed ?? p.updated_at)}
             </h2>
             <div className="mt-3 text-[0.9375rem]">
               <SourcesList sources={s} />

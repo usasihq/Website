@@ -14,13 +14,28 @@ bio:
     OpenChatKit and RedPajama among the open projects Together had released, alongside a cloud
     platform built for training and running large models.
   source_ids: [together-about, seed-post]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Together AI
     organization_slug: together-ai
     role: Founder & CEO
     current: true
     source_ids: [together-about, seed-post, github-profile]
+  - name: Apple
+    organization_slug: apple
+    role: Senior Director leading search and AI efforts in Siri (after Apple acquired Topsy)
+    current: false
+    source_ids: [vp-humanx]
+  - name: Topsy
+    organization_slug: null
+    role: Founder (2007)
+    current: false
+    source_ids: [vp-milken, vp-humanx]
+  - name: Cloudmark
+    organization_slug: null
+    role: Co-founder (2001)
+    current: false
+    source_ids: [vp-milken]
 work:
   - name: RedPajama
     artifact_slug: redpajama
@@ -33,9 +48,44 @@ work:
 links:
   - label: GitHub
     url: https://github.com/vipulved
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Prakash co-founded the anti-spam company Cloudmark in 2001 with Jordan Ritter, and Cloudmark was later
+          acquired by Proofpoint. In 2007 Prakash founded Topsy, a search system for social media, which Apple
+          acquired in 2013; at Apple, Prakash served as a senior director leading search and AI efforts in Siri.
+        source_ids: [vp-milken, vp-humanx]
+      - text: >-
+          Prakash co-founded Together AI with Chris Ré, Percy Liang and Ce Zhang and leads it as CEO. Together's
+          about page lists Prakash as Founder & CEO, and a 2026 conference biography describes the company as a
+          research-driven AI company building cloud services and open-source models.
+        source_ids: [together-about, seed-post, vp-humanx]
+  - heading: Together AI
+    paragraphs:
+      - text: >-
+          In a May 2023 post, Prakash wrote that Together was founded on the belief that open and decentralized
+          alternatives to closed AI systems would matter for business and society, and listed GPT-JT, OpenChatKit
+          and RedPajama among its early open releases. The RedPajama-Data repository, published under the
+          Apache-2.0 license, includes RedPajama-Data-v2, an open dataset of 30 trillion tokens for training
+          large language models.
+        source_ids: [seed-post, redpajama-repo]
+timeline:
+  - date: "2001"
+    text: Co-founded the anti-spam company Cloudmark with Jordan Ritter.
+    source_ids: [vp-milken]
+  - date: "2007"
+    text: Founded Topsy, a search company for social media.
+    source_ids: [vp-milken]
+  - date: "2013"
+    text: Topsy was acquired by Apple, where Prakash later led search and AI efforts in Siri.
+    source_ids: [vp-milken, vp-humanx]
+  - date: "2023-05-15"
+    text: Wrote a post on Together's founding mission of open and decentralized AI alternatives.
+    source_ids: [seed-post]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: together-about
     title: About Us | Together AI (team listing)
@@ -43,25 +93,39 @@ sources:
     publisher: Together AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: seed-post
     title: Together AI blog post by Vipul Ved Prakash, Co-founder and CEO (May 2023)
     url: https://www.together.ai/blog/seed-funding
     publisher: Together AI
     kind: announcement
     published_at: 2023-05-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: vipulved (Vipul Ved Prakash) on GitHub
     url: https://github.com/vipulved
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: redpajama-repo
     title: togethercomputer/RedPajama-Data repository (Apache-2.0 license)
     url: https://github.com/togethercomputer/RedPajama-Data
     publisher: Together AI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: vp-humanx
+    title: Vipul Ved Prakash — HumanX speaker page
+    url: https://www.humanx.co/us/speakers/vipul-ved-prakash
+    publisher: HumanX
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: vp-milken
+    title: Vipul Ved Prakash — Milken Institute Global Conference 2026 speaker page
+    url: https://milkeninstitute.org/events/global-conference-2026/speakers/vipul-ved-prakash
+    publisher: Milken Institute
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

@@ -15,7 +15,7 @@ bio:
     book Unmasking AI: My Mission to Protect What is Human in a World of Machines and writes a
     newsletter on Substack.
   source_ids: [ajl-about, poet-of-code, mit-profile, gender-shades-project, gender-shades-paper, unmasking-ai, newsletter-about]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Algorithmic Justice League
     organization_slug: null
@@ -59,9 +59,49 @@ links:
     url: https://www.ajl.org/
   - label: Newsletter
     url: https://poetofcode.substack.com/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          While a graduate student at the MIT Media Lab, Joy Buolamwini found that facial analysis software
+          struggled to detect Buolamwini's face, and went on to study gender and skin-type disparities in
+          commercially sold facial analysis products. The Gender Shades project ran at the Media Lab from January
+          2017 to August 2020.
+        source_ids: [ajl-about, gender-shades-project]
+      - text: >-
+          The 2018 Gender Shades paper with Timnit Gebru evaluated three commercial gender classification systems
+          and introduced a facial analysis benchmark balanced by gender and skin type, after the project found that
+          existing benchmark datasets over-represented lighter-skinned men.
+        source_ids: [gender-shades-paper, gender-shades-project]
+  - heading: Algorithmic Justice League
+    paragraphs:
+      - text: >-
+          Buolamwini founded the Algorithmic Justice League, which uses art and research to show the social
+          implications and harms of AI and to push for more equitable and accountable systems. Buolamwini's
+          research is featured in the documentary Coded Bias, and Buolamwini also makes art about AI's effects on
+          society under the name Poet of Code.
+        source_ids: [ajl-about, poet-of-code, prh-unmasking-ai]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Buolamwini's book Unmasking AI: My Mission to Protect What is Human in a World of Machines, published by
+          Random House, blends memoir with an account of research into the harms and biases of AI. Buolamwini's
+          writing has also appeared in publications such as Time, The New York Times, Harvard Business Review and
+          The Atlantic, and Buolamwini publishes a newsletter on Substack.
+        source_ids: [prh-unmasking-ai, unmasking-ai, newsletter-about]
+timeline:
+  - date: "2017-01"
+    text: Gender Shades became an active project at the MIT Media Lab, with Buolamwini on its team.
+    source_ids: [gender-shades-project]
+  - date: "2018"
+    text: Published the Gender Shades paper with Timnit Gebru at the first Conference on Fairness, Accountability and Transparency.
+    source_ids: [gender-shades-paper]
+  - date: "2020-08"
+    text: Concluded the Gender Shades project at the MIT Media Lab.
+    source_ids: [gender-shades-project]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ajl-about
     title: About — Algorithmic Justice League
@@ -69,46 +109,53 @@ sources:
     publisher: Algorithmic Justice League
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: poet-of-code
     title: Poet of Code — Dr. Joy Buolamwini
     url: https://www.poetofcode.com/
     publisher: Joy Buolamwini
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: newsletter-about
     title: About — Dr. Joy - Newsletter
     url: https://poetofcode.substack.com/about
     publisher: Joy Buolamwini (Substack)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: mit-profile
     title: Joy Buolamwini — MIT Media Lab people page
     url: https://www.media.mit.edu/people/joyab/overview/
     publisher: MIT Media Lab
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: gender-shades-project
     title: Gender Shades — MIT Media Lab project
     url: https://www.media.mit.edu/projects/gender-shades/overview/
     publisher: MIT Media Lab
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: gender-shades-paper
     title: "Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification (PMLR 81)"
     url: https://proceedings.mlr.press/v81/buolamwini18a.html
     publisher: Proceedings of Machine Learning Research
     kind: paper
     published_at: "2018"
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: unmasking-ai
     title: Unmasking AI — book site
     url: https://www.unmasking.ai/
     publisher: Joy Buolamwini
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: prh-unmasking-ai
+    title: Unmasking AI by Dr. Joy Buolamwini (book page and author bio)
+    url: https://www.penguinrandomhouse.com/books/670356/unmasking-ai-by-dr-joy-buolamwini/
+    publisher: Penguin Random House
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

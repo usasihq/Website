@@ -60,9 +60,82 @@ links:
     url: https://sameersingh.org/
   - label: GitHub
     url: https://github.com/sameersingh
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Sameer Singh received a PhD from the University of Massachusetts Amherst, with internships at
+          Microsoft Research, Google Research and Yahoo! Labs, and was a postdoctoral researcher at the
+          University of Washington from 2013 to 2016. Singh joined UC Irvine as an assistant professor of
+          computer science in 2016, became an associate professor in 2021 and a full professor in 2024, with
+          affiliations in Linguistics and EECS.
+        source_ids: [singh-site]
+      - text: >-
+          From 2021 to 2023 Singh was an Allen Fellow at the Allen Institute for AI, and Singh's site lists a
+          current role as co-founder and CTO of Spiffy AI.
+        source_ids: [singh-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Singh's research concerns the robustness and interpretability of machine learning and models that
+          reason over text and structure. LIME, introduced in 2016 with Marco Tulio Ribeiro and Carlos
+          Guestrin, explains an individual prediction of any classifier by fitting an interpretable model
+          locally around it. A related 2016 paper on model-agnostic interpretability received the workshop
+          best paper award at the ICML Workshop on Human Interpretability in Machine Learning.
+        source_ids: [singh-site, lime-paper, awards]
+      - text: >-
+          CheckList (2020), again with Ribeiro and others, proposed behavioral testing of NLP models with a
+          matrix of linguistic capabilities and test types, and received the best paper award at ACL 2020.
+          Later award-winning work from Singh's group includes FRUIT, a NAACL 2022 task on updating text to
+          reflect new information.
+        source_ids: [checklist-paper, awards]
+timeline:
+  - date: "2013"
+    text: Began a postdoctoral position at the University of Washington.
+    source_ids: [singh-site]
+  - date: "2016"
+    text: Joined UC Irvine as an assistant professor of computer science.
+    source_ids: [singh-site]
+  - date: "2016-02"
+    text: Co-authored the LIME paper on explaining the predictions of any classifier.
+    source_ids: [lime-paper]
+  - date: "2020-05"
+    text: Co-authored CheckList, a behavioral testing method for NLP models.
+    source_ids: [checklist-paper]
+  - date: "2021"
+    text: Became an associate professor at UC Irvine and an Allen Fellow at the Allen Institute for AI.
+    source_ids: [singh-site]
+  - date: "2024"
+    text: Became a professor of computer science at UC Irvine.
+    source_ids: [singh-site]
+honors:
+  - name: DARPA Riser
+    year: 2015
+    awarded_by: DARPA
+    source_ids: [awards]
+  - name: Best Paper Award, ACL 2020, for CheckList
+    year: 2020
+    awarded_by: Association for Computational Linguistics
+    source_ids: [awards]
+  - name: Hellman Fellowship
+    year: 2020
+    awarded_by: Hellman Family Foundation
+    source_ids: [awards]
+  - name: NSF CAREER Award
+    year: 2021
+    awarded_by: U.S. National Science Foundation
+    source_ids: [awards]
+  - name: Best Task Paper Award, NAACL 2022, for FRUIT
+    year: 2022
+    awarded_by: North American Chapter of the Association for Computational Linguistics
+    source_ids: [awards]
+  - name: Kavli Fellow
+    year: 2023
+    awarded_by: National Academy of Sciences (Kavli Frontiers of Science)
+    source_ids: [awards]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: singh-site
     title: Sameer Singh — homepage (appointments and industry roles)
@@ -70,18 +143,25 @@ sources:
     publisher: Sameer Singh
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lime-paper
     title: "\"Why Should I Trust You?\": Explaining the Predictions of Any Classifier (arXiv 1602.04938)"
     url: https://arxiv.org/abs/1602.04938
     publisher: arXiv
     kind: paper
     published_at: 2016-02-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: checklist-paper
     title: "Beyond Accuracy: Behavioral Testing of NLP models with CheckList (arXiv 2005.04118)"
     url: https://arxiv.org/abs/2005.04118
     publisher: arXiv
     kind: paper
     published_at: 2020-05-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: awards
+    title: "Sameer Singh — Awards"
+    url: https://sameersingh.org/awards.html
+    publisher: Sameer Singh
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

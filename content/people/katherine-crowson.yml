@@ -16,7 +16,7 @@ bio:
     "Scalable High-Resolution Pixel-Space Image Synthesis with Hourglass Diffusion Transformers"
     (2024), and the k-diffusion README documents an hourglass diffusion transformer model type.
   source_ids: [crowson-github, kdiff-readme, kdiff-license, vqganclip-html, vqganclip-paper, hdit-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: EleutherAI
     organization_slug: eleutherai
@@ -45,9 +45,46 @@ work:
 links:
   - label: GitHub
     url: https://github.com/crowsonkb
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Crowson's k-diffusion library implements the EDM framework from "Elucidating the Design Space of
+          Diffusion-Based Generative Models" (Karras et al., 2022) in PyTorch, adding sampling algorithms and
+          transformer-based diffusion models. It includes the image_transformer_v2 model type, which draws on
+          the Hourglass Transformer and DiT and uses neighborhood attention at low levels of the hierarchy and
+          global attention at higher ones.
+        source_ids: [kdiff-readme, kdiff-license]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          The 2022 VQGAN-CLIP paper, with Crowson and Stella Biderman as co-first authors, describes steering
+          a VQGAN image generator with CLIP so that images can be generated and edited from text prompts; the
+          paper credits Crowson with originating the idea and leading its development. Crowson is also a
+          co-author of LAION-5B, an open image-text dataset paper in the NeurIPS 2022 Datasets and Benchmarks
+          track.
+        source_ids: [vqganclip-paper, vqganclip-html, laion5b-paper]
+      - text: >-
+          In 2024 Crowson was first author of the Hourglass Diffusion Transformer (HDiT) paper, on generating
+          high-resolution images directly in pixel space with a hierarchical transformer. In 2026 Crowson
+          co-authored LoRA-Muon, a paper on spectral steepest-descent optimization for low-rank adapters.
+        source_ids: [hdit-paper, lora-muon-paper]
+timeline:
+  - date: "2022-04-18"
+    text: Released "VQGAN-CLIP - Open Domain Image Generation and Editing with Natural Language Guidance" as co-first author.
+    source_ids: [vqganclip-paper]
+  - date: "2022-10-16"
+    text: Co-authored the LAION-5B open image-text dataset paper (NeurIPS 2022 Datasets and Benchmarks).
+    source_ids: [laion5b-paper]
+  - date: "2024-01-21"
+    text: Released the Hourglass Diffusion Transformers paper on pixel-space image synthesis as first author.
+    source_ids: [hdit-paper]
+  - date: "2026-06-11"
+    text: Co-authored "LoRA-Muon - Spectral Steepest Descent on the Low-Rank Manifold".
+    source_ids: [lora-muon-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: crowson-github
     title: crowsonkb (Katherine Crowson) on GitHub
@@ -55,39 +92,53 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: kdiff-readme
     title: crowsonkb/k-diffusion README
     url: https://github.com/crowsonkb/k-diffusion
     publisher: crowsonkb (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: kdiff-license
     title: crowsonkb/k-diffusion LICENSE (MIT)
     url: https://github.com/crowsonkb/k-diffusion/blob/master/LICENSE
     publisher: crowsonkb (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vqganclip-paper
     title: "VQGAN-CLIP: Open Domain Image Generation and Editing with Natural Language Guidance (arXiv 2204.08583)"
     url: https://arxiv.org/abs/2204.08583
     publisher: arXiv
     kind: paper
     published_at: 2022-04-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vqganclip-html
     title: "VQGAN-CLIP (arXiv HTML version: author affiliations and contributions)"
     url: https://arxiv.org/html/2204.08583
     publisher: arXiv
     kind: paper
     published_at: 2022-09-04
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hdit-paper
     title: "Scalable High-Resolution Pixel-Space Image Synthesis with Hourglass Diffusion Transformers (arXiv 2401.11605)"
     url: https://arxiv.org/abs/2401.11605
     publisher: arXiv
     kind: paper
     published_at: 2024-01-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: laion5b-paper
+    title: "LAION-5B: An open large-scale dataset for training next generation image-text models (arXiv 2210.08402)"
+    url: https://arxiv.org/abs/2210.08402
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-16
+    accessed_at: 2026-10-21
+  - id: lora-muon-paper
+    title: "LoRA-Muon: Spectral Steepest Descent on the Low-Rank Manifold (arXiv 2606.12921)"
+    url: https://arxiv.org/abs/2606.12921
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-06-11
+    accessed_at: 2026-10-21

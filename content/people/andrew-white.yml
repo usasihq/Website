@@ -1,0 +1,192 @@
+slug: andrew-white
+name: Andrew White
+initials: AW
+groups: [engineering, leadership, open-source]
+sector: nonprofit
+specialties: [ai-for-science, agents]
+headline: Co-founder and Head of Science of FutureHouse; co-founder and CTO of Edison Scientific
+bio:
+  text: >-
+    Andrew White is a co-founder and the Head of Science of FutureHouse, a nonprofit that builds
+    AI systems for scientific discovery, and a co-founder and the CTO of Edison Scientific, the
+    company that spun out of FutureHouse in 2025. Edison's team page credits White with leading
+    AI-for-science projects including the ChemCrow chemistry agent, the ether0 reasoning model and
+    the PaperQA literature agent, and notes earlier work as a professor and researcher in machine
+    learning for chemistry, explainable AI, statistical mechanics and chemical engineering.
+  source_ids: [fh-team, fh-about, edison-team]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: FutureHouse
+    organization_slug: futurehouse
+    role: Head of Science and co-founder
+    current: true
+    source_ids: [fh-team, fh-about]
+  - name: Edison Scientific
+    organization_slug: null
+    role: CTO and co-founder
+    current: true
+    source_ids: [edison-team]
+work:
+  - name: ChemCrow
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2304.05376
+    contribution: >-
+      Co-author of the 2023 ChemCrow paper, which augments large language models with chemistry
+      tools for tasks in organic synthesis, drug discovery and materials design.
+    source_ids: [chemcrow-paper]
+  - name: PaperQA and PaperQA2
+    artifact_slug: paper-qa
+    type: open-source
+    url: https://github.com/Future-House/paper-qa
+    contribution: >-
+      Senior author of the PaperQA (2023) and PaperQA2 (2024) papers on agents for scientific
+      literature, released as the open-source, Apache-2.0 paper-qa package.
+    source_ids: [paperqa-paper, paperqa2-paper, pqa-gh]
+  - name: ether0
+    artifact_slug: ether0
+    type: open-weights
+    url: https://arxiv.org/abs/2506.17238
+    contribution: >-
+      Senior author of the 2025 paper on ether0, a reasoning model for chemistry trained with
+      reinforcement learning and released by FutureHouse as open source.
+    source_ids: [ether0-paper, fh-about, edison-team]
+links:
+  - label: FutureHouse team
+    url: https://www.futurehouse.org/team
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before FutureHouse, White worked as a professor and researcher in machine learning for
+          chemistry, explainable AI, statistical mechanics and chemical engineering, and Edison
+          notes junior investigator awards from the NSF and NIH. White co-founded FutureHouse with
+          Sam Rodriques in 2023.
+        source_ids: [edison-team, fh-about]
+      - text: >-
+          In November 2025, White and Rodriques launched Edison Scientific to commercialize
+          FutureHouse's AI Scientist. White is now Head of Science at FutureHouse and CTO at Edison.
+        source_ids: [fh-edison, fh-team, edison-team]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          White's work centers on language agents for science. ChemCrow connected a language model
+          to chemistry tools, PaperQA and PaperQA2 answer questions from scientific literature, and
+          the Aviary framework trains language agents on tasks ranging from literature research to
+          protein design.
+        source_ids: [chemcrow-paper, paperqa-paper, paperqa2-paper, aviary-paper, aviary-gh, fh-about]
+      - text: >-
+          White is the senior author of the ether0 paper, which trains a reasoning model for
+          chemistry with reinforcement learning, and a co-author of Robin, a multi-agent system for
+          automating scientific discovery.
+        source_ids: [ether0-paper, robin-paper]
+timeline:
+  - date: "2023-04-11"
+    text: Co-authored ChemCrow, a paper on augmenting large language models with chemistry tools.
+    source_ids: [chemcrow-paper]
+  - date: "2023"
+    text: Co-founded FutureHouse with Sam Rodriques.
+    source_ids: [fh-about]
+  - date: "2023-12-08"
+    text: Was the senior author of the PaperQA paper on an agent for scientific research.
+    source_ids: [paperqa-paper]
+  - date: "2024-09-10"
+    text: Was the senior author of the PaperQA2 paper on synthesis of scientific knowledge.
+    source_ids: [paperqa2-paper]
+  - date: "2024-12-30"
+    text: Was the senior author of the Aviary paper on training language agents for science.
+    source_ids: [aviary-paper]
+  - date: "2025-06-04"
+    text: Was the senior author of the paper introducing the ether0 chemistry reasoning model.
+    source_ids: [ether0-paper]
+  - date: "2025-11-05"
+    text: Co-announced Edison Scientific as a commercial spinout of FutureHouse.
+    source_ids: [fh-edison]
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: chemcrow-paper
+    title: "ChemCrow: Augmenting large-language models with chemistry tools (arXiv 2304.05376)"
+    url: https://arxiv.org/abs/2304.05376
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-04-11
+    accessed_at: 2026-10-21
+  - id: fh-about
+    title: About — FutureHouse
+    url: https://www.futurehouse.org/about
+    publisher: FutureHouse
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: fh-team
+    title: Team — FutureHouse
+    url: https://www.futurehouse.org/team
+    publisher: FutureHouse
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: edison-team
+    title: Team — Edison Scientific
+    url: https://edisonscientific.com/team
+    publisher: Edison Scientific
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: fh-edison
+    title: Announcing Edison Scientific
+    url: https://www.futurehouse.org/news/announcing-edison-scientific
+    publisher: FutureHouse
+    kind: announcement
+    published_at: 2025-11-05
+    accessed_at: 2026-10-21
+  - id: paperqa-paper
+    title: "PaperQA: Retrieval-Augmented Generative Agent for Scientific Research (arXiv 2312.07559)"
+    url: https://arxiv.org/abs/2312.07559
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-08
+    accessed_at: 2026-10-21
+  - id: paperqa2-paper
+    title: "Language agents achieve superhuman synthesis of scientific knowledge (arXiv 2409.13740)"
+    url: https://arxiv.org/abs/2409.13740
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-09-10
+    accessed_at: 2026-10-21
+  - id: aviary-paper
+    title: "Aviary: training language agents on challenging scientific tasks (arXiv 2412.21154)"
+    url: https://arxiv.org/abs/2412.21154
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-30
+    accessed_at: 2026-10-21
+  - id: robin-paper
+    title: "Robin: A multi-agent system for automating scientific discovery (arXiv 2505.13400)"
+    url: https://arxiv.org/abs/2505.13400
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-19
+    accessed_at: 2026-10-21
+  - id: ether0-paper
+    title: "Training a Scientific Reasoning Model for Chemistry (arXiv 2506.17238)"
+    url: https://arxiv.org/abs/2506.17238
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-04
+    accessed_at: 2026-10-21
+  - id: pqa-gh
+    title: Future-House/paper-qa README (Apache-2.0)
+    url: https://github.com/Future-House/paper-qa
+    publisher: FutureHouse (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: aviary-gh
+    title: Future-House/aviary README (Apache-2.0)
+    url: https://github.com/Future-House/aviary
+    publisher: FutureHouse (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

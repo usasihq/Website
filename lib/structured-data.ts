@@ -9,6 +9,7 @@
 import type { Catalog } from "./catalog";
 import { absoluteUrl } from "./paths";
 import { stateFromHeadquarters, US_STATES } from "./places";
+import { PERSON_SPECIALTY_LABELS } from "./people";
 import { artifactHref, orgHref } from "./routes";
 import { COVERS, makersOf } from "./seo";
 import type { Artifact, Leader, LicenseRecord, NewsItem, Organization, Person } from "./schema";
@@ -193,6 +194,8 @@ export function personLd(catalog: Catalog, p: Person): JsonLdNode {
       ...(current[0] ? { jobTitle: current[0].role } : {}),
       ...(worksFor.length ? { worksFor } : {}),
       ...(p.links.length ? { sameAs: p.links.map((x) => x.url) } : {}),
+      ...(p.specialties.length ? { knowsAbout: p.specialties.map((sp) => PERSON_SPECIALTY_LABELS[sp]) } : {}),
+      ...(p.honors.length ? { award: p.honors.map((h) => (h.year ? `${h.name} (${h.year})` : h.name)) } : {}),
     },
   };
 }

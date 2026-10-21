@@ -16,7 +16,7 @@ bio:
     news app acquired by Yahoo. A July 2026 Anthropic article describes Krieger, as co-lead of
     Anthropic Labs, migrating a Python codebase to TypeScript with Claude Code over a weekend.
   source_ids: [anthropic-founder-house, anthropic-labs, krieger-joins, code-migration]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Anthropic
     organization_slug: anthropic
@@ -64,9 +64,49 @@ work:
       Co-founder and CTO of Instagram, according to Anthropic's announcement of Krieger's appointment.
     source_ids: [krieger-joins]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Krieger co-founded Instagram and served as its chief technology officer, building and scaling its
+          engineering team. Krieger then spent three years building Artifact, a personalized news app, before
+          the app was acquired by Yahoo.
+        source_ids: [krieger-joins]
+      - text: >-
+          Krieger joined Anthropic as Chief Product Officer in May 2024, overseeing product engineering, product
+          management and product design as the company expanded its enterprise applications. In January 2026,
+          Anthropic expanded Labs, its team for incubating experimental products at the frontier of Claude's
+          capabilities, and Krieger moved from the product leadership role to build in Labs alongside Ben Mann.
+        source_ids: [krieger-joins, anthropic-labs]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          A July 2026 Anthropic article on AI-assisted code migration describes Krieger, as co-lead of Anthropic
+          Labs, porting a Python codebase for an internal tool to TypeScript over a weekend with Claude Code,
+          using many agents, phase gates and adversarial review rounds. The port cut the tool's compile step from
+          minutes to seconds and let the team retire a separate deployment pipeline.
+        source_ids: [code-migration]
+      - text: >-
+          In October 2026, Krieger was listed as Head of Anthropic Labs at Anthropic's Claude Founder House
+          San Francisco event, in a fireside conversation with David Rosenthal of the Acquired podcast about
+          start-ups building on Claude.
+        source_ids: [anthropic-founder-house]
+timeline:
+  - date: "2024-05-15"
+    text: Joined Anthropic as Chief Product Officer.
+    source_ids: [krieger-joins]
+  - date: "2026-01-13"
+    text: Joined Anthropic Labs, the company's team for incubating experimental products built on Claude.
+    source_ids: [anthropic-labs]
+  - date: "2026-07-16"
+    text: Was described in an Anthropic article migrating a Python codebase to TypeScript with Claude Code.
+    source_ids: [code-migration]
+  - date: "2026-10-08"
+    text: Was listed as Head of Anthropic Labs for a fireside conversation at Anthropic's Claude Founder House San Francisco event.
+    source_ids: [anthropic-founder-house]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: anthropic-founder-house
     title: Claude Founder House San Francisco (October 6–8, 2026; speakers list Mike Krieger, Head of Anthropic Labs)
@@ -74,25 +114,25 @@ sources:
     publisher: Anthropic
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: anthropic-labs
     title: Introducing Labs
     url: https://www.anthropic.com/news/introducing-anthropic-labs
     publisher: Anthropic
     kind: announcement
     published_at: 2026-01-13
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: krieger-joins
     title: Mike Krieger joins Anthropic as Chief Product Officer
     url: https://www.anthropic.com/news/mike-krieger-joins-anthropic
     publisher: Anthropic
     kind: announcement
     published_at: 2024-05-15
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: code-migration
     title: How Anthropic runs large-scale code migrations with Claude Code
     url: https://claude.com/resources/articles/ai-code-migration
     publisher: Anthropic (Claude)
     kind: official-page
     published_at: 2026-07-16
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21

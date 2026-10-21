@@ -15,7 +15,7 @@ bio:
     co-author of "On the Biology of a Large Language Model" (2025), which studies the internal
     mechanisms of Claude 3.5 Haiku with circuit tracing.
   source_ids: [olah-about, tc-framework, superposition-paper, tc-biology]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Anthropic
     organization_slug: anthropic
@@ -60,9 +60,70 @@ work:
 links:
   - label: Website
     url: https://colah.github.io/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Chris Olah's academic CV lists research internships at Google Brain in 2014, hosted by Jeff
+          Dean, and in 2015, hosted by Greg Corrado, working on techniques for visualizing neural
+          networks. Olah then joined Google Brain as a research associate in 2015 and became a
+          research scientist in 2016.
+        source_ids: [olah-cv]
+      - text: >-
+          In October 2018 Olah joined OpenAI as a member of technical staff and led a new team, called
+          Clarity, working on neural network interpretability. Olah is one of the co-founders of
+          Anthropic, where Olah continues to work on reverse engineering neural networks.
+        source_ids: [olah-cv, olah-about]
+  - heading: Distill and explanatory writing
+    paragraphs:
+      - text: >-
+          Olah co-founded Distill, a scientific journal focused on clear communication of machine
+          learning research. Olah's Distill articles include "Attention and Augmented Recurrent Neural
+          Networks" (2016) with Shan Carter, "Research Debt" (2017), "Feature Visualization" (2017),
+          "The Building Blocks of Interpretability" (2018) and "Activation Atlases" (2019).
+        source_ids: [olah-about, olah-cv]
+  - heading: Interpretability research
+    paragraphs:
+      - text: >-
+          At Anthropic, Olah's work on the Transformer Circuits Thread includes "A Mathematical
+          Framework for Transformer Circuits" (2021), which reverse engineers small attention-only
+          transformers, and "Toy Models of Superposition" (2022), which studies how models store
+          additional sparse features in superposition, a source of polysemantic neurons.
+        source_ids: [tc-framework, superposition-paper]
+      - text: >-
+          Olah is also a co-author of "On the Biology of a Large Language Model" (2025), which uses
+          attribution graphs to trace internal mechanisms in Claude 3.5 Haiku. Earlier, Olah was a
+          co-author of "Concrete Problems in AI Safety" (2016) and of the TensorFlow systems paper
+          (2015).
+        source_ids: [tc-biology, olah-cv]
+timeline:
+  - date: 2014-07
+    text: Began a research internship at Google Brain hosted by Jeff Dean, creating the meta-SNE visualization algorithm.
+    source_ids: [olah-cv]
+  - date: 2015-10
+    text: Joined Google Brain as a research associate, becoming a research scientist in October 2016.
+    source_ids: [olah-cv]
+  - date: 2016-09-08
+    text: Published "Attention and Augmented Recurrent Neural Networks" with Shan Carter on Distill.
+    source_ids: [olah-cv]
+  - date: 2017-11
+    text: Published "Feature Visualization" on Distill with Alexander Mordvintsev and Ludwig Schubert.
+    source_ids: [olah-cv]
+  - date: 2018-10
+    text: Joined OpenAI as a member of technical staff and led the Clarity interpretability team.
+    source_ids: [olah-cv]
+  - date: "2021"
+    text: Published "A Mathematical Framework for Transformer Circuits" as corresponding author.
+    source_ids: [tc-framework]
+  - date: 2022-09
+    text: Published "Toy Models of Superposition" as last-listed author.
+    source_ids: [superposition-paper]
+  - date: "2025"
+    text: Co-authored "On the Biology of a Large Language Model" on the Transformer Circuits Thread.
+    source_ids: [tc-biology]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: olah-about
     title: About Me — colah's blog
@@ -70,25 +131,32 @@ sources:
     publisher: Christopher Olah
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tc-framework
     title: A Mathematical Framework for Transformer Circuits (Transformer Circuits Thread, Anthropic)
     url: https://transformer-circuits.pub/2021/framework/index.html
     publisher: Anthropic
     kind: paper
     published_at: 2021-12-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: superposition-paper
     title: Toy Models of Superposition (arXiv 2209.10652)
     url: https://arxiv.org/abs/2209.10652
     publisher: arXiv
     kind: paper
     published_at: 2022-09-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tc-biology
     title: On the Biology of a Large Language Model (Transformer Circuits Thread, Anthropic)
     url: https://transformer-circuits.pub/2025/attribution-graphs/biology.html
     publisher: Anthropic
     kind: paper
     published_at: 2025-03-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: olah-cv
+    title: Chris Olah — academic CV (PDF)
+    url: https://colah.github.io/cv.pdf
+    publisher: Chris Olah
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

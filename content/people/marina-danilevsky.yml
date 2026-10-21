@@ -15,7 +15,7 @@ bio:
     the authors of Label Sleuth, an open-source no-code system for labeling text and building text
     classifiers.
   source_ids: [ibm-research-profile, mtrag-paper, mtrag-repo, label-sleuth-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM Research
     organization_slug: ibm
@@ -45,9 +45,56 @@ work:
 links:
   - label: IBM Research profile
     url: https://research.ibm.com/people/marina-danilevsky
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Danilevsky's IBM Research profile records a PhD in computer science from the University of Illinois at
+          Urbana-Champaign in 2014, with research in data mining supervised by Jiawei Han. Danilevsky is now a
+          senior research scientist and manager for core language and conversational technologies at IBM
+          Research, working on generative language models, evaluation and human-in-the-loop approaches. The
+          profile also lists patents on topics including cross-lingual information extraction, table recognition
+          in PDF documents, explainable rules learned with deep learning, and relevance modeling and
+          clarification in conversational systems.
+        source_ids: [ibm-research-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          In 2020 Danilevsky was first author of "A Survey of the State of Explainable AI for Natural Language
+          Processing", with co-authors including Ranit Aharonov and Yannis Katsis. Danilevsky also
+          co-authored Label Sleuth (2022), an open-source, no-code system for labeling text and building text
+          classifiers.
+        source_ids: [xai-survey-paper, label-sleuth-paper]
+      - text: >-
+          More recent work centers on evaluating retrieval-augmented generation (RAG). Danilevsky is the last
+          author of MTRAG (2025), a human-generated benchmark of multi-turn RAG conversations published with its
+          data in an Apache-2.0 repository, and co-authored the 2026 follow-ups MTRAG-UN and the SemEval-2026
+          shared task MTRAGEval. Related papers include InspectorRAGet, an introspection platform for RAG
+          evaluation (NAACL 2025), and a CHI 2025 paper on the difficulty of creating conversational datasets for
+          RAG applications.
+        source_ids: [mtrag-paper, mtrag-repo, ibm-research-profile]
+timeline:
+  - date: "2014"
+    text: Completed a PhD in computer science at the University of Illinois at Urbana-Champaign on data mining.
+    source_ids: [ibm-research-profile]
+  - date: "2018-08-06"
+    text: Listed on a granted US patent for a cross-lingual information extraction program.
+    source_ids: [ibm-research-profile]
+  - date: "2020-10"
+    text: Posted "A Survey of the State of Explainable AI for Natural Language Processing" as first author.
+    source_ids: [xai-survey-paper]
+  - date: "2022-08"
+    text: Co-authored Label Sleuth, a no-code system for building text classifiers.
+    source_ids: [label-sleuth-paper]
+  - date: "2025-01"
+    text: Posted MTRAG, a multi-turn conversational benchmark for RAG systems, as last author.
+    source_ids: [mtrag-paper]
+  - date: "2026"
+    text: Co-authored MTRAG-UN and the SemEval-2026 MTRAGEval task, both at ACL 2026.
+    source_ids: [ibm-research-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ibm-research-profile
     title: Marina Danilevsky — IBM Research
@@ -55,25 +102,32 @@ sources:
     publisher: IBM Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mtrag-paper
     title: "MTRAG: A Multi-Turn Conversational Benchmark for Evaluating Retrieval-Augmented Generation Systems (arXiv 2501.03468)"
     url: https://arxiv.org/abs/2501.03468
     publisher: arXiv
     kind: paper
     published_at: 2025-01-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mtrag-repo
     title: IBM/mt-rag-benchmark README and license (Apache-2.0)
     url: https://github.com/IBM/mt-rag-benchmark
     publisher: IBM (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: label-sleuth-paper
     title: "Label Sleuth: From Unlabeled Text to a Classifier in a Few Hours (arXiv 2208.01483)"
     url: https://arxiv.org/abs/2208.01483
     publisher: arXiv
     kind: paper
     published_at: 2022-08-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: xai-survey-paper
+    title: "A Survey of the State of Explainable AI for Natural Language Processing (arXiv 2010.00711)"
+    url: https://arxiv.org/abs/2010.00711
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-10-01
+    accessed_at: 2026-10-21

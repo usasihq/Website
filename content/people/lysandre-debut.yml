@@ -13,7 +13,7 @@ bio:
     smaller distilled version of BERT. Debut is also a co-author of the paper describing the
     community Datasets library for natural language processing.
   source_ids: [github-profile, hf-profile, transformers-paper, distilbert-paper, datasets-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
@@ -50,9 +50,49 @@ links:
     url: https://github.com/LysandreJik
   - label: Hugging Face
     url: https://huggingface.co/lysandre
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Lysandre Debut is the second-listed author of the 2019 paper describing the Hugging Face
+          Transformers library, written with Thomas Wolf, Victor Sanh, Julien Chaumond, Clement Delangue
+          and colleagues. Debut published the release notes for Transformers v4.0.0 on GitHub in November
+          2020.
+        source_ids: [transformers-paper, transformers-v4-release]
+      - text: >-
+          In December 2025 Debut was the first-listed author of the Hugging Face blog post announcing
+          Transformers v5, which describes a modular approach to adding model architectures and refactored
+          modeling and tokenization files. Debut's Hugging Face and GitHub profiles give the title Chief
+          Open-Source Officer at Hugging Face.
+        source_ids: [transformers-v5-blog, hf-profile, github-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          With Victor Sanh, Julien Chaumond and Thomas Wolf, Debut co-authored DistilBERT (2019), which uses
+          knowledge distillation during pre-training to produce a smaller general-purpose language model;
+          the distilbert-base-uncased checkpoint is published under the Apache 2.0 license. Debut is also a
+          co-author of the 2021 paper describing the community Datasets library for natural language
+          processing.
+        source_ids: [distilbert-paper, distilbert-card, datasets-paper]
+timeline:
+  - date: 2019-10-02
+    text: Co-authored the DistilBERT paper on a distilled version of BERT.
+    source_ids: [distilbert-paper]
+  - date: 2019-10-09
+    text: Co-authored the paper describing the Hugging Face Transformers library.
+    source_ids: [transformers-paper]
+  - date: 2020-11-30
+    text: Published the GitHub release of Transformers v4.0.0.
+    source_ids: [transformers-v4-release]
+  - date: 2021-09-07
+    text: "Co-authored \"Datasets: A Community Library for Natural Language Processing\"."
+    source_ids: [datasets-paper]
+  - date: 2025-12-01
+    text: Co-authored the Hugging Face blog post announcing Transformers v5.
+    source_ids: [transformers-v5-blog]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: LysandreJik (Lysandre Debut) on GitHub
@@ -60,39 +100,53 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-profile
     title: lysandre on Hugging Face
     url: https://huggingface.co/lysandre
     publisher: Hugging Face
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: transformers-paper
     title: "Transformers: State-of-the-Art Natural Language Processing (arXiv 1910.03771)"
     url: https://arxiv.org/abs/1910.03771
     publisher: arXiv
     kind: paper
     published_at: 2019-10-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: distilbert-paper
     title: "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter (arXiv 1910.01108)"
     url: https://arxiv.org/abs/1910.01108
     publisher: arXiv
     kind: paper
     published_at: 2019-10-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: distilbert-card
     title: distilbert/distilbert-base-uncased model card (license apache-2.0)
     url: https://huggingface.co/distilbert/distilbert-base-uncased
     publisher: Hugging Face
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: datasets-paper
     title: "Datasets: A Community Library for Natural Language Processing (arXiv 2109.02846)"
     url: https://arxiv.org/abs/2109.02846
     publisher: arXiv
     kind: paper
     published_at: 2021-09-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: transformers-v4-release
+    title: huggingface/transformers release v4.0.0 (GitHub)
+    url: https://github.com/huggingface/transformers/releases/tag/v4.0.0
+    publisher: Hugging Face (GitHub repository)
+    kind: release-notes
+    published_at: 2020-11-30
+    accessed_at: 2026-10-21
+  - id: transformers-v5-blog
+    title: "Transformers v5: Simple model definitions powering the AI ecosystem"
+    url: https://huggingface.co/blog/transformers-v5
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2025-12-01
+    accessed_at: 2026-10-21

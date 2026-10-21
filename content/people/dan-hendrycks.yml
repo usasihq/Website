@@ -10,11 +10,11 @@ bio:
     Dan Hendrycks directs the Center for AI Safety (CAIS); the organization's site lists Hendrycks as
     Executive & Research Director. Hendrycks received a PhD from UC Berkeley advised
     by Dawn Song and Jacob Steinhardt. Hendrycks is first author of the GELU activation function paper
-    and of "Measuring Massive Multitask Language Understanding" (MMLU), and the last-listed author of
+    and of "Measuring Massive Multitask Language Understanding" (MMLU), and a co-author of
     Humanity's Last Exam, a multi-modal benchmark of expert-written questions across dozens of
     subjects.
   source_ids: [hendrycks-site, cais-about, gelu-paper, mmlu-paper, hle-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Center for AI Safety (CAIS)
     organization_slug: center-for-ai-safety
@@ -27,7 +27,7 @@ work:
     type: open-research
     url: https://arxiv.org/abs/2501.14249
     contribution: >-
-      Last-listed author of the paper introducing Humanity's Last Exam, a multi-modal
+      Co-author of the paper introducing Humanity's Last Exam, a multi-modal
       benchmark at the frontier of human knowledge designed as a closed-ended academic benchmark with
       broad subject coverage.
     source_ids: [hle-paper]
@@ -52,9 +52,77 @@ links:
     url: https://people.eecs.berkeley.edu/~hendrycks/
   - label: CAIS
     url: https://safe.ai/about
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hendrycks's early research, much of it with Kevin Gimpel, includes the 2016 paper proposing the GELU
+          activation function and a 2016 baseline for detecting misclassified and out-of-distribution examples
+          in neural networks. With Thomas Dietterich, Hendrycks introduced a 2019 benchmark of neural network
+          robustness to common corruptions and perturbations, one of several distribution-shift benchmarks
+          listed on Hendrycks's homepage.
+        source_ids: [gelu-paper, dh-ood, dh-imagenetc, hendrycks-site]
+      - text: >-
+          Hendrycks later turned to measuring the knowledge of language models. As first author of the 2020
+          MMLU paper, Hendrycks proposed a test of multitask accuracy across 57 tasks, and in 2025 Hendrycks
+          was a co-author of Humanity's Last Exam, a benchmark of expert-written questions assembled with
+          many contributing authors.
+        source_ids: [mmlu-paper, hle-paper]
+  - heading: Center for AI Safety
+    paragraphs:
+      - text: >-
+          Hendrycks directs the Center for AI Safety, which lists Hendrycks as Executive & Research Director. The
+          organization describes running a compute cluster used by outside safety researchers since March 2023,
+          training students in machine learning safety, and publishing research through its programs and
+          affiliates.
+        source_ids: [cais-about, hendrycks-site]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Hendrycks developed the course Introduction to AI Safety, Ethics, and Society and wrote its textbook,
+          published by Taylor & Francis in 2024 and also readable online. The course covers the technical
+          challenges of building safe AI systems, sources of societal-scale risk, safety engineering and
+          approaches to AI governance.
+        source_ids: [dh-book]
+      - text: >-
+          Hendrycks co-organized the ICML Workshop on Robustness and Uncertainty Estimation in Deep Learning in
+          2019, 2020 and 2021, an adversarial machine learning workshop at ICML 2021, and the VISDA domain
+          adaptation competition at NeurIPS 2021.
+        source_ids: [hendrycks-site]
+timeline:
+  - date: "2016-06-27"
+    text: Released the GELU activation function paper with Kevin Gimpel.
+    source_ids: [gelu-paper]
+  - date: "2016-10-07"
+    text: Released a baseline method for detecting misclassified and out-of-distribution examples.
+    source_ids: [dh-ood]
+  - date: "2019-03-28"
+    text: Released a benchmark of neural network robustness to common corruptions and perturbations.
+    source_ids: [dh-imagenetc]
+  - date: "2019"
+    text: Co-organized the ICML 2019 Workshop on Robustness and Uncertainty Estimation in Deep Learning.
+    source_ids: [hendrycks-site]
+  - date: "2020-09-07"
+    text: Released MMLU, a benchmark of multitask language understanding across 57 tasks.
+    source_ids: [mmlu-paper]
+  - date: "2024"
+    text: Published the textbook Introduction to AI Safety, Ethics and Society with Taylor & Francis.
+    source_ids: [dh-book]
+  - date: "2025-01-24"
+    text: Co-authored Humanity's Last Exam, a benchmark of expert-written questions.
+    source_ids: [hle-paper]
+honors:
+  - name: NSF Graduate Research Fellowship
+    year: null
+    awarded_by: National Science Foundation
+    source_ids: [hendrycks-site]
+  - name: Open Philanthropy AI Fellowship
+    year: null
+    awarded_by: Open Philanthropy
+    source_ids: [hendrycks-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: hendrycks-site
     title: Dan Hendrycks — homepage
@@ -62,32 +130,53 @@ sources:
     publisher: Dan Hendrycks
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cais-about
     title: About — Center for AI Safety (leadership)
     url: https://safe.ai/about
     publisher: Center for AI Safety
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hle-paper
     title: Humanity's Last Exam (arXiv 2501.14249)
     url: https://arxiv.org/abs/2501.14249
     publisher: arXiv
     kind: paper
     published_at: 2025-01-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mmlu-paper
     title: Measuring Massive Multitask Language Understanding (arXiv 2009.03300)
     url: https://arxiv.org/abs/2009.03300
     publisher: arXiv
     kind: paper
     published_at: 2020-09-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gelu-paper
     title: Gaussian Error Linear Units (GELUs) (arXiv 1606.08415)
     url: https://arxiv.org/abs/1606.08415
     publisher: arXiv
     kind: paper
     published_at: 2016-06-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: dh-ood
+    title: A Baseline for Detecting Misclassified and Out-of-Distribution Examples in Neural Networks
+    url: https://arxiv.org/abs/1610.02136
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-10-07
+    accessed_at: 2026-10-21
+  - id: dh-imagenetc
+    title: Benchmarking Neural Network Robustness to Common Corruptions and Perturbations
+    url: https://arxiv.org/abs/1903.12261
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-03-28
+    accessed_at: 2026-10-21
+  - id: dh-book
+    title: Introduction to AI Safety, Ethics, and Society
+    url: https://www.aisafetybook.com/
+    publisher: Center for AI Safety
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

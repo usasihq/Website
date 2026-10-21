@@ -13,7 +13,7 @@ bio:
     buying; Waveform is part of the Vox Media Podcast Network. The official MKBHD website links the channel,
     the podcast, and the studio's other work.
   source_ids: [channel, waveform, site]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: MKBHD
     organization_slug: null
@@ -49,9 +49,42 @@ links:
     url: https://www.youtube.com/@Waveform
   - label: Website
     url: https://mkbhd.com/
+sections:
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Brownlee's main YouTube channel, MKBHD, dates from March 2008 and describes itself as making quality tech
+          videos about consumer electronics. Its reviews range from new smartphones to cameras and electric cars,
+          the subjects the Waveform channel cites when introducing Brownlee.
+        source_ids: [channel, waveform]
+      - text: >-
+          The MKBHD studio also runs companion channels. The Studio, started in April 2021, carries
+          behind-the-scenes videos, event reactions and challenges from the MKBHD team, and Auto Focus, started in
+          August 2022, publishes car videos from Brownlee and Miles Somerville.
+        source_ids: [studio-channel, autofocus-channel]
+  - heading: Waveform
+    paragraphs:
+      - text: >-
+          Waveform is a tech podcast that Brownlee co-hosts with Andrew Manganelli and David Imel, and its YouTube
+          channel dates from March 2019. Each episode looks at recent technology and which products are worth
+          buying, and the official MKBHD website links to it alongside Brownlee's other channels.
+        source_ids: [waveform, site]
+timeline:
+  - date: "2008-03-21"
+    text: Started the MKBHD YouTube channel for consumer tech videos.
+    source_ids: [channel]
+  - date: "2019-03-05"
+    text: Launched the YouTube channel for the Waveform tech podcast.
+    source_ids: [waveform]
+  - date: "2021-04-23"
+    text: Started The Studio channel for behind-the-scenes MKBHD studio videos.
+    source_ids: [studio-channel]
+  - date: "2022-08-21"
+    text: Started the Auto Focus channel for car videos from Brownlee and Miles Somerville.
+    source_ids: [autofocus-channel]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: channel
     title: Marques Brownlee - YouTube
@@ -59,18 +92,32 @@ sources:
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: waveform
-    title: WVFRM Podcast - YouTube
-    url: https://www.youtube.com/@Waveform
+    title: WVFRM Podcast - YouTube (About)
+    url: https://www.youtube.com/@Waveform/about
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: site
     title: MKBHD official website
     url: https://mkbhd.com/
     publisher: MKBHD
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: studio-channel
+    title: The Studio - YouTube (About)
+    url: https://www.youtube.com/channel/UCG7J20LhUeLl6y_Emi7OJrA/about
+    publisher: YouTube
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: autofocus-channel
+    title: Auto Focus - YouTube (About)
+    url: https://www.youtube.com/autofocus/about
+    publisher: YouTube
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

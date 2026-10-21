@@ -26,6 +26,16 @@ affiliations:
     role: Founding member and advisor
     current: true
     source_ids: [gonzalez-bio, lmsys-about]
+  - name: Turi (formerly GraphLab)
+    organization_slug: null
+    role: Co-founder
+    current: false
+    source_ids: [gonzalez-bio]
+  - name: UC Berkeley AMPLab
+    organization_slug: null
+    role: Postdoctoral researcher who led GraphX
+    current: false
+    source_ids: [gonzalez-bio, gonzalez-research]
 work:
   - name: Gorilla and the Berkeley Function Calling Leaderboard (BFCL)
     artifact_slug: berkeley-function-calling-leaderboard
@@ -49,9 +59,89 @@ work:
 links:
   - label: Website
     url: https://people.eecs.berkeley.edu/~jegonzal/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Joseph E. Gonzalez, also known as Joey Gonzalez, has been on the UC Berkeley EECS faculty since
+          2016 and is a member of Berkeley AI Research (BAIR). As a PhD student in machine learning at
+          Carnegie Mellon, advised by Carlos Guestrin, Gonzalez developed GraphLab and PowerGraph for
+          large-scale graph computation, and co-founded Turi (formerly GraphLab), which Apple acquired in
+          2016.
+        source_ids: [gonzalez-bio, gonzalez-research]
+      - text: >-
+          As a postdoc in Berkeley's AMPLab, Gonzalez led GraphX, which became the graph library of
+          Apache Spark. Gonzalez is a founding member of Berkeley's RISELab, the Sky Computing Lab and
+          LMSYS, and is listed among LMSYS's advisors.
+        source_ids: [gonzalez-bio, gonzalez-research, lmsys-about]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Gonzalez's group studies how new systems abstractions can enable new forms of machine learning.
+          After graph computation, the group turned in 2015 to serving and tuning models, with Velox,
+          Clipper for low-latency prediction serving, InferLine for serving model pipelines and Ray Tune
+          for hyperparameter tuning; Simon Mo developed Ray Serve from Clipper.
+        source_ids: [gonzalez-research, gonzalez-bio]
+      - text: >-
+          From 2021 the group worked on infrastructure for large language models, including Alpa and
+          AlpaServe, the vLLM paper on PagedAttention memory management for LLM serving, SGLang, Chatbot
+          Arena and the Gorilla project on connecting LLMs to APIs. Since 2023 the group's research has
+          covered AI agents, post-training and continual learning, and new neural architectures, with
+          projects such as MemGPT and SkyRL.
+        source_ids: [gonzalez-research, vllm-paper, gorilla-paper, bfcl-page]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Several systems from Gonzalez's group are released as open-source software. The Gorilla
+          repository, which hosts the Berkeley Function Calling Leaderboard, is under the Apache-2.0
+          license, as is the vLLM repository. Gonzalez's biography credits former students and
+          collaborators with leading these systems, among them Shishir Patil and Tianjun Zhang for
+          Gorilla and Lianmin Zheng and Ying Sheng for SGLang.
+        source_ids: [gorilla-repo, vllm-repo, bfcl-page, gonzalez-bio]
+timeline:
+  - date: "2010"
+    text: Published the first GraphLab paper, at UAI 2010, as part of doctoral work at Carnegie Mellon.
+    source_ids: [gonzalez-research]
+  - date: "2012"
+    text: Published Distributed GraphLab at VLDB 2012 and PowerGraph at OSDI 2012.
+    source_ids: [gonzalez-research]
+  - date: "2014"
+    text: Published GraphX, graph processing inside a distributed dataflow framework, at OSDI 2014.
+    source_ids: [gonzalez-research]
+  - date: "2016"
+    text: Joined the UC Berkeley EECS faculty; Turi, which Gonzalez co-founded, was acquired by Apple the same year.
+    source_ids: [gonzalez-bio, gonzalez-research]
+  - date: "2017"
+    text: Published Clipper, a general-purpose, low-latency prediction serving system, at NSDI 2017.
+    source_ids: [gonzalez-research]
+  - date: 2023-05-24
+    text: Co-authored the Gorilla paper on large language models connected with massive APIs.
+    source_ids: [gorilla-paper]
+  - date: 2023-09-12
+    text: Co-authored the vLLM paper on PagedAttention memory management for LLM serving.
+    source_ids: [vllm-paper]
+  - date: "2023"
+    text: Received the VLDB 2023 Test of Time Award for Distributed GraphLab.
+    source_ids: [gonzalez-research]
+  - date: "2024"
+    text: Co-authored the Chatbot Arena paper at ICML 2024.
+    source_ids: [gonzalez-research]
+honors:
+  - name: VLDB Test of Time Award (Distributed GraphLab)
+    year: 2023
+    awarded_by: International Conference on Very Large Data Bases (VLDB)
+    source_ids: [gonzalez-research, gonzalez-bio]
+  - name: ACM SIGMOD Systems Award (shared, for Apache Spark)
+    year: null
+    awarded_by: ACM SIGMOD
+    source_ids: [gonzalez-bio]
+  - name: NSF CAREER Award
+    year: null
+    awarded_by: National Science Foundation
+    source_ids: [gonzalez-bio]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gonzalez-site
     title: Joseph E. Gonzalez (Joey) — Gonzalez Group at UC Berkeley
@@ -59,60 +149,60 @@ sources:
     publisher: Gonzalez Group (UC Berkeley EECS)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gonzalez-bio
     title: Biography · Joseph E. Gonzalez, UC Berkeley
     url: https://people.eecs.berkeley.edu/~jegonzal/bio/
     publisher: Gonzalez Group (UC Berkeley EECS)
     kind: official-page
     published_at: 2026-10-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gonzalez-research
     title: Research Through the Years — Gonzalez Group
     url: https://people.eecs.berkeley.edu/~jegonzal/research/
     publisher: Gonzalez Group (UC Berkeley EECS)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lmsys-about
     title: About LMSYS (officers and advisors)
     url: https://lmsys.org/about/
     publisher: LMSYS
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gorilla-paper
     title: "Gorilla: Large Language Model Connected with Massive APIs (arXiv 2305.15334)"
     url: https://arxiv.org/abs/2305.15334
     publisher: arXiv
     kind: paper
     published_at: 2023-05-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: bfcl-page
     title: Berkeley Function Calling Leaderboard (BFCL) V4
     url: https://gorilla.cs.berkeley.edu/leaderboard.html
     publisher: Gorilla project (UC Berkeley)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gorilla-repo
     title: ShishirPatil/gorilla repository (Apache-2.0 license)
     url: https://github.com/ShishirPatil/gorilla
     publisher: Gorilla (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vllm-paper
     title: "Efficient Memory Management for Large Language Model Serving with PagedAttention (arXiv 2309.06180)"
     url: https://arxiv.org/abs/2309.06180
     publisher: arXiv
     kind: paper
     published_at: 2023-09-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vllm-repo
     title: vllm-project/vllm repository (Apache-2.0 license)
     url: https://github.com/vllm-project/vllm
     publisher: vLLM (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

@@ -15,7 +15,7 @@ bio:
     and the JAX documentation lists Frostig as an author of design proposals including typed PRNG
     keys and the jax.extend module.
   source_ids: [homepage, jax-sysml, jax-readme, jep-typed-keys, jep-jex]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
@@ -38,9 +38,56 @@ links:
     url: https://cs.stanford.edu/~rfrostig/
   - label: GitHub
     url: https://github.com/froystig
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Frostig completed a PhD at Stanford, advised by Percy Liang, as part of the statistical machine
+          learning group. Frostig's early papers concerned optimization and learning theory, including
+          stochastic algorithms for empirical risk minimization (2015), principal component projection without
+          principal component analysis (2016), and the expressivity of neural networks at initialization.
+        source_ids: [homepage, unregularizing-paper]
+      - text: >-
+          Frostig later co-authored a study measuring the effects of data parallelism on neural network
+          training (2018) and work on test-set reuse. Later papers turned to the theory of automatic
+          differentiation, such as "Decomposing reverse-mode automatic differentiation" (2021) and "You Only
+          Linearize Once" (2022), which shows how tangents transpose to gradients, as well as modular implicit
+          differentiation. Frostig is also listed with the Gemini Team on the Gemini 1.5 and Gemini 2.5 reports.
+        source_ids: [homepage, data-parallelism-paper, decomposing-ad-paper, yolo-paper, implicit-diff-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Frostig created JAX with a few colleagues in 2017 and continues to work on it as a core developer.
+          With Matthew Johnson and Chris Leary, Frostig described an early version of the system in "Compiling
+          machine learning programs via high-level tracing" at SysML 2018. JAX's documentation credits Frostig
+          as an author of design proposals for typed PRNG keys and for the jax.extend module, and Frostig's
+          homepage notes small contributions to the Rust programming language in its early stages.
+        source_ids: [homepage, jax-sysml, jep-typed-keys, jep-jex, jax-readme]
+timeline:
+  - date: "2015-06"
+    text: Posted "Un-regularizing", on faster stochastic algorithms for empirical risk minimization, as first author.
+    source_ids: [unregularizing-paper]
+  - date: "2017"
+    text: Created JAX with a few colleagues.
+    source_ids: [homepage]
+  - date: "2018"
+    text: Presented "Compiling machine learning programs via high-level tracing" at SysML 2018, describing early JAX.
+    source_ids: [jax-sysml, homepage]
+  - date: "2018-11"
+    text: Co-authored "Measuring the Effects of Data Parallelism on Neural Network Training".
+    source_ids: [data-parallelism-paper]
+  - date: "2021-05"
+    text: Posted "Decomposing reverse-mode automatic differentiation" as first author.
+    source_ids: [decomposing-ad-paper]
+  - date: "2021-05"
+    text: Co-authored "Efficient and Modular Implicit Differentiation".
+    source_ids: [implicit-diff-paper]
+  - date: "2022-04"
+    text: Co-authored "You Only Linearize Once, Tangents Transpose to Gradients", later presented at POPL 2023.
+    source_ids: [yolo-paper, homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Roy Frostig — homepage
@@ -48,46 +95,81 @@ sources:
     publisher: Roy Frostig
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: froystig (Roy Frostig) on GitHub
     url: https://github.com/froystig
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-sysml
     title: Compiling machine learning programs via high-level tracing (SysML 2018)
     url: https://mlsys.org/Conferences/2019/doc/2018/146.pdf
     publisher: MLSys
     kind: paper
     published_at: "2018"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-readme
     title: jax-ml/jax README ("Citing JAX" author list)
     url: https://github.com/jax-ml/jax
     publisher: jax-ml (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-license
     title: jax-ml/jax LICENSE (Apache License 2.0)
     url: https://github.com/jax-ml/jax/blob/main/LICENSE
     publisher: jax-ml (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jep-typed-keys
     title: "JEP 9263: Typed keys & pluggable RNGs"
     url: https://docs.jax.dev/en/latest/jep/9263-typed-keys.html
     publisher: JAX documentation
     kind: documentation
     published_at: 2023-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jep-jex
     title: "jax.extend: a module for extensions (JAX design proposal)"
     url: https://docs.jax.dev/en/latest/jep/15856-jex.html
     publisher: JAX documentation
     kind: documentation
     published_at: 2023-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: unregularizing-paper
+    title: "Un-regularizing: approximate proximal point and faster stochastic algorithms for empirical risk minimization (arXiv 1506.07512)"
+    url: https://arxiv.org/abs/1506.07512
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-06-24
+    accessed_at: 2026-10-21
+  - id: data-parallelism-paper
+    title: Measuring the Effects of Data Parallelism on Neural Network Training (arXiv 1811.03600)
+    url: https://arxiv.org/abs/1811.03600
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-11-08
+    accessed_at: 2026-10-21
+  - id: decomposing-ad-paper
+    title: Decomposing reverse-mode automatic differentiation (arXiv 2105.09469)
+    url: https://arxiv.org/abs/2105.09469
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-05-20
+    accessed_at: 2026-10-21
+  - id: implicit-diff-paper
+    title: Efficient and Modular Implicit Differentiation (arXiv 2105.15183)
+    url: https://arxiv.org/abs/2105.15183
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-05-31
+    accessed_at: 2026-10-21
+  - id: yolo-paper
+    title: "You Only Linearize Once: Tangents Transpose to Gradients (arXiv 2204.10923)"
+    url: https://arxiv.org/abs/2204.10923
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-22
+    accessed_at: 2026-10-21

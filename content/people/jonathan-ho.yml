@@ -14,7 +14,7 @@ bio:
     presented by Google Research's Brain Team, and a co-author of Imagen and of "Variational Diffusion
     Models" with Diederik P. Kingma, Tim Salimans, and Ben Poole.
   source_ids: [ddpm-project, ddpm-paper, ddpm-neurips, cfg-paper, imagen-video, imagen-paper, vdm-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google Research, Brain Team
     organization_slug: google
@@ -58,9 +58,59 @@ links:
     url: https://hojonathanho.github.io/diffusion/
   - label: GitHub
     url: https://github.com/hojonathanho
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Ho's early generative modeling papers were written with Pieter Abbeel, with DDPM listing its authors at UC Berkeley. Flow++ (2019)
+          improved flow-based generative models with variational dequantization and new architecture choices,
+          and "Denoising Diffusion Probabilistic Models" (2020), with Ajay Jain and Abbeel, showed
+          high-quality image synthesis with diffusion models and drew connections to denoising score matching
+          and Langevin dynamics.
+        source_ids: [flowpp-paper, ddpm-paper, ddpm-project]
+      - text: >-
+          Ho's later papers, several written with Tim Salimans, extended diffusion models
+          to higher resolutions and new modalities. Cascaded Diffusion Models (2021) chained diffusion models
+          to generate high-fidelity images, "Video Diffusion Models" (2022) applied the approach to video, and
+          "Classifier-Free Diffusion Guidance" (2022) showed that conditional and unconditional diffusion models
+          can be combined to steer generation without a separate classifier.
+        source_ids: [cascaded-paper, video-diffusion-paper, cfg-paper]
+  - heading: Text-to-image and video systems
+    paragraphs:
+      - text: >-
+          Ho co-authored Imagen (2022), a text-to-image diffusion model that uses a large pretrained language
+          model to encode text for image synthesis, and is listed first among the equal-contribution authors of Imagen
+          Video, which Google Research's Brain Team presented as a cascade of video diffusion models for
+          text-conditional video generation.
+        source_ids: [imagen-paper, imagen-video]
+timeline:
+  - date: "2019-02"
+    text: Posted Flow++, on improving flow-based generative models, as first author.
+    source_ids: [flowpp-paper]
+  - date: "2020-06"
+    text: Posted "Denoising Diffusion Probabilistic Models" with Ajay Jain and Pieter Abbeel.
+    source_ids: [ddpm-paper, ddpm-project]
+  - date: "2020"
+    text: Published DDPM in the NeurIPS 2020 proceedings.
+    source_ids: [ddpm-neurips]
+  - date: "2021-05"
+    text: Posted "Cascaded Diffusion Models for High Fidelity Image Generation" as first author.
+    source_ids: [cascaded-paper]
+  - date: "2021-07"
+    text: Co-authored "Variational Diffusion Models" with Diederik P. Kingma, Tim Salimans and Ben Poole.
+    source_ids: [vdm-paper]
+  - date: "2022-04"
+    text: Posted "Video Diffusion Models" as first author.
+    source_ids: [video-diffusion-paper]
+  - date: "2022-05"
+    text: Co-authored the Imagen text-to-image diffusion paper.
+    source_ids: [imagen-paper]
+  - date: "2022-07"
+    text: Posted "Classifier-Free Diffusion Guidance" with Tim Salimans.
+    source_ids: [cfg-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ddpm-project
     title: Denoising Diffusion Probabilistic Models — project page
@@ -68,35 +118,35 @@ sources:
     publisher: Jonathan Ho
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ddpm-paper
     title: "Denoising Diffusion Probabilistic Models (arXiv 2006.11239)"
     url: https://arxiv.org/abs/2006.11239
     publisher: arXiv
     kind: paper
     published_at: 2020-06-19
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cfg-paper
     title: "Classifier-Free Diffusion Guidance (arXiv 2207.12598)"
     url: https://arxiv.org/abs/2207.12598
     publisher: arXiv
     kind: paper
     published_at: 2022-07-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: imagen-video
     title: Imagen Video — Google Research, Brain Team
     url: https://imagen.research.google/video/
     publisher: Google Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: imagen-paper
     title: "Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding (arXiv 2205.11487)"
     url: https://arxiv.org/abs/2205.11487
     publisher: arXiv
     kind: paper
     published_at: 2022-05-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vdm-paper
     title: "Variational Diffusion Models (arXiv 2107.00630)"
     url: https://arxiv.org/abs/2107.00630
@@ -118,3 +168,24 @@ sources:
     kind: paper
     published_at: 2022-07-26
     accessed_at: 2026-10-13
+  - id: flowpp-paper
+    title: "Flow++: Improving Flow-Based Generative Models with Variational Dequantization and Architecture Design (arXiv 1902.00275)"
+    url: https://arxiv.org/abs/1902.00275
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-02-01
+    accessed_at: 2026-10-21
+  - id: cascaded-paper
+    title: "Cascaded Diffusion Models for High Fidelity Image Generation (arXiv 2106.15282)"
+    url: https://arxiv.org/abs/2106.15282
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-05-30
+    accessed_at: 2026-10-21
+  - id: video-diffusion-paper
+    title: "Video Diffusion Models (arXiv 2204.03458)"
+    url: https://arxiv.org/abs/2204.03458
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-07
+    accessed_at: 2026-10-21

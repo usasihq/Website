@@ -69,9 +69,61 @@ links:
     url: https://github.com/VictorSanh
   - label: Hugging Face
     url: https://huggingface.co/VictorSanh
+sections:
+  - heading: Research at Hugging Face
+    paragraphs:
+      - text: >-
+          Victor Sanh's work at Hugging Face includes efficient language models and open-source tooling.
+          Sanh was first author of DistilBERT (2019), a distilled version of BERT that is smaller and
+          faster, and a co-author of the 2019 paper describing Hugging Face's open-source Transformers
+          library. With Thomas Wolf and Alexander M. Rush, Sanh also wrote "Movement Pruning" (2020),
+          on adaptive sparsity during fine-tuning.
+        source_ids: [distilbert-paper, distilbert-card, transformers-paper, movement-pruning-paper]
+      - text: >-
+          Sanh was first author of "Multitask Prompted Training Enables Zero-Shot Task Generalization"
+          (2021), the BigScience paper that introduced the T0 family of models trained on many tasks
+          phrased as natural-language prompts. The T0pp model card on Hugging Face documents one of the
+          released checkpoints.
+        source_ids: [t0-paper, t0pp-card]
+  - heading: Vision-language models
+    paragraphs:
+      - text: >-
+          Sanh later worked on open multimodal models released under Hugging Face's HuggingFaceM4
+          organization. Sanh was a senior
+          contributor to OBELICS (2023), an open web-scale dataset of interleaved image-text documents,
+          and co-authored "What matters when building vision-language models?" (2024), the paper that
+          released Idefics2, an 8-billion-parameter vision-language model.
+        source_ids: [obelics-paper, obelics-dataset, idefics2-paper, idefics2-card]
+      - text: >-
+          In August 2024 Sanh co-authored a further paper with Hugo Laurençon, Andrés Marafioti and Léo
+          Tronchon on insights and future directions in building vision-language models. Sanh's GitHub
+          profile now describes Sanh as an AI builder previously at Hugging Face.
+        source_ids: [vlm-insights-paper, github-profile]
+timeline:
+  - date: "2019-10-02"
+    text: First author of DistilBERT, a smaller, faster distilled version of BERT.
+    source_ids: [distilbert-paper]
+  - date: "2019-10-09"
+    text: Co-authored the paper describing Hugging Face's Transformers library.
+    source_ids: [transformers-paper]
+  - date: "2020-05-15"
+    text: "First author of \"Movement Pruning: Adaptive Sparsity by Fine-Tuning\"."
+    source_ids: [movement-pruning-paper]
+  - date: "2021-10-15"
+    text: First author of the multitask prompted training paper that introduced the T0 models.
+    source_ids: [t0-paper]
+  - date: "2023-06-21"
+    text: Senior contributor to OBELICS, an open dataset of interleaved image-text web documents.
+    source_ids: [obelics-paper]
+  - date: "2024-05-03"
+    text: Co-authored the paper releasing Idefics2, "What matters when building vision-language models?".
+    source_ids: [idefics2-paper]
+  - date: "2024-08-22"
+    text: Co-authored a paper on insights and future directions for building vision-language models.
+    source_ids: [vlm-insights-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: VictorSanh (Victor Sanh) on GitHub
@@ -79,67 +131,81 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: distilbert-paper
     title: "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter (arXiv 1910.01108)"
     url: https://arxiv.org/abs/1910.01108
     publisher: arXiv
     kind: paper
     published_at: 2019-10-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: distilbert-card
     title: distilbert/distilbert-base-uncased model card (license apache-2.0)
     url: https://huggingface.co/distilbert/distilbert-base-uncased
     publisher: Hugging Face
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: transformers-paper
     title: "Transformers: State-of-the-Art Natural Language Processing (arXiv 1910.03771)"
     url: https://arxiv.org/abs/1910.03771
     publisher: arXiv
     kind: paper
     published_at: 2019-10-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t0-paper
     title: Multitask Prompted Training Enables Zero-Shot Task Generalization (arXiv 2110.08207)
     url: https://arxiv.org/abs/2110.08207
     publisher: arXiv
     kind: paper
     published_at: 2021-10-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t0pp-card
     title: bigscience/T0pp model card (license apache-2.0)
     url: https://huggingface.co/bigscience/T0pp
     publisher: BigScience (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: obelics-paper
     title: "OBELICS: An Open Web-Scale Filtered Dataset of Interleaved Image-Text Documents (arXiv 2306.16527)"
     url: https://arxiv.org/abs/2306.16527
     publisher: arXiv
     kind: paper
     published_at: 2023-06-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: obelics-dataset
     title: HuggingFaceM4/OBELICS dataset card (license cc-by-4.0)
     url: https://huggingface.co/datasets/HuggingFaceM4/OBELICS
     publisher: HuggingFaceM4 (Hugging Face)
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: idefics2-paper
     title: What matters when building vision-language models? (arXiv 2405.02246)
     url: https://arxiv.org/abs/2405.02246
     publisher: arXiv
     kind: paper
     published_at: 2024-05-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: idefics2-card
     title: HuggingFaceM4/idefics2-8b model card (license apache-2.0)
     url: https://huggingface.co/HuggingFaceM4/idefics2-8b
     publisher: HuggingFaceM4 (Hugging Face)
     kind: model-card
     published_at: 2024-04-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: movement-pruning-paper
+    title: "Movement Pruning: Adaptive Sparsity by Fine-Tuning (arXiv 2005.07683)"
+    url: https://arxiv.org/abs/2005.07683
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-15
+    accessed_at: 2026-10-21
+  - id: vlm-insights-paper
+    title: "Building and better understanding vision-language models: insights and future directions (arXiv 2408.12637)"
+    url: https://arxiv.org/abs/2408.12637
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-08-22
+    accessed_at: 2026-10-21

@@ -45,10 +45,64 @@ work:
     contribution: >-
       Listed under executive leadership in the authorship section of the OpenAI o1 System Card (2024).
     source_ids: [o1-card]
+  - name: Emergent Tool Use From Multi-Agent Autocurricula
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1909.07528
+    contribution: >-
+      Co-author of the 2019 hide-and-seek study, in which agents trained with multi-agent
+      reinforcement learning develop a sequence of strategies, including tool use, without explicit
+      incentives for them.
+    source_ids: [hide-seek-paper]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Bob McGrew's papers cited here run from 2017 to 2024, beginning with robotics and
+          reinforcement learning research. The OpenAI o1 System Card, released in December 2024,
+          lists McGrew under executive leadership.
+        source_ids: [her-paper, o1-card]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          McGrew co-authored several robotics and reinforcement learning papers, starting with Hindsight Experience Replay
+          (2017), a method for learning from sparse rewards. Later work trained a five-fingered robot
+          hand in simulation for in-hand object manipulation (2018) and then for solving a Rubik's
+          Cube (2019), where the paper credits McGrew with leading aspects of the project and setting
+          research directions.
+        source_ids: [her-paper, dexterous-paper, rubiks-paper]
+      - text: >-
+          McGrew also co-authored a 2019 hide-and-seek study on emergent tool use among
+          competing agents. In language models, McGrew is a co-author of the 2021 Codex paper that
+          introduced the HumanEval benchmark and is listed among the authors of the GPT-4 Technical
+          Report (2023).
+        source_ids: [hide-seek-paper, codex-paper, gpt4-report]
+timeline:
+  - date: 2017-07-05
+    text: Co-authored Hindsight Experience Replay, a reinforcement learning paper.
+    source_ids: [her-paper]
+  - date: 2018-08-01
+    text: Co-authored Learning Dexterous In-Hand Manipulation with an OpenAI robot hand.
+    source_ids: [dexterous-paper]
+  - date: 2019-09-17
+    text: Co-authored the hide-and-seek paper on emergent tool use.
+    source_ids: [hide-seek-paper]
+  - date: 2019-10-16
+    text: Co-authored Solving Rubik's Cube with a Robot Hand as an equal-contribution author.
+    source_ids: [rubiks-paper]
+  - date: 2021-07-07
+    text: Co-authored the Codex paper that introduced the HumanEval benchmark.
+    source_ids: [codex-paper]
+  - date: 2023-03-15
+    text: Listed among the authors of the GPT-4 Technical Report.
+    source_ids: [gpt4-report]
+  - date: 2024-12-21
+    text: Listed under executive leadership in the OpenAI o1 System Card.
+    source_ids: [o1-card]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: o1-card
     title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
@@ -56,25 +110,53 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2024-12-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rubiks-paper
     title: Solving Rubik's Cube with a Robot Hand (arXiv 1910.07113)
     url: https://arxiv.org/abs/1910.07113
     publisher: arXiv
     kind: paper
     published_at: 2019-10-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codex-paper
     title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
     url: https://arxiv.org/abs/2107.03374
     publisher: arXiv
     kind: paper
     published_at: 2021-07-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: humaneval-repo
     title: openai/human-eval repository (README citation; MIT License)
     url: https://github.com/openai/human-eval
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: her-paper
+    title: Hindsight Experience Replay (arXiv 1707.01495)
+    url: https://arxiv.org/abs/1707.01495
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-07-05
+    accessed_at: 2026-10-21
+  - id: dexterous-paper
+    title: Learning Dexterous In-Hand Manipulation (arXiv 1808.00177)
+    url: https://arxiv.org/abs/1808.00177
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-08-01
+    accessed_at: 2026-10-21
+  - id: hide-seek-paper
+    title: Emergent Tool Use From Multi-Agent Autocurricula (arXiv 1909.07528)
+    url: https://arxiv.org/abs/1909.07528
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-09-17
+    accessed_at: 2026-10-21
+  - id: gpt4-report
+    title: GPT-4 Technical Report (arXiv 2303.08774)
+    url: https://arxiv.org/abs/2303.08774
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-15
+    accessed_at: 2026-10-21

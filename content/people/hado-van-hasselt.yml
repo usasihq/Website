@@ -33,9 +33,68 @@ work:
 links:
   - label: Website
     url: https://hadovanhasselt.com/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hado van Hasselt's research focuses on reinforcement learning, including how agents estimate
+          values and learn predictions efficiently. Before joining DeepMind, van Hasselt worked with
+          Rich Sutton at the University of Alberta; together they wrote about learning predictions
+          whose computational cost does not grow with their time span, and van Hasselt co-authored with
+          A. Rupam Mahmood and Sutton a NIPS 2014 paper on weighted importance sampling for off-policy
+          learning with linear function approximation.
+        source_ids: [about, homepage]
+      - text: >-
+          In "Deep Reinforcement Learning with Double Q-learning" (2015), van Hasselt, Arthur Guez and
+          David Silver showed that Q-learning combined with deep networks learns overoptimistic action
+          values even in deterministic Atari games, and proposed the Double DQN variant to reduce this.
+          Van Hasselt's 2016 paper "Learning values across many orders of magnitude" introduced
+          adaptive normalization of learning targets, so agents need not clip rewards.
+        source_ids: [ddqn-paper, popart-paper, homepage]
+      - text: >-
+          Van Hasselt also co-authored "Dueling Network Architectures for Deep Reinforcement Learning",
+          which separates the value of a state from the advantage of each action and received the best
+          paper award at ICML 2016, and Rainbow (2017), which combined several improvements to DQN in
+          one agent. A 2018 paper led by van Hasselt studied the "deadly triad" of function
+          approximation, bootstrapping and off-policy learning in deep reinforcement learning.
+        source_ids: [dueling-paper, rainbow-paper, deadly-triad-paper, homepage]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          In 2016 van Hasselt and Joseph Modayil taught the reinforcement learning part of the Advanced
+          Topics in Machine Learning course at University College London, including two lectures about
+          AlphaGo.
+        source_ids: [homepage]
+timeline:
+  - date: "2014"
+    text: Co-authored a NIPS 2014 paper on weighted importance sampling for off-policy learning with Mahmood and Sutton.
+    source_ids: [homepage]
+  - date: "2015-09-22"
+    text: First author of "Deep Reinforcement Learning with Double Q-learning", introducing Double DQN.
+    source_ids: [ddqn-paper]
+  - date: "2015-11-20"
+    text: Co-authored "Dueling Network Architectures for Deep Reinforcement Learning".
+    source_ids: [dueling-paper]
+  - date: "2016"
+    text: Taught the reinforcement learning part of UCL's Advanced Topics in Machine Learning course with Joseph Modayil.
+    source_ids: [homepage]
+  - date: "2016-02-24"
+    text: First author of "Learning values across many orders of magnitude", on adaptive target normalization.
+    source_ids: [popart-paper]
+  - date: "2017-10-06"
+    text: Co-authored Rainbow, which combines several improvements to deep Q-learning.
+    source_ids: [rainbow-paper]
+  - date: "2018-12-06"
+    text: First author of "Deep Reinforcement Learning and the Deadly Triad".
+    source_ids: [deadly-triad-paper]
+honors:
+  - name: ICML Best Paper Award (Dueling Network Architectures for Deep Reinforcement Learning)
+    year: 2016
+    awarded_by: International Conference on Machine Learning
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: about
     title: About me — Hado van Hasselt
@@ -43,18 +102,46 @@ sources:
     publisher: Hado van Hasselt
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: homepage
     title: Hado van Hasselt — Researching AI (homepage posts, including UCL course 2016)
     url: https://hadovanhasselt.com/
     publisher: Hado van Hasselt
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ddqn-paper
     title: "Deep Reinforcement Learning with Double Q-learning (arXiv 1509.06461)"
     url: https://arxiv.org/abs/1509.06461
     publisher: arXiv
     kind: paper
     published_at: 2015-09-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: dueling-paper
+    title: Dueling Network Architectures for Deep Reinforcement Learning (arXiv 1511.06581)
+    url: https://arxiv.org/abs/1511.06581
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-11-20
+    accessed_at: 2026-10-21
+  - id: popart-paper
+    title: Learning values across many orders of magnitude (arXiv 1602.07714)
+    url: https://arxiv.org/abs/1602.07714
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-02-24
+    accessed_at: 2026-10-21
+  - id: rainbow-paper
+    title: "Rainbow: Combining Improvements in Deep Reinforcement Learning (arXiv 1710.02298)"
+    url: https://arxiv.org/abs/1710.02298
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-10-06
+    accessed_at: 2026-10-21
+  - id: deadly-triad-paper
+    title: Deep Reinforcement Learning and the Deadly Triad (arXiv 1812.02648)
+    url: https://arxiv.org/abs/1812.02648
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-12-06
+    accessed_at: 2026-10-21

@@ -13,7 +13,7 @@ bio:
     Bilawal previously spent six years as a senior product manager at Google, working on AR, 3D Maps,
     Immersive View, and YouTube VR.
   source_ids: [site, youtube, substack]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: TED
     organization_slug: null
@@ -53,9 +53,51 @@ links:
     url: https://www.youtube.com/@bilawalsidhu
   - label: Newsletter
     url: https://spatialintelligence.ai/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Bilawal Sidhu describes a path from visual effects through software engineering and product design to
+          product management, followed by full-time work as a creator. Sidhu spent six years as a senior product
+          manager at Google, working on 3D Maps, Immersive View, ARCore and YouTube VR.
+        source_ids: [youtube, site]
+      - text: >-
+          In May 2022 Sidhu, then a Senior Product Manager for Google Maps, co-wrote the Google Developers Blog
+          post launching the ARCore Geospatial API, which gave AR developers access to the global localization
+          technology behind Live View in Google Maps.
+        source_ids: [arcore-geospatial]
+  - heading: TED
+    paragraphs:
+      - text: >-
+          Sidhu gave the TED2023 talk "The AI-powered tools supercharging your imagination", a tour of AI
+          techniques such as 3D scans for reshaping captured scenes. Sidhu later became the inaugural host of The
+          TED AI Show podcast, in which Sidhu talks with experts, artists and journalists about the future of AI,
+          and now serves as technology curator and host for the TED conference.
+        source_ids: [ted-talk, ted-ai-show, site]
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Sidhu's YouTube channel publishes weekly deep dives on AI, AR/VR, robotics and technologies that blur
+          physical and digital worlds, while a second channel and TikTok focus on blending reality and
+          imagination with VFX and AI. The Substack newsletter Map the World describes itself as a guide to
+          AI, AR/VR, robotics and the technologies blurring the physical and digital worlds.
+        source_ids: [youtube, site, substack]
+timeline:
+  - date: "2022-05-11"
+    text: Co-wrote the Google Developers Blog post launching the ARCore Geospatial API as a Senior Product Manager for Google Maps.
+    source_ids: [arcore-geospatial]
+  - date: "2023-04"
+    text: Gave the TED2023 talk "The AI-powered tools supercharging your imagination".
+    source_ids: [ted-talk]
+  - date: "2024"
+    text: Co-hosted Session 2 of the TED2024 conference with Chris Anderson.
+    source_ids: [site]
+  - date: "2025"
+    text: Served as technology curator and co-host for the TED2025 conference.
+    source_ids: [site]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: site
     title: Bilawal Sidhu - personal site
@@ -63,18 +105,39 @@ sources:
     publisher: Bilawal Sidhu
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: youtube
     title: Bilawal Sidhu on YouTube (About)
     url: https://www.youtube.com/@bilawalsidhu/about
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: substack
     title: About - Map the World by Bilawal Sidhu
     url: https://spatialintelligence.ai/about
     publisher: Bilawal Sidhu
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: ted-talk
+    title: "The AI-powered tools supercharging your imagination (TED2023)"
+    url: https://www.ted.com/talks/bilawal_sidhu_the_ai_powered_tools_supercharging_your_imagination
+    publisher: TED
+    kind: official-page
+    published_at: 2023-04
+    accessed_at: 2026-10-21
+  - id: ted-ai-show
+    title: The TED AI Show (podcast page, About the host)
+    url: https://www.ted.com/podcasts/the-ted-ai-show
+    publisher: TED
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: arcore-geospatial
+    title: Make the world your canvas with the ARCore Geospatial API
+    url: https://developers.googleblog.com/en/make-the-world-your-canvas-with-the-arcore-geospatial-api/
+    publisher: Google for Developers Blog
+    kind: announcement
+    published_at: 2022-05-11
+    accessed_at: 2026-10-21

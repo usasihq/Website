@@ -36,7 +36,7 @@ work:
   - name: Deep Structured Semantic Models (DSSM)
     artifact_slug: null
     type: open-research
-    url: https://www.microsoft.com/en-us/research/publication/learning-deep-structured-semantic-models-for-web-search-using-clickthrough-data/
+    url: https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/cikm2013_DSSM_fullversion.pdf
     contribution: >-
       Co-author of "Learning Deep Structured Semantic Models for Web Search using Clickthrough Data"
       (CIKM 2013).
@@ -50,9 +50,98 @@ work:
       deep learning methods and their applications to speech, language, vision, and other tasks.
     source_ids: [dlma-pub]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Li Deng began an academic career at the University of Waterloo, serving as an assistant
+          professor from 1989, a tenured associate professor from 1992 and a full professor from 1996
+          to 1999. During that period Deng also held faculty or research positions at the
+          Massachusetts Institute of Technology, the Advanced Telecommunications Research Institute and
+          the Hong Kong University of Science and Technology.
+        source_ids: [uw-profile]
+      - text: >-
+          From 2000 to 2017 Deng worked at Microsoft and Microsoft Research, where Deng became Partner
+          Research Manager, founded the Deep Learning Technology Center and served as Chief Scientist of
+          AI. The University of Washington, where Deng has been an affiliate professor of electrical and
+          computer engineering since 2000, states that Deng became Chief Artificial Intelligence Officer
+          of Citadel in May 2017.
+        source_ids: [uw-profile]
+      - text: >-
+          Deng was an elected member of the Board of Governors of the IEEE Signal Processing Society
+          and served as editor-in-chief of IEEE Signal Processing Magazine and of the IEEE/ACM
+          Transactions on Audio, Speech, and Language Processing between 2008 and 2014.
+        source_ids: [uw-profile]
+  - heading: Research and publications
+    paragraphs:
+      - text: >-
+          At Microsoft Research, Deng worked on applying large-scale deep learning to speech
+          recognition. With George Dahl, Dong Yu and Alex Acero, Deng co-authored the paper on
+          context-dependent pre-trained deep neural networks for large vocabulary speech recognition,
+          which received the IEEE Signal Processing Society's 2013 Best Paper Award, and later
+          co-authored the CIKM 2013 paper introducing deep structured semantic models (DSSM) for web
+          search.
+        source_ids: [cd-dnn-pub, dssm-pub, uw-profile]
+      - text: >-
+          Deng is an author or co-author of six technical books on deep learning, speech processing,
+          pattern recognition and machine learning, and natural language processing, the most recent
+          published by Springer in June 2018. With Dong Yu, Deng also wrote "Deep Learning: Methods
+          and Applications" (2014), published by Microsoft as a technical report.
+        source_ids: [uw-profile, dlma-pub]
+timeline:
+  - date: "1989"
+    text: Became an assistant professor at the University of Waterloo, later a full professor from 1996 to 1999.
+    source_ids: [uw-profile]
+  - date: "2000"
+    text: Joined Microsoft Research and became an affiliate professor at the University of Washington.
+    source_ids: [uw-profile]
+  - date: "2012"
+    text: Co-authored the context-dependent pre-trained deep neural network paper for large vocabulary speech recognition.
+    source_ids: [cd-dnn-pub]
+  - date: "2013"
+    text: Co-authored the CIKM 2013 paper on deep structured semantic models for web search.
+    source_ids: [dssm-pub]
+  - date: "2014"
+    text: Published "Deep Learning - Methods and Applications" with Dong Yu.
+    source_ids: [dlma-pub]
+  - date: "2017-05"
+    text: Became Chief Artificial Intelligence Officer of Citadel, according to the University of Washington profile.
+    source_ids: [uw-profile]
+  - date: "2018-06"
+    text: Published the latest of six technical books, on natural language processing, with Springer.
+    source_ids: [uw-profile]
+honors:
+  - name: IEEE Fellow
+    year: 2004
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [uw-profile]
+  - name: Fellow of the Acoustical Society of America
+    year: 1993
+    awarded_by: Acoustical Society of America
+    source_ids: [uw-profile]
+  - name: IEEE Signal Processing Society Best Paper Award
+    year: 2013
+    awarded_by: IEEE Signal Processing Society
+    source_ids: [cd-dnn-pub]
+  - name: IEEE SPS Technical Achievement Award
+    year: 2015
+    awarded_by: IEEE Signal Processing Society
+    source_ids: [uw-profile]
+  - name: IEEE SPS Meritorious Service Award
+    year: null
+    awarded_by: IEEE Signal Processing Society
+    source_ids: [uw-profile]
+  - name: IEEE SPS Industrial Leader Award
+    year: 2019
+    awarded_by: IEEE Signal Processing Society
+    source_ids: [uw-profile]
+  - name: Fellow of the Canadian Academy of Engineering
+    year: 2019
+    awarded_by: Canadian Academy of Engineering
+    source_ids: [uw-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: uw-profile
     title: Li Deng — Affiliate Professor, UW Electrical & Computer Engineering
@@ -60,25 +149,25 @@ sources:
     publisher: University of Washington
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cd-dnn-pub
     title: Context-Dependent Pre-trained Deep Neural Networks for Large Vocabulary Speech Recognition
     url: https://www.microsoft.com/en-us/research/publication/context-dependent-pre-trained-deep-neural-networks-for-large-vocabulary-speech-recognition/
     publisher: Microsoft Research
     kind: paper
     published_at: 2012-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dssm-pub
-    title: Learning Deep Structured Semantic Models for Web Search using Clickthrough Data
-    url: https://www.microsoft.com/en-us/research/publication/learning-deep-structured-semantic-models-for-web-search-using-clickthrough-data/
+    title: Learning Deep Structured Semantic Models for Web Search using Clickthrough Data (CIKM 2013, full version PDF)
+    url: https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/cikm2013_DSSM_fullversion.pdf
     publisher: Microsoft Research
     kind: paper
     published_at: 2013-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dlma-pub
     title: "Deep Learning: Methods and Applications (MSR-TR-2014-21)"
     url: https://www.microsoft.com/en-us/research/publication/deep-learning-methods-and-applications/
     publisher: Microsoft Research
     kind: paper
     published_at: 2014-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

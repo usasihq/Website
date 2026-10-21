@@ -48,9 +48,57 @@ work:
       training for low-latency image-text models.
     source_ids: [mobileclip2-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Alexander Toshev's early deep learning papers addressed computer vision. DeepPose, which Toshev
+          wrote with Christian Szegedy in 2013, frames human pose estimation as regression of body-joint
+          positions with a cascade of deep neural networks. In 2014 Toshev co-authored Show and Tell, a
+          neural image caption generator built on a deep recurrent architecture that combines advances
+          in computer vision and machine translation to generate sentences describing an image.
+        source_ids: [deeppose-paper, showtell-paper]
+      - text: >-
+          More recent co-authored papers cover training data and image-text models. DataComp-LM (2024)
+          offers a standardized Common Crawl corpus, OpenLM-based pretraining recipes and a suite of
+          downstream evaluations for controlled dataset experiments, and MobileCLIP2 (2025) improves the
+          multi-modal reinforced training of low-latency image-text models, with pretrained models and
+          data-generation code released.
+        source_ids: [dclm-paper, mobileclip2-paper]
+  - heading: Agents
+    paragraphs:
+      - text: >-
+          Several recent papers co-authored by Toshev concern agents. LLaRP (2023) adapts a frozen
+          pre-trained language model into a policy for embodied visual tasks trained with reinforcement
+          learning. A 2026 paper uses language models as simulated world models to generate stateful
+          training data for API-calling agents, and RLTL;DR (2026) has an agent write short feedback
+          insights after failed attempts and learn to internalize them.
+        source_ids: [llarp-paper, simulate-paper, rltldr-paper]
+timeline:
+  - date: "2013-12"
+    text: Posted DeepPose, a deep neural network method for human pose estimation, with Christian Szegedy.
+    source_ids: [deeppose-paper]
+  - date: "2014-11"
+    text: Co-authored Show and Tell, a neural image caption generator.
+    source_ids: [showtell-paper]
+  - date: "2023-10"
+    text: Co-authored LLaRP, which adapts large language models into policies for embodied tasks.
+    source_ids: [llarp-paper]
+  - date: "2024-06"
+    text: Co-authored DataComp-LM, a testbed for language model training-set experiments.
+    source_ids: [dclm-paper]
+  - date: "2025-08"
+    text: Co-authored MobileCLIP2 on improved reinforced training for low-latency image-text models.
+    source_ids: [mobileclip2-paper]
+  - date: "2026-07"
+    text: Co-authored a paper on scaling stateful supervision for API-calling agents with simulated world models.
+    source_ids: [simulate-paper]
+  - date: "2026-09"
+    text: Co-authored RLTL;DR, a self-improvement method built on self-generated feedback.
+    source_ids: [rltldr-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: rltldr-paper
     title: "RLTL;DR: Self-improvement by Internalizing Self-generated Feedback (arXiv 2609.37633)"
@@ -58,25 +106,46 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2026-09-29
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: simulate-paper
     title: "Simulate to Generalize: Scaling Stateful Supervision for API-calling Agents using LLM World Models (arXiv 2607.16900)"
     url: https://arxiv.org/abs/2607.16900
     publisher: arXiv
     kind: paper
     published_at: 2026-07-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dclm-paper
     title: "DataComp-LM: In search of the next generation of training sets for language models (arXiv 2406.11794)"
     url: https://arxiv.org/abs/2406.11794
     publisher: arXiv
     kind: paper
     published_at: 2024-06-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mobileclip2-paper
     title: "MobileCLIP2: Improving Multi-Modal Reinforced Training (arXiv 2508.20691)"
     url: https://arxiv.org/abs/2508.20691
     publisher: arXiv
     kind: paper
     published_at: 2025-08-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: deeppose-paper
+    title: "DeepPose: Human Pose Estimation via Deep Neural Networks (arXiv 1312.4659)"
+    url: https://arxiv.org/abs/1312.4659
+    publisher: arXiv
+    kind: paper
+    published_at: 2013-12-17
+    accessed_at: 2026-10-21
+  - id: showtell-paper
+    title: "Show and Tell: A Neural Image Caption Generator (arXiv 1411.4555)"
+    url: https://arxiv.org/abs/1411.4555
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-11-17
+    accessed_at: 2026-10-21
+  - id: llarp-paper
+    title: Large Language Models as Generalizable Policies for Embodied Tasks (arXiv 2310.17722)
+    url: https://arxiv.org/abs/2310.17722
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-26
+    accessed_at: 2026-10-21

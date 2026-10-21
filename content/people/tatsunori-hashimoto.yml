@@ -49,9 +49,60 @@ work:
 links:
   - label: Website
     url: https://thashim.github.io
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Tatsunori Hashimoto was a graduate student at MIT co-advised by Tommi Jaakkola and David Gifford, and
+          then a postdoctoral researcher at Stanford with John C. Duchi and Percy Liang, studying trade-offs
+          between the average and worst-case performance of machine learning models. Hashimoto is now an
+          assistant professor of computer science at Stanford and is affiliated with the Center for Research on
+          Foundation Models.
+        source_ids: [hashimoto-site, crfm-people]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hashimoto's research uses robustness and worst-case performance as a lens on problems in machine
+          learning and NLP, including long-tail behaviour, out-of-domain understanding and fairness. A 2018
+          paper first-authored by Hashimoto, "Fairness Without Demographics in Repeated Loss Minimization,"
+          used distributionally robust optimization to protect minority groups without knowing their
+          identities.
+        source_ids: [hashimoto-site, fairness-paper]
+      - text: >-
+          Hashimoto has also worked on language models, co-authoring Diffusion-LM (2022) for controllable
+          text generation, AlpacaFarm (2023), a simulator for methods that learn from human feedback, HELM
+          (2022) and s1 (2025), a simple approach to test-time scaling. The Stanford Alpaca repository lists
+          its authors as graduate students advised by Hashimoto.
+        source_ids: [diffusionlm-paper, alpaca-readme, alpacafarm-paper, helm-paper, s1-paper]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          With Percy Liang, Hashimoto teaches Stanford's CS336, Language Modeling from Scratch, which has been
+          offered in Spring 2024, Spring 2025 and Spring 2026 and walks students through building language
+          models end to end.
+        source_ids: [cs336]
+timeline:
+  - date: "2018-06"
+    text: Posted "Fairness Without Demographics in Repeated Loss Minimization" as first author.
+    source_ids: [fairness-paper]
+  - date: "2022-05"
+    text: Co-authored Diffusion-LM, a diffusion-based approach to controllable text generation.
+    source_ids: [diffusionlm-paper]
+  - date: "2022-11"
+    text: Co-authored the HELM paper on holistic evaluation of language models.
+    source_ids: [helm-paper]
+  - date: "2023-05"
+    text: Co-authored AlpacaFarm, a simulation framework for learning from human feedback.
+    source_ids: [alpacafarm-paper]
+  - date: "2024"
+    text: Taught the Spring 2024 offering of CS336, Language Modeling from Scratch, at Stanford with Percy Liang.
+    source_ids: [cs336, cs336-2024]
+  - date: "2025-01"
+    text: Co-authored s1, a paper on simple test-time scaling.
+    source_ids: [s1-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: hashimoto-site
     title: Tatsunori Hashimoto — homepage
@@ -59,32 +110,66 @@ sources:
     publisher: Tatsunori Hashimoto
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: crfm-people
     title: People — Stanford Center for Research on Foundation Models
     url: https://crfm.stanford.edu/people.html
     publisher: Stanford CRFM
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: alpaca-readme
     title: tatsu-lab/stanford_alpaca README (authors, licenses, and citation)
     url: https://github.com/tatsu-lab/stanford_alpaca
     publisher: tatsu-lab (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: helm-paper
     title: Holistic Evaluation of Language Models (arXiv 2211.09110)
     url: https://arxiv.org/abs/2211.09110
     publisher: arXiv
     kind: paper
     published_at: 2022-11-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cs336
     title: "Stanford CS336: Language Modeling from Scratch (Spring 2026)"
     url: https://stanford-cs336.github.io/
     publisher: Stanford University
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: cs336-2024
+    title: "CS336: Language Modeling from Scratch (Spring 2024)"
+    url: https://stanford-cs336.github.io/spring2024/
+    publisher: Stanford University
+    kind: official-page
+    accessed_at: 2026-10-21
+  - id: fairness-paper
+    title: "Fairness Without Demographics in Repeated Loss Minimization (arXiv 1806.08010)"
+    url: https://arxiv.org/abs/1806.08010
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-06-20
+    accessed_at: 2026-10-21
+  - id: diffusionlm-paper
+    title: "Diffusion-LM Improves Controllable Text Generation (arXiv 2205.14217)"
+    url: https://arxiv.org/abs/2205.14217
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-05-27
+    accessed_at: 2026-10-21
+  - id: alpacafarm-paper
+    title: "AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback (arXiv 2305.14387)"
+    url: https://arxiv.org/abs/2305.14387
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-22
+    accessed_at: 2026-10-21
+  - id: s1-paper
+    title: "s1: Simple test-time scaling (arXiv 2501.19393)"
+    url: https://arxiv.org/abs/2501.19393
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-01-31
+    accessed_at: 2026-10-21

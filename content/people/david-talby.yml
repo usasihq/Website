@@ -14,7 +14,7 @@ bio:
     page also describes Talby's experience building and running web-scale software platforms and
     teams at startups, for Microsoft's Bing, and to scale Amazon's financial systems.
   source_ids: [jsl-author, spark-nlp-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: John Snow Labs
     organization_slug: null
@@ -43,9 +43,59 @@ work:
 links:
   - label: John Snow Labs author page
     url: https://www.johnsnowlabs.com/author/david-talby/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before leading John Snow Labs, Talby built and ran web-scale software platforms and teams at
+          startups, for Microsoft's Bing, and to scale Amazon's financial systems. At John Snow Labs, Talby is chief executive officer, helping healthcare and life
+          science companies put AI to good use.
+        source_ids: [jsl-author]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Talby is credited as the creator of Spark NLP, an Apache-2.0 natural language processing library
+          built on Apache Spark ML. The library's citation paper, "Spark NLP - Natural language understanding
+          at scale", was written by Veysel Kocaman and Talby and published in the journal Software Impacts
+          in 2021, after a 2021 arXiv preprint.
+        source_ids: [jsl-author, spark-nlp-repo, spark-nlp-paper]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Talby's papers, mostly with John Snow Labs colleagues such as Veysel Kocaman, apply NLP to clinical
+          and biomedical text. They include "Biomedical Named Entity Recognition at Scale" (CADL 2020), work
+          on automated de-identification of large clinical text datasets presented at ML4H 2023, and a 2025
+          study of whether zero-shot commercial APIs meet regulatory standards for clinical de-identification.
+        source_ids: [biomedical-ner-paper, deid-paper, deid-api-paper]
+      - text: >-
+          Recent work turns to evaluating medical large language models, including a red-teaming framework
+          for safety, robustness and fairness
+          prepared for the Text2Story 2026 workshop. Talby also writes
+          articles and benchmarks on the John Snow Labs blog, such as 2026 comparisons of clinical
+          de-identification tools.
+        source_ids: [red-team-paper, jsl-author]
+timeline:
+  - date: "2020-11-12"
+    text: Co-authored "Biomedical Named Entity Recognition at Scale" with Veysel Kocaman.
+    source_ids: [biomedical-ner-paper]
+  - date: "2021-01-26"
+    text: Released the Spark NLP paper "Natural Language Understanding at Scale" on arXiv with Veysel Kocaman.
+    source_ids: [spark-nlp-paper]
+  - date: "2021"
+    text: The Spark NLP citation paper was published in the journal Software Impacts.
+    source_ids: [spark-nlp-repo]
+  - date: "2023-12-13"
+    text: Co-authored a paper on automated de-identification of large real-world clinical text datasets for ML4H 2023.
+    source_ids: [deid-paper]
+  - date: "2025-03-21"
+    text: Co-authored a study of zero-shot commercial APIs for clinical text de-identification, accepted at Text2Story 2025.
+    source_ids: [deid-api-paper]
+  - date: "2026-04-15"
+    text: Co-authored a multi-domain red-teaming framework for evaluating medical large language models.
+    source_ids: [red-team-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: jsl-author
     title: David Talby — author page, John Snow Labs
@@ -53,11 +103,46 @@ sources:
     publisher: John Snow Labs
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: spark-nlp-repo
     title: JohnSnowLabs/spark-nlp README (citation and Apache-2.0 license)
     url: https://github.com/JohnSnowLabs/spark-nlp
     publisher: John Snow Labs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: biomedical-ner-paper
+    title: "Biomedical Named Entity Recognition at Scale (arXiv 2011.06315)"
+    url: https://arxiv.org/abs/2011.06315
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-11-12
+    accessed_at: 2026-10-21
+  - id: spark-nlp-paper
+    title: "Spark NLP: Natural Language Understanding at Scale (arXiv 2101.10848)"
+    url: https://arxiv.org/abs/2101.10848
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-01-26
+    accessed_at: 2026-10-21
+  - id: deid-paper
+    title: "Beyond Accuracy: Automated De-Identification of Large Real-World Clinical Text Datasets (arXiv 2312.08495)"
+    url: https://arxiv.org/abs/2312.08495
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-13
+    accessed_at: 2026-10-21
+  - id: deid-api-paper
+    title: "Can Zero-Shot Commercial APIs Deliver Regulatory-Grade Clinical Text DeIdentification? (arXiv 2503.20794)"
+    url: https://arxiv.org/abs/2503.20794
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-03-21
+    accessed_at: 2026-10-21
+  - id: red-team-paper
+    title: "A Multi-Domain Red Teaming Framework for Safety, Robustness, and Fairness Evaluation of Medical Large Language Models (arXiv 2606.00027)"
+    url: https://arxiv.org/abs/2606.00027
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-04-15
+    accessed_at: 2026-10-21

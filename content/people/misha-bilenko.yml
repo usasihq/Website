@@ -13,7 +13,7 @@ bio:
     phi-3-small and phi-3-medium models and the phi-3.5 series, including a mixture-of-experts model
     and a vision model. The phi-3-mini-4k-instruct model card on Hugging Face lists the MIT license.
   source_ids: [phi3-paper, phi3-mini-card]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Microsoft
     organization_slug: microsoft
@@ -30,9 +30,30 @@ work:
       card on Hugging Face lists the MIT license.
     source_ids: [phi3-paper, phi3-mini-card]
 links: []
+sections:
+  - heading: Phi-3 small language models
+    paragraphs:
+      - text: >-
+          The Phi-3 Technical Report, on which Bilenko is a listed author, describes phi-3-mini as a 3.8 billion
+          parameter model trained on a scaled-up version of the phi-2 dataset of heavily filtered public web data
+          and synthetic data. The report also covers 7B and 14B models, phi-3-small and phi-3-medium, trained on
+          more tokens. A later revision added the phi-3.5 series: phi-3.5-mini, the mixture-of-experts model
+          phi-3.5-MoE and the image-and-text model phi-3.5-Vision.
+        source_ids: [phi3-paper]
+      - text: >-
+          Microsoft publishes the models on Hugging Face, where the phi-3-mini-4k-instruct model card gives the
+          MIT license and points to quantized versions for local apps.
+        source_ids: [phi3-mini-card]
+timeline:
+  - date: "2024-04-22"
+    text: The first version of the Phi-3 Technical Report, listing Bilenko among its authors, was posted to arXiv.
+    source_ids: [phi3-paper]
+  - date: "2024-08-30"
+    text: The latest revision of the Phi-3 Technical Report, which covers the phi-3.5 models, was posted to arXiv.
+    source_ids: [phi3-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: phi3-paper
     title: "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone (arXiv 2404.14219)"
@@ -40,11 +61,11 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2024-04-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi3-mini-card
     title: microsoft/Phi-3-mini-4k-instruct model card (license MIT)
     url: https://huggingface.co/microsoft/Phi-3-mini-4k-instruct
     publisher: Microsoft (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

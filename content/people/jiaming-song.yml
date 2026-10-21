@@ -15,7 +15,7 @@ bio:
     with Chenlin Meng and Stefano Ermon; its MIT-licensed reference code notes that DDIM is also
     available in Hugging Face Diffusers.
   source_ids: [song-site, ddim-paper, ddim-readme, ddim-license]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Luma AI
     organization_slug: luma-ai
@@ -56,9 +56,49 @@ links:
     url: https://tsong.me/
   - label: GitHub
     url: https://github.com/jiamings
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Song completed a PhD in computer science at Stanford and stayed on as a postdoc with Stefano Ermon.
+          With Chenlin Meng and Ermon, Song wrote the 2020 DDIM paper, which introduced an accelerated sampler
+          for diffusion models, and Song co-authored follow-up work on guided image synthesis and editing with
+          SDEdit and on solving image restoration problems with Denoising Diffusion Restoration Models.
+        source_ids: [song-site, ddim-paper, js-sdedit, js-ddrm]
+      - text: >-
+          In 2025 Song, Linqi Zhou and Ermon introduced Inductive Moment Matching, a class of generative models
+          for one- or few-step sampling trained in a single stage without distillation. In a May 2026 note,
+          Song described how autoregressive and diffusion methods can coexist in one generative system and
+          discussed how flow maps relate to inference-time scaling.
+        source_ids: [js-imm, js-blog]
+  - heading: Career
+    paragraphs:
+      - text: >-
+          After Stanford, Song was a research scientist at NVIDIA Research, working on multimodal generation and
+          foundation model projects. As Chief Scientist at Luma AI, Song led research through the company's
+          shifts from 3D generation with Genie to the Ray family of video generation models and then to Uni-1, a
+          multimodal reasoning model for image generation and editing, working across model architectures,
+          training infrastructure and data processing.
+        source_ids: [song-site]
+timeline:
+  - date: "2020-10-06"
+    text: Released "Denoising Diffusion Implicit Models" (DDIM) with Chenlin Meng and Stefano Ermon.
+    source_ids: [ddim-paper]
+  - date: "2021-08-02"
+    text: Co-authored SDEdit, a method for guided image synthesis and editing with stochastic differential equations.
+    source_ids: [js-sdedit]
+  - date: "2022-01-27"
+    text: Co-authored Denoising Diffusion Restoration Models for image restoration tasks.
+    source_ids: [js-ddrm]
+  - date: "2025-03-10"
+    text: Co-authored Inductive Moment Matching, a single-stage approach to few-step generative sampling.
+    source_ids: [js-imm]
+  - date: "2026-05-31"
+    text: Published a note on inference-time scaling for generative pre-training.
+    source_ids: [js-blog]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: song-site
     title: Jiaming Song — homepage
@@ -66,25 +106,53 @@ sources:
     publisher: Jiaming Song
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ddim-paper
     title: "Denoising Diffusion Implicit Models (arXiv 2010.02502)"
     url: https://arxiv.org/abs/2010.02502
     publisher: arXiv
     kind: paper
     published_at: 2020-10-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ddim-readme
     title: ermongroup/ddim README
     url: https://github.com/ermongroup/ddim
     publisher: ermongroup (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ddim-license
     title: ermongroup/ddim LICENSE (MIT)
     url: https://github.com/ermongroup/ddim/blob/main/LICENSE
     publisher: ermongroup (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: js-sdedit
+    title: "SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations"
+    url: https://arxiv.org/abs/2108.01073
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-08-02
+    accessed_at: 2026-10-21
+  - id: js-ddrm
+    title: Denoising Diffusion Restoration Models
+    url: https://arxiv.org/abs/2201.11793
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-01-27
+    accessed_at: 2026-10-21
+  - id: js-imm
+    title: Inductive Moment Matching
+    url: https://arxiv.org/abs/2503.07565
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-03-10
+    accessed_at: 2026-10-21
+  - id: js-blog
+    title: Inference-Time Scaling for Generative Pre-Training
+    url: https://tsong.me/blog/inference-time-scaling/
+    publisher: Jiaming Song
+    kind: official-page
+    published_at: 2026-05-31
+    accessed_at: 2026-10-21

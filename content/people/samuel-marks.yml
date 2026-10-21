@@ -55,9 +55,68 @@ work:
       Co-author of the 2023 survey of open problems and limitations of RLHF and related methods.
     source_ids: [rlhf-open-problems-paper, marks-harvard-page]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Marks's Harvard page records a PhD from Harvard in May 2023 in mathematics, on p-adic Hodge theory
+          and prismatic cohomology under Mark Kisin, before a shift to machine learning and the mechanistic
+          interpretability of large language models. Marks then worked as a postdoc at Northeastern University
+          under David Bau.
+        source_ids: [marks-harvard-page]
+      - text: >-
+          At Anthropic, Marks is a Member of Technical Staff and leads the Cognitive Oversight subteam of the
+          Alignment Science team. The MATS program lists Marks as a mentor for its Anthropic streams in 2026
+          and 2027, with focus areas in AI control and monitoring, misalignment science, and interpretability.
+        source_ids: [mats-marks, anthropic-chive]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          The Cognitive Oversight subteam aims to oversee AI systems by checking whether anything is suspicious
+          in the cognitive processes behind their behavior, such as detecting when a language model is lying,
+          using both interpretability-based white-box methods and black-box interrogation of models. Marks's
+          2025 study on auditing language models for hidden objectives trained a model to exploit errors in
+          RLHF reward models and tested whether auditing teams could uncover that objective.
+        source_ids: [mats-marks, auditing-paper, auditing-paper-html]
+      - text: >-
+          Earlier interpretability papers by Marks include "The Geometry of Truth" with Max Tegmark, which
+          studies how language models represent the truth of simple true/false statements, and "Sparse Feature
+          Circuits", which introduces methods for finding and editing causal subnetworks of human-interpretable
+          features. In 2026 Marks co-authored CHIVE, an agentic pipeline that finds unexpected model behaviors
+          and explains them with counterfactual prompt edits.
+        source_ids: [geometry-of-truth-paper, sparse-feature-circuits-paper, anthropic-chive]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Marks is a co-author of the paper introducing NNsight, an open-source system that extends PyTorch with
+          deferred remote execution, and the National Deep Inference Fabric, an inference service that runs
+          NNsight requests on shared GPUs and pretrained models.
+        source_ids: [nnsight-paper, nnsight-repo]
+timeline:
+  - date: "2023-05"
+    text: Completed a PhD in mathematics at Harvard, studying p-adic Hodge theory under Mark Kisin.
+    source_ids: [marks-harvard-page]
+  - date: "2023-07-27"
+    text: Co-authored a survey of open problems and fundamental limitations of RLHF.
+    source_ids: [rlhf-open-problems-paper]
+  - date: "2023-10-10"
+    text: Released "The Geometry of Truth" with Max Tegmark, on how language models represent true and false statements.
+    source_ids: [geometry-of-truth-paper]
+  - date: "2024-03-28"
+    text: Released "Sparse Feature Circuits" as first author, with co-authors including David Bau.
+    source_ids: [sparse-feature-circuits-paper]
+  - date: "2024-07-18"
+    text: Co-authored the paper introducing NNsight and the National Deep Inference Fabric.
+    source_ids: [nnsight-paper]
+  - date: "2025-03-14"
+    text: Released "Auditing language models for hidden objectives" as first author, with work conducted at Anthropic.
+    source_ids: [auditing-paper, auditing-paper-html]
+  - date: "2026-08-21"
+    text: Co-authored the CHIVE study on explaining language-model behavior with counterfactual experiments.
+    source_ids: [anthropic-chive]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: mats-marks
     title: Samuel Marks — MATS mentor page (Anthropic, Member of Technical Staff)
@@ -65,46 +124,67 @@ sources:
     publisher: MATS
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: anthropic-chive
     title: "Would This Change Your Answer? Evaluating Explanations of LLM Behavior in the Wild with Counterfactual Experiments (Anthropic Alignment Science Blog; author affiliation Anthropic)"
     url: https://alignment.anthropic.com/2026/chive/
     publisher: Anthropic
     kind: official-page
     published_at: 2026-08-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: auditing-paper
     title: Auditing language models for hidden objectives (arXiv 2503.10965)
     url: https://arxiv.org/abs/2503.10965
     publisher: arXiv
     kind: paper
     published_at: 2025-03-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: auditing-paper-html
     title: Auditing language models for hidden objectives — arXiv HTML (v2, authors and affiliations)
     url: https://arxiv.org/html/2503.10965
     publisher: arXiv
     kind: paper
     published_at: 2025-03-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: marks-harvard-page
     title: Samuel Marks — Harvard Mathematics page
     url: https://people.math.harvard.edu/~smarks/
     publisher: Samuel Marks
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nnsight-repo
     title: ndif-team/nnsight README and citation (MIT license)
     url: https://github.com/ndif-team/nnsight
     publisher: NDIF team (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rlhf-open-problems-paper
     title: Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback (arXiv 2307.15217)
     url: https://arxiv.org/abs/2307.15217
     publisher: arXiv
     kind: paper
     published_at: 2023-07-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: geometry-of-truth-paper
+    title: "The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets (arXiv 2310.06824)"
+    url: https://arxiv.org/abs/2310.06824
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-10
+    accessed_at: 2026-10-21
+  - id: sparse-feature-circuits-paper
+    title: "Sparse Feature Circuits: Discovering and Editing Interpretable Causal Graphs in Language Models (arXiv 2403.19647)"
+    url: https://arxiv.org/abs/2403.19647
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-03-28
+    accessed_at: 2026-10-21
+  - id: nnsight-paper
+    title: "NNsight and NDIF: Democratizing Access to Open-Weight Foundation Model Internals (arXiv 2407.14561)"
+    url: https://arxiv.org/abs/2407.14561
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-07-18
+    accessed_at: 2026-10-21

@@ -15,7 +15,7 @@ bio:
     Detectron, FAIR's Apache-2.0 detection system, and appears among the authors of its successor
     Detectron2. Girshick is also a co-author of the original Segment Anything paper and of SAM 2.
   source_ids: [homepage, rcnn-paper, detectron-readme, detectron2-readme, sam-paper, sam2-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Meta (Facebook AI Research)
     organization_slug: meta
@@ -67,9 +67,90 @@ work:
 links:
   - label: Website
     url: https://www.rossgirshick.info/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Ross Girshick was a postdoctoral researcher at UC Berkeley and then worked as a research scientist at Microsoft Research from 2014 to 2015, at FAIR (Facebook,
+          later Meta) from 2015 to 2023, and at the Allen Institute for AI from 2023 to 2024, and in late 2024
+          co-founded Vercept, which was acquired in early 2026.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Girshick's 2013 R-CNN paper with Jeff Donahue, Trevor Darrell and Jitendra Malik brought deep
+          convolutional features to object detection. Girshick followed it with Fast R-CNN in 2015 and co-authored
+          Faster R-CNN, which added region proposal networks, later that year.
+        source_ids: [rcnn-paper, fast-rcnn-paper, faster-rcnn-paper]
+      - text: >-
+          At FAIR, Girshick co-authored Mask R-CNN (2017), which extended detection to instance segmentation, and
+          Focal Loss for Dense Object Detection (2017). Later work moved toward representation learning and
+          segmentation, including Masked Autoencoders Are Scalable Vision Learners (2021), Segment Anything (2023)
+          and SAM 2 (2024).
+        source_ids: [mask-rcnn-paper, focal-loss-paper, mae-paper, sam-paper, sam2-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Girshick is listed first in the citation entry for Detectron, FAIR's Apache-2.0 object detection system
+          written in Python on Caffe2, and among the authors of its successor Detectron2. The original Segment
+          Anything repository also lists Girshick among its authors and releases the model under the Apache 2.0
+          license.
+        source_ids: [detectron-readme, detectron2-readme, sam-readme]
+timeline:
+  - date: "2013-11-11"
+    text: Released the R-CNN object detection paper as first author.
+    source_ids: [rcnn-paper]
+  - date: "2014"
+    text: Joined Microsoft Research as a research scientist.
+    source_ids: [homepage]
+  - date: "2015"
+    text: Joined FAIR at Facebook as a research scientist.
+    source_ids: [homepage]
+  - date: "2015-04-30"
+    text: Released Fast R-CNN.
+    source_ids: [fast-rcnn-paper]
+  - date: "2015-06-04"
+    text: Co-authored Faster R-CNN, introducing region proposal networks.
+    source_ids: [faster-rcnn-paper]
+  - date: "2017-03-20"
+    text: Co-authored Mask R-CNN.
+    source_ids: [mask-rcnn-paper]
+  - date: "2021-11-11"
+    text: Co-authored Masked Autoencoders Are Scalable Vision Learners.
+    source_ids: [mae-paper]
+  - date: "2023"
+    text: Joined the Allen Institute for AI as a research scientist.
+    source_ids: [homepage]
+  - date: "2023-04-05"
+    text: Co-authored the Segment Anything paper.
+    source_ids: [sam-paper]
+  - date: "2024"
+    text: Co-founded Vercept in late 2024.
+    source_ids: [homepage]
+honors:
+  - name: PAMI Young Researcher Award
+    year: 2017
+    awarded_by: IEEE PAMI Technical Committee
+    source_ids: [homepage]
+  - name: PAMI Mark Everingham Prize (2017, 2021 and 2023)
+    year: 2023
+    awarded_by: IEEE PAMI Technical Committee
+    source_ids: [homepage]
+  - name: Longuet-Higgins Prize (R-CNN)
+    year: 2024
+    awarded_by: IEEE PAMI Technical Committee (CVPR)
+    source_ids: [homepage]
+  - name: Helmholtz Prize (Fast R-CNN)
+    year: 2025
+    awarded_by: IEEE PAMI Technical Committee (ICCV)
+    source_ids: [homepage]
+  - name: NeurIPS Test of Time Award (Faster R-CNN)
+    year: 2025
+    awarded_by: Conference on Neural Information Processing Systems (NeurIPS)
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Ross Girshick (rbg) — homepage
@@ -77,46 +158,81 @@ sources:
     publisher: Ross Girshick
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rcnn-paper
     title: "Rich feature hierarchies for accurate object detection and semantic segmentation (arXiv 1311.2524)"
     url: https://arxiv.org/abs/1311.2524
     publisher: arXiv
     kind: paper
     published_at: 2013-11-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sam-paper
     title: Segment Anything (arXiv 2304.02643)
     url: https://arxiv.org/abs/2304.02643
     publisher: arXiv
     kind: paper
     published_at: 2023-04-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sam2-paper
     title: "SAM 2: Segment Anything in Images and Videos (arXiv 2408.00714)"
     url: https://arxiv.org/abs/2408.00714
     publisher: arXiv
     kind: paper
     published_at: 2024-08-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sam-readme
     title: facebookresearch/segment-anything README (authors and Apache 2.0 license)
     url: https://github.com/facebookresearch/segment-anything
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detectron-readme
     title: facebookresearch/Detectron README (citation entry and license)
     url: https://github.com/facebookresearch/Detectron
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detectron2-readme
     title: facebookresearch/detectron2 README (citation entry and license)
     url: https://github.com/facebookresearch/detectron2
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: fast-rcnn-paper
+    title: Fast R-CNN (arXiv 1504.08083)
+    url: https://arxiv.org/abs/1504.08083
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-04-30
+    accessed_at: 2026-10-21
+  - id: faster-rcnn-paper
+    title: "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks (arXiv 1506.01497)"
+    url: https://arxiv.org/abs/1506.01497
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-06-04
+    accessed_at: 2026-10-21
+  - id: mask-rcnn-paper
+    title: Mask R-CNN (arXiv 1703.06870)
+    url: https://arxiv.org/abs/1703.06870
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-20
+    accessed_at: 2026-10-21
+  - id: focal-loss-paper
+    title: Focal Loss for Dense Object Detection (arXiv 1708.02002)
+    url: https://arxiv.org/abs/1708.02002
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-08-07
+    accessed_at: 2026-10-21
+  - id: mae-paper
+    title: Masked Autoencoders Are Scalable Vision Learners (arXiv 2111.06377)
+    url: https://arxiv.org/abs/2111.06377
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-11-11
+    accessed_at: 2026-10-21

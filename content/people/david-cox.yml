@@ -16,7 +16,7 @@ bio:
     Engineering and Applied Sciences at Harvard University, where Cox's lab started the open-source
     Hyperopt hyperparameter optimization library.
   source_ids: [ibm-research-profile, mitibm-profile, granite-code-paper, granite-embedding-paper, hyperopt-paper, hyperopt-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM Research
     organization_slug: ibm
@@ -26,6 +26,11 @@ affiliations:
   - name: Harvard University
     organization_slug: harvard-university
     role: John L. Loeb Associate Professor of the Natural Sciences and of Engineering and Applied Sciences
+    current: false
+    source_ids: [ibm-research-profile, mitibm-profile]
+  - name: Berkman Klein Center for Internet and Society, Harvard Law School
+    organization_slug: null
+    role: Faculty Associate
     current: false
     source_ids: [ibm-research-profile, mitibm-profile]
 work:
@@ -50,14 +55,83 @@ work:
       paper "Making a Science of Model Search: Hyperparameter Optimization in Hundreds of Dimensions for
       Vision Architectures."
     source_ids: [ibm-research-profile, hyperopt-paper, hyperopt-repo]
+  - name: Triton
+    artifact_slug: triton
+    type: open-source
+    url: null
+    contribution: >-
+      IBM Research's profile states that Cox's lab at Harvard started Triton, now OpenAI Triton, a
+      framework for accelerated compute on GPUs.
+    source_ids: [ibm-research-profile]
 links:
   - label: IBM Research profile
     url: https://research.ibm.com/people/david-cox
   - label: MIT-IBM lab profile
     url: https://mitibm.mit.edu/people/david-cox/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before joining IBM, Cox was the John L. Loeb Associate Professor of the Natural Sciences and
+          of Engineering and Applied Sciences at Harvard University, with appointments in Computer
+          Science, the Department of Molecular and Cellular Biology and the Center for Brain Science.
+          Cox was also a Faculty Associate at the Berkman Klein Center for Internet and Society at
+          Harvard Law School, and while at Harvard co-founded several AI startups, including DeepHealth,
+          which developed FDA-cleared medical imaging software.
+        source_ids: [ibm-research-profile, mitibm-profile]
+      - text: >-
+          At IBM Research, Cox is VP, AI Foundations, leading the innovation agenda for foundation
+          models and responsible for the development and training of IBM's large language models. Cox is also IBM's
+          director of the joint lab with MIT, which brings IBM researchers together with MIT faculty on
+          fundamental AI research.
+        source_ids: [ibm-research-profile, mitibm-profile]
+  - heading: Research and open-source work
+    paragraphs:
+      - text: >-
+          Cox's research spans neuroscience and AI. With James Bergstra and Daniel Yamins, Cox wrote an
+          ICML 2013 paper on automating hyperparameter search for vision architectures, and Cox's
+          Harvard lab started the open-source projects Hyperopt and Triton, the GPU compute framework
+          now known as OpenAI Triton.
+        source_ids: [ibm-research-profile, hyperopt-paper, hyperopt-repo]
+      - text: >-
+          At IBM, Cox is a co-author of papers on the Granite model family, including the 2024 Granite
+          Code models, which are released under Apache 2.0, a Granite function-calling model presented at
+          EMNLP 2024, and the 2025 Granite Embedding models for dense and sparse retrieval in English and
+          multilingual settings. Other recent co-authored work listed by IBM Research includes Activated
+          LoRA (NeurIPS 2025) and Self-MoE (ICLR 2025).
+        source_ids: [granite-code-paper, granite-embedding-paper, ibm-research-profile]
+timeline:
+  - date: "2013"
+    text: Co-authored, with James Bergstra and Daniel Yamins, the ICML 2013 paper on hyperparameter optimization for vision architectures.
+    source_ids: [hyperopt-paper]
+  - date: 2024-05-07
+    text: Co-authored the Granite Code models paper, released with Apache 2.0 code models.
+    source_ids: [granite-code-paper]
+  - date: "2024"
+    text: Co-authored the Granite function-calling model paper presented at EMNLP 2024.
+    source_ids: [ibm-research-profile]
+  - date: 2025-02-27
+    text: Co-authored the Granite Embedding models report on retrieval embedding models.
+    source_ids: [granite-embedding-paper]
+  - date: "2025"
+    text: Co-authored the Activated LoRA paper on fine-tuned LLM intrinsics, presented at NeurIPS 2025.
+    source_ids: [ibm-research-profile]
+honors:
+  - name: Richard and Susan Smith Foundation Award for Excellence in Biomedical Research
+    year: null
+    awarded_by: Richard and Susan Smith Family Foundation
+    source_ids: [ibm-research-profile, mitibm-profile]
+  - name: Google Faculty Research Award in Computer Science
+    year: null
+    awarded_by: Google
+    source_ids: [ibm-research-profile, mitibm-profile]
+  - name: Roslyn Abramson Award for Excellence in Undergraduate Teaching
+    year: null
+    awarded_by: Harvard University
+    source_ids: [ibm-research-profile, mitibm-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ibm-research-profile
     title: David D. Cox — IBM Research
@@ -65,39 +139,39 @@ sources:
     publisher: IBM Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mitibm-profile
     title: David Cox — MIT-IBM Computing Research Lab people page
     url: https://mitibm.mit.edu/people/david-cox/
     publisher: MIT-IBM Computing Research Lab
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: granite-code-paper
     title: "Granite Code Models: A Family of Open Foundation Models for Code Intelligence (arXiv 2405.04324)"
     url: https://arxiv.org/abs/2405.04324
     publisher: arXiv
     kind: paper
     published_at: 2024-05-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: granite-embedding-paper
     title: Granite Embedding Models (arXiv 2502.20204)
     url: https://arxiv.org/abs/2502.20204
     publisher: arXiv
     kind: paper
     published_at: 2025-02-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hyperopt-paper
     title: "Making a Science of Model Search: Hyperparameter Optimization in Hundreds of Dimensions for Vision Architectures (ICML 2013)"
     url: https://proceedings.mlr.press/v28/bergstra13.html
     publisher: Proceedings of Machine Learning Research
     kind: paper
     published_at: "2013"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hyperopt-repo
     title: hyperopt/hyperopt README and LICENSE.txt (BSD-style license)
     url: https://github.com/hyperopt/hyperopt
     publisher: hyperopt (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

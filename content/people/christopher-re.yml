@@ -29,6 +29,11 @@ affiliations:
     role: Founder
     current: true
     source_ids: [together-about]
+  - name: University of Wisconsin–Madison
+    organization_slug: null
+    role: Assistant professor (2009–2013)
+    current: false
+    source_ids: [macarthur]
 work:
   - name: RedPajama
     artifact_slug: redpajama
@@ -61,14 +66,109 @@ work:
       Co-author of "Hyena Hierarchy: Towards Larger Convolutional Language Models" (2023); Ré's
       homepage lists Hyena and its application HyenaDNA among the lab's work.
     source_ids: [hyena-paper, re-site]
+  - name: ThunderKittens
+    artifact_slug: null
+    type: open-source
+    url: https://arxiv.org/abs/2410.20399
+    contribution: >-
+      Co-author, with Benjamin F. Spector, Simran Arora, Aaryan Singhal, and Daniel Y. Fu, of the
+      2024 paper on ThunderKittens, a framework for writing fast AI kernels; the lab has since
+      extended it to multi-GPU and AMD hardware.
+    source_ids: [tk-paper, re-site]
 links:
   - label: Website
     url: https://cs.stanford.edu/~chrismre/
   - label: Lab GitHub
     url: https://github.com/HazyResearch
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Christopher Ré was an assistant professor at the University of Wisconsin–Madison from 2009
+          to 2013 before joining the Stanford computer science faculty. At Stanford, Ré is a
+          professor in the Stanford AI Lab and is affiliated with the Machine Learning Group and the
+          Center for Research on Foundation Models.
+        source_ids: [macarthur, re-bio, re-site]
+      - text: >-
+          Ré's homepage describes the lab's main goal as helping students become professors,
+          entrepreneurs, and researchers, and notes that more than a dozen group members have gone on
+          to professorships. With students and collaborators, Ré has co-founded several companies,
+          and Together AI lists Ré among its founders.
+        source_ids: [re-site, together-about]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Ré's research has spanned database theory, database systems, and machine learning. The
+          MacArthur Foundation highlighted DeepDive, an inference engine that extracts facts from
+          text, images, and other hard-to-process data into a knowledge base. HOGWILD!, a 2011
+          lock-free approach to parallel stochastic gradient descent written with Feng Niu, Benjamin
+          Recht, and Stephen J. Wright, later received the NeurIPS 2020 test-of-time award.
+        source_ids: [re-bio, macarthur, hogwild-paper, re-site]
+      - text: >-
+          More recent work aims at the foundations of foundation models. The group's papers include
+          FlashAttention, a faster and more memory-efficient exact attention algorithm, and Hyena, a
+          convolution-based alternative to attention that the group also applied to DNA in HyenaDNA.
+          Ré also co-authored the HELM evaluation and the RedPajama open
+          dataset.
+        source_ids: [fa-paper, hyena-paper, re-site, helm-paper, redpajama-paper]
+      - text: >-
+          The lab's current systems work includes ThunderKittens for building AI kernels, along with
+          ParallelKittens for multiple GPUs and HipKittens for AMD hardware, and an Intelligence per
+          Watt project that measures the efficiency of AI models.
+        source_ids: [tk-paper, re-site]
+timeline:
+  - date: "2009"
+    text: Became an assistant professor at the University of Wisconsin–Madison.
+    source_ids: [macarthur]
+  - date: 2011-06-28
+    text: Released the HOGWILD! paper on lock-free parallel stochastic gradient descent.
+    source_ids: [hogwild-paper]
+  - date: "2015"
+    text: Named a MacArthur Fellow by the MacArthur Foundation.
+    source_ids: [macarthur]
+  - date: 2022-05-27
+    text: Co-authored the FlashAttention paper on fast, memory-efficient exact attention.
+    source_ids: [fa-paper]
+  - date: 2022-11-16
+    text: Co-authored the HELM paper on holistic evaluation of language models.
+    source_ids: [helm-paper]
+  - date: 2023-02-21
+    text: Co-authored the Hyena paper on convolutional language models.
+    source_ids: [hyena-paper]
+  - date: 2024-10-27
+    text: Released the ThunderKittens paper on building AI kernels.
+    source_ids: [tk-paper]
+  - date: 2024-11-19
+    text: Co-authored the RedPajama paper on open datasets for training language models.
+    source_ids: [redpajama-paper]
+honors:
+  - name: MacArthur Fellowship
+    year: 2015
+    awarded_by: John D. and Catherine T. MacArthur Foundation
+    source_ids: [macarthur, re-bio]
+  - name: PODS Best Paper Award
+    year: 2012
+    awarded_by: ACM Symposium on Principles of Database Systems (PODS)
+    source_ids: [re-bio]
+  - name: SIGMOD Best Paper Award
+    year: 2014
+    awarded_by: ACM SIGMOD Conference
+    source_ids: [re-bio]
+  - name: ICML Best Paper Award
+    year: 2016
+    awarded_by: International Conference on Machine Learning (ICML)
+    source_ids: [re-bio]
+  - name: NeurIPS Test of Time Award (for HOGWILD!)
+    year: 2020
+    awarded_by: Conference on Neural Information Processing Systems (NeurIPS)
+    source_ids: [re-bio, re-site]
+  - name: PODS Test of Time Award
+    year: 2022
+    awarded_by: ACM Symposium on Principles of Database Systems (PODS)
+    source_ids: [re-bio]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: re-site
     title: Christopher Ré — Stanford homepage
@@ -76,53 +176,74 @@ sources:
     publisher: Christopher Ré (Stanford University)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: re-bio
     title: Christopher Ré — Stanford biography (bio.txt)
     url: https://cs.stanford.edu/people/chrismre/bio.txt
     publisher: Christopher Ré (Stanford University)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: together-about
     title: About Us | Together AI (team listing)
     url: https://www.together.ai/about
     publisher: Together AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fa-paper
     title: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (arXiv 2205.14135)"
     url: https://arxiv.org/abs/2205.14135
     publisher: arXiv
     kind: paper
     published_at: 2022-05-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hyena-paper
     title: "Hyena Hierarchy: Towards Larger Convolutional Language Models (arXiv 2302.10866)"
     url: https://arxiv.org/abs/2302.10866
     publisher: arXiv
     kind: paper
     published_at: 2023-02-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: helm-paper
     title: Holistic Evaluation of Language Models (arXiv 2211.09110)
     url: https://arxiv.org/abs/2211.09110
     publisher: arXiv
     kind: paper
     published_at: 2022-11-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: redpajama-paper
     title: "RedPajama: an Open Dataset for Training Large Language Models (arXiv 2411.12372)"
     url: https://arxiv.org/abs/2411.12372
     publisher: arXiv
     kind: paper
     published_at: 2024-11-19
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: redpajama-repo
     title: togethercomputer/RedPajama-Data repository (Apache-2.0 license)
     url: https://github.com/togethercomputer/RedPajama-Data
     publisher: Together AI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: macarthur
+    title: Christopher Ré — MacArthur Foundation (Class of 2015)
+    url: https://www.macfound.org/fellows/class-of-2015/christopher-r
+    publisher: MacArthur Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: hogwild-paper
+    title: "HOGWILD!: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent (arXiv 1106.5730)"
+    url: https://arxiv.org/abs/1106.5730
+    publisher: arXiv
+    kind: paper
+    published_at: 2011-06-28
+    accessed_at: 2026-10-21
+  - id: tk-paper
+    title: "ThunderKittens: Simple, Fast, and Adorable AI Kernels (arXiv 2410.20399)"
+    url: https://arxiv.org/abs/2410.20399
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-27
+    accessed_at: 2026-10-21

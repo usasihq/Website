@@ -35,9 +35,40 @@ work:
 links:
   - label: GitHub
     url: https://github.com/arthw
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Neo Zhang, known on GitHub as arthw, is listed in llama.cpp's CODEOWNERS file as the member of
+          the ggml-org/ggml-sycl team, which owns the project's SYCL backend source. The SYCL backend lets llama.cpp
+          run on Intel GPUs, from integrated graphics to Arc and data center cards, through Intel's oneAPI
+          toolchain.
+        source_ids: [llama-cpp-codeowners, sycl-doc, github-profile]
+      - text: >-
+          The backend's documentation keeps a dated news log. It records oneDNN becoming the default matrix
+          multiplication library in 2024, an optimized Q4_0 matrix multiplication for Intel GPUs in 2025,
+          FlashAttention support in March 2026, fused mixture-of-experts operations in April–May 2026, and a switch
+          of its continuous integration builds to oneAPI 2026.1 in September 2026.
+        source_ids: [sycl-doc]
+timeline:
+  - date: "2024-08"
+    text: The llama.cpp SYCL backend made oneDNN its default GEMM library for Intel GPUs.
+    source_ids: [sycl-doc]
+  - date: "2024-11"
+    text: The SYCL backend adopted syclcompat to improve performance on some platforms.
+    source_ids: [sycl-doc]
+  - date: "2026-02"
+    text: The SYCL backend dropped support for Nvidia and AMD GPUs after the oneAPI plugins became unavailable.
+    source_ids: [sycl-doc]
+  - date: "2026-03"
+    text: The SYCL backend added FlashAttention support.
+    source_ids: [sycl-doc]
+  - date: "2026-09"
+    text: The SYCL backend's continuous integration builds switched to the oneAPI 2026.1 toolkit.
+    source_ids: [sycl-doc]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: arthw (Neo Zhang) on GitHub
@@ -45,21 +76,21 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sycl-doc
     title: llama.cpp for SYCL (docs/backend/SYCL.md)
     url: https://github.com/ggml-org/llama.cpp/blob/master/docs/backend/SYCL.md
     publisher: ggml-org (GitHub repository)
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by arthw
     url: https://github.com/ggml-org/llama.cpp/commits?author=arthw
@@ -73,4 +104,4 @@ sources:
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

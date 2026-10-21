@@ -13,7 +13,7 @@ bio:
     v0.22.0 (October 2026) those include the guided setup chat that opens on a fresh desktop
     install and the desktop app's Simple and Advanced modes.
   source_ids: [github-profile, personal-site, hermes-v2026-3-12, hermes-v0-22-0]
-  reviewed_at: 2026-10-16
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hermes Agent (open-source project)
     organization_slug: null
@@ -35,9 +35,38 @@ links:
     url: https://brooklyn.sh/
   - label: GitHub
     url: https://github.com/OutThisLife
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Brooklyn Nicholson contributes to Hermes Agent, the open-source agent from Nous Research, under the
+          GitHub handle OutThisLife. The v2026.3.12 release notes credit Nicholson with parallelizing the
+          project's test suite using pytest-xdist.
+        source_ids: [hermes-v2026-3-12, github-profile]
+      - text: >-
+          By the v0.22.0 release in October 2026, the release notes credit Nicholson with work across the
+          desktop app, including the model picker, plugin settings, workspace views and connector cards. Changes
+          credited to Nicholson in that release include the Simple and Advanced modes, titlebar tabs, profiles
+          that open in their own windows, and an opt-in native terminal mode.
+        source_ids: [hermes-v0-22-0]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Nicholson's personal site describes Nicholson as a full stack engineer. Nicholson also publishes
+          brooklyn-skills, an MIT-licensed collection of portable SKILL.md packages for coding agents that covers
+          tasks such as preparing pull requests, triaging issues and checking user-interface work, and that can be
+          loaded directly by Hermes Agent.
+        source_ids: [personal-site, brooklyn-skills]
+timeline:
+  - date: "2026-03-12"
+    text: Credited in the Hermes Agent v2026.3.12 release notes for parallelizing the test suite.
+    source_ids: [hermes-v2026-3-12]
+  - date: "2026-10-14"
+    text: Credited in the Hermes Agent v0.22.0 release notes for desktop-app work including the guided setup chat and Simple and Advanced modes.
+    source_ids: [hermes-v0-22-0]
 publication_status: published
-updated_at: 2026-10-16
-last_reviewed: 2026-10-16
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: OutThisLife (brooklyn!) on GitHub
@@ -45,25 +74,32 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-16
+    accessed_at: 2026-10-21
   - id: personal-site
     title: Brooklyn! Nicholson — personal site
     url: https://brooklyn.sh/
     publisher: Brooklyn Nicholson
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-16
+    accessed_at: 2026-10-21
   - id: hermes-v2026-3-12
     title: Hermes Agent v2026.3.12 release notes
     url: https://github.com/NousResearch/hermes-agent/releases/tag/v2026.3.12
     publisher: Nous Research
     kind: release-notes
     published_at: 2026-03-12
-    accessed_at: 2026-10-16
+    accessed_at: 2026-10-21
   - id: hermes-v0-22-0
     title: Hermes Agent v0.22.0 release notes
     url: https://github.com/NousResearch/hermes-agent/releases/tag/v0.22.0
     publisher: Nous Research
     kind: release-notes
     published_at: 2026-10-14
-    accessed_at: 2026-10-16
+    accessed_at: 2026-10-21
+  - id: brooklyn-skills
+    title: OutThisLife/brooklyn-skills README (MIT license)
+    url: https://github.com/OutThisLife/brooklyn-skills
+    publisher: OutThisLife (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

@@ -7,13 +7,14 @@ specialties: [language-models, education]
 headline: Head of Post-Training at Liquid AI; author of the LLM Course and its quantization tutorials
 bio:
   text: >-
-    Maxime Labonne is Head of Post-Training at Liquid AI, where his work is post-training the
-    company's LFM2 and LFM2.5 models. He is listed among the contributors to the LFM2 technical
+    Maxime Labonne is Head of Post-Training at Liquid AI, where Labonne's work is post-training the
+    company's LFM2 and LFM2.5 models. Labonne is listed among the contributors to the LFM2 technical
     report, whose models ship with open weights and deployment packages for tools such as
-    llama.cpp and ExecuTorch. He also publishes the LLM Course on GitHub, which includes his
+    llama.cpp and ExecuTorch. Labonne also publishes the LLM Course on GitHub, which includes
     tutorials on quantizing models with GGUF and llama.cpp, GPTQ, and ExLlamaV2, and an AutoQuant
     notebook for producing quantized versions of a model.
   source_ids: [gh-profile, lfm2-report, llm-course]
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Liquid AI
     organization_slug: liquid-ai
@@ -25,15 +26,15 @@ work:
     artifact_slug: lfm
     url: https://www.liquid.ai/models
     contribution: >-
-      Post-trains Liquid AI's LFM2 and LFM2.5 models, per his GitHub profile; listed as a
+      Post-trains Liquid AI's LFM2 and LFM2.5 models, per Labonne's GitHub profile; listed as a
       contributor to the LFM2 technical report.
     source_ids: [gh-profile, lfm2-report]
   - name: The LLM Course
     artifact_slug: null
     url: https://github.com/mlabonne/llm-course
     contribution: >-
-      Publishes the course, whose quantization section links his tutorials on GGUF with
-      llama.cpp, 4-bit GPTQ, and ExLlamaV2; its tools section links his AutoQuant notebook.
+      Publishes the course, whose quantization section links Labonne's tutorials on GGUF with
+      llama.cpp, 4-bit GPTQ, and ExLlamaV2; its tools section links the AutoQuant notebook.
     source_ids: [gh-profile, llm-course]
 links:
   - label: GitHub
@@ -42,9 +43,42 @@ links:
     url: https://huggingface.co/mlabonne
   - label: Blog
     url: https://maximelabonne.substack.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Maxime Labonne is a Google Developer Expert in AI and machine learning. At Liquid AI, Labonne leads post-training for the company's
+          own pre-trained language models, which use a custom architecture.
+        source_ids: [substack-about, gh-profile]
+  - heading: Models and research
+    paragraphs:
+      - text: >-
+          Labonne is among the contributors to the LFM2 Technical Report, released in November 2025, which
+          describes Liquid AI's LFM2 family of open-weight models built for efficient on-device deployment. Before
+          and alongside that work, Labonne released fine-tuned and merged community models such as AlphaMonarch-7B
+          and NeuralBeagle14-7B, and a collection of abliterated models with an accompanying article on removing
+          refusals.
+        source_ids: [lfm2-abs, lfm2-report, gh-profile]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          The LLM Course, published on GitHub, offers roadmaps and Colab notebooks for learning about large language
+          models, along with tool notebooks such as LLM AutoEval, LazyMergekit and LazyAxolotl for automating
+          evaluation, merging and fine-tuning. Labonne also curates LLM Datasets, a list of datasets for
+          fine-tuning.
+        source_ids: [llm-course, gh-profile]
+      - text: >-
+          Based on the course, Labonne co-wrote LLM Engineer's Handbook, a Packt book covering an LLM application
+          from design to deployment, and is also the author of Hands-On Graph Neural Networks Using Python. Labonne
+          writes technical analyses of LLMs and post-training on a Substack blog.
+        source_ids: [llm-course, substack-about]
+timeline:
+  - date: "2025-11-28"
+    text: Listed among the contributors to the LFM2 Technical Report from Liquid AI.
+    source_ids: [lfm2-abs]
 publication_status: published
-updated_at: 2026-09-29
-last_reviewed: 2026-09-29
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gh-profile
     title: mlabonne (Maxime Labonne) — GitHub profile and profile README
@@ -52,25 +86,32 @@ sources:
     publisher: Maxime Labonne
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: substack-about
     title: About — Maxime Labonne (blog)
     url: https://maximelabonne.substack.com/about
     publisher: Maxime Labonne
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: llm-course
     title: mlabonne/llm-course (GitHub repository README)
     url: https://github.com/mlabonne/llm-course
     publisher: Maxime Labonne
     kind: repository
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: lfm2-report
     title: LFM2 Technical Report (arXiv 2511.23404)
     url: https://arxiv.org/pdf/2511.23404
     publisher: Liquid AI (via arXiv)
     kind: paper
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
+  - id: lfm2-abs
+    title: LFM2 Technical Report (arXiv 2511.23404, abstract page)
+    url: https://arxiv.org/abs/2511.23404
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-11-28
+    accessed_at: 2026-10-21

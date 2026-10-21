@@ -63,12 +63,96 @@ work:
       Listed among the foundational contributors to reasoning research in the authorship section of
       the OpenAI o1 System Card (2024).
     source_ids: [o1-card]
+  - name: Sequence to Sequence Learning with Neural Networks
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1409.3215
+    contribution: >-
+      First author, with Oriol Vinyals and Quoc V. Le, of the 2014 paper on mapping one sequence to
+      another with neural networks; it received the NeurIPS 2024 Test of Time Paper Award.
+    source_ids: [seq2seq-paper, neurips-tot-2024]
+  - name: AlexNet
+    artifact_slug: null
+    type: open-research
+    url: https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html
+    contribution: >-
+      Co-author, with Alex Krizhevsky and Geoffrey Hinton, of "ImageNet Classification with Deep
+      Convolutional Neural Networks" (NIPS 2012), which received the NeurIPS 2022 Test of Time Award.
+    source_ids: [alexnet-paper, neurips-awards-2022]
 links:
   - label: SSI
     url: https://ssi.inc
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Ilya Sutskever co-authored the 2012 AlexNet paper with Alex Krizhevsky and Geoffrey Hinton,
+          which trained a deep convolutional network on ImageNet using GPUs. In 2014 Sutskever, Oriol
+          Vinyals, and Quoc V. Le published Sequence to Sequence Learning with Neural Networks, which
+          the NeurIPS 2024 award announcement describes as the work that set the encoder-decoder architecture.
+        source_ids: [alexnet-paper, seq2seq-paper, neurips-tot-2024]
+      - text: >-
+          Sutskever also co-authored the papers introducing GPT-3, the CLIP image-text models,
+          Codex with the HumanEval benchmark, and the Whisper speech recognition models. NVIDIA's 2026
+          release also credits Sutskever with contributions to AlphaGo and the GPT models and with
+          leading the research behind reasoning models such as OpenAI o1, and the o1 System Card lists
+          Sutskever among its foundational contributors.
+        source_ids: [gpt3-paper, clip-paper, codex-paper, whisper-paper, nvidia-release, o1-card]
+  - heading: Safe Superintelligence Inc.
+    paragraphs:
+      - text: >-
+          Sutskever co-founded Safe Superintelligence Inc. in 2024 as a lab with one goal and one
+          product, a safe superintelligence, approaching safety and capabilities together as technical
+          problems. In July 2025 SSI announced that Sutskever was formally CEO, with Daniel Levy as
+          President and the technical team reporting to Sutskever.
+        source_ids: [ssi-home, ssi-updates, nvidia-release]
+      - text: >-
+          In July 2026, SSI and NVIDIA announced a long-term strategic partnership that SSI says will
+          let it scale its compute by ten times.
+        source_ids: [ssi-updates, nvidia-release]
+timeline:
+  - date: "2012"
+    text: Co-authored the AlexNet paper on ImageNet classification, presented at NIPS 2012.
+    source_ids: [alexnet-paper]
+  - date: 2014-09-10
+    text: Released Sequence to Sequence Learning with Neural Networks with Oriol Vinyals and Quoc V. Le.
+    source_ids: [seq2seq-paper]
+  - date: 2020-05-28
+    text: Co-authored the GPT-3 paper, Language Models are Few-Shot Learners.
+    source_ids: [gpt3-paper]
+  - date: 2021-02-26
+    text: Co-authored the CLIP paper on learning visual models from natural language supervision.
+    source_ids: [clip-paper]
+  - date: 2021-07-07
+    text: Co-authored the Codex paper that introduced the HumanEval benchmark.
+    source_ids: [codex-paper]
+  - date: 2022-12-06
+    text: Co-authored the Whisper paper on large-scale weakly supervised speech recognition.
+    source_ids: [whisper-paper]
+  - date: "2024"
+    text: Co-founded Safe Superintelligence Inc.
+    source_ids: [nvidia-release]
+  - date: 2024-12-21
+    text: Listed among the foundational contributors in the OpenAI o1 System Card.
+    source_ids: [o1-card]
+  - date: 2025-07-03
+    text: Became formally CEO of Safe Superintelligence Inc., with Daniel Levy as President.
+    source_ids: [ssi-updates]
+  - date: 2026-07-27
+    text: Announced a long-term strategic partnership between SSI and NVIDIA.
+    source_ids: [nvidia-release]
+honors:
+  - name: NeurIPS Test of Time Award (for the AlexNet paper)
+    year: 2022
+    awarded_by: Conference on Neural Information Processing Systems (NeurIPS)
+    source_ids: [neurips-awards-2022]
+  - name: NeurIPS Test of Time Paper Award (for Sequence to Sequence Learning)
+    year: 2024
+    awarded_by: Conference on Neural Information Processing Systems (NeurIPS)
+    source_ids: [neurips-tot-2024]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nvidia-release
     title: Ilya Sutskever's Safe Superintelligence Inc. and NVIDIA Announce Long-Term Strategic Partnership (press release)
@@ -76,74 +160,102 @@ sources:
     publisher: NVIDIA
     kind: announcement
     published_at: 2026-07-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ssi-updates
     title: Safe Superintelligence Inc. — Updates (July 3, 2025 message on the CEO role)
     url: https://ssi.inc/updates
     publisher: Safe Superintelligence Inc.
     kind: announcement
     published_at: 2025-07-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ssi-home
     title: Safe Superintelligence Inc. — homepage
     url: https://ssi.inc
     publisher: Safe Superintelligence Inc.
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: o1-card
     title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
     url: https://arxiv.org/abs/2412.16720
     publisher: arXiv
     kind: paper
     published_at: 2024-12-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt3-paper
     title: Language Models are Few-Shot Learners (arXiv 2005.14165)
     url: https://arxiv.org/abs/2005.14165
     publisher: arXiv
     kind: paper
     published_at: 2020-05-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: clip-paper
     title: Learning Transferable Visual Models From Natural Language Supervision (arXiv 2103.00020)
     url: https://arxiv.org/abs/2103.00020
     publisher: arXiv
     kind: paper
     published_at: 2021-02-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: clip-repo
     title: openai/CLIP repository (MIT License)
     url: https://github.com/openai/CLIP
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codex-paper
     title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
     url: https://arxiv.org/abs/2107.03374
     publisher: arXiv
     kind: paper
     published_at: 2021-07-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: humaneval-repo
     title: openai/human-eval repository (README citation; MIT License)
     url: https://github.com/openai/human-eval
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: whisper-paper
     title: Robust Speech Recognition via Large-Scale Weak Supervision (arXiv 2212.04356)
     url: https://arxiv.org/abs/2212.04356
     publisher: arXiv
     kind: paper
     published_at: 2022-12-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: whisper-repo
     title: openai/whisper repository (MIT License)
     url: https://github.com/openai/whisper
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: alexnet-paper
+    title: ImageNet Classification with Deep Convolutional Neural Networks (NIPS 2012 proceedings)
+    url: https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html
+    publisher: NeurIPS Proceedings
+    kind: paper
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: seq2seq-paper
+    title: Sequence to Sequence Learning with Neural Networks (arXiv 1409.3215)
+    url: https://arxiv.org/abs/1409.3215
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-09-10
+    accessed_at: 2026-10-21
+  - id: neurips-awards-2022
+    title: Announcing the NeurIPS 2022 Awards
+    url: https://blog.neurips.cc/2022/11/21/announcing-the-neurips-2022-awards/
+    publisher: NeurIPS
+    kind: announcement
+    published_at: 2022-11-21
+    accessed_at: 2026-10-21
+  - id: neurips-tot-2024
+    title: Announcing the NeurIPS 2024 Test of Time Paper Awards
+    url: https://blog.neurips.cc/2024/11/27/announcing-the-neurips-2024-test-of-time-paper-awards/
+    publisher: NeurIPS
+    kind: announcement
+    published_at: 2024-11-27
+    accessed_at: 2026-10-21

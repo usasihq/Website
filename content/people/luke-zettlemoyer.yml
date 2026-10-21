@@ -16,7 +16,7 @@ bio:
     backpropagates through a frozen 4-bit quantized model into low-rank adapters so that a 65B
     parameter model can be finetuned on a single 48GB GPU.
   source_ids: [lsz-site, uw-faculty, roberta-paper, elmo-paper, qlora-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of Washington
     organization_slug: university-of-washington
@@ -57,9 +57,97 @@ links:
     url: https://homes.cs.washington.edu/~lsz/
   - label: Allen School profile
     url: https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Zettlemoyer is a Professor in the University of Washington's Paul G. Allen School of Computer Science &
+          Engineering, where the faculty page notes more than ten years of teaching advanced AI and machine
+          learning courses to undergraduate, PhD and professional master's students. Zettlemoyer is also a Senior
+          Research Director at Meta FAIR.
+        source_ids: [uw-faculty, lsz-site]
+      - text: >-
+          Zettlemoyer was named a Fellow of the Association for Computational Linguistics in January 2022 and was
+          elected ACL President in December 2024, serving as vice president-elect in 2025, vice president in 2026
+          and president in 2027. In November 2025 Schmidt Sciences named Zettlemoyer an AI2050 Senior Fellow.
+        source_ids: [lsz-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Zettlemoyer's research covers empirical methods for natural language semantics, including new learning
+          algorithms, tasks and datasets, and, more recently, how to build self-supervision signals for
+          pre-training large language models. Earlier work includes TriviaQA (2017), a reading comprehension
+          dataset, and the deep contextualized word representations paper (2018).
+        source_ids: [lsz-site, uw-faculty, triviaqa-paper, elmo-paper]
+      - text: >-
+          Zettlemoyer co-authored a series of pretraining papers, including the RoBERTa
+          study and BART, a denoising sequence-to-sequence model, in 2019, and Toolformer (2023), in which
+          language models teach themselves to call external tools. The 2023 QLoRA paper introduced a method for
+          finetuning quantized models through low-rank adapters.
+        source_ids: [roberta-paper, bart-paper, toolformer-paper, qlora-paper]
+      - text: >-
+          Recent work studies mixed-modal and tokenizer-free models. Transfusion (2024) trains one model to predict
+          text tokens and diffuse images, and the Byte Latent Transformer (2024) operates on dynamically sized
+          byte patches instead of tokens; the BLT paper received an outstanding paper award at ACL 2025.
+        source_ids: [transfusion-paper, blt-paper, lsz-site]
+timeline:
+  - date: "2017-05"
+    text: Co-authored TriviaQA, a reading comprehension dataset.
+    source_ids: [triviaqa-paper]
+  - date: "2018-02"
+    text: Co-authored "Deep contextualized word representations".
+    source_ids: [elmo-paper]
+  - date: "2019-07"
+    text: Co-authored the RoBERTa pretraining study.
+    source_ids: [roberta-paper]
+  - date: "2019-10"
+    text: Co-authored BART, a denoising sequence-to-sequence pretraining method.
+    source_ids: [bart-paper]
+  - date: "2022-01"
+    text: Named a Fellow of the Association for Computational Linguistics.
+    source_ids: [lsz-site]
+  - date: "2023-02"
+    text: Co-authored Toolformer, on language models that learn to use tools.
+    source_ids: [toolformer-paper]
+  - date: "2023-05"
+    text: Co-authored QLoRA, a method for efficient finetuning of quantized language models.
+    source_ids: [qlora-paper]
+  - date: "2024-08"
+    text: Co-authored Transfusion, a single model for next-token prediction and image diffusion.
+    source_ids: [transfusion-paper]
+  - date: "2024-12"
+    text: Elected President of the Association for Computational Linguistics, for the 2027 term.
+    source_ids: [lsz-site]
+  - date: "2024-12"
+    text: 'Co-authored "Byte Latent Transformer: Patches Scale Better Than Tokens".'
+    source_ids: [blt-paper]
+  - date: "2025-11-05"
+    text: Named an AI2050 Senior Fellow by Schmidt Sciences.
+    source_ids: [lsz-site]
+honors:
+  - name: ACL Fellow
+    year: 2022
+    awarded_by: Association for Computational Linguistics
+    source_ids: [lsz-site, uw-faculty]
+  - name: AI2050 Senior Fellow
+    year: 2025
+    awarded_by: Schmidt Sciences
+    source_ids: [lsz-site]
+  - name: Outstanding Paper Award, ACL 2025 (Byte Latent Transformer)
+    year: 2025
+    awarded_by: Association for Computational Linguistics
+    source_ids: [lsz-site]
+  - name: Presidential Early Career Award for Scientists and Engineers (PECASE)
+    year: null
+    awarded_by: The White House
+    source_ids: [uw-faculty]
+  - name: Allen Distinguished Investigator Award
+    year: null
+    awarded_by: Paul G. Allen (Allen Distinguished Investigators program)
+    source_ids: [uw-faculty]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: lsz-site
     title: Luke Zettlemoyer — homepage
@@ -67,32 +155,67 @@ sources:
     publisher: Luke Zettlemoyer (University of Washington)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: uw-faculty
     title: Luke Zettlemoyer — Paul G. Allen School faculty profile
     url: https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/
     publisher: Paul G. Allen School of Computer Science & Engineering, University of Washington
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: qlora-paper
     title: "QLoRA: Efficient Finetuning of Quantized LLMs (arXiv 2305.14314)"
     url: https://arxiv.org/abs/2305.14314
     publisher: arXiv
     kind: paper
     published_at: 2023-05-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: roberta-paper
     title: "RoBERTa: A Robustly Optimized BERT Pretraining Approach (arXiv 1907.11692)"
     url: https://arxiv.org/abs/1907.11692
     publisher: arXiv
     kind: paper
     published_at: 2019-07-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: elmo-paper
     title: Deep contextualized word representations (arXiv 1802.05365)
     url: https://arxiv.org/abs/1802.05365
     publisher: arXiv
     kind: paper
     published_at: 2018-02-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: triviaqa-paper
+    title: "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension (arXiv 1705.03551)"
+    url: https://arxiv.org/abs/1705.03551
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-05-09
+    accessed_at: 2026-10-21
+  - id: bart-paper
+    title: "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension (arXiv 1910.13461)"
+    url: https://arxiv.org/abs/1910.13461
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-29
+    accessed_at: 2026-10-21
+  - id: toolformer-paper
+    title: "Toolformer: Language Models Can Teach Themselves to Use Tools (arXiv 2302.04761)"
+    url: https://arxiv.org/abs/2302.04761
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-02-09
+    accessed_at: 2026-10-21
+  - id: transfusion-paper
+    title: "Transfusion: Predict the Next Token and Diffuse Images with One Multi-Modal Model (arXiv 2408.11039)"
+    url: https://arxiv.org/abs/2408.11039
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-08-20
+    accessed_at: 2026-10-21
+  - id: blt-paper
+    title: "Byte Latent Transformer: Patches Scale Better Than Tokens (arXiv 2412.09871)"
+    url: https://arxiv.org/abs/2412.09871
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-13
+    accessed_at: 2026-10-21

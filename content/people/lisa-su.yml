@@ -18,7 +18,7 @@ bio:
     leadership page lists honors including the 2026 National Medal of Science and the IEEE Robert N.
     Noyce Medal.
   source_ids: [amd-su-bio, amd-leadership, amd-advancing-ai-2025]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: AMD
     organization_slug: amd
@@ -59,9 +59,86 @@ work:
 links:
   - label: AMD leadership bio
     url: https://www.amd.com/en/corporate/leadership/lisa-su.html
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Su was a member of the technical staff at Texas Instruments from 1994 to 1995,
+          then spent 13 years at IBM in engineering and business leadership roles, including vice president of
+          the Semiconductor Research and Development Center, responsible for the direction of IBM's silicon
+          technologies and semiconductor R&D.
+        source_ids: [amd-board, amd-su-bio]
+      - text: >-
+          Su joined Freescale Semiconductor in 2007 as chief technology officer and later led its Networking
+          and Multimedia business. Su joined AMD in January 2012 as senior vice president and general manager
+          of global business units, became chief operating officer in July 2014, and was appointed president and
+          chief executive officer in October 2014. AMD's board named Su its chair in February 2022.
+        source_ids: [amd-board, amd-ceo-release, amd-su-bio]
+  - heading: AI products and industry roles
+    paragraphs:
+      - text: >-
+          At AMD's Advancing AI event in June 2025, the company presented an end-to-end AI platform built on open
+          industry standards, including the AMD Instinct MI350 series accelerators and the ROCm open software
+          stack for GPU computing.
+        source_ids: [amd-advancing-ai-2025, rocm-docs]
+      - text: >-
+          Outside AMD, Su chairs the board of the Semiconductor Industry Association and was appointed to the
+          President's Council of Advisors on Science and Technology.
+        source_ids: [amd-su-bio]
+timeline:
+  - date: "1994"
+    text: Joined Texas Instruments as a member of technical staff, serving until 1995.
+    source_ids: [amd-board]
+  - date: "2007"
+    text: Joined Freescale Semiconductor as chief technology officer.
+    source_ids: [amd-board, amd-su-bio]
+  - date: "2012-01"
+    text: Joined AMD as senior vice president and general manager, global business units.
+    source_ids: [amd-board, amd-su-bio]
+  - date: "2014-07"
+    text: Became chief operating officer of AMD.
+    source_ids: [amd-board]
+  - date: "2014-10-08"
+    text: Was appointed president and chief executive officer of AMD and joined its board of directors.
+    source_ids: [amd-ceo-release, amd-board]
+  - date: "2022-02"
+    text: Was named chair of AMD's board of directors.
+    source_ids: [amd-board]
+  - date: "2025-06-12"
+    text: Was quoted in AMD's Advancing AI 2025 release on the launch of the Instinct MI350 series accelerators.
+    source_ids: [amd-advancing-ai-2025]
+honors:
+  - name: IEEE Fellow
+    year: 2009
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [amd-board]
+  - name: IEEE Robert N. Noyce Medal
+    year: 2021
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [amd-su-bio, amd-board]
+  - name: Member of the National Academy of Engineering
+    year: null
+    awarded_by: National Academy of Engineering
+    source_ids: [amd-su-bio, amd-board]
+  - name: Member of the American Academy of Arts and Sciences
+    year: null
+    awarded_by: American Academy of Arts and Sciences
+    source_ids: [amd-su-bio, amd-board]
+  - name: Dr. Morris Chang Exemplary Leadership Award
+    year: null
+    awarded_by: Global Semiconductor Association
+    source_ids: [amd-su-bio, amd-board]
+  - name: SEMI Silicon Medal
+    year: 2025
+    awarded_by: SEMI
+    source_ids: [amd-su-bio]
+  - name: National Medal of Science
+    year: 2026
+    awarded_by: United States government
+    source_ids: [amd-su-bio]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: amd-su-bio
     title: Dr. Lisa Su — AMD Chair and Chief Executive Officer
@@ -69,18 +146,39 @@ sources:
     publisher: AMD
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: amd-leadership
     title: AMD Leadership — Executive Leadership Team
     url: https://www.amd.com/en/corporate/leadership.html
     publisher: AMD
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: amd-advancing-ai-2025
     title: AMD Unveils Vision for an Open AI Ecosystem, Detailing New Silicon, Software and Systems at Advancing AI 2025
     url: https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025
     publisher: AMD
     kind: announcement
     published_at: 2025-06-12
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: amd-board
+    title: AMD Board of Directors — Dr. Lisa T. Su
+    url: https://ir.amd.com/governance/board-of-directors
+    publisher: AMD
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: amd-ceo-release
+    title: AMD Appoints Dr. Lisa Su as President and Chief Executive Officer
+    url: https://ir.amd.com/news-events/press-releases/detail/568/amd-appoints-dr-lisa-su-as-president-and-chief-executive-officer
+    publisher: AMD
+    kind: announcement
+    published_at: 2014-10-08
+    accessed_at: 2026-10-21
+  - id: rocm-docs
+    title: What is ROCm? (AMD ROCm documentation)
+    url: https://rocm.docs.amd.com/en/latest/about/what-is-rocm.html
+    publisher: AMD
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-21

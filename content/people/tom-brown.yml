@@ -15,7 +15,7 @@ bio:
     paper "Deep reinforcement learning from human preferences" and of Anthropic's Constitutional AI
     paper.
   source_ids: [anthropic-leadership, gpt3-paper, rlhp-paper, cai-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Anthropic
     organization_slug: anthropic
@@ -53,9 +53,60 @@ work:
       Co-author of "Constitutional AI: Harmlessness from AI Feedback" (2022).
     source_ids: [cai-paper]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before Anthropic, Tom Brown led the engineering of GPT-3 at OpenAI. Anthropic's leadership
+          page also credits Brown, together with Dario Amodei, with co-inventing deep reinforcement
+          learning from human feedback, the technique used to turn base language models into
+          conversational assistants.
+        source_ids: [anthropic-leadership]
+      - text: >-
+          Brown co-founded Anthropic and is its Co-Founder and Chief Compute Officer, heading the
+          technical organization responsible for securing, scaling and using the company's compute
+          resources.
+        source_ids: [anthropic-leadership]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Brown is the first author of "Adversarial Patch" (2017), which describes printable image
+          patches that cause image classifiers to misclassify scenes, and a co-author of "Deep
+          reinforcement learning from human preferences" (2017). In 2020 Brown co-authored "Scaling
+          Laws for Neural Language Models" and was first author of "Language Models are Few-Shot
+          Learners", the paper introducing GPT-3.
+        source_ids: [adversarial-patch, rlhp-paper, scaling-laws, gpt3-paper]
+      - text: >-
+          At Anthropic, Brown is a co-author of early alignment papers including "A General Language
+          Assistant as a Laboratory for Alignment" (2021), "Training a Helpful and Harmless Assistant
+          with Reinforcement Learning from Human Feedback" (2022) and "Constitutional AI:
+          Harmlessness from AI Feedback" (2022).
+        source_ids: [hh-lab-paper, hh-rlhf-paper, cai-paper]
+timeline:
+  - date: 2017-06
+    text: Co-authored "Deep reinforcement learning from human preferences".
+    source_ids: [rlhp-paper]
+  - date: 2017-12
+    text: Published "Adversarial Patch" as first author.
+    source_ids: [adversarial-patch]
+  - date: 2020-01
+    text: Co-authored "Scaling Laws for Neural Language Models".
+    source_ids: [scaling-laws]
+  - date: 2020-05
+    text: Published "Language Models are Few-Shot Learners", the GPT-3 paper, as first author.
+    source_ids: [gpt3-paper]
+  - date: 2021-12
+    text: Co-authored Anthropic's "A General Language Assistant as a Laboratory for Alignment".
+    source_ids: [hh-lab-paper]
+  - date: 2022-04
+    text: Co-authored Anthropic's paper on training a helpful and harmless assistant with RLHF.
+    source_ids: [hh-rlhf-paper]
+  - date: 2022-12
+    text: Co-authored the Constitutional AI paper on harmlessness from AI feedback.
+    source_ids: [cai-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: anthropic-leadership
     title: Leadership at Anthropic (Co-Founders, full bios)
@@ -63,25 +114,53 @@ sources:
     publisher: Anthropic
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt3-paper
     title: Language Models are Few-Shot Learners (arXiv 2005.14165)
     url: https://arxiv.org/abs/2005.14165
     publisher: arXiv
     kind: paper
     published_at: 2020-05-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rlhp-paper
     title: Deep reinforcement learning from human preferences (arXiv 1706.03741)
     url: https://arxiv.org/abs/1706.03741
     publisher: arXiv
     kind: paper
     published_at: 2017-06-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cai-paper
     title: "Constitutional AI: Harmlessness from AI Feedback (arXiv 2212.08073)"
     url: https://arxiv.org/abs/2212.08073
     publisher: arXiv
     kind: paper
     published_at: 2022-12-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: adversarial-patch
+    title: Adversarial Patch (arXiv 1712.09665)
+    url: https://arxiv.org/abs/1712.09665
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-12-27
+    accessed_at: 2026-10-21
+  - id: scaling-laws
+    title: Scaling Laws for Neural Language Models (arXiv 2001.08361)
+    url: https://arxiv.org/abs/2001.08361
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-01-23
+    accessed_at: 2026-10-21
+  - id: hh-lab-paper
+    title: A General Language Assistant as a Laboratory for Alignment (arXiv 2112.00861)
+    url: https://arxiv.org/abs/2112.00861
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-12-01
+    accessed_at: 2026-10-21
+  - id: hh-rlhf-paper
+    title: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback (arXiv 2204.05862)
+    url: https://arxiv.org/abs/2204.05862
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-12
+    accessed_at: 2026-10-21

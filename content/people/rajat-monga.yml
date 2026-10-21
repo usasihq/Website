@@ -12,7 +12,7 @@ bio:
     large-scale machine learning, whose authors are listed at Google Brain and which describes how
     TensorFlow builds on experience with Google's first-generation system, DistBelief.
   source_ids: [tf-whitepaper, tf-osdi-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google Research and Google Brain
     organization_slug: google
@@ -30,9 +30,48 @@ work:
       the Apache 2.0 license.
     source_ids: [tf-whitepaper, tf-osdi-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Rajat Monga is a co-author, with Jeffrey Dean, Greg Corrado and colleagues, of "Large Scale
+          Distributed Deep Networks" (NIPS 2012), which presents DistBelief, a software framework for
+          training deep networks with billions of parameters on computing clusters. The later TensorFlow system paper describes TensorFlow as building on experience with
+          DistBelief, Google's first-generation system.
+        source_ids: [distbelief-paper, tf-osdi-paper]
+      - text: >-
+          With Jianmin Chen, Xinghao Pan, Samy Bengio and Rafal Jozefowicz, Monga co-authored "Revisiting
+          Distributed Synchronous SGD" (2016), which revisits synchronous optimization for distributed
+          training of deep learning models.
+        source_ids: [sync-sgd-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Monga is a co-author of the TensorFlow white paper, which describes TensorFlow's interface and
+          implementation and its open-source release under the Apache 2.0 license, and of the 2016 paper
+          "TensorFlow: A system for large-scale machine learning". Monga also co-authored the 2019 paper
+          on TensorFlow Eager, a multi-stage, Python-embedded domain-specific language that extends
+          TensorFlow for interactive research and production.
+        source_ids: [tf-whitepaper, tf-osdi-paper, tf-eager-paper]
+timeline:
+  - date: "2012"
+    text: Co-authored "Large Scale Distributed Deep Networks", presented at NIPS 2012.
+    source_ids: [distbelief-paper]
+  - date: 2016-03-14
+    text: Co-authored the TensorFlow white paper on large-scale machine learning on heterogeneous systems.
+    source_ids: [tf-whitepaper]
+  - date: 2016-04-04
+    text: Co-authored "Revisiting Distributed Synchronous SGD".
+    source_ids: [sync-sgd-paper]
+  - date: 2016-05-27
+    text: "Co-authored \"TensorFlow: A system for large-scale machine learning\"."
+    source_ids: [tf-osdi-paper]
+  - date: 2019-02-27
+    text: Co-authored the TensorFlow Eager paper on a Python-embedded DSL for machine learning.
+    source_ids: [tf-eager-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: tf-whitepaper
     title: "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems (arXiv 1603.04467)"
@@ -40,11 +79,32 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2016-03-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tf-osdi-paper
     title: "TensorFlow: A system for large-scale machine learning (arXiv 1605.08695)"
     url: https://arxiv.org/abs/1605.08695
     publisher: arXiv
     kind: paper
     published_at: 2016-05-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: distbelief-paper
+    title: Large Scale Distributed Deep Networks (NIPS 2012 proceedings)
+    url: https://papers.nips.cc/paper_files/paper/2012/hash/6aca97005c68f1206823815f66102863-Abstract.html
+    publisher: NeurIPS Proceedings
+    kind: paper
+    published_at: "2012"
+    accessed_at: 2026-10-21
+  - id: sync-sgd-paper
+    title: Revisiting Distributed Synchronous SGD (arXiv 1604.00981)
+    url: https://arxiv.org/abs/1604.00981
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-04-04
+    accessed_at: 2026-10-21
+  - id: tf-eager-paper
+    title: "TensorFlow Eager: A Multi-Stage, Python-Embedded DSL for Machine Learning (arXiv 1903.01855)"
+    url: https://arxiv.org/abs/1903.01855
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-02-27
+    accessed_at: 2026-10-21

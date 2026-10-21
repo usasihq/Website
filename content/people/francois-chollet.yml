@@ -22,6 +22,11 @@ affiliations:
     role: Co-founder
     current: true
     source_ids: [chollet-site]
+  - name: TensorFlow
+    organization_slug: null
+    role: Contributor (2015–2021)
+    current: false
+    source_ids: [chollet-site]
 work:
   - name: Keras and KerasHub
     artifact_slug: keras
@@ -36,14 +41,92 @@ work:
     url: https://arcprize.org/
     contribution: Co-founded ARC Prize, which runs the ARC-AGI benchmark.
     source_ids: [chollet-site]
+  - name: Deep Learning with Python
+    artifact_slug: null
+    type: media
+    url: https://fchollet.com/
+    contribution: >-
+      Author of Deep Learning with Python (first edition 2017, second edition 2021), an introduction to
+      deep learning with Python and Keras, and co-author with J. J. Allaire of Deep Learning with R (2018).
+    source_ids: [chollet-site]
 links:
   - label: Website
     url: https://fchollet.com/
   - label: GitHub
     url: https://github.com/fchollet
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Chollet created Keras in 2015 and has led the project since then; Chollet also contributed to
+          TensorFlow from 2015 to 2021, has led Keras Tuner since 2019 and has contributed to AutoKeras.
+          KerasHub, the Keras library of pretrained models, offers presets for open-weight models that run on
+          JAX, PyTorch or TensorFlow.
+        source_ids: [chollet-site, kerashub, kerashub-presets]
+      - text: >-
+          Earlier projects listed on Chollet's site include Wysp, a social network with drawing lessons for
+          artists (2011–2014), and QuickAnswers.io (2014–2015), a question-answering engine that passed
+          snippets from web search results to an LSTM language model to write its answers.
+        source_ids: [chollet-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Chollet's papers include "Xception - Deep Learning with Depthwise Separable Convolutions" (2016,
+          listed with CVPR on Chollet's site) and co-authored work on neural theorem proving and machine
+          translation such as DeepMath, HolStep and Tensor2Tensor. Chollet's primary research interest is
+          understanding abstraction and building algorithms that can form abstractions on their own.
+        source_ids: [chollet-site, xception-paper]
+      - text: >-
+          In the 2019 paper "On the Measure of Intelligence", Chollet introduced the Abstraction and
+          Reasoning Corpus, now known as ARC-AGI, as a benchmark for skill-acquisition efficiency.
+        source_ids: [measure-intelligence-paper, arc-history]
+  - heading: ARC Prize and Ndea
+    paragraphs:
+      - text: >-
+          Chollet hosted the first ARC-AGI competition on Kaggle in 2020 and ran the ARCathon competitions
+          with Lab42 in 2022 and 2023. In 2024 Chollet and Mike Knoop created ARC Prize 2024, and in 2025 ARC
+          Prize became a non-profit foundation; the foundation lists Chollet as co-founder, board member and
+          creator of ARC-AGI. In 2026 ARC Prize introduced ARC-AGI-3, an interactive reasoning benchmark for
+          agents.
+        source_ids: [arc-history, arc-about, arc-2024-report]
+      - text: >-
+          Chollet is also a co-founder of Ndea, which is building AI systems that combine intuitive pattern
+          recognition with formal reasoning in a single architecture, aimed at scientific discovery.
+        source_ids: [chollet-site, ndea-home]
+timeline:
+  - date: "2015"
+    text: Created the Keras deep learning library and began contributing to TensorFlow.
+    source_ids: [chollet-site]
+  - date: "2016-10-07"
+    text: Released "Xception - Deep Learning with Depthwise Separable Convolutions" as sole author.
+    source_ids: [xception-paper]
+  - date: "2017"
+    text: Published the first edition of the book Deep Learning with Python.
+    source_ids: [chollet-site]
+  - date: "2019-11-05"
+    text: Published "On the Measure of Intelligence", which introduced the ARC-AGI benchmark.
+    source_ids: [measure-intelligence-paper, arc-history]
+  - date: "2020"
+    text: Hosted the first ARC-AGI competition on Kaggle.
+    source_ids: [arc-history]
+  - date: "2021"
+    text: Published the second edition of Deep Learning with Python.
+    source_ids: [chollet-site]
+  - date: "2024"
+    text: Created the ARC Prize 2024 competition with Mike Knoop.
+    source_ids: [arc-history]
+  - date: "2024-12-05"
+    text: Co-authored the ARC Prize 2024 technical report.
+    source_ids: [arc-2024-report]
+  - date: "2025"
+    text: ARC Prize became a non-profit foundation, with Chollet as co-founder and board member.
+    source_ids: [arc-history, arc-about]
+  - date: "2026"
+    text: ARC Prize introduced ARC-AGI-3, an interactive reasoning benchmark for agentic intelligence.
+    source_ids: [arc-history]
 publication_status: published
-updated_at: 2026-10-01
-last_reviewed: 2026-10-01
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: chollet-site
     title: François Chollet's homepage
@@ -51,21 +134,63 @@ sources:
     publisher: François Chollet
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: kerashub
     title: KerasHub
     url: https://keras.io/keras_hub/
     publisher: Keras
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: kerashub-presets
     title: KerasHub pretrained models list
     url: https://keras.io/keras_hub/presets/
     publisher: Keras
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: xception-paper
+    title: "Xception: Deep Learning with Depthwise Separable Convolutions (arXiv 1610.02357)"
+    url: https://arxiv.org/abs/1610.02357
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-10-07
+    accessed_at: 2026-10-21
+  - id: measure-intelligence-paper
+    title: "On the Measure of Intelligence (arXiv 1911.01547)"
+    url: https://arxiv.org/abs/1911.01547
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-11-05
+    accessed_at: 2026-10-21
+  - id: arc-2024-report
+    title: "ARC Prize 2024: Technical Report (arXiv 2412.04604)"
+    url: https://arxiv.org/abs/2412.04604
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-05
+    accessed_at: 2026-10-21
+  - id: arc-history
+    title: ARC Prize — History
+    url: https://arcprize.org/history
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: arc-about
+    title: ARC Prize Foundation — About and team
+    url: https://arcprize.org/about
+    publisher: ARC Prize Foundation
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: ndea-home
+    title: Ndea — home page
+    url: https://ndea.com/
+    publisher: Ndea
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

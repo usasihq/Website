@@ -1,0 +1,165 @@
+slug: deepak-pathak
+name: Deepak Pathak
+initials: DP
+groups: [engineering, leadership]
+sector: corporate
+specialties: [robotics, reinforcement-learning, vision]
+headline: Co-founder and CEO of Skild AI; Raj Reddy Associate Professor at Carnegie Mellon University
+bio:
+  text: >-
+    Deepak Pathak is a co-founder and the CEO of Skild AI, which is developing a foundation model
+    for robotics, and the Raj Reddy Associate Professor in Carnegie Mellon University's School of
+    Computer Science. Pathak's research sits at the intersection of computer vision, machine
+    learning and robotics, with a focus on agents that learn from raw sensory data.
+  source_ids: [pathak-site]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: Skild AI
+    organization_slug: skild-ai
+    role: Co-founder and CEO
+    current: true
+    source_ids: [pathak-site]
+  - name: Carnegie Mellon University
+    organization_slug: null
+    role: Raj Reddy Associate Professor, School of Computer Science (Robotics Institute; affiliated with the Machine Learning Department)
+    current: true
+    source_ids: [pathak-site]
+  - name: Meta AI Research
+    organization_slug: null
+    role: Researcher for one year, collaborating with Jitendra Malik
+    current: false
+    source_ids: [pathak-site]
+work:
+  - name: Curiosity-driven exploration by self-supervised prediction
+    artifact_slug: null
+    url: https://arxiv.org/abs/1705.05363
+    contribution: >-
+      First author of a 2017 paper that uses an agent's error in predicting the consequences of its
+      own actions as an intrinsic reward for exploration.
+    source_ids: [curiosity-paper]
+  - name: LocoFormer
+    artifact_slug: null
+    url: https://arxiv.org/abs/2509.23745
+    contribution: >-
+      Co-author of a 2025 paper on a generalist locomotion policy that adapts by accumulating
+      experience in a long context, which Skild AI cites as its in-context learner for locomotion.
+    source_ids: [locoformer-paper, skild-s1]
+links:
+  - label: Website
+    url: https://www.cs.cmu.edu/~dpathak/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Pathak's site lists a PhD from UC Berkeley advised by Alyosha Efros and Trevor Darrell, a
+          visiting postdoctoral appointment at UC Berkeley with Pieter Abbeel, and a year as a
+          researcher at Meta AI Research. Pathak now holds the Raj Reddy chair at Carnegie Mellon,
+          awarded in 2024, as a member of the Robotics Institute.
+        source_ids: [pathak-site]
+      - text: >-
+          As co-founder and CEO of Skild AI, Pathak leads work on a single robot "brain" meant to
+          operate many robot bodies and tasks. Skild AI has introduced S1, a robotic foundation
+          model built as an in-context learner that executes a task after being shown a video.
+        source_ids: [pathak-site, skild-s1]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Pathak's group draws on psychology to build systems that learn using data as their own
+          supervision. Early work on curiosity-driven exploration used prediction error as an
+          intrinsic reward, and later work with students covered legged locomotion over difficult
+          terrain using egocentric vision.
+        source_ids: [pathak-site, curiosity-paper, terrain-paper]
+      - text: >-
+          Skild AI's technical writing on its general-purpose robot brain cites several of Pathak's
+          papers, including work on zero-shot visual imitation and on learning robot affordances
+          from human videos.
+        source_ids: [skild-brain-blog]
+timeline:
+  - date: "2017-05-15"
+    text: First-authored the paper on curiosity-driven exploration by self-supervised prediction.
+    source_ids: [curiosity-paper]
+  - date: "2022-11-14"
+    text: Co-authored a paper on legged locomotion in challenging terrains using egocentric vision.
+    source_ids: [terrain-paper]
+  - date: "2024"
+    text: Was awarded the Raj Reddy Chair at Carnegie Mellon University.
+    source_ids: [pathak-site]
+  - date: "2025-07-29"
+    text: Skild AI published its account of building a general-purpose robotic brain.
+    source_ids: [skild-brain-blog]
+  - date: "2025-09-28"
+    text: Co-authored the LocoFormer paper on generalist locomotion via long-context adaptation.
+    source_ids: [locoformer-paper]
+honors:
+  - name: NVIDIA Graduate Fellowship
+    year: 2017
+    awarded_by: NVIDIA
+    source_ids: [pathak-site]
+  - name: Okawa Research Award
+    year: 2022
+    awarded_by: Okawa Foundation
+    source_ids: [pathak-site]
+  - name: Innovators Under 35
+    year: 2024
+    awarded_by: MIT Technology Review
+    source_ids: [pathak-site]
+  - name: Sloan Research Fellowship
+    year: 2025
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [pathak-site]
+  - name: ONR Young Investigator Award
+    year: 2026
+    awarded_by: Office of Naval Research
+    source_ids: [pathak-site]
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: pathak-site
+    title: Deepak Pathak — homepage (Carnegie Mellon University)
+    url: https://www.cs.cmu.edu/~dpathak/
+    publisher: Deepak Pathak
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: skild-brain-blog
+    title: Building the general-purpose robotic brain
+    url: https://www.skild.ai/blogs/building-the-general-purpose-robotic-brain
+    publisher: Skild AI
+    kind: announcement
+    published_at: 2025-07-29
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: skild-s1
+    title: "Introducing S1: In-Context Learning for Robotics"
+    url: https://www.skild.ai/blogs/s1
+    publisher: Skild AI
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: curiosity-paper
+    title: Curiosity-driven Exploration by Self-supervised Prediction (arXiv 1705.05363)
+    url: https://arxiv.org/abs/1705.05363
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-05-15
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: terrain-paper
+    title: Legged Locomotion in Challenging Terrains using Egocentric Vision (arXiv 2211.07638)
+    url: https://arxiv.org/abs/2211.07638
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-14
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: locoformer-paper
+    title: "LocoFormer: Generalist Locomotion via Long-context Adaptation (arXiv 2509.23745)"
+    url: https://arxiv.org/abs/2509.23745
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-09-28
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

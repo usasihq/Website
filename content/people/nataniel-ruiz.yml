@@ -14,7 +14,7 @@ bio:
     Google Research with an official dataset repository. Ruiz's other work on image and video
     generation includes HyperDreamBooth, StyleDrop, ZipLoRA, RealFill, Magic Insert, and ReCapture.
   source_ids: [ruiz-site, dreambooth-paper, dreambooth-project, dreambooth-dataset]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind (GenMedia team)
     organization_slug: google-deepmind
@@ -44,9 +44,73 @@ links:
     url: https://natanielruiz.github.io/
   - label: GitHub
     url: https://github.com/natanielruiz
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Ruiz's PhD research in computer science at Boston University concerned simulating synthetic data for
+          training and testing neural networks, beginning with "Learning To Simulate" (2018), written with Samuel
+          Schulter and Manmohan Chandraker. With Sarah Adel Bargal and Stan Sclaroff, Ruiz also studied
+          adversarial attacks that disrupt deepfake generation by image translation and face manipulation
+          systems.
+        source_ids: [ruiz-site, learning-to-simulate-paper, disrupting-deepfakes-paper]
+      - text: >-
+          At Google, Ruiz was lead author of DreamBooth (2022), which fine-tunes text-to-image diffusion models to
+          generate a specific subject from a few example images, and of HyperDreamBooth (2023), which speeds up
+          this personalization with hypernetworks. Ruiz co-authored StyleDrop for generating images in a given
+          style, ZipLoRA for merging subject and style LoRAs, and RealFill for completing images from reference
+          photos, and led Magic Insert (2024), a style-aware drag-and-drop method for placing subjects into
+          images.
+        source_ids: [dreambooth-paper, dreambooth-project, hyperdreambooth-paper, styledrop-paper, ziplora-paper, realfill-paper, magic-insert-paper]
+  - heading: Video, games and multimodal models
+    paragraphs:
+      - text: >-
+          Ruiz's work has extended to video and interactive generation. ReCapture (2024) re-renders a
+          user-provided video from new camera viewpoints, and Unbounded (2024) is a generative game of character
+          life simulation with open-ended mechanics produced in real time. Ruiz also worked on Camera Coach, a
+          feature for Google Pixel phones announced at Made by Google 2025.
+        source_ids: [recapture-paper, unbounded-paper, ruiz-site]
+      - text: >-
+          In Google DeepMind's GenMedia team, Ruiz works on pre-training of generative models and contributed to
+          large-scale pretraining and new capabilities for Gemini Omni, an any-to-any multimodal model whose Flash
+          version was released at Google I/O 2026.
+        source_ids: [ruiz-site, gemini-omni]
+timeline:
+  - date: "2018-10"
+    text: Posted "Learning To Simulate" as first author.
+    source_ids: [learning-to-simulate-paper]
+  - date: "2020-03"
+    text: Posted "Disrupting Deepfakes", on adversarial attacks against image translation networks, as first author.
+    source_ids: [disrupting-deepfakes-paper]
+  - date: "2022-08"
+    text: Posted DreamBooth, a method for subject-driven fine-tuning of text-to-image models, as first author.
+    source_ids: [dreambooth-paper]
+  - date: "2023"
+    text: DreamBooth received a best paper award at CVPR 2023.
+    source_ids: [ruiz-site]
+  - date: "2023-06"
+    text: Co-authored StyleDrop, a method for text-to-image generation in any style.
+    source_ids: [styledrop-paper]
+  - date: "2023-07"
+    text: Posted HyperDreamBooth as first author.
+    source_ids: [hyperdreambooth-paper]
+  - date: "2024-07"
+    text: Posted Magic Insert, a style-aware drag-and-drop method, as first author.
+    source_ids: [magic-insert-paper]
+  - date: "2024-10"
+    text: Co-authored Unbounded, a generative infinite game of character life simulation.
+    source_ids: [unbounded-paper]
+  - date: "2026"
+    text: Gemini Omni Flash, to which Ruiz contributed pretraining work, was released at Google I/O 2026.
+    source_ids: [ruiz-site]
+honors:
+  - name: CVPR 2023 Best Paper Award (DreamBooth)
+    year: 2023
+    awarded_by: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+    source_ids: [ruiz-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ruiz-site
     title: Nataniel Ruiz — homepage
@@ -54,25 +118,95 @@ sources:
     publisher: Nataniel Ruiz
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dreambooth-paper
     title: "DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation (arXiv 2208.12242)"
     url: https://arxiv.org/abs/2208.12242
     publisher: arXiv
     kind: paper
     published_at: 2022-08-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dreambooth-project
     title: DreamBooth — project page (Google Research)
     url: https://dreambooth.github.io/
     publisher: DreamBooth authors
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dreambooth-dataset
     title: google/dreambooth — DreamBooth dataset repository
     url: https://github.com/google/dreambooth
     publisher: Google (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: learning-to-simulate-paper
+    title: "Learning To Simulate (arXiv 1810.02513)"
+    url: https://arxiv.org/abs/1810.02513
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-10-05
+    accessed_at: 2026-10-21
+  - id: disrupting-deepfakes-paper
+    title: "Disrupting Deepfakes: Adversarial Attacks Against Conditional Image Translation Networks and Facial Manipulation Systems (arXiv 2003.01279)"
+    url: https://arxiv.org/abs/2003.01279
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-03-03
+    accessed_at: 2026-10-21
+  - id: hyperdreambooth-paper
+    title: "HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models (arXiv 2307.06949)"
+    url: https://arxiv.org/abs/2307.06949
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-07-13
+    accessed_at: 2026-10-21
+  - id: styledrop-paper
+    title: "StyleDrop: Text-to-Image Generation in Any Style (arXiv 2306.00983)"
+    url: https://arxiv.org/abs/2306.00983
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-06-01
+    accessed_at: 2026-10-21
+  - id: ziplora-paper
+    title: "ZipLoRA: Any Subject in Any Style by Effectively Merging LoRAs (arXiv 2311.13600)"
+    url: https://arxiv.org/abs/2311.13600
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-22
+    accessed_at: 2026-10-21
+  - id: realfill-paper
+    title: "RealFill: Reference-Driven Generation for Authentic Image Completion (arXiv 2309.16668)"
+    url: https://arxiv.org/abs/2309.16668
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-09-28
+    accessed_at: 2026-10-21
+  - id: magic-insert-paper
+    title: "Magic Insert: Style-Aware Drag-and-Drop (arXiv 2407.02489)"
+    url: https://arxiv.org/abs/2407.02489
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-07-02
+    accessed_at: 2026-10-21
+  - id: recapture-paper
+    title: "ReCapture: Generative Video Camera Controls for User-Provided Videos using Masked Video Fine-Tuning (arXiv 2411.05003)"
+    url: https://arxiv.org/abs/2411.05003
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-11-07
+    accessed_at: 2026-10-21
+  - id: unbounded-paper
+    title: "Unbounded: A Generative Infinite Game of Character Life Simulation (arXiv 2410.18975)"
+    url: https://arxiv.org/abs/2410.18975
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-24
+    accessed_at: 2026-10-21
+  - id: gemini-omni
+    title: Gemini Omni — Google DeepMind
+    url: https://deepmind.google/models/gemini-omni/
+    publisher: Google DeepMind
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

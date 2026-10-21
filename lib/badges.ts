@@ -44,11 +44,14 @@ const CHAR_W: Record<string, number> = {
   b: 7.3,
   d: 7.3,
   e: 7,
+  f: 4.2,
   i: 3.3,
   k: 6.6,
   l: 3.3,
   n: 7.3,
   o: 7.3,
+  p: 7.3,
+  r: 5.1,
   s: 6,
   t: 4.4,
   u: 7.3,
@@ -87,8 +90,16 @@ function textWidth(text: string): number {
 
 /** Shields-style SVG; no browser, no fonts on disk. */
 export function rankBadgeSvg(kind: RankBadgeKind, rank: number): string {
-  const message = rankBadgeMessage(kind, rank);
-  const title = rankBadgeTitle(kind, rank);
+  return messageBadgeSvg(rankBadgeMessage(kind, rank), rankBadgeTitle(kind, rank));
+}
+
+/** Static "USASI | profile" badge for People pages (public/badges/profile.svg). */
+export const PROFILE_BADGE_PATH = "/badges/profile.svg";
+export const PROFILE_BADGE_ALT = "Profile on USASI";
+export const profileBadgeSvg = () => messageBadgeSvg("profile", `USASI: ${PROFILE_BADGE_ALT}`);
+
+/** The same USASI label panel with any short message on the right. */
+export function messageBadgeSvg(message: string, title: string): string {
   const messageText = Math.ceil(textWidth(message));
   const messageBox = messageText + PAD * 2;
   const width = LABEL_BOX + messageBox;

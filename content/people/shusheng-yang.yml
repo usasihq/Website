@@ -16,7 +16,7 @@ bio:
     language models released with weights, code and data, and was a co-first author of the Qwen-VL
     technical report.
   source_ids: [homepage, cambrian-s-paper, tis-paper, cambrian1-paper, qwenvl-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: New York University (Courant Institute)
     organization_slug: new-york-university
@@ -65,9 +65,59 @@ links:
     url: https://shushengyang.com/
   - label: GitHub
     url: https://github.com/vealocia
+sections:
+  - heading: Early research
+    paragraphs:
+      - text: >-
+          Yang's earlier papers were on video and object-level vision with transformers. As first or co-first
+          author, Yang worked on video instance segmentation, including "Crossover Learning for Fast Online Video Instance Segmentation" and "Instances as Queries"
+          (ICCV 2021) and the Temporally Efficient Vision Transformer (CVPR 2022 oral), and on masked image
+          modeling, including "Masked Visual Reconstruction in Language Semantic Space" (CVPR 2023) and work on
+          plain vision transformers for object detection (ICCV 2023).
+        source_ids: [homepage]
+  - heading: Multimodal models and spatial intelligence
+    paragraphs:
+      - text: >-
+          Yang was a co-first author of the 2023 Qwen-VL technical report, which introduced the Qwen-VL and
+          Qwen-VL-Chat vision-language models. Since starting a PhD at NYU Courant in September 2024, advised by
+          Saining Xie, Yang has focused on spatial intelligence and long-context video. Yang co-authored the
+          open Cambrian-1 multimodal models (NeurIPS 2024 oral), was co-first author of Thinking in Space (CVPR
+          2025 oral), which introduced the VSI-Bench benchmark, and was first author of Cambrian-S (ICLR 2026),
+          on spatial supersensing in video.
+        source_ids: [qwenvl-paper, homepage, cambrian1-paper, tis-paper, cambrian-s-paper]
+      - text: >-
+          Other recent co-authored papers include VideoNSA (ICLR 2026), which applies native sparse attention to
+          video understanding, and a COLM 2026 paper arguing that benchmark designers should train on their own
+          test sets to expose shortcuts that do not require vision.
+        source_ids: [homepage]
+timeline:
+  - date: "2021"
+    text: Presented two papers on video instance segmentation at ICCV 2021 as co-first author.
+    source_ids: [homepage]
+  - date: "2022"
+    text: Presented the Temporally Efficient Vision Transformer for video instance segmentation as a CVPR 2022 oral.
+    source_ids: [homepage]
+  - date: "2023-08"
+    text: Posted the Qwen-VL technical report as a co-first author.
+    source_ids: [qwenvl-paper]
+  - date: "2024-06"
+    text: Co-authored Cambrian-1, a fully open, vision-centric family of multimodal language models.
+    source_ids: [cambrian1-paper]
+  - date: "2024-09"
+    text: Began a PhD at NYU Courant advised by Saining Xie.
+    source_ids: [homepage]
+  - date: "2024-12"
+    text: Posted Thinking in Space, introducing the VSI-Bench visual-spatial benchmark, as co-first author.
+    source_ids: [tis-paper]
+  - date: "2025-11"
+    text: Released Cambrian-S, on spatial supersensing in video, as first author.
+    source_ids: [cambrian-s-paper, homepage]
+  - date: "2026-01"
+    text: Cambrian-S and VideoNSA were accepted to ICLR 2026.
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Shusheng Yang — homepage (research and publications)
@@ -75,14 +125,14 @@ sources:
     publisher: Shusheng Yang
     kind: official-page
     published_at: 2026-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cambrian-s-paper
     title: "Cambrian-S: Towards Spatial Supersensing in Video (arXiv 2511.04670)"
     url: https://arxiv.org/abs/2511.04670
     publisher: arXiv
     kind: paper
     published_at: 2025-11-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cambrian-s-license
     title: cambrian-mllm/cambrian-s LICENSE (Apache 2.0)
     url: https://github.com/cambrian-mllm/cambrian-s/blob/main/LICENSE
@@ -96,7 +146,7 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2024-12-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tis-license
     title: vision-x-nyu/thinking-in-space LICENSE (Apache 2.0)
     url: https://github.com/vision-x-nyu/thinking-in-space/blob/main/LICENSE
@@ -110,7 +160,7 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2024-06-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cambrian1-license
     title: cambrian-mllm/cambrian LICENSE (Apache 2.0)
     url: https://github.com/cambrian-mllm/cambrian/blob/main/LICENSE
@@ -124,7 +174,7 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2023-08-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: qwenvl-license
     title: QwenLM/Qwen-VL LICENSE (Tongyi Qianwen license agreement)
     url: https://github.com/QwenLM/Qwen-VL/blob/master/LICENSE

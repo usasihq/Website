@@ -14,7 +14,7 @@ bio:
     published under the MIT-0 license and covers prompt engineering, fine-tuning, quantization,
     RLHF, retrieval-augmented generation, agents and multimodal models.
   source_ids: [antje-github, aws-author, genai-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Amazon AGI (Amazon)
     organization_slug: amazon
@@ -49,9 +49,64 @@ links:
     url: https://github.com/antje
   - label: AWS blog author page
     url: https://aws.amazon.com/blogs/machine-learning/author/antjebar/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          A June 2021 AWS Machine Learning Blog post describes Barth as a Senior Developer Advocate for AI and
+          machine learning at AWS, and Barth's author page there later gives the title Principal Developer
+          Advocate for generative AI. On the AWS News Blog, Barth wrote launch posts such as the
+          December 2024 introductions of the next generation of Amazon SageMaker and of multi-agent collaboration
+          in Amazon Bedrock.
+        source_ids: [pds-post, aws-author, aws-news-author, sagemaker-post, bedrock-multiagent-post]
+      - text: >-
+          Barth is now a Member of Technical Staff at Amazon AGI, where Barth's site says the role covers product
+          adoption strategy for next-generation AI, working with research, product, engineering and go-to-market
+          teams.
+        source_ids: [antje-site, antje-github]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Barth co-wrote two O'Reilly books. Data Science on AWS covers end-to-end machine learning pipelines with
+          SageMaker, TensorFlow and BERT, and Generative AI on AWS, written with Chris Fregly and Shelbee
+          Eigenbrode, covers building multimodal applications with foundation models, fine-tuning methods such as
+          RLHF and PEFT, and Amazon Bedrock. Both books have public companion code repositories.
+        source_ids: [antje-site, genai-repo]
+      - text: >-
+          With DeepLearning.AI, Barth managed development of and co-taught the course Generative AI with Large
+          Language Models, alongside Chris Fregly, Shelbee Eigenbrode and Mike Chambers. The course covers the
+          generative AI lifecycle from data and model selection through evaluation and deployment.
+        source_ids: [antje-site, dlai-course]
+  - heading: Talks
+    paragraphs:
+      - text: >-
+          Barth has given keynotes at the AI Engineer World's Fair, on moving from software
+          developer to AI engineer (June 2024), on building agents at cloud scale (June 2025) and on perception
+          agents from the Amazon AGI Lab (June 2026), and spoke on scaling the Model Context Protocol at the MCP
+          Developer Summit in May 2025.
+        source_ids: [antje-site]
+timeline:
+  - date: "2021-06"
+    text: Profiled on the AWS Machine Learning Blog as a Senior Developer Advocate for AI and machine learning.
+    source_ids: [pds-post]
+  - date: "2024-06"
+    text: Gave the keynote "From Software Developer to AI Engineer" at the AI Engineer World's Fair.
+    source_ids: [antje-site]
+  - date: "2024-12-03"
+    text: Wrote AWS News Blog launch posts for the next-generation Amazon SageMaker and Bedrock multi-agent collaboration.
+    source_ids: [sagemaker-post, bedrock-multiagent-post]
+  - date: "2025-05"
+    text: Spoke on scaling the Model Context Protocol in the cloud at the MCP Developer Summit.
+    source_ids: [antje-site]
+  - date: "2025-06"
+    text: Gave the keynote "Building Agents at Cloud Scale" at the AI Engineer World's Fair.
+    source_ids: [antje-site]
+  - date: "2026-06"
+    text: Gave the keynote "Perception Agents" at the AI Engineer World's Fair, drawing on Amazon AGI Lab work.
+    source_ids: [antje-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: antje-github
     title: antje (Antje Barth) on GitHub
@@ -59,18 +114,60 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: aws-author
     title: Antje Barth — AWS Machine Learning Blog author page
     url: https://aws.amazon.com/blogs/machine-learning/author/antjebar/
     publisher: Amazon Web Services
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: genai-repo
     title: generative-ai-on-aws/generative-ai-on-aws README and license (MIT-0)
     url: https://github.com/generative-ai-on-aws/generative-ai-on-aws
     publisher: generative-ai-on-aws (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: antje-site
+    title: Antje Barth — personal site
+    url: https://antje.dev/
+    publisher: Antje Barth
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: pds-post
+    title: DeepLearning.AI, Coursera, and AWS launch the new Practical Data Science Specialization with Amazon SageMaker
+    url: https://aws.amazon.com/blogs/machine-learning/deeplearning-ai-coursera-and-aws-launch-the-new-practical-data-science-specialization-with-amazon-sagemaker/
+    publisher: Amazon Web Services
+    kind: announcement
+    published_at: 2021-06-02
+    accessed_at: 2026-10-21
+  - id: aws-news-author
+    title: Antje Barth — AWS News Blog author page
+    url: https://aws.amazon.com/blogs/aws/author/antjebar/
+    publisher: Amazon Web Services
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: sagemaker-post
+    title: "Introducing the next generation of Amazon SageMaker: The center for all your data, analytics, and AI"
+    url: https://aws.amazon.com/blogs/aws/introducing-the-next-generation-of-amazon-sagemaker-the-center-for-all-your-data-analytics-and-ai/
+    publisher: Amazon Web Services
+    kind: announcement
+    published_at: 2024-12-03
+    accessed_at: 2026-10-21
+  - id: bedrock-multiagent-post
+    title: Introducing multi-agent collaboration capability for Amazon Bedrock
+    url: https://aws.amazon.com/blogs/aws/introducing-multi-agent-collaboration-capability-for-amazon-bedrock/
+    publisher: Amazon Web Services
+    kind: announcement
+    published_at: 2024-12-03
+    accessed_at: 2026-10-21
+  - id: dlai-course
+    title: Generative AI with Large Language Models — DeepLearning.AI course page
+    url: https://www.deeplearning.ai/short-courses/generative-ai-with-llms/
+    publisher: DeepLearning.AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

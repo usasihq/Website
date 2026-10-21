@@ -17,7 +17,7 @@ bio:
     Translation by Jointly Learning to Align and Translate. Cho was a founding Editor-in-Chief of
     Transactions on Machine Learning Research until 2024.
   source_ids: [cho-site, encdec-paper, attention-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: New York University
     organization_slug: new-york-university
@@ -37,6 +37,16 @@ affiliations:
   - name: Genentech
     organization_slug: null
     role: Executive Director of Frontier Research and Senior Fellow (until January 2026)
+    current: false
+    source_ids: [cho-site]
+  - name: Prescient Design
+    organization_slug: null
+    role: Co-founder (early 2021)
+    current: false
+    source_ids: [cho-site]
+  - name: Université de Montréal
+    organization_slug: null
+    role: Postdoctoral fellow with Yoshua Bengio (until summer 2015)
     current: false
     source_ids: [cho-site]
 work:
@@ -60,9 +70,82 @@ work:
 links:
   - label: Website
     url: https://kyunghyuncho.me/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Cho earned MSc and DSc degrees at Aalto University in 2011 and 2014, supervised by Juha Karhunen, Tapani
+          Raiko and Alexander Ilin, with a doctoral thesis titled "Foundations and Advances in Deep Learning".
+          Cho was then a postdoctoral fellow at the University of Montreal under Yoshua Bengio until summer 2015,
+          before joining New York University.
+        source_ids: [cho-site]
+      - text: >-
+          From June 2017 to May 2020 Cho was also a research scientist at Facebook AI Research. In early 2021 Cho
+          co-founded Prescient Design, which Genentech acquired later that year, and served at Genentech as
+          Executive Director of Frontier Research and a Senior Fellow until January 2026. Cho is now co-founder
+          and CEO of Ortet and co-directs NYU's Global Frontier AI Lab with Yann LeCun.
+        source_ids: [cho-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          In 2014 Cho published several papers on neural machine translation. As first author, Cho proposed the RNN
+          Encoder-Decoder for learning phrase representations, and a companion paper studied the properties of
+          neural machine translation with encoder-decoder models. With Dzmitry Bahdanau and Yoshua Bengio, Cho
+          co-authored the paper that introduced jointly learning to align and translate, in which the model
+          learns to soft-search for the parts of a source sentence relevant to predicting each target word.
+        source_ids: [encdec-paper, nmt-properties-paper, attention-paper]
+      - text: >-
+          Cho co-authored "Show, Attend and Tell" (2015), which applied visual attention to generating image
+          captions, and in 2015 posted lecture notes for the NYU Center for Data Science course on natural language understanding with distributed representations.
+        source_ids: [show-attend-tell-paper, nlu-lecture-notes]
+  - heading: Service
+    paragraphs:
+      - text: >-
+          Cho served as a program chair or co-chair of ICLR 2020, ICML 2022 and NeurIPS 2022, and on the boards of
+          ICML and ICLR. Cho was one of three founding Editors-in-Chief of Transactions on Machine Learning
+          Research, serving until 2024.
+        source_ids: [cho-site]
+timeline:
+  - date: "2014-04"
+    text: Received a DSc from Aalto University with the thesis "Foundations and Advances in Deep Learning".
+    source_ids: [cho-site]
+  - date: "2014-06"
+    text: Posted the RNN Encoder-Decoder paper for statistical machine translation as first author.
+    source_ids: [encdec-paper]
+  - date: "2014-09"
+    text: Co-authored "Neural Machine Translation by Jointly Learning to Align and Translate".
+    source_ids: [attention-paper]
+  - date: "2015-02"
+    text: Co-authored "Show, Attend and Tell" on image captioning with visual attention.
+    source_ids: [show-attend-tell-paper]
+  - date: "2017-06"
+    text: Joined Facebook AI Research as a research scientist, serving until May 2020.
+    source_ids: [cho-site]
+  - date: "2020"
+    text: Served as a program chair of ICLR 2020.
+    source_ids: [cho-site]
+  - date: "2021"
+    text: Co-founded Prescient Design, which Genentech acquired later in 2021.
+    source_ids: [cho-site]
+  - date: "2026-01"
+    text: Concluded service at Genentech as Executive Director of Frontier Research and Senior Fellow.
+    source_ids: [cho-site]
+honors:
+  - name: Samsung Ho-Am Prize in Engineering
+    year: 2021
+    awarded_by: Ho-Am Foundation
+    source_ids: [cho-site]
+  - name: CIFAR Fellow, Learning in Machines & Brains
+    year: null
+    awarded_by: CIFAR
+    source_ids: [cho-site]
+  - name: Associate Member, National Academy of Engineering of Korea
+    year: null
+    awarded_by: National Academy of Engineering of Korea
+    source_ids: [cho-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: cho-site
     title: Kyunghyun Cho — About me (homepage)
@@ -70,18 +153,39 @@ sources:
     publisher: Kyunghyun Cho
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: encdec-paper
     title: Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation (arXiv 1406.1078)
     url: https://arxiv.org/abs/1406.1078
     publisher: arXiv
     kind: paper
     published_at: 2014-06-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: attention-paper
     title: Neural Machine Translation by Jointly Learning to Align and Translate (arXiv 1409.0473)
     url: https://arxiv.org/abs/1409.0473
     publisher: arXiv
     kind: paper
     published_at: 2014-09-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: nmt-properties-paper
+    title: "On the Properties of Neural Machine Translation: Encoder-Decoder Approaches (arXiv 1409.1259)"
+    url: https://arxiv.org/abs/1409.1259
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-09-03
+    accessed_at: 2026-10-21
+  - id: show-attend-tell-paper
+    title: "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention (arXiv 1502.03044)"
+    url: https://arxiv.org/abs/1502.03044
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-02-10
+    accessed_at: 2026-10-21
+  - id: nlu-lecture-notes
+    title: "Natural Language Understanding with Distributed Representation (arXiv 1511.07916)"
+    url: https://arxiv.org/abs/1511.07916
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-11-24
+    accessed_at: 2026-10-21

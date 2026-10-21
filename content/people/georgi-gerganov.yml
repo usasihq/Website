@@ -16,7 +16,7 @@ bio:
   - personal-site
   - ggml-site
   - hf-announcement
-  reviewed_at: 2026-10-01
+  reviewed_at: 2026-10-21
 affiliations:
 - name: Hugging Face
   organization_slug: hugging-face
@@ -25,6 +25,12 @@ affiliations:
   source_ids:
   - hf-announcement
   - github-profile
+- name: ggml.ai
+  organization_slug: null
+  role: Founder (2023); the company was acquired by Hugging Face in 2026
+  current: false
+  source_ids:
+  - ggml-site
 work:
 - name: llama.cpp
   artifact_slug: llama-cpp
@@ -52,14 +58,85 @@ work:
   source_ids:
   - personal-site
   - github-profile
+sections:
+- heading: Open-source work
+  paragraphs:
+  - text: >-
+      Gerganov made the initial-release commits of three related repositories now hosted under the
+      ggml-org organization on GitHub. The first was ggml, a tensor library for machine learning, in
+      September 2022; ggml's site describes it as a low-level, cross-platform library with integer
+      quantization, broad hardware support, no third-party dependencies and no memory allocations
+      during runtime. A week later Gerganov released whisper.cpp, a C/C++ port of OpenAI's Whisper
+      speech recognition model.
+    source_ids:
+    - ggml-initial-commit
+    - whisper-initial-commit
+    - ggml-site
+    - whisper-readme
+  - text: >-
+      Gerganov's initial release of llama.cpp on 2023-03-10 contained ggml, a model conversion script,
+      a quantization tool and a main program for running the model. The project's README describes
+      its goal as running language and vision-language model inference with minimal setup across a
+      wide range of hardware, locally and in the cloud, in plain C/C++ built on the ggml library. All
+      three projects are MIT-licensed.
+    source_ids:
+    - llama-cpp-initial-commit
+    - llama-cpp-readme
+    - ggml-site
+  - text: >-
+      Gerganov remains an active maintainer of llama.cpp. The repository's CODEOWNERS file lists
+      Gerganov as an owner for many core areas, and Gerganov authored commits to the project in
+      October 2026.
+    source_ids:
+    - llama-cpp-codeowners
+    - llama-cpp-commits
+- heading: ggml.ai and Hugging Face
+  paragraphs:
+  - text: >-
+      Gerganov founded ggml.ai in 2023 to support the development of ggml, and the company states that
+      the library and related projects are freely available under the MIT license with an open
+      development process. ggml.ai was acquired by Hugging Face in 2026.
+    source_ids:
+    - ggml-site
+  - text: >-
+      Hugging Face announced on 2026-02-20 that GGML, the creators of llama.cpp, were joining the
+      company, and that Gerganov and team would join it. The announcement says the team keeps full
+      autonomy and leadership over the project's technical direction and community, and that planned work includes
+      making it easier to bring new models from the transformers library to llama.cpp. Gerganov's
+      GitHub profile lists Hugging Face as the current company.
+    source_ids:
+    - hf-announcement
+    - github-profile
+timeline:
+- date: 2022-09-18
+  text: Made the initial-release commit of the ggml tensor library.
+  source_ids:
+  - ggml-initial-commit
+- date: 2022-09-25
+  text: Made the initial-release commit of whisper.cpp, a C/C++ port of OpenAI's Whisper model.
+  source_ids:
+  - whisper-initial-commit
+  - whisper-readme
+- date: 2023-03-10
+  text: Made the initial-release commit of llama.cpp, including ggml, a conversion script and a quantization tool.
+  source_ids:
+  - llama-cpp-initial-commit
+- date: "2023"
+  text: Founded ggml.ai to support development of the ggml library.
+  source_ids:
+  - ggml-site
+- date: 2026-02-20
+  text: Hugging Face announced that Gerganov and the GGML team, creators of llama.cpp, were joining the company.
+  source_ids:
+  - hf-announcement
 links:
 - label: Website
   url: https://ggerganov.com
 - label: GitHub
   url: https://github.com/ggerganov
 publication_status: published
-updated_at: 2026-10-01
-last_reviewed: 2026-10-01
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
 - id: personal-site
   title: Georgi Gerganov — projects
@@ -75,37 +152,77 @@ sources:
   publisher: GitHub
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: ggml-site
   title: ggml.ai — about the company and the ggml library
   url: https://ggml.ai
   publisher: ggml.ai
   kind: official-page
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: hf-announcement
   title: GGML and llama.cpp join HF to ensure the long-term progress of Local AI
   url: https://huggingface.co/blog/ggml-joins-hf
   publisher: Hugging Face
   kind: announcement
   published_at: 2026-02-20
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: llama-cpp-codeowners
   title: ggml-org/llama.cpp CODEOWNERS
   url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
   publisher: ggml-org (GitHub repository)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
 - id: llama-cpp-commits
-  title: ggml-org/llama.cpp commits authored by ggerganov
-  url: https://github.com/ggml-org/llama.cpp/commits?author=ggerganov
+  title: ggml-org/llama.cpp recent commits on master (feed)
+  url: https://github.com/ggml-org/llama.cpp/commits/master.atom
   publisher: ggml-org (GitHub repository)
   kind: repository
   published_at: null
-  accessed_at: 2026-10-01
-  reviewed_at: 2026-10-01
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
+- id: ggml-initial-commit
+  title: ggml-org/ggml — initial release commit (2022-09-18)
+  url: https://github.com/ggml-org/ggml/commit/fb558f78d905f85c54813602649ddd628ffe0f3a
+  publisher: ggml-org (GitHub repository)
+  kind: repository
+  published_at: 2022-09-18
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
+- id: whisper-initial-commit
+  title: ggml-org/whisper.cpp — initial release commit (2022-09-25)
+  url: https://github.com/ggml-org/whisper.cpp/commit/b0a11594aec50892a02cd8d129eee2dfe93a8bb8
+  publisher: ggml-org (GitHub repository)
+  kind: repository
+  published_at: 2022-09-25
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
+- id: llama-cpp-initial-commit
+  title: ggml-org/llama.cpp — initial release commit (2023-03-10)
+  url: https://github.com/ggml-org/llama.cpp/commit/26c084662903ddaca19bef982831bfb0856e8257
+  publisher: ggml-org (GitHub repository)
+  kind: repository
+  published_at: 2023-03-10
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
+- id: llama-cpp-readme
+  title: ggml-org/llama.cpp README (description and supported hardware)
+  url: https://github.com/ggml-org/llama.cpp
+  publisher: ggml-org (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21
+- id: whisper-readme
+  title: ggml-org/whisper.cpp README
+  url: https://github.com/ggml-org/whisper.cpp
+  publisher: ggml-org (GitHub repository)
+  kind: repository
+  published_at: null
+  accessed_at: 2026-10-21
+  reviewed_at: 2026-10-21

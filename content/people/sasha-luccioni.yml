@@ -17,7 +17,7 @@ bio:
     (2023), with Yacine Jernite and Emma Strubell, which compared the inference energy and carbon
     cost of task-specific and general-purpose models.
   source_ids: [luccioni-site, saig-team, luccioni-cv, bloom-carbon-paper, power-hungry-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Sustainable AI Group
     organization_slug: null
@@ -54,9 +54,64 @@ links:
     url: https://github.com/sashavor
   - label: Hugging Face
     url: https://huggingface.co/sasha
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Luccioni began in industry research, first on dialogue systems and question answering as an AI/NLP
+          research scientist at Nuance Communications from 2017 to 2018, and then on explainable AI and human-in-the-loop decision-making at Morgan Stanley's AI/ML Center of
+          Excellence from 2018 to 2019. From 2019 to 2021 Luccioni was a postdoctoral researcher at Université de Montréal and Mila,
+          working with Yoshua Bengio on "This Climate Does Not Exist", which used conditional GANs to depict
+          possible effects of climate change.
+        source_ids: [luccioni-cv]
+      - text: >-
+          Luccioni joined Hugging Face as a research scientist in 2021, studying the data used to train large
+          language models and the carbon footprint of AI, and co-chaired the Carbon working group of the BigScience
+          project. In May 2026 Luccioni and co-founder Boris Gamazaychikov announced Sustainable AI Group, where
+          Luccioni is Chief Scientific Officer.
+        source_ids: [luccioni-cv, luccioni-site, saig-team]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Luccioni's research measures the environmental costs of machine learning. A 2019 paper with Alexandre
+          Lacoste and colleagues examined how to quantify the carbon emissions of training models, and Luccioni was
+          first author of the 2022 estimate of the carbon footprint of the BLOOM language model and of "Counting
+          Carbon" (2023), a survey of factors that influence emissions. "Power Hungry Processing" (2023) compared
+          the energy and carbon costs of task-specific and general-purpose models at inference time.
+        source_ids: [carbon-emissions-paper, bloom-carbon-paper, counting-carbon-paper, power-hungry-paper]
+      - text: >-
+          Luccioni has also studied social bias in generative models. "Stable Bias" (2023), written with
+          Christopher Akiki, Margaret Mitchell and Yacine Jernite, analyzed how text-to-image diffusion models
+          represent different social groups.
+        source_ids: [stable-bias-paper]
+timeline:
+  - date: "2019"
+    text: Began postdoctoral research at Université de Montréal and Mila with Yoshua Bengio.
+    source_ids: [luccioni-cv]
+  - date: "2019-10"
+    text: Co-authored "Quantifying the Carbon Emissions of Machine Learning".
+    source_ids: [carbon-emissions-paper]
+  - date: "2021"
+    text: Joined Hugging Face as a research scientist.
+    source_ids: [luccioni-cv]
+  - date: "2022-11"
+    text: Posted an estimate of the carbon footprint of the BLOOM language model as first author.
+    source_ids: [bloom-carbon-paper]
+  - date: "2023-02"
+    text: Posted "Counting Carbon", a survey of factors influencing machine learning emissions.
+    source_ids: [counting-carbon-paper]
+  - date: "2023-03"
+    text: Posted "Stable Bias" on societal representations in diffusion models as first author.
+    source_ids: [stable-bias-paper]
+  - date: "2023-11"
+    text: Posted "Power Hungry Processing" on the energy cost of AI deployment as first author.
+    source_ids: [power-hungry-paper]
+  - date: "2026-05"
+    text: Announced Sustainable AI Group with co-founder Boris Gamazaychikov.
+    source_ids: [luccioni-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: luccioni-site
     title: Dr Sasha Luccioni — homepage
@@ -64,39 +119,60 @@ sources:
     publisher: Sasha Luccioni
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: saig-team
     title: Sustainable AI Group — homepage (Who we are)
     url: https://sustainableaigroup.com/
     publisher: Sustainable AI Group
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: luccioni-cv
     title: Sasha Luccioni — Curriculum Vitae
     url: https://www.sashaluccioni.com/cv/
     publisher: Sasha Luccioni
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: sashavor (Sasha Luccioni) on GitHub
     url: https://github.com/sashavor
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: bloom-carbon-paper
     title: Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model (arXiv 2211.02001)
     url: https://arxiv.org/abs/2211.02001
     publisher: arXiv
     kind: paper
     published_at: 2022-11-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: power-hungry-paper
     title: "Power Hungry Processing: Watts Driving the Cost of AI Deployment? (arXiv 2311.16863)"
     url: https://arxiv.org/abs/2311.16863
     publisher: arXiv
     kind: paper
     published_at: 2023-11-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: carbon-emissions-paper
+    title: "Quantifying the Carbon Emissions of Machine Learning (arXiv 1910.09700)"
+    url: https://arxiv.org/abs/1910.09700
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-21
+    accessed_at: 2026-10-21
+  - id: counting-carbon-paper
+    title: "Counting Carbon: A Survey of Factors Influencing the Emissions of Machine Learning (arXiv 2302.08476)"
+    url: https://arxiv.org/abs/2302.08476
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-02-16
+    accessed_at: 2026-10-21
+  - id: stable-bias-paper
+    title: "Stable Bias: Analyzing Societal Representations in Diffusion Models (arXiv 2303.11408)"
+    url: https://arxiv.org/abs/2303.11408
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-20
+    accessed_at: 2026-10-21

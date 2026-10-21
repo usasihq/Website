@@ -15,13 +15,18 @@ bio:
     2016), with code released in the richzhang/colorization repository. Zhang's recent papers, listed on
     the homepage, cover image and video generation, diffusion distillation, and image editing.
   source_ids: [zhang-site, lpips-paper, lpips-readme, lpips-license, colorization-paper, colorization-license]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Adobe Research
     organization_slug: adobe
     role: Principal Scientist
     current: true
     source_ids: [zhang-site]
+  - name: Johns Hopkins University Applied Physics Laboratory
+    organization_slug: null
+    role: Staff engineer (2010–2012)
+    current: false
+    source_ids: [zhang-cv]
 work:
   - name: LPIPS (PerceptualSimilarity)
     artifact_slug: null
@@ -42,14 +47,80 @@ work:
       colorization; the accompanying repository is released under a BSD-style license that names the
       three authors as copyright holders.
     source_ids: [colorization-paper, colorization-license, zhang-site]
+  - name: Antialiased CNNs
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1904.11486
+    contribution: >-
+      Sole author of "Making Convolutional Networks Shift-Invariant Again" (ICML 2019), which adds
+      anti-aliasing to downsampling layers; the method is distributed as the antialiased-cnns package.
+    source_ids: [antialias-paper, zhang-site]
 links:
   - label: Website
     url: https://richzhang.github.io/
   - label: GitHub
     url: https://github.com/richzhang
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Zhang worked as a staff engineer at the Johns Hopkins University Applied Physics Laboratory from 2010
+          to 2012 and then completed a PhD in EECS at UC Berkeley in 2018, advised by Alexei A. Efros, with a
+          thesis on image synthesis for self-supervised visual representation learning. Zhang interned at
+          Adobe Research in 2017 and joined it as a research scientist in May 2018, becoming senior research
+          scientist in 2022 and later principal scientist.
+        source_ids: [zhang-cv, zhang-bio, zhang-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Zhang's earlier work spans self-supervised learning, perceptual metrics and image forensics. It
+          includes Colorful Image Colorization (ECCV 2016), the LPIPS perceptual similarity metric (CVPR 2018)
+          and "Making Convolutional Networks Shift-Invariant Again" (ICML 2019), along with a CVPR 2022 study of
+          FID calculation linked to the clean-fid package for evaluating generative models.
+        source_ids: [zhang-cv, colorization-paper, lpips-paper, antialias-paper, zhang-site]
+      - text: >-
+          Zhang's recent research focuses on controllability, inference speed and data transparency for
+          generative models. Examples include GigaGAN (CVPR 2023), one-step diffusion with distribution
+          matching distillation (CVPR 2024) and its improved version (NeurIPS 2024), data attribution for
+          text-to-image models, and fast causal video generation (CVPR 2025).
+        source_ids: [zhang-cv, dmd-paper, zhang-site]
+timeline:
+  - date: "2010-07"
+    text: Began work as a staff engineer at the Johns Hopkins University Applied Physics Laboratory.
+    source_ids: [zhang-cv]
+  - date: "2016-03-28"
+    text: Released "Colorful Image Colorization" as first author (ECCV 2016).
+    source_ids: [colorization-paper]
+  - date: "2018-01-11"
+    text: Released the LPIPS paper "The Unreasonable Effectiveness of Deep Features as a Perceptual Metric".
+    source_ids: [lpips-paper]
+  - date: "2018-05"
+    text: Completed a PhD at UC Berkeley and joined Adobe Research as a research scientist.
+    source_ids: [zhang-cv]
+  - date: "2019-04-25"
+    text: Released "Making Convolutional Networks Shift-Invariant Again" as sole author (ICML 2019).
+    source_ids: [antialias-paper]
+  - date: "2022-01"
+    text: Became a senior research scientist at Adobe Research.
+    source_ids: [zhang-cv]
+  - date: "2023"
+    text: Named to MIT Technology Review's list of Innovators Under 35.
+    source_ids: [zhang-site, zhang-bio]
+  - date: "2023-11-30"
+    text: Co-authored "One-step Diffusion with Distribution Matching Distillation" (CVPR 2024).
+    source_ids: [dmd-paper]
+honors:
+  - name: Innovators Under 35
+    year: 2023
+    awarded_by: MIT Technology Review
+    source_ids: [zhang-site, zhang-bio]
+  - name: Adobe Research Fellowship
+    year: 2017
+    awarded_by: Adobe Research
+    source_ids: [zhang-bio]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: zhang-site
     title: Richard Zhang — homepage (Principal Scientist, Adobe Research)
@@ -57,39 +128,67 @@ sources:
     publisher: Richard Zhang
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lpips-paper
     title: "The Unreasonable Effectiveness of Deep Features as a Perceptual Metric (arXiv 1801.03924)"
     url: https://arxiv.org/abs/1801.03924
     publisher: arXiv
     kind: paper
     published_at: 2018-01-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lpips-readme
     title: richzhang/PerceptualSimilarity README (LPIPS quick start)
     url: https://github.com/richzhang/PerceptualSimilarity
     publisher: richzhang (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lpips-license
     title: richzhang/PerceptualSimilarity LICENSE (BSD-style)
     url: https://github.com/richzhang/PerceptualSimilarity/blob/master/LICENSE
     publisher: richzhang (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: colorization-paper
     title: "Colorful Image Colorization (arXiv 1603.08511)"
     url: https://arxiv.org/abs/1603.08511
     publisher: arXiv
     kind: paper
     published_at: 2016-03-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: colorization-license
     title: richzhang/colorization LICENSE (BSD-style)
     url: https://github.com/richzhang/colorization/blob/master/LICENSE
     publisher: richzhang (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: antialias-paper
+    title: "Making Convolutional Networks Shift-Invariant Again (arXiv 1904.11486)"
+    url: https://arxiv.org/abs/1904.11486
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-04-25
+    accessed_at: 2026-10-21
+  - id: dmd-paper
+    title: "One-step Diffusion with Distribution Matching Distillation (arXiv 2311.18828)"
+    url: https://arxiv.org/abs/2311.18828
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-30
+    accessed_at: 2026-10-21
+  - id: zhang-cv
+    title: Richard Zhang — CV (PDF, last updated July 2025)
+    url: https://richzhang.github.io/index_files/CV.pdf
+    publisher: Richard Zhang
+    kind: official-page
+    published_at: 2025-07
+    accessed_at: 2026-10-21
+  - id: zhang-bio
+    title: Richard Zhang — short bio
+    url: https://richzhang.github.io/bio.txt
+    publisher: Richard Zhang
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

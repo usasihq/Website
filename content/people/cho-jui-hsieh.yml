@@ -17,7 +17,7 @@ bio:
     through program search. With Pin-Yu Chen, Hsieh co-authored the book Adversarial Robustness for
     Machine Learning.
   source_ids: [hsieh-site, lamb-paper, lion-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of California, Los Angeles
     organization_slug: null
@@ -55,9 +55,98 @@ work:
 links:
   - label: Website
     url: https://web.cs.ucla.edu/~chohsieh/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Hsieh completed a PhD in computer science at the University of Texas at Austin from 2010 to 2015,
+          advised by Inderjit Dhillon, after a master's degree at National Taiwan University supervised by
+          Chih-Jen Lin. Hsieh then served as an assistant professor in the Departments of Computer Science and
+          Statistics at UC Davis from 2015 to 2018 before joining the UCLA computer science faculty in November
+          2018, where Hsieh is now an associate professor.
+        source_ids: [hsieh-cv, hsieh-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hsieh's research focuses on algorithms and optimization for large-scale machine learning, including
+          adversarial robustness, fast and scalable training, model compression, recommender systems and
+          automated machine learning. Hsieh is a co-author of the LAMB large-batch optimizer paper (ICLR 2020)
+          and of Cluster-GCN (KDD 2019), an algorithm for training deep and large graph convolutional networks.
+        source_ids: [hsieh-cv, lamb-paper, cluster-gcn-paper]
+      - text: >-
+          On robustness, Hsieh co-authored CROWN, a method for certifying the robustness of neural networks with
+          general activation functions presented at NIPS 2018, and the book Adversarial Robustness for Machine
+          Learning with Pin-Yu Chen. Hsieh has also presented a tutorial on neural network verification.
+        source_ids: [crown-paper, hsieh-site]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Hsieh's software page lists packages Hsieh has worked on, among them LIBLINEAR for large-scale linear
+          classification, QUIC for sparse inverse covariance estimation, the large-scale kernel SVM solver DCSVM,
+          and LIBPMF for parallel matrix factorization.
+        source_ids: [hsieh-software]
+timeline:
+  - date: "2010-08"
+    text: Began PhD studies in computer science at UT Austin, advised by Inderjit Dhillon.
+    source_ids: [hsieh-cv]
+  - date: "2015-10"
+    text: Joined UC Davis as an assistant professor of computer science and statistics.
+    source_ids: [hsieh-cv]
+  - date: "2018-11"
+    text: Joined the UCLA Department of Computer Science.
+    source_ids: [hsieh-cv]
+  - date: "2018-11"
+    text: Co-authored CROWN, on robustness certification for neural networks, accepted at NIPS 2018.
+    source_ids: [crown-paper]
+  - date: "2019-04"
+    text: Co-authored the LAMB paper on large-batch optimization for training BERT.
+    source_ids: [lamb-paper]
+  - date: "2019-05"
+    text: Co-authored Cluster-GCN, published at KDD 2019.
+    source_ids: [cluster-gcn-paper]
+  - date: "2023-02"
+    text: Co-authored "Symbolic Discovery of Optimization Algorithms", which introduced the Lion optimizer.
+    source_ids: [lion-paper]
+honors:
+  - name: Best Research Paper Award, KDD 2010
+    year: 2010
+    awarded_by: ACM SIGKDD
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: Best Paper Award, ICDM 2012
+    year: 2012
+    awarded_by: IEEE International Conference on Data Mining
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: IBM PhD Fellowship
+    year: 2013
+    awarded_by: IBM
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: Best Paper Award, ICPP 2018
+    year: 2018
+    awarded_by: International Conference on Parallel Processing
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: Samsung AI Researcher of the Year
+    year: 2020
+    awarded_by: Samsung
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: NSF CAREER Award
+    year: 2021
+    awarded_by: National Science Foundation
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: Outstanding Paper Award, ICLR 2021
+    year: 2021
+    awarded_by: International Conference on Learning Representations
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: Google Research Scholar Award
+    year: 2021
+    awarded_by: Google
+    source_ids: [hsieh-cv, hsieh-site]
+  - name: Okawa Research Award
+    year: 2021
+    awarded_by: Okawa Foundation
+    source_ids: [hsieh-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: hsieh-site
     title: Cho-Jui Hsieh — homepage (UCLA Computer Science)
@@ -65,18 +154,46 @@ sources:
     publisher: Cho-Jui Hsieh (UCLA)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lamb-paper
     title: "Large Batch Optimization for Deep Learning: Training BERT in 76 minutes (arXiv 1904.00962)"
     url: https://arxiv.org/abs/1904.00962
     publisher: arXiv
     kind: paper
     published_at: 2019-04-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lion-paper
     title: Symbolic Discovery of Optimization Algorithms (arXiv 2302.06675)
     url: https://arxiv.org/abs/2302.06675
     publisher: arXiv
     kind: paper
     published_at: 2023-02-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: hsieh-cv
+    title: Cho-Jui Hsieh — curriculum vitae (PDF)
+    url: https://web.cs.ucla.edu/~chohsieh/cjhsieh-cv.pdf
+    publisher: Cho-Jui Hsieh (UCLA)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: hsieh-software
+    title: Cho-Jui Hsieh — software
+    url: https://web.cs.ucla.edu/~chohsieh/software.html
+    publisher: Cho-Jui Hsieh (UCLA)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: crown-paper
+    title: "Efficient Neural Network Robustness Certification with General Activation Functions (arXiv 1811.00866)"
+    url: https://arxiv.org/abs/1811.00866
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-11-02
+    accessed_at: 2026-10-21
+  - id: cluster-gcn-paper
+    title: "Cluster-GCN: An Efficient Algorithm for Training Deep and Large Graph Convolutional Networks (arXiv 1905.07953)"
+    url: https://arxiv.org/abs/1905.07953
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-05-20
+    accessed_at: 2026-10-21

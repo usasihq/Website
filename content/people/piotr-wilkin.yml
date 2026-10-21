@@ -16,7 +16,7 @@ bio:
     Wilkin's 2026 commits add asset- and audio-generation backends and a job engine, and fix its
     llama.cpp integration.
   source_ids: [github-profile, llama-cpp-codeowners, llama-cpp-commits, lemonade-commits, lemonade-readme]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Syndatis
     organization_slug: null
@@ -53,9 +53,63 @@ work:
 links:
   - label: GitHub
     url: https://github.com/pwilkin
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Wilkin's contributions to llama.cpp began in May 2025 with a fix to the server's handling of
+          OpenAI-compatible message arrays, and soon extended to adding model architectures such as Ernie 4.5 MoE
+          (July 2025) and Apertus (October 2025). In December 2025 Wilkin was added to the project's CODEOWNERS
+          for its chat files, and later work added Qwen3.5 dense and mixture-of-experts support (February 2026)
+          and the Kimi-K3 text model (August 2026).
+        source_ids: [pr-13540, pr-14658, pr-15852, pr-17789, pr-19435, pr-26185]
+      - text: >-
+          Much of Wilkin's later llama.cpp work concerns the shared parsing code that turns model output into
+          reasoning text and tool calls. In September 2026 Wilkin split the specialised chat parsers into their
+          own common/parsers module, and the current CODEOWNERS file lists Wilkin for tools/parser and the chat
+          tests and as part of the llama-common team.
+        source_ids: [pr-27764, llama-cpp-codeowners, llama-cpp-commits]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Wilkin writes standalone C++ runtimes built on GGML. trellis.cpp ports Microsoft's TRELLIS.2 image-to-3D
+          pipeline to native C++ with CUDA, ROCm and Vulkan builds, and thinksound.cpp runs the ThinkSound
+          text-to-sound-effect model without Python at inference time. trellis.cpp serves as the trellis backend
+          of Lemonade, where Wilkin's July 2026 commits added asset generation with Trellis and OpenMOSS and audio
+          generation with ThinkSound and ACE-Step.
+        source_ids: [trellis-cpp-repo, thinksound-cpp-repo, lemonade-commits]
+      - text: >-
+          Earlier tools from Wilkin include Catapult, a desktop and terminal launcher that manages llama.cpp
+          runtimes, models and server settings, whose README now points users to Lemonade instead.
+        source_ids: [catapult-repo]
+timeline:
+  - date: "2025-05-15"
+    text: First llama.cpp contribution merged, fixing error handling for OpenAI-compatible message arrays.
+    source_ids: [pr-13540]
+  - date: "2025-07-17"
+    text: Added Ernie 4.5 MoE model support to llama.cpp.
+    source_ids: [pr-14658]
+  - date: "2025-10-02"
+    text: Added the Apertus model implementation to llama.cpp.
+    source_ids: [pr-15852]
+  - date: "2025-12-05"
+    text: Added to llama.cpp's CODEOWNERS for the chat files.
+    source_ids: [pr-17789]
+  - date: "2026-02-08"
+    text: Added Qwen3.5 dense and mixture-of-experts support to llama.cpp.
+    source_ids: [pr-19435]
+  - date: "2026-06-18"
+    text: Made the initial commit of trellis.cpp, a C++/GGML port of the TRELLIS.2 image-to-3D pipeline.
+    source_ids: [trellis-cpp-repo, trellis-cpp-commits]
+  - date: "2026-07"
+    text: Added asset- and audio-generation backends and a job engine to Lemonade.
+    source_ids: [lemonade-commits]
+  - date: "2026-09-08"
+    text: Split llama.cpp's specialised chat parsers into a common/parsers module.
+    source_ids: [pr-27764]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: pwilkin (Piotr Wilkin) on GitHub
@@ -63,39 +117,116 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by pwilkin
     url: https://github.com/ggml-org/llama.cpp/commits?author=pwilkin
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lemonade-commits
     title: lemonade-sdk/lemonade commits authored by pwilkin
     url: https://github.com/lemonade-sdk/lemonade/commits?author=pwilkin
     publisher: lemonade-sdk (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lemonade-readme
     title: lemonade-sdk/lemonade README (sponsorship and Apache-2.0 license)
     url: https://github.com/lemonade-sdk/lemonade
     publisher: lemonade-sdk (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: pr-13540
+    title: "ggml-org/llama.cpp pull request #13540: proper error handling for missing elements in messages array"
+    url: https://github.com/ggml-org/llama.cpp/pull/13540
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2025-05-15
+    accessed_at: 2026-10-21
+  - id: pr-14658
+    title: "ggml-org/llama.cpp pull request #14658: Add support for Ernie 4.5 MoE"
+    url: https://github.com/ggml-org/llama.cpp/pull/14658
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2025-07-17
+    accessed_at: 2026-10-21
+  - id: pr-15852
+    title: "ggml-org/llama.cpp pull request #15852: Apertus model implementation"
+    url: https://github.com/ggml-org/llama.cpp/pull/15852
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2025-10-02
+    accessed_at: 2026-10-21
+  - id: pr-17789
+    title: "ggml-org/llama.cpp pull request #17789: Add pwilkin to CODEOWNERS for chat files"
+    url: https://github.com/ggml-org/llama.cpp/pull/17789
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2025-12-05
+    accessed_at: 2026-10-21
+  - id: pr-19435
+    title: "ggml-org/llama.cpp pull request #19435: Qwen3.5 dense and MoE support (no vision)"
+    url: https://github.com/ggml-org/llama.cpp/pull/19435
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2026-02-08
+    accessed_at: 2026-10-21
+  - id: pr-26185
+    title: "ggml-org/llama.cpp pull request #26185: add Kimi-K3 text model"
+    url: https://github.com/ggml-org/llama.cpp/pull/26185
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2026-08-15
+    accessed_at: 2026-10-21
+  - id: pr-27764
+    title: "ggml-org/llama.cpp pull request #27764: split specialized parsers into common/parsers"
+    url: https://github.com/ggml-org/llama.cpp/pull/27764
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2026-09-08
+    accessed_at: 2026-10-21
+  - id: trellis-cpp-repo
+    title: pwilkin/trellis.cpp README
+    url: https://github.com/pwilkin/trellis.cpp
+    publisher: GitHub
+    kind: repository
+    published_at: 2026-06-18
+    accessed_at: 2026-10-21
+  - id: thinksound-cpp-repo
+    title: pwilkin/thinksound.cpp README
+    url: https://github.com/pwilkin/thinksound.cpp
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: catapult-repo
+    title: pwilkin/catapult README
+    url: https://github.com/pwilkin/catapult
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: trellis-cpp-commits
+    title: pwilkin/trellis.cpp commit history
+    url: https://github.com/pwilkin/trellis.cpp/commits/main/
+    publisher: GitHub
+    kind: repository
+    published_at: 2026-06-18
+    accessed_at: 2026-10-21

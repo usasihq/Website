@@ -15,7 +15,7 @@ bio:
     of Levels of AGI for Operationalizing Progress on the Path to AGI (ICML 2024), of the April 2025 post
     Taking a responsible path to AGI, and of the 2026 report From AGI to ASI.
   source_ids: [gdm-tenth-year, gdm-responsibility, gdm-agi-path, universal-intelligence, levels-of-agi, agi-to-asi]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
@@ -58,10 +58,94 @@ work:
       Leads the AGI Safety Council, which analyzes AGI risk and best practices and makes recommendations on
       safety measures, according to Google DeepMind.
     source_ids: [gdm-responsibility, gdm-agi-path]
+  - name: Human-level control through deep reinforcement learning
+    artifact_slug: null
+    type: open-research
+    url: https://www.nature.com/articles/nature14236
+    contribution: >-
+      Co-author of DeepMind's 2015 Nature paper on an agent that learns control policies directly from
+      high-dimensional inputs through deep reinforcement learning.
+    source_ids: [dqn-nature]
+  - name: Deep reinforcement learning from human preferences
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1706.03741
+    contribution: >-
+      Co-author of the 2017 paper that trains reinforcement learning agents from non-expert human
+      preferences between pairs of trajectory segments instead of access to the reward function.
+    source_ids: [human-preferences-paper]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Shane Legg co-founded DeepMind in 2010 with Demis Hassabis and Mustafa Suleyman, and Hassabis's
+          2019 post describes Legg as the company's Chief Scientist. Google DeepMind now lists Legg as
+          Co-Founder and Chief AGI Scientist.
+        source_ids: [gdm-tenth-year, gdm-responsibility]
+      - text: >-
+          At Google DeepMind, Legg leads the AGI Safety Council, which analyzes AGI risk and best practices
+          and recommends safety measures. The council works closely with the Responsibility and Safety
+          Council to guard the lab's processes, systems and research against extreme risks from future AGI
+          systems.
+        source_ids: [gdm-responsibility, gdm-agi-path]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          With Marcus Hutter, Legg published two 2007 papers on what intelligence means: a survey of
+          about seventy informal definitions, and Universal Intelligence, which starts from well-known
+          informal definitions and works toward a formal measure for machines. Legg is also among the
+          authors of DeepMind's 2015 Nature paper on human-level control through deep reinforcement learning.
+        source_ids: [definitions-paper, universal-intelligence, dqn-nature]
+      - text: >-
+          Legg co-authored several safety papers from DeepMind, including Deep reinforcement learning from
+          human preferences (2017), AI Safety Gridworlds (2017), a suite of environments for testing safety
+          properties of agents, and Scalable agent alignment via reward modeling (2018), which outlines a
+          research direction for the agent alignment problem.
+        source_ids: [human-preferences-paper, safety-gridworlds-paper, reward-modeling-paper]
+  - heading: AGI frameworks
+    paragraphs:
+      - text: >-
+          Legg is a co-author of Levels of AGI (ICML 2024), which proposes levels of performance, generality
+          and autonomy for comparing systems and measuring progress. Legg also co-wrote Google DeepMind's
+          April 2025 post Taking a responsible path to AGI and the June 2026 report From AGI to ASI, which
+          looks at how AI might keep developing after human-level AGI.
+        source_ids: [levels-of-agi, gdm-agi-path, agi-to-asi]
+timeline:
+  - date: "2007-06"
+    text: Released A Collection of Definitions of Intelligence with Marcus Hutter.
+    source_ids: [definitions-paper]
+  - date: "2007-12"
+    text: Released Universal Intelligence, a formal definition of machine intelligence, with Marcus Hutter.
+    source_ids: [universal-intelligence]
+  - date: "2010"
+    text: Co-founded DeepMind with Demis Hassabis and Mustafa Suleyman.
+    source_ids: [gdm-tenth-year]
+  - date: "2015-02-25"
+    text: Co-authored DeepMind's Nature paper on human-level control through deep reinforcement learning.
+    source_ids: [dqn-nature]
+  - date: "2017-06"
+    text: Co-authored Deep reinforcement learning from human preferences.
+    source_ids: [human-preferences-paper]
+  - date: "2017-11"
+    text: Co-authored AI Safety Gridworlds, a suite of environments for testing safety properties of agents.
+    source_ids: [safety-gridworlds-paper]
+  - date: "2018-11"
+    text: Co-authored Scalable agent alignment via reward modeling, a proposed research direction.
+    source_ids: [reward-modeling-paper]
+  - date: "2024-07"
+    text: Co-authored Levels of AGI for Operationalizing Progress on the Path to AGI, which appeared at ICML 2024.
+    source_ids: [levels-of-agi]
+  - date: "2025-04-02"
+    text: Co-wrote Google DeepMind's post Taking a responsible path to AGI.
+    source_ids: [gdm-agi-path]
+  - date: "2026-06"
+    text: Co-authored the Google DeepMind report From AGI to ASI.
+    source_ids: [agi-to-asi]
+honors: []
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gdm-responsibility
     title: Responsibility & Safety — Google DeepMind
@@ -69,39 +153,74 @@ sources:
     publisher: Google DeepMind
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: gdm-agi-path
     title: Taking a responsible path to AGI
     url: https://deepmind.google/blog/taking-a-responsible-path-to-agi/
     publisher: Google DeepMind
     kind: announcement
     published_at: 2025-04-02
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: gdm-tenth-year
     title: "From unlikely start-up to major scientific organisation: Entering our tenth year at DeepMind"
     url: https://deepmind.google/blog/from-unlikely-start-up-to-major-scientific-organisation-entering-our-tenth-year-at-deepmind/
     publisher: Google DeepMind
     kind: announcement
     published_at: 2019-12-05
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: universal-intelligence
     title: "Universal Intelligence: A Definition of Machine Intelligence (arXiv 0712.3329)"
     url: https://arxiv.org/abs/0712.3329
     publisher: arXiv
     kind: paper
     published_at: 2007-12-20
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: levels-of-agi
     title: Levels of AGI for Operationalizing Progress on the Path to AGI — Google DeepMind
     url: https://deepmind.google/research/publications/66938/
     publisher: Google DeepMind
     kind: paper
     published_at: 2024-07-21
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: agi-to-asi
     title: From AGI to ASI — Google DeepMind
     url: https://deepmind.google/research/publications/239142/
     publisher: Google DeepMind
     kind: paper
     published_at: 2026-06-12
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: definitions-paper
+    title: A Collection of Definitions of Intelligence (arXiv 0706.3639)
+    url: https://arxiv.org/abs/0706.3639
+    publisher: arXiv
+    kind: paper
+    published_at: 2007-06-25
+    accessed_at: 2026-10-21
+  - id: dqn-nature
+    title: Human-level control through deep reinforcement learning (Nature 518, 529–533)
+    url: https://www.nature.com/articles/nature14236
+    publisher: Nature
+    kind: paper
+    published_at: 2015-02-25
+    accessed_at: 2026-10-21
+  - id: human-preferences-paper
+    title: Deep reinforcement learning from human preferences (arXiv 1706.03741)
+    url: https://arxiv.org/abs/1706.03741
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-06-12
+    accessed_at: 2026-10-21
+  - id: safety-gridworlds-paper
+    title: AI Safety Gridworlds (arXiv 1711.09883)
+    url: https://arxiv.org/abs/1711.09883
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-11-27
+    accessed_at: 2026-10-21
+  - id: reward-modeling-paper
+    title: "Scalable agent alignment via reward modeling: a research direction (arXiv 1811.07871)"
+    url: https://arxiv.org/abs/1811.07871
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-11-19
+    accessed_at: 2026-10-21

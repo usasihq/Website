@@ -14,7 +14,7 @@ bio:
     Learning with Differential Privacy (2016), which develops techniques for training deep neural
     networks under a modest privacy budget.
   source_ids: [abadi-google, abadi-ucsc, tf-whitepaper, tf-osdi-paper, dp-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -22,7 +22,7 @@ affiliations:
     current: true
     source_ids: [abadi-google]
   - name: UC Santa Cruz
-    organization_slug: null
+    organization_slug:
     role: Emeritus
     current: true
     source_ids: [abadi-google, abadi-ucsc]
@@ -37,35 +37,102 @@ work:
       Google and their open-source release under the Apache 2.0 license.
     source_ids: [tf-whitepaper, tf-osdi-paper, abadi-google]
   - name: Deep learning with differential privacy
-    artifact_slug: null
+    artifact_slug:
     type: open-research
     url: https://arxiv.org/abs/1607.00133
     contribution: >-
       First author of the 2016 paper that develops algorithmic techniques and a refined analysis of
       privacy costs for training deep neural networks within the framework of differential privacy.
     source_ids: [dp-paper]
+  - name: A Logic of Authentication
+    artifact_slug:
+    type: open-research
+    url:
+    contribution: >-
+      Co-author, with Michael Burrows and Roger Needham, of the 1990 paper that introduced a logic for
+      reasoning about authentication protocols, inducted into the ACM SIGOPS Hall of Fame in 2007.
+    source_ids: [sigops-hof]
 links:
   - label: Google Research profile
     url: https://research.google/people/abadi/
   - label: UC Santa Cruz page
     url: https://users.soe.ucsc.edu/~abadi/home.html
+sections:
+  - heading: Security and programming languages
+    paragraphs:
+      - text: >-
+          Abadi's publication record goes back to 1985 and spans algorithms and theory, security, and privacy.
+          With Michael Burrows and Roger Needham, Abadi wrote A Logic of Authentication (1990), which gave
+          systems designers a logic-based notation for describing and reasoning about authentication
+          protocols; ACM SIGOPS added it to its Hall of Fame in 2007.
+        source_ids: [abadi-google, sigops-hof]
+      - text: >-
+          Abadi's work on programming languages for security includes the applied pi calculus, an extension of
+          the pi calculus for modeling cryptographic protocols, first introduced in a 2001 conference paper and
+          later presented in full with Bruno Blanchet and Cedric Fournet in the Journal of the ACM (2017).
+        source_ids: [abadi-google]
+  - heading: Machine learning systems and privacy
+    paragraphs:
+      - text: >-
+          After joining Google in November 2014, Abadi was first author of the March 2016 TensorFlow white paper
+          and of the May 2016 paper TensorFlow: A system for large-scale machine learning. Abadi later
+          co-authored work on dynamic control flow in TensorFlow and co-wrote an introduction to a computational
+          model of TensorFlow that describes an operational semantics for its programs.
+        source_ids: [abadi-google, tf-whitepaper, tf-osdi-paper, control-flow-paper]
+      - text: >-
+          On privacy in machine learning, Abadi was first author of Deep Learning with Differential Privacy
+          (2016) and co-authored the PATE approach, Semi-supervised Knowledge Transfer for Deep Learning from
+          Private Training Data, at ICLR 2017.
+        source_ids: [dp-paper, pate-paper, abadi-google]
+timeline:
+  - date: "1990-02"
+    text: Published A Logic of Authentication with Michael Burrows and Roger Needham in ACM Transactions on 
+      Computer Systems.
+    source_ids: [sigops-hof]
+  - date: "2007"
+    text: A Logic of Authentication was inducted into the ACM SIGOPS Hall of Fame.
+    source_ids: [sigops-hof]
+  - date: "2014-11"
+    text: Joined Google.
+    source_ids: [abadi-google]
+  - date: "2016-03-14"
+    text: Posted the TensorFlow white paper on large-scale machine learning on heterogeneous distributed 
+      systems.
+    source_ids: [tf-whitepaper]
+  - date: "2016-05-27"
+    text: Posted TensorFlow, a system for large-scale machine learning, as first author.
+    source_ids: [tf-osdi-paper]
+  - date: "2016-07-01"
+    text: Posted Deep Learning with Differential Privacy as first author.
+    source_ids: [dp-paper]
+  - date: "2016-10-18"
+    text: Co-authored the PATE paper on knowledge transfer from private training data.
+    source_ids: [pate-paper]
+  - date: "2018-05-04"
+    text: Co-authored Dynamic Control Flow in Large-Scale Machine Learning, on control flow in TensorFlow.
+    source_ids: [control-flow-paper]
+honors:
+  - name: ACM SIGOPS Hall of Fame Award (A Logic of Authentication)
+    year: 2007
+    awarded_by: ACM Special Interest Group on Operating Systems
+    source_ids: [sigops-hof]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: abadi-google
     title: Martín Abadi — Google Research profile
     url: https://research.google/people/abadi/
     publisher: Google Research
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: abadi-ucsc
     title: Martin Abadi — UC Santa Cruz home page
     url: https://users.soe.ucsc.edu/~abadi/home.html
     publisher: Martín Abadi (UC Santa Cruz)
     kind: official-page
-    published_at: null
+    published_at:
     accessed_at: 2026-10-13
   - id: tf-whitepaper
     title: "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems (arXiv 1603.04467)"
@@ -73,18 +140,39 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2016-03-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tf-osdi-paper
     title: "TensorFlow: A system for large-scale machine learning (arXiv 1605.08695)"
     url: https://arxiv.org/abs/1605.08695
     publisher: arXiv
     kind: paper
     published_at: 2016-05-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dp-paper
     title: Deep Learning with Differential Privacy (arXiv 1607.00133)
     url: https://arxiv.org/abs/1607.00133
     publisher: arXiv
     kind: paper
     published_at: 2016-07-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: sigops-hof
+    title: ACM SIGOPS Hall of Fame Award
+    url: https://www.sigops.org/awards/hof/
+    publisher: ACM SIGOPS
+    kind: official-page
+    published_at:
+    accessed_at: 2026-10-21
+  - id: control-flow-paper
+    title: Dynamic Control Flow in Large-Scale Machine Learning (arXiv 1805.01772)
+    url: https://arxiv.org/abs/1805.01772
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-05-04
+    accessed_at: 2026-10-21
+  - id: pate-paper
+    title: Semi-supervised Knowledge Transfer for Deep Learning from Private Training Data (arXiv 1610.05755)
+    url: https://arxiv.org/abs/1610.05755
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-10-18
+    accessed_at: 2026-10-21

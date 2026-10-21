@@ -12,7 +12,7 @@ bio:
     with equal contribution from Ashish Vaswani and a Google Brain affiliation, of Image Transformer
     (2018), which extends the self-attention architecture to image generation, and is a co-author of the 2018 Tensor2Tensor paper.
   source_ids: [attention-paper, image-transformer-paper, t2t-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google Research and Google Brain
     organization_slug: google
@@ -46,9 +46,50 @@ work:
       team, includes the reference implementation of the Transformer.
     source_ids: [t2t-paper, t2t-repo]
 links: []
+sections:
+  - heading: The Transformer
+    paragraphs:
+      - text: >-
+          Niki Parmar co-authored Attention Is All You Need (2017) while at Google Research, and the paper's
+          contribution note credits Parmar with designing, implementing, tuning and evaluating many model variants
+          in the original codebase and in Tensor2Tensor. Parmar also co-authored the 2018 Tensor2Tensor paper, which
+          describes the Google Brain library that holds the reference Transformer implementation.
+        source_ids: [attention-paper, t2t-paper, t2t-repo]
+  - heading: Vision and speech
+    paragraphs:
+      - text: >-
+          Several of Parmar's later papers carried self-attention into vision. Image Transformer (2018), with Ashish
+          Vaswani as co-first author, applied local self-attention to image generation; Stand-Alone Self-Attention
+          in Vision Models (2019) replaced convolutions with self-attention layers; and Bottleneck Transformers (2021)
+          swapped global self-attention into the final blocks of a ResNet for classification, detection and
+          segmentation.
+        source_ids: [image-transformer-paper, standalone-attention-paper, botnet-paper]
+      - text: >-
+          In speech recognition, Parmar co-authored Conformer (2020), which combines Transformer self-attention with
+          convolutions to capture both global and local structure in audio.
+        source_ids: [conformer-paper]
+timeline:
+  - date: "2017-06-12"
+    text: Co-authored "Attention Is All You Need", which introduced the Transformer.
+    source_ids: [attention-paper]
+  - date: "2018-02-15"
+    text: Released Image Transformer as co-first author with Ashish Vaswani.
+    source_ids: [image-transformer-paper]
+  - date: "2018-03-16"
+    text: Co-authored the Tensor2Tensor paper on the Google Brain sequence-modeling library.
+    source_ids: [t2t-paper]
+  - date: "2019-06-13"
+    text: Co-authored Stand-Alone Self-Attention in Vision Models.
+    source_ids: [standalone-attention-paper]
+  - date: "2020-05-16"
+    text: Co-authored Conformer, a convolution-augmented Transformer for speech recognition.
+    source_ids: [conformer-paper]
+  - date: "2021-01-27"
+    text: Co-authored Bottleneck Transformers for Visual Recognition.
+    source_ids: [botnet-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: attention-paper
     title: Attention Is All You Need (arXiv 1706.03762)
@@ -56,25 +97,46 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2017-06-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: image-transformer-paper
     title: Image Transformer (arXiv 1802.05751)
     url: https://arxiv.org/abs/1802.05751
     publisher: arXiv
     kind: paper
     published_at: 2018-02-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t2t-paper
     title: Tensor2Tensor for Neural Machine Translation (arXiv 1803.07416)
     url: https://arxiv.org/abs/1803.07416
     publisher: arXiv
     kind: paper
     published_at: 2018-03-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t2t-repo
     title: tensorflow/tensor2tensor README (Apache-2.0)
     url: https://github.com/tensorflow/tensor2tensor
     publisher: TensorFlow (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: standalone-attention-paper
+    title: Stand-Alone Self-Attention in Vision Models (arXiv 1906.05909)
+    url: https://arxiv.org/abs/1906.05909
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-06-13
+    accessed_at: 2026-10-21
+  - id: conformer-paper
+    title: "Conformer: Convolution-augmented Transformer for Speech Recognition (arXiv 2005.08100)"
+    url: https://arxiv.org/abs/2005.08100
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-16
+    accessed_at: 2026-10-21
+  - id: botnet-paper
+    title: Bottleneck Transformers for Visual Recognition (arXiv 2101.11605)
+    url: https://arxiv.org/abs/2101.11605
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-01-27
+    accessed_at: 2026-10-21

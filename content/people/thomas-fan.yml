@@ -13,7 +13,7 @@ bio:
     serialization with torch.export, portable torch.compile caches, NumPy ufuncs with Cython, and
     Python extensions in Rust.
   source_ids: [github-profile, sklearn-about, blog]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Modal
     organization_slug: modal
@@ -34,9 +34,61 @@ links:
     url: https://www.thomasjpfan.com
   - label: GitHub
     url: https://github.com/thomasjpfan
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Fan joined the scikit-learn team as a maintainer more than six years before a May 2025 retrospective post,
+          and the project's About page lists Fan among its active maintainers; scikit-learn is released under the
+          BSD 3-Clause License. In that retrospective Fan highlighted contributions such as native categorical and
+          missing-value support in tree models, cost complexity pruning, pandas and Polars DataFrame output through
+          the set_output API, and feature name propagation with get_feature_names_out.
+        source_ids: [six-years-post, sklearn-about, sklearn-license]
+      - text: >-
+          Other features Fan worked on include the TargetEncoder for categorical data, grouping of infrequent
+          categories in scikit-learn's encoders, KNN-based missing value imputation, an HTML representation for
+          visualizing estimators in Jupyter notebooks, a plotting API for inspecting estimators, and experimental
+          GPU support through the Array API standard so that scikit-learn can run on PyTorch or CuPy arrays.
+        source_ids: [six-years-post]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Fan speaks regularly at Python data science conferences. Talks listed on Fan's site include a deep dive
+          into scikit-learn's histogram-based gradient boosting at PyData NYC 2019, talks on skorch, which combines
+          scikit-learn and PyTorch, and on Poisson regression at SciPy, and talks on parallelism in numerical Python
+          libraries, scikit-learn on GPUs with the Array API, and pushing Cython to its limits in scikit-learn.
+        source_ids: [talks]
+      - text: >-
+          Fan's blog covers performance and tooling topics, including PyTorch graph capture and data-dependent
+          control flow, portable torch.compile caches, serializing models with torch.export, NumPy ufuncs written
+          with Cython 3.0 and Python extensions in Rust. A July 2026 post set out five principles for using large
+          language models in software engineering. Fan is currently a Member of Technical Staff at Modal.
+        source_ids: [blog, github-profile]
+timeline:
+  - date: "2019"
+    text: Presented a deep dive into scikit-learn's HistGradientBoosting estimators at PyData NYC 2019.
+    source_ids: [talks]
+  - date: "2019"
+    text: Presented skorch, a union of scikit-learn and PyTorch, at SciPy 2019.
+    source_ids: [talks]
+  - date: "2022"
+    text: Spoke on parallelism in numerical Python libraries at PyData NYC 2022.
+    source_ids: [talks]
+  - date: "2023"
+    text: Presented scikit-learn on GPUs with the Array API at PyData NYC 2023.
+    source_ids: [talks]
+  - date: "2024"
+    text: Presented "Pushing Cython to its Limits in Scikit-learn" at PyData NYC 2024.
+    source_ids: [talks]
+  - date: "2025-05-15"
+    text: Published a retrospective on six years as a scikit-learn maintainer.
+    source_ids: [six-years-post]
+  - date: "2026-07-03"
+    text: Published "Five Principles for Using LLMs for Software Engineering".
+    source_ids: [blog]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: thomasjpfan (Thomas J. Fan) on GitHub
@@ -44,25 +96,39 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-about
     title: scikit-learn — About us (maintainers and history)
     url: https://scikit-learn.org/stable/about.html
     publisher: scikit-learn
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: blog
     title: Thomas J. Fan — personal blog
     url: https://www.thomasjpfan.com
     publisher: Thomas J. Fan
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-license
     title: scikit-learn/scikit-learn COPYING (BSD 3-Clause License)
     url: https://github.com/scikit-learn/scikit-learn/blob/main/COPYING
     publisher: scikit-learn (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: six-years-post
+    title: Six Years as a scikit-learn maintainer - Feature Retrospective
+    url: https://www.thomasjpfan.com/2025/05/six-years-as-a-scikit-learn-maintainer-feature-retrospective/
+    publisher: Thomas J. Fan
+    kind: official-page
+    published_at: 2025-05-15
+    accessed_at: 2026-10-21
+  - id: talks
+    title: Talks — Thomas J. Fan
+    url: https://www.thomasjpfan.com/pages/talks/
+    publisher: Thomas J. Fan
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

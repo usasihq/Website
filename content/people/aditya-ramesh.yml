@@ -14,7 +14,7 @@ bio:
     language grounding for Sora 2. Ramesh is also a co-author of the CLIP paper, written with an OpenAI
     affiliation.
   source_ids: [ramesh-site, dalle-paper, dalle2-paper, clip-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: OpenAI
     organization_slug: openai
@@ -58,9 +58,57 @@ work:
 links:
   - label: GitHub
     url: https://github.com/adityaramesh
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Aditya Ramesh is first author, with colleagues including Mikhail Pavlov, Gabriel Goh, Scott Gray,
+          Alec Radford, Mark Chen and Ilya Sutskever, of "Zero-Shot Text-to-Image Generation" (2021), the
+          paper behind the first DALL·E model, which treats text and image tokens as a single stream for a
+          transformer. Ramesh also co-authored CLIP (2021), which learns visual models from natural language
+          supervision.
+        source_ids: [dalle-paper, clip-paper, ramesh-site]
+      - text: >-
+          Ramesh's 2022 paper with Prafulla Dhariwal, Alex Nichol, Casey Chu and Mark Chen, "Hierarchical
+          Text-Conditional Image Generation with CLIP Latents", describes DALL·E 2. Ramesh is also a
+          co-author of "Improving Image Generation with Better Captions", the DALL·E 3 paper, which reports
+          that training on highly descriptive generated captions improves how well text-to-image models
+          follow prompts.
+        source_ids: [dalle2-paper, dalle3-paper]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Ramesh's homepage describes leading the team that created DALL·E 3 and deployed it in ChatGPT in
+          September 2023, building the team behind the Sora model and the sora.com product in
+          December 2024, and working on controllability and language grounding for Sora 2, released in
+          the Sora app in October 2025. Ramesh now leads Worldsim as a VP of Research and is helping start
+          a robotics effort that applies OpenAI's video generation models to the physical world.
+        source_ids: [ramesh-site]
+timeline:
+  - date: 2021-01
+    text: Created DALL·E, a text-to-image model that combines concepts from language, at OpenAI.
+    source_ids: [ramesh-site]
+  - date: 2021-02-24
+    text: Posted "Zero-Shot Text-to-Image Generation" as first author.
+    source_ids: [dalle-paper]
+  - date: 2021-02-26
+    text: Co-authored the CLIP paper on learning visual models from natural language supervision.
+    source_ids: [clip-paper]
+  - date: 2022-04-13
+    text: Posted the DALL·E 2 paper on hierarchical text-conditional image generation with CLIP latents.
+    source_ids: [dalle2-paper]
+  - date: 2023-09
+    text: Led the team that created DALL·E 3 and deployed it in ChatGPT.
+    source_ids: [ramesh-site, dalle3-paper]
+  - date: 2024-12
+    text: Built the team that created Sora and the sora.com product experience.
+    source_ids: [ramesh-site]
+  - date: 2025-10
+    text: Worked on controllability and language grounding for Sora 2, released in the Sora app.
+    source_ids: [ramesh-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ramesh-site
     title: Aditya Ramesh — About Me (homepage source for adityaramesh.com, GitHub Pages repository)
@@ -68,32 +116,39 @@ sources:
     publisher: Aditya Ramesh
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dalle-paper
     title: Zero-Shot Text-to-Image Generation (arXiv 2102.12092)
     url: https://arxiv.org/abs/2102.12092
     publisher: arXiv
     kind: paper
     published_at: 2021-02-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dalle2-paper
     title: Hierarchical Text-Conditional Image Generation with CLIP Latents (arXiv 2204.06125)
     url: https://arxiv.org/abs/2204.06125
     publisher: arXiv
     kind: paper
     published_at: 2022-04-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: clip-paper
     title: Learning Transferable Visual Models From Natural Language Supervision (arXiv 2103.00020)
     url: https://arxiv.org/abs/2103.00020
     publisher: arXiv
     kind: paper
     published_at: 2021-02-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: clip-repo
     title: openai/CLIP repository (MIT License)
     url: https://github.com/openai/CLIP
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: dalle3-paper
+    title: Improving Image Generation with Better Captions (DALL·E 3 paper, PDF)
+    url: https://cdn.openai.com/papers/dall-e-3.pdf
+    publisher: OpenAI
+    kind: paper
+    published_at: 2023-10
+    accessed_at: 2026-10-21

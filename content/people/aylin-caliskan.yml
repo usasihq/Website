@@ -36,9 +36,71 @@ work:
 links:
   - label: Website
     url: https://faculty.washington.edu/aylin/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before joining the University of Washington, Aylin Caliskan was a postdoctoral researcher
+          and fellow at Princeton University's Center for Information Technology Policy and then an
+          Assistant Professor of Computer Science at George Washington University. At UW, Caliskan was
+          promoted to Associate Professor with tenure in the Information School, holds an adjunct
+          appointment in the Paul G. Allen School of Computer Science & Engineering, and co-directs the
+          Tech Policy Lab.
+        source_ids: [caliskan-bio, caliskan-site]
+      - text: >-
+          In 2021 Caliskan was appointed a Nonresident Fellow in Governance Studies at the Brookings
+          Institution, in its Center for Technology Innovation. Caliskan is a program co-chair of the
+          AAAI/ACM Conference on Artificial Intelligence, Ethics, and Society (AIES 2026), held in
+          October 2026.
+        source_ids: [caliskan-bio, caliskan-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Caliskan develops evaluation methods and mitigation techniques to make the societal impacts
+          of AI systems more transparent, working across natural language processing, multimodal
+          machine learning and human-AI collaboration. The 2016 paper "Semantics derived automatically
+          from language corpora contain human-like biases", written with Joanna J. Bryson and Arvind
+          Narayanan, showed that word embeddings trained on ordinary web text reproduce biases measured
+          by the Implicit Association Test.
+        source_ids: [caliskan-bio, semantics-paper]
+      - text: >-
+          Caliskan's recent publications study bias in vision-language models and text-to-image
+          generators, the influence of biased AI recommendations on human hiring decisions, and the
+          safety of language-model agents. Examples include VIGNETTE, a socially grounded bias
+          evaluation for vision-language models at ACL 2026, and work on personalized safety in large
+          language models at NeurIPS 2025.
+        source_ids: [caliskan-site]
+timeline:
+  - date: "2016-08-25"
+    text: First author of "Semantics derived automatically from language corpora contain human-like biases".
+    source_ids: [semantics-paper]
+  - date: "2021"
+    text: Appointed a Nonresident Fellow in Governance Studies at the Brookings Institution.
+    source_ids: [caliskan-bio]
+  - date: "2023"
+    text: Received an IJCAI Early Career Spotlight.
+    source_ids: [caliskan-site]
+  - date: "2024"
+    text: Received the NSF CAREER Award for research on the societal impact of generative AI.
+    source_ids: [caliskan-site]
+  - date: "2026"
+    text: Co-authored VIGNETTE, a bias evaluation for vision-language models that received an SAC Highlight Award at ACL 2026.
+    source_ids: [caliskan-site]
+  - date: "2026-10"
+    text: Served as program co-chair of the AAAI/ACM Conference on AI, Ethics, and Society (AIES 2026).
+    source_ids: [caliskan-site]
+honors:
+  - name: NSF CAREER Award
+    year: 2024
+    awarded_by: U.S. National Science Foundation
+    source_ids: [caliskan-site, caliskan-bio]
+  - name: IJCAI Early Career Spotlight
+    year: 2023
+    awarded_by: International Joint Conferences on Artificial Intelligence
+    source_ids: [caliskan-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: caliskan-site
     title: Aylin Caliskan — University of Washington faculty homepage
@@ -46,11 +108,18 @@ sources:
     publisher: Aylin Caliskan (University of Washington)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: semantics-paper
     title: Semantics derived automatically from language corpora contain human-like biases (arXiv 1608.07187)
     url: https://arxiv.org/abs/1608.07187
     publisher: arXiv
     kind: paper
     published_at: 2016-08-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: caliskan-bio
+    title: Aylin Caliskan — Bio (University of Washington)
+    url: https://faculty.washington.edu/aylin/bio.html
+    publisher: University of Washington
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

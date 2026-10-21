@@ -36,13 +36,13 @@ describe("landing page text", () => {
     const one: Facts = { count: 12, employers: 1, soleEmployer: "xAI", date: "Oct 13, 2026", usOnly: 12, outside: 0 };
     expect(TOPICS["entry-level"].description(one)).toContain("No non-U.S. roles listed.");
     expect(TOPICS["entry-level"].description({ ...one, outside: 2 })).toContain("Includes non-U.S. roles.");
-    expect(stateDefinition("MS").description(one)).toBe("12 open listings naming a location in Mississippi, at xAI in the USASI catalog. Listings last checked Oct 13, 2026.");
+    expect(stateDefinition("MS").description(one)).toBe("12 open listings naming a location in Mississippi, at xAI in the USASI catalog. Updated daily.");
     expect(stateDefinition("DC").h1).toBe("AI jobs in Washington, D.C.");
     expect(stateDefinition("DC").path).toBe("/jobs/in/district-of-columbia/");
     const sf = cityDefinition("CA", "san-francisco", "San Francisco");
     expect(sf.path).toBe("/jobs/in/california/san-francisco/");
     expect(sf.h1).toBe("AI jobs in San Francisco, California");
-    expect(sf.description(one)).toBe("12 open listings naming San Francisco, CA, at xAI in the USASI catalog. Listings last checked Oct 13, 2026.");
+    expect(sf.description(one)).toBe("12 open listings naming San Francisco, CA, at xAI in the USASI catalog. Updated daily.");
     expect(sf.image).toBe("/og/jobs/in-california-san-francisco.jpg");
     const fde = roleDefinition(JOB_ROLES[0]);
     expect(fde.path).toBe("/jobs/role/forward-deployed-engineer/");
@@ -119,7 +119,7 @@ describe("landing pages from listings", () => {
     expect(georgia.allListings).toHaveLength(129);
     expect(georgia.pageCount).toBe(2);
     expect(georgia.basePath).toBe("/jobs/in/georgia/");
-    expect(georgia.title).toBe("AI jobs in Georgia (129)");
+    expect(georgia.title).toBe("AI jobs in Georgia — 120+ openings, updated daily");
     expect(georgia.directoryHref).toBe("/jobs/?state=GA&sort=newest");
     const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(georgia.directoryHref.split("?")[1])), now);
     expect(directory.map((j) => j.id)).toEqual(georgia.listings.map((j) => j.id).concat(directory.slice(LISTINGS_SHOWN).map((j) => j.id)));
@@ -155,7 +155,7 @@ describe("landing pages from listings", () => {
     expect(openai.indexable).toBe(true);
     const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(openai.directoryHref.split("?")[1])), now);
     expect(directory).toHaveLength(openai.count);
-    expect(openai.title).toBe("OpenAI jobs: 150 open positions from its own job board");
+    expect(openai.title).toBe("OpenAI jobs — 150 openings, updated daily");
     // Employers whose feeds report no current listings keep a page, kept out of search engines.
     const empty = data.companies.find((p) => p.count === 0);
     if (empty) expect(empty.indexable).toBe(false);

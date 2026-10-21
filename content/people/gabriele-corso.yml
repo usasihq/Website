@@ -1,0 +1,137 @@
+slug: gabriele-corso
+name: Gabriele Corso
+initials: GC
+groups: [open-source, engineering, leadership]
+sector: corporate
+specialties: [ai-for-science]
+headline: Co-founder of Boltz and co-author of the open Boltz models and DiffDock for molecular modeling
+bio:
+  text: >-
+    Gabriele Corso is a co-founder of Boltz, a public benefit corporation that develops open models
+    and agents for AI-driven drug discovery. Corso co-authored the Boltz-1 and Boltz-2 biomolecular
+    models, which began as research at MIT, and is first author of DiffDock, a diffusion model for
+    molecular docking.
+  source_ids: [boltz-manifesto, boltz-readme, diffdock-paper]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: Boltz
+    organization_slug: boltz
+    role: Co-founder
+    current: true
+    source_ids: [boltz-manifesto, boltz-launch]
+work:
+  - name: Boltz-2
+    artifact_slug: boltz-2
+    url: https://github.com/jwohlwend/boltz
+    type: open-weights
+    contribution: >-
+      Co-author of Boltz-2 and Boltz-1, open biomolecular interaction models whose code and
+      weights are released under the MIT license.
+    source_ids: [boltz-readme, boltz1-report, boltz2-report]
+  - name: DiffDock
+    artifact_slug: null
+    url: https://arxiv.org/abs/2210.01776
+    contribution: >-
+      First author of DiffDock (2022), which frames molecular docking as a generative modeling
+      problem solved with a diffusion process over ligand poses.
+    source_ids: [diffdock-paper]
+links:
+  - label: Boltz
+    url: https://boltz.com/manifesto
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Corso's research applies generative models to molecular structure. DiffDock, posted in
+          October 2022 with Hannes Stärk, Bowen Jing, Regina Barzilay and Tommi Jaakkola, treats
+          docking a small molecule to a protein as a diffusion process over the molecule's position,
+          orientation and torsion angles.
+        source_ids: [diffdock-paper]
+  - heading: Boltz models
+    paragraphs:
+      - text: >-
+          Boltz is a family of open models for predicting biomolecular interactions, released with
+          code and weights under the MIT license. The Boltz-1 technical report appeared in November
+          2024, and Boltz-2, which jointly models complex structures and binding affinities,
+          followed in June 2025.
+        source_ids: [boltz-readme, boltz1-report, boltz2-report]
+  - heading: Boltz PBC
+    paragraphs:
+      - text: >-
+          The Boltz models began as research at MIT. In January 2026, Gabriele Corso, Jeremy
+          Wohlwend and Saro Passaro announced that they had founded Boltz as a public benefit
+          corporation to keep releasing open models while building products for drug discovery.
+        source_ids: [boltz-manifesto]
+      - text: >-
+          The launch introduced a preview of Boltz Lab, a platform for running the models and new
+          small-molecule and protein design agents, along with a partnership with Pfizer.
+        source_ids: [boltz-launch]
+timeline:
+  - date: "2022-10-04"
+    text: First-authored the DiffDock paper on diffusion models for molecular docking.
+    source_ids: [diffdock-paper]
+  - date: "2024-11-20"
+    text: Posted the Boltz-1 technical report on democratizing biomolecular interaction modeling.
+    source_ids: [boltz1-report]
+  - date: "2025-06-18"
+    text: Posted the Boltz-2 technical report on structure and binding affinity prediction.
+    source_ids: [boltz2-report]
+  - date: "2026-01-08"
+    text: Announced the founding of Boltz as a public benefit corporation with co-founders.
+    source_ids: [boltz-manifesto, boltz-launch]
+  - date: "2026-01-08"
+    text: Boltz launched a preview of the Boltz Lab platform and its first design agents.
+    source_ids: [boltz-launch]
+honors: []
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: boltz-manifesto
+    title: "Our Vision: The Future We Are Building at Boltz"
+    url: https://boltz.com/manifesto
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-01-08
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz-launch
+    title: "Announcing Boltz: A Public Benefit Corporation for AI-Driven Drug Discovery"
+    url: https://boltz.com/launch
+    publisher: Boltz
+    kind: announcement
+    published_at: 2026-01-08
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz-readme
+    title: jwohlwend/boltz README (models, MIT license, citations)
+    url: https://github.com/jwohlwend/boltz
+    publisher: GitHub repository
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz1-report
+    title: "Boltz-1: Democratizing Biomolecular Interaction Modeling (bioRxiv)"
+    url: https://www.biorxiv.org/content/10.1101/2024.11.19.624167v1
+    publisher: bioRxiv
+    kind: paper
+    published_at: 2024-11-20
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: boltz2-report
+    title: "Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction (bioRxiv)"
+    url: https://www.biorxiv.org/content/10.1101/2025.06.14.659707v1
+    publisher: bioRxiv
+    kind: paper
+    published_at: 2025-06-18
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: diffdock-paper
+    title: "DiffDock: Diffusion Steps, Twists, and Turns for Molecular Docking (arXiv 2210.01776)"
+    url: https://arxiv.org/abs/2210.01776
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-04
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

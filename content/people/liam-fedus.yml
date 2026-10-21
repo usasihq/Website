@@ -13,7 +13,7 @@ bio:
     language models efficiently. At OpenAI, the GPT-4 Technical Report credits Fedus as data flywheel
     lead, and the OpenAI o1 System Card lists Fedus in the reasoning research leadership.
   source_ids: [periodic-home, switch-paper, gpt4-report, o1-card]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Periodic Labs
     organization_slug: null
@@ -50,9 +50,54 @@ work:
 links:
   - label: Periodic Labs
     url: https://periodic.com
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Publishing as William Fedus, Fedus first-authored MaskGAN in 2018 with Ian Goodfellow and Andrew M. Dai,
+          a method for text generation by filling in masked spans, and in 2020 a study revisiting the
+          fundamentals of experience replay in reinforcement learning with co-authors including Yoshua Bengio
+          and Hugo Larochelle.
+        source_ids: [lf-maskgan, lf-replay]
+      - text: >-
+          Several of Fedus's papers concern sparse mixture-of-experts language models. With Barret Zoph and Noam
+          Shazeer, Fedus first-authored Switch Transformers in 2021, which simplified expert routing to train
+          large sparse models efficiently; Fedus also co-authored ST-MoE in 2022 on stable and transferable sparse
+          expert models and, with Jeff Dean and Zoph, a 2022 review of sparse expert models in deep learning.
+        source_ids: [switch-paper, lf-st-moe, lf-review]
+  - heading: Career
+    paragraphs:
+      - text: >-
+          At OpenAI, the GPT-4 Technical Report credits Fedus as data flywheel lead, and the OpenAI o1 System
+          Card lists Fedus in its reasoning research leadership. Fedus is now listed on the team of Periodic Labs,
+          an AI research and deployment company building AI scientists and autonomous laboratories for the
+          physical sciences.
+        source_ids: [gpt4-report, o1-card, periodic-home]
+timeline:
+  - date: "2018-01-23"
+    text: Released MaskGAN, a text generation method based on filling in masked text, as first author.
+    source_ids: [lf-maskgan]
+  - date: "2020-07-13"
+    text: Released a first-authored study revisiting the fundamentals of experience replay.
+    source_ids: [lf-replay]
+  - date: "2021-01-11"
+    text: Released Switch Transformers, on scaling sparse mixture-of-experts language models, as first author.
+    source_ids: [switch-paper]
+  - date: "2022-02-17"
+    text: Co-authored ST-MoE on designing stable and transferable sparse expert models.
+    source_ids: [lf-st-moe]
+  - date: "2022-09-04"
+    text: Co-wrote a review of sparse expert models in deep learning with Jeff Dean and Barret Zoph.
+    source_ids: [lf-review]
+  - date: "2023-03-15"
+    text: Credited as data flywheel lead in the GPT-4 Technical Report.
+    source_ids: [gpt4-report]
+  - date: "2024-12-21"
+    text: Listed in the reasoning research leadership of the OpenAI o1 System Card.
+    source_ids: [o1-card]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: periodic-home
     title: Periodic Labs — homepage ("Who we are")
@@ -60,25 +105,53 @@ sources:
     publisher: Periodic Labs
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: switch-paper
     title: "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity (arXiv 2101.03961)"
     url: https://arxiv.org/abs/2101.03961
     publisher: arXiv
     kind: paper
     published_at: 2021-01-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt4-report
     title: GPT-4 Technical Report (arXiv 2303.08774), authorship and credit attribution
     url: https://arxiv.org/abs/2303.08774
     publisher: arXiv
     kind: paper
     published_at: 2023-03-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: o1-card
     title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
     url: https://arxiv.org/abs/2412.16720
     publisher: arXiv
     kind: paper
     published_at: 2024-12-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: lf-maskgan
+    title: "MaskGAN: Better Text Generation via Filling in the______"
+    url: https://arxiv.org/abs/1801.07736
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-01-23
+    accessed_at: 2026-10-21
+  - id: lf-replay
+    title: Revisiting Fundamentals of Experience Replay
+    url: https://arxiv.org/abs/2007.06700
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-07-13
+    accessed_at: 2026-10-21
+  - id: lf-st-moe
+    title: "ST-MoE: Designing Stable and Transferable Sparse Expert Models"
+    url: https://arxiv.org/abs/2202.08906
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-02-17
+    accessed_at: 2026-10-21
+  - id: lf-review
+    title: A Review of Sparse Expert Models in Deep Learning
+    url: https://arxiv.org/abs/2209.01667
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-04
+    accessed_at: 2026-10-21

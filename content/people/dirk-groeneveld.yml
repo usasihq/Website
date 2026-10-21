@@ -14,7 +14,7 @@ bio:
     advising on pretraining, especially stability and throughput improvements, and Groeneveld is
     also a co-author of the Dolma pretraining corpus paper.
   source_ids: [olmo-paper, olmo2-pdf, olmoe-pdf, dolma-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Ai2 (Allen Institute for AI)
     organization_slug: ai2
@@ -44,9 +44,72 @@ links:
     url: https://github.com/dirkgr
   - label: Hugging Face
     url: https://huggingface.co/dirkgr
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Groeneveld's early papers include work on scholarly search and question answering. Groeneveld co-authored the
+          2018 paper describing how the literature graph behind Semantic Scholar was built, the 2019 overview of
+          the Aristo science question-answering project, and was first author of "A Simple Yet Strong Pipeline
+          for HotpotQA" (2020) on multi-hop question answering.
+        source_ids: [s2-graph-paper, aristo-paper, hotpotqa-paper]
+      - text: >-
+          Later work turned to the data and evaluation behind language models. Groeneveld co-authored the 2021
+          case study documenting the Colossal Clean Crawled Corpus (C4), and was first author of Catwalk (2023), a
+          framework for evaluating language models across many datasets. A 2026 paper with Amanda Bertsch,
+          Graham Neubig and others showed that small architectural choices in dense transformers affect how
+          well models extend to long contexts.
+        source_ids: [c4-paper, catwalk-paper, cracks-paper]
+  - heading: OLMo models
+    paragraphs:
+      - text: >-
+          Groeneveld was first author of the February 2024 OLMo paper, which released an open language model with
+          its training data and code, and co-authored the Dolma pretraining corpus paper. On OLMo 2, Groeneveld is
+          credited with base-model development, and the OLMoE paper credits Groeneveld with advice on pretraining
+          stability and throughput.
+        source_ids: [olmo-paper, dolma-paper, olmo2-pdf, olmoe-pdf]
+      - text: >-
+          Groeneveld is also an author of the December 2025 Olmo 3 report, which describes a family of fully open
+          7B and 32B models and releases the full model flow. Groeneveld's GitHub profile lists Ai2 open-source
+          repositories such as allenai/tango and allenai/catwalk.
+        source_ids: [olmo3-paper, github-profile]
+timeline:
+  - date: "2018-05"
+    text: Co-authored "Construction of the Literature Graph in Semantic Scholar".
+    source_ids: [s2-graph-paper]
+  - date: "2019-09"
+    text: Co-authored an overview of the Aristo project on answering science exam questions.
+    source_ids: [aristo-paper]
+  - date: "2020-04"
+    text: Posted "A Simple Yet Strong Pipeline for HotpotQA" as first author.
+    source_ids: [hotpotqa-paper]
+  - date: "2021-04"
+    text: Co-authored a documentation study of the Colossal Clean Crawled Corpus (C4).
+    source_ids: [c4-paper]
+  - date: "2023-12"
+    text: Posted Catwalk, a unified language model evaluation framework, as first author.
+    source_ids: [catwalk-paper]
+  - date: "2024-01"
+    text: Co-authored the paper introducing the Dolma pretraining corpus.
+    source_ids: [dolma-paper]
+  - date: "2024-02"
+    text: Posted the OLMo paper as first author.
+    source_ids: [olmo-paper]
+  - date: "2024-09"
+    text: Co-authored the OLMoE paper on open mixture-of-experts language models.
+    source_ids: [olmoe-pdf]
+  - date: "2024-12"
+    text: Co-authored "2 OLMo 2 Furious", credited with base-model development.
+    source_ids: [olmo2-pdf]
+  - date: "2025-12"
+    text: Co-authored the Olmo 3 report on fully open 7B and 32B language models.
+    source_ids: [olmo3-paper]
+  - date: "2026-08"
+    text: Co-authored a study of how architectural choices affect long-context extension.
+    source_ids: [cracks-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: olmo-paper
     title: "OLMo: Accelerating the Science of Language Models (arXiv 2402.00838)"
@@ -54,25 +117,81 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2024-02-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: olmo2-pdf
     title: "2 OLMo 2 Furious (arXiv 2501.00656, full text with affiliations and Author Contributions)"
     url: https://arxiv.org/pdf/2501.00656
     publisher: arXiv
     kind: paper
     published_at: 2024-12-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: olmoe-pdf
     title: "OLMoE: Open Mixture-of-Experts Language Models (arXiv 2409.02060, full text with Author Contributions)"
     url: https://arxiv.org/pdf/2409.02060
     publisher: arXiv
     kind: paper
     published_at: 2024-09-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dolma-paper
     title: "Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research (arXiv 2402.00159)"
     url: https://arxiv.org/abs/2402.00159
     publisher: arXiv
     kind: paper
     published_at: 2024-01-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: github-profile
+    title: dirkgr (Dirk Groeneveld) on GitHub
+    url: https://github.com/dirkgr
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: s2-graph-paper
+    title: "Construction of the Literature Graph in Semantic Scholar (arXiv 1805.02262)"
+    url: https://arxiv.org/abs/1805.02262
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-05-06
+    accessed_at: 2026-10-21
+  - id: aristo-paper
+    title: "From 'F' to 'A' on the N.Y. Regents Science Exams: An Overview of the Aristo Project (arXiv 1909.01958)"
+    url: https://arxiv.org/abs/1909.01958
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-09-04
+    accessed_at: 2026-10-21
+  - id: hotpotqa-paper
+    title: "A Simple Yet Strong Pipeline for HotpotQA (arXiv 2004.06753)"
+    url: https://arxiv.org/abs/2004.06753
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-04-14
+    accessed_at: 2026-10-21
+  - id: c4-paper
+    title: "Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus (arXiv 2104.08758)"
+    url: https://arxiv.org/abs/2104.08758
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-04-18
+    accessed_at: 2026-10-21
+  - id: catwalk-paper
+    title: "Catwalk: A Unified Language Model Evaluation Framework for Many Datasets (arXiv 2312.10253)"
+    url: https://arxiv.org/abs/2312.10253
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-15
+    accessed_at: 2026-10-21
+  - id: cracks-paper
+    title: "Cracks in the Foundation: Seemingly Minor Architectural Choices Impact Long Context Extension (arXiv 2608.10296)"
+    url: https://arxiv.org/abs/2608.10296
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-08-10
+    accessed_at: 2026-10-21
+  - id: olmo3-paper
+    title: "Olmo 3 (arXiv 2512.13961)"
+    url: https://arxiv.org/abs/2512.13961
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-12-15
+    accessed_at: 2026-10-21

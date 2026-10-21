@@ -1,0 +1,99 @@
+slug: waseem-alshikh
+name: Waseem AlShikh
+initials: WA
+groups: [engineering, leadership]
+sector: corporate
+specialties: [language-models, inference]
+headline: Co-founder and CTO of WRITER, developer of the Palmyra large language models
+bio:
+  text: >-
+    Waseem AlShikh is a co-founder and the Chief Technology Officer of WRITER, an enterprise
+    generative AI company that trains its own Palmyra family of large language models. AlShikh
+    co-founded WRITER with May Habib in 2020 and co-authored a 2024 paper on long-context
+    inference.
+  source_ids: [writer-company, wim-paper]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: WRITER
+    organization_slug: writer
+    role: CTO and co-founder
+    current: true
+    source_ids: [writer-company]
+work:
+  - name: "Writing in the Margins: Better Inference Pattern for Long Context Retrieval"
+    artifact_slug: null
+    url: https://arxiv.org/abs/2408.14906
+    contribution: >-
+      Co-author of a 2024 paper introducing Writing in the Margins, an inference pattern that
+      processes long inputs in chunks and generates intermediate notes to guide a model toward the
+      relevant information.
+    source_ids: [wim-paper]
+  - name: Palmyra model family
+    artifact_slug: palmyra
+    url: https://writer.com/models/
+    contribution: >-
+      CTO of the company that builds the Palmyra models, whose flagship Palmyra X6 is
+      the default model on the WRITER platform.
+    source_ids: [writer-models, writer-company]
+links:
+  - label: WRITER
+    url: https://writer.com/company/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          AlShikh and May Habib began working together in 2013, when they started a company to
+          localize enterprise content dynamically using machine translation. Their experiments with
+          transformer models led them to launch WRITER in 2020, where AlShikh is CTO.
+        source_ids: [writer-company]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          AlShikh is the last-listed author of Writing in the Margins, a 2024 paper
+          on a chunked prefill approach for long-context retrieval. The method adds "margin" notes
+          generated for each chunk and uses them to steer the final answer.
+        source_ids: [wim-paper]
+      - text: >-
+          WRITER's flagship model today, Palmyra X6, is the default model across the WRITER
+          platform and is built for long-running agentic work; the company says it can hold one
+          goal for hours.
+        source_ids: [writer-models]
+timeline:
+  - date: "2013"
+    text: Co-founded a first company with May Habib to localize enterprise content using machine translation.
+    source_ids: [writer-company]
+  - date: "2020"
+    text: Co-founded WRITER with May Habib.
+    source_ids: [writer-company]
+  - date: "2024-08-27"
+    text: Co-authored Writing in the Margins, a paper on inference for long-context retrieval.
+    source_ids: [wim-paper]
+honors: []
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: writer-company
+    title: About WRITER — founders, leadership, and values
+    url: https://writer.com/company/
+    publisher: WRITER
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: writer-models
+    title: Palmyra X6 — WRITER models
+    url: https://writer.com/models/
+    publisher: WRITER
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: wim-paper
+    title: "Writing in the Margins: Better Inference Pattern for Long Context Retrieval (arXiv 2408.14906)"
+    url: https://arxiv.org/abs/2408.14906
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-08-27
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

@@ -15,7 +15,7 @@ bio:
     All You Need (2017), whose contribution note says Vaswani, with Illia Polosukhin, designed and
     implemented the first Transformer models, and as first author of the 2018 Tensor2Tensor paper.
   source_ids: [essential-about, rnj1-post, rnj1-card, essential-web-paper, attention-paper, t2t-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Essential AI
     organization_slug: essential-ai
@@ -65,9 +65,64 @@ work:
 links:
   - label: Essential AI
     url: https://www.essential.ai/about
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Ashish Vaswani is the first-listed author of "Attention Is All You Need" (2017), written with a
+          Google Brain affiliation; the paper's contribution note says Vaswani, with Illia Polosukhin,
+          designed and implemented the first Transformer models. In 2018 Vaswani was first author of the
+          Tensor2Tensor paper, describing the Google Brain library that holds the reference Transformer
+          implementation.
+        source_ids: [attention-paper, t2t-paper, t2t-repo]
+      - text: >-
+          Vaswani also co-authored several 2018 papers extending self-attention: relative position
+          representations with Peter Shaw and Jakob Uszkoreit, the Image Transformer for image generation,
+          and the Music Transformer for generating music with long-term structure.
+        source_ids: [relpos-paper, image-transformer-paper, music-transformer-paper]
+  - heading: Essential AI
+    paragraphs:
+      - text: >-
+          As CEO of Essential AI, Vaswani is listed among the authors of the company's 2025 research
+          papers, including "Rethinking Reflection in Pre-Training" (April 2025), "Practical Efficiency of
+          Muon for Pretraining" (May 2025) and the Essential-Web v1.0 dataset paper (June 2025).
+        source_ids: [essential-about, reflection-paper, muon-paper, essential-web-paper]
+      - text: >-
+          In December 2025 Vaswani wrote the announcement of Rnj-1, an 8B base and instruction-tuned model
+          pair that roughly follows the Gemma 3 architecture and uses YaRN to extend context to 32k tokens.
+          The models are published on Hugging Face under the Apache 2.0 license.
+        source_ids: [rnj1-post, rnj1-card]
+timeline:
+  - date: 2017-06-12
+    text: Posted "Attention Is All You Need" as first-listed author, introducing the Transformer.
+    source_ids: [attention-paper]
+  - date: 2018-02-15
+    text: Co-authored the Image Transformer paper.
+    source_ids: [image-transformer-paper]
+  - date: 2018-03-06
+    text: Co-authored "Self-Attention with Relative Position Representations" with Peter Shaw and Jakob Uszkoreit.
+    source_ids: [relpos-paper]
+  - date: 2018-03-16
+    text: Posted the Tensor2Tensor for Neural Machine Translation paper as first author.
+    source_ids: [t2t-paper]
+  - date: 2018-09-12
+    text: Co-authored the Music Transformer paper.
+    source_ids: [music-transformer-paper]
+  - date: 2025-04-05
+    text: Co-authored "Rethinking Reflection in Pre-Training" with Essential AI colleagues.
+    source_ids: [reflection-paper]
+  - date: 2025-05-04
+    text: Co-authored "Practical Efficiency of Muon for Pretraining" with Essential AI colleagues.
+    source_ids: [muon-paper]
+  - date: 2025-06-17
+    text: Co-authored the Essential-Web v1.0 paper on a 24-trillion-token organized web dataset.
+    source_ids: [essential-web-paper]
+  - date: 2025-12-05
+    text: Announced Essential AI's Rnj-1 base and instruction-tuned models.
+    source_ids: [rnj1-post]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: essential-about
     title: Essential AI — About (Essential Memo)
@@ -75,53 +130,88 @@ sources:
     publisher: Essential AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rnj1-post
     title: "Announcing Rnj-1: Building Instruments of Intelligence"
     url: https://www.essential.ai/research/rnj-1
     publisher: Essential AI
     kind: announcement
     published_at: 2025-12-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rnj1-card
     title: EssentialAI/rnj-1 model card (license apache-2.0)
     url: https://huggingface.co/EssentialAI/rnj-1
     publisher: Essential AI (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: essential-web-paper
     title: "Essential-Web v1.0: 24T tokens of organized web data (arXiv 2506.14111)"
     url: https://arxiv.org/abs/2506.14111
     publisher: arXiv
     kind: paper
     published_at: 2025-06-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: essential-web-card
     title: EssentialAI/essential-web-v1.0 dataset card (license odc-by)
     url: https://huggingface.co/datasets/EssentialAI/essential-web-v1.0
     publisher: Essential AI (Hugging Face)
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: attention-paper
     title: Attention Is All You Need (arXiv 1706.03762)
     url: https://arxiv.org/abs/1706.03762
     publisher: arXiv
     kind: paper
     published_at: 2017-06-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t2t-paper
     title: Tensor2Tensor for Neural Machine Translation (arXiv 1803.07416)
     url: https://arxiv.org/abs/1803.07416
     publisher: arXiv
     kind: paper
     published_at: 2018-03-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t2t-repo
     title: tensorflow/tensor2tensor README (Apache-2.0)
     url: https://github.com/tensorflow/tensor2tensor
     publisher: TensorFlow (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: relpos-paper
+    title: Self-Attention with Relative Position Representations (arXiv 1803.02155)
+    url: https://arxiv.org/abs/1803.02155
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-03-06
+    accessed_at: 2026-10-21
+  - id: image-transformer-paper
+    title: Image Transformer (arXiv 1802.05751)
+    url: https://arxiv.org/abs/1802.05751
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-02-15
+    accessed_at: 2026-10-21
+  - id: music-transformer-paper
+    title: Music Transformer (arXiv 1809.04281)
+    url: https://arxiv.org/abs/1809.04281
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-09-12
+    accessed_at: 2026-10-21
+  - id: reflection-paper
+    title: Rethinking Reflection in Pre-Training (arXiv 2504.04022)
+    url: https://arxiv.org/abs/2504.04022
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-04-05
+    accessed_at: 2026-10-21
+  - id: muon-paper
+    title: Practical Efficiency of Muon for Pretraining (arXiv 2505.02222)
+    url: https://arxiv.org/abs/2505.02222
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-04
+    accessed_at: 2026-10-21

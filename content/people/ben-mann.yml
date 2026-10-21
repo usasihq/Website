@@ -61,9 +61,61 @@ work:
 links:
   - label: Website
     url: https://benjmann.net
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Ben Mann's personal site describes six years as a software engineer at Google, followed by
+          starting a company and then turning to AI safety through work at OpenAI and MIRI. Mann then
+          co-founded Anthropic and, as of 2023, was leading product engineering there.
+        source_ids: [mann-site]
+      - text: >-
+          Anthropic's January 2026 announcement of an expanded Labs team, focused on incubating
+          experimental products at the edge of Claude's capabilities, said Mike Krieger would join
+          Labs to build alongside Mann. Mann has also represented Anthropic as a co-founder at public
+          events, sharing the opening keynote with Dario Amodei at the Tokyo Builder Summit in October
+          2025.
+        source_ids: [anthropic-labs, anthropic-tokyo-summit]
+      - text: >-
+          In October 2026 Mann signed a memorandum of understanding between Anthropic and Singapore's
+          Ministry of Digital Development and Information, covering technical exchanges on model
+          evaluation, testing standards and incident response, as Anthropic opened an office in
+          Singapore.
+        source_ids: [anthropic-singapore]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Mann is the second-listed author, after Tom B. Brown, of "Language Models are Few-Shot
+          Learners" (2020), the paper that introduced GPT-3. At Anthropic, Mann co-authored the 2022
+          paper on training a helpful and harmless assistant with reinforcement learning from human
+          feedback, and the December 2022 Constitutional AI paper on training harmless assistants from
+          AI feedback guided by a set of principles.
+        source_ids: [gpt3-paper, hh-rlhf-paper, cai-paper]
+timeline:
+  - date: "2020-05-28"
+    text: Second-listed author of "Language Models are Few-Shot Learners", the GPT-3 paper.
+    source_ids: [gpt3-paper]
+  - date: "2022-04-12"
+    text: Co-authored Anthropic's paper on training a helpful and harmless assistant with RLHF.
+    source_ids: [hh-rlhf-paper]
+  - date: "2022-12-15"
+    text: "Co-authored \"Constitutional AI: Harmlessness from AI Feedback\"."
+    source_ids: [cai-paper]
+  - date: "2023"
+    text: Leading product engineering at Anthropic, according to Mann's personal site.
+    source_ids: [mann-site]
+  - date: "2025-10-28"
+    text: Gave the opening keynote with Dario Amodei at Anthropic's Tokyo Builder Summit.
+    source_ids: [anthropic-tokyo-summit]
+  - date: "2026-01-13"
+    text: Named in Anthropic's announcement of the expanded Labs team, which Mike Krieger joined to build alongside Mann.
+    source_ids: [anthropic-labs]
+  - date: "2026-10-14"
+    text: Signed Anthropic's memorandum of understanding with Singapore's Ministry of Digital Development and Information.
+    source_ids: [anthropic-singapore]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: mann-site
     title: Ben Mann — personal site (bio section)
@@ -71,46 +123,46 @@ sources:
     publisher: Ben Mann
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: anthropic-labs
     title: Introducing Labs
     url: https://www.anthropic.com/news/introducing-anthropic-labs
     publisher: Anthropic
     kind: announcement
     published_at: 2026-01-13
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: anthropic-singapore
     title: Anthropic opens Singapore office and signs MOU with the Government of Singapore
     url: https://www.anthropic.com/news/singapore-office-opening
     publisher: Anthropic
     kind: announcement
     published_at: 2026-10-14
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: anthropic-tokyo-summit
     title: Tokyo Builder Summit (speakers list Ben Mann as co-founder, Anthropic)
     url: https://www.anthropic.com/events/tokyo-builder-summit
     publisher: Anthropic
     kind: official-page
     published_at: 2025-10-28
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: gpt3-paper
     title: Language Models are Few-Shot Learners (arXiv 2005.14165)
     url: https://arxiv.org/abs/2005.14165
     publisher: arXiv
     kind: paper
     published_at: 2020-05-28
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: hh-rlhf-paper
     title: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback (arXiv 2204.05862)
     url: https://arxiv.org/abs/2204.05862
     publisher: arXiv
     kind: paper
     published_at: 2022-04-12
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: cai-paper
     title: "Constitutional AI: Harmlessness from AI Feedback (arXiv 2212.08073)"
     url: https://arxiv.org/abs/2212.08073
     publisher: arXiv
     kind: paper
     published_at: 2022-12-15
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21

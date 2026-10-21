@@ -4,23 +4,30 @@ initials: AD
 groups: [open-source, engineering]
 sector: null
 specialties: [speech-audio, generative-media, multimodal]
-headline: Head of Research at Kyutai; former FAIR research scientist behind MusicGen, EnCodec, and AudioCraft
+headline: Co-founder and Chief Science Officer of Gradium and co-founder of Kyutai; behind MusicGen, EnCodec and Moshi
 bio:
   text: >-
-    Alexandre Défossez is Head of Research at Kyutai, an open-science AI lab, and describes a
-    research focus on multimodal language models. Before Kyutai, Défossez spent three years as a
-    research scientist at FAIR at Meta, where Défossez led the music generation work behind
-    MusicGen and co-led development of the AudioCraft framework. Défossez is first author of the
-    EnCodec neural audio codec paper and of the Moshi speech-text foundation model paper; the Moshi
-    repository releases its code under MIT and Apache licenses and its model weights under CC-BY 4.0.
+    Alexandre Défossez is a co-founder and the Chief Science Officer of Gradium, which builds voice AI
+    models, and a co-founder of Kyutai, an open-science AI lab where Défossez continues to lead
+    research projects; Kyutai's team page lists Défossez as Head of Research. Before Kyutai, Défossez
+    spent three years as a research scientist at FAIR at Meta, leading the music generation work
+    behind MusicGen and co-leading development of the AudioCraft framework. Défossez is first author
+    of the EnCodec neural audio codec paper and of the Moshi speech-text foundation model paper; the
+    Moshi repository releases its code under MIT and Apache licenses and its model weights under
+    CC-BY 4.0.
   source_ids: [defossez-site, kyutai-team, encodec-paper, encodec-pdf, musicgen-paper, moshi-paper, moshi-repo, audiocraft-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
+  - name: Gradium
+    organization_slug: null
+    role: Co-founder and Chief Science Officer
+    current: true
+    source_ids: [defossez-site]
   - name: Kyutai
     organization_slug: null
-    role: Head of Research
+    role: Co-founder; leads research projects (listed as Head of Research on the team page)
     current: true
-    source_ids: [kyutai-team]
+    source_ids: [defossez-site, kyutai-team]
   - name: Meta (FAIR)
     organization_slug: meta
     role: Research scientist at FAIR for three years, leading the music generation effort (MusicGen)
@@ -51,9 +58,75 @@ links:
     url: https://ai.honu.io/
   - label: GitHub
     url: https://github.com/adefossez
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Alexandre Défossez was a CIFRE PhD student at FAIR and the Sierra team at INRIA,
+          supervised by Léon Bottou and Nicolas Usunier of FAIR and Francis Bach of INRIA. Défossez then
+          spent three years as a research scientist at FAIR, leading the music generation effort
+          that produced MusicGen and co-leading development of the AudioCraft framework.
+        source_ids: [defossez-site]
+      - text: >-
+          Défossez co-founded Kyutai, an AI lab focused on open-source and open-science work, where
+          Défossez continues to lead research projects, and is listed on Kyutai's team page as Head of
+          Research. Défossez's homepage now also presents Défossez as a co-founder and Chief Science
+          Officer of Gradium, a company that builds voice AI models.
+        source_ids: [defossez-site, kyutai-team]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Défossez's research covers generative music and speech models suited to low-latency
+          interactive use across several modalities, as well as reinforcement learning for such models.
+          Earlier work includes the Demucs music source separation models, real-time speech enhancement
+          in the waveform domain, and theoretical papers on stochastic optimization, including a
+          convergence proof for Adam and Adagrad.
+        source_ids: [defossez-site]
+      - text: >-
+          Défossez is first author of the EnCodec neural audio compression paper (2022) and last author
+          of the MusicGen paper on simple and controllable music generation (2023), both from Meta AI.
+          At Kyutai, Défossez is first author of the 2024 Moshi paper, a speech-text foundation model for
+          real-time, full-duplex spoken dialogue, and has co-authored follow-up work on simultaneous
+          speech-to-speech translation and on retrieval for full-duplex speech models.
+        source_ids: [encodec-paper, encodec-pdf, musicgen-paper, musicgen-pdf, moshi-paper, defossez-site]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Défossez's homepage lists the open-source software Défossez has worked on, including Moshi and
+          its Mimi streaming audio codec, AudioCraft, EnCodec, Demucs, the Denoiser real-time speech
+          enhancement tool, the Julius signal-processing library for PyTorch, and MuScriptor for
+          multi-instrument music transcription. The AudioCraft repository releases its code under the
+          MIT license, and the Moshi repository releases code under MIT and Apache licenses with model
+          weights under CC-BY 4.0.
+        source_ids: [defossez-site, audiocraft-repo, moshi-repo]
+timeline:
+  - date: "2015"
+    text: Published a paper with Francis Bach on constant step size least-mean-square at AISTATS 2015.
+    source_ids: [defossez-site]
+  - date: "2018"
+    text: Presented SING, a symbol-to-instrument neural generator, at NeurIPS (then NIPS) 2018.
+    source_ids: [defossez-site]
+  - date: "2019"
+    text: Posted the Demucs preprints on separating music sources in the waveform domain.
+    source_ids: [defossez-site]
+  - date: "2020"
+    text: Published real-time speech enhancement in the waveform domain at Interspeech 2020.
+    source_ids: [defossez-site]
+  - date: 2022-10-24
+    text: Posted the EnCodec paper, "High Fidelity Neural Audio Compression," as first author.
+    source_ids: [encodec-paper]
+  - date: 2023-06-08
+    text: Posted the MusicGen paper, "Simple and Controllable Music Generation," later presented at NeurIPS 2023.
+    source_ids: [musicgen-paper, defossez-site]
+  - date: 2024-09-17
+    text: Posted the Moshi paper on a speech-text foundation model for real-time dialogue as first author.
+    source_ids: [moshi-paper]
+  - date: "2026"
+    text: Co-authored MoshiRAG and a paper on simultaneous speech-to-speech translation without aligned data at ICML 2026.
+    source_ids: [defossez-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: defossez-site
     title: Alexandre Défossez — AI homepage
@@ -61,60 +134,60 @@ sources:
     publisher: Alexandre Défossez
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: kyutai-team
     title: Kyutai — Team
     url: https://kyutai.org/team/
     publisher: Kyutai
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: encodec-paper
     title: "High Fidelity Neural Audio Compression (arXiv 2210.13438)"
     url: https://arxiv.org/abs/2210.13438
     publisher: arXiv
     kind: paper
     published_at: 2022-10-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: encodec-pdf
     title: "High Fidelity Neural Audio Compression — paper PDF (author affiliations: Meta AI, FAIR Team)"
     url: https://arxiv.org/pdf/2210.13438
     publisher: arXiv
     kind: paper
     published_at: 2022-10-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: musicgen-paper
     title: "Simple and Controllable Music Generation (arXiv 2306.05284)"
     url: https://arxiv.org/abs/2306.05284
     publisher: arXiv
     kind: paper
     published_at: 2023-06-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: musicgen-pdf
     title: "Simple and Controllable Music Generation — paper PDF (core-team markers; author affiliation: Meta AI)"
     url: https://arxiv.org/pdf/2306.05284
     publisher: arXiv
     kind: paper
     published_at: 2023-06-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: moshi-paper
     title: "Moshi: a speech-text foundation model for real-time dialogue (arXiv 2410.00037)"
     url: https://arxiv.org/abs/2410.00037
     publisher: arXiv
     kind: paper
     published_at: 2024-09-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: moshi-repo
     title: kyutai-labs/moshi README and license section
     url: https://github.com/kyutai-labs/moshi
     publisher: Kyutai (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: audiocraft-repo
     title: facebookresearch/audiocraft README and license section
     url: https://github.com/facebookresearch/audiocraft
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

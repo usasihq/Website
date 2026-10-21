@@ -43,12 +43,103 @@ work:
       Co-author, with Jonathan Frankle, of "The Lottery Ticket Hypothesis: Finding Sparse, Trainable
       Neural Networks" (2018).
     source_ids: [lth-paper]
+  - name: Ithemal
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1808.07412
+    contribution: >-
+      Co-author, with Charith Mendis, Alex Renda, and Saman Amarasinghe, of Ithemal (ICML 2019), which
+      uses deep neural networks to estimate the throughput of basic blocks of machine code.
+    source_ids: [ithemal-paper, carbin-site]
 links:
   - label: MIT homepage
     url: https://people.csail.mit.edu/mcarbin/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Michael Carbin leads MIT's Programming Systems Group, which studies the design, semantics,
+          and implementation of language-driven systems that must cope with uncertainty in their
+          environment, their implementation, or their execution. Its work ranges from probabilistic
+          programming and programming languages for quantum computing to semantics for
+          differentiable programming.
+        source_ids: [carbin-site]
+      - text: >-
+          With Jonathan Frankle, Carbin proposed the Lottery Ticket Hypothesis in 2018, which won a
+          Best Paper Award at ICLR 2019. Later papers with Frankle, Gintare Karolina Dziugaite, and
+          Daniel M. Roy connected lottery tickets to linear mode connectivity and examined pruning
+          at initialization.
+        source_ids: [lth-paper, lmc-paper, carbin-site]
+      - text: >-
+          Carbin's group has also applied machine learning to computer systems, including Ithemal for
+          estimating code throughput and DiffTune for tuning CPU simulator parameters with learned
+          differentiable surrogates.
+        source_ids: [ithemal-paper, carbin-site]
+  - heading: Teaching and service
+    paragraphs:
+      - text: >-
+          At MIT, Carbin has taught Computer Language Engineering, Dynamic Computer Language
+          Engineering, and Computer Systems Engineering. Carbin served as Program Co-Chair of MLSys
+          2023 and has served on program committees for POPL, PLDI, OOPSLA, ASPLOS, ICML, and NeurIPS.
+        source_ids: [carbin-site]
+      - text: >-
+          Outside MIT, Carbin is a Senior Fellow and cofounder of Unconventional AI, whose work
+          includes co-designing neural hardware and software, and was a founding advisor for
+          MosaicML.
+        source_ids: [unconv-carbin]
+timeline:
+  - date: 2018-03-09
+    text: Released The Lottery Ticket Hypothesis paper with Jonathan Frankle.
+    source_ids: [lth-paper]
+  - date: 2018-08-21
+    text: Released the Ithemal paper on neural basic-block throughput estimation.
+    source_ids: [ithemal-paper]
+  - date: 2019-12-11
+    text: Released Linear Mode Connectivity and the Lottery Ticket Hypothesis.
+    source_ids: [lmc-paper]
+  - date: "2023"
+    text: Served as Program Co-Chair of the MLSys 2023 conference.
+    source_ids: [carbin-site]
+honors:
+  - name: Microsoft Research Graduate Fellowship
+    year: 2008
+    awarded_by: Microsoft Research
+    source_ids: [carbin-site]
+  - name: OOPSLA Best Paper Award
+    year: 2013
+    awarded_by: ACM SIGPLAN OOPSLA
+    source_ids: [carbin-site]
+  - name: OOPSLA Best Paper Award
+    year: 2014
+    awarded_by: ACM SIGPLAN OOPSLA
+    source_ids: [carbin-site]
+  - name: NSF CAREER Award
+    year: 2018
+    awarded_by: National Science Foundation
+    source_ids: [carbin-site]
+  - name: Google Faculty Research Award
+    year: 2018
+    awarded_by: Google
+    source_ids: [carbin-site]
+  - name: ICLR Best Paper Award (for the Lottery Ticket Hypothesis)
+    year: 2019
+    awarded_by: International Conference on Learning Representations (ICLR)
+    source_ids: [carbin-site]
+  - name: ICFP Distinguished Paper Award
+    year: 2019
+    awarded_by: ACM SIGPLAN International Conference on Functional Programming (ICFP)
+    source_ids: [carbin-site]
+  - name: Sloan Research Fellowship
+    year: 2020
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [carbin-site]
+  - name: Frank E. Perkins Award for Excellence in Graduate Advising
+    year: 2020
+    awarded_by: Massachusetts Institute of Technology
+    source_ids: [carbin-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: carbin-site
     title: Michael Carbin — MIT CSAIL homepage
@@ -56,18 +147,32 @@ sources:
     publisher: Michael Carbin (MIT CSAIL)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: unconv-carbin
     title: Michael Carbin — Unconventional AI author page
     url: https://unconv.ai/blog/author/michael-carbin/
     publisher: Unconventional AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lth-paper
     title: "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks (arXiv 1803.03635)"
     url: https://arxiv.org/abs/1803.03635
     publisher: arXiv
     kind: paper
     published_at: 2018-03-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: lmc-paper
+    title: Linear Mode Connectivity and the Lottery Ticket Hypothesis (arXiv 1912.05671)
+    url: https://arxiv.org/abs/1912.05671
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-11
+    accessed_at: 2026-10-21
+  - id: ithemal-paper
+    title: "Ithemal: Accurate, Portable and Fast Basic Block Throughput Estimation using Deep Neural Networks (arXiv 1808.07412)"
+    url: https://arxiv.org/abs/1808.07412
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-08-21
+    accessed_at: 2026-10-21

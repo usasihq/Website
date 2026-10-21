@@ -65,9 +65,66 @@ links:
     url: https://github.com/pcuenca
   - label: Hugging Face
     url: https://huggingface.co/pcuenq
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Pedro Cuenca is a machine learning engineer at Hugging Face whose work, according to the author
+          bio in Hands-On Generative AI with Transformers and Diffusion Models, centers on diffusion
+          software, models and applications. Before Hugging Face, Cuenca was co-founder and CTO of
+          LateNiteSoft, working on the technology behind the Camera+ iPhone app, which used custom
+          machine learning models for photography enhancement.
+        source_ids: [genaibook-readme]
+      - text: >-
+          The same bio notes that Cuenca created deep-learning models for photography enhancement and
+          super-resolution and was involved in the development and operations of DALL·E mini, whose
+          README lists Cuenca among its authors.
+        source_ids: [genaibook-readme, dalle-mini-readme]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Several of Cuenca's Hugging Face projects bring models to Apple devices. Cuenca wrote the December
+          2022 post on using Stable Diffusion with Core ML on Apple Silicon, co-wrote the February 2023
+          post introducing the open-source Diffusers app for Mac, and in August 2023 introduced
+          swift-transformers, an Apache-2.0 Swift package for running language models on device.
+        source_ids: [coreml-sd-blog, mac-diffusers-blog, swift-coreml-diffusers-repo, swift-transformers-blog, swift-transformers-repo]
+      - text: >-
+          Cuenca is listed among the authors in the citation for Hugging Face's Diffusers library and
+          co-authored the Hugging Face launch posts for open models including Llama 2, Gemma and Llama 3.
+          In June 2026 Cuenca co-wrote the second part of a Hugging Face series on profiling in PyTorch,
+          which walks from nn.Linear to a fused MLP.
+        source_ids: [diffusers-readme, llama2-blog, gemma-blog, llama3-blog, hf-profiling-blog]
+  - heading: Writing
+    paragraphs:
+      - text: >-
+          Cuenca co-wrote the book Hands-On Generative AI with Transformers and Diffusion Models, whose
+          companion repository lists Cuenca among the authors alongside Apolinario Passos and others.
+        source_ids: [genaibook-readme]
+timeline:
+  - date: 2022-12-01
+    text: Published the Hugging Face post on using Stable Diffusion with Core ML on Apple Silicon.
+    source_ids: [coreml-sd-blog]
+  - date: 2023-02-24
+    text: Co-wrote the post introducing Swift Diffusers, the open-source Diffusers app for Mac.
+    source_ids: [mac-diffusers-blog]
+  - date: 2023-07-18
+    text: Co-authored Hugging Face's Llama 2 launch post.
+    source_ids: [llama2-blog]
+  - date: 2023-08-08
+    text: Released swift-transformers for running language models on Apple devices.
+    source_ids: [swift-transformers-blog]
+  - date: 2024-02-21
+    text: Co-authored Hugging Face's post welcoming Google's Gemma open models.
+    source_ids: [gemma-blog]
+  - date: 2024-04-18
+    text: Co-authored Hugging Face's post welcoming Meta's Llama 3 models.
+    source_ids: [llama3-blog]
+  - date: 2026-06-11
+    text: 'Co-wrote "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP" on the Hugging Face blog.'
+    source_ids: [hf-profiling-blog]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: genaibook-readme
     title: Hands-On Generative AI with Transformers and Diffusion Models — book repository README (About the Authors)
@@ -75,53 +132,81 @@ sources:
     publisher: genaibook (GitHub repository)
     kind: repository
     published_at: 2024-12-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-profiling-blog
     title: "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP (author byline)"
     url: https://huggingface.co/blog/torch-mlp-fusion
     publisher: Hugging Face
     kind: announcement
     published_at: 2026-06-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: diffusers-readme
     title: huggingface/diffusers README and CITATION.cff (citation author list; Apache-2.0)
     url: https://github.com/huggingface/diffusers
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: swift-transformers-blog
     title: "Releasing Swift Transformers: Run On-Device LLMs in Apple Devices"
     url: https://huggingface.co/blog/swift-coreml-llm
     publisher: Hugging Face
     kind: announcement
     published_at: 2023-08-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: swift-transformers-repo
     title: huggingface/swift-transformers repository (Apache-2.0)
     url: https://github.com/huggingface/swift-transformers
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mac-diffusers-blog
     title: "Swift Diffusers: Fast Stable Diffusion for Mac"
     url: https://huggingface.co/blog/fast-mac-diffusers
     publisher: Hugging Face
     kind: announcement
     published_at: 2023-02-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: swift-coreml-diffusers-repo
     title: huggingface/swift-coreml-diffusers README
     url: https://github.com/huggingface/swift-coreml-diffusers
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dalle-mini-readme
     title: borisdayma/dalle-mini README (authors and citation; Apache-2.0)
     url: https://github.com/borisdayma/dalle-mini
     publisher: Boris Dayma (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: coreml-sd-blog
+    title: Using Stable Diffusion with Core ML on Apple Silicon
+    url: https://huggingface.co/blog/diffusers-coreml
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2022-12-01
+    accessed_at: 2026-10-21
+  - id: llama2-blog
+    title: Llama 2 is here - get it on Hugging Face
+    url: https://huggingface.co/blog/llama2
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2023-07-18
+    accessed_at: 2026-10-21
+  - id: gemma-blog
+    title: Welcome Gemma - Google's new open LLM
+    url: https://huggingface.co/blog/gemma
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2024-02-21
+    accessed_at: 2026-10-21
+  - id: llama3-blog
+    title: Welcome Llama 3 - Meta's new open LLM
+    url: https://huggingface.co/blog/llama3
+    publisher: Hugging Face
+    kind: official-page
+    published_at: 2024-04-18
+    accessed_at: 2026-10-21

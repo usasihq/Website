@@ -16,7 +16,7 @@ bio:
     the authors of "Evaluating Large Language Models Trained on Code", the paper that describes the
     HumanEval problem set.
   source_ids: [nichol-site, nichol-github, iddpm-paper, glide-paper, adm-paper, improved-diffusion-repo, guided-diffusion-repo, glide-repo, pointe-paper, shape-paper, pointe-repo, shape-repo, codex-paper, humaneval-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: OpenAI
     organization_slug: openai
@@ -57,9 +57,69 @@ links:
     url: https://aqnichol.com/
   - label: GitHub
     url: https://github.com/unixpickle
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Nichol's early papers were on reinforcement learning and meta-learning. "On First-Order
+          Meta-Learning Algorithms" (2018), written with Joshua Achiam and John Schulman, analyzes methods for
+          learning a parameter initialization that adapts quickly to new tasks, and introduces the Reptile
+          algorithm. The same year Nichol was first author of "Gotta Learn Fast", which presented a
+          reinforcement learning benchmark for transfer and few-shot learning built on the Sonic the Hedgehog
+          games.
+        source_ids: [reptile-paper, sonic-paper]
+      - text: >-
+          In 2021 and 2022 Nichol published a series of papers on diffusion models for image generation. "Improved Denoising
+          Diffusion Probabilistic Models", written with Prafulla Dhariwal, proposed changes that improve sample
+          quality and likelihood, and "Diffusion Models Beat GANs on Image Synthesis" introduced classifier
+          guidance. GLIDE then applied guided diffusion to text-conditional image generation and editing, and
+          Nichol co-authored the 2022 paper on generating images from CLIP latents with Aditya Ramesh and
+          colleagues.
+        source_ids: [iddpm-paper, adm-paper, glide-paper, dalle2-paper]
+  - heading: 3D generation and code evaluation
+    paragraphs:
+      - text: >-
+          Point-E, posted in December 2022 with Nichol as first author, generates 3D point clouds from text
+          prompts by first producing a synthetic image and then a point cloud. Shap-E, posted in May 2023,
+          generates the parameters of implicit 3D functions that can be rendered as textured meshes or neural
+          radiance fields. OpenAI published the code for both projects in MIT-licensed repositories.
+        source_ids: [pointe-paper, pointe-repo, shape-paper, shape-repo]
+      - text: >-
+          Nichol is also a co-author of "Evaluating Large Language Models Trained on Code" (2021), which
+          introduced the Codex models and the HumanEval set of hand-written programming problems. The HumanEval
+          evaluation harness is published by OpenAI as an MIT-licensed repository.
+        source_ids: [codex-paper, humaneval-repo]
+timeline:
+  - date: "2018-03"
+    text: Posted "On First-Order Meta-Learning Algorithms" with Joshua Achiam and John Schulman.
+    source_ids: [reptile-paper]
+  - date: "2018-04"
+    text: Posted "Gotta Learn Fast", a reinforcement learning benchmark based on the Sonic games, as first author.
+    source_ids: [sonic-paper]
+  - date: "2021-02"
+    text: Posted "Improved Denoising Diffusion Probabilistic Models" as first author with Prafulla Dhariwal.
+    source_ids: [iddpm-paper]
+  - date: "2021-05"
+    text: Posted "Diffusion Models Beat GANs on Image Synthesis" with Prafulla Dhariwal.
+    source_ids: [adm-paper]
+  - date: "2021-07"
+    text: Co-authored the Codex paper that introduced the HumanEval benchmark.
+    source_ids: [codex-paper]
+  - date: "2021-12"
+    text: Posted GLIDE, a text-guided diffusion model for image generation and editing, as first author.
+    source_ids: [glide-paper]
+  - date: "2022-04"
+    text: Co-authored "Hierarchical Text-Conditional Image Generation with CLIP Latents".
+    source_ids: [dalle2-paper]
+  - date: "2022-12"
+    text: Posted Point-E, a system for generating 3D point clouds from text prompts, as first author.
+    source_ids: [pointe-paper]
+  - date: "2023-05"
+    text: Co-authored Shap-E, a model that generates conditional 3D implicit functions.
+    source_ids: [shape-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nichol-site
     title: Alex Nichol — homepage
@@ -67,95 +127,116 @@ sources:
     publisher: Alex Nichol
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nichol-github
     title: unixpickle (Alex Nichol) on GitHub
     url: https://github.com/unixpickle
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codex-paper
     title: "Evaluating Large Language Models Trained on Code (arXiv 2107.03374)"
     url: https://arxiv.org/abs/2107.03374
     publisher: arXiv
     kind: paper
     published_at: 2021-07-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: humaneval-repo
     title: openai/human-eval README and LICENSE (MIT)
     url: https://github.com/openai/human-eval
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: iddpm-paper
     title: "Improved Denoising Diffusion Probabilistic Models (arXiv 2102.09672)"
     url: https://arxiv.org/abs/2102.09672
     publisher: arXiv
     kind: paper
     published_at: 2021-02-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: glide-paper
     title: "GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models (arXiv 2112.10741)"
     url: https://arxiv.org/abs/2112.10741
     publisher: arXiv
     kind: paper
     published_at: 2021-12-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: adm-paper
     title: "Diffusion Models Beat GANs on Image Synthesis (arXiv 2105.05233)"
     url: https://arxiv.org/abs/2105.05233
     publisher: arXiv
     kind: paper
     published_at: 2021-05-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: improved-diffusion-repo
     title: openai/improved-diffusion README and LICENSE (MIT)
     url: https://github.com/openai/improved-diffusion
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: glide-repo
     title: openai/glide-text2im README and LICENSE (MIT)
     url: https://github.com/openai/glide-text2im
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pointe-paper
     title: "Point-E: A System for Generating 3D Point Clouds from Complex Prompts (arXiv 2212.08751)"
     url: https://arxiv.org/abs/2212.08751
     publisher: arXiv
     kind: paper
     published_at: 2022-12-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: shape-paper
     title: "Shap-E: Generating Conditional 3D Implicit Functions (arXiv 2305.02463)"
     url: https://arxiv.org/abs/2305.02463
     publisher: arXiv
     kind: paper
     published_at: 2023-05-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pointe-repo
     title: openai/point-e README and LICENSE (MIT)
     url: https://github.com/openai/point-e
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: shape-repo
     title: openai/shap-e README and LICENSE (MIT)
     url: https://github.com/openai/shap-e
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: guided-diffusion-repo
     title: openai/guided-diffusion README and LICENSE (MIT)
     url: https://github.com/openai/guided-diffusion
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: reptile-paper
+    title: On First-Order Meta-Learning Algorithms (arXiv 1803.02999)
+    url: https://arxiv.org/abs/1803.02999
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-03-08
+    accessed_at: 2026-10-21
+  - id: sonic-paper
+    title: "Gotta Learn Fast: A New Benchmark for Generalization in RL (arXiv 1804.03720)"
+    url: https://arxiv.org/abs/1804.03720
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-04-10
+    accessed_at: 2026-10-21
+  - id: dalle2-paper
+    title: Hierarchical Text-Conditional Image Generation with CLIP Latents (arXiv 2204.06125)
+    url: https://arxiv.org/abs/2204.06125
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-13
+    accessed_at: 2026-10-21

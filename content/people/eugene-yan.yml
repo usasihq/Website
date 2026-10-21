@@ -16,7 +16,7 @@ bio:
     "What We've Learned From A Year of Building with LLMs", co-written with Bryan Bischof, Charles
     Frye, Hamel Husain, Jason Liu, and Shreya Shankar.
   source_ids: [yan-about, github-profile, applied-llms]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Anthropic
     organization_slug: anthropic
@@ -47,9 +47,63 @@ links:
     url: https://eugeneyan.com
   - label: GitHub
     url: https://github.com/eugeneyan
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Yan worked as a data scientist at IBM from 2013 to 2014 on workforce analytics and fraud detection,
+          then joined Alibaba's Lazada as a data scientist working on product ranking, machine learning
+          automation and MLOps. Yan became Lazada's VP of Machine Learning in 2017 and in 2018 joined a
+          healthtech startup as its machine learning lead, building systems for disease detection and cost
+          estimation.
+        source_ids: [yan-about]
+      - text: >-
+          From 2020 to 2025 Yan was a Principal Applied Scientist at Amazon, working on recommendation systems,
+          real-time retrieval and search, and AI products for summarization, translation and question answering.
+          In 2026 Yan joined Anthropic as a Member of Technical Staff.
+        source_ids: [yan-about, github-profile]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Yan writes regularly about applying machine learning and language models. Posts include "System Design
+          for Recommendations and Search" (2021), "Patterns for Building LLM-based Systems & Products" (2023),
+          a long survey of LLM-evaluators in 2024, and the AlignEval app for building and aligning LLM-evaluators
+          against labeled data.
+        source_ids: [ey-writing]
+      - text: >-
+          Yan has given keynotes at the RecSys 2022 ORSUM workshop and at the AI Engineer conference in 2023,
+          and joined the five co-authors of the "What We've Learned From A Year of Building with LLMs" essay for
+          a closing keynote at AI Engineer 2024. In 2025 Yan spoke with Chip Huyen at NVIDIA GTC on building
+          LLM-powered applications.
+        source_ids: [ey-speaking, applied-llms]
+timeline:
+  - date: "2013"
+    text: Began work as a data scientist at IBM on workforce analytics and fraud detection.
+    source_ids: [yan-about]
+  - date: "2015"
+    text: Joined Alibaba's Lazada as a data scientist working on ranking and MLOps.
+    source_ids: [yan-about]
+  - date: "2017"
+    text: Became VP of Machine Learning at Alibaba's Lazada.
+    source_ids: [yan-about]
+  - date: "2020"
+    text: Joined Amazon, where Yan worked as a Principal Applied Scientist on recommendations and search.
+    source_ids: [yan-about]
+  - date: "2023-07-30"
+    text: Published "Patterns for Building LLM-based Systems & Products."
+    source_ids: [ey-writing]
+  - date: "2023-10-09"
+    text: Gave a keynote on building blocks for LLM systems at the AI Engineer conference.
+    source_ids: [ey-speaking]
+  - date: "2024-06-27"
+    text: Gave a closing keynote at AI Engineer 2024 with the co-authors of the applied LLMs essay.
+    source_ids: [ey-speaking]
+  - date: "2026"
+    text: Joined Anthropic as a Member of Technical Staff.
+    source_ids: [yan-about]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: yan-about
     title: About — Eugene Yan
@@ -57,18 +111,32 @@ sources:
     publisher: Eugene Yan
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: eugeneyan (Eugene Yan) on GitHub
     url: https://github.com/eugeneyan
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: applied-llms
     title: What We've Learned From A Year of Building with LLMs — Applied LLMs
     url: https://applied-llms.org/
     publisher: Applied LLMs
     kind: other
     published_at: 2024-06-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: ey-writing
+    title: Writing — Eugene Yan
+    url: https://eugeneyan.com/writing/
+    publisher: Eugene Yan
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: ey-speaking
+    title: Speaking — Eugene Yan
+    url: https://eugeneyan.com/speaking/
+    publisher: Eugene Yan
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

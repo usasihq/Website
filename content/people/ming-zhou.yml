@@ -15,7 +15,7 @@ bio:
     XiaoIce, and pre-trained models including UniLM. Zhou is an ACL Fellow and has served as president of
     the ACL.
   source_ids: [langboat-resume, langboat-about, unilm-paper, mengzi-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Langboat Technology
     organization_slug: null
@@ -27,6 +27,11 @@ affiliations:
     role: Vice President; led natural language processing research (1999–2020)
     current: false
     source_ids: [langboat-resume, langboat-about]
+  - name: Tsinghua University
+    organization_slug: null
+    role: Postdoctoral research and teaching (1991–1999)
+    current: false
+    source_ids: [langboat-resume]
 work:
   - name: UniLM (Unified Language Model Pre-training)
     artifact_slug: null
@@ -48,9 +53,81 @@ work:
 links:
   - label: Langboat
     url: https://www.langboat.com/en/about
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Zhou completed a doctorate in computer science at Harbin Institute of Technology in 1991, where the
+          thesis research produced CEMT-I, an early Chinese-English machine translation system. From 1991 to
+          1999 Zhou did postdoctoral research and taught at Tsinghua University, and from 1993 to 1999 led
+          development of J-Beijing, a Chinese-Japanese machine translation product for Kodensha.
+        source_ids: [langboat-resume]
+      - text: >-
+          Zhou joined Microsoft Research Asia in 1999 and led its NLP research for 21 years, rising to vice
+          president, before leaving at the end of 2020. Zhou then founded Langboat Technology, officially
+          established in June 2021, which develops the Mengzi language models and applies them in fields such
+          as finance. Zhou has also served as president of the ACL and vice chairman of the China Computer
+          Federation.
+        source_ids: [langboat-resume, langboat-about]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          At Microsoft Research Asia, Zhou's group worked on statistical and then neural machine translation,
+          contributing methods later built into Microsoft Translator, and on language-learning tools such as
+          the English Writing Assistant (2005) and Engkoo (2010), later offered through Bing. The group also
+          built a statistical input method for Chinese and Japanese in Windows (2001) and a system for
+          generating Chinese couplets with phrase-based statistical machine translation.
+        source_ids: [langboat-resume]
+      - text: >-
+          Zhou's teams provided the retrieval-based and neural response engines behind Microsoft's XiaoIce
+          chatbot, first released in 2015, and later worked on pre-trained models, including UniLM, which
+          uses a shared Transformer with self-attention masks for both language understanding and generation.
+          At Langboat, Zhou co-authored the 2021 Mengzi report on lightweight Chinese pre-trained models.
+        source_ids: [langboat-resume, unilm-paper, mengzi-paper]
+timeline:
+  - date: "1991"
+    text: Completed a doctorate at Harbin Institute of Technology, building the CEMT-I Chinese-English translation system.
+    source_ids: [langboat-resume]
+  - date: "1993"
+    text: Began leading development of the J-Beijing Chinese-Japanese machine translation product for Kodensha.
+    source_ids: [langboat-resume]
+  - date: "1999"
+    text: Joined Microsoft Research Asia, where Zhou led natural language processing research.
+    source_ids: [langboat-resume]
+  - date: "2005"
+    text: Zhou's group created the English Writing Assistant, later integrated into Microsoft Office.
+    source_ids: [langboat-resume]
+  - date: "2010"
+    text: Zhou's group created Engkoo, a bilingual language-assistance system later released by Bing.
+    source_ids: [langboat-resume]
+  - date: "2019-05-08"
+    text: Co-authored the UniLM paper on unified language model pre-training.
+    source_ids: [unilm-paper]
+  - date: "2020"
+    text: Left Microsoft Research Asia at the end of the year to start a language model company.
+    source_ids: [langboat-resume]
+  - date: "2021-06"
+    text: Langboat Technology, founded by Zhou, was officially established.
+    source_ids: [langboat-resume]
+  - date: "2021-10-13"
+    text: Co-authored the Mengzi technical report on lightweight Chinese pre-trained models.
+    source_ids: [mengzi-paper]
+honors:
+  - name: ACL Fellow
+    year: null
+    awarded_by: Association for Computational Linguistics
+    source_ids: [langboat-resume]
+  - name: Fellow of the China Computer Federation
+    year: null
+    awarded_by: China Computer Federation
+    source_ids: [langboat-resume]
+  - name: Wuzhen Internet Leading Technology Award (for UniLM)
+    year: 2019
+    awarded_by: World Internet Conference
+    source_ids: [langboat-resume]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: langboat-resume
     title: Dr. Ming Zhou — Founder/CEO, Langboat (biography)
@@ -58,25 +135,25 @@ sources:
     publisher: Langboat Technology
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: langboat-about
     title: About Langboat — Management
     url: https://www.langboat.com/en/about
     publisher: Langboat Technology
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: unilm-paper
     title: "Unified Language Model Pre-training for Natural Language Understanding and Generation (arXiv 1905.03197)"
     url: https://arxiv.org/abs/1905.03197
     publisher: arXiv
     kind: paper
     published_at: 2019-05-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mengzi-paper
     title: "Mengzi: Towards Lightweight yet Ingenious Pre-trained Models for Chinese (arXiv 2110.06696)"
     url: https://arxiv.org/abs/2110.06696
     publisher: arXiv
     kind: paper
     published_at: 2021-10-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

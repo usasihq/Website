@@ -16,13 +16,18 @@ bio:
     document processing. Shankar also co-teaches a course on AI evals with Hamel Husain and is a
     co-author of "What We've Learned From A Year of Building with LLMs" (2024).
   source_ids: [shankar-site, github-profile, docetl-repo, docetl-paper, applied-llms]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
+  - name: Carnegie Mellon University
+    organization_slug: carnegie-mellon-university
+    role: Visiting Assistant Professor, Computer Science Department (from July 2026); Assistant Professor from July 2027
+    current: true
+    source_ids: [ss-cv, shankar-site]
   - name: University of California, Berkeley (EECS)
     organization_slug: uc-berkeley
-    role: CS PhD student, working with Aditya Parameswaran
+    role: PhD researcher in the Data Systems & Foundations Group, working with Aditya Parameswaran (2021–2026)
     current: false
-    source_ids: [github-profile, shankar-site]
+    source_ids: [github-profile, shankar-site, ss-cv]
 work:
   - name: DocETL
     artifact_slug: null
@@ -47,9 +52,88 @@ links:
     url: https://www.sh-reya.com/
   - label: GitHub
     url: https://github.com/shreyashankar
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Shankar studied computer science at Stanford, completing a B.S. advised by Pat Hanrahan, and was a
+          research intern at Google Brain from 2017 to 2019, working with Alex Kurakin and Ian Goodfellow on
+          machine learning security and adversarial examples, and also worked as an ML engineer. Shankar began a
+          PhD in EECS at UC Berkeley in 2021 with Aditya Parameswaran in the Data Systems & Foundations Group,
+          with a research internship on Meta's AI Data Infrastructure team in 2022 and a visiting student
+          researcher role at Google's Systems Research Group in 2025.
+        source_ids: [ss-cv, shankar-site]
+      - text: >-
+          Shankar's CV lists a Visiting Assistant Professor appointment in Carnegie Mellon University's Computer
+          Science Department from July 2026, before a tenure-track Assistant Professor position there from July
+          2027, with a courtesy appointment in the Human-Computer Interaction Institute and an affiliation with
+          the CMU Database Group. Shankar's group writes a blog called Full Stack Data Lab.
+        source_ids: [ss-cv, shankar-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Shankar's research spans data management, AI-powered data systems and human-computer interaction. As
+          first author of the 2024 DocETL paper, Shankar proposed agentic query rewriting and evaluation for
+          complex document processing with language models, and the open-source DocETL stack grew out of that
+          work at Berkeley's EPIC Data Lab.
+        source_ids: [ss-cv, docetl-paper, docetl-repo]
+      - text: >-
+          Follow-up work includes Task Cascades and "Cut Costs, Not Accuracy" at SIGMOD 2026, the latter
+          recognized as Best of SIGMOD, and "RAG Without the Lag," an interactive debugging tool for
+          retrieval-augmented generation pipelines that won a CHI 2026 Best Paper award. Shankar's group also
+          released Data Agent Bench, a benchmark for data agents, and Quail, a query-aware inference engine for
+          AI-SQL workloads.
+        source_ids: [ss-cv, shankar-site]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Since 2025 Shankar has co-taught AI Evals for Engineers and PMs, a professional course co-founded with
+          Hamel Husain, and is co-writing a forthcoming O'Reilly book on the subject; the pair also publish an
+          evals FAQ and other free materials. Shankar co-wrote the 2024 essay "What We've Learned From A Year of
+          Building with LLMs" and has organized the DEEM workshop at SIGMOD from 2023 to 2025.
+        source_ids: [ss-cv, shankar-site, applied-llms]
+timeline:
+  - date: "2017"
+    text: Began a research internship at Google Brain on machine learning security and adversarial examples.
+    source_ids: [ss-cv]
+  - date: "2021"
+    text: Began a PhD in EECS at UC Berkeley with Aditya Parameswaran.
+    source_ids: [ss-cv]
+  - date: "2022"
+    text: Interned with Meta's AI Data Infrastructure team on automatic data validation for ML pipelines.
+    source_ids: [ss-cv]
+  - date: "2024-10-16"
+    text: Released the DocETL paper on agentic query rewriting for complex document processing as first author.
+    source_ids: [docetl-paper]
+  - date: "2025"
+    text: Began co-teaching the AI Evals for Engineers and PMs course with Hamel Husain.
+    source_ids: [ss-cv]
+  - date: "2026-05"
+    text: Published Task Cascades and "Cut Costs, Not Accuracy" in the SIGMOD 2026 proceedings.
+    source_ids: [ss-cv]
+  - date: "2026-07"
+    text: Began a Visiting Assistant Professor appointment in Carnegie Mellon University's Computer Science Department.
+    source_ids: [ss-cv]
+honors:
+  - name: Best of ACM SIGMOD
+    year: 2026
+    awarded_by: ACM SIGMOD
+    source_ids: [ss-cv]
+  - name: ACM CHI Best Paper
+    year: 2026
+    awarded_by: ACM CHI Conference on Human Factors in Computing Systems
+    source_ids: [ss-cv]
+  - name: ACM UIST Best Paper Honorable Mention
+    year: 2025
+    awarded_by: ACM Symposium on User Interface Software and Technology
+    source_ids: [ss-cv]
+  - name: NDSEG Fellowship
+    year: 2022
+    awarded_by: U.S. Department of Defense
+    source_ids: [ss-cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: shankar-site
     title: Shreya Shankar — homepage
@@ -57,32 +141,39 @@ sources:
     publisher: Shreya Shankar
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: shreyashankar (Shreya Shankar) on GitHub (profile and README)
     url: https://github.com/shreyashankar
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: docetl-repo
     title: ucbepic/docetl README (origin, citation) and license (MIT)
     url: https://github.com/ucbepic/docetl
     publisher: UC Berkeley EPIC Data Lab (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: docetl-paper
     title: "DocETL: Agentic Query Rewriting and Evaluation for Complex Document Processing (arXiv 2410.12189)"
     url: https://arxiv.org/abs/2410.12189
     publisher: arXiv
     kind: paper
     published_at: 2024-10-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: applied-llms
     title: What We've Learned From A Year of Building with LLMs — Applied LLMs
     url: https://applied-llms.org/
     publisher: Applied LLMs
     kind: other
     published_at: 2024-06-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: ss-cv
+    title: Shreya Shankar — Curriculum Vitae
+    url: https://www.sh-reya.com/SS_CV.pdf
+    publisher: Shreya Shankar
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

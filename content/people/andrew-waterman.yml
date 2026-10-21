@@ -1,0 +1,147 @@
+slug: andrew-waterman
+name: Andrew Waterman
+initials: AW
+groups: [engineering, open-source]
+sector: corporate
+specialties: [hardware]
+headline: Co-founder and Chief Engineer of SiFive; co-creator of the RISC-V instruction set architecture
+bio:
+  text: >-
+    Andrew Waterman is a co-founder and the Chief Engineer of SiFive, the RISC-V processor IP company.
+    SiFive credits its founders, Waterman, Krste Asanović and Yunsup Lee, working with David
+    Patterson, with creating RISC-V at UC Berkeley starting in 2010. Waterman is first author of the
+    2011 RISC-V Instruction Set Manual technical report and wrote the 2016 Berkeley dissertation
+    "Design of the RISC-V Instruction Set Architecture".
+  source_ids: [sifive-about, sifive-riscv-history, riscv-manual-2011, waterman-thesis]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: SiFive
+    organization_slug: sifive
+    role: Co-founder and Chief Engineer
+    current: true
+    source_ids: [sifive-about]
+  - name: University of California, Berkeley
+    organization_slug: uc-berkeley
+    role: PhD research in the EECS Department, advised by David A. Patterson and Krste Asanović (dissertation 2016)
+    current: false
+    source_ids: [waterman-thesis]
+work:
+  - name: RISC-V Instruction Set Manual, Volume I
+    artifact_slug: null
+    type: open-research
+    url: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-62.html
+    contribution: >-
+      First author, with Yunsup Lee, David A. Patterson and Krste Asanović, of the 2011 Berkeley
+      technical report specifying the RISC-V base user-level ISA.
+    source_ids: [riscv-manual-2011]
+  - name: Design of the RISC-V Instruction Set Architecture
+    artifact_slug: null
+    type: open-research
+    url: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-1.html
+    contribution: >-
+      Waterman's 2016 dissertation, which argues for a free and open ISA standard and documents the
+      design of RISC-V.
+    source_ids: [waterman-thesis]
+  - name: Rocket Chip Generator
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/chipsalliance/rocket-chip
+    contribution: >-
+      Co-author of the 2016 Berkeley technical report describing the Rocket Chip generator for
+      RISC-V systems-on-chip, now maintained as an open-source repository under CHIPS Alliance.
+    source_ids: [rocket-chip-report, rocket-chip-repo]
+links:
+  - label: SiFive leadership
+    url: https://www.sifive.com/about
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Waterman's doctoral work at UC Berkeley, advised by David A. Patterson and Krste Asanović,
+          centered on the instruction set architecture as the hardware-software interface. The 2016
+          dissertation argues that a free and open ISA standard could increase innovation in
+          microprocessor design, lower system costs and ease the move to more specialized computing
+          devices.
+        source_ids: [waterman-thesis]
+      - text: >-
+          Waterman is first author of the 2011 report "The RISC-V Instruction Set Manual, Volume I:
+          Base User-Level ISA", written with Yunsup Lee, Patterson and Asanović. Waterman is also a
+          co-author of the 2016 Rocket Chip Generator report, which describes Berkeley's generator
+          for RISC-V processor systems.
+        source_ids: [riscv-manual-2011, rocket-chip-report]
+  - heading: SiFive
+    paragraphs:
+      - text: >-
+          SiFive was founded in 2015 by the creators of RISC-V, and its leadership page lists
+          Waterman as Co-Founder and Chief Engineer alongside Asanović as Chief Architect and Lee as
+          Chief Technology Officer. SiFive develops RISC-V processor core IP, with product lines
+          that include its Essential, Intelligence and Performance families.
+        source_ids: [sifive-riscv-history, sifive-about]
+timeline:
+  - date: "2010"
+    text: Began work on RISC-V as part of a Berkeley summer project with Asanović, Lee and Patterson.
+    source_ids: [sifive-riscv-history]
+  - date: "2011-05-13"
+    text: First-authored the RISC-V Instruction Set Manual, Volume I technical report.
+    source_ids: [riscv-manual-2011]
+  - date: "2015"
+    text: Co-founded SiFive with Krste Asanović and Yunsup Lee.
+    source_ids: [sifive-riscv-history, sifive-about]
+  - date: "2016"
+    text: Completed the dissertation "Design of the RISC-V Instruction Set Architecture" at UC Berkeley.
+    source_ids: [waterman-thesis]
+  - date: "2016-04-15"
+    text: Co-authored the Rocket Chip Generator technical report.
+    source_ids: [rocket-chip-report]
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: sifive-about
+    title: About SiFive (Our Leadership)
+    url: https://www.sifive.com/about
+    publisher: SiFive
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: sifive-riscv-history
+    title: RISC-V history
+    url: https://www.sifive.com/about/risc-v-history
+    publisher: SiFive
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: riscv-manual-2011
+    title: "The RISC-V Instruction Set Manual, Volume I: Base User-Level ISA (UCB/EECS-2011-62)"
+    url: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2011/EECS-2011-62.html
+    publisher: EECS Department, University of California, Berkeley
+    kind: paper
+    published_at: 2011-05-13
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: waterman-thesis
+    title: Design of the RISC-V Instruction Set Architecture (UCB/EECS-2016-1)
+    url: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-1.html
+    publisher: EECS Department, University of California, Berkeley
+    kind: paper
+    published_at: "2016"
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: rocket-chip-report
+    title: The Rocket Chip Generator (UCB/EECS-2016-17)
+    url: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-17.html
+    publisher: EECS Department, University of California, Berkeley
+    kind: paper
+    published_at: 2016-04-15
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: rocket-chip-repo
+    title: chipsalliance/rocket-chip repository
+    url: https://github.com/chipsalliance/rocket-chip
+    publisher: CHIPS Alliance (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

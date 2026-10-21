@@ -16,7 +16,7 @@ bio:
     Deep Reinforcement Learning" (2023), which lists Haarnoja's affiliation as Google DeepMind and
     trained a miniature humanoid robot to play one-versus-one soccer.
   source_ids: [abbeel-group, sac-paper, soccer-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: DeepMind (Google DeepMind)
     organization_slug: google-deepmind
@@ -44,9 +44,59 @@ work:
 links:
   - label: GitHub
     url: https://github.com/haarnoja
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Haarnoja's doctoral work at Berkeley centred on maximum entropy reinforcement learning for robots.
+          A 2017 paper with Haoran Tang, Pieter Abbeel and Sergey Levine introduced soft Q-learning, which
+          learns energy-based policies for continuous states and actions. The 2018 Soft Actor-Critic paper,
+          presented at ICML 2018, followed with an off-policy actor-critic algorithm built on the same framework.
+        source_ids: [abbeel-group, soft-q-paper, sac-paper]
+      - text: >-
+          A follow-up report, "Soft Actor-Critic Algorithms and Applications" (December 2018), described
+          refinements to the algorithm and its use on real robots. A companion paper, "Learning to Walk via Deep
+          Reinforcement Learning", presented at RSS 2019, applied the method to learning robot locomotion with
+          little manual tuning.
+        source_ids: [sac-apps-paper, walk-paper]
+  - heading: Robot soccer at Google DeepMind
+    paragraphs:
+      - text: >-
+          At Google DeepMind, Haarnoja was first author of a 2023 study that used deep reinforcement learning to train a miniature
+          humanoid robot with 20 actuated joints to play one-versus-one soccer, with skills such as fall recovery,
+          turning and kicking. Haarnoja is also a co-author of the 2024 follow-up, "Learning Robot Soccer from
+          Egocentric Vision with Deep Reinforcement Learning", which trained soccer policies using onboard
+          cameras and computation.
+        source_ids: [soccer-paper, egocentric-soccer-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          The Softlearning repository from Berkeley's RAIL lab is a reinforcement learning framework for training
+          maximum entropy policies and includes the official implementation of Soft Actor-Critic. Its README lists
+          Haarnoja as an author of the soft Q-learning, Soft Actor-Critic and related papers the code accompanies.
+        source_ids: [softlearning-repo]
+timeline:
+  - date: "2017-02"
+    text: Posted "Reinforcement Learning with Deep Energy-Based Policies", introducing soft Q-learning.
+    source_ids: [soft-q-paper]
+  - date: "2018-01"
+    text: Posted the Soft Actor-Critic paper as first author, later presented at ICML 2018.
+    source_ids: [sac-paper]
+  - date: "2018-12"
+    text: Completed a Berkeley PhD thesis on maximum entropy deep reinforcement learning for robot skills.
+    source_ids: [abbeel-group]
+  - date: "2018-12"
+    text: Posted "Soft Actor-Critic Algorithms and Applications" and "Learning to Walk via Deep Reinforcement Learning".
+    source_ids: [sac-apps-paper, walk-paper]
+  - date: "2023-04"
+    text: Posted "Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning" with Google DeepMind colleagues.
+    source_ids: [soccer-paper]
+  - date: "2024-05"
+    text: Co-authored "Learning Robot Soccer from Egocentric Vision with Deep Reinforcement Learning".
+    source_ids: [egocentric-soccer-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: abbeel-group
     title: Pieter Abbeel group page, UC Berkeley (alumni list)
@@ -54,18 +104,53 @@ sources:
     publisher: Pieter Abbeel (UC Berkeley EECS)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sac-paper
     title: "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor (arXiv 1801.01290)"
     url: https://arxiv.org/abs/1801.01290
     publisher: arXiv
     kind: paper
     published_at: 2018-01-04
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: soccer-paper
     title: "Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning (arXiv 2304.13653)"
     url: https://arxiv.org/abs/2304.13653
     publisher: arXiv
     kind: paper
     published_at: 2023-04-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: soft-q-paper
+    title: "Reinforcement Learning with Deep Energy-Based Policies (arXiv 1702.08165)"
+    url: https://arxiv.org/abs/1702.08165
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-02-27
+    accessed_at: 2026-10-21
+  - id: sac-apps-paper
+    title: "Soft Actor-Critic Algorithms and Applications (arXiv 1812.05905)"
+    url: https://arxiv.org/abs/1812.05905
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-12-13
+    accessed_at: 2026-10-21
+  - id: walk-paper
+    title: "Learning to Walk via Deep Reinforcement Learning (arXiv 1812.11103)"
+    url: https://arxiv.org/abs/1812.11103
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-12-26
+    accessed_at: 2026-10-21
+  - id: egocentric-soccer-paper
+    title: "Learning Robot Soccer from Egocentric Vision with Deep Reinforcement Learning (arXiv 2405.02425)"
+    url: https://arxiv.org/abs/2405.02425
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-03
+    accessed_at: 2026-10-21
+  - id: softlearning-repo
+    title: rail-berkeley/softlearning (README)
+    url: https://github.com/rail-berkeley/softlearning
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

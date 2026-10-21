@@ -14,7 +14,7 @@ bio:
     ConvNeXt, MoCo, and Masked Autoencoders; recent work from Xie's group includes Cambrian, a
     project on multimodal models across images and video.
   source_ids: [homepage, dit-paper, convnext-paper, moco-paper, mae-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: AMI Labs
     organization_slug: null
@@ -56,9 +56,69 @@ work:
 links:
   - label: Website
     url: https://www.sainingxie.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Saining Xie spent four years as a research scientist at Facebook AI Research and later worked as a
+          research scientist on the GenAI team at Google DeepMind. Xie is a faculty member at NYU's Courant
+          Institute, where Xie leads a research group of postdoctoral fellows and PhD students, and is co-founder
+          and Chief Science Officer of AMI Labs.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Xie's architecture work includes the ResNeXt network family, introduced in a 2016 paper, and ConvNeXt, from A ConvNet for the 2020s (2022), which modernized convolutional
+          networks. In representation learning, Xie co-authored Momentum Contrast (MoCo) in 2019 and Masked
+          Autoencoders in 2021.
+        source_ids: [resnext-paper, convnext-paper, moco-paper, mae-paper]
+      - text: >-
+          For generation, Xie and William Peebles introduced diffusion transformers (DiT) in Scalable Diffusion
+          Models with Transformers (2022). Projects from Xie's NYU group include Cambrian-1, a fully open, vision-centric exploration of multimodal language models, and Solaris
+          (2026), a multiplayer video world model built in Minecraft.
+        source_ids: [dit-paper, homepage, cambrian-paper, solaris-paper]
+timeline:
+  - date: "2016-11-16"
+    text: Released the paper introducing the ResNeXt network architecture.
+    source_ids: [resnext-paper]
+  - date: "2019-11-13"
+    text: Co-authored Momentum Contrast for Unsupervised Visual Representation Learning.
+    source_ids: [moco-paper]
+  - date: "2021-11-11"
+    text: Co-authored Masked Autoencoders Are Scalable Vision Learners.
+    source_ids: [mae-paper]
+  - date: "2022-01-10"
+    text: Co-authored A ConvNet for the 2020s, which introduced ConvNeXt.
+    source_ids: [convnext-paper]
+  - date: "2022-12-19"
+    text: Released Scalable Diffusion Models with Transformers (DiT) with William Peebles.
+    source_ids: [dit-paper]
+  - date: "2024-06-24"
+    text: Released Cambrian-1, an open, vision-centric study of multimodal language models.
+    source_ids: [cambrian-paper]
+  - date: "2026-02-25"
+    text: Released Solaris, a multiplayer video world model in Minecraft.
+    source_ids: [solaris-paper]
+honors:
+  - name: NSF CAREER Award
+    year: null
+    awarded_by: U.S. National Science Foundation
+    source_ids: [homepage]
+  - name: PAMI Young Researcher Award
+    year: null
+    awarded_by: IEEE PAMI Technical Committee
+    source_ids: [homepage]
+  - name: Marr Prize Honorable Mention
+    year: null
+    awarded_by: International Conference on Computer Vision (ICCV)
+    source_ids: [homepage]
+  - name: AISTATS Test-of-Time Award
+    year: null
+    awarded_by: International Conference on Artificial Intelligence and Statistics (AISTATS)
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Saining Xie — homepage
@@ -66,46 +126,67 @@ sources:
     publisher: Saining Xie
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dit-paper
     title: Scalable Diffusion Models with Transformers (arXiv 2212.09748)
     url: https://arxiv.org/abs/2212.09748
     publisher: arXiv
     kind: paper
     published_at: 2022-12-19
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dit-readme
     title: facebookresearch/DiT README
     url: https://github.com/facebookresearch/DiT
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: convnext-paper
     title: A ConvNet for the 2020s (arXiv 2201.03545)
     url: https://arxiv.org/abs/2201.03545
     publisher: arXiv
     kind: paper
     published_at: 2022-01-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: convnext-readme
     title: facebookresearch/ConvNeXt README (authors and MIT license)
     url: https://github.com/facebookresearch/ConvNeXt
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: moco-paper
     title: Momentum Contrast for Unsupervised Visual Representation Learning (arXiv 1911.05722)
     url: https://arxiv.org/abs/1911.05722
     publisher: arXiv
     kind: paper
     published_at: 2019-11-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mae-paper
     title: Masked Autoencoders Are Scalable Vision Learners (arXiv 2111.06377)
     url: https://arxiv.org/abs/2111.06377
     publisher: arXiv
     kind: paper
     published_at: 2021-11-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: resnext-paper
+    title: ResNeXt paper (arXiv 1611.05431)
+    url: https://arxiv.org/abs/1611.05431
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-11-16
+    accessed_at: 2026-10-21
+  - id: cambrian-paper
+    title: "Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs (arXiv 2406.16860)"
+    url: https://arxiv.org/abs/2406.16860
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-24
+    accessed_at: 2026-10-21
+  - id: solaris-paper
+    title: "Solaris: Building a Multiplayer Video World Model in Minecraft (arXiv 2602.22208)"
+    url: https://arxiv.org/abs/2602.22208
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-02-25
+    accessed_at: 2026-10-21

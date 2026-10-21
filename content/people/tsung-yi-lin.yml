@@ -15,7 +15,7 @@ bio:
     World Foundation Model Platform paper, which describes Cosmos as open-source with open-weight
     models.
   source_ids: [homepage, coco-paper, focal-paper, cosmos-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: NVIDIA
     organization_slug: nvidia
@@ -57,9 +57,68 @@ work:
 links:
   - label: Website
     url: https://tsungyilin.info/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Lin did a PhD at Cornell University, advised by Serge Belongie, and was then a member
+          of the Brain Team at Google Research. Lin is now a principal research scientist at NVIDIA Research,
+          working on computer vision, machine learning and generative AI, with a recent focus on generative
+          AI in 3D.
+        source_ids: [homepage, nvidia-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Lin led the creation of the COCO (Common Objects in Context) dataset, introduced in a 2014 paper with
+          instance segmentation masks for common object categories. Lin was also first author of Feature
+          Pyramid Networks for object detection (CVPR 2017) and of Focal Loss (ICCV 2017), which addresses the
+          imbalance between foreground and background in dense object detection.
+        source_ids: [homepage, coco-paper, fpn-paper, focal-paper]
+      - text: >-
+          At Google, Lin co-authored work on data augmentation, self-training and architectures, including
+          "Rethinking Pre-training and Self-training" (NeurIPS 2020), simple copy-paste augmentation for
+          instance segmentation (CVPR 2021) and Bottleneck Transformers (CVPR 2021). At NVIDIA, Lin co-authored
+          Magic3D for high-resolution text-to-3D generation (2022) and is listed on the Cosmos world foundation
+          model papers, including Cosmos-Reason1 (2025) and Cosmos 3 (2026).
+        source_ids: [homepage, magic3d-paper, cosmos-paper, cosmos-reason-paper, cosmos3-paper]
+timeline:
+  - date: "2014-05-01"
+    text: Released "Microsoft COCO - Common Objects in Context" as first author.
+    source_ids: [coco-paper]
+  - date: "2016-12-09"
+    text: Released "Feature Pyramid Networks for Object Detection" as first author.
+    source_ids: [fpn-paper]
+  - date: "2017-08-07"
+    text: Released "Focal Loss for Dense Object Detection" as first author.
+    source_ids: [focal-paper]
+  - date: "2022-11-18"
+    text: Co-authored Magic3D, on high-resolution text-to-3D content creation.
+    source_ids: [magic3d-paper]
+  - date: "2025-01-07"
+    text: Listed among the authors of the Cosmos World Foundation Model Platform paper.
+    source_ids: [cosmos-paper]
+  - date: "2025-03-18"
+    text: Listed among the authors of Cosmos-Reason1, on physical common sense and embodied reasoning.
+    source_ids: [cosmos-reason-paper]
+  - date: "2026-06-01"
+    text: Listed among the authors of "Cosmos 3 - Omnimodal World Models for Physical AI".
+    source_ids: [cosmos3-paper]
+honors:
+  - name: ICCV Best Student Paper Award (Focal Loss)
+    year: 2017
+    awarded_by: International Conference on Computer Vision
+    source_ids: [homepage, nvidia-profile]
+  - name: PAMI Mark Everingham Prize (COCO dataset)
+    year: 2023
+    awarded_by: IEEE PAMI Technical Committee
+    source_ids: [homepage]
+  - name: Koenderink Prize (COCO dataset)
+    year: 2024
+    awarded_by: European Conference on Computer Vision
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Tsung-Yi Lin — homepage
@@ -67,32 +126,60 @@ sources:
     publisher: Tsung-Yi Lin
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvidia-profile
     title: Tsung-Yi Lin — NVIDIA Research people page
     url: https://research.nvidia.com/person/tsung-yi-lin
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: coco-paper
     title: "Microsoft COCO: Common Objects in Context (arXiv 1405.0312)"
     url: https://arxiv.org/abs/1405.0312
     publisher: arXiv
     kind: paper
     published_at: 2014-05-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: focal-paper
     title: Focal Loss for Dense Object Detection (arXiv 1708.02002)
     url: https://arxiv.org/abs/1708.02002
     publisher: arXiv
     kind: paper
     published_at: 2017-08-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cosmos-paper
     title: Cosmos World Foundation Model Platform for Physical AI (arXiv 2501.03575)
     url: https://arxiv.org/abs/2501.03575
     publisher: arXiv
     kind: paper
     published_at: 2025-01-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: fpn-paper
+    title: "Feature Pyramid Networks for Object Detection (arXiv 1612.03144)"
+    url: https://arxiv.org/abs/1612.03144
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-12-09
+    accessed_at: 2026-10-21
+  - id: magic3d-paper
+    title: "Magic3D: High-Resolution Text-to-3D Content Creation (arXiv 2211.10440)"
+    url: https://arxiv.org/abs/2211.10440
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-18
+    accessed_at: 2026-10-21
+  - id: cosmos-reason-paper
+    title: "Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning (arXiv 2503.15558)"
+    url: https://arxiv.org/abs/2503.15558
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-03-18
+    accessed_at: 2026-10-21
+  - id: cosmos3-paper
+    title: "Cosmos 3: Omnimodal World Models for Physical AI (arXiv 2606.02800)"
+    url: https://arxiv.org/abs/2606.02800
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-06-01
+    accessed_at: 2026-10-21

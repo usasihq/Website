@@ -45,9 +45,48 @@ links:
     url: https://www.youtube.com/@ThePrimeagen
   - label: Courses
     url: https://master.dev/teachers/the-primeagen/
+sections:
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          ThePrimeagen's YouTube channel, which YouTube lists as joined in May 2018, publishes videos
+          on software development under the stated topics of Vim, Rust, and TypeScript. ThePrimeagen's
+          teacher page describes a focus on enjoying the development experience and sharing it with
+          others, with Vim as a tool that lets developers tune their setup exactly as they want.
+        source_ids: [channel, masterdev]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          ThePrimeagen teaches video courses on Master.dev. VIM Fundamentals (April
+          2021) opens with an overview of the ed editor and the history of Vim, and The Last
+          Algorithms Course You'll Need (September 2022) covers algorithms and data structures in
+          TypeScript for technical interviews.
+        source_ids: [masterdev, course-vim, course-algorithms]
+      - text: >-
+          Later courses include Rust for TypeScript Developers (April 2023), which begins by comparing
+          the two languages, and Blazingly Fast JavaScript (January 2024) on JavaScript performance.
+          The teacher page also lists courses on Git, HTMX with Go, polyglot programming in
+          TypeScript, Go, and Rust, and a developer setup course.
+        source_ids: [course-rust, course-fastjs, masterdev]
+timeline:
+  - date: 2018-05-07
+    text: YouTube lists ThePrimeagen's channel as joined on this date.
+    source_ids: [channel]
+  - date: 2021-04-20
+    text: Published the VIM Fundamentals course on Master.dev.
+    source_ids: [course-vim]
+  - date: 2022-09-12
+    text: Published The Last Algorithms Course You'll Need on Master.dev.
+    source_ids: [course-algorithms]
+  - date: 2023-04-25
+    text: Published the Rust for TypeScript Developers course on Master.dev.
+    source_ids: [course-rust]
+  - date: 2024-01-20
+    text: Published the Blazingly Fast JavaScript course on Master.dev.
+    source_ids: [course-fastjs]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: channel
     title: ThePrimeagen on YouTube (About)
@@ -55,11 +94,39 @@ sources:
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: masterdev
     title: ThePrimeagen's courses
     url: https://master.dev/teachers/the-primeagen/
     publisher: Master.dev
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: course-vim
+    title: VIM Fundamentals (course page)
+    url: https://master.dev/courses/vim-fundamentals/
+    publisher: Master.dev
+    kind: official-page
+    published_at: 2021-04-20
+    accessed_at: 2026-10-21
+  - id: course-algorithms
+    title: The Last Algorithms Course You'll Need (course page)
+    url: https://master.dev/courses/algorithms/
+    publisher: Master.dev
+    kind: official-page
+    published_at: 2022-09-12
+    accessed_at: 2026-10-21
+  - id: course-rust
+    title: Rust for TypeScript Developers (course page)
+    url: https://master.dev/courses/rust-ts-devs/
+    publisher: Master.dev
+    kind: official-page
+    published_at: 2023-04-25
+    accessed_at: 2026-10-21
+  - id: course-fastjs
+    title: Blazingly Fast JavaScript (course page)
+    url: https://master.dev/courses/blazingly-fast-js/
+    publisher: Master.dev
+    kind: official-page
+    published_at: 2024-01-20
+    accessed_at: 2026-10-21

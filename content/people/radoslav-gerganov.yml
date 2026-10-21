@@ -34,14 +34,69 @@ work:
       refactor, and event and async backend APIs, plus llama-server changes such as returning HTTP
       400 when a prompt exceeds the context length. The repository is MIT-licensed.
     source_ids: [llama-cpp-codeowners, llama-cpp-commits, rpc-readme, llama-cpp-license]
+  - name: Shanocast
+    artifact_slug: null
+    type: open-source
+    url: https://xakcop.com/post/shanocast/
+    contribution: >-
+      Wrote this Chromecast receiver for Linux, built on the open-source Openscreen implementation of
+      the Chromecast protocol, which can mirror a Chrome tab or the whole desktop.
+    source_ids: [shanocast-post]
 links:
   - label: Website
     url: https://xakcop.com
   - label: GitHub
     url: https://github.com/rgerganov
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Radoslav Gerganov authored the pull request that added the RPC backend to ggml and llama.cpp,
+          merged in May 2024; its commit message describes a backend that proxies all operations to a remote
+          server running a regular CPU, CUDA or Metal backend. Follow-up pull requests by Gerganov added
+          RPC support to llama-server and SYCL support to rpc-server.
+        source_ids: [pr-rpc-backend, pr-server-rpc, pr-rpc-sycl]
+      - text: >-
+          The project's CODEOWNERS file lists Gerganov as the sole member of the ggml-org/ggml-rpc team,
+          which owns the backend source and the tools/rpc server. Gerganov's commits since September
+          2025 add multi-device support, compute-graph caching and reuse, a transport refactor and
+          asynchronous backend APIs. A March 2023 commit by Gerganov added a README section on
+          running the project on Android.
+        source_ids: [llama-cpp-codeowners, llama-cpp-commits, rpc-readme, first-commit]
+  - heading: Writing and reverse engineering
+    paragraphs:
+      - text: >-
+          Gerganov's blog, subtitled "random hacks," covers reverse engineering and hardware hacking.
+          Posts include a 2021 look at how SoftHSMv2, a software PKCS#11 implementation, persists its
+          state, a 2023 write-up of Shanocast, and 2025 posts on reverse engineering the MAGic Remote
+          set-top-box protocol to build an open-source client and on weak algorithms routers use to
+          generate default Wi-Fi passwords.
+        source_ids: [blog, shanocast-post, magic-remote-post]
+timeline:
+  - date: 2023-03-14
+    text: Committed a llama.cpp README section on running the project on Android.
+    source_ids: [first-commit]
+  - date: 2023-09-27
+    text: Published Shanocast, a Chromecast receiver for Linux.
+    source_ids: [shanocast-post]
+  - date: 2024-05-14
+    text: Gerganov's pull request adding the RPC backend to ggml and llama.cpp, which proxies operations to remote servers, was merged.
+    source_ids: [pr-rpc-backend]
+  - date: 2024-05-17
+    text: Added support for the RPC backend to llama-server.
+    source_ids: [pr-server-rpc]
+  - date: 2024-12-23
+    text: Added SYCL backend support to the llama.cpp rpc-server.
+    source_ids: [pr-rpc-sycl]
+  - date: 2025-01-19
+    text: Published a reverse-engineering write-up of the MAGic Remote protocol with an open-source client.
+    source_ids: [magic-remote-post]
+  - date: 2025-09
+    text: Was added to CODEOWNERS as owner of the llama.cpp RPC backend.
+    source_ids: [llama-cpp-codeowners, llama-cpp-commits]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
@@ -49,25 +104,74 @@ sources:
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rpc-readme
     title: llama.cpp tools/rpc README
     url: https://github.com/ggml-org/llama.cpp/blob/master/tools/rpc/README.md
     publisher: ggml-org (GitHub repository)
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by rgerganov
     url: https://github.com/ggml-org/llama.cpp/commits?author=rgerganov
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: pr-rpc-backend
+    title: "ggml : add RPC backend — ggml-org/llama.cpp pull request #6829"
+    url: https://github.com/ggml-org/llama.cpp/pull/6829
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2024-05-14
+    accessed_at: 2026-10-21
+  - id: pr-server-rpc
+    title: "server : add support for the RPC backend — ggml-org/llama.cpp pull request #7305"
+    url: https://github.com/ggml-org/llama.cpp/pull/7305
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2024-05-17
+    accessed_at: 2026-10-21
+  - id: pr-rpc-sycl
+    title: "rpc-server : add support for the SYCL backend — ggml-org/llama.cpp pull request #10934"
+    url: https://github.com/ggml-org/llama.cpp/pull/10934
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2024-12-23
+    accessed_at: 2026-10-21
+  - id: first-commit
+    title: "ggml-org/llama.cpp commit 60f819a: Add section to README on how to run the project on Android (#130)"
+    url: https://github.com/ggml-org/llama.cpp/commit/60f819a2b10475055a36415bc489e5b55df2d052
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2023-03-14
+    accessed_at: 2026-10-21
+  - id: blog
+    title: random hacks — Radoslav Gerganov's blog
+    url: https://xakcop.com/
+    publisher: Radoslav Gerganov
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: shanocast-post
+    title: Making a Chromecast receiver (Project Shanocast)
+    url: https://xakcop.com/post/shanocast/
+    publisher: Radoslav Gerganov
+    kind: official-page
+    published_at: 2023-09-27
+    accessed_at: 2026-10-21
+  - id: magic-remote-post
+    title: Reversing MAGic Remote
+    url: https://xakcop.com/post/magic-remote/
+    publisher: Radoslav Gerganov
+    kind: official-page
+    published_at: 2025-01-19
+    accessed_at: 2026-10-21

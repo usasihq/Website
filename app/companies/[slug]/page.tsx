@@ -1,4 +1,5 @@
 import Link from "@/components/Link";
+import { MIN_LIST_PEOPLE, peopleAtHref } from "@/lib/people-lists";
 import { RecordContext } from "@/components/RecordContext";
 import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
 import { OrganizationJobs } from "@/components/OrganizationJobs";
@@ -24,6 +25,7 @@ import { peopleAtOrganization } from "@/lib/people-index";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_PLURAL, OWNERSHIP_LABELS, PRODUCT_KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
+import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { organizationSeo } from "@/lib/seo";
 import { organizationLd } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
@@ -46,7 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const catalog = getCatalog();
   const org = catalog.organization(slug);
   if (!org) return {};
-  const seo = organizationSeo(catalog, org);
+  const jobs = companyJobsLink(catalog, org.slug);
+  const seo = organizationSeo(catalog, org, jobs ? { jobCount: jobs.count } : undefined);
   return pageMetadata({
     title: seo.title,
     description: seo.description,
@@ -236,10 +239,10 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                         </li>
                       ))}
                     </ul>
-                    {orgPeople.length > ORG_PEOPLE_SHOWN ? (
+                    {orgPeople.length >= MIN_LIST_PEOPLE ? (
                       <p className="mt-2 text-sm">
-                        <Link prefetch={false} href={`/people/?org=${org.slug}`} className="link">
-                          All {orgPeople.length} people
+                        <Link prefetch={false} href={peopleAtHref(org.slug)} className="link">
+                          All {orgPeople.length} people at {org.name}
                         </Link>
                       </p>
                     ) : null}

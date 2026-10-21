@@ -47,9 +47,65 @@ work:
 links:
   - label: Department of Energy biography
     url: https://www.energy.gov/person/dario-gil
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Darío Gil earned a PhD in Electrical Engineering and Computer Science at MIT and then joined
+          IBM Research, eventually becoming IBM Senior Vice President and Director of Research. The
+          Department of Energy biography says IBM built programmable quantum computers and made them
+          available through the cloud under Gil's leadership, and credits Gil with driving the creation
+          of the International Science Reserve, the AI Alliance, the MIT-IBM Watson AI Lab and the
+          COVID-19 High Performance Computing Consortium.
+        source_ids: [doe-bio, doe-letter]
+      - text: >-
+          Gil has served on the President's Council of Advisors on Science and Technology and on the
+          National Science Board, where the department says Gil was the first member from industry in
+          30 years to be elected chair. Gil was elected to the National Academy of Engineering for
+          contributions to artificial intelligence and quantum computing.
+        source_ids: [doe-bio]
+  - heading: Department of Energy
+    paragraphs:
+      - text: >-
+          As Under Secretary for Science, Gil is the Department of Energy's principal advisor on
+          science and technology, and the office supports the National Laboratories and programs in
+          advanced computing, fusion, high energy physics, basic energy sciences, and biological and
+          environmental research. In a November 2025 letter to the department, Gil introduced
+          themself as the new Under Secretary and the newly appointed Director of the Genesis Mission,
+          a national effort to build an integrated science and security platform with the National
+          Laboratories, industry and academia.
+        source_ids: [doe-bio, doe-letter, doe-genesis-frameworks]
+      - text: >-
+          In 2026 Gil charged the Office of Science Advisory Committee with two studies: a
+          milestone-driven roadmap for quantum computing in science, released in September 2026, and
+          the Genesis Mission Frameworks for AI-Accelerated National Breakthroughs report, released the
+          same month. Gil's statements also appear in the department's October 2026 fact sheet on new
+          science initiatives tied to the Genesis Mission.
+        source_ids: [doe-quantum-roadmap, doe-genesis-frameworks, doe-fact-sheet]
+timeline:
+  - date: "2025-11-13"
+    text: "Published \"Powering the Future of Quantum\" on the Department of Energy's science site."
+    source_ids: [doe-quantum-future]
+  - date: "2025-11-28"
+    text: Wrote to the Department of Energy community as new Under Secretary for Science and Director of the Genesis Mission.
+    source_ids: [doe-letter]
+  - date: "2026-09-17"
+    text: Released the Office of Science Advisory Committee's quantum roadmap report, which Gil had commissioned.
+    source_ids: [doe-quantum-roadmap]
+  - date: "2026-09-25"
+    text: Released the Genesis Mission Frameworks report on AI-accelerated national breakthroughs.
+    source_ids: [doe-genesis-frameworks]
+  - date: "2026-10-09"
+    text: Quoted in the Energy Department fact sheet announcing new science initiatives under the Genesis Mission.
+    source_ids: [doe-fact-sheet]
+honors:
+  - name: Member, National Academy of Engineering
+    year: null
+    awarded_by: National Academy of Engineering
+    source_ids: [doe-bio]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: doe-bio
     title: Darío Gil — Under Secretary for Science
@@ -57,18 +113,46 @@ sources:
     publisher: U.S. Department of Energy
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: doe-fact-sheet
     title: "FACT SHEET: The Energy Department is Ushering in a Golden Age of American Science"
     url: https://www.energy.gov/articles/fact-sheet-energy-department-ushering-golden-age-american-science
     publisher: U.S. Department of Energy
     kind: announcement
     published_at: 2026-10-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mitibm-home
     title: MIT-IBM Computing Research Lab — home page
     url: https://mitibm.mit.edu/
     publisher: MIT-IBM Computing Research Lab
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: doe-letter
+    title: Under Secretary Gil's Letter to the Community
+    url: https://www.energy.gov/science/articles/under-secretary-gils-letter-community
+    publisher: U.S. Department of Energy, Office of Science
+    kind: official-page
+    published_at: 2025-11-28
+    accessed_at: 2026-10-21
+  - id: doe-quantum-future
+    title: Powering the Future of Quantum
+    url: https://www.energy.gov/science/articles/powering-future-quantum
+    publisher: U.S. Department of Energy, Office of Science
+    kind: official-page
+    published_at: 2025-11-13
+    accessed_at: 2026-10-21
+  - id: doe-quantum-roadmap
+    title: "The Quantum Inflection Point: Charting a Science-First Roadmap for the Nation"
+    url: https://www.energy.gov/science/articles/quantum-inflection-point-charting-science-first-roadmap-nation
+    publisher: U.S. Department of Energy, Office of Science
+    kind: official-page
+    published_at: 2026-09-17
+    accessed_at: 2026-10-21
+  - id: doe-genesis-frameworks
+    title: "Genesis Mission Frameworks: Advancing the Frontiers of American Discovery"
+    url: https://www.energy.gov/science/articles/genesis-mission-frameworks-advancing-frontiers-american-discovery
+    publisher: U.S. Department of Energy, Office of Science
+    kind: official-page
+    published_at: 2026-09-25
+    accessed_at: 2026-10-21

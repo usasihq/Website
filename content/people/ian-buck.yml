@@ -15,7 +15,7 @@ bio:
     GPUs, which presents a compiler and runtime for general-purpose computation on programmable graphics
     hardware.
   source_ids: [nvidia-author, nvidia-vera-2026, brook-paper, brook-project]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: NVIDIA
     organization_slug: nvidia
@@ -47,9 +47,52 @@ work:
 links:
   - label: NVIDIA Blog author page
     url: https://blogs.nvidia.com/blog/author/ian-buck/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          At Stanford University, Buck was the development lead for Brook, a compiler and runtime for the Brook
+          stream programming language on graphics hardware, released as a beta source package. Buck was first
+          author of "Brook for GPUs: Stream Computing on Graphics Hardware," a SIGGRAPH 2004 paper, which
+          used the GPU as a streaming coprocessor for general-purpose programs.
+        source_ids: [brook-project, brook-paper, nvidia-author]
+      - text: >-
+          Buck joined NVIDIA in 2004 after completing the PhD, and NVIDIA describes Buck as the inventor of CUDA,
+          its platform for GPU computing. Buck is now NVIDIA's vice president of hyperscale and high-performance
+          computing and, as head of product for hyperscale AI, manages NVIDIA's AI hardware and software products
+          developed with large cloud and AI companies.
+        source_ids: [nvidia-author]
+  - heading: Writing
+    paragraphs:
+      - text: >-
+          Buck's posts on the NVIDIA blog cover deployments of NVIDIA systems with cloud providers, including
+          GB200 NVL72 systems at CoreWeave and Oracle Cloud Infrastructure in 2025 and a GB300 NVL72
+          supercomputing cluster on Microsoft Azure. Later posts describe NVIDIA's collaborations with Microsoft,
+          AWS and Google Cloud and, in July 2026, the NVIDIA Vera CPU, which NVIDIA positions for agentic AI
+          workloads.
+        source_ids: [nvidia-author, nvidia-vera-2026]
+timeline:
+  - date: "2004"
+    text: First-authored "Brook for GPUs," a paper for SIGGRAPH 2004.
+    source_ids: [brook-paper]
+  - date: "2004"
+    text: Joined NVIDIA after completing a PhD in computer science at Stanford University.
+    source_ids: [nvidia-author]
+  - date: "2025-04-28"
+    text: Wrote about Oracle Cloud Infrastructure deploying NVIDIA GB200 NVL72 racks for agentic AI.
+    source_ids: [nvidia-author]
+  - date: "2025-10-09"
+    text: Wrote about Microsoft Azure's NVIDIA GB300 NVL72 supercomputing cluster built for OpenAI.
+    source_ids: [nvidia-author]
+  - date: "2025-12-02"
+    text: Wrote about the expanded NVIDIA and AWS partnership announced at AWS re:Invent.
+    source_ids: [nvidia-author]
+  - date: "2026-07-07"
+    text: Wrote about AI developers adopting the NVIDIA Vera CPU for agentic AI.
+    source_ids: [nvidia-vera-2026]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nvidia-author
     title: Ian Buck — author page on the NVIDIA Blog
@@ -57,25 +100,25 @@ sources:
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: nvidia-vera-2026
     title: "AI Innovators Adopt NVIDIA Vera — Why Max Single-Threaded CPU at Scale Matters (byline Ian Buck)"
     url: https://blogs.nvidia.com/blog/nvidia-vera-max-single-threaded-cpu-at-scale/
     publisher: NVIDIA
     kind: announcement
     published_at: 2026-07-07
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: brook-paper
     title: "Brook for GPUs: Stream Computing on Graphics Hardware (Stanford Graphics Lab paper page)"
     url: https://graphics.stanford.edu/papers/brookgpu/
     publisher: Stanford University Computer Graphics Laboratory
     kind: paper
     published_at: "2004"
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: brook-project
     title: BrookGPU project page (Stanford University Graphics Lab)
     url: https://graphics.stanford.edu/projects/brookgpu/
     publisher: Stanford University Computer Graphics Laboratory
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21

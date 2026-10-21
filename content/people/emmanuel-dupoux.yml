@@ -15,7 +15,7 @@ bio:
     Dupoux is a co-author of On Generative Spoken Language Modeling from Raw Audio, a paper whose
     authors are listed at Facebook AI Research, with Dupoux also at EHESS.
   source_ids: [lscp-profile, coml-site, gslm-paper, gslm-pdf]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: EHESS (Laboratoire de Sciences Cognitives et Psycholinguistique)
     organization_slug: null
@@ -42,9 +42,64 @@ links:
     url: https://lscp.dec.ens.fr/en/member/630/emmanuel-dupoux
   - label: CoML team
     url: https://cognitive-ml.fr/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Dupoux leads the Cognitive Machine Learning (CoML) team, whose members page lists Dupoux as an EHESS
+          professor and team leader working on psycholinguistics, cognitive development, speech perception and
+          modeling. The team's main project takes a reverse-engineering approach to infant language learning,
+          building artificial learners trained on recordings of child-adult interaction and testing the
+          resulting algorithms against infant behavior and brain measurements.
+        source_ids: [coml-people, coml-projects]
+      - text: >-
+          Dupoux described this approach in a 2016 single-author paper proposing a roadmap for reverse-engineering
+          the infant language learner. The same year Dupoux co-authored, with Tal Linzen and Yoav Goldberg, a
+          study of whether LSTM networks learn syntax-sensitive agreement dependencies. In 2026 Dupoux, Yann
+          LeCun and Jitendra Malik proposed a learning architecture inspired by human and animal cognition to
+          address limits on autonomous learning in current AI systems.
+        source_ids: [roadmap-paper, lstm-syntax-paper, autonomous-learning-paper]
+  - heading: Benchmarks and spoken language models
+    paragraphs:
+      - text: >-
+          Dupoux co-authored the papers describing the 2017 and 2020 editions of the Zero Resource Speech
+          Challenge, which asks systems to discover subword and word units from raw speech without labels. The CoML team also
+          maintains a list of open-source tools for unsupervised speech learning, and Dupoux co-authored
+          Libri-Light, a benchmark for speech recognition with limited or no supervision.
+        source_ids: [zerospeech-2017, zerospeech-2020, coml-resources, librilight-paper]
+      - text: >-
+          Working with researchers at Facebook AI Research, Dupoux co-authored the 2021 paper on generative
+          spoken language modeling from raw audio, and the 2023 TWIST paper, which warm-starts speech language
+          models from pretrained text language models.
+        source_ids: [gslm-paper, gslm-pdf, twist-paper]
+timeline:
+  - date: "2016-07"
+    text: Posted a roadmap for reverse-engineering the infant language learner as sole author.
+    source_ids: [roadmap-paper]
+  - date: "2016-11"
+    text: Co-authored "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies".
+    source_ids: [lstm-syntax-paper]
+  - date: "2017-12"
+    text: Co-authored the paper describing the Zero Resource Speech Challenge 2017.
+    source_ids: [zerospeech-2017]
+  - date: "2019-12"
+    text: Co-authored Libri-Light, a benchmark for speech recognition with limited or no supervision.
+    source_ids: [librilight-paper]
+  - date: "2020-10"
+    text: Co-authored the paper describing the Zero Resource Speech Challenge 2020.
+    source_ids: [zerospeech-2020]
+  - date: "2021-02"
+    text: Co-authored "Generative Spoken Language Modeling from Raw Audio" with Facebook AI Research.
+    source_ids: [gslm-paper]
+  - date: "2023-05"
+    text: Co-authored "Textually Pretrained Speech Language Models", introducing the TWIST method.
+    source_ids: [twist-paper]
+  - date: "2026-03"
+    text: Posted a paper with Yann LeCun and Jitendra Malik on autonomous learning lessons from cognitive science.
+    source_ids: [autonomous-learning-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: lscp-profile
     title: Emmanuel Dupoux — LSCP member directory
@@ -59,18 +114,88 @@ sources:
     publisher: Cognitive Machine Learning team (EHESS, ENS, CNRS, Inria)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gslm-paper
     title: "Generative Spoken Language Modeling from Raw Audio (arXiv 2102.01192)"
     url: https://arxiv.org/abs/2102.01192
     publisher: arXiv
     kind: paper
     published_at: 2021-02-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gslm-pdf
     title: "On Generative Spoken Language Modeling from Raw Audio — paper PDF (author affiliations)"
     url: https://arxiv.org/pdf/2102.01192
     publisher: arXiv
     kind: paper
     published_at: 2021-02-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: coml-people
+    title: CoML — People
+    url: https://cognitive-ml.fr/people
+    publisher: Cognitive Machine Learning team (ENS / EHESS / CNRS)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: coml-projects
+    title: CoML — Projects
+    url: https://cognitive-ml.fr/projects
+    publisher: Cognitive Machine Learning team (ENS / EHESS / CNRS)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: coml-resources
+    title: CoML — Resources
+    url: https://cognitive-ml.fr/resources
+    publisher: Cognitive Machine Learning team (ENS / EHESS / CNRS)
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: roadmap-paper
+    title: "Cognitive Science in the era of Artificial Intelligence: A roadmap for reverse-engineering the infant language-learner (arXiv 1607.08723)"
+    url: https://arxiv.org/abs/1607.08723
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-07-29
+    accessed_at: 2026-10-21
+  - id: lstm-syntax-paper
+    title: "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies (arXiv 1611.01368)"
+    url: https://arxiv.org/abs/1611.01368
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-11-04
+    accessed_at: 2026-10-21
+  - id: autonomous-learning-paper
+    title: "Why AI systems don't learn and what to do about it: Lessons on autonomous learning from cognitive science (arXiv 2603.15381)"
+    url: https://arxiv.org/abs/2603.15381
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-16
+    accessed_at: 2026-10-21
+  - id: zerospeech-2017
+    title: "The Zero Resource Speech Challenge 2017 (arXiv 1712.04313)"
+    url: https://arxiv.org/abs/1712.04313
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-12-12
+    accessed_at: 2026-10-21
+  - id: zerospeech-2020
+    title: "The Zero Resource Speech Challenge 2020: Discovering discrete subword and word units (arXiv 2010.05967)"
+    url: https://arxiv.org/abs/2010.05967
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-10-12
+    accessed_at: 2026-10-21
+  - id: librilight-paper
+    title: "Libri-Light: A Benchmark for ASR with Limited or No Supervision (arXiv 1912.07875)"
+    url: https://arxiv.org/abs/1912.07875
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-17
+    accessed_at: 2026-10-21
+  - id: twist-paper
+    title: "Textually Pretrained Speech Language Models (arXiv 2305.13009)"
+    url: https://arxiv.org/abs/2305.13009
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-22
+    accessed_at: 2026-10-21

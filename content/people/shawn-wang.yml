@@ -20,6 +20,21 @@ affiliations:
     role: Writer and podcast host
     current: true
     source_ids: [about, latent-about]
+  - name: Cognition
+    organization_slug: cognition
+    role: Works on Cognition, alongside Latent Space and AI Engineer
+    current: true
+    source_ids: [about]
+  - name: AI Engineer
+    organization_slug: null
+    role: Works on the AI Engineer conferences
+    current: true
+    source_ids: [about]
+  - name: Netlify, Amazon Web Services, Temporal, and Airbyte
+    organization_slug: null
+    role: Developer-experience roles at each company
+    current: false
+    source_ids: [about]
 work:
   - name: Latent Space
     artifact_slug: null
@@ -36,14 +51,66 @@ work:
     contribution: >-
       Author of a handbook of nontechnical advice for developers, now free and open source.
     source_ids: [about]
+  - name: The Rise of the AI Engineer
+    artifact_slug: null
+    type: media
+    url: https://www.latent.space/p/ai-engineer
+    contribution: >-
+      Wrote the June 2023 Latent Space essay on the emerging role of engineers who build software on
+      top of foundation models.
+    source_ids: [rise-ai-engineer, about]
 links:
   - label: Website
     url: https://www.swyx.io/
   - label: Latent Space
     url: https://www.latent.space/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Shawn Wang, known as swyx, worked in finance as a currency options trader and then as a
+          technology, media, and telecom hedge fund analyst before moving into software. swyx then
+          held developer-experience roles at Netlify, Amazon Web Services, Temporal, and Airbyte,
+          and helped run the React subreddit and grow the Svelte Society community.
+        source_ids: [about]
+      - text: >-
+          Most of swyx's current work spans Latent Space, AI Engineer, and Cognition. AI Engineer
+          brings together people turning new AI capabilities into working software through
+          conferences, expos, and workshops.
+        source_ids: [about]
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Latent Space is a technical newsletter, podcast, and community for AI engineers, published
+          in audio, video, and written formats, with an online Discord and in-person meetups. swyx
+          writes for it and holds its conversations about AI and the people building it.
+        source_ids: [latent-about, about]
+      - text: >-
+          swyx's 2018 essay Learn in Public argues for learning by sharing what you know, and the
+          2023 essay The Rise of the AI Engineer describes the shift behind much of swyx's current
+          work. swyx also collected nontechnical career advice for developers in The Coding Career
+          Handbook, now free and open source, and has written technical essays such as The Third Age
+          of JavaScript (2020), The Self Provisioning Runtime (2021), and The End of Localhost (2022).
+        source_ids: [learn-in-public, rise-ai-engineer, about, third-age-js, self-provisioning, end-of-localhost]
+timeline:
+  - date: 2018-06-19
+    text: Published the essay Learn in Public on swyx.io.
+    source_ids: [learn-in-public]
+  - date: 2020-05-20
+    text: Published the essay The Third Age of JavaScript on swyx.io.
+    source_ids: [third-age-js]
+  - date: 2021-08-30
+    text: Published the essay The Self Provisioning Runtime on swyx.io.
+    source_ids: [self-provisioning]
+  - date: 2022-06-08
+    text: Published the essay The End of Localhost on dx.tips.
+    source_ids: [end-of-localhost]
+  - date: 2023-06-30
+    text: Published The Rise of the AI Engineer on Latent Space.
+    source_ids: [rise-ai-engineer]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: about
     title: "About swyx"
@@ -51,11 +118,46 @@ sources:
     publisher: "swyx.io"
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: latent-about
     title: "About - Latent.Space"
     url: https://www.latent.space/about
     publisher: "Latent.Space"
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: learn-in-public
+    title: Learn In Public (swyx.io)
+    url: https://www.swyx.io/learn-in-public
+    publisher: swyx
+    kind: official-page
+    published_at: 2018-06-19
+    accessed_at: 2026-10-21
+  - id: rise-ai-engineer
+    title: The Rise of the AI Engineer (Latent Space)
+    url: https://www.latent.space/p/ai-engineer
+    publisher: Latent Space
+    kind: official-page
+    published_at: 2023-06-30
+    accessed_at: 2026-10-21
+  - id: third-age-js
+    title: The Third Age of JavaScript (swyx.io)
+    url: https://www.swyx.io/js-third-age
+    publisher: swyx
+    kind: official-page
+    published_at: 2020-05-20
+    accessed_at: 2026-10-21
+  - id: self-provisioning
+    title: The Self Provisioning Runtime (swyx.io)
+    url: https://www.swyx.io/self-provisioning-runtime
+    publisher: swyx
+    kind: official-page
+    published_at: 2021-08-30
+    accessed_at: 2026-10-21
+  - id: end-of-localhost
+    title: The End of Localhost (dx.tips)
+    url: https://dx.tips/the-end-of-localhost
+    publisher: swyx (dx.tips)
+    kind: official-page
+    published_at: 2022-06-08
+    accessed_at: 2026-10-21

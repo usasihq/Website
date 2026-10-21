@@ -125,7 +125,7 @@ describe("memory pages use the finder's own fit logic", () => {
       expect(answer).toContain(` ${r.fits.length} documented local`);
       for (const e of r.fits.slice(0, 3)) expect(answer).toContain(e.config.title.replace(/\s*\(.*$/, ""));
       expect(answer).not.toMatch(/\bbest\b/i);
-      expect(`${memoryPageTitle(p)} · USASI`.length).toBeLessThanOrEqual(66);
+      expect(`${memoryPageTitle(p)} | USASI`.length).toBeLessThanOrEqual(66);
     }
     expect(memoryPageAnswer(memoryPageResults([], MEMORY_PAGES[0]))).toMatch(/none of the documented/);
   });

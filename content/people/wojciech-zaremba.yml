@@ -15,7 +15,7 @@ bio:
     reinforcement learning research, and the last-listed author of the 2021 paper that introduced
     Codex and the HumanEval evaluation set.
   source_ids: [oaif-update, oaif-resilience, gym-paper, codex-paper]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: OpenAI Foundation
     organization_slug: null
@@ -54,9 +54,61 @@ work:
       cyber-resilience, AI model safety and AI's impact on young people.
     source_ids: [oaif-resilience]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Zaremba's early papers, several with Ilya Sutskever, appeared in 2013 and 2014. "Intriguing properties
+          of neural networks" (2013), with Christian Szegedy and others, showed that imperceptible perturbations can cause a network to misclassify an image;
+          "Recurrent Neural Network Regularization" (2014), with Sutskever and Oriol Vinyals, showed how to apply
+          dropout to LSTMs; and "Learning to Execute" (2014) trained recurrent networks to evaluate short
+          computer programs.
+        source_ids: [adversarial-paper, rnn-regularization-paper, learning-to-execute-paper]
+      - text: >-
+          Zaremba co-authored the OpenAI Gym toolkit for reinforcement learning research (2016) and
+          robotics work including domain randomization for transferring networks trained in simulation to the
+          real world (2017) and "Solving Rubik's Cube with a Robot Hand" (2019). Zaremba was the last-listed
+          author of the 2021 paper introducing Codex and the HumanEval benchmark for code generation.
+        source_ids: [gym-paper, domain-randomization-paper, rubiks-paper, codex-paper]
+  - heading: OpenAI Foundation
+    paragraphs:
+      - text: >-
+          In March 2026, the OpenAI Foundation announced that Zaremba, a co-founder of OpenAI, was joining as
+          Head of AI Resilience. The program's initial areas are AI's effects on young people, biosecurity and AI
+          model safety, including support for independent testing and evaluation and for foundational safety
+          research. Zaremba set out the program's approach in the June 2026 essay "Resilience in the age of AI".
+        source_ids: [oaif-update, oaif-resilience]
+timeline:
+  - date: "2013-12"
+    text: Co-authored "Intriguing properties of neural networks", on imperceptible perturbations that cause misclassification.
+    source_ids: [adversarial-paper]
+  - date: "2014-09"
+    text: Posted "Recurrent Neural Network Regularization" as first author with Ilya Sutskever and Oriol Vinyals.
+    source_ids: [rnn-regularization-paper]
+  - date: "2014-10"
+    text: Posted "Learning to Execute" with Ilya Sutskever as first author.
+    source_ids: [learning-to-execute-paper]
+  - date: "2016-06"
+    text: Co-authored the OpenAI Gym paper introducing a toolkit for reinforcement learning research.
+    source_ids: [gym-paper]
+  - date: "2017-03"
+    text: Co-authored the domain randomization paper on transferring networks from simulation to the real world.
+    source_ids: [domain-randomization-paper]
+  - date: "2019-10"
+    text: Co-authored "Solving Rubik's Cube with a Robot Hand".
+    source_ids: [rubiks-paper]
+  - date: "2021-07"
+    text: Co-authored the Codex paper that introduced the HumanEval evaluation set.
+    source_ids: [codex-paper]
+  - date: "2026-03"
+    text: Joined the OpenAI Foundation as Head of AI Resilience.
+    source_ids: [oaif-update]
+  - date: "2026-06"
+    text: Published the OpenAI Foundation essay "Resilience in the age of AI".
+    source_ids: [oaif-resilience]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: oaif-update
     title: Update on the OpenAI Foundation (a note from Bret Taylor)
@@ -64,25 +116,60 @@ sources:
     publisher: OpenAI Foundation
     kind: announcement
     published_at: 2026-03-24
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: oaif-resilience
     title: Resilience in the age of AI (by Wojciech Zaremba)
     url: https://openaifoundation.org/news/resilience-in-the-age-of-ai
     publisher: OpenAI Foundation
     kind: official-page
     published_at: 2026-06-01
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: gym-paper
     title: OpenAI Gym (arXiv 1606.01540)
     url: https://arxiv.org/abs/1606.01540
     publisher: arXiv
     kind: paper
     published_at: 2016-06-05
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: codex-paper
     title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
     url: https://arxiv.org/abs/2107.03374
     publisher: arXiv
     kind: paper
     published_at: 2021-07-07
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: adversarial-paper
+    title: Intriguing properties of neural networks (arXiv 1312.6199)
+    url: https://arxiv.org/abs/1312.6199
+    publisher: arXiv
+    kind: paper
+    published_at: 2013-12-21
+    accessed_at: 2026-10-21
+  - id: rnn-regularization-paper
+    title: Recurrent Neural Network Regularization (arXiv 1409.2329)
+    url: https://arxiv.org/abs/1409.2329
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-09-08
+    accessed_at: 2026-10-21
+  - id: learning-to-execute-paper
+    title: Learning to Execute (arXiv 1410.4615)
+    url: https://arxiv.org/abs/1410.4615
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-10-17
+    accessed_at: 2026-10-21
+  - id: domain-randomization-paper
+    title: Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World (arXiv 1703.06907)
+    url: https://arxiv.org/abs/1703.06907
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-20
+    accessed_at: 2026-10-21
+  - id: rubiks-paper
+    title: Solving Rubik's Cube with a Robot Hand (arXiv 1910.07113)
+    url: https://arxiv.org/abs/1910.07113
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-16
+    accessed_at: 2026-10-21

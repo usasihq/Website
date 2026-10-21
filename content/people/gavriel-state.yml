@@ -16,7 +16,7 @@ bio:
     the 2025 Isaac Lab technical report. Before NVIDIA, State founded TransGaming Inc. and spent 15
     years on games and rendering technologies.
   source_ids: [nvidia-dev-author, nvidia-blog-author, isaacgym-paper, orbit-paper, isaaclab-paper, isaaclab-readme]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: NVIDIA
     organization_slug: nvidia
@@ -60,9 +60,53 @@ links:
     url: https://developer.nvidia.com/blog/author/gstate/
   - label: GitHub
     url: https://github.com/gavrielstate
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          State founded TransGaming Inc. and spent 15 years on games and rendering technologies before NVIDIA.
+          An earlier NVIDIA author page describes State as a Senior Director, System Software, leading work on
+          applications of AI to gaming and on remastering games for the SHIELD TV platform. In a December 2020
+          NVIDIA blog post, State wrote about how GPUs can make deep reinforcement learning for robotics more
+          accessible.
+        source_ids: [nvidia-blog-author]
+      - text: >-
+          NVIDIA's developer blog now lists State as Senior Director for Simulation and AI, leading the team
+          behind the Isaac Sim robotics simulator and Isaac Lab. That work extends to real-to-sim 3D
+          reconstruction, including 3D Gaussian Ray Tracing, and to synthetic data generation with Omniverse
+          Replicator.
+        source_ids: [nvidia-dev-author]
+  - heading: Robotics simulation
+    paragraphs:
+      - text: >-
+          State co-authored the 2021 Isaac Gym paper, which ran physics simulation and policy training on the GPU
+          for robot learning, and the 2023 Orbit paper describing a unified framework for interactive robot
+          learning environments. Orbit grew into Isaac Lab, whose November 2025 technical report State also
+          co-authored; the BSD-3-Clause Isaac Lab repository lists State among its developers and contributors.
+        source_ids: [isaacgym-paper, orbit-paper, isaaclab-paper, isaaclab-readme, isaaclab-contributors]
+      - text: >-
+          In March 2025 State announced Newton, an open-source, extensible physics engine for robotics simulation
+          built on NVIDIA Warp and developed by NVIDIA with Google DeepMind and Disney Research.
+        source_ids: [newton-post]
+timeline:
+  - date: "2020-12-10"
+    text: Wrote an NVIDIA blog post on how GPUs can make deep reinforcement learning for robotics more accessible.
+    source_ids: [nvidia-blog-author]
+  - date: "2021-08-24"
+    text: Co-authored the Isaac Gym paper on GPU-based physics simulation for robot learning.
+    source_ids: [isaacgym-paper]
+  - date: "2023-01-10"
+    text: Co-authored the Orbit paper on a unified simulation framework for interactive robot learning.
+    source_ids: [orbit-paper]
+  - date: "2025-03-18"
+    text: Announced Newton, an open-source physics engine for robotics simulation, on the NVIDIA developer blog.
+    source_ids: [newton-post]
+  - date: "2025-11-06"
+    text: Co-authored the Isaac Lab technical report on GPU-accelerated simulation for multi-modal robot learning.
+    source_ids: [isaaclab-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nvidia-dev-author
     title: Gavriel State — NVIDIA Technical Blog author page
@@ -70,60 +114,60 @@ sources:
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: gavrielstate (Gavriel State) — GitHub profile
     url: https://github.com/gavrielstate
     publisher: Gavriel State
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: newton-post
     title: Announcing Newton, an Open-Source Physics Engine for Robotics Simulation
     url: https://developer.nvidia.com/blog/announcing-newton-an-open-source-physics-engine-for-robotics-simulation/
     publisher: NVIDIA
     kind: announcement
     published_at: 2025-03-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvidia-blog-author
     title: Gavriel State — NVIDIA Blog author page
     url: https://blogs.nvidia.com/blog/author/gstate/
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: isaacgym-paper
     title: "Isaac Gym: High Performance GPU-Based Physics Simulation For Robot Learning (arXiv 2108.10470)"
     url: https://arxiv.org/abs/2108.10470
     publisher: arXiv
     kind: paper
     published_at: 2021-08-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: orbit-paper
     title: "Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments (arXiv 2301.04195)"
     url: https://arxiv.org/abs/2301.04195
     publisher: arXiv
     kind: paper
     published_at: 2023-01-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: isaaclab-paper
     title: "Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot Learning (arXiv 2511.04831)"
     url: https://arxiv.org/abs/2511.04831
     publisher: arXiv
     kind: paper
     published_at: 2025-11-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: isaaclab-readme
     title: isaac-sim/IsaacLab README (citation, acknowledgement) and LICENSE (BSD-3-Clause)
     url: https://github.com/isaac-sim/IsaacLab
     publisher: isaac-sim (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: isaaclab-contributors
     title: isaac-sim/IsaacLab CONTRIBUTORS.md
     url: https://github.com/isaac-sim/IsaacLab/blob/main/CONTRIBUTORS.md
     publisher: isaac-sim (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

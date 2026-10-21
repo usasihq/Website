@@ -37,6 +37,14 @@ work:
       Models in the Wild" (2019), which the Gradio README gives as its citation. The repository is
       licensed under Apache 2.0.
     source_ids: [hf-course, gradio-paper, gradio-readme]
+  - name: Concrete Autoencoders
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1901.09346
+    contribution: >-
+      First author, with Muhammad Fatih Balin and James Zou, of a 2019 paper on concrete
+      autoencoders, a method for differentiable feature selection and reconstruction.
+    source_ids: [concrete-ae-paper]
 links:
   - label: Website
     url: https://abidlabs.github.io/
@@ -44,9 +52,61 @@ links:
     url: https://github.com/abidlabs
   - label: Hugging Face
     url: https://huggingface.co/abidlabs
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Abubakar Abid started Gradio in 2019 while a PhD student at Stanford, after struggling to
+          share a medical computer vision model with a collaborator who could not run Python. Abid
+          recruited Ali Abdalla, Ali Abid, and Dawood Khan to release the first version that year.
+        source_ids: [gradio-joins-hf]
+      - text: >-
+          Hugging Face announced its acquisition of Gradio in December 2021, and Abid continued
+          working on Gradio at Hugging Face, where the LLM Course describes Abid as a machine learning
+          team lead. Abid is also one of the authors of Hugging Face's LLM Course.
+        source_ids: [gradio-joins-hf, github-profile, hf-course]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Gradio lets developers build web interfaces and demos for machine learning models in a few
+          lines of Python. The 2019 Gradio paper, with Abid as first author, presented it as a way for
+          researchers to let collaborators without ML tooling test a model and give feedback.
+        source_ids: [gradio-paper, gradio-readme]
+      - text: >-
+          In October 2024, Abid announced the stable release of Gradio 5, aimed at building
+          production-ready machine learning web apps with attention to performance, accessibility,
+          and web security. In April 2025, Abid and Yuvraj Sharma described how Gradio apps can run
+          as Model Context Protocol (MCP) servers whose tools language models can use.
+        source_ids: [gradio-5-blog, gradio-mcp-blog]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Abid's doctoral work at Stanford was in applied machine learning. With
+          Muhammad Fatih Balin and James Zou, Abid introduced concrete autoencoders in 2019, a way to
+          select a small set of input features while still reconstructing the full input.
+        source_ids: [concrete-ae-paper, hf-course]
+timeline:
+  - date: 2019-01-27
+    text: Released the concrete autoencoders paper with Muhammad Fatih Balin and James Zou.
+    source_ids: [concrete-ae-paper]
+  - date: "2019"
+    text: Released the first version of Gradio with Ali Abdalla, Ali Abid, and Dawood Khan.
+    source_ids: [gradio-joins-hf]
+  - date: 2019-06-06
+    text: Released the Gradio paper on sharing machine learning models through generated interfaces.
+    source_ids: [gradio-paper]
+  - date: 2021-12-21
+    text: Announced that Gradio was joining Hugging Face.
+    source_ids: [gradio-joins-hf]
+  - date: 2024-10-09
+    text: Announced the stable release of Gradio 5.
+    source_ids: [gradio-5-blog]
+  - date: 2025-04-30
+    text: Co-wrote the Hugging Face guide to building MCP servers with Gradio.
+    source_ids: [gradio-mcp-blog]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: hf-course
     title: Hugging Face LLM Course, Chapter 1 introduction (About the authors)
@@ -54,32 +114,53 @@ sources:
     publisher: Hugging Face
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gradio-joins-hf
     title: Gradio is joining Hugging Face! (Hugging Face blog, by Abubakar Abid)
     url: https://huggingface.co/blog/gradio-joins-hf
     publisher: Hugging Face
     kind: announcement
     published_at: 2021-12-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: abidlabs (Abubakar Abid) on GitHub
     url: https://github.com/abidlabs
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gradio-paper
     title: "Gradio: Hassle-Free Sharing and Testing of ML Models in the Wild (arXiv 1906.02569)"
     url: https://arxiv.org/abs/1906.02569
     publisher: arXiv
     kind: paper
     published_at: 2019-06-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gradio-readme
     title: gradio-app/gradio README (citation) and LICENSE (Apache-2.0)
     url: https://github.com/gradio-app/gradio
     publisher: Gradio (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: concrete-ae-paper
+    title: Concrete Autoencoders for Differentiable Feature Selection and Reconstruction (arXiv 1901.09346)
+    url: https://arxiv.org/abs/1901.09346
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-01-27
+    accessed_at: 2026-10-21
+  - id: gradio-5-blog
+    title: Welcome, Gradio 5 (by Abubakar Abid)
+    url: https://huggingface.co/blog/gradio-5
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2024-10-09
+    accessed_at: 2026-10-21
+  - id: gradio-mcp-blog
+    title: How to Build an MCP Server with Gradio (by Abubakar Abid and Yuvraj Sharma)
+    url: https://huggingface.co/blog/gradio-mcp
+    publisher: Hugging Face
+    kind: announcement
+    published_at: 2025-04-30
+    accessed_at: 2026-10-21

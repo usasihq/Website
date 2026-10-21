@@ -17,7 +17,7 @@ bio:
     co-authored the XGBoost paper with Tianqi Chen and the LIME paper on explaining the
     predictions of any classifier.
   source_ids: [stanford-profile, xgboost-paper, lime-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Stanford University
     organization_slug: stanford-university
@@ -61,12 +61,112 @@ work:
       Co-author of "Why Should I Trust You?": Explaining the Predictions of Any Classifier (2016),
       which introduced LIME for explaining individual predictions of any classifier.
     source_ids: [lime-paper, stanford-profile]
+  - name: Apache TVM
+    artifact_slug: null
+    type: open-source
+    url: https://arxiv.org/abs/1802.04799
+    contribution: >-
+      Co-author of "TVM: An Automated End-to-End Optimizing Compiler for Deep Learning" (2018), which
+      presents a compiler that makes deep learning workloads portable across CPUs, GPUs and
+      accelerators; the Stanford profile lists Apache TVM among the team's open-source releases.
+    source_ids: [tvm-paper, stanford-profile]
+  - name: GraphLab
+    artifact_slug: null
+    type: open-source
+    url: https://arxiv.org/abs/1006.4990
+    contribution: >-
+      Co-author of "GraphLab: A New Framework for Parallel Machine Learning" (2010) and of the 2012
+      follow-up on Distributed GraphLab for machine learning in the cloud.
+    source_ids: [graphlab-paper, distributed-graphlab-paper]
 links:
   - label: Stanford profile
     url: https://profiles.stanford.edu/carlos-guestrin
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Guestrin's previous positions include the Finmeccanica Associate Professorship at Carnegie
+          Mellon University and the Amazon Professorship of Machine Learning in Computer Science and
+          Engineering at the University of Washington. Guestrin co-founded Turi, Inc., known earlier as
+          GraphLab and Dato, which built a platform for developers and data scientists to build and
+          deploy intelligent applications.
+        source_ids: [stanford-profile]
+      - text: >-
+          After Apple acquired Turi, Guestrin served as Apple's Senior Director of Machine Learning and
+          AI. Guestrin is now a Professor in Stanford's Computer Science Department, holds the Fortinet
+          Founders Professorship, and is a Senior Fellow at the Stanford Institute for Human-Centered
+          AI and a member of Bio-X. Guestrin is also a former member of DARPA's Information Sciences and
+          Technology (ISAT) advisory group.
+        source_ids: [stanford-profile]
+  - heading: Research and open-source work
+    paragraphs:
+      - text: >-
+          Guestrin's early systems work includes GraphLab, a framework for expressing parallel machine
+          learning algorithms, introduced in a 2010 paper and extended to distributed cloud settings in
+          2012. Guestrin's teams went on to release open-source projects including XGBoost, LIME, Apache
+          TVM, MXNet, Turi Create, GraphLab/PowerGraph, SFrame and GraphChi.
+        source_ids: [graphlab-paper, distributed-graphlab-paper, stanford-profile]
+      - text: >-
+          With Tianqi Chen, Guestrin wrote the 2016 paper describing XGBoost, a scalable end-to-end
+          tree boosting system, and with Marco Tulio Ribeiro and Sameer Singh the 2016 paper introducing
+          LIME, which explains an individual prediction of any classifier by learning a simple model
+          around it. Guestrin is also a co-author of the 2018 TVM paper on an optimizing compiler that
+          brings deep learning workloads to a wide range of hardware.
+        source_ids: [xgboost-paper, lime-paper, tvm-paper]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          At Stanford, Guestrin taught Machine Learning (CS 229) in the autumn and Ethics of Artificial
+          Intelligence (CS 281) in the spring in each academic year from 2023–24 to 2025–26, and
+          advises master's and doctoral students in computer science.
+        source_ids: [stanford-profile]
+timeline:
+  - date: 2010-06-25
+    text: Co-authored the GraphLab paper, a framework for parallel machine learning.
+    source_ids: [graphlab-paper]
+  - date: 2012-04-26
+    text: Co-authored the Distributed GraphLab paper on machine learning in the cloud.
+    source_ids: [distributed-graphlab-paper]
+  - date: 2016-02-16
+    text: Co-authored the LIME paper on explaining the predictions of any classifier.
+    source_ids: [lime-paper]
+  - date: 2016-03-09
+    text: Co-authored the XGBoost paper on a scalable tree boosting system with Tianqi Chen.
+    source_ids: [xgboost-paper]
+  - date: 2018-02-12
+    text: Co-authored the TVM paper on an end-to-end optimizing compiler for deep learning.
+    source_ids: [tvm-paper]
+  - date: "2023"
+    text: Taught Machine Learning (CS 229) at Stanford in the autumn quarter of the 2023–24 academic year.
+    source_ids: [stanford-profile]
+honors:
+  - name: IJCAI Computers and Thought Award
+    year: null
+    awarded_by: International Joint Conferences on Artificial Intelligence
+    source_ids: [stanford-profile]
+  - name: Presidential Early Career Award for Scientists and Engineers (PECASE)
+    year: null
+    awarded_by: United States Government
+    source_ids: [stanford-profile]
+  - name: ONR Young Investigator Award
+    year: null
+    awarded_by: Office of Naval Research
+    source_ids: [stanford-profile]
+  - name: NSF CAREER Award
+    year: null
+    awarded_by: National Science Foundation
+    source_ids: [stanford-profile]
+  - name: Alfred P. Sloan Fellowship
+    year: null
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [stanford-profile]
+  - name: IBM Faculty Fellowship
+    year: null
+    awarded_by: IBM
+    source_ids: [stanford-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: stanford-profile
     title: Carlos Guestrin — Stanford Profiles
@@ -74,25 +174,46 @@ sources:
     publisher: Stanford University
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: xgboost-paper
     title: "XGBoost: A Scalable Tree Boosting System (arXiv 1603.02754)"
     url: https://arxiv.org/abs/1603.02754
     publisher: arXiv
     kind: paper
     published_at: 2016-03-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lime-paper
     title: "\"Why Should I Trust You?\": Explaining the Predictions of Any Classifier (arXiv 1602.04938)"
     url: https://arxiv.org/abs/1602.04938
     publisher: arXiv
     kind: paper
     published_at: 2016-02-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: tvm-paper
+    title: "TVM: An Automated End-to-End Optimizing Compiler for Deep Learning (arXiv 1802.04799)"
+    url: https://arxiv.org/abs/1802.04799
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-02-12
+    accessed_at: 2026-10-21
+  - id: graphlab-paper
+    title: "GraphLab: A New Framework for Parallel Machine Learning (arXiv 1006.4990)"
+    url: https://arxiv.org/abs/1006.4990
+    publisher: arXiv
+    kind: paper
+    published_at: 2010-06-25
+    accessed_at: 2026-10-21
+  - id: distributed-graphlab-paper
+    title: "Distributed GraphLab: A Framework for Machine Learning in the Cloud (arXiv 1204.6078)"
+    url: https://arxiv.org/abs/1204.6078
+    publisher: arXiv
+    kind: paper
+    published_at: 2012-04-26
+    accessed_at: 2026-10-21
   - id: xgboost-license
     title: dmlc/xgboost LICENSE (Apache License 2.0)
     url: https://github.com/dmlc/xgboost/blob/master/LICENSE
     publisher: dmlc (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

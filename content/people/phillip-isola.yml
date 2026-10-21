@@ -16,7 +16,7 @@ bio:
     grad-level deep learning course 6.7960, published on MIT OpenCourseWare. Isola's MIT bio notes earlier time at UC Berkeley, OpenAI,
     and Google Research.
   source_ids: [isola-site, isola-bio, pix2pix-paper, pix2pix-license, visionbook, ocw-67960]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Massachusetts Institute of Technology (EECS and CSAIL)
     organization_slug: mit
@@ -54,9 +54,97 @@ links:
     url: https://web.mit.edu/phillipi/
   - label: GitHub
     url: https://github.com/phillipi
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Isola completed a PhD in Brain and Cognitive Sciences at MIT and then spent time at UC Berkeley, OpenAI
+          and Google Research. Isola is now an
+          associate professor in MIT's Department of Electrical Engineering and Computer Science and a member of
+          CSAIL, teaching courses on deep learning, computer vision and robotics.
+        source_ids: [isola-site, isola-bio]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Isola's MIT biography notes that the work has particularly shaped generative AI and self-supervised
+          representation learning. With Alexei Efros and others, Isola co-authored "Colorful Image
+          Colorization" (2016), was first author of the pix2pix paper on image-to-image translation with
+          conditional adversarial networks, and co-authored CycleGAN (2017), which learns translations between
+          image domains without paired examples. The 2018 LPIPS paper showed that deep network features work well
+          as a perceptual similarity metric.
+        source_ids: [isola-bio, colorization-paper, pix2pix-paper, pix2pix-license, cyclegan-paper, lpips-paper]
+      - text: >-
+          Isola's later work studies representation learning. Contrastive Multiview Coding (2019) learns
+          representations by contrasting different views of the same scene, and a 2020 paper with Tongzhou Wang
+          explained contrastive learning in terms of alignment and uniformity on the hypersphere. "The Platonic
+          Representation Hypothesis" (2024) argues that representations in AI models are converging across
+          architectures and modalities.
+        source_ids: [cmc-paper, alignment-uniformity-paper, platonic-paper]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          With Antonio Torralba and William Freeman, Isola wrote the textbook Foundations of Computer Vision, which
+          is freely available online. Isola is an instructor of MIT's graduate deep learning course 6.7960, whose
+          Fall 2024 offering is published on MIT OpenCourseWare, and has received the Ruth and Joel Spira Award
+          for Distinguished Teaching.
+        source_ids: [visionbook, ocw-67960, isola-bio]
+timeline:
+  - date: "2016-03"
+    text: Co-authored "Colorful Image Colorization" with Richard Zhang and Alexei Efros.
+    source_ids: [colorization-paper]
+  - date: "2016-11"
+    text: Posted the pix2pix paper on image-to-image translation as first author.
+    source_ids: [pix2pix-paper]
+  - date: "2017-03"
+    text: Co-authored CycleGAN on unpaired image-to-image translation.
+    source_ids: [cyclegan-paper]
+  - date: "2018-01"
+    text: Co-authored the LPIPS paper on deep features as a perceptual metric.
+    source_ids: [lpips-paper]
+  - date: "2019-06"
+    text: Co-authored Contrastive Multiview Coding.
+    source_ids: [cmc-paper]
+  - date: "2020-05"
+    text: Co-authored a paper explaining contrastive learning through alignment and uniformity.
+    source_ids: [alignment-uniformity-paper]
+  - date: "2024-05"
+    text: Co-authored "The Platonic Representation Hypothesis".
+    source_ids: [platonic-paper]
+  - date: "2024"
+    text: Taught the Fall 2024 offering of MIT's graduate deep learning course, published on OpenCourseWare.
+    source_ids: [ocw-67960]
+honors:
+  - name: Sloan Research Fellowship
+    year: null
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [isola-bio]
+  - name: Packard Fellowship
+    year: null
+    awarded_by: David and Lucile Packard Foundation
+    source_ids: [isola-bio]
+  - name: PAMI Young Researcher Award
+    year: null
+    awarded_by: IEEE PAMI Technical Committee
+    source_ids: [isola-bio]
+  - name: Samsung AI Researcher of the Year
+    year: null
+    awarded_by: Samsung
+    source_ids: [isola-bio]
+  - name: Google Faculty Research Award
+    year: null
+    awarded_by: Google
+    source_ids: [isola-bio]
+  - name: Ruth and Joel Spira Award for Distinguished Teaching
+    year: null
+    awarded_by: Massachusetts Institute of Technology
+    source_ids: [isola-bio]
+  - name: Burgess (1952) and Elizabeth Jamieson Prize for Excellence in Teaching
+    year: null
+    awarded_by: Massachusetts Institute of Technology
+    source_ids: [isola-bio]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: isola-site
     title: Phillip Isola — homepage (MIT EECS and CSAIL)
@@ -64,39 +152,81 @@ sources:
     publisher: Phillip Isola (MIT)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: isola-bio
     title: Phillip Isola — bio
     url: https://web.mit.edu/phillipi/www/bio.html
     publisher: Phillip Isola (MIT)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pix2pix-paper
     title: "Image-to-Image Translation with Conditional Adversarial Networks (arXiv 1611.07004)"
     url: https://arxiv.org/abs/1611.07004
     publisher: arXiv
     kind: paper
     published_at: 2016-11-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pix2pix-license
     title: phillipi/pix2pix LICENSE (BSD-style)
     url: https://github.com/phillipi/pix2pix/blob/master/LICENSE
     publisher: phillipi (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: visionbook
     title: Foundations of Computer Vision — online edition
     url: https://visionbook.mit.edu/
     publisher: MIT
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ocw-67960
     title: MIT OpenCourseWare — 6.7960 Deep Learning, Fall 2024
     url: https://ocw.mit.edu/courses/6-7960-deep-learning-fall-2024/
     publisher: MIT OpenCourseWare
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: colorization-paper
+    title: "Colorful Image Colorization (arXiv 1603.08511)"
+    url: https://arxiv.org/abs/1603.08511
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-03-28
+    accessed_at: 2026-10-21
+  - id: cyclegan-paper
+    title: "Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (arXiv 1703.10593)"
+    url: https://arxiv.org/abs/1703.10593
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-30
+    accessed_at: 2026-10-21
+  - id: lpips-paper
+    title: "The Unreasonable Effectiveness of Deep Features as a Perceptual Metric (arXiv 1801.03924)"
+    url: https://arxiv.org/abs/1801.03924
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-01-11
+    accessed_at: 2026-10-21
+  - id: cmc-paper
+    title: "Contrastive Multiview Coding (arXiv 1906.05849)"
+    url: https://arxiv.org/abs/1906.05849
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-06-13
+    accessed_at: 2026-10-21
+  - id: alignment-uniformity-paper
+    title: "Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere (arXiv 2005.10242)"
+    url: https://arxiv.org/abs/2005.10242
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-20
+    accessed_at: 2026-10-21
+  - id: platonic-paper
+    title: "The Platonic Representation Hypothesis (arXiv 2405.07987)"
+    url: https://arxiv.org/abs/2405.07987
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-13
+    accessed_at: 2026-10-21

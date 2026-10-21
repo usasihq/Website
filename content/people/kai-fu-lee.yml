@@ -58,9 +58,64 @@ work:
 links:
   - label: 01.AI management team
     url: https://www.01.ai/about.html
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Kai-Fu Lee earned a PhD at Carnegie Mellon University in 1988 with a thesis on Sphinx, a
+          large-vocabulary, speaker-independent, continuous speech recognition system, and later taught at
+          CMU as an assistant professor. With Hsiao-Wuen Hon and Raj Reddy, Lee described the system in a 1990
+          overview, which explains how Sphinx used hidden Markov models with new subword units to handle
+          coarticulation across a large vocabulary.
+        source_ids: [cmu-2015, sphinx-paper]
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Lee spent six years at Apple Computer heading its multimedia division and then led Cosmo Software,
+          SGI's multimedia software unit, before joining Microsoft Research in July 1998 as director of
+          advanced interactive systems. At Microsoft, Lee founded Microsoft Research Asia and served as a
+          global vice president, and Lee was later a global vice president at Google and president of its
+          Greater China operations.
+        source_ids: [ms-1998, zeroone-team]
+      - text: >-
+          Lee founded Sinovation Ventures in 2009 and 01.AI in May 2023, and leads 01.AI as CEO.
+        source_ids: [zeroone-team, sinovation-home]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          01.AI released the open-source foundation model Yi-34B in November 2023, followed by Yi-Large in
+          May 2024 and the mixture-of-experts model Yi-Lightning in October 2024. The company then shifted
+          toward enterprise software with its WorldWise enterprise model platform, adding agents with task
+          planning in 2025 and multi-agent capabilities in a later version.
+        source_ids: [zeroone-team]
+timeline:
+  - date: "1988"
+    text: Completed a PhD at Carnegie Mellon University with a thesis on the Sphinx speech recognition system.
+    source_ids: [cmu-2015]
+  - date: "1990"
+    text: Published "An overview of the SPHINX speech recognition system" with Hsiao-Wuen Hon and Raj Reddy.
+    source_ids: [sphinx-paper]
+  - date: "1998-07"
+    text: Joined Microsoft Research as director of advanced interactive systems.
+    source_ids: [ms-1998]
+  - date: "2009"
+    text: Founded Sinovation Ventures.
+    source_ids: [zeroone-team]
+  - date: "2015"
+    text: Received an honorary Doctor of Business Practice degree from Carnegie Mellon University.
+    source_ids: [cmu-2015]
+  - date: "2023-05"
+    text: Founded 01.AI and became its CEO.
+    source_ids: [zeroone-team]
+  - date: "2023-11"
+    text: 01.AI released the open-source foundation model Yi-34B.
+    source_ids: [zeroone-team]
+  - date: "2024-10"
+    text: 01.AI released Yi-Lightning, a mixture-of-experts language model.
+    source_ids: [zeroone-team]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: zeroone-team
     title: 01.AI — About (company overview and management team)
@@ -68,32 +123,32 @@ sources:
     publisher: 01.AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sinovation-home
     title: Sinovation Ventures — homepage
     url: https://www.sinovationventures.com/
     publisher: Sinovation Ventures
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cmu-2015
     title: Alan Alda To Give Keynote Address at Carnegie Mellon Commencement, May 17 (honorary degree recipients)
     url: https://www.cmu.edu/news/stories/archives/2015/april/alan-alda-speaks-at-commencement.html
     publisher: Carnegie Mellon University
     kind: announcement
     published_at: 2015-04
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ms-1998
     title: Dr. Kai-Fu Lee Joins Microsoft Research
     url: https://news.microsoft.com/source/1998/07/09/dr-kai-fu-lee-joins-microsoft-research/
     publisher: Microsoft
     kind: announcement
     published_at: 1998-07-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sphinx-paper
     title: An overview of the SPHINX speech recognition system (CMU Robotics Institute publication page)
     url: https://publications.ri.cmu.edu/an-overview-of-the-sphinx-speech-recognition-system
     publisher: Carnegie Mellon University Robotics Institute
     kind: paper
     published_at: 1990-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

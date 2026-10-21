@@ -15,7 +15,7 @@ bio:
     include SlimServe, an inference engine for a curated set of open models. The site says Hartford
     previously worked at Microsoft, AWS and eBay.
   source_ids: [quixi-site, dphn-org, dolphin-trinity-card]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Quixi.AI
     organization_slug: null
@@ -51,9 +51,37 @@ links:
     url: https://github.com/ehartford
   - label: Hugging Face
     url: https://huggingface.co/ehartford
+sections:
+  - heading: Open models
+    paragraphs:
+      - text: >-
+          Eric Hartford introduced Samantha, a series of fine-tuned chat models released on Hugging
+          Face in several sizes, and announced Dolphin, an open dataset and series of instruction-tuned
+          language models modeled on the approach of Microsoft's Orca paper. Hartford's announcement
+          says each Dolphin model is released under the license of the base model it is trained on.
+        source_ids: [samantha-post, dolphin-post]
+      - text: >-
+          The Dolphin project's Hugging Face organization, which lists Hartford as a team member,
+          continues to publish Dolphin fine-tunes of open-weight base models. Dolphin X1 Trinity Nano,
+          for example, is built on Arcee AI's Trinity Nano and released under the Apache 2.0 license.
+        source_ids: [dphn-org, dolphin-trinity-card]
+  - heading: Quixi.AI
+    paragraphs:
+      - text: >-
+          Hartford founded Quixi.AI, which its site describes as an independent AI lab building a
+          private-AI stack layer by layer. Its projects include QuixiCore, a set of native kernel
+          libraries for several hardware backends; SlimServe, an inference engine for a curated set of
+          open models; Hexis, a Postgres-based cognitive architecture; and With, a systems programming
+          language.
+        source_ids: [quixi-site]
+      - text: >-
+          The site says Hartford previously worked at Microsoft, AWS and eBay, and that Quixi.AI
+          offers commissioned model training and data curation. Hartford is also writing a book on
+          local and on-premises AI.
+        source_ids: [quixi-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: quixi-site
     title: Quixi.AI — Eric Hartford
@@ -61,18 +89,32 @@ sources:
     publisher: Quixi.AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dphn-org
     title: Dolphin (dphn) on Hugging Face
     url: https://huggingface.co/dphn
     publisher: Hugging Face
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dolphin-trinity-card
     title: dphn/Dolphin-X1-Trinity-Nano model card
     url: https://huggingface.co/dphn/Dolphin-X1-Trinity-Nano
     publisher: Dolphin (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: samantha-post
+    title: Meet Samantha — Eric Hartford
+    url: https://erichartford.com/meet-samantha
+    publisher: Eric Hartford
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: dolphin-post
+    title: Dolphin — Eric Hartford
+    url: https://erichartford.com/dolphin
+    publisher: Eric Hartford
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-21

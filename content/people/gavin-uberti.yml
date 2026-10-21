@@ -1,0 +1,144 @@
+slug: gavin-uberti
+name: Gavin Uberti
+initials: GU
+groups: [engineering, leadership, open-source]
+sector: corporate
+specialties: [hardware, inference, ml-frameworks]
+headline: Co-founder and CEO of Etched, which builds inference chips and racks; former Apache TVM contributor
+bio:
+  text: >-
+    Gavin Uberti is a co-founder and the CEO of Etched, a company that co-designs chips, racks,
+    software and manufacturing methods for running frontier AI models. Etched lists Uberti as a
+    Thiel Fellow and an AI compiler engineer who developed the Arm Cortex-M backend for
+    the open-source Apache TVM compiler.
+  source_ids: [etched-home, etched-progress, github-profile]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: Etched
+    organization_slug: etched
+    role: Co-founder and CEO
+    current: true
+    source_ids: [etched-home, github-profile]
+work:
+  - name: Apache TVM microTVM and Arm Cortex-M schedules
+    artifact_slug: null
+    url: https://github.com/apache/tvm/commit/fcbcd156c7dd995b24b363dbddca5a8766648693
+    type: open-source
+    contribution: >-
+      Contributed microTVM support in Apache TVM, including Arduino project API support in 2021
+      and Arm Cortex-M DSP convolution schedules in 2022 and 2023, the work Etched describes as
+      developing TVM's Cortex-M backend.
+    source_ids: [tvm-arduino, tvm-cortexm-dsp, tvm-qnn, etched-home]
+  - name: Etched frontier inference clusters
+    artifact_slug: null
+    url: https://www.etched.com/progress
+    contribution: >-
+      Leads the company building co-designed chips, packages, boards, cooling and interconnects
+      for inference; Etched reported its A0 silicon back from TSMC N4P and shipped its first rack
+      in 2026.
+    source_ids: [etched-progress, etched-zero-to-one]
+links:
+  - label: GitHub
+    url: https://github.com/guberti
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Before Etched, Uberti contributed to microTVM, the part of the Apache TVM compiler that
+          targets microcontrollers. Commits from 2021 added Arduino support to microTVM's project
+          API, and later commits added and modernized Cortex-M DSP schedules for convolution and
+          used quantized schedules to speed up models on Arm Cortex-M chips.
+        source_ids: [tvm-arduino, tvm-cortexm-dsp, tvm-qnn]
+  - heading: Etched
+    paragraphs:
+      - text: >-
+          Uberti co-founded Etched with Robert Wachen and Chris Zhu, and the company's site lists
+          Uberti as CEO. Etched says it co-designs chips, racks, software and manufacturing to run
+          frontier models for both prefill and decode workloads.
+        source_ids: [etched-home, etched-progress]
+      - text: >-
+          In June 2026 Etched reported that its A0 silicon had come back from TSMC's N4P process and
+          that it was validating its first rack-scale product with customers. In August 2026 it
+          announced that it had shipped its first rack.
+        source_ids: [etched-progress, etched-zero-to-one]
+timeline:
+  - date: "2021-08-18"
+    text: Added Arduino support to the microTVM project API in Apache TVM.
+    source_ids: [tvm-arduino]
+  - date: "2022-10-11"
+    text: Added Cortex-M DSP schedules for optimal conv2d layouts to Apache TVM.
+    source_ids: [tvm-cortexm-dsp]
+  - date: "2023-03-02"
+    text: Contributed QNN-based schedules to improve microTVM performance on Cortex-M.
+    source_ids: [tvm-qnn]
+  - date: "2026-06-30"
+    text: Etched reported its A0 silicon back from TSMC N4P and began validating its first rack-scale product.
+    source_ids: [etched-progress]
+  - date: "2026-08-18"
+    text: Etched announced that it had shipped its first rack.
+    source_ids: [etched-progress, etched-zero-to-one]
+honors:
+  - name: Thiel Fellowship
+    year: null
+    awarded_by: Thiel Foundation
+    source_ids: [etched-home]
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: etched-home
+    title: Etched — homepage and team
+    url: https://www.etched.com/
+    publisher: Etched
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: etched-progress
+    title: Etched progress updates
+    url: https://www.etched.com/progress
+    publisher: Etched
+    kind: announcement
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: etched-zero-to-one
+    title: From Zero to One
+    url: https://www.etched.com/progress/from-zero-to-one
+    publisher: Etched
+    kind: announcement
+    published_at: 2026-08-18
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: github-profile
+    title: guberti (Gavin Uberti) on GitHub
+    url: https://github.com/guberti
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: tvm-arduino
+    title: "apache/tvm commit: [microTVM] Project API Arduino support (#8708)"
+    url: https://github.com/apache/tvm/commit/87674f9ef76dbc89bac0af52a4e33155f5d4a8f8
+    publisher: Apache TVM (GitHub repository)
+    kind: repository
+    published_at: 2021-08-18
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: tvm-cortexm-dsp
+    title: "apache/tvm commit: [microTVM] Add Cortex-M DSP schedules for optimal conv2d layouts (#12969)"
+    url: https://github.com/apache/tvm/commit/fcbcd156c7dd995b24b363dbddca5a8766648693
+    publisher: Apache TVM (GitHub repository)
+    kind: repository
+    published_at: 2022-10-11
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: tvm-qnn
+    title: "apache/tvm commit: [microTVM] Use QNN schedules to give SOTA performance (#13752)"
+    url: https://github.com/apache/tvm/commit/a42e98b1956f867dc0a2527b734612012f3cce27
+    publisher: Apache TVM (GitHub repository)
+    kind: repository
+    published_at: 2023-03-02
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

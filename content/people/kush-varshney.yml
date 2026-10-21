@@ -15,7 +15,7 @@ bio:
     Fairness 360, AI Explainability 360, FactSheets, and Granite Guardian, and published the book
     "Trustworthy Machine Learning" in 2022.
   source_ids: [homepage, ibm-research-profile, aif360-paper, aix360-paper, factsheets-paper, granite-guardian-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM Research
     organization_slug: ibm
@@ -61,9 +61,97 @@ links:
     url: https://krvarshney.github.io/
   - label: IBM Research profile
     url: https://research.ibm.com/people/kush-varshney
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Varshney completed a PhD in electrical engineering and computer science at MIT in 2010 with the thesis
+          "Frugal Hypothesis Testing and Classification," advised by Alan S. Willsky, and joined IBM Research's
+          Thomas J. Watson Research Center as a postdoctoral researcher that year. Varshney became a research
+          staff member later in 2010 and took on management roles from 2016, rising to distinguished research
+          staff member in 2020 and distinguished research scientist in 2023.
+        source_ids: [cv]
+      - text: >-
+          Varshney was named an IBM Fellow in April 2024 and directs Human-Centered Trustworthy AI research at IBM.
+          From 2015 to 2023 Varshney was the founding co-director of the IBM Science for Social Good initiative,
+          and in 2019 spent several months as a visiting scientist at IBM Research – Africa.
+        source_ids: [cv, homepage, ibm-research-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Varshney's research covers the theory and methods of trustworthy machine learning, including AI
+          governance, alignment, safety, interpretable models, fairness and privacy. Varshney and team created the
+          open-source toolkits AI Fairness 360, AI Explainability 360, Uncertainty Quantification 360 and AI
+          FactSheets 360, and co-wrote the papers introducing AI Fairness 360, AI Explainability 360 and
+          FactSheets.
+        source_ids: [homepage, cv, aif360-paper, aix360-paper, factsheets-paper]
+      - text: >-
+          More recently, Varshney's team built the Granite Guardian family of models for detecting risks in
+          prompts and responses of language model applications, described in a 2024 paper. Varshney's applied
+          work has used data science for human capital management, healthcare, olfaction, computational
+          creativity and international development.
+        source_ids: [granite-guardian-paper, granite-guardian-repo, homepage]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Varshney independently published the book Trustworthy Machine Learning in 2022, which is available online, and co-wrote AI Fairness: How to Measure and Reduce Unwanted Bias in Machine Learning with Trisha
+          Mahoney and Michael Hind for O'Reilly Media in 2020.
+        source_ids: [cv, homepage]
+timeline:
+  - date: "2010"
+    text: Completed a PhD in electrical engineering and computer science at MIT and joined IBM Research.
+    source_ids: [cv]
+  - date: "2015"
+    text: Became founding co-director of the IBM Science for Social Good initiative.
+    source_ids: [homepage]
+  - date: "2018-08-22"
+    text: Co-authored the FactSheets paper on supplier's declarations of conformity for AI services.
+    source_ids: [factsheets-paper]
+  - date: "2018-10-03"
+    text: Co-authored the paper introducing the AI Fairness 360 toolkit.
+    source_ids: [aif360-paper]
+  - date: "2019-09-06"
+    text: Co-authored the paper introducing the AI Explainability 360 toolkit.
+    source_ids: [aix360-paper]
+  - date: "2020"
+    text: Co-wrote AI Fairness, a book on measuring and reducing unwanted bias, for O'Reilly Media.
+    source_ids: [cv]
+  - date: "2020-04"
+    text: Became a distinguished research staff member at IBM Research.
+    source_ids: [cv]
+  - date: "2022"
+    text: Published the book Trustworthy Machine Learning.
+    source_ids: [cv, homepage]
+  - date: "2024-04"
+    text: Named an IBM Fellow at IBM Research.
+    source_ids: [cv]
+  - date: "2024-12-10"
+    text: Co-authored the Granite Guardian paper on risk detection models for LLM applications.
+    source_ids: [granite-guardian-paper]
+honors:
+  - name: IEEE Fellow
+    year: 2024
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [homepage, cv]
+  - name: IEEE Signal Processing Society Industrial Innovation Award
+    year: 2023
+    awarded_by: IEEE Signal Processing Society
+    source_ids: [cv]
+  - name: Science and Innovation Management Breakthrough (for AI Fairness 360)
+    year: 2022
+    awarded_by: Falling Walls Science Summit
+    source_ids: [cv]
+  - name: Best Social Good Paper Award
+    year: 2014
+    awarded_by: ACM SIGKDD Conference on Knowledge Discovery and Data Mining
+    source_ids: [cv]
+  - name: NSF Graduate Research Fellowship
+    year: 2004
+    awarded_by: National Science Foundation
+    source_ids: [cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Kush R. Varshney — homepage
@@ -71,60 +159,67 @@ sources:
     publisher: Kush R. Varshney
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ibm-research-profile
     title: Kush Varshney — IBM Research
     url: https://research.ibm.com/people/kush-varshney
     publisher: IBM Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: granite-guardian-paper
     title: Granite Guardian (arXiv 2412.07724)
     url: https://arxiv.org/abs/2412.07724
     publisher: arXiv
     kind: paper
     published_at: 2024-12-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: granite-guardian-repo
     title: ibm-granite/granite-guardian README and license (Apache-2.0)
     url: https://github.com/ibm-granite/granite-guardian
     publisher: IBM Granite (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: granite-guardian-card
     title: ibm-granite/granite-guardian-3.0-8b model card (license apache-2.0)
     url: https://huggingface.co/ibm-granite/granite-guardian-3.0-8b
     publisher: IBM Granite (Hugging Face)
     kind: model-card
     published_at: 2024-10-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: aif360-paper
     title: "AI Fairness 360: An Extensible Toolkit for Detecting, Understanding, and Mitigating Unwanted Algorithmic Bias (arXiv 1810.01943)"
     url: https://arxiv.org/abs/1810.01943
     publisher: arXiv
     kind: paper
     published_at: 2018-10-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: aif360-repo
     title: Trusted-AI/AIF360 README and license (Apache-2.0)
     url: https://github.com/Trusted-AI/AIF360
     publisher: Trusted-AI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: aix360-paper
     title: "One Explanation Does Not Fit All: A Toolkit and Taxonomy of AI Explainability Techniques (arXiv 1909.03012)"
     url: https://arxiv.org/abs/1909.03012
     publisher: arXiv
     kind: paper
     published_at: 2019-09-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: factsheets-paper
     title: "FactSheets: Increasing Trust in AI Services through Supplier's Declarations of Conformity (arXiv 1808.07261)"
     url: https://arxiv.org/abs/1808.07261
     publisher: arXiv
     kind: paper
     published_at: 2018-08-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: cv
+    title: Kush R. Varshney — Curriculum Vitae (May 2026)
+    url: https://krvarshney.github.io/krv-cv-2026-05-26.pdf
+    publisher: Kush R. Varshney
+    kind: official-page
+    published_at: 2026-05-26
+    accessed_at: 2026-10-21

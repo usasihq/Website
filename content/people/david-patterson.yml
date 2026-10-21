@@ -14,7 +14,7 @@ bio:
     Berkeley's faculty page describes Patterson's Berkeley projects, including RISC, RAID, and Networks
     of Workstations.
   source_ids: [patterson-google, patterson-berkeley, tpu-paper, mlperf-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -26,6 +26,11 @@ affiliations:
     role: Pardee Professor of Computer Science, Emeritus
     current: true
     source_ids: [patterson-berkeley, patterson-google]
+  - name: Laude Institute
+    organization_slug: null
+    role: Board Chair
+    current: true
+    source_ids: [patterson-google]
 work:
   - name: MLPerf Training Benchmark
     artifact_slug: mlperf
@@ -44,14 +49,102 @@ work:
       evaluates a custom ASIC deployed in Google datacenters since 2015 for neural network inference,
       and of later papers on TPU v4 and Google's training supercomputers.
     source_ids: [tpu-paper, patterson-berkeley, patterson-google]
+  - name: "Computer Architecture: A Quantitative Approach"
+    artifact_slug: null
+    type: null
+    url: null
+    contribution: >-
+      Co-author, with John Hennessy, of a computer architecture textbook whose 7th edition (2026, with
+      Christos Kozyrakis) is listed first among Patterson's selected publications at Berkeley.
+    source_ids: [patterson-berkeley, patterson-google]
 links:
   - label: Berkeley faculty page
     url: https://www2.eecs.berkeley.edu/Faculty/Homepages/patterson.html
   - label: Google Research profile
     url: https://research.google/people/105290/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          David Patterson joined the University of California, Berkeley in 1976 after completing a PhD
+          in computer science at UCLA, and spent four decades there before working at Google for a
+          decade. At Berkeley, Patterson chaired the Computer Science Division; Patterson also chaired
+          the Computing Research Association and served as President of ACM.
+        source_ids: [patterson-berkeley, patterson-google]
+      - text: >-
+          Patterson is now the Pardee Professor of Computer Science, Emeritus, at Berkeley, a Google
+          Fellow, and Board Chair of the Laude Institute. Berkeley's faculty page describes Patterson's
+          research style as gathering interdisciplinary groups of faculty and students around a question
+          for the computing industry and answering it with demonstration systems.
+        source_ids: [patterson-google, patterson-berkeley]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Patterson's Berkeley projects included Reduced Instruction Set Computers (RISC), Redundant
+          Array of Inexpensive Disks (RAID), and Networks of Workstations (NOW). Berkeley lists computer
+          architecture, performance, security, and RISC-V among Patterson's research areas.
+        source_ids: [patterson-berkeley]
+      - text: >-
+          At Google, Patterson co-authored the 2017 analysis of the Tensor Processing Unit, a custom
+          chip for neural network inference in Google datacenters, and later papers on TPU v4i, TPU v4,
+          and five generations of Google's training supercomputers through Ironwood. Patterson was also
+          a co-author of the MLPerf Training Benchmark paper and of papers on the carbon footprint and
+          energy use of machine learning.
+        source_ids: [tpu-paper, patterson-berkeley, patterson-google, mlperf-paper]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Patterson has co-authored seven books, including two with John Hennessy. Among them are
+          Computer Architecture: A Quantitative Approach, now in its 7th edition, Computer Organization
+          and Design in a RISC-V edition, and The RISC-V Reader with Andrew Waterman.
+        source_ids: [patterson-google, patterson-berkeley]
+timeline:
+  - date: "1976"
+    text: Completed a PhD in computer science at UCLA and joined UC Berkeley.
+    source_ids: [patterson-berkeley]
+  - date: "2017-04-16"
+    text: Co-authored In-Datacenter Performance Analysis of a Tensor Processing Unit.
+    source_ids: [tpu-paper]
+  - date: "2017"
+    text: Published The RISC-V Reader with Andrew Waterman.
+    source_ids: [patterson-berkeley]
+  - date: "2019-10-02"
+    text: Co-authored the MLPerf Training Benchmark paper, later presented at MLSys 2020.
+    source_ids: [mlperf-paper, patterson-berkeley]
+  - date: "2023"
+    text: Co-authored the ISCA 2023 paper on TPU v4, an optically reconfigurable supercomputer for machine learning.
+    source_ids: [patterson-berkeley]
+  - date: "2026"
+    text: Published the 7th edition of Computer Architecture with John Hennessy and Christos Kozyrakis.
+    source_ids: [patterson-berkeley]
+honors:
+  - name: ACM A.M. Turing Award
+    year: 2017
+    awarded_by: Association for Computing Machinery
+    source_ids: [patterson-google]
+  - name: Charles Stark Draper Prize for Engineering
+    year: 2022
+    awarded_by: National Academy of Engineering
+    source_ids: [patterson-google]
+  - name: IEEE John von Neumann Medal
+    year: null
+    awarded_by: IEEE
+    source_ids: [patterson-berkeley]
+  - name: ACM-IEEE Eckert-Mauchly Award
+    year: null
+    awarded_by: ACM and IEEE Computer Society
+    source_ids: [patterson-berkeley]
+  - name: Member, National Academy of Engineering
+    year: null
+    awarded_by: National Academy of Engineering
+    source_ids: [patterson-berkeley]
+  - name: Member, National Academy of Sciences
+    year: null
+    awarded_by: National Academy of Sciences
+    source_ids: [patterson-berkeley]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: patterson-google
     title: Dave Patterson — Google Research profile
@@ -59,25 +152,25 @@ sources:
     publisher: Google Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: patterson-berkeley
     title: David A. Patterson — Faculty Home Page, Berkeley EECS
     url: https://www2.eecs.berkeley.edu/Faculty/Homepages/patterson.html
     publisher: UC Berkeley EECS
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tpu-paper
     title: In-Datacenter Performance Analysis of a Tensor Processing Unit (arXiv 1704.04760)
     url: https://arxiv.org/abs/1704.04760
     publisher: arXiv
     kind: paper
     published_at: 2017-04-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mlperf-paper
     title: MLPerf Training Benchmark (arXiv 1910.01500)
     url: https://arxiv.org/abs/1910.01500
     publisher: arXiv
     kind: paper
     published_at: 2019-10-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

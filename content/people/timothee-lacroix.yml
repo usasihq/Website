@@ -14,7 +14,7 @@ bio:
     papers, which say the models are released under the Apache 2.0 license, and is listed among the
     authors of Devstral (2025), a paper from Mistral AI and All Hands AI.
   source_ids: [mistral-about, llama-paper, kbc-paper, mistral7b-paper, mixtral-paper, devstral-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Mistral AI
     organization_slug: null
@@ -46,9 +46,57 @@ work:
       (2025), a Mistral AI and All Hands AI paper.
     source_ids: [mistral7b-paper, mixtral-paper, devstral-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Lacroix's early research concerned knowledge base completion. With Nicolas Usunier and Guillaume
+          Obozinski, Lacroix first-authored "Canonical Tensor Decomposition for Knowledge Base Completion" in 2018
+          and a 2020 follow-up on tensor decompositions for temporal knowledge base completion.
+        source_ids: [kbc-paper, tl-temporal]
+      - text: >-
+          Lacroix then turned to large language models and is a co-author of the February 2023 LLaMA paper,
+          whose authors are listed with Meta AI. At Mistral AI, Lacroix co-authored the Mistral 7B and Mixtral of
+          Experts papers, describing models released under the Apache 2.0 license, and the 2025 Devstral paper on
+          fine-tuning language models for coding agents.
+        source_ids: [llama-paper, mistral7b-paper, mixtral-paper, devstral-paper]
+  - heading: Mistral AI
+    paragraphs:
+      - text: >-
+          Mistral AI's about page says the company was founded in April 2023 and lists Lacroix as co-founder and
+          CTO alongside Arthur Mensch, the CEO, and Guillaume Lample, the Chief Science Officer. The page's key
+          dates include the release of the 7B model in September 2023, Mistral Large in February 2024, Mistral
+          Small 3 and a new Le Chat in early 2025, and later products such as Mistral Code, Mistral Compute,
+          Voxtral, Mistral Studio and Forge.
+        source_ids: [mistral-about]
+timeline:
+  - date: "2018-06-19"
+    text: Released "Canonical Tensor Decomposition for Knowledge Base Completion" as first author.
+    source_ids: [kbc-paper]
+  - date: "2020-04-10"
+    text: Released a first-authored paper on tensor decompositions for temporal knowledge base completion.
+    source_ids: [tl-temporal]
+  - date: "2023-02-27"
+    text: Co-authored the LLaMA paper on open and efficient foundation language models.
+    source_ids: [llama-paper]
+  - date: "2023-04"
+    text: Co-founded Mistral AI with Arthur Mensch and Guillaume Lample, becoming its CTO.
+    source_ids: [mistral-about]
+  - date: "2023-09-27"
+    text: Mistral AI released the Mistral 7B model.
+    source_ids: [mistral-about]
+  - date: "2024-01-08"
+    text: Co-authored the Mixtral of Experts paper.
+    source_ids: [mixtral-paper]
+  - date: "2024-02-26"
+    text: Mistral AI released Mistral Large.
+    source_ids: [mistral-about]
+  - date: "2025-08-08"
+    text: Co-authored the Devstral paper on fine-tuning language models for coding agents.
+    source_ids: [devstral-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: mistral-about
     title: Mistral AI — About (founders)
@@ -56,39 +104,46 @@ sources:
     publisher: Mistral AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-paper
     title: "LLaMA: Open and Efficient Foundation Language Models (arXiv 2302.13971), author list and Meta AI affiliation"
     url: https://arxiv.org/abs/2302.13971
     publisher: arXiv
     kind: paper
     published_at: 2023-02-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: kbc-paper
     title: Canonical Tensor Decomposition for Knowledge Base Completion (arXiv 1806.07297)
     url: https://arxiv.org/abs/1806.07297
     publisher: arXiv
     kind: paper
     published_at: 2018-06-19
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mistral7b-paper
     title: Mistral 7B (arXiv 2310.06825)
     url: https://arxiv.org/abs/2310.06825
     publisher: arXiv
     kind: paper
     published_at: 2023-10-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mixtral-paper
     title: Mixtral of Experts (arXiv 2401.04088)
     url: https://arxiv.org/abs/2401.04088
     publisher: arXiv
     kind: paper
     published_at: 2024-01-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: devstral-paper
     title: "Devstral: Fine-tuning Language Models for Coding Agent Applications (arXiv 2509.25193)"
     url: https://arxiv.org/abs/2509.25193
     publisher: arXiv
     kind: paper
     published_at: 2025-08-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: tl-temporal
+    title: Tensor Decompositions for temporal knowledge base completion
+    url: https://arxiv.org/abs/2004.04926
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-04-10
+    accessed_at: 2026-10-21

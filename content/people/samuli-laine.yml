@@ -45,9 +45,66 @@ work:
 links:
   - label: NVIDIA Research
     url: https://research.nvidia.com/person/samuli-laine
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Samuli Laine joined NVIDIA Research in 2007 after completing a PhD at Helsinki University of
+          Technology. NVIDIA's profile says Laine's research has ranged from photorealistic and
+          real-time rendering to voxel-based graphics, GPU ray tracing and 3D content creation, and
+          that Laine now focuses on deep learning and its applications in computer graphics.
+        source_ids: [nvidia-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          With Timo Aila, Laine wrote "Temporal Ensembling for Semi-Supervised Learning" (2016), and
+          Laine was a co-author of Noise2Noise (2018), which trains image restoration networks without
+          clean target images. Laine is also first author of "Modular Primitives for High-Performance
+          Differentiable Rendering" (2020), the paper behind NVIDIA's nvdiffrast, a PyTorch
+          library of primitive operations for rasterization-based differentiable rendering.
+        source_ids: [temporal-ensembling-paper, noise2noise-paper, nvdiffrast-paper, nvdiffrast-readme]
+      - text: >-
+          Laine has co-authored a line of image generation papers with Tero Karras and colleagues:
+          progressive growing of GANs (2017), the style-based generator StyleGAN (2018), StyleGAN2
+          (2019) and the alias-free StyleGAN3 (2021). In diffusion models, Laine co-authored EDM (2022),
+          which maps out the design space of diffusion-based generative models, and EDM2 (2023), which
+          analyzes and improves their training dynamics; the official EDM2 implementation is published
+          in NVIDIA's NVlabs GitHub organization.
+        source_ids: [progan-paper, stylegan-paper, stylegan2-paper, stylegan3-paper, edm-paper, edm2-paper, edm2-readme]
+timeline:
+  - date: "2007"
+    text: Joined NVIDIA Research after a PhD at Helsinki University of Technology.
+    source_ids: [nvidia-profile]
+  - date: "2016-10-07"
+    text: Co-authored "Temporal Ensembling for Semi-Supervised Learning" with Timo Aila.
+    source_ids: [temporal-ensembling-paper]
+  - date: "2017-10-27"
+    text: Co-authored "Progressive Growing of GANs for Improved Quality, Stability, and Variation".
+    source_ids: [progan-paper]
+  - date: "2018-03-12"
+    text: "Co-authored \"Noise2Noise: Learning Image Restoration without Clean Data\"."
+    source_ids: [noise2noise-paper]
+  - date: "2018-12-12"
+    text: Co-authored StyleGAN, a style-based generator architecture for GANs.
+    source_ids: [stylegan-paper]
+  - date: "2019-12-03"
+    text: Co-authored StyleGAN2, "Analyzing and Improving the Image Quality of StyleGAN".
+    source_ids: [stylegan2-paper]
+  - date: "2020-11-06"
+    text: First author of the nvdiffrast paper on modular primitives for differentiable rendering.
+    source_ids: [nvdiffrast-paper]
+  - date: "2021-06-23"
+    text: Co-authored "Alias-Free Generative Adversarial Networks" (StyleGAN3).
+    source_ids: [stylegan3-paper]
+  - date: "2022-06-01"
+    text: Co-authored EDM, "Elucidating the Design Space of Diffusion-Based Generative Models".
+    source_ids: [edm-paper]
+  - date: "2023-12-05"
+    text: Co-authored EDM2, on the training dynamics of diffusion models.
+    source_ids: [edm2-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nvidia-profile
     title: Samuli Laine — NVIDIA Research
@@ -55,53 +112,81 @@ sources:
     publisher: NVIDIA Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvdiffrast-paper
     title: "Modular Primitives for High-Performance Differentiable Rendering (arXiv 2011.03277)"
     url: https://arxiv.org/abs/2011.03277
     publisher: arXiv
     kind: paper
     published_at: 2020-11-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvdiffrast-readme
     title: NVlabs/nvdiffrast README (NVIDIA Source Code License)
     url: https://github.com/NVlabs/nvdiffrast
     publisher: NVlabs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stylegan-paper
     title: "A Style-Based Generator Architecture for Generative Adversarial Networks (arXiv 1812.04948)"
     url: https://arxiv.org/abs/1812.04948
     publisher: arXiv
     kind: paper
     published_at: 2018-12-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stylegan3-paper
     title: "Alias-Free Generative Adversarial Networks (arXiv 2106.12423)"
     url: https://arxiv.org/abs/2106.12423
     publisher: arXiv
     kind: paper
     published_at: 2021-06-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: edm-paper
     title: "Elucidating the Design Space of Diffusion-Based Generative Models (arXiv 2206.00364)"
     url: https://arxiv.org/abs/2206.00364
     publisher: arXiv
     kind: paper
     published_at: 2022-06-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: edm2-paper
     title: "Analyzing and Improving the Training Dynamics of Diffusion Models (arXiv 2312.02696)"
     url: https://arxiv.org/abs/2312.02696
     publisher: arXiv
     kind: paper
     published_at: 2023-12-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: edm2-readme
     title: NVlabs/edm2 README (EDM2 and Autoguidance; CC BY-NC-SA 4.0)
     url: https://github.com/NVlabs/edm2
     publisher: NVlabs (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: temporal-ensembling-paper
+    title: Temporal Ensembling for Semi-Supervised Learning (arXiv 1610.02242)
+    url: https://arxiv.org/abs/1610.02242
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-10-07
+    accessed_at: 2026-10-21
+  - id: progan-paper
+    title: Progressive Growing of GANs for Improved Quality, Stability, and Variation (arXiv 1710.10196)
+    url: https://arxiv.org/abs/1710.10196
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-10-27
+    accessed_at: 2026-10-21
+  - id: noise2noise-paper
+    title: "Noise2Noise: Learning Image Restoration without Clean Data (arXiv 1803.04189)"
+    url: https://arxiv.org/abs/1803.04189
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-03-12
+    accessed_at: 2026-10-21
+  - id: stylegan2-paper
+    title: Analyzing and Improving the Image Quality of StyleGAN (arXiv 1912.04958)
+    url: https://arxiv.org/abs/1912.04958
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-21

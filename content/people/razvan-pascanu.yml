@@ -15,7 +15,7 @@ bio:
     EEML and has helped launch or organize conferences on lifelong learning and on learning on
     graphs.
   source_ids: [homepage, theano-paper, rnn-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: DeepMind (Google DeepMind)
     organization_slug: google-deepmind
@@ -47,9 +47,73 @@ work:
 links:
   - label: Website
     url: https://www.razp.info/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Pascanu earned an MSc at Jacobs University in 2009, supervised by Herbert Jaeger, and a PhD at the
+          University of Montreal in 2014, supervised by Yoshua Bengio. Pascanu was also involved in developing the
+          Theano library, helped write its deep learning tutorials and co-authored a 2012 paper on its new features. Pascanu is now a Research Scientist at DeepMind and an
+          Affiliate Member of Mila, and has co-supervised students jointly with researchers at Johannes Kepler
+          University, Imperial College London and University College London.
+        source_ids: [homepage, theano-paper]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Pascanu's early work dealt with optimization and recurrent networks. Besides the 2012 analysis of
+          exploding and vanishing gradients in RNNs, Pascanu wrote "Revisiting Natural Gradient for Deep
+          Networks" (2013) with Yoshua Bengio and co-authored "On the Number of Linear Regions of Deep Neural
+          Networks" (2014), on how depth affects the functions a network can represent.
+        source_ids: [rnn-paper, natural-gradient-paper, linear-regions-paper, homepage]
+      - text: >-
+          Later research has addressed learning across many tasks, including Progressive Neural
+          Networks (2016) and "Overcoming catastrophic forgetting in neural networks" (2016), as well as graph
+          neural networks through the 2018 paper "Relational inductive biases, deep learning, and graph
+          networks". Returning to recurrent models, Pascanu co-authored "Resurrecting Recurrent Neural Networks
+          for Long Sequences" (2023).
+        source_ids: [homepage, progressive-nets-paper, ewc-paper, graph-networks-paper, lru-paper]
+  - heading: Teaching and community
+    paragraphs:
+      - text: >-
+          Pascanu is one of the organizers of EEML, the Eastern European Machine Learning Summer School, and of
+          the AIRomania community, through which Pascanu has organized RomanianAIDays since 2020 and helped build
+          an AI course for high school students. Pascanu has also helped organize CoLLAs, a conference on
+          lifelong learning, and the Learning on Graphs (LoG) conference.
+        source_ids: [homepage, eeml-site, collas-site, log-site]
+timeline:
+  - date: "2009"
+    text: Completed an MSc at Jacobs University under Herbert Jaeger.
+    source_ids: [homepage]
+  - date: "2012-11"
+    text: Posted "On the difficulty of training Recurrent Neural Networks" as first author with Tomas Mikolov and Yoshua Bengio.
+    source_ids: [rnn-paper]
+  - date: "2012-11"
+    text: Co-authored "Theano - new features and speed improvements".
+    source_ids: [theano-paper]
+  - date: "2013-01"
+    text: Posted "Revisiting Natural Gradient for Deep Networks" with Yoshua Bengio.
+    source_ids: [natural-gradient-paper]
+  - date: "2014"
+    text: Completed a PhD at the University of Montreal under Yoshua Bengio.
+    source_ids: [homepage]
+  - date: "2016-06"
+    text: Co-authored Progressive Neural Networks, on transferring knowledge across a sequence of tasks.
+    source_ids: [progressive-nets-paper]
+  - date: "2016-12"
+    text: Co-authored "Overcoming catastrophic forgetting in neural networks".
+    source_ids: [ewc-paper]
+  - date: "2018-06"
+    text: Co-authored "Relational inductive biases, deep learning, and graph networks".
+    source_ids: [graph-networks-paper]
+  - date: "2020"
+    text: Began organizing RomanianAIDays as part of the AIRomania community.
+    source_ids: [homepage]
+  - date: "2023-03"
+    text: Co-authored "Resurrecting Recurrent Neural Networks for Long Sequences".
+    source_ids: [lru-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Razvan Pascanu — homepage
@@ -57,25 +121,88 @@ sources:
     publisher: Razvan Pascanu
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rnn-paper
     title: "On the difficulty of training Recurrent Neural Networks (arXiv 1211.5063)"
     url: https://arxiv.org/abs/1211.5063
     publisher: arXiv
     kind: paper
     published_at: 2012-11-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: theano-paper
     title: "Theano: new features and speed improvements (arXiv 1211.5590)"
     url: https://arxiv.org/abs/1211.5590
     publisher: arXiv
     kind: paper
     published_at: 2012-11-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: theano-license
     title: Theano/Theano doc/LICENSE.txt (BSD-style, Theano Development Team)
     url: https://github.com/Theano/Theano/blob/master/doc/LICENSE.txt
     publisher: Theano (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: natural-gradient-paper
+    title: "Revisiting Natural Gradient for Deep Networks (arXiv 1301.3584)"
+    url: https://arxiv.org/abs/1301.3584
+    publisher: arXiv
+    kind: paper
+    published_at: 2013-01-16
+    accessed_at: 2026-10-21
+  - id: linear-regions-paper
+    title: "On the Number of Linear Regions of Deep Neural Networks (arXiv 1402.1869)"
+    url: https://arxiv.org/abs/1402.1869
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-02-08
+    accessed_at: 2026-10-21
+  - id: progressive-nets-paper
+    title: "Progressive Neural Networks (arXiv 1606.04671)"
+    url: https://arxiv.org/abs/1606.04671
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-06-15
+    accessed_at: 2026-10-21
+  - id: ewc-paper
+    title: "Overcoming catastrophic forgetting in neural networks (arXiv 1612.00796)"
+    url: https://arxiv.org/abs/1612.00796
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-12-02
+    accessed_at: 2026-10-21
+  - id: graph-networks-paper
+    title: "Relational inductive biases, deep learning, and graph networks (arXiv 1806.01261)"
+    url: https://arxiv.org/abs/1806.01261
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-06-04
+    accessed_at: 2026-10-21
+  - id: lru-paper
+    title: "Resurrecting Recurrent Neural Networks for Long Sequences (arXiv 2303.06349)"
+    url: https://arxiv.org/abs/2303.06349
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-11
+    accessed_at: 2026-10-21
+  - id: eeml-site
+    title: EEML — Eastern European Machine Learning Summer School
+    url: https://www.eeml.eu/
+    publisher: EEML
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: collas-site
+    title: CoLLAs — lifelong learning conference
+    url: https://lifelong-ml.cc/
+    publisher: CoLLAs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: log-site
+    title: Learning on Graphs Conference
+    url: https://logconference.org/
+    publisher: Learning on Graphs Conference
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

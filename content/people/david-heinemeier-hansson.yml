@@ -26,6 +26,16 @@ affiliations:
     role: President
     current: true
     source_ids: [dhh-site]
+  - name: The Rails Foundation
+    organization_slug: null
+    role: Founder and chairman (since 2022)
+    current: true
+    source_ids: [dhh-site]
+  - name: Shopify
+    organization_slug: null
+    role: Member of the Board of Directors (since November 2024)
+    current: true
+    source_ids: [dhh-site]
 work:
   - name: Omarchy
     artifact_slug: null
@@ -67,9 +77,68 @@ links:
     url: https://github.com/dhh
   - label: Omarchy
     url: https://omarchy.org/
+sections:
+  - heading: Ruby on Rails and 37signals
+    paragraphs:
+      - text: >-
+          Heinemeier Hansson created the Ruby on Rails web framework in 2003. Basecamp, the project management
+          application launched by 37signals in 2004, was the original Rails application. In 2022 Heinemeier
+          Hansson started The Rails Foundation, which works on documentation, education, marketing and events
+          for the Rails ecosystem, and serves as its chairman.
+        source_ids: [dhh-site]
+      - text: >-
+          Heinemeier Hansson owns 37signals together with Jason Fried. The company makes Basecamp and the HEY
+          email service, launched in 2020, as well as other products such as Highrise, Campfire, Fizzy and the
+          ONCE line of self-hosted software including Writebook. Since November 2024 Heinemeier Hansson has also
+          served on the board of directors of Shopify.
+        source_ids: [dhh-site]
+  - heading: Omarchy and local AI
+    paragraphs:
+      - text: >-
+          Omarchy is an opinionated Linux system that Heinemeier Hansson created, released under the MIT License
+          and incubated at 37signals. Its manual includes a section on running local language models with tools
+          such as LM Studio and Ollama, and its Install menu offers these tools along with agent applications.
+          In 2026 Heinemeier Hansson started the Omacom Foundation, a nonprofit that holds Omarchy's trademarks,
+          funds its infrastructure and supports the open-source projects it depends on, and serves as its
+          president.
+        source_ids: [dhh-site, omarchy-site, omarchy-license, omarchy-ai-manual, omarchy-menu]
+      - text: >-
+          In September 2026 the Omacom Foundation announced that it would be the premier sponsor of 0xSero's work
+          on local AI through Sybil Solutions, with the goal of making local models work well on Omarchy without
+          extra setup.
+        source_ids: [omarchy-0xsero-announcement]
+  - heading: Writing
+    paragraphs:
+      - text: >-
+          With Jason Fried, Heinemeier Hansson has written four books drawn from running 37signals: Getting Real,
+          on building Basecamp and an early software business; REWORK, on starting and running businesses; REMOTE:
+          Office Not Required, on remote work; and It Doesn't Have To Be Crazy At Work, on running a calm company.
+        source_ids: [dhh-site]
+timeline:
+  - date: "2003"
+    text: Created the Ruby on Rails web framework.
+    source_ids: [dhh-site]
+  - date: "2004"
+    text: 37signals launched Basecamp, the original Ruby on Rails application.
+    source_ids: [dhh-site]
+  - date: "2020"
+    text: 37signals launched the HEY email service.
+    source_ids: [dhh-site]
+  - date: "2022"
+    text: Started The Rails Foundation and became its chairman.
+    source_ids: [dhh-site]
+  - date: "2024-11"
+    text: Joined the board of directors of Shopify.
+    source_ids: [dhh-site]
+  - date: "2026"
+    text: Started the Omacom Foundation, a nonprofit supporting Omarchy, and became its president.
+    source_ids: [dhh-site]
+  - date: "2026-09-23"
+    text: Announced the Omacom Foundation's sponsorship of 0xSero's local AI work for Omarchy.
+    source_ids: [omarchy-0xsero-announcement]
 publication_status: published
-updated_at: 2026-10-01
-last_reviewed: 2026-10-01
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: dhh-site
     title: David Heinemeier Hansson — personal site (projects and roles)
@@ -77,53 +146,53 @@ sources:
     publisher: David Heinemeier Hansson
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: omarchy-site
     title: Omarchy
     url: https://omarchy.org/
     publisher: Omarchy
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: omarchy-ai-manual
     title: Omarchy manual — AI (including Local LLMs)
     url: https://github.com/omacom/omarchy/blob/quattro/manual/17-ai.md
     publisher: Omarchy (GitHub)
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: omarchy-license
     title: Omarchy LICENSE (MIT)
     url: https://github.com/omacom/omarchy/blob/quattro/LICENSE
     publisher: Omarchy (GitHub)
     kind: license
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: omarchy-menu
     title: Omarchy menu definitions (Install > AI entries)
     url: https://github.com/omacom/omarchy/blob/quattro/default/omarchy/omarchy-menu.jsonc
     publisher: Omarchy (GitHub)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: omarchy-remove-ollama
     title: omarchy-remove-ai-ollama script
     url: https://github.com/omacom/omarchy/blob/quattro/bin/omarchy-remove-ai-ollama
     publisher: Omarchy (GitHub)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
   - id: omarchy-0xsero-announcement
     title: Omacom Foundation to be premier sponsor of 0xSero's work on local AI
     url: https://omarchy.org/news/2026/09/omacom-foundation-to-be-premier-sponsor-of-0xsero/
     publisher: Omarchy (by DHH)
     kind: announcement
     published_at: 2026-09-23
-    accessed_at: 2026-10-01
-    reviewed_at: 2026-10-01
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

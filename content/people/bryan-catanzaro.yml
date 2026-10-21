@@ -18,7 +18,7 @@ bio:
     openly. Before NVIDIA, Catanzaro worked at Baidu on systems for training and deploying
     end-to-end deep learning speech recognition.
   source_ids: [nvidia-blog-author, nvidia-dev-author, gtc-berlin-2026, cudnn-paper, megatron-paper, nemotron3-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: NVIDIA
     organization_slug: nvidia
@@ -60,14 +60,87 @@ work:
       BLAS-like library of optimized deep learning routines for GPUs; NVIDIA's developer blog says
       Catanzaro's research at NVIDIA led to the creation of cuDNN.
     source_ids: [cudnn-paper, nvidia-dev-author]
+  - name: Deep Speech 2
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1512.02595
+    contribution: >-
+      Co-author of "Deep Speech 2: End-to-End Speech Recognition in English and Mandarin" (2015), from
+      the period when Catanzaro worked at Baidu on end-to-end deep learning speech recognition.
+    source_ids: [deepspeech2-paper, nvidia-dev-author]
 links:
   - label: NVIDIA Blog author page
     url: https://blogs.nvidia.com/blog/author/bcatanzaro/
   - label: NVIDIA Technical Blog author page
     url: https://developer.nvidia.com/blog/author/bcatanzaro/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Bryan Catanzaro earned a PhD in Electrical Engineering and Computer Sciences at the University
+          of California, Berkeley, focusing on parallel computing, machine learning, and programming
+          models. NVIDIA's blogs say Catanzaro's research at NVIDIA led to the creation of the cuDNN
+          library. The developer blog adds that, prior to NVIDIA, Catanzaro worked at Baidu on systems
+          for training and deploying end-to-end deep learning speech recognition.
+        source_ids: [nvidia-blog-author, nvidia-dev-author]
+      - text: >-
+          As Vice President of Applied Deep Learning Research at NVIDIA, Catanzaro leads a team applying
+          deep learning to areas from language understanding and video games to computer graphics and
+          chip design, and helped lead the team that invented DLSS 2.0. NVIDIA's GTC session listings for
+          October 2026 include a talk by Catanzaro on building open models that developers can inspect,
+          adapt, and deploy.
+        source_ids: [nvidia-dev-author, nvidia-blog-author, gtc-berlin-2026]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Catanzaro co-authored the 2014 cuDNN paper, which describes a library of optimized deep
+          learning primitives for GPUs, and the 2015 Deep Speech 2 paper on end-to-end speech recognition
+          in English and Mandarin.
+        source_ids: [cudnn-paper, deepspeech2-paper]
+      - text: >-
+          Catanzaro's language model work includes the 2019 Megatron-LM paper on intra-layer model
+          parallelism and the 2021 paper on efficient large-scale training on GPU clusters with
+          Megatron-LM. Catanzaro also wrote NVIDIA technical blog posts on Megatron, including one on
+          scaling training to a trillion parameters, and a 2023 post introducing NeMo Data Curator for
+          building trillion-token datasets.
+        source_ids: [megatron-paper, megatron-readme, megatron-scale-paper, nvidia-dev-author]
+  - heading: Open models
+    paragraphs:
+      - text: >-
+          In 2025 Catanzaro wrote a series of NVIDIA blog posts on the company's open models and data,
+          including the September post on how Nemotron models, datasets, and techniques are shared, an
+          October post on open models for language, biology, and robotics, and a December post on open
+          model development announced at NeurIPS. Catanzaro is also listed in the leadership credits of
+          the December 2025 Nemotron 3 white paper.
+        source_ids: [nvidia-blog-author, nemotron3-paper]
+timeline:
+  - date: "2014-10-03"
+    text: Co-authored "cuDNN, Efficient Primitives for Deep Learning."
+    source_ids: [cudnn-paper]
+  - date: "2015-12-08"
+    text: Co-authored the Deep Speech 2 paper on end-to-end speech recognition.
+    source_ids: [deepspeech2-paper]
+  - date: "2019-09-17"
+    text: Co-authored the Megatron-LM paper on training multi-billion-parameter language models.
+    source_ids: [megatron-paper]
+  - date: "2021-04-09"
+    text: Co-authored "Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM."
+    source_ids: [megatron-scale-paper]
+  - date: "2023-08-08"
+    text: Wrote the NVIDIA technical blog post introducing NeMo Data Curator.
+    source_ids: [nvidia-dev-author]
+  - date: "2025-10-28"
+    text: Wrote NVIDIA's post on open models and data for language, biology, and robotics.
+    source_ids: [nvidia-blog-author]
+  - date: "2025-12-01"
+    text: Wrote NVIDIA's post on open model development for digital and physical AI at NeurIPS.
+    source_ids: [nvidia-blog-author]
+  - date: "2025-12"
+    text: Listed in the leadership credits of the NVIDIA Nemotron 3 white paper.
+    source_ids: [nemotron3-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nvidia-blog-author
     title: Bryan Catanzaro — NVIDIA Blog author page
@@ -75,46 +148,60 @@ sources:
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvidia-dev-author
     title: Bryan Catanzaro — NVIDIA Technical Blog author page
     url: https://developer.nvidia.com/blog/author/bcatanzaro/
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gtc-berlin-2026
     title: GTC Berlin AI Conference, 20–22 October 2026 (speakers and sessions)
     url: https://www.nvidia.com/en-eu/gtc/
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cudnn-paper
     title: "cuDNN: Efficient Primitives for Deep Learning (arXiv 1410.0759)"
     url: https://arxiv.org/abs/1410.0759
     publisher: arXiv
     kind: paper
     published_at: 2014-10-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: megatron-paper
     title: "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism (arXiv 1909.08053)"
     url: https://arxiv.org/abs/1909.08053
     publisher: arXiv
     kind: paper
     published_at: 2019-09-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: megatron-readme
     title: NVIDIA/Megatron-LM README (citation section)
     url: https://github.com/NVIDIA/Megatron-LM/blob/main/README.md
     publisher: NVIDIA (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nemotron3-paper
     title: "NVIDIA Nemotron 3: Efficient and Open Intelligence (white paper, contributors list)"
     url: https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3-White-Paper.pdf
     publisher: NVIDIA
     kind: paper
     published_at: 2025-12-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: deepspeech2-paper
+    title: "Deep Speech 2: End-to-End Speech Recognition in English and Mandarin"
+    url: https://arxiv.org/abs/1512.02595
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-12-08
+    accessed_at: 2026-10-21
+  - id: megatron-scale-paper
+    title: Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM
+    url: https://arxiv.org/abs/2104.04473
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-04-09
+    accessed_at: 2026-10-21

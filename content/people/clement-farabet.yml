@@ -16,7 +16,7 @@ bio:
     supercomputer. Farabet is also named, with NYU, among the copyright holders of the Torch7 machine
     learning library.
   source_ids: [gemma3-blog, gemma4-blog, gemma4-report, gemma-report, gemma2-report, gemma3-report, nvidia-blog, torch7-copyright]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
@@ -50,9 +50,57 @@ work:
 links:
   - label: GitHub
     url: https://github.com/clementfarabet
+sections:
+  - heading: Research and open-source work
+    paragraphs:
+      - text: >-
+          Farabet's early research, with Camille Couprie, Laurent Najman and Yann LeCun, applied multiscale
+          convolutional networks to scene parsing, labeling every pixel of an image with the category of the
+          object it belongs to. A 2013 follow-up extended the approach to indoor scenes using depth information.
+        source_ids: [scene-parsing-paper, indoor-paper]
+      - text: >-
+          Farabet is named with NYU among the copyright holders of Torch7, a machine learning library whose C
+          backend libraries were later extended and rewritten in the ATen C++11 library. Farabet's GitHub profile also hosts companion projects such as
+          torch-ios, a port of Torch7 to iOS, and gfx.js, a browser-based graphics backend with a Torch7 client.
+        source_ids: [torch7-copyright, torch7-readme, github-profile]
+  - heading: Career
+    paragraphs:
+      - text: >-
+          In a 2022 NVIDIA blog post, Farabet was introduced as NVIDIA's vice president of AI infrastructure,
+          with experience that included building Twitter's AI machine. At NVIDIA, Farabet designed a scalable
+          data factory on the SaturnV supercomputer for training neural networks used in autonomous-vehicle
+          development.
+        source_ids: [nvidia-blog]
+      - text: >-
+          At Google DeepMind, Farabet holds the title of VP of Research and has co-signed the launch posts for
+          Gemma 3 and Gemma 4. Farabet appears among the sponsors of the Gemma, Gemma 2 and Gemma 3 technical
+          reports and among the core contributors of the Gemma 4 report.
+        source_ids: [gemma3-blog, gemma4-blog, gemma-report, gemma2-report, gemma3-report, gemma4-report]
+timeline:
+  - date: "2012-02"
+    text: Posted "Scene Parsing with Multiscale Feature Learning, Purity Trees, and Optimal Covers" as first author.
+    source_ids: [scene-parsing-paper]
+  - date: "2013-01"
+    text: Co-authored "Indoor Semantic Segmentation using depth information" with Camille Couprie, Laurent Najman and Yann LeCun.
+    source_ids: [indoor-paper]
+  - date: "2022"
+    text: Was introduced by NVIDIA as its vice president of AI infrastructure.
+    source_ids: [nvidia-blog]
+  - date: "2024-03"
+    text: Listed among the sponsors of the first Gemma technical report.
+    source_ids: [gemma-report]
+  - date: "2025-03-12"
+    text: Co-authored Google's launch post for Gemma 3 as VP of Research at Google DeepMind.
+    source_ids: [gemma3-blog]
+  - date: "2026-04-02"
+    text: Co-authored Google's launch post for Gemma 4, released under the Apache 2.0 license.
+    source_ids: [gemma4-blog]
+  - date: "2026-07"
+    text: Listed among the core contributors of the Gemma 4 Technical Report.
+    source_ids: [gemma4-report]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gemma3-blog
     title: Introducing Gemma 3 (Google blog launch post, byline VP of Research, Google DeepMind)
@@ -60,60 +108,81 @@ sources:
     publisher: Google
     kind: announcement
     published_at: 2025-03-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma4-blog
     title: Gemma 4 (Google blog launch post, byline VP of Research, Google DeepMind; Apache 2.0 license)
     url: https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/
     publisher: Google
     kind: announcement
     published_at: 2026-04-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma4-report
     title: Gemma 4 Technical Report (arXiv 2607.02770), core contributor list
     url: https://arxiv.org/abs/2607.02770
     publisher: arXiv
     kind: paper
     published_at: 2026-07-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma-report
     title: "Gemma: Open Models Based on Gemini Research and Technology (arXiv 2403.08295), contributor list"
     url: https://arxiv.org/abs/2403.08295
     publisher: arXiv
     kind: paper
     published_at: 2024-03-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma2-report
     title: "Gemma 2: Improving Open Language Models at a Practical Size (arXiv 2408.00118), contributor list"
     url: https://arxiv.org/abs/2408.00118
     publisher: arXiv
     kind: paper
     published_at: 2024-07-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma3-report
     title: Gemma 3 Technical Report (arXiv 2503.19786), contributor list
     url: https://arxiv.org/abs/2503.19786
     publisher: arXiv
     kind: paper
     published_at: 2025-03-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvidia-blog
     title: "Music to the Gears: NVIDIA's Clément Farabet on Orchestrating AI Training for Autonomous Vehicles (NVIDIA blog)"
     url: https://blogs.nvidia.com/blog/clement-farabet-ai-training-av/
     publisher: NVIDIA
     kind: official-page
     published_at: 2022-08-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: torch7-copyright
     title: torch/torch7 COPYRIGHT.txt (BSD-style license and copyright holders)
     url: https://github.com/torch/torch7/blob/master/COPYRIGHT.txt
     publisher: torch (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: clementfarabet (Clement Farabet) on GitHub
     url: https://github.com/clementfarabet
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: scene-parsing-paper
+    title: Scene Parsing with Multiscale Feature Learning, Purity Trees, and Optimal Covers (arXiv 1202.2160)
+    url: https://arxiv.org/abs/1202.2160
+    publisher: arXiv
+    kind: paper
+    published_at: 2012-02-10
+    accessed_at: 2026-10-21
+  - id: indoor-paper
+    title: Indoor Semantic Segmentation using depth information (arXiv 1301.3572)
+    url: https://arxiv.org/abs/1301.3572
+    publisher: arXiv
+    kind: paper
+    published_at: 2013-01-16
+    accessed_at: 2026-10-21
+  - id: torch7-readme
+    title: torch/torch7 README (development status)
+    url: https://github.com/torch/torch7
+    publisher: Torch (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

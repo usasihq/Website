@@ -107,10 +107,19 @@ export function locationLabel(places: string[], all = false): string | null {
 
 const employerFor = (p: JobPage) => (p.job.source_type === "usajobs" && p.job.department ? p.job.department : shortOrg(p.org.name));
 
+/** Compact yearly USD pay for titles: "$200K–$300K". Other currencies stay out of the title. */
+export function titlePay(job: Pick<Job, "salaries">): string | null {
+  const s = job.salaries.find((x) => x.currency === "USD" && x.period === "year" && (x.min !== null || x.max !== null));
+  if (!s) return null;
+  const k = (v: number) => `$${Math.round(v / 1000)}K`;
+  if (s.min !== null && s.max !== null) return `${k(s.min)}–${k(s.max)}`;
+  return k((s.min ?? s.max)!);
+}
+
 /**
- * Title candidates, best first: "{Title} at {Employer} ({place})", then shorter forms (first place
- * only, no place, no employer). `allPlaces` lists every place (to tell apart same-titled postings);
- * `ref` (a requisition or posting ID) is appended when even that does not.
+ * Title candidates, best first: "{Title} at {Employer} ({place}, {pay})", then shorter forms
+ * (no pay, first place only, no place, no employer). `allPlaces` lists every place (to tell
+ * apart same-titled postings); `ref` (a requisition or posting ID) is appended when even that does not.
  */
 function titleCandidates(p: JobPage, allPlaces = false, ref: string | null = null): string[] {
   const t = p.job.title.trim().replace(/\s+/g, " ");
@@ -118,9 +127,13 @@ function titleCandidates(p: JobPage, allPlaces = false, ref: string | null = nul
   const places = titlePlaces(p.job);
   const label = locationLabel(places, allPlaces);
   const first = places[0] ?? null;
+  const pay = titlePay(p.job);
+  const placePay = label && pay ? `${label}, ${pay}` : pay ?? null;
   const tail = ref ? ` · ${ref}` : "";
   const atOrg = ` at ${org}`;
   const forms = [
+    placePay ? `${t}${atOrg} (${placePay})` : null,
+    label && pay && first && places.length > 1 && !allPlaces ? `${t}${atOrg} (${first}, ${pay})` : null,
     label ? `${t}${atOrg} (${label})` : null,
     first && places.length > 1 && !allPlaces ? `${t}${atOrg} (${first} +${places.length - 1})` : null,
     first && places.length > 1 ? `${t}${atOrg} (${first})` : null,
@@ -139,8 +152,8 @@ function titleCandidates(p: JobPage, allPlaces = false, ref: string | null = nul
 const firstFitting = (forms: string[]) => forms.find((f) => f.length <= TITLE_LIMIT) ?? forms[forms.length - 1];
 
 /**
- * The page title: "{Title} at {Employer} ({City, ST} | Remote | "+N locations")", at most about 70
- * characters, shortened by dropping parts (extra places, the place, the employer) and only then
+ * The page title: "{Title} at {Employer} ({City, ST} | Remote, $pay)", at most about 70
+ * characters, shortened by dropping parts (pay, extra places, the place, the employer) and only then
  * by cutting the job title at a word. assignTitleSuffixes makes titles at one employer distinct.
  */
 export function jobPageTitle(p: JobPage): string {

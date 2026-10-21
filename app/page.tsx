@@ -26,8 +26,9 @@ import { siteConfig } from "@/lib/site-config";
 import { CATALOG_DATASET_ID, HF_DATASET_URL } from "@/lib/structured-data";
 
 export const metadata = pageMetadata({
+  title: "U.S. AI jobs, people, and news",
   description:
-    "Independent, sourced directory of U.S. AI organizations and U.S.-led open models and tools: what they build, what's available, and the original sources.",
+    "Independent directory of U.S. AI jobs, people, companies, and sourced news: open roles, profiles, and catalog updates. Not a United States government website.",
   path: "/",
 });
 

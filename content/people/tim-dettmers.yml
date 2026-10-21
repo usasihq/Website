@@ -7,12 +7,11 @@ specialties: [training-systems, inference]
 headline: Creator and maintainer of bitsandbytes; Assistant Professor at CMU and Research Scientist at Ai2
 bio:
   text: >-
-    Tim Dettmers works on making AI models practical to train and use with modest compute. He
-    created and maintains bitsandbytes, a PyTorch library for k-bit quantization that provides
-    8-bit optimizers, LLM.int8() inference, and support for QLoRA fine-tuning. He is first author
-    of the QLoRA paper, which fine-tunes a frozen 4-bit quantized model through low-rank adapters
-    and reports fine-tuning a 65B-parameter model on a single 48GB GPU. He is an Assistant
-    Professor at Carnegie Mellon University and a Research Scientist at Ai2.
+    Tim Dettmers works on making AI models practical to train and use with modest compute. Dettmers
+    created and maintains bitsandbytes, a PyTorch library for k-bit quantization that provides 8-bit
+    optimizers, LLM.int8() inference and support for QLoRA fine-tuning, and is first author of the QLoRA
+    paper, which fine-tunes a frozen 4-bit quantized model through low-rank adapters. Dettmers is an
+    Assistant Professor at Carnegie Mellon University and a Research Scientist at Ai2.
   source_ids: [about, bnb-repo, qlora-paper, cmu]
 affiliations:
   - name: Carnegie Mellon University
@@ -30,7 +29,7 @@ work:
     artifact_slug: null
     url: https://github.com/bitsandbytes-foundation/bitsandbytes
     contribution: >-
-      Created the library and maintains it; its README cites his papers for the 8-bit optimizers,
+      Created the library and maintains it; its README cites Dettmers's papers for the 8-bit optimizers,
       LLM.int8(), and QLoRA features.
     source_ids: [about, cmu, bnb-repo]
   - name: QLoRA
@@ -45,9 +44,76 @@ links:
     url: https://timdettmers.com/
   - label: CMU faculty page
     url: https://www.csd.cs.cmu.edu/people/faculty/tim-dettmers
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Tim Dettmers completed a PhD at the University of Washington advised by Luke Zettlemoyer. Dettmers is
+          now an assistant professor at Carnegie Mellon University and a research scientist at the Allen
+          Institute for AI, with the stated goal of making AI accessible enough that anyone can tinker with
+          it, learn from it and use it in their own work.
+        source_ids: [about, cmu, ai2-team]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Dettmers's research holds that computationally efficient methods accelerate progress in deep
+          learning. First-author papers include 8-bit optimizers via block-wise quantization (2021),
+          LLM.int8() for 8-bit matrix multiplication in large Transformers (2022), QLoRA for fine-tuning
+          4-bit quantized models through low-rank adapters (2023), and SpQR, a sparse-quantized format for
+          near-lossless weight compression (2023).
+        source_ids: [about, eightbit-paper, int8-paper, qlora-paper, spqr-paper]
+      - text: >-
+          Dettmers also co-authored Petals (2022), a system for collaborative inference and fine-tuning of
+          large models over the internet. Current interests listed by Dettmers include open-source agents,
+          on-device mixture-of-experts models, hierarchical LLM architectures and scientific automation.
+        source_ids: [petals-paper, about]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Dettmers created and maintains bitsandbytes, a PyTorch library that brings these quantization methods
+          to practitioners. Its README describes k-bit quantization support including 8-bit optimizers,
+          LLM.int8() inference and 4-bit quantization for QLoRA fine-tuning.
+        source_ids: [about, bnb-repo]
+timeline:
+  - date: "2021-10"
+    text: Posted "8-bit Optimizers via Block-wise Quantization" as first author.
+    source_ids: [eightbit-paper]
+  - date: "2022-08"
+    text: Posted LLM.int8(), 8-bit matrix multiplication for Transformers at scale, as first author.
+    source_ids: [int8-paper]
+  - date: "2022-09"
+    text: Co-authored Petals, a system for collaborative inference and fine-tuning of large models.
+    source_ids: [petals-paper]
+  - date: "2023-05"
+    text: Posted QLoRA, efficient fine-tuning of quantized language models, as first author.
+    source_ids: [qlora-paper]
+  - date: "2023-06"
+    text: Posted SpQR, a sparse-quantized representation for LLM weight compression, as first author.
+    source_ids: [spqr-paper]
+honors:
+  - name: Google Open Source Award
+    year: 2023
+    awarded_by: Google
+    source_ids: [about]
+  - name: PyTorch Foundation Award
+    year: 2023
+    awarded_by: PyTorch Foundation
+    source_ids: [about]
+  - name: Madrona Prize
+    year: 2023
+    awarded_by: Madrona Venture Group
+    source_ids: [about]
+  - name: AI2050 Early Career Fellow
+    year: 2024
+    awarded_by: Schmidt Sciences
+    source_ids: [about]
+  - name: Google ML and Systems Junior Faculty Award
+    year: 2025
+    awarded_by: Google
+    source_ids: [about]
 publication_status: published
-updated_at: 2026-09-29
-last_reviewed: 2026-09-29
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: about
     title: About Me — Tim Dettmers
@@ -55,32 +121,60 @@ sources:
     publisher: Tim Dettmers
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: cmu
     title: Tim Dettmers — Carnegie Mellon University Computer Science Department
     url: https://www.csd.cs.cmu.edu/people/faculty/tim-dettmers
     publisher: Carnegie Mellon University
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: ai2-team
     title: Ai2 team page
     url: https://allenai.org/team
     publisher: Ai2
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: bnb-repo
     title: bitsandbytes (GitHub repository README)
     url: https://github.com/bitsandbytes-foundation/bitsandbytes
     publisher: bitsandbytes-foundation
     kind: repository
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: qlora-paper
     title: "QLoRA: Efficient Finetuning of Quantized LLMs (arXiv 2305.14314)"
     url: https://arxiv.org/abs/2305.14314
     publisher: arXiv
     kind: paper
     published_at: 2023-05-23
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
+  - id: eightbit-paper
+    title: "8-bit Optimizers via Block-wise Quantization (arXiv 2110.02861)"
+    url: https://arxiv.org/abs/2110.02861
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-10-06
+    accessed_at: 2026-10-21
+  - id: int8-paper
+    title: "LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale (arXiv 2208.07339)"
+    url: https://arxiv.org/abs/2208.07339
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-08-15
+    accessed_at: 2026-10-21
+  - id: petals-paper
+    title: "Petals: Collaborative Inference and Fine-tuning of Large Models (arXiv 2209.01188)"
+    url: https://arxiv.org/abs/2209.01188
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-02
+    accessed_at: 2026-10-21
+  - id: spqr-paper
+    title: "SpQR: A Sparse-Quantized Representation for Near-Lossless LLM Weight Compression (arXiv 2306.03078)"
+    url: https://arxiv.org/abs/2306.03078
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-06-05
+    accessed_at: 2026-10-21
