@@ -10,6 +10,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { getCatalog } from "../lib/catalog";
 import { renderJobPage, type PageShell } from "../lib/jobs/job-page-html";
+import { renderLlmsTxt } from "../lib/llms-txt";
 import { jobPages, similarJobs } from "../lib/jobs/job-pages";
 import { CITY_SLUG_ALIASES } from "../lib/jobs/geo";
 import { stateSlug } from "../lib/places";
@@ -73,4 +74,12 @@ ${shell.links}</head>
 <body><main class="container-page py-16"><p>This page moved to <a class="link" href="${asset(target)}">${target}</a>.</p></main></body></html>
 `);
   console.log(`job-pages: ${oldSlug} now points to ${target}`);
+}
+
+// /llms.txt: rewrite whatever Next emitted so the file is always a markdown
+// document at the site root (not a directory), using the current sitemap sections.
+{
+  const llmsPath = path.join(out, "llms.txt");
+  if (fs.existsSync(llmsPath) && fs.lstatSync(llmsPath).isDirectory()) fs.rmSync(llmsPath, { recursive: true });
+  fs.writeFileSync(llmsPath, renderLlmsTxt(getCatalog()));
 }

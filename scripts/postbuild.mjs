@@ -79,6 +79,7 @@ for (const file of htmlFiles) {
 
 const required = [
   "index.html",
+  "llms.txt",
   "404.html",
   "sitemap.xml",
   "sitemap-pages.xml",
@@ -109,6 +110,13 @@ const required = [
 ];
 for (const rel of required) {
   if (!fs.existsSync(path.join(out, rel))) failures.push(`missing ${rel}`);
+}
+
+{
+  const llms = fs.existsSync(path.join(out, "llms.txt")) ? fs.readFileSync(path.join(out, "llms.txt"), "utf8") : "";
+  if (llms && (!llms.startsWith("# ") || !llms.includes("> ") || !llms.includes("https://") || !llms.includes("/jobs/index/"))) {
+    failures.push("llms.txt is missing the title, summary, absolute URLs, or /jobs/index/");
+  }
 }
 
 {
