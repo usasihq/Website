@@ -14,7 +14,7 @@ bio:
     profile. Watson's GitHub profile lists
     Google as their company and pins the keras-hub, keras, keras-cv, and keras-io repositories.
   source_ids: [kerashub-guide, kerashub-repo, github-profile]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -34,9 +34,39 @@ work:
 links:
   - label: GitHub
     url: https://github.com/mattdangerw
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Watson is named among the authors in the KerasHub README's citation entry. KerasHub is a library of
+          pretrained models built as an extension of the core Keras API and released under the Apache-2.0
+          license. Watson's GitHub profile pins the keras-hub, keras, keras-cv and keras-io repositories.
+        source_ids: [kerashub-repo, github-profile]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Watson has written several tutorials on keras.io. These include "Pretraining a Transformer from
+          scratch with KerasHub," created in April 2022, and "Getting Started with KerasHub," co-written with
+          Jonathan Bischof and created in December 2022. With Abheesht Sharma, Watson wrote a 2023 example on
+          parameter-efficient fine-tuning of GPT-2 with LoRA, and with Samaneh Saadat a 2024 guide to uploading
+          KerasHub models.
+        source_ids: [mw-pretraining, kerashub-guide, mw-lora, mw-upload]
+timeline:
+  - date: "2022-04-18"
+    text: Wrote the keras.io guide on pretraining a Transformer from scratch with KerasHub.
+    source_ids: [mw-pretraining]
+  - date: "2022-12"
+    text: Co-wrote the "Getting Started with KerasHub" guide with Jonathan Bischof.
+    source_ids: [kerashub-guide]
+  - date: "2023-05-27"
+    text: Co-wrote a Keras example on parameter-efficient fine-tuning of GPT-2 with LoRA.
+    source_ids: [mw-lora]
+  - date: "2024-04-29"
+    text: Co-wrote the keras.io guide to uploading KerasHub models.
+    source_ids: [mw-upload]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: kerashub-guide
     title: Getting Started with KerasHub (keras.io)
@@ -44,18 +74,39 @@ sources:
     publisher: Keras
     kind: documentation
     published_at: 2022-12-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: kerashub-repo
     title: keras-team/keras-hub README ("Citing KerasHub" author list; Apache-2.0 license)
     url: https://github.com/keras-team/keras-hub
     publisher: keras-team (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: mattdangerw (Matt Watson) on GitHub
     url: https://github.com/mattdangerw
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: mw-pretraining
+    title: Pretraining a Transformer from scratch with KerasHub
+    url: https://keras.io/keras_hub/guides/transformer_pretraining/
+    publisher: Keras
+    kind: documentation
+    published_at: 2022-04-18
+    accessed_at: 2026-10-21
+  - id: mw-upload
+    title: Uploading Models with KerasHub
+    url: https://keras.io/keras_hub/guides/upload/
+    publisher: Keras
+    kind: documentation
+    published_at: 2024-04-29
+    accessed_at: 2026-10-21
+  - id: mw-lora
+    title: Parameter-efficient fine-tuning of GPT-2 with LoRA
+    url: https://keras.io/examples/nlp/parameter_efficient_finetuning_of_gpt2_with_lora/
+    publisher: Keras
+    kind: documentation
+    published_at: 2023-05-27
+    accessed_at: 2026-10-21

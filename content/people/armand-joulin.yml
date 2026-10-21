@@ -57,9 +57,72 @@ work:
       references of the MIT-licensed fastText repository (archived in 2024).
     source_ids: [fasttext-repo, fasttext-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Armand Joulin's work at Facebook AI Research included efficient text representation and
+          classification. Joulin was first author of "Bag of Tricks for Efficient Text Classification"
+          and "FastText.zip: Compressing text classification models" in 2016, and co-author with Piotr
+          Bojanowski, Edouard Grave and Tomas Mikolov of "Enriching Word Vectors with Subword
+          Information", the papers behind the fastText library.
+        source_ids: [fasttext-paper, fasttext-zip-paper, subword-paper, fasttext-repo]
+      - text: >-
+          Joulin also worked on self-supervised learning for computer vision. With Mathilde Caron and
+          others, Joulin co-authored SwAV (2020), which learns visual features by contrasting cluster
+          assignments, and DINO (2021), which studied the properties of self-supervised Vision
+          Transformers. Joulin is also a co-author of the 2023 DINOv2 paper on learning visual
+          features without supervision.
+        source_ids: [swav-paper, dino-paper, dinov2-paper]
+  - heading: Open models
+    paragraphs:
+      - text: >-
+          Joulin co-authored "LLaMA: Open and Efficient Foundation Language Models" (2023), written at
+          Meta AI, whose abstract says the models were released to the research community. At Google
+          DeepMind, Joulin appears among the leads of the first Gemma report in March 2024 and as the
+          lead of the Gemma 2 (2024) and Gemma 3 (2025) technical reports.
+        source_ids: [llama-paper, gemma-report, gemma2-report, gemma3-report]
+      - text: >-
+          The Gemma 4 Technical Report, submitted in July 2026, lists Joulin among its core
+          contributors and says the Gemma 4 models are released under an Apache 2.0 license.
+        source_ids: [gemma4-report]
+timeline:
+  - date: "2016-07-06"
+    text: First author of "Bag of Tricks for Efficient Text Classification", the fastText classification paper.
+    source_ids: [fasttext-paper]
+  - date: "2016-07-15"
+    text: Co-authored "Enriching Word Vectors with Subword Information" with Bojanowski, Grave and Mikolov.
+    source_ids: [subword-paper]
+  - date: "2016-12-12"
+    text: First author of "FastText.zip", on compressing text classification models.
+    source_ids: [fasttext-zip-paper]
+  - date: "2020-06-17"
+    text: Co-authored SwAV, a self-supervised method that contrasts cluster assignments of image features.
+    source_ids: [swav-paper]
+  - date: "2021-04-29"
+    text: Co-authored DINO, "Emerging Properties in Self-Supervised Vision Transformers".
+    source_ids: [dino-paper]
+  - date: "2023-02-27"
+    text: Co-authored the LLaMA foundation language model paper at Meta AI.
+    source_ids: [llama-paper]
+  - date: "2023-04-14"
+    text: Co-authored DINOv2, on learning robust visual features without supervision.
+    source_ids: [dinov2-paper]
+  - date: "2024-03-13"
+    text: Listed among the leads of the first Gemma open-model report from Google DeepMind.
+    source_ids: [gemma-report]
+  - date: "2024-07-31"
+    text: Listed as lead of the Gemma 2 technical report.
+    source_ids: [gemma2-report]
+  - date: "2025-03-25"
+    text: Listed as lead of the Gemma 3 technical report.
+    source_ids: [gemma3-report]
+  - date: "2026-07-02"
+    text: Listed among the core contributors of the Gemma 4 Technical Report.
+    source_ids: [gemma4-report]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gemma-report
     title: "Gemma: Open Models Based on Gemini Research and Technology (arXiv 2403.08295), contributor list"
@@ -67,46 +130,81 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2024-03-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma2-report
     title: "Gemma 2: Improving Open Language Models at a Practical Size (arXiv 2408.00118), contributor list"
     url: https://arxiv.org/abs/2408.00118
     publisher: arXiv
     kind: paper
     published_at: 2024-07-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma3-report
     title: Gemma 3 Technical Report (arXiv 2503.19786), contributor list
     url: https://arxiv.org/abs/2503.19786
     publisher: arXiv
     kind: paper
     published_at: 2025-03-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma4-report
     title: Gemma 4 Technical Report (arXiv 2607.02770, v2 July 2026), core contributor list and license statement
     url: https://arxiv.org/abs/2607.02770
     publisher: arXiv
     kind: paper
     published_at: 2026-07-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fasttext-paper
     title: Bag of Tricks for Efficient Text Classification (arXiv 1607.01759), Facebook AI Research affiliation
     url: https://arxiv.org/abs/1607.01759
     publisher: arXiv
     kind: paper
     published_at: 2016-07-06
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fasttext-repo
     title: facebookresearch/fastText README (references and MIT license)
     url: https://github.com/facebookresearch/fastText
     publisher: facebookresearch (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-paper
     title: "LLaMA: Open and Efficient Foundation Language Models (arXiv 2302.13971), author list and Meta AI affiliation"
     url: https://arxiv.org/abs/2302.13971
     publisher: arXiv
     kind: paper
     published_at: 2023-02-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: fasttext-zip-paper
+    title: "FastText.zip: Compressing text classification models (arXiv 1612.03651)"
+    url: https://arxiv.org/abs/1612.03651
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-12-12
+    accessed_at: 2026-10-21
+  - id: subword-paper
+    title: Enriching Word Vectors with Subword Information (arXiv 1607.04606)
+    url: https://arxiv.org/abs/1607.04606
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-07-15
+    accessed_at: 2026-10-21
+  - id: swav-paper
+    title: Unsupervised Learning of Visual Features by Contrasting Cluster Assignments (arXiv 2006.09882)
+    url: https://arxiv.org/abs/2006.09882
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-06-17
+    accessed_at: 2026-10-21
+  - id: dino-paper
+    title: Emerging Properties in Self-Supervised Vision Transformers (arXiv 2104.14294)
+    url: https://arxiv.org/abs/2104.14294
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-04-29
+    accessed_at: 2026-10-21
+  - id: dinov2-paper
+    title: "DINOv2: Learning Robust Visual Features without Supervision (arXiv 2304.07193)"
+    url: https://arxiv.org/abs/2304.07193
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-04-14
+    accessed_at: 2026-10-21

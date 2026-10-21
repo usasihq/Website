@@ -12,7 +12,7 @@ bio:
     released under the DINOv3 License, the second author of DETR (End-to-End Object Detection with
     Transformers), and is listed in the citation entry for the Detectron2 library.
   source_ids: [github-profile, pytorch-poi, dinov3-paper, dinov3-readme, detr-paper, detectron2-readme]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Meta (Facebook AI Research)
     organization_slug: meta
@@ -53,12 +53,70 @@ work:
       Listed among the authors in the citation entry of Detectron2, FAIR's Apache-2.0 detection and
       segmentation library.
     source_ids: [detectron2-readme]
+  - name: PyTorch
+    artifact_slug: pytorch
+    type: open-source
+    url: https://arxiv.org/abs/1912.01703
+    contribution: >-
+      Third author of the 2019 paper "PyTorch: An Imperative Style, High-Performance Deep Learning
+      Library", which describes the design and implementation of the library.
+    source_ids: [pytorch-paper]
 links:
   - label: GitHub
     url: https://github.com/fmassa
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Massa's early papers, written with Mathieu Aubry and Renaud Marlet, studied convolutional networks
+          for detecting objects and estimating their pose and viewpoint, comparing approaches in 2014 and
+          designing a multi-task network for viewpoint estimation in 2016.
+        source_ids: [pose-paper, viewpoint-paper]
+      - text: >-
+          Massa was second author of DETR, which treats object detection as set
+          prediction with a transformer, and co-authored DeiT, a method for training image transformers
+          efficiently with distillation. Later work included the self-supervised vision models DINOv2 and DINOv3,
+          a hybrid transformer for music source separation, and the CWM open-weights code model.
+        source_ids: [detr-paper, deit-paper, dinov2-paper, dinov3-paper, music-paper, cwm-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Massa is the third author of the 2019 PyTorch paper describing the library's imperative,
+          Pythonic programming style. PyTorch's persons-of-interest page lists Massa as an emeritus maintainer of
+          TorchVision, and Massa is named in the citation entry of the Detectron2 detection and segmentation
+          library.
+        source_ids: [pytorch-paper, pytorch-poi, detectron2-readme]
+timeline:
+  - date: "2014-12"
+    text: Posted a comparative study of convolutional networks for joint object detection and pose estimation as first author.
+    source_ids: [pose-paper]
+  - date: "2016-09"
+    text: Posted "Crafting a multi-task CNN for viewpoint estimation" as first author.
+    source_ids: [viewpoint-paper]
+  - date: "2019-12"
+    text: 'Co-authored "PyTorch: An Imperative Style, High-Performance Deep Learning Library".'
+    source_ids: [pytorch-paper]
+  - date: "2020-05"
+    text: Co-authored DETR, end-to-end object detection with transformers, as second author.
+    source_ids: [detr-paper]
+  - date: "2020-12"
+    text: Co-authored DeiT, on training data-efficient image transformers with distillation.
+    source_ids: [deit-paper]
+  - date: "2022-11"
+    text: Co-authored "Hybrid Transformers for Music Source Separation".
+    source_ids: [music-paper]
+  - date: "2023-04"
+    text: Co-authored DINOv2, on learning robust visual features without supervision.
+    source_ids: [dinov2-paper]
+  - date: "2025-08"
+    text: Co-authored the DINOv3 vision foundation model paper.
+    source_ids: [dinov3-paper]
+  - date: "2025-09"
+    text: Co-authored CWM, an open-weights language model for research on code generation with world models.
+    source_ids: [cwm-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: fmassa (Francisco Massa) on GitHub
@@ -66,46 +124,95 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-poi
     title: PyTorch Governance — Maintainers (persons of interest), TorchVision section
     url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
     publisher: PyTorch
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dinov3-paper
     title: DINOv3 (arXiv 2508.10104)
     url: https://arxiv.org/abs/2508.10104
     publisher: arXiv
     kind: paper
     published_at: 2025-08-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dinov3-readme
     title: facebookresearch/dinov3 README (authors and DINOv3 License)
     url: https://github.com/facebookresearch/dinov3
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detr-paper
     title: End-to-End Object Detection with Transformers (arXiv 2005.12872)
     url: https://arxiv.org/abs/2005.12872
     publisher: arXiv
     kind: paper
     published_at: 2020-05-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detr-readme
     title: facebookresearch/detr README (license)
     url: https://github.com/facebookresearch/detr
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detectron2-readme
     title: facebookresearch/detectron2 README (citation entry and license)
     url: https://github.com/facebookresearch/detectron2
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: pose-paper
+    title: "Convolutional Neural Networks for joint object detection and pose estimation: A comparative study (arXiv 1412.7190)"
+    url: https://arxiv.org/abs/1412.7190
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-12-22
+    accessed_at: 2026-10-21
+  - id: viewpoint-paper
+    title: Crafting a multi-task CNN for viewpoint estimation (arXiv 1609.03894)
+    url: https://arxiv.org/abs/1609.03894
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-09-13
+    accessed_at: 2026-10-21
+  - id: pytorch-paper
+    title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library (arXiv 1912.01703)"
+    url: https://arxiv.org/abs/1912.01703
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-03
+    accessed_at: 2026-10-21
+  - id: deit-paper
+    title: Training data-efficient image transformers & distillation through attention (arXiv 2012.12877)
+    url: https://arxiv.org/abs/2012.12877
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-12-23
+    accessed_at: 2026-10-21
+  - id: music-paper
+    title: Hybrid Transformers for Music Source Separation (arXiv 2211.08553)
+    url: https://arxiv.org/abs/2211.08553
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-15
+    accessed_at: 2026-10-21
+  - id: dinov2-paper
+    title: "DINOv2: Learning Robust Visual Features without Supervision (arXiv 2304.07193)"
+    url: https://arxiv.org/abs/2304.07193
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-04-14
+    accessed_at: 2026-10-21
+  - id: cwm-paper
+    title: "CWM: An Open-Weights LLM for Research on Code Generation with World Models (arXiv 2510.02387)"
+    url: https://arxiv.org/abs/2510.02387
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-09-30
+    accessed_at: 2026-10-21

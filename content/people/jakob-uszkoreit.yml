@@ -14,7 +14,7 @@ bio:
     the Google Research blog post introducing it. Uszkoreit is also listed among the authors of
     Inceptive's post on designing mRNA sequences for in vivo CAR-T with the company's platform.
   source_ids: [inceptive-release, google-blog, attention-paper, inceptive-cart]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Inceptive
     organization_slug: null
@@ -38,9 +38,68 @@ work:
 links:
   - label: Inceptive
     url: https://inceptive.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Jakob Uszkoreit worked at Google as a software engineer in natural language understanding, where
+          Uszkoreit co-authored the 2017 Transformer paper and wrote the Google Research blog post that introduced
+          it. Uszkoreit later co-founded Inceptive and serves as its CEO.
+        source_ids: [google-blog, attention-paper, inceptive-release]
+      - text: >-
+          Inceptive builds foundation models that design sequence-based medicines such as mRNA, siRNA, antisense
+          oligonucleotides and peptides, pairing model training with an in-house wet lab that tests designs. In
+          June 2026 Inceptive and Alnylam announced a collaboration on AI for RNAi therapeutics, and the company
+          has published work on designing mRNA for in vivo CAR-T therapy.
+        source_ids: [inceptive-site, inceptive-release, inceptive-cart]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Before the Transformer, Uszkoreit co-authored A Decomposable Attention Model for Natural Language
+          Inference (EMNLP 2016), which used attention to split inference into subproblems that can be solved in
+          parallel. "Attention Is All You Need" (2017) then proposed a translation architecture built only on
+          attention, without recurrence or convolutions.
+        source_ids: [decomposable-attention, attention-paper]
+      - text: >-
+          Uszkoreit went on to co-author follow-up work applying and extending the architecture, including the
+          Image Transformer and Universal Transformers in 2018 and the Vision Transformer paper, An Image is Worth
+          16x16 Words, in 2020.
+        source_ids: [image-transformer, universal-transformers, vit-paper]
+  - heading: Talks
+    paragraphs:
+      - text: >-
+          At TEDAI San Francisco in October 2024, Uszkoreit gave the talk "How AI sidesteps traditional science",
+          which looks at scientific results reached through deep learning and at using AI as an approach to
+          studying complex phenomena.
+        source_ids: [ted-talk]
+timeline:
+  - date: "2016-06-06"
+    text: Co-authored A Decomposable Attention Model for Natural Language Inference.
+    source_ids: [decomposable-attention]
+  - date: "2017-06-12"
+    text: Co-authored "Attention Is All You Need", which proposed the Transformer.
+    source_ids: [attention-paper]
+  - date: "2017-08-31"
+    text: Wrote the Google Research blog post introducing the Transformer.
+    source_ids: [google-blog]
+  - date: "2018-02-15"
+    text: Co-authored the Image Transformer paper.
+    source_ids: [image-transformer]
+  - date: "2018-07-10"
+    text: Co-authored the Universal Transformers paper.
+    source_ids: [universal-transformers]
+  - date: "2020-10-22"
+    text: Co-authored the Vision Transformer paper, An Image is Worth 16x16 Words.
+    source_ids: [vit-paper]
+  - date: "2024-10"
+    text: Spoke at TEDAI San Francisco on how AI sidesteps traditional science.
+    source_ids: [ted-talk]
+  - date: "2026-06-03"
+    text: Inceptive, led by Uszkoreit as CEO, announced an AI collaboration with Alnylam on RNAi therapeutics.
+    source_ids: [inceptive-release]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: inceptive-release
     title: Alnylam and Inceptive Form Strategic AI Collaboration to Accelerate the Discovery of RNAi Therapeutics (press release)
@@ -48,25 +107,67 @@ sources:
     publisher: Inceptive
     kind: announcement
     published_at: 2026-06-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: inceptive-cart
     title: Designing in vivo CAR-T with the Inceptive platform
     url: https://inceptive.com/blog/designing-in-vivo-car-t-with-the-inceptive-platform
     publisher: Inceptive
     kind: announcement
     published_at: 2026-06-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: google-blog
     title: "Transformer: A Novel Neural Network Architecture for Language Understanding (Google Research blog)"
     url: https://research.google/blog/transformer-a-novel-neural-network-architecture-for-language-understanding/
     publisher: Google Research
     kind: announcement
     published_at: 2017-08-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: attention-paper
     title: "Attention Is All You Need (arXiv 1706.03762)"
     url: https://arxiv.org/abs/1706.03762
     publisher: arXiv
     kind: paper
     published_at: 2017-06-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: inceptive-site
+    title: Inceptive — homepage (models, partnerships, team)
+    url: https://inceptive.com/
+    publisher: Inceptive
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: decomposable-attention
+    title: A Decomposable Attention Model for Natural Language Inference (arXiv 1606.01933)
+    url: https://arxiv.org/abs/1606.01933
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-06-06
+    accessed_at: 2026-10-21
+  - id: image-transformer
+    title: Image Transformer (arXiv 1802.05751)
+    url: https://arxiv.org/abs/1802.05751
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-02-15
+    accessed_at: 2026-10-21
+  - id: universal-transformers
+    title: Universal Transformers (arXiv 1807.03819)
+    url: https://arxiv.org/abs/1807.03819
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-07-10
+    accessed_at: 2026-10-21
+  - id: vit-paper
+    title: "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (arXiv 2010.11929)"
+    url: https://arxiv.org/abs/2010.11929
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-10-22
+    accessed_at: 2026-10-21
+  - id: ted-talk
+    title: How AI sidesteps traditional science (TEDAI San Francisco 2024)
+    url: https://www.ted.com/talks/jakob_uszkoreit_how_ai_sidesteps_traditional_science
+    publisher: TED
+    kind: official-page
+    published_at: 2024-10
+    accessed_at: 2026-10-21

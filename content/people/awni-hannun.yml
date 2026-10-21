@@ -38,9 +38,61 @@ links:
     url: https://awnihannun.com/
   - label: GitHub
     url: https://github.com/awni
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Awni Hannun completed a PhD in computer science at Stanford University advised by Andrew Ng, and
+          co-led the Deep Speech projects at Baidu's Silicon Valley AI Lab. Hannun also spent time at Zoom and Facebook AI
+          Research (FAIR), was a research scientist at Apple, and is now a Member of the Technical Staff at
+          Anthropic.
+        source_ids: [personal-site, github-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Much of Hannun's published research concerns speech recognition. Hannun is first author of Deep
+          Speech (2014), an end-to-end deep learning speech recognizer that does without hand-designed
+          components for noise and speaker variation, and wrote a 2017 Distill article explaining the
+          connectionist temporal classification (CTC) algorithm used to train such models.
+        source_ids: [deepspeech-paper, ctc-distill, publications]
+      - text: >-
+          Hannun's other work includes a 2017 convolutional network for detecting heart arrhythmias from
+          single-lead electrocardiograms and papers on privacy in machine learning,
+          including a method that uses Fisher information to measure how much a model leaks about its
+          training data.
+        source_ids: [ecg-paper, fisher-paper, publications]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Hannun's software page lists MLX, an array framework for Apple silicon, alongside earlier projects:
+          GTN, a library for automatic differentiation with weighted finite-state transducers; the Flashlight
+          C++ machine learning library; the wav2letter++ speech recognition toolkit; the CrypTen library for
+          privacy-preserving machine learning on PyTorch; and a C implementation of the RNN Transducer loss.
+        source_ids: [software, mlx-repo]
+timeline:
+  - date: "2014-12"
+    text: Posted Deep Speech, an end-to-end speech recognition system, as first author.
+    source_ids: [deepspeech-paper]
+  - date: "2017-07"
+    text: Co-authored a convolutional neural network study on arrhythmia detection from electrocardiograms.
+    source_ids: [ecg-paper]
+  - date: "2017-11-27"
+    text: Published "Sequence Modeling with CTC" in Distill.
+    source_ids: [ctc-distill]
+  - date: "2018"
+    text: Completed a PhD thesis in computer science at Stanford University.
+    source_ids: [publications]
+  - date: "2021-02"
+    text: Posted a paper on measuring data leakage in machine learning models with Fisher information.
+    source_ids: [fisher-paper]
+honors:
+  - name: Best Paper Award, UAI 2021
+    year: 2021
+    awarded_by: Conference on Uncertainty in Artificial Intelligence
+    source_ids: [publications]
 publication_status: published
-updated_at: 2026-10-01
-last_reviewed: 2026-10-01
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: personal-site
     title: Awni Hannun (personal site)
@@ -48,7 +100,7 @@ sources:
     publisher: Awni Hannun
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-01
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-01
   - id: github-profile
     title: awni (Awni Hannun) on GitHub
@@ -56,7 +108,7 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-01
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-01
   - id: mlx-repo
     title: ml-explore/mlx README
@@ -64,5 +116,47 @@ sources:
     publisher: Apple (ml-explore)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-01
+    accessed_at: 2026-10-21
     reviewed_at: 2026-10-01
+  - id: publications
+    title: Awni Hannun — publications and preprints
+    url: https://awnihannun.com/publications.html
+    publisher: Awni Hannun
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: software
+    title: Awni Hannun — software
+    url: https://awnihannun.com/software.html
+    publisher: Awni Hannun
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: deepspeech-paper
+    title: "Deep Speech: Scaling up end-to-end speech recognition (arXiv 1412.5567)"
+    url: https://arxiv.org/abs/1412.5567
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-12-17
+    accessed_at: 2026-10-21
+  - id: ctc-distill
+    title: Sequence Modeling with CTC
+    url: https://distill.pub/2017/ctc/
+    publisher: Distill
+    kind: paper
+    published_at: 2017-11-27
+    accessed_at: 2026-10-21
+  - id: ecg-paper
+    title: Cardiologist-Level Arrhythmia Detection with Convolutional Neural Networks (arXiv 1707.01836)
+    url: https://arxiv.org/abs/1707.01836
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-07-06
+    accessed_at: 2026-10-21
+  - id: fisher-paper
+    title: Measuring Data Leakage in Machine-Learning Models with Fisher Information (arXiv 2102.11673)
+    url: https://arxiv.org/abs/2102.11673
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-02-23
+    accessed_at: 2026-10-21

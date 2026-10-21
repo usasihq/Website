@@ -16,7 +16,7 @@ bio:
     author of the technical report
     introducing the Computational Network Toolkit (CNTK). Yu is a Fellow of ACM, IEEE, and ISCA.
   source_ids: [yu-home, cd-dnn-pub, cntk-pub]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Capital One
     organization_slug: null
@@ -61,12 +61,103 @@ work:
       Co-author with Li Deng of this 2014 book (MSR-TR-2014-21, published by Microsoft) surveying deep
       learning methods and their applications to speech, language, vision, and other tasks.
     source_ids: [dlma-pub]
+  - name: "Automatic Speech Recognition: A Deep Learning Approach"
+    artifact_slug: null
+    type: open-research
+    url: https://link.springer.com/book/10.1007/978-1-4471-5779-3
+    contribution: >-
+      Co-author with Li Deng of this 2014 Springer monograph, whose chapters cover deep neural
+      network-hidden Markov model hybrid systems and methods to speed up their training and decoding.
+    source_ids: [asr-book]
 links:
   - label: Website
     url: https://dongyu888.github.io/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Yu joined Microsoft in 1998 and became a principal researcher at Microsoft Research. In
+          2017 Yu joined Tencent America and worked at Tencent AI Lab as a distinguished scientist and vice
+          general manager until 2026. Yu is now VP of AI Foundations at Capital One and chief scientific
+          advisor of Transsion.
+        source_ids: [yu-home]
+      - text: >-
+          In professional service, Yu was a member of the IEEE Speech and Language Processing Technical
+          Committee from 2013 to 2018, its vice-chair in 2020 and its chair in 2021–2022, and was a technical
+          co-chair of ICASSP 2021. Yu has been an associate editor and, for 2025–2027, a senior area editor of
+          the IEEE/ACM Transactions on Audio, Speech, and Language Processing.
+        source_ids: [yu-home]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Yu's research covers deep learning for speech processing and recognition, large language models
+          and multimodal agentic systems. With George Dahl, Li Deng and Alex Acero, Yu co-authored the 2012
+          paper proposing context-dependent pre-trained deep neural network and hidden Markov model hybrids
+          for large vocabulary speech recognition, which received the IEEE Signal Processing Society Best
+          Paper Award in 2013.
+        source_ids: [yu-home, cd-dnn-pub]
+      - text: >-
+          Yu wrote two monographs with Li Deng: "Deep Learning - Methods and Applications" (2014) and
+          "Automatic Speech Recognition - A Deep Learning Approach" (Springer, 2014). Recent invited talks, such as an Interspeech 2025 survey talk, focus on building conversational
+          agents.
+        source_ids: [dlma-pub, asr-book, yu-home]
+timeline:
+  - date: "1998"
+    text: Joined Microsoft, later becoming a principal researcher at Microsoft Research.
+    source_ids: [yu-home]
+  - date: "2012-01"
+    text: Co-authored the context-dependent pre-trained deep neural network paper for large vocabulary speech recognition.
+    source_ids: [cd-dnn-pub]
+  - date: "2014-05"
+    text: Published "Deep Learning - Methods and Applications" with Li Deng.
+    source_ids: [dlma-pub]
+  - date: "2014-11"
+    text: Published the Springer monograph "Automatic Speech Recognition - A Deep Learning Approach" with Li Deng.
+    source_ids: [asr-book]
+  - date: "2017"
+    text: Joined Tencent America and Tencent AI Lab as a distinguished scientist.
+    source_ids: [yu-home]
+  - date: "2021"
+    text: Became chair of the IEEE Speech and Language Processing Technical Committee and served as technical co-chair of ICASSP 2021.
+    source_ids: [yu-home]
+  - date: "2025-08-21"
+    text: Gave an invited survey talk on conversational agents at Interspeech 2025.
+    source_ids: [yu-home]
+  - date: "2026"
+    text: Concluded work at Tencent AI Lab as a distinguished scientist and vice general manager.
+    source_ids: [yu-home]
+honors:
+  - name: ACM Fellow
+    year: null
+    awarded_by: Association for Computing Machinery
+    source_ids: [yu-home]
+  - name: IEEE Fellow
+    year: null
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [yu-home]
+  - name: ISCA Fellow
+    year: null
+    awarded_by: International Speech Communication Association
+    source_ids: [yu-home]
+  - name: IEEE SPS Claude Shannon-Harry Nyquist Technical Achievement Award
+    year: 2025
+    awarded_by: IEEE Signal Processing Society
+    source_ids: [yu-home]
+  - name: IEEE Signal Processing Society Best Paper Award
+    year: 2013
+    awarded_by: IEEE Signal Processing Society
+    source_ids: [yu-home, cd-dnn-pub]
+  - name: NAACL Best Long Paper Award
+    year: 2021
+    awarded_by: North American Chapter of the Association for Computational Linguistics
+    source_ids: [yu-home]
+  - name: EMNLP Outstanding Paper Award
+    year: 2023
+    awarded_by: Conference on Empirical Methods in Natural Language Processing
+    source_ids: [yu-home]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: yu-home
     title: Dong Yu — homepage
@@ -74,7 +165,7 @@ sources:
     publisher: Dong Yu
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cntk-pub
     title: An Introduction to Computational Networks and the Computational Network Toolkit (MSR-TR-2014-112)
     url: https://www.microsoft.com/en-us/research/publication/an-introduction-to-computational-networks-and-the-computational-network-toolkit/
@@ -88,11 +179,18 @@ sources:
     publisher: Microsoft Research
     kind: paper
     published_at: 2012-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dlma-pub
     title: "Deep Learning: Methods and Applications (MSR-TR-2014-21)"
     url: https://www.microsoft.com/en-us/research/publication/deep-learning-methods-and-applications/
     publisher: Microsoft Research
     kind: paper
     published_at: 2014-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: asr-book
+    title: "Automatic Speech Recognition: A Deep Learning Approach (Springer)"
+    url: https://link.springer.com/book/10.1007/978-1-4471-5779-3
+    publisher: Springer
+    kind: other
+    published_at: 2014-11-11
+    accessed_at: 2026-10-21

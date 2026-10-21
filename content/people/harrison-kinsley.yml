@@ -14,7 +14,7 @@ bio:
     building neural networks in Python without libraries and accompanies the sentdex videos, and
     is the listed author of the nnfs Python package used with it.
   source_ids: [sentdex-channel, ppn-about, nnfs-book, nnfs-package, github-profile]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: sentdex
     organization_slug: null
@@ -47,9 +47,44 @@ links:
     url: https://nnfs.io/
   - label: GitHub
     url: https://github.com/Sentdex
+sections:
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Harrison Kinsley started the sentdex YouTube channel in December 2012. The channel offers Python
+          programming tutorials that go beyond the basics, covering machine learning, finance, data analysis,
+          robotics, web development and game development.
+        source_ids: [sentdex-channel]
+      - text: >-
+          PythonProgramming.net, the companion site, offers free tutorials on a variety of programming topics
+          and describes its aim as free programming education for everyone.
+        source_ids: [ppn-about]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Neural Networks from Scratch in Python teaches readers to build neural networks without libraries,
+          starting with single neurons and layers and moving through activation functions, cross-entropy loss,
+          backpropagation and optimizers such as SGD, AdaGrad, RMSprop and Adam. Each step is shown first in pure
+          Python and then with NumPy, and the book accompanies the free sentdex videos.
+        source_ids: [nnfs-book]
+      - text: >-
+          Kinsley publishes the book's sample code and the nnfs helper package on GitHub, along with NNfSiX, a
+          repository of neural networks from scratch in various programming languages.
+        source_ids: [github-profile, nnfs-package]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Kinsley's GitHub projects include pygta5, which explores using Python to play Grand Theft Auto V,
+          GANTheftAuto, TermGPT, which gives language models the ability to plan and run terminal commands, and
+          minion, a single-file coding agent for self-hosted models served by llama.cpp, vLLM or SGLang.
+        source_ids: [github-profile]
+timeline:
+  - date: "2012-12-16"
+    text: Started the sentdex YouTube channel of Python programming tutorials.
+    source_ids: [sentdex-channel]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: sentdex-channel
     title: sentdex (YouTube channel About page)
@@ -57,32 +92,32 @@ sources:
     publisher: sentdex
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: ppn-about
     title: About PythonProgramming.net
     url: https://pythonprogramming.net/about/
     publisher: PythonProgramming.net
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: nnfs-book
     title: Neural Networks from Scratch in Python
     url: https://nnfs.io/
     publisher: nnfs.io
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: nnfs-package
     title: nnfs package setup.py (Sentdex/nnfs)
     url: https://github.com/Sentdex/nnfs/blob/master/setup.py
     publisher: GitHub
     kind: repository
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: github-profile
     title: Sentdex (Harrison) on GitHub
     url: https://github.com/Sentdex
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21

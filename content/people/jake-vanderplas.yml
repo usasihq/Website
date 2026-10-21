@@ -13,7 +13,7 @@ bio:
     stateful randomness (November 2025), and as a co-author, with Roy Frostig, of the proposal for
     typed PRNG keys. VanderPlas's GitHub profile lists Google as their company.
   source_ids: [jax-readme, jep-type-promotion, jep-numpy-scope, jep-stateful-rng, jep-typed-keys, github-profile]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -35,9 +35,54 @@ links:
     url: https://github.com/jakevdp
   - label: Blog
     url: https://jakevdp.github.io/
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          VanderPlas is one of the authors named in the JAX repository's citation entry and has written several
+          of the project's design proposals. These cover JAX's type promotion semantics, the scope of its NumPy
+          and SciPy wrappers and stateful randomness, and VanderPlas co-wrote the typed PRNG keys proposal with
+          Roy Frostig.
+        source_ids: [jax-readme, jep-type-promotion, jep-numpy-scope, jep-stateful-rng, jep-typed-keys]
+      - text: >-
+          The project list in VanderPlas's website repository describes earlier contributions to scikit-learn,
+          mainly in generalized N-point problems and manifold learning, and to SciPy's sparse matrix toolkit,
+          including iterative sparse decompositions and graph algorithms. It also lists Altair, a declarative
+          visualization library for Python built on the Vega ecosystem, and AstroML, a machine learning package
+          for astronomy written to accompany a textbook.
+        source_ids: [jv-projects]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          VanderPlas, an astronomer by training, wrote the Python Data Science Handbook and the free e-book A
+          Whirlwind Tour of Python, both published by O'Reilly Media in 2016 and readable online. With Željko
+          Ivezić, Andrew Connolly and Alexander Gray, VanderPlas co-wrote Statistics, Data Mining, and Machine
+          Learning in Astronomy, published by Princeton University Press in 2014.
+        source_ids: [jv-about]
+      - text: >-
+          VanderPlas also writes the blog Pythonic Perambulations, whose posts include a 2018 explanation of the
+          waiting time paradox, and several examples in the Python Data Science Handbook are drawn from its
+          posts.
+        source_ids: [jv-about, jv-blog]
+timeline:
+  - date: "2014"
+    text: Co-wrote the textbook Statistics, Data Mining, and Machine Learning in Astronomy.
+    source_ids: [jv-about]
+  - date: "2016"
+    text: Published the Python Data Science Handbook and A Whirlwind Tour of Python with O'Reilly Media.
+    source_ids: [jv-about]
+  - date: "2021-12"
+    text: Wrote the JAX design proposal on type promotion semantics.
+    source_ids: [jep-type-promotion]
+  - date: "2023-10"
+    text: Wrote the JAX design proposal on the scope of its NumPy and SciPy wrappers.
+    source_ids: [jep-numpy-scope]
+  - date: "2025-11"
+    text: Wrote the JAX design proposal on stateful randomness.
+    source_ids: [jep-stateful-rng]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: jakevdp (Jake VanderPlas) on GitHub
@@ -45,46 +90,67 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-readme
     title: jax-ml/jax README ("Citing JAX" author list)
     url: https://github.com/jax-ml/jax
     publisher: jax-ml (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jax-license
     title: jax-ml/jax LICENSE (Apache License 2.0)
     url: https://github.com/jax-ml/jax/blob/main/LICENSE
     publisher: jax-ml (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jep-type-promotion
     title: Design of Type Promotion Semantics for JAX
     url: https://docs.jax.dev/en/latest/jep/9407-type-promotion.html
     publisher: JAX documentation
     kind: documentation
     published_at: 2021-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jep-numpy-scope
     title: "JEP 18137: Scope of JAX NumPy & SciPy Wrappers"
     url: https://docs.jax.dev/en/latest/jep/18137-numpy-scipy-scope.html
     publisher: JAX documentation
     kind: documentation
     published_at: 2023-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jep-stateful-rng
     title: "JEP 28845: Stateful Randomness in JAX"
     url: https://docs.jax.dev/en/latest/jep/28845-stateful-rng.html
     publisher: JAX documentation
     kind: documentation
     published_at: 2025-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jep-typed-keys
     title: "JEP 9263: Typed keys & pluggable RNGs"
     url: https://docs.jax.dev/en/latest/jep/9263-typed-keys.html
     publisher: JAX documentation
     kind: documentation
     published_at: 2023-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: jv-projects
+    title: jakevdp/website — content/projects.html
+    url: https://github.com/jakevdp/website/blob/master/content/projects.html
+    publisher: Jake VanderPlas
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: jv-about
+    title: About — Pythonic Perambulations
+    url: https://jakevdp.github.io/pages/about.html
+    publisher: Jake VanderPlas
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: jv-blog
+    title: Pythonic Perambulations
+    url: https://jakevdp.github.io/
+    publisher: Jake VanderPlas
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

@@ -13,7 +13,7 @@ bio:
     Google Cloud post, and an October 2026 post adapted from Kurian's keynote at Gemini at Work 2026 announced
     the Gemini agent, described as a single, universal agent for work.
   source_ids: [kurian-2018, gemini-enterprise, gemini-at-work-2026]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google Cloud
     organization_slug: google
@@ -42,9 +42,47 @@ work:
       agent, which works inside Workspace apps such as Gmail, Docs and Sheets.
     source_ids: [gemini-at-work-2026]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kurian spent 22 years at Oracle, most recently as President of Product Development. In November 2018,
+          Google Cloud announced that Kurian would join the company that month and take over leadership of
+          Google Cloud in early 2019, and Kurian has led Google Cloud as its CEO since.
+        source_ids: [kurian-2018, gemini-at-work-2026]
+  - heading: Products and announcements
+    paragraphs:
+      - text: >-
+          Kurian wrote the opening posts for Google Cloud Next '24 and Next '26. The Next '24 post announced
+          the general availability of TPU v5p and Google Axion, the company's first custom Arm-based CPU
+          designed for the data centre, along with a public preview of Gemini 1.5 Pro.
+        source_ids: [next24-post]
+      - text: >-
+          Kurian introduced Gemini Enterprise in October 2025. At Next '26 in April 2026, Kurian's keynote framed
+          the event around the "Agentic Enterprise", announcing the Gemini Enterprise Agent Platform for building
+          and governing agents, eighth-generation TPUs, an Agentic Data Cloud and security products combining
+          Google Threat Intelligence with Wiz's platform. At Gemini at Work 2026 in October, Kurian announced the
+          Gemini agent, a single agent for work inside Workspace apps.
+        source_ids: [gemini-enterprise, next26-post, gemini-at-work-2026]
+timeline:
+  - date: "2018-11-16"
+    text: Google Cloud announced that Kurian would join and lead Google Cloud from early 2019.
+    source_ids: [kurian-2018]
+  - date: "2024-04-09"
+    text: Wrote the opening post for Google Cloud Next '24, with announcements including TPU v5p and the Axion CPU.
+    source_ids: [next24-post]
+  - date: "2025-10-09"
+    text: Introduced Gemini Enterprise in a Google Cloud post.
+    source_ids: [gemini-enterprise]
+  - date: "2026-04-22"
+    text: Gave the Google Cloud Next '26 keynote on the Agentic Enterprise and eighth-generation TPUs.
+    source_ids: [next26-post]
+  - date: "2026-10-08"
+    text: Announced the Gemini agent in the Gemini at Work 2026 keynote.
+    source_ids: [gemini-at-work-2026]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gemini-at-work-2026
     title: "Welcome to Gemini at Work 2026: Introducing the Gemini agent (byline)"
@@ -52,18 +90,32 @@ sources:
     publisher: Google Cloud
     kind: announcement
     published_at: 2026-10-08
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: gemini-enterprise
     title: Introducing Gemini Enterprise (byline)
     url: https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise
     publisher: Google Cloud
     kind: announcement
     published_at: 2025-10-09
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: kurian-2018
     title: Transitioning Google Cloud After Three Great Years
     url: https://cloud.google.com/blog/topics/inside-google-cloud/transitioning-google-cloud-after-three-great-years
     publisher: Google Cloud
     kind: announcement
     published_at: 2018-11-16
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: next24-post
+    title: Welcome to Google Cloud Next '24
+    url: https://cloud.google.com/blog/topics/google-cloud-next/welcome-to-google-cloud-next24
+    publisher: Google Cloud
+    kind: announcement
+    published_at: 2024-04-09
+    accessed_at: 2026-10-21
+  - id: next26-post
+    title: Welcome to Google Cloud Next26 (adapted keynote transcript)
+    url: https://cloud.google.com/blog/topics/google-cloud-next/welcome-to-google-cloud-next26
+    publisher: Google Cloud
+    kind: announcement
+    published_at: 2026-04-22
+    accessed_at: 2026-10-21

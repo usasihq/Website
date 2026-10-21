@@ -48,9 +48,76 @@ work:
 links:
   - label: Website
     url: https://alexandre.gramfort.net/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Alexandre Gramfort's early research career included time at the Martinos Center for
+          Biomedical Imaging at Harvard University, followed by five years as an assistant professor
+          in the signal processing and machine learning department at Telecom Paris. Gramfort then
+          became a research director at Inria, where they led the MIND team, formerly known as
+          Parietal, and also served as a co-director of the Center for Data Science at Université
+          Paris-Saclay.
+        source_ids: [homepage]
+      - text: >-
+          Gramfort joined Meta in 2022 and is now a Research Science Director at Meta Reality Labs.
+          Their current work applies machine learning to decoding surface electromyography (EMG)
+          signals for neuromotor interfaces.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Gramfort's research spans statistical machine learning, signal and image processing,
+          optimization and scientific computing, with primary applications in neuroscience and
+          biosignal processing such as MEG and EEG. In 2015 Gramfort received a European Research
+          Council Starting Grant for the project Signal and Learning Applied to Brain data (SLAB), and
+          in 2019 an ANR Chair in Artificial Intelligence for a project called BrAIN.
+        source_ids: [homepage]
+      - text: >-
+          At Meta, Gramfort is among the authors of "A generic non-invasive neuromotor interface for
+          human-computer interaction", published in Nature in July 2025, which describes decoding
+          surface EMG signals from the wrist to control computers.
+        source_ids: [nature-emg, homepage]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Gramfort is a co-creator of scikit-learn: the project's history records that Fabian
+          Pedregosa, Gaël Varoquaux, Gramfort and Vincent Michel of INRIA took leadership of the project
+          in 2010 and made its first public release on 1 February 2010. Gramfort co-authored the 2011
+          JMLR paper describing the library and is still listed on the project's maintainers team.
+        source_ids: [sklearn-about, sklearn-jmlr]
+      - text: >-
+          Gramfort is the initial creator of MNE-Python, a package for processing EEG and MEG data
+          that covers forward and inverse modeling, preprocessing, statistics and time-frequency
+          analysis, and stepped down as its BDFL in 2023. Gramfort has also co-created or contributed
+          to Braindecode, pyRiemann, OpenMEEG and the Sphinx-Gallery documentation extension, while
+          noting reduced open-source activity since joining Meta.
+        source_ids: [homepage, mne-license]
+timeline:
+  - date: "2010-02-01"
+    text: Made the first public release of scikit-learn with Fabian Pedregosa, Gaël Varoquaux and Vincent Michel at INRIA.
+    source_ids: [sklearn-about]
+  - date: "2011"
+    text: Co-authored "Scikit-learn - Machine Learning in Python" in the Journal of Machine Learning Research.
+    source_ids: [sklearn-jmlr]
+  - date: "2015"
+    text: Received a European Research Council Starting Grant for the SLAB project on learning from brain data.
+    source_ids: [homepage]
+  - date: "2019"
+    text: Received an ANR Chair in Artificial Intelligence for the BrAIN project.
+    source_ids: [homepage]
+  - date: "2022"
+    text: Joined Meta, later serving as Research Science Director at Meta Reality Labs.
+    source_ids: [homepage]
+  - date: "2023"
+    text: Stepped down as BDFL of the MNE-Python project.
+    source_ids: [homepage]
+  - date: "2025-07-23"
+    text: Co-authored a Nature paper on a generic non-invasive neuromotor interface based on surface EMG.
+    source_ids: [nature-emg]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Alexandre Gramfort — homepage
@@ -58,32 +125,39 @@ sources:
     publisher: Alexandre Gramfort
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-about
     title: scikit-learn — About us (maintainers and history)
     url: https://scikit-learn.org/stable/about.html
     publisher: scikit-learn
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-jmlr
     title: "Scikit-learn: Machine Learning in Python (JMLR 12, 2011)"
     url: https://jmlr.org/papers/v12/pedregosa11a.html
     publisher: Journal of Machine Learning Research
     kind: paper
     published_at: "2011"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-license
     title: scikit-learn/scikit-learn COPYING (BSD 3-Clause License)
     url: https://github.com/scikit-learn/scikit-learn/blob/main/COPYING
     publisher: scikit-learn (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mne-license
     title: mne-tools/mne-python LICENSE.txt (BSD-style)
     url: https://github.com/mne-tools/mne-python/blob/main/LICENSE.txt
     publisher: mne-tools (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: nature-emg
+    title: A generic non-invasive neuromotor interface for human-computer interaction (Nature)
+    url: https://www.nature.com/articles/s41586-025-09255-w
+    publisher: Nature
+    kind: paper
+    published_at: 2025-07-23
+    accessed_at: 2026-10-21

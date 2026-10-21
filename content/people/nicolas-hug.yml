@@ -13,7 +13,7 @@ bio:
     for PyTorch. Hug is also listed among the emeritus maintainers of scikit-learn, and Hug's
     GitHub account hosts Surprise, a Python toolkit for building and analyzing recommender systems.
   source_ids: [github-profile, pytorch-poi, torchvision-repo, torchcodec-repo, sklearn-about]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Meta AI
     organization_slug: meta
@@ -49,9 +49,51 @@ links:
     url: https://nicolas-hug.com
   - label: GitHub
     url: https://github.com/NicolasHug
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Hug describes the current work as part of the PyTorch team at Meta, focused on preprocessing and
+          performance, and as the primary developer of TorchVision and TorchCodec. PyTorch's governance
+          documentation lists Hug as a maintainer of both libraries: TorchVision provides datasets, transforms
+          and models for computer vision, and TorchCodec handles media decoding and encoding for PyTorch.
+        source_ids: [nh-about, pytorch-poi, torchvision-repo, torchcodec-repo]
+      - text: >-
+          Before joining Meta, Hug was a postdoc and part of scikit-learn's core development team for several
+          years, and is now listed among its emeritus maintainers. In scikit-learn 0.21 Hug added the
+          histogram-based gradient boosting estimators HistGradientBoostingClassifier and
+          HistGradientBoostingRegressor, an implementation inspired by LightGBM.
+        source_ids: [nh-about, sklearn-about, nh-skl021]
+      - text: >-
+          During a PhD, Hug developed Surprise, a Python library for building and analyzing recommender systems,
+          which Hug described in a 2020 paper in the Journal of Open Source Software.
+        source_ids: [nh-about, nh-joss]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Hug's blog explains technical topics in machine learning, including a four-part 2017 series on matrix
+          factorization for recommendation, 2019 posts on gradient boosting and on Cython, and a 2022 deep dive
+          into the internals of the FFCV data-loading library.
+        source_ids: [nh-blog]
+timeline:
+  - date: "2017-06-14"
+    text: Began a four-part blog series on matrix factorization for recommendation.
+    source_ids: [nh-blog]
+  - date: "2019-05"
+    text: Added histogram-based gradient boosting estimators to scikit-learn in version 0.21.
+    source_ids: [nh-skl021]
+  - date: "2019-06-01"
+    text: Published a blog post explaining gradient boosting as gradient descent.
+    source_ids: [nh-blog]
+  - date: "2020-08-05"
+    text: Published a Journal of Open Source Software paper on the Surprise recommender systems library.
+    source_ids: [nh-joss]
+  - date: "2022-09-30"
+    text: Published a deep dive into the internals of the FFCV data-loading library.
+    source_ids: [nh-blog]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: NicolasHug (Nicolas Hug) on GitHub
@@ -59,53 +101,81 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-poi
     title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
     url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
     publisher: PyTorch
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-about
     title: scikit-learn — About us (maintainers and history)
     url: https://scikit-learn.org/stable/about.html
     publisher: scikit-learn
     kind: documentation
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: torchvision-repo
     title: pytorch/vision README (datasets, transforms and models for computer vision)
     url: https://github.com/pytorch/vision
     publisher: pytorch (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: torchcodec-repo
     title: meta-pytorch/torchcodec README (media decoding and encoding for PyTorch)
     url: https://github.com/meta-pytorch/torchcodec
     publisher: meta-pytorch (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: torchvision-license
     title: pytorch/vision LICENSE (BSD 3-Clause License)
     url: https://github.com/pytorch/vision/blob/main/LICENSE
     publisher: pytorch (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: torchcodec-license
     title: meta-pytorch/torchcodec LICENSE (BSD 3-Clause License)
     url: https://github.com/meta-pytorch/torchcodec/blob/main/LICENSE
     publisher: meta-pytorch (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sklearn-license
     title: scikit-learn/scikit-learn COPYING (BSD 3-Clause License)
     url: https://github.com/scikit-learn/scikit-learn/blob/main/COPYING
     publisher: scikit-learn (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: nh-about
+    title: About — Nicolas Hug
+    url: https://nicolas-hug.com/about
+    publisher: Nicolas Hug
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: nh-blog
+    title: Blog — Nicolas Hug
+    url: https://nicolas-hug.com/blog
+    publisher: Nicolas Hug
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: nh-joss
+    title: "Surprise: A Python library for recommender systems"
+    url: https://joss.theoj.org/papers/10.21105/joss.02174
+    publisher: Journal of Open Source Software
+    kind: paper
+    published_at: 2020-08-05
+    accessed_at: 2026-10-21
+  - id: nh-skl021
+    title: Release Highlights and changelog for scikit-learn 0.21
+    url: https://scikit-learn.org/stable/whats_new/v0.21.html
+    publisher: scikit-learn
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-21

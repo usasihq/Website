@@ -53,9 +53,43 @@ links:
     url: https://www.youtube.com/@nerd-snipe
   - label: Substack
     url: https://davis7.substack.com/
+sections:
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Ben Davis's personal YouTube channel, which joined YouTube in September 2022, describes its subject
+          as development work and whatever topic Ben is currently exploring. Ben also co-hosts Nerd Snipe, a
+          YouTube show, created in April 2026, in which Theo and Ben talk about developer topics.
+        source_ids: [channel, nerd-snipe]
+      - text: >-
+          Ben's Substack carries longer written notes on AI and technology. The davis7.sh site gathers dated
+          "State of AI" editions, with notes on the models, coding-agent harnesses and subscriptions Ben uses,
+          and write-ups of a macOS setup, a home server, a Karabiner keyboard configuration and the font Ben
+          uses in an editor and terminal.
+        source_ids: [substack, site, state-of-ai]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Ben publishes an MIT-licensed configuration for the Pi coding agent on GitHub. Its README says it
+          adds a theme, web search and scraping tools, background terminals, subagents, workflows, a tool that
+          lets the model ask multiple-choice questions, and file-discovery and content-search tools.
+        source_ids: [pi-setup-repo, site]
+timeline:
+  - date: "2022-09-28"
+    text: Ben Davis's personal YouTube channel was created.
+    source_ids: [channel]
+  - date: "2026-03-25"
+    text: Published an edition of the "State of AI" notes on davis7.sh.
+    source_ids: [state-of-ai]
+  - date: "2026-04-16"
+    text: The Nerd Snipe YouTube channel, co-hosted with Theo, was created.
+    source_ids: [nerd-snipe]
+  - date: "2026-05-05"
+    text: Published the May 2026 edition of the "State of AI" notes on davis7.sh.
+    source_ids: [state-of-ai]
 publication_status: published
-updated_at: 2026-10-18
-last_reviewed: 2026-10-18
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: site
     title: Ben Davis — personal site
@@ -63,32 +97,39 @@ sources:
     publisher: Ben Davis
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-18
+    accessed_at: 2026-10-21
   - id: state-of-ai
     title: "State of AI Rankings: The AI Tools I'm Using (2026-05-05 edition)"
     url: https://www.davis7.sh/en/ai
     publisher: Ben Davis
     kind: official-page
     published_at: 2026-05-05
-    accessed_at: 2026-10-18
+    accessed_at: 2026-10-21
   - id: channel
     title: Ben Davis — YouTube channel About
     url: https://www.youtube.com/@bmdavis419/about
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-18
+    accessed_at: 2026-10-21
   - id: nerd-snipe
     title: Nerd Snipe — YouTube channel About
     url: https://www.youtube.com/@nerd-snipe/about
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-18
+    accessed_at: 2026-10-21
   - id: substack
     title: About - Ben Davis (Substack)
     url: https://davis7.substack.com/about
     publisher: Substack
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-18
+    accessed_at: 2026-10-21
+  - id: pi-setup-repo
+    title: davis7dotsh/my-pi-setup README (MIT)
+    url: https://github.com/davis7dotsh/my-pi-setup
+    publisher: Ben Davis (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

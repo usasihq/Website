@@ -16,7 +16,7 @@ bio:
     (GSPO) and gated attention for language models, and Lin co-authored the Qwen Technical Report
     (2023).
   source_ids: [homepage, github-profile, openhands-paper, qwen3-paper, gspo-paper, qwen-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Independent
     organization_slug: null
@@ -55,9 +55,62 @@ links:
     url: https://justinlin610.github.io/
   - label: GitHub
     url: https://github.com/JustinLin610
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Lin's homepage frames the research around three questions: how models can plan and act rather than
+          only answer, how language and vision can work as one system, and which training methods support
+          stronger post-training. Themes include long-horizon planning, tool use, multimodal representation
+          and reinforcement-learning infrastructure.
+        source_ids: [homepage]
+      - text: >-
+          On training methods, Lin co-authored Group Sequence Policy Optimization (GSPO), a sequence-level
+          policy optimization method for reinforcement learning of large models, and "Gated Attention for
+          Large Language Models" (2025), which studies gating in attention for non-linearity, sparsity and
+          avoiding attention sinks.
+        source_ids: [gspo-paper, gated-attention-paper, homepage]
+  - heading: Qwen models and agents
+    paragraphs:
+      - text: >-
+          Lin is a co-author of the Qwen Technical Report (2023), the Qwen2.5-VL Technical Report (2025) on
+          vision-language models and the Qwen3 Technical Report (2025). The homepage also lists Qwen3-Coder,
+          an agentic coding model the Qwen team announced in July 2025, and the Qwen-Image technical report on
+          image generation among Lin's selected work.
+        source_ids: [qwen-paper, qwen25vl-paper, qwen3-paper, qwen3-coder-blog, homepage]
+      - text: >-
+          Lin co-authored the 2024 OpenHands paper on an open platform for software-development agents.
+          In a March 2026 essay, "From 'Reasoning' Thinking to 'Agentic' Thinking", Lin describes the shift
+          from static reasoning models to agentic systems that think in order to act.
+        source_ids: [openhands-paper, lin-essay]
+timeline:
+  - date: "2023-09-28"
+    text: Co-authored the Qwen Technical Report.
+    source_ids: [qwen-paper]
+  - date: "2024-07-23"
+    text: Co-authored the OpenHands paper on an open platform for AI software developers.
+    source_ids: [openhands-paper]
+  - date: "2025-02-19"
+    text: Co-authored the Qwen2.5-VL Technical Report on vision-language models.
+    source_ids: [qwen25vl-paper]
+  - date: "2025-05-10"
+    text: Co-authored "Gated Attention for Large Language Models".
+    source_ids: [gated-attention-paper]
+  - date: "2025-05-14"
+    text: Co-authored the Qwen3 Technical Report.
+    source_ids: [qwen3-paper]
+  - date: "2025-07-22"
+    text: The Qwen team announced Qwen3-Coder, an agentic coding model listed among Lin's selected work.
+    source_ids: [qwen3-coder-blog, homepage]
+  - date: "2025-07-24"
+    text: Co-authored "Group Sequence Policy Optimization" (GSPO).
+    source_ids: [gspo-paper]
+  - date: "2026-03-26"
+    text: Published the essay "From 'Reasoning' Thinking to 'Agentic' Thinking".
+    source_ids: [lin-essay]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Junyang Lin — homepage (about and selected work)
@@ -65,21 +118,21 @@ sources:
     publisher: Junyang Lin
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: JustinLin610 (Junyang Lin) on GitHub
     url: https://github.com/JustinLin610
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: openhands-paper
     title: "OpenHands: An Open Platform for AI Software Developers as Generalist Agents (arXiv 2407.16741)"
     url: https://arxiv.org/abs/2407.16741
     publisher: arXiv
     kind: paper
     published_at: 2024-07-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: openhands-license
     title: OpenHands/OpenHands LICENSE (MIT)
     url: https://github.com/OpenHands/OpenHands/blob/main/LICENSE
@@ -93,18 +146,46 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2025-05-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gspo-paper
     title: Group Sequence Policy Optimization (arXiv 2507.18071)
     url: https://arxiv.org/abs/2507.18071
     publisher: arXiv
     kind: paper
     published_at: 2025-07-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: qwen-paper
     title: Qwen Technical Report (arXiv 2309.16609)
     url: https://arxiv.org/abs/2309.16609
     publisher: arXiv
     kind: paper
     published_at: 2023-09-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: qwen25vl-paper
+    title: "Qwen2.5-VL Technical Report (arXiv 2502.13923)"
+    url: https://arxiv.org/abs/2502.13923
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-19
+    accessed_at: 2026-10-21
+  - id: gated-attention-paper
+    title: "Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free (arXiv 2505.06708)"
+    url: https://arxiv.org/abs/2505.06708
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-10
+    accessed_at: 2026-10-21
+  - id: qwen3-coder-blog
+    title: "Qwen3-Coder: Agentic Coding in the World"
+    url: https://qwenlm.github.io/blog/qwen3-coder/
+    publisher: Qwen Team
+    kind: announcement
+    published_at: 2025-07-22
+    accessed_at: 2026-10-21
+  - id: lin-essay
+    title: From 'Reasoning' Thinking to 'Agentic' Thinking
+    url: https://justinlin610.github.io/blog/from-reasoning-to-agentic-thinking/
+    publisher: Junyang Lin
+    kind: official-page
+    published_at: 2026-03-26
+    accessed_at: 2026-10-21

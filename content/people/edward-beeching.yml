@@ -15,7 +15,7 @@ bio:
     Face blog posts on TRL, including a 2023 guide to fine-tuning a 20B model with RLHF on a 24GB
     consumer GPU, and is listed among the authors of the SmolLM3 release.
   source_ids: [beeching-site, github-profile, trl-citation, zephyr-paper, smollm3-blog]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
@@ -57,9 +57,68 @@ links:
     url: https://github.com/edbeeching
   - label: Hugging Face
     url: https://huggingface.co/edbeeching
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Beeching completed a PhD at INSA Lyon with the INRIA CHROMA team, studying deep reinforcement learning
+          for planning, navigation and embodied agents. Papers from that period, written with Christian Wolf,
+          Jilles Dibangoye and Olivier Simonin, include EgoMap, a structured egocentric memory for reinforcement
+          learning agents, and work on learning to plan with uncertain topological maps, presented as a spotlight
+          at ECCV 2020.
+        source_ids: [beeching-site]
+      - text: >-
+          At Hugging Face, Beeching's research turned to post-training and reasoning for language models.
+          Beeching was co-first author, with Lewis Tunstall, of Zephyr, which distills supervised and preference
+          signals to align a smaller open chat model, and later co-wrote papers on meta reinforcement
+          fine-tuning for test-time compute and on QED-Nano, a small open model for Olympiad-level proofs.
+        source_ids: [beeching-site, zephyr-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Beeching is listed among the authors of TRL, Hugging Face's library for post-training with supervised
+          fine-tuning, preference optimization and reinforcement learning, and has co-written Hugging Face blog
+          posts on its use, including a 2023 guide to RLHF fine-tuning of 20B models on a consumer GPU and the
+          StackLLaMA tutorial. Other open projects on Beeching's site include Open R1, an open reproduction of
+          reasoning-model training recipes, NuminaMath, a set of open models and competition-mathematics data,
+          and JAT, a multi-purpose Transformer agent.
+        source_ids: [trl-citation, beeching-site]
+      - text: >-
+          Beeching also co-authored Godot Reinforcement Learning Agents, an open interface between the Godot game
+          engine and common reinforcement-learning frameworks, and is listed among the authors of the 2025
+          SmolLM3 release.
+        source_ids: [beeching-site, smollm3-blog]
+timeline:
+  - date: "2020"
+    text: Presented work on learning to plan with uncertain topological maps as a spotlight at ECCV 2020.
+    source_ids: [beeching-site]
+  - date: "2021"
+    text: Presented Godot Reinforcement Learning Agents at the AAAI Workshop on Reinforcement Learning in Games.
+    source_ids: [beeching-site]
+  - date: "2022-03-28"
+    text: Co-wrote the Hugging Face blog post introducing Decision Transformers on the Hub.
+    source_ids: [beeching-site]
+  - date: "2023-03-09"
+    text: Co-wrote a Hugging Face guide to fine-tuning 20B language models with RLHF on a 24GB consumer GPU.
+    source_ids: [beeching-site]
+  - date: "2023-10-25"
+    text: Released the Zephyr paper on direct distillation of language model alignment as co-first author.
+    source_ids: [zephyr-paper]
+  - date: "2024-07-11"
+    text: Co-wrote the Hugging Face post on how NuminaMath won the first AIMO Progress Prize.
+    source_ids: [beeching-site]
+  - date: "2025-07-08"
+    text: Co-authored the SmolLM3 release on the Hugging Face blog.
+    source_ids: [smollm3-blog]
+  - date: "2025-08-05"
+    text: Co-wrote the OpenAI Cookbook guide to fine-tuning gpt-oss with Hugging Face Transformers.
+    source_ids: [beeching-site]
+  - date: "2026-05-27"
+    text: Co-wrote a Hugging Face post on delta weight sync in TRL.
+    source_ids: [beeching-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: beeching-site
     title: Edward Beeching — homepage (research and writing)
@@ -67,32 +126,32 @@ sources:
     publisher: Edward Beeching
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: edbeeching (Edward Beeching) on GitHub
     url: https://github.com/edbeeching
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: trl-citation
     title: huggingface/trl CITATION.cff (authors, license Apache-2.0)
     url: https://github.com/huggingface/trl/blob/main/CITATION.cff
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: smollm3-blog
     title: "SmolLM3: smol, multilingual, long-context reasoner (Hugging Face blog)"
     url: https://huggingface.co/blog/smollm3
     publisher: Hugging Face
     kind: announcement
     published_at: 2025-07-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: zephyr-paper
     title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
     url: https://arxiv.org/abs/2310.16944
     publisher: arXiv
     kind: paper
     published_at: 2023-10-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

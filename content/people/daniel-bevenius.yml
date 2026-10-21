@@ -15,7 +15,7 @@ bio:
     Bevenius's recent commits cover build-time improvements, API and ABI checks in the release
     workflow, parallel server tests, and model-conversion tooling.
   source_ids: [github-profile, ggml-site, llama-cpp-codeowners, llama-cpp-commits]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
@@ -44,9 +44,40 @@ links:
     url: https://github.com/danbev
   - label: Hugging Face
     url: https://huggingface.co/danbev
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Daniel Bevenius, who publishes as danbev on GitHub, works on the ggml family of local-inference
+          projects. In llama.cpp, the CODEOWNERS file names Bevenius as owner of the model-conversion example and
+          the XCFramework build script, co-owner of the debug example, and a member of the CI and llama-common
+          teams.
+        source_ids: [llama-cpp-codeowners, github-profile]
+      - text: >-
+          Bevenius also contributes to whisper.cpp, the C/C++ port of OpenAI's Whisper speech-recognition model.
+          The whisper.cpp v1.9.0 release notes of June 2026 credit Bevenius with adding support for NVIDIA's
+          Parakeet speech models, and Bevenius prepared the v1.9.0, v1.9.1 and v1.9.2 releases along with
+          continuous-integration fixes.
+        source_ids: [whisper-releases]
+  - heading: Node.js
+    paragraphs:
+      - text: >-
+          Bevenius has also been part of the Node.js project: the Node.js README lists Bevenius among its
+          Technical Steering Committee emeriti and collaborator emeriti.
+        source_ids: [nodejs-readme]
+timeline:
+  - date: "2026-06-17"
+    text: Added NVIDIA Parakeet support to whisper.cpp, shipped in the v1.9.0 release that Bevenius prepared.
+    source_ids: [whisper-releases]
+  - date: "2026-06-19"
+    text: Prepared the whisper.cpp v1.9.1 release.
+    source_ids: [whisper-releases]
+  - date: "2026-08-04"
+    text: Prepared the whisper.cpp v1.9.2 release with several CI and example fixes.
+    source_ids: [whisper-releases]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: danbev (Daniel Bevenius) on GitHub
@@ -54,21 +85,21 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ggml-site
     title: ggml.ai — about the company
     url: https://ggml.ai
     publisher: ggml.ai
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by danbev
     url: https://github.com/ggml-org/llama.cpp/commits?author=danbev
@@ -82,4 +113,18 @@ sources:
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: whisper-releases
+    title: ggml-org/whisper.cpp releases (v1.9.0 to v1.9.5 notes)
+    url: https://github.com/ggml-org/whisper.cpp/releases
+    publisher: ggml-org (GitHub repository)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: nodejs-readme
+    title: nodejs/node README (TSC emeriti and collaborator emeriti lists)
+    url: https://raw.githubusercontent.com/nodejs/node/main/README.md
+    publisher: Node.js project (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

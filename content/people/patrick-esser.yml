@@ -14,7 +14,7 @@ bio:
     Esser is also first author of "Scaling Rectified Flow Transformers for High-Resolution Image
     Synthesis" (2024).
   source_ids: [taming-paper, taming-readme, taming-license, ldm-cvpr, ldm-paper, ldm-repo, rf-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Runway ML
     organization_slug: runway
@@ -51,9 +51,58 @@ work:
 links:
   - label: GitHub
     url: https://github.com/pesser
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Esser's early papers, with Björn Ommer and colleagues, include work on conditional image generation,
+          such as "A Variational U-Net for Conditional Appearance and
+          Shape Generation" (2018) as first author. With Robin Rombach, Esser then introduced VQGAN in "Taming
+          Transformers for High-Resolution Image Synthesis" (CVPR 2021), which pairs a convolutional
+          codebook with a Transformer to generate high-resolution images.
+        source_ids: [vunet-paper, taming-paper, taming-readme]
+      - text: >-
+          Esser co-authored the latent diffusion paper (CVPR 2022), which runs diffusion in the latent space of
+          a pretrained autoencoder, and was first author of "Structure and Content-Guided Video Synthesis with
+          Diffusion Models" (2023). In 2024 Esser was first author of the rectified flow transformer scaling
+          paper and co-authored latent adversarial diffusion distillation for fast image synthesis.
+        source_ids: [ldm-paper, ldm-cvpr, gen1-paper, rf-paper, ladd-paper]
+  - heading: Later work
+    paragraphs:
+      - text: >-
+          Esser is listed among the authors of Black Forest Labs' 2025 FLUX.1 Kontext paper on flow matching for
+          in-context image generation and editing, and co-authored "Self-Supervised Flow Matching for Scalable
+          Multi-Modal Synthesis" (2026) with Robin Rombach and others. Code for Taming Transformers and latent
+          diffusion is published in the CompVis GitHub organization under MIT-style licenses.
+        source_ids: [kontext-paper, ssfm-paper, taming-license, ldm-repo]
+timeline:
+  - date: "2018-04-12"
+    text: Released "A Variational U-Net for Conditional Appearance and Shape Generation" as first author.
+    source_ids: [vunet-paper]
+  - date: "2020-12-17"
+    text: Released "Taming Transformers for High-Resolution Image Synthesis" (VQGAN) as co-first author with Robin Rombach.
+    source_ids: [taming-paper, taming-readme]
+  - date: "2021-12-20"
+    text: Co-authored "High-Resolution Image Synthesis with Latent Diffusion Models".
+    source_ids: [ldm-paper]
+  - date: "2023-02-06"
+    text: Released "Structure and Content-Guided Video Synthesis with Diffusion Models" as first author.
+    source_ids: [gen1-paper]
+  - date: "2024-03-05"
+    text: Released "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis" as first author.
+    source_ids: [rf-paper]
+  - date: "2024-03-18"
+    text: Co-authored "Fast High-Resolution Image Synthesis with Latent Adversarial Diffusion Distillation".
+    source_ids: [ladd-paper]
+  - date: "2025-06-17"
+    text: Listed among the authors of the FLUX.1 Kontext paper from Black Forest Labs.
+    source_ids: [kontext-paper]
+  - date: "2026-03-06"
+    text: Co-authored "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis".
+    source_ids: [ssfm-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: taming-paper
     title: "Taming Transformers for High-Resolution Image Synthesis (arXiv 2012.09841)"
@@ -61,46 +110,81 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2020-12-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: taming-readme
     title: CompVis/taming-transformers README
     url: https://github.com/CompVis/taming-transformers
     publisher: CompVis (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: taming-license
     title: CompVis/taming-transformers License.txt
     url: https://github.com/CompVis/taming-transformers/blob/master/License.txt
     publisher: CompVis (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ldm-paper
     title: "High-Resolution Image Synthesis with Latent Diffusion Models (arXiv 2112.10752)"
     url: https://arxiv.org/abs/2112.10752
     publisher: arXiv
     kind: paper
     published_at: 2021-12-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ldm-cvpr
     title: "High-Resolution Image Synthesis With Latent Diffusion Models — CVPR 2022 Open Access (paper PDF with author affiliations)"
     url: https://openaccess.thecvf.com/content/CVPR2022/papers/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.pdf
     publisher: Computer Vision Foundation
     kind: paper
     published_at: "2022"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ldm-repo
     title: CompVis/latent-diffusion README and LICENSE (MIT)
     url: https://github.com/CompVis/latent-diffusion
     publisher: CompVis (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: rf-paper
     title: "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis (arXiv 2403.03206)"
     url: https://arxiv.org/abs/2403.03206
     publisher: arXiv
     kind: paper
     published_at: 2024-03-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: vunet-paper
+    title: "A Variational U-Net for Conditional Appearance and Shape Generation (arXiv 1804.04694)"
+    url: https://arxiv.org/abs/1804.04694
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-04-12
+    accessed_at: 2026-10-21
+  - id: gen1-paper
+    title: "Structure and Content-Guided Video Synthesis with Diffusion Models (arXiv 2302.03011)"
+    url: https://arxiv.org/abs/2302.03011
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-02-06
+    accessed_at: 2026-10-21
+  - id: ladd-paper
+    title: "Fast High-Resolution Image Synthesis with Latent Adversarial Diffusion Distillation (arXiv 2403.12015)"
+    url: https://arxiv.org/abs/2403.12015
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-03-18
+    accessed_at: 2026-10-21
+  - id: kontext-paper
+    title: "FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space (arXiv 2506.15742)"
+    url: https://arxiv.org/abs/2506.15742
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-17
+    accessed_at: 2026-10-21
+  - id: ssfm-paper
+    title: "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis (arXiv 2603.06507)"
+    url: https://arxiv.org/abs/2603.06507
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-06
+    accessed_at: 2026-10-21

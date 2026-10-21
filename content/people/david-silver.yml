@@ -14,7 +14,7 @@ bio:
     games from raw pixels. Silver's site also publishes the lectures and Easy21 assignment of a 2015
     Advanced Topics course on reinforcement learning (COMPM050/COMPGI13) under a CC-BY-NC 4.0 license.
   source_ids: [homepage, alphazero-paper, dqn-paper, teaching]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Ineffable Intelligence
     organization_slug: null
@@ -60,9 +60,100 @@ work:
 links:
   - label: Website
     url: https://davidstarsilver.wordpress.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Silver's research milestones page traces the work from doctoral research at the University of Alberta,
+          on real-time planning in games with hidden state using partially observable Monte-Carlo planning,
+          through a postdoctoral position at MIT, where Monte-Carlo search was applied to Civilization II. At
+          DeepMind, Silver led the reinforcement learning team until recently.
+        source_ids: [research-page, homepage]
+      - text: >-
+          Silver is now CEO of Ineffable Intelligence and a professor at University College London. Silver's
+          biography describes the focus of the work as building superintelligent agents with reinforcement
+          learning.
+        source_ids: [about-page, homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          At DeepMind, Silver led or co-led projects that learned to play Atari games from pixels, defeated a
+          professional Go player with AlphaGo, and learned chess, shogi and Go by self-play with AlphaZero.
+          MuZero extended this to planning with a learned model without being given the rules, and AlphaStar
+          reached grandmaster level in StarCraft II.
+        source_ids: [about-page, research-page, dqn-paper, alphazero-paper, muzero-paper]
+      - text: >-
+          Silver also contributed to AlphaFold for protein structure prediction and AlphaProof for formal
+          mathematical reasoning, and co-authored work on discovering reinforcement learning algorithms
+          automatically. With Richard Sutton, Silver wrote the position papers "Reward is Enough" (2021, with
+          Satinder Singh and Doina Precup) and "Welcome to the Era of Experience" (2025).
+        source_ids: [about-page, publications-page, perspectives-page]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          Silver's website hosts the materials for a 2015 Advanced Topics course on reinforcement learning
+          (COMPM050/COMPGI13), including lecture slides, the Easy21 assignment and past exam questions,
+          released under a CC-BY-NC 4.0 license.
+        source_ids: [teaching]
+timeline:
+  - date: "2010"
+    text: Published partially observable Monte-Carlo planning (POMCP) at NIPS 2010 from doctoral work at the University of Alberta.
+    source_ids: [research-page]
+  - date: "2013-12"
+    text: Co-authored "Playing Atari with Deep Reinforcement Learning", which introduced deep Q-networks for Atari games.
+    source_ids: [dqn-paper]
+  - date: "2015"
+    text: Published the materials of the Advanced Topics 2015 course on reinforcement learning (COMPM050/COMPGI13).
+    source_ids: [teaching]
+  - date: "2016"
+    text: Published AlphaGo in Nature, the first program to defeat a human professional Go player.
+    source_ids: [research-page, about-page]
+  - date: "2017-12"
+    text: Posted the AlphaZero paper on mastering chess and shogi by self-play as first author.
+    source_ids: [alphazero-paper]
+  - date: "2019"
+    text: Co-authored the Nature paper on AlphaStar reaching grandmaster level in StarCraft II.
+    source_ids: [publications-page]
+  - date: "2019-11"
+    text: Co-authored MuZero, which plans with a learned model in Atari, Go, chess and shogi.
+    source_ids: [muzero-paper]
+  - date: "2021"
+    text: Published "Reward is Enough" with Satinder Singh, Doina Precup and Richard Sutton.
+    source_ids: [publications-page]
+  - date: "2025"
+    text: Co-authored the Nature paper on AlphaProof's olympiad-level formal mathematical reasoning.
+    source_ids: [publications-page]
+  - date: "2025"
+    text: Wrote the position paper "Welcome to the Era of Experience" with Richard Sutton.
+    source_ids: [publications-page, perspectives-page]
+honors:
+  - name: ACM Prize in Computing
+    year: null
+    awarded_by: Association for Computing Machinery
+    source_ids: [about-page]
+  - name: ACM Fellow
+    year: null
+    awarded_by: Association for Computing Machinery
+    source_ids: [about-page]
+  - name: Fellow of the Royal Society
+    year: null
+    awarded_by: Royal Society
+    source_ids: [about-page]
+  - name: Royal Academy of Engineering Silver Medal
+    year: null
+    awarded_by: Royal Academy of Engineering
+    source_ids: [about-page]
+  - name: Mensa Foundation Prize
+    year: null
+    awarded_by: Mensa Foundation
+    source_ids: [about-page]
+  - name: Fellow of the Academy of the Mathematical Sciences
+    year: null
+    awarded_by: Academy of the Mathematical Sciences
+    source_ids: [about-page]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: David Silver — homepage (About)
@@ -70,25 +161,60 @@ sources:
     publisher: David Silver
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: teaching
     title: David Silver — Teaching (Advanced Topics 2015, Reinforcement Learning)
     url: https://davidstarsilver.wordpress.com/teaching/
     publisher: David Silver
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: alphazero-paper
     title: "Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm (arXiv 1712.01815)"
     url: https://arxiv.org/abs/1712.01815
     publisher: arXiv
     kind: paper
     published_at: 2017-12-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dqn-paper
     title: "Playing Atari with Deep Reinforcement Learning (arXiv 1312.5602)"
     url: https://arxiv.org/abs/1312.5602
     publisher: arXiv
     kind: paper
     published_at: 2013-12-19
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: about-page
+    title: David Silver — Bio
+    url: https://davidstarsilver.wordpress.com/about/
+    publisher: David Silver
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: research-page
+    title: David Silver — Research milestones
+    url: https://davidstarsilver.wordpress.com/research/
+    publisher: David Silver
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: publications-page
+    title: David Silver — Publications
+    url: https://davidstarsilver.wordpress.com/publications/
+    publisher: David Silver
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: perspectives-page
+    title: David Silver — Perspectives (position papers and talks)
+    url: https://davidstarsilver.wordpress.com/perspectives/
+    publisher: David Silver
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: muzero-paper
+    title: Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model (arXiv 1911.08265)
+    url: https://arxiv.org/abs/1911.08265
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-11-19
+    accessed_at: 2026-10-21

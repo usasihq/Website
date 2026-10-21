@@ -13,7 +13,7 @@ bio:
     Optional in CPython," whose status is Final. Gross's GitHub profile lists Thinking Machines as
     their company.
   source_ids: [pytorch-paper, pytorch-paper-pdf, pytorch-maintainers, pep-703, github-profile]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Thinking Machines
     organization_slug: thinking-machines-lab
@@ -46,9 +46,57 @@ work:
 links:
   - label: GitHub
     url: https://github.com/colesbury
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Gross co-authored papers across vision, language and games. These include a
+          study of learning physical intuition from block towers (2016), the MultiPath network for object
+          detection (2016), "Hard Mixtures of Experts for Large Scale Weakly Supervised Vision" (2017, as first
+          author), Deep Counterfactual Regret Minimization (2018) and the fairseq sequence-modelling toolkit
+          (2019).
+        source_ids: [block-towers-paper, multipath-paper, hard-moe-paper, deep-cfr-paper, fairseq-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Gross is the second author of the 2019 PyTorch paper, which describes the library's imperative,
+          Pythonic design and its implementation, and is listed on PyTorch's maintainers page as an emeritus
+          maintainer of torch.nn and of the MKLDNN integration.
+        source_ids: [pytorch-paper, pytorch-paper-pdf, pytorch-maintainers]
+      - text: >-
+          Gross wrote PEP 703, created in January 2023, which proposed a build configuration (--disable-gil)
+          that lets CPython run Python code without the global interpreter lock, along with the changes needed
+          to make the interpreter thread-safe. The PEP targets Python 3.13, was resolved in October 2023 and now
+          has Final status.
+        source_ids: [pep-703]
+timeline:
+  - date: "2016-03"
+    text: Co-authored "Learning Physical Intuition of Block Towers by Example" with Adam Lerer and Rob Fergus.
+    source_ids: [block-towers-paper]
+  - date: "2016-04"
+    text: Co-authored "A MultiPath Network for Object Detection".
+    source_ids: [multipath-paper]
+  - date: "2017-04"
+    text: Posted "Hard Mixtures of Experts for Large Scale Weakly Supervised Vision" as first author.
+    source_ids: [hard-moe-paper]
+  - date: "2018-11"
+    text: Co-authored "Deep Counterfactual Regret Minimization".
+    source_ids: [deep-cfr-paper]
+  - date: "2019-04"
+    text: Co-authored fairseq, a toolkit for sequence modeling.
+    source_ids: [fairseq-paper]
+  - date: "2019-12"
+    text: Posted the PyTorch paper as second author.
+    source_ids: [pytorch-paper]
+  - date: "2023-01-09"
+    text: Created PEP 703, "Making the Global Interpreter Lock Optional in CPython".
+    source_ids: [pep-703]
+  - date: "2023-10-24"
+    text: PEP 703 was resolved, for the Python 3.13 release series.
+    source_ids: [pep-703]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: colesbury (Sam Gross) on GitHub
@@ -56,39 +104,74 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-paper
     title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library (arXiv 1912.01703)"
     url: https://arxiv.org/abs/1912.01703
     publisher: arXiv
     kind: paper
     published_at: 2019-12-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-paper-pdf
     title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library, paper PDF with author affiliations (arXiv 1912.01703)"
     url: https://arxiv.org/pdf/1912.01703
     publisher: arXiv
     kind: paper
     published_at: 2019-12-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-maintainers
     title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
     url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
     publisher: PyTorch
     kind: documentation
     published_at: 2026-06-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-license
     title: pytorch/pytorch LICENSE (BSD-style license)
     url: https://github.com/pytorch/pytorch/blob/main/LICENSE
     publisher: PyTorch (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pep-703
     title: "PEP 703 – Making the Global Interpreter Lock Optional in CPython"
     url: https://peps.python.org/pep-0703/
     publisher: Python Software Foundation (peps.python.org)
     kind: documentation
     published_at: 2023-01-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: block-towers-paper
+    title: Learning Physical Intuition of Block Towers by Example (arXiv 1603.01312)
+    url: https://arxiv.org/abs/1603.01312
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-03-03
+    accessed_at: 2026-10-21
+  - id: multipath-paper
+    title: A MultiPath Network for Object Detection (arXiv 1604.02135)
+    url: https://arxiv.org/abs/1604.02135
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-04-07
+    accessed_at: 2026-10-21
+  - id: hard-moe-paper
+    title: Hard Mixtures of Experts for Large Scale Weakly Supervised Vision (arXiv 1704.06363)
+    url: https://arxiv.org/abs/1704.06363
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-04-20
+    accessed_at: 2026-10-21
+  - id: deep-cfr-paper
+    title: Deep Counterfactual Regret Minimization (arXiv 1811.00164)
+    url: https://arxiv.org/abs/1811.00164
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-11-01
+    accessed_at: 2026-10-21
+  - id: fairseq-paper
+    title: "fairseq: A Fast, Extensible Toolkit for Sequence Modeling (arXiv 1904.01038)"
+    url: https://arxiv.org/abs/1904.01038
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-04-01
+    accessed_at: 2026-10-21

@@ -42,9 +42,69 @@ work:
 links:
   - label: Website
     url: https://rishibommasani.github.io
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Rishi Bommasani studies the societal and economic impact of frontier AI. As a Stanford PhD student
+          advised by Percy Liang and Dan Jurafsky, Bommasani was first author of the 2021 report "On the
+          Opportunities and Risks of Foundation Models," and was one of the joint lead authors of HELM, the
+          2022 framework for holistic evaluation of language models.
+        source_ids: [bommasani-bio, cv, fm-paper, helm-paper]
+      - text: >-
+          Bommasani was also first author of the Foundation Model Transparency Index, first published in October 2023, which
+          scores how much information foundation model developers disclose; the 2023 and 2024 editions
+          appeared in Transactions on Machine Learning Research, with the 2023 index named an outstanding
+          paper. Other recent work examines third-party evaluation and flaw disclosure for general-purpose AI
+          and reporting of train-test overlap.
+        source_ids: [cv, fmti-paper]
+  - heading: Career and policy work
+    paragraphs:
+      - text: >-
+          Bommasani completed a B.A. and M.S. at Cornell University advised by Claire Cardie, then a Stanford
+          PhD from 2020 to 2025, and is now a senior research scholar at Stanford HAI. Bommasani's CV lists
+          co-founding the Stanford Center for Research on Foundation Models and founding Stanford AI Policy.
+        source_ids: [cv, bommasani-site]
+      - text: >-
+          Bommasani was lead author of the California Report on Frontier AI Policy, served as an independent
+          expert chair for the EU AI Act Code of Practice, and is an author of the International Scientific
+          Report on the Safety of Advanced AI.
+        source_ids: [bommasani-bio, cv]
+timeline:
+  - date: "2019-05"
+    text: Completed undergraduate degrees in computer science and mathematics at Cornell University.
+    source_ids: [cv]
+  - date: "2020-09"
+    text: Began a PhD in computer science at Stanford University.
+    source_ids: [cv]
+  - date: "2021-08"
+    text: Posted "On the Opportunities and Risks of Foundation Models" as first author.
+    source_ids: [fm-paper]
+  - date: "2022-11"
+    text: Co-led the paper introducing HELM, the Holistic Evaluation of Language Models.
+    source_ids: [helm-paper, cv]
+  - date: "2023-10"
+    text: Posted the first Foundation Model Transparency Index as first author.
+    source_ids: [fmti-paper]
+  - date: "2025-06"
+    text: Completed a PhD in computer science at Stanford University.
+    source_ids: [cv]
+honors:
+  - name: NSF Graduate Research Fellowship
+    year: null
+    awarded_by: U.S. National Science Foundation
+    source_ids: [cv, bommasani-bio]
+  - name: Stanford Open Source Software Prize
+    year: null
+    awarded_by: Stanford University
+    source_ids: [cv]
+  - name: TMLR Outstanding Paper for "The 2023 Foundation Model Transparency Index"
+    year: null
+    awarded_by: Transactions on Machine Learning Research
+    source_ids: [cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: bommasani-site
     title: Rishi Bommasani — homepage
@@ -52,25 +112,39 @@ sources:
     publisher: Rishi Bommasani
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: bommasani-bio
     title: Rishi Bommasani — bio
     url: https://rishibommasani.github.io/bio
     publisher: Rishi Bommasani
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: helm-paper
     title: Holistic Evaluation of Language Models (arXiv 2211.09110)
     url: https://arxiv.org/abs/2211.09110
     publisher: arXiv
     kind: paper
     published_at: 2022-11-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fm-paper
     title: On the Opportunities and Risks of Foundation Models (arXiv 2108.07258)
     url: https://arxiv.org/abs/2108.07258
     publisher: arXiv
     kind: paper
     published_at: 2021-08-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: cv
+    title: "Rishi Bommasani — CV"
+    url: https://raw.githubusercontent.com/rishibommasani/rishibommasani.github.io/master/cv/CV.pdf
+    publisher: Rishi Bommasani
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: fmti-paper
+    title: "The Foundation Model Transparency Index (arXiv 2310.12941)"
+    url: https://arxiv.org/abs/2310.12941
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-19
+    accessed_at: 2026-10-21

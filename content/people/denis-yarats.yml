@@ -17,7 +17,7 @@ bio:
     co-author of DRACO (2026), a benchmark of deep research tasks graded for accuracy, completeness and
     objectivity.
   source_ids: [aws-perplexity-article, humanx-yarats, drq-paper, drqv2-paper, drqv2-repo, draco-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Perplexity
     organization_slug: perplexity
@@ -59,9 +59,61 @@ work:
       Perplexity Deep Research requests.
     source_ids: [draco-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Yarats's research before Perplexity focused on reinforcement learning from images. As first author,
+          with Amy Zhang, Ilya Kostrikov, Brandon Amos and others, Yarats released a 2019 study of improving
+          sample efficiency in model-free reinforcement learning from pixels, and in 2021 released Proto-RL, a
+          method for learning prototypical representations, with Rob Fergus, Alessandro Lazaric and Lerrel
+          Pinto.
+        source_ids: [dy-sacae, dy-proto]
+      - text: >-
+          With Kostrikov and Fergus, Yarats co-wrote DrQ in 2020, showing that simple image augmentation can
+          regularize deep reinforcement learning from pixels. Its 2021 successor DrQ-v2, first-authored by
+          Yarats, improved data-augmented learning for visual continuous control, and its original PyTorch
+          implementation is published in the facebookresearch GitHub organization.
+        source_ids: [drq-paper, drqv2-paper, drqv2-repo]
+  - heading: Perplexity
+    paragraphs:
+      - text: >-
+          Yarats co-founded Perplexity in 2022 with Aravind Srinivas, Johnny Ho and Andy Konwinski, after work
+          as an AI research scientist at Meta. A 2024 AWS Startups article co-written by Yarats says the team
+          first experimented with translating natural language into SQL before combining a traditional search
+          index with large language models to build an answer engine with cited sources.
+        source_ids: [aws-perplexity-article]
+      - text: >-
+          The HumanX speaker page lists Yarats as co-founder and Chief Technology Officer and credits Perplexity
+          under Yarats's leadership with its answer engine, the Comet browser and the Perplexity Computer
+          orchestration system. With Perplexity colleagues, Yarats co-wrote DRACO, a 2026 benchmark for the
+          accuracy, completeness and objectivity of deep research systems.
+        source_ids: [humanx-yarats, draco-paper]
+timeline:
+  - date: "2019-10-02"
+    text: Released a first-authored study on sample-efficient model-free reinforcement learning from images.
+    source_ids: [dy-sacae]
+  - date: "2020-04-28"
+    text: Released DrQ, on regularizing deep reinforcement learning from pixels with image augmentation.
+    source_ids: [drq-paper]
+  - date: "2021-02-22"
+    text: Released Proto-RL, a reinforcement learning method using prototypical representations.
+    source_ids: [dy-proto]
+  - date: "2021-07-20"
+    text: Released DrQ-v2 for visual continuous control, with an open-source PyTorch implementation.
+    source_ids: [drqv2-paper, drqv2-repo]
+  - date: "2022"
+    text: Co-founded Perplexity with Aravind Srinivas, Johnny Ho and Andy Konwinski.
+    source_ids: [aws-perplexity-article, humanx-yarats]
+  - date: "2024-11-18"
+    text: Co-wrote an AWS Startups article on how Perplexity built its answer engine.
+    source_ids: [aws-perplexity-article]
+  - date: "2026-02-12"
+    text: Co-authored DRACO, a cross-domain benchmark for deep research systems.
+    source_ids: [draco-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: aws-perplexity-article
     title: "Reimagining search: Perplexity drives productivity with generative AI-powered answer engine (AWS Startups)"
@@ -69,39 +121,53 @@ sources:
     publisher: Amazon Web Services (byline Denis Yarats and Marcos Boaglio)
     kind: official-page
     published_at: 2024-11-18
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: humanx-yarats
     title: Denis Yarats — HumanX 2026 speaker page
     url: https://www.humanx.co/us/speakers/denis-yarats
     publisher: HumanX
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: drqv2-paper
     title: "Mastering Visual Continuous Control: Improved Data-Augmented Reinforcement Learning (arXiv 2107.09645 v1 PDF, author affiliations)"
     url: https://arxiv.org/pdf/2107.09645v1
     publisher: arXiv
     kind: paper
     published_at: 2021-07-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: drqv2-repo
     title: facebookresearch/drqv2 README and license (MIT)
     url: https://github.com/facebookresearch/drqv2
     publisher: facebookresearch (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: drq-paper
     title: "Image Augmentation Is All You Need: Regularizing Deep Reinforcement Learning from Pixels (arXiv 2004.13649 v4 PDF, author affiliations)"
     url: https://arxiv.org/pdf/2004.13649v4
     publisher: arXiv
     kind: paper
     published_at: 2020-04-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: draco-paper
     title: "DRACO: a Cross-Domain Benchmark for Deep Research Accuracy, Completeness, and Objectivity (arXiv 2602.11685 v1 HTML, author affiliations)"
     url: https://arxiv.org/html/2602.11685v1
     publisher: arXiv
     kind: paper
     published_at: 2026-02-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: dy-sacae
+    title: Improving Sample Efficiency in Model-Free Reinforcement Learning from Images
+    url: https://arxiv.org/abs/1910.01741
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-02
+    accessed_at: 2026-10-21
+  - id: dy-proto
+    title: Reinforcement Learning with Prototypical Representations
+    url: https://arxiv.org/abs/2102.11271
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-02-22
+    accessed_at: 2026-10-21

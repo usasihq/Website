@@ -15,7 +15,7 @@ bio:
     sparsely-gated Mixture-of-Experts layer, deep reinforcement learning for chip placement
     (the AlphaChip line of work), and research on scaling inference compute through repeated sampling.
   source_ids: [stanford-profile, mirhoseini-site, moe-paper, chip-paper, monkeys-paper]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Stanford University
     organization_slug: stanford-university
@@ -73,9 +73,72 @@ links:
     url: https://profiles.stanford.edu/azalia-mirhoseini
   - label: Website
     url: https://www.azaliamirhoseini.com/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Mirhoseini describes a research interest in self-improving AI, including AI that helps design models,
+          software and hardware. Early work introduced the sparsely-gated Mixture-of-Experts layer for language
+          models in 2017, alongside deep reinforcement learning methods for placing model computations across
+          devices. Mirhoseini co-founded and led AlphaChip, a deep reinforcement learning approach to chip
+          layout published in Nature in 2021, whose layouts have been used for Google TPUs and data center CPUs.
+        source_ids: [mirhoseini-site, moe-paper, chip-paper]
+      - text: >-
+          During time at Anthropic, Mirhoseini contributed to Constitutional AI, a 2022 training approach in
+          which a model critiques and revises its own outputs against a set of principles. Later work on test-time
+          scaling includes Large Language Monkeys, which studied how coverage grows as more samples are drawn at
+          inference time, and the Scaling Intelligence lab's projects include KernelBench, SWiRL, Intelligence Per
+          Watt and the open-source OpenJarvis framework for on-device agents.
+        source_ids: [mirhoseini-site, monkeys-paper]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          At Stanford, Mirhoseini has taught CS229S, Systems for Machine Learning, in fall 2023 and fall 2024, and
+          CS329A, Self-Improving AI Agents, in winter 2024 and fall 2025. The Stanford profile lists CS 329A again
+          for spring of the 2026–27 academic year.
+        source_ids: [mirhoseini-site, stanford-profile]
+timeline:
+  - date: "2015"
+    text: Received the Best Thesis Award from the Rice University ECE Department.
+    source_ids: [mirhoseini-site]
+  - date: "2017-01-23"
+    text: Co-authored the paper introducing the sparsely-gated Mixture-of-Experts layer.
+    source_ids: [moe-paper]
+  - date: "2020-04-22"
+    text: Released the paper on chip placement with deep reinforcement learning that underlies AlphaChip.
+    source_ids: [chip-paper]
+  - date: "2021"
+    text: Published the AlphaChip chip-layout work in Nature.
+    source_ids: [mirhoseini-site]
+  - date: "2022"
+    text: Contributed to Anthropic's Constitutional AI training approach.
+    source_ids: [mirhoseini-site]
+  - date: "2023"
+    text: Began teaching CS229S, Systems for Machine Learning, at Stanford.
+    source_ids: [mirhoseini-site]
+  - date: "2024-07-31"
+    text: Co-authored Large Language Monkeys on scaling inference compute with repeated sampling.
+    source_ids: [monkeys-paper]
+honors:
+  - name: Okawa Research Grant
+    year: 2025
+    awarded_by: Okawa Foundation
+    source_ids: [mirhoseini-site]
+  - name: Google ML and Systems Junior Faculty Award
+    year: 2025
+    awarded_by: Google
+    source_ids: [mirhoseini-site]
+  - name: 35 Innovators Under 35
+    year: 2019
+    awarded_by: MIT Technology Review
+    source_ids: [mirhoseini-site]
+  - name: Best ECE Thesis Award
+    year: 2015
+    awarded_by: Rice University Department of Electrical and Computer Engineering
+    source_ids: [mirhoseini-site]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: stanford-profile
     title: Azalia Mirhoseini — Stanford Profiles
@@ -83,32 +146,32 @@ sources:
     publisher: Stanford University
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: mirhoseini-site
     title: Azalia Mirhoseini — homepage
     url: https://www.azaliamirhoseini.com/
     publisher: Azalia Mirhoseini
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: moe-paper
     title: "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer (arXiv 1701.06538)"
     url: https://arxiv.org/abs/1701.06538
     publisher: arXiv
     kind: paper
     published_at: 2017-01-23
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: chip-paper
     title: Chip Placement with Deep Reinforcement Learning (arXiv 2004.10746)
     url: https://arxiv.org/abs/2004.10746
     publisher: arXiv
     kind: paper
     published_at: 2020-04-22
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: monkeys-paper
     title: "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling (arXiv 2407.21787)"
     url: https://arxiv.org/abs/2407.21787
     publisher: arXiv
     kind: paper
     published_at: 2024-07-31
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21

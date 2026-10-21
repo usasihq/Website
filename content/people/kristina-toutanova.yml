@@ -49,9 +49,67 @@ links:
     url: https://research.google/people/kristinantoutanova/
   - label: UW Linguistics profile
     url: https://linguistics.washington.edu/people/kristina-toutanova
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kristina Toutanova completed a PhD in Computer Science at Stanford University with
+          Christopher Manning, finishing in 2005, and then worked as a researcher at Microsoft
+          Research. Toutanova joined Google in 2017 as a research scientist in Google AI
+          Language and is an affiliate faculty member at the University of Washington, where the
+          Department of Linguistics lists Toutanova as an Affiliate Assistant Professor.
+        source_ids: [google-profile, uw-linguistics]
+      - text: >-
+          Toutanova is a past co-editor in chief of the journal Transactions of the Association for
+          Computational Linguistics (TACL) and was a program co-chair of ACL 2014.
+        source_ids: [google-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Toutanova's research models the structure of natural language with machine learning, most
+          recently in representation learning, question answering, information retrieval, semantic
+          parsing and knowledge base completion. Toutanova co-authored BERT (2018) with Jacob Devlin,
+          Ming-Wei Chang and Kenton Lee, and the 2019 paper on latent retrieval for weakly supervised
+          open-domain question answering.
+        source_ids: [google-profile, bert-paper, orqa-paper]
+      - text: >-
+          Later work includes a 2020 study of compositional generalization in semantic parsing,
+          Pix2Struct (2022), which pretrains visual language models by parsing screenshots, and QUEST
+          (2023), a retrieval dataset of queries with implicit set operations. A 2025 paper with Peter
+          Shaw, James Cohan and Jacob Eisenstein studies description-length objectives for transformers
+          grounded in Kolmogorov complexity.
+        source_ids: [compgen-paper, pix2struct-paper, quest-paper, mdl-paper]
+timeline:
+  - date: "2005"
+    text: Completed a PhD in Computer Science at Stanford University with Christopher Manning.
+    source_ids: [uw-linguistics, google-profile]
+  - date: "2014"
+    text: Served as a program co-chair of ACL 2014.
+    source_ids: [google-profile]
+  - date: "2017"
+    text: Joined Google as a research scientist after working at Microsoft Research.
+    source_ids: [google-profile]
+  - date: "2018-10-11"
+    text: Co-authored BERT, on pre-training deep bidirectional transformers for language understanding.
+    source_ids: [bert-paper]
+  - date: "2019-06-01"
+    text: Co-authored "Latent Retrieval for Weakly Supervised Open Domain Question Answering".
+    source_ids: [orqa-paper]
+  - date: "2020-10-24"
+    text: Co-authored a study of compositional generalization and natural language variation in semantic parsing.
+    source_ids: [compgen-paper]
+  - date: "2022-10-07"
+    text: "Co-authored Pix2Struct, which pretrains visual language understanding by parsing screenshots."
+    source_ids: [pix2struct-paper]
+  - date: "2023-05-19"
+    text: Co-authored QUEST, a retrieval dataset of entity-seeking queries with implicit set operations.
+    source_ids: [quest-paper]
+  - date: "2025-09-26"
+    text: Co-authored a paper on asymptotically optimal description length objectives for transformers.
+    source_ids: [mdl-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: google-profile
     title: Kristina N Toutanova — Google Research people profile
@@ -59,32 +117,60 @@ sources:
     publisher: Google Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: uw-linguistics
     title: Kristina Toutanova — University of Washington Department of Linguistics people page
     url: https://linguistics.washington.edu/people/kristina-toutanova
     publisher: University of Washington Department of Linguistics
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: bert-paper
     title: "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (arXiv 1810.04805)"
     url: https://arxiv.org/abs/1810.04805
     publisher: arXiv
     kind: paper
     published_at: 2018-10-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: bert-repo
     title: google-research/bert README (Apache 2.0)
     url: https://github.com/google-research/bert
     publisher: Google Research (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mdl-paper
     title: "Bridging Kolmogorov Complexity and Deep Learning: Asymptotically Optimal Description Length Objectives for Transformers (arXiv 2509.22445, ICLR 2026)"
     url: https://arxiv.org/abs/2509.22445
     publisher: arXiv
     kind: paper
     published_at: 2025-09-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: orqa-paper
+    title: Latent Retrieval for Weakly Supervised Open Domain Question Answering (arXiv 1906.00300)
+    url: https://arxiv.org/abs/1906.00300
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-06-01
+    accessed_at: 2026-10-21
+  - id: compgen-paper
+    title: "Compositional Generalization and Natural Language Variation: Can a Semantic Parsing Approach Handle Both? (arXiv 2010.12725)"
+    url: https://arxiv.org/abs/2010.12725
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-10-24
+    accessed_at: 2026-10-21
+  - id: pix2struct-paper
+    title: "Pix2Struct: Screenshot Parsing as Pretraining for Visual Language Understanding (arXiv 2210.03347)"
+    url: https://arxiv.org/abs/2210.03347
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-07
+    accessed_at: 2026-10-21
+  - id: quest-paper
+    title: "QUEST: A Retrieval Dataset of Entity-Seeking Queries with Implicit Set Operations (arXiv 2305.11694)"
+    url: https://arxiv.org/abs/2305.11694
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-19
+    accessed_at: 2026-10-21

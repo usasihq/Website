@@ -15,7 +15,7 @@ bio:
     strategic reasoning. With a Carnegie Mellon advisor, Brown created the poker AIs Libratus and
     Pluribus.
   source_ids: [brown-site, o1-system-card, cicero-paper]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: OpenAI
     organization_slug: openai
@@ -27,6 +27,11 @@ affiliations:
     role: Researcher, Meta Fundamental AI Research Diplomacy Team
     current: false
     source_ids: [brown-site, cicero-paper]
+  - name: Carnegie Mellon University
+    organization_slug: null
+    role: Research assistant (2012–2018) and graduate student advised by Tuomas Sandholm (MS 2014, PhD 2020)
+    current: false
+    source_ids: [brown-cv]
 work:
   - name: OpenAI o1 reasoning models
     artifact_slug: null
@@ -56,9 +61,88 @@ work:
 links:
   - label: Website
     url: https://noambrown.github.io/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before graduate school, Brown worked in algorithmic trading from 2006 to 2010 and was a research
+          assistant at the Federal Reserve Board from 2010 to 2012, studying algorithmic trading in financial
+          markets. Brown then earned an MS in robotics (2014) and a PhD in computer science (2020) at Carnegie
+          Mellon University, both advised by Tuomas Sandholm.
+        source_ids: [brown-cv, brown-site]
+      - text: >-
+          Brown was a research scientist at Facebook AI Research from 2018 to 2023, after a 2017 research
+          internship at DeepMind, and joined OpenAI in 2023. At OpenAI, Brown works on reasoning,
+          reinforcement learning, self-play and multi-agent AI, and is listed among the authors of the o1 and
+          GPT-5 system cards.
+        source_ids: [brown-cv, brown-site, o1-system-card]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Brown's graduate research with Sandholm focused on imperfect-information games. With Sandholm, Brown built
+          Libratus, described in a 2017 Science paper on beating professional players at heads-up no-limit poker,
+          and Pluribus, the subject of a 2019 Science cover article on multiplayer poker. "Safe and Nested
+          Subgame Solving for Imperfect-Information Games" won a NeurIPS 2017 best paper award.
+        source_ids: [brown-cv, brown-site]
+      - text: >-
+          At FAIR, Brown's work combined search and learning, including Deep Counterfactual Regret Minimization
+          (ICML 2019) and "Combining Deep Reinforcement Learning and Search for Imperfect-Information Games"
+          (NeurIPS 2020). Work on Diplomacy included no-press Diplomacy agents (2021–2023) and CICERO,
+          which combined a language model with strategic reasoning and was published in Science in 2022.
+        source_ids: [brown-cv, cicero-paper]
+timeline:
+  - date: "2012"
+    text: Began graduate research at Carnegie Mellon University with Tuomas Sandholm.
+    source_ids: [brown-cv]
+  - date: "2017"
+    text: Published the Libratus paper in Science and won a NeurIPS best paper award for safe and nested subgame solving.
+    source_ids: [brown-cv]
+  - date: "2018"
+    text: Joined Facebook AI Research as a research scientist.
+    source_ids: [brown-cv]
+  - date: "2019"
+    text: Published "Superhuman AI for Multiplayer Poker", on Pluribus, as a Science cover article.
+    source_ids: [brown-cv]
+  - date: "2020"
+    text: Completed a PhD in computer science at Carnegie Mellon University.
+    source_ids: [brown-cv]
+  - date: "2022"
+    text: Co-authored the Science paper introducing CICERO for the game Diplomacy.
+    source_ids: [cicero-paper, brown-cv]
+  - date: "2023"
+    text: Joined OpenAI as a member of technical staff.
+    source_ids: [brown-cv]
+  - date: "2024-12-21"
+    text: Listed among the authors of the OpenAI o1 System Card.
+    source_ids: [o1-system-card]
+honors:
+  - name: NeurIPS Best Paper Award
+    year: 2017
+    awarded_by: Neural Information Processing Systems Foundation
+    source_ids: [brown-cv]
+  - name: Marvin Minsky Medal for Outstanding Achievements in AI
+    year: 2019
+    awarded_by: International Joint Conferences on Artificial Intelligence
+    source_ids: [brown-cv, brown-site]
+  - name: AAAI/ACM SIGAI Dissertation Award
+    year: 2020
+    awarded_by: AAAI and ACM SIGAI
+    source_ids: [brown-cv]
+  - name: Victor Lesser Distinguished Dissertation Award
+    year: 2020
+    awarded_by: IFAAMAS
+    source_ids: [brown-cv]
+  - name: Innovators Under 35
+    year: 2019
+    awarded_by: MIT Technology Review
+    source_ids: [brown-cv, brown-site]
+  - name: ICLR Outstanding Paper Honorable Mention
+    year: 2023
+    awarded_by: International Conference on Learning Representations
+    source_ids: [brown-cv]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: brown-site
     title: Noam Brown — homepage
@@ -66,18 +150,25 @@ sources:
     publisher: Noam Brown
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: o1-system-card
     title: OpenAI o1 System Card (arXiv 2412.16720)
     url: https://arxiv.org/abs/2412.16720
     publisher: arXiv
     kind: paper
     published_at: 2024-12-21
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: cicero-paper
     title: Human-level play in the game of Diplomacy by combining language models with strategic reasoning (Science, 2022)
     url: https://noambrown.github.io/papers/22-Science-Diplomacy-TR.pdf
     publisher: Science (author copy hosted by Noam Brown)
     kind: paper
     published_at: "2022"
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: brown-cv
+    title: Noam Brown — curriculum vitae (PDF)
+    url: https://noambrown.github.io/downloads/CV.pdf
+    publisher: Noam Brown
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

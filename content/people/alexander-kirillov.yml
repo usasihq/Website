@@ -14,7 +14,7 @@ bio:
     under the Apache 2.0 license, is listed in the citation entry for the Detectron2 library, and is
     a co-author of DETR (End-to-End Object Detection with Transformers).
   source_ids: [homepage, sam-paper, sam-readme, detectron2-readme, detr-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Thinking Machines Lab
     organization_slug: thinking-machines-lab
@@ -59,9 +59,55 @@ work:
 links:
   - label: Website
     url: https://alexander-kirillov.github.io/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kirillov's homepage records doctoral work at Heidelberg University under the supervision of Carsten
+          Rother, after a diploma at Lomonosov Moscow State University with Dmitry Vetrov and Alexander Dyakonov.
+          Kirillov then became a research scientist at Facebook AI Research (FAIR), later led the multimodal
+          research group at OpenAI that worked on Advanced Voice Mode and GPT-4o, and now works on multimodal AI
+          models at Thinking Machines.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Much of Kirillov's research concerns image segmentation. "Panoptic Segmentation" (2018), with Kaiming He,
+          Ross Girshick, Carsten Rother and Piotr Dollár, proposed a task that unifies semantic and instance
+          segmentation along with a panoptic quality metric. Follow-up work included Panoptic Feature Pyramid
+          Networks and PointRend, which treats segmentation as a rendering problem.
+        source_ids: [panoptic-paper, panoptic-fpn-paper, pointrend-paper]
+      - text: >-
+          Kirillov co-authored DETR, which frames object detection as direct set prediction with a transformer,
+          and later work on universal image segmentation with a masked-attention mask transformer. As first author of Segment Anything
+          (2023), Kirillov introduced a promptable segmentation model released with a large segmentation dataset
+          and its code.
+        source_ids: [detr-paper, homepage, sam-paper, sam-readme]
+timeline:
+  - date: "2015"
+    text: Presented "Inferring M-Best Diverse Labelings in a Single One" at ICCV 2015 as first author.
+    source_ids: [homepage]
+  - date: "2018-01"
+    text: Posted "Panoptic Segmentation" as first author with Kaiming He, Ross Girshick, Carsten Rother and Piotr Dollár.
+    source_ids: [panoptic-paper]
+  - date: "2019-01"
+    text: Posted "Panoptic Feature Pyramid Networks" as first author.
+    source_ids: [panoptic-fpn-paper]
+  - date: "2019-12"
+    text: 'Posted "PointRend: Image Segmentation as Rendering" as first author.'
+    source_ids: [pointrend-paper]
+  - date: "2020-05"
+    text: Co-authored "End-to-End Object Detection with Transformers" (DETR).
+    source_ids: [detr-paper]
+  - date: "2022"
+    text: Co-authored "Masked-attention Mask Transformer for Universal Image Segmentation" at CVPR 2022.
+    source_ids: [homepage]
+  - date: "2023-04"
+    text: Posted the Segment Anything paper as first author, with the model released under Apache 2.0.
+    source_ids: [sam-paper, sam-readme]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Alexander Kirillov — homepage
@@ -69,39 +115,60 @@ sources:
     publisher: Alexander Kirillov
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sam-paper
     title: Segment Anything (arXiv 2304.02643)
     url: https://arxiv.org/abs/2304.02643
     publisher: arXiv
     kind: paper
     published_at: 2023-04-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sam-readme
     title: facebookresearch/segment-anything README (authors and Apache 2.0 license)
     url: https://github.com/facebookresearch/segment-anything
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detectron2-readme
     title: facebookresearch/detectron2 README (citation entry and license)
     url: https://github.com/facebookresearch/detectron2
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detr-paper
     title: End-to-End Object Detection with Transformers (arXiv 2005.12872)
     url: https://arxiv.org/abs/2005.12872
     publisher: arXiv
     kind: paper
     published_at: 2020-05-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detr-readme
     title: facebookresearch/detr README (license)
     url: https://github.com/facebookresearch/detr
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: panoptic-paper
+    title: Panoptic Segmentation (arXiv 1801.00868)
+    url: https://arxiv.org/abs/1801.00868
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-01-03
+    accessed_at: 2026-10-21
+  - id: panoptic-fpn-paper
+    title: Panoptic Feature Pyramid Networks (arXiv 1901.02446)
+    url: https://arxiv.org/abs/1901.02446
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-01-08
+    accessed_at: 2026-10-21
+  - id: pointrend-paper
+    title: "PointRend: Image Segmentation as Rendering (arXiv 1912.08193)"
+    url: https://arxiv.org/abs/1912.08193
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-12-17
+    accessed_at: 2026-10-21

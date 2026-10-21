@@ -15,7 +15,7 @@ bio:
     develops openpilot, an MIT-licensed operating system for robotics that upgrades the driver
     assistance system on supported cars.
   source_ids: [blog-tiny-corp, blog-five-years, homepage, github-profile, tinygrad-repo, openpilot-repo]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: tiny corp
     organization_slug: tiny-corp
@@ -43,9 +43,46 @@ links:
     url: https://geohot.github.io/blog/
   - label: GitHub
     url: https://github.com/geohot
+sections:
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          George Hotz's homepage points to two companies Hotz started: comma.ai and tiny corp. comma.ai develops
+          openpilot, an MIT-licensed operating system for robotics that upgrades the driver assistance system on
+          supported cars, and sells hardware for hands-free driving in existing cars.
+        source_ids: [homepage, openpilot-repo, comma-site]
+      - text: >-
+          In May 2023 Hotz announced tiny corp on the blog, describing it as a computer company whose goal is "to
+          commoditize the petaflop". The company sells tinybox, a configurable deep learning computer, through
+          tinygrad.org.
+        source_ids: [blog-tiny-corp, tinygrad-site]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Hotz started tinygrad in October 2020, with a first commit on October 17, as a small project for
+          learning about neural networks. By 2023 it ran the driving model inside openpilot, and its intermediate
+          representation was built from a small set of operations so that matrix multiplies and convolutions
+          reduce to multiplies and sums with lazy evaluation allowing operation fusion.
+        source_ids: [blog-five-years, blog-tiny-corp]
+      - text: >-
+          Hotz's December 2025 post "Five years of tinygrad" describes the stack as including a frontend, a graph
+          compiler, runtimes and drivers, with work under way to remove the LLVM dependency so tinygrad can drive
+          AMD GPUs in pure Python. The post describes tiny corp as working almost entirely in the open on GitHub
+          and Discord, with contributors hired through their contributions to the repository.
+        source_ids: [blog-five-years, tinygrad-repo]
+timeline:
+  - date: "2020-10-17"
+    text: Made the first commit to tinygrad.
+    source_ids: [blog-five-years]
+  - date: "2023-05-24"
+    text: Announced tiny corp, a computer company built around tinygrad.
+    source_ids: [blog-tiny-corp]
+  - date: "2025-12-29"
+    text: Published "Five years of tinygrad", reviewing the project's progress.
+    source_ids: [blog-five-years]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: geohot — homepage
@@ -53,39 +90,53 @@ sources:
     publisher: George Hotz
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: github-profile
     title: geohot (George Hotz) on GitHub
     url: https://github.com/geohot
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: blog-tiny-corp
-    title: the tiny corp raised $5.1M
+    title: the tiny corp (geohot blog post announcing tiny corp)
     url: https://geohot.github.io/blog/jekyll/update/2023/05/24/the-tiny-corp-raised-5M.html
     publisher: George Hotz (blog)
     kind: announcement
     published_at: 2023-05-24
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: blog-five-years
     title: Five years of tinygrad
     url: https://geohot.github.io/blog/jekyll/update/2025/12/29/five-years-of-tinygrad.html
     publisher: George Hotz (blog)
     kind: announcement
     published_at: 2025-12-29
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: tinygrad-repo
     title: tinygrad/tinygrad repository (MIT license)
     url: https://github.com/tinygrad/tinygrad
     publisher: tinygrad (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: openpilot-repo
     title: commaai/openpilot repository (MIT license)
     url: https://github.com/commaai/openpilot
     publisher: comma.ai (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: tinygrad-site
+    title: tinygrad.org — tinybox
+    url: https://tinygrad.org/
+    publisher: tiny corp
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: comma-site
+    title: comma.ai — homepage
+    url: https://comma.ai/
+    publisher: comma.ai
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

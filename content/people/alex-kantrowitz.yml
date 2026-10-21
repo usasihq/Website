@@ -39,13 +39,50 @@ work:
     url: https://www.bigtechnology.com/about
     contribution: >-
       Book by Alex Kantrowitz covering Amazon, Apple, Facebook, Google, and Microsoft.
-    source_ids: [bigtech-about]
+    source_ids: [bigtech-about, prh-always-day-one]
 links:
   - label: Big Technology
     url: https://www.bigtechnology.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Alex Kantrowitz worked for several years as a technology beat reporter covering Silicon Valley and
+          wrote the Tech Giant Update newsletter at BuzzFeed. In May 2020 Kantrowitz announced on Big Technology
+          a move to independent publishing starting that June. Big Technology's about page describes it
+          as a one-person publication and makes the case for independent, reader-supported journalism.
+        source_ids: [bigtech-about, bt-leaving-buzzfeed]
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Big Technology focuses mainly on Amazon, Apple, Facebook, Google, and Microsoft, and its about page
+          describes the aim as explaining how the technology world works rather than only what it does. The
+          publication promises original reporting written without embargoes.
+        source_ids: [bigtech-about]
+      - text: >-
+          Alongside the newsletter, Kantrowitz hosts the Big Technology Podcast, which covers the same five
+          companies as the newsletter.
+        source_ids: [prh-always-day-one]
+  - heading: Books
+    paragraphs:
+      - text: >-
+          Kantrowitz is the author of Always Day One: How The Tech Titans Plan To Stay On Top Forever, published
+          by Portfolio, an imprint of Penguin Random House, in April 2020. The book examines how Amazon,
+          Apple, Facebook, Google, and Microsoft organize their cultures to keep inventing.
+        source_ids: [prh-always-day-one, bigtech-about]
+timeline:
+  - date: "2020-04"
+    text: Published the book Always Day One with Portfolio.
+    source_ids: [prh-always-day-one]
+  - date: "2020-05-16"
+    text: Published the first post on Big Technology, titled "Welcome to Big Technology".
+    source_ids: [bt-welcome]
+  - date: "2020-05-26"
+    text: Announced a move from BuzzFeed to independent publishing on Big Technology starting in June 2020.
+    source_ids: [bt-leaving-buzzfeed]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: bigtech-about
     title: "About - Big Technology"
@@ -53,4 +90,25 @@ sources:
     publisher: Big Technology
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: prh-always-day-one
+    title: Always Day One by Alex Kantrowitz (book page and author bio)
+    url: https://www.penguinrandomhouse.com/books/607065/always-day-one-by-alex-kantrowitz/
+    publisher: Penguin Random House
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: bt-welcome
+    title: Welcome to Big Technology
+    url: https://www.bigtechnology.com/p/coming-soon
+    publisher: Big Technology
+    kind: announcement
+    published_at: 2020-05-16
+    accessed_at: 2026-10-21
+  - id: bt-leaving-buzzfeed
+    title: "On Leaving BuzzFeed, And What's Next"
+    url: https://www.bigtechnology.com/p/on-leaving-buzzfeed-and-whats-next
+    publisher: Big Technology
+    kind: announcement
+    published_at: 2020-05-26
+    accessed_at: 2026-10-21

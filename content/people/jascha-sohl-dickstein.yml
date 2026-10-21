@@ -59,9 +59,79 @@ links:
     url: https://sohldickstein.com/
   - label: GitHub
     url: https://github.com/Sohl-Dickstein
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Jascha Sohl-Dickstein worked as a research associate on NASA Jet Propulsion Laboratory's Mars
+          Exploration Rovers from 2001 to 2005 and completed a PhD in biophysics at UC Berkeley in 2012.
+          Sohl-Dickstein was then a visiting scholar in applied physics at Stanford and, from 2012 to 2014,
+          worked at Khan Academy, an online education nonprofit.
+        source_ids: [jsd-cv]
+      - text: >-
+          Sohl-Dickstein joined Google Brain in 2015 as a senior research scientist and became a principal
+          scientist at Google DeepMind in 2023. In 2024 Sohl-Dickstein joined Anthropic as a Member of
+          Technical Staff.
+        source_ids: [jsd-cv, jsd-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Sohl-Dickstein's 2015 paper with Eric Weiss, Niru Maheswaranathan and Surya Ganguli introduced
+          diffusion models, which learn to reverse a gradual noising process. A 2021 follow-up with Yang
+          Song and others framed score-based generative modeling with stochastic differential equations.
+        source_ids: [jsd-cv, diffusion-2015-paper, sde-paper]
+      - text: >-
+          Sohl-Dickstein's CV also groups work on the theory of infinite-width neural networks, showing that
+          such networks are linear in their parameters throughout training and that their outputs are Gaussian processes;
+          on learned optimizers, including VeLO (2022); and on adversarial examples that influence both
+          machine and human perception.
+        source_ids: [jsd-cv]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Sohl-Dickstein co-led BIG-bench, a collaborative benchmark of diverse tasks for probing large
+          language models and extrapolating their capabilities, and wrote its original design document. The
+          CV also lists Neural Tangents, a library for defining, training and evaluating both finite and
+          infinite-width neural networks.
+        source_ids: [jsd-cv, bigbench-repo]
+timeline:
+  - date: "2001"
+    text: Began work as a research associate on the Mars Exploration Rovers at NASA's Jet Propulsion Laboratory.
+    source_ids: [jsd-cv]
+  - date: "2012-05"
+    text: Completed a PhD in biophysics at UC Berkeley.
+    source_ids: [jsd-cv]
+  - date: "2015-03"
+    text: Posted "Deep Unsupervised Learning using Nonequilibrium Thermodynamics," introducing diffusion models.
+    source_ids: [diffusion-2015-paper]
+  - date: "2015"
+    text: Joined Google Brain as a senior research scientist.
+    source_ids: [jsd-cv]
+  - date: "2020-11"
+    text: Co-authored "Score-Based Generative Modeling through Stochastic Differential Equations."
+    source_ids: [sde-paper]
+  - date: "2023"
+    text: Became a principal scientist at Google DeepMind.
+    source_ids: [jsd-cv]
+  - date: "2024"
+    text: Joined Anthropic as a Member of Technical Staff.
+    source_ids: [jsd-cv]
+honors:
+  - name: ICML Distinguished Paper Award for "Minimum probability flow learning"
+    year: 2011
+    awarded_by: International Conference on Machine Learning
+    source_ids: [jsd-cv]
+  - name: ICLR Outstanding Paper Award for "Score-Based Generative Modeling through Stochastic Differential Equations"
+    year: 2021
+    awarded_by: International Conference on Learning Representations
+    source_ids: [jsd-cv]
+  - name: ICML Outstanding Paper Award for "Unbiased Gradient Estimation in Unrolled Computation Graphs with Persistent Evolution Strategies"
+    year: 2021
+    awarded_by: International Conference on Machine Learning
+    source_ids: [jsd-cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: jsd-site
     title: Jascha Sohl-Dickstein — homepage
@@ -69,32 +139,32 @@ sources:
     publisher: Jascha Sohl-Dickstein
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: jsd-cv
     title: Jascha Sohl-Dickstein — curriculum vitae (dated 2026-05-02)
     url: https://sohldickstein.com/s/CV_jascha_20260502.pdf
     publisher: Jascha Sohl-Dickstein
     kind: official-page
     published_at: 2026-05-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: diffusion-2015-paper
     title: "Deep Unsupervised Learning using Nonequilibrium Thermodynamics (arXiv 1503.03585)"
     url: https://arxiv.org/abs/1503.03585
     publisher: arXiv
     kind: paper
     published_at: 2015-03-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sde-paper
     title: "Score-Based Generative Modeling through Stochastic Differential Equations (arXiv 2011.13456)"
     url: https://arxiv.org/abs/2011.13456
     publisher: arXiv
     kind: paper
     published_at: 2020-11-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: bigbench-repo
     title: google/BIG-bench repository and LICENSE (Apache-2.0)
     url: https://github.com/google/BIG-bench
     publisher: Google (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

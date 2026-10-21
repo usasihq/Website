@@ -49,9 +49,49 @@ links:
     url: https://borischerny.com
   - label: GitHub
     url: https://github.com/bcherny
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Boris Cherny's own site describes a role as a software engineer at Anthropic, where Cherny created
+          Claude Code, after earlier work at Instagram prototyping and scaling new product and infrastructure
+          ideas. Anthropic's Code w/ Claude 2026 programme lists Cherny as Head of Claude Code, presenting a
+          live coding session with Jarred Sumner, the creator of Bun, on how the Claude Code team uses the tool
+          in everyday work.
+        source_ids: [cherny-about, cwc-session]
+      - text: >-
+          The Claude Code repository describes the product as an agentic coding tool that runs in the
+          terminal, understands a codebase and carries out routine tasks and git workflows from
+          natural-language commands.
+        source_ids: [claude-code-repo]
+  - heading: Open-source work and writing
+    paragraphs:
+      - text: >-
+          Projects pinned on Cherny's GitHub profile include two MIT-licensed TypeScript libraries: json-schema-to-typescript, which
+          compiles JSON Schema into TypeScript type declarations, and undux, a small state-management library
+          for React with Hooks support.
+        source_ids: [github-profile, jstt-repo, undux-repo]
+      - text: >-
+          Cherny is the author of O'Reilly's Programming TypeScript and keeps a blog on software engineering.
+          Its posts include "Towards a Safer Redux" (2017), "13 Tips for Writing a Technical Book" (2019) and a
+          2024 post on making ES modules easier to use in npm and Node.js.
+        source_ids: [cherny-home, cherny-about]
+timeline:
+  - date: "2017-10-30"
+    text: Published "Towards a Safer Redux" on Cherny's blog.
+    source_ids: [cherny-home]
+  - date: "2019-05-26"
+    text: Published "13 Tips for Writing a Technical Book" on Cherny's blog.
+    source_ids: [cherny-home]
+  - date: "2024-06-19"
+    text: Published a blog post on making ES modules easier to use in npm and Node.js.
+    source_ids: [cherny-home]
+  - date: "2026-05-06"
+    text: Presented a live coding session with Jarred Sumner at Anthropic's Code w/ Claude 2026 as Head of Claude Code.
+    source_ids: [cwc-session]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: cherny-about
     title: About — Boris Cherny's Blog
@@ -59,39 +99,53 @@ sources:
     publisher: Boris Cherny
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: cherny-home
     title: Boris Cherny's Blog (site description)
     url: https://borischerny.com
     publisher: Boris Cherny
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: github-profile
     title: bcherny (Boris Cherny) on GitHub
     url: https://github.com/bcherny
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: cwc-session
     title: Live coding session with Boris Cherny and Jarred Sumner — Code w/ Claude 2026 (May 6, 2026)
     url: https://claude.com/code-with-claude/session/sf-live-coding-session-with-boris-cherny-and-jarred-sumner
     publisher: Anthropic (Claude)
     kind: official-page
     published_at: 2026-05-06
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: claude-code-repo
     title: anthropics/claude-code repository (README and description)
     url: https://github.com/anthropics/claude-code
     publisher: Anthropic (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: claude-code-license
     title: anthropics/claude-code LICENSE.md
     url: https://github.com/anthropics/claude-code/blob/main/LICENSE.md
     publisher: Anthropic (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: jstt-repo
+    title: bcherny/json-schema-to-typescript (MIT)
+    url: https://github.com/bcherny/json-schema-to-typescript
+    publisher: Boris Cherny (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: undux-repo
+    title: bcherny/undux (MIT)
+    url: https://github.com/bcherny/undux
+    publisher: Boris Cherny (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

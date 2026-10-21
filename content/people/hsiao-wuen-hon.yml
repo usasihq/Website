@@ -27,6 +27,26 @@ affiliations:
     role: Corporate Vice President, Asia-Pacific R&D Group, and Managing Director, Microsoft Research Asia
     current: false
     source_ids: [msr-profile]
+  - name: MediaTek
+    organization_slug: null
+    role: Independent board member
+    current: true
+    source_ids: [msr-profile]
+  - name: Ambarella
+    organization_slug: null
+    role: Independent board member
+    current: true
+    source_ids: [msr-profile]
+  - name: The Chinese University of Hong Kong
+    organization_slug: null
+    role: Vice-Chancellor Visiting Professor
+    current: true
+    source_ids: [msr-profile]
+  - name: Apple
+    organization_slug: apple
+    role: Technology Director for the Chinese Dictation Kit
+    current: false
+    source_ids: [msr-profile]
 work:
   - name: UniLM (Unified Language Model Pre-training)
     artifact_slug: null
@@ -49,9 +69,46 @@ work:
 links:
   - label: Microsoft Research
     url: https://www.microsoft.com/en-us/research/people/hon/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Hsiao-Wuen Hon earned a PhD in computer science at Carnegie Mellon University under Raj Reddy, and earlier
+          in Hon's career was Technology Director at Apple for the Chinese Dictation Kit. During a 28-year career at
+          Microsoft, Hon led the Natural Interaction Service Division, which shipped Microsoft Speech Server
+          and the Natural User Interface platform, and was a founder of the Microsoft Search Technology Center,
+          which helped deliver the Bing search stack for Asia-Pacific.
+        source_ids: [msr-profile]
+      - text: >-
+          Hon served as Corporate Vice President of Microsoft's Asia-Pacific R&D Group and Managing
+          Director of Microsoft Research Asia, and established the Microsoft Innovation Partnership Center for
+          industry collaboration on AI. Hon is now an Emeritus Researcher at Microsoft Research, an independent
+          board member of MediaTek and Ambarella, and a Vice-Chancellor Visiting Professor at The Chinese
+          University of Hong Kong.
+        source_ids: [msr-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hon's research spans speech recognition, natural language processing and internet search. With
+          Kai-Fu Lee and Raj Reddy, Hon co-authored a 1990 overview of SPHINX, a large-vocabulary,
+          speaker-independent continuous speech recognition system based on hidden Markov models, and in 2019
+          Hon co-authored UniLM, a Transformer pre-trained for both language understanding and generation.
+        source_ids: [msr-profile, sphinx-paper, unilm-paper]
+timeline:
+  - date: "1990"
+    text: Co-authored "An overview of the SPHINX speech recognition system" with Kai-Fu Lee and Raj Reddy.
+    source_ids: [sphinx-paper]
+  - date: "2019-05"
+    text: Co-authored UniLM, a unified pre-trained model for language understanding and generation.
+    source_ids: [unilm-paper]
+honors:
+  - name: IEEE Fellow
+    year: null
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [msr-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: msr-profile
     title: Hsiao-Wuen Hon at Microsoft Research
@@ -59,11 +116,18 @@ sources:
     publisher: Microsoft Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: unilm-paper
     title: "Unified Language Model Pre-training for Natural Language Understanding and Generation (arXiv 1905.03197)"
     url: https://arxiv.org/abs/1905.03197
     publisher: arXiv
     kind: paper
     published_at: 2019-05-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: sphinx-paper
+    title: "An overview of the SPHINX speech recognition system"
+    url: https://publications.ri.cmu.edu/an-overview-of-the-sphinx-speech-recognition-system
+    publisher: Carnegie Mellon University Robotics Institute
+    kind: paper
+    published_at: null
+    accessed_at: 2026-10-21

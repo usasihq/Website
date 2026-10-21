@@ -16,7 +16,7 @@ bio:
     the image-to-image translation papers known as pix2pix (2016) and CycleGAN (2017), whose public
     code repositories list Efros among the authors.
   source_ids: [homepage, pix2pix-paper, pix2pix-readme, cyclegan-paper, cyclegan-readme]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of California, Berkeley
     organization_slug: uc-berkeley
@@ -50,9 +50,117 @@ work:
 links:
   - label: Website
     url: https://people.eecs.berkeley.edu/~efros/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Efros completed a PhD in computer science at UC Berkeley in 2003 with the thesis "Data-driven
+          Approaches for Texture and Motion," advised by Jitendra Malik. After a year as a visiting research
+          fellow in the Robotics Research Group at the University of Oxford, Efros joined Carnegie Mellon
+          University in 2004 as an assistant professor in the Robotics Institute and the Computer Science
+          Department, becoming an associate professor there in 2010.
+        source_ids: [cv]
+      - text: >-
+          Efros returned to UC Berkeley's EECS Department as an associate professor in 2013 and has been a
+          professor there since 2017. The CV also lists a fall 2009 stay with the WILLOW Laboratory at École
+          Normale Supérieure and INRIA as a Guggenheim Fellow, and the homepage notes close collaboration with
+          that team from 2007 to 2015.
+        source_ids: [cv, homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          The homepage dates several long-running research threads: autoregressive image generation since 1999,
+          scaling visual data since 2007, self-supervised learning since 2015, work on what are now called
+          world models since 2017, and continual learning since 2020. Other interests listed there include
+          human vision, visual data mining, robotics, and applications of computer vision to the visual arts
+          and the humanities.
+        source_ids: [homepage]
+      - text: >-
+          Efros's journal work includes "Scene Completion Using Millions of Photographs" with James Hays and
+          "What makes Paris look like Paris?" with Carl Doersch and colleagues, both later republished in
+          Communications of the ACM. With students and collaborators at Berkeley, Efros co-wrote the pix2pix
+          and CycleGAN papers on image-to-image translation, released with public code.
+        source_ids: [cv, pix2pix-paper, cyclegan-paper, cyclegan-readme]
+  - heading: Teaching and mentoring
+    paragraphs:
+      - text: >-
+          The homepage lists Efros's current postdocs and graduate students along with former PhD students and
+          their theses, among them Jun-Yan Zhu, Richard Zhang, Deepak Pathak, Tim Brooks and Bill Peebles.
+          Efros received UC Berkeley's Diane S. McEntyre Award for Excellence in Teaching Computer Science in
+          2019 and the Jim and Donna Gray Award for Excellence in Undergraduate Teaching of Computer Science in
+          2023.
+        source_ids: [homepage, cv]
+timeline:
+  - date: "2003-10"
+    text: Completed a PhD in computer science at UC Berkeley, advised by Jitendra Malik.
+    source_ids: [cv]
+  - date: "2003"
+    text: Became a visiting research fellow in the Robotics Research Group at the University of Oxford.
+    source_ids: [cv]
+  - date: "2004"
+    text: Joined Carnegie Mellon University as an assistant professor in the Robotics Institute and Computer Science Department.
+    source_ids: [cv]
+  - date: "2009"
+    text: Spent the fall as a Guggenheim Fellow with the WILLOW Laboratory at École Normale Supérieure and INRIA.
+    source_ids: [cv]
+  - date: "2010"
+    text: Promoted to associate professor at Carnegie Mellon University.
+    source_ids: [cv]
+  - date: "2013"
+    text: Joined the UC Berkeley EECS Department as an associate professor.
+    source_ids: [cv]
+  - date: "2016-11-21"
+    text: Co-authored the pix2pix paper on image-to-image translation with conditional adversarial networks.
+    source_ids: [pix2pix-paper]
+  - date: "2017"
+    text: Became a professor in the UC Berkeley EECS Department.
+    source_ids: [cv]
+  - date: "2017-03-30"
+    text: Co-authored the CycleGAN paper on unpaired image-to-image translation.
+    source_ids: [cyclegan-paper]
+  - date: "2024"
+    text: Appointed to the Howard Friesen Chair in Engineering at UC Berkeley.
+    source_ids: [cv]
+honors:
+  - name: SIGGRAPH Computer Graphics Achievement Award
+    year: 2026
+    awarded_by: ACM SIGGRAPH
+    source_ids: [cv]
+  - name: SIGGRAPH Academy
+    year: 2026
+    awarded_by: ACM SIGGRAPH
+    source_ids: [cv]
+  - name: PAMI Thomas S. Huang Memorial Prize
+    year: 2023
+    awarded_by: IEEE Computer Society Technical Committee on Pattern Analysis and Machine Intelligence
+    source_ids: [cv]
+  - name: ACM Prize in Computing
+    year: 2016
+    awarded_by: Association for Computing Machinery
+    source_ids: [cv]
+  - name: SIGGRAPH Significant New Researcher Award
+    year: 2010
+    awarded_by: ACM SIGGRAPH
+    source_ids: [cv]
+  - name: Guggenheim Fellowship
+    year: 2008
+    awarded_by: John Simon Guggenheim Memorial Foundation
+    source_ids: [cv]
+  - name: Sloan Research Fellowship
+    year: 2008
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [cv]
+  - name: CVPR Best Paper Award
+    year: 2006
+    awarded_by: IEEE Conference on Computer Vision and Pattern Recognition
+    source_ids: [cv]
+  - name: NSF CAREER Award
+    year: 2006
+    awarded_by: National Science Foundation
+    source_ids: [cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Alexei A. Efros — homepage (UC Berkeley EECS)
@@ -60,32 +168,39 @@ sources:
     publisher: Alexei A. Efros
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pix2pix-paper
     title: Image-to-Image Translation with Conditional Adversarial Networks (arXiv 1611.07004)
     url: https://arxiv.org/abs/1611.07004
     publisher: arXiv
     kind: paper
     published_at: 2016-11-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pix2pix-readme
     title: phillipi/pix2pix README (authors)
     url: https://github.com/phillipi/pix2pix
     publisher: phillipi/pix2pix (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cyclegan-paper
     title: Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (arXiv 1703.10593)
     url: https://arxiv.org/abs/1703.10593
     publisher: arXiv
     kind: paper
     published_at: 2017-03-30
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cyclegan-readme
     title: junyanz/pytorch-CycleGAN-and-pix2pix README (authors)
     url: https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
     publisher: junyanz/pytorch-CycleGAN-and-pix2pix (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: cv
+    title: Alexei A. Efros — Curriculum Vitae
+    url: https://people.eecs.berkeley.edu/~efros/cv.html
+    publisher: Alexei A. Efros
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

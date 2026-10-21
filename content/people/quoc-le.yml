@@ -12,7 +12,7 @@ bio:
     introduced the sparsely-gated mixture-of-experts layer, and Le is also a co-author of the 2016 paper
     presenting GNMT, Google's neural machine translation system.
   source_ids: [seq2seq-paper, nas-paper, moe-paper, gnmt-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google Brain
     organization_slug: google
@@ -51,9 +51,69 @@ work:
       through a sparsely-gated mixture-of-experts layer.
     source_ids: [moe-paper]
 links: []
+sections:
+  - heading: Representation learning
+    paragraphs:
+      - text: >-
+          Quoc V. Le co-authored Building high-level features using large scale unsupervised learning (2011), which
+          trained a large network on unlabeled images to ask whether class-specific detectors, such as a face
+          detector, can emerge without labels. With Tomas Mikolov, Le wrote Distributed Representations of
+          Sentences and Documents (2014), which learns fixed-length vector representations of text as an
+          alternative to bag-of-words features.
+        source_ids: [unsupervised-features-paper, paragraph-vectors-paper]
+  - heading: Sequence models and translation
+    paragraphs:
+      - text: >-
+          In 2014 Le co-authored Sequence to Sequence Learning with Neural Networks with Ilya Sutskever and Oriol
+          Vinyals, which maps input sequences to output sequences with multilayer LSTMs. Le was also a co-author of
+          the 2016 paper presenting GNMT, Google's neural machine translation system, of the 2017 sparsely-gated
+          mixture-of-experts layer, and of a 2017 large-scale study of neural machine translation architectures.
+        source_ids: [seq2seq-paper, gnmt-paper, moe-paper, nmt-exploration-paper]
+  - heading: Automated design and language-model reasoning
+    paragraphs:
+      - text: >-
+          With Barret Zoph, Le co-authored Neural Architecture Search with Reinforcement Learning (2016), and with
+          Mingxing Tan wrote EfficientNet (2019), which balances network depth, width and resolution when scaling
+          convolutional networks and uses architecture search to design the base model.
+        source_ids: [nas-paper, efficientnet-paper]
+      - text: >-
+          Later papers co-authored by Le address large language models: Finetuned Language Models Are Zero-Shot
+          Learners (2021), which showed that instruction tuning improves zero-shot performance and called the
+          resulting model FLAN, and Chain-of-Thought Prompting
+          Elicits Reasoning in Large Language Models (2022), which showed that prompting with intermediate
+          reasoning steps improves performance on complex reasoning tasks.
+        source_ids: [flan-paper, cot-paper]
+timeline:
+  - date: "2011-12-29"
+    text: Co-authored Building high-level features using large scale unsupervised learning.
+    source_ids: [unsupervised-features-paper]
+  - date: "2014-05-16"
+    text: Released Distributed Representations of Sentences and Documents with Tomas Mikolov.
+    source_ids: [paragraph-vectors-paper]
+  - date: "2014-09-10"
+    text: Co-authored Sequence to Sequence Learning with Neural Networks.
+    source_ids: [seq2seq-paper]
+  - date: "2016-09-26"
+    text: Co-authored the paper presenting Google's Neural Machine Translation system.
+    source_ids: [gnmt-paper]
+  - date: "2016-11-05"
+    text: Co-authored Neural Architecture Search with Reinforcement Learning with Barret Zoph.
+    source_ids: [nas-paper]
+  - date: "2017-01-23"
+    text: Co-authored the sparsely-gated mixture-of-experts layer paper.
+    source_ids: [moe-paper]
+  - date: "2019-05-28"
+    text: Released EfficientNet with Mingxing Tan.
+    source_ids: [efficientnet-paper]
+  - date: "2021-09-03"
+    text: Co-authored the FLAN instruction-tuning paper.
+    source_ids: [flan-paper]
+  - date: "2022-01-28"
+    text: Co-authored Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.
+    source_ids: [cot-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: seq2seq-paper
     title: Sequence to Sequence Learning with Neural Networks (arXiv 1409.3215)
@@ -61,32 +121,67 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2014-09-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nas-paper
     title: Neural Architecture Search with Reinforcement Learning (arXiv 1611.01578)
     url: https://arxiv.org/abs/1611.01578
     publisher: arXiv
     kind: paper
     published_at: 2016-11-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: moe-paper
     title: "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer (arXiv 1701.06538)"
     url: https://arxiv.org/abs/1701.06538
     publisher: arXiv
     kind: paper
     published_at: 2017-01-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gnmt-paper
     title: "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation (arXiv 1609.08144)"
     url: https://arxiv.org/abs/1609.08144
     publisher: arXiv
     kind: paper
     published_at: 2016-09-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nmt-exploration-paper
     title: Massive Exploration of Neural Machine Translation Architectures (arXiv 1703.03906)
     url: https://arxiv.org/abs/1703.03906
     publisher: arXiv
     kind: paper
     published_at: 2017-03-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: unsupervised-features-paper
+    title: Building high-level features using large scale unsupervised learning (arXiv 1112.6209)
+    url: https://arxiv.org/abs/1112.6209
+    publisher: arXiv
+    kind: paper
+    published_at: 2011-12-29
+    accessed_at: 2026-10-21
+  - id: paragraph-vectors-paper
+    title: Distributed Representations of Sentences and Documents (arXiv 1405.4053)
+    url: https://arxiv.org/abs/1405.4053
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-05-16
+    accessed_at: 2026-10-21
+  - id: efficientnet-paper
+    title: "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks (arXiv 1905.11946)"
+    url: https://arxiv.org/abs/1905.11946
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-05-28
+    accessed_at: 2026-10-21
+  - id: flan-paper
+    title: Finetuned Language Models Are Zero-Shot Learners (arXiv 2109.01652)
+    url: https://arxiv.org/abs/2109.01652
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-09-03
+    accessed_at: 2026-10-21
+  - id: cot-paper
+    title: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (arXiv 2201.11903)
+    url: https://arxiv.org/abs/2201.11903
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-01-28
+    accessed_at: 2026-10-21

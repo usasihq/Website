@@ -32,9 +32,48 @@ work:
 links:
   - label: GitHub
     url: https://github.com/random-forests
+sections:
+  - heading: Writing for TensorFlow
+    paragraphs:
+      - text: >-
+          As Developer Advocate for TensorFlow, Josh Gordon wrote the March 2018 TensorFlow Blog post
+          introducing TensorFlow Hub, a library for publishing, discovering and reusing pretrained parts of
+          machine learning models. The post framed the library as a shared repository of reusable model
+          components, comparable to code libraries in conventional software development.
+        source_ids: [tf-hub-post]
+      - text: >-
+          Gordon later wrote release announcements for the TensorFlow team. The TensorFlow 2.3 post in 2020
+          covered new tools for loading and preprocessing data and for removing input-pipeline bottlenecks,
+          and the TensorFlow 2.7 post, co-written with Goldie Gadde in 2021, covered clearer error messages,
+          simplified stack traces and help for users migrating to TensorFlow 2.
+        source_ids: [tf-23-post, tf-27-post]
+      - text: >-
+          In 2022 Gordon and Laurence Moroney co-wrote a TensorFlow team post on the direction of the
+          framework, including work on interoperability between TensorFlow and JAX.
+        source_ids: [tf-toolbox-post]
+  - heading: Teaching materials
+    paragraphs:
+      - text: >-
+          Gordon's GitHub profile publishes educational repositories, including slides and code from a
+          TensorFlow workshop and tutorials and exercises prepared for International Women's Day 2021 events
+          at Google and elsewhere.
+        source_ids: [github-profile]
+timeline:
+  - date: "2018-03"
+    text: Wrote the TensorFlow Blog post introducing the TensorFlow Hub library.
+    source_ids: [tf-hub-post]
+  - date: "2020-07"
+    text: Posted the TensorFlow 2.3 release announcement for the TensorFlow team.
+    source_ids: [tf-23-post]
+  - date: "2021-11"
+    text: Co-wrote the TensorFlow 2.7 release announcement with Goldie Gadde.
+    source_ids: [tf-27-post]
+  - date: "2022-06"
+    text: Co-wrote a TensorFlow team post with Laurence Moroney on the framework's direction.
+    source_ids: [tf-toolbox-post]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: tf-hub-post
     title: "Introducing TensorFlow Hub: A Library for Reusable Machine Learning Modules in TensorFlow"
@@ -42,25 +81,32 @@ sources:
     publisher: TensorFlow (Google)
     kind: announcement
     published_at: 2018-03-30
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tf-23-post
     title: What's new in TensorFlow 2.3?
     url: https://blog.tensorflow.org/2020/07/whats-new-in-tensorflow-2-3.html
     publisher: TensorFlow (Google)
     kind: announcement
     published_at: 2020-07-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tf-27-post
     title: What's new in TensorFlow 2.7?
     url: https://blog.tensorflow.org/2021/11/whats-new-in-tensorflow-27.html
     publisher: TensorFlow (Google)
     kind: announcement
     published_at: 2021-11-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tf-toolbox-post
     title: Bringing Machine Learning to every developer's toolbox — The TensorFlow Blog
     url: https://blog.tensorflow.org/2022/06/%20bringing-machine-learning-to-every-developers-toolbox.html
     publisher: TensorFlow (Google)
     kind: announcement
     published_at: 2022-06-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: github-profile
+    title: "random-forests (Josh Gordon) on GitHub"
+    url: https://github.com/random-forests
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

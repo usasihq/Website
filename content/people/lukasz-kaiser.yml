@@ -14,7 +14,7 @@ bio:
     corresponding authors of the 2018 Tensor2Tensor paper. Kaiser is also a co-author of the TensorFlow
     white paper and of the 2016 paper on Google's Neural Machine Translation system.
   source_ids: [github-profile, o1-system-card, attention-paper, t2t-paper, tf-whitepaper, gnmt-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: OpenAI
     organization_slug: openai
@@ -61,9 +61,70 @@ work:
 links:
   - label: GitHub
     url: https://github.com/lukaszkaiser
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Kaiser's early neural network papers took on parsing and algorithm learning. With Oriol Vinyals,
+          Ilya Sutskever, Geoffrey Hinton and others, Kaiser co-wrote "Grammar as a Foreign Language" in 2014,
+          which treated syntactic parsing as translation, and with Sutskever wrote "Neural GPUs Learn Algorithms"
+          in 2015.
+        source_ids: [lk-grammar, lk-neuralgpu]
+      - text: >-
+          Kaiser was a co-author of "Attention Is All You Need" in 2017, the paper that introduced the
+          Transformer, and first-authored "One Model To Learn Them All," a single model trained across several
+          tasks and modalities. Later Transformer work includes Universal Transformers in 2018 and Reformer, an
+          efficient Transformer variant, in 2020.
+        source_ids: [attention-paper, lk-onemodel, lk-universal, lk-reformer]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Kaiser co-authored the 2016 TensorFlow white paper describing Google's system for large-scale machine
+          learning on heterogeneous hardware. The Transformer paper's contribution note credits Kaiser and Aidan
+          Gomez with designing parts of and implementing Tensor2Tensor, and Kaiser is
+          a corresponding author of the 2018 Tensor2Tensor paper.
+        source_ids: [tf-whitepaper, attention-paper, t2t-paper, t2t-repo]
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kaiser's papers from 2017 and 2018 list a Google Brain affiliation, and Kaiser co-authored the 2016
+          paper on Google's Neural Machine Translation system. Kaiser's GitHub profile now lists OpenAI, and the
+          2024 OpenAI o1 System Card names Kaiser in its reasoning research leadership.
+        source_ids: [attention-paper, t2t-paper, gnmt-paper, github-profile, o1-system-card]
+timeline:
+  - date: "2014-12-23"
+    text: Co-authored "Grammar as a Foreign Language," applying sequence-to-sequence models to parsing.
+    source_ids: [lk-grammar]
+  - date: "2015-11-25"
+    text: Released "Neural GPUs Learn Algorithms" with Ilya Sutskever.
+    source_ids: [lk-neuralgpu]
+  - date: "2016-03-14"
+    text: Co-authored the TensorFlow white paper on large-scale machine learning.
+    source_ids: [tf-whitepaper]
+  - date: "2016-09-26"
+    text: Co-authored the paper on Google's Neural Machine Translation system.
+    source_ids: [gnmt-paper]
+  - date: "2017-06-12"
+    text: Co-authored "Attention Is All You Need," which introduced the Transformer.
+    source_ids: [attention-paper]
+  - date: "2017-06-16"
+    text: Released "One Model To Learn Them All" as first author.
+    source_ids: [lk-onemodel]
+  - date: "2018-03-16"
+    text: Released the Tensor2Tensor paper as a corresponding author.
+    source_ids: [t2t-paper]
+  - date: "2018-07-10"
+    text: Co-authored Universal Transformers.
+    source_ids: [lk-universal]
+  - date: "2020-01-13"
+    text: Co-authored Reformer, an efficient Transformer architecture.
+    source_ids: [lk-reformer]
+  - date: "2024-12-21"
+    text: Named in the reasoning research leadership of the OpenAI o1 System Card.
+    source_ids: [o1-system-card]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: lukaszkaiser (Lukasz Kaiser) on GitHub
@@ -71,46 +132,81 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: o1-system-card
     title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
     url: https://arxiv.org/abs/2412.16720
     publisher: arXiv
     kind: paper
     published_at: 2024-12-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: attention-paper
     title: Attention Is All You Need (arXiv 1706.03762)
     url: https://arxiv.org/abs/1706.03762
     publisher: arXiv
     kind: paper
     published_at: 2017-06-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t2t-paper
     title: Tensor2Tensor for Neural Machine Translation (arXiv 1803.07416)
     url: https://arxiv.org/abs/1803.07416
     publisher: arXiv
     kind: paper
     published_at: 2018-03-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: t2t-repo
     title: tensorflow/tensor2tensor README (Apache-2.0)
     url: https://github.com/tensorflow/tensor2tensor
     publisher: TensorFlow (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tf-whitepaper
     title: "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems (arXiv 1603.04467)"
     url: https://arxiv.org/abs/1603.04467
     publisher: arXiv
     kind: paper
     published_at: 2016-03-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gnmt-paper
     title: "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation (arXiv 1609.08144)"
     url: https://arxiv.org/abs/1609.08144
     publisher: arXiv
     kind: paper
     published_at: 2016-09-26
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: lk-grammar
+    title: Grammar as a Foreign Language
+    url: https://arxiv.org/abs/1412.7449
+    publisher: arXiv
+    kind: paper
+    published_at: 2014-12-23
+    accessed_at: 2026-10-21
+  - id: lk-neuralgpu
+    title: Neural GPUs Learn Algorithms
+    url: https://arxiv.org/abs/1511.08228
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-11-25
+    accessed_at: 2026-10-21
+  - id: lk-onemodel
+    title: One Model To Learn Them All
+    url: https://arxiv.org/abs/1706.05137
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-06-16
+    accessed_at: 2026-10-21
+  - id: lk-universal
+    title: Universal Transformers
+    url: https://arxiv.org/abs/1807.03819
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-07-10
+    accessed_at: 2026-10-21
+  - id: lk-reformer
+    title: "Reformer: The Efficient Transformer"
+    url: https://arxiv.org/abs/2001.04451
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-01-13
+    accessed_at: 2026-10-21

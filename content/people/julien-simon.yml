@@ -16,7 +16,7 @@ bio:
     SageMaker (Packt, first edition August 2020), and Simon's GitHub hosts an Amazon SageMaker
     container that serves small language models on CPUs with llama.cpp.
   source_ids: [julien-site, julien-books, julien-github, apn-2025, apn-2024, aws-author, container-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Fortino Capital
     organization_slug: null
@@ -38,6 +38,21 @@ affiliations:
     role: Artificial Intelligence & Machine Learning Evangelist for EMEA
     current: false
     source_ids: [aws-author, julien-site]
+  - name: Viadeo
+    organization_slug: null
+    role: Chief Technology Officer (October 2014 to October 2015)
+    current: false
+    source_ids: [julien-experience]
+  - name: Aldebaran Robotics
+    organization_slug: null
+    role: Chief Technology Officer, Software (February to September 2014)
+    current: false
+    source_ids: [julien-experience]
+  - name: Criteo
+    organization_slug: null
+    role: Vice President, Engineering (October 2010 to February 2014)
+    current: false
+    source_ids: [julien-experience]
 work:
   - name: sagemaker-inference-container-cpu
     artifact_slug: null
@@ -65,9 +80,76 @@ links:
     url: https://github.com/juliensimon
   - label: Hugging Face
     url: https://huggingface.co/juliensimon
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Simon spent the first part of a long engineering career in software and infrastructure leadership. Simon
+          led R&D for mobile communications products at Oberthur Technologies from 2002, was Vice President of
+          Engineering at Digiplug and Chief Technology Officer at Pixmania, and from 2010 to 2014 was Vice
+          President of Engineering at Criteo, responsible for its online advertising platform.
+        source_ids: [julien-experience]
+      - text: >-
+          In 2014 Simon was Chief Technology Officer for software at Aldebaran Robotics, leading software for the
+          company's robots during the launch of Pepper, and then Chief Technology Officer of Viadeo, where Simon led
+          a migration of the platform to AWS. From 2015 to 2021 Simon was a global machine learning and AI
+          evangelist at Amazon Web Services and wrote launch posts for the AWS News Blog.
+        source_ids: [julien-experience, aws-author]
+      - text: >-
+          Simon was Chief Evangelist at Hugging Face from 2021 to 2024, working with enterprise teams on deploying
+          open models and on partnerships with cloud and hardware providers. Simon then became Vice President and
+          Chief Evangelist at Arcee AI, benchmarking and deploying models across CPUs, GPUs and AI accelerators,
+          before joining Fortino Capital as AI Operating Partner in November 2025.
+        source_ids: [julien-experience, apn-2024, apn-2025, julien-site]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Simon is the author of Learn Amazon SageMaker, published by Packt, which Simon describes as the first
+          book on the service. Simon's GitHub hosts code demos and tools such as an Amazon SageMaker container for
+          serving small language models on CPUs with llama.cpp.
+        source_ids: [julien-books, julien-experience, julien-github, container-repo]
+      - text: >-
+          Simon also publishes The AI Realist, a long-form newsletter built on primary sources such as filings,
+          model cards and regulatory documents, covering new models, national AI ecosystems, digital sovereignty
+          and access to compute.
+        source_ids: [julien-site]
+timeline:
+  - date: "2002-02"
+    text: Became Director of R&D for mobile communications at Oberthur Technologies.
+    source_ids: [julien-experience]
+  - date: "2007-03"
+    text: Became Vice President of Engineering at Digiplug.
+    source_ids: [julien-experience]
+  - date: "2009-05"
+    text: Became Chief Technology Officer at Pixmania.
+    source_ids: [julien-experience]
+  - date: "2010-10"
+    text: Became Vice President of Engineering at Criteo.
+    source_ids: [julien-experience]
+  - date: "2014-02"
+    text: Became Chief Technology Officer for software at Aldebaran Robotics.
+    source_ids: [julien-experience]
+  - date: "2014-10"
+    text: Became Chief Technology Officer of Viadeo.
+    source_ids: [julien-experience]
+  - date: "2015"
+    text: Joined Amazon Web Services as a machine learning and AI evangelist.
+    source_ids: [julien-experience]
+  - date: "2020-08"
+    text: Published the first edition of Learn Amazon SageMaker with Packt.
+    source_ids: [julien-books]
+  - date: "2021"
+    text: Became Chief Evangelist at Hugging Face.
+    source_ids: [julien-experience]
+  - date: "2024"
+    text: Became Vice President and Chief Evangelist at Arcee AI.
+    source_ids: [julien-experience]
+  - date: "2025-11"
+    text: Joined Fortino Capital as AI Operating Partner.
+    source_ids: [julien-experience]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: julien-site
     title: Julien Simon — homepage
@@ -75,46 +157,53 @@ sources:
     publisher: Julien Simon
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: julien-books
     title: Julien Simon — Books
     url: https://www.julien.org/books
     publisher: Julien Simon
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: julien-github
     title: juliensimon (Julien Simon) on GitHub
     url: https://github.com/juliensimon
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: apn-2025
     title: Running GenAI Inference with AWS Graviton and Arcee AI Models (AWS Partner Network Blog)
     url: https://aws.amazon.com/blogs/apn/running-genai-inference-with-aws-graviton-and-arcee-ai-models/
     publisher: Amazon Web Services
     kind: official-page
     published_at: 2025-05-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: apn-2024
     title: Getting Started with Generative AI Using Hugging Face Platform on AWS (AWS Partner Network Blog)
     url: https://aws.amazon.com/blogs/apn/getting-started-with-generative-ai-using-hugging-face-platform-on-aws/
     publisher: Amazon Web Services
     kind: official-page
     published_at: 2024-03-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: aws-author
     title: Julien Simon — AWS News Blog author page
     url: https://aws.amazon.com/blogs/aws/author/julsimon/
     publisher: Amazon Web Services
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: container-repo
     title: juliensimon/sagemaker-inference-container-cpu README and license
     url: https://github.com/juliensimon/sagemaker-inference-container-cpu
     publisher: Julien Simon (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: julien-experience
+    title: Julien Simon — Experience
+    url: https://www.julien.org/experience
+    publisher: Julien Simon
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

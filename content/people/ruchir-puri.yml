@@ -15,7 +15,7 @@ bio:
     whose models were released under the Apache 2.0 license. Puri also appears among the authors of ITBench, a benchmark for AI
     agents on IT automation tasks.
   source_ids: [ibm-research-profile, codenet-paper, codenet-repo, granite-code-paper, itbench-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM Research
     organization_slug: ibm
@@ -57,9 +57,68 @@ work:
 links:
   - label: IBM Research profile
     url: https://research.ibm.com/people/ruchir-puri
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Puri has held technical, research and engineering leadership roles across IBM's AI and research
+          businesses. From 2016 to 2019 Puri led IBM Watson as its CTO and Chief Architect, and Puri is now
+          Chief Scientist of IBM Research, an IBM Fellow and Vice President of IBM Technology and Technical
+          Community.
+        source_ids: [ibm-research-profile]
+      - text: >-
+          Outside IBM, Puri has been an adjunct professor at Columbia University and a visiting scientist at
+          Stanford University, held the John von Neumann Chair at the Institute of Discrete Mathematics at the
+          University of Bonn, and has served as an ACM Distinguished Speaker and an IEEE Distinguished
+          Lecturer.
+        source_ids: [ibm-research-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Puri's recent research applies language models to software and hardware engineering. Puri was first
+          author of the 2021 CodeNet dataset paper and co-authored IBM's Granite Code models (2024), the Qiskit
+          Code Assistant for generating quantum computing code (2024) and a study of customizing a language
+          model for VHDL design of high-performance microprocessors (2025).
+        source_ids: [codenet-paper, granite-code-paper, qiskit-code-paper, vhdl-paper]
+      - text: >-
+          Work on AI agents includes ITBench (ICML 2025), a benchmark of IT automation tasks, and a 2026 paper
+          on how far general-purpose coding agents can go in optimizing hardware through high-level
+          synthesis.
+        source_ids: [itbench-paper, ibm-research-profile, hls-agents-paper]
+timeline:
+  - date: "2016"
+    text: Became CTO and Chief Architect of IBM Watson, serving until 2019.
+    source_ids: [ibm-research-profile]
+  - date: "2021-05-25"
+    text: Released the CodeNet AI-for-code dataset paper as first author.
+    source_ids: [codenet-paper]
+  - date: "2024-05-07"
+    text: Co-authored "Granite Code Models - A Family of Open Foundation Models for Code Intelligence".
+    source_ids: [granite-code-paper]
+  - date: "2024-05-29"
+    text: Co-authored the Qiskit Code Assistant paper on training LLMs to generate quantum computing code.
+    source_ids: [qiskit-code-paper]
+  - date: "2025-02-07"
+    text: Co-authored ITBench, a benchmark for AI agents on IT automation tasks.
+    source_ids: [itbench-paper]
+  - date: "2025-05-14"
+    text: Co-authored a study on customizing a language model for VHDL microprocessor design.
+    source_ids: [vhdl-paper]
+  - date: "2026-03-26"
+    text: Co-authored a paper on general-purpose coding agents for hardware optimization via high-level synthesis.
+    source_ids: [hls-agents-paper]
+honors:
+  - name: IBM Fellow
+    year: null
+    awarded_by: IBM
+    source_ids: [ibm-research-profile]
+  - name: IEEE Fellow
+    year: null
+    awarded_by: Institute of Electrical and Electronics Engineers
+    source_ids: [ibm-research-profile]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ibm-research-profile
     title: Ruchir Puri — IBM Research
@@ -67,32 +126,53 @@ sources:
     publisher: IBM Research
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codenet-paper
     title: "CodeNet: A Large-Scale AI for Code Dataset for Learning a Diversity of Coding Tasks (arXiv 2105.12655)"
     url: https://arxiv.org/abs/2105.12655
     publisher: arXiv
     kind: paper
     published_at: 2021-05-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codenet-repo
     title: IBM/Project_CodeNet README (dataset download) and license (Apache-2.0)
     url: https://github.com/IBM/Project_CodeNet
     publisher: IBM (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: granite-code-paper
     title: "Granite Code Models: A Family of Open Foundation Models for Code Intelligence (arXiv 2405.04324)"
     url: https://arxiv.org/abs/2405.04324
     publisher: arXiv
     kind: paper
     published_at: 2024-05-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: itbench-paper
     title: "ITBench: Evaluating AI Agents across Diverse Real-World IT Automation Tasks (arXiv 2502.05352)"
     url: https://arxiv.org/abs/2502.05352
     publisher: arXiv
     kind: paper
     published_at: 2025-02-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: qiskit-code-paper
+    title: "Qiskit Code Assistant: Training LLMs for generating Quantum Computing Code (arXiv 2405.19495)"
+    url: https://arxiv.org/abs/2405.19495
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-29
+    accessed_at: 2026-10-21
+  - id: vhdl-paper
+    title: "Customizing a Large Language Model for VHDL Design of High-Performance Microprocessors (arXiv 2505.09610)"
+    url: https://arxiv.org/abs/2505.09610
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-14
+    accessed_at: 2026-10-21
+  - id: hls-agents-paper
+    title: "Agent Factories for High Level Synthesis: How Far Can General-Purpose Coding Agents Go in Hardware Optimization? (arXiv 2603.25719)"
+    url: https://arxiv.org/abs/2603.25719
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-26
+    accessed_at: 2026-10-21

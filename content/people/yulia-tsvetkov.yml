@@ -17,7 +17,7 @@ bio:
     Rewards: Rethinking Training Signals in RLVR, which examines why reinforcement learning with
     verifiable rewards can improve math reasoning in some models even with uninformative rewards.
   source_ids: [tsvetkov-site, spurious-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of Washington
     organization_slug: university-of-washington
@@ -34,6 +34,11 @@ affiliations:
     role: Postdoctoral researcher, Stanford NLP Group
     current: false
     source_ids: [tsvetkov-site]
+  - name: AI House (formerly AI2 Incubator)
+    organization_slug: null
+    role: Technical Venture Partner (since 2026)
+    current: true
+    source_ids: [tsvetkov-cv, tsvetkov-site]
 work:
   - name: "Spurious Rewards: Rethinking Training Signals in RLVR"
     artifact_slug: null
@@ -47,9 +52,96 @@ work:
 links:
   - label: Website
     url: https://homes.cs.washington.edu/~yuliats/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Tsvetkov completed a PhD at Carnegie Mellon University's Language Technologies Institute from 2011 to
+          2016, advised by Chris Dyer, with a thesis titled "Linguistic Knowledge in Data-Driven Natural Language
+          Processing". After a postdoctoral position in Stanford's Department of Computer Science from 2016 to 2017,
+          Tsvetkov was an assistant professor at CMU's Language Technologies Institute from 2017 to 2021.
+        source_ids: [tsvetkov-cv]
+      - text: >-
+          Tsvetkov joined the University of Washington's Paul G. Allen School as an assistant professor in 2021 and
+          became an associate professor in 2023, while remaining an adjunct professor at CMU. Since 2026 Tsvetkov
+          has also been a Technical Venture Partner at AI House, and is a member of the advisory board of Schmidt
+          Sciences' Humanities and AI Virtual Institute.
+        source_ids: [tsvetkov-cv, tsvetkov-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Tsvetkov's research aims at language technologies that are reliable, socially aware and linguistically
+          inclusive, under the goal Tsvetkov calls "NLP for All". The work combines machine learning with insights
+          from sociolinguistics and cognitive science to model how people use and interpret language in context.
+        source_ids: [tsvetkov-site, tsvetkov-cv]
+      - text: >-
+          Recent papers from Tsvetkov's group study reasoning and personalization in large language models,
+          collaboration between multiple models, reward modeling, multilingual pretraining beyond native scripts,
+          accent bias in audio language models and privacy in text data. Tsvetkov co-authored "Spurious Rewards"
+          (2025), which found that reinforcement learning with verifiable rewards can improve math reasoning in some
+          models even with rewards unrelated to the correct answer.
+        source_ids: [tsvetkov-site, spurious-paper]
+timeline:
+  - date: "2016"
+    text: Completed a PhD at Carnegie Mellon's Language Technologies Institute, advised by Chris Dyer.
+    source_ids: [tsvetkov-cv]
+  - date: "2016"
+    text: Began a postdoctoral position in Stanford's Department of Computer Science.
+    source_ids: [tsvetkov-cv]
+  - date: "2017"
+    text: Became an assistant professor at Carnegie Mellon's Language Technologies Institute.
+    source_ids: [tsvetkov-cv]
+  - date: "2021"
+    text: Joined the University of Washington's Paul G. Allen School as an assistant professor.
+    source_ids: [tsvetkov-cv]
+  - date: "2022"
+    text: Received an NSF CAREER Award and a Sloan Research Fellowship.
+    source_ids: [tsvetkov-cv]
+  - date: "2023"
+    text: Became an associate professor at the University of Washington.
+    source_ids: [tsvetkov-cv]
+  - date: "2025-06"
+    text: Co-authored "Spurious Rewards", a study of training signals in reinforcement learning with verifiable rewards.
+    source_ids: [spurious-paper]
+  - date: "2026"
+    text: Became a Technical Venture Partner at AI House.
+    source_ids: [tsvetkov-cv]
+honors:
+  - name: Okawa Foundation Young Researcher Award
+    year: 2019
+    awarded_by: Okawa Foundation
+    source_ids: [tsvetkov-cv]
+  - name: NSF CAREER Award
+    year: 2022
+    awarded_by: U.S. National Science Foundation
+    source_ids: [tsvetkov-cv]
+  - name: Sloan Research Fellowship
+    year: 2022
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [tsvetkov-cv]
+  - name: Wikimedia Foundation Research Award of the Year
+    year: 2023
+    awarded_by: Wikimedia Foundation
+    source_ids: [tsvetkov-cv]
+  - name: ACL 2023 Best Paper Award
+    year: 2023
+    awarded_by: Association for Computational Linguistics
+    source_ids: [tsvetkov-cv]
+  - name: ACL 2024 Best Social Impact Paper Award
+    year: 2024
+    awarded_by: Association for Computational Linguistics
+    source_ids: [tsvetkov-cv]
+  - name: Allen Excellence Professorship (2024–2027)
+    year: 2024
+    awarded_by: University of Washington
+    source_ids: [tsvetkov-cv]
+  - name: NeurIPS 2025 Best Paper Award
+    year: 2025
+    awarded_by: Conference on Neural Information Processing Systems
+    source_ids: [tsvetkov-cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: tsvetkov-site
     title: Yulia Tsvetkov — homepage (University of Washington)
@@ -57,11 +149,18 @@ sources:
     publisher: Yulia Tsvetkov (University of Washington)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: spurious-paper
     title: "Spurious Rewards: Rethinking Training Signals in RLVR (arXiv 2506.10947)"
     url: https://arxiv.org/abs/2506.10947
     publisher: arXiv
     kind: paper
     published_at: 2025-06-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: tsvetkov-cv
+    title: Yulia Tsvetkov — Curriculum Vitae
+    url: https://homes.cs.washington.edu/~yuliats/cv.pdf
+    publisher: University of Washington
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

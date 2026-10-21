@@ -15,7 +15,7 @@ bio:
     tensor-parallel fixes. Gäßler's GitHub profile gives the Karlsruhe Institute of Technology as
     company and describes Gäßler as an experimental particle physicist.
   source_ids: [llama-cpp-codeowners, llama-cpp-commits, github-profile]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Karlsruhe Institute of Technology
     organization_slug: null
@@ -42,9 +42,55 @@ work:
 links:
   - label: GitHub
     url: https://github.com/JohannesGaessler
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Gäßler's first contributions to llama.cpp, in April and May 2023, concerned CUDA builds and
+          reproducibility. In July 2023 Gäßler added quantized matrix-matrix multiplication (MMQ) for the
+          CUDA backend, and in June 2024 added quantized KV-cache support to the vector FlashAttention
+          kernels.
+        source_ids: [commit-first, commit-repro, commit-mmq, commit-fa-kv]
+      - text: >-
+          In September 2024 Gäßler added backend support for numerical optimization to ggml, followed in
+          May 2025 by LLM training support in llama.cpp and ggml, and in December 2024 added tests for the
+          GGUF file format code. In December 2025 Gäßler added code that automatically sets parameters the
+          user has not chosen so as to maximize GPU utilization. The CODEOWNERS file now lists
+          Gäßler in the CUDA backend team, as owner of ggml-opt.cpp, the lookup example and common/fit, and as
+          co-owner of gguf.cpp.
+        source_ids: [commit-opt, commit-training, commit-gguf-tests, commit-fit, llama-cpp-codeowners]
+  - heading: Research interests
+    paragraphs:
+      - text: >-
+          Gäßler's GitHub profile describes an experimental particle physicist at the Karlsruhe Institute of
+          Technology with further interests in statistics, generative neural networks and hardware
+          acceleration.
+        source_ids: [github-profile]
+timeline:
+  - date: "2023-04-28"
+    text: Made a first contribution to llama.cpp, adding CUDA include and library paths to the Makefile.
+    source_ids: [commit-first]
+  - date: "2023-07-29"
+    text: Added quantized matrix-matrix multiplication (MMQ) to the llama.cpp CUDA backend.
+    source_ids: [commit-mmq]
+  - date: "2024-06-01"
+    text: Added quantized KV-cache support to the CUDA vector FlashAttention kernels.
+    source_ids: [commit-fa-kv]
+  - date: "2024-09-20"
+    text: Added backend support for numerical optimization to ggml.
+    source_ids: [commit-opt]
+  - date: "2024-12-17"
+    text: Added tests for the GGUF file format code.
+    source_ids: [commit-gguf-tests]
+  - date: "2025-05-12"
+    text: Added LLM training support to llama.cpp and ggml.
+    source_ids: [commit-training]
+  - date: "2025-12-15"
+    text: Added automatic fitting of unset parameters to maximize GPU utilization in llama.cpp.
+    source_ids: [commit-fit]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: JohannesGaessler (Johannes Gäßler) on GitHub
@@ -52,14 +98,14 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by JohannesGaessler
     url: https://github.com/ggml-org/llama.cpp/commits?author=JohannesGaessler
@@ -73,4 +119,60 @@ sources:
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: commit-first
+    title: "llama.cpp commit: Add Manjaro CUDA include and lib dirs to Makefile (#1212)"
+    url: https://github.com/ggml-org/llama.cpp/commit/92a6e13a31ba052abd9062af6cb8df2a293ce661
+    publisher: GitHub
+    kind: repository
+    published_at: 2023-04-28
+    accessed_at: 2026-10-21
+  - id: commit-repro
+    title: "llama.cpp commit: Documented CUDA reproducibility, added warning (#1346)"
+    url: https://github.com/ggml-org/llama.cpp/commit/1f48b0abcfbd6cc99571e42348e0ec97e4be8b93
+    publisher: GitHub
+    kind: repository
+    published_at: 2023-05-08
+    accessed_at: 2026-10-21
+  - id: commit-mmq
+    title: "llama.cpp commit: CUDA: Quantized matrix matrix multiplication (#2160)"
+    url: https://github.com/ggml-org/llama.cpp/commit/11f3ca06b8c66b0427aab0a472479da22553b472
+    publisher: GitHub
+    kind: repository
+    published_at: 2023-07-29
+    accessed_at: 2026-10-21
+  - id: commit-fa-kv
+    title: "llama.cpp commit: CUDA: quantized KV support for FA vec (#7527)"
+    url: https://github.com/ggml-org/llama.cpp/commit/9b596417af11c9ac44fcae0fcfbc6f3665089083
+    publisher: GitHub
+    kind: repository
+    published_at: 2024-06-01
+    accessed_at: 2026-10-21
+  - id: commit-opt
+    title: "llama.cpp commit: ggml/examples: add backend support for numerical optimization (ggml/949)"
+    url: https://github.com/ggml-org/llama.cpp/commit/424c5d00a9b97dd5559635872db9b57f87c23b02
+    publisher: GitHub
+    kind: repository
+    published_at: 2024-09-20
+    accessed_at: 2026-10-21
+  - id: commit-gguf-tests
+    title: "llama.cpp commit: tests: add tests for GGUF (#10830)"
+    url: https://github.com/ggml-org/llama.cpp/commit/081b29bd2a3d91e7772e3910ce223dd63b8d7d26
+    publisher: GitHub
+    kind: repository
+    published_at: 2024-12-17
+    accessed_at: 2026-10-21
+  - id: commit-training
+    title: "llama.cpp commit: llama/ggml: add LLM training support (#10544)"
+    url: https://github.com/ggml-org/llama.cpp/commit/10d2af0eaa0aafd7c6577b279dfa5221ff44a63f
+    publisher: GitHub
+    kind: repository
+    published_at: 2025-05-12
+    accessed_at: 2026-10-21
+  - id: commit-fit
+    title: "llama.cpp commit: llama: automatically set parameters to maximize GPU utilization"
+    url: https://github.com/ggml-org/llama.cpp/commit/b1f3a6e5db7b782ef077bd0e8253ce03283b1f37
+    publisher: GitHub
+    kind: repository
+    published_at: 2025-12-15
+    accessed_at: 2026-10-21

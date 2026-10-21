@@ -60,9 +60,52 @@ work:
 links:
   - label: Website
     url: https://jsteinhardt.stat.berkeley.edu/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Jacob Steinhardt's research aims to keep machine learning systems understood by and aligned with
+          the people who use them. Steinhardt's work examines how models exploit errors in reward functions,
+          including a 2022 study finding that more capable reinforcement learning agents often exploit
+          misspecified rewards, and earlier work on certified defenses against data poisoning attacks.
+        source_ids: [steinhardt-site, reward-paper, poisoning-paper]
+      - text: >-
+          Other lines of Steinhardt's research study models' latent activations to understand and adjust how
+          outputs are produced, and build systems that summarize large datasets in natural language.
+          Steinhardt co-authored the MMLU benchmark for measuring multitask language understanding and the
+          study that traced an indirect object identification circuit in GPT-2 small.
+        source_ids: [steinhardt-site, mmlu-paper, ioi-paper]
+  - heading: Teaching and Transluce
+    paragraphs:
+      - text: >-
+          As a graduate student, Steinhardt was advised by Percy Liang, and during a postdoc year Steinhardt
+          worked at OpenAI and Open Philanthropy. At Berkeley Steinhardt has taught courses on
+          robust statistics, forecasting, and data, inference and decisions.
+        source_ids: [steinhardt-site, teaching]
+      - text: >-
+          Steinhardt co-founded Transluce and is its CEO; Transluce is a nonprofit lab building public technology for scalable
+          oversight of AI. Its tools include Docent, which turns AI agent transcripts into traceable
+          measurements for safety evaluations, reinforcement learning monitoring and agent development.
+        source_ids: [transluce-site, transluce-about, docent]
+timeline:
+  - date: "2017-06"
+    text: Posted "Certified Defenses for Data Poisoning Attacks" as first author.
+    source_ids: [poisoning-paper]
+  - date: "2019"
+    text: Taught STAT260, Robust Statistics, at UC Berkeley in fall 2019.
+    source_ids: [teaching]
+  - date: "2020-09"
+    text: Co-authored the MMLU paper on measuring massive multitask language understanding.
+    source_ids: [mmlu-paper]
+  - date: "2022-01"
+    text: Co-authored a study of reward misspecification and reward hacking in reinforcement learning.
+    source_ids: [reward-paper]
+  - date: "2022-11"
+    text: Co-authored the indirect object identification circuit study of GPT-2 small.
+    source_ids: [ioi-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: steinhardt-site
     title: Jacob Steinhardt — homepage (UC Berkeley Statistics)
@@ -70,25 +113,60 @@ sources:
     publisher: Jacob Steinhardt
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: transluce-site
     title: Transluce — homepage
     url: https://transluce.org/
     publisher: Transluce
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mmlu-paper
     title: Measuring Massive Multitask Language Understanding (arXiv 2009.03300)
     url: https://arxiv.org/abs/2009.03300
     publisher: arXiv
     kind: paper
     published_at: 2020-09-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ioi-paper
     title: "Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 small (arXiv 2211.00593)"
     url: https://arxiv.org/abs/2211.00593
     publisher: arXiv
     kind: paper
     published_at: 2022-11-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: teaching
+    title: "Jacob Steinhardt — Teaching"
+    url: https://jsteinhardt.stat.berkeley.edu/teaching/
+    publisher: Jacob Steinhardt
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: transluce-about
+    title: "Transluce — About"
+    url: https://transluce.org/about
+    publisher: Transluce
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: docent
+    title: "Docent — Transluce"
+    url: https://transluce.org/docent
+    publisher: Transluce
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: reward-paper
+    title: "The Effects of Reward Misspecification: Mapping and Mitigating Misaligned Models (arXiv 2201.03544)"
+    url: https://arxiv.org/abs/2201.03544
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-01-10
+    accessed_at: 2026-10-21
+  - id: poisoning-paper
+    title: "Certified Defenses for Data Poisoning Attacks (arXiv 1706.03691)"
+    url: https://arxiv.org/abs/1706.03691
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-06-09
+    accessed_at: 2026-10-21

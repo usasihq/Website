@@ -14,7 +14,7 @@ bio:
     structure prediction with AlphaFold. Before Google DeepMind, Kohli was Director of Research for the
     Cognition group at Microsoft Research.
   source_ids: [kohli-author, alphafold-paper]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
@@ -51,9 +51,47 @@ work:
 links:
   - label: Google author page
     url: https://blog.google/authors/pushmeet-kohli/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kohli was formerly Director of Research for the Cognition group at Microsoft Research. At Google
+          DeepMind, Kohli is a Vice President and leads the AI for Science and Strategic Initiatives Unit, whose
+          work spans biology, materials, fusion, mathematics, software and cybersecurity. Google also names Kohli
+          as Chief Scientist of Google Cloud.
+        source_ids: [kohli-author, india-2026]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Kohli is a co-author of the 2021 Nature paper describing AlphaFold's highly accurate protein structure
+          prediction. With colleagues at Google DeepMind, Kohli also co-authored FunSearch, published in Nature in
+          December 2023, which paired a large language model with an evaluator to search for programs that
+          yield new mathematical results.
+        source_ids: [alphafold-paper, pk-funsearch]
+      - text: >-
+          Google lists the 2025 AI co-scientist among Kohli's key work, a multi-agent system built on Gemini
+          to help scientists generate research hypotheses, along with AlphaEvolve, an evolutionary coding agent that
+          uses language models to improve algorithms for open scientific problems and computing infrastructure.
+        source_ids: [kohli-author, pk-coscientist, pk-alphaevolve]
+timeline:
+  - date: "2021-07-15"
+    text: Co-authored the Nature paper on highly accurate protein structure prediction with AlphaFold.
+    source_ids: [alphafold-paper]
+  - date: "2023-12-14"
+    text: Co-authored the FunSearch paper on mathematical discoveries from program search with language models.
+    source_ids: [pk-funsearch]
+  - date: "2025-02-26"
+    text: Co-authored the paper introducing Google's AI co-scientist system.
+    source_ids: [pk-coscientist]
+  - date: "2025-06-16"
+    text: Co-authored the AlphaEvolve white paper on a coding agent for scientific and algorithmic discovery.
+    source_ids: [pk-alphaevolve]
+  - date: "2026-02-18"
+    text: Co-wrote a Google post on accelerating discovery in India through AI-powered science and education.
+    source_ids: [india-2026]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: kohli-author
     title: Pushmeet Kohli — author page on The Keyword (Google)
@@ -61,18 +99,39 @@ sources:
     publisher: Google
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: alphafold-paper
     title: Highly accurate protein structure prediction with AlphaFold (Nature 596, 583–589)
     url: https://www.nature.com/articles/s41586-021-03819-2
     publisher: Nature
     kind: paper
     published_at: "2021-07-15"
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: india-2026
     title: Accelerating discovery in India through AI-powered science and education (byline)
     url: https://blog.google/intl/en-in/company-news/accelerating-discovery-in-india-through-ai-powered-science-and-education/
     publisher: Google
     kind: announcement
     published_at: 2026-02-18
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: pk-funsearch
+    title: Mathematical discoveries from program search with large language models
+    url: https://www.nature.com/articles/s41586-023-06924-6
+    publisher: Nature
+    kind: paper
+    published_at: 2023-12-14
+    accessed_at: 2026-10-21
+  - id: pk-coscientist
+    title: Accelerating scientific discovery with Co-Scientist
+    url: https://arxiv.org/abs/2502.18864
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-26
+    accessed_at: 2026-10-21
+  - id: pk-alphaevolve
+    title: "AlphaEvolve: A coding agent for scientific and algorithmic discovery"
+    url: https://arxiv.org/abs/2506.13131
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-16
+    accessed_at: 2026-10-21

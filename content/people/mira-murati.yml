@@ -46,9 +46,57 @@ work:
 links:
   - label: Thinking Machines Lab
     url: https://thinkingmachines.ai
+sections:
+  - heading: Career at OpenAI
+    paragraphs:
+      - text: >-
+          Mira Murati worked at OpenAI before co-founding Thinking Machines Lab. Murati is listed with an
+          OpenAI affiliation as a co-author of the 2021 paper "Evaluating Large Language Models Trained on
+          Code," which introduced Codex and the HumanEval benchmark, and among the additional contributors to
+          the 2023 GPT-4 Technical Report.
+        source_ids: [codex-paper, humaneval-repo, gpt4-report]
+      - text: >-
+          The OpenAI o1 System Card, published in December 2024, lists Murati under executive leadership for
+          the o1 models.
+        source_ids: [o1-card]
+  - heading: Thinking Machines Lab
+    paragraphs:
+      - text: >-
+          Murati is co-founder and CEO of Thinking Machines Lab, an AI research and product company whose
+          stated mission is to build AI that extends human will and judgment, with technical directions that
+          include multimodal interaction and customizable models. In October 2025 the company announced
+          Tinker, an API for training custom models, which reached general availability in December 2025.
+        source_ids: [tml-nvidia, tml-home, tml-future, tml-news, tml-tinker]
+      - text: >-
+          In July 2026 Thinking Machines released Inkling, an open-weights mixture-of-experts transformer
+          pretrained on text, images, audio and video and the first in a planned family of models. In March
+          2026 Thinking Machines Lab and NVIDIA announced a long-term strategic partnership.
+        source_ids: [tml-inkling, tml-news, tml-nvidia]
+timeline:
+  - date: "2021-07"
+    text: Co-authored the Codex paper that introduced the HumanEval benchmark.
+    source_ids: [codex-paper]
+  - date: "2023-03"
+    text: Listed among additional contributors to the GPT-4 Technical Report.
+    source_ids: [gpt4-report]
+  - date: "2024-12"
+    text: Listed under executive leadership in the OpenAI o1 System Card.
+    source_ids: [o1-card]
+  - date: "2025-10-01"
+    text: Thinking Machines Lab announced Tinker, an API for training custom models.
+    source_ids: [tml-news]
+  - date: "2025-12-12"
+    text: Thinking Machines Lab made Tinker generally available and added vision input.
+    source_ids: [tml-news]
+  - date: "2026-03-10"
+    text: Thinking Machines Lab and NVIDIA announced a long-term strategic partnership.
+    source_ids: [tml-nvidia, tml-news]
+  - date: "2026-07-15"
+    text: Thinking Machines Lab released Inkling, an open-weights model and the first in a planned model family.
+    source_ids: [tml-inkling, tml-news]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: tml-nvidia
     title: Thinking Machines Lab and NVIDIA Announce Long-Term Gigawatt-Scale Strategic Partnership
@@ -56,46 +104,67 @@ sources:
     publisher: Thinking Machines Lab
     kind: announcement
     published_at: 2026-03-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tml-home
     title: Thinking Machines Lab — homepage (Inkling, Tinker)
     url: https://thinkingmachines.ai
     publisher: Thinking Machines Lab
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tml-tinker
     title: Tinker — Thinking Machines Lab
     url: https://thinkingmachines.ai/tinker/
     publisher: Thinking Machines Lab
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: o1-card
     title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
     url: https://arxiv.org/abs/2412.16720
     publisher: arXiv
     kind: paper
     published_at: 2024-12-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt4-report
     title: GPT-4 Technical Report (arXiv 2303.08774), authorship and credit attribution
     url: https://arxiv.org/abs/2303.08774
     publisher: arXiv
     kind: paper
     published_at: 2023-03-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codex-paper
     title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
     url: https://arxiv.org/abs/2107.03374
     publisher: arXiv
     kind: paper
     published_at: 2021-07-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: humaneval-repo
     title: openai/human-eval repository (README citation; MIT License)
     url: https://github.com/openai/human-eval
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: tml-news
+    title: "Thinking Machines Lab — News"
+    url: https://thinkingmachines.ai/news/
+    publisher: Thinking Machines Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: tml-future
+    title: "The Future Worth Building Is Human"
+    url: https://thinkingmachines.ai/blog/the-future-worth-building-is-human/
+    publisher: Thinking Machines Lab
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: tml-inkling
+    title: "Inkling: Our Open-Weights Model"
+    url: https://thinkingmachines.ai/news/introducing-inkling/
+    publisher: Thinking Machines Lab
+    kind: announcement
+    published_at: 2026-07-15
+    accessed_at: 2026-10-21

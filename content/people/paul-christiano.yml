@@ -49,9 +49,60 @@ work:
 links:
   - label: Website
     url: https://paulfchristiano.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Paul Christiano received a PhD in statistical learning theory from UC Berkeley and later
+          ran the language model alignment team at OpenAI. Christiano then founded the Alignment
+          Research Center (ARC), a nonprofit developing methods for white-box analysis of neural
+          networks, and is its executive director.
+        source_ids: [christiano-site]
+      - text: >-
+          In April 2024 U.S. Secretary of Commerce Gina Raimondo named Christiano head of AI safety at
+          the U.S. AI Safety Institute, housed at the National Institute of Standards and Technology.
+          Christiano's site says Christiano previously served as Head of Safety at the Center for AI
+          Standards and Innovation and the AI Safety Institute and is now a technical advisor at the
+          Center for AI Standards and Innovation within NIST.
+        source_ids: [nist-aisi-2024, christiano-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Christiano co-authored "Concrete Problems in AI Safety" (2016) and was first author of "Deep
+          reinforcement learning from human preferences" (2017), which trains agents on goals defined
+          by human comparisons between pairs of behavior clips. Christiano also co-authored the 2020
+          paper "Learning to summarize from human feedback", which applied this kind of preference
+          learning to language models.
+        source_ids: [concrete-problems-paper, human-preferences-paper, summarize-paper]
+      - text: >-
+          With Buck Shlegeris and Dario Amodei, Christiano wrote "Supervising strong learners by
+          amplifying weak experts" (2018), which proposes iterated amplification for training systems
+          on tasks too hard for humans to evaluate directly. Christiano later co-authored
+          "Formalizing the presumption of independence" (2022) with Eric Neyman and Mark Xu, on
+          formalizing heuristic reasoning that relies on default independence assumptions.
+        source_ids: [amplification-paper, independence-paper]
+timeline:
+  - date: "2016-06-21"
+    text: "Co-authored \"Concrete Problems in AI Safety\"."
+    source_ids: [concrete-problems-paper]
+  - date: "2017-06-12"
+    text: First author of "Deep reinforcement learning from human preferences".
+    source_ids: [human-preferences-paper]
+  - date: "2018-10-19"
+    text: First author of "Supervising strong learners by amplifying weak experts", on iterated amplification.
+    source_ids: [amplification-paper]
+  - date: "2020-09-02"
+    text: Co-authored "Learning to summarize from human feedback".
+    source_ids: [summarize-paper]
+  - date: "2022-11-12"
+    text: First author of "Formalizing the presumption of independence" with Eric Neyman and Mark Xu.
+    source_ids: [independence-paper]
+  - date: "2024-04-16"
+    text: Named head of AI safety at the U.S. AI Safety Institute at NIST.
+    source_ids: [nist-aisi-2024]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: christiano-site
     title: Paul Christiano — homepage
@@ -59,18 +110,46 @@ sources:
     publisher: Paul Christiano
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nist-aisi-2024
     title: U.S. Commerce Secretary Gina Raimondo Announces Expansion of U.S. AI Safety Institute Leadership Team
     url: https://www.nist.gov/news-events/news/2024/04/us-commerce-secretary-gina-raimondo-announces-expansion-us-ai-safety
     publisher: National Institute of Standards and Technology
     kind: announcement
     published_at: 2024-04-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: human-preferences-paper
     title: Deep reinforcement learning from human preferences (arXiv 1706.03741)
     url: https://arxiv.org/abs/1706.03741
     publisher: arXiv
     kind: paper
     published_at: 2017-06-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: concrete-problems-paper
+    title: Concrete Problems in AI Safety (arXiv 1606.06565)
+    url: https://arxiv.org/abs/1606.06565
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-06-21
+    accessed_at: 2026-10-21
+  - id: amplification-paper
+    title: Supervising strong learners by amplifying weak experts (arXiv 1810.08575)
+    url: https://arxiv.org/abs/1810.08575
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-10-19
+    accessed_at: 2026-10-21
+  - id: summarize-paper
+    title: Learning to summarize from human feedback (arXiv 2009.01325)
+    url: https://arxiv.org/abs/2009.01325
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-09-02
+    accessed_at: 2026-10-21
+  - id: independence-paper
+    title: Formalizing the presumption of independence (arXiv 2211.06738)
+    url: https://arxiv.org/abs/2211.06738
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-12
+    accessed_at: 2026-10-21

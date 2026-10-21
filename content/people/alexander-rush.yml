@@ -4,22 +4,21 @@ initials: SR
 groups: [engineering, open-source]
 sector: corporate
 specialties: [language-models, education]
-headline: ML researcher at Cursor; former Cornell and Harvard professor and Hugging Face researcher
+headline: ML researcher; former Cornell and Harvard professor and former Cursor and Hugging Face researcher
 bio:
   text: >-
-    Sasha Rush (Alexander M. Rush in paper bylines) is an ML researcher at Cursor who studies
-    post-training of AI systems for coding and related tasks. From 2016 to 2026 Rush was a
-    professor at Harvard and then Cornell, and from 2019 to 2024 Rush also worked as a researcher
-    at Hugging Face, helping on early open-source LLM projects. Rush is a co-author of the paper
+    Sasha Rush (Alexander M. Rush in paper bylines) is an ML researcher, programmer and blogger.
+    Rush was previously a professor at Harvard and then Cornell, worked as an ML researcher at
+    Cursor on the Composer series of models, and worked at Hugging Face on open-source LLMs. Rush is a co-author of the paper
     that introduced Hugging Face's Transformers library and of the Zephyr alignment paper, wrote
     The Annotated Transformer (2018), and helped start the Conference on Language Modeling in 2024.
   source_ids: [rush-site, github-profile, transformers-paper, zephyr-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Cursor (Anysphere)
     organization_slug: anysphere
-    role: ML Researcher
-    current: true
+    role: ML Researcher (Composer series of models)
+    current: false
     source_ids: [rush-site, github-profile]
   - name: Cornell University
     organization_slug: cornell-university
@@ -36,6 +35,11 @@ affiliations:
     role: Researcher
     current: false
     source_ids: [rush-site]
+  - name: Meta (Facebook AI Research)
+    organization_slug: meta
+    role: Post-doctoral fellow at Facebook AI Research (2015)
+    current: false
+    source_ids: [rush-cv]
 work:
   - name: Transformers
     artifact_slug: transformers
@@ -66,9 +70,94 @@ links:
     url: https://rush-nlp.com
   - label: GitHub
     url: https://github.com/srush
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Rush completed a PhD in computer science at MIT in 2014, advised by Michael Collins, with a
+          dissertation on relaxation methods for natural language decoding, and then held a post-doctoral
+          fellowship at Facebook AI Research in 2015. Rush was an assistant professor of computer science
+          at Harvard from 2015 to 2019 and then an associate professor of computer science at Cornell University.
+        source_ids: [rush-cv]
+      - text: >-
+          From 2019 Rush also worked with Hugging Face, where the team built open-source LLMs. Rush later
+          worked as an ML researcher at Cursor, helping develop the Composer series of models, and is a
+          listed author of the Composer 2 technical report from Cursor Research.
+        source_ids: [rush-site, rush-cv, composer2-paper]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Rush's academic group worked on early LLMs, natural language processing and infrastructure.
+          Papers on Rush's list include "A Neural Attention Model for Abstractive Sentence Summarization"
+          (EMNLP 2015) with Sumit Chopra and Jason Weston, "Character-Aware Neural Language Models" (AAAI
+          2016), "Sequence-Level Knowledge Distillation" (EMNLP 2016) and "Compound Probabilistic
+          Context-Free Grammars for Grammar Induction" (ACL 2019).
+        source_ids: [rush-site, rush-cv]
+      - text: >-
+          More recent work covers language models without attention, including "Pretraining Without
+          Attention" (EMNLP 2023 Findings) and MambaByte (COLM 2024), as well as "Simple and Effective Masked
+          Diffusion Language Models" (NeurIPS 2024) and "Contextual Document Embeddings" (ICLR 2025).
+        source_ids: [rush-site, rush-cv]
+  - heading: Open-source work and community
+    paragraphs:
+      - text: >-
+          Rush co-authored the OpenNMT toolkit for neural machine translation (ACL Demo 2017) and the
+          LSTMVis tool for inspecting recurrent network hidden states (InfoVis 2017), wrote The Annotated
+          Transformer (2018) and published GPU-Puzzles in 2021. Rush helped start the Conference on
+          Language Modeling (COLM), served as a Senior Program Chair and a General Chair of ICLR.
+        source_ids: [rush-site, rush-cv, colm-site]
+timeline:
+  - date: "2014"
+    text: Completed a PhD in computer science at MIT, advised by Michael Collins.
+    source_ids: [rush-cv]
+  - date: "2015"
+    text: Held a post-doctoral fellowship at Facebook AI Research and joined Harvard as an assistant professor of computer science.
+    source_ids: [rush-cv]
+  - date: "2015"
+    text: Published "A Neural Attention Model for Abstractive Sentence Summarization" at EMNLP with Sumit Chopra and Jason Weston.
+    source_ids: [rush-cv]
+  - date: "2017"
+    text: Co-authored OpenNMT, an open-source toolkit for neural machine translation, presented at ACL Demo.
+    source_ids: [rush-site, rush-cv]
+  - date: "2018"
+    text: Wrote The Annotated Transformer, presented at the ACL NLP-OSS workshop.
+    source_ids: [rush-site]
+  - date: "2019"
+    text: Joined Cornell University as an associate professor of computer science and began working with Hugging Face.
+    source_ids: [rush-cv]
+  - date: "2019-10"
+    text: Co-authored the paper introducing Hugging Face's Transformers library.
+    source_ids: [transformers-paper]
+  - date: "2023-10"
+    text: Co-authored "Zephyr - Direct Distillation of LM Alignment" with the Hugging Face team.
+    source_ids: [zephyr-paper]
+  - date: "2026-03"
+    text: Listed as an author of the Composer 2 technical report from Cursor Research.
+    source_ids: [composer2-paper]
+honors:
+  - name: NSF CAREER Award
+    year: 2019
+    awarded_by: National Science Foundation
+    source_ids: [rush-cv]
+  - name: Sloan Research Fellowship
+    year: 2021
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [rush-cv]
+  - name: Best Paper Award, EMNLP
+    year: 2010
+    awarded_by: Conference on Empirical Methods in Natural Language Processing
+    source_ids: [rush-cv]
+  - name: Best Paper Award, NAACL
+    year: 2012
+    awarded_by: North American Chapter of the Association for Computational Linguistics
+    source_ids: [rush-cv]
+  - name: Outstanding Paper, EMNLP
+    year: 2023
+    awarded_by: Conference on Empirical Methods in Natural Language Processing
+    source_ids: [rush-cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: rush-site
     title: Sasha Rush — homepage (bio and selected publications)
@@ -76,25 +165,46 @@ sources:
     publisher: Sasha Rush
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: srush (Sasha Rush) on GitHub
     url: https://github.com/srush
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: transformers-paper
     title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
     url: https://arxiv.org/abs/1910.03771
     publisher: arXiv
     kind: paper
     published_at: 2019-10-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: zephyr-paper
     title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
     url: https://arxiv.org/abs/2310.16944
     publisher: arXiv
     kind: paper
     published_at: 2023-10-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: rush-cv
+    title: Alexander M. Rush — curriculum vitae (PDF)
+    url: https://rush-nlp.com/cv/cv.comp.pdf
+    publisher: Sasha Rush
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: composer2-paper
+    title: Composer 2 Technical Report (arXiv 2603.24477)
+    url: https://arxiv.org/abs/2603.24477
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-25
+    accessed_at: 2026-10-21
+  - id: colm-site
+    title: Conference on Language Modeling (COLM)
+    url: https://colmweb.org/
+    publisher: COLM
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

@@ -15,7 +15,7 @@ bio:
     with the IBM T.J. Watson Research Center as a co-author of a 2026 reference architecture for
     quantum-centric supercomputers that combine quantum processors with GPUs and CPUs.
   source_ids: [gpu-cc-paper, confidential-inference-paper, qcsc-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: IBM Research
     organization_slug: ibm
@@ -42,9 +42,47 @@ work:
       execution environments.
     source_ids: [confidential-inference-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Several of Jamjoom's co-authored papers concern confidential computing for machine learning. With
+          Zhongshu Gu and colleagues, Jamjoom co-wrote a 2018 paper on confidential inference through ternary
+          model partitioning and a 2018 design called CalTrain for keeping training data confidential while
+          preserving model accountability in collaborative learning. A 2021 paper on separation of powers in
+          federated learning addressed information leakage from an untrusted aggregation server.
+        source_ids: [confidential-inference-paper, hj-caltrain, hj-fl]
+      - text: >-
+          Jamjoom has also co-authored analyses of hardware trusted execution: a 2023 top-down study of Intel
+          Trust Domain Extensions (TDX) and the 2025 security study of NVIDIA GPU Confidential Computing.
+          Other recent co-authored systems work includes Rex, a 2025 design for safe and usable kernel
+          extensions, and a 2026 reference architecture for quantum-centric supercomputers.
+        source_ids: [hj-tdx, gpu-cc-paper, hj-rex, qcsc-paper]
+timeline:
+  - date: "2018-07-03"
+    text: Co-authored "Confidential Inference via Ternary Model Partitioning."
+    source_ids: [confidential-inference-paper]
+  - date: "2018-12-07"
+    text: Co-authored CalTrain, a design for data confidentiality and model accountability in collaborative learning.
+    source_ids: [hj-caltrain]
+  - date: "2021-05-19"
+    text: Co-authored "Separation of Powers in Federated Learning."
+    source_ids: [hj-fl]
+  - date: "2023-03-27"
+    text: Co-authored "Intel TDX Demystified," a top-down study of Intel Trust Domain Extensions.
+    source_ids: [hj-tdx]
+  - date: "2025-02-26"
+    text: Co-authored Rex, a system for safe and usable kernel extensions.
+    source_ids: [hj-rex]
+  - date: "2025-07-03"
+    text: Co-authored a security study of NVIDIA GPU Confidential Computing.
+    source_ids: [gpu-cc-paper]
+  - date: "2026-03-11"
+    text: Co-authored a reference architecture for quantum-centric supercomputers.
+    source_ids: [qcsc-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: gpu-cc-paper
     title: "Blueprint, Bootstrap, and Bridge: A Security Look at NVIDIA GPU Confidential Computing (arXiv 2507.02770)"
@@ -52,18 +90,46 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2025-07-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: confidential-inference-paper
     title: Confidential Inference via Ternary Model Partitioning (arXiv 1807.00969)
     url: https://arxiv.org/abs/1807.00969
     publisher: arXiv
     kind: paper
     published_at: 2018-07-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: qcsc-paper
     title: Reference Architecture of a Quantum-Centric Supercomputer (arXiv 2603.10970)
     url: https://arxiv.org/abs/2603.10970
     publisher: arXiv
     kind: paper
     published_at: 2026-03-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: hj-caltrain
+    title: Reaching Data Confidentiality and Model Accountability on the CalTrain
+    url: https://arxiv.org/abs/1812.03230
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-12-07
+    accessed_at: 2026-10-21
+  - id: hj-fl
+    title: Separation of Powers in Federated Learning
+    url: https://arxiv.org/abs/2105.09400
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-05-19
+    accessed_at: 2026-10-21
+  - id: hj-tdx
+    title: "Intel TDX Demystified: A Top-Down Approach"
+    url: https://arxiv.org/abs/2303.15540
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-03-27
+    accessed_at: 2026-10-21
+  - id: hj-rex
+    title: Safe and usable kernel extensions with Rex
+    url: https://arxiv.org/abs/2502.18832
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-02-26
+    accessed_at: 2026-10-21

@@ -19,7 +19,7 @@ bio:
     faculty positions at Carnegie Mellon University and the University of Sydney before returning to
     Stanford.
   source_ids: [manning-site, glove-paper, stanza-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Stanford University
     organization_slug: stanford-university
@@ -63,9 +63,118 @@ links:
     url: https://nlp.stanford.edu/~manning/
   - label: Stanford NLP Group
     url: https://nlp.stanford.edu/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Christopher Manning earned a PhD in linguistics at Stanford in 1994, then taught in the Computational
+          Linguistics Program at Carnegie Mellon University from 1994 to 1996 and in the Department of
+          Linguistics at the University of Sydney from 1996 to 1999. Manning returned to Stanford in 1999 as an
+          assistant professor of computer science and linguistics, became associate professor in 2006 and full
+          professor in 2012, and has held the Thomas M. Siebel Professorship in Machine Learning since 2017.
+        source_ids: [manning-site]
+      - text: >-
+          Manning founded the Stanford NLP Group, is a co-founder and Senior Fellow of the Stanford Institute for
+          Human-Centered Artificial Intelligence, and served as President of the Association for Computational
+          Linguistics in 2015.
+        source_ids: [manning-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Manning's earlier work built empirical, probabilistic approaches to natural language processing,
+          including natural language inference, syntactic parsing, machine translation and multilingual
+          processing. From 2010 the work turned to neural networks for language understanding, covering
+          sentiment analysis, paraphrase detection, attention, neural machine translation, question answering,
+          self-supervised pre-training and dependency parsing.
+        source_ids: [manning-site]
+      - text: >-
+          With Jeffrey Pennington and Richard Socher, Manning introduced the GloVe word vectors at EMNLP 2014.
+          In linguistics, Manning is a principal developer of Stanford Dependencies and Universal Dependencies,
+          and current topics include compositionality, large pre-trained language models, knowledge and
+          reasoning, and low-resource languages.
+        source_ids: [glove-paper, manning-site]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Manning co-wrote the textbooks Foundations of Statistical Natural Language Processing (MIT Press, 1999)
+          with Hinrich Schütze and Introduction to Information Retrieval (Cambridge University Press, 2008) with
+          Prabhakar Raghavan and Schütze, along with monographs on ergativity and complex predicates. Manning
+          taught CS 276, Information Retrieval and Web Search, from 2003 through 2019, and co-taught the 2012
+          Coursera NLP class with Dan Jurafsky.
+        source_ids: [manning-site]
+      - text: >-
+          Manning has long released open-source NLP software through the Stanford NLP Group, including Stanford
+          CoreNLP and the Apache-2.0 licensed Python library Stanza, whose ACL 2020 system paper Manning
+          co-authored.
+        source_ids: [manning-site, stanza-repo]
+timeline:
+  - date: "1994"
+    text: Completed a PhD in linguistics at Stanford and joined Carnegie Mellon University as an assistant professor.
+    source_ids: [manning-site]
+  - date: "1996"
+    text: Became a lecturer in the Department of Linguistics at the University of Sydney.
+    source_ids: [manning-site]
+  - date: "1999"
+    text: Joined Stanford's computer science and linguistics departments and published Foundations of Statistical Natural Language Processing.
+    source_ids: [manning-site]
+  - date: "2008"
+    text: Published Introduction to Information Retrieval with Prabhakar Raghavan and Hinrich Schütze.
+    source_ids: [manning-site]
+  - date: "2012"
+    text: Became a full professor at Stanford and co-taught one of the early Coursera NLP courses.
+    source_ids: [manning-site]
+  - date: "2014-10"
+    text: Co-authored the GloVe word-vector paper at EMNLP 2014.
+    source_ids: [glove-paper]
+  - date: "2015"
+    text: Served as President of the Association for Computational Linguistics.
+    source_ids: [manning-site]
+  - date: "2017"
+    text: Named Thomas M. Siebel Professor in Machine Learning.
+    source_ids: [manning-site]
+  - date: "2020"
+    text: Co-authored the ACL 2020 system paper for the Stanza Python NLP library.
+    source_ids: [stanza-repo]
+honors:
+  - name: IEEE John von Neumann Medal
+    year: 2024
+    awarded_by: IEEE
+    source_ids: [manning-site]
+  - name: ACL Test of Time Award (three successive awards, 2023–2025)
+    year: 2025
+    awarded_by: Association for Computational Linguistics
+    source_ids: [manning-site]
+  - name: ACM Fellow
+    year: null
+    awarded_by: Association for Computing Machinery
+    source_ids: [manning-site]
+  - name: AAAI Fellow
+    year: null
+    awarded_by: Association for the Advancement of Artificial Intelligence
+    source_ids: [manning-site]
+  - name: ACL Fellow
+    year: null
+    awarded_by: Association for Computational Linguistics
+    source_ids: [manning-site]
+  - name: Member, National Academy of Engineering
+    year: null
+    awarded_by: U.S. National Academy of Engineering
+    source_ids: [manning-site]
+  - name: Member, American Academy of Arts and Sciences
+    year: null
+    awarded_by: American Academy of Arts and Sciences
+    source_ids: [manning-site]
+  - name: Honorary Doctorate
+    year: 2023
+    awarded_by: University of Amsterdam
+    source_ids: [manning-site]
+  - name: EACL Best Paper Award
+    year: 2026
+    awarded_by: European Chapter of the Association for Computational Linguistics (EACL 2026)
+    source_ids: [manning-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: manning-site
     title: Christopher Manning — homepage (bio and brief CV)
@@ -73,18 +182,18 @@ sources:
     publisher: Christopher Manning (Stanford University)
     kind: official-page
     published_at: 2026-06-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: glove-paper
     title: "GloVe: Global Vectors for Word Representation (EMNLP 2014, ACL Anthology D14-1162)"
     url: https://aclanthology.org/D14-1162/
     publisher: ACL Anthology
     kind: paper
     published_at: 2014-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stanza-repo
     title: stanfordnlp/stanza README (citation and Apache License 2.0)
     url: https://github.com/stanfordnlp/stanza
     publisher: Stanford NLP Group (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

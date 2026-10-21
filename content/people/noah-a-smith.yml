@@ -15,7 +15,7 @@ bio:
     process language and music data and core questions of research methodology such as evaluation,
     and Smith is a co-author of the OLMo, Dolma, and Tülu 3 papers.
   source_ids: [smith-site, uw-profile, ai2-team, olmo-paper, dolma-paper, tulu3-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of Washington
     organization_slug: university-of-washington
@@ -60,9 +60,87 @@ links:
     url: https://nasmith.github.io
   - label: UW faculty page
     url: https://www.cs.washington.edu/people/faculty/noah-smith/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Smith earned a PhD in computer science at Johns Hopkins University, advised by Jason Eisner. Smith was
+          previously an associate professor of language technologies and machine learning in Carnegie Mellon
+          University's School of Computer Science, before joining the University of Washington's Paul G. Allen
+          School.
+        source_ids: [smith-site]
+      - text: >-
+          At UW, Smith is the inaugural Vice Provost for Artificial Intelligence and holds the Charles and Lisa
+          Simonyi Endowed Chair for Artificial Intelligence and Emerging Technologies. Smith is also Senior
+          Director of NLP Research at the Allen Institute for AI and principal investigator of the NSF- and
+          NVIDIA-supported project "Open Multimodal AI Infrastructure to Accelerate Science". Smith was general
+          chair of EMNLP 2022 and program co-chair of ACL 2016.
+        source_ids: [smith-site, uw-profile, ai2-team]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Smith's research targets systems that process language and other data to augment human capabilities,
+          along with research methodology such as evaluation. Recent work applies multimodal AI to music,
+          including timestamped transcription of performances (Rubato) and digitization of sheet music (Legato 2).
+        source_ids: [smith-site, uw-profile]
+      - text: >-
+          Smith directs Ai2's OLMo open language modeling effort and co-authored the 2024 papers introducing OLMo,
+          the Dolma pretraining corpus, the OLMoE mixture-of-experts model and the Tülu 3 post-training recipes.
+          With Sofia Serrano and Zander Brumbaugh, Smith wrote "Language Models: A Guide for the Perplexed"
+          (2023), a tutorial for a general audience.
+        source_ids: [olmo-paper, dolma-paper, olmoe-pdf, tulu3-paper, guide-paper, smith-site]
+timeline:
+  - date: "2011"
+    text: Received an NSF CAREER award, held from 2011 to 2016.
+    source_ids: [smith-site]
+  - date: "2016"
+    text: Served as program co-chair of ACL 2016.
+    source_ids: [smith-site]
+  - date: "2017"
+    text: Co-led UW's Sounding Board team, which won the inaugural Amazon Alexa Prize.
+    source_ids: [smith-site]
+  - date: "2022"
+    text: Served as general chair of EMNLP 2022.
+    source_ids: [smith-site]
+  - date: "2023-11"
+    text: 'Co-authored "Language Models: A Guide for the Perplexed", a general-audience tutorial.'
+    source_ids: [guide-paper]
+  - date: "2024-01"
+    text: Co-authored the Dolma paper describing an open corpus for language model pretraining.
+    source_ids: [dolma-paper]
+  - date: "2024-02"
+    text: Co-authored the OLMo paper, "Accelerating the Science of Language Models".
+    source_ids: [olmo-paper]
+  - date: "2024-09"
+    text: Co-authored OLMoE, an open mixture-of-experts language model.
+    source_ids: [olmoe-pdf]
+  - date: "2024-11"
+    text: Co-authored Tülu 3, on open post-training of language models.
+    source_ids: [tulu3-paper]
+honors:
+  - name: Hertz Foundation Graduate Fellowship
+    year: 2001
+    awarded_by: Hertz Foundation
+    source_ids: [smith-site]
+  - name: NSF CAREER Award
+    year: 2011
+    awarded_by: U.S. National Science Foundation
+    source_ids: [smith-site]
+  - name: ACL Fellow
+    year: 2020
+    awarded_by: Association for Computational Linguistics
+    source_ids: [smith-site]
+  - name: Amazon Alexa Prize (inaugural, Sounding Board team)
+    year: 2017
+    awarded_by: Amazon
+    source_ids: [smith-site]
+  - name: University of Washington Faculty Lecture Award
+    year: 2026
+    awarded_by: University of Washington
+    source_ids: [smith-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: smith-site
     title: Noah A. Smith — homepage
@@ -70,46 +148,53 @@ sources:
     publisher: Noah A. Smith
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: uw-profile
     title: Noah Smith — Paul G. Allen School of Computer Science & Engineering faculty profile
     url: https://www.cs.washington.edu/people/faculty/noah-smith/
     publisher: University of Washington
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ai2-team
     title: Team — Ai2 (directory page listing Noah Smith)
     url: https://allenai.org/team?o=100
     publisher: Ai2
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: olmo-paper
     title: "OLMo: Accelerating the Science of Language Models (arXiv 2402.00838)"
     url: https://arxiv.org/abs/2402.00838
     publisher: arXiv
     kind: paper
     published_at: 2024-02-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: olmoe-pdf
     title: "OLMoE: Open Mixture-of-Experts Language Models (arXiv 2409.02060, full text with Author Contributions)"
     url: https://arxiv.org/pdf/2409.02060
     publisher: arXiv
     kind: paper
     published_at: 2024-09-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dolma-paper
     title: "Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research (arXiv 2402.00159)"
     url: https://arxiv.org/abs/2402.00159
     publisher: arXiv
     kind: paper
     published_at: 2024-01-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tulu3-paper
     title: "Tulu 3: Pushing Frontiers in Open Language Model Post-Training (arXiv 2411.15124)"
     url: https://arxiv.org/abs/2411.15124
     publisher: arXiv
     kind: paper
     published_at: 2024-11-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: guide-paper
+    title: "Language Models: A Guide for the Perplexed (arXiv 2311.17301)"
+    url: https://arxiv.org/abs/2311.17301
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-29
+    accessed_at: 2026-10-21

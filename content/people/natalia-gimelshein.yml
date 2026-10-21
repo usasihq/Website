@@ -14,7 +14,7 @@ bio:
     OpenAI. At PyTorch Conference Europe 2026, Gimelshein took part in the "Meet the Developers"
     session for PyTorch module maintainers.
   source_ids: [pytorch-maintainers, pytorch-paper-pdf, pt2-paper, eu26-recap]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: PyTorch (open-source project)
     organization_slug: null
@@ -52,9 +52,50 @@ work:
 links:
   - label: GitHub
     url: https://github.com/ngimel
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Two of Natalia Gimelshein's earlier papers addressed GPU efficiency. Gimelshein co-authored vDNN
+          (2016), a runtime memory manager that lets deep neural networks train beyond a GPU's memory capacity by
+          virtualizing memory across the GPU and CPU, and with Maxim Milakov wrote Online normalizer calculation for
+          softmax (2018), which computes the standard softmax with fewer memory accesses.
+        source_ids: [vdnn-paper, softmax-paper]
+      - text: >-
+          Gimelshein is a co-author of the 2019 PyTorch paper, listed there with NVIDIA, and of the ASPLOS 2024
+          PyTorch 2 paper on TorchDynamo and TorchInductor, listed with OpenAI. Gimelshein also appears among the
+          contributors to the October 2024 GPT-4o System Card.
+        source_ids: [pytorch-paper-pdf, pt2-paper, gpt4o-card]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          PyTorch's governance page lists Gimelshein as one of the project's core maintainers and as a maintainer of
+          its CUDA support, and as an emeritus maintainer of NestedTensor and of the profiling and monitoring tools.
+          At PyTorch Conference Europe 2026, Gimelshein joined the "Meet the Developers" session for module
+          maintainers.
+        source_ids: [pytorch-maintainers, eu26-recap]
+timeline:
+  - date: "2016-02-25"
+    text: Co-authored vDNN, on virtualized memory for training large neural networks on GPUs.
+    source_ids: [vdnn-paper]
+  - date: "2018-05-08"
+    text: Co-authored Online normalizer calculation for softmax with Maxim Milakov.
+    source_ids: [softmax-paper]
+  - date: "2019-12-03"
+    text: Co-authored "PyTorch, An Imperative Style, High-Performance Deep Learning Library".
+    source_ids: [pytorch-paper]
+  - date: "2024-04"
+    text: Co-authored the PyTorch 2 paper on TorchDynamo and TorchInductor at ASPLOS 2024.
+    source_ids: [pt2-paper]
+  - date: "2024-10-25"
+    text: Listed among the contributors to the GPT-4o System Card.
+    source_ids: [gpt4o-card]
+  - date: "2026-04"
+    text: Took part in the "Meet the Developers" session at PyTorch Conference Europe 2026.
+    source_ids: [eu26-recap]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: pytorch-maintainers
     title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
@@ -62,39 +103,60 @@ sources:
     publisher: PyTorch
     kind: documentation
     published_at: 2026-06-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-paper
     title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library (arXiv 1912.01703)"
     url: https://arxiv.org/abs/1912.01703
     publisher: arXiv
     kind: paper
     published_at: 2019-12-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-paper-pdf
     title: "PyTorch: An Imperative Style, High-Performance Deep Learning Library, paper PDF with author affiliations (arXiv 1912.01703)"
     url: https://arxiv.org/pdf/1912.01703
     publisher: arXiv
     kind: paper
     published_at: 2019-12-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pt2-paper
     title: "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS '24)"
     url: https://docs.pytorch.org/assets/pytorch2-2.pdf
     publisher: PyTorch
     kind: paper
     published_at: 2024-04
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: eu26-recap
     title: "PyTorch Conference Europe 2026: A Landmark Moment for Open Source AI in Paris"
     url: https://pytorch.org/blog/pytorch-conference-europe-2026-a-landmark-moment-for-open-source-ai-in-paris/
     publisher: PyTorch
     kind: announcement
     published_at: 2026-04-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-license
     title: pytorch/pytorch LICENSE (BSD-style license)
     url: https://github.com/pytorch/pytorch/blob/main/LICENSE
     publisher: PyTorch (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: vdnn-paper
+    title: "vDNN: Virtualized Deep Neural Networks for Scalable, Memory-Efficient Neural Network Design (arXiv 1602.08124)"
+    url: https://arxiv.org/abs/1602.08124
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-02-25
+    accessed_at: 2026-10-21
+  - id: softmax-paper
+    title: Online normalizer calculation for softmax (arXiv 1805.02867)
+    url: https://arxiv.org/abs/1805.02867
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-05-08
+    accessed_at: 2026-10-21
+  - id: gpt4o-card
+    title: GPT-4o System Card (arXiv 2410.21276)
+    url: https://arxiv.org/abs/2410.21276
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-10-25
+    accessed_at: 2026-10-21
