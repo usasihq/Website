@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 import { describe, expect, it } from "vitest";
-import { pageMetadata, socialImages } from "@/lib/metadata";
+import { canonicalPath, listingTitle, pageMetadata, socialImages, TITLE_MAX } from "@/lib/metadata";
 
 describe("social metadata", () => {
   it("gives every page an Open Graph and Twitter image with alt text", () => {
@@ -29,6 +29,31 @@ describe("social metadata", () => {
       const { width, height } = await sharp(file).metadata();
       expect([width, height], image.path).toEqual([1200, 630]);
     }
+  });
+});
+
+describe("canonical URLs", () => {
+  it("strips query parameters and hashes so filter and utm variants share one URL", () => {
+    expect(canonicalPath("/github/?topic=deepseek")).toBe("/github/");
+    expect(canonicalPath("/jobs/at/xai/data-center-fiber-technician-1ujic4a/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic")).toBe(
+      "/jobs/at/xai/data-center-fiber-technician-1ujic4a/",
+    );
+    expect(canonicalPath("/people/samy-bengio#work")).toBe("/people/samy-bengio/");
+    const meta = pageMetadata({ title: "AI on GitHub", description: "Projects.", path: "/github/?topic=cli" });
+    expect(String(meta.alternates?.canonical)).toMatch(/^https:\/\/[^/]+\/github\/$/);
+    expect(String(meta.alternates?.canonical)).not.toContain("?");
+    expect(String(meta.openGraph?.url)).toMatch(/\/github\/$/);
+    expect(String(meta.openGraph?.url)).not.toContain("?");
+  });
+});
+
+describe("listing titles", () => {
+  it("keeps owner/name plus the host while it fits, then clips the id", () => {
+    expect(listingTitle("openai/whisper", "GitHub")).toBe("openai/whisper on GitHub");
+    expect(listingTitle("a".repeat(80), "GitHub").length).toBeLessThanOrEqual(TITLE_MAX);
+    expect(listingTitle("owner/abcdefghijklmnopqrstuvwxyz-abcdefghijklmnopqrst", "GitHub")).toBe(
+      "owner/abcdefghijklmnopqrstuvwxyz-abcdefghijklmnopqrst",
+    );
   });
 });
 

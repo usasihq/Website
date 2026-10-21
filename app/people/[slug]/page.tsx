@@ -15,7 +15,7 @@ import { PERSON_GROUP_LABELS, PERSON_SPECIALTY_LABELS, WORK_TYPE_LABELS } from "
 import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { peopleAtOrganization } from "@/lib/people-index";
 import { artifactHref, orgHref, personHref } from "@/lib/routes";
-import { personSeo } from "@/lib/seo";
+import { personPageSeo } from "@/lib/people-seo";
 import { personLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = catalog.person((await params).slug);
   if (!p) return {};
   const path = personHref(p.slug);
-  const seo = personSeo(catalog, p);
+  const seo = personPageSeo(catalog, p);
   return pageMetadata({ title: seo.title, description: seo.description, path, image: cardImage(catalog, path) });
 }
 

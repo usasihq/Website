@@ -49,7 +49,7 @@ export const socialImages = {
 
 interface PageMeta {
   /**
-   * The page's own title. The " · USASI" suffix is added only while the whole
+   * The page's own title. The " | USASI" suffix is added only while the whole
    * title stays within TITLE_MAX characters; longer titles stand alone so the
    * words people search for are not cut off in results.
    */
@@ -64,7 +64,18 @@ interface PageMeta {
 
 /** Search results show about 60 characters of a title before cutting it off. */
 export const TITLE_MAX = 60;
-export const BRAND_SUFFIX = ` · ${siteConfig.shortName}`;
+export const BRAND_SUFFIX = ` | ${siteConfig.shortName}`;
+
+/**
+ * Path for a canonical link: no query or hash, so filter and utm variants
+ * (`/github/?topic=…`, Google Jobs `?utm_*`) share the clean directory URL.
+ */
+export function canonicalPath(path: string): string {
+  const bare = (path.split(/[?#]/)[0] || "/").trim() || "/";
+  const withSlash = bare.startsWith("/") ? bare : `/${bare}`;
+  if (withSlash === "/") return "/";
+  return withSlash.endsWith("/") ? withSlash : `${withSlash}/`;
+}
 
 /** The title as it appears in the browser and in search results. */
 export function documentTitle(title: string): string {
@@ -107,11 +118,22 @@ export function clipTitle(text: string, max = TITLE_MAX): string {
   return clipDescription(clean, max);
 }
 
+/**
+ * Title for a third-party listing (`owner/name on GitHub`). Keep the host
+ * suffix while it fits; otherwise the unique id, clipped at TITLE_MAX.
+ */
+export function listingTitle(id: string, host: string, max = TITLE_MAX): string {
+  const full = `${id} on ${host}`;
+  if (full.length <= max) return full;
+  if (id.length <= max) return id;
+  return clipTitle(id, max);
+}
+
 /** Route-specific title, description, canonical URL, and social metadata. */
 export function pageMetadata({ title, description: rawDescription, path, noindex, image = socialImages.site, feeds }: PageMeta): Metadata {
   const description = clipDescription(rawDescription);
   const fullTitle = title ? documentTitle(title) : `${siteConfig.name} (${siteConfig.shortName})`;
-  const url = absoluteUrl(path);
+  const url = absoluteUrl(canonicalPath(path));
   const imageUrl = absoluteUrl(image.path);
   return {
     title: { absolute: fullTitle },

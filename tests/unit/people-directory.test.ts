@@ -5,6 +5,7 @@ import { DEFAULT_PEOPLE_FILTERS, filterPeople, parsePeopleFilters, serializePeop
 import { organizationSector, peopleAtOrganization, peopleListItems } from "@/lib/people-index";
 import { DEFAULT_NEWS_FILTERS, filterNews, parseNewsFilters, serializeNewsFilters, type NewsListItem } from "@/lib/news-list";
 import { personLd } from "@/lib/structured-data";
+import { personPageSeo } from "@/lib/people-seo";
 import { personSeo } from "@/lib/seo";
 
 const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10) });
@@ -60,6 +61,26 @@ describe("People directory", () => {
     const seo = personSeo(catalog, p);
     expect(seo.title.startsWith("Tri Dao")).toBe(true);
     expect(seo.description.length).toBeLessThanOrEqual(160);
+  });
+
+  it("writes click-worthy people titles from role, known work, and USASI facts", () => {
+    const samples = [
+      { slug: "samy-bengio", name: "Samy Bengio", titleNeedles: ["Samy Bengio", "Apple"], descNeedles: ["Apple"] },
+      { slug: "tuomas-haarnoja", name: "Tuomas Haarnoja", titleNeedles: ["Tuomas Haarnoja", "Soft Actor-Critic"], descNeedles: ["Soft Actor-Critic"] },
+      { slug: "katherine-crowson", name: "Katherine Crowson", titleNeedles: ["Katherine Crowson", "k-diffusion"], descNeedles: ["k-diffusion"] },
+      { slug: "connor-leahy", name: "Connor Leahy", titleNeedles: ["Connor Leahy"], descNeedles: ["EleutherAI"] },
+    ];
+    for (const s of samples) {
+      const p = catalog.person(s.slug)!;
+      const seo = personPageSeo(catalog, p);
+      expect(seo.title.startsWith(s.name), seo.title).toBe(true);
+      expect(seo.title.toLowerCase(), seo.title).not.toContain("and career");
+      expect(seo.title.length, seo.title).toBeLessThanOrEqual(60);
+      expect(seo.description.length, seo.description).toBeGreaterThan(20);
+      expect(seo.description.length, seo.description).toBeLessThanOrEqual(160);
+      for (const needle of s.titleNeedles) expect(seo.title, seo.title).toContain(needle);
+      for (const needle of s.descNeedles) expect(`${seo.title} ${seo.description}`, seo.description).toContain(needle);
+    }
   });
 });
 

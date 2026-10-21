@@ -26,6 +26,7 @@ import {
   hfIndexed,
   hfItemHero,
   hfItemLd,
+  hfItemSeo,
   hfLicenseLabel,
   hfPageCount,
   hfPageEntries,
@@ -39,7 +40,7 @@ import {
   type HfEntry,
 } from "@/lib/huggingface/items";
 import type { HfKind } from "@/lib/huggingface/schema";
-import { clipDescription, pageMetadata } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
 import { itemList } from "@/lib/structured-data";
 
@@ -201,12 +202,10 @@ export function HfRankPage({ kind, n }: { kind: HfKind; n: number }) {
 
 export function hfItemMetadata(e: HfEntry) {
   const hero = hfItemHero(e);
-  const what = e.kind === "model" ? "model" : "dataset";
-  const task = e.kind === "model" ? e.pipeline_tag : e.task_categories[0];
-  const lead = e.kind === "dataset" && e.description ? clipDescription(e.description, 110) : `${e.name}, a ${task ? `${taskLabel(task).toLowerCase()} ` : ""}${what} by ${e.author}.`;
+  const seo = hfItemSeo(e);
   return pageMetadata({
-    title: `${e.id} on Hugging Face`,
-    description: `${lead} Ranked #${nf(e.rank)} among Hugging Face ${what}s with ${nf(e.likes)} likes; ${hfLicenseLabel(e.license ?? "none", e.license_name)}.`,
+    title: seo.title,
+    description: seo.description,
     path: e.href,
     image: { path: hero.image, alt: hero.alt },
     ...(hfIndexed(e, getCatalog()) ? {} : { noindex: true }),

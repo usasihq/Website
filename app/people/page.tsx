@@ -10,10 +10,11 @@ import { peopleListItems } from "@/lib/people-index";
 import { asset } from "@/lib/paths";
 import { itemList } from "@/lib/structured-data";
 
+const PEOPLE_COUNT = peopleListItems(getCatalog()).length;
+
 export const metadata = pageMetadata({
-  title: "People in U.S. AI: founders, engineers & open-source maintainers",
-  description:
-    "Sourced profiles of the founders, engineers, researchers, and open-source maintainers behind the organizations and open models in the USASI catalog.",
+  title: "People in U.S. AI — founders, engineers, maintainers",
+  description: `${PEOPLE_COUNT.toLocaleString("en-US")} sourced profiles of founders, engineers, researchers, and open-source maintainers behind U.S. AI organizations and open models in the USASI catalog.`,
   path: "/people/",
   image: socialImages.people,
 });

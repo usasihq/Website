@@ -5,10 +5,11 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata } from "@/lib/metadata";
 
+const POLICY_COUNT = getCatalog().policy.length;
+
 export const metadata = pageMetadata({
   title: "U.S. AI policy tracker",
-  description:
-    "Federal laws, executive orders, OMB memoranda, standards, and frameworks on artificial intelligence, with dates, issuers, current status, and links to the official text.",
+  description: `${POLICY_COUNT.toLocaleString("en-US")} federal laws, executive orders, OMB memoranda, standards, and frameworks on artificial intelligence, with dates, issuers, current status, and links to the official text.`,
   path: "/policy/",
 });
 

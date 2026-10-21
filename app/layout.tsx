@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(`${SITE_URL}${BASE_PATH}/`),
   title: {
     default: `${siteConfig.name} (${siteConfig.shortName})`,
-    template: `%s · ${siteConfig.shortName}`,
+    template: `%s | ${siteConfig.shortName}`,
   },
   description:
     "An independent, sourced directory of U.S. AI organizations and U.S.-led open models and tools. Not a United States government website.",

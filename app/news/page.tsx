@@ -9,10 +9,11 @@ import type { NewsListItem } from "@/lib/news-list";
 import { asset } from "@/lib/paths";
 import { artifactHref, orgHref } from "@/lib/routes";
 
+const NEWS_COUNT = getCatalog().news.length;
+
 export const metadata = pageMetadata({
-  title: "U.S. AI news: releases, licenses & policy, with sources",
-  description:
-    "Dated, sourced updates about the U.S. AI organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.",
+  title: "U.S. AI news — sourced releases, licenses & policy",
+  description: `${NEWS_COUNT.toLocaleString("en-US")} dated, sourced updates about U.S. AI organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.`,
   path: "/news/",
   image: socialImages.news,
   feeds: [{ path: "/news/feed.xml", title: "USASI — Latest news" }],

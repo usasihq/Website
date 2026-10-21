@@ -9,10 +9,10 @@ import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { OWNER_TYPE_LABELS } from "@/lib/github/directory";
-import { catalogMatch, githubEntries, githubEntry, githubFetchedLabel, githubIndexed, githubPageHref, GITHUB_PAGE_SIZE, githubProjectLd, licenseLabel, projectHero, relatedProjects, toListItem } from "@/lib/github/projects";
+import { catalogMatch, githubEntries, githubEntry, githubFetchedLabel, githubIndexed, githubPageHref, GITHUB_PAGE_SIZE, githubProjectLd, githubProjectSeo, licenseLabel, projectHero, relatedProjects, toListItem } from "@/lib/github/projects";
 import { licenseKey } from "@/lib/github/directory";
 import { hfForGithub } from "@/lib/huggingface/items";
-import { clipDescription, pageMetadata } from "@/lib/metadata";
+import { pageMetadata } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
 
 export const dynamicParams = false;
@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const e = githubEntry(slug);
   if (!e) return {};
   const hero = projectHero(e);
-  const lead = e.description ? clipDescription(e.description, 110) : `${e.name} by ${e.owner}`;
+  const seo = githubProjectSeo(e);
   return pageMetadata({
-    title: `${e.full_name} on GitHub`,
-    description: `${lead} Ranked #${e.rank} in AI on GitHub with ${nf(e.stars)} stars${e.language ? `; ${e.language}` : ""}.`,
+    title: seo.title,
+    description: seo.description,
     path: e.href,
     image: { path: hero.image, alt: hero.alt },
     ...(githubIndexed(e, getCatalog()) ? {} : { noindex: true }),

@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { isExpressionOfInterest } from "../../lib/jobs/tracks";
+import { openingsTitle } from "../../lib/jobs/landing";
 import { documentTitle } from "../../lib/metadata";
 
 /**
@@ -21,7 +22,7 @@ test("a state page answers first, labels geography, and links to employers and l
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("AI jobs in California");
   const count = await countOnPage(page);
   expect(count).toBeGreaterThanOrEqual(10);
-  await expect(page).toHaveTitle(documentTitle(`AI jobs in California (${count.toLocaleString("en-US")})`));
+  await expect(page).toHaveTitle(documentTitle(openingsTitle("AI jobs in California", count)));
   const description = await page.locator('meta[name="description"]').getAttribute("content");
   expect(description!.length).toBeLessThanOrEqual(160);
   expect(description).toMatch(/^[\d,]+ open listings naming a location in California/);
@@ -68,7 +69,7 @@ test("a city page sits under its state, and its full list in the directory is th
   const count = await countOnPage(page);
   expect(count).toBeGreaterThanOrEqual(10);
   expect(count).toBeLessThan(stateCount);
-  await expect(page).toHaveTitle(documentTitle(`AI jobs in San Francisco, CA (${count.toLocaleString("en-US")})`));
+  await expect(page).toHaveTitle(documentTitle(openingsTitle("AI jobs in San Francisco, CA", count)));
   const description = await page.locator('meta[name="description"]').getAttribute("content");
   expect(description!.length).toBeLessThanOrEqual(160);
   await expect(page.getByText("Location named: San Francisco, California")).toBeVisible();
@@ -148,7 +149,7 @@ test("a role page answers first, lists employers, and matches the directory", as
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Forward Deployed Engineer jobs");
   const count = await countOnPage(page);
   expect(count).toBeGreaterThanOrEqual(10);
-  await expect(page).toHaveTitle(documentTitle(`Forward Deployed Engineer jobs (${count.toLocaleString("en-US")})`));
+  await expect(page).toHaveTitle(documentTitle(openingsTitle("Forward Deployed Engineer jobs", count)));
   const description = await page.locator('meta[name="description"]').getAttribute("content");
   expect(description!.length).toBeLessThanOrEqual(160);
   expect(description).toMatch(/^[\d,]+ open Forward Deployed Engineer listings/);

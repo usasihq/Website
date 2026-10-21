@@ -5,7 +5,8 @@ import { assignSlugs, baseSlug, cleanDescription, compareProjects, exclusionReas
 import { filterGithub, licenseKey, parseGithubFilters, serializeGithubFilters, type GithubListItem } from "@/lib/github/directory";
 import { compactStars, heroArt, heroHue, heroPattern, PATTERNS } from "@/lib/github/hero";
 import { catalogRepositoryLinks, denylistMap, readGithubDataset, readIncludes, reviewedAiRepos, serializeGithubDataset } from "@/lib/github/load";
-import { catalogMatch, githubEntries, githubHref, githubSearchEntries, projectHero, relatedProjects, repoKey } from "@/lib/github/projects";
+import { catalogMatch, githubEntries, githubHref, githubProjectSeo, githubSearchEntries, projectHero, relatedProjects, repoKey } from "@/lib/github/projects";
+import { TITLE_MAX } from "@/lib/metadata";
 import { checkGithubDataset, GithubDataset } from "@/lib/github/schema";
 import { validateGithubData } from "@/lib/github/validate";
 import { isKnownSitePath } from "@/lib/site-routes";
@@ -101,6 +102,14 @@ describe("AI on GitHub inclusion rules", () => {
 });
 
 describe("AI on GitHub records", () => {
+  it("keeps project page titles within the search-result limit", () => {
+    for (const e of githubEntries()) {
+      const seo = githubProjectSeo(e);
+      expect(seo.title.length, e.full_name).toBeGreaterThan(0);
+      expect(seo.title.length, seo.title).toBeLessThanOrEqual(TITLE_MAX);
+    }
+  });
+
   it("cleans descriptions to trimmed plain text", () => {
     expect(cleanDescription(":rocket: Fast   LLM\u0007 inference :fire:")).toBe("Fast LLM inference");
     const long = cleanDescription("word ".repeat(100), 300);
