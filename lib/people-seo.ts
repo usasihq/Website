@@ -7,14 +7,22 @@ import { companyJobsLink } from "./jobs/landing-links";
 import type { Person } from "./schema";
 import { personSeo, type PersonSeoExtras, type SeoText } from "./seo";
 
-/** News items whose title or summary names this person (not merely their employer). */
-export function personNewsMentions(catalog: Catalog, p: Person, limit = 2): string[] {
+/**
+ * News items whose title or summary names this person (not merely their employer).
+ * Single-word names (handles such as "argo") are skipped: they match unrelated text.
+ */
+export function personNews(catalog: Catalog, p: Person, limit = 2): Catalog["news"] {
   const needle = p.name.toLowerCase();
+  if (!/\s/.test(needle.trim())) return [];
+  const pattern = new RegExp(`\\b${needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
   return catalog.news
-    .filter((n) => `${n.title} ${n.summary.text}`.toLowerCase().includes(needle))
+    .filter((n) => pattern.test(`${n.title} ${n.summary.text}`.toLowerCase()))
     .sort((a, b) => b.event_date.localeCompare(a.event_date) || a.slug.localeCompare(b.slug))
-    .slice(0, limit)
-    .map((n) => n.title);
+    .slice(0, limit);
+}
+
+export function personNewsMentions(catalog: Catalog, p: Person, limit = 2): string[] {
+  return personNews(catalog, p, limit).map((n) => n.title);
 }
 
 /** Open jobs at organizations on the profile, and news items that name the person. */

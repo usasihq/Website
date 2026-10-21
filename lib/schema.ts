@@ -591,6 +591,17 @@ export const PersonWork = z
   })
   .strict();
 
+/** An award or recognition from a named awarding body. */
+export const Honor = z
+  .object({
+    name: z.string().trim().min(3),
+    year: z.number().int().min(1900).max(2100).nullable().default(null),
+    awarded_by: z.string().trim().min(2),
+    source_ids: z.array(SourceId).min(1),
+  })
+  .strict();
+export type Honor = z.infer<typeof Honor>;
+
 export const Person = z
   .object({
     slug: Slug,
@@ -608,6 +619,14 @@ export const Person = z
       .array(z.object({ label: z.string().min(1).max(40), url: HttpsUrl }).strict())
       .max(4)
       .default([]),
+    /** Wiki-style article sections ("Career", "Research", …), each paragraph sourced. */
+    sections: z
+      .array(z.object({ heading: z.string().trim().min(3).max(60), paragraphs: z.array(Claim).min(1).max(6) }).strict())
+      .max(6)
+      .default([]),
+    /** Dated professional milestones: roles, releases, papers. */
+    timeline: z.array(TimelineEntry).max(20).default([]),
+    honors: z.array(Honor).max(12).default([]),
     publication_status: PublicationStatus,
     updated_at: IsoDate,
     last_reviewed: IsoDate.nullable(),
@@ -647,18 +666,7 @@ export const Leader = z
       .array(z.object({ heading: z.string().trim().min(3).max(90), paragraphs: z.array(Claim).min(1) }).strict())
       .min(1),
     highlights: z.array(Claim).default([]),
-    honors: z
-      .array(
-        z
-          .object({
-            name: z.string().trim().min(3),
-            year: z.number().int().min(1900).max(2100).nullable().default(null),
-            awarded_by: z.string().trim().min(2),
-            source_ids: z.array(SourceId).min(1),
-          })
-          .strict(),
-      )
-      .default([]),
+    honors: z.array(Honor).default([]),
     timeline: z.array(TimelineEntry).default([]),
     links: z
       .array(z.object({ label: z.string().min(1).max(60), url: HttpsUrl }).strict())

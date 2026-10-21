@@ -1,4 +1,5 @@
 import Link from "@/components/Link";
+import { MIN_LIST_PEOPLE, peopleAtHref } from "@/lib/people-lists";
 import { RecordContext } from "@/components/RecordContext";
 import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
 import { OrganizationJobs } from "@/components/OrganizationJobs";
@@ -238,10 +239,10 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                         </li>
                       ))}
                     </ul>
-                    {orgPeople.length > ORG_PEOPLE_SHOWN ? (
+                    {orgPeople.length >= MIN_LIST_PEOPLE ? (
                       <p className="mt-2 text-sm">
-                        <Link prefetch={false} href={`/people/?org=${org.slug}`} className="link">
-                          All {orgPeople.length} people
+                        <Link prefetch={false} href={peopleAtHref(org.slug)} className="link">
+                          All {orgPeople.length} people at {org.name}
                         </Link>
                       </p>
                     ) : null}

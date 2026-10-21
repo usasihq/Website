@@ -103,9 +103,17 @@ export function roundedOpenings(count: number): string {
 }
 
 /** "Remote AI jobs — 1,200+ openings, updated daily" */
-export function openingsTitle(lead: string, count: number): string {
+/** `lead` may list shorter fallbacks (e.g. a state code for the state name), tried after the full form. */
+export function openingsTitle(lead: string | string[], count: number): string {
   const openings = roundedOpenings(count);
-  return fitTitle([`${lead} — ${openings} openings, updated daily`, `${lead} — ${openings} openings`, `${lead} (${n(count)})`, lead], TITLE_WITH_BRAND);
+  const leads = Array.isArray(lead) ? lead : [lead];
+  return fitTitle(
+    [
+      ...leads.flatMap((l) => [`${l} — ${openings} openings, updated daily`, `${l} — ${openings} openings`, `${l} (${n(count)})`]),
+      ...leads,
+    ],
+    TITLE_WITH_BRAND,
+  );
 }
 
 /** Prefer "Updated daily." when it fits; otherwise keep the last-checked date. */
@@ -293,7 +301,7 @@ export function roleStateDefinition(role: JobRole, code: string): LandingDefinit
     filters: { role: role.slug, state: code },
     intro: `Open ${role.name} positions at AI companies and labs in the USASI catalog whose listed location names ${name}. Titles match the ${role.name} role page; a listing appears here only when one of its employer-supplied locations is in ${name}.`,
     rule: `${role.rule} A listing also has to name ${name} in an employer-supplied location, using the same state-reading rules as the ${name} jobs page.`,
-    title: (f) => openingsTitle(`${role.name} jobs in ${name}`, f.count),
+    title: (f) => openingsTitle([`${role.name} jobs in ${name}`, `${role.name} jobs in ${code}`], f.count),
     description: (f) =>
       withFreshness(`${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} naming a location in ${name}, at ${at(f)}.`, f.date),
     image: `/og/jobs/role-${role.slug}.jpg`,

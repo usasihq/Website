@@ -331,11 +331,15 @@ export function leaderOrganizations(catalog: Catalog, l: Leader): string[] {
 
 /** A short work or paper name for titles: keep parenthetical nicknames, drop a long subtitle. */
 export function shortWorkName(name: string, max = 28): string {
+  return wholeWorkName(name, max) ?? clipDescription(shortName(name), max).replace(/\u2026$/, "").trim();
+}
+
+/** The work name or its part before a subtitle, but never a name cut mid-phrase ("Random-Access Neural"). */
+export function wholeWorkName(name: string, max = 28): string | null {
   const s = shortName(name);
   if (s.length <= max) return s;
   const cut = s.split(/[:—–,]/)[0]!.trim();
-  if (cut.length >= 4 && cut.length <= max) return cut;
-  return clipDescription(s, max).replace(/\u2026$/, "").trim();
+  return cut.length >= 4 && cut.length <= max ? cut : null;
 }
 
 function shortRole(role: string, max = 28): string | null {
@@ -361,7 +365,7 @@ export function personSeo(catalog: Catalog, p: Person, extras?: PersonSeoExtras)
   const current = p.affiliations.filter((a) => a.current);
   const org = current[0] ? shortName(current[0].name) : null;
   const role = current[0] ? shortRole(current[0].role) : null;
-  const works = p.work.map((w) => shortWorkName(w.name));
+  const works = p.work.map((w) => wholeWorkName(w.name)).filter((w): w is string => w !== null);
   const known = works[0];
   const known2 = works[1];
   const links = p.links.map((l) => l.label);
