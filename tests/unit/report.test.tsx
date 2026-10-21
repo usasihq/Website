@@ -352,7 +352,7 @@ describe("report pages", () => {
 
   it("have a short title with the brand, a description within 160 characters, and Report, Dataset, and breadcrumb data", () => {
     const meta = reportMetadata(latest, false);
-    expect((meta.title as { absolute: string }).absolute).toBe(`${latest.title} · USASI`);
+    expect((meta.title as { absolute: string }).absolute).toBe(`${latest.title} | USASI`);
     expect(latest.title.length).toBeLessThanOrEqual(60);
     expect(String(meta.description).length).toBeLessThanOrEqual(160);
     expect(String(meta.description)).toMatch(/^October 2026: \d+ U\.S\. AI organization records/);

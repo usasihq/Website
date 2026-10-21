@@ -44,6 +44,7 @@ test("a topic link from a project page opens the filtered list", async ({ page }
   const list = page.getByTestId("github-list");
   await expect(list.locator("li").first()).toBeVisible();
   await expect(page.getByRole("list", { name: "Active filters" })).toContainText(`Topic: ${topic}`);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /https:\/\/unitedstatesofamericasuperintelligence\.com\/github\/$/);
 });
 
 test("a ranking page lists projects 101 onward; indexed projects are in the sitemap", async ({ page, request }) => {

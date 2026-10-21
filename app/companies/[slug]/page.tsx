@@ -24,6 +24,7 @@ import { peopleAtOrganization } from "@/lib/people-index";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_PLURAL, OWNERSHIP_LABELS, PRODUCT_KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
+import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { organizationSeo } from "@/lib/seo";
 import { organizationLd } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
@@ -46,7 +47,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const catalog = getCatalog();
   const org = catalog.organization(slug);
   if (!org) return {};
-  const seo = organizationSeo(catalog, org);
+  const jobs = companyJobsLink(catalog, org.slug);
+  const seo = organizationSeo(catalog, org, jobs ? { jobCount: jobs.count } : undefined);
   return pageMetadata({
     title: seo.title,
     description: seo.description,

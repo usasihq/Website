@@ -9,7 +9,7 @@
  * in description.ts, never from employer HTML.
  */
 import { formatDate } from "../dates";
-import { documentTitle } from "../metadata";
+import { canonicalPath, documentTitle } from "../metadata";
 import { absoluteUrl, asset } from "../paths";
 import { siteConfig, supportState } from "../site-config";
 import type { Description, Run } from "./description";
@@ -151,7 +151,7 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
   const federal = job.source_type === "usajobs";
   const apply = job.apply_url ?? job.official_url;
   const applyLabel = federal ? "Apply on USAJOBS.gov" : `Apply on ${esc(name)}&rsquo;s site`;
-  const url = absoluteUrl(p.path);
+  const url = absoluteUrl(canonicalPath(p.path));
   const title = documentTitle(jobPageTitle(p));
   const meta = jobMetaDescription(p);
   const image = absoluteUrl(`/og/jobs/at-${org.slug}.jpg`);
@@ -213,12 +213,14 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
 <meta name="robots" content="${p.description ? "index, follow, max-image-preview:large, max-snippet:-1" : "noindex, follow"}"/>
 <link rel="canonical" href="${esc(url)}"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="${esc(jobPageTitle(p))}"/>
+<meta property="og:title" content="${esc(title)}"/>
 <meta property="og:description" content="${esc(meta)}"/>
 <meta property="og:url" content="${esc(url)}"/>
 <meta property="og:site_name" content="${esc(siteConfig.name)}"/>
 <meta property="og:image" content="${esc(image)}"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="${esc(title)}"/>
+<meta name="twitter:description" content="${esc(meta)}"/>
 ${shell.links}
 ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
 <script type="application/ld+json">${json(breadcrumbLd)}</script>

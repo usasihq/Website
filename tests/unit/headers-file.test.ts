@@ -30,6 +30,14 @@ function rules() {
 
 const contentTypes = (url: string) => rules().filter((r) => r.regex.test(url)).flatMap((r) => r.set.filter(([k]) => k === "content-type").map(([, v]) => v));
 
+describe("_headers transport security", () => {
+  it("asks browsers to upgrade http and remember HTTPS", () => {
+    const file = fs.readFileSync(path.join(process.cwd(), "public/_headers"), "utf8");
+    expect(file).toContain("upgrade-insecure-requests");
+    expect(file).toMatch(/Strict-Transport-Security: max-age=31536000; includeSubDomains/);
+  });
+});
+
 describe("_headers content types", () => {
   it("declares UTF-8 HTML for every directory URL, once", () => {
     for (const url of ["/", "/jobs/", "/jobs/index/", "/jobs/at/openai/research-engineer-abc1234/", "/people/"]) {

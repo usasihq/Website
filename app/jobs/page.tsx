@@ -13,6 +13,7 @@ import { landingPageHref, pageWindow } from "@/lib/jobs/pagination";
 import { JobsSectionNav } from "@/components/JobsSectionNav";
 import { HIRING_INDEX_HREF } from "@/lib/jobs/hiring-index";
 import { layoffHref, layoffsIndex } from "@/lib/jobs/layoffs";
+import { openingsTitle } from "@/lib/jobs/landing";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { asset } from "@/lib/paths";
 import { ALL_JOBS_FEED, ALL_JOBS_FOLLOW, followFeeds } from "@/lib/jobs/feeds";
@@ -21,11 +22,19 @@ import { PAY_INDEX, payData } from "@/lib/jobs/pay";
 /** Federal roles are mentioned only while USAJOBS listings are actually on the board (the feed needs an API key). */
 const hasFederal = (items: { source_type: string }[]) => items.some((j) => j.source_type === "usajobs");
 export function generateMetadata() {
-  const federal = hasFederal(jobsDirectoryData(getCatalog()).items);
-  return pageMetadata({ title: "Jobs at U.S. AI companies & labs", description: federal
-    ? "Current positions at U.S. AI companies, labs, and federal agencies via USAJOBS.gov. Collected from employer career sources. Apply with the employer."
-    : "Current positions at U.S. AI companies, labs, and research universities. Collected from employer career sources. Apply with the employer.",
-    path: "/jobs/", image: socialImages.jobs, feeds: [{ path: ALL_JOBS_FEED, title: "USASI — New AI jobs in the U.S." }] });
+  const data = jobsDirectoryData(getCatalog());
+  const count = data.summary.currentCount;
+  const federal = hasFederal(data.items);
+  const n = count.toLocaleString("en-US");
+  return pageMetadata({
+    title: openingsTitle("U.S. AI jobs", count),
+    description: federal
+      ? `${n} current positions at U.S. AI companies, labs, and federal agencies via USAJOBS.gov. Updated daily. Apply with the employer.`
+      : `${n} current positions at U.S. AI companies, labs, and research universities. Updated daily. Apply with the employer.`,
+    path: "/jobs/",
+    image: socialImages.jobs,
+    feeds: [{ path: ALL_JOBS_FEED, title: "USASI — New AI jobs in the U.S." }],
+  });
 }
 const SHORTCUT_LABELS: Record<string, string> = { "/jobs/remote-us/": "Remote (U.S.)", "/jobs/internships/": "Internships", "/jobs/entry-level/": "Entry-level", "/jobs/no-programming/": "No programming", "/jobs/data-center-infrastructure/": "Data center" };
 function BrowseLinks({ links }: { links: LandingLink[] }) {

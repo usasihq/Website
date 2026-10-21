@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const path = policyHref(d.slug);
   return pageMetadata({
     title: policyPageTitle(d),
-    description: `${DATE_LABEL_VERBS[d.date_label] ?? "Dated"} ${formatDate(d.date)}. ${d.summary.text}`,
+    description: `${DATE_LABEL_VERBS[d.date_label] ?? "Dated"} ${formatDate(d.date)}. ${summarySentences(d.summary.text)[0] ?? d.summary.text}`,
     path,
     image: cardImage(getCatalog(), path),
   });

@@ -661,7 +661,7 @@ test.describe("search metadata", () => {
   test("state pages are titled the way people search, with large previews allowed", async ({ page }) => {
     await page.goto("/places/california/");
     await expect(page.locator("h1")).toHaveText("AI companies & labs in California");
-    await expect(page).toHaveTitle("AI companies & labs in California · USASI");
+    await expect(page).toHaveTitle("AI companies & labs in California | USASI");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /max-image-preview:large/);
     const types = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((t) => JSON.parse(t)["@type"]);
     expect(types).toEqual(expect.arrayContaining(["ItemList", "BreadcrumbList"]));

@@ -72,7 +72,7 @@ test.describe("The State of American AI", () => {
   test("each edition has a permanent page and downloads that match it", async ({ page, request }) => {
     await page.goto(`/report/${latest.edition}/`);
     await expect(page.locator("h1")).toHaveText(latest.title);
-    await expect(page).toHaveTitle(`${latest.title} · USASI`);
+    await expect(page).toHaveTitle(`${latest.title} | USASI`);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`/report/${latest.edition}/$`));
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", new RegExp(`/og/report/${latest.edition}\\.jpg$`));
     await expect(page.getByRole("navigation", { name: "Breadcrumb" }).getByRole("link", { name: "The State of American AI" })).toHaveAttribute("href", "/report/");

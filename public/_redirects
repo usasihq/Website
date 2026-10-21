@@ -1,0 +1,8 @@
+# Cloudflare static-asset redirects (Workers Static Assets and Pages).
+# Canonical host is the apex over HTTPS. Query strings stay on the request
+# (GitHub topic filters) and are stripped only by <link rel="canonical">.
+# https://developers.cloudflare.com/workers/static-assets/redirects/
+
+https://www.unitedstatesofamericasuperintelligence.com/* https://unitedstatesofamericasuperintelligence.com/:splat 301
+http://www.unitedstatesofamericasuperintelligence.com/* https://unitedstatesofamericasuperintelligence.com/:splat 301
+http://unitedstatesofamericasuperintelligence.com/* https://unitedstatesofamericasuperintelligence.com/:splat 301

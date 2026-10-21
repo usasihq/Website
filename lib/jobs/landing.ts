@@ -15,6 +15,8 @@ import { stateSlug, US_STATES } from "../places";
 import { readJobsForBuild } from "./load";
 import type { FeedHealth } from "./schema";
 import { cityKey, cityLabel, jobGeography, stateDisplayName } from "./geo";
+import { BRAND_SUFFIX, DESCRIPTION_MAX, TITLE_MAX } from "../metadata";
+import { fitTitle } from "../seo";
 import { ALL_JOB_FILTERS, DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
 import { JOB_ROLES, type JobRole } from "./roles";
 import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, INTERNSHIP_RULE, NO_PROGRAMMING_RULE, SUMMER_2027_RULE } from "./tracks";
@@ -89,6 +91,28 @@ const abroad = (f: Facts) => (f.outside > 0 ? "Includes non-U.S. roles." : "No n
 const listings = (v: number, adjective = "open") => plural(v, `${adjective} listing`, `${adjective} listings`);
 /** "14 U.S. AI companies and labs", or the employer's name when there is only one. */
 const at = (f: Facts, kind = "U.S. AI") => (f.employers === 1 && f.soleEmployer ? f.soleEmployer : plural(f.employers, `${kind} company or lab`, `${kind} companies and labs`));
+/** Leave room for " | USASI" on hub titles. */
+const TITLE_WITH_BRAND = TITLE_MAX - BRAND_SUFFIX.length;
+
+/** Compact count for titles: 1,247 → "1,200+", 150 → "150", 12 → "12". */
+export function roundedOpenings(count: number): string {
+  if (count < 100) return n(count);
+  const step = count >= 10000 ? 1000 : count >= 1000 ? 100 : 10;
+  const rounded = Math.floor(count / step) * step;
+  return `${n(rounded)}${rounded < count ? "+" : ""}`;
+}
+
+/** "Remote AI jobs — 1,200+ openings, updated daily" */
+export function openingsTitle(lead: string, count: number): string {
+  const openings = roundedOpenings(count);
+  return fitTitle([`${lead} — ${openings} openings, updated daily`, `${lead} — ${openings} openings`, `${lead} (${n(count)})`, lead], TITLE_WITH_BRAND);
+}
+
+/** Prefer "Updated daily." when it fits; otherwise keep the last-checked date. */
+function withFreshness(body: string, date: string): string {
+  const daily = `${body} Updated daily.`;
+  return daily.length <= DESCRIPTION_MAX ? daily : `${body} Checked ${date}.`;
+}
 
 export { stateDisplayName };
 
@@ -107,9 +131,9 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Open positions for planning, building, powering, cooling, and running the data centers and computing hardware that AI runs on: construction and commissioning, electrical and mechanical work, critical facilities, technicians, capacity planning, and the finance, sourcing, and legal roles attached to them.",
     rule: DATA_CENTER_RULE,
-    title: (f) => `AI data-center and infrastructure jobs: ${listings(f.count)}`,
+    title: (f) => openingsTitle("AI data-center jobs", f.count),
     description: (f) =>
-      `${plural(f.count, "open AI data-center job", "open AI data-center jobs")} in construction, power, cooling, and operations at ${at(f)}. ${abroad(f)} Checked ${f.date}.`,
+      withFreshness(`${plural(f.count, "open AI data-center job", "open AI data-center jobs")} in construction, power, cooling, and operations at ${at(f)}. ${abroad(f)}`, f.date),
     image: "/og/jobs/data-center-infrastructure.jpg",
   },
   "no-programming": {
@@ -123,9 +147,9 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Open positions at AI companies and labs whose titles name work other than programming: sales and partnerships, marketing and communications, policy and legal, finance, recruiting and people, operations, facilities and technicians, customer success and support, program and product management, design, and writing.",
     rule: NO_PROGRAMMING_RULE,
-    title: (f) => `AI jobs without programming: ${listings(f.count)} at U.S. AI companies`,
+    title: (f) => openingsTitle("AI jobs without programming", f.count),
     description: (f) =>
-      `${plural(f.count, "AI job", "AI jobs")} without programming (sales, policy, finance, design, and more) at ${at(f)}. ${abroad(f)} Checked ${f.date}.`,
+      withFreshness(`${plural(f.count, "AI job", "AI jobs")} without programming (sales, policy, finance, design, and more) at ${at(f)}. ${abroad(f)}`, f.date),
     image: "/og/jobs/no-programming.jpg",
   },
   "entry-level": {
@@ -139,9 +163,9 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Internships, new-graduate roles, apprenticeships, residencies, fellowships, and other entry points at AI companies and labs in the USASI catalog, found from the employer’s own title and employment type.",
     rule: ENTRY_LEVEL_RULE,
-    title: (f) => `Entry-level AI jobs (${n(f.count)})`,
+    title: (f) => openingsTitle("Entry-level AI jobs", f.count),
     description: (f) =>
-      `${plural(f.count, "internship, new-grad, or early-career listing", "internships, new-grad, and early-career listings")} at ${at(f)}, matched by job title. ${abroad(f)} Checked ${f.date}.`,
+      withFreshness(`${plural(f.count, "internship, new-grad, or early-career listing", "internships, new-grad, and early-career listings")} at ${at(f)}, matched by job title. ${abroad(f)}`, f.date),
     image: "/og/jobs/entry-level.jpg",
   },
   internships: {
@@ -155,9 +179,9 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Open internships at AI companies and labs in the USASI catalog, found from the employer’s own title (“intern”, “internship”) or an employment type of internship. New-graduate and other early-career roles that do not say intern are on the entry-level page.",
     rule: INTERNSHIP_RULE,
-    title: (f) => `AI internships (${n(f.count)})`,
+    title: (f) => openingsTitle("AI internships", f.count),
     description: (f) =>
-      `${plural(f.count, "open internship", "open internships")} at ${at(f)}, matched by job title or employment type. ${abroad(f)} Checked ${f.date}.`,
+      withFreshness(`${plural(f.count, "open internship", "open internships")} at ${at(f)}, matched by job title or employment type. ${abroad(f)}`, f.date),
     image: "/og/jobs/internships.jpg",
   },
   "summer-2027": {
@@ -171,9 +195,9 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Internship listings at AI companies and labs whose titles name 2027 — typically summer or fall 2027 intern programs. The full internships page lists every current internship, including those that do not name a year.",
     rule: SUMMER_2027_RULE,
-    title: (f) => `Summer 2027 AI internships (${n(f.count)})`,
+    title: (f) => openingsTitle("Summer 2027 AI internships", f.count),
     description: (f) =>
-      `${plural(f.count, "internship naming 2027", "internships naming 2027")} at ${at(f)}. ${abroad(f)} Checked ${f.date}.`,
+      withFreshness(`${plural(f.count, "internship naming 2027", "internships naming 2027")} at ${at(f)}. ${abroad(f)}`, f.date),
     image: "/og/jobs/summer-2027.jpg",
   },
   "remote-us": {
@@ -187,9 +211,9 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Remote and remote-friendly positions at American AI companies and labs whose listed locations are all in the United States. Remote listings that also name places outside the United States are on the page for all remote jobs.",
     rule: `${REMOTE_RULE} A listing is included here only when it names the United States or a U.S. state (in its locations or the employer-supplied country) and names no place outside the United States.`,
-    title: (f) => `Remote AI jobs in the U.S.: ${listings(f.count)} at American AI companies`,
+    title: (f) => openingsTitle("Remote AI jobs in the U.S.", f.count),
     description: (f) =>
-      `${listings(f.count, "remote")} with U.S. locations only, at ${at(f, "American AI")} in the USASI catalog. Listings last checked ${f.date}.`,
+      withFreshness(`${listings(f.count, "remote")} with U.S. locations only, at ${at(f, "American AI")} in the USASI catalog.`, f.date),
     image: "/og/jobs/remote-us.jpg",
   },
   remote: {
@@ -203,9 +227,9 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     intro:
       "Every remote and remote-friendly position from American AI companies and labs in the USASI catalog, wherever the employer lists it. Many are open only in specific countries; read each listing’s locations.",
     rule: REMOTE_RULE,
-    title: (f) => `Remote AI jobs: ${listings(f.count)}, including outside the U.S.`,
+    title: (f) => openingsTitle("Remote AI jobs", f.count),
     description: (f) =>
-      `${listings(f.count, "remote")} at ${at(f, "American AI")}: ${n(f.usOnly)} with U.S. locations only, ${n(f.outside)} naming places outside the U.S. Checked ${f.date}.`,
+      withFreshness(`${listings(f.count, "remote")} at ${at(f, "American AI")}: ${n(f.usOnly)} with U.S. locations only, ${n(f.outside)} naming places outside the U.S.`, f.date),
     image: "/og/jobs/remote.jpg",
   },
 };
@@ -224,9 +248,9 @@ export function stateDefinition(code: string): LandingDefinition {
     filters: { state: code },
     intro: `Open positions at AI companies and labs in the USASI catalog whose listed location names ${name}. The catalog covers U.S. organizations, and a listing appears here only when one of its employer-supplied locations is in ${name}.`,
     rule: `A listing counts when one of its employer-supplied locations names ${name}: by postal code after a city (“Atlanta, GA”), by full name (“Atlanta, Georgia, United States”), “New York City” or “NYC” for New York, “Washington, DC” for the District of Columbia, or by a city given on its own that has only one well-known U.S. match (“San Francisco”, “SF Office”, “Seattle”). ${CITY_TABLE_NOTE} Locations that give only the country (“Remote - US”, “United States”) or a code that belongs to another country’s city (“Toronto, CA” is Canada) are not counted.`,
-    title: (f) => `AI jobs in ${name} (${n(f.count)})`,
+    title: (f) => openingsTitle(`AI jobs in ${name}`, f.count),
     description: (f) =>
-      `${listings(f.count)} naming a location in ${name}, at ${at(f)} in the USASI catalog. Listings last checked ${f.date}.`,
+      withFreshness(`${listings(f.count)} naming a location in ${name}, at ${at(f)} in the USASI catalog.`, f.date),
     image: `/og/jobs/in-${slug}.jpg`,
   };
 }
@@ -248,9 +272,9 @@ export function cityDefinition(code: string, slug: string, label: string): Landi
     filters: { state: code, city: slug },
     intro: `Open positions at AI companies and labs in the USASI catalog whose listed location names ${label}, ${stateName}. A listing appears here only when one of its employer-supplied locations names the city.`,
     rule: `A listing counts when one of its employer-supplied locations names ${label} with its state (“${label}, ${code}”, “${label}, ${stateName}, United States”), or names ${label} on its own or as an office (“${label} Office”) when the name has only one well-known U.S. match. ${CITY_TABLE_NOTE} Listings in nearby cities are not included here; they count on the ${stateName} page.`,
-    title: (f) => `AI jobs in ${label}, ${code} (${n(f.count)})`,
+    title: (f) => openingsTitle(`AI jobs in ${label}, ${code}`, f.count),
     description: (f) =>
-      `${listings(f.count)} naming ${label}, ${code}, at ${at(f)} in the USASI catalog. Listings last checked ${f.date}.`,
+      withFreshness(`${listings(f.count)} naming ${label}, ${code}, at ${at(f)} in the USASI catalog.`, f.date),
     image: `/og/jobs/in-${s}-${slug}.jpg`,
   };
 }
@@ -269,9 +293,9 @@ export function roleStateDefinition(role: JobRole, code: string): LandingDefinit
     filters: { role: role.slug, state: code },
     intro: `Open ${role.name} positions at AI companies and labs in the USASI catalog whose listed location names ${name}. Titles match the ${role.name} role page; a listing appears here only when one of its employer-supplied locations is in ${name}.`,
     rule: `${role.rule} A listing also has to name ${name} in an employer-supplied location, using the same state-reading rules as the ${name} jobs page.`,
-    title: (f) => `${role.name} jobs in ${name} (${n(f.count)})`,
+    title: (f) => openingsTitle(`${role.name} jobs in ${name}`, f.count),
     description: (f) =>
-      `${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} naming a location in ${name}, at ${at(f)}. Checked ${f.date}.`,
+      withFreshness(`${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} naming a location in ${name}, at ${at(f)}.`, f.date),
     image: `/og/jobs/role-${role.slug}.jpg`,
   };
 }
@@ -288,9 +312,9 @@ export function roleDefinition(role: JobRole): LandingDefinition {
     filters: { role: role.slug },
     intro: role.intro,
     rule: role.rule,
-    title: (f) => `${role.name} jobs (${n(f.count)})`,
+    title: (f) => openingsTitle(`${role.name} jobs`, f.count),
     description: (f) =>
-      `${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} at ${at(f)}. ${abroad(f)} Checked ${f.date}.`,
+      withFreshness(`${plural(f.count, `open ${role.name} listing`, `open ${role.name} listings`)} at ${at(f)}. ${abroad(f)}`, f.date),
     image: `/og/jobs/role-${role.slug}.jpg`,
   };
 }
@@ -315,14 +339,11 @@ export function companyDefinition(org: { slug: string; name: string; provider: s
         "Current federal civilian openings related to artificial intelligence, machine learning, and data science. Each listing names the hiring agency. Apply on USAJOBS.gov; USASI does not collect applications. Listing data comes from USAJOBS.gov.",
       rule:
         "Collected from the official USAJOBS Search API with keyword searches for “artificial intelligence”, “machine learning”, “data scientist”, and “AI”, then a title and description filter that drops unrelated matches (for example postings that only contain “AI” inside another word). Announcements past their USAJOBS application close date are omitted. Titles, agencies, locations, and pay ranges are shown as USAJOBS supplies them. A listing counts as current when this source was checked successfully and the posting was present within the last 48 hours.",
-      title: (f) => {
-        const base = `Federal AI jobs: ${plural(f.count, "open position", "open positions")}`;
-        return `${base} on USAJOBS.gov`.length <= 90 ? `${base} on USAJOBS.gov` : base;
-      },
+      title: (f) => openingsTitle("Federal AI jobs", f.count),
       description: (f) => {
-        const lead = `${listings(f.count)} at U.S. federal agencies from USAJOBS.gov, ${n(f.usOnly)} in U.S. locations only. Checked ${f.date}`;
-        const full = `${lead}.`;
-        return full.length <= 160 ? full : `${listings(f.count)} from USAJOBS.gov. Checked ${f.date}.`;
+        const lead = `${listings(f.count)} at U.S. federal agencies from USAJOBS.gov, ${n(f.usOnly)} in U.S. locations only.`;
+        const full = withFreshness(lead, f.date);
+        return full.length <= 160 ? full : `${listings(f.count)} from USAJOBS.gov. Updated daily.`;
       },
       image: `/og/jobs/at-${org.slug}.jpg`,
     };
@@ -337,14 +358,12 @@ export function companyDefinition(org: { slug: string; name: string; provider: s
     filters: { company: org.slug },
     intro: `Current openings at ${org.name}, read from ${org.name}'s own ${board} and linking straight to each posting on the employer's site. Apply with ${org.name} directly; USASI does not collect applications.`,
     rule: `Every posting on ${org.name}'s public ${board} that was present at its last successful check within the last 48 hours. Titles, locations, departments, and salary ranges are shown as ${org.name} supplies them.`,
-    title: (f) => {
-      const base = `${short} jobs: ${plural(f.count, "open position", "open positions")}`;
-      return `${base} from its own job board`.length <= 90 ? `${base} from its own job board` : base;
-    },
+    title: (f) => openingsTitle(`${short} jobs`, f.count),
     description: (f) => {
-      const lead = `${listings(f.count)} at ${short} from its own job board, ${n(f.usOnly)} in U.S. locations only. Checked ${f.date}`;
-      const full = `${lead}; each links to the employer's posting.`;
-      return full.length <= 160 ? full : `${lead}.`;
+      const lead = `${listings(f.count)} at ${short} from its own job board, ${n(f.usOnly)} in U.S. locations only.`;
+      const withApply = `${lead} Each links to the employer's posting.`;
+      const daily = withFreshness(withApply.length <= 160 ? withApply : lead, f.date);
+      return daily.length <= 160 ? daily : `${listings(f.count)} at ${short} from its own job board. Updated daily.`;
     },
     image: `/og/jobs/at-${org.slug}.jpg`,
   };
