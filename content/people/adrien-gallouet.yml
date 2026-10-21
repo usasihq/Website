@@ -15,7 +15,7 @@ bio:
     file-path and cache-directory handling across platforms, clean up compiler warnings in the CUDA
     and Windows builds, and update the vendored HTTP library.
   source_ids: [github-profile, hf-profile, llama-cpp-codeowners, llama-cpp-commits]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
@@ -39,6 +39,24 @@ work:
       CUDA and Windows warnings, and update the vendored cpp-httplib. The repository is
       MIT-licensed.
     source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+  - name: llama-install.sh (formerly installama.sh)
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/ggml-org/llama-install.sh
+    contribution: >-
+      Started installama.sh, a script for installing llama.cpp, which has since migrated to the
+      ggml-org organization as llama-install.sh. The MIT-licensed scripts download a prebuilt llama
+      binary and detect CPU and GPU acceleration such as CUDA, ROCm, Vulkan, and Metal.
+    source_ids: [installama-repo, llama-install-repo]
+  - name: Glorytun and MUD
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/angt/glorytun
+    contribution: >-
+      Wrote Glorytun, a small multipath UDP tunnel, and MUD, the secure multipath network protocol over
+      UDP that provides Glorytun's core features, including AEGIS-256 or ChaCha20-Poly1305 encryption
+      and link aggregation with failover.
+    source_ids: [glorytun-repo, mud-repo]
 links:
   - label: Website
     url: https://angt.github.io
@@ -46,9 +64,50 @@ links:
     url: https://github.com/angt
   - label: Hugging Face
     url: https://huggingface.co/angt
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Adrien Gallouët's pinned GitHub projects center on networking and systems software, mostly in C. They
+          include Glorytun, a multipath UDP tunnel, and MUD, the multipath UDP library behind it, along
+          with a small secret store, an X11 cloud desktop tool, a minimal PID 1 for initramfs, and an
+          HTTPS API for the Slurm workload manager.
+        source_ids: [github-profile, glorytun-repo, mud-repo]
+      - text: >-
+          Glorytun's README describes encrypted, authenticated, and timestamped messages, forward secrecy
+          with ECDH over Curve25519, multipath aggregation with backup paths, and traffic shaping. MUD's
+          README notes that it runs on Linux and has been ported to OpenBSD and macOS.
+        source_ids: [glorytun-repo, mud-repo]
+  - heading: llama.cpp
+    paragraphs:
+      - text: >-
+          A November 2024 llama.cpp commit by Gallouët replaced AArch64 NEON assembly with intrinsics
+          in a quantized matrix-vector routine. Gallouët's recent commits span the CPU and CUDA backends,
+          the shared common library, the HTTP server, and tools such as llama-bench.
+        source_ids: [llama-cpp-first-commit, llama-cpp-commits]
+      - text: >-
+          In June 2026 Gallouët added a llama download subcommand, and in October 2026 made the server
+          report each model's input and output modalities in GET /models. CODEOWNERS now places
+          Gallouët on the teams responsible for the server and the common code.
+        source_ids: [llama-cpp-download-commit, llama-cpp-modalities-commit, llama-cpp-codeowners]
+      - text: >-
+          Gallouët also started installama.sh as a quick way to install llama.cpp. The
+          project became an official llama.cpp package in the ggml-org organization as llama-install.sh,
+          which provides install scripts for Linux, macOS, FreeBSD, and Windows.
+        source_ids: [installama-repo, llama-install-repo]
+timeline:
+  - date: "2024-11-30"
+    text: Authored a llama.cpp commit replacing AArch64 NEON assembly with intrinsics.
+    source_ids: [llama-cpp-first-commit]
+  - date: "2026-06-25"
+    text: Added the llama download subcommand to llama.cpp.
+    source_ids: [llama-cpp-download-commit]
+  - date: "2026-10-05"
+    text: Made llama.cpp's server report model input and output modalities in GET /models.
+    source_ids: [llama-cpp-modalities-commit]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: angt (Adrien Gallouët) on GitHub
@@ -56,32 +115,81 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-profile
     title: angt on Hugging Face (organizations include huggingface and ggml-org)
     url: https://huggingface.co/angt
     publisher: Hugging Face
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by angt
     url: https://github.com/ggml-org/llama.cpp/commits?author=angt
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: llama-cpp-first-commit
+    title: "ggml-cpu: replace AArch64 NEON assembly with intrinsics in ggml_gemv_q4_0_4x4_q8_0() (#10567)"
+    url: https://github.com/ggml-org/llama.cpp/commit/0c39f44d70d058940fe2afe50cfc789e3e44d756
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2024-11-30
+    accessed_at: 2026-10-21
+  - id: llama-cpp-download-commit
+    title: "app : add the llama download subcommand (#24982)"
+    url: https://github.com/ggml-org/llama.cpp/commit/683b04cc4ae9b54236e9b7eaccb4af8e0aab9f2a
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2026-06-25
+    accessed_at: 2026-10-21
+  - id: llama-cpp-modalities-commit
+    title: "common, server : report model input/output modalities in GET /models (#29987)"
+    url: https://github.com/ggml-org/llama.cpp/commit/4d60b4d087103cd96fe8feeb557709cd8998cd56
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2026-10-05
+    accessed_at: 2026-10-21
+  - id: glorytun-repo
+    title: angt/glorytun README
+    url: https://github.com/angt/glorytun
+    publisher: angt (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: mud-repo
+    title: angt/mud README
+    url: https://github.com/angt/mud
+    publisher: angt (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: installama-repo
+    title: angt/installama.sh README
+    url: https://github.com/angt/installama.sh
+    publisher: angt (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: llama-install-repo
+    title: ggml-org/llama-install.sh README
+    url: https://github.com/ggml-org/llama-install.sh
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

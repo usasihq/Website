@@ -55,10 +55,76 @@ work:
       Co-author of "Zero-Shot Text-to-Image Generation" (2021) and last-listed author of "Hierarchical
       Text-Conditional Image Generation with CLIP Latents" (2022).
     source_ids: [dalle-paper, dalle2-paper]
+  - name: Generative Pretraining from Pixels (Image GPT)
+    artifact_slug: null
+    type: open-research
+    url: https://proceedings.mlr.press/v119/chen20s.html
+    contribution: >-
+      First author of the ICML 2020 paper that trains a sequence transformer to predict pixels
+      autoregressively, without knowledge of 2D image structure, and evaluates the learned image
+      representations.
+    source_ids: [igpt-paper]
 links: []
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Mark Chen is first author of "Generative Pretraining from Pixels" (ICML 2020), which applies a
+          GPT-2-scale sequence transformer to images by predicting pixels autoregressively and measures
+          the resulting representations by linear probing and fine-tuning. Chen is also a co-author of
+          "Zero-Shot Text-to-Image Generation" (2021), the original DALL·E paper, and the last-listed
+          author of the 2022 DALL·E 2 paper on image generation with CLIP latents.
+        source_ids: [igpt-paper, dalle-paper, dalle2-paper]
+      - text: >-
+          Chen is first and corresponding author of the 2021 Codex paper, "Evaluating Large Language
+          Models Trained on Code," which introduced HumanEval, a set of programming problems for
+          measuring functional correctness of programs synthesized from docstrings. The openai/human-eval
+          repository, released under the MIT license, provides the evaluation harness and cites the
+          paper.
+        source_ids: [codex-paper, humaneval-repo]
+  - heading: Leadership at OpenAI
+    paragraphs:
+      - text: >-
+          OpenAI's technical reports credit Chen in several leadership roles. The GPT-4
+          Technical Report (2023) lists Chen as vision team co-lead and deployment lead, and the OpenAI o1
+          System Card (2024) lists Chen under reasoning research leadership and executive leadership.
+          Chen is also among the contributors to the 2025 model card for the open-weight gpt-oss-120b
+          and gpt-oss-20b models.
+        source_ids: [gpt4-report, o1-card, gpt-oss-card]
+      - text: >-
+          An OpenAI Forum event page from March 2026 lists Chen as Chief Research Officer at OpenAI and
+          announces a fireside conversation between Chen and mathematician Terence Tao on the role of AI
+          in mathematical discovery, part of a convening with UCLA's Institute for Pure and Applied
+          Mathematics.
+        source_ids: [oai-forum-event]
+timeline:
+  - date: "2020"
+    text: Published "Generative Pretraining from Pixels" as first author at ICML 2020.
+    source_ids: [igpt-paper]
+  - date: 2021-02-24
+    text: Co-authored "Zero-Shot Text-to-Image Generation," the DALL·E paper.
+    source_ids: [dalle-paper]
+  - date: 2021-07-07
+    text: Released the Codex paper and the HumanEval benchmark as first author.
+    source_ids: [codex-paper, humaneval-repo]
+  - date: 2022-04-13
+    text: Co-authored the DALL·E 2 paper on hierarchical text-conditional image generation with CLIP latents.
+    source_ids: [dalle2-paper]
+  - date: 2023-03-15
+    text: Credited as vision team co-lead and deployment lead in the GPT-4 Technical Report.
+    source_ids: [gpt4-report]
+  - date: 2024-12-21
+    text: Listed under reasoning research leadership and executive leadership in the OpenAI o1 System Card.
+    source_ids: [o1-card]
+  - date: 2025-08-08
+    text: Listed among the contributors to the gpt-oss-120b and gpt-oss-20b model card.
+    source_ids: [gpt-oss-card]
+  - date: 2026-03-04
+    text: Listed as OpenAI's Chief Research Officer for a fireside conversation with Terence Tao at an OpenAI and IPAM convening.
+    source_ids: [oai-forum-event]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: oai-forum-event
     title: "Accelerating Math and Theoretical Physics with AI: OpenAI × UCLA Institute for Pure & Applied Math (speaker listing)"
@@ -66,53 +132,60 @@ sources:
     publisher: OpenAI Forum
     kind: official-page
     published_at: 2026-03-04
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codex-paper
     title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
     url: https://arxiv.org/abs/2107.03374
     publisher: arXiv
     kind: paper
     published_at: 2021-07-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: humaneval-repo
     title: openai/human-eval repository (README citation; MIT License)
     url: https://github.com/openai/human-eval
     publisher: OpenAI (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dalle-paper
     title: Zero-Shot Text-to-Image Generation (arXiv 2102.12092)
     url: https://arxiv.org/abs/2102.12092
     publisher: arXiv
     kind: paper
     published_at: 2021-02-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: dalle2-paper
     title: Hierarchical Text-Conditional Image Generation with CLIP Latents (arXiv 2204.06125)
     url: https://arxiv.org/abs/2204.06125
     publisher: arXiv
     kind: paper
     published_at: 2022-04-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt4-report
     title: GPT-4 Technical Report (arXiv 2303.08774), authorship and credit attribution
     url: https://arxiv.org/abs/2303.08774
     publisher: arXiv
     kind: paper
     published_at: 2023-03-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: o1-card
     title: OpenAI o1 System Card (arXiv 2412.16720), authorship and credit attribution
     url: https://arxiv.org/abs/2412.16720
     publisher: arXiv
     kind: paper
     published_at: 2024-12-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt-oss-card
     title: gpt-oss-120b & gpt-oss-20b Model Card (arXiv 2508.10925), contributors
     url: https://arxiv.org/abs/2508.10925
     publisher: arXiv
     kind: model-card
     published_at: 2025-08-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: igpt-paper
+    title: Generative Pretraining From Pixels (Proceedings of the 37th ICML, PMLR 119)
+    url: https://proceedings.mlr.press/v119/chen20s.html
+    publisher: Proceedings of Machine Learning Research
+    kind: paper
+    published_at: "2020"
+    accessed_at: 2026-10-21

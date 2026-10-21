@@ -13,7 +13,7 @@ bio:
     papers, whose abstracts say the models are released under the Apache 2.0 license, and the
     homepage lists later work on Mathstral, on large-scale reinforcement learning for Magistral, and
     on the formal agentic models Leanstral 1.0 and 1.5. Jiang's CV lists a research scientist
-    internship at FAIR France in 2022, and the homepage describes a PhD at the Cambridge Computer
+    internship at FAIR in 2022, and the homepage describes a PhD at the Cambridge Computer
     Laboratory on learning abstract mathematical reasoning with language models.
   source_ids: [homepage, cv, mistral7b-paper, mixtral-paper]
   reviewed_at: 2026-10-13
@@ -23,7 +23,7 @@ affiliations:
     role: Research scientist (since June 2023)
     current: true
     source_ids: [homepage]
-  - name: FAIR France (Meta)
+  - name: FAIR (Meta)
     organization_slug: meta
     role: Research Scientist Intern (July to October 2022)
     current: false
@@ -47,14 +47,82 @@ work:
       reinforcement learning for Magistral (2025), and formal agentic models Leanstral 1.0 and 1.5
       (2026) at Mistral AI.
     source_ids: [homepage]
+  - name: "Draft, Sketch, and Prove: Guiding Formal Theorem Provers with Informal Proofs"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2210.12283
+    contribution: >-
+      First author of the 2022 paper on using informal proofs to guide formal theorem provers.
+    source_ids: [dsp-paper]
 links:
   - label: Website
     url: https://albertqjiang.github.io/
   - label: GitHub
     url: https://github.com/albertqjiang
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Albert Jiang has been a research scientist at Mistral AI since the company's formation in June
+          2023, and Jiang's team there works on the science and infrastructure of reasoning. Earlier,
+          Jiang's CV lists a year as a research assistant at the University of Toronto with Jimmy Ba and
+          Roger Grosse (2019–2020) and a research scientist internship at FAIR with Guillaume
+          Lample in 2022.
+        source_ids: [homepage, cv]
+      - text: >-
+          Jiang's PhD at the Cambridge Computer Laboratory, supervised by Mateja Jamnik and Wenda Li,
+          studied how language models can learn abstract mathematical reasoning; the thesis was examined
+          in October 2024.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          During the PhD, Jiang worked on autoformalization of theorems and proofs, premise selection
+          tools for language models, and how humans and language models interact on mathematical tasks.
+          Jiang is first author of Thor (2022), which integrates language models with automated theorem
+          provers, and of "Draft, Sketch, and Prove" (2022), and a co-author of "Autoformalization with
+          Large Language Models" (2022).
+        source_ids: [homepage, cv, thor-paper, dsp-paper, autoformalization-paper]
+      - text: >-
+          At Mistral AI, Jiang is first author of the Mistral 7B (2023) and Mixtral of Experts (2024)
+          papers, whose models are released under the Apache 2.0 license. Jiang's homepage describes
+          later work on mid- and post-training data for Mathstral in 2024, large-scale reinforcement
+          learning for Magistral in 2025, and the formal agentic models Leanstral 1.0 and 1.5 in 2026.
+        source_ids: [mistral7b-paper, mixtral-paper, homepage]
+timeline:
+  - date: 2019-06
+    text: Began a year as a research assistant at the University of Toronto with Jimmy Ba and Roger Grosse.
+    source_ids: [cv]
+  - date: 2022-05-22
+    text: Posted Thor, on integrating language models and automated theorem provers, as first author.
+    source_ids: [thor-paper]
+  - date: 2022-07
+    text: Began a research scientist internship at FAIR with Guillaume Lample, through October 2022.
+    source_ids: [cv]
+  - date: 2022-10-21
+    text: Posted "Draft, Sketch, and Prove" as first author.
+    source_ids: [dsp-paper]
+  - date: 2023-06
+    text: Joined Mistral AI as a research scientist at the company's formation.
+    source_ids: [homepage]
+  - date: 2023-10-10
+    text: Posted the Mistral 7B paper as first author.
+    source_ids: [mistral7b-paper]
+  - date: 2024-01-08
+    text: Posted the Mixtral of Experts paper as first author.
+    source_ids: [mixtral-paper]
+  - date: 2024-10
+    text: Had the Cambridge PhD thesis on learning mathematical reasoning with language models examined.
+    source_ids: [homepage]
+  - date: "2025"
+    text: Worked on large-scale reinforcement learning for Magistral at Mistral AI.
+    source_ids: [homepage]
+  - date: "2026"
+    text: Worked on the formal agentic models Leanstral 1.0 and 1.5.
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Albert Qiaochu Jiang — homepage
@@ -62,25 +130,46 @@ sources:
     publisher: Albert Jiang
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cv
     title: Albert Qiaochu Jiang — CV (work experience)
     url: https://albertqjiang.github.io/cv/
     publisher: Albert Jiang
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mistral7b-paper
     title: Mistral 7B (arXiv 2310.06825)
     url: https://arxiv.org/abs/2310.06825
     publisher: arXiv
     kind: paper
     published_at: 2023-10-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mixtral-paper
     title: Mixtral of Experts (arXiv 2401.04088)
     url: https://arxiv.org/abs/2401.04088
     publisher: arXiv
     kind: paper
     published_at: 2024-01-08
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: thor-paper
+    title: "Thor: Wielding Hammers to Integrate Language Models and Automated Theorem Provers (arXiv 2205.10893)"
+    url: https://arxiv.org/abs/2205.10893
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-05-22
+    accessed_at: 2026-10-21
+  - id: dsp-paper
+    title: "Draft, Sketch, and Prove: Guiding Formal Theorem Provers with Informal Proofs (arXiv 2210.12283)"
+    url: https://arxiv.org/abs/2210.12283
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-10-21
+    accessed_at: 2026-10-21
+  - id: autoformalization-paper
+    title: Autoformalization with Large Language Models (arXiv 2205.12615)
+    url: https://arxiv.org/abs/2205.12615
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-05-25
+    accessed_at: 2026-10-21

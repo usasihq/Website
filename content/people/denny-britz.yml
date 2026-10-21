@@ -45,9 +45,65 @@ links:
     url: https://dennybritz.com/
   - label: GitHub
     url: https://github.com/dennybritz
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Britz's site describes a career that began in databases and distributed systems at UC Berkeley, as a
+          member of the AMPLab and an early research engineer on Apache Spark. Graduate work at Stanford applied
+          database techniques to fast inference in probabilistic graphical models before Britz turned to deep
+          learning research around 2015.
+        source_ids: [britz-site]
+      - text: >-
+          As part of the Google AI team, Britz published papers on natural language processing, machine
+          translation, and reinforcement learning. In 2018 Britz left research for a high-frequency trading
+          firm and now applies machine learning and reinforcement learning to financial markets.
+        source_ids: [britz-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Britz's 2017 study with Anna Goldie, Minh-Thang Luong, and Quoc Le ran several hundred experiments to
+          measure how architecture choices affect neural machine translation, and released its code as the
+          google/seq2seq TensorFlow framework. A second 2017 paper with Melody Guan and Luong proposed an
+          attention mechanism that uses a fixed-size memory representation to speed up sequence-to-sequence
+          models.
+        source_ids: [nmt-exploration-paper, seq2seq-repo, seq2seq-contributors, efficient-attention-paper]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Britz's blog has carried tutorials since 2015, including a four-part series on recurrent neural
+          networks, guides to implementing a CNN for text classification and retrieval-based chatbots in
+          TensorFlow, and essays such as "Deep Learning ideas that have stood the test of time" (2020). Recent
+          posts include work on solving Path of Exile item crafting with reinforcement learning (2024) and
+          thoughts on coding agents (2026).
+        source_ids: [britz-site]
+      - text: >-
+          Britz's reinforcement-learning repository provides Python code, exercises, and solutions for standard
+          reinforcement learning algorithms, organized to accompany Sutton and Barto's textbook and David
+          Silver's course.
+        source_ids: [rl-repo]
+timeline:
+  - date: "2015-09-03"
+    text: Began a series of deep learning tutorials with "Implementing a Neural Network from Scratch in Python".
+    source_ids: [britz-site]
+  - date: "2015-12-11"
+    text: Published the tutorial "Implementing a CNN for Text Classification in TensorFlow".
+    source_ids: [britz-site]
+  - date: "2017-03-11"
+    text: Released "Massive Exploration of Neural Machine Translation Architectures" as first-listed author.
+    source_ids: [nmt-exploration-paper]
+  - date: "2017-07-01"
+    text: Released "Efficient Attention using a Fixed-Size Memory Representation" as first author.
+    source_ids: [efficient-attention-paper]
+  - date: "2018"
+    text: Left research to work in high-frequency trading, applying machine learning to financial markets.
+    source_ids: [britz-site]
+  - date: "2024-07-13"
+    text: Published a post on solving Path of Exile item crafting with reinforcement learning.
+    source_ids: [britz-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: britz-site
     title: Denny's Blog — homepage
@@ -55,25 +111,39 @@ sources:
     publisher: Denny Britz
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nmt-exploration-paper
     title: Massive Exploration of Neural Machine Translation Architectures (arXiv 1703.03906)
     url: https://arxiv.org/abs/1703.03906
     publisher: arXiv
     kind: paper
     published_at: 2017-03-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: seq2seq-repo
     title: google/seq2seq README (Apache-2.0)
     url: https://github.com/google/seq2seq
     publisher: Google (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: seq2seq-contributors
     title: google/seq2seq contributors (GitHub API listing)
     url: https://api.github.com/repos/google/seq2seq/contributors
     publisher: GitHub
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: efficient-attention-paper
+    title: Efficient Attention using a Fixed-Size Memory Representation (arXiv 1707.00110)
+    url: https://arxiv.org/abs/1707.00110
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-07-01
+    accessed_at: 2026-10-21
+  - id: rl-repo
+    title: dennybritz/reinforcement-learning README
+    url: https://github.com/dennybritz/reinforcement-learning
+    publisher: dennybritz (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

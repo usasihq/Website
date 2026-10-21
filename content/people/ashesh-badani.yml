@@ -27,6 +27,11 @@ affiliations:
     role: Senior Vice President of Cloud Platforms
     current: false
     source_ids: [redhat-bio]
+  - name: Sun Microsystems
+    organization_slug: null
+    role: Director of Product Management and Product Marketing, Integration and Application Platform Products
+    current: false
+    source_ids: [redhat-bio]
 work:
   - name: Red Hat OpenShift
     artifact_slug: null
@@ -41,9 +46,51 @@ work:
 links:
   - label: Red Hat biography
     url: https://www.redhat.com/en/about/company/leadership/ashesh-badani
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before joining Red Hat, Ashesh Badani was Director of Product Management and Product Marketing
+          for integration and application platform products at Sun Microsystems. Badani's first role at
+          Red Hat covered product line management and marketing for the JBoss Enterprise Application
+          Platform middleware portfolio.
+        source_ids: [redhat-bio]
+      - text: >-
+          As Senior Vice President of Cloud Platforms, Badani oversaw the expansion of Red Hat OpenShift
+          from a Platform-as-a-Service product into an enterprise Kubernetes platform. Red Hat's
+          biography also credits Badani with strategy, analysis and integration work on the company's
+          acquisitions of FuseSource in 2012, CoreOS in 2018 and StackRox in 2021.
+        source_ids: [redhat-bio]
+      - text: >-
+          In the current role of Senior Vice President and Chief Product Officer, Badani is responsible
+          for Red Hat's product portfolio and business unit groups across on-premise, public cloud and
+          edge, including product strategy, business planning, product management, marketing and
+          operations.
+        source_ids: [redhat-bio, redhat-leadership]
+  - heading: Writing
+    paragraphs:
+      - text: >-
+          Badani writes on the Red Hat blog. A May 2025 post published during Red Hat Summit discusses
+          Red Hat Enterprise Linux 10, Red Hat AI Inference Server and the llm-d project for distributed
+          inference, framing them around meeting present production needs while preparing platforms for
+          generative AI.
+        source_ids: [blog-now-next]
+timeline:
+  - date: "2012"
+    text: Worked on strategy, analysis and integration for Red Hat's acquisition of FuseSource.
+    source_ids: [redhat-bio]
+  - date: "2018"
+    text: Worked on strategy, analysis and integration for Red Hat's acquisition of CoreOS.
+    source_ids: [redhat-bio]
+  - date: "2021"
+    text: Worked on strategy, analysis and integration for Red Hat's acquisition of StackRox.
+    source_ids: [redhat-bio]
+  - date: 2025-05-21
+    text: Published a Red Hat blog post during Red Hat Summit 2025 on RHEL 10, Red Hat AI Inference Server and llm-d.
+    source_ids: [blog-now-next]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: redhat-bio
     title: Ashesh Badani — Senior Vice President and Chief Product Officer (Red Hat executive leadership team)
@@ -51,11 +98,18 @@ sources:
     publisher: Red Hat
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: redhat-leadership
     title: Red Hat executive leadership team
     url: https://www.redhat.com/en/about/company/leadership
     publisher: Red Hat
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: blog-now-next
+    title: "From the now to the next: How Red Hat's trusted platforms bridge modern and next-generation IT needs"
+    url: https://www.redhat.com/en/blog/now-next-how-red-hats-trusted-platforms-bridge-modern-and-next-generation-it-needs
+    publisher: Red Hat
+    kind: official-page
+    published_at: 2025-05-21
+    accessed_at: 2026-10-21

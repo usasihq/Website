@@ -13,7 +13,7 @@ bio:
     investment firm Gil&Co, previously ran AI-focused product teams at Google and Twitter, and
     co-founded MixerLabs and Color Health.
   source_ids: [site, blog, nopriors]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: No Priors
     organization_slug: null
@@ -22,9 +22,29 @@ affiliations:
     source_ids: [site, nopriors]
   - name: Gil&Co
     organization_slug: null
-    role: Runs the firm
+    role: Runs the multi-stage investment firm
     current: true
     source_ids: [site]
+  - name: Twitter
+    organization_slug: null
+    role: Former VP of Corporate Strategy; ran AI product teams
+    current: false
+    source_ids: [blog, site]
+  - name: Google
+    organization_slug: google
+    role: Former product role working on ads targeting, mobile, and AI
+    current: false
+    source_ids: [blog, site]
+  - name: MixerLabs
+    organization_slug: null
+    role: Co-founder and CEO (acquired by Twitter)
+    current: false
+    source_ids: [blog, site]
+  - name: Color Health
+    organization_slug: null
+    role: Co-founder
+    current: false
+    source_ids: [blog, site]
 work:
   - name: No Priors
     artifact_slug: null
@@ -41,6 +61,14 @@ work:
     contribution: >-
       Substack publication about technology and startups.
     source_ids: [blog]
+  - name: "High Growth Handbook: Scaling Startups from 10 to 10,000 People"
+    artifact_slug: null
+    type: media
+    url: https://press.stripe.com/high-growth-handbook
+    contribution: >-
+      Wrote this Stripe Press book on scaling startups, which draws on Elad's blog and interviews
+      with company leaders; the full text is also published free online.
+    source_ids: [hgh-stripe, hgh-online, site]
 links:
   - label: Website
     url: https://eladgil.com/
@@ -48,9 +76,58 @@ links:
     url: https://www.youtube.com/@NoPriorsPodcast
   - label: Newsletter
     url: https://blog.eladgil.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Elad Gil started two companies: MixerLabs, which Twitter acquired while Elad was its CEO,
+          and Color Health. At Twitter, Elad served as VP of Corporate Strategy, and at Google Elad
+          worked on ads targeting and mobile; Elad describes having run AI-centric product
+          organizations at both companies.
+        source_ids: [blog, site]
+      - text: >-
+          Elad now runs Gil&Co, a multi-stage investment firm. Elad's site also describes helping to
+          incubate Braintrust, an AI evaluation company, and Brain Co, which builds an AI platform for
+          large institutions.
+        source_ids: [site]
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          No Priors is a podcast and YouTube channel co-hosted by Elad Gil and Sarah Guo, which the
+          channel describes as a guide to AI built on conversations with engineers, researchers, and
+          founders. Topics include research progress, which markets AI may change, and how commerce,
+          culture, and society may shift.
+        source_ids: [nopriors]
+      - text: >-
+          On Elad Blog, Elad publishes essays on technology and startups, including a series on the
+          market structure of AI. Examples include "AI Platforms, Markets, & Open Source" (2023),
+          "Things I Don't Know About AI" (2024), and "AI Market Clarity" (2025).
+        source_ids: [blog, post-ai-platforms, post-dont-know, post-market-clarity]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Elad wrote High Growth Handbook, published by Stripe Press, a guide to scaling startups from
+          a few dozen people to thousands. The book covers the role of the CEO, board management,
+          executive hiring, M&A, and IPOs, and it includes interviews with leaders such as Reid
+          Hoffman, Marc Andreessen, and Aaron Levie. Its full text is also available free on the
+          book's website.
+        source_ids: [hgh-stripe, hgh-online, site]
+timeline:
+  - date: "2023-02-15"
+    text: Published the essay "AI Platforms, Markets, & Open Source" on Elad Blog.
+    source_ids: [post-ai-platforms]
+  - date: "2023-04-20"
+    text: The No Priors YouTube channel, co-hosted with Sarah Guo, was created.
+    source_ids: [nopriors]
+  - date: "2024-02-21"
+    text: Published the essay "Things I Don't Know About AI," a set of open questions about each layer of the AI stack.
+    source_ids: [post-dont-know]
+  - date: "2025-07-22"
+    text: Published the essay "AI Market Clarity" on how parts of the AI market had taken shape.
+    source_ids: [post-market-clarity]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: site
     title: Elad Gil
@@ -58,18 +135,53 @@ sources:
     publisher: Elad Gil
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: blog
     title: About - Elad Blog
     url: https://blog.eladgil.com/about
     publisher: Elad Gil (Substack)
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: nopriors
     title: "No Priors: AI, Machine Learning, Tech, & Startups - YouTube (About)"
     url: https://www.youtube.com/@NoPriorsPodcast/about
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: hgh-stripe
+    title: "High Growth Handbook: Scaling Startups from 10 to 10,000 People"
+    url: https://press.stripe.com/high-growth-handbook
+    publisher: Stripe Press
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: hgh-online
+    title: High Growth Handbook – By Elad Gil (online edition)
+    url: https://growth.eladgil.com/
+    publisher: Elad Gil
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: post-ai-platforms
+    title: AI Platforms, Markets, & Open Source
+    url: https://blog.eladgil.com/p/ai-platforms-markets-and-open-source
+    publisher: Elad Gil (Substack)
+    kind: other
+    published_at: 2023-02-15
+    accessed_at: 2026-10-21
+  - id: post-dont-know
+    title: Things I Don't Know About AI
+    url: https://blog.eladgil.com/p/things-i-dont-know-about-ai
+    publisher: Elad Gil (Substack)
+    kind: other
+    published_at: 2024-02-21
+    accessed_at: 2026-10-21
+  - id: post-market-clarity
+    title: AI Market Clarity
+    url: https://blog.eladgil.com/p/ai-market-clarity
+    publisher: Elad Gil (Substack)
+    kind: other
+    published_at: 2025-07-22
+    accessed_at: 2026-10-21

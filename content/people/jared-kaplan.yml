@@ -15,7 +15,7 @@ bio:
     research, and last author of the Constitutional AI paper (2022). Claude's constitution credits
     Kaplan with creating the Claude Character project with Amanda Askell in 2023.
   source_ids: [anthropic-leadership, scaling-laws-paper, cai-paper, claude-constitution]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Anthropic
     organization_slug: anthropic
@@ -23,18 +23,19 @@ affiliations:
     current: true
     source_ids: [anthropic-leadership]
   - name: Johns Hopkins University
-    organization_slug: null
+    organization_slug:
     role: Associate professor
     current: true
     source_ids: [anthropic-leadership]
   - name: OpenAI
     organization_slug: openai
-    role: Worked on GPT-3 and Codex; listed with Johns Hopkins University and OpenAI on the 2020 scaling-laws paper
+    role: Worked on GPT-3 and Codex; listed with Johns Hopkins University and OpenAI on the 2020 scaling-laws 
+      paper
     current: false
     source_ids: [anthropic-leadership, scaling-laws-paper, codex-paper]
 work:
   - name: Scaling Laws for Neural Language Models
-    artifact_slug: null
+    artifact_slug:
     type: open-research
     url: https://arxiv.org/abs/2001.08361
     contribution: >-
@@ -51,14 +52,14 @@ work:
       Kaplan with Anthropic AI and notes the work was performed while at OpenAI.
     source_ids: [codex-paper, humaneval-repo]
   - name: Constitutional AI
-    artifact_slug: null
+    artifact_slug:
     type: open-research
     url: https://arxiv.org/abs/2212.08073
     contribution: >-
       Last-listed author of "Constitutional AI: Harmlessness from AI Feedback" (2022).
     source_ids: [cai-paper]
   - name: Claude's constitution
-    artifact_slug: null
+    artifact_slug:
     type: open-research
     url: https://www.anthropic.com/constitution
     contribution: >-
@@ -66,50 +67,123 @@ work:
       Character project in 2023 and set the direction for the new constitution, which Anthropic
       released under a CC0 1.0 deed.
     source_ids: [claude-constitution]
+  - name: Language Models are Few-Shot Learners (GPT-3)
+    artifact_slug:
+    type: open-research
+    url: https://arxiv.org/abs/2005.14165
+    contribution: >-
+      Co-author of the 2020 paper introducing GPT-3; Anthropic's leadership page says Kaplan helped build
+      GPT-3 at OpenAI.
+    source_ids: [gpt3-paper, anthropic-leadership]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kaplan holds a PhD in physics from Harvard University and spent the first 15 years of their
+          career as a theoretical physicist in academia. Kaplan is an associate professor at Johns Hopkins
+          University, where Kaplan has taught courses on the foundations of deep learning.
+        source_ids: [anthropic-leadership]
+      - text: >-
+          Before co-founding Anthropic, Kaplan worked at OpenAI and, according to Anthropic, helped build
+          GPT-3 and Codex. Kaplan is listed among the authors of the 2020 GPT-3 paper, Language Models are
+          Few-Shot Learners, and of the 2021 Codex paper. At Anthropic, Kaplan is Chief Science Officer and
+          heads the company's technical research.
+        source_ids: [anthropic-leadership, gpt3-paper, codex-paper]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Kaplan's 2020 paper with Sam McCandlish and colleagues, Scaling Laws for Neural Language Models,
+          studied how language-model loss follows power laws in model size, dataset size, and training
+          compute. Anthropic describes this line of work as a framework for understanding and predicting the
+          behavior of advanced AI systems.
+        source_ids: [scaling-laws-paper, anthropic-leadership]
+      - text: >-
+          At Anthropic, Kaplan is the last-listed author of the 2022 papers on training a helpful and harmless
+          assistant with reinforcement learning from human feedback and on Constitutional AI, which trains
+          models to follow a written set of principles. Claude's constitution credits Kaplan with creating
+          the Claude Character project with Amanda Askell in 2023 and with setting the direction for the new
+          constitution.
+        source_ids: [hh-rlhf-paper, cai-paper, claude-constitution]
+timeline:
+  - date: "2020-01-23"
+    text: Posted Scaling Laws for Neural Language Models with Sam McCandlish and colleagues.
+    source_ids: [scaling-laws-paper]
+  - date: "2020-05-28"
+    text: Co-authored Language Models are Few-Shot Learners, the paper introducing GPT-3.
+    source_ids: [gpt3-paper]
+  - date: "2021-07-07"
+    text: Co-authored Evaluating Large Language Models Trained on Code, the Codex paper that introduced 
+      HumanEval.
+    source_ids: [codex-paper]
+  - date: "2022-04-12"
+    text: Last author of Training a Helpful and Harmless Assistant with Reinforcement Learning from Human 
+      Feedback.
+    source_ids: [hh-rlhf-paper]
+  - date: "2022-12-15"
+    text: "Last author of Constitutional AI: Harmlessness from AI Feedback."
+    source_ids: [cai-paper]
+  - date: "2023"
+    text: Created the Claude Character project with Amanda Askell.
+    source_ids: [claude-constitution]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: anthropic-leadership
     title: Leadership at Anthropic (Co-Founders, full bios)
     url: https://www.anthropic.com/company/leadership
     publisher: Anthropic
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: scaling-laws-paper
     title: Scaling Laws for Neural Language Models (arXiv 2001.08361)
     url: https://arxiv.org/abs/2001.08361
     publisher: arXiv
     kind: paper
     published_at: 2020-01-23
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: codex-paper
     title: Evaluating Large Language Models Trained on Code (arXiv 2107.03374)
     url: https://arxiv.org/abs/2107.03374
     publisher: arXiv
     kind: paper
     published_at: 2021-07-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: humaneval-repo
     title: openai/human-eval repository (README citation; MIT License)
     url: https://github.com/openai/human-eval
     publisher: OpenAI (GitHub repository)
     kind: repository
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: cai-paper
     title: "Constitutional AI: Harmlessness from AI Feedback (arXiv 2212.08073)"
     url: https://arxiv.org/abs/2212.08073
     publisher: arXiv
     kind: paper
     published_at: 2022-12-15
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: claude-constitution
     title: Claude's Constitution (preface and acknowledgements)
     url: https://www.anthropic.com/constitution
     publisher: Anthropic
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
+  - id: gpt3-paper
+    title: Language Models are Few-Shot Learners (arXiv 2005.14165)
+    url: https://arxiv.org/abs/2005.14165
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-05-28
+    accessed_at: 2026-10-21
+  - id: hh-rlhf-paper
+    title: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback (arXiv 
+      2204.05862)
+    url: https://arxiv.org/abs/2204.05862
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-04-12
+    accessed_at: 2026-10-21

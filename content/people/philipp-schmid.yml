@@ -16,7 +16,7 @@ bio:
     Accelerate library and publishes developer guides on agents and the Gemini API on
     philschmid.de.
   source_ids: [schmid-about, github-profile, accelerate-readme, schmid-site]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
@@ -51,9 +51,66 @@ links:
     url: https://www.philschmid.de
   - label: GitHub
     url: https://github.com/philschmid
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Philipp Schmid worked at Hugging Face as a Technical Lead, heading collaborations with cloud
+          providers such as AWS, Google Cloud, Azure and Cloudflare and serving as technical and
+          engineering lead for key cloud and hardware partnerships. Schmid's about page says that
+          work included creating Hugging Face Inference Endpoints and collaborating with the
+          open-source and science teams on projects such as Zephyr, SmolLM and StarCoder.
+        source_ids: [schmid-about]
+      - text: >-
+          Schmid joined Google DeepMind in 2025 to build a developer relations and developer
+          experience team that brings the lab's research to developers, working across open models
+          and foundation models such as Gemini and Gemma.
+        source_ids: [schmid-about, github-profile]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Schmid's projects page lists Hugging Face Inference Endpoints (creator and technical lead),
+          the Hugging Face LLM Inference Container (technical and engineering lead), and IGEL, an
+          instruction-tuned German language model from early 2023 (creator). Schmid maintained the
+          SageMaker Hugging Face Inference Toolkit and the EasyLLM library, and contributed to
+          Transformers, Datasets, Optimum and TRL.
+        source_ids: [schmid-projects]
+      - text: >-
+          Schmid is also listed among the authors in the citation entry of Hugging Face's Accelerate
+          library, which runs PyTorch training in distributed and mixed-precision settings.
+        source_ids: [accelerate-readme]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Schmid publishes tutorials and guides on philschmid.de. Recent posts in 2026 cover
+          building with the Gemini API, including the Interactions API, Gemini Managed Agents,
+          Deep Research and computer-use agents, along with essays on agent evaluation and subagent
+          patterns.
+        source_ids: [schmid-site]
+timeline:
+  - date: "2021"
+    text: Recognized as an AWS Machine Learning Hero.
+    source_ids: [schmid-about]
+  - date: "2022"
+    text: Listed among the authors of the Hugging Face Accelerate library citation.
+    source_ids: [accelerate-readme]
+  - date: "2023"
+    text: Created IGEL, an instruction-based German language model.
+    source_ids: [schmid-projects]
+  - date: "2025"
+    text: Joined Google DeepMind to build an AI developer relations and developer experience team.
+    source_ids: [schmid-about, github-profile]
+  - date: 2026-05-26
+    text: Published a developer guide to Gemini Managed Agents.
+    source_ids: [schmid-site]
+honors:
+  - name: AWS Machine Learning Hero
+    year: 2021
+    awarded_by: Amazon Web Services
+    source_ids: [schmid-about]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: schmid-about
     title: Philipp Schmid — About Me
@@ -61,25 +118,32 @@ sources:
     publisher: Philipp Schmid
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: schmid-site
     title: Philipp Schmid — blog index
     url: https://www.philschmid.de/
     publisher: Philipp Schmid
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: philschmid (Philipp Schmid) on GitHub
     url: https://github.com/philschmid
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: accelerate-readme
     title: huggingface/accelerate README (purpose and citation) and LICENSE (Apache-2.0)
     url: https://github.com/huggingface/accelerate
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: schmid-projects
+    title: Philipp Schmid — Projects
+    url: https://www.philschmid.de/projects
+    publisher: Philipp Schmid
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

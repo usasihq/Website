@@ -15,7 +15,7 @@ bio:
     library for mechanistic interpretability of GPT-style language models, and is the last-listed author
     of Gemma Scope, an open suite of sparse autoencoders trained on Gemma 2 models.
   source_ids: [nanda-about, tc-framework, transformerlens-repo, gemma-scope-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google DeepMind
     organization_slug: google-deepmind
@@ -60,9 +60,63 @@ links:
     url: https://www.neelnanda.io/about
   - label: GitHub
     url: https://github.com/neelnanda-io
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Neel Nanda's About page says that after graduating in 2020, Nanda spent a year exploring AI
+          safety through internships at the Future of Humanity Institute, DeepMind, and the Centre for
+          Human-Compatible AI. Before the current role, Nanda worked at Anthropic as a language model
+          interpretability researcher under Chris Olah and also did independent mechanistic
+          interpretability research.
+        source_ids: [nanda-about]
+      - text: >-
+          Nanda now runs the Google DeepMind mechanistic interpretability team, which tries to reverse
+          engineer the algorithms and structures that trained neural networks have learned. Nanda also
+          mentors researchers through a stream of the MATS program, a full-time research program held
+          twice a year.
+        source_ids: [nanda-about]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Nanda was a core research contributor to "A Mathematical Framework for
+          Transformer Circuits" (2021) and the third-listed author of "In-context Learning and Induction
+          Heads" (2022), which presents evidence that induction heads may account for much of in-context
+          learning in large transformers.
+        source_ids: [tc-framework, induction-heads-paper]
+      - text: >-
+          Nanda was first author of the January 2023 paper on progress measures for grokking, which
+          reverse-engineers the algorithm small transformers learn for modular addition. Nanda is the
+          last-listed author of "Refusal in Language Models Is Mediated by a Single Direction" (2024) and
+          of Gemma Scope (2024), an open suite of sparse autoencoders trained on Gemma 2 models.
+        source_ids: [grokking-paper, refusal-paper, gemma-scope-paper]
+  - heading: Open-source work and teaching
+    paragraphs:
+      - text: >-
+          Nanda created TransformerLens, an MIT-licensed library for mechanistic interpretability of
+          GPT-2 style language models that is now maintained by Bryce Meyer and Jonah Larson. Nanda's other teaching
+          materials include a searchable explainer and glossary of mechanistic interpretability terms and
+          a YouTube channel of paper walkthroughs and live research walkthroughs.
+        source_ids: [transformerlens-repo, nanda-about, github-profile]
+timeline:
+  - date: "2021-12-22"
+    text: Core research contributor to "A Mathematical Framework for Transformer Circuits."
+    source_ids: [tc-framework]
+  - date: "2022-09-24"
+    text: Co-authored "In-context Learning and Induction Heads."
+    source_ids: [induction-heads-paper]
+  - date: "2023-01-12"
+    text: First author of "Progress measures for grokking via mechanistic interpretability."
+    source_ids: [grokking-paper]
+  - date: "2024-06-17"
+    text: Co-authored "Refusal in Language Models Is Mediated by a Single Direction."
+    source_ids: [refusal-paper]
+  - date: "2024-08-09"
+    text: Co-authored the Gemma Scope report on open sparse autoencoders for Gemma 2.
+    source_ids: [gemma-scope-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nanda-about
     title: Neel Nanda — About
@@ -70,39 +124,53 @@ sources:
     publisher: Neel Nanda
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: neelnanda-io (Neel Nanda) on GitHub
     url: https://github.com/neelnanda-io
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: transformerlens-repo
     title: TransformerLensOrg/TransformerLens README (MIT license)
     url: https://github.com/TransformerLensOrg/TransformerLens
     publisher: TransformerLensOrg (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: tc-framework
     title: A Mathematical Framework for Transformer Circuits (Transformer Circuits Thread, Anthropic)
     url: https://transformer-circuits.pub/2021/framework/index.html
     publisher: Anthropic
     kind: paper
     published_at: 2021-12-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gemma-scope-paper
     title: "Gemma Scope: Open Sparse Autoencoders Everywhere All At Once on Gemma 2 (arXiv 2408.05147)"
     url: https://arxiv.org/abs/2408.05147
     publisher: arXiv
     kind: paper
     published_at: 2024-08-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: grokking-paper
     title: Progress measures for grokking via mechanistic interpretability (arXiv 2301.05217)
     url: https://arxiv.org/abs/2301.05217
     publisher: arXiv
     kind: paper
     published_at: 2023-01-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: induction-heads-paper
+    title: In-context Learning and Induction Heads
+    url: https://arxiv.org/abs/2209.11895
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-24
+    accessed_at: 2026-10-21
+  - id: refusal-paper
+    title: Refusal in Language Models Is Mediated by a Single Direction
+    url: https://arxiv.org/abs/2406.11717
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-17
+    accessed_at: 2026-10-21

@@ -1,0 +1,141 @@
+slug: lukas-biewald
+name: Lukas Biewald
+initials: LB
+groups: [leadership, engineering]
+sector: corporate
+specialties: [developer-tools, training-systems, data]
+headline: Co-founder and General Manager of Weights & Biases (part of CoreWeave); founder of CrowdFlower/Figure Eight
+bio:
+  text: >-
+    Lukas Biewald is a co-founder and the General Manager of Weights & Biases, the machine learning
+    developer platform that Biewald founded in 2017 with Chris Van Pelt and Shawn Lewis and that
+    CoreWeave acquired in May 2025. Biewald earlier founded CrowdFlower, later Figure Eight, to
+    address the problem of getting training data for machine learning.
+  source_ids: [wandb-about, biewald-site-about, biewald-wandb-post]
+  reviewed_at: 2026-10-21
+affiliations:
+  - name: Weights & Biases
+    organization_slug: weights-and-biases
+    role: General Manager and Co-founder
+    current: true
+    source_ids: [wandb-about]
+  - name: CrowdFlower (later Figure Eight)
+    organization_slug: null
+    role: Founder and CEO (founded 2007)
+    current: false
+    source_ids: [biewald-wandb-post, biewald-site-about]
+work:
+  - name: Weights & Biases Python SDK (wandb)
+    artifact_slug: wandb-sdk
+    type: open-source
+    url: https://github.com/wandb/wandb
+    contribution: >-
+      Co-founded the company behind the MIT-licensed wandb library, which grew out of an experiment
+      tracking tool developed to help build models at OpenAI.
+    source_ids: [wandb-about, wandb-repo]
+  - name: Ensuring quality in crowdsourced search relevance evaluation
+    artifact_slug: null
+    type: open-research
+    url: https://lukasbiewald.com/publications/
+    contribution: >-
+      Co-author, with John Le, Andy Edmonds and Vaughn Hester, of a 2010 SIGIR paper on how
+      the distribution of training questions affects crowdsourced relevance judgments.
+    source_ids: [biewald-pubs]
+links:
+  - label: Website
+    url: https://lukasbiewald.com
+  - label: GitHub
+    url: https://github.com/lukas
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Biewald's 2019 essay on starting a second machine learning tools company recounts working on
+          search before concluding, by 2007, that access to training data was the main obstacle for
+          machine learning teams. Biewald left that job to start CrowdFlower, later renamed Figure
+          Eight, which created labeled training data sets for companies.
+        source_ids: [biewald-wandb-post]
+      - text: >-
+          After stepping down as CEO of Figure Eight, Biewald spent time building deep learning
+          projects and teaching introductory deep learning classes to engineers. Biewald then started
+          Weights & Biases with longtime co-founder Chris Van Pelt and new co-founder Shawn Lewis;
+          the company's about page dates the founding to 2017 and notes that CoreWeave acquired it in
+          May 2025.
+        source_ids: [biewald-wandb-post, wandb-about]
+  - heading: Products and writing
+    paragraphs:
+      - text: >-
+          Weights & Biases began with an experiment tracking tool developed to help build models at
+          OpenAI, and Biewald's essay frames the product as basic software and best practices for
+          managing machine learning models, which cannot be read or diffed like ordinary code. The
+          company's Python SDK is published as open source under the MIT license.
+        source_ids: [wandb-about, biewald-wandb-post, wandb-repo]
+      - text: >-
+          Biewald's publications page lists research co-authored with Daphne Koller on word-sense
+          disambiguation for machine translation (EMNLP 2005) and papers on crowdsourcing quality,
+          alongside guest articles on hardware and machine learning projects, such as a guide to
+          building a deep learning machine.
+        source_ids: [biewald-pubs]
+timeline:
+  - date: "2005-10"
+    text: Co-authored an EMNLP paper on word-sense disambiguation for machine translation with Daphne Koller.
+    source_ids: [biewald-pubs]
+  - date: "2007"
+    text: Left a search job to found CrowdFlower, later Figure Eight, focused on training data.
+    source_ids: [biewald-wandb-post]
+  - date: "2010-07"
+    text: Co-authored a SIGIR paper on quality in crowdsourced search relevance evaluation.
+    source_ids: [biewald-pubs]
+  - date: "2017"
+    text: Co-founded Weights & Biases with Chris Van Pelt and Shawn Lewis.
+    source_ids: [wandb-about]
+  - date: "2019-06-24"
+    text: Published an essay on starting a second machine learning tools company.
+    source_ids: [biewald-wandb-post]
+  - date: "2025-05"
+    text: Weights & Biases was acquired by CoreWeave.
+    source_ids: [wandb-about]
+publication_status: published
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
+sources:
+  - id: wandb-about
+    title: About Us — Weights & Biases
+    url: https://wandb.ai/site/company/about-us/
+    publisher: Weights & Biases
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: biewald-site-about
+    title: About — Lukas Biewald
+    url: https://lukasbiewald.com/about/
+    publisher: Lukas Biewald
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: biewald-wandb-post
+    title: Starting a Second Machine Learning Tools Company, Ten Years Later
+    url: https://lukasbiewald.com/2019/06/24/starting-a-second-machine-learning-tools-company-ten-years-later/
+    publisher: Lukas Biewald
+    kind: official-page
+    published_at: 2019-06-24
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: biewald-pubs
+    title: Publications — Lukas Biewald
+    url: https://lukasbiewald.com/publications/
+    publisher: Lukas Biewald
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21
+  - id: wandb-repo
+    title: wandb/wandb repository (MIT license)
+    url: https://github.com/wandb/wandb
+    publisher: Weights & Biases (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
+    reviewed_at: 2026-10-21

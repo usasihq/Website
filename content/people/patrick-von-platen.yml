@@ -14,7 +14,7 @@ bio:
     technical report (2026). In vLLM's CODEOWNERS file, von Platen owns the Mistral-specific files,
     including the model code for Mistral, Mixtral, Pixtral, and Voxtral.
   source_ids: [diffusers-readme, diffusers-citation, transformers-paper, mistral-nemo-card, ministral3-paper, vllm-codeowners]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Mistral AI
     organization_slug: null
@@ -49,14 +49,67 @@ work:
       Mixtral, Voxtral, and Pixtral model files, the Mistral tokenizer, and the Mistral config. The
       repository is licensed under Apache 2.0.
     source_ids: [vllm-codeowners, vllm-license]
+  - name: Voxtral
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2507.13264
+    contribution: >-
+      Co-author of the 2025 Mistral AI paper describing the Voxtral speech-understanding models.
+    source_ids: [voxtral-paper]
 links:
   - label: GitHub
     url: https://github.com/patrickvonplaten
   - label: Hugging Face
     url: https://huggingface.co/patrickvonplaten
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Patrick von Platen is a co-author of the 2019 paper introducing Hugging Face's Transformers
+          library and the first listed author in the 2022 citation entry for Diffusers, Hugging Face's
+          library of pretrained diffusion models. In vLLM's CODEOWNERS file, von Platen is the owner of
+          the Mistral-specific files, including model code for Mistral, Mixtral, Pixtral and Voxtral.
+        source_ids: [transformers-paper, diffusers-readme, diffusers-citation, vllm-codeowners]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          On the Hugging Face blog, von Platen wrote a 2020 guide to decoding methods for text
+          generation with Transformers, including greedy search, beam search and sampling, and a 2021
+          tutorial on fine-tuning Wav2Vec2 for English speech recognition. In August 2022 von Platen
+          co-authored the blog post introducing Stable Diffusion in Diffusers.
+        source_ids: [hf-blog-generate, hf-blog-wav2vec2, hf-blog-stable-diffusion]
+  - heading: Research at Mistral AI
+    paragraphs:
+      - text: >-
+          Von Platen is listed in "The Mistral AI Team" on the Mistral NeMo model card and is an
+          author of Mistral AI's Voxtral speech-understanding paper (2025). Von Platen also appears
+          among the contributors to the Ministral 3 technical report (2026).
+        source_ids: [mistral-nemo-card, voxtral-paper, ministral3-paper]
+timeline:
+  - date: 2019-10
+    text: Co-authored the paper introducing Hugging Face's Transformers library.
+    source_ids: [transformers-paper]
+  - date: 2020-03-01
+    text: Published a Hugging Face blog guide to decoding methods for language generation.
+    source_ids: [hf-blog-generate]
+  - date: 2021-03-12
+    text: Published a Hugging Face tutorial on fine-tuning Wav2Vec2 for English speech recognition.
+    source_ids: [hf-blog-wav2vec2]
+  - date: "2022"
+    text: Listed as the first author in the 2022 citation entry of the Diffusers library.
+    source_ids: [diffusers-readme, diffusers-citation]
+  - date: 2022-08-22
+    text: Co-authored the Hugging Face blog post introducing Stable Diffusion with Diffusers.
+    source_ids: [hf-blog-stable-diffusion]
+  - date: 2025-07
+    text: Co-authored the Voxtral paper from Mistral AI.
+    source_ids: [voxtral-paper]
+  - date: 2026-01
+    text: Listed among the contributors to the Ministral 3 technical report.
+    source_ids: [ministral3-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: diffusers-readme
     title: huggingface/diffusers README (citation)
@@ -64,46 +117,74 @@ sources:
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: diffusers-citation
     title: huggingface/diffusers CITATION.cff (authors, license Apache-2.0)
     url: https://github.com/huggingface/diffusers/blob/main/CITATION.cff
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: transformers-paper
     title: "HuggingFace's Transformers: State-of-the-art Natural Language Processing (arXiv 1910.03771)"
     url: https://arxiv.org/abs/1910.03771
     publisher: arXiv
     kind: paper
     published_at: 2019-10-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mistral-nemo-card
     title: mistralai/Mistral-Nemo-Instruct-2407 model card (The Mistral AI Team)
     url: https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407
     publisher: Mistral AI (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ministral3-paper
     title: Ministral 3 (arXiv 2601.08584), contributor list
     url: https://arxiv.org/abs/2601.08584
     publisher: arXiv
     kind: paper
     published_at: 2026-01-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vllm-codeowners
     title: vllm-project/vllm CODEOWNERS (Mistral-specific files)
     url: https://github.com/vllm-project/vllm/blob/main/.github/CODEOWNERS
     publisher: vLLM project (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vllm-license
     title: vllm-project/vllm LICENSE (Apache-2.0)
     url: https://github.com/vllm-project/vllm/blob/main/LICENSE
     publisher: vLLM project (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: hf-blog-generate
+    title: "How to generate text: using different decoding methods for language generation with Transformers"
+    url: https://huggingface.co/blog/how-to-generate
+    publisher: Hugging Face blog
+    kind: documentation
+    published_at: 2020-03-01
+    accessed_at: 2026-10-21
+  - id: hf-blog-wav2vec2
+    title: Fine-Tune Wav2Vec2 for English ASR with Transformers
+    url: https://huggingface.co/blog/fine-tune-wav2vec2-english
+    publisher: Hugging Face blog
+    kind: documentation
+    published_at: 2021-03-12
+    accessed_at: 2026-10-21
+  - id: hf-blog-stable-diffusion
+    title: Stable Diffusion with Diffusers
+    url: https://huggingface.co/blog/stable_diffusion
+    publisher: Hugging Face blog
+    kind: documentation
+    published_at: 2022-08-22
+    accessed_at: 2026-10-21
+  - id: voxtral-paper
+    title: Voxtral (arXiv 2507.13264)
+    url: https://arxiv.org/abs/2507.13264
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-07-17
+    accessed_at: 2026-10-21

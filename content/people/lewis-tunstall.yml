@@ -16,7 +16,7 @@ bio:
     Hugging Face's Apache-2.0 post-training library, and co-wrote the O'Reilly book Natural
     Language Processing with Transformers.
   source_ids: [github-profile, hf-course, zephyr-paper, alignment-handbook, trl-citation]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Hugging Face
     organization_slug: hugging-face
@@ -63,9 +63,48 @@ links:
     url: https://github.com/lewtun
   - label: Hugging Face
     url: https://huggingface.co/lewtun
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Lewis Tunstall is a machine learning engineer at Hugging Face who works on post-training and
+          open-source tools for the wider community. Tunstall's GitHub profile highlights work on
+          TRL, Hugging Face's post-training library, the Alignment Handbook of training recipes, and
+          Open-R1.
+        source_ids: [hf-course, github-profile, trl-citation, alignment-handbook]
+      - text: >-
+          In January 2025 Tunstall co-authored the Hugging Face blog post launching Open-R1, a project
+          to build an open reproduction of the DeepSeek-R1 reasoning pipeline. Tunstall is listed first
+          in the Alignment Handbook's citation entry and among the authors of TRL.
+        source_ids: [open-r1-blog, alignment-handbook, trl-citation]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Tunstall is first author of "Efficient Few-Shot Learning Without Prompts" (2022), which
+          introduced SetFit, a method that fine-tunes Sentence Transformers contrastively on a small
+          number of labeled examples. Tunstall is also first author of the Zephyr paper (2023), which
+          aligned a 7B chat model with distilled direct preference optimization on AI-feedback data.
+        source_ids: [setfit-paper, zephyr-paper]
+  - heading: Teaching and writing
+    paragraphs:
+      - text: >-
+          Tunstall co-wrote the O'Reilly book Natural Language Processing with Transformers, whose
+          co-authors include Leandro von Werra. Tunstall is also one of the authors of Hugging Face's LLM
+          Course.
+        source_ids: [hf-course]
+timeline:
+  - date: 2022-09
+    text: Published "Efficient Few-Shot Learning Without Prompts", introducing SetFit, as first author.
+    source_ids: [setfit-paper]
+  - date: 2023-10
+    text: Published the Zephyr paper on direct distillation of language model alignment as first author.
+    source_ids: [zephyr-paper]
+  - date: 2025-01-28
+    text: Co-authored the Hugging Face blog post launching the Open-R1 project.
+    source_ids: [open-r1-blog]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: lewtun (Lewis Tunstall) on GitHub
@@ -73,32 +112,46 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-course
     title: Hugging Face LLM Course, Chapter 1 introduction (About the authors)
     url: https://huggingface.co/learn/llm-course/chapter1/1
     publisher: Hugging Face
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: zephyr-paper
     title: "Zephyr: Direct Distillation of LM Alignment (arXiv 2310.16944)"
     url: https://arxiv.org/abs/2310.16944
     publisher: arXiv
     kind: paper
     published_at: 2023-10-25
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: alignment-handbook
     title: huggingface/alignment-handbook README (citation) and LICENSE (Apache-2.0)
     url: https://github.com/huggingface/alignment-handbook
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: trl-citation
     title: huggingface/trl CITATION.cff (authors, license Apache-2.0)
     url: https://github.com/huggingface/trl/blob/main/CITATION.cff
     publisher: Hugging Face (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: setfit-paper
+    title: Efficient Few-Shot Learning Without Prompts (arXiv 2209.11055)
+    url: https://arxiv.org/abs/2209.11055
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-22
+    accessed_at: 2026-10-21
+  - id: open-r1-blog
+    title: "Open-R1: a fully open reproduction of DeepSeek-R1"
+    url: https://huggingface.co/blog/open-r1
+    publisher: Hugging Face blog
+    kind: announcement
+    published_at: 2025-01-28
+    accessed_at: 2026-10-21

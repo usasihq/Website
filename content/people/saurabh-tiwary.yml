@@ -49,9 +49,39 @@ work:
 links:
   - label: CapitalG profile
     url: https://www.capitalg.com/team/saurabh-tiwary/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          At Microsoft, Tiwary was a Corporate Vice President and Technical Fellow who led the Microsoft Turing
+          group, which handled large-scale model training and inference and brought models into products such
+          as Microsoft Copilot, Office 365, Windows, Edge, and Bing. Tiwary also advised the Microsoft Ventures
+          fund (M12) on AI and led Microsoft's technical partnership with OpenAI.
+        source_ids: [capitalg-team, iitk-profile]
+      - text: >-
+          At Google, Tiwary is Vice President and General Manager of Cloud AI, overseeing enterprise AI
+          platforms and products including the Gemini Enterprise Agent Platform, the Gemini Enterprise app,
+          AI search, and developer tools such as Apigee, AppSheet, Colab, and Document AI. Tiwary's team works
+          with Google DeepMind to improve Gemini and other models for external customers, and Tiwary is a
+          Senior Advisor to CapitalG, Alphabet's independent growth fund.
+        source_ids: [capitalg-team, iitk-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Tiwary is a co-author of the 2016 MS MARCO paper, which introduced a machine reading comprehension
+          dataset built from real Bing search questions, and of the 2022 joint Microsoft and NVIDIA paper on
+          training the Megatron-Turing NLG 530B language model with DeepSpeed and Megatron.
+        source_ids: [msmarco-paper, mtnlg-paper]
+timeline:
+  - date: "2016-11-28"
+    text: Co-authored the paper introducing the MS MARCO machine reading comprehension dataset.
+    source_ids: [msmarco-paper]
+  - date: "2022-01-28"
+    text: Co-authored the paper on training Megatron-Turing NLG 530B with DeepSpeed and Megatron.
+    source_ids: [mtnlg-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: capitalg-team
     title: Saurabh Tiwary — CapitalG team page
@@ -59,18 +89,25 @@ sources:
     publisher: CapitalG
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mtnlg-paper
     title: "Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model (arXiv 2201.11990)"
     url: https://arxiv.org/abs/2201.11990
     publisher: arXiv
     kind: paper
     published_at: 2022-01-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: msmarco-paper
     title: "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset (arXiv 1611.09268)"
     url: https://arxiv.org/abs/1611.09268
     publisher: arXiv
     kind: paper
     published_at: 2016-11-28
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: iitk-profile
+    title: Dr. Saurabh Kumar Tiwary — IIT Kanpur Dean of Resources and Alumni profile
+    url: https://iitk.ac.in/dora/profile/dr-saurabh-kumar-tiwary
+    publisher: IIT Kanpur
+    kind: official-page
+    published_at: 2025-08-22
+    accessed_at: 2026-10-21

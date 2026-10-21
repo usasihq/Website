@@ -15,7 +15,7 @@ bio:
     Real Images using Guided Diffusion Models", both presented by authors from Google Research and Tel
     Aviv University and released in the Apache-2.0-licensed google/prompt-to-prompt repository.
   source_ids: [hertz-site, p2p-paper, p2p-project, nti-paper, nti-project, p2p-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Google
     organization_slug: google
@@ -34,14 +34,91 @@ work:
       Prompt-to-Prompt on Latent Diffusion and Stable Diffusion and includes Null-text Inversion for
       editing real images with Stable Diffusion.
     source_ids: [p2p-paper, p2p-project, nti-paper, nti-project, p2p-repo]
+  - name: Style Aligned Image Generation via Shared Attention
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2312.02133
+    contribution: >-
+      First author, with Andrey Voynov, Shlomi Fruchter and Daniel Cohen-Or, of a method for
+      generating images that share a consistent style using shared attention, presented as an oral
+      paper at CVPR 2024.
+    source_ids: [style-aligned-paper, hertz-site]
+  - name: MeshCNN
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1809.05910
+    contribution: >-
+      Co-author, with first author Rana Hanocka, of MeshCNN, a convolutional neural network that
+      operates directly on the edges of triangle meshes, published in ACM Transactions on Graphics
+      (SIGGRAPH 2019).
+    source_ids: [meshcnn-paper, hertz-site]
 links:
   - label: Website
     url: https://amirhertz.github.io/
   - label: GitHub
     url: https://github.com/amirhertz
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Hertz completed a PhD in the Department of Computer Science at Tel Aviv University,
+          supervised by Daniel Cohen-Or and Raja Giryes. The doctoral work produced models and methods
+          for 3D shape generation, texture synthesis, 3D modeling and meshing.
+        source_ids: [hertz-site]
+      - text: >-
+          At Google, Hertz develops algorithms for intuitive image editing and creation and works on
+          improving the training and distillation of fundamental vision models. Hertz describes the
+          broader aim as adapting machine learning practice to computer graphics and vision so that
+          design tools become easier to use.
+        source_ids: [hertz-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hertz's early papers dealt with geometry: MeshCNN applied convolutions to the edges of
+          triangle meshes, Deep Geometric Texture Synthesis and PointGMM followed in 2020, and
+          SPAGHETTI (SIGGRAPH 2022) let people edit implicit 3D shapes part by part.
+        source_ids: [hertz-site, meshcnn-paper, spaghetti-paper]
+      - text: >-
+          From 2022 the work turned to text-to-image diffusion models. Prompt-to-Prompt showed that
+          images can be edited by changing only the text prompt while controlling cross-attention,
+          and Null-text Inversion extended such editing to real photographs. Later papers include
+          Delta Denoising Score (ICCV 2023), Style Aligned image generation (CVPR 2024) and The Chosen
+          One, on keeping a character consistent across generated images (SIGGRAPH 2024).
+        source_ids: [p2p-paper, nti-paper, dds-paper, style-aligned-paper, chosen-one-paper, hertz-site]
+timeline:
+  - date: 2018-09
+    text: Co-authored MeshCNN, a neural network that operates on the edges of triangle meshes.
+    source_ids: [meshcnn-paper]
+  - date: "2020"
+    text: Published Deep Geometric Texture Synthesis (SIGGRAPH) and PointGMM (CVPR) as first author.
+    source_ids: [hertz-site]
+  - date: 2022-01
+    text: Released SPAGHETTI, a method for editing implicit shapes through part-aware generation.
+    source_ids: [spaghetti-paper]
+  - date: 2022-08-02
+    text: Released Prompt-to-Prompt, on editing generated images through cross-attention control.
+    source_ids: [p2p-paper]
+  - date: 2022-11-17
+    text: Released Null-text Inversion, co-first-authored with Ron Mokady, for editing real images with diffusion models.
+    source_ids: [nti-paper, nti-project]
+  - date: 2023-04
+    text: Released Delta Denoising Score with Kfir Aberman and Daniel Cohen-Or.
+    source_ids: [dds-paper]
+  - date: 2023-12
+    text: Released Style Aligned Image Generation via Shared Attention, later an oral paper at CVPR 2024.
+    source_ids: [style-aligned-paper, hertz-site]
+honors:
+  - name: Honorable Mention Award, Eurographics 2024 (SENS)
+    year: 2024
+    awarded_by: Eurographics
+    source_ids: [hertz-site]
+  - name: SIGGRAPH Honorable Mention Award (Word-As-Image for Semantic Typography)
+    year: null
+    awarded_by: ACM SIGGRAPH
+    source_ids: [hertz-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: hertz-site
     title: Amir Hertz — homepage
@@ -49,39 +126,74 @@ sources:
     publisher: Amir Hertz
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: p2p-paper
     title: "Prompt-to-Prompt Image Editing with Cross Attention Control (arXiv 2208.01626)"
     url: https://arxiv.org/abs/2208.01626
     publisher: arXiv
     kind: paper
     published_at: 2022-08-02
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: p2p-project
     title: Prompt-to-Prompt — project page (Google Research, Tel Aviv University)
     url: https://prompt-to-prompt.github.io/
     publisher: Prompt-to-Prompt authors
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nti-paper
     title: "Null-text Inversion for Editing Real Images using Guided Diffusion Models (arXiv 2211.09794)"
     url: https://arxiv.org/abs/2211.09794
     publisher: arXiv
     kind: paper
     published_at: 2022-11-17
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nti-project
     title: Null-text Inversion — project page (Google Research, Tel Aviv University)
     url: https://null-text-inversion.github.io/
     publisher: Null-text Inversion authors
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: p2p-repo
     title: google/prompt-to-prompt README and LICENSE (Apache-2.0)
     url: https://github.com/google/prompt-to-prompt
     publisher: Google (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: meshcnn-paper
+    title: "MeshCNN: A Network with an Edge (arXiv 1809.05910)"
+    url: https://arxiv.org/abs/1809.05910
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-09-16
+    accessed_at: 2026-10-21
+  - id: spaghetti-paper
+    title: "SPAGHETTI: Editing Implicit Shapes Through Part Aware Generation (arXiv 2201.13168)"
+    url: https://arxiv.org/abs/2201.13168
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-01-31
+    accessed_at: 2026-10-21
+  - id: dds-paper
+    title: "Delta Denoising Score (arXiv 2304.07090)"
+    url: https://arxiv.org/abs/2304.07090
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-04-14
+    accessed_at: 2026-10-21
+  - id: style-aligned-paper
+    title: "Style Aligned Image Generation via Shared Attention (arXiv 2312.02133)"
+    url: https://arxiv.org/abs/2312.02133
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-04
+    accessed_at: 2026-10-21
+  - id: chosen-one-paper
+    title: "The Chosen One: Consistent Characters in Text-to-Image Diffusion Models (arXiv 2311.10093)"
+    url: https://arxiv.org/abs/2311.10093
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-16
+    accessed_at: 2026-10-21

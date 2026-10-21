@@ -16,7 +16,7 @@ bio:
     added a vice president of AI to Federighi's leadership team, covering Apple Foundation Models, ML
     research, and AI Safety and Evaluation.
   source_ids: [apple-leadership, apple-2025-release]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Apple
     organization_slug: apple
@@ -24,24 +24,24 @@ affiliations:
     current: true
     source_ids: [apple-leadership, apple-overview]
   - name: Ariba
-    organization_slug: null
+    organization_slug:
     role: Several roles, including chief technology officer
     current: false
     source_ids: [apple-leadership]
 work:
   - name: Apple Intelligence and Apple's foundation models
-    artifact_slug: null
+    artifact_slug:
     type: proprietary
-    url: null
+    url:
     contribution: >-
       Apple's leadership page says Federighi leads Apple's core AI efforts, including the development of
       foundation models, applied AI technologies, and the research behind Apple Intelligence and the
       development of Siri.
     source_ids: [apple-leadership, apple-2025-release]
   - name: Apple software platforms (iOS, iPadOS, macOS, watchOS, visionOS)
-    artifact_slug: null
+    artifact_slug:
     type: proprietary
-    url: null
+    url:
     contribution: >-
       Oversees development of Apple's software platforms; the teams are responsible for the user
       interface, applications, and frameworks.
@@ -49,28 +49,86 @@ work:
 links:
   - label: Apple leadership profile
     url: https://www.apple.com/leadership/craig-federighi/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Federighi worked at NeXT, then at Apple, and then spent a decade at Ariba, where roles included vice
+          president of Internet Services and chief technology officer. Federighi returned to Apple in 2009 to
+          lead Mac OS X engineering.
+        source_ids: [apple-2012-svp, apple-leadership]
+      - text: >-
+          In August 2012 Apple promoted Federighi from vice president to senior vice president of Mac Software
+          Engineering and named Federighi to the executive management team. Two months later Apple announced
+          that Federighi would lead both iOS and OS X, bringing the company's operating system teams together.
+        source_ids: [apple-2012-svp, apple-2012-ios]
+  - heading: Software and AI responsibilities
+    paragraphs:
+      - text: >-
+          As senior vice president of Software Engineering, Federighi oversees iOS, iPadOS, macOS, watchOS,
+          and visionOS, with teams responsible for the user interface, applications, and frameworks, as well
+          as privacy and security protections across Apple's platforms. Apple's leadership page lists
+          Federighi as reporting to CEO John Ternus.
+        source_ids: [apple-leadership]
+      - text: >-
+          Federighi also leads Apple's core AI efforts, covering foundation models, applied AI technologies,
+          and the research behind Apple Intelligence and Siri. In December 2025 Apple announced that Amar
+          Subramanya had joined as vice president of AI reporting to Federighi, leading Apple Foundation
+          Models, ML research, and AI Safety and Evaluation.
+        source_ids: [apple-leadership, apple-2025-release]
+timeline:
+  - date: "2009"
+    text: Returned to Apple to lead Mac OS X engineering.
+    source_ids: [apple-2012-svp, apple-leadership]
+  - date: "2012-08-27"
+    text: Promoted to senior vice president of Mac Software Engineering and joined Apple's executive 
+      management team.
+    source_ids: [apple-2012-svp]
+  - date: "2012-10-29"
+    text: Took on leadership of both iOS and OS X engineering.
+    source_ids: [apple-2012-ios]
+  - date: "2025-12-01"
+    text: Apple announced that a new vice president of AI would report to Federighi, covering foundation 
+      models, ML research, and AI safety.
+    source_ids: [apple-2025-release]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: apple-leadership
     title: Craig Federighi — Apple Leadership
     url: https://www.apple.com/leadership/craig-federighi/
     publisher: Apple
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: apple-overview
     title: Apple Leadership — Executive Profiles
     url: https://www.apple.com/leadership/
     publisher: Apple
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: apple-2025-release
     title: John Giannandrea to retire from Apple (Apple Newsroom press release)
     url: https://www.apple.com/newsroom/2025/12/john-giannandrea-to-retire-from-apple/
     publisher: Apple
     kind: announcement
     published_at: 2025-12-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: apple-2012-svp
+    title: Craig Federighi and Dan Riccio join Apple's executive team as senior vice presidents
+    url: 
+      https://www.apple.com/newsroom/2012/08/27Craig-Federighi-Apples-Vice-President-of-Mac-Software-Engineering-Dan-Riccio-Apples-Vice-President-of-Hardware-Engineering-Join-Apples-Executive-Team-as-Senior-Vice-Presidents/
+    publisher: Apple Newsroom
+    kind: announcement
+    published_at: 2012-08-27
+    accessed_at: 2026-10-21
+  - id: apple-2012-ios
+    title: Apple announces changes to increase collaboration across hardware, software and services
+    url: 
+      https://www.apple.com/newsroom/2012/10/29Apple-Announces-Changes-to-Increase-Collaboration-Across-Hardware-Software-Services/
+    publisher: Apple Newsroom
+    kind: announcement
+    published_at: 2012-10-29
+    accessed_at: 2026-10-21

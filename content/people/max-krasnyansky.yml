@@ -36,9 +36,59 @@ work:
 links:
   - label: GitHub
     url: https://github.com/max-krasnyansky
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Krasnyansky's pull request introducing ggml-hexagon, opened on 2025-10-13 and merged on 2025-10-22,
+          describes an experimental llama.cpp backend for the Hexagon NPU on Snapdragon-based Android devices.
+          It supported Hexagon versions v73 through v81, the Q4_0, Q8_0, MXFP4, and FP32 data types, and core
+          LLM operations such as matrix multiplication, RMS normalization, RoPE, and softmax, and was tested with
+          Llama 3, Qwen3, and gpt-oss models.
+        source_ids: [hexagon-pr]
+      - text: >-
+          Later commits by Krasnyansky add flash attention, ROPE_NEOX, and further operator support to the
+          Hexagon backend, along with reworked L2-cache handling, a buffer and DMA overhaul for 64-bit mappings,
+          and tensor repacking for tiled and flat weights. llama.cpp's CODEOWNERS file places Krasnyansky,
+          together with another maintainer, on the teams that own the Hexagon and OpenCL backends and the
+          Snapdragon documentation and scripts.
+        source_ids: [llama-cpp-commits, llama-cpp-codeowners, llama-cpp-license]
+  - heading: CPU and threading work
+    paragraphs:
+      - text: >-
+          Before the Hexagon backend, Krasnyansky's llama.cpp contributions began in May 2024 with support for
+          optimized Windows ARM64 builds using LLVM and MSVC. Commits from 2024 and 2025 improve the ggml
+          thread pool and barrier scaling, add low scheduling-priority support, introduce chunking for
+          flash attention and repacked matrix multiplications on the CPU, and fix thread-pool race conditions.
+        source_ids: [llama-cpp-commits]
+timeline:
+  - date: "2024-05-16"
+    text: Added support for optimized Windows ARM64 builds of llama.cpp with LLVM and MSVC.
+    source_ids: [llama-cpp-commits]
+  - date: "2024-09-23"
+    text: Improved ggml_barrier scaling for large thread counts in llama.cpp.
+    source_ids: [llama-cpp-commits]
+  - date: "2025-10-13"
+    text: Opened the pull request adding the experimental ggml-hexagon backend for the Hexagon NPU.
+    source_ids: [hexagon-pr]
+  - date: "2025-10-22"
+    text: The ggml-hexagon backend pull request was merged into llama.cpp.
+    source_ids: [hexagon-pr]
+  - date: "2025-10-30"
+    text: Introduced chunking for flash attention and repacked matrix multiplications in the CPU backend.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-01-07"
+    text: Added f16/f32 flash attention and other operator support to the Hexagon backend.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-09-21"
+    text: Overhauled Hexagon buffer and DMA handling to support 64-bit mappings.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-10-16"
+    text: Reworked Hexagon tensor repacking to support tiled and flat quantized and floating-point weights.
+    source_ids: [llama-cpp-commits]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: hexagon-pr
     title: "ggml-org/llama.cpp pull request #16547: Add experimental ggml-hexagon backend for the Hexagon NPU"
@@ -46,25 +96,25 @@ sources:
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: 2025-10-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by max-krasnyansky
     url: https://github.com/ggml-org/llama.cpp/commits?author=max-krasnyansky
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

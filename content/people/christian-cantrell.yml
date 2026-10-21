@@ -32,6 +32,11 @@ affiliations:
     role: Director, Experience Development, Adobe Design (head of Adobe Design Prototyping)
     current: false
     source_ids: [cantrell-site]
+  - name: Macromedia
+    organization_slug: null
+    role: Technical Product Manager (2002–2005)
+    current: false
+    source_ids: [cantrell-site]
 work:
   - name: stable-diffusion-api-server
     artifact_slug: null
@@ -56,9 +61,80 @@ links:
     url: https://christiancantrell.com
   - label: GitHub
     url: https://github.com/cantrell
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Cantrell's résumé begins at Amazing Media, where Cantrell rose from Java developer to senior
+          engineering manager of a digital advertising platform, followed by work as a technical product
+          manager at Macromedia from 2002 to 2005. At Adobe from 2005 to 2022, Cantrell was a product manager
+          for the Flash, desktop, and web platforms, then a senior engineering manager in the Web Platform
+          group working with browser makers on new web standards.
+        source_ids: [cantrell-site]
+      - text: >-
+          From 2015 to 2022 Cantrell was Director of Experience Development in Adobe Design and head of Adobe
+          Design Prototyping, leading a multidisciplinary team that prototyped interactions such as drawing
+          tools and object manipulation in AR and incubated new product ideas. Cantrell then spent October 2022
+          to March 2023 as VP of Product at Stability AI before founding Reve AI in March 2023, where Cantrell
+          manages product, design, and marketing and works with the research and data teams on model-product
+          alignment.
+        source_ids: [cantrell-site]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          At Stability AI, Cantrell helped launch the Stability Platform and its REST API, DreamStudio 1.0, and
+          integrations for Photoshop, Blender, and Google Workspace. Cantrell also published
+          stable-diffusion-api-server, a local REST server for Stable Diffusion written to back a Photoshop
+          plugin, which can load fine-tuned models in the diffusers format.
+        source_ids: [cantrell-site, sd-api-server]
+      - text: >-
+          Cantrell's site lists Cantrell as an inventor on twenty-two patents, ten of them on creativity and
+          generative AI, including natural-language control of content generation models and semantic layers in
+          graphic design documents.
+        source_ids: [cantrell-site]
+  - heading: Writing
+    paragraphs:
+      - text: >-
+          Cantrell also writes near-future thrillers and science fiction. The novel Scorpion, expanded from the
+          short story The Epoch Index, was published by Random House, and earlier novels include Containment,
+          Equinox, and Kingmaker.
+        source_ids: [cantrell-site]
+timeline:
+  - date: "1999-07"
+    text: Joined Amazing Media as a Java developer, later becoming senior engineering manager.
+    source_ids: [cantrell-site]
+  - date: "2002-12"
+    text: Joined Macromedia as a technical product manager for its Developer Resource Kit.
+    source_ids: [cantrell-site]
+  - date: "2005-04"
+    text: Joined Adobe, where Cantrell worked until August 2022.
+    source_ids: [cantrell-site]
+  - date: "2006-07"
+    text: Became technical product manager for Adobe's Flash, desktop, and web platforms.
+    source_ids: [cantrell-site]
+  - date: "2011-10"
+    text: Became senior engineering manager in Adobe's Web Platform group.
+    source_ids: [cantrell-site]
+  - date: "2015-03"
+    text: Became Director of Experience Development and head of Adobe Design Prototyping.
+    source_ids: [cantrell-site]
+  - date: "2022"
+    text: Named a Distinguished Inventor at Adobe.
+    source_ids: [cantrell-site]
+  - date: "2022-10"
+    text: Joined Stability AI as VP of Product.
+    source_ids: [cantrell-site]
+  - date: "2023-03"
+    text: Founded Reve AI, serving as Chief Product/Prompt Officer.
+    source_ids: [cantrell-site]
+honors:
+  - name: Distinguished Inventor
+    year: 2022
+    awarded_by: Adobe
+    source_ids: [cantrell-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: cantrell-site
     title: Christian Cantrell — homepage (employment history and AI/ML projects)
@@ -66,11 +142,11 @@ sources:
     publisher: Christian Cantrell
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: sd-api-server
     title: cantrell/stable-diffusion-api-server README (Apache-2.0)
     url: https://github.com/cantrell/stable-diffusion-api-server
     publisher: Christian Cantrell (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

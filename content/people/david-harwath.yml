@@ -16,7 +16,7 @@ bio:
     James Glass, Harwath wrote Learning Hierarchical Discrete Linguistic Units from Visually-Grounded
     Speech (ICLR 2020).
   source_ids: [harwath-site, utcs-profile, hierarchical-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: The University of Texas at Austin
     organization_slug: university-of-texas-at-austin
@@ -30,7 +30,7 @@ affiliations:
     source_ids: [harwath-site]
 work:
   - name: Learning Hierarchical Discrete Linguistic Units from Visually-Grounded Speech
-    artifact_slug: null
+    artifact_slug:
     type: open-research
     url: https://arxiv.org/abs/1911.09602
     contribution: >-
@@ -38,40 +38,139 @@ work:
       faculty page lists among Harwath's selected publications.
     source_ids: [hierarchical-paper, utcs-profile]
   - name: Spoken caption corpora
-    artifact_slug: null
+    artifact_slug:
     type: open-data
     url: https://www.cs.utexas.edu/~harwath/
     contribution: >-
       Harwath's homepage links to a site for downloading all of the spoken caption corpora Harwath
       collected, along with modeling code.
     source_ids: [harwath-site]
+  - name: "VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild"
+    artifact_slug:
+    type: open-research
+    url: https://arxiv.org/abs/2403.16973
+    contribution: >-
+      Senior author, with first author Puyuan Peng and colleagues, of this ACL 2024 paper introducing a
+      token-infilling neural codec language model; the authors released data, code and model weights.
+    source_ids: [voicecraft-paper]
 links:
   - label: Website
     url: https://www.cs.utexas.edu/~harwath/
   - label: UT Austin profile
     url: https://www.cs.utexas.edu/people/faculty-researchers/david-harwath
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Harwath spent nearly a decade at MIT's Computer Science and Artificial Intelligence Laboratory,
+          first as a graduate research assistant from 2011 and then as a research scientist from March 2018
+          to August 2020. Along the way, Harwath interned with the Human Language Technologies Group at MIT
+          Lincoln Laboratory and with the speech team at Google.
+        source_ids: [harwath-cv]
+      - text: >-
+          Harwath completed a PhD in computer science at MIT in 2018 in the Spoken Language Systems Group,
+          advised by James Glass. Harwath joined the computer science faculty at The University of Texas at
+          Austin as an assistant professor in August 2020 and leads the Speech, Audio, and Language
+          Technologies (SALT) Lab there.
+        source_ids: [harwath-site, harwath-cv]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Harwath's research centers on automatic speech recognition, spoken language understanding, and
+          multimodal machine learning across speech, environmental sound, and vision. The goal, as the UT
+          Austin faculty page puts it, is speech and language models that are robust, flexible, and able to
+          learn from several input modalities at once.
+        source_ids: [utcs-profile]
+      - text: >-
+          Much of Harwath's MIT work studied visually grounded speech, in which models learn words and
+          sub-word units by pairing spoken captions with images, as in papers at NeurIPS 2016, ACL 2017 and
+          ECCV 2018. At UT Austin, Harwath's group has extended this line toward speech language models,
+          including VoiceCraft, a neural codec language model for speech editing and zero-shot text-to-speech
+          presented at ACL 2024.
+        source_ids: [harwath-site, harwath-cv, voicecraft-paper]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          At UT Austin, Harwath has taught the graduate course Spoken Language Technologies (CS395T/EE381V)
+          and an undergraduate Introduction to Speech and Audio Processing. At MIT, Harwath was a teaching
+          assistant for courses on automatic speech recognition and introductory machine learning.
+        source_ids: [harwath-site, harwath-cv]
+timeline:
+  - date: "2011-08"
+    text: Began graduate research at MIT CSAIL in the Spoken Language Systems Group.
+    source_ids: [harwath-cv]
+  - date: "2016"
+    text: Presented Unsupervised Learning of Spoken Language with Visual Context at NeurIPS 2016, with Antonio
+      Torralba and James Glass.
+    source_ids: [harwath-site]
+  - date: "2018"
+    text: Completed a PhD in computer science at MIT, advised by James Glass.
+    source_ids: [harwath-cv]
+  - date: "2018-03"
+    text: Became a research scientist at MIT CSAIL.
+    source_ids: [harwath-cv]
+  - date: "2018"
+    text: Presented Jointly Discovering Visual Objects and Spoken Words from Raw Sensory Input at ECCV 2018.
+    source_ids: [harwath-cv]
+  - date: "2019-11-21"
+    text: Posted Learning Hierarchical Discrete Linguistic Units from Visually-Grounded Speech, later 
+      published at ICLR 2020.
+    source_ids: [hierarchical-paper]
+  - date: "2020-08"
+    text: Joined The University of Texas at Austin as an assistant professor of computer science.
+    source_ids: [harwath-cv]
+  - date: "2022-05"
+    text: Began a visiting faculty researcher appointment at Google.
+    source_ids: [harwath-cv]
+  - date: "2024-03-25"
+    text: Co-authored VoiceCraft, a neural codec language model for speech editing and text-to-speech, 
+      presented at ACL 2024.
+    source_ids: [voicecraft-paper]
+honors:
+  - name: NSF CAREER Award
+    year: 2023
+    awarded_by: National Science Foundation
+    source_ids: [harwath-cv]
+  - name: George M. Sprowls Award for doctoral thesis in computer science
+    year: 2018
+    awarded_by: Massachusetts Institute of Technology
+    source_ids: [utcs-profile, harwath-cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: harwath-site
     title: David Harwath — homepage
     url: https://www.cs.utexas.edu/~harwath/
     publisher: David Harwath (The University of Texas at Austin)
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: utcs-profile
     title: David Harwath — UT Austin Computer Science faculty profile
     url: https://www.cs.utexas.edu/people/faculty-researchers/david-harwath
     publisher: The University of Texas at Austin, Department of Computer Science
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: hierarchical-paper
     title: "Learning Hierarchical Discrete Linguistic Units from Visually-Grounded Speech (arXiv 1911.09602)"
     url: https://arxiv.org/abs/1911.09602
     publisher: arXiv
     kind: paper
     published_at: 2019-11-21
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: harwath-cv
+    title: David Harwath — curriculum vitae
+    url: https://www.cs.utexas.edu/~harwath/harwath-cv.pdf
+    publisher: David Harwath (The University of Texas at Austin)
+    kind: official-page
+    published_at:
+    accessed_at: 2026-10-21
+  - id: voicecraft-paper
+    title: "VoiceCraft: Zero-Shot Speech Editing and Text-to-Speech in the Wild (arXiv 2403.16973)"
+    url: https://arxiv.org/abs/2403.16973
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-03-25
+    accessed_at: 2026-10-21

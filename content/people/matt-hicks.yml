@@ -15,7 +15,7 @@ bio:
     deploying models, and acquired Neural Magic, strengthening Red Hat's role in the open-source vLLM
     inference project. Hicks began in engineering roles at IBM and at startups.
   source_ids: [redhat-bio, ibm-senior-leadership, redhat-leadership]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Red Hat
     organization_slug: red-hat
@@ -53,9 +53,45 @@ work:
 links:
   - label: Red Hat biography
     url: https://www.redhat.com/en/about/company/leadership/matt-hicks
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Matt Hicks began in engineering roles at IBM and at startups before joining Red Hat in 2006 as a
+          developer on the IT team. Hicks was a founding member of the engineering team that built Red Hat
+          OpenShift, which Red Hat describes as becoming a Kubernetes platform for hybrid cloud.
+        source_ids: [redhat-bio, ceo-announcement]
+      - text: >-
+          As Executive Vice President of Products and Technologies, Hicks was responsible for Red Hat's
+          product strategy, engineering and support. Red Hat named Hicks President and Chief Executive
+          Officer in July 2022, succeeding Paul Cormier, who became chairman; IBM lists Hicks as a Senior
+          Vice President and CEO of Red Hat.
+        source_ids: [ceo-announcement, redhat-bio, ibm-senior-leadership]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Under Hicks, Red Hat launched OpenShift AI and, in May 2025 at Red Hat Summit, Red Hat AI
+          Inference Server, an enterprise inference server built from the open-source vLLM project and
+          Neural Magic technologies. Red Hat completed its acquisition of Neural Magic in January 2025,
+          and its announcement quotes Hicks on adding inference performance engineering and model
+          optimization expertise to Red Hat AI.
+        source_ids: [redhat-bio, inference-server-launch, neural-magic-completion]
+timeline:
+  - date: "2006"
+    text: Joined Red Hat as a developer on the IT team.
+    source_ids: [ceo-announcement]
+  - date: 2022-07-12
+    text: Named President and Chief Executive Officer of Red Hat, succeeding Paul Cormier.
+    source_ids: [ceo-announcement]
+  - date: 2025-01-13
+    text: Red Hat completed its acquisition of Neural Magic, an inference optimization company, under Hicks.
+    source_ids: [neural-magic-completion]
+  - date: 2025-05-20
+    text: Red Hat announced Red Hat AI Inference Server, built on the vLLM project, at Red Hat Summit.
+    source_ids: [inference-server-launch]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: redhat-bio
     title: Matt Hicks — President and Chief Executive Officer (Red Hat executive leadership team)
@@ -63,18 +99,39 @@ sources:
     publisher: Red Hat
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: redhat-leadership
     title: Red Hat executive leadership team
     url: https://www.redhat.com/en/about/company/leadership
     publisher: Red Hat
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ibm-senior-leadership
     title: Senior leadership — IBM Investor Relations
     url: https://www.ibm.com/investor/governance/senior-leadership
     publisher: IBM
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: ceo-announcement
+    title: Red Hat Names Matt Hicks President and Chief Executive Officer
+    url: https://www.redhat.com/en/about/press-releases/red-hat-names-matt-hicks-president-and-chief-executive-officer
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2022-07-12
+    accessed_at: 2026-10-21
+  - id: neural-magic-completion
+    title: Red Hat Completes Acquisition of Neural Magic to Fuel Optimized Generative AI Innovation Across the Hybrid Cloud
+    url: https://www.redhat.com/en/about/press-releases/red-hat-completes-acquisition-neural-magic-fuel-optimized-generative-ai-innovation-across-hybrid-cloud
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2025-01-13
+    accessed_at: 2026-10-21
+  - id: inference-server-launch
+    title: Red Hat Unlocks Generative AI for Any Model and Any Accelerator Across the Hybrid Cloud with Red Hat AI Inference Server
+    url: https://www.redhat.com/en/about/press-releases/red-hat-unlocks-generative-ai-any-model-and-any-accelerator-across-hybrid-cloud-red-hat-ai-inference-server
+    publisher: Red Hat
+    kind: announcement
+    published_at: 2025-05-20
+    accessed_at: 2026-10-21

@@ -16,13 +16,13 @@ bio:
     the NVIDIA HPC SDK, HPC compilers and math libraries. Before NVIDIA, Costa worked at Intel as a
     performance library architect and HPC application engineer.
   source_ids: [cudaq-release, nvidia-blog-author, nvidia-dev-author]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: NVIDIA
     organization_slug: nvidia
-    role: Vice president and general manager of quantum
+    role: Vice president and general manager of quantum; leads the industrial engineering and quantum verticals and the CUDA-X product line
     current: true
-    source_ids: [cudaq-release]
+    source_ids: [cudaq-release, nvidia-blog-author]
   - name: Intel
     organization_slug: intel
     role: Performance library architect and HPC application engineer
@@ -51,9 +51,56 @@ links:
     url: https://blogs.nvidia.com/blog/author/timothycosta/
   - label: NVIDIA Technical Blog author page
     url: https://developer.nvidia.com/blog/author/tcosta/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Tim Costa holds a PhD in mathematics from Oregon State University, with research on
+          numerical methods for fluid flow in stochastic or evolving porous media. At Intel, Costa
+          worked as a performance library architect and HPC application engineer and led enabling
+          efforts for computational fluid dynamics applications.
+        source_ids: [nvidia-dev-author]
+      - text: >-
+          At NVIDIA, Costa first led product management for HPC software, covering the NVIDIA HPC
+          SDK, HPC compilers and math libraries along with programming-model strategy and standards
+          work. NVIDIA's blog now describes Costa as heading the industrial engineering and quantum
+          verticals and the CUDA-X product line, and its author page gives the title vice president
+          and general manager for industrial and computational engineering.
+        source_ids: [nvidia-dev-author, nvidia-blog-author]
+  - heading: Quantum computing
+    paragraphs:
+      - text: >-
+          In NVIDIA's September 2026 announcement of CUDA-Q Logical, Costa is quoted as vice president
+          and general manager of quantum, describing the addition as an open platform for designing
+          fault-tolerant quantum systems built on logical qubits. CUDA-Q Logical extends the
+          open-source CUDA-Q platform so researchers can co-design algorithms, error-correction codes
+          and hardware architectures.
+        source_ids: [cudaq-release]
+  - heading: Engineering simulation and writing
+    paragraphs:
+      - text: >-
+          Costa writes on the NVIDIA Blog about accelerated engineering and scientific computing. Posts
+          by Costa introduced NVIDIA Apollo, a family of open models for industrial and computational
+          engineering, at the SC25 conference in November 2025, and announced the general
+          availability of the NVIDIA cuDSS CUDA-X library for engineering and scientific simulation
+          in October 2026.
+        source_ids: [nvidia-blog-author, apollo-post, cudss-post]
+timeline:
+  - date: 2025-05-18
+    text: Wrote NVIDIA Blog posts on quantum computing and semiconductor manufacturing with CUDA-X.
+    source_ids: [nvidia-blog-author]
+  - date: 2025-11-17
+    text: Introduced the NVIDIA Apollo open model family for scientific simulation at SC25.
+    source_ids: [apollo-post]
+  - date: 2026-09-14
+    text: Quoted as vice president and general manager of quantum in NVIDIA's announcement of CUDA-Q Logical.
+    source_ids: [cudaq-release]
+  - date: 2026-10-21
+    text: Announced the general availability of the NVIDIA cuDSS library on the NVIDIA Blog.
+    source_ids: [cudss-post]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: cudaq-release
     title: NVIDIA Expands Open Source CUDA-Q Platform for Fault-Tolerant Quantum Computing
@@ -61,18 +108,32 @@ sources:
     publisher: NVIDIA Newsroom
     kind: announcement
     published_at: 2026-09-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvidia-blog-author
     title: Timothy Costa — NVIDIA Blog author page
     url: https://blogs.nvidia.com/blog/author/timothycosta/
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: nvidia-dev-author
     title: Tim Costa — NVIDIA Technical Blog author page
     url: https://developer.nvidia.com/blog/author/tcosta/
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: apollo-post
+    title: "One Giant Leap for AI Physics: NVIDIA Apollo Unveiled as Open Model Family for Scientific Simulation"
+    url: https://blogs.nvidia.com/blog/apollo-open-models/
+    publisher: NVIDIA Blog
+    kind: announcement
+    published_at: 2025-11-17
+    accessed_at: 2026-10-21
+  - id: cudss-post
+    title: NVIDIA cuDSS Now Generally Available to Accelerate Engineering and Scientific Simulations
+    url: https://blogs.nvidia.com/blog/cudss-generally-available-engineering-scientific-simulation/
+    publisher: NVIDIA Blog
+    kind: announcement
+    published_at: 2026-10-21
+    accessed_at: 2026-10-21

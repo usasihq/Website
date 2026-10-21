@@ -17,7 +17,7 @@ bio:
     co-author, listed with an OpenAI affiliation, of the 2025 paper "Early science acceleration
     experiments with GPT-5."
   source_ids: [tinystories-paper, hf-tinystories-dataset, hf-profile, phi1-paper, phi15-paper, phi3-paper, phi4-paper, phi2-blog, harry-potter-paper, gpt5-science-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: OpenAI
     organization_slug: openai
@@ -29,6 +29,11 @@ affiliations:
     role: Listed with a Microsoft Research affiliation on the 2023 TinyStories and "Who's Harry Potter?" papers
     current: false
     source_ids: [tinystories-paper, harry-potter-paper]
+  - name: Weizmann Institute of Science
+    organization_slug: null
+    role: Faculty member in the Faculty of Mathematics and Computer Science; promoted to Associate Professor with tenure in 2021
+    current: false
+    source_ids: [eldan-bp, wis-math-honors]
 work:
   - name: Phi small language models
     artifact_slug: phi
@@ -61,9 +66,83 @@ work:
 links:
   - label: Hugging Face
     url: https://huggingface.co/roneneldan
+sections:
+  - heading: Mathematics research
+    paragraphs:
+      - text: >-
+          Ronen Eldan's work also spans pure mathematics, and the mathematics department of the
+          Weizmann Institute of Science lists Eldan's prizes among its faculty honors. The
+          Breakthrough Prize Foundation credits Eldan with creating the stochastic localization method,
+          which led to progress on open problems in high-dimensional geometry and probability, including
+          Bourgain's slicing problem and the KLS conjecture.
+        source_ids: [wis-math-honors, eldan-bp]
+  - heading: Small language models
+    paragraphs:
+      - text: >-
+          With Yuanzhi Li, Eldan wrote TinyStories, submitted in May 2023, which asks how small a
+          language model can be while still producing coherent English. The paper's synthetic dataset of
+          short stories and its family of small models are published on Eldan's Hugging Face account.
+        source_ids: [tinystories-paper, hf-tinystories-dataset, hf-tinystories-33m, hf-profile]
+      - text: >-
+          Eldan co-authored Microsoft's phi-1 report in June 2023 and the phi-1.5 report in September
+          2023, and is listed among the contributors in Microsoft Research's December 2023 post on Phi-2.
+          Eldan's name also appears on the Phi-3 report from April 2024 and the Phi-4 report from
+          December 2024.
+        source_ids: [phi1-paper, phi15-paper, phi15-card, phi2-blog, phi3-paper, phi4-paper]
+      - text: >-
+          In October 2023, Eldan and Mark Russinovich posted "Who's Harry Potter?", which describes a
+          way to make a language model forget a subset of its training data without retraining it from
+          scratch.
+        source_ids: [harry-potter-paper]
+  - heading: AI for science
+    paragraphs:
+      - text: >-
+          Eldan is one of the authors of "Early science acceleration experiments with GPT-5," submitted
+          in November 2025. The paper collects short case studies in mathematics, physics, astronomy,
+          computer science, biology, and materials science in which the authors used GPT-5 in their
+          ongoing research.
+        source_ids: [gpt5-science-paper]
+timeline:
+  - date: "2023-05-12"
+    text: Submitted the TinyStories paper with Yuanzhi Li.
+    source_ids: [tinystories-paper]
+  - date: "2023-06-20"
+    text: Co-authored the phi-1 report, Textbooks Are All You Need.
+    source_ids: [phi1-paper]
+  - date: "2023-09-11"
+    text: Co-authored the phi-1.5 technical report.
+    source_ids: [phi15-paper]
+  - date: "2023-10-03"
+    text: Submitted "Who's Harry Potter?" on approximate unlearning in language models, with Mark Russinovich.
+    source_ids: [harry-potter-paper]
+  - date: "2023-12-12"
+    text: Listed as a contributor in Microsoft Research's announcement of Phi-2.
+    source_ids: [phi2-blog]
+  - date: "2024-04-22"
+    text: Co-authored the Phi-3 technical report.
+    source_ids: [phi3-paper]
+  - date: "2024-12-12"
+    text: Co-authored the Phi-4 technical report.
+    source_ids: [phi4-paper]
+  - date: "2025-11-20"
+    text: Co-authored "Early science acceleration experiments with GPT-5."
+    source_ids: [gpt5-science-paper]
+honors:
+  - name: Erdős Prize in Mathematics
+    year: 2018
+    awarded_by: Israel Mathematical Union
+    source_ids: [wis-math-honors]
+  - name: Blavatnik Award in Physical Sciences and Engineering
+    year: 2022
+    awarded_by: Blavatnik Family Foundation
+    source_ids: [wis-math-honors]
+  - name: New Horizons in Mathematics Prize
+    year: 2023
+    awarded_by: Breakthrough Prize Foundation
+    source_ids: [eldan-bp]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: tinystories-paper
     title: "TinyStories: How Small Can Language Models Be and Still Speak Coherent English? (arXiv 2305.07759)"
@@ -71,81 +150,95 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2023-05-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-tinystories-dataset
     title: roneneldan/TinyStories dataset card (license cdla-sharing-1.0)
     url: https://huggingface.co/datasets/roneneldan/TinyStories
     publisher: Ronen Eldan (Hugging Face)
     kind: dataset-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-tinystories-33m
     title: roneneldan/TinyStories-33M model card (license MIT)
     url: https://huggingface.co/roneneldan/TinyStories-33M
     publisher: Ronen Eldan (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hf-profile
     title: roneneldan (Ronen Eldan) on Hugging Face
     url: https://huggingface.co/roneneldan
     publisher: Hugging Face
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi1-paper
     title: "Textbooks Are All You Need (arXiv 2306.11644)"
     url: https://arxiv.org/abs/2306.11644
     publisher: arXiv
     kind: paper
     published_at: 2023-06-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi15-paper
     title: "Textbooks Are All You Need II: phi-1.5 technical report (arXiv 2309.05463)"
     url: https://arxiv.org/abs/2309.05463
     publisher: arXiv
     kind: paper
     published_at: 2023-09-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi3-paper
     title: "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone (arXiv 2404.14219)"
     url: https://arxiv.org/abs/2404.14219
     publisher: arXiv
     kind: paper
     published_at: 2024-04-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi4-paper
     title: "Phi-4 Technical Report (arXiv 2412.08905)"
     url: https://arxiv.org/abs/2412.08905
     publisher: arXiv
     kind: paper
     published_at: 2024-12-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi2-blog
     title: "Phi-2: The surprising power of small language models"
     url: https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/
     publisher: Microsoft Research
     kind: announcement
     published_at: 2023-12-12
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: phi15-card
     title: microsoft/phi-1_5 model card (license MIT)
     url: https://huggingface.co/microsoft/phi-1_5
     publisher: Microsoft (Hugging Face)
     kind: model-card
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt5-science-paper
     title: "Early science acceleration experiments with GPT-5 (arXiv 2511.16072)"
     url: https://arxiv.org/abs/2511.16072
     publisher: arXiv
     kind: paper
     published_at: 2025-11-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: harry-potter-paper
     title: "Who's Harry Potter? Approximate Unlearning in LLMs (arXiv 2310.02238)"
     url: https://arxiv.org/abs/2310.02238
     publisher: arXiv
     kind: paper
     published_at: 2023-10-03
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: eldan-bp
+    title: Ronen Eldan – 2023 New Horizons in Mathematics Prize
+    url: https://breakthroughprize.org/Laureates/3/L3931
+    publisher: Breakthrough Prize
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: wis-math-honors
+    title: Honors and Prizes — Faculty of Mathematics and Computer Science
+    url: https://www.weizmann.ac.il/math/about/honors-and-prizes
+    publisher: Weizmann Institute of Science
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

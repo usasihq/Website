@@ -12,14 +12,19 @@ bio:
     Google DeepMind: The Podcast, which explores how AI is changing the world through conversations with
     researchers on topics such as Gemini, AlphaFold, robotics, AI in health, and cybersecurity. Hannah's
     recent book is No One Knows What They're Doing, about uncertainty and decision-making.
-  source_ids: [site, podcast, book]
-  reviewed_at: 2026-10-17
+  source_ids: [site, podcast, book, cam-leelavati]
+  reviewed_at: 2026-10-21
 affiliations:
   - name: University of Cambridge
     organization_slug: null
-    role: Professor of the Public Understanding of Mathematics
+    role: Professor of the Public Understanding of Mathematics (DAMTP, since January 2025)
     current: true
-    source_ids: [site]
+    source_ids: [site, cam-leelavati]
+  - name: University College London
+    organization_slug: null
+    role: Professor of the Mathematics of Cities (as of November 2024)
+    current: false
+    source_ids: [cam-appointment]
   - name: "Google DeepMind: The Podcast"
     organization_slug: null
     role: Host
@@ -48,9 +53,74 @@ links:
     url: https://www.youtube.com/@fryrsquared
   - label: Podcast
     url: https://deepmind.google/discover/the-podcast/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          When Cambridge announced the appointment, Hannah Fry was Professor of the Mathematics of Cities at UCL, working with
+          physicists, computer scientists, architects and geographers on patterns in human behaviour,
+          particularly in urban settings. The University of Cambridge announced in November 2024 that Fry
+          would become its first Professor of the Public Understanding of Mathematics, a post in the
+          Department of Applied Mathematics and Theoretical Physics.
+        source_ids: [cam-appointment]
+      - text: >-
+          Fry joined Cambridge in January 2025. The university's announcement also notes that Fry was then
+          President of the Institute of Mathematics and its Applications, and the Faculty of Mathematics
+          records that Fry has given the annual Rouse Ball lecture and run mathematics communication
+          workshops for undergraduates.
+        source_ids: [cam-leelavati, cam-appointment]
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Fry presents Google DeepMind: The Podcast, whose credits list Fry as presenter for its 2019,
+          2023, 2024 and 2025 series. Episodes feature conversations with Google DeepMind researchers and
+          leaders on subjects including Gemini, Project Astra, robotics, AI in healthcare, the Genie 3
+          world model and cybersecurity.
+        source_ids: [podcast]
+      - text: >-
+          Cambridge's Faculty of Mathematics lists further broadcasting work: the 2019 Royal Institution
+          Christmas Lectures, the television series The Future with Hannah Fry, and the podcast The Rest
+          is Science, co-presented with Michael Stevens.
+        source_ids: [cam-leelavati]
+timeline:
+  - date: "2019"
+    text: Presented the 2019 series of the DeepMind podcast and the Royal Institution Christmas Lectures.
+    source_ids: [podcast, cam-leelavati]
+  - date: "2023"
+    text: "Presented a new series of Google DeepMind: The Podcast."
+    source_ids: [podcast]
+  - date: 2024-11-22
+    text: Announced an appointment as Cambridge's first Professor of the Public Understanding of Mathematics.
+    source_ids: [cam-appointment]
+  - date: 2025-01
+    text: Joined the University of Cambridge's Department of Applied Mathematics and Theoretical Physics.
+    source_ids: [cam-leelavati]
+  - date: "2025"
+    text: "Presented the 2025 series of Google DeepMind: The Podcast, including episodes on Genie 3 and cybersecurity."
+    source_ids: [podcast]
+  - date: "2026"
+    text: Received the Leelavati Prize at the International Congress of Mathematicians.
+    source_ids: [cam-leelavati]
+honors:
+  - name: Christopher Zeeman Medal
+    year: 2018
+    awarded_by: Institute of Mathematics and its Applications and London Mathematical Society
+    source_ids: [cam-appointment, cam-leelavati]
+  - name: David Attenborough Award
+    year: 2024
+    awarded_by: The Royal Society
+    source_ids: [cam-appointment, cam-leelavati]
+  - name: Webby Award (for the podcast The Rest is Science)
+    year: 2026
+    awarded_by: The Webby Awards
+    source_ids: [cam-leelavati]
+  - name: Leelavati Prize
+    year: 2026
+    awarded_by: International Mathematical Union
+    source_ids: [cam-leelavati]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: site
     title: Home - Hannah Fry
@@ -65,7 +135,7 @@ sources:
     publisher: Google DeepMind
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: book
     title: No One Knows What They're Doing - Hannah Fry
     url: https://hannahfry.co.uk/book/no-one-knows-what-theyre-doing/
@@ -73,3 +143,17 @@ sources:
     kind: official-page
     published_at: null
     accessed_at: 2026-10-17
+  - id: cam-appointment
+    title: Award-winning broadcaster Hannah Fry joins Cambridge as Professor of the Public Understanding of Mathematics
+    url: https://www.cam.ac.uk/research/news/hannah-fry-joins-cambridge-as-professor-of-the-public-understanding-of-mathematics
+    publisher: University of Cambridge
+    kind: announcement
+    published_at: 2024-11-22
+    accessed_at: 2026-10-21
+  - id: cam-leelavati
+    title: Professor Hannah Fry wins Leelavati Prize — Faculty of Mathematics features
+    url: https://www.maths.cam.ac.uk/features/professor-hannah-fry-wins-leelavati-prize
+    publisher: University of Cambridge Faculty of Mathematics
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

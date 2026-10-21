@@ -14,7 +14,7 @@ bio:
     credited on the section about alignment implications. Leahy is also listed among the authors in
     the citation entry for the GPT-NeoX training library.
   source_ids: [conjecture-about, pile-paper, neox20b-pdf, neox-readme]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: EleutherAI
     organization_slug: eleutherai
@@ -44,12 +44,73 @@ work:
       with work on the alignment-implications section, and listed among the authors in the GPT-NeoX
       repository's citation entry for the Apache-2.0 training library.
     source_ids: [neox20b-pdf, neox-readme]
+  - name: GPT-Neo
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/EleutherAI/gpt-neo
+    contribution: >-
+      Listed among the five authors in the software citation for GPT-Neo (March 2021), EleutherAI's
+      implementation of model-parallel GPT-2 and GPT-3-style models using the mesh-tensorflow library.
+    source_ids: [gpt-neo-readme]
 links:
   - label: GitHub
     url: https://github.com/ConnorJL
+sections:
+  - heading: EleutherAI
+    paragraphs:
+      - text: >-
+          Leahy co-founded EleutherAI with Sid Black in 2020, according to Conjecture's company history,
+          which describes EleutherAI as an open-source language-model community that developed GPT-J
+          and GPT-NeoX. Leahy is one of the authors of The Pile, a paper posted on 2020-12-31 that
+          describes an English text corpus constructed from 22 subsets for training language
+          models.
+        source_ids: [conjecture-about, pile-paper]
+      - text: >-
+          Leahy is listed with Sid Black, Leo Gao, Phil Wang and Stella Biderman in the citation entry
+          for GPT-Neo, a March 2021 software release for training GPT-style models on TPUs with
+          mesh-tensorflow; the repository has since been archived in favour of GPT-NeoX. Leahy is also
+          a co-author of the GPT-NeoX-20B paper (April 2022), whose individual-contributions appendix
+          lists Leahy among the contributors to its "Alignment Implications" section.
+        source_ids: [gpt-neo-readme, neox20b-pdf, neox-readme]
+  - heading: Conjecture
+    paragraphs:
+      - text: >-
+          In March 2022 Leahy, Sid Black and Gabriel Alfour founded Conjecture, which the company says
+          grew out of EleutherAI and was set up to work on the control problem of advanced AI. The
+          company's announcement post of 2022-04-08 introduced it as an alignment research startup
+          founded by the three.
+        source_ids: [conjecture-about, conjecture-launch]
+      - text: >-
+          Conjecture describes its current work as building language models and an approach it calls
+          Cognitive Emulation, aimed at AI systems that are scalable, auditable and controllable. On
+          2024-12-02 Leahy and Gabe Alfour published "Conjecture: A Roadmap for Cognitive Software and A
+          Humanist Future of AI", setting out the company's plans for 2025 and beyond.
+        source_ids: [conjecture-about, conjecture-roadmap]
+timeline:
+  - date: "2020"
+    text: Co-founded EleutherAI with Sid Black.
+    source_ids: [conjecture-about]
+  - date: 2020-12-31
+    text: Co-authored "The Pile", EleutherAI's paper on a text corpus for training language models.
+    source_ids: [pile-paper]
+  - date: 2021-03
+    text: Listed as a co-author of the GPT-Neo software release for training GPT-style models with mesh-tensorflow.
+    source_ids: [gpt-neo-readme]
+  - date: 2022-03
+    text: Co-founded Conjecture with Sid Black and Gabriel Alfour.
+    source_ids: [conjecture-about]
+  - date: 2022-04-08
+    text: Conjecture published its launch post introducing the company as an alignment research startup.
+    source_ids: [conjecture-launch]
+  - date: 2022-04-14
+    text: Co-authored "GPT-NeoX-20B", contributing to the paper's section on alignment implications.
+    source_ids: [neox20b-pdf]
+  - date: 2024-12-02
+    text: Co-authored Conjecture's roadmap for cognitive software with Gabe Alfour.
+    source_ids: [conjecture-roadmap]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: conjecture-about
     title: About Us — Conjecture (company history)
@@ -57,25 +118,46 @@ sources:
     publisher: Conjecture
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pile-paper
     title: "The Pile: An 800GB Dataset of Diverse Text for Language Modeling (arXiv 2101.00027)"
     url: https://arxiv.org/abs/2101.00027
     publisher: arXiv
     kind: paper
     published_at: 2020-12-31
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: neox20b-pdf
     title: "GPT-NeoX-20B: An Open-Source Autoregressive Language Model (arXiv 2204.06745, full text with Appendix A, Individual Contributions)"
     url: https://arxiv.org/pdf/2204.06745
     publisher: arXiv
     kind: paper
     published_at: 2022-04-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: neox-readme
     title: EleutherAI/gpt-neox README (citation entries and Apache-2.0 license)
     url: https://github.com/EleutherAI/gpt-neox
     publisher: EleutherAI
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: gpt-neo-readme
+    title: EleutherAI/gpt-neo README (archived repository; software citation entry)
+    url: https://github.com/EleutherAI/gpt-neo
+    publisher: EleutherAI
+    kind: repository
+    published_at: 2021-03
+    accessed_at: 2026-10-21
+  - id: conjecture-launch
+    title: We Are Conjecture, A New Alignment Research Startup
+    url: https://www.conjecture.dev/research/we-are-conjecture-a-new-alignment-research-startup
+    publisher: Conjecture
+    kind: announcement
+    published_at: 2022-04-08
+    accessed_at: 2026-10-21
+  - id: conjecture-roadmap
+    title: "Conjecture: A Roadmap for Cognitive Software and A Humanist Future of AI"
+    url: https://www.conjecture.dev/research/conjecture-a-roadmap-for-cognitive-software-and-a-humanist-future-of-ai
+    publisher: Conjecture
+    kind: official-page
+    published_at: 2024-12-02
+    accessed_at: 2026-10-21

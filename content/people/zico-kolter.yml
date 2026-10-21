@@ -15,7 +15,7 @@ bio:
     "Universal and Transferable Adversarial Attacks on Aligned Language Models," which generates
     adversarial prompt suffixes automatically and releases its code.
   source_ids: [kolter-bio, kolter-home, gcg-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Carnegie Mellon University
     organization_slug: carnegie-mellon-university
@@ -33,13 +33,18 @@ affiliations:
     current: true
     source_ids: [kolter-bio]
   - name: Gray Swan AI
-    organization_slug: null
+    organization_slug:
     role: Co-founder and Chief Scientist
     current: true
     source_ids: [kolter-bio]
+  - name: Bosch
+    organization_slug:
+    role: Chief scientist of AI research (while on the CMU faculty)
+    current: false
+    source_ids: [cmu-mld-head]
 work:
   - name: Universal and Transferable Adversarial Attacks on Aligned Language Models
-    artifact_slug: null
+    artifact_slug:
     type: open-research
     url: https://arxiv.org/abs/2307.15043
     contribution: >-
@@ -47,31 +52,166 @@ work:
       search, causing aligned language models to produce objectionable content, and shows that the
       attacks transfer to other models; the paper releases code at github.com/llm-attacks/llm-attacks.
     source_ids: [gcg-paper]
+  - name: Deep Equilibrium Models
+    artifact_slug:
+    type: open-research
+    url: https://arxiv.org/abs/1909.01377
+    contribution: >-
+      Co-author, with Shaojie Bai and Vladlen Koltun, of the 2019 paper on networks defined by the fixed
+      point of a single layer, part of the group's work on implicit layers.
+    source_ids: [deq-paper, kolter-courses]
+  - name: "Certified Adversarial Robustness via Randomized Smoothing"
+    artifact_slug:
+    type: open-research
+    url: https://arxiv.org/abs/1902.02918
+    contribution: >-
+      Co-author, with Jeremy Cohen and Elan Rosenfeld, of the 2019 paper on certifying robustness by
+      adding noise to a classifier's inputs.
+    source_ids: [smoothing-paper]
 links:
   - label: Website
     url: https://zicokolter.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kolter earned a PhD in computer science at Stanford University and completed a postdoctoral
+          fellowship at MIT before joining Carnegie Mellon's School of Computer Science. Before becoming
+          department head, Kolter was an associate professor in CMU's Computer Science Department with
+          affiliations in Software and Societal Systems, the Robotics Institute, and Electrical and Computer
+          Engineering, and also served in industry roles including chief scientist of AI research at Bosch.
+        source_ids: [cmu-mld-head]
+      - text: >-
+          Kolter became head of CMU's Machine Learning Department effective June 15, 2024, as its sixth
+          department head, succeeding Roni Rosenfeld. Kolter also sits on the boards of OpenAI, where Kolter
+          chairs the Safety and Security Committee, and Qualcomm, co-founded the AI security company Gray Swan
+          AI as Chief Scientist, and advises BNY.
+        source_ids: [cmu-mld-head, kolter-bio]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Kolter's research spans machine learning, optimization, and control, with a focus on making deep
+          learning safer, more robust, and more modular. Work from the group includes certified defenses
+          against adversarial examples, such as the 2017 convex outer adversarial polytope method with Eric
+          Wong and randomized smoothing with Jeremy Cohen and Elan Rosenfeld in 2019.
+        source_ids: [cmu-mld-head, kolter-home, wong-paper, smoothing-paper]
+      - text: >-
+          The group has also built optimization solvers and other modules into deep architectures, as in
+          OptNet with Brandon Amos and Deep Equilibrium Models with Shaojie Bai and Vladlen Koltun. More
+          recent work covers LLM security, including automatically generated adversarial suffixes that bypass
+          model safeguards, and how training data shapes model behavior, including definitions of memorization.
+        source_ids: [kolter-home, optnet-paper, deq-paper, gcg-paper, cmu-mld-head]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          At CMU, Kolter teaches Graduate Artificial Intelligence (15-780) and Deep Learning Systems:
+          Algorithms and Implementation (10-714), and has taught Practical Data Science and a course on
+          computational methods for the smart grid. Kolter has also given tutorials on adversarial robustness
+          (NeurIPS 2018) and implicit layers (NeurIPS 2020).
+        source_ids: [kolter-courses]
+timeline:
+  - date: "2017-03-01"
+    text: Posted OptNet, on differentiable optimization as a layer in neural networks, with Brandon Amos.
+    source_ids: [optnet-paper]
+  - date: "2017-11-02"
+    text: Posted Provable defenses against adversarial examples via the convex outer adversarial polytope with
+      Eric Wong.
+    source_ids: [wong-paper]
+  - date: "2019-02-08"
+    text: Co-authored Certified Adversarial Robustness via Randomized Smoothing.
+    source_ids: [smoothing-paper]
+  - date: "2019-09-03"
+    text: Co-authored Deep Equilibrium Models with Shaojie Bai and Vladlen Koltun.
+    source_ids: [deq-paper]
+  - date: "2023-07-27"
+    text: Co-authored Universal and Transferable Adversarial Attacks on Aligned Language Models.
+    source_ids: [gcg-paper]
+  - date: "2024-06-15"
+    text: Became head of Carnegie Mellon University's Machine Learning Department.
+    source_ids: [cmu-mld-head]
+honors:
+  - name: DARPA Young Faculty Award
+    year:
+    awarded_by: Defense Advanced Research Projects Agency
+    source_ids: [kolter-bio]
+  - name: Sloan Research Fellowship
+    year:
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [kolter-bio]
+  - name: NeurIPS best paper award
+    year:
+    awarded_by: Conference on Neural Information Processing Systems
+    source_ids: [kolter-bio]
+  - name: AISTATS Test of Time Award
+    year:
+    awarded_by: International Conference on Artificial Intelligence and Statistics
+    source_ids: [kolter-bio]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: kolter-bio
     title: Zico Kolter — Bio
     url: https://zicokolter.com/bio/
     publisher: Zico Kolter
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: kolter-home
     title: Zico Kolter — homepage
     url: https://zicokolter.com/
     publisher: Zico Kolter
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: gcg-paper
     title: "Universal and Transferable Adversarial Attacks on Aligned Language Models (arXiv 2307.15043)"
     url: https://arxiv.org/abs/2307.15043
     publisher: arXiv
     kind: paper
     published_at: 2023-07-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: cmu-mld-head
+    title: Kolter Named Head of Carnegie Mellon University Machine Learning Department
+    url: 
+      https://www.cmu.edu/news/stories/archives/2024/june/kolter-named-head-of-carnegie-mellon-university-machine-learning-department
+    publisher: Carnegie Mellon University News
+    kind: announcement
+    published_at: 2024-06
+    accessed_at: 2026-10-21
+  - id: kolter-courses
+    title: Zico Kolter — courses
+    url: https://zicokolter.com/courses/
+    publisher: Zico Kolter
+    kind: official-page
+    published_at:
+    accessed_at: 2026-10-21
+  - id: wong-paper
+    title: Provable defenses against adversarial examples via the convex outer adversarial polytope (arXiv 
+      1711.00851)
+    url: https://arxiv.org/abs/1711.00851
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-11-02
+    accessed_at: 2026-10-21
+  - id: optnet-paper
+    title: "OptNet: Differentiable Optimization as a Layer in Neural Networks (arXiv 1703.00443)"
+    url: https://arxiv.org/abs/1703.00443
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-01
+    accessed_at: 2026-10-21
+  - id: deq-paper
+    title: Deep Equilibrium Models (arXiv 1909.01377)
+    url: https://arxiv.org/abs/1909.01377
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-09-03
+    accessed_at: 2026-10-21
+  - id: smoothing-paper
+    title: Certified Adversarial Robustness via Randomized Smoothing (arXiv 1902.02918)
+    url: https://arxiv.org/abs/1902.02918
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-02-08
+    accessed_at: 2026-10-21

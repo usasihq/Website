@@ -13,13 +13,23 @@ bio:
     The MAD Podcast with founders, researchers, and heads of AI; and runs Data Driven NYC, a meetup
     on data and AI startups.
   source_ids: [turck-about]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: FirstMark
     organization_slug: null
     role: Partner
     current: true
-    source_ids: [turck-about]
+    source_ids: [turck-about, firstmark-bio]
+  - name: Bloomberg Ventures
+    organization_slug: null
+    role: Managing Director (helped start the unit)
+    current: false
+    source_ids: [firstmark-bio]
+  - name: TripleHop Technologies
+    organization_slug: null
+    role: Co-founder (acquired by Oracle)
+    current: false
+    source_ids: [firstmark-bio]
 work:
   - name: The MAD Podcast with Matt Turck
     artifact_slug: null
@@ -41,9 +51,48 @@ links:
     url: https://mattturck.com/
   - label: The MAD Podcast
     url: https://podcasts.apple.com/us/podcast/the-mad-podcast-with-matt-turck/id1686238724
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Early in Turck's career, Turck co-founded TripleHop Technologies, an enterprise AI search startup that
+          Oracle acquired, and then worked as an executive at Oracle. Before joining FirstMark, Turck was a
+          Managing Director at Bloomberg Ventures, the incubation and venture arm of Bloomberg LP, which Turck
+          helped start.
+        source_ids: [firstmark-bio]
+      - text: >-
+          At FirstMark, Turck invests in early-stage companies, mostly at the seed and Series A stages, with a
+          focus on enterprise software and a long-running interest in data, machine learning and AI, from
+          infrastructure to applications.
+        source_ids: [turck-about, firstmark-bio]
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          Turck has published the MAD Landscape, a market map of the machine learning, AI and data ecosystem, as
+          an annual publication since 2012, each edition paired with a long overview post on mattturck.com. Recent
+          editions include the 2023 landscape, "Full Steam Ahead" for 2024 and "Bubble & Build" for 2025.
+        source_ids: [firstmark-bio, mad-2023, mad-2024, mad-2025]
+      - text: >-
+          Turck also hosts The MAD Podcast, a weekly interview show with founders, researchers and technical
+          leaders about frontier models, agents and AI infrastructure, and organizes Data Driven NYC, a roughly
+          monthly in-person meetup in New York on data and AI startups.
+        source_ids: [mad-podcast, turck-about]
+timeline:
+  - date: "2012"
+    text: Began publishing the MAD Landscape, an annual market map of the data and AI ecosystem.
+    source_ids: [firstmark-bio]
+  - date: "2023-02-21"
+    text: Published the 2023 MAD (Machine Learning, Artificial Intelligence & Data) Landscape.
+    source_ids: [mad-2023]
+  - date: "2024-03-31"
+    text: 'Published "Full Steam Ahead: The 2024 MAD (Machine Learning, AI & Data) Landscape".'
+    source_ids: [mad-2024]
+  - date: "2025-10-28"
+    text: 'Published "Bubble & Build: The 2025 MAD (Machine Learning, AI & Data) Landscape".'
+    source_ids: [mad-2025]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: turck-about
     title: "About Matt Turck"
@@ -51,4 +100,39 @@ sources:
     publisher: Matt Turck
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: firstmark-bio
+    title: Matt Turck — FirstMark team page
+    url: https://firstmark.com/team/matt-turck/
+    publisher: FirstMark
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: mad-2023
+    title: The 2023 MAD (Machine Learning, Artificial Intelligence & Data) Landscape
+    url: https://mattturck.com/mad2023/
+    publisher: Matt Turck
+    kind: official-page
+    published_at: 2023-02-21
+    accessed_at: 2026-10-21
+  - id: mad-2024
+    title: "Full Steam Ahead: The 2024 MAD (Machine Learning, AI & Data) Landscape"
+    url: https://mattturck.com/mad2024/
+    publisher: Matt Turck
+    kind: official-page
+    published_at: 2024-03-31
+    accessed_at: 2026-10-21
+  - id: mad-2025
+    title: "Bubble & Build: The 2025 MAD (Machine Learning, AI & Data) Landscape"
+    url: https://mattturck.com/mad2025/
+    publisher: Matt Turck
+    kind: official-page
+    published_at: 2025-10-28
+    accessed_at: 2026-10-21
+  - id: mad-podcast
+    title: "The MAD Podcast: How AI Gets Built — with Matt Turck (Apple Podcasts)"
+    url: https://podcasts.apple.com/us/podcast/the-mad-podcast-with-matt-turck/id1686238724
+    publisher: Apple Podcasts
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

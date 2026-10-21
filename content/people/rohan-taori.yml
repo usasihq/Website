@@ -15,7 +15,7 @@ bio:
     Earlier work listed on Taori's site includes a study of how image classifiers hold up under natural
     distribution shifts.
   source_ids: [taori-site, alpaca-repo, alpacafarm-paper, alpacaeval-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Anthropic
     organization_slug: anthropic
@@ -29,7 +29,7 @@ affiliations:
     source_ids: [taori-site, alpaca-repo]
 work:
   - name: Stanford Alpaca
-    artifact_slug: null
+    artifact_slug:
     type: open-source
     url: https://github.com/tatsu-lab/stanford_alpaca
     contribution: >-
@@ -38,7 +38,7 @@ work:
       weight diff are CC BY NC 4.0 and intended for research use only.
     source_ids: [alpaca-repo]
   - name: AlpacaFarm
-    artifact_slug: null
+    artifact_slug:
     type: open-research
     url: https://arxiv.org/abs/2305.14387
     contribution: >-
@@ -46,7 +46,7 @@ work:
       (2023); Taori's site marks Taori as one of four equal-contribution authors.
     source_ids: [alpacafarm-paper, taori-site]
   - name: AlpacaEval
-    artifact_slug: null
+    artifact_slug:
     type: open-source
     url: https://github.com/tatsu-lab/alpaca_eval
     contribution: >-
@@ -58,42 +58,105 @@ links:
     url: https://www.rohantaori.com/
   - label: GitHub
     url: https://github.com/rtaori
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Taori studied EECS at UC Berkeley, working with Ludwig Schmidt, and helped run the Data Science
+          class of Machine Learning at Berkeley for several semesters. Taori then completed a PhD in computer
+          science at Stanford, advised by Tatsu Hashimoto, supported by an NSF Graduate Research Fellowship.
+          Taori now works on the pretraining team at Anthropic.
+        source_ids: [taori-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Taori's early research studied robustness and evaluation, including Measuring Robustness to Natural
+          Distribution Shifts in Image Classification, a NeurIPS 2020 spotlight, and Accuracy on the Line at
+          ICML 2021, which examined the link between in-distribution and out-of-distribution accuracy. Taori
+          is also listed among the contributors to OpenCLIP, an open-source implementation of CLIP.
+        source_ids: [taori-site, robustness-paper]
+      - text: >-
+          At Stanford, Taori and Hashimoto studied how models trained on their own outputs can amplify dataset
+          biases, in Data Feedback Loops, an oral paper at ICML 2023. In 2023 Taori was one of the
+          equal-contribution student authors of Stanford Alpaca, and then of AlpacaFarm, a NeurIPS 2023
+          spotlight, and AlpacaEval, tools for studying and evaluating instruction-following models.
+        source_ids: [taori-site, feedback-paper, alpaca-blog, alpacafarm-paper]
+timeline:
+  - date: "2020-07-01"
+    text: Posted Measuring Robustness to Natural Distribution Shifts in Image Classification, later a NeurIPS 
+      2020 spotlight.
+    source_ids: [robustness-paper, taori-site]
+  - date: "2022-09-08"
+    text: Posted Data Feedback Loops, on model-driven amplification of dataset biases, with Tatsu Hashimoto.
+    source_ids: [feedback-paper]
+  - date: "2023-03-13"
+    text: Stanford CRFM released Alpaca, with Taori among its equal-contribution student authors.
+    source_ids: [alpaca-blog]
+  - date: "2023-05-22"
+    text: Co-authored AlpacaFarm, a simulation framework for methods that learn from human feedback.
+    source_ids: [alpacafarm-paper]
+honors:
+  - name: NSF Graduate Research Fellowship
+    year:
+    awarded_by: National Science Foundation
+    source_ids: [taori-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: taori-site
     title: Rohan Taori — homepage
     url: https://www.rohantaori.com/
     publisher: Rohan Taori
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: github-profile
     title: rtaori (Rohan Taori) on GitHub
     url: https://github.com/rtaori
     publisher: GitHub
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: alpaca-repo
     title: tatsu-lab/stanford_alpaca README (authors and license notices)
     url: https://github.com/tatsu-lab/stanford_alpaca
     publisher: tatsu-lab (GitHub repository)
     kind: repository
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
   - id: alpacafarm-paper
     title: "AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback (arXiv 2305.14387)"
     url: https://arxiv.org/abs/2305.14387
     publisher: arXiv
     kind: paper
     published_at: 2023-05-22
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: alpacaeval-repo
     title: tatsu-lab/alpaca_eval repository (Apache-2.0 license)
     url: https://github.com/tatsu-lab/alpaca_eval
     publisher: tatsu-lab (GitHub repository)
     kind: repository
-    published_at: null
-    accessed_at: 2026-10-13
+    published_at:
+    accessed_at: 2026-10-21
+  - id: alpaca-blog
+    title: "Alpaca: A Strong, Replicable Instruction-Following Model"
+    url: https://crfm.stanford.edu/2023/03/13/alpaca.html
+    publisher: Stanford Center for Research on Foundation Models
+    kind: announcement
+    published_at: 2023-03-13
+    accessed_at: 2026-10-21
+  - id: robustness-paper
+    title: Measuring Robustness to Natural Distribution Shifts in Image Classification (arXiv 2007.00644)
+    url: https://arxiv.org/abs/2007.00644
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-07-01
+    accessed_at: 2026-10-21
+  - id: feedback-paper
+    title: "Data Feedback Loops: Model-driven Amplification of Dataset Biases (arXiv 2209.03942)"
+    url: https://arxiv.org/abs/2209.03942
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-08
+    accessed_at: 2026-10-21

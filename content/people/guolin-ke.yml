@@ -17,7 +17,7 @@ bio:
     Uni-Mol 3D molecular pretraining framework and Uni-3DAR, an autoregressive model for a range of
     3D tasks.
   source_ids: [homepage, github-profile, lightgbm-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: DP Technology
     organization_slug: null
@@ -55,14 +55,95 @@ work:
       framework, and Ke as an author of the Uni-Mol paper (ICLR 2023); the MIT-licensed repository
       is pinned on Ke's GitHub profile.
     source_ids: [homepage, github-profile, unimol-license]
+  - name: Uni-Fold
+    artifact_slug: null
+    type: open-source
+    url: null
+    contribution: >-
+      Led the development of Uni-Fold in 2021 and 2022, a reimplementation of AlphaFold and
+      AlphaFold-Multimer released with open-source training code and datasets, according to Ke's
+      homepage.
+    source_ids: [homepage]
 links:
   - label: Website
     url: https://guolinke.github.io/
   - label: GitHub
     url: https://github.com/guolinke
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Ke created LightGBM in 2016 during an internship at Microsoft Research Asia and later joined
+          its Machine Learning Group as a Senior Researcher, working on high-performance machine
+          learning algorithms and large-scale pretrained language models. Ke is now SVP of AI at DP
+          Technology, where the work centers on AI for Science.
+        source_ids: [homepage]
+      - text: >-
+          Ke's current research covers large-scale representation learning for molecules, 3D geometry
+          learning, 3D molecular generation and protein structure prediction. Recent co-authored papers
+          on Ke's homepage include work on molecular pretraining at scale (NeurIPS 2024), recognizing
+          molecule structures in images (ICCV 2025) and adapting language models to scientific
+          literature (ICLR 2025).
+        source_ids: [homepage]
+  - heading: Research and open-source work
+    paragraphs:
+      - text: >-
+          Ke is first author of the NIPS 2017 paper introducing LightGBM, which proposes
+          Gradient-based One-Side Sampling and Exclusive Feature Bundling to speed up gradient boosting
+          decision trees on data with many features and instances. Ke's homepage notes later work that
+          made LightGBM faster through quantized training and a new GPU version, described in a NeurIPS
+          2022 paper.
+        source_ids: [lightgbm-paper, homepage]
+      - text: >-
+          At Microsoft Research Asia, Ke co-authored the 2021 Graphormer paper, which adapts the standard
+          Transformer to graph representation learning by encoding graph structure, and led Graphormer's
+          development. Ke's homepage reports first-place finishes for Graphormer in the OGB Large-Scale
+          Challenge at KDD Cup 2021 and, as Graphormer-3D, in the Open Catalyst Challenge at NeurIPS
+          2021.
+        source_ids: [graphormer-paper, homepage]
+      - text: >-
+          Ke's later projects in AI for Science include Uni-Fold, an open reimplementation of AlphaFold
+          with training code and data, the Uni-Mol framework for 3D molecular and pocket pretraining,
+          and Uni-3DAR, an autoregressive model for 3D tasks from micro-scale to macro-scale structures.
+          The Uni-Mol repository is released under the MIT License.
+        source_ids: [homepage, unimol-license]
+timeline:
+  - date: "2016"
+    text: Created LightGBM during an internship at Microsoft Research Asia.
+    source_ids: [homepage]
+  - date: "2017"
+    text: Published "LightGBM, A Highly Efficient Gradient Boosting Decision Tree" at NIPS 2017 as first author.
+    source_ids: [lightgbm-paper]
+  - date: 2021-06-09
+    text: Co-authored the Graphormer paper on Transformers for graph representation learning.
+    source_ids: [graphormer-paper]
+  - date: 2021-06-17
+    text: Graphormer, developed under Ke's lead, won first place in the PCQM4M-LSC track of the OGB Large-Scale Challenge at KDD Cup 2021.
+    source_ids: [homepage]
+  - date: 2021-12-08
+    text: Graphormer-3D won first place in the Open Catalyst Challenge at NeurIPS 2021.
+    source_ids: [homepage]
+  - date: 2022-06-10
+    text: Ke's team released Uni-Mol, a 3D molecular and pocket pretraining framework.
+    source_ids: [homepage]
+  - date: 2022-08-06
+    text: Ke's team released the PyTorch version of Uni-Fold with open-source training code and datasets.
+    source_ids: [homepage]
+  - date: 2022-08-31
+    text: Ke's team released Uni-Fold Symmetry for predicting very large protein complexes.
+    source_ids: [homepage]
+  - date: 2023-02-16
+    text: Ke's team released Uni-Fold MuSSe, a protein complex prediction tool that needs only a single sequence.
+    source_ids: [homepage]
+  - date: 2025-03-21
+    text: Ke's team released Uni-3DAR, an autoregressive model covering a range of 3D tasks.
+    source_ids: [homepage]
+  - date: 2026-01-22
+    text: A paper by Ke and Hui Xue on hyperspherical latents for continuous-token autoregressive generation was accepted at ICLR 2026.
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Guolin Ke — homepage
@@ -70,32 +151,39 @@ sources:
     publisher: Guolin Ke
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: guolinke (Guolin Ke) on GitHub
     url: https://github.com/guolinke
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: lightgbm-paper
     title: "LightGBM: A Highly Efficient Gradient Boosting Decision Tree (NIPS 2017 proceedings)"
     url: https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html
     publisher: NeurIPS Proceedings
     kind: paper
     published_at: "2017"
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: graphormer-paper
+    title: Do Transformers Really Perform Bad for Graph Representation? (arXiv 2106.05234)
+    url: https://arxiv.org/abs/2106.05234
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-06-09
+    accessed_at: 2026-10-21
   - id: lightgbm-license
     title: lightgbm-org/LightGBM LICENSE (MIT License)
     url: https://github.com/lightgbm-org/LightGBM/blob/master/LICENSE
     publisher: lightgbm-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: unimol-license
     title: deepmodeling/Uni-Mol LICENSE (MIT License)
     url: https://github.com/deepmodeling/Uni-Mol/blob/main/LICENSE
     publisher: deepmodeling (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

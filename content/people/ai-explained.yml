@@ -13,7 +13,7 @@ bio:
     subject and the Signal to Noise newsletter on beehiiv. The channel page also lists AI Explained
     as the solo developer of LM Council, a site for comparing frontier AI systems side by side.
   source_ids: [channel, podcast, newsletter, simple-bench, lm-council]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: AI Explained
     organization_slug: null
@@ -54,42 +54,86 @@ links:
     url: https://signaltonoise.beehiiv.com/
   - label: SimpleBench
     url: https://simple-bench.com/
+sections:
+  - heading: Channel and publications
+    paragraphs:
+      - text: >-
+          The AI Explained YouTube channel, which joined YouTube in January 2023, covers news about the arrival of
+          smarter-than-human AI. Since 2024 AI Explained has also published the AI Explained Official
+          Podcast on the same subject, whose episodes discuss recent model releases, research papers and AI security.
+        source_ids: [channel, podcast]
+      - text: >-
+          AI Explained also writes Signal to Noise, a newsletter on beehiiv that offers free and premium updates on
+          AI; its archive includes posts such as "The 3rd Era of AI Language Models" from September 2024.
+        source_ids: [newsletter]
+  - heading: Benchmarks and tools
+    paragraphs:
+      - text: >-
+          The channel page names AI Explained as the author of SimpleBench, a multiple-choice text benchmark on
+          which people with high-school knowledge outperform frontier language models. Its questions cover
+          spatio-temporal reasoning, social intelligence and trick questions, and the SimpleBench team publishes a
+          report, a leaderboard, a public dataset and MIT-licensed evaluation code.
+        source_ids: [channel, simple-bench, simple-bench-repo]
+      - text: >-
+          AI Explained is also listed as the solo developer of LM Council, a site for comparing frontier AI systems
+          side by side.
+        source_ids: [channel, lm-council]
+timeline:
+  - date: "2023-01-03"
+    text: The AI Explained YouTube channel was created.
+    source_ids: [channel]
+  - date: "2024"
+    text: Began publishing the AI Explained Official Podcast.
+    source_ids: [podcast]
+  - date: "2024-09-19"
+    text: Published "The 3rd Era of AI Language Models" in the Signal to Noise newsletter.
+    source_ids: [newsletter]
+  - date: "2024-10"
+    text: The SimpleBench evaluation code repository was published on GitHub under the MIT license.
+    source_ids: [simple-bench-repo]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: channel
-    title: AI Explained on YouTube
-    url: https://www.youtube.com/@aiexplained-official
+    title: AI Explained on YouTube (About)
+    url: https://www.youtube.com/@aiexplained-official/about
     publisher: YouTube
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: podcast
     title: AI Explained Official Podcast
     url: https://aiexplainedopodcast.buzzsprout.com/
     publisher: Buzzsprout
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: newsletter
     title: Signal to Noise
     url: https://signaltonoise.beehiiv.com/
     publisher: beehiiv
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: simple-bench
     title: SimpleBench
     url: https://simple-bench.com/
     publisher: SimpleBench
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
   - id: lm-council
     title: LM Council
     url: https://lmcouncil.ai/
     publisher: LM Council
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: simple-bench-repo
+    title: simple-bench/SimpleBench repository (README and MIT license)
+    url: https://github.com/simple-bench/SimpleBench
+    publisher: SimpleBench (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21

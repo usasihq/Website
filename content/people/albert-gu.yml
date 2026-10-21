@@ -13,7 +13,7 @@ bio:
     models and, with Tri Dao, co-first author of the Mamba and Mamba-2 papers. The Apache-2.0 Mamba
     repository, whose AUTHORS file lists Albert Gu, provides the official implementation.
   source_ids: [github-profile, goomba-lab, cartesia-company, s4-paper, mamba-paper, mamba2-paper, mamba-readme, mamba-authors]
-  reviewed_at: 2026-10-19
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Carnegie Mellon University
     organization_slug: carnegie-mellon-university
@@ -47,9 +47,65 @@ links:
     url: https://github.com/albertfgu
   - label: Goomba Lab
     url: https://goombalab.github.io/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Albert Gu's research centres on state space models for long sequences. With Tri Dao,
+          Christopher Ré and others, Gu was first author of HiPPO (2020), a framework for recurrent
+          memory based on optimal polynomial projections, and of the 2021 paper on linear state-space
+          layers that unify recurrent, convolutional and continuous-time models.
+        source_ids: [hippo-paper, lssl-paper]
+      - text: >-
+          Gu's S4 paper (2021) made structured state space models efficient for long-range sequence
+          tasks. Gu and Tri Dao were then co-first authors of Mamba (2023), which adds input-dependent
+          selection to state space models, and of Mamba-2 (2024), which connects state space models and
+          attention through structured state space duality.
+        source_ids: [s4-paper, mamba-paper, mamba2-paper, mamba-readme]
+      - text: >-
+          Gu is the last-listed author of the 2025 paper on dynamic chunking for end-to-end hierarchical
+          sequence modeling, the basis of the H-Net architecture, and of the March 2026 Mamba-3 paper,
+          whose author list also includes Tri Dao.
+        source_ids: [hnet-paper, mamba3-paper, goomba-blog]
+  - heading: Teaching and lab
+    paragraphs:
+      - text: >-
+          At Carnegie Mellon, Gu leads the Goomba Lab, a research group in the Machine Learning
+          Department with PhD and master's students. The lab's blog publishes explanatory posts
+          alongside its papers, including two-part series on Mamba-3 and on the Raven architecture in
+          2026.
+        source_ids: [goomba-lab, goomba-blog]
+  - heading: Cartesia
+    paragraphs:
+      - text: >-
+          Gu is a co-founder of Cartesia and serves as its Chief Scientist, alongside the faculty
+          appointment at Carnegie Mellon.
+        source_ids: [cartesia-company, github-profile]
+timeline:
+  - date: 2020-08
+    text: Released HiPPO, a framework for recurrent memory with optimal polynomial projections, as first author.
+    source_ids: [hippo-paper]
+  - date: 2021-10-26
+    text: Released the linear state-space layers paper as first author.
+    source_ids: [lssl-paper]
+  - date: 2021-10-31
+    text: Released the S4 paper on structured state space models as first author.
+    source_ids: [s4-paper]
+  - date: 2023-12
+    text: Released Mamba with Tri Dao as co-first authors.
+    source_ids: [mamba-paper, mamba-readme]
+  - date: 2024-05
+    text: Released Mamba-2 and the structured state space duality framework with Tri Dao.
+    source_ids: [mamba2-paper]
+  - date: 2025-07
+    text: Co-authored the dynamic chunking paper behind the H-Net hierarchical architecture.
+    source_ids: [hnet-paper]
+  - date: 2026-03-16
+    text: Co-authored the Mamba-3 paper on improved sequence modeling with state space principles.
+    source_ids: [mamba3-paper]
 publication_status: published
-updated_at: 2026-10-19
-last_reviewed: 2026-10-19
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: albertfgu (Albert Gu) on GitHub
@@ -57,53 +113,88 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: goomba-lab
     title: Goomba Lab — people
     url: https://goombalab.github.io/
     publisher: Goomba AI Lab, Carnegie Mellon University
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: cartesia-company
     title: Cartesia — company (team)
     url: https://cartesia.ai/company
     publisher: Cartesia
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: s4-paper
     title: Efficiently Modeling Long Sequences with Structured State Spaces (arXiv 2111.00396)
     url: https://arxiv.org/abs/2111.00396
     publisher: arXiv
     kind: paper
     published_at: 2021-10-31
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: mamba-paper
     title: "Mamba: Linear-Time Sequence Modeling with Selective State Spaces (arXiv 2312.00752)"
     url: https://arxiv.org/abs/2312.00752
     publisher: arXiv
     kind: paper
     published_at: 2023-12-01
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: mamba2-paper
     title: "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (arXiv 2405.21060)"
     url: https://arxiv.org/abs/2405.21060
     publisher: arXiv
     kind: paper
     published_at: 2024-05-31
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: mamba-readme
     title: state-spaces/mamba README and license (Apache-2.0)
     url: https://github.com/state-spaces/mamba
     publisher: state-spaces (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
   - id: mamba-authors
     title: state-spaces/mamba AUTHORS
     url: https://github.com/state-spaces/mamba/blob/main/AUTHORS
     publisher: state-spaces (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-19
+    accessed_at: 2026-10-21
+  - id: hippo-paper
+    title: "HiPPO: Recurrent Memory with Optimal Polynomial Projections (arXiv 2008.07669)"
+    url: https://arxiv.org/abs/2008.07669
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-08-17
+    accessed_at: 2026-10-21
+  - id: lssl-paper
+    title: Combining Recurrent, Convolutional, and Continuous-time Models with Linear State-Space Layers (arXiv 2110.13985)
+    url: https://arxiv.org/abs/2110.13985
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-10-26
+    accessed_at: 2026-10-21
+  - id: hnet-paper
+    title: Dynamic Chunking for End-to-End Hierarchical Sequence Modeling (arXiv 2507.07955)
+    url: https://arxiv.org/abs/2507.07955
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-07-10
+    accessed_at: 2026-10-21
+  - id: mamba3-paper
+    title: "Mamba-3: Improved Sequence Modeling using State Space Principles (arXiv 2603.15569)"
+    url: https://arxiv.org/abs/2603.15569
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-16
+    accessed_at: 2026-10-21
+  - id: goomba-blog
+    title: Goomba Lab — blog
+    url: https://goombalab.github.io/blog/
+    publisher: Goomba AI Lab, Carnegie Mellon University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

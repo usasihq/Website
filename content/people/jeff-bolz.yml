@@ -16,7 +16,7 @@ bio:
     matrix multiplication, FlashAttention, and operator fusion, and add support for more operators
     and quantized formats.
   source_ids: [nvidia-author-page, github-profile, vk-coopmat2, llama-cpp-codeowners, llama-cpp-commits]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: NVIDIA
     organization_slug: nvidia
@@ -39,14 +39,92 @@ work:
       paths), topk_moe and rms_norm fusion, new operators such as CONV_3D, and quantized formats
       including Q2_0, MXFP4 and NVFP4. The repository is MIT-licensed.
     source_ids: [llama-cpp-codeowners, llama-cpp-commits, llama-cpp-license]
+  - name: VK_NV_cooperative_matrix
+    artifact_slug: null
+    type: open-research
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_NV_cooperative_matrix.html
+    contribution: >-
+      Contact and first-listed contributor for the Vulkan extension that added cooperative matrix
+      types to SPIR-V, and author of NVIDIA's 2019 blog post introducing it for machine learning.
+    source_ids: [vk-coopmat, nv-blog-coopmat]
+  - name: VK_NV_cooperative_vector
+    artifact_slug: null
+    type: open-research
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_NV_cooperative_vector.html
+    contribution: >-
+      Contact and listed contributor for the Vulkan extension that adds cooperative vector types to
+      SPIR-V.
+    source_ids: [vk-coopvec]
 links:
   - label: GitHub
     url: https://github.com/jeffbolznv
   - label: NVIDIA developer blog
     url: https://developer.nvidia.com/blog/author/jbolz
+sections:
+  - heading: Vulkan and shading languages
+    paragraphs:
+      - text: >-
+          NVIDIA's technical blog describes Jeff Bolz as a Distinguished Engineer who designs Vulkan
+          API abstractions and shading language programming models for new hardware. The Vulkan
+          registry lists Bolz as the contact for VK_EXT_descriptor_indexing, last modified in 2017, and
+          for VK_KHR_buffer_device_address, last modified in 2019, which lets applications query 64-bit
+          buffer device addresses.
+        source_ids: [nvidia-author-page, vk-descidx, vk-bda]
+      - text: >-
+          Bolz is the contact and first-listed contributor for VK_NV_cooperative_matrix (last modified
+          in 2019), which adds cooperative matrix types to SPIR-V, and wrote NVIDIA's April 2019 blog post on machine
+          learning acceleration in Vulkan with cooperative matrices. The cross-vendor
+          VK_KHR_cooperative_matrix extension (last modified in 2023) lists Bolz among its contributors.
+        source_ids: [vk-coopmat, nv-blog-coopmat, vk-khr-coopmat]
+      - text: >-
+          Bolz is also the contact for two NVIDIA extensions last modified in 2024. VK_NV_cooperative_vector adds
+          cooperative vector types, and VK_NV_cooperative_matrix2 builds on cooperative matrices with
+          type conversions, reductions, per-element operations and tensor addressing.
+        source_ids: [vk-coopvec, vk-coopmat2]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          The llama.cpp commit history attributes Vulkan backend commits to Bolz. A pull request Bolz opened in November 2024 and that was merged in December 2024 added
+          VK_NV_cooperative_matrix2 support for matrix multiplication and FlashAttention2, so these
+          operations can use tensor cores through NVIDIA drivers.
+        source_ids: [llama-cpp-commits, llama-cpp-pr-10206]
+      - text: >-
+          CODEOWNERS lists Bolz, with one other maintainer, in the ggml-org/ggml-vulkan team that owns
+          the backend's source directory. Commits from October 2026 extend sparse FlashAttention support
+          to the coopmat2 path, handle mul_mat_id duplicates in the prepass, and optimize pool_2d for
+          large pooling windows.
+        source_ids: [llama-cpp-codeowners, llama-cpp-commits]
+timeline:
+  - date: "2017-10"
+    text: Revision date of the VK_EXT_descriptor_indexing Vulkan extension, which lists Bolz as contact.
+    source_ids: [vk-descidx]
+  - date: "2019-02"
+    text: Revision date of the VK_NV_cooperative_matrix Vulkan extension, which lists Bolz as contact and first contributor.
+    source_ids: [vk-coopmat]
+  - date: "2019-04-16"
+    text: Published "Machine Learning Acceleration in Vulkan with Cooperative Matrices" on NVIDIA's technical blog.
+    source_ids: [nv-blog-coopmat]
+  - date: "2019-06"
+    text: Revision date of the VK_KHR_buffer_device_address Vulkan extension, which lists Bolz as contact.
+    source_ids: [vk-bda]
+  - date: "2023-05"
+    text: Revision date of the cross-vendor VK_KHR_cooperative_matrix extension, which lists Bolz as a contributor.
+    source_ids: [vk-khr-coopmat]
+  - date: "2024-05"
+    text: Revision date of the VK_NV_cooperative_vector Vulkan extension, which lists Bolz as contact.
+    source_ids: [vk-coopvec]
+  - date: "2024-08"
+    text: Revision date of the VK_NV_cooperative_matrix2 Vulkan extension, which lists Bolz as contact.
+    source_ids: [vk-coopmat2]
+  - date: "2024-12-05"
+    text: Pull request adding VK_NV_cooperative_matrix2 support for mul_mat and FlashAttention2 merged into llama.cpp.
+    source_ids: [llama-cpp-pr-10206]
+  - date: "2026-10-08"
+    text: Extended sparse FlashAttention support in llama.cpp's Vulkan backend to the coopmat2 path.
+    source_ids: [llama-cpp-commits]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: nvidia-author-page
     title: Jeff Bolz — author page, NVIDIA Technical Blog
@@ -54,39 +132,88 @@ sources:
     publisher: NVIDIA
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: github-profile
     title: jeffbolznv (Jeff Bolz) on GitHub
     url: https://github.com/jeffbolznv
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: vk-coopmat2
     title: VK_NV_cooperative_matrix2 — Vulkan reference page
     url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_NV_cooperative_matrix2.html
     publisher: Khronos Group
     kind: documentation
     published_at: 2024-08-01
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
     url: https://github.com/ggml-org/llama.cpp/blob/master/CODEOWNERS
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by jeffbolznv
     url: https://github.com/ggml-org/llama.cpp/commits?author=jeffbolznv
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: vk-coopmat
+    title: VK_NV_cooperative_matrix — Vulkan reference page
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_NV_cooperative_matrix.html
+    publisher: Khronos Group
+    kind: documentation
+    published_at: 2019-02-05
+    accessed_at: 2026-10-21
+  - id: vk-khr-coopmat
+    title: VK_KHR_cooperative_matrix — Vulkan reference page
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_KHR_cooperative_matrix.html
+    publisher: Khronos Group
+    kind: documentation
+    published_at: 2023-05-03
+    accessed_at: 2026-10-21
+  - id: vk-coopvec
+    title: VK_NV_cooperative_vector — Vulkan reference page
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_NV_cooperative_vector.html
+    publisher: Khronos Group
+    kind: documentation
+    published_at: 2024-05-23
+    accessed_at: 2026-10-21
+  - id: vk-bda
+    title: VK_KHR_buffer_device_address — Vulkan reference page
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_KHR_buffer_device_address.html
+    publisher: Khronos Group
+    kind: documentation
+    published_at: 2019-06-24
+    accessed_at: 2026-10-21
+  - id: vk-descidx
+    title: VK_EXT_descriptor_indexing — Vulkan reference page
+    url: https://docs.vulkan.org/refpages/latest/refpages/source/VK_EXT_descriptor_indexing.html
+    publisher: Khronos Group
+    kind: documentation
+    published_at: 2017-10-02
+    accessed_at: 2026-10-21
+  - id: nv-blog-coopmat
+    title: Machine Learning Acceleration in Vulkan with Cooperative Matrices — NVIDIA Technical Blog
+    url: https://developer.nvidia.com/blog/machine-learning-acceleration-vulkan-cooperative-matrices/
+    publisher: NVIDIA
+    kind: announcement
+    published_at: 2019-04-16
+    accessed_at: 2026-10-21
+  - id: llama-cpp-pr-10206
+    title: "vulkan: Add VK_NV_cooperative_matrix2 support for mul_mat and FlashAttention2 (llama.cpp PR #10206)"
+    url: https://github.com/ggml-org/llama.cpp/pull/10206
+    publisher: ggml-org (GitHub repository)
+    kind: repository
+    published_at: 2024-11-07
+    accessed_at: 2026-10-21

@@ -14,7 +14,7 @@ bio:
     Scratch, with Tatsunori Hashimoto. Liang is first author of the HELM paper on holistic evaluation
     of language models, and Together AI's leadership page lists Liang as a founder.
   source_ids: [liang-site, crfm-people, marin-readme, cs336, helm-paper, together-about]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Stanford University
     organization_slug: stanford-university
@@ -49,12 +49,124 @@ work:
     contribution: >-
       Listed as an instructor, with Tatsunori Hashimoto, of Stanford's CS336 course in Spring 2026.
     source_ids: [cs336]
+  - name: "SQuAD: Stanford Question Answering Dataset"
+    artifact_slug: null
+    type: open-data
+    url: https://arxiv.org/abs/1606.05250
+    contribution: >-
+      Co-author, with Pranav Rajpurkar, Jian Zhang and Konstantin Lopyrev, of the 2016 paper that
+      introduced the SQuAD reading-comprehension dataset.
+    source_ids: [squad-paper]
+  - name: CodaLab Worksheets
+    artifact_slug: null
+    type: open-source
+    url: https://worksheets.codalab.org/
+    contribution: >-
+      Created CodaLab Worksheets, a platform for running and managing experiments that keeps the full
+      provenance from raw data to final results, per Liang's homepage.
+    source_ids: [liang-site]
 links:
   - label: Website
     url: https://cs.stanford.edu/~pliang/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Percy Liang's CV records a postdoctoral position at Google in 2011–2012, after a PhD in
+          computer science from the University of California at Berkeley. Liang joined the Stanford
+          faculty as an Assistant Professor in 2012 and became an Associate Professor in 2019; the
+          current homepage lists the title Professor of Computer Science, with a courtesy appointment
+          in Statistics.
+        source_ids: [liang-cv, liang-site]
+      - text: >-
+          Stanford CRFM's people page lists Liang as the center's director. Together AI's leadership
+          page lists Liang among the company's founders, alongside Vipul Ved Prakash, Ce Zhang, Chris Ré
+          and Tri Dao.
+        source_ids: [crfm-people, together-about]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Liang's homepage describes an interest in basic questions about learning and intelligence,
+          and a commitment to efficient and reproducible research. Liang created CodaLab Worksheets, a
+          platform that records the full provenance of an experiment from raw data to final results,
+          and later created Marin, which practices "open development" by preregistering experiments and
+          publishing them as they run.
+        source_ids: [liang-site, marin-readme]
+      - text: >-
+          Liang is a co-author of the 2016 SQuAD paper, which introduced the Stanford Question
+          Answering Dataset for reading comprehension, and of the 2021 report On the Opportunities and
+          Risks of Foundation Models. Liang is first author of the 2022 HELM paper, which set out a
+          taxonomy of scenarios and metrics for evaluating language models more transparently; the HELM
+          framework is maintained as open source by Stanford CRFM.
+        source_ids: [squad-paper, foundation-models-report, helm-paper, helm-readme]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          Liang's homepage lists courses including CS336 (Language Models from Scratch), CS324 (Advances
+          in Foundation Models) and CS221 (Artificial Intelligence). The Spring 2026 CS336 site lists
+          Liang and Tatsunori Hashimoto as the course's instructors.
+        source_ids: [liang-site, cs336]
+timeline:
+  - date: "2011"
+    text: Completed a PhD in computer science at the University of California at Berkeley.
+    source_ids: [liang-cv]
+  - date: "2011"
+    text: Began a postdoctoral position at Google, held until 2012.
+    source_ids: [liang-cv]
+  - date: "2012"
+    text: Joined Stanford University as an Assistant Professor.
+    source_ids: [liang-cv]
+  - date: 2016-06-16
+    text: Co-authored the SQuAD paper introducing the Stanford Question Answering Dataset.
+    source_ids: [squad-paper]
+  - date: "2019"
+    text: Became an Associate Professor at Stanford University.
+    source_ids: [liang-cv]
+  - date: 2021-08-16
+    text: Co-authored the report On the Opportunities and Risks of Foundation Models.
+    source_ids: [foundation-models-report]
+  - date: 2022-11-16
+    text: Released the HELM paper on holistic evaluation of language models as first author.
+    source_ids: [helm-paper]
+  - date: "2026"
+    text: Co-taught CS336, Language Modeling from Scratch, with Tatsunori Hashimoto in Spring 2026.
+    source_ids: [cs336]
+honors:
+  - name: Microsoft Research Faculty Fellowship
+    year: 2014
+    awarded_by: Microsoft Research
+    source_ids: [liang-cv]
+  - name: Sloan Research Fellowship
+    year: 2015
+    awarded_by: Alfred P. Sloan Foundation
+    source_ids: [liang-cv]
+  - name: NSF CAREER Award
+    year: 2016
+    awarded_by: U.S. National Science Foundation
+    source_ids: [liang-cv]
+  - name: IJCAI Computers and Thought Award
+    year: 2016
+    awarded_by: International Joint Conferences on Artificial Intelligence
+    source_ids: [liang-cv]
+  - name: Best Paper Award (COLT)
+    year: 2017
+    awarded_by: Conference on Learning Theory
+    source_ids: [liang-cv]
+  - name: Best Paper Award (ICML)
+    year: 2017
+    awarded_by: International Conference on Machine Learning
+    source_ids: [liang-cv]
+  - name: Best Short Paper Award (ACL)
+    year: 2018
+    awarded_by: Association for Computational Linguistics
+    source_ids: [liang-cv]
+  - name: Presidential Early Career Award for Scientists and Engineers (PECASE)
+    year: 2019
+    awarded_by: U.S. Government
+    source_ids: [liang-cv]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: liang-site
     title: Percy Liang — homepage
@@ -62,46 +174,67 @@ sources:
     publisher: Percy Liang
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: crfm-people
     title: People — Stanford Center for Research on Foundation Models
     url: https://crfm.stanford.edu/people.html
     publisher: Stanford CRFM
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: marin-readme
     title: marin-community/marin README
     url: https://github.com/marin-community/marin
     publisher: Marin (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: cs336
     title: "Stanford CS336: Language Modeling from Scratch (Spring 2026)"
     url: https://stanford-cs336.github.io/
     publisher: Stanford University
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: helm-paper
     title: Holistic Evaluation of Language Models (arXiv 2211.09110)
     url: https://arxiv.org/abs/2211.09110
     publisher: arXiv
     kind: paper
     published_at: 2022-11-16
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: helm-readme
     title: stanford-crfm/helm README
     url: https://github.com/stanford-crfm/helm
     publisher: Stanford CRFM (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: together-about
     title: About us — Together AI (leadership)
     url: https://www.together.ai/about-us
     publisher: Together AI
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: liang-cv
+    title: Curriculum Vitae — Percy Liang
+    url: https://cs.stanford.edu/~pliang/cv.pdf
+    publisher: Percy Liang
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: squad-paper
+    title: "SQuAD: 100,000+ Questions for Machine Comprehension of Text (arXiv 1606.05250)"
+    url: https://arxiv.org/abs/1606.05250
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-06-16
+    accessed_at: 2026-10-21
+  - id: foundation-models-report
+    title: On the Opportunities and Risks of Foundation Models (arXiv 2108.07258)
+    url: https://arxiv.org/abs/2108.07258
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-08-16
+    accessed_at: 2026-10-21

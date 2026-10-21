@@ -7,10 +7,11 @@ specialties: [inference, developer-tools]
 headline: Works on Ollama, an open-source tool for running open models on your own machine
 bio:
   text: >-
-    Jeffrey Morgan works on Ollama, an open-source tool for running open models
-    on your own machine; his GitHub profile says he is building Ollama. He writes code for the project: the repository's commit
-    history shows him authoring recent changes to context-window handling and
-    to model support in its MLX engine.
+    Jeffrey Morgan works on Ollama, an open-source tool for running open models on your own
+    machine; Morgan's GitHub profile says Morgan is building Ollama and was previously at Docker,
+    Twitter and Google. Morgan writes code for the project: the repository's commit history shows
+    Morgan authoring recent changes to context-window handling, model support in its MLX engine and
+    support for decision models.
   source_ids: [github-profile, ollama-repo, ollama-commits]
 affiliations:
   - name: Ollama
@@ -18,20 +19,70 @@ affiliations:
     role: Building Ollama
     current: true
     source_ids: [github-profile]
+  - name: Docker
+    organization_slug: null
+    role: Previous role (listed on GitHub profile)
+    current: false
+    source_ids: [github-profile]
+  - name: Twitter
+    organization_slug: null
+    role: Previous role (listed on GitHub profile)
+    current: false
+    source_ids: [github-profile]
+  - name: Google
+    organization_slug: google
+    role: Previous role (listed on GitHub profile)
+    current: false
+    source_ids: [github-profile]
 work:
   - name: Ollama
     artifact_slug: ollama
     url: https://github.com/ollama/ollama
     contribution: >-
-      The repository's commit history lists him as the author of ongoing
-      changes, including context-window handling and MLX engine model support.
+      Made the project's initial commit in June 2023; the commit history lists Morgan as the author
+      of ongoing changes, including context-window handling and MLX engine model support.
     source_ids: [ollama-commits]
 links:
   - label: GitHub
     url: https://github.com/jmorganca
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Morgan made the initial commit to the Ollama repository on June 22, 2023, and has continued to write
+          code for the project, which is released under the MIT license. Recent commits by Morgan update the
+          bundled llama.cpp, add model support to the MLX engine, extend context-window handling and add support
+          for decision models to the ollama run command.
+        source_ids: [ollama-first-commit, ollama-repo, ollama-commits]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Ollama's official blog traces how the tool has grown: an official Docker image in October 2023,
+          OpenAI-compatible endpoints in February 2024, tool calling in July 2024, a new desktop app in July 2025
+          and, in March 2026, a preview of an MLX-powered engine on Apple Silicon.
+        source_ids: [ollama-blog-docker, ollama-blog-openai, ollama-blog-tools, ollama-blog-app, ollama-blog-mlx]
+timeline:
+  - date: "2023-06-22"
+    text: Made the initial commit to the Ollama repository.
+    source_ids: [ollama-first-commit]
+  - date: "2023-10-05"
+    text: Ollama became available as an official Docker image.
+    source_ids: [ollama-blog-docker]
+  - date: "2024-02-08"
+    text: Ollama added OpenAI-compatible API endpoints.
+    source_ids: [ollama-blog-openai]
+  - date: "2024-07-25"
+    text: Ollama added tool-calling support for models.
+    source_ids: [ollama-blog-tools]
+  - date: "2025-07-30"
+    text: Ollama released a new desktop app.
+    source_ids: [ollama-blog-app]
+  - date: "2026-03-30"
+    text: Ollama previewed an engine powered by MLX on Apple Silicon.
+    source_ids: [ollama-blog-mlx]
 publication_status: published
-updated_at: 2026-09-29
-last_reviewed: 2026-09-29
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: jmorganca (Jeffrey Morgan) on GitHub
@@ -39,18 +90,60 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: ollama-repo
     title: ollama/ollama README and LICENSE
     url: https://github.com/ollama/ollama
     publisher: Ollama (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
   - id: ollama-commits
     title: Commits by jmorganca in ollama/ollama
     url: https://github.com/ollama/ollama/commits/main/?author=jmorganca
     publisher: Ollama (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-09-29
+    accessed_at: 2026-10-21
+  - id: ollama-first-commit
+    title: ollama/ollama initial commit (8fa9133)
+    url: https://github.com/ollama/ollama/commit/8fa91332fa942909fb9206876e41c64599fe33ca
+    publisher: Ollama (GitHub repository)
+    kind: repository
+    published_at: 2023-06-22
+    accessed_at: 2026-10-21
+  - id: ollama-blog-docker
+    title: Ollama is now available as an official Docker image
+    url: https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image
+    publisher: Ollama
+    kind: announcement
+    published_at: 2023-10-05
+    accessed_at: 2026-10-21
+  - id: ollama-blog-openai
+    title: OpenAI compatibility
+    url: https://ollama.com/blog/openai-compatibility
+    publisher: Ollama
+    kind: announcement
+    published_at: 2024-02-08
+    accessed_at: 2026-10-21
+  - id: ollama-blog-tools
+    title: Tool support
+    url: https://ollama.com/blog/tool-support
+    publisher: Ollama
+    kind: announcement
+    published_at: 2024-07-25
+    accessed_at: 2026-10-21
+  - id: ollama-blog-app
+    title: Ollama's new app
+    url: https://ollama.com/blog/new-app
+    publisher: Ollama
+    kind: announcement
+    published_at: 2025-07-30
+    accessed_at: 2026-10-21
+  - id: ollama-blog-mlx
+    title: Ollama is now powered by MLX on Apple Silicon in preview
+    url: https://ollama.com/blog/mlx
+    publisher: Ollama
+    kind: announcement
+    published_at: 2026-03-30
+    accessed_at: 2026-10-21

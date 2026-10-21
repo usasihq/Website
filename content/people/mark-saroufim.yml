@@ -50,14 +50,72 @@ work:
       Listed on Saroufim's homepage under "Work on PyTorch"; the repository describes torchao as
       PyTorch-native quantization for training and inference, under a BSD-style license.
     source_ids: [homepage, torchao-repo]
+  - name: "TorchAO: PyTorch-Native Training-to-Serving Model Optimization"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2507.16099
+    contribution: >-
+      Co-author of the 2025 paper describing torchao as a PyTorch-native framework that uses
+      quantization and sparsity across a training-to-serving workflow.
+    source_ids: [torchao-paper]
 links:
   - label: Website
     url: https://www.marksaroufim.com/
   - label: GitHub
     url: https://github.com/msaroufim
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Mark Saroufim's homepage presents three current roles: co-founder of Core Automation,
+          PyTorch maintainer, and co-founder of GPU MODE, a community formerly known as CUDA MODE.
+          Saroufim is listed with Core Automation on the keynote program for PyTorch Conference
+          North America 2026, with a session titled "Linear Algebra for the Age of Research."
+        source_ids: [homepage, keynote-na26]
+      - text: >-
+          Saroufim's homepage lists earlier, pre-PyTorch projects on high-dimensional geometry and
+          game AI built with reinforcement learning, and Saroufim co-authored a 2020 paper on parallel training
+          of deep networks with local updates. A 2015 arXiv paper by Saroufim studies spatial trees,
+          high-dimensional reductions and batch nearest-neighbor search.
+        source_ids: [homepage, local-updates-paper, nn-paper]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          The homepage groups Saroufim's PyTorch projects together, including torchao, TorchServe,
+          the TorchX Ray scheduler, the launch of PyTorch 2.0, the PyTorch fast series, Project
+          Popcorn, and the NeurIPS LLM efficiency and Hacker Cup AI challenges. PyTorch's maintainers
+          page lists Saroufim as an emeritus maintainer of quantization (torch/ao) and among the
+          TorchServe maintainers.
+        source_ids: [homepage, pytorch-maintainers]
+      - text: >-
+          Saroufim is a co-author of the PyTorch 2 paper (ASPLOS 2024), which describes TorchDynamo and
+          TorchInductor, and of the 2025 TorchAO paper, which presents quantization and sparsity tools
+          spanning pre-training, fine-tuning and serving. The NeurIPS 2023 LLM efficiency challenge,
+          listed on the homepage, asked entrants to fine-tune a foundation model on a single GPU within
+          one day.
+        source_ids: [pt2-paper, torchao-paper, homepage, llm-efficiency-challenge]
+timeline:
+  - date: 2015-07-13
+    text: Posted a single-author arXiv paper on spatial trees and batch nearest-neighbor search.
+    source_ids: [nn-paper]
+  - date: 2020-12-07
+    text: Co-authored "Parallel Training of Deep Networks with Local Updates" on arXiv.
+    source_ids: [local-updates-paper]
+  - date: "2023"
+    text: The NeurIPS 2023 LLM efficiency challenge, listed among Saroufim's PyTorch work, ran with a one-GPU, one-day fine-tuning format.
+    source_ids: [llm-efficiency-challenge, homepage]
+  - date: 2024-04
+    text: Co-authored the PyTorch 2 paper on TorchDynamo and TorchInductor, presented at ASPLOS 2024.
+    source_ids: [pt2-paper]
+  - date: 2025-07-21
+    text: Co-authored the TorchAO paper on PyTorch-native model optimization.
+    source_ids: [torchao-paper]
+  - date: 2026-08-20
+    text: Announced as a keynote speaker for PyTorch Conference North America 2026, representing Core Automation.
+    source_ids: [keynote-na26]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Mark Saroufim — portfolio homepage
@@ -65,39 +123,67 @@ sources:
     publisher: Mark Saroufim
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-maintainers
     title: PyTorch Governance | Maintainers (PyTorch 2.14 documentation)
     url: https://docs.pytorch.org/docs/2.14/community/persons_of_interest.html
     publisher: PyTorch
     kind: documentation
     published_at: 2026-06-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pt2-paper
     title: "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS '24)"
     url: https://docs.pytorch.org/assets/pytorch2-2.pdf
     publisher: PyTorch
     kind: paper
     published_at: 2024-04
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: keynote-na26
     title: PyTorch Conference North America 2026 keynote speaker sessions announced
     url: https://pytorch.org/blog/pytorch-conference-north-america-2026-keynote-speaker-sessions-announced/
     publisher: PyTorch
     kind: announcement
     published_at: 2026-08-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: torchao-repo
     title: pytorch/ao README and LICENSE (BSD-style)
     url: https://github.com/pytorch/ao
     publisher: PyTorch (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: pytorch-license
     title: pytorch/pytorch LICENSE (BSD-style license)
     url: https://github.com/pytorch/pytorch/blob/main/LICENSE
     publisher: PyTorch (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: torchao-paper
+    title: "TorchAO: PyTorch-Native Training-to-Serving Model Optimization (arXiv 2507.16099)"
+    url: https://arxiv.org/abs/2507.16099
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-07-21
+    accessed_at: 2026-10-21
+  - id: local-updates-paper
+    title: Parallel Training of Deep Networks with Local Updates (arXiv 2012.03837)
+    url: https://arxiv.org/abs/2012.03837
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-12-07
+    accessed_at: 2026-10-21
+  - id: nn-paper
+    title: "Aren't we all nearest neighbors: Spatial trees, high dimensional reductions and batch nearest neighbor search (arXiv 1507.03338)"
+    url: https://arxiv.org/abs/1507.03338
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-07-13
+    accessed_at: 2026-10-21
+  - id: llm-efficiency-challenge
+    title: "NeurIPS Large Language Model Efficiency Challenge: 1 LLM + 1 GPU + 1 Day"
+    url: https://llm-efficiency-challenge.github.io/
+    publisher: NeurIPS 2023 LLM Efficiency Challenge
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

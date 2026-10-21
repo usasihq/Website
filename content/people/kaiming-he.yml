@@ -64,12 +64,118 @@ work:
       First author of the Mask R-CNN paper (2017). Detectron, FAIR's Apache-2.0 object detection
       system that implements Mask R-CNN, lists Kaiming He among the authors in its citation entry.
     source_ids: [maskrcnn-paper, detectron-readme]
+  - name: Mean Flows for One-step Generative Modeling
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2505.13447
+    contribution: >-
+      Co-author, with Zhengyang Geng, Mingyang Deng, Xingjian Bai, and J. Zico Kolter, of a 2025
+      paper on one-step generative modeling; it was presented as an oral at NeurIPS 2025.
+    source_ids: [meanflow-paper, homepage]
 links:
   - label: Website
     url: https://people.csail.mit.edu/kaiming/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Kaiming He worked as a researcher at Microsoft Research Asia from 2011 to 2016, then as a
+          research scientist at Facebook AI Research from 2016 to 2024. In 2024 Kaiming He joined the
+          Department of EECS at MIT, where the appointment is now an associate professorship with
+          tenure. Kaiming He also works part-time as a Distinguished Scientist at Google DeepMind.
+        source_ids: [homepage]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          The research of Kaiming He spans computer vision and deep learning. The 2015 ResNet paper,
+          written with Xiangyu Zhang, Shaoqing Ren, and Jian Sun, introduced the ResNet design of
+          shortcut connections; the MIT homepage notes that these are now used in Transformers, AlphaFold, and many
+          generative models.
+        source_ids: [homepage, resnet-paper]
+      - text: >-
+          In visual perception, Kaiming He co-authored Faster R-CNN and was first author of Mask R-CNN,
+          which extends object detection to instance segmentation. In self-supervised learning,
+          Kaiming He was first author of Momentum Contrast (MoCo) and Masked Autoencoders (MAE), two
+          methods for learning visual representations.
+        source_ids: [homepage, maskrcnn-paper, moco-paper, mae-paper]
+      - text: >-
+          More recent work at MIT turns to generative modeling, including autoregressive image
+          generation without vector quantization, one-step generation with Mean Flows, and a 2025
+          report titled "Back to Basics: Let Denoising Generative Models Denoise".
+        source_ids: [homepage, meanflow-paper]
+  - heading: Teaching
+    paragraphs:
+      - text: >-
+          At MIT, Kaiming He has taught Advances in Computer Vision (Spring 2024), Deep Generative
+          Models (Fall 2024), Deep Learning (Fall 2025 and Fall 2026), and Introduction to Computer
+          Vision (Spring 2026). Kaiming He has also given tutorials on ResNets, object
+          detection, and visual recognition at ICML, ICCV, CVPR, and ECCV.
+        source_ids: [homepage]
+timeline:
+  - date: "2011"
+    text: Joined Microsoft Research Asia as a researcher.
+    source_ids: [homepage]
+  - date: 2015-12-10
+    text: Released the ResNet paper on image recognition on arXiv.
+    source_ids: [resnet-paper]
+  - date: "2016"
+    text: Joined Facebook AI Research as a research scientist.
+    source_ids: [homepage]
+  - date: 2017-03-20
+    text: Released the Mask R-CNN paper on arXiv.
+    source_ids: [maskrcnn-paper]
+  - date: 2019-11-13
+    text: Released the Momentum Contrast (MoCo) paper on arXiv.
+    source_ids: [moco-paper]
+  - date: 2021-11-11
+    text: Released Masked Autoencoders Are Scalable Vision Learners on arXiv.
+    source_ids: [mae-paper]
+  - date: "2024"
+    text: Joined the MIT Department of EECS as a faculty member.
+    source_ids: [homepage]
+  - date: 2025-05-19
+    text: Released Mean Flows for One-step Generative Modeling on arXiv.
+    source_ids: [meanflow-paper]
+honors:
+  - name: CVPR Best Paper Award
+    year: 2009
+    awarded_by: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)
+    source_ids: [homepage]
+  - name: CVPR Best Paper Award
+    year: 2016
+    awarded_by: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)
+    source_ids: [homepage]
+  - name: ICCV Best Paper Award
+    year: 2017
+    awarded_by: International Conference on Computer Vision (ICCV)
+    source_ids: [homepage]
+  - name: ICCV Best Student Paper Award
+    year: 2017
+    awarded_by: International Conference on Computer Vision (ICCV)
+    source_ids: [homepage]
+  - name: PAMI Young Researcher Award
+    year: 2018
+    awarded_by: IEEE Technical Committee on Pattern Analysis and Machine Intelligence
+    source_ids: [homepage]
+  - name: Everingham Prize
+    year: 2021
+    awarded_by: International Conference on Computer Vision (ICCV)
+    source_ids: [homepage]
+  - name: ICCV Test of Time Award
+    year: 2025
+    awarded_by: International Conference on Computer Vision (ICCV)
+    source_ids: [homepage]
+  - name: NeurIPS Test of Time Award
+    year: 2025
+    awarded_by: Conference on Neural Information Processing Systems (NeurIPS)
+    source_ids: [homepage]
+  - name: CVPR 10-year Test of Time Award
+    year: 2026
+    awarded_by: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)
+    source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: homepage
     title: Kaiming He — homepage (MIT CSAIL)
@@ -77,46 +183,53 @@ sources:
     publisher: Kaiming He
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: resnet-paper
     title: Deep Residual Learning for Image Recognition (arXiv 1512.03385)
     url: https://arxiv.org/abs/1512.03385
     publisher: arXiv
     kind: paper
     published_at: 2015-12-10
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: maskrcnn-paper
     title: Mask R-CNN (arXiv 1703.06870)
     url: https://arxiv.org/abs/1703.06870
     publisher: arXiv
     kind: paper
     published_at: 2017-03-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: moco-paper
     title: Momentum Contrast for Unsupervised Visual Representation Learning (arXiv 1911.05722)
     url: https://arxiv.org/abs/1911.05722
     publisher: arXiv
     kind: paper
     published_at: 2019-11-13
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mae-paper
     title: Masked Autoencoders Are Scalable Vision Learners (arXiv 2111.06377)
     url: https://arxiv.org/abs/2111.06377
     publisher: arXiv
     kind: paper
     published_at: 2021-11-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: mae-readme
     title: facebookresearch/mae README (citation and CC-BY-NC 4.0 license)
     url: https://github.com/facebookresearch/mae
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: detectron-readme
     title: facebookresearch/Detectron README (citation entry and license)
     url: https://github.com/facebookresearch/Detectron
     publisher: Meta (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: meanflow-paper
+    title: Mean Flows for One-step Generative Modeling (arXiv 2505.13447)
+    url: https://arxiv.org/abs/2505.13447
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-05-19
+    accessed_at: 2026-10-21

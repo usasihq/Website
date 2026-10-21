@@ -11,7 +11,7 @@ bio:
     and smart-home gadgets, and appears on The Vergecast, the publication's tech podcast.
     Before The Verge, David worked at Protocol, The Wall Street Journal and Wired.
   source_ids: [verge-author]
-  reviewed_at: 2026-10-17
+  reviewed_at: 2026-10-21
 affiliations:
   - name: The Verge
     organization_slug: null
@@ -30,9 +30,9 @@ affiliations:
     source_ids: [verge-author]
   - name: Wired
     organization_slug: null
-    role: Staff (previous)
+    role: Senior staff writer covering personal technology (previous)
     current: false
-    source_ids: [verge-author]
+    source_ids: [verge-author, wired-author]
 work:
   - name: The Verge (author page)
     artifact_slug: null
@@ -41,12 +41,51 @@ work:
     contribution: >-
       Writes consumer-technology coverage as editor-at-large and posts Vergecast episodes.
     source_ids: [verge-author]
+  - name: The Vergecast
+    artifact_slug: null
+    type: media
+    url: https://www.theverge.com/the-vergecast
+    contribution: >-
+      Co-hosts the Friday news episodes with Nilay Patel and leads the Monday-to-Thursday episodes
+      with other Verge staff.
+    source_ids: [vergecast]
+  - name: Installer
+    artifact_slug: null
+    type: media
+    url: https://www.theverge.com/installer-newsletter
+    contribution: >-
+      Writes issues of The Verge's weekly Installer newsletter of things to download, watch, read,
+      listen to and explore.
+    source_ids: [installer]
 links:
   - label: The Verge author page
     url: https://www.theverge.com/authors/david-pierce
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          The Verge's author page lists David Pierce as the publication's editor-at-large and notes
+          earlier work at Protocol, The Wall Street Journal and Wired. Wired's author page describes
+          David as a former senior staff writer who covered personal technology.
+        source_ids: [verge-author, wired-author]
+  - heading: Coverage
+    paragraphs:
+      - text: >-
+          The Vergecast is The Verge's daily podcast about gadgets, large technology companies and
+          related news. Each Friday, Nilay Patel and David talk through the week's main technology
+          stories, and from Monday to Thursday David leads Verge staff in episodes on how gadgets and
+          software shape everyday life. Recent episodes David introduced include a look at what AI models
+          have achieved on long-standing math problems and a conversation with a creator about building
+          apps with the help of AI.
+        source_ids: [vergecast, verge-author]
+      - text: >-
+          David also writes issues of Installer, The Verge's weekly newsletter of apps, gadgets, shows
+          and other things to download, watch, read, listen to and explore. David's recent stories for
+          The Verge cover phones, smart-home products such as Apple's HomeView, and smart glasses.
+        source_ids: [installer, verge-author]
 publication_status: published
-updated_at: 2026-10-17
-last_reviewed: 2026-10-17
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: verge-author
     title: David Pierce — The Verge author page
@@ -54,4 +93,25 @@ sources:
     publisher: The Verge
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-17
+    accessed_at: 2026-10-21
+  - id: vergecast
+    title: The Vergecast Podcast | The Verge
+    url: https://www.theverge.com/the-vergecast
+    publisher: The Verge
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: installer
+    title: Installer Newsletter | The Verge
+    url: https://www.theverge.com/installer-newsletter
+    publisher: The Verge
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: wired-author
+    title: David Pierce | WIRED author page
+    url: https://www.wired.com/author/david-pierce/
+    publisher: WIRED
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21

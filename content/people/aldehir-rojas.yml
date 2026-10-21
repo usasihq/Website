@@ -15,7 +15,7 @@ bio:
     client applications and the LM Studio or llama.cpp servers to manage chain-of-thought reasoning
     for gpt-oss models.
   source_ids: [llama-cpp-codeowners, llama-cpp-commits, gpt-oss-adapter]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: llama.cpp project
     organization_slug: null
@@ -46,9 +46,57 @@ work:
 links:
   - label: GitHub
     url: https://github.com/aldehir
+sections:
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Aldehir Rojas is listed in the ggml-org/llama-common team in llama.cpp's CODEOWNERS file, the
+          group that owns the project's shared common code. llama.cpp is distributed under the MIT
+          license.
+        source_ids: [llama-cpp-codeowners, llama-cpp-license]
+      - text: >-
+          Much of Rojas's recent work on llama.cpp concerns chat templates and tool calling. Commits from
+          mid-2026 add specialized parsers for Qwen3 and MiniCPM5, tighten function-call parsing for Qwen
+          models, fix tool-call handling for LFM2 and
+          Gemma 4, and refactor the chat API; an October 2026
+          commit implements a unique filter in the project's Jinja template engine.
+        source_ids: [llama-cpp-commits]
+      - text: >-
+          Rojas has also worked on grammar generation and sampling, including an internal representation
+          for JSON schemas, spacing rules aligned between JSON-schema grammars and parsers, limits on
+          repetition in grammars, and support for multiple end sequences in the reasoning-budget sampler.
+          Other commits change how llama-server splits prompt batches and handles checkpoints.
+        source_ids: [llama-cpp-commits]
+  - heading: Products and projects
+    paragraphs:
+      - text: >-
+          Rojas publishes gpt-oss-adapter, an MIT-licensed middleware proxy written in Go that sits
+          between client applications and inference servers such as LM Studio and llama.cpp. It caches
+          reasoning content from tool-call responses for gpt-oss models and injects it into later
+          requests, because, as the README explains, most clients do not send that context back.
+        source_ids: [gpt-oss-adapter]
+timeline:
+  - date: "2026-06-01"
+    text: Added support for manually triggering the reasoning-budget end sequence in llama.cpp.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-06-28"
+    text: Implemented a MiniCPM5 chat parser in llama.cpp with a co-author.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-07-25"
+    text: Added support for multiple end sequences in llama.cpp's reasoning-budget sampler.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-08-02"
+    text: Added a specialized Qwen3 chat parser to llama.cpp with a co-author.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-09-12"
+    text: Implemented an internal representation for JSON schemas in llama.cpp's common code.
+    source_ids: [llama-cpp-commits]
+  - date: "2026-10-09"
+    text: Refactored the llama.cpp chat API.
+    source_ids: [llama-cpp-commits]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: llama-cpp-codeowners
     title: ggml-org/llama.cpp CODEOWNERS
@@ -56,25 +104,25 @@ sources:
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-commits
     title: ggml-org/llama.cpp commits authored by aldehir
     url: https://github.com/ggml-org/llama.cpp/commits?author=aldehir
     publisher: ggml-org (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: llama-cpp-license
     title: ggml-org/llama.cpp LICENSE (MIT)
     url: https://github.com/ggml-org/llama.cpp/blob/master/LICENSE
     publisher: ggml-org (GitHub repository)
     kind: license
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: gpt-oss-adapter
     title: aldehir/gpt-oss-adapter README and license (MIT)
     url: https://github.com/aldehir/gpt-oss-adapter
     publisher: Aldehir Rojas (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

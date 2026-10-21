@@ -47,9 +47,40 @@ work:
       systems for AI workloads.
     source_ids: [hybrid-cloud-paper]
 links: []
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          In 2023 IBM Research described Nagpurkar as vice president of hybrid cloud platform and developer
+          productivity, overseeing the research behind IBM's hybrid cloud platform; that year Nagpurkar spoke
+          for IBM when it joined the PyTorch Foundation. By March 2026 IBM Research titled Nagpurkar vice
+          president of AI platform, in its announcement that IBM Research, Red Hat, and Google Cloud were
+          contributing the llm-d distributed inference framework to the Cloud Native Computing Foundation.
+        source_ids: [ibm-pytorch-foundation, ibm-open-source-qa, ibm-llmd-cncf]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Nagpurkar's recent papers concern systems for AI workloads. A 2024 white paper by IBM Research and
+          University of Illinois Urbana-Champaign researchers sets out a full-stack co-design approach to hybrid
+          cloud systems for AI, and a 2025 paper on category-aware semantic caching proposes LLM-serving cache
+          policies whose similarity thresholds, time-to-live, and quotas vary by query category.
+        source_ids: [hybrid-cloud-paper, semantic-caching-paper]
+timeline:
+  - date: "2023-07-27"
+    text: Represented IBM Research as vice president of hybrid cloud platform when IBM joined the PyTorch Foundation.
+    source_ids: [ibm-pytorch-foundation]
+  - date: "2024-11-20"
+    text: Co-authored "Transforming the Hybrid Cloud for Emerging AI Workloads" with IBM and Illinois researchers.
+    source_ids: [hybrid-cloud-paper]
+  - date: "2025-10-29"
+    text: Co-authored "Category-Aware Semantic Caching for Heterogeneous LLM Workloads".
+    source_ids: [semantic-caching-paper]
+  - date: "2026-03-24"
+    text: Quoted as IBM Research vice president of AI platform as llm-d was contributed to the CNCF.
+    source_ids: [ibm-llmd-cncf]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: ibm-llmd-cncf
     title: Donating llm-d to the Cloud Native Computing Foundation (IBM Research blog)
@@ -57,32 +88,32 @@ sources:
     publisher: IBM Research
     kind: announcement
     published_at: 2026-03-24
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ibm-pytorch-foundation
     title: IBM joins the PyTorch Foundation to further open-source AI collaboration (IBM Research blog)
     url: https://research.ibm.com/blog/ibm-pytorch-foundation
     publisher: IBM Research
     kind: announcement
     published_at: 2023-07-27
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: ibm-open-source-qa
     title: How open source paved the way for computing from anywhere (IBM Research blog)
     url: https://research.ibm.com/blog/open-hybrid-cloud-AI
     publisher: IBM Research
     kind: official-page
     published_at: 2023-09-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: semantic-caching-paper
     title: Category-Aware Semantic Caching for Heterogeneous LLM Workloads (arXiv 2510.26835)
     url: https://arxiv.org/abs/2510.26835
     publisher: arXiv
     kind: paper
     published_at: 2025-10-29
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: hybrid-cloud-paper
     title: Transforming the Hybrid Cloud for Emerging AI Workloads (arXiv 2411.13239)
     url: https://arxiv.org/abs/2411.13239
     publisher: arXiv
     kind: paper
     published_at: 2024-11-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21

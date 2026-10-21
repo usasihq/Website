@@ -14,7 +14,7 @@ bio:
     architecture search method for designing accurate and efficient ConvNets for mobile devices; the paper
     notes that Wu's work on it was done while interning at Facebook.
   source_ids: [github-profile, fairy-paper, fbnet-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Meta
     organization_slug: meta
@@ -41,9 +41,61 @@ work:
 links:
   - label: GitHub
     url: https://github.com/BichenWuUCB
+sections:
+  - heading: Efficient neural networks
+    paragraphs:
+      - text: >-
+          Much of Wu's early research looked at making neural networks small and fast enough for edge devices such
+          as cars and phones. SqueezeDet (2016) is a compact fully convolutional network for real-time object
+          detection in autonomous driving, and SqueezeSeg (2017) segments road objects in 3D LiDAR point clouds;
+          Wu released implementations of both on GitHub, the SqueezeDet one in TensorFlow. Wu's 2019 PhD dissertation, "Efficient Deep
+          Neural Networks", gathers this line of work.
+        source_ids: [squeezedet-paper, squeezeseg-paper, github-profile, dissertation]
+      - text: >-
+          Wu was also first author of "Shift" (2017), a zero-FLOP, zero-parameter alternative to spatial
+          convolutions, and of FBNet (2018), which used differentiable neural architecture search to design
+          efficient networks for mobile hardware. The FBNet family continued with FBNetV5 (2021), on searching
+          architectures for multiple vision tasks in a single run.
+        source_ids: [shift-paper, fbnet-paper, fbnetv5-paper]
+  - heading: Vision transformers and generative video
+    paragraphs:
+      - text: >-
+          Wu's 2020 paper "Visual Transformers" proposed representing images as semantic visual tokens
+          processed with transformers. In late 2023, as first author of Fairy from GenAI at Meta, Wu worked on fast
+          instruction-guided video editing, and Wu co-authored FlowVid, which uses optical flow together with
+          spatial conditions to keep edited video frames consistent.
+        source_ids: [visual-transformers-paper, fairy-paper, flowvid-paper]
+timeline:
+  - date: "2016-12"
+    text: Posted SqueezeDet, a small fully convolutional network for real-time object detection, as first author.
+    source_ids: [squeezedet-paper]
+  - date: "2017-10"
+    text: Posted SqueezeSeg, for real-time road-object segmentation from 3D LiDAR point clouds, as first author.
+    source_ids: [squeezeseg-paper]
+  - date: "2017-11"
+    text: Posted "Shift", a zero-FLOP, zero-parameter alternative to spatial convolutions, as first author.
+    source_ids: [shift-paper]
+  - date: "2018-12"
+    text: Posted FBNet, a differentiable architecture search method for efficient ConvNets, as first author.
+    source_ids: [fbnet-paper]
+  - date: "2019-08"
+    text: Posted the PhD dissertation "Efficient Deep Neural Networks".
+    source_ids: [dissertation]
+  - date: "2020-06"
+    text: Posted "Visual Transformers", on token-based image representation, as first author.
+    source_ids: [visual-transformers-paper]
+  - date: "2021-11"
+    text: Posted FBNetV5, on neural architecture search for multiple tasks in one run, as first author.
+    source_ids: [fbnetv5-paper]
+  - date: "2023-12"
+    text: Posted Fairy, a fast instruction-guided video-to-video editing method from GenAI at Meta, as first author.
+    source_ids: [fairy-paper]
+  - date: "2023-12"
+    text: Co-authored FlowVid, a video-to-video synthesis framework using optical flow for temporal consistency.
+    source_ids: [flowvid-paper]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: BichenWuUCB (Bichen Wu) on GitHub
@@ -51,18 +103,67 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fairy-paper
     title: "Fairy: Fast Parallelized Instruction-Guided Video-to-Video Synthesis (arXiv 2312.13834)"
     url: https://arxiv.org/abs/2312.13834
     publisher: arXiv
     kind: paper
     published_at: 2023-12-20
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: fbnet-paper
     title: "FBNet: Hardware-Aware Efficient ConvNet Design via Differentiable Neural Architecture Search (arXiv 1812.03443)"
     url: https://arxiv.org/abs/1812.03443
     publisher: arXiv
     kind: paper
     published_at: 2018-12-09
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: squeezedet-paper
+    title: "SqueezeDet: Unified, Small, Low Power Fully Convolutional Neural Networks for Real-Time Object Detection for Autonomous Driving (arXiv 1612.01051)"
+    url: https://arxiv.org/abs/1612.01051
+    publisher: arXiv
+    kind: paper
+    published_at: 2016-12-04
+    accessed_at: 2026-10-21
+  - id: squeezeseg-paper
+    title: "SqueezeSeg: Convolutional Neural Nets with Recurrent CRF for Real-Time Road-Object Segmentation from 3D LiDAR Point Cloud (arXiv 1710.07368)"
+    url: https://arxiv.org/abs/1710.07368
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-10-19
+    accessed_at: 2026-10-21
+  - id: shift-paper
+    title: "Shift: A Zero FLOP, Zero Parameter Alternative to Spatial Convolutions (arXiv 1711.08141)"
+    url: https://arxiv.org/abs/1711.08141
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-11-22
+    accessed_at: 2026-10-21
+  - id: dissertation
+    title: "Efficient Deep Neural Networks — Ph.D. dissertation of Bichen Wu (arXiv 1908.08926)"
+    url: https://arxiv.org/abs/1908.08926
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-08-20
+    accessed_at: 2026-10-21
+  - id: visual-transformers-paper
+    title: "Visual Transformers: Token-based Image Representation and Processing for Computer Vision (arXiv 2006.03677)"
+    url: https://arxiv.org/abs/2006.03677
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-06-05
+    accessed_at: 2026-10-21
+  - id: fbnetv5-paper
+    title: "FBNetV5: Neural Architecture Search for Multiple Tasks in One Run (arXiv 2111.10007)"
+    url: https://arxiv.org/abs/2111.10007
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-11-19
+    accessed_at: 2026-10-21
+  - id: flowvid-paper
+    title: "FlowVid: Taming Imperfect Optical Flows for Consistent Video-to-Video Synthesis (arXiv 2312.17681)"
+    url: https://arxiv.org/abs/2312.17681
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-12-29
+    accessed_at: 2026-10-21

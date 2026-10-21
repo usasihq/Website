@@ -15,7 +15,7 @@ bio:
     Yet Another Applied LLM Benchmark, a GPL-3.0 test suite built from tasks Carlini has asked
     language models to do.
   source_ids: [carlini-site, extraction-paper, stealing-paper, yaallmb-repo]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Anthropic
     organization_slug: anthropic
@@ -57,14 +57,108 @@ work:
       Author of this GPL-3.0 benchmark, which uses a small dataflow domain-specific language to define
       tests derived from tasks Carlini has asked language models to perform.
     source_ids: [yaallmb-repo]
+  - name: "Obfuscated Gradients Give a False Sense of Security"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1802.00420
+    contribution: >-
+      Co-first author, with Anish Athalye and David Wagner, of the 2018 paper showing that many
+      proposed defenses against adversarial examples relied on obfuscated gradients and could be
+      circumvented; it received a best paper award at ICML 2018.
+    source_ids: [obfuscated-paper, carlini-site]
 links:
   - label: Website
     url: https://nicholas.carlini.com
   - label: GitHub
     url: https://github.com/carlini
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Nicholas Carlini completed a Ph.D. at UC Berkeley advised by David Wagner, with whom
+          Carlini co-wrote early papers on adversarial machine learning. Carlini then worked as a research scientist at
+          Google Brain from 2018 to 2023 and at DeepMind from 2023 to 2025, and now works at
+          Anthropic on what harmful things could be done with, or to, language models.
+        source_ids: [carlini-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Much of Carlini's research looks for flaws in machine learning models. Early work with
+          David Wagner covered adversarial examples, including targeted audio attacks on
+          speech-to-text systems, and the 2018 obfuscated-gradients paper showed that many proposed
+          defenses against adversarial examples could be circumvented with stronger attacks.
+        source_ids: [carlini-papers, obfuscated-paper]
+      - text: >-
+          Later work turned to privacy and security of large models. The 2020 paper Extracting
+          Training Data from Large Language Models showed that individual training examples could be
+          recovered by querying GPT-2, and the 2024 paper Stealing Part of a Production Language
+          Model described an attack that recovers precise information from black-box production
+          models. Carlini has also written on model-stealing attacks presented at CRYPTO 2020 and on
+          practical poisoning of web-scale training datasets.
+        source_ids: [extraction-paper, stealing-paper, carlini-site]
+  - heading: Open-source work and writing
+    paragraphs:
+      - text: >-
+          Carlini publishes Yet Another Applied LLM Benchmark, a GPL-3.0 test suite built from tasks
+          Carlini has asked language models to perform. Carlini's site also hosts code projects
+          such as an obfuscated Tic-Tac-Toe program written as a single call to printf, a Doom-style
+          game in 13 kilobytes of WebGL and JavaScript, and a CPU built on Conway's Game of Life.
+        source_ids: [yaallmb-repo, carlini-site]
+timeline:
+  - date: "2017"
+    text: Published Adversarial Examples Are Not Easily Detected with David Wagner, a best paper finalist at AISec.
+    source_ids: [carlini-papers]
+  - date: 2018-02-01
+    text: Released Obfuscated Gradients Give a False Sense of Security with Anish Athalye and David Wagner.
+    source_ids: [obfuscated-paper]
+  - date: "2018"
+    text: Joined Google Brain as a research scientist.
+    source_ids: [carlini-site]
+  - date: 2020-12-14
+    text: Released Extracting Training Data from Large Language Models as first author.
+    source_ids: [extraction-paper]
+  - date: "2023"
+    text: Began work as a research scientist at DeepMind.
+    source_ids: [carlini-site]
+  - date: 2024-03-11
+    text: Released Stealing Part of a Production Language Model as first author.
+    source_ids: [stealing-paper]
+honors:
+  - name: Best Paper Award, ICML 2018 (Obfuscated Gradients Give a False Sense of Security)
+    year: 2018
+    awarded_by: International Conference on Machine Learning
+    source_ids: [carlini-papers, carlini-site]
+  - name: Best Paper Award, Deep Learning and Security Workshop 2018 (Audio Adversarial Examples)
+    year: 2018
+    awarded_by: Deep Learning and Security Workshop
+    source_ids: [carlini-papers]
+  - name: IOCCC Best of Show
+    year: 2020
+    awarded_by: International Obfuscated C Code Contest
+    source_ids: [carlini-site]
+  - name: Distinguished Paper Award, USENIX Security 2021 (Poisoning the Unlabeled Dataset of Semi-Supervised Learning)
+    year: 2021
+    awarded_by: USENIX Security Symposium
+    source_ids: [carlini-papers]
+  - name: Distinguished Paper Award, USENIX Security 2023 (Tight Auditing of Differentially Private Machine Learning)
+    year: 2023
+    awarded_by: USENIX Security Symposium
+    source_ids: [carlini-papers]
+  - name: Best Paper Award, ICML 2024 (Stealing Part of a Production Language Model)
+    year: 2024
+    awarded_by: International Conference on Machine Learning
+    source_ids: [carlini-papers]
+  - name: Best Paper Award, ICML 2024 (Considerations for Differentially Private Learning with Large-Scale Public Pretraining)
+    year: 2024
+    awarded_by: International Conference on Machine Learning
+    source_ids: [carlini-papers]
+  - name: Best Paper Award, Eurocrypt 2025 (Polynomial Time Cryptanalytic Extraction of Deep Neural Networks in the Hard-Label Setting)
+    year: 2025
+    awarded_by: Eurocrypt
+    source_ids: [carlini-papers]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: carlini-site
     title: Nicholas Carlini — homepage
@@ -72,25 +166,39 @@ sources:
     publisher: Nicholas Carlini
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: extraction-paper
     title: Extracting Training Data from Large Language Models (arXiv 2012.07805)
     url: https://arxiv.org/abs/2012.07805
     publisher: arXiv
     kind: paper
     published_at: 2020-12-14
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: stealing-paper
     title: Stealing Part of a Production Language Model (arXiv 2403.06634)
     url: https://arxiv.org/abs/2403.06634
     publisher: arXiv
     kind: paper
     published_at: 2024-03-11
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: yaallmb-repo
     title: carlini/yet-another-applied-llm-benchmark README (GPL-3.0)
     url: https://github.com/carlini/yet-another-applied-llm-benchmark
     publisher: Nicholas Carlini (GitHub repository)
     kind: repository
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: carlini-papers
+    title: Nicholas Carlini — papers
+    url: https://nicholas.carlini.com/papers
+    publisher: Nicholas Carlini
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-21
+  - id: obfuscated-paper
+    title: "Obfuscated Gradients Give a False Sense of Security: Circumventing Defenses to Adversarial Examples (arXiv 1802.00420)"
+    url: https://arxiv.org/abs/1802.00420
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-02-01
+    accessed_at: 2026-10-21

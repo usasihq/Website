@@ -15,7 +15,7 @@ bio:
     author of the VALL-E paper, Neural Codec Language Models are Zero-Shot Text to Speech
     Synthesizers.
   source_ids: [github-profile, chen-site, wavlm-paper, valle-paper]
-  reviewed_at: 2026-10-13
+  reviewed_at: 2026-10-21
 affiliations:
   - name: Meta (FAIR)
     organization_slug: meta
@@ -35,7 +35,7 @@ work:
     contribution: >-
       First author of WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech
       Processing (2021), a Microsoft paper.
-    source_ids: [wavlm-paper, msr-wavlm, chen-site]
+    source_ids: [wavlm-paper, chen-site]
   - name: VALL-E
     artifact_slug: null
     type: open-research
@@ -44,14 +44,73 @@ work:
       Co-first author, with Chengyi Wang and Yu Wu, of Neural Codec Language Models are Zero-Shot Text
       to Speech Synthesizers (2023), the VALL-E paper.
     source_ids: [valle-paper, chen-site]
+  - name: BEATs
+    artifact_slug: null
+    type: open-research
+    url: https://github.com/microsoft/unilm/tree/master/beats
+    contribution: >-
+      First author of BEATs: Audio Pre-Training with Acoustic Tokenizers (ICML 2023); Microsoft's
+      unilm repository hosts the official PyTorch implementation and pre-trained models.
+    source_ids: [beats-paper, beats-repo, chen-site]
 links:
   - label: Website
     url: https://sanyuan-chen.github.io/
   - label: GitHub
     url: https://github.com/Sanyuan-Chen
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Chen's homepage describes a joint PhD program between Harbin Institute of Technology and
+          Microsoft Research Asia, with a research internship in MSRA's Natural Language Computing
+          Group from May 2020, mentored by Yu Wu and Shujie Liu. The same page lists an earlier
+          research internship at Harvard University's Data Systems Laboratory in 2018 and 2019.
+          Chen's GitHub profile now gives the role of Research Scientist at Meta FAIR.
+        source_ids: [chen-site, github-profile]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Chen's research centers on language-model-style pre-training for speech and audio. WavLM
+          (2021) is a self-supervised model meant to serve the full range of speech-processing tasks,
+          and UniSpeech-SAT (ICASSP 2022) added speaker-aware pre-training. SpeechLM (2022) used
+          unpaired text to improve speech pre-training.
+        source_ids: [wavlm-paper, unispeech-sat-paper, speechlm-paper, chen-site]
+      - text: >-
+          BEATs (ICML 2023) pre-trains audio models with acoustic tokenizers, and VALL-E (2023) treats
+          text-to-speech as language modeling over neural codec codes, synthesizing a voice from a
+          short sample. Earlier work covered continuous speech separation, some of which the homepage
+          says shipped in Microsoft's Conversation Transcription Service.
+        source_ids: [beats-paper, valle-paper, chen-site]
+timeline:
+  - date: 2018-08
+    text: Began a research internship at the Data Systems Laboratory at Harvard University.
+    source_ids: [chen-site]
+  - date: 2020-05
+    text: Joined the Natural Language Computing Group at Microsoft Research Asia as a research intern.
+    source_ids: [chen-site]
+  - date: 2021-10-12
+    text: Released UniSpeech-SAT, on speaker-aware pre-training for universal speech representations.
+    source_ids: [unispeech-sat-paper]
+  - date: 2021-10-26
+    text: Released WavLM, a large-scale self-supervised pre-training model for full-stack speech processing.
+    source_ids: [wavlm-paper]
+  - date: 2022-09-30
+    text: Co-first-authored SpeechLM, on enhancing speech pre-training with unpaired text data.
+    source_ids: [speechlm-paper, chen-site]
+  - date: 2022-12-18
+    text: Released BEATs, on audio pre-training with acoustic tokenizers, later an ICML 2023 oral paper.
+    source_ids: [beats-paper, chen-site]
+  - date: 2023-01-05
+    text: Co-first-authored the VALL-E paper on neural codec language models for zero-shot text to speech.
+    source_ids: [valle-paper, chen-site]
+honors:
+  - name: UNESCO Netexplo Innovation Award (VALL-E)
+    year: 2023
+    awarded_by: Netexplo and UNESCO
+    source_ids: [chen-site]
 publication_status: published
-updated_at: 2026-10-13
-last_reviewed: 2026-10-13
+updated_at: 2026-10-21
+last_reviewed: 2026-10-21
 sources:
   - id: github-profile
     title: Sanyuan-Chen (Sanyuan Chen) on GitHub
@@ -59,32 +118,53 @@ sources:
     publisher: GitHub
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: chen-site
     title: Sanyuan Chen — homepage
     url: https://sanyuan-chen.github.io/
     publisher: Sanyuan Chen
     kind: official-page
     published_at: null
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: wavlm-paper
     title: "WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech Processing (arXiv 2110.13900)"
     url: https://arxiv.org/abs/2110.13900
     publisher: arXiv
     kind: paper
     published_at: 2021-10-26
-    accessed_at: 2026-10-13
-  - id: msr-wavlm
-    title: "WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech Processing — Microsoft Research publication page"
-    url: https://www.microsoft.com/en-us/research/publication/wavlm-large-scale-self-supervised-pre-training-for-full-stack-speech-processing/
-    publisher: Microsoft Research
-    kind: official-page
-    published_at: 2022-07
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
   - id: valle-paper
     title: "Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers (arXiv 2301.02111)"
     url: https://arxiv.org/abs/2301.02111
     publisher: arXiv
     kind: paper
     published_at: 2023-01-05
-    accessed_at: 2026-10-13
+    accessed_at: 2026-10-21
+  - id: unispeech-sat-paper
+    title: "UniSpeech-SAT: Universal Speech Representation Learning with Speaker Aware Pre-Training (arXiv 2110.05752)"
+    url: https://arxiv.org/abs/2110.05752
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-10-12
+    accessed_at: 2026-10-21
+  - id: speechlm-paper
+    title: "SpeechLM: Enhanced Speech Pre-Training with Unpaired Textual Data (arXiv 2209.15329)"
+    url: https://arxiv.org/abs/2209.15329
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-09-30
+    accessed_at: 2026-10-21
+  - id: beats-paper
+    title: "BEATs: Audio Pre-Training with Acoustic Tokenizers (arXiv 2212.09058)"
+    url: https://arxiv.org/abs/2212.09058
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-12-18
+    accessed_at: 2026-10-21
+  - id: beats-repo
+    title: microsoft/unilm — BEATs README
+    url: https://github.com/microsoft/unilm/tree/master/beats
+    publisher: Microsoft (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-21
