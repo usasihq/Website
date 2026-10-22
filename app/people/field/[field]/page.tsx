@@ -3,6 +3,7 @@ import { PeopleListPage } from "@/components/PeopleListPage";
 import { getCatalog } from "@/lib/catalog";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { fieldPeopleLists, organizationPeopleLists } from "@/lib/people-lists";
+import { schoolPeopleLists } from "@/lib/people-schools";
 import { shortName } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -36,6 +37,7 @@ export default async function PeopleInFieldPage({ params }: { params: Promise<{ 
   const orgCounts = new Map<string, number>();
   for (const i of list.items) for (const o of i.organizations) if (o.current && o.slug && orgLists.has(o.slug)) orgCounts.set(o.slug, (orgCounts.get(o.slug) ?? 0) + 1);
   const topOrgs = [...orgCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8);
+  const schools = schoolPeopleLists(catalog).slice(0, 6);
   return (
     <PeopleListPage
       title={`People in ${list.name.toLowerCase()}`}
@@ -51,7 +53,10 @@ export default async function PeopleInFieldPage({ params }: { params: Promise<{ 
           alphabetically; this is not a ranking. Each profile covers public professional work only, cited to official pages.
         </p>
       }
-      related={topOrgs.map(([slug]) => ({ href: orgLists.get(slug)!.path, label: `People at ${shortName(orgLists.get(slug)!.name)}` }))}
+      related={[
+        ...topOrgs.map(([slug]) => ({ href: orgLists.get(slug)!.path, label: `People at ${shortName(orgLists.get(slug)!.name)}` })),
+        ...schools.map((s) => ({ href: s.path, label: `People from ${s.shortName}` })),
+      ]}
     />
   );
 }

@@ -5,6 +5,7 @@ import { getCatalog } from "@/lib/catalog";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { PERSON_SPECIALTY_LABELS } from "@/lib/people";
 import { organizationPeopleLists, peopleFieldHref } from "@/lib/people-lists";
+import { schoolPeopleLists } from "@/lib/people-schools";
 import { orgHref } from "@/lib/routes";
 import { shortName } from "@/lib/seo";
 
@@ -35,6 +36,7 @@ export default async function PeopleAtOrganizationPage({ params }: { params: Pro
   const list = await find(params);
   if (!list) notFound();
   const fields = [...new Set(list.items.flatMap((i) => i.specialties))].slice(0, 8);
+  const schools = schoolPeopleLists(getCatalog()).slice(0, 6);
   return (
     <PeopleListPage
       title={`People at ${list.name}`}
@@ -55,7 +57,10 @@ export default async function PeopleAtOrganizationPage({ params }: { params: Pro
           public professional work only. This is not a ranking.
         </p>
       }
-      related={fields.map((f) => ({ href: peopleFieldHref(f), label: PERSON_SPECIALTY_LABELS[f] }))}
+      related={[
+        ...fields.map((f) => ({ href: peopleFieldHref(f), label: PERSON_SPECIALTY_LABELS[f] })),
+        ...schools.map((s) => ({ href: s.path, label: `People from ${s.shortName}` })),
+      ]}
     />
   );
 }
