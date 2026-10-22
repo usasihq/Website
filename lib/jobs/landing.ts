@@ -1,7 +1,7 @@
 /**
  * Jobs landing pages: /jobs/at/<employer>/, /jobs/in/<state>/, /jobs/in/<state>/<city>/,
  * /jobs/role/<slug>/, /jobs/role/<slug>/<state>/, and the topic pages
- * (/jobs/entry-level/, /jobs/internships/, /jobs/summer-2027/,
+ * (/jobs/entry-level/, /jobs/internships/, /jobs/fellowships/, /jobs/summer-2027/,
  * /jobs/no-programming/, /jobs/data-center-infrastructure/, /jobs/remote-us/,
  * /jobs/remote/). Build-time only (reads data/jobs/current.json through
  * readJobsForBuild). Every count, list, and date is recomputed on each build from the
@@ -19,7 +19,7 @@ import { BRAND_SUFFIX, DESCRIPTION_MAX, TITLE_MAX } from "../metadata";
 import { fitTitle } from "../seo";
 import { ALL_JOB_FILTERS, DEFAULT_JOB_FILTERS, filterJobs, serializeJobFilters, toJobItem, type JobFilters, type JobItem } from "./search";
 import { JOB_ROLES, type JobRole } from "./roles";
-import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, INTERNSHIP_RULE, NO_PROGRAMMING_RULE, SUMMER_2027_RULE } from "./tracks";
+import { DATA_CENTER_RULE, ENTRY_LEVEL_RULE, FELLOWSHIP_RULE, INTERNSHIP_RULE, NO_PROGRAMMING_RULE, SUMMER_2027_RULE } from "./tracks";
 
 /**
  * Next.js `output: export` rejects an empty `generateStaticParams()`. City and
@@ -60,6 +60,7 @@ export type TopicId =
   | "no-programming"
   | "entry-level"
   | "internships"
+  | "fellowships"
   | "summer-2027"
   | "remote-us"
   | "remote";
@@ -82,6 +83,8 @@ export type LandingDefinition = {
   description: (f: Facts) => string;
   /** Card image path, /og/jobs/<slug>.jpg. */
   image: string;
+  /** Extra related pages shown on the landing (same-site hubs that are not other job topics). */
+  related?: { href: string; label: string }[];
 };
 
 const n = (v: number) => v.toLocaleString("en-US");
@@ -169,7 +172,7 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     scope: "includes-outside",
     filters: { track: "early-career" },
     intro:
-      "Internships, new-graduate roles, apprenticeships, residencies, fellowships, and other entry points at AI companies and labs in the USASI catalog, found from the employer’s own title and employment type.",
+      "Internships, new-graduate roles, apprenticeships, residencies, fellowships, and other entry points at AI companies and labs in the USASI catalog, found from the employer’s own title and employment type. Dedicated lists of internships and of fellowships and postdocs are on their own pages.",
     rule: ENTRY_LEVEL_RULE,
     title: (f) => openingsTitle("Entry-level AI jobs", f.count),
     description: (f) =>
@@ -185,12 +188,30 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     scope: "includes-outside",
     filters: { track: "internships" },
     intro:
-      "Open internships at AI companies and labs in the USASI catalog, found from the employer’s own title (“intern”, “internship”) or an employment type of internship. New-graduate and other early-career roles that do not say intern are on the entry-level page.",
+      "Open internships at AI companies and labs in the USASI catalog, found from the employer’s own title (“intern”, “internship”) or an employment type of internship. New-graduate and other early-career roles that do not say intern are on the entry-level page. Fellowships and postdocs are on the fellowships page.",
     rule: INTERNSHIP_RULE,
     title: (f) => openingsTitle("AI internships", f.count),
     description: (f) =>
       withFreshness(`${plural(f.count, "open internship", "open internships")} at ${at(f)}, matched by job title or employment type. ${abroad(f)}`, f.date),
     image: "/og/jobs/internships.jpg",
+    related: [{ href: "/people/school/", label: "People by school" }],
+  },
+  fellowships: {
+    id: "fellowships",
+    path: "/jobs/fellowships/",
+    name: "Fellowships and postdocs",
+    h1: "AI fellowships and postdocs",
+    eyebrow: "Jobs by topic",
+    scope: "includes-outside",
+    filters: { track: "fellowships" },
+    intro:
+      "Open fellowships, fellows programs, and postdoctoral roles at AI companies, labs, and research institutes in the USASI catalog, found from the employer’s own title (“fellowship”, “fellow”, “postdoc”, “postdoctoral”). Fall is the usual application season. Internships are on the internships page; other early-career roles are on the entry-level page. People in the catalog grouped by university are on the people-by-school page.",
+    rule: FELLOWSHIP_RULE,
+    title: (f) => openingsTitle("AI fellowships and postdocs", f.count),
+    description: (f) =>
+      withFreshness(`${plural(f.count, "open AI fellowship or postdoc", "open AI fellowships and postdocs")} at ${at(f)}, matched by job title. ${abroad(f)}`, f.date),
+    image: "/og/jobs/fellowships.jpg",
+    related: [{ href: "/people/school/", label: "People by school" }],
   },
   "summer-2027": {
     id: "summer-2027",
@@ -201,7 +222,7 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     scope: "includes-outside",
     filters: { track: "summer-2027" },
     intro:
-      "Internship listings at AI companies and labs whose titles name 2027 — typically summer or fall 2027 intern programs. The full internships page lists every current internship, including those that do not name a year.",
+      "Internship listings at AI companies and labs whose titles name 2027 — typically summer or fall 2027 intern programs. The full internships page lists every current internship, including those that do not name a year. Fellowships and postdocs are on the fellowships page.",
     rule: SUMMER_2027_RULE,
     title: (f) => openingsTitle("Summer 2027 AI internships", f.count),
     description: (f) =>

@@ -558,6 +558,13 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, com
                 All jobs
               </Link>
             </li>
+            {page.related?.map((r) => (
+              <li key={r.href}>
+                <Link prefetch={false} href={r.href} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
+                  {r.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
