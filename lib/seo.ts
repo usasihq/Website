@@ -350,6 +350,82 @@ function shortRole(role: string, max = 28): string | null {
   return null;
 }
 
+/** Compare title segments case-insensitively, ignoring punctuation and spacing. */
+export function titleSegmentKey(value: string): string {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+export function sameTitleSegment(a: string, b: string): boolean {
+  const left = titleSegmentKey(a);
+  const right = titleSegmentKey(b);
+  return left.length > 0 && left === right;
+}
+
+/**
+ * The name / org / project pieces of a people-bio title (`Name at Org — Project`
+ * or `Name, Role at Org`). Used to detect the repeated-word titles that happen
+ * when a creator's channel or a project name matches the person or the org.
+ */
+export function personTitleParts(title: string): { name: string; org?: string; known?: string } {
+  const [head, knownRaw] = title.split(" — ");
+  const known = knownRaw?.trim() || undefined;
+  const at = head!.lastIndexOf(" at ");
+  if (at === -1) return { name: head!.split(",")[0]!.trim(), known };
+  return { name: head!.slice(0, at).split(",")[0]!.trim(), org: head!.slice(at + 4).trim() || undefined, known };
+}
+
+/** True when the org or trailing project repeats the name or each other. */
+export function personTitleRepeatsSegment(title: string): boolean {
+  const { name, org, known } = personTitleParts(title);
+  const keys = [name, org, known].filter((s): s is string => Boolean(s)).map(titleSegmentKey).filter(Boolean);
+  return new Set(keys).size < keys.length;
+}
+
+function distinctTitleSegment(value: string | null | undefined, ...seen: Array<string | null | undefined>): string | null {
+  if (!value) return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  if (seen.some((s) => s && sameTitleSegment(trimmed, s))) return null;
+  return trimmed;
+}
+
+/**
+ * People-bio title: name, then a current org and what they are known for.
+ * Drops `at <Org>` when the org is the person's own name (a channel or personal
+ * brand) and drops a trailing project that repeats the name or org, so titles
+ * stay unique. Falls back to the role, then "AI researcher".
+ */
+export function buildPersonTitle(input: { name: string; org?: string | null; role?: string | null; works?: Array<string | null | undefined> }): string {
+  const name = squash(input.name);
+  const org = distinctTitleSegment(input.org ? shortName(input.org) : null, name);
+  const role = distinctTitleSegment(input.role ? shortRole(input.role) : null, name, org);
+  const works: string[] = [];
+  for (const raw of input.works ?? []) {
+    const work = raw ? wholeWorkName(raw) : null;
+    if (!work) continue;
+    if (sameTitleSegment(work, name) || (org && sameTitleSegment(work, org))) continue;
+    if (works.some((w) => sameTitleSegment(w, work))) continue;
+    works.push(work);
+  }
+  const known = works[0] ?? null;
+  const known2 = works[1] ?? null;
+  return fitTitle([
+    org && known && `${name} at ${org} — ${known}`,
+    org && role && `${name}, ${role} at ${org}`,
+    org && `${name} at ${org}`,
+    known && known2 && `${name} — ${known} & ${known2}`,
+    known && `${name} — ${known}`,
+    role && `${name}, ${role}`,
+    `${name} — AI researcher`,
+    `${name} — sourced AI profile`,
+    name,
+  ]);
+}
+
 /** Optional USASI-only facts already shown on the profile (jobs, news mentions). */
 export type PersonSeoExtras = {
   openJobs?: { orgName: string; count: number }[];
@@ -358,27 +434,23 @@ export type PersonSeoExtras = {
 
 /**
  * A People directory profile. Title leads with the name, then a current org
- * and what they are known for. Description is the sourced headline plus
- * distinctive catalog facts (open jobs, a news mention, their links).
+ * and what they are known for, with repeated name/org/project segments dropped.
+ * Description is the sourced headline plus distinctive catalog facts (open
+ * jobs, a news mention, their links).
  */
 export function personSeo(catalog: Catalog, p: Person, extras?: PersonSeoExtras): SeoText {
   const current = p.affiliations.filter((a) => a.current);
-  const org = current[0] ? shortName(current[0].name) : null;
-  const role = current[0] ? shortRole(current[0].role) : null;
+  // Prefer a current org that is not just the person's own name (a channel or personal brand).
+  const orgAff = current.find((a) => !sameTitleSegment(shortName(a.name), p.name)) ?? current[0];
   const works = p.work.map((w) => wholeWorkName(w.name)).filter((w): w is string => w !== null);
-  const known = works[0];
-  const known2 = works[1];
   const links = p.links.map((l) => l.label);
   return {
-    title: fitTitle([
-      org && known && `${p.name} at ${org} — ${known}`,
-      org && role && `${p.name}, ${role} at ${org}`,
-      org && `${p.name} at ${org}`,
-      known && known2 && `${p.name} — ${known} & ${known2}`,
-      known && `${p.name} — ${known}`,
-      `${p.name} — sourced AI profile`,
-      p.name,
-    ]),
+    title: buildPersonTitle({
+      name: p.name,
+      org: orgAff?.name,
+      role: orgAff?.role ?? current[0]?.role,
+      works: p.work.map((w) => w.name),
+    }),
     description: composeDescription(
       [/[.!?]$/.test(p.headline) ? p.headline : `${p.headline}.`],
       [

@@ -1,6 +1,6 @@
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
-import { Award, Briefcase, CalendarDays, Code2, Newspaper } from "lucide-react";
+import { Award, Briefcase, CalendarDays, Code2, Newspaper, Users } from "lucide-react";
 import { ExternalLink } from "@/components/ExternalLink";
 import { InitialsTile } from "@/components/LocalCorner";
 import { JsonLd } from "@/components/JsonLd";
@@ -14,8 +14,8 @@ import { pageMetadata } from "@/lib/metadata";
 import { cardImage } from "@/lib/page-cards";
 import { PERSON_GROUP_LABELS, PERSON_SPECIALTY_LABELS, WORK_TYPE_LABELS } from "@/lib/people";
 import { companyJobsLink } from "@/lib/jobs/landing-links";
-import { peopleAtOrganization } from "@/lib/people-index";
-import { fieldPeopleLists, peopleAtHref, peopleFieldHref } from "@/lib/people-lists";
+import { fieldPeopleLists, peopleFieldHref } from "@/lib/people-lists";
+import { relatedPeople } from "@/lib/people-related";
 import { personSchoolPages } from "@/lib/people-schools";
 import { personEnrichment, wikidataUrl } from "@/lib/people-wikidata";
 import { artifactHref, orgHref, personHref } from "@/lib/routes";
@@ -23,9 +23,6 @@ import { personNews, personPageSeo } from "@/lib/people-seo";
 import { personLd } from "@/lib/structured-data";
 
 export const dynamicParams = false;
-
-/** How many colleagues the "More people at …" box lists before linking to the filtered directory. */
-const COLLEAGUES = 6;
 
 export function generateStaticParams() {
   return getCatalog().people.map((p) => ({ slug: p.slug }));
@@ -56,8 +53,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
     ) : (
       <span className="text-text">{name}</span>
     );
-  const home = current.find((a) => a.organization_slug) ?? earlier.find((a) => a.organization_slug);
-  const colleagues = home?.organization_slug ? peopleAtOrganization(catalog, home.organization_slug).filter((x) => x.href !== personHref(p.slug)) : [];
+  const related = relatedPeople(catalog, p);
   const catalogLinks = [
     ...p.affiliations.filter((a) => a.organization_slug).map((a) => ({ href: orgHref(a.organization_slug!), label: a.name, kind: "Organization" })),
     ...p.work.filter((w) => w.artifact_slug).map((w) => ({ href: artifactHref(w.artifact_slug!), label: catalog.artifact(w.artifact_slug!)?.name ?? w.name, kind: "Open model or tool" })),
@@ -84,6 +80,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
     ...(earlier.length ? [{ id: "earlier-h", label: "Other documented roles" }] : []),
     ...(p.honors.length ? [{ id: "honors-h", label: "Honors and recognition" }] : []),
     ...(news.length ? [{ id: "news-h", label: "In the news" }] : []),
+    ...(related.people.length || related.hubs.length ? [{ id: "related-people-h", label: "Related people" }] : []),
     { id: "sources-h", label: "References" },
   ];
 
@@ -294,6 +291,41 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                 </ul>
               </section>
             ) : null}
+
+            {related.people.length || related.hubs.length ? (
+              <section aria-labelledby="related-people-h">
+                <h2 id="related-people-h" className="flex scroll-mt-24 items-center gap-2 text-2xl font-semibold text-text">
+                  <Users aria-hidden="true" className="h-6 w-6 text-cyan" />
+                  Related people
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm text-muted">More sourced profiles at the same organization, in the same field, or from the same school.</p>
+                {related.people.length ? (
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2" data-testid="person-related">
+                    {related.people.map((r) => (
+                      <li key={r.href}>
+                        <Link prefetch={false} href={r.href} className="link">
+                          {r.name}
+                        </Link>
+                        <span className="block text-sm text-muted">{r.note}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                {related.hubs.length ? (
+                  <nav aria-label="People lists" className="mt-5">
+                    <ul className="flex flex-wrap gap-2" data-testid="person-related-hubs">
+                      {related.hubs.map((h) => (
+                        <li key={h.href}>
+                          <Link prefetch={false} href={h.href} className="badge min-h-9 hover:border-cyan">
+                            {h.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                ) : null}
+              </section>
+            ) : null}
           </div>
 
           <aside className="grid content-start gap-6" aria-label={`${p.name} at a glance`}>
@@ -447,22 +479,23 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                 </ul>
               </div>
             ) : null}
-            {colleagues.length && home ? (
+            {related.people.length ? (
               <div className="card p-5" data-testid="person-colleagues">
-                <h2 className="font-semibold text-text">More people at {home.name}</h2>
+                <h2 className="font-semibold text-text">Related people</h2>
                 <ul className="mt-3 space-y-2 text-[0.9375rem]">
-                  {colleagues.slice(0, COLLEAGUES).map((c) => (
+                  {related.people.slice(0, 6).map((c) => (
                     <li key={c.href}>
                       <Link prefetch={false} href={c.href} className="link">
                         {c.name}
                       </Link>
+                      <span className="block text-xs text-muted">{c.note}</span>
                     </li>
                   ))}
                 </ul>
-                {colleagues.length > COLLEAGUES ? (
+                {related.hubs[0] ? (
                   <p className="mt-3 text-sm">
-                    <Link prefetch={false} href={peopleAtHref(home.organization_slug!)} className="link">
-                      All {colleagues.length + 1} people tied to {home.name}
+                    <Link prefetch={false} href={related.hubs[0].href} className="link">
+                      {related.hubs[0].label}
                     </Link>
                   </p>
                 ) : null}
