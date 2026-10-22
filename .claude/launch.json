@@ -4,7 +4,7 @@
     {
       "name": "usasi-static",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["scripts/serve-static.mjs", "--port", "4321"],
+      "runtimeArgs": ["--import", "tsx", "scripts/serve-static.mjs", "--port", "4321"],
       "port": 4321
     },
     {
