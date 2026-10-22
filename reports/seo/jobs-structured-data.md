@@ -25,7 +25,8 @@ from the title and description when the feed omits it (`lib/jobs/employment.ts`)
 other fields are never guessed:
 
 - `title`, `description` (HTML rebuilt from the sanitized description), `datePosted`
-- `hiringOrganization.name`, `url`, `sameAs` (the organization's official website),
+- `hiringOrganization.name`, `url` (official website, or this site's `/companies/<slug>/`
+  page when none is known), `sameAs` (official website only),
   and `logo` (a crawlable 128×128 PNG at `/images/orgs/<slug>.png`)
 - `directApply: false` (USASI does not take applications; the page links out)
 - `url` (this site's job page)

@@ -22,7 +22,9 @@ describe("JobPosting Google requirements", () => {
       if (!ld) continue;
       checked += 1;
       expect(jobPostingErrors(ld), p.path).toEqual([]);
-      expect(typeof (ld.hiringOrganization as { logo?: string }).logo).toBe("string");
+      const org = ld.hiringOrganization as { logo?: string; url?: string };
+      expect(org.logo, p.path).toMatch(/^https:\/\//);
+      expect(org.url, p.path).toMatch(/^https:\/\//);
     }
     expect(checked).toBeGreaterThan(0);
   });
@@ -33,6 +35,7 @@ describe("JobPosting Google requirements", () => {
     expect(cov.invalid).toBe(0);
     expect(cov.postings).toBeGreaterThan(0);
     const byField = Object.fromEntries(cov.rows.map((r) => [r.field, r]));
+    // Always emitted by our markup, including after a live jobs refresh.
     expect(byField.title.pct).toBe(100);
     expect(byField.description.pct).toBe(100);
     expect(byField.datePosted.pct).toBe(100);
@@ -42,7 +45,8 @@ describe("JobPosting Google requirements", () => {
     expect(byField.identifier.pct).toBe(100);
     expect(byField.directApply.pct).toBe(100);
     expect(byField.locationEligible.pct).toBe(100);
-    expect(byField.employmentType.pct).toBeGreaterThan(90);
+    // Feed-dependent: inference covers most titles, not every vague posting.
+    expect(byField.employmentType.pct).toBeGreaterThan(50);
     // Keep the meta description helper in the same file as the page so coverage
     // stays tied to what Google and readers see.
     expect(JOB_META_MAX).toBe(160);

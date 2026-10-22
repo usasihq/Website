@@ -86,6 +86,24 @@ describe("JobPosting data", () => {
     });
   });
 
+  it("points hiringOrganization.url at our company page when the catalog has no official website", () => {
+    const bare = { slug: "new-lab", name: "New Lab", website: "" } as Organization;
+    const ld = jobPostingLd({
+      job: job({ organization_slug: "new-lab" }),
+      org: bare,
+      slug: "research-engineer-aaaaaaa",
+      path: "/jobs/at/new-lab/research-engineer-aaaaaaa/",
+      description: desc,
+    })!;
+    expect(ld.hiringOrganization).toMatchObject({
+      "@type": "Organization",
+      name: "New Lab",
+      url: "https://unitedstatesofamericasuperintelligence.com/companies/new-lab/",
+      logo: "https://unitedstatesofamericasuperintelligence.com/images/orgs/new-lab.png",
+    });
+    expect(ld.hiringOrganization).not.toHaveProperty("sameAs");
+  });
+
   it("names the USAJOBS hiring agency with the federal government as parent", () => {
     const federal = job({
       id: "federal:usajobs:ai:21947200",
@@ -103,6 +121,7 @@ describe("JobPosting data", () => {
     expect(ld.hiringOrganization).toEqual({
       "@type": "Organization",
       name: "National Institute of Standards and Technology",
+      url: "https://www.usa.gov",
       logo: "https://unitedstatesofamericasuperintelligence.com/images/orgs/federal.png",
       parentOrganization: {
         "@type": "Organization",
