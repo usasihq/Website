@@ -7,6 +7,7 @@
  * always has a ≥112×112 PNG Google can fetch. The build never downloads logos.
  */
 import { absoluteUrl } from "./paths";
+import { orgHref } from "./routes";
 import type { Organization } from "./schema";
 
 export const ORG_LOGO_SIZE = 128;
@@ -20,11 +21,33 @@ export function orgLogoAbsoluteUrl(slug: string): string {
   return absoluteUrl(orgLogoHref(slug));
 }
 
-/** hiringOrganization / Organization logo fields from a catalog record. */
-export function organizationLogoFields(org: Pick<Organization, "slug" | "name" | "website">): {
+/** Official employer site only. Empty, relative, or non-https values are unknown. */
+export function officialWebsite(website: string | null | undefined): string | null {
+  const value = website?.trim() ?? "";
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || !url.hostname.includes(".")) return null;
+    return value;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * hiringOrganization fields from a catalog record.
+ * `url` is the official website, or this site's company page when none is known.
+ * `sameAs` is only the official website — never a USASI URL or an invented domain.
+ */
+export function organizationLogoFields(org: Pick<Organization, "slug" | "name"> & { website?: string | null }): {
   url: string;
-  sameAs: string;
+  sameAs?: string;
   logo: string;
 } {
-  return { url: org.website, sameAs: org.website, logo: orgLogoAbsoluteUrl(org.slug) };
+  const official = officialWebsite(org.website);
+  return {
+    url: official ?? absoluteUrl(orgHref(org.slug)),
+    ...(official ? { sameAs: official } : {}),
+    logo: orgLogoAbsoluteUrl(org.slug),
+  };
 }

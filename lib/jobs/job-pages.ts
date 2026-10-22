@@ -295,10 +295,16 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
   const usable = job.salaries.filter((s) => s.currency && (s.min !== null || s.max !== null));
   const salary = usable.find((s) => s.source_status === "employer-provided") ?? usable[0];
   const marks = organizationLogoFields(org);
-  const parentOrg = { "@type": "Organization", name: org.name, url: marks.url, sameAs: marks.sameAs, logo: marks.logo };
+  const parentOrg = {
+    "@type": "Organization",
+    name: org.name,
+    url: marks.url,
+    ...(marks.sameAs ? { sameAs: marks.sameAs } : {}),
+    logo: marks.logo,
+  };
   const hiringOrganization =
     job.source_type === "usajobs" && job.department
-      ? { "@type": "Organization", name: job.department, logo: marks.logo, parentOrganization: parentOrg }
+      ? { "@type": "Organization", name: job.department, url: marks.url, logo: marks.logo, parentOrganization: parentOrg }
       : parentOrg;
   const employment = jobEmployment(p);
   return {

@@ -3,13 +3,36 @@ import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import sharp from "sharp";
-import { orgLogoAbsoluteUrl, orgLogoHref, ORG_LOGO_SIZE } from "@/lib/org-logos";
+import { officialWebsite, organizationLogoFields, orgLogoAbsoluteUrl, orgLogoHref, ORG_LOGO_SIZE } from "@/lib/org-logos";
 import { rasterizeMonogram, writeOrgLogos } from "../../scripts/generate-org-logos";
 
 describe("org logo paths", () => {
   it("are stable per slug and absolute for JSON-LD", () => {
     expect(orgLogoHref("anthropic")).toBe("/images/orgs/anthropic.png");
     expect(orgLogoAbsoluteUrl("anthropic")).toBe("https://unitedstatesofamericasuperintelligence.com/images/orgs/anthropic.png");
+  });
+});
+
+describe("hiringOrganization url", () => {
+  it("uses the official website when it is a real https URL", () => {
+    expect(officialWebsite("https://www.anthropic.com")).toBe("https://www.anthropic.com");
+    expect(organizationLogoFields({ slug: "anthropic", name: "Anthropic", website: "https://www.anthropic.com" })).toEqual({
+      url: "https://www.anthropic.com",
+      sameAs: "https://www.anthropic.com",
+      logo: "https://unitedstatesofamericasuperintelligence.com/images/orgs/anthropic.png",
+    });
+  });
+
+  it("falls back to this site's company page and omits sameAs when no official site is known", () => {
+    expect(officialWebsite("")).toBeNull();
+    expect(officialWebsite("  ")).toBeNull();
+    expect(officialWebsite("http://example.com")).toBeNull();
+    expect(officialWebsite("/local")).toBeNull();
+    expect(officialWebsite("not-a-url")).toBeNull();
+    const fields = organizationLogoFields({ slug: "new-lab", name: "New Lab", website: "" });
+    expect(fields.url).toBe("https://unitedstatesofamericasuperintelligence.com/companies/new-lab/");
+    expect(fields.sameAs).toBeUndefined();
+    expect(fields.logo).toBe("https://unitedstatesofamericasuperintelligence.com/images/orgs/new-lab.png");
   });
 });
 
