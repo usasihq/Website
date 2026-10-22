@@ -244,8 +244,10 @@ each workflow does nothing until you opt in.
 
 ### Cloudflare Workers (primary)
 
-The site is an assets-only Worker (`wrangler.jsonc`): no Worker script runs, so
-requests are served from Cloudflare's static asset storage.
+The site is static assets plus a small Worker (`wrangler.jsonc`) that only
+runs first on `/jobs/at/*`. Live listing pages, employer pages, and every other
+path are still files in `./out`. A listing URL with no file is a closed posting
+and returns HTTP 410 with a noindex closed-job page.
 
 - `public/_headers` sets strict security headers (CSP with `frame-ancestors
   'none'`, HSTS, `nosniff`, `X-Frame-Options`, Referrer-Policy,
@@ -258,7 +260,8 @@ requests are served from Cloudflare's static asset storage.
   including its versioned paths; collection stays restricted to same-origin.
 - `not_found_handling: "404-page"` serves the styled `404.html` with a real 404
   status; `html_handling: "auto-trailing-slash"` redirects `/companies` →
-  `/companies/` (307).
+  `/companies/` (307). `run_worker_first: ["/jobs/at/*"]` lets the Worker return
+  410 for a closed listing before navigation requests would otherwise get `404.html`.
 - Cloudflare compresses responses (Brotli) automatically.
 
 Current setup: the site is live at https://unitedstatesofamericasuperintelligence.com

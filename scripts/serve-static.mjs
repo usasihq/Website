@@ -7,6 +7,7 @@
  * matter here):
  *  - /path/ serves /path/index.html; /path (a directory) redirects to /path/
  *  - unknown paths serve 404.html with status 404
+ *  - /jobs/at/<employer>/<slug>/ with no file serves the closed-job page as 410
  *  - optional base path, to test GitHub Pages project sites
  *  - applies the rules in out/_headers (security headers, CSP, caching), so
  *    local tests exercise the same headers Cloudflare sends
@@ -107,7 +108,7 @@ function send(res, status, file, urlPath, extra = {}, acceptEncoding = "") {
   fs.createReadStream(file).pipe(res);
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   const ae = String(req.headers["accept-encoding"] ?? "");
   const url = new URL(req.url ?? "/", "http://localhost");
   let pathname = decodeURIComponent(url.pathname);
@@ -144,8 +145,36 @@ const server = http.createServer((req, res) => {
   if (fs.existsSync(file) && fs.statSync(file).isFile()) return send(res, 200, file, pathname, {}, ae);
   const html = `${file}.html`;
   if (fs.existsSync(html)) return send(res, 200, html, pathname, {}, ae);
+  if (await serveClosedJob(res, pathname, req.method ?? "GET")) return;
   return send(res, 404, path.join(dir, "404.html"), pathname, {}, ae);
 });
+
+let closedIndex;
+let closedJobResponse;
+function loadClosedIndex() {
+  if (closedIndex !== undefined) return closedIndex;
+  const file = path.join(dir, "data/closed-jobs.json");
+  closedIndex = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
+  return closedIndex;
+}
+
+/** Same 410 page the Cloudflare Worker returns for a listing that has left the feed. */
+async function serveClosedJob(res, pathname, method) {
+  if (!/^\/jobs\/at\/[a-z0-9-]+\/[a-z0-9-]+\/?$/.test(pathname)) return false;
+  const index = loadClosedIndex();
+  if (!index) return false;
+  try {
+    closedJobResponse ??= (await import("../lib/jobs/closed-job-html.ts")).closedJobResponse;
+    const closed = closedJobResponse(index, pathname);
+    if (!closed) return false;
+    res.writeHead(410, { "content-type": "text/html; charset=utf-8", "x-robots-tag": "noindex, follow", ...headersFor(pathname) });
+    if (method === "HEAD") res.end();
+    else res.end(closed.html);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 server.listen(port, () => {
   console.log(`Serving ${path.relative(process.cwd(), dir) || "."} at http://localhost:${port}${base || ""}/  (headers: ${applyHeaders ? "_headers applied" : "off"})`);
