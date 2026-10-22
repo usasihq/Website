@@ -6,6 +6,7 @@ import { DEFAULT_PEOPLE_FILTERS, serializePeopleFilters } from "../people";
 import { peopleAtOrganization } from "../people-index";
 import { organizationsByState } from "../place-index";
 import { stateSlug } from "../places";
+import { hiringProcessFor } from "./hiring-process";
 import { cityLinks, companyLinks, roleLinksForEmployer, roleStateLinksForRole, roleStateLinksForState, topicAndStateLinks } from "./landing-links";
 import { stateDisplayName, type LandingPage } from "./landing";
 import { payEmployer, payRole } from "./pay";
@@ -42,5 +43,6 @@ export function landingExtras(catalog: Catalog, page: LandingPage) {
     headquartersHref: hq ? `/places/${stateSlug(hq.code)}/` : null,
     headquartersCount: hq?.organizations.length ?? 0,
     pay: page.kind === "company" && page.organization ? payEmployer(catalog, page.organization.slug) ?? null : page.kind === "role" ? payRole(catalog, page.id) ?? null : null,
+    hiring: page.kind === "company" && page.organization ? hiringProcessFor(page.organization.slug) : null,
   };
 }
