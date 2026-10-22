@@ -164,14 +164,14 @@ test("the fellowships page answers first, groups by employer, and links people b
   expect(ld).not.toContain("JobPosting");
   await expect(page.locator('main a[href="/people/school/"]')).toBeVisible();
   await expect(page.locator('main a[href="/jobs/internships/"]')).toBeVisible();
-  await page.goto("/people/school/");
-  await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
-  await page.goto("/jobs/internships/");
-  await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
   const titles = await page.locator("#listings h3 a").allTextContents();
   for (const title of titles) {
     expect(title).toMatch(/\b(fellowships?|fellows?|post[- ]?docs?|post[- ]?doctoral)\b/i);
   }
+  await page.goto("/people/school/");
+  await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
+  await page.goto("/jobs/internships/");
+  await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
 });
 
 test("a role page answers first, lists employers, and matches the directory", async ({ page, request }) => {
