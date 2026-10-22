@@ -18,12 +18,13 @@ import type { FollowFeed } from "@/lib/jobs/feed-match";
 import { jobHref } from "@/lib/jobs/job-url";
 import { decodeJobs, type SlimJobs } from "@/lib/jobs/slim";
 import { asset } from "@/lib/paths";
+import { EMPLOYMENT_LABELS } from "@/lib/jobs/employment";
 import { FilterChip, SearchField, SelectField, ResultSummary } from "./FilterControls";
 import { useDebounced, useQueryState } from "./useQueryState";
 export type CareerCoverage = { slug: string; name: string; url: string | null; mode: "automated" | "manual" | "unsupported" | "not-configured"; note: string | null; source?: string | null };
 /** Readable names for the feeds' workplace and employment values; "unknown" means the employer did not say. */
 export const WORKPLACE_LABELS: Record<string, string> = { remote: "Remote", hybrid: "Hybrid", "on-site": "On-site", unknown: "Not stated" };
-export const EMPLOYMENT_LABELS: Record<string, string> = { "full-time": "Full-time", "part-time": "Part-time", contract: "Contract", temporary: "Temporary", internship: "Internship", unknown: "Not stated" };
+export { EMPLOYMENT_LABELS };
 /** A shortcut above the results: a landing page and its listing count. */
 export type JobShortcut = { href: string; label: string; count: number };
 function salaryText(s: Job["salaries"][number]): string {

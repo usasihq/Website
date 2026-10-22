@@ -248,6 +248,7 @@ test("each listing has its own page with the employer's description, an apply li
   const title = (await listing.textContent())!.replace(/ at Anthropic$/, "").trim();
   await listing.click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);
+  await expect(page.getByTestId("org-logo")).toBeVisible();
   await expect(page.getByTestId("job-description")).not.toBeEmpty();
   const apply = page.getByTestId("job-apply").locator("a").first();
   await expect(apply).toHaveAttribute("href", /^https:\/\/(job-boards|boards)\.greenhouse\.io\/anthropic\//);

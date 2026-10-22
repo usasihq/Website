@@ -43,8 +43,11 @@ Icons are from Lucide (ISC License).
 ## Names and trademarks
 
 Names of organizations, products, and projects in the catalog are used only to
-identify them. The catalog uses text monograms instead of logos and does not
-imply endorsement by, or affiliation with, any listed organization.
+identify them. Company marks shown on job and organization pages (and in
+`hiringOrganization.logo`) are the organization's own site icon when a
+checked-in file exists in `assets/org-logos/`, otherwise a generated monogram
+from the catalog `logo_text`. Their use is nominative and does not imply
+endorsement by, or affiliation with, any listed organization.
 
 ### Branding derivative
 

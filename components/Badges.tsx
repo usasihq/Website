@@ -1,6 +1,8 @@
 import { Check, CircleHelp, CircleSlash, Minus, SquareDashed } from "lucide-react";
 import { ENTRY_TYPE_LABELS, type EntryType } from "@/lib/labels";
+import { orgLogoHref } from "@/lib/org-logos";
 import { AVAILABILITY_LABELS, RUBRIC_LABEL, TIER_LABELS, type ModelTier } from "@/lib/openness";
+import { asset } from "@/lib/paths";
 import type { AvailabilityStatus } from "@/lib/schema";
 
 /** Monogram tile used instead of scraped logos. Decorative; the name is always adjacent. */
@@ -13,6 +15,23 @@ export function Monogram({ text, size = "md" }: { text: string; size?: "sm" | "m
     >
       {text}
     </span>
+  );
+}
+
+/** Square organization mark (company-site logo or generated monogram PNG). Decorative; the name is always adjacent. */
+export function OrgLogo({ slug, size = "md" }: { slug: string; size?: "sm" | "md" | "lg" }) {
+  const dims = size === "lg" ? "h-16 w-16" : size === "sm" ? "h-9 w-9" : "h-11 w-11";
+  const px = size === "lg" ? 64 : size === "sm" ? 36 : 44;
+  return (
+    <img
+      src={asset(orgLogoHref(slug))}
+      width={px}
+      height={px}
+      alt=""
+      aria-hidden="true"
+      data-testid="org-logo"
+      className={`${dims} inline-flex shrink-0 rounded-xl border border-cyan/30 bg-fog object-contain`}
+    />
   );
 }
 

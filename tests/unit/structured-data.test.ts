@@ -94,6 +94,7 @@ describe("organizations", () => {
       expect(ld["@type"]).toBe("Organization");
       expect(ld.url).toBe(org.website);
       expect(ld.name).toBe(org.name);
+      expect(ld.logo).toBe(absoluteUrl(`/images/orgs/${org.slug}.png`));
       const resources = (org.profile?.resources ?? []).map((r) => r.url);
       for (const u of (ld.sameAs as string[] | undefined) ?? []) expect(resources, org.slug).toContain(u);
       if (org.founded) expect(ld.foundingDate).toBe(String(org.founded.year));

@@ -77,7 +77,13 @@ describe("JobPosting data", () => {
       { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" } },
     ]);
     expect(ld.baseSalary).toEqual({ "@type": "MonetaryAmount", currency: "USD", value: { "@type": "QuantitativeValue", minValue: 200000, maxValue: 300000, unitText: "YEAR" } });
-    expect(ld.hiringOrganization).toEqual({ "@type": "Organization", name: "Acme AI (Example)", sameAs: "https://acme.example" });
+    expect(ld.hiringOrganization).toEqual({
+      "@type": "Organization",
+      name: "Acme AI (Example)",
+      url: "https://acme.example",
+      sameAs: "https://acme.example",
+      logo: "https://unitedstatesofamericasuperintelligence.com/images/orgs/acme-ai.png",
+    });
   });
 
   it("names the USAJOBS hiring agency with the federal government as parent", () => {
@@ -97,7 +103,14 @@ describe("JobPosting data", () => {
     expect(ld.hiringOrganization).toEqual({
       "@type": "Organization",
       name: "National Institute of Standards and Technology",
-      parentOrganization: { "@type": "Organization", name: "U.S. Federal Government", sameAs: "https://www.usa.gov" },
+      logo: "https://unitedstatesofamericasuperintelligence.com/images/orgs/federal.png",
+      parentOrganization: {
+        "@type": "Organization",
+        name: "U.S. Federal Government",
+        url: "https://www.usa.gov",
+        sameAs: "https://www.usa.gov",
+        logo: "https://unitedstatesofamericasuperintelligence.com/images/orgs/federal.png",
+      },
     });
   });
 
@@ -120,6 +133,12 @@ describe("JobPosting data", () => {
       jobLocation: [{ "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" } }],
     });
     expect(jobPostingLd(page(job({ posted_at: null })))!.datePosted).toBe("2026-10-02");
+  });
+
+  it("infers employmentType when the feed omits it, and leaves it off when nothing is clear", () => {
+    expect(jobPostingLd(page(job({ employment_type: "unknown", title: "Software Engineer Intern" })))!.employmentType).toBe("INTERN");
+    expect(jobPostingLd(page(job({ employment_type: "unknown", title: "Staff Firmware Engineer" })))!.employmentType).toBe("FULL_TIME");
+    expect(jobPostingLd(page(job({ employment_type: "unknown", title: "Opportunity", salaries: [] })))).not.toHaveProperty("employmentType");
   });
 
   it("does not mark hybrid or remote-friendly jobs as TELECOMMUTE, and omits expressions of interest", () => {
@@ -178,6 +197,18 @@ describe("job page HTML", () => {
       employmentType: "FULL_TIME",
     });
     expect(block).not.toHaveProperty("validThrough");
+    expect(html).toContain('data-testid="org-logo"');
+    expect(html).toContain("/images/orgs/acme-ai.png");
+  });
+
+  it("shows an inferred employment type instead of Not supplied", () => {
+    const html = renderJobPage(page(job({ employment_type: "unknown", title: "Software Engineer Intern" })), { htmlClass: "", links: "" });
+    expect(html).toMatch(/<dt class="text-muted">Employment<\/dt><dd[^>]*>Internship<\/dd>/);
+    expect(html).not.toMatch(/<dt class="text-muted">Employment<\/dt><dd[^>]*>Not supplied<\/dd>/);
+    const block = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+      .map((m) => JSON.parse(m[1]))
+      .find((d) => d["@type"] === "JobPosting");
+    expect(block.employmentType).toBe("INTERN");
   });
 });
 
