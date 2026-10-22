@@ -39,7 +39,7 @@ test("a profile page has its bio, work, sources, structured data, and a way to r
   await expect(page.getByTestId("person-work").locator(":scope > li")).not.toHaveCount(0);
   await expect(page.getByRole("navigation", { name: "Breadcrumb" }).locator('a[href="/people/"]')).toBeVisible();
   await expect(page.getByRole("list", { name: "Current roles" }).locator('a[href="/companies/princeton-university/"]')).toBeVisible();
-  await expect(page.getByRole("heading", { name: /^Sources · reviewed/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /^References · reviewed/ })).toBeVisible();
   await expect(page.locator('main a[href="/contribute/#corrections"]')).toBeVisible();
   const ld = await jsonLd(page);
   expect(ld).toContain('"ProfilePage"');
