@@ -1,0 +1,125 @@
+slug: davide-eynard
+name: Davide Eynard
+initials: DE
+groups: [open-source, engineering]
+sector: nonprofit
+specialties: [inference, developer-tools]
+headline: Mozilla.ai engineer working on open-source AI; author of the llamafile 0.10.0 release post
+bio:
+  text: >-
+    Davide Eynard works on open-source and trustworthy AI at Mozilla.ai. Eynard co-wrote the October 2025
+    post announcing that Mozilla.ai had adopted the llamafile project and wrote the March 2026 post
+    introducing llamafile 0.10.0, which was rebuilt on a polyglot build of llama.cpp while keeping
+    llamafile's single-executable portability.
+  source_ids: [eynard-author, eynard-github, llamafile-returns, llamafile-010]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Mozilla.ai
+    organization_slug: mozilla-ai
+    role: Open-source and trustworthy AI work (blog author)
+    current: true
+    source_ids: [eynard-author, eynard-github]
+work:
+  - name: llamafile
+    artifact_slug: llamafile
+    type: open-source
+    url: https://github.com/mozilla-ai/llamafile
+    contribution: >-
+      Co-authored Mozilla.ai's announcement adopting llamafile in October 2025 and authored the March 2026
+      post introducing llamafile 0.10.0, rebuilt on llama.cpp with multimodal, tool-calling and Anthropic
+      Messages API support.
+    source_ids: [llamafile-returns, llamafile-010]
+  - name: transcribe.cpp announcement
+    artifact_slug: null
+    url: https://blog.mozilla.ai/announcing-transcribe-cpp/
+    contribution: >-
+      Wrote Mozilla.ai's June 2026 announcement of transcribe.cpp, a C/C++ speech-to-text inference library
+      by CJ Pais developed through a Mozilla.ai builders program.
+    source_ids: [transcribe-cpp]
+links:
+  - label: Mozilla.ai blog author page
+    url: https://blog.mozilla.ai/author/davide-eynard/
+  - label: GitHub
+    url: https://github.com/aittalam
+sections:
+  - heading: llamafile
+    paragraphs:
+      - text: >-
+          llamafile packages model weights and server code into a single executable built on the
+          Cosmopolitan library and llama.cpp; it began as a Mozilla Builders project in 2023. In October
+          2025 Nathan Brake and Eynard announced that the llamafile codebase had joined the Mozilla.ai
+          GitHub organization and invited community input on its roadmap.
+        source_ids: [llamafile-returns, llamafile-readme]
+      - text: >-
+          Eynard's March 2026 post on llamafile 0.10.0 describes rebuilding the project from the ground up
+          on a polyglot build of llama.cpp, adding the full llama.cpp server feature set, multimodal support
+          in the terminal chat, Metal and CUDA GPU support, and the bundled whisperfile speech-to-text tool.
+        source_ids: [llamafile-010]
+  - heading: Other work at Mozilla.ai
+    paragraphs:
+      - text: >-
+          Eynard has also written Mozilla.ai posts on federated phishing detection (March 2026), the
+          transcribe.cpp speech-to-text library (June 2026), benchmarking local LLM servers including
+          llama.cpp, llamafile, LM Studio and Ollama (September 2026), and search backends for agents in the
+          Otari gateway (October 2026).
+        source_ids: [eynard-author, transcribe-cpp]
+timeline:
+  - date: "2025-10-29"
+    text: Co-authored "llamafile Returns", announcing Mozilla.ai's adoption of the llamafile project.
+    source_ids: [llamafile-returns]
+  - date: "2026-03-19"
+    text: Announced the release of llamafile 0.10.0 on the Mozilla.ai blog.
+    source_ids: [llamafile-010]
+  - date: "2026-06-30"
+    text: Announced the release of transcribe.cpp, a C/C++ speech-to-text inference library.
+    source_ids: [transcribe-cpp]
+  - date: "2026-09-17"
+    text: Co-authored a Mozilla.ai benchmark of local LLM servers including llamafile and llama.cpp.
+    source_ids: [eynard-author]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: eynard-author
+    title: Davide Eynard, Mozilla.ai blog author page
+    url: https://blog.mozilla.ai/author/davide-eynard/
+    publisher: Mozilla.ai
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: eynard-github
+    title: aittalam (Davide Eynard) on GitHub
+    url: https://github.com/aittalam
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: llamafile-returns
+    title: llamafile Returns (Mozilla.ai blog)
+    url: https://blog.mozilla.ai/llamafile-returns/
+    publisher: Mozilla.ai
+    kind: announcement
+    published_at: 2025-10-29
+    accessed_at: 2026-10-22
+  - id: llamafile-010
+    title: "llamafile Reloaded: What's New in v0.10.0 (Mozilla.ai blog)"
+    url: https://blog.mozilla.ai/llamafile-reloaded-whats-new-in-v0-10-0/
+    publisher: Mozilla.ai
+    kind: release-notes
+    published_at: 2026-03-19
+    accessed_at: 2026-10-22
+  - id: transcribe-cpp
+    title: Announcing transcribe.cpp (Mozilla.ai blog)
+    url: https://blog.mozilla.ai/announcing-transcribe-cpp/
+    publisher: Mozilla.ai
+    kind: announcement
+    published_at: 2026-06-30
+    accessed_at: 2026-10-22
+  - id: llamafile-readme
+    title: mozilla-ai/llamafile README
+    url: https://github.com/mozilla-ai/llamafile
+    publisher: Mozilla.ai (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22

@@ -1,0 +1,89 @@
+slug: pankaj-gupta
+name: Pankaj Gupta
+initials: PG
+groups: [leadership, engineering]
+sector: corporate
+specialties: [inference]
+headline: Co-founder of Baseten who writes on model performance optimization for LLM, image and video inference
+bio:
+  text: >-
+    Pankaj Gupta is a co-founder of Baseten, which runs inference for open and custom AI models. Gupta's posts
+    on the Baseten blog cover the company's model performance work, including its adoption of TensorRT-LLM,
+    speculative decoding and inference benchmarks on NVIDIA GH200, and later work on kernel-level optimization
+    for image generation models.
+  source_ids: [baseten-author, perf-2024-post, gh200-post, kernels-post]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Baseten
+    organization_slug: baseten
+    role: Co-founder
+    current: true
+    source_ids: [baseten-author]
+work:
+  - name: Baseten model performance optimization
+    artifact_slug: null
+    type: proprietary
+    url: https://www.baseten.co/blog/driving-model-performance-optimization-2024-highlights/
+    contribution: >-
+      Author of Baseten's review of its 2024 model performance work, covering TensorRT-LLM as a core framework,
+      NVIDIA Hopper GPUs and production speculative decoding.
+    source_ids: [perf-2024-post]
+links:
+  - label: Baseten author page
+    url: https://www.baseten.co/author/pankaj-gupta/
+sections:
+  - heading: Model performance at Baseten
+    paragraphs:
+      - text: >-
+          Gupta is listed on Baseten's blog as a co-founder. In January 2025, Gupta wrote a review of the
+          company's 2024 model performance work, which described adopting TensorRT-LLM as the core framework,
+          using NVIDIA's Hopper architecture and supporting production-ready speculative decoding.
+        source_ids: [baseten-author, perf-2024-post]
+      - text: >-
+          With Philip Kiely, Gupta tested Llama 3.3 70B inference on a single NVIDIA GH200 in Lambda Cloud
+          (February 2025). In August 2026, Gupta co-authored a post with Brian Li and Faraz Shahsavan on
+          Baseten's agentic kernel optimization framework for image models such as Qwen-Image and FLUX.2.
+        source_ids: [gh200-post, kernels-post]
+timeline:
+  - date: "2025-01-09"
+    text: Published Baseten's review of its 2024 model performance optimization work.
+    source_ids: [perf-2024-post]
+  - date: "2025-02-07"
+    text: Co-authored a test of Llama 3.3 70B inference on NVIDIA GH200 in Lambda Cloud.
+    source_ids: [gh200-post]
+  - date: "2026-08-29"
+    text: Co-authored a post on Baseten's agentic kernel optimization framework.
+    source_ids: [kernels-post]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: baseten-author
+    title: Pankaj Gupta — Co-Founder (Baseten author page)
+    url: https://www.baseten.co/author/pankaj-gupta/
+    publisher: Baseten
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: perf-2024-post
+    title: "Driving model performance optimization: 2024 highlights"
+    url: https://www.baseten.co/blog/driving-model-performance-optimization-2024-highlights/
+    publisher: Baseten
+    kind: announcement
+    published_at: 2025-01-09
+    accessed_at: 2026-10-22
+  - id: gh200-post
+    title: Testing Llama 3.3 70B inference performance on NVIDIA GH200 in Lambda Cloud
+    url: https://www.baseten.co/blog/testing-llama-inference-performance-nvidia-gh200-lambda-cloud/
+    publisher: Baseten
+    kind: announcement
+    published_at: 2025-02-07
+    accessed_at: 2026-10-22
+  - id: kernels-post
+    title: Agentic kernels in production
+    url: https://www.baseten.co/blog/agentic-kernels-in-production/
+    publisher: Baseten
+    kind: announcement
+    published_at: 2026-08-29
+    accessed_at: 2026-10-22

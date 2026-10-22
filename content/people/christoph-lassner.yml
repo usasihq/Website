@@ -1,0 +1,144 @@
+slug: christoph-lassner
+name: Christoph Lassner
+initials: CL
+groups: [engineering, leadership, open-source]
+sector: corporate
+specialties: [vision, generative-media]
+headline: Co-founder of World Labs; author of the Pulsar sphere-based renderer used as a PyTorch3D backend
+bio:
+  text: >-
+    Christoph Lassner is a co-founder of World Labs. Lassner's work centers on interactive virtual
+    representations of the physical world that can be optimized and rendered efficiently, with a focus on
+    perception and rendering systems for humans. Before World Labs, Lassner led research teams at Epic Games
+    and Meta Reality Labs Research, and wrote the Pulsar renderer, now the sphere-based rendering backend of
+    PyTorch3D.
+  source_ids: [lassner-site, worldlabs-about]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: World Labs
+    organization_slug: world-labs
+    role: Co-founder
+    current: true
+    source_ids: [lassner-site, worldlabs-about]
+  - name: Meta Reality Labs Research
+    organization_slug: meta
+    role: Research team lead
+    current: false
+    source_ids: [lassner-site]
+  - name: Epic Games
+    organization_slug: null
+    role: Research team lead
+    current: false
+    source_ids: [lassner-site]
+  - name: Body Labs
+    organization_slug: null
+    role: Worked at the startup, which Amazon later acquired
+    current: false
+    source_ids: [lassner-site]
+work:
+  - name: "Pulsar: Efficient Sphere-based Neural Rendering"
+    artifact_slug: null
+    type: open-source
+    url: https://arxiv.org/abs/2004.07484
+    contribution: >-
+      First author, with Michael Zollhöfer, of the Pulsar paper; Lassner wrote the Pulsar renderer, which is now
+      the sphere-based rendering backend for PyTorch3D.
+    source_ids: [pulsar-paper, lassner-site]
+  - name: Neural 3D Video Synthesis from Multi-view Video
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2103.02597
+    contribution: >-
+      Co-author of the 2021 paper on synthesizing dynamic 3D video from multi-view captures, one of the works
+      Lassner's site lists on rendering representations of the physical world.
+    source_ids: [n3dv-paper, lassner-site]
+links:
+  - label: Website
+    url: https://christophlassner.de/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Lassner completed a PhD at the Bernstein Center for Computational Neuroscience and the Max Planck
+          Institute for Intelligent Systems. Before joining Meta, Lassner worked at Body Labs, a startup later
+          acquired by Amazon. Lassner created the human pose estimation system for Amazon Halo, part of a system for
+          building a 3D body model with a smartphone.
+        source_ids: [lassner-site]
+      - text: >-
+          Lassner later led research teams at Meta Reality Labs Research and at Epic Games. At Meta, the team's
+          work on reconstructing and rendering radiance fields interactively was shown at Meta Connect 2022.
+          Lassner is now a co-founder of World Labs, which names Lassner among its founders with Fei-Fei Li, Justin
+          Johnson and Ben Mildenhall.
+        source_ids: [lassner-site, worldlabs-about]
+  - heading: Research and software
+    paragraphs:
+      - text: >-
+          Lassner's research covers neural rendering and dynamic scene reconstruction, including Non-Rigid Neural
+          Radiance Fields (2020) and Neural 3D Video Synthesis (2021), and human-focused work such as TAVA, ARCH
+          and UP.
+        source_ids: [nrnerf-paper, n3dv-paper, lassner-site]
+      - text: >-
+          On the engineering side, Lassner wrote the Pulsar renderer in 2021, which became the sphere-based
+          rendering backend for PyTorch3D, and received an Honorable Mention at the ACM Multimedia Open-Source
+          Software Competition 2016 for work on decision forests.
+        source_ids: [lassner-site, pulsar-paper]
+timeline:
+  - date: "2016"
+    text: Received an Honorable Mention at the ACM Multimedia Open-Source Software Competition for decision forest software.
+    source_ids: [lassner-site]
+  - date: "2020-04"
+    text: Posted the Pulsar paper on efficient sphere-based neural rendering as first author.
+    source_ids: [pulsar-paper]
+  - date: "2020-12"
+    text: Co-authored Non-Rigid Neural Radiance Fields for dynamic scenes from monocular video.
+    source_ids: [nrnerf-paper]
+  - date: "2021-03"
+    text: Co-authored Neural 3D Video Synthesis from Multi-view Video.
+    source_ids: [n3dv-paper]
+  - date: "2022"
+    text: The Meta research team's interactive radiance field work was featured at Meta Connect 2022.
+    source_ids: [lassner-site]
+honors:
+  - name: ACM Multimedia Open-Source Software Competition, Honorable Mention
+    year: 2016
+    awarded_by: ACM Multimedia
+    source_ids: [lassner-site]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: lassner-site
+    title: Christoph Lassner — homepage
+    url: https://christophlassner.de/
+    publisher: Christoph Lassner
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: worldlabs-about
+    title: About | World Labs
+    url: https://www.worldlabs.ai/about
+    publisher: World Labs
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: pulsar-paper
+    title: "Pulsar: Efficient Sphere-based Neural Rendering (arXiv 2004.07484)"
+    url: https://arxiv.org/abs/2004.07484
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-04-16
+    accessed_at: 2026-10-22
+  - id: n3dv-paper
+    title: Neural 3D Video Synthesis from Multi-view Video (arXiv 2103.02597)
+    url: https://arxiv.org/abs/2103.02597
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-03-03
+    accessed_at: 2026-10-22
+  - id: nrnerf-paper
+    title: "Non-Rigid Neural Radiance Fields: Reconstruction and Novel View Synthesis of a Dynamic Scene From Monocular Video (arXiv 2012.12247)"
+    url: https://arxiv.org/abs/2012.12247
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-12-22
+    accessed_at: 2026-10-22

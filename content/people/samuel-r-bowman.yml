@@ -1,0 +1,153 @@
+slug: samuel-r-bowman
+name: Samuel R. Bowman
+initials: SRB
+groups: [engineering]
+sector: corporate
+specialties: [safety-alignment, evaluation, language-models]
+headline: Technical AI safety researcher at Anthropic; NYU associate professor on leave; co-author of Petri
+bio:
+  text: >-
+    Samuel R. Bowman works on technical AI safety at Anthropic and is on long-term leave from New York
+    University, where Bowman is an associate professor of data science and computer science. Bowman is
+    first author of the SNLI natural language inference corpus and a co-author of the GLUE and SuperGLUE
+    benchmarks, and is the final listed author of Anthropic's Petri alignment auditing tool releases.
+  source_ids: [bowman-site, snli-paper, glue-paper, superglue-paper, petri-2025, petri-v2]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Anthropic
+    organization_slug: anthropic
+    role: Technical AI safety researcher
+    current: true
+    source_ids: [bowman-site]
+  - name: New York University
+    organization_slug: new-york-university
+    role: Associate Professor of Data Science and Computer Science (on long-term leave); led the Alignment Research Group 2022–24
+    current: true
+    source_ids: [bowman-site]
+work:
+  - name: Petri (Inspect Petri)
+    artifact_slug: petri
+    type: open-source
+    url: https://alignment.anthropic.com/2025/petri
+    contribution: >-
+      Listed as the final author of the October 2025 Petri release and the January 2026 Petri 2.0 update
+      on Anthropic's Alignment Science Blog.
+    source_ids: [petri-2025, petri-v2]
+  - name: SNLI corpus
+    artifact_slug: null
+    type: open-data
+    url: https://arxiv.org/abs/1508.05326
+    contribution: >-
+      First author of "A large annotated corpus for learning natural language inference" (2015), with
+      Gabor Angeli, Christopher Potts and Christopher D. Manning.
+    source_ids: [snli-paper]
+  - name: GLUE and SuperGLUE benchmarks
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1804.07461
+    contribution: >-
+      Co-author of the GLUE (2018) and SuperGLUE (2019) benchmarks for general-purpose language
+      understanding.
+    source_ids: [glue-paper, superglue-paper]
+links:
+  - label: Website
+    url: https://sleepinyourhat.github.io/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Bowman earned a PhD in 2016 at the Stanford NLP Group and Stanford Linguistics, supervised by Chris
+          Potts and Chris Manning, for work on early neural network models for text. At New York University,
+          Bowman became an associate professor of data science and computer science, was part of the ML²
+          Group and the CILVR Lab, and led the Alignment Research Group during 2022–24.
+        source_ids: [bowman-site]
+      - text: >-
+          Bowman now works on technical AI safety at Anthropic and is on long-term leave from NYU.
+        source_ids: [bowman-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Bowman's early work includes the SNLI corpus for natural language inference (2015). With Alex Wang
+          and colleagues, Bowman co-authored the GLUE (2018) and SuperGLUE (2019) benchmarks for evaluating
+          general-purpose language understanding. In 2022 Bowman was first author of "Measuring Progress on
+          Scalable Oversight for Large Language Models".
+        source_ids: [snli-paper, glue-paper, superglue-paper, oversight-paper]
+      - text: >-
+          Bowman is the final listed author of the October 2025 Petri release, an open-source framework that
+          uses AI agents to audit model behavior, and of the January 2026 Petri 2.0 update.
+        source_ids: [petri-2025, petri-v2]
+timeline:
+  - date: "2015-08"
+    text: Posted the SNLI natural language inference corpus paper as first author.
+    source_ids: [snli-paper]
+  - date: "2016"
+    text: Completed a PhD at Stanford, supervised by Chris Potts and Chris Manning.
+    source_ids: [bowman-site]
+  - date: "2018-04"
+    text: Co-authored the GLUE benchmark for natural language understanding.
+    source_ids: [glue-paper]
+  - date: "2019-05"
+    text: Co-authored the SuperGLUE benchmark.
+    source_ids: [superglue-paper]
+  - date: "2022-11"
+    text: Posted "Measuring Progress on Scalable Oversight for Large Language Models" as first author.
+    source_ids: [oversight-paper]
+  - date: "2025-10-06"
+    text: Co-authored the release of Petri, an open-source alignment auditing tool.
+    source_ids: [petri-2025]
+  - date: "2026-01-22"
+    text: Co-authored the Petri 2.0 update with Kai Fronsdal and Jonathan Michala.
+    source_ids: [petri-v2]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: bowman-site
+    title: Sam Bowman — personal site
+    url: https://sleepinyourhat.github.io/
+    publisher: Samuel R. Bowman
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: snli-paper
+    title: A large annotated corpus for learning natural language inference (arXiv 1508.05326)
+    url: https://arxiv.org/abs/1508.05326
+    publisher: arXiv
+    kind: paper
+    published_at: 2015-08-21
+    accessed_at: 2026-10-22
+  - id: glue-paper
+    title: "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding (arXiv 1804.07461)"
+    url: https://arxiv.org/abs/1804.07461
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-04-20
+    accessed_at: 2026-10-22
+  - id: superglue-paper
+    title: "SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems (arXiv 1905.00537)"
+    url: https://arxiv.org/abs/1905.00537
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-05-02
+    accessed_at: 2026-10-22
+  - id: oversight-paper
+    title: Measuring Progress on Scalable Oversight for Large Language Models (arXiv 2211.03540)
+    url: https://arxiv.org/abs/2211.03540
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-11-04
+    accessed_at: 2026-10-22
+  - id: petri-2025
+    title: "Petri: An open-source auditing tool to accelerate AI safety research"
+    url: https://alignment.anthropic.com/2025/petri
+    publisher: Anthropic (Alignment Science Blog)
+    kind: announcement
+    published_at: 2025-10-06
+    accessed_at: 2026-10-22
+  - id: petri-v2
+    title: "Petri 2.0: New Scenarios, New Model Comparisons, and Improved Eval-Awareness Mitigations"
+    url: https://alignment.anthropic.com/2026/petri-v2/
+    publisher: Anthropic (Alignment Science Blog)
+    kind: announcement
+    published_at: 2026-01-22
+    accessed_at: 2026-10-22

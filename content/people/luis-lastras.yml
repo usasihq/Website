@@ -1,0 +1,118 @@
+slug: luis-lastras
+name: Luis Lastras
+initials: LL
+groups: [engineering, open-source]
+sector: corporate
+specialties: [language-models, ml-frameworks]
+headline: IBM Research director of language and multimodal models; co-author of the Granite Switch 4.1 launch post
+bio:
+  text: >-
+    Luis Lastras is IBM Research's director of language and multimodal models. Lastras is a co-author of
+    the Granite Switch 4.1 launch post and of the Activated LoRA paper on adapters that can be switched
+    in at inference time without reprocessing a conversation, an approach Granite Switch uses to combine
+    a base Granite model with adapter functions.
+  source_ids: [ibm-switch-blog, granite-switch-blog, alora-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: IBM Research
+    organization_slug: ibm
+    role: Director of language and multimodal models
+    current: true
+    source_ids: [ibm-switch-blog]
+work:
+  - name: Granite Switch 4.1 8B
+    artifact_slug: granite-switch-4-1-8b
+    type: open-weights
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-8b
+    contribution: >-
+      Co-author, with Kate Soule, Subhajit Chaudhury and Hendrik Strobelt, of the October 2026 Hugging
+      Face post launching the Granite Switch 4.1 models.
+    source_ids: [granite-switch-blog]
+  - name: "Activated LoRA: Fine-tuned LLMs for Intrinsics"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2504.12397
+    contribution: >-
+      Co-author of the 2025 paper introducing activated LoRA adapters, which IBM describes as giving LLMs
+      specialized capabilities at inference time without the delay of reprocessing the conversation.
+    source_ids: [alora-paper, ibm-alora-blog]
+links:
+  - label: Granite Switch 4.1 post
+    url: https://huggingface.co/blog/ibm-granite/granite-switch-4-1
+sections:
+  - heading: Generative computing at IBM Research
+    paragraphs:
+      - text: >-
+          In April 2025 IBM Research described Lastras, then its director of language technologies, in
+          connection with its work on activated LoRA (aLoRA) adapters, which Lastras co-authored. By June
+          2026 IBM Research described Lastras as its director of language and multimodal models, in a post
+          introducing Granite Libraries and Project Granite Switch as part of IBM's approach to building
+          LLMs with the modularity of software.
+        source_ids: [ibm-alora-blog, alora-paper, ibm-switch-blog]
+      - text: >-
+          Granite Switch adds a switching layer to a base Granite model so that adapter functions for tasks
+          such as relevance scoring, query rewriting, hallucination detection and safety decisions can be
+          activated at inference time. Lastras co-wrote the October 2026 post launching Granite Switch 4.1,
+          which adds a decision adapter and speech recognition to the models.
+        source_ids: [ibm-switch-blog, granite-switch-blog]
+  - heading: Information theory
+    paragraphs:
+      - text: >-
+          Lastras is a co-author of a paper in the Proceedings of the National Academy of
+          Sciences that extends Shannon's sender-receiver model of communication by giving the receiver a
+          reasoning capability. IBM Research describes the work as a long-running research effort that
+          Lastras pursued with a small team before it grew into a larger collaboration.
+        source_ids: [ibm-info-blog]
+timeline:
+  - date: "2025-04"
+    text: Co-authored the Activated LoRA paper on inference-friendly adapters for LLMs.
+    source_ids: [alora-paper, ibm-alora-blog]
+  - date: "2026-06-04"
+    text: IBM Research introduced Granite Libraries and Project Granite Switch, quoting Lastras as director.
+    source_ids: [ibm-switch-blog]
+  - date: "2026-08-28"
+    text: IBM Research reported a PNAS paper, co-authored by Lastras, extending information theory to account for reasoning.
+    source_ids: [ibm-info-blog]
+  - date: "2026-10-15"
+    text: Co-authored the Hugging Face post launching Granite Switch 4.1.
+    source_ids: [granite-switch-blog]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: ibm-switch-blog
+    title: How to build AI more like software (IBM Research blog)
+    url: https://research.ibm.com/blog/granite-libraries-project-switch
+    publisher: IBM Research
+    kind: announcement
+    published_at: 2026-06-04
+    accessed_at: 2026-10-22
+  - id: ibm-alora-blog
+    title: A new LoRA technology for efficient agentic applications (IBM Research blog)
+    url: https://research.ibm.com/blog/inference-friendly-aloras-lora
+    publisher: IBM Research
+    kind: announcement
+    published_at: 2025-04-17
+    accessed_at: 2026-10-22
+  - id: ibm-info-blog
+    title: What happens when information theory accounts for reasoning? (IBM Research blog)
+    url: https://research.ibm.com/blog/information-theory-meaning
+    publisher: IBM Research
+    kind: announcement
+    published_at: 2026-08-28
+    accessed_at: 2026-10-22
+  - id: granite-switch-blog
+    title: "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint"
+    url: https://huggingface.co/blog/ibm-granite/granite-switch-4-1
+    publisher: IBM Granite (Hugging Face)
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-22
+  - id: alora-paper
+    title: "Activated LoRA: Fine-tuned LLMs for Intrinsics (arXiv 2504.12397)"
+    url: https://arxiv.org/abs/2504.12397
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-04-16
+    accessed_at: 2026-10-22

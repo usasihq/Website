@@ -1,0 +1,112 @@
+slug: george-halal
+name: George Halal
+initials: GH
+groups: [engineering, open-source]
+sector: corporate
+specialties: [language-models, data]
+headline: Co-author of Contextual AI's open Reranker v2 models; machine learning software engineer at Google
+bio:
+  text: >-
+    George Halal is a machine learning software engineer at Google, according to Halal's own site.
+    At Contextual AI, where Halal was a member of technical staff, Halal trained the company's
+    instruction-following rerankers and is the first-listed author of the Reranker v2 release (August
+    2025), whose open-weight models come in 1B, 2B and 6B sizes. Halal earned a PhD in physics at
+    Stanford University in July 2024.
+  source_ids: [halal-site, ctx-rerank-v2-blog, ctx-rerank-v2-card]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Google
+    organization_slug: google
+    role: Machine learning software engineer
+    current: true
+    source_ids: [halal-site]
+  - name: Contextual AI
+    organization_slug: contextual-ai
+    role: Member of Technical Staff (past)
+    current: false
+    source_ids: [ctx-rerank-v2-blog, ctx-graphrag-blog]
+work:
+  - name: Contextual AI Reranker v2 2B
+    artifact_slug: contextual-reranker-v2-2b
+    type: open-weights
+    url: https://huggingface.co/ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b
+    contribution: >-
+      First-listed author in the model card's citation for Contextual AI Reranker v2 and of the
+      blog post that released the 2B model with its 1B and 6B siblings.
+    source_ids: [ctx-rerank-v2-card, ctx-rerank-v2-blog]
+  - name: Contextual AI Reranker
+    artifact_slug: contextual-reranker
+    type: open-weights
+    url: https://contextual.ai/blog/rerank-v2
+    contribution: >-
+      Trained Contextual AI's first instruction-following reranker (v1) and its open-sourced v2
+      family of multilingual instruction-following rerankers, according to Halal's site.
+    source_ids: [halal-site, ctx-rerank-v2-blog]
+links:
+  - label: Website
+    url: https://georgehalal.github.io/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Halal completed a PhD in physics at Stanford University in July 2024, with research that included
+          computer vision methods for separating cosmological signals from foreground contaminants. Halal then
+          worked on training language models and on production ranking and agentic retrieval systems, and now
+          works as a machine learning software engineer at Google.
+        source_ids: [halal-site]
+  - heading: Contextual AI work
+    paragraphs:
+      - text: >-
+          Halal's site lists training an instruction-following reranker (v1) and then the open-sourced v2
+          family of multilingual instruction-following rerankers. Contextual AI's August 2025 post, by Halal
+          and Director of Research Sheshansh Agrawal, released Reranker v2 in 1B, 2B and 6B sizes with quantized
+          versions and three instruction-following evaluation datasets.
+        source_ids: [halal-site, ctx-rerank-v2-blog]
+      - text: >-
+          Halal is also first-listed author of Contextual AI's November 2025 post describing an agentic
+          alternative to GraphRAG, and Halal's site lists work on optimizing an agent's use of search and
+          navigation tools.
+        source_ids: [ctx-graphrag-blog, halal-site]
+timeline:
+  - date: "2024-07"
+    text: Completed a PhD in physics at Stanford University.
+    source_ids: [halal-site]
+  - date: "2025-08-27"
+    text: Released Contextual AI Reranker v2 with Sheshansh Agrawal.
+    source_ids: [ctx-rerank-v2-blog]
+  - date: "2025-11-25"
+    text: Co-authored Contextual AI's post on an agentic alternative to GraphRAG.
+    source_ids: [ctx-graphrag-blog]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: halal-site
+    title: George Halal — homepage
+    url: https://georgehalal.github.io/
+    publisher: George Halal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: ctx-rerank-v2-blog
+    title: Open-Sourcing Reranker v2 — Contextual AI blog
+    url: https://contextual.ai/blog/rerank-v2
+    publisher: Contextual AI
+    kind: announcement
+    published_at: 2025-08-27
+    accessed_at: 2026-10-22
+  - id: ctx-rerank-v2-card
+    title: ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b model card (citation)
+    url: https://huggingface.co/ContextualAI/ctxl-rerank-v2-instruct-multilingual-2b
+    publisher: Contextual AI (Hugging Face)
+    kind: model-card
+    published_at: 2025-08-19
+    accessed_at: 2026-10-22
+  - id: ctx-graphrag-blog
+    title: An Agentic Alternative to GraphRAG — Contextual AI blog
+    url: https://contextual.ai/blog/an-agentic-alternative-to-graphrag
+    publisher: Contextual AI
+    kind: official-page
+    published_at: 2025-11-25
+    accessed_at: 2026-10-22

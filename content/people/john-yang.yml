@@ -1,0 +1,137 @@
+slug: john-yang
+name: John Yang
+initials: JY
+groups: [engineering, open-source]
+sector: academic
+specialties: [agents, evaluation, developer-tools]
+headline: Stanford PhD student; creator of SWE-bench and SWE-agent and senior author of the SWE-sweep benchmark
+bio:
+  text: >-
+    John Yang is a computer science PhD student at Stanford University, advised by Ludwig Schmidt and Diyi
+    Yang, researching language model agents, evaluation, synthetic data and software engineering. Yang's
+    site describes Yang as the creator of InterCode, SWE-bench, SWE-agent, SWE-smith and CodeClash,
+    and also features ProgramBench. Yang is the last-listed author of SWE-sweep, a bug-finding and repair benchmark released
+    by Meta, whose project page lists Meta Superintelligence Labs among Yang's affiliations.
+  source_ids: [yang-site, swesweep-site, swesweep-readme]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: Computer Science PhD student
+    current: true
+    source_ids: [yang-site]
+  - name: Princeton University
+    organization_slug: princeton-university
+    role: M.S.E. in Computer Science, advised by Karthik Narasimhan
+    current: false
+    source_ids: [yang-site]
+work:
+  - name: SWE-sweep
+    artifact_slug: swe-sweep
+    type: open-source
+    url: https://github.com/facebookresearch/swe-sweep
+    contribution: >-
+      Last-listed author of SWE-sweep, a benchmark in which agents must discover and repair bugs in real
+      repositories without hints about bug type or location.
+    source_ids: [swesweep-site, swesweep-readme]
+  - name: SWE-bench
+    artifact_slug: null
+    type: open-data
+    url: https://arxiv.org/abs/2310.06770
+    contribution: >-
+      Co-author of "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" (2023); Yang's site
+      lists Yang as the creator of SWE-bench and its Verified, Multimodal and Multilingual variants.
+    source_ids: [swe-bench-paper, yang-site]
+  - name: SWE-agent and SWE-smith
+    artifact_slug: null
+    type: open-source
+    url: https://arxiv.org/abs/2405.15793
+    contribution: >-
+      First author of SWE-agent (2024), on agent-computer interfaces for software engineering, and
+      SWE-smith (2025), on scaling training data for software engineering agents.
+    source_ids: [swe-agent-paper, swe-smith-paper]
+links:
+  - label: Website
+    url: https://john-b-yang.github.io/
+  - label: GitHub
+    url: https://github.com/john-b-yang
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Yang completed an M.S.E. in computer science at Princeton University, advised by Karthik
+          Narasimhan, and is now a PhD student at Stanford University advised by Ludwig Schmidt and Diyi
+          Yang. Yang's research covers language model agents, language model evaluation, synthetic data and
+          software engineering.
+        source_ids: [yang-site]
+      - text: >-
+          Yang co-authored SWE-bench (October 2023), which tests whether language models can resolve real
+          GitHub issues, and was first author of SWE-agent (May 2024) and SWE-smith (April 2025). Yang's site
+          also lists InterCode and CodeClash among the projects Yang created and features ProgramBench.
+        source_ids: [swe-bench-paper, swe-agent-paper, swe-smith-paper, yang-site]
+  - heading: SWE-sweep
+    paragraphs:
+      - text: >-
+          Yang is the final author of SWE-sweep, released with Kilian Lieret as first author. The
+          benchmark gives agents a real repository and asks them to find and fix as many bugs as possible,
+          scoring hidden per-bug tests and assigning zero to a task if previously passing tests break.
+        source_ids: [swesweep-site, swesweep-readme]
+timeline:
+  - date: "2023-10"
+    text: Co-authored SWE-bench, a benchmark of real-world GitHub issues for language models.
+    source_ids: [swe-bench-paper]
+  - date: "2024-05"
+    text: Posted SWE-agent, on agent-computer interfaces for software engineering, as first author.
+    source_ids: [swe-agent-paper]
+  - date: "2025-04"
+    text: Posted SWE-smith, on scaling data for software engineering agents, as first author.
+    source_ids: [swe-smith-paper]
+  - date: "2026"
+    text: Co-authored SWE-sweep, a bug discovery and repair benchmark released by Meta, as last author.
+    source_ids: [swesweep-readme]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: yang-site
+    title: John Yang — personal site
+    url: https://john-b-yang.github.io/
+    publisher: John Yang
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: swesweep-site
+    title: SWE-sweep — project site (authors and affiliations)
+    url: https://swesweep.com/
+    publisher: SWE-sweep
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: swesweep-readme
+    title: facebookresearch/swe-sweep README (citation and evaluation)
+    url: https://github.com/facebookresearch/swe-sweep
+    publisher: facebookresearch (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: swe-bench-paper
+    title: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (arXiv 2310.06770)"
+    url: https://arxiv.org/abs/2310.06770
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-10-10
+    accessed_at: 2026-10-22
+  - id: swe-agent-paper
+    title: "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering (arXiv 2405.15793)"
+    url: https://arxiv.org/abs/2405.15793
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-05-06
+    accessed_at: 2026-10-22
+  - id: swe-smith-paper
+    title: "SWE-smith: Scaling Data for Software Engineering Agents (arXiv 2504.21798)"
+    url: https://arxiv.org/abs/2504.21798
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-04-30
+    accessed_at: 2026-10-22

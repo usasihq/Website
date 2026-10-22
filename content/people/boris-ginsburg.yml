@@ -1,0 +1,195 @@
+slug: boris-ginsburg
+name: Boris Ginsburg
+initials: BG
+groups: [engineering, open-source]
+sector: corporate
+specialties: [speech-audio, training-systems]
+headline: NVIDIA applied research scientist; last-listed author on Parakeet speech recognition papers
+bio:
+  text: >-
+    Boris Ginsburg is an applied research scientist at NVIDIA whose work spans fast, scalable training
+    algorithms for neural networks and speech recognition. Ginsburg is the last-listed author of the
+    papers behind NVIDIA's Parakeet models, including the Token-and-Duration Transducer, the FastConformer
+    encoder, the Parakeet-TDT-0.6B-v3 technical report and the unified streaming transducer used by
+    parakeet-unified-en-0.6b.
+  source_ids: [nvidia-author-page, tdt-paper, fastconformer-paper, parakeet-v3-paper, unified-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: NVIDIA
+    organization_slug: nvidia
+    role: Applied research scientist
+    current: true
+    source_ids: [nvidia-author-page]
+work:
+  - name: NVIDIA parakeet-tdt-0.6b-v3
+    artifact_slug: parakeet-tdt-0-6b-v3
+    type: open-weights
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+    contribution: >-
+      Last-listed author of the 2025 technical report introducing Canary-1B-v2 and Parakeet-TDT-0.6B-v3,
+      which the model card points to for architecture and training details.
+    source_ids: [parakeet-v3-paper, parakeet-v3-card]
+  - name: NVIDIA parakeet-unified-en-0.6b
+    artifact_slug: parakeet-unified-en-0-6b
+    type: open-weights
+    url: https://huggingface.co/nvidia/parakeet-unified-en-0.6b
+    contribution: >-
+      Last-listed author of the 2026 paper on a unified offline and streaming transducer framework, the
+      first reference in the parakeet-unified-en-0.6b model card.
+    source_ids: [unified-paper, unified-card]
+  - name: NVIDIA Parakeet
+    artifact_slug: parakeet
+    type: open-weights
+    url: https://github.com/NVIDIA-NeMo/Speech
+    contribution: >-
+      Last-listed author of the Token-and-Duration Transducer (TDT) and FastConformer papers, both cited as
+      references in the Parakeet-TDT-0.6B-v3 model card.
+    source_ids: [tdt-paper, fastconformer-paper, parakeet-v3-card]
+links:
+  - label: NVIDIA blog author page
+    url: https://developer.nvidia.com/blog/author/bginsburg/
+sections:
+  - heading: Training at scale
+    paragraphs:
+      - text: >-
+          NVIDIA's author page describes Ginsburg as an applied research scientist whose primary research
+          is fast and scalable algorithms for training neural networks. Ginsburg co-authored "Large Batch
+          Training of Convolutional Networks" (2017), which introduced layer-wise adaptive rate scaling, and
+          "Mixed Precision Training" (2017).
+        source_ids: [nvidia-author-page, lars-paper, mixed-precision-paper]
+      - text: >-
+          Ginsburg's NVIDIA technical blog posts cover mixed precision training for NLP and speech with
+          OpenSeq2Seq (2018), pretraining BERT with layer-wise adaptive learning rates (2019), and building
+          smaller speech recognition models with NVIDIA NeMo (2019).
+        source_ids: [nvidia-author-page]
+  - heading: Speech recognition
+    paragraphs:
+      - text: >-
+          Ginsburg co-authored the Jasper (2019) and QuartzNet (2019) convolutional acoustic models and the
+          2019 paper introducing NeMo, a toolkit for building AI applications from reusable neural modules
+          with collections for speech recognition and language processing.
+        source_ids: [jasper-paper, quartznet-paper, nemo-paper]
+      - text: >-
+          Ginsburg is the last-listed author of "Efficient Sequence Transduction by Jointly Predicting Tokens
+          and Durations" (2023) and "Fast Conformer with Linearly Scalable Attention" (2023), both cited by
+          the Parakeet-TDT-0.6B-v3 model card, of the 2025 Canary-1B-v2 and Parakeet-TDT-0.6B-v3 technical
+          report, and of the 2026 unified offline-streaming transducer paper cited by the
+          parakeet-unified-en-0.6b model card.
+        source_ids: [tdt-paper, fastconformer-paper, parakeet-v3-paper, unified-paper, parakeet-v3-card, unified-card]
+timeline:
+  - date: "2017-08"
+    text: Co-authored "Large Batch Training of Convolutional Networks" with Yang You and Igor Gitman.
+    source_ids: [lars-paper]
+  - date: "2017-10"
+    text: Co-authored the "Mixed Precision Training" paper.
+    source_ids: [mixed-precision-paper]
+  - date: "2019-04"
+    text: Co-authored Jasper, an end-to-end convolutional neural acoustic model.
+    source_ids: [jasper-paper]
+  - date: "2019-09"
+    text: Co-authored the paper introducing the NeMo toolkit for building AI applications from neural modules.
+    source_ids: [nemo-paper]
+  - date: "2019-10"
+    text: Co-authored QuartzNet, an ASR model built from 1D time-channel separable convolutions.
+    source_ids: [quartznet-paper]
+  - date: "2023-04"
+    text: Last-listed author of the Token-and-Duration Transducer (TDT) paper.
+    source_ids: [tdt-paper]
+  - date: "2023-05"
+    text: Last-listed author of the FastConformer paper on linearly scalable attention for speech recognition.
+    source_ids: [fastconformer-paper]
+  - date: "2025-09"
+    text: Last-listed author of the Canary-1B-v2 and Parakeet-TDT-0.6B-v3 technical report.
+    source_ids: [parakeet-v3-paper]
+  - date: "2026-04"
+    text: Last-listed author of the unified offline-streaming transducer paper behind parakeet-unified-en-0.6b.
+    source_ids: [unified-paper]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: nvidia-author-page
+    title: "Author: Boris Ginsburg (NVIDIA Technical Blog)"
+    url: https://developer.nvidia.com/blog/author/bginsburg/
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: lars-paper
+    title: Large Batch Training of Convolutional Networks (arXiv 1708.03888)
+    url: https://arxiv.org/abs/1708.03888
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-08-13
+    accessed_at: 2026-10-22
+  - id: mixed-precision-paper
+    title: Mixed Precision Training (arXiv 1710.03740)
+    url: https://arxiv.org/abs/1710.03740
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-10-10
+    accessed_at: 2026-10-22
+  - id: jasper-paper
+    title: "Jasper: An End-to-End Convolutional Neural Acoustic Model (arXiv 1904.03288)"
+    url: https://arxiv.org/abs/1904.03288
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-04-05
+    accessed_at: 2026-10-22
+  - id: nemo-paper
+    title: "NeMo: a toolkit for building AI applications using Neural Modules (arXiv 1909.09577)"
+    url: https://arxiv.org/abs/1909.09577
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-09-14
+    accessed_at: 2026-10-22
+  - id: quartznet-paper
+    title: "QuartzNet: Deep Automatic Speech Recognition with 1D Time-Channel Separable Convolutions (arXiv 1910.10261)"
+    url: https://arxiv.org/abs/1910.10261
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-10-22
+    accessed_at: 2026-10-22
+  - id: tdt-paper
+    title: Efficient Sequence Transduction by Jointly Predicting Tokens and Durations (arXiv 2304.06795)
+    url: https://arxiv.org/abs/2304.06795
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-04-13
+    accessed_at: 2026-10-22
+  - id: fastconformer-paper
+    title: Fast Conformer with Linearly Scalable Attention for Efficient Speech Recognition (arXiv 2305.05084)
+    url: https://arxiv.org/abs/2305.05084
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-05-08
+    accessed_at: 2026-10-22
+  - id: parakeet-v3-paper
+    title: "Canary-1B-v2 & Parakeet-TDT-0.6B-v3: Efficient and High-Performance Models for Multilingual ASR and AST (arXiv 2509.14128)"
+    url: https://arxiv.org/abs/2509.14128
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-09-17
+    accessed_at: 2026-10-22
+  - id: unified-paper
+    title: Reducing the Offline-Streaming Gap for Unified ASR Transducer with Consistency Regularization (arXiv 2604.19079)
+    url: https://arxiv.org/abs/2604.19079
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-04-21
+    accessed_at: 2026-10-22
+  - id: parakeet-v3-card
+    title: nvidia/parakeet-tdt-0.6b-v3 model card
+    url: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: unified-card
+    title: nvidia/parakeet-unified-en-0.6b model card
+    url: https://huggingface.co/nvidia/parakeet-unified-en-0.6b
+    publisher: NVIDIA (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22

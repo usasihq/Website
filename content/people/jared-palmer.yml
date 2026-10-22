@@ -1,0 +1,151 @@
+slug: jared-palmer
+name: Jared Palmer
+initials: JP
+groups: [leadership, engineering, open-source]
+sector: corporate
+specialties: [developer-tools, agents]
+headline: VP of Engineering at Cognition; created Vercel's AI SDK and v0 while VP of AI at Vercel
+bio:
+  text: >-
+    Jared Palmer is the VP of Engineering at Cognition, the company behind the Devin software
+    engineering agent. Palmer's site says that, as VP of AI at Vercel, Palmer created the AI SDK and
+    v0, after Vercel acquired Palmer's build-system startup Turborepo in late 2021, and that Palmer
+    later served as SVP of Product at GitHub and VP of Engineering at Xbox. Palmer is the first-listed
+    author of Vercel's June 2023 post introducing the AI SDK.
+  source_ids: [palmer-site, palmer-github, vercel-ai-sdk-intro]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Cognition
+    organization_slug: cognition
+    role: VP of Engineering
+    current: true
+    source_ids: [palmer-site]
+  - name: Microsoft (Xbox)
+    organization_slug: microsoft
+    role: VP of Engineering at Xbox (past)
+    current: false
+    source_ids: [palmer-site]
+  - name: GitHub
+    organization_slug: github
+    role: SVP of Product (past)
+    current: false
+    source_ids: [palmer-site, palmer-github]
+  - name: Vercel
+    organization_slug: vercel
+    role: VP of AI (past); joined through Vercel's acquisition of Turborepo in late 2021
+    current: false
+    source_ids: [palmer-site, palmer-github]
+work:
+  - name: AI SDK
+    artifact_slug: ai-sdk
+    type: open-source
+    url: https://github.com/vercel/ai
+    contribution: >-
+      Created the AI SDK while VP of AI at Vercel and was first-listed author of the June 2023 post
+      that launched it as an open-source TypeScript library for streaming AI chat interfaces.
+    source_ids: [palmer-site, vercel-ai-sdk-intro]
+  - name: Turborepo
+    artifact_slug: null
+    type: open-source
+    url: https://jaredpalmer.com/
+    contribution: >-
+      Founded the build-system startup Turborepo, which Vercel acquired in late 2021.
+    source_ids: [palmer-site, palmer-github]
+  - name: v0
+    artifact_slug: null
+    type: proprietary
+    url: https://vercel.com/blog/ai-sdk-3-generative-ui
+    contribution: >-
+      Created v0 at Vercel; the AI SDK 3.0 post, on which Palmer is first-listed author, describes
+      open-sourcing v0's generative UI technology through the SDK.
+    source_ids: [palmer-site, vercel-ai-sdk-3]
+links:
+  - label: Website
+    url: https://jaredpalmer.com/
+  - label: GitHub
+    url: https://github.com/jaredpalmer
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Palmer ran a software development and design studio before founding Turborepo, a build-system
+          startup that Vercel acquired in late 2021. At Vercel, Palmer became VP of AI. Palmer's site lists
+          later roles as SVP of Product at GitHub and VP of Engineering at Xbox, and names Palmer's current
+          role as VP of Engineering at Cognition.
+        source_ids: [palmer-site, palmer-github]
+  - heading: AI SDK and v0
+    paragraphs:
+      - text: >-
+          Palmer, with Shu Ding and Max Leiter, wrote Vercel's June 2023 announcement of the Vercel AI SDK, an
+          open-source library for building streaming chat interfaces in JavaScript and TypeScript with React
+          and Svelte. Palmer is also first-listed author of the March 2024 post on AI SDK 3.0, which open
+          sourced the generative UI technology from v0.
+        source_ids: [vercel-ai-sdk-intro, vercel-ai-sdk-3]
+      - text: >-
+          Palmer co-wrote the May 2024 AI SDK 3.1 post with Lars Grammel, which announced that the ModelFusion
+          project was joining the team and introduced AI SDK Core, and appears on the author lists of later
+          release posts including AI SDK 4.0 in November 2024.
+        source_ids: [vercel-ai-sdk-3-1, vercel-ai-sdk-4]
+timeline:
+  - date: "2021"
+    text: Joined Vercel when it acquired Palmer's build-system startup Turborepo.
+    source_ids: [palmer-site]
+  - date: "2023-06-15"
+    text: Co-authored Vercel's announcement of the open-source Vercel AI SDK.
+    source_ids: [vercel-ai-sdk-intro]
+  - date: "2024-03-01"
+    text: Co-authored the AI SDK 3.0 release, which open sourced v0's generative UI technology.
+    source_ids: [vercel-ai-sdk-3]
+  - date: "2024-05-02"
+    text: Co-authored the AI SDK 3.1 release with Lars Grammel.
+    source_ids: [vercel-ai-sdk-3-1]
+  - date: "2024-11-18"
+    text: Listed among the authors of the AI SDK 4.0 release post.
+    source_ids: [vercel-ai-sdk-4]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: palmer-site
+    title: Jared Palmer — homepage
+    url: https://jaredpalmer.com/
+    publisher: Jared Palmer
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: palmer-github
+    title: jaredpalmer (Jared Palmer) on GitHub
+    url: https://github.com/jaredpalmer
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: vercel-ai-sdk-intro
+    title: Introducing the Vercel AI SDK — Vercel blog
+    url: https://vercel.com/blog/introducing-the-vercel-ai-sdk
+    publisher: Vercel
+    kind: announcement
+    published_at: 2023-06-15
+    accessed_at: 2026-10-22
+  - id: vercel-ai-sdk-3
+    title: Introducing AI SDK 3.0 with Generative UI support — Vercel blog
+    url: https://vercel.com/blog/ai-sdk-3-generative-ui
+    publisher: Vercel
+    kind: announcement
+    published_at: 2024-03-01
+    accessed_at: 2026-10-22
+  - id: vercel-ai-sdk-3-1
+    title: "Vercel AI SDK 3.1: ModelFusion joins the team — Vercel blog"
+    url: https://vercel.com/blog/vercel-ai-sdk-3-1-modelfusion-joins-the-team
+    publisher: Vercel
+    kind: announcement
+    published_at: 2024-05-02
+    accessed_at: 2026-10-22
+  - id: vercel-ai-sdk-4
+    title: AI SDK 4.0 — Vercel blog
+    url: https://vercel.com/blog/ai-sdk-4-0
+    publisher: Vercel
+    kind: release-notes
+    published_at: 2024-11-18
+    accessed_at: 2026-10-22

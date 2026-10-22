@@ -1,0 +1,121 @@
+slug: abdul-fatir-ansari
+name: Abdul Fatir Ansari
+initials: AFA
+groups: [engineering, open-source]
+sector: corporate
+specialties: [ai-for-science, ml-frameworks]
+headline: Senior Applied Scientist at AWS and first author of the Chronos and Chronos-2 time series forecasting models
+bio:
+  text: >-
+    Abdul Fatir Ansari is a Senior Applied Scientist at Amazon Web Services, working on time series
+    forecasting, log analytics and generative models, and in particular on general-purpose pretrained
+    models for time series. Ansari is the first author of the Chronos (2024) and Chronos-2 (2025)
+    papers, which introduced Amazon's open pretrained time series forecasting models, and contributes
+    to AWS's open-source AutoGluon and GluonTS libraries.
+  source_ids: [ansari-site, chronos-paper, chronos2-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Amazon Web Services
+    organization_slug: amazon
+    role: Senior Applied Scientist, AWS AI
+    current: true
+    source_ids: [ansari-site]
+work:
+  - name: Chronos
+    artifact_slug: chronos
+    type: open-weights
+    url: https://arxiv.org/abs/2403.07815
+    contribution: >-
+      First author of "Chronos: Learning the Language of Time Series" (2024), which tokenizes time series
+      values and trains transformer language model architectures on them to build pretrained
+      probabilistic forecasting models.
+    source_ids: [chronos-paper, chronos-readme]
+  - name: Chronos-2
+    artifact_slug: chronos-2
+    type: open-weights
+    url: https://arxiv.org/abs/2510.15821
+    contribution: >-
+      First author of "Chronos-2: From Univariate to Universal Forecasting" (2025), describing the
+      Chronos-2 model with zero-shot support for univariate, multivariate and covariate-informed
+      forecasting.
+    source_ids: [chronos2-paper, chronos-readme, ansari-site]
+links:
+  - label: Website
+    url: https://abdulfatir.com/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Ansari's site lists AWS AI in 2021 and from 2022 to the present, and describes Ansari as a Senior
+          Applied Scientist at AWS working on time series forecasting, log analytics and generative models,
+          with recent work on general-purpose pretrained models for time series.
+        source_ids: [ansari-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Ansari's research covers time series analysis and generative models, including probabilistic
+          generative modeling, unsupervised learning and representation learning. As first author of
+          Chronos (2024), Ansari described a framework that scales and quantizes time series into a fixed
+          vocabulary and trains T5-based models on them, and as first author of Chronos-2 (2025) extended the
+          approach to multivariate and covariate-informed forecasting.
+        source_ids: [ansari-site, chronos-paper, chronos2-paper]
+      - text: >-
+          Ansari also co-authored fev-bench (2025), a benchmark for time series forecasting with Oleksandr
+          Shchur and colleagues at AWS, and in August 2025 lectured on building foundation models for time
+          series at the Oxford ML School.
+        source_ids: [fev-paper, ansari-site]
+timeline:
+  - date: "2022"
+    text: Began the AWS AI role that Ansari's site lists as running from 2022 to the present.
+    source_ids: [ansari-site]
+  - date: "2024-03-12"
+    text: Posted "Chronos - Learning the Language of Time Series" as first author.
+    source_ids: [chronos-paper]
+  - date: "2025-08"
+    text: Delivered a lecture on building foundation models for time series at the Oxford ML School.
+    source_ids: [ansari-site]
+  - date: "2025-09-30"
+    text: Co-authored fev-bench, a benchmark for time series forecasting.
+    source_ids: [fev-paper]
+  - date: "2025-10-17"
+    text: Posted the Chronos-2 paper as first author, alongside the model's release.
+    source_ids: [chronos2-paper, chronos-readme]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: ansari-site
+    title: Abdul Fatir Ansari — homepage
+    url: https://abdulfatir.com/
+    publisher: Abdul Fatir Ansari
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: chronos-paper
+    title: "Chronos: Learning the Language of Time Series (arXiv 2403.07815)"
+    url: https://arxiv.org/abs/2403.07815
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-03-12
+    accessed_at: 2026-10-22
+  - id: chronos2-paper
+    title: "Chronos-2: From Univariate to Universal Forecasting (arXiv 2510.15821)"
+    url: https://arxiv.org/abs/2510.15821
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-10-17
+    accessed_at: 2026-10-22
+  - id: chronos-readme
+    title: amazon-science/chronos-forecasting README
+    url: https://raw.githubusercontent.com/amazon-science/chronos-forecasting/main/README.md
+    publisher: amazon-science/chronos-forecasting (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: fev-paper
+    title: "fev-bench: A Realistic Benchmark for Time Series Forecasting (arXiv 2509.26468)"
+    url: https://arxiv.org/abs/2509.26468
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-09-30
+    accessed_at: 2026-10-22

@@ -1,0 +1,121 @@
+slug: diogo-almeida
+name: Diogo Almeida
+initials: DA
+groups: [leadership, engineering]
+sector: corporate
+specialties: [language-models, evaluation, safety-alignment]
+headline: Founder and CEO of TypeSafe AI; co-author of OpenAI's InstructGPT paper on training with human feedback
+bio:
+  text: >-
+    Diogo Almeida is the founder and CEO of TypeSafe AI, a San Francisco company that builds what it
+    calls System One models, which return typed, probabilistic decisions rather than generated text.
+    Almeida is a co-author of "Training language models to follow instructions with human feedback"
+    (2022), the OpenAI paper that introduced InstructGPT, and TypeSafe's team page notes earlier work
+    at Google Brain. In September 2026 Almeida announced TypeSafe's first public model, Jev, together
+    with the company's published workflow evaluations.
+  source_ids: [typesafe-team, instructgpt-paper, typesafe-launch]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: TypeSafe AI
+    organization_slug: typesafe-ai
+    role: Founder and CEO
+    current: true
+    source_ids: [typesafe-team, typesafe-launch]
+  - name: OpenAI
+    organization_slug: openai
+    role: Researcher on instruction-following language models (past)
+    current: false
+    source_ids: [typesafe-launch, instructgpt-paper]
+  - name: Google Brain
+    organization_slug: google
+    role: Past role listed on TypeSafe's team page
+    current: false
+    source_ids: [typesafe-team]
+work:
+  - name: WorkflowEvals (TypeSafe AI)
+    artifact_slug: typesafe-ai-workflowevals
+    type: open-source
+    url: https://evals.typesafe.ai/
+    contribution: >-
+      Wrote TypeSafe's launch post, which introduced the company's workflow evaluations and pointed
+      readers to the workflow evals site with its examples, queries and workflows.
+    source_ids: [typesafe-launch, typesafe-evals-site]
+  - name: InstructGPT
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2203.02155
+    contribution: >-
+      Co-author of the 2022 paper that fine-tuned GPT-3 with supervised demonstrations and
+      reinforcement learning from human feedback to produce the InstructGPT models.
+    source_ids: [instructgpt-paper]
+links:
+  - label: TypeSafe AI team
+    url: https://typesafe.ai/team
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Almeida's past roles include work at Google Brain and at OpenAI. In TypeSafe's launch post, Almeida writes of
+          helping build, at OpenAI, the methods that made language models follow instructions and talk with
+          people, and Almeida is listed among the authors of the March 2022 InstructGPT paper.
+        source_ids: [typesafe-team, typesafe-launch, instructgpt-paper]
+      - text: >-
+          Almeida founded TypeSafe AI and leads it as CEO, alongside COO Sasha Sheng and CTO Erik Gafni. The
+          launch post says the company spent two years in stealth before its public debut.
+        source_ids: [typesafe-team, typesafe-launch]
+  - heading: TypeSafe AI and Jev
+    paragraphs:
+      - text: >-
+          On September 15, 2026, Almeida announced Jev, TypeSafe's first System One model, in early access.
+          The post describes a new model architecture, a parallel sampler and a training method the company
+          calls Reinforcement Learning for Calibrated Decisions (RLCD), with Jev returning structured decisions
+          instead of free-form strings.
+        source_ids: [typesafe-launch]
+      - text: >-
+          The same post introduced TypeSafe's workflow evaluations, which break automation tasks such as
+          security incident triage, invoice processing and customer service into narrow typed questions and
+          compare models against consensus labels.
+        source_ids: [typesafe-launch, typesafe-evals-site]
+timeline:
+  - date: "2022-03"
+    text: Co-authored the InstructGPT paper on training language models with human feedback.
+    source_ids: [instructgpt-paper]
+  - date: "2026-09-15"
+    text: Announced TypeSafe AI's first System One model, Jev, in early access.
+    source_ids: [typesafe-launch]
+  - date: "2026-09-15"
+    text: Introduced TypeSafe's workflow evaluations in the Jev launch post.
+    source_ids: [typesafe-launch]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: typesafe-team
+    title: Team — TypeSafe AI
+    url: https://typesafe.ai/team
+    publisher: TypeSafe AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: typesafe-launch
+    title: Introducing System One Models & Jev — TypeSafe AI Blog
+    url: https://typesafe.ai/blog/introducing-system-one-models-and-jev
+    publisher: TypeSafe AI
+    kind: announcement
+    published_at: 2026-09-15
+    accessed_at: 2026-10-22
+  - id: typesafe-evals-site
+    title: Workflow evals — TypeSafe AI
+    url: https://evals.typesafe.ai/
+    publisher: TypeSafe AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: instructgpt-paper
+    title: Training language models to follow instructions with human feedback (arXiv 2203.02155)
+    url: https://arxiv.org/abs/2203.02155
+    publisher: arXiv
+    kind: paper
+    published_at: 2022-03-04
+    accessed_at: 2026-10-22

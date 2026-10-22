@@ -1,0 +1,113 @@
+slug: bin-xiao
+name: Bin Xiao
+initials: BX
+groups: [engineering, open-source]
+sector: corporate
+specialties: [vision, multimodal]
+headline: Member of Technical Staff at Microsoft; first author of Florence-2 and former lead of Florence models
+bio:
+  text: >-
+    Bin Xiao is a Member of Technical Staff on the Microsoft Superintelligence team, working on
+    multimodal foundation models, computer vision and agentic AI. Xiao is the first author of
+    "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks", presented as an
+    oral paper at CVPR 2024, and Xiao's site says Xiao led the Florence-1 and Florence-2 vision
+    foundation models from 2020 to 2023. Xiao also led the Phi-3 Vision and Phi-3.5 Vision models and
+    co-authored the HRNet and CvT papers.
+  source_ids: [xiao-site, florence2-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Microsoft
+    organization_slug: microsoft
+    role: Member of Technical Staff, Microsoft Superintelligence team
+    current: true
+    source_ids: [xiao-site]
+work:
+  - name: Microsoft Florence-2
+    artifact_slug: florence-2
+    type: open-weights
+    url: https://arxiv.org/abs/2311.06242
+    contribution: >-
+      First author of the Florence-2 paper, which presents a prompt-based sequence-to-sequence vision
+      model for captioning, object detection, grounding and segmentation.
+    source_ids: [florence2-paper, xiao-site]
+  - name: Florence-2-large
+    artifact_slug: florence-2-large
+    type: open-weights
+    url: https://huggingface.co/microsoft/Florence-2-large
+    contribution: >-
+      Led the Florence-2 vision foundation model work from which the Florence-2-large checkpoint was
+      released.
+    source_ids: [xiao-site, florence2-paper]
+  - name: Phi-3 Vision and Phi-3.5 Vision
+    artifact_slug: null
+    type: open-weights
+    url: https://leoxiaobin.github.io/
+    contribution: >-
+      Led Microsoft's Phi-3 Vision and Phi-3.5 Vision compact multimodal language models in 2024.
+    source_ids: [xiao-site]
+links:
+  - label: Website
+    url: https://leoxiaobin.github.io/
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Xiao's early work covered visual representation learning and human pose estimation, including
+          "Simple Baselines for Human Pose Estimation and Tracking" (ECCV 2018) as first author, the HRNet paper
+          (CVPR 2019) and CvT, which added convolutions to vision transformers (ICCV 2021). Xiao's site lists
+          first place in the single-person pose estimation track of the 2019 Look into Person challenge.
+        source_ids: [xiao-site]
+      - text: >-
+          From 2020 to 2023 Xiao led the Florence-1 and Florence-2 vision foundation models; the Florence-2 paper,
+          posted in November 2023 with Lu Yuan as senior author, unifies captioning, detection, grounding and
+          segmentation behind text prompts. In 2024 Xiao led Phi-3 Vision and Phi-3.5 Vision.
+        source_ids: [xiao-site, florence2-paper]
+  - heading: Recent work
+    paragraphs:
+      - text: >-
+          Xiao's site describes work on multimodal Llama post-training for visual understanding in 2024 and 2025,
+          and since 2025 on post-training for reasoning, coding and agentic models, including Microsoft AI's
+          MAI-Thinking-1 and MAI-Code-1-Flash releases in 2026.
+        source_ids: [xiao-site]
+timeline:
+  - date: "2018"
+    text: Published "Simple Baselines for Human Pose Estimation and Tracking" at ECCV 2018 as first author.
+    source_ids: [xiao-site]
+  - date: "2019"
+    text: Co-authored the HRNet paper on high-resolution representation learning at CVPR 2019.
+    source_ids: [xiao-site]
+  - date: "2020"
+    text: Began leading the Florence vision foundation model work.
+    source_ids: [xiao-site]
+  - date: "2023-11"
+    text: Posted the Florence-2 paper as first author.
+    source_ids: [florence2-paper]
+  - date: "2024"
+    text: Led the Phi-3 Vision and Phi-3.5 Vision multimodal models; Florence-2 presented as a CVPR 2024 oral.
+    source_ids: [xiao-site]
+  - date: "2026"
+    text: Contributed to Microsoft AI's MAI-Thinking-1 and MAI-Code-1-Flash releases.
+    source_ids: [xiao-site]
+honors:
+  - name: First place, Look into Person Challenge (single-person pose estimation)
+    year: 2019
+    awarded_by: Look into Person (LIP) Challenge
+    source_ids: [xiao-site]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: xiao-site
+    title: Bin Xiao — Research & Publications
+    url: https://leoxiaobin.github.io/
+    publisher: Bin Xiao
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: florence2-paper
+    title: "Florence-2: Advancing a Unified Representation for a Variety of Vision Tasks (arXiv 2311.06242)"
+    url: https://arxiv.org/abs/2311.06242
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-11-10
+    accessed_at: 2026-10-22

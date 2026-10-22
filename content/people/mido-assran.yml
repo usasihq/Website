@@ -1,0 +1,146 @@
+slug: mido-assran
+name: Mido Assran
+initials: MA
+groups: [engineering, open-source]
+sector: corporate
+specialties: [vision, robotics, ml-theory]
+headline: Scientist at Advanced Machine Intelligence (AMI); first author of V-JEPA 2 and I-JEPA from Meta FAIR
+bio:
+  text: >-
+    Mahmoud (Mido) Assran is a scientist and member of technical staff on the founding team of Advanced
+    Machine Intelligence (AMI), and was previously a research scientist in Meta's Fundamental AI Research
+    (FAIR) lab. Assran works on self-supervised learning and world models built on Joint-Embedding
+    Predictive Architectures (JEPA), and is first author of I-JEPA (2023) and of V-JEPA 2 (2025).
+  source_ids: [assran-site, meta-assran, ijepa-paper, vjepa2-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Advanced Machine Intelligence (AMI)
+    organization_slug: null
+    role: Scientist and Member of Technical Staff, founding team
+    current: true
+    source_ids: [assran-site]
+  - name: Meta
+    organization_slug: meta
+    role: Research Scientist, Fundamental AI Research (FAIR)
+    current: false
+    source_ids: [assran-site, meta-assran]
+work:
+  - name: V-JEPA 2 ViT-g/16 (384 px)
+    artifact_slug: v-jepa-2-vitg-384
+    type: open-weights
+    url: https://github.com/facebookresearch/vjepa2
+    contribution: >-
+      First author of "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and
+      Planning" (2025), the paper behind the V-JEPA 2 model family.
+    source_ids: [vjepa2-paper, meta-assran, assran-site]
+  - name: V-JEPA 2.1 ViT-G/16 (384 px)
+    artifact_slug: v-jepa-2-1-vit-gigantic-384
+    type: open-weights
+    url: https://github.com/facebookresearch/vjepa2
+    contribution: >-
+      Co-author of "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning" (2026), which
+      follows V-JEPA 2.
+    source_ids: [vjepa21-paper]
+  - name: I-JEPA
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2301.08243
+    contribution: >-
+      First author of "Self-Supervised Learning from Images with a Joint-Embedding Predictive
+      Architecture" (CVPR 2023).
+    source_ids: [ijepa-paper, assran-site]
+links:
+  - label: Website
+    url: https://www.midoassran.ca
+  - label: Meta AI profile
+    url: https://ai.meta.com/people/mido-assran/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Assran completed a PhD in electrical and computer engineering at McGill University and Mila,
+          supported by a Vanier Scholarship, with earlier work on parallelizing deep reinforcement learning
+          and large-scale numerical optimization. Assran then worked as a research scientist in Meta FAIR on
+          self-supervised learning from video for reasoning and planning in the physical world.
+        source_ids: [meta-assran, assran-site]
+      - text: >-
+          Assran's site now describes Assran as a scientist and member of technical staff on the founding
+          team of Advanced Machine Intelligence (AMI). At Meta, Assran was also program lead of the Meta AI
+          Mentorship Program for doctoral students.
+        source_ids: [assran-site]
+  - heading: JEPA research
+    paragraphs:
+      - text: >-
+          Assran was first author of I-JEPA (January 2023), which learns image representations by predicting
+          in latent space, and co-authored V-JEPA (February 2024), with Adrien Bardes as first author. Assran also co-authored DINOv2 and work on learning and leveraging world models in visual
+          representation learning (ICML 2024).
+        source_ids: [ijepa-paper, vjepa-paper, assran-site]
+      - text: >-
+          Assran is first author of V-JEPA 2 (June 2025), on self-supervised video models for understanding,
+          prediction and planning, and a co-author of V-JEPA 2.1 (March 2026), which targets dense features
+          in video self-supervised learning.
+        source_ids: [vjepa2-paper, vjepa21-paper]
+timeline:
+  - date: "2023-01"
+    text: Posted I-JEPA, joint-embedding predictive self-supervised learning from images, as first author.
+    source_ids: [ijepa-paper]
+  - date: "2024-02"
+    text: Co-authored V-JEPA, revisiting feature prediction for visual representations from video.
+    source_ids: [vjepa-paper]
+  - date: "2025-06"
+    text: Posted V-JEPA 2 as first author.
+    source_ids: [vjepa2-paper]
+  - date: "2026-03"
+    text: Co-authored V-JEPA 2.1 on dense features in video self-supervised learning.
+    source_ids: [vjepa21-paper]
+honors:
+  - name: Vanier Scholarship
+    year: null
+    awarded_by: Vanier Canada Graduate Scholarships program
+    source_ids: [assran-site]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: assran-site
+    title: Mahmoud (Mido) Assran — personal site
+    url: https://www.midoassran.ca
+    publisher: Mahmoud Assran
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: meta-assran
+    title: Mido Assran — AI at Meta profile
+    url: https://ai.meta.com/people/mido-assran/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: ijepa-paper
+    title: Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture (arXiv 2301.08243)
+    url: https://arxiv.org/abs/2301.08243
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-01-19
+    accessed_at: 2026-10-22
+  - id: vjepa-paper
+    title: Revisiting Feature Prediction for Learning Visual Representations from Video (arXiv 2404.08471)
+    url: https://arxiv.org/abs/2404.08471
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-02-15
+    accessed_at: 2026-10-22
+  - id: vjepa2-paper
+    title: "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning (arXiv 2506.09985)"
+    url: https://arxiv.org/abs/2506.09985
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-06-11
+    accessed_at: 2026-10-22
+  - id: vjepa21-paper
+    title: "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning (arXiv 2603.14482)"
+    url: https://arxiv.org/abs/2603.14482
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-15
+    accessed_at: 2026-10-22

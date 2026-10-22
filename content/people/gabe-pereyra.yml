@@ -1,0 +1,104 @@
+slug: gabe-pereyra
+name: Gabe Pereyra
+initials: GP
+groups: [leadership]
+sector: corporate
+specialties: [agents, evaluation, language-models]
+headline: President and co-founder of Harvey; co-author of the post introducing Harvey's Legal Agent Benchmark
+bio:
+  text: >-
+    Gabe Pereyra is the President and co-founder of Harvey, which builds AI software for legal and
+    professional services. Harvey's author page says Pereyra co-founded the company in 2022 after working
+    as a research scientist at DeepMind and as a machine learning engineer at Meta. Pereyra co-wrote the
+    May 2026 post that introduced LAB, Harvey's open-source Legal Agent Benchmark.
+  source_ids: [harvey-author-pereyra, harvey-lab-post]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Harvey
+    organization_slug: harvey
+    role: President and co-founder
+    current: true
+    source_ids: [harvey-author-pereyra]
+  - name: DeepMind
+    organization_slug: google-deepmind
+    role: Research scientist (before 2022)
+    current: false
+    source_ids: [harvey-author-pereyra]
+  - name: Meta
+    organization_slug: meta
+    role: Machine learning engineer (before 2022)
+    current: false
+    source_ids: [harvey-author-pereyra]
+work:
+  - name: Harvey LAB (Legal Agent Benchmark)
+    artifact_slug: harvey-lab
+    type: open-source
+    url: https://github.com/harveyai/harvey-labs
+    contribution: >-
+      Co-authored, with Niko Grupen and Julio Pereyra, the announcement post for LAB, an MIT-licensed
+      benchmark of legal tasks, rubrics and an execution harness for evaluating agents.
+    source_ids: [harvey-lab-post, harvey-labs-readme]
+links:
+  - label: Harvey author page
+    url: https://www.harvey.ai/blog/author/gabe-pereyra
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Before co-founding Harvey in 2022, Pereyra worked as a research scientist at DeepMind and as a
+          machine learning engineer at Meta. Harvey's author page presents Pereyra today as the company's
+          President and co-founder.
+        source_ids: [harvey-author-pereyra]
+  - heading: Research and writing at Harvey
+    paragraphs:
+      - text: >-
+          Pereyra is a byline author, with Niko Grupen and Julio Pereyra, of "Introducing Harvey's Legal
+          Agent Benchmark" (May 2026). The post introduced LAB, whose open-source repository combines a
+          dataset of legal tasks with agent instructions, documents and rubrics, and an execution harness
+          for running and scoring agents.
+        source_ids: [harvey-lab-post, harvey-labs-readme]
+      - text: >-
+          Pereyra's author page also lists 2026 posts on training legal agents and review-table models,
+          a research preview of Harvey Tenet, and post-training agents for M&A diligence.
+        source_ids: [harvey-author-pereyra]
+timeline:
+  - date: "2022"
+    text: Co-founded Harvey after research and engineering roles at DeepMind and Meta.
+    source_ids: [harvey-author-pereyra]
+  - date: "2026-05-06"
+    text: Co-authored the post introducing Harvey's open-source Legal Agent Benchmark (LAB).
+    source_ids: [harvey-lab-post]
+  - date: "2026-06-22"
+    text: Co-authored the Harvey post "Training a Legal Agent With Applied Compute".
+    source_ids: [harvey-author-pereyra]
+  - date: "2026-08-20"
+    text: Co-authored the Harvey Tenet research preview post.
+    source_ids: [harvey-author-pereyra]
+  - date: "2026-09-08"
+    text: Co-authored "Post-Training RLM Agents for End-to-End M&A Diligence".
+    source_ids: [harvey-author-pereyra]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: harvey-author-pereyra
+    title: Gabe Pereyra, Author at Harvey
+    url: https://www.harvey.ai/blog/author/gabe-pereyra
+    publisher: Harvey
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: harvey-lab-post
+    title: Introducing Harvey's Legal Agent Benchmark
+    url: https://www.harvey.ai/blog/introducing-harveys-legal-agent-benchmark
+    publisher: Harvey
+    kind: announcement
+    published_at: 2026-05-06
+    accessed_at: 2026-10-22
+  - id: harvey-labs-readme
+    title: harveyai/harvey-labs README (Legal Agent Benchmark, MIT license)
+    url: https://github.com/harveyai/harvey-labs
+    publisher: harveyai (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22

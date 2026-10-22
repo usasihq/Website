@@ -1,0 +1,112 @@
+slug: jeff-johnson
+name: Jeff Johnson
+initials: JJ
+groups: [engineering, open-source]
+sector: corporate
+specialties: [hardware, inference, ml-frameworks]
+headline: Meta FAIR research scientist; implemented the GPU version of the Faiss similarity search library
+bio:
+  text: >-
+    Jeff Johnson is a research scientist in the SysML research group at Meta's Fundamental AI Research
+    (FAIR) lab, working on GPU-based algorithms for machine learning and on ASIC and FPGA computer
+    arithmetic for linear algebra. The Faiss README credits Johnson with implementing all of the GPU
+    version of Faiss, and Johnson is first author of "Billion-scale similarity search with GPUs" (2017).
+    Johnson's GitHub profile also says Johnson wrote the original PyTorch GPU backend.
+  source_ids: [meta-johnson, faiss-readme, faiss-gpu-paper, johnson-github]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Meta
+    organization_slug: meta
+    role: Research Scientist, SysML group, Fundamental AI Research (FAIR)
+    current: true
+    source_ids: [meta-johnson, johnson-github]
+work:
+  - name: Faiss
+    artifact_slug: faiss
+    type: open-source
+    url: https://github.com/facebookresearch/faiss
+    contribution: >-
+      Credited in the Faiss README with implementing all of the GPU Faiss, and first author of the 2017
+      paper that the README asks users to cite for GPU Faiss.
+    source_ids: [faiss-readme, faiss-gpu-paper]
+  - name: PyTorch GPU backend
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/wickedfoo
+    contribution: >-
+      Johnson's GitHub profile states that Johnson wrote the original PyTorch GPU backend.
+    source_ids: [johnson-github]
+links:
+  - label: Meta AI profile
+    url: https://ai.meta.com/people/jeff-johnson/
+  - label: GitHub
+    url: https://github.com/wickedfoo
+sections:
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Johnson works in FAIR's SysML research group on GPU algorithms for machine learning and on ASIC
+          and FPGA arithmetic for linear algebra. Johnson's papers include "Rethinking floating point for
+          deep learning" (December 2018) and "Efficient, arbitrarily high precision hardware logarithmic
+          arithmetic for linear algebra" (May 2020), both as sole author.
+        source_ids: [meta-johnson]
+  - heading: Faiss
+    paragraphs:
+      - text: >-
+          Johnson, Matthijs Douze and Hervé Jégou wrote "Billion-scale similarity search with GPUs"
+          (February 2017), and the MIT-licensed Faiss repository was opened the same month. The README
+          credits Johnson with all of the GPU Faiss, and Johnson is also a co-author of "The Faiss library"
+          (2024).
+        source_ids: [faiss-gpu-paper, faiss-readme, faiss-library-paper]
+timeline:
+  - date: "2017-02"
+    text: Posted "Billion-scale similarity search with GPUs" as first author, alongside the Faiss release.
+    source_ids: [faiss-gpu-paper, faiss-readme]
+  - date: "2018-12"
+    text: Published "Rethinking floating point for deep learning" as sole author.
+    source_ids: [meta-johnson]
+  - date: "2020-05"
+    text: Published work on high-precision hardware logarithmic arithmetic for linear algebra.
+    source_ids: [meta-johnson]
+  - date: "2024-01"
+    text: Co-authored "The Faiss library" with Matthijs Douze and others.
+    source_ids: [faiss-library-paper]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: meta-johnson
+    title: Jeff Johnson — AI at Meta profile
+    url: https://ai.meta.com/people/jeff-johnson/
+    publisher: Meta
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: johnson-github
+    title: wickedfoo (Jeff Johnson) on GitHub
+    url: https://github.com/wickedfoo
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: faiss-readme
+    title: facebookresearch/faiss README (Authors and Reference) and license (MIT)
+    url: https://github.com/facebookresearch/faiss
+    publisher: facebookresearch (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: faiss-gpu-paper
+    title: Billion-scale similarity search with GPUs (arXiv 1702.08734)
+    url: https://arxiv.org/abs/1702.08734
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-02-28
+    accessed_at: 2026-10-22
+  - id: faiss-library-paper
+    title: The Faiss library (arXiv 2401.08281)
+    url: https://arxiv.org/abs/2401.08281
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-01-16
+    accessed_at: 2026-10-22

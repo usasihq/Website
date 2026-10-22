@@ -1,0 +1,130 @@
+slug: valentina-pyatkin
+name: Valentina Pyatkin
+initials: VP
+groups: [open-source]
+sector: academic
+specialties: [language-models, evaluation]
+headline: Researcher at the ETH AI Center working on LLM post-training; core contributor to Tülu 3
+bio:
+  text: >-
+    Valentina Pyatkin is a researcher at the ETH AI Center, working on post-training of large language
+    models for the Swiss AI Initiative and contributing to Apertus. Pyatkin was previously a postdoctoral
+    researcher at the Allen Institute for AI (Ai2) and the University of Washington, where Pyatkin worked
+    on open post-training efforts including Tülu 3 and contributed to OLMo. Pyatkin is the third author
+    of the Tülu 3 report and has built benchmarks such as RewardBench and IFBench.
+  source_ids: [pyatkin-site, tulu3-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: ETH AI Center
+    organization_slug: null
+    role: Researcher working on LLM post-training for the Swiss AI Initiative
+    current: true
+    source_ids: [pyatkin-site]
+  - name: Allen Institute for AI (Ai2) and University of Washington
+    organization_slug: ai2
+    role: Postdoctoral researcher and Young Investigator (past)
+    current: false
+    source_ids: [pyatkin-site]
+work:
+  - name: Llama 3.1 Tülu 3.1 8B
+    artifact_slug: llama-3-1-tulu-3-1-8b
+    type: open-weights
+    url: https://arxiv.org/abs/2411.15124
+    contribution: >-
+      Third author of the Tülu 3 post-training report, which the Tülu 3.1 8B model card cites as its
+      paper; Pyatkin describes being a core contributor to the Tülu and Open-Instruct project.
+    source_ids: [tulu3-paper, tulu31-card, pyatkin-site]
+  - name: "IF-RLVR: Generalizing Verifiable Instruction Following"
+    artifact_slug: null
+    type: open-research
+    url: https://valentinapy.github.io
+    contribution: >-
+      First author of a NeurIPS 2025 paper on generalizing verifiable instruction following, with
+      co-authors including Pradeep Dasigi and Nathan Lambert.
+    source_ids: [pyatkin-site]
+links:
+  - label: Website
+    url: https://valentinapy.github.io
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Pyatkin completed a PhD in computer science at the NLP lab of Bar-Ilan University, supervised by Ido
+          Dagan and Reut Tsarfaty, and interned twice at Ai2. Pyatkin then held a postdoctoral position at Ai2
+          and the University of Washington, advised by Hannaneh Hajishirzi and Yejin Choi.
+        source_ids: [pyatkin-site]
+      - text: >-
+          Pyatkin is now a researcher at the ETH AI Center, working on post-training of language models for
+          the Swiss AI Initiative and contributing to the Apertus models.
+        source_ids: [pyatkin-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Pyatkin's research centres on post-training and adaptation of language models, including how models
+          follow instructions and constraints and how preference and reward signals shape their behaviour. At
+          Ai2, Pyatkin worked on the Tülu post-training pipelines, which combine supervised finetuning, direct
+          preference optimization and reinforcement learning with verifiable rewards, and contributed to OLMo
+          and OLMo 2.
+        source_ids: [pyatkin-site, tulu3-paper]
+      - text: >-
+          Pyatkin has also built evaluation benchmarks, including RewardBench and IFBench, and co-authored
+          RewardBench 2, published at ICLR 2026.
+        source_ids: [pyatkin-site]
+timeline:
+  - date: "2023-01"
+    text: Received the AI2 Outstanding Intern of the Year Award.
+    source_ids: [pyatkin-site]
+  - date: "2024-08"
+    text: Received the ACL Best Theme Paper Award for OLMo and an ACL Outstanding Paper Award.
+    source_ids: [pyatkin-site]
+  - date: "2024-11"
+    text: Co-authored the Tülu 3 report on open language model post-training as third author.
+    source_ids: [tulu3-paper]
+  - date: "2025-12"
+    text: Had the IFBench paper accepted to NeurIPS 2025.
+    source_ids: [pyatkin-site]
+  - date: "2026"
+    text: Co-authored RewardBench 2, published at ICLR 2026.
+    source_ids: [pyatkin-site]
+honors:
+  - name: AI2 Outstanding Intern of the Year Award
+    year: 2023
+    awarded_by: Allen Institute for AI
+    source_ids: [pyatkin-site]
+  - name: DAAD AInet Fellow
+    year: 2023
+    awarded_by: German Academic Exchange Service (DAAD)
+    source_ids: [pyatkin-site]
+  - name: ACL Best Theme Paper Award (for OLMo)
+    year: 2024
+    awarded_by: Association for Computational Linguistics
+    source_ids: [pyatkin-site]
+  - name: ACL Outstanding Paper Award
+    year: 2024
+    awarded_by: Association for Computational Linguistics
+    source_ids: [pyatkin-site]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: pyatkin-site
+    title: Valentina Pyatkin — homepage
+    url: https://valentinapy.github.io
+    publisher: Valentina Pyatkin
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: tulu3-paper
+    title: "Tulu 3: Pushing Frontiers in Open Language Model Post-Training (arXiv 2411.15124)"
+    url: https://arxiv.org/abs/2411.15124
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-11-22
+    accessed_at: 2026-10-22
+  - id: tulu31-card
+    title: allenai/Llama-3.1-Tulu-3.1-8B model card
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B
+    publisher: Ai2 (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22

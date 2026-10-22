@@ -1,0 +1,94 @@
+slug: shawn-lewis
+name: Shawn Lewis
+initials: SL
+groups: [leadership, engineering, open-source]
+sector: corporate
+specialties: [developer-tools, evaluation]
+headline: Co-founder and Distinguished Engineer of Weights & Biases; first listed author of the W&B Weave package
+bio:
+  text: >-
+    Shawn Lewis is a co-founder of Weights & Biases and is listed on its leadership page as Distinguished Engineer
+    and Cofounder. Lewis founded the company in 2017 with Lukas Biewald and Chris Van Pelt, and is the first author
+    listed in the package metadata of Weave, the company's open-source toolkit repository.
+  source_ids: [wandb-about, weave-pyproject]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Weights & Biases
+    organization_slug: weights-and-biases
+    role: Distinguished Engineer and Cofounder
+    current: true
+    source_ids: [wandb-about]
+work:
+  - name: W&B Weave
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/wandb/weave
+    contribution: >-
+      First of the authors listed in the Weave package's pyproject metadata, alongside Tim Sweeney and other
+      Weights & Biases engineers.
+    source_ids: [weave-pyproject]
+  - name: Weights & Biases
+    artifact_slug: null
+    type: proprietary
+    url: https://wandb.ai/site/company/about-us/
+    contribution: >-
+      Co-founded the company in 2017 with Lukas Biewald and Chris Van Pelt; Biewald's 2019 launch post describes
+      building the first version of the tool with Lewis, Van Pelt and early users including OpenAI, Toyota Research
+      and Uber.
+    source_ids: [wandb-about, biewald-post]
+links:
+  - label: GitHub
+    url: https://github.com/shawnlewis
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Lewis co-founded Weights & Biases with Lukas Biewald and Chris Van Pelt in 2017. In a June 2019 post marking
+          the product's public launch, Biewald described Lewis as a new co-founder and recounted six months of
+          building the tool with Lewis, Van Pelt and early users.
+        source_ids: [wandb-about, biewald-post]
+      - text: >-
+          Weights & Biases began with an experiment tracking tool built to help develop models at OpenAI and was
+          acquired by CoreWeave in May 2025. Its leadership page lists Lewis as Distinguished Engineer and Cofounder.
+        source_ids: [wandb-about]
+  - heading: Open-source work
+    paragraphs:
+      - text: >-
+          Lewis is the first listed author in the pyproject metadata of the wandb/weave repository, the open-source
+          Weave package maintained by Weights & Biases, with Tim Sweeney and other company engineers listed after.
+        source_ids: [weave-pyproject]
+timeline:
+  - date: "2017"
+    text: Co-founded Weights & Biases with Lukas Biewald and Chris Van Pelt.
+    source_ids: [wandb-about]
+  - date: "2019-06"
+    text: Weights & Biases became public after six months of building with early users, per Biewald's launch post.
+    source_ids: [biewald-post]
+  - date: "2025-05"
+    text: Weights & Biases was acquired by CoreWeave.
+    source_ids: [wandb-about]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: wandb-about
+    title: About us | Weights & Biases
+    url: https://wandb.ai/site/company/about-us/
+    publisher: Weights & Biases
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: biewald-post
+    title: Starting a second machine learning tools company, ten years later
+    url: https://lukasbiewald.com/2019/06/24/starting-a-second-machine-learning-tools-company-ten-years-later/
+    publisher: Lukas Biewald
+    kind: announcement
+    published_at: 2019-06-24
+    accessed_at: 2026-10-22
+  - id: weave-pyproject
+    title: wandb/weave pyproject.toml (package authors)
+    url: https://github.com/wandb/weave/blob/master/pyproject.toml
+    publisher: wandb (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22

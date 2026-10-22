@@ -1,0 +1,141 @@
+slug: weizhu-chen
+name: Weizhu Chen
+initials: WC
+groups: [leadership, engineering, open-source]
+sector: corporate
+specialties: [language-models, training-systems, reinforcement-learning]
+headline: Technical Fellow and CVP at Microsoft AI; senior author of LoRA, DeBERTa and Samba
+bio:
+  text: >-
+    Weizhu Chen is a Technical Fellow and Corporate Vice President at Microsoft AI, where Chen leads a
+    modeling team working on large-scale model training with a recent focus on agentic and
+    long-horizon reinforcement learning and synthetic data. Chen's Microsoft Research page lists the
+    team's published work including LoRA, DeBERTa, Phi and Rho-1. Chen is senior author of DeBERTa
+    (2020), LoRA (2021) and Samba (2024), and a co-author of the 2025 SambaY paper that describes the
+    architecture of Phi-4-mini-flash-reasoning.
+  source_ids: [msr-chen, deberta-paper, lora-paper, samba-paper, sambay-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Microsoft AI
+    organization_slug: microsoft
+    role: Technical Fellow and Corporate Vice President, leading a modeling team
+    current: true
+    source_ids: [msr-chen]
+work:
+  - name: Phi-4-mini-flash-reasoning
+    artifact_slug: phi-4-mini-flash-reasoning
+    type: open-weights
+    url: https://arxiv.org/abs/2507.06607
+    contribution: >-
+      Co-author of the SambaY decoder-hybrid-decoder paper, whose architecture Phi-4-mini-flash-reasoning
+      adopts.
+    source_ids: [sambay-paper, phi4-flash-card]
+  - name: LoRA
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2106.09685
+    contribution: >-
+      Senior author of the LoRA paper, which adapts large language models by training low-rank update
+      matrices while freezing the pretrained weights.
+    source_ids: [lora-paper]
+  - name: DeBERTa
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2006.03654
+    contribution: >-
+      Senior author of the DeBERTa paper on decoding-enhanced BERT with disentangled attention.
+    source_ids: [deberta-paper]
+links:
+  - label: Microsoft Research profile
+    url: https://www.microsoft.com/en-us/research/people/wzchen/
+sections:
+  - heading: Role
+    paragraphs:
+      - text: >-
+          Chen is a Technical Fellow and Corporate Vice President at Microsoft AI and leads a modeling team that
+          trains large-scale models, including OpenAI and Microsoft AI models according to Chen's Microsoft
+          Research page, with recent work on agentic and long-horizon reinforcement learning and synthetic data
+          generation.
+        source_ids: [msr-chen]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Chen is the senior author of DeBERTa (2020), a BERT variant with disentangled attention, and LoRA
+          (2021), a method for adapting large language models with low-rank updates. Chen is also listed among
+          the authors of the Phi-4-Mini technical report (2025).
+        source_ids: [deberta-paper, lora-paper, phi4-mini-report]
+      - text: >-
+          With Liliang Ren as first author, Chen co-authored Samba (2024), a hybrid state-space language model,
+          and the 2025 SambaY paper, whose decoder-hybrid-decoder architecture is used in
+          Phi-4-mini-flash-reasoning.
+        source_ids: [samba-paper, sambay-paper, phi4-flash-card]
+timeline:
+  - date: "2020-06"
+    text: Senior author of the DeBERTa paper on disentangled attention.
+    source_ids: [deberta-paper]
+  - date: "2021-06"
+    text: Senior author of the LoRA paper on low-rank adaptation of large language models.
+    source_ids: [lora-paper]
+  - date: "2024-06"
+    text: Senior author of the Samba paper on hybrid state-space language models.
+    source_ids: [samba-paper]
+  - date: "2025-03"
+    text: Co-authored the Phi-4-Mini technical report.
+    source_ids: [phi4-mini-report]
+  - date: "2025-07"
+    text: Co-authored the SambaY paper behind Phi-4-mini-flash-reasoning.
+    source_ids: [sambay-paper]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: msr-chen
+    title: Weizhu Chen at Microsoft Research
+    url: https://www.microsoft.com/en-us/research/people/wzchen/
+    publisher: Microsoft Research
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: deberta-paper
+    title: "DeBERTa: Decoding-enhanced BERT with Disentangled Attention (arXiv 2006.03654)"
+    url: https://arxiv.org/abs/2006.03654
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-06-05
+    accessed_at: 2026-10-22
+  - id: lora-paper
+    title: "LoRA: Low-Rank Adaptation of Large Language Models (arXiv 2106.09685)"
+    url: https://arxiv.org/abs/2106.09685
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-06-17
+    accessed_at: 2026-10-22
+  - id: samba-paper
+    title: "Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling (arXiv 2406.07522)"
+    url: https://arxiv.org/abs/2406.07522
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-11
+    accessed_at: 2026-10-22
+  - id: sambay-paper
+    title: Decoder-Hybrid-Decoder Architecture for Efficient Reasoning with Long Generation (arXiv 2507.06607)
+    url: https://arxiv.org/abs/2507.06607
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-07-09
+    accessed_at: 2026-10-22
+  - id: phi4-flash-card
+    title: microsoft/Phi-4-mini-flash-reasoning model card
+    url: https://huggingface.co/microsoft/Phi-4-mini-flash-reasoning
+    publisher: Microsoft (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: phi4-mini-report
+    title: "Phi-4-Mini Technical Report: Compact yet Powerful Multimodal Language Models via Mixture-of-LoRAs (arXiv 2503.01743)"
+    url: https://arxiv.org/abs/2503.01743
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-03-03
+    accessed_at: 2026-10-22

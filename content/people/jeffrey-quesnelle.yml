@@ -1,0 +1,159 @@
+slug: jeffrey-quesnelle
+name: Jeffrey Quesnelle
+initials: JQ
+groups: [leadership, engineering, open-source]
+sector: corporate
+specialties: [language-models, training-systems]
+headline: Co-founder and CTO of Nous Research; co-author of the Hermes 4 technical report, YaRN and DeMo
+bio:
+  text: >-
+    Jeffrey Quesnelle is a co-founder and the CTO of Nous Research, the open-source AI lab behind the
+    Hermes models. Quesnelle co-authored the Hermes 4 Technical Report (2025), YaRN, a method for
+    extending the context window of large language models (ICLR 2024), and DeMo, a decoupled momentum
+    optimizer for training (ICLR 2026).
+  source_ids: [jq-site, jq-github, hermes4-paper, yarn-paper, demo-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Nous Research
+    organization_slug: nous-research
+    role: Co-founder and CTO
+    current: true
+    source_ids: [jq-site, jq-github]
+work:
+  - name: Hermes 4 70B
+    artifact_slug: hermes-4-70b
+    type: open-weights
+    url: https://arxiv.org/abs/2508.18255
+    contribution: >-
+      Co-author of the Hermes 4 Technical Report, which the Hermes 4 70B model card cites as the
+      reference for the model.
+    source_ids: [hermes4-paper, hermes-4-70b-card]
+  - name: Hermes 4.3 36B
+    artifact_slug: hermes-4-3-36b
+    type: open-weights
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    contribution: >-
+      Co-author of the Hermes 4 Technical Report, which the Hermes 4.3 36B model card cites, and whose
+      training approach the Hermes 4.3 release post builds on.
+    source_ids: [hermes-4-3-card, hermes-4-3-post]
+  - name: YaRN
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2309.00071
+    contribution: >-
+      Second author, with Bowen Peng, Honglu Fan and Enrico Shippole, of YaRN, a method for efficiently
+      extending the context window of large language models, published at ICLR 2024.
+    source_ids: [yarn-paper, jq-site]
+links:
+  - label: Website
+    url: https://jeffq.com/
+  - label: GitHub
+    url: https://github.com/jquesnelle
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Quesnelle's earlier publications include a 2015 guide to automotive Ethernet, co-authored for
+          Intrepid Control Systems, and a 2017 sole-author paper on the linkability of Zcash transactions.
+        source_ids: [jq-site, zcash-paper]
+      - text: >-
+          Quesnelle is a co-founder and the CTO of Nous Research, as stated on Quesnelle's homepage and
+          GitHub profile. Quesnelle's selected open-source projects include transformers-openai-api, an
+          OpenAI Completions API compatible server for transformers models, and literAI, which generates
+          visual podcasts with open-source models.
+        source_ids: [jq-site, jq-github]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          With Bowen Peng and others, Quesnelle co-authored YaRN (2023), a method for extending the context
+          window of large language models, and DeMo (2024), Decoupled Momentum Optimization, which appeared at
+          ICLR 2026 with Diederik P. Kingma among its authors.
+        source_ids: [yarn-paper, demo-paper, jq-site]
+      - text: >-
+          Quesnelle is a co-author of the Hermes 4 Technical Report (2025), whose first author is Ryan Teknium, which
+          describes Nous Research's Hermes 4 family of hybrid reasoning models. The model cards for Hermes 4
+          70B and Hermes 4.3 36B cite that report.
+        source_ids: [hermes4-paper, hermes-4-70b-card, hermes-4-3-card]
+timeline:
+  - date: "2015"
+    text: Co-authored "Automotive Ethernet - The Definitive Guide", published by Intrepid Control Systems.
+    source_ids: [jq-site]
+  - date: "2017-12-04"
+    text: Posted "On the linkability of Zcash transactions" on arXiv as sole author.
+    source_ids: [zcash-paper]
+  - date: "2023-08-31"
+    text: Posted YaRN, on extending the context window of large language models, as second author.
+    source_ids: [yarn-paper]
+  - date: "2024-11-29"
+    text: Posted DeMo - Decoupled Momentum Optimization as a co-author.
+    source_ids: [demo-paper]
+  - date: "2025-08-25"
+    text: Co-authored the Hermes 4 Technical Report from Nous Research.
+    source_ids: [hermes4-paper]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: jq-site
+    title: Homepage of Jeffrey Quesnelle
+    url: https://jeffq.com/
+    publisher: Jeffrey Quesnelle
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: jq-github
+    title: jquesnelle (Jeffrey Quesnelle) on GitHub
+    url: https://github.com/jquesnelle
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: hermes4-paper
+    title: Hermes 4 Technical Report (arXiv 2508.18255)
+    url: https://arxiv.org/abs/2508.18255
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-08-25
+    accessed_at: 2026-10-22
+  - id: hermes-4-70b-card
+    title: NousResearch/Hermes-4-70B model card
+    url: https://huggingface.co/NousResearch/Hermes-4-70B
+    publisher: Nous Research (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: hermes-4-3-card
+    title: NousResearch/Hermes-4.3-36B model card
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    publisher: Nous Research (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: hermes-4-3-post
+    title: "Introducing Hermes 4.3: Local Intelligence Globally Trained"
+    url: https://nousresearch.com/introducing-hermes-4-3/
+    publisher: Nous Research
+    kind: announcement
+    published_at: "2025-12"
+    accessed_at: 2026-10-22
+  - id: yarn-paper
+    title: "YaRN: Efficient Context Window Extension of Large Language Models (arXiv 2309.00071)"
+    url: https://arxiv.org/abs/2309.00071
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-08-31
+    accessed_at: 2026-10-22
+  - id: demo-paper
+    title: "DeMo: Decoupled Momentum Optimization (arXiv 2411.19870)"
+    url: https://arxiv.org/abs/2411.19870
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-11-29
+    accessed_at: 2026-10-22
+  - id: zcash-paper
+    title: On the linkability of Zcash transactions (arXiv 1712.01210)
+    url: https://arxiv.org/abs/1712.01210
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-12-04
+    accessed_at: 2026-10-22

@@ -1,0 +1,164 @@
+slug: mathias-lechner
+name: Mathias Lechner
+initials: ML
+groups: [leadership, engineering]
+sector: corporate
+specialties: [language-models, robotics, safety-alignment]
+headline: Co-founder and CTO of Liquid AI; first author of the Neural Circuit Policies paper
+bio:
+  text: >-
+    Mathias Lechner is a co-founder and the CTO of Liquid AI and a research affiliate at MIT CSAIL, where
+    Lechner works with Daniela Rus. Lechner's personal page describes Liquid AI as a company founded in
+    2023 to build efficient foundation models, including the LFM2 language models. Lechner's research
+    covers robust and trustworthy machine learning, liquid neural networks and the verification of
+    learned controllers.
+  source_ids: [lechner-site, liquid-team, liquid-about]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Liquid AI
+    organization_slug: liquid-ai
+    role: Co-founder and CTO
+    current: true
+    source_ids: [liquid-team, liquid-about, lechner-site]
+  - name: MIT Computer Science and Artificial Intelligence Laboratory (CSAIL)
+    organization_slug: mit
+    role: Research Affiliate
+    current: true
+    source_ids: [liquid-team, lechner-site]
+work:
+  - name: LFM (Liquid Foundation Models)
+    artifact_slug: lfm
+    type: open-weights
+    url: https://arxiv.org/abs/2511.23404
+    contribution: >-
+      Listed among the authors of the LFM2 technical report, which documents Liquid AI's LFM2 family of
+      foundation models.
+    source_ids: [lfm2-report, lechner-site]
+  - name: Neural circuit policies
+    artifact_slug: null
+    type: open-research
+    url: https://www.nature.com/articles/s42256-020-00237-3
+    contribution: >-
+      First author of "Neural circuit policies enabling auditable autonomy", published in Nature Machine
+      Intelligence in 2020.
+    source_ids: [ncp-paper]
+  - name: Liquid Time-constant Networks
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2006.04439
+    contribution: >-
+      Second author, with Ramin Hasani as first author, of the paper introducing liquid time-constant
+      networks.
+    source_ids: [ltc-paper]
+links:
+  - label: Website
+    url: https://mlech26l.github.io
+  - label: Liquid AI team
+    url: https://www.liquid.ai/team
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Lechner received bachelor's (2016) and master's (2017) degrees in computer science from the Vienna
+          University of Technology (TU Wien), and completed a PhD at the Institute of Science and Technology
+          Austria (ISTA) in 2022, supervised by Tom Henzinger. Lechner became a research affiliate at MIT CSAIL,
+          collaborating with Daniela Rus.
+        source_ids: [lechner-site, liquid-team]
+      - text: >-
+          Lechner co-founded Liquid AI with Ramin Hasani, Alexander Amini and Daniela Rus, and serves as its
+          CTO. Lechner's page states that the company builds and releases LFM2 language models designed to
+          run efficiently on CPUs and edge devices.
+        source_ids: [liquid-about, liquid-team, lechner-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          With Hasani, Lechner co-authored the 2020 papers on liquid time-constant networks and neural circuit
+          policies, and the follow-up work on closed-form continuous-time models. Lechner's publication list
+          also covers safety verification of stochastic and neural control systems, robot learning and
+          multi-agent reinforcement learning.
+        source_ids: [ltc-paper, ncp-paper, cfc-paper, lechner-site]
+timeline:
+  - date: "2018"
+    text: Received the Distinguished Young Alumni award at TU Wien for a master's thesis.
+    source_ids: [lechner-site, liquid-team]
+  - date: "2020-06"
+    text: Co-authored "Liquid Time-constant Networks" with Ramin Hasani.
+    source_ids: [ltc-paper]
+  - date: "2020-10"
+    text: Published "Neural circuit policies enabling auditable autonomy" in Nature Machine Intelligence as first author.
+    source_ids: [ncp-paper]
+  - date: "2022"
+    text: Completed a PhD at the Institute of Science and Technology Austria, supervised by Tom Henzinger.
+    source_ids: [lechner-site, liquid-team]
+  - date: "2023"
+    text: Co-founded Liquid AI and became its CTO.
+    source_ids: [lechner-site, liquid-about]
+  - date: "2025-11"
+    text: Co-authored the LFM2 technical report describing Liquid AI's LFM2 models.
+    source_ids: [lfm2-report]
+honors:
+  - name: Distinguished Young Alumni Award
+    year: 2018
+    awarded_by: Vienna University of Technology (TU Wien)
+    source_ids: [lechner-site, liquid-team]
+  - name: HPC Innovation Excellence Award (with Ramin Hasani)
+    year: 2022
+    awarded_by: Hyperion Research
+    source_ids: [lechner-site, liquid-team]
+  - name: Outstanding Scientific Achievement Award (with Djordje Zikelic)
+    year: 2023
+    awarded_by: Institute of Science and Technology Austria (ISTA)
+    source_ids: [lechner-site, liquid-team]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: lechner-site
+    title: Mathias Lechner — Personal Page
+    url: https://mlech26l.github.io
+    publisher: Mathias Lechner
+    kind: official-page
+    published_at: "2025-07-11"
+    accessed_at: 2026-10-22
+  - id: liquid-team
+    title: Liquid AI — Team
+    url: https://www.liquid.ai/team
+    publisher: Liquid AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: liquid-about
+    title: Liquid AI — Company
+    url: https://www.liquid.ai/company
+    publisher: Liquid AI
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: ltc-paper
+    title: Liquid Time-constant Networks (arXiv 2006.04439)
+    url: https://arxiv.org/abs/2006.04439
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-06-08
+    accessed_at: 2026-10-22
+  - id: ncp-paper
+    title: Neural circuit policies enabling auditable autonomy (Nature Machine Intelligence)
+    url: https://www.nature.com/articles/s42256-020-00237-3
+    publisher: Nature Machine Intelligence
+    kind: paper
+    published_at: 2020-10-13
+    accessed_at: 2026-10-22
+  - id: cfc-paper
+    title: Closed-form Continuous-time Neural Models (arXiv 2106.13898)
+    url: https://arxiv.org/abs/2106.13898
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-06-25
+    accessed_at: 2026-10-22
+  - id: lfm2-report
+    title: LFM2 Technical Report (arXiv 2511.23404)
+    url: https://arxiv.org/abs/2511.23404
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-11-28
+    accessed_at: 2026-10-22

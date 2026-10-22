@@ -1,0 +1,165 @@
+slug: brian-hie
+name: Brian Hie
+initials: BH
+groups: [engineering, open-source]
+sector: academic
+specialties: [ai-for-science, language-models]
+headline: Stanford assistant professor and Arc Institute Innovation Investigator; co-senior author of Evo 2
+bio:
+  text: >-
+    Brian Hie is an Assistant Professor of Chemical Engineering at Stanford University, where Hie leads the
+    Laboratory of Evolutionary Design, and an Innovation Investigator at Arc Institute. Hie is a co-corresponding
+    author of Evo (Science, 2024) and a co-senior and co-corresponding author of Evo 2 (Nature, 2026), genome
+    language models whose Evo 2 weights Arc Institute releases in 20B and 40B sizes.
+  source_ids: [hie-site, hie-cv, evo-paper, evo2-paper, arc-evo2]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Stanford University
+    organization_slug: stanford-university
+    role: Assistant Professor of Chemical Engineering; Principal Investigator, Laboratory of Evolutionary Design
+    current: true
+    source_ids: [hie-site, hie-cv]
+  - name: Arc Institute
+    organization_slug: arc-institute
+    role: Innovation Investigator (since 2024)
+    current: true
+    source_ids: [hie-site, hie-cv, arc-evo2]
+  - name: Meta AI (FAIR)
+    organization_slug: meta
+    role: Visiting Researcher (2022–2023)
+    current: false
+    source_ids: [hie-cv]
+work:
+  - name: Evo 2 40B
+    artifact_slug: evo-2-40b
+    type: open-weights
+    url: https://huggingface.co/arcinstitute/evo2_40b
+    contribution: >-
+      Co-senior and co-corresponding author of the Evo 2 paper, which describes the genome language model
+      released with 40B-parameter weights.
+    source_ids: [evo2-paper, hie-cv, arc-evo2]
+  - name: Evo 2 20B
+    artifact_slug: evo-2-20b
+    type: open-weights
+    url: https://huggingface.co/arcinstitute/evo2_20b
+    contribution: >-
+      Co-senior author of Evo 2, whose model family includes the 20B-parameter checkpoint published by Arc
+      Institute.
+    source_ids: [evo2-paper, evo2-readme]
+  - name: Evo
+    artifact_slug: null
+    type: open-weights
+    url: https://doi.org/10.1126/science.ado9336
+    contribution: >-
+      Co-corresponding author, listed last, of "Sequence modeling and design from molecular to genome scale with Evo" (Science, 2024).
+    source_ids: [evo-paper]
+links:
+  - label: Website
+    url: https://brianhie.com
+  - label: GitHub
+    url: https://github.com/brianhie
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Hie completed a PhD in electrical engineering and computer science at MIT's Computer Science and
+          Artificial Intelligence Laboratory from 2017 to 2021, working on neural language modeling of viral
+          evolution and machine learning for biological discovery. Hie was then a Stanford Science Fellow at
+          the Stanford University School of Medicine (2021–2023) and a visiting researcher at Meta AI FAIR
+          (2022–2023), working on machine learning for protein biology.
+        source_ids: [hie-cv, hie-site]
+      - text: >-
+          Hie is now an Assistant Professor of Chemical Engineering at Stanford and the Dieter Schwarz
+          Foundation Stanford Data Science Faculty Fellow, and since 2024 an Innovation Investigator at Arc
+          Institute, focused on genomic sequence modeling for biological prediction and design.
+        source_ids: [hie-site, hie-cv]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Hie's laboratory works at the intersection of biology and AI. Hie was a co-corresponding author of Evo (Science,
+          2024), a model for sequence modeling and design from molecular to genome scale, and co-senior author
+          of Evo 2, announced by Arc Institute in February 2025 and published in Nature in 2026, which models
+          and designs genomes across all domains of life.
+        source_ids: [hie-site, evo-paper, arc-evo2, evo2-paper]
+      - text: >-
+          Later papers co-authored by Hie include semantic design of functional de novo genes with a genomic
+          language model (Nature, 2025) and generative design of bacteriophages with a genome language model
+          (Science, 2026).
+        source_ids: [hie-cv]
+timeline:
+  - date: "2017"
+    text: Began a PhD in electrical engineering and computer science at MIT CSAIL.
+    source_ids: [hie-cv]
+  - date: "2021"
+    text: Became a Stanford Science Fellow at the Stanford University School of Medicine.
+    source_ids: [hie-cv]
+  - date: "2022"
+    text: Joined Meta AI FAIR as a visiting researcher working on machine learning for protein biology.
+    source_ids: [hie-cv]
+  - date: "2024"
+    text: Became an Innovation Investigator at Arc Institute.
+    source_ids: [hie-cv]
+  - date: "2024-11-15"
+    text: Published Evo in Science as a co-corresponding author.
+    source_ids: [evo-paper]
+  - date: "2025-02-19"
+    text: Served as co-senior author of Evo 2, announced by Arc Institute as a genome model across all domains of life.
+    source_ids: [arc-evo2]
+  - date: "2026-03-04"
+    text: Published the Evo 2 paper in Nature as co-senior author.
+    source_ids: [evo2-paper]
+honors:
+  - name: National Defense Science and Engineering Graduate (NDSEG) Fellowship
+    year: 2019
+    awarded_by: U.S. Department of Defense
+    source_ids: [hie-cv]
+  - name: Schmidt Sciences AI2050 Early Career Fellow
+    year: 2025
+    awarded_by: Schmidt Sciences
+    source_ids: [hie-cv]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: hie-site
+    title: Brian Hie — personal site
+    url: https://brianhie.com
+    publisher: Brian Hie
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: hie-cv
+    title: Brian Hie — curriculum vitae
+    url: https://brianhie.com/brianhie_cv.pdf
+    publisher: Brian Hie
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: evo-paper
+    title: "Sequence modeling and design from molecular to genome scale with Evo — Science (Crossref record for DOI 10.1126/science.ado9336)"
+    url: https://api.crossref.org/works/10.1126/science.ado9336
+    publisher: Science (via Crossref)
+    kind: paper
+    published_at: 2024-11-15
+    accessed_at: 2026-10-22
+  - id: evo2-paper
+    title: "Genome modelling and design across all domains of life with Evo 2 — Nature (Crossref record for DOI 10.1038/s41586-026-10176-5)"
+    url: https://api.crossref.org/works/10.1038/s41586-026-10176-5
+    publisher: Nature (via Crossref)
+    kind: paper
+    published_at: 2026-03-04
+    accessed_at: 2026-10-22
+  - id: arc-evo2
+    title: AI can now model and design the genetic code for all domains of life with Evo 2 — Arc Institute
+    url: https://arcinstitute.org/news/evo2
+    publisher: Arc Institute
+    kind: announcement
+    published_at: 2025-02-19
+    accessed_at: 2026-10-22
+  - id: evo2-readme
+    title: ArcInstitute/evo2 README (models and citation)
+    url: https://github.com/ArcInstitute/evo2
+    publisher: Arc Institute (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22

@@ -1,0 +1,130 @@
+slug: chang-she
+name: Chang She
+initials: CS
+groups: [leadership, open-source]
+sector: corporate
+specialties: [data, developer-tools]
+headline: Founder of LanceDB, an open-source vector database built on the Lance format; early pandas co-author
+bio:
+  text: >-
+    Chang She is the founder of LanceDB, which builds an open-source vector database and multimodal
+    data platform on top of the Lance columnar format. Chang She was one of the original co-authors of the
+    pandas library, and previously co-founded DataPad as its CTO and served as VP of Engineering at
+    TubiTV. Chang She co-authored the 2025 paper describing the Lance format's approach to random access in
+    columnar storage.
+  source_ids: [yc-lancedb, lancedb-readme, lance-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: LanceDB
+    organization_slug: lancedb
+    role: Founder
+    current: true
+    source_ids: [yc-lancedb]
+  - name: DataPad
+    organization_slug: null
+    role: CTO and co-founder
+    current: false
+    source_ids: [yc-lancedb]
+  - name: TubiTV
+    organization_slug: null
+    role: VP of Engineering
+    current: false
+    source_ids: [yc-lancedb]
+work:
+  - name: LanceDB
+    artifact_slug: null
+    type: open-source
+    url: https://github.com/lancedb/lancedb
+    contribution: >-
+      Founded LanceDB, an open-source vector database built on the Lance columnar format that stores,
+      indexes and searches vectors and multimodal data.
+    source_ids: [yc-lancedb, lancedb-readme]
+  - name: "Lance: Efficient Random Access in Columnar Storage"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2504.15247
+    contribution: >-
+      Second author of the 2025 paper on the Lance format's adaptive structural encodings for efficient
+      random access in columnar storage on NVMe-backed systems.
+    source_ids: [lance-paper]
+  - name: pandas
+    artifact_slug: null
+    type: open-source
+    url: https://pandas.pydata.org/
+    contribution: >-
+      One of the original co-authors of the pandas library, working on it full time with Wes McKinney
+      from 2012.
+    source_ids: [yc-lancedb, lancedb-windows-post]
+links:
+  - label: LanceDB
+    url: https://lancedb.com/
+  - label: GitHub
+    url: https://github.com/changhiskhan
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Chang She worked in quantitative finance at AQR and Barclays before turning to data tooling. In spring
+          2012 Chang She joined Wes McKinney to work on pandas full time, and Chang She describes being one of the
+          library's original co-authors. Chang She also co-founded DataPad as its CTO and was later VP of Engineering at
+          TubiTV, where Chang She designed the machine learning stack and experimentation platform.
+        source_ids: [yc-lancedb, lancedb-windows-post]
+      - text: >-
+          Chang She founded LanceDB, part of Y Combinator's Winter 2022 batch, which Y Combinator lists with Chang She as
+          an active founder. The company's launch post explains that Chang She and Lei Xu, a core HDFS
+          contributor, drew on their experience building data and machine learning tooling to create a
+          vector database backed by the Lance format.
+        source_ids: [yc-lancedb]
+  - heading: LanceDB and Lance
+    paragraphs:
+      - text: >-
+          LanceDB stores, indexes and searches vectors together with other multimodal data, and is built on
+          the Lance columnar format, which is designed for fast random access to AI datasets. Chang She is second
+          author of the 2025 paper on Lance's adaptive structural encodings, written with Weston Pace, Lei Xu
+          and others, and writes for the LanceDB blog, including a 2023 post on building Windows packages.
+        source_ids: [lancedb-readme, lance-paper, lancedb-windows-post]
+timeline:
+  - date: "2012"
+    text: Joined Wes McKinney to work full time on the pandas library.
+    source_ids: [lancedb-windows-post]
+  - date: "2022"
+    text: Founded LanceDB, which joined Y Combinator's Winter 2022 batch.
+    source_ids: [yc-lancedb]
+  - date: "2023-05-31"
+    text: Published "Lance, Windows. Windows, Lance" on the LanceDB blog.
+    source_ids: [lancedb-windows-post]
+  - date: "2025-04-21"
+    text: Co-authored the Lance paper on efficient random access in columnar storage.
+    source_ids: [lance-paper]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: yc-lancedb
+    title: LanceDB — Y Combinator company page (founders and launch post)
+    url: https://www.ycombinator.com/companies/lancedb
+    publisher: Y Combinator
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: lancedb-readme
+    title: lancedb/lancedb README
+    url: https://raw.githubusercontent.com/lancedb/lancedb/main/README.md
+    publisher: lancedb/lancedb (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: lance-paper
+    title: "Lance: Efficient Random Access in Columnar Storage through Adaptive Structural Encodings (arXiv 2504.15247)"
+    url: https://arxiv.org/abs/2504.15247
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-04-21
+    accessed_at: 2026-10-22
+  - id: lancedb-windows-post
+    title: Lance, Windows. Windows, Lance (LanceDB blog)
+    url: https://www.lancedb.com/blog/lance-windows-windows-lance
+    publisher: LanceDB
+    kind: official-page
+    published_at: 2023-05-31
+    accessed_at: 2026-10-22

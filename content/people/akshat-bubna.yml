@@ -1,0 +1,73 @@
+slug: akshat-bubna
+name: Akshat Bubna
+initials: AB
+groups: [leadership, engineering]
+sector: corporate
+specialties: [inference, developer-tools]
+headline: Co-founder and CTO of Modal, the serverless cloud platform for AI and data workloads
+bio:
+  text: >-
+    Akshat Bubna is a co-founder and the CTO of Modal, which builds a serverless cloud platform for
+    data, AI and machine learning applications on its own file system, container runtime and scheduler.
+    Bubna co-authored Modal's 2026 engineering post on how the company achieved serverless GPUs.
+  source_ids: [modal-company, modal-blog, modal-serverless-gpus]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Modal
+    organization_slug: modal
+    role: Co-founder and CTO
+    current: true
+    source_ids: [modal-company, modal-blog]
+work:
+  - name: Modal serverless GPU infrastructure
+    artifact_slug: null
+    type: proprietary
+    url: https://modal.com/blog/truly-serverless-gpus
+    contribution: >-
+      Co-author of Modal's post describing the techniques behind its serverless GPUs, including buffers
+      of idle GPUs and a custom filesystem that serves container images lazily.
+    source_ids: [modal-serverless-gpus]
+links: []
+sections:
+  - heading: Modal
+    paragraphs:
+      - text: >-
+          Bubna and Erik Bernhardsson are Modal's founders, and Modal's blog lists Bubna as CTO and
+          co-founder. Modal describes building its own infrastructure, including a custom file system,
+          container runtime, scheduler and container image builder, so that customers can scale workloads
+          such as generative AI inference and model fine-tuning across CPUs and GPUs.
+        source_ids: [modal-company, modal-blog]
+      - text: >-
+          In May 2026 Bubna co-authored, with Charles Frye, Jonathon Belotti and Erik Bernhardsson, Modal's
+          engineering post on making GPUs serverless, which describes the company's work over five years on
+          fast replica start-up for inference workloads.
+        source_ids: [modal-serverless-gpus]
+timeline:
+  - date: "2026-05-12"
+    text: Co-authored Modal's engineering post on achieving serverless GPUs.
+    source_ids: [modal-serverless-gpus]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: modal-company
+    title: Modal — Company
+    url: https://modal.com/company
+    publisher: Modal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: modal-blog
+    title: Modal Blog (author listings)
+    url: https://modal.com/blog
+    publisher: Modal
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: modal-serverless-gpus
+    title: How we achieved truly serverless GPUs (Modal Blog)
+    url: https://modal.com/blog/truly-serverless-gpus
+    publisher: Modal
+    kind: announcement
+    published_at: 2026-05-12
+    accessed_at: 2026-10-22

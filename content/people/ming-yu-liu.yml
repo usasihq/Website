@@ -1,0 +1,173 @@
+slug: ming-yu-liu
+name: Ming-Yu Liu
+initials: MYL
+groups: [engineering, leadership]
+sector: corporate
+specialties: [generative-media, vision, robotics]
+headline: Vice President of Cosmos Lab at NVIDIA; supervised the Cosmos3 world model family
+bio:
+  text: >-
+    Ming-Yu Liu is Vice President of Cosmos Lab at NVIDIA and an IEEE Fellow, leading NVIDIA Cosmos, which
+    builds world foundation models for physical AI. Liu is the sole person credited under "Supervision" in
+    the Cosmos3 technical report, which introduced the Cosmos3-Nano and Cosmos3-Super omnimodal world
+    models. Earlier generative work from Liu's group includes GauGAN, the research behind NVIDIA Canvas.
+  source_ids: [liu-site, nvidia-profile, cosmos3-report]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: NVIDIA
+    organization_slug: nvidia
+    role: Vice President of Cosmos Lab (Vice President of Research)
+    current: true
+    source_ids: [liu-site, nvidia-profile]
+work:
+  - name: NVIDIA Cosmos3-Nano
+    artifact_slug: cosmos3-nano
+    type: open-weights
+    url: https://huggingface.co/nvidia/Cosmos3-Nano
+    contribution: >-
+      Credited under Supervision in the June 2026 Cosmos3 technical report, which releases Cosmos3-Nano
+      as an open-weight checkpoint.
+    source_ids: [cosmos3-report]
+  - name: NVIDIA Cosmos3-Super
+    artifact_slug: cosmos3-super
+    type: open-weights
+    url: https://huggingface.co/nvidia/Cosmos3-Super
+    contribution: >-
+      Credited under Supervision, and among the model architecture contributors, in the June 2026 Cosmos3
+      technical report, which releases Cosmos3-Super as an open-weight checkpoint.
+    source_ids: [cosmos3-report]
+  - name: "Semantic Image Synthesis with Spatially-Adaptive Normalization (GauGAN)"
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/1903.07291
+    contribution: >-
+      Co-author of the 2019 paper whose research NVIDIA credits as the basis of NVIDIA Canvas (GauGAN).
+    source_ids: [spade-paper, nvidia-profile]
+links:
+  - label: Website
+    url: https://mingyuliu.net/
+  - label: NVIDIA Research profile
+    url: https://research.nvidia.com/person/ming-yu-liu
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Liu is Vice President of Cosmos Lab at NVIDIA. NVIDIA Research's profile describes Liu as a Vice
+          President of Research who leads a research group on deep generative models for content creation,
+          and credits NVIDIA Cosmos, NVIDIA Canvas (GauGAN) and NVIDIA Maxine (LivePortrait) as products
+          enabled by the group's research.
+        source_ids: [liu-site, nvidia-profile]
+      - text: >-
+          Liu's site lists NVIDIA Pioneer Research Awards in 2017 and 2018, an R&D 100 Award in 2014, and a
+          2016 award from Mitsubishi Electric Research Labs (MERL), alongside SIGGRAPH Real-Time Live awards
+          in 2019 and 2021.
+        source_ids: [liu-site]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Liu's earlier work on image synthesis includes "Unsupervised Image-to-Image Translation Networks"
+          (2017) with Thomas Breuel and Jan Kautz, high-resolution image synthesis with conditional GANs
+          (2017), and spatially-adaptive normalization for semantic image synthesis (2019), the GauGAN paper.
+        source_ids: [unit-paper, pix2pixhd-paper, spade-paper]
+      - text: >-
+          Liu's group now builds world foundation models for physical AI. NVIDIA published the Cosmos World
+          Foundation Model Platform paper in January 2025, and the June 2026 Cosmos3 report describes a
+          family of omnimodal world models that process and generate language, image, video, audio and
+          action, released with code and checkpoints under the OpenMDW-1.1 license.
+        source_ids: [cosmos-platform-paper, cosmos3-report, cosmos-lab]
+timeline:
+  - date: "2014"
+    text: Received an R&D 100 Award from R&D Magazine.
+    source_ids: [liu-site]
+  - date: "2017-03"
+    text: Posted "Unsupervised Image-to-Image Translation Networks" as first author.
+    source_ids: [unit-paper]
+  - date: "2017-11"
+    text: Co-authored "High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs".
+    source_ids: [pix2pixhd-paper]
+  - date: "2019-03"
+    text: Co-authored the spatially-adaptive normalization (GauGAN) paper on semantic image synthesis.
+    source_ids: [spade-paper]
+  - date: "2025-01"
+    text: Co-authored NVIDIA's Cosmos World Foundation Model Platform for Physical AI paper.
+    source_ids: [cosmos-platform-paper, nvidia-profile]
+  - date: "2026-06-22"
+    text: Supervised the Cosmos3 omnimodal world models described in NVIDIA's technical report.
+    source_ids: [cosmos3-report]
+honors:
+  - name: IEEE Fellow
+    year: null
+    awarded_by: Institute of Electrical and Electronics Engineers (IEEE)
+    source_ids: [liu-site, nvidia-profile]
+  - name: SIGGRAPH Real-Time Live Best in Show Award
+    year: 2021
+    awarded_by: SIGGRAPH
+    source_ids: [liu-site]
+  - name: SIGGRAPH Real-Time Live Best in Show and Audience Choice Award
+    year: 2019
+    awarded_by: SIGGRAPH
+    source_ids: [liu-site]
+  - name: R&D 100 Award
+    year: 2014
+    awarded_by: R&D Magazine
+    source_ids: [liu-site]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: liu-site
+    title: Ming-Yu Liu, personal website
+    url: https://mingyuliu.net/
+    publisher: Ming-Yu Liu
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: nvidia-profile
+    title: Ming-Yu Liu, NVIDIA Research profile
+    url: https://research.nvidia.com/person/ming-yu-liu
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: cosmos-lab
+    title: NVIDIA Cosmos Lab
+    url: https://research.nvidia.com/labs/cosmos-lab/
+    publisher: NVIDIA
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: cosmos3-report
+    title: "Cosmos3: Omnimodal World Models for Physical AI (technical report, Appendix G contributors)"
+    url: https://research.nvidia.com/labs/cosmos-lab/cosmos3/technical-report.pdf
+    publisher: NVIDIA
+    kind: paper
+    published_at: 2026-06-22
+    accessed_at: 2026-10-22
+  - id: cosmos-platform-paper
+    title: Cosmos World Foundation Model Platform for Physical AI (arXiv 2501.03575)
+    url: https://arxiv.org/abs/2501.03575
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-01-07
+    accessed_at: 2026-10-22
+  - id: unit-paper
+    title: Unsupervised Image-to-Image Translation Networks (arXiv 1703.00848)
+    url: https://arxiv.org/abs/1703.00848
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-03-02
+    accessed_at: 2026-10-22
+  - id: pix2pixhd-paper
+    title: High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs (arXiv 1711.11585)
+    url: https://arxiv.org/abs/1711.11585
+    publisher: arXiv
+    kind: paper
+    published_at: 2017-11-30
+    accessed_at: 2026-10-22
+  - id: spade-paper
+    title: Semantic Image Synthesis with Spatially-Adaptive Normalization (arXiv 1903.07291)
+    url: https://arxiv.org/abs/1903.07291
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-03-18
+    accessed_at: 2026-10-22
