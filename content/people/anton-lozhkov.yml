@@ -41,6 +41,13 @@ work:
     contribution: >-
       Second author of the SmolLM2 paper (2025), on data-centric training of a small language model.
     source_ids: [smollm2-paper]
+  - name: StarCoder2-15B
+    artifact_slug: starcoder2-15b
+    type: open-weights
+    url: https://huggingface.co/bigcode/starcoder2-15b
+    contribution: >-
+      First author of the StarCoder 2 paper, which introduced StarCoder2-15B and which the model card cites.
+    source_ids: [starcoder2-paper, starcoder2-15b-card]
 links:
   - label: GitHub
     url: https://github.com/anton-l
@@ -118,4 +125,11 @@ sources:
     publisher: arXiv
     kind: paper
     published_at: 2025-02-04
+    accessed_at: 2026-10-22
+  - id: starcoder2-15b-card
+    title: bigcode/starcoder2-15b model card
+    url: https://huggingface.co/bigcode/starcoder2-15b
+    publisher: BigCode (Hugging Face)
+    kind: model-card
+    published_at: null
     accessed_at: 2026-10-22

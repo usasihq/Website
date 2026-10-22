@@ -35,6 +35,13 @@ work:
       First author of DiffDock (2022), which frames molecular docking as a generative modeling
       problem solved with a diffusion process over ligand poses.
     source_ids: [diffdock-paper]
+  - name: Boltz-2 (boltz2_conf and boltz2_aff checkpoints)
+    artifact_slug: boltz-2-v2
+    type: open-weights
+    url: https://huggingface.co/boltz-community/boltz-2
+    contribution: >-
+      Second author of the Boltz-2 paper, which the Boltz repository README asks users of the code and models to cite.
+    source_ids: [boltz-readme-raw, boltz2-report]
 links:
   - label: Boltz
     url: https://boltz.com/manifesto
@@ -84,7 +91,7 @@ timeline:
     source_ids: [boltz-launch]
 honors: []
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: boltz-manifesto
@@ -135,3 +142,10 @@ sources:
     published_at: 2022-10-04
     accessed_at: 2026-10-21
     reviewed_at: 2026-10-21
+  - id: boltz-readme-raw
+    title: jwohlwend/boltz README (raw)
+    url: https://raw.githubusercontent.com/jwohlwend/boltz/main/README.md
+    publisher: Boltz
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22

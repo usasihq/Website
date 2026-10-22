@@ -68,6 +68,13 @@ work:
       Co-author of the 2019 paper proposing DistilBERT, a smaller general-purpose language model
       pretrained by distilling BERT.
     source_ids: [distilbert-paper, wolf-site]
+  - name: FineWeb
+    artifact_slug: fineweb
+    type: open-data
+    url: https://huggingface.co/datasets/HuggingFaceFW/fineweb
+    contribution: >-
+      Co-author of the paper introducing the FineWeb pretraining datasets.
+    source_ids: [fineweb-paper]
 links:
   - label: Website
     url: https://thomwolf.io
@@ -153,7 +160,7 @@ honors:
     awarded_by: Conference on Empirical Methods in Natural Language Processing (EMNLP)
     source_ids: [wolf-site]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: wolf-site
@@ -234,3 +241,10 @@ sources:
     kind: paper
     published_at: 2019-10-02
     accessed_at: 2026-10-21
+  - id: fineweb-paper
+    title: '"The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale" (arXiv 2406.17557)'
+    url: https://arxiv.org/abs/2406.17557
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-25
+    accessed_at: 2026-10-22

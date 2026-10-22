@@ -36,6 +36,13 @@ work:
       "Granite Embedding Models" (2025), which publicly releases its English and multilingual embedding
       models under the Apache 2.0 license.
     source_ids: [ibm-research-profile, granite-embedding-paper]
+  - name: Granite Switch 4.1 8B
+    artifact_slug: granite-switch-4-1-8b
+    type: open-weights
+    url: https://huggingface.co/ibm-granite/granite-switch-4.1-8b
+    contribution: >-
+      First-listed author of the Hugging Face community article announcing Granite Switch 4.1, the release that includes the Granite-Switch-4.1-8B model.
+    source_ids: [granite-switch-blog]
 links:
   - label: IBM Research profile
     url: https://research.ibm.com/people/kate-soule
@@ -86,7 +93,7 @@ timeline:
     text: Co-authored "Granite.Trust Policy Tools" on shareable, actionable policies for generative AI applications.
     source_ids: [trust-policy-paper]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: ibm-research-profile
@@ -138,3 +145,10 @@ sources:
     kind: paper
     published_at: 2026-08-24
     accessed_at: 2026-10-21
+  - id: granite-switch-blog
+    title: "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint (Hugging Face blog)"
+    url: https://huggingface.co/blog/ibm-granite/granite-switch-4-1
+    publisher: Hugging Face (IBM Granite community article)
+    kind: announcement
+    published_at: 2026-10-15
+    accessed_at: 2026-10-22

@@ -43,6 +43,20 @@ work:
       First author of "SlowFast Networks for Video Recognition" (2018); the PySlowFast README lists
       Feichtenhofer among the people who wrote and maintain the Apache-2.0 codebase.
     source_ids: [slowfast-paper, slowfast-readme]
+  - name: SAM 2.1 Hiera-Large
+    artifact_slug: sam-2-1-hiera-large
+    type: open-weights
+    url: https://huggingface.co/facebook/sam2.1-hiera-large
+    contribution: >-
+      Last-listed author of the SAM 2 paper (arXiv 2408.00714), which the SAM 2 repository credits; that repository released the SAM 2.1 checkpoints, including Hiera-Large, in September 2024.
+    source_ids: [sam2-paper, sam2-repo]
+  - name: SAM 3.1
+    artifact_slug: sam-3-1
+    type: open-weights
+    url: https://huggingface.co/facebook/sam3.1
+    contribution: >-
+      Last-listed author of the SAM 3 paper (arXiv 2511.16719), which the SAM 3.1 release notes point to for technical details of Object Multiplex; the SAM 3 README names Feichtenhofer a project lead.
+    source_ids: [sam3-paper, sam3p1-release-notes, sam3-readme]
 links:
   - label: Website
     url: https://feichtenhofer.github.io/
@@ -124,7 +138,7 @@ honors:
     awarded_by: Austrian Academy of Sciences
     source_ids: [meta-profile]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: homepage
@@ -183,3 +197,17 @@ sources:
     kind: paper
     published_at: 2022-01-10
     accessed_at: 2026-10-21
+  - id: sam2-repo
+    title: facebookresearch/sam2 repository README
+    url: https://github.com/facebookresearch/sam2
+    publisher: Meta (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: sam3p1-release-notes
+    title: SAM 3.1 release notes (RELEASE_SAM3p1.md)
+    url: https://github.com/facebookresearch/sam3/blob/main/RELEASE_SAM3p1.md
+    publisher: Meta (GitHub repository)
+    kind: release-notes
+    published_at: null
+    accessed_at: 2026-10-22

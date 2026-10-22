@@ -39,6 +39,13 @@ work:
       Last-listed author of the Dolma paper, which describes a three-trillion-token English corpus
       released for research on language-model pretraining.
     source_ids: [dolma-paper]
+  - name: Olmo 3 7B (base)
+    artifact_slug: olmo-3-1025-7b
+    type: open-weights
+    url: https://huggingface.co/allenai/Olmo-3-1025-7B
+    contribution: >-
+      Credited in the Olmo 3 technical report, which the model card links as its paper, for technical leadership, model architecture and training methodology, and base-model data acquisition and curation.
+    source_ids: [olmo3-paper]
 links:
   - label: Website
     url: https://kyleclo.com
@@ -113,7 +120,7 @@ honors:
     awarded_by: Association for Computational Linguistics
     source_ids: [lo-site]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: lo-site
@@ -179,3 +186,10 @@ sources:
     kind: paper
     published_at: 2025-02-25
     accessed_at: 2026-10-21
+  - id: olmo3-paper
+    title: Olmo 3 (arXiv 2512.13961)
+    url: https://arxiv.org/abs/2512.13961
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-12-15
+    accessed_at: 2026-10-22

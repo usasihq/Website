@@ -41,6 +41,20 @@ work:
       Made design contributions across the entire stack and wrote the base implementation of the
       data curation pipeline, according to the technical report's contributions section.
     source_ids: [nomic-embed-report, nomic-embed-arxiv]
+  - name: nomic-embed-text-v2-moe
+    artifact_slug: nomic-embed-text-v2-moe
+    type: open-weights
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
+    contribution: >-
+      Second author of the paper on training sparse mixture-of-experts text embedding models, which the nomic-embed-text-v2-moe model card cites.
+    source_ids: [moe-embed-paper, nomic-embed-v2-moe-card]
+  - name: nomic-embed-text-v1.5
+    artifact_slug: nomic-embed-text-v1-5
+    type: open-weights
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+    contribution: >-
+      Third author of the Nomic Embed paper, which the nomic-embed-text-v1.5 model card cites.
+    source_ids: [nomic-embed-arxiv, nomic-embed-v1-5-card]
 links:
   - label: Website
     url: https://www.nomad.garden/
@@ -88,7 +102,7 @@ timeline:
     text: Co-authored a paper on training sparse mixture-of-experts text embedding models with Zach Nussbaum.
     source_ids: [moe-embed-paper]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: site-home
@@ -153,3 +167,17 @@ sources:
     kind: paper
     published_at: 2025-02-11
     accessed_at: 2026-10-21
+  - id: nomic-embed-v2-moe-card
+    title: nomic-ai/nomic-embed-text-v2-moe model card
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
+    publisher: Nomic AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: nomic-embed-v1-5-card
+    title: nomic-ai/nomic-embed-text-v1.5 model card
+    url: https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
+    publisher: Nomic AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22

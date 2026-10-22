@@ -70,6 +70,20 @@ work:
       Sole author of the book, an introduction to RLHF and post-training methods for language
       models, available on the web and as a Manning print edition.
     source_ids: [rlhf-book]
+  - name: Llama 3.1 Tülu 3.1 8B
+    artifact_slug: llama-3-1-tulu-3-1-8b
+    type: open-weights
+    url: https://huggingface.co/allenai/Llama-3.1-Tulu-3.1-8B
+    contribution: >-
+      First author of the Tülu 3 paper, which the Llama 3.1 Tülu 3.1 8B model card cites.
+    source_ids: [tulu3-paper]
+  - name: Olmo 3 7B Instruct
+    artifact_slug: olmo-3-7b-instruct
+    type: open-weights
+    url: https://huggingface.co/allenai/Olmo-3-7B-Instruct
+    contribution: >-
+      Credited in the Olmo 3 paper's author contributions for technical leadership and for post-training infrastructure, methodology, and data work; the model card cites that paper.
+    source_ids: [olmo3-paper]
 links:
   - label: Website
     url: https://natolambert.com
@@ -129,7 +143,7 @@ timeline:
     text: Announced Trillium Labs, a nonprofit for the open science of frontier AI, as co-founder and Executive Director.
     source_ids: [trillium-intro, lambert-site]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: lambert-site
@@ -223,3 +237,10 @@ sources:
     kind: paper
     published_at: 2024-03-20
     accessed_at: 2026-10-21
+  - id: olmo3-paper
+    title: Olmo 3 (arXiv 2512.13961)
+    url: https://arxiv.org/abs/2512.13961
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-12-15
+    accessed_at: 2026-10-22

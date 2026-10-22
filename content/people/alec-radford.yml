@@ -62,6 +62,20 @@ work:
       Co-author of the 2020 paper; its contribution statement credits Radford, with others, with
       developing the optimized Transformer implementation and the text datasets.
     source_ids: [scaling-laws-paper]
+  - name: CLIP ViT-L/14
+    artifact_slug: clip-vit-large-patch14
+    type: open-weights
+    url: https://huggingface.co/openai/clip-vit-large-patch14
+    contribution: >-
+      First author of the CLIP paper (arXiv 2103.00020), which the CLIP ViT-L/14 model card links as its paper.
+    source_ids: [clip-paper, hf-clip-vit-l14]
+  - name: Whisper large-v3
+    artifact_slug: whisper-large-v3
+    type: open-weights
+    url: https://huggingface.co/openai/whisper-large-v3
+    contribution: >-
+      First author of the Whisper paper (arXiv 2212.04356), which the Whisper large-v3 model card cites; the large-v3 checkpoint was released later as a separate update.
+    source_ids: [whisper-paper, hf-whisper-large-v3]
 links: []
 sections:
   - heading: Research
@@ -122,7 +136,7 @@ timeline:
     text: Co-authored "Learning a Generative Meta-Model of LLM Activations" with UC Berkeley researchers.
     source_ids: [meta-model-paper]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: clip-paper
@@ -230,3 +244,17 @@ sources:
     kind: paper
     published_at: 2021-02-24
     accessed_at: 2026-10-21
+  - id: hf-clip-vit-l14
+    title: openai/clip-vit-large-patch14 model card
+    url: https://huggingface.co/openai/clip-vit-large-patch14
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: hf-whisper-large-v3
+    title: openai/whisper-large-v3 model card
+    url: https://huggingface.co/openai/whisper-large-v3
+    publisher: OpenAI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22

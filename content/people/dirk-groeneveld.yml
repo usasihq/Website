@@ -39,6 +39,13 @@ work:
       Co-author of the Dolma paper, which describes a three-trillion-token English corpus released
       for research on language-model pretraining.
     source_ids: [dolma-paper]
+  - name: OLMo-core
+    artifact_slug: olmo-core
+    type: open-source
+    url: https://github.com/allenai/Olmo-core
+    contribution: >-
+      Listed among the authors of the OLMo 2 paper that the OLMo-core README asks users to cite, and appears among the repository's top contributors on GitHub.
+    source_ids: [olmo-core-readme, olmo-core-contributors]
 links:
   - label: GitHub
     url: https://github.com/dirkgr
@@ -108,7 +115,7 @@ timeline:
     text: Co-authored a study of how architectural choices affect long-context extension.
     source_ids: [cracks-paper]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: olmo-paper
@@ -195,3 +202,17 @@ sources:
     kind: paper
     published_at: 2025-12-15
     accessed_at: 2026-10-21
+  - id: olmo-core-readme
+    title: allenai/OLMo-core README (citation section)
+    url: https://raw.githubusercontent.com/allenai/OLMo-core/main/README.md
+    publisher: Ai2 (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: olmo-core-contributors
+    title: allenai/OLMo-core contributors
+    url: https://github.com/allenai/OLMo-core/graphs/contributors
+    publisher: GitHub
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22

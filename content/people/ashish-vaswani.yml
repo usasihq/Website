@@ -62,6 +62,20 @@ work:
       First author of the 2018 Tensor2Tensor paper; the Apache-2.0 library, developed by the Google
       Brain team, includes the reference implementation of the Transformer.
     source_ids: [t2t-paper, t2t-repo]
+  - name: Rnj-1 Instruct
+    artifact_slug: rnj-1-instruct
+    type: open-weights
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct
+    contribution: >-
+      First listed author in the citation block of the Rnj-1 Instruct model card; Essential AI's Rnj-1 announcement credits Vaswani in the leadership group for the research and engineering roadmap.
+    source_ids: [rnj1-instruct-card, rnj1-post]
+  - name: Rnj-1.5 Instruct
+    artifact_slug: rnj-1-5-instruct
+    type: open-weights
+    url: https://huggingface.co/EssentialAI/rnj-1.5-instruct
+    contribution: >-
+      Listed among the authors in the citation block of the Rnj-1.5 Instruct model card.
+    source_ids: [rnj1-5-instruct-card]
 links:
   - label: Essential AI
     url: https://www.essential.ai/about
@@ -121,7 +135,7 @@ timeline:
     text: Announced Essential AI's Rnj-1 base and instruction-tuned models.
     source_ids: [rnj1-post]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: essential-about
@@ -215,3 +229,17 @@ sources:
     kind: paper
     published_at: 2025-05-04
     accessed_at: 2026-10-21
+  - id: rnj1-instruct-card
+    title: EssentialAI/rnj-1-instruct model card
+    url: https://huggingface.co/EssentialAI/rnj-1-instruct
+    publisher: Essential AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: rnj1-5-instruct-card
+    title: EssentialAI/rnj-1.5-instruct model card
+    url: https://huggingface.co/EssentialAI/rnj-1.5-instruct
+    publisher: Essential AI (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22

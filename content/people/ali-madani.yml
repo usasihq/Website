@@ -52,6 +52,27 @@ work:
       Leads the company that released Profluent-E1, a family of retrieval-augmented protein encoder
       models in 150M, 300M and 600M parameter sizes, under a permissive license.
     source_ids: [profluent-e1, profluent-team]
+  - name: Profluent-E1 150M (E1-150m)
+    artifact_slug: e1-150m
+    type: open-weights
+    url: https://huggingface.co/Profluent-Bio/E1-150m
+    contribution: >-
+      Last-listed and corresponding author of the E1 preprint (bioRxiv 2025.11.12.688125), which the Profluent-E1 repository README cites for the model family.
+    source_ids: [biorxiv-e1, e1-readme, profluent-e1]
+  - name: Profluent-E1 300M (E1-300m)
+    artifact_slug: e1-300m
+    type: open-weights
+    url: https://huggingface.co/Profluent-Bio/E1-300m
+    contribution: >-
+      Last-listed and corresponding author of the E1 preprint (bioRxiv 2025.11.12.688125), which the Profluent-E1 repository README cites for the model family.
+    source_ids: [biorxiv-e1, e1-readme, profluent-e1]
+  - name: Profluent-E1 600M (E1-600m)
+    artifact_slug: e1-600m
+    type: open-weights
+    url: https://huggingface.co/Profluent-Bio/E1-600m
+    contribution: >-
+      Last-listed and corresponding author of the E1 preprint (bioRxiv 2025.11.12.688125), which the Profluent-E1 repository README cites for the model family.
+    source_ids: [biorxiv-e1, e1-readme, profluent-e1]
 links:
   - label: Profluent team
     url: https://www.profluent.bio/team
@@ -94,7 +115,7 @@ timeline:
     text: Profluent announced the Profluent-E1 retrieval-augmented protein encoder models.
     source_ids: [profluent-e1]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: profluent-team
@@ -137,3 +158,17 @@ sources:
     published_at: 2025-11-13
     accessed_at: 2026-10-21
     reviewed_at: 2026-10-21
+  - id: biorxiv-e1
+    title: "E1: Retrieval-Augmented Protein Encoder Models (bioRxiv 10.1101/2025.11.12.688125, API record)"
+    url: https://api.biorxiv.org/details/biorxiv/10.1101/2025.11.12.688125
+    publisher: bioRxiv
+    kind: paper
+    published_at: 2025-11-13
+    accessed_at: 2026-10-22
+  - id: e1-readme
+    title: Profluent-AI/E1 repository README
+    url: https://github.com/Profluent-AI/E1
+    publisher: Profluent (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22

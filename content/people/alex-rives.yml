@@ -67,6 +67,13 @@ work:
       EvolutionaryScale introduced ESM Cambrian in 2024 as a model family for protein
       representation learning, released at 300M, 600M and 6B parameters under the MIT license.
     source_ids: [esmc-blog]
+  - name: ESM3 open small (esm3-sm-open-v1)
+    artifact_slug: esm3-sm-open-v1
+    type: open-weights
+    url: https://huggingface.co/biohub/esm3-sm-open-v1
+    contribution: >-
+      Last-listed author of the ESM3 paper in Science (doi:10.1126/science.ads0018), which the ESM3 README in the Biohub/esm repository asks users to cite.
+    source_ids: [esm3-readme]
 links:
   - label: Biohub profile
     url: https://biohub.org/team/alex-rives/
@@ -114,7 +121,7 @@ timeline:
     text: EvolutionaryScale introduced the ESM Cambrian protein representation models.
     source_ids: [esmc-blog]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: biohub-bio
@@ -159,3 +166,10 @@ sources:
     kind: announcement
     published_at: null
     accessed_at: 2026-10-21
+  - id: esm3-readme
+    title: ESM3 README (Biohub/esm repository)
+    url: https://github.com/Biohub/esm/blob/main/_assets/ESM3_README.md
+    publisher: Biohub (GitHub repository)
+    kind: documentation
+    published_at: null
+    accessed_at: 2026-10-22

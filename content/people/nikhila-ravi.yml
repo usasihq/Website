@@ -36,6 +36,20 @@ work:
       (2023), and one of the project leads named in the SAM 3 repository README. The SAM 2
       repository releases checkpoints, demo code, and training code under Apache 2.0.
     source_ids: [sam2-paper, sam-paper, sam2-readme, sam3-readme]
+  - name: SAM 2.1 Hiera-Large
+    artifact_slug: sam-2-1-hiera-large
+    type: open-weights
+    url: https://huggingface.co/facebook/sam2.1-hiera-large
+    contribution: >-
+      First author of the SAM 2 paper, which the SAM 2.1 Hiera-Large model card cites.
+    source_ids: [sam2-paper]
+  - name: SAM 3.1
+    artifact_slug: sam-3-1
+    type: open-weights
+    url: https://huggingface.co/facebook/sam3.1
+    contribution: >-
+      Co-author of the SAM 3 paper, which the facebookresearch/sam3 repository cites; that repository also hosts the code for the SAM 3.1 checkpoints.
+    source_ids: [sam3-paper, sam3-readme]
 links:
   - label: Website
     url: https://nikhilaravi.com/
@@ -103,7 +117,7 @@ honors:
     awarded_by: Royal Academy of Engineering
     source_ids: [homepage]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: homepage

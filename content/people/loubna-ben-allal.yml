@@ -44,6 +44,27 @@ work:
   source_ids:
   - personal-site
   - smollm3-card
+- name: FineWeb
+  artifact_slug: fineweb
+  type: open-data
+  url: https://huggingface.co/datasets/HuggingFaceFW/fineweb
+  contribution: >-
+    Co-author of the paper introducing the FineWeb datasets, listed third.
+  source_ids: [fineweb-paper]
+- name: StarCoder2-15B
+  artifact_slug: starcoder2-15b
+  type: open-weights
+  url: https://huggingface.co/bigcode/starcoder2-15b
+  contribution: >-
+    Third-listed author of the paper introducing StarCoder2 and The Stack v2, which the StarCoder2-15B model card cites.
+  source_ids: [starcoder2-paper]
+- name: StarCoder2-3B
+  artifact_slug: starcoder2-3b
+  type: open-weights
+  url: https://huggingface.co/bigcode/starcoder2-3b
+  contribution: >-
+    Third-listed author of the paper introducing StarCoder2 and The Stack v2, which the StarCoder2-3B model card cites.
+  source_ids: [starcoder2-paper]
 links:
 - label: Website
   url: https://loubnabnl.github.io/
@@ -105,7 +126,7 @@ honors:
     awarded_by: ICLR 2023 DL4C Workshop
     source_ids: [personal-site]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
 - id: personal-site
@@ -162,3 +183,17 @@ sources:
   kind: paper
   published_at: 2026-05-25
   accessed_at: 2026-10-21
+- id: fineweb-paper
+  title: "The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale (arXiv 2406.17557)"
+  url: https://arxiv.org/abs/2406.17557
+  publisher: arXiv
+  kind: paper
+  published_at: 2024-06-25
+  accessed_at: 2026-10-22
+- id: starcoder2-paper
+  title: "StarCoder 2 and The Stack v2: The Next Generation (arXiv 2402.19173)"
+  url: https://arxiv.org/abs/2402.19173
+  publisher: arXiv
+  kind: paper
+  published_at: 2024-02-29
+  accessed_at: 2026-10-22

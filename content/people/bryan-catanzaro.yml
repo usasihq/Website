@@ -68,6 +68,13 @@ work:
       Co-author of "Deep Speech 2: End-to-End Speech Recognition in English and Mandarin" (2015), from
       the period when Catanzaro worked at Baidu on end-to-end deep learning speech recognition.
     source_ids: [deepspeech2-paper, nvidia-dev-author]
+  - name: Nemotron-CC
+    artifact_slug: nemotron-cc
+    type: open-data
+    url: https://data.commoncrawl.org/contrib/Nemotron/Nemotron-CC/index.html
+    contribution: >-
+      Co-author, listed last, of the 2024 paper introducing Nemotron-CC, an English pretraining dataset built from Common Crawl.
+    source_ids: [nemotron-cc-paper]
 links:
   - label: NVIDIA Blog author page
     url: https://blogs.nvidia.com/blog/author/bcatanzaro/
@@ -139,7 +146,7 @@ timeline:
     text: Listed in the leadership credits of the NVIDIA Nemotron 3 white paper.
     source_ids: [nemotron3-paper]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: nvidia-blog-author
@@ -205,3 +212,10 @@ sources:
     kind: paper
     published_at: 2021-04-09
     accessed_at: 2026-10-21
+  - id: nemotron-cc-paper
+    title: "Nemotron-CC: Transforming Common Crawl into a Refined Long-Horizon Pretraining Dataset (arXiv 2412.02595)"
+    url: https://arxiv.org/abs/2412.02595
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-12-03
+    accessed_at: 2026-10-22

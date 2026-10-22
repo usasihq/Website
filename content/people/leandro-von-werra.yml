@@ -56,6 +56,27 @@ work:
       Co-author of the O'Reilly book, according to the author biographies on Hugging Face's LLM
       Course page.
     source_ids: [hf-course]
+  - name: BigCodeBench
+    artifact_slug: bigcodebench
+    type: open-data
+    url: https://github.com/bigcode-project/bigcodebench
+    contribution: >-
+      Last author of the BigCodeBench paper, a benchmark for code generation with diverse function calls and complex instructions that the repository README cites.
+    source_ids: [bigcodebench-paper]
+  - name: FineWeb
+    artifact_slug: fineweb
+    type: open-data
+    url: https://huggingface.co/datasets/HuggingFaceFW/fineweb
+    contribution: >-
+      Co-author of the FineWeb datasets paper, which the FineWeb dataset card cites.
+    source_ids: [fineweb-paper]
+  - name: StarCoder2-3B
+    artifact_slug: starcoder2-3b
+    type: open-weights
+    url: https://huggingface.co/bigcode/starcoder2-3b
+    contribution: >-
+      One of the two corresponding authors, marked with a star, of the StarCoder 2 paper that introduced StarCoder2-3B.
+    source_ids: [starcoder2-html]
 links:
   - label: GitHub
     url: https://github.com/lvwerra
@@ -111,7 +132,7 @@ timeline:
     text: Co-authored the SmolLM2 paper on training a small language model.
     source_ids: [smollm2-paper]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: github-profile
@@ -184,3 +205,17 @@ sources:
     kind: paper
     published_at: 2025-02-04
     accessed_at: 2026-10-21
+  - id: bigcodebench-paper
+    title: "BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions (arXiv 2406.15877)"
+    url: https://arxiv.org/abs/2406.15877
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-06-22
+    accessed_at: 2026-10-22
+  - id: starcoder2-html
+    title: StarCoder 2 and The Stack v2 (arXiv HTML, author list)
+    url: https://arxiv.org/html/2402.19173
+    publisher: arXiv
+    kind: paper
+    published_at: 2024-02-29
+    accessed_at: 2026-10-22

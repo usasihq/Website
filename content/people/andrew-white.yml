@@ -51,6 +51,13 @@ work:
       Senior author of the 2025 paper on ether0, a reasoning model for chemistry trained with
       reinforcement learning and released by FutureHouse as open source.
     source_ids: [ether0-paper, fh-about, edison-team]
+  - name: ether0 (24B)
+    artifact_slug: ether0-24b
+    type: open-weights
+    url: https://huggingface.co/futurehouse/ether0
+    contribution: >-
+      Last-listed author of the ether0 paper (arXiv 2506.17238), which the ether0 model card cites.
+    source_ids: [ether0-paper, hf-ether0-card]
 links:
   - label: FutureHouse team
     url: https://www.futurehouse.org/team
@@ -103,7 +110,7 @@ timeline:
     text: Co-announced Edison Scientific as a commercial spinout of FutureHouse.
     source_ids: [fh-edison]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: chemcrow-paper
@@ -190,3 +197,10 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-10-21
+  - id: hf-ether0-card
+    title: futurehouse/ether0 model card
+    url: https://huggingface.co/futurehouse/ether0
+    publisher: FutureHouse (Hugging Face)
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22

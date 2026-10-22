@@ -27,6 +27,13 @@ work:
       Co-founder and CEO of the company that released Chai-1, a model for predicting molecular
       structures described in a 2024 technical report credited to Chai Discovery.
     source_ids: [chai-readme, chai-novartis]
+  - name: Chai-1 (weights used by chai_lab 0.6.1)
+    artifact_slug: chai-1-v0-6
+    type: open-weights
+    url: https://huggingface.co/chaidiscovery/chai-1
+    contribution: >-
+      Listed among the authors of the Chai-1 technical report on bioRxiv, which the Chai-1 model card cites.
+    source_ids: [chai1-report]
 links:
   - label: Chai Discovery
     url: https://www.chaidiscovery.com/
@@ -67,7 +74,7 @@ timeline:
     source_ids: [chai-novartis]
 honors: []
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: chai-novartis
@@ -102,3 +109,10 @@ sources:
     published_at: 2025-11-19
     accessed_at: 2026-10-21
     reviewed_at: 2026-10-21
+  - id: chai1-report
+    title: "Chai-1: Decoding the molecular interactions of life (bioRxiv, doi:10.1101/2024.10.10.615955)"
+    url: https://doi.org/10.1101/2024.10.10.615955
+    publisher: bioRxiv
+    kind: paper
+    published_at: 2024-10-11
+    accessed_at: 2026-10-22

@@ -42,6 +42,13 @@ work:
       First author of the paper describing Dolma, a three-trillion-token open corpus built for
       language model pretraining research, released with an open-source data curation toolkit.
     source_ids: [dolma-paper]
+  - name: Olmo 3 7B (base)
+    artifact_slug: olmo-3-1025-7b
+    type: open-weights
+    url: https://huggingface.co/allenai/Olmo-3-1025-7B
+    contribution: >-
+      Listed in the Olmo 3 report's author contributions for technical leadership, model architecture and training methodology, and base model data acquisition.
+    source_ids: [olmo3-paper]
 links:
   - label: Personal site
     url: https://soldaini.net/
@@ -102,7 +109,7 @@ timeline:
     text: Co-authored olmOCR, on extracting text from PDFs with vision language models.
     source_ids: [olmocr-paper]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: site
@@ -157,3 +164,10 @@ sources:
     kind: paper
     published_at: 2025-02-25
     accessed_at: 2026-10-21
+  - id: olmo3-paper
+    title: Olmo 3 (arXiv 2512.13961)
+    url: https://arxiv.org/abs/2512.13961
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-12-15
+    accessed_at: 2026-10-22

@@ -50,6 +50,20 @@ work:
       Last author of the 2024 Nature paper showing that bridge RNAs direct programmable recombination
       of target and donor DNA; the paper links code and a Python package for designing bridge RNA sequences.
     source_ids: [nature-bridge]
+  - name: Evo 2 40B
+    artifact_slug: evo-2-40b
+    type: open-weights
+    url: https://huggingface.co/arcinstitute/evo2_40b
+    contribution: >-
+      Listed by Nature among the authors who jointly supervised the Evo 2 paper (2026), and a corresponding author; the Evo 2 repository README cites that paper, and the repository lists evo2_40b among its checkpoints.
+    source_ids: [nature-evo2, crossref-evo2, evo2-repo]
+  - name: Evo 2 20B
+    artifact_slug: evo-2-20b
+    type: open-weights
+    url: https://huggingface.co/arcinstitute/evo2_20b
+    contribution: >-
+      Listed by Nature among the authors who jointly supervised the Evo 2 paper (2026), and a corresponding author; the Evo 2 repository README cites that paper, and the repository lists evo2_20b among its checkpoints.
+    source_ids: [nature-evo2, crossref-evo2, evo2-repo]
 links:
   - label: Hsu Lab at Arc Institute
     url: https://arcinstitute.org/labs/hsulab
@@ -109,7 +123,7 @@ honors:
     awarded_by: MIT Technology Review
     source_ids: [arc-hsu-lab]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: arc-hsu-lab
@@ -168,3 +182,10 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-10-21
+  - id: crossref-evo2
+    title: Genome modelling and design across all domains of life with Evo 2 (Crossref record)
+    url: https://api.crossref.org/works/10.1038/s41586-026-10176-5
+    publisher: Crossref
+    kind: paper
+    published_at: 2026-03-04
+    accessed_at: 2026-10-22

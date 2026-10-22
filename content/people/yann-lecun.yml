@@ -51,6 +51,20 @@ work:
       LeCun's published bio credits LeCun with the convolutional network method, which it
       describes as used for image, video and speech recognition.
     source_ids: [lecun-bio]
+  - name: V-JEPA 2 ViT-g/16 (384 px)
+    artifact_slug: v-jepa-2-vitg-384
+    type: open-weights
+    url: https://huggingface.co/facebook/vjepa2-vitg-fpc64-384
+    contribution: >-
+      Co-author of the V-JEPA 2 paper, which introduces the model family this ViT-g/16 checkpoint belongs to.
+    source_ids: [vjepa2-paper]
+  - name: V-JEPA 2.1 ViT-G/16 (384 px)
+    artifact_slug: v-jepa-2-1-vit-gigantic-384
+    type: open-weights
+    url: https://github.com/facebookresearch/vjepa2
+    contribution: >-
+      Co-author of the V-JEPA 2.1 paper, which introduces the model family this ViT-G/16 checkpoint belongs to.
+    source_ids: [vjepa21-paper]
 links:
   - label: NYU Courant profile
     url: https://cims.nyu.edu/people/profiles/LECUN_Yann.html
@@ -146,7 +160,7 @@ honors:
     awarded_by: French Académie des Sciences
     source_ids: [lecun-bio]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: lecun-bio
@@ -177,3 +191,10 @@ sources:
     kind: paper
     published_at: 2024-02-15
     accessed_at: 2026-10-21
+  - id: vjepa21-paper
+    title: '"V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning" (arXiv 2603.14482)'
+    url: https://arxiv.org/abs/2603.14482
+    publisher: arXiv
+    kind: paper
+    published_at: 2026-03-15
+    accessed_at: 2026-10-22

@@ -34,6 +34,20 @@ work:
       Named on the GitHub profile as Teknium's current focus, described there as an extensible
       terminal agent with persistent memory that runs locally.
     source_ids: [gh-profile]
+  - name: Hermes 4 70B
+    artifact_slug: hermes-4-70b
+    type: open-weights
+    url: https://huggingface.co/NousResearch/Hermes-4-70B
+    contribution: >-
+      First author of the Hermes 4 Technical Report, which the Hermes 4 70B model card links and asks users to cite.
+    source_ids: [tk-hermes4, hf-hermes4-70b]
+  - name: Hermes 4.3 36B
+    artifact_slug: hermes-4-3-36b
+    type: open-weights
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    contribution: >-
+      First author of the Hermes 4 Technical Report, which the Hermes 4.3 36B model card links and asks users to cite.
+    source_ids: [tk-hermes4, hf-hermes43-36b]
 links:
   - label: GitHub
     url: https://github.com/teknium1
@@ -72,7 +86,7 @@ timeline:
     text: Released the Hermes 4 Technical Report on a family of hybrid reasoning models as first-listed author.
     source_ids: [tk-hermes4]
 publication_status: published
-updated_at: 2026-10-21
+updated_at: 2026-10-22
 last_reviewed: 2026-10-21
 sources:
   - id: gh-profile
@@ -103,3 +117,17 @@ sources:
     kind: repository
     published_at: null
     accessed_at: 2026-10-21
+  - id: hf-hermes4-70b
+    title: NousResearch/Hermes-4-70B model card (Hugging Face)
+    url: https://huggingface.co/NousResearch/Hermes-4-70B
+    publisher: Nous Research
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: hf-hermes43-36b
+    title: NousResearch/Hermes-4.3-36B model card (Hugging Face)
+    url: https://huggingface.co/NousResearch/Hermes-4.3-36B
+    publisher: Nous Research
+    kind: model-card
+    published_at: null
+    accessed_at: 2026-10-22
