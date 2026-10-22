@@ -39,6 +39,7 @@ test("a profile page has its bio, work, sources, structured data, and a way to r
   await expect(page.getByTestId("person-work").locator(":scope > li")).not.toHaveCount(0);
   await expect(page.getByRole("navigation", { name: "Breadcrumb" }).locator('a[href="/people/"]')).toBeVisible();
   await expect(page.getByRole("list", { name: "Current roles" }).locator('a[href="/companies/princeton-university/"]')).toBeVisible();
+  await expect(page.getByTestId("person-related").locator('a[href^="/people/"], a[href^="/big-si/"]').first()).toBeVisible();
   await expect(page.getByRole("heading", { name: /^References · reviewed/ })).toBeVisible();
   await expect(page.locator('main a[href="/contribute/#corrections"]').first()).toBeVisible();
   const ld = await jsonLd(page);
@@ -46,6 +47,17 @@ test("a profile page has its bio, work, sources, structured data, and a way to r
   expect(ld).toContain('"BreadcrumbList"');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/people\/tri-dao\/$/);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/og\/people\/tri-dao\.jpg$/);
+});
+
+test("a creator bio drops a repeated name/org title and still links to other people", async ({ page }) => {
+  await page.goto("/people/wes-roth/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Wes Roth");
+  const title = await page.title();
+  expect(title).toMatch(/^Wes Roth, Creator/);
+  expect(title).not.toMatch(/Wes Roth at Wes Roth/);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", title);
+  await expect(page.getByTestId("person-related").locator('a[href^="/people/"], a[href^="/big-si/"]').first()).toBeVisible();
+  await expect(page.getByTestId("person-related-hubs").locator("a").first()).toBeVisible();
 });
 
 test("organization pages link to the profiles of people tied to them", async ({ page }) => {
