@@ -315,6 +315,33 @@ test("job pages pass axe", async ({ page }) => {
   expect(description).toContain(" at ");
 });
 
+test("top employer pages show a sourced how-hiring-works note above the listings", async ({ page }) => {
+  const pages = [
+    { path: "/jobs/at/openai/", heading: "How hiring works at OpenAI", source: "https://openai.com/interview-guide/" },
+    { path: "/jobs/at/anthropic/", heading: "How hiring works at Anthropic", source: "https://www.anthropic.com/careers" },
+    { path: "/jobs/at/spacex/", heading: "How hiring works at SpaceX", source: "https://www.spacex.com/careers/" },
+    { path: "/jobs/at/nvidia/", heading: "How hiring works at NVIDIA", source: "https://www.nvidia.com/en-us/about-nvidia/careers/how-we-hire/" },
+    { path: "/jobs/at/coreweave/", heading: "How hiring works at CoreWeave", source: "https://www.coreweave.com/careers" },
+  ] as const;
+  for (const { path, heading, source } of pages) {
+    await page.goto(path);
+    const section = page.getByTestId("hiring-process");
+    await expect(section.getByRole("heading", { level: 2 })).toHaveText(heading);
+    await expect(section.locator(`a[href="${source}"]`)).toBeVisible();
+    const hiringBox = await section.boundingBox();
+    const listingsBox = await page.locator("#listings").boundingBox();
+    expect(hiringBox, path).toBeTruthy();
+    expect(listingsBox, path).toBeTruthy();
+    expect(hiringBox!.y, path).toBeLessThan(listingsBox!.y);
+    const ld = await jsonLd(page);
+    expect(ld, path).not.toContain("FAQPage");
+    expect(ld, path).not.toContain("JobPosting");
+  }
+  await page.goto("/jobs/at/federal/");
+  await expect(page.getByTestId("hiring-process")).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Federal AI jobs");
+});
+
 test("search understands abbreviations, offers popular searches, and narrows by city", async ({ page }) => {
   const loaded = page.waitForResponse((r) => r.url().endsWith("/data/jobs.json") && r.ok());
   await page.goto("/jobs/");

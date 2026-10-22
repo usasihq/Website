@@ -20,7 +20,9 @@ import { isExpressionOfInterest } from "@/lib/jobs/tracks";
 import { orgHref } from "@/lib/routes";
 import { Rss } from "lucide-react";
 import { EmployerPaySection } from "@/components/JobsPay";
+import { HiringProcessSection } from "@/components/HiringProcess";
 import { hasJobFeed, landingFeedPath } from "@/lib/jobs/feeds";
+import type { HiringProcess } from "@/lib/jobs/hiring-process";
 import { kUsd, type PayGroup } from "@/lib/jobs/pay";
 
 const n = (v: number) => v.toLocaleString("en-US");
@@ -147,6 +149,8 @@ type Props = {
   headquartersCount?: number;
   /** Employer pages: the pay summary, when the employer has enough listings with pay. Role pages: the role's pay page. */
   pay?: PayGroup | null;
+  /** Employer pages: a short, sourced hiring-process note when one exists. */
+  hiring?: HiringProcess | null;
 };
 
 function PaginationNav({ page }: { page: LandingPage }) {
@@ -190,7 +194,7 @@ function PaginationNav({ page }: { page: LandingPage }) {
   );
 }
 
-export function JobsLanding({ page: raw, others, cities = [], parent = null, companies = [], roles = [], roleStates = [], people = [], peopleHref = null, headquartersHref, headquartersCount, pay = null }: Props) {
+export function JobsLanding({ page: raw, others, cities = [], parent = null, companies = [], roles = [], roleStates = [], people = [], peopleHref = null, headquartersHref, headquartersCount, pay = null, hiring = null }: Props) {
   const page = landingView(raw);
   const shown = page.listings.length;
   const from = (page.pageNumber - 1) * LISTINGS_SHOWN + (shown ? 1 : 0);
@@ -476,6 +480,8 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, com
             </Link>
           </p>
         ) : null}
+
+        {hiring && page.organization ? <HiringProcessSection name={page.organization.name} note={hiring} /> : null}
 
         <section id="listings" aria-labelledby="listings-heading" className="mt-12 scroll-mt-24">
           <h2 id="listings-heading" className="text-xl font-semibold text-text sm:text-2xl">
