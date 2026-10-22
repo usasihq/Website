@@ -36,7 +36,7 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/kids/words/", name: "Words to know (for kids)", summary: "Simple meanings of AI words for young readers.", keywords: "kids vocabulary words children" },
   { href: "/kids/packet/", name: "Printable classroom packet (kids lessons)", summary: "All seven kids lessons on one printable page, with paper quizzes and an answer key.", keywords: "print printable worksheet classroom teachers packet kids pdf" },
   { href: "/kids/grown-ups/", name: "For parents and teachers", summary: "How the kids lessons were made, their sources, and ideas for talking together.", keywords: "parents teachers classroom educators kids" },
-  { href: "/jobs/", name: "Jobs", summary: "Current openings from employers' own job feeds, with early-career and internship tracks.", keywords: "careers hiring openings internships work" },
+  { href: "/jobs/", name: "Jobs", summary: "Current openings from employers' own job feeds, with early-career, internship, and fellowship tracks.", keywords: "careers hiring openings internships fellowships postdocs work" },
   { href: "/jobs/index/", name: "AI Hiring Index", summary: "Weekly open AI job counts by employer and U.S. state, with week-over-week change, next to official WARN Act layoff notices.", keywords: "hiring index weekly jobs counts layoffs warn employers states careers" },
   { href: "/matrix/", name: "Compare", summary: "Compare open models and tools side by side on documented facts.", keywords: "matrix comparison side by side" },
   { href: "/news/", name: "Latest news", summary: "Sourced news items about U.S. AI organizations, models, and policy.", keywords: "news updates announcements" },

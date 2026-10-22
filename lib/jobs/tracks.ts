@@ -4,8 +4,8 @@
  * job title (and the department or team where the employer supplies one); the
  * rule is shown on the page so nothing is hidden or inferred. The Jobs landing
  * pages (/jobs/no-programming/, /jobs/data-center-infrastructure/,
- * /jobs/entry-level/) use these same rules, so their "see all" links to
- * /jobs/?track=… show exactly the same listings.
+ * /jobs/entry-level/, /jobs/internships/, /jobs/fellowships/) use these same
+ * rules, so their "see all" links to /jobs/?track=… show exactly the same listings.
  */
 export type TrackJob = { title: string; department: string | null; team?: string | null; employment_type: string };
 
@@ -127,6 +127,33 @@ export function isSummer2027Internship(j: TrackJob): boolean {
   return isInternshipJob(j) && /\b2027\b/.test(j.title);
 }
 
+/* ------------------------------------------------------------------ */
+/* Fellowships and postdocs                                             */
+/* ------------------------------------------------------------------ */
+
+/** Program names: “fellowship”, “fellows program”, “postdoc”, “postdoctoral”. */
+const FELLOWSHIP_PROGRAM =
+  /\b(fellowships?|fellows program|post[- ]?docs?|post[- ]?doctoral)\b/i;
+/** “Fellow” / “Fellows” as a role word, not a fragment of another word. */
+const FELLOW_WORD = /\bfellows?\b/i;
+/** Senior honorifics and lab-rank titles that are not application-season fellow roles. */
+const FELLOW_HONORIFIC =
+  /\b(technical|distinguished|corporate|principal|staff|senior|ibm|microsoft) fellows?\b/i;
+/** Titles that hire for or administer a fellowship rather than being one. */
+const FELLOWSHIP_ADMIN =
+  /\b(recruit\w*|sourcer|talent|university relations|programs? (manager|lead|coordinator|partner|specialist)|coordinator)\b/i;
+
+/**
+ * A fellowship, fellows program, fellow role, or postdoc, from the employer’s
+ * title only. Honorifics such as “Technical Fellow” and recruiter titles are
+ * left out so a stray “Fellow” in an unrelated title does not match.
+ */
+export function isFellowshipJob(j: TrackJob): boolean {
+  if (FELLOWSHIP_ADMIN.test(j.title)) return false;
+  if (FELLOWSHIP_PROGRAM.test(j.title)) return true;
+  return FELLOW_WORD.test(j.title) && !FELLOW_HONORIFIC.test(j.title);
+}
+
 export function isEntryLevelJob(j: TrackJob): boolean {
   if (isInternshipJob(j)) return true;
   const recruiting = RECRUITING.test(j.title);
@@ -161,6 +188,8 @@ export const INTERNSHIP_RULE =
   "Listings the employer marks as internships, and titles that say intern or internship as a whole word. New-graduate, apprentice, and other early-career titles that do not say intern are on the entry-level page.";
 export const SUMMER_2027_RULE =
   "Internship listings whose title names 2027 (for example “Summer 2027 Intern” or “2027 Internship”). Matching is on the title and the employer’s employment type only.";
+export const FELLOWSHIP_RULE =
+  "Titles that name a fellowship or fellows program, a fellow role (for example “Research Fellow”, “AI Fellow”, or “Legal Fellow”), or a postdoc or postdoctoral position, as a whole word. Senior honorifics such as Technical Fellow or Distinguished Fellow are left out, and so are recruiter, coordinator, and program-manager titles that hire for fellowships rather than being one.";
 
 export const JOB_TRACKS: JobTrack[] = [
   {
@@ -204,6 +233,13 @@ export const JOB_TRACKS: JobTrack[] = [
     description: "Internship listings whose title names 2027.",
     rule: SUMMER_2027_RULE,
     test: isSummer2027Internship,
+  },
+  {
+    id: "fellowships",
+    title: "Fellowships and postdocs",
+    description: "Open fellowships, fellows programs, and postdoctoral roles at AI companies and labs, matched on the employer’s title.",
+    rule: FELLOWSHIP_RULE,
+    test: isFellowshipJob,
   },
 ];
 

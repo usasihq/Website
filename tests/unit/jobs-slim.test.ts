@@ -18,7 +18,7 @@ const now = (data.items.length ? Math.max(...data.items.map((j) => Date.parse(j.
 const URLS = [
   "", "where=all", "where=us", "where=remote", "where=remote-us", "q=machine+learning", "q=swe&where=all", "level=entry",
   "level=senior&category=software", "pay=200000", "salary=1&sort=pay", "posted=7", "state=CA", "state=CA&city=san-francisco",
-  "state=CO&city=longmont-max", "company=spacex&where=all", "role=forward-deployed-engineer&where=all", "track=early-career",
+  "state=CO&city=longmont-max", "company=spacex&where=all", "role=forward-deployed-engineer&where=all", "track=early-career", "track=fellowships",
   "workplace=unknown&employment=full-time", "w=London", "currency=USD&period=year&salary_min=150000", "view=unverified&where=all",
   "sort=company&where=all", "sort=title&page=3",
 ];

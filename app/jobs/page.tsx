@@ -36,7 +36,7 @@ export function generateMetadata() {
     feeds: [{ path: ALL_JOBS_FEED, title: "USASI — New AI jobs in the U.S." }],
   });
 }
-const SHORTCUT_LABELS: Record<string, string> = { "/jobs/remote-us/": "Remote (U.S.)", "/jobs/internships/": "Internships", "/jobs/entry-level/": "Entry-level", "/jobs/no-programming/": "No programming", "/jobs/data-center-infrastructure/": "Data center" };
+const SHORTCUT_LABELS: Record<string, string> = { "/jobs/remote-us/": "Remote (U.S.)", "/jobs/internships/": "Internships", "/jobs/fellowships/": "Fellowships", "/jobs/entry-level/": "Entry-level", "/jobs/no-programming/": "No programming", "/jobs/data-center-infrastructure/": "Data center" };
 function BrowseLinks({ links }: { links: LandingLink[] }) {
   return <ul className="mt-2 flex flex-wrap gap-2">{links.map(l => <li key={l.path}><Link prefetch={false} href={l.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">{l.kind === "company" ? <><span className="sr-only">Jobs at </span>{l.name.replace(/^Jobs at /, "")}</> : l.kind === "state" || l.kind === "city" ? <><span className="sr-only">Jobs in </span>{l.name.replace(/^Jobs in /, "")}{l.kind === "city" ? <span className="text-muted">, {l.state}</span> : null}</> : l.name} <span className="text-muted">({l.count.toLocaleString("en-US")})</span></Link></li>)}</ul>;
 }

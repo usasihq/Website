@@ -1,5 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { isDataCenterJob, isEntryLevelJob, isExpressionOfInterest, isInternshipJob, isNonProgrammingTitle, isSummer2027Internship, jobTrack, mainTitle } from "@/lib/jobs/tracks";
+import { isDataCenterJob, isEntryLevelJob, isExpressionOfInterest, isFellowshipJob, isInternshipJob, isNonProgrammingTitle, isSummer2027Internship, jobTrack, mainTitle } from "@/lib/jobs/tracks";
 
 const job = (title: string, department: string | null = null, employment_type = "full-time") => ({ title, department, employment_type });
 const inTrack = (id: string, j: ReturnType<typeof job>) => jobTrack(id)!.test(j);
@@ -37,6 +39,16 @@ describe("job tracks", () => {
     expect(isSummer2027Internship(job("Summer 2027 Intern"))).toBe(true);
     expect(isSummer2027Internship(job("Research Intern"))).toBe(false);
     expect(inTrack("summer-2027", job("Fall 2027 Internship"))).toBe(true);
+  });
+
+  it("fellowships match fellow, fellowship, and postdoc titles, not honorifics", () => {
+    expect(isFellowshipJob(job("Anthropic Fellows Program, AI Safety & Security"))).toBe(true);
+    expect(isFellowshipJob(job("Base Labs Fellowship"))).toBe(true);
+    expect(isFellowshipJob(job("Legal Fellow - Human Frontier Collective (US)"))).toBe(true);
+    expect(isFellowshipJob(job("Postdoctoral Researcher, Computational Biology"))).toBe(true);
+    expect(isFellowshipJob(job("Technical Fellow"))).toBe(false);
+    expect(isFellowshipJob(job("Fellowship Recruiter"))).toBe(false);
+    expect(inTrack("fellowships", job("Perplexity Research Fellowship"))).toBe(true);
   });
 
   it("flags expressions of interest from the title only", () => {
@@ -152,6 +164,66 @@ describe("entry-level jobs", () => {
     t("Sales Development Manager, Enterprise (AMER)"),
     t("Junior/Senior/Staff Software Engineer, Inference"),
   ])("leaves out %o", (job) => expect(isEntryLevelJob(job)).toBe(false));
+});
+
+describe("fellowships and postdocs", () => {
+  it.each([
+    t("Anthropic Fellows Program, AI Safety & Security"),
+    t("Anthropic Fellows Program, ML Systems & Reinforcement Learning"),
+    t("Perplexity Research Fellowship"),
+    t("Palantir Fellowship — Gotham"),
+    t("Salesforce AI Labs Rotational Fellowship"),
+    t("Base Labs Fellowship"),
+    t("Legal Fellow - Human Frontier Collective (US)"),
+    t("Machine Learning Fellow - Human Frontier Collective (UK)"),
+    t("SWE Fellow - Human Frontier Collective (Canada)"),
+    t("STEM Fellow - Human Frontier Collective (US)"),
+    t("Medical Fellow - Human Frontier Collective (US)"),
+    t("Finance Fellow - Human Frontier Collective (US)"),
+    t("Postdoctoral Researcher, Computational Biology"),
+    t("Postdoctoral Scholar — Machine Learning"),
+    t("Post-Doctoral Research Staff Member"),
+    t("Postdoc, AI Safety"),
+    t("AI Fellow"),
+    t("Research Fellow, Interpretability"),
+    t("Visiting Fellow"),
+  ])("includes %o", (job) => expect(isFellowshipJob(job)).toBe(true));
+
+  it.each([
+    t("Technical Fellow"),
+    t("Distinguished Fellow"),
+    t("Distinguished Technical Fellow"),
+    t("Corporate Fellow"),
+    t("Principal Fellow, Engineering"),
+    t("Staff Fellow"),
+    t("Senior Fellow, Policy"),
+    t("IBM Fellow"),
+    t("Microsoft Fellow"),
+    t("Fellowship Recruiter"),
+    t("University Recruiter, Fellows Program"),
+    t("Fellows Program Manager"),
+    t("Campus Program Coordinator, Fellowships"),
+    t("Software Engineer"),
+    t("Research Scientist, Interpretability"),
+    t("New Grad Software Engineer"),
+  ])("leaves out %o", (job) => expect(isFellowshipJob(job)).toBe(false));
+
+  it("matches snapshot titles only when they name a fellowship, fellow role, or postdoc", () => {
+    const data = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data/jobs/current.json"), "utf8")) as {
+      jobs: { title: string; status: string }[];
+    };
+    const open = data.jobs.filter((j) => j.status === "open");
+    const matched = open.filter((j) => isFellowshipJob({ title: j.title, department: null, employment_type: "full-time" }));
+    for (const j of matched) {
+      expect(j.title, j.title).toMatch(/\b(fellowships?|fellows?|post[- ]?docs?|post[- ]?doctoral)\b/i);
+      expect(j.title, j.title).not.toMatch(/\b(technical|distinguished|corporate|principal) fellows?\b/i);
+      expect(j.title, j.title).not.toMatch(/\b(recruit\w*|sourcer)\b/i);
+    }
+    const honorifics = open.filter((j) => /\b(technical|distinguished) fellows?\b/i.test(j.title));
+    for (const j of honorifics) {
+      expect(isFellowshipJob({ title: j.title, department: null, employment_type: "full-time" }), j.title).toBe(false);
+    }
+  });
 });
 
 describe("title parts", () => {

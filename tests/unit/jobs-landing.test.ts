@@ -55,6 +55,13 @@ describe("landing page text", () => {
     expect(federal.title(one).length).toBeLessThanOrEqual(90);
     expect(federal.description(one).startsWith("12")).toBe(true);
     expect(federal.description(one)).toContain("USAJOBS.gov");
+    const fellowships = TOPICS.fellowships;
+    expect(fellowships.path).toBe("/jobs/fellowships/");
+    expect(fellowships.h1).toBe("AI fellowships and postdocs");
+    expect(fellowships.filters).toEqual({ track: "fellowships" });
+    expect(fellowships.related).toEqual([{ href: "/people/school/", label: "People by school" }]);
+    expect(fellowships.description(one).startsWith("12")).toBe(true);
+    expect(fellowships.description(one)).toContain("fellowship");
   });
 });
 
@@ -140,7 +147,7 @@ describe("landing pages from listings", () => {
     const remote = data.topics.find((p) => p.id === "remote-us")!;
     expect(remote.count).toBe(0);
     expect(remote.indexable).toBe(false);
-    expect(data.topics.map((p) => p.id)).toEqual(expect.arrayContaining(["internships", "summer-2027"]));
+    expect(data.topics.map((p) => p.id)).toEqual(expect.arrayContaining(["internships", "fellowships", "summer-2027"]));
     const fdeGa = data.roleStates.find((p) => p.path === "/jobs/role/forward-deployed-engineer/georgia/");
     expect(fdeGa?.count).toBe(12);
     expect(data.roleStates.every((p) => p.count >= 10)).toBe(true);

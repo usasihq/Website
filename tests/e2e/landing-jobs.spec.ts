@@ -9,7 +9,7 @@ import { documentTitle } from "../../lib/metadata";
  * local jobs data at build time. Counts change daily, so the tests compare a
  * page with itself and with the directory rather than with fixed numbers.
  */
-const TOPICS = ["/jobs/data-center-infrastructure/", "/jobs/no-programming/", "/jobs/entry-level/", "/jobs/remote-us/", "/jobs/remote/"];
+const TOPICS = ["/jobs/data-center-infrastructure/", "/jobs/no-programming/", "/jobs/entry-level/", "/jobs/internships/", "/jobs/fellowships/", "/jobs/remote-us/", "/jobs/remote/"];
 const FDE = "/jobs/role/forward-deployed-engineer/";
 
 async function jsonLd(page: Page) {
@@ -107,6 +107,7 @@ test("landing pages are linked from /jobs/ and /places/, listed in the sitemap, 
   await page.goto("/jobs/");
   const browse = page.getByRole("navigation", { name: "Browse by" });
   await expect(browse.locator('a[href="/jobs/entry-level/"]')).toBeVisible();
+  await expect(browse.locator('a[href="/jobs/fellowships/"]')).toBeVisible();
   await expect(browse.locator('a[href="/jobs/in/california/"]')).toBeVisible();
   await expect(page.getByTestId("browse-roles").locator(`a[href="${FDE}"]`)).toBeVisible();
   await page.goto("/places/california/");
@@ -142,6 +143,35 @@ test("the freshness notice appears once listings are more than 48 hours old", as
   await page.clock.install({ time: new Date(Date.now() + 72 * 3600000) });
   await page.goto("/jobs/in/california/");
   await expect(page.getByRole("status").filter({ hasText: "more than 48 hours ago" })).toBeVisible();
+});
+
+test("the fellowships page answers first, groups by employer, and links people by school", async ({ page }) => {
+  await page.goto("/jobs/fellowships/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("AI fellowships and postdocs");
+  const count = await countOnPage(page);
+  expect(count).toBeGreaterThanOrEqual(10);
+  await expect(page).toHaveTitle(documentTitle(openingsTitle("AI fellowships and postdocs", count)));
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description!.length).toBeLessThanOrEqual(160);
+  expect(description).toMatch(/^[\d,]+ open AI fellowships and postdocs/);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/fellowships\/$/);
+  await expect(page.getByRole("heading", { name: "Employers" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "How this list is made" })).toBeVisible();
+  const ld = await jsonLd(page);
+  expect(ld).toContain('"BreadcrumbList"');
+  expect(ld).toContain('"CollectionPage"');
+  expect(ld).toContain('"ItemList"');
+  expect(ld).not.toContain("JobPosting");
+  await expect(page.locator('main a[href="/people/school/"]')).toBeVisible();
+  await expect(page.locator('main a[href="/jobs/internships/"]')).toBeVisible();
+  await page.goto("/people/school/");
+  await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
+  await page.goto("/jobs/internships/");
+  await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
+  const titles = await page.locator("#listings h3 a").allTextContents();
+  for (const title of titles) {
+    expect(title).toMatch(/\b(fellowships?|fellows?|post[- ]?docs?|post[- ]?doctoral)\b/i);
+  }
 });
 
 test("a role page answers first, lists employers, and matches the directory", async ({ page, request }) => {

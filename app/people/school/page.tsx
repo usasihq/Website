@@ -44,7 +44,11 @@ export default function PeopleBySchoolPage() {
         description={
           <p>
             Universities that appear as a sourced alma mater or academic role on USASI people profiles. A school is listed when at least five
-            people are clearly tied to it. Listed by number of people, then alphabetically; this is not a ranking.
+            people are clearly tied to it. Listed by number of people, then alphabetically; this is not a ranking. Open{" "}
+            <Link prefetch={false} href="/jobs/fellowships/" className="link">
+              AI fellowships and postdocs
+            </Link>{" "}
+            are listed on the jobs board.
           </p>
         }
       />
