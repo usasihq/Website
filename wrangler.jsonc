@@ -1,16 +1,21 @@
-// Cloudflare Workers — static assets only (no Worker script, no server code).
+// Cloudflare Workers — static assets plus a small script for closed job URLs.
 // `npm run build` writes ./out; `npx wrangler deploy` uploads it.
 // Docs: https://developers.cloudflare.com/workers/static-assets/
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "usasi",
+  "main": "worker.ts",
   "compatibility_date": "2026-09-29",
   "assets": {
     "directory": "./out",
-    // Unknown paths get out/404.html with a real 404 status.
+    "binding": "ASSETS",
+    // Unknown paths get out/404.html with a real 404 status, except closed
+    // listing URLs under /jobs/at/<employer>/<slug>/ (Worker returns 410).
     "not_found_handling": "404-page",
     // /companies → 307 → /companies/ (matches Next's trailingSlash: true export).
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+    // Navigation requests would otherwise get 404.html before the Worker runs.
+    "run_worker_first": ["/jobs/at/*"]
   },
   // Custom domains (the zone is in the owner's Cloudflare account). Cloudflare
   // creates the DNS records and certificates. Canonical URLs use the apex.

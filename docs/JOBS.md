@@ -3,8 +3,10 @@
 ## Architecture audit
 
 Jobs extends the existing Next.js App Router static export (`next.config.ts`) and
-Cloudflare static-assets deployment (`wrangler.jsonc`). It adds no server, database,
-account system, external runtime scripts, application tracking, or CSP permissions.
+Cloudflare static-assets deployment (`wrangler.jsonc`). A small Worker runs only
+on `/jobs/at/*` so a listing that has left the feed returns HTTP 410 instead of
+the catalog 404. It adds no database, account system, external runtime scripts,
+application tracking, or CSP permissions.
 The audit covered `app/`, `components/`, organization/artifact YAML, editorial MDX,
 `lib/{schema,validate,catalog,search,routes,metadata,site-config,enums,labels}.ts`,
 `useQueryState`, source/badge/filter/link components, home/company/directory routes,
@@ -97,8 +99,11 @@ a React page per job would multiply the export's size. Each page shows the emplo
 facts, the description, and links to apply on the employer's site, and carries
 schema.org JobPosting data when the listing has a description and either a U.S. address
 read from its location text or a remote location open to U.S. applicants; nothing else
-is guessed. A page exists only while its listing is current, so a closed posting's page
-is gone after the next refresh and deploy. `/jobs/at/<employer>/` lists every current
+is guessed. A page exists only while its listing is current. After the next refresh
+and deploy, the old address is not in the sitemap and is not a JobPosting page: the
+Worker (and `preview:static`) return HTTP 410 with a noindex “This role has closed”
+page, links to open jobs at the same employer and similar titles elsewhere, and
+`/jobs/` plus `/jobs/fellowships/`. `/jobs/at/<employer>/` lists every current
 listing from one employer's board.
 Greenhouse custom `Location Type` is mapped only for exact supported values. Ashby
 salary components retain each tier/label, currency and period. Equity/bonus is not

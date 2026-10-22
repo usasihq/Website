@@ -233,7 +233,7 @@ describe("job page HTML", () => {
 
 describe("closed job addresses on the 404 page", () => {
   it("reads the employer and title words, and ignores other addresses", async () => {
-    const { missingJob } = await import("@/components/JobNotFound");
+    const { missingJob } = await import("@/lib/jobs/closed-job");
     expect(missingJob("/jobs/at/anthropic/research-engineer-interpretability-1a2b3c4/")).toEqual({ org: "anthropic", words: "research engineer interpretability" });
     expect(missingJob("/jobs/at/anthropic/does-not-exist-zzz/")).toEqual({ org: "anthropic", words: "does not exist zzz" });
     expect(missingJob("/jobs/at/anthropic/")).toBeNull();

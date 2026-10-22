@@ -3,7 +3,8 @@ import { defineConfig, devices } from "@playwright/test";
 
 /**
  * End-to-end tests run against the production static export (./out) served by
- * scripts/serve-static.mjs — never against `next dev`.
+ * scripts/serve-static.mjs (via tsx, so the closed-job 410 page can import
+ * TypeScript) — never against `next dev`.
  *
  *   npm run build && npm run test:e2e
  *
@@ -27,14 +28,14 @@ export default defineConfig({
   },
   webServer: [
     {
-      command: `node scripts/serve-static.mjs --port ${PORT}`,
+      command: `node --import tsx scripts/serve-static.mjs --port ${PORT}`,
       url: `http://localhost:${PORT}/`,
       reuseExistingServer: !process.env.CI,
     },
     ...(hasBasePathBuild
       ? [
           {
-            command: `node scripts/serve-static.mjs --port ${BASE_PORT} --base /usasi --dir .out-basepath`,
+            command: `node --import tsx scripts/serve-static.mjs --port ${BASE_PORT} --base /usasi --dir .out-basepath`,
             url: `http://localhost:${BASE_PORT}/usasi/`,
             reuseExistingServer: !process.env.CI,
           },

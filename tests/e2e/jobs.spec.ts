@@ -122,3 +122,31 @@ test("Jobs embeds one page of listings and loads the full list from the site's o
   await expect(page.getByText("Loading all positions…")).toHaveCount(0);
   await expect(page.locator("main article").first().or(page.getByRole("heading", {name: "No positions match this view"}))).toBeVisible();
 });
+test("a listing that has left the feed returns 410 with similar open roles", async ({ page, request }) => {
+  const companies = ["agility-robotics", "openai", "anthropic"];
+  let company = companies[0];
+  for (const slug of companies) {
+    if ((await request.get(`/jobs/at/${slug}/`)).status() === 200) {
+      company = slug;
+      break;
+    }
+  }
+  const closed = `/jobs/at/${company}/senior-ai-research-engineer-zzzzzzz/`;
+  const response = await page.goto(closed);
+  expect(response?.status()).toBe(410);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("This role has closed");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  const html = await page.content();
+  expect(html).not.toContain("JobPosting");
+  await expect(page.getByTestId("closed-job-links").getByRole("link", { name: "Search all jobs" })).toHaveAttribute("href", "/jobs/");
+  await expect(page.getByTestId("closed-job-links").getByRole("link", { name: "Fellowships and postdocs" })).toHaveAttribute("href", "/jobs/fellowships/");
+  await expect(page.locator(`a[href="/jobs/at/${company}/"]`).first()).toBeVisible();
+  const companyPage = await request.get(`/companies/${company}/`);
+  if (companyPage.status() === 200) {
+    await expect(page.locator(`a[href="/companies/${company}/"]`).first()).toBeVisible();
+  }
+  const listings = page.getByTestId("closed-job-company").locator(`a[href^="/jobs/at/${company}/"]`);
+  if ((await listings.count()) > 0) {
+    await expect(listings.first()).toBeVisible();
+  }
+});

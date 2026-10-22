@@ -90,6 +90,7 @@ const required = [
   "hero.png",
   "data/catalog.json",
   "data/search-index.json",
+  "data/closed-jobs.json",
   "companies/index.html",
   "open/index.html",
   "jobs/index.html",

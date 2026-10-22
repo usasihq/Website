@@ -11,7 +11,8 @@ import path from "node:path";
 import { getCatalog } from "../lib/catalog";
 import { renderJobPage, type PageShell } from "../lib/jobs/job-page-html";
 import { renderLlmsTxt } from "../lib/llms-txt";
-import { jobPages, similarJobs } from "../lib/jobs/job-pages";
+import { buildClosedJobIndex } from "../lib/jobs/closed-job";
+import { jobPages, shortOrg, similarJobs } from "../lib/jobs/job-pages";
 import { CITY_SLUG_ALIASES } from "../lib/jobs/geo";
 import { stateSlug } from "../lib/places";
 import { absoluteUrl, asset } from "../lib/paths";
@@ -39,6 +40,34 @@ for (const p of pages) {
   if (html.includes('"@type":"JobPosting"')) withPosting++;
 }
 console.log(`job-pages: ${pages.length} pages written (${withDescription} with the employer's description, ${withPosting} with JobPosting data).`);
+
+// Closed listing URLs: the Worker / preview server read this snapshot to show
+// open roles at the same employer and similar titles elsewhere. Not a sitemap.
+{
+  const catalog = getCatalog();
+  const withJobsPage = new Set(pages.map((p) => p.org.slug));
+  for (const o of catalog.organizations) {
+    if (o.careers?.enabled) withJobsPage.add(o.slug);
+  }
+  const orgs: { slug: string; name: string; jobsPath: string | null; companyPath: string | null }[] = [
+    ...catalog.organizations,
+    ...catalog.archivedOrganizations,
+  ].map((o) => ({
+    slug: o.slug,
+    name: shortOrg(o.name),
+    jobsPath: catalog.isActiveOrganization(o.slug) && withJobsPage.has(o.slug) ? `/jobs/at/${o.slug}/` : null,
+    companyPath: `/companies/${o.slug}/`,
+  }));
+  const seen = new Set(orgs.map((o) => o.slug));
+  for (const p of pages) {
+    if (seen.has(p.org.slug)) continue;
+    orgs.push({ slug: p.org.slug, name: shortOrg(p.org.name), jobsPath: `/jobs/at/${p.org.slug}/`, companyPath: null });
+    seen.add(p.org.slug);
+  }
+  fs.mkdirSync(path.join(out, "data"), { recursive: true });
+  fs.writeFileSync(path.join(out, "data/closed-jobs.json"), JSON.stringify(buildClosedJobIndex({ shell, pages, orgs })));
+  console.log(`job-pages: closed-job index with ${orgs.length} employers and ${pages.length} current listings.`);
+}
 
 // Sitemaps: Next writes the site's other pages to out/sitemap.xml (app/sitemap.ts). That file becomes
 // /sitemap-pages.xml, job pages with the employer's description go into /sitemaps/jobs-<n>.xml
