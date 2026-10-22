@@ -11,7 +11,8 @@ import { jobPageTitle, jobPages, TITLE_LIMIT } from "./jobs/job-pages";
 import { jobsLandingData } from "./jobs/landing";
 import { EXPLAINERS } from "./learn";
 import { clipDescription, DESCRIPTION_MAX, documentTitle, TITLE_MAX } from "./metadata";
-import { personPageSeo } from "./people-seo";
+import { personPageSeo, schoolIndexSeo, schoolListSeo } from "./people-seo";
+import { schoolPeopleLists } from "./people-schools";
 import { organizationsByState } from "./place-index";
 import { DATE_LABEL_VERBS, policyHref, policyPageTitle, summarySentences } from "./policy";
 import { formatDate } from "./dates";
@@ -129,6 +130,14 @@ export function collectPageSeo(catalog: Catalog): PageSeoRow[] {
   add("/", "U.S. AI jobs, people, and news", "Independent directory of U.S. AI jobs, people, companies, and sourced news: open roles, profiles, and catalog updates. Not a United States government website.");
   add("/news/", "U.S. AI news — sourced releases, licenses & policy", `${catalog.news.length.toLocaleString("en-US")} dated, sourced updates about U.S. AI organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.`);
   add("/people/", "People in U.S. AI — founders, engineers, maintainers", `${catalog.people.length.toLocaleString("en-US")} sourced profiles of founders, engineers, researchers, and open-source maintainers behind U.S. AI organizations and open models in the USASI catalog.`);
+  const schools = schoolPeopleLists(catalog);
+  const schoolPeople = new Set(schools.flatMap((l) => l.items.map((i) => i.href))).size;
+  const schoolIndex = schoolIndexSeo(schools.length, schoolPeople);
+  add("/people/school/", schoolIndex.title, schoolIndex.description);
+  for (const list of schools) {
+    const seo = schoolListSeo(list);
+    add(list.path, seo.title, seo.description);
+  }
   add("/policy/", "U.S. AI policy tracker", `${catalog.policy.length.toLocaleString("en-US")} federal laws, executive orders, OMB memoranda, standards, and frameworks on artificial intelligence, with dates, issuers, current status, and links to the official text.`);
   add("/github/", "AI on GitHub: the most-starred open-source AI projects", `The ${github.length.toLocaleString("en-US")} most-starred open-source AI projects on GitHub, ranked by stars.`);
   add("/huggingface/", "AI on Hugging Face: the most-liked open models", `The ${hfModelEntries().length.toLocaleString("en-US")} most-liked models on the Hugging Face Hub, ranked by likes.`);

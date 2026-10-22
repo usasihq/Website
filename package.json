@@ -39,6 +39,7 @@
     "jobs:hf-dataset": "tsx --env-file-if-exists=.env.jobs scripts/hf-jobs-dataset.ts",
     "hf:space-deploy": "tsx --env-file-if-exists=.env.jobs scripts/hf-space-deploy.ts",
     "layoffs:refresh": "tsx scripts/refresh-layoffs.ts",
+    "people:wikidata": "tsx scripts/match-wikidata.ts",
     "github:refresh": "tsx scripts/refresh-github.ts",
     "hf:refresh": "tsx scripts/refresh-huggingface.ts",
     "newsletter:email": "tsx scripts/newsletter-email.ts",

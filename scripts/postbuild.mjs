@@ -55,7 +55,7 @@ for (const file of htmlFiles) {
     "default-src 'self'",
     `script-src 'self' https://static.cloudflareinsights.com ${[...hashes].join(" ")}`.trim(),
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data:",
+    "img-src 'self' data: https://upload.wikimedia.org",
     "font-src 'self'",
     "connect-src 'self'",
     "object-src 'none'",
