@@ -10,11 +10,12 @@
  */
 import { formatDate } from "../dates";
 import { canonicalPath, documentTitle } from "../metadata";
+import { orgLogoHref } from "../org-logos";
 import { absoluteUrl, asset } from "../paths";
 import { siteConfig, supportState } from "../site-config";
 import type { Description, Run } from "./description";
 import type { JobPage } from "./job-pages";
-import { jobPageTitle, jobPostingLd, shortOrg } from "./job-pages";
+import { jobEmployment, jobPageTitle, jobPostingLd, shortOrg } from "./job-pages";
 import { ALL_JOB_FILTERS, serializeJobFilters } from "./search";
 import { JOB_ROLES } from "./roles";
 import { displayLocation } from "./geo";
@@ -174,7 +175,10 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
       : `<a href="${asset(`/jobs/at/${esc(org.slug)}/`)}" class="link">${esc(org.name)}</a>`],
     ["Location", job.locations.length ? esc(job.locations.map(displayLocation).join(" · ")) : "Not supplied by the employer"],
     ["Workplace", job.workplace !== "unknown" ? esc(job.workplace) : "Not supplied"],
-    ["Employment", job.employment_type !== "unknown" ? esc(job.employment_type) : "Not supplied"],
+    ["Employment", (() => {
+      const employment = jobEmployment(p);
+      return employment ? esc(employment.label) : "Not supplied";
+    })()],
   ];
   if (job.department) facts.push(["Department", esc(job.department)]);
   if (job.team && job.team !== job.department) facts.push(["Team", esc(job.team)]);
@@ -240,8 +244,13 @@ ${ld ? `<script type="application/ld+json">${json(ld)}</script>` : ""}
     .slice(0, 3)
     .map((c, i) => `<li class="flex items-center gap-1">${i ? '<span aria-hidden="true">›</span>' : ""}<a href="${esc(c.item.replace(/^https?:\/\/[^/]+/, ""))}" class="hover:text-text">${esc(c.name)}</a></li>`)
     .join("")}</ol></nav>
+<div class="flex items-start gap-4">
+<img src="${esc(asset(orgLogoHref(org.slug)))}" width="64" height="64" alt="" aria-hidden="true" class="h-16 w-16 shrink-0 rounded-xl border border-cyan/30 bg-fog object-contain" data-testid="org-logo"/>
+<div class="min-w-0">
 <p class="eyebrow">${federal && job.department ? `Job at ${esc(job.department)}` : `Job at ${esc(name)}`}</p>
 <h1 class="mt-2 text-3xl font-semibold text-text sm:text-4xl break-words">${esc(job.title)}</h1>
+</div>
+</div>
 <dl class="mt-6 grid max-w-3xl gap-x-6 gap-y-2 text-[0.9375rem] sm:grid-cols-[auto_1fr]" data-testid="job-facts">${facts
     .map(([k, v]) => `<dt class="text-muted">${k}</dt><dd class="min-w-0 text-text [overflow-wrap:anywhere]">${v}</dd>`)
     .join("")}</dl>

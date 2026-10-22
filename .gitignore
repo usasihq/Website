@@ -42,6 +42,8 @@ reports/screenshots/
 # Per-page rank badges, templated at build time (scripts/generate-badges.ts)
 /public/badges/github/
 /public/badges/huggingface/
+# Organization logos, generated at prepare:data (scripts/generate-org-logos.ts)
+/public/images/orgs/
 /public/opensearch.xml
 /.cache/
 # Job descriptions are large operational state (scripts/refresh-jobs.ts); never committed.

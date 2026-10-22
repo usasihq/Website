@@ -6,7 +6,7 @@ import { OrganizationJobs } from "@/components/OrganizationJobs";
 import { roleLinksForEmployer } from "@/lib/jobs/landing-links";
 import { readJobsForBuild } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
-import { Monogram, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
+import { OrgLogo, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
 import { DeepDive } from "@/components/DeepDive";
 import { ArchivedNotice, ClaimText, EligibilityBlock, FactList, ReviewDates } from "@/components/DetailParts";
 import { EntryActions } from "@/components/EntryActions";
@@ -143,7 +143,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
               <div className="min-w-0">
                 <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-                  <Monogram text={org.logo_text} size="lg" />
+                  <OrgLogo slug={org.slug} size="lg" />
                   <div className="min-w-0">
                     <p className="eyebrow">Organization</p>
                     <h1 className="mt-1 text-3xl font-semibold text-text sm:text-4xl">{org.name}</h1>

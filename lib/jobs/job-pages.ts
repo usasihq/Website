@@ -7,8 +7,10 @@
 import type { Catalog } from "../catalog";
 import { absoluteUrl } from "../paths";
 import type { Organization } from "../schema";
+import { organizationLogoFields } from "../org-logos";
 import { descriptionHtml, type Description } from "./description";
 import { readDescriptions } from "./descriptions-store";
+import { resolveEmployment, type EmploymentResolution } from "./employment";
 import { countryCode, displayLocation, DISTRIBUTED_LOCATION, internationalAddress, isUSCountry, isUSOnly, jobGeography, placeGeography, REMOTE_LOCATION, WORKPLACE_ONLY_LOCATION, stateDisplayName } from "./geo";
 import { jobSlug, shortCode } from "./job-url";
 import { readJobsForBuild } from "./load";
@@ -212,14 +214,12 @@ export function jobPage(catalog: Catalog, company: string, slug: string): JobPag
   return jobPages(catalog).find((p) => p.org.slug === company && p.slug === slug);
 }
 
-const EMPLOYMENT: Record<string, string> = {
-  "full-time": "FULL_TIME",
-  "part-time": "PART_TIME",
-  contract: "CONTRACTOR",
-  temporary: "TEMPORARY",
-  internship: "INTERN",
-};
 const UNIT: Record<string, string> = { hour: "HOUR", day: "DAY", week: "WEEK", month: "MONTH", year: "YEAR" };
+
+/** Feed employment type, or a conservative inference from the title and description. */
+export function jobEmployment(p: Pick<JobPage, "job" | "description">): EmploymentResolution | null {
+  return resolveEmployment(p.job, p.description);
+}
 
 export type JobPostalAddress = { addressLocality?: string; addressRegion?: string; addressCountry: string };
 
@@ -268,9 +268,11 @@ export function hasUSApplicantContext(job: Pick<Job, "locations" | "countries" |
 /**
  * schema.org JobPosting for Google's job search, or null when the listing
  * lacks what the format requires (a description, and a postal address or a
- * fully remote listing with a country for applicants). Every field comes from the
- * employer's feed; nothing is inferred. validThrough is included only where the
- * source states a closing date (USAJOBS); other feeds do not supply one. Stale listings never reach this function
+ * fully remote listing with a country for applicants). Fields come from the
+ * employer's feed and catalog. employmentType uses the feed when present,
+ * otherwise a conservative inference from the title and description
+ * (`lib/jobs/employment.ts`). validThrough is included only where the source
+ * states a closing date (USAJOBS). Stale listings never reach this function
  * (`isCurrent`, seen within 48 hours), so their pages and markup are gone
  * after the next refresh and deploy rather than given a guessed expiry.
  *
@@ -292,20 +294,24 @@ export function jobPostingLd(p: JobPage): Record<string, unknown> | null {
   // The feed's own salary first; a range read from the description text only when the feed gives none.
   const usable = job.salaries.filter((s) => s.currency && (s.min !== null || s.max !== null));
   const salary = usable.find((s) => s.source_status === "employer-provided") ?? usable[0];
+  const marks = organizationLogoFields(org);
+  const parentOrg = { "@type": "Organization", name: org.name, url: marks.url, sameAs: marks.sameAs, logo: marks.logo };
+  const hiringOrganization =
+    job.source_type === "usajobs" && job.department
+      ? { "@type": "Organization", name: job.department, logo: marks.logo, parentOrganization: parentOrg }
+      : parentOrg;
+  const employment = jobEmployment(p);
   return {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     title: job.title,
     description: descriptionHtml(description),
     datePosted: (job.posted_at ?? job.first_seen).slice(0, 10),
-    hiringOrganization:
-      job.source_type === "usajobs" && job.department
-        ? { "@type": "Organization", name: job.department, parentOrganization: { "@type": "Organization", name: org.name, sameAs: org.website } }
-        : { "@type": "Organization", name: org.name, sameAs: org.website },
+    hiringOrganization,
     identifier: { "@type": "PropertyValue", name: org.name, value: job.requisition_id ?? job.source_job_id },
     directApply: false,
     url: absoluteUrl(p.path),
-    ...(EMPLOYMENT[job.employment_type] ? { employmentType: EMPLOYMENT[job.employment_type] } : {}),
+    ...(employment ? { employmentType: employment.google } : {}),
     ...(addresses.length
       ? { jobLocation: addresses.map((a) => ({ "@type": "Place", address: { "@type": "PostalAddress", ...a } })) }
       : {}),

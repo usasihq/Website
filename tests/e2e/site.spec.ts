@@ -129,6 +129,7 @@ test.describe("detail pages", () => {
     const errors = watchErrors(page);
     await page.goto(`/companies/${activeOrg.slug}/`);
     await expect(page.locator("h1")).toHaveText(activeOrg.name);
+    await expect(page.getByTestId("org-logo")).toBeVisible();
     await expect(page.getByRole("heading", { name: "Sources", exact: true })).toBeVisible();
     await expect(page.getByRole("heading", { name: "U.S. eligibility" })).toBeVisible();
     await expect(page.getByText("This listing is not an endorsement or a federal approval.")).toBeVisible();

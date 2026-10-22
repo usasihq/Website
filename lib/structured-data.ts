@@ -7,6 +7,7 @@
  * every block in the export and checks these rules.
  */
 import type { Catalog } from "./catalog";
+import { organizationLogoFields } from "./org-logos";
 import { absoluteUrl } from "./paths";
 import { stateFromHeadquarters, US_STATES } from "./places";
 import { PERSON_SPECIALTY_LABELS } from "./people";
@@ -104,6 +105,7 @@ export function organizationLd(catalog: Catalog, org: Organization): JsonLdNode 
     name: org.name,
     ...(org.legal_name ? { legalName: org.legal_name.text } : {}),
     url: org.website,
+    logo: organizationLogoFields(org).logo,
     description: org.summary.text,
     mainEntityOfPage: page,
     ...(sameAs.length ? { sameAs } : {}),
