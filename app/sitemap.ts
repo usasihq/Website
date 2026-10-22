@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { fieldPeopleLists, organizationPeopleLists } from "@/lib/people-lists";
+import { peopleSchoolIndexHref, schoolPeopleLists } from "@/lib/people-schools";
 import { getCatalog } from "@/lib/catalog";
 import { MEMORY_PAGES, memoryPageHref, memoryPageIndexable } from "@/lib/hardware";
 import { githubSitemap } from "@/lib/github/projects";
@@ -50,6 +51,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...catalog.people.map((p) => ({ url: absoluteUrl(`/people/${p.slug}/`), lastModified: p.updated_at })),
     ...organizationPeopleLists(catalog).map((l) => ({ url: absoluteUrl(l.path) })),
     ...fieldPeopleLists(catalog).map((l) => ({ url: absoluteUrl(l.path) })),
+    { url: absoluteUrl(peopleSchoolIndexHref()) },
+    ...schoolPeopleLists(catalog).map((l) => ({ url: absoluteUrl(l.path) })),
     ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
     ...catalog.policy.map((d) => ({ url: absoluteUrl(policyHref(d.slug)), lastModified: d.updated_at })),

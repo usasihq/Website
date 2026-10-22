@@ -16,6 +16,8 @@ import { PERSON_GROUP_LABELS, PERSON_SPECIALTY_LABELS, WORK_TYPE_LABELS } from "
 import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { peopleAtOrganization } from "@/lib/people-index";
 import { fieldPeopleLists, peopleAtHref, peopleFieldHref } from "@/lib/people-lists";
+import { personSchoolPages } from "@/lib/people-schools";
+import { personEnrichment, wikidataUrl } from "@/lib/people-wikidata";
 import { artifactHref, orgHref, personHref } from "@/lib/routes";
 import { personNews, personPageSeo } from "@/lib/people-seo";
 import { personLd } from "@/lib/structured-data";
@@ -72,6 +74,8 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
   const news = personNews(catalog, found, 5);
   const fieldPages = new Set(fieldPeopleLists(catalog).map((l) => l.slug));
   const known = p.work.slice(0, 3);
+  const extra = personEnrichment(p.slug);
+  const schoolLinks = personSchoolPages(catalog, found);
   // Wiki-style contents: only sections that render on this profile.
   const contents = [
     ...p.sections.map((sec, i) => ({ id: `sec-${i}`, label: sec.heading })),
@@ -123,6 +127,13 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                 <li key={sp}>
                   <Link prefetch={false} href={fieldPages.has(sp) ? peopleFieldHref(sp) : `/people/?specialty=${sp}`} className="badge min-h-9 border-tone-violet/40 hover:border-cyan">
                     {PERSON_SPECIALTY_LABELS[sp]}
+                  </Link>
+                </li>
+              ))}
+              {schoolLinks.map((s) => (
+                <li key={s.href}>
+                  <Link prefetch={false} href={s.href} className="badge min-h-9 hover:border-cyan">
+                    {s.label}
                   </Link>
                 </li>
               ))}
@@ -288,6 +299,28 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
           <aside className="grid content-start gap-6" aria-label={`${p.name} at a glance`}>
             <div className="card p-5" data-testid="person-infobox">
               <h2 className="font-semibold text-text">{p.name}</h2>
+              {extra?.image ? (
+                <figure className="mt-3" data-testid="person-photo">
+                  <img
+                    src={extra.image.thumb_url}
+                    alt=""
+                    width={400}
+                    height={400}
+                    className="w-full rounded-xl border border-line object-cover"
+                  />
+                  <figcaption className="mt-2 text-xs leading-relaxed text-muted">
+                    Photo: {extra.image.author}.{" "}
+                    <ExternalLink href={extra.image.commons_url}>{extra.image.license}</ExternalLink>
+                    {extra.image.license_url ? (
+                      <>
+                        {" "}
+                        · <ExternalLink href={extra.image.license_url}>license</ExternalLink>
+                      </>
+                    ) : null}
+                    . Wikimedia Commons.
+                  </figcaption>
+                </figure>
+              ) : null}
               <dl className="mt-3 grid gap-3 text-[0.9375rem]">
                 {current.length ? (
                   <div>
@@ -318,10 +351,47 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                     </dd>
                   </div>
                 ) : null}
+                {schoolLinks.length ? (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wide text-muted">{schoolLinks.some((s) => s.kind === "education") ? "Education" : "School"}</dt>
+                    <dd className="text-text">
+                      {schoolLinks.map((s, i) => (
+                        <span key={s.href}>
+                          {i ? ", " : ""}
+                          <Link prefetch={false} href={s.href} className="link">
+                            {s.label}
+                          </Link>
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                ) : null}
                 {p.specialties.length ? (
                   <div>
                     <dt className="text-xs uppercase tracking-wide text-muted">Fields</dt>
-                    <dd className="text-text">{p.specialties.map((sp) => PERSON_SPECIALTY_LABELS[sp]).join(", ")}</dd>
+                    <dd className="text-text">
+                      {p.specialties.map((sp, i) => (
+                        <span key={sp}>
+                          {i ? ", " : ""}
+                          {fieldPages.has(sp) ? (
+                            <Link prefetch={false} href={peopleFieldHref(sp)} className="link">
+                              {PERSON_SPECIALTY_LABELS[sp]}
+                            </Link>
+                          ) : (
+                            PERSON_SPECIALTY_LABELS[sp]
+                          )}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                ) : null}
+                {extra?.qid || extra?.wikipedia ? (
+                  <div>
+                    <dt className="text-xs uppercase tracking-wide text-muted">Identifiers</dt>
+                    <dd className="flex flex-wrap gap-x-3 text-text" data-testid="person-wikidata">
+                      {extra.qid ? <ExternalLink href={wikidataUrl(extra.qid)}>Wikidata</ExternalLink> : null}
+                      {extra.wikipedia ? <ExternalLink href={extra.wikipedia}>Wikipedia</ExternalLink> : null}
+                    </dd>
                   </div>
                 ) : null}
                 {p.honors.length ? (

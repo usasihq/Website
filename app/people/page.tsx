@@ -8,6 +8,7 @@ import { pageMetadata, socialImages } from "@/lib/metadata";
 import { absoluteUrl } from "@/lib/paths";
 import { peopleListItems } from "@/lib/people-index";
 import { fieldPeopleLists, organizationPeopleLists } from "@/lib/people-lists";
+import { schoolPeopleLists } from "@/lib/people-schools";
 import { asset } from "@/lib/paths";
 import { itemList } from "@/lib/structured-data";
 
@@ -89,6 +90,16 @@ export default function PeoplePage() {
               <li key={l.path}>
                 <Link prefetch={false} href={l.path} className="badge min-h-9 border-tone-violet/40 hover:border-cyan">
                   {l.name} ({l.items.length})
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h2 className="mt-8 text-xl font-semibold text-text">People by school</h2>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {schoolPeopleLists(catalog).map((l) => (
+              <li key={l.path}>
+                <Link prefetch={false} href={l.path} className="badge min-h-9 hover:border-cyan">
+                  {l.shortName} ({l.items.length})
                 </Link>
               </li>
             ))}

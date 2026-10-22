@@ -15,6 +15,7 @@ export function PeopleListPage({
   items,
   roleFor,
   related,
+  crumbs = [{ href: "/people/", label: "People" }],
 }: {
   title: string;
   path: string;
@@ -23,6 +24,7 @@ export function PeopleListPage({
   /** The role line shown under each name. */
   roleFor: (i: PeopleListItem) => string | null;
   related: { href: string; label: string }[];
+  crumbs?: { href: string; label: string }[];
 }) {
   return (
     <>
@@ -35,7 +37,7 @@ export function PeopleListPage({
           mainEntity: itemList({ name: title, path, items: items.map((i) => ({ name: i.name, href: i.href })) }),
         }}
       />
-      <PageHeader eyebrow="People" title={title} description={intro} crumbs={[{ href: "/people/", label: "People" }]} current={{ href: path, label: title }} />
+      <PageHeader eyebrow="People" title={title} description={intro} crumbs={crumbs} current={{ href: path, label: title }} />
       <div className="container-page grid gap-10 py-10 sm:py-12">
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="people-list">
           {items.map((i) => {

@@ -43,6 +43,7 @@ const CLAIMED_STATIC = new Set([
   "/companies/",
   "/open/",
   "/people/",
+  "/people/school/",
   "/big-si/",
   "/voices/",
   "/local/",
@@ -116,6 +117,7 @@ export function llmsTxtSections(catalog: Catalog): { title: string; items: LlmsT
   const openSourcePeople = catalog.people.filter((p) => p.groups.includes("open-source"));
   const openSource = [
     item("People", "/people/", "Every published profile"),
+    item("People by school", "/people/school/", "Alumni and faculty by university"),
     item("People Behind Local SI", "/local/"),
     ...openSourcePeople.map((p) => item(p.name, personHref(p.slug), p.headline)),
   ];

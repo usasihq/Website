@@ -19,6 +19,7 @@ import type { SearchEntry } from "./search";
 import { plainText } from "./plain-text";
 import { githubSearchEntries } from "./github/projects";
 import { hfSearchEntries } from "./huggingface/items";
+import { schoolPeopleLists } from "./people-schools";
 
 export type GlossaryTerm = { id: string; term: string; definition: string };
 
@@ -53,6 +54,7 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/learn/tools/model-size/", name: "Model size calculator", summary: "Estimate the memory a model needs at different precisions.", keywords: "calculator vram memory gpu quantization size" },
   { href: "/big-si/", name: "People Behind Big SI", summary: "Career profiles of the founders, chief executives, and builders behind the companies shaping AI.", keywords: "leaders ceo founders executives people biography big tech" },
   { href: "/local/", name: "People Behind Local SI", summary: "Profiles of people who build tools for running AI on your own computer.", keywords: "people local ai profiles maintainers" },
+  { href: "/people/school/", name: "People by school", summary: "USASI people profiles grouped by university: alumni and faculty at schools that appear in sourced bios.", keywords: "people school university alumni faculty stanford berkeley mit" },
   { href: "/voices/", name: "Voices of SI", summary: "Tech creators and communicators whose shows, channels, podcasts, newsletters, and reporting explain AI and superintelligence.", keywords: "creators youtubers podcasters influencers journalists newsletters communicators voices" },
   { href: "/methodology/", name: "Methodology", summary: "Eligibility, openness ratings, source standards, review levels, and how counts work.", keywords: "method rubric criteria openness tiers how" },
   { href: "/compact/", name: "USASI Compact", summary: "What the project is, how it weighs American control and inspectability, and its draft editorial clauses.", keywords: "principles commitments compact editorial clauses" },
@@ -124,6 +126,9 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
     ),
     ...catalog.people.map((p) =>
       e("person", p.slug, `/people/${p.slug}/`, p.name, p.headline, [...p.affiliations.map((a) => `${a.role} ${a.name}`), ...p.work.map((w) => w.name)].join(" ")),
+    ),
+    ...schoolPeopleLists(catalog).map((l) =>
+      e("page", `people-school-${l.slug}`, l.path, `People from ${l.shortName}`, `${l.items.length} sourced profiles of people who studied at or hold a documented academic role at ${l.name}.`, `people school university alumni ${l.name} ${l.shortName}`),
     ),
     ...githubSearchEntries(),
     ...hfSearchEntries(),
