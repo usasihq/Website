@@ -119,7 +119,7 @@ export function organizationLd(catalog: Catalog, org: Organization): JsonLdNode 
   };
 }
 
-const SOFTWARE_KINDS: Artifact["kind"][] = ["framework", "runtime", "research-stack"];
+const SOFTWARE_KINDS: Artifact["kind"][] = ["framework", "runtime", "research-stack", "eval"];
 
 /** A license as a URL: the record's license link, else the SPDX page for its identifier. */
 function licenseUrl(l: LicenseRecord): string | undefined {
@@ -128,29 +128,68 @@ function licenseUrl(l: LicenseRecord): string | undefined {
   return undefined;
 }
 
-/** SoftwareSourceCode for software projects (frameworks, runtimes, research stacks); null for anything else. */
-export function softwareSourceCodeLd(catalog: Catalog, a: Artifact): JsonLdNode | null {
-  if (!SOFTWARE_KINDS.includes(a.kind)) return null;
+/** License URLs for the part of an artifact a node describes, falling back to all of its licenses. */
+function licenseField(a: Artifact, primary: keyof typeof COVERS) {
+  const scoped = a.licenses.filter((l) => COVERS[primary].includes(l.applies_to));
+  const urls = [...new Set((scoped.length ? scoped : a.licenses).map(licenseUrl).filter((u): u is string => Boolean(u)))];
+  return urls.length ? { license: urls.length === 1 ? urls[0] : urls } : {};
+}
+
+/**
+ * Schema.org node for an Open Models & Tools page: SoftwareSourceCode for
+ * software projects and evaluation tools, Dataset for datasets, and
+ * CreativeWork for models (schema.org has no model type).
+ */
+export function artifactLd(catalog: Catalog, a: Artifact): JsonLdNode {
   const page = absoluteUrl(artifactHref(a.slug));
-  const repo = a.links.find((l) => l.kind === "repository")?.url;
-  const site = a.links.find((l) => l.kind === "website")?.url;
-  const codeLicenses = a.licenses.filter((l) => COVERS.code.includes(l.applies_to));
-  const licenses = [...new Set((codeLicenses.length ? codeLicenses : a.licenses).map(licenseUrl).filter((u): u is string => Boolean(u)))];
+  const link = (kind: string) => a.links.find((l) => l.kind === kind)?.url;
+  const repo = link("repository");
+  const site = link("website");
+  const hubs = [...new Set([link("model-hub"), link("dataset-hub"), repo].filter((u): u is string => Boolean(u)))];
   const orgs = a.organization_slugs.filter((s) => catalog.isActiveOrganization(s)).map((s) => catalog.organization(s)!);
-  const maintainers = orgs.length ? orgs.map(orgRef) : makersOf(catalog, a).map((name) => ({ "@type": "Organization", name }));
-  return {
+  const makers = orgs.length ? orgs.map(orgRef) : makersOf(catalog, a).map((name) => ({ "@type": "Organization", name }));
+  const common = {
     "@context": SCHEMA_CONTEXT,
-    "@type": "SoftwareSourceCode",
-    "@id": `${page}#software`,
     name: a.name,
     description: a.summary.text,
     mainEntityOfPage: page,
-    ...(site ? { url: site } : {}),
-    ...(repo ? { codeRepository: repo } : {}),
-    ...(licenses.length ? { license: licenses.length === 1 ? licenses[0] : licenses } : {}),
     ...(a.version ? { version: a.version } : {}),
     ...(a.released_at ? { datePublished: a.released_at } : {}),
-    maintainer: maintainers,
+    dateModified: a.updated_at,
+    ...(a.tags.length ? { keywords: a.tags.join(", ") } : {}),
+  };
+  if (SOFTWARE_KINDS.includes(a.kind)) {
+    return {
+      ...common,
+      "@type": "SoftwareSourceCode",
+      "@id": `${page}#software`,
+      ...(site ? { url: site } : {}),
+      ...(repo ? { codeRepository: repo } : {}),
+      ...licenseField(a, "code"),
+      maintainer: makers,
+    };
+  }
+  if (a.kind === "dataset") {
+    return {
+      ...common,
+      "@type": "Dataset",
+      "@id": `${page}#dataset`,
+      url: site ?? link("dataset-hub") ?? page,
+      ...(hubs.length ? { sameAs: hubs } : {}),
+      ...licenseField(a, "data"),
+      creator: makers,
+      isAccessibleForFree: true,
+    };
+  }
+  return {
+    ...common,
+    "@type": "CreativeWork",
+    "@id": `${page}#model`,
+    genre: "Machine learning model",
+    url: site ?? link("model-hub") ?? repo ?? page,
+    ...(hubs.length ? { sameAs: hubs } : {}),
+    ...licenseField(a, "weights"),
+    creator: makers,
   };
 }
 

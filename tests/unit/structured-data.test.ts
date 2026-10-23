@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import path from "node:path";
 import { loadCatalog } from "@/lib/catalog";
 import { absoluteUrl } from "@/lib/paths";
+import { artifactHref } from "@/lib/routes";
 import {
   breadcrumbList,
   breadcrumbTrail,
@@ -13,7 +14,7 @@ import {
   newsArticleLd,
   organizationLd,
   serializeJsonLd,
-  softwareSourceCodeLd,
+  artifactLd,
 } from "@/lib/structured-data";
 
 // The real catalog, validated against today's date (vitest pins USASI_TODAY for fixture suites).
@@ -103,18 +104,18 @@ describe("organizations", () => {
   });
 });
 
-describe("software source code", () => {
-  it("covers software projects only, with repository and license links from the record", () => {
+describe("open models and tools", () => {
+  it("types each artifact by kind, with links and licenses from the record", () => {
+    const types: Record<string, string> = { model: "CreativeWork", dataset: "Dataset" };
     for (const a of catalog.artifacts) {
-      const ld = softwareSourceCodeLd(catalog, a);
-      if (!["framework", "runtime", "research-stack"].includes(a.kind)) {
-        expect(ld, a.slug).toBeNull();
-        continue;
-      }
-      expect(ld, a.slug).not.toBeNull();
+      const ld = artifactLd(catalog, a);
       expectCleanNode(ld, a.slug);
-      if (ld!.codeRepository) expect(a.links.map((l) => l.url)).toContain(ld!.codeRepository);
-      const licenses = ld!.license === undefined ? [] : ([] as string[]).concat(ld!.license as string | string[]);
+      expect(ld["@type"], a.slug).toBe(types[a.kind] ?? "SoftwareSourceCode");
+      expect(ld.mainEntityOfPage, a.slug).toBe(absoluteUrl(artifactHref(a.slug)));
+      const recordUrls = a.links.map((l) => l.url);
+      if (ld.codeRepository) expect(recordUrls).toContain(ld.codeRepository);
+      for (const u of ([] as string[]).concat((ld.sameAs as string | string[] | undefined) ?? [])) expect(recordUrls, a.slug).toContain(u);
+      const licenses = ld.license === undefined ? [] : ([] as string[]).concat(ld.license as string | string[]);
       for (const u of licenses) {
         const fromRecord = a.licenses.some((l) => l.url === u || (l.spdx && u === `https://spdx.org/licenses/${l.spdx}.html`));
         expect(fromRecord, `${a.slug}: ${u}`).toBe(true);

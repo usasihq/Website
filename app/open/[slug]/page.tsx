@@ -21,7 +21,7 @@ import { guideFor } from "@/lib/licenses";
 import { entryTypeFor, KIND_LABELS } from "@/lib/labels";
 import { pageMetadata, socialImages } from "@/lib/metadata";
 import { artifactSeo } from "@/lib/seo";
-import { softwareSourceCodeLd } from "@/lib/structured-data";
+import { artifactLd } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
 import { hfItemsForArtifact } from "@/lib/huggingface/items";
 import {
@@ -101,7 +101,7 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <JsonLd data={softwareSourceCodeLd(catalog, a)} />
+      <JsonLd data={artifactLd(catalog, a)} />
       {a.publication_status === "archived" && a.archive_note ? <ArchivedNotice note={a.archive_note} /> : null}
       <article>
         <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">

@@ -20,11 +20,17 @@
 # /data/jobs.json or /og/x.jpg, whose types stay as served. Cloudflare's asset
 # worker turns "*" into ".*", sets the first matching value, and appends any
 # later one, so keep these the only Content-Type rules for these paths.
+#
+# Browsers always revalidate HTML (cheap: every page has an ETag); Cloudflare's
+# edge may keep a copy for five minutes and serve it stale for ten more while it
+# refetches. Kept short so a deploy's pages never outlive its /_next/static/ chunks.
 /
   Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=0, s-maxage=300, stale-while-revalidate=600
 
 /*/
   Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=0, s-maxage=300, stale-while-revalidate=600
 
 # Content-hashed build output: cache forever.
 /_next/static/*
