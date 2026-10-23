@@ -1,0 +1,173 @@
+slug: brian-van-essen
+name: Brian Van Essen
+initials: BVE
+groups: [open-source, engineering]
+sector: government
+specialties: [training-systems, ml-frameworks]
+headline: LLNL senior computer scientist and project leader of the LBANN deep learning toolkit for supercomputers
+bio:
+  text: >-
+    Brian Van Essen is a senior computer scientist in the Center for Applied Scientific Computing at
+    Lawrence Livermore National Laboratory and the project leader for LBANN, the Livermore Big Artificial
+    Neural Network open-source deep learning toolkit. Van Essen is the first member of the LLNL team
+    listed in the LBANN contributors file. In 2015 a Livermore team led by Barry
+    Chen and Van Essen developed LBANN, the Livermore Big Artificial Neural Network toolkit for training
+    large neural networks on high-performance computing systems.
+  source_ids: [llnl-people, lbann-contributors, str-2021, ldrd-2016]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Lawrence Livermore National Laboratory
+    organization_slug: lawrence-livermore-national-laboratory
+    role: Senior computer scientist, Center for Applied Scientific Computing; project leader for LBANN
+    current: true
+    source_ids: [llnl-people]
+work:
+  - name: LBANN (Livermore Big Artificial Neural Network Toolkit)
+    artifact_slug: lbann
+    type: open-source
+    url: https://github.com/LBANN/lbann
+    contribution: >-
+      Co-led, with Barry Chen, the Livermore team that developed LBANN in 2015, and is first author of the
+      2015 workshop paper introducing the toolkit.
+    source_ids: [str-2021, ldrd-2016, lbann-contributors]
+  - name: ECP-CANDLE (LLNL contribution)
+    artifact_slug: null
+    url: https://engineering.llnl.gov/article/50346/lab-scientists-engineers-garner-three-awards-top-inventions-rd-100-competition
+    contribution: >-
+      Co-led LLNL's part of the ECP-CANDLE cancer deep learning project with Fred Streitz, which focused
+      on scalable distributed deep learning tools within LBANN.
+    source_ids: [rd100-2023]
+links:
+  - label: LBANN on GitHub
+    url: https://github.com/LBANN/lbann
+sections:
+  - heading: LBANN
+    paragraphs:
+      - text: >-
+          Van Essen is first author of "LBANN: Livermore big artificial neural network HPC toolkit",
+          presented at a 2015 workshop on machine learning in high-performance computing environments. A
+          2016 LLNL article said Van Essen's group was working to improve LBANN's speed and efficiency by maximizing node utilization
+          while reducing communication between nodes.
+        source_ids: [ldrd-2016, str-2016]
+      - text: >-
+          LBANN is an open-source deep learning training framework built to compose model, data and
+          ensemble parallelism on supercomputers. A 2025 LLNL newsletter reported that the LBANN group,
+          including Van Essen, had released a parallel LLaMA model in PyTorch optimized for AMD chips and
+          demonstrated it on Tenaya, an early-access system for El Capitan.
+        source_ids: [lbann-readme, ds-newsletter-2025]
+  - heading: Scientific applications
+    paragraphs:
+      - text: >-
+          As principal investigator, Van Essen led a 2020 LBANN-based generative model for COVID-19 drug
+          discovery, trained on more than a billion molecules on the Sierra supercomputer, which was a
+          finalist for the Gordon Bell Special Prize and was presented at SC20. Van Essen was also part of
+          the cognitive simulation team that applied machine learning to inertial confinement fusion
+          experiments.
+        source_ids: [gordon-bell-2020, hpcwire-2022]
+      - text: >-
+          With Fred Streitz, Van Essen led LLNL's part of the ECP-CANDLE project, a collaboration of national
+          laboratories and the National Cancer Institute applying deep learning to cancer research, whose
+          LLNL work centered on scalable distributed training within LBANN.
+        source_ids: [rd100-2023]
+timeline:
+  - date: "2015"
+    text: Co-led the Livermore team that developed the LBANN toolkit and first-authored its workshop paper.
+    source_ids: [str-2021, ldrd-2016]
+  - date: "2016-06"
+    text: Led a group working to improve LBANN's speed and node utilization, as reported by LLNL.
+    source_ids: [str-2016]
+  - date: "2020-11"
+    text: Presented an LBANN-based COVID-19 drug discovery model, a Gordon Bell Special Prize finalist, at SC20.
+    source_ids: [gordon-bell-2020]
+  - date: "2022-11"
+    text: Was part of the LLNL cognitive simulation team recognized by HPCwire at SC22.
+    source_ids: [hpcwire-2022]
+  - date: "2023"
+    text: The ECP-CANDLE software suite, with LLNL's part co-led by Van Essen, received an R&D 100 award.
+    source_ids: [rd100-2023]
+  - date: "2025"
+    text: The LBANN group demonstrated its parallel LLaMA model on Tenaya, an early-access El Capitan system.
+    source_ids: [ds-newsletter-2025]
+honors:
+  - name: R&D 100 Award (ECP-CANDLE, as co-lead of the LLNL team)
+    year: 2023
+    awarded_by: R&D World
+    source_ids: [rd100-2023]
+  - name: HPCwire Editor's Choice Award, Best Use of HPC in Energy (LLNL cognitive simulation team)
+    year: 2022
+    awarded_by: HPCwire
+    source_ids: [hpcwire-2022]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: llnl-people
+    title: Brian Van Essen (LLNL staff profile)
+    url: https://people.llnl.gov/vanessen1
+    publisher: Lawrence Livermore National Laboratory
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: lbann-contributors
+    title: LBANN CONTRIBUTORS file
+    url: https://github.com/LBANN/lbann/blob/develop/CONTRIBUTORS
+    publisher: LBANN (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: lbann-readme
+    title: LBANN README
+    url: https://github.com/LBANN/lbann
+    publisher: LBANN (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: str-2021
+    title: Neural Networks Search for the Nuclear Needle in a Haystack (Science & Technology Review)
+    url: https://str.llnl.gov/2021-04/chen
+    publisher: Lawrence Livermore National Laboratory
+    kind: official-page
+    published_at: "2021-04"
+    accessed_at: 2026-10-22
+  - id: str-2016
+    title: Deep Neural Networks Bring Patterns into Focus (Science & Technology Review)
+    url: https://str.llnl.gov/june-2016/chen
+    publisher: Lawrence Livermore National Laboratory
+    kind: official-page
+    published_at: "2016-06"
+    accessed_at: 2026-10-22
+  - id: ldrd-2016
+    title: The Livermore Brain, LDRD Annual Report 2016
+    url: https://ldrd-annual.llnl.gov/archives/ldrd-annual-2016/computing/brain
+    publisher: Lawrence Livermore National Laboratory
+    kind: official-page
+    published_at: "2016"
+    accessed_at: 2026-10-22
+  - id: gordon-bell-2020
+    title: Model for COVID-19 drug discovery a Gordon Bell finalist
+    url: https://llnl.gov/news/model-covid-19-drug-discovery-gordon-bell-finalist
+    publisher: Lawrence Livermore National Laboratory
+    kind: announcement
+    published_at: 2020-11-17
+    accessed_at: 2026-10-22
+  - id: hpcwire-2022
+    title: LLNL researchers win HPCwire award for applying cognitive simulation to inertial confinement fusion
+    url: https://www.llnl.gov/news/llnl-researchers-win-hpcwire-award-applying-cognitive-simulation-inertial-confinement-fusion
+    publisher: Lawrence Livermore National Laboratory
+    kind: announcement
+    published_at: 2022-11-17
+    accessed_at: 2026-10-22
+  - id: rd100-2023
+    title: Lab scientists and engineers garner three awards for top inventions in R&D 100 competition
+    url: https://engineering.llnl.gov/article/50346/lab-scientists-engineers-garner-three-awards-top-inventions-rd-100-competition
+    publisher: Lawrence Livermore National Laboratory
+    kind: announcement
+    published_at: 2023-09-18
+    accessed_at: 2026-10-22
+  - id: ds-newsletter-2025
+    title: LLNL Data Science Institute newsletter, Volume 43
+    url: https://data-science.llnl.gov/newsletter/2025-volume-43
+    publisher: Lawrence Livermore National Laboratory
+    kind: official-page
+    published_at: "2025"
+    accessed_at: 2026-10-22

@@ -1,0 +1,155 @@
+slug: sven-gowal
+name: Sven Gowal
+initials: SG
+groups: [open-source, engineering]
+sector: null
+specialties: [safety-alignment, generative-media]
+headline: Co-led Google DeepMind's SynthID project; co-author of the SynthID Text and SynthID Bio papers
+bio:
+  text: >-
+    Sven Gowal co-led Google DeepMind's SynthID project for watermarking and identifying
+    AI-generated content with Pushmeet Kohli, according to the 2023 SynthID launch post.
+    Gowal is a co-author of the Nature papers behind SynthID Text, Google DeepMind's open-source
+    text watermarking library, and SynthID Bio, its watermarking tool for AI-generated proteins, and
+    is first author of the SynthID-Image paper. Gowal's earlier research covers adversarial
+    robustness and verification of neural networks.
+  source_ids: [synthid-launch, st-readme, sb-readme, synthid-image-paper, ibp-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Google DeepMind
+    organization_slug: google-deepmind
+    role: Co-led the SynthID project (2023 launch post); listed with a Google DeepMind affiliation on the SynthID Bio paper (Nature, September 2026)
+    current: false
+    source_ids: [synthid-launch, sb-nature]
+work:
+  - name: SynthID Text
+    artifact_slug: synthid-text
+    type: open-source
+    url: https://github.com/google-deepmind/synthid-text
+    contribution: >-
+      Co-author of "Scalable watermarking for identifying large language model outputs" (Nature, 2024),
+      the paper the SynthID Text repository asks users to cite.
+    source_ids: [st-readme]
+  - name: SynthID Bio
+    artifact_slug: synthid-bio
+    type: open-source
+    url: https://github.com/google-deepmind/synthidbio
+    contribution: >-
+      Co-author of "Function-preserving watermarking of AI-generated proteins" (Nature, 2026), the paper
+      cited by the SynthID Bio repository.
+    source_ids: [sb-readme]
+  - name: SynthID-Image
+    artifact_slug: null
+    type: open-research
+    url: https://arxiv.org/abs/2510.09263
+    contribution: >-
+      First author of "SynthID-Image: Image watermarking at internet scale" (2025).
+    source_ids: [synthid-image-paper]
+links:
+  - label: GitHub
+    url: https://github.com/sgowal
+sections:
+  - heading: SynthID
+    paragraphs:
+      - text: >-
+          Google DeepMind's August 2023 post announcing a beta of SynthID, which embeds an imperceptible
+          watermark in image pixels, was written by Gowal and Pushmeet Kohli and states that the two led
+          the project. Gowal is first author of the 2025 SynthID-Image paper on image watermarking at
+          internet scale.
+        source_ids: [synthid-launch, synthid-image-paper]
+      - text: >-
+          Gowal is also a co-author of the Nature papers for SynthID Text (2024), on watermarking the
+          outputs of large language models, and SynthID Bio (2026), on function-preserving watermarking
+          of AI-generated proteins; both are released as Apache-2.0 repositories under Google DeepMind's
+          GitHub organization.
+        source_ids: [st-readme, sb-readme]
+  - heading: Research
+    paragraphs:
+      - text: >-
+          Gowal's earlier papers address robustness and verification of neural networks, including
+          interval bound propagation for training verifiably robust models (2018), the limits of
+          adversarial training against norm-bounded examples (2020) and using generated data to improve
+          robustness (2021).
+        source_ids: [ibp-paper, limits-paper, generated-data-paper]
+timeline:
+  - date: "2018-10"
+    text: Posted "On the Effectiveness of Interval Bound Propagation for Training Verifiably Robust Models" as first author.
+    source_ids: [ibp-paper]
+  - date: "2020-10"
+    text: Posted "Uncovering the Limits of Adversarial Training against Norm-Bounded Adversarial Examples" as first author.
+    source_ids: [limits-paper]
+  - date: "2021-10"
+    text: Posted "Improving Robustness using Generated Data" as first author.
+    source_ids: [generated-data-paper]
+  - date: "2023-08-29"
+    text: Co-authored Google DeepMind's announcement of the SynthID beta, a project Gowal co-led.
+    source_ids: [synthid-launch]
+  - date: "2024-10"
+    text: Co-authored the Nature paper on scalable watermarking of LLM outputs behind SynthID Text.
+    source_ids: [st-readme]
+  - date: "2025-10"
+    text: Posted "SynthID-Image, Image watermarking at internet scale" as first author.
+    source_ids: [synthid-image-paper]
+  - date: "2026"
+    text: Co-authored the Nature paper on function-preserving watermarking of AI-generated proteins behind SynthID Bio.
+    source_ids: [sb-readme]
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: synthid-launch
+    title: Identifying AI-generated images with SynthID
+    url: https://deepmind.google/discover/blog/identifying-ai-generated-images-with-synthid/
+    publisher: Google DeepMind
+    kind: announcement
+    published_at: 2023-08-29
+    accessed_at: 2026-10-22
+  - id: st-readme
+    title: google-deepmind/synthid-text README (citation)
+    url: https://github.com/google-deepmind/synthid-text
+    publisher: Google DeepMind (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: sb-readme
+    title: google-deepmind/synthidbio README (citation)
+    url: https://github.com/google-deepmind/synthidbio
+    publisher: Google DeepMind (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: synthid-image-paper
+    title: "SynthID-Image: Image watermarking at internet scale (arXiv 2510.09263)"
+    url: https://arxiv.org/abs/2510.09263
+    publisher: arXiv
+    kind: paper
+    published_at: 2025-10-10
+    accessed_at: 2026-10-22
+  - id: ibp-paper
+    title: On the Effectiveness of Interval Bound Propagation for Training Verifiably Robust Models (arXiv 1810.12715)
+    url: https://arxiv.org/abs/1810.12715
+    publisher: arXiv
+    kind: paper
+    published_at: 2018-10-30
+    accessed_at: 2026-10-22
+  - id: limits-paper
+    title: Uncovering the Limits of Adversarial Training against Norm-Bounded Adversarial Examples (arXiv 2010.03593)
+    url: https://arxiv.org/abs/2010.03593
+    publisher: arXiv
+    kind: paper
+    published_at: 2020-10-07
+    accessed_at: 2026-10-22
+  - id: generated-data-paper
+    title: Improving Robustness using Generated Data (arXiv 2110.09468)
+    url: https://arxiv.org/abs/2110.09468
+    publisher: arXiv
+    kind: paper
+    published_at: 2021-10-18
+    accessed_at: 2026-10-22
+  - id: sb-nature
+    title: Function-preserving watermarking of AI-generated proteins (Nature)
+    url: https://www.nature.com/articles/s41586-026-10965-y
+    publisher: Nature
+    kind: paper
+    published_at: 2026-09-30
+    accessed_at: 2026-10-22

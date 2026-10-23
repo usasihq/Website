@@ -1,0 +1,148 @@
+slug: qingyun-wu
+name: Qingyun Wu
+initials: QW
+groups: [engineering, open-source]
+sector: academic
+specialties: [agents, language-models]
+headline: Penn State assistant professor and AG2 founder; first author of the AutoGen multi-agent framework paper
+bio:
+  text: >-
+    Qingyun Wu is the first author of "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent
+    Conversation" (2023), the paper describing Microsoft's open-source AutoGen framework, and Wu's site
+    lists Wu's role on the project as creator and maintainer. Wu's site says Wu joined the College of Information Science and Technology at Penn State
+    University as an Assistant Professor in fall 2021, after a postdoctoral position at Microsoft Research's New York City lab from 2020 to 2021.
+    Penn State's research portal lists Wu as an assistant professor in the College of Information Sciences
+    and Technology, and Wu's GitHub profile describes Wu as founder and CEO of AG2, the project formerly
+    called AutoGen. Wu is also a co-author of the FLAML automated machine learning library paper with Chi Wang.
+  source_ids: [autogen-paper, wu-site, psu-pure, wu-github, flaml-paper]
+  reviewed_at: 2026-10-22
+affiliations:
+  - name: Penn State University
+    organization_slug: null
+    role: Assistant Professor, College of Information Sciences and Technology
+    current: true
+    source_ids: [psu-pure, wu-site]
+  - name: AG2
+    organization_slug: null
+    role: Founder and CEO
+    current: true
+    source_ids: [wu-github, ag2-readme]
+  - name: Microsoft Research
+    organization_slug: microsoft
+    role: Postdoctoral Researcher, New York City lab (2020 to 2021)
+    current: false
+    source_ids: [wu-site]
+work:
+  - name: AutoGen
+    artifact_slug: autogen
+    type: open-source
+    url: https://github.com/microsoft/autogen
+    contribution: >-
+      First author of the AutoGen paper, which presents a framework for building LLM applications from
+      multiple conversing agents; Wu's site lists Wu as AutoGen's creator and maintainer.
+    source_ids: [autogen-paper, wu-site]
+  - name: FLAML
+    artifact_slug: null
+    type: open-source
+    url: https://arxiv.org/abs/1911.04706
+    contribution: >-
+      Co-author of the FLAML paper on a fast and lightweight AutoML library; Wu's site lists Wu as a
+      creator and maintainer of the project.
+    source_ids: [flaml-paper, wu-site]
+links:
+  - label: Website
+    url: https://qingyun-wu.github.io/
+sections:
+  - heading: Career
+    paragraphs:
+      - text: >-
+          Wu completed a PhD in computer science at the University of Virginia in 2020, supervised by Hongning
+          Wang, and was then a postdoctoral researcher at Microsoft Research's New York City lab, hosted by John
+          Langford, from 2020 to 2021. Wu's site says Wu joined Penn State's College of Information Science and
+          Technology as an assistant professor in fall 2021, with research on automated machine learning and
+          large language models.
+        source_ids: [wu-site]
+  - heading: AutoGen and FLAML
+    paragraphs:
+      - text: >-
+          Wu is first author, with Chi Wang as senior author, of the AutoGen paper posted in August 2023, which
+          describes building applications from customizable agents that converse with each other. AutoGen's
+          repository now says the project is archived and in maintenance mode, and points new users to
+          Microsoft Agent Framework as its successor.
+        source_ids: [autogen-paper, autogen-readme]
+      - text: >-
+          Wu's GitHub profile describes Wu as founder and CEO of AG2, whose repository presents it as the
+          open-source project formerly called AutoGen and names Chi Wang and Wu as its project administrators.
+        source_ids: [wu-github, ag2-readme]
+      - text: >-
+          Wu also co-authored FLAML, a library for fast automated machine learning and hyperparameter tuning,
+          with Chi Wang, Markus Weimer and Erkang Zhu; Wu's site gives Wu's role on both FLAML and AutoGen as
+          creator and maintainer.
+        source_ids: [flaml-paper, wu-site]
+timeline:
+  - date: "2019-11"
+    text: Co-authored the FLAML paper on a fast and lightweight AutoML library.
+    source_ids: [flaml-paper]
+  - date: "2020"
+    text: Completed a PhD in computer science at the University of Virginia and joined Microsoft Research as a postdoc.
+    source_ids: [wu-site]
+  - date: "2021"
+    text: Joined Penn State's College of Information Science and Technology as an assistant professor.
+    source_ids: [wu-site]
+  - date: "2023-08"
+    text: Posted the AutoGen paper on multi-agent LLM applications as first author.
+    source_ids: [autogen-paper]
+honors: []
+publication_status: published
+updated_at: 2026-10-22
+last_reviewed: 2026-10-22
+sources:
+  - id: wu-site
+    title: Qingyun Wu — homepage
+    url: https://qingyun-wu.github.io/
+    publisher: Qingyun Wu
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: autogen-paper
+    title: "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation (arXiv 2308.08155)"
+    url: https://arxiv.org/abs/2308.08155
+    publisher: arXiv
+    kind: paper
+    published_at: 2023-08-16
+    accessed_at: 2026-10-22
+  - id: flaml-paper
+    title: "FLAML: A Fast and Lightweight AutoML Library (arXiv 1911.04706)"
+    url: https://arxiv.org/abs/1911.04706
+    publisher: arXiv
+    kind: paper
+    published_at: 2019-11-12
+    accessed_at: 2026-10-22
+  - id: autogen-readme
+    title: microsoft/autogen README
+    url: https://github.com/microsoft/autogen
+    publisher: Microsoft (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: psu-pure
+    title: Qingyun Wu (Penn State research portal)
+    url: https://pure.psu.edu/en/persons/qingyun-wu
+    publisher: Penn State University
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: wu-github
+    title: qingyun-wu (GitHub profile)
+    url: https://github.com/qingyun-wu
+    publisher: GitHub
+    kind: official-page
+    published_at: null
+    accessed_at: 2026-10-22
+  - id: ag2-readme
+    title: ag2ai/ag2 README
+    url: https://github.com/ag2ai/ag2
+    publisher: AG2 (GitHub repository)
+    kind: repository
+    published_at: null
+    accessed_at: 2026-10-22
