@@ -105,7 +105,6 @@ const required = [
   "privacy/index.html",
   "badges/index.html",
   "badges/listed.svg",
-  "local/index.html",
   "news/index.html",
   "news/feed.xml",
 ];
