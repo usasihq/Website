@@ -75,6 +75,7 @@ export const FILTER_NAMES: Partial<Record<keyof JobFilters, string>> = {
   location: "location text",
   state: "state",
   city: "city",
+  metro: "metro",
   where: "remote or country",
   workplace: "workplace type",
   employment: "employment type",

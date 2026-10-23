@@ -99,6 +99,10 @@ describe("U.S. cities read from employer-supplied locations", () => {
   const cities = (location: string, countries: string[] = []) => jobGeography({ locations: [location], countries }).cities;
   it.each([
     ["San Francisco, CA", ["CA|San Francisco"]],
+    ["Memphis, TN", ["TN|Memphis"]],
+    ["Memphis", ["TN|Memphis"]],
+    ["Southaven, MS", ["MS|Southaven"]],
+    ["Southaven", ["MS|Southaven"]],
     ["san francisco, CA", ["CA|San Francisco"]],
     ["SF Office", ["CA|San Francisco"]],
     ["San Fransisco", ["CA|San Francisco"]],

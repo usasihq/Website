@@ -26,7 +26,7 @@ const listItem = (position: number, name: string, href: string) => ({
 /** /jobs/: the directory itself, plus the topic / role / state / city pages it links to. */
 export function jobsIndexJsonLd(links: LandingLink[]): object {
   const items = links.filter((l) =>
-    (l.kind === "topic" || l.kind === "role" ? l.count >= MIN_TOPIC_LISTINGS : l.kind === "state" || l.kind === "city"),
+    (l.kind === "topic" || l.kind === "role" ? l.count >= MIN_TOPIC_LISTINGS : l.kind === "state" || l.kind === "city" || l.kind === "metro"),
   );
   const url = absoluteUrl("/jobs/");
   return {

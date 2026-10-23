@@ -2,7 +2,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
 import { jobsIndexJsonLd, jobsLandingJsonLd } from "@/lib/jobs/jsonld";
-import { atLeastOneParam, cityDefinition, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, roleDefinition, roleStateDefinition, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { atLeastOneParam, cityDefinition, cityHubDefinition, cityHubIntro, companyDefinition, computeLandingData, LISTINGS_SHOWN, MAX_CITY_NAME, MIN_CITY_HUB_LISTINGS, MIN_CITY_LISTINGS, MIN_STATE_LISTINGS, roleDefinition, roleStateDefinition, stateDefinition, TOPICS, type Facts } from "@/lib/jobs/landing";
+import { CITY_HUBS, listingMatchesCityHub, selectCityHubs } from "@/lib/jobs/city-hubs";
 import { alignJobsSnapshot, latestSuccessfulCheck, readJobs } from "@/lib/jobs/load";
 import { JOB_ROLES } from "@/lib/jobs/roles";
 import { jobHref } from "@/lib/jobs/job-url";
@@ -23,6 +24,7 @@ describe("landing page text", () => {
     ...JOB_ROLES.flatMap((role) => Object.keys(US_STATES).map((c) => roleStateDefinition(role, c))),
     ...Object.keys(US_STATES).map(stateDefinition),
     ...Object.keys(US_STATES).map((c) => cityDefinition(c, "x", longCity)),
+    ...CITY_HUBS.map(cityHubDefinition),
     ...employers,
   ];
   it("keeps titles and descriptions answer-first and within 160 characters", () => {
@@ -44,6 +46,12 @@ describe("landing page text", () => {
     expect(sf.h1).toBe("AI jobs in San Francisco, California");
     expect(sf.description(one)).toBe("12 open listings naming San Francisco, CA, at xAI in the USASI catalog. Updated daily.");
     expect(sf.image).toBe("/og/jobs/in-california-san-francisco.jpg");
+    const memphis = cityHubDefinition(CITY_HUBS[0]);
+    expect(memphis.path).toBe("/jobs/in/memphis/");
+    expect(memphis.h1).toBe("AI & tech jobs in Memphis, TN");
+    expect(memphis.filters).toEqual({ metro: "memphis" });
+    expect(memphis.description(one)).toBe("12 open listings naming Memphis, TN and Southaven, MS, at xAI in the USASI catalog. Updated daily.");
+    expect(memphis.image).toBe("/og/jobs/in-memphis.jpg");
     const fde = roleDefinition(JOB_ROLES[0]);
     expect(fde.path).toBe("/jobs/role/forward-deployed-engineer/");
     expect(fde.filters).toEqual({ role: "forward-deployed-engineer" });
@@ -103,6 +111,24 @@ describe("landing pages from listings", () => {
     expect(data.stateCounts.ID).toBe(MIN_STATE_LISTINGS - 1);
     expect(data.stateCounts.CA).toBeUndefined();
     expect(data.stateCounts.WA).toBe(14);
+  });
+
+  it("generates a Memphis–Southaven metro page from either city once the hub threshold is met", () => {
+    const memphis = data.metros.find((p) => p.path === "/jobs/in/memphis/")!;
+    expect(memphis.kind).toBe("metro");
+    expect(memphis.count).toBe(12);
+    expect(memphis.h1).toBe("AI & tech jobs in Memphis, TN");
+    expect(memphis.intro).toContain("12 open listings");
+    expect(memphis.intro).toContain("OpenAI");
+    expect(memphis.intro).not.toMatch(/largest|leading|hub of/i);
+    expect(memphis.directoryHref).toBe("/jobs/?metro=memphis&sort=newest");
+    expect(memphis.metro?.places.map((p) => [p.key, p.count])).toEqual([
+      ["TN|memphis", 0],
+      ["MS|southaven", 12],
+    ]);
+    const directory = filterJobs(items, [feed("openai"), feed("anthropic")], parseJobFilters(new URLSearchParams(memphis.directoryHref.split("?")[1])), now);
+    expect(directory.map((j) => j.id)).toEqual(memphis.listings.map((j) => j.id));
+    expect(data.all.map((p) => p.path)).toContain("/jobs/in/memphis/");
   });
 
   it("generates city pages at or above the threshold, below their state's count, and matching the directory", () => {
@@ -200,24 +226,84 @@ describe("landing pages from listings", () => {
 });
 
 describe("jobs directory structured data", () => {
-  it("lists topic, role, state, and city pages and omits JobPosting and empty topic pages", () => {
+  it("lists topic, role, state, city, and metro pages and omits JobPosting and empty topic pages", () => {
     const ld = jobsIndexJsonLd([
       { path: "/jobs/remote/", name: "Remote jobs, all locations", count: 40, kind: "topic", state: null },
       { path: "/jobs/remote-us/", name: "Remote jobs, U.S. locations", count: 0, kind: "topic", state: null },
       { path: "/jobs/role/forward-deployed-engineer/", name: "Forward Deployed Engineer jobs", count: 12, kind: "role", state: null },
       { path: "/jobs/in/california/", name: "Jobs in California", count: 50, kind: "state", state: "CA" },
       { path: "/jobs/at/openai/", name: "Jobs at OpenAI", count: 100, kind: "company", state: null },
+      { path: "/jobs/in/memphis/", name: "Jobs in Memphis–Southaven", count: 12, kind: "metro", state: null },
     ]) as { "@graph": { "@type": string; numberOfItems?: number; itemListElement?: { name: string }[] }[] };
     expect(ld["@graph"][0]["@type"]).toBe("CollectionPage");
     const list = ld["@graph"][1];
     expect(list["@type"]).toBe("ItemList");
-    expect(list.numberOfItems).toBe(3);
+    expect(list.numberOfItems).toBe(4);
     expect(list.itemListElement!.map((i) => i.name)).toEqual([
       "Remote jobs, all locations",
       "Forward Deployed Engineer jobs",
       "Jobs in California",
+      "Jobs in Memphis–Southaven",
     ]);
     expect(JSON.stringify(ld)).not.toContain("JobPosting");
+  });
+});
+
+describe("city hub template and threshold", () => {
+  const memphis = CITY_HUBS.find((h) => h.slug === "memphis")!;
+  const catalog = loadCatalog(path.join(process.cwd(), "content"), { today: new Date().toISOString().slice(0, 10) });
+  const now = Date.parse("2026-10-13T12:00:00.000Z");
+  const seen = "2026-10-13T11:00:00.000Z";
+  const feed = (organization_slug: string): FeedHealth => ({ organization_slug, source_type: "greenhouse", source_identifier: organization_slug, last_attempted: seen,
+    last_successful: seen, result: "ok", consecutive_failures: 0, current_count: 0, pending_digest: null, pending_since: null });
+  let n = 0;
+  const item = (org: string, title: string, locations: string[]): JobItem => {
+    n += 1;
+    return { id: `${org}:greenhouse:${org}:hub-${n}`, organization_slug: org, source_type: "greenhouse", source_identifier: org, source_job_id: `hub-${n}`,
+      source_url: `https://boards-api.greenhouse.io/v1/boards/${org}/jobs`, title, locations, countries: [], workplace: "unknown", employment_type: "unknown",
+      department: null, team: null, salaries: [], official_url: `https://job-boards.greenhouse.io/${org}/jobs/${n}`,
+      posted_at: "2026-10-01T00:00:00.000Z", posted_date_kind: "first-published", first_seen: seen, last_seen: seen, status: "open",
+      organization_name: catalog.organization(org)?.name ?? org };
+  };
+
+  it("matches listings in any configured place and ignores other cities", () => {
+    expect(listingMatchesCityHub({ locations: ["Southaven, MS"], countries: [] }, memphis)).toBe(true);
+    expect(listingMatchesCityHub({ locations: ["Memphis, TN"], countries: [] }, memphis)).toBe(true);
+    expect(listingMatchesCityHub({ locations: ["Memphis", "Southaven, MS"], countries: [] }, memphis)).toBe(true);
+    expect(listingMatchesCityHub({ locations: ["Nashville, TN"], countries: [] }, memphis)).toBe(false);
+    expect(listingMatchesCityHub({ locations: ["San Francisco, CA"], countries: [] }, memphis)).toBe(false);
+  });
+
+  it("omits a hub below the listing threshold and emits one at or above it", () => {
+    expect(selectCityHubs(CITY_HUBS, () => MIN_CITY_HUB_LISTINGS - 1)).toEqual([]);
+    expect(selectCityHubs(CITY_HUBS, () => MIN_CITY_HUB_LISTINGS).map((h) => h.slug)).toEqual(["memphis"]);
+    const thin = computeLandingData(
+      catalog,
+      Array.from({ length: MIN_CITY_HUB_LISTINGS - 1 }, () => item("openai", "Technician", ["Southaven, MS"])),
+      [feed("openai")],
+      now,
+    );
+    expect(thin.metros.map((p) => p.path)).toEqual([]);
+    const enough = computeLandingData(
+      catalog,
+      [
+        ...Array.from({ length: 6 }, () => item("openai", "Technician", ["Southaven, MS"])),
+        ...Array.from({ length: MIN_CITY_HUB_LISTINGS - 6 }, () => item("openai", "Technician", ["Memphis, TN"])),
+      ],
+      [feed("openai")],
+      now,
+    );
+    expect(enough.metros.map((p) => p.path)).toEqual(["/jobs/in/memphis/"]);
+    expect(enough.metros[0].count).toBe(MIN_CITY_HUB_LISTINGS);
+    expect(enough.metros[0].intro).toBe(cityHubIntro(memphis, { count: MIN_CITY_HUB_LISTINGS, employers: 1, soleEmployer: "OpenAI", date: "Oct 13, 2026", usOnly: MIN_CITY_HUB_LISTINGS, outside: 0 }, enough.metros[0].employers));
+  });
+
+  it("builds a factual intro from counts and employer names only", () => {
+    const intro = cityHubIntro(memphis, { count: 12, employers: 2, soleEmployer: null, date: "Oct 13, 2026", usOnly: 12, outside: 0 }, [
+      { slug: "xai", name: "xAI", headquarters: null, count: 10 },
+      { slug: "spacex", name: "SpaceX", headquarters: null, count: 2 },
+    ]);
+    expect(intro).toBe("12 open listings naming Memphis, TN and Southaven, MS, at xAI (10), SpaceX (2) in the USASI catalog.");
   });
 });
 

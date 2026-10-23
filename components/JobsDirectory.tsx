@@ -8,6 +8,7 @@ import { JOB_ROLES, jobRole } from "@/lib/jobs/roles";
 import { annualUsdTop, jobCategory, jobLevel, JOB_CATEGORIES, JOB_LEVELS, PAY_THRESHOLDS } from "@/lib/jobs/levels";
 import { parseWhere, whereText } from "@/lib/jobs/where";
 import { isExpressionOfInterest, jobTrack, JOB_TRACKS } from "@/lib/jobs/tracks";
+import { cityHubBySlug } from "@/lib/jobs/city-hubs";
 import { cityKey, cityLabel, DEFAULT_LOCATION_SCOPE, displayLocation, inLocationScope, jobGeography, LOCATION_SCOPE_LABELS, LOCATION_SCOPES, stateDisplayName, type LocationScope } from "@/lib/jobs/geo";
 import { US_STATES } from "@/lib/places";
 import { orgHref } from "@/lib/routes";
@@ -185,7 +186,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
   type Active = { label: string; clear: Partial<JobFilters> } | null;
   const active = ([
     f.q ? { label: `“${f.q}”`, clear: { q: "" } } : null,
-    f.where !== DEFAULT_LOCATION_SCOPE || f.state || f.location ? { label: whereText(f, cityName) || LOCATION_SCOPE_LABELS[f.where], clear: { where: DEFAULT_LOCATION_SCOPE, state: "", city: "", location: "" } } : null,
+    f.where !== DEFAULT_LOCATION_SCOPE || f.state || f.location || f.metro ? { label: f.metro ? cityHubBySlug(f.metro)?.name ?? f.metro : whereText(f, cityName) || LOCATION_SCOPE_LABELS[f.where], clear: { where: DEFAULT_LOCATION_SCOPE, state: "", city: "", location: "", metro: "" } } : null,
     f.category ? { label: categoryLabel(f.category), clear: { category: "" } } : null,
     f.level ? { label: levelLabel(f.level), clear: { level: "" } } : null,
     f.pay ? { label: `Pay reaches $${Number(f.pay) / 1000}K+`, clear: { pay: "" } } : null,
@@ -270,6 +271,7 @@ export function JobsDirectory({ initial, summary, dataUrl, feeds, coverage, asOf
         {f.company && coverage.some(c => c.slug === f.company && c.mode === "automated") ? <p className="mt-3 text-sm text-muted" data-testid="jobs-company-page">Shareable page for this employer: <Link href={`/jobs/at/${f.company}/`} className="link">Jobs at {companyName(f.company)}</Link></p> : null}
         {f.role && jobRole(f.role) ? <p className="mt-3 max-w-3xl text-sm text-muted" data-testid="jobs-role-filter"><span className="badge mr-2 border-cyan/45">Role: {jobRole(f.role)!.name}</span>Shareable page: <Link href={`/jobs/role/${f.role}/`} className="link">{jobRole(f.role)!.h1}</Link>. {jobRole(f.role)!.rule} <button type="button" className="link min-h-11" onClick={() => set({ role: "" })}>Clear role</button></p> : null}
         {f.track && jobTrack(f.track) ? <p className="mt-3 max-w-3xl text-sm text-muted"><strong className="text-text">How this track is selected:</strong> {jobTrack(f.track)!.rule} It uses only what employers supply; listings with unclear titles may be missed.</p> : null}
+        {f.metro && cityHubBySlug(f.metro) ? <p className="mt-3 text-sm text-text" data-testid="jobs-metro-filter"><span className="badge mr-2 border-cyan/45">Metro: {cityHubBySlug(f.metro)!.name}</span>Shareable page: <Link href={`/jobs/in/${f.metro}/`} className="link">{cityHubBySlug(f.metro)!.h1}</Link>. <button type="button" className="link min-h-11" onClick={() => set({ metro: "" })}>Clear metro</button></p> : null}
         {f.city ? <p className="mt-3 text-sm text-text" data-testid="jobs-city-filter"><span className="badge mr-2 border-cyan/45">City: {cityName}, {f.state}</span><button type="button" className="link min-h-11" onClick={() => set({ city: "" })}>Show all of {stateDisplayName(f.state)}</button></p> : null}
         {f.state || (f.where !== DEFAULT_LOCATION_SCOPE && f.where !== "all") ? <details className="mt-3 max-w-3xl text-sm text-muted"><summary className="min-h-9 cursor-pointer text-ice">How locations are read</summary><p className="mt-2">{f.state ? `A listing matches ${f.city ? `${cityName}, ${stateDisplayName(f.state)}` : stateDisplayName(f.state)} when one of its employer-supplied locations names it, for example “Atlanta, GA”, “Atlanta, Georgia, United States”, or a city on its own that has only one well-known U.S. match, such as “Atlanta” or “SF Office”; “Remote - US” names no state. ` : ""}{f.where === "remote" || f.where === "remote-us" ? "Remote means the employer marks the workplace as remote or a listed location says “Remote”. " : ""}{f.where === "us" || f.where === "remote-us" ? "U.S. locations only means the listing names the United States or a U.S. state and no place outside it. " : ""}It uses only what employers supply. <Link href="/jobs/remote-us/" className="link">About remote jobs with U.S. locations</Link></p></details> : null}
         {failed ? <p className="mt-4 text-sm text-muted">The full list could not be loaded, so only the first 30 recently confirmed positions are shown. Official careers links under Coverage & source health list every opening.</p> : null}
