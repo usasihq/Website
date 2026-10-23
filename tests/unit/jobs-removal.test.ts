@@ -126,7 +126,7 @@ describe("wrangler.jsonc", () => {
     const first = JSON.parse(text).assets.run_worker_first as string[];
     expect(first).toContain("/jobs");
     expect(first).toContain("/jobs/*");
-    expect(first).toContain("/jobs/at/*");
+    expect(first).not.toContain("/jobs/at/*");
     expect(first).toContain("/sitemaps/*");
     expect(first).toContain("/sitemap-jobs-*.xml");
   });

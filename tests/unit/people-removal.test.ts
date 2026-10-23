@@ -96,7 +96,7 @@ describe("wrangler.jsonc", () => {
       expect(first, p).toContain(p);
       expect(first, p).toContain(`${p}/*`);
     }
-    expect(first).toContain("/jobs/at/*");
+    expect(first).toContain("/jobs/*");
   });
 });
 

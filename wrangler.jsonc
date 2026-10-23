@@ -17,14 +17,13 @@
     // /people, /big-si, /voices, /local: 301 to aipeoplewiki.com (people-redirect-map.json);
     // /jobs: 301 to aipeoplewiki.com/jobs/ (same path, with exception rules);
     // listing both the bare and the /* form so no variant reaches the 307 trailing-slash step.
-    // /jobs/at/* is kept so the people-section guard's wrangler check stays valid.
+    // /jobs/* already covers /jobs/at/*; a second rule is rejected as redundant.
     "run_worker_first": [
       "/people", "/people/*",
       "/big-si", "/big-si/*",
       "/voices", "/voices/*",
       "/local", "/local/*",
       "/jobs", "/jobs/*",
-      "/jobs/at/*",
       "/sitemaps/*",
       "/sitemap-jobs-*.xml"
     ]

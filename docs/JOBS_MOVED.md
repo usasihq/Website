@@ -24,8 +24,8 @@ The removed files are preserved on the branch `archive/jobs-before-removal`.
   state hubs, and a lookup of closed listings and deep pagination pages in
   `data/jobs-redirect-exceptions.json`). Old job sitemap shards 301 to the wiki
   sitemap. Non-GET/HEAD fall through to assets.
-- `wrangler.jsonc` lists `/jobs` and `/jobs/*` (and keeps `/jobs/at/*`) in
-  `assets.run_worker_first`.
+- `wrangler.jsonc` lists `/jobs` and `/jobs/*` in `assets.run_worker_first`
+  (`/jobs/*` covers `/jobs/at/*`).
 - The footer already has one plain "People → AI People Wiki" link. This change
   does not add a second wiki pointer.
 
