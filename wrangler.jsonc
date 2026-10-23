@@ -1,4 +1,4 @@
-// Cloudflare Workers — static assets plus a small script for closed job URLs.
+// Cloudflare Workers — static assets plus a small script for closed job URLs and the moved people section.
 // `npm run build` writes ./out; `npx wrangler deploy` uploads it.
 // Docs: https://developers.cloudflare.com/workers/static-assets/
 {
@@ -15,7 +15,15 @@
     // /companies → 307 → /companies/ (matches Next's trailingSlash: true export).
     "html_handling": "auto-trailing-slash",
     // Navigation requests would otherwise get 404.html before the Worker runs.
-    "run_worker_first": ["/jobs/at/*"]
+    // /people, /big-si, /voices, /local: 301 to aipeoplewiki.com (people-redirect-map.json);
+    // listing both the bare and the /* form so no variant reaches the 307 trailing-slash step.
+    "run_worker_first": [
+      "/people", "/people/*",
+      "/big-si", "/big-si/*",
+      "/voices", "/voices/*",
+      "/local", "/local/*",
+      "/jobs/at/*"
+    ]
   },
   // Custom domains (the zone is in the owner's Cloudflare account). Cloudflare
   // creates the DNS records and certificates. Canonical URLs use the apex.

@@ -144,32 +144,6 @@ export function pageCards(catalog: Catalog): PageCard[] {
       }),
     );
   }
-  for (const l of catalog.leaders) {
-    cards.push(
-      card({
-        page: `/big-si/${l.slug}/`,
-        image: `/og/leaders/${l.slug}.jpg`,
-        template: "article",
-        eyebrow: "People Behind Big SI",
-        title: l.name,
-        subtitle: clip(l.headline, 150),
-        facts: [],
-      }),
-    );
-  }
-  for (const p of catalog.people) {
-    cards.push(
-      card({
-        page: `/people/${p.slug}/`,
-        image: `/og/people/${p.slug}.jpg`,
-        template: "article",
-        eyebrow: "People",
-        title: p.name,
-        subtitle: clip(p.headline, 150),
-        facts: [],
-      }),
-    );
-  }
   for (const h of catalog.hubs) {
     cards.push(card({ page: `/hubs/${h.slug}/`, image: `/og/hubs/${h.slug}.jpg`, template: "article", eyebrow: "Hub", title: h.title, subtitle: h.summary, facts: [] }));
   }

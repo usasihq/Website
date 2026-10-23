@@ -216,15 +216,6 @@ Suggested tags: `language-model`, `code-model`, `reasoning`, `multimodal`,
 `inference`, `serving`, `training`, `compiler`, `distributed-computing`,
 `numerical-computing`, `evaluation`, `benchmark`, `pretraining-data`, `local-inference`.
 
-## Local corner profile
-
-`content/people/<slug>.yml` — see `research/PEOPLE_BRIEF.md` for the full rules
-and an annotated example. Only professional, sourced information: `name`,
-`initials`, `headline`, `bio {text, source_ids}`, `affiliations[]` (name,
-organization_slug, role, current, source_ids), `work[]` (name, artifact_slug,
-url, contribution, source_ids), up to four `links` the person publishes, dates,
-and `sources`. No location, nationality, age, family, or photos.
-
 ## Changelog entry
 
 ```yaml
@@ -260,7 +251,6 @@ directory_links:           # catalog views (filters) relevant to the subject
   - { label: "Runtimes in the catalog", href: "/open/?kind=runtime", note: null }
 organizations: [ollama-org-slug]   # published slugs only
 artifacts: [ollama, llama-cpp]
-people: [georgi-gerganov]
 primary_documents:         # annotated primary sources: why each matters
   - { source_id: ollama-readme, note: "The project's own description of ..." }
 publication_status: published

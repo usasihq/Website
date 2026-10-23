@@ -34,7 +34,7 @@ import {
   RUBRIC_LABEL,
   TIER_DESCRIPTIONS,
 } from "@/lib/openness";
-import { artifactHref, orgHref, personHref } from "@/lib/routes";
+import { artifactHref, orgHref } from "@/lib/routes";
 
 export const dynamicParams = false;
 
@@ -96,7 +96,6 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
   const crumbs = [{ href: "/open/", label: "Open Models & Tools" }];
   if (family) crumbs.push({ href: artifactHref(family.slug), label: family.name });
 
-  const people = catalog.peopleForArtifact(a.slug);
   const hfListed = hfItemsForArtifact(catalog, a.slug);
 
   return (
@@ -345,19 +344,6 @@ export default async function ArtifactPage({ params }: { params: Promise<{ slug:
                 })}
               </ul>
             )}
-            {people.length ? (
-              <p className="mt-4 text-[0.9375rem] text-body">
-                <span className="text-muted">People: </span>
-                {people.map((p, i) => (
-                  <span key={p.slug}>
-                    {i > 0 ? ", " : ""}
-                    <Link prefetch={false} href={personHref(p.slug)} className="link">
-                      {p.name}
-                    </Link>
-                  </span>
-                ))}
-              </p>
-            ) : null}
           </Section>
 
           {a.provenance || derivatives.length > 0 ? (

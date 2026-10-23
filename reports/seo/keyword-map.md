@@ -63,7 +63,7 @@ Difficulty: low to medium. Titles say "open models" only when the catalog lists 
 | apple open source ai models | `/companies/apple/` | Apple: open models, products & key facts · USASI | Apple | Apple is a consumer products company and hardware maker headquartered in Cupertino, California. In the catalog: 2 open model releases and 2 software projects. |  |
 | anthropic open source | `/companies/anthropic/` | Anthropic: open-source tools, products & key facts · USASI | Anthropic | Anthropic is an AI model developer and research lab headquartered in San Francisco, California. In the catalog: 1 software project and 1 evaluation tool. | No model weights in the catalog; title says open-source tools |
 
-## Directories, places, people, and data
+## Directories, places, and data
 
 Difficulty: `AI companies in <state>` low; directory head terms (`open source AI models US`, `US AI companies directory`) medium to high.
 
@@ -79,9 +79,6 @@ Difficulty: `AI companies in <state>` low; directory head terms (`open source AI
 | ai companies by state | `/places/` | AI companies & labs by U.S. state · USASI | AI companies & labs by U.S. state | Find AI companies, labs, and research organizations by the U.S. state of their documented headquarters: 19 states and 140 organizations, with sources. |  |
 | compare ai labs openness | `/matrix/` | Compare U.S. AI labs: open-weight models & openness · USASI | Compare | Comparison workspace for the USASI catalog: documented hosted products, public-weight model releases, training materials, and software, dataset, and… |  |
 | us ai timeline / open model release timeline | `/timeline/` | U.S. AI timeline: open model releases & news by date · USASI | Timeline | Model, software, dataset, and evaluation-tool releases and news events in the USASI catalog, by documented date. A navigation aid, not a ranking of importance. |  |
-| ai company ceos / ai leaders | `/big-si/` | AI leaders: career profiles of founders, CEOs & builders | People Behind Big SI | Career profiles of the founders, executives, and builders behind the companies shaping AI, now called SI by U.S. agencies: what they built, with sources. |  |
-| sam altman career | `/big-si/sam-altman/` | Sam Altman: career and role at OpenAI · USASI | Sam Altman | Co-founder and CEO of OpenAI, the team behind ChatGPT and GPT-4, and former president of Y Combinator. Sourced profile: roles and career timeline. |  |
-| jensen huang career | `/big-si/jensen-huang/` | Jensen Huang: career and role at NVIDIA · USASI | Jensen Huang | NVIDIA co-founder and CEO who led the company that introduced the GPU and helped spark the modern AI era. Sourced profile: roles, career timeline, and honors. |  |
 | jobs at ai companies / ai lab jobs | `/jobs/` | Jobs at U.S. AI companies & labs · USASI | Jobs | Current positions at U.S. AI companies and labs documented by USASI, collected from authoritative employer career sources. Apply directly with the employer. | Title only; /jobs/* landing pages are being built by another agent |
 | ai companies dataset csv / ai models dataset download | `/reuse/` | USASI catalog data: JSON & CSV downloads (CC BY 4.0) · USASI | Data and reuse | Download the USASI catalog of U.S. AI organizations and open models as JSON or CSV, see what the files contain and how dates work, and reuse it under CC BY 4.0. |  |
 
@@ -147,7 +144,6 @@ Difficulty: medium (general questions with many answers). Explainer H1s keep the
 | Home | Organization (USASI), WebSite with SearchAction, Dataset (same `@id` as /reuse/) |
 | Organization pages | Organization (official website, legal name, founding year, address from the headquarters label, parent/units, `sameAs` only for the record's own GitHub or Hugging Face profile links), BreadcrumbList |
 | Open model & tool pages | BreadcrumbList; SoftwareSourceCode for frameworks, runtimes, and research stacks (repository, license URL, maintainers) |
-| People Behind Big SI profiles | ProfilePage with Person (employers' official websites), BreadcrumbList |
 | Directories, places, state pages, license guide index, hubs | ItemList (every entry with position, name, and URL) |
 | Job detail pages (`/jobs/at/<employer>/<slug>/`) | JobPosting (when the listing qualifies) and BreadcrumbList |
 | Jobs directory (`/jobs/`) and landing pages | CollectionPage and ItemList; never JobPosting |

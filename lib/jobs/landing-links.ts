@@ -183,7 +183,7 @@ export function jobLandingSitemap(catalog: Catalog): { path: string; lastModifie
   return rows;
 }
 
-/** The employer jobs page when it has current listings (for people / Big SI profiles). */
+/** The employer jobs page when it has current listings (for the company job-count line). */
 export function companyJobsLink(catalog: Catalog, slug: string): LandingLink | null {
   const page = jobsLandingData(catalog).companies.find((p) => p.organization?.slug === slug && p.count > 0);
   return page ? link(page) : null;

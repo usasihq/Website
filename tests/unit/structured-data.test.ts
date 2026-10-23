@@ -10,7 +10,6 @@ import {
   HF_DATASET_URL,
   collectionPage,
   itemList,
-  leaderLd,
   newsArticleLd,
   organizationLd,
   serializeJsonLd,
@@ -64,9 +63,9 @@ describe("item lists", () => {
   });
 
   it("wraps a directory as CollectionPage whose main entity is the ItemList", () => {
-    const ld = collectionPage({ name: "Voices of SI", path: "/voices/", items: [{ name: "a", href: "/people/a/" }] });
+    const ld = collectionPage({ name: "Companies", path: "/companies/", items: [{ name: "a", href: "/companies/a/" }] });
     expect(ld["@type"]).toBe("CollectionPage");
-    expect(ld.url).toBe(absoluteUrl("/voices/"));
+    expect(ld.url).toBe(absoluteUrl("/companies/"));
     expect((ld.mainEntity as { "@type": string })["@type"]).toBe("ItemList");
   });
 });
@@ -119,20 +118,6 @@ describe("open models and tools", () => {
       for (const u of licenses) {
         const fromRecord = a.licenses.some((l) => l.url === u || (l.spdx && u === `https://spdx.org/licenses/${l.spdx}.html`));
         expect(fromRecord, `${a.slug}: ${u}`).toBe(true);
-      }
-    }
-  });
-});
-
-describe("people", () => {
-  it("link current organizations to their official websites", () => {
-    for (const l of catalog.leaders) {
-      const ld = leaderLd(catalog, l);
-      expectCleanNode(ld, l.slug);
-      const person = ld.mainEntity as { "@type": string; worksFor: { name: string; url?: string }[] };
-      expect(person["@type"]).toBe("Person");
-      for (const w of person.worksFor) {
-        if (w.url) expect(catalog.organizations.map((o) => o.website)).toContain(w.url);
       }
     }
   });

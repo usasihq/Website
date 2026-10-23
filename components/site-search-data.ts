@@ -27,7 +27,7 @@ export const SEARCH_GROUPS: { id: string; label: string; types: EntryType[] }[] 
   { id: "tools", label: "Models & tools", types: [...ARTIFACT_ENTRY_TYPES, "github-project", "huggingface-item"] },
   { id: "learn", label: "Learn", types: ["explainer", "learning-path", "kids-lesson", "hub", "glossary-term", "faq"] },
   { id: "news", label: "News", types: ["news", "newsletter"] },
-  { id: "more", label: "Policy, licenses, and more", types: ["policy", "license", "person", "leader", "place", "page"] },
+  { id: "more", label: "Policy, licenses, and more", types: ["policy", "license", "place", "page"] },
 ];
 
 export const groupOf = (type: EntryType) => SEARCH_GROUPS.find((g) => g.types.includes(type))?.id ?? "more";

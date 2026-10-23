@@ -38,7 +38,7 @@ describe("canonical URLs", () => {
     expect(canonicalPath("/jobs/at/xai/data-center-fiber-technician-1ujic4a/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic")).toBe(
       "/jobs/at/xai/data-center-fiber-technician-1ujic4a/",
     );
-    expect(canonicalPath("/people/samy-bengio#work")).toBe("/people/samy-bengio/");
+    expect(canonicalPath("/companies/openai#models")).toBe("/companies/openai/");
     const meta = pageMetadata({ title: "AI on GitHub", description: "Projects.", path: "/github/?topic=cli" });
     expect(String(meta.alternates?.canonical)).toMatch(/^https:\/\/[^/]+\/github\/$/);
     expect(String(meta.alternates?.canonical)).not.toContain("?");

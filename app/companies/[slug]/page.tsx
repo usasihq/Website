@@ -1,5 +1,4 @@
 import Link from "@/components/Link";
-import { MIN_LIST_PEOPLE, peopleAtHref } from "@/lib/people-lists";
 import { RecordContext } from "@/components/RecordContext";
 import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
 import { OrganizationJobs } from "@/components/OrganizationJobs";
@@ -21,7 +20,6 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { ShareCite } from "@/components/ShareCite";
 import { SupportPanel } from "@/components/SupportPanel";
 import { getCatalog } from "@/lib/catalog";
-import { peopleAtOrganization } from "@/lib/people-index";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_PLURAL, OWNERSHIP_LABELS, PRODUCT_KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
@@ -32,9 +30,6 @@ import { cardImage } from "@/lib/page-cards";
 import { computeTier } from "@/lib/openness";
 import { artifactHref, orgHref } from "@/lib/routes";
 import { HOSTED_MODEL_PRODUCT_KINDS, type Artifact, type Product } from "@/lib/schema";
-
-/** How many profiles the People box lists before linking to the filtered directory. */
-const ORG_PEOPLE_SHOWN = 8;
 
 export const dynamicParams = false;
 
@@ -114,13 +109,11 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
   const parent = catalog.parentOrganization(org);
   const children = catalog.childOrganizations(org.slug);
   const related = catalog.artifactsForOrganization(org.slug);
-  const leaders = catalog.leadersForOrganization(org.slug);
   const hosted = org.products.filter((p) => HOSTED_MODEL_PRODUCT_KINDS.includes(p.kind));
   const other = org.products.filter((p) => !HOSTED_MODEL_PRODUCT_KINDS.includes(p.kind));
 
   const jumpLinks = [
     org.deep_dive ? { id: "in-depth", label: "In depth" } : null,
-    leaders.length && !org.deep_dive ? { id: "leaders", label: "People" } : null,
     { id: "overview", label: "Overview" },
     { id: "facts", label: "Key facts" },
     { id: "products", label: "Products" },
@@ -129,9 +122,6 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
     catalog.isActiveOrganization(org.slug) ? { id: "jobs", label: "Jobs" } : null,
     { id: "sources", label: "Sources" },
   ].filter((x): x is { id: string; label: string } => Boolean(x));
-  // People Behind Big SI leaders are listed above, so the People box lists the other profiles.
-  const leaderSlugs = new Set(leaders.map((l) => l.slug));
-  const orgPeople = peopleAtOrganization(catalog, org.slug).filter((p) => !leaderSlugs.has(p.slug));
   return (
     <>
       <JsonLd data={organizationLd(catalog, org)} />
@@ -202,52 +192,6 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
                       </div>
                     ))}
                 </dl>
-                {leaders.length ? (
-                  <div className="mt-3 border-t border-line pt-3">
-                    <p className="text-xs uppercase tracking-[0.08em] text-muted">People Behind Big SI</p>
-                    {[
-                      { label: null, people: leaders.filter((l) => l.current_roles.some((r) => r.organization_slug === org.slug)) },
-                      { label: `Formerly at ${org.name}`, people: leaders.filter((l) => !l.current_roles.some((r) => r.organization_slug === org.slug)) },
-                    ]
-                      .filter((g) => g.people.length)
-                      .map((g) => (
-                        <div key={g.label ?? "current"} className="mt-2">
-                          {g.label ? <p className="text-xs text-muted">{g.label}</p> : null}
-                          <ul className="mt-1 space-y-1.5 text-sm">
-                            {g.people.map((l) => (
-                              <li key={l.slug}>
-                                <Link prefetch={false} href={`/big-si/${l.slug}/`} className="link">
-                                  {l.name}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                  </div>
-                ) : null}
-                {orgPeople.length ? (
-                  <div className="mt-3 border-t border-line pt-3" data-testid="org-people">
-                    <p className="text-xs uppercase tracking-[0.08em] text-muted">People</p>
-                    <ul className="mt-2 space-y-1.5 text-sm">
-                      {orgPeople.slice(0, ORG_PEOPLE_SHOWN).map((p) => (
-                        <li key={p.slug}>
-                          <Link prefetch={false} href={p.href} className="link">
-                            {p.name}
-                          </Link>
-                          {!p.organizations.some((o) => o.slug === org.slug && o.current) ? <span className="text-muted"> (not confirmed as current)</span> : null}
-                        </li>
-                      ))}
-                    </ul>
-                    {orgPeople.length >= MIN_LIST_PEOPLE ? (
-                      <p className="mt-2 text-sm">
-                        <Link prefetch={false} href={peopleAtHref(org.slug)} className="link">
-                          All {orgPeople.length} people at {org.name}
-                        </Link>
-                      </p>
-                    ) : null}
-                  </div>
-                ) : null}
               </aside>
             </div>
           </div>
@@ -264,22 +208,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
             </div>
           ) : null}
 
-          {org.deep_dive ? <DeepDive name={org.name} deep={org.deep_dive} sources={s} leaders={leaders} /> : null}
-
-          {leaders.length && !org.deep_dive ? (
-            <Section id="leaders" title="People Behind Big SI" description={`Career profiles of people who lead or led ${org.name}.`}>
-              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {leaders.map((l) => (
-                  <li key={l.slug}>
-                    <Link prefetch={false} href={`/big-si/${l.slug}/`} className="card card-link block p-4">
-                      <span className="block font-semibold text-text">{l.name}</span>
-                      <span className="mt-1 block text-sm text-muted">{l.headline}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Section>
-          ) : null}
+          {org.deep_dive ? <DeepDive name={org.name} deep={org.deep_dive} sources={s} /> : null}
 
           <Section id="overview" title="Using this organization’s offerings" description="Ownership, delivery, and openness answer different questions. Publicly traded does not mean open source; privately held does not mean closed.">
             {org.profile ? <div className="grid gap-5 sm:grid-cols-2">

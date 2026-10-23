@@ -9,7 +9,7 @@ import { HIRING_INDEX_HREF } from "./jobs/hiring-index";
 import { jobsLandingData } from "./jobs/landing";
 import { LAYOFF_STATES, layoffHref } from "./jobs/layoffs";
 import { absoluteUrl } from "./paths";
-import { artifactHref, leaderHref, orgHref, personHref } from "./routes";
+import { artifactHref, orgHref } from "./routes";
 import { siteConfig } from "./site-config";
 import { STATIC_ROUTES } from "./site-routes";
 
@@ -42,11 +42,6 @@ const CLAIMED_STATIC = new Set([
   "/jobs/layoffs/",
   "/companies/",
   "/open/",
-  "/people/",
-  "/people/school/",
-  "/big-si/",
-  "/voices/",
-  "/local/",
   "/github/",
   "/huggingface/",
 ]);
@@ -110,22 +105,6 @@ export function llmsTxtSections(catalog: Catalog): { title: string; items: LlmsT
     item("AI on Hugging Face", "/huggingface/"),
     item("AI datasets on Hugging Face", "/huggingface/datasets/"),
   ];
-  const bigSi = [
-    item("People Behind Big SI", "/big-si/", "Leaders of the large U.S. AI labs"),
-    ...catalog.leaders.map((l) => item(l.name, leaderHref(l.slug), l.headline)),
-  ];
-  const openSourcePeople = catalog.people.filter((p) => p.groups.includes("open-source"));
-  const openSource = [
-    item("People", "/people/", "Every published profile"),
-    item("People by school", "/people/school/", "Alumni and faculty by university"),
-    item("People Behind Local SI", "/local/"),
-    ...openSourcePeople.map((p) => item(p.name, personHref(p.slug), p.headline)),
-  ];
-  const voicesPeople = catalog.people.filter((p) => p.groups.includes("creators"));
-  const voices = [
-    item("Voices of SI", "/voices/", "Tech creators and communicators"),
-    ...voicesPeople.map((p) => item(p.name, personHref(p.slug), p.headline)),
-  ];
   const resources = RESOURCE_ROUTES.filter((r) => STATIC_ROUTES.includes(r.path)).map((r) => item(r.name, r.path, r.note));
   const claimed = new Set<string>([
     ...CLAIMED_STATIC,
@@ -143,9 +122,6 @@ export function llmsTxtSections(catalog: Catalog): { title: string; items: LlmsT
     { title: "Jobs by company", items: byCompany },
     { title: "Companies & Labs", items: companies },
     { title: "Open Models & Tools", items: open },
-    { title: "People Behind Big SI", items: bigSi },
-    { title: "Open-source people", items: openSource },
-    { title: "Voices of SI", items: voices },
     { title: "Resources", items: resources },
     { title: "Other", items: other },
   ].filter((section) => section.items.length > 0);

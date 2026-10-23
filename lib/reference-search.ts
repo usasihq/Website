@@ -1,7 +1,7 @@
 /**
  * Search entries for reference pages, so site search covers hubs, explainers,
  * learning paths, kids lessons, glossary terms, news, weekly email issues,
- * People Behind Local SI, headquarters states, and the site's own pages as
+ * headquarters states, and the site's own pages as
  * well as the two directories. Only published content is indexed.
  */
 import type { Catalog } from "./catalog";
@@ -19,7 +19,6 @@ import type { SearchEntry } from "./search";
 import { plainText } from "./plain-text";
 import { githubSearchEntries } from "./github/projects";
 import { hfSearchEntries } from "./huggingface/items";
-import { schoolPeopleLists } from "./people-schools";
 
 export type GlossaryTerm = { id: string; term: string; definition: string };
 
@@ -52,10 +51,6 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/find/", name: "Model finder", summary: "Answer a few questions to find open models that fit your task and hardware.", keywords: "finder recommend choose pick gpu vram local" },
   { href: "/find/memory/", name: "Local AI by memory", summary: "Documented local configurations that fit 8 to 24 GB of VRAM or an Apple silicon Mac's unified memory.", keywords: "vram gpu graphics memory ram unified apple silicon mac local run hardware 8gb 12gb 16gb 24gb 32gb 64gb" },
   { href: "/learn/tools/model-size/", name: "Model size calculator", summary: "Estimate the memory a model needs at different precisions.", keywords: "calculator vram memory gpu quantization size" },
-  { href: "/big-si/", name: "People Behind Big SI", summary: "Career profiles of the founders, chief executives, and builders behind the companies shaping AI.", keywords: "leaders ceo founders executives people biography big tech" },
-  { href: "/local/", name: "People Behind Local SI", summary: "Profiles of people who build tools for running AI on your own computer.", keywords: "people local ai profiles maintainers" },
-  { href: "/people/school/", name: "People by school", summary: "USASI people profiles grouped by university: alumni and faculty at schools that appear in sourced bios.", keywords: "people school university alumni faculty stanford berkeley mit" },
-  { href: "/voices/", name: "Voices of SI", summary: "Tech creators and communicators whose shows, channels, podcasts, newsletters, and reporting explain AI and superintelligence.", keywords: "creators youtubers podcasters influencers journalists newsletters communicators voices" },
   { href: "/methodology/", name: "Methodology", summary: "Eligibility, openness ratings, source standards, review levels, and how counts work.", keywords: "method rubric criteria openness tiers how" },
   { href: "/compact/", name: "USASI Compact", summary: "What the project is, how it weighs American control and inspectability, and its draft editorial clauses.", keywords: "principles commitments compact editorial clauses" },
   { href: "/about/", name: "About", summary: "What USASI is and is not, who maintains it, and how to get in touch.", keywords: "about who contact project ownership" },
@@ -120,15 +115,6 @@ export function referenceSearchEntries(catalog: Catalog, glossary: GlossaryTerm[
         p.kind === "vram" ? `Documented local configurations that fit ${p.gb} GB of graphics memory.` : `Documented local configurations that fit ${appleMac(p.gb)}.`,
         p.kind === "vram" ? `vram gpu graphics card memory local ${p.gb}gb ${p.gb} gb` : `apple silicon mac unified memory ram local ${p.gb}gb ${p.gb} gb`,
       ),
-    ),
-    ...catalog.leaders.map((l) =>
-      e("leader", l.slug, `/big-si/${l.slug}/`, l.name, l.headline, [...l.current_roles, ...l.past_roles].map((r) => `${r.role} ${r.organization}`).join(" ")),
-    ),
-    ...catalog.people.map((p) =>
-      e("person", p.slug, `/people/${p.slug}/`, p.name, p.headline, [...p.affiliations.map((a) => `${a.role} ${a.name}`), ...p.work.map((w) => w.name)].join(" ")),
-    ),
-    ...schoolPeopleLists(catalog).map((l) =>
-      e("page", `people-school-${l.slug}`, l.path, `People from ${l.shortName}`, `${l.items.length} sourced profiles of people who studied at or hold a documented academic role at ${l.name}.`, `people school university alumni ${l.name} ${l.shortName}`),
     ),
     ...githubSearchEntries(),
     ...hfSearchEntries(),

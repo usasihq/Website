@@ -35,8 +35,6 @@ export function readRawContent(root: string = DEFAULT_CONTENT_DIR): RawContent {
     artifacts: readYamlDir(root, "artifacts"),
     changelog: readYamlDir(root, "changelog"),
     featured: fs.existsSync(featuredPath) ? readYamlFile(root, "featured.yml") : null,
-    people: readYamlDir(root, "people"),
-    leaders: readYamlDir(root, "leaders"),
     news: readYamlDir(root, "news"),
     hubs: readYamlDir(root, "hubs"),
     licenses: readYamlDir(root, "licenses"),

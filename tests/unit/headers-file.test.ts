@@ -40,7 +40,7 @@ describe("_headers transport security", () => {
 
 describe("_headers content types", () => {
   it("declares UTF-8 HTML for every directory URL, once", () => {
-    for (const url of ["/", "/jobs/", "/jobs/index/", "/jobs/at/openai/research-engineer-abc1234/", "/people/"]) {
+    for (const url of ["/", "/jobs/", "/jobs/index/", "/jobs/at/openai/research-engineer-abc1234/", "/companies/"]) {
       expect(contentTypes(url), url).toEqual(["text/html; charset=utf-8"]);
     }
   });

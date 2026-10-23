@@ -149,21 +149,12 @@ is never typed by hand.
 
 `npm run report:reviews` lists records due for re-review.
 
-### People directory and People Behind Local AI
+### People section (removed)
 
-`/people/` lists every published profile (and the People Behind Big SI leaders),
-alphabetically, with filters for group, organization, specialty, kind of
-organization, and contribution type; each profile has its own page at
-`/people/<slug>/`. A profile's `groups` decide where it is listed: `leadership`,
-`engineering`, `open-source`, and `local` (People Behind Local SI). `/local/`
-lists the `local` profiles, and a quiet homepage strip links to them. There is no monthly rotation: a profile stays up until
-it is updated, set to `draft`, or deleted. Profiles live in
-`content/people/<slug>.yml` (schema `Person` in `lib/schema.ts`; research rules in
-`research/PEOPLE_BRIEF.md`). They hold only sourced professional information —
-the schema has no fields for location, nationality, age, or photos, and the
-validator rejects personal-detail wording. Each published profile must link to a
-published organization or artifact in the catalog. To add someone, add a file;
-to remove someone, delete it (or set `publication_status: draft`), then publish.
+USASI no longer publishes people profiles, People Behind Big SI, Voices of SI, or
+People Behind Local SI. They live on the standalone site <https://aipeoplewiki.com/>
+under identical slugs, and the old URLs return a single-hop 301 there (`worker.ts`,
+`lib/people-redirects.ts`). Do not re-add them; see `docs/PEOPLE_MOVED.md`.
 
 ### Changelog and homepage selection
 

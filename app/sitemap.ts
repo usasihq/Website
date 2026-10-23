@@ -1,6 +1,4 @@
 import type { MetadataRoute } from "next";
-import { fieldPeopleLists, organizationPeopleLists } from "@/lib/people-lists";
-import { peopleSchoolIndexHref, schoolPeopleLists } from "@/lib/people-schools";
 import { getCatalog } from "@/lib/catalog";
 import { MEMORY_PAGES, memoryPageHref, memoryPageIndexable } from "@/lib/hardware";
 import { githubSitemap } from "@/lib/github/projects";
@@ -47,12 +45,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...KID_LESSONS.map((l) => ({ url: absoluteUrl(`/kids/${l.slug}/`), lastModified: KIDS_REVIEWED })),
     ...catalog.hubs.map((h) => ({ url: absoluteUrl(`/hubs/${h.slug}/`), lastModified: h.updated_at })),
     ...catalog.licenses.map((l) => ({ url: absoluteUrl(`/licenses/${l.slug}/`), lastModified: l.updated_at })),
-    ...catalog.leaders.map((l) => ({ url: absoluteUrl(`/big-si/${l.slug}/`), lastModified: l.updated_at })),
-    ...catalog.people.map((p) => ({ url: absoluteUrl(`/people/${p.slug}/`), lastModified: p.updated_at })),
-    ...organizationPeopleLists(catalog).map((l) => ({ url: absoluteUrl(l.path) })),
-    ...fieldPeopleLists(catalog).map((l) => ({ url: absoluteUrl(l.path) })),
-    { url: absoluteUrl(peopleSchoolIndexHref()) },
-    ...schoolPeopleLists(catalog).map((l) => ({ url: absoluteUrl(l.path) })),
     ...catalog.newsletter.map((n) => ({ url: absoluteUrl(`/newsletter/${n.slug}/`), lastModified: n.sent_at })),
     ...organizationsByState(catalog).states.map((st) => ({ url: absoluteUrl(`/places/${stateSlug(st.code)}/`) })),
     ...catalog.policy.map((d) => ({ url: absoluteUrl(policyHref(d.slug)), lastModified: d.updated_at })),

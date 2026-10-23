@@ -46,7 +46,7 @@ export default function HubsPage() {
                     <span className="mt-2 text-[0.9375rem] text-muted">{h.summary}</span>
                     <span className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-4 text-sm text-muted">
                       <span>
-                        {h.organizations.length + h.artifacts.length + h.people.length} featured records · {h.reading_path.length} reading steps
+                        {h.organizations.length + h.artifacts.length} featured records · {h.reading_path.length} reading steps
                       </span>
                       <span className="meta inline-flex items-center gap-1">
                         Reviewed {formatDate(h.last_reviewed)}

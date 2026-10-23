@@ -12,7 +12,6 @@ import {
   explainerSeo,
   fitTitle,
   hubSeo,
-  leaderSeo,
   licenseGuideSeo,
   listJoin,
   newsItemSeo,
@@ -80,7 +79,6 @@ describe("generated titles and descriptions", () => {
   const all = [
     ...catalog.artifacts.map((a) => ({ key: `/open/${a.slug}/`, name: a.name, seo: artifactSeo(catalog, a) })),
     ...catalog.organizations.map((o) => ({ key: `/companies/${o.slug}/`, name: o.name, seo: organizationSeo(catalog, o) })),
-    ...catalog.leaders.map((l) => ({ key: `/big-si/${l.slug}/`, name: l.name, seo: leaderSeo(catalog, l) })),
     ...catalog.licenses.map((g) => ({ key: `/licenses/${g.slug}/`, name: null, seo: licenseGuideSeo(catalog, g.slug)! })),
     ...organizationsByState(catalog).states.map((s) => ({ key: `/places/${s.code}/`, name: null, seo: stateSeo(catalog, s) })),
     ...catalog.hubs.map((h) => ({ key: `/hubs/${h.slug}/`, name: h.title, seo: hubSeo(catalog, h) })),

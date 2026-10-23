@@ -58,8 +58,6 @@ const PAGES = [
   "/kids/grown-ups/",
   "/kids/packet/",
   "/search/?q=open%20model",
-  "/big-si/",
-  "/big-si/elon-musk/",
   "/companies/openai/",
   "/companies/tesla/",
   "/jobs/?track=early-career",

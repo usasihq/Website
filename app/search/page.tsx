@@ -11,7 +11,7 @@ const hf: number = HF_SEARCH_LIMIT;
 
 export const metadata = pageMetadata({
   title: "Search",
-  description: `Search organizations, open models and tools, people, Voices of SI, news, policy, and explainers, plus ${
+  description: `Search organizations, open models and tools, news, policy, and explainers, plus ${
     gh === hf
       ? `the top ${gh.toLocaleString("en-US")} each of AI on GitHub and AI on Hugging Face`
       : `the top ${gh.toLocaleString("en-US")} of AI on GitHub and ${hf.toLocaleString("en-US")} of AI on Hugging Face`
@@ -36,8 +36,7 @@ export default function SearchPage() {
       />
       <div className="container-page py-10">
         <p className="mb-6 max-w-3xl text-[0.9375rem] text-muted" data-testid="search-coverage">
-          Covers organizations, open models and tools, <Link href="/people/" className="link">people</Link>,{" "}
-          <Link href="/voices/" className="link">Voices of SI</Link>, news, policy, explainers, and guides. From{" "}
+          Covers organizations, open models and tools, news, policy, explainers, and guides. From{" "}
           <Link href="/github/" className="link">AI on GitHub</Link> it includes the {GITHUB_SEARCH_LIMIT.toLocaleString("en-US")} projects with the
           most stars, and from <Link href="/huggingface/" className="link">AI on Hugging Face</Link> the {HF_SEARCH_LIMIT.toLocaleString("en-US")} most-liked
           models and datasets; those pages search all of their entries.

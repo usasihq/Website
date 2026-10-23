@@ -10,13 +10,9 @@ import type { Catalog } from "./catalog";
 import { organizationLogoFields } from "./org-logos";
 import { absoluteUrl } from "./paths";
 import { stateFromHeadquarters, US_STATES } from "./places";
-import { organizationSector } from "./people-index";
-import { PERSON_SPECIALTY_LABELS } from "./people";
-import { findSchoolMentions, personSchoolLinks, schoolBySlug } from "./people-schools";
-import { personEnrichment, wikidataUrl } from "./people-wikidata";
 import { artifactHref, orgHref } from "./routes";
 import { COVERS, makersOf } from "./seo";
-import type { Artifact, Leader, LicenseRecord, NewsItem, Organization, Person } from "./schema";
+import type { Artifact, LicenseRecord, NewsItem, Organization } from "./schema";
 import { siteConfig } from "./site-config";
 
 export const SCHEMA_CONTEXT = "https://schema.org";
@@ -190,76 +186,6 @@ export function artifactLd(catalog: Catalog, a: Artifact): JsonLdNode {
     ...(hubs.length ? { sameAs: hubs } : {}),
     ...licenseField(a, "weights"),
     creator: makers,
-  };
-}
-
-/** Person (inside a ProfilePage) for a People Behind Big SI profile. */
-export function leaderLd(catalog: Catalog, l: Leader): JsonLdNode {
-  const page = absoluteUrl(`/big-si/${l.slug}/`);
-  const worksFor = l.current_roles.map((r) => {
-    const org = r.organization_slug && catalog.isActiveOrganization(r.organization_slug) ? catalog.organization(r.organization_slug) : undefined;
-    return { "@type": "Organization", name: r.organization, ...(org ? { url: org.website } : {}) };
-  });
-  return {
-    "@context": SCHEMA_CONTEXT,
-    "@type": "ProfilePage",
-    url: page,
-    dateModified: l.updated_at,
-    mainEntity: {
-      "@type": "Person",
-      "@id": `${page}#person`,
-      name: l.name,
-      description: l.summary.text,
-      ...(l.current_roles[0] ? { jobTitle: l.current_roles[0].role } : {}),
-      worksFor,
-      ...(l.links.length ? { sameAs: l.links.map((x) => x.url) } : {}),
-    },
-  };
-}
-
-function orgNode(catalog: Catalog, name: string, slug: string | null | undefined, type = "Organization") {
-  const org = slug && catalog.isActiveOrganization(slug) ? catalog.organization(slug) : undefined;
-  return { "@type": type, name: org?.name ?? name, ...(org ? { url: org.website } : {}) };
-}
-
-function isAcademicEmployer(catalog: Catalog, name: string, slug: string | null): boolean {
-  if (organizationSector(catalog, slug) === "academic") return true;
-  if (findSchoolMentions(name).length) return true;
-  return /universit|college|institute of technology/i.test(name);
-}
-
-/** A People directory profile as a ProfilePage about a Person, from the profile's own fields. */
-export function personLd(catalog: Catalog, p: Person): JsonLdNode {
-  const page = absoluteUrl(`/people/${p.slug}/`);
-  const current = p.affiliations.filter((a) => a.current);
-  const worksFor = current.map((a) => orgNode(catalog, a.name, a.organization_slug));
-  const extra = personEnrichment(p.slug);
-  const sameAs = [...p.links.map((x) => x.url), extra?.qid ? wikidataUrl(extra.qid) : null, extra?.wikipedia].filter((u): u is string => Boolean(u));
-  const alumni = personSchoolLinks(p)
-    .filter((s) => s.kind === "education")
-    .map((s) => orgNode(catalog, s.name, schoolBySlug(s.slug)?.organizationSlug ?? null, "CollegeOrUniversity"));
-  const affiliation = current
-    .filter((a) => isAcademicEmployer(catalog, a.name, a.organization_slug))
-    .map((a) => orgNode(catalog, a.name, a.organization_slug, "CollegeOrUniversity"));
-  return {
-    "@context": SCHEMA_CONTEXT,
-    "@type": "ProfilePage",
-    url: page,
-    dateModified: p.updated_at,
-    mainEntity: {
-      "@type": "Person",
-      "@id": `${page}#person`,
-      name: p.name,
-      description: p.headline,
-      ...(current[0] ? { jobTitle: current[0].role } : {}),
-      ...(worksFor.length ? { worksFor } : {}),
-      ...(affiliation.length ? { affiliation } : {}),
-      ...(alumni.length ? { alumniOf: alumni } : {}),
-      ...(sameAs.length ? { sameAs } : {}),
-      ...(extra?.image ? { image: extra.image.thumb_url } : {}),
-      ...(p.specialties.length ? { knowsAbout: p.specialties.map((sp) => PERSON_SPECIALTY_LABELS[sp]) } : {}),
-      ...(p.honors.length ? { award: p.honors.map((h) => (h.year ? `${h.name} (${h.year})` : h.name)) } : {}),
-    },
   };
 }
 

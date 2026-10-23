@@ -198,7 +198,6 @@ export function renderJobPage(p: JobPage, shell: PageShell, similar: JobPage[] =
     ["/learn/", "Learn"],
     ["/jobs/", "Jobs"],
     ["/news/", "News"],
-    ["/people/", "People"],
     ["/about/", "About"],
   ]
     .map(([href, label]) => `<li><a href="${asset(href)}" class="text-muted hover:text-text${href === "/jobs/" ? " text-text" : ""}"${href === "/jobs/" ? ' aria-current="true"' : ""}>${label}</a></li>`)

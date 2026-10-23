@@ -128,7 +128,6 @@ export type EntryType =
   | "hub"
   | "explainer"
   | "glossary-term"
-  | "person"
   | "place"
   | "license"
   | "policy"
@@ -137,7 +136,6 @@ export type EntryType =
   | "newsletter"
   | "learning-path"
   | "kids-lesson"
-  | "leader"
   | "github-project"
   | "huggingface-item"
   | "page";
@@ -152,7 +150,6 @@ export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   hub: "Hub",
   explainer: "Explainer",
   "glossary-term": "Glossary",
-  person: "Person",
   place: "Place",
   license: "License guide",
   policy: "Policy",
@@ -161,7 +158,6 @@ export const ENTRY_TYPE_LABELS: Record<EntryType, string> = {
   newsletter: "Weekly email",
   "learning-path": "Learning path",
   "kids-lesson": "For kids",
-  leader: "Big SI profile",
   "github-project": "AI on GitHub",
   "huggingface-item": "AI on Hugging Face",
   page: "Page",

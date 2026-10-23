@@ -158,9 +158,6 @@ type Props = {
   roles?: LandingLink[];
   /** Role × state pages (role and state landings list them). */
   roleStates?: LandingLink[];
-  /** People profiles tied to this employer (employer pages list them). */
-  people?: { href: string; name: string }[];
-  peopleHref?: string | null;
   headquartersHref?: string | null;
   headquartersCount?: number;
   /** Employer pages: the pay summary, when the employer has enough listings with pay. Role pages: the role's pay page. */
@@ -210,7 +207,7 @@ function PaginationNav({ page }: { page: LandingPage }) {
   );
 }
 
-export function JobsLanding({ page: raw, others, cities = [], parent = null, parents = [], companies = [], roles = [], roleStates = [], people = [], peopleHref = null, headquartersHref, headquartersCount, pay = null, hiring = null }: Props) {
+export function JobsLanding({ page: raw, others, cities = [], parent = null, parents = [], companies = [], roles = [], roleStates = [], headquartersHref, headquartersCount, pay = null, hiring = null }: Props) {
   const page = landingView(raw);
   const shown = page.listings.length;
   const from = (page.pageNumber - 1) * LISTINGS_SHOWN + (shown ? 1 : 0);
@@ -436,34 +433,6 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, par
             </ul>
           </section>
         )}
-
-        {people.length && page.organization ? (
-          <nav aria-labelledby="people-heading" className="mt-12" data-testid="landing-people">
-            <h2 id="people-heading" className="text-xl font-semibold text-text sm:text-2xl">
-              People at {page.organization.name}
-            </h2>
-            <p className="mt-2 max-w-3xl text-muted">
-              Sourced profiles in the catalog tied to this employer.
-              {peopleHref ? (
-                <>
-                  {" "}
-                  <Link prefetch={false} href={peopleHref} className="link">
-                    People at {page.organization.name} ({n(people.length)})
-                  </Link>
-                </>
-              ) : null}
-            </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {people.slice(0, 12).map((p) => (
-                <li key={p.href}>
-                  <Link prefetch={false} href={p.href} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
-                    {p.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ) : null}
 
         {roleStates.length ? (
           <nav aria-labelledby="role-states-heading" className="mt-12" data-testid="landing-role-states">

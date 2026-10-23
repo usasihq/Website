@@ -24,8 +24,6 @@ import {
   type Quiz,
   type NewsItem,
   type Organization,
-  type Person,
-  type Leader,
 } from "./schema";
 import type { ArtifactListItem, OrgListItem, SearchEntry } from "./search";
 import { artifactHref, orgHref } from "./routes";
@@ -67,8 +65,6 @@ export class Catalog {
   readonly archivedArtifacts: Artifact[];
   readonly changelog: ChangelogEntry[];
   readonly featured: FeaturedSelection | null;
-  readonly people: Person[];
-  readonly leaders: Leader[];
   readonly news: NewsItem[];
   readonly hubs: Hub[];
   readonly licenses: LicenseGuide[];
@@ -83,7 +79,7 @@ export class Catalog {
 
   constructor(
     content: Pick<ValidatedContent, "organizations" | "artifacts" | "changelog" | "featured"> &
-      Partial<Pick<ValidatedContent, "people" | "leaders" | "news" | "hubs" | "licenses" | "policy" | "quizzes" | "finder" | "newsletter">>,
+      Partial<Pick<ValidatedContent, "news" | "hubs" | "licenses" | "policy" | "quizzes" | "finder" | "newsletter">>,
     buildAt = new Date().toISOString(),
   ) {
     this.organizations = content.organizations.filter(isActive).sort(byName);
@@ -92,8 +88,6 @@ export class Catalog {
     this.archivedArtifacts = content.artifacts.filter((a) => a.publication_status === "archived").sort(byName);
     this.changelog = content.changelog;
     this.featured = content.featured;
-    this.people = (content.people ?? []).filter((p) => p.publication_status === "published").sort(byName);
-    this.leaders = (content.leaders ?? []).filter((p) => p.publication_status === "published").sort(byName);
     this.news = (content.news ?? [])
       .filter((n) => n.publication_status === "published")
       // Newest events first; an item written later about an older event sits at its event date.
@@ -117,29 +111,6 @@ export class Catalog {
 
   artifact(slug: string): Artifact | undefined {
     return this.artifactMap.get(slug);
-  }
-
-  person(slug: string): Person | undefined {
-    return this.people.find((p) => p.slug === slug);
-  }
-
-  leader(slug: string): Leader | undefined {
-    return this.leaders.find((l) => l.slug === slug);
-  }
-
-  /** Published leader profiles whose current or past roles name this organization. */
-  leadersForOrganization(slug: string): Leader[] {
-    return this.leaders.filter((l) => [...l.current_roles, ...l.past_roles].some((r) => r.organization_slug === slug));
-  }
-
-  /** Published People Behind Local SI profiles whose affiliations name this organization. */
-  peopleForOrganization(slug: string): Person[] {
-    return this.people.filter((p) => p.affiliations.some((a) => a.organization_slug === slug));
-  }
-
-  /** Published People Behind Local SI profiles whose listed work names this artifact. */
-  peopleForArtifact(slug: string): Person[] {
-    return this.people.filter((p) => p.work.some((w) => w.artifact_slug === slug));
   }
 
   newsletterIssue(slug: string): NewsletterIssue | undefined {
@@ -197,17 +168,6 @@ export class Catalog {
       ...org,
       parent_org_slug: parentActive ? org.parent_org_slug : null,
       parent_relationship: parentActive ? org.parent_relationship : null,
-    };
-  }
-
-  publicPerson(person: Person): Person {
-    return {
-      ...person,
-      affiliations: person.affiliations.map((a) => ({
-        ...a,
-        organization_slug: this.isActiveOrganization(a.organization_slug) ? a.organization_slug : null,
-      })),
-      work: person.work.map((w) => ({ ...w, artifact_slug: this.isActiveArtifact(w.artifact_slug) ? w.artifact_slug : null })),
     };
   }
 
