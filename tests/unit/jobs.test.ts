@@ -92,6 +92,9 @@ describe("URL filters and freshness", () => {
     expect(parseJobFilters(new URLSearchParams("role=forward-deployed-engineer")).role).toBe("forward-deployed-engineer");
     expect(parseJobFilters(new URLSearchParams("role=not-a-role")).role).toBe("");
     expect(serializeJobFilters({ ...DEFAULT_JOB_FILTERS, role: "forward-deployed-engineer" })).toBe("role=forward-deployed-engineer");
+    expect(parseJobFilters(new URLSearchParams("metro=memphis")).metro).toBe("memphis");
+    expect(parseJobFilters(new URLSearchParams("metro=seattle")).metro).toBe("");
+    expect(serializeJobFilters({ ...DEFAULT_JOB_FILTERS, metro: "memphis" })).toBe("metro=memphis");
   });
   it("ages current jobs and separates unknown remote without inventing locations", () => {
     const state = first(), jobs = state.jobs.map(j => ({...j,organization_name:"Employer"}));

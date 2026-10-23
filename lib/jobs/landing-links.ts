@@ -25,9 +25,9 @@ export function landingLinks(catalog: Catalog): LandingLink[] {
   return jobsLandingData(catalog).all.map(link);
 }
 
-/** Topic, role, and state pages, for "More job pages" (city pages are listed on their state's page, employer pages on /jobs/). */
+/** Topic, role, state, and metro pages, for "More job pages" (single-city pages are listed on their state's page, employer pages on /jobs/). */
 export function topicAndStateLinks(catalog: Catalog, except: string): LandingLink[] {
-  return landingLinks(catalog).filter((l) => (l.kind === "topic" || l.kind === "role" || l.kind === "state") && l.path !== except);
+  return landingLinks(catalog).filter((l) => (l.kind === "topic" || l.kind === "role" || l.kind === "state" || l.kind === "metro") && l.path !== except);
 }
 
 /** Role pages with current listings. */
@@ -87,9 +87,21 @@ export function cityLinks(catalog: Catalog, state: string): LandingLink[] {
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
 }
 
+/** Metro hub pages that include a city in this state. */
+export function metroLinksForState(catalog: Catalog, state: string): LandingLink[] {
+  return jobsLandingData(catalog)
+    .metros.filter((p) => p.metro?.places.some((place) => place.state === state))
+    .map(link)
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
+}
+
 function geographyLine(p: LandingPage): string {
   if (p.scope === "state") return `Every listing names a location in ${stateDisplayName(p.state!)}`;
   if (p.scope === "city") return `Every listing names ${p.city!.label}, ${p.state}`;
+  if (p.scope === "metro" && p.metro) {
+    const places = p.metro.places.map((place) => `${place.label}, ${place.state}`).join(" or ");
+    return `Every listing names ${places}`;
+  }
   if (p.scope === "us-only") return "U.S. locations only";
   return p.geography.outside ? "Includes positions outside the United States" : "No positions outside the United States listed";
 }
@@ -103,7 +115,7 @@ export function jobLandingCard(p: LandingPage): PageCard {
     eyebrow:
       p.kind === "state"
         ? "Jobs · U.S. state"
-        : p.kind === "city"
+        : p.kind === "city" || p.kind === "metro"
           ? "Jobs · U.S. city"
           : p.kind === "company"
             ? "Jobs · Employer"
@@ -142,6 +154,8 @@ export function jobLandingSearchEntries(catalog: Catalog): SearchEntry[] {
         ? `state ${stateDisplayName(p.state!)} ${p.state}`
         : p.kind === "city"
           ? `city ${p.city!.label} ${stateDisplayName(p.state!)} ${p.state}`
+          : p.kind === "metro" && p.metro
+            ? `city metro ${p.metro.places.map((place) => `${place.label} ${stateDisplayName(place.state)} ${place.state}`).join(" ")}`
           : p.kind === "company"
             ? `employer company careers hiring ${p.organization!.name}`
             : p.kind === "role" || p.kind === "role-state"

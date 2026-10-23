@@ -5,9 +5,10 @@ import { openingsTitle } from "../../lib/jobs/landing";
 import { documentTitle } from "../../lib/metadata";
 
 /**
- * Jobs landing pages (/jobs/in/<state>/, /jobs/in/<state>/<city>/, and the topic pages), built from the
- * local jobs data at build time. Counts change daily, so the tests compare a
- * page with itself and with the directory rather than with fixed numbers.
+ * Jobs landing pages (/jobs/in/<state>/, /jobs/in/<state>/<city>/, /jobs/in/<city>/
+ * metro hubs, and the topic pages), built from the local jobs data at build time.
+ * Counts change daily, so the tests compare a page with itself and with the
+ * directory rather than with fixed numbers.
  */
 const TOPICS = ["/jobs/data-center-infrastructure/", "/jobs/no-programming/", "/jobs/entry-level/", "/jobs/internships/", "/jobs/fellowships/", "/jobs/remote-us/", "/jobs/remote/"];
 const FDE = "/jobs/role/forward-deployed-engineer/";
@@ -118,6 +119,40 @@ test("landing pages are linked from /jobs/ and /places/, listed in the sitemap, 
   const index = await (await request.get("/data/search-index.json")).json();
   expect(index.entries.some((e: { href: string }) => e.href === "/jobs/in/california/")).toBe(true);
   expect(index.entries.some((e: { href: string }) => e.href === FDE)).toBe(true);
+});
+
+test("the Memphis–Southaven metro page renders when it meets the threshold, and a city below it 404s", async ({ page, request }) => {
+  // Counts come from the job feed. CI's committed snapshot may be below the hub
+  // threshold (a normal 404). A refresh-before-test deploy usually qualifies it.
+  const memphis = await request.get("/jobs/in/memphis/");
+  if (memphis.status() === 200) {
+    await page.goto("/jobs/in/memphis/");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("AI & tech jobs in Memphis, TN");
+    const count = await countOnPage(page);
+    expect(count).toBeGreaterThanOrEqual(10);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/jobs\/in\/memphis\/$/);
+    const description = await page.locator('meta[name="description"]').getAttribute("content");
+    expect(description!.length).toBeLessThanOrEqual(160);
+    expect(description).toMatch(/^[\d,]+ open listings naming Memphis, TN and Southaven, MS/);
+    await expect(page.getByRole("navigation", { name: "Breadcrumb" }).locator('a[href="/jobs/"]')).toBeVisible();
+    await expect(page.locator('#employers a[href^="/jobs/at/"]').first()).toBeVisible();
+    const states = page.getByTestId("landing-cities");
+    if (await states.count()) {
+      await expect(states.locator('a[href^="/jobs/in/"]').first()).toBeVisible();
+    }
+    const ld = await jsonLd(page);
+    expect(ld).toContain('"BreadcrumbList"');
+    expect(ld).toContain('"CollectionPage"');
+    expect(ld).not.toContain("JobPosting");
+    await page.goto("/jobs/");
+    await expect(page.getByRole("navigation", { name: "Browse by" }).locator('a[href="/jobs/in/memphis/"]')).toBeVisible();
+    const sitemap = await (await request.get("/sitemap-pages.xml")).text();
+    expect(sitemap).toContain("/jobs/in/memphis/</loc>");
+  } else {
+    expect(memphis.status()).toBe(404);
+  }
+  expect((await request.get("/jobs/in/seattle/")).status()).toBe(404);
+  expect((await request.get("/jobs/in/not-a-city/")).status()).toBe(404);
 });
 
 test("only states at or above the listing threshold have a page", async ({ page, request }) => {

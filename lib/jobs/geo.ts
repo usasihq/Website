@@ -41,6 +41,7 @@ const CITY_STATE: Record<string, [string, string]> = {
   boston: ["MA", "Boston"], chicago: ["IL", "Chicago"], chi: ["IL", "Chicago"],
   austin: ["TX", "Austin"], dallas: ["TX", "Dallas"], houston: ["TX", "Houston"],
   pittsburgh: ["PA", "Pittsburgh"], philadelphia: ["PA", "Philadelphia"], nashville: ["TN", "Nashville"],
+  memphis: ["TN", "Memphis"], southaven: ["MS", "Southaven"],
   "st. louis": ["MO", "St. Louis"], "st louis": ["MO", "St. Louis"], "saint louis": ["MO", "St. Louis"],
   atlanta: ["GA", "Atlanta"], denver: ["CO", "Denver"], boulder: ["CO", "Boulder"], miami: ["FL", "Miami"],
   "salt lake city": ["UT", "Salt Lake City"], raleigh: ["NC", "Raleigh"], minneapolis: ["MN", "Minneapolis"],

@@ -11,9 +11,14 @@ import { stateSlug } from "@/lib/places";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
+  const data = jobsLandingData(getCatalog());
+  const pages = [...data.states, ...data.metros];
   return atLeastOneParam(
-    jobsLandingData(getCatalog()).states.flatMap((p) =>
-      Array.from({ length: Math.max(0, p.pageCount - 1) }, (_, i) => ({ state: stateSlug(p.state!), n: String(i + 2) })),
+    pages.flatMap((p) =>
+      Array.from({ length: Math.max(0, p.pageCount - 1) }, (_, i) => ({
+        state: p.kind === "metro" ? p.metro!.slug : stateSlug(p.state!),
+        n: String(i + 2),
+      })),
     ),
     { state: "_", n: "2" },
   );
@@ -22,7 +27,8 @@ export function generateStaticParams() {
 type Params = { params: Promise<{ state: string; n: string }> };
 
 function resolve(state: string, n: string) {
-  const base = jobsLandingData(getCatalog()).states.find((p) => p.path === `/jobs/in/${state}/`);
+  const data = jobsLandingData(getCatalog());
+  const base = data.metros.find((p) => p.path === `/jobs/in/${state}/`) ?? data.states.find((p) => p.path === `/jobs/in/${state}/`);
   if (!base) return null;
   const pageNumber = Number(n);
   if (!Number.isInteger(pageNumber) || pageNumber < 2 || pageNumber > base.pageCount) return null;

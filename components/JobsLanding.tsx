@@ -43,6 +43,20 @@ function GeographyNote({ page }: { page: LandingPage }) {
       </p>
     );
   }
+  if (page.scope === "metro" && page.metro) {
+    const names = page.metro.places.map((p) => `${p.label}, ${p.state}`);
+    const label = names.length === 2 ? `${names[0]} or ${names[1]}` : names.join(", ");
+    return (
+      <p className="mt-5 max-w-3xl text-base text-muted">
+        <span className="badge mr-2 border-cyan/45">Location named: {label}</span>
+        Every listing here names {label}.{" "}
+        {page.metro.places.map((p) => `${p.label}, ${p.state} (${n(p.count)})`).join("; ")}.{" "}
+        {g.alsoElsewhere
+          ? `${count(g.alsoElsewhere, "listing also names", "listings also name")} other places, and ${g.outside ? `${count(g.outside, "names", "name")} a place outside the United States` : "none names a place outside the United States"}.`
+          : "None names another location."}
+      </p>
+    );
+  }
   if (page.scope === "state") {
     const name = stateDisplayName(page.state!);
     return (
@@ -136,6 +150,8 @@ type Props = {
   cities?: LandingLink[];
   /** The state page, for city pages. */
   parent?: { href: string; label: string } | null;
+  /** Parent state pages, for metro hubs that span one or more states. */
+  parents?: { href: string; label: string }[];
   /** Other employers' pages (employer pages list them). */
   companies?: LandingLink[];
   /** Role pages this employer has listings on (employer pages list them). */
@@ -194,7 +210,7 @@ function PaginationNav({ page }: { page: LandingPage }) {
   );
 }
 
-export function JobsLanding({ page: raw, others, cities = [], parent = null, companies = [], roles = [], roleStates = [], people = [], peopleHref = null, headquartersHref, headquartersCount, pay = null, hiring = null }: Props) {
+export function JobsLanding({ page: raw, others, cities = [], parent = null, parents = [], companies = [], roles = [], roleStates = [], people = [], peopleHref = null, headquartersHref, headquartersCount, pay = null, hiring = null }: Props) {
   const page = landingView(raw);
   const shown = page.listings.length;
   const from = (page.pageNumber - 1) * LISTINGS_SHOWN + (shown ? 1 : 0);
@@ -205,7 +221,7 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, com
     { href: page.basePath, label: page.name },
     ...(page.pageNumber > 1 ? [{ href: page.path, label: `Page ${page.pageNumber}` }] : []),
   ];
-  const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...(page.filters.state ? DEFAULT_JOB_FILTERS : ALL_JOB_FILTERS), ...page.filters, sort: "newest", company: slug })}`;
+  const companyHref = (slug: string) => `/jobs/?${serializeJobFilters({ ...(page.filters.state || page.filters.metro ? DEFAULT_JOB_FILTERS : ALL_JOB_FILTERS), ...page.filters, sort: "newest", company: slug })}`;
   const layoffs = page.kind === "state" && page.state ? layoffStatePage(getCatalog(), stateSlug(page.state)) : undefined;
   // BreadcrumbList comes from PageHeader; CollectionPage / ItemList from jobsLandingJsonLd (never JobPosting).
   return (
@@ -301,13 +317,19 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, com
           ) : null}
         </section>
 
-        {cities.length || parent ? (
+        {cities.length || parent || parents.length ? (
           <nav aria-labelledby="cities-heading" className="mt-12" data-testid="landing-cities">
             <h2 id="cities-heading" className="text-xl font-semibold text-text sm:text-2xl">
-              {page.kind === "city" ? `Other cities in ${stateDisplayName(page.state!)}` : `Cities in ${stateDisplayName(page.state!)}`}
+              {page.kind === "metro"
+                ? "States in this metro"
+                : page.kind === "city"
+                  ? `Other cities in ${stateDisplayName(page.state!)}`
+                  : `Cities in ${stateDisplayName(page.state!)}`}
             </h2>
             <p className="mt-2 max-w-3xl text-muted">
-              {page.kind === "city"
+              {page.kind === "metro"
+                ? "State job pages that include listings in this metro, plus any single-city pages."
+                : page.kind === "city"
                 ? cities.length
                   ? "Other cities in the state with their own page, by number of listings."
                   : "No other city in the state has enough listings for its own page."
@@ -321,6 +343,13 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, com
                   </Link>
                 </li>
               ) : null}
+              {parents.map((s) => (
+                <li key={s.href}>
+                  <Link prefetch={false} href={s.href} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
               {cities.map((c) => (
                 <li key={c.path}>
                   <Link prefetch={false} href={c.path} className="badge min-h-11 max-w-full whitespace-normal px-3 text-left hover:border-cyan">
@@ -396,7 +425,10 @@ export function JobsLanding({ page: raw, others, cities = [], parent = null, com
                   </Link>
                   {e.headquarters ? <span className="mt-1 text-sm text-muted">Headquarters: {e.headquarters}</span> : null}
                   <span className="mt-1 text-sm text-text">{count(e.count, "listing", "listings")} here</span>
-                  <Link prefetch={false} href={companyHref(e.slug)} className="link mt-auto pt-2 text-sm">
+                  <Link prefetch={false} href={`/jobs/at/${e.slug}/`} className="link mt-auto pt-2 text-sm">
+                    Jobs at {e.name}
+                  </Link>
+                  <Link prefetch={false} href={companyHref(e.slug)} className="link pt-1 text-sm">
                     See {e.name}&rsquo;s listings in the directory<span className="sr-only"> for {page.name}</span>
                   </Link>
                 </li>
