@@ -6,26 +6,16 @@
  *   single-hop 301 (slash and non-slash forms, so the platform never adds a 307
  *   first); unknown ones fall through to the static 404. See
  *   lib/people-redirects.ts and docs/PEOPLE_MOVED.md.
- * - /jobs/at/*: live listing pages, employer pages, feeds, and pagination are
- *   still the static files in ./out. A listing URL with no file is a closed
- *   posting: 410 and the closed-job page, not the generic catalog 404.
+ * - /jobs (and everything beneath), plus old job sitemap shards: the jobs
+ *   section moved to https://aipeoplewiki.com/jobs/. Every old address gets a
+ *   single-hop 301 (same path, with a short exception list). See
+ *   lib/jobs-redirects.ts and docs/JOBS_MOVED.md.
  */
+import { isJobsPath, jobsRedirectResponse, jobsRedirectTarget } from "./lib/jobs-redirects";
 import { isMovedPath, peopleRedirectResponse, peopleRedirectTarget } from "./lib/people-redirects";
-import { CLOSED_JOBS_INDEX_PATH, type ClosedJobIndex } from "./lib/jobs/closed-job";
-import { closedJobResponse } from "./lib/jobs/closed-job-html";
 
 interface Env {
   ASSETS: { fetch: (input: Request | URL | string) => Promise<Response> };
-}
-
-let cached: ClosedJobIndex | null = null;
-
-async function loadIndex(env: Env, request: Request): Promise<ClosedJobIndex | null> {
-  if (cached) return cached;
-  const res = await env.ASSETS.fetch(new URL(CLOSED_JOBS_INDEX_PATH, request.url).toString());
-  if (!res.ok) return null;
-  cached = (await res.json()) as ClosedJobIndex;
-  return cached;
 }
 
 const worker = {
@@ -36,18 +26,11 @@ const worker = {
       // No static files exist under these prefixes, so an unknown path is the catalog 404.
       return target ? peopleRedirectResponse(target) : env.ASSETS.fetch(request);
     }
-    const asset = await env.ASSETS.fetch(request);
-    if (asset.status !== 404) return asset;
-    const index = await loadIndex(env, request);
-    if (!index) return asset;
-    const closed = closedJobResponse(index, pathname);
-    if (!closed) return asset;
-    const headers = new Headers(asset.headers);
-    headers.set("content-type", "text/html; charset=utf-8");
-    headers.set("x-robots-tag", "noindex, follow");
-    headers.delete("content-length");
-    headers.delete("content-encoding");
-    return new Response(request.method === "HEAD" ? null : closed.html, { status: 410, headers });
+    if (isJobsPath(pathname)) {
+      const target = request.method === "GET" || request.method === "HEAD" ? jobsRedirectTarget(pathname) : null;
+      return target ? jobsRedirectResponse(target) : env.ASSETS.fetch(request);
+    }
+    return env.ASSETS.fetch(request);
   },
 };
 

@@ -14,7 +14,6 @@ import path from "node:path";
 import { chromium } from "@playwright/test";
 import sharp from "sharp";
 import { getCatalog } from "../lib/catalog";
-import { jobLandingCards } from "../lib/jobs/landing-links";
 import { CARD_TEMPLATE_VERSION, pageCards, type PageCard } from "../lib/page-cards";
 import { GITHUB_HERO_VERSION, type GithubHero } from "../lib/github/hero";
 import { githubHeroes } from "../lib/github/projects";
@@ -27,9 +26,8 @@ const root = process.cwd();
 const outRoot = path.join(root, "public", "og");
 const manifestPath = path.join(root, ".cache", "page-cards.json");
 
-// getCatalog() uses this build's timestamp (public/data/build-info.json), so job counts on cards match the pages.
 const catalog = getCatalog();
-const cards = [...pageCards(catalog), ...jobLandingCards(catalog)];
+const cards = pageCards(catalog);
 const hashOf = (c: PageCard) => crypto.createHash("sha256").update(JSON.stringify({ v: CARD_TEMPLATE_VERSION, c: { ...c, alt: undefined } })).digest("hex").slice(0, 16);
 let manifest: Record<string, string> = {};
 try {

@@ -1,8 +1,6 @@
 import Link from "@/components/Link";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { NotFoundSearch } from "@/components/NotFoundSearch";
-import { JobNotFound } from "@/components/JobNotFound";
-import { getCatalog } from "@/lib/catalog";
 import { SupportPanel } from "@/components/SupportPanel";
 
 export const metadata = {
@@ -13,8 +11,6 @@ export const metadata = {
 };
 
 export default function NotFound() {
-  // Employers with an automated job board, for the closed-job notice (a small name table, not job data).
-  const employers = Object.fromEntries(getCatalog().organizations.filter((o) => o.careers?.enabled).map((o) => [o.slug, o.name.replace(/\s*\([^)]*\)\s*$/, "")]));
   return (
     <>
       <section className="container-page py-20 sm:py-28" aria-labelledby="nf-heading">
@@ -26,7 +22,6 @@ export default function NotFound() {
           The address may be mistyped, or the entry may have been renamed. Draft and unverified entries are never published, so a link to one will
           land here.
         </p>
-        <JobNotFound employers={employers} />
         <NotFoundSearch />
         <ul className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
           <li>

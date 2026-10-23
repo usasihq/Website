@@ -517,7 +517,6 @@ export const LEARNING_PATHS: LearningPath[] = [
       { kind: "hub", slug: "foundation-models", note: "The labs that build general-purpose models." },
       { kind: "hub", slug: "chips-and-compute", note: "Chip designers, accelerators, and cloud providers." },
       { kind: "explainer", slug: "careers-in-ai", note: "Roles, skills, and ways into the field." },
-      { kind: "page", href: "/jobs/", label: "Jobs", note: "Current openings at organizations in the catalog." },
     ],
   },
 ];

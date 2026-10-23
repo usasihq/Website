@@ -8,15 +8,13 @@
  * - news: items published on USASI in the window;
  * - AI on GitHub / AI on Hugging Face: items whose `first_seen` (when they
  *   first entered the snapshot) falls in the window. Snapshots record
- *   first_seen only since `tracking_since`; before that nothing is "new";
- * - jobs: current listings first seen in the window, counted by employer.
+ *   first_seen only since `tracking_since`; before that nothing is "new".
  */
 import type { Catalog } from "./catalog";
 import { githubEntries, type GithubEntry } from "./github/projects";
 import { readGithubDataset } from "./github/load";
 import { hfDatasetEntries, hfModelEntries, type HfEntry } from "./huggingface/items";
 import { readHfDatasets, readHfModels } from "./huggingface/load";
-import { jobPages } from "./jobs/job-pages";
 import { artifactHref, orgHref } from "./routes";
 import { plainText } from "./plain-text";
 import type { RssItem } from "./rss";
@@ -28,8 +26,6 @@ export const NEW_HREF = "/new/";
 export type NewRecord = { kind: "organization" | "artifact"; slug: string; name: string; href: string; date: string; note: string | null };
 export type NewSiteNote = { date: string; note: string; entry: string };
 export type Tracked<T> = { trackingSince: string | null; items: T[] };
-export type NewJobs = { total: number; employers: { slug: string; name: string; count: number }[] };
-
 export type NewThisWeek = {
   from: string;
   to: string;
@@ -40,7 +36,6 @@ export type NewThisWeek = {
   github: Tracked<GithubEntry>;
   hfModels: Tracked<HfEntry>;
   hfDatasets: Tracked<HfEntry>;
-  jobs: NewJobs;
 };
 
 /** The window's first and last dates (UTC, inclusive) for a build time. */
@@ -80,20 +75,6 @@ function tracked<T extends { first_seen?: string }>(trackingSince: string | unde
   return { trackingSince: trackingSince ?? null, items: trackingSince ? items.filter((i) => inWindow(i.first_seen, w)) : [] };
 }
 
-export function newJobs(catalog: Catalog, w: { from: string; to: string }): NewJobs {
-  const counts = new Map<string, number>();
-  let total = 0;
-  for (const p of jobPages(catalog)) {
-    if (!inWindow(p.job.first_seen, w)) continue;
-    total++;
-    counts.set(p.org.slug, (counts.get(p.org.slug) ?? 0) + 1);
-  }
-  const employers = [...counts]
-    .map(([slug, count]) => ({ slug, name: catalog.organization(slug)?.name ?? slug, count }))
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "en"));
-  return { total, employers };
-}
-
 const memo = new WeakMap<Catalog, NewThisWeek>();
 
 export function newThisWeek(catalog: Catalog): NewThisWeek {
@@ -113,7 +94,6 @@ export function newThisWeek(catalog: Catalog): NewThisWeek {
     github: tracked(gh.tracking_since, githubEntries(gh), w),
     hfModels: tracked(models.tracking_since, hfModelEntries(models), w),
     hfDatasets: tracked(datasets.tracking_since, hfDatasetEntries(datasets), w),
-    jobs: newJobs(catalog, w),
   };
   memo.set(catalog, result);
   return result;

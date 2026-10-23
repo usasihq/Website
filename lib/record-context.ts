@@ -21,8 +21,7 @@ export function organizationUnknowns(o: Organization, artifactCount: number): st
   else if (o.headquarters.country === "US" && !stateFromHeadquarters(o.headquarters.label, o.headquarters.country)) {
     out.push("Headquarters state: the documented headquarters does not name a state.");
   }
-  if (!o.careers && !o.hiring_url) out.push("Official careers page: not verified by this catalog.");
-  else if (o.careers && !o.careers.enabled) out.push("Job listings: automated collection is not configured; only the official careers link is shown.");
+  if (!o.hiring_url) out.push("Official careers page: not verified by this catalog.");
   if (o.products.length === 0) out.push("Products: none documented in this record.");
   if (!o.openness_summary) out.push("Openness: no summary has been assessed for this organization.");
   if (artifactCount === 0) out.push("Open artifacts: none from this organization are in the catalog yet.");

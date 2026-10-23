@@ -1,5 +1,5 @@
 import Link from "@/components/Link";
-import { ArrowRight, BookOpenCheck, Briefcase, Building2, Boxes, Cpu, Landmark, Route, Scale, SlidersHorizontal, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpenCheck, Building2, Boxes, Cpu, Landmark, Route, Scale, SlidersHorizontal, Sparkles } from "lucide-react";
 import { EntryTypeBadge, Monogram } from "@/components/Badges";
 import { CoverageTable } from "@/components/CoverageTable";
 import { HomepageSponsor } from "@/components/HomepageSponsor";
@@ -25,9 +25,9 @@ import { siteConfig } from "@/lib/site-config";
 import { CATALOG_DATASET_ID, HF_DATASET_URL } from "@/lib/structured-data";
 
 export const metadata = pageMetadata({
-  title: "U.S. AI jobs, companies, and news",
+  title: "U.S. AI companies, models, and news",
   description:
-    "Independent directory of U.S. AI jobs, companies, open models, and sourced news: open roles, catalog records, and updates. Not a United States government website.",
+    "Independent directory of U.S. AI companies, open models, and sourced news: catalog records and updates. Not a United States government website.",
   path: "/",
 });
 
@@ -206,7 +206,7 @@ export default function HomePage() {
               <span className="mt-1 block text-lg font-semibold text-text">The State of American AI</span>
               <span className="mt-1 block text-[0.9375rem] text-muted">
                 Dated figures from the catalog as of {formatDate(report.data_cutoff)}: {reportTotal("organizations")} organization records, {reportTotal("model_releases")} model releases and their licenses,
-                local AI, jobs, and policy, each with its definition and a data download.
+                local AI, and policy, each with its definition and a data download.
               </span>
             </span>
             <ArrowRight aria-hidden="true" className="hidden h-5 w-5 shrink-0 text-cyan sm:block" />
@@ -224,7 +224,7 @@ export default function HomePage() {
             { href: "/find/", title: "Find something to use", text: "Describe your task and computer; see documented options that fit, and why.", Icon: Sparkles },
             { href: "/find/?where=local", title: "Check my hardware", text: "See which local setups a publisher documents for your graphics memory.", Icon: Cpu },
             { href: "/matrix/", title: "Compare options", text: "Put organizations and releases side by side, with sources.", Icon: SlidersHorizontal },
-            { href: "/jobs/", title: "Find a job", text: "Current openings from employers' own career feeds.", Icon: Briefcase },
+            { href: "/start/", title: "Start here", text: "Four ways into the catalog, and a checklist before you use a model or tool.", Icon: Route },
           ].map(({ href, title, text, Icon }) => (
             <li key={href}>
               <Link prefetch={false} href={href} className="card card-link group flex h-full items-start gap-3 p-4">
@@ -554,8 +554,6 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-
-      <section className="container-page py-8" aria-labelledby="home-jobs-heading"><div className="card p-6"><h2 id="home-jobs-heading" className="text-xl font-semibold text-text">Work at companies and labs in the catalog</h2><p className="mt-2 text-muted">Explore current openings from employer career sources. Applications go directly to the employer.</p><Link href="/jobs/" className="link mt-4 inline-block">Explore Jobs →</Link></div></section>
 
       {/* 7. Support Us */}
       <SupportPanel variant="home" />

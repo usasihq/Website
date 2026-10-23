@@ -171,7 +171,7 @@ test.describe("static hosting behavior", () => {
   });
 
   test("drafts and non-eligible records have no page and are not in the sitemap", async ({ request }) => {
-    const sitemap = await (await request.get("/sitemap-pages.xml")).text();
+    const sitemap = await (await request.get("/sitemap.xml")).text();
     const hidden = [
       ...orgs.filter((o) => !isActive(o) && o.publication_status !== "archived").map((o) => `/companies/${o.slug}/`),
       ...artifacts.filter((a) => !isActive(a) && a.publication_status !== "archived").map((a) => `/open/${a.slug}/`),
@@ -188,15 +188,15 @@ test.describe("static hosting behavior", () => {
   test("every sitemap page carries Support Us (except the kids section) and the footer disclaimer", async ({ request }) => {
     // One request per sitemap page (500+), so allow more than the default 30 s.
     test.setTimeout(180_000);
-    const sitemap = await (await request.get("/sitemap-pages.xml")).text();
+    const sitemap = await (await request.get("/sitemap.xml")).text();
     const all = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname);
     expect(all.length).toBeGreaterThan(10);
-    // Thousands of job pages and AI on GitHub project pages share one template each:
-    // check every other page and an even sample of 60 of each.
-    const isJob = (p: string) => /^\/jobs\/at\/[^/]+\/[^/]+\/$/.test(p);
+    expect(all.every((p) => !p.includes("/jobs/"))).toBe(true);
+    // Thousands of AI on GitHub project pages share one template:
+    // check every other page and an even sample of 60 GitHub pages.
     const isGithub = (p: string) => /^\/github\/[a-z0-9-]+--[a-z0-9-]+\/$/.test(p);
     const sample = (list: string[]) => list.filter((_, i) => i % Math.max(1, Math.floor(list.length / 60)) === 0);
-    const paths = [...all.filter((p) => !isJob(p) && !isGithub(p)), ...sample(all.filter(isJob)), ...sample(all.filter(isGithub))];
+    const paths = [...all.filter((p) => !isGithub(p)), ...sample(all.filter(isGithub))];
     for (const path of paths) {
       const html = await (await request.get(path)).text();
       // Pages for children never ask for tips.
@@ -212,7 +212,7 @@ test.describe("static hosting behavior", () => {
     expect(response.headers()["x-content-type-options"]).toBe("nosniff");
     // HTML pages (directory URLs) declare UTF-8; other files keep their own types.
     expect(response.headers()["content-type"]).toBe("text/html; charset=utf-8");
-    expect((await request.get("/jobs/")).headers()["content-type"]).toBe("text/html; charset=utf-8");
+    expect((await request.get("/learn/")).headers()["content-type"]).toBe("text/html; charset=utf-8");
     expect((await request.get("/data/search-index.json")).headers()["content-type"]).toMatch(/^application\/json/);
     expect((await request.get("/sitemap.xml")).headers()["content-type"]).toMatch(/xml/);
     expect((await request.get("/og.png")).headers()["content-type"]).toBe("image/png");

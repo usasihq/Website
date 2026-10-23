@@ -40,13 +40,13 @@ describe("_headers transport security", () => {
 
 describe("_headers content types", () => {
   it("declares UTF-8 HTML for every directory URL, once", () => {
-    for (const url of ["/", "/jobs/", "/jobs/index/", "/jobs/at/openai/research-engineer-abc1234/", "/companies/"]) {
+    for (const url of ["/", "/companies/", "/open/", "/learn/", "/news/"]) {
       expect(contentTypes(url), url).toEqual(["text/html; charset=utf-8"]);
     }
   });
 
   it("leaves files with their own types alone", () => {
-    for (const url of ["/data/jobs.json", "/data/search-index.json", "/og/jobs/hiring-index.jpg", "/og.png", "/sitemap.xml", "/sitemaps/jobs-1.xml", "/robots.txt", "/_next/static/chunks/a.css", "/news/feed.xml", "/badges/listed.svg", "/badges/github/openai--codex.svg"]) {
+    for (const url of ["/data/search-index.json", "/data/catalog.json", "/og.png", "/sitemap.xml", "/robots.txt", "/_next/static/chunks/a.css", "/news/feed.xml", "/badges/listed.svg", "/badges/github/openai--codex.svg"]) {
       expect(contentTypes(url), url).toEqual([]);
     }
     expect(contentTypes("/opensearch.xml")).toEqual(["application/opensearchdescription+xml; charset=utf-8"]);

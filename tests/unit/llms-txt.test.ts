@@ -1,7 +1,6 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadCatalog } from "@/lib/catalog";
-import { HIRING_INDEX_HREF } from "@/lib/jobs/hiring-index";
 import { llmsTxtSections, renderLlmsTxt } from "@/lib/llms-txt";
 import { siteConfig } from "@/lib/site-config";
 import { STATIC_ROUTES } from "@/lib/site-routes";
@@ -23,11 +22,11 @@ describe("llms.txt", () => {
 
   it("covers the main sitemap areas with absolute URLs", () => {
     const titles = sections.map((s) => s.title);
-    for (const title of ["Jobs", "Companies & Labs", "Resources"]) {
+    for (const title of ["Companies & Labs", "Open Models & Tools", "Resources"]) {
       expect(titles, title).toContain(title);
     }
-    expect(text).toContain(`](https://${siteConfig.domain}${HIRING_INDEX_HREF})`);
-    expect(text).toContain(`](https://${siteConfig.domain}/jobs/)`);
+    expect(titles).not.toContain("Jobs");
+    expect(text).not.toContain(`](https://${siteConfig.domain}/jobs/)`);
     expect(text).toContain(`](https://${siteConfig.domain}/companies/)`);
     expect(text).toContain(`](https://${siteConfig.domain}/sitemap.xml)`);
   });
@@ -35,13 +34,6 @@ describe("llms.txt", () => {
   it("lists published companies", () => {
     const byTitle = Object.fromEntries(sections.map((s) => [s.title, s.items]));
     expect(byTitle["Companies & Labs"].length).toBeGreaterThan(catalog.organizations.length);
-    expect(byTitle["Jobs"].some((i) => i.path === HIRING_INDEX_HREF)).toBe(true);
-  });
-
-  it("does not dump individual job-posting pages", () => {
-    expect(text).not.toMatch(/\/jobs\/at\/[^/\s)]+\/[^/\s)]+\//);
-    const jobsByCompany = sections.find((s) => s.title === "Jobs by company")?.items ?? [];
-    expect(jobsByCompany.every((i) => /^\/jobs\/at\/[^/]+\/$/.test(i.path))).toBe(true);
   });
 
   it("includes every fixed sitemap route somewhere in the file", () => {

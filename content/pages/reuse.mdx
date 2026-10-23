@@ -4,12 +4,10 @@ The catalog behind this site is published as static files you can download and r
 
 - [`/data/catalog.json`](/data/catalog.json): every published organization, open artifact, and news item, with sources and dates. Also `schema_version`, `rubric_version`, `build_at`, and catalog `counts`.
 - [`/data/search-index.json`](/data/search-index.json): the compact index behind site search, with the name, type, summary, keywords, and page link for each published record.
-- [`/data/jobs-full.json`](/data/jobs-full.json): currently open job postings from the employer feeds the site covers, one object per posting with every field, including when each was last seen. Pay marked `"source_status": "employer-description"` was read from the employer's job description because the feed gives none.
-- [`/data/jobs.json`](/data/jobs.json): the same postings in the compact form the Jobs page loads (tables of repeated text and arrays instead of objects; the format is described in the site's source, `lib/jobs/slim.ts`). Before October 18, 2026 this file had the full format; use `jobs-full.json` for that.
 - [The State of American AI](/report/): each edition's figures as CSV and JSON, for example [`/report/2026-10/data.csv`](/report/2026-10/data.csv) and [`/report/2026-10/data.json`](/report/2026-10/data.json). Editions are frozen when published, include the definition of every figure, and are CC BY 4.0.
 - [`/news/feed.xml`](/news/feed.xml): Latest news as an RSS 2.0 feed.
-- [`/sitemap.xml`](/sitemap.xml): a sitemap index of every public page: [`/sitemap-pages.xml`](/sitemap-pages.xml) for the site's pages and `/sitemaps/jobs-<n>.xml` for individual job pages.
-- [USASI catalog on Hugging Face](https://huggingface.co/datasets/usasihq/usasi-catalog): a dated snapshot of the published organizations, open models and tools, and news as CSV tables, with a dataset card. It can be loaded with the `datasets` library. The files on this site are always newer; People Behind Local SI profiles and job postings are not included there.
+- [`/sitemap.xml`](/sitemap.xml): every public page on this site.
+- [USASI catalog on Hugging Face](https://huggingface.co/datasets/usasihq/usasi-catalog): a dated snapshot of the published organizations, open models and tools, and news as CSV tables, with a dataset card. It can be loaded with the `datasets` library. The files on this site are always newer.
 
 <h2 id="filtered-downloads">Downloading a selection</h2>
 
@@ -40,7 +38,7 @@ The [methodology](/methodology/#dates) explains these in more detail.
 
 Original catalog prose (summaries, explanations, notes, and editorial pages) is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). Suggested attribution: "Source: USASI catalog (unitedstatesofamericasuperintelligence.com), CC BY 4.0." Facts such as names, dates, license identifiers, and URLs are not claimed as copyrighted.
 
-That license covers this project's own writing only. Models, software, datasets, and documents described in the catalog keep their own licenses, which each record links to. Names, logos, and marks belong to their owners. Job postings are factual fields and links taken from employers' own feeds; they are not relicensed by this project.
+That license covers this project's own writing only. Models, software, datasets, and documents described in the catalog keep their own licenses, which each record links to. Names, logos, and marks belong to their owners.
 
 <h2 id="corrections">Corrections</h2>
 

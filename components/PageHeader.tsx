@@ -62,7 +62,7 @@ export function PageHeader({
         {crumbs ? <Breadcrumbs items={crumbs} current={current} /> : null}
         {eyebrow ? <p className={`eyebrow${compact ? " hidden sm:block" : ""}`}>{eyebrow}</p> : null}
         <h1 className={`font-semibold text-text sm:text-4xl ${compact ? "text-[1.75rem] leading-tight sm:mt-2" : "mt-2 text-3xl"}`}>{title}</h1>
-        {/* Compact headers (the Jobs search) keep the first results on a phone's first screen; the description shows from the sm breakpoint. */}
+        {/* Compact headers keep the first results on a phone's first screen; the description shows from the sm breakpoint. */}
         {description ? <div className={`${compact ? "mt-2 hidden text-base sm:block" : "mt-4 text-lg"} max-w-3xl text-muted`}>{description}</div> : null}
         {children}
       </div>

@@ -9,7 +9,6 @@
  *
  * Outputs (committed to the repository):
  *   public/og-open.png   Open Models & Tools (/open/ and its record pages)
- *   public/og-jobs.png   Jobs (/jobs/), in the light site theme
  *   public/og-news.png, og-changelog.png,
  *   og-newsletter.png    section index pages, in the same light theme
  *
@@ -84,22 +83,8 @@ p { margin-top: 28px; font-size: 30px; line-height: 1.35; color: #b7d7ff; max-wi
 </div></body></html>`;
 
 
-// The Jobs card uses the light theme (soft white, navy type, gold top bar, red
-// eyebrow) so a shared /jobs/ link looks unlike the homepage and Open cards.
-// It shows how the board works, not counts, so it never goes out of date.
-// The section cards below reuse it; none of them shows a count either.
-const JOBS_CARD = {
-  file: "og-jobs.png",
-  eyebrow: "USASI Jobs",
-  title: ["Jobs in", "American AI"],
-  description: "Open roles at U.S. AI companies, labs, and research universities. Apply with the employer.",
-  search: "Title, skill, or place",
-  panelTitle: "Filter by",
-  rows: ["Role and experience level", "City, state, or remote", "Pay range", "Employer"],
-  url: "unitedstatesofamericasuperintelligence.com/jobs/",
-};
+// Light-theme section cards (soft white, navy type, gold top bar). None shows a count.
 const LIGHT_CARDS = [
-  JOBS_CARD,
   {
     file: "og-news.png",
     eyebrow: "USASI News",

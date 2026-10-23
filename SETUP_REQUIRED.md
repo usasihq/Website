@@ -42,7 +42,7 @@ because Buy Me a Coffee amount parameters have not been verified.
 ## 3. Cloudflare hosting and the domain
 
 Done: the site is live at **https://unitedstatesofamericasuperintelligence.com**
-(and `www.`), served by the `usasi` Worker (static assets plus closed listing URLs) with valid
+(and `www.`), served by the `usasi` Worker (static assets plus redirects for moved sections) with valid
 certificates, the security headers from `public/_headers`, and Brotli
 compression. The account's `workers.dev` address and preview URLs are disabled.
 Deploys are run with Wrangler (`npm run build && npm run deploy:cloudflare`)

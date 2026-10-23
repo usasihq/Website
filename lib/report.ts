@@ -14,13 +14,10 @@
  */
 import type { Catalog } from "./catalog";
 import { MEMORY_PAGES, memoryLabel, memoryPageResults } from "./hardware";
-import { inLocationScope, isRemoteListing, jobGeography, stateDisplayName } from "./jobs/geo";
-import type { Dataset as JobsDataset } from "./jobs/schema";
-import { ALL_JOB_FILTERS, filterJobs, toJobItem } from "./jobs/search";
 import { KIND_PLURAL, OWNERSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "./labels";
 import { guideFor } from "./licenses";
 import { checklistStatus, computeTier, RUBRIC_LABEL, TIER_LABELS, type ModelTier } from "./openness";
-import { stateFromHeadquarters } from "./places";
+import { stateFromHeadquarters, US_STATES } from "./places";
 import { policyShortName, POLICY_STATUS_LABELS, POLICY_TYPE_LABELS } from "./policy";
 import { OWNERSHIP_CATEGORIES, ORGANIZATION_ROLES, SECTORS } from "./enums";
 import type { Artifact, LicenseRecord, PolicyDocumentType, PolicyStatus } from "./schema";
@@ -142,7 +139,7 @@ export type ReportSnapshot = {
   notice: string;
 } & ReportFigures;
 
-export type JobsInput = { data: JobsDataset; now: number };
+export type JobsInput = null;
 
 /* ------------------------------------------------------------------ */
 /* Helpers                                                             */
@@ -323,7 +320,9 @@ function table(t: Omit<ReportTable, "show" | "link"> & { show?: number | null; l
   return { show: null, link: null, ...t };
 }
 
-export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff: string): ReportFigures {
+const stateDisplayName = (code: string) => US_STATES[code] ?? code;
+
+export function computeFigures(catalog: Catalog, cutoff: string): ReportFigures {
   const orgs = catalog.organizations;
   const artifacts = catalog.artifacts;
   const releases = artifacts.filter((a) => a.kind === "model" && a.record_level === "release");
@@ -630,87 +629,6 @@ export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff:
     }),
   );
 
-  /* ---- Jobs (frozen with the edition) ---- */
-  let jobFacts: { current: number; employers: number; remote: number; usOnly: number } | null = null;
-  if (jobs) {
-    const names = new Map(orgs.map((o) => [o.slug, o.name]));
-    const items = jobs.data.jobs.filter((j) => j.status === "open" && names.has(j.organization_slug)).map((j) => toJobItem(j, names.get(j.organization_slug)!));
-    const current = filterJobs(items, jobs.data.feeds, ALL_JOB_FILTERS, jobs.now);
-    const J = current.length;
-    const geo = tally(current, (j) => {
-      const g = jobGeography(j);
-      return g.us && !g.outside ? "us-only" : g.us && g.outside ? "both" : g.outside ? "outside-only" : "unclear";
-    });
-    const states = tally(current, (j) => jobGeography(j).states);
-    const employers = tally(current, (j) => j.organization_slug);
-    const remote = tally(current, (j) => (isRemoteListing(j) ? (inLocationScope(j, "us") ? "remote-us" : "remote-other") : "not-remote"));
-    jobFacts = {
-      current: J,
-      employers: employers.size,
-      remote: (remote.get("remote-us") ?? 0) + (remote.get("remote-other") ?? 0),
-      usOnly: geo.get("us-only") ?? 0,
-    };
-    const CURRENT_RULE =
-      "Listings from employers' own job feeds that were open and confirmed within 48 hours of the snapshot time, the Jobs directory's default view. Applications are on employers' sites; job data are refreshed daily, so these counts are frozen with the edition.";
-    tables.push(
-      table({
-        id: "jobs-geography",
-        section: "jobs",
-        title: "Current job listings by location",
-        caption: `The ${nf(J)} current listings by where their locations are.`,
-        counted: `${CURRENT_RULE} Locations are read from the employer's text without geocoding. U.S. locations only: names the United States or a U.S. state and no place outside it. U.S. and elsewhere: names both. Outside the U.S. only: names only places outside it. Not determinable: gives nothing the rules can place (for example “Remote” or “Hybrid” with no country). Rows add up to the total.`,
-        unit: "job listings",
-        universe: J,
-        overlapping: false,
-        rows: fixedRows(["us-only", "both", "outside-only", "unclear"], geo, (k) =>
-          ({ "us-only": "U.S. locations only", both: "U.S. and elsewhere", "outside-only": "Outside the U.S. only", unclear: "Not determinable" })[k]!,
-        ),
-      }),
-      table({
-        id: "jobs-states",
-        section: "jobs",
-        title: "Current job listings naming each U.S. state",
-        caption: "Current listings with a location that names each U.S. state.",
-        counted:
-          "A listing counts in a state when one of its employer-supplied locations names it: a postal code after a city (“Atlanta, GA”), the full state name, “New York City” or “NYC”, “Washington, DC”, or a city on its own that has only one well-known U.S. match (“San Francisco”, “SF Office”, “Seattle”), from a short published table that leaves out names shared by several places. This is the rule of the Jobs by state pages. A listing that names several states counts in each, and listings that also name places outside the U.S. are included, so rows overlap. Locations that give only the country name no state and are not counted here.",
-        unit: "job listings",
-        universe: J,
-        overlapping: true,
-        link: "jobs-state",
-        show: 10,
-        rows: rankedRows(states, stateDisplayName),
-      }),
-      table({
-        id: "jobs-employers",
-        section: "jobs",
-        title: "Current job listings by employer",
-        caption: `Current listings by the organization whose job feed published them (${nf(employers.size)} employers).`,
-        counted:
-          "Each listing counts once, for the organization whose official job feed published it. Only organizations whose feed the site reads are included. Counts describe open postings at one moment, not company size, growth, or hiring trends. Rows add up to the total.",
-        unit: "job listings",
-        universe: J,
-        overlapping: false,
-        link: "organization",
-        show: 10,
-        rows: rankedRows(employers, orgName),
-      }),
-      table({
-        id: "jobs-remote",
-        section: "jobs",
-        title: "Remote job listings",
-        caption: "Current listings that are remote, and whether a remote listing names only U.S. places.",
-        counted:
-          "Remote: the employer marks the workplace as remote, or a listed location says “Remote” (for example “Remote - US”). Remote, U.S. locations only: also names only U.S. places, the rule of the Remote jobs, U.S. locations page. Rows add up to the total.",
-        unit: "job listings",
-        universe: J,
-        overlapping: false,
-        rows: fixedRows(["remote-us", "remote-other", "not-remote"], remote, (k) =>
-          ({ "remote-us": "Remote, U.S. locations only", "remote-other": "Remote, other or mixed locations", "not-remote": "Not marked remote" })[k]!,
-        ),
-      }),
-    );
-  }
-
   /* ---- Policy ---- */
   const docs = catalog.policy;
   tables.push(
@@ -760,13 +678,6 @@ export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff:
     { key: "finder_configurations", label: "Documented configurations", value: catalog.finder.length, section: "local" },
     { key: "local_configurations", label: "Local configurations", value: local.length, section: "local" },
     { key: "local_with_memory_figure", label: "Local configurations with a publisher memory figure", value: local.filter((c) => c.memory).length, section: "local" },
-    ...(jobFacts
-      ? [
-          { key: "job_listings", label: "Current job listings", value: jobFacts.current, section: "jobs" as const },
-          { key: "job_employers", label: "Employers with current listings", value: jobFacts.employers, section: "jobs" as const },
-          { key: "job_listings_remote", label: "Current listings marked remote", value: jobFacts.remote, section: "jobs" as const },
-        ]
-      : []),
     { key: "policy_documents", label: "Policy documents tracked", value: docs.length, section: "policy" },
   ];
 
@@ -812,15 +723,6 @@ export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff:
         : "none of those states a publisher memory figure yet."),
     definition: "Configurations: the finder's documented combinations of model, runtime, app, or service. Memory figure: the publisher's own statement for the named variant, not a USASI test.",
   });
-  if (jobFacts) {
-    findings.push({
-      id: "jobs",
-      table: "jobs-geography",
-      text: `${nf(jobFacts.current)} job ${jobFacts.current === 1 ? "listing" : "listings"} from ${nf(jobFacts.employers)} ${jobFacts.employers === 1 ? "employer" : "employers"} ${jobFacts.current === 1 ? "was" : "were"} current at the snapshot; ${percent(jobFacts.remote, jobFacts.current)} are marked remote, and ${percent(jobFacts.usOnly, jobFacts.current)} list U.S. locations only.`,
-      definition: "Current: open in the employer's own job feed and confirmed within 48 hours of the snapshot. Remote: marked remote by the employer or with a location that says “Remote”.",
-    });
-  }
-
   return {
     totals,
     tables,
@@ -842,13 +744,11 @@ export function computeFigures(catalog: Catalog, jobs: JobsInput | null, cutoff:
 
 export function createSnapshot({
   catalog,
-  jobs,
   edition,
   generatedAt,
   inputs,
 }: {
   catalog: Catalog;
-  jobs: JobsInput | null;
   edition: string;
   generatedAt: string;
   inputs: ReportInputs;
@@ -856,7 +756,6 @@ export function createSnapshot({
   if (!isEdition(edition)) throw new Error(`Edition must be YYYY-MM, got "${edition}"`);
   const date = generatedAt.slice(0, 10);
   if (!date.startsWith(edition)) throw new Error(`Edition ${edition} must be generated in its own month (generated ${date})`);
-  const checked = jobs?.data.feeds.map((f) => f.last_successful).filter((v): v is string => Boolean(v)).sort().at(-1) ?? null;
   return {
     report: REPORT_NAME,
     format_version: REPORT_FORMAT_VERSION,
@@ -866,11 +765,11 @@ export function createSnapshot({
     published: date,
     data_cutoff: date,
     generated_at: generatedAt,
-    jobs_checked_at: checked,
+    jobs_checked_at: null,
     inputs,
     license: { ...REPORT_LICENSE },
     notice: REPORT_NOTICE,
-    ...computeFigures(catalog, jobs, date),
+    ...computeFigures(catalog, date),
   };
 }
 

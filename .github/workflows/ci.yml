@@ -20,10 +20,6 @@ jobs:
     # A cold build draws every per-page card and hero image (about 15,000 for
     # /github/ and /huggingface/); the cache below makes later runs much faster.
     timeout-minutes: 120
-    env:
-      # The committed jobs snapshot is days old here; evaluate it as of the build
-      # so CI exercises the jobs pages. Production builds never set this.
-      JOBS_SNAPSHOT_AT_BUILD: "1"
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -53,6 +49,8 @@ jobs:
         run: npm run check:links
       - name: People section pop-back guard (must stay on aipeoplewiki.com)
         run: npm run check:people-removed -- --require-out
+      - name: Jobs section pop-back guard (must stay on aipeoplewiki.com)
+        run: npm run check:jobs-removed -- --require-out
       - name: End-to-end tests against the static export
         run: npm run test:e2e
       - name: Base-path build and test (GitHub Pages project sites)

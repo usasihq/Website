@@ -19,11 +19,6 @@ export const socialImages = {
     path: "/og-open.png",
     alt: "USASI Open Models & Tools: U.S.-led open models, software, datasets, and evaluation tools. Every entry records availability, license, maintainer, public materials, and sources.",
   },
-  /** Jobs card, from scripts/social-cards.mjs (light theme). */
-  jobs: {
-    path: "/og-jobs.png",
-    alt: "USASI Jobs: Jobs in American AI. Open roles at U.S. AI companies, labs, and research universities; search by title, skill, or place and filter by role and level, location or remote, pay, and employer.",
-  },
   /** Section cards from scripts/social-cards.mjs (light theme, no counts). */
   news: {
     path: "/og-news.png",
@@ -60,7 +55,7 @@ export const BRAND_SUFFIX = ` | ${siteConfig.shortName}`;
 
 /**
  * Path for a canonical link: no query or hash, so filter and utm variants
- * (`/github/?topic=…`, Google Jobs `?utm_*`) share the clean directory URL.
+ * (`/github/?topic=…`) share the clean directory URL.
  */
 export function canonicalPath(path: string): string {
   const bare = (path.split(/[?#]/)[0] || "/").trim() || "/";

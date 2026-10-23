@@ -1,5 +1,5 @@
-// Cloudflare Workers — static assets plus a small script for closed job URLs and the moved people section.
-// `npm run build` writes ./out; `npx wrangler deploy` uploads it.
+// Cloudflare Workers — static assets plus a small script for the moved people
+// and jobs sections. `npm run build` writes ./out; `npx wrangler deploy` uploads it.
 // Docs: https://developers.cloudflare.com/workers/static-assets/
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
@@ -9,20 +9,24 @@
   "assets": {
     "directory": "./out",
     "binding": "ASSETS",
-    // Unknown paths get out/404.html with a real 404 status, except closed
-    // listing URLs under /jobs/at/<employer>/<slug>/ (Worker returns 410).
+    // Unknown paths get out/404.html with a real 404 status.
     "not_found_handling": "404-page",
     // /companies → 307 → /companies/ (matches Next's trailingSlash: true export).
     "html_handling": "auto-trailing-slash",
     // Navigation requests would otherwise get 404.html before the Worker runs.
     // /people, /big-si, /voices, /local: 301 to aipeoplewiki.com (people-redirect-map.json);
+    // /jobs: 301 to aipeoplewiki.com/jobs/ (same path, with exception rules);
     // listing both the bare and the /* form so no variant reaches the 307 trailing-slash step.
+    // /jobs/at/* is kept so the people-section guard's wrangler check stays valid.
     "run_worker_first": [
       "/people", "/people/*",
       "/big-si", "/big-si/*",
       "/voices", "/voices/*",
       "/local", "/local/*",
-      "/jobs/at/*"
+      "/jobs", "/jobs/*",
+      "/jobs/at/*",
+      "/sitemaps/*",
+      "/sitemap-jobs-*.xml"
     ]
   },
   // Custom domains (the zone is in the owner's Cloudflare account). Cloudflare

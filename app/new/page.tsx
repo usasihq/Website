@@ -19,7 +19,7 @@ export function generateMetadata() {
   const w = newThisWeek(getCatalog());
   return pageMetadata({
     title: "New this week",
-    description: `What USASI added from ${formatDate(w.from)} to ${formatDate(w.to)}: catalog records, news, projects new in the GitHub and Hugging Face rankings, and new AI job listings by employer.`,
+    description: `What USASI added from ${formatDate(w.from)} to ${formatDate(w.to)}: catalog records, news, and projects new in the GitHub and Hugging Face rankings.`,
     path: NEW_HREF,
     feeds: [{ path: FEED, title: "USASI — New this week" }],
   });
@@ -166,46 +166,6 @@ export default function NewThisWeekPage() {
           <TrackedList data={w.hfModels} noun="models" label={(e) => `${n(e.likes)} likes`} />
           <h3 className="mt-6 text-base font-semibold text-text">Datasets</h3>
           <TrackedList data={w.hfDatasets} noun="datasets" label={(e) => `${n(e.likes)} likes`} />
-        </Section>
-
-        <Section id="jobs" title="New job listings, by employer">
-          <p className="mt-2 text-muted">
-            {w.jobs.total
-              ? `${n(w.jobs.total)} current listings were first seen in employers' job feeds this week, at ${n(w.jobs.employers.length)} ${w.jobs.employers.length === 1 ? "employer" : "employers"}.`
-              : "No current listing was first seen this week."}{" "}
-            &ldquo;First seen&rdquo; is when USASI first read the listing, so an employer whose job board was first collected this week counts all of its listings.
-          </p>
-          {w.jobs.employers.length ? (
-            <div className="mt-4 overflow-x-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label="New job listings by employer">
-              <table className="w-full text-left text-sm">
-                <caption className="sr-only">Current listings first seen this week, by employer</caption>
-                <thead className="bg-fog/60 text-muted">
-                  <tr>
-                    <th scope="col" className="px-3 py-2 font-medium">Employer</th>
-                    <th scope="col" className="px-3 py-2 text-right font-medium">New listings</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-line">
-                  {w.jobs.employers.map((e) => (
-                    <tr key={e.slug}>
-                      <th scope="row" className="px-3 py-2 font-medium">
-                        <Link prefetch={false} href={`/jobs/at/${e.slug}/`} className="link">
-                          {e.name}
-                        </Link>
-                      </th>
-                      <td className="px-3 py-2 text-right tabular-nums text-text">{n(e.count)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : null}
-          <p className="mt-3 text-sm">
-            <Link prefetch={false} href="/jobs/?posted=7&sort=newest" className="link">
-              Jobs posted in the last 7 days
-            </Link>{" "}
-            · <Link prefetch={false} href="/feeds/#job-feeds" className="link">Job feeds (RSS)</Link>
-          </p>
         </Section>
 
         <div className="max-w-4xl">

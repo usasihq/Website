@@ -35,9 +35,7 @@ describe("social metadata", () => {
 describe("canonical URLs", () => {
   it("strips query parameters and hashes so filter and utm variants share one URL", () => {
     expect(canonicalPath("/github/?topic=deepseek")).toBe("/github/");
-    expect(canonicalPath("/jobs/at/xai/data-center-fiber-technician-1ujic4a/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic")).toBe(
-      "/jobs/at/xai/data-center-fiber-technician-1ujic4a/",
-    );
+    expect(canonicalPath("/companies/openai/?utm_source=share")).toBe("/companies/openai/");
     expect(canonicalPath("/companies/openai#models")).toBe("/companies/openai/");
     const meta = pageMetadata({ title: "AI on GitHub", description: "Projects.", path: "/github/?topic=cli" });
     expect(String(meta.alternates?.canonical)).toMatch(/^https:\/\/[^/]+\/github\/$/);

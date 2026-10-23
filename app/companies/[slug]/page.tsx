@@ -1,9 +1,6 @@
 import Link from "@/components/Link";
 import { RecordContext } from "@/components/RecordContext";
 import { organizationRelated, organizationUnknowns } from "@/lib/record-context";
-import { OrganizationJobs } from "@/components/OrganizationJobs";
-import { roleLinksForEmployer } from "@/lib/jobs/landing-links";
-import { readJobsForBuild } from "@/lib/jobs/load";
 import { notFound } from "next/navigation";
 import { OrgLogo, EntryTypeBadge, TierBadge, StatusBadge } from "@/components/Badges";
 import { DeepDive } from "@/components/DeepDive";
@@ -23,7 +20,6 @@ import { getCatalog } from "@/lib/catalog";
 import { formatDate } from "@/lib/dates";
 import { entryTypeFor, KIND_PLURAL, OWNERSHIP_LABELS, PRODUCT_KIND_LABELS, RELATIONSHIP_LABELS, ROLE_LABELS, SECTOR_LABELS } from "@/lib/labels";
 import { pageMetadata } from "@/lib/metadata";
-import { companyJobsLink } from "@/lib/jobs/landing-links";
 import { organizationSeo } from "@/lib/seo";
 import { organizationLd } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
@@ -43,8 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const catalog = getCatalog();
   const org = catalog.organization(slug);
   if (!org) return {};
-  const jobs = companyJobsLink(catalog, org.slug);
-  const seo = organizationSeo(catalog, org, jobs ? { jobCount: jobs.count } : undefined);
+  const seo = organizationSeo(catalog, org);
   return pageMetadata({
     title: seo.title,
     description: seo.description,
@@ -104,7 +99,6 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
   const org = catalog.organization(slug);
   if (!org) notFound();
 
-  const jobData = readJobsForBuild(catalog.organizations, Date.parse(catalog.buildAt));
   const s = org.sources;
   const parent = catalog.parentOrganization(org);
   const children = catalog.childOrganizations(org.slug);
@@ -119,7 +113,6 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
     { id: "products", label: "Products" },
     { id: "artifacts", label: "Artifacts" },
     catalog.newsForOrganization(org.slug).length > 0 ? { id: "news", label: "News" } : null,
-    catalog.isActiveOrganization(org.slug) ? { id: "jobs", label: "Jobs" } : null,
     { id: "sources", label: "Sources" },
   ].filter((x): x is { id: string; label: string } => Boolean(x));
   return (
@@ -379,12 +372,6 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
               </ol>
             </Section>
           ) : null}
-
-          {catalog.isActiveOrganization(org.slug) ? <OrganizationJobs slug={org.slug} name={org.name} url={org.careers?.url ?? org.hiring_url}
-            enabled={Boolean(org.careers?.enabled)} asOf={catalog.buildAt}
-            jobCount={jobData.jobs.filter(j => j.organization_slug === org.slug && j.status === "open").length}
-            feed={jobData.feeds.find(f => f.organization_slug === org.slug) ?? null}
-            roles={roleLinksForEmployer(catalog, org.slug).map((r) => ({ href: r.path, name: r.name, count: r.count }))} /> : null}
 
           <RecordContext unknowns={organizationUnknowns(org, related.length)} related={organizationRelated(catalog, org)} />
 

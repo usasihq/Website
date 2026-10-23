@@ -13,12 +13,6 @@ import fs from "node:fs";
 import path from "node:path";
 import QRCode from "qrcode";
 import { loadCatalog } from "../lib/catalog";
-import { jobsDirectoryData } from "../lib/jobs/directory-data";
-import { encodeJobs } from "../lib/jobs/slim";
-import { jobLandingSearchEntries } from "../lib/jobs/landing-links";
-import { hiringIndexSearchEntry } from "../lib/jobs/hiring-index";
-import { EMPTY_WARN_DATASET, layoffSearchEntries, readLayoffs, writeLayoffs } from "../lib/jobs/layoffs";
-import { mergeLayoffRefresh } from "../lib/jobs/layoffs-refresh";
 import { sourceLibrary } from "../lib/source-library";
 import { parseFaq, parseGlossary, referenceSearchEntries } from "../lib/reference-search";
 import { githubEntries, toListItem } from "../lib/github/projects";
@@ -36,20 +30,6 @@ if (siteConfig.homepageSponsor) {
 }
 
 const buildAt = process.env.USASI_BUILD_AT ?? new Date().toISOString();
-// WARN notices: try the published warn-scraper CSVs; keep the last snapshot if a state fails.
-try {
-  const previous = readLayoffs();
-  const { dataset, counts, kept, skipped } = await mergeLayoffRefresh(
-    previous.states.length ? previous : EMPTY_WARN_DATASET,
-    (process.env.USASI_TODAY ?? buildAt).slice(0, 10),
-  );
-  writeLayoffs(dataset);
-  console.log(`layoffs: ${dataset.states.map((s) => `${s.code}=${s.notices.length}`).join(" ")} (${Object.keys(counts).length} states)`);
-  if (kept.length) console.log(`layoffs: kept previous notices for ${kept.join(", ")}`);
-  if (skipped.length) console.log(`layoffs: skipped ${skipped.join(", ")}`);
-} catch (error) {
-  console.warn(`layoffs: refresh failed; using the last snapshot (${error instanceof Error ? error.message : "unknown error"})`);
-}
 const catalog = loadCatalog(path.join(process.cwd(), "content"), { buildAt });
 const outDir = path.join(process.cwd(), "public", "data");
 fs.mkdirSync(outDir, { recursive: true });
@@ -72,18 +52,13 @@ const faqPath = path.join(process.cwd(), "content", "pages", "faq.mdx");
 const faq = fs.existsSync(faqPath) ? parseFaq(fs.readFileSync(faqPath, "utf8")) : [];
 fs.writeFileSync(
   path.join(outDir, "search-index.json"),
-  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq), ...jobLandingSearchEntries(catalog), ...layoffSearchEntries(catalog), hiringIndexSearchEntry(catalog)] }) + "\n",
+  JSON.stringify({ build_at: buildAt, entries: [...catalog.searchEntries(), ...referenceSearchEntries(catalog, glossary, faq)] }) + "\n",
 );
 // AI on GitHub: the full ranked list, loaded by /github/ when someone searches, filters, or shows more (the page embeds the first 100).
 fs.writeFileSync(path.join(outDir, "github.json"), JSON.stringify({ build_at: buildAt, projects: githubEntries().map(toListItem) }) + "\n");
 // AI on Hugging Face: the full ranked lists, loaded by /huggingface/ and /huggingface/datasets/ the same way.
 fs.writeFileSync(path.join(outDir, "huggingface-models.json"), JSON.stringify({ build_at: buildAt, items: hfModelEntries().map(toHfListItem) }) + "\n");
 fs.writeFileSync(path.join(outDir, "huggingface-datasets.json"), JSON.stringify({ build_at: buildAt, items: hfDatasetEntries().map(toHfListItem) }) + "\n");
-// Current Jobs list. jobs.json is the compact form the /jobs/ page loads after first paint (the page
-// itself embeds only the first 30; lib/jobs/slim.ts); jobs-full.json has every field, for reuse.
-const jobs = jobsDirectoryData(catalog);
-fs.writeFileSync(path.join(outDir, "jobs.json"), JSON.stringify(encodeJobs(jobs.items, buildAt)) + "\n");
-fs.writeFileSync(path.join(outDir, "jobs-full.json"), JSON.stringify({ build_at: buildAt, jobs: jobs.items }) + "\n");
 // Every cited source, with the published records that cite it (loaded by /sources/).
 fs.writeFileSync(path.join(outDir, "sources.json"), JSON.stringify({ build_at: buildAt, entries: sourceLibrary(catalog) }) + "\n");
 // OpenSearch description, so browsers can add site search (linked from every page's <head>).
