@@ -17,7 +17,7 @@ import { LICENSE_CATEGORY_LABELS, usesOfLicense } from "./licenses";
 import { clipDescription, clipTitle, DESCRIPTION_MAX, TITLE_MAX } from "./metadata";
 import { checklistStatus, computeTier, isOsiApproved, type ModelTier } from "./openness";
 import type { StateGroup } from "./place-index";
-import type { Artifact, Hub, Leader, LicenseCategory, LicenseRecord, Organization, OrganizationRole, Person } from "./schema";
+import type { Artifact, Hub, LicenseCategory, LicenseRecord, Organization, OrganizationRole } from "./schema";
 
 export type SeoText = { title: string; description: string };
 
@@ -322,168 +322,10 @@ export function organizationSeo(catalog: Catalog, org: Organization, extras?: { 
   return { title, description: composeDescription([opening, records], [hqSentence, licenses, productList, jobsLine]) };
 }
 
-/** Distinct current organizations for a leader, preferring ones with a catalog page. */
-export function leaderOrganizations(catalog: Catalog, l: Leader): string[] {
-  const roles = [...l.current_roles].sort((a, b) => Number(catalog.isActiveOrganization(b.organization_slug)) - Number(catalog.isActiveOrganization(a.organization_slug)));
-  const linked = roles.filter((r) => catalog.isActiveOrganization(r.organization_slug));
-  return [...new Set((linked.length ? linked : roles).map((r) => shortName(r.organization)))];
-}
-
-/** A short work or paper name for titles: keep parenthetical nicknames, drop a long subtitle. */
-export function shortWorkName(name: string, max = 28): string {
-  return wholeWorkName(name, max) ?? clipDescription(shortName(name), max).replace(/\u2026$/, "").trim();
-}
-
-/** The work name or its part before a subtitle, but never a name cut mid-phrase ("Random-Access Neural"). */
-export function wholeWorkName(name: string, max = 28): string | null {
-  const s = shortName(name);
-  if (s.length <= max) return s;
-  const cut = s.split(/[:—–,]/)[0]!.trim();
-  return cut.length >= 4 && cut.length <= max ? cut : null;
-}
-
-function shortRole(role: string, max = 28): string | null {
-  const s = role.replace(/\s*\([^)]*\)\s*$/, "").trim();
-  if (s.length <= max) return s;
-  const cut = s.split(/[,:—]/)[0]!.trim();
-  if (cut.length >= 3 && cut.length <= max) return cut;
-  return null;
-}
-
-/** Compare title segments case-insensitively, ignoring punctuation and spacing. */
-export function titleSegmentKey(value: string): string {
-  return value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "");
-}
-
-export function sameTitleSegment(a: string, b: string): boolean {
-  const left = titleSegmentKey(a);
-  const right = titleSegmentKey(b);
-  return left.length > 0 && left === right;
-}
-
-/**
- * The name / org / project pieces of a people-bio title (`Name at Org — Project`
- * or `Name, Role at Org`). Used to detect the repeated-word titles that happen
- * when a creator's channel or a project name matches the person or the org.
- */
-export function personTitleParts(title: string): { name: string; org?: string; known?: string } {
-  const [head, knownRaw] = title.split(" — ");
-  const known = knownRaw?.trim() || undefined;
-  const at = head!.lastIndexOf(" at ");
-  if (at === -1) return { name: head!.split(",")[0]!.trim(), known };
-  return { name: head!.slice(0, at).split(",")[0]!.trim(), org: head!.slice(at + 4).trim() || undefined, known };
-}
-
-/** True when the org or trailing project repeats the name or each other. */
-export function personTitleRepeatsSegment(title: string): boolean {
-  const { name, org, known } = personTitleParts(title);
-  const keys = [name, org, known].filter((s): s is string => Boolean(s)).map(titleSegmentKey).filter(Boolean);
-  return new Set(keys).size < keys.length;
-}
-
-function distinctTitleSegment(value: string | null | undefined, ...seen: Array<string | null | undefined>): string | null {
-  if (!value) return null;
-  const trimmed = value.trim();
-  if (!trimmed) return null;
-  if (seen.some((s) => s && sameTitleSegment(trimmed, s))) return null;
-  return trimmed;
-}
-
-/**
- * People-bio title: name, then a current org and what they are known for.
- * Drops `at <Org>` when the org is the person's own name (a channel or personal
- * brand) and drops a trailing project that repeats the name or org, so titles
- * stay unique. Falls back to the role, then "AI researcher".
- */
-export function buildPersonTitle(input: { name: string; org?: string | null; role?: string | null; works?: Array<string | null | undefined> }): string {
-  const name = squash(input.name);
-  const org = distinctTitleSegment(input.org ? shortName(input.org) : null, name);
-  const role = distinctTitleSegment(input.role ? shortRole(input.role) : null, name, org);
-  const works: string[] = [];
-  for (const raw of input.works ?? []) {
-    const work = raw ? wholeWorkName(raw) : null;
-    if (!work) continue;
-    if (sameTitleSegment(work, name) || (org && sameTitleSegment(work, org))) continue;
-    if (works.some((w) => sameTitleSegment(w, work))) continue;
-    works.push(work);
-  }
-  const known = works[0] ?? null;
-  const known2 = works[1] ?? null;
-  return fitTitle([
-    org && known && `${name} at ${org} — ${known}`,
-    org && role && `${name}, ${role} at ${org}`,
-    org && `${name} at ${org}`,
-    known && known2 && `${name} — ${known} & ${known2}`,
-    known && `${name} — ${known}`,
-    role && `${name}, ${role}`,
-    `${name} — AI researcher`,
-    `${name} — sourced AI profile`,
-    name,
-  ]);
-}
-
-/** Optional USASI-only facts already shown on the profile (jobs, news mentions). */
-export type PersonSeoExtras = {
-  openJobs?: { orgName: string; count: number }[];
-  newsHeadlines?: string[];
-};
-
-/**
- * A People directory profile. Title leads with the name, then a current org
- * and what they are known for, with repeated name/org/project segments dropped.
- * Description is the sourced headline plus distinctive catalog facts (open
- * jobs, a news mention, their links).
- */
-export function personSeo(catalog: Catalog, p: Person, extras?: PersonSeoExtras): SeoText {
-  const current = p.affiliations.filter((a) => a.current);
-  // Prefer a current org that is not just the person's own name (a channel or personal brand).
-  const orgAff = current.find((a) => !sameTitleSegment(shortName(a.name), p.name)) ?? current[0];
-  const works = p.work.map((w) => wholeWorkName(w.name)).filter((w): w is string => w !== null);
-  const links = p.links.map((l) => l.label);
-  return {
-    title: buildPersonTitle({
-      name: p.name,
-      org: orgAff?.name,
-      role: orgAff?.role ?? current[0]?.role,
-      works: p.work.map((w) => w.name),
-    }),
-    description: composeDescription(
-      [/[.!?]$/.test(p.headline) ? p.headline : `${p.headline}.`],
-      [
-        extras?.openJobs?.[0] && `${extras.openJobs[0].count.toLocaleString("en-US")} open jobs at ${shortName(extras.openJobs[0].orgName)} on USASI.`,
-        extras?.newsHeadlines?.[0] && `Recent catalog news: ${shortWorkName(extras.newsHeadlines[0], 70)}.`,
-        links.length ? `Links: ${listJoin(links.slice(0, 3))}.` : null,
-        works.length ? `Known for ${listJoin(works.slice(0, 3))}.` : null,
-      ],
-    ),
-  };
-}
-
 /** News story: the headline as the title, a one-sentence summary as the description. */
 export function newsItemSeo(item: { title: string; summary: { text: string } }): SeoText {
   const parts = sentences(item.summary.text);
   return { title: clipTitle(item.title), description: composeDescription([parts[0]], parts.slice(1)) };
-}
-
-export function leaderSeo(catalog: Catalog, l: Leader): SeoText {
-  const orgs = leaderOrganizations(catalog, l);
-  const has = [l.current_roles.length || l.past_roles.length ? "roles" : null, l.timeline.length ? "career timeline" : null, l.honors.length ? "honors" : null].filter(
-    (x): x is string => Boolean(x),
-  );
-  return {
-    title: fitTitle([
-      orgs.length > 1 && `${l.name}: career and roles at ${orgs[0]} and ${orgs[1]}`,
-      orgs.length > 0 && `${l.name}: career and role at ${orgs[0]}`,
-      orgs.length > 0 && `${l.name}, ${orgs[0]}: career`,
-      `${l.name}: career profile`,
-      l.name,
-    ]),
-    description: composeDescription([/[.!?]$/.test(l.headline) ? l.headline : `${l.headline}.`], [has.length ? `Sourced profile: ${listJoin(has)}.` : null]),
-  };
 }
 
 const LICENSE_SUBJECT: Record<LicenseCategory, string> = {

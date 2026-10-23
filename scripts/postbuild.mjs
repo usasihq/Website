@@ -105,8 +105,6 @@ const required = [
   "privacy/index.html",
   "badges/index.html",
   "badges/listed.svg",
-  "badges/profile.svg",
-  "local/index.html",
   "news/index.html",
   "news/feed.xml",
 ];
@@ -209,18 +207,10 @@ for (const file of htmlFiles) {
   }
 }
 
-// Draft profiles must not appear anywhere in the export.
-for (const person of readDir("people")) {
-  if (!person?.slug || person.publication_status === "published") continue;
-  if (catalogJson && JSON.stringify(catalogJson).includes(`"${person.slug}"`)) failures.push(`draft profile ${person.slug} leaked into catalog.json`);
-  const local = path.join(out, "local", "index.html");
-  if (fs.existsSync(local) && fs.readFileSync(local, "utf8").includes(`id="${person.slug}"`)) failures.push(`draft profile ${person.slug} leaked into /local/`);
-}
-
 // Private material must never be exported.
 // React keys and other strings that look like site paths are visible to crawlers in the
-// embedded page data. A key such as "/local/" + index reads as a link to a page that does
-// not exist (Google reported /local/6 as a 404), so every path-shaped key must be a real page.
+// embedded page data. A key such as "/section/" + index reads as a link to a page that does
+// not exist (Google once reported such a key as a 404), so every path-shaped key must be a real page.
 {
   const KEYED_PATH = /\["\$","[a-zA-Z0-9]+","(\/[^"]*)"/g;
   const exists = (p) => {
@@ -248,7 +238,7 @@ for (const person of readDir("people")) {
 // link for every entry. Detail pages must carry a BreadcrumbList.
 {
   const LD = /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
-  const DETAIL = /^(?:(?:companies|open|big-si|licenses|places|hubs|news|newsletter|learn|kids)\/[^/]+|learn\/(?:paths|tools)\/[^/]+)\/index\.html$/;
+  const DETAIL = /^(?:(?:companies|open|licenses|places|hubs|news|newsletter|learn|kids)\/[^/]+|learn\/(?:paths|tools)\/[^/]+)\/index\.html$/;
   const JOB_DETAIL = /^jobs\/at\/[^/]+\/[^/]+\/index\.html$/;
   const absolute = (u) => typeof u === "string" && /^https?:\/\/[^\s/]+\//.test(u);
   const nodesOf = (value, found = []) => {

@@ -68,8 +68,7 @@ Remaining owner steps in the Cloudflare dashboard:
       bot blocking or a paid plan. Confirm the beacon loads without CSP violations
       and sends measurement requests before relying on dashboard statistics.
       Never create or paste an account API key for this step.
-- [ ] Optional: automatic deploys from GitHub (see README). Not needed for the
-      Local corner, which rotates in the browser.
+- [ ] Optional: automatic deploys from GitHub (see README).
 - [ ] Optional, later: HSTS preload once HTTPS is enforced everywhere.
 
 ## 4. Ownership and contact details
@@ -90,16 +89,10 @@ homepage's structured data:
 - [ ] `LICENSE` names "USASI contributors" as the copyright holder. Replace it
       with your name or entity if you prefer.
 
-## 5. Local corner
+## 5. People section (removed)
 
-- [ ] The corner profiles real people using public professional information
-      only, and says on the page that removal requests are honored. Be ready to
-      act on requests sent to usasihq@gmail.com (set the profile to `draft` or
-      delete it, then rebuild).
-- [ ] Recommended: let listed people know when they are added, and
-      invite corrections. Opt-in is kinder than surprise.
-- [ ] The list is permanent (no monthly rotation). Add, edit, or remove files in
-      `content/people/` and publish when it should change.
+- [x] People profiles moved to https://aipeoplewiki.com/ and were removed from
+      this site (see `docs/PEOPLE_MOVED.md`). Nothing to do here.
 
 ## 6. Artwork rights
 

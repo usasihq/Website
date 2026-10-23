@@ -69,7 +69,7 @@ export function HomeSearch({ indexUrl, githubLimit, hfLimit }: { indexUrl: strin
         </div>
         {/* Visible from 640px; on phones it stays available to screen readers so the first screen fits. */}
         <p id={hintId} className="text-sm text-muted max-sm:sr-only sm:mt-2">
-          Searches organizations, open models and tools, people and Voices of SI, hubs, explainers, glossary terms, license guides, policy documents,
+          Searches organizations, open models and tools, hubs, explainers, glossary terms, license guides, policy documents,
           states, the top {githubLimit.toLocaleString("en-US")} projects on AI on GitHub, and the top {hfLimit.toLocaleString("en-US")} on AI on Hugging Face.
         </p>
         <noscript>

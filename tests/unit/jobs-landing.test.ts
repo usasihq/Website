@@ -67,7 +67,7 @@ describe("landing page text", () => {
     expect(fellowships.path).toBe("/jobs/fellowships/");
     expect(fellowships.h1).toBe("AI fellowships and postdocs");
     expect(fellowships.filters).toEqual({ track: "fellowships" });
-    expect(fellowships.related).toEqual([{ href: "/people/school/", label: "People by school" }]);
+    expect(fellowships.related).toBeUndefined();
     expect(fellowships.description(one).startsWith("12")).toBe(true);
     expect(fellowships.description(one)).toContain("fellowship");
   });

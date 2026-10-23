@@ -111,8 +111,8 @@ export default function NewThisWeekPage() {
           )}
           {w.siteNotes.length ? (
             <>
-              <h3 className="mt-6 text-base font-semibold text-text">Other additions: site features and people profiles</h3>
-              <p className="mt-1 text-sm text-muted">As the changelog records them (profiles carry no separate &ldquo;added&rdquo; date).</p>
+              <h3 className="mt-6 text-base font-semibold text-text">Other additions: site features</h3>
+              <p className="mt-1 text-sm text-muted">As the changelog records them.</p>
               <ul className="mt-3 divide-y divide-line border-y border-line">
                 {w.siteNotes.map((s, i) => (
                   <li key={`${s.date}-${i}`} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3">

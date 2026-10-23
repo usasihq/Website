@@ -27,20 +27,13 @@ const REFERENCE = [
   { href: "/contribute/#corrections", label: "Corrections", bar: true, wide: true },
 ];
 
-const PEOPLE = [
-  { href: "/people/", label: "All people", description: "Founders, engineers, researchers, and open-source maintainers, with sources" },
-  { href: "/big-si/", label: "People Behind Big SI", description: "Founders, executives, and builders behind the companies shaping AI" },
-  { href: "/local/", label: "People Behind Local SI", description: "People whose work helps you run AI on your own hardware" },
-  { href: "/voices/", label: "Voices of SI", description: "Tech creators and communicators who explain AI to the public" },
-];
-
 const OPEN_SOURCE = [
   { href: "/open/", label: "Open Models & Tools", description: "U.S.-led open models, software, datasets, and evaluation tools, with sources" },
   { href: "/github/", label: "AI on GitHub", description: "The most-starred open-source AI projects on GitHub, ranked by stars" },
   { href: "/huggingface/", label: "AI on Hugging Face", description: "The most-liked open models and datasets on the Hugging Face Hub, ranked by likes" },
 ];
 
-type NavItem = { href: string; label: string } | { label: string; items: typeof PEOPLE };
+type NavItem = { href: string; label: string } | { label: string; items: typeof OPEN_SOURCE };
 
 const NAV: NavItem[] = [
   { href: "/companies/", label: "Companies & Labs" },
@@ -50,18 +43,17 @@ const NAV: NavItem[] = [
   { href: "/matrix/", label: "Compare" },
   { href: "/news/", label: "News" },
   { href: "/methodology/", label: "Methodology" },
-  { label: "People", items: PEOPLE },
   { href: "/about/", label: "About" },
 ];
 
-/** Mobile menu: each group (Open source, People) is listed as its links. */
+/** Mobile menu: each group (Open source) is listed as its links. */
 const MOBILE_NAV = NAV.flatMap((item) => ("items" in item ? item.items : [item]));
 
 /**
  * A disclosure (button plus a short list of links) for a group of pages,
- * such as People. It closes on Escape, on a click outside, and after any navigation.
+ * such as Open source. It closes on Escape, on a click outside, and after any navigation.
  */
-function NavMenu({ pathname, label, items }: { pathname: string; label: string; items: typeof PEOPLE }) {
+function NavMenu({ pathname, label, items }: { pathname: string; label: string; items: typeof OPEN_SOURCE }) {
   const [openedFor, setOpenedFor] = useState<string | null>(null);
   const open = openedFor === pathname;
   const panelId = useId();

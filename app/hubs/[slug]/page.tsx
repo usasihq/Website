@@ -2,7 +2,6 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { Monogram } from "@/components/Badges";
 import { ExternalLink } from "@/components/ExternalLink";
-import { InitialsTile } from "@/components/LocalCorner";
 import { JsonLd } from "@/components/JsonLd";
 import { HubIcon } from "@/components/learn/HubIcon";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
@@ -16,7 +15,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { hubSeo } from "@/lib/seo";
 import { itemList } from "@/lib/structured-data";
 import { cardImage } from "@/lib/page-cards";
-import { artifactHref, orgHref, personHref } from "@/lib/routes";
+import { artifactHref, orgHref } from "@/lib/routes";
 
 export function generateStaticParams() {
   return getCatalog().hubs.map((h) => ({ slug: h.slug }));
@@ -42,7 +41,6 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
   if (!hub) notFound();
   const orgs = hub.organizations.map((s) => catalog.organization(s)).filter((o) => o !== undefined);
   const arts = hub.artifacts.map((s) => catalog.artifact(s)).filter((a) => a !== undefined);
-  const people = hub.people.map((s) => catalog.people.find((p) => p.slug === s)).filter((p) => p !== undefined);
   return (
     <>
       <JsonLd
@@ -109,7 +107,7 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
           </section>
         </div>
 
-        {orgs.length || arts.length || people.length ? (
+        {orgs.length || arts.length ? (
           <section aria-labelledby="featured-heading">
             <h2 id="featured-heading" className="text-xl font-semibold text-text">Featured records</h2>
             <p className="mt-1 text-sm text-muted">Examples chosen to cover the subject; not a ranking or a complete list.</p>
@@ -127,14 +125,6 @@ export default async function HubPage({ params }: { params: Promise<{ slug: stri
                   <Link prefetch={false} href={artifactHref(a.slug)} className="card flex h-full flex-col p-4 hover:border-cyan">
                     <span className="font-medium text-text">{a.name}</span>
                     <span className="text-sm text-muted">Open model or tool</span>
-                  </Link>
-                </li>
-              ))}
-              {people.map((p) => (
-                <li key={`p-${p.slug}`}>
-                  <Link prefetch={false} href={personHref(p.slug)} className="card flex h-full items-start gap-3 p-4 hover:border-cyan">
-                    <InitialsTile initials={p.initials} />
-                    <span className="min-w-0"><span className="block font-medium text-text">{p.name}</span><span className="block text-sm text-muted">{p.headline}</span></span>
                   </Link>
                 </li>
               ))}

@@ -1,7 +1,6 @@
-import Link from "@/components/Link";
-import { ArrowUpRight, CalendarDays, Layers, ListTree, UserRound } from "lucide-react";
+import { CalendarDays, Layers, ListTree, UserRound } from "lucide-react";
 import { formatDate } from "@/lib/dates";
-import type { DeepDive as DeepDiveT, Leader, Source } from "@/lib/schema";
+import type { DeepDive as DeepDiveT, Source } from "@/lib/schema";
 import { ExternalLink } from "./ExternalLink";
 import { Section } from "./PageHeader";
 import { SourceRefs } from "./Sources";
@@ -36,8 +35,7 @@ const byReleaseDesc = (a: { released: string | null }, b: { released: string | n
  * lineup of models and products, a dated timeline, and leadership. Every line
  * carries its sources.
  */
-export function DeepDive({ name, deep, sources, leaders }: { name: string; deep: DeepDiveT; sources: Source[]; leaders: Leader[] }) {
-  const leaderByName = new Map(leaders.map((l) => [l.name.toLowerCase(), l]));
+export function DeepDive({ name, deep, sources }: { name: string; deep: DeepDiveT; sources: Source[] }) {
   const lineup = [...deep.lineup].sort(byReleaseDesc);
   const nav = [
     ...deep.sections.map((s) => ({ href: `#dd-${s.id}`, label: s.title })),
@@ -177,27 +175,15 @@ export function DeepDive({ name, deep, sources, leaders }: { name: string; deep:
             </h3>
             <p className="mt-2 max-w-3xl text-sm text-muted">Titles as the official source lists them.</p>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {deep.leadership.map((p) => {
-                const profile = leaderByName.get(p.name.toLowerCase());
-                return (
-                  <li key={p.name} className="card p-4">
-                    <p className="font-semibold text-text">
-                      {profile ? (
-                        <Link prefetch={false} href={`/big-si/${profile.slug}/`} className="link inline-flex items-center gap-1">
-                          {p.name} <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
-                        </Link>
-                      ) : (
-                        p.name
-                      )}
-                    </p>
-                    <p className="mt-1 text-sm text-muted">
-                      {p.role}
-                      <SourceRefs ids={p.source_ids} sources={sources} />
-                    </p>
-                    {profile ? <p className="mt-2 text-xs text-ice">Full profile in People Behind Big SI</p> : null}
-                  </li>
-                );
-              })}
+              {deep.leadership.map((p) => (
+                <li key={p.name} className="card p-4">
+                  <p className="font-semibold text-text">{p.name}</p>
+                  <p className="mt-1 text-sm text-muted">
+                    {p.role}
+                    <SourceRefs ids={p.source_ids} sources={sources} />
+                  </p>
+                </li>
+              ))}
             </ul>
           </section>
         ) : null}

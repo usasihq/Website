@@ -8,6 +8,6 @@ test("llms.txt is at the site root with the catalog overview", async ({ request 
   expect(text).toContain("> Independent, unofficial catalog");
   expect(text).toContain("## Jobs");
   expect(text).toContain("/jobs/index/");
-  expect(text).toContain("/voices/");
+  expect(text).not.toMatch(/\/(people|big-si|voices|local)\//);
   expect(text).toContain("https://unitedstatesofamericasuperintelligence.com/");
 });

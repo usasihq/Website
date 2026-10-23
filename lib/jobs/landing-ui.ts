@@ -2,8 +2,6 @@
  * Shared props for Jobs landing routes (page 1 and /page/n/).
  */
 import type { Catalog } from "../catalog";
-import { DEFAULT_PEOPLE_FILTERS, serializePeopleFilters } from "../people";
-import { peopleAtOrganization } from "../people-index";
 import { organizationsByState } from "../place-index";
 import { stateSlug } from "../places";
 import { hiringProcessFor } from "./hiring-process";
@@ -15,7 +13,6 @@ const OTHER_EMPLOYERS = 24;
 
 export function landingExtras(catalog: Catalog, page: LandingPage) {
   const hq = page.state ? organizationsByState(catalog).states.find((s) => s.code === page.state) : undefined;
-  const people = page.organization ? peopleAtOrganization(catalog, page.organization.slug) : [];
   const existing = new Set(landingLinks(catalog).map((l) => l.path));
   const parents =
     page.kind === "metro" && page.metro
@@ -50,8 +47,6 @@ export function landingExtras(catalog: Catalog, page: LandingPage) {
         : page.kind === "state" && page.state
           ? roleStateLinksForState(catalog, page.state)
           : [],
-    people: people.map((p) => ({ href: p.href, name: p.name })),
-    peopleHref: page.organization && people.length ? `/people/?${serializePeopleFilters({ ...DEFAULT_PEOPLE_FILTERS, org: page.organization.slug })}` : null,
     headquartersHref: hq ? `/places/${stateSlug(hq.code)}/` : null,
     headquartersCount: hq?.organizations.length ?? 0,
     pay: page.kind === "company" && page.organization ? payEmployer(catalog, page.organization.slug) ?? null : page.kind === "role" ? payRole(catalog, page.id) ?? null : null,

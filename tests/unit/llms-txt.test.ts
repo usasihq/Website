@@ -23,23 +23,18 @@ describe("llms.txt", () => {
 
   it("covers the main sitemap areas with absolute URLs", () => {
     const titles = sections.map((s) => s.title);
-    for (const title of ["Jobs", "Companies & Labs", "People Behind Big SI", "Open-source people", "Voices of SI", "Resources"]) {
+    for (const title of ["Jobs", "Companies & Labs", "Resources"]) {
       expect(titles, title).toContain(title);
     }
     expect(text).toContain(`](https://${siteConfig.domain}${HIRING_INDEX_HREF})`);
     expect(text).toContain(`](https://${siteConfig.domain}/jobs/)`);
-    expect(text).toContain(`](https://${siteConfig.domain}/voices/)`);
-    expect(text).toContain(`](https://${siteConfig.domain}/big-si/)`);
     expect(text).toContain(`](https://${siteConfig.domain}/companies/)`);
     expect(text).toContain(`](https://${siteConfig.domain}/sitemap.xml)`);
   });
 
-  it("lists published companies, Big SI leaders, and the Voices of SI and open-source people", () => {
+  it("lists published companies", () => {
     const byTitle = Object.fromEntries(sections.map((s) => [s.title, s.items]));
     expect(byTitle["Companies & Labs"].length).toBeGreaterThan(catalog.organizations.length);
-    expect(byTitle["People Behind Big SI"].some((i) => i.path === `/big-si/${catalog.leaders[0].slug}/`)).toBe(true);
-    expect(byTitle["Open-source people"].some((i) => i.path.startsWith("/people/"))).toBe(true);
-    expect(byTitle["Voices of SI"].some((i) => i.path === "/voices/")).toBe(true);
     expect(byTitle["Jobs"].some((i) => i.path === HIRING_INDEX_HREF)).toBe(true);
   });
 

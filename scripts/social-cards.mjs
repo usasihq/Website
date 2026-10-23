@@ -10,10 +10,10 @@
  * Outputs (committed to the repository):
  *   public/og-open.png   Open Models & Tools (/open/ and its record pages)
  *   public/og-jobs.png   Jobs (/jobs/), in the light site theme
- *   public/og-people.png, og-voices.png, og-news.png, og-changelog.png,
+ *   public/og-news.png, og-changelog.png,
  *   og-newsletter.png    section index pages, in the same light theme
  *
- * `npm run prepare:social -- og-people.png og-news.png` renders only the named
+ * `npm run prepare:social -- og-news.png og-changelog.png` renders only the named
  * cards, so existing PNGs are not rewritten.
  *
  * Alt text for each card lives in lib/metadata.ts; update it when a card changes.
@@ -100,24 +100,6 @@ const JOBS_CARD = {
 };
 const LIGHT_CARDS = [
   JOBS_CARD,
-  {
-    file: "og-people.png",
-    eyebrow: "USASI People",
-    title: ["People in", "U.S. AI"],
-    description: "Sourced profiles of the founders, engineers, researchers, and open-source maintainers in the catalog.",
-    panelTitle: "Each profile links",
-    rows: ["Roles and affiliations", "Organizations", "Projects and releases", "Sources"],
-    url: "unitedstatesofamericasuperintelligence.com/people/",
-  },
-  {
-    file: "og-voices.png",
-    eyebrow: "USASI People",
-    title: ["Voices of SI"],
-    description: "Tech creators and communicators who explain AI and superintelligence to the public.",
-    panelTitle: "Their work",
-    rows: ["Shows and channels", "Podcasts", "Newsletters", "Reporting"],
-    url: "unitedstatesofamericasuperintelligence.com/voices/",
-  },
   {
     file: "og-news.png",
     eyebrow: "USASI News",

@@ -10,7 +10,7 @@ import { mailtoHref, siteConfig } from "@/lib/site-config";
  */
 export function EntryActions({ contentPath, title }: { contentPath: string; title: string }) {
   const slug = contentPath.split("/").pop()!.replace(/\.yml$/, "");
-  const section = contentPath.includes("organizations/") ? "companies" : contentPath.includes("artifacts/") ? "open" : contentPath.includes("people/") ? "local" : "news";
+  const section = contentPath.includes("organizations/") ? "companies" : contentPath.includes("artifacts/") ? "open" : "news";
   const correction = siteConfig.contact.email ? mailtoHref(siteConfig.contact.email, `Correction: ${title}`, `Entry URL: ${absoluteUrl(`/${section}/${slug}/`)}\nEntry file: ${contentPath}\n\nDisputed field:\n\nProposed correction:\n\nSupporting primary source (URL):\n\nEffective date (if known):\n`) : null;
   const edit = editUrl(contentPath);
   const report = issueUrl("correction.yml", `Correction: ${title}`, { entry: contentPath });

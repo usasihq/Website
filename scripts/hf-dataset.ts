@@ -5,7 +5,7 @@
  *
  * Included: published organizations, open models and tools, and news items,
  * as summary CSVs (for the dataset viewer) and full JSON Lines with every
- * source and date. Excluded: People Behind Local SI profiles and job postings.
+ * source and date. Excluded: job postings.
  *
  * Usage: npx tsx scripts/hf-dataset.ts [--summary-only]
  *   --summary-only  skip full/*.jsonl (for uploads through the website, where
@@ -124,7 +124,7 @@ ${fieldTable(orgs.fields)}
 - Coverage is selective. Counts describe this catalog, not the field: this is not a census, a ranking, or a measure of capability.
 - The catalog deliberately records no funding, valuations, revenue, staff or user counts, or benchmark scores.
 - Availability and openness fields describe documented availability under the catalog's own rules; they are not certifications.
-- People Behind Local SI profiles and job postings from the site are not included.
+- Job postings from the site are not included.
 
 ## License and attribution
 

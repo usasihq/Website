@@ -1,6 +1,5 @@
 import { MEMORY_PAGES } from "./hardware";
 import { KID_LESSONS } from "./kids";
-import { PERSON_SPECIALTIES } from "./schema";
 
 /**
  * Fixed site pages (no slug). Shared by the sitemap and by validation of
@@ -26,10 +25,6 @@ export const STATIC_ROUTES = [
   "/contribute/",
   "/support/",
   "/privacy/",
-  "/local/",
-  "/voices/",
-  "/people/",
-  "/people/school/",
   "/news/",
   "/newsletter/",
   "/badges/",
@@ -52,7 +47,6 @@ export const STATIC_ROUTES = [
   "/kids/words/",
   "/kids/grown-ups/",
   "/kids/packet/",
-  "/big-si/",
   "/report/",
 ];
 
@@ -68,8 +62,6 @@ export type SiteSlugs = {
   issues: Set<string>;
   /** Published policy documents, each with a page at /policy/<slug>/. */
   policy?: Set<string>;
-  /** Published People profiles, each at /people/<slug>/. */
-  people?: Set<string>;
   /** Published editions of The State of American AI, each at /report/<YYYY-MM>/. */
   reports?: Set<string>;
   /** AI on GitHub project slugs (owner--repo), each at /github/<slug>/. */
@@ -94,13 +86,6 @@ export function isKnownSitePath(href: string, slugs: SiteSlugs): boolean {
   if (p) return slugs.paths.has(p[1]);
   const pol = path.match(/^\/policy\/([a-z0-9-]+)\/$/);
   if (pol) return Boolean(slugs.policy?.has(pol[1]));
-  const per = path.match(/^\/people\/([a-z0-9-]+)\/$/);
-  if (per) return Boolean(slugs.people?.has(per[1]));
-  if (/^\/people\/school\/[a-z0-9-]+\/$/.test(path)) return true;
-  const at = path.match(/^\/people\/at\/([a-z0-9-]+)\/$/);
-  if (at) return slugs.organizations.has(at[1]);
-  const field = path.match(/^\/people\/field\/([a-z0-9-]+)\/$/);
-  if (field) return (PERSON_SPECIALTIES as readonly string[]).includes(field[1]);
   const gh = path.match(/^\/github\/([a-z0-9-]+)\/$/);
   if (gh) return Boolean(slugs.github?.has(gh[1]));
   if (path === "/huggingface/datasets/") return true;

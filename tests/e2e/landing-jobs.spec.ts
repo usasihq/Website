@@ -180,7 +180,7 @@ test("the freshness notice appears once listings are more than 48 hours old", as
   await expect(page.getByRole("status").filter({ hasText: "more than 48 hours ago" })).toBeVisible();
 });
 
-test("the fellowships page answers first, groups by employer, and links people by school", async ({ page }) => {
+test("the fellowships page answers first and groups by employer", async ({ page }) => {
   await page.goto("/jobs/fellowships/");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("AI fellowships and postdocs");
   const count = await countOnPage(page);
@@ -197,14 +197,11 @@ test("the fellowships page answers first, groups by employer, and links people b
   expect(ld).toContain('"CollectionPage"');
   expect(ld).toContain('"ItemList"');
   expect(ld).not.toContain("JobPosting");
-  await expect(page.locator('main a[href="/people/school/"]')).toBeVisible();
   await expect(page.locator('main a[href="/jobs/internships/"]')).toBeVisible();
   const titles = await page.locator("#listings h3 a").allTextContents();
   for (const title of titles) {
     expect(title).toMatch(/\b(fellowships?|fellows?|post[- ]?docs?|post[- ]?doctoral)\b/i);
   }
-  await page.goto("/people/school/");
-  await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
   await page.goto("/jobs/internships/");
   await expect(page.locator('main a[href="/jobs/fellowships/"]')).toBeVisible();
 });

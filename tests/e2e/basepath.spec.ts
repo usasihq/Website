@@ -45,14 +45,11 @@ test("Jobs links and filters preserve the base path", async ({page}) => {
 });
 
 
-test("People Behind Local SI navigation preserves the base path", async ({page}) => {
+test("the AI People Wiki pointer is one plain external link, not base-pathed", async ({page}) => {
   await page.goto("/usasi/about/");
-  const nav = page.getByRole("navigation", {name:"Primary", exact:true});
-  await nav.getByRole("button", {name:"People", exact:true}).click();
-  const link = nav.getByRole("link", {name:/^People Behind Local SI/});
-  await expect(link).toHaveAttribute("href", "/usasi/local/");
-  await link.click();
-  await expect(page).toHaveURL(/\/usasi\/local\/$/);
-  await nav.getByRole("button", {name:"People", exact:true}).click();
-  await expect(link).toHaveAttribute("aria-current", "page");
+  const link = page.getByTestId("people-wiki-link");
+  await expect(link).toHaveCount(1);
+  await expect(link).toHaveAttribute("href", "https://aipeoplewiki.com/");
+  await expect(link).toHaveAttribute("rel", "noopener");
+  await expect(page.locator('a[href*="/people/"], a[href$="/local/"], a[href*="/voices/"], a[href*="/big-si/"]')).toHaveCount(0);
 });

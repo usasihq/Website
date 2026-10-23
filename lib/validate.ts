@@ -15,8 +15,6 @@ import {
   NewsItem,
   NewsletterIssue,
   Organization,
-  Person,
-  Leader,
   PolicyDocument,
   Quiz,
   type Artifact as ArtifactT,
@@ -30,8 +28,6 @@ import {
   type NewsItem as NewsItemT,
   type NewsletterIssue as NewsletterIssueT,
   type Organization as OrganizationT,
-  type Person as PersonT,
-  type Leader as LeaderT,
 } from "./schema";
 import { inlineLinks, isAllowedHref } from "./inline-text";
 import { EXPLAINERS, LEARNING_PATHS } from "./learn";
@@ -49,8 +45,6 @@ export interface RawContent {
   artifacts: RawDocument[];
   changelog: RawDocument[];
   featured: RawDocument | null;
-  people?: RawDocument[];
-  leaders?: RawDocument[];
   news?: RawDocument[];
   hubs?: RawDocument[];
   licenses?: RawDocument[];
@@ -74,8 +68,6 @@ export interface ValidatedContent {
   artifacts: ArtifactT[];
   changelog: ChangelogEntryT[];
   featured: FeaturedSelectionT | null;
-  people: PersonT[];
-  leaders: LeaderT[];
   news: NewsItemT[];
   hubs: HubT[];
   licenses: LicenseGuideT[];
@@ -89,18 +81,10 @@ export interface ValidatedContent {
 /** Claims the catalog does not publish, in news either. */
 const NEWS_FORBIDDEN = /(\$\s?\d|\bvaluation|\bvalued at|\bfunding round|\braised\b|\bseries [a-h]\b|\bemployees\b|\bheadcount|\bmonthly active|\busers\b|\bbenchmark score|\bstate-of-the-art|\bbest-in-class|\bleading\b)/i;
 
-/** Leader profiles celebrate careers; they never include wealth, money, family, or counts of people. */
-const LEADER_FORBIDDEN =
-  /(\$\s?\d|\bnet worth|\bbillionaire|\bwealth|\bfortune\b|\bcompensation|\bsalary|\bvaluation|\bvalued at|\bfunding round|\bemployees\b|\bheadcount|\busers\b|\bmarried|\bspouse|\bwife\b|\bhusband|\bchildren\b|\bdaughters?\b|\bsons?\b|\breligio\w*|\bhome address)/i;
-
 /** Identifiers and dates inside records, which prose rules do not apply to. */
 const NON_PROSE_PATH = /(source_ids\[\d+\]|\.(id|slug|kind|status|date|released|since|from|to|reviewed_at|organization_slug))$/;
 
 const GENDERED_PRONOUNS = /\b(he|she|him|her|his|hers|himself|herself)\b/i;
-
-/** Wording that would add personal (non-professional) details to a profile. */
-const PERSONAL_DETAIL_PATTERN =
-  /\b(born|birthplace|hometown|grew up|age[ds]?\s+\d|years old|nationality|citizen(ship)?|immigra\w*|married|spouse|wife|husband|children|live[sd]?\s+in|living\s+in|based\s+in|resid\w*|relocat\w*|moved\s+to|home address|religio\w*|ethnic\w*)\b/i;
 
 /** Text that must never appear in public records. */
 const PLACEHOLDER_PATTERN = /\b(TODO|TBD|FIXME|lorem ipsum|XXX+|insert here)\b|\[(placeholder|tbd|todo)\]/i;
@@ -444,101 +428,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     });
   }
 
-  /* ---- Local corner people ---- */
-  const peopleDocs = parseDocs(raw.people ?? [], Person, issues);
-  const personSlugs = new Map<string, string>();
-  for (const { file, value: person } of peopleDocs) {
-    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
-    if (basename(file) !== person.slug) push("error", `File name must match slug "${person.slug}"`, "slug");
-    if (personSlugs.has(person.slug)) push("error", `Duplicate person slug "${person.slug}"`, "slug");
-    personSlugs.set(person.slug, file);
-
-    const ids = new Set<string>();
-    person.sources.forEach((s, i) => {
-      if (ids.has(s.id)) push("error", `Duplicate source id "${s.id}"`, `sources[${i}].id`);
-      ids.add(s.id);
-      if (s.accessed_at > today) push("error", "accessed_at is in the future", `sources[${i}].accessed_at`);
-    });
-    const refs: Array<{ id: string; path: string }> = [];
-    collectSourceRefs(person, "", refs);
-    const used = new Set(refs.map((r) => r.id));
-    for (const r of refs) if (!ids.has(r.id)) push("error", `Unknown source id "${r.id}"`, r.path);
-    person.sources.forEach((s, i) => {
-      if (!used.has(s.id)) push("warning", `Source "${s.id}" is not cited by any claim`, `sources[${i}]`);
-    });
-    if (person.updated_at > today) push("error", "updated_at is in the future", "updated_at");
-    if (person.last_reviewed && person.last_reviewed > today) push("error", "last_reviewed is in the future", "last_reviewed");
-
-    person.affiliations.forEach((a, i) => {
-      if (a.organization_slug && !orgBySlug.has(a.organization_slug)) push("error", `Unknown organization slug "${a.organization_slug}"`, `affiliations[${i}]`);
-    });
-    person.work.forEach((w, i) => {
-      if (w.artifact_slug && !artifactBySlug.has(w.artifact_slug)) push("error", `Unknown artifact slug "${w.artifact_slug}"`, `work[${i}]`);
-    });
-
-    const strings: Array<{ text: string; path: string }> = [];
-    collectStrings(person, "", strings);
-    for (const { text, path } of strings) {
-      if (isUrlLike(text)) continue;
-      if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(person.publication_status === "draft" ? "warning" : "error", `Placeholder text found: "${text.slice(0, 60)}"`, path);
-      if (!path.startsWith("sources") && PERSONAL_DETAIL_PATTERN.test(text)) {
-        push("error", `Personal detail not allowed in profiles: "${text.slice(0, 60)}"`, path);
-      }
-    }
-
-    if (person.publication_status === "published") {
-      if (!person.last_reviewed) push("error", "Published profiles need a last_reviewed date", "last_reviewed");
-      const tied =
-        person.affiliations.some((a) => a.organization_slug && publishedOrgs.has(a.organization_slug)) ||
-        person.work.some((w) => w.artifact_slug && publishedArtifacts.has(w.artifact_slug));
-      // Tech creators and communicators are profiled for their own shows, channels, and publications
-      // about technology, documented on official pages, rather than for a tie to a catalog record.
-      const creator = person.groups.includes("creators") && person.work.some((w) => w.type === "media" && w.url);
-      if (!tied && !creator) push("error", "A published profile must link to at least one published catalog organization or artifact", "affiliations");
-    }
-  }
-
-  /* ---- People Behind Big SI ---- */
-  const leaderDocs = parseDocs(raw.leaders ?? [], Leader, issues);
-  const leaderSlugs = new Set<string>();
-  for (const { file, value: leader } of leaderDocs) {
-    const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
-    if (basename(file) !== leader.slug) push("error", `File name must match slug "${leader.slug}"`, "slug");
-    if (leaderSlugs.has(leader.slug)) push("error", `Duplicate leader slug "${leader.slug}"`, "slug");
-    leaderSlugs.add(leader.slug);
-    const ids = new Set<string>();
-    leader.sources.forEach((s, i) => {
-      if (ids.has(s.id)) push("error", `Duplicate source id "${s.id}"`, `sources[${i}].id`);
-      ids.add(s.id);
-      if (s.accessed_at > today) push("error", "accessed_at is in the future", `sources[${i}].accessed_at`);
-      if (s.published_at && datePrefixAfter(s.published_at, today)) push("error", "published_at is in the future", `sources[${i}].published_at`);
-    });
-    const refs: Array<{ id: string; path: string }> = [];
-    collectSourceRefs(leader, "", refs);
-    const used = new Set(refs.map((r) => r.id));
-    for (const r of refs) if (!ids.has(r.id)) push("error", `Unknown source id "${r.id}"`, r.path);
-    leader.sources.forEach((s, i) => {
-      if (!used.has(s.id)) push("warning", `Source "${s.id}" is not cited by any claim`, `sources[${i}]`);
-    });
-    if (leader.updated_at > today) push("error", "updated_at is in the future", "updated_at");
-    if (leader.last_reviewed && leader.last_reviewed > today) push("error", "last_reviewed is in the future", "last_reviewed");
-    leader.timeline.forEach((t, i) => {
-      if (datePrefixAfter(t.date, today)) push("error", "Timeline date is in the future", `timeline[${i}].date`);
-    });
-    [...leader.current_roles, ...leader.past_roles].forEach((r, i) => {
-      if (r.organization_slug && !orgBySlug.has(r.organization_slug)) push("error", `Unknown organization slug "${r.organization_slug}"`, `roles[${i}]`);
-    });
-    const level = leader.publication_status === "draft" ? "warning" : "error";
-    const strings: Array<{ text: string; path: string }> = [];
-    collectStrings(leader, "", strings);
-    for (const { text, path } of strings) {
-      if (isUrlLike(text) || path.startsWith("sources") || path.startsWith("links") || NON_PROSE_PATH.test(path)) continue;
-      if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(level, `Placeholder text found: "${text.slice(0, 60)}"`, path);
-      if (LEADER_FORBIDDEN.test(text)) push(level, `Leader profiles may not include wealth, money, family, or user and staff counts: "${text.slice(0, 60)}"`, path);
-      if (GENDERED_PRONOUNS.test(text)) push(level, `Use names or "they", not gendered pronouns: "${text.slice(0, 60)}"`, path);
-    }
-    if (leader.publication_status === "published" && !leader.last_reviewed) push("error", "Published profiles need a last_reviewed date", "last_reviewed");
-  }
   /* ---- News ---- */
   const newsDocs = parseDocs(raw.news ?? [], NewsItem, issues);
   const newsSlugs = new Set<string>();
@@ -578,7 +467,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
   /* ---- Hubs ---- */
   const hubDocs = parseDocs(raw.hubs ?? [], Hub, issues);
   const hubSlugs = new Set<string>();
-  const publishedPeople = new Set(peopleDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug));
   for (const { file, value: hub } of hubDocs) {
     const push = (level: ValidationIssue["level"], message: string, path?: string) => issues.push({ level, file, path, message });
     if (basename(file) !== hub.slug) push("error", `File name must match slug "${hub.slug}"`, "slug");
@@ -602,7 +490,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
       });
     check(hub.organizations, orgBySlug, publishedOrgs, "organization", "organizations");
     check(hub.artifacts, artifactBySlug, publishedArtifacts, "artifact", "artifacts");
-    check(hub.people, new Set(peopleDocs.map((d) => d.value.slug)), publishedPeople, "person", "people");
     if (hub.organizations.length + hub.artifacts.length === 0) push("error", "A hub must feature at least one catalog record", "organizations");
     for (const [path, text] of [["title", hub.title], ["summary", hub.summary], ["scope", hub.scope], ...hub.intro.map((c, i) => [`intro[${i}].text`, c.text] as const)] as const) {
       if (PLACEHOLDER_PATTERN.test(text) || PLACEHOLDER_WHOLE.test(text)) push(published ? "error" : "warning", `Placeholder text in ${path}`, path);
@@ -731,7 +618,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     paths: new Set(LEARNING_PATHS.map((p) => p.id)),
     issues: new Set(issueDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
     policy: new Set(policyDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
-    people: new Set(peopleDocs.filter((d) => d.value.publication_status === "published").map((d) => d.value.slug)),
     reports: new Set(raw.reports ?? []),
   };
   const issueNumbers = new Set<number>();
@@ -772,8 +658,6 @@ export function validateContent(raw: RawContent, options: { today: string }): Va
     artifacts: artifacts.map(strip) as ArtifactT[],
     changelog: changelogDocs.map((d) => d.value).sort((a, b) => b.date.localeCompare(a.date)),
     featured: featuredDoc?.value ?? null,
-    people: peopleDocs.map((d) => d.value),
-    leaders: leaderDocs.map((d) => d.value),
     // Newest events first: an item written later about an older event sits at its event date, not at the top.
     news: newsDocs.map((d) => d.value).sort((a, b) => b.event_date.localeCompare(a.event_date) || b.published_at.localeCompare(a.published_at) || a.slug.localeCompare(b.slug)),
     hubs: hubDocs.map((d) => d.value).sort((a, b) => a.title.localeCompare(b.title)),

@@ -203,7 +203,6 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     description: (f) =>
       withFreshness(`${plural(f.count, "open internship", "open internships")} at ${at(f)}, matched by job title or employment type. ${abroad(f)}`, f.date),
     image: "/og/jobs/internships.jpg",
-    related: [{ href: "/people/school/", label: "People by school" }],
   },
   fellowships: {
     id: "fellowships",
@@ -214,13 +213,12 @@ export const TOPICS: Record<TopicId, LandingDefinition> = {
     scope: "includes-outside",
     filters: { track: "fellowships" },
     intro:
-      "Open fellowships, fellows programs, and postdoctoral roles at AI companies, labs, and research institutes in the USASI catalog, found from the employer’s own title (“fellowship”, “fellow”, “postdoc”, “postdoctoral”). Fall is the usual application season. Internships are on the internships page; other early-career roles are on the entry-level page. People in the catalog grouped by university are on the people-by-school page.",
+      "Open fellowships, fellows programs, and postdoctoral roles at AI companies, labs, and research institutes in the USASI catalog, found from the employer’s own title (“fellowship”, “fellow”, “postdoc”, “postdoctoral”). Fall is the usual application season. Internships are on the internships page; other early-career roles are on the entry-level page.",
     rule: FELLOWSHIP_RULE,
     title: (f) => openingsTitle("AI fellowships and postdocs", f.count),
     description: (f) =>
       withFreshness(`${plural(f.count, "open AI fellowship or postdoc", "open AI fellowships and postdocs")} at ${at(f)}, matched by job title. ${abroad(f)}`, f.date),
     image: "/og/jobs/fellowships.jpg",
-    related: [{ href: "/people/school/", label: "People by school" }],
   },
   "summer-2027": {
     id: "summer-2027",

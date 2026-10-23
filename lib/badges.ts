@@ -93,11 +93,6 @@ export function rankBadgeSvg(kind: RankBadgeKind, rank: number): string {
   return messageBadgeSvg(rankBadgeMessage(kind, rank), rankBadgeTitle(kind, rank));
 }
 
-/** Static "USASI | profile" badge for People pages (public/badges/profile.svg). */
-export const PROFILE_BADGE_PATH = "/badges/profile.svg";
-export const PROFILE_BADGE_ALT = "Profile on USASI";
-export const profileBadgeSvg = () => messageBadgeSvg("profile", `USASI: ${PROFILE_BADGE_ALT}`);
-
 /** The same USASI label panel with any short message on the right. */
 export function messageBadgeSvg(message: string, title: string): string {
   const messageText = Math.ceil(textWidth(message));

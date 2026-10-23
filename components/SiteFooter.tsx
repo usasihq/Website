@@ -6,6 +6,13 @@ import { BrandMark } from "./BrandMark";
 import { ContactLinks } from "./ContactLinks";
 import { ExternalLink } from "./ExternalLink";
 
+/**
+ * The one outbound pointer to the standalone people site. The People section was
+ * removed from USASI (see docs/PEOPLE_MOVED.md); this plain link is the only
+ * remaining mention. No tracking parameters, no referral markup.
+ */
+export const PEOPLE_WIKI_URL = "https://aipeoplewiki.com/";
+
 const COLUMNS = [
   {
     heading: "Explore",
@@ -37,12 +44,8 @@ const COLUMNS = [
     ],
   },
   {
-    heading: "People & news",
+    heading: "News & updates",
     links: [
-      { href: "/people/", label: "All people" },
-      { href: "/big-si/", label: "People Behind Big SI" },
-      { href: "/local/", label: "People Behind Local SI" },
-      { href: "/voices/", label: "Voices of SI" },
       { href: "/news/", label: "Latest news" },
       { href: "/new/", label: "New this week" },
       { href: "/newsletter/", label: "Weekly email" },
@@ -98,6 +101,18 @@ export function SiteFooter() {
                     </Link>
                   </li>
                 ))}
+                {col.heading === "News & updates" ? (
+                  <li>
+                    <a
+                      href={PEOPLE_WIKI_URL}
+                      rel="noopener"
+                      data-testid="people-wiki-link"
+                      className="inline-flex min-h-8 items-center text-sm text-muted transition-colors hover:text-text"
+                    >
+                      People → AI People Wiki
+                    </a>
+                  </li>
+                ) : null}
               </ul>
             </nav>
           ))}
