@@ -51,15 +51,14 @@ npm run preview:static  # serve out/ like a static host at http://localhost:4321
 | `npm run build` | `validate` → `prepare:data` → `next build` (static export) → `scripts/postbuild.mjs` (per-page CSP, leak checks). |
 | `npm run check:links` | Verifies every internal link, asset, and `#fragment` in `out/`. |
 | `npm run check:sources` | Requests every cited source URL and writes `reports/source-check.json`. Editorial tool only: never edits content and is not part of the build. |
-| `npm run report:snapshot -- <YYYY-MM>` | Computes an edition of The State of American AI from the catalog and jobs data and writes `content/reports/<YYYY-MM>.json`. Refuses to overwrite a published edition (`--force` only for an unpublished draft). |
+| `npm run report:snapshot -- <YYYY-MM>` | Computes an edition of The State of American AI from the catalog and writes `content/reports/<YYYY-MM>.json`. Refuses to overwrite a published edition (`--force` only for an unpublished draft). |
 | `npm run report:reviews` | Lists records whose evidence review is older than 180 days (`-- --max-age N`), pending eligibility, and stale product reviews. Read-only. |
 | `npm run preview:static` | Dependency-free static server for `out/` that applies `_headers` and compression (`-- --base /usasi --dir .out-basepath` for base paths). |
 | `npm run preview:cloudflare` | Serves `out/` in Cloudflare's local Workers runtime (`wrangler dev`) with the real asset routing, `_headers`, and 404 handling. No account needed. |
 | `npm run deploy:cloudflare` | `wrangler deploy` — requires your Cloudflare login or API token. Not run by anything automatically. |
 | `npm run prepare:images` | Regenerates hero derivatives, `og.png`, and the touch icon, using the branding derivative while preserving the original artwork. |
 | `npm run prepare:social` | Renders section social cards (`og-open.png` for Open Models & Tools) with the site's fonts and colors. Their alt text lives in `lib/metadata.ts`. |
-| `npm run jobs:index` | After a jobs refresh, notify the Google Indexing API of added or removed job pages. Skips if `GOOGLE_INDEXING_SA_JSON` is unset. |
-| `npm run layoffs:refresh` | Fetch recent WARN Act notices for CA, WA, NY, and TX. A failed state keeps its last snapshot or is skipped. |
+| `npm run check:jobs-removed` | Pop-back guard: fails if the jobs section or a `/jobs` link reappears. See `docs/JOBS_MOVED.md`. |
 | `npm run github:refresh` | Refresh `data/github/projects.json` (AI on GitHub, `/github/`) from the public GitHub search API: no token, about 45 minutes at the unauthenticated rate limit. `-- --offline` re-applies the inclusion rules to the cached results. See `docs/AUTOMATION.md`. |
 
 ## Repository layout
@@ -235,10 +234,10 @@ each workflow does nothing until you opt in.
 
 ### Cloudflare Workers (primary)
 
-The site is static assets plus a small Worker (`wrangler.jsonc`) that only
-runs first on `/jobs/at/*`. Live listing pages, employer pages, and every other
-path are still files in `./out`. A listing URL with no file is a closed posting
-and returns HTTP 410 with a noindex closed-job page.
+The site is static assets plus a small Worker (`wrangler.jsonc`) that runs
+first on the old people and jobs prefixes so those addresses can 301 to
+aipeoplewiki.com in one hop. Every other path is a file in `./out`. See
+`docs/PEOPLE_MOVED.md` and `docs/JOBS_MOVED.md`.
 
 - `public/_headers` sets strict security headers (CSP with `frame-ancestors
   'none'`, HSTS, `nosniff`, `X-Frame-Options`, Referrer-Policy,
@@ -251,8 +250,8 @@ and returns HTTP 410 with a noindex closed-job page.
   including its versioned paths; collection stays restricted to same-origin.
 - `not_found_handling: "404-page"` serves the styled `404.html` with a real 404
   status; `html_handling: "auto-trailing-slash"` redirects `/companies` →
-  `/companies/` (307). `run_worker_first: ["/jobs/at/*"]` lets the Worker return
-  410 for a closed listing before navigation requests would otherwise get `404.html`.
+  `/companies/` (307). `run_worker_first` lists the old people and jobs prefixes
+  so the Worker can return a single-hop 301 before the platform adds a slash.
 - Cloudflare compresses responses (Brotli) automatically.
 
 Current setup: the site is live at https://unitedstatesofamericasuperintelligence.com
@@ -322,8 +321,8 @@ and `index.html` for directory URLs; `_headers` is ignored there.
 `/report/` is a recurring research report computed from the catalog
 (`lib/report.ts`). Each edition is frozen in `content/reports/<YYYY-MM>.json`:
 its figures, the caption and counting note of every figure, the headline
-findings, the record lists, and digests of the inputs (catalog records, jobs
-file, commit). The site renders editions only from these files, so later
+findings, the record lists, and digests of the inputs (catalog records, commit).
+The site renders editions only from these files, so later
 catalog changes never rewrite a published edition; `/report/` shows the latest
 edition and a "Since this edition" note when the live catalog differs.
 
@@ -334,42 +333,8 @@ build. Each edition gets `/report/<YYYY-MM>/` with
 `data.csv` and `data.json` (CC BY 4.0), a preview card, a sitemap entry, and a
 "What changed since the previous edition" section.
 
-## Jobs
+## Jobs (moved)
 
-The `/jobs/` catalog uses first-party employer/official ATS sources configured on
-published organizations. See [Jobs architecture, source policy and operations](docs/JOBS.md)
-for setup, refresh scheduling, validation, reconciliation, supported adapters and limits.
-Run `npm run jobs:refresh` to fetch and reconcile supported feeds; ordinary builds are
-offline and use the validated snapshot. Applications remain on the employer's site.
-
-### Google Indexing API (job pages)
-
-After `refresh-jobs.yml` rebuilds `data/jobs/current.json`, it compares job-page URLs
-(`/jobs/at/<employer>/<title>-<code>/`) with the previous snapshot and sends
-`URL_UPDATED` or `URL_DELETED` to the
-[Google Indexing API](https://developers.google.com/search/apis/indexing-api/v3/using-api).
-Newest postings are sent first. At most 200 notifications go out per Pacific-time day
-(Google's default publish quota). The day's count is cached with the jobs snapshot so
-the six-hour schedule cannot exceed the cap.
-
-Setup (optional; the step skips without an error if the secret is missing):
-
-1. In Google Cloud, create a service account, enable the Indexing API, and download a JSON key.
-2. Add that JSON as the GitHub Actions secret `GOOGLE_INDEXING_SA_JSON` (production environment
-   or repository secret). Never commit the key.
-3. In [Google Search Console](https://search.google.com/search-console), add the service
-   account email as an **Owner** of `unitedstatesofamericasuperintelligence.com`.
-   The Indexing API rejects notifications unless that Owner grant is in place.
-
-Locally, `npm run jobs:index` reads the same secret from the environment (see `.env.example`).
-Copy the previous snapshot to `data/jobs/previous.json` first if you want a real diff.
-
-### WARN Act layoff pages
-
-`/jobs/layoffs/` and `/jobs/layoffs/<state>/` list recent official WARN Act notices for
-California, Washington, New York, and Texas, and link to this site's existing state and
-city job pages with the open AI-job counts. Notices come from each state's labor department
-list, collected with [Big Local News warn-scraper](https://github.com/biglocalnews/warn-scraper)
-(or its published CSVs). Sources are cited on the page. `prepare:data` (part of `npm run build`)
-tries to refresh the snapshot; a failed state keeps the last file or is skipped. Run
-`npm run layoffs:refresh` on its own to update `data/layoffs/current.json`.
+The jobs section moved to [aipeoplewiki.com](https://aipeoplewiki.com/jobs/) on
+2026-10-23. Do not re-add it here. Old addresses 301 there; the removed files
+are on `archive/jobs-before-removal`. See [docs/JOBS_MOVED.md](docs/JOBS_MOVED.md).

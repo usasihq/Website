@@ -6,9 +6,6 @@ import path from "node:path";
 import { loadCatalog, type Catalog } from "./catalog";
 import { GITHUB_PAGE_SIZE, githubEntries, githubPageCount, githubPageHref, githubProjectSeo } from "./github/projects";
 import { HF_PAGE_SIZE, hfDatasetEntries, hfItemSeo, hfModelEntries, hfPageCount, hfPageHref } from "./huggingface/items";
-import { jobMetaDescription } from "./jobs/job-page-html";
-import { jobPageTitle, jobPages, TITLE_LIMIT } from "./jobs/job-pages";
-import { jobsLandingData } from "./jobs/landing";
 import { EXPLAINERS } from "./learn";
 import { clipDescription, DESCRIPTION_MAX, documentTitle, TITLE_MAX } from "./metadata";
 import { organizationsByState } from "./place-index";
@@ -24,8 +21,6 @@ import {
   organizationSeo,
   stateSeo,
 } from "./seo";
-import { companyJobsLink } from "./jobs/landing-links";
-
 export type PageSeoRow = {
   path: string;
   title: string;
@@ -60,8 +55,7 @@ export function collectPageSeo(catalog: Catalog): PageSeoRow[] {
   };
 
   for (const o of catalog.organizations) {
-    const jobs = companyJobsLink(catalog, o.slug);
-    const seo = organizationSeo(catalog, o, jobs ? { jobCount: jobs.count } : undefined);
+    const seo = organizationSeo(catalog, o);
     add(orgHref(o.slug), seo.title, seo.description);
   }
   for (const a of catalog.artifacts) {
@@ -88,8 +82,6 @@ export function collectPageSeo(catalog: Catalog): PageSeoRow[] {
     const seo = explainerSeo(e);
     add(`/learn/${e.slug}/`, seo.title, seo.description);
   }
-  for (const page of jobsLandingData(catalog).all) add(page.path, page.title, page.description);
-  for (const p of jobPages(catalog)) add(p.path, jobPageTitle(p), jobMetaDescription(p), TITLE_LIMIT);
   const github = githubEntries();
   for (const e of github) {
     const seo = githubProjectSeo(e);
@@ -116,7 +108,7 @@ export function collectPageSeo(catalog: Catalog): PageSeoRow[] {
     }
   }
   const counts = catalog.counts();
-  add("/", "U.S. AI jobs, companies, and news", "Independent directory of U.S. AI jobs, companies, open models, and sourced news: open roles, catalog records, and updates. Not a United States government website.");
+  add("/", "U.S. AI companies, models, and news", "Independent directory of U.S. AI companies, open models, and sourced news: catalog records and updates. Not a United States government website.");
   add("/news/", "U.S. AI news — sourced releases, licenses & policy", `${catalog.news.length.toLocaleString("en-US")} dated, sourced updates about U.S. AI organizations and open artifacts in the USASI catalog: releases, license changes, ownership, and governance.`);
   add("/policy/", "U.S. AI policy tracker", `${catalog.policy.length.toLocaleString("en-US")} federal laws, executive orders, OMB memoranda, standards, and frameworks on artificial intelligence, with dates, issuers, current status, and links to the official text.`);
   add("/github/", "AI on GitHub: the most-starred open-source AI projects", `The ${github.length.toLocaleString("en-US")} most-starred open-source AI projects on GitHub, ranked by stars.`);

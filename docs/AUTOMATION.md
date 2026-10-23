@@ -5,19 +5,12 @@ The site is kept current by scheduled Claude tasks on the owner's computer
 the app is open; a missed run starts on the next launch. They work in a
 permanent clone of this repository and deploy with the machine's existing
 Wrangler login; the Sunday catalog upkeep instead opens a pull request for the
-owner's review and never deploys. The GitHub Actions deploy and Jobs-refresh
-workflows stay paused (`CLOUDFLARE_DEPLOY=false`), so there is no Cloudflare
-API token in GitHub.
+owner's review and never deploys. The GitHub Actions deploy workflow stays
+paused (`CLOUDFLARE_DEPLOY=false`), so there is no Cloudflare API token in GitHub.
 
 | Task | When | What it does |
 |---|---|---|
-| All websites, daily upkeep | every day, 8:30 local | refresh all Jobs feeds; on the first run of each month, write that month's edition of The State of American AI (`npm run report:snapshot -- YYYY-MM`, never replacing an existing one); research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy. On Sundays it also runs the weekly catalog upkeep: review a batch of cited sources for changes, apply supported corrections, add recent open releases from catalog organizations, draft the next weekly email issue, and open a pull request on a `weekly/YYYY-MM-DD` branch (merged changes go live on the next deploy). It also checks the owner's other sites, read-only |
-| USASI evening jobs refresh | every day, 8:30 PM local | `scripts/automation/jobs-update.sh`: refresh all Jobs feeds, then check, build, and deploy. No editorial changes |
-
-Jobs are refreshed twice a day. A listing leaves the directory once its feed
-has not confirmed it for 48 hours, so one missed run never hides current
-postings, and two runs a day keep closed postings and their job pages from
-lingering.
+| All websites, daily upkeep | every day, 8:30 local | on the first run of each month, write that month's edition of The State of American AI (`npm run report:snapshot -- YYYY-MM`, never replacing an existing one); research and publish new Latest news from official sources; record completed pending events (for example a closed acquisition) and confirmed watch-list items; check, commit, push, deploy. On Sundays it also runs the weekly catalog upkeep: review a batch of cited sources for changes, apply supported corrections, add recent open releases from catalog organizations, draft the next weekly email issue, and open a pull request on a `weekly/YYYY-MM-DD` branch (merged changes go live on the next deploy). It also checks the owner's other sites, read-only |
 
 News is published without individual human review (disclosed on `/news/` and in
 the methodology). Every run must pass `npm run validate`, typecheck, lint, unit
@@ -26,9 +19,8 @@ committed or deployed. Tasks never edit code, tests, or validation rules.
 
 ## Scripts
 
-- `scripts/automation/sync.sh` takes a run lock (one run at a time), keeps the
-  local Jobs state (`data/jobs/current.json` is operational and never committed),
-  and rebases onto GitHub `main`. It stops if there are uncommitted editorial
+- `scripts/automation/sync.sh` takes a run lock (one run at a time) and rebases
+  onto GitHub `main`. It stops if there are uncommitted editorial
   changes. The lock (`reports/automation/run.lock`) records the start time and
   the Claude session that took it (`manual` outside Claude); another run may
   take it over only after 12 hours.
@@ -40,19 +32,12 @@ committed or deployed. Tasks never edit code, tests, or validation rules.
   commits another run's unfinished edits.
 - `scripts/automation/unlock.sh` releases the lock when a run stops early. It
   leaves another run's lock in place.
-- `scripts/automation/jobs-update.sh` runs sync, `npm run jobs:refresh`, and
-  publish in one step, releasing the lock if anything fails. After a successful
-  publish it runs `npm run jobs:hf-dataset`, which uploads the open listings to
-  Hugging Face (`usasihq/usasi-ai-jobs`) when `HF_TOKEN` is set and skips if it
-  is not. The employers' job descriptions are kept in
-  `data/jobs/descriptions.json`, which, like `current.json`, stays local and is
-  never committed.
 
 ## AI on GitHub
 
 `/github/` ranks the most-starred open-source AI projects on GitHub from a
 committed snapshot, `data/github/projects.json`. The daily routine should run
-`npm run github:refresh` once (after the Jobs refresh, before the checks), then
+`npm run github:refresh` once (before the checks), then
 commit the updated snapshot with the day's other changes. The build never
 touches the network: it reads the committed snapshot, so a missed refresh only
 leaves the fetch date older.

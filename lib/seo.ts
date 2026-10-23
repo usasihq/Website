@@ -293,7 +293,7 @@ export function organizationOutput(catalog: Catalog, org: Organization) {
   return { related, releases, families, software, datasets, evals, parts, licenses };
 }
 
-export function organizationSeo(catalog: Catalog, org: Organization, extras?: { jobCount?: number }): SeoText {
+export function organizationSeo(catalog: Catalog, org: Organization): SeoText {
   const name = org.name;
   const short = shortName(name);
   const out = organizationOutput(catalog, org);
@@ -302,11 +302,10 @@ export function organizationSeo(catalog: Catalog, org: Organization, extras?: { 
   const osi = tools.some((a) => a.licenses.some((l) => isOsiApproved(l.spdx)));
   const noun = hasModels ? "open models" : !tools.length ? null : out.datasets.length === tools.length ? "open datasets" : osi ? "open-source tools" : "open tools";
   const products = org.products.length > 0;
-  const jobs = extras?.jobCount && extras.jobCount > 0 ? extras.jobCount : null;
   const variants = (n: string) =>
     noun
-      ? [jobs ? `${n}: ${noun}, jobs & key facts` : null, products && `${n}: ${noun}, products & key facts`, `${n}: ${noun} & key facts`]
-      : [jobs ? `${n}: AI jobs & key facts` : null, products ? `${n}: AI products & key facts` : `${n}: AI profile & key facts`];
+      ? [products && `${n}: ${noun}, products & key facts`, `${n}: ${noun} & key facts`]
+      : [products ? `${n}: AI products & key facts` : `${n}: AI profile & key facts`];
   const title = fitTitle([...variants(name), ...variants(short), `${name}: key facts`, name, short]);
 
   const hq = org.headquarters ? headquartersPhrase(org.headquarters.label) : null;
@@ -318,8 +317,7 @@ export function organizationSeo(catalog: Catalog, org: Organization, extras?: { 
   // Lead with the record's own summary when it fits beside the catalog facts; otherwise describe it from its roles.
   const opening = [firstSentence(org.summary.text), lead, shortLead].find((o) => `${o} ${records}`.length <= DESCRIPTION_MAX) ?? shortLead;
   const hqSentence = hq && opening !== lead ? `${hq.verb === "based in" ? "Based in" : "Headquarters:"} ${hq.place}.` : null;
-  const jobsLine = jobs ? `${jobs.toLocaleString("en-US")} open jobs on USASI.` : null;
-  return { title, description: composeDescription([opening, records], [hqSentence, licenses, productList, jobsLine]) };
+  return { title, description: composeDescription([opening, records], [hqSentence, licenses, productList]) };
 }
 
 /** News story: the headline as the title, a one-sentence summary as the description. */

@@ -1,13 +1,10 @@
 /**
  * /llms.txt at the site root (https://llmstxt.org): a short, current map of the
  * catalog for agents. Built from the same sections and routes as app/sitemap.ts,
- * without individual job-posting pages or the thousands of GitHub/Hugging Face
- * item URLs. Written at build time by app/llms.txt/route.ts and scripts/job-pages.ts.
+ * without the thousands of GitHub/Hugging Face item URLs. Written at build time
+ * by app/llms.txt/route.ts.
  */
 import type { Catalog } from "./catalog";
-import { HIRING_INDEX_HREF } from "./jobs/hiring-index";
-import { jobsLandingData } from "./jobs/landing";
-import { LAYOFF_STATES, layoffHref } from "./jobs/layoffs";
 import { absoluteUrl } from "./paths";
 import { artifactHref, orgHref } from "./routes";
 import { siteConfig } from "./site-config";
@@ -16,10 +13,6 @@ import { STATIC_ROUTES } from "./site-routes";
 export type LlmsTxtLink = { name: string; path: string; note?: string };
 
 const n = (v: number) => v.toLocaleString("en-US");
-
-function listingsNote(count: number): string {
-  return `${n(count)} open ${count === 1 ? "listing" : "listings"}`;
-}
 
 function item(name: string, path: string, note?: string): LlmsTxtLink {
   return note ? { name, path, note } : { name, path };
@@ -35,16 +28,7 @@ function renderSection(title: string, items: LlmsTxtLink[]): string {
 }
 
 /** Remaining fixed routes after the named sections have claimed theirs. */
-const CLAIMED_STATIC = new Set([
-  "/",
-  "/jobs/",
-  "/jobs/index/",
-  "/jobs/layoffs/",
-  "/companies/",
-  "/open/",
-  "/github/",
-  "/huggingface/",
-]);
+const CLAIMED_STATIC = new Set(["/", "/companies/", "/open/", "/github/", "/huggingface/"]);
 
 const RESOURCE_ROUTES: { path: string; name: string; note?: string }[] = [
   { path: "/", name: "Home" },
@@ -83,17 +67,6 @@ const RESOURCE_ROUTES: { path: string; name: string; note?: string }[] = [
 ];
 
 export function llmsTxtSections(catalog: Catalog): { title: string; items: LlmsTxtLink[] }[] {
-  const landings = jobsLandingData(catalog);
-  const jobs = [
-    item("Jobs at U.S. AI companies and labs", "/jobs/", "Current openings from employer job boards"),
-    item("Weekly AI Hiring Index", HIRING_INDEX_HREF, "Open listings by employer and U.S. state, week by week"),
-    ...landings.topics.filter((p) => p.indexable).map((p) => item(p.name, p.path, listingsNote(p.count))),
-    item("WARN Act layoff notices", "/jobs/layoffs/"),
-    ...LAYOFF_STATES.map((s) => item(`WARN Act notices in ${s.name}`, layoffHref(s.code))),
-  ];
-  const byState = landings.states.filter((p) => p.indexable).map((p) => item(p.name, p.path, listingsNote(p.count)));
-  const byRole = landings.roles.filter((p) => p.indexable).map((p) => item(p.name, p.path, listingsNote(p.count)));
-  const byCompany = landings.companies.filter((p) => p.indexable).map((p) => item(p.name, p.path, listingsNote(p.count)));
   const companies = [
     item("Companies & Labs", "/companies/", `${n(catalog.organizations.length)} published organizations`),
     ...catalog.organizations.map((o) => item(o.name, orgHref(o.slug))),
@@ -106,20 +79,9 @@ export function llmsTxtSections(catalog: Catalog): { title: string; items: LlmsT
     item("AI datasets on Hugging Face", "/huggingface/datasets/"),
   ];
   const resources = RESOURCE_ROUTES.filter((r) => STATIC_ROUTES.includes(r.path)).map((r) => item(r.name, r.path, r.note));
-  const claimed = new Set<string>([
-    ...CLAIMED_STATIC,
-    ...RESOURCE_ROUTES.map((r) => r.path),
-    ...jobs.map((i) => i.path),
-    ...byState.map((i) => i.path),
-    ...byRole.map((i) => i.path),
-    ...byCompany.map((i) => i.path),
-  ]);
+  const claimed = new Set<string>([...CLAIMED_STATIC, ...RESOURCE_ROUTES.map((r) => r.path)]);
   const other = STATIC_ROUTES.filter((path) => !claimed.has(path)).map((path) => item(path, path));
   return [
-    { title: "Jobs", items: jobs },
-    { title: "Jobs by state", items: byState },
-    { title: "Jobs by role", items: byRole },
-    { title: "Jobs by company", items: byCompany },
     { title: "Companies & Labs", items: companies },
     { title: "Open Models & Tools", items: open },
     { title: "Resources", items: resources },
@@ -136,7 +98,7 @@ export function renderLlmsTxt(catalog: Catalog): string {
 
 > Independent, unofficial catalog of U.S. AI organizations and U.S.-led open models, software, datasets, and evaluation tools. ${siteConfig.disclaimer}
 
-The site is a static reference: every public claim cites a source. Job applications stay on the employer's site. This file lists the main areas; the full URL list is [the sitemap](${absoluteUrl("/sitemap.xml")}).
+The site is a static reference: every public claim cites a source. This file lists the main areas; the full URL list is [the sitemap](${absoluteUrl("/sitemap.xml")}).
 
 ${sections}`.trim() + "\n";
 }

@@ -1,4 +1,4 @@
-# Deploys the static export to Cloudflare Workers (assets plus the closed-job Worker).
+# Deploys the static export to Cloudflare Workers (assets plus the Worker).
 #
 # Does nothing until the owner opts in. Required repository configuration:
 #   Variable  CLOUDFLARE_DEPLOY = "true"
@@ -28,8 +28,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && vars.CLOUDFLARE_DEPLOY == 'true'
     runs-on: ubuntu-latest
     # Same budget as CI. A cache miss redraws ~15,000 GitHub/Hugging Face
-    # heroes in Chromium (~50 minutes); this job also refreshes jobs (up to
-    # 22 minutes) and runs e2e before wrangler deploy.
+    # heroes in Chromium (~50 minutes); this job then runs e2e before wrangler deploy.
     timeout-minutes: 120
     environment: production
     steps:
@@ -41,43 +40,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Restore Jobs operational state
-        if: vars.JOBS_REFRESH == 'true'
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            data/jobs/current.json
-            data/jobs/indexing-quota.json
-            data/jobs/hiring-index.json
-            data/jobs/descriptions.json
-            data/jobs/workday-meta.json
-            data/jobs/indexnow-last.json
-          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: jobs-v1-main-
-      - name: Record hiring-index snapshot from current listings
-        if: vars.JOBS_REFRESH == 'true'
-        run: npm run jobs:snapshot
-      - name: Preserve hiring-index if refresh does not finish
-        if: vars.JOBS_REFRESH == 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            data/jobs/current.json
-            data/jobs/indexing-quota.json
-            data/jobs/hiring-index.json
-            data/jobs/descriptions.json
-            data/jobs/workday-meta.json
-            data/jobs/indexnow-last.json
-          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-early
-      - name: Refresh Jobs before ordinary releases
-        if: vars.JOBS_REFRESH == 'true'
-        timeout-minutes: 22
-        run: npm run jobs:refresh
-        env:
-          USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
-          USAJOBS_USER_AGENT: ${{ vars.USAJOBS_USER_AGENT }}
-          JOBS_REFRESH_CONCURRENCY: "4"
-          JOBS_SOURCE_TIMEOUT_MS: "180000"
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
@@ -100,56 +62,14 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: ""
       - run: npm run check:links
       - run: npm run test:e2e
-      - name: Refuse an obsolete release before saving state or publishing
+      - name: Refuse an obsolete release before publishing
         run: |
           release_sha=$(git rev-parse HEAD)
           current_sha=$(git ls-remote origin refs/heads/main | cut -f1)
           test -n "$current_sha" && test "$release_sha" = "$current_sha"
           echo "RELEASE_SHA=$release_sha" >> "$GITHUB_ENV"
-      - name: Preserve hiring-index after any refresh outcome
-        if: always() && vars.JOBS_REFRESH == 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            data/jobs/current.json
-            data/jobs/indexing-quota.json
-            data/jobs/hiring-index.json
-            data/jobs/descriptions.json
-            data/jobs/workday-meta.json
-            data/jobs/indexnow-last.json
-          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-snap
-      - name: Preserve validated Jobs state
-        if: vars.JOBS_REFRESH == 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            data/jobs/current.json
-            data/jobs/indexing-quota.json
-            data/jobs/hiring-index.json
-            data/jobs/descriptions.json
-            data/jobs/workday-meta.json
-            data/jobs/indexnow-last.json
-          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Deploy production
         run: npx wrangler deploy --message "${{ env.RELEASE_SHA }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      - name: Notify IndexNow of new and changed sitemap URLs
-        if: success()
-        continue-on-error: true
-        run: npm run indexnow
-        env:
-          NEXT_PUBLIC_SITE_URL: https://unitedstatesofamericasuperintelligence.com
-      - name: Preserve IndexNow last URL set
-        if: always() && vars.JOBS_REFRESH == 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: |
-            data/jobs/current.json
-            data/jobs/indexing-quota.json
-            data/jobs/hiring-index.json
-            data/jobs/descriptions.json
-            data/jobs/workday-meta.json
-            data/jobs/indexnow-last.json
-          key: jobs-v1-main-${{ github.run_id }}-${{ github.run_attempt }}-post

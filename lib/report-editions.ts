@@ -8,7 +8,6 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Catalog } from "./catalog";
 import { MEMORY_PAGES, memoryPageHref } from "./hardware";
-import { jobsLandingData } from "./jobs/landing";
 import { organizationsByState } from "./place-index";
 import { stateSlug } from "./places";
 import { policyHref } from "./policy";
@@ -85,7 +84,7 @@ const live = new WeakMap<Catalog, { figures: ReportFigures; digest: string }>();
 export function liveFigures(catalog: Catalog): { figures: ReportFigures; digest: string } {
   const hit = live.get(catalog);
   if (hit) return hit;
-  const result = { figures: computeFigures(catalog, null, catalog.buildAt.slice(0, 10)), digest: catalogDigest(catalog) };
+  const result = { figures: computeFigures(catalog, catalog.buildAt.slice(0, 10)), digest: catalogDigest(catalog) };
   live.set(catalog, result);
   return result;
 }
@@ -131,7 +130,6 @@ const KIND_FILTERS: Record<string, string> = {
 export function reportLinks(catalog: Catalog): ReportHref {
   const states = new Set(organizationsByState(catalog).states.map((s) => s.code));
   const licenses = new Set(catalog.licenses.map((l) => l.slug));
-  const jobStates = new Map(jobsLandingData(catalog).states.map((p) => [p.state!, p.path]));
   return (link, key) => {
     switch (link) {
       case "state":
@@ -145,7 +143,7 @@ export function reportLinks(catalog: Catalog): ReportHref {
         return page ? memoryPageHref(page) : null;
       }
       case "jobs-state":
-        return jobStates.get(key) ?? null;
+        return null;
       case "kind":
         return KIND_FILTERS[key] ? openHref(KIND_FILTERS[key]) : null;
       default:

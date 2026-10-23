@@ -3,8 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 /**
  * End-to-end tests run against the production static export (./out) served by
- * scripts/serve-static.mjs (via tsx, so the closed-job 410 page can import
- * TypeScript) — never against `next dev`.
+ * scripts/serve-static.mjs — never against `next dev`.
  *
  *   npm run build && npm run test:e2e
  *

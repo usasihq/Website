@@ -21,9 +21,7 @@ npm test
 npm run build
 npm run check:links
 
-# Editorial changes only: the Jobs state file is operational and stays local.
 git add -A -- . ':!reports'
-git reset -q -- data/jobs/current.json
 if ! git diff --cached --quiet; then
   git commit -q -F - <<MSG
 $summary
@@ -47,7 +45,7 @@ WRANGLER_SEND_METRICS=false npx wrangler deploy --message "$summary ($(git rev-p
 ok=no
 for i in 1 2 3 4 5 6; do
   sleep 10
-  if [ "$(curl -s -o /dev/null -w '%{http_code}' "$site/")" = 200 ] && [ "$(curl -s -o /dev/null -w '%{http_code}' "$site/jobs/")" = 200 ]; then ok=yes; break; fi
+  if [ "$(curl -s -o /dev/null -w '%{http_code}' "$site/")" = 200 ] && [ "$(curl -s -o /dev/null -w '%{http_code}' "$site/companies/")" = 200 ]; then ok=yes; break; fi
 done
 [ "$(lock_holder)" = "$lock_owner" ] && rm -f "$lock"
 echo "publish: commit $(git rev-parse --short HEAD), pushed=$pushed, live check=$ok"

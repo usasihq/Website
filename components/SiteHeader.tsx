@@ -39,7 +39,6 @@ const NAV: NavItem[] = [
   { href: "/companies/", label: "Companies & Labs" },
   { label: "Open source", items: OPEN_SOURCE },
   { href: "/learn/", label: "Learn" },
-  { href: "/jobs/", label: "Jobs" },
   { href: "/matrix/", label: "Compare" },
   { href: "/news/", label: "News" },
   { href: "/methodology/", label: "Methodology" },

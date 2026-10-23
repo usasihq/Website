@@ -5,11 +5,11 @@ website: https://www.usa.gov
 logo_text: US
 summary:
   text: >-
-    The U.S. federal government publishes civilian job opportunity announcements on
-    USAJOBS.gov, the official employment site of the federal government. This catalog
-    record is the parent listing for federal openings related to artificial intelligence,
-    machine learning, and data science; each posting names the hiring agency.
-  source_ids: [usajobs-home, usa-gov]
+    The U.S. federal government is the public institution that funds, regulates, and
+    conducts much of the country's civilian AI research and standards work. This
+    catalog record is a parent listing for federal agencies and programs that appear
+    elsewhere in the catalog; it is not an employer jobs board.
+  source_ids: [usa-gov]
 organization_roles: [research-lab]
 ownership_category: public-institution
 ownership_evidence:
@@ -46,15 +46,6 @@ eligibility:
   assessed_at: 2026-10-16
 openness_summary: null
 hiring_url: https://www.usajobs.gov
-careers:
-  url: https://www.usajobs.gov
-  enabled: true
-  source:
-    type: usajobs
-    identifier: ai
-  posting_hosts: []
-  source_ids: [usajobs-home, usajobs-search-api]
-  reviewed_at: 2026-10-16
 publication_status: published
 archive_note: null
 updated_at: 2026-10-16
@@ -73,14 +64,6 @@ sources:
     url: https://www.usajobs.gov/
     publisher: U.S. Office of Personnel Management (USAJOBS)
     kind: official-page
-    published_at: null
-    accessed_at: 2026-10-16
-    reviewed_at: 2026-10-16
-  - id: usajobs-search-api
-    title: USAJOBS GET /api/Search
-    url: https://developer.usajobs.gov/api-reference/get-api-search
-    publisher: U.S. Office of Personnel Management (USAJOBS)
-    kind: documentation
     published_at: null
     accessed_at: 2026-10-16
     reviewed_at: 2026-10-16

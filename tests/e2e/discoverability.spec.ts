@@ -6,8 +6,9 @@ test("llms.txt is at the site root with the catalog overview", async ({ request 
   const text = await res.text();
   expect(text.startsWith("# United States of America Superintelligence")).toBe(true);
   expect(text).toContain("> Independent, unofficial catalog");
-  expect(text).toContain("## Jobs");
-  expect(text).toContain("/jobs/index/");
+  expect(text).toContain("## Companies & Labs");
+  expect(text).not.toContain("## Jobs");
+  expect(text).not.toMatch(/\/jobs\//);
   expect(text).not.toMatch(/\/(people|big-si|voices|local)\//);
   expect(text).toContain("https://unitedstatesofamericasuperintelligence.com/");
 });

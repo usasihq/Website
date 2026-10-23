@@ -100,9 +100,9 @@ export function ReportEdition({
     ),
     jobs: (
       <p>
-        A frozen snapshot of the <Link href="/jobs/" className="link">Jobs</Link> directory: listings from employers&apos; own job feeds as last checked{" "}
-        {s.jobs_checked_at ? timeUtc(s.jobs_checked_at) : "before the cutoff"}. The directory is refreshed daily, so its current counts differ from these. See how{" "}
-        <Link href="/methodology/#jobs" className="link">jobs are collected</Link>.
+        A frozen snapshot of job listings from employers&apos; own feeds as last checked{" "}
+        {s.jobs_checked_at ? timeUtc(s.jobs_checked_at) : "before the cutoff"}. USASI no longer publishes a live job board; these figures stay as this edition recorded them. See the{" "}
+        <Link href="/methodology/#jobs" className="link">jobs note in the methodology</Link>.
       </p>
     ),
     policy: (
@@ -416,7 +416,7 @@ function SinceNote({ snapshot, since, names }: { snapshot: ReportSnapshot; since
         />
       )}
       <p className="mt-3 text-sm text-muted">
-        Jobs figures are a snapshot and are not compared. <Link href="/jobs/" className="link">Current openings</Link> are in the Jobs directory.
+        Jobs figures are a snapshot and are not compared. USASI no longer publishes a live job board.
       </p>
     </aside>
   );

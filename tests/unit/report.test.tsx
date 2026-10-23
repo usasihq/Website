@@ -5,9 +5,6 @@ import path from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { Catalog, loadCatalog } from "@/lib/catalog";
-import { DATA_PATH, readJobs } from "@/lib/jobs/load";
-import { jobsLandingData } from "@/lib/jobs/landing";
-import type { Dataset, FeedHealth, Job } from "@/lib/jobs/schema";
 import { cardImage, pageCards } from "@/lib/page-cards";
 import { organizationsByState } from "@/lib/place-index";
 import { stateSlug } from "@/lib/places";
@@ -26,12 +23,11 @@ import {
   percent,
   releaseLicenseFamily,
   releaseQuarter,
-  REPORT_METHOD_VERSION,
   snapshotCsv,
   snapshotProblems,
   type ReportSnapshot,
 } from "@/lib/report";
-import { catalogDigest, fileDigest, latestEdition, policyLink, previousEdition, readEdition, reportEditions, reportLinks, sinceEdition } from "@/lib/report-editions";
+import { catalogDigest, latestEdition, policyLink, previousEdition, readEdition, reportEditions, reportLinks, sinceEdition } from "@/lib/report-editions";
 import { reportJsonLd, reportMetadata, reportNames } from "@/lib/report-page";
 import { isKnownSitePath, STATIC_ROUTES } from "@/lib/site-routes";
 import { validateContent } from "@/lib/validate";
@@ -98,32 +94,12 @@ describe("report counting rules", () => {
   });
 
   const now = Date.parse(`${FIXTURE_TODAY}T12:00:00.000Z`);
-  const seen = `${FIXTURE_TODAY}T11:00:00.000Z`;
-  const feed: FeedHealth = { organization_slug: "fixture-parent", source_type: "greenhouse", source_identifier: "fixture", last_attempted: seen, last_successful: seen, result: "ok",
-    consecutive_failures: 0, current_count: 3, pending_digest: null, pending_since: null };
-  const job = (id: string, locations: string[], extra: Partial<Job> = {}): Job => ({
-    id: `fixture-parent:greenhouse:fixture:${id}`, source_job_id: id, requisition_id: null, organization_slug: "fixture-parent", source_type: "greenhouse",
-    source_identifier: "fixture", source_url: "https://boards-api.greenhouse.io/v1/boards/fixture/jobs", title: `Role ${id}`, locations, countries: [],
-    workplace: "unknown", remote: null, employment_type: "full-time", department: null, team: null, salaries: [], official_url: `https://job-boards.greenhouse.io/fixture/jobs/${id}`,
-    apply_url: null, posted_at: null, posted_date_kind: null, first_seen: seen, last_seen: seen, last_successfully_checked: seen, status: "open", missing_since: null,
-    missing_checks: 0, closed_at: null, ...extra,
-  });
-  const data: Dataset = {
-    version: 1,
-    feeds: [feed],
-    jobs: [
-      job("1", ["Atlanta, GA", "Austin, TX"]),
-      job("2", ["Remote - US"], { workplace: "remote" }),
-      job("3", ["London, UK"]),
-      job("4", ["Atlanta, GA"], { last_seen: `${FIXTURE_TODAY}T01:00:00.000Z`, status: "closed", closed_at: seen }),
-    ],
-  };
-  const figures = computeFigures(fixture, { data, now }, FIXTURE_TODAY);
+  const figures = computeFigures(fixture, FIXTURE_TODAY);
   const t = (id: string) => figures.tables.find((x) => x.id === id)!;
   const row = (id: string, key: string) => t(id).rows.find((r) => r.key === key)?.count;
 
   it("adds up: single-category tables sum to their universe; overlapping ones never exceed it per row", () => {
-    expect(snapshotProblems(createSnapshot({ catalog: fixture, jobs: { data, now }, edition: FIXTURE_TODAY.slice(0, 7), generatedAt: new Date(now).toISOString(), inputs: { catalog_digest: "x", jobs_digest: null, git_commit: null, content_clean: null, schema_version: "0", rubric_version: "0.2" } }))).toEqual([]);
+    expect(snapshotProblems(createSnapshot({ catalog: fixture, edition: FIXTURE_TODAY.slice(0, 7), generatedAt: new Date(now).toISOString(), inputs: { catalog_digest: "x", jobs_digest: null, git_commit: null, content_clean: null, schema_version: "0", rubric_version: "0.2" } }))).toEqual([]);
     for (const table of figures.tables) {
       const sum = table.rows.reduce((n, r) => n + r.count, 0);
       if (!table.overlapping) expect(sum, table.id).toBe(table.universe);
@@ -158,19 +134,8 @@ describe("report counting rules", () => {
     expect(row("open-weight-organizations", "fixture-unit")).toBe(1);
   });
 
-  it("counts only current job listings, by named state, employer, and remote rule", () => {
-    expect(t("jobs-geography").universe).toBe(3);
-    expect(row("jobs-geography", "us-only")).toBe(2);
-    expect(row("jobs-geography", "outside-only")).toBe(1);
-    expect(row("jobs-states", "GA")).toBe(1);
-    expect(row("jobs-states", "TX")).toBe(1);
-    expect(row("jobs-remote", "remote-us")).toBe(1);
-    expect(row("jobs-employers", "fixture-parent")).toBe(3);
-    expect(figures.findings.find((f) => f.id === "jobs")!.text).toMatch(/^3 job listings from 1 employer were current/);
-  });
-
   it("writes one tidy CSV row per total and table row, quoting where needed", () => {
-    const s = createSnapshot({ catalog: fixture, jobs: { data, now }, edition: "2026-09", generatedAt: new Date(now).toISOString(), inputs: { catalog_digest: "x", jobs_digest: null, git_commit: null, content_clean: null, schema_version: "0", rubric_version: "0.2" } });
+    const s = createSnapshot({ catalog: fixture, edition: "2026-09", generatedAt: new Date(now).toISOString(), inputs: { catalog_digest: "x", jobs_digest: null, git_commit: null, content_clean: null, schema_version: "0", rubric_version: "0.2" } });
     const lines = snapshotCsv(s).trimEnd().split("\r\n");
     expect(lines[0]).toBe(CSV_COLUMNS.join(","));
     expect(lines).toHaveLength(1 + s.totals.length + s.tables.reduce((n, x) => n + x.rows.length, 0));
@@ -180,7 +145,7 @@ describe("report counting rules", () => {
 
   it("finds added and removed records between two computations", () => {
     const smaller = new Catalog(validateContent({ ...raw, artifacts: raw.artifacts.filter((d) => !String(d.file).includes("fixture-nc")) }, { today: FIXTURE_TODAY }));
-    const c = compareFigures(computeFigures(smaller, null, FIXTURE_TODAY), computeFigures(fixture, null, FIXTURE_TODAY));
+    const c = compareFigures(computeFigures(smaller, FIXTURE_TODAY), computeFigures(fixture, FIXTURE_TODAY));
     expect(c.artifacts.added).toEqual(["fixture-nc"]);
     expect(c.totals.find((x) => x.key === "model_releases")).toMatchObject({ to: expect.any(Number) });
     expect(c.tables.map((x) => x.id)).toContain("model-license-family");
@@ -193,11 +158,9 @@ describe("report counting rules", () => {
 
 describe("npm run report:snapshot", () => {
   it(
-    "writes an edition whose numbers equal a recomputation from the catalog and jobs data at snapshot time",
+    "writes an edition whose numbers equal a recomputation from the catalog at snapshot time",
     () => {
-      const jobs = readJobs(catalog.organizations);
-      const lastCheck = jobs.feeds.map((f) => f.last_successful).filter((v): v is string => Boolean(v)).sort().at(-1)!;
-      const at = new Date(Date.parse(lastCheck) + 60_000).toISOString();
+      const at = `${TODAY.slice(0, 7)}-15T12:00:00.000Z`;
       const edition = at.slice(0, 7);
       const out = fs.mkdtempSync(path.join(os.tmpdir(), "usasi-report-"));
       const run = (...extra: string[]) =>
@@ -210,12 +173,12 @@ describe("npm run report:snapshot", () => {
       expect(first.status, first.stderr).toBe(0);
       const written = JSON.parse(fs.readFileSync(path.join(out, `${edition}.json`), "utf8")) as ReportSnapshot;
       expect(snapshotProblems(written)).toEqual([]);
-      expect(written.generated_at).toBe(at);
+      expect(written.generated_at).toBe(new Date(at).toISOString());
       expect(written.inputs.catalog_digest).toBe(catalogDigest(catalog));
-      expect(written.inputs.jobs_digest).toBe(fileDigest(DATA_PATH));
+      expect(written.inputs.jobs_digest).toBeNull();
 
       // Recompute independently from the same inputs and instant.
-      const again = computeFigures(catalog, { data: jobs, now: Date.parse(written.generated_at) }, written.data_cutoff);
+      const again = computeFigures(catalog, written.data_cutoff);
       expect(written.tables).toEqual(again.tables);
       expect(written.totals).toEqual(again.totals);
       expect(written.findings).toEqual(again.findings);
@@ -263,7 +226,9 @@ describe("published editions", () => {
       expect(table("artifact-kinds").rows.find((r) => r.key === "model-release")!.count).toBe(total("model_releases"));
       expect(table("org-structure").rows.find((r) => r.key === "unit")!.count).toBe(total("organization_units"));
       expect(table("finder-runs").rows.find((r) => r.key === "local")!.count).toBe(total("local_configurations"));
-      expect(table("jobs-employers").rows.length).toBe(total("job_employers"));
+      if (e.tables.some((t) => t.id === "jobs-employers")) {
+        expect(table("jobs-employers").rows.length).toBe(total("job_employers"));
+      }
       expect(e.records.policy.length).toBe(table("policy-types").universe);
     }
   });
@@ -292,7 +257,7 @@ describe("published editions", () => {
   });
 
   it("reproduces the latest edition from the catalog when the catalog has not changed, and says so when it has", () => {
-    const live = computeFigures(catalog, null, latest.data_cutoff);
+    const live = computeFigures(catalog, latest.data_cutoff);
     const since = sinceEdition(latest, catalog);
     if (catalogDigest(catalog) === latest.inputs.catalog_digest) {
       expect(since.status).toBe("unchanged");
@@ -302,12 +267,6 @@ describe("published editions", () => {
       expect(live.totals).toEqual(latest.totals.filter((t) => t.section !== "jobs"));
     } else {
       expect(since.status).not.toBe("unchanged");
-    }
-    // Jobs tables are reproducible only under the counting rules the edition was made with (older editions keep theirs).
-    if (latest.method_version === REPORT_METHOD_VERSION && latest.inputs.jobs_digest === fileDigest(DATA_PATH) && catalogDigest(catalog) === latest.inputs.catalog_digest) {
-      const withJobs = computeFigures(catalog, { data: readJobs(catalog.organizations), now: Date.parse(latest.generated_at) }, latest.data_cutoff);
-      expect(withJobs.tables).toEqual(latest.tables);
-      expect(withJobs.findings).toEqual(latest.findings);
     }
   });
 
@@ -398,7 +357,6 @@ describe("report pages", () => {
       ...catalog.licenses.map((l) => `/licenses/${l.slug}/`),
       ...catalog.policy.map((d) => `/policy/${d.slug}/`),
       ...organizationsByState(catalog).states.map((s) => `/places/${stateSlug(s.code)}/`),
-      ...jobsLandingData(catalog).all.map((p) => p.path),
       ...["8gb-vram", "12gb-vram", "16gb-vram", "24gb-vram", "8gb-apple-silicon", "16gb-apple-silicon", "24gb-apple-silicon", "32gb-apple-silicon", "64gb-apple-silicon"].map((s) => `/find/memory/${s}/`),
       ...editions.flatMap((e) => [editionHref(e.edition), editionDataHref(e.edition, "csv"), editionDataHref(e.edition, "json")]),
     ]);

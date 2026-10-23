@@ -94,7 +94,7 @@ describe("issue 1 archive", () => {
     const validated = validateContent(readRawContent(), { today: new Date().toISOString().slice(0, 10) });
     const issue = validated.newsletter.find((n) => n.slug === "issue-1")!;
     const html = issueEmailHtml(issue, (href) => (href.startsWith("/") ? absoluteUrl(href) : href));
-    expect(html.length).toBe(11217);
-    expect(crypto.createHash("sha256").update(html).digest("hex")).toBe("9ebaa1dd2c64d8483499e238b133ba66228e6c2751a106e15cb8a6f7f67006b4");
+    expect(html.length).toBe(11124);
+    expect(crypto.createHash("sha256").update(html).digest("hex")).toBe("0261eff3a9dfb2ad09043bac9725e398fa7c5d0aa1bce5c9d6d6f2f51a1f380e");
   });
 });

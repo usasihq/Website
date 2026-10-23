@@ -48,7 +48,7 @@ test("a topic link from a project page opens the filtered list", async ({ page }
 });
 
 test("a ranking page lists projects 101 onward; indexed projects are in the sitemap", async ({ page, request }) => {
-  const sitemap = await (await request.get("/sitemap-pages.xml")).text();
+  const sitemap = await (await request.get("/sitemap.xml")).text();
   const catalog = getCatalog();
   const indexed = githubEntries().filter((e) => githubIndexed(e, catalog));
   const omitted = githubEntries().filter((e) => !githubIndexed(e, catalog));

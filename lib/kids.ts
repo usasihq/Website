@@ -576,10 +576,9 @@ export const KID_LESSONS: KidLesson[] = [
       },
     ],
     grownUps: {
-      note: "The roles listed come from the careers explainer, which draws on Department of Labor occupational guides and employer postings, and from the Jobs page's tracks. The explainer does not discuss pay or hiring outlook, and neither does this lesson.",
+      note: "The roles listed come from the careers explainer, which draws on Department of Labor occupational guides and employer postings. The explainer does not discuss pay or hiring outlook, and neither does this lesson.",
       links: [
         { label: "Careers in AI", href: "/learn/careers-in-ai/" },
-        { label: "Internships and early-career roles", href: "/jobs/?track=early-career" },
         { label: "Chips, cloud, and compute hub", href: "/hubs/chips-and-compute/" },
       ],
     },

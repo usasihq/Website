@@ -59,7 +59,7 @@ test("the datasets tab lists datasets and filters by author type", async ({ page
 });
 
 test("ranking pages list items 101 onward; indexed items are in the sitemap", async ({ page, request }) => {
-  const sitemap = await (await request.get("/sitemap-pages.xml")).text();
+  const sitemap = await (await request.get("/sitemap.xml")).text();
   const catalog = getCatalog();
   const listed = [...hfEntries("model"), ...hfEntries("dataset")];
   const indexed = listed.filter((e) => hfIndexed(e, catalog));

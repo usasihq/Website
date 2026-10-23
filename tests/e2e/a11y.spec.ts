@@ -60,11 +60,7 @@ const PAGES = [
   "/search/?q=open%20model",
   "/companies/openai/",
   "/companies/tesla/",
-  "/jobs/?track=early-career",
-  "/jobs/?company=openai&q=research",
-  "/jobs/pay/",
-  "/jobs/pay/software-engineer/",
-  "/jobs/at/openai/",
+  "/learn/careers-in-ai/",
   "/new/",
   "/no-such-page/",
 ];

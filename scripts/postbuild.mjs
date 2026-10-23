@@ -82,7 +82,6 @@ const required = [
   "llms.txt",
   "404.html",
   "sitemap.xml",
-  "sitemap-pages.xml",
   "robots.txt",
   "_headers",
   "og.png",
@@ -90,10 +89,8 @@ const required = [
   "hero.png",
   "data/catalog.json",
   "data/search-index.json",
-  "data/closed-jobs.json",
   "companies/index.html",
   "open/index.html",
-  "jobs/index.html",
   "matrix/index.html",
   "compact/index.html",
   "methodology/index.html",
@@ -114,8 +111,8 @@ for (const rel of required) {
 
 {
   const llms = fs.existsSync(path.join(out, "llms.txt")) ? fs.readFileSync(path.join(out, "llms.txt"), "utf8") : "";
-  if (llms && (!llms.startsWith("# ") || !llms.includes("> ") || !llms.includes("https://") || !llms.includes("/jobs/index/"))) {
-    failures.push("llms.txt is missing the title, summary, absolute URLs, or /jobs/index/");
+  if (llms && (!llms.startsWith("# ") || !llms.includes("> ") || !llms.includes("https://") || !llms.includes("/companies/"))) {
+    failures.push("llms.txt is missing the title, summary, absolute URLs, or /companies/");
   }
 }
 
@@ -141,19 +138,12 @@ const readDir = (sub) => {
     .filter((n) => n.endsWith(".yml") || n.endsWith(".yaml"))
     .map((n) => YAML.parse(fs.readFileSync(path.join(dir, n), "utf8")));
 };
-// /sitemap.xml is an index (scripts/job-pages.ts); the checks below read every sitemap it lists.
-const BASE_PATH_RE = new RegExp(`^${(process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`);
-const sitemapIndex = fs.existsSync(path.join(out, "sitemap.xml")) ? fs.readFileSync(path.join(out, "sitemap.xml"), "utf8") : "";
-const sitemapFiles = [...sitemapIndex.matchAll(/<sitemap><loc>([^<]+)<\/loc><\/sitemap>/g)].map((m) => new URL(m[1]).pathname.replace(BASE_PATH_RE, "").replace(/^\//, ""));
-if (!sitemapIndex.includes("<sitemapindex") || !sitemapFiles.includes("sitemap-pages.xml")) failures.push("sitemap.xml is not a sitemap index listing sitemap-pages.xml");
-let sitemap = "";
-for (const file of sitemapFiles) {
-  const full = path.join(out, file);
-  if (!fs.existsSync(full)) { failures.push(`sitemap index lists missing ${file}`); continue; }
-  const text = fs.readFileSync(full, "utf8");
-  const urls = (text.match(/<loc>/g) ?? []).length;
-  if (urls > 50000 || Buffer.byteLength(text) > 50 * 1024 * 1024) failures.push(`${file} exceeds the sitemap limits (${urls} URLs)`);
-  sitemap += text;
+const sitemap = fs.existsSync(path.join(out, "sitemap.xml")) ? fs.readFileSync(path.join(out, "sitemap.xml"), "utf8") : "";
+if (!sitemap.includes("<urlset") || !sitemap.includes("<loc>")) failures.push("sitemap.xml is not a urlset of public pages");
+{
+  const urls = (sitemap.match(/<loc>/g) ?? []).length;
+  if (urls > 50000 || Buffer.byteLength(sitemap) > 50 * 1024 * 1024) failures.push(`sitemap.xml exceeds the sitemap limits (${urls} URLs)`);
+  if (/\/jobs\/|\/sitemaps\/jobs-\d+\.xml|\/sitemap-jobs-\d+\.xml/.test(sitemap)) failures.push("sitemap.xml still lists a moved jobs path");
 }
 const catalogJson = fs.existsSync(path.join(out, "data/catalog.json")) ? JSON.parse(fs.readFileSync(path.join(out, "data/catalog.json"), "utf8")) : null;
 const searchJson = fs.existsSync(path.join(out, "data/search-index.json")) ? JSON.parse(fs.readFileSync(path.join(out, "data/search-index.json"), "utf8")) : null;
@@ -239,7 +229,6 @@ for (const file of htmlFiles) {
 {
   const LD = /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
   const DETAIL = /^(?:(?:companies|open|licenses|places|hubs|news|newsletter|learn|kids)\/[^/]+|learn\/(?:paths|tools)\/[^/]+)\/index\.html$/;
-  const JOB_DETAIL = /^jobs\/at\/[^/]+\/[^/]+\/index\.html$/;
   const absolute = (u) => typeof u === "string" && /^https?:\/\/[^\s/]+\//.test(u);
   const nodesOf = (value, found = []) => {
     if (Array.isArray(value)) value.forEach((v) => nodesOf(v, found));
@@ -269,18 +258,7 @@ for (const file of htmlFiles) {
       for (const node of nodesOf(data)) {
         types.add(node["@type"]);
         if (node["@type"] === "JobPosting") {
-          if (!node.title || !node.description || !node.datePosted || !node.hiringOrganization?.name) {
-            failures.push(`${rel}: JobPosting needs title, description, datePosted, and hiringOrganization.name`);
-          }
-          if (!node.jobLocation && node.jobLocationType !== "TELECOMMUTE") {
-            failures.push(`${rel}: JobPosting needs jobLocation or jobLocationType TELECOMMUTE`);
-          }
-          if (node.jobLocationType === "TELECOMMUTE" && !node.applicantLocationRequirements) {
-            failures.push(`${rel}: TELECOMMUTE JobPosting needs applicantLocationRequirements`);
-          }
-          if (node.directApply !== false) {
-            failures.push(`${rel}: JobPosting must set directApply false (applications are on the employer's site)`);
-          }
+          failures.push(`${rel}: JobPosting structured data must not appear (the jobs section moved)`);
         }
         if (node["@type"] !== "BreadcrumbList" && node["@type"] !== "ItemList") continue;
         const isTrail = node["@type"] === "BreadcrumbList";
@@ -297,10 +275,7 @@ for (const file of htmlFiles) {
         });
       }
     }
-    if ((DETAIL.test(rel) || JOB_DETAIL.test(rel)) && !types.has("BreadcrumbList")) failures.push(`${rel}: detail page without a BreadcrumbList`);
-    if (rel.startsWith("jobs/") && !JOB_DETAIL.test(rel) && types.has("JobPosting")) {
-      failures.push(`${rel}: list page must not include JobPosting`);
-    }
+    if (DETAIL.test(rel) && !types.has("BreadcrumbList")) failures.push(`${rel}: detail page without a BreadcrumbList`);
   }
   console.log(`postbuild: ${blocks} JSON-LD blocks checked.`);
 }
@@ -320,8 +295,7 @@ for (const file of htmlFiles) {
 
 // Cloudflare Workers static assets: at most 100,000 files per deployment on the
 // Workers Paid plan (the account's plan since 2026-10-16; Free allows 20,000)
-// and 25 MiB per file. Most files are job pages, so the count moves with the
-// number of open listings. ASSET_FILE_LIMIT overrides the limit.
+// and 25 MiB per file. ASSET_FILE_LIMIT overrides the limit.
 {
   const limit = Number(process.env.ASSET_FILE_LIMIT ?? 100000);
   const all = walk(out);
