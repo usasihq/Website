@@ -1,0 +1,9 @@
+date: "2026-11-11"
+title: PostHog visitor analytics and session replay
+summary: >-
+  The site now sends cookie-free page-visit, click, and page-leave analytics to
+  PostHog, and may record anonymized session replays with form inputs masked.
+  The Privacy page, FAQ, and security policy describe this alongside Cloudflare
+  Web Analytics. USASI still sets no cookies and does not use localStorage.
+changes:
+  - { type: policy, record_type: site, slug: null, note: "Add cookie-free PostHog page analytics and masked session replay; update the Privacy page" }

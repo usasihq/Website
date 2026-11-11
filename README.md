@@ -14,7 +14,8 @@ tip link.
 - Stack: Next.js 16 (App Router, static export) · TypeScript · Tailwind CSS 4 ·
   YAML content validated with Zod · MDX for editorial pages · lucide-react
 - Output: plain static files in `out/`. No server, database, accounts, CMS,
-  or cookies. Cloudflare Web Analytics is permitted under the Privacy page;
+  or cookies. Cookie-free PostHog (page analytics and session replay) and
+  Cloudflare Web Analytics are permitted under the Privacy page; Cloudflare's
   automatic injection is managed in the Cloudflare dashboard.
 
 Before going live, read **[SETUP_REQUIRED.md](SETUP_REQUIRED.md)** — it lists
@@ -247,7 +248,10 @@ aipeoplewiki.com in one hop. Every other path is a file in `./out`. See
   `script-src` lists SHA-256 hashes of that page's own inline scripts, so only
   matching inline scripts can run (added by `scripts/postbuild.mjs`). Both policies
   also allow Cloudflare's beacon host `https://static.cloudflareinsights.com`,
-  including its versioned paths; collection stays restricted to same-origin.
+  including its versioned paths, and PostHog US-cloud hosts
+  `https://us-assets.i.posthog.com` (scripts) and `https://us.i.posthog.com`
+  (events), plus `worker-src 'self' blob:` for session replay; other collection
+  stays restricted to same-origin.
 - `not_found_handling: "404-page"` serves the styled `404.html` with a real 404
   status; `html_handling: "auto-trailing-slash"` redirects `/companies` →
   `/companies/` (307). `run_worker_first` lists the old people and jobs prefixes

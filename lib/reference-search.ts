@@ -59,7 +59,7 @@ export const SITE_PAGES: { href: string; name: string; summary: string; keywords
   { href: "/badges/", name: "Badges for maintainers", summary: "Badges maintainers can add to a README: listed in the catalog, or a rank on AI on GitHub or Hugging Face.", keywords: "badge maintainers readme listed rank github huggingface" },
   { href: "/changelog/", name: "Changelog", summary: "What changed in the catalog and on the site, by date.", keywords: "changes updates history log" },
   { href: "/support/", name: "Support USASI", summary: "Optional tips, the sponsorship policy, and other ways to help.", keywords: "support tip donate help sponsorship" },
-  { href: "/privacy/", name: "Privacy", summary: "What the site does with information: no cookies, no accounts.", keywords: "privacy cookies tracking analytics data" },
+  { href: "/privacy/", name: "Privacy", summary: "What the site does with information: no cookies, PostHog and Cloudflare analytics, no accounts.", keywords: "privacy cookies tracking analytics data posthog replay" },
   { href: "/disclaimer/", name: "Disclaimer", summary: "USASI is an independent project, not a U.S. government website.", keywords: "disclaimer legal independent government" },
 ];
 
