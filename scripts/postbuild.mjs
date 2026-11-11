@@ -5,8 +5,8 @@
  * 1. Adds a per-page Content-Security-Policy <meta> whose script-src lists the
  *    SHA-256 hash of every inline script on that page. Combined with the
  *    header CSP from public/_headers, only matching inline scripts run. The
- *    Cloudflare beacon host and PostHog US-cloud hosts are permitted; other
- *    collection stays same-origin.
+ *    Cloudflare beacon host, the first-party PostHog proxy, and PostHog
+ *    US-cloud hosts (rollback) are permitted; other collection stays same-origin.
  * 2. Verifies the export: required files exist, and no draft / non-published
  *    record leaked into routes, data exports, or the sitemap.
  *
@@ -54,11 +54,11 @@ for (const file of htmlFiles) {
   }
   const policy = [
     "default-src 'self'",
-    `script-src 'self' https://static.cloudflareinsights.com https://us-assets.i.posthog.com ${[...hashes].join(" ")}`.trim(),
+    `script-src 'self' https://static.cloudflareinsights.com https://e.unitedstatesofamericasuperintelligence.com https://us-assets.i.posthog.com ${[...hashes].join(" ")}`.trim(),
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https://upload.wikimedia.org",
     "font-src 'self'",
-    "connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com",
+    "connect-src 'self' https://e.unitedstatesofamericasuperintelligence.com https://us.i.posthog.com https://us-assets.i.posthog.com https://cloudflareinsights.com",
     "worker-src 'self' blob:",
     "object-src 'none'",
     "base-uri 'self'",
@@ -114,7 +114,7 @@ for (const rel of required) {
 
 {
   const analytics = fs.existsSync(path.join(out, "analytics.js")) ? fs.readFileSync(path.join(out, "analytics.js"), "utf8") : "";
-  if (analytics && (!analytics.includes("posthog.init") || !analytics.includes('persistence: "memory"') || !analytics.includes("https://us.i.posthog.com"))) {
+  if (analytics && (!analytics.includes("posthog.init") || !analytics.includes('persistence: "memory"') || !analytics.includes('api_host: "https://e.unitedstatesofamericasuperintelligence.com"') || !analytics.includes('ui_host: "https://us.posthog.com"'))) {
     failures.push("analytics.js is missing the cookie-free PostHog init");
   }
   const home = fs.existsSync(path.join(out, "index.html")) ? fs.readFileSync(path.join(out, "index.html"), "utf8") : "";

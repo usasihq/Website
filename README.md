@@ -248,10 +248,12 @@ aipeoplewiki.com in one hop. Every other path is a file in `./out`. See
   `script-src` lists SHA-256 hashes of that page's own inline scripts, so only
   matching inline scripts can run (added by `scripts/postbuild.mjs`). Both policies
   also allow Cloudflare's beacon host `https://static.cloudflareinsights.com`,
-  including its versioned paths, and PostHog US-cloud hosts
+  including its versioned paths; the first-party PostHog proxy
+  `https://e.unitedstatesofamericasuperintelligence.com`; PostHog US-cloud hosts
   `https://us-assets.i.posthog.com` (scripts) and `https://us.i.posthog.com`
-  (events), plus `worker-src 'self' blob:` for session replay; other collection
-  stays restricted to same-origin.
+  (events) as a rollback path; `https://cloudflareinsights.com` on connect-src
+  for Web Analytics beacons; and `worker-src 'self' blob:` for session replay.
+  Other collection stays restricted to same-origin.
 - `not_found_handling: "404-page"` serves the styled `404.html` with a real 404
   status; `html_handling: "auto-trailing-slash"` redirects `/companies` →
   `/companies/` (307). `run_worker_first` lists the old people and jobs prefixes

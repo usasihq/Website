@@ -26,7 +26,7 @@ USASI also uses PostHog to see how people move through the site: which pages are
 
 PostHog is configured with memory-only persistence: it does not set cookies and does not write to `localStorage` or `sessionStorage`. Identifiers exist only in the browser's memory for that page visit, so a reload or a later visit is not tied to the earlier one by a cookie this site set.
 
-The first script is served from this site (`/analytics.js`). It then loads PostHog's library from `us-assets.i.posthog.com` and sends measurement data to `us.i.posthog.com` (PostHog US cloud). Those reports include the page address (including any `?q=` search text), browser and device details, and the approximate location PostHog derives from IP address. USASI does not use PostHog for advertising, and does not share this information with sponsors.
+The first script is served from this site (`/analytics.js`). Analytics requests then go through a first-party address, `e.unitedstatesofamericasuperintelligence.com`, which forwards them to PostHog's US cloud (`us.i.posthog.com`). It doesn't set or read cookies and only forwards the measurement data. PostHog now also records the names of certain link clicks: outbound links (domain and path only, no query), App Store links and download links. Those reports include the page address (including any `?q=` search text), browser and device details, and the approximate location PostHog derives from IP address. USASI does not use PostHog for advertising, and does not share this information with sponsors.
 
 See [PostHog's privacy policy](https://posthog.com/privacy), [JavaScript web docs](https://posthog.com/docs/libraries/js), and [session replay docs](https://posthog.com/docs/session-replay) for the provider's practices.
 

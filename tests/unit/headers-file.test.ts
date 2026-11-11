@@ -40,9 +40,11 @@ describe("_headers transport security", () => {
   it("permits Cloudflare Web Analytics and cookie-free PostHog, and stays within line length", () => {
     const file = fs.readFileSync(path.join(process.cwd(), "public/_headers"), "utf8");
     expect(file).toContain("https://static.cloudflareinsights.com");
+    expect(file).toContain("https://e.unitedstatesofamericasuperintelligence.com");
     expect(file).toContain("https://us-assets.i.posthog.com");
     expect(file).toContain("https://us.i.posthog.com");
-    expect(file).toContain("connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com");
+    expect(file).toContain("https://cloudflareinsights.com");
+    expect(file).toContain("connect-src 'self' https://e.unitedstatesofamericasuperintelligence.com https://us.i.posthog.com https://us-assets.i.posthog.com https://cloudflareinsights.com");
     expect(file).toContain("worker-src 'self' blob:");
     for (const r of rules()) {
       for (const [, v] of r.set) expect(`${r.pattern} ${v}`.length, r.pattern).toBeLessThanOrEqual(2000);

@@ -216,7 +216,7 @@ test.describe("static hosting behavior", () => {
     expect((await request.get("/data/search-index.json")).headers()["content-type"]).toMatch(/^application\/json/);
     expect((await request.get("/sitemap.xml")).headers()["content-type"]).toMatch(/xml/);
     expect((await request.get("/og.png")).headers()["content-type"]).toBe("image/png");
-    expect(await response.text()).toMatch(/<meta http-equiv="Content-Security-Policy" content="[^"]*script-src 'self' https:\/\/static\.cloudflareinsights\.com https:\/\/us-assets\.i\.posthog\.com 'sha256-/);
+    expect(await response.text()).toMatch(/<meta http-equiv="Content-Security-Policy" content="[^"]*script-src 'self' https:\/\/static\.cloudflareinsights\.com https:\/\/e\.unitedstatesofamericasuperintelligence\.com https:\/\/us-assets\.i\.posthog\.com 'sha256-/);
   });
 });
 
@@ -268,7 +268,7 @@ test.describe("contact and profiles", () => {
       await expect(page.locator(`a[href*="${host}"]`)).toHaveCount(0);
     }
     // Cloudflare Web Analytics and PostHog may load their own scripts; nothing else third-party.
-    const allowed = ["https://us-assets.i.posthog.com/", "https://static.cloudflareinsights.com/"];
+    const allowed = ["https://e.unitedstatesofamericasuperintelligence.com/", "https://us-assets.i.posthog.com/", "https://static.cloudflareinsights.com/"];
     const external = await page.evaluate((prefixes) =>
       [...document.querySelectorAll("script[src], iframe, img[src]")]
         .map((e) => (e as HTMLScriptElement).src)
