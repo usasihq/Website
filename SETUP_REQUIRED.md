@@ -68,6 +68,10 @@ Remaining owner steps in the Cloudflare dashboard:
       bot blocking or a paid plan. Confirm the beacon loads without CSP violations
       and sends measurement requests before relying on dashboard statistics.
       Never create or paste an account API key for this step.
+- [x] PostHog (shared US-cloud project): `/analytics.js` loads the public
+      project token with memory-only persistence, pageview, pageleave, autocapture,
+      and masked session replay. The domain is already in that project's app URLs
+      and recording domains. No extra Cloudflare step.
 - [ ] Optional: automatic deploys from GitHub (see README).
 - [ ] Optional, later: HSTS preload once HTTPS is enforced everywhere.
 

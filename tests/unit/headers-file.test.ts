@@ -36,6 +36,18 @@ describe("_headers transport security", () => {
     expect(file).toContain("upgrade-insecure-requests");
     expect(file).toMatch(/Strict-Transport-Security: max-age=31536000; includeSubDomains/);
   });
+
+  it("permits Cloudflare Web Analytics and cookie-free PostHog, and stays within line length", () => {
+    const file = fs.readFileSync(path.join(process.cwd(), "public/_headers"), "utf8");
+    expect(file).toContain("https://static.cloudflareinsights.com");
+    expect(file).toContain("https://us-assets.i.posthog.com");
+    expect(file).toContain("https://us.i.posthog.com");
+    expect(file).toContain("connect-src 'self' https://us.i.posthog.com https://us-assets.i.posthog.com");
+    expect(file).toContain("worker-src 'self' blob:");
+    for (const r of rules()) {
+      for (const [, v] of r.set) expect(`${r.pattern} ${v}`.length, r.pattern).toBeLessThanOrEqual(2000);
+    }
+  });
 });
 
 describe("_headers content types", () => {

@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Privacy",
-  description: "What the USASI static site does with information: no cookies, no analytics or trackers, in-browser search, and how hosting, external links, and tipping work.",
+  description: "What the USASI static site does with information: no cookies, PostHog and Cloudflare analytics, masked session replay, in-browser search, hosting, and links.",
   path: "/privacy/",
 });
 
