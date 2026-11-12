@@ -1,0 +1,10 @@
+date: "2026-11-11"
+title: First-party PostHog proxy and named link-click events
+summary: >-
+  Analytics requests now go through the first-party address
+  e.unitedstatesofamericasuperintelligence.com, which forwards them to PostHog's
+  US cloud. PostHog also records named outbound, App Store, and download link
+  clicks (domain and path only, no query). The Privacy page describes the proxy
+  and the named events. USASI still sets no cookies and does not use localStorage.
+changes:
+  - { type: policy, record_type: site, slug: null, note: "Route PostHog through e.unitedstatesofamericasuperintelligence.com; record named outbound, App Store, and download clicks; update the Privacy page" }
