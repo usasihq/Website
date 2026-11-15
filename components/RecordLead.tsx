@@ -17,7 +17,7 @@ import type { Artifact, LicenseRecord, Organization } from "@/lib/schema";
 import { article, COVERS, headquartersPhrase, organizationOutput, roleDescription } from "@/lib/seo";
 import { SourceRefs } from "./Sources";
 
-const CLASS = "mt-3 max-w-3xl text-[1.0625rem] leading-relaxed text-text";
+const CLASS = "mt-3 max-w-measure text-[1.0625rem] leading-relaxed text-text";
 
 /** "A", "A and B", "A, B, and C" for rendered items. */
 function Join({ items }: { items: ReactNode[] }) {

@@ -8,24 +8,25 @@ import { BrandMark } from "./BrandMark";
 import { SiteSearch } from "./SiteSearch";
 import { siteConfig, supportState } from "@/lib/site-config";
 
-/** Reference links: in the slim top bar from 640px, and in the mobile menu. */
+/** Reference links: in the compact More menu on wide screens, and in the mobile menu. */
 const REFERENCE = [
-  { href: "/new/", label: "New this week", bar: true },
-  { href: "/start/", label: "Start here", bar: true },
-  { href: "/faq/", label: "FAQ", bar: true },
-  { href: "/hubs/", label: "Hubs", bar: true },
-  { href: "/places/", label: "Places", bar: false },
-  { href: "/timeline/", label: "Timeline", bar: false },
-  { href: "/sources/", label: "Source library", bar: false },
-  { href: "/glossary/", label: "Glossary", bar: true },
-  { href: "/kids/", label: "For kids", bar: false },
-  { href: "/licenses/", label: "License guide", bar: false },
-  // wide: in the top bar from lg only, so the independence line fits on tablets (all are in the menu).
-  { href: "/policy/", label: "Policy tracker", bar: true, wide: true },
-  { href: "/reuse/", label: "Data & reuse", bar: false },
-  { href: "/newsletter/", label: "Weekly email", bar: false },
-  { href: "/contribute/#corrections", label: "Corrections", bar: true, wide: true },
+  { href: "/new/", label: "New this week", more: true },
+  { href: "/start/", label: "Start here", more: true },
+  { href: "/faq/", label: "FAQ", more: true },
+  { href: "/hubs/", label: "Hubs", more: true },
+  { href: "/places/", label: "Places", more: false },
+  { href: "/timeline/", label: "Timeline", more: false },
+  { href: "/sources/", label: "Source library", more: false },
+  { href: "/glossary/", label: "Glossary", more: true },
+  { href: "/kids/", label: "For kids", more: false },
+  { href: "/licenses/", label: "License guide", more: false },
+  { href: "/policy/", label: "Policy tracker", more: true },
+  { href: "/reuse/", label: "Data & reuse", more: false },
+  { href: "/newsletter/", label: "Weekly email", more: false },
+  { href: "/contribute/#corrections", label: "Corrections", more: true },
 ];
+
+const MORE = REFERENCE.filter((r) => r.more);
 
 const OPEN_SOURCE = [
   { href: "/open/", label: "Open Models & Tools", description: "U.S.-led open models, software, datasets, and evaluation tools, with sources" },
@@ -114,11 +115,99 @@ function NavMenu({ pathname, label, items }: { pathname: string; label: string; 
                 className="block rounded-lg px-3 py-2.5 hover:bg-cyan/8 aria-[current=page]:bg-cyan/10"
               >
                 <span className="block text-[0.9375rem] font-medium text-text">{p.label}</span>
-                <span className="mt-0.5 block text-[0.8125rem] leading-snug text-muted">{p.description}</span>
+                <span className="mt-0.5 block text-sm leading-snug text-muted">{p.description}</span>
               </Link>
             </li>
           ))}
         </ul>
+      </div>
+    </div>
+  );
+}
+
+function ReferenceMenu({ pathname, tipUrl }: { pathname: string; tipUrl: string | null }) {
+  const [openedFor, setOpenedFor] = useState<string | null>(null);
+  const open = openedFor === pathname;
+  const panelId = useId();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const current = MORE.some((p) => isCurrent(pathname, p.href));
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenedFor(null);
+        buttonRef.current?.focus();
+      }
+    };
+    const onPointer = (event: PointerEvent) => {
+      if (!wrapRef.current?.contains(event.target as Node)) setOpenedFor(null);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={wrapRef}
+      className="relative hidden xl:block"
+      onBlur={(event) => {
+        if (open && !event.currentTarget.contains(event.relatedTarget as Node | null)) setOpenedFor(null);
+      }}
+    >
+      <button
+        ref={buttonRef}
+        type="button"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpenedFor(open ? null : pathname)}
+        className={`inline-flex min-h-11 items-center gap-1 whitespace-nowrap rounded-md px-3 text-[0.9375rem] transition-colors ${
+          current ? "text-text underline decoration-cyan decoration-2 underline-offset-[10px]" : "text-muted hover:text-text"
+        }`}
+      >
+        More
+        <ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      <div
+        id={panelId}
+        hidden={!open}
+        className="absolute right-0 top-full z-50 mt-2 w-72 rounded-xl border border-line-strong bg-elev p-2 shadow-pop"
+      >
+        <nav aria-label="Reference">
+          <ul>
+            {MORE.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  prefetch={false}
+                  aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+                  className="flex min-h-11 items-center rounded-lg px-3 text-[0.9375rem] text-muted hover:bg-cyan/8 hover:text-text aria-[current=page]:bg-cyan/10 aria-[current=page]:text-text"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+            {tipUrl ? (
+              <li className="mt-1 border-t border-line pt-1">
+                <a
+                  href={tipUrl}
+                  rel="noopener noreferrer"
+                  className="flex min-h-11 items-center gap-2 rounded-lg px-3 text-[0.9375rem] text-tone-gold hover:bg-cyan/8 hover:text-text"
+                  data-testid="header-support"
+                >
+                  <Coffee aria-hidden="true" className="h-4 w-4" />
+                  Support our project
+                  <span className="sr-only"> (opens {siteConfig.support.providerLabel ?? "the tip page"})</span>
+                </a>
+              </li>
+            ) : null}
+          </ul>
+        </nav>
       </div>
     </div>
   );
@@ -138,7 +227,7 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
   const setOpen = (value: boolean) => setOpenedFor(value ? pathname : null);
   const panelId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
-  // The optional tip link in the top bar; hidden when tips are switched off in site-config.
+  // The optional tip link; shown in More on desktop and in the mobile menu.
   const tipUrl = supportState(siteConfig.support).active ? siteConfig.support.tipUrl : null;
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
@@ -169,40 +258,13 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
 
   return (
     <header className="sticky top-0 z-40 border-b border-t-4 border-b-line border-t-gold bg-[var(--header-bg)] backdrop-blur-md supports-[backdrop-filter]:bg-[var(--header-bg-blur)]">
-      {/* Persistent independence line on every page. */}
+      {/* Persistent independence line on every page. Secondary links live in More / the menu / the footer. */}
       <div className="border-b border-line bg-fog/50">
-        <div className="container-page flex h-7 items-center justify-between gap-4 text-xs sm:text-[0.8125rem]">
-          <p className="min-w-0 truncate text-muted" data-testid="header-disclaimer">
+        <div className="container-page flex min-h-8 items-center py-1.5">
+          <p className="text-[0.8125rem] leading-snug text-muted" data-testid="header-disclaimer">
             <span className="lg:hidden">Independent project. Not a U.S. government website.</span>
             <span className="hidden lg:inline">{disclaimer}</span>
           </p>
-          {tipUrl ? (
-            <a
-              href={tipUrl}
-              rel="noopener noreferrer"
-              className="inline-flex h-7 min-w-7 shrink-0 items-center justify-center gap-1.5 text-tone-gold hover:text-text"
-              title="Support our project on Buy Me a Coffee"
-              data-testid="header-support"
-            >
-              <Coffee aria-hidden="true" className="h-4 w-4 lg:h-3.5 lg:w-3.5" />
-              {/* Icon only below lg, so the independence line keeps its room. */}
-              <span className="sr-only lg:hidden">Support our project</span>
-              <span className="hidden lg:inline xl:hidden">Support us</span>
-              <span className="hidden xl:inline">Support our project · Buy me a coffee</span>
-              <span className="sr-only"> (opens {siteConfig.support.providerLabel ?? "the tip page"})</span>
-            </a>
-          ) : null}
-          <nav aria-label="Reference" className="hidden shrink-0 sm:block">
-            <ul className="flex items-center gap-4">
-              {REFERENCE.filter((r) => r.bar).map((item) => (
-                <li key={item.href} className={"wide" in item && item.wide ? "hidden lg:block" : undefined}>
-                  <Link href={item.href} prefetch={false} className="inline-flex h-7 items-center text-muted hover:text-text">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </div>
       </div>
       <div className="container-page flex h-14 items-center justify-between gap-4 sm:h-16">
@@ -239,8 +301,9 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
           </ul>
         </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <SiteSearch indexUrl={searchIndexUrl} />
+          <ReferenceMenu pathname={pathname} tipUrl={tipUrl} />
           <button
             ref={toggleRef}
             type="button"
@@ -290,6 +353,19 @@ export function SiteHeader({ siteName, shortName, disclaimer, searchIndexUrl }: 
                 </Link>
               </li>
             ))}
+            {tipUrl ? (
+              <li>
+                <a
+                  href={tipUrl}
+                  rel="noopener noreferrer"
+                  className="flex min-h-12 items-center gap-2 rounded-md px-2 text-base text-tone-gold hover:text-text"
+                >
+                  <Coffee aria-hidden="true" className="h-4 w-4" />
+                  Support our project
+                  <span className="sr-only"> (opens {siteConfig.support.providerLabel ?? "the tip page"})</span>
+                </a>
+              </li>
+            ) : null}
           </ul>
           <button
             type="button"

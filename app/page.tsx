@@ -139,7 +139,7 @@ export default function HomePage() {
               >
                 Explore the companies, models, and tools behind American Super Intelligence.
               </h1>
-              <p className="order-5 mx-auto mt-5 max-w-2xl text-base text-muted lg:order-3 lg:mx-0 lg:mt-4 lg:text-[1.0625rem]">
+              <p className="order-5 mx-auto mt-5 max-w-measure text-base text-muted lg:order-3 lg:mx-0 lg:mt-5 lg:text-[1.0625rem]">
                 An independent directory of U.S. AI organizations and U.S.-led open models, software, and research. Explore what they build, what is
                 available, and where to find the original sources.
               </p>
@@ -178,13 +178,13 @@ export default function HomePage() {
         <div className="container-page pb-8">
           <Link
             href={`/learn/${siExplainer.slug}/`}
-            className="card card-link flex flex-col gap-1 border-gold/35 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-5"
+            className="card card-link flex flex-col gap-1 border-gold/35 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6"
             data-testid="home-si-explainer"
           >
             <span className="min-w-0">
-              <span className="eyebrow text-[0.75rem]">Explainer · reviewed {formatDate(siExplainer.reviewed)}</span>
+              <span className="eyebrow">Explainer · reviewed {formatDate(siExplainer.reviewed)}</span>
               <span className="mt-1 block text-lg font-semibold text-text">{siExplainer.title}</span>
-              <span className="mt-1 block text-[0.9375rem] text-muted">
+              <span className="mt-1 block text-base text-muted">
                 The federal term since Executive Order 14434, the older research meaning, and a dated, sourced timeline.
               </span>
             </span>
@@ -198,13 +198,13 @@ export default function HomePage() {
         <div className={`container-page pb-8 ${siExplainer ? "-mt-5" : ""}`}>
           <Link
             href="/report/"
-            className="card card-link flex flex-col gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-5"
+            className="card card-link flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:p-6"
             data-testid="home-report"
           >
             <span className="min-w-0">
-              <span className="eyebrow text-[0.75rem]">Research report · {editionLabel(report.edition)} edition</span>
+              <span className="eyebrow">Research report · {editionLabel(report.edition)} edition</span>
               <span className="mt-1 block text-lg font-semibold text-text">The State of American AI</span>
-              <span className="mt-1 block text-[0.9375rem] text-muted">
+              <span className="mt-1 block text-base text-muted">
                 Dated figures from the catalog as of {formatDate(report.data_cutoff)}: {reportTotal("organizations")} organization records, {reportTotal("model_releases")} model releases and their licenses,
                 local AI, and policy, each with its definition and a data download.
               </span>
@@ -214,12 +214,12 @@ export default function HomePage() {
         </div>
       ) : null}
 
-      {/* Task-based entry points: what a visitor wants to do, not just what to browse. */}
-      <section aria-labelledby="actions-heading" className="container-page pb-8">
-        <h2 id="actions-heading" className="text-lg font-semibold text-text">
-          What do you want to do?
+      {/* Task-based and orientation entry points, one block instead of two overlapping grids. */}
+      <section aria-labelledby="start-heading" className="container-page pb-12">
+        <h2 id="start-heading" className="text-xl font-semibold text-text">
+          Where to start
         </h2>
-        <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { href: "/find/", title: "Find something to use", text: "Describe your task and computer; see documented options that fit, and why.", Icon: Sparkles },
             { href: "/find/?where=local", title: "Check my hardware", text: "See which local setups a publisher documents for your graphics memory.", Icon: Cpu },
@@ -227,23 +227,41 @@ export default function HomePage() {
             { href: "/start/", title: "Start here", text: "Four ways into the catalog, and a checklist before you use a model or tool.", Icon: Route },
           ].map(({ href, title, text, Icon }) => (
             <li key={href}>
-              <Link prefetch={false} href={href} className="card card-link group flex h-full items-start gap-3 p-4">
+              <Link prefetch={false} href={href} className="card card-link group flex h-full items-start gap-3 p-5">
                 <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl border border-line-strong bg-elev text-cyan">
                   <Icon aria-hidden="true" className="h-5 w-5" />
                 </span>
                 <span>
                   <span className="block font-semibold text-text group-hover:text-strong">{title}</span>
-                  <span className="mt-1 block text-sm text-muted">{text}</span>
+                  <span className="mt-1 block text-[0.9375rem] text-muted">{text}</span>
                 </span>
               </Link>
             </li>
           ))}
         </ul>
+        <ul className="mt-3 grid gap-3 sm:grid-cols-3">
+          {[
+            { href: "/learn/", title: "Learn the basics", text: `${EXPLAINERS.length} short explainers, ${LEARNING_PATHS.length} learning paths, and a glossary.` },
+            { href: "/hubs/", title: "Explore by subject", text: `${catalog.hubs.length} subject hubs, from local AI and agents to robotics, evaluation, and datasets.` },
+            { href: "/places/", title: "Browse by state", text: "Organizations by the state named in their documented headquarters." },
+          ].map((item) => (
+            <li key={item.href}>
+              <Link prefetch={false} href={item.href} className="card card-link flex h-full flex-col p-5">
+                <span className="font-semibold text-text">{item.title}</span>
+                <span className="mt-1 text-[0.9375rem] text-muted">{item.text}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 max-w-measure text-base text-muted">
+          Counts on this site are records in this catalog as of {formatDate(catalog.buildAt.slice(0, 10))}. Coverage is selective; counts are not a census, a
+          ranking, or a measure of capability. <Link href="/methodology/#counts" className="link">How counts work</Link>
+        </p>
       </section>
 
-      <section aria-labelledby="project-heading" className="container-page pb-7">
-        <h2 id="project-heading" className="text-lg font-semibold text-text">About this project</h2>
-        <p className="mt-2 max-w-3xl text-sm text-muted">
+      <section aria-labelledby="project-heading" className="container-page pb-12">
+        <h2 id="project-heading" className="text-xl font-semibold text-text">About this project</h2>
+        <p className="mt-2 max-w-measure text-base text-muted">
           USASI is an independent, unofficial catalog. Entries link claims to sources and record when the evidence was reviewed.
           Missing evidence stays Unknown; unverified candidates stay out of the published catalog.{" "}
           <Link href="/about/" className="link">About USASI</Link>{" · "}
@@ -251,44 +269,18 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* Practical starting paths for newcomers (orientation before the directory previews). */}
-      <section aria-labelledby="start-paths-heading" className="container-page pb-10">
-        <h2 id="start-paths-heading" className="text-lg font-semibold text-text">
-          Where to start
-        </h2>
-        <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { href: "/start/", title: "New here? Start here", text: "Four short paths: learn a term, find something usable, understand an organization, check a claim." },
-            { href: "/learn/", title: "Learn the basics", text: `${EXPLAINERS.length} short explainers, ${LEARNING_PATHS.length} learning paths, and a glossary, from how models work to reading an evaluation.` },
-            { href: "/hubs/", title: "Explore by subject", text: `${catalog.hubs.length} subject hubs, from local AI and agents to robotics, evaluation, and datasets.` },
-            { href: "/places/", title: "Browse by state", text: "Organizations by the state named in their documented headquarters." },
-          ].map((item) => (
-            <li key={item.href}>
-              <Link prefetch={false} href={item.href} className="card flex h-full flex-col p-4 hover:border-cyan">
-                <span className="font-semibold text-text">{item.title}</span>
-                <span className="mt-1 text-sm text-muted">{item.text}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-3 text-sm text-muted">
-          Counts on this site are records in this catalog as of {formatDate(catalog.buildAt.slice(0, 10))}. Coverage is selective; counts are not a census, a
-          ranking, or a measure of capability. <Link href="/methodology/#counts" className="link">How counts work</Link>
-        </p>
-      </section>
-
       {/* 3. Two equally weighted directory previews */}
-      <section aria-labelledby="previews-heading" className="border-t border-line py-14">
+      <section aria-labelledby="previews-heading" className="border-t border-line py-16">
         <div className="container-page">
           <h2 id="previews-heading" className="sr-only">
             Directory previews
           </h2>
           {featured ? (
-            <p className="mb-6 max-w-3xl text-[0.9375rem] text-muted">
+            <p className="mb-6 max-w-measure text-base text-muted">
               <strong className="font-semibold text-text">Editor’s selection ({formatDate(featured.selected_at)}):</strong> {featured.explanation}
             </p>
           ) : (
-            <p className="mb-6 text-[0.9375rem] text-muted">Showing the first entries of each directory in alphabetical order.</p>
+            <p className="mb-6 max-w-measure text-base text-muted">Showing the first entries of each directory in alphabetical order.</p>
           )}
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="card flex flex-col p-5 sm:p-6">
@@ -351,7 +343,7 @@ export default function HomePage() {
       </section>
 
       {/* Learning paths: the Learn section's entry points */}
-      <section aria-labelledby="learn-heading" className="border-t border-line py-14">
+      <section aria-labelledby="learn-heading" className="border-t border-line py-16">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -359,7 +351,7 @@ export default function HomePage() {
               <h2 id="learn-heading" className="mt-1 text-2xl font-semibold text-text">
                 Learn how AI works, and how to check what you read
               </h2>
-              <p className="mt-2 max-w-3xl text-muted">
+              <p className="mt-2 max-w-measure text-base text-muted">
                 Short, sourced explainers arranged into paths. Each one answers a single question and leads to real records and the documents behind them.
               </p>
             </div>
@@ -379,7 +371,7 @@ export default function HomePage() {
                   <Route aria-hidden="true" className="h-5 w-5 text-cyan" />
                   <span className="mt-3 font-semibold text-text group-hover:text-strong">{p.title}</span>
                   <span className="mt-1 text-sm text-muted">{p.audience}</span>
-                  <span className="mt-auto pt-4 text-xs uppercase tracking-[0.08em] text-ice">
+                  <span className="mt-auto pt-4 text-sm uppercase tracking-[0.08em] text-ice">
                     {availableSteps(p, new Set(catalog.hubs.map((h) => h.slug))).length} steps
                   </span>
                 </Link>
@@ -393,7 +385,7 @@ export default function HomePage() {
 
       {/* Latest news and the weekly email: a reason to come back */}
       {catalog.news.length > 0 ? (
-        <section aria-labelledby="latest-heading" className="border-t border-line py-14">
+        <section aria-labelledby="latest-heading" className="border-t border-line py-16">
           <div className="container-page grid gap-8 lg:grid-cols-[1fr_22rem] lg:gap-12">
             <div>
               <p className="eyebrow">Latest news</p>
@@ -424,14 +416,14 @@ export default function HomePage() {
       ) : null}
 
       {/* 4. Comparison preview */}
-      <section aria-labelledby="coverage-heading" className="border-t border-line py-14">
+      <section aria-labelledby="coverage-heading" className="border-t border-line py-16">
         <div className="container-page grid gap-8 lg:grid-cols-[1fr_1.4fr]">
           <div>
             <p className="eyebrow">Compare</p>
             <h2 id="coverage-heading" className="mt-1 text-2xl font-semibold text-text">
               Catalog coverage
             </h2>
-            <p className="mt-3 text-muted">
+            <p className="mt-3 max-w-measure text-base text-muted">
               These are counts of published records in this catalog — not measures of capability, and not a census of American AI. Family overviews
               are counted separately from the releases they summarize, and research units are counted separately from their parents.
             </p>
@@ -444,7 +436,7 @@ export default function HomePage() {
             {mostRecords.length > 0 ? (
               <div>
                 <h3 className="text-lg font-semibold text-text">Who maintains the open artifacts in this catalog</h3>
-                <p className="mt-1 text-[0.9375rem] text-muted">
+                <p className="mt-1 max-w-measure text-base text-muted">
                   Organizations with the most open-artifact records here. This counts catalog records, not importance, quality, or total output.
                 </p>
                 <ol className="mt-4 grid gap-x-6 sm:grid-cols-2">
@@ -475,13 +467,13 @@ export default function HomePage() {
       </section>
 
       {/* 5. Recently reviewed */}
-      <section aria-labelledby="reviewed-heading" className="border-t border-line py-14">
+      <section aria-labelledby="reviewed-heading" className="border-t border-line py-16">
         <div className="container-page">
           <p className="eyebrow">Editorial log</p>
           <h2 id="reviewed-heading" className="mt-1 text-2xl font-semibold text-text">
             Recently reviewed
           </h2>
-          <p className="mt-2 max-w-3xl text-muted">
+          <p className="mt-2 max-w-measure text-base text-muted">
             Entries whose evidence an editor checked most recently. A review date is not a release date.{" "}
             <Link prefetch={false} href="/changelog/" className="link">
               See the changelog
@@ -508,7 +500,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. Methodology and independence */}
-      <section aria-labelledby="method-heading" className="border-t border-line py-14">
+      <section aria-labelledby="method-heading" className="border-t border-line py-16">
         <div className="container-page">
           <p className="eyebrow">How this catalog works</p>
           <h2 id="method-heading" className="mt-1 text-2xl font-semibold text-text">
@@ -518,7 +510,7 @@ export default function HomePage() {
             <div className="card p-5">
               <BookOpenCheck aria-hidden="true" className="h-5 w-5 text-cyan" />
               <h3 className="mt-3 font-semibold text-text">Sourced claims</h3>
-              <p className="mt-2 text-[0.9375rem] text-muted">
+              <p className="mt-2 text-base text-muted">
                 Each statement links to the official page, model card, repository, or license that supports it, with the date it was checked.
                 Unknown stays unknown.
               </p>
@@ -526,7 +518,7 @@ export default function HomePage() {
             <div className="card p-5">
               <Landmark aria-hidden="true" className="h-5 w-5 text-cyan" />
               <h3 className="mt-3 font-semibold text-text">Published eligibility rule</h3>
-              <p className="mt-2 text-[0.9375rem] text-muted">
+              <p className="mt-2 text-base text-muted">
                 Entries qualify through documented U.S. headquarters, a U.S. nonprofit or lab, documented U.S. control, or U.S.-based project
                 governance — applied the same way to everyone.
               </p>
@@ -534,13 +526,13 @@ export default function HomePage() {
             <div className="card p-5">
               <Scale aria-hidden="true" className="h-5 w-5 text-cyan" />
               <h3 className="mt-3 font-semibold text-text">Openness by artifact, not by reputation</h3>
-              <p className="mt-2 text-[0.9375rem] text-muted">
+              <p className="mt-2 text-base text-muted">
                 Models, software, datasets, and evaluation tools each get their own checklist. Model tiers follow {RUBRIC_LABEL}, an editorial rubric,
                 not a certification.
               </p>
             </div>
           </div>
-          <p className="mt-6 max-w-3xl text-[0.9375rem] text-muted">
+          <p className="mt-6 max-w-measure text-base text-muted">
             {siteConfig.disclaimer} USASI is not affiliated with any listed organization, and a listing is not an endorsement, a safety
             assessment, or a ranking.{" "}
             <Link prefetch={false} href="/methodology/" className="link">

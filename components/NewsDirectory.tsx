@@ -18,7 +18,7 @@ const monthLabel = (month: string) => new Intl.DateTimeFormat("en-US", { month: 
 function NewsRow({ item }: { item: NewsListItem }) {
   return (
     <article className="border-b border-line py-5" data-news={item.slug}>
-      <p className="meta text-[0.8125rem]">
+      <p className="meta">
         <time dateTime={item.event_date}>{formatDate(item.event_date)}</time> · {NEWS_CATEGORY_LABELS[item.category]}
       </p>
       <h3 className="mt-1 text-lg font-semibold leading-snug text-text">
@@ -26,7 +26,7 @@ function NewsRow({ item }: { item: NewsListItem }) {
           {item.title}
         </Link>
       </h3>
-      <p className="mt-2 max-w-[68ch] text-base text-body-2">
+      <p className="mt-2 max-w-measure text-base text-body-2">
         <CodeText text={item.summary} />
       </p>
       {item.related.length ? (

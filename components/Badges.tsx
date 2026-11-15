@@ -74,13 +74,13 @@ export function TierBadge({ tier, withRubric = false }: { tier: ModelTier; withR
     <span className={`badge ${tone}`}>
       <span className="sr-only">Model-disclosure tier ({RUBRIC_LABEL}): </span>
       {TIER_LABELS[tier]}
-      {withRubric ? <span className="font-mono text-[0.75rem] text-muted" aria-hidden="true">· v0.1</span> : null}
+      {withRubric ? <span className="font-mono text-xs text-muted" aria-hidden="true">· v0.1</span> : null}
     </span>
   );
 }
 
 export function EntryTypeBadge({ type }: { type: EntryType }) {
-  return <span className="badge font-mono text-[0.75rem] uppercase tracking-[0.06em] text-ice">{ENTRY_TYPE_LABELS[type]}</span>;
+  return <span className="badge font-mono text-xs uppercase tracking-[0.06em] text-ice">{ENTRY_TYPE_LABELS[type]}</span>;
 }
 
 export function PlainBadge({ children }: { children: React.ReactNode }) {

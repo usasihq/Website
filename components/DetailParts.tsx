@@ -20,7 +20,7 @@ export function FactList({ facts }: { facts: Array<{ label: string; value: React
     <dl className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
       {rows.map((f) => (
         <div key={f.label} className="min-w-0 border-t border-line pt-3">
-          <dt className="eyebrow text-[0.75rem]">{f.label}</dt>
+          <dt className="eyebrow">{f.label}</dt>
           <dd className="mt-1 break-words text-[0.9375rem] text-text">{f.value}</dd>
         </div>
       ))}

@@ -167,7 +167,7 @@ export default async function OrganizationPage({ params }: { params: Promise<{ s
               </div>
 
               <aside aria-label={`${org.name} at a glance`} className="card self-start p-5">
-                <h2 className="eyebrow text-[0.75rem]">At a glance</h2>
+                <h2 className="eyebrow">At a glance</h2>
                 <dl className="mt-3 divide-y divide-line text-sm">
                   {([
                     { label: "Website", value: <ExternalLink href={org.website}>{new URL(org.website).hostname.replace(/^www\./, "")}</ExternalLink> },

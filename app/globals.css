@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./tokens.css";
 
 /* ------------------------------------------------------------------ */
 /* Design tokens                                                        */
@@ -16,7 +17,7 @@
   --surface: #ffffff;
   --gold: #d3a552; /* identity only: accent bar, rules, icons; never text */
   --accent: #b9545a; /* USASI secondary accent (decorative) */
-  --radius: 14px;
+  --radius: var(--radius-md);
   --shadow: 0 8px 24px rgba(36, 55, 74, 0.07);
 
   /* Mapped onto the names the components already use */
@@ -212,6 +213,9 @@
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-serif: var(--font-source-serif), ui-serif, Georgia, Cambria, "Times New Roman", serif;
   --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --text-xs: var(--text-label);
+  --text-sm: var(--text-ui);
+  --max-width-measure: var(--measure);
   --shadow-glow: var(--glow);
   --shadow-card: var(--card-shadow);
   --shadow-pop: var(--pop-shadow);
@@ -227,7 +231,7 @@
   html {
     background: var(--bg);
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 6.5rem;
+    scroll-padding-top: 6.25rem;
   }
 
   /* The canvas color comes from html, so body stays transparent and the
@@ -235,7 +239,10 @@
   body {
     color: var(--text);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    font-optical-sizing: auto;
+    font-kerning: normal;
+    font-synthesis: none;
+    line-height: 1.65;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
@@ -336,12 +343,18 @@
     width: 100%;
     max-width: 76rem;
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: var(--space-4);
   }
   @media (min-width: 640px) {
     .container-page {
-      padding-inline: 1.5rem;
+      padding-inline: var(--space-5);
     }
+  }
+
+  /* Running prose: about 70–75 characters, not the full page width. */
+  .measure,
+  .max-w-measure {
+    max-width: var(--measure);
   }
 
   .skip-link {
@@ -362,16 +375,16 @@
   /* Small uppercase, letter-spaced category label in the USASI accent. */
   .eyebrow {
     font-family: var(--font-sans);
-    font-size: 0.78rem;
+    font-size: var(--text-label);
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--eyebrow);
   }
 
   .meta {
     font-family: var(--font-mono);
-    font-size: 0.875rem;
+    font-size: var(--text-ui);
     color: var(--muted);
     font-variant-numeric: tabular-nums;
   }
@@ -443,7 +456,7 @@
     padding: 0.125rem 0.5rem;
     border-radius: 999px;
     border: 1px solid var(--line);
-    font-size: 0.8125rem;
+    font-size: var(--text-label);
     line-height: 1.5;
     color: var(--text);
     background: var(--badge-bg);
@@ -492,8 +505,8 @@
 
   /* Editorial long-form pages */
   .prose-usasi {
-    max-width: 44rem;
-    font-size: 1.0625rem;
+    max-width: var(--measure);
+    font-size: var(--text-body);
     line-height: 1.75;
     color: var(--body);
   }
@@ -636,7 +649,7 @@
     z-index: 2;
     background: var(--thead-bg);
     font-weight: 600;
-    font-size: 0.8125rem;
+    font-size: var(--text-ui);
     color: var(--ice);
     vertical-align: bottom;
   }

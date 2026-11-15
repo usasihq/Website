@@ -546,6 +546,8 @@ test("every page carries the independence line, and orientation pages are reacha
     await page.getByRole("button", { name: "Menu", exact: true }).click();
     await expect(page.getByRole("navigation", { name: "Reference (mobile)" }).getByRole("link", { name: "Start here" })).toBeVisible();
   } else {
+    await expect(page.locator("header").getByRole("link", { name: "New this week", exact: true })).toHaveCount(0);
+    await page.getByRole("button", { name: "More", exact: true }).click();
     await page.getByRole("navigation", { name: "Reference" }).getByRole("link", { name: "Start here" }).click();
     await expect(page).toHaveURL(/\/start\/$/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("How to use this reference");

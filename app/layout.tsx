@@ -10,6 +10,7 @@ import { absoluteUrl, asset } from "@/lib/paths";
 import { SITE_URL, BASE_PATH, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
+/** Self-hosted OFL fonts (Instrument Sans, Source Serif 4, IBM Plex Mono). No third-party font hosts. */
 const instrumentSans = localFont({
   src: "./fonts/InstrumentSans-latin-wght.woff2",
   weight: "400 700",

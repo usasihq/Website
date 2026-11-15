@@ -58,12 +58,12 @@ export function PageHeader({
 }) {
   return (
     <header className="border-b border-line bg-[linear-gradient(180deg,var(--hero-tint),transparent)]">
-      <div className={`container-page ${compact ? "py-4 sm:py-8" : "pb-10 pt-10 sm:pt-14"}`}>
+      <div className={`container-page ${compact ? "py-5 sm:py-8" : "pb-10 pt-10 sm:pt-14"}`}>
         {crumbs ? <Breadcrumbs items={crumbs} current={current} /> : null}
         {eyebrow ? <p className={`eyebrow${compact ? " hidden sm:block" : ""}`}>{eyebrow}</p> : null}
         <h1 className={`font-semibold text-text sm:text-4xl ${compact ? "text-[1.75rem] leading-tight sm:mt-2" : "mt-2 text-3xl"}`}>{title}</h1>
         {/* Compact headers keep the first results on a phone's first screen; the description shows from the sm breakpoint. */}
-        {description ? <div className={`${compact ? "mt-2 hidden text-base sm:block" : "mt-4 text-lg"} max-w-3xl text-muted`}>{description}</div> : null}
+        {description ? <div className={`${compact ? "mt-2 hidden text-base sm:block" : "mt-4 text-lg"} max-w-measure text-muted`}>{description}</div> : null}
         {children}
       </div>
     </header>
@@ -89,7 +89,7 @@ export function Section({
       <h2 id={headingId} className="text-xl font-semibold text-text sm:text-2xl">
         {title}
       </h2>
-      {description ? <div className="mt-2 max-w-3xl text-muted">{description}</div> : null}
+      {description ? <div className="mt-2 max-w-measure text-muted">{description}</div> : null}
       <div className="mt-5">{children}</div>
     </section>
   );
