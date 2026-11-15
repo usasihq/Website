@@ -49,7 +49,7 @@ export function Hero() {
         {/* On phones the artwork fades into the page below it. */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-bg to-transparent lg:hidden" />
       </div>
-      <figcaption id="hero-note" className="relative px-4 pt-1.5 text-center text-xs leading-snug text-muted sm:px-6 lg:px-0 lg:pt-3 lg:text-left">
+      <figcaption id="hero-note" className="relative px-4 pt-2 text-center text-sm leading-snug text-muted sm:px-6 lg:px-0 lg:pt-3 lg:text-left">
         Illustration only: the lights and arcs are artistic, not verified company locations, data centers, or network connections.
       </figcaption>
     </figure>

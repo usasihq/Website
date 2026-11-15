@@ -58,7 +58,7 @@ export default function MatrixPage() {
           <h2 id="models-heading" className="text-2xl font-semibold text-text">
             Model releases view
           </h2>
-          <details className="mt-3 max-w-3xl text-[0.9375rem] text-muted">
+          <details className="mt-3 max-w-measure text-base text-muted">
             <summary className="cursor-pointer text-ice">How to read this comparison</summary>
             <div className="mt-3 space-y-3">
             <p>
@@ -72,7 +72,7 @@ export default function MatrixPage() {
             </p>
             </div>
           </details>
-          <p className="mt-2 text-sm text-muted">Counts describe catalog coverage, not capability. Open-weight means publicly downloadable weights, not unrestricted use. Select a count to inspect its records.</p>
+          <p className="mt-2 max-w-measure text-base text-muted">Counts describe catalog coverage, not capability. Open-weight means publicly downloadable weights, not unrestricted use. Select a count to inspect its records.</p>
 
           <ModelComparison rows={rows} asOf={catalog.buildAt} />
 
@@ -104,7 +104,7 @@ export default function MatrixPage() {
           <h2 id="projects-heading" className="text-2xl font-semibold text-text">
             Software, data &amp; evaluation view
           </h2>
-          <p className="mt-3 max-w-3xl text-[0.9375rem] text-muted">
+          <p className="mt-3 max-w-measure text-base text-muted">
             Each kind of artifact is compared on its own checklist. Status is shown with an icon and text; Unknown means unassessed or insufficient
             evidence.
           </p>
@@ -175,11 +175,11 @@ export default function MatrixPage() {
           <h2 id="coverage-heading" className="text-2xl font-semibold text-text">
             Catalog coverage
           </h2>
-          <p className="mt-3 max-w-3xl text-[0.9375rem] text-muted">
+          <p className="mt-3 max-w-measure text-base text-muted">
             Totals of published records. Organization records include research units and subsidiaries, which are also shown separately so a parent and
             its unit are never presented as two independent companies. Model families are counted separately from releases.
           </p>
-          <div className="mt-6 max-w-3xl">
+          <div className="mt-6 max-w-measure">
             <CoverageTable rows={coverage} caption="Catalog coverage totals. Each number links to the records it counts." />
           </div>
         </section>

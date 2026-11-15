@@ -97,7 +97,7 @@ export function HomeSearch({ indexUrl, githubLimit, hfLimit }: { indexUrl: strin
                       <span className="block font-medium text-text">{r.name}</span>
                       <span className="line-clamp-1 text-sm text-muted">{r.summary}</span>
                     </span>
-                    <span className="badge shrink-0 font-mono text-[0.75rem] uppercase tracking-[0.06em] text-ice">{ENTRY_TYPE_LABELS[r.type]}</span>
+                    <span className="badge shrink-0 font-mono text-xs uppercase tracking-[0.06em] text-ice">{ENTRY_TYPE_LABELS[r.type]}</span>
                   </Link>
                 </li>
               ))}

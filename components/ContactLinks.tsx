@@ -33,7 +33,7 @@ export function ContactLinks({ variant = "block" }: { variant?: "block" | "inlin
     <dl className="not-prose grid gap-3 font-sans text-[0.9375rem] sm:grid-cols-2" style={{ marginTop: "1rem" }}>
       {contact.email ? (
         <div className="rounded-lg border border-line p-3">
-          <dt className="eyebrow text-[0.75rem]">Email</dt>
+          <dt className="eyebrow">Email</dt>
           <dd className="mt-1">
             <a href={`mailto:${contact.email}`} className="link">
               {contact.email}
@@ -43,7 +43,7 @@ export function ContactLinks({ variant = "block" }: { variant?: "block" | "inlin
       ) : null}
       {socials.map((s) => (
         <div key={s.url} className="rounded-lg border border-line p-3">
-          <dt className="eyebrow text-[0.75rem]">{s.label}</dt>
+          <dt className="eyebrow">{s.label}</dt>
           <dd className="mt-1">
             <ExternalLink href={s.url}>{s.handle}</ExternalLink>
           </dd>

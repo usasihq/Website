@@ -33,7 +33,7 @@ export function SourceRefs({ ids, sources, idPrefix = "" }: { ids: string[]; sou
           <a
             key={id}
             href={`#src-${idPrefix}${id}`}
-            className="inline-flex min-h-6 min-w-6 items-center justify-center rounded border border-line px-1 font-mono text-[0.75rem] leading-none text-ice no-underline hover:border-cyan hover:text-text"
+            className="inline-flex min-h-6 min-w-6 items-center justify-center rounded border border-line px-1 font-mono text-xs leading-none text-ice no-underline hover:border-cyan hover:text-text"
             aria-label={`Source ${index + 1}: ${source.title}`}
           >
             {index + 1}

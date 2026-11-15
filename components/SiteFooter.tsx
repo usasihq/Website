@@ -1,7 +1,7 @@
 import Link from "@/components/Link";
 import { BuildDate } from "./BuildDate";
 import { asset, repositoryUrl } from "@/lib/paths";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, supportState } from "@/lib/site-config";
 import { BrandMark } from "./BrandMark";
 import { ContactLinks } from "./ContactLinks";
 import { ExternalLink } from "./ExternalLink";
@@ -57,6 +57,7 @@ const COLUMNS = [
       { href: "/compact/", label: "USASI Compact v0.2" },
       { href: "/changelog/", label: "Changelog" },
       { href: "/contribute/", label: "Contribute" },
+      { href: "/contribute/#corrections", label: "Corrections" },
       { href: "/reuse/", label: "Data & reuse" },
       { href: "/badges/", label: "Badges for maintainers" },
     ],
@@ -66,7 +67,7 @@ const COLUMNS = [
     links: [
       { href: "/disclaimer/", label: "Disclaimer" },
       { href: "/privacy/", label: "Privacy" },
-      { href: "/support/", label: "Support" },
+      { href: "/support/", label: supportState(siteConfig.support).active ? "Support · Buy me a coffee" : "Support" },
     ],
   },
 ];
@@ -89,7 +90,7 @@ export function SiteFooter() {
           </div>
           {COLUMNS.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>
-              <h2 className="eyebrow text-[0.75rem]">{col.heading}</h2>
+              <h2 className="eyebrow">{col.heading}</h2>
               <ul className="mt-3 space-y-0.5">
                 {col.links.map((l) => (
                   <li key={l.href}>

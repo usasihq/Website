@@ -153,7 +153,7 @@ export function SiteSearch({ indexUrl }: { indexUrl: string }) {
       >
         <Search aria-hidden="true" className="h-5 w-5 sm:h-4 sm:w-4" />
         <span className="sr-only sm:not-sr-only xl:sr-only 2xl:not-sr-only">Search</span>
-        <kbd aria-hidden="true" className="hidden rounded border border-line px-1.5 font-mono text-[0.75rem] leading-5 text-muted lg:inline xl:hidden 2xl:inline">
+        <kbd aria-hidden="true" className="hidden rounded border border-line px-1.5 font-mono text-xs leading-5 text-muted lg:inline xl:hidden 2xl:inline">
           /
         </kbd>
       </button>
